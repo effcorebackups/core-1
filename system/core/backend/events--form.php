@@ -13,11 +13,11 @@ namespace effectivecore\modules\core {
           use \effectivecore\translation as translation;
           abstract class events_form extends \effectivecore\events_form {
 
-  ##########################
-  ### form: installation ###
-  ##########################
+  #####################
+  ### form: install ###
+  #####################
 
-  static function on_init_installation($form, $fields) {
+  static function on_init_install($form, $fields) {
     if (!extension_loaded('pdo')) {
       message::insert('PHP PDO extension is not available.', 'warning');
     }
@@ -38,7 +38,7 @@ namespace effectivecore\modules\core {
     }
   }
 
-  static function on_validate_installation($form, $fields, &$values) {
+  static function on_validate_install($form, $fields, &$values) {
     static::on_validate($form, $fields, $values);
     switch ($form->clicked_button_name) {
       case 'install':
@@ -84,7 +84,7 @@ namespace effectivecore\modules\core {
     }
   }
 
-  static function on_submit_installation($form, $fields, &$values) {
+  static function on_submit_install($form, $fields, &$values) {
     switch ($form->clicked_button_name) {
       case 'install':
         switch ($values['driver'][0]) {

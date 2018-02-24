@@ -1,7 +1,7 @@
 forms
-- installation|form
+- install|form
     attributes
-    - id: installation
+    - id: install
     - novalidate: novalidate
     - method: post
     children
