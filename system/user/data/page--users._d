@@ -18,22 +18,22 @@ pages
     - block_menu_user
         region: head_2
         type: code
-        handler: \effectivecore\system\core\events_page::on_show_block_menu_user
+        handler: \effectivecore\modules\core\events_page::on_show_block_menu_user
     - block_logo
         region: head_3
         type: code
-        handler: \effectivecore\system\core\events_page::on_show_block_logo
+        handler: \effectivecore\modules\core\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: main_1
         type: code
-        handler: \effectivecore\system\core\events_page::on_show_block_title
+        handler: \effectivecore\modules\core\events_page::on_show_block_title
     - block_users
         region: main_1
         type: code
-        handler: \effectivecore\system\user\events_page::on_show_block_users
+        handler: \effectivecore\modules\user\events_page::on_show_block_users
     # ─────────────────────────────────────────────────────────────────────
     - block_copyright
         region: copyright
         type: code
-        handler: \effectivecore\system\core\events_page::on_show_block_copyright
+        handler: \effectivecore\modules\core\events_page::on_show_block_copyright

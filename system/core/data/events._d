@@ -2,12 +2,12 @@ events
   on_form_init
   - installation|event
       for: installation
-      handler: \effectivecore\system\core\events_form::on_init_installation
+      handler: \effectivecore\modules\core\events_form::on_init_installation
   on_form_validate
   - installation|event
       for: installation
-      handler: \effectivecore\system\core\events_form::on_validate_installation
+      handler: \effectivecore\modules\core\events_form::on_validate_installation
   on_form_submit
   - installation|event
       for: installation
-      handler: \effectivecore\system\core\events_form::on_submit_installation
+      handler: \effectivecore\modules\core\events_form::on_submit_installation

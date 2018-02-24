@@ -3,25 +3,25 @@ tokens
 - id_user
     match: %%_id_user
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
 - email
     match: %%_email
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
 - nick
     match: %%_nick
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
 # tokens for context user (user id is taken from url)
 - id_user_context
     match: %%_id_user_context
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
 - email_context
     match: %%_email_context
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
 - nick_context
     match: %%_nick_context
     type: code
-    handler: \effectivecore\system\user\events_token::on_replace
+    handler: \effectivecore\modules\user\events_token::on_replace
