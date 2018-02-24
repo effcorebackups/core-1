@@ -11,6 +11,7 @@ namespace effectivecore\modules\core {
           use \effectivecore\markup as markup;
           use \effectivecore\module as module;
           use \effectivecore\locale as locale;
+          use \effectivecore\storage as storage;
           use \effectivecore\translation as translation;
           use \effectivecore\table_body_row_cell as table_body_row_cell;
           use \effectivecore\control_actions_list as control_actions_list;
@@ -21,8 +22,8 @@ namespace effectivecore\modules\core {
     $info = new markup('dl', ['class' => ['info' => 'info']]);
     $info->child_insert(new markup('dt', [], 'System name'));
     $info->child_insert(new markup('dd', [], 'effcore'));
-    $info->child_insert(new markup('dt', [], 'Bundle build'));
-    $info->child_insert(new markup('dd', [], '1000'));
+    $info->child_insert(new markup('dt', [], 'Bundle build number'));
+    $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/global/build')));
     $info->child_insert(new markup('dt', [], 'Author'));
     $info->child_insert(new markup('dd', [], 'Maxim Rysevets'));
     $info->child_insert(new markup('dt', [], 'Build years'));
@@ -33,6 +34,8 @@ namespace effectivecore\modules\core {
     $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Valid CSS'));
     $info->child_insert(new markup('dd', [], 'yes'));
+    $info->child_insert(new markup('dt', [], 'Subscribe for updates to'));
+    $info->child_insert(new markup('dd', [], locale::format_datetime('2030-01-01 00:00:00')));
     return new node([], [$title, $info]);
   }
 

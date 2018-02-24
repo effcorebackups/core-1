@@ -23,7 +23,7 @@ translations
     - avatar: аватар
     - Background color: Цвет фона
     - Build years: Года выпуска
-    - Bundle build: Сборка пакета
+    - Bundle build number: Номер сборки пакета
     - button: кнопка
     - cache: кэш
     - Call %%_name: Вызов %%_name
@@ -220,6 +220,7 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить
+    - Subscribe for updates to: Подписка на обновления до
     - System name: Название системы
     - System: Система
     - Table prefix: Префикс таблиц
