@@ -19,8 +19,20 @@ namespace effectivecore\modules\core {
   static function on_show_info($page) {
     $title = new markup('h2', [], 'Shared information'); # @todo: move title to block settings
     $info = new markup('dl', ['class' => ['info' => 'info']]);
-    $info->child_insert(new markup('dt', [], 'param'));
-    $info->child_insert(new markup('dd', [], 'value'));
+    $info->child_insert(new markup('dt', [], 'System name'));
+    $info->child_insert(new markup('dd', [], 'effcore'));
+    $info->child_insert(new markup('dt', [], 'Bundle build'));
+    $info->child_insert(new markup('dd', [], '1000'));
+    $info->child_insert(new markup('dt', [], 'Author'));
+    $info->child_insert(new markup('dd', [], 'Maxim Rysevets'));
+    $info->child_insert(new markup('dt', [], 'Build years'));
+    $info->child_insert(new markup('dd', [], '2017—2018'));
+    $info->child_insert(new markup('dt', [], 'All rights reserved'));
+    $info->child_insert(new markup('dd', [], 'yes'));
+    $info->child_insert(new markup('dt', [], 'Valid HTML5'));
+    $info->child_insert(new markup('dd', [], 'yes'));
+    $info->child_insert(new markup('dt', [], 'Valid CSS'));
+    $info->child_insert(new markup('dd', [], 'yes'));
     return new node([], [$title, $info]);
   }
 

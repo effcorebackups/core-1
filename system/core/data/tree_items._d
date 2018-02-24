@@ -25,6 +25,7 @@ tree_items
     id: info
     id_parent: admin
     title: Information
+    weight: 100
     access
       roles
       - admins: admins

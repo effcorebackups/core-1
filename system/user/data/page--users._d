@@ -32,8 +32,3 @@ pages
         region: main_1
         type: code
         handler: \effectivecore\modules\user\events_page::on_show_block_users
-    # ─────────────────────────────────────────────────────────────────────
-    - block_copyright
-        region: copyright
-        type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_copyright

@@ -12,15 +12,18 @@ translations
     - Administer: Администрирование
     - Administrators: Администраторы
     - agree: согласен(а)
-    - All rights reserved.: Все права защищены.
+    - All rights reserved: Все права защищены
     - Allowable characters\: %%_chars. Examples\: %%_examples.: Допустимые символы: %%_chars. Примеры: %%_examples.
     - Allowable characters\: %%_chars.: Допустимые символы: %%_chars.
     - always_enabled: всегда_вкл
     - Anonymous: Аноним
+    - Author: Автор
     - autoload: автозагрузка
     - Avatar: Аватар
     - avatar: аватар
     - Background color: Цвет фона
+    - Build years: Года выпуска
+    - Bundle build: Сборка пакета
     - button: кнопка
     - cache: кэш
     - Call %%_name: Вызов %%_name
@@ -39,7 +42,6 @@ translations
     - Console: Консоль
     - Control elements: Элементы управления
     - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
-    - Copyright © %%_years %%_right_holder.: Авторские права © %%_years %%_right_holder.
     - Core: Ядро
     - created: создано
     - Created: Создано
@@ -128,6 +130,7 @@ translations
     - Is always on: Всегда включен
     - Is embed: Встроенный
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
+    - Legal information: Правовая информация
     - License agreement: Лицензионное соглашение
     - load: загрузка
     - Locales: Локализации
@@ -137,6 +140,7 @@ translations
     - Logout: Выход
     - Main menu: Главное меню
     - Main system module.: Основной модуль системы.
+    - Maxim Rysevets: Рысевец Максим Владимирович
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
@@ -216,6 +220,7 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить
+    - System name: Название системы
     - System: Система
     - Table prefix: Префикс таблиц
     - Telephone: Телефон
@@ -252,7 +257,8 @@ translations
     - Users: Пользователи
     - val.: знач.
     - Val.: Знач.
-    - Valid HTML5 markup \| Valid CSS: Действительная разметка HTML5 | Действительный CSS
+    - Valid CSS: Действительный CSS
+    - Valid HTML5: Действительный HTML5
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
     - Value: Значение
     - Value: Значение

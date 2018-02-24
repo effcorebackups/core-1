@@ -38,12 +38,4 @@ namespace effectivecore {
     );
   }
 
-  static function on_show_block_copyright($page) {
-    return new markup('x-copyright', [], [
-      translation::get('Valid HTML5 markup | Valid CSS').br.
-      translation::get('Copyright © %%_years %%_right_holder.', ['years' => '2017—2018', 'right_holder' => 'Maxim Rysevets']).br.
-      translation::get('All rights reserved.')
-    ]);
-  }
-
 }}

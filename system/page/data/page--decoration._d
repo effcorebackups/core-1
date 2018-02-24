@@ -30,8 +30,3 @@ pages
         region: main_1
         type: link
         dpath: forms/page/decoration
-    # ─────────────────────────────────────────────────────────────────────
-    - block_copyright
-        region: copyright
-        type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_copyright

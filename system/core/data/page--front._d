@@ -26,8 +26,3 @@ pages
         region: main_1
         type: text
         content: Wellcome to our site!
-    # ─────────────────────────────────────────────────────────────────────
-    - block_copyright
-        region: copyright
-        type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_copyright
