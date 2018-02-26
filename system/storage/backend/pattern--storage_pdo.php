@@ -4,9 +4,9 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           class storage_pdo
-          implements \effectivecore\has_different_cache {
+          implements \effcore\has_different_cache {
 
   public $id;
   public $driver;
@@ -122,7 +122,7 @@ namespace effectivecore {
         return null;
       }
       switch ($query[0]) {
-        case 'SELECT': return $result ? $result->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, '\effectivecore\instance') : null;
+        case 'SELECT': return $result ? $result->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, '\effcore\instance') : null;
         case 'INSERT': return $this->connection->lastInsertId();
         case 'UPDATE': return $result->rowCount();
         case 'DELETE': return $result->rowCount();

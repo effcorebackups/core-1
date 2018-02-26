@@ -2,20 +2,20 @@ events
   on_module_install
   - page|event
       for: page
-      handler: \effectivecore\modules\page\events_module::on_install
+      handler: \effcore\modules\page\events_module::on_install
   on_module_start
   - page|event
       for: page
-      handler: \effectivecore\modules\page\events_module::on_start
+      handler: \effcore\modules\page\events_module::on_start
   on_form_init
   - decoration|event
       for: decoration
-      handler: \effectivecore\modules\page\events_form::on_init_decoration
+      handler: \effcore\modules\page\events_form::on_init_decoration
   on_form_validate
   - decoration|event
       for: decoration
-      handler: \effectivecore\modules\page\events_form::on_validate_decoration
+      handler: \effcore\modules\page\events_form::on_validate_decoration
   on_form_submit
   - decoration|event
       for: decoration
-      handler: \effectivecore\modules\page\events_form::on_submit_decoration
+      handler: \effcore\modules\page\events_form::on_submit_decoration

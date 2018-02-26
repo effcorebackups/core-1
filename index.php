@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
 
   ##########################
   ### single entry point ###
@@ -23,12 +23,12 @@ namespace effectivecore {
   require_once('system/core/backend/class_ab--gl--dynamic.php');
   require_once('system/core/backend/class_ab--gl--cache.php');
   require_once('system/core/backend/class--gl--file.php');
-  spl_autoload_register('\effectivecore\factory::autoload');
+  spl_autoload_register('\effcore\factory::autoload');
 
-  use \effectivecore\url as url;
-  use \effectivecore\timer as timer;
-  use \effectivecore\event as event;
-  use \effectivecore\token as token;
+  use \effcore\url as url;
+  use \effcore\timer as timer;
+  use \effcore\event as event;
+  use \effcore\token as token;
   timer::tap('total');
 
   #######################

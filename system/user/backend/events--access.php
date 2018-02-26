@@ -4,11 +4,11 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\user {
-          use \effectivecore\user as user;
-          use \effectivecore\factory as factory;
-          use \effectivecore\instance as instance;
-          abstract class events_access extends \effectivecore\events_access {
+namespace effcore\modules\user {
+          use \effcore\user as user;
+          use \effcore\factory as factory;
+          use \effcore\instance as instance;
+          abstract class events_access extends \effcore\events_access {
 
   static function on_check_access_user_delete($page, $id) {
     $user = (new instance('user', ['id' => $id]))->select();

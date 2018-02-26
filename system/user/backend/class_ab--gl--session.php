@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           const empty_ip = '0.0.0.0';
           const period_expire = 60 * 60 * 24 * 30;
           const period_seance = 60 * 60 * 24;

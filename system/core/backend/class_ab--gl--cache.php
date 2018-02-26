@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          abstract class cache extends \effectivecore\dynamic {
+namespace effcore {
+          abstract class cache extends \effcore\dynamic {
 
   static public $type = 'cache';
   static public $directory = dir_dynamic.'cache/';

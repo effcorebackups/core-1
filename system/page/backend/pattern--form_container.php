@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_container extends \effectivecore\markup {
+namespace effcore {
+          class form_container extends \effcore\markup {
 
   public $tag_name = 'x-container';
   public $template = 'form_container';

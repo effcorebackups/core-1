@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_field_select extends \effectivecore\form_field {
+namespace effcore {
+          class form_field_select extends \effcore\form_field {
 
   public $select_attributes = [];
   public $values = [];

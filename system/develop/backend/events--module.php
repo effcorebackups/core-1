@@ -4,12 +4,12 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\develop {
-          use \effectivecore\entity as entity;
-          use \effectivecore\message as message;
-          use \effectivecore\instance as instance;
-          use \effectivecore\translation as translation;
-          abstract class events_module extends \effectivecore\events_module {
+namespace effcore\modules\develop {
+          use \effcore\entity as entity;
+          use \effcore\message as message;
+          use \effcore\instance as instance;
+          use \effcore\translation as translation;
+          abstract class events_module extends \effcore\events_module {
 
   static function on_start() {
   }

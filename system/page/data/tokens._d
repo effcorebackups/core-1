@@ -3,11 +3,11 @@ tokens
 - color
     match: %%_color
     type: code
-    handler: \effectivecore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_bg
     match: %%_color_bg
     type: code
-    handler: \effectivecore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_hover
     match: %%_color_hover
     type: text

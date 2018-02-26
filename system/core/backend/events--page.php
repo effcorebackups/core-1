@@ -4,19 +4,19 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\core {
-          use const \effectivecore\br;
-          use \effectivecore\node as node;
-          use \effectivecore\table as table;
-          use \effectivecore\markup as markup;
-          use \effectivecore\module as module;
-          use \effectivecore\locale as locale;
-          use \effectivecore\storage as storage;
-          use \effectivecore\translation as translation;
-          use \effectivecore\markup_simple as markup_simple;
-          use \effectivecore\table_body_row_cell as table_body_row_cell;
-          use \effectivecore\control_actions_list as control_actions_list;
-          abstract class events_page extends \effectivecore\events_page {
+namespace effcore\modules\core {
+          use const \effcore\br;
+          use \effcore\node as node;
+          use \effcore\table as table;
+          use \effcore\markup as markup;
+          use \effcore\module as module;
+          use \effcore\locale as locale;
+          use \effcore\storage as storage;
+          use \effcore\translation as translation;
+          use \effcore\markup_simple as markup_simple;
+          use \effcore\table_body_row_cell as table_body_row_cell;
+          use \effcore\control_actions_list as control_actions_list;
+          abstract class events_page extends \effcore\events_page {
 
   static function on_show_info($page) {
     $title = new markup('h2', [], 'Shared information'); # @todo: move title to block settings

@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_field extends \effectivecore\form_container {
+namespace effcore {
+          class form_field extends \effcore\form_container {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';

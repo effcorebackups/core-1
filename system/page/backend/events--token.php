@@ -4,9 +4,9 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\page {
-          use \effectivecore\storage as storage;
-          abstract class events_token extends \effectivecore\events_token {
+namespace effcore\modules\page {
+          use \effcore\storage as storage;
+          abstract class events_token extends \effcore\events_token {
 
   static function on_color_get($match, $arg_1_num = null) {
     $settings = storage::get('files')->select('settings');

@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class pager extends \effectivecore\markup {
+namespace effcore {
+          class pager extends \effcore\markup {
 
   public $id;
   public $tag_name = 'x-pager';

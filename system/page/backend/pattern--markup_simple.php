@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class markup_simple extends \effectivecore\node_simple {
+namespace effcore {
+          class markup_simple extends \effcore\node_simple {
 
   public $tag_name = 'div';
   public $template = 'markup_html_simple';

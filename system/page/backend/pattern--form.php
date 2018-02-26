@@ -4,9 +4,9 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form extends \effectivecore\markup
-          implements \effectivecore\has_different_cache {
+namespace effcore {
+          class form extends \effcore\markup
+          implements \effcore\has_different_cache {
 
   static function get_non_different_properties() {
     return [];
@@ -50,7 +50,7 @@ namespace effectivecore {
 
   # note:
   # ─────────────────────────────────────────────────────────────────────
-  # 1. more info in \effectivecore\events_form
+  # 1. more info in \effcore\events_form
   # ─────────────────────────────────────────────────────────────────────
 
   public $tag_name = 'form';
@@ -172,7 +172,7 @@ namespace effectivecore {
   function fields_get() {
     $return = [];
     foreach ($this->child_select_all_recursive() as $c_dpath => $c_child) {
-      if ($c_child instanceof \effectivecore\form_container) {
+      if ($c_child instanceof \effcore\form_container) {
         $return[$c_dpath] = $c_child;
       }
     }

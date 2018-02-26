@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_field_select_timezone extends \effectivecore\form_field_select {
+namespace effcore {
+          class form_field_select_timezone extends \effcore\form_field_select {
 
   function build() {
     parent::build();

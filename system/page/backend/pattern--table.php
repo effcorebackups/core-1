@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class table extends \effectivecore\markup {
+namespace effcore {
+          class table extends \effcore\markup {
 
   public $tag_name = 'table';
 

@@ -4,19 +4,19 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\user {
-          use const \effectivecore\br;
-          use \effectivecore\url as url;
-          use \effectivecore\user as user;
-          use \effectivecore\page as page;
-          use \effectivecore\file as file;
-          use \effectivecore\entity as entity;
-          use \effectivecore\session as session;
-          use \effectivecore\factory as factory;
-          use \effectivecore\message as message;
-          use \effectivecore\instance as instance;
-          use \effectivecore\translation as translation;
-          abstract class events_form extends \effectivecore\events_form {
+namespace effcore\modules\user {
+          use const \effcore\br;
+          use \effcore\url as url;
+          use \effcore\user as user;
+          use \effcore\page as page;
+          use \effcore\file as file;
+          use \effcore\entity as entity;
+          use \effcore\session as session;
+          use \effcore\factory as factory;
+          use \effcore\message as message;
+          use \effcore\instance as instance;
+          use \effcore\translation as translation;
+          abstract class events_form extends \effcore\events_form {
 
   #########################
   ### form: user_delete ###

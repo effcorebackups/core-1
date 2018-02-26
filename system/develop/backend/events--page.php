@@ -4,12 +4,12 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\develop {
-          use \effectivecore\markup;
-          use \effectivecore\table as table;
-          use \effectivecore\table_body_row as table_body_row;
-          use \effectivecore\table_body_row_cell as table_body_row_cell;
-          abstract class events_page extends \effectivecore\events_page {
+namespace effcore\modules\develop {
+          use \effcore\markup;
+          use \effcore\table as table;
+          use \effcore\table_body_row as table_body_row;
+          use \effcore\table_body_row_cell as table_body_row_cell;
+          abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_demo_dynamic($page) {
   # table

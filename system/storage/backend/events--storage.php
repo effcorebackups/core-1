@@ -4,10 +4,10 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\storage {
-          use const \effectivecore\br;
-          use \effectivecore\timer as timer;
-          use \effectivecore\console as console;
+namespace effcore\modules\storage {
+          use const \effcore\br;
+          use \effcore\timer as timer;
+          use \effcore\console as console;
           abstract class events_storage {
 
   static function on_storage_init_before($storage) {

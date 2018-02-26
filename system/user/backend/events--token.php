@@ -4,11 +4,11 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\user {
-          use \effectivecore\url as url;
-          use \effectivecore\user as user;
-          use \effectivecore\instance as instance;
-          abstract class events_token extends \effectivecore\events_token {
+namespace effcore\modules\user {
+          use \effcore\url as url;
+          use \effcore\user as user;
+          use \effcore\instance as instance;
+          abstract class events_token extends \effcore\events_token {
 
   static function on_replace($match, $args = []) {
     if (!empty(user::get_current()->id)) {

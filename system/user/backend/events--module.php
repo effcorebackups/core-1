@@ -4,15 +4,15 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\user {
-          use \effectivecore\user as user;
-          use \effectivecore\entity as entity;
-          use \effectivecore\session as session;
-          use \effectivecore\factory as factory;
-          use \effectivecore\message as message;
-          use \effectivecore\instance as instance;
-          use \effectivecore\translation as translation;
-          abstract class events_module extends \effectivecore\events_module {
+namespace effcore\modules\user {
+          use \effcore\user as user;
+          use \effcore\entity as entity;
+          use \effcore\session as session;
+          use \effcore\factory as factory;
+          use \effcore\message as message;
+          use \effcore\instance as instance;
+          use \effcore\translation as translation;
+          abstract class events_module extends \effcore\events_module {
 
   static function on_start() {
     $session = session::select();

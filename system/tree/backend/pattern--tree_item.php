@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class tree_item extends \effectivecore\node {
+namespace effcore {
+          class tree_item extends \effcore\node {
 
   public $id;
   public $id_parent;

@@ -4,9 +4,9 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           class storage_files
-          implements \effectivecore\has_different_cache {
+          implements \effcore\has_different_cache {
 
   static public $data_orig;
   static public $data = [];
@@ -224,10 +224,10 @@ namespace effectivecore {
           if ($matches['value'] == '_empty_array') {
             $c_value = [];
           } else {
-            $c_class_name = $matches['value'] ? '\\effectivecore\\'.$matches['value'] : 'stdClass';
+            $c_class_name = $matches['value'] ? '\\effcore\\'.$matches['value'] : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_pc = $c_reflection->implementsInterface('\\effectivecore\\post_constructor');
-            $c_is_pi = $c_reflection->implementsInterface('\\effectivecore\\post_init');
+            $c_is_pc = $c_reflection->implementsInterface('\\effcore\\post_constructor');
+            $c_is_pi = $c_reflection->implementsInterface('\\effcore\\post_init');
             if ($c_is_pc) $c_value = factory::class_get_new_instance($c_class_name);
             else          $c_value = factory::class_get_new_instance($c_class_name, [], true);
             if ($c_is_pc) $pc_objects[] = $c_value;

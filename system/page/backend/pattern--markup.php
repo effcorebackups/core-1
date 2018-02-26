@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class markup extends \effectivecore\node {
+namespace effcore {
+          class markup extends \effcore\node {
 
   public $tag_name = 'div';
   public $template = 'markup_html';

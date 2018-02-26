@@ -4,19 +4,19 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\user {
-          use \effectivecore\url as url;
-          use \effectivecore\user as user;
-          use \effectivecore\table as table;
-          use \effectivecore\pager as pager;
-          use \effectivecore\locale as locale;
-          use \effectivecore\markup as markup;
-          use \effectivecore\entity as entity;
-          use \effectivecore\factory as factory;
-          use \effectivecore\instance as instance;
-          use \effectivecore\table_body_row_cell as table_body_row_cell;
-          use \effectivecore\control_actions_list as control_actions_list;
-          abstract class events_page extends \effectivecore\events_page {
+namespace effcore\modules\user {
+          use \effcore\url as url;
+          use \effcore\user as user;
+          use \effcore\table as table;
+          use \effcore\pager as pager;
+          use \effcore\locale as locale;
+          use \effcore\markup as markup;
+          use \effcore\entity as entity;
+          use \effcore\factory as factory;
+          use \effcore\instance as instance;
+          use \effcore\table_body_row_cell as table_body_row_cell;
+          use \effcore\control_actions_list as control_actions_list;
+          abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_roles($page) {
     $thead = [['ID', 'Title', 'Is embed']];

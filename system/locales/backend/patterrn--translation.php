@@ -4,9 +4,9 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           class translation
-          implements \effectivecore\has_different_cache {
+          implements \effcore\has_different_cache {
 
   public $code;
   public $data;

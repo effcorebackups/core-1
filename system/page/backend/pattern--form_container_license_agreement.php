@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_container_license_agreement extends \effectivecore\form_container {
+namespace effcore {
+          class form_container_license_agreement extends \effcore\form_container {
 
   public $tag_name = 'fieldset';
   public $title = 'License agreement';

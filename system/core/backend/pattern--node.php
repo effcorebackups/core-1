@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class node extends \effectivecore\node_simple {
+namespace effcore {
+          class node extends \effcore\node_simple {
 
   public $children = [];
 

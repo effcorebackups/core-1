@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           abstract class dynamic {
 
   static public $type = 'data';
@@ -35,7 +35,7 @@ namespace effectivecore {
         is_writable($file->get_path()) && $file->is_exist()) ||
                                           $file->is_exist() == false)) {
       $file->set_data(
-        '<?php'.nl.nl.'namespace effectivecore { # '.static::$type.' for '.$name.nl.nl.($info ?
+        '<?php'.nl.nl.'namespace effcore { # '.static::$type.' for '.$name.nl.nl.($info ?
            factory::data_export($info, '  '.factory::class_get_short_name(static::class).'::$info[\''.$name.'\']') : '').
            factory::data_export($data, '  '.factory::class_get_short_name(static::class).'::$data[\''.$name.'\']').nl.
         '}');

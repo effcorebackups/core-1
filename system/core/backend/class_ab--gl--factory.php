@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
+namespace effcore {
           abstract class factory {
 
   static protected $cache;
@@ -115,8 +115,8 @@ namespace effectivecore {
         $c_class_name = get_class($data);
         $c_reflection = new \ReflectionClass($c_class_name);
         $c_defs                = $c_reflection->getDefaultProperties();
-        $c_is_post_constructor = $c_reflection->implementsInterface('\\effectivecore\\post_constructor');
-        $c_is_post_init        = $c_reflection->implementsInterface('\\effectivecore\\post_init');
+        $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\post_constructor');
+        $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\post_init');
         if ($c_is_post_constructor) $return = $prefix.' = factory::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else                        $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {

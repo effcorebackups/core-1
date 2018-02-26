@@ -4,12 +4,12 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\page {
-          use \effectivecore\page as page;
-          use \effectivecore\entity as entity;
-          use \effectivecore\message as message;
-          use \effectivecore\translation as translation;
-          abstract class events_module extends \effectivecore\events_module {
+namespace effcore\modules\page {
+          use \effcore\page as page;
+          use \effcore\entity as entity;
+          use \effcore\message as message;
+          use \effcore\translation as translation;
+          abstract class events_module extends \effcore\events_module {
 
   static function on_start() {
     return page::find_and_render();

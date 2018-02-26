@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_container_checkboxes extends \effectivecore\form_container {
+namespace effcore {
+          class form_container_checkboxes extends \effcore\form_container {
 
   public $field_tag_name = 'x-field';
   public $field_title_tag_name = 'label';

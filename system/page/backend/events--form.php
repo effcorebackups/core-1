@@ -4,10 +4,10 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore\modules\page {
-          use \effectivecore\message as message;
-          use \effectivecore\storage as storage;
-          abstract class events_form extends \effectivecore\events_form {
+namespace effcore\modules\page {
+          use \effcore\message as message;
+          use \effcore\storage as storage;
+          abstract class events_form extends \effcore\events_form {
 
   ########################
   ### form: decoration ###

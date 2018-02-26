@@ -2,16 +2,16 @@ events
   on_storage_init_before
   - pdo|event
       for: pdo
-      handler: \effectivecore\modules\storage\events_storage::on_storage_init_before
+      handler: \effcore\modules\storage\events_storage::on_storage_init_before
   on_storage_init_after
   - pdo|event
       for: pdo
-      handler: \effectivecore\modules\storage\events_storage::on_storage_init_after
+      handler: \effcore\modules\storage\events_storage::on_storage_init_after
   on_query_before
   - pdo|event
       for: pdo
-      handler: \effectivecore\modules\storage\events_storage::on_query_before
+      handler: \effcore\modules\storage\events_storage::on_query_before
   on_query_after
   - pdo|event
       for: pdo
-      handler: \effectivecore\modules\storage\events_storage::on_query_after
+      handler: \effcore\modules\storage\events_storage::on_query_after

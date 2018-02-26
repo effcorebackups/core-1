@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class canvas_svg extends \effectivecore\node_simple {
+namespace effcore {
+          class canvas_svg extends \effcore\node_simple {
 
   public $template = 'canvas_svg';
   public $w;

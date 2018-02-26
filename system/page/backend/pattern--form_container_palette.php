@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class form_container_palette extends \effectivecore\form_container_radios {
+namespace effcore {
+          class form_container_palette extends \effcore\form_container_radios {
 
   function build() {
     $this->attribute_insert('class', ['palette' => 'palette']);

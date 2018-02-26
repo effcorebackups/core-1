@@ -19,17 +19,17 @@ pages
     - block_menu_user
         region: head_2
         type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_menu_user
+        handler: \effcore\modules\core\events_page::on_show_block_menu_user
     - block_logo
         region: head_3
         type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_logo
+        handler: \effcore\modules\core\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: main_1
         type: code
-        handler: \effectivecore\modules\core\events_page::on_show_block_title
+        handler: \effcore\modules\core\events_page::on_show_block_title
     - block_user_info
         region: main_1
         type: code
-        handler: \effectivecore\modules\user\events_page::on_show_block_user_info
+        handler: \effcore\modules\user\events_page::on_show_block_user_info

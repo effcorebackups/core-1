@@ -4,8 +4,8 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effectivecore {
-          class control_actions_list extends \effectivecore\markup {
+namespace effcore {
+          class control_actions_list extends \effcore\markup {
 
   public $tag_name = 'x-actions-control';
   public $title = null;
