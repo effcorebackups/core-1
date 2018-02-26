@@ -13,6 +13,7 @@ namespace effectivecore\modules\core {
           use \effectivecore\locale as locale;
           use \effectivecore\storage as storage;
           use \effectivecore\translation as translation;
+          use \effectivecore\markup_simple as markup_simple;
           use \effectivecore\table_body_row_cell as table_body_row_cell;
           use \effectivecore\control_actions_list as control_actions_list;
           abstract class events_page extends \effectivecore\events_page {
@@ -20,8 +21,9 @@ namespace effectivecore\modules\core {
   static function on_show_info($page) {
     $title = new markup('h2', [], 'Shared information'); # @todo: move title to block settings
     $info = new markup('dl', ['class' => ['info' => 'info']]);
-    $info->child_insert(new markup('dt', [], 'System name'));
-    $info->child_insert(new markup('dd', [], 'effcore'));
+    $logo_effcore = new markup_simple('img', ['src' => '/system/page/frontend/logo-effcore.svg', 'alt' => 'effcore']);
+    $info->child_insert(new markup('dt', [], 'System'));
+    $info->child_insert(new markup('dd', [], $logo_effcore));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
     $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/global/build')));
     $info->child_insert(new markup('dt', [], 'Author'));
