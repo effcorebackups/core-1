@@ -5,12 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class test {
+          class test
+          implements \effcore\has_different_cache {
 
   public $id;
   public $https = false;
   public $url = null;
   public $id_user = 0;
+
+  static function get_non_different_properties() {
+    return ['id' => 'id'];
+  }
 
   ######################
   ### static methods ###
