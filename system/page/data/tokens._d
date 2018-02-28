@@ -34,12 +34,12 @@ tokens
 - color_ok
     match: %%_color_ok
     type: text
-    value: limegreen
+    value: #30c432
 - color_error
     match: %%_color_error
     type: text
-    value: tomato
+    value: #fc5740
 - color_warning
     match: %%_color_warning
     type: text
-    value: orange
+    value: #fd9a1e
