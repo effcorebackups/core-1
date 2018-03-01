@@ -4,6 +4,11 @@ file_types
     protected: 1
     headers
     - Content-type: text/html
+- shell_script
+    type: sh
+    protected: 1
+    headers
+    - Content-type: text/html
 - styles
     type: css
     headers

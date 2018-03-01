@@ -31,25 +31,30 @@ namespace effcore {
       $classes_map = [];
       $files = file::select_all_recursive(dir_system, '%^.*\.php$%');
       foreach ($files as $c_file) {
-        $matches = [];
-        preg_match('%namespace (?<namespace>[a-z0-9_\\\\]+).*?'.
-                              '(?<type>class|trait|interface)\\s*'.
-                              '(?<name>[a-z0-9_]+)\\s*'.
-                   '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
-                '(?:implements (?<implements>[a-z0-9_,\\\\ ]+)|)%isS', $c_file->load(), $matches);
-        if (!empty($matches['namespace']) &&
-            !empty($matches['name'])) {
-          $c_info = new \stdClass();
-          $c_info->type      = $matches['type'];
-          $c_info->namespace = $matches['namespace'];
-          $c_info->name      = $matches['name'];
-          if (!empty($matches['extends']))    $c_info->extends    = trim($matches['extends']);
-          if (!empty($matches['implements'])) $c_info->implements = static::array_values_map_to_keys(explode(', ', trim($matches['implements'])));
-          $c_info->file = $c_file->get_path_relative();
-          $classes_map[$matches['namespace'].'\\'.
-                       $matches['name']] = $c_info;
+        $c_matches = [];
+        preg_match_all('%namespace (?<namespace>[a-z0-9_\\\\]+)\\s*{\\s*'.
+                                  '(?<dependencies>[a-z0-9_=*;.\'"\\s\\\\]+?|)'.
+                                  '(?<is_abstract>abstract|)\\s*'.
+                                  '(?<type>class|trait|interface)\\s*'.
+                                  '(?<name>[a-z0-9_]+)\\s*'.
+                       '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
+                    '(?:implements (?<implements>[a-z0-9_,\\\\ ]+)|)%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
+        foreach ($c_matches as $c_match) {
+          if (!empty($c_match['namespace']) &&
+              !empty($c_match['name'])) {
+            $c_info = new \stdClass();
+            $c_info->type      = $c_match['type'];
+            $c_info->namespace = $c_match['namespace'];
+            $c_info->name      = $c_match['name'];
+            if (!empty($c_match['extends']))    $c_info->extends    = trim($c_match['extends']);
+            if (!empty($c_match['implements'])) $c_info->implements = static::array_values_map_to_keys(explode(', ', trim($c_match['implements'])));
+            $c_info->file = $c_file->get_path_relative();
+            $classes_map[$c_match['namespace'].'\\'.
+                         $c_match['name']] = $c_info;
+          }
         }
       }
+
       cache::update('classes_map', $classes_map, ['build' => static::datetime_get()]);
       return $classes_map;
     }
