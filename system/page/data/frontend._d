@@ -42,14 +42,14 @@ frontend
         sizes: 192x192
     styles
     - style_page
-        file: frontend/page.css
+        file: frontend/page._style
         media: all
     - style_console
-        file: frontend/console.css
+        file: frontend/console._style
         media: all
     script
     - script_page
-        file: frontend/page.js
+        file: frontend/page._script
 - frontend_form_n
     display
       check: dpath
@@ -57,8 +57,8 @@ frontend
       where: block
     styles
     - style_form
-        file: frontend/form.css
+        file: frontend/form._style
         media: all
     script
     - script_form
-        file: frontend/form.js
+        file: frontend/form._script

@@ -28,5 +28,5 @@
   x-tree.main > ul > li:hover > ul {display: block}
 
   /* menu Main: icons */
-  x-tree.main a.admin   {padding-left: 64px; background: url('tree-icons.svg') no-repeat 0 -64px}
-  x-tree.main a.develop {padding-left: 64px; background: url('tree-icons.svg') no-repeat 0 -128px}
+  x-tree.main a.admin   {padding-left: 64px; background: url('tree-icons._vector') no-repeat 0 -64px}
+  x-tree.main a.develop {padding-left: 64px; background: url('tree-icons._vector') no-repeat 0 -128px}

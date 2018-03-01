@@ -6,5 +6,5 @@ frontend
       where: block
     styles
     - style_tree
-        file: frontend/tree.css
+        file: frontend/tree._style
         media: all

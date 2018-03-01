@@ -6,22 +6,28 @@ file_types
     - Content-type: text/html
 - styles
     type: css
+    headers
+    - Content-type: text/css
+- styles_dynamic
+    type: _style
     use_tokens: 1
     headers
     - Content-type: text/css
 - javascript
     type: js
+    headers
+    - Content-type: text/javascript
+- javascript_dynamic
+    type: _script
     use_tokens: 1
     headers
     - Content-type: text/javascript
 - markup_html
     type: html
-    use_tokens: 1
     headers
     - Content-type: text/html
 - markup_xml
     type: xml
-    use_tokens: 1
     headers
     - Content-type: text/xml
 - text
@@ -34,6 +40,10 @@ file_types
     - Content-type: image/*
 - image_svg
     type: svg
+    headers
+    - Content-type: image/svg+xml
+- image_svg_dynamic
+    type: _vector
     use_tokens: 1
     headers
     - Content-type: image/svg+xml
