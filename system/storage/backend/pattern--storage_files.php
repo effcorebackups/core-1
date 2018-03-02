@@ -247,7 +247,7 @@ namespace effcore {
         message::insert(implode(br, $messages), 'error');
       }
     }
-  # call required functions
+  # call the interface dependent functions
     foreach ($pc_objects as $c_object) $c_object->__construct();
     foreach ($pi_objects as $c_object) $c_object->init();
     return $return;

@@ -35,7 +35,7 @@ namespace effcore {
   function input_insert($title = null, $attr = [], $new_id = null) {
     $input = new markup_simple('input', ['type' => $this->input_tag_name] + $attr + $this->attribute_select('', 'input_attributes'));
     $value = $input->attribute_select('value');
-    if (isset($this->required[$value]) || !empty($this->attribute_select('required'))) $input->attribute_insert('required', 'required');
+    if (isset($this->required[$value])) $input->attribute_insert('required', 'required');
     if (isset($this->disabled[$value])) $input->attribute_insert('disabled', 'disabled');
     if (isset($this->checked[$value]))  $input->attribute_insert('checked', 'checked');
     $field = new form_field( $this->field_tag_name, $title );
@@ -61,10 +61,6 @@ namespace effcore {
         return $c_input->attribute_select('value');
       }
     }
-  }
-
-  function render_required_mark() {
-    return '';
   }
 
 }}
