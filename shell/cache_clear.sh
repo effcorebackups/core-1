@@ -1,2 +1,1 @@
-
-rm ../dynamic/cache/*.php
+rm -f ../dynamic/cache/*.php
