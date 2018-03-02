@@ -1,0 +1,2 @@
+
+rm ../dynamic/cache/*.php
