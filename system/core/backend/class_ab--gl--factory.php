@@ -33,9 +33,9 @@ namespace effcore {
       foreach ($files as $c_file) {
         $c_matches = [];
         preg_match_all('%namespace (?<namespace>[a-z0-9_\\\\]+)\\s*{\\s*'.
-                                  '(?<dependencies>[a-z0-9_=*;.\'"\\s\\\\]+?|)'.
+                                  '(?<dependencies>.*?|)'.
                                   '(?<is_abstract>abstract|)\\s*'.
-                                  '(?<type>class|trait|interface)\\s*'.
+                                  '(?<type>class|trait|interface)\\s+'.
                                   '(?<name>[a-z0-9_]+)\\s*'.
                        '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
                     '(?:implements (?<implements>[a-z0-9_,\\\\ ]+)|)%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
