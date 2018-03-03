@@ -11,6 +11,10 @@ namespace effcore\modules\develop {
           use \effcore\table_body_row_cell as table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
 
+  static function on_show_block_classes($page) {
+    return new table(['class' => ['classes' => 'classes']], [['UNDER CONSTRUCTION']]);
+  }
+
   static function on_show_block_demo_dynamic($page) {
   # table
     $thead = [['th 1', 'th 2', 'th 3']];

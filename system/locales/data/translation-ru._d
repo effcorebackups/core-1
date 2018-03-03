@@ -36,6 +36,7 @@ translations
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Checkboxes (macro): Флажки (макро)
     - Checkboxes: Флажки
+    - Classes: Классы
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
     - Colors: Цвета

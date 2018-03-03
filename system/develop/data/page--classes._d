@@ -1,0 +1,32 @@
+pages
+- classes|page
+    title: Classes
+    https: true
+    display
+      check: url
+      match: %^/develop/classes$%
+    access
+      roles
+      - admins: admins
+    content
+    - block_menu_main
+        region: main_menu
+        type: link
+        dpath: trees/core/main
+    - block_menu_user
+        region: head_2
+        type: code
+        handler: \effcore\modules\core\events_page::on_show_block_menu_user
+    - block_logo
+        region: head_3
+        type: code
+        handler: \effcore\modules\core\events_page::on_show_block_logo
+    # ─────────────────────────────────────────────────────────────────────
+    - block_title
+        region: main_1
+        type: code
+        handler: \effcore\modules\core\events_page::on_show_block_title
+    - block_classes
+        region: main_1
+        type: code
+        handler: \effcore\modules\develop\events_page::on_show_block_classes

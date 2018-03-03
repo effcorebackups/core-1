@@ -21,3 +21,14 @@ tree_items
     - href: /develop/demo
     - class
       - demo: demo
+- classes|tree_item
+    id: classes
+    id_parent: develop
+    title: Classes
+    access
+      roles
+      - admins: admins
+    attributes
+    - href: /develop/classes
+    - class
+      - classes: classes
