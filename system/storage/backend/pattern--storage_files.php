@@ -82,10 +82,10 @@ namespace effcore {
 
   static function data_find_static() {
     $return = [];
-    $files = file::select_all_recursive(dir_system, '%^.*\._d$%');
+    $files = file::select_all_recursive(dir_system, '%^.*\._data$%');
     $modules_path = [];
     foreach ($files as $c_file) {
-      if ($c_file->get_file() == 'module._d') {
+      if ($c_file->get_file() == 'module._data') {
         $modules_path[$c_file->get_name_parent()] = $c_file->get_dirs_relative();
       }
     }

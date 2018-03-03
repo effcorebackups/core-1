@@ -1,9 +1,0 @@
-file_types
-- db_files
-    type: _d
-    protected: 1
-    headers
-    - Content-type: text/data
-- db_sqlite
-    type: sqlite
-    protected: 1

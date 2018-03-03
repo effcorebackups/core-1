@@ -49,7 +49,7 @@ namespace effcore {
   # case for protected files
     if (!empty($file_types[$extension]->protected)) {
       factory::send_header_and_exit('access_denided', '',
-        translation::get('file of this type is protected by: %%_name', ['name' => 'file_types._d']).br.br.
+        translation::get('file of this type is protected by: %%_name', ['name' => 'file_types._data']).br.br.
         translation::get('go to <a href="/">front page</a>')
       );
     }

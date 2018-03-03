@@ -1,0 +1,11 @@
+file_types
+- db_files
+    type: _data
+    protected: 1
+    headers
+    - Content-type: text/html
+- db_sqlite
+    type: sqlite
+    protected: 1
+    headers
+    - Content-type: text/html
