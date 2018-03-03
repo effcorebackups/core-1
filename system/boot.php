@@ -38,46 +38,52 @@ namespace effcore {
   # 6. url /file.type/ | is wrong notation - redirect to /file.type
   # ─────────────────────────────────────────────────────────────────────
 
-  if (            url::get_current()->path != '/' &&
-           substr(url::get_current()->path, -1) == '/') {
-    url::go(rtrim(url::get_current()->path, '/'));
+  if (             url::get_current()->path != '/' &&
+            substr(url::get_current()->path, -1) == '/') {
+    url::go(substr(url::get_current()->path, 0, -1));
   }
 
-  $file_types = file::get_file_types();
-  $extension = url::get_current()->get_extension();
-  if ($extension) {
-  # case for protected files
-    if (!empty($file_types[$extension]->protected)) {
+  $type = url::get_current()->get_type();
+  if ($type) {
+    $file_types = file::get_file_types();
+  # case for protected file
+    if (!empty($file_types[$type]->protected)) {
       factory::send_header_and_exit('access_denided', '',
         translation::get('file of this type is protected by: %%_name', ['name' => 'file_types._data']).br.br.
         translation::get('go to <a href="/">front page</a>')
       );
     }
-  # case for media files
     $path = dir_root.ltrim(url::get_current()->path, '/');
     if (is_file($path) && is_readable($path)) {
-      $file = new file($path);
-      $data = $file->load();
-    # replace tokens
-      if (!empty($file_types[$extension]->use_tokens)) {
-        $data = token::replace($data);
-      }
-    # if get header HTTP_IF_NONE_MATCH
-      $etag = base64_encode(md5($data, true));
-      if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
-                $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
-        header('HTTP/1.1 304 Not Modified');
+    # case for file with tokens
+      if (!empty($file_types[$type]->use_tokens)) {    
+        $file = new file($path);
+        $data = token::replace($file->load());
+      # send header "304 Not Modified" to the output buffer if HTTP_IF_NONE_MATCH header is received
+        $etag = base64_encode(md5($data, true));
+        if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
+                  $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
+          header('HTTP/1.1 304 Not Modified');
+          exit();
+        }
+      # send headers and data to the output buffer
+        header('Cache-Control: must-revalidate, private', true);
+        header('Etag: '.$etag, true);
+        if (!empty($file_types[$type]->headers)) {
+          foreach ($file_types[$type]->headers as $c_key => $c_value) {
+            header($c_key.': '.$c_value, true);
+          }
+        }
+        print $data;
         exit();
       }
-    # send headers
-      header('Cache-Control: must-revalidate, private', true);
-      header('Etag: '.$etag, true);
-      if (!empty($file_types[$extension]->headers)) {
-        foreach ($file_types[$extension]->headers as $c_key => $c_value) {
+    # case for any other file (and for large files too)
+      if (!empty($file_types[$type]->headers)) {
+        foreach ($file_types[$type]->headers as $c_key => $c_value) {
           header($c_key.': '.$c_value, true);
         }
       }
-      print $data;
+      readfile($path);
       exit();
     }
   }
