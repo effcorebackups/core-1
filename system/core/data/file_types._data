@@ -11,6 +11,9 @@ file_types
 - markdown_protected
     type: _mark
     protected: 1
+- template
+    type: _template
+    protected: 1
 # ─────────────────────────────────────────────────────────────────────
 # with tokens
 # ─────────────────────────────────────────────────────────────────────
