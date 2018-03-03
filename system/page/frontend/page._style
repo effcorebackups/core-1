@@ -10,7 +10,8 @@
     background: white}
 
   /* page sizes */
-  x-grid {display: block; max-width: 800px; margin: 18px auto 0 auto; min-height: 200px}
+  x-head {display: block; max-width: 800px; margin: 18px auto 0 auto}
+  x-body {display: block; max-width: 800px; margin: 0 auto; min-height: 200px}
 
   /* headers */
   h1 {margin: 4em auto 5em auto; font-size: 2em;   line-height: 1.5em; font-weight: normal; display: block; max-width: 800px}
@@ -26,16 +27,16 @@
   .hidden {display: none}
 
   /* table */
-  x-grid table {border-collapse: collapse; width: 100%; margin: 20px 0}
-  x-grid table thead {border-bottom: 5px solid %%_color_bg}
-  x-grid table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
-  x-grid table tbody {background: white}
-  x-grid table td {padding: 12px 15px}
-  x-grid table tr:nth-child(even) td {background-color: %%_color_table_even_bg}
-  x-grid table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_border}
-  x-grid table tr td:empty {color: %%_color_table_noitems}
-  x-grid table tr td:empty:after {content: "%%_text_no_items"}
-  x-grid table td.actions {font-size: .85em; vertical-align: top; text-align: right}
+  x-body table {border-collapse: collapse; width: 100%; margin: 20px 0}
+  x-body table thead {border-bottom: 5px solid %%_color_bg}
+  x-body table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
+  x-body table tbody {background: white}
+  x-body table td {padding: 12px 15px}
+  x-body table tr:nth-child(even) td {background-color: %%_color_table_even_bg}
+  x-body table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_border}
+  x-body table tr td:empty {color: %%_color_table_noitems}
+  x-body table tr td:empty:after {content: "%%_text_no_items"}
+  x-body table td.actions {font-size: .85em; vertical-align: top; text-align: right}
 
   /* messages */
   x-messages {display: block; margin: 50px auto}

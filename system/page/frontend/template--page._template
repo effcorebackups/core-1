@@ -10,21 +10,14 @@
 
     %%_main_menu
 
-    <x-grid>
-      %%_head_1
-      %%_head_2
-      %%_head_3
+    <x-head>
+      %%_head
+    </x-head>
+
+    <x-body>
       %%_messages
-      %%_main_1
-      %%_main_2
-      %%_main_3
-      %%_main_4
-      %%_main_5
-      %%_main_6
-      %%_main_7
-      %%_main_8
-      %%_main_9
-    </x-grid>
+      %%_content
+    </x-body>
 
     %%_console
 

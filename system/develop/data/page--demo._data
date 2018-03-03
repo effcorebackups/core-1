@@ -14,27 +14,27 @@ pages
         type: link
         dpath: trees/core/main
     - block_menu_user
-        region: head_2
+        region: head
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_menu_user
     - block_logo
-        region: head_3
+        region: head
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
-        region: main_1
+        region: content
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_title
     - form_demo
-        region: main_1
+        region: content
         type: link
         dpath: forms/develop/demo
     - block_demo_static
-        region: main_1
+        region: content
         type: link
         dpath: blocks/develop/demo
     - block_demo_dynamic
-        region: main_1
+        region: content
         type: code
         handler: \effcore\modules\develop\events_page::on_show_block_demo_dynamic

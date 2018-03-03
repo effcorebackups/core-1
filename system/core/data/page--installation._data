@@ -14,19 +14,19 @@ pages
         type: link
         dpath: trees/core/main
     - block_menu_user
-        region: head_2
+        region: head
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_menu_user
     - block_logo
-        region: head_3
+        region: head
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
-        region: main_1
+        region: content
         type: code
         handler: \effcore\modules\core\events_page::on_show_block_title
     - form_install
-        region: main_1
+        region: content
         type: link
         dpath: forms/core/install
