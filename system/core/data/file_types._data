@@ -2,32 +2,32 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # protected
 # ─────────────────────────────────────────────────────────────────────
-- code_php
+- php
     type: php
     protected: 1
-- shell_script
+- sh
     type: sh
     protected: 1
-- markdown_protected
+- _mark
     type: _mark
     protected: 1
-- template
+- _template
     type: _template
     protected: 1
 # ─────────────────────────────────────────────────────────────────────
 # with tokens
 # ─────────────────────────────────────────────────────────────────────
-- styles_dynamic
+- _style
     type: _style
     use_tokens: 1
     headers
     - Content-type: text/css
-- image_svg_dynamic
+- _vector
     type: _vector
     use_tokens: 1
     headers
     - Content-type: image/svg+xml
-- javascript_dynamic
+- _script
     type: _script
     use_tokens: 1
     headers
@@ -35,51 +35,51 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
-- styles
+- css
     type: css
     headers
     - Content-type: text/css
-- javascript
+- js
     type: js
     headers
     - Content-type: text/javascript
-- markup_html
+- html
     type: html
     headers
     - Content-type: text/html
-- markup_xml
+- xml
     type: xml
     headers
     - Content-type: text/xml
-- text
+- txt
     type: txt
     headers
     - Content-type: text/plain
-- markdown
+- md
     type: md
     headers
     - Content-type: text/markdown
-- image_generic
+- image
     type: image
     headers
     - Content-type: image/*
-- image_svg
+- svg
     type: svg
     headers
     - Content-type: image/svg+xml
-- image_ico
+- ico
     type: ico
     headers
     - Content-type: image/x-icon
-- image_gif
+- gif
     type: gif
     headers
     - Content-type: image/gif
-- image_jpg
+- jpg
     type: jpg
     headers
     - Content-type: image/jpeg
-- image_png
+- png
     type: png
     headers
     - Content-type: image/png

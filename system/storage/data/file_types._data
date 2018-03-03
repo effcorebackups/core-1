@@ -2,9 +2,9 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # protected
 # ─────────────────────────────────────────────────────────────────────
-- db_files
+- _data
     type: _data
     protected: 1
-- db_sqlite
+- sqlite
     type: sqlite
     protected: 1
