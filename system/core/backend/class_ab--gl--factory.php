@@ -32,7 +32,7 @@ namespace effcore {
       $files = file::select_all_recursive(dir_system, '%^.*\.php$%');
       foreach ($files as $c_file) {
         $c_matches = [];
-        preg_match_all('%namespace (?<namespace>[a-z0-9_\\\\]+)\\s*{\\s*'.
+        preg_match_all('%namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*'.
                                   '(?<dependencies>.*?|)'.
                                   '(?<is_abstract>abstract|)\\s*'.
                                   '(?<type>class|trait|interface)\\s+'.
