@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\page {
-          use \effcore\message as message;
-          use \effcore\storage as storage;
+          use \effcore\message;
+          use \effcore\storage;
           abstract class events_form extends \effcore\events_form {
 
   ########################

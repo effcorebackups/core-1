@@ -79,7 +79,10 @@
   x-pager {display: block; margin: 30px 0; text-align: center}
   x-pager a {display: inline-block; padding: 3px}
 
-  /* license agreement */  
+  /* license agreement */
   x-license h1 {margin: 0 0 1em 0; font-size: 1.5em; line-height: 1.2em}
   x-license h2 {margin: 2em 0 1em 0; font-size: 1.2em}
+
+  /* class list */
+  .classes-list {font-size: .9em}
 

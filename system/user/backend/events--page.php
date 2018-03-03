@@ -5,17 +5,17 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\url as url;
-          use \effcore\user as user;
-          use \effcore\table as table;
-          use \effcore\pager as pager;
-          use \effcore\locale as locale;
-          use \effcore\markup as markup;
-          use \effcore\entity as entity;
-          use \effcore\factory as factory;
-          use \effcore\instance as instance;
-          use \effcore\table_body_row_cell as table_body_row_cell;
-          use \effcore\control_actions_list as control_actions_list;
+          use \effcore\url;
+          use \effcore\user;
+          use \effcore\table;
+          use \effcore\pager;
+          use \effcore\locale;
+          use \effcore\markup;
+          use \effcore\entity;
+          use \effcore\factory;
+          use \effcore\instance;
+          use \effcore\table_body_row_cell;
+          use \effcore\control_actions_list;
           abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_roles($page) {

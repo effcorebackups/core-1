@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\page {
-          use \effcore\storage as storage;
+          use \effcore\storage;
           abstract class events_token extends \effcore\events_token {
 
   static function on_color_get($match, $arg_1_num = null) {

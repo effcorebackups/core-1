@@ -5,10 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\tree {
-          use \effcore\tree as tree;
-          use \effcore\entity as entity;
-          use \effcore\message as message;
-          use \effcore\translation as translation;
+          use \effcore\tree;
+          use \effcore\entity;
+          use \effcore\message;
+          use \effcore\translation;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

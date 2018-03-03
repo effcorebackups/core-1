@@ -6,14 +6,14 @@
 
 namespace effcore\modules\develop {
           use const \effcore\br;
-          use \effcore\markup as markup;
+          use \effcore\markup;
           abstract class demo_class_1 extends \effcore\factory {
 
 }}
 
 namespace effcore\modules\develop {
           use const \effcore\nl;
-          use \effcore\locale as locale;
+          use \effcore\locale;
           abstract class demo_class_2 extends \effcore\factory {
 
 }}

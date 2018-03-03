@@ -5,13 +5,13 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\user as user;
-          use \effcore\entity as entity;
-          use \effcore\session as session;
-          use \effcore\factory as factory;
-          use \effcore\message as message;
-          use \effcore\instance as instance;
-          use \effcore\translation as translation;
+          use \effcore\user;
+          use \effcore\entity;
+          use \effcore\session;
+          use \effcore\factory;
+          use \effcore\message;
+          use \effcore\instance;
+          use \effcore\translation;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

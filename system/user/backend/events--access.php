@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\user as user;
-          use \effcore\factory as factory;
-          use \effcore\instance as instance;
+          use \effcore\user;
+          use \effcore\factory;
+          use \effcore\instance;
           abstract class events_access extends \effcore\events_access {
 
   static function on_check_access_user_delete($page, $id) {

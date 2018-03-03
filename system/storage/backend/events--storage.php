@@ -6,8 +6,8 @@
 
 namespace effcore\modules\storage {
           use const \effcore\br;
-          use \effcore\timer as timer;
-          use \effcore\console as console;
+          use \effcore\timer;
+          use \effcore\console;
           abstract class events_storage {
 
   static function on_storage_init_before($storage) {

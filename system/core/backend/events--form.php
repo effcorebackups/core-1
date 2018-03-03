@@ -6,11 +6,11 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
-          use \effcore\url as url;
-          use \effcore\event as event;
-          use \effcore\message as message;
-          use \effcore\storage as storage;
-          use \effcore\translation as translation;
+          use \effcore\url;
+          use \effcore\event;
+          use \effcore\message;
+          use \effcore\storage;
+          use \effcore\translation;
           abstract class events_form extends \effcore\events_form {
 
   #####################
