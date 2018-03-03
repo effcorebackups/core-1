@@ -1,26 +1,43 @@
 file_types
+# ─────────────────────────────────────────────────────────────────────
+# protected
+# ─────────────────────────────────────────────────────────────────────
 - code_php
     type: php
     protected: 1
 - shell_script
     type: sh
     protected: 1
-- styles
-    type: css
-    headers
-    - Content-type: text/css
+- markdown_protected
+    type: _mark
+    protected: 1
+# ─────────────────────────────────────────────────────────────────────
+# with tokens
+# ─────────────────────────────────────────────────────────────────────
 - styles_dynamic
     type: _style
     use_tokens: 1
     headers
     - Content-type: text/css
-- javascript
-    type: js
+- image_svg_dynamic
+    type: _vector
+    use_tokens: 1
     headers
-    - Content-type: text/javascript
+    - Content-type: image/svg+xml
 - javascript_dynamic
     type: _script
     use_tokens: 1
+    headers
+    - Content-type: text/javascript
+# ─────────────────────────────────────────────────────────────────────
+# other types
+# ─────────────────────────────────────────────────────────────────────
+- styles
+    type: css
+    headers
+    - Content-type: text/css
+- javascript
+    type: js
     headers
     - Content-type: text/javascript
 - markup_html
@@ -35,7 +52,7 @@ file_types
     type: txt
     headers
     - Content-type: text/plain
-- md
+- markdown
     type: md
     headers
     - Content-type: text/markdown
@@ -45,11 +62,6 @@ file_types
     - Content-type: image/*
 - image_svg
     type: svg
-    headers
-    - Content-type: image/svg+xml
-- image_svg_dynamic
-    type: _vector
-    use_tokens: 1
     headers
     - Content-type: image/svg+xml
 - image_ico
