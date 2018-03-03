@@ -35,51 +35,211 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
+- 7z
+    type: 7z
+    headers
+    - Content-type: application/x-7z-compressed
+- aiff
+    type: aiff
+    headers
+    - Content-type: audio/aiff
+- avi
+    type: avi
+    headers
+    - Content-type: video/avi
+- bz
+    type: bz
+    headers
+    - Content-type: application/x-bzip
+- bz2
+    type: bz2
+    headers
+    - Content-type: application/x-bzip2
 - css
     type: css
     headers
     - Content-type: text/css
-- js
-    type: js
+- doc
+    type: doc
     headers
-    - Content-type: text/javascript
-- html
-    type: html
+    - Content-type: application/msword
+- docx
+    type: docx
     headers
-    - Content-type: text/html
-- xml
-    type: xml
+    - Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+- eot
+    type: eot
     headers
-    - Content-type: text/xml
-- txt
-    type: txt
+    - Content-type: application/vnd.ms-fontobject
+- flv
+    type: flv
     headers
-    - Content-type: text/plain
-- md
-    type: md
-    headers
-    - Content-type: text/markdown
-- image
-    type: image
-    headers
-    - Content-type: image/*
-- svg
-    type: svg
-    headers
-    - Content-type: image/svg+xml
-- ico
-    type: ico
-    headers
-    - Content-type: image/x-icon
+    - Content-type: video/x-flv
 - gif
     type: gif
     headers
     - Content-type: image/gif
+- gz
+    type: gz
+    headers
+    - Content-type: application/x-compressed
+- gzip
+    type: gzip
+    headers
+    - Content-type: application/x-gzip
+- html
+    type: html
+    headers
+    - Content-type: text/html
+- ico
+    type: ico
+    headers
+    - Content-type: image/x-icon
+- image
+    type: image
+    headers
+    - Content-type: image/*
+- jpeg
+    type: jpeg
+    headers
+    - Content-type: image/jpeg
 - jpg
     type: jpg
     headers
     - Content-type: image/jpeg
+- js
+    type: js
+    headers
+    - Content-type: text/javascript
+- midi
+    type: midi
+    headers
+    - Content-type: audio/midi
+- md
+    type: md
+    headers
+    - Content-type: text/markdown
+- mp3
+    type: mp3
+    headers
+    - Content-type: audio/mp3
+- mp4
+    type: mp4
+    headers
+    - Content-type: audio/mp4
+- mpeg
+    type: mpeg
+    headers
+    - Content-type: video/mp4
+- mpg
+    type: mpg
+    headers
+    - Content-type: video/mp4
+- ogg
+    type: ogg
+    headers
+    - Content-type: audio/ogg
+- otf
+    type: otf
+    headers
+    - Content-type: application/x-font-opentype
+- pdf
+    type: pdf
+    headers
+    - Content-type: application/pdf
+- pkg
+    type: pkg
+    headers
+    - Content-type: application/x-newton-compatible-pkg
 - png
     type: png
     headers
     - Content-type: image/png
+- psd
+    type: psd
+    headers
+    - Content-type: application/octet-stream
+- ppt
+    type: ppt
+    headers
+    - Content-type: application/vnd.ms-powerpoint
+- pptx
+    type: pptx
+    headers
+    - Content-type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+- rar
+    type: rar
+    headers
+    - Content-type: application/x-rar-compressed
+- sfnt
+    type: sfnt
+    headers
+    - Content-type: application/font-sfnt
+- svg
+    type: svg
+    headers
+    - Content-type: image/svg+xml
+- swf
+    type: swf
+    headers
+    - Content-type: application/x-shockwave-flash
+- tar
+    type: tar
+    headers
+    - Content-type: application/x-tar
+- tgz
+    type: tgz
+    headers
+    - Content-type: application/x-compressed
+- tiff
+    type: tiff
+    headers
+    - Content-type: image/tiff
+- ttf
+    type: ttf
+    headers
+    - Content-type: application/x-font-ttf
+- txt
+    type: txt
+    headers
+    - Content-type: text/plain
+- wav
+    type: wav
+    headers
+    - Content-type: audio/wav
+- webm
+    type: webm
+    headers
+    - Content-type: video/webm
+- wma
+    type: wma
+    headers
+    - Content-type: audio/x-ms-wma
+- wmv
+    type: wmv
+    headers
+    - Content-type: video/x-ms-wmv
+- woff
+    type: woff
+    headers
+    - Content-type: application/font-woff
+- woff2
+    type: 7z
+    headers
+    - Content-type: application/font-woff2
+- xls
+    type: xls
+    headers
+    - Content-type: application/vnd.ms-excel
+- xlsx
+    type: xlsx
+    headers
+    - Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- xml
+    type: xml
+    headers
+    - Content-type: text/xml
+- zip
+    type: zip
+    headers
+    - Content-type: application/x-zip-compressed
