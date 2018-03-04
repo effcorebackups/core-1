@@ -53,7 +53,7 @@ file_types
 - avi
     type: avi
     headers
-    - Content-type: video/avi
+    - Content-type: video/x-msvideo
 - bz
     type: bz
     headers
@@ -122,6 +122,10 @@ file_types
     type: js
     headers
     - Content-type: text/javascript
+- keynote
+    type: keynote
+    headers
+    - Content-type: application/x-iwork-keynote-sffkey
 - m4a
     type: m4a
     headers
@@ -130,10 +134,18 @@ file_types
     type: midi
     headers
     - Content-type: audio/midi
+- mkv
+    type: mkv
+    headers
+    - Content-type: video/x-matroska
 - md
     type: md
     headers
     - Content-type: text/markdown
+- mov
+    type: mov
+    headers
+    - Content-type: video/quicktime
 - mp3
     type: mp3
     headers
@@ -141,23 +153,35 @@ file_types
 - mp4
     type: mp4
     headers
-    - Content-type: audio/mp4
+    - Content-type: video/mp4
 - mpeg
     type: mpeg
     headers
-    - Content-type: video/mpeg
+    - Content-type: video/mp4
 - mpg
     type: mpg
     headers
     - Content-type: video/mp4
+- numbers
+    type: numbers
+    headers
+    - Content-type: application/x-iwork-numbers-sffnumbers
 - ogg
     type: ogg
     headers
     - Content-type: audio/ogg
+- ogv
+    type: ogv
+    headers
+    - Content-type: video/ogg
 - otf
     type: otf
     headers
     - Content-type: application/x-font-opentype
+- pages
+    type: pages
+    headers
+    - Content-type: application/x-iwork-pages-sffpages
 - pdf
     type: pdf
     headers
