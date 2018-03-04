@@ -87,7 +87,7 @@ namespace effcore {
         }
         if ($file = fopen($path, 'rb')) {
           while (!feof($file)) {
-            print fread($$file, 1024);
+            print fread($file, 1024);
           }
           fclose($file);
         }
