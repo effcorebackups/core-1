@@ -96,10 +96,14 @@ namespace effcore {
   #######################
 
   ob_start();
+  $output = '';
   foreach (event::start('on_module_start') as $c_results) {
     foreach ($c_results as $c_result) {
-      print str_replace(nl.nl, '', $c_result);
+      $output.= str_replace(nl.nl, '', $c_result);
     }
   }
+  header('Content-Length: '.strlen($output), true);
+  print $output;
+  exit();
 
 }
