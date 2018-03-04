@@ -14,6 +14,9 @@ file_types
 - _template
     type: _template
     protected: 1
+- _protected
+    type: _protected
+    protected: 1
 # ─────────────────────────────────────────────────────────────────────
 # with tokens
 # ─────────────────────────────────────────────────────────────────────
@@ -39,6 +42,10 @@ file_types
     type: 7z
     headers
     - Content-type: application/x-7z-compressed
+- aac
+    type: aac
+    headers
+    - Content-type: audio/aac
 - aiff
     type: aiff
     headers
@@ -71,6 +78,10 @@ file_types
     type: eot
     headers
     - Content-type: application/vnd.ms-fontobject
+- flac
+    type: flac
+    headers
+    - Content-type: audio/flac
 - flv
     type: flv
     headers
@@ -111,6 +122,10 @@ file_types
     type: js
     headers
     - Content-type: text/javascript
+- m4a
+    type: m4a
+    headers
+    - Content-type: audio/mp4
 - midi
     type: midi
     headers
@@ -130,7 +145,7 @@ file_types
 - mpeg
     type: mpeg
     headers
-    - Content-type: video/mp4
+    - Content-type: video/mpeg
 - mpg
     type: mpg
     headers
@@ -224,7 +239,7 @@ file_types
     headers
     - Content-type: application/font-woff
 - woff2
-    type: 7z
+    type: woff2
     headers
     - Content-type: application/font-woff2
 - xls

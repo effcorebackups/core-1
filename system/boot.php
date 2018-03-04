@@ -56,7 +56,7 @@ namespace effcore {
     $path = dir_root.ltrim(url::get_current()->path, '/');
     if (is_file($path) && is_readable($path)) {
     # case for file with tokens
-      if (!empty($file_types[$type]->use_tokens)) {    
+      if (!empty($file_types[$type]->use_tokens)) {
         $file = new file($path);
         $data = token::replace($file->load());
       # send header "304 Not Modified" to the output buffer if HTTP_IF_NONE_MATCH header is received
@@ -67,6 +67,7 @@ namespace effcore {
           exit();
         }
       # send headers and data to the output buffer
+        header('Content-Length: '.strlen($data), true);
         header('Cache-Control: must-revalidate, private', true);
         header('Etag: '.$etag, true);
         if (!empty($file_types[$type]->headers)) {
@@ -76,15 +77,17 @@ namespace effcore {
         }
         print $data;
         exit();
-      }
     # case for any other file (and for large files too)
-      if (!empty($file_types[$type]->headers)) {
-        foreach ($file_types[$type]->headers as $c_key => $c_value) {
-          header($c_key.': '.$c_value, true);
+      } else {
+        header('Content-Length: '.filesize($path), true);
+        if (!empty($file_types[$type]->headers)) {
+          foreach ($file_types[$type]->headers as $c_key => $c_value) {
+            header($c_key.': '.$c_value, true);
+          }
         }
+        readfile($path);
+        exit();
       }
-      readfile($path);
-      exit();
     }
   }
 
