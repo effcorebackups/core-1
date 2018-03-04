@@ -85,7 +85,12 @@ namespace effcore {
             header($c_key.': '.$c_value, true);
           }
         }
-        readfile($path);
+        if ($file = fopen($path, 'rb')) {
+          while (!feof($file)) {
+            print fread($$file, 1024);
+          }
+          fclose($file);
+        }
         exit();
       }
     }
