@@ -41,14 +41,14 @@ frontend
         file: frontend/icon-192x192.png
         sizes: 192x192
     styles
-    - style_page
+    - page_style
         file: frontend/page._style
         media: all
-    - style_console
+    - console_style
         file: frontend/console._style
         media: all
-    script
-    - script_page
+    scripts
+    - page_script
         file: frontend/page._script
 - frontend_form_n
     display
@@ -56,9 +56,9 @@ frontend
       match: %^forms/.*$%
       where: block
     styles
-    - style_form
+    - form_style
         file: frontend/form._style
         media: all
-    script
-    - script_form
+    scripts
+    - form_script
         file: frontend/form._script

@@ -4,7 +4,7 @@
     %%_meta
     <title>%%_title</title>
     %%_styles
-    %%_script
+    %%_scripts
   </head>
   <body>
 

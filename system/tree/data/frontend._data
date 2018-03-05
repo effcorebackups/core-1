@@ -5,6 +5,6 @@ frontend
       match: %^trees/.*$%
       where: block
     styles
-    - style_tree
+    - tree_style
         file: frontend/tree._style
         media: all

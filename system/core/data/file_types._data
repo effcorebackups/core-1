@@ -34,7 +34,7 @@ file_types
     type: _script
     use_tokens: 1
     headers
-    - Content-type: text/javascript
+    - Content-type: application/javascript
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
@@ -98,6 +98,10 @@ file_types
     type: gzip
     headers
     - Content-type: application/x-gzip
+- htm
+    type: htm
+    headers
+    - Content-type: text/html
 - html
     type: html
     headers
@@ -121,7 +125,7 @@ file_types
 - js
     type: js
     headers
-    - Content-type: text/javascript
+    - Content-type: application/javascript
 - keynote
     type: keynote
     headers

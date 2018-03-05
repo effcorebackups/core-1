@@ -27,7 +27,7 @@ namespace effcore {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
-  # render frontend items: icons, styles, script
+  # render frontend items: icons, styles, scripts
     $used_dpaths = [];
     foreach ($this->content as $c_block) {
       if ($c_block->type == 'link') {
@@ -80,9 +80,9 @@ namespace effcore {
     $template->set_var('attributes', factory::data_to_attr(['lang' => language::get_current()]));
     $template->set_var('console', console::render()); # @todo: only for admins
     $template->set_var('messages', message::render_all());
-    $template->set_var('meta',   $frontend->meta->render());
-    $template->set_var('styles', $frontend->styles->render());
-    $template->set_var('script', $frontend->script->render());
+    $template->set_var('meta',    $frontend->meta->render());
+    $template->set_var('styles',  $frontend->styles->render());
+    $template->set_var('scripts', $frontend->scripts->render());
     $template->set_var('title', token::replace(translation::get($this->title)));
 
     return $template->render();
@@ -92,7 +92,7 @@ namespace effcore {
     $return = new \stdClass();
     $return->meta = new node();
     $return->styles = new node();
-    $return->script = new node();
+    $return->scripts = new node();
     $return->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
     $frontend = storage::get('files')->select('frontend');
     foreach ($frontend as $module_id => $c_module_frontend) {
@@ -128,11 +128,11 @@ namespace effcore {
             }
           }
 
-        # render script
-          if (isset($c_item->script)) {
-            foreach ($c_item->script as $c_script) {
+        # render scripts
+          if (isset($c_item->scripts)) {
+            foreach ($c_item->scripts as $c_script) {
               $c_url = new url('/system/'.$module_id.'/'.$c_script->file);
-              $return->script->child_insert(new markup('script', [
+              $return->scripts->child_insert(new markup('script', [
                 'src' => $c_url->get_full()
               ]));
             }
