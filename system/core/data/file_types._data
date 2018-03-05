@@ -38,6 +38,14 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
+- 3gp
+    type: 3gp
+    headers
+    - Content-type: video/3gpp
+- 3gpp
+    type: 3gpp
+    headers
+    - Content-type: video/3gpp
 - 7z
     type: 7z
     headers
@@ -54,6 +62,14 @@ file_types
     type: avi
     headers
     - Content-type: video/x-msvideo
+- atom
+    type: atom
+    headers
+    - Content-type: application/atom+xml
+- bmp
+    type: bmp
+    headers
+    - Content-type: image/x-ms-bmp
 - bz
     type: bz
     headers
@@ -62,10 +78,22 @@ file_types
     type: bz2
     headers
     - Content-type: application/x-bzip2
+- crt
+    type: crt
+    headers
+    - Content-type: application/x-x509-ca-cert
 - css
     type: css
     headers
     - Content-type: text/css
+- der
+    type: der
+    headers
+    - Content-type: application/x-x509-ca-cert
+- dmg
+    type: dmg
+    headers
+    - Content-type: application/octet-stream
 - doc
     type: doc
     headers
@@ -110,10 +138,22 @@ file_types
     type: ico
     headers
     - Content-type: image/x-icon
+- iso
+    type: iso
+    headers
+    - Content-type: application/octet-stream
+- img
+    type: img
+    headers
+    - Content-type: application/octet-stream
 - image
     type: image
     headers
     - Content-type: image/*
+- jar
+    type: jar
+    headers
+    - Content-type: application/java-archive
 - jpeg
     type: jpeg
     headers
@@ -122,6 +162,10 @@ file_types
     type: jpg
     headers
     - Content-type: image/jpeg
+- json
+    type: json
+    headers
+    - Content-type: application/json
 - js
     type: js
     headers
@@ -133,7 +177,15 @@ file_types
 - m4a
     type: m4a
     headers
-    - Content-type: audio/mp4
+    - Content-type: audio/x-m4a
+- m4v
+    type: m4v
+    headers
+    - Content-type: video/x-m4v
+- mid
+    type: mid
+    headers
+    - Content-type: audio/midi
 - midi
     type: midi
     headers
@@ -153,7 +205,7 @@ file_types
 - mp3
     type: mp3
     headers
-    - Content-type: audio/mp3
+    - Content-type: audio/mpeg
 - mp4
     type: mp4
     headers
@@ -161,15 +213,31 @@ file_types
 - mpeg
     type: mpeg
     headers
-    - Content-type: video/mp4
+    - Content-type: video/mpeg
 - mpg
     type: mpg
     headers
-    - Content-type: video/mp4
+    - Content-type: video/mpeg
 - numbers
     type: numbers
     headers
     - Content-type: application/x-iwork-numbers-sffnumbers
+- odg
+    type: odg
+    headers
+    - Content-type: application/vnd.oasis.opendocument.graphics
+- odp
+    type: odp
+    headers
+    - Content-type: application/vnd.oasis.opendocument.presentation
+- ods
+    type: ods
+    headers
+    - Content-type: application/vnd.oasis.opendocument.spreadsheet
+- odt
+    type: odt
+    headers
+    - Content-type: application/vnd.oasis.opendocument.text
 - ogg
     type: ogg
     headers
@@ -190,6 +258,10 @@ file_types
     type: pdf
     headers
     - Content-type: application/pdf
+- pem
+    type: pem
+    headers
+    - Content-type: application/x-x509-ca-cert
 - pkg
     type: pkg
     headers
@@ -214,12 +286,28 @@ file_types
     type: rar
     headers
     - Content-type: application/x-rar-compressed
+- rpm
+    type: rpm
+    headers
+    - Content-type: application/x-redhat-package-manager
+- rss
+    type: rss
+    headers
+    - Content-type: application/rss+xml
+- rtf
+    type: rtf
+    headers
+    - Content-type: application/rtf
 - sfnt
     type: sfnt
     headers
     - Content-type: application/font-sfnt
 - svg
     type: svg
+    headers
+    - Content-type: image/svg+xml
+- svgz
+    type: svgz
     headers
     - Content-type: image/svg+xml
 - swf
@@ -234,6 +322,10 @@ file_types
     type: tgz
     headers
     - Content-type: application/x-compressed
+- tif
+    type: tif
+    headers
+    - Content-type: image/tiff
 - tiff
     type: tiff
     headers
@@ -254,6 +346,10 @@ file_types
     type: webm
     headers
     - Content-type: video/webm
+- webp
+    type: webp
+    headers
+    - Content-type: image/webp
 - wma
     type: wma
     headers
@@ -278,6 +374,10 @@ file_types
     type: xlsx
     headers
     - Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- xhtml
+    type: xhtml
+    headers
+    - Content-type: application/xhtml+xml
 - xml
     type: xml
     headers
@@ -285,4 +385,4 @@ file_types
 - zip
     type: zip
     headers
-    - Content-type: application/x-zip-compressed
+    - Content-type: application/zip
