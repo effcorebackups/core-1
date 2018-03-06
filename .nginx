@@ -1,4 +1,4 @@
-# before start the nginx server:
+# before start nginx on the development server:
 # - insert "include %%_root/.nginx;" (path to this file) to the file "/usr/local/etc/nginx/nginx.conf" or
 # - insert "include %%_root/.nginx;" (path to this file) to the file           "/etc/nginx/nginx.conf"
 # - here replace the %%_server_name to your ip adress or domain name
