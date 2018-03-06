@@ -1,7 +1,13 @@
+
 DirectoryIndex index.php
 Options -Indexes
 Header unset "X-Powered-By"
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteRule ^.*$ index.php [L] # index.php is a single entry point
+  RewriteRule ^.*$ index.php [L]
 </IfModule>
+
+<FilesMatch "^\..*$">
+  Require all denied
+</FilesMatch>
