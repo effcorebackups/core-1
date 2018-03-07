@@ -9,15 +9,16 @@ server {
   listen 127.0.0.1:80;
   server_name 127.0.0.1;
   root %%_root;
+
+  location ~ \..*$ {
+    deny all;
+  }
+
   rewrite ^(.*)$ /index.php/$1 last;
 
   location / {
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
     include %%_include;
-  }
-
-  location ~ /\..* {
-    deny all;
   }
 }
