@@ -10,7 +10,7 @@ server {
   server_name 127.0.0.1;
   root %%_root;
 
-  location ~ \..*$ {
+  location ~ /\..*$ {
     deny all;
   }
 
