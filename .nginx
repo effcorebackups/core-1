@@ -1,14 +1,13 @@
-# before start nginx on the development server:
+# before start nginx on the 127.0.0.1:
 # - insert "include %%_root/.nginx;" (path to this file) to the file "/usr/local/etc/nginx/nginx.conf" or
 # - insert "include %%_root/.nginx;" (path to this file) to the file           "/etc/nginx/nginx.conf"
-# - here replace the %%_server_name to your ip adress or domain name
 # - here replace the %%_root to your site root path
 # - here replace the %%_include to "/usr/local/etc/nginx/fastcgi.conf" or
 # - here replace the %%_include to           "/etc/nginx/fastcgi.conf"
 
 server {
   listen 127.0.0.1:80;
-  server_name %%_server_name;
+  server_name 127.0.0.1;
   root %%_root;
   rewrite ^(.*)$ /index.php/$1 last;
 
