@@ -1,22 +1,46 @@
 
 
-SOFTWARE REQUIREMENTS
+SERVER SOFTWARE REQUIREMENTS
 ---------------------------------------------------------------------
 
-- Оperating system: Unix/Linux
-- Web server: nginx and/or Apache v2.2+
-- Server-side scripting language: PHP v.5.6+ or v.7.1+ (with libraries: ...)
-- Storage system: MySQL v5.6+ / SQLite v3+ / without storage
-- Browsers: IE9+ and all modern
+Оperating system:
+- Unix (FreeBSD)
+- Linux
+Web server:
+- Apache v2.2+
+- Apache v2.2+ with nginx v1.10+
+- nginx v1.10+
+Server-side scripting language:
+- PHP v.5.6+
+- PHP v.7.1+
+Storage system:
+- MySQL v5.6+
+- SQLite v3+
+
+
+Apache 2.4 requires the following modules:
+- access_compat_module
+- authz_core_module
+- dir_module
+- log_config_module
+- mime_module
+- rewrite_module
+- php5_module|php7_module
+
+Otherwise you get "500 Internal Server Error".
+See apache error log.
+
+
+PHP 5.6 requires the following modules:
+- php_pdo_sqlite|php_pdo_mysql
 
 
 HARDWARE REQUIREMENTS FOR SERVERS WITH THE BEST PERFORMANCE
 ---------------------------------------------------------------------
 
-- Memory: DDR4 ECC
-- Hard drive: SSD RAID on PCI-Express or faster
-- CPU: Intel Xeon/i7/i9
-- Motherboard: server motherboard
+Memory: DDR4 ECC or newer
+Hard drive: SSD RAID on PCI-Express or newer
+CPU: Intel Xeon/i7/i9 or newer
 
 
 WEB CLIENTS SUPPORT
@@ -31,7 +55,7 @@ WEB CLIENTS SUPPORT
 - other modern browsers.
 
 
-SECURITY
+SECURITY RECOMENDATIONS
 ---------------------------------------------------------------------
 
 - We recommend to using own servers located in rooms with access control.

@@ -208,7 +208,6 @@ translations
     - Search: Поиск
     - Select (macro): Список (макро)
     - Select: Список
-    - Server load (sys_getloadavg): Загр. серв. (sys_getloadavg)
     - Session expiration date: Дата окончания сессии
     - set: установка
     - Shared information: Общая информация
