@@ -1,0 +1,9 @@
+# top-most editorconfig file
+root = true
+
+# unix-style in every file
+[*]
+end_of_line = lf
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
