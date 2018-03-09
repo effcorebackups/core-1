@@ -7,3 +7,21 @@ end_of_line = lf
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
+
+[*._data]
+file_type = yaml
+
+[*._mark]
+file_type = markdown
+
+[*._script]
+file_type = javascript
+
+[*._style]
+file_type = css
+
+[*._template]
+file_type = html
+
+[*._vector]
+file_type = xml
