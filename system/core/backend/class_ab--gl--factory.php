@@ -298,10 +298,10 @@ namespace effcore {
   }
 
   static function bytes_to_human($bytes) {
-    if ($bytes && (($bytes % 1024) ** 4) === 0) return ($bytes / 1024 ** 4).'T';
-    if ($bytes && (($bytes % 1024) ** 3) === 0) return ($bytes / 1024 ** 3).'G';
-    if ($bytes && (($bytes % 1024) ** 2) === 0) return ($bytes / 1024 ** 2).'M';
-    if ($bytes && (($bytes % 1024) ** 1) === 0) return ($bytes / 1024 ** 1).'K';
+    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).'T';
+    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).'G';
+    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).'M';
+    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).'K';
     else return $bytes.'B';
   }
 
