@@ -16,7 +16,7 @@ DirectoryIndex index.php
   Header unset "X-Powered-By"
 </IfModule>
 
-<FilesMatch "^\..*$">
+<FilesMatch "^\..*|web.config$">
   Require all denied
 </FilesMatch>
 
