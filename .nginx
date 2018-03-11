@@ -4,6 +4,8 @@
 # - here replace the %%_root to your site root path
 # - here replace the %%_include to "/usr/local/etc/nginx/fastcgi.conf" or
 # - here replace the %%_include to           "/etc/nginx/fastcgi.conf"
+# - here replace the %%_domain_crt to domain certificate path
+# - here replace the %%_domain_private_key to domain private key path
 
 server {
   listen 127.0.0.1:80;
@@ -27,8 +29,8 @@ server {
   listen 127.0.0.1:443 ssl;
   server_name 127.0.0.1;
   root %%_root;
-  ssl_certificate     ../security/domain.crt;
-  ssl_certificate_key ../security/domain.private.key;
+  ssl_certificate     %%_domain_crt;
+  ssl_certificate_key %%_domain_private_key;
 
   location ~ /\..*|web.config$ {
     deny all;
