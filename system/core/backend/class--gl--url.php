@@ -62,7 +62,7 @@ namespace effcore {
                     '(?<path>[^?#]*)'.
                '(?:\?(?<query>[^\#]*)|)'.
                '(?:\#(?<anchor>.*)|)$%S', factory::filter_url($url), $matches);
-    $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ !empty($_SERVER['HTTPS']) ? 'https' : 'http'));
+    $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'On' ? 'https' : 'http'));
     $this->domain   = !empty($matches['domain'])   ? $matches['domain']   :                                        ( /* case for local ulr */ $_SERVER['HTTP_HOST']);
     $this->path     = !empty($matches['path'])     ? $matches['path']     : '/';
     $this->query    = !empty($matches['query'])    ? $matches['query']    : '';
