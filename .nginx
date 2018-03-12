@@ -16,7 +16,7 @@ server {
     deny all;
   }
 
-  rewrite ^(.*)$ /index.php/$1 last;
+  rewrite ^(.*)$ /index.php$1 last;
 
   location / {
     fastcgi_index index.php;
@@ -36,7 +36,7 @@ server {
     deny all;
   }
 
-  rewrite ^(.*)$ /index.php/$1 last;
+  rewrite ^(.*)$ /index.php$1 last;
 
   location / {
     fastcgi_index index.php;
