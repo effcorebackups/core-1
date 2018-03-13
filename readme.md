@@ -3,12 +3,10 @@
 SERVER SOFTWARE REQUIREMENTS
 ---------------------------------------------------------------------
 
-Оperating system:
+Priority Operating System:
 - Unix (FreeBSD)
-- Linux
-Web server:
+Priority Web Server:
 - Apache v2.2+
-- Apache v2.2+ with nginx v1.10+
 - nginx v1.10+
 Server-side scripting language:
 - PHP v.5.6+
