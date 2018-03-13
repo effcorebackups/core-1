@@ -14,6 +14,30 @@ namespace effcore {
   const tb = "\t";
   const br = "<br/>";
 
+  ##############################################
+  ### web servers compatibility improvements ###
+  ##############################################
+
+  # ────────────────────────────────────────────────────────────────────────
+  #                 | HTTPS | REQUEST_SCHEME | REQUEST_SCHEME + improvements
+  # ────────────────────────────────────────────────────────────────────────
+  # apache v2.4     | -     | http           | http
+  # apache v2.4 ssl | on    | https          | https
+  # nginx  v1.1     | -     | http           | http
+  # nginx  v1.1 ssl | on    | https          | https
+  # iis    v7.5     | off   | -              | http
+  # iis    v7.5 ssl | on    | -              | https
+  # ────────────────────────────────────────────────────────────────────────
+
+  if (!isset($_SERVER['REQUEST_SCHEME'])) {
+    $_SERVER['REQUEST_SCHEME'] = isset($_SERVER['HTTPS']) &&
+                                       $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+  }
+
+  #############################
+  ### load required classes ###
+  #############################
+
   require_once('core/backend/class_ab--gl--factory.php');
   require_once('core/backend/class_ab--gl--timer.php');
   require_once('core/backend/class_ab--gl--console.php');
