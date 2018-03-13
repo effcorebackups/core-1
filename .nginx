@@ -21,6 +21,7 @@ server {
     fastcgi_pass 127.0.0.1:9000;
     include %%_include;
     fastcgi_param SCRIPT_NAME /index.php;
+    fastcgi_param PHP_SELF /index.php;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
     fastcgi_param ORIG_SCRIPT_FILENAME $document_root/index.php;
   }
@@ -42,6 +43,7 @@ server {
     fastcgi_pass 127.0.0.1:9000;
     include %%_include;
     fastcgi_param SCRIPT_NAME /index.php;
+    fastcgi_param PHP_SELF /index.php;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
     fastcgi_param ORIG_SCRIPT_FILENAME $document_root/index.php;
   }
