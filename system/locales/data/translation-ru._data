@@ -17,6 +17,7 @@ translations
     - Allowable characters\: %%_chars.: Допустимые символы: %%_chars.
     - always_enabled: всегда_вкл
     - Anonymous: Аноним
+    - Architecture: Архитектура
     - Author: Автор
     - autoload: автозагрузка
     - Avatar: Аватар
@@ -116,6 +117,7 @@ translations
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - Home: Дом
     - Host name: Имя хоста
+    - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
@@ -175,6 +177,7 @@ translations
     - Object: Объект
     - ok: ок
     - on this ip: на этом ip
+    - Operating System: Операционная система
     - Page not found: Страница не найдена
     - Page: Страница
     - Parameter: Параметр
@@ -184,6 +187,8 @@ translations
     - Path: Путь
     - PHP PDO driver for %%_name is not available.: PHP PDO драйвер для %%_name не доступен.
     - PHP PDO extension is not available.: PHP PDO расширение не доступно.
+    - PHP Release: PHP Выпуск
+    - PHP Version: PHP Версия
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - query = "%%_query": запрос = "%%_query"

@@ -36,8 +36,18 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Valid CSS'));
     $info->child_insert(new markup('dd', [], 'yes'));
+    $info->child_insert(new markup('dt', [], 'Architecture'));
+    $info->child_insert(new markup('dd', [], php_uname('m')));
     $info->child_insert(new markup('dt', [], 'Server software'));
     $info->child_insert(new markup('dd', [], $_SERVER['SERVER_SOFTWARE']));
+    $info->child_insert(new markup('dt', [], 'Operating System'));
+    $info->child_insert(new markup('dd', [], php_uname('s')));
+    $info->child_insert(new markup('dt', [], 'Hostname'));
+    $info->child_insert(new markup('dd', [], php_uname('n')));
+    $info->child_insert(new markup('dt', [], 'PHP Version'));
+    $info->child_insert(new markup('dd', [], php_uname('v')));
+    $info->child_insert(new markup('dt', [], 'PHP Release'));
+    $info->child_insert(new markup('dd', [], php_uname('r')));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'no'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
