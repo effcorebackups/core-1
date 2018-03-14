@@ -246,7 +246,7 @@ forms
                     text: text in textarea
       # field select
         - select|form_field
-            title: Select
+            title: Selection list
             description|text
               text: Element %%_info.
               args
@@ -317,7 +317,7 @@ forms
                             text: Option 1.6
       # field select macro
         - select_macro|form_field_select
-            title: Select (macro)
+            title: Selection list (macro)
             description|text
               text: Element %%_info.
               args

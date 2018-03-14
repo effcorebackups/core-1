@@ -38,4 +38,8 @@ namespace effcore {
     );
   }
 
+  static function on_show_block_tabs($page) {
+    return 'UNDER CONSTRUCTION';
+  }
+
 }}

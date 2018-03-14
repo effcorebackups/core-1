@@ -60,6 +60,7 @@ translations
     - Decoration: Оформление
     - delete file\: %%_name: удалить файл: %%_name
     - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
+    - Delete: Удалить
     - delete: удалить
     - Demo sub module description.: Описание демонстрационного подмодуля
     - Demo sub module title: Заголовок демонстрационного подмодуля
@@ -123,6 +124,7 @@ translations
     - Information: Информация
     - init.: инициал.
     - initialization: инициализация
+    - Insert: Вставить
     - insertion: вставка
     - Install: Установить
     - install: установить
@@ -212,8 +214,9 @@ translations
     - save: сохранить
     - search: поиск
     - Search: Поиск
-    - Select (macro): Список (макро)
-    - Select: Список
+    - Select: Выбрать
+    - Selection list (macro): Список выбора (макро)
+    - Selection list: Список выбора
     - Server software: Серверное ПО
     - Session expiration date: Дата окончания сессии
     - set: установка
@@ -252,6 +255,7 @@ translations
     - type: тип
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - uninstall: удалить
+    - Update: Обновить
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
     - User %%_nick was deleted.: Пользователь %%_nick был удален.
     - User %%_nick was not deleted!: Пользователь %%_nick не был удален.

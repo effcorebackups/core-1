@@ -33,7 +33,7 @@ pages
     - block_title
         region: content
         type: code
-        handler: \effcore\modules\core\events_page::on_show_block_title
+        handler: \effcore\events_page::on_show_block_title
     - form_user_edit
         region: content
         type: link
