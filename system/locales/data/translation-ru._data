@@ -178,6 +178,7 @@ translations
     - ok: ок
     - on this ip: на этом ip
     - Operating System: Операционная система
+    - OS Version: Версия ОС
     - Page not found: Страница не найдена
     - Page: Страница
     - Parameter: Параметр
@@ -188,7 +189,6 @@ translations
     - PHP PDO driver for %%_name is not available.: PHP PDO драйвер для %%_name не доступен.
     - PHP PDO extension is not available.: PHP PDO расширение не доступно.
     - PHP Version: PHP Версия
-    - OS Version: Версия ОС
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - query = "%%_query": запрос = "%%_query"
