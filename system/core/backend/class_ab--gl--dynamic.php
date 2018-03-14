@@ -57,7 +57,7 @@ namespace effcore {
   static function delete($name) {
     if (isset(static::$data[$name]))
         unset(static::$data[$name]);
-    $file = new file(static::$directory.static::$type.'--'.$name.'.php'); 
+    $file = new file(static::$directory.static::$type.'--'.$name.'.php');
     if ($file->is_exist()) {
       return unlink($file->get_path());
     }

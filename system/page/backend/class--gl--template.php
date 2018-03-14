@@ -19,7 +19,7 @@ namespace effcore {
     }
   # find template
     foreach (static::get_templates() as $c_module_id => $c_templates) {
-      foreach ($c_templates as $c_name => $c_info) {        
+      foreach ($c_templates as $c_name => $c_info) {
         if ($name == $c_name) {
           switch ($c_info->type) {
             case 'file':
@@ -45,7 +45,7 @@ namespace effcore {
     $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
                                        '(?<prefix>\\%\\%_)'.
                                        '(?<name>[a-z0-9_]+)'.
-                                       '(?<args>\\{[a-z0-9_,]+\\}|)%sS', function($matches) {
+                                       '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
       return isset($matches['prefix']) &&
              isset($matches['name']) &&
              isset($this->vars[$matches['name']]) &&

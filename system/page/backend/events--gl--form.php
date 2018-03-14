@@ -409,7 +409,7 @@ namespace effcore {
         );
         return;
       }
-    
+
     # check max
       if ($c_max < $new_value) {
         $form->add_error($dpath.'/element',

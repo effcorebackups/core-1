@@ -138,7 +138,7 @@ namespace effcore {
       switch ($this->driver) {
         case 'mysql' :
           $return[] = '`'.$this->table_prefix.$c_table.'`';
-          $return[] = $this->op(','); 
+          $return[] = $this->op(',');
           break;
         case 'sqlite':
           $return[] = '"'.$this->table_prefix.$c_table.'"';
@@ -262,7 +262,7 @@ namespace effcore {
         $c_instance->set_entity_name($entity->get_name());
       }
       return $result;
-    } 
+    }
   }
 
   function select_instance($instance) { # return: null | instance

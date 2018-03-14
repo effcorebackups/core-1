@@ -111,7 +111,7 @@ namespace effcore {
                 'type'  => $c_icon->type,
                 'href'  => $c_url->get_full(),
                 'sizes' => $c_icon->sizes
-              ]));  
+              ]));
             }
           }
 
