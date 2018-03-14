@@ -184,6 +184,7 @@ translations
     - Path: Путь
     - PHP PDO driver for %%_name is not available.: PHP PDO драйвер для %%_name не доступен.
     - PHP PDO extension is not available.: PHP PDO расширение не доступно.
+    - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
