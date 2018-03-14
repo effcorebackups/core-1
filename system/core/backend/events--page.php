@@ -36,12 +36,12 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Valid CSS'));
     $info->child_insert(new markup('dd', [], 'yes'));
-    $info->child_insert(new markup('dt', [], ''));
-    $info->child_insert(new markup('dd', [], ''));
+    $info->child_insert(new markup('dt', [], 'Server software'));
+    $info->child_insert(new markup('dd', [], $_SERVER['SERVER_SOFTWARE']));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'no'));
-    $info->child_insert(new markup('dt', [], 'Subscribe for updates to'));
-    $info->child_insert(new markup('dd', [], locale::format_datetime('2030-01-01 00:00:00')));
+    $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
+    $info->child_insert(new markup('dd', [], 'no'));
     return new node([], [$title, $info]);
   }
 

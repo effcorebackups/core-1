@@ -209,6 +209,7 @@ translations
     - Search: Поиск
     - Select (macro): Список (макро)
     - Select: Список
+    - Server software: Серверное ПО
     - Session expiration date: Дата окончания сессии
     - set: установка
     - Shared information: Общая информация
@@ -226,7 +227,7 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить
-    - Subscribe for updates to: Подписка на обновления до
+    - Subscribe for updates: Подписка на обновления
     - System: Система
     - Table prefix: Префикс таблиц
     - Telephone: Телефон
