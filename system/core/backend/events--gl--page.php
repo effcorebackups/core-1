@@ -7,11 +7,6 @@
 namespace effcore {
           abstract class events_page {
 
-  static function on_show_block_logo($page) {
-    return new markup('x-block', ['id' => 'logo'],
-           new markup('a',       ['id' => 'to_front', 'href'  => '/', 'title' => translation::get('to front page')]));
-  }
-
   static function on_show_block_menu_user($page) {
     $user = user::get_current();
     if (empty($user->id)) {

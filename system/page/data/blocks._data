@@ -1,0 +1,13 @@
+blocks
+- logo|markup
+    tag_name: x-block
+    attributes
+    - id: logo
+    children
+    - link|markup
+        tag_name: a
+        attributes
+        - id: to_front
+        - href: /
+        - title|text
+            text: to front page

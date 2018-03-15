@@ -27,8 +27,8 @@ pages
         handler: \effcore\events_page::on_show_block_menu_user
     - block_logo
         region: head
-        type: code
-        handler: \effcore\events_page::on_show_block_logo
+        type: link
+        dpath: blocks/page/logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: title
