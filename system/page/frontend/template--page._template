@@ -2,9 +2,9 @@
 <html %%_attributes>
   <head>
     %%_meta
-    <title>%%_title</title>
-    %%_styles
-    %%_scripts
+    <title>%%_head_title</title>
+    %%_head_styles
+    %%_head_scripts
   </head>
   <body>
 
@@ -16,6 +16,7 @@
 
     <x-body>
       %%_messages
+      %%_title
       %%_tab
       %%_content
     </x-body>

@@ -25,7 +25,7 @@ pages
         handler: \effcore\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
     - block_title
-        region: content
+        region: title
         type: code
         handler: \effcore\events_page::on_show_block_title
     - block_tabs
