@@ -96,7 +96,7 @@ namespace effcore {
     foreach ($frontend as $module_id => $c_module_frontend) {
       foreach ($c_module_frontend as $c_row_id => $c_item) {
         if ( ($c_item->display->check === 'url' && preg_match(
-              $c_item->display->match, url::get_current()->path)) ||
+              $c_item->display->match, url::get_current()->get_path())) ||
              ($c_item->display->check === 'dpath' &&
               $c_item->display->where === 'block' && preg_match(
               $c_item->display->match.'m', implode(nl, $used_dpaths)))) {
@@ -168,7 +168,7 @@ namespace effcore {
       foreach ($c_module_pages as $c_row_id => $c_page) {
         $c_matches = [];
         if ($c_page->display->check === 'url' && preg_match(
-            $c_page->display->match, url::get_current()->path, $c_matches)) {
+            $c_page->display->match, url::get_current()->get_path(), $c_matches)) {
           if (!isset($c_page->access) ||
               (isset($c_page->access) && access::check($c_page->access))) {
             if ($c_page instanceof different_cache)

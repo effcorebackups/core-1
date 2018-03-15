@@ -10,10 +10,6 @@ namespace effcore {
   public $id;
   public $template = 'tabs';
 
-  function __construct($attributes = [], $children = [], $weight = 0) {
-    parent::__construct($attributes, $children, $weight);
-  }
-
   ######################
   ### static methods ###
   ######################

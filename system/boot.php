@@ -62,9 +62,9 @@ namespace effcore {
   # 6. url /file.type/ | is wrong notation - redirect to /file.type
   # ─────────────────────────────────────────────────────────────────────
 
-  if (             url::get_current()->path != '/' &&
-            substr(url::get_current()->path, -1) == '/') {
-    url::go(substr(url::get_current()->path, 0, -1));
+  if (             url::get_current()->get_path() != '/' &&
+            substr(url::get_current()->get_path(), -1) == '/') {
+    url::go(substr(url::get_current()->get_path(), 0, -1));
   }
 
   $type = url::get_current()->get_type();
@@ -77,7 +77,7 @@ namespace effcore {
         translation::get('go to <a href="/">front page</a>')
       );
     }
-    $path = dir_root.ltrim(url::get_current()->path, '/');
+    $path = dir_root.ltrim(url::get_current()->get_path(), '/');
     if (is_file($path) && is_readable($path)) {
     # case for file with tokens
       if (!empty($file_types[$type]->use_tokens)) {

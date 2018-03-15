@@ -71,6 +71,7 @@ namespace effcore {
 
   function get_protocol() {return $this->protocol;}
   function get_domain()   {return $this->domain;}
+  function get_path()     {return $this->path;}
   function get_anchor()   {return $this->anchor;}
   function get_type()     {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
 

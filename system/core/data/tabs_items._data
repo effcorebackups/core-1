@@ -3,35 +3,35 @@ tabs_items
     id: select
     id_parent: instance_manage
     parent_is_tab: true
+    action_name: select
     title: Select
     attributes
-    - href: select
     - class
       - select: select
 - insert|tabs_item
     id: insert
     id_parent: instance_manage
     parent_is_tab: true
+    action_name: insert
     title: Insert
     attributes
-    - href: insert
     - class
       - insert: insert
 - update|tabs_item
     id: update
     id_parent: instance_manage
     parent_is_tab: true
+    action_name: update
     title: Update
     attributes
-    - href: update
     - class
       - update: update
 - delete|tabs_item
     id: delete
     id_parent: instance_manage
     parent_is_tab: true
+    action_name: delete
     title: Delete
     attributes
-    - href: delete
     - class
       - delete: delete
