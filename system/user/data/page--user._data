@@ -4,9 +4,7 @@ pages
     https: true
     display
       check: url
-      match: %^/user/[0-9]+$%
-    args
-    - id_user: 2
+      match: %^/user/(?<id_user>[0-9]+)$%
     access
       roles
       - admins: admins
@@ -24,7 +22,6 @@ pages
         region: head
         type: link
         dpath: blocks/page/logo
-    # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: title
         type: code

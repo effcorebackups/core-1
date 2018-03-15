@@ -20,6 +20,12 @@ namespace effcore {
     return ['display' => 'display', 'access' => 'access'];
   }
 
+  function args_set($key, $value) {$this->args[$key] = $value;}
+  function args_get($id = null) {
+    return $id ? $this->args[$id] :
+                 $this->args;
+  }
+
   function render() {
 
   # check https (@todo: enable this message)
@@ -36,13 +42,6 @@ namespace effcore {
     }
     $frontend = $this->get_frontend($used_dpaths);
 
-  # collect page arguments
-    if (isset($this->args)) {
-      foreach ($this->args as $c_name => $c_num) {
-        static::args_set($c_name, url::get_current()->get_args($c_num));
-      }
-    }
-
   # collect page content
     $contents = [];
     foreach ($this->content as $c_block) {
@@ -50,7 +49,7 @@ namespace effcore {
                         $c_block->region : 'content_1_1';
       switch ($c_block->type) {
         case 'text': $contents[$c_region][] = new text($c_block->content); break;
-        case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + static::args_get()); break;
+        case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
         case 'link': $contents[$c_region][] = storage::get('files')->select($c_block->dpath, true); break;
         default: $contents[$c_region][] = $c_block;
       }
@@ -148,7 +147,7 @@ namespace effcore {
   ######################
 
   static protected $cache;
-  static protected $cache_args = [];
+  static protected $current;
 
   static function init() {
     static::$cache = storage::get('files')->select('pages');
@@ -159,20 +158,29 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function args_get()             {return static::$cache_args;}
-  static function args_set($key, $value) {static::$cache_args[$key] = $value;}
+  static function get_current() {
+    return static::$current;
+  }
 
   static function find_and_render() {
   # render page
     foreach (static::get_all() as $c_module_id => $c_module_pages) {
       foreach ($c_module_pages as $c_row_id => $c_page) {
-        if (($c_page->display->check === 'url' && preg_match(
-             $c_page->display->match, url::get_current()->path))) {
+        $c_matches = [];
+        if ($c_page->display->check === 'url' && preg_match(
+            $c_page->display->match, url::get_current()->path, $c_matches)) {
           if (!isset($c_page->access) ||
               (isset($c_page->access) && access::check($c_page->access))) {
             if ($c_page instanceof different_cache)
-              return $c_page->get_different_cache()->render(); else
-              return $c_page->render();
+                $c_page = $c_page->get_different_cache();
+            static::$current = $c_page;
+          # fileter arguments
+            $c_args = array_filter($c_matches, 'is_string', ARRAY_FILTER_USE_KEY);
+            foreach ($c_args as $c_key => $c_value) {
+              $c_page->args_set($c_key, $c_value);
+            }
+          # render page
+            return $c_page->render();
           } else {
             factory::send_header_and_exit('access_denided');
           }

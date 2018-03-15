@@ -23,16 +23,16 @@ namespace effcore\modules\user {
   #########################
 
   static function on_submit_user_delete($form, $fields, &$values) {
-    $id = page::args_get()['id_user'];
+    $id_user = page::get_current()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'delete':
         $user = (new instance('user', [
-          'id' => $id,
+          'id' => $id_user,
         ]))->select();
         if ($user) {
           $nick = $user->nick;
           if ($user->delete()) {
-            $sessions = entity::get('session')->select_instances(['id_user' => $id]);
+            $sessions = entity::get('session')->select_instances(['id_user' => $id_user]);
             if ($sessions) {
               foreach ($sessions as $c_session) {
                 $c_session->delete();
@@ -54,8 +54,8 @@ namespace effcore\modules\user {
   #######################
 
   static function on_init_user_edit($form, $fields) {
-    $id = page::args_get()['id_user'];
-    $user = (new instance('user', ['id' => $id]))->select();
+    $id_user = page::get_current()->args_get('id_user');
+    $user = (new instance('user', ['id' => $id_user]))->select();
     $fields['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
     $fields['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
   }
@@ -65,9 +65,9 @@ namespace effcore\modules\user {
     switch ($form->clicked_button_name) {
       case 'save':
         if (count($form->errors) == 0) {
-          $id = page::args_get()['id_user'];
+          $id_user = page::get_current()->args_get('id_user');
         # check security
-          $test_pass = (new instance('user', ['id' => $id]))->select();
+          $test_pass = (new instance('user', ['id' => $id_user]))->select();
           if ($test_pass->password_hash !== factory::hash_password_get($values['password'][0])) {
             $form->add_error('credentials/password/element',
               translation::get('Field "%%_title" contains incorrect value!', [
@@ -79,14 +79,14 @@ namespace effcore\modules\user {
         # test email
           $test_email = (new instance('user', ['email' => strtolower($values['email'][0])]))->select();
           if ($test_email &&
-              $test_email->id != $id) {
+              $test_email->id != $id_user) {
             $form->add_error('credentials/email/element', 'User with this EMail was already registered!');
             return;
           }
         # test nick
           $test_nick = (new instance('user', ['nick' => strtolower($values['nick'][0])]))->select();
           if ($test_nick &&
-              $test_nick->id != $id) {
+              $test_nick->id != $id_user) {
             $form->add_error('credentials/nick/element', 'User with this Nick was already registered!');
             return;
           }
@@ -105,10 +105,10 @@ namespace effcore\modules\user {
 
   static function on_submit_user_edit($form, $fields, &$values) {
     parent::on_submit_files($form, $fields, $values);
-    $id = page::args_get()['id_user'];
+    $id_user = page::get_current()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'save':
-        $user = (new instance('user', ['id' => $id]))->select();
+        $user = (new instance('user', ['id' => $id_user]))->select();
         $user->email = strtolower($values['email'][0]);
         $user->nick  = strtolower($values['nick'][0]);
         if ($values['password_new'][0]) {
@@ -125,7 +125,7 @@ namespace effcore\modules\user {
           message::insert(
             translation::get('User %%_nick was updated.', ['nick' => $user->nick])
           );
-          url::go(url::get_back_url() ?: '/user/'.$id);
+          url::go(url::get_back_url() ?: '/user/'.$id_user);
         } else {
           message::insert(
             translation::get('User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
@@ -133,7 +133,7 @@ namespace effcore\modules\user {
         }
         break;
       case 'cancel':
-        url::go(url::get_back_url() ?: '/user/'.$id);
+        url::go(url::get_back_url() ?: '/user/'.$id_user);
         break;
     }
   }

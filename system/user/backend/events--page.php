@@ -56,8 +56,10 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_show_block_user_info($page, $id) {
-    $user = (new instance('user', ['id' => $id]))->select();
+  static function on_show_block_user_info($page) {
+    $user = (new instance('user', [
+      'id' => $page->args_get('id_user')
+    ]))->select();
     if ($user) {
       if ($user->id == user::get_current()->id ||               # owner
                  isset(user::get_current()->roles['admins'])) { # admin

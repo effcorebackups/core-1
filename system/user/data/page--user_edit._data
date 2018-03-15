@@ -4,9 +4,7 @@ pages
     https: true
     display
       check: url
-      match: %^/user/[0-9]+/edit$%
-    args
-    - id_user: 2
+      match: %^/user/(?<id_user>[0-9]+)/edit$%
     access
       roles
       - admins: admins
@@ -16,7 +14,6 @@ pages
         region: head
         type: code
         handler: \effcore\modules\user\events_access::on_check_access_user_edit
-    # ─────────────────────────────────────────────────────────────────────
     - block_menu_main
         region: main_menu
         type: link
@@ -29,7 +26,6 @@ pages
         region: head
         type: link
         dpath: blocks/page/logo
-    # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: title
         type: code

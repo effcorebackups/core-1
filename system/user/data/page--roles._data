@@ -23,7 +23,6 @@ pages
         region: head
         type: link
         dpath: blocks/page/logo
-    # ─────────────────────────────────────────────────────────────────────
     - block_title
         region: title
         type: code
