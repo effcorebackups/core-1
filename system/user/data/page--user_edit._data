@@ -24,7 +24,7 @@ pages
     - block_menu_user
         region: head
         type: code
-        handler: \effcore\modules\core\events_page::on_show_block_menu_user
+        handler: \effcore\events_page::on_show_block_menu_user
     - block_logo
         region: head
         type: code
