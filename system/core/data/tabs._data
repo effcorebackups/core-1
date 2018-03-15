@@ -1,6 +1,6 @@
 tabs
-- entity|tabs
-    id: entity
+- instance_manage|tabs
+    id: instance_manage
     attributes
     - class
-      - entity: entity
+      - instance-manage: instance-manage

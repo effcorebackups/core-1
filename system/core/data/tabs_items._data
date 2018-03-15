@@ -1,34 +1,34 @@
 tabs_items
-- entity_select|tabs_item
-    id: entity_select
-    id_parent: entity
+- select|tabs_item
+    id: select
+    id_parent: instance_manage
     parent_is_tab: true
     title: Select
     attributes
     - href: select
     - class
       - select: select
-- entity_insert|tabs_item
-    id: entity_insert
-    id_parent: entity
+- insert|tabs_item
+    id: insert
+    id_parent: instance_manage
     parent_is_tab: true
     title: Insert
     attributes
     - href: insert
     - class
       - insert: insert
-- entity_update|tabs_item
-    id: entity_update
-    id_parent: entity
+- update|tabs_item
+    id: update
+    id_parent: instance_manage
     parent_is_tab: true
     title: Update
     attributes
     - href: update
     - class
       - update: update
-- entity_delete|tabs_item
-    id: entity_delete
-    id_parent: entity
+- delete|tabs_item
+    id: delete
+    id_parent: instance_manage
     parent_is_tab: true
     title: Delete
     attributes

@@ -30,7 +30,7 @@ pages
     - block_tabs
         region: tabs
         type: link
-        dpath: tabs/core/entity
+        dpath: tabs/core/instance_manage
     - block_users
         region: content
         type: code
