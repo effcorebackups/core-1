@@ -8,11 +8,9 @@ namespace effcore {
           class tab extends \effcore\node {
 
   public $id;
-  public $title = '';
   public $template = 'tab';
 
-  function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
-    if ($title) $this->title = $title;
+  function __construct($attributes = [], $children = [], $weight = 0) {
     parent::__construct($attributes, $children, $weight);
   }
 

@@ -1,0 +1,33 @@
+tab_items
+- entity_select|tab_item
+    id: entity_select
+    id_parent: entity
+    title: Select
+    attributes
+    - href: select
+    - class
+      - entity-select: entity-select
+- entity_insert|tab_item
+    id: entity_insert
+    id_parent: entity
+    title: Insert
+    attributes
+    - href: insert
+    - class
+      - entity-insert: entity-insert
+- entity_update|tab_item
+    id: entity_update
+    id_parent: entity
+    title: Update
+    attributes
+    - href: update
+    - class
+      - entity-update: entity-update
+- entity_delete|tab_item
+    id: entity_delete
+    id_parent: entity
+    title: Delete
+    attributes
+    - href: delete
+    - class
+      - entity-delete: entity-delete

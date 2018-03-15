@@ -1,0 +1,6 @@
+tabs
+- entity|tab
+    id: entity
+    attributes
+    - class
+      - entity: entity
