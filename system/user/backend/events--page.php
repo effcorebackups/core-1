@@ -65,7 +65,7 @@ namespace effcore\modules\user {
                  isset(user::get_current()->roles['admins'])) { # admin
       # get roles
         $roles = [];
-        $storage_roles = entity::get('relation_role_ws_user')->select_instances(['id_user' => $id]);
+        $storage_roles = entity::get('relation_role_ws_user')->select_instances(['id_user' => $user->id]);
         if ($storage_roles) {
           foreach ($storage_roles as $c_role) {
             $roles[] = $c_role->id_role;
