@@ -16,6 +16,7 @@
 
     <x-body>
       %%_messages
+      %%_tab
       %%_content
     </x-body>
 

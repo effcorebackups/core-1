@@ -2,32 +2,36 @@ tab_items
 - entity_select|tab_item
     id: entity_select
     id_parent: entity
+    parent_is_tab: true
     title: Select
     attributes
     - href: select
     - class
-      - entity-select: entity-select
+      - select: select
 - entity_insert|tab_item
     id: entity_insert
     id_parent: entity
+    parent_is_tab: true
     title: Insert
     attributes
     - href: insert
     - class
-      - entity-insert: entity-insert
+      - insert: insert
 - entity_update|tab_item
     id: entity_update
     id_parent: entity
+    parent_is_tab: true
     title: Update
     attributes
     - href: update
     - class
-      - entity-update: entity-update
+      - update: update
 - entity_delete|tab_item
     id: entity_delete
     id_parent: entity
+    parent_is_tab: true
     title: Delete
     attributes
     - href: delete
     - class
-      - entity-delete: entity-delete
+      - delete: delete

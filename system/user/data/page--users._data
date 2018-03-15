@@ -29,9 +29,9 @@ pages
         type: code
         handler: \effcore\events_page::on_show_block_title
     - block_tabs
-        region: content
-        type: code
-        handler: \effcore\events_page::on_show_block_tabs
+        region: tab
+        type: link
+        dpath: tabs/core/entity
     - block_users
         region: content
         type: code

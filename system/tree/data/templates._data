@@ -10,7 +10,7 @@ templates
     markup: <ul> %%_children </ul>
 - tab
     type: inline
-    markup: <x-tab %%_attributes> <h3 class="hidden">%%_self</h3> <ul>%%_children</ul> </x-tab>
+    markup: <x-tab %%_attributes> <ul>%%_children</ul> </x-tab>
 - tab_item
     type: inline
     markup: <li %%_attributes> %%_self %%_children </li>
