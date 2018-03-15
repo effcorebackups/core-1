@@ -4,7 +4,7 @@ pages
     https: true
     display
       check: url
-      match: %^/admin/users(/(?<action>[a-z]+)/(?<id_user>[0-9]+)|)$%
+      match: %^(?<base>/admin/users)(/(?<action>[a-z]+)/(?<id_user>[0-9]+)|)$%
     access
       roles
       - admins: admins

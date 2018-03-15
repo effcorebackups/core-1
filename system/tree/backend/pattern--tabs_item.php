@@ -16,8 +16,8 @@ namespace effcore {
   public $template_children = 'tabs_item_children';
 
   function render_self() {
-    $path = url::get_current()->get_path();
-    $this->attribute_insert('href', $path.'/'.$this->action_name.'/1000');
+    $page = page::get_current();
+    $this->attribute_insert('href', $page->args_get('base').'/'.$this->action_name.'/1');
     return parent::render_self();
   }
 
