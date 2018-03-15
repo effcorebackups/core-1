@@ -38,9 +38,14 @@ namespace effcore {
     }
   }
 
-  static function get_trees()        {return static::$cache_trees;}
-  static function get_tree_items()   {return static::$cache_tree_items;}
-  static function get_tree($id)      {return static::$cache_trees[$id];}
-  static function get_tree_item($id) {return static::$cache_tree_items[$id];}
+  static function get($id = null) {
+    return $id ? static::$cache_trees[$id] :
+                 static::$cache_trees;
+  }
+
+  static function get_item($id = null) {
+    return $id ? static::$cache_tree_items[$id] :
+                 static::$cache_tree_items;
+  }
 
 }}
