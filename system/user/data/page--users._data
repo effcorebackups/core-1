@@ -24,14 +24,14 @@ pages
         type: code
         handler: \effcore\events_page::on_show_block_logo
     # ─────────────────────────────────────────────────────────────────────
-    - block_tabs
-        region: content
-        type: code
-        handler: \effcore\events_page::on_show_block_tabs
     - block_title
         region: content
         type: code
         handler: \effcore\events_page::on_show_block_title
+    - block_tabs
+        region: content
+        type: code
+        handler: \effcore\events_page::on_show_block_tabs
     - block_users
         region: content
         type: code
