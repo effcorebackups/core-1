@@ -5,10 +5,10 @@
   ##################################################################
 
 namespace effcore {
-          class tab extends \effcore\node {
+          class tabs extends \effcore\node {
 
   public $id;
-  public $template = 'tab';
+  public $template = 'tabs';
 
   function __construct($attributes = [], $children = [], $weight = 0) {
     parent::__construct($attributes, $children, $weight);
@@ -19,26 +19,31 @@ namespace effcore {
   ######################
 
   static protected $cache_tabs;
-  static protected $cache_tab_items;
+  static protected $cache_tabs_items;
 
   static function init() {
-    $tabs      = storage::get('files')->select('tabs');
-    $tab_items = storage::get('files')->select('tab_items');
+    $tabs       = storage::get('files')->select('tabs');
+    $tabs_items = storage::get('files')->select('tabs_items');
     foreach ($tabs as $c_module_id => $c_module_tabs) {
       foreach ($c_module_tabs as $c_row_id => $c_tab) {
         static::$cache_tabs[$c_tab->id] = $c_tab;
       }
     }
-    foreach ($tab_items as $c_module_id => $c_module_tab_items) {
-      foreach ($c_module_tab_items as $c_row_id => $c_item) {
-        static::$cache_tab_items[$c_item->id] = $c_item;
+    foreach ($tabs_items as $c_module_id => $c_module_tabs_items) {
+      foreach ($c_module_tabs_items as $c_row_id => $c_item) {
+        static::$cache_tabs_items[$c_item->id] = $c_item;
       }
     }
   }
 
-  static function get_tabs()        {return static::$cache_tabs;}
-  static function get_tab_items()   {return static::$cache_tab_items;}
-  static function get_tab($id)      {return static::$cache_tabs[$id];}
-  static function get_tab_item($id) {return static::$cache_tab_items[$id];}
+  static function get($id = null) {
+    return $id ? static::$cache_tabs[$id] :
+                 static::$cache_tabs;
+  }
+
+  static function get_item($id = null) {
+    return $id ? static::$cache_tabs_items[$id] :
+                 static::$cache_tabs_items;
+  }
 
 }}

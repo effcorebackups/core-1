@@ -1,5 +1,5 @@
-tab_items
-- entity_select|tab_item
+tabs_items
+- entity_select|tabs_item
     id: entity_select
     id_parent: entity
     parent_is_tab: true
@@ -8,7 +8,7 @@ tab_items
     - href: select
     - class
       - select: select
-- entity_insert|tab_item
+- entity_insert|tabs_item
     id: entity_insert
     id_parent: entity
     parent_is_tab: true
@@ -17,7 +17,7 @@ tab_items
     - href: insert
     - class
       - insert: insert
-- entity_update|tab_item
+- entity_update|tabs_item
     id: entity_update
     id_parent: entity
     parent_is_tab: true
@@ -26,7 +26,7 @@ tab_items
     - href: update
     - class
       - update: update
-- entity_delete|tab_item
+- entity_delete|tabs_item
     id: entity_delete
     id_parent: entity
     parent_is_tab: true

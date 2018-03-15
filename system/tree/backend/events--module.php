@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\tree {
-          use \effcore\tab;
           use \effcore\tree;
+          use \effcore\tabs;
           use \effcore\entity;
           use \effcore\message;
           use \effcore\translation;
@@ -22,12 +22,12 @@ namespace effcore\modules\tree {
         $c_parent->child_insert($c_item, $c_item->id);
       }
     };
-    tab::init();
-    foreach(tab::get_tab_items() as $c_item) {
+    tabs::init();
+    foreach(tabs::get_item() as $c_item) {
       if ($c_item->id_parent) {
         $c_parent = !empty($c_item->parent_is_tab) ?
-             tab::get_tab     ($c_item->id_parent) :
-             tab::get_tab_item($c_item->id_parent);
+            tabs::get     ($c_item->id_parent) :
+            tabs::get_item($c_item->id_parent);
         $c_parent->child_insert($c_item, $c_item->id);
       }
     };

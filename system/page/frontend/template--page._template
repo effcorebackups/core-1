@@ -17,7 +17,7 @@
     <x-body>
       %%_messages
       %%_title
-      %%_tab
+      %%_tabs
       %%_content
     </x-body>
 

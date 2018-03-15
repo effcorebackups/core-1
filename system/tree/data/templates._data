@@ -8,12 +8,12 @@ templates
 - tree_item_children
     type: inline
     markup: <ul> %%_children </ul>
-- tab
+- tabs
     type: inline
-    markup: <x-tab %%_attributes> <ul>%%_children</ul> </x-tab>
-- tab_item
+    markup: <x-tabs %%_attributes> <ul>%%_children</ul> </x-tabs>
+- tabs_item
     type: inline
     markup: <li %%_attributes> %%_self %%_children </li>
-- tab_item_children
+- tabs_item_children
     type: inline
     markup: <ul> %%_children </ul>

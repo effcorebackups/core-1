@@ -1,5 +1,5 @@
 tabs
-- entity|tab
+- entity|tabs
     id: entity
     attributes
     - class

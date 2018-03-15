@@ -5,13 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          class tab_item extends \effcore\tree_item {
+          class tabs_item extends \effcore\tree_item {
 
   public $id;
   public $id_parent;
   public $parent_is_tab;
   public $title = '';
-  public $template = 'tab_item';
-  public $template_children = 'tab_item_children';
+  public $template = 'tabs_item';
+  public $template_children = 'tabs_item_children';
 
 }}

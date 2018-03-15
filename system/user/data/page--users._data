@@ -29,7 +29,7 @@ pages
         type: code
         handler: \effcore\events_page::on_show_block_title
     - block_tabs
-        region: tab
+        region: tabs
         type: link
         dpath: tabs/core/entity
     - block_users
