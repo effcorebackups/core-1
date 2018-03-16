@@ -49,10 +49,12 @@
   x-messages a {color: white}
 
   /* tabs */
-  x-tabs {display: block; margin: 100px auto}
+  x-tabs {display: block; margin: 100px auto; font-size: 1.1em}
   x-tabs ul {list-style: none; margin: 0; padding: 0; border-bottom: 5px solid %%_color_bg}
-  x-tabs li {list-style: none; margin: 0; padding: 12px 15px; display: inline-block; border-right: 1px dotted %%_color_bg}
+  x-tabs li {list-style: none; margin: 0; display: inline-block; border-right: 1px solid %%_color_bg}
   x-tabs li:last-child {border-right: 0}
+  x-tabs a {display: inline-block; padding: 15px 15px 10px 15px}
+  x-tabs a.active {color: white; background: %%_color_bg}
 
   /* blocks */
   x-block {display: block}
