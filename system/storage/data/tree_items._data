@@ -1,0 +1,12 @@
+tree_items
+- instances_manager|tree_item
+    id: instances_manager
+    id_parent: admin
+    title: Instances
+    access
+      roles
+      - admins: admins
+    attributes
+    - href: /admin/instances/users/select
+    - class
+      - instances: instances

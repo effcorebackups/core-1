@@ -1,15 +1,13 @@
 pages
-- users|page
-    title: Users
+- instances_manager|page
+    title: Manage instance User
     https: true
     display
       check: url
-      match: %^(?<base>/admin/users)(/(?<action>[a-z]+)/(?<id_user>[0-9]+)|)$%
+      match: %^(?<base>/admin/instances/(?<entity>[a-z]+))/(?<action>[a-z]+)(/(?<id_user>[a-z0-9]+)|)$%
     access
       roles
       - admins: admins
-    constants
-    - items_per_page: 50
     content
     - block_menu_main
         region: main_menu
@@ -47,6 +45,7 @@ pages
         region: content
         type: code
         handler: \effcore\selector::users_select
+        items_per_page: 50
     - users_update
         display
           check: args

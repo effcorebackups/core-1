@@ -8,8 +8,6 @@ pages
     access
       roles
       - admins: admins
-    constants
-    - items_per_page: 50
     content
     - block_menu_main
         region: main_menu
