@@ -28,7 +28,7 @@ pages
     - block_tabs
         region: tabs
         type: link
-        dpath: tabs/core/instance_manage
+        dpath: tabs/storage/instance_manage
     - users_insert
         display
           check: args
@@ -36,7 +36,8 @@ pages
           match: insert
         region: content
         type: code
-        handler: \effcore\selector::users_insert
+        handler: \effcore\instances_manager::instance_insert
+        handler_args: users
     - users_select
         display
           check: args
@@ -44,7 +45,8 @@ pages
           match: select
         region: content
         type: code
-        handler: \effcore\selector::users_select
+        handler: \effcore\instances_manager::instance_select
+        handler_args: users
         items_per_page: 50
     - users_update
         display
@@ -53,7 +55,8 @@ pages
           match: update
         region: content
         type: code
-        handler: \effcore\selector::users_update
+        handler: \effcore\instances_manager::instance_update
+        handler_args: users
     - users_delete
         display
           check: args
@@ -61,4 +64,5 @@ pages
           match: delete
         region: content
         type: code
-        handler: \effcore\selector::users_delete
+        handler: \effcore\instances_manager::instance_delete
+        handler_args: users

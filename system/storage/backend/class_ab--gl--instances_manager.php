@@ -5,13 +5,12 @@
   ##################################################################
 
 namespace effcore {
-          abstract class selector {
+          abstract class instances_manager {
 
-  static function users_insert($page) {return new text('users_insert is UNDER CONSTRUCTION');}
-  static function users_update($page) {return new text('users_update is UNDER CONSTRUCTION');}
-  static function users_delete($page) {return new text('users_delete is UNDER CONSTRUCTION');}
-
-  static function users_select($page) {
+  static function instance_insert($page, $entity_name = null) {return new text('users_insert is UNDER CONSTRUCTION');}
+  static function instance_update($page, $entity_name = null) {return new text('users_update is UNDER CONSTRUCTION');}
+  static function instance_delete($page, $entity_name = null) {return new text('users_delete is UNDER CONSTRUCTION');}
+  static function instance_select($page, $entity_name = null) {
     $pager = new pager();
     if ($pager->has_error) {
       factory::send_header_and_exit('not_found');

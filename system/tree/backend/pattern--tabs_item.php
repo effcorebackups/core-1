@@ -17,7 +17,7 @@ namespace effcore {
 
   function render_self() {
     $page = page::get_current();
-    $this->attribute_insert('href', $page->args_get('base').'/'.$this->action_name.'/1');
+    $this->attribute_insert('href', $page->args_get('base').'/'.$this->action_name);
     return parent::render_self();
   }
 
