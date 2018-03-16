@@ -31,7 +31,35 @@ pages
         region: tabs
         type: link
         dpath: tabs/core/instance_manage
-    - block_users
+    - users_insert
+        display
+          check: args
+          where: action
+          match: insert
         region: content
         type: code
-        handler: \effcore\modules\user\events_page::on_show_block_users
+        handler: \effcore\selector::users_insert
+    - users_select
+        display
+          check: args
+          where: action
+          match: select
+        region: content
+        type: code
+        handler: \effcore\selector::users_select
+    - users_update
+        display
+          check: args
+          where: action
+          match: update
+        region: content
+        type: code
+        handler: \effcore\selector::users_update
+    - users_delete
+        display
+          check: args
+          where: action
+          match: delete
+        region: content
+        type: code
+        handler: \effcore\selector::users_delete

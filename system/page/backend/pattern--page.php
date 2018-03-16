@@ -46,12 +46,18 @@ namespace effcore {
     $contents = [];
     foreach ($this->content as $c_block) {
       $c_region = isset($c_block->region) ?
-                        $c_block->region : 'content_1_1';
-      switch ($c_block->type) {
-        case 'text': $contents[$c_region][] = new text($c_block->content); break;
-        case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
-        case 'link': $contents[$c_region][] = storage::get('files')->select($c_block->dpath, true); break;
-        default: $contents[$c_region][] = $c_block;
+                        $c_block->region : 'content';
+      if (!isset($c_block->display) ||
+          (isset($c_block->display) &&
+                 $c_block->display->check === 'args' &&
+                 $this->args_get($c_block->display->where) ===
+                                 $c_block->display->match)) {
+        switch ($c_block->type) {
+          case 'text': $contents[$c_region][] = new text($c_block->content); break;
+          case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
+          case 'link': $contents[$c_region][] = storage::get('files')->select($c_block->dpath, true); break;
+          default: $contents[$c_region][] = $c_block;
+        }
       }
     }
 
@@ -174,7 +180,7 @@ namespace effcore {
             if ($c_page instanceof different_cache)
                 $c_page = $c_page->get_different_cache();
             static::$current = $c_page;
-          # fileter arguments
+          # filter arguments
             $c_args = array_filter($c_matches, 'is_string', ARRAY_FILTER_USE_KEY);
             foreach ($c_args as $c_key => $c_value) {
               $c_page->args_set($c_key, $c_value);
