@@ -1,13 +1,4 @@
 tabs_items
-- select|tabs_item
-    id: select
-    id_parent: instance_manage
-    parent_is_tab: true
-    action_name: select
-    title: Select
-    attributes
-    - class
-      - select: select
 - insert|tabs_item
     id: insert
     id_parent: instance_manage
@@ -17,6 +8,16 @@ tabs_items
     attributes
     - class
       - insert: insert
+- select|tabs_item
+    id: select
+    id_parent: instance_manage
+    parent_is_tab: true
+    action_name: select
+    title: Select
+    weight: -10
+    attributes
+    - class
+      - select: select
 - update|tabs_item
     id: update
     id_parent: instance_manage
