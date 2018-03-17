@@ -3,6 +3,7 @@ entities
     name: user
     storage_id: main
     catalog_id: users
+    title: User
     fields
       id
         type: autoincrement
@@ -45,6 +46,7 @@ entities
     name: session
     storage_id: main
     catalog_id: sessions
+    title: Session
     fields
       id
         type: varchar
@@ -75,6 +77,7 @@ entities
     name: role
     storage_id: main
     catalog_id: roles
+    title: Role
     fields
       id
         type: varchar
@@ -97,6 +100,7 @@ entities
     name: permission
     storage_id: main
     catalog_id: permissions
+    title: Permission
     fields
       id
         type: varchar
@@ -115,6 +119,7 @@ entities
     name: relation_role_ws_user
     storage_id: main
     catalog_id: relations_role_ws_user
+    title: Relation: Role + User
     fields
       id_role
         type: varchar
@@ -133,6 +138,7 @@ entities
     name: relation_role_ws_permission
     storage_id: main
     catalog_id: relations_role_ws_permission
+    title: Relation: Role + Permission
     fields
       id_role
         type: varchar

@@ -7,10 +7,26 @@
 namespace effcore {
           abstract class instances_manager {
 
-  static function instance_insert($page, $entity_name = null) {return new text('users_insert is UNDER CONSTRUCTION');}
-  static function instance_update($page, $entity_name = null) {return new text('users_update is UNDER CONSTRUCTION');}
-  static function instance_delete($page, $entity_name = null) {return new text('users_delete is UNDER CONSTRUCTION');}
-  static function instance_select($page, $entity_name = null) {
+  static function instance_insert($page) {
+    $entities = entity::get_all();
+    $links = new markup('ul');
+    foreach ($entities as $c_entity) {
+      $links->child_insert(
+        new markup('li', [], new markup('a', ['href' => '/admin/instances/'.$c_entity->name.'/insert'], $c_entity->title))
+      );
+    }
+    return $links;
+  }
+
+  static function instance_update($page) {
+    return new text('users_update is UNDER CONSTRUCTION');
+  }
+
+  static function instance_delete($page) {
+    return new text('users_delete is UNDER CONSTRUCTION');
+  }
+
+  static function instance_select($page) {
     $pager = new pager();
     if ($pager->has_error) {
       factory::send_header_and_exit('not_found');

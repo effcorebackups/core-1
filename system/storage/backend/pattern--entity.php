@@ -12,13 +12,15 @@ namespace effcore {
     return [
       'name'       => 'name',
       'storage_id' => 'storage_id',
-      'catalog_id' => 'catalog_id'
+      'catalog_id' => 'catalog_id',
+      'title'      => 'title'
     ];
   }
 
   public $name;
   public $storage_id;
   public $catalog_id;
+  public $title;
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
@@ -99,9 +101,14 @@ namespace effcore {
     return     static::$cache[$name];
   }
 
-  static function get_all_by_module($name) {
+  static function get_all() {
+    if   (!static::$cache) static::init();
+    return static::$cache;
+  }
+
+  static function get_all_by_module($module) {
     if   (!static::$cache_orig) static::init();
-    return static::$cache_orig[$name];
+    return static::$cache_orig[$module];
   }
 
 }}

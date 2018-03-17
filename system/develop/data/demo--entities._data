@@ -3,6 +3,7 @@ entities
     name: demo_types
     storage_id: main
     catalog_id: demo_types
+    title: Demo: types
     fields
       id
         type: autoincrement
@@ -39,6 +40,7 @@ entities
     name: demo_autoincrement
     storage_id: main
     catalog_id: demo_autoincrement
+    title: Demo: autoincrement
     fields
       f_integer_1
         type: autoincrement
@@ -56,6 +58,7 @@ entities
     name: demo_constraints
     storage_id: main
     catalog_id: demo_constraints
+    title: Demo: constraints
     fields
       f_integer_1
         type: integer
@@ -84,6 +87,7 @@ entities
     name: demo_indexes
     storage_id: main
     catalog_id: demo_indexes
+    title: Demo: indexes
     fields
       f_integer_1
         type: integer
