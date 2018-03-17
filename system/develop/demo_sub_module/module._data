@@ -1,6 +1,0 @@
-module
-  id: demo_sub_module
-  title: Demo sub module title
-  description: Demo sub module description.
-  version: 1.00
-  state: off

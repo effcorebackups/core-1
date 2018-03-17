@@ -62,8 +62,6 @@ translations
     - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
     - Delete: Удалить
     - delete: удалить
-    - Demo sub module description.: Описание демонстрационного подмодуля
-    - Demo sub module title: Заголовок демонстрационного подмодуля
     - Demo: Демо
     - Description: Описание
     - Develop: Разработка
