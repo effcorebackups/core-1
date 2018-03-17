@@ -82,18 +82,17 @@ namespace effcore {
           ($this->anchor ? '#'.$this->anchor : '');
   }
 
-  function get_args($arg_id, $scope = 'path') {
-    switch ($scope) {
-      case 'path':
-        $args = explode('/', $this->path);
-        return isset($args[$arg_id]) ?
-                     $args[$arg_id] : null;
-      case 'query':
-        $args = [];
-        parse_str($this->query, $args);
-        return isset($args[$arg_id]) ?
-                     $args[$arg_id] : null;
-    }
+  function get_query_arg($arg_id) {
+    $args = [];
+    parse_str($this->query, $args);
+    return isset($args[$arg_id]) ?
+                 $args[$arg_id] : null;
+  }
+
+  function get_path_arg($arg_id) {
+    $args = explode('/', $this->path);
+    return isset($args[$arg_id]) ?
+                 $args[$arg_id] : null;
   }
 
   ######################
@@ -112,7 +111,7 @@ namespace effcore {
   }
 
   static function get_back_url() {
-    $back_url = static::get_current()->get_args('back', 'query');
+    $back_url = static::get_current()->get_query_arg('back');
     return $back_url ? urldecode($back_url) : '';
   }
 

@@ -20,7 +20,7 @@ namespace effcore\modules\user {
         case '%%_email_context':
         case '%%_nick_context':
           $arg_num = $args[0];
-          $id_user = url::get_current()->get_args($arg_num);
+          $id_user = url::get_current()->get_path_arg($arg_num);
           $user = (new instance('user', ['id' => $id_user]))->select();
           if ($user && $match == '%%_id_user_context') return $user->id;
           if ($user && $match == '%%_email_context')   return $user->email;
