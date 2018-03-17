@@ -29,12 +29,12 @@ pages
     - form_demo
         region: content
         type: link
-        dpath: forms/develop/demo
+        dpath: forms/demo/demo
     - block_demo_static
         region: content
         type: link
-        dpath: blocks/develop/demo
+        dpath: blocks/demo/demo
     - block_demo_dynamic
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_demo_dynamic
+        handler: \effcore\modules\demo\events_page::on_show_block_demo_dynamic

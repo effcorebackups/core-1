@@ -7,15 +7,3 @@ events
   - develop|event
       for: develop
       handler: \effcore\modules\develop\events_module::on_install
-  on_form_init
-  - demo|event
-      for: demo
-      handler: \effcore\modules\develop\events_form::on_init_demo
-  on_form_validate
-  - demo|event
-      for: demo
-      handler: \effcore\modules\develop\events_form::on_validate_demo
-  on_form_submit
-  - demo|event
-      for: demo
-      handler: \effcore\modules\develop\events_form::on_submit_demo

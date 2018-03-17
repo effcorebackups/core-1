@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\develop {
+namespace effcore\modules\demo {
           use \effcore\message;
           use \effcore\translation;
           abstract class events_form extends \effcore\events_form {
