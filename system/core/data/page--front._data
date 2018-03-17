@@ -2,7 +2,8 @@ pages
 - front|page
     title: Front page
     display
-      check: url
+      check: path
+      where: url
       match: %^/$%
     content
     - block_menu_main

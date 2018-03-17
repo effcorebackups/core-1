@@ -3,7 +3,8 @@ pages
     title: Login
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/user/login$%
     access
       roles

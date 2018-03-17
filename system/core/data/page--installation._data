@@ -3,7 +3,8 @@ pages
     title: Installation
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/install$%
     access
       roles

@@ -3,7 +3,8 @@ pages
     title: Information
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/admin/info$%
     access
       roles

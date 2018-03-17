@@ -101,7 +101,8 @@ namespace effcore {
     $frontend = storage::get('files')->select('frontend');
     foreach ($frontend as $module_id => $c_module_frontend) {
       foreach ($c_module_frontend as $c_row_id => $c_item) {
-        if (($c_item->display->check === 'url' && preg_match(
+        if (($c_item->display->check === 'path'  &&
+             $c_item->display->where === 'url'   && preg_match(
              $c_item->display->match, url::get_current()->get_path())) ||
             ($c_item->display->check === 'dpath' &&
              $c_item->display->where === 'block' && preg_match(
@@ -173,7 +174,8 @@ namespace effcore {
     foreach (static::get_all() as $c_module_id => $c_module_pages) {
       foreach ($c_module_pages as $c_row_id => $c_page) {
         $c_matches = [];
-        if ($c_page->display->check === 'url' && preg_match(
+        if ($c_page->display->check === 'path' &&
+            $c_page->display->where === 'url' && preg_match(
             $c_page->display->match, url::get_current()->get_path(), $c_matches)) {
           if (!isset($c_page->access) ||
               (isset($c_page->access) && access::check($c_page->access))) {

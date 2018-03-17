@@ -1,7 +1,8 @@
 frontend
 - frontend_page_n
     display
-      check: url
+      check: path
+      where: url
       match: %.*%
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge ...

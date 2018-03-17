@@ -3,7 +3,8 @@ pages
     title: Registration
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/user/registration$%
     access
       roles

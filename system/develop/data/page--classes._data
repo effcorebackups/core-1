@@ -3,7 +3,8 @@ pages
     title: Classes
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/develop/classes$%
     access
       roles

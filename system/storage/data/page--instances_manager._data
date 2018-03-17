@@ -3,7 +3,8 @@ pages
     title: Manage instance User
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^(?<base>/admin/instances/(?<entity>[a-z]+))/(?<action>[a-z]+)(/(?<id_user>[a-z0-9]+)|)$%
     access
       roles

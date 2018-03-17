@@ -3,7 +3,8 @@ pages
     title: Decoration
     https: true
     display
-      check: url
+      check: path
+      where: url
       match: %^/admin/decoration$%
     access
       roles
