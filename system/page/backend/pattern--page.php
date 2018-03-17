@@ -101,12 +101,14 @@ namespace effcore {
     $frontend = storage::get('files')->select('frontend');
     foreach ($frontend as $module_id => $c_module_frontend) {
       foreach ($c_module_frontend as $c_row_id => $c_item) {
-        if (($c_item->display->check === 'path'  &&
-             $c_item->display->where === 'url'   && preg_match(
-             $c_item->display->match, url::get_current()->get_path())) ||
-            ($c_item->display->check === 'dpath' &&
-             $c_item->display->where === 'block' && preg_match(
-             $c_item->display->match.'m', implode(nl, $used_dpaths)))) {
+        if (($c_item->display->where === 'url'   && $c_item->display->check === 'protocol' && preg_match($c_item->display->match, url::get_current()->get_protocol())) ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'domain'   && preg_match($c_item->display->match, url::get_current()->get_domain()))   ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'path'     && preg_match($c_item->display->match, url::get_current()->get_path()))     ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'query'    && preg_match($c_item->display->match, url::get_current()->get_query()))    ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'anchor'   && preg_match($c_item->display->match, url::get_current()->get_anchor()))   ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'type'     && preg_match($c_item->display->match, url::get_current()->get_type()))     ||
+            ($c_item->display->where === 'url'   && $c_item->display->check === 'full'     && preg_match($c_item->display->match, url::get_current()->get_full()))     ||
+            ($c_item->display->where === 'block' && $c_item->display->check === 'dpath'    && preg_match($c_item->display->match.'m', implode(nl, $used_dpaths)))) {
 
         # render meta
           if (isset($c_item->favicons)) {
@@ -174,9 +176,13 @@ namespace effcore {
     foreach (static::get_all() as $c_module_id => $c_module_pages) {
       foreach ($c_module_pages as $c_row_id => $c_page) {
         $c_matches = [];
-        if ($c_page->display->check === 'path' &&
-            $c_page->display->where === 'url' && preg_match(
-            $c_page->display->match, url::get_current()->get_path(), $c_matches)) {
+        if (($c_page->display->where === 'url' && $c_page->display->check === 'protocol' && preg_match($c_page->display->match, url::get_current()->get_protocol(), $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'domain'   && preg_match($c_page->display->match, url::get_current()->get_domain(),   $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'path'     && preg_match($c_page->display->match, url::get_current()->get_path(),     $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'query'    && preg_match($c_page->display->match, url::get_current()->get_query(),    $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'anchor'   && preg_match($c_page->display->match, url::get_current()->get_anchor(),   $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'type'     && preg_match($c_page->display->match, url::get_current()->get_type(),     $c_matches)) ||
+            ($c_page->display->where === 'url' && $c_page->display->check === 'full'     && preg_match($c_page->display->match, url::get_current()->get_full(),     $c_matches)) ) {
           if (!isset($c_page->access) ||
               (isset($c_page->access) && access::check($c_page->access))) {
             if ($c_page instanceof different_cache)
