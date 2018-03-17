@@ -1,0 +1,6 @@
+module|module
+  id: test
+  title: Test
+  description: Module for testing.
+  version: 1.00
+  state: on

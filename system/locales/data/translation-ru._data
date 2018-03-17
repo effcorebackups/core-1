@@ -160,6 +160,7 @@ translations
     - Module for development.: Модуль для разработки.
     - Module for internationalization.: Модуль для интернационализации.
     - Module for storages support.: Модуль поддержки хранилищ данных.
+    - Module for testing.: Модуль для тестирования.
     - Module for working with hierarchical structures like trees.: Модуль для работы с такими иерархическими структурами как деревья.
     - Module for working with pages.: Модуль работы со страницами.
     - Module for working with user accounts and permissions.: Модуль работы с пользовательскими аккаунтами и разрешениями.
@@ -238,6 +239,7 @@ translations
     - System: Система
     - Table prefix: Префикс таблиц
     - Telephone: Телефон
+    - Test: Тест
     - Text: Текст
     - Textarea: Текстовая область
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size

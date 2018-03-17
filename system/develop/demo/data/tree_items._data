@@ -1,0 +1,12 @@
+tree_items
+- demo|tree_item
+    id: demo
+    id_parent: develop
+    title: Demo
+    access
+      roles
+      - admins: admins
+    attributes
+    - href: /develop/demo
+    - class
+      - demo: demo

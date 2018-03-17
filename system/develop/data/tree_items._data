@@ -10,17 +10,6 @@ tree_items
     attributes
     - class
       - develop: develop
-- demo|tree_item
-    id: demo
-    id_parent: develop
-    title: Demo
-    access
-      roles
-      - admins: admins
-    attributes
-    - href: /develop/demo
-    - class
-      - demo: demo
 - classes|tree_item
     id: classes
     id_parent: develop
