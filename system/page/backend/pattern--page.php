@@ -49,9 +49,9 @@ namespace effcore {
                         $c_block->region : 'content';
       if (!isset($c_block->display) ||
           (isset($c_block->display) &&
-                 $c_block->display->check === 'args' &&
-                 $this->args_get($c_block->display->where) ===
-                                 $c_block->display->match)) {
+                 $c_block->display->where === 'page_args' && preg_match(
+                 $c_block->display->match, $this->args_get(
+                 $c_block->display->check)))) {
         switch ($c_block->type) {
           case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
           case 'link': $contents[$c_region][] = storage::get('files')->select($c_block->dpath, true); break;

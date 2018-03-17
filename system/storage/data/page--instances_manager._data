@@ -31,34 +31,34 @@ pages
         dpath: tabs/storage/instance_manage
     - users_insert
         display
-          check: args
-          where: action
-          match: insert
+          check: action
+          where: page_args
+          match: %insert%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_insert
     - users_select
         display
-          check: args
-          where: action
-          match: select
+          check: action
+          where: page_args
+          match: %select%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_select
         items_per_page: 50
     - users_update
         display
-          check: args
-          where: action
-          match: update
+          check: action
+          where: page_args
+          match: %update%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_update
     - users_delete
         display
-          check: args
-          where: action
-          match: delete
+          check: action
+          where: page_args
+          match: %delete%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_delete
