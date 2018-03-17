@@ -53,8 +53,8 @@ frontend
 - frontend_form_n
     display
       check: dpath
-      match: %^forms/.*$%
       where: block
+      match: %^forms/.*$%
     styles
     - form_style
         file: frontend/form._style

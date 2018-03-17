@@ -53,9 +53,9 @@ namespace effcore {
                  $this->args_get($c_block->display->where) ===
                                  $c_block->display->match)) {
         switch ($c_block->type) {
-          case 'text': $contents[$c_region][] = new text($c_block->content); break;
           case 'code': $contents[$c_region][] = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
           case 'link': $contents[$c_region][] = storage::get('files')->select($c_block->dpath, true); break;
+          case 'text': $contents[$c_region][] = new text($c_block->content); break;
           default: $contents[$c_region][] = $c_block;
         }
       }
@@ -101,11 +101,11 @@ namespace effcore {
     $frontend = storage::get('files')->select('frontend');
     foreach ($frontend as $module_id => $c_module_frontend) {
       foreach ($c_module_frontend as $c_row_id => $c_item) {
-        if ( ($c_item->display->check === 'url' && preg_match(
-              $c_item->display->match, url::get_current()->get_path())) ||
-             ($c_item->display->check === 'dpath' &&
-              $c_item->display->where === 'block' && preg_match(
-              $c_item->display->match.'m', implode(nl, $used_dpaths)))) {
+        if (($c_item->display->check === 'url' && preg_match(
+             $c_item->display->match, url::get_current()->get_path())) ||
+            ($c_item->display->check === 'dpath' &&
+             $c_item->display->where === 'block' && preg_match(
+             $c_item->display->match.'m', implode(nl, $used_dpaths)))) {
 
         # render meta
           if (isset($c_item->favicons)) {

@@ -37,7 +37,6 @@ pages
         region: content
         type: code
         handler: \effcore\instances_manager::instance_insert
-        handler_args: users
     - users_select
         display
           check: args
@@ -46,7 +45,6 @@ pages
         region: content
         type: code
         handler: \effcore\instances_manager::instance_select
-        handler_args: users
         items_per_page: 50
     - users_update
         display
@@ -56,7 +54,6 @@ pages
         region: content
         type: code
         handler: \effcore\instances_manager::instance_update
-        handler_args: users
     - users_delete
         display
           check: args
@@ -65,4 +62,3 @@ pages
         region: content
         type: code
         handler: \effcore\instances_manager::instance_delete
-        handler_args: users
