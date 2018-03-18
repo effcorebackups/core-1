@@ -8,7 +8,8 @@
    width="48"
    height="48"
    viewBox="0 0 48 48"
-   style="shape-rendering:crispEdges">
+   style="shape-rendering:auto">
+
   <metadata>
     <rdf:RDF>
       <cc:Work>
@@ -19,15 +20,18 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+
   <rect
      id="bg"
-     style="fill:whitesmoke;shape-rendering:auto"
+     style="fill:whitesmoke"
      width="48"
      height="48"
      x="0"
      y="0" />
+
   <path
      id="human"
-     style="fill:silver;shape-rendering:auto"
+     style="fill:silver"
      d="M 24,5 A 12.5,12.5 0 0 0 11.5,17.5 12.5,12.5 0 0 0 24,30 12.5,12.5 0 0 0 36.5,17.5 12.5,12.5 0 0 0 24,5 Z m 0,28 A 24,15 0 0 0 0,48 l 48,0 A 24,15 0 0 0 24,33 Z" />
+
 </svg>
