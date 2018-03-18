@@ -93,7 +93,7 @@ namespace effcore {
     arsort($modules_path);
   # parse each _data file
     foreach ($files as $c_file) {
-      $c_scope = 'global';
+      $c_scope = 'system';
       foreach ($modules_path as $c_dir_parent => $c_dir_relative) {
         if (strpos($c_file->get_dirs_relative(), $c_dir_relative) === 0) {
           $c_scope = $c_dir_parent;

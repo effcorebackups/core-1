@@ -19,9 +19,6 @@ entities
       password_hash
         type: varchar
         size: 255
-      created
-        type: datetime
-        not_null: true
       is_embed
         type: integer
         not_null: true

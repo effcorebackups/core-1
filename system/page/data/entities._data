@@ -13,9 +13,6 @@ entities
         type: varchar
         size: 32
         not_null: true
-      created
-        type: datetime
-        not_null: true
       attempts
         type: integer
         not_null: true
@@ -27,8 +24,3 @@ entities
         type: primary key
         fields
         - ip_address: ip_address
-    indexes
-    - idx_created
-        type: index
-        fields
-        - created: created

@@ -26,7 +26,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
-    $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/global/build')));
+    $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/system/build')));
     $info->child_insert(new markup('dt', [], 'Author'));
     $info->child_insert(new markup('dd', [], 'Maxim Rysevets'));
     $info->child_insert(new markup('dt', [], 'Build years'));

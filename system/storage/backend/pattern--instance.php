@@ -37,11 +37,14 @@ namespace effcore {
 
   function insert() {
     $storage = storage::get($this->get_entity()->get_storage_id());
+    $this->created = factory::datetime_get();
+    $this->updated = factory::datetime_get();
     return $storage->insert_instance($this);
   }
 
   function update() {
     $storage = storage::get($this->get_entity()->get_storage_id());
+    $this->updated = factory::datetime_get();
     return $storage->update_instance($this);
   }
 
@@ -70,13 +73,15 @@ namespace effcore {
   }
 
   static function get($row_id) {
-    if   (!static::$cache) static::init();
-    return static::$cache[$row_id];
+    if         (!static::$cache) static::init();
+    return isset(static::$cache[$row_id]) ?
+                 static::$cache[$row_id] : null;
   }
 
   static function get_by_module($name) {
-    if   (!static::$cache_orig) static::init();
-    return static::$cache_orig[$name];
+    if         (!static::$cache_orig) static::init();
+    return isset(static::$cache_orig[$name]) ?
+                 static::$cache_orig[$name] : null;
   }
 
 }}

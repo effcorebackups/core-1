@@ -58,6 +58,24 @@ namespace effcore {
   }
 
   function install() {
+  # add field "created" and index for it
+    if (!isset($this->fields->created)) {
+      $this->fields->created = new \stdClass();
+      $this->fields->created->type = 'datetime';
+      $this->fields->created->not_null = true;
+      $this->indexes['idx_created'] = new \stdClass();
+      $this->indexes['idx_created']->type = 'index';
+      $this->indexes['idx_created']->fields = ['created' => 'created'];
+    }
+  # add field "updated" and index for it
+    if (!isset($this->fields->updated)) {
+      $this->fields->updated = new \stdClass();
+      $this->fields->updated->type = 'datetime';
+      $this->fields->updated->not_null = true;
+      $this->indexes['idx_updated'] = new \stdClass();
+      $this->indexes['idx_updated']->type = 'index';
+      $this->indexes['idx_updated']->fields = ['updated' => 'updated'];
+    }
     $storage = storage::get($this->get_storage_id());
     return $storage->install_entity($this);
   }
