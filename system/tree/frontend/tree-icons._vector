@@ -35,9 +35,9 @@
        d="M 44,20 V 44" />
     <circle
        id="tune_hand_1"
-       r="2.5"
        cy="39.5"
        cx="20"
+       r="2.5"
        style="fill:white;fill-opacity:1;stroke:none" />
     <circle
        id="tune_hand_2"
@@ -47,9 +47,9 @@
        style="fill:white;fill-opacity:1;stroke:none" />
     <circle
        id="tune_hand_3"
-       r="2.5"
        cy="24.5"
        cx="44"
+       r="2.5"
        style="fill:white;fill-opacity:1;stroke:none" />
   </g>
 
