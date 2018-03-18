@@ -38,7 +38,7 @@ namespace effcore {
                                   '(?<type>class|trait|interface)\\s+'.
                                   '(?<name>[a-z0-9_]+)\\s*'.
                        '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
-                    '(?:implements (?<implements>[a-z0-9_,\\\\ ]+)|)%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
+                    '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
         foreach ($c_matches as $c_match) {
           if (!empty($c_match['namespace']) &&
               !empty($c_match['name'])) {
@@ -47,7 +47,7 @@ namespace effcore {
             $c_info->namespace = $c_match['namespace'];
             $c_info->name      = $c_match['name'];
             if (!empty($c_match['extends']))    $c_info->extends    = trim($c_match['extends']);
-            if (!empty($c_match['implements'])) $c_info->implements = static::array_values_map_to_keys(explode(', ', trim($c_match['implements'])));
+            if (!empty($c_match['implements'])) $c_info->implements = trim($c_match['implements']);
             $c_info->file = $c_file->get_path_relative();
             $classes_map[$c_match['namespace'].'\\'.
                          $c_match['name']] = $c_info;
