@@ -252,7 +252,7 @@ namespace effcore {
     }
   # call the interface dependent functions
     foreach ($pc_objects as $c_object) $c_object->__construct();
-    foreach ($pi_objects as $c_object) $c_object->init();
+    foreach ($pi_objects as $c_object) $c_object->__post_init();
     return $return;
   }
 

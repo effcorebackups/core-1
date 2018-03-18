@@ -1,8 +1,130 @@
 entities
+- permission|entity
+    name: permission
+    storage_id: main
+    catalog_id: permissions
+    ws_created: true
+    ws_updated: true
+    title: Permission
+    fields
+      id
+        type: varchar
+        size: 255
+        not_null: true
+      title
+        type: varchar
+        size: 255
+        not_null: true
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - id: id
+- relation_role_ws_permission|entity
+    name: relation_role_ws_permission
+    storage_id: main
+    catalog_id: relations_role_ws_permission
+    ws_created: true
+    ws_updated: true
+    title: Relation: Role + Permission
+    fields
+      id_role
+        type: varchar
+        size: 255
+        not_null: true
+      id_permission
+        type: varchar
+        size: 255
+        not_null: true
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - id_role: id_role
+        - id_permission: id_permission
+- relation_role_ws_user|entity
+    name: relation_role_ws_user
+    storage_id: main
+    catalog_id: relations_role_ws_user
+    ws_created: true
+    ws_updated: true
+    title: Relation: Role + User
+    fields
+      id_role
+        type: varchar
+        size: 255
+        not_null: true
+      id_user
+        type: integer
+        not_null: true
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - id_role: id_role
+        - id_user: id_user
+- role|entity
+    name: role
+    storage_id: main
+    catalog_id: roles
+    ws_created: true
+    ws_updated: true
+    title: Role
+    fields
+      id
+        type: varchar
+        size: 255
+        not_null: true
+      title
+        type: varchar
+        size: 255
+        not_null: true
+      is_embed
+        type: integer
+        not_null: true
+        default: 0
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - id: id
+- session|entity
+    name: session
+    storage_id: main
+    catalog_id: sessions
+    title: Session
+    fields
+      id
+        type: varchar
+        size: 255
+        not_null: true
+      id_user
+        type: integer
+        not_null: true
+      remember
+        type: integer
+        not_null: true
+        default: 0
+      fixed_ip
+        type: integer
+        not_null: true
+        default: 0
+      expire
+        type: datetime
+      data
+        type: blob
+        null: true
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - id: id
 - user|entity
     name: user
     storage_id: main
     catalog_id: users
+    ws_created: true
+    ws_updated: true
     title: User
     fields
       id
@@ -39,115 +161,3 @@ entities
         type: unique
         fields
         - nick: nick
-- session|entity
-    name: session
-    storage_id: main
-    catalog_id: sessions
-    title: Session
-    fields
-      id
-        type: varchar
-        size: 255
-        not_null: true
-      id_user
-        type: integer
-        not_null: true
-      remember
-        type: integer
-        not_null: true
-        default: 0
-      fixed_ip
-        type: integer
-        not_null: true
-        default: 0
-      expire
-        type: datetime
-      data
-        type: blob
-        null: true
-    constraints
-    - key_id
-        type: primary key
-        fields
-        - id: id
-- role|entity
-    name: role
-    storage_id: main
-    catalog_id: roles
-    title: Role
-    fields
-      id
-        type: varchar
-        size: 255
-        not_null: true
-      title
-        type: varchar
-        size: 255
-        not_null: true
-      is_embed
-        type: integer
-        not_null: true
-        default: 0
-    constraints
-    - key_id
-        type: primary key
-        fields
-        - id: id
-- permission|entity
-    name: permission
-    storage_id: main
-    catalog_id: permissions
-    title: Permission
-    fields
-      id
-        type: varchar
-        size: 255
-        not_null: true
-      title
-        type: varchar
-        size: 255
-        not_null: true
-    constraints
-    - key_id
-        type: primary key
-        fields
-        - id: id
-- relation_role_ws_user|entity
-    name: relation_role_ws_user
-    storage_id: main
-    catalog_id: relations_role_ws_user
-    title: Relation: Role + User
-    fields
-      id_role
-        type: varchar
-        size: 255
-        not_null: true
-      id_user
-        type: integer
-        not_null: true
-    constraints
-    - key_id
-        type: primary key
-        fields
-        - id_role: id_role
-        - id_user: id_user
-- relation_role_ws_permission|entity
-    name: relation_role_ws_permission
-    storage_id: main
-    catalog_id: relations_role_ws_permission
-    title: Relation: Role + Permission
-    fields
-      id_role
-        type: varchar
-        size: 255
-        not_null: true
-      id_permission
-        type: varchar
-        size: 255
-        not_null: true
-    constraints
-    - key_id
-        type: primary key
-        fields
-        - id_role: id_role
-        - id_permission: id_permission

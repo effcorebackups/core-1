@@ -3,6 +3,8 @@ entities
     name: tree
     storage_id: main
     catalog_id: trees
+    ws_created: true
+    ws_updated: true
     title: Tree
     fields
       id
@@ -21,6 +23,8 @@ entities
     name: tree_item
     storage_id: main
     catalog_id: tree_items
+    ws_created: true
+    ws_updated: true
     title: Tree item
     fields
       id

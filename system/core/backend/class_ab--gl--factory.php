@@ -129,7 +129,7 @@ namespace effcore {
           $return.= static::data_export($c_value, $prefix.'->'.$c_prop);
         }
         if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
-        if ($c_is_post_init)        $return.= $prefix.'->init();'.nl;
+        if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
         break;
       case 'boolean': $return.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;                    break;
       case 'NULL'   : $return.= $prefix.' = null;'.nl;                                              break;

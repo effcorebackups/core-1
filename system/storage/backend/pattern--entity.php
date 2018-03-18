@@ -6,7 +6,8 @@
 
 namespace effcore {
           class entity
-          implements \effcore\has_different_cache {
+          implements \effcore\has_different_cache,
+                     \effcore\post_init {
 
   static function get_non_different_properties() {
     return [
@@ -20,10 +21,33 @@ namespace effcore {
   public $name;
   public $storage_id;
   public $catalog_id;
+  public $ws_created;
+  public $ws_updated;
   public $title;
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
+
+  function __post_init() {
+  # add field "created" and index for it
+    if ($this->ws_created) {
+      $this->fields->created = new \stdClass();
+      $this->fields->created->type = 'datetime';
+      $this->fields->created->not_null = true;
+      $this->indexes['idx_created'] = new \stdClass();
+      $this->indexes['idx_created']->type = 'index';
+      $this->indexes['idx_created']->fields = ['created' => 'created'];
+    }
+  # add field "updated" and index for it
+    if ($this->ws_updated) {
+      $this->fields->updated = new \stdClass();
+      $this->fields->updated->type = 'datetime';
+      $this->fields->updated->not_null = true;
+      $this->indexes['idx_updated'] = new \stdClass();
+      $this->indexes['idx_updated']->type = 'index';
+      $this->indexes['idx_updated']->fields = ['updated' => 'updated'];
+    }
+  }
 
   function get_name()             {return $this->name;}
   function get_storage_id()       {return $this->storage_id;}
@@ -58,24 +82,6 @@ namespace effcore {
   }
 
   function install() {
-  # add field "created" and index for it
-    if (!isset($this->fields->created)) {
-      $this->fields->created = new \stdClass();
-      $this->fields->created->type = 'datetime';
-      $this->fields->created->not_null = true;
-      $this->indexes['idx_created'] = new \stdClass();
-      $this->indexes['idx_created']->type = 'index';
-      $this->indexes['idx_created']->fields = ['created' => 'created'];
-    }
-  # add field "updated" and index for it
-    if (!isset($this->fields->updated)) {
-      $this->fields->updated = new \stdClass();
-      $this->fields->updated->type = 'datetime';
-      $this->fields->updated->not_null = true;
-      $this->indexes['idx_updated'] = new \stdClass();
-      $this->indexes['idx_updated']->type = 'index';
-      $this->indexes['idx_updated']->fields = ['updated' => 'updated'];
-    }
     $storage = storage::get($this->get_storage_id());
     return $storage->install_entity($this);
   }

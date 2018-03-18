@@ -75,6 +75,7 @@ translations
     - edit: редактировать
     - Element %%_info.: Элемент %%_info.
     - Elements: Элементы
+    - email: адрес электронной почты
     - EMail: Адрес электронной почты
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - enable: включить
@@ -171,6 +172,7 @@ translations
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
+    - nick: ник
     - Nick: Ник
     - no items: нет элементов
     - No: Нет
@@ -210,6 +212,7 @@ translations
     - Restore the storage credentials in "%%_path" dirrectory or reinstall this system on the page\: %%_link: Восстановите учетные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
     - restore: восстановить
     - return: возврат
+    - roles: роли
     - Roles: Роли
     - save: сохранить
     - search: поиск
@@ -257,6 +260,7 @@ translations
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - uninstall: удалить
     - Update: Обновить
+    - updated: обновлено
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
     - User %%_nick was deleted.: Пользователь %%_nick был удален.
     - User %%_nick was not deleted!: Пользователь %%_nick не был удален.

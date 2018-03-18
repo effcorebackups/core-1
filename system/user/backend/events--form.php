@@ -217,8 +217,7 @@ namespace effcore\modules\user {
         $user = (new instance('user', [
           'email'         => strtolower($values['email'][0]),
           'nick'          => strtolower($values['nick'][0]),
-          'password_hash' => factory::hash_password_get($values['password'][0]),
-          'created'       => factory::datetime_get()
+          'password_hash' => factory::hash_password_get($values['password'][0])
         ]))->insert();
         if ($user) {
           session::insert($user->id,
