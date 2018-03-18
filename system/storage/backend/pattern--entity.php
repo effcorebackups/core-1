@@ -6,7 +6,7 @@
 
 namespace effcore {
           class entity
-          implements \effcore\has_different_cache, \effcore\post_init {
+          implements \effcore\has_different_cache, \effcore\post_parsing {
 
   static function get_non_different_properties() {
     return [
@@ -27,9 +27,9 @@ namespace effcore {
   public $constraints = [];
   public $indexes = [];
 
-  function __post_init() {
+  function __post_parsing() {
   # add field "created" and index for it
-    if ($this->ws_created && !isset($this->fields->created)) {
+    if ($this->ws_created) {
       $this->fields->created = new \stdClass();
       $this->fields->created->type = 'datetime';
       $this->fields->created->not_null = true;
@@ -38,7 +38,7 @@ namespace effcore {
       $this->indexes['idx_created']->fields = ['created' => 'created'];
     }
   # add field "updated" and index for it
-    if ($this->ws_updated && !isset($this->fields->updated)) {
+    if ($this->ws_updated) {
       $this->fields->updated = new \stdClass();
       $this->fields->updated->type = 'datetime';
       $this->fields->updated->not_null = true;
