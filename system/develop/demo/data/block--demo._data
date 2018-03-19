@@ -31,6 +31,90 @@ blocks
             children
             - content|text
                 text: View more
+  # unordered list
+    - demo_unordered_list_title|markup
+        tag_name: h3
+        children
+        - content|text
+            text: Unordered list
+    - demo_unordered_list|markup
+        tag_name: ul
+        children
+        - li_1|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 1
+        - li_2|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 2
+            - li_2_ul|markup
+                tag_name: ul
+                children
+                - li_2_1|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.1
+                - li_2_2|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.2
+                - li_2_3|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.3
+        - li_3|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 3
+  # ordered list
+    - demo_ordered_list_title|markup
+        tag_name: h3
+        children
+        - content|text
+            text: Ordered list
+    - demo_ordered_list|markup
+        tag_name: ol
+        children
+        - li_1|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 1
+        - li_2|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 2
+            - li_2_ol|markup
+                tag_name: ol
+                children
+                - li_2_1|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.1
+                - li_2_2|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.2
+                - li_2_3|markup
+                    tag_name: li
+                    children
+                    - content|text
+                        text: Item 2.3
+        - li_3|markup
+            tag_name: li
+            children
+            - content|text
+                text: Item 3
   # table
     - demo_table_title|markup
         tag_name: h3
