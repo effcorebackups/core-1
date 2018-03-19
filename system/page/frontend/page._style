@@ -41,9 +41,10 @@
   /* messages */
   x-messages {display: block; margin: 50px auto}
   x-messages ul {margin: 10px 0; padding: 15px 20px; font-size: 16px; background-color: gray; color: white}
-  x-messages ul.notice  {background-color: %%_color_ok}
-  x-messages ul.error   {background-color: %%_color_error}
+  x-messages ul.notice  {background-color: gray}
+  x-messages ul.ok      {background-color: %%_color_ok}
   x-messages ul.warning {background-color: %%_color_warning}
+  x-messages ul.error   {background-color: %%_color_error}
   x-messages ul li {margin: 0 0 0 15px; padding: 0}
   x-messages ul li:only-child {margin: 0; list-style: none}
   x-messages a {color: white}
