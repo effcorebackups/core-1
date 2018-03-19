@@ -15,7 +15,7 @@ blocks
         tag_name: h3
         children
         - content|text
-            text: Paragraph [h3]
+            text: Paragraph
     - demo_paragraph|markup
         tag_name: p
         children
@@ -23,7 +23,14 @@ blocks
             text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 !                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 !                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-!                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+        - link_view_more|markup
+            tag_name: a
+            attributes
+            - href: /
+            children
+            - content|text
+                text: View more
   # table
     - demo_table_title|markup
         tag_name: h3
