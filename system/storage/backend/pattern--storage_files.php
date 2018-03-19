@@ -191,7 +191,7 @@ namespace effcore {
     $pi_objects = []; # classes with interface "post_init"
     $pp_objects = []; # classes with interface "post_parsing"
     $line_num = 0;
-    foreach (explode(nl, $data) as $c_line) {
+    foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
       $line_num++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;

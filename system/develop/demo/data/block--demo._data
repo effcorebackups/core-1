@@ -10,7 +10,26 @@ blocks
         children
         - content|text
             text: Static block
+  # paragraph
+    - demo_paragraph_title|markup
+        tag_name: h3
+        children
+        - content|text
+            text: Paragraph [h3]
+    - demo_paragraph|markup
+        tag_name: p
+        children
+        - content|text
+            text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!                 Paragraph content. Paragraph content. Paragraph content. Paragraph content.
   # table
+    - demo_table_title|markup
+        tag_name: h3
+        children
+        - content|text
+            text: Table
     - demo_table|table
         children
         - head|table_head
@@ -20,15 +39,15 @@ blocks
                 - th_1|table_head_row_cell
                     children
                     - content|text
-                        text: th 1
+                        text: head cell 1
                 - th_2|table_head_row_cell
                     children
                     - content|text
-                        text: th 2
+                        text: head cell 2
                 - th_3|table_head_row_cell
                     children
                     - content|text
-                        text: th 3
+                        text: head cell 3
         - body|table_body
             children
             - tr_1|table_body_row
@@ -36,43 +55,43 @@ blocks
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: td 1.1
+                        text: cell 1.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: td 1.2
+                        text: cell 1.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: td 1.3
+                        text: cell 1.3
             - tr_2|table_body_row
                 children
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: td 2.1
+                        text: cell 2.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: td 2.2
+                        text: cell 2.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: td 2.3
+                        text: cell 2.3
             - tr_3|table_body_row
                 children
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: td 3.1
+                        text: cell 3.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: td 3.2
+                        text: cell 3.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: td 3.3
+                        text: cell 3.3
             - tr_4|table_body_row
                 children
                 - td_1|table_body_row_cell

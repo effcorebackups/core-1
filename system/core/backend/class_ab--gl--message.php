@@ -18,7 +18,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function insert($message, $type = 'notice') {
+  static function insert($message, $type = 'ok') {
     if (!static::$cache) static::init();
     if (!isset(static::$cache[$type]))
                static::$cache[$type] = [];
