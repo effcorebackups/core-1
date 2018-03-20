@@ -1,0 +1,44 @@
+translations
+- ru|translation
+    code: ru
+    data
+    - Call %%_name: Вызов %%_name
+    - call: вызов
+    - cell %%_num: ячейка %%_num
+    - Checkboxes (macro): Флажки (макро)
+    - Checkboxes: Флажки
+    - class: класс
+    - Classes list: Список классов
+    - Classes: Классы
+    - Console: Консоль
+    - Demo: Демо
+    - Develop: Разработка
+    - Dynamic block: Динамический блок
+    - Element %%_info.: Элемент %%_info.
+    - Elements: Элементы
+    - Error message #%%_num.: Сообщение об ошибке #%%_num.
+    - event system was initialized: система событий была инициализирована
+    - Execute plan: План выполнения
+    - head cell %%_num: заглавная ячейка %%_num
+    - init.: инициал.
+    - interface: интерфейс
+    - intr.: интр.
+    - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
+    - Module for development.: Модуль для разработки.
+    - Module for testing.: Модуль для тестирования.
+    - Notice message #%%_num.: Уведомление #%%_num.
+    - Ok message #%%_num.: Хорошее сообщение #%%_num.
+    - Ordered list: Упорядоченный список
+    - query = "%%_query": запрос = "%%_query"
+    - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
+    - Radios (macro): Переключатели (макро)
+    - Radios: Переключатели
+    - Selection list (macro): Список выбора (макро)
+    - Selection list: Список выбора
+    - Static block: Статический блок
+    - Textarea: Текстовая область
+    - Total build time: Общее время сборки
+    - Total load: Общая загрука
+    - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
+    - Unordered list: Неупорядоченный список
+    - Warning message #%%_num.: Предупреждающее сообщение #%%_num.
