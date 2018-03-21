@@ -1,0 +1,10 @@
+frontend
+- frontend_page_n
+    display
+      check: path
+      where: url
+      match: %.*%
+    styles
+    - develop_style
+        file: frontend/develop._style
+        media: all

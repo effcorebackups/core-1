@@ -30,10 +30,10 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_classes_diagrams($page) {
-    $return = new node();
+    $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class) {
       $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
-      $c_diagram    = new markup('x-class');
+      $c_diagram    = new markup('x-class', [], new markup('x-class-name', [], $c_class->name));
       $c_properties = new markup('x-properties');
       $c_methods    = new markup('x-methods');
       $c_diagram->child_insert($c_properties, 'properties');
@@ -45,7 +45,7 @@ namespace effcore\modules\develop {
         if ($c_prop->isPrivate())   $c_properties->child_insert(new markup('x-property', ['class' => ['private'   => 'private']],   '-'.$c_prop->getName()), $c_prop->getName());
       }
     }
-    return $return;
+    return new node([], [new markup('h2', [], 'UML Diagram'), $return]);
   }
 
 }}

@@ -45,9 +45,6 @@ frontend
     - page_style
         file: frontend/page._style
         media: all
-    - console_style
-        file: frontend/console._style
-        media: all
     scripts
     - page_script
         file: frontend/page._script
