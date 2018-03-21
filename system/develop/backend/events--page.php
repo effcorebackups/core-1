@@ -34,15 +34,20 @@ namespace effcore\modules\develop {
     foreach (factory::get_classes_map() as $c_class) {
       $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
       $c_diagram    = new markup('x-class', [], new markup('x-class-name', [], ' '.$c_class->name.' '));
-      $c_properties = new markup('x-properties');
-      $c_methods    = new markup('x-methods');
-      $c_diagram->child_insert($c_properties, 'properties');
-      $c_diagram->child_insert($c_methods, 'methods');
+      $c_attributes = new markup('x-attributes');
+      $c_operations = new markup('x-operations');
+      $c_diagram->child_insert($c_attributes, 'attributes');
+      $c_diagram->child_insert($c_operations, 'operations');
       $return->child_insert($c_diagram);
-      foreach ($c_reflection->getProperties() as $c_prop) {
-        if ($c_prop->isPublic())    $c_properties->child_insert(new markup('x-property', ['class' => ['public'    => 'public']],    '+'.$c_prop->getName()), $c_prop->getName());
-        if ($c_prop->isProtected()) $c_properties->child_insert(new markup('x-property', ['class' => ['protected' => 'protected']], '#'.$c_prop->getName()), $c_prop->getName());
-        if ($c_prop->isPrivate())   $c_properties->child_insert(new markup('x-property', ['class' => ['private'   => 'private']],   '-'.$c_prop->getName()), $c_prop->getName());
+      foreach ($c_reflection->getProperties() as $c_attribute) {
+        if ($c_attribute->isPublic())    $c_attributes->child_insert(new markup('x-attribute', ['class' => ['public'    => 'public']],    '+'.$c_attribute->name), $c_attribute->name);
+        if ($c_attribute->isProtected()) $c_attributes->child_insert(new markup('x-attribute', ['class' => ['protected' => 'protected']], '#'.$c_attribute->name), $c_attribute->name);
+        if ($c_attribute->isPrivate())   $c_attributes->child_insert(new markup('x-attribute', ['class' => ['private'   => 'private']],   '-'.$c_attribute->name), $c_attribute->name);
+      }
+      foreach ($c_reflection->getMethods() as $c_operation) {
+        if ($c_operation->isPublic())    $c_operations->child_insert(new markup('x-operation', ['class' => ['public'    => 'public']],    '+'.$c_operation->name.'()'), $c_operation->name);
+        if ($c_operation->isProtected()) $c_operations->child_insert(new markup('x-operation', ['class' => ['protected' => 'protected']], '#'.$c_operation->name.'()'), $c_operation->name);
+        if ($c_operation->isPrivate())   $c_operations->child_insert(new markup('x-operation', ['class' => ['private'   => 'private']],   '-'.$c_operation->name.'()'), $c_operation->name);
       }
     }
     return new node([], [new markup('h2', [], 'UML Diagram'), $return]);
