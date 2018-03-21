@@ -33,7 +33,7 @@ namespace effcore\modules\develop {
     $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class) {
       $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
-      $c_diagram    = new markup('x-class', [], new markup('x-class-name', [], $c_class->name));
+      $c_diagram    = new markup('x-class', [], new markup('x-class-name', [], ' '.$c_class->name.' '));
       $c_properties = new markup('x-properties');
       $c_methods    = new markup('x-methods');
       $c_diagram->child_insert($c_properties, 'properties');

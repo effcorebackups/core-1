@@ -56,6 +56,7 @@ translations
     - Delete: Удалить
     - delete: удалить
     - Description: Описание
+    - Diagrams: Диаграммы
     - disable: выключить
     - driver error code\: %%_code: код ошибки драйвера: %%_code
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
@@ -123,6 +124,7 @@ translations
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - Legal information: Правовая информация
     - License agreement: Лицензионное соглашение
+    - List: Список
     - load: загрузка
     - Locales: Локализации
     - login: вход

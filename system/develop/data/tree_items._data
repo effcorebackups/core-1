@@ -18,6 +18,6 @@ tree_items
       roles
       - admins: admins
     attributes
-    - href: /develop/classes
+    - href: /develop/classes/list
     - class
       - classes: classes

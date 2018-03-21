@@ -32,7 +32,7 @@
 
   /* uml class diagram */
   x-diagram-uml {display: block}
-  x-diagram-uml x-class {display: block; width: 250px; margin: 40px 0}
+  x-diagram-uml x-class {display: block; width: 300px; margin: 40px 0}
   x-diagram-uml x-class x-class-name {display: block; text-align: center; font-weight: bold}
   x-diagram-uml x-class x-properties {display: block; padding: 5px}
   x-diagram-uml x-class x-properties x-property {display: block}
