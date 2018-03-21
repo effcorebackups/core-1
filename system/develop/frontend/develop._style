@@ -31,10 +31,12 @@
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
   /* uml class diagram */
+  x-diagram-uml {font-family: 'Arial'}
   x-diagram-uml,
   x-diagram-uml * {display: block}
   x-diagram-uml x-class {width: 300px; margin: 40px 0}
-  x-diagram-uml x-class x-class-name {padding: 3px; text-align: center; font-weight: bold}
+  x-diagram-uml x-class x-name {padding: 3px; text-align: center; font-weight: bold; text-transform: capitalize}
+  x-diagram-uml x-class.abstract x-name {font-style: italic}
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px}
 
@@ -43,3 +45,7 @@
   x-diagram-uml x-class x-operations {border-top: 1px solid #ff2b2b}
   x-diagram-uml x-class x-attributes:empty,
   x-diagram-uml x-class x-operations:empty {display: none}
+
+  x-diagram-uml x-class .public::before    {content: '+'}
+  x-diagram-uml x-class .protected::before {content: '#'}
+  x-diagram-uml x-class .private::before   {content: '-'}
