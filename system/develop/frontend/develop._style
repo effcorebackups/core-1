@@ -36,7 +36,7 @@
   x-diagram-uml x-class {width: 300px; margin: 40px 0}
   x-diagram-uml x-class x-class-name {padding: 3px; text-align: center; font-weight: bold}
   x-diagram-uml x-class x-attributes,
-  x-diagram-uml x-class x-operations {padding: 3px 5px}
+  x-diagram-uml x-class x-operations {padding: 3px 6px}
 
   x-diagram-uml x-class {border: 1px solid #ff2b2b; background: #fff5d8}
   x-diagram-uml x-class x-attributes,
