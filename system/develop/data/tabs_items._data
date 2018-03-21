@@ -1,0 +1,19 @@
+tabs_items
+- list|tabs_item
+    id: list
+    id_parent: classes
+    parent_is_tab: true
+    action_name: list
+    title: List
+    attributes
+    - class
+      - list: list
+- diagrams|tabs_item
+    id: diagrams
+    id_parent: classes
+    parent_is_tab: true
+    action_name: diagrams
+    title: Diagrams
+    attributes
+    - class
+      - diagrams: diagrams

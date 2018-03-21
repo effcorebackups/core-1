@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\develop {
+          use \effcore\node;
           use \effcore\markup;
           use \effcore\factory;
           use \effcore\table;
@@ -12,7 +13,7 @@ namespace effcore\modules\develop {
           use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
 
-  static function on_show_block_classes($page) {
+  static function on_show_block_classes_list($page) {
     $thead = [['type', 'name', 'file']];
     $tbody = [];
     foreach (factory::get_classes_map() as $c_class_name => $c_class_info) {
@@ -26,6 +27,25 @@ namespace effcore\modules\develop {
       new markup('h2', [], 'Classes list'),
       new table(['class' => ['classes-list' => 'classes-list']], $tbody, $thead)
     ]);
+  }
+
+  static function on_show_block_classes_diagrams($page) {
+    $return = new node();
+    foreach (factory::get_classes_map() as $c_class) {
+      $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
+      $c_diagram    = new markup('x-class');
+      $c_properties = new markup('x-properties');
+      $c_methods    = new markup('x-methods');
+      $c_diagram->child_insert($c_properties, 'properties');
+      $c_diagram->child_insert($c_methods, 'methods');
+      $return->child_insert($c_diagram);
+      foreach ($c_reflection->getProperties() as $c_prop) {
+        if ($c_prop->isPublic())    $c_properties->child_insert(new markup('x-property', ['class' => ['public'    => 'public']],    '+'.$c_prop->getName()), $c_prop->getName());
+        if ($c_prop->isProtected()) $c_properties->child_insert(new markup('x-property', ['class' => ['protected' => 'protected']], '#'.$c_prop->getName()), $c_prop->getName());
+        if ($c_prop->isPrivate())   $c_properties->child_insert(new markup('x-property', ['class' => ['private'   => 'private']],   '-'.$c_prop->getName()), $c_prop->getName());
+      }
+    }
+    return $return;
   }
 
 }}

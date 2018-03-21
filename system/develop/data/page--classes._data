@@ -26,7 +26,11 @@ pages
         region: title
         type: code
         handler: \effcore\events_page::on_show_block_title
-    - block_classes
+    - block_classes_list
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_classes
+        handler: \effcore\modules\develop\events_page::on_show_block_classes_list
+    - block_classes_diagrams
+        region: content
+        type: code
+        handler: \effcore\modules\develop\events_page::on_show_block_classes_diagrams

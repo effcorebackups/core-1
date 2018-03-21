@@ -1,0 +1,6 @@
+tabs
+- classes|tabs
+    id: classes
+    attributes
+    - class
+      - classes: classes
