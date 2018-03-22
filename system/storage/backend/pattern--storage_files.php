@@ -219,11 +219,9 @@ namespace effcore {
         $matches['name'] = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
       # define each value
         if ($matches['delimiter'] == ': ') {
-          $c_value = $matches['value'];
-          if (is_numeric($c_value)) $c_value += 0;
-          if ($c_value === 'true')  $c_value = true;
-          if ($c_value === 'false') $c_value = false;
-          if ($c_value === 'null')  $c_value = null;
+          $c_value = factory::string_to_data(
+            $matches['value']
+          );
         } else {
           if ($matches['value'] == '_empty_array') {
             $c_value = [];
