@@ -34,7 +34,9 @@
   x-diagram-uml {font-family: 'Arial'}
   x-diagram-uml, x-diagram-uml * {display: block}
   x-diagram-uml x-class {width: 300px; margin: 40px 0; border: 1px solid #ff2b2b; background: #fff5d8}
-  x-diagram-uml x-class x-name {padding: 3px; text-align: center; font-weight: bold; text-transform: capitalize}
+  x-diagram-uml x-class x-name-wrapper {padding: 3px; padding-bottom: 6px; text-align: center}
+  x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
+  x-diagram-uml x-class x-namespace {font-size: .9em; line-height: 1em}
   x-diagram-uml x-class[x-abstract='true'] x-name {font-style: italic}
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}

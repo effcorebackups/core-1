@@ -46,9 +46,11 @@ namespace effcore\modules\develop {
       $c_reflection = new reflection($c_class->namespace.'\\'.$c_class->name);
       $x_diagram    = new markup('x-class');
       $x_name       = new markup('x-name', [], ' '.$c_class->name.' ');
+      $x_namespace  = new markup('x-namespace', [], '(from '.$c_class->namespace.')');
+      $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
       $x_attributes = new markup('x-attributes');
       $x_operations = new markup('x-operations');
-      $x_diagram->child_insert($x_name, 'name');
+      $x_diagram->child_insert($x_name_wr);
       $x_diagram->child_insert($x_attributes, 'attributes');
       $x_diagram->child_insert($x_operations, 'operations');
       $return->child_insert($x_diagram);
