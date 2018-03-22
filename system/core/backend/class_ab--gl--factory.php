@@ -155,10 +155,10 @@ namespace effcore {
         if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
         if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
         break;
-      case 'boolean': $return.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;                    break;
-      case 'NULL'   : $return.= $prefix.' = null;'.nl;                                              break;
-      case 'string' : $return.= $prefix.' = \''.str_replace('\"', '"', addslashes($data)).'\';'.nl; break;
-      default       : $return.= $prefix.' = '.$data.';'.nl;
+      case 'boolean': $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
+      case 'NULL'   : $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
+      case 'string' : $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
+      default       : $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
     }
     return $return;
   }
