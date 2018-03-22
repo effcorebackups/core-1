@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\develop {
+          use \ReflectionClass as reflection;
           use \effcore\file;
           use \effcore\node;
           use \effcore\markup;
@@ -13,6 +14,10 @@ namespace effcore\modules\develop {
           use \effcore\table_body_row;
           use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
+
+  #####################
+  ### classes: list ###
+  #####################
 
   static function on_show_block_classes_list($page) {
     $thead = [['type', 'name', 'file']];
@@ -30,12 +35,15 @@ namespace effcore\modules\develop {
     ]);
   }
 
+  #########################
+  ### classes: diagrams ###
+  #########################
+
   static function on_show_block_classes_diagrams($page) {
     $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class) {
       $c_file       = new file($c_class->file);
-      $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
-      $c_defs       = $c_reflection->getDefaultProperties();
+      $c_reflection = new reflection($c_class->namespace.'\\'.$c_class->name);
       $x_diagram    = new markup('x-class');
       $x_name       = new markup('x-name', [], ' '.$c_class->name.' ');
       $x_attributes = new markup('x-attributes');
@@ -46,9 +54,10 @@ namespace effcore\modules\develop {
       $return->child_insert($x_diagram);
 
     # find default value for each property
+      $c_defs = $c_reflection->getDefaultProperties();
       foreach ($c_defs as $c_key => $c_value) {
         $matches = [];
-        preg_match('%(?<visibility>static|public|)\\s\\$'.
+        preg_match('%(?<last_modifier>public|protected|private|static|final|)\\s\\$'.
                     '(?<name>'.$c_key.') = '.
                     '(?<value>.+?);%', $c_file->load(), $matches);
         $c_defs[$c_key] = isset($matches['value']) ?
@@ -86,7 +95,11 @@ namespace effcore\modules\develop {
         if ($c_operation->isPrivate())   $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
       }
     }
-    return new node([], [new markup('h2', [], 'UML Diagram'), $return]);
+
+    return new markup('x-block', ['id' => 'classes_diagrams'], [
+      new markup('h2', [], 'UML Diagram'),
+      $return
+    ]);
   }
 
 }}

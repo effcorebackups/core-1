@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore {
+          use \ReflectionClass as reflection;
           class storage_files
           implements \effcore\has_different_cache {
 
@@ -227,7 +228,7 @@ namespace effcore {
             $c_value = [];
           } else {
             $c_class_name = $matches['value'] ? '\\effcore\\'.$matches['value'] : 'stdClass';
-            $c_reflection = new \ReflectionClass($c_class_name);
+            $c_reflection = new reflection($c_class_name);
             $c_is_pc = $c_reflection->implementsInterface('\\effcore\\post_constructor');
             $c_is_pi = $c_reflection->implementsInterface('\\effcore\\post_init');
             $c_is_pp = $c_reflection->implementsInterface('\\effcore\\post_parsing');
