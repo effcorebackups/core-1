@@ -49,10 +49,15 @@ namespace effcore\modules\develop {
         if ($c_attribute->isProtected()) $c_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'], ' '.$c_attribute->name), $c_attribute->name);
         if ($c_attribute->isPrivate())   $c_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private'],   ' '.$c_attribute->name), $c_attribute->name);
       }
+      foreach ($c_reflection->getStaticProperties() as $c_name => $c_value) {
+        if ($c_attribute->isPublic())    $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'public'],    ' '.$c_attribute->name), $c_attribute->name);
+        if ($c_attribute->isProtected()) $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'protected'], ' '.$c_attribute->name), $c_attribute->name);
+        if ($c_attribute->isPrivate())   $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'private'],   ' '.$c_attribute->name), $c_attribute->name);
+      }
       foreach ($c_reflection->getMethods() as $c_operation) {
-        if ($c_operation->isPublic())    $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'public'],    ' '.$c_operation->name.'()'), $c_operation->name);
-        if ($c_operation->isProtected()) $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'], ' '.$c_operation->name.'()'), $c_operation->name);
-        if ($c_operation->isPrivate())   $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'private'],   ' '.$c_operation->name.'()'), $c_operation->name);
+        if ($c_operation->isPublic())    $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
+        if ($c_operation->isProtected()) $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
+        if ($c_operation->isPrivate())   $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
       }
     }
     return new node([], [new markup('h2', [], 'UML Diagram'), $return]);
