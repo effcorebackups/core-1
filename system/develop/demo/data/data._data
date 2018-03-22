@@ -1,5 +1,9 @@
 demo_data
-# scalar types (except text)
+# scalar types
+# ─────────────────────────────────────────────────────────────────────
+# demo_integer_hexadecimal: 0x123 # - hexadecimal notation is not allowed
+# demo_integer_octal: 0123        # - octal notation is not allowed
+# demo_integer_binary: 0b101      # - binary notation is not allowed
   demo_integer: 1
   demo_float: 2.3
   demo_boolean: true
@@ -8,6 +12,7 @@ demo_data
   demo_string_text|text
     text: like code: new text('any text') # translated by default
 # compound types
+# ─────────────────────────────────────────────────────────────────────
   demo_array_empty|_empty_array
   demo_array
   - item_1: item value #1
@@ -19,4 +24,5 @@ demo_data
     prop_2: property value #2
     prop_3: property value #3
 # special types
+# ─────────────────────────────────────────────────────────────────────
   demo_null: null

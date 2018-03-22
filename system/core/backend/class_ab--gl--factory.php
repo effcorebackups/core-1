@@ -90,6 +90,30 @@ namespace effcore {
   ### data functions ###
   ######################
 
+  static function string_to_data($string) {
+  # ─────────────────────────────────────────────────────────────────────
+  # hexadecimal notation is not allowed (example: '0x123')
+  # octal notation is not allowed (example: '0123')
+  # binary notation is not allowed (example: '0b101')
+  # ─────────────────────────────────────────────────────────────────────
+    if (is_numeric($string)) return $string += 0;
+    if ($string === 'true')  return true;
+    if ($string === 'false') return false;
+    if ($string === 'null')  return null;
+    return $string;
+  }
+
+  static function data_to_string($data) {
+    switch (gettype($data)) {
+      case 'string' : return '\''.str_replace('\"', '"', addslashes($data)).'\'';
+      case 'boolean': return $data ? 'true' : 'false';
+      case 'NULL'   : return 'null';
+      case 'array'  : return 'UNDER CONSTRUCTION';
+      case 'object' : return 'UNDER CONSTRUCTION';
+      default       : return (string)$data;
+    }
+  }
+
   static function data_to_attr($data, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
     $return = [];
     foreach ((array)$data as $c_name => $c_value) {
