@@ -108,7 +108,17 @@ namespace effcore {
       case 'string' : return '\''.str_replace('\"', '"', addslashes($data)).'\'';
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
-      default       : return (string)$data;
+      case 'object':
+      case 'array':
+        $expressions = [];
+        foreach($data as $c_key => $c_value) {
+          $expressions[] = static::data_to_string($c_key).' => '.
+                           static::data_to_string($c_value);
+        }
+        return gettype($data) === 'object' ?
+          '(object)['.implode(', ', $expressions).']' :
+                  '['.implode(', ', $expressions).']';
+      default: return (string)$data;
     }
   }
 
