@@ -108,8 +108,6 @@ namespace effcore {
       case 'string' : return '\''.str_replace('\"', '"', addslashes($data)).'\'';
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
-      case 'array'  : return 'UNDER CONSTRUCTION';
-      case 'object' : return 'UNDER CONSTRUCTION';
       default       : return (string)$data;
     }
   }
@@ -155,10 +153,7 @@ namespace effcore {
         if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
         if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
         break;
-      case 'boolean': $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
-      case 'NULL'   : $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
-      case 'string' : $return.= $prefix.' = '.static::data_to_string($data).';'.nl; break;
-      default       : $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
+      default: $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
     }
     return $return;
   }
