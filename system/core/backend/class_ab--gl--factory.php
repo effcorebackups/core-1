@@ -136,13 +136,13 @@ namespace effcore {
                                             $return;
   }
 
-  static function data_export($data, $prefix = '') {
+  static function data_to_code($data, $prefix = '') {
     $return = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            $return.= static::data_export($c_value, $prefix.(is_int($c_key) ? '['.$c_key.']' : '[\''.$c_key.'\']'));
+            $return.= static::data_to_code($c_value, $prefix.(is_int($c_key) ? '['.$c_key.']' : '[\''.$c_key.'\']'));
           }
         } else {
           $return.= $prefix.' = [];'.nl;
@@ -154,11 +154,12 @@ namespace effcore {
         $c_defs                = $c_reflection->getDefaultProperties();
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\post_constructor');
         $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\post_init');
-        if ($c_is_post_constructor) $return = $prefix.' = factory::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
-        else                        $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
+        if ($c_is_post_constructor)
+              $return = $prefix.' = factory::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
+        else  $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $return.= static::data_export($c_value, $prefix.'->'.$c_prop);
+          $return.= static::data_to_code($c_value, $prefix.'->'.$c_prop);
         }
         if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
         if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
