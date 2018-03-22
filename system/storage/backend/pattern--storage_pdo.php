@@ -5,6 +5,8 @@
   ##################################################################
 
 namespace effcore {
+          use \PDO as pdo;
+          use \PDOException as pdo_exception;
           class storage_pdo
           implements \effcore\has_different_cache {
 
@@ -29,7 +31,7 @@ namespace effcore {
           event::start('on_storage_init_before', 'pdo', [&$this]);
           switch ($this->driver) {
             case 'mysql':
-              $this->connection = new \PDO(
+              $this->connection = new pdo(
                 $this->driver.':host='.
                 $this->credentials->host_name.';port='.
                 $this->credentials->port.';dbname='.
@@ -38,14 +40,14 @@ namespace effcore {
                 $this->credentials->password);
               break;
             case 'sqlite':
-              $this->connection = new \PDO(
+              $this->connection = new pdo(
                 $this->driver.':'.dir_dynamic.'data/'.
                 $this->credentials->file_name);
               break;
           }
           event::start('on_storage_init_after', 'pdo', [&$this]);
           return $this->connection;
-        } catch (\PDOException $e) {
+        } catch (pdo_exception $e) {
           message::insert(
             translation::get('Storage %%_id is not available!', ['id' => $this->id]), 'warning'
           );
@@ -65,7 +67,7 @@ namespace effcore {
     try {
       switch ($driver) {
         case 'mysql':
-          $connection = new \PDO(
+          $connection = new pdo(
             $driver.':host='.
             $params->host_name.';port='.
             $params->port.';dbname='.
@@ -75,7 +77,7 @@ namespace effcore {
           break;
         case 'sqlite':
           $file_path = dir_dynamic.'data/'.$params->file_name;
-          $connection = new \PDO($driver.':'.$file_path);
+          $connection = new pdo($driver.':'.$file_path);
           if (!is_writable($file_path)) {
             throw new \Exception('File is not writable!');
           }
@@ -83,7 +85,7 @@ namespace effcore {
       }
       $connection = null;
       return true;
-    } catch (\PDOException $e) {
+    } catch (pdo_exception $e) {
       return ['message' => $e->getMessage(), 'code' => $e->getCode()]; } catch (\Exception $e) {
       return ['message' => $e->getMessage(), 'code' => $e->getCode()];
     }
@@ -122,7 +124,7 @@ namespace effcore {
         return null;
       }
       switch ($query[0]) {
-        case 'SELECT': return $result ? $result->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, '\effcore\instance') : null;
+        case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\effcore\instance') : null;
         case 'INSERT': return $this->connection->lastInsertId();
         case 'UPDATE': return $result->rowCount();
         case 'DELETE': return $result->rowCount();
