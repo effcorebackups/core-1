@@ -33,31 +33,37 @@ namespace effcore\modules\develop {
     $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class) {
       $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
-      $c_diagram    = new markup('x-class');
-      $c_name       = new markup('x-name', [], ' '.$c_class->name.' ');
-      $c_attributes = new markup('x-attributes');
-      $c_operations = new markup('x-operations');
-      $c_diagram->child_insert($c_name, 'name');
-      $c_diagram->child_insert($c_attributes, 'attributes');
-      $c_diagram->child_insert($c_operations, 'operations');
-      $return->child_insert($c_diagram);
+      $c_defs       = $c_reflection->getDefaultProperties();
+      $x_diagram    = new markup('x-class');
+      $x_name       = new markup('x-name', [], ' '.$c_class->name.' ');
+      $x_attributes = new markup('x-attributes');
+      $x_operations = new markup('x-operations');
+      $x_diagram->child_insert($x_name, 'name');
+      $x_diagram->child_insert($x_attributes, 'attributes');
+      $x_diagram->child_insert($x_operations, 'operations');
+      $return->child_insert($x_diagram);
       if ($c_reflection->isAbstract()) {
-        $c_diagram->attribute_insert('x-abstract', 'true');
+        $x_diagram->attribute_insert('x-abstract', 'true');
       }
       foreach ($c_reflection->getProperties() as $c_attribute) {
-        if ($c_attribute->isPublic())    $c_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public'],    ' '.$c_attribute->name), $c_attribute->name);
-        if ($c_attribute->isProtected()) $c_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'], ' '.$c_attribute->name), $c_attribute->name);
-        if ($c_attribute->isPrivate())   $c_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private'],   ' '.$c_attribute->name), $c_attribute->name);
+        $c_name = ' '.$c_attribute->name;
+        if (isset($c_defs[$c_attribute->name])) $c_name.= ' = ?';
+        if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public'],    $c_name), $c_attribute->name);
+        if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'], $c_name), $c_attribute->name);
+        if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private'],   $c_name), $c_attribute->name);
       }
-      foreach ($c_reflection->getStaticProperties() as $c_name => $c_value) {
-        if ($c_attribute->isPublic())    $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'public'],    ' '.$c_attribute->name), $c_attribute->name);
-        if ($c_attribute->isProtected()) $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'protected'], ' '.$c_attribute->name), $c_attribute->name);
-        if ($c_attribute->isPrivate())   $c_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'private'],   ' '.$c_attribute->name), $c_attribute->name);
+      foreach ($c_reflection->getStaticProperties() as $c_key => $c_value) {
+        $c_name = ' '.$c_key;
+        if (isset($c_defs[$c_attribute->name])) $c_name.= ' = ?';
+        if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'public'],    $c_name), $c_attribute->name);
+        if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'protected'], $c_name), $c_attribute->name);
+        if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'private'],   $c_name), $c_attribute->name);
       }
       foreach ($c_reflection->getMethods() as $c_operation) {
-        if ($c_operation->isPublic())    $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
-        if ($c_operation->isProtected()) $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
-        if ($c_operation->isPrivate())   $c_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), ' '.$c_operation->name.'()'), $c_operation->name);
+        $c_name = ' '.$c_operation->name.'()';
+        if ($c_operation->isPublic())    $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
+        if ($c_operation->isProtected()) $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
+        if ($c_operation->isPrivate())   $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
       }
     }
     return new node([], [new markup('h2', [], 'UML Diagram'), $return]);
