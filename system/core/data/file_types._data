@@ -11,20 +11,15 @@ file_types
 - _mark
     type: _mark
     protected: 1
-- _template
-    type: _template
-    protected: 1
 - _protected
     type: _protected
+    protected: 1
+- _template
+    type: _template
     protected: 1
 # ─────────────────────────────────────────────────────────────────────
 # with tokens
 # ─────────────────────────────────────────────────────────────────────
-- _style
-    type: _style
-    use_tokens: 1
-    headers
-    - Content-type: text/css
 - _vector
     type: _vector
     use_tokens: 1
@@ -35,6 +30,11 @@ file_types
     use_tokens: 1
     headers
     - Content-type: application/javascript
+- _style
+    type: _style
+    use_tokens: 1
+    headers
+    - Content-type: text/css
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
