@@ -56,14 +56,27 @@ namespace effcore\modules\develop {
       $return->child_insert($x_diagram);
 
     # find default value for each property
-      $c_defs = $c_reflection->getDefaultProperties();
-      foreach ($c_defs as $c_key => $c_value) {
-        $matches = [];
-        preg_match('%(?<last_modifier>public|protected|private|static|final|)\\s\\$'.
+      $p_defs = $c_reflection->getDefaultProperties();
+      foreach ($p_defs as $c_key => $c_value) {
+        $c_matches = [];
+        preg_match('%(?<last_modifier>public|protected|private|static|)\\s\\$'.
                     '(?<name>'.$c_key.') = '.
-                    '(?<value>.+?);%', $c_file->load(), $matches);
-        $c_defs[$c_key] = isset($matches['value']) ?
-                                $matches['value'] : null;
+                    '(?<value>.+?);%', $c_file->load(), $c_matches);
+        $p_defs[$c_key] = isset($c_matches['value']) ?
+                                $c_matches['value'] : null;
+      }
+
+    # find default values for each method
+      $m_defs = [];
+      foreach ($c_reflection->getMethods() as $c_operation) {
+        $c_key = $c_operation->name;
+        $c_matches = [];
+        preg_match('%(?<last_modifier>public|protected|private|static|final|)\\s'.
+                    '(?:function)\\s'.
+                    '(?<name>'.$c_key.')\\s*\\('.
+                    '(?<params>.*?|)\\)%', $c_file->load(), $c_matches);
+        $m_defs[$c_key] = isset($c_matches['params']) ?
+                                str_replace([',$', ', $'], ', ', ltrim($c_matches['params'], '$')) : null;
       }
 
     # set abstract mark
@@ -74,7 +87,7 @@ namespace effcore\modules\develop {
     # find non static properties
       foreach ($c_reflection->getProperties() as $c_attribute) {
         $c_name = ' '.$c_attribute->name;
-        if (array_key_exists($c_attribute->name, $c_defs) && $c_defs[$c_attribute->name] !== null) $c_name.= ' = '.$c_defs[$c_attribute->name];
+        if (array_key_exists($c_attribute->name, $p_defs) && $p_defs[$c_attribute->name] !== null) $c_name.= ' = '.$p_defs[$c_attribute->name];
         if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public'],    $c_name), $c_attribute->name);
         if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'], $c_name), $c_attribute->name);
         if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private'],   $c_name), $c_attribute->name);
@@ -83,7 +96,7 @@ namespace effcore\modules\develop {
     # find static properties
       foreach ($c_reflection->getStaticProperties() as $c_key => $c_value) {
         $c_name = ' '.$c_key;
-        if (array_key_exists($c_attribute->name, $c_defs) && $c_defs[$c_attribute->name] !== null) $c_name.= ' = '.$c_defs[$c_attribute->name];
+        if (array_key_exists($c_attribute->name, $p_defs) && $p_defs[$c_attribute->name] !== null) $c_name.= ' = '.$p_defs[$c_attribute->name];
         if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'public'],    $c_name), $c_attribute->name);
         if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'protected'], $c_name), $c_attribute->name);
         if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'private'],   $c_name), $c_attribute->name);
@@ -91,7 +104,8 @@ namespace effcore\modules\develop {
 
     # find methods
       foreach ($c_reflection->getMethods() as $c_operation) {
-        $c_name = ' '.$c_operation->name.'()';
+        $c_name = ' '.$c_operation->name.' ()';
+        if (array_key_exists($c_operation->name, $m_defs) && $m_defs[$c_operation->name] !== null) $c_name = ' '.$c_operation->name.' ('.$m_defs[$c_operation->name].')';
         if ($c_operation->isPublic())    $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
         if ($c_operation->isProtected()) $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
         if ($c_operation->isPrivate())   $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_operation->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_operation->name);
