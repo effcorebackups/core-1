@@ -74,8 +74,8 @@ namespace effcore\modules\develop {
                     '(?:function)\\s'.
                     '(?<name>'.$c_key.')\\s*\\('.
                     '(?<params>.*?|)\\)%', $c_file->load(), $c_matches);
-        $m_defs[$c_key] = isset($c_matches['params']) ?
-                                str_replace([',$', ', $'], ', ', ltrim($c_matches['params'], '$')) : null;
+        $m_defs[$c_key] = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z0-9]+)#i', '$2',
+                                $c_matches['params']) : null;
       }
 
     # set abstract mark
