@@ -76,9 +76,9 @@ namespace effcore {
             $params->password);
           break;
         case 'sqlite':
-          $file_path = dir_dynamic.'data/'.$params->file_name;
-          $connection = new pdo($driver.':'.$file_path);
-          if (!is_writable($file_path)) {
+          $path = dir_dynamic.'data/'.$params->file_name;
+          $connection = new pdo($driver.':'.$path);
+          if (!is_writable($path)) {
             throw new \Exception('File is not writable!');
           }
           break;

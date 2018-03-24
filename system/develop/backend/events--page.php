@@ -58,7 +58,7 @@ namespace effcore\modules\develop {
       $p_defs = $c_reflection->getDefaultProperties();
       foreach ($p_defs as $c_key => $c_value) {
         $c_matches = [];
-        preg_match('%(?<last_modifier>public|protected|private|static|)\\s\\$'.
+        preg_match('%(?<last_modifier>public|protected|private|static)\\s\\$'.
                     '(?<name>'.$c_key.') = '.
                     '(?<value>.+?);%', $c_file->load(), $c_matches);
         $p_defs[$c_key] = isset($c_matches['value']) ?
@@ -74,7 +74,7 @@ namespace effcore\modules\develop {
                     '(?:function)\\s'.
                     '(?<name>'.$c_key.')\\s*\\('.
                     '(?<params>.*?|)\\)%', $c_file->load(), $c_matches);
-        $m_defs[$c_key] = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z0-9]+)#i', '$2',
+        $m_defs[$c_key] = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z_])#i', '$2',
                                 $c_matches['params']) : null;
       }
 
@@ -83,25 +83,14 @@ namespace effcore\modules\develop {
         $x_diagram->attribute_insert('x-abstract', 'true');
       }
 
-    # find non static properties
+    # find properties
       foreach ($c_reflection->getProperties() as $c_attribute) {
         if ($c_attribute->getDeclaringClass()->name === $c_class_full_name) {
           $c_name = ' '.$c_attribute->name;
           if (array_key_exists($c_attribute->name, $p_defs) && $p_defs[$c_attribute->name] !== null) $c_name.= ' = '.$p_defs[$c_attribute->name];
-          if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public'],    $c_name), $c_attribute->name);
-          if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'], $c_name), $c_attribute->name);
-          if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private'],   $c_name), $c_attribute->name);
-        }
-      }
-
-    # find static properties
-      foreach ($c_reflection->getStaticProperties() as $c_key => $c_value) {
-        if ($c_attribute->getDeclaringClass()->name === $c_class_full_name) {
-          $c_name = ' '.$c_key;
-          if (array_key_exists($c_attribute->name, $p_defs) && $p_defs[$c_attribute->name] !== null) $c_name.= ' = '.$p_defs[$c_attribute->name];
-          if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'public'],    $c_name), $c_attribute->name);
-          if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'protected'], $c_name), $c_attribute->name);
-          if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-static' => 'true', 'x-visibility' => 'private'],   $c_name), $c_attribute->name);
+          if ($c_attribute->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_attribute->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_attribute->name);
+          if ($c_attribute->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_attribute->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_attribute->name);
+          if ($c_attribute->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_attribute->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_attribute->name);
         }
       }
 
