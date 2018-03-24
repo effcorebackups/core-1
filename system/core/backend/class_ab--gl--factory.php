@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore {
-          use \ReflectionClass as reflection;
           abstract class factory {
 
   static protected $cache;
@@ -82,7 +81,7 @@ namespace effcore {
   }
 
   static function class_get_new_instance($class_name, $args = [], $use_constructor = false) {
-    $reflection = new reflection($class_name);
+    $reflection = new \ReflectionClass($class_name);
     return $use_constructor ? $reflection->newInstanceArgs($args) :
                               $reflection->newInstanceWithoutConstructor();
   }
@@ -151,7 +150,7 @@ namespace effcore {
         break;
       case 'object':
         $c_class_name = get_class($data);
-        $c_reflection = new reflection($c_class_name);
+        $c_reflection = new \ReflectionClass($c_class_name);
         $c_defs                = $c_reflection->getDefaultProperties();
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\post_constructor');
         $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\post_init');

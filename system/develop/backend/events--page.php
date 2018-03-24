@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\develop {
-          use \ReflectionClass as reflection;
           use \effcore\file;
           use \effcore\node;
           use \effcore\markup;
@@ -43,7 +42,7 @@ namespace effcore\modules\develop {
     $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class) {
       $c_file       = new file($c_class->file);
-      $c_reflection = new reflection($c_class->namespace.'\\'.$c_class->name);
+      $c_reflection = new \ReflectionClass($c_class->namespace.'\\'.$c_class->name);
       $x_diagram    = new markup('x-class');
       $x_name       = new markup('x-name', [], ' '.$c_class->name.' ');
       $x_namespace  = new markup('x-namespace', [], '(from '.$c_class->namespace.')');
