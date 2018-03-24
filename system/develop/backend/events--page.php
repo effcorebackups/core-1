@@ -44,7 +44,7 @@ namespace effcore\modules\develop {
       $c_file       = new file($c_class_info->file);
       $c_reflection = new \ReflectionClass($c_class_full_name);
       $x_diagram    = new markup('x-class');
-      $x_name       = new markup('x-name', [], ' '.$c_class_info->name.' ');
+      $x_name       = new markup('x-name', ['title' => $c_class_info->file], ' '.$c_class_info->name.' ');
       $x_namespace  = new markup('x-namespace', [], '(from '.$c_class_info->namespace.')');
       $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
       $x_attributes = new markup('x-attributes');
