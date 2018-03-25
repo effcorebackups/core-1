@@ -10,7 +10,7 @@ namespace effcore {
 
   public $id;
   public $https = false;
-  public $url = null;
+  public $url;
   public $id_user = 0;
 
   static function get_non_different_properties() {

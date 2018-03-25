@@ -7,7 +7,7 @@
 namespace effcore {
           class node_simple {
 
-  public $template = null;
+  public $template;
   public $attributes = [];
   public $weight = 0;
 

@@ -54,8 +54,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   public $tag_name = 'form';
-  public $clicked_button = null;
-  public $clicked_button_name = null;
+  public $clicked_button;
+  public $clicked_button_name;
   public $errors = [];
 
   function render() {

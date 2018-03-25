@@ -10,10 +10,10 @@ namespace effcore {
   public $tag_name = 'x-container';
   public $template = 'form_container';
 
-  public $title = null;
+  public $title;
   public $title_tag_name = 'x-title';
   public $title_position = 'top';
-  public $description = null;
+  public $description;
   public $description_tag_name = 'x-description';
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {

@@ -8,7 +8,7 @@ namespace effcore {
           class control_actions_list extends \effcore\markup {
 
   public $tag_name = 'x-actions-control';
-  public $title = null;
+  public $title;
   public $actions = [];
   public $active = [];
 
