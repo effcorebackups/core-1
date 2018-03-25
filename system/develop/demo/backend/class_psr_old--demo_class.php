@@ -1,6 +1,6 @@
 <?php
 
-# PHP 5.2.x and earlier
+# PHP 5.2.x and earlier. PSR-1 style.
 
 class Vendor_Model_DemoClassPsrOld
 {

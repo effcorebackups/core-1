@@ -1,6 +1,6 @@
 <?php
 
-# PHP 5.3 and later
+# PHP 5.3 and later. PSR-1 style.
 
 namespace Vendor\Model;
 
