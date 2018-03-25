@@ -32,25 +32,25 @@ namespace effcore {
       $files = file::select_all_recursive(dir_system, '%^.*\.php$%');
       foreach ($files as $c_file) {
         $c_matches = [];
-        preg_match_all('%namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*'.
-                                  '(?<dependencies>.*?|)'.
-                                  '(?<is_abstract>abstract|)\\s*'.
-                                  '(?<type>class|trait|interface)\\s+'.
-                                  '(?<name>[a-z0-9_]+)\\s*'.
-                       '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
-                    '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
+        preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
+                                     '(?<is_abstract>abstract|)\\s*'.
+                                     '(?<type>class|trait|interface)\\s+'.
+                                     '(?<name>[a-z0-9_]+)\\s*'.
+                          '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
+                       '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
         foreach ($c_matches as $c_match) {
-          if (!empty($c_match['namespace']) &&
-              !empty($c_match['name'])) {
+          if (!empty($c_match['name'])) {
             $c_info = new \stdClass();
-            $c_info->type      = $c_match['type'];
-            $c_info->namespace = $c_match['namespace'];
-            $c_info->name      = $c_match['name'];
+            $c_info->type = $c_match['type'];
+            $c_info->namespace = !empty($c_match['namespace']) ?
+                                        $c_match['namespace'] : '';
+            $c_info->name = $c_match['name'];
             if (!empty($c_match['extends']))    $c_info->extends    = trim($c_match['extends']);
             if (!empty($c_match['implements'])) $c_info->implements = trim($c_match['implements']);
             $c_info->file = $c_file->get_path_relative();
-            $classes_map[$c_match['namespace'].'\\'.
-                         $c_match['name']] = $c_info;
+            if (!$c_info->namespace)
+                 $classes_map[$c_info->name] = $c_info;
+            else $classes_map[$c_info->namespace.'\\'.$c_info->name] = $c_info;
           }
         }
       }
