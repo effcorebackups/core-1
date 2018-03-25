@@ -63,9 +63,11 @@ namespace effcore\modules\develop {
       foreach ($c_reflection->getProperties() as $c_attribute) {
         if ($c_attribute->getDeclaringClass()->name === $c_class_full_name) {
           $c_matches = [];
-          preg_match('%(?<last_modifier>public|protected|private|static)\\s\\$'.
+          preg_match('%(?<type>class|trait|interface)\\s+'.
+                      '(?<class_name>'.$c_class_info->name.').*?'.
+                      '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                       '(?<name>'.$c_attribute->name.') = '.
-                      '(?<value>.+?);%', $c_file->load(), $c_matches);
+                      '(?<value>.+?);%s', $c_file->load(), $c_matches);
           $c_defaults = isset($c_matches['value']) ?
                               $c_matches['value'] : null;
           $c_name = ($c_defaults !== null) ? ' '.$c_attribute->name.' = '.$c_defaults :
@@ -80,10 +82,12 @@ namespace effcore\modules\develop {
       foreach ($c_reflection->getMethods() as $c_operation) {
         if ($c_operation->getDeclaringClass()->name === $c_class_full_name) {
           $c_matches = [];
-          preg_match('%(?<last_modifier>public|protected|private|static|final|)\\s'.
+          preg_match('%(?<type>class|trait|interface)\\s+'.
+                      '(?<class_name>'.$c_class_info->name.').*?'.
+                      '(?<last_modifier>public|protected|private|static|final|)\\s'.
                       '(?:function)\\s'.
                       '(?<name>'.$c_operation->name.')\\s*\\('.
-                      '(?<params>.*?|)\\)%', $c_file->load(), $c_matches);
+                      '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
           $c_defaults = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z_])#i', '$2',
                               $c_matches['params']) : null;
           $c_name = ($c_defaults !== null) ? ' '.$c_operation->name.' ('.$c_defaults.')' :

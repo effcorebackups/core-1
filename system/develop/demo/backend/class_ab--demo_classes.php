@@ -14,7 +14,9 @@ namespace effcore\modules\demo {
   static protected $static_property_prot;
   static private   $static_property_priv = my_const_1;
 
-  static public function static_method_1() {return static::$static_property_priv;} # return 'static property priv'
+  static public function static_method_1() {
+    return static::$static_property_priv; # return 'static property priv'
+  }
 
 }}
 
@@ -28,7 +30,12 @@ namespace effcore\modules\demo {
   static private $static_property_priv = my_const_1.' modified';
   static private $static_property_priv_new = 'static property priv new';
 
-  static public function static_method_1() {return static::$static_property_priv;}     # return 'static property priv modified'
-  static public function static_method_2() {return static::$static_property_priv_new;} # return 'static property priv new'
+  static public function static_method_1() {
+    return static::$static_property_priv; # return 'static property priv modified'
+  }
+
+  static public function static_method_2() {
+    return static::$static_property_priv_new; # return 'static property priv new'
+  }
 
 }}
