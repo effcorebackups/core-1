@@ -43,8 +43,8 @@ namespace effcore {
             $c_info = new \stdClass();
             $c_info->namespace = !empty($c_match['namespace']) ?
                                         $c_match['namespace'] : '';
-            $c_info->type = $c_match['type'];
             $c_info->name = $c_match['name'];
+            $c_info->type = $c_match['type'];
             if (!empty($c_match['extends']))    $c_info->extends    = trim($c_match['extends']);
             if (!empty($c_match['implements'])) $c_info->implements = trim($c_match['implements']);
             $c_info->file = $c_file->get_path_relative();
