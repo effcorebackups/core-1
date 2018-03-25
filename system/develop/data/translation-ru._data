@@ -37,7 +37,7 @@ translations
     - Selection list: Список выбора
     - Static block: Статический блок
     - Textarea: Текстовая область
-    - Total build time: Общее время сборки
+    - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
