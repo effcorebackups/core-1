@@ -5,16 +5,16 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          const my_const_1 = 300;
+          const my_const_1 = 'static property priv';
           use const \effcore\br;
           use \effcore\markup;
           abstract class demo_class_ab_1 {
 
-  static public    $property_1;
-  static protected $property_2;
-  static private   $property_3 = my_const_1;
+  static public    $static_property_publ;
+  static protected $static_property_prot;
+  static private   $static_property_priv = my_const_1;
 
-  static public function static_method_1() {return static::$property_3;} # return 300
+  static public function static_method_1() {return static::$static_property_priv;} # return 'static property priv'
 
 }}
 
@@ -25,10 +25,10 @@ namespace effcore\modules\demo {
           use \effcore\locale;
           abstract class demo_class_ab_2 extends demo_class_ab_1 {
 
-  static private $property_3 = my_const_1 + 100;
-  static private $property_4 = 'new property #4';
+  static private $static_property_priv = my_const_1.' modified';
+  static private $static_property_priv_new = 'static property priv new';
 
-  static public function static_method_1() {return static::$property_3;} # return 400
-  static public function static_method_2() {return static::$property_4;} # return 'new property #4'
+  static public function static_method_1() {return static::$static_property_priv;}     # return 'static property priv modified'
+  static public function static_method_2() {return static::$static_property_priv_new;} # return 'static property priv new'
 
 }}

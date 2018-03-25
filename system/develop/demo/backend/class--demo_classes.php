@@ -5,26 +5,26 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          const my_const_2 = 300;
+          const my_const_2 = 'const value';
           use const \effcore\br;
           use \effcore\markup;
           class demo_class_1 {
 
-  public    $property_1;
-  protected $property_2;
-  private   $property_3 = 'default string';
+  public    $property_publ;
+  protected $property_prot;
+  private   $property_priv = 'property priv';
 
-  public function method_1() {return $this->property_3;} # return 'default string'
+  public function method_1() {return $this->property_priv;} # return 'property priv'
 
   ###########################
   ### static declarations ###
   ###########################
 
-  static public    $static_property_1;
-  static protected $static_property_2;
-  static private   $static_property_3 = my_const_2;
+  static public    $static_property_publ;
+  static protected $static_property_prot;
+  static private   $static_property_priv = my_const_2;
 
-  static public function static_method_1() {return static::$static_property_3;} # return 300
+  static public function static_method_1() {return static::$static_property_priv;} # return 'const value'
 
 }}
 
@@ -35,20 +35,20 @@ namespace effcore\modules\demo {
           use \effcore\locale;
           class demo_class_2 extends demo_class_1 {
 
-  private $property_3 = 'modified string';
-  private $property_4 = 'new property #4';
+  private $property_priv = 'property priv modified';
+  private $property_priv_new = 'property priv new';
 
-  public function method_1() {return $this->property_3;} # return 'modified string'
-  public function method_2() {return $this->property_4;} # return 'new property #4'
+  public function method_1() {return $this->property_priv;}     # return 'property priv modified'
+  public function method_2() {return $this->property_priv_new;} # return 'property priv new'
 
   ###########################
   ### static declarations ###
   ###########################
 
-  static private $static_property_3 = my_const_2 + 100;
-  static private $static_property_4 = 'new static property #4';
+  static private $static_property_priv = my_const_2.' modified';
+  static private $static_property_priv_new = 'static property priv new';
 
-  static public function static_method_1() {return static::$static_property_3;} # return 400
-  static public function static_method_2() {return static::$static_property_4;} # return 'new static property #4'
+  static public function static_method_1() {return static::$static_property_priv;}     # return 'const value modified'
+  static public function static_method_2() {return static::$static_property_priv_new;} # return 'static property priv new'
 
 }}
