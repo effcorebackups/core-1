@@ -1,1 +1,9 @@
+
+# see also shell/ignore.sh
+
+# to ignore the changes in "/dynamic/data/data.sqlite" do the next commands:
+# - 'git rm --cached dynamic/data/data.sqlite'
+# - 'git commit -m "start ignoring data.sqlite"'
+# or run shell/ignore.sh
+
 /dynamic/data/data.sqlite
