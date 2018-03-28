@@ -1,10 +1,10 @@
 
-# see also shell/ignore.sh
+# see also shell/git_local_ignore.sh
 
 # ignore the changes in "/dynamic/data/data.sqlite"
 # do the following commands for activate the rule below:
 # - 'git rm --cached dynamic/data/data.sqlite'
 # - 'git commit -m "start ignoring data.sqlite"'
-# or run shell/ignore.sh
+# or run shell/git_local_ignore.sh
 
 /dynamic/data/data.sqlite
