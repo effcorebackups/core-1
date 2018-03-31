@@ -1,6 +1,6 @@
 tabs
-- classes|tabs
-    id: classes
+- structures|tabs
+    id: structures
     attributes
     - class
-      - classes: classes
+      - structures: structures

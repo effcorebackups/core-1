@@ -14,11 +14,11 @@ namespace effcore\modules\develop {
           use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
 
-  #####################
-  ### classes: list ###
-  #####################
+  ########################
+  ### structures: list ###
+  ########################
 
-  static function on_show_block_classes_list($page) {
+  static function on_show_block_structures_list($page) {
     $thead = [['type', 'name', 'file']];
     $tbody = [];
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
@@ -28,17 +28,17 @@ namespace effcore\modules\develop {
         new table_body_row_cell(['class' => ['file' => 'file']], $c_class_info->file)
       ];
     }
-    return new markup('x-block', ['id' => 'classes_list'], [
-      new markup('h2', [], 'Classes list'),
-      new table(['class' => ['classes-list' => 'classes-list']], $tbody, $thead)
+    return new markup('x-block', ['id' => 'structures_list'], [
+      new markup('h2', [], 'Structures list'),
+      new table(['class' => ['structures-list' => 'structures-list']], $tbody, $thead)
     ]);
   }
 
-  #########################
-  ### classes: diagrams ###
-  #########################
+  ############################
+  ### structures: diagrams ###
+  ############################
 
-  static function on_show_block_classes_diagrams($page) {
+  static function on_show_block_structures_diagrams($page) {
     $return = new markup('x-diagram-uml');
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
       if ($c_class_info->type == 'class') {
@@ -101,7 +101,7 @@ namespace effcore\modules\develop {
       }
     }
 
-    return new markup('x-block', ['id' => 'classes_diagrams'], [
+    return new markup('x-block', ['id' => 'structures_diagrams'], [
       new markup('h2', [], 'UML Diagram'),
       $return
     ]);

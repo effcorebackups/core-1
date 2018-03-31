@@ -1,11 +1,11 @@
 pages
-- classes|page
-    title: Classes
+- structures|page
+    title: Structures
     https: true
     display
       check: path
       where: url
-      match: %^(?<base>/develop/classes)/(?<action>list|diagrams)$%
+      match: %^(?<base>/develop/structures)/(?<action>list|diagrams)$%
     access
       roles
       - admins: admins
@@ -29,20 +29,20 @@ pages
     - block_tabs
         region: tabs
         type: link
-        dpath: tabs/develop/classes
-    - block_classes_list
+        dpath: tabs/develop/structures
+    - block_structures_list
         display
           check: action
           where: page_args
           match: %list%
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_classes_list
-    - block_classes_diagrams
+        handler: \effcore\modules\develop\events_page::on_show_block_structures_list
+    - block_structures_diagrams
         display
           check: action
           where: page_args
           match: %diagrams%
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_classes_diagrams
+        handler: \effcore\modules\develop\events_page::on_show_block_structures_diagrams
