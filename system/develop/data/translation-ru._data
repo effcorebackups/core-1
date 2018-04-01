@@ -22,6 +22,7 @@ translations
     - head cell %%_num: заглавная ячейка %%_num
     - init.: инициал.
     - interface: интерфейс
+    - Interfaces: Интерфейсы
     - intr.: интр.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
@@ -40,6 +41,7 @@ translations
     - Textarea: Текстовая область
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
+    - Traits: Трейты
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - Unordered list: Неупорядоченный список

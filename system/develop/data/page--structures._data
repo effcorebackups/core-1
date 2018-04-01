@@ -5,7 +5,7 @@ pages
     display
       check: path
       where: url
-      match: %^(?<base>/develop/structures)/(?<action>list|diagrams)$%
+      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagrams)$%
     access
       roles
       - admins: admins
@@ -32,7 +32,7 @@ pages
         dpath: tabs/develop/structures
     - block_structures_list
         display
-          check: action
+          check: view
           where: page_args
           match: %list%
         region: content
@@ -40,7 +40,7 @@ pages
         handler: \effcore\modules\develop\events_page::on_show_block_structures_list
     - block_structures_diagrams
         display
-          check: action
+          check: view
           where: page_args
           match: %diagrams%
         region: content

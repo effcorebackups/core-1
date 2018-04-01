@@ -19,17 +19,17 @@ namespace effcore\modules\develop {
   ########################
 
   static function on_show_block_structures_list($page) {
-    $thead = [['type', 'name', 'file']];
+    $thead = [['name', 'file']];
     $tbody = [];
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
-      $tbody[] = [
-        new table_body_row_cell(['class' => ['type' => 'type']], $c_class_info->type == 'interface' ? 'intr.' : $c_class_info->type),
-        new table_body_row_cell(['class' => ['name' => 'name']], $c_class_info->namespace.' \ '.$c_class_info->name),
-        new table_body_row_cell(['class' => ['file' => 'file']], $c_class_info->file)
-      ];
+      if ($c_class_info->type == $page->args_get('type')) {
+        $tbody[] = [
+          new table_body_row_cell(['class' => ['name' => 'name']], $c_class_info->namespace.' \ '.$c_class_info->name),
+          new table_body_row_cell(['class' => ['file' => 'file']], $c_class_info->file)
+        ];
+      }
     }
     return new markup('x-block', ['id' => 'structures_list'], [
-      new markup('h2', [], 'Structures list'),
       new table(['class' => ['structures-list' => 'structures-list']], $tbody, $thead)
     ]);
   }

@@ -1,19 +1,28 @@
 tabs_items
-- list|tabs_item
-    id: list
+- class|tabs_item
+    id: class
     id_parent: structures
     parent_is_tab: true
-    action_name: list
-    title: List
+    action_name: class/list
+    title: Classes
     attributes
     - class
-      - list: list
-- diagrams|tabs_item
-    id: diagrams
+      - class: class
+- interface|tabs_item
+    id: interface
     id_parent: structures
     parent_is_tab: true
-    action_name: diagrams
-    title: Diagrams
+    action_name: interface/list
+    title: Interfaces
     attributes
     - class
-      - diagrams: diagrams
+      - interface: interface
+- trait|tabs_item
+    id: trait
+    id_parent: structures
+    parent_is_tab: true
+    action_name: trait/list
+    title: Traits
+    attributes
+    - class
+      - trait: trait
