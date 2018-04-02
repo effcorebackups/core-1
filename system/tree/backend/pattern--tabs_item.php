@@ -23,8 +23,8 @@ namespace effcore {
   }
 
   function render_self() {
-    $page = page::get_current();
-    $this->attribute_insert('href', $page->args_get('base').'/'.$this->action_name);
+    $href = page::get_current()->args_get('base').'/'.$this->action_name;
+    $this->attribute_insert('href', $href);
     return parent::render_self();
   }
 

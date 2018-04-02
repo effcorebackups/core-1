@@ -8,6 +8,22 @@ tabs_items
     attributes
     - class
       - class: class
+- class_list|tabs_item
+    id: class_list
+    id_parent: class
+    action_name: class/list
+    title: List
+    attributes
+    - class
+      - list: list
+- class_diagrams|tabs_item
+    id: class_diagrams
+    id_parent: class
+    action_name: class/diagrams
+    title: Diagrams
+    attributes
+    - class
+      - diagrams: diagrams
 - interface|tabs_item
     id: interface
     id_parent: structures
