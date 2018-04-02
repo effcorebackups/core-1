@@ -14,23 +14,9 @@ namespace effcore\modules\tree {
 
   static function on_start() {
     tree::init();
-    foreach(tree::get_item() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tree) ?
-            tree::get     ($c_item->id_parent) :
-            tree::get_item($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
+    tree::build();
     tabs::init();
-    foreach(tabs::get_item() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tab) ?
-            tabs::get     ($c_item->id_parent) :
-            tabs::get_item($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
+    tabs::build();
   }
 
   static function on_install($module_id = 'tree') {

@@ -32,6 +32,17 @@ namespace effcore {
     }
   }
 
+  static function build() {
+    foreach(static::get_item() as $c_item) {
+      if ($c_item->id_parent) {
+        $c_parent = !empty($c_item->parent_is_tab) ?
+            tabs::get     ($c_item->id_parent) :
+            tabs::get_item($c_item->id_parent);
+        $c_parent->child_insert($c_item, $c_item->id);
+      }
+    };
+  }
+
   static function get($id = null) {
     return $id ? static::$cache_tabs[$id] :
                  static::$cache_tabs;
