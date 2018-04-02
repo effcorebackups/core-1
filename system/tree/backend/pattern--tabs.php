@@ -10,6 +10,34 @@ namespace effcore {
   public $id;
   public $template = 'tabs';
 
+  function render() {
+    return (new template($this->template, [
+      'attributes' => factory::data_to_attr($this->attribute_select()),
+      'top_items'  => $this->render_top_items(),
+      'sub_items'  => $this->render_sub_items()
+    ]))->render();
+  }
+
+  function render_top_items() {
+    $return = '';
+    foreach ($this->child_select_all() as $c_item) {
+      if (!empty($c_item->parent_is_tab)) {
+        $c_clone = clone $c_item;
+        $c_clone->children = [];
+        $return.= $c_clone->render();
+      }
+    }
+    return (new template('tabs_top_items', [
+      'children' => $return,
+    ]))->render();
+  }
+
+  function render_sub_items() {
+    return (new template('tabs_sub_items', [
+      'children' => 'sub_items',
+    ]))->render();
+  }
+
   ######################
   ### static methods ###
   ######################

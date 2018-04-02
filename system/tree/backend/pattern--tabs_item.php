@@ -13,7 +13,14 @@ namespace effcore {
   public $action_name;
   public $title = '';
   public $template = 'tabs_item';
-  public $template_children = 'tabs_item_children';
+  public $template_children = null;
+
+  function render() {
+    return (new template($this->template, [
+      'self'     => $this->render_self(),
+      'children' => $this->render_children($this->children)
+    ]))->render();
+  }
 
   function render_self() {
     $page = page::get_current();
