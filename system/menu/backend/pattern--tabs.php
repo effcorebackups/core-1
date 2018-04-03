@@ -41,6 +41,7 @@ namespace effcore {
           foreach ($c_item->child_select_all() as $c_child) {
             $rendered.= $c_child->render();
           }
+          break;
         }
       }
     }
