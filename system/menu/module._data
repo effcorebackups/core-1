@@ -1,0 +1,6 @@
+module|module
+  id: menu
+  title: Menu
+  description: Module for working with navigation elements.
+  version: 1.00
+  state: always_on

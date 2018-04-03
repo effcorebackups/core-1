@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\tree {
+namespace effcore\modules\menu {
           use \effcore\tree;
           use \effcore\tabs;
           use \effcore\entity;
@@ -19,7 +19,7 @@ namespace effcore\modules\tree {
     tabs::build();
   }
 
-  static function on_install($module_id = 'tree') {
+  static function on_install($module_id = 'menu') {
     return parent::on_install($module_id);
   }
 

@@ -1,6 +1,0 @@
-module|module
-  id: tree
-  title: Tree
-  description: Module for working with hierarchical structures like trees.
-  version: 1.00
-  state: always_on
