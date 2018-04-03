@@ -13,28 +13,40 @@ namespace effcore {
   function render() {
     return (new template($this->template, [
       'attributes' => factory::data_to_attr($this->attribute_select()),
-      'children'   => $this->render_items()
+      'top_items'  => $this->render_top_items(),
+      'sub_items'  => $this->render_sub_items()
     ]))->render();
   }
 
-  function render_items() {
-    $rendered_top_items = '';
-    $rendered_sub_items = '';
+  function render_top_items() {
+    $rendered = '';
     foreach ($this->child_select_all() as $c_item) {
       if (!empty($c_item->parent_is_tab)) {
         $c_clone = clone $c_item;
         $c_clone->children = [];
-        $rendered_top_items.= $c_clone->render();
+        $rendered.= $c_clone->render();
+      }
+    }
+    return $rendered ? (new template('tabs_top_items', [
+      'children' => $rendered
+    ]))->render() : '';
+  }
+
+  function render_sub_items() {
+    $rendered = '';
+    foreach ($this->child_select_all() as $c_item) {
+      if (!empty($c_item->parent_is_tab)) {
         $c_href = page::get_current()->args_get('base').'/'.$c_item->action_name;
         if (url::is_active_trail($c_href)) {
           foreach ($c_item->child_select_all() as $c_child) {
-            $rendered_sub_items.= $c_child->render();
+            $rendered.= $c_child->render();
           }
         }
       }
     }
-    return (new template('tabs_top_items', ['children' => $rendered_top_items]))->render().
-           (new template('tabs_sub_items', ['children' => $rendered_sub_items]))->render();
+    return $rendered ? (new template('tabs_sub_items', [
+      'children' => $rendered
+    ]))->render() : '';
   }
 
   ######################

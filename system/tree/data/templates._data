@@ -10,7 +10,7 @@ templates
     markup: <ul> %%_children </ul>
 - tabs
     type: inline
-    markup: <x-tabs> %%_children </x-tabs>
+    markup: <x-tabs> %%_top_items %%_sub_items </x-tabs>
 - tabs_top_items
     type: inline
     markup: <x-top-items> %%_children </x-top-items>
@@ -19,4 +19,7 @@ templates
     markup: <x-sub-items> %%_children </x-sub-items>
 - tabs_item
     type: inline
-    markup: %%_self %%_children
+    markup: <li %%_attributes> %%_self %%_children </li>
+- tabs_item_children
+    type: inline
+    markup: <ul> %%_children </ul>
