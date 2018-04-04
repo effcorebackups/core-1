@@ -3,7 +3,8 @@ tabs_items
     id: class
     id_parent: structures
     parent_is_tab: true
-    action_name: class/list
+    action_name: class
+    action_default_name: class/list
     title: Classes
     attributes
     - class
@@ -28,7 +29,8 @@ tabs_items
     id: interface
     id_parent: structures
     parent_is_tab: true
-    action_name: interface/list
+    action_name: interface
+    action_default_name: interface/list
     title: Interfaces
     attributes
     - class
@@ -37,7 +39,8 @@ tabs_items
     id: trait
     id_parent: structures
     parent_is_tab: true
-    action_name: trait/list
+    action_name: trait
+    action_default_name: trait/list
     title: Traits
     attributes
     - class
