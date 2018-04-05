@@ -33,6 +33,7 @@ translations
     - Changes was removed.: Изменения были удалены.
     - Changes was saved.: Изменения были сохранены.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
+    - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
     - Colors: Цвета
@@ -75,6 +76,7 @@ translations
     - Event: Событие
     - events: события
     - Events: События
+    - expand: развернуть
     - failed to write file to disk: не удалось записать файл на диск
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!

@@ -43,10 +43,15 @@
   x-diagram-uml x-class[x-abstract='true'] x-name {font-style: italic}
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
-  x-diagram-uml x-class x-attributes:empty,
-  x-diagram-uml x-class x-operations:empty {display: none}
   x-diagram-uml x-item[x-static='true'] {text-decoration: underline}
 
   x-diagram-uml x-item[x-visibility='public']::before    {content: '+'}
   x-diagram-uml x-item[x-visibility='protected']::before {content: '#'}
   x-diagram-uml x-item[x-visibility='private']::before   {content: '-'}
+
+  x-diagram-uml x-attributes,
+  x-diagram-uml x-operations {display: none}
+  x-diagram-uml x-attributes:empty,
+  x-diagram-uml x-operations:empty {display: none !important}
+  #structures_diagrams #expand:checked ~ x-diagram-uml x-attributes,
+  #structures_diagrams #expand:checked ~ x-diagram-uml x-operations {display: block}

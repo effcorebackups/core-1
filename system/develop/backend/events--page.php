@@ -7,7 +7,9 @@
 namespace effcore\modules\develop {
           use \effcore\file;
           use \effcore\node;
+          use \effcore\text;
           use \effcore\markup;
+          use \effcore\markup_simple;
           use \effcore\factory;
           use \effcore\table;
           use \effcore\table_body_row;
@@ -129,6 +131,8 @@ namespace effcore\modules\develop {
 
     return new markup('x-block', ['id' => 'structures_diagrams'], [
       new markup('h2', [], 'UML Diagram'),
+      new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand']),
+      new markup('label', ['for' => 'expand'], new text('expand')),
       $diagrams
     ]);
   }
