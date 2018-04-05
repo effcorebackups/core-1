@@ -39,25 +39,32 @@ namespace effcore\modules\develop {
   ############################
 
   static function on_show_block_structures_diagrams($page) {
-    $return = new markup('x-diagram-uml');
-    foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
+    $classes_map = factory::get_classes_map();
+    $diagrams = new markup('x-diagram-uml');
+
+  # build diagram for each class
+    foreach ($classes_map as $c_class_full_name => $c_class_info) {
       if ($c_class_info->type == 'class') {
         $c_file       = new file($c_class_info->file);
         $c_reflection = new \ReflectionClass($c_class_full_name);
-        $x_diagram    = new markup('x-class');
+        $x_class_wr   = new markup('x-class-wrapper');
+        $x_class      = new markup('x-class');
         $x_name       = new markup('x-name', ['title' => $c_class_info->file], ' '.$c_class_info->name.' ');
         $x_namespace  = new markup('x-namespace', [], '(from '.$c_class_info->namespace.')');
         $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes = new markup('x-attributes');
         $x_operations = new markup('x-operations');
-        $x_diagram->child_insert($x_name_wr);
-        $x_diagram->child_insert($x_attributes, 'attributes');
-        $x_diagram->child_insert($x_operations, 'operations');
-        $return->child_insert($x_diagram);
+        $x_children   = new markup('x-children', [], [], 100);
+        $x_class->child_insert($x_name_wr, 'name_wrapper');
+        $x_class->child_insert($x_attributes, 'attributes');
+        $x_class->child_insert($x_operations, 'operations');
+        $x_class_wr->child_insert($x_class, 'class');
+        $x_class_wr->child_insert($x_children, 'children');
+        $diagrams->child_insert($x_class_wr, $c_class_full_name);
 
       # set abstract mark
         if ($c_reflection->isAbstract()) {
-          $x_diagram->attribute_insert('x-abstract', 'true');
+          $x_class->attribute_insert('x-abstract', 'true');
         }
 
       # find properties
@@ -101,9 +108,28 @@ namespace effcore\modules\develop {
       }
     }
 
+  # move children to it's parent
+    $items_to_delete = [];
+    foreach ($diagrams->child_select_all() as $c_class_full_name => $c_class_wr) {
+      $c_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
+                                   $classes_map[$c_class_full_name]->extends : null;
+      if ($c_parent_full_name) {
+        $c_parent = $diagrams->child_select($c_parent_full_name);
+        if ($c_parent) {
+          $x_parent_children = $c_parent->child_select('children');
+          $x_parent_children->child_insert($c_class_wr, $c_class_full_name);
+          $items_to_delete[$c_class_full_name] = $c_class_full_name;
+        }
+      }
+    }
+  # delete free copies of moved items
+    foreach ($items_to_delete as $c_item) {
+      $diagrams->child_delete($c_item);
+    }
+
     return new markup('x-block', ['id' => 'structures_diagrams'], [
       new markup('h2', [], 'UML Diagram'),
-      $return
+      $diagrams
     ]);
   }
 
