@@ -6,7 +6,7 @@
 
 namespace effcore {
           class translation
-          implements \effcore\has_different_cache {
+          implements has_different_cache {
 
   public $code;
   public $data;

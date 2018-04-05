@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_file extends \effcore\form_field {
+          class form_field_file extends form_field {
 
   public $max_file_size;
   public $upload_subdir = '';

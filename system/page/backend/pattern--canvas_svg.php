@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class canvas_svg extends \effcore\node_simple {
+          class canvas_svg extends node_simple {
 
   public $template = 'canvas_svg';
   public $w;

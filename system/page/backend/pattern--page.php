@@ -6,7 +6,7 @@
 
 namespace effcore {
           class page
-          implements \effcore\has_different_cache {
+          implements has_different_cache {
 
   public $title;
   public $https;

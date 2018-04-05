@@ -25,7 +25,7 @@ namespace effcore\modules\demo {
 
 namespace effcore\modules\demo {
           use const \effcore\nl;
-          use \effcore\locale;                 # example of not fully qualified name of extends
+          use \effcore\locale;
           abstract class demo_class_ab_2 extends demo_class_ab_1 {
 
   static private $static_property_priv = my_const_1.' modified';

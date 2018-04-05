@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tabs extends \effcore\node {
+          class tabs extends node {
 
   public $id;
   public $template = 'tabs';

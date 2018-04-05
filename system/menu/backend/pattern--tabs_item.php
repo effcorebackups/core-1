@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tabs_item extends \effcore\tree_item {
+          class tabs_item extends tree_item {
 
   public $parent_is_tab;
   public $action_name;

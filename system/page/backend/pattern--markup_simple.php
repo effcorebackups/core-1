@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class markup_simple extends \effcore\node_simple {
+          class markup_simple extends node_simple {
 
   public $tag_name = 'div';
   public $template = 'markup_html_simple';

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_container extends \effcore\markup {
+          class form_container extends markup {
 
   public $tag_name = 'x-container';
   public $template = 'form_container';

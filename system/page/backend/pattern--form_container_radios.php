@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_container_radios extends \effcore\form_container_checkboxes {
+          class form_container_radios extends form_container_checkboxes {
 
   public $input_tag_name = 'radio';
 

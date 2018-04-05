@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class pager extends \effcore\markup {
+          class pager extends markup {
 
   public $id;
   public $tag_name = 'x-pager';

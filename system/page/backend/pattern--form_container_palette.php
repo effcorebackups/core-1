@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_container_palette extends \effcore\form_container_radios {
+          class form_container_palette extends form_container_radios {
 
   function build() {
     $this->attribute_insert('class', ['palette' => 'palette']);

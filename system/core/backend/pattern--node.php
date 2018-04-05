@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class node extends \effcore\node_simple {
+          class node extends node_simple {
 
   public $children = [];
 

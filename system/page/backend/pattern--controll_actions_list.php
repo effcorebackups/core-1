@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class control_actions_list extends \effcore\markup {
+          class control_actions_list extends markup {
 
   public $tag_name = 'x-actions-control';
   public $title;

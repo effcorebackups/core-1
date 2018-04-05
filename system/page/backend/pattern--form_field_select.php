@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_select extends \effcore\form_field {
+          class form_field_select extends form_field {
 
   public $select_attributes = [];
   public $values = [];

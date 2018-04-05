@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          abstract class cache extends \effcore\dynamic {
+          abstract class cache extends dynamic {
 
   static public $type = 'cache';
   static public $directory = dir_dynamic.'cache/';

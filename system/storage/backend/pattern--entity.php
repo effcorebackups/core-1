@@ -6,7 +6,7 @@
 
 namespace effcore {
           class entity
-          implements \effcore\has_different_cache, \effcore\post_parsing {
+          implements has_different_cache, post_parsing {
 
   static function get_non_different_properties() {
     return [

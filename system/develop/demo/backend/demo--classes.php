@@ -36,7 +36,7 @@ namespace effcore\modules\demo {
 
 namespace effcore\modules\demo {
           use const \effcore\nl;
-          use \effcore\locale;     # example of not fully qualified name of extends
+          use \effcore\locale;
           class demo_class_2 extends demo_class_1 {
 
   private $property_priv = 'property priv modified';

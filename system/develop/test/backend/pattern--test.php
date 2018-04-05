@@ -6,7 +6,7 @@
 
 namespace effcore {
           class test
-          implements \effcore\has_different_cache {
+          implements has_different_cache {
 
   public $id;
   public $https = false;

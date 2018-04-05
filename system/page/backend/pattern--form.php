@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore {
-          class form extends \effcore\markup
-          implements \effcore\has_different_cache {
+          class form extends markup
+          implements has_different_cache {
 
   static function get_non_different_properties() {
     return [];

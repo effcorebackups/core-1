@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class table_head_row_cell extends \effcore\markup {
+          class table_head_row_cell extends markup {
 
   public $tag_name = 'th';
 

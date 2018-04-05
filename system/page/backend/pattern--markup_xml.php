@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class markup_xml extends \effcore\markup {
+          class markup_xml extends markup {
 
   public $template = 'markup_xml';
 

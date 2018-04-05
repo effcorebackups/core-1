@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class table_body_row_cell extends \effcore\markup {
+          class table_body_row_cell extends markup {
 
   public $tag_name = 'td';
 

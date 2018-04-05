@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tree_item extends \effcore\node {
+          class tree_item extends node {
 
   public $id;
   public $id_parent;

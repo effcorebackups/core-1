@@ -8,7 +8,7 @@ namespace effcore {
           use \PDO as pdo;
           use \PDOException as pdo_exception;
           class storage_pdo
-          implements \effcore\has_different_cache {
+          implements has_different_cache {
 
   public $id;
   public $driver;
