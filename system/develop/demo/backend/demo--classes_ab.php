@@ -15,7 +15,8 @@ namespace effcore\modules\demo {
   static private   $static_property_priv = my_const_1;
 
   static public function static_method_1() {
-    return static::$static_property_priv; # return 'static property priv'
+  # return 'static property priv'
+    return static::$static_property_priv;
   }
 
 }}
@@ -24,18 +25,20 @@ namespace effcore\modules\demo {
 
 namespace effcore\modules\demo {
           use const \effcore\nl;
-          use \effcore\locale;
+          use \effcore\locale;                 # example of not fully qualified name of extends
           abstract class demo_class_ab_2 extends demo_class_ab_1 {
 
   static private $static_property_priv = my_const_1.' modified';
   static private $static_property_priv_new = 'static property priv new';
 
   static public function static_method_1() {
-    return static::$static_property_priv; # return 'static property priv modified'
+  # return 'static property priv modified'
+    return static::$static_property_priv;
   }
 
   static public function static_method_2() {
-    return static::$static_property_priv_new; # return 'static property priv new'
+  # return 'static property priv new'
+    return static::$static_property_priv_new;
   }
 
 }}

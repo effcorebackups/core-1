@@ -45,11 +45,18 @@ namespace effcore {
                                         $c_match['namespace'] : '';
             $c_info->name = $c_match['name'];
             $c_info->type = $c_match['type'];
-            if (!empty($c_match['extends'])) $c_info->extends = ltrim($c_match['extends'], '\\');
+            if (!empty($c_match['extends'])) {
+              if ($c_match['extends'][0] == '\\')
+                   $c_info->extends = ltrim($c_match['extends'], '\\');
+              else $c_info->extends = ltrim($c_info->namespace.'\\'.$c_match['extends'], '\\');
+            }
             if (!empty($c_match['implements'])) {
               foreach (explode(',', $c_match['implements']) as $c_implement) {
-                $c_info->implements[ltrim(trim($c_implement), '\\')] =
-                                    ltrim(trim($c_implement), '\\');
+                $c_implement = trim($c_implement);
+                if ($c_implement[0] == '\\')
+                     $c_implement = ltrim($c_implement, '\\');
+                else $c_implement = ltrim($c_info->namespace.'\\'.$c_implement, '\\');
+                $c_info->implements[$c_implement] = $c_implement;
               }
             }
             $c_info->file = $c_file->get_path_relative();
