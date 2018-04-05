@@ -65,7 +65,8 @@ namespace effcore\modules\develop {
         $diagrams->child_insert($x_class_wr, $c_class_full_name);
 
       # set abstract mark
-        if ($c_reflection->isAbstract()) {
+        if (!empty($c_class_info->modifier) &&
+                   $c_class_info->modifier == 'abstract') {
           $x_class->attribute_insert('x-abstract', 'true');
         }
 
@@ -135,6 +136,99 @@ namespace effcore\modules\develop {
       new markup('label', ['for' => 'expand'], new text('expand')),
       $diagrams
     ]);
+  }
+
+  ###########################
+  ### export UML diagrams ###
+  ###########################
+
+  static function on_export_diagrams() {
+    $items = [];
+    foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
+      $c_reflection = new \ReflectionClass($c_class_full_name);
+      $c_file = new file($c_class_info->file);
+      $c_info = new \stdClass();
+      $c_info->_type = 'UMLClass';
+      $c_info->_id = 'C'.md5($c_class_full_name);
+      $c_info->_parent = new \stdCLass();
+      $c_info->_parent->{'$ref'} = '';
+      $c_info->name = $c_class_info->name;
+      $c_info->visibility = 'public';
+      $c_info->isAbstract = !empty($c_class_info->modifier) && $c_class_info->modifier == 'abstract';
+      $c_info->isFinalSpecialization = !empty($c_class_info->modifier) && $c_class_info->modifier == 'final';
+      $c_info->attributes = [];
+      $c_info->operations = [];
+
+    # find properties
+      foreach ($c_reflection->getProperties() as $c_attribute) {
+        if ($c_attribute->getDeclaringClass()->name === $c_class_full_name) {
+          $c_matches = [];
+          preg_match('%(?<type>class|trait|interface)\\s+'.
+                      '(?<class_name>'.$c_class_info->name.').*?'.
+                      '(?<last_modifier>public|protected|private|static)\\s+\\$'.
+                      '(?<name>'.$c_attribute->name.') = '.
+                      '(?<value>.+?);%s', $c_file->load(), $c_matches);
+          $c_defaults = isset($c_matches['value']) ?
+                              $c_matches['value'] : null;
+          $c_name = ($c_defaults !== null) ? $c_attribute->name.' = '.$c_defaults :
+                                             $c_attribute->name;
+          if ($c_attribute->isPublic())    $c_info->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_name), 'name' => $c_name, 'visibility' => 'public',    'isStatic' => $c_attribute->isStatic()];
+          if ($c_attribute->isProtected()) $c_info->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_name), 'name' => $c_name, 'visibility' => 'protected', 'isStatic' => $c_attribute->isStatic()];
+          if ($c_attribute->isPrivate())   $c_info->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_name), 'name' => $c_name, 'visibility' => 'private',   'isStatic' => $c_attribute->isStatic()];
+        }
+      }
+
+    # find methods
+      foreach ($c_reflection->getMethods() as $c_operation) {
+        if ($c_operation->getDeclaringClass()->name === $c_class_full_name) {
+          $c_matches = [];
+          preg_match('%(?<type>class|trait|interface)\\s+'.
+                      '(?<class_name>'.$c_class_info->name.').*?'.
+                      '(?<last_modifier>public|protected|private|static|final|)\\s'.
+                      '(?:function)\\s'.
+                      '(?<name>'.$c_operation->name.')\\s*\\('.
+                      '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
+          $c_defaults = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z_])#i', '$2',
+                              $c_matches['params']) : null;
+          $c_name = ($c_defaults !== null) ? $c_operation->name.' ('.$c_defaults.')' :
+                                             $c_operation->name.' ()';
+          if ($c_operation->isPublic())    $c_info->operations[] = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_name), 'name' => $c_name, 'visibility' => 'public',    'isStatic' => $c_operation->isStatic()];
+          if ($c_operation->isProtected()) $c_info->operations[] = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_name), 'name' => $c_name, 'visibility' => 'protected', 'isStatic' => $c_operation->isStatic()];
+          if ($c_operation->isPrivate())   $c_info->operations[] = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_name), 'name' => $c_name, 'visibility' => 'private',   'isStatic' => $c_operation->isStatic()];
+        }
+      }
+
+      $items[] = $c_info;
+    }
+
+  # print result
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename=classes.mdj');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    print json_encode(
+      (object)[
+        '_type' => 'Project',
+        '_id' => md5('ProjectNew'),
+        'name' => 'ProjectNew',
+        'ownedElements' => [
+          (object)[
+            '_type' => 'UMLModel',
+            '_id' => md5('UMLModel'),
+            'name' => 'Model',
+            'ownedElements' => [
+              (object)[
+                '_type' => 'UMLClassDiagram',
+                '_id' => md5('UMLClassDiagram'),
+                'name' => 'Main',
+                'ownedElements' => $items,
+              ]
+            ]
+          ]
+        ]
+      ]
+    );
+    exit();
   }
 
 }}

@@ -37,7 +37,7 @@ namespace effcore\modules\demo {
 namespace effcore\modules\demo {
           use const \effcore\nl;
           use \effcore\locale;
-          class demo_class_2 extends demo_class_1 {
+          final class demo_class_2 extends demo_class_1 {
 
   private $property_priv = 'property priv modified';
   private $property_priv_new = 'property priv new';

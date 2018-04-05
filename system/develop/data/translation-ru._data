@@ -13,6 +13,8 @@ translations
     - Console: Консоль
     - Demo: Демо
     - Develop: Разработка
+    - Diagrams (export): Диаграммы (экспорт)
+    - Diagrams: Диаграммы
     - Dynamic block: Динамический блок
     - Element %%_info.: Элемент %%_info.
     - Elements: Элементы

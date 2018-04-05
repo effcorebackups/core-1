@@ -33,7 +33,7 @@ namespace effcore {
       foreach ($files as $c_file) {
         $c_matches = [];
         preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
-                                     '(?<is_abstract>abstract|)\\s*'.
+                                     '(?<modifier>abstract|final|)\\s*'.
                                      '(?<type>class|trait|interface)\\s+'.
                                      '(?<name>[a-z0-9_]+)\\s*'.
                           '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
@@ -41,15 +41,21 @@ namespace effcore {
         foreach ($c_matches as $c_match) {
           if (!empty($c_match['name'])) {
             $c_info = new \stdClass();
-            $c_info->namespace = !empty($c_match['namespace']) ?
-                                        $c_match['namespace'] : '';
+          # define modifier (abstract|final)
+            if (!empty($c_match['modifier'])) {
+              $c_info->modifier = $c_match['modifier'];
+            }
+          # define namespace, name, type (class|trait|interface)
+            $c_info->namespace = !empty($c_match['namespace']) ? $c_match['namespace'] : '';
             $c_info->name = $c_match['name'];
             $c_info->type = $c_match['type'];
+          # define parent class
             if (!empty($c_match['extends'])) {
               if ($c_match['extends'][0] == '\\')
                    $c_info->extends = ltrim($c_match['extends'], '\\');
               else $c_info->extends = ltrim($c_info->namespace.'\\'.$c_match['extends'], '\\');
             }
+          # define implements interfaces
             if (!empty($c_match['implements'])) {
               foreach (explode(',', $c_match['implements']) as $c_implement) {
                 $c_implement = trim($c_implement);
@@ -59,7 +65,9 @@ namespace effcore {
                 $c_info->implements[$c_implement] = $c_implement;
               }
             }
+          # define file path
             $c_info->file = $c_file->get_path_relative();
+          # add to result pool
             if (!$c_info->namespace)
                  $classes_map[$c_info->name] = $c_info;
             else $classes_map[$c_info->namespace.'\\'.$c_info->name] = $c_info;

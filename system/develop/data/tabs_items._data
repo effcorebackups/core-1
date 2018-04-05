@@ -25,6 +25,14 @@ tabs_items
     attributes
     - class
       - diagrams: diagrams
+- class_diagrams_export|tabs_item
+    id: class_diagrams_export
+    id_parent: class
+    action_name: class/diagrams_export
+    title: Diagrams (export)
+    attributes
+    - class
+      - diagrams-export: diagrams-export
 - interface|tabs_item
     id: interface
     id_parent: structures

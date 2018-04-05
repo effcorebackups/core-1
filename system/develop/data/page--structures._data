@@ -5,7 +5,7 @@ pages
     display
       check: path
       where: url
-      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagrams)$%
+      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagrams|diagrams_export)$%
     access
       roles
       - admins: admins
@@ -46,3 +46,11 @@ pages
         region: content
         type: code
         handler: \effcore\modules\develop\events_page::on_show_block_structures_diagrams
+    - block_structures_diagrams_export
+        display
+          check: view
+          where: page_args
+          match: %diagrams_export%
+        region: content
+        type: code
+        handler: \effcore\modules\develop\events_page::on_export_diagrams
