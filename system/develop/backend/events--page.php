@@ -145,63 +145,65 @@ namespace effcore\modules\develop {
   static function on_export_diagrams() {
     $items = [];
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
-      $c_reflection = new \ReflectionClass($c_class_full_name);
-      $c_file = new file($c_class_info->file);
-      $c_return = new \stdClass();
-      $c_return->_type = 'UMLClass';
-      $c_return->_id = 'C'.md5($c_class_full_name);
-      $c_return->name = $c_class_info->name;
-      $c_return->visibility = 'public';
-      $c_return->isAbstract = !empty($c_class_info->modifier) && $c_class_info->modifier == 'abstract';
-      $c_return->isFinalSpecialization = !empty($c_class_info->modifier) && $c_class_info->modifier == 'final';
-      $c_return->attributes = [];
-      $c_return->operations = [];
+      if ($c_class_info->type == 'class') {
+        $c_reflection = new \ReflectionClass($c_class_full_name);
+        $c_file = new file($c_class_info->file);
+        $c_return = new \stdClass();
+        $c_return->_type = 'UMLClass';
+        $c_return->_id = 'C'.md5($c_class_full_name);
+        $c_return->name = $c_class_info->name;
+        $c_return->visibility = 'public';
+        $c_return->isAbstract = !empty($c_class_info->modifier) && $c_class_info->modifier == 'abstract';
+        $c_return->isFinalSpecialization = !empty($c_class_info->modifier) && $c_class_info->modifier == 'final';
+        $c_return->attributes = [];
+        $c_return->operations = [];
 
-    # find properties
-      foreach ($c_reflection->getProperties() as $c_info) {
-        if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
-          $c_matches = [];
-          preg_match('%(?<type>class|trait|interface)\\s+'.
-                      '(?<class_name>'.$c_class_info->name.').*?'.
-                      '(?<last_modifier>public|protected|private|static)\\s+\\$'.
-                      '(?<name>'.$c_info->name.') = '.
-                      '(?<value>.+?);%s', $c_file->load(), $c_matches);
-          if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-          if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-          if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
-        }
-      }
-
-    # find methods
-      foreach ($c_reflection->getMethods() as $c_info) {
-        if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
-          $c_matches = [];
-          preg_match('%(?<type>class|trait|interface)\\s+'.
-                      '(?<class_name>'.$c_class_info->name.').*?'.
-                      '(?<last_modifier>public|protected|private|static|final|)\\s'.
-                      '(?:function)\\s'.
-                      '(?<name>'.$c_info->name.')\\s*\\('.
-                      '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-          if ($c_info->isPublic())    $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-          if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-          if ($c_info->isPrivate())   $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
-          if (!empty($c_matches['params'])) {
-            foreach (explode(',', $c_matches['params']) as $c_param) {
-              $c_param_parts = explode('=', $c_param);
-              $c_name = trim($c_param_parts[0], '$ ');
-              $c_value = isset($c_param_parts[1]) ? trim($c_param_parts[1]) : '';
-              $c_operation->parameters[] = (object)[
-                '_type' => 'UMLParameter',
-                'name' => $c_name,
-                'defaultValue' => $c_value,
-              ];
-            }
+      # find properties
+        foreach ($c_reflection->getProperties() as $c_info) {
+          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+            $c_matches = [];
+            preg_match('%(?<type>class|trait|interface)\\s+'.
+                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<last_modifier>public|protected|private|static)\\s+\\$'.
+                        '(?<name>'.$c_info->name.') = '.
+                        '(?<value>.+?);%s', $c_file->load(), $c_matches);
+            if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+            if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
           }
-          $c_return->operations[] = $c_operation;
         }
-      }
 
-      $items[] = $c_return;
+      # find methods
+        foreach ($c_reflection->getMethods() as $c_info) {
+          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+            $c_matches = [];
+            preg_match('%(?<type>class|trait|interface)\\s+'.
+                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<last_modifier>public|protected|private|static|final|)\\s'.
+                        '(?:function)\\s'.
+                        '(?<name>'.$c_info->name.')\\s*\\('.
+                        '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
+            if ($c_info->isPublic())    $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+            if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPrivate())   $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if (!empty($c_matches['params'])) {
+              foreach (explode(',', $c_matches['params']) as $c_param) {
+                $c_param_parts = explode('=', $c_param);
+                $c_name = trim($c_param_parts[0], '$ ');
+                $c_value = isset($c_param_parts[1]) ? trim($c_param_parts[1]) : '';
+                $c_operation->parameters[] = (object)[
+                  '_type' => 'UMLParameter',
+                  'name' => $c_name,
+                  'defaultValue' => $c_value,
+                ];
+              }
+            }
+            $c_return->operations[] = $c_operation;
+          }
+        }
+
+        $items[] = $c_return;
+      }
     }
 
   # print result
