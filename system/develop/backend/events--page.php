@@ -195,6 +195,7 @@ namespace effcore\modules\develop {
                   '_type' => 'UMLParameter',
                   'name' => $c_name,
                   'defaultValue' => $c_value,
+                  'direction' => $c_name[0] == '&' ? 'inout' : 'in',
                 ];
               }
             }
