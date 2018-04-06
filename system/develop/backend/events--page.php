@@ -150,8 +150,6 @@ namespace effcore\modules\develop {
       $c_return = new \stdClass();
       $c_return->_type = 'UMLClass';
       $c_return->_id = 'C'.md5($c_class_full_name);
-      $c_return->_parent = new \stdCLass();
-      $c_return->_parent->{'$ref'} = '';
       $c_return->name = $c_class_info->name;
       $c_return->visibility = 'public';
       $c_return->isAbstract = !empty($c_class_info->modifier) && $c_class_info->modifier == 'abstract';
@@ -168,9 +166,9 @@ namespace effcore\modules\develop {
                       '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                       '(?<name>'.$c_info->name.') = '.
                       '(?<value>.+?);%s', $c_file->load(), $c_matches);
-          if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_info->name), 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-          if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_info->name), 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-          if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', '_id' => 'A'.md5($c_info->name), 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+          if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+          if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
+          if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
         }
       }
 
@@ -184,9 +182,9 @@ namespace effcore\modules\develop {
                       '(?:function)\\s'.
                       '(?<name>'.$c_info->name.')\\s*\\('.
                       '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-          if ($c_info->isPublic())    $c_operation = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_info->name), 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-          if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_info->name), 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-          if ($c_info->isPrivate())   $c_operation = (object)['_type' => 'UMLOperation', '_id' => 'O'.md5($c_info->name), 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+          if ($c_info->isPublic())    $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+          if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
+          if ($c_info->isPrivate())   $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
           if (!empty($c_matches['params'])) {
             foreach (explode(',', $c_matches['params']) as $c_param) {
               $c_param_parts = explode('=', $c_param);
@@ -214,17 +212,14 @@ namespace effcore\modules\develop {
     print json_encode(
       (object)[
         '_type' => 'Project',
-        '_id' => md5('ProjectNew'),
         'name' => 'ProjectNew',
         'ownedElements' => [
           (object)[
             '_type' => 'UMLModel',
-            '_id' => md5('UMLModel'),
             'name' => 'Model',
             'ownedElements' => [
               (object)[
                 '_type' => 'UMLClassDiagram',
-                '_id' => md5('UMLClassDiagram'),
                 'name' => 'Main',
                 'ownedElements' => $items,
               ]
