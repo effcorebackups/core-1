@@ -33,10 +33,8 @@
   /* uml class diagram */
   x-diagram-uml {font-family: 'Arial'}
   x-diagram-uml, x-diagram-uml * {display: block}
-  x-diagram-uml x-class-wrapper {display: block}
-  x-diagram-uml x-children {display: block; margin-left: 30px}
   x-diagram-uml x-children:empty {display: none}
-  x-diagram-uml x-class {width: 300px; margin: 20px 0; border: 1px solid #ff2b2b; background: #fff5d8}
+  x-diagram-uml x-class {width: 300px; border: 1px solid #ff2b2b; background: #fff5d8}
   x-diagram-uml x-class x-name-wrapper {padding: 3px; padding-bottom: 6px; text-align: center}
   x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
   x-diagram-uml x-class x-namespace {font-size: .9em; line-height: 1em}
@@ -44,6 +42,9 @@
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
   x-diagram-uml x-item[x-static='true'] {text-decoration: underline}
+
+  x-diagram-uml x-class-wrapper {padding-top: 20px}
+  x-diagram-uml x-children x-class-wrapper {padding-left: 30px; background: #eee url(relation-generalization._vector) no-repeat}
 
   x-diagram-uml x-item[x-visibility='public']::before    {content: '+'}
   x-diagram-uml x-item[x-visibility='protected']::before {content: '#'}
