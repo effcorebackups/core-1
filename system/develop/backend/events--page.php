@@ -114,10 +114,10 @@ namespace effcore\modules\develop {
   # move children to it's parent
     $items_to_delete = [];
     foreach ($diagrams->child_select_all() as $c_class_full_name => $c_class_wr) {
-      $c_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
-                                   $classes_map[$c_class_full_name]->extends : null;
-      if ($c_parent_full_name) {
-        $c_parent = $diagrams->child_select($c_parent_full_name);
+      $c_class_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
+                                         $classes_map[$c_class_full_name]->extends : null;
+      if ($c_class_parent_full_name) {
+        $c_parent = $diagrams->child_select($c_class_parent_full_name);
         if ($c_parent) {
           $x_parent_children = $c_parent->child_select('children');
           $x_parent_children->child_insert($c_class_wr, $c_class_full_name);
@@ -143,8 +143,9 @@ namespace effcore\modules\develop {
   ###########################
 
   static function on_export_diagrams() {
+    $classes_map = factory::get_classes_map();
     $items = [];
-    foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
+    foreach ($classes_map as $c_class_full_name => $c_class_info) {
       if ($c_class_info->type == 'class') {
         $c_reflection = new \ReflectionClass($c_class_full_name);
         $c_file = new file($c_class_info->file);
@@ -157,6 +158,19 @@ namespace effcore\modules\develop {
         $c_return->isFinalSpecialization = !empty($c_class_info->modifier) && $c_class_info->modifier == 'final';
         $c_return->attributes = [];
         $c_return->operations = [];
+
+      # add relation to parent class
+        $c_class_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
+                                           $classes_map[$c_class_full_name]->extends : null;
+        if ($c_class_parent_full_name) {
+          $c_relation = new \stdClass();
+          $c_relation->_type = 'UMLGeneralization';
+          $c_relation->source = new \stdClass();
+          $c_relation->target = new \stdClass();
+          $c_relation->source->{'$ref'} = 'C'.md5($c_class_full_name);
+          $c_relation->target->{'$ref'} = 'C'.md5($c_class_parent_full_name);
+          $c_return->ownedElements = [$c_relation];
+        }
 
       # find properties
         foreach ($c_reflection->getProperties() as $c_info) {
