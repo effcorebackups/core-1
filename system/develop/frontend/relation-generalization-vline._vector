@@ -6,8 +6,8 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    width="30"
-   height="300"
-   viewBox="0 0 30 300"
+   height="90"
+   viewBox="0 0 30 90"
    style="shape-rendering:auto">
 
   <metadata>
@@ -22,7 +22,7 @@
   </metadata>
 
   <path
-     d="M 15,0 V 300"
+     d="M 15,0 V 90"
      style="stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
 
 </svg>
