@@ -8,3 +8,12 @@ frontend
     - develop_style
         file: frontend/develop._style
         media: all
+- frontend_diagram_filter
+    display
+      check: path
+      where: url
+      match: %/develop/structures/.*%
+    styles
+    - form_style
+        file: /page/frontend/form._style
+        media: all

@@ -113,7 +113,7 @@ namespace effcore {
         # render meta
           if (isset($c_item->favicons)) {
             foreach ($c_item->favicons as $c_icon) {
-              $c_url = new url('/system/'.$module_id.'/'.$c_icon->file);
+              $c_url = new url('/system/'.($c_icon->file[0] == '/' ? $c_icon->file : $module_id.'/'.$c_icon->file));
               $return->meta->child_insert(new markup_simple('link', [
                 'rel'   => $c_icon->rel,
                 'type'  => $c_icon->type,
@@ -126,7 +126,7 @@ namespace effcore {
         # render styles
           if (isset($c_item->styles)) {
             foreach ($c_item->styles as $c_style) {
-              $c_url = new url('/system/'.$module_id.'/'.$c_style->file);
+              $c_url = new url('/system/'.($c_style->file[0] == '/' ? $c_style->file : $module_id.'/'.$c_style->file));
               $return->styles->child_insert(new markup_simple('link', [
                 'rel'   => 'stylesheet',
                 'media' => $c_style->media,
@@ -138,7 +138,7 @@ namespace effcore {
         # render scripts
           if (isset($c_item->scripts)) {
             foreach ($c_item->scripts as $c_script) {
-              $c_url = new url('/system/'.$module_id.'/'.$c_script->file);
+              $c_url = new url('/system/'.($c_script->file[0] == '/' ? $c_script->file : $module_id.'/'.$c_script->file));
               $return->scripts->child_insert(new markup('script', [
                 'src' => $c_url->get_full()
               ]));
