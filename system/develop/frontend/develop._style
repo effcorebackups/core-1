@@ -44,7 +44,11 @@
   x-diagram-uml x-item[x-static='true'] {text-decoration: underline}
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
-  x-diagram-uml x-children x-class-wrapper {padding-left: 30px; background: #eee url(relation-generalization._vector) no-repeat}
+  x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
+  x-diagram-uml x-children x-class-wrapper             {background: url(relation-generalization-middle._vector)       no-repeat}
+  x-diagram-uml x-children x-class-wrapper:first-child {background: url(relation-generalization-first._vector)        no-repeat}
+  x-diagram-uml x-children x-class-wrapper:last-child  {background: url(relation-generalization-last._vector)         no-repeat}
+  x-diagram-uml x-children x-class-wrapper:only-child  {background: url(relation-generalization-first-single._vector) no-repeat}
 
   x-diagram-uml x-item[x-visibility='public']::before    {content: '+'}
   x-diagram-uml x-item[x-visibility='protected']::before {content: '#'}

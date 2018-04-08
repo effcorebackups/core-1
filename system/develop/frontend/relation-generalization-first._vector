@@ -5,9 +5,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
-   width="100"
+   width="30"
    height="300"
-   viewBox="0 0 100 300"
+   viewBox="0 0 30 300"
    style="shape-rendering:auto">
 
   <metadata>
@@ -22,10 +22,14 @@
   </metadata>
 
   <path
-     style="fill:none;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
-     d="M 30,44 H 15 V 0" />
+     d="M 15,0 V 44 H 30"
+     style="fill:none;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
   <path
+     id="arrow"
      d="M 20,10 H 10 L 15,0 Z"
-     style="fill:white;stroke:black;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round" />
+     style="fill:white;stroke:black;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;" />
+  <path
+     d="M 15,44 V 300"
+     style="stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
 
 </svg>
