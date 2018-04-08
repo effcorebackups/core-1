@@ -21,9 +21,9 @@
   form b.required {position: absolute; margin-left: .2em; font-size: 1.1em; color: %%_color_error}
 
   /* inputs */
-  form x-field input,
-  form x-field textarea,
-  form x-field select {
+  input,
+  textarea,
+  select {
     -webkit-appearance: none;
     -moz-appearance: none;
     display: block;
@@ -34,38 +34,34 @@
     color: %%_color;
     font-family: 'Arial';
     font-size: 16px}
-  form x-field select {cursor: pointer}
-  form x-field textarea {width: 70%; min-width: 100px}
-  form x-field input[type="range"] {border-radius: 20px}
-  form x-field input[type="file"] {border-radius: 15px}
-  form x-field input[type="email"],
-  form x-field input[name="nick"] {text-transform: lowercase}
+  select {cursor: pointer}
+  textarea {width: 70%; min-width: 100px}
+  input[type="range"] {border-radius: 20px}
+  input[type="file"] {border-radius: 15px}
+  input[type="email"],
+  input[name="nick"] {text-transform: lowercase}
 
   /* checkboxes and radios */
-  form x-field input[type="checkbox"],
-  form x-field input[type="radio"] {display: inline-block; vertical-align: middle; cursor: pointer; background-color: white}
-  form x-field input[type="radio"] {border-radius: 13px}
   form .boxes x-field {margin: 10px 0}
   form .boxes label {font-size: 1em}
-  form .boxes input[type="checkbox"],
-  form .boxes input[type="radio"] {margin: 0 5px 2px 0}
+  input[type="checkbox"],
+  input[type="radio"] {display: inline-block; margin: 0 5px 2px 0; vertical-align: middle; cursor: pointer; background-color: white}
+  input[type="radio"] {border-radius: 13px}
+
+  /* checked elements */
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {border-color: black; background-color: silver; box-shadow: inset 0 0 0 2px white}
 
   /* disabled elements */
   form x-field.disabled * {color: lightgray; cursor: default !important}
-  form x-field input:disabled,
-  form x-field textarea:disabled,
-  form x-field select:disabled {border-color: lightgray}
-
-  /* checked elements */
-  form x-field input[type="checkbox"]:checked,
-  form x-field input[type="radio"]:checked {border-color: black; background-color: silver; box-shadow: inset 0 0 0 2px white}
-
-  /* disabled + checked elements */
-  form x-field.disabled input[type="checkbox"]:checked,
-  form x-field.disabled input[type="radio"]:checked {border-color: silver; background-color: lightgray}
+  input:disabled,
+  textarea:disabled,
+  select:disabled {border-color: lightgray}
+  input[type="checkbox"]:disabled:checked,
+  input[type="radio"]:disabled:checked {border-color: silver; background-color: lightgray}
 
   /* buttons */
-  form button {
+  button {
     min-width: 150px;
     margin: 5px 20px 5px 0;
     padding: 12px 30px;
@@ -76,11 +72,11 @@
     font-size: 16px;
     color: white;
     background: %%_color_bg}
-  form button:enabled:hover {background-color: %%_color_hover_bg}
-  form button:enabled:active {background-color: %%_color_hover_bg; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
-  form button:enabled[value="delete"] {background-color: %%_color_warning}
-  form button:enabled[value="delete"]:hover {background-color: %%_color_hover_bg}
-  form button:disabled {cursor: default; background-color: lightgray !important}
+  button:enabled:hover {background-color: %%_color_hover_bg}
+  button:enabled:active {background-color: %%_color_hover_bg; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
+  button:enabled[value="delete"] {background-color: %%_color_warning}
+  button:enabled[value="delete"]:hover {background-color: %%_color_hover_bg}
+  button:disabled {cursor: default; background-color: lightgray !important}
 
   /* palette */
   form x-container.palette {margin: 5px 0}

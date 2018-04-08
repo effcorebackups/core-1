@@ -132,7 +132,7 @@ namespace effcore\modules\develop {
 
     return new markup('x-block', ['id' => 'structures_diagrams'], [
       new markup('h2', [], 'UML Diagram'),
-      new markup_simple('input', ['type' => 'checkbox']),
+      new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand']),
       new markup('label', [], new text('expand')),
       $diagrams
     ]);
