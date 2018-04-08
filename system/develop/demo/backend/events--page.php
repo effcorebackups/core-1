@@ -7,6 +7,7 @@
 namespace effcore\modules\demo {
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\canvas_svg;
           use \effcore\translation;
           use \effcore\table;
           use \effcore\table_body_row;
@@ -45,6 +46,24 @@ namespace effcore\modules\demo {
     return new markup('x-block', ['id' => 'demo_dynamic'], [
       new markup('h2', [], 'Dynamic block'),
       new table(['class' => ['table' => 'table']], $tbody, $thead)
+    ]);
+  }
+
+  static function on_show_block_demo_canvas($page) {
+    $canvas = new canvas_svg(105, 15, 5);
+    $canvas->glyph_set('01110|10001|10001|10001|10001|10001|10001|10001|10001|01110',  5, 3); # 0
+    $canvas->glyph_set('00001|00001|00001|00001|00001|10001|01001|00101|00010|00001', 15, 3); # 1
+    $canvas->glyph_set('11111|10000|01000|00100|00010|00001|00001|00001|00001|11110', 25, 3); # 2
+    $canvas->glyph_set('01000|00100|00010|00001|11111|01000|00100|00010|00001|11111', 35, 3); # 3
+    $canvas->glyph_set('00001|00001|00001|00001|01111|10001|01001|00101|00010|00001', 45, 3); # 4
+    $canvas->glyph_set('01000|00100|00010|00001|01111|10000|10000|10000|10000|01111', 55, 3); # 5
+    $canvas->glyph_set('01110|10001|10001|10001|10001|01110|10000|01000|00100|00010', 65, 3); # 6
+    $canvas->glyph_set('10000|10000|10000|10000|10000|01000|00100|00010|00001|11111', 75, 3); # 7
+    $canvas->glyph_set('01110|10001|10001|10001|10001|01110|10001|10001|10001|01110', 85, 3); # 8
+    $canvas->glyph_set('01000|00100|00010|00001|01110|10001|10001|10001|10001|01110', 95, 3); # 9
+    return new markup('x-block', ['id' => 'demo_canvas'], [
+      new markup('h2', [], 'Canvas'),
+      $canvas
     ]);
   }
 

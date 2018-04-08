@@ -38,3 +38,7 @@ pages
         region: content
         type: code
         handler: \effcore\modules\demo\events_page::on_show_block_demo_dynamic
+    - block_demo_canvas
+        region: content
+        type: code
+        handler: \effcore\modules\demo\events_page::on_show_block_demo_canvas

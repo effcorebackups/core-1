@@ -4,6 +4,7 @@ translations
     data
     - Call %%_name: Вызов %%_name
     - call: вызов
+    - Canvas: Холст
     - cell %%_num: ячейка %%_num
     - Checkboxes (macro): Флажки (макро)
     - Checkboxes: Флажки
