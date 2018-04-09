@@ -8,10 +8,6 @@ namespace effcore {
           class form extends markup
           implements has_different_cache {
 
-  static function get_non_different_properties() {
-    return [];
-  }
-
   # elements support:
   # ─────────────────────────────────────────────────────────────────────
   # - textarea
@@ -68,7 +64,7 @@ namespace effcore {
   }
 
   function build() {
-    $values = static::values_get() + static::files_get();
+    $values = static::get_values() + static::get_files();
     $id = $this->attribute_select('id');
   # build all form elements
     $elements = $this->child_select_all_recursive();
@@ -79,7 +75,7 @@ namespace effcore {
     }
   # renew elements list after build and get all fields
     $elements = $this->child_select_all_recursive();
-    $fields   = $this->fields_get();
+    $fields   = static::get_fields($this);
   # call init handlers
     event::start('on_form_init', $id, [$this, $fields]);
   # if user click the button
@@ -126,9 +122,73 @@ namespace effcore {
     ]), 'hidden_form_id');
   }
 
-  ###############################
-  ### validation_id functions ###
-  ###############################
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function get_non_different_properties() {
+    return [];
+  }
+
+  static function get_fields($form) {
+    $return = [];
+    foreach ($form->child_select_all_recursive() as $c_dpath => $c_child) {
+      if ($c_child instanceof \effcore\form_container) {
+        $return[$c_dpath] = $c_child;
+      }
+    }
+    return $return;
+  }
+
+  static function get_values() {
+    $return = [];
+    # conversion matrix (expected: string|array):
+    # ─────────────────────────────────────────────────────────────────────
+    # - $_POST[name] == ''                  -> return [0 => '']
+    # - $_POST[name] == 'value'             -> return [0 => 'value']
+    # ─────────────────────────────────────────────────────────────────────
+    # - $_POST[name] == [0 => '']           -> return [0 => '']
+    # - $_POST[name] == [0 => '', ...]      -> return [0 => '', ...]
+    # - $_POST[name] == [0 => 'value']      -> return [0 => 'value']
+    # - $_POST[name] == [0 => 'value', ...] -> return [0 => 'value', ...]
+    # ─────────────────────────────────────────────────────────────────────
+    foreach ($_POST as $c_field => $c_value) {
+      $return[$c_field] = is_array($c_value) ?
+                                   $c_value : [$c_value];
+    }
+    return $return;
+  }
+
+  static function get_files() {
+    $return = [];
+    # conversion matrix (expected: string|array):
+    # ─────────────────────────────────────────────────────────────────────
+    # - $_FILES[name] == '',                 -> ignored empty
+    # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
+    # ─────────────────────────────────────────────────────────────────────
+    # - $_FILES[name] == [0 => '']           -> ignored empty
+    # - $_FILES[name] == [0 => '', ...]      -> ignored empty
+    # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
+    # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
+    # ─────────────────────────────────────────────────────────────────────
+    foreach ($_FILES as $c_field => $c_info) {
+      if (!is_array($c_info['name']))     $c_info['name']     = [$c_info['name']];
+      if (!is_array($c_info['type']))     $c_info['type']     = [$c_info['type']];
+      if (!is_array($c_info['size']))     $c_info['size']     = [$c_info['size']];
+      if (!is_array($c_info['tmp_name'])) $c_info['tmp_name'] = [$c_info['tmp_name']];
+      if (!is_array($c_info['error']))    $c_info['error']    = [$c_info['error']];
+      foreach ($c_info as $c_prop => $c_values) {
+        foreach ($c_values as $c_index => $c_value) {
+          if ($c_info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
+            if (!isset($return[$c_field][$c_index]))
+                       $return[$c_field][$c_index] = new \stdClass();
+            $return[$c_field][$c_index]->{$c_prop} = $c_value;
+          }
+        }
+      }
+    }
+    return $return;
+  }
 
   static function validation_id_generate() {
     $hex_created = dechex(time());
@@ -163,70 +223,6 @@ namespace effcore {
         return true;
       }
     }
-  }
-
-  #######################################
-  ### get fields, $_POST, $_FILES ... ###
-  #######################################
-
-  function fields_get() {
-    $return = [];
-    foreach ($this->child_select_all_recursive() as $c_dpath => $c_child) {
-      if ($c_child instanceof \effcore\form_container) {
-        $return[$c_dpath] = $c_child;
-      }
-    }
-    return $return;
-  }
-
-  static function values_get() {
-    $return = [];
-    # conversion matrix (expected: string|array):
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_POST[name] == ''                  -> return [0 => '']
-    # - $_POST[name] == 'value'             -> return [0 => 'value']
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_POST[name] == [0 => '']           -> return [0 => '']
-    # - $_POST[name] == [0 => '', ...]      -> return [0 => '', ...]
-    # - $_POST[name] == [0 => 'value']      -> return [0 => 'value']
-    # - $_POST[name] == [0 => 'value', ...] -> return [0 => 'value', ...]
-    # ─────────────────────────────────────────────────────────────────────
-    foreach ($_POST as $c_field => $c_value) {
-      $return[$c_field] = is_array($c_value) ?
-                                   $c_value : [$c_value];
-    }
-    return $return;
-  }
-
-  static function files_get() {
-    $return = [];
-    # conversion matrix (expected: string|array):
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_FILES[name] == '',                 -> ignored empty
-    # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_FILES[name] == [0 => '']           -> ignored empty
-    # - $_FILES[name] == [0 => '', ...]      -> ignored empty
-    # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
-    # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
-    # ─────────────────────────────────────────────────────────────────────
-    foreach ($_FILES as $c_field => $c_info) {
-      if (!is_array($c_info['name']))     $c_info['name']     = [$c_info['name']];
-      if (!is_array($c_info['type']))     $c_info['type']     = [$c_info['type']];
-      if (!is_array($c_info['size']))     $c_info['size']     = [$c_info['size']];
-      if (!is_array($c_info['tmp_name'])) $c_info['tmp_name'] = [$c_info['tmp_name']];
-      if (!is_array($c_info['error']))    $c_info['error']    = [$c_info['error']];
-      foreach ($c_info as $c_prop => $c_values) {
-        foreach ($c_values as $c_index => $c_value) {
-          if ($c_info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
-            if (!isset($return[$c_field][$c_index]))
-                       $return[$c_field][$c_index] = new \stdClass();
-            $return[$c_field][$c_index]->{$c_prop} = $c_value;
-          }
-        }
-      }
-    }
-    return $return;
   }
 
 }}

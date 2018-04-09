@@ -11,9 +11,9 @@ namespace effcore {
   public $code;
   public $data;
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 

@@ -11,9 +11,9 @@ namespace effcore {
   public $handler;
   public $weight = 0;
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 

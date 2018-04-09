@@ -13,15 +13,15 @@ namespace effcore {
   public $url;
   public $id_user = 0;
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static protected $cache;
+
   static function get_non_different_properties() {
     return ['id' => 'id'];
   }
-
-  ######################
-  ### static methods ###
-  ######################
-
-  static protected $cache;
 
   static function init() {
     $tests = storage::get('files')->select('tests');

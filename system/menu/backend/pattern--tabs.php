@@ -50,9 +50,9 @@ namespace effcore {
     ]))->render() : '';
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache_tabs;
   static protected $cache_tabs_items;

@@ -8,15 +8,6 @@ namespace effcore {
           class entity
           implements has_different_cache, post_parsing {
 
-  static function get_non_different_properties() {
-    return [
-      'name'       => 'name',
-      'storage_id' => 'storage_id',
-      'catalog_id' => 'catalog_id',
-      'title'      => 'title'
-    ];
-  }
-
   public $name;
   public $storage_id;
   public $catalog_id;
@@ -98,12 +89,21 @@ namespace effcore {
   function insert_instances() {} # todo: make functionality
   function delete_instances() {} # todo: make functionality
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
   static protected $cache_orig;
+
+  static function get_non_different_properties() {
+    return [
+      'name'       => 'name',
+      'storage_id' => 'storage_id',
+      'catalog_id' => 'catalog_id',
+      'title'      => 'title'
+    ];
+  }
 
   static function init($name = '') {
     static::$cache_orig = storage::get('files')->select('entities');

@@ -8,25 +8,6 @@ namespace effcore {
           class storage_files
           implements has_different_cache {
 
-  static public $data_orig;
-  static public $data = [];
-  static public $changes_dynamic;
-
-  static function get_non_different_properties() {
-    return ['id' => 'id'];
-  }
-
-  static function init($group) {
-    console::add_log('storage', 'init.', 'storage %%_id will be initialized', 'ok', 0, ['id' => $group.' | storage_files']);
-    $cache = cache::select('data--'.$group);
-    if ($cache) static::$data[$group] = $cache;
-    else        static::data_cache_rebuild();
-  }
-
-  ########################
-  ### shared functions ###
-  ########################
-
   function select($dpath, $expand_cache = false) {
     $dpath_parts = explode('/', $dpath);
     $group = array_shift($dpath_parts);
@@ -41,6 +22,41 @@ namespace effcore {
       }
       return $c_pointer;
     }
+  }
+
+  function changes_register_action($module_id, $action, $dpath, $value = null, $rebuild = true) {
+  # add new action
+    $changes_d = dynamic::select('changes') ?: [];
+    $changes_d[$module_id]->{$action}[$dpath] = $value;
+    dynamic::update('changes', $changes_d, ['build' => factory::datetime_get()]);
+  # prevent opcache work
+    static::$changes_dynamic['changes'] = $changes_d;
+    if ($rebuild) {
+      static::data_cache_rebuild();
+    }
+  }
+
+  function changes_unregister_action($module_id, $action, $dpath) {
+    # @todo: make functionality
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static public $data_orig;
+  static public $data = [];
+  static public $changes_dynamic;
+
+  static function get_non_different_properties() {
+    return ['id' => 'id'];
+  }
+
+  static function init($group) {
+    console::add_log('storage', 'init.', 'storage %%_id will be initialized', 'ok', 0, ['id' => $group.' | storage_files']);
+    $cache = cache::select('data--'.$group);
+    if ($cache) static::$data[$group] = $cache;
+    else        static::data_cache_rebuild();
   }
 
   ######################
@@ -59,8 +75,8 @@ namespace effcore {
     $changes_s = isset($data_orig['changes']) ? $data_orig['changes'] : [];
   # apply all changes to original data and get final data
     $data = factory::array_deep_clone($data_orig);
-    static::changes_apply_to_data($changes_d, $data);
-    static::changes_apply_to_data($changes_s, $data);
+    static::data_changes_apply($changes_d, $data);
+    static::data_changes_apply($changes_s, $data);
     unset($data['changes']);
   # save cache
     foreach ($data as $c_group => $c_data) {
@@ -77,6 +93,31 @@ namespace effcore {
         }
       }
       cache::update('data--'.$c_group, $c_data);
+    }
+  }
+
+  static function data_changes_apply($changes, &$data) {
+    foreach ($changes as $module_id => $c_module_changes) {
+      foreach ($c_module_changes as $c_action_id => $c_changes) {
+        foreach ($c_changes as $c_dpath => $c_data) {
+          $c_chain = factory::dpath_get_chain($data, $c_dpath);
+          $c_child_name = array_keys($c_chain)[count($c_chain)-1];
+          $c_parent_name = array_keys($c_chain)[count($c_chain)-2];
+          $c_child = &$c_chain[$c_child_name];
+          $c_parent = &$c_chain[$c_parent_name];
+          switch ($c_action_id) {
+          # only structured types is supported: array|object
+            case 'insert':
+              foreach ($c_data as $c_key => $c_value) {
+                factory::arrobj_insert_value($c_child, $c_key, $c_value);
+              }
+              break;
+          # only scalar types is supported: string|numeric @todo: test bool|null
+            case 'update': factory::arrobj_insert_value($c_parent, $c_child_name, $c_data); break;
+            case 'delete': factory::arrobj_delete_child($c_parent, $c_child_name);          break;
+          }
+        }
+      }
     }
   }
 
@@ -116,50 +157,6 @@ namespace effcore {
       }
     }
     return $return;
-  }
-
-  #########################
-  ### changes functions ###
-  #########################
-
-  function changes_register_action($module_id, $action, $dpath, $value = null, $rebuild = true) {
-  # add new action
-    $changes_d = dynamic::select('changes') ?: [];
-    $changes_d[$module_id]->{$action}[$dpath] = $value;
-    dynamic::update('changes', $changes_d, ['build' => factory::datetime_get()]);
-  # prevent opcache work
-    static::$changes_dynamic['changes'] = $changes_d;
-    if ($rebuild) {
-      static::data_cache_rebuild();
-    }
-  }
-
-  function changes_unregister_action($module_id, $action, $dpath) {
-  }
-
-  static function changes_apply_to_data($changes, &$data) {
-    foreach ($changes as $module_id => $c_module_changes) {
-      foreach ($c_module_changes as $c_action_id => $c_changes) {
-        foreach ($c_changes as $c_dpath => $c_data) {
-          $c_chain = factory::dpath_get_chain($data, $c_dpath);
-          $c_child_name = array_keys($c_chain)[count($c_chain)-1];
-          $c_parent_name = array_keys($c_chain)[count($c_chain)-2];
-          $c_child = &$c_chain[$c_child_name];
-          $c_parent = &$c_chain[$c_parent_name];
-          switch ($c_action_id) {
-          # only structured types is supported: array|object
-            case 'insert':
-              foreach ($c_data as $c_key => $c_value) {
-                factory::arrobj_insert_value($c_child, $c_key, $c_value);
-              }
-              break;
-          # only scalar types is supported: string|numeric @todo: test bool|null
-            case 'update': factory::arrobj_insert_value($c_parent, $c_child_name, $c_data); break;
-            case 'delete': factory::arrobj_delete_child($c_parent, $c_child_name);          break;
-          }
-        }
-      }
-    }
   }
 
   ###############

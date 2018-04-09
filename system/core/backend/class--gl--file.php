@@ -150,9 +150,9 @@ namespace effcore {
     return $return;
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 

@@ -93,9 +93,9 @@ namespace effcore {
                  $args[$arg_id] : null;
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 

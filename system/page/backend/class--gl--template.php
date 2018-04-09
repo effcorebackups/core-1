@@ -55,9 +55,9 @@ namespace effcore {
     return $rendered;
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 

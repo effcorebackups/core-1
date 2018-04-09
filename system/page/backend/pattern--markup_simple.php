@@ -7,7 +7,7 @@
 namespace effcore {
           class markup_simple extends node_simple {
 
-  public $tag_name = 'div';
+  public $tag_name = 'input';
   public $template = 'markup_html_simple';
 
   function __construct($tag_name = null, $attributes = [], $weight = 0) {

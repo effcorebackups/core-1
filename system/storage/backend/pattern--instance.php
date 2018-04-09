@@ -56,9 +56,9 @@ namespace effcore {
   function render() {
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
   static protected $cache_orig;

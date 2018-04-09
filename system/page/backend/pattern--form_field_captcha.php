@@ -14,35 +14,23 @@ namespace effcore {
   public $length = 6;
   public $attempts = 3;
   public $noise = 1;
-  static protected $glyphs;
 
-  static function init() {
-    foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_module_characters) {
-      foreach ($c_module_characters as $c_row_id => $c_character) {
-        foreach ($c_character->glyphs as $c_glyph) {
-          static::$glyphs[$c_glyph] = $c_character->character;
-        }
-      }
+  function build() {
+    $captcha = $this->captcha_load();
+    if (!$captcha) {
+      $captcha = $this->captcha_generate();
+      $captcha->insert();
     }
-  }
-
-  # note:
-  # ─────────────────────────────────────────────────────────────────────
-  # 1. function id_get:
-  #    duplicates of captcha by IP - it's prevention from DDOS attacks -
-  #    user can overflow the storage if captcha_id will be a complex value
-  #    for example: IP + user_agent (in this case user can falsify user_agent
-  #    on each submit and this action will create a great variety of unique
-  #    captcha_id in the storage and will make it overflowed)
-  # ─────────────────────────────────────────────────────────────────────
-
-  static function id_get() {
-    return $_SERVER['REMOTE_ADDR'];
-  }
-
-  static function captcha_cleaning() {
-    $storage = $s = storage::get(entity::get('captcha')->get_storage_id());
-    $storage->query('DELETE', 'FROM', $s->tables('captcha'), 'WHERE', $s->condition('created', factory::datetime_get('-1 hour'), '<'));
+  # build form elements
+    $this->child_insert($captcha->canvas, 'canvas');
+    $this->child_insert(new markup_simple('input', [
+      'type' => 'text',
+      'name' => 'captcha',
+      'size' => $this->length,
+      'required' => 'required',
+      'minlength' => $this->length,
+      'maxlength' => $this->length
+    ]), 'element');
   }
 
   function captcha_check($characters) {
@@ -100,22 +88,39 @@ namespace effcore {
     }
   }
 
-  function build() {
-    $captcha = $this->captcha_load();
-    if (!$captcha) {
-      $captcha = $this->captcha_generate();
-      $captcha->insert();
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static protected $glyphs;
+
+  # note:
+  # ─────────────────────────────────────────────────────────────────────
+  # 1. function id_get:
+  #    duplicates of captcha by IP - it's prevention from DDOS attacks -
+  #    user can overflow the storage if captcha_id will be a complex value
+  #    for example: IP + user_agent (in this case user can falsify user_agent
+  #    on each submit and this action will create a great variety of unique
+  #    captcha_id in the storage and will make it overflowed)
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function id_get() {
+    return $_SERVER['REMOTE_ADDR'];
+  }
+
+  static function init() {
+    foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_module_characters) {
+      foreach ($c_module_characters as $c_row_id => $c_character) {
+        foreach ($c_character->glyphs as $c_glyph) {
+          static::$glyphs[$c_glyph] = $c_character->character;
+        }
+      }
     }
-  # build form elements
-    $this->child_insert($captcha->canvas, 'canvas');
-    $this->child_insert(new markup_simple('input', [
-      'type' => 'text',
-      'name' => 'captcha',
-      'size' => $this->length,
-      'required' => 'required',
-      'minlength' => $this->length,
-      'maxlength' => $this->length
-    ]), 'element');
+  }
+
+  static function captcha_cleaning() {
+    $storage = $s = storage::get(entity::get('captcha')->get_storage_id());
+    $storage->query('DELETE', 'FROM', $s->tables('captcha'), 'WHERE', $s->condition('created', factory::datetime_get('-1 hour'), '<'));
   }
 
 }}

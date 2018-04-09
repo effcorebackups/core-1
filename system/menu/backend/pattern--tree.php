@@ -16,9 +16,9 @@ namespace effcore {
     parent::__construct($attributes, $children, $weight);
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache_trees;
   static protected $cache_tree_items;

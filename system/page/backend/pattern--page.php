@@ -16,10 +16,6 @@ namespace effcore {
   public $constants = [];
   public $content = [];
 
-  static function get_non_different_properties() {
-    return ['display' => 'display', 'access' => 'access'];
-  }
-
   function args_set($key, $value) {$this->args[$key] = $value;}
   function args_get($id = null) {
     return $id ? $this->args[$id] :
@@ -151,12 +147,16 @@ namespace effcore {
     return $return;
   }
 
-  ######################
-  ### static methods ###
-  ######################
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
   static protected $current;
+
+  static function get_non_different_properties() {
+    return ['display' => 'display', 'access' => 'access'];
+  }
 
   static function init() {
     static::$cache = storage::get('files')->select('pages');
