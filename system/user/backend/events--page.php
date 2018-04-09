@@ -15,7 +15,6 @@ namespace effcore\modules\user {
           use \effcore\factory;
           use \effcore\instance;
           use \effcore\table_body_row_cell;
-          use \effcore\control_actions_list;
           abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_roles($page) {

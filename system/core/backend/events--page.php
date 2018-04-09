@@ -60,7 +60,7 @@ namespace effcore\modules\core {
     $thead = [['Module information', 'State', '']];
     $tbody = [];
     foreach (module::get_all() as $c_module) {
-      $c_action_list = new control_actions_list([], [], null);
+      $c_action_list = new control_actions_list();
       $c_action_list->action_add('/admin/modules/'.$c_module->id.'/enable', 'enable',       $c_module->state != 'always_on');
       $c_action_list->action_add('/admin/modules/'.$c_module->id.'/disable', 'disable',     $c_module->state != 'always_on');
       $c_action_list->action_add('/admin/modules/'.$c_module->id.'/uninstall', 'uninstall', $c_module->state != 'always_on');

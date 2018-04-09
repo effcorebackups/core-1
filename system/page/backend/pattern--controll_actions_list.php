@@ -7,15 +7,13 @@
 namespace effcore {
           class control_actions_list extends markup {
 
-  public $tag_name = 'x-actions-control';
   public $title;
+  public $tag_name = 'x-actions-control';
   public $actions = [];
   public $active = [];
 
-  function __construct($actions = [], $active = [], $title = 'actions', $attributes = [], $weight = 0) {
+  function __construct($title = 'actions', $attributes = [], $weight = 0) {
     $this->title = $title;
-    $this->active = factory::array_values_map_to_keys($active);
-    foreach ($actions as $c_url => $c_action) $this->action_add($c_url, $c_action);
     parent::__construct($this->tag_name, $attributes, [], $weight);
   }
 
@@ -34,7 +32,8 @@ namespace effcore {
       $list->child_insert(
         new markup('x-action', $c_attr,
           new markup('a', ['href' => $c_url], $c_action)
-        ));
+        )
+      );
     }
     return parent::render();
   }
