@@ -6,7 +6,7 @@ forms
     - enctype: multipart/form-data
     - method: post
     children
-    - form_elements|form_container
+    - form_elements|container
         tag_name: fieldset
         title: Form elements
         title_tag_name: legend
@@ -339,7 +339,7 @@ forms
             disabled
             - option_2_2: option_2_2
       # field checkboxes
-        - checkboxes|form_container
+        - checkboxes|container
             title: Checkboxes
             description|text
               text: Element %%_info.
@@ -415,7 +415,7 @@ forms
             - checkbox_2_2: checkbox_2_2
             - checkbox_2_4: checkbox_2_4
       # field radios
-        - radios|form_container
+        - radios|container
             title: Radios
             description|text
               text: Element %%_info.

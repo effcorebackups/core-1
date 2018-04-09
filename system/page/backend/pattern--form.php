@@ -133,7 +133,7 @@ namespace effcore {
   static function get_fields($form) {
     $return = [];
     foreach ($form->child_select_all_recursive() as $c_dpath => $c_child) {
-      if ($c_child instanceof \effcore\form_container) {
+      if ($c_child instanceof \effcore\container) {
         $return[$c_dpath] = $c_child;
       }
     }

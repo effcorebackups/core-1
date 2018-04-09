@@ -5,7 +5,7 @@ forms
     - novalidate: novalidate
     - method: post
     children
-    - storage|form_container
+    - storage|container
         tag_name: fieldset
         title: Storage params
         title_tag_name: legend
@@ -27,7 +27,7 @@ forms
                 - name: driver
                 - value: mysql
       # mysql
-        - mysql|form_container
+        - mysql|container
             tag_name: fieldset
             children
           # storage id (database name)
@@ -126,7 +126,7 @@ forms
                 - name: driver
                 - value: sqlite
       # sqlite
-        - sqlite|form_container
+        - sqlite|container
             tag_name: fieldset
             children
           # storage file path
@@ -149,7 +149,7 @@ forms
                     - pattern: [a-zA-Z0-9-_./]+
                     - readonly: readonly
       # shared params
-        - params|form_container
+        - params|container
             children
           # table prefix
             - table_prefix|form_field

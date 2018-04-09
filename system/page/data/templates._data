@@ -11,7 +11,7 @@ templates
 - markup_xml_simple
     type: inline
     markup: <%%_tag_name %%_attributes />
-- form_container
+- container
     type: inline
     markup: <%%_tag_name %%_attributes> %%_title_t %%_content %%_title_b %%_description </%%_tag_name>
 - page

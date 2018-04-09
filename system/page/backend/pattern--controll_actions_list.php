@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class control_actions_list extends form_container {
+          class control_actions_list extends container {
 
   public $title = 'actions';
   public $tag_name = 'x-actions-control';

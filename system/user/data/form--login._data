@@ -5,7 +5,7 @@ forms
     - novalidate: novalidate
     - method: post
     children
-    - credentials|form_container
+    - credentials|container
         tag_name: fieldset
         title: Credentials
         title_tag_name: legend
