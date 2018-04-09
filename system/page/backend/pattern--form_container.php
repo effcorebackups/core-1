@@ -54,7 +54,8 @@ namespace effcore {
       return (
         new markup($this->description_tag_name, [],
           new markup('p', [], $this->description)
-      ))->render();
+        )
+      )->render();
     }
   }
 

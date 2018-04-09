@@ -5,16 +5,16 @@
   ##################################################################
 
 namespace effcore {
-          class control_actions_list extends markup {
+          class control_actions_list extends form_container {
 
-  public $title;
+  public $title = 'actions';
   public $tag_name = 'x-actions-control';
   public $actions = [];
   public $active = [];
 
-  function __construct($title = 'actions', $attributes = [], $weight = 0) {
-    $this->title = $title;
-    parent::__construct($this->tag_name, $attributes, [], $weight);
+  function __construct($title = null, $attributes = [], $weight = 0) {
+    if ($title) $this->title = $title;
+    parent::__construct($this->tag_name, null, null, $attributes, [], $weight);
   }
 
   function action_add($url, $title, $is_enabled = true) {
@@ -23,18 +23,20 @@ namespace effcore {
     }
   }
 
-  function render() {
-    if ($this->title) $this->child_insert(new markup('x-title', [], $this->title), 'title');
-    $this->child_insert(new markup('x-action-list'), 'action_list');
-    $list = $this->child_select('action_list');
+  function build() {
+    $list = new markup('x-action-list');
+    $this->child_insert($list, 'action_list');
     foreach ($this->actions as $c_url => $c_action) {
-      $c_attr = isset($this->active[$c_action]) ? ['class' => ['active']] : [];
       $list->child_insert(
-        new markup('x-action', $c_attr,
+        new markup('x-action', isset($this->active[$c_action]) ? ['class' => ['active']] : [],
           new markup('a', ['href' => $c_url], $c_action)
         )
       );
     }
+  }
+
+  function render() {
+    $this->build();
     return parent::render();
   }
 
