@@ -56,7 +56,7 @@
     display: block;
     width: 150px;
     height: 48px;
-    background: url('logo._vector')}
+    background: url('images/logo._vector')}
 
   x-block#user_menu {float: right}
   x-block#user_menu #avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}

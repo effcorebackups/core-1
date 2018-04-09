@@ -45,10 +45,10 @@
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
   x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
-  x-diagram-uml x-children x-class-wrapper             {background: url(relation-generalization-hline._vector) no-repeat, url(relation-generalization-vline._vector) repeat-y}
-  x-diagram-uml x-children x-class-wrapper:first-child {background: url(relation-generalization-arrow._vector) no-repeat, url(relation-generalization-vline._vector) repeat-y}
-  x-diagram-uml x-children x-class-wrapper:last-child  {background: url(relation-generalization-hline._vector) no-repeat}
-  x-diagram-uml x-children x-class-wrapper:only-child  {background: url(relation-generalization-arrow._vector) no-repeat}
+  x-diagram-uml x-children x-class-wrapper             {background: url('images/relation-generalization-hline._vector') no-repeat, url('images/relation-generalization-vline._vector') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:first-child {background: url('images/relation-generalization-arrow._vector') no-repeat, url('images/relation-generalization-vline._vector') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/relation-generalization-hline._vector') no-repeat}
+  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/relation-generalization-arrow._vector') no-repeat}
 
   x-diagram-uml x-item[x-visibility='public']::before    {content: '+'}
   x-diagram-uml x-item[x-visibility='protected']::before {content: '#'}

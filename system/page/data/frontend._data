@@ -9,37 +9,37 @@ frontend
     - icon_32_classic
         type: image/x-icon
         rel: icon
-        file: frontend/icon-32x32.ico
+        file: frontend/images/icon-32x32.ico
         sizes: 32x32
   # icon for all modern browsers: Safari, Opera, Chrome, Firefox, IE 11, Edge ...
     - icon_32_modern
         type: image/png
         rel: icon
-        file: frontend/icon-32x32.png
+        file: frontend/images/icon-32x32.png
         sizes: 32x32
   # icon for Safari on iPad 1/2
     - icon_apple_76
         type: image/png
         rel: apple-touch-icon
-        file: frontend/icon-76x76.png
+        file: frontend/images/icon-76x76.png
         sizes: 76x76
   # icon for Safari on iPhone
     - icon_apple_120
         type: image/png
         rel: apple-touch-icon
-        file: frontend/icon-120x120.png
+        file: frontend/images/icon-120x120.png
         sizes: 120x120
   # icon for Safari on any iPad
     - icon_apple_152
         type: image/png
         rel: apple-touch-icon
-        file: frontend/icon-152x152.png
+        file: frontend/images/icon-152x152.png
         sizes: 152x152
   # icon for Safari on iPad 3+, iPhone, macOS
     - icon_apple_192
         type: image/png
         rel: apple-touch-icon
-        file: frontend/icon-192x192.png
+        file: frontend/images/icon-192x192.png
         sizes: 192x192
     styles
     - page_style
