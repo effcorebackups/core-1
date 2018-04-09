@@ -54,15 +54,6 @@ namespace effcore {
   public $clicked_button_name;
   public $errors = [];
 
-  function render() {
-    $this->build();
-    return parent::render();
-  }
-
-  function add_error($element_id = null, $message = null) {
-    $this->errors[$element_id][] = $message;
-  }
-
   function build() {
     $values = static::get_values() + static::get_files();
     $id = $this->attribute_select('id');
@@ -120,6 +111,15 @@ namespace effcore {
       'name'  => 'form_id',
       'value' => $id,
     ]), 'hidden_form_id');
+  }
+
+  function add_error($element_id = null, $message = null) {
+    $this->errors[$element_id][] = $message;
+  }
+
+  function render() {
+    $this->build();
+    return parent::render();
   }
 
   ###########################
