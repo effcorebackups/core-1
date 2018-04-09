@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_container_license_agreement extends container {
+          class form_license_agreement extends container {
 
   public $tag_name = 'fieldset';
   public $title = 'License agreement';
@@ -16,7 +16,7 @@ namespace effcore {
     $lang_code = language::get_current();
     $license_file = new file(dir_root.'license'.($lang_code === 'en' ? '' : '-'.$lang_code).'.md');
     $markup_license = new markup('x-license', [], markdown::markdown_to_markup($license_file->load()));
-    $markup_agree = new form_container_checkboxes(['is_agree' => $this->title_for_agree], ['is_agree' => 'is_agree']);
+    $markup_agree = new form_checkboxes(['is_agree' => $this->title_for_agree], ['is_agree' => 'is_agree']);
     $markup_agree->input_attributes['name'] = 'is_agree';
     $markup_agree->build();
     $this->child_insert($markup_license, 'license');

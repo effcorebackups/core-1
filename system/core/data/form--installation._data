@@ -166,7 +166,7 @@ forms
                     - name: table_prefix
                     - maxlength: 10
                     - pattern: [a-zA-Z0-9-_]+
-    - license_agreement|form_container_license_agreement
+    - license_agreement|form_license_agreement
     - button_install|markup
         tag_name: button
         attributes

@@ -44,7 +44,7 @@ forms
                 - minlength: 5
                 - maxlength: 255
                 - autocomplete: off
-        - session_params|form_container_checkboxes
+        - session_params|form_checkboxes
             input_attributes
             - name: session_params[]
             values

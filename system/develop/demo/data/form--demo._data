@@ -395,7 +395,7 @@ forms
                     - disabled: disabled
                     - checked: checked
       # field checkboxes macro
-        - checkboxes_macro|form_container_checkboxes
+        - checkboxes_macro|form_checkboxes
             title: Checkboxes (macro)
             description|text
               text: Element %%_info.
@@ -459,7 +459,7 @@ forms
                     - value: radio_1_3
                     - disabled: disabled
       # field radios macro
-        - radios_macro|form_container_radios
+        - radios_macro|form_radios
             title: Radios (macro)
             description|text
               text: Element %%_info.
@@ -476,7 +476,7 @@ forms
             checked
             - radio_2_2: radio_2_2
       # field radios color macro
-        - color_macro|form_container_palette
+        - color_macro|form_palette
             title: Color
             input_attributes
             - name: color
