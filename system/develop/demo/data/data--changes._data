@@ -1,5 +1,7 @@
 changes
+# ─────────────────────────────────────────────────────────────────────
 # only structured types is supported: array|object
+# ─────────────────────────────────────────────────────────────────────
   insert
   - demo_data/demo/demo_object
       prop_4: property value #4 (insert)
@@ -9,7 +11,9 @@ changes
     - item_4: item value #4 (insert)
     - item_5: item value #5 (insert)
     - item_6: item value #6 (insert)
+# ─────────────────────────────────────────────────────────────────────
 # only scalar types is supported: string|numeric
+# ─────────────────────────────────────────────────────────────────────
   update
   - demo_data/demo/demo_object/prop_5: property value #5 (insert + update)
   - demo_data/demo/demo_array/item_5: item value #5 (insert + update)

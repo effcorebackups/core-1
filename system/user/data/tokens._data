@@ -1,5 +1,7 @@
 tokens
+# ─────────────────────────────────────────────────────────────────────
 # tokens for current user
+# ─────────────────────────────────────────────────────────────────────
 - id_user
     match: %%_id_user
     type: code
@@ -12,7 +14,9 @@ tokens
     match: %%_nick
     type: code
     handler: \effcore\modules\user\events_token::on_replace
+# ─────────────────────────────────────────────────────────────────────
 # tokens for context user (user id is taken from url)
+# ─────────────────────────────────────────────────────────────────────
 - id_user_context
     match: %%_id_user_context
     type: code

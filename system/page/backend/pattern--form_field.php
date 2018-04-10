@@ -26,8 +26,7 @@ namespace effcore {
   function render_self() {
     $element = $this->child_select('element');
     if ($this->title) {
-      $required_mark = $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ?
-                       $this->render_required_mark() : '';
+      $required_mark = $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? $this->render_required_mark() : '';
       return (new markup($this->title_tag_name, [], [
         $this->title, $required_mark
       ]))->render();

@@ -1,5 +1,7 @@
 tokens
+# ─────────────────────────────────────────────────────────────────────
 # colors for page
+# ─────────────────────────────────────────────────────────────────────
 - color
     match: %%_color
     type: code
@@ -16,12 +18,16 @@ tokens
     match: %%_color_hover_bg
     type: text
     value: #28334a
+# ─────────────────────────────────────────────────────────────────────
 # colors for border
+# ─────────────────────────────────────────────────────────────────────
 - color_border
     match: %%_color_border
     type: text
     value: gainsboro
+# ─────────────────────────────────────────────────────────────────────
 # colors for table
+# ─────────────────────────────────────────────────────────────────────
 - color_table_noitems
     match: %%_color_table_noitems
     type: text
@@ -30,7 +36,9 @@ tokens
     match: %%_color_table_even_bg
     type: text
     value: whitesmoke
+# ─────────────────────────────────────────────────────────────────────
 # colors for status
+# ─────────────────────────────────────────────────────────────────────
 - color_ok
     match: %%_color_ok
     type: text
