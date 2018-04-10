@@ -19,6 +19,7 @@ translations
     - Dynamic block: Динамический блок
     - Element %%_info.: Элемент %%_info.
     - Elements: Элементы
+    - EMail (macro): Адрес электронной почты (макро)
     - Error message #%%_num.: Сообщение об ошибке #%%_num.
     - event system was initialized: система событий была инициализирована
     - Execute plan: План выполнения

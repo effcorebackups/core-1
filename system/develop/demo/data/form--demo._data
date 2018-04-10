@@ -114,6 +114,17 @@ forms
                 - minlength: 5
                 - maxlength: 64
                 - multiple: multiple
+        - email_macro|form_field_email
+            title: EMail (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="email"&gt;
+            element_attributes
+            - name: email_macro
+            - required: required
+            - value: test3@example.com,test4@example.com
+            - multiple: multiple
       # field file
         - file|form_field_file
             title: File
