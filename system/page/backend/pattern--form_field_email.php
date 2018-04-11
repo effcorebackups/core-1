@@ -7,6 +7,7 @@
 namespace effcore {
           class form_field_email extends form_field {
 
+  public $title = 'EMail';
   public $element_attributes = [];
 
   function build() {
