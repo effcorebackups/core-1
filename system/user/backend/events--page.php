@@ -49,6 +49,7 @@ namespace effcore\modules\user {
         $values['created'] = locale::format_datetime($values['created']);
         $values['password_hash'] = '*****';
         $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
+        $values['avatar_path_relative'] = $values['avatar_path_relative'] ?: '-';
       # show table
         $thead = [['Parameter', 'Value']];
         $tbody = factory::array_rotate([array_keys($values), array_values($values)]);

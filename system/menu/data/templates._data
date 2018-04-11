@@ -13,10 +13,10 @@ templates
     markup: <x-tabs> %%_top_items %%_sub_items </x-tabs>
 - tabs_top_items
     type: inline
-    markup: <x-top-items> %%_children </x-top-items>
+    markup: <x-top-items><ul> %%_children </ul></x-top-items>
 - tabs_sub_items
     type: inline
-    markup: <x-sub-items> %%_children </x-sub-items>
+    markup: <x-sub-items><ul> %%_children </ul></x-sub-items>
 - tabs_item
     type: inline
     markup: <li %%_attributes> %%_self %%_children </li>
