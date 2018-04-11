@@ -47,6 +47,15 @@ forms
                 - minlength: 5
                 - maxlength: 255
                 - autocomplete: off
+        - password_macro|form_field_password
+            title: Password (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="password"&gt;
+            element_attributes
+            - value: text in password
+            - name: password_macro
       # field search
         - search|form_field
             title: Search

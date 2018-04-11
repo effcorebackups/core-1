@@ -34,6 +34,7 @@ translations
     - Notice message #%%_num.: Уведомление #%%_num.
     - Ok message #%%_num.: Хорошее сообщение #%%_num.
     - Ordered list: Упорядоченный список
+    - Password (macro): Пароль (макро)
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
     - Radios (macro): Переключатели (макро)

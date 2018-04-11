@@ -9,6 +9,10 @@ namespace effcore {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';
+  public $element_attributes = [];
+
+  function build() {
+  }
 
   function get_element_name($trim = true) {
     $element = $this->child_select('element');
