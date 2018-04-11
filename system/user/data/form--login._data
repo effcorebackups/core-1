@@ -11,18 +11,7 @@ forms
         title_tag_name: legend
         children
         - email|form_field_email
-        - password|form_field
-            title: Password
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: password
-                - name: password
-                - required: required
-                - minlength: 5
-                - maxlength: 255
-                - autocomplete: off
+        - password|form_field_password
         - session_params|form_checkboxes
             input_attributes
             - name: session_params[]
