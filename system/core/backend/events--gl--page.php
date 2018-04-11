@@ -12,17 +12,23 @@ namespace effcore {
     if (empty($user->id)) {
       return new markup('x-block', ['id' => 'user_menu'], [
         storage::get('files')->select('trees/user/user_anonymous'),
-        new markup('img', ['id' => 'avatar', 'src' => '/system/page/frontend/images/avatar-anonymous._vector'])
+        new markup_simple('img', [
+          'id'  => 'avatar',
+          'alt' => 'avatar',
+          'src' => '/system/page/frontend/images/avatar-anonymous._vector'
+        ])
       ]);
     } else {
       return new markup('x-block', ['id' => 'user_menu'], [
         storage::get('files')->select('trees/user/user_logged_in'),
         new markup('a', ['href' => '/user/'.$user->id],
-          new markup('img', [
-            'id' => 'avatar',
+          new markup_simple('img', [
+            'id'  => 'avatar',
+            'alt' => 'avatar',
             'src' => $user->avatar_path_relative ?
-                 '/'.$user->avatar_path_relative : '/system/page/frontend/images/avatar-logged_in._vector']
-        ))
+                 '/'.$user->avatar_path_relative : '/system/page/frontend/images/avatar-logged_in._vector'
+          ])
+        )
       ]);
     }
   }

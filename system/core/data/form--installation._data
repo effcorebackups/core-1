@@ -99,16 +99,9 @@ forms
                     - maxlength: 64
                     - pattern: [a-zA-Z0-9-_]+
           # password
-            - password|form_field
-                title: Password
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: password
-                    - name: password
-                    - maxlength: 255
-                    - autocomplete: off
+            - password|form_field_password
+                element_attributes
+                - minlength: 0
       # driver
         - is_sqlite|form_field
             title: SQLite
