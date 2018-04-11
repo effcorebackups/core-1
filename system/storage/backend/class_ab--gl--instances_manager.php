@@ -47,7 +47,7 @@ namespace effcore {
           new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list)
         ];
       }
-      return new markup('x-block', ['id' => 'users_admin'],
+      return new markup('x-block', ['class' => ['users_admin']],
         new table([], $tbody, $thead)
       );
     }

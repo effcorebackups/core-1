@@ -52,24 +52,20 @@
   /* blocks */
   x-block {display: block}
 
-  x-block#logo a#to_front {
+  x-block.logo a.to_front {
     display: block;
     width: 150px;
     height: 48px;
     background: url('images/logo._vector')}
 
-  x-block#user_menu {float: right}
-  x-block#user_menu #avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}
-  x-block#user_menu x-tree {display: none; padding: 2px; text-align: right}
-  x-block#user_menu x-tree ul,
-  x-block#user_menu x-tree li {list-style: none; margin: 0; padding: 0}
-  x-block#user_menu:hover x-tree {display: inline-block}
+  x-block.user_menu {float: right}
+  x-block.user_menu .avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}
+  x-block.user_menu x-tree {display: none; padding: 2px; text-align: right}
+  x-block.user_menu x-tree ul,
+  x-block.user_menu x-tree li {list-style: none; margin: 0; padding: 0}
+  x-block.user_menu:hover x-tree {display: inline-block}
 
-  x-block#modules_admin td.state {vertical-align: top}
-  x-block#users_admin {}
-  x-block#roles_admin {}
-  x-block#user_info {}
-  x-block#demo_dynamic {}
+  x-block.modules_admin td.state {vertical-align: top}
 
   /* control elements */
   x-actions-control {display: block}

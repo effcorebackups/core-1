@@ -23,7 +23,7 @@ namespace effcore\modules\user {
     foreach ($tbody as $c_row) {
       $c_row->is_embed = $c_row->is_embed ? 'Yes' : 'No';
     }
-    return new markup('x-block', ['id' => 'roles_admin'],
+    return new markup('x-block', ['class' => ['roles_admin']],
       new table([], $tbody, $thead)
     );
   }
@@ -53,7 +53,7 @@ namespace effcore\modules\user {
       # show table
         $thead = [['Parameter', 'Value']];
         $tbody = factory::array_rotate([array_keys($values), array_values($values)]);
-        return new markup('x-block', ['id' => 'user_info'],
+        return new markup('x-block', ['class' => ['user_info']],
           new table([], $tbody, $thead)
         );
       } else {

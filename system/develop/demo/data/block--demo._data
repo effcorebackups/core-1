@@ -2,7 +2,8 @@ blocks
 - demo|markup
     tag_name: x-block
     attributes
-    - id: demo
+    - class
+      - demo: demo
     children
   # title
     - block_title|markup

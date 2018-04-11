@@ -31,7 +31,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new markup('x-block', ['id' => 'structures_list'], [
+    return new markup('x-block', ['class' => ['structures_list']], [
       new table(['class' => ['structures-list' => 'structures-list']], $tbody, $thead)
     ]);
   }
@@ -130,7 +130,7 @@ namespace effcore\modules\develop {
       $diagrams->child_delete($c_item);
     }
 
-    return new markup('x-block', ['id' => 'structures_diagrams'], [
+    return new markup('x-block', ['class' => ['structures_diagrams']], [
       new markup('h2', [], 'UML Diagram'),
       new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),

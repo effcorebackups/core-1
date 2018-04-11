@@ -2,12 +2,14 @@ blocks
 - logo|markup
     tag_name: x-block
     attributes
-    - id: logo
+    - class
+      - logo: logo
     children
     - link|markup
         tag_name: a
         attributes
-        - id: to_front
+        - class
+          - to_front: to_front
         - href: /
         - title|text
             text: to front page
