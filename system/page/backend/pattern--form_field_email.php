@@ -10,13 +10,18 @@ namespace effcore {
   public $title = 'EMail';
 
   function build() {
-    $this->child_insert(new markup_simple('input', $this->element_attributes + [
+    $attributes = $this->element_attributes + [
       'type'      => 'email',
       'name'      => 'email',
       'required'  => 'required',
       'minlength' => 5,
       'maxlength' => 64
-    ]), 'element');
+    ];
+    $this->child_insert(
+      new markup_simple('input', array_filter($attributes, function($value) {
+        return $value !== null;
+      })), 'element'
+    );
   }
 
 }}

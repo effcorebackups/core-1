@@ -101,7 +101,8 @@ forms
           # password
             - password|form_field_password
                 element_attributes
-                - minlength: 0
+                - minlength: null
+                - required: null
       # driver
         - is_sqlite|form_field
             title: SQLite
