@@ -81,9 +81,18 @@ forms
                 - type: search
                 - name: search
                 - required: required
-                - value: text in search
+                - value: text in search 1
                 - minlength: 5
                 - maxlength: 255
+        - search_macro|form_field_search
+            title: Search (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="search"&gt;
+            element_attributes
+            - value: text in search 2
+            - name: search_macro
       # field url
         - url|form_field
             title: URL

@@ -39,6 +39,7 @@ translations
     - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
     - Radios (macro): Переключатели (макро)
     - Radios: Переключатели
+    - Search (macro): Поиск (макро)
     - Selection list (macro): Список выбора (макро)
     - Selection list: Список выбора
     - Static block: Статический блок
