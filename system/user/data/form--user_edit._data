@@ -36,30 +36,13 @@ forms
                 - type: file
                 - name: avatar
                 - accept: image/*
-        - password_new|form_field
+        - password_new|form_field_password
             title: New password
             description: Leave the field blank if you do not want to change its value.
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: password
-                - name: password_new
-                - minlength: 5
-                - maxlength: 255
-                - autocomplete: off
-        - password|form_field
-            title: Password
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: password
-                - name: password
-                - required: required
-                - minlength: 5
-                - maxlength: 255
-                - autocomplete: off
+            element_attributes
+            - name: password_new
+            - required: null
+        - password|form_field_password
     - button_save|markup
         tag_name: button
         attributes
