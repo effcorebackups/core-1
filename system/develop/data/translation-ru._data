@@ -43,6 +43,7 @@ translations
     - Selection list: Список выбора
     - Static block: Статический блок
     - Structures: Структуры
+    - Text (macro): Текст (макро)
     - Textarea: Текстовая область
     - Total generation time: Общее время генерации
     - Total load: Общая загрука

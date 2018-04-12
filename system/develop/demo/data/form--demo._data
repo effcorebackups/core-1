@@ -25,10 +25,21 @@ forms
                 - type: text
                 - name: text
                 - required: required
-                - value: text in input
+                - value: text in input 1
                 - minlength: 5
                 - maxlength: 255
                 - pattern: [a-zA-Z0-9]+
+        - text_macro|form_field_text
+            title: Text (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="text"&gt;
+            element_attributes
+            - value: text in input 2
+            - name: text_macro
+            - minlength: 5
+            - pattern: [a-zA-Z0-9]+
       # field password
         - password|form_field
             title: Password
