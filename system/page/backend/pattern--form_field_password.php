@@ -10,19 +10,15 @@ namespace effcore {
   public $title = 'Password';
 
   function build() {
-    $attributes = $this->element_attributes + [
+    $this->child_insert(new markup_simple('input', [
       'type'         => 'password',
       'name'         => 'password',
       'required'     => 'required',
       'autocomplete' => 'off',
       'minlength'    => 5,
       'maxlength'    => 255
-    ];
-    $this->child_insert(
-      new markup_simple('input', array_filter($attributes, function($value) {
-        return $value !== null;
-      })), 'element'
-    );
+    ]), 'element');
+    parent::build();
   }
 
 }}

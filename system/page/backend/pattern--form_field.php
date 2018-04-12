@@ -12,6 +12,13 @@ namespace effcore {
   public $element_attributes = [];
 
   function build() {
+    $element = $this->child_select('element');
+    if ($element) {
+      foreach ($this->element_attributes as $c_name => $c_value) {
+        if ($c_value === null) $element->attribute_delete($c_name);
+        if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
+      }
+    }
   }
 
   function get_element_name($trim = true) {
