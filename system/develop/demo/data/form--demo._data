@@ -299,7 +299,16 @@ forms
                 - required: required
                 children
                 - content|text
-                    text: text in textarea
+                    text: text in textarea 1
+        - textarea_macro|form_field_textarea
+            title: Textarea (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;textarea&gt;&lt;/textarea&gt;
+            element_attributes
+            - name: textarea_macro
+            - value: text in textarea 2
       # field select
         - select|form_field
             title: Selection list
