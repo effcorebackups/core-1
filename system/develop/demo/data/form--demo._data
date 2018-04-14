@@ -36,8 +36,8 @@ forms
               args
               - info: &lt;input type="text"&gt;
             element_attributes
-            - value: text in input 2
             - name: text_macro
+            - value: text in input 2
             - minlength: 5
             - pattern: [a-zA-Z0-9]+
       # field password
@@ -65,8 +65,8 @@ forms
               args
               - info: &lt;input type="password"&gt;
             element_attributes
-            - value: text in password
             - name: password_macro
+            - value: text in password
       # field search
         - search|form_field
             title: Search
@@ -91,8 +91,8 @@ forms
               args
               - info: &lt;input type="search"&gt;
             element_attributes
-            - value: text in search 2
             - name: search_macro
+            - value: text in search 2
       # field url
         - url|form_field
             title: URL
@@ -107,9 +107,18 @@ forms
                 - type: url
                 - name: url
                 - required: required
-                - value: http://example.com
+                - value: http://1.example.com
                 - minlength: 5
                 - maxlength: 255
+        - url_macro|form_field_url
+            title: URL (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="url"&gt;
+            element_attributes
+            - name: url_macro
+            - value: http://2.example.com
       # field telephone
         - tel|form_field
             title: Telephone
@@ -151,8 +160,8 @@ forms
               - info: &lt;input type="email"&gt;
             element_attributes
             - name: email_macro
-            - required: required
             - value: test3@example.com,test4@example.com
+            - required: required
             - multiple: multiple
       # field file
         - file|form_field_file
