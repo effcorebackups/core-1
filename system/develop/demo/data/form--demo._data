@@ -119,9 +119,9 @@ forms
             element_attributes
             - name: url_macro
             - value: http://2.example.com
-      # field telephone
-        - tel|form_field
-            title: Telephone
+      # field phone
+        - phone|form_field
+            title: Phone
             description|text
               text: Use international format of mobile phone numbers.
             children
@@ -129,11 +129,18 @@ forms
                 tag_name: input
                 attributes
                 - type: tel
-                - name: tel
+                - name: phone
                 - required: required
-                - value: &#43;0123456789
+                - value: &#43;0001112222222
                 - minlength: 5
                 - maxlength: 15
+        - phone_macro|form_field_phone
+            title: Phone (macro)
+            description|text
+              text: Use international format of mobile phone numbers.
+            element_attributes
+            - name: phone_macro
+            - value: &#43;0003334444444
       # field email
         - email|form_field
             title: EMail
