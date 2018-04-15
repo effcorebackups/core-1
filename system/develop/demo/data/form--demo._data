@@ -298,7 +298,6 @@ forms
               - info: &lt;input type="time"&gt;
             element_attributes
             - name: time_macro
-            - value: 03:04:00
             - min: 01:02:00
             - max: 05:06:00
       # field select timezone
