@@ -3,6 +3,7 @@ entities
     name: captcha
     storage_id: main
     catalog_id: captcha
+    ws_created: true
     title: Captcha
     fields
       ip_address
