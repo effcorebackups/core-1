@@ -52,6 +52,7 @@ translations
     - Text (macro): Текст (макро)
     - Textarea (macro): Текстовая область (макро)
     - Textarea: Текстовая область
+    - Time (macro): Время (макро)
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
