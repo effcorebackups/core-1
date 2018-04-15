@@ -47,6 +47,7 @@ namespace effcore\modules\user {
         $values = $user->get_values();
         $values['roles'] = count($roles) ? implode(', ', $roles) : '-';
         $values['created'] = locale::format_datetime($values['created']);
+        $values['updated'] = locale::format_datetime($values['updated']);
         $values['password_hash'] = '*****';
         $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
         $values['avatar_path_relative'] = $values['avatar_path_relative'] ?: '-';
