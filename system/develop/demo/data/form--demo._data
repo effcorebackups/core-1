@@ -232,8 +232,19 @@ forms
                 - required: required
                 - value: 0
                 - min: -1
-                - max: 1
+                - max: +1
                 - step: 0.2
+        - range_macro|form_field_range
+            title: Range (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="range"&gt;
+            element_attributes
+            - name: range_macro
+            - min: -1
+            - max: +1
+            - step: 0.2
       # field date
         - date|form_field
             title: Date
