@@ -293,11 +293,9 @@ namespace effcore {
   # see: locale::format_date(...);
   # see: locale::format_datetime(...);
 
-  static function datetime_get($offset = '') {
-    $datetime = new \DateTime('now', new \DateTimeZone('UTC'));
-    if ($offset) $datetime->modify($offset);
-    return $datetime->format('Y-m-d H:i:s');
-  }
+  static function time_get($offset = '')     {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format('H:i:s');}
+  static function date_get($offset = '')     {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format('Y-m-d');}
+  static function datetime_get($offset = '') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format('Y-m-d H:i:s');}
 
   ###############
   ### filters ###
