@@ -311,7 +311,7 @@ forms
               - info: &lt;input type="color"&gt;
             element_attributes
             - name: color_macro
-            - value: #dddddd
+            - value: #eeeeee
       # field textarea
         - textarea|form_field
             title: Textarea
