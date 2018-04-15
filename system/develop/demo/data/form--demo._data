@@ -303,6 +303,15 @@ forms
                 - name: color
                 - value: #ffffff
                 - required: required
+        - color_macro|form_field_color
+            title: Color (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="color"&gt;
+            element_attributes
+            - name: color_macro
+            - value: #dddddd
       # field textarea
         - textarea|form_field
             title: Textarea
@@ -563,7 +572,7 @@ forms
             checked
             - radio_2_2: radio_2_2
       # field radios color macro
-        - color_macro|form_palette
+        - palette|form_palette
             title: Color
             input_attributes
             - name: color
