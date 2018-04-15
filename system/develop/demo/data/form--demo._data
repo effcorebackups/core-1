@@ -203,8 +203,19 @@ forms
                 - required: required
                 - value: 0
                 - min: -1000
-                - max: 1000
+                - max: +1000
                 - step: 0.2
+        - number_macro|form_field_number
+            title: Number (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="number"&gt;
+            element_attributes
+            - name: number_macro
+            - min: -1000
+            - max: +1000
+            - step: 0.2
       # field range
         - range|form_field
             title: Range

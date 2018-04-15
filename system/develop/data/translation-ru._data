@@ -32,6 +32,7 @@ translations
     - Module for development.: Модуль для разработки.
     - Module for testing.: Модуль для тестирования.
     - Notice message #%%_num.: Уведомление #%%_num.
+    - Number (macro): Число (макро)
     - Ok message #%%_num.: Хорошее сообщение #%%_num.
     - Ordered list: Упорядоченный список
     - Password (macro): Пароль (макро)
