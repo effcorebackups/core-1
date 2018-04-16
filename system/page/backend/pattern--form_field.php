@@ -14,7 +14,7 @@ namespace effcore {
   function build() {
     $element = $this->child_select('element');
     if ($element) {
-      foreach ($this->element_attributes as $c_name => $c_value) {
+      foreach ($this->attribute_select_all('element_attributes') as $c_name => $c_value) {
         if ($c_value === null) $element->attribute_delete($c_name);
         if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
       }
