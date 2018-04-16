@@ -5,17 +5,19 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_search extends form_field {
+          class field_number extends field {
 
-  public $title = 'Search';
+  public $title = 'Number';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'      => 'search',
-      'name'      => 'search',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 255
+      'type'     => 'number',
+      'name'     => 'number',
+      'required' => 'required',
+      'value'    => 0,
+      'step'     => 1,
+      'min'      => -10000000000,
+      'max'      => +10000000000
     ]), 'element');
     parent::build();
   }

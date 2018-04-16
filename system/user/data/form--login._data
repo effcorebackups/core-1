@@ -10,8 +10,8 @@ forms
         title: Credentials
         title_tag_name: legend
         children
-        - email|form_field_email
-        - password|form_field_password
+        - email|field_email
+        - password|field_password
         - session_params|form_checkboxes
             element_attributes
             - name: session_params[]
@@ -21,7 +21,7 @@ forms
             checked
             - remember: remember
             - fixed_ip: fixed_ip
-        - captcha|form_field_captcha
+        - captcha|field_captcha
     - button_login|markup
         tag_name: button
         attributes

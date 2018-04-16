@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_textarea extends form_field {
+          class field_textarea extends field {
 
   public $title = 'Textarea';
 

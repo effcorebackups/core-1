@@ -5,17 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_email extends form_field {
+          class field_url extends field {
 
-  public $title = 'EMail';
+  public $title = 'URL';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'      => 'email',
-      'name'      => 'email',
+      'type'      => 'url',
+      'name'      => 'url',
       'required'  => 'required',
       'minlength' => 5,
-      'maxlength' => 64
+      'maxlength' => 255
     ]), 'element');
     parent::build();
   }

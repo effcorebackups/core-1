@@ -5,17 +5,19 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_phone extends form_field {
+          class field_range extends field {
 
-  public $title = 'Phone';
+  public $title = 'Range';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'      => 'tel',
-      'name'      => 'phone',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 15,
+      'type'     => 'range',
+      'name'     => 'range',
+      'required' => 'required',
+      'value'    => 0,
+      'step'     => 1,
+      'min'      => -10000000000,
+      'max'      => +10000000000
     ]), 'element');
     parent::build();
   }

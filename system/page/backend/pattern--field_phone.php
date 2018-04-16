@@ -5,18 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_date extends form_field {
+          class field_phone extends field {
 
-  public $title = 'Date';
+  public $title = 'Phone';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'     => 'date',
-      'name'     => 'date',
-      'required' => 'required',
-      'value'    => factory::date_get(),
-      'min'      => '0001-01-01',
-      'max'      => '9999-31-12'
+      'type'      => 'tel',
+      'name'      => 'phone',
+      'required'  => 'required',
+      'minlength' => 5,
+      'maxlength' => 15,
     ]), 'element');
     parent::build();
   }

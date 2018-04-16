@@ -5,16 +5,19 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_color extends form_field {
+          class field_time extends field {
 
-  public $title = 'Color';
+  public $title = 'Time';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'     => 'color',
-      'name'     => 'color',
+      'type'     => 'time',
+      'name'     => 'time',
       'required' => 'required',
-      'value'    => '#ffffff'
+      'value'    => factory::time_get(),
+      'min'      => '00:00:00',
+      'max'      => '23:59:59',
+      'step'     => 60
     ]), 'element');
     parent::build();
   }

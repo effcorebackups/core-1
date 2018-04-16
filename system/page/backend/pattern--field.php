@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_field extends container {
+          class field extends container {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';

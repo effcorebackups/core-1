@@ -164,7 +164,7 @@ namespace effcore {
 
         # input[type=file] validation:
         # ─────────────────────────────────────────────────────────────────────
-        if ($c_field instanceof form_field_file) {
+        if ($c_field instanceof field_file) {
             static::_validate_field_file($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name]);
           }
 
@@ -254,7 +254,7 @@ namespace effcore {
       $field->title
     );
 
-  # get maximum file size from form_field_file::max_file_size or php upload_max_filesize
+  # get maximum file size from field_file::max_file_size or php upload_max_filesize
     $max_size = $field->get_max_file_size();
 
   # break processing if some file from set of files is broken
@@ -568,7 +568,7 @@ namespace effcore {
 
         # input[type=file] validation:
         # ─────────────────────────────────────────────────────────────────────
-          if ($c_field instanceof form_field_file) {
+          if ($c_field instanceof field_file) {
           # final copying of files
             foreach ($values[$c_name] as $c_hash => $c_file_info) {
               $c_tmp_file = new file($c_file_info->tmp_name);

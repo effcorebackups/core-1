@@ -5,18 +5,18 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_password extends form_field {
+          class field_date extends field {
 
-  public $title = 'Password';
+  public $title = 'Date';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'         => 'password',
-      'name'         => 'password',
-      'required'     => 'required',
-      'autocomplete' => 'off',
-      'minlength'    => 5,
-      'maxlength'    => 255
+      'type'     => 'date',
+      'name'     => 'date',
+      'required' => 'required',
+      'value'    => factory::date_get(),
+      'min'      => '0001-01-01',
+      'max'      => '9999-31-12'
     ]), 'element');
     parent::build();
   }

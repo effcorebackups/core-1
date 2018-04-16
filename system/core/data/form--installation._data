@@ -11,7 +11,7 @@ forms
         title_tag_name: legend
         children
       # driver
-        - is_mysql|form_field
+        - is_mysql|field
             title: MySQL
             title_position: bottom
             attributes
@@ -31,7 +31,7 @@ forms
             tag_name: fieldset
             children
           # storage id (database name)
-            - storage_id|form_field
+            - storage_id|field
                 title: Storage ID
                 description|text
                   text: Allowable characters: %%_chars.
@@ -49,7 +49,7 @@ forms
                     - maxlength: 128
                     - pattern: [a-zA-Z0-9-_]+
           # host name
-            - host_name|form_field
+            - host_name|field
                 title: Host name
                 description|text
                   text: Allowable characters: %%_chars. Examples: %%_examples.
@@ -68,7 +68,7 @@ forms
                     - maxlength: 253
                     - pattern: [a-zA-Z0-9-_.]+
           # port
-            - port|form_field
+            - port|field
                 title: Port
                 children
                 - element|markup_simple
@@ -81,7 +81,7 @@ forms
                     - min: 1024
                     - max: 49150
           # user name
-            - user_name|form_field
+            - user_name|field
                 title: User name
                 description|text
                   text: Allowable characters: %%_chars.
@@ -99,12 +99,12 @@ forms
                     - maxlength: 64
                     - pattern: [a-zA-Z0-9-_]+
           # password
-            - password|form_field_password
+            - password|field_password
                 element_attributes
                 - minlength: null
                 - required: null
       # driver
-        - is_sqlite|form_field
+        - is_sqlite|field
             title: SQLite
             title_position: bottom
             attributes
@@ -124,7 +124,7 @@ forms
             tag_name: fieldset
             children
           # storage file path
-            - file_name|form_field
+            - file_name|field
                 title: Path to file
                 description|text
                   text: Allowable characters: %%_chars.
@@ -146,7 +146,7 @@ forms
         - params|container
             children
           # table prefix
-            - table_prefix|form_field
+            - table_prefix|field
                 title: Table prefix
                 description|text
                   text: Allowable characters: %%_chars.

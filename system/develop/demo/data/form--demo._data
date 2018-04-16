@@ -12,7 +12,7 @@ forms
         title_tag_name: legend
         children
       # field text
-        - text|form_field
+        - text|field
             title: Text
             description|text
               text: Element %%_info.
@@ -29,7 +29,7 @@ forms
                 - minlength: 5
                 - maxlength: 255
                 - pattern: [a-zA-Z0-9]+
-        - text_macro|form_field_text
+        - text_macro|field_text
             title: Text (macro)
             description|text
               text: Element %%_info.
@@ -41,7 +41,7 @@ forms
             - minlength: 5
             - pattern: [a-zA-Z0-9]+
       # field password
-        - password|form_field
+        - password|field
             title: Password
             description|text
               text: Element %%_info.
@@ -58,7 +58,7 @@ forms
                 - minlength: 5
                 - maxlength: 255
                 - autocomplete: off
-        - password_macro|form_field_password
+        - password_macro|field_password
             title: Password (macro)
             description|text
               text: Element %%_info.
@@ -68,7 +68,7 @@ forms
             - name: password_macro
             - value: text in password
       # field search
-        - search|form_field
+        - search|field
             title: Search
             description|text
               text: Element %%_info.
@@ -84,7 +84,7 @@ forms
                 - value: text in search 1
                 - minlength: 5
                 - maxlength: 255
-        - search_macro|form_field_search
+        - search_macro|field_search
             title: Search (macro)
             description|text
               text: Element %%_info.
@@ -94,7 +94,7 @@ forms
             - name: search_macro
             - value: text in search 2
       # field url
-        - url|form_field
+        - url|field
             title: URL
             description|text
               text: Element %%_info.
@@ -110,7 +110,7 @@ forms
                 - value: http://1.example.com
                 - minlength: 5
                 - maxlength: 255
-        - url_macro|form_field_url
+        - url_macro|field_url
             title: URL (macro)
             description|text
               text: Element %%_info.
@@ -120,7 +120,7 @@ forms
             - name: url_macro
             - value: http://2.example.com
       # field phone
-        - phone|form_field
+        - phone|field
             title: Phone
             description|text
               text: Use international format of mobile phone numbers.
@@ -134,7 +134,7 @@ forms
                 - value: &#43;0001112222222
                 - minlength: 5
                 - maxlength: 15
-        - phone_macro|form_field_phone
+        - phone_macro|field_phone
             title: Phone (macro)
             description|text
               text: Use international format of mobile phone numbers.
@@ -142,7 +142,7 @@ forms
             - name: phone_macro
             - value: &#43;0003334444444
       # field email
-        - email|form_field
+        - email|field
             title: EMail
             description|text
               text: Element %%_info.
@@ -159,7 +159,7 @@ forms
                 - minlength: 5
                 - maxlength: 64
                 - multiple: multiple
-        - email_macro|form_field_email
+        - email_macro|field_email
             title: EMail (macro)
             description|text
               text: Element %%_info.
@@ -171,7 +171,7 @@ forms
             - required: required
             - multiple: multiple
       # field file
-        - file|form_field_file
+        - file|field_file
             title: File
             max_file_size: 1M
             upload_subdir: demo/
@@ -188,7 +188,7 @@ forms
                 - accept: image/*,audio/*,video/*
                 - multiple: multiple
       # field number
-        - number|form_field
+        - number|field
             title: Number
             description|text
               text: Element %%_info.
@@ -205,7 +205,7 @@ forms
                 - min: -1000
                 - max: +1000
                 - step: 0.2
-        - number_macro|form_field_number
+        - number_macro|field_number
             title: Number (macro)
             description|text
               text: Element %%_info.
@@ -217,7 +217,7 @@ forms
             - max: +1000
             - step: 0.2
       # field range
-        - range|form_field
+        - range|field
             title: Range
             description|text
               text: Element %%_info.
@@ -234,7 +234,7 @@ forms
                 - min: -1
                 - max: +1
                 - step: 0.2
-        - range_macro|form_field_range
+        - range_macro|field_range
             title: Range (macro)
             description|text
               text: Element %%_info.
@@ -246,7 +246,7 @@ forms
             - max: +1
             - step: 0.2
       # field date
-        - date|form_field
+        - date|field
             title: Date
             description|text
               text: Element %%_info.
@@ -262,7 +262,7 @@ forms
                 - value: 2020-01-01
                 - min: 2000-01-01
                 - max: 2050-01-01
-        - date_macro|form_field_date
+        - date_macro|field_date
             title: Date (macro)
             description|text
               text: Element %%_info.
@@ -273,7 +273,7 @@ forms
             - min: 2000-01-01
             - max: 2050-01-01
       # field time
-        - time|form_field
+        - time|field
             title: Time
             description|text
               text: Element %%_info.
@@ -290,7 +290,7 @@ forms
                 - min: 01:02:00
                 - max: 05:06:00
                 - step: 60
-        - time_macro|form_field_time
+        - time_macro|field_time
             title: Time (macro)
             description|text
               text: Element %%_info.
@@ -301,7 +301,7 @@ forms
             - min: 01:02:00
             - max: 05:06:00
       # field select timezone
-        - select_timezone|form_field_select_timezone
+        - select_timezone|field_select_timezone
             title: Timezone
             element_attributes
             - name: select_timezone
@@ -309,7 +309,7 @@ forms
             selected
             - 424: 424
       # field color
-        - color|form_field
+        - color|field
             title: Color
             description|text
               text: Element %%_info.
@@ -323,7 +323,7 @@ forms
                 - name: color
                 - value: #ffffff
                 - required: required
-        - color_macro|form_field_color
+        - color_macro|field_color
             title: Color (macro)
             description|text
               text: Element %%_info.
@@ -333,7 +333,7 @@ forms
             - name: color_macro
             - value: #eeeeee
       # field textarea
-        - textarea|form_field
+        - textarea|field
             title: Textarea
             description|text
               text: Element %%_info.
@@ -351,7 +351,7 @@ forms
                 children
                 - content|text
                     text: text in textarea 1
-        - textarea_macro|form_field_textarea
+        - textarea_macro|field_textarea
             title: Textarea (macro)
             description|text
               text: Element %%_info.
@@ -361,7 +361,7 @@ forms
             - name: textarea_macro
             - value: text in textarea 2
       # field select
-        - select|form_field
+        - select|field
             title: Selection list
             description|text
               text: Element %%_info.
@@ -432,7 +432,7 @@ forms
                         - label|text
                             text: Option 1.6
       # field select macro
-        - select_macro|form_field_select
+        - select_macro|field_select
             title: Selection list (macro)
             description|text
               text: Element %%_info.
@@ -466,7 +466,7 @@ forms
               - boxes: boxes
               - checkboxes: checkboxes
             children
-            - checkbox_1_1|form_field
+            - checkbox_1_1|field
                 title: Checkbox 1.1
                 title_position: bottom
                 children
@@ -476,7 +476,7 @@ forms
                     - type: checkbox
                     - name: checkbox_1_1
                     - value: checkbox_1_1
-            - checkbox_1_2|form_field
+            - checkbox_1_2|field
                 title: Checkbox 1.2 (checked)
                 title_position: bottom
                 children
@@ -487,7 +487,7 @@ forms
                     - name: checkbox_1_2
                     - value: checkbox_1_2
                     - checked: checked
-            - checkbox_1_3|form_field
+            - checkbox_1_3|field
                 title: Checkbox 1.3 (disabled)
                 title_position: bottom
                 children
@@ -498,7 +498,7 @@ forms
                     - name: checkbox_1_3
                     - value: checkbox_1_3
                     - disabled: disabled
-            - checkbox_1_4|form_field
+            - checkbox_1_4|field
                 title: Checkbox 1.4 (disabled + checked)
                 title_position: bottom
                 children
@@ -542,7 +542,7 @@ forms
               - boxes: boxes
               - radioboxes: radioboxes
             children
-            - radio_1_1|form_field
+            - radio_1_1|field
                 title: Radio 1.1
                 title_position: bottom
                 children
@@ -552,7 +552,7 @@ forms
                     - type: radio
                     - name: radio
                     - value: radio_1_1
-            - radio_1_2|form_field
+            - radio_1_2|field
                 title: Radio 1.2 (checked)
                 title_position: bottom
                 children
@@ -563,7 +563,7 @@ forms
                     - name: radio
                     - value: radio_1_2
                     - checked: checked
-            - radio_1_3|form_field
+            - radio_1_3|field
                 title: Radio 1.3 (disabled)
                 title_position: bottom
                 children

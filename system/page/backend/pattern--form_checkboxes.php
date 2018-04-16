@@ -38,7 +38,7 @@ namespace effcore {
     if (isset($this->required[$value])) $input->attribute_insert('required', 'required');
     if (isset($this->checked[$value]))  $input->attribute_insert('checked',   'checked');
     if (isset($this->disabled[$value])) $input->attribute_insert('disabled', 'disabled');
-    $field = new form_field( $this->field_tag_name, $title );
+    $field = new field($this->field_tag_name, $title);
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;
     $field->child_insert($input, 'element');

@@ -5,14 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_url extends form_field {
+          class field_search extends field {
 
-  public $title = 'URL';
+  public $title = 'Search';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'      => 'url',
-      'name'      => 'url',
+      'type'      => 'search',
+      'name'      => 'search',
       'required'  => 'required',
       'minlength' => 5,
       'maxlength' => 255

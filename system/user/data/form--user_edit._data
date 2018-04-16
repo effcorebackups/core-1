@@ -11,8 +11,8 @@ forms
         title: Credentials
         title_tag_name: legend
         children
-        - email|form_field_email
-        - nick|form_field
+        - email|field_email
+        - nick|field
             title: Nick
             children
             - element|markup_simple
@@ -23,7 +23,7 @@ forms
                 - required: required
                 - minlength: 4
                 - maxlength: 32
-        - avatar|form_field_file
+        - avatar|field_file
             title: Avatar
             max_file_size: 10K
             upload_subdir: avatar/
@@ -36,13 +36,13 @@ forms
                 - type: file
                 - name: avatar
                 - accept: image/*
-        - password_new|form_field_password
+        - password_new|field_password
             title: New password
             description: Leave the field blank if you do not want to change its value.
             element_attributes
             - name: password_new
             - required: null
-        - password|form_field_password
+        - password|field_password
     - button_save|markup
         tag_name: button
         attributes

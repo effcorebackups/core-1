@@ -5,14 +5,18 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_select_timezone extends form_field_select {
+          class field_color extends field {
+
+  public $title = 'Color';
 
   function build() {
+    $this->child_insert(new markup_simple('input', [
+      'type'     => 'color',
+      'name'     => 'color',
+      'required' => 'required',
+      'value'    => '#ffffff'
+    ]), 'element');
     parent::build();
-    $this->option_insert('- select -', 'not_selected');
-    foreach (\DateTimeZone::listIdentifiers() as $c_id => $c_title) {
-      $this->option_insert($c_title, $c_id);
-    }
   }
 
 }}

@@ -10,8 +10,8 @@ forms
         title: Credentials
         title_tag_name: legend
         children
-        - email|form_field_email
-        - nick|form_field
+        - email|field_email
+        - nick|field
             title: Nick
             children
             - element|markup_simple
@@ -22,7 +22,7 @@ forms
                 - required: required
                 - minlength: 4
                 - maxlength: 32
-        - password|form_field_password
+        - password|field_password
         - session_params|form_checkboxes
             element_attributes
             - name: session_params[]
@@ -32,7 +32,7 @@ forms
             checked
             - remember: remember
             - fixed_ip: fixed_ip
-        - captcha|form_field_captcha
+        - captcha|field_captcha
     - button_register|markup
         tag_name: button
         attributes

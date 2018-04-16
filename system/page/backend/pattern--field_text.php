@@ -5,19 +5,16 @@
   ##################################################################
 
 namespace effcore {
-          class form_field_range extends form_field {
+          class field_text extends field {
 
-  public $title = 'Range';
+  public $title = 'Text';
 
   function build() {
     $this->child_insert(new markup_simple('input', [
-      'type'     => 'range',
-      'name'     => 'range',
-      'required' => 'required',
-      'value'    => 0,
-      'step'     => 1,
-      'min'      => -10000000000,
-      'max'      => +10000000000
+      'type'      => 'text',
+      'name'      => 'text',
+      'required'  => 'required',
+      'maxlength' => 255
     ]), 'element');
     parent::build();
   }
