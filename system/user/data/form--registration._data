@@ -23,7 +23,7 @@ forms
                 - minlength: 4
                 - maxlength: 32
         - password|field_password
-        - session_params|form_checkboxes
+        - session_params|group_checkboxes
             element_attributes
             - name: session_params[]
             values

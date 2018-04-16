@@ -270,8 +270,6 @@ forms
               - info: &lt;input type="date"&gt;
             element_attributes
             - name: date_macro
-            - min: 2000-01-01
-            - max: 2050-01-01
       # field time
         - time|field
             title: Time
@@ -298,8 +296,6 @@ forms
               - info: &lt;input type="time"&gt;
             element_attributes
             - name: time_macro
-            - min: 01:02:00
-            - max: 05:06:00
       # field select timezone
         - select_timezone|field_timezone
             title: Timezone
@@ -511,7 +507,7 @@ forms
                     - disabled: disabled
                     - checked: checked
       # field checkboxes macro
-        - checkboxes_macro|form_checkboxes
+        - checkboxes_macro|group_checkboxes
             title: Checkboxes (macro)
             description|text
               text: Element %%_info.

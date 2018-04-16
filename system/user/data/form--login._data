@@ -12,7 +12,7 @@ forms
         children
         - email|field_email
         - password|field_password
-        - session_params|form_checkboxes
+        - session_params|group_checkboxes
             element_attributes
             - name: session_params[]
             values

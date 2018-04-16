@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_checkboxes extends container {
+          class group_checkboxes extends container {
 
   public $field_tag_name = 'x-field';
   public $field_title_tag_name = 'label';

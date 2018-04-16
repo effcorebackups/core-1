@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_radios extends form_checkboxes {
+          class form_radios extends group_checkboxes {
 
   public $element_tag_name = 'radio';
 

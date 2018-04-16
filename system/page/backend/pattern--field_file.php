@@ -78,7 +78,7 @@ namespace effcore {
   ####################
 
   function pool_manager_build() {
-    $this->child_insert(new form_checkboxes(), 'manager');
+    $this->child_insert(new group_checkboxes(), 'manager');
     $this->child_select('manager')->build();
   }
 
