@@ -24,7 +24,7 @@ forms
                 - maxlength: 32
         - password|form_field_password
         - session_params|form_checkboxes
-            input_attributes
+            element_attributes
             - name: session_params[]
             values
             - remember: remember me

@@ -14,13 +14,13 @@ forms
             title: Color
             attributes
             - required: required
-            input_attributes
+            element_attributes
             - name: color_id
         - color_bg_id|form_palette
             title: Background color
             attributes
             - required: required
-            input_attributes
+            element_attributes
             - name: color_bg_id
     - button_save|markup
         tag_name: button

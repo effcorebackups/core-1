@@ -11,7 +11,7 @@ namespace effcore {
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
   public $input_tag_name = 'checkbox';
-  public $input_attributes = [];
+  public $element_attributes = [];
   public $values = [];
   public $required = [];
   public $disabled = [];
@@ -33,7 +33,7 @@ namespace effcore {
   }
 
   function input_insert($title = null, $attr = [], $new_id = null) {
-    $input = new markup_simple('input', ['type' => $this->input_tag_name] + $attr + $this->attribute_select('', 'input_attributes'));
+    $input = new markup_simple('input', ['type' => $this->input_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
     $value = $input->attribute_select('value');
     if (isset($this->required[$value])) $input->attribute_insert('required', 'required');
     if (isset($this->disabled[$value])) $input->attribute_insert('disabled', 'disabled');
