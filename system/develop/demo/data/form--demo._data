@@ -588,7 +588,7 @@ forms
             checked
             - radio_2_2: radio_2_2
       # field radios color macro
-        - palette|form_palette
+        - palette|group_palette
             title: Color
             element_attributes
             - name: color

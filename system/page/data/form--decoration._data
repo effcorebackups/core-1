@@ -10,13 +10,13 @@ forms
         title: Colors
         title_tag_name: legend
         children
-        - color_id|form_palette
+        - color_id|group_palette
             title: Color
             attributes
             - required: required
             element_attributes
             - name: color_id
-        - color_bg_id|form_palette
+        - color_bg_id|group_palette
             title: Background color
             attributes
             - required: required
