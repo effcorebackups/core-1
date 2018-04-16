@@ -31,6 +31,10 @@ namespace effcore {
     }
   }
 
+  function attribute_select_all($scope = 'attributes') {
+    return $this->{$scope};
+  }
+
   function attribute_insert($key, $data, $scope = 'attributes') {
     if (is_array($data)) {
       foreach ($data as $c_key => $c_value) {

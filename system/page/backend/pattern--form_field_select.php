@@ -7,13 +7,12 @@
 namespace effcore {
           class form_field_select extends form_field {
 
-  public $select_attributes = [];
   public $values = [];
   public $selected = [];
   public $disabled = [];
 
   function build() {
-    $this->child_insert(new markup('select', $this->attribute_select('', 'select_attributes')), 'element');
+    $this->child_insert(new markup('select', $this->attribute_select_all('element_attributes')), 'element');
     $this->child_select('element')->title = $this->title;
     foreach ($this->values as $c_id => $c_data) {
       if (is_object($c_data) && !empty($c_data->title) && !empty($c_data->values)) {

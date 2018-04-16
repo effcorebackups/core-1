@@ -10,9 +10,8 @@ namespace effcore {
   public $title = 'Textarea';
 
   function build() {
-    $value = isset($this->element_attributes['value']) ?
-                   $this->element_attributes['value'] : '';
-    unset($this->element_attributes['value']);
+    $value = $this->attribute_select('value', 'element_attributes') ?: '';
+    $this->attribute_delete('value', 'element_attributes');
     $this->child_insert(new markup('textarea', [
       'name'      => 'textarea',
       'required'  => 'required',

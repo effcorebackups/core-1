@@ -303,7 +303,7 @@ forms
       # field select timezone
         - select_timezone|form_field_select_timezone
             title: Timezone
-            select_attributes
+            element_attributes
             - name: select_timezone
             - required: required
             selected
@@ -438,7 +438,7 @@ forms
               text: Element %%_info.
               args
               - info: &lt;select&gt;
-            select_attributes
+            element_attributes
             - name: select_macro
             - required: required
             values
