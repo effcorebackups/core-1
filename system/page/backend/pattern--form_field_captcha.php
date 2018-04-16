@@ -9,13 +9,12 @@ namespace effcore {
 
   public $title = 'Captcha';
   public $description = 'Write the characters from the picture.';
-  public $attributes = ['class' => ['captcha' => 'captcha']];
-
   public $length = 6;
   public $attempts = 3;
   public $noise = 1;
 
   function build() {
+    $this->attribute_insert('class', ['captcha' => 'captcha']);
     $captcha = $this->captcha_load();
     if (!$captcha) {
       $captcha = $this->captcha_generate();
