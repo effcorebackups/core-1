@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_select_timezone extends field_select {
+          class field_timezone extends field_select {
 
   function build() {
     parent::build();

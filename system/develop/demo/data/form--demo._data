@@ -301,7 +301,7 @@ forms
             - min: 01:02:00
             - max: 05:06:00
       # field select timezone
-        - select_timezone|field_select_timezone
+        - select_timezone|field_timezone
             title: Timezone
             element_attributes
             - name: select_timezone
