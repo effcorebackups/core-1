@@ -39,7 +39,7 @@ namespace effcore {
   }
 
   static function build() {
-    foreach(static::get_item() as $c_item) {
+    foreach(static::get_item_all() as $c_item) {
       if ($c_item->id_parent) {
         $c_parent = !empty($c_item->parent_is_tree) ?
             tree::get     ($c_item->id_parent) :
@@ -49,14 +49,22 @@ namespace effcore {
     };
   }
 
-  static function get($id = null) {
-    return $id ? static::$cache_trees[$id] :
-                 static::$cache_trees;
+  static function get($id) {
+    return isset(static::$cache_trees[$id]) ?
+                 static::$cache_trees[$id] : null;
   }
 
-  static function get_item($id = null) {
-    return $id ? static::$cache_tree_items[$id] :
-                 static::$cache_tree_items;
+  static function get_all() {
+    return static::$cache_trees;
+  }
+
+  static function get_item($id) {
+    return isset(static::$cache_tree_items[$id]) ?
+                 static::$cache_tree_items[$id] : null;
+  }
+
+  static function get_item_all() {
+    return static::$cache_tree_items;
   }
 
 }}
