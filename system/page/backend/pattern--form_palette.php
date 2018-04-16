@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class form_palette extends form_radios {
+          class form_palette extends group_radios {
 
   function build() {
     $this->attribute_insert('class', ['palette' => 'palette']);
