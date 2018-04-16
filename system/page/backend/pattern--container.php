@@ -28,7 +28,7 @@ namespace effcore {
                               $this->title_position == 'bottom';
     return (new template($this->template, [
       'tag_name'    => $this->tag_name,
-      'attributes'  => factory::data_to_attr($this->attribute_select()),
+      'attributes'  => factory::data_to_attr($this->attribute_select_all()),
       'content'     => $this->render_children($this->children),
       'description' => $this->render_description(),
       'title_t'     => $is_bottom_title ? '' : $this->render_self(),

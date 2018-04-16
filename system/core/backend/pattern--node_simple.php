@@ -22,13 +22,9 @@ namespace effcore {
   ### attributes ###
   ##################
 
-  function attribute_select($key = '', $scope = 'attributes') {
-    if ($key) {
-      return isset($this->{$scope}[$key]) ?
-                   $this->{$scope}[$key] : null;
-    } else {
-      return $this->{$scope};
-    }
+  function attribute_select($key, $scope = 'attributes') {
+    return isset($this->{$scope}[$key]) ?
+                 $this->{$scope}[$key] : null;
   }
 
   function attribute_select_all($scope = 'attributes') {
@@ -56,7 +52,7 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => factory::data_to_attr($this->attribute_select()),
+        'attributes' => factory::data_to_attr($this->attribute_select_all()),
         'self'       => $this->render_self(),
       ]))->render();
     } else {

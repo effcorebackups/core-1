@@ -12,7 +12,7 @@ namespace effcore {
 
   function render() {
     return (new template($this->template, [
-      'attributes' => factory::data_to_attr($this->attribute_select()),
+      'attributes' => factory::data_to_attr($this->attribute_select_all()),
       'top_items'  => $this->render_top_items(),
       'sub_items'  => $this->render_sub_items()
     ]))->render();
