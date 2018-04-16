@@ -10,7 +10,7 @@ namespace effcore {
   public $field_tag_name = 'x-field';
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
-  public $input_tag_name = 'checkbox';
+  public $element_tag_name = 'checkbox';
   public $element_attributes = [];
   public $values = [];
   public $required = [];
@@ -26,18 +26,18 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('class', factory::array_values_map_to_keys(['boxes', $this->input_tag_name]));
+    $this->attribute_insert('class', factory::array_values_map_to_keys(['boxes', $this->element_tag_name]));
     foreach ($this->values as $value => $title) {
-      $this->input_insert($title, ['value' => $value]);
+      $this->element_insert($title, ['value' => $value]);
     }
   }
 
-  function input_insert($title = null, $attr = [], $new_id = null) {
-    $input = new markup_simple('input', ['type' => $this->input_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
+  function element_insert($title = null, $attr = [], $new_id = null) {
+    $input = new markup_simple('input', ['type' => $this->element_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
     $value = $input->attribute_select('value');
     if (isset($this->required[$value])) $input->attribute_insert('required', 'required');
+    if (isset($this->checked[$value]))  $input->attribute_insert('checked',   'checked');
     if (isset($this->disabled[$value])) $input->attribute_insert('disabled', 'disabled');
-    if (isset($this->checked[$value]))  $input->attribute_insert('checked', 'checked');
     $field = new form_field( $this->field_tag_name, $title );
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;

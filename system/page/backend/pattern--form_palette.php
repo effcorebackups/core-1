@@ -11,7 +11,7 @@ namespace effcore {
     $this->attribute_insert('class', ['palette' => 'palette']);
     foreach (storage::get('files')->select('colors') as $c_module_id => $c_module_colors) {
       foreach ($c_module_colors as $c_row_id => $c_color) {
-        $this->input_insert(null, [
+        $this->element_insert(null, [
           'value' => $c_color->id,
           'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),
           'style' => ['background-color: '.$c_color->value]
