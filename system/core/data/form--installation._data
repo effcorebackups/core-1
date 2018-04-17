@@ -31,73 +31,53 @@ forms
             tag_name: fieldset
             children
           # storage id (database name)
-            - storage_id|field
+            - storage_id|field_text
                 title: Storage ID
                 description|text
                   text: Allowable characters: %%_chars.
                   args
                   - chars: "a"-"z", "A"-"Z", "0"-"9", "-", "_"
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: text
-                    - name: storage_id
-                    - required: required
-                    - value: main
-                    - minlength: 1
-                    - maxlength: 128
-                    - pattern: [a-zA-Z0-9-_]+
+                element_attributes
+                - name: storage_id
+                - value: main
+                - minlength: 1
+                - maxlength: 128
+                - pattern: [a-zA-Z0-9-_]+
           # host name
-            - host_name|field
+            - host_name|field_text
                 title: Host name
                 description|text
                   text: Allowable characters: %%_chars. Examples: %%_examples.
                   args
                   - examples: 127.0.0.1, example.com
                   - chars: "a"-"z", "A"-"Z", "0"-"9", "-", "_", "."
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: text
-                    - name: host_name
-                    - required: required
-                    - value: 127.0.0.1
-                    - minlength: 1
-                    - maxlength: 253
-                    - pattern: [a-zA-Z0-9-_.]+
+                element_attributes
+                - name: host_name
+                - value: 127.0.0.1
+                - minlength: 1
+                - maxlength: 253
+                - pattern: [a-zA-Z0-9-_.]+
           # port
-            - port|field
+            - port|field_number
                 title: Port
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: number
-                    - name: port
-                    - required: required
-                    - value: 3306
-                    - min: 1024
-                    - max: 49150
+                element_attributes
+                - name: port
+                - value: 3306
+                - min: 1024
+                - max: 49150
           # user name
-            - user_name|field
+            - user_name|field_text
                 title: User name
                 description|text
                   text: Allowable characters: %%_chars.
                   args
                   - chars: "a"-"z", "A"-"Z", "0"-"9", "-", "_"
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: text
-                    - name: user_name
-                    - required: required
-                    - value: root
-                    - minlength: 1
-                    - maxlength: 64
-                    - pattern: [a-zA-Z0-9-_]+
+                element_attributes
+                - name: user_name
+                - value: root
+                - minlength: 1
+                - maxlength: 64
+                - pattern: [a-zA-Z0-9-_]+
           # password
             - password|field_password
                 element_attributes
@@ -124,42 +104,34 @@ forms
             tag_name: fieldset
             children
           # storage file path
-            - file_name|field
-                title: Path to file
+            - file_name|field_text
+                title: File name
                 description|text
                   text: Allowable characters: %%_chars.
                   args
                   - chars: "a"-"z", "A"-"Z", "0"-"9", "-", "_", ".", "/"
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: text
-                    - name: file_name
-                    - required: required
-                    - value: data.sqlite
-                    - minlength: 1
-                    - maxlength: 255
-                    - pattern: [a-zA-Z0-9-_./]+
-                    - readonly: readonly
+                element_attributes
+                - name: file_name
+                - value: data.sqlite
+                - minlength: 1
+                - maxlength: 255
+                - pattern: [a-zA-Z0-9-_./]+
+                - readonly: readonly
       # shared params
         - params|container
             children
           # table prefix
-            - table_prefix|field
+            - table_prefix|field_text
                 title: Table prefix
                 description|text
                   text: Allowable characters: %%_chars.
                   args
                   - chars: "a"-"z", "A"-"Z", "0"-"9", "-", "_"
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: text
-                    - name: table_prefix
-                    - maxlength: 10
-                    - pattern: [a-zA-Z0-9-_]+
+                element_attributes
+                - name: table_prefix
+                - maxlength: 10
+                - pattern: [a-zA-Z0-9-_]+
+                - required: null
     - license_agreement|group_license_agreement
     - button_install|markup
         tag_name: button

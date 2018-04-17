@@ -97,6 +97,7 @@ translations
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
     - File %%_name was uploaded.: Файл %%_name был загружен.
     - file is empty: файл пуст
+    - File name: Имя файла
     - file of this type is protected by\: %%_name: файл этого типа защищен с помощью: %%_name
     - File: Файл
     - file: файл
@@ -171,7 +172,6 @@ translations
     - Parameter: Параметр
     - Password hash: Хеш пароля
     - Password: Пароль
-    - Path to file: Путь к файлу
     - Path: Путь
     - Phone: Телефон
     - PHP PDO driver for %%_name is not available.: PHP PDO драйвер для %%_name не доступен.
