@@ -8,4 +8,4 @@
   x-tabs x-top-items a.active {color: white; background: %%_color_bg}
   x-tabs x-top-items a:last-child {border-right: 0}
   x-tabs x-sub-items {display: block; margin: 10px 0}
-  x-tabs x-sub-items ul {margin: 0}
+  x-tabs x-sub-items > ul {margin: 0; padding-left: 14px; list-style: none}
