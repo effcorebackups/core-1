@@ -13,6 +13,7 @@
 
   /* form fields */
   form x-container {display: block; margin: 20px 0}
+  form x-group {display: block; margin: 20px 0}
   form x-title {display: block}
   form x-title, form x-field label {font-size: 1.2em}
   form x-field {display: block; margin: 20px 0}
@@ -79,12 +80,12 @@
   button:disabled {cursor: default; background-color: lightgray !important}
 
   /* palette */
-  form x-container.palette {margin: 5px 0}
-  form x-container.palette x-title {margin-bottom: 5px}
-  form x-container.palette x-field {display: inline-block; margin: 0 4px 0 0}
-  form x-container.palette x-field input[type="radio"] {margin: 0; border-color: white}
-  form x-container.palette x-field input[type="radio"]:checked {border-color: black}
-  form x-container.palette x-field input[value="color_white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
+  form .palette {margin: 5px 0}
+  form .palette x-title {margin-bottom: 5px}
+  form .palette x-field {display: inline-block; margin: 0 4px 0 0}
+  form .palette x-field input[type="radio"] {margin: 0; border-color: white}
+  form .palette x-field input[type="radio"]:checked {border-color: black}
+  form .palette x-field input[value="color_white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
 
   /* license */
   form x-license {

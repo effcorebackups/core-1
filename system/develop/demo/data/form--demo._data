@@ -478,6 +478,7 @@ forms
             - checked: checked
       # field checkboxes
         - checkboxes|container
+            tag_name: x-group
             title: Checkboxes
             description|text
               text: Element %%_info.
@@ -554,6 +555,7 @@ forms
             - checkboxes_2_4: checkboxes_2_4
       # field radios
         - radios|container
+            tag_name: x-group
             title: Radios
             description|text
               text: Element %%_info.

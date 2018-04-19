@@ -7,6 +7,7 @@
 namespace effcore {
           class group_checkboxes extends container {
 
+  public $tag_name = 'x-group';
   public $field_tag_name = 'x-field';
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
