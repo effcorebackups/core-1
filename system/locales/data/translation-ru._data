@@ -203,6 +203,7 @@ translations
     - Session expiration date: Дата окончания сессии
     - set: установка
     - Shared information: Общая информация
+    - Shared params: Общие параметры
     - Show more: Показать больше
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние

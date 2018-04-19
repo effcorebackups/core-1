@@ -26,7 +26,7 @@ forms
                 - type: radio
                 - name: driver
                 - value: mysql
-      # mysql
+      # mysql params
         - mysql|container
             tag_name: fieldset
             children
@@ -99,7 +99,7 @@ forms
                 - type: radio
                 - name: driver
                 - value: sqlite
-      # sqlite
+      # sqlite params
         - sqlite|container
             tag_name: fieldset
             children
@@ -119,6 +119,9 @@ forms
                 - readonly: readonly
       # shared params
         - params|container
+            tag_name: fieldset
+            title: Shared params
+            title_tag_name: legend
             children
           # table prefix
             - table_prefix|field_text
