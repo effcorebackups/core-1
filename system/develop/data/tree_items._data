@@ -4,6 +4,7 @@ tree_items
     id_parent: main
     parent_is_tree: true
     title: Develop
+    weight: 100
     access
       roles
       - admins: admins
