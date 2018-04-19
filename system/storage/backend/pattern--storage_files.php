@@ -123,27 +123,29 @@ namespace effcore {
 
   static function data_find_static() {
     $return = [];
-    $files = file::select_all_recursive(dir_system, '%^.*\._data$%');
+    $parsed = [];
     $modules_path = [];
-  # collect information about module paths
+    $files = file::select_all_recursive(dir_system, '%^.*\._data$%');
+    arsort($files);
+  # parse each *._data file and collect modules path
     foreach ($files as $c_file) {
-      if ($c_file->get_file() == 'module._data') {
-        $modules_path[$c_file->get_name_parent()] = $c_file->get_dirs_relative();
+      $c_parsed = static::data_to_code($c_file->load(), $c_file);
+      $parsed[$c_file->get_path_relative()] = $c_parsed;
+      if (isset($c_parsed->module->id)) {
+        $modules_path[$c_parsed->module->id] = $c_file->get_dirs_relative();
       }
     }
-    arsort($modules_path);
-  # parse each _data file
-    foreach ($files as $c_file) {
+  # build the result
+    foreach ($parsed as $c_file_path => $c_parsed) {
+    # define the scope (module_id for each *.data file)
       $c_scope = 'system';
-      foreach ($modules_path as $c_dir_parent => $c_dir_relative) {
-        if (strpos($c_file->get_dirs_relative(), $c_dir_relative) === 0) {
-          $c_scope = $c_dir_parent;
+      foreach ($modules_path as $c_module_id => $c_module_path) {
+        if (strpos($c_file_path, $c_module_path) === 0) {
+          $c_scope = $c_module_id;
           break;
         }
       }
-      $c_parsed = static::data_to_code(
-        $c_file->load(),
-        $c_file->get_path_relative());
+    # fill the $return
       foreach ($c_parsed as $c_type => $c_data) {
         if (is_object($c_data)) {
           if ($c_type == 'module') $c_data->path = $modules_path[$c_scope];
@@ -181,7 +183,7 @@ namespace effcore {
     return implode(nl, $return);
   }
 
-  static function data_to_code($data, $file_name = '') {
+  static function data_to_code($data, $file = null) {
     $return = new \stdClass();
     $p = [-1 => &$return];
     $pc_objects = []; # classes with interface "post_constructor"
@@ -244,7 +246,7 @@ namespace effcore {
         }
       } else {
         $messages = ['Function: data_to_code', 'Wrong syntax in data at line: '.$line_num];
-        if ($file_name) $messages[] = 'File name: '.$file_name;
+        if ($file) $messages[] = 'File relative path: '.$file->get_path_relative();
         message::insert(implode(br, $messages), 'error');
       }
     }
