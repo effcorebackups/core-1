@@ -488,7 +488,7 @@ forms
               - boxes: boxes
               - checkboxes: checkboxes
             children
-            - checkbox_1_1|field
+            - checkboxes_1_1|field
                 title: Checkbox 1.1
                 title_position: bottom
                 children
@@ -496,9 +496,9 @@ forms
                     tag_name: input
                     attributes
                     - type: checkbox
-                    - name: checkbox_1_1
-                    - value: checkbox_1_1
-            - checkbox_1_2|field
+                    - name: checkboxes_1_1
+                    - value: checkboxes_1_1
+            - checkboxes_1_2|field
                 title: Checkbox 1.2 (checked)
                 title_position: bottom
                 children
@@ -506,10 +506,10 @@ forms
                     tag_name: input
                     attributes
                     - type: checkbox
-                    - name: checkbox_1_2
-                    - value: checkbox_1_2
+                    - name: checkboxes_1_2
+                    - value: checkboxes_1_2
                     - checked: checked
-            - checkbox_1_3|field
+            - checkboxes_1_3|field
                 title: Checkbox 1.3 (disabled)
                 title_position: bottom
                 children
@@ -517,10 +517,10 @@ forms
                     tag_name: input
                     attributes
                     - type: checkbox
-                    - name: checkbox_1_3
-                    - value: checkbox_1_3
+                    - name: checkboxes_1_3
+                    - value: checkboxes_1_3
                     - disabled: disabled
-            - checkbox_1_4|field
+            - checkboxes_1_4|field
                 title: Checkbox 1.4 (disabled + checked)
                 title_position: bottom
                 children
@@ -528,8 +528,8 @@ forms
                     tag_name: input
                     attributes
                     - type: checkbox
-                    - name: checkbox_1_4
-                    - value: checkbox_1_4
+                    - name: checkboxes_1_4
+                    - value: checkboxes_1_4
                     - disabled: disabled
                     - checked: checked
       # field checkboxes macro
@@ -542,16 +542,16 @@ forms
             element_attributes
             - name: checkboxes_macro[]
             values
-            - checkbox_2_1: Checkbox 2.1
-            - checkbox_2_2: Checkbox 2.2 (checked)
-            - checkbox_2_3: Checkbox 2.3 (disabled)
-            - checkbox_2_4: Checkbox 2.4 (disabled + checked)
+            - checkboxes_2_1: Checkbox 2.1
+            - checkboxes_2_2: Checkbox 2.2 (checked)
+            - checkboxes_2_3: Checkbox 2.3 (disabled)
+            - checkboxes_2_4: Checkbox 2.4 (disabled + checked)
             disabled
-            - checkbox_2_3: checkbox_2_3
-            - checkbox_2_4: checkbox_2_4
+            - checkboxes_2_3: checkboxes_2_3
+            - checkboxes_2_4: checkboxes_2_4
             checked
-            - checkbox_2_2: checkbox_2_2
-            - checkbox_2_4: checkbox_2_4
+            - checkboxes_2_2: checkboxes_2_2
+            - checkboxes_2_4: checkboxes_2_4
       # field radios
         - radios|container
             title: Radios
