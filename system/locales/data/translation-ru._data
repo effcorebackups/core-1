@@ -33,6 +33,7 @@ translations
     - Changes was removed.: Изменения были удалены.
     - Changes was saved.: Изменения были сохранены.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
+    - Checkbox: Флаг
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет

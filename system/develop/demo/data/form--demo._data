@@ -450,6 +450,32 @@ forms
             - option_2_1: option_2_1
             disabled
             - option_2_2: option_2_2
+      # field checkbox
+        - checkbox|field
+            title: Checkbox
+            title_position: bottom
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;checkbox&gt;
+            children
+            - element|markup_simple
+                tag_name: input
+                attributes
+                - type: checkbox
+                - name: checkbox
+                - value: checkbox 
+                - checked: checked
+        - checkbox_macro|field_checkbox
+            title: Checkbox (macro)
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;checkbox&gt;
+            element_attributes
+            - name: checkbox_macro
+            - value: checkbox_macro
+            - checked: checked
       # field checkboxes
         - checkboxes|container
             title: Checkboxes
@@ -514,7 +540,7 @@ forms
               args
               - info: &lt;input type="checkbox"&gt;
             element_attributes
-            - name: checkbox_macro[]
+            - name: checkboxes_macro[]
             values
             - checkbox_2_1: Checkbox 2.1
             - checkbox_2_2: Checkbox 2.2 (checked)

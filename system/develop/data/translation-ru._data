@@ -6,6 +6,7 @@ translations
     - call: вызов
     - Canvas: Холст
     - cell %%_num: ячейка %%_num
+    - Checkbox (macro): Флаг (макро)
     - Checkboxes (macro): Флажки (макро)
     - Checkboxes: Флажки
     - class: класс
