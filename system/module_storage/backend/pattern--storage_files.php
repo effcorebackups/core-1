@@ -131,7 +131,7 @@ namespace effcore {
     foreach ($files as $c_file) {
       $c_parsed = static::data_to_code($c_file->load(), $c_file);
       $parsed[$c_file->get_path_relative()] = $c_parsed;
-      if (isset($c_parsed->module->id)) {
+      if ($c_file->get_file() == 'module._data' && isset($c_parsed->module->id)) {
         $modules_path[$c_parsed->module->id] = $c_file->get_dirs_relative();
       }
     }
