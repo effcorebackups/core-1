@@ -15,7 +15,7 @@ namespace effcore {
         new markup_simple('img', [
           'class' => ['avatar' => 'avatar'],
           'alt' => 'avatar',
-          'src' => '/system/page/frontend/images/avatar-anonymous._vector'
+          'src' => '/'.module::get('page')->get_path().'frontend/images/avatar-anonymous._vector'
         ])
       ]);
     } else {
@@ -26,7 +26,8 @@ namespace effcore {
             'class' => ['avatar' => 'avatar'],
             'alt' => 'avatar',
             'src' => $user->avatar_path_relative ?
-                 '/'.$user->avatar_path_relative : '/system/page/frontend/images/avatar-logged_in._vector'
+                 '/'.$user->avatar_path_relative :
+                 '/'.module::get('page')->get_path().'frontend/images/avatar-logged_in._vector'
           ])
         )
       ]);
