@@ -12,6 +12,14 @@ namespace effcore {
   public $description;
   public $version;
   public $state;
+  public $path;
+
+  function get_id()          {return $this->id;}
+  function get_title()       {return $this->title;}
+  function get_description() {return $this->description;}
+  function get_version()     {return $this->version;}
+  function get_state()       {return $this->state;}
+  function get_path()        {return $this->path;}
 
   ###########################
   ### static declarations ###
@@ -21,6 +29,11 @@ namespace effcore {
 
   static function init() {
     static::$cache = storage::get('files')->select('module');
+  }
+
+  static function get($module_id) {
+    if   (!static::$cache) static::init();
+    return static::$cache[$module_id];
   }
 
   static function get_all() {

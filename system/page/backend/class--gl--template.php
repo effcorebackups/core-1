@@ -23,7 +23,7 @@ namespace effcore {
         if ($name == $c_name) {
           switch ($c_info->type) {
             case 'file':
-              $path = module::get_all()[$c_module_id]->path.$c_info->path;
+              $path = module::get($c_module_id)->get_path().$c_info->path;
               $file = new file($path);
               $this->markup = $file->load(false);
               return $this;

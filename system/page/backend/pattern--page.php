@@ -95,7 +95,7 @@ namespace effcore {
     $return->scripts = new node();
     $return->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
     $frontend = storage::get('files')->select('frontend');
-    foreach ($frontend as $module_id => $c_module_frontend) {
+    foreach ($frontend as $c_module_id => $c_module_frontend) {
       foreach ($c_module_frontend as $c_row_id => $c_item) {
         if (($c_item->display->check === 'protocol' && $c_item->display->where === 'url'   && preg_match($c_item->display->match, url::get_current()->get_protocol())) ||
             ($c_item->display->check === 'domain'   && $c_item->display->where === 'url'   && preg_match($c_item->display->match, url::get_current()->get_domain()))   ||
@@ -109,7 +109,7 @@ namespace effcore {
         # render meta
           if (isset($c_item->favicons)) {
             foreach ($c_item->favicons as $c_icon) {
-              $c_url = new url('/system/'.($c_icon->file[0] == '/' ? $c_icon->file : $module_id.'/'.$c_icon->file));
+              $c_url = new url($c_icon->file[0] == '/' ? '/system/'.$c_icon->file : '/'.module::get($c_module_id)->get_path().$c_icon->file);
               $return->meta->child_insert(new markup_simple('link', [
                 'rel'   => $c_icon->rel,
                 'type'  => $c_icon->type,
@@ -122,7 +122,7 @@ namespace effcore {
         # render styles
           if (isset($c_item->styles)) {
             foreach ($c_item->styles as $c_style) {
-              $c_url = new url('/system/'.($c_style->file[0] == '/' ? $c_style->file : $module_id.'/'.$c_style->file));
+              $c_url = new url($c_style->file[0] == '/' ? '/system'.$c_style->file : '/'.module::get($c_module_id)->get_path().$c_style->file);
               $return->styles->child_insert(new markup_simple('link', [
                 'rel'   => 'stylesheet',
                 'media' => $c_style->media,
@@ -134,7 +134,7 @@ namespace effcore {
         # render scripts
           if (isset($c_item->scripts)) {
             foreach ($c_item->scripts as $c_script) {
-              $c_url = new url('/system/'.($c_script->file[0] == '/' ? $c_script->file : $module_id.'/'.$c_script->file));
+              $c_url = new url($c_script->file[0] == '/' ? '/system/'.$c_script->file : '/'.module::get($c_module_id)->get_path().$c_script->file);
               $return->scripts->child_insert(new markup('script', [
                 'src' => $c_url->get_full()
               ]));
