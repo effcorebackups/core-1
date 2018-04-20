@@ -30,6 +30,8 @@
   /* scale in any diagram */
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
+  x-export-link {display: block; margin: 12px 0}
+
   /* uml class diagram */
   x-diagram-uml {font-family: 'Arial'; overflow: auto}
   x-diagram-uml, x-diagram-uml * {display: block}

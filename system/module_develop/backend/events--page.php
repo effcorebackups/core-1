@@ -10,6 +10,7 @@ namespace effcore\modules\develop {
           use \effcore\text;
           use \effcore\markup;
           use \effcore\markup_simple;
+          use \effcore\translation;
           use \effcore\factory;
           use \effcore\table;
           use \effcore\table_body_row;
@@ -130,8 +131,10 @@ namespace effcore\modules\develop {
       $diagrams->child_delete($c_item);
     }
 
+    $export_link = new markup('a', ['href' => '/develop/structures/class/diagrams_export'], 'classes.mdj');
     return new markup('x-block', ['class' => ['structures_diagrams']], [
       new markup('h2', [], 'UML Diagram'),
+      new markup('x-export-link', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),
       $diagrams
@@ -142,7 +145,11 @@ namespace effcore\modules\develop {
   ### export UML diagrams ###
   ###########################
 
-  static function on_export_diagrams() {
+  static function on_export_diagrams($page) {
+    if ($page->args_get('type') != 'class') {
+      factory::send_header_and_exit('not_found');
+    }
+  # build class diagrams
     $classes_map = factory::get_classes_map();
     $items = [];
     foreach ($classes_map as $c_class_full_name => $c_class_info) {
