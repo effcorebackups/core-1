@@ -31,7 +31,7 @@
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
   /* uml class diagram */
-  x-diagram-uml {font-family: 'Arial'}
+  x-diagram-uml {font-family: 'Arial'; overflow: auto}
   x-diagram-uml, x-diagram-uml * {display: block}
   x-diagram-uml x-children:empty {display: none}
   x-diagram-uml x-class {width: 370px; border: 1px solid #ff2b2b; background: #fff5d8}
