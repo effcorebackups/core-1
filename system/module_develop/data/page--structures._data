@@ -5,7 +5,7 @@ pages
     display
       check: path
       where: url
-      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagrams|diagrams_export)$%
+      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagram|diagram_export)$%
     access
       roles
       - admins: admins
@@ -38,19 +38,19 @@ pages
         region: content
         type: code
         handler: \effcore\modules\develop\events_page::on_show_block_structures_list
-    - block_structures_diagrams
+    - block_structures_diagram
         display
           check: view
           where: page_args
-          match: %diagrams%
+          match: %diagram%
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_structures_diagrams
-    - block_structures_diagrams_export
+        handler: \effcore\modules\develop\events_page::on_show_block_structures_diagram
+    - block_structures_diagram_export
         display
           check: view
           where: page_args
-          match: %diagrams_export%
+          match: %diagram_export%
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_export_diagrams
+        handler: \effcore\modules\develop\events_page::on_export_diagram

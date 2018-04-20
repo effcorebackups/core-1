@@ -17,14 +17,14 @@ tabs_items
     attributes
     - class
       - list: list
-- class_diagrams|tabs_item
-    id: class_diagrams
+- class_diagram|tabs_item
+    id: class_diagram
     id_parent: class
-    action_name: class/diagrams
-    title: Diagrams
+    action_name: class/diagram
+    title: Diagram
     attributes
     - class
-      - diagrams: diagrams
+      - diagram: diagram
 - interface|tabs_item
     id: interface
     id_parent: structures

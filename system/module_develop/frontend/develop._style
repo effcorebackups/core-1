@@ -60,5 +60,5 @@
   x-diagram-uml x-operations {display: none}
   x-diagram-uml x-attributes:empty,
   x-diagram-uml x-operations:empty {display: none !important}
-  x-block.structures_diagrams #expand:checked ~ x-diagram-uml x-attributes,
-  x-block.structures_diagrams #expand:checked ~ x-diagram-uml x-operations {display: block}
+  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-attributes,
+  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-operations {display: block}

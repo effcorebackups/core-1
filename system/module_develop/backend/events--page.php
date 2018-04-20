@@ -37,13 +37,13 @@ namespace effcore\modules\develop {
     ]);
   }
 
-  ############################
-  ### structures: diagrams ###
-  ############################
+  ###########################
+  ### structures: diagram ###
+  ###########################
 
-  static function on_show_block_structures_diagrams($page) {
+  static function on_show_block_structures_diagram($page) {
     $classes_map = factory::get_classes_map();
-    $diagrams = new markup('x-diagram-uml');
+    $diagram = new markup('x-diagram-uml');
 
   # build diagram for each class
     foreach ($classes_map as $c_class_full_name => $c_class_info) {
@@ -63,7 +63,7 @@ namespace effcore\modules\develop {
         $x_class->child_insert($x_operations, 'operations');
         $x_class_wr->child_insert($x_class, 'class');
         $x_class_wr->child_insert($x_children, 'children');
-        $diagrams->child_insert($x_class_wr, $c_class_full_name);
+        $diagram->child_insert($x_class_wr, $c_class_full_name);
 
       # set abstract mark
         if (!empty($c_class_info->modifier) &&
@@ -114,11 +114,11 @@ namespace effcore\modules\develop {
 
   # move children to it's parent
     $items_to_delete = [];
-    foreach ($diagrams->child_select_all() as $c_class_full_name => $c_class_wr) {
+    foreach ($diagram->child_select_all() as $c_class_full_name => $c_class_wr) {
       $c_class_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
                                          $classes_map[$c_class_full_name]->extends : null;
       if ($c_class_parent_full_name) {
-        $c_parent = $diagrams->child_select($c_class_parent_full_name);
+        $c_parent = $diagram->child_select($c_class_parent_full_name);
         if ($c_parent) {
           $x_parent_children = $c_parent->child_select('children');
           $x_parent_children->child_insert($c_class_wr, $c_class_full_name);
@@ -128,28 +128,28 @@ namespace effcore\modules\develop {
     }
   # delete free copies of moved items
     foreach ($items_to_delete as $c_item) {
-      $diagrams->child_delete($c_item);
+      $diagram->child_delete($c_item);
     }
 
-    $export_link = new markup('a', ['href' => '/develop/structures/class/diagrams_export'], 'classes.mdj');
-    return new markup('x-block', ['class' => ['structures_diagrams']], [
+    $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
+    return new markup('x-block', ['class' => ['structures-diagram']], [
       new markup('h2', [], 'UML Diagram'),
       new markup('x-export-link', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),
-      $diagrams
+      $diagram
     ]);
   }
 
-  ###########################
-  ### export UML diagrams ###
-  ###########################
+  ##########################
+  ### export UML diagram ###
+  ##########################
 
-  static function on_export_diagrams($page) {
+  static function on_export_diagram($page) {
     if ($page->args_get('type') != 'class') {
       factory::send_header_and_exit('not_found');
     }
-  # build class diagrams
+  # build class diagram
     $classes_map = factory::get_classes_map();
     $items = [];
     foreach ($classes_map as $c_class_full_name => $c_class_info) {
