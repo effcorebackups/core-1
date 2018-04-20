@@ -38,12 +38,12 @@ namespace effcore {
   ### load required classes ###
   #############################
 
-  require_once('core/backend/class_ab--gl--factory.php');
-  require_once('core/backend/class_ab--gl--timer.php');
-  require_once('core/backend/class_ab--gl--console.php');
-  require_once('core/backend/class_ab--gl--dynamic.php');
-  require_once('core/backend/class_ab--gl--cache.php');
-  require_once('core/backend/class--gl--file.php');
+  require_once('module_core/backend/class_ab--gl--factory.php');
+  require_once('module_core/backend/class_ab--gl--timer.php');
+  require_once('module_core/backend/class_ab--gl--console.php');
+  require_once('module_core/backend/class_ab--gl--dynamic.php');
+  require_once('module_core/backend/class_ab--gl--cache.php');
+  require_once('module_core/backend/class--gl--file.php');
   spl_autoload_register('\effcore\factory::autoload');
   timer::tap('total');
 
