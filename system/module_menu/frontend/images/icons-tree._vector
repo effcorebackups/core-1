@@ -51,19 +51,19 @@
        cy="39.5"
        cx="20"
        r="2.5"
-       style="fill:none;fill-opacity:1;stroke:white;stroke-opacity:1" />
+       style="fill:white;fill-opacity:.2;stroke:white;stroke-opacity:1" />
     <circle
        id="tune_hand_2"
        cx="32"
        cy="32"
        r="2.5"
-       style="fill:none;fill-opacity:1;stroke:white;stroke-opacity:1" />
+       style="fill:white;fill-opacity:.2;stroke:white;stroke-opacity:1" />
     <circle
        id="tune_hand_3"
        cy="24.5"
        cx="44"
        r="2.5"
-       style="fill:none;fill-opacity:1;stroke:white;stroke-opacity:1" />
+       style="fill:white;fill-opacity:.2;stroke:white;stroke-opacity:1" />
   </g>
 
   <path
