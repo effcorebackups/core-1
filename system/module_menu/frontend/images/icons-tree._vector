@@ -21,7 +21,7 @@
     </rdf:RDF>
   </metadata>
 
-  <g id="ico_manage">
+  <g id="icon_manage">
     <path
        id="tune_line_1_1"
        d="M 20,20 V 37"
@@ -66,9 +66,47 @@
        style="fill:white;fill-opacity:.2;stroke:white;stroke-opacity:1" />
   </g>
 
-  <path
-     id="ico_develop"
-     style="fill:white;fill-opacity:.2;stroke:white"
-     d="m 28.845703,84.539336 c -0.303447,0.0134 -0.744519,0.13499 -1.410156,0.41101 -3.550064,1.47217 0.532104,1.56306 -2.185547,4.28459 -2.717651,2.72152 -2.805843,-1.3697 -4.277344,2.18689 -1.471501,3.55657 1.477862,0.72908 1.476562,4.57926 -0.0013,3.85016 -2.949515,1.02167 -1.480468,4.579274 1.469048,3.55761 1.559617,-0.53266 4.27539,2.19075 2.715774,2.72343 -1.365453,2.81191 2.183594,4.28653 3.549047,1.47462 0.728301,-1.48218 4.570313,-1.48119 3.84201,9.9e-4 1.018294,2.95722 4.568359,1.48506 3.550063,-1.47217 -0.532104,-1.56497 2.185547,-4.28651 2.717651,-2.72154 2.805842,1.36968 4.277344,-2.18689 1.471501,-3.556574 -1.477863,-0.729104 -1.476563,-4.579274 0.0013,-3.85016 2.949516,-1.02168 1.480469,-4.57926 -1.469048,-3.55761 -1.559618,0.53265 -4.275391,-2.19076 -2.715773,-2.72342 1.365454,-2.81191 -2.183594,-4.28653 -3.549047,-1.47462 -0.728301,1.48248 -4.570312,1.48119 -3.121634,-0.001 -1.843269,-1.95229 -3.158203,-1.89414 z M 32,91.041826 a 5,4.9631374 0 0 1 5,4.96313 5,4.9631374 0 0 1 -5,4.963154 5,4.9631374 0 0 1 -5,-4.963154 5,4.9631374 0 0 1 5,-4.96313 z" />
+  <g id="icon_develop">
+    <path
+       id="circle_big"
+       d="M 32,85.5 A 10.5,10.5 0 0 0 21.5,96 10.5,10.5 0 0 0 32,106.5 10.5,10.5 0 0 0 42.5,96 10.5,10.5 0 0 0 32,85.5 Z m 0,3.5 a 7,7 0 0 1 7,7 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 z"
+       style="fill:white;fill-opacity:.2;stroke:white;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none" />
+    <circle
+       id="circle_small"
+       r="2"
+       cx="32"
+       cy="96"
+       style="fill:none;stroke:white;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       id="crossing"
+       d="m 27.050781,91.050781 3.535157,3.535157 z m 9.898438,0 -3.535157,3.535157 z m -6.363281,6.363281 -3.535157,3.535158 z m 2.828124,0 3.535157,3.535158 z"
+       style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:butt" />
+    <g id="teeth">
+      <path id="tooth_01" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 32,85.5 V 84" />
+      <path id="tooth_02" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 34.7176,85.857779 35.105829,84.40889" />
+      <path id="tooth_03" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 37.25,86.906733 38,85.607695" />
+      <path id="tooth_04" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 39.424621,88.575379 1.06066,-1.06066" />
+      <path id="tooth_05" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 41.093267,90.75 42.392305,90" />
+      <path id="tooth_06" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 42.142221,93.2824 43.59111,92.894171" />
+      <path id="tooth_07" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 42.5,96 H 44" />
+      <path id="tooth_08" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 42.142221,98.7176 1.448889,0.388229" />
+      <path id="tooth_09" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 41.093267,101.25 42.392305,102" />
+      <path id="tooth_10" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 39.424621,103.42462 1.06066,1.06066" />
+      <path id="tooth_11" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 37.25,105.09327 38,106.3923" />
+      <path id="tooth_12" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 34.7176,106.14222 0.388229,1.44889" />
+      <path id="tooth_13" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 32,106.5 V 108" />
+      <path id="tooth_14" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 29.2824,106.14222 -0.388229,1.44889" />
+      <path id="tooth_15" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 26.75,105.09327 26,106.3923" />
+      <path id="tooth_16" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 24.575379,103.42462 -1.06066,1.06066" />
+      <path id="tooth_17" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 22.906733,101.25 21.607695,102" />
+      <path id="tooth_18" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 21.857779,98.7176 20.40889,99.105829" />
+      <path id="tooth_19" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 21.5,96 H 20" />
+      <path id="tooth_20" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 21.857779,93.2824 20.40889,92.894171" />
+      <path id="tooth_21" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 22.906733,90.75 21.607695,90" />
+      <path id="tooth_22" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="m 24.575379,88.575379 -1.06066,-1.06066" />
+      <path id="tooth_23" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 26.75,86.906733 26,85.607695" />
+      <path id="tooth_24" style="fill:none;stroke:white;stroke-width:1px;stroke-linecap:round" d="M 29.2824,85.857779 28.894171,84.40889" />
+    </g>
+  </g>
 
 </svg>
