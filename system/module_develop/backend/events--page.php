@@ -22,19 +22,36 @@ namespace effcore\modules\develop {
   ########################
 
   static function on_show_block_structures_list($page) {
-    $thead = [['name', 'file']];
-    $tbody = [];
+    $list = new markup('x-class-list');
+    $groups_by_name = [];
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
       if ($c_class_info->type == $page->args_get('type')) {
-        $tbody[] = [
-          new table_body_row_cell(['class' => ['name' => 'name']], $c_class_info->namespace.' \ '.$c_class_info->name),
-          new table_body_row_cell(['class' => ['file' => 'file']], $c_class_info->file)
-        ];
+        $c_file = new file($c_class_info->file);
+        $c_result_info = new \stdClass();
+        $c_result_info->name       = $c_class_info->name;
+        $c_result_info->namespace  = $c_class_info->namespace;
+        $c_result_info->dirs       = $c_file->get_dirs();
+        $c_result_info->dirs_parts = $c_file->get_dirs_parts();
+        $c_result_info->file       = $c_file->get_file();
+        $groups_by_name[$c_class_info->name][$c_class_info->namespace ?: '-'] = $c_result_info;
       }
     }
-    return new markup('x-block', ['class' => ['structures_list']], [
-      new table(['class' => ['structures-list' => 'structures-list']], $tbody, $thead)
-    ]);
+    ksort($groups_by_name);
+    foreach ($groups_by_name as $c_group) {
+      ksort($c_group);
+      foreach ($c_group as $c_item) {
+        $c_file_parts = new markup('x-file');
+        foreach ($c_item->dirs_parts as $c_part)
+          $c_file_parts->child_insert(new markup('x-directory', [], $c_part), $c_part);
+          $c_file_parts->child_insert(new markup('x-name', [], $c_item->file), $c_item->file);
+        $c_return = new markup('x-item');
+        $c_return->child_insert(new markup('x-name', [], $c_item->name), 'name');
+        $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
+        $c_return->child_insert($c_file_parts, 'file');
+        $list->child_insert($c_return);
+      }
+    }
+    return new markup('x-block', ['class' => ['structures-list']], $list);
   }
 
   ###########################

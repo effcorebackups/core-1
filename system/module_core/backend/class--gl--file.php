@@ -45,8 +45,8 @@ namespace effcore {
   # - ./dir1                  | should be ignored
   # - ../dir1/                | should be ignored
   # - /dir1/../dir3/          | should be ignored
-  # - dir1                    | should be ignored (interpret as: file1)
-  # - dir1/dir2               | should be ignored (interpret as: dir1/file2)
+  # - dir1                    | should be ignored (interpreted as: file1)
+  # - dir1/dir2               | should be ignored (interpreted as: dir1/file2)
   # ─────────────────────────────────────────────────────────────────────
 
   public $dirs;
@@ -74,6 +74,7 @@ namespace effcore {
   function set_data($data) {$this->data = $data;}
 
   function get_dirs()          {return $this->dirs;}
+  function get_dirs_parts()    {return explode('/', trim($this->dirs, '/'));}
   function get_dirs_relative() {return isset($this->dirs[0]) && $this->dirs[0] == '/' ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 # ─────────────────────────────────────────────────────────────────────
   function get_name()          {return $this->name;}
@@ -83,14 +84,16 @@ namespace effcore {
   function get_path()          {return $this->type ? $this->dirs.$this->name.'.'.$this->type : $this->dirs.$this->name;}
   function get_path_relative() {return $this->get_dirs_relative().$this->get_file();}
 # ─────────────────────────────────────────────────────────────────────
-  function get_name_parent()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
+  function get_parent_name()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
   function get_hash()          {return md5_file($this->get_path());}
   function get_data() {
     if (empty($this->data)) $this->load(true);
     return $this->data;
   }
 
-  function is_exist() {return file_exists($this->get_path());}
+  function is_exist() {
+    return file_exists($this->get_path());
+  }
 
   function load($reset = false) {
     $relative = $this->get_path_relative();
