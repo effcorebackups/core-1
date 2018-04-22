@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="60"
-   height="112"
-   viewBox="0 0 60 112"
+   width="30"
+   height="56"
+   viewBox="0 0 30 56"
    style="shape-rendering:auto">
 
   <metadata>
@@ -24,18 +24,18 @@
   </metadata>
 
   <g id="icon_dirrectory">
-    <rect id="dirrectory" x="0" y="14" width="52" height="30" style="opacity: 1;fill:#47c7f7;stroke:none" />
-    <rect id="bookmark"   x="0" y="7"  width="26" height="7"  style="opacity:.5;fill:#47c7f7;stroke:none" />
+    <rect id="bookmark"   x="0" y="4" width="13" height="3"  style="opacity:.5;fill:#47c7f7;stroke:none" />
+    <rect id="dirrectory" x="0" y="7" width="26" height="15" style="opacity: 1;fill:#47c7f7;stroke:none" />
   </g>
 
   <g id="icon_file">
-    <rect id="list" x="0" y="66" width="40" height="38" style="fill:#ededed;stroke:none" />
-    <path id="string_1" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,75 H 32" />
-    <path id="string_2" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,79 H 32" />
-    <path id="string_3" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,83 H 32" />
-    <path id="string_4" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,87 H 32" />
-    <path id="string_5" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,91 H 32" />
-    <path id="string_6" style="fill:none;stroke:#747474;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter" d="M 8,95 H 20" />
+    <rect id="list" x="0" y="33" width="20" height="19" style="fill:#ededed;stroke:none" />
+    <path id="string_1" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,38 H 16" />
+    <path id="string_2" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,40 H 16" />
+    <path id="string_3" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,42 H 16" />
+    <path id="string_4" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,44 H 16" />
+    <path id="string_5" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,46 H 16" />
+    <path id="string_6" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,48 H 10" />
   </g>
 
 </svg>
