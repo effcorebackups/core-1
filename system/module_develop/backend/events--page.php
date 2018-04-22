@@ -40,10 +40,10 @@ namespace effcore\modules\develop {
     foreach ($groups_by_name as $c_group) {
       ksort($c_group);
       foreach ($c_group as $c_item) {
-        $c_file_parts = new markup('x-file');
+        $c_file_parts = new markup('x-file-path');
         foreach ($c_item->dirs_parts as $c_part)
           $c_file_parts->child_insert(new markup('x-directory', [], $c_part), $c_part);
-          $c_file_parts->child_insert(new markup('x-name', [], $c_item->file), $c_item->file);
+          $c_file_parts->child_insert(new markup('x-file', [], $c_item->file), $c_item->file);
         $c_return = new markup('x-item');
         $c_return->child_insert(new markup('x-name', [], $c_item->name), 'name');
         $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');

@@ -21,8 +21,6 @@
     </rdf:RDF>
   </metadata>
 
-  <path
-     d="M 15,0 V 44 H 30"
-     style="fill:none;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path id="hline" d="M 15,0 V 44 H 30" style="fill:none;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
 
 </svg>

@@ -84,3 +84,7 @@
   /* class list */
   .classes-list {font-size: .9em}
 
+  /* file system icons */
+  x-file-path {display: block; margin-top: 7px}
+  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 30px; margin-right: 5px; background: url('images/icons-file_types._vector') no-repeat}
+  x-file-path x-file {display: inline-block; padding: 3px 0 3px 30px; background: url('images/icons-file_types._vector') no-repeat 0 -60px}

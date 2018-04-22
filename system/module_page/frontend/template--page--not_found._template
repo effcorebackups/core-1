@@ -12,9 +12,9 @@
   </head>
   <body>
     <h1>%%_title</h1>
-    <svg id="icon" width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-      <path style="fill:black;fill-opacity:0.2;shape-rendering:auto" d="m 74.330078,64.428815 c -2.663817,3.875268 -6.025122,7.236574 -9.90039,9.90039 l 14.623046,14.621094 c 2.733517,2.732934 7.164921,2.732934 9.898438,0 2.732934,-2.733517 2.732934,-7.164921 0,-9.898438 L 74.330078,64.428815 Z" />
-      <ellipse style="fill:none;stroke:black;stroke-width:14;stroke-opacity:0.15" cx="43" cy="43" rx="31" ry="31" />
+    <svg id="icon" width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:auto">
+      <path id="hand" style="fill:black;fill-opacity:.2" d="m 74.330078,64.428815 c -2.663817,3.875268 -6.025122,7.236574 -9.90039,9.90039 l 14.623046,14.621094 c 2.733517,2.732934 7.164921,2.732934 9.898438,0 2.732934,-2.733517 2.732934,-7.164921 0,-9.898438 L 74.330078,64.428815 Z" />
+      <ellipse id="lens" cx="43" cy="43" rx="31" ry="31" style="fill:none;stroke:black;stroke-width:14;stroke-opacity:.15" />
     </svg>
     <p>%%_message</p>
   </body>

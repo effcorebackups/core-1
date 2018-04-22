@@ -37,9 +37,6 @@
   x-class-list x-item {display: block; margin: 40px 0}
   x-class-list x-item > x-name {display: block; font-size: 1.5em; line-height: 1.5em}
   x-class-list x-item x-namespace {display: block}
-  x-class-list x-item x-file {display: block; margin-top: 7px}
-  x-class-list x-item x-file x-directory {display: inline-block; padding: 3px 8px; margin-right: 5px; background: #e5e5e5}
-  x-class-list x-item x-file x-name {display: inline-block; padding: 3px 8px}
 
   /* uml class diagram */
   x-diagram-uml {font-family: 'Arial'; overflow: auto}
