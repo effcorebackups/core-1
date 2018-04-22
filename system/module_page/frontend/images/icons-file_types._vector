@@ -29,13 +29,13 @@
   </g>
 
   <g id="icon_file">
-    <rect id="list" x="0" y="33" width="20" height="19" style="fill:#ededed;stroke:none" />
-    <path id="string_1" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,38 H 16" />
-    <path id="string_2" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,40 H 16" />
-    <path id="string_3" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,42 H 16" />
-    <path id="string_4" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,44 H 16" />
-    <path id="string_5" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,46 H 16" />
-    <path id="string_6" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,48 H 10" />
+    <rect id="list" x="0" y="35" width="20" height="19" style="fill:#ededed;stroke:none" />
+    <path id="string_1" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,40 H 16" />
+    <path id="string_2" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,42 H 16" />
+    <path id="string_3" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,44 H 16" />
+    <path id="string_4" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,46 H 16" />
+    <path id="string_5" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,48 H 16" />
+    <path id="string_6" style="fill:none;stroke:#747474;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" d="M 4,50 H 10" />
   </g>
 
 </svg>

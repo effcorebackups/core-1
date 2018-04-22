@@ -60,9 +60,9 @@
   x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/relation-generalization-hline._vector') no-repeat}
   x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/relation-generalization-arrow._vector') no-repeat}
 
-  x-diagram-uml x-item[x-visibility='public']::before    {content: '+'}
-  x-diagram-uml x-item[x-visibility='protected']::before {content: '#'}
-  x-diagram-uml x-item[x-visibility='private']::before   {content: '-'}
+  x-diagram-uml x-item[x-visibility='public']::before    {content: '+ '}
+  x-diagram-uml x-item[x-visibility='protected']::before {content: '# '}
+  x-diagram-uml x-item[x-visibility='private']::before   {content: '- '}
 
   x-diagram-uml x-attributes,
   x-diagram-uml x-operations {display: none}

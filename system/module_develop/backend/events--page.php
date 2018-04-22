@@ -8,6 +8,7 @@ namespace effcore\modules\develop {
           use \effcore\file;
           use \effcore\node;
           use \effcore\text;
+          use \effcore\text_raw;
           use \effcore\markup;
           use \effcore\markup_simple;
           use \effcore\translation;
@@ -42,10 +43,10 @@ namespace effcore\modules\develop {
       foreach ($c_group as $c_item) {
         $c_file_parts = new markup('x-file-path');
         foreach ($c_item->dirs_parts as $c_part)
-          $c_file_parts->child_insert(new markup('x-directory', [], $c_part), $c_part);
+          $c_file_parts->child_insert(new markup('x-directory', [], new text_raw($c_part)), $c_part);
           $c_file_parts->child_insert(new markup('x-file', [], $c_item->file), $c_item->file);
         $c_return = new markup('x-item');
-        $c_return->child_insert(new markup('x-name', [], $c_item->name), 'name');
+        $c_return->child_insert(new markup('x-name', [], new text_raw($c_item->name)), 'name');
         $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
         $c_return->child_insert($c_file_parts, 'file');
         $list->child_insert($c_return);
@@ -69,7 +70,7 @@ namespace effcore\modules\develop {
         $c_reflection = new \ReflectionClass($c_class_full_name);
         $x_class_wr   = new markup('x-class-wrapper');
         $x_class      = new markup('x-class');
-        $x_name       = new markup('x-name', ['title' => $c_class_info->file], ' '.$c_class_info->name.' ');
+        $x_name       = new markup('x-name', ['title' => $c_class_info->file], new text_raw($c_class_info->name));
         $x_namespace  = new markup('x-namespace', [], '(from '.$c_class_info->namespace.')');
         $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes = new markup('x-attributes');
@@ -99,8 +100,8 @@ namespace effcore\modules\develop {
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['value']) ?
                                 $c_matches['value'] : null;
-            $c_name = ($c_defaults !== null) ? ' '.$c_info->name.' = '.$c_defaults :
-                                               ' '.$c_info->name;
+            $c_name = ($c_defaults !== null) ? new text_raw($c_info->name.' = '.$c_defaults) :
+                                               new text_raw($c_info->name);
             if ($c_info->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
@@ -119,8 +120,8 @@ namespace effcore\modules\develop {
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z_])#i', '$2',
                                 $c_matches['params']) : null;
-            $c_name = ($c_defaults !== null) ? ' '.$c_info->name.' ('.$c_defaults.')' :
-                                               ' '.$c_info->name.' ()';
+            $c_name = ($c_defaults !== null) ? new text_raw($c_info->name.' ('.$c_defaults.')') :
+                                               new text_raw($c_info->name.' ()');
             if ($c_info->isPublic())    $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isProtected()) $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isPrivate())   $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
