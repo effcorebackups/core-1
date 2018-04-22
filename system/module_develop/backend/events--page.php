@@ -24,7 +24,9 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_list($page) {
     $list = new markup('x-class-list');
+    $targets = new markup('x-targets');
     $groups_by_name = [];
+    $u_first_character = null;
     foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
       if ($c_class_info->type == $page->args_get('type')) {
         $c_file = new file($c_class_info->file);
@@ -34,7 +36,7 @@ namespace effcore\modules\develop {
         $c_result_info->dirs       = $c_file->get_dirs();
         $c_result_info->dirs_parts = $c_file->get_dirs_parts();
         $c_result_info->file       = $c_file->get_file();
-        $groups_by_name[$c_class_info->name][$c_class_info->namespace ?: '-'] = $c_result_info;
+        $groups_by_name[strtolower($c_class_info->name)][$c_class_info->namespace ?: '-'] = $c_result_info;
       }
     }
     ksort($groups_by_name);
@@ -45,6 +47,12 @@ namespace effcore\modules\develop {
         foreach ($c_item->dirs_parts as $c_part)
           $c_file_parts->child_insert(new markup('x-directory', [], new text_raw($c_part)), $c_part);
           $c_file_parts->child_insert(new markup('x-file', [], $c_item->file), $c_item->file);
+        if ($u_first_character != strtoupper($c_item->name[0])) {
+          $u_first_character = strtoupper($c_item->name[0]);
+          $l_first_character = strtolower($c_item->name[0]);
+          $targets->child_insert(new markup('a', ['href' => '#character-'.$l_first_character], $u_first_character));
+          $list->child_insert(new markup('h2', ['id' => 'character-'.$l_first_character], $u_first_character));
+        }
         $c_return = new markup('x-item');
         $c_return->child_insert(new markup('x-name', [], new text_raw($c_item->name)), 'name');
         $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
@@ -52,7 +60,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new markup('x-block', ['class' => ['structures-list']], $list);
+    return new markup('x-block', ['class' => ['structures-list']], [$targets, $list]);
   }
 
   ###########################
