@@ -54,7 +54,7 @@ namespace effcore\modules\user {
       # show table
         $thead = [['Parameter', 'Value']];
         $tbody = factory::array_rotate([array_keys($values), array_values($values)]);
-        return new markup('x-block', ['class' => ['user_info']],
+        return new markup('x-block', ['class' => ['user-info']],
           new table([], $tbody, $thead)
         );
       } else {

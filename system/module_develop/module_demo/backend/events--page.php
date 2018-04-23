@@ -43,7 +43,7 @@ namespace effcore\modules\demo {
                               translation::get('cell %%_num', ['num' => 3.2]), new table_body_row_cell([],
                               translation::get('cell %%_num', ['num' => 3.3]))])
     ];
-    return new markup('x-block', ['class' => ['demo_dynamic']], [
+    return new markup('x-block', ['class' => ['demo-dynamic']], [
       new markup('h2', [], 'Dynamic block'),
       new table(['class' => ['table' => 'table']], $tbody, $thead)
     ]);
@@ -61,7 +61,7 @@ namespace effcore\modules\demo {
     $canvas->glyph_set('10000|10000|10000|10000|10000|01000|00100|00010|00001|11111', 75, 3); # 7
     $canvas->glyph_set('01110|10001|10001|10001|10001|01110|10001|10001|10001|01110', 85, 3); # 8
     $canvas->glyph_set('01000|00100|00010|00001|01110|10001|10001|10001|10001|01110', 95, 3); # 9
-    return new markup('x-block', ['class' => ['demo_canvas']], [
+    return new markup('x-block', ['class' => ['demo-canvas']], [
       new markup('h2', [], 'Canvas'),
       $canvas
     ]);

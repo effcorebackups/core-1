@@ -50,8 +50,8 @@ namespace effcore\modules\develop {
         if ($u_first_character != strtoupper($c_item->name[0])) {
           $u_first_character = strtoupper($c_item->name[0]);
           $l_first_character = strtolower($c_item->name[0]);
-          $targets->child_insert(new markup('a', ['href' => '#character-'.$l_first_character], $u_first_character));
-          $list->child_insert(new markup('h2', ['id' => 'character-'.$l_first_character], $u_first_character));
+          $targets->child_insert(new markup('a', ['href' => '#character_'.$l_first_character], $u_first_character));
+          $list->child_insert(new markup('h2', ['id' => 'character_'.$l_first_character, 'class' => ['character' => 'character']], $u_first_character));
         }
         $c_return = new markup('x-item');
         $c_return->child_insert(new markup('x-name', [], new text_simple($c_item->name)), 'name');

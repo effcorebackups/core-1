@@ -58,12 +58,12 @@
     height: 48px;
     background: url('images/logo._vector')}
 
-  x-block.user_menu {float: right}
-  x-block.user_menu .avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}
-  x-block.user_menu x-tree {display: none; padding: 2px; text-align: right}
-  x-block.user_menu x-tree ul,
-  x-block.user_menu x-tree li {list-style: none; margin: 0; padding: 0}
-  x-block.user_menu:hover x-tree {display: inline-block}
+  x-block.menu-user {float: right}
+  x-block.menu-user .avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}
+  x-block.menu-user x-tree {display: none; padding: 2px; text-align: right}
+  x-block.menu-user x-tree ul,
+  x-block.menu-user x-tree li {list-style: none; margin: 0; padding: 0}
+  x-block.menu-user:hover x-tree {display: inline-block}
 
   x-block.modules td.state {vertical-align: top}
 
