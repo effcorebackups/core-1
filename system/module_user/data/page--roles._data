@@ -5,7 +5,7 @@ pages
     display
       check: path
       where: url
-      match: %^/admin/roles$%
+      match: %^/manage/roles$%
     access
       roles
       - admins: admins

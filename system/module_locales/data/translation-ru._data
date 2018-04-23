@@ -9,7 +9,6 @@ translations
     - Action: Действие
     - actions: действия
     - Actions: Действия
-    - Administer: Администрирование
     - Administrators: Администраторы
     - agree: согласен(а)
     - All rights reserved: Все права защищены
@@ -136,6 +135,7 @@ translations
     - Logout: Выход
     - Main menu: Главное меню
     - Main system module.: Основной модуль системы.
+    - Management: Управление
     - Maxim Rysevets: Рысевец Максим Владимирович
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.

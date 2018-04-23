@@ -1,35 +1,35 @@
 tree_items
-- admin|tree_item
-    id: admin
+- manage|tree_item
+    id: manage
     id_parent: main
     parent_is_tree: true
-    title: Administer
+    title: Management
     access
       roles
       - admins: admins
     attributes
     - class
-      - admin: admin
+      - manage: manage
 - modules|tree_item
     id: modules
-    id_parent: admin
+    id_parent: manage
     title: Modules
     access
       roles
       - admins: admins
     attributes
-    - href: /admin/modules
+    - href: /manage/modules
     - class
       - modules: modules
 - info|tree_item
     id: info
-    id_parent: admin
+    id_parent: manage
     title: Information
     weight: 100
     access
       roles
       - admins: admins
     attributes
-    - href: /admin/info
+    - href: /manage/info
     - class
       - info: info

@@ -41,10 +41,10 @@ namespace effcore\modules\user {
                message::insert(translation::get('User %%_nick was deleted.',     ['nick' => $nick]));}
           else message::insert(translation::get('User %%_nick was not deleted!', ['nick' => $nick]), 'error');
         }
-        url::go(url::get_back_url() ?: '/admin/users');
+        url::go(url::get_back_url() ?: '/manage/users');
         break;
       case 'cancel':
-        url::go(url::get_back_url() ?: '/admin/users');
+        url::go(url::get_back_url() ?: '/manage/users');
         break;
     }
   }

@@ -61,9 +61,9 @@ namespace effcore\modules\core {
     $tbody = [];
     foreach (module::get_all() as $c_module) {
       $c_action_list = new control_actions_list();
-      $c_action_list->action_add('/admin/modules/'.$c_module->id.'/enable', 'enable',       $c_module->state != 'always_on');
-      $c_action_list->action_add('/admin/modules/'.$c_module->id.'/disable', 'disable',     $c_module->state != 'always_on');
-      $c_action_list->action_add('/admin/modules/'.$c_module->id.'/uninstall', 'uninstall', $c_module->state != 'always_on');
+      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/enable', 'enable',       $c_module->state != 'always_on');
+      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/disable', 'disable',     $c_module->state != 'always_on');
+      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/uninstall', 'uninstall', $c_module->state != 'always_on');
       $tbody[] = [
         new table_body_row_cell(['class' => ['info' => 'info']],
           translation::get('ID')         .': '.$c_module->id.br.
@@ -75,7 +75,7 @@ namespace effcore\modules\core {
         new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list)
       ];
     }
-    return new markup('x-block', ['class' => ['modules_admin']], [
+    return new markup('x-block', ['class' => ['modules']], [
       new table([], $tbody, $thead)
     ]);
   }

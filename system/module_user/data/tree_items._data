@@ -56,12 +56,12 @@ tree_items
 # ─────────────────────────────────────────────────────────────────────
 - roles|tree_item
     id: roles
-    id_parent: admin
+    id_parent: manage
     title: Roles
     access
       roles
       - admins: admins
     attributes
-    - href: /admin/roles
+    - href: /manage/roles
     - class
       - roles: roles

@@ -1,12 +1,12 @@
 tree_items
 - decoration|tree_item
     id: decoration
-    id_parent: admin
+    id_parent: manage
     title: Decoration
     access
       roles
       - admins: admins
     attributes
-    - href: /admin/decoration
+    - href: /manage/decoration
     - class
       - decoration: decoration

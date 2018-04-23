@@ -5,7 +5,7 @@ pages
     display
       check: path
       where: url
-      match: %^/admin/users/delete/(?<id_user>[0-9]+)$%
+      match: %^/manage/users/delete/(?<id_user>[0-9]+)$%
     access
       roles
       - admins: admins

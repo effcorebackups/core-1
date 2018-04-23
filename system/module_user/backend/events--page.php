@@ -23,7 +23,7 @@ namespace effcore\modules\user {
     foreach ($tbody as $c_row) {
       $c_row->is_embed = $c_row->is_embed ? 'Yes' : 'No';
     }
-    return new markup('x-block', ['class' => ['roles_admin']],
+    return new markup('x-block', ['class' => ['roles']],
       new table([], $tbody, $thead)
     );
   }
