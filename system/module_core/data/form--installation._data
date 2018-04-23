@@ -17,7 +17,7 @@ forms
             attributes
             - class
               - boxes: boxes
-              - radioboxes: radioboxes
+              - radiobuttons: radiobuttons
               - before-container: before-container
             children
             - element|markup_simple
@@ -90,7 +90,7 @@ forms
             attributes
             - class
               - boxes: boxes
-              - radioboxes: radioboxes
+              - radiobuttons: radiobuttons
               - before-container: before-container
             children
             - element|markup_simple

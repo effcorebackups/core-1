@@ -472,7 +472,7 @@ forms
                     attributes
                     - type: checkbox
                     - name: checkbox
-                    - value: checkbox 
+                    - value: checkbox
                     - checked: checked
             - checkbox_macro|field_checkbox
                 title: Checkbox (macro)
@@ -497,48 +497,48 @@ forms
                   - boxes: boxes
                   - checkboxes: checkboxes
                 children
-                - checkboxes_1_1|field
-                    title: Checkbox 1.1
+                - checkboxes_1|field
+                    title: Checkbox 1
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_1_1
-                        - value: checkboxes_1_1
-                - checkboxes_1_2|field
-                    title: Checkbox 1.2 (checked)
+                        - name: checkboxes_1
+                        - value: checkboxes_1
+                - checkboxes_2|field
+                    title: Checkbox 2 (checked)
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_1_2
-                        - value: checkboxes_1_2
+                        - name: checkboxes_2
+                        - value: checkboxes_2
                         - checked: checked
-                - checkboxes_1_3|field
-                    title: Checkbox 1.3 (disabled)
+                - checkboxes_3|field
+                    title: Checkbox 3 (disabled)
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_1_3
-                        - value: checkboxes_1_3
+                        - name: checkboxes_3
+                        - value: checkboxes_3
                         - disabled: disabled
-                - checkboxes_1_4|field
-                    title: Checkbox 1.4 (disabled + checked)
+                - checkboxes_4|field
+                    title: Checkbox 4 (disabled + checked)
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_1_4
-                        - value: checkboxes_1_4
+                        - name: checkboxes_4
+                        - value: checkboxes_4
                         - disabled: disabled
                         - checked: checked
           # field checkboxes macro
@@ -551,16 +551,16 @@ forms
                 element_attributes
                 - name: checkboxes_macro[]
                 values
-                - checkboxes_2_1: Checkbox 2.1
-                - checkboxes_2_2: Checkbox 2.2 (checked)
-                - checkboxes_2_3: Checkbox 2.3 (disabled)
-                - checkboxes_2_4: Checkbox 2.4 (disabled + checked)
+                - checkboxes_macro_1: Checkbox macro 1
+                - checkboxes_macro_2: Checkbox macro 2 (checked)
+                - checkboxes_macro_3: Checkbox macro 3 (disabled)
+                - checkboxes_macro_4: Checkbox macro 4 (disabled + checked)
                 disabled
-                - checkboxes_2_3: checkboxes_2_3
-                - checkboxes_2_4: checkboxes_2_4
+                - checkboxes_macro_3: checkboxes_macro_3
+                - checkboxes_macro_4: checkboxes_macro_4
                 checked
-                - checkboxes_2_2: checkboxes_2_2
-                - checkboxes_2_4: checkboxes_2_4
+                - checkboxes_macro_2: checkboxes_macro_2
+                - checkboxes_macro_4: checkboxes_macro_4
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
@@ -569,8 +569,25 @@ forms
             title: Radiobuttons
             title_tag_name: legend
             children
+          # field radiobutton macro
+            - radio_macro_1|field_radiobutton
+                title: Radiobutton 1 (macro)
+                description|text
+                  text: Element %%_info.
+                  args
+                  - info: &lt;input type="radio"&gt;
+                element_attributes
+                - name: radio_macro
+            - radio_macro_2|field_radiobutton
+                title: Radiobutton 2 (macro)
+                description|text
+                  text: Element %%_info.
+                  args
+                  - info: &lt;input type="radio"&gt;
+                element_attributes
+                - name: radio_macro
           # field radiobuttons
-            - radiobuttons|container
+            - radios|container
                 tag_name: x-group
                 title: Radiobuttons
                 description|text
@@ -580,57 +597,57 @@ forms
                 attributes
                 - class
                   - boxes: boxes
-                  - radioboxes: radioboxes
+                  - radiobuttons: radiobuttons
                 children
-                - radio_1_1|field
-                    title: Radio 1.1
+                - radios_1|field
+                    title: Radio 1
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: radio
-                        - name: radio
-                        - value: radio_1_1
-                - radio_1_2|field
-                    title: Radio 1.2 (checked)
+                        - name: radios
+                        - value: radios_1
+                - radios_2|field
+                    title: Radio 2 (checked)
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: radio
-                        - name: radio
-                        - value: radio_1_2
+                        - name: radios
+                        - value: radios_2
                         - checked: checked
-                - radio_1_3|field
-                    title: Radio 1.3 (disabled)
+                - radios_3|field
+                    title: Radio 3 (disabled)
                     title_position: bottom
                     children
                     - element|markup_simple
                         tag_name: input
                         attributes
                         - type: radio
-                        - name: radio
-                        - value: radio_1_3
+                        - name: radios
+                        - value: radios_3
                         - disabled: disabled
           # field radiobuttons macro
-            - radiobuttons_macro|group_radiobuttons
+            - radios_macro|group_radiobuttons
                 title: Radiobuttons (macro)
                 description|text
                   text: Element %%_info.
                   args
                   - info: &lt;input type="radio"&gt;
                 element_attributes
-                - name: radio_macro
+                - name: radios_macro
                 values
-                - radio_2_1: Radio 2.1
-                - radio_2_2: Radio 2.2 (checked)
-                - radio_2_3: Radio 2.3 (disabled)
+                - radios_macro_1: Radio macro 1
+                - radios_macro_2: Radio macro 2 (checked)
+                - radios_macro_3: Radio macro 3 (disabled)
                 disabled
-                - radio_2_3: radio_2_3
+                - radios_macro_3: radios_macro_3
                 checked
-                - radio_2_2: radio_2_2
+                - radios_macro_2: radios_macro_2
           # field radiobuttons color macro
             - palette|group_palette
                 title: Color
