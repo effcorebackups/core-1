@@ -47,7 +47,7 @@ namespace effcore {
   function get_indexes_info()     {return $this->indexes;}
   function get_constraints_info() {return $this->constraints;}
   function get_fields() {
-    return factory::array_values_map_to_keys(
+    return factory::array_kmap(
       array_keys((array)$this->fields)
     );
   }
@@ -68,7 +68,7 @@ namespace effcore {
         $keys += $c_cstr->fields;
       }
     }
-    return factory::array_values_map_to_keys($keys);
+    return factory::array_kmap($keys);
   }
 
   function install() {

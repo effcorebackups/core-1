@@ -27,7 +27,7 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('class', factory::array_values_map_to_keys(['boxes', $this->element_tag_name]));
+    $this->attribute_insert('class', factory::array_kmap(['boxes', $this->element_tag_name]));
     foreach ($this->values as $value => $title) {
       $this->element_insert($title, ['value' => $value]);
     }
@@ -47,19 +47,19 @@ namespace effcore {
   }
 
   function default_set($value) {
-    foreach ($this->children as $c_field) {
-      $c_input = $c_field->child_select('element');
-      if ($c_input->attribute_select('value') == $value) {
-        return $c_input->attribute_insert('checked', 'checked');
+    foreach ($this->child_select_all() as $c_field) {
+      $c_element = $c_field->child_select('element');
+      if ($c_element->attribute_select('value') == $value) {
+        return $c_element->attribute_insert('checked', 'checked');
       }
     }
   }
 
   function default_get() {
-    foreach ($this->children as $c_field) {
-      $c_input = $c_field->child_select('element');
-      if ($c_input->attribute_select('checked') == 'checked') {
-        return $c_input->attribute_select('value');
+    foreach ($this->child_select_all() as $c_field) {
+      $c_element = $c_field->child_select('element');
+      if ($c_element->attribute_select('checked') == 'checked') {
+        return $c_element->attribute_select('value');
       }
     }
   }

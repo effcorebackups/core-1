@@ -216,7 +216,7 @@ namespace effcore {
     return $array;
   }
 
-  static function array_values_map_to_keys($array) {
+  static function array_kmap($array) {
     return array_combine($array, $array);
   }
 

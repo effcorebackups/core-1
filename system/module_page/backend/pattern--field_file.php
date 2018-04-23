@@ -52,7 +52,7 @@ namespace effcore {
       }
     }
   # deleting selected files
-    $delete_items = isset($_POST['manager_delete_'.$name]) ? factory::array_values_map_to_keys(
+    $delete_items = isset($_POST['manager_delete_'.$name]) ? factory::array_kmap(
                           $_POST['manager_delete_'.$name]) : [];
     foreach ($pool[$name] as $c_hash => $c_file_info) {
       if (isset($delete_items[$c_hash])) {

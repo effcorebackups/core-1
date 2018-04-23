@@ -179,7 +179,7 @@ namespace effcore\modules\user {
         if ($user &&
             $user->password_hash === factory::hash_password_get($values['password'][0])) {
           session::insert($user->id,
-            isset($values['session_params']) ? factory::array_values_map_to_keys(
+            isset($values['session_params']) ? factory::array_kmap(
                   $values['session_params']) : []);
           url::go('/user/'.$user->id);
         }
@@ -221,7 +221,7 @@ namespace effcore\modules\user {
         ]))->insert();
         if ($user) {
           session::insert($user->id,
-            isset($values['session_params']) ? factory::array_values_map_to_keys(
+            isset($values['session_params']) ? factory::array_kmap(
                   $values['session_params']) : []);
           url::go('/user/'.$user->id);
         } else {
