@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class text extends text_raw {
+          class text extends text_simple {
 
   function render() {
     return translation::get($this->text, $this->args);

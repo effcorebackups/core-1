@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class text_raw {
+          class text_simple {
 
   public $text = '';
   public $args = [];
