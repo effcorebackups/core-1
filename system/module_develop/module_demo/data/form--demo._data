@@ -553,10 +553,10 @@ forms
             checked
             - checkboxes_2_2: checkboxes_2_2
             - checkboxes_2_4: checkboxes_2_4
-      # field radios
-        - radios|container
+      # field radiobuttons
+        - radiobuttons|container
             tag_name: x-group
-            title: Radios
+            title: Radiobuttons
             description|text
               text: Element %%_info.
               args
@@ -598,9 +598,9 @@ forms
                     - name: radio
                     - value: radio_1_3
                     - disabled: disabled
-      # field radios macro
-        - radios_macro|group_radios
-            title: Radios (macro)
+      # field radiobuttons macro
+        - radiobuttons_macro|group_radiobuttons
+            title: Radiobuttons (macro)
             description|text
               text: Element %%_info.
               args
@@ -615,7 +615,7 @@ forms
             - radio_2_3: radio_2_3
             checked
             - radio_2_2: radio_2_2
-      # field radios color macro
+      # field radiobuttons color macro
         - palette|group_palette
             title: Color
             element_attributes

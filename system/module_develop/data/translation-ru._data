@@ -42,8 +42,9 @@ translations
     - Phone (macro): Телефон (макро)
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
-    - Radios (macro): Переключатели (макро)
-    - Radios: Переключатели
+    - Radiobutton: Переключатель
+    - Radiobuttons (macro): Переключатели (макро)
+    - Radiobuttons: Переключатели
     - Range (macro): Диапазон (макро)
     - Search (macro): Поиск (макро)
     - Selection list (macro): Список выбора (макро)

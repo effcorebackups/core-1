@@ -42,7 +42,7 @@
   input[type="email"],
   input[name="nick"] {text-transform: lowercase}
 
-  /* checkboxes and radios */
+  /* checkboxes and radiobuttons */
   form .boxes x-field {margin: 10px 0}
   form .boxes label {font-size: 1em}
   input[type="checkbox"],

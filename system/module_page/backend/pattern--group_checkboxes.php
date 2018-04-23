@@ -34,15 +34,15 @@ namespace effcore {
   }
 
   function element_insert($title = null, $attr = [], $new_id = null) {
-    $input = new markup_simple('input', ['type' => $this->element_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
-    $value = $input->attribute_select('value');
-    if (isset($this->required[$value])) $input->attribute_insert('required', 'required');
-    if (isset($this->checked[$value]))  $input->attribute_insert('checked',   'checked');
-    if (isset($this->disabled[$value])) $input->attribute_insert('disabled', 'disabled');
+    $element = new markup_simple('input', ['type' => $this->element_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
+    $value = $element->attribute_select('value');
+    if (isset($this->required[$value])) $element->attribute_insert('required', 'required');
+    if (isset($this->checked[$value]))  $element->attribute_insert('checked',   'checked');
+    if (isset($this->disabled[$value])) $element->attribute_insert('disabled', 'disabled');
     $field = new field($this->field_tag_name, $title);
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;
-    $field->child_insert($input, 'element');
+    $field->child_insert($element, 'element');
     return $this->child_insert($field, $new_id);
   }
 
