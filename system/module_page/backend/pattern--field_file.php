@@ -84,7 +84,7 @@ namespace effcore {
 
   function pool_manager_insert_action($info, $hash) {
     $element_name = $this->child_select('element')->attribute_select('name');
-    $this->child_select('manager')->element_insert(
+    $this->child_select('manager')->field_insert(
       translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$element_name, 'value' => $hash]
     );
   }

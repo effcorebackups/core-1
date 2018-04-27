@@ -15,9 +15,9 @@ namespace effcore {
 
   static function autoload($name) {
     console::add_log('autoload', 'search', $name, 'ok');
-    foreach (static::get_classes_map() as $c_class_name => $c_class_info) {
-      if ($c_class_name == $name) {
-        $c_file = new file($c_class_info->file);
+    foreach (static::get_classes_map() as $c_item_full_name => $c_item_info) {
+      if ($c_item_full_name == $name) {
+        $c_file = new file($c_item_info->file);
         $c_file->insert();
       }
     }
@@ -28,7 +28,7 @@ namespace effcore {
     if ($cache) {
       return $cache;
     } else {
-      $classes_map = [];
+      $return = [];
       $files = file::select_all_recursive(dir_system, '%^.*\.php$%');
       foreach ($files as $c_file) {
         $c_matches = [];
@@ -45,7 +45,7 @@ namespace effcore {
             if (!empty($c_match['modifier'])) {
               $c_info->modifier = $c_match['modifier'];
             }
-          # define namespace, name, type (class|trait|interface)
+          # define namespace, name, type = class|trait|interface
             $c_info->namespace = !empty($c_match['namespace']) ? $c_match['namespace'] : '';
             $c_info->name = $c_match['name'];
             $c_info->type = $c_match['type'];
@@ -69,14 +69,14 @@ namespace effcore {
             $c_info->file = $c_file->get_path_relative();
           # add to result pool
             if (!$c_info->namespace)
-                 $classes_map[$c_info->name] = $c_info;
-            else $classes_map[$c_info->namespace.'\\'.$c_info->name] = $c_info;
+                 $return[$c_info->name] = $c_info;
+            else $return[$c_info->namespace.'\\'.$c_info->name] = $c_info;
           }
         }
       }
 
-      cache::update('classes_map', $classes_map, ['build' => static::datetime_get()]);
-      return $classes_map;
+      cache::update('classes_map', $return, ['build' => static::datetime_get()]);
+      return $return;
     }
   }
 

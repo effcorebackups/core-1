@@ -23,20 +23,20 @@ namespace effcore\modules\develop {
   ########################
 
   static function on_show_block_structures_list($page) {
-    $list = new markup('x-class-list');
+    $list = new markup('x-structures-list', ['x-type' => $page->args_get('type')]);
     $targets = new markup('x-targets');
     $groups_by_name = [];
     $u_first_character = null;
-    foreach (factory::get_classes_map() as $c_class_full_name => $c_class_info) {
-      if ($c_class_info->type == $page->args_get('type')) {
-        $c_file = new file($c_class_info->file);
-        $c_result_info = new \stdClass();
-        $c_result_info->name       = $c_class_info->name;
-        $c_result_info->namespace  = $c_class_info->namespace;
-        $c_result_info->dirs       = $c_file->get_dirs();
-        $c_result_info->dirs_parts = $c_file->get_dirs_parts();
-        $c_result_info->file       = $c_file->get_file();
-        $groups_by_name[strtolower($c_class_info->name)][$c_class_info->namespace ?: '-'] = $c_result_info;
+    foreach (factory::get_classes_map() as $c_item_full_name => $c_item_info) {
+      if ($c_item_info->type == $page->args_get('type')) {
+        $c_file = new file($c_item_info->file);
+        $c_result = new \stdClass();
+        $c_result->name       = $c_item_info->name;
+        $c_result->namespace  = $c_item_info->namespace;
+        $c_result->dirs       = $c_file->get_dirs();
+        $c_result->dirs_parts = $c_file->get_dirs_parts();
+        $c_result->file       = $c_file->get_file();
+        $groups_by_name[strtolower($c_item_info->name)][$c_item_info->namespace ?: '-'] = $c_result;
       }
     }
     ksort($groups_by_name);
@@ -60,7 +60,9 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new markup('x-block', ['class' => ['structures-list']], [$targets, $list]);
+    return new markup('x-block', ['class' => ['structures-list']],
+      [$targets, $list]
+    );
   }
 
   ###########################
@@ -68,18 +70,21 @@ namespace effcore\modules\develop {
   ###########################
 
   static function on_show_block_structures_diagram($page) {
-    $classes_map = factory::get_classes_map();
+    if ($page->args_get('type') != 'class') {
+      factory::send_header_and_exit('not_found');
+    }
+    $map = factory::get_classes_map();
     $diagram = new markup('x-diagram-uml');
 
   # build diagram for each class
-    foreach ($classes_map as $c_class_full_name => $c_class_info) {
-      if ($c_class_info->type == 'class') {
-        $c_file       = new file($c_class_info->file);
-        $c_reflection = new \ReflectionClass($c_class_full_name);
+    foreach ($map as $c_item_full_name => $c_item_info) {
+      if ($c_item_info->type == 'class') {
+        $c_file       = new file($c_item_info->file);
+        $c_reflection = new \ReflectionClass($c_item_full_name);
         $x_class_wr   = new markup('x-class-wrapper');
         $x_class      = new markup('x-class');
-        $x_name       = new markup('x-name', ['title' => $c_class_info->file], new text_simple($c_class_info->name));
-        $x_namespace  = new markup('x-namespace', [], '(from '.$c_class_info->namespace.')');
+        $x_name       = new markup('x-name', ['title' => $c_item_info->file], new text_simple($c_item_info->name));
+        $x_namespace  = new markup('x-namespace', [], '(from '.$c_item_info->namespace.')');
         $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes = new markup('x-attributes');
         $x_operations = new markup('x-operations');
@@ -89,20 +94,20 @@ namespace effcore\modules\develop {
         $x_class->child_insert($x_operations, 'operations');
         $x_class_wr->child_insert($x_class, 'class');
         $x_class_wr->child_insert($x_children, 'children');
-        $diagram->child_insert($x_class_wr, $c_class_full_name);
+        $diagram->child_insert($x_class_wr, $c_item_full_name);
 
       # set abstract mark
-        if (!empty($c_class_info->modifier) &&
-                   $c_class_info->modifier == 'abstract') {
+        if (!empty($c_item_info->modifier) &&
+                   $c_item_info->modifier == 'abstract') {
           $x_class->attribute_insert('x-abstract', 'true');
         }
 
       # find properties
         foreach ($c_reflection->getProperties() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
-                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                         '(?<name>'.$c_info->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
@@ -118,10 +123,10 @@ namespace effcore\modules\develop {
 
       # find methods
         foreach ($c_reflection->getMethods() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
-                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static|final|)\\s'.
                         '(?:function)\\s'.
                         '(?<name>'.$c_info->name.')\\s*\\('.
@@ -140,15 +145,15 @@ namespace effcore\modules\develop {
 
   # move children to it's parent
     $items_to_delete = [];
-    foreach ($diagram->child_select_all() as $c_class_full_name => $c_class_wr) {
-      $c_class_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
-                                         $classes_map[$c_class_full_name]->extends : null;
-      if ($c_class_parent_full_name) {
-        $c_parent = $diagram->child_select($c_class_parent_full_name);
+    foreach ($diagram->child_select_all() as $c_item_full_name => $c_item_wr) {
+      $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
+                                        $map[$c_item_full_name]->extends : null;
+      if ($c_item_parent_full_name) {
+        $c_parent = $diagram->child_select($c_item_parent_full_name);
         if ($c_parent) {
           $x_parent_children = $c_parent->child_select('children');
-          $x_parent_children->child_insert($c_class_wr, $c_class_full_name);
-          $items_to_delete[$c_class_full_name] = $c_class_full_name;
+          $x_parent_children->child_insert($c_item_wr, $c_item_full_name);
+          $items_to_delete[$c_item_full_name] = $c_item_full_name;
         }
       }
     }
@@ -176,41 +181,41 @@ namespace effcore\modules\develop {
       factory::send_header_and_exit('not_found');
     }
   # build class diagram
-    $classes_map = factory::get_classes_map();
-    $items = [];
-    foreach ($classes_map as $c_class_full_name => $c_class_info) {
-      if ($c_class_info->type == 'class') {
-        $c_reflection = new \ReflectionClass($c_class_full_name);
-        $c_file = new file($c_class_info->file);
+    $map = factory::get_classes_map();
+    $return = [];
+    foreach ($map as $c_item_full_name => $c_item_info) {
+      if ($c_item_info->type == 'class') {
+        $c_reflection = new \ReflectionClass($c_item_full_name);
+        $c_file = new file($c_item_info->file);
         $c_return = new \stdClass();
         $c_return->_type = 'UMLClass';
-        $c_return->_id = 'C'.md5($c_class_full_name);
-        $c_return->name = $c_class_info->name;
+        $c_return->_id = 'C'.md5($c_item_full_name);
+        $c_return->name = $c_item_info->name;
         $c_return->visibility = 'public';
-        $c_return->isAbstract = !empty($c_class_info->modifier) && $c_class_info->modifier == 'abstract';
-        $c_return->isFinalSpecialization = !empty($c_class_info->modifier) && $c_class_info->modifier == 'final';
+        $c_return->isAbstract = !empty($c_item_info->modifier) && $c_item_info->modifier == 'abstract';
+        $c_return->isFinalSpecialization = !empty($c_item_info->modifier) && $c_item_info->modifier == 'final';
         $c_return->attributes = [];
         $c_return->operations = [];
 
       # add relation to parent class
-        $c_class_parent_full_name = !empty($classes_map[$c_class_full_name]->extends) ?
-                                           $classes_map[$c_class_full_name]->extends : null;
-        if ($c_class_parent_full_name) {
+        $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
+                                          $map[$c_item_full_name]->extends : null;
+        if ($c_item_parent_full_name) {
           $c_relation = new \stdClass();
           $c_relation->_type = 'UMLGeneralization';
           $c_relation->source = new \stdClass();
           $c_relation->target = new \stdClass();
-          $c_relation->source->{'$ref'} = 'C'.md5($c_class_full_name);
-          $c_relation->target->{'$ref'} = 'C'.md5($c_class_parent_full_name);
+          $c_relation->source->{'$ref'} = 'C'.md5($c_item_full_name);
+          $c_relation->target->{'$ref'} = 'C'.md5($c_item_parent_full_name);
           $c_return->ownedElements = [$c_relation];
         }
 
       # find properties
         foreach ($c_reflection->getProperties() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
-                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                         '(?<name>'.$c_info->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
@@ -222,10 +227,10 @@ namespace effcore\modules\develop {
 
       # find methods
         foreach ($c_reflection->getMethods() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_class_full_name) {
+          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
-                        '(?<class_name>'.$c_class_info->name.').*?'.
+                        '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static|final|)\\s'.
                         '(?:function)\\s'.
                         '(?<name>'.$c_info->name.')\\s*\\('.
@@ -250,7 +255,7 @@ namespace effcore\modules\develop {
           }
         }
 
-        $items[] = $c_return;
+        $return[] = $c_return;
       }
     }
 
@@ -271,7 +276,7 @@ namespace effcore\modules\develop {
               (object)[
                 '_type' => 'UMLClassDiagram',
                 'name' => 'Main',
-                'ownedElements' => $items,
+                'ownedElements' => $return,
               ]
             ]
           ]

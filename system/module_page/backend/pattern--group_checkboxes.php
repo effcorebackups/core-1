@@ -29,11 +29,11 @@ namespace effcore {
   function build() {
     $this->attribute_insert('class', factory::array_kmap(['boxes', $this->element_tag_name]));
     foreach ($this->values as $value => $title) {
-      $this->element_insert($title, ['value' => $value]);
+      $this->field_insert($title, ['value' => $value]);
     }
   }
 
-  function element_insert($title = null, $attr = [], $new_id = null) {
+  function field_insert($title = null, $attr = [], $new_id = null) {
     $element = new markup_simple('input', ['type' => $this->element_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
     $value = $element->attribute_select('value');
     if (isset($this->required[$value])) $element->attribute_insert('required', 'required');
