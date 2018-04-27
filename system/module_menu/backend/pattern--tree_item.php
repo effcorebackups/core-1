@@ -23,7 +23,7 @@ namespace effcore {
     if (!isset($this->access) ||
         (isset($this->access) && access::check($this->access))) {
       $rendered_children = $this->children_count() ? (new template($this->template_children, [
-        'children' => $this->render_children($this->child_select_all())]
+        'children' => $this->render_children($this->children_select())]
       ))->render() : '';
       return (new template($this->template, [
         'self'     => $this->render_self(),

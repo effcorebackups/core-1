@@ -47,7 +47,7 @@ namespace effcore {
   }
 
   function default_set($value) {
-    foreach ($this->child_select_all() as $c_field) {
+    foreach ($this->children_select() as $c_field) {
       $c_element = $c_field->child_select('element');
       if ($c_element->attribute_select('value') == $value) {
         return $c_element->attribute_insert('checked', 'checked');
@@ -56,7 +56,7 @@ namespace effcore {
   }
 
   function default_get() {
-    foreach ($this->child_select_all() as $c_field) {
+    foreach ($this->children_select() as $c_field) {
       $c_element = $c_field->child_select('element');
       if ($c_element->attribute_select('checked') == 'checked') {
         return $c_element->attribute_select('value');

@@ -58,14 +58,14 @@ namespace effcore {
     $values = static::get_values() + static::get_files();
     $id = $this->attribute_select('id');
   # build all form elements
-    $elements = $this->child_select_all_recursive();
+    $elements = $this->children_select_recursive();
     foreach ($elements as $c_element) {
       if (method_exists($c_element, 'build')) {
         $c_element->build();
       }
     }
   # renew elements list after build and get all fields
-    $elements = $this->child_select_all_recursive();
+    $elements = $this->children_select_recursive();
     $fields   = static::get_fields($this);
   # call init handlers
     event::start('on_form_init', $id, [$this, $fields]);
@@ -132,7 +132,7 @@ namespace effcore {
 
   static function get_fields($form) {
     $return = [];
-    foreach ($form->child_select_all_recursive() as $c_dpath => $c_child) {
+    foreach ($form->children_select_recursive() as $c_dpath => $c_child) {
       if ($c_child instanceof \effcore\container) {
         $return[$c_dpath] = $c_child;
       }

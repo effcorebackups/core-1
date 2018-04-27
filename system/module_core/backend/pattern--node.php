@@ -34,6 +34,22 @@ namespace effcore {
     return $function($this->children);
   }
 
+  function children_select() {
+    return $this->children;
+  }
+
+  function children_select_recursive($children = null, $dpath = '') {
+    $return = [];
+    foreach ($children ?: $this->children as $c_id => $c_child) {
+      $c_dpath = $dpath ? $dpath.'/'.$c_id : $c_id;
+      $return[$c_dpath] = $c_child;
+      if (!empty($c_child->children)) {
+        $return += $this->children_select_recursive($c_child->children, $c_dpath);
+      }
+    }
+    return $return;
+  }
+
   function child_select($id) {
     return isset($this->children[$id]) ?
                  $this->children[$id] : null;
@@ -45,22 +61,6 @@ namespace effcore {
   function child_select_last()       {return   end($this->children);}
   function child_select_first_id()   {$keys = array_keys($this->children); return reset($keys);}
   function child_select_last_id()    {$keys = array_keys($this->children); return   end($keys);}
-
-  function child_select_all() {
-    return $this->children;
-  }
-
-  function child_select_all_recursive($children = null, $dpath = '') {
-    $return = [];
-    foreach ($children ?: $this->children as $c_id => $c_child) {
-      $c_dpath = $dpath ? $dpath.'/'.$c_id : $c_id;
-      $return[$c_dpath] = $c_child;
-      if (!empty($c_child->children)) {
-        $return += $this->child_select_all_recursive($c_child->children, $c_dpath);
-      }
-    }
-    return $return;
-  }
 
   function child_insert($child, $new_id = null) {
     $id = ($new_id !== null ?

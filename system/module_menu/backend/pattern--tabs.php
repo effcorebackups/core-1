@@ -20,7 +20,7 @@ namespace effcore {
 
   function render_top_items() {
     $rendered = '';
-    foreach ($this->child_select_all() as $c_item) {
+    foreach ($this->children_select() as $c_item) {
       if (!empty($c_item->parent_is_tab)) {
         $c_clone = clone $c_item;
         $c_clone->children = [];
@@ -34,11 +34,11 @@ namespace effcore {
 
   function render_sub_items() {
     $rendered = '';
-    foreach ($this->child_select_all() as $c_item) {
+    foreach ($this->children_select() as $c_item) {
       if (!empty($c_item->parent_is_tab)) {
         $c_href = page::get_current()->args_get('base').'/'.$c_item->action_name;
         if (url::is_active_trail($c_href)) {
-          foreach ($c_item->child_select_all() as $c_child) {
+          foreach ($c_item->children_select() as $c_child) {
             $rendered.= $c_child->render();
           }
           break;

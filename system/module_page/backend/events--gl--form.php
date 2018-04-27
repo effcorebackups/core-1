@@ -145,7 +145,7 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
           if ($c_element->tag_name == 'select') {
             $c_allowed_values = [];
-            foreach ($c_element->child_select_all_recursive() as $c_option) {
+            foreach ($c_element->children_select_recursive() as $c_option) {
               if ($c_option instanceof node && $c_option->tag_name == 'option') {
                 if (!$c_option->attribute_select('disabled')) {
                   $c_allowed_values[] = $c_option->attribute_select('value');
@@ -153,7 +153,7 @@ namespace effcore {
               }
             }
             static::_validate_field_selector($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name], $c_allowed_values);
-            foreach ($c_element->child_select_all_recursive() as $c_option) {
+            foreach ($c_element->children_select_recursive() as $c_option) {
               if ($c_option instanceof node && $c_option->tag_name == 'option') {
                 if (factory::in_array_string_compare($c_option->attribute_select('value'), $values[$c_name]))
                      $c_option->attribute_insert('selected', 'selected');

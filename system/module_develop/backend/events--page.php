@@ -143,7 +143,7 @@ namespace effcore\modules\develop {
 
   # move children to it's parent
     $items_to_delete = [];
-    foreach ($diagram->child_select_all() as $c_item_full_name => $c_item_wr) {
+    foreach ($diagram->children_select() as $c_item_full_name => $c_item_wr) {
       $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
                                         $map[$c_item_full_name]->extends : null;
       if ($c_item_parent_full_name) {

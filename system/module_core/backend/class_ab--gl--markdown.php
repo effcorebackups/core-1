@@ -67,7 +67,7 @@ namespace effcore {
               if ($acceptor) $acceptor = $acceptor->child_select('wr_data0');
               if ($acceptor) {
                 $new_p = new markup('p');
-                foreach ($acceptor->child_select_all() as $id => $c_child) {
+                foreach ($acceptor->children_select() as $id => $c_child) {
                   if ($c_child instanceof text) {
                     $new_p->child_insert($c_child);
                     $acceptor->child_delete($id);
@@ -247,7 +247,7 @@ namespace effcore {
   # postprocess for blockquote
   # ─────────────────────────────────────────────────────────────────────
 
-    foreach ($pool->child_select_all_recursive() as $c_item) {
+    foreach ($pool->children_select_recursive() as $c_item) {
       if ($c_item instanceof markup &&
           $c_item->tag_name == 'blockquote') {
         $c_child = $c_item->child_select('text');
@@ -255,7 +255,7 @@ namespace effcore {
           $c_markup = trim($c_child->text_select());
           if ($c_markup) {
             $c_item->child_delete('text');
-            foreach (static::markdown_to_markup($c_markup)->child_select_all() as $c_new_child) {
+            foreach (static::markdown_to_markup($c_markup)->children_select() as $c_new_child) {
               $c_item->child_insert($c_new_child);
             }
           }
