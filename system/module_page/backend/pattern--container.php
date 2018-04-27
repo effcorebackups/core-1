@@ -17,7 +17,6 @@ namespace effcore {
   public $description_tag_name = 'x-description';
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
-    if ($tag_name)    $this->tag_name    = $tag_name;
     if ($title)       $this->title       = $title;
     if ($description) $this->description = $description;
     parent::__construct($tag_name, $attributes, $children, $weight);
