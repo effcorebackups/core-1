@@ -15,7 +15,7 @@ namespace effcore {
 
   static function autoload($name) {
     console::add_log('autoload', 'search', $name, 'ok');
-    foreach (static::get_classes_map() as $c_item_full_name => $c_item_info) {
+    foreach (static::get_structures_map() as $c_item_full_name => $c_item_info) {
       if ($c_item_full_name == $name) {
         $c_file = new file($c_item_info->file);
         $c_file->insert();
@@ -23,8 +23,8 @@ namespace effcore {
     }
   }
 
-  static function get_classes_map() {
-    $cache = cache::select('classes_map');
+  static function get_structures_map() {
+    $cache = cache::select('structures');
     if ($cache) {
       return $cache;
     } else {
@@ -40,20 +40,20 @@ namespace effcore {
                        '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
         foreach ($c_matches as $c_match) {
           if (!empty($c_match['name'])) {
-            $c_info = new \stdClass();
+            $c_item = new \stdClass();
           # define modifier (abstract|final)
             if (!empty($c_match['modifier'])) {
-              $c_info->modifier = $c_match['modifier'];
+              $c_item->modifier = $c_match['modifier'];
             }
           # define namespace, name, type = class|trait|interface
-            $c_info->namespace = !empty($c_match['namespace']) ? $c_match['namespace'] : '';
-            $c_info->name = $c_match['name'];
-            $c_info->type = $c_match['type'];
+            $c_item->namespace = !empty($c_match['namespace']) ? $c_match['namespace'] : '';
+            $c_item->name = $c_match['name'];
+            $c_item->type = $c_match['type'];
           # define parent class
             if (!empty($c_match['extends'])) {
               if ($c_match['extends'][0] == '\\')
-                   $c_info->extends = ltrim($c_match['extends'], '\\');
-              else $c_info->extends = ltrim($c_info->namespace.'\\'.$c_match['extends'], '\\');
+                   $c_item->extends = ltrim($c_match['extends'], '\\');
+              else $c_item->extends = ltrim($c_item->namespace.'\\'.$c_match['extends'], '\\');
             }
           # define implements interfaces
             if (!empty($c_match['implements'])) {
@@ -61,21 +61,21 @@ namespace effcore {
                 $c_implement = trim($c_implement);
                 if ($c_implement[0] == '\\')
                      $c_implement = ltrim($c_implement, '\\');
-                else $c_implement = ltrim($c_info->namespace.'\\'.$c_implement, '\\');
-                $c_info->implements[$c_implement] = $c_implement;
+                else $c_implement = ltrim($c_item->namespace.'\\'.$c_implement, '\\');
+                $c_item->implements[$c_implement] = $c_implement;
               }
             }
           # define file path
-            $c_info->file = $c_file->get_path_relative();
+            $c_item->file = $c_file->get_path_relative();
           # add to result pool
-            if (!$c_info->namespace)
-                 $return[$c_info->name] = $c_info;
-            else $return[$c_info->namespace.'\\'.$c_info->name] = $c_info;
+            if (!$c_item->namespace)
+                 $return[$c_item->name] = $c_item;
+            else $return[$c_item->namespace.'\\'.$c_item->name] = $c_item;
           }
         }
       }
 
-      cache::update('classes_map', $return, ['build' => static::datetime_get()]);
+      cache::update('structures', $return, ['build' => static::datetime_get()]);
       return $return;
     }
   }
