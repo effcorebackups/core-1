@@ -126,7 +126,7 @@ namespace effcore {
 
   static function data_to_string($data) {
     switch (gettype($data)) {
-      case 'string' : return '\''.str_replace('\"', '"', addslashes($data)).'\'';
+      case 'string' : return '\''.addcslashes($data, '\'\\').'\'';
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
       case 'object':
@@ -165,7 +165,7 @@ namespace effcore {
           foreach ($data as $c_key => $c_value) {
             $return.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
                                                                  '['.$c_key.']' :
-                             '[\''.str_replace('\"', '"', addslashes($c_key)).'\']'));
+                                                   '[\''.addcslashes($c_key, '\'\\').'\']'));
           }
         } else {
           $return.= $prefix.' = [];'.nl;
