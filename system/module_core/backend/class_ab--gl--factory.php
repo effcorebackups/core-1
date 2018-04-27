@@ -163,7 +163,9 @@ namespace effcore {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            $return.= static::data_to_code($c_value, $prefix.(is_int($c_key) ? '['.$c_key.']' : '[\''.$c_key.'\']'));
+            $return.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
+                                                                 '['.$c_key.']' :
+                                                    '[\''.addslashes($c_key).'\']'));
           }
         } else {
           $return.= $prefix.' = [];'.nl;
