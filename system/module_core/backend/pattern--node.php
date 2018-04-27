@@ -30,10 +30,6 @@ namespace effcore {
     return count($this->children);
   }
 
-  function children_sort($function = 'ksort') {
-    return $function($this->children);
-  }
-
   function children_select() {
     return $this->children;
   }

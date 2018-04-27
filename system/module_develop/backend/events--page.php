@@ -36,9 +36,10 @@ namespace effcore\modules\develop {
         $c_result->dirs       = $c_file->get_dirs();
         $c_result->dirs_parts = $c_file->get_dirs_parts();
         $c_result->file       = $c_file->get_file();
-        $groups_by_name[$c_item_info->name][$c_item_info->namespace ?: '-'] = $c_result;
+        $groups_by_name[strtolower($c_item_info->name)][$c_item_info->namespace ?: '-'] = $c_result;
       }
     }
+    ksort($groups_by_name);
     foreach ($groups_by_name as $c_group) {
       foreach ($c_group as $c_item) {
         $c_file_parts = new markup('x-file-path');
