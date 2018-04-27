@@ -69,12 +69,13 @@ namespace effcore {
             $c_item->file = $c_file->get_path_relative();
           # add to result pool
             if (!$c_item->namespace)
-                 $return[$c_item->name] = $c_item;
-            else $return[$c_item->namespace.'\\'.$c_item->name] = $c_item;
+                 $return[strtolower($c_item->name)] = $c_item;
+            else $return[strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
           }
         }
       }
 
+      ksort($return);
       cache::update('structures', $return, ['build' => static::datetime_get()]);
       return $return;
     }

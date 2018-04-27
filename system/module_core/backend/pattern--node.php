@@ -26,8 +26,12 @@ namespace effcore {
   ### children ###
   ################
 
-  function child_count() {
+  function children_count() {
     return count($this->children);
+  }
+
+  function children_sort($function = 'ksort') {
+    return $function($this->children);
   }
 
   function child_select($id) {
