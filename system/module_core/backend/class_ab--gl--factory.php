@@ -15,11 +15,11 @@ namespace effcore {
 
   static function autoload($name) {
     console::add_log('autoload', 'search', $name, 'ok');
-    foreach (static::get_structures_map() as $c_item_full_name => $c_item_info) {
-      if ($c_item_full_name == $name) {
-        $c_file = new file($c_item_info->file);
-        $c_file->insert();
-      }
+    $name = strtolower($name);
+    if (isset(static::get_structures_map()[$name])) {
+      $c_item_info = static::get_structures_map()[$name];
+      $c_file = new file($c_item_info->file);
+      $c_file->insert();
     }
   }
 
