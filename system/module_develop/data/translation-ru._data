@@ -27,6 +27,7 @@ translations
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - head cell %%_num: заглавная ячейка %%_num
+    - hide inherited: спрятать унаследованное
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
