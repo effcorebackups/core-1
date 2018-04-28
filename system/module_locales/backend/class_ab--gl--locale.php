@@ -7,26 +7,27 @@
 namespace effcore {
           abstract class locale {
 
-  static protected $countries;
-  static protected $settings;
+  static protected $cache_settings;
+  static protected $cache_countries;
 
   static function init() {
-    static::$settings = storage::get('files')->select('settings/locales');
-    foreach (storage::get('files')->select('countries') as $c_module_id => $c_module_countries) {
-      foreach ($c_module_countries as $c_row_id => $c_country) {
-        static::$countries[$c_country->code] = $c_country;
+    static::$cache_settings = storage::get('files')->select('settings/locales');
+    foreach (storage::get('files')->select('countries') as $c_module_id => $c_countries) {
+      foreach ($c_countries as $c_row_id => $c_country) {
+        static::$cache_countries[$c_country->code] = $c_country;
+        static::$cache_countries[$c_country->code]->module_id = $c_module_id;
       }
     }
   }
 
   static function get_countries() {
-    if   (!static::$countries) static::init();
-    return static::$countries;
+    if   (!static::$cache_countries) static::init();
+    return static::$cache_countries;
   }
 
   static function get_settings() {
-    if   (!static::$settings) static::init();
-    return static::$settings;
+    if   (!static::$cache_settings) static::init();
+    return static::$cache_settings;
   }
 
   ###############

@@ -23,8 +23,8 @@ namespace effcore {
 
   static function init($code) {
     $translations = storage::get('files')->select('translations');
-    foreach ($translations as $c_module_id => $c_module_translations) {
-      foreach ($c_module_translations as $c_row_id => $c_translation) {
+    foreach ($translations as $c_module_id => $c_translations) {
+      foreach ($c_translations as $c_row_id => $c_translation) {
         if ($c_translation->code === $code) {
           if ($c_translation instanceof different_cache)
               $c_translation = $c_translation->get_different_cache();

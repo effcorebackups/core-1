@@ -58,29 +58,18 @@ namespace effcore {
   static protected $cache_tabs_items;
 
   static function init() {
-    $tabs       = storage::get('files')->select('tabs');
-    $tabs_items = storage::get('files')->select('tabs_items');
-    foreach ($tabs as $c_module_id => $c_module_tabs) {
-      foreach ($c_module_tabs as $c_row_id => $c_tab) {
+    foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
+      foreach ($c_tabs as $c_row_id => $c_tab) {
         static::$cache_tabs[$c_tab->id] = $c_tab;
+        static::$cache_tabs[$c_tab->id]->module_id = $c_module_id;
       }
     }
-    foreach ($tabs_items as $c_module_id => $c_module_tabs_items) {
-      foreach ($c_module_tabs_items as $c_row_id => $c_item) {
+    foreach (storage::get('files')->select('tabs_items') as $c_module_id => $c_tabs_items) {
+      foreach ($c_tabs_items as $c_row_id => $c_item) {
         static::$cache_tabs_items[$c_item->id] = $c_item;
+        static::$cache_tabs_items[$c_item->id]->module_id = $c_module_id;
       }
     }
-  }
-
-  static function build() {
-    foreach(static::get_item_all() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tab) ?
-            tabs::get     ($c_item->id_parent) :
-            tabs::get_item($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
   }
 
   static function get($id) {
@@ -99,6 +88,17 @@ namespace effcore {
 
   static function get_item_all() {
     return static::$cache_tabs_items;
+  }
+
+  static function build() {
+    foreach(static::get_item_all() as $c_item) {
+      if ($c_item->id_parent) {
+        $c_parent = !empty($c_item->parent_is_tab) ?
+            tabs::get     ($c_item->id_parent) :
+            tabs::get_item($c_item->id_parent);
+        $c_parent->child_insert($c_item, $c_item->id);
+      }
+    };
   }
 
 }}

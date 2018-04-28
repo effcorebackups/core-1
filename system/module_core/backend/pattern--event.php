@@ -19,16 +19,17 @@ namespace effcore {
 
   static function init() {
     console::add_log('event', 'init.', 'event system was initialized', '-');
-    foreach (storage::get('files')->select('events') as $c_module_id => $c_module_events) {
-      foreach ($c_module_events as $c_row_id => $c_events) {
-        foreach ($c_events as $c_event) {
-          static::$cache[$c_row_id][] = $c_event;
+    foreach (storage::get('files')->select('events') as $c_module_id => $c_type_group) {
+      foreach ($c_type_group as $c_type => $c_events) {
+        foreach ($c_events as $c_row_id => $c_event) {
+          $c_event->module_id = $c_module_id;
+          static::$cache[$c_type][] = $c_event;
         }
       }
     }
-    foreach (static::$cache as &$c_events) {
-      if (count($c_events) > 1) {
-        factory::array_sort_by_weight($c_events);
+    foreach (static::$cache as &$c_group) {
+      if (count($c_group) > 1) {
+        factory::array_sort_by_weight($c_group);
       }
     }
   }

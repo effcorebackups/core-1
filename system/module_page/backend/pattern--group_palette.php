@@ -9,8 +9,8 @@ namespace effcore {
 
   function build() {
     $this->attribute_insert('class', ['palette' => 'palette']);
-    foreach (storage::get('files')->select('colors') as $c_module_id => $c_module_colors) {
-      foreach ($c_module_colors as $c_row_id => $c_color) {
+    foreach (storage::get('files')->select('colors') as $c_module_id => $c_colors) {
+      foreach ($c_colors as $c_row_id => $c_color) {
         $this->field_insert(null, [
           'value' => $c_color->id,
           'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),

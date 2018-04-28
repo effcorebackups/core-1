@@ -10,24 +10,32 @@ namespace effcore {
   static protected $cache;
 
   static function init() {
-    foreach (storage::get('files')->select('tokens') as $c_module_id => $c_module_tokens) {
-      foreach ($c_module_tokens as $c_row_id => $c_token) {
-        static::$cache[$c_token->match] = $c_token;
+    foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {
+      foreach ($c_tokens as $c_row_id => $c_token) {
+        static::$cache[$c_row_id] = $c_token;
+        static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
   }
 
+  static function get($row_id) {
+    if   (!static::$cache) static::init();
+    return isset(static::$cache[$row_id]) ?
+                 static::$cache[$row_id] : null;
+  }
+
   static function replace($string) {
-    if (!static::$cache) static::init();
-    return preg_replace_callback('%(?<name>\\%\\%_[a-z0-9_]+)'.
+    return preg_replace_callback('%(?<prefix>\\%\\%_)'.
+                                  '(?<name>[a-z0-9_]+)'.
                                   '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
       $name = !empty($matches['name']) ? $matches['name'] : null;
       $args = !empty($matches['args']) ? explode(',', substr($matches['args'], 1, -1)) : [];
-      if ($name && isset(static::$cache[$name])) {
-        switch (static::$cache[$name]->type) {
-          case 'code': return call_user_func(static::$cache[$name]->handler, $name, $args);
-          case 'text': return static::$cache[$name]->value;
-          case 'translated_text': return translation::get(static::$cache[$name]->value);
+      $info = static::get($name);
+      if ($info) {
+        switch ($info->type) {
+          case 'code': return call_user_func($info->handler, $name, $args);
+          case 'text': return $info->value;
+          case 'translated_text': return translation::get($info->value);
         }
       } else {
         return '';

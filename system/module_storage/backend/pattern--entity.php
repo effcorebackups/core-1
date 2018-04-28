@@ -107,13 +107,14 @@ namespace effcore {
 
   static function init($name = '') {
     static::$cache_orig = storage::get('files')->select('entities');
-    foreach (static::$cache_orig as $c_module_id => $c_module_entities) {
-      foreach ($c_module_entities as $c_row_id => $c_entity) {
+    foreach (static::$cache_orig as $c_module_id => $c_entities) {
+      foreach ($c_entities as $c_row_id => $c_entity) {
         if ($name == '' || (
             $name && $name == $c_entity->name)) {
           if ($c_entity instanceof different_cache)
               $c_entity = $c_entity->get_different_cache();
           static::$cache[$c_entity->name] = $c_entity;
+          static::$cache[$c_entity->name]->module_id = $c_module_id;
         }
       }
     }

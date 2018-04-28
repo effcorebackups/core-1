@@ -52,13 +52,13 @@ namespace effcore {
   }
 
   function captcha_generate() {
-    if (!static::$glyphs) static::init();
+    $glyphs = static::get_glyphs();
     $characters = '';
     $canvas = new canvas_svg(5 * $this->length, 15, 5);
     $canvas->fill('#000000', 0, 0, null, null, $this->noise);
     for ($i = 0; $i < $this->length; $i++) {
-      $c_glyph = array_rand(static::$glyphs);
-      $characters.= static::$glyphs[$c_glyph];
+      $c_glyph = array_rand($glyphs);
+      $characters.= $glyphs[$c_glyph];
       $canvas->glyph_set($c_glyph, rand(0, 2) - 1 + ($i * 5), rand(1, 5));
     }
     $captcha = new instance('captcha', [
@@ -108,13 +108,18 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_module_characters) {
-      foreach ($c_module_characters as $c_row_id => $c_character) {
-        foreach ($c_character->glyphs as $c_glyph) {
+    foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
+      foreach ($c_characters as $c_row_id => $c_character) {
+        foreach ($c_character->glyphs as $c_row_id => $c_glyph) {
           static::$glyphs[$c_glyph] = $c_character->character;
         }
       }
     }
+  }
+
+  static function get_glyphs() {
+    if   (!static::$glyphs) static::init();
+    return static::$glyphs;
   }
 
   static function captcha_cleaning() {

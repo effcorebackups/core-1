@@ -25,9 +25,10 @@ namespace effcore {
 
   static function init() {
     $tests = storage::get('files')->select('tests');
-    foreach ($tests as $c_module_id => $c_module_tests) {
-      foreach ($c_module_tests as $c_row_id => $c_test) {
+    foreach ($tests as $c_module_id => $c_tests) {
+      foreach ($c_tests as $c_row_id => $c_test) {
         static::$cache[$c_test->id] = $c_test;
+        static::$cache[$c_test->id]->module_id = $c_module_id;
       }
     }
   }

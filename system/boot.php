@@ -69,7 +69,7 @@ namespace effcore {
 
   $type = url::get_current()->get_type();
   if ($type) {
-    $file_types = file::get_file_types();
+    $file_types = file::get_types();
   # case for protected file
     if (!empty($file_types[$type]->protected)) {
       factory::send_header_and_exit('access_denided', '',

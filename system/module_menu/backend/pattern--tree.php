@@ -24,29 +24,18 @@ namespace effcore {
   static protected $cache_tree_items;
 
   static function init() {
-    $trees      = storage::get('files')->select('trees');
-    $tree_items = storage::get('files')->select('tree_items');
-    foreach ($trees as $c_module_id => $c_module_trees) {
-      foreach ($c_module_trees as $c_row_id => $c_tree) {
+    foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
+      foreach ($c_trees as $c_row_id => $c_tree) {
         static::$cache_trees[$c_tree->id] = $c_tree;
+        static::$cache_trees[$c_tree->id]->module_id = $c_module_id;
       }
     }
-    foreach ($tree_items as $c_module_id => $c_module_tree_items) {
-      foreach ($c_module_tree_items as $c_row_id => $c_item) {
-        static::$cache_tree_items[$c_item->id] = $c_item;
+    foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
+      foreach ($c_tree_items as $c_row_id => $c_tree_item) {
+        static::$cache_tree_items[$c_tree_item->id] = $c_tree_item;
+        static::$cache_tree_items[$c_tree_item->id]->module_id = $c_module_id;
       }
     }
-  }
-
-  static function build() {
-    foreach(static::get_item_all() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tree) ?
-            tree::get     ($c_item->id_parent) :
-            tree::get_item($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
   }
 
   static function get($id) {
@@ -65,6 +54,17 @@ namespace effcore {
 
   static function get_item_all() {
     return static::$cache_tree_items;
+  }
+
+  static function build() {
+    foreach(static::get_item_all() as $c_item) {
+      if ($c_item->id_parent) {
+        $c_parent = !empty($c_item->parent_is_tree) ?
+            tree::get     ($c_item->id_parent) :
+            tree::get_item($c_item->id_parent);
+        $c_parent->child_insert($c_item, $c_item->id);
+      }
+    };
   }
 
 }}

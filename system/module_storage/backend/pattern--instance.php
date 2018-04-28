@@ -9,6 +9,7 @@ namespace effcore {
 
   public $entity_name;
   public $values;
+  public $module_id;
 
   function __construct($entity_name = '', $values = []) {
     $this->set_entity_name($entity_name);
@@ -65,9 +66,10 @@ namespace effcore {
 
   static function init() {
     static::$cache_orig = storage::get('files')->select('instances');
-    foreach (static::$cache_orig as $c_module_id => $c_module_instances) {
-      foreach ($c_module_instances as $c_row_id => $c_instance) {
+    foreach (static::$cache_orig as $c_module_id => $c_instances) {
+      foreach ($c_instances as $c_row_id => $c_instance) {
         static::$cache[$c_row_id] = $c_instance;
+        static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
   }

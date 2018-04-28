@@ -159,7 +159,12 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache = storage::get('files')->select('pages');
+    foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
+      foreach ($c_pages as $c_row_id => $c_page) {
+        static::$cache[$c_row_id] = $c_page;
+        static::$cache[$c_row_id]->module_id = $c_module_id;
+      }
+    }
   }
 
   static function get_all() {
@@ -172,32 +177,29 @@ namespace effcore {
   }
 
   static function find_and_render() {
-  # render page
-    foreach (static::get_all() as $c_module_id => $c_module_pages) {
-      foreach ($c_module_pages as $c_row_id => $c_page) {
-        $c_matches = [];
-        if (($c_page->display->check === 'protocol' && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_protocol(), $c_matches)) ||
-            ($c_page->display->check === 'domain'   && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_domain(),   $c_matches)) ||
-            ($c_page->display->check === 'path'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_path(),     $c_matches)) ||
-            ($c_page->display->check === 'query'    && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_query(),    $c_matches)) ||
-            ($c_page->display->check === 'anchor'   && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_anchor(),   $c_matches)) ||
-            ($c_page->display->check === 'type'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_type(),     $c_matches)) ||
-            ($c_page->display->check === 'full'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_full(),     $c_matches)) ) {
-          if (!isset($c_page->access) ||
-              (isset($c_page->access) && access::check($c_page->access))) {
-            if ($c_page instanceof different_cache)
-                $c_page = $c_page->get_different_cache();
-            static::$current = $c_page;
-          # filter arguments
-            $c_args = array_filter($c_matches, 'is_string', ARRAY_FILTER_USE_KEY);
-            foreach ($c_args as $c_key => $c_value) {
-              $c_page->args_set($c_key, $c_value);
-            }
-          # render page
-            return $c_page->render();
-          } else {
-            factory::send_header_and_exit('access_denided');
+    foreach (static::get_all() as $c_row_id => $c_page) {
+      $c_matches = [];
+      if (($c_page->display->check === 'protocol' && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_protocol(), $c_matches)) ||
+          ($c_page->display->check === 'domain'   && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_domain(),   $c_matches)) ||
+          ($c_page->display->check === 'path'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_path(),     $c_matches)) ||
+          ($c_page->display->check === 'query'    && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_query(),    $c_matches)) ||
+          ($c_page->display->check === 'anchor'   && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_anchor(),   $c_matches)) ||
+          ($c_page->display->check === 'type'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_type(),     $c_matches)) ||
+          ($c_page->display->check === 'full'     && $c_page->display->where === 'url' && preg_match($c_page->display->match, url::get_current()->get_full(),     $c_matches)) ) {
+        if (!isset($c_page->access) ||
+            (isset($c_page->access) && access::check($c_page->access))) {
+          if ($c_page instanceof different_cache)
+              $c_page = $c_page->get_different_cache();
+          static::$current = $c_page;
+        # filter arguments
+          $c_args = array_filter($c_matches, 'is_string', ARRAY_FILTER_USE_KEY);
+          foreach ($c_args as $c_key => $c_value) {
+            $c_page->args_set($c_key, $c_value);
           }
+        # render page
+          return $c_page->render();
+        } else {
+          factory::send_header_and_exit('access_denided');
         }
       }
     }

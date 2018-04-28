@@ -8,8 +8,9 @@ namespace effcore {
           class template {
 
   public $name;
-  public $markup;
+  public $type;
   public $vars = [];
+  public $markup;
 
   function __construct($name, $vars = []) {
     $this->name = $name;
@@ -17,21 +18,18 @@ namespace effcore {
     foreach ($vars as $c_name => $c_value) {
       static::set_var($c_name, $c_value);
     }
-  # find template
-    foreach (static::get_templates() as $c_module_id => $c_templates) {
-      foreach ($c_templates as $c_name => $c_info) {
-        if ($name == $c_name) {
-          switch ($c_info->type) {
-            case 'file':
-              $path = module::get($c_module_id)->get_path().$c_info->path;
-              $file = new file($path);
-              $this->markup = $file->load(false);
-              return $this;
-            case 'inline':
-              $this->markup = $c_info->markup;
-              return $this;
-          }
-        }
+  # prepare template
+    $info = static::get($name);
+    if ($info) {
+      switch ($info->type) {
+        case 'file':
+          $path = module::get($info->module_id)->get_path().$info->path;
+          $file = new file($path);
+          $this->markup = $file->load();
+          return $this;
+        case 'inline':
+          $this->markup = $info->markup;
+          return $this;
       }
     }
   }
@@ -62,10 +60,21 @@ namespace effcore {
   static protected $cache;
 
   static function init() {
-    static::$cache = storage::get('files')->select('templates');
+    foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
+      foreach ($c_templates as $c_row_id => $c_template) {
+        static::$cache[$c_row_id] = $c_template;
+        static::$cache[$c_row_id]->module_id = $c_module_id;
+      }
+    }
   }
 
-  static function get_templates() {
+  static function get($row_id) {
+    if         (!static::$cache) static::init();
+    return isset(static::$cache[$row_id]) ?
+                 static::$cache[$row_id] : null;
+  }
+
+  static function get_all() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }

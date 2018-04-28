@@ -7,6 +7,6 @@
 namespace effcore {
           abstract class events_token {
 
-  static function on_replace($match, $arg_1_num = null) {}
+  static function on_replace($name, $arg_1_num = null) {}
 
 }}

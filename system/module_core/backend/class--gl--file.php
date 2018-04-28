@@ -98,9 +98,9 @@ namespace effcore {
   function load($reset = false) {
     $relative = $this->get_path_relative();
     timer::tap('file load: '.$relative);
-    if (!$reset && isset(static::$cache[$relative]))
-           $this->data = static::$cache[$relative];
-    else   $this->data = static::$cache[$relative] = file_get_contents($this->get_path());
+    if (!$reset && isset(static::$cache_data[$relative]))
+           $this->data = static::$cache_data[$relative];
+    else   $this->data = static::$cache_data[$relative] = file_get_contents($this->get_path());
     timer::tap('file load: '.$relative);
     console::add_log('file', 'load', $relative, 'ok',
       timer::get_period('file load: '.$relative, -1, -2)
@@ -157,19 +157,21 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $cache;
+  static protected $cache_data;
+  static protected $cache_file_types;
 
   static function init() {
-    foreach (storage::get('files')->select('file_types') as $c_module_id => $c_module_file_types) {
-      foreach ($c_module_file_types as $c_row_id => $c_info) {
-        static::$cache[$c_info->type] = $c_info;
+    foreach (storage::get('files')->select('file_types') as $c_module_id => $c_file_types) {
+      foreach ($c_file_types as $c_row_id => $c_file_type) {
+        static::$cache_file_types[$c_file_type->type] = $c_file_type;
+        static::$cache_file_types[$c_file_type->type]->module_id = $c_module_id;
       }
     }
   }
 
-  static function get_file_types() {
-    if   (!static::$cache) static::init();
-    return static::$cache;
+  static function get_types() {
+    if   (!static::$cache_file_types) static::init();
+    return static::$cache_file_types;
   }
 
   static function mkdir_if_not_exist($dirs) {
