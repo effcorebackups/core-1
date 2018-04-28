@@ -1,25 +1,33 @@
 templates
 - tree
-    type: inline
-    markup: <x-tree %%_attributes> <h3 class="hidden">%%_self</h3> <ul>%%_children</ul> </x-tree>
+    name: tree
+    type: text
+    data: <x-tree %%_attributes> <h3 class="hidden">%%_self</h3> <ul>%%_children</ul> </x-tree>
 - tree_item
-    type: inline
-    markup: <li %%_attributes> %%_self %%_children </li>
+    name: tree_item
+    type: text
+    data: <li %%_attributes> %%_self %%_children </li>
 - tree_item_children
-    type: inline
-    markup: <ul> %%_children </ul>
+    name: tree_item_children
+    type: text
+    data: <ul> %%_children </ul>
 - tabs
-    type: inline
-    markup: <x-tabs> %%_top_items %%_sub_items </x-tabs>
+    name: tabs
+    type: text
+    data: <x-tabs> %%_top_items %%_sub_items </x-tabs>
 - tabs_top_items
-    type: inline
-    markup: <x-top-items><ul> %%_children </ul></x-top-items>
+    name: tabs_top_items
+    type: text
+    data: <x-top-items><ul> %%_children </ul></x-top-items>
 - tabs_sub_items
-    type: inline
-    markup: <x-sub-items><ul> %%_children </ul></x-sub-items>
+    name: tabs_sub_items
+    type: text
+    data: <x-sub-items><ul> %%_children </ul></x-sub-items>
 - tabs_item
-    type: inline
-    markup: <li %%_attributes> %%_self %%_children </li>
+    name: tabs_item
+    type: text
+    data: <li %%_attributes> %%_self %%_children </li>
 - tabs_item_children
-    type: inline
-    markup: <ul> %%_children </ul>
+    name: tabs_item_children
+    type: text
+    data: <ul> %%_children </ul>

@@ -66,7 +66,7 @@ namespace effcore {
                                            $c_block->render() :
                                            $c_block;
       }
-      $template->set_var($c_region_name,
+      $template->set_arg($c_region_name,
         $rendered_c_region
       );
     }
@@ -77,13 +77,13 @@ namespace effcore {
     console::add_information('Session expiration date', locale::format_timestamp(session::id_decode_expire(session::id_get())));
     console::add_information('Current language', language::get_current());
 
-    $template->set_var('attributes', factory::data_to_attr(['lang' => language::get_current()]));
-    $template->set_var('console', console::render()); # @todo: only for admins
-    $template->set_var('messages', message::render_all());
-    $template->set_var('meta', $frontend->meta->render());
-    $template->set_var('head_styles', $frontend->styles->render());
-    $template->set_var('head_scripts', $frontend->scripts->render());
-    $template->set_var('head_title', token::replace(translation::get($this->title)));
+    $template->set_arg('attributes', factory::data_to_attr(['lang' => language::get_current()]));
+    $template->set_arg('console', console::render()); # @todo: only for admins
+    $template->set_arg('messages', message::render_all());
+    $template->set_arg('meta', $frontend->meta->render());
+    $template->set_arg('head_styles', $frontend->styles->render());
+    $template->set_arg('head_scripts', $frontend->scripts->render());
+    $template->set_arg('head_title', token::replace(translation::get($this->title)));
 
     return $template->render();
   }

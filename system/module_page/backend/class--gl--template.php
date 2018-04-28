@@ -9,48 +9,56 @@ namespace effcore {
 
   public $name;
   public $type;
-  public $vars = [];
-  public $markup;
+  public $args = [];
+  public $data;
 
-  function __construct($name, $vars = []) {
+  function __construct($name, $args = []) {
     $this->name = $name;
-  # save vars
-    foreach ($vars as $c_name => $c_value) {
-      static::set_var($c_name, $c_value);
+  # prepare arguments
+    foreach ($args as $c_name => $c_value) {
+      static::set_arg($c_name, $c_value);
     }
-  # prepare template
+  # prepare additional properties
     $info = static::get($name);
-    if ($info) {
-      switch ($info->type) {
-        case 'file':
-          $path = module::get($info->module_id)->get_path().$info->path;
-          $file = new file($path);
-          $this->markup = $file->load();
-          return $this;
-        case 'inline':
-          $this->markup = $info->markup;
-          return $this;
-      }
+    $this->type = $info->type;
+    switch ($this->type) {
+      case 'file':
+        $path = module::get($info->module_id)->get_path().$info->path;
+        $file = new file($path);
+        $this->data = $file->load();
+        return $this;
+      case 'text':
+        $this->data = $info->data;
+        return $this;
+      case 'code':
+        $this->handler = $info->handler;
+        return $this;
     }
   }
 
-  function set_var($name, $value) {
-    $this->vars[$name] = $value;
+  function set_arg($name, $value) {
+    $this->args[$name] = $value;
   }
 
   function render() {
-    $rendered = $this->markup;
-    $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
-                                       '(?<prefix>\\%\\%_)'.
-                                       '(?<name>[a-z0-9_]+)'.
-                                       '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
-      return isset($matches['prefix']) &&
-             isset($matches['name']) &&
-             isset($this->vars[$matches['name']]) &&
-                   $this->vars[$matches['name']] !== '' ? $matches['spacer'].
-                   $this->vars[$matches['name']] : '';
-    }, $rendered);
-    return $rendered;
+    if ($this->type == 'text' ||
+        $this->type == 'file') {
+      $rendered = $this->data;
+      $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
+                                         '(?<prefix>\\%\\%_)'.
+                                         '(?<name>[a-z0-9_]+)'.
+                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
+        return isset($matches['prefix']) &&
+               isset($matches['name']) &&
+               isset($this->args[$matches['name']]) &&
+                     $this->args[$matches['name']] !== '' ? $matches['spacer'].
+                     $this->args[$matches['name']] : '';
+      }, $rendered);
+      return $rendered;
+    }
+    if ($this->type == 'code') {
+      return call_user_func($this->handler, $this->args);
+    }
   }
 
   ###########################
@@ -62,8 +70,8 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
       foreach ($c_templates as $c_row_id => $c_template) {
-        static::$cache[$c_row_id] = $c_template;
-        static::$cache[$c_row_id]->module_id = $c_module_id;
+        static::$cache[$c_template->name] = $c_template;
+        static::$cache[$c_template->name]->module_id = $c_module_id;
       }
     }
   }
