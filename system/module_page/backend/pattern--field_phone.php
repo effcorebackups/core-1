@@ -5,19 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class field_phone extends field {
+          class field_phone extends field_simple {
 
   public $title = 'Phone';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'      => 'tel',
-      'name'      => 'phone',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 15,
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'      => 'tel',
+    'name'      => 'phone',
+    'required'  => 'required',
+    'minlength' => 5,
+    'maxlength' => 15,
+  ];
 
 }}
