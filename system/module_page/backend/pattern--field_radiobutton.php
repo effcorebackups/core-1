@@ -5,17 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          class field_radiobutton extends field {
+          class field_radiobutton extends field_simple {
 
   public $title = 'Radiobutton';
   public $title_position = 'bottom';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type' => 'radio',
-      'name' => 'radio',
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type' => 'radio',
+    'name' => 'radio',
+  ];
 
 }}
