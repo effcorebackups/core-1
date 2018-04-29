@@ -5,17 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          class field_checkbox extends field {
+          class field_checkbox extends field_simple {
 
   public $title = 'Checkbox';
   public $title_position = 'bottom';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type' => 'checkbox',
-      'name' => 'checkbox',
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type' => 'checkbox',
+    'name' => 'checkbox',
+  ];
 
 }}
