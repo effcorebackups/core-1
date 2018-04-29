@@ -5,20 +5,16 @@
   ##################################################################
 
 namespace effcore {
-          class field_password extends field {
+          class field_password extends field_simple {
 
   public $title = 'Password';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'         => 'password',
-      'name'         => 'password',
-      'required'     => 'required',
-      'autocomplete' => 'off',
-      'minlength'    => 5,
-      'maxlength'    => 255
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'         => 'password',
+    'name'         => 'password',
+    'required'     => 'required',
+    'autocomplete' => 'off',
+    'minlength'    => 5,
+    'maxlength'    => 255
+  ];
 
 }}
