@@ -5,19 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class field_email extends field {
+          class field_email extends field_simple {
 
   public $title = 'EMail';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'      => 'email',
-      'name'      => 'email',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 64
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'      => 'email',
+    'name'      => 'email',
+    'required'  => 'required',
+    'minlength' => 5,
+    'maxlength' => 64
+  ];
 
 }}
