@@ -5,18 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class field_text extends field {
+          class field_text extends field_simple {
 
   public $title = 'Text';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'      => 'text',
-      'name'      => 'text',
-      'required'  => 'required',
-      'maxlength' => 255
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'      => 'text',
+    'name'      => 'text',
+    'required'  => 'required',
+    'maxlength' => 255
+  ];
 
 }}

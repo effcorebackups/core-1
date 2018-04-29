@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-container';
   public $template = 'container';
-
+# ─────────────────────────────────────────────────────────────────────
   public $title;
   public $title_tag_name = 'x-title';
   public $title_position = 'top';
