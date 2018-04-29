@@ -5,19 +5,19 @@
   ##################################################################
 
 namespace effcore {
-          class field_date extends field {
+          class field_date extends field_simple {
 
   public $title = 'Date';
+  public $element_attributes_default = [
+    'type'     => 'date',
+    'name'     => 'date',
+    'required' => 'required',
+    'min'      => '0001-01-01',
+    'max'      => '9999-31-12'
+  ];
 
   function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'     => 'date',
-      'name'     => 'date',
-      'required' => 'required',
-      'value'    => factory::date_get(),
-      'min'      => '0001-01-01',
-      'max'      => '9999-31-12'
-    ]), 'element');
+    $this->attribute_insert('value', factory::date_get(), 'element_attributes_default');
     parent::build();
   }
 
