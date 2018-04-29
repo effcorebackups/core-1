@@ -5,20 +5,20 @@
   ##################################################################
 
 namespace effcore {
-          class field_time extends field {
+          class field_time extends field_simple {
 
   public $title = 'Time';
+  public $element_attributes_default = [
+    'type'     => 'time',
+    'name'     => 'time',
+    'required' => 'required',
+    'min'      => '00:00:00',
+    'max'      => '23:59:59',
+    'step'     => 60
+  ];
 
   function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'     => 'time',
-      'name'     => 'time',
-      'required' => 'required',
-      'value'    => factory::time_get(),
-      'min'      => '00:00:00',
-      'max'      => '23:59:59',
-      'step'     => 60
-    ]), 'element');
+    $this->attribute_insert('value', factory::time_get(), 'element_attributes_default');
     parent::build();
   }
 
