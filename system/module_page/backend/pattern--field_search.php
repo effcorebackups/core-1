@@ -5,19 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class field_search extends field {
+          class field_search extends field_simple {
 
   public $title = 'Search';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'      => 'search',
-      'name'      => 'search',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 255
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'      => 'search',
+    'name'      => 'search',
+    'required'  => 'required',
+    'minlength' => 5,
+    'maxlength' => 255
+  ];
 
 }}
