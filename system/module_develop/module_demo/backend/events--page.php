@@ -50,7 +50,7 @@ namespace effcore\modules\demo {
   }
 
   static function on_show_block_demo_canvas($page) {
-    $canvas = new canvas_svg(105, 15, 5);
+    $canvas = new canvas_svg(105, 16, 5);
     $canvas->glyph_set('01110|10001|10001|10001|10001|10001|10001|10001|10001|01110',  5, 3); # 0
     $canvas->glyph_set('00001|00001|00001|00001|00001|10001|01001|00101|00010|00001', 15, 3); # 1
     $canvas->glyph_set('11111|10000|01000|00100|00010|00001|00001|00001|00001|11110', 25, 3); # 2
