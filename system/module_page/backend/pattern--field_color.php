@@ -5,18 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class field_color extends field {
+          class field_color extends field_simple {
 
   public $title = 'Color';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'     => 'color',
-      'name'     => 'color',
-      'required' => 'required',
-      'value'    => '#ffffff'
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'     => 'color',
+    'name'     => 'color',
+    'required' => 'required',
+    'value'    => '#ffffff'
+  ];
 
 }}
