@@ -5,17 +5,25 @@
   ##################################################################
 
 namespace effcore {
-          class field_select extends field {
+          class field_select extends field_simple {
 
+  public $element_class = '\\effcore\\markup';
+  public $element_tag_name = 'select';
+  public $element_attributes_default = [
+    'name'     => 'select',
+    'required' => 'required'
+  ];
+# ─────────────────────────────────────────────────────────────────────
   public $values = [];
   public $selected = [];
   public $disabled = [];
 
   function build() {
-    $this->child_insert(new markup('select', $this->attribute_select_all('element_attributes')), 'element');
-    $this->child_select('element')->title = $this->title;
+    parent::build();
     foreach ($this->values as $c_id => $c_data) {
-      if (is_object($c_data) && !empty($c_data->title) && !empty($c_data->values)) {
+      if (is_object($c_data) &&
+             !empty($c_data->title) &&
+             !empty($c_data->values)) {
         if (!$this->optgroup_select($c_id))
              $this->optgroup_insert($c_id, $c_data->title);
         foreach ($c_data->values as $g_id => $g_data) {
@@ -38,13 +46,13 @@ namespace effcore {
   }
 
   function option_insert($title, $value, $attr = [], $grp_id = null) {
+    $option = new markup('option', $attr, ['content' => $title]);
+    $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
+    if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
+    if (isset($this->disabled[$value])) $option->attribute_insert('disabled', 'disabled');
     $parent_el = $grp_id ? $this->child_select('element')->child_select($grp_id) :
                            $this->child_select('element');
-    $new_option = new markup('option', $attr, ['content' => $title]);
-    $new_option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
-    if (isset($this->selected[$value])) $new_option->attribute_insert('selected', 'selected');
-    if (isset($this->disabled[$value])) $new_option->attribute_insert('disabled', 'disabled');
-    $parent_el->child_insert($new_option, $value);
+    $parent_el->child_insert($option, $value);
   }
 
 }}

@@ -436,7 +436,6 @@ forms
               - info: &lt;select&gt;
             element_attributes
             - name: select_macro
-            - required: required
             values
             - not_selected: - select -
             - option_2_1: Option 2.1 (selected)
