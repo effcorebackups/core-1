@@ -5,19 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class field_url extends field {
+          class field_url extends field_simple {
 
   public $title = 'URL';
-
-  function build() {
-    $this->child_insert(new markup_simple('input', [
-      'type'      => 'url',
-      'name'      => 'url',
-      'required'  => 'required',
-      'minlength' => 5,
-      'maxlength' => 255
-    ]), 'element');
-    parent::build();
-  }
+  public $element_attributes_default = [
+    'type'      => 'url',
+    'name'      => 'url',
+    'required'  => 'required',
+    'minlength' => 5,
+    'maxlength' => 255
+  ];
 
 }}
