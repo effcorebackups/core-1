@@ -75,10 +75,13 @@ namespace effcore {
   function get_path()     {return $this->path;}
   function get_query()    {return $this->query;}
   function get_anchor()   {return $this->anchor;}
-  function get_full()     {return $this->protocol.'://'.$this->domain.
-                                 ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
-                                 ($this->query  ? '?'.$this->query  : '').
-                                 ($this->anchor ? '#'.$this->anchor : '');}
+  function get_relative() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
+                                  ($this->query  ? '?'.$this->query  : '').
+                                  ($this->anchor ? '#'.$this->anchor : '');}
+  function get_full()     {return ($this->protocol.'://'.$this->domain).
+                                  ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
+                                  ($this->query  ? '?'.$this->query  : '').
+                                  ($this->anchor ? '#'.$this->anchor : '');}
 
   function get_query_arg($arg_id) {
     $args = [];
