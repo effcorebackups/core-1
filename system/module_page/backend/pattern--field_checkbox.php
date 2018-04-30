@@ -11,7 +11,7 @@ namespace effcore {
   public $title_position = 'bottom';
   public $element_attributes_default = [
     'type' => 'checkbox',
-    'name' => 'checkbox',
+    'name' => 'checkbox'
   ];
 
 }}

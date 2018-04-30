@@ -395,8 +395,8 @@ namespace effcore {
 
       $c_step = $element->attribute_select('step') ?: 1;
       if ($element->attribute_select('type') == 'number') {
-        $c_min = $element->attribute_select('min') ?: -10000000000.0;
-        $c_max = $element->attribute_select('max') ?: +10000000000.0; } else {
+        $c_min = $element->attribute_select('min') ?: (float)form_input_min_number;
+        $c_max = $element->attribute_select('max') ?: (float)form_input_max_number; } else {
         $c_min = $element->attribute_select('min') ?: 0;
         $c_max = $element->attribute_select('max') ?: 100;
       }
@@ -445,8 +445,8 @@ namespace effcore {
         return;
       }
 
-      $c_min = $element->attribute_select('min') ?: '0001-01-01';
-      $c_max = $element->attribute_select('max') ?: '9999-31-12';
+      $c_min = $element->attribute_select('min') ?: form_input_min_date;
+      $c_max = $element->attribute_select('max') ?: form_input_max_date;
 
     # check min
       if ($c_min > $new_value) {
@@ -482,8 +482,8 @@ namespace effcore {
         return;
       }
 
-      $c_min = $element->attribute_select('min') ?: '00:00:00';
-      $c_max = $element->attribute_select('max') ?: '23:59:59';
+      $c_min = $element->attribute_select('min') ?: form_input_min_time;
+      $c_max = $element->attribute_select('max') ?: form_input_max_time;
       $c_min     = strlen($c_min)     == 5 ? $c_min.':00'     : $c_min;
       $c_max     = strlen($c_max)     == 5 ? $c_max.':00'     : $c_max;
       $new_value = strlen($new_value) == 5 ? $new_value.':00' : $new_value;

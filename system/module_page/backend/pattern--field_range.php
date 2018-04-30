@@ -12,10 +12,10 @@ namespace effcore {
     'type'     => 'range',
     'name'     => 'range',
     'required' => 'required',
-    'value'    => 0,
+    'min'      => form_input_min_number,
+    'max'      => form_input_max_number,
     'step'     => 1,
-    'min'      => -10000000000,
-    'max'      => +10000000000
+    'value'    => 0
   ];
 
 }}

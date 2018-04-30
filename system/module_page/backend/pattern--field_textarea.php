@@ -15,7 +15,7 @@ namespace effcore {
     'required'  => 'required',
     'rows'      => 5,
     'minlength' => 5,
-    'maxlength' => 255,
+    'maxlength' => 255
   ];
 
   function build() {

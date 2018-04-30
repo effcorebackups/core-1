@@ -12,8 +12,8 @@ namespace effcore {
     'type'     => 'time',
     'name'     => 'time',
     'required' => 'required',
-    'min'      => '00:00:00',
-    'max'      => '23:59:59',
+    'min'      => form_input_min_time,
+    'max'      => form_input_max_time,
     'step'     => 60
   ];
 

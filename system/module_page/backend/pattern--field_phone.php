@@ -13,7 +13,7 @@ namespace effcore {
     'name'      => 'phone',
     'required'  => 'required',
     'minlength' => 5,
-    'maxlength' => 15,
+    'maxlength' => 15
   ];
 
 }}
