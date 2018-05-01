@@ -172,21 +172,16 @@ forms
             - multiple: multiple
       # field file
         - file|field_file
-            title: File
             max_file_size: 1M
-            upload_subdir: demo/
+            upload_dir: demo/
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="file"&gt;
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: file
-                - name: file[]
-                - accept: image/*,audio/*,video/*
-                - multiple: multiple
+            element_attributes
+            - name: file[]
+            - multiple: multiple
+            - accept: image/*,audio/*,video/*
       # field number
         - number|field
             title: Number

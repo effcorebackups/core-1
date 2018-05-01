@@ -26,16 +26,12 @@ forms
         - avatar|field_file
             title: Avatar
             max_file_size: 10K
-            upload_subdir: avatar/
+            upload_dir: avatar/
             fixed_name: %%_id_user
             fixed_type: image
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: file
-                - name: avatar
-                - accept: image/*
+            element_attributes
+            - name: avatar
+            - accept: image/*
         - password_new|field_password
             title: New password
             description: Leave the field blank if you do not want to change its value.

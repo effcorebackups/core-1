@@ -5,14 +5,21 @@
   ##################################################################
 
 namespace effcore {
-          class field_file extends field {
+          class field_file extends field_simple {
 
+  public $title = 'File';
+  public $element_attributes_default = [
+    'type' => 'file',
+    'name' => 'file'
+  ];
+# ─────────────────────────────────────────────────────────────────────
   public $max_file_size;
-  public $upload_subdir = '';
+  public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
 
   function build() {
+    parent::build();
     $this->pool_manager_build();
     $this->description = translation::get('Maximal file size: %%_value.', [
       'value' => locale::format_human_bytes($this->get_max_file_size())
