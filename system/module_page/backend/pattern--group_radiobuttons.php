@@ -7,6 +7,7 @@
 namespace effcore {
           class group_radiobuttons extends group_checkboxes {
 
-  public $element_tag_name = 'radio';
+  public $attributes = ['class' => ['boxes' => 'boxes', 'radiobuttons' => 'radiobuttons']];
+  public $field_class = '\\effcore\\field_radiobutton';
 
 }}

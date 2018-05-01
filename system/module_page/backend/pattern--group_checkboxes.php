@@ -8,15 +8,17 @@ namespace effcore {
           class group_checkboxes extends container {
 
   public $tag_name = 'x-group';
+  public $attributes = ['class' => ['boxes' => 'boxes', 'checkboxes' => 'checkboxes']];
+# ─────────────────────────────────────────────────────────────────────
   public $field_tag_name = 'x-field';
+  public $field_class = '\\effcore\\field_checkbox';
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
-  public $element_tag_name = 'checkbox';
   public $element_attributes = [];
-  public $values = [];
+  public $values   = [];
   public $required = [];
   public $disabled = [];
-  public $checked = [];
+  public $checked  = [];
 
   function __construct($values = null, $required = null, $disabled = null, $checked = null) {
     if ($values)   $this->values   = $values;
@@ -27,22 +29,25 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('class', factory::array_kmap(['boxes', $this->element_tag_name]));
     foreach ($this->values as $value => $title) {
       $this->field_insert($title, ['value' => $value]);
     }
   }
 
   function field_insert($title = null, $attr = [], $new_id = null) {
-    $element = new markup_simple('input', ['type' => $this->element_tag_name] + $attr + $this->attribute_select_all('element_attributes'));
+    $field = new $this->field_class();
+    $field->title = $title;
+    $field->title_tag_name = $this->field_title_tag_name;
+    $field->title_position = $this->field_title_position;
+    $field->build();
+    $element = $field->child_select('element');
+    foreach ($attr + $this->attribute_select_all('element_attributes') as $c_name => $c_value) {
+      $element->attribute_insert($c_name, $c_value);
+    }
     $value = $element->attribute_select('value');
     if (isset($this->required[$value])) $element->attribute_insert('required', 'required');
     if (isset($this->checked[$value]))  $element->attribute_insert('checked',   'checked');
     if (isset($this->disabled[$value])) $element->attribute_insert('disabled', 'disabled');
-    $field = new field($this->field_tag_name, $title);
-    $field->title_tag_name = $this->field_title_tag_name;
-    $field->title_position = $this->field_title_position;
-    $field->child_insert($element, 'element');
     return $this->child_insert($field, $new_id);
   }
 
