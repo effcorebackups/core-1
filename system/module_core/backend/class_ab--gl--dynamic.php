@@ -9,6 +9,7 @@ namespace effcore {
 
   const type = 'data';
   const directory = dir_dynamic.'data/';
+  const directory_files = dir_dynamic.'files/';
   static public $info = [];
   static public $data = [];
 

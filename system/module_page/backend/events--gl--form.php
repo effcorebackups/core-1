@@ -572,7 +572,7 @@ namespace effcore {
           # final copying of files
             foreach ($values[$c_name] as $c_hash => $c_file_info) {
               $c_tmp_file = new file($c_file_info->tmp_name);
-              $c_new_file = new file(dir_dynamic.'files/'.$c_field->upload_dir.$c_file_info->name);
+              $c_new_file = new file(dynamic::directory_files.$c_field->upload_dir.$c_file_info->name);
               if ($c_field->fixed_name) $c_new_file->set_name(token::replace($c_field->fixed_name));
               if ($c_field->fixed_type) $c_new_file->set_type(token::replace($c_field->fixed_type));
               if ($c_tmp_file->is_exist() &&
