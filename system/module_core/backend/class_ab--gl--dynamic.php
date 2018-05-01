@@ -7,8 +7,8 @@
 namespace effcore {
           abstract class dynamic {
 
-  static public $type = 'data';
-  static public $directory = dir_dynamic.'data/';
+  const type = 'data';
+  const directory = dir_dynamic.'data/';
   static public $info = [];
   static public $data = [];
 
@@ -18,7 +18,7 @@ namespace effcore {
 
   static function select($name) {
     if (!isset(static::$data[$name])) {
-      $file = new file(static::$directory.static::$type.'--'.$name.'.php');
+      $file = new file(static::directory.static::type.'--'.$name.'.php');
       if ($file->is_exist()) {
         $file->insert();
       }
@@ -29,13 +29,13 @@ namespace effcore {
 
   static function update($name, $data, $info = null) {
     static::$data[$name] = $data;
-    $file = new file(static::$directory.static::$type.'--'.$name.'.php');
+    $file = new file(static::directory.static::type.'--'.$name.'.php');
     if ($info) static::$info[$name] = $info;
     if (is_writable($file->get_dirs()) && ((
         is_writable($file->get_path()) && $file->is_exist()) ||
                                           $file->is_exist() == false)) {
       $file->set_data(
-        '<?php'.nl.nl.'namespace effcore { # '.static::$type.' for '.$name.nl.nl.($info ?
+        '<?php'.nl.nl.'namespace effcore { # '.static::type.' for '.$name.nl.nl.($info ?
            factory::data_to_code($info, '  '.factory::class_get_short_name(static::class).'::$info[\''.$name.'\']') : '').
            factory::data_to_code($data, '  '.factory::class_get_short_name(static::class).'::$data[\''.$name.'\']').nl.
         '}');
@@ -57,7 +57,7 @@ namespace effcore {
   static function delete($name) {
     if (isset(static::$data[$name]))
         unset(static::$data[$name]);
-    $file = new file(static::$directory.static::$type.'--'.$name.'.php');
+    $file = new file(static::directory.static::type.'--'.$name.'.php');
     if ($file->is_exist()) {
       return unlink($file->get_path());
     }

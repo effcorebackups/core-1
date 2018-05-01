@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class temporary extends dynamic {
 
-  static public $type = 'tmp';
-  static public $directory = dir_dynamic.'tmp/';
+  const type = 'tmp';
+  const directory = dir_dynamic.'tmp/';
 
 }}

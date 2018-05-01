@@ -7,8 +7,8 @@
 namespace effcore {
           abstract class cache extends dynamic {
 
-  static public $type = 'cache';
-  static public $directory = dir_dynamic.'cache/';
+  const type = 'cache';
+  const directory = dir_dynamic.'cache/';
 
   static function update($name, $data, $info = null) {
     if (parent::update($name, $data, $info)) {

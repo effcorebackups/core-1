@@ -50,7 +50,7 @@ namespace effcore {
       if (is_uploaded_file($c_new_value->tmp_name)) {
         $c_file = new file($c_new_value->tmp_name);
         $c_hash = $c_file->get_hash();
-        if ($c_file->move_uploaded(dir_dynamic.'tmp/', $c_hash)) {
+        if ($c_file->move_uploaded(temporary::directory, $c_hash)) {
           $c_new_value->tmp_name = $c_file->get_path();
           $c_new_value->name = factory::filter_file_name($c_new_value->name);
           $c_new_value->type = factory::filter_mime_type($c_new_value->type);

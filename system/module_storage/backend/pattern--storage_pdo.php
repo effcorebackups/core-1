@@ -37,7 +37,7 @@ namespace effcore {
               break;
             case 'sqlite':
               $this->connection = new pdo(
-                $this->driver.':'.dir_dynamic.'data/'.
+                $this->driver.':'.dynamic::directory.
                 $this->credentials->file_name);
               break;
           }
@@ -72,7 +72,7 @@ namespace effcore {
             $params->password);
           break;
         case 'sqlite':
-          $path = dir_dynamic.'data/'.$params->file_name;
+          $path = dynamic::directory.$params->file_name;
           $connection = new pdo($driver.':'.$path);
           if (!is_writable($path)) {
             throw new \Exception('File is not writable!');
