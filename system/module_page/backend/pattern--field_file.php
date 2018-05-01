@@ -59,7 +59,7 @@ namespace effcore {
       }
     }
   # deleting selected files
-    $delete_items = isset($_POST['manager_delete_'.$name]) ? factory::array_kmap(
+    $delete_items = isset($_POST['manager_delete_'.$name]) ? factory::array_kmap((array)
                           $_POST['manager_delete_'.$name]) : [];
     foreach ($pool[$name] as $c_hash => $c_file_info) {
       if (isset($delete_items[$c_hash])) {
@@ -90,9 +90,9 @@ namespace effcore {
   }
 
   function pool_manager_insert_action($info, $hash) {
-    $element_name = $this->child_select('element')->attribute_select('name');
+    $name = $this->get_element_name();
     $this->child_select('manager')->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$element_name, 'value' => $hash]
+      translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $hash]
     );
   }
 
