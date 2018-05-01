@@ -12,8 +12,8 @@ namespace effcore {
     'type'     => 'date',
     'name'     => 'date',
     'required' => 'required',
-    'min'      => form_input_min_date,
-    'max'      => form_input_max_date
+    'min'      => form::input_min_date,
+    'max'      => form::input_max_date
   ];
 
   function build() {

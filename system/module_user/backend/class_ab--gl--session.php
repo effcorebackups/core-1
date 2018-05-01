@@ -5,10 +5,11 @@
   ##################################################################
 
 namespace effcore {
-          const empty_ip = '0.0.0.0';
-          const period_expire = 60 * 60 * 24 * 30;
-          const period_seance = 60 * 60 * 24;
           abstract class session {
+
+  const period_expire = 60 * 60 * 24 * 30;
+  const period_seance = 60 * 60 * 24;
+  const empty_ip = '0.0.0.0';
 
   static function select() {
     $session_id = static::id_get();
@@ -29,7 +30,7 @@ namespace effcore {
   static function insert($id_user, $session_params = []) {
     $is_remember = isset($session_params['remember']);
     $is_fixed_ip = isset($session_params['fixed_ip']);
-    $period = !$is_remember ? period_seance : period_expire;
+    $period = !$is_remember ? static::period_seance : static::period_expire;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
       'id'       => static::id_get(),
@@ -68,8 +69,8 @@ namespace effcore {
   static function id_regenerate($type, $session_params = []) {
     $is_remember = isset($session_params['remember']);
     $is_fixed_ip = isset($session_params['fixed_ip']);
-    $period = $type == 'f' && !$is_remember ? period_seance : period_expire;
-    $ip     = $type == 'f' && !$is_fixed_ip ? empty_ip : $_SERVER['REMOTE_ADDR'];
+    $period = $type == 'f' && !$is_remember ? static::period_seance : static::period_expire;
+    $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : $_SERVER['REMOTE_ADDR'];
     $hex_type = $type; # 'a' - anonymous user | 'f' - authenticated user
     $hex_expire = dechex(time() + $period);
     $hex_ip = factory::ip_to_hex($ip);
@@ -115,7 +116,7 @@ namespace effcore {
           $signature === factory::signature_get(substr($value, 0, 33), 8)) {
         if (($type === 'a' && $ip === $_SERVER['REMOTE_ADDR']) ||
             ($type === 'f' && $ip === $_SERVER['REMOTE_ADDR']) ||
-            ($type === 'f' && $ip === empty_ip)) {
+            ($type === 'f' && $ip === static::empty_ip)) {
           return true;
         }
       }

@@ -12,8 +12,8 @@ namespace effcore {
     'type'     => 'number',
     'name'     => 'number',
     'required' => 'required',
-    'min'      => form_input_min_number,
-    'max'      => form_input_max_number,
+    'min'      => form::input_min_number,
+    'max'      => form::input_max_number,
     'step'     => 1,
     'value'    => 0
   ];

@@ -13,12 +13,6 @@ namespace effcore {
   const nl = "\n";
   const tb = "\t";
   const br = "<br/>";
-  const form_input_min_number = -10000000000;
-  const form_input_max_number = +10000000000;
-  const form_input_min_date = '0001-01-01';
-  const form_input_max_date = '9999-12-31';
-  const form_input_min_time = '00:00:00';
-  const form_input_max_time = '23:59:59';
 
   ##############################################
   ### web servers compatibility improvements ###
