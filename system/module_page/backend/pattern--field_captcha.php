@@ -5,31 +5,36 @@
   ##################################################################
 
 namespace effcore {
-          class field_captcha extends field {
+          class field_captcha extends field_simple {
 
   public $title = 'Captcha';
   public $description = 'Write the characters from the picture.';
-  public $length = 6;
+  public $attributes = ['class' => ['captcha' => 'captcha']];
+  public $element_attributes_default = [
+    'type'         => 'text',
+    'name'         => 'captcha',
+    'required'     => 'required',
+    'autocomplete' => 'off'
+  ];
+# ─────────────────────────────────────────────────────────────────────
+  public $length   = 6;
   public $attempts = 3;
-  public $noise = 1;
+  public $noise    = 1;
 
   function build() {
-    $this->attribute_insert('class', ['captcha' => 'captcha']);
+    parent::build();
+    $element = $this->child_select('element');
+    $element->attribute_insert('size',      $this->length);
+    $element->attribute_insert('minlength', $this->length);
+    $element->attribute_insert('maxlength', $this->length);
+    $element->weight = 100;
+  # build canvas on form
     $captcha = $this->captcha_load();
     if (!$captcha) {
       $captcha = $this->captcha_generate();
       $captcha->insert();
     }
-  # build form elements
     $this->child_insert($captcha->canvas, 'canvas');
-    $this->child_insert(new markup_simple('input', [
-      'type' => 'text',
-      'name' => 'captcha',
-      'size' => $this->length,
-      'required' => 'required',
-      'minlength' => $this->length,
-      'maxlength' => $this->length
-    ]), 'element');
   }
 
   function captcha_check($characters) {
@@ -64,7 +69,6 @@ namespace effcore {
     $captcha = new instance('captcha', [
       'ip_address'  => static::id_get(),
       'characters'  => $characters,
-      'created'     => factory::datetime_get(),
       'attempts'    => $this->attempts,
       'canvas'      => $canvas,
       'canvas_data' => $canvas->clmask_to_hexstr()
@@ -110,7 +114,7 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
       foreach ($c_characters as $c_row_id => $c_character) {
-        foreach ($c_character->glyphs as $c_row_id => $c_glyph) {
+        foreach ($c_character->glyphs as $c_glyph) {
           static::$glyphs[$c_glyph] = $c_character->character;
         }
       }
