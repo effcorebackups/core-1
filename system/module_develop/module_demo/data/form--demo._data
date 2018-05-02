@@ -12,7 +12,7 @@ forms
         title_tag_name: legend
         children
       # field text
-        - text|field
+        - text|field_simple
             title: Text
             description|text
               text: Element %%_info.

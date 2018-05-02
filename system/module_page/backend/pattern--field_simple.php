@@ -20,13 +20,15 @@ namespace effcore {
   }
 
   function build() {
-    $attributes = $this->attribute_select_all('element_attributes') +
-                  $this->attribute_select_all('element_attributes_default');
-    $element = new $this->element_class($this->element_tag_name);
-    $this->child_insert($element, 'element');
-    foreach ($attributes as $c_name => $c_value) {
-      if ($c_value === null) $element->attribute_delete($c_name);
-      if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
+    if (!$this->child_select('element')) {
+      $element = new $this->element_class($this->element_tag_name);
+      $this->child_insert($element, 'element');
+      $attributes = $this->attribute_select_all('element_attributes') +
+                    $this->attribute_select_all('element_attributes_default');
+      foreach ($attributes as $c_name => $c_value) {
+        if ($c_value === null) $element->attribute_delete($c_name);
+        if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
+      }
     }
   }
 
