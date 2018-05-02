@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_search extends field_simple {
+          class field_search extends field {
 
   public $title = 'Search';
   public $element_attributes_default = [

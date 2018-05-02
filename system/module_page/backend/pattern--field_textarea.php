@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_textarea extends field_simple {
+          class field_textarea extends field {
 
   public $title = 'Textarea';
   public $element_class = '\\effcore\\markup';

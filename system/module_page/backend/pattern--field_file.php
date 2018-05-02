@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_file extends field_simple {
+          class field_file extends field {
 
   public $title = 'File';
   public $element_attributes_default = [

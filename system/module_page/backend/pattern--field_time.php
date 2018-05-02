@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_time extends field_simple {
+          class field_time extends field {
 
   public $title = 'Time';
   public $element_attributes_default = [

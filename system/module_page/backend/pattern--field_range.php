@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_range extends field_simple {
+          class field_range extends field {
 
   public $title = 'Range';
   public $element_attributes_default = [

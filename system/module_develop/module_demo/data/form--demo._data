@@ -12,7 +12,7 @@ forms
         title_tag_name: legend
         children
       # field text
-        - text|field_simple
+        - text|field
             title: Text
             description|text
               text: Element %%_info.
@@ -41,7 +41,7 @@ forms
             - minlength: 5
             - pattern: [a-zA-Z0-9]+
       # field password
-        - password|field_simple
+        - password|field
             title: Password
             description|text
               text: Element %%_info.
@@ -68,7 +68,7 @@ forms
             - name: password_macro
             - value: text in password
       # field search
-        - search|field_simple
+        - search|field
             title: Search
             description|text
               text: Element %%_info.
@@ -94,7 +94,7 @@ forms
             - name: search_macro
             - value: text in search 2
       # field url
-        - url|field_simple
+        - url|field
             title: URL
             description|text
               text: Element %%_info.
@@ -120,7 +120,7 @@ forms
             - name: url_macro
             - value: http://2.example.com
       # field phone
-        - phone|field_simple
+        - phone|field
             title: Phone
             description|text
               text: Use international format of mobile phone numbers.
@@ -142,7 +142,7 @@ forms
             - name: phone_macro
             - value: &#43;0003334444444
       # field email
-        - email|field_simple
+        - email|field
             title: EMail
             description|text
               text: Element %%_info.
@@ -183,7 +183,7 @@ forms
             - multiple: multiple
             - accept: image/*,audio/*,video/*
       # field number
-        - number|field_simple
+        - number|field
             title: Number
             description|text
               text: Element %%_info.
@@ -212,7 +212,7 @@ forms
             - max: +1000
             - step: 0.2
       # field range
-        - range|field_simple
+        - range|field
             title: Range
             description|text
               text: Element %%_info.
@@ -241,7 +241,7 @@ forms
             - max: +1
             - step: 0.2
       # field date
-        - date|field_simple
+        - date|field
             title: Date
             description|text
               text: Element %%_info.
@@ -266,7 +266,7 @@ forms
             element_attributes
             - name: date_macro
       # field time
-        - time|field_simple
+        - time|field
             title: Time
             description|text
               text: Element %%_info.
@@ -300,7 +300,7 @@ forms
             selected
             - 424: 424
       # field color
-        - color|field_simple
+        - color|field
             title: Color
             description|text
               text: Element %%_info.
@@ -324,7 +324,7 @@ forms
             - name: color_macro
             - value: #eeeeee
       # field textarea
-        - textarea|field_simple
+        - textarea|field
             title: Textarea
             description|text
               text: Element %%_info.
@@ -352,7 +352,7 @@ forms
             - name: textarea_macro
             - value: text in textarea 2
       # field select
-        - select|field_simple
+        - select|field
             title: Selection list
             description|text
               text: Element %%_info.
@@ -453,7 +453,7 @@ forms
             title_tag_name: legend
             children
           # field checkbox
-            - checkbox|field_simple
+            - checkbox|field
                 title: Checkbox
                 title_position: bottom
                 description|text
@@ -491,7 +491,7 @@ forms
                 attributes
                 - x-type: checkboxes
                 children
-                - checkboxes_1|field_simple
+                - checkboxes_1|field
                     title: Checkbox 1
                     title_position: bottom
                     attributes
@@ -503,7 +503,7 @@ forms
                         - type: checkbox
                         - name: checkboxes_1
                         - value: checkboxes_1
-                - checkboxes_2|field_simple
+                - checkboxes_2|field
                     title: Checkbox 2 (checked)
                     title_position: bottom
                     attributes
@@ -516,7 +516,7 @@ forms
                         - name: checkboxes_2
                         - value: checkboxes_2
                         - checked: checked
-                - checkboxes_3|field_simple
+                - checkboxes_3|field
                     title: Checkbox 3 (disabled)
                     title_position: bottom
                     attributes
@@ -529,7 +529,7 @@ forms
                         - name: checkboxes_3
                         - value: checkboxes_3
                         - disabled: disabled
-                - checkboxes_4|field_simple
+                - checkboxes_4|field
                     title: Checkbox 4 (disabled + checked)
                     title_position: bottom
                     attributes
@@ -601,7 +601,7 @@ forms
                 attributes
                 - x-type: radiobuttons
                 children
-                - radios_1|field_simple
+                - radios_1|field
                     title: Radio 1
                     title_position: bottom
                     attributes
@@ -613,7 +613,7 @@ forms
                         - type: radio
                         - name: radios
                         - value: radios_1
-                - radios_2|field_simple
+                - radios_2|field
                     title: Radio 2 (checked)
                     title_position: bottom
                     attributes
@@ -626,7 +626,7 @@ forms
                         - name: radios
                         - value: radios_2
                         - checked: checked
-                - radios_3|field_simple
+                - radios_3|field
                     title: Radio 3 (disabled)
                     title_position: bottom
                     attributes

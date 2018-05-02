@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_radiobutton extends field_simple {
+          class field_radiobutton extends field {
 
   public $title = 'Radiobutton';
   public $title_position = 'bottom';

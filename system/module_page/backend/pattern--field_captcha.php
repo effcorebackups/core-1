@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_captcha extends field_simple {
+          class field_captcha extends field {
 
   public $title = 'Captcha';
   public $description = 'Write the characters from the picture.';

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_email extends field_simple {
+          class field_email extends field {
 
   public $title = 'EMail';
   public $element_attributes_default = [

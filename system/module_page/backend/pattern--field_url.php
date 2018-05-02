@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_url extends field_simple {
+          class field_url extends field {
 
   public $title = 'URL';
   public $element_attributes_default = [

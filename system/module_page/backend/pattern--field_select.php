@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_select extends field_simple {
+          class field_select extends field {
 
   public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'select';

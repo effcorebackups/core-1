@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_password extends field_simple {
+          class field_password extends field {
 
   public $title = 'Password';
   public $element_attributes_default = [

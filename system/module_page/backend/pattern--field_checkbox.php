@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_checkbox extends field_simple {
+          class field_checkbox extends field {
 
   public $title = 'Checkbox';
   public $title_position = 'bottom';

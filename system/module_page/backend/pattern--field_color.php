@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_color extends field_simple {
+          class field_color extends field {
 
   public $title = 'Color';
   public $element_attributes_default = [
