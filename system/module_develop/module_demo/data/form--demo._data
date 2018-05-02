@@ -572,6 +572,7 @@ forms
                   - info: &lt;input type="radio"&gt;
                 element_attributes
                 - name: radio_macro
+                - value: radio_macro_1
             - radio_macro_2|field_radiobutton
                 title: Radiobutton 2 (macro)
                 description|text
@@ -580,6 +581,7 @@ forms
                   - info: &lt;input type="radio"&gt;
                 element_attributes
                 - name: radio_macro
+                - value: radio_macro_2
           # field radiobuttons
             - radios|container
                 tag_name: x-group
