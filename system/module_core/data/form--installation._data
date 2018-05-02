@@ -38,7 +38,7 @@ forms
                 - pattern: [a-zA-Z0-9-_]+
           # host name
             - host_name|field_text
-                title: Host name
+                title: Hostname
                 description|text
                   text: Allowable characters: %%_chars. Examples: %%_examples.
                   args
