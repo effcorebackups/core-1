@@ -6,7 +6,7 @@
 
 namespace effcore {
           class form extends markup
-          implements has_different_cache {
+          implements external {
 
   const input_min_number = -10000000000;
   const input_max_number = +10000000000;
@@ -133,7 +133,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return [];
   }
 

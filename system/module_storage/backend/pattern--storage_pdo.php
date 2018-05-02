@@ -8,7 +8,7 @@ namespace effcore {
           use \PDO as pdo;
           use \PDOException as pdo_exception;
           class storage_pdo
-          implements has_different_cache {
+          implements external {
 
   public $id;
   public $driver;
@@ -332,7 +332,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return ['id' => 'id'];
   }
 

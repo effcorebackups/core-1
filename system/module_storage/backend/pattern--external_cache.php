@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class different_cache {
+          class external_cache {
 
   public $cache_name;
 
@@ -16,13 +16,13 @@ namespace effcore {
     }
   }
 
-  function get_cache_name() {
+  function external_cache_name_get() {
     return $this->cache_name;
   }
 
-  function get_different_cache() {
+  function external_cache_load() {
     return cache::select(
-      $this->get_cache_name()
+      $this->external_cache_name_get()
     );
   }
 

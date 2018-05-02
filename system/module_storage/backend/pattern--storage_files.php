@@ -6,7 +6,7 @@
 
 namespace effcore {
           class storage_files
-          implements has_different_cache {
+          implements external {
 
   function select($dpath, $expand_cache = false) {
     $dpath_parts = explode('/', $dpath);
@@ -16,8 +16,8 @@ namespace effcore {
       $c_pointer = static::$data[$group];
       foreach ($dpath_parts as $c_part) {
         $c_pointer = &factory::arrobj_select_value($c_pointer, $c_part);
-        if ($expand_cache && $c_pointer instanceof different_cache) {
-          $c_pointer = $c_pointer->get_different_cache();
+        if ($expand_cache && $c_pointer instanceof external_cache) {
+          $c_pointer = $c_pointer->external_cache_load();
         }
       }
       return $c_pointer;
@@ -48,7 +48,7 @@ namespace effcore {
   static public $data = [];
   static public $changes_dynamic;
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return ['id' => 'id'];
   }
 
@@ -82,13 +82,13 @@ namespace effcore {
     foreach ($data as $c_group => $c_data) {
       static::$data[$c_group] = $c_data;
       foreach (factory::arrobj_values_recursive($c_data, true) as $c_dpath => &$c_value) {
-        if ($c_value instanceof has_different_cache) {
+        if ($c_value instanceof external) {
           $c_cache_id = 'data--'.$c_group.'-'.str_replace('/', '-', $c_dpath);
-          $c_non_different_properties = array_intersect_key((array)$c_value, $c_value::get_non_different_properties());
+          $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::get_not_external_properties());
           cache::update($c_cache_id, $c_value);
-          $c_value = new different_cache(
+          $c_value = new external_cache(
             $c_cache_id,
-            $c_non_different_properties
+            $c_not_external_properties
           );
         }
       }

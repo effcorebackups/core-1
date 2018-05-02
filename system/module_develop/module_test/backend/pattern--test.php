@@ -6,7 +6,7 @@
 
 namespace effcore {
           class test
-          implements has_different_cache {
+          implements external {
 
   public $id;
   public $https = false;
@@ -19,7 +19,7 @@ namespace effcore {
 
   static protected $cache;
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return ['id' => 'id'];
   }
 

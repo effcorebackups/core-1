@@ -6,7 +6,7 @@
 
 namespace effcore {
           class translation
-          implements has_different_cache {
+          implements external {
 
   public $code;
   public $data;
@@ -17,7 +17,7 @@ namespace effcore {
 
   static protected $cache;
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return ['code' => 'code'];
   }
 
@@ -26,8 +26,8 @@ namespace effcore {
     foreach ($translations as $c_module_id => $c_translations) {
       foreach ($c_translations as $c_row_id => $c_translation) {
         if ($c_translation->code === $code) {
-          if ($c_translation instanceof different_cache)
-              $c_translation = $c_translation->get_different_cache();
+          if ($c_translation instanceof external_cache)
+              $c_translation = $c_translation->external_cache_load();
           if (!isset(static::$cache[$c_translation->code]))
                      static::$cache[$c_translation->code] = [];
           static::$cache[$c_translation->code] += $c_translation->data;

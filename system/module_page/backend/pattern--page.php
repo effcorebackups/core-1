@@ -6,7 +6,7 @@
 
 namespace effcore {
           class page
-          implements has_different_cache {
+          implements external {
 
   public $title;
   public $https;
@@ -149,7 +149,7 @@ namespace effcore {
   static protected $cache_frontend;
   static protected $current;
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return ['display' => 'display', 'access' => 'access'];
   }
 
@@ -210,8 +210,8 @@ namespace effcore {
       if (is_array($c_args)) {
         if (!isset($c_page->access) ||
             (isset($c_page->access) && access::check($c_page->access))) {
-          if ($c_page instanceof different_cache)
-              $c_page = $c_page->get_different_cache();
+          if ($c_page instanceof external_cache)
+              $c_page = $c_page->external_cache_load();
           static::$current = $c_page;
         # filter arguments
           foreach ($c_args as $c_key => $c_value) {

@@ -6,7 +6,7 @@
 
 namespace effcore {
           class entity
-          implements has_different_cache, post_parsing {
+          implements external, post_parsing {
 
   public $name;
   public $storage_id;
@@ -96,7 +96,7 @@ namespace effcore {
   static protected $cache;
   static protected $cache_orig;
 
-  static function get_non_different_properties() {
+  static function get_not_external_properties() {
     return [
       'name'       => 'name',
       'storage_id' => 'storage_id',
@@ -111,8 +111,8 @@ namespace effcore {
       foreach ($c_entities as $c_row_id => $c_entity) {
         if ($name == '' || (
             $name && $name == $c_entity->name)) {
-          if ($c_entity instanceof different_cache)
-              $c_entity = $c_entity->get_different_cache();
+          if ($c_entity instanceof external_cache)
+              $c_entity = $c_entity->external_cache_load();
           static::$cache[$c_entity->name] = $c_entity;
           static::$cache[$c_entity->name]->module_id = $c_module_id;
         }

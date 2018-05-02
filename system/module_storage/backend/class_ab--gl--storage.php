@@ -14,8 +14,8 @@ namespace effcore {
     foreach (storage_files::$data['storages'] as $c_module_id => $c_module_storages) {
       foreach ($c_module_storages as $c_row_id => $c_storage) {
         if ($c_storage->id === $storage_id) {
-          if ($c_storage instanceof different_cache)
-              $c_storage = $c_storage->get_different_cache();
+          if ($c_storage instanceof external_cache)
+              $c_storage = $c_storage->external_cache_load();
           static::$cache[$c_storage->id] = $c_storage;
         }
       }

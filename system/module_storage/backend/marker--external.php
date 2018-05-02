@@ -6,11 +6,11 @@
 
 namespace effcore {
 
-  interface has_different_cache {
+  interface external {
 
     # indicates that the cache for marked pattern should be separated by files
 
-    static function get_non_different_properties();
+    static function get_not_external_properties();
 
   }
 
