@@ -12,7 +12,9 @@ demo_data
   demo_string_empty: 
   demo_string: text
   demo_string_text|text
-    text: like code: new text('any text') # translated by default
+    text: some translated text
+  demo_string_text_simple|text_simple
+    text: some raw text
 # ─────────────────────────────────────────────────────────────────────
 # compound types
 # ─────────────────────────────────────────────────────────────────────
