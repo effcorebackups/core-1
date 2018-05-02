@@ -41,7 +41,7 @@ forms
             - minlength: 5
             - pattern: [a-zA-Z0-9]+
       # field password
-        - password|field
+        - password|field_simple
             title: Password
             description|text
               text: Element %%_info.
@@ -68,7 +68,7 @@ forms
             - name: password_macro
             - value: text in password
       # field search
-        - search|field
+        - search|field_simple
             title: Search
             description|text
               text: Element %%_info.
@@ -94,7 +94,7 @@ forms
             - name: search_macro
             - value: text in search 2
       # field url
-        - url|field
+        - url|field_simple
             title: URL
             description|text
               text: Element %%_info.
@@ -120,7 +120,7 @@ forms
             - name: url_macro
             - value: http://2.example.com
       # field phone
-        - phone|field
+        - phone|field_simple
             title: Phone
             description|text
               text: Use international format of mobile phone numbers.
@@ -142,7 +142,7 @@ forms
             - name: phone_macro
             - value: &#43;0003334444444
       # field email
-        - email|field
+        - email|field_simple
             title: EMail
             description|text
               text: Element %%_info.
@@ -183,7 +183,7 @@ forms
             - multiple: multiple
             - accept: image/*,audio/*,video/*
       # field number
-        - number|field
+        - number|field_simple
             title: Number
             description|text
               text: Element %%_info.
@@ -212,7 +212,7 @@ forms
             - max: +1000
             - step: 0.2
       # field range
-        - range|field
+        - range|field_simple
             title: Range
             description|text
               text: Element %%_info.
@@ -241,7 +241,7 @@ forms
             - max: +1
             - step: 0.2
       # field date
-        - date|field
+        - date|field_simple
             title: Date
             description|text
               text: Element %%_info.
@@ -266,7 +266,7 @@ forms
             element_attributes
             - name: date_macro
       # field time
-        - time|field
+        - time|field_simple
             title: Time
             description|text
               text: Element %%_info.
@@ -300,7 +300,7 @@ forms
             selected
             - 424: 424
       # field color
-        - color|field
+        - color|field_simple
             title: Color
             description|text
               text: Element %%_info.
@@ -324,7 +324,7 @@ forms
             - name: color_macro
             - value: #eeeeee
       # field textarea
-        - textarea|field
+        - textarea|field_simple
             title: Textarea
             description|text
               text: Element %%_info.
@@ -340,7 +340,7 @@ forms
                 - maxlength: 255
                 - required: required
                 children
-                - content|text
+                - content|text_simple
                     text: text in textarea 1
         - textarea_macro|field_textarea
             title: Textarea (macro)
@@ -352,7 +352,7 @@ forms
             - name: textarea_macro
             - value: text in textarea 2
       # field select
-        - select|field
+        - select|field_simple
             title: Selection list
             description|text
               text: Element %%_info.
@@ -453,7 +453,7 @@ forms
             title_tag_name: legend
             children
           # field checkbox
-            - checkbox|field
+            - checkbox|field_simple
                 title: Checkbox
                 title_position: bottom
                 description|text
@@ -491,7 +491,7 @@ forms
                   - boxes: boxes
                   - checkboxes: checkboxes
                 children
-                - checkboxes_1|field
+                - checkboxes_1|field_simple
                     title: Checkbox 1
                     title_position: bottom
                     children
@@ -501,7 +501,7 @@ forms
                         - type: checkbox
                         - name: checkboxes_1
                         - value: checkboxes_1
-                - checkboxes_2|field
+                - checkboxes_2|field_simple
                     title: Checkbox 2 (checked)
                     title_position: bottom
                     children
@@ -512,7 +512,7 @@ forms
                         - name: checkboxes_2
                         - value: checkboxes_2
                         - checked: checked
-                - checkboxes_3|field
+                - checkboxes_3|field_simple
                     title: Checkbox 3 (disabled)
                     title_position: bottom
                     children
@@ -523,7 +523,7 @@ forms
                         - name: checkboxes_3
                         - value: checkboxes_3
                         - disabled: disabled
-                - checkboxes_4|field
+                - checkboxes_4|field_simple
                     title: Checkbox 4 (disabled + checked)
                     title_position: bottom
                     children
@@ -595,7 +595,7 @@ forms
                   - boxes: boxes
                   - radiobuttons: radiobuttons
                 children
-                - radios_1|field
+                - radios_1|field_simple
                     title: Radio 1
                     title_position: bottom
                     children
@@ -605,7 +605,7 @@ forms
                         - type: radio
                         - name: radios
                         - value: radios_1
-                - radios_2|field
+                - radios_2|field_simple
                     title: Radio 2 (checked)
                     title_position: bottom
                     children
@@ -616,7 +616,7 @@ forms
                         - name: radios
                         - value: radios_2
                         - checked: checked
-                - radios_3|field
+                - radios_3|field_simple
                     title: Radio 3 (disabled)
                     title_position: bottom
                     children
