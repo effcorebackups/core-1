@@ -12,17 +12,12 @@ forms
         title_tag_name: legend
         children
         - email|field_email
-        - nick|field
+        - nick|field_text
             title: Nick
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: text
-                - name: nick
-                - required: required
-                - minlength: 4
-                - maxlength: 32
+            element_attributes
+            - name: nick
+            - minlength: 4
+            - maxlength: 32
         - avatar|field_file
             title: Avatar
             max_file_size: 10K
