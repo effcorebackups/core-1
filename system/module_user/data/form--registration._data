@@ -11,7 +11,7 @@ forms
         title_tag_name: legend
         children
         - email|field_email
-        - nick|field
+        - nick|field_simple
             title: Nick
             children
             - element|markup_simple
