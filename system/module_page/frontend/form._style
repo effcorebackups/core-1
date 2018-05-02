@@ -43,8 +43,6 @@
   input[name="nick"] {text-transform: lowercase}
 
   /* checkboxes and radiobuttons */
-  form .boxes x-field {margin: 10px 0}
-  form .boxes label {font-size: 1em}
   input[type="checkbox"],
   input[type="radio"] {display: inline-block; margin: 0 5px 2px 0; vertical-align: middle; cursor: pointer; background-color: white}
   input[type="radio"] {border-radius: 13px}
@@ -60,6 +58,12 @@
   select:disabled {border-color: lightgray}
   input[type="checkbox"]:disabled:checked,
   input[type="radio"]:disabled:checked {border-color: silver; background-color: lightgray}
+
+  /* checkboxes and radiobuttons in group */
+  x-group[x-type="checkboxes"]   x-field,
+  x-group[x-type="radiobuttons"] x-field {margin: 10px 0}
+  x-group[x-type="checkboxes"]   x-field label,
+  x-group[x-type="radiobuttons"] x-field label {font-size: 1em}
 
   /* buttons */
   button {

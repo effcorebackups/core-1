@@ -487,9 +487,7 @@ forms
                   args
                   - info: &lt;input type="checkbox"&gt;
                 attributes
-                - class
-                  - boxes: boxes
-                  - checkboxes: checkboxes
+                - x-type: checkboxes
                 children
                 - checkboxes_1|field_simple
                     title: Checkbox 1
@@ -591,9 +589,7 @@ forms
                   args
                   - info: &lt;input type="radio"&gt;
                 attributes
-                - class
-                  - boxes: boxes
-                  - radiobuttons: radiobuttons
+                - x-type: radiobuttons
                 children
                 - radios_1|field_simple
                     title: Radio 1

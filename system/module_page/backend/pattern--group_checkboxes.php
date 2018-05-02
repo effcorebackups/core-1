@@ -8,7 +8,7 @@ namespace effcore {
           class group_checkboxes extends container {
 
   public $tag_name = 'x-group';
-  public $attributes = ['class' => ['boxes' => 'boxes', 'checkboxes' => 'checkboxes']];
+  public $attributes = ['x-type' => 'checkboxes'];
 # ─────────────────────────────────────────────────────────────────────
   public $field_tag_name = 'x-field';
   public $field_class = '\\effcore\\field_checkbox';
