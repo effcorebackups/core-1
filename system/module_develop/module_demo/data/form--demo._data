@@ -18,6 +18,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="text"&gt;
+            attributes
+            - x-type: text
             children
             - element|markup_simple
                 tag_name: input
@@ -47,6 +49,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="password"&gt;
+            attributes
+            - x-type: password
             children
             - element|markup_simple
                 tag_name: input
@@ -74,6 +78,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="search"&gt;
+            attributes
+            - x-type: search
             children
             - element|markup_simple
                 tag_name: input
@@ -100,6 +106,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="url"&gt;
+            attributes
+            - x-type: url
             children
             - element|markup_simple
                 tag_name: input
@@ -124,6 +132,8 @@ forms
             title: Phone
             description|text
               text: Use international format of mobile phone numbers.
+            attributes
+            - x-type: phone
             children
             - element|markup_simple
                 tag_name: input
@@ -148,6 +158,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="email"&gt;
+            attributes
+            - x-type: email
             children
             - element|markup_simple
                 tag_name: input
@@ -189,6 +201,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="number"&gt;
+            attributes
+            - x-type: number
             children
             - element|markup_simple
                 tag_name: input
@@ -218,6 +232,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="range"&gt;
+            attributes
+            - x-type: range
             children
             - element|markup_simple
                 tag_name: input
@@ -247,6 +263,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="date"&gt;
+            attributes
+            - x-type: date
             children
             - element|markup_simple
                 tag_name: input
@@ -272,6 +290,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="time"&gt;
+            attributes
+            - x-type: time
             children
             - element|markup_simple
                 tag_name: input
@@ -306,6 +326,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;input type="color"&gt;
+            attributes
+            - x-type: color
             children
             - element|markup_simple
                 tag_name: input
@@ -330,6 +352,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;textarea&gt;&lt;/textarea&gt;
+            attributes
+            - x-type: textarea
             children
             - element|markup
                 tag_name: textarea
@@ -358,6 +382,8 @@ forms
               text: Element %%_info.
               args
               - info: &lt;select&gt;
+            attributes
+            - x-type: select
             children
             - element|markup
                 tag_name: select
