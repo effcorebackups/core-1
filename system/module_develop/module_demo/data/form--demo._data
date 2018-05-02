@@ -460,6 +460,8 @@ forms
                   text: Element %%_info.
                   args
                   - info: &lt;checkbox&gt;
+                attributes
+                - x-type: checkbox
                 children
                 - element|markup_simple
                     tag_name: input
@@ -492,6 +494,8 @@ forms
                 - checkboxes_1|field_simple
                     title: Checkbox 1
                     title_position: bottom
+                    attributes
+                    - x-type: checkbox
                     children
                     - element|markup_simple
                         tag_name: input
@@ -502,6 +506,8 @@ forms
                 - checkboxes_2|field_simple
                     title: Checkbox 2 (checked)
                     title_position: bottom
+                    attributes
+                    - x-type: checkbox
                     children
                     - element|markup_simple
                         tag_name: input
@@ -513,6 +519,8 @@ forms
                 - checkboxes_3|field_simple
                     title: Checkbox 3 (disabled)
                     title_position: bottom
+                    attributes
+                    - x-type: checkbox
                     children
                     - element|markup_simple
                         tag_name: input
@@ -524,6 +532,8 @@ forms
                 - checkboxes_4|field_simple
                     title: Checkbox 4 (disabled + checked)
                     title_position: bottom
+                    attributes
+                    - x-type: checkbox
                     children
                     - element|markup_simple
                         tag_name: input
@@ -594,6 +604,8 @@ forms
                 - radios_1|field_simple
                     title: Radio 1
                     title_position: bottom
+                    attributes
+                    - x-type: radiobutton
                     children
                     - element|markup_simple
                         tag_name: input
@@ -604,6 +616,8 @@ forms
                 - radios_2|field_simple
                     title: Radio 2 (checked)
                     title_position: bottom
+                    attributes
+                    - x-type: radiobutton
                     children
                     - element|markup_simple
                         tag_name: input
@@ -615,6 +629,8 @@ forms
                 - radios_3|field_simple
                     title: Radio 3 (disabled)
                     title_position: bottom
+                    attributes
+                    - x-type: radiobutton
                     children
                     - element|markup_simple
                         tag_name: input

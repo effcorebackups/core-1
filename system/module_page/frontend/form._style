@@ -60,9 +60,9 @@
   input[type="radio"]:disabled:checked {border-color: silver; background-color: lightgray}
 
   /* checkboxes and radiobuttons in group */
-  x-group[x-type="checkboxes"]   x-field,
+  x-group[x-type="checkboxes"] x-field,
   x-group[x-type="radiobuttons"] x-field {margin: 10px 0}
-  x-group[x-type="checkboxes"]   x-field label,
+  x-group[x-type="checkboxes"] x-field label,
   x-group[x-type="radiobuttons"] x-field label {font-size: 1em}
 
   /* buttons */
@@ -89,7 +89,7 @@
   form .palette x-field {display: inline-block; margin: 0 4px 0 0}
   form .palette x-field input[type="radio"] {margin: 0; border-color: white}
   form .palette x-field input[type="radio"]:checked {border-color: black}
-  form .palette x-field input[value="color_white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
+  form .palette x-field input[value="white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
 
   /* license */
   form x-license {
