@@ -8,6 +8,7 @@ namespace effcore {
           class field_number extends field {
 
   public $title = 'Number';
+  public $attributes = ['x-type' => 'number'];
   public $element_attributes_default = [
     'type'     => 'number',
     'name'     => 'number',

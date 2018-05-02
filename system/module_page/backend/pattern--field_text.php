@@ -8,6 +8,7 @@ namespace effcore {
           class field_text extends field {
 
   public $title = 'Text';
+  public $attributes = ['x-type' => 'text'];
   public $element_attributes_default = [
     'type'      => 'text',
     'name'      => 'text',

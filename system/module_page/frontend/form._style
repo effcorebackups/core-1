@@ -84,15 +84,15 @@
   button:disabled {cursor: default; background-color: lightgray !important}
 
   /* palette */
-  form .palette {margin: 5px 0}
-  form .palette x-title {margin-bottom: 5px}
-  form .palette x-field {display: inline-block; margin: 0 4px 0 0}
-  form .palette x-field input[type="radio"] {margin: 0; border-color: white}
-  form .palette x-field input[type="radio"]:checked {border-color: black}
-  form .palette x-field input[value="white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
+  x-group[x-type="palette"] {margin: 5px 0}
+  x-group[x-type="palette"] x-title {margin-bottom: 5px}
+  x-group[x-type="palette"] x-field {display: inline-block; margin: 0 4px 0 0}
+  x-group[x-type="palette"] x-field input[type="radio"] {margin: 0; border-color: white}
+  x-group[x-type="palette"] x-field input[type="radio"]:checked {border-color: black}
+  x-group[x-type="palette"] x-field input[value="white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
 
   /* license */
-  form x-license {
+  x-license {
     display: block;
     max-height: 300px;
     overflow: auto;
@@ -102,7 +102,7 @@
     background: white}
 
   /* captcha */
-  form x-field.captcha svg {display: block; margin: 20px 0}
+  x-field[x-type="captcha"] svg {display: block; margin: 20px 0}
 
   /* particular cases */
   form#user_delete,

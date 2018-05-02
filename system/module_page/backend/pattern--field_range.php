@@ -8,6 +8,7 @@ namespace effcore {
           class field_range extends field {
 
   public $title = 'Range';
+  public $attributes = ['x-type' => 'range'];
   public $element_attributes_default = [
     'type'     => 'range',
     'name'     => 'range',

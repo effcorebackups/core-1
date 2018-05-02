@@ -8,6 +8,7 @@ namespace effcore {
           class field_color extends field {
 
   public $title = 'Color';
+  public $attributes = ['x-type' => 'color'];
   public $element_attributes_default = [
     'type'     => 'color',
     'name'     => 'color',

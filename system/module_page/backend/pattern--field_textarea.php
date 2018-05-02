@@ -8,6 +8,7 @@ namespace effcore {
           class field_textarea extends field {
 
   public $title = 'Textarea';
+  public $attributes = ['x-type' => 'textarea'];
   public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'textarea';
   public $element_attributes_default = [

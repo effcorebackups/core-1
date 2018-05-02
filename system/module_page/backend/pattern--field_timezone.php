@@ -7,6 +7,8 @@
 namespace effcore {
           class field_timezone extends field_select {
 
+  public $attributes = ['x-type' => 'timezone'];
+
   function build() {
     parent::build();
     $this->option_insert('- select -', 'not_selected');

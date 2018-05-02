@@ -8,6 +8,7 @@ namespace effcore {
           class field_date extends field {
 
   public $title = 'Date';
+  public $attributes = ['x-type' => 'date'];
   public $element_attributes_default = [
     'type'     => 'date',
     'name'     => 'date',
