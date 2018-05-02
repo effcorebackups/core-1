@@ -11,21 +11,14 @@ forms
         title_tag_name: legend
         children
       # driver
-        - is_mysql|field
+        - is_mysql|field_radiobutton
             title: MySQL
-            title_position: bottom
             attributes
             - class
-              - boxes: boxes
-              - radiobuttons: radiobuttons
               - before-container: before-container
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: radio
-                - name: driver
-                - value: mysql
+            element_attributes
+            - name: driver
+            - value: mysql
       # mysql params
         - mysql|container
             tag_name: fieldset
@@ -84,21 +77,14 @@ forms
                 - minlength: null
                 - required: null
       # driver
-        - is_sqlite|field
+        - is_sqlite|field_radiobutton
             title: SQLite
-            title_position: bottom
             attributes
             - class
-              - boxes: boxes
-              - radiobuttons: radiobuttons
               - before-container: before-container
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: radio
-                - name: driver
-                - value: sqlite
+            element_attributes
+            - name: driver
+            - value: sqlite
       # sqlite params
         - sqlite|container
             tag_name: fieldset
