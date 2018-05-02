@@ -10,14 +10,14 @@ namespace effcore {
   public $tag_name = 'fieldset';
   public $title = 'License agreement';
   public $title_tag_name = 'legend';
-  public $title_for_agree = 'I accept the terms of the license agreement';
+  public $agree_title = 'I accept the terms of the license agreement';
 
   function build() {
     $lang_code = language::get_current();
-    $license_file = new file(dir_root.'license'.($lang_code === 'en' ? '' : '-'.$lang_code).'.md');
-    $markup_license = new markup('x-license', [], markdown::markdown_to_markup($license_file->load()));
-    $markup_agree = new group_checkboxes(['is_agree' => $this->title_for_agree], ['is_agree' => 'is_agree']);
-    $markup_agree->attribute_insert('name', 'is_agree', 'element_attributes');
+    $license = new file(dir_root.'license'.($lang_code === 'en' ? '' : '-'.$lang_code).'.md');
+    $markup_license = new markup('x-license', [], markdown::markdown_to_markup($license->load()));
+    $markup_agree = new field_checkbox($this->agree_title);
+    $markup_agree->element_attributes = ['name' => 'is_agree', 'value' => 'is_agree', 'required' => 'required'];
     $markup_agree->build();
     $this->child_insert($markup_license, 'license');
     $this->child_insert($markup_agree, 'is_agree');
