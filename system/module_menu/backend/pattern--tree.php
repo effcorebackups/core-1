@@ -26,26 +26,16 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
       foreach ($c_trees as $c_row_id => $c_tree) {
-        if (isset(static::$cache_trees[$c_tree->id])) {
-          console::add_log('storage', 'load',
-            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'tree', 'id' => $c_tree->id]
-          );
-        } else {
-          static::$cache_trees[$c_tree->id] = $c_tree;
-          static::$cache_trees[$c_tree->id]->module_id = $c_module_id;
-        }
+        if (isset(static::$cache_trees[$c_tree->id])) console::add_log_about_duplicate('tree', $c_tree->id);
+        static::$cache_trees[$c_tree->id] = $c_tree;
+        static::$cache_trees[$c_tree->id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
       foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-        if (isset(static::$cache_tree_items[$c_tree_item->id])) {
-          console::add_log('storage', 'load',
-            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'tree_item', 'id' => $c_tree_item->id]
-          );
-        } else {
-          static::$cache_tree_items[$c_tree_item->id] = $c_tree_item;
-          static::$cache_tree_items[$c_tree_item->id]->module_id = $c_module_id;
-        }
+        if (isset(static::$cache_tree_items[$c_tree_item->id])) console::add_log_about_duplicate('tree_item', $c_tree_item->id);
+        static::$cache_tree_items[$c_tree_item->id] = $c_tree_item;
+        static::$cache_tree_items[$c_tree_item->id]->module_id = $c_module_id;
       }
     }
   }
