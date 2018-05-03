@@ -60,14 +60,26 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
       foreach ($c_tabs as $c_row_id => $c_tab) {
-        static::$cache_tabs[$c_tab->id] = $c_tab;
-        static::$cache_tabs[$c_tab->id]->module_id = $c_module_id;
+        if (isset(static::$cache_tabs[$c_tab->id])) {
+          console::add_log('storage', 'load',
+            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'tab', 'id' => $c_tab->id]
+          );
+        } else {
+          static::$cache_tabs[$c_tab->id] = $c_tab;
+          static::$cache_tabs[$c_tab->id]->module_id = $c_module_id;
+        }
       }
     }
     foreach (storage::get('files')->select('tabs_items') as $c_module_id => $c_tabs_items) {
       foreach ($c_tabs_items as $c_row_id => $c_item) {
-        static::$cache_tabs_items[$c_item->id] = $c_item;
-        static::$cache_tabs_items[$c_item->id]->module_id = $c_module_id;
+        if (isset(static::$cache_tabs_items[$c_item->id])) {
+          console::add_log('storage', 'load',
+            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'tab_item', 'id' => $c_item->id]
+          );
+        } else {
+          static::$cache_tabs_items[$c_item->id] = $c_item;
+          static::$cache_tabs_items[$c_item->id]->module_id = $c_module_id;
+        }
       }
     }
   }
