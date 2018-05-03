@@ -102,7 +102,7 @@ namespace effcore {
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
         }
         $file->direct_append(
-          $c_log->value.': '.
+          factory::time_get().' | '.
           $c_log->object.' | '.
           $c_log->action.' | '.$c_info.nl
         );
