@@ -7,11 +7,12 @@
 namespace effcore {
           abstract class console {
 
+  const directory = dir_dynamic.'logs/';
   static protected $data = [];
   static protected $information = [];
 
   static function add_log($object, $action, $description = '', $value = '', $time = 0, $args = []) {
-    static::$data[] = [
+    static::$data[] = (object)[
       'object'      => $object,
       'action'      => $action,
       'description' => $description,
@@ -49,11 +50,11 @@ namespace effcore {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
-      if (floatval($c_log['time'])) {
-        if (!isset($statistics[$c_log['object']]))
-                   $statistics[$c_log['object']] = 0;
-        $statistics[$c_log['object']] += floatval($c_log['time']);
-        $total += floatval($c_log['time']);
+      if (floatval($c_log->time)) {
+        if (!isset($statistics[$c_log->object]))
+                   $statistics[$c_log->object] = 0;
+        $statistics[$c_log->object] += floatval($c_log->time);
+        $total += floatval($c_log->time);
       }
     }
     $diagram = new markup('dl', ['class' => ['diagram-load' => 'diagram-load']]);
@@ -75,21 +76,38 @@ namespace effcore {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
     foreach (static::select_all_logs() as $c_log) {
-      $c_row_class = factory::to_css_class($c_log['object']);
-      $c_value_class = $c_log['value'] === 'error' ?
+      $c_row_class = factory::to_css_class($c_log->object);
+      $c_value_class = $c_log->value === 'error' ?
         ['value' => 'value', 'value-error' => 'value-error'] :
         ['value' => 'value'];
       $tbody[] = new table_body_row(['class' => [$c_row_class => $c_row_class]], [
-        new table_body_row_cell(['class' => ['time'        => 'time']],        locale::format_msecond($c_log['time'])),
-        new table_body_row_cell(['class' => ['object'      => 'object']],      translation::get($c_log['object'],      $c_log['args'])),
-        new table_body_row_cell(['class' => ['action'      => 'action']],      translation::get($c_log['action'],      $c_log['args'])),
-        new table_body_row_cell(['class' => ['description' => 'description']], translation::get($c_log['description'], $c_log['args'])),
-        new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log['value']))
+        new table_body_row_cell(['class' => ['time'        => 'time']],        locale::format_msecond($c_log->time)),
+        new table_body_row_cell(['class' => ['object'      => 'object']],      translation::get($c_log->object,      $c_log->args)),
+        new table_body_row_cell(['class' => ['action'      => 'action']],      translation::get($c_log->action,      $c_log->args)),
+        new table_body_row_cell(['class' => ['description' => 'description']], translation::get($c_log->description, $c_log->args)),
+        new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log->value))
       ]);
     }
     return (
       new table(['class' => ['logs' => 'logs']], $tbody, $thead)
     );
+  }
+
+  static function store_log($log_level = 'error') {
+    $file = new file(static::directory.factory::date_get().'.log');
+    foreach (static::$data as $c_log) {
+      if ($c_log->value == $log_level) {
+        $c_info = $c_log->description;
+        foreach ($c_log->args as $c_key => $c_value) {
+          $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
+        }
+        $file->direct_append(
+          $c_log->value.': '.
+          $c_log->object.' | '.
+          $c_log->action.' | '.$c_info.nl
+        );
+      }
+    }
   }
 
 }}

@@ -62,6 +62,7 @@ translations
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
     - Driver: Драйвер
+    - duplicate of %%_type "%%_id" was found: был найден дубликат "%%_id" типа %%_type
     - Edit user %%_nick_context{2}: Редактировать пользователя %%_nick_context{2}
     - edit: редактировать
     - email: адрес электронной почты
@@ -231,6 +232,7 @@ translations
     - Timezone: Часовой пояс
     - Title: Заголовок
     - to front page: на главную страницу
+    - token: токен
     - Total: Всего
     - Translate: Перевод
     - Tree: Дерево

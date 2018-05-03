@@ -133,6 +133,7 @@ namespace effcore {
   }
   header('Content-Length: '.strlen($output), true);
   print $output;
+  console::store_log();
   exit();
 
 }

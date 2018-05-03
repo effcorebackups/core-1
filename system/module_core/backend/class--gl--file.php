@@ -112,6 +112,10 @@ namespace effcore {
     return file_put_contents($this->get_path(), $this->data);
   }
 
+  function direct_append($data) {
+    return file_put_contents($this->get_path(), $data, FILE_APPEND);
+  }
+
   function move($new_dirs, $new_name = null) {
     $path_old = $this->get_path();
     $path_new = $new_dirs.($new_name ?: $this->get_file());
