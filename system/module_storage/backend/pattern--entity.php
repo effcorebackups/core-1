@@ -113,6 +113,7 @@ namespace effcore {
             $name && $name == $c_entity->name)) {
           if ($c_entity instanceof external_cache)
               $c_entity = $c_entity->external_cache_load();
+          if (isset(static::$cache[$c_entity->name])) console::add_log_about_duplicate('entity', $c_entity->name);
           static::$cache[$c_entity->name] = $c_entity;
           static::$cache[$c_entity->name]->module_id = $c_module_id;
         }
