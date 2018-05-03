@@ -94,7 +94,7 @@ namespace effcore {
   }
 
   static function store_log($log_level = 'error') {
-    $file = new file(static::directory.factory::date_get().'.log');
+    $file = new file(static::directory.$log_level.'-'.factory::date_get().'.log');
     foreach (static::$data as $c_log) {
       if ($c_log->value == $log_level) {
         $c_info = $c_log->description;

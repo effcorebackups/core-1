@@ -88,6 +88,7 @@ namespace effcore {
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
                   $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
           header('HTTP/1.1 304 Not Modified');
+          console::store_log();
           exit();
         }
       # send headers and data to the output buffer
@@ -100,6 +101,7 @@ namespace effcore {
           }
         }
         print $data;
+        console::store_log();
         exit();
     # case for any other file (and for large files too)
       } else {
@@ -115,6 +117,7 @@ namespace effcore {
           }
           fclose($file);
         }
+        console::store_log();
         exit();
       }
     }
