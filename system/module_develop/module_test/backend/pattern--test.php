@@ -26,14 +26,9 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('tests') as $c_module_id => $c_tests) {
       foreach ($c_tests as $c_row_id => $c_test) {
-        if (isset(static::$cache[$c_test->id])) {
-          console::add_log('storage', 'load',
-            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'test', 'id' => $c_test->id]
-          );
-        } else {
-          static::$cache[$c_test->id] = $c_test;
-          static::$cache[$c_test->id]->module_id = $c_module_id;
-        }
+        if (isset(static::$cache[$c_test->id])) console::add_log_about_duplicate('test', $c_test->id);
+        static::$cache[$c_test->id] = $c_test;
+        static::$cache[$c_test->id]->module_id = $c_module_id;
       }
     }
   }
