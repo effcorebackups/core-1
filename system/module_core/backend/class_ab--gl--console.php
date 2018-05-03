@@ -22,6 +22,12 @@ namespace effcore {
     ];
   }
 
+  static function add_log_about_duplicate($type, $id) {
+    return static::add_log('storage', 'load',
+       'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => $type, 'id' => $id]
+    );
+  }
+
   static function add_information($param, $value) {
     static::$information[$param] = $value;
   }
