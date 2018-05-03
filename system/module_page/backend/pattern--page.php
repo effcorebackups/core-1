@@ -156,14 +156,16 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
       foreach ($c_pages as $c_row_id => $c_page) {
-        static::$cache[$c_module_id.'-'.$c_row_id] = $c_page;
-        static::$cache[$c_module_id.'-'.$c_row_id]->module_id = $c_module_id;
+        if (isset(static::$cache[$c_row_id])) console::add_log_about_duplicate('page', $c_row_id);
+        static::$cache[$c_row_id] = $c_page;
+        static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
       foreach ($c_frontends as $c_row_id => $c_frontend) {
-        static::$cache_frontend[$c_module_id.'-'.$c_row_id] = $c_frontend;
-        static::$cache_frontend[$c_module_id.'-'.$c_row_id]->module_id = $c_module_id;
+        if (isset(static::$cache_frontend[$c_row_id])) console::add_log_about_duplicate('frontend', $c_row_id);
+        static::$cache_frontend[$c_row_id] = $c_frontend;
+        static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
       }
     }
   }
