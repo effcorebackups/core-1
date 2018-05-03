@@ -167,14 +167,9 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('file_types') as $c_module_id => $c_file_types) {
       foreach ($c_file_types as $c_row_id => $c_file_type) {
-        if (isset(static::$cache_file_types[$c_file_type->type])) {
-          console::add_log('storage', 'load',
-            'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => 'file_types', 'id' => $c_file_type->type]
-          );
-        } else {
-          static::$cache_file_types[$c_file_type->type] = $c_file_type;
-          static::$cache_file_types[$c_file_type->type]->module_id = $c_module_id;
-        }
+        if (isset(static::$cache_file_types[$c_file_type->type])) console::add_log_about_duplicate('file_types', $c_file_type->type);
+        static::$cache_file_types[$c_file_type->type] = $c_file_type;
+        static::$cache_file_types[$c_file_type->type]->module_id = $c_module_id;
       }
     }
   }
