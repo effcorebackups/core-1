@@ -38,6 +38,10 @@ namespace effcore {
                          $element->attribute_select('name');
   }
 
+  function get_element_type() {
+    return $this->child_select('element')->attribute_select('type');
+  }
+
   function render() {
     $element = $this->child_select('element');
     if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('class', ['disabled' => 'disabled']);
@@ -74,7 +78,6 @@ namespace effcore {
   ##################
 
   function validate($form, $dpath) {
-
   }
 
 }}
