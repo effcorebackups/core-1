@@ -69,4 +69,12 @@ namespace effcore {
     }
   }
 
+  ##################
+  ### validation ###
+  ##################
+
+  function validate($form, $dpath) {
+
+  }
+
 }}

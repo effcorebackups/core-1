@@ -72,10 +72,11 @@ namespace effcore {
       }
     }
   # renew elements list after build and get all fields
-    $elements = $this->children_select_recursive();
-    $fields   = static::get_fields($this);
+    $elements   = $this->children_select_recursive();
+    $containers = static::get_containers($this);
+    $fields     = static::get_fields($this);
   # call init handlers
-    event::start('on_form_init', $id, [$this, $fields]);
+    event::start('on_form_init', $id, [$this, $containers]);
   # if user click the button
     if (isset($values['form_id'][0]) &&
               $values['form_id'][0] === $id && isset($values['button'][0])) {
@@ -90,9 +91,15 @@ namespace effcore {
           break;
         }
       }
-    # call validate handlers
+    # call field validate
       if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [$this, $fields, &$values]);
+        foreach ($fields as $c_dpath => $c_field) {
+          $c_field->validate($this, $c_dpath);
+        }
+      }
+    # call form validate handlers
+      if (empty($this->clicked_button->novalidate)) {
+        event::start('on_form_validate', $id, [$this, $containers, &$values]);
       }
     # show errors and set error class
       foreach ($this->errors as $c_dpath => $c_errors) {
@@ -103,21 +110,21 @@ namespace effcore {
       }
     # call submit handler (if no errors)
       if (count($this->errors) == 0) {
-        event::start('on_form_submit', $id, [$this, $fields, &$values]);
+        event::start('on_form_submit', $id, [$this, $containers, &$values]);
       }
     }
 
   # add form_id to the form markup
     $this->child_insert(new markup_simple('input', [
       'type'  => 'hidden',
-      'name'  => 'validation_id',
-      'value' => static::validation_id_get(),
-      ]), 'hidden_validation_id');
-    $this->child_insert(new markup_simple('input', [
-      'type'  => 'hidden',
       'name'  => 'form_id',
       'value' => $id,
     ]), 'hidden_form_id');
+    $this->child_insert(new markup_simple('input', [
+      'type'  => 'hidden',
+      'name'  => 'validation_id',
+      'value' => static::validation_id_get(),
+      ]), 'hidden_validation_id');
   }
 
   function add_error($element_id = null, $message = null) {
@@ -137,10 +144,20 @@ namespace effcore {
     return [];
   }
 
-  static function get_fields($form) {
+  static function get_containers($form) { # @todo: remove this function
     $return = [];
     foreach ($form->children_select_recursive() as $c_dpath => $c_child) {
       if ($c_child instanceof \effcore\container) {
+        $return[$c_dpath] = $c_child;
+      }
+    }
+    return $return;
+  }
+
+  static function get_fields($form) {
+    $return = [];
+    foreach ($form->children_select_recursive() as $c_dpath => $c_child) {
+      if ($c_child instanceof \effcore\field) {
         $return[$c_dpath] = $c_child;
       }
     }
