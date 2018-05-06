@@ -118,6 +118,9 @@ namespace effcore {
   static function on_validate($form, $fields, &$values) {
     $indexes = [];
     foreach ($fields as $c_dpath => $c_field) {
+
+      if (get_class($c_field) == 'effcore\\field_text') continue;
+
       $c_element = $c_field->child_select('element');
       if ($c_element instanceof markup ||
           $c_element instanceof markup_simple) {

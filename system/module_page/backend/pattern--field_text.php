@@ -20,20 +20,27 @@ namespace effcore {
     $element = $this->child_select('element');
     $name = $this->get_element_name();
     $type = $this->get_element_type();
-    if (!static::validate_disabled($element)) return false;
-    if (!static::validate_readonly($element)) return false;
-    return true;
+    if ($name && $type) {
+      $index = !isset(static::$indexes[$name]) ?
+                     (static::$indexes[$name] = 0) :
+                    ++static::$indexes[$name];
+      if (!static::validate_disabled($element)) return false;
+      if (!static::validate_readonly($element)) return false;
+      return true;
+    }
   }
 
   ###########################
   ### static declarations ###
   ###########################
 
-  function validate_disabled($element) {
+  static protected $indexes = [];
+
+  static function validate_disabled($element) {
     return $element->attribute_select('disabled') ? false : true;
   }
 
-  function validate_readonly($element) {
+  static function validate_readonly($element) {
     return $element->attribute_select('readonly') ? false : true;
   }
 
