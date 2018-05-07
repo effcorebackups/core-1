@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_range extends field {
+          class field_range extends field_number {
 
   public $title = 'Range';
   public $attributes = ['x-type' => 'range'];
