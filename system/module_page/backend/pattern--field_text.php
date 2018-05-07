@@ -23,14 +23,8 @@ namespace effcore {
     if ($name && $type) {
       if (static::validate_is_disabled($this, $element)) return true;
       if (static::validate_is_readonly($this, $element)) return true;
-      $index = !isset(static::$indexes[$name]) ?
-                     (static::$indexes[$name] = 0) :
-                    ++static::$indexes[$name];
-      $new_value = !isset($_POST[$name]) ? '' :
-               (is_string($_POST[$name]) ? $_POST[$name] : 
-                (is_array($_POST[$name]) &&
-                    isset($_POST[$name][$index]) ?
-                          $_POST[$name][$index] : ''));
+      $cur_index = static::get_cur_index($name);
+      $new_value = static::get_new_value($name, $cur_index);
       $result = static::validate_text_required ($this, $element, $new_value, $form, $dpath) &&
                 static::validate_text_minlength($this, $element, $new_value, $form, $dpath) &&
                 static::validate_text_maxlength($this, $element, $new_value, $form, $dpath);

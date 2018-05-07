@@ -114,6 +114,20 @@ namespace effcore {
 
   static protected $indexes = [];
 
+  static function get_cur_index($name) {
+    return !isset(static::$indexes[$name]) ?
+                 (static::$indexes[$name] = 0) :
+                ++static::$indexes[$name];
+  }
+
+  static function get_new_value($name, $index = 0) {
+    return !isset($_POST[$name]) ? '' :
+       (is_string($_POST[$name]) ? $_POST[$name] : 
+        (is_array($_POST[$name]) &&
+            isset($_POST[$name][$index]) ?
+                  $_POST[$name][$index] : ''));
+  }
+
   static function validate_is_disabled($field, $element) {
     return $element->attribute_select('disabled') ? true : false;
   }
