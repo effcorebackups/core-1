@@ -186,7 +186,6 @@ namespace effcore {
         # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
         # ─────────────────────────────────────────────────────────────────────
           if ($c_element->tag_name == 'input' && (
-              $c_type == 'search'   ||
               $c_type == 'url'      ||
               $c_type == 'tel'      ||
               $c_type == 'email'    ||
@@ -336,39 +335,6 @@ namespace effcore {
     $title = translation::get(
       $field->title
     );
-
-  # check required
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('required') && strlen($new_value) == 0) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" can not be blank!', ['title' => $title])
-      );
-      return;
-    }
-
-  # check minlength
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('minlength') && strlen($new_value) &&
-        $element->attribute_select('minlength')  > strlen($new_value)) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" must contain a minimum of %%_num characters!', ['title' => $title, 'num' => $element->attribute_select('minlength')])
-      );
-      return;
-    }
-
-  # check maxlength
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('maxlength') &&
-        $element->attribute_select('maxlength') < strlen($new_value)) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" must contain a maximum of %%_num characters!', ['title' => $title, 'num' => $element->attribute_select('maxlength')]).br.
-        translation::get('Value was trimmed to the required length!').br.
-        translation::get('Check field again before submit.')
-      );
-    # trim value to maximum lenght
-      $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
-      return;
-    }
 
   # check number/range
   # ─────────────────────────────────────────────────────────────────────
