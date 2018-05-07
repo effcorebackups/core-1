@@ -25,9 +25,9 @@ namespace effcore {
       if (static::validate_is_readonly($this, $element)) return true;
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
-      $result = static::validate_text_required ($this, $element, $new_value, $form, $dpath) &&
-                static::validate_text_minlength($this, $element, $new_value, $form, $dpath) &&
-                static::validate_text_maxlength($this, $element, $new_value, $form, $dpath);
+      $result = static::validate_required ($this, $element, $new_value, $form, $dpath) &&
+                static::validate_minlength($this, $element, $new_value, $form, $dpath) &&
+                static::validate_maxlength($this, $element, $new_value, $form, $dpath);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -37,7 +37,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate_text_required($field, $element, &$new_value, $form, $dpath) {
+  static function validate_required($field, $element, &$new_value, $form, $dpath) {
     if ($element->attribute_select('required') && strlen($new_value) == 0) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" can not be blank!', ['title' => translation::get($field->title)])
@@ -47,7 +47,7 @@ namespace effcore {
     }
   }
 
-  static function validate_text_minlength($field, $element, &$new_value, $form, $dpath) {
+  static function validate_minlength($field, $element, &$new_value, $form, $dpath) {
     if ($element->attribute_select('minlength') &&
         $element->attribute_select('minlength') > strlen($new_value) && strlen($new_value)) {
       $form->add_error($dpath.'/element',
@@ -58,7 +58,7 @@ namespace effcore {
     }
   }
 
-  static function validate_text_maxlength($field, $element, &$new_value, $form, $dpath) {
+  static function validate_maxlength($field, $element, &$new_value, $form, $dpath) {
     if ($element->attribute_select('maxlength') &&
         $element->attribute_select('maxlength') < strlen($new_value)) {
       $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
