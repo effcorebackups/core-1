@@ -190,8 +190,7 @@ namespace effcore {
               $c_type == 'number'   ||
               $c_type == 'range'    ||
               $c_type == 'date'     ||
-              $c_type == 'time'     ||
-              $c_type == 'color')) {
+              $c_type == 'time')) {
             static::_validate_field_text($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name][$c_index]);
             $c_element->attribute_insert('value', $values[$c_name][$c_index]);
           }

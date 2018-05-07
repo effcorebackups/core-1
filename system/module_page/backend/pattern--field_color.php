@@ -5,15 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class field_color extends field {
+          class field_color extends field_text {
 
   public $title = 'Color';
   public $attributes = ['x-type' => 'color'];
   public $element_attributes_default = [
-    'type'     => 'color',
-    'name'     => 'color',
-    'required' => 'required',
-    'value'    => '#ffffff'
+    'type'      => 'color',
+    'name'      => 'color',
+    'required'  => 'required',
+    'value'     => '#ffffff',
+    'minlength' => 7,
+    'maxlength' => 7
   ];
 
 }}
