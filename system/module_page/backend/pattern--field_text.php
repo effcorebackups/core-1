@@ -43,16 +43,6 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $indexes = [];
-
-  static function validate_is_disabled($field, $element) {
-    return $element->attribute_select('disabled') ? true : false;
-  }
-
-  static function validate_is_readonly($field, $element) {
-    return $element->attribute_select('readonly') ? true : false;
-  }
-
   static function validate_text_required($field, $element, &$new_value, $form, $dpath) {
     if ($element->attribute_select('required') && strlen($new_value) == 0) {
       $form->add_error($dpath.'/element',

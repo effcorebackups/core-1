@@ -38,8 +38,13 @@ namespace effcore {
                          $element->attribute_select('name');
   }
 
-  function get_element_type() {
-    return $this->child_select('element')->attribute_select('type');
+  function get_element_type($full = true) {
+    $element = $this->child_select('element');
+    switch ($element->tag_name) {
+      case 'input'   : return 'input'.($full ? ':'.$element->attribute_select('type') : '');
+      case 'textarea': return 'textarea';
+      case 'select'  : return 'select';
+    }
   }
 
   function render() {
@@ -78,6 +83,43 @@ namespace effcore {
   ##################
 
   function validate($form, $dpath) {
+    $element = $this->child_select('element');
+    $name = $this->get_element_name();
+    $type = $this->get_element_type();
+    if ($name && $type) {
+      switch ($type) {
+        case 'input:checkbox': return;
+        case 'input:color'   : return;
+        case 'input:date'    : return;
+        case 'input:email'   : return;
+        case 'input:file'    : return;
+        case 'input:number'  : return;
+        case 'input:password': return;
+        case 'input:radio'   : return;
+        case 'input:range'   : return;
+        case 'input:search'  : return;
+        case 'input:tel'     : return;
+        case 'input:text'    : return;
+        case 'input:time'    : return;
+        case 'input:url'     : return;
+        case 'select'        : return;
+        case 'textarea'      : return;
+      }
+    }
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static protected $indexes = [];
+
+  static function validate_is_disabled($field, $element) {
+    return $element->attribute_select('disabled') ? true : false;
+  }
+
+  static function validate_is_readonly($field, $element) {
+    return $element->attribute_select('readonly') ? true : false;
   }
 
 }}
