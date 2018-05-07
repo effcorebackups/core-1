@@ -128,11 +128,11 @@ namespace effcore {
                   $_POST[$name][$index] : ''));
   }
 
-  static function validate_is_disabled($field, $element) {
+  static function is_disabled($field, $element) {
     return $element->attribute_select('disabled') ? true : false;
   }
 
-  static function validate_is_readonly($field, $element) {
+  static function is_readonly($field, $element) {
     return $element->attribute_select('readonly') ? true : false;
   }
 

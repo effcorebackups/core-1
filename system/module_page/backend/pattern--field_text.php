@@ -21,8 +21,8 @@ namespace effcore {
     $name = $this->get_element_name();
     $type = $this->get_element_type();
     if ($name && $type) {
-      if (static::validate_is_disabled($this, $element)) return true;
-      if (static::validate_is_readonly($this, $element)) return true;
+      if (static::is_disabled($this, $element)) return true;
+      if (static::is_readonly($this, $element)) return true;
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
       $result = static::validate_required ($this, $element, $new_value, $form, $dpath) &&
