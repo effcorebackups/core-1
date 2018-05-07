@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_number extends field {
+          class field_number extends field_text {
 
   public $title = 'Number';
   public $attributes = ['x-type' => 'number'];
