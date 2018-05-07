@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_phone extends field {
+          class field_phone extends field_text {
 
   public $title = 'Phone';
   public $attributes = ['x-type' => 'phone'];
