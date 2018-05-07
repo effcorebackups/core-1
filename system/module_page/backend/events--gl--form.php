@@ -186,7 +186,6 @@ namespace effcore {
         # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
         # ─────────────────────────────────────────────────────────────────────
           if ($c_element->tag_name == 'input' && (
-              $c_type == 'url'      ||
               $c_type == 'tel'      ||
               $c_type == 'email'    ||
               $c_type == 'number'   ||

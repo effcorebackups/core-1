@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_url extends field {
+          class field_url extends field_text {
 
   public $title = 'URL';
   public $attributes = ['x-type' => 'url'];
