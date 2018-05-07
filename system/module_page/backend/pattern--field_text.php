@@ -32,7 +32,8 @@ namespace effcore {
                     isset($_POST[$name][$index]) ?
                           $_POST[$name][$index] : ''));
       $element->attribute_insert('value', $new_value);
-      if (!static::validate_text_required($this, $element, $new_value, $form, $dpath)) return false;
+      if (!static::validate_text_required($this, $element, $new_value, $form, $dpath))  return false;
+      if (!static::validate_text_minlength($this, $element, $new_value, $form, $dpath)) return false;
       return true;
     }
   }
@@ -56,7 +57,19 @@ namespace effcore {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" can not be blank!', ['title' => translation::get($field->title)])
       );
-      return;
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_text_minlength($field, $element, $new_value, $form, $dpath) {
+    if ($element->attribute_select('minlength') && strlen($new_value) &&
+        $element->attribute_select('minlength')  > strlen($new_value)) {
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" must contain a minimum of %%_num characters!', ['title' => translation::get($field->title), 'num' => $element->attribute_select('minlength')])
+      );
+    } else {
+      return true;
     }
   }
 
