@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_password extends field {
+          class field_password extends field_text {
 
   public $title = 'Password';
   public $attributes = ['x-type' => 'password'];

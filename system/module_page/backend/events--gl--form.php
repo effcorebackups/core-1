@@ -118,9 +118,6 @@ namespace effcore {
   static function on_validate($form, $fields, &$values) {
     $indexes = [];
     foreach ($fields as $c_dpath => $c_field) {
-
-      if (get_class($c_field) == 'effcore\\field_text') continue;
-
       $c_element = $c_field->child_select('element');
       if ($c_element instanceof markup ||
           $c_element instanceof markup_simple) {
@@ -189,8 +186,6 @@ namespace effcore {
         # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
         # ─────────────────────────────────────────────────────────────────────
           if ($c_element->tag_name == 'input' && (
-              $c_type == 'text'     ||
-              $c_type == 'password' ||
               $c_type == 'search'   ||
               $c_type == 'url'      ||
               $c_type == 'tel'      ||
