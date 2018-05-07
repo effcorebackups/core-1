@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_date extends field {
+          class field_date extends field_text {
 
   public $title = 'Date';
   public $attributes = ['x-type' => 'date'];
