@@ -94,7 +94,7 @@ namespace effcore {
     # call field validate
       if (empty($this->clicked_button->novalidate)) {
         foreach ($fields as $c_dpath => $c_field) {
-          $c_field->validate($this, $c_dpath);
+          $c_field::validate($c_field, $this, $c_dpath);
         }
       }
     # call form validate handlers

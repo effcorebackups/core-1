@@ -16,28 +16,28 @@ namespace effcore {
     'maxlength' => 255
   ];
 
-  function validate($form, $dpath) {
-    $element = $this->child_select('element');
-    $name = $this->get_element_name();
-    $type = $this->get_element_type();
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function validate($field, $form, $dpath) {
+    $element = $field->child_select('element');
+    $name = $field->get_element_name();
+    $type = $field->get_element_type();
     if ($name && $type) {
-      if (static::is_disabled($this, $element)) return true;
-      if (static::is_readonly($this, $element)) return true;
+      if (static::is_disabled($field, $element)) return true;
+      if (static::is_readonly($field, $element)) return true;
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
-      $result = static::validate_required ($this, $element, $new_value, $form, $dpath) &&
-                static::validate_minlength($this, $element, $new_value, $form, $dpath) &&
-                static::validate_maxlength($this, $element, $new_value, $form, $dpath);
+      $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
   }
 
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static function validate_required($field, $element, &$new_value, $form, $dpath) {
+  static function validate_required($field, $form, $dpath, $element, &$new_value) {
     if ($element->attribute_select('required') && strlen($new_value) == 0) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" can not be blank!', ['title' => translation::get($field->title)])
@@ -47,7 +47,7 @@ namespace effcore {
     }
   }
 
-  static function validate_minlength($field, $element, &$new_value, $form, $dpath) {
+  static function validate_minlength($field, $form, $dpath, $element, &$new_value) {
     if ($element->attribute_select('minlength') &&
         $element->attribute_select('minlength') > strlen($new_value) && strlen($new_value)) {
       $form->add_error($dpath.'/element',
@@ -58,7 +58,7 @@ namespace effcore {
     }
   }
 
-  static function validate_maxlength($field, $element, &$new_value, $form, $dpath) {
+  static function validate_maxlength($field, $form, $dpath, $element, &$new_value) {
     if ($element->attribute_select('maxlength') &&
         $element->attribute_select('maxlength') < strlen($new_value)) {
       $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
