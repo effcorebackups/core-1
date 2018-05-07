@@ -31,10 +31,11 @@ namespace effcore {
                 (is_array($_POST[$name]) &&
                     isset($_POST[$name][$index]) ?
                           $_POST[$name][$index] : ''));
+      $result = static::validate_text_required ($this, $element, $new_value, $form, $dpath) &&
+                static::validate_text_minlength($this, $element, $new_value, $form, $dpath) &&
+                static::validate_text_maxlength($this, $element, $new_value, $form, $dpath);
       $element->attribute_insert('value', $new_value);
-      if (!static::validate_text_required($this, $element, $new_value, $form, $dpath))  return false;
-      if (!static::validate_text_minlength($this, $element, $new_value, $form, $dpath)) return false;
-      return true;
+      return $result;
     }
   }
 
@@ -52,7 +53,7 @@ namespace effcore {
     return $element->attribute_select('readonly') ? true : false;
   }
 
-  static function validate_text_required($field, $element, $new_value, $form, $dpath) {
+  static function validate_text_required($field, $element, &$new_value, $form, $dpath) {
     if ($element->attribute_select('required') && strlen($new_value) == 0) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" can not be blank!', ['title' => translation::get($field->title)])
@@ -62,11 +63,25 @@ namespace effcore {
     }
   }
 
-  static function validate_text_minlength($field, $element, $new_value, $form, $dpath) {
-    if ($element->attribute_select('minlength') && strlen($new_value) &&
-        $element->attribute_select('minlength')  > strlen($new_value)) {
+  static function validate_text_minlength($field, $element, &$new_value, $form, $dpath) {
+    if ($element->attribute_select('minlength') &&
+        $element->attribute_select('minlength') > strlen($new_value) && strlen($new_value)) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" must contain a minimum of %%_num characters!', ['title' => translation::get($field->title), 'num' => $element->attribute_select('minlength')])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_text_maxlength($field, $element, &$new_value, $form, $dpath) {
+    if ($element->attribute_select('maxlength') &&
+        $element->attribute_select('maxlength') < strlen($new_value)) {
+      $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" must contain a maximum of %%_num characters!', ['title' => translation::get($field->title), 'num' => $element->attribute_select('maxlength')]).br.
+        translation::get('Value was trimmed to the required length!').br.
+        translation::get('Check field again before submit.')
       );
     } else {
       return true;
