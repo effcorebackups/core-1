@@ -183,12 +183,6 @@ namespace effcore {
             $content->text = $values[$c_name][$c_index];
           }
 
-        # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
-        # ─────────────────────────────────────────────────────────────────────
-          if ($c_element->tag_name == 'input' && $c_type == 'time') {
-            static::_validate_field_text($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name][$c_index]);
-          }
-
         }
       }
     }
@@ -330,16 +324,6 @@ namespace effcore {
   # check time
   # ─────────────────────────────────────────────────────────────────────
     if ($element->attribute_select('type') == 'time') {
-
-    # check value
-      if (!preg_match('%^(?<H>[0-1][0-9]|20|21|22|23)'.
-                    '(?::(?<i>[0-5][0-9]))'.
-                    '(?::(?<s>[0-5][0-9])|)$%S', $new_value, $matches)) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains an incorrect time!', ['title' => $title])
-        );
-        return;
-      }
 
       $c_min = $element->attribute_select('min') ?: form::input_min_time;
       $c_max = $element->attribute_select('max') ?: form::input_max_time;
