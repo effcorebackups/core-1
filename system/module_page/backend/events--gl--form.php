@@ -185,9 +185,7 @@ namespace effcore {
 
         # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
         # ─────────────────────────────────────────────────────────────────────
-          if ($c_element->tag_name == 'input' && (
-              $c_type == 'date'     ||
-              $c_type == 'time')) {
+          if ($c_element->tag_name == 'input' && $c_type == 'time') {
             static::_validate_field_text($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name][$c_index]);
           }
 
@@ -332,17 +330,6 @@ namespace effcore {
   # check date
   # ─────────────────────────────────────────────────────────────────────
     if ($element->attribute_select('type') == 'date') {
-
-    # check value
-      if (!(preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%S', $new_value, $matches) &&
-            checkdate($matches['m'],
-                      $matches['d'],
-                      $matches['Y']))) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains an incorrect date!', ['title' => $title])
-        );
-        return;
-      }
 
       $c_min = $element->attribute_select('min') ?: form::input_min_date;
       $c_max = $element->attribute_select('max') ?: form::input_max_date;
