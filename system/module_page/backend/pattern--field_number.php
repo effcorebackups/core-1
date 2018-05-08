@@ -35,7 +35,10 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_number   ($field, $form, $dpath, $element, $new_value);
+                static::validate_number   ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_step     ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -63,6 +66,47 @@ namespace effcore {
     } else {
       return true;
     }
+  }
+
+  static function validate_min($field, $form, $dpath, $element, &$new_value) {
+    $min = static::get_min_value($element);
+    if (strlen($new_value) && $new_value < $min) {
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
+        translation::get('Field value is less than %%_value.', ['value' => $min])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_max($field, $form, $dpath, $element, &$new_value) {
+    $max = static::get_max_value($element);
+    if (strlen($new_value) && $new_value > $max) {
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
+        translation::get('Field value is more than %%_value.', ['value' => $max])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_step($field, $form, $dpath, $element, &$new_value) {
+    if (strlen($new_value)) {
+      $step = $element->attribute_select('step') ?: 1;
+      $min = static::get_min_value($element);
+      $max = static::get_max_value($element);
+      if ((int)round(($min - $new_value) / $step, 5) !=
+               round(($min - $new_value) / $step, 5)) {
+        $form->add_error($dpath.'/element',
+          translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
+          translation::get('Field value is not in valid range.')
+        );
+        return;
+      }
+    }
+    return true;
   }
 
 }}

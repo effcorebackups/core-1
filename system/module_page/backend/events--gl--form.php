@@ -329,44 +329,6 @@ namespace effcore {
       $field->title
     );
 
-  # check number/range
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('type') == 'number' ||
-        $element->attribute_select('type') == 'range') {
-
-      $c_step = $element->attribute_select('step') ?: 1;
-      $c_min = 0;
-      $c_max = 10000;
-
-    # check min
-      if ($c_min > $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is less than %%_value.', ['value' => $c_min])
-        );
-        return;
-      }
-
-    # check max
-      if ($c_max < $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is more than %%_value.', ['value' => $c_max])
-        );
-        return;
-      }
-
-      if ((int)round(($c_min - $new_value) / $c_step, 5) !=
-               round(($c_min - $new_value) / $c_step, 5)) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is not in valid range.')
-        );
-        return;
-      }
-
-    }
-
   # check date
   # ─────────────────────────────────────────────────────────────────────
     if ($element->attribute_select('type') == 'date') {
