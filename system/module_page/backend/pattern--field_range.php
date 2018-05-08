@@ -13,10 +13,17 @@ namespace effcore {
     'type'     => 'range',
     'name'     => 'range',
     'required' => 'required',
-    'min'      => form::input_min_number,
-    'max'      => form::input_max_number,
+    'min'      => 0,
+    'max'      => 100,
     'step'     => 1,
     'value'    => 0
   ];
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : 0;}
+  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : 100;}
 
 }}

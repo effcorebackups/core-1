@@ -335,12 +335,8 @@ namespace effcore {
         $element->attribute_select('type') == 'range') {
 
       $c_step = $element->attribute_select('step') ?: 1;
-      if ($element->attribute_select('type') == 'number') {
-        $c_min = $element->attribute_select('min') ?: (float)form::input_min_number;
-        $c_max = $element->attribute_select('max') ?: (float)form::input_max_number; } else {
-        $c_min = $element->attribute_select('min') ?: 0;
-        $c_max = $element->attribute_select('max') ?: 100;
-      }
+      $c_min = 0;
+      $c_max = 10000;
 
     # check min
       if ($c_min > $new_value) {

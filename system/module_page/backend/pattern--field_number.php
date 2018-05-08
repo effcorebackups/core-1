@@ -48,6 +48,9 @@ namespace effcore {
   # '.0' => 0, '-.0' => 0 | '0.0' => 1, '-0.0' => 2 | '1.0' => 1, '-1.0' => 1 | '01.0' => 0, '-01.0' => 0 | '10.0' => 1, '-10.0' => 1
   # ─────────────────────────────────────────────────────────────────────
 
+  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)form::input_min_number;}
+  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)form::input_max_number;}
+
   static function validate_number($field, $form, $dpath, $element, &$new_value) {
     if (strlen($new_value) && !preg_match(
         '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
