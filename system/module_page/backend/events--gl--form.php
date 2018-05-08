@@ -327,33 +327,6 @@ namespace effcore {
       $field->title
     );
 
-  # check date
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('type') == 'date') {
-
-      $c_min = $element->attribute_select('min') ?: form::input_min_date;
-      $c_max = $element->attribute_select('max') ?: form::input_max_date;
-
-    # check min
-      if ($c_min > $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is less than %%_value.', ['value' => $c_min])
-        );
-        return;
-      }
-
-    # check max
-      if ($c_max < $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is more than %%_value.', ['value' => $c_max])
-        );
-        return;
-      }
-
-    }
-
   # check time
   # ─────────────────────────────────────────────────────────────────────
     if ($element->attribute_select('type') == 'time') {
