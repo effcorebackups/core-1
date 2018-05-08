@@ -321,36 +321,6 @@ namespace effcore {
       $field->title
     );
 
-  # check time
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('type') == 'time') {
-
-      $c_min = $element->attribute_select('min') ?: form::input_min_time;
-      $c_max = $element->attribute_select('max') ?: form::input_max_time;
-      $c_min     = strlen($c_min)     == 5 ? $c_min.':00'     : $c_min;
-      $c_max     = strlen($c_max)     == 5 ? $c_max.':00'     : $c_max;
-      $new_value = strlen($new_value) == 5 ? $new_value.':00' : $new_value;
-
-    # check min
-      if ($c_min > $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is less than %%_value.', ['value' => $c_min])
-        );
-        return;
-      }
-
-    # check max
-      if ($c_max < $new_value) {
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains incorrect value!', ['title' => $title]).br.
-          translation::get('Field value is more than %%_value.', ['value' => $c_max])
-        );
-        return;
-      }
-
-    }
-
   # check captcha
   # ─────────────────────────────────────────────────────────────────────
     if ($name == 'captcha' && !$field->captcha_check($new_value)) {
