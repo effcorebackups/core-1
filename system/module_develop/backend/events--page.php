@@ -110,8 +110,8 @@ namespace effcore\modules\develop {
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                         '(?<name>'.$c_info->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
-            $c_defaults = isset($c_matches['value']) ?
-                                $c_matches['value'] : null;
+            $c_defaults = isset($c_matches['value']) ? str_replace(' => ', ' = ',
+                                $c_matches['value']) : null;
             $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' = '.$c_defaults) :
                                                new text_simple($c_info->name);
             if ($c_info->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
@@ -130,8 +130,8 @@ namespace effcore\modules\develop {
                         '(?:function)\\s'.
                         '(?<name>'.$c_info->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-            $c_defaults = isset($c_matches['params']) ? preg_replace('#(\\$)([a-z_])#i', '$2',
-                                $c_matches['params']) : null;
+            $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('#(\\$)([a-z_])#i', '$2',
+                                $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' ('.$c_defaults.')') :
                                                new text_simple($c_info->name.' ()');
             if ($c_info->isPublic())    $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
