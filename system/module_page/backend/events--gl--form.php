@@ -186,13 +186,11 @@ namespace effcore {
         # input[type=text|password|search|email|url|tel|number|range|date|time|color] validation:
         # ─────────────────────────────────────────────────────────────────────
           if ($c_element->tag_name == 'input' && (
-              $c_type == 'email'    ||
               $c_type == 'number'   ||
               $c_type == 'range'    ||
               $c_type == 'date'     ||
               $c_type == 'time')) {
             static::_validate_field_text($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name][$c_index]);
-            $c_element->attribute_insert('value', $values[$c_name][$c_index]);
           }
 
         }
@@ -467,29 +465,6 @@ namespace effcore {
         return;
       }
 
-    }
-
-  # check email field
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('type') == 'email') {
-      $emails = explode(',', $new_value);
-      if (!$element->attribute_select('multiple') && count($emails) > 1) {
-        $new_values = $emails[0];
-        $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" is not support multiple select!', ['title' => $title])
-        );
-        return;
-      }
-      if (strlen($new_value)) {
-        foreach ($emails as $c_email) {
-          if (factory::filter_email($c_email) == false) {
-            $form->add_error($dpath.'/element',
-              translation::get('Field "%%_title" contains an incorrect email address!', ['title' => $title])
-            );
-            return;
-          }
-        }
-      }
     }
 
   # check captcha
