@@ -40,20 +40,22 @@ namespace effcore {
   }
 
   static function validate_email($field, $form, $dpath, $element, &$new_value) {
-    $emails = explode(',', $new_value);
-    if (count($emails) > 1 && !$element->attribute_select('multiple')) {
-      $new_value = $emails[0];
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
-      );
-      return;
-    }
-    foreach ($emails as $c_email) {
-      if (factory::filter_email($c_email) == false) {
+    if (strlen($new_value)) {
+      $emails = explode(',', $new_value);
+      if (count($emails) > 1 && !$element->attribute_select('multiple')) {
+        $new_value = $emails[0];
         $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
+          translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
         );
         return;
+      }
+      foreach ($emails as $c_email) {
+        if (factory::filter_email($c_email) == false) {
+          $form->add_error($dpath.'/element',
+            translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
+          );
+          return;
+        }
       }
     }
     return true;
