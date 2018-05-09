@@ -312,26 +312,6 @@ namespace effcore {
 
   }
 
-  ############################
-  ### _validate_field_text ###
-  ############################
-
-  static function _validate_field_text($form, $field, $element, $dpath, $name, &$new_value) {
-    $title = translation::get(
-      $field->title
-    );
-
-  # check captcha
-  # ─────────────────────────────────────────────────────────────────────
-    if ($name == 'captcha' && !$field->captcha_check($new_value)) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" contains an incorrect characters from image!', ['title' => $title])
-      );
-      return;
-    }
-
-  }
-
   #######################
   ### on_submit_files ###
   #######################
