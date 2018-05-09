@@ -33,13 +33,13 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_email    ($field, $form, $dpath, $element, $new_value);
+                static::validate_value    ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
   }
 
-  static function validate_email($field, $form, $dpath, $element, &$new_value) {
+  static function validate_value($field, $form, $dpath, $element, &$new_value) {
     if (strlen($new_value)) {
       $emails = explode(',', $new_value);
       if (count($emails) > 1 && !$element->attribute_select('multiple')) {

@@ -64,28 +64,4 @@ namespace effcore {
     }
   }
 
-  static function validate_min($field, $form, $dpath, $element, &$new_value) {
-    $min = static::get_min_value($element);
-    if (strlen($new_value) && $new_value < $min) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
-        translation::get('Field value is less than %%_value.', ['value' => $min])
-      );
-    } else {
-      return true;
-    }
-  }
-
-  static function validate_max($field, $form, $dpath, $element, &$new_value) {
-    $max = static::get_max_value($element);
-    if (strlen($new_value) && $new_value > $max) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
-        translation::get('Field value is more than %%_value.', ['value' => $max])
-      );
-    } else {
-      return true;
-    }
-  }
-
 }}
