@@ -7,14 +7,17 @@
 namespace effcore {
           class field_time extends field_text {
 
+  const input_min_time = '00:00:00';
+  const input_max_time = '23:59:59';
+
   public $title = 'Time';
   public $attributes = ['x-type' => 'time'];
   public $element_attributes_default = [
     'type'     => 'time',
     'name'     => 'time',
     'required' => 'required',
-    'min'      => form::input_min_time,
-    'max'      => form::input_max_time,
+    'min'      => self::input_min_time,
+    'max'      => self::input_max_time,
     'step'     => 60
   ];
 
@@ -27,8 +30,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_min_value($element) {$min = $element->attribute_select('min') !== null ? $element->attribute_select('min') : form::input_min_time; return strlen($min) == 5 ? $min.':00' : $min;}
-  static function get_max_value($element) {$max = $element->attribute_select('max') !== null ? $element->attribute_select('max') : form::input_max_time; return strlen($max) == 5 ? $max.':00' : $max;}
+  static function get_min_value($element) {$min = $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_time; return strlen($min) == 5 ? $min.':00' : $min;}
+  static function get_max_value($element) {$max = $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_time; return strlen($max) == 5 ? $max.':00' : $max;}
 
   static function validate($field, $form, $dpath) {
     $element = $field->child_select('element');

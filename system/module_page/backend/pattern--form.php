@@ -8,13 +8,6 @@ namespace effcore {
           class form extends markup
           implements external {
 
-  const input_min_number = -10000000000;
-  const input_max_number = +10000000000;
-  const input_min_date = '0001-01-01';
-  const input_max_date = '9999-12-31';
-  const input_min_time = '00:00:00';
-  const input_max_time = '23:59:59';
-
   # elements support:
   # ─────────────────────────────────────────────────────────────────────
   # - textarea

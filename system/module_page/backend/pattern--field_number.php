@@ -7,14 +7,17 @@
 namespace effcore {
           class field_number extends field_text {
 
+  const input_min_number = -10000000000;
+  const input_max_number = +10000000000;
+
   public $title = 'Number';
   public $attributes = ['x-type' => 'number'];
   public $element_attributes_default = [
     'type'     => 'number',
     'name'     => 'number',
     'required' => 'required',
-    'min'      => form::input_min_number,
-    'max'      => form::input_max_number,
+    'min'      => self::input_min_number,
+    'max'      => self::input_max_number,
     'step'     => 1,
     'value'    => 0
   ];
@@ -51,8 +54,8 @@ namespace effcore {
   # '.0' => 0, '-.0' => 0 | '0.0' => 1, '-0.0' => 2 | '1.0' => 1, '-1.0' => 1 | '01.0' => 0, '-01.0' => 0 | '10.0' => 1, '-10.0' => 1
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)form::input_min_number;}
-  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)form::input_max_number;}
+  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
+  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
   static function validate_number($field, $form, $dpath, $element, &$new_value) {
     if (strlen($new_value) && !preg_match(

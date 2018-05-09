@@ -7,14 +7,17 @@
 namespace effcore {
           class field_date extends field_text {
 
+  const input_min_date = '0001-01-01';
+  const input_max_date = '9999-12-31';
+
   public $title = 'Date';
   public $attributes = ['x-type' => 'date'];
   public $element_attributes_default = [
     'type'     => 'date',
     'name'     => 'date',
     'required' => 'required',
-    'min'      => form::input_min_date,
-    'max'      => form::input_max_date
+    'min'      => self::input_min_date,
+    'max'      => self::input_max_date
   ];
 
   function build() {
@@ -26,8 +29,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : form::input_min_date;}
-  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : form::input_max_date;}
+  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_date;}
+  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_date;}
 
   static function validate($field, $form, $dpath) {
     $element = $field->child_select('element');
