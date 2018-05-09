@@ -175,14 +175,6 @@ namespace effcore {
             static::_validate_field_boxes($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name]);
           }
 
-        # textarea validation:
-        # ─────────────────────────────────────────────────────────────────────
-          if ($c_element->tag_name == 'textarea') {
-            static::_validate_field_text($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name][$c_index]);
-            $content = $c_element->child_select('content');
-            $content->text = $values[$c_name][$c_index];
-          }
-
         }
       }
     }
