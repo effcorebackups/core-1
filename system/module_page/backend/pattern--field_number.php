@@ -38,7 +38,7 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_number   ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_step     ($field, $form, $dpath, $element, $new_value);
@@ -57,7 +57,7 @@ namespace effcore {
   static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
   static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
-  static function validate_number($field, $form, $dpath, $element, &$new_value) {
+  static function validate_value($field, $form, $dpath, $element, &$new_value) {
     if (strlen($new_value) && !preg_match(
         '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
          '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
