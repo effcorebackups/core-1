@@ -18,64 +18,17 @@ namespace effcore {
   ### on_validate ###
   ###################
 
-  # attributes support:
-  # ─────────────────────────────────────────────────────────────────────
-  # - textarea                   : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=text]           : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=password]       : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=search]         : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=url]            : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=tel]            : disabled, readonly, required, minlength, maxlength, PATTERN, name[]
-  # - input[type=email]          : disabled, readonly, required, minlength, maxlength, PATTERN, multiple, name[]
-  # - select                     : disabled,           required, multiple, name[]
-  # - select::option             : disabled
-  # - input[type=file]           : disabled,           required, multiple, name[]
-  # - input[type=checkbox]       : disabled,           required, checked, name[]
-  # - input[type=radio]          : disabled,           required, checked, name[]
-  # - input[type=number]         : disabled, readonly, required, min, max, step, name[]
-  # - input[type=range]          : disabled,           required, min, max, step, name[]
-  # - input[type=date]           : disabled, readonly, required, min, max, name[]
-  # - input[type=time]           : disabled, readonly, required, min, max, name[]
-  # - input[type=color]          : disabled,           required, name[]
-  # ─────────────────────────────────────────────────────────────────────
-  # - input[type=hidden]         : not processed element
-  # - input[type=button]         : not processed element
-  # - input[type=reset]          : not processed element
-  # - input[type=submit]         : not processed element
-  # - input[type=image]          : not processed element
-  # - input[type=week]           : not processed element
-  # - input[type=month]          : not processed element
-  # - input[type=datetime]       : not processed element
-  # - input[type=datetime-local] : not processed element
-  # ─────────────────────────────────────────────────────────────────────
-
   # attributes validation plan:
   # ─────────────────────────────────────────────────────────────────────
-  # - DISABLED                   : disable any processing of element
-  # - READONLY                   : disable any processing of element
-  # - REQUIRED                   : VALUE != '' (value must be present in $_POST)
-  # - MINLENGTH                  : VALUE >= MINLENGTH
-  # - MAXLENGTH                  : VALUE <= MAXLENGTH
-  # - MIN                        : VALUE >= MIN
-  # - MAX                        : VALUE <= MAX
-  # - STEP                       : VALUE should be in valid step range: MIN + STEP * N, where N = [0, 1, 2 ...]
-  # - PATTERN                    : VALUE should match the PATTERN
-  # - MULTIPLE                   : VALUE must be singular if MULTIPLE attribute is not present
-  # ─────────────────────────────────────────────────────────────────────
-  # - input[type=email]          : VALUE should filtered via FILTER_VALIDATE_EMAIL
-  # - input[type=url]            : VALUE should filtered via FILTER_VALIDATE_URL
-  # - input[type=date]           : VALUE should match the pattern YYYY-MM-DD
-  # - input[type=time]           : VALUE should match the pattern HH:MM:SS|HH:MM
-  # - input[type=color]          : VALUE should match the pattern #dddddd
+  # - PATTE       | VALUE should match the PATTERN
+  # - input:color | VALUE should match the pattern #dddddd
   # ─────────────────────────────────────────────────────────────────────
 
   # note:
   # ─────────────────────────────────────────────────────────────────────
   # 1. attribute MULTIPLE in SELECT element is not supported on touch
   #    devices - tablets, phones, monitors with touch screens
-  # 2. attribute REQUIRED is not standart for input[type=color|range]
-  #    but supported and recommended in this system
-  # 3. not recommend to use DISABLED|READONLY text fields with shared
+  # 2. not recommend to use DISABLED|READONLY text fields with shared
   #    NAME (name="shared_name[]") because user can remove DISABLED|READONLY
   #    state from field and change the field VALUE and submit the form - after
   #    this action the new VALUE will be setted to the next field with
@@ -92,7 +45,7 @@ namespace effcore {
   #    - input[type=text,name=shared_name[],value=1,disabled|readonly]
   #    - input[type=text,name=shared_name[],value=fake_value]
   #    - input[type=text,name=shared_name[],value=2]
-  # 4. if you used more than 1 element with attribute MULTIPLE and shared
+  # 3. if you used more than 1 element with attribute MULTIPLE and shared
   #    NAME (name="shared_name[]"), after submit you will get equivalent
   #    arrays of values.
   #    example (result form state before validate):

@@ -4,6 +4,49 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
+  # html5 attributes support:
+  # ─────────────────────────────────────────────────────────────────────
+  #   x  attribute | d | r | r | m | m | m | m | s | m | c | p | v |
+  #    x           | i | e | e | i | a | i | a | t | u | h | a | a |
+  #     x          | s | a | q | n | x | n | x | e | l | e | t | l |
+  #      x         | a | d | u | l | l |   |   | p | t | c | t | u |
+  #       x        | b | o | i | e | e |   |   |   | i | k | e | e |
+  #        x       | l | n | r | n | n |   |   |   | p | e | r |   |
+  #         x      | e | l | e | g | g |   |   |   | l | d | n | [ |
+  #          x     | d | y | d | t | t |   |   |   | e |   |   | ] |
+  # element   x    |   |   |   | h | h |   |   |   |   |   |   |   |
+  # ─────────────────────────────────────────────────────────────────────
+  # input:text     | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:color    | + | x | + | x | x |   |   |   |   |   |   | ? |
+  # input:email    | + | + | + | + | + |   |   |   | + |   | ? | ? |
+  # input:file     | ? |   | ? |   |   | ? | ? | ? | ? |   |   | ? |
+  # input:password | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:search   | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:tel      | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:url      | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:date     | + | + | + | x | x | + | + |   |   |   |   | ? |
+  # input:time     | + | + | + | x | x | + | + |   |   |   |   | ? |
+  # input:number   | + | + | + | x | x | + | + | + |   |   |   | ? |
+  # input:range    | + | x | + | x | x | + | + | + |   |   |   | ? |
+  # textarea       | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # select         | + | x | + |   |   |   |   |   | + |   |   | ? |
+  # select:option  | ? |   |   |   |   |   |   |   |   |   |   |   |
+  # input:checkbox | + | x | + |   |   |   |   |   |   | + |   | ? |
+  # input:radio    | + | x | + |   |   |   |   |   |   | + |   | ? |
+  # ─────────────────────────────────────────────────────────────────────
+  # note: x - extended feature of the system
+  # ─────────────────────────────────────────────────────────────────────
+  # input:hidden         | not processed
+  # input:button         | not processed
+  # input:reset          | not processed
+  # input:submit         | not processed
+  # input:image          | not processed
+  # input:week           | not processed
+  # input:month          | not processed
+  # input:datetime       | not processed
+  # input:datetime-local | not processed
+  # ─────────────────────────────────────────────────────────────────────
+
 namespace effcore {
           class field extends container {
 
