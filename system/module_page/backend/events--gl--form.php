@@ -147,21 +147,14 @@ namespace effcore {
             static::_validate_field_file($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name]);
           }
 
-        # input[type=checkbox|radio] validation:
-        # ─────────────────────────────────────────────────────────────────────
-          if (($c_element->tag_name == 'input' && $c_type == 'checkbox') ||
-              ($c_element->tag_name == 'input' && $c_type == 'radio')) {
-            static::_validate_field_boxes($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name]);
-          }
-
         }
       }
     }
   }
 
-  ############################
-  ### _validate_field_file ###
-  ############################
+  ############
+  ### file ###
+  ############
 
   static function _validate_field_file($form, $field, $element, $dpath, $name, &$new_values) {
     $title = translation::get(
@@ -217,36 +210,6 @@ namespace effcore {
     }
 
   }
-
-  #############################
-  ### _validate_field_boxes ###
-  #############################
-
-  static function _validate_field_boxes($form, $field, $element, $dpath, $name, &$new_values) {
-    $title = translation::get(
-      $field->title
-    );
-
-  # delete default (from _init) and set new (from $_POST) CHECKED state
-  # ─────────────────────────────────────────────────────────────────────
-    if (factory::in_array_string_compare($element->attribute_select('value'), $new_values))
-         $element->attribute_insert('checked', 'checked');
-    else $element->attribute_delete('checked');
-
-  # check required
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('required') && !factory::in_array_string_compare($element->attribute_select('value'), $new_values)) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" must be checked!', ['title' => $title])
-      );
-      return;
-    }
-
-  }
-
-  #######################
-  ### on_submit_files ###
-  #######################
 
   static function on_submit_files($form, $fields, &$values) {
     foreach ($fields as $c_dpath => $c_field) {

@@ -67,7 +67,6 @@ namespace effcore {
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       if (static::is_readonly($field, $element)) return true;
-      $cur_index = static::get_cur_index($name);
       $allowed_values = static::get_allowed_values($element);
       $new_values = static::get_new_value_multiple($name);
       $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
