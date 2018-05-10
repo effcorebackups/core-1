@@ -32,30 +32,33 @@ namespace effcore {
       $new_value = static::get_new_value($name, $cur_index);
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $dpath, $element, $new_value);
-      $element->attribute_insert('value', $new_value);
+                static::validate_maxlength($field, $form, $dpath, $element, $new_value);
+      $new_values = strlen($new_value) ? explode(',', $new_value) : [];
+      $result = $result && static::validate_multiple($field, $form, $dpath, $element, $new_values);
+      $result = $result && static::validate_values  ($field, $form, $dpath, $element, $new_values);
+      $element->attribute_insert('value', implode(',', $new_values));
       return $result;
     }
   }
 
-  static function validate_value($field, $form, $dpath, $element, &$new_value) {
-    if (strlen($new_value)) {
-      $emails = explode(',', $new_value);
-      if (count($emails) > 1 && !$element->attribute_select('multiple')) {
-        $new_value = $emails[0];
+  static function validate_multiple($field, $form, $dpath, $element, &$new_values) {
+    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
+      $new_values = array_slice($new_values, -1);
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_values($field, $form, $dpath, $element, &$new_values) {
+    foreach ($new_values as $c_value) {
+      if (factory::filter_email($c_value) == false) {
         $form->add_error($dpath.'/element',
-          translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
+          translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
         );
         return;
-      }
-      foreach ($emails as $c_email) {
-        if (factory::filter_email($c_email) == false) {
-          $form->add_error($dpath.'/element',
-            translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
-          );
-          return;
-        }
       }
     }
     return true;

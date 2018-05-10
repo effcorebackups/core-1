@@ -109,7 +109,7 @@ namespace effcore {
     if (!$element->attribute_select('multiple') && count($new_values) > 1) {
       $new_values = array_slice($new_values, -1);
       $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
+        translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
     } else {
       return true;

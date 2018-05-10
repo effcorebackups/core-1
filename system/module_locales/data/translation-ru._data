@@ -85,7 +85,7 @@ translations
     - Field "%%_title" contains an incorrect email address!: Поле "%%_title" содержит неверный адрес электронной почты!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
-    - Field "%%_title" is not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
+    - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть отмечено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_num characters!: Поле "%%_title" должно содержать максимум %%_num символов!
