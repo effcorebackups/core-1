@@ -98,6 +98,13 @@ namespace effcore {
                   $_POST[$name][$index] : ''));
   }
 
+  static function get_new_value_multiple($name) {
+    return !isset($_POST[$name]) ? [] :
+       (is_string($_POST[$name]) ? [$_POST[$name]] :
+        (is_array($_POST[$name]) ?
+                  $_POST[$name] : []));
+  }
+
   static function is_disabled($field, $element) {
     return $element->attribute_select('disabled') ? true : false;
   }

@@ -141,27 +141,6 @@ namespace effcore {
             $values[$c_name] = [];
           }
 
-        # select validation:
-        # ─────────────────────────────────────────────────────────────────────
-          if ($c_element->tag_name == 'select') {
-            $c_allowed_values = [];
-            foreach ($c_element->children_select_recursive() as $c_option) {
-              if ($c_option instanceof node && $c_option->tag_name == 'option') {
-                if (!$c_option->attribute_select('disabled')) {
-                  $c_allowed_values[] = $c_option->attribute_select('value');
-                }
-              }
-            }
-            static::_validate_field_selector($form, $c_field, $c_element, $c_dpath, $c_name, $values[$c_name], $c_allowed_values);
-            foreach ($c_element->children_select_recursive() as $c_option) {
-              if ($c_option instanceof node && $c_option->tag_name == 'option') {
-                if (factory::in_array_string_compare($c_option->attribute_select('value'), $values[$c_name]))
-                     $c_option->attribute_insert('selected', 'selected');
-                else $c_option->attribute_delete('selected');
-              }
-            }
-          }
-
         # input[type=file] validation:
         # ─────────────────────────────────────────────────────────────────────
         if ($c_field instanceof field_file) {
@@ -177,45 +156,6 @@ namespace effcore {
 
         }
       }
-    }
-  }
-
-  ################################
-  ### _validate_field_selector ###
-  ################################
-
-  static function _validate_field_selector($form, $field, $element, $dpath, $name, &$new_values, $allowed_values) {
-    $title = translation::get(
-      $field->title
-    );
-
-  # filter fake values from the user's side
-  # ─────────────────────────────────────────────────────────────────────
-    $new_values = array_unique(array_intersect($new_values, $allowed_values));
-
-  # check required
-  # ─────────────────────────────────────────────────────────────────────
-    if ($element->attribute_select('required') && empty(array_filter($new_values, 'strlen'))) {
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" must be selected!', ['title' => $title])
-      );
-      return;
-    }
-
-  # deleting empty value '' in array with many values
-  # ─────────────────────────────────────────────────────────────────────
-  # - ['' => '']          -> ['' => '']
-  # - ['' => '', ...]     -> [...]
-  # ─────────────────────────────────────────────────────────────────────
-    $new_values = array_filter($new_values, 'strlen') ?: $new_values;
-
-  # check if field is multiple or singular
-  # ─────────────────────────────────────────────────────────────────────
-    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
-      $new_values = array_slice($new_values, -1);
-      $form->add_error($dpath.'/element',
-        translation::get('Field "%%_title" is not support multiple select!', ['title' => $title])
-      );
     }
   }
 

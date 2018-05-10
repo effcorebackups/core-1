@@ -46,14 +46,74 @@ namespace effcore {
     );
   }
 
-  function option_insert($title, $value, $attr = [], $grp_id = null) {
+  function option_insert($title, $value, $attr = [], $optgroup_id = null) {
     $option = new markup('option', $attr, ['content' => $title]);
     $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
     if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
     if (isset($this->disabled[$value])) $option->attribute_insert('disabled', 'disabled');
-    $parent_el = $grp_id ? $this->child_select('element')->child_select($grp_id) :
-                           $this->child_select('element');
-    $parent_el->child_insert($option, $value);
+    if (!$optgroup_id)
+         $this->child_select('element')->child_insert($option, $value);
+    else $this->child_select('element')->child_select($optgroup_id)->child_insert($option, $value);
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function validate($field, $form, $dpath) {
+    $element = $field->child_select('element');
+    $name = $field->get_element_name();
+    $type = $field->get_element_type();
+    if ($name && $type) {
+      if (static::is_disabled($field, $element)) return true;
+      if (static::is_readonly($field, $element)) return true;
+      $cur_index = static::get_cur_index($name);
+      $allowed_values = static::get_allowed_values($element);
+      $new_values = static::get_new_value_multiple($name);
+      $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
+      $result = static::validate_required($field, $form, $dpath, $element, $new_values) &&
+                static::validate_multiple($field, $form, $dpath, $element, $new_values);
+      foreach ($element->children_select_recursive() as $c_item) {
+        if ($c_item instanceof node && $c_item->tag_name == 'option') {
+          if (factory::in_array_string_compare($c_item->attribute_select('value'), $new_values))
+               $c_item->attribute_insert('selected', 'selected');
+          else $c_item->attribute_delete('selected');
+        }
+      }
+      return $result;
+    }
+  }
+
+  static function get_allowed_values($element) {
+    $return = [];
+    foreach ($element->children_select_recursive() as $c_item) {
+      if ($c_item instanceof node && $c_item->tag_name == 'option' &&
+         !$c_item->attribute_select('disabled')) {
+        $return[] = $c_item->attribute_select('value');
+      }
+    }
+    return $return;
+  }
+
+  static function validate_required($field, $form, $dpath, $element, &$new_values) {
+    if ($element->attribute_select('required') && empty(array_filter($new_values, 'strlen'))) {
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_multiple($field, $form, $dpath, $element, &$new_values) {
+    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
+      $new_values = array_slice($new_values, -1);
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
+      );
+    } else {
+      return true;
+    }
   }
 
 }}
