@@ -316,6 +316,10 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | ...
   }
 
+  static function validate_url($value) {
+    return filter_var($value, FILTER_VALIDATE_URL);
+  }
+
   static function sanitize_url($value) {
     return filter_var($value, FILTER_SANITIZE_URL);
   }

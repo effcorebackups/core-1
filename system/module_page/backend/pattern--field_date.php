@@ -44,10 +44,10 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_max      ($field, $form, $dpath, $element, $new_value);
+                static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -55,7 +55,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $dpath, $element, &$new_value) {
     if (strlen($new_value) && (
-       !preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%S', $new_value, $matches) ||
+       !preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $new_value, $matches) ||
        !checkdate($matches['m'],
                   $matches['d'],
                   $matches['Y']))) {

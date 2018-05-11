@@ -83,7 +83,9 @@ translations
     - Field "%%_title" contains an incorrect characters from image!: Поле "%%_title" содержит неверные символы с изображения!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect email address!: Поле "%%_title" содержит неверный адрес электронной почты!
+    - Field "%%_title" contains an incorrect phone!: Поле "%%_title" содержит неверный телефон!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
+    - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть отмечено!

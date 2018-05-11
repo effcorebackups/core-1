@@ -34,8 +34,8 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $dpath, $element, $new_value);
+                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }

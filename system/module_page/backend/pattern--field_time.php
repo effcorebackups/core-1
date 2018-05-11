@@ -48,7 +48,8 @@ namespace effcore {
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_max      ($field, $form, $dpath, $element, $new_value);
+                static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -58,7 +59,7 @@ namespace effcore {
     if (strlen($new_value) &&
        !preg_match('%^(?<H>[0-1][0-9]|20|21|22|23)'.
                  '(?::(?<i>[0-5][0-9]))'.
-                 '(?::(?<s>[0-5][0-9])|)$%S', $new_value, $matches)) {
+                 '(?::(?<s>[0-5][0-9])|)$%', $new_value, $matches)) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
