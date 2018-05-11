@@ -54,7 +54,7 @@ namespace effcore {
         if ($c_file->move_uploaded(temporary::directory, $c_hash)) {
           $c_new_value->tmp_name = $c_file->get_path();
           $c_new_value->name = factory::sanitize_file_name($c_new_value->name);
-          $c_new_value->type = factory::validate_mime_type($c_new_value->type);
+          $c_new_value->type = factory::validate_mime_type($c_new_value->type) ? $c_new_value->type : '';
           $pool[$name][$c_hash] = $c_new_value;
         }
       }
