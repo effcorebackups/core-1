@@ -21,7 +21,6 @@ namespace effcore {
   # attributes validation plan:
   # ─────────────────────────────────────────────────────────────────────
   # - PATTE       | VALUE should match the PATTERN
-  # - input:color | VALUE should match the pattern #dddddd
   # ─────────────────────────────────────────────────────────────────────
 
   # note:

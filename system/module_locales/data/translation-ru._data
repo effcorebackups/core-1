@@ -228,6 +228,8 @@ translations
     - Table: Таблица
     - Test: Тест
     - Text: Текст
+    - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зеленой и "ef" - синей.
+    - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size
     - the uploaded file was only partially uploaded: загружаемый файл был загружен только частично
     - Time: Время

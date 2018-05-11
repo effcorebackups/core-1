@@ -337,10 +337,6 @@ forms
                 - required: required
         - color_macro|field_color
             title: Color (macro)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="color"&gt;
             element_attributes
             - name: color_macro
             - value: #eeeeee
