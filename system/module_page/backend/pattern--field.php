@@ -16,7 +16,7 @@
   #          x     | d | y | d | t | t |   |   |   | e |   |   | ] |
   # element   x    |   |   |   | h | h |   |   |   |   |   |   |   |
   # ─────────────────────────────────────────────────────────────────────
-  # input:text     | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:text     | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:color    | + | x | + | x | x |   |   |   |   |   |   | ? |
   # input:email    | + | + | + | + | + |   |   |   | + |   | ? | ? |
   # input:file     | ? |   | ? |   |   | ? | ? | ? | ? |   |   | ? |
@@ -110,6 +110,7 @@ namespace effcore {
   function render_description() {
     $return = [];
     $element = $this->child_select('element');
+    if ($element instanceof node_simple && $element->attribute_select('pattern') !== null)   $return[] = new markup('p', ['class' => ['pattern' => 'pattern']],     translation::get('Field value should match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')]));
     if ($element instanceof node_simple && $element->attribute_select('minlength') !== null) $return[] = new markup('p', ['class' => ['minlength' => 'minlength']], translation::get('Field must contain a minimum of %%_num characters.', ['num' => $element->attribute_select('minlength')]));
     if ($element instanceof node_simple && $element->attribute_select('maxlength') !== null) $return[] = new markup('p', ['class' => ['maxlength' => 'maxlength']], translation::get('Field must contain a maximum of %%_num characters.', ['num' => $element->attribute_select('maxlength')]));
     if ($element instanceof node_simple && $element->attribute_select('min') !== null)       $return[] = new markup('p', ['class' => ['min' => 'min']],             translation::get('Minimal field value: %%_value.', ['value' => $element->attribute_select('min')]));

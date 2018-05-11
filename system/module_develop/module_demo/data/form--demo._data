@@ -30,7 +30,7 @@ forms
                 - value: text in input 1
                 - minlength: 5
                 - maxlength: 255
-                - pattern: [a-zA-Z0-9]+
+                - pattern: %^[a-zA-Z0-9 ]+$%
         - text_macro|field_text
             title: Text (macro)
             description|text
@@ -41,7 +41,7 @@ forms
             - name: text_macro
             - value: text in input 2
             - minlength: 5
-            - pattern: [a-zA-Z0-9]+
+            - pattern: %^[a-zA-Z0-9 ]+$%
       # field password
         - password|field
             title: Password

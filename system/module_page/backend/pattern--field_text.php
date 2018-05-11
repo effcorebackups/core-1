@@ -31,7 +31,8 @@ namespace effcore {
       $new_value = static::get_new_value($name, $cur_index);
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value);
+                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -95,5 +96,18 @@ namespace effcore {
       return true;
     }
   }
+
+  static function validate_pattern($field, $form, $dpath, $element, &$new_value) {
+    if (strlen($new_value) && $element->attribute_select('pattern') &&
+                  !preg_match($element->attribute_select('pattern'), $new_value)) {
+      $form->add_error($dpath.'/element',
+        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
+        translation::get('Field value does not match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')])
+      );
+    } else {
+      return true;
+    }
+  }
+
 
 }}
