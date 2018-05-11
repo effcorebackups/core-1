@@ -41,7 +41,8 @@ namespace effcore {
                 static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_step     ($field, $form, $dpath, $element, $new_value);
+                static::validate_step     ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -61,7 +62,7 @@ namespace effcore {
     if (strlen($new_value) && !preg_match(
         '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
          '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
-         '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%S', $new_value)) {
+         '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%', $new_value)) {
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('Field value is not a valid number.')

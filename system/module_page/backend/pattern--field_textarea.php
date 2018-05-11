@@ -44,7 +44,9 @@ namespace effcore {
       $new_value = static::get_new_value($name, $cur_index);
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value);
+                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
+                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
       $element->child_select('content')->text_update($new_value);
       return $result;
     }

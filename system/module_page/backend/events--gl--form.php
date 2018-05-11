@@ -18,11 +18,6 @@ namespace effcore {
   ### on_validate ###
   ###################
 
-  # attributes validation plan:
-  # ─────────────────────────────────────────────────────────────────────
-  # - PATTE       | VALUE should match the PATTERN
-  # ─────────────────────────────────────────────────────────────────────
-
   # note:
   # ─────────────────────────────────────────────────────────────────────
   # 1. attribute MULTIPLE in SELECT element is not supported on touch

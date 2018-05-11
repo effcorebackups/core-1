@@ -26,9 +26,9 @@
   # input:url      | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:date     | + | + | + | x | x | + | + |   |   |   | + | ? |
   # input:time     | + | + | + | x | x | + | + |   |   |   | + | ? |
-  # input:number   | + | + | + | x | x | + | + | + |   |   |   | ? |
-  # input:range    | + | x | + | x | x | + | + | + |   |   |   | ? |
-  # textarea       | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:number   | + | + | + | x | x | + | + | + |   |   | + | ? |
+  # input:range    | + | x | + | x | x | + | + | + |   |   | + | ? |
+  # textarea       | + | + | + | + | + |   |   |   |   |   | + | ? |
   # select         | + | x | + |   |   |   |   |   | + |   |   | ? |
   # select:option  | ? |   |   |   |   |   |   |   |   |   |   |   |
   # input:checkbox | + | x | + |   |   |   |   |   |   | + |   | ? |
