@@ -24,7 +24,7 @@
   # input:search   | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:tel      | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:url      | + | + | + | + | + |   |   |   |   |   | + | ? |
-  # input:date     | + | + | + | x | x | + | + |   |   |   |   | ? |
+  # input:date     | + | + | + | x | x | + | + |   |   |   | + | ? |
   # input:time     | + | + | + | x | x | + | + |   |   |   |   | ? |
   # input:number   | + | + | + | x | x | + | + | + |   |   |   | ? |
   # input:range    | + | x | + | x | x | + | + | + |   |   |   | ? |
