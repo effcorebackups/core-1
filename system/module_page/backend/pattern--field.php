@@ -20,7 +20,7 @@
   # input:color    | + | x | + | x | x |   |   |   |   |   | + | ? |
   # input:email    | + | + | + | + | + |   |   |   | + |   | + | ? |
   # input:file     | ? |   | ? |   |   | ? | ? | ? | ? |   |   | ? |
-  # input:password | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:password | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:search   | + | + | + | + | + |   |   |   |   |   | ? | ? |
   # input:tel      | + | + | + | + | + |   |   |   |   |   | ? | ? |
   # input:url      | + | + | + | + | + |   |   |   |   |   | ? | ? |
