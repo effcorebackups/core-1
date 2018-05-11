@@ -23,7 +23,7 @@
   # input:password | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:search   | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:tel      | + | + | + | + | + |   |   |   |   |   | + | ? |
-  # input:url      | + | + | + | + | + |   |   |   |   |   | ? | ? |
+  # input:url      | + | + | + | + | + |   |   |   |   |   | + | ? |
   # input:date     | + | + | + | x | x | + | + |   |   |   |   | ? |
   # input:time     | + | + | + | x | x | + | + |   |   |   |   | ? |
   # input:number   | + | + | + | x | x | + | + | + |   |   |   | ? |
