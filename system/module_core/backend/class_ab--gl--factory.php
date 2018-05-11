@@ -304,23 +304,23 @@ namespace effcore {
   ### filters ###
   ###############
 
-  static function filter_email($value) {
+  static function validate_email($value) {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
-  static function filter_url($value) {
-    return filter_var($value, FILTER_SANITIZE_URL);
-  }
-
-  static function filter_mime_type($value) {
+  static function validate_mime_type($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-z0-9\-\+\.]{1,100}$%i']]);
   }
 
-  static function filter_hash($value, $lenght = 32) {
+  static function validate_hash($value, $lenght = 32) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | ...
   }
 
-  static function filter_file_name($value) {
+  static function sanitize_url($value) {
+    return filter_var($value, FILTER_SANITIZE_URL);
+  }
+
+  static function sanitize_file_name($value) {
     $return = preg_replace_callback('%(?<char>[^a-z0-9_.\-])%uiS', function($m) {
       if ($m['char'] == ' ') return '-';
       if (strlen($m['char']) == 1) return dechex(ord($m['char'][0]));

@@ -104,7 +104,7 @@ namespace effcore {
   static function id_decode_signature($id)     {return substr($id, 32 + 1, 8);}
 
   static function id_check($value) {
-    if (factory::filter_hash($value, 41)) {
+    if (factory::validate_hash($value, 41)) {
       $type          = static::id_decode_type($value);
       $expire        = static::id_decode_expire($value);
       $ip            = static::id_decode_ip($value);

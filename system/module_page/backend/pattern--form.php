@@ -228,7 +228,7 @@ namespace effcore {
   }
 
   static function validation_id_check($value) {
-    if (factory::filter_hash($value, 32)) {
+    if (factory::validate_hash($value, 32)) {
       $created = hexdec(substr($value, 0, 8));
       $ip = factory::hex_to_ip(substr($value, 8, 8));
       $uagent_hash_8 = substr($value, 16, 8);
