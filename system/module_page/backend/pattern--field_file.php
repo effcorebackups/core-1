@@ -101,4 +101,60 @@ namespace effcore {
     $this->pool_manager_build();
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function validate($field, $form, $npath) {
+    $element = $field->child_select('element');
+    $name = $field->get_element_name();
+    $type = $field->get_element_type();
+    if ($name && $type) {
+      if (static::is_disabled($field, $element)) return true;
+      $new_values = static::get_new_files($name);
+      $result = static::validate_required ($field, $form, $npath, $element, $new_values) &&
+                static::validate_multiple ($field, $form, $npath, $element, $new_values) &&
+                static::validate_values   ($field, $form, $npath, $element, $new_values);
+      $field->pool_build($new_values);
+      return $result;
+    }
+  }
+
+  static function validate_required($field, $form, $npath, $element, &$new_values) {
+    if ($element->attribute_select('required') && count($new_values) == 0) {
+      $form->add_error($npath.'/element',
+        translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_multiple($field, $form, $npath, $element, &$new_values) {
+    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
+      $form->add_error($npath.'/element',
+        translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function validate_values($field, $form, $npath, $element, &$new_values) {
+    $max_size = $field->get_max_file_size();
+    foreach ($new_values as $c_new_value) {
+      switch ($c_new_value->error) {
+        case UPLOAD_ERR_INI_SIZE   : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;
+        case UPLOAD_ERR_PARTIAL    : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]));                                                  return;
+        case UPLOAD_ERR_NO_TMP_DIR : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]));                                                                  return;
+        case UPLOAD_ERR_CANT_WRITE : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]));                                                                   return;
+        case UPLOAD_ERR_EXTENSION  : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]));                                                        return;
+      }
+      if ($c_new_value->size === 0)              {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')])); return;}
+      if ($c_new_value->size > $max_size)        {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error])); return;}
+    }
+    return true;
+  }
+
 }}
