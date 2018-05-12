@@ -123,16 +123,6 @@ namespace effcore {
 
   static function get_values() {
     $return = [];
-    # conversion matrix (expected: string|array):
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_POST[name] == ''                  -> return [0 => '']
-    # - $_POST[name] == 'value'             -> return [0 => 'value']
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_POST[name] == [0 => '']           -> return [0 => '']
-    # - $_POST[name] == [0 => '', ...]      -> return [0 => '', ...]
-    # - $_POST[name] == [0 => 'value']      -> return [0 => 'value']
-    # - $_POST[name] == [0 => 'value', ...] -> return [0 => 'value', ...]
-    # ─────────────────────────────────────────────────────────────────────
     foreach ($_POST as $c_field => $c_value) {
       $return[$c_field] = is_array($c_value) ?
                                    $c_value : [$c_value];
@@ -142,16 +132,6 @@ namespace effcore {
 
   static function get_files() {
     $return = [];
-    # conversion matrix (expected: string|array):
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_FILES[name] == '',                 -> ignored empty
-    # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
-    # ─────────────────────────────────────────────────────────────────────
-    # - $_FILES[name] == [0 => '']           -> ignored empty
-    # - $_FILES[name] == [0 => '', ...]      -> ignored empty
-    # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
-    # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
-    # ─────────────────────────────────────────────────────────────────────
     foreach ($_FILES as $c_field => $c_info) {
       if (!is_array($c_info['name']))     $c_info['name']     = [$c_info['name']];
       if (!is_array($c_info['type']))     $c_info['type']     = [$c_info['type']];

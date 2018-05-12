@@ -134,6 +134,18 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
+  # conversion matrix (expected from $_POST - undefined|string|array):
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_POST[name] == undefined           -> return ''
+  # - $_POST[name] == ''                  -> return ''
+  # - $_POST[name] == 'value'             -> return 'value'
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_POST[name] == [0 => '']           -> return ''
+  # - $_POST[name] == [0 => '', ...]      -> return ''
+  # - $_POST[name] == [0 => 'value']      -> return 'value'
+  # - $_POST[name] == [0 => 'value', ...] -> return 'value'
+  # ─────────────────────────────────────────────────────────────────────
+
   static function get_new_value($name, $index = 0) {
     return !isset($_POST[$name]) ? '' :
        (is_string($_POST[$name]) ? $_POST[$name] : 
@@ -142,11 +154,37 @@ namespace effcore {
                   $_POST[$name][$index] : ''));
   }
 
+  # conversion matrix (expected from $_POST - undefined|string|array):
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_POST[name] == undefined           -> return []
+  # - $_POST[name] == ''                  -> return [0 => '']
+  # - $_POST[name] == 'value'             -> return [0 => 'value']
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_POST[name] == [0 => '']           -> return [0 => '']
+  # - $_POST[name] == [0 => '', ...]      -> return [0 => '', ...]
+  # - $_POST[name] == [0 => 'value']      -> return [0 => 'value']
+  # - $_POST[name] == [0 => 'value', ...] -> return [0 => 'value', ...]
+  # ─────────────────────────────────────────────────────────────────────
+
   static function get_new_value_multiple($name) {
     return !isset($_POST[$name]) ? [] :
        (is_string($_POST[$name]) ? [$_POST[$name]] :
         (is_array($_POST[$name]) ?
                   $_POST[$name] : []));
+  }
+
+  # conversion matrix (expected: string|array):
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_FILES[name] == '',                 -> ignored empty
+  # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
+  # ─────────────────────────────────────────────────────────────────────
+  # - $_FILES[name] == [0 => '']           -> ignored empty
+  # - $_FILES[name] == [0 => '', ...]      -> ignored empty
+  # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
+  # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function get_new_files($name) {
   }
 
   static function is_disabled($field, $element) {
