@@ -33,18 +33,18 @@ namespace effcore {
       $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
-      $new_values = strlen($new_value) ? explode(',', $new_value) : [];
-      $result = $result && static::validate_multiple($field, $form, $dpath, $element, $new_values);
-      $result = $result && static::validate_values  ($field, $form, $dpath, $element, $new_values);
-      $element->attribute_insert('value', implode(',', $new_values));
+                static::validate_pattern  ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_multiple ($field, $form, $dpath, $element, $new_value) &&
+                static::validate_values   ($field, $form, $dpath, $element, $new_value);
+      $element->attribute_insert('value', $new_value);
       return $result;
     }
   }
 
-  static function validate_multiple($field, $form, $dpath, $element, &$new_values) {
-    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
-      $new_values = array_slice($new_values, -1);
+  static function validate_multiple($field, $form, $dpath, $element, &$new_value) {
+    $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
+    if (!$element->attribute_select('multiple') && count($multiple_values) > 1) {
+      $new_value = array_pop($multiple_values);
       $form->add_error($dpath.'/element',
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
@@ -53,8 +53,9 @@ namespace effcore {
     }
   }
 
-  static function validate_values($field, $form, $dpath, $element, &$new_values) {
-    foreach ($new_values as $c_value) {
+  static function validate_values($field, $form, $dpath, $element, &$new_value) {
+    $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
+    foreach ($multiple_values as $c_value) {
       if (factory::validate_email($c_value) == false) {
         $form->add_error($dpath.'/element',
           translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
