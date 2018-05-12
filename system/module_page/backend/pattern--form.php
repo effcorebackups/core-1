@@ -86,8 +86,8 @@ namespace effcore {
       }
     # call field validate
       if (empty($this->clicked_button->novalidate)) {
-        foreach ($fields as $c_dpath => $c_field) {
-          $c_field::validate($c_field, $this, $c_dpath);
+        foreach ($fields as $c_npath => $c_field) {
+          $c_field::validate($c_field, $this, $c_npath);
         }
       }
     # call form validate handlers
@@ -95,9 +95,9 @@ namespace effcore {
         event::start('on_form_validate', $id, [$this, $containers, &$values]);
       }
     # show errors and set error class
-      foreach ($this->errors as $c_dpath => $c_errors) {
+      foreach ($this->errors as $c_npath => $c_errors) {
         foreach ($c_errors as $c_error) {
-          if ($c_dpath) $elements[$c_dpath]->attribute_insert('class', ['error' => 'error']);
+          if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
           if ($c_error) message::insert($c_error, 'error');
         }
       }
@@ -139,9 +139,9 @@ namespace effcore {
 
   static function get_containers($form) { # @todo: remove this function
     $return = [];
-    foreach ($form->children_select_recursive() as $c_dpath => $c_child) {
+    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {
-        $return[$c_dpath] = $c_child;
+        $return[$c_npath] = $c_child;
       }
     }
     return $return;
@@ -149,9 +149,9 @@ namespace effcore {
 
   static function get_fields($form) {
     $return = [];
-    foreach ($form->children_select_recursive() as $c_dpath => $c_child) {
+    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\field) {
-        $return[$c_dpath] = $c_child;
+        $return[$c_npath] = $c_child;
       }
     }
     return $return;

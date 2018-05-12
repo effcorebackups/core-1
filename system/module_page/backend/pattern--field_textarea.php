@@ -33,7 +33,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $dpath) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->get_element_name();
     $type = $field->get_element_type();
@@ -42,11 +42,11 @@ namespace effcore {
       if (static::is_readonly($field, $element)) return true;
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
-      $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
+      $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
+                static::validate_minlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_value    ($field, $form, $npath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $npath, $element, $new_value);
       $element->child_select('content')->text_update($new_value);
       return $result;
     }

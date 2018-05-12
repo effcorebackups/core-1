@@ -60,7 +60,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $dpath) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->get_element_name();
     $type = $field->get_element_type();
@@ -69,8 +69,8 @@ namespace effcore {
       $allowed_values = static::get_allowed_values($element);
       $new_values = static::get_new_value_multiple($name);
       $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
-      $result = static::validate_required($field, $form, $dpath, $element, $new_values) &&
-                static::validate_multiple($field, $form, $dpath, $element, $new_values);
+      $result = static::validate_required($field, $form, $npath, $element, $new_values) &&
+                static::validate_multiple($field, $form, $npath, $element, $new_values);
       foreach ($element->children_select_recursive() as $c_item) {
         if ($c_item instanceof node && $c_item->tag_name == 'option') {
           if (factory::in_array_string_compare($c_item->attribute_select('value'), $new_values))
@@ -93,9 +93,9 @@ namespace effcore {
     return $return;
   }
 
-  static function validate_required($field, $form, $dpath, $element, &$new_values) {
+  static function validate_required($field, $form, $npath, $element, &$new_values) {
     if ($element->attribute_select('required') && empty(array_filter($new_values, 'strlen'))) {
-      $form->add_error($dpath.'/element',
+      $form->add_error($npath.'/element',
         translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
       );
     } else {
@@ -103,10 +103,10 @@ namespace effcore {
     }
   }
 
-  static function validate_multiple($field, $form, $dpath, $element, &$new_values) {
+  static function validate_multiple($field, $form, $npath, $element, &$new_values) {
     if (!$element->attribute_select('multiple') && count($new_values) > 1) {
       $new_values = array_slice($new_values, -1);
-      $form->add_error($dpath.'/element',
+      $form->add_error($npath.'/element',
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
     } else {

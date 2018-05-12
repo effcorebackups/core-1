@@ -21,7 +21,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $dpath) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->get_element_name();
     $type = $field->get_element_type();
@@ -31,22 +31,22 @@ namespace effcore {
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
       $new_value = strtolower($new_value);
-      $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
+      $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
+                static::validate_minlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_value    ($field, $form, $npath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $npath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
   }
 
-  static function validate_value($field, $form, $dpath, $element, &$new_value) {
+  static function validate_value($field, $form, $npath, $element, &$new_value) {
     if (strlen($new_value) &&
        !preg_match('%^#(?<R>[a-f0-9]{2,2})'.
                       '(?<G>[a-f0-9]{2,2})'.
                       '(?<B>[a-f0-9]{2,2})$%', $new_value)) {
-      $form->add_error($dpath.'/element',
+      $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('The color should be specified in a special format.')
       );

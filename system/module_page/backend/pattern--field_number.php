@@ -26,7 +26,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $dpath) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->get_element_name();
     $type = $field->get_element_type();
@@ -35,14 +35,14 @@ namespace effcore {
       if (static::is_readonly($field, $element)) return true;
       $cur_index = static::get_cur_index($name);
       $new_value = static::get_new_value($name, $cur_index);
-      $result = static::validate_required ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_minlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $dpath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_min      ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_max      ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_step     ($field, $form, $dpath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $dpath, $element, $new_value);
+      $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
+                static::validate_minlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
+                static::validate_value    ($field, $form, $npath, $element, $new_value) &&
+                static::validate_min      ($field, $form, $npath, $element, $new_value) &&
+                static::validate_max      ($field, $form, $npath, $element, $new_value) &&
+                static::validate_step     ($field, $form, $npath, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $npath, $element, $new_value);
       $element->attribute_insert('value', $new_value);
       return $result;
     }
@@ -58,12 +58,12 @@ namespace effcore {
   static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
   static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
-  static function validate_value($field, $form, $dpath, $element, &$new_value) {
+  static function validate_value($field, $form, $npath, $element, &$new_value) {
     if (strlen($new_value) && !preg_match(
         '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
          '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
          '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%', $new_value)) {
-      $form->add_error($dpath.'/element',
+      $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('Field value is not a valid number.')
       );
@@ -72,14 +72,14 @@ namespace effcore {
     }
   }
 
-  static function validate_step($field, $form, $dpath, $element, &$new_value) {
+  static function validate_step($field, $form, $npath, $element, &$new_value) {
     if (strlen($new_value)) {
       $step = $element->attribute_select('step') ?: 1;
       $min = static::get_min_value($element);
       $max = static::get_max_value($element);
       if ((int)round(($min - $new_value) / $step, 5) !=
                round(($min - $new_value) / $step, 5)) {
-        $form->add_error($dpath.'/element',
+        $form->add_error($npath.'/element',
           translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
           translation::get('Field value is not in valid range.')
         );
