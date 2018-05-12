@@ -4,7 +4,7 @@
   ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-  # html5 attributes support:
+  # html5 elements and attributes support:
   # ─────────────────────────────────────────────────────────────────────
   #   x  attribute | d | r | r | m | m | m | m | s | m | c | p | v |
   #    x           | i | e | e | i | a | i | a | t | u | h | a | a |
@@ -36,15 +36,15 @@
   # ─────────────────────────────────────────────────────────────────────
   # note: x - extended feature of the system
   # ─────────────────────────────────────────────────────────────────────
-  # input:hidden         | not processed
-  # input:button         | not processed
-  # input:reset          | not processed
-  # input:submit         | not processed
-  # input:image          | not processed
+  # input:hidden         | protected from change the value from user side
+  # input:button         | not processed - use button:button instead
+  # input:reset          | not processed - use button:reset instead
+  # input:submit         | not processed - use button:submit instead
+  # input:image          | not processed - use imgage instead
+  # input:datetime       | not processed - use date + time instead
+  # input:datetime-local | not processed - use date + time instead
   # input:week           | not processed
   # input:month          | not processed
-  # input:datetime       | not processed
-  # input:datetime-local | not processed
   # ─────────────────────────────────────────────────────────────────────
 
 namespace effcore {

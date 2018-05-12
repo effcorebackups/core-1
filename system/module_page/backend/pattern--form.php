@@ -8,45 +8,9 @@ namespace effcore {
           class form extends markup
           implements external {
 
-  # elements support:
-  # ─────────────────────────────────────────────────────────────────────
-  # - textarea
-  # - input[type=text]
-  # - input[type=password]
-  # - input[type=search]
-  # - input[type=url]
-  # - input[type=tel]
-  # - input[type=email]
-  # - select
-  # - input[type=file]
-  # - input[type=checkbox]
-  # - input[type=radio]
-  # - input[type=number]
-  # - input[type=range]
-  # - input[type=date]
-  # - input[type=time]
-  # - input[type=color]
-  # - button[type=button]
-  # - button[type=reset]
-  # - button[type=submit]
-  # - input[type=hidden]         : not processed
-  # ─────────────────────────────────────────────────────────────────────
-
-  # elements are not supported and not processed:
-  # ─────────────────────────────────────────────────────────────────────
-  # - input[type=button]         : use button[type=button] instead
-  # - input[type=reset]          : use button[type=reset] instead
-  # - input[type=submit]         : use button[type=submit] instead
-  # - input[type=image]          : use imgage instead
-  # - input[type=week]           : use week_macro instead
-  # - input[type=month]          : use month_macro instead
-  # - input[type=datetime]       : use date + time instead
-  # - input[type=datetime-local] : use date + time instead
-  # ─────────────────────────────────────────────────────────────────────
-
   # note:
   # ─────────────────────────────────────────────────────────────────────
-  # 1. more info in \effcore\events_form
+  # 1. more info in \effcore\field
   # ─────────────────────────────────────────────────────────────────────
 
   public $tag_name = 'form';
