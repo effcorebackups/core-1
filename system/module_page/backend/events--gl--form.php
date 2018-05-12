@@ -18,50 +18,6 @@ namespace effcore {
   ### on_validate ###
   ###################
 
-  # note:
-  # ─────────────────────────────────────────────────────────────────────
-  # 1. attribute MULTIPLE in SELECT element is not supported on touch
-  #    devices - tablets, phones, monitors with touch screens
-  # 2. not recommend to use DISABLED|READONLY text fields with shared
-  #    NAME (name="shared_name[]") because user can remove DISABLED|READONLY
-  #    state from field and change the field VALUE and submit the form - after
-  #    this action the new VALUE will be setted to the next field with
-  #    shared NAME.
-  #    example (default form state):
-  #    - input[type=text,name=shared_name[],value=1,disabled|readonly]
-  #    - input[type=text,name=shared_name[],value=2]
-  #    - input[type=text,name=shared_name[],value=3]
-  #    example (user made a fake changes):
-  #    - input[type=text,name=shared_name[],value=fake_value]
-  #    - input[type=text,name=shared_name[],value=2]
-  #    - input[type=text,name=shared_name[],value=3]
-  #    example (result form state after validate):
-  #    - input[type=text,name=shared_name[],value=1,disabled|readonly]
-  #    - input[type=text,name=shared_name[],value=fake_value]
-  #    - input[type=text,name=shared_name[],value=2]
-  # 3. if you used more than 1 element with attribute MULTIPLE and shared
-  #    NAME (name="shared_name[]"), after submit you will get equivalent
-  #    arrays of values.
-  #    example (result form state before validate):
-  #    - select[name=shared_name[],multiple]
-  #      - option[value=1,selected]
-  #      - option[value=2]
-  #      - option[value=3]
-  #    - select[name=shared_name[],multiple]
-  #      - option[value=1]
-  #      - option[value=2,selected]
-  #      - option[value=3]
-  #    example (result form state after validate):
-  #    - select[name=shared_name[],multiple]
-  #      - option[value=1,selected]
-  #      - option[value=2,selected]
-  #      - option[value=3]
-  #    - select[name=shared_name[],multiple]
-  #      - option[value=1,selected]
-  #      - option[value=2,selected]
-  #      - option[value=3]
-  # ─────────────────────────────────────────────────────────────────────
-
   static function on_validate($form, $fields, &$values) {
     $indexes = [];
     foreach ($fields as $c_dpath => $c_field) {

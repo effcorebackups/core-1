@@ -25,7 +25,6 @@ namespace effcore {
     $type = $field->get_element_type();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      if (static::is_readonly($field, $element)) return true;
       $new_values = static::get_new_value_multiple($name);
       $result = static::validate_required($field, $form, $dpath, $element, $new_values);
       if (factory::in_array_string_compare($element->attribute_select('value'), $new_values))
