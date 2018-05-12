@@ -173,18 +173,43 @@ namespace effcore {
                   $_POST[$name] : []));
   }
 
-  # conversion matrix (expected: string|array):
+  # conversion matrix (expected: undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_FILES[name] == '',                 -> ignored empty
+  # - $_FILES[name] == undefined,          -> return []
+  # - $_FILES[name] == '',                 -> return []
   # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
   # ─────────────────────────────────────────────────────────────────────
-  # - $_FILES[name] == [0 => '']           -> ignored empty
-  # - $_FILES[name] == [0 => '', ...]      -> ignored empty
+  # - $_FILES[name] == []                  -> return []
+  # - $_FILES[name] == [0 => '']           -> return []
+  # - $_FILES[name] == [0 => '', ...]      -> return [...]
   # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
   # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
   # ─────────────────────────────────────────────────────────────────────
 
   static function get_new_files($name) {
+    $return = [];
+    if (isset($_FILES[$name]['name'])     &&
+        isset($_FILES[$name]['type'])     &&
+        isset($_FILES[$name]['size'])     &&
+        isset($_FILES[$name]['tmp_name']) &&
+        isset($_FILES[$name]['error'])) {
+      $info = $_FILES[$name];
+      if (!is_array($info['name']))     $info['name']     = [$info['name']];
+      if (!is_array($info['type']))     $info['type']     = [$info['type']];
+      if (!is_array($info['size']))     $info['size']     = [$info['size']];
+      if (!is_array($info['tmp_name'])) $info['tmp_name'] = [$info['tmp_name']];
+      if (!is_array($info['error']))    $info['error']    = [$info['error']];
+      foreach ($info as $c_prop => $c_values) {
+        foreach ($c_values as $c_index => $c_value) {
+          if ($info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
+            if (!isset($return[$c_index]))
+                       $return[$c_index] = new \stdClass();
+            $return[$c_index]->{$c_prop} = $c_value;
+          }
+        }
+      }
+    }
+    return $return;
   }
 
   static function is_disabled($field, $element) {
