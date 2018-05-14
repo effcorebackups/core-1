@@ -39,60 +39,38 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_build(&$new_values, $validate_result) {
-return;
-    $validation_id = form::validation_id_get();
-    $pool = temporary::select('files-'.$validation_id) ?: [];
+  function pool_build($form, $new_values, $npath, $is_valid) {
     $name = $this->get_element_name();
-    if (!isset($pool[$name]))
-               $pool[$name] = [];
-    $pool_count_0 = count($pool[$name]);
-  # move uploaded files to "dynamic/tmp" directory and adding to the pool
-    foreach ($new_values as $c_new_value) {
-      if (is_uploaded_file($c_new_value->tmp_name)) {
-        $c_file = new file($c_new_value->tmp_name);
-        $c_hash = $c_file->get_hash();
-        if ($c_file->move_uploaded(temporary::directory, $c_hash)) {
-          $c_new_value->tmp_name = $c_file->get_path();
-          $pool[$name][$c_hash] = $c_new_value;
-        }
-      }
+    $pool = isset($form->validation_data['pool'][$name]) ?
+                  $form->validation_data['pool'][$name] : [];
+  # add new values to the pool
+    if ($is_valid && count($new_values)) {
+      $pool = array_merge($pool, $new_values);
     }
-  # deleting selected files
-    $delete_items = isset($_POST['manager_delete_'.$name]) ? factory::array_kmap((array)
-                          $_POST['manager_delete_'.$name]) : [];
-    foreach ($pool[$name] as $c_hash => $c_file_info) {
-      if (isset($delete_items[$c_hash])) {
-        unlink($pool[$name][$c_hash]->tmp_name);
-         unset($pool[$name][$c_hash]);
-      }
+  # remove old values from the pool
+    $removed = static::get_new_value_multiple('manager_delete_'.$name);
+    foreach ($removed as $c_id) {
+      unset($pool[$c_id]);
     }
   # save the pool
-    if (count($pool[$name]) ||
-       (count($pool[$name]) == 0 && $pool_count_0 > 0)) {
-      temporary::update('files-'.$validation_id, $pool);
+    $form->validation_data['pool'][$name] = $pool;
+  # insert "remove" checkboxes for each file
+    foreach ($pool as $c_id => $c_file) {
+      $this->pool_manager_insert_action($c_file, $c_id);
     }
-  # organize the pool manager
-    foreach ($pool[$name] as $c_hash => $c_file_info) {
-      $this->pool_manager_insert_action($c_file_info, $c_hash);
-    }
-  # reflect pool to new_values
-    $new_values = $pool[$name];
   }
-
-  ####################
-  ### pool manager ###
-  ####################
 
   function pool_manager_build() {
-    $this->child_insert(new group_checkboxes(), 'manager');
-    $this->child_select('manager')->build();
+    $pool_manager = new group_checkboxes();
+    $pool_manager->build();
+    $this->child_insert($pool_manager, 'manager');
   }
 
-  function pool_manager_insert_action($info, $hash) {
-    $name = $this->get_element_name();
-    $this->child_select('manager')->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $hash]
+  function pool_manager_insert_action($info, $id) {
+    $name         = $this->get_element_name();
+    $pool_manager = $this->child_select('manager');
+    $pool_manager->field_insert(
+      translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
     );
   }
 
@@ -114,7 +92,7 @@ return;
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
-      $field->pool_build($new_values, $result);
+      $field->pool_build($form, $new_values, $npath, $result);
       return $result;
     }
   }

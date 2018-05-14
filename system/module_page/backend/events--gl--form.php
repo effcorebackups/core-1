@@ -71,6 +71,20 @@ namespace effcore {
             $c_field->pool_manager_clean();
           }
 
+/*
+        # move uploaded files to "dynamic/tmp" directory and adding to the pool
+          foreach ($new_values as $c_new_value) {
+            if (is_uploaded_file($c_new_value->tmp_name)) {
+              $c_file = new file($c_new_value->tmp_name);
+              $c_hash = $c_file->get_hash();
+              if ($c_file->move_uploaded(temporary::directory, $c_hash)) {
+                $c_new_value->tmp_name = $c_file->get_path();
+                $pool[$name][$c_hash] = $c_new_value;
+              }
+            }
+          }
+*/
+
         }
       }
     }
