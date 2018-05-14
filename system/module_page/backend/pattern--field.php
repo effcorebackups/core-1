@@ -200,6 +200,8 @@ namespace effcore {
           if ($info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
             if (!isset($return[$c_index]))
                        $return[$c_index] = new \stdClass();
+            if ($c_prop == 'name') $c_value = factory::sanitize_file_name($c_value);
+            if ($c_prop == 'type') $c_value = factory::validate_mime_type($c_value) ? $c_value : '';
             $return[$c_index]->{$c_prop} = $c_value;
           }
         }

@@ -39,7 +39,8 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_build(&$new_values) {
+  function pool_build(&$new_values, $validate_result) {
+return;
     $validation_id = form::validation_id_get();
     $pool = temporary::select('files-'.$validation_id) ?: [];
     $name = $this->get_element_name();
@@ -53,8 +54,6 @@ namespace effcore {
         $c_hash = $c_file->get_hash();
         if ($c_file->move_uploaded(temporary::directory, $c_hash)) {
           $c_new_value->tmp_name = $c_file->get_path();
-          $c_new_value->name = factory::sanitize_file_name($c_new_value->name);
-          $c_new_value->type = factory::validate_mime_type($c_new_value->type) ? $c_new_value->type : '';
           $pool[$name][$c_hash] = $c_new_value;
         }
       }
@@ -112,12 +111,29 @@ namespace effcore {
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $new_values = static::get_new_files($name);
-      $result = static::validate_required ($field, $form, $npath, $element, $new_values) &&
-                static::validate_multiple ($field, $form, $npath, $element, $new_values) &&
-                static::validate_values   ($field, $form, $npath, $element, $new_values);
-      $field->pool_build($new_values);
+      $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
+                static::validate_required($field, $form, $npath, $element, $new_values) &&
+                static::validate_multiple($field, $form, $npath, $element, $new_values);
+      $field->pool_build($new_values, $result);
       return $result;
     }
+  }
+
+  static function validate_upload($field, $form, $npath, $element, &$new_values) {
+    $max_size = $field->get_max_file_size();
+    foreach ($new_values as $c_new_value) {
+      switch ($c_new_value->error) {
+        case UPLOAD_ERR_INI_SIZE   : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;
+        case UPLOAD_ERR_PARTIAL    : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]));                                                  return;
+        case UPLOAD_ERR_NO_TMP_DIR : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]));                                                                  return;
+        case UPLOAD_ERR_CANT_WRITE : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]));                                                                   return;
+        case UPLOAD_ERR_EXTENSION  : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]));                                                        return;
+      }
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error])); return;}
+      if ($c_new_value->size === 0)              {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')])); return;}
+      if ($c_new_value->size > $max_size)        {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
+    }
+    return true;
   }
 
   static function validate_required($field, $form, $npath, $element, &$new_values) {
@@ -133,28 +149,11 @@ namespace effcore {
   static function validate_multiple($field, $form, $npath, $element, &$new_values) {
     if (!$element->attribute_select('multiple') && count($new_values) > 1) {
       $form->add_error($npath.'/element',
-        translation::get('Field "%%_title" is not support multiple select!', ['title' => translation::get($field->title)])
+        translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
     } else {
       return true;
     }
-  }
-
-  static function validate_values($field, $form, $npath, $element, &$new_values) {
-    $max_size = $field->get_max_file_size();
-    foreach ($new_values as $c_new_value) {
-      switch ($c_new_value->error) {
-        case UPLOAD_ERR_INI_SIZE   : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;
-        case UPLOAD_ERR_PARTIAL    : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]));                                                  return;
-        case UPLOAD_ERR_NO_TMP_DIR : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]));                                                                  return;
-        case UPLOAD_ERR_CANT_WRITE : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]));                                                                   return;
-        case UPLOAD_ERR_EXTENSION  : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]));                                                        return;
-      }
-      if ($c_new_value->size === 0)              {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')])); return;}
-      if ($c_new_value->size > $max_size)        {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error])); return;}
-    }
-    return true;
   }
 
 }}
