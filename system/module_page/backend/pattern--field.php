@@ -136,14 +136,14 @@ namespace effcore {
 
   # conversion matrix (expected from $_POST - undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[name] == undefined           -> return ''
-  # - $_POST[name] == ''                  -> return ''
-  # - $_POST[name] == 'value'             -> return 'value'
+  # - $_POST[field] == undefined           -> return ''
+  # - $_POST[field] == ''                  -> return ''
+  # - $_POST[field] == 'value'             -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[name] == [0 => '']           -> return ''
-  # - $_POST[name] == [0 => '', ...]      -> return ''
-  # - $_POST[name] == [0 => 'value']      -> return 'value'
-  # - $_POST[name] == [0 => 'value', ...] -> return 'value'
+  # - $_POST[field] == [0 => '']           -> return ''
+  # - $_POST[field] == [0 => '', ...]      -> return ''
+  # - $_POST[field] == [0 => 'value']      -> return 'value'
+  # - $_POST[field] == [0 => 'value', ...] -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
 
   static function get_new_value($name, $index = 0) {
@@ -156,14 +156,14 @@ namespace effcore {
 
   # conversion matrix (expected from $_POST - undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[name] == undefined           -> return []
-  # - $_POST[name] == ''                  -> return [0 => '']
-  # - $_POST[name] == 'value'             -> return [0 => 'value']
+  # - $_POST[field] == undefined           -> return []
+  # - $_POST[field] == ''                  -> return [0 => '']
+  # - $_POST[field] == 'value'             -> return [0 => 'value']
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[name] == [0 => '']           -> return [0 => '']
-  # - $_POST[name] == [0 => '', ...]      -> return [0 => '', ...]
-  # - $_POST[name] == [0 => 'value']      -> return [0 => 'value']
-  # - $_POST[name] == [0 => 'value', ...] -> return [0 => 'value', ...]
+  # - $_POST[field] == [0 => '']           -> return [0 => '']
+  # - $_POST[field] == [0 => '', ...]      -> return [0 => '', ...]
+  # - $_POST[field] == [0 => 'value']      -> return [0 => 'value']
+  # - $_POST[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
   # ─────────────────────────────────────────────────────────────────────
 
   static function get_new_value_multiple($name) {
@@ -173,17 +173,13 @@ namespace effcore {
                   $_POST[$name] : []));
   }
 
-  # conversion matrix (expected: undefined|string|array):
+  # conversion matrix (expected: undefined|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_FILES[name] == undefined,          -> return []
-  # - $_FILES[name] == '',                 -> return []
-  # - $_FILES[name] == 'value'             -> return [name => [0 => 'value']]
-  # ─────────────────────────────────────────────────────────────────────
-  # - $_FILES[name] == []                  -> return []
-  # - $_FILES[name] == [0 => '']           -> return []
-  # - $_FILES[name] == [0 => '', ...]      -> return [...]
-  # - $_FILES[name] == [0 => 'value']      -> return [name => [0 => 'value']]
-  # - $_FILES[name] == [0 => 'value', ...] -> return [name => [0 => 'value', ...]]
+  # - $_FILES[field] == undefined                             -> return []
+  # - $_FILES[field] == [error = 4]                           -> return []
+  # - $_FILES[field] == [name = 'file']                       -> return [0 => (object)[name = 'file']]
+  # - $_FILES[field] == [name = [0 => 'file']]                -> return [0 => (object)[name = 'file']]
+  # - $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] -> return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']]
   # ─────────────────────────────────────────────────────────────────────
 
   static function get_new_files($name) {
