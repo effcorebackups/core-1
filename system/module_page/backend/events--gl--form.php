@@ -74,9 +74,6 @@ namespace effcore {
         }
       }
     }
-  # delete the stack
-    $validation_id = form::validation_id_get();
-    temporary::delete('files-'.$validation_id);
   }
 
 }}

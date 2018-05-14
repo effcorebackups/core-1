@@ -17,10 +17,13 @@ namespace effcore {
   public $clicked_button;
   public $clicked_button_name;
   public $errors = [];
+  public $validation_cache;
 
   function build() {
     $values = static::get_values() + static::get_files();
+    $validation_id = static::validation_id_get();
     $id = $this->attribute_select('id');
+    $this->validation_cache = temporary::select('form-'.$validation_id);
   # build all form elements
     $elements = $this->children_select_recursive();
     foreach ($elements as $c_element) {
@@ -34,6 +37,7 @@ namespace effcore {
     $fields     = static::get_fields($this);
   # call init handlers
     event::start('on_form_init', $id, [$this, $containers]);
+
   # if user click the button
     if (isset($values['form_id'][0]) &&
               $values['form_id'][0] === $id && isset($values['button'][0])) {
@@ -69,6 +73,11 @@ namespace effcore {
       if (count($this->errors) == 0) {
         event::start('on_form_submit', $id, [$this, $containers, &$values]);
       }
+    # validation cache
+      if (count($this->errors) &&
+                $this->validation_cache)
+           temporary::update('form-'.$validation_id, $this->validation_cache);
+      else temporary::delete('form-'.$validation_id);
     }
 
   # add form_id to the form markup
