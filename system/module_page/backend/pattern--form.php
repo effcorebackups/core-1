@@ -17,7 +17,7 @@ namespace effcore {
   public $clicked_button;
   public $clicked_button_name;
   public $errors = [];
-  public $validation_data = [];
+  public $validation_data;
 
   function build() {
     $values = static::get_values() + static::get_files();
