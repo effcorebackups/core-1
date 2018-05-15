@@ -189,7 +189,7 @@ namespace effcore\modules\develop {
         $c_file = new file($c_item_info->file);
         $c_return = new \stdClass();
         $c_return->_type = 'UMLClass';
-        $c_return->_id = 'C'.md5($c_item_full_name);
+        $c_return->_id = 'CLASS-'.md5($c_item_full_name);
         $c_return->name = $c_item_info->name;
         $c_return->visibility = 'public';
         $c_return->isAbstract = !empty($c_item_info->modifier) && $c_item_info->modifier == 'abstract';
@@ -205,8 +205,8 @@ namespace effcore\modules\develop {
           $c_relation->_type = 'UMLGeneralization';
           $c_relation->source = new \stdClass();
           $c_relation->target = new \stdClass();
-          $c_relation->source->{'$ref'} = 'C'.md5($c_item_full_name);
-          $c_relation->target->{'$ref'} = 'C'.md5($c_item_parent_full_name);
+          $c_relation->source->{'$ref'} = 'CLASS-'.md5($c_item_full_name);
+          $c_relation->target->{'$ref'} = 'CLASS-'.md5($c_item_parent_full_name);
           $c_return->ownedElements = [$c_relation];
         }
 
@@ -275,8 +275,25 @@ namespace effcore\modules\develop {
             'ownedElements' => [
               (object)[
                 '_type' => 'UMLClassDiagram',
+                '_id' => 'MAIN-CLASSDIAGRAM',
                 'name' => 'Main',
+                'defaultDiagram' => true,
                 'ownedElements' => $return,
+                'ownedViews' => [
+                  (object)[
+                    '_type' => 'UMLTextView',
+                    '_id' => 'MAIN-NOTE',
+                    '_parent' => (object)[
+                      '$ref' => 'MAIN-CLASSDIAGRAM'
+                    ],
+                    'font' => 'Arial;13;0',
+                    'left' => 24,
+                    'top' => 24,
+                    'width' => 305,
+                    'height' => 25,
+                    'text' => 'note: insert the class to here from the right sidebar'
+                  ]
+                ]
               ]
             ]
           ]
