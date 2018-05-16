@@ -43,14 +43,14 @@ namespace effcore {
     $name = $this->get_element_name();
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
-  # add new values to the pool
-    if ($is_valid && count($new_values)) {
-      $pool = array_merge($pool, $new_values);
-    }
   # remove old values from the pool
     $removed = static::get_new_value_multiple('manager_delete_'.$name);
     foreach ($removed as $c_id) {
       unset($pool[$c_id]);
+    }
+  # add new values to the pool
+    if ($is_valid && count($new_values)) {
+      $pool = array_merge($pool, $new_values);
     }
   # save the pool
     $form->validation_data['pool'][$name] = $pool;
