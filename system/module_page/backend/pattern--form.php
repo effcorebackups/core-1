@@ -17,13 +17,13 @@ namespace effcore {
   public $clicked_button;
   public $clicked_button_name;
   public $errors = [];
-  public $validation_data;
+  public $validation_data = [];
 
   function build() {
     $values = static::get_values() + static::get_files();
     $validation_id = static::validation_id_get();
     $id = $this->attribute_select('id');
-    $this->validation_data = temporary::select('form-'.$validation_id);
+    $this->validation_data = temporary::select('form-'.$validation_id) ?: [];
   # build all form elements
     $elements = $this->children_select_recursive();
     foreach ($elements as $c_element) {
@@ -75,7 +75,7 @@ namespace effcore {
       }
     # validation cache
       if (count($this->errors) &&
-                $this->validation_data)
+          count($this->validation_data))
            temporary::update('form-'.$validation_id, $this->validation_data);
       else temporary::delete('form-'.$validation_id);
     }

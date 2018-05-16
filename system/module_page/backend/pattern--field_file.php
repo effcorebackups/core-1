@@ -54,8 +54,8 @@ namespace effcore {
     }
   # save the pool
     $form->validation_data['pool'][$name] = $pool;
-    if (!count($form->validation_data['pool'][$name])) unset($form->validation_data['pool'][$name]);
-    if (!count($form->validation_data['pool']))        unset($form->validation_data['pool']);
+    if (count($form->validation_data['pool'][$name]) == 0) unset($form->validation_data['pool'][$name]);
+    if (count($form->validation_data['pool']) == 0)        unset($form->validation_data['pool']);
   # insert "remove" checkboxes for each file
     foreach ($pool as $c_id => $c_file) {
       $this->pool_manager_insert_action($c_file, $c_id);
