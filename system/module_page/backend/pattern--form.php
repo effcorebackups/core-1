@@ -20,7 +20,7 @@ namespace effcore {
   public $validation_data = [];
 
   function build() {
-    $values = static::get_values() + static::get_files();
+    $values = static::get_values();
     $validation_id = static::validation_id_get();
     $id = $this->attribute_select('id');
     $this->validation_data = temporary::select('form-'.$validation_id) ?: [];
@@ -72,7 +72,7 @@ namespace effcore {
       }
     # call submit handler (if no errors)
       if (count($this->errors) == 0) {
-        event::start('on_form_submit', $id, [$this, $containers, &$values]);
+        event::start('on_form_submit', $id, [$this, $fields, &$values]);
       }
     # validation cache
       if (count($this->errors) != 0 && factory::hash_data_get($this->validation_data) != $data_hash) {
@@ -138,27 +138,6 @@ namespace effcore {
     foreach ($_POST as $c_field => $c_value) {
       $return[$c_field] = is_array($c_value) ?
                                    $c_value : [$c_value];
-    }
-    return $return;
-  }
-
-  static function get_files() {
-    $return = [];
-    foreach ($_FILES as $c_field => $c_info) {
-      if (!is_array($c_info['name']))     $c_info['name']     = [$c_info['name']];
-      if (!is_array($c_info['type']))     $c_info['type']     = [$c_info['type']];
-      if (!is_array($c_info['size']))     $c_info['size']     = [$c_info['size']];
-      if (!is_array($c_info['tmp_name'])) $c_info['tmp_name'] = [$c_info['tmp_name']];
-      if (!is_array($c_info['error']))    $c_info['error']    = [$c_info['error']];
-      foreach ($c_info as $c_prop => $c_values) {
-        foreach ($c_values as $c_index => $c_value) {
-          if ($c_info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
-            if (!isset($return[$c_field][$c_index]))
-                       $return[$c_field][$c_index] = new \stdClass();
-            $return[$c_field][$c_index]->{$c_prop} = $c_value;
-          }
-        }
-      }
     }
     return $return;
   }

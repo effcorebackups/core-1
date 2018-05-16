@@ -77,7 +77,27 @@ namespace effcore {
   }
 
   function pool_manager_clean() {
+    $this->child_delete('manager');
     $this->pool_manager_build();
+  }
+
+  function pool_files_save($form) {
+    $name = $this->get_element_name();
+    $pool = isset($form->validation_data['pool'][$name]) ?
+                  $form->validation_data['pool'][$name] : [];
+    foreach ($pool as $c_info) {
+      $c_tmp_file = new file($c_info->tmp_name);
+      $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->name);
+      if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
+      if ($this->fixed_type) $c_new_file->set_type(token::replace($this->fixed_type));
+      if ($c_tmp_file->move_uploaded($c_new_file->get_dirs(), $c_new_file->get_file())) {
+        $c_info->new_path = $c_new_file->get_path();
+      } else {
+        message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_tmp_file->get_dirs(), 'to' => $c_new_file->get_dirs()]), 'error');
+        console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_tmp_file->get_path(), 'to' => $c_new_file->get_path()]);
+      }
+    }
+    $this->pool_manager_clean();
   }
 
   ###########################

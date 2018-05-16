@@ -104,7 +104,7 @@ namespace effcore\modules\user {
   }
 
   static function on_submit_user_edit($form, $fields, &$values) {
-    parent::on_submit_files($form, $fields, $values);
+ // parent::on_submit_files($form, $fields, $values);
     $id_user = page::get_current()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'save':

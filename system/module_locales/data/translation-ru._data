@@ -26,6 +26,7 @@ translations
     - Bundle build number: Номер сборки пакета
     - button: кнопка
     - cache: кэш
+    - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
     - Cancel: Отмена
     - cancel: отмена
     - Captcha: Защитный код

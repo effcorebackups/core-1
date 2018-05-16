@@ -27,13 +27,8 @@ namespace effcore\modules\demo {
   }
 
   static function on_submit_demo($form, $fields, &$values) {
-    static::on_submit_files($form, $fields, $values);
     message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
-    if (count($values['file'])) {
-      foreach ($values['file'] as $hash => $c_file_info) {
-        message::insert(translation::get('File %%_name was uploaded.', ['name' => $c_file_info->name]));
-      }
-    }
+    $fields['form_elements/file']->pool_files_save($form);
   }
 
 }}
