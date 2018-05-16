@@ -227,11 +227,11 @@ namespace effcore {
     return unserialize(serialize($array));
   }
 
-  static function array_values_recursive(&$array, $all = false, $dpath = '') {
+  static function array_select_values_recursive(&$array, $all = false, $dpath = '') {
     $return = [];
     foreach ($array as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value)) $return += static::array_values_recursive($c_value, $all, $c_dpath);
+      if (is_array($c_value)) $return += static::array_select_values_recursive($c_value, $all, $c_dpath);
       if (is_array($c_value) == false || $all) $return[$c_dpath] = &$c_value;
     }
     return $return;
@@ -264,11 +264,11 @@ namespace effcore {
     if (gettype($data) == 'object') unset($data->{$name});
   }
 
-  static function arrobj_values_recursive(&$data, $all = false, $dpath = '') {
+  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
     $return = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))) $return += static::arrobj_values_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value))) $return += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
       if ((is_array($c_value) || is_object($c_value)) == false || $all) $return[$c_dpath] = &$c_value;
     }
     return $return;
@@ -341,6 +341,10 @@ namespace effcore {
 
   static function hash_password_get($data) {
     return sha1($data);
+  }
+
+  static function hash_data_get($data) {
+    return md5(serialize($data));
   }
 
   ##############################

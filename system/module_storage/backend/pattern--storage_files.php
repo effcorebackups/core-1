@@ -81,7 +81,7 @@ namespace effcore {
   # save cache
     foreach ($data as $c_group => $c_data) {
       static::$data[$c_group] = $c_data;
-      foreach (factory::arrobj_values_recursive($c_data, true) as $c_dpath => &$c_value) {
+      foreach (factory::arrobj_select_values_recursive($c_data, true) as $c_dpath => &$c_value) {
         if ($c_value instanceof external) {
           $c_cache_id = 'data--'.$c_group.'-'.str_replace('/', '-', $c_dpath);
           $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::get_not_external_properties());
