@@ -24,6 +24,7 @@ namespace effcore {
     $validation_id = static::validation_id_get();
     $id = $this->attribute_select('id');
     $this->validation_data = temporary::select('form-'.$validation_id) ?: [];
+    $data_hash = factory::hash_data_get($this->validation_data);
   # build all form elements
     $elements = $this->children_select_recursive();
     foreach ($elements as $c_element) {
@@ -74,10 +75,12 @@ namespace effcore {
         event::start('on_form_submit', $id, [$this, $containers, &$values]);
       }
     # validation cache
-      if (count($this->errors) &&
-          count($this->validation_data))
-           temporary::update('form-'.$validation_id, $this->validation_data);
-      else temporary::delete('form-'.$validation_id);
+      if (count($this->errors) != 0 && factory::hash_data_get($this->validation_data) != $data_hash) {
+        temporary::update('form-'.$validation_id, $this->validation_data);
+      }
+      if (count($this->errors) == 0 || count($this->validation_data) == 0) {
+        temporary::delete('form-'.$validation_id);
+      }
     }
 
   # add form_id to the form markup
