@@ -72,7 +72,7 @@ namespace effcore {
     $name         = $this->get_element_name();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->name]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
+      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
     );
   }
 
@@ -86,8 +86,8 @@ namespace effcore {
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
     foreach ($pool as $c_info) {
-      $c_tmp_file = new file($c_info->tmp_name);
-      $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->name);
+      $c_tmp_file = new file($c_info->tmp_path);
+      $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
       if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
       if ($this->fixed_type) $c_new_file->set_type(token::replace($this->fixed_type));
       if ($c_tmp_file->move_uploaded($c_new_file->get_dirs(), $c_new_file->get_file())) {

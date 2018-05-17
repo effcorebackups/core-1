@@ -202,6 +202,9 @@ namespace effcore {
                        $return[$c_index] = new \stdClass();
             if ($c_prop == 'name') $c_value = factory::sanitize_file_name($c_value);
             if ($c_prop == 'type') $c_value = factory::validate_mime_type($c_value) ? $c_value : '';
+            if ($c_prop == 'name')     $c_prop = 'file';
+            if ($c_prop == 'type')     $c_prop = 'mime';
+            if ($c_prop == 'tmp_name') $c_prop = 'tmp_path';
             $return[$c_index]->{$c_prop} = $c_value;
           }
         }
