@@ -52,7 +52,9 @@ namespace effcore {
     }
   # add new values to the pool
     if ($is_valid && count($new_values)) {
-      $pool = array_merge($pool, $new_values);
+      foreach ($new_values as $c_new_value) {
+        $pool[] = $c_new_value;
+      }
     }
   # pre-save the uploaded files
     foreach ($pool as $c_id => $c_info) {
@@ -103,7 +105,9 @@ namespace effcore {
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
     foreach ($pool as $c_info) {
-      $c_pre_file = new file($c_info->pre_path); # @todo: check type (extension)
+    # @todo: check type (extension)
+    # @todo: add increment number to file name for duplicates
+      $c_pre_file = new file($c_info->pre_path);
       $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
       if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
       if ($this->fixed_type) $c_new_file->set_type(token::replace($this->fixed_type));
