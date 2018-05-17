@@ -17,14 +17,15 @@ namespace effcore {
   public $clicked_button;
   public $clicked_button_name;
   public $errors = [];
+  public $validation_id;
   public $validation_data = [];
 
   function build() {
-    $values = static::get_values();
-    $validation_id = static::validation_id_get();
-    $id = $this->attribute_select('id');
-    $this->validation_data = temporary::select('form-'.$validation_id) ?: [];
+    $this->validation_id = static::validation_id_get();
+    $this->validation_data = temporary::select('form-'.$this->validation_id) ?: [];
     $data_hash = factory::hash_data_get($this->validation_data);
+    $values = static::get_values();
+    $id = $this->attribute_select('id');
   # build all form elements
     $elements = $this->children_select_recursive();
     foreach ($elements as $c_element) {
@@ -76,10 +77,10 @@ namespace effcore {
       }
     # validation cache
       if (count($this->errors) != 0 && factory::hash_data_get($this->validation_data) != $data_hash) {
-        temporary::update('form-'.$validation_id, $this->validation_data);
+        temporary::update('form-'.$this->validation_id, $this->validation_data);
       }
       if (count($this->errors) == 0 || count($this->validation_data) == 0) {
-        temporary::delete('form-'.$validation_id);
+        temporary::delete('form-'.$this->validation_id);
       }
     }
 
@@ -92,7 +93,7 @@ namespace effcore {
     $this->child_insert(new markup_simple('input', [
       'type'  => 'hidden',
       'name'  => 'validation_id',
-      'value' => static::validation_id_get(),
+      'value' => $this->validation_id,
       ]), 'hidden_validation_id');
   }
 

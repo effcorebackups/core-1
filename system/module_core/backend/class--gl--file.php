@@ -120,7 +120,7 @@ namespace effcore {
     $path_old = $this->get_path();
     $path_new = $new_dirs.($new_name ?: $this->get_file());
     static::mkdir_if_not_exist($new_dirs);
-    if (rename($path_old, $path_new)) {
+    if (@rename($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
     }

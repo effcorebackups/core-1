@@ -46,19 +46,36 @@ namespace effcore {
   # remove old values from the pool
     $removed = static::get_new_value_multiple('manager_delete_'.$name);
     foreach ($removed as $c_id) {
+      if (isset($pool[$c_id]->pre_path))
+         unlink($pool[$c_id]->pre_path);
       unset($pool[$c_id]);
     }
   # add new values to the pool
     if ($is_valid && count($new_values)) {
       $pool = array_merge($pool, $new_values);
     }
+  # pre-save the uploaded files
+    foreach ($pool as $c_id => $c_info) {
+      if (isset($c_info->tmp_path)) {
+        $c_tmp_file = new file($c_info->tmp_path);
+        $c_pre_file = new file(temporary::directory.$form->validation_id.'-'.$c_id);
+        if ($c_tmp_file->move_uploaded($c_pre_file->get_dirs(), $c_pre_file->get_file())) {
+          $c_info->pre_path = $c_pre_file->get_path();
+          unset($c_info->tmp_path);
+        } else {
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_tmp_file->get_dirs(), 'to' => $c_pre_file->get_dirs()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_tmp_file->get_path(), 'to' => $c_pre_file->get_path()]);
+          unset($pool[$c_id]);
+        }
+      }
+    }
   # save the pool
     $form->validation_data['pool'][$name] = $pool;
     if (count($form->validation_data['pool'][$name]) == 0) unset($form->validation_data['pool'][$name]);
     if (count($form->validation_data['pool']) == 0)        unset($form->validation_data['pool']);
   # insert "remove" checkboxes for each file
-    foreach ($pool as $c_id => $c_file) {
-      $this->pool_manager_insert_action($c_file, $c_id);
+    foreach ($pool as $c_id => $c_info) {
+      $this->pool_manager_insert_action($c_info, $c_id);
     }
   }
 
@@ -86,15 +103,16 @@ namespace effcore {
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
     foreach ($pool as $c_info) {
-      $c_tmp_file = new file($c_info->tmp_path);
+      $c_pre_file = new file($c_info->pre_path); # @todo: check type (extension)
       $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
       if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
       if ($this->fixed_type) $c_new_file->set_type(token::replace($this->fixed_type));
-      if ($c_tmp_file->move_uploaded($c_new_file->get_dirs(), $c_new_file->get_file())) {
+      if ($c_pre_file->move($c_new_file->get_dirs(), $c_new_file->get_file())) {
         $c_info->new_path = $c_new_file->get_path();
+        unset($c_info->pre_path);
       } else {
-        message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_tmp_file->get_dirs(), 'to' => $c_new_file->get_dirs()]), 'error');
-        console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_tmp_file->get_path(), 'to' => $c_new_file->get_path()]);
+        message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_pre_file->get_dirs(), 'to' => $c_new_file->get_dirs()]), 'error');
+        console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_pre_file->get_path(), 'to' => $c_new_file->get_path()]);
       }
     }
     $this->pool_manager_clean();
