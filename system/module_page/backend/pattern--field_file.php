@@ -151,6 +151,13 @@ namespace effcore {
   static function validate_upload($field, $form, $npath, $element, &$new_values) {
     $max_size = $field->get_max_file_size();
     foreach ($new_values as $c_new_value) {
+      if (count($field->allowed_types) &&
+         !isset($field->allowed_types[$c_new_value->type])) {
+        $form->add_error($npath.'/element',
+          translation::get('Field "%%_title" does not support loading this file type!', ['title' => translation::get($field->title)])
+        );
+        return;
+      }
       switch ($c_new_value->error) {
         case UPLOAD_ERR_INI_SIZE   : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;
         case UPLOAD_ERR_FORM_SIZE  : $form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]));             return;
@@ -162,13 +169,6 @@ namespace effcore {
       if ($c_new_value->error !== UPLOAD_ERR_OK) {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error])); return;}
       if ($c_new_value->size === 0)              {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')])); return;}
       if ($c_new_value->size > $max_size)        {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
-      if (count($field->allowed_types) &&
-         !isset($field->allowed_types[$c_new_value->type])) {
-        $form->add_error($npath.'/element',
-          translation::get('Field "%%_title" does not support loading this file type!', ['title' => translation::get($field->title)])
-        );
-        return;
-      }
     }
     return true;
   }
