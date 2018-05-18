@@ -29,10 +29,10 @@ namespace effcore {
   }
 
   function get_max_file_size() {
-    $bytes_1 = factory::is_human_bytes($this->max_file_size) ?
-               factory::human_to_bytes($this->max_file_size) : $this->max_file_size;
-    $bytes_2 = factory::is_human_bytes(ini_get('upload_max_filesize')) ?
-               factory::human_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
+    $bytes_1 = core::is_human_bytes($this->max_file_size) ?
+               core::human_to_bytes($this->max_file_size) : $this->max_file_size;
+    $bytes_2 = core::is_human_bytes(ini_get('upload_max_filesize')) ?
+               core::human_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
     return min($bytes_1, $bytes_2);
   }
 

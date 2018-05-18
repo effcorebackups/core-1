@@ -37,8 +37,8 @@ namespace effcore {
                                           $file->is_exist() == false)) {
       $file->set_data(
         '<?php'.nl.nl.'namespace effcore { # '.static::type.' for '.$name.nl.nl.($info ?
-           factory::data_to_code($info, '  '.factory::class_get_short_name(static::class).'::$info[\''.$name.'\']') : '').
-           factory::data_to_code($data, '  '.factory::class_get_short_name(static::class).'::$data[\''.$name.'\']').nl.
+           core::data_to_code($info, '  '.core::class_get_short_name(static::class).'::$info[\''.$name.'\']') : '').
+           core::data_to_code($data, '  '.core::class_get_short_name(static::class).'::$data[\''.$name.'\']').nl.
         '}');
       $file->save();
       if (function_exists('opcache_invalidate')) {

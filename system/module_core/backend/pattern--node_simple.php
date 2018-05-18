@@ -52,7 +52,7 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => factory::data_to_attr($this->attribute_select_all()),
+        'attributes' => core::data_to_attr($this->attribute_select_all()),
         'self'       => $this->render_self(),
       ]))->render();
     } else {

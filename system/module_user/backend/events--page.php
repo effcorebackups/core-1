@@ -12,7 +12,7 @@ namespace effcore\modules\user {
           use \effcore\locale;
           use \effcore\markup;
           use \effcore\entity;
-          use \effcore\factory;
+          use \effcore\core;
           use \effcore\instance;
           use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
@@ -53,15 +53,15 @@ namespace effcore\modules\user {
         $values['avatar_path_relative'] = $values['avatar_path_relative'] ?: '-';
       # show table
         $thead = [['Parameter', 'Value']];
-        $tbody = factory::array_rotate([array_keys($values), array_values($values)]);
+        $tbody = core::array_rotate([array_keys($values), array_values($values)]);
         return new markup('x-block', ['class' => ['user-info']],
           new table([], $tbody, $thead)
         );
       } else {
-        factory::send_header_and_exit('access_denided');
+        core::send_header_and_exit('access_denided');
       }
     } else {
-      factory::send_header_and_exit('not_found');
+      core::send_header_and_exit('not_found');
     }
   }
 

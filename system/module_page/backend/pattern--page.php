@@ -70,7 +70,7 @@ namespace effcore {
 
     timer::tap('total');
     $this->set_page_information();
-    $template->set_arg('attributes', factory::data_to_attr(['lang' => language::get_current()]));
+    $template->set_arg('attributes', core::data_to_attr(['lang' => language::get_current()]));
     $template->set_arg('meta',         $frontend->meta->render());
     $template->set_arg('head_styles',  $frontend->styles->render());
     $template->set_arg('head_scripts', $frontend->scripts->render());
@@ -222,12 +222,12 @@ namespace effcore {
         # render page
           return $c_page->render();
         } else {
-          factory::send_header_and_exit('access_denided');
+          core::send_header_and_exit('access_denided');
         }
       }
     }
   # no matches case
-    factory::send_header_and_exit('not_found');
+    core::send_header_and_exit('not_found');
   }
 
 }}

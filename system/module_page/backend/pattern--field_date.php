@@ -21,7 +21,7 @@ namespace effcore {
   ];
 
   function build() {
-    $this->attribute_insert('value', factory::date_get(), 'element_attributes_default');
+    $this->attribute_insert('value', core::date_get(), 'element_attributes_default');
     parent::build();
   }
 

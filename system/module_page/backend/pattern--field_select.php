@@ -73,7 +73,7 @@ namespace effcore {
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
       foreach ($element->children_select_recursive() as $c_item) {
         if ($c_item instanceof node && $c_item->tag_name == 'option') {
-          if (factory::in_array_string_compare($c_item->attribute_select('value'), $new_values))
+          if (core::in_array_string_compare($c_item->attribute_select('value'), $new_values))
                $c_item->attribute_insert('selected', 'selected');
           else $c_item->attribute_delete('selected');
         }

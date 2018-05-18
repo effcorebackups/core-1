@@ -12,7 +12,7 @@ namespace effcore\modules\user {
           use \effcore\file;
           use \effcore\entity;
           use \effcore\session;
-          use \effcore\factory;
+          use \effcore\core;
           use \effcore\message;
           use \effcore\instance;
           use \effcore\translation;
@@ -68,7 +68,7 @@ namespace effcore\modules\user {
           $id_user = page::get_current()->args_get('id_user');
         # check security
           $test_pass = (new instance('user', ['id' => $id_user]))->select();
-          if ($test_pass->password_hash !== factory::hash_password_get($values['password'][0])) {
+          if ($test_pass->password_hash !== core::hash_password_get($values['password'][0])) {
             $form->add_error('credentials/password/element',
               translation::get('Field "%%_title" contains incorrect value!', [
                 'title' => translation::get($fields['credentials/password']->title)
@@ -112,7 +112,7 @@ namespace effcore\modules\user {
         $user->email = strtolower($values['email'][0]);
         $user->nick  = strtolower($values['nick'][0]);
         if ($values['password_new'][0]) {
-          $user->password_hash = factory::hash_password_get($values['password_new'][0]);
+          $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
         $avatar_info = reset($values['avatar']);
         if ($avatar_info &&
@@ -160,7 +160,7 @@ namespace effcore\modules\user {
           ]))->select();
           if (!$user || (
                $user->password_hash &&
-               $user->password_hash !== factory::hash_password_get($values['password'][0]))) {
+               $user->password_hash !== core::hash_password_get($values['password'][0]))) {
             $form->add_error('credentials/email/element');
             $form->add_error('credentials/password/element');
             message::insert('Incorrect email or password!', 'error');
@@ -177,9 +177,9 @@ namespace effcore\modules\user {
           'email' => strtolower($values['email'][0])
         ]))->select();
         if ($user &&
-            $user->password_hash === factory::hash_password_get($values['password'][0])) {
+            $user->password_hash === core::hash_password_get($values['password'][0])) {
           session::insert($user->id,
-            isset($values['session_params']) ? factory::array_kmap(
+            isset($values['session_params']) ? core::array_kmap(
                   $values['session_params']) : []);
           url::go('/user/'.$user->id);
         }
@@ -217,11 +217,11 @@ namespace effcore\modules\user {
         $user = (new instance('user', [
           'email'         => strtolower($values['email'][0]),
           'nick'          => strtolower($values['nick'][0]),
-          'password_hash' => factory::hash_password_get($values['password'][0])
+          'password_hash' => core::hash_password_get($values['password'][0])
         ]))->insert();
         if ($user) {
           session::insert($user->id,
-            isset($values['session_params']) ? factory::array_kmap(
+            isset($values['session_params']) ? core::array_kmap(
                   $values['session_params']) : []);
           url::go('/user/'.$user->id);
         } else {

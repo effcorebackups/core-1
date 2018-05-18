@@ -38,13 +38,13 @@ namespace effcore {
   ### load required classes ###
   #############################
 
-  require_once('module_core/backend/class_ab--gl--factory.php');
+  require_once('module_core/backend/class_ab--gl--core.php');
   require_once('module_core/backend/class_ab--gl--timer.php');
   require_once('module_core/backend/class_ab--gl--console.php');
   require_once('module_core/backend/class_ab--gl--dynamic.php');
   require_once('module_core/backend/class_ab--gl--cache.php');
   require_once('module_core/backend/class--gl--file.php');
-  spl_autoload_register('\effcore\factory::autoload');
+  spl_autoload_register('\effcore\core::autoload');
   timer::tap('total');
 
   #######################
@@ -72,7 +72,7 @@ namespace effcore {
     $file_types = file::get_types();
   # case for protected file
     if (!empty($file_types[$type]->protected)) {
-      factory::send_header_and_exit('access_denided', '',
+      core::send_header_and_exit('access_denided', '',
         translation::get('file of this type is protected by: %%_name', ['name' => 'file_types._data']).br.br.
         translation::get('go to <a href="/">front page</a>')
       );

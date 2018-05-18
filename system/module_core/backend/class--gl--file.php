@@ -72,8 +72,8 @@ namespace effcore {
   }
 
   function sanitize_file() {
-    $this->type = substr(factory::sanitize_file_part($this->type), -self::type_max_lenght);
-    $this->name = substr(factory::sanitize_file_part(ltrim($this->name, '.')), 0, self::file_max_lenght - (strlen($this->type) ? strlen($this->type) + 1 : 0));
+    $this->type = substr(core::sanitize_file_part($this->type), -self::type_max_lenght);
+    $this->name = substr(core::sanitize_file_part(ltrim($this->name, '.')), 0, self::file_max_lenght - (strlen($this->type) ? strlen($this->type) + 1 : 0));
   }
 
   function set_dirs($dirs) {$this->dirs = $dirs;}

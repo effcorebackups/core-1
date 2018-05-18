@@ -61,7 +61,7 @@ namespace effcore {
                     '(?<domain>[^/]*)'.
                     '(?<path>[^?#]*)'.
                '(?:\?(?<query>[^\#]*)|)'.
-               '(?:\#(?<anchor>.*)|)$%S', factory::sanitize_url($url), $matches);
+               '(?:\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
     $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ $_SERVER['REQUEST_SCHEME']));
     $this->domain   = !empty($matches['domain'])   ? $matches['domain']   :                                        ( /* case for local ulr */ $_SERVER['HTTP_HOST']);
     $this->path     = !empty($matches['path'])     ? $matches['path']     : '/';
@@ -133,7 +133,7 @@ namespace effcore {
   }
 
   static function go($url) {
-    factory::send_header_and_exit('redirect', '', '',
+    core::send_header_and_exit('redirect', '', '',
       (new url($url))->get_full()
     );
   }

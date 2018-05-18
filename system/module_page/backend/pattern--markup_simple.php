@@ -18,7 +18,7 @@ namespace effcore {
   function render() {
     return (new template($this->template, [
       'tag_name'   => $this->tag_name,
-      'attributes' => factory::data_to_attr($this->attribute_select_all()),
+      'attributes' => core::data_to_attr($this->attribute_select_all()),
     ]))->render();
   }
 

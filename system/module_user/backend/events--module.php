@@ -8,7 +8,6 @@ namespace effcore\modules\user {
           use \effcore\user;
           use \effcore\entity;
           use \effcore\session;
-          use \effcore\factory;
           use \effcore\message;
           use \effcore\instance;
           use \effcore\translation;

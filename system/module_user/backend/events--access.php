@@ -6,7 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\user;
-          use \effcore\factory;
+          use \effcore\core;
           use \effcore\instance;
           abstract class events_access extends \effcore\events_access {
 
@@ -16,10 +16,10 @@ namespace effcore\modules\user {
     ]))->select();
     if ($user) {
       if ($user->is_embed == 1) {
-        factory::send_header_and_exit('access_denided');
+        core::send_header_and_exit('access_denided');
       }
     } else {
-      factory::send_header_and_exit('not_found');
+      core::send_header_and_exit('not_found');
     }
   }
 
@@ -30,10 +30,10 @@ namespace effcore\modules\user {
     if ($user) {
       if (!($user->id == user::get_current()->id ||                # not owner or
                    isset(user::get_current()->roles['admins']))) { # not admin
-        factory::send_header_and_exit('access_denided');
+        core::send_header_and_exit('access_denided');
       }
     } else {
-      factory::send_header_and_exit('not_found');
+      core::send_header_and_exit('not_found');
     }
   }
 

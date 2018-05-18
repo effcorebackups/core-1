@@ -208,7 +208,7 @@ namespace effcore {
                 $return[$c_index]->{'type'} = $c_file->get_type();
                 $return[$c_index]->{'file'} = $c_file->get_file();
                 break;
-              case 'type'    : $return[$c_index]->{'mime'}     = factory::validate_mime_type($c_value) ? $c_value : ''; break;
+              case 'type'    : $return[$c_index]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
               case 'tmp_name': $return[$c_index]->{'tmp_path'} = $c_value; break;
               default        : $return[$c_index]->{$c_prop}    = $c_value;
             }

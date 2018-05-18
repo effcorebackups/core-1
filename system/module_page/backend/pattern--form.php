@@ -23,7 +23,7 @@ namespace effcore {
   function build() {
     $this->validation_id = static::validation_id_get();
     $this->validation_data = temporary::select('form-'.$this->validation_id) ?: [];
-    $data_hash = factory::hash_data_get($this->validation_data);
+    $data_hash = core::hash_data_get($this->validation_data);
     $values = static::get_values();
     $id = $this->attribute_select('id');
   # build all form elements
@@ -76,7 +76,7 @@ namespace effcore {
         event::start('on_form_submit', $id, [$this, $fields, &$values]);
       }
     # validation cache
-      if (count($this->errors) != 0 && factory::hash_data_get($this->validation_data) != $data_hash) {
+      if (count($this->errors) != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
         temporary::update('form-'.$this->validation_id, $this->validation_data);
       }
       if (count($this->errors) == 0 || count($this->validation_data) == 0) {
@@ -145,7 +145,7 @@ namespace effcore {
 
   static function validation_id_generate() {
     $hex_created = dechex(time());
-    $hex_ip = factory::ip_to_hex($_SERVER['REMOTE_ADDR']);
+    $hex_ip = core::ip_to_hex($_SERVER['REMOTE_ADDR']);
     $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
     $hex_random = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
     return $hex_created.       # strlen == 8
@@ -164,9 +164,9 @@ namespace effcore {
   }
 
   static function validation_id_check($value) {
-    if (factory::validate_hash($value, 32)) {
+    if (core::validate_hash($value, 32)) {
       $created = hexdec(substr($value, 0, 8));
-      $ip = factory::hex_to_ip(substr($value, 8, 8));
+      $ip = core::hex_to_ip(substr($value, 8, 8));
       $uagent_hash_8 = substr($value, 16, 8);
       $random = hexdec(substr($value, 24, 8));
       if ($created <= time()              &&

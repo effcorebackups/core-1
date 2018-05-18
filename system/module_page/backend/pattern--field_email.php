@@ -56,7 +56,7 @@ namespace effcore {
   static function validate_values($field, $form, $npath, $element, &$new_value) {
     $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
     foreach ($multiple_values as $c_value) {
-      if (factory::validate_email($c_value) == false) {
+      if (core::validate_email($c_value) == false) {
         $form->add_error($npath.'/element',
           translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
         );

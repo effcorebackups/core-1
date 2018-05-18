@@ -22,7 +22,7 @@ namespace effcore {
   function set_values($values) {$this->values = $values;}
   function get_values($names = []) {
     if (count($names)) {
-      return array_intersect_key($this->values, factory::array_kmap($names));
+      return array_intersect_key($this->values, core::array_kmap($names));
     } else {
       return $this->values;
     }
@@ -38,14 +38,14 @@ namespace effcore {
 
   function insert() {
     $storage = storage::get($this->get_entity()->get_storage_id());
-    $this->created = factory::datetime_get();
-    $this->updated = factory::datetime_get();
+    $this->created = core::datetime_get();
+    $this->updated = core::datetime_get();
     return $storage->insert_instance($this);
   }
 
   function update() {
     $storage = storage::get($this->get_entity()->get_storage_id());
-    $this->updated = factory::datetime_get();
+    $this->updated = core::datetime_get();
     return $storage->update_instance($this);
   }
 

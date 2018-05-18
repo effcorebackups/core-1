@@ -12,7 +12,7 @@ namespace effcore\modules\develop {
           use \effcore\markup;
           use \effcore\markup_simple;
           use \effcore\translation;
-          use \effcore\factory;
+          use \effcore\core;
           use \effcore\table;
           use \effcore\table_body_row;
           use \effcore\table_body_row_cell;
@@ -27,7 +27,7 @@ namespace effcore\modules\develop {
     $targets = new markup('x-targets');
     $groups_by_name = [];
     $u_first_character = null;
-    foreach (factory::get_structures_map() as $c_item_full_name => $c_item_info) {
+    foreach (core::get_structures_map() as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass();
@@ -70,9 +70,9 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_diagram($page) {
     if ($page->args_get('type') != 'class') {
-      factory::send_header_and_exit('not_found');
+      core::send_header_and_exit('not_found');
     }
-    $map = factory::get_structures_map();
+    $map = core::get_structures_map();
     $diagram = new markup('x-diagram-uml');
 
   # build diagram for each class
@@ -178,10 +178,10 @@ namespace effcore\modules\develop {
 
   static function on_export_diagram($page) {
     if ($page->args_get('type') != 'class') {
-      factory::send_header_and_exit('not_found');
+      core::send_header_and_exit('not_found');
     }
   # build class diagram
-    $map = factory::get_structures_map();
+    $map = core::get_structures_map();
     $return = [];
     foreach ($map as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == 'class') {

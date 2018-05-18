@@ -37,7 +37,7 @@ namespace effcore {
       'id_user'  => $id_user,
       'remember' => $is_remember ? 1 : 0,
       'fixed_ip' => $is_fixed_ip ? 1 : 0,
-      'expire'   => factory::datetime_get('+'.$period.' second'),
+      'expire'   => core::datetime_get('+'.$period.' second'),
     ]))->insert();
   }
 
@@ -73,7 +73,7 @@ namespace effcore {
     $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : $_SERVER['REMOTE_ADDR'];
     $hex_type = $type; # 'a' - anonymous user | 'f' - authenticated user
     $hex_expire = dechex(time() + $period);
-    $hex_ip = factory::ip_to_hex($ip);
+    $hex_ip = core::ip_to_hex($ip);
     $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
     $hex_random = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
     $session_id = $hex_type.          # strlen == 1
@@ -81,7 +81,7 @@ namespace effcore {
                   $hex_ip.            # strlen == 8
                   $hex_uagent_hash_8. # strlen == 8
                   $hex_random;        # strlen == 8
-    $session_id.= factory::signature_get($session_id, 8);
+    $session_id.= core::signature_get($session_id, 8);
     setcookie('session_id', ($_COOKIE['session_id'] = $session_id), time() + $period, '/');
     setcookie('cookies_is_on', 'true',                              time() + $period, '/');
     return $session_id;
@@ -98,13 +98,13 @@ namespace effcore {
 
   static function id_decode_type($id)          {return substr($id, 0, 1);}
   static function id_decode_expire($id)        {return hexdec(substr($id, 1, 8));}
-  static function id_decode_ip($id)            {return factory::hex_to_ip(substr($id, 8 + 1, 8));}
+  static function id_decode_ip($id)            {return core::hex_to_ip(substr($id, 8 + 1, 8));}
   static function id_decode_uagent_hash_8($id) {return substr($id, 16 + 1, 8);}
   static function id_decode_random($id)        {return hexdec(substr($id, 24 + 1, 8));}
   static function id_decode_signature($id)     {return substr($id, 32 + 1, 8);}
 
   static function id_check($value) {
-    if (factory::validate_hash($value, 41)) {
+    if (core::validate_hash($value, 41)) {
       $type          = static::id_decode_type($value);
       $expire        = static::id_decode_expire($value);
       $ip            = static::id_decode_ip($value);
@@ -113,7 +113,7 @@ namespace effcore {
       $signature     = static::id_decode_signature($value);
       if ($expire >= time() &&
           $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
-          $signature === factory::signature_get(substr($value, 0, 33), 8)) {
+          $signature === core::signature_get(substr($value, 0, 33), 8)) {
         if (($type === 'a' && $ip === $_SERVER['REMOTE_ADDR']) ||
             ($type === 'f' && $ip === $_SERVER['REMOTE_ADDR']) ||
             ($type === 'f' && $ip === static::empty_ip)) {

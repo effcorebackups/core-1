@@ -46,11 +46,11 @@ namespace effcore {
   static function format_number($number, $precision = 0, $dec_point = null, $thousands = null, $no_zeros = true) {
     $dec_point = is_null($dec_point) ? static::get_settings()->decimal_point       : $dec_point;
     $thousands = is_null($thousands) ? static::get_settings()->thousands_separator : $thousands;
-    return factory::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
+    return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
 
   static function format_human_bytes($bytes, $decimals = 2) {
-    return factory::bytes_to_human($bytes, $decimals, static::get_settings()->decimal_point);
+    return core::bytes_to_human($bytes, $decimals, static::get_settings()->decimal_point);
   }
 
 }}

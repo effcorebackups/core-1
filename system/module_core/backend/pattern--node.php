@@ -94,7 +94,7 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => factory::data_to_attr($this->attribute_select_all()),
+        'attributes' => core::data_to_attr($this->attribute_select_all()),
         'self'       => $this->render_self(),
         'children'   => $this->render_children($this->children)
       ]))->render();
@@ -106,7 +106,7 @@ namespace effcore {
 
   function render_children($children, $join = true) {
     $rendered = [];
-    foreach (factory::array_sort_by_weight($children) as $c_child) {
+    foreach (core::array_sort_by_weight($children) as $c_child) {
       $rendered[] = $this->render_child($c_child);
     }
     return $join ? implode('', $rendered) :

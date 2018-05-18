@@ -11,7 +11,7 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module;
           use \effcore\locale;
-          use \effcore\factory;
+          use \effcore\core;
           use \effcore\storage;
           use \effcore\translation;
           use \effcore\markup_simple;
@@ -38,7 +38,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'Valid CSS'));
     $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Server software'));
-    $info->child_insert(new markup('dd', [], factory::server_full_name_get()));
+    $info->child_insert(new markup('dd', [], core::server_full_name_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
     $info->child_insert(new markup('dd', [], phpversion()));
     $info->child_insert(new markup('dt', [], 'Architecture'));

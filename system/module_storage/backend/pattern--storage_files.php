@@ -15,7 +15,7 @@ namespace effcore {
     if (isset(static::$data[$group])) {
       $c_pointer = static::$data[$group];
       foreach ($dpath_parts as $c_part) {
-        $c_pointer = &factory::arrobj_select_value($c_pointer, $c_part);
+        $c_pointer = &core::arrobj_select_value($c_pointer, $c_part);
         if ($expand_cache && $c_pointer instanceof external_cache) {
           $c_pointer = $c_pointer->external_cache_load();
         }
@@ -28,7 +28,7 @@ namespace effcore {
   # add new action
     $changes_d = dynamic::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
-    dynamic::update('changes', $changes_d, ['build' => factory::datetime_get()]);
+    dynamic::update('changes', $changes_d, ['build' => core::datetime_get()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
@@ -68,20 +68,20 @@ namespace effcore {
     $data_orig = cache::select('data_original');
     if (!$data_orig) {
       static::$data_orig = $data_orig = static::data_find_static();
-      cache::update('data_original', $data_orig, ['build' => factory::datetime_get()]);
+      cache::update('data_original', $data_orig, ['build' => core::datetime_get()]);
     }
   # init dynamic and static changes
     $changes_d = dynamic::select('changes') ?: [];
     $changes_s = isset($data_orig['changes']) ? $data_orig['changes'] : [];
   # apply all changes to original data and get final data
-    $data = factory::array_deep_clone($data_orig);
+    $data = core::array_deep_clone($data_orig);
     static::data_changes_apply($changes_d, $data);
     static::data_changes_apply($changes_s, $data);
     unset($data['changes']);
   # save cache
     foreach ($data as $c_group => $c_data) {
       static::$data[$c_group] = $c_data;
-      foreach (factory::arrobj_select_values_recursive($c_data, true) as $c_dpath => &$c_value) {
+      foreach (core::arrobj_select_values_recursive($c_data, true) as $c_dpath => &$c_value) {
         if ($c_value instanceof external) {
           $c_cache_id = 'data--'.$c_group.'-'.str_replace('/', '-', $c_dpath);
           $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::get_not_external_properties());
@@ -100,7 +100,7 @@ namespace effcore {
     foreach ($changes as $module_id => $c_module_changes) {
       foreach ($c_module_changes as $c_action_id => $c_changes) {
         foreach ($c_changes as $c_dpath => $c_data) {
-          $c_chain = factory::dpath_get_chain($data, $c_dpath);
+          $c_chain = core::dpath_get_chain($data, $c_dpath);
           $c_child_name = array_keys($c_chain)[count($c_chain)-1];
           $c_parent_name = array_keys($c_chain)[count($c_chain)-2];
           $c_child = &$c_chain[$c_child_name];
@@ -109,12 +109,12 @@ namespace effcore {
           # only structured types is supported: array|object
             case 'insert':
               foreach ($c_data as $c_key => $c_value) {
-                factory::arrobj_insert_value($c_child, $c_key, $c_value);
+                core::arrobj_insert_value($c_child, $c_key, $c_value);
               }
               break;
           # only scalar types is supported: string|numeric @todo: test bool|null
-            case 'update': factory::arrobj_insert_value($c_parent, $c_child_name, $c_data); break;
-            case 'delete': factory::arrobj_delete_child($c_parent, $c_child_name);          break;
+            case 'update': core::arrobj_insert_value($c_parent, $c_child_name, $c_data); break;
+            case 'delete': core::arrobj_delete_child($c_parent, $c_child_name);          break;
           }
         }
       }
@@ -218,7 +218,7 @@ namespace effcore {
         $matches['name'] = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
       # define each value
         if ($matches['delimiter'] == ': ') {
-          $c_value = factory::string_to_data(
+          $c_value = core::string_to_data(
             $matches['value']
           );
         } else {
@@ -230,16 +230,16 @@ namespace effcore {
             $c_is_pc = $c_reflection->implementsInterface('\\effcore\\post_constructor');
             $c_is_pi = $c_reflection->implementsInterface('\\effcore\\post_init');
             $c_is_pp = $c_reflection->implementsInterface('\\effcore\\post_parsing');
-            if ($c_is_pc) $c_value = factory::class_get_new_instance($c_class_name);
-            else          $c_value = factory::class_get_new_instance($c_class_name, [], true);
+            if ($c_is_pc) $c_value = core::class_get_new_instance($c_class_name);
+            else          $c_value = core::class_get_new_instance($c_class_name, [], true);
             if ($c_is_pc) $pc_objects[] = $c_value;
             if ($c_is_pi) $pi_objects[] = $c_value;
             if ($c_is_pp) $pp_objects[] = $c_value;
           }
         }
       # add new item to tree
-        factory::arrobj_insert_value($p[$c_depth-1], $matches['name'], $c_value);
-        $p[$c_depth] = &factory::arrobj_select_value($p[$c_depth-1], $matches['name']);
+        core::arrobj_insert_value($p[$c_depth-1], $matches['name'], $c_value);
+        $p[$c_depth] = &core::arrobj_select_value($p[$c_depth-1], $matches['name']);
       # convert parent item to array
         if ($matches['prefix'] == '- ' && !is_array($p[$c_depth-1])) {
           $p[$c_depth-1] = (array)$p[$c_depth-1];

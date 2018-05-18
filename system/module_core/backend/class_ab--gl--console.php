@@ -70,7 +70,7 @@ namespace effcore {
         locale::format_msecond($c_value).' sec. ('.
         locale::format_persent($c_value / $total * 100, 1).')',
         new markup('x-scale', [
-          'class' => ['scope' => factory::to_css_class($c_param)],
+          'class' => ['scope' => core::to_css_class($c_param)],
           'style' => ['width: '.(int)($c_value / $total * 100).'%']
         ])
       ]));
@@ -82,7 +82,7 @@ namespace effcore {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
     foreach (static::select_all_logs() as $c_log) {
-      $c_row_class = factory::to_css_class($c_log->object);
+      $c_row_class = core::to_css_class($c_log->object);
       $c_value_class = $c_log->value === 'error' ?
         ['value' => 'value', 'value-error' => 'value-error'] :
         ['value' => 'value'];
@@ -100,7 +100,7 @@ namespace effcore {
   }
 
   static function store_log($log_level = 'error') {
-    $file = new file(static::directory.$log_level.'-'.factory::date_get().'.log');
+    $file = new file(static::directory.$log_level.'-'.core::date_get().'.log');
     foreach (static::$data as $c_log) {
       if ($c_log->value == $log_level) {
         $c_info = $c_log->description;
@@ -108,7 +108,7 @@ namespace effcore {
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
         }
         $file->direct_append(
-          factory::time_get().' | '.
+          core::time_get().' | '.
           $c_log->object.' | '.
           $c_log->action.' | '.$c_info.nl
         );
