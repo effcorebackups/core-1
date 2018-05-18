@@ -49,6 +49,9 @@ namespace effcore {
   # - dir1/dir2               | should be ignored (interpreted as: dir1/file2)
   # ─────────────────────────────────────────────────────────────────────
 
+  const file_max_lenght = 255;
+  const type_max_lenght = 50;
+
   public $dirs;
   public $name;
   public $type;
@@ -66,6 +69,11 @@ namespace effcore {
     $this->dirs = isset($matches['dirs']) ? $matches['dirs'] : '';
     $this->name = isset($matches['name']) ? $matches['name'] : '';
     $this->type = isset($matches['type']) ? ltrim($matches['type'], '.') : '';
+  }
+
+  function sanitize_file() {
+    $this->type = substr(factory::sanitize_file_part($this->type), -self::type_max_lenght);
+    $this->name = substr(factory::sanitize_file_part(ltrim($this->name, '.')), 0, self::file_max_lenght - (strlen($this->type) ? strlen($this->type) + 1 : 0));
   }
 
   function set_dirs($dirs) {$this->dirs = $dirs;}

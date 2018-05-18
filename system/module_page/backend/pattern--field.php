@@ -203,9 +203,10 @@ namespace effcore {
             switch ($c_prop) {
               case 'name':
                 $c_file = new file($c_value);
-                $c_file->set_name(factory::sanitize_file_part($c_file->get_name()));
-                $c_file->set_type(factory::sanitize_file_part($c_file->get_type()));
-                $return[$c_index]->{'file'} = substr($c_file->get_file(), -255);
+                $c_file->sanitize_file();
+                $return[$c_index]->{'name'} = $c_file->get_name();
+                $return[$c_index]->{'type'} = $c_file->get_type();
+                $return[$c_index]->{'file'} = $c_file->get_file();
                 break;
               case 'type'    : $return[$c_index]->{'mime'}     = factory::validate_mime_type($c_value) ? $c_value : ''; break;
               case 'tmp_name': $return[$c_index]->{'tmp_path'} = $c_value; break;

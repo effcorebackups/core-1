@@ -23,10 +23,13 @@ forms
             max_file_size: 10K
             upload_dir: avatar/
             fixed_name: %%_id_user
-            fixed_type: image
+            allowed_types
+            - gif: gif
+            - jpeg: jpeg
+            - jpg: jpg
+            - png: png
             element_attributes
             - name: avatar
-            - accept: image/*
         - password_new|field_password
             title: New password
             description: Leave the field blank if you do not want to change its value.

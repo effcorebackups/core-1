@@ -228,6 +228,11 @@ forms
         - file|field_file
             max_file_size: 1M
             upload_dir: demo/
+            allowed_types
+            - gif: gif
+            - jpeg: jpeg
+            - jpg: jpg
+            - png: png
             description|text
               text: Element %%_info.
               args
@@ -235,7 +240,6 @@ forms
             element_attributes
             - name: file[]
             - multiple: multiple
-            - accept: image/*,audio/*,video/*
       # field number
         - number|field
             title: Number

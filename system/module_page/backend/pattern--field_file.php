@@ -18,6 +18,7 @@ namespace effcore {
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
+  public $allowed_types = [];
 
   function build() {
     parent::build();
@@ -79,6 +80,13 @@ namespace effcore {
     foreach ($pool as $c_id => $c_info) {
       $this->pool_manager_insert_action($c_info, $c_id);
     }
+  }
+
+  function pull_select_file($id) {
+  }
+  function pull_insert_file($info) {
+  }
+  function pull_delete_file($id) {
   }
 
   function pool_manager_build() {
