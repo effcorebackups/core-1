@@ -324,15 +324,15 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_name($value) {
-    $return = preg_replace_callback('%(?<char>[^a-z0-9_.\-])%uiS', function($m) {
+  static function sanitize_file_part($value) {
+    $return = preg_replace_callback('%(?<char>[^a-z0-9_\-])%uiS', function($m) {
       if ($m['char'] == ' ') return '-';
       if (strlen($m['char']) == 1) return dechex(ord($m['char'][0]));
       if (strlen($m['char']) == 2) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1]));
       if (strlen($m['char']) == 3) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2]));
-      return '-';
+      if (strlen($m['char']) == 4) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2])).dechex(ord($m['char'][3]));
     }, $value);
-    return substr($return, strlen($return) - 255);
+    return substr($return, 0, 255);
   }
 
   ######################
