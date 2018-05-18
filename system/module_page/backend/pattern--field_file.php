@@ -113,7 +113,6 @@ namespace effcore {
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
     foreach ($pool as $c_info) {
-    # @todo: check type (extension)
     # @todo: add increment number to file name for duplicates
       $c_pre_file = new file($c_info->pre_path);
       $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
@@ -163,6 +162,13 @@ namespace effcore {
       if ($c_new_value->error !== UPLOAD_ERR_OK) {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error])); return;}
       if ($c_new_value->size === 0)              {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')])); return;}
       if ($c_new_value->size > $max_size)        {$form->add_error($npath.'/element', translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
+      if (count($field->allowed_types) &&
+         !isset($field->allowed_types[$c_new_value->type])) {
+        $form->add_error($npath.'/element',
+          translation::get('Field "%%_title" does not support loading this file type!', ['title' => translation::get($field->title)])
+        );
+        return;
+      }
     }
     return true;
   }
