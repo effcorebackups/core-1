@@ -5,7 +5,8 @@
   ##################################################################
 
 namespace effcore {
-          class field_file extends field {
+          class field_file extends field
+          implements has_external_validation_cache {
 
   public $title = 'File';
   public $attributes = ['x-type' => 'file'];
@@ -19,6 +20,7 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $allowed_types = [];
+  public $pool;
 
   function build() {
     parent::build();
@@ -127,6 +129,10 @@ namespace effcore {
   ###########################
   ### static declarations ###
   ###########################
+
+  static function get_validation_cache_properties() {
+    return ['pool' => 'pool'];
+  }
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');

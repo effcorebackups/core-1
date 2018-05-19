@@ -6,9 +6,9 @@
 
 namespace effcore {
 
-# indicates that the cache for marked pattern should be separated by files
-  interface has_external_cache {
-    static function get_not_external_properties();
+# indicates that the validation cache for marked pattern should be loaded from file
+  interface has_external_validation_cache {
+    static function get_validation_cache_properties();
   }
 
 }
