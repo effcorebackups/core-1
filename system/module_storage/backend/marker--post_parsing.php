@@ -6,7 +6,7 @@
 
 namespace effcore {
 
-  interface post_parsing {
+  interface has_post_parsing {
     # indicates that the __post_parsing() should be called after parse the data
   }
 
