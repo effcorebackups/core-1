@@ -57,6 +57,9 @@ namespace effcore {
   public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
+# ─────────────────────────────────────────────────────────────────────
+  protected $_form;
+  protected $_path;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, [], $weight);
@@ -74,6 +77,11 @@ namespace effcore {
       }
     }
   }
+
+  function get_form() {return $this->_form;}
+  function get_path() {return $this->_path;}
+  function set_form($form) {$this->_form = $form;}
+  function set_path($path) {$this->_path = $path;}
 
   function get_element_name($trim = true) {
     $element = $this->child_select('element');

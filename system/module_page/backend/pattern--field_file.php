@@ -40,8 +40,9 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_build($form, $new_values, $npath, $is_valid) {
+  function pool_build($new_values, $is_valid) {
     $name = $this->get_element_name();
+    $form = $this->get_form();
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
   # remove old values from the pool
@@ -82,13 +83,6 @@ namespace effcore {
     }
   }
 
-  function pull_select_file($id) {
-  }
-  function pull_insert_file($info) {
-  }
-  function pull_delete_file($id) {
-  }
-
   function pool_manager_build() {
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
@@ -108,8 +102,9 @@ namespace effcore {
     $this->pool_manager_build();
   }
 
-  function pool_files_save($form) {
+  function pool_files_save() {
     $name = $this->get_element_name();
+    $form = $this->get_form();
     $pool = isset($form->validation_data['pool'][$name]) ?
                   $form->validation_data['pool'][$name] : [];
     foreach ($pool as $c_info) {
@@ -143,7 +138,7 @@ namespace effcore {
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
-      $field->pool_build($form, $new_values, $npath, $result);
+      $field->pool_build($new_values, $result);
       return $result;
     }
   }

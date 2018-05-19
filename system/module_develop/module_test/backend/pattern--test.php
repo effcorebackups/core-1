@@ -6,7 +6,7 @@
 
 namespace effcore {
           class test
-          implements external {
+          implements has_external_cache {
 
   public $id;
   public $https = false;

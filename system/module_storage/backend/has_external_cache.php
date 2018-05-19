@@ -6,7 +6,7 @@
 
 namespace effcore {
 
-  interface external {
+  interface has_external_cache {
 
     # indicates that the cache for marked pattern should be separated by files
 

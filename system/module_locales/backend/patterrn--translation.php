@@ -6,7 +6,7 @@
 
 namespace effcore {
           class translation
-          implements external {
+          implements has_external_cache {
 
   public $code;
   public $data;

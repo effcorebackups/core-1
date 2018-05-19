@@ -6,7 +6,7 @@
 
 namespace effcore {
           class form extends markup
-          implements external {
+          implements has_external_cache {
 
   # note:
   # ─────────────────────────────────────────────────────────────────────
@@ -32,6 +32,12 @@ namespace effcore {
       if (method_exists($c_element, 'build')) {
         $c_element->build();
       }
+    }
+  # relate each field with it's form
+    $elements = $this->children_select_recursive();
+    foreach ($elements as $c_path => $c_element) {
+      if (method_exists($c_element, 'set_form')) $c_element->set_form($this);
+      if (method_exists($c_element, 'set_path')) $c_element->set_path($c_path);
     }
   # renew elements list after build and get all fields
     $elements   = $this->children_select_recursive();
@@ -76,10 +82,12 @@ namespace effcore {
         event::start('on_form_submit', $id, [$this, $fields, &$values]);
       }
     # validation cache
-      if (count($this->errors) != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
+      if (count($this->errors) != 0 &&
+          core::hash_data_get($this->validation_data) != $data_hash) {
         temporary::update('form-'.$this->validation_id, $this->validation_data);
       }
-      if (count($this->errors) == 0 || count($this->validation_data) == 0) {
+      if (count($this->errors) == 0 ||
+          count($this->validation_data) == 0) {
         temporary::delete('form-'.$this->validation_id);
       }
     }

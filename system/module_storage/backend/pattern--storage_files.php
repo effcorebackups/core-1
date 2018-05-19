@@ -6,7 +6,7 @@
 
 namespace effcore {
           class storage_files
-          implements external {
+          implements has_external_cache {
 
   function select($dpath, $expand_cache = false) {
     $dpath_parts = explode('/', $dpath);
@@ -82,7 +82,7 @@ namespace effcore {
     foreach ($data as $c_group => $c_data) {
       static::$data[$c_group] = $c_data;
       foreach (core::arrobj_select_values_recursive($c_data, true) as $c_dpath => &$c_value) {
-        if ($c_value instanceof external) {
+        if ($c_value instanceof has_external_cache) {
           $c_cache_id = 'data--'.$c_group.'-'.str_replace('/', '-', $c_dpath);
           $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::get_not_external_properties());
           cache::update($c_cache_id, $c_value);

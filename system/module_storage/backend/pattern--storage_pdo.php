@@ -8,7 +8,7 @@ namespace effcore {
           use \PDO as pdo;
           use \PDOException as pdo_exception;
           class storage_pdo
-          implements external {
+          implements has_external_cache {
 
   public $id;
   public $driver;

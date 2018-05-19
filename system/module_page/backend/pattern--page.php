@@ -6,7 +6,7 @@
 
 namespace effcore {
           class page
-          implements external {
+          implements has_external_cache {
 
   public $title;
   public $https;

@@ -7,7 +7,7 @@
 namespace effcore {
 
   interface post_constructor {
-    # indicates that the __construct() should be called after data load
+    # indicates that the __construct() should be called after the data load
   }
 
 }
