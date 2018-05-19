@@ -187,7 +187,7 @@ namespace effcore {
     $return = new \stdClass();
     $p = [-1 => &$return];
     $pc_objects = []; # classes with interface "has_post_constructor"
-    $pi_objects = []; # classes with interface "post_init"
+    $pi_objects = []; # classes with interface "has_post_init"
     $pp_objects = []; # classes with interface "post_parsing"
     $line_num = 0;
     foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
@@ -228,7 +228,7 @@ namespace effcore {
             $c_class_name = $matches['value'] ? '\\effcore\\'.$matches['value'] : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
             $c_is_pc = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
-            $c_is_pi = $c_reflection->implementsInterface('\\effcore\\post_init');
+            $c_is_pi = $c_reflection->implementsInterface('\\effcore\\has_post_init');
             $c_is_pp = $c_reflection->implementsInterface('\\effcore\\post_parsing');
             if ($c_is_pc) $c_value = core::class_get_new_instance($c_class_name);
             else          $c_value = core::class_get_new_instance($c_class_name, [], true);
