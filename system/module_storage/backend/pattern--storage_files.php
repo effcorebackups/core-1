@@ -186,7 +186,7 @@ namespace effcore {
   static function data_to_code($data, $file = null) {
     $return = new \stdClass();
     $p = [-1 => &$return];
-    $pc_objects = []; # classes with interface "post_constructor"
+    $pc_objects = []; # classes with interface "has_post_constructor"
     $pi_objects = []; # classes with interface "post_init"
     $pp_objects = []; # classes with interface "post_parsing"
     $line_num = 0;
@@ -227,7 +227,7 @@ namespace effcore {
           } else {
             $c_class_name = $matches['value'] ? '\\effcore\\'.$matches['value'] : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_pc = $c_reflection->implementsInterface('\\effcore\\post_constructor');
+            $c_is_pc = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
             $c_is_pi = $c_reflection->implementsInterface('\\effcore\\post_init');
             $c_is_pp = $c_reflection->implementsInterface('\\effcore\\post_parsing');
             if ($c_is_pc) $c_value = core::class_get_new_instance($c_class_name);
