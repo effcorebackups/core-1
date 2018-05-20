@@ -5,10 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          use \effcore\entity;
-          use \effcore\message;
-          use \effcore\instance;
-          use \effcore\translation;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

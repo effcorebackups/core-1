@@ -6,16 +6,12 @@
 
 namespace effcore\modules\develop {
           use \effcore\file;
-          use \effcore\node;
           use \effcore\text;
           use \effcore\text_simple;
           use \effcore\markup;
           use \effcore\markup_simple;
           use \effcore\translation;
           use \effcore\core;
-          use \effcore\table;
-          use \effcore\table_body_row;
-          use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
 
   ########################

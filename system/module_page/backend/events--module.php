@@ -6,9 +6,6 @@
 
 namespace effcore\modules\page {
           use \effcore\page;
-          use \effcore\entity;
-          use \effcore\message;
-          use \effcore\translation;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

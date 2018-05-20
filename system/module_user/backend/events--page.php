@@ -5,16 +5,13 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\url;
           use \effcore\user;
           use \effcore\table;
-          use \effcore\pager;
           use \effcore\locale;
           use \effcore\markup;
           use \effcore\entity;
           use \effcore\core;
           use \effcore\instance;
-          use \effcore\table_body_row_cell;
           abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_roles($page) {
