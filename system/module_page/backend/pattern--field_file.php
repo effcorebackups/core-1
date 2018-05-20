@@ -41,7 +41,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_init($old_values = []) {
+  function pool_old_values_init($old_values = []) {
     foreach ($old_values as $c_path_relative) {
       if ($c_path_relative) {
         $c_file = new file(dir_root.$c_path_relative);
@@ -59,7 +59,7 @@ namespace effcore {
     $this->pool_manager_init();
   }
 
-  function pool_rebuild_after_validate($new_values, $is_valid) {
+  function pool_new_values_init($new_values, $is_valid) {
     $form = $this->get_form();
     $this->pool_new = $this->pool_validation_cache_select();
   # remove new values from the pool
@@ -94,7 +94,7 @@ namespace effcore {
     $this->pool_manager_rebuild();
   }
 
-  function pool_files_save() {
+  function pool_new_files_save() {
     $return = [];
     $this->pool_new = $this->pool_validation_cache_select();
     foreach ($this->pool_new as $c_info) {
@@ -180,7 +180,7 @@ namespace effcore {
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
-      $field->pool_rebuild_after_validate($new_values, $result);
+      $field->pool_new_values_init($new_values, $result);
       return $result;
     }
   }
