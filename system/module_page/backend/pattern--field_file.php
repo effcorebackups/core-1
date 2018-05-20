@@ -19,11 +19,11 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $allowed_types = [];
-  public $pool = [];
+  public $pool_old = [];
+  public $pool_new = [];
 
   function build() {
     parent::build();
-    $this->pool_manager_build();
     $this->description = translation::get('Maximal file size: %%_value.', [
       'value' => locale::format_human_bytes($this->get_max_file_size())
     ]);
@@ -41,43 +41,41 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_init($new_files = []) {
-    foreach ($new_files as $c_path_relative) {
+  function pool_init($old_values = []) {
+    foreach ($old_values as $c_path_relative) {
       if ($c_path_relative) {
         $c_file = new file(dir_root.$c_path_relative);
         $c_info = new \stdClass;
-        $c_info->file = $c_file->get_file();
         $c_info->name = $c_file->get_name();
         $c_info->type = $c_file->get_type();
+        $c_info->file = $c_file->get_file();
         $c_info->mime = $c_file->get_mime();
         $c_info->size = $c_file->get_size();
-        $c_info->new_path = $c_file->get_path();
+        $c_info->old_path = $c_file->get_path();
         $c_info->error = 0;
-        $this->pool[] = $c_info;
+        $this->pool_old[] = $c_info;
       }
     }
+    $this->pool_manager_init();
   }
 
   function pool_rebuild_after_validate($new_values, $is_valid) {
-    $name = $this->get_element_name();
     $form = $this->get_form();
-    $pool = isset($form->validation_data['pool'][$name]) ?
-                  $form->validation_data['pool'][$name] : [];
-  # remove old values from the pool
-    $removed = static::get_new_value_multiple('manager_delete_'.$name);
-    foreach ($removed as $c_id) {
-      if (isset($pool[$c_id]->pre_path))
-         unlink($pool[$c_id]->pre_path);
-      unset($pool[$c_id]);
+    $this->pool_new = $this->pool_validation_cache_select();
+  # remove new values from the pool
+    foreach ($this->pool_manager_get_removed_items('new') as $c_id) {
+      if (isset($this->pool_new[$c_id]->pre_path))
+         unlink($this->pool_new[$c_id]->pre_path);
+      unset($this->pool_new[$c_id]);
     }
   # add new values to the pool
     if ($is_valid && count($new_values)) {
       foreach ($new_values as $c_new_value) {
-        $pool[] = $c_new_value;
+        $this->pool_new[] = $c_new_value;
       }
     }
-  # pre-save the uploaded files
-    foreach ($pool as $c_id => $c_info) {
+  # pre-save the new files
+    foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $c_tmp_file = new file($c_info->tmp_path);
         $c_pre_file = new file(temporary::directory.$form->validation_id.'-'.$c_id);
@@ -87,28 +85,20 @@ namespace effcore {
         } else {
           message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_tmp_file->get_dirs(), 'to' => $c_pre_file->get_dirs()]), 'error');
           console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_tmp_file->get_path(), 'to' => $c_pre_file->get_path()]);
-          unset($pool[$c_id]);
+          unset($this->pool_new[$c_id]);
         }
       }
     }
   # save the pool
-    $form->validation_data['pool'][$name] = $pool;
-    if (count($form->validation_data['pool'][$name]) == 0) unset($form->validation_data['pool'][$name]);
-    if (count($form->validation_data['pool']) == 0)        unset($form->validation_data['pool']);
-  # insert "remove" checkboxes for each file
-    foreach ($pool as $c_id => $c_info) {
-      $this->pool_manager_insert_action($c_info, $c_id);
-    }
+    $this->pool_validation_cache_update($this->pool_new);
+    $this->pool_manager_rebuild();
   }
 
   function pool_files_save() {
     $return = [];
-    $name = $this->get_element_name();
-    $form = $this->get_form();
-    $pool = isset($form->validation_data['pool'][$name]) ?
-                  $form->validation_data['pool'][$name] : [];
-    foreach ($pool as $c_info) {
-    # @todo: add increment number to file name for duplicates
+    $this->pool_new = $this->pool_validation_cache_select();
+    foreach ($this->pool_new as $c_info) {
+    # @todo: add increment number for duplicates
       $c_pre_file = new file($c_info->pre_path);
       $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
       if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
@@ -122,31 +112,58 @@ namespace effcore {
         console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_pre_file->get_path(), 'to' => $c_new_file->get_path()]);
       }
     }
-    $this->pool_manager_clean();
+    $this->pool_manager_rebuild();
     return $return;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # pool validation cache
+  # ─────────────────────────────────────────────────────────────────────
+
+  function pool_validation_cache_select() {
+    $name = $this->get_element_name();
+    $form = $this->get_form();
+    return isset($form->validation_data['pool'][$name]) ?
+                 $form->validation_data['pool'][$name] : [];
+  }
+
+  function pool_validation_cache_update($cache) {
+    $name = $this->get_element_name();
+    $form = $this->get_form();
+    $form->validation_data['pool'][$name] = $cache;
+    if (count($form->validation_data['pool'][$name]) == 0) unset($form->validation_data['pool'][$name]);
+    if (count($form->validation_data['pool'])        == 0) unset($form->validation_data['pool']);
   }
 
   # ─────────────────────────────────────────────────────────────────────
   # pool manager
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_manager_build() {
+  function pool_manager_init() {
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
+  # insert "remove" checkboxes for old and new files
+    foreach ($this->pool_old as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'old');
+    foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
   }
 
-  function pool_manager_insert_action($info, $id) {
-    $name         = $this->get_element_name();
+  function pool_manager_rebuild() {
+    $this->child_delete('manager');
+    $this->pool_manager_init();
+  }
+
+  function pool_manager_insert_action($info, $id, $type) {
+    $name = $this->get_element_name();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
+      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
     );
   }
 
-  function pool_manager_clean() {
-    $this->child_delete('manager');
-    $this->pool_manager_build();
+  function pool_manager_get_removed_items($type) {
+    $name = $this->get_element_name();
+    return static::get_new_value_multiple('manager_delete_'.$name.'_'.$type);
   }
 
   ###########################
