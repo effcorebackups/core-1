@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\user;
           use \effcore\session;
+          use \effcore\user;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

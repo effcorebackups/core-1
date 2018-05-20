@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\instance;
           use \effcore\url;
           use \effcore\user;
-          use \effcore\instance;
           abstract class events_token extends \effcore\events_token {
 
   static function on_replace($name, $args = []) {

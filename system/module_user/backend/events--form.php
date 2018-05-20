@@ -6,16 +6,16 @@
 
 namespace effcore\modules\user {
           use const \effcore\br;
+          use \effcore\core;
+          use \effcore\entity;
+          use \effcore\file;
+          use \effcore\instance;
+          use \effcore\message;
+          use \effcore\page;
+          use \effcore\session;
+          use \effcore\translation;
           use \effcore\url;
           use \effcore\user;
-          use \effcore\page;
-          use \effcore\file;
-          use \effcore\entity;
-          use \effcore\session;
-          use \effcore\core;
-          use \effcore\message;
-          use \effcore\instance;
-          use \effcore\translation;
           abstract class events_form extends \effcore\events_form {
 
   #########################

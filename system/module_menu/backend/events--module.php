@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\menu {
-          use \effcore\tree;
           use \effcore\tabs;
+          use \effcore\tree;
           abstract class events_module extends \effcore\events_module {
 
   static function on_start() {

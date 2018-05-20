@@ -5,13 +5,13 @@
   ##################################################################
 
 namespace effcore\modules\develop {
+          use \effcore\core;
           use \effcore\file;
-          use \effcore\text;
-          use \effcore\text_simple;
           use \effcore\markup;
           use \effcore\markup_simple;
+          use \effcore\text;
+          use \effcore\text_simple;
           use \effcore\translation;
-          use \effcore\core;
           abstract class events_page extends \effcore\events_page {
 
   ########################

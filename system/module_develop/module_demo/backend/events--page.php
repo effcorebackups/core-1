@@ -5,13 +5,13 @@
   ##################################################################
 
 namespace effcore\modules\demo {
+          use \effcore\canvas_svg;
           use \effcore\markup;
           use \effcore\message;
-          use \effcore\canvas_svg;
-          use \effcore\translation;
           use \effcore\table;
           use \effcore\table_body_row;
           use \effcore\table_body_row_cell;
+          use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
   static function on_show_block_demo_dynamic($page) {

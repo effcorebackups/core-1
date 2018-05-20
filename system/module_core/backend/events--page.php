@@ -6,17 +6,17 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
-          use \effcore\node;
-          use \effcore\table;
-          use \effcore\markup;
-          use \effcore\module;
-          use \effcore\locale;
-          use \effcore\core;
-          use \effcore\storage;
-          use \effcore\translation;
-          use \effcore\markup_simple;
-          use \effcore\table_body_row_cell;
           use \effcore\control_actions_list;
+          use \effcore\core;
+          use \effcore\locale;
+          use \effcore\markup;
+          use \effcore\markup_simple;
+          use \effcore\module;
+          use \effcore\node;
+          use \effcore\storage;
+          use \effcore\table;
+          use \effcore\table_body_row_cell;
+          use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
   static function on_show_info($page) {
