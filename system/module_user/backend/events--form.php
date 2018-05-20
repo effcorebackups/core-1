@@ -104,7 +104,6 @@ namespace effcore\modules\user {
   }
 
   static function on_submit_user_edit($form, $fields, &$values) {
- // parent::on_submit_files($form, $fields, $values);
     $id_user = page::get_current()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'save':
@@ -114,12 +113,14 @@ namespace effcore\modules\user {
         if ($values['password_new'][0]) {
           $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
-        $avatar_info = reset($values['avatar']);
-        if ($avatar_info &&
-            $avatar_info->new_path) {
-          $c_file = new file($avatar_info->new_path);
-          $user->avatar_path_relative = $c_file->get_path_relative(); } else {
-          $user->avatar_path_relative = '';
+        $avatar_info = $fields['credentials/avatar']->pool_files_save();
+        if (count($avatar_info))
+                  $avatar_info = array_shift($avatar_info);
+        if (isset($avatar_info->new_path) &&
+                  $avatar_info->new_path) {
+           $c_file = new file($avatar_info->new_path);
+           $user->avatar_path_relative = $c_file->get_path_relative(); } else {
+           $user->avatar_path_relative = '';
         }
         if ($user->update()) {
           message::insert(

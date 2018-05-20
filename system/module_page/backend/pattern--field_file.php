@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_file extends field
-          implements has_external_validation_cache {
+          class field_file extends field {
 
   public $title = 'File';
   public $attributes = ['x-type' => 'file'];
@@ -20,7 +19,6 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $allowed_types = [];
-  public $pool;
 
   function build() {
     parent::build();
@@ -105,6 +103,7 @@ namespace effcore {
   }
 
   function pool_files_save() {
+    $return = [];
     $name = $this->get_element_name();
     $form = $this->get_form();
     $pool = isset($form->validation_data['pool'][$name]) ?
@@ -118,21 +117,19 @@ namespace effcore {
       if ($c_pre_file->move($c_new_file->get_dirs(), $c_new_file->get_file())) {
         $c_info->new_path = $c_new_file->get_path();
         unset($c_info->pre_path);
+        $return[] = $c_info;
       } else {
         message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_pre_file->get_dirs(), 'to' => $c_new_file->get_dirs()]), 'error');
         console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_pre_file->get_path(), 'to' => $c_new_file->get_path()]);
       }
     }
     $this->pool_manager_clean();
+    return $return;
   }
 
   ###########################
   ### static declarations ###
   ###########################
-
-  static function get_validation_cache_properties() {
-    return ['pool' => 'pool'];
-  }
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
