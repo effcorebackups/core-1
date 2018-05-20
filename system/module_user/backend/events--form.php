@@ -58,6 +58,7 @@ namespace effcore\modules\user {
     $user = (new instance('user', ['id' => $id_user]))->select();
     $fields['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
     $fields['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
+    $fields['credentials/avatar']->pool_init([$user->avatar_path_relative]);
   }
 
   static function on_validate_user_edit($form, $fields, &$values) {

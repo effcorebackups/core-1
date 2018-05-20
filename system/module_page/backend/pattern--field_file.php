@@ -19,6 +19,7 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $allowed_types = [];
+  public $pool = [];
 
   function build() {
     parent::build();
@@ -40,7 +41,24 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_build($new_values, $is_valid) {
+  function pool_init($new_files = []) {
+    foreach ($new_files as $c_path_relative) {
+      if ($c_path_relative) {
+        $c_file = new file(dir_root.$c_path_relative);
+        $c_info = new \stdClass;
+        $c_info->file = $c_file->get_file();
+        $c_info->name = $c_file->get_name();
+        $c_info->type = $c_file->get_type();
+        $c_info->mime = $c_file->get_mime();
+        $c_info->size = $c_file->get_size();
+        $c_info->new_path = $c_file->get_path();
+        $c_info->error = 0;
+        $this->pool[] = $c_info;
+      }
+    }
+  }
+
+  function pool_rebuild_after_validate($new_values, $is_valid) {
     $name = $this->get_element_name();
     $form = $this->get_form();
     $pool = isset($form->validation_data['pool'][$name]) ?
@@ -83,25 +101,6 @@ namespace effcore {
     }
   }
 
-  function pool_manager_build() {
-    $pool_manager = new group_checkboxes();
-    $pool_manager->build();
-    $this->child_insert($pool_manager, 'manager');
-  }
-
-  function pool_manager_insert_action($info, $id) {
-    $name         = $this->get_element_name();
-    $pool_manager = $this->child_select('manager');
-    $pool_manager->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
-    );
-  }
-
-  function pool_manager_clean() {
-    $this->child_delete('manager');
-    $this->pool_manager_build();
-  }
-
   function pool_files_save() {
     $return = [];
     $name = $this->get_element_name();
@@ -127,6 +126,29 @@ namespace effcore {
     return $return;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+  # pool manager
+  # ─────────────────────────────────────────────────────────────────────
+
+  function pool_manager_build() {
+    $pool_manager = new group_checkboxes();
+    $pool_manager->build();
+    $this->child_insert($pool_manager, 'manager');
+  }
+
+  function pool_manager_insert_action($info, $id) {
+    $name         = $this->get_element_name();
+    $pool_manager = $this->child_select('manager');
+    $pool_manager->field_insert(
+      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'[]', 'value' => $id]
+    );
+  }
+
+  function pool_manager_clean() {
+    $this->child_delete('manager');
+    $this->pool_manager_build();
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -141,7 +163,7 @@ namespace effcore {
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
-      $field->pool_build($new_values, $result);
+      $field->pool_rebuild_after_validate($new_values, $result);
       return $result;
     }
   }
