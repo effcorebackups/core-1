@@ -184,7 +184,7 @@ namespace effcore {
   }
 
   static function data_to_code($data, $file = null) {
-    $return = new \stdClass();
+    $return = new \stdClass;
     $p = [-1 => &$return];
     $pc_objects = []; # classes with interface "has_post_constructor"
     $pi_objects = []; # classes with interface "has_post_init"

@@ -30,7 +30,7 @@ namespace effcore\modules\develop {
     foreach (core::get_structures_map() as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
-        $c_result = new \stdClass();
+        $c_result = new \stdClass;
         $c_result->name       = $c_item_info->name;
         $c_result->namespace  = $c_item_info->namespace;
         $c_result->dirs       = $c_file->get_dirs();
@@ -187,7 +187,7 @@ namespace effcore\modules\develop {
       if ($c_item_info->type == 'class') {
         $c_reflection = new \ReflectionClass($c_item_full_name);
         $c_file = new file($c_item_info->file);
-        $c_return = new \stdClass();
+        $c_return = new \stdClass;
         $c_return->_type = 'UMLClass';
         $c_return->_id = 'CLASS-'.md5($c_item_full_name);
         $c_return->name = $c_item_info->name;
@@ -201,10 +201,10 @@ namespace effcore\modules\develop {
         $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
                                           $map[$c_item_full_name]->extends : null;
         if ($c_item_parent_full_name) {
-          $c_relation = new \stdClass();
+          $c_relation = new \stdClass;
           $c_relation->_type = 'UMLGeneralization';
-          $c_relation->source = new \stdClass();
-          $c_relation->target = new \stdClass();
+          $c_relation->source = new \stdClass;
+          $c_relation->target = new \stdClass;
           $c_relation->source->{'$ref'} = 'CLASS-'.md5($c_item_full_name);
           $c_relation->target->{'$ref'} = 'CLASS-'.md5($c_item_parent_full_name);
           $c_return->ownedElements = [$c_relation];

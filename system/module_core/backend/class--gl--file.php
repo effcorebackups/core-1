@@ -91,9 +91,11 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   function get_path()          {return $this->type ? $this->dirs.$this->name.'.'.$this->type : $this->dirs.$this->name;}
   function get_path_relative() {return $this->get_dirs_relative().$this->get_file();}
-# ─────────────────────────────────────────────────────────────────────
+
   function get_parent_name()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
   function get_hash()          {return md5_file($this->get_path());}
+  function get_size()          {return filesize($this->get_path());}
+  function get_mime()          {return mime_content_type($this->get_path());}
   function get_data() {
     if (empty($this->data)) $this->load(true);
     return $this->data;

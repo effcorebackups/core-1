@@ -89,7 +89,7 @@ namespace effcore {
   }
 
   function get_frontend() {
-    $return = new \stdClass();
+    $return = new \stdClass;
     $return->meta    = new node();
     $return->styles  = new node();
     $return->scripts = new node();

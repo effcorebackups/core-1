@@ -40,7 +40,7 @@ namespace effcore {
                        '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
         foreach ($c_matches as $c_match) {
           if (!empty($c_match['name'])) {
-            $c_item = new \stdClass();
+            $c_item = new \stdClass;
           # define modifier (abstract|final)
             if (!empty($c_match['modifier'])) {
               $c_item->modifier = $c_match['modifier'];

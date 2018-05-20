@@ -207,7 +207,7 @@ namespace effcore {
         foreach ($c_values as $c_index => $c_value) {
           if ($info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
             if (!isset($return[$c_index]))
-                       $return[$c_index] = new \stdClass();
+                       $return[$c_index] = new \stdClass;
             switch ($c_prop) {
               case 'name':
                 $c_file = new file($c_value);

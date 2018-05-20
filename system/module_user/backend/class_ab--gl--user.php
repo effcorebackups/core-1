@@ -10,7 +10,7 @@ namespace effcore {
   static protected $cache;
 
   static function init($id = null) {
-    static::$cache = new \stdClass();
+    static::$cache = new \stdClass;
     static::$cache->id = 0;
     static::$cache->roles = ['anonymous' => 'anonymous'];
   # load user from storage
