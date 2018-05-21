@@ -12,8 +12,6 @@ translations
     - Administrators: Администраторы
     - agree: согласен(а)
     - All rights reserved: Все права защищены
-    - Allowable characters\: %%_chars. Examples\: %%_examples.: Допустимые символы: %%_chars. Примеры: %%_examples.
-    - Allowable characters\: %%_chars.: Допустимые символы: %%_chars.
     - always_enabled: всегда_вкл
     - Anonymous: Аноним
     - Architecture: Архитектура
@@ -88,12 +86,13 @@ translations
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
-    - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" does not support loading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
+    - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть отмечено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_num characters!: Поле "%%_title" должно содержать максимум %%_num символов!
     - Field "%%_title" must contain a minimum of %%_num characters!: Поле "%%_title" должно содержать минимум %%_num символов!
+    - Field must contain %%_num characters.: Поле должно содержать %%_num символов.
     - Field must contain a maximum of %%_num characters.: Поле должно содержать максимум %%_num символов.
     - Field must contain a minimum of %%_num characters.: Поле должно содержать минимум %%_num символов.
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
