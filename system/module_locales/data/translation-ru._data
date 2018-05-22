@@ -28,8 +28,6 @@ translations
     - Cancel: Отмена
     - cancel: отмена
     - Captcha: Защитный код
-    - Changes was removed.: Изменения были удалены.
-    - Changes was saved.: Изменения были сохранены.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Checkbox: Флаг
     - collapse: свернуть
@@ -231,6 +229,8 @@ translations
     - Table: Таблица
     - Test: Тест
     - Text: Текст
+    - The changes have been deleted.: Изменения были удалены.
+    - The changes have been saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зеленой и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size

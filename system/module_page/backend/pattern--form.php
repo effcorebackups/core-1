@@ -123,7 +123,7 @@ namespace effcore {
     return [];
   }
 
-  static function get_containers($form) { # @todo: remove this function
+  static function get_containers($form) { # @todo: delete this function
     $return = [];
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {

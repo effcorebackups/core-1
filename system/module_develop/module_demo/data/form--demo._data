@@ -3,7 +3,7 @@
 # 1. attribute MULTIPLE in SELECT element is not supported on touch
 #    devices - tablets, phones, monitors with touch screens
 # 2. not recommend to use DISABLED|READONLY text fields with shared
-#    NAME (name="shared_name[]") because user can remove DISABLED|READONLY
+#    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
 #    state from field and change the field VALUE and submit the form - after
 #    this action the new VALUE will be setted to the next field with
 #    shared NAME.

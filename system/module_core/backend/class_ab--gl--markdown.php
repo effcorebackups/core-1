@@ -41,7 +41,7 @@ namespace effcore {
         }
         break;
       case 'wr_data1':
-      # remove old pointer to the current paragraph
+      # delete old pointer to the current paragraph
         if (is_string($data) && trim($data) == '') {
           $list->_c_paragraph = null;
           return true;
@@ -109,7 +109,7 @@ namespace effcore {
       if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
         if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_num-1]);
         if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_num-1]);
-      # remove previous insertion
+      # delete previous insertion
         if ($last_type == 'p' && $last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
         if ($last_type == 'header')   $pool->child_delete($pool->child_select_last_id());
         if ($last_type == 'hr')       $pool->child_delete($pool->child_select_last_id());
@@ -166,7 +166,7 @@ namespace effcore {
             if ($parent_li) $parent_li->child_select('wr_container')
                                       ->child_insert($new_container);
           }
-        # remove old pointers to list containers (ol/ul)
+        # delete old pointers to list containers (ol/ul)
           foreach ($last_item->_p_list as $c_level => $c_pointer) {
             if ($c_level > $l_level) {
               unset($last_item->_p_list[$c_level]);
