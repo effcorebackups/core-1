@@ -42,128 +42,153 @@ namespace effcore {
   ############
 
   function pool_old_values_init($old_values = []) {
-    foreach ($old_values as $c_path_relative) {
+    $cache = $this->pool_validation_cache_get('old');
+  # insert old values to the pool (except the deleted)
+    foreach ($old_values as $c_id => $c_path_relative) {
       if ($c_path_relative) {
         $c_file = new file(dir_root.$c_path_relative);
-        $c_info = new \stdClass;
-        $c_info->name = $c_file->get_name();
-        $c_info->type = $c_file->get_type();
-        $c_info->file = $c_file->get_file();
-        $c_info->mime = $c_file->get_mime();
-        $c_info->size = $c_file->get_size();
-        $c_info->old_path = $c_file->get_path();
-        $c_info->error = 0;
-        $this->pool_old[] = $c_info;
+        if ($c_file->is_exist()) {
+          $c_info = new \stdClass;
+          $c_info->name = $c_file->get_name();
+          $c_info->type = $c_file->get_type();
+          $c_info->file = $c_file->get_file();
+          $c_info->mime = $c_file->get_mime();
+          $c_info->size = $c_file->get_size();
+          $c_info->old_path = $c_file->get_path();
+          $c_info->error = 0;
+          $c_info->must_be_deleted = !empty($cache[$c_id]->must_be_deleted);
+          $this->pool_old[$c_id] = $c_info;
+        }
       }
     }
-    $this->pool_manager_init();
+  # remove canceled values
+    $deleted = $this->pool_manager_get_deleted_items('old');
+    foreach ($this->pool_old as $c_id => $c_info) {
+      if (isset($deleted[$c_id])) {
+        $c_info->must_be_deleted = true;
+      }
+    }
+  # save the poll
+    $this->pool_validation_cache_set('old', $this->pool_old);
+  # rebuild (refresh) pool manager
+    $this->pool_manager_rebuild();
   }
 
-  function pool_new_values_init($new_values, $is_valid) {
-    $form = $this->get_form();
-    $this->pool_new = $this->pool_validation_cache_select();
-  # remove new values from the pool
-    foreach ($this->pool_manager_get_removed_items('new') as $c_id) {
-      if (isset($this->pool_new[$c_id]->pre_path))
-         unlink($this->pool_new[$c_id]->pre_path);
-      unset($this->pool_new[$c_id]);
-    }
-  # add new values to the pool
+  function pool_new_values_init($new_values = [], $is_valid) {
+    $this->pool_new = $this->pool_validation_cache_get('new');
+  # insert new values to the pool
     if ($is_valid && count($new_values)) {
       foreach ($new_values as $c_new_value) {
         $this->pool_new[] = $c_new_value;
       }
     }
-  # pre-save the new files
+  # move temporary files from php "tmp" directory to system "tmp" directory
+    $this->pool_tmp_files_save($this->get_form()->validation_id);
+  # remove canceled values
+    $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($c_info->tmp_path)) {
-        $c_tmp_file = new file($c_info->tmp_path);
-        $c_pre_file = new file(temporary::directory.$form->validation_id.'-'.$c_id);
-        if ($c_tmp_file->move_uploaded($c_pre_file->get_dirs(), $c_pre_file->get_file())) {
-          $c_info->pre_path = $c_pre_file->get_path();
-          unset($c_info->tmp_path);
-        } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_tmp_file->get_dirs(), 'to' => $c_pre_file->get_dirs()]), 'error');
-          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_tmp_file->get_path(), 'to' => $c_pre_file->get_path()]);
-          unset($this->pool_new[$c_id]);
+      if (isset($deleted[$c_id])) {
+        if (isset($this->pool_new[$c_id]->pre_path)) {
+           unlink($this->pool_new[$c_id]->pre_path);
+            unset($this->pool_new[$c_id]);
         }
       }
     }
-  # save the pool
-    $this->pool_validation_cache_update($this->pool_new);
+  # save the poll
+    $this->pool_validation_cache_set('new', $this->pool_new);
+  # rebuild (refresh) pool manager
     $this->pool_manager_rebuild();
   }
 
-  function pool_new_files_save() {
-    $return = [];
-    $this->pool_new = $this->pool_validation_cache_select();
-    foreach ($this->pool_new as $c_info) {
-    # @todo: add increment number for duplicates
-      $c_pre_file = new file($c_info->pre_path);
-      $c_new_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
-      if ($this->fixed_name) $c_new_file->set_name(token::replace($this->fixed_name));
-      if ($this->fixed_type) $c_new_file->set_type(token::replace($this->fixed_type));
-      if ($c_pre_file->move($c_new_file->get_dirs(), $c_new_file->get_file())) {
-        $c_info->new_path = $c_new_file->get_path();
-        unset($c_info->pre_path);
-        $return[] = $c_info;
-      } else {
-        message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!', ['from' => $c_pre_file->get_dirs(), 'to' => $c_new_file->get_dirs()]), 'error');
-        console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $c_pre_file->get_path(), 'to' => $c_new_file->get_path()]);
+  function pool_tmp_files_save($file_tmp_name) {
+    foreach ($this->pool_new as $c_id => $c_info) {
+      if (isset($c_info->tmp_path)) {
+        $src_file = new file($c_info->tmp_path);
+        $dst_file = new file(temporary::directory.$file_tmp_name.'-'.$c_id);
+        if ($src_file->move_uploaded(
+            $dst_file->get_dirs(),
+            $dst_file->get_file())) {
+          $c_info->pre_path = $dst_file->get_path();
+          unset($c_info->tmp_path);
+        } else {
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
+        }
       }
     }
-    $this->pool_manager_rebuild();
-    return $return;
+    return $this->pool_new;
+  }
+
+  function pool_pre_files_save() {
+    foreach ($this->pool_new as $c_id => $c_info) {
+      if (isset($c_info->pre_path)) {
+        $src_file = new file($c_info->pre_path);
+        $dst_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
+        if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
+        if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
+        if ($src_file->move(
+            $dst_file->get_dirs(),
+            $dst_file->get_file())) {
+          $c_info->new_path = $dst_file->get_path();
+          unset($c_info->pre_path);
+        } else {
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
+        }
+      }
+    }
+    return $this->pool_new;
   }
 
   # ─────────────────────────────────────────────────────────────────────
   # pool validation cache
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_validation_cache_select() {
+  function pool_validation_cache_get($type) {
     $name = $this->get_element_name();
     $form = $this->get_form();
-    return isset($form->validation_data['pool'][$name]) ?
-                 $form->validation_data['pool'][$name] : [];
+    return isset($form->validation_data['pool'][$name][$type]) ?
+                 $form->validation_data['pool'][$name][$type] : [];
   }
 
-  function pool_validation_cache_update($cache) {
+  function pool_validation_cache_set($type, $data) {
     $name = $this->get_element_name();
     $form = $this->get_form();
-    $form->validation_data['pool'][$name] = $cache;
-    if (count($form->validation_data['pool'][$name]) == 0) unset($form->validation_data['pool'][$name]);
-    if (count($form->validation_data['pool'])        == 0) unset($form->validation_data['pool']);
+    $form->validation_data['pool'][$name][$type] = $data;
+    if (count($form->validation_data['pool'][$name][$type]) == 0) unset($form->validation_data['pool'][$name][$type]);
+    if (count($form->validation_data['pool'][$name])        == 0) unset($form->validation_data['pool'][$name]);
+    if (count($form->validation_data['pool'])               == 0) unset($form->validation_data['pool']);
   }
 
   # ─────────────────────────────────────────────────────────────────────
   # pool manager
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_manager_init() {
+  function pool_manager_rebuild() {
+    $this->child_delete('manager');
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
-  # insert "remove" checkboxes for old and new files
+  # insert "delete" checkboxes for old and new files
     foreach ($this->pool_old as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'old');
     foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
   }
 
-  function pool_manager_rebuild() {
-    $this->child_delete('manager');
-    $this->pool_manager_init();
-  }
-
   function pool_manager_insert_action($info, $id, $type) {
-    $name = $this->get_element_name();
-    $pool_manager = $this->child_select('manager');
-    $pool_manager->field_insert(
-      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
-    );
+    if (empty($info->must_be_deleted)) {
+      $name = $this->get_element_name();
+      $pool_manager = $this->child_select('manager');
+      $pool_manager->field_insert(
+        translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
+      );
+    }
   }
 
-  function pool_manager_get_removed_items($type) {
+  function pool_manager_get_deleted_items($type) {
     $name = $this->get_element_name();
-    return static::get_new_value_multiple('manager_delete_'.$name.'_'.$type);
+    return core::array_kmap(
+      static::get_new_value_multiple('manager_delete_'.$name.'_'.$type)
+    );
   }
 
   ###########################

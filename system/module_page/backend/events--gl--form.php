@@ -11,7 +11,7 @@ namespace effcore {
   ### on_init ###
   ###############
 
-  static function on_init($form, $fields) {
+  static function on_init($form, $fields, &$values) {
   }
 
   ###################

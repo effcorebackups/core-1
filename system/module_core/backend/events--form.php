@@ -17,7 +17,7 @@ namespace effcore\modules\core {
   ### form: install ###
   #####################
 
-  static function on_init_install($form, $fields) {
+  static function on_init_install($form, $fields, &$values) {
     if (!extension_loaded('pdo')) {
       message::insert('PHP PDO extension is not available.', 'warning');
     }

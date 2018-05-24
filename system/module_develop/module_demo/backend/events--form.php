@@ -13,7 +13,7 @@ namespace effcore\modules\demo {
   ### form: demo ###
   ##################
 
-  static function on_init_demo($form, $fields) {
+  static function on_init_demo($form, $fields, &$values) {
     $fields['form_elements/select_macro']->option_insert('Option 2.5 (inserted + disabled from init)', 'option_2_5', ['disabled' => 'disabled'], 'group_2_1');
     $fields['form_elements/select_macro']->option_insert('Option 2.6 (inserted from init)', 'option_2_6', [], 'group_2_1');
     $fields['form_elements/select_macro']->optgroup_insert('group_2_2', 'Group 2.2 (inserted from init)');
@@ -28,7 +28,7 @@ namespace effcore\modules\demo {
 
   static function on_submit_demo($form, $fields, &$values) {
     message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
-    $fields['form_elements/file']->pool_new_files_save();
+    $fields['form_elements/file']->pool_pre_files_save();
   }
 
 }}

@@ -45,7 +45,7 @@ namespace effcore {
     $fields     = static::get_fields($this);
 
   # call init handlers
-    event::start('on_form_init', $id, [$this, $containers]);
+    event::start('on_form_init', $id, [$this, $containers, &$values]);
 
   # if user click the button
     if (isset($values['form_id'][0]) &&

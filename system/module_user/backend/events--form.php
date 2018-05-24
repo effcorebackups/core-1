@@ -53,7 +53,7 @@ namespace effcore\modules\user {
   ### form: user_edit ###
   #######################
 
-  static function on_init_user_edit($form, $fields) {
+  static function on_init_user_edit($form, $fields, &$values) {
     $id_user = page::get_current()->args_get('id_user');
     $user = (new instance('user', ['id' => $id_user]))->select();
     $fields['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
@@ -114,7 +114,7 @@ namespace effcore\modules\user {
         if ($values['password_new'][0]) {
           $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
-        $avatar_info = $fields['credentials/avatar']->pool_new_files_save();
+        $avatar_info = $fields['credentials/avatar']->pool_pre_files_save();
         if (count($avatar_info))
                   $avatar_info = array_shift($avatar_info);
         if (isset($avatar_info->new_path) &&
@@ -144,7 +144,7 @@ namespace effcore\modules\user {
   ### form: login ###
   ###################
 
-  static function on_init_login($form, $fields) {
+  static function on_init_login($form, $fields, $is_first) {
     if (!isset($_COOKIE['cookies_is_on'])) {
       message::insert(
         translation::get('Cookies are disabled. You can not log in!').br.
