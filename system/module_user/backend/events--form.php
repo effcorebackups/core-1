@@ -144,7 +144,7 @@ namespace effcore\modules\user {
   ### form: login ###
   ###################
 
-  static function on_init_login($form, $fields, $is_first) {
+  static function on_init_login($form, $fields, &$values) {
     if (!isset($_COOKIE['cookies_is_on'])) {
       message::insert(
         translation::get('Cookies are disabled. You can not log in!').br.
