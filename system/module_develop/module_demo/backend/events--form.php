@@ -5,7 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\demo {
+          use \effcore\file;
           use \effcore\message;
+          use \effcore\temporary;
           use \effcore\translation;
           abstract class events_form extends \effcore\events_form {
 
@@ -20,6 +22,9 @@ namespace effcore\modules\demo {
     $fields['form_elements/select_macro']->option_insert('Option 2.7 (inserted from init)', 'option_2_7', [], 'group_2_2');
     $fields['form_elements/select_macro']->option_insert('Option 2.8 (inserted from init)', 'option_2_8', [], 'group_2_2');
     $fields['form_elements/select_macro']->option_insert('Option 2.9 (inserted from init)', 'option_2_9', [], 'group_2_2');
+    $fields['form_elements/file']->pool_values_init_old(
+      temporary::select('demo_files') ?: []
+    );
   }
 
   static function on_validate_demo($form, $fields, &$values) {
@@ -27,8 +32,14 @@ namespace effcore\modules\demo {
   }
 
   static function on_submit_demo($form, $fields, &$values) {
+    $paths = [];
+    foreach ($fields['form_elements/file']->pool_files_save() as $c_info) {
+      $c_file = new file($c_info->new_path);
+      $paths[] = $c_file->get_path_relative();
+    }
+    if (count($paths)) temporary::update('demo_files', $paths);
+    else               temporary::delete('demo_files');
     message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
-    $fields['form_elements/file']->pool_files_save();
   }
 
 }}

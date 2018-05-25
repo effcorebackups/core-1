@@ -61,7 +61,7 @@ namespace effcore {
         }
       }
     }
-  # remove canceled values
+  # delete canceled values
     $deleted = $this->pool_manager_get_deleted_items('old');
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
@@ -84,7 +84,7 @@ namespace effcore {
     }
   # move temporary files from php "tmp" directory to system "tmp" directory
     $this->pool_files_move_tmp_to_pre($this->get_form()->validation_id);
-  # remove canceled values
+  # delete canceled values
     $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
@@ -116,7 +116,6 @@ namespace effcore {
         }
       }
     }
-    return $this->pool_new;
   }
 
   function pool_files_move_pre_to_new() {
@@ -137,11 +136,13 @@ namespace effcore {
         }
       }
     }
-    return $this->pool_new;
   }
 
   function pool_files_save() {
     $this->pool_files_move_pre_to_new();
+  # delete canceled old values
+  # ...
+    return $this->pool_new;
   }
 
   # ─────────────────────────────────────────────────────────────────────

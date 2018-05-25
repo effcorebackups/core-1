@@ -54,6 +54,22 @@ forms
         title: Form elements
         title_tag_name: legend
         children
+      # field file
+        - file|field_file
+            max_file_size: 10K
+            upload_dir: demo/
+            allowed_types
+            - gif: gif
+            - jpeg: jpeg
+            - jpg: jpg
+            - png: png
+            description|text
+              text: Element %%_info.
+              args
+              - info: &lt;input type="file"&gt;
+            element_attributes
+            - name: file[]
+            - multiple: multiple
       # field text
         - text|field
             title: Text
@@ -223,22 +239,6 @@ forms
             element_attributes
             - name: email_macro
             - value: test3@example.com,test4@example.com
-            - multiple: multiple
-      # field file
-        - file|field_file
-            max_file_size: 1M
-            upload_dir: demo/
-            allowed_types
-            - gif: gif
-            - jpeg: jpeg
-            - jpg: jpg
-            - png: png
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="file"&gt;
-            element_attributes
-            - name: file[]
             - multiple: multiple
       # field number
         - number|field
