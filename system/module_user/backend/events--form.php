@@ -58,7 +58,7 @@ namespace effcore\modules\user {
     $user = (new instance('user', ['id' => $id_user]))->select();
     $fields['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
     $fields['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
-    $fields['credentials/avatar']->pool_old_values_init([$user->avatar_path_relative]);
+    $fields['credentials/avatar']->pool_values_init_old([$user->avatar_path_relative]);
   }
 
   static function on_validate_user_edit($form, $fields, &$values) {
@@ -114,7 +114,7 @@ namespace effcore\modules\user {
         if ($values['password_new'][0]) {
           $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
-        $avatar_info = $fields['credentials/avatar']->pool_pre_files_save();
+        $avatar_info = $fields['credentials/avatar']->pool_files_save_pre();
         if (count($avatar_info))
                   $avatar_info = array_shift($avatar_info);
         if (isset($avatar_info->new_path) &&

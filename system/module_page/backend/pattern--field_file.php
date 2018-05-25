@@ -41,7 +41,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_old_values_init($old_values = []) {
+  function pool_values_init_old($old_values = []) {
     $cache = $this->pool_validation_cache_get('old');
   # insert old values to the pool (except the deleted)
     foreach ($old_values as $c_id => $c_path_relative) {
@@ -74,7 +74,7 @@ namespace effcore {
     $this->pool_manager_rebuild();
   }
 
-  function pool_new_values_init($new_values = [], $is_valid) {
+  function pool_values_init_new($new_values = [], $is_valid) {
     $this->pool_new = $this->pool_validation_cache_get('new');
   # insert new values to the pool
     if ($is_valid && count($new_values)) {
@@ -83,7 +83,7 @@ namespace effcore {
       }
     }
   # move temporary files from php "tmp" directory to system "tmp" directory
-    $this->pool_tmp_files_save($this->get_form()->validation_id);
+    $this->pool_files_save_tmp($this->get_form()->validation_id);
   # remove canceled values
     $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
@@ -100,7 +100,7 @@ namespace effcore {
     $this->pool_manager_rebuild();
   }
 
-  function pool_tmp_files_save($file_tmp_name) {
+  function pool_files_save_tmp($file_tmp_name) {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
@@ -119,7 +119,7 @@ namespace effcore {
     return $this->pool_new;
   }
 
-  function pool_pre_files_save() {
+  function pool_files_save_pre() {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->pre_path)) {
         $src_file = new file($c_info->pre_path);
@@ -205,7 +205,7 @@ namespace effcore {
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
-      $field->pool_new_values_init($new_values, $result);
+      $field->pool_values_init_new($new_values, $result);
       return $result;
     }
   }
