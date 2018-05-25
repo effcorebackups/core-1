@@ -34,7 +34,7 @@ namespace effcore\modules\demo {
   static function on_submit_demo($form, $fields, &$values) {
     $paths = [];
     foreach ($fields['form_elements/file']->pool_files_save() as $c_info) {
-      $c_file = new file($c_info->new_path);
+      $c_file = new file($c_info->path);
       $paths[] = $c_file->get_path_relative();
     }
     if (count($paths)) temporary::update('demo_files', $paths);

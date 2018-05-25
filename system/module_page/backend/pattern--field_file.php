@@ -141,8 +141,18 @@ namespace effcore {
   function pool_files_save() {
     $this->pool_files_move_pre_to_new();
   # delete canceled old values
-  # ...
-    return $this->pool_new;
+    foreach ($this->pool_old as $c_id => $c_info) {
+      if (!empty($this->pool_old[$c_id]->must_be_deleted)) {
+          unlink($this->pool_old[$c_id]->old_path);
+           unset($this->pool_old[$c_id]);
+      }
+    }
+  # prepare return
+    $return = [];
+    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info;}
+    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info;}
+  # return result array
+    return $return;
   }
 
   # ─────────────────────────────────────────────────────────────────────
