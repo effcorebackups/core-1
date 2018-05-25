@@ -83,7 +83,7 @@ namespace effcore {
       }
     }
   # move temporary files from php "tmp" directory to system "tmp" directory
-    $this->pool_files_save_tmp($this->get_form()->validation_id);
+    $this->pool_files_move_tmp_to_pre($this->get_form()->validation_id);
   # remove canceled values
     $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
@@ -100,7 +100,7 @@ namespace effcore {
     $this->pool_manager_rebuild();
   }
 
-  function pool_files_save_tmp($file_tmp_name) {
+  function pool_files_move_tmp_to_pre($file_tmp_name) {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
@@ -119,7 +119,7 @@ namespace effcore {
     return $this->pool_new;
   }
 
-  function pool_files_save_pre() {
+  function pool_files_move_pre_to_new() {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->pre_path)) {
         $src_file = new file($c_info->pre_path);
@@ -138,6 +138,10 @@ namespace effcore {
       }
     }
     return $this->pool_new;
+  }
+
+  function pool_files_save() {
+    $this->pool_files_move_pre_to_new();
   }
 
   # ─────────────────────────────────────────────────────────────────────

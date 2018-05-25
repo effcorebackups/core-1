@@ -114,7 +114,7 @@ namespace effcore\modules\user {
         if ($values['password_new'][0]) {
           $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
-        $avatar_info = $fields['credentials/avatar']->pool_files_save_pre();
+        $avatar_info = $fields['credentials/avatar']->pool_files_save();
         if (count($avatar_info))
                   $avatar_info = array_shift($avatar_info);
         if (isset($avatar_info->new_path) &&

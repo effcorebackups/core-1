@@ -28,7 +28,7 @@ namespace effcore\modules\demo {
 
   static function on_submit_demo($form, $fields, &$values) {
     message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
-    $fields['form_elements/file']->pool_files_save_pre();
+    $fields['form_elements/file']->pool_files_save();
   }
 
 }}
