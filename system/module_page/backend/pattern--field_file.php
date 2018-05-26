@@ -149,8 +149,13 @@ namespace effcore {
     }
   # prepare return
     $return = [];
-    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info;}
-    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info;}
+    $return_paths = [];
+    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
+    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
+  # rebuild (refresh) pool manager
+    $this->pool_new = [];
+    $this->pool_values_init_old($return_paths);
+    $this->pool_manager_rebuild();
   # return result array
     return $return;
   }
