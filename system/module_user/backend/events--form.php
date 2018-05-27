@@ -114,11 +114,9 @@ namespace effcore\modules\user {
           $user->password_hash = core::hash_password_get($values['password_new'][0]);
         }
         $avatar_info = $fields['credentials/avatar']->pool_files_save();
-        if (count($avatar_info))
-                  $avatar_info = array_shift($avatar_info);
-        if (isset($avatar_info->path) &&
-                  $avatar_info->path) {
-           $c_file = new file($avatar_info->path);
+        if (isset($avatar_info[0]->path) &&
+                  $avatar_info[0]->path) {
+           $c_file = new file($avatar_info[0]->path);
            $user->avatar_path_relative = $c_file->get_path_relative(); } else {
            $user->avatar_path_relative = '';
         }
