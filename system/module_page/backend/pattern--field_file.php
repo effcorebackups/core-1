@@ -215,7 +215,7 @@ namespace effcore {
 
   function pool_manager_set_deleted_items($type, $items) {
     $name = $this->get_element_name();
-    $_POST['manager_delete_'.$name.'_'.$type] = $items;
+    static::set_new_value_multiple('manager_delete_'.$name.'_'.$type, $items);
   }
 
   ###########################

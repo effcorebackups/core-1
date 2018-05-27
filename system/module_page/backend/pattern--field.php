@@ -184,6 +184,10 @@ namespace effcore {
                   $_POST[$name] : []));
   }
 
+  static function set_new_value_multiple($name, $values) {
+    $_POST[$name] = $values;
+  }
+
   # conversion matrix (expected: undefined|array):
   # ─────────────────────────────────────────────────────────────────────
   # - $_FILES[field] == undefined                             -> return []
