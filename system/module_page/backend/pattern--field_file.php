@@ -19,8 +19,8 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $allowed_types = [];
-  public $pool_old = [];
-  public $pool_new = [];
+  protected $pool_old = [];
+  protected $pool_new = [];
 
   function build() {
     parent::build();
@@ -101,44 +101,6 @@ namespace effcore {
     $this->pool_manager_rebuild();
   }
 
-  function pool_files_move_tmp_to_pre($file_tmp_name) {
-    foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($c_info->tmp_path)) {
-        $src_file = new file($c_info->tmp_path);
-        $dst_file = new file(temporary::directory.$file_tmp_name.'-'.$c_id);
-        if ($src_file->move_uploaded(
-            $dst_file->get_dirs(),
-            $dst_file->get_file())) {
-          $c_info->pre_path = $dst_file->get_path();
-          unset($c_info->tmp_path);
-        } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
-          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
-        }
-      }
-    }
-  }
-
-  function pool_files_move_pre_to_new() {
-    foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($c_info->pre_path)) {
-        $src_file = new file($c_info->pre_path);
-        $dst_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
-        if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
-        if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
-        if ($src_file->move(
-            $dst_file->get_dirs(),
-            $dst_file->get_file())) {
-          $c_info->new_path = $dst_file->get_path();
-          unset($c_info->pre_path);
-        } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
-          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
-        }
-      }
-    }
-  }
-
   function pool_files_save() {
     $this->pool_files_move_pre_to_new();
   # delete canceled old values
@@ -162,18 +124,56 @@ namespace effcore {
     return $return;
   }
 
+  protected function pool_files_move_tmp_to_pre($file_tmp_name) {
+    foreach ($this->pool_new as $c_id => $c_info) {
+      if (isset($c_info->tmp_path)) {
+        $src_file = new file($c_info->tmp_path);
+        $dst_file = new file(temporary::directory.$file_tmp_name.'-'.$c_id);
+        if ($src_file->move_uploaded(
+            $dst_file->get_dirs(),
+            $dst_file->get_file())) {
+          $c_info->pre_path = $dst_file->get_path();
+          unset($c_info->tmp_path);
+        } else {
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
+        }
+      }
+    }
+  }
+
+  protected function pool_files_move_pre_to_new() {
+    foreach ($this->pool_new as $c_id => $c_info) {
+      if (isset($c_info->pre_path)) {
+        $src_file = new file($c_info->pre_path);
+        $dst_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
+        if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
+        if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
+        if ($src_file->move(
+            $dst_file->get_dirs(),
+            $dst_file->get_file())) {
+          $c_info->new_path = $dst_file->get_path();
+          unset($c_info->pre_path);
+        } else {
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_path(), 'to' => $dst_file->get_path()]);
+        }
+      }
+    }
+  }
+
   # ─────────────────────────────────────────────────────────────────────
   # pool validation cache
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_validation_cache_get($type) {
+  protected function pool_validation_cache_get($type) {
     $name = $this->get_element_name();
     $form = $this->get_form();
     return isset($form->validation_data['pool'][$name][$type]) ?
                  $form->validation_data['pool'][$name][$type] : [];
   }
 
-  function pool_validation_cache_set($type, $data) {
+  protected function pool_validation_cache_set($type, $data) {
     $name = $this->get_element_name();
     $form = $this->get_form();
     $form->validation_data['pool'][$name][$type] = $data;
@@ -186,7 +186,7 @@ namespace effcore {
   # pool manager
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_manager_rebuild() {
+  protected function pool_manager_rebuild() {
     $this->child_delete('manager');
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
@@ -196,7 +196,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
   }
 
-  function pool_manager_insert_action($info, $id, $type) {
+  protected function pool_manager_insert_action($info, $id, $type) {
     if (empty($info->must_be_deleted)) {
       $name = $this->get_element_name();
       $pool_manager = $this->child_select('manager');
@@ -206,14 +206,14 @@ namespace effcore {
     }
   }
 
-  function pool_manager_get_deleted_items($type) {
+  protected function pool_manager_get_deleted_items($type) {
     $name = $this->get_element_name();
     return core::array_kmap(
       static::get_new_value_multiple('manager_delete_'.$name.'_'.$type)
     );
   }
 
-  function pool_manager_set_deleted_items($type, $items) {
+  protected function pool_manager_set_deleted_items($type, $items) {
     $name = $this->get_element_name();
     static::set_new_value_multiple('manager_delete_'.$name.'_'.$type, $items);
   }
