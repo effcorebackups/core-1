@@ -20,7 +20,6 @@ namespace effcore\modules\page {
   }
 
   static function on_validate_decoration($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
   }
 
   static function on_submit_decoration($form, $fields, &$values) {

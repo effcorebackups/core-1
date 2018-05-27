@@ -39,7 +39,6 @@ namespace effcore\modules\core {
   }
 
   static function on_validate_install($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
     switch ($form->clicked_button_name) {
       case 'install':
         if (empty($values['driver'][0])) {

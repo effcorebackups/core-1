@@ -28,7 +28,6 @@ namespace effcore\modules\demo {
   }
 
   static function on_validate_demo($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
   }
 
   static function on_submit_demo($form, $fields, &$values) {

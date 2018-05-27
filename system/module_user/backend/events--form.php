@@ -62,7 +62,6 @@ namespace effcore\modules\user {
   }
 
   static function on_validate_user_edit($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
     switch ($form->clicked_button_name) {
       case 'save':
         if (count($form->errors) == 0) {
@@ -153,7 +152,6 @@ namespace effcore\modules\user {
   }
 
   static function on_validate_login($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
     switch ($form->clicked_button_name) {
       case 'login':
         if (count($form->errors) == 0) {
@@ -194,7 +192,6 @@ namespace effcore\modules\user {
   ##########################
 
   static function on_validate_registration($form, $fields, &$values) {
-    static::on_validate($form, $fields, $values);
     switch ($form->clicked_button_name) {
       case 'register':
         if (count($form->errors) == 0) {
