@@ -42,6 +42,7 @@ namespace effcore {
   ############
 
   function pool_values_init_old($old_values = []) {
+    $this->pool_old = [];
     $cache = $this->pool_validation_cache_get('old');
   # insert old values to the pool (except the deleted)
     foreach ($old_values as $c_id => $c_path_relative) {
@@ -152,10 +153,11 @@ namespace effcore {
     $return_paths = [];
     foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
     foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
-  # rebuild (refresh) pool manager
+  # move pool_old to pool_new
     $this->pool_new = [];
+    $this->pool_manager_set_deleted_items('old', []);
+    $this->pool_validation_cache_set('old', []);
     $this->pool_values_init_old($return_paths);
-    $this->pool_manager_rebuild();
   # return result array
     return $return;
   }
@@ -209,6 +211,11 @@ namespace effcore {
     return core::array_kmap(
       static::get_new_value_multiple('manager_delete_'.$name.'_'.$type)
     );
+  }
+
+  function pool_manager_set_deleted_items($type, $items) {
+    $name = $this->get_element_name();
+    $_POST['manager_delete_'.$name.'_'.$type] = $items;
   }
 
   ###########################
