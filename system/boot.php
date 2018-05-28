@@ -78,10 +78,11 @@ namespace effcore {
       );
     }
 
+  # define path of file directory 
     $path_url = url::get_current()->get_path();
-    if (substr($path_url, 0, 7) === '/files/')
-         $path = dir_files.substr(ltrim($path_url, '/'), 6);
-    else $path =  dir_root.ltrim($path_url, '/');
+    if (substr($path_url, 0, 15) === '/dynamic/files/')
+         $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
+    else $path =                  dir_root.ltrim($path_url, '/');
 
     if (is_file($path) && is_readable($path)) {
     # case for file with tokens

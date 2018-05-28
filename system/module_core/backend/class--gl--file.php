@@ -191,7 +191,7 @@ namespace effcore {
 
   static function mkdir_if_not_exist($dirs) {
     return !file_exists($dirs) ?
-                 @mkdir($dirs) : true;
+                 @mkdir($dirs, 0777, true) : true;
   }
 
   static function select_all_recursive($parent_dir, $filter = '') {
