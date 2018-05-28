@@ -42,12 +42,6 @@ namespace effcore {
   ############
 
   function pool_values_init_old($old_values = []) {
-  # disable the field if it has singular value
-    $element = $this->child_select('element');
-    if (!$element->attribute_select('multiple') && count($old_values) > 0) {
-      $element->attribute_insert('disabled', 'disabled');
-    }
-  # initialize pool_old
     $this->pool_old = [];
     $cache = $this->pool_validation_cache_get('old');
   # insert old values to the pool (except the deleted)
@@ -79,6 +73,11 @@ namespace effcore {
     $this->pool_validation_cache_set('old', $this->pool_old);
   # rebuild (refresh) pool manager
     $this->pool_manager_rebuild();
+  # disable the field if it has singular value
+    $element = $this->child_select('element');
+    if (!$element->attribute_select('multiple') && count($this->pool_old) > 0) {
+      $element->attribute_insert('disabled', 'disabled');
+    }
   }
 
   function pool_values_init_new($new_values = [], $is_valid) {
