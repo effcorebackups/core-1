@@ -152,15 +152,21 @@ namespace effcore {
     return $return;
   }
 
+  # ──────────────────────────────────────────────────────────────────────────────
+  # validation id functions
+  # ──────────────────────────────────────────────────────────────────────────────
+
   static function validation_id_generate() {
     $hex_created = dechex(time());
     $hex_ip = core::ip_to_hex($_SERVER['REMOTE_ADDR']);
     $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
     $hex_random = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
-    return $hex_created.       # strlen == 8
-           $hex_ip.            # strlen == 8
-           $hex_uagent_hash_8. # strlen == 8
-           $hex_random;        # strlen == 8
+    $validation_id = $hex_created.       # strlen == 8
+                     $hex_ip.            # strlen == 8
+                     $hex_uagent_hash_8. # strlen == 8
+                     $hex_random;        # strlen == 8
+    $validation_id.= core::signature_get($validation_id, 8);
+    return $validation_id;
   }
 
   static function validation_id_get() {
@@ -172,16 +178,24 @@ namespace effcore {
     }
   }
 
+  static function validation_id_decode_created($id)       {return hexdec(substr($id, 0, 8));}
+  static function validation_id_decode_ip($id)            {return core::hex_to_ip(substr($id, 8, 8));}
+  static function validation_id_decode_uagent_hash_8($id) {return substr($id, 16, 8);}
+  static function validation_id_decode_random($id)        {return hexdec(substr($id, 24, 8));}
+  static function validation_id_decode_signature($id)     {return substr($id, 32, 8);}
+
   static function validation_id_check($value) {
-    if (core::validate_hash($value, 32)) {
-      $created = hexdec(substr($value, 0, 8));
-      $ip = core::hex_to_ip(substr($value, 8, 8));
-      $uagent_hash_8 = substr($value, 16, 8);
-      $random = hexdec(substr($value, 24, 8));
+    if (core::validate_hash($value, 40)) {
+      $created       = static::validation_id_decode_created($value);
+      $ip            = static::validation_id_decode_ip($value);
+      $uagent_hash_8 = static::validation_id_decode_uagent_hash_8($value);
+      $random        = static::validation_id_decode_random($value);
+      $signature     = static::validation_id_decode_signature($value);
       if ($created <= time()              &&
           $created >= time() - 60 * 60    &&
           $ip === $_SERVER['REMOTE_ADDR'] &&
-          $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8)) {
+          $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
+          $signature === core::signature_get(substr($value, 0, 32), 8)) {
         return true;
       }
     }
