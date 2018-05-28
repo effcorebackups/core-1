@@ -66,7 +66,7 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_diagram($page) {
     if ($page->args_get('type') != 'class') {
-      core::send_header_and_exit('not_found');
+      core::send_header_and_exit('page_not_found');
     }
     $map = core::get_structures_map();
     $diagram = new markup('x-diagram-uml');
@@ -174,7 +174,7 @@ namespace effcore\modules\develop {
 
   static function on_export_diagram($page) {
     if ($page->args_get('type') != 'class') {
-      core::send_header_and_exit('not_found');
+      core::send_header_and_exit('page_not_found');
     }
   # build class diagram
     $map = core::get_structures_map();

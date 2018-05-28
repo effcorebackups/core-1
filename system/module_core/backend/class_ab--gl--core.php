@@ -76,7 +76,7 @@ namespace effcore {
       }
 
       ksort($return);
-      cache::update('structures', $return, ['build' => static::datetime_get()]);
+      cache::update('structures', $return, '', ['build' => static::datetime_get()]);
       return $return;
     }
   }
@@ -453,14 +453,16 @@ namespace effcore {
 
   static function send_header_and_exit($type, $title = '', $message = '', $p = '') {
     switch ($type) {
-      case 'redirect'      : header('Location: '.$p);          break;
-      case 'page_refresh'  : header('Refresh: ' .$p);          break;
-      case 'access_denided': header('HTTP/1.1 403 Forbidden'); break;
-      case 'not_found'     : header('HTTP/1.0 404 Not Found'); break;
+      case 'redirect'       : header('Location: '.$p);          break;
+      case 'page_refresh'   : header('Refresh: ' .$p);          break;
+      case 'access_denided' : header('HTTP/1.1 403 Forbidden'); break;
+      case 'page_not_found' : header('HTTP/1.0 404 Not Found'); break;
+      case 'file_not_found' : header('HTTP/1.0 404 Not Found'); break;
     }
     $front_page_link = translation::get('go to <a href="/">front page</a>');
     if ($type == 'access_denided') {print (new template('page_access_denided', ['message' => $message ?: $front_page_link, 'title' => translation::get('Access denided')]))->render(); exit();}
-    if ($type == 'not_found')      {print (new template('page_not_found',      ['message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render(); exit();}
+    if ($type == 'page_not_found') {print (new template('page_not_found',      ['message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render(); exit();}
+    if ($type == 'file_not_found') {print (new template('page_not_found',      ['message' => $message ?: $front_page_link, 'title' => translation::get('File not found')]))->render(); exit();}
     if ($message)                  {print (new template('page_simple',         ['message' => $message ?: $front_page_link, 'title' => translation::get($title)]))->render();           exit();}
     exit();
   }

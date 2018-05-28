@@ -151,7 +151,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->pre_path)) {
         $src_file = new file($c_info->pre_path);
-        $dst_file = new file(dynamic::directory_files.$this->upload_dir.$c_info->file);
+        $dst_file = new file(dir_files.$this->upload_dir.$c_info->file);
         if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
         if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
         if ($src_file->move(

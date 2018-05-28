@@ -58,7 +58,7 @@ namespace effcore\modules\user {
         core::send_header_and_exit('access_denided');
       }
     } else {
-      core::send_header_and_exit('not_found');
+      core::send_header_and_exit('page_not_found');
     }
   }
 

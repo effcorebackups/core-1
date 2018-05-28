@@ -77,7 +77,12 @@ namespace effcore {
         translation::get('go to <a href="/">front page</a>')
       );
     }
-    $path = dir_root.ltrim(url::get_current()->get_path(), '/');
+
+    $path_url = url::get_current()->get_path();
+    if (substr($path_url, 0, 7) === '/files/')
+         $path = dir_files.substr(ltrim($path_url, '/'), 6);
+    else $path =  dir_root.ltrim($path_url, '/');
+
     if (is_file($path) && is_readable($path)) {
     # case for file with tokens
       if (!empty($file_types[$type]->use_tokens)) {
@@ -91,6 +96,7 @@ namespace effcore {
           console::store_log();
           exit();
         }
+
       # send headers and data to the output buffer
         header('Content-Length: '.strlen($data), true);
         header('Cache-Control: must-revalidate, private', true);
@@ -103,6 +109,7 @@ namespace effcore {
         print $data;
         console::store_log();
         exit();
+
     # case for any other file (and for large files too)
       } else {
         header('Content-Length: '.filesize($path), true);
@@ -120,6 +127,8 @@ namespace effcore {
         console::store_log();
         exit();
       }
+    } else {
+      core::send_header_and_exit('file_not_found');
     }
   }
 

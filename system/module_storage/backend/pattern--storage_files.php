@@ -26,9 +26,9 @@ namespace effcore {
 
   function changes_register_action($module_id, $action, $dpath, $value = null, $rebuild = true) {
   # add new action
-    $changes_d = dynamic::select('changes') ?: [];
+    $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
-    dynamic::update('changes', $changes_d, ['build' => core::datetime_get()]);
+    data::update('changes', $changes_d, '', ['build' => core::datetime_get()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
@@ -68,10 +68,10 @@ namespace effcore {
     $data_orig = cache::select('data_original');
     if (!$data_orig) {
       static::$data_orig = $data_orig = static::data_find_static();
-      cache::update('data_original', $data_orig, ['build' => core::datetime_get()]);
+      cache::update('data_original', $data_orig, '', ['build' => core::datetime_get()]);
     }
   # init dynamic and static changes
-    $changes_d = dynamic::select('changes') ?: [];
+    $changes_d = data::select('changes') ?: [];
     $changes_s = isset($data_orig['changes']) ? $data_orig['changes'] : [];
   # apply all changes to original data and get final data
     $data = core::array_deep_clone($data_orig);

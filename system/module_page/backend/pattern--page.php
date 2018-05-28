@@ -227,7 +227,7 @@ namespace effcore {
       }
     }
   # no matches case
-    core::send_header_and_exit('not_found');
+    core::send_header_and_exit('page_not_found');
   }
 
 }}

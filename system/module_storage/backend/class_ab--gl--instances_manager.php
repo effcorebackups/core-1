@@ -29,7 +29,7 @@ namespace effcore {
   static function instance_select($page) {
     $pager = new pager();
     if ($pager->has_error) {
-      core::send_header_and_exit('not_found');
+      core::send_header_and_exit('page_not_found');
     } else {
       $thead = [['ID', 'EMail', 'Nick', 'Created', 'Is embed', '']];
       $tbody = [];

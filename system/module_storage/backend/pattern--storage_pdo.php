@@ -37,7 +37,7 @@ namespace effcore {
               break;
             case 'sqlite':
               $this->connection = new pdo(
-                $this->driver.':'.dynamic::directory.
+                $this->driver.':'.data::directory.
                 $this->credentials->file_name);
               break;
           }
@@ -49,7 +49,7 @@ namespace effcore {
           );
         }
       } else {
-        $path = (new file(dynamic::directory))->get_path_relative();
+        $path = (new file(data::directory))->get_path_relative();
         $link = (new markup('a', ['href' => '/install'], 'Installation'))->render();
         message::insert(
           translation::get('Credentials for storage %%_id was not setted!', ['id' => $this->id]).br.
@@ -72,7 +72,7 @@ namespace effcore {
             $params->password);
           break;
         case 'sqlite':
-          $path = dynamic::directory.$params->file_name;
+          $path = data::directory.$params->file_name;
           $connection = new pdo($driver.':'.$path);
           if (!is_writable($path)) {
             throw new \Exception('File is not writable!');

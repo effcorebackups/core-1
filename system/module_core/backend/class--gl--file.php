@@ -93,9 +93,9 @@ namespace effcore {
   function get_path_relative() {return $this->get_dirs_relative().$this->get_file();}
 
   function get_parent_name()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
-  function get_hash()          {return md5_file($this->get_path());}
-  function get_size()          {return filesize($this->get_path());}
-  function get_mime()          {return mime_content_type($this->get_path());}
+  function get_hash()          {return @md5_file($this->get_path());}
+  function get_size()          {return @filesize($this->get_path());}
+  function get_mime()          {return @mime_content_type($this->get_path());}
   function get_data() {
     if (empty($this->data)) $this->load(true);
     return $this->data;
@@ -110,7 +110,7 @@ namespace effcore {
     timer::tap('file load: '.$relative);
     if (!$reset && isset(static::$cache_data[$relative]))
            $this->data = static::$cache_data[$relative];
-    else   $this->data = static::$cache_data[$relative] = file_get_contents($this->get_path());
+    else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->get_path());
     timer::tap('file load: '.$relative);
     console::add_log('file', 'load', $relative, 'ok',
       timer::get_period('file load: '.$relative, -1, -2)
@@ -119,11 +119,11 @@ namespace effcore {
   }
 
   function save() {
-    return file_put_contents($this->get_path(), $this->data);
+    return @file_put_contents($this->get_path(), $this->data);
   }
 
   function direct_append($data) {
-    return file_put_contents($this->get_path(), $data, FILE_APPEND);
+    return @file_put_contents($this->get_path(), $data, FILE_APPEND);
   }
 
   function move($new_dirs, $new_name = null) {
@@ -140,7 +140,7 @@ namespace effcore {
     $path_old = $this->get_path();
     $path_new = $new_dirs.($new_name ?: $this->get_file());
     static::mkdir_if_not_exist($new_dirs);
-    if (move_uploaded_file($path_old, $path_new)) {
+    if (@move_uploaded_file($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
     }
@@ -149,7 +149,7 @@ namespace effcore {
   function rename($new_name) {
     $path_old = $this->get_path();
     $path_new = $this->get_dirs().$new_name;
-    if (rename($path_old, $path_new)) {
+    if (@rename($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
     }
@@ -190,14 +190,13 @@ namespace effcore {
   }
 
   static function mkdir_if_not_exist($dirs) {
-    if (!file_exists($dirs)) {
-      return mkdir($dirs);
-    }
+    return !file_exists($dirs) ?
+                 @mkdir($dirs) : true;
   }
 
   static function select_all_recursive($parent_dir, $filter = '') {
     $files = [];
-    foreach (scandir($parent_dir) as $c_name) {
+    foreach (@scandir($parent_dir) ?: [] as $c_name) {
       if ($c_name != '.' && $c_name != '..') {
         if (is_file($parent_dir.$c_name)) {
           if (!$filter || ($filter && preg_match($filter, $parent_dir.$c_name))) {

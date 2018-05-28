@@ -10,8 +10,8 @@ namespace effcore {
   const type = 'cache';
   const directory = dir_dynamic.'cache/';
 
-  static function update($name, $data, $info = null) {
-    if (parent::update($name, $data, $info)) {
+  static function update($name, $data, $sub_dirs = '', $info = null) {
+    if (parent::update($name, $data, $sub_dirs, $info)) {
       console::add_log('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
     }
   }

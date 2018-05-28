@@ -102,6 +102,7 @@ translations
     - File %%_name was uploaded.: Файл %%_name был загружен.
     - file is empty: файл пуст
     - File name: Имя файла
+    - File not found: Файл не найден
     - file of this type is protected by\: %%_name: файл этого типа защищен с помощью: %%_name
     - File: Файл
     - file: файл

@@ -22,7 +22,7 @@ namespace effcore {
 
   function build() {
     $this->validation_id = static::validation_id_get();
-    $this->validation_data = temporary::select('validation-'.$this->validation_id) ?: [];
+    $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $values = static::get_values();
     $id = $this->attribute_select('id');
@@ -85,11 +85,11 @@ namespace effcore {
     # validation cache
       if (count($this->errors) != 0 &&
           core::hash_data_get($this->validation_data) != $data_hash) {
-        temporary::update('validation-'.$this->validation_id, $this->validation_data);
+        $this->validation_cache_update($this->validation_data);
       }
       if (count($this->errors) == 0 ||
           count($this->validation_data) == 0) {
-        temporary::delete('validation-'.$this->validation_id);
+        $this->validation_cache_delete();
       }
     }
 
@@ -150,6 +150,20 @@ namespace effcore {
                                    $c_value : [$c_value];
     }
     return $return;
+  }
+
+  # ──────────────────────────────────────────────────────────────────────────────
+  # validation cache functions
+  # ──────────────────────────────────────────────────────────────────────────────
+
+  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         $this->validation_cache_get_date().'/') ?: [];}
+  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, $this->validation_cache_get_date().'/');}
+  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         $this->validation_cache_get_date().'/');}
+
+  protected function validation_cache_get_date() {
+    $timestamp = static::validation_id_decode_created($this->validation_id);
+    $date = \DateTime::createFromFormat('U', $timestamp)->format('Ymd');
+    return $date;
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          use \effcore\dynamic;
+          use \effcore\data;
           use \effcore\file;
           use \effcore\message;
           use \effcore\translation;
@@ -23,7 +23,7 @@ namespace effcore\modules\demo {
     $fields['form_elements/select_macro']->option_insert('Option 2.8 (inserted from init)', 'option_2_8', [], 'group_2_2');
     $fields['form_elements/select_macro']->option_insert('Option 2.9 (inserted from init)', 'option_2_9', [], 'group_2_2');
     $fields['form_elements/file']->pool_values_init_old(
-      dynamic::select('files_demo') ?: []
+      data::select('files_demo') ?: []
     );
   }
 
@@ -36,8 +36,8 @@ namespace effcore\modules\demo {
       $c_file = new file($c_info->path);
       $paths[] = $c_file->get_path_relative();
     }
-    if (count($paths)) dynamic::update('files_demo', $paths);
-    else               dynamic::delete('files_demo');
+    if (count($paths)) data::update('files_demo', $paths);
+    else               data::delete('files_demo');
     message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
   }
 
