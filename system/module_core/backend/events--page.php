@@ -33,10 +33,6 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], '2017—2018'));
     $info->child_insert(new markup('dt', [], 'All rights reserved'));
     $info->child_insert(new markup('dd', [], 'yes'));
-    $info->child_insert(new markup('dt', [], 'Valid HTML5'));
-    $info->child_insert(new markup('dd', [], 'yes'));
-    $info->child_insert(new markup('dt', [], 'Valid CSS'));
-    $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Server software'));
     $info->child_insert(new markup('dd', [], core::server_full_name_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
