@@ -143,6 +143,7 @@ namespace effcore {
         } else {
           message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
           console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]);
+          unset($this->pool_new[$c_id]);
         }
       }
     }

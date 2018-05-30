@@ -119,11 +119,13 @@ namespace effcore {
   }
 
   function save() {
-    return @file_put_contents($this->get_path(), $this->data);
+    static::mkdir_if_not_exist($this->get_dirs());
+    return  @file_put_contents($this->get_path(), $this->data);
   }
 
   function direct_append($data) {
-    return @file_put_contents($this->get_path(), $data, FILE_APPEND);
+    static::mkdir_if_not_exist($this->get_dirs());
+    return  @file_put_contents($this->get_path(), $data, FILE_APPEND);
   }
 
   function move($new_dirs, $new_name = null) {
