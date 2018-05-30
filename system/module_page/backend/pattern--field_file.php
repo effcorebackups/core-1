@@ -89,7 +89,7 @@ namespace effcore {
       }
     }
   # move temporary files from php "tmp" directory to system "tmp" directory
-    $this->pool_files_move_tmp_to_pre($this->get_form()->validation_id);
+    $this->pool_files_move_tmp_to_pre();
   # delete canceled values
     $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
@@ -129,11 +129,12 @@ namespace effcore {
     return $return;
   }
 
-  protected function pool_files_move_tmp_to_pre($file_tmp_name) {
+  protected function pool_files_move_tmp_to_pre() {
+    $form = $this->get_form();
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
-        $dst_file = new file(temporary::directory.$file_tmp_name.'-'.$c_id);
+        $dst_file = new file(temporary::directory.'validation/'.$form->validation_cache_get_date().'/'.$form->validation_id.'-'.$c_id);
         if ($src_file->move_uploaded(
             $dst_file->get_dirs(),
             $dst_file->get_file())) {

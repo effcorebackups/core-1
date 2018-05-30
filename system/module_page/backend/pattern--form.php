@@ -156,14 +156,14 @@ namespace effcore {
   # validation cache functions
   # ──────────────────────────────────────────────────────────────────────────────
 
-  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/') ?: [];}
-  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
-  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
-
-  protected function validation_cache_get_date($format = 'Ymd') {
+  function validation_cache_get_date($format = 'Ymd') {
     $timestamp = static::validation_id_decode_created($this->validation_id);
     return \DateTime::createFromFormat('U', $timestamp)->format($format);
   }
+
+  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/') ?: [];}
+  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
+  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
 
   # ──────────────────────────────────────────────────────────────────────────────
   # validation id functions
