@@ -51,6 +51,8 @@ namespace effcore {
 
   const file_max_lenght = 255;
   const type_max_lenght = 50;
+  const scan_dir_mode = \FilesystemIterator::UNIX_PATHS |
+                        \FilesystemIterator::SKIP_DOTS;
 
   public $dirs;
   public $name;
@@ -199,10 +201,7 @@ namespace effcore {
   static function select_all_recursive($path, $filter = '') {
     try {
       $return = [];
-      foreach (new \RecursiveIteratorIterator(
-               new \RecursiveDirectoryIterator($path,
-                   \FilesystemIterator::UNIX_PATHS |
-                   \FilesystemIterator::SKIP_DOTS)) as $c_path => $null) {
+      foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path, static::scan_dir_mode)) as $c_path => $null) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
           $return[$c_path] = new static($c_path);
         }

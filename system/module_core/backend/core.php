@@ -304,6 +304,16 @@ namespace effcore {
   ### filters ###
   ###############
 
+  static function validate_date($value) {
+    if (strlen($value) &&
+        preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $value, $matches) &&
+        checkdate($matches['m'],
+                  $matches['d'],
+                  $matches['Y'])) {
+      return true;
+    }
+  }
+
   static function validate_email($value) {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }

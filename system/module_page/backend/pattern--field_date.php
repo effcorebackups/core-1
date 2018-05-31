@@ -54,11 +54,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
-    if (strlen($new_value) && (
-       !preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $new_value, $matches) ||
-       !checkdate($matches['m'],
-                  $matches['d'],
-                  $matches['Y']))) {
+    if (!core::validate_date($new_value)) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );
