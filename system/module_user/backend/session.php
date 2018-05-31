@@ -7,8 +7,8 @@
 namespace effcore {
           abstract class session {
 
-  const period_expire = 60 * 60 * 24 * 30;
-  const period_seance = 60 * 60 * 24;
+  const period_expire_d = 60 * 60 * 24;
+  const period_expire_m = 60 * 60 * 24 * 30;
   const empty_ip = '0.0.0.0';
 
   static function select() {
@@ -30,7 +30,7 @@ namespace effcore {
   static function insert($id_user, $session_params = []) {
     $is_remember = isset($session_params['remember']);
     $is_fixed_ip = isset($session_params['fixed_ip']);
-    $period = !$is_remember ? static::period_seance : static::period_expire;
+    $period = !$is_remember ? static::period_expire_d : static::period_expire_m;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
       'id'       => static::id_get(),
@@ -69,7 +69,7 @@ namespace effcore {
   static function id_regenerate($type, $session_params = []) {
     $is_remember = isset($session_params['remember']);
     $is_fixed_ip = isset($session_params['fixed_ip']);
-    $period = $type == 'f' && !$is_remember ? static::period_seance : static::period_expire;
+    $period = $type == 'f' && !$is_remember ? static::period_expire_d : static::period_expire_m;
     $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : $_SERVER['REMOTE_ADDR'];
     $hex_type = $type; # 'a' - anonymous user | 'f' - authenticated user
     $hex_expire = dechex(time() + $period);

@@ -13,6 +13,8 @@ namespace effcore {
   # 1. more info in \effcore\field
   # ─────────────────────────────────────────────────────────────────────
 
+  const period_expire_h = 60 * 60;
+
   public $tag_name = 'form';
   public $clicked_button;
   public $clicked_button_name;
@@ -204,9 +206,9 @@ namespace effcore {
       $uagent_hash_8 = static::validation_id_decode_uagent_hash_8($value);
       $random        = static::validation_id_decode_random($value);
       $signature     = static::validation_id_decode_signature($value);
-      if ($created <= time()              &&
-          $created >= time() - 60 * 60    &&
-          $ip === $_SERVER['REMOTE_ADDR'] &&
+      if ($created <= time()                           &&
+          $created >= time() - static::period_expire_h &&
+          $ip === $_SERVER['REMOTE_ADDR']              &&
           $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
           $signature === core::signature_get(substr($value, 0, 32), 8)) {
         return true;
