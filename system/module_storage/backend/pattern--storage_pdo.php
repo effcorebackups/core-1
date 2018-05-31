@@ -120,7 +120,7 @@ namespace effcore {
         return null;
       }
       switch ($query[0]) {
-        case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\effcore\instance') : null;
+        case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\\effcore\\instance') : null;
         case 'INSERT': return $this->connection->lastInsertId();
         case 'UPDATE': return $result->rowCount();
         case 'DELETE': return $result->rowCount();

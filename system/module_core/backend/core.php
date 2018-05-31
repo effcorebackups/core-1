@@ -309,7 +309,7 @@ namespace effcore {
   }
 
   static function validate_mime_type($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-z0-9\-\+\.]{1,100}$%i']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-z0-9\\-\\+\\.]{1,100}$%i']]);
   }
 
   static function validate_hash($value, $lenght = 32) {
@@ -325,7 +325,7 @@ namespace effcore {
   }
 
   static function sanitize_file_part($value) {
-    $return = preg_replace_callback('%(?<char>[^a-z0-9_\.\-])%uiS', function($m) {
+    $return = preg_replace_callback('%(?<char>[^a-z0-9_\\.\\-])%uiS', function($m) {
       if ($m['char'] == ' ') return '-';
       if (strlen($m['char']) == 1) return dechex(ord($m['char'][0]));
       if (strlen($m['char']) == 2) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1]));

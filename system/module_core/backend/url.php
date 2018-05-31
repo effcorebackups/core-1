@@ -60,8 +60,8 @@ namespace effcore {
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
                     '(?<domain>[^/]*)'.
                     '(?<path>[^?#]*)'.
-               '(?:\?(?<query>[^\#]*)|)'.
-               '(?:\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
+              '(?:\\?(?<query>[^\\#]*)|)'.
+              '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
     $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ $_SERVER['REQUEST_SCHEME']));
     $this->domain   = !empty($matches['domain'])   ? $matches['domain']   :                                        ( /* case for local ulr */ $_SERVER['HTTP_HOST']);
     $this->path     = !empty($matches['path'])     ? $matches['path']     : '/';
