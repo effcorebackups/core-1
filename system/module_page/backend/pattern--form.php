@@ -167,6 +167,9 @@ namespace effcore {
   protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
   protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
 
+  static function validation_cache_clean() {
+  }
+
   # ──────────────────────────────────────────────────────────────────────────────
   # validation id functions
   # ──────────────────────────────────────────────────────────────────────────────

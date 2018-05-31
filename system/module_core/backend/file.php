@@ -196,20 +196,21 @@ namespace effcore {
                  @mkdir($dirs, 0777, true) : true;
   }
 
-  static function select_all_recursive($parent_dir, $filter = '') {
-    $files = [];
-    foreach (@scandir($parent_dir) ?: [] as $c_name) {
-      if ($c_name != '.' && $c_name != '..') {
-        if (is_file($parent_dir.$c_name)) {
-          if (!$filter || ($filter && preg_match($filter, $parent_dir.$c_name))) {
-            $files[$parent_dir.$c_name] = new static($parent_dir.$c_name);
-          }
-        } elseif (is_dir($parent_dir.$c_name)) {
-          $files += static::select_all_recursive($parent_dir.$c_name.'/', $filter);
+  static function select_all_recursive($path, $filter = '') {
+    try {
+      $return = [];
+      foreach (new \RecursiveIteratorIterator(
+               new \RecursiveDirectoryIterator($path,
+                   \FilesystemIterator::UNIX_PATHS |
+                   \FilesystemIterator::SKIP_DOTS)) as $c_path => $null) {
+        if (!$filter || ($filter && preg_match($filter, $c_path))) {
+          $return[$c_path] = new static($c_path);
         }
       }
+      return $return;
+    } catch (\UnexpectedValueException $e) {
+      return [];
     }
-    return $files;
   }
 
 }}
