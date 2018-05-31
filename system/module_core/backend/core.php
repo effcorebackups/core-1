@@ -312,12 +312,10 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function validate_number($value) {
-    if (strlen($value) &&
-        preg_match('%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
-                    '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
-                    '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%', $value, $matches)) {
-      return true;
-    }
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+      '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
+       '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
+       '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%']]);
   }
 
   static function validate_date($value) {
@@ -326,37 +324,26 @@ namespace effcore {
         checkdate($matches['m'],
                   $matches['d'],
                   $matches['Y'])) {
-      return true;
-    }
+      return $value;
+    } else return false;
   }
 
   static function validate_time($value) {
-    if (strlen($value) &&
-        preg_match('%^(?<H>[0-1][0-9]|20|21|22|23)'.
-                 '(?::(?<i>[0-5][0-9]))'.
-                 '(?::(?<s>[0-5][0-9])|)$%', $value, $matches)) {
-      return true;
-    }
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+      '%^(?<H>[0-1][0-9]|20|21|22|23)'.
+    '(?::(?<i>[0-5][0-9]))'.
+    '(?::(?<s>[0-5][0-9])|)$%']]);
   }
 
   static function validate_hex_color($value) {
-    if (strlen($value) &&
-        preg_match('%^#(?<R>[a-f0-9]{2})'.
-                      '(?<G>[a-f0-9]{2})'.
-                      '(?<B>[a-f0-9]{2})$%', $value, $matches)) {
-      return true;
-    }
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+      '%^#(?<R>[a-f0-9]{2})'.
+         '(?<G>[a-f0-9]{2})'.
+         '(?<B>[a-f0-9]{2})$%']]);
   }
 
   static function validate_phone($value) {
-    if (strlen($value) &&
-        preg_match('%^\\+[0-9]{1,14}$%', $value, $matches)) {
-      return true;
-    }
-  }
-
-  static function validate_email($value) {
-    return filter_var($value, FILTER_VALIDATE_EMAIL);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^\\+[0-9]{1,14}$%']]);
   }
 
   static function validate_mime_type($value) {
@@ -365,6 +352,10 @@ namespace effcore {
 
   static function validate_hash($value, $lenght = 32) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | ...
+  }
+
+  static function validate_email($value) {
+    return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
   static function validate_url($value) {

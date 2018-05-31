@@ -52,7 +52,7 @@ namespace effcore {
   static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
-    if (!core::validate_number($new_value)) {
+    if (core::validate_number($new_value) === false) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('Field value is not a valid number.')
