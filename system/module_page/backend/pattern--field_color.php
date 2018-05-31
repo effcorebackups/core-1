@@ -42,10 +42,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
-    if (strlen($new_value) &&
-       !preg_match('%^#(?<R>[a-f0-9]{2,2})'.
-                      '(?<G>[a-f0-9]{2,2})'.
-                      '(?<B>[a-f0-9]{2,2})$%', $new_value)) {
+    if (!core::validate_hex_color($new_value)) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('The color should be specified in a special format.')

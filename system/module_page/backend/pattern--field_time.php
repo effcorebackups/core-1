@@ -56,10 +56,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
-    if (strlen($new_value) &&
-       !preg_match('%^(?<H>[0-1][0-9]|20|21|22|23)'.
-                 '(?::(?<i>[0-5][0-9]))'.
-                 '(?::(?<s>[0-5][0-9])|)$%', $new_value, $matches)) {
+    if (!core::validate_time($new_value)) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );

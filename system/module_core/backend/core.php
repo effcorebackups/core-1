@@ -314,6 +314,24 @@ namespace effcore {
     }
   }
 
+  static function validate_time($value) {
+    if (strlen($value) &&
+        preg_match('%^(?<H>[0-1][0-9]|20|21|22|23)'.
+                 '(?::(?<i>[0-5][0-9]))'.
+                 '(?::(?<s>[0-5][0-9])|)$%', $value, $matches)) {
+      return true;
+    }
+  }
+
+  static function validate_hex_color($value) {
+    if (strlen($value) &&
+        preg_match('%^#(?<R>[a-f0-9]{2})'.
+                      '(?<G>[a-f0-9]{2})'.
+                      '(?<B>[a-f0-9]{2})$%', $value, $matches)) {
+      return true;
+    }
+  }
+
   static function validate_email($value) {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
