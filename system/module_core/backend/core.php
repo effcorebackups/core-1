@@ -304,6 +304,22 @@ namespace effcore {
   ### filters ###
   ###############
 
+  # number validation matrix - [number('...') => is_valid(0|1|2), ...]
+  # ─────────────────────────────────────────────────────────────────────
+  # ''   => 0, '-'   => 0 | '0'   => 1, '-0'   => 0 | '1'   => 1, '-1'   => 1 | '01'   => 0, '-01'   => 0 | '10'   => 1, '-10'   => 1
+  # '.'  => 0, '-.'  => 0 | '0.'  => 0, '-0.'  => 0 | '1.'  => 0, '-1.'  => 0 | '01.'  => 0, '-01.'  => 0 | '10.'  => 0, '-10.'  => 0
+  # '.0' => 0, '-.0' => 0 | '0.0' => 1, '-0.0' => 2 | '1.0' => 1, '-1.0' => 1 | '01.0' => 0, '-01.0' => 0 | '10.0' => 1, '-10.0' => 1
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function validate_number($value) {
+    if (strlen($value) &&
+        preg_match('%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
+                    '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
+                    '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%', $value, $matches)) {
+      return true;
+    }
+  }
+
   static function validate_date($value) {
     if (strlen($value) &&
         preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $value, $matches) &&
@@ -328,6 +344,13 @@ namespace effcore {
         preg_match('%^#(?<R>[a-f0-9]{2})'.
                       '(?<G>[a-f0-9]{2})'.
                       '(?<B>[a-f0-9]{2})$%', $value, $matches)) {
+      return true;
+    }
+  }
+
+  static function validate_phone($value) {
+    if (strlen($value) &&
+        preg_match('%^\\+[0-9]{1,14}$%', $value, $matches)) {
       return true;
     }
   }

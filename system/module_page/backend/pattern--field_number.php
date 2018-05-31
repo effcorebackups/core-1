@@ -48,21 +48,11 @@ namespace effcore {
     }
   }
 
-  # number validation matrix - [number('...') => is_valid(0|1|2), ...]
-  # ─────────────────────────────────────────────────────────────────────
-  # ''   => 0, '-'   => 0 | '0'   => 1, '-0'   => 0 | '1'   => 1, '-1'   => 1 | '01'   => 0, '-01'   => 0 | '10'   => 1, '-10'   => 1
-  # '.'  => 0, '-.'  => 0 | '0.'  => 0, '-0.'  => 0 | '1.'  => 0, '-1.'  => 0 | '01.'  => 0, '-01.'  => 0 | '10.'  => 0, '-10.'  => 0
-  # '.0' => 0, '-.0' => 0 | '0.0' => 1, '-0.0' => 2 | '1.0' => 1, '-1.0' => 1 | '01.0' => 0, '-01.0' => 0 | '10.0' => 1, '-10.0' => 1
-  # ─────────────────────────────────────────────────────────────────────
-
   static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
   static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
-    if (strlen($new_value) && !preg_match(
-        '%^(?<integer>[-]?[1-9][0-9]*|0)$|'.
-         '^(?<float_s>[-]?[0-9][.][0-9]{1,3})$|'.
-         '^(?<float_l>[-]?[1-9][0-9]+[.][0-9]{1,3})$%', $new_value)) {
+    if (!core::validate_number($new_value)) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('Field value is not a valid number.')
