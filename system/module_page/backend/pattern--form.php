@@ -127,16 +127,6 @@ namespace effcore {
     return [];
   }
 
-  static function get_containers($form) { # @todo: delete this function
-    $return = [];
-    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
-      if ($c_child instanceof \effcore\container) {
-        $return[$c_npath] = $c_child;
-      }
-    }
-    return $return;
-  }
-
   static function get_fields($form) {
     $return = [];
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
@@ -147,11 +137,21 @@ namespace effcore {
     return $return;
   }
 
-  static function get_values() {
+  static function get_values() { # @todo: delete this function
     $return = [];
     foreach ($_POST as $c_field => $c_value) {
       $return[$c_field] = is_array($c_value) ?
                                    $c_value : [$c_value];
+    }
+    return $return;
+  }
+
+  static function get_containers($form) { # @todo: delete this function
+    $return = [];
+    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
+      if ($c_child instanceof \effcore\container) {
+        $return[$c_npath] = $c_child;
+      }
     }
     return $return;
   }
@@ -169,7 +169,7 @@ namespace effcore {
   protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
   protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
 
-  static function validation_cache_clean() {
+  static function validation_cache_clean($limit = 1000) {
     if (file_exists(temporary::directory.'validation/')) {
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_dir_mode) as $c_dir_path => $c_dir_info) {
         if ($c_dir_info->isDir() &&

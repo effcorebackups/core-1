@@ -5,6 +5,9 @@
   ##################################################################
 
 namespace effcore {
+          use \FilesystemIterator as fs_iterator;
+          use \RecursiveDirectoryIterator as rd_iterator;
+          use \RecursiveIteratorIterator as ri_iterator;
           class file {
 
   # note:
@@ -51,8 +54,7 @@ namespace effcore {
 
   const file_max_lenght = 255;
   const type_max_lenght = 50;
-  const scan_dir_mode = \FilesystemIterator::UNIX_PATHS |
-                        \FilesystemIterator::SKIP_DOTS;
+  const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
 
   public $dirs;
   public $name;
@@ -201,7 +203,7 @@ namespace effcore {
   static function select_all_recursive($path, $filter = '') {
     try {
       $return = [];
-      foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path, static::scan_dir_mode)) as $c_path => $null) {
+      foreach (new ri_iterator(new rd_iterator($path, static::scan_dir_mode)) as $c_path => $null) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
           $return[$c_path] = new static($c_path);
         }
