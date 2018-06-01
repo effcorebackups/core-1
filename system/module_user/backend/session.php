@@ -81,7 +81,7 @@ namespace effcore {
                   $hex_ip.            # strlen == 8
                   $hex_uagent_hash_8. # strlen == 8
                   $hex_random;        # strlen == 8
-    $session_id.= core::signature_get($session_id, 8);
+    $session_id.= core::signature_get($session_id, 8, 'session');
     setcookie('session_id', ($_COOKIE['session_id'] = $session_id), time() + $period, '/');
     setcookie('cookies_is_on', 'true',                              time() + $period, '/');
     return $session_id;
@@ -113,7 +113,7 @@ namespace effcore {
       $signature     = static::id_decode_signature($value);
       if ($expire >= time() &&
           $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
-          $signature === core::signature_get(substr($value, 0, 33), 8)) {
+          $signature === core::signature_get(substr($value, 0, 33), 8, 'session')) {
         if (($type === 'a' && $ip === $_SERVER['REMOTE_ADDR']) ||
             ($type === 'f' && $ip === $_SERVER['REMOTE_ADDR']) ||
             ($type === 'f' && $ip === static::empty_ip)) {

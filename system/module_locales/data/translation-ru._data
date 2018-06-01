@@ -44,6 +44,7 @@ translations
     - Credentials for storage %%_id was not setted!: Учётные данные для хранилища %%_id не были заданы!
     - Credentials: Учётные данные
     - credentials: учётные данные
+    - Cron job was done.: Задача Cron была выполнена.
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
@@ -130,6 +131,7 @@ translations
     - Is always on: Всегда включен
     - Is embed: Встроенный
     - item %%_num: пункт %%_num
+    - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - Legal information: Правовая информация
     - License agreement: Лицензионное соглашение

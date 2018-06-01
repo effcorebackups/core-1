@@ -1,4 +1,8 @@
 events
+  on_module_install
+  - core|event
+      for: core
+      handler: \effcore\modules\core\events_module::on_install
   on_form_init
   - install|event
       for: install

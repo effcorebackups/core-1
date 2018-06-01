@@ -1,0 +1,12 @@
+pages
+- cron|page
+    title: Cron
+    display
+      check: path
+      where: url
+      match: %^/cron/(?<key>[a-z0-9]{40})$%
+    content
+    - block_cron
+        region: content
+        type: code
+        handler: \effcore\modules\core\events_page::on_cron_run

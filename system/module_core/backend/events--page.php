@@ -8,21 +8,28 @@ namespace effcore\modules\core {
           use const \effcore\br;
           use \effcore\control_actions_list;
           use \effcore\core;
+          use \effcore\event;
           use \effcore\locale;
-          use \effcore\markup;
           use \effcore\markup_simple;
+          use \effcore\markup;
           use \effcore\module;
           use \effcore\node;
           use \effcore\storage;
-          use \effcore\table;
           use \effcore\table_body_row_cell;
+          use \effcore\table;
           use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
+
+  static function on_cron_run($page) {
+    event::start('on_cron');
+    exit();
+  }
 
   static function on_show_info($page) {
     $title = new markup('h2', [], 'Shared information'); # @todo: move title to block settings
     $info = new markup('dl', ['class' => ['info' => 'info']]);
     $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->get_path().'frontend/images/logo-effcore._vector', 'alt' => 'effcore']);
+    $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
@@ -45,6 +52,8 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], php_uname('v')));
     $info->child_insert(new markup('dt', [], 'Hostname'));
     $info->child_insert(new markup('dd', [], php_uname('n')));
+    $info->child_insert(new markup('dt', [], 'Cron URL'));
+    $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'no'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));

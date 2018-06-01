@@ -1,2 +1,5 @@
 settings
-  key: abcde01234abcde01234abcde01234abcde01234
+  keys
+  - cron: abcde01234abcde01234abcde01234abcde01234
+  - form_validation: abcde01234abcde01234abcde01234abcde01234
+  - session: abcde01234abcde01234abcde01234abcde01234

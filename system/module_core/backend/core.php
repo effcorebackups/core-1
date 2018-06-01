@@ -377,18 +377,6 @@ namespace effcore {
     return $return;
   }
 
-  ######################
-  ### hash functions ###
-  ######################
-
-  static function hash_password_get($data) {
-    return sha1($data);
-  }
-
-  static function hash_data_get($data) {
-    return md5(serialize($data));
-  }
-
   ##############################
   ### bytes/human conversion ###
   ##############################
@@ -434,13 +422,28 @@ namespace effcore {
   }
 
 
-  ############################
-  ### signatures functions ###
-  ############################
+  ######################################
+  ### signatures/keys/hash functions ###
+  ######################################
 
-  static function signature_get($string, $length = 40) {
-    $key = storage::get('files')->select('settings/core/key');
-    return substr(sha1($string.$key), 0, $length);
+  static function signature_get($string, $length = 40, $key_name) {
+    $key = static::key_get($key_name);
+    if ($key) return substr(sha1($string.$key), 0, $length);
+    else message::insert(
+      translation::get('Key "%%_name" does not exist!', ['name' => $key_name]), 'error'
+    );
+  }
+
+  static function key_get($name) {
+    return storage::get('files')->select('settings/core/keys/'.$name);
+  }
+
+  static function hash_password_get($data) {
+    return sha1($data);
+  }
+
+  static function hash_data_get($data) {
+    return md5(serialize($data));
   }
 
   ########################
