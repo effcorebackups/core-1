@@ -17,12 +17,20 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\table_body_row_cell;
           use \effcore\table;
+          use \effcore\timer;
           use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
   static function on_cron_run($page) {
-    event::start('on_cron');
-    exit();
+    if ($page->args_get('key') === core::key_get('cron')) {
+      timer::tap('cron');
+      event::start('on_cron');
+      timer::tap('cron');
+      print 'cron execution time: '.timer::get_period('cron', -1, -2).' sec.';
+      exit();
+    } else {
+      core::send_header_and_exit('page_not_found');
+    }
   }
 
   static function on_show_info($page) {
