@@ -112,7 +112,6 @@ namespace effcore {
   }
 
   function pool_files_save() {
-    $this->pool_files_move_pre_to_new();
   # delete canceled old values
     $deleted = $this->pool_validation_cache_get('old_to_delete');
     foreach ($deleted as $c_id => $c_info) {
@@ -120,6 +119,8 @@ namespace effcore {
          unlink($deleted[$c_id]->old_path);
       }
     }
+  # move new files to the directory "files"
+    $this->pool_files_move_pre_to_new();
   # prepare return
     $return = [];
     $return_paths = [];
