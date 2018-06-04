@@ -3,8 +3,8 @@ pages
     title: Structures
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagram|diagram_export)$%
     access
       roles
@@ -32,24 +32,24 @@ pages
         dpath: tabs/develop/structures
     - block_structures_list
         display
-          check: view
-          where: page_args
+          check: page_args
+          where: view
           match: %list%
         region: content
         type: code
         handler: \effcore\modules\develop\events_page::on_show_block_structures_list
     - block_structures_diagram
         display
-          check: view
-          where: page_args
+          check: page_args
+          where: view
           match: %diagram%
         region: content
         type: code
         handler: \effcore\modules\develop\events_page::on_show_block_structures_diagram
     - block_structures_diagram_export
         display
-          check: view
-          where: page_args
+          check: page_args
+          where: view
           match: %diagram_export%
         region: content
         type: code

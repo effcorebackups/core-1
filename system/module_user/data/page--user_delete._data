@@ -3,8 +3,8 @@ pages
     title: Delete user %%_nick_context{4}?
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^/manage/users/delete/(?<id_user>[0-9]+)$%
     access
       roles

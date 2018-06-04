@@ -3,8 +3,8 @@ pages
     title: Manage instance User
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^(?<base>/manage/instances/(?<entity>[a-z_]+))/(?<action>[a-z]+)(/(?<id_user>[a-z0-9]+)|)$%
     access
       roles
@@ -32,16 +32,16 @@ pages
         dpath: tabs/storage/instance_manage
     - users_insert
         display
-          check: action
-          where: page_args
+          check: page_args
+          where: action
           match: %insert%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_insert
     - users_select
         display
-          check: action
-          where: page_args
+          check: page_args
+          where: action
           match: %select%
         region: content
         type: code
@@ -49,16 +49,16 @@ pages
         items_per_page: 50
     - users_update
         display
-          check: action
-          where: page_args
+          check: page_args
+          where: action
           match: %update%
         region: content
         type: code
         handler: \effcore\instances_manager::instance_update
     - users_delete
         display
-          check: action
-          where: page_args
+          check: page_args
+          where: action
           match: %delete%
         region: content
         type: code

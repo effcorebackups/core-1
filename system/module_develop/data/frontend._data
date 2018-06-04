@@ -1,8 +1,8 @@
 frontend
 - frontend_develop_page_n
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %.*%
     styles
     - develop_style
@@ -10,8 +10,8 @@ frontend
         media: all
 - frontend_diagram_filter
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %/develop/structures/.*%
     styles
     - form_style

@@ -2,8 +2,8 @@ pages
 - cron|page
     title: Cron
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^/cron/(?<key>[a-z0-9]{40})$%
     content
     - block_cron

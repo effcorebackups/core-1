@@ -3,8 +3,8 @@ pages
     title: Logout
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^/user/logout$%
     access
       roles

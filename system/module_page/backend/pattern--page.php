@@ -41,9 +41,9 @@ namespace effcore {
     foreach ($this->content as $c_block) {
       if (!isset($c_block->display) ||
           (isset($c_block->display) &&
-                 $c_block->display->where == 'page_args' && preg_match(
+                 $c_block->display->check == 'page_args' && preg_match(
                  $c_block->display->match, $this->args_get(
-                 $c_block->display->check)))) {
+                 $c_block->display->where)))) {
         $c_region = isset($c_block->region) ?
                           $c_block->region : 'content';
         if (!$contents->child_select($c_region))
@@ -186,8 +186,8 @@ namespace effcore {
 
   static function is_displayed_by_used_dpaths($display, $used_dpaths) {
     $args = [];
-    if (($display->check === 'dpath' &&
-         $display->where === 'block' && preg_match(
+    if (($display->check == 'block' &&
+         $display->where == 'dpath' && preg_match(
          $display->match.'m', implode(nl, $used_dpaths), $args))) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
@@ -195,13 +195,13 @@ namespace effcore {
 
   static function is_displayed_by_current_url($display) {
     $args = [];
-    if (($display->check === 'protocol' && $display->where === 'url' && preg_match($display->match, url::get_current()->get_protocol(), $args)) ||
-        ($display->check === 'domain'   && $display->where === 'url' && preg_match($display->match, url::get_current()->get_domain(),   $args)) ||
-        ($display->check === 'path'     && $display->where === 'url' && preg_match($display->match, url::get_current()->get_path(),     $args)) ||
-        ($display->check === 'query'    && $display->where === 'url' && preg_match($display->match, url::get_current()->get_query(),    $args)) ||
-        ($display->check === 'anchor'   && $display->where === 'url' && preg_match($display->match, url::get_current()->get_anchor(),   $args)) ||
-        ($display->check === 'type'     && $display->where === 'url' && preg_match($display->match, url::get_current()->get_type(),     $args)) ||
-        ($display->check === 'full'     && $display->where === 'url' && preg_match($display->match, url::get_current()->get_full(),     $args)) ) {
+    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->get_protocol(), $args)) ||
+        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->get_domain(),   $args)) ||
+        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->get_path(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->get_query(),    $args)) ||
+        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->get_anchor(),   $args)) ||
+        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->get_type(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->get_full(),     $args)) ) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
   }

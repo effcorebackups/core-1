@@ -1,8 +1,8 @@
 frontend
 - frontend_page_n
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %.*%
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge ...
@@ -50,8 +50,8 @@ frontend
         file: frontend/page._script
 - frontend_form_n
     display
-      check: dpath
-      where: block
+      check: block
+      where: dpath
       match: %^forms/.*$%
     styles
     - form_style

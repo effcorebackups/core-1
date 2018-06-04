@@ -3,8 +3,8 @@ pages
     title: Demo
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^/develop/demo$%
     access
       roles

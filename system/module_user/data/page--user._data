@@ -3,8 +3,8 @@ pages
     title: User %%_nick_context{2}
     https: true
     display
-      check: path
-      where: url
+      check: url
+      where: path
       match: %^/user/(?<id_user>[0-9]+)$%
     access
       roles
