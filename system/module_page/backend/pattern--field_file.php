@@ -43,34 +43,38 @@ namespace effcore {
 
   function pool_values_init_old($old_values = []) {
     $this->pool_old = [];
-    $cache = $this->pool_validation_cache_get('old');
-  # insert old values to the pool (except the deleted)
+  # insert old values to the pool
     foreach ($old_values as $c_id => $c_path_relative) {
-      if ($c_path_relative) {
-        $c_file = new file(dir_root.$c_path_relative);
-        if ($c_file->is_exist()) {
-          $c_info = new \stdClass;
-          $c_info->name = $c_file->get_name();
-          $c_info->type = $c_file->get_type();
-          $c_info->file = $c_file->get_file();
-          $c_info->mime = $c_file->get_mime();
-          $c_info->size = $c_file->get_size();
-          $c_info->old_path = $c_file->get_path();
-          $c_info->error = 0;
-          $c_info->must_be_deleted = !empty($cache[$c_id]->must_be_deleted);
-          $this->pool_old[$c_id] = $c_info;
-        }
+      $c_file = new file(dir_root.$c_path_relative);
+      if ($c_file->is_exist()) {
+        $c_info = new \stdClass;
+        $c_info->name = $c_file->get_name();
+        $c_info->type = $c_file->get_type();
+        $c_info->file = $c_file->get_file();
+        $c_info->mime = $c_file->get_mime();
+        $c_info->size = $c_file->get_size();
+        $c_info->old_path = $c_file->get_path();
+        $c_info->error = 0;
+        $this->pool_old[$c_id] = $c_info;
       }
     }
-  # delete canceled values
-    $deleted = $this->pool_manager_get_deleted_items('old');
+  # join deleted items from the cache with deleted items from the form
+    $deleted           = $this->pool_validation_cache_get('old_to_delete');
+    $deleted_from_form = $this->pool_manager_get_deleted_items('old');
+    foreach ($this->pool_old as $c_id => $c_info) {
+      if (isset($deleted_from_form[$c_id])) {
+        $deleted[$c_id] = new \stdClass;
+        $deleted[$c_id]->old_path = $c_info->old_path;
+      }
+    }
+  # virtual delete of canceled values
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
-        $c_info->must_be_deleted = true;
+        unset($this->pool_old[$c_id]);
       }
     }
   # save the poll
-    $this->pool_validation_cache_set('old', $this->pool_old);
+    $this->pool_validation_cache_set('old_to_delete', $deleted);
   # rebuild (refresh) pool manager
     $this->pool_manager_rebuild();
   # disable the field if it has singular value
@@ -81,8 +85,9 @@ namespace effcore {
   }
 
   function pool_values_init_new($new_values = [], $is_valid) {
+  # insert new values to the pool (from the cache)
     $this->pool_new = $this->pool_validation_cache_get('new');
-  # insert new values to the pool
+  # insert new values to the pool (from the form)
     if ($is_valid && count($new_values)) {
       foreach ($new_values as $c_new_value) {
         $this->pool_new[] = $c_new_value;
@@ -90,7 +95,7 @@ namespace effcore {
     }
   # move temporary files from php "tmp" directory to system "tmp" directory
     $this->pool_files_move_tmp_to_pre();
-  # delete canceled values
+  # physically delete of canceled values
     $deleted = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
@@ -109,10 +114,10 @@ namespace effcore {
   function pool_files_save() {
     $this->pool_files_move_pre_to_new();
   # delete canceled old values
-    foreach ($this->pool_old as $c_id => $c_info) {
-      if (!empty($this->pool_old[$c_id]->must_be_deleted)) {
-          unlink($this->pool_old[$c_id]->old_path);
-           unset($this->pool_old[$c_id]);
+    $deleted = $this->pool_validation_cache_get('old_to_delete');
+    foreach ($deleted as $c_id => $c_info) {
+      if (isset($deleted[$c_id])) {
+         unlink($deleted[$c_id]->old_path);
       }
     }
   # prepare return
@@ -123,7 +128,7 @@ namespace effcore {
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_set_deleted_items('old', []);
-    $this->pool_validation_cache_set('old', []);
+    $this->pool_validation_cache_set('old_to_delete', []);
     $this->pool_values_init_old($return_paths);
   # return result array
     return $return;
@@ -204,13 +209,11 @@ namespace effcore {
   }
 
   protected function pool_manager_insert_action($info, $id, $type) {
-    if (empty($info->must_be_deleted)) {
-      $name = $this->get_element_name();
-      $pool_manager = $this->child_select('manager');
-      $pool_manager->field_insert(
-        translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
-      );
-    }
+    $name = $this->get_element_name();
+    $pool_manager = $this->child_select('manager');
+    $pool_manager->field_insert(
+      translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
+    );
   }
 
   protected function pool_manager_get_deleted_items($type) {
