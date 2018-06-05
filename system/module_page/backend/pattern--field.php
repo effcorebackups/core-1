@@ -218,7 +218,6 @@ namespace effcore {
             switch ($c_prop) {
               case 'name':
                 $c_file = new file($c_value);
-                $c_file->sanitize_file();
                 $return[$c_index]->{'name'} = $c_file->get_name();
                 $return[$c_index]->{'type'} = $c_file->get_type();
                 $return[$c_index]->{'file'} = $c_file->get_file();

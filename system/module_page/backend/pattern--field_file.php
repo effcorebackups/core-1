@@ -15,10 +15,13 @@ namespace effcore {
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size;
+  public $max_lenght_name = 244;
+  public $max_lenght_type = 10;
+  public $allowed_types = [];
+  public $allowed_chars = 'a-z0-9_\\.\\-';
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
-  public $allowed_types = [];
   protected $pool_old = [];
   protected $pool_new = [];
 
@@ -147,8 +150,8 @@ namespace effcore {
           $c_info->pre_path = $dst_file->get_path();
           unset($c_info->tmp_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
-          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]);
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]);
           unset($this->pool_new[$c_id]);
         }
       }
@@ -168,8 +171,8 @@ namespace effcore {
           $c_info->new_path = $dst_file->get_path();
           unset($c_info->pre_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]), 'error');
-          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs()]);
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]), 'error');
+          console::add_log('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]);
         }
       }
     }
@@ -233,6 +236,15 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
+  static function sanitize($field, $form, $npath, $element, &$new_values) {
+    foreach ($new_values as $c_value) {
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name);
+      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
+      $c_value->file = $c_value->name.($c_value->type ?
+                                   '.'.$c_value->type : '');
+    }
+  }
+
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->get_element_name();
@@ -240,6 +252,7 @@ namespace effcore {
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $new_values = static::get_new_files($name);
+      static::sanitize($field, $form, $npath, $element, $new_values);
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);

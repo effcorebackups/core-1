@@ -52,8 +52,6 @@ namespace effcore {
   # - dir1/dir2               | should be ignored (interpreted as: dir1/file2)
   # ─────────────────────────────────────────────────────────────────────
 
-  const file_max_lenght = 255;
-  const type_max_lenght = 50;
   const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
 
   public $dirs;
@@ -73,11 +71,6 @@ namespace effcore {
     $this->dirs = isset($matches['dirs']) ? $matches['dirs'] : '';
     $this->name = isset($matches['name']) ? $matches['name'] : '';
     $this->type = isset($matches['type']) ? ltrim($matches['type'], '.') : '';
-  }
-
-  function sanitize_file() {
-    $this->type = substr(core::sanitize_file_part($this->type), -self::type_max_lenght);
-    $this->name = substr(core::sanitize_file_part(ltrim($this->name, '.')), 0, self::file_max_lenght - (strlen($this->type) ? strlen($this->type) + 1 : 0));
   }
 
   function set_dirs($dirs) {$this->dirs = $dirs;}
@@ -130,6 +123,16 @@ namespace effcore {
   function direct_append($data) {
     static::mkdir_if_not_exist($this->get_dirs());
     return  @file_put_contents($this->get_path(), $data, FILE_APPEND);
+  }
+
+  function copy($new_dirs, $new_name = null) {
+    $path_old = $this->get_path();
+    $path_new = $new_dirs.($new_name ?: $this->get_file());
+    static::mkdir_if_not_exist($new_dirs);
+    if (@copy($path_old, $path_new)) {
+      $this->__construct($path_new);
+      return true;
+    }
   }
 
   function move($new_dirs, $new_name = null) {
