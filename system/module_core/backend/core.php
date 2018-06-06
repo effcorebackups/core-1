@@ -447,6 +447,12 @@ namespace effcore {
     return md5(serialize($data));
   }
 
+  static function get_random_part() {
+    $hex_time = str_pad(dechex(time()),              8, '0', STR_PAD_LEFT);
+    $hex_rand = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
+    return $hex_time.$hex_rand;
+  }
+
   ########################
   ### binary functions ###
   ########################

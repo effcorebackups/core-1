@@ -15,7 +15,7 @@ namespace effcore {
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size;
-  public $max_lenght_name = 244;
+  public $max_lenght_name = 255 - 17 - 1 - 10; # = 255 - '-'.suffix - '.' - type
   public $max_lenght_type = 10;
   public $allowed_types = [];
   public $allowed_chars = 'a-z0-9_\\.\\-';
@@ -165,6 +165,9 @@ namespace effcore {
         $dst_file = new file(dynamic::dir_files.$this->upload_dir.$c_info->file);
         if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
         if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
+        if ($dst_file->is_exist())
+            $dst_file->set_name(
+            $dst_file->get_name().'-'.core::get_random_part());
         if ($src_file->move(
             $dst_file->get_dirs(),
             $dst_file->get_file())) {
@@ -238,14 +241,14 @@ namespace effcore {
 
   static function sanitize($field, $form, $npath, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: file::get_random_filename();
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: core::get_random_part();
       $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');
     # special case for iis and apache
       if ($c_value->file == 'web.config' ||
           $c_value->file == '.htaccess') {
-        $c_value->name = $c_value->file = file::get_random_filename();
+        $c_value->name = $c_value->file = core::get_random_part();
         $c_value->type = '';
       }
     }
