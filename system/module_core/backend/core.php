@@ -375,7 +375,7 @@ namespace effcore {
       if (strlen($m['char']) == 3) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2]));
       if (strlen($m['char']) == 4) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2])).dechex(ord($m['char'][3]));
     }, $value);
-    return substr($value, 0, $max_lenght);
+    return substr($value, 0, $max_lenght) ?: '';
   }
 
   ##############################
