@@ -103,7 +103,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         if (isset($this->pool_new[$c_id]->pre_path)) {
-           unlink($this->pool_new[$c_id]->pre_path);
+          @unlink($this->pool_new[$c_id]->pre_path);
             unset($this->pool_new[$c_id]);
         }
       }
@@ -119,7 +119,7 @@ namespace effcore {
     $deleted = $this->pool_validation_cache_get('old_to_delete');
     foreach ($deleted as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
-         unlink($deleted[$c_id]->old_path);
+        @unlink($deleted[$c_id]->old_path);
       }
     }
   # move new files to the directory "files"
