@@ -238,9 +238,9 @@ namespace effcore {
 
   static function sanitize($field, $form, $npath, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $hex_time = str_pad(dechex(time()),              8, '0', STR_PAD_LEFT);
-      $hex_rand = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: $hex_time.$hex_rand;
+      if ($c_value->file == 'web.config') $c_value->name = file::get_random_filename();
+      if ($c_value->file == 'web.config') $c_value->type = '';
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: file::get_random_filename();
       $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');

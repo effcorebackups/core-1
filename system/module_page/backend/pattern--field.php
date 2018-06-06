@@ -217,7 +217,7 @@ namespace effcore {
                        $return[$c_index] = new \stdClass;
             switch ($c_prop) {
               case 'name':
-                $c_file = new file($c_value);
+                $c_file = new file(str_replace('/', '', $c_value));
                 $return[$c_index]->{'name'} = $c_file->get_name();
                 $return[$c_index]->{'type'} = $c_file->get_type();
                 $return[$c_index]->{'file'} = $c_file->get_file();
