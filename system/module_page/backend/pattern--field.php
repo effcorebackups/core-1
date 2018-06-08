@@ -187,6 +187,7 @@ namespace effcore {
   }
 
   static function set_new_value_multiple($name, $values, $source = '_POST') {
+    global ${$source};
     ${$source}[$name] = $values;
   }
 
