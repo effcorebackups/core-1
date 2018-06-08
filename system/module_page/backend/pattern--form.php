@@ -45,11 +45,11 @@ namespace effcore {
     }
   # renew elements list after build and get all fields
     $elements   = $this->children_select_recursive();
-    $containers = static::get_containers($this);
+    $form_items = static::get_form_items($this);
     $fields     = static::get_fields($this);
 
   # call init handlers
-    event::start('on_form_init', $id, [$this, $containers, &$values]);
+    event::start('on_form_init', $id, [$this, $form_items]);
 
   # if user click the button
     if (isset($values['form_id'][0]) &&
@@ -73,7 +73,7 @@ namespace effcore {
       }
     # call form validate handlers
       if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [$this, $containers, &$values]);
+        event::start('on_form_validate', $id, [$this, $form_items, &$values]);
       }
     # show errors and set error class
       foreach ($this->errors as $c_npath => $c_errors) {
@@ -137,21 +137,21 @@ namespace effcore {
     return $return;
   }
 
-  static function get_values() { # @todo: delete this function
-    $return = [];
-    foreach ($_POST as $c_field => $c_value) {
-      $return[$c_field] = is_array($c_value) ?
-                                   $c_value : [$c_value];
-    }
-    return $return;
-  }
-
-  static function get_containers($form) { # @todo: delete this function
+  static function get_form_items($form) {
     $return = [];
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {
         $return[$c_npath] = $c_child;
       }
+    }
+    return $return;
+  }
+
+  static function get_values() { # @todo: delete this function
+    $return = [];
+    foreach ($_POST as $c_field => $c_value) {
+      $return[$c_field] = is_array($c_value) ?
+                                   $c_value : [$c_value];
     }
     return $return;
   }

@@ -17,16 +17,16 @@ namespace effcore\modules\core {
   ### form: install ###
   #####################
 
-  static function on_init_install($form, $fields, &$values) {
+  static function on_init_install($form, $items) {
     if (!extension_loaded('pdo')) {
       message::insert('PHP PDO extension is not available.', 'warning');
     }
     if (!extension_loaded('pdo_mysql')) {
-      $fields['storage/is_mysql']->child_select('element')->attribute_insert('disabled', 'disabled');
+      $items['storage/is_mysql']->child_select('element')->attribute_insert('disabled', 'disabled');
       message::insert(translation::get('PHP PDO driver for %%_name is not available.', ['name' => 'MySQL']), 'warning');
     }
     if (!extension_loaded('pdo_sqlite')) {
-      $fields['storage/is_sqlite']->child_select('element')->attribute_insert('disabled', 'disabled');
+      $items['storage/is_sqlite']->child_select('element')->attribute_insert('disabled', 'disabled');
       message::insert(translation::get('PHP PDO driver for %%_name is not available.', ['name' => 'SQLite']), 'warning');
     }
     $main = storage::get('main');

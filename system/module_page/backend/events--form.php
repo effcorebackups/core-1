@@ -13,10 +13,10 @@ namespace effcore\modules\page {
   ### form: decoration ###
   ########################
 
-  static function on_init_decoration($form, $fields, &$values) {
+  static function on_init_decoration($form, $items) {
     $settings = storage::get('files')->select('settings');
-    $fields['colors/color_id'   ]->default_set($settings['page']->color_id);
-    $fields['colors/color_bg_id']->default_set($settings['page']->color_bg_id);
+    $items['colors/color_id'   ]->default_set($settings['page']->color_id   );
+    $items['colors/color_bg_id']->default_set($settings['page']->color_bg_id);
   }
 
   static function on_validate_decoration($form, $fields, &$values) {

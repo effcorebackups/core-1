@@ -53,12 +53,12 @@ namespace effcore\modules\user {
   ### form: user_edit ###
   #######################
 
-  static function on_init_user_edit($form, $fields, &$values) {
+  static function on_init_user_edit($form, $items) {
     $id_user = page::get_current()->args_get('id_user');
     $user = (new instance('user', ['id' => $id_user]))->select();
-    $fields['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
-    $fields['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
-    $fields['credentials/avatar']->pool_values_init_old(
+    $items['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
+    $items['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
+    $items['credentials/avatar']->pool_values_init_old(
       $user->avatar_path_relative ? [$user->avatar_path_relative] : []
     );
   }
@@ -143,7 +143,7 @@ namespace effcore\modules\user {
   ### form: login ###
   ###################
 
-  static function on_init_login($form, $fields, &$values) {
+  static function on_init_login($form, $items) {
     if (!isset($_COOKIE['cookies_is_on'])) {
       message::insert(
         translation::get('Cookies are disabled. You can not log in!').br.
