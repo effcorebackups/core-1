@@ -569,7 +569,7 @@ forms
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_1
+                        - name: checkboxes[]
                         - value: checkboxes_1
                 - checkboxes_2|field
                     title: Checkbox 2 (checked)
@@ -581,7 +581,7 @@ forms
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_2
+                        - name: checkboxes[]
                         - value: checkboxes_2
                         - checked: checked
                 - checkboxes_3|field
@@ -594,7 +594,7 @@ forms
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_3
+                        - name: checkboxes[]
                         - value: checkboxes_3
                         - disabled: disabled
                 - checkboxes_4|field
@@ -607,7 +607,7 @@ forms
                         tag_name: input
                         attributes
                         - type: checkbox
-                        - name: checkboxes_4
+                        - name: checkboxes[]
                         - value: checkboxes_4
                         - disabled: disabled
                         - checked: checked

@@ -16,23 +16,23 @@
   #          x     | d | y | d | t | t |   |   |   | e |   |   | ] |
   # element   x    |   |   |   | h | h |   |   |   |   |   |   |   |
   # ─────────────────────────────────────────────────────────────────────
-  # input:text     | + | + | + | x | + |   |   |   |   |   | + | ? |
-  # input:color    | + | x | x | x | x |   |   |   |   |   | x | ? |
-  # input:email    | + | + | + | x | + |   |   |   | + |   | + | ? |
+  # input:text     | + | + | + | x | + |   |   |   |   |   | + | + |
+  # input:color    | + | x | x | x | x |   |   |   |   |   | x | + |
+  # input:email    | + | + | + | x | + |   |   |   | + |   | + | + |
   # input:file     | + |   | + |   |   |   |   |   | + |   |   | ? |
-  # input:password | + | + | + | x | + |   |   |   |   |   | + | ? |
-  # input:search   | + | + | + | x | + |   |   |   |   |   | + | ? |
-  # input:tel      | + | + | + | x | + |   |   |   |   |   | + | ? |
-  # input:url      | + | + | + | x | + |   |   |   |   |   | + | ? |
-  # input:date     | + | + | + | x | x | + | + | - |   |   | x | ? |
-  # input:time     | + | + | + | x | x | + | + | - |   |   | x | ? |
-  # input:number   | + | + | + | x | x | + | + | + |   |   | x | ? |
-  # input:range    | + | x | x | x | x | + | + | + |   |   | x | ? |
-  # textarea       | + | + | + | x | + |   |   |   |   |   | x | ? |
-  # select         | + |   | + |   |   |   |   |   | + |   |   | ? |
-  # select:option  | ? |   |   |   |   |   |   |   |   |   |   |   |
-  # input:checkbox | + |   | + |   |   |   |   |   |   | + |   | ? |
-  # input:radio    | + |   | + |   |   |   |   |   |   | + |   | ? |
+  # input:password | + | + | + | x | + |   |   |   |   |   | + | + |
+  # input:search   | + | + | + | x | + |   |   |   |   |   | + | + |
+  # input:tel      | + | + | + | x | + |   |   |   |   |   | + | + |
+  # input:url      | + | + | + | x | + |   |   |   |   |   | + | + |
+  # input:date     | + | + | + | x | x | + | + | - |   |   | x | + |
+  # input:time     | + | + | + | x | x | + | + | - |   |   | x | + |
+  # input:number   | + | + | + | x | x | + | + | + |   |   | x | + |
+  # input:range    | + | x | x | x | x | + | + | + |   |   | x | + |
+  # textarea       | + | + | + | x | + |   |   |   |   |   | x | + |
+  # select         | + |   | + |   |   |   |   |   | + |   |   | + |
+  # select:option  | + |   |   |   |   |   |   |   |   |   |   |   |
+  # input:checkbox | + |   | + |   |   |   |   |   |   | + |   | + |
+  # input:radio    | + |   | + |   |   |   |   |   |   | + |   | + |
   # ─────────────────────────────────────────────────────────────────────
   # note: x - extended feature of the system
   # ─────────────────────────────────────────────────────────────────────
@@ -145,47 +145,49 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
-  # conversion matrix (expected from $_POST - undefined|string|array):
+  # conversion matrix (expected from source - undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[field] == undefined           -> return ''
-  # - $_POST[field] == ''                  -> return ''
-  # - $_POST[field] == 'value'             -> return 'value'
+  # - source[field] == undefined           -> return ''
+  # - source[field] == ''                  -> return ''
+  # - source[field] == 'value'             -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[field] == [0 => '']           -> return ''
-  # - $_POST[field] == [0 => '', ...]      -> return ''
-  # - $_POST[field] == [0 => 'value']      -> return 'value'
-  # - $_POST[field] == [0 => 'value', ...] -> return 'value'
+  # - source[field] == [0 => '']           -> return ''
+  # - source[field] == [0 => '', ...]      -> return ''
+  # - source[field] == [0 => 'value']      -> return 'value'
+  # - source[field] == [0 => 'value', ...] -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_new_value($name, $index = 0) {
-    return !isset($_POST[$name]) ? '' :
-       (is_string($_POST[$name]) ? $_POST[$name] : 
-        (is_array($_POST[$name]) &&
-            isset($_POST[$name][$index]) ?
-                  $_POST[$name][$index] : ''));
+  static function get_new_value($name, $index = 0, $source = '_POST') {
+    global ${$source};
+    return !isset(${$source}[$name]) ? '' :
+       (is_string(${$source}[$name]) ? ${$source}[$name] : 
+        (is_array(${$source}[$name]) &&
+            isset(${$source}[$name][$index]) ?
+                  ${$source}[$name][$index] : ''));
   }
 
-  # conversion matrix (expected from $_POST - undefined|string|array):
+  # conversion matrix (expected from source - undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[field] == undefined           -> return []
-  # - $_POST[field] == ''                  -> return [0 => '']
-  # - $_POST[field] == 'value'             -> return [0 => 'value']
+  # - source[field] == undefined           -> return []
+  # - source[field] == ''                  -> return [0 => '']
+  # - source[field] == 'value'             -> return [0 => 'value']
   # ─────────────────────────────────────────────────────────────────────
-  # - $_POST[field] == [0 => '']           -> return [0 => '']
-  # - $_POST[field] == [0 => '', ...]      -> return [0 => '', ...]
-  # - $_POST[field] == [0 => 'value']      -> return [0 => 'value']
-  # - $_POST[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
+  # - source[field] == [0 => '']           -> return [0 => '']
+  # - source[field] == [0 => '', ...]      -> return [0 => '', ...]
+  # - source[field] == [0 => 'value']      -> return [0 => 'value']
+  # - source[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_new_value_multiple($name) {
-    return !isset($_POST[$name]) ? [] :
-       (is_string($_POST[$name]) ? [$_POST[$name]] :
-        (is_array($_POST[$name]) ?
-                  $_POST[$name] : []));
+  static function get_new_value_multiple($name, $source = '_POST') {
+    global ${$source};
+    return !isset(${$source}[$name]) ? [] :
+       (is_string(${$source}[$name]) ? [${$source}[$name]] :
+        (is_array(${$source}[$name]) ?
+                  ${$source}[$name] : []));
   }
 
-  static function set_new_value_multiple($name, $values) {
-    $_POST[$name] = $values;
+  static function set_new_value_multiple($name, $values, $source = '_POST') {
+    ${$source}[$name] = $values;
   }
 
   # conversion matrix (expected: undefined|array):
