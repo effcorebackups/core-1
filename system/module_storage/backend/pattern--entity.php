@@ -43,10 +43,10 @@ namespace effcore {
   function get_storage_id()       {return $this->storage_id;}
   function get_catalog_id()       {return $this->catalog_id;}
   function get_field_info($name)  {return $this->fields->{$name};}
-  function get_fields_info()      {return $this->fields;}
   function get_indexes_info()     {return $this->indexes;}
   function get_constraints_info() {return $this->constraints;}
-  function get_fields() {
+  function fields_info_get()      {return $this->fields;}
+  function fields_get() {
     return core::array_kmap(
       array_keys((array)$this->fields)
     );

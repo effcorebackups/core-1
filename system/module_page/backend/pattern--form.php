@@ -45,8 +45,8 @@ namespace effcore {
     }
   # renew elements list after build and get all fields
     $elements   = $this->children_select_recursive();
-    $form_items = static::get_form_items($this);
-    $fields     = static::get_fields($this);
+    $form_items = static::form_items_get($this);
+    $fields     = static::fields_get($this);
 
   # call init handlers
     event::start('on_form_init', $id, [$this, $form_items]);
@@ -113,7 +113,7 @@ namespace effcore {
       ]), 'hidden_validation_id');
   }
 
-  function add_error($element_id = null, $message = null) {
+  function error_add($element_id = null, $message = null) {
     $this->errors[$element_id][] = $message;
   }
 
@@ -130,7 +130,7 @@ namespace effcore {
     return [];
   }
 
-  static function get_fields($form) {
+  static function fields_get($form) {
     $return = [];
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\field) {
@@ -140,7 +140,7 @@ namespace effcore {
     return $return;
   }
 
-  static function get_form_items($form) {
+  static function form_items_get($form) {
     $return = [];
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {

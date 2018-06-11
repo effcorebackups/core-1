@@ -109,7 +109,7 @@ namespace effcore {
 
   static function validate_required($field, $form, $npath, $element, &$new_values) {
     if ($element->attribute_select('required') && empty(array_filter($new_values, 'strlen'))) {
-      $form->add_error($npath.'/element',
+      $form->error_add($npath.'/element',
         translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
       );
     } else {
@@ -120,7 +120,7 @@ namespace effcore {
   static function validate_multiple($field, $form, $npath, $element, &$new_values) {
     if (!$element->attribute_select('multiple') && count($new_values) > 1) {
       $new_values = array_slice($new_values, -1);
-      $form->add_error($npath.'/element',
+      $form->error_add($npath.'/element',
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
     } else {

@@ -53,7 +53,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
     if (core::validate_number($new_value) === false) {
-      $form->add_error($npath.'/element',
+      $form->error_add($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('Field value is not a valid number.')
       );
@@ -69,7 +69,7 @@ namespace effcore {
       $max = static::value_max_get($element);
       if ((int)round(($min - $new_value) / $step, 5) !=
                round(($min - $new_value) / $step, 5)) {
-        $form->add_error($npath.'/element',
+        $form->error_add($npath.'/element',
           translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
           translation::get('Field value is not in valid range.')
         );

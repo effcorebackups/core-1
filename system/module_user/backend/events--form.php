@@ -71,7 +71,7 @@ namespace effcore\modules\user {
         # check security
           $test_pass = (new instance('user', ['id' => $id_user]))->select();
           if ($test_pass->password_hash !== core::hash_password_get($values['password'][0])) {
-            $form->add_error('credentials/password/element',
+            $form->error_add('credentials/password/element',
               translation::get('Field "%%_title" contains incorrect value!', [
                 'title' => translation::get($fields['credentials/password']->title)
               ])
@@ -82,20 +82,20 @@ namespace effcore\modules\user {
           $test_email = (new instance('user', ['email' => strtolower($values['email'][0])]))->select();
           if ($test_email &&
               $test_email->id != $id_user) {
-            $form->add_error('credentials/email/element', 'User with this EMail was already registered!');
+            $form->error_add('credentials/email/element', 'User with this EMail was already registered!');
             return;
           }
         # test nick
           $test_nick = (new instance('user', ['nick' => strtolower($values['nick'][0])]))->select();
           if ($test_nick &&
               $test_nick->id != $id_user) {
-            $form->add_error('credentials/nick/element', 'User with this Nick was already registered!');
+            $form->error_add('credentials/nick/element', 'User with this Nick was already registered!');
             return;
           }
         # test new password
           if ($values['password'][0] ==
               $values['password_new'][0]) {
-            $form->add_error('credentials/password_new/element',
+            $form->error_add('credentials/password_new/element',
               'New password must be different from the current password!'
             );
             return;
@@ -161,8 +161,8 @@ namespace effcore\modules\user {
           if (!$user || (
                $user->password_hash &&
                $user->password_hash !== core::hash_password_get($values['password'][0]))) {
-            $form->add_error('credentials/email/element');
-            $form->add_error('credentials/password/element');
+            $form->error_add('credentials/email/element');
+            $form->error_add('credentials/password/element');
             message::insert('Incorrect email or password!', 'error');
           }
         }
@@ -197,12 +197,12 @@ namespace effcore\modules\user {
         if (count($form->errors) == 0) {
         # test email
           if ((new instance('user', ['email' => strtolower($values['email'][0])]))->select()) {
-            $form->add_error('credentials/email/element', 'User with this EMail was already registered!');
+            $form->error_add('credentials/email/element', 'User with this EMail was already registered!');
             return;
           }
         # test nick
           if ((new instance('user', ['nick' => strtolower($values['nick'][0])]))->select()) {
-            $form->add_error('credentials/nick/element', 'User with this Nick was already registered!');
+            $form->error_add('credentials/nick/element', 'User with this Nick was already registered!');
             return;
           }
         }

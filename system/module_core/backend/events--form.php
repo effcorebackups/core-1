@@ -42,9 +42,9 @@ namespace effcore\modules\core {
     switch ($form->clicked_button_name) {
       case 'install':
         if (empty($values['driver'][0])) {
-          $form->add_error('storage/is_mysql/element');
-          $form->add_error('storage/is_sqlite/element');
-          $form->add_error(null, 'Driver is not selected!');
+          $form->error_add('storage/is_mysql/element');
+          $form->error_add('storage/is_sqlite/element');
+          $form->error_add(null, 'Driver is not selected!');
           return;
         }
         if (count($form->errors) == 0) {
@@ -54,8 +54,8 @@ namespace effcore\modules\core {
                 'file_name' => $values['file_name'][0]
               ]);
               if ($test !== true) {
-                $form->add_error('storage/sqlite/file_name/element');
-                $form->add_error(null, translation::get('Storage is not available with these credentials!').br.
+                $form->error_add('storage/sqlite/file_name/element');
+                $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
                                        translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
               }
               break;
@@ -68,12 +68,12 @@ namespace effcore\modules\core {
                 'password'   => $values['password'][0]
               ]);
               if ($test !== true) {
-                $form->add_error('storage/mysql/storage_id/element');
-                $form->add_error('storage/mysql/host_name/element');
-                $form->add_error('storage/mysql/port/element');
-                $form->add_error('storage/mysql/user_name/element');
-                $form->add_error('storage/mysql/password/element');
-                $form->add_error(null, translation::get('Storage is not available with these credentials!').br.
+                $form->error_add('storage/mysql/storage_id/element');
+                $form->error_add('storage/mysql/host_name/element');
+                $form->error_add('storage/mysql/port/element');
+                $form->error_add('storage/mysql/user_name/element');
+                $form->error_add('storage/mysql/password/element');
+                $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
                                        translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
               }
               break;

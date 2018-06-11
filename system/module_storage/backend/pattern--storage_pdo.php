@@ -195,7 +195,7 @@ namespace effcore {
   function install_entity($entity) {
     if ($this->init()) {
       $fields = [];
-      foreach ($entity->get_fields_info() as $c_name => $c_info) {
+      foreach ($entity->fields_info_get() as $c_name => $c_info) {
       # prepare field type
         $c_properties = [$c_name];
         switch ($c_info->type) {
@@ -267,7 +267,7 @@ namespace effcore {
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->get_keys());
-      $fields = $entity->get_fields();
+      $fields = $entity->fields_get();
       $result = $this->query(
         'SELECT', $this->fields($fields),
         'FROM',   $this->tables($entity->get_catalog_id()),
@@ -284,7 +284,7 @@ namespace effcore {
   function insert_instance($instance) { # return: null | instance | instance + new_id
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $values = array_intersect_key($instance->values_get(), $entity->get_fields());
+      $values = array_intersect_key($instance->values_get(), $entity->fields_get());
       $fields = array_keys($values);
       $auto_name = $entity->get_auto_name();
       $new_id = $this->query(
@@ -303,7 +303,7 @@ namespace effcore {
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->get_keys(true, false));
-      $values = array_intersect_key($instance->values_get(), $entity->get_fields());
+      $values = array_intersect_key($instance->values_get(), $entity->fields_get());
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->get_catalog_id()),
         'SET',    $this->attributes($values, ','),

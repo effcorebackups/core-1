@@ -55,7 +55,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
     if (!core::validate_date($new_value)) {
-      $form->add_error($npath.'/element',
+      $form->error_add($npath.'/element',
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );
     } else {
