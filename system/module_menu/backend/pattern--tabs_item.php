@@ -15,8 +15,8 @@ namespace effcore {
   public $template_children = 'tabs_item_children';
 
   function render_self() {
-    $href         = page::get_current()->args_get('base').'/'.($this->action_name);
-    $href_default = page::get_current()->args_get('base').'/'.($this->action_default_name ?: $this->action_name);
+    $href         = page::current_get()->args_get('base').'/'.($this->action_name);
+    $href_default = page::current_get()->args_get('base').'/'.($this->action_default_name ?: $this->action_name);
     $this->attribute_insert('href', $href_default);
     if (url::is_active($href) ||
         url::is_active_trail($href)) {

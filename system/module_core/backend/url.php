@@ -106,18 +106,18 @@ namespace effcore {
     static::$cache = new url($_SERVER['REQUEST_URI']);
   }
 
-  static function get_current() {
+  static function current_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }
 
   static function get_back_url() {
-    $back_url = static::get_current()->get_query_arg('back');
+    $back_url = static::current_get()->get_query_arg('back');
     return $back_url ? urldecode($back_url) : '';
   }
 
   static function make_back_part() {
-    return 'back='.urlencode(static::get_current()->get_full());
+    return 'back='.urlencode(static::current_get()->get_full());
   }
 
   static function is_local($url) {
@@ -125,11 +125,11 @@ namespace effcore {
   }
 
   static function is_active($url) {
-    return (new url($url))->get_full() == static::get_current()->get_full();
+    return (new url($url))->get_full() == static::current_get()->get_full();
   }
 
   static function is_active_trail($url) {
-    return strpos(static::get_current()->get_full(), (new url($url))->get_full()) === 0;
+    return strpos(static::current_get()->get_full(), (new url($url))->get_full()) === 0;
   }
 
   static function go($url) {

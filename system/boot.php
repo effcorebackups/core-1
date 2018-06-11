@@ -62,12 +62,12 @@ namespace effcore {
   # 6. url /file.type/ | is wrong notation - redirect to /file.type
   # ─────────────────────────────────────────────────────────────────────
 
-  if (             url::get_current()->get_path() != '/' &&
-            substr(url::get_current()->get_path(), -1) == '/') {
-     url::go(rtrim(url::get_current()->get_path(), '/')); # p.s. trimming for single redirect
+  if (             url::current_get()->get_path() != '/' &&
+            substr(url::current_get()->get_path(), -1) == '/') {
+     url::go(rtrim(url::current_get()->get_path(), '/')); # p.s. trimming for single redirect
   }
 
-  $type = url::get_current()->get_type();
+  $type = url::current_get()->get_type();
   if ($type) {
     $file_types = file::get_types();
   # case for protected file
@@ -79,7 +79,7 @@ namespace effcore {
     }
 
   # define path of file directory 
-    $path_url = url::get_current()->get_path();
+    $path_url = url::current_get()->get_path();
     if (substr($path_url, 0, 15) === '/dynamic/files/')
          $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
     else $path =                  dir_root.ltrim($path_url, '/');

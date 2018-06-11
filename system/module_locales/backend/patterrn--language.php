@@ -31,7 +31,7 @@ namespace effcore {
     return static::$cache[$code];
   }
 
-  static function get_current() {
+  static function current_get() {
     return locale::get_settings()->lang_code;
   }
 

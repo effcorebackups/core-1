@@ -25,7 +25,7 @@ namespace effcore {
   function render() {
 
   # check https (@todo: enable this message)
-    if (false && !empty($this->https) && url::get_current()->get_protocol() != 'https') {
+    if (false && !empty($this->https) && url::current_get()->get_protocol() != 'https') {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
@@ -70,7 +70,7 @@ namespace effcore {
 
     timer::tap('total');
     $this->page_information_set();
-    $template->set_arg('attributes', core::data_to_attr(['lang' => language::get_current()]));
+    $template->set_arg('attributes', core::data_to_attr(['lang' => language::current_get()]));
     $template->set_arg('meta',         $frontend->meta->render());
     $template->set_arg('head_styles',  $frontend->styles->render());
     $template->set_arg('head_scripts', $frontend->scripts->render());
@@ -83,9 +83,9 @@ namespace effcore {
   function page_information_set() {
     console::add_information('Total generation time', locale::format_msecond(timer::get_period('total', 0, 1)));
     console::add_information('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
-    console::add_information('User roles', implode(', ', user::get_current()->roles));
+    console::add_information('User roles', implode(', ', user::current_get()->roles));
     console::add_information('Session expiration date', locale::format_timestamp(session::id_decode_expire(session::id_get())));
-    console::add_information('Current language', language::get_current());
+    console::add_information('Current language', language::current_get());
   }
 
   function frontend_get() {
@@ -170,7 +170,7 @@ namespace effcore {
     }
   }
 
-  static function get_current() {
+  static function current_get() {
     return static::$current;
   }
 
@@ -195,13 +195,13 @@ namespace effcore {
 
   static function is_displayed_by_current_url($display) {
     $args = [];
-    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->get_protocol(), $args)) ||
-        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->get_domain(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->get_path(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->get_query(),    $args)) ||
-        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->get_anchor(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->get_type(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->get_full(),     $args)) ) {
+    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::current_get()->get_protocol(), $args)) ||
+        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::current_get()->get_domain(),   $args)) ||
+        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::current_get()->get_path(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::current_get()->get_query(),    $args)) ||
+        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::current_get()->get_anchor(),   $args)) ||
+        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::current_get()->get_type(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::current_get()->get_full(),     $args)) ) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
   }

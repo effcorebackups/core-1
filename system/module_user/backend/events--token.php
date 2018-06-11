@@ -11,16 +11,16 @@ namespace effcore\modules\user {
           abstract class events_token extends \effcore\events_token {
 
   static function on_replace($name, $args = []) {
-    if (!empty(user::get_current()->id)) {
+    if (!empty(user::current_get()->id)) {
       switch ($name) {
-        case 'id_user': return user::get_current()->id;
-        case 'email'  : return user::get_current()->email;
-        case 'nick'   : return user::get_current()->nick;
+        case 'id_user': return user::current_get()->id;
+        case 'email'  : return user::current_get()->email;
+        case 'nick'   : return user::current_get()->nick;
         case 'id_user_context':
         case 'email_context':
         case 'nick_context':
           $arg_num = $args[0];
-          $id_user = url::get_current()->get_path_arg($arg_num);
+          $id_user = url::current_get()->get_path_arg($arg_num);
           $user = (new instance('user', ['id' => $id_user]))->select();
           if ($user && $name == 'id_user_context') return $user->id;
           if ($user && $name == 'email_context')   return $user->email;

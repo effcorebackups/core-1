@@ -28,8 +28,8 @@ namespace effcore\modules\user {
       'id' => $page->args_get('id_user')
     ]))->select();
     if ($user) {
-      if (!($user->id == user::get_current()->id ||                # not owner or
-                   isset(user::get_current()->roles['admins']))) { # not admin
+      if (!($user->id == user::current_get()->id ||                # not owner or
+                   isset(user::current_get()->roles['admins']))) { # not admin
         core::send_header_and_exit('access_denided');
       }
     } else {

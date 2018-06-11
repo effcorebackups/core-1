@@ -28,7 +28,7 @@ namespace effcore {
     }
   }
 
-  static function get_current() {
+  static function current_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }

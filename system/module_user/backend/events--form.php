@@ -23,7 +23,7 @@ namespace effcore\modules\user {
   #########################
 
   static function on_submit_user_delete($form, $fields, &$values) {
-    $id_user = page::get_current()->args_get('id_user');
+    $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'delete':
         $user = (new instance('user', [
@@ -54,7 +54,7 @@ namespace effcore\modules\user {
   #######################
 
   static function on_init_user_edit($form, $items) {
-    $id_user = page::get_current()->args_get('id_user');
+    $id_user = page::current_get()->args_get('id_user');
     $user = (new instance('user', ['id' => $id_user]))->select();
     $items['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
     $items['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
@@ -67,7 +67,7 @@ namespace effcore\modules\user {
     switch ($form->clicked_button_name) {
       case 'save':
         if (count($form->errors) == 0) {
-          $id_user = page::get_current()->args_get('id_user');
+          $id_user = page::current_get()->args_get('id_user');
         # check security
           $test_pass = (new instance('user', ['id' => $id_user]))->select();
           if ($test_pass->password_hash !== core::hash_password_get($values['password'][0])) {
@@ -106,7 +106,7 @@ namespace effcore\modules\user {
   }
 
   static function on_submit_user_edit($form, $fields, &$values) {
-    $id_user = page::get_current()->args_get('id_user');
+    $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'save':
         $user = (new instance('user', ['id' => $id_user]))->select();
@@ -237,7 +237,7 @@ namespace effcore\modules\user {
   static function on_submit_logout($form, $fields, &$values) {
     switch ($form->clicked_button_name) {
       case 'logout':
-        session::delete(user::get_current()->id);
+        session::delete(user::current_get()->id);
         url::go('/');
       case 'cancel':
         url::go(url::get_back_url() ?: '/');

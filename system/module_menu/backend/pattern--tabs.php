@@ -36,7 +36,7 @@ namespace effcore {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
       if (!empty($c_item->parent_is_tab)) {
-        $c_href = page::get_current()->args_get('base').'/'.$c_item->action_name;
+        $c_href = page::current_get()->args_get('base').'/'.$c_item->action_name;
         if (url::is_active_trail($c_href)) {
           foreach ($c_item->children_select() as $c_child) {
             $rendered.= $c_child->render();

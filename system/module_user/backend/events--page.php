@@ -30,8 +30,8 @@ namespace effcore\modules\user {
       'id' => $page->args_get('id_user')
     ]))->select();
     if ($user) {
-      if ($user->id == user::get_current()->id ||               # owner
-                 isset(user::get_current()->roles['admins'])) { # admin
+      if ($user->id == user::current_get()->id ||               # owner
+                 isset(user::current_get()->roles['admins'])) { # admin
       # get roles
         $roles = [];
         $storage_roles = entity::get('relation_role_ws_user')->select_instances(['id_user' => $user->id]);

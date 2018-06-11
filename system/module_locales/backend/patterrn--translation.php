@@ -37,7 +37,7 @@ namespace effcore {
   }
 
   static function get($string, $args = [], $code = '') {
-    $c_code = $code ?: language::get_current();
+    $c_code = $code ?: language::current_get();
     if (!isset(static::$cache[$c_code])) static::init($c_code);
     $string = isset(static::$cache[$c_code][$string]) ?
                     static::$cache[$c_code][$string] : $string;

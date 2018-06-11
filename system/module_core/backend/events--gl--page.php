@@ -8,7 +8,7 @@ namespace effcore {
           abstract class events_page {
 
   static function on_show_block_menu_user($page) {
-    $user = user::get_current();
+    $user = user::current_get();
     if (empty($user->id)) {
       return new markup('x-block', ['class' => ['menu-user']], [
         storage::get('files')->select('trees/user/user_anonymous'),
