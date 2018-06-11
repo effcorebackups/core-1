@@ -40,8 +40,8 @@ namespace effcore {
   # relate each field with it's form
     $elements = $this->children_select_recursive();
     foreach ($elements as $c_path => $c_element) {
-      if (method_exists($c_element, 'set_form')) $c_element->set_form($this);
-      if (method_exists($c_element, 'set_path')) $c_element->set_path($c_path);
+      if (method_exists($c_element, 'form_set')) $c_element->form_set($this);
+      if (method_exists($c_element, 'path_set')) $c_element->path_set($c_path);
     }
   # renew elements list after build and get all fields
     $elements   = $this->children_select_recursive();
@@ -52,14 +52,14 @@ namespace effcore {
     event::start('on_form_init', $id, [$this, $form_items]);
 
   # if user click the button
-    if (field::get_new_value('form_id') == $id &&
-        field::get_new_value('button')) {
+    if (field::new_value_get('form_id') == $id &&
+        field::new_value_get('button')) {
     # get more info about clicked button
       foreach ($elements as $c_element) {
         if ($c_element instanceof markup &&
             $c_element->tag_name == 'button' &&
             $c_element->attribute_select('type') == 'submit' &&
-            $c_element->attribute_select('value') == field::get_new_value('button')) {
+            $c_element->attribute_select('value') == field::new_value_get('button')) {
           $this->clicked_button      = $c_element;
           $this->clicked_button_name = $c_element->attribute_select('value');
           break;

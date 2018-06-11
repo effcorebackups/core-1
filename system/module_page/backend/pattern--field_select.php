@@ -75,12 +75,12 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->get_element_name();
-    $type = $field->get_element_type();
+    $name = $field->element_name_get();
+    $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $allowed_values = static::get_allowed_values($element);
-      $new_values = static::get_new_value_multiple($name);
+      $new_values = static::new_value_multiple_get($name);
       $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
       $result = static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);

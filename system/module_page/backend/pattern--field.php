@@ -78,18 +78,19 @@ namespace effcore {
     }
   }
 
-  function get_form() {return $this->_form;}
-  function get_path() {return $this->_path;}
-  function set_form($form) {$this->_form = $form;}
-  function set_path($path) {$this->_path = $path;}
+  function form_get() {return $this->_form;}
+  function form_set($form) {$this->_form = $form;}
 
-  function get_element_name($trim = true) {
+  function path_get() {return $this->_path;}
+  function path_set($path) {$this->_path = $path;}
+
+  function element_name_get($trim = true) {
     $element = $this->child_select('element');
     return $trim ? rtrim($element->attribute_select('name'), '[]') :
                          $element->attribute_select('name');
   }
 
-  function get_element_type($full = true) {
+  function element_type_get($full = true) {
     $element = $this->child_select('element');
     switch ($element->tag_name) {
       case 'input'   : return 'input'.($full ? ':'.$element->attribute_select('type') : '');
@@ -139,7 +140,7 @@ namespace effcore {
 
   static protected $indexes = [];
 
-  static function get_cur_index($name) {
+  static function cur_index_get($name) {
     return !isset(static::$indexes[$name]) ?
                  (static::$indexes[$name] = 0) :
                 ++static::$indexes[$name];
@@ -157,7 +158,7 @@ namespace effcore {
   # - source[field] == [0 => 'value', ...] -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_new_value($name, $index = 0, $source = '_POST') {
+  static function new_value_get($name, $index = 0, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? '' :
        (is_string(${$source}[$name]) ? ${$source}[$name] : 
@@ -178,7 +179,7 @@ namespace effcore {
   # - source[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_new_value_multiple($name, $source = '_POST') {
+  static function new_value_multiple_get($name, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? [] :
        (is_string(${$source}[$name]) ? [${$source}[$name]] :
@@ -186,7 +187,7 @@ namespace effcore {
                   ${$source}[$name] : []));
   }
 
-  static function set_new_value_multiple($name, $values, $source = '_POST') {
+  static function new_value_multiple_set($name, $values, $source = '_POST') {
     global ${$source};
     ${$source}[$name] = $values;
   }
@@ -200,7 +201,7 @@ namespace effcore {
   # - $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] -> return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function get_new_files($name) {
+  static function new_files_get($name) {
     $return = [];
     if (isset($_FILES[$name]['name'])     &&
         isset($_FILES[$name]['type'])     &&
@@ -245,8 +246,8 @@ namespace effcore {
   }
 
   static function validate($field, $form, $npath) {
-    $name = $field->get_element_name();
-    $type = $field->get_element_type();
+    $name = $field->element_name_get();
+    $type = $field->element_type_get();
   # add validate functionality to non specified fields
     if ($name && $type && get_called_class() == 'effcore\\field') {
       switch ($type) {

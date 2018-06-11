@@ -23,13 +23,13 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->get_element_name();
-    $type = $field->get_element_type();
+    $name = $field->element_name_get();
+    $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       if (static::is_readonly($field, $element)) return true;
-      $cur_index = static::get_cur_index($name);
-      $new_value = static::get_new_value($name, $cur_index);
+      $cur_index = static::cur_index_get($name);
+      $new_value = static::new_value_get($name, $cur_index);
       $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $npath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $npath, $element, $new_value) &&

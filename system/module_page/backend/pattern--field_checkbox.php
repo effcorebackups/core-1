@@ -27,11 +27,11 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->get_element_name();
-    $type = $field->get_element_type();
+    $name = $field->element_name_get();
+    $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $new_values = static::get_new_value_multiple($name);
+      $new_values = static::new_value_multiple_get($name);
       $result = static::validate_required($field, $form, $npath, $element, $new_values);
       if (core::in_array_string_compare($element->attribute_select('value'), $new_values))
            $element->attribute_insert('checked', 'checked');

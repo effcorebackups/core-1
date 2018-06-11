@@ -63,7 +63,7 @@ namespace effcore {
     }
   # join deleted items from the cache with deleted items from the form
     $deleted           = $this->pool_validation_cache_get('old_to_delete');
-    $deleted_from_form = $this->pool_manager_get_deleted_items('old');
+    $deleted_from_form = $this->pool_manager_deleted_items_get('old');
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted_from_form[$c_id])) {
         $deleted[$c_id] = new \stdClass;
@@ -99,7 +99,7 @@ namespace effcore {
   # move temporary files from php "tmp" directory to system "tmp" directory
     $this->pool_files_move_tmp_to_pre();
   # physically delete of canceled values
-    $deleted = $this->pool_manager_get_deleted_items('new');
+    $deleted = $this->pool_manager_deleted_items_get('new');
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         if (isset($this->pool_new[$c_id]->pre_path)) {
@@ -131,7 +131,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
   # move pool_old to pool_new
     $this->pool_new = [];
-    $this->pool_manager_set_deleted_items('old', []);
+    $this->pool_manager_deleted_items_set('old', []);
     $this->pool_validation_cache_set('old_to_delete', []);
     $this->pool_values_init_old($return_paths);
   # return result array
@@ -139,7 +139,7 @@ namespace effcore {
   }
 
   protected function pool_files_move_tmp_to_pre() {
-    $form = $this->get_form();
+    $form = $this->form_get();
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
@@ -186,15 +186,15 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   protected function pool_validation_cache_get($type) {
-    $name = $this->get_element_name();
-    $form = $this->get_form();
+    $name = $this->element_name_get();
+    $form = $this->form_get();
     return isset($form->validation_data['pool'][$name][$type]) ?
                  $form->validation_data['pool'][$name][$type] : [];
   }
 
   protected function pool_validation_cache_set($type, $data) {
-    $name = $this->get_element_name();
-    $form = $this->get_form();
+    $name = $this->element_name_get();
+    $form = $this->form_get();
     $form->validation_data['pool'][$name][$type] = $data;
     if (count($form->validation_data['pool'][$name][$type]) == 0) unset($form->validation_data['pool'][$name][$type]);
     if (count($form->validation_data['pool'][$name])        == 0) unset($form->validation_data['pool'][$name]);
@@ -216,23 +216,23 @@ namespace effcore {
   }
 
   protected function pool_manager_insert_action($info, $id, $type) {
-    $name = $this->get_element_name();
+    $name = $this->element_name_get();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
       translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
     );
   }
 
-  protected function pool_manager_get_deleted_items($type) {
-    $name = $this->get_element_name();
+  protected function pool_manager_deleted_items_get($type) {
+    $name = $this->element_name_get();
     return core::array_kmap(
-      static::get_new_value_multiple('manager_delete_'.$name.'_'.$type)
+      static::new_value_multiple_get('manager_delete_'.$name.'_'.$type)
     );
   }
 
-  protected function pool_manager_set_deleted_items($type, $items) {
-    $name = $this->get_element_name();
-    static::set_new_value_multiple('manager_delete_'.$name.'_'.$type, $items);
+  protected function pool_manager_deleted_items_set($type, $items) {
+    $name = $this->element_name_get();
+    static::new_value_multiple_set('manager_delete_'.$name.'_'.$type, $items);
   }
 
   ###########################
@@ -256,11 +256,11 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->get_element_name();
-    $type = $field->get_element_type();
+    $name = $field->element_name_get();
+    $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $new_values = static::get_new_files($name);
+      $new_values = static::new_files_get($name);
       static::sanitize($field, $form, $npath, $element, $new_values);
       $result = static::validate_upload  ($field, $form, $npath, $element, $new_values) &&
                 static::validate_required($field, $form, $npath, $element, $new_values) &&
