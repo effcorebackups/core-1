@@ -32,7 +32,7 @@ namespace effcore {
   }
 
   static function current_get() {
-    return locale::get_settings()->lang_code;
+    return locale::settings_get()->lang_code;
   }
 
 }}

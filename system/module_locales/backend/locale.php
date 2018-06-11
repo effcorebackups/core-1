@@ -21,12 +21,12 @@ namespace effcore {
     }
   }
 
-  static function get_countries() {
+  static function countries_get() {
     if   (!static::$cache_countries) static::init();
     return static::$cache_countries;
   }
 
-  static function get_settings() {
+  static function settings_get() {
     if   (!static::$cache_settings) static::init();
     return static::$cache_settings;
   }
@@ -35,22 +35,22 @@ namespace effcore {
   ### formats ###
   ###############
 
-  static function format_time($time)                      {return \DateTime::createFromFormat('H:i:s',       $time,     new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::get_settings()->timezone ))->format( static::get_settings()->format_time );}
-  static function format_date($date)                      {return \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::get_settings()->timezone ))->format( static::get_settings()->format_date );}
-  static function format_datetime($datetime)              {return \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::get_settings()->timezone ))->format( static::get_settings()->format_datetime );}
-  static function format_timestamp($timestamp)            {return \DateTime::createFromFormat('U',           $timestamp                         )->setTimezone(new \DateTimeZone( static::get_settings()->timezone ))->format( static::get_settings()->format_datetime );}
+  static function format_time($time)                      {return \DateTime::createFromFormat('H:i:s',       $time,     new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::settings_get()->timezone ))->format( static::settings_get()->format_time );}
+  static function format_date($date)                      {return \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::settings_get()->timezone ))->format( static::settings_get()->format_date );}
+  static function format_datetime($datetime)              {return \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone( static::settings_get()->timezone ))->format( static::settings_get()->format_datetime );}
+  static function format_timestamp($timestamp)            {return \DateTime::createFromFormat('U',           $timestamp                         )->setTimezone(new \DateTimeZone( static::settings_get()->timezone ))->format( static::settings_get()->format_datetime );}
   static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
   static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
   static function format_version($number)                 {return static::format_number(floatval($number), 2);}
 
   static function format_number($number, $precision = 0, $dec_point = null, $thousands = null, $no_zeros = true) {
-    $dec_point = is_null($dec_point) ? static::get_settings()->decimal_point       : $dec_point;
-    $thousands = is_null($thousands) ? static::get_settings()->thousands_separator : $thousands;
+    $dec_point = is_null($dec_point) ? static::settings_get()->decimal_point       : $dec_point;
+    $thousands = is_null($thousands) ? static::settings_get()->thousands_separator : $thousands;
     return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
 
   static function format_human_bytes($bytes, $decimals = 2) {
-    return core::bytes_to_human($bytes, $decimals, static::get_settings()->decimal_point);
+    return core::bytes_to_human($bytes, $decimals, static::settings_get()->decimal_point);
   }
 
 }}
