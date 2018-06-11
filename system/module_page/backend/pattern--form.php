@@ -28,7 +28,7 @@ namespace effcore {
     $this->validation_id = static::validation_id_get();
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
-    $values = static::get_values();
+    $values = static::values_get();
     $id = $this->attribute_select('id');
   # build all form elements
     $elements = $this->children_select_recursive();
@@ -150,7 +150,7 @@ namespace effcore {
     return $return;
   }
 
-  static function get_values() { # @todo: delete this function
+  static function values_get() { # @todo: delete this function
     $return = [];
     foreach ($_POST as $c_field => $c_value) {
       $return[$c_field] = is_array($c_value) ?

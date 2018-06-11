@@ -19,7 +19,7 @@ namespace effcore {
         'id' => $id
       ]))->select();
       if ($user) {
-        static::$cache = (object)($user->get_values());
+        static::$cache = (object)($user->values_get());
         static::$cache->roles = ['registered' => 'registered'];
         foreach (entity::get('relation_role_ws_user')->instances_select(['id_user' => $user->id]) as $c_role) {
           static::$cache->roles[$c_role->id_role] = $c_role->id_role;

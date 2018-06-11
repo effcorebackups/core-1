@@ -257,7 +257,7 @@ namespace effcore {
       if ($offset)            array_push($query, 'OFFSET', $offset);
       $result = $this->query($query);
       foreach ($result as $c_instance) {
-        $c_instance->set_entity_name($entity->get_name());
+        $c_instance->entity_name_set($entity->get_name());
       }
       return $result;
     }
@@ -265,8 +265,8 @@ namespace effcore {
 
   function select_instance($instance) { # return: null | instance
     if ($this->init()) {
-      $entity = $instance->get_entity();
-      $idkeys = array_intersect_key($instance->get_values(), $entity->get_keys());
+      $entity = $instance->entity_get();
+      $idkeys = array_intersect_key($instance->values_get(), $entity->get_keys());
       $fields = $entity->get_fields();
       $result = $this->query(
         'SELECT', $this->fields($fields),
@@ -283,8 +283,8 @@ namespace effcore {
 
   function insert_instance($instance) { # return: null | instance | instance + new_id
     if ($this->init()) {
-      $entity = $instance->get_entity();
-      $values = array_intersect_key($instance->get_values(), $entity->get_fields());
+      $entity = $instance->entity_get();
+      $values = array_intersect_key($instance->values_get(), $entity->get_fields());
       $fields = array_keys($values);
       $auto_name = $entity->get_auto_name();
       $new_id = $this->query(
@@ -301,9 +301,9 @@ namespace effcore {
 
   function update_instance($instance) { # return: null | instance
     if ($this->init()) {
-      $entity = $instance->get_entity();
-      $idkeys = array_intersect_key($instance->get_values(), $entity->get_keys(true, false));
-      $values = array_intersect_key($instance->get_values(), $entity->get_fields());
+      $entity = $instance->entity_get();
+      $idkeys = array_intersect_key($instance->values_get(), $entity->get_keys(true, false));
+      $values = array_intersect_key($instance->values_get(), $entity->get_fields());
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->get_catalog_id()),
         'SET',    $this->attributes($values, ','),
@@ -316,13 +316,13 @@ namespace effcore {
 
   function delete_instance($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
-      $entity = $instance->get_entity();
-      $idkeys = array_intersect_key($instance->get_values(), $entity->get_keys(true, false));
+      $entity = $instance->entity_get();
+      $idkeys = array_intersect_key($instance->values_get(), $entity->get_keys(true, false));
       $row_count = $this->query(
         'DELETE', 'FROM', $this->tables($entity->get_catalog_id()),
         'WHERE',          $this->attributes($idkeys));
       if ($row_count === 1) {
-        $instance->set_values([]);
+        $instance->values_set([]);
         return $instance;
       }
     }

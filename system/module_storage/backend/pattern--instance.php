@@ -12,15 +12,15 @@ namespace effcore {
   public $module_id;
 
   function __construct($entity_name = '', $values = []) {
-    $this->set_entity_name($entity_name);
-    $this->set_values($values);
+    $this->entity_name_set($entity_name);
+    $this->values_set($values);
   }
 
   function __get($name)         {return $this->values[$name];}
   function __set($name, $value) {$this->values[$name] = $value;}
 
-  function set_values($values) {$this->values = $values;}
-  function get_values($names = []) {
+  function values_set($values) {$this->values = $values;}
+  function values_get($names = []) {
     if (count($names)) {
       return array_intersect_key($this->values, core::array_kmap($names));
     } else {
@@ -28,29 +28,29 @@ namespace effcore {
     }
   }
 
-  function get_entity() {return entity::get($this->entity_name);}
-  function set_entity_name($entity_name) {$this->entity_name = $entity_name;}
+  function entity_get() {return entity::get($this->entity_name);}
+  function entity_name_set($entity_name) {$this->entity_name = $entity_name;}
 
   function select($custom_ids = []) {
-    $storage = storage::get($this->get_entity()->get_storage_id());
+    $storage = storage::get($this->entity_get()->get_storage_id());
     return $storage->select_instance($this, $custom_ids);
   }
 
   function insert() {
-    $storage = storage::get($this->get_entity()->get_storage_id());
+    $storage = storage::get($this->entity_get()->get_storage_id());
     $this->created = core::datetime_get();
     $this->updated = core::datetime_get();
     return $storage->insert_instance($this);
   }
 
   function update() {
-    $storage = storage::get($this->get_entity()->get_storage_id());
+    $storage = storage::get($this->entity_get()->get_storage_id());
     $this->updated = core::datetime_get();
     return $storage->update_instance($this);
   }
 
   function delete() {
-    $storage = storage::get($this->get_entity()->get_storage_id());
+    $storage = storage::get($this->entity_get()->get_storage_id());
     return $storage->delete_instance($this);
   }
 

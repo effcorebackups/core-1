@@ -41,7 +41,7 @@ namespace effcore\modules\user {
           }
         }
       # get values
-        $values = $user->get_values();
+        $values = $user->values_get();
         $values['roles'] = count($roles) ? implode(', ', $roles) : '-';
         $values['created'] = locale::format_datetime($values['created']);
         $values['updated'] = locale::format_datetime($values['updated']);
