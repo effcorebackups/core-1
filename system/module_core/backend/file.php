@@ -109,7 +109,7 @@ namespace effcore {
            $this->data = static::$cache_data[$relative];
     else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->get_path());
     timer::tap('file load: '.$relative);
-    console::add_log('file', 'load', $relative, 'ok',
+    console::log_add('file', 'load', $relative, 'ok',
       timer::get_period('file load: '.$relative, -1, -2)
     );
     return $this->data;
@@ -170,7 +170,7 @@ namespace effcore {
     $return = $once ? require_once($this->get_path()) :
                            require($this->get_path());
     timer::tap('file insert: '.$relative);
-    console::add_log('file', 'insertion', $relative, 'ok',
+    console::log_add('file', 'insertion', $relative, 'ok',
       timer::get_period('file insert: '.$relative, -1, -2)
     );
     return $return;
@@ -186,7 +186,7 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('file_types') as $c_module_id => $c_file_types) {
       foreach ($c_file_types as $c_row_id => $c_file_type) {
-        if (isset(static::$cache_file_types[$c_file_type->type])) console::add_log_about_duplicate('file_types', $c_file_type->type);
+        if (isset(static::$cache_file_types[$c_file_type->type])) console::log_about_duplicate_add('file_types', $c_file_type->type);
         static::$cache_file_types[$c_file_type->type] = $c_file_type;
         static::$cache_file_types[$c_file_type->type]->module_id = $c_module_id;
       }

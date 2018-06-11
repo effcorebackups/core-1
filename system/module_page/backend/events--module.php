@@ -21,7 +21,7 @@ namespace effcore\modules\page {
 
   static function on_cron() {
     form::validation_cache_clean();
-    console::add_log('cron', 'clear', 'Cron job was done.', '-');
+    console::log_add('cron', 'clear', 'Cron job was done.', '-');
   }
 
 }}

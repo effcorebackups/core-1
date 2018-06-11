@@ -12,7 +12,7 @@ namespace effcore {
 
   static function update($name, $data, $sub_dirs = '', $info = null) {
     if (parent::update($name, $data, $sub_dirs, $info)) {
-      console::add_log('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
+      console::log_add('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
     }
   }
 

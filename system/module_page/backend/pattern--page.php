@@ -81,11 +81,11 @@ namespace effcore {
   }
 
   function page_information_set() {
-    console::add_information('Total generation time', locale::format_msecond(timer::get_period('total', 0, 1)));
-    console::add_information('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
-    console::add_information('User roles', implode(', ', user::current_get()->roles));
-    console::add_information('Session expiration date', locale::format_timestamp(session::id_decode_expire(session::id_get())));
-    console::add_information('Current language', language::current_get());
+    console::information_add('Total generation time', locale::format_msecond(timer::get_period('total', 0, 1)));
+    console::information_add('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
+    console::information_add('User roles', implode(', ', user::current_get()->roles));
+    console::information_add('Session expiration date', locale::format_timestamp(session::id_decode_expire(session::id_get())));
+    console::information_add('Current language', language::current_get());
   }
 
   function frontend_get() {
@@ -156,14 +156,14 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
       foreach ($c_pages as $c_row_id => $c_page) {
-        if (isset(static::$cache[$c_row_id])) console::add_log_about_duplicate('page', $c_row_id);
+        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_add('page', $c_row_id);
         static::$cache[$c_row_id] = $c_page;
         static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
       foreach ($c_frontends as $c_row_id => $c_frontend) {
-        if (isset(static::$cache_frontend[$c_row_id])) console::add_log_about_duplicate('frontend', $c_row_id);
+        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_add('frontend', $c_row_id);
         static::$cache_frontend[$c_row_id] = $c_frontend;
         static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
       }

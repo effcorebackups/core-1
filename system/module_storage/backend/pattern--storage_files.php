@@ -53,7 +53,7 @@ namespace effcore {
   }
 
   static function init($group) {
-    console::add_log('storage', 'init.', 'storage %%_id will be initialized', 'ok', 0, ['id' => $group.' | storage_files']);
+    console::log_add('storage', 'init.', 'storage %%_id will be initialized', 'ok', 0, ['id' => $group.' | storage_files']);
     $cache = cache::select('data--'.$group);
     if ($cache) static::$data[$group] = $cache;
     else        static::data_cache_rebuild();

@@ -14,7 +14,7 @@ namespace effcore {
     static::$cache_settings = storage::get('files')->select('settings/locales');
     foreach (storage::get('files')->select('countries') as $c_module_id => $c_countries) {
       foreach ($c_countries as $c_row_id => $c_country) {
-        if (isset(static::$cache_countries[$c_country->code])) console::add_log_about_duplicate('country', $c_country->code);
+        if (isset(static::$cache_countries[$c_country->code])) console::log_about_duplicate_add('country', $c_country->code);
         static::$cache_countries[$c_country->code] = $c_country;
         static::$cache_countries[$c_country->code]->module_id = $c_module_id;
       }

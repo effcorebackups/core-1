@@ -12,7 +12,7 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {
       foreach ($c_tokens as $c_row_id => $c_token) {
-        if (isset(static::$cache[$c_row_id])) console::add_log_about_duplicate('token', $c_row_id);
+        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_add('token', $c_row_id);
         static::$cache[$c_row_id] = $c_token;
         static::$cache[$c_row_id]->module_id = $c_module_id;
       }
