@@ -106,8 +106,8 @@ namespace effcore\modules\core {
             $params->table_prefix            = $values['table_prefix'][0];
             break;
         }
-        storage::get('files')->changes_register_action('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
-        storage::get('files')->changes_register_action('core', 'update', 'settings/core/keys', [
+        storage::get('files')->changes_register('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
+        storage::get('files')->changes_register('core', 'update', 'settings/core/keys', [
           'cron'            => sha1(rand(0, PHP_INT_MAX)),
           'form_validation' => sha1(rand(0, PHP_INT_MAX)),
           'session'         => sha1(rand(0, PHP_INT_MAX))

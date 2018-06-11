@@ -32,25 +32,25 @@ namespace effcore {
   function entity_name_set($entity_name) {$this->entity_name = $entity_name;}
 
   function select($custom_ids = []) {
-    $storage = storage::get($this->entity_get()->get_storage_id());
+    $storage = storage::get($this->entity_get()->storage_id_get());
     return $storage->select_instance($this, $custom_ids);
   }
 
   function insert() {
-    $storage = storage::get($this->entity_get()->get_storage_id());
+    $storage = storage::get($this->entity_get()->storage_id_get());
     $this->created = core::datetime_get();
     $this->updated = core::datetime_get();
     return $storage->insert_instance($this);
   }
 
   function update() {
-    $storage = storage::get($this->entity_get()->get_storage_id());
+    $storage = storage::get($this->entity_get()->storage_id_get());
     $this->updated = core::datetime_get();
     return $storage->update_instance($this);
   }
 
   function delete() {
-    $storage = storage::get($this->entity_get()->get_storage_id());
+    $storage = storage::get($this->entity_get()->storage_id_get());
     return $storage->delete_instance($this);
   }
 

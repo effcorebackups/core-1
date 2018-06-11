@@ -24,7 +24,7 @@ namespace effcore {
     }
   }
 
-  function changes_register_action($module_id, $action, $dpath, $value = null, $rebuild = true) {
+  function changes_register($module_id, $action, $dpath, $value = null, $rebuild = true) {
   # add new action
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
@@ -36,7 +36,7 @@ namespace effcore {
     }
   }
 
-  function changes_unregister_action($module_id, $action, $dpath) {
+  function changes_unregister($module_id, $action, $dpath) {
     # @todo: make functionality
   }
 
@@ -67,7 +67,7 @@ namespace effcore {
   # init original data
     $data_orig = cache::select('data_original');
     if (!$data_orig) {
-      static::$data_orig = $data_orig = static::data_find_static();
+      static::$data_orig = $data_orig = static::data_static_find();
       cache::update('data_original', $data_orig, '', ['build' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -121,7 +121,7 @@ namespace effcore {
     }
   }
 
-  static function data_find_static() {
+  static function data_static_find() {
     $return = [];
     $parsed = [];
     $modules_path = [];

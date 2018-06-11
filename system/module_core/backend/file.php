@@ -82,7 +82,7 @@ namespace effcore {
   function get_dirs_parts()    {return explode('/', trim($this->dirs, '/'));}
   function get_dirs_relative() {return isset($this->dirs[0]) && $this->dirs[0] == '/' ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 # ─────────────────────────────────────────────────────────────────────
-  function get_name()          {return $this->name;}
+  function name_get()          {return $this->name;}
   function get_type()          {return $this->type;}
   function get_file()          {return $this->type ? $this->name.'.'.$this->type : $this->name;}
 # ─────────────────────────────────────────────────────────────────────

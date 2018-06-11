@@ -39,12 +39,12 @@ namespace effcore {
     }
   }
 
-  function get_name()             {return $this->name;}
-  function get_storage_id()       {return $this->storage_id;}
-  function get_catalog_id()       {return $this->catalog_id;}
-  function get_field_info($name)  {return $this->fields->{$name};}
-  function get_indexes_info()     {return $this->indexes;}
-  function get_constraints_info() {return $this->constraints;}
+  function name_get()             {return $this->name;}
+  function storage_id_get()       {return $this->storage_id;}
+  function catalog_id_get()       {return $this->catalog_id;}
+  function indexes_info_get()     {return $this->indexes;}
+  function constraints_info_get() {return $this->constraints;}
+  function field_info_get($name)  {return $this->fields->{$name};}
   function fields_info_get()      {return $this->fields;}
   function fields_get() {
     return core::array_kmap(
@@ -52,7 +52,7 @@ namespace effcore {
     );
   }
 
-  function get_auto_name() {
+  function auto_name_get() {
     foreach ($this->fields as $name => $info) {
       if ($info->type == 'autoincrement') {
         return $name;
@@ -60,7 +60,7 @@ namespace effcore {
     }
   }
 
-  function get_keys($primary = true, $unique = true) {
+  function keys_get($primary = true, $unique = true) {
     $keys = [];
     foreach ($this->constraints as $c_cstr) {
       if (($c_cstr->type == 'primary key' && $primary) ||
@@ -72,17 +72,17 @@ namespace effcore {
   }
 
   function install() {
-    $storage = storage::get($this->get_storage_id());
+    $storage = storage::get($this->storage_id_get());
     return $storage->install_entity($this);
   }
 
   function uninstall() {
-    $storage = storage::get($this->get_storage_id());
+    $storage = storage::get($this->storage_id_get());
     return $storage->uninstall_entity($this);
   }
 
   function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {
-    $storage = storage::get($this->get_storage_id());
+    $storage = storage::get($this->storage_id_get());
     return $storage->instances_select($this, $conditions, $order, $count, $offset);
   }
 

@@ -51,7 +51,7 @@ namespace effcore {
       $c_file = new file(dir_root.$c_path_relative);
       if ($c_file->is_exist()) {
         $c_info = new \stdClass;
-        $c_info->name = $c_file->get_name();
+        $c_info->name = $c_file->name_get();
         $c_info->type = $c_file->get_type();
         $c_info->file = $c_file->get_file();
         $c_info->mime = $c_file->get_mime();
@@ -167,7 +167,7 @@ namespace effcore {
         if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
         if ($dst_file->is_exist())
             $dst_file->set_name(
-            $dst_file->get_name().'-'.core::get_random_part());
+            $dst_file->name_get().'-'.core::get_random_part());
         if ($src_file->move(
             $dst_file->get_dirs(),
             $dst_file->get_file())) {

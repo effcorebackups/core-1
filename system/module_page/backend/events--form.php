@@ -25,13 +25,13 @@ namespace effcore\modules\page {
   static function on_submit_decoration($form, $fields, &$values) {
     switch ($form->clicked_button_name) {
       case 'save':
-        storage::get('files')->changes_register_action('page', 'update', 'settings/page/color_id',    $values['color_id'][0], false);
-        storage::get('files')->changes_register_action('page', 'update', 'settings/page/color_bg_id', $values['color_bg_id'][0]);
+        storage::get('files')->changes_register('page', 'update', 'settings/page/color_id',    $values['color_id'][0], false);
+        storage::get('files')->changes_register('page', 'update', 'settings/page/color_bg_id', $values['color_bg_id'][0]);
         message::insert('The changes have been saved.');
         break;
       case 'restore':
-        storage::get('files')->changes_unregister_action('page', 'update', 'settings/page/color_id');
-        storage::get('files')->changes_unregister_action('page', 'update', 'settings/page/color_bg_id');
+        storage::get('files')->changes_unregister('page', 'update', 'settings/page/color_id');
+        storage::get('files')->changes_unregister('page', 'update', 'settings/page/color_bg_id');
       # message::insert('The changes have been deleted.');
         message::insert('UNDER CONSTRUCTION'); # @todo: make functionality
         break;
