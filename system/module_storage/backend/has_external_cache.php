@@ -8,7 +8,7 @@ namespace effcore {
 
 # indicates that the cache for marked pattern should be separated by files
   interface has_external_cache {
-    static function get_not_external_properties();
+    static function not_external_properties_get();
   }
 
 }

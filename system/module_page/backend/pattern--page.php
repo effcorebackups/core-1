@@ -62,14 +62,14 @@ namespace effcore {
     }
 
   # render
-    $frontend = $this->get_frontend();
+    $frontend = $this->frontend_get();
     $template = new template('page');
     foreach ($contents->children_select() as $c_region => $c_blocks) {
       $template->set_arg($c_region, $c_blocks->render());
     }
 
     timer::tap('total');
-    $this->set_page_information();
+    $this->page_information_set();
     $template->set_arg('attributes', core::data_to_attr(['lang' => language::get_current()]));
     $template->set_arg('meta',         $frontend->meta->render());
     $template->set_arg('head_styles',  $frontend->styles->render());
@@ -80,7 +80,7 @@ namespace effcore {
     return $template->render();
   }
 
-  function set_page_information() {
+  function page_information_set() {
     console::add_information('Total generation time', locale::format_msecond(timer::get_period('total', 0, 1)));
     console::add_information('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
     console::add_information('User roles', implode(', ', user::get_current()->roles));
@@ -88,13 +88,13 @@ namespace effcore {
     console::add_information('Current language', language::get_current());
   }
 
-  function get_frontend() {
+  function frontend_get() {
     $return = new \stdClass;
     $return->meta    = new node();
     $return->styles  = new node();
     $return->scripts = new node();
     $return->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
-    foreach (static::get_frontend_all() as $c_row_id => $c_item) {
+    foreach (static::frontend_all_get() as $c_row_id => $c_item) {
       if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_item->display))) {
 
@@ -149,7 +149,7 @@ namespace effcore {
   static protected $cache_frontend;
   static protected $current;
 
-  static function get_not_external_properties() {
+  static function not_external_properties_get() {
     return ['display' => 'display', 'access' => 'access'];
   }
 
@@ -179,7 +179,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function get_frontend_all() {
+  static function frontend_all_get() {
     if   (!static::$cache_frontend) static::init();
     return static::$cache_frontend;
   }
