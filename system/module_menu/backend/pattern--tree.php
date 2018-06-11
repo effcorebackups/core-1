@@ -45,7 +45,7 @@ namespace effcore {
                  static::$cache_trees[$id] : null;
   }
 
-  static function get_all() {
+  static function all_get() {
     return static::$cache_trees;
   }
 

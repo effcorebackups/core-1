@@ -126,12 +126,12 @@ namespace effcore {
     return     static::$cache[$name];
   }
 
-  static function get_all() {
+  static function all_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }
 
-  static function get_all_by_module($module) {
+  static function all_by_module_get($module) {
     if   (!static::$cache_orig) static::init();
     return static::$cache_orig[$module];
   }

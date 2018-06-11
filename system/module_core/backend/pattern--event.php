@@ -34,15 +34,15 @@ namespace effcore {
     }
   }
 
-  static function get_all() {
+  static function all_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }
 
   static function start($type, $id = null, $args = []) {
     $return = [];
-    if (!empty(static::get_all()[$type])) {
-      foreach (static::get_all()[$type] as $c_event) {
+    if (!empty(static::all_get()[$type])) {
+      foreach (static::all_get()[$type] as $c_event) {
         if ($id == $c_event->for || $id == null) {
           timer::tap('event call: '.$c_event->for);
           $return[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);

@@ -79,7 +79,7 @@ namespace effcore {
                  static::$cache_tabs[$id] : null;
   }
 
-  static function get_all() {
+  static function all_get() {
     return static::$cache_tabs;
   }
 

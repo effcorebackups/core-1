@@ -8,7 +8,7 @@ namespace effcore {
           abstract class instances_manager {
 
   static function instance_insert($page) {
-    $entities = entity::get_all();
+    $entities = entity::all_get();
     $links = new markup('ul');
     foreach ($entities as $c_entity) {
       $links->child_insert(

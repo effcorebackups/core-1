@@ -36,7 +36,7 @@ namespace effcore {
     return static::$cache[$module_id];
   }
 
-  static function get_all() {
+  static function all_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }

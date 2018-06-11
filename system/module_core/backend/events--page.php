@@ -72,7 +72,7 @@ namespace effcore\modules\core {
   static function on_show_modules($page) {
     $thead = [['Module information', 'State', '']];
     $tbody = [];
-    foreach (module::get_all() as $c_module) {
+    foreach (module::all_get() as $c_module) {
       $c_action_list = new control_actions_list();
       $c_action_list->action_add('/manage/modules/'.$c_module->id.'/enable', 'enable',       $c_module->state != 'always_on');
       $c_action_list->action_add('/manage/modules/'.$c_module->id.'/disable', 'disable',     $c_module->state != 'always_on');

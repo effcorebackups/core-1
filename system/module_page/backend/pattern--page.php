@@ -174,7 +174,7 @@ namespace effcore {
     return static::$current;
   }
 
-  static function get_all() {
+  static function all_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }
@@ -207,7 +207,7 @@ namespace effcore {
   }
 
   static function find_and_render() {
-    foreach (static::get_all() as $c_page) {
+    foreach (static::all_get() as $c_page) {
       $c_args = static::is_displayed_by_current_url($c_page->display);
       if (is_array($c_args)) {
         if (!isset($c_page->access) ||

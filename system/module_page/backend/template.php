@@ -83,7 +83,7 @@ namespace effcore {
                  static::$cache[$row_id] : null;
   }
 
-  static function get_all() {
+  static function all_get() {
     if   (!static::$cache) static::init();
     return static::$cache;
   }
