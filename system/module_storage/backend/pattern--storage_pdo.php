@@ -248,7 +248,7 @@ namespace effcore {
     }
   }
 
-  function select_instances($entity, $conditions = [], $order = [], $limit = 0, $offset = 0) {
+  function instances_select($entity, $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
       $query = ['SELECT', '*', 'FROM', $this->tables($entity->get_catalog_id())];
       if (count($conditions)) array_push($query, 'WHERE',       $this->attributes($conditions));

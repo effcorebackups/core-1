@@ -32,7 +32,7 @@ namespace effcore\modules\user {
         if ($user) {
           $nick = $user->nick;
           if ($user->delete()) {
-            $sessions = entity::get('session')->select_instances(['id_user' => $id_user]);
+            $sessions = entity::get('session')->instances_select(['id_user' => $id_user]);
             if ($sessions) {
               foreach ($sessions as $c_session) {
                 $c_session->delete();

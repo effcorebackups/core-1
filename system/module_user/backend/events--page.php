@@ -16,7 +16,7 @@ namespace effcore\modules\user {
 
   static function on_show_block_roles($page) {
     $thead = [['ID', 'Title', 'Is embed']];
-    $tbody = entity::get('role')->select_instances();
+    $tbody = entity::get('role')->instances_select();
     foreach ($tbody as $c_row) {
       $c_row->is_embed = $c_row->is_embed ? 'Yes' : 'No';
     }
@@ -34,7 +34,7 @@ namespace effcore\modules\user {
                  isset(user::current_get()->roles['admins'])) { # admin
       # get roles
         $roles = [];
-        $storage_roles = entity::get('relation_role_ws_user')->select_instances(['id_user' => $user->id]);
+        $storage_roles = entity::get('relation_role_ws_user')->instances_select(['id_user' => $user->id]);
         if ($storage_roles) {
           foreach ($storage_roles as $c_role) {
             $roles[] = $c_role->id_role;

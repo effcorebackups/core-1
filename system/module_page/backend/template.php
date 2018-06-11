@@ -16,7 +16,7 @@ namespace effcore {
     $this->name = $name;
   # prepare arguments
     foreach ($args as $c_name => $c_value) {
-      static::set_arg($c_name, $c_value);
+      static::arg_set($c_name, $c_value);
     }
   # prepare additional properties
     $info = static::get($name);
@@ -36,7 +36,7 @@ namespace effcore {
     }
   }
 
-  function set_arg($name, $value) {
+  function arg_set($name, $value) {
     $this->args[$name] = $value;
   }
 

@@ -81,13 +81,13 @@ namespace effcore {
     return $storage->uninstall_entity($this);
   }
 
-  function select_instances($conditions = [], $order = [], $count = 0, $offset = 0) {
+  function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {
     $storage = storage::get($this->get_storage_id());
-    return $storage->select_instances($this, $conditions, $order, $count, $offset);
+    return $storage->instances_select($this, $conditions, $order, $count, $offset);
   }
 
-  function insert_instances() {} # todo: make functionality
-  function delete_instances() {} # todo: make functionality
+  function instances_insert() {} # todo: make functionality
+  function instances_delete() {} # todo: make functionality
 
   ###########################
   ### static declarations ###

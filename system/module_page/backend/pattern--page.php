@@ -65,18 +65,18 @@ namespace effcore {
     $frontend = $this->frontend_get();
     $template = new template('page');
     foreach ($contents->children_select() as $c_region => $c_blocks) {
-      $template->set_arg($c_region, $c_blocks->render());
+      $template->arg_set($c_region, $c_blocks->render());
     }
 
     timer::tap('total');
     $this->page_information_set();
-    $template->set_arg('attributes', core::data_to_attr(['lang' => language::current_get()]));
-    $template->set_arg('meta',         $frontend->meta->render());
-    $template->set_arg('head_styles',  $frontend->styles->render());
-    $template->set_arg('head_scripts', $frontend->scripts->render());
-    $template->set_arg('head_title', token::replace(translation::get($this->title)));
-    $template->set_arg('console', console::render()); # @todo: only for admins
-    $template->set_arg('messages', message::render_all());
+    $template->arg_set('attributes', core::data_to_attr(['lang' => language::current_get()]));
+    $template->arg_set('meta',         $frontend->meta->render());
+    $template->arg_set('head_styles',  $frontend->styles->render());
+    $template->arg_set('head_scripts', $frontend->scripts->render());
+    $template->arg_set('head_title', token::replace(translation::get($this->title)));
+    $template->arg_set('console', console::render()); # @todo: only for admins
+    $template->arg_set('messages', message::render_all());
     return $template->render();
   }
 

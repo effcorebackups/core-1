@@ -33,7 +33,7 @@ namespace effcore {
     } else {
       $thead = [['ID', 'EMail', 'Nick', 'Created', 'Is embed', '']];
       $tbody = [];
-      foreach (entity::get('user')->select_instances() as $c_user) {
+      foreach (entity::get('user')->instances_select() as $c_user) {
         $c_action_list = new control_actions_list();
         $c_action_list->action_add('/user/'.$c_user->id, 'view');
         $c_action_list->action_add('/user/'.$c_user->id.'/edit?'.url::make_back_part(), 'edit');
