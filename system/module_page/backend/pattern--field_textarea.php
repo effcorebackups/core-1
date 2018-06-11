@@ -29,6 +29,11 @@ namespace effcore {
     $element->child_insert(new text_simple($value ?: $value_def), 'content');
   }
 
+  function value_get() {
+    $element = $this->child_select('element');
+    return $element->child_select('content')->text_select();
+  }
+
   ###########################
   ### static declarations ###
   ###########################

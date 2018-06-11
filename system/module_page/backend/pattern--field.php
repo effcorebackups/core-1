@@ -247,6 +247,7 @@ namespace effcore {
   static function validate($field, $form, $npath) {
     $name = $field->get_element_name();
     $type = $field->get_element_type();
+  # add validate functionality to non specified fields
     if ($name && $type && get_called_class() == 'effcore\\field') {
       switch ($type) {
         case 'input:checkbox': return field_checkbox   ::validate($field, $form, $npath);

@@ -52,48 +52,51 @@ namespace effcore {
     event::start('on_form_init', $id, [$this, $form_items]);
 
   # if user click the button
-    if (isset($values['form_id'][0]) &&
-              $values['form_id'][0] === $id && isset($values['button'][0])) {
+    if (field::get_new_value('form_id') == $id &&
+        field::get_new_value('button')) {
     # get more info about clicked button
       foreach ($elements as $c_element) {
         if ($c_element instanceof markup &&
             $c_element->tag_name == 'button' &&
             $c_element->attribute_select('type') == 'submit' &&
-            $c_element->attribute_select('value') === $values['button'][0]) {
+            $c_element->attribute_select('value') == field::get_new_value('button')) {
           $this->clicked_button      = $c_element;
           $this->clicked_button_name = $c_element->attribute_select('value');
           break;
         }
       }
-    # call field validate
-      if (empty($this->clicked_button->novalidate)) {
-        foreach ($fields as $c_npath => $c_field) {
-          $c_field::validate($c_field, $this, $c_npath);
+    # do anything only if clicked button is exist
+      if ($this->clicked_button) {
+      # call field validate
+        if (empty($this->clicked_button->novalidate)) {
+          foreach ($fields as $c_npath => $c_field) {
+            $c_field::validate($c_field, $this, $c_npath);
+          }
         }
-      }
-    # call form validate handlers
-      if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [$this, $form_items, &$values]);
-      }
-    # show errors and set error class
-      foreach ($this->errors as $c_npath => $c_errors) {
-        foreach ($c_errors as $c_error) {
-          if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
-          if ($c_error) message::insert($c_error, 'error');
+      # call form validate handlers
+        if (empty($this->clicked_button->novalidate)) {
+          event::start('on_form_validate', $id, [$this, $form_items, &$values]);
         }
-      }
-    # call submit handler (if no errors)
-      if (count($this->errors) == 0) {
-        event::start('on_form_submit', $id, [$this, $fields, &$values]);
-      }
-    # validation cache
-      if (count($this->errors) != 0 &&
-          core::hash_data_get($this->validation_data) != $data_hash) {
-        $this->validation_cache_update($this->validation_data);
-      }
-      if (count($this->errors) == 0 ||
-          count($this->validation_data) == 0) {
-        $this->validation_cache_delete();
+      # show errors and set error class
+        foreach ($this->errors as $c_npath => $c_errors) {
+          foreach ($c_errors as $c_error) {
+            if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
+            if ($c_error) message::insert($c_error, 'error');
+          }
+        }
+      # call submit handler (if no errors)
+        if (count($this->errors) == 0) {
+          event::start('on_form_submit', $id, [$this, $fields, &$values]);
+        }
+      # validation cache
+        if (count($this->errors) != 0 &&
+            core::hash_data_get($this->validation_data) != $data_hash) {
+          $this->validation_cache_update($this->validation_data);
+        }
+        if (count($this->errors) == 0 ||
+            count($this->validation_data) == 0) {
+          $this->validation_cache_delete();
+        }
       }
     }
 

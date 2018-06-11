@@ -6,26 +6,38 @@ translations
     - call: вызов
     - Canvas: Холст
     - cell %%_num: ячейка %%_num
-    - Checkbox (macro): Флаг (макро)
-    - Checkboxes (macro): Флажки (макро)
+    - Checkbox (field_checkbox): Флаг (field_checkbox)
+    - Checkbox (field): Флаг (field)
+    - Checkbox 1: Флаг 1
+    - Checkbox 2 (checked): Флаг 2 (установлен)
+    - Checkbox 3 (disabled): Флаг 3 (отключён)
+    - Checkbox 4 (disabled + checked): Флаг 4 (установлен + отключён)
+    - Checkboxes (container): Флажки (container)
+    - Checkboxes (group_checkboxes): Флажки (group_checkboxes)
     - Checkboxes: Флажки
     - class: класс
     - Classes list: Список классов
     - Classes: Классы
-    - Color (macro): Цвет (макро)
+    - Color (field_color): Цвет (field_color)
+    - Color (field): Цвет (field)
+    - Color (group_palette): Цвет (group_palette)
     - Console: Консоль
-    - Date (macro): Дата (макро)
+    - Date (field_date): Дата (field_date)
+    - Date (field): Дата (field)
     - Demo: Демо
     - Develop: Разработка
     - Diagram: Диаграмма
     - Dynamic block: Динамический блок
     - Element %%_info.: Элемент %%_info.
+    - Elements %%_info.: Элементы %%_info.
     - Elements: Элементы
-    - EMail (macro): Адрес электронной почты (макро)
+    - EMail (field_email): Адрес электронной почты (field_email)
+    - EMail (field): Адрес электронной почты (field)
     - Error message #%%_num.: Сообщение об ошибке #%%_num.
     - event system was initialized: система событий была инициализирована
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
+    - File (field_file): Файл (field_file)
     - head cell %%_num: заглавная ячейка %%_num
     - init.: инициал.
     - interface: интерфейс
@@ -35,31 +47,47 @@ translations
     - Module for development.: Модуль для разработки.
     - Module for testing.: Модуль для тестирования.
     - Notice message #%%_num.: Уведомление #%%_num.
-    - Number (macro): Число (макро)
+    - Number (field_number): Число (field_number)
+    - Number (field): Число (field)
     - Ok message #%%_num.: Хорошее сообщение #%%_num.
     - Ordered list: Упорядоченный список
-    - Password (macro): Пароль (макро)
-    - Phone (macro): Телефон (макро)
+    - Password (field_password): Пароль (field_password)
+    - Password (field): Пароль (field)
+    - Phone (field_phone): Телефон (field_phone)
+    - Phone (field): Телефон (field)
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
+    - Radiobutton (field_radiobutton): Переключатель (field_radiobutton)
+    - Radiobutton (field): Переключатель (field)
+    - Radiobutton 1: Переключатель 1
+    - Radiobutton 2 (checked): Переключатель 2 (установлен)
+    - Radiobutton 3 (disabled): Переключатель 3 (отключён)
     - Radiobutton: Переключатель
-    - Radiobuttons (macro): Переключатели (макро)
+    - Radiobuttons (container): Переключатели (container)
+    - Radiobuttons (group_radiobuttons): Переключатели (group_radiobuttons)
     - Radiobuttons: Переключатели
-    - Range (macro): Диапазон (макро)
-    - Search (macro): Поиск (макро)
-    - Selection list (macro): Список выбора (макро)
-    - Selection list: Список выбора
+    - Range (field_range): Диапазон (field_range)
+    - Range (field): Диапазон (field)
+    - Search (field_search): Поиск (field_search)
+    - Search (field): Поиск (field)
+    - Selection list (field_select): Список выбора (field_select)
+    - Selection list (field): Список выбора (field)
     - Static block: Статический блок
     - Structures: Структуры
-    - Text (macro): Текст (макро)
-    - Textarea (macro): Текстовая область (макро)
+    - Text (field_text): Текст (field_text)
+    - Text (field): Текст (field)
+    - Textarea (field_textarea): Текстовая область (field_textarea)
+    - Textarea (field): Текстовая область (field)
     - Textarea: Текстовая область
-    - Time (macro): Время (макро)
+    - Time (field_time): Время (field_time)
+    - Time (field): Время (field)
+    - Timezone (field_timezone): Часовой пояс (field_timezone)
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - Unordered list: Неупорядоченный список
-    - URL (macro): URL (макро)
+    - URL (field_url): URL (field_url)
+    - URL (field): URL (field)
     - Warning message #%%_num.: Предупреждающее сообщение #%%_num.

@@ -56,6 +56,7 @@ forms
         children
       # field file
         - file|field_file
+            title: File (field_file)
             max_file_size: 10K
             upload_dir: demo/
             allowed_types
@@ -72,7 +73,7 @@ forms
             - multiple: multiple
       # field text
         - text|field
-            title: Text
+            title: Text (field)
             description|text
               text: Element %%_info.
               args
@@ -91,7 +92,7 @@ forms
                 - maxlength: 255
                 - pattern: %^[a-zA-Z0-9 ]+$%
         - text_macro|field_text
-            title: Text (macro)
+            title: Text (field_text)
             description|text
               text: Element %%_info.
               args
@@ -103,7 +104,7 @@ forms
             - pattern: %^[a-zA-Z0-9 ]+$%
       # field password
         - password|field
-            title: Password
+            title: Password (field)
             description|text
               text: Element %%_info.
               args
@@ -122,7 +123,7 @@ forms
                 - maxlength: 255
                 - autocomplete: off
         - password_macro|field_password
-            title: Password (macro)
+            title: Password (field_password)
             description|text
               text: Element %%_info.
               args
@@ -132,7 +133,7 @@ forms
             - value: text in password
       # field search
         - search|field
-            title: Search
+            title: Search (field)
             description|text
               text: Element %%_info.
               args
@@ -150,7 +151,7 @@ forms
                 - minlength: 5
                 - maxlength: 255
         - search_macro|field_search
-            title: Search (macro)
+            title: Search (field_search)
             description|text
               text: Element %%_info.
               args
@@ -160,7 +161,7 @@ forms
             - value: text in search 2
       # field url
         - url|field
-            title: URL
+            title: URL (field)
             description|text
               text: Element %%_info.
               args
@@ -178,7 +179,7 @@ forms
                 - minlength: 5
                 - maxlength: 255
         - url_macro|field_url
-            title: URL (macro)
+            title: URL (field_url)
             description|text
               text: Element %%_info.
               args
@@ -188,7 +189,7 @@ forms
             - value: http://2.example.com
       # field phone
         - phone|field
-            title: Phone
+            title: Phone (field)
             description|text
               text: Use international format of mobile phone numbers.
             attributes
@@ -204,7 +205,7 @@ forms
                 - minlength: 5
                 - maxlength: 15
         - phone_macro|field_phone
-            title: Phone (macro)
+            title: Phone (field_phone)
             description|text
               text: Use international format of mobile phone numbers.
             element_attributes
@@ -212,7 +213,7 @@ forms
             - value: &#43;0003334444444
       # field email
         - email|field
-            title: EMail
+            title: EMail (field)
             description|text
               text: Element %%_info.
               args
@@ -231,7 +232,7 @@ forms
                 - maxlength: 64
                 - multiple: multiple
         - email_macro|field_email
-            title: EMail (macro)
+            title: EMail (field_email)
             description|text
               text: Element %%_info.
               args
@@ -242,7 +243,7 @@ forms
             - multiple: multiple
       # field number
         - number|field
-            title: Number
+            title: Number (field)
             description|text
               text: Element %%_info.
               args
@@ -261,7 +262,7 @@ forms
                 - max: +1000
                 - step: 0.2
         - number_macro|field_number
-            title: Number (macro)
+            title: Number (field_number)
             description|text
               text: Element %%_info.
               args
@@ -273,7 +274,7 @@ forms
             - step: 0.2
       # field range
         - range|field
-            title: Range
+            title: Range (field)
             description|text
               text: Element %%_info.
               args
@@ -292,7 +293,7 @@ forms
                 - max: +1
                 - step: 0.2
         - range_macro|field_range
-            title: Range (macro)
+            title: Range (field_range)
             description|text
               text: Element %%_info.
               args
@@ -304,7 +305,7 @@ forms
             - step: 0.2
       # field date
         - date|field
-            title: Date
+            title: Date (field)
             description|text
               text: Element %%_info.
               args
@@ -322,7 +323,7 @@ forms
                 - min: 2000-01-01
                 - max: 2050-01-01
         - date_macro|field_date
-            title: Date (macro)
+            title: Date (field_date)
             description|text
               text: Element %%_info.
               args
@@ -331,7 +332,7 @@ forms
             - name: date_macro
       # field time
         - time|field
-            title: Time
+            title: Time (field)
             description|text
               text: Element %%_info.
               args
@@ -350,7 +351,7 @@ forms
                 - max: 05:06:00
                 - step: 60
         - time_macro|field_time
-            title: Time (macro)
+            title: Time (field_time)
             description|text
               text: Element %%_info.
               args
@@ -359,7 +360,7 @@ forms
             - name: time_macro
       # field select timezone
         - select_timezone|field_timezone
-            title: Timezone
+            title: Timezone (field_timezone)
             element_attributes
             - name: select_timezone
             - required: required
@@ -367,7 +368,7 @@ forms
             - 424: 424
       # field color
         - color|field
-            title: Color
+            title: Color (field)
             description|text
               text: Element %%_info.
               args
@@ -383,13 +384,13 @@ forms
                 - value: #ffffff
                 - required: required
         - color_macro|field_color
-            title: Color (macro)
+            title: Color (field_color)
             element_attributes
             - name: color_macro
             - value: #eeeeee
       # field textarea
         - textarea|field
-            title: Textarea
+            title: Textarea (field)
             description|text
               text: Element %%_info.
               args
@@ -409,7 +410,7 @@ forms
                 - content|text_simple
                     text: text in textarea 1
         - textarea_macro|field_textarea
-            title: Textarea (macro)
+            title: Textarea (field_textarea)
             description|text
               text: Element %%_info.
               args
@@ -419,7 +420,7 @@ forms
             - value: text in textarea 2
       # field select
         - select|field
-            title: Selection list
+            title: Selection list (field)
             description|text
               text: Element %%_info.
               args
@@ -492,7 +493,7 @@ forms
                             text: Option 1.6
       # field select macro
         - select_macro|field_select
-            title: Selection list (macro)
+            title: Selection list (field_select)
             description|text
               text: Element %%_info.
               args
@@ -522,7 +523,7 @@ forms
             children
           # field checkbox
             - checkbox|field
-                title: Checkbox
+                title: Checkbox (field)
                 title_position: bottom
                 description|text
                   text: Element %%_info.
@@ -539,7 +540,7 @@ forms
                     - value: checkbox
                     - checked: checked
             - checkbox_macro|field_checkbox
-                title: Checkbox (macro)
+                title: Checkbox (field_checkbox)
                 description|text
                   text: Element %%_info.
                   args
@@ -551,9 +552,9 @@ forms
           # field checkboxes
             - checkboxes|container
                 tag_name: x-group
-                title: Checkboxes
+                title: Checkboxes (container)
                 description|text
-                  text: Element %%_info.
+                  text: Elements %%_info.
                   args
                   - info: &lt;input type="checkbox"&gt;
                 attributes
@@ -613,18 +614,18 @@ forms
                         - checked: checked
           # field checkboxes macro
             - checkboxes_macro|group_checkboxes
-                title: Checkboxes (macro)
+                title: Checkboxes (group_checkboxes)
                 description|text
-                  text: Element %%_info.
+                  text: Elements %%_info.
                   args
                   - info: &lt;input type="checkbox"&gt;
                 element_attributes
                 - name: checkboxes_macro[]
                 values
-                - checkboxes_macro_1: Checkbox macro 1
-                - checkboxes_macro_2: Checkbox macro 2 (checked)
-                - checkboxes_macro_3: Checkbox macro 3 (disabled)
-                - checkboxes_macro_4: Checkbox macro 4 (disabled + checked)
+                - checkboxes_macro_1: Checkbox 1
+                - checkboxes_macro_2: Checkbox 2 (checked)
+                - checkboxes_macro_3: Checkbox 3 (disabled)
+                - checkboxes_macro_4: Checkbox 4 (disabled + checked)
                 disabled
                 - checkboxes_macro_3: checkboxes_macro_3
                 - checkboxes_macro_4: checkboxes_macro_4
@@ -639,94 +640,102 @@ forms
             title: Radiobuttons
             title_tag_name: legend
             children
-          # field radiobutton macro
-            - radio_macro_1|field_radiobutton
-                title: Radiobutton 1 (macro)
-                description|text
-                  text: Element %%_info.
-                  args
-                  - info: &lt;input type="radio"&gt;
-                element_attributes
-                - name: radio_macro
-                - value: radio_macro_1
-            - radio_macro_2|field_radiobutton
-                title: Radiobutton 2 (macro)
-                description|text
-                  text: Element %%_info.
-                  args
-                  - info: &lt;input type="radio"&gt;
-                element_attributes
-                - name: radio_macro
-                - value: radio_macro_2
-          # field radiobuttons
-            - radios|container
-                tag_name: x-group
-                title: Radiobuttons
+          # field radiobutton
+            - radiobutton|field
+                title: Radiobutton (field)
+                title_position: bottom
                 description|text
                   text: Element %%_info.
                   args
                   - info: &lt;input type="radio"&gt;
                 attributes
-                - x-type: radiobuttons
+                - x-type: radiobutton
                 children
-                - radios_1|field
-                    title: Radio 1
-                    title_position: bottom
+                - element|markup_simple
+                    tag_name: input
                     attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radios
-                        - value: radios_1
-                - radios_2|field
-                    title: Radio 2 (checked)
-                    title_position: bottom
-                    attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radios
-                        - value: radios_2
-                        - checked: checked
-                - radios_3|field
-                    title: Radio 3 (disabled)
-                    title_position: bottom
-                    attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radios
-                        - value: radios_3
-                        - disabled: disabled
-          # field radiobuttons macro
-            - radios_macro|group_radiobuttons
-                title: Radiobuttons (macro)
+                    - type: radio
+                    - name: radiobutton
+                    - value: radiobutton_1
+                    - checked: checked
+            - radiobutton_macro|field_radiobutton
+                title: Radiobutton (field_radiobutton)
                 description|text
                   text: Element %%_info.
                   args
                   - info: &lt;input type="radio"&gt;
                 element_attributes
-                - name: radios_macro
+                - name: radiobutton
+                - value: radiobutton_2
+          # field radiobuttons
+            - radiobuttons|container
+                tag_name: x-group
+                title: Radiobuttons (container)
+                description|text
+                  text: Elements %%_info.
+                  args
+                  - info: &lt;input type="radio"&gt;
+                attributes
+                - x-type: radiobuttons
+                children
+                - radiobuttons_1|field
+                    title: Radiobutton 1
+                    title_position: bottom
+                    attributes
+                    - x-type: radiobutton
+                    children
+                    - element|markup_simple
+                        tag_name: input
+                        attributes
+                        - type: radio
+                        - name: radiobuttons
+                        - value: radiobuttons_1
+                - radiobuttons_2|field
+                    title: Radiobutton 2 (checked)
+                    title_position: bottom
+                    attributes
+                    - x-type: radiobutton
+                    children
+                    - element|markup_simple
+                        tag_name: input
+                        attributes
+                        - type: radio
+                        - name: radiobuttons
+                        - value: radiobuttons_2
+                        - checked: checked
+                - radiobuttons_3|field
+                    title: Radiobutton 3 (disabled)
+                    title_position: bottom
+                    attributes
+                    - x-type: radiobutton
+                    children
+                    - element|markup_simple
+                        tag_name: input
+                        attributes
+                        - type: radio
+                        - name: radiobuttons
+                        - value: radiobuttons_3
+                        - disabled: disabled
+          # field radiobuttons macro
+            - radiobuttons_macro|group_radiobuttons
+                title: Radiobuttons (group_radiobuttons)
+                description|text
+                  text: Elements %%_info.
+                  args
+                  - info: &lt;input type="radio"&gt;
+                element_attributes
+                - name: radiobuttons_macro
                 values
-                - radios_macro_1: Radio macro 1
-                - radios_macro_2: Radio macro 2 (checked)
-                - radios_macro_3: Radio macro 3 (disabled)
+                - radiobuttons_macro_1: Radiobutton 1
+                - radiobuttons_macro_2: Radiobutton 2 (checked)
+                - radiobuttons_macro_3: Radiobutton 3 (disabled)
                 disabled
-                - radios_macro_3: radios_macro_3
+                - radiobuttons_macro_3: radiobuttons_macro_3
                 checked
-                - radios_macro_2: radios_macro_2
+                - radiobuttons_macro_2: radiobuttons_macro_2
           # field radiobuttons color macro
             - palette|group_palette
-                title: Color
+                title: Color (group_palette)
                 element_attributes
                 - name: color
     - button_submit|markup

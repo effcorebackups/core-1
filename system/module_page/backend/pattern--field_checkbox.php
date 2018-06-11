@@ -15,6 +15,12 @@ namespace effcore {
     'name' => 'checkbox'
   ];
 
+  function value_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('checked') == 'checked' ?
+           $element->attribute_select('value') : '';
+  }
+
   ###########################
   ### static declarations ###
   ###########################

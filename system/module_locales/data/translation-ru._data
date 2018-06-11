@@ -89,7 +89,7 @@ translations
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
     - Field "%%_title" does not support loading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
-    - Field "%%_title" must be checked!: Поле "%%_title" должно быть отмечено!
+    - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_num characters!: Поле "%%_title" должно содержать максимум %%_num символов!
     - Field "%%_title" must contain a minimum of %%_num characters!: Поле "%%_title" должно содержать минимум %%_num символов!
