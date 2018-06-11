@@ -73,12 +73,12 @@ namespace effcore {
 
   function install() {
     $storage = storage::get($this->storage_id_get());
-    return $storage->install_entity($this);
+    return $storage->entity_install($this);
   }
 
   function uninstall() {
     $storage = storage::get($this->storage_id_get());
-    return $storage->uninstall_entity($this);
+    return $storage->entity_uninstall($this);
   }
 
   function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {

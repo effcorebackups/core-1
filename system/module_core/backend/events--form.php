@@ -112,7 +112,7 @@ namespace effcore\modules\core {
           'form_validation' => sha1(rand(0, PHP_INT_MAX)),
           'session'         => sha1(rand(0, PHP_INT_MAX))
         ]);
-        storage::reset_cache();
+        storage::cache_reset();
         event::start('on_module_install');
         message::insert('Modules was installed.');
         $form->child_delete('storage');

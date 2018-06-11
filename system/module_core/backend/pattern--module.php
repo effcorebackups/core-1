@@ -14,7 +14,7 @@ namespace effcore {
   public $state;
   public $path;
 
-  function get_id()          {return $this->id;}
+  function id_get()          {return $this->id;}
   function get_title()       {return $this->title;}
   function get_description() {return $this->description;}
   function get_version()     {return $this->version;}

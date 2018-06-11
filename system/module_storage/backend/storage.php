@@ -22,7 +22,7 @@ namespace effcore {
     }
   }
 
-  static function reset_cache() {
+  static function cache_reset() {
     static::$cache = [];
   }
 

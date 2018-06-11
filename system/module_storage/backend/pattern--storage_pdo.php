@@ -87,10 +87,10 @@ namespace effcore {
     }
   }
 
-  function get_id()           {return $this->id;}
-  function get_driver()       {return $this->driver;}
-  function get_table_prefix() {return $this->table_prefix;}
-  function get_queries()      {return $this->queries;}
+  function id_get()           {return $this->id;}
+  function driver_get()       {return $this->driver;}
+  function table_prefix_get() {return $this->table_prefix;}
+  function queries_get()      {return $this->queries;}
 
   function transaction_begin()     {if ($this->init()) return $this->connection->beginTransaction();}
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
@@ -192,7 +192,7 @@ namespace effcore {
   ### entities ###
   ################
 
-  function install_entity($entity) {
+  function entity_install($entity) {
     if ($this->init()) {
       $fields = [];
       foreach ($entity->fields_info_get() as $c_name => $c_info) {
@@ -242,7 +242,7 @@ namespace effcore {
     }
   }
 
-  function uninstall_entity($entity) {
+  function entity_uninstall($entity) {
     if ($this->init()) {
       return $this->query('DROP', 'TABLE', $this->tables($entity->catalog_id_get()));
     }
@@ -263,7 +263,7 @@ namespace effcore {
     }
   }
 
-  function select_instance($instance) { # return: null | instance
+  function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->keys_get());
@@ -281,7 +281,7 @@ namespace effcore {
     }
   }
 
-  function insert_instance($instance) { # return: null | instance | instance + new_id
+  function instance_insert($instance) { # return: null | instance | instance + new_id
     if ($this->init()) {
       $entity = $instance->entity_get();
       $values = array_intersect_key($instance->values_get(), $entity->fields_get());
@@ -299,7 +299,7 @@ namespace effcore {
     }
   }
 
-  function update_instance($instance) { # return: null | instance
+  function instance_update($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->keys_get(true, false));
@@ -314,7 +314,7 @@ namespace effcore {
     }
   }
 
-  function delete_instance($instance) { # return: null | instance + empty(values)
+  function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->keys_get(true, false));

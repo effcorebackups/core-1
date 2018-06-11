@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
   static function on_storage_init_after($storage) {
     timer::tap('storage init');
     console::add_log('storage', 'init.', 'storage %%_id was initialized', 'ok',
-      timer::get_period('storage init', -1, -2), ['id' => $storage->get_id().' | storage_pdo']
+      timer::get_period('storage init', -1, -2), ['id' => $storage->id_get().' | storage_pdo']
     );
   }
 
