@@ -29,8 +29,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_date;}
-  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_date;}
+  static function value_min_get($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_date;}
+  static function value_max_get($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_date;}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');

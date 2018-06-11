@@ -57,7 +57,7 @@ namespace effcore {
   }
 
   function captcha_generate() {
-    $glyphs = static::get_glyphs();
+    $glyphs = static::glyphs_get();
     $characters = '';
     $canvas = new canvas_svg(5 * $this->length, 15, 5);
     $canvas->fill('#000000', 0, 0, null, null, $this->noise);
@@ -122,7 +122,7 @@ namespace effcore {
     }
   }
 
-  static function get_glyphs() {
+  static function glyphs_get() {
     if   (!static::$glyphs) static::init();
     return static::$glyphs;
   }

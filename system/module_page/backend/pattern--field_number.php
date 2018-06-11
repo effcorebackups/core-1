@@ -48,8 +48,8 @@ namespace effcore {
     }
   }
 
-  static function get_min_value($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
-  static function get_max_value($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
+  static function value_min_get($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
+  static function value_max_get($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
 
   static function validate_value($field, $form, $npath, $element, &$new_value) {
     if (core::validate_number($new_value) === false) {
@@ -65,8 +65,8 @@ namespace effcore {
   static function validate_step($field, $form, $npath, $element, &$new_value) {
     if (strlen($new_value)) {
       $step = $element->attribute_select('step') ?: 1;
-      $min = static::get_min_value($element);
-      $max = static::get_max_value($element);
+      $min = static::value_min_get($element);
+      $max = static::value_max_get($element);
       if ((int)round(($min - $new_value) / $step, 5) !=
                round(($min - $new_value) / $step, 5)) {
         $form->add_error($npath.'/element',

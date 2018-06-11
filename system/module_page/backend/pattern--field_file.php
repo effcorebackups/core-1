@@ -28,11 +28,11 @@ namespace effcore {
   function build() {
     parent::build();
     $this->description = translation::get('Maximal file size: %%_value.', [
-      'value' => locale::format_human_bytes($this->get_max_file_size())
+      'value' => locale::format_human_bytes($this->file_size_max_get())
     ]);
   }
 
-  function get_max_file_size() {
+  function file_size_max_get() {
     $bytes_1 = core::is_human_bytes($this->max_file_size) ?
                core::human_to_bytes($this->max_file_size) : $this->max_file_size;
     $bytes_2 = core::is_human_bytes(ini_get('upload_max_filesize')) ?
@@ -271,7 +271,7 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $npath, $element, &$new_values) {
-    $max_size = $field->get_max_file_size();
+    $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {
       if (count($field->allowed_types) &&
          !isset($field->allowed_types[$c_new_value->type])) {

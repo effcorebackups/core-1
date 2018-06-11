@@ -80,7 +80,7 @@ namespace effcore {
   }
 
   static function validate_min($field, $form, $npath, $element, &$new_value) {
-    $min = static::get_min_value($element);
+    $min = static::value_min_get($element);
     if (strlen($new_value) && $new_value < $min) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
@@ -92,7 +92,7 @@ namespace effcore {
   }
 
   static function validate_max($field, $form, $npath, $element, &$new_value) {
-    $max = static::get_max_value($element);
+    $max = static::value_max_get($element);
     if (strlen($new_value) && $new_value > $max) {
       $form->add_error($npath.'/element',
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.

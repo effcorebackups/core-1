@@ -79,7 +79,7 @@ namespace effcore {
     $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $allowed_values = static::get_allowed_values($element);
+      $allowed_values = static::allowed_values_get($element);
       $new_values = static::new_value_multiple_get($name);
       $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
       $result = static::validate_required($field, $form, $npath, $element, $new_values) &&
@@ -95,10 +95,11 @@ namespace effcore {
     }
   }
 
-  static function get_allowed_values($element) {
+  static function allowed_values_get($element) {
     $return = [];
     foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node && $c_item->tag_name == 'option' &&
+      if ($c_item instanceof node       &&
+          $c_item->tag_name == 'option' &&
          !$c_item->attribute_select('disabled')) {
         $return[] = $c_item->attribute_select('value');
       }
