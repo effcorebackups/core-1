@@ -97,7 +97,7 @@ namespace effcore {
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();}
 
   function query_to_string(...$query) {
-    return implode(' ', core::array_select_values_recursive($query)).';';
+    return implode(' ', core::array_values_select_recursive($query)).';';
   }
 
   function query(...$query) {

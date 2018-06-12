@@ -16,14 +16,14 @@ namespace effcore {
   static function autoload($name) {
     console::log_add('autoload', 'search', $name, 'ok');
     $name = strtolower($name);
-    if (isset(static::get_structures_map()[$name])) {
-      $c_item_info = static::get_structures_map()[$name];
+    if (isset(static::structures_map_get()[$name])) {
+      $c_item_info = static::structures_map_get()[$name];
       $c_file = new file($c_item_info->file);
       $c_file->insert();
     }
   }
 
-  static function get_structures_map() {
+  static function structures_map_get() {
     $cache = cache::select('structures');
     if ($cache) {
       return $cache;
@@ -81,27 +81,27 @@ namespace effcore {
     }
   }
 
-  static function class_get_parts($class_name) {
+  static function class_parts_get($class_name) {
     return explode('\\', $class_name);
   }
 
-  static function class_handler_get_part($handler, $partname) {
+  static function class_handler_part_get($handler, $partname) {
     $parts = explode('::', $handler);
     if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
     if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
   }
 
   static function class_is_local($class_name) {
-    $parts = static::class_get_parts($class_name);
+    $parts = static::class_parts_get($class_name);
     return $parts[0] === __NAMESPACE__;
   }
 
-  static function class_get_short_name($class_name) {
-    $parts = static::class_get_parts($class_name);
+  static function class_name_short_get($class_name) {
+    $parts = static::class_parts_get($class_name);
     return end($parts);
   }
 
-  static function class_get_new_instance($class_name, $args = [], $use_constructor = false) {
+  static function class_instance_new_get($class_name, $args = [], $use_constructor = false) {
     $reflection = new \ReflectionClass($class_name);
     return $use_constructor ? $reflection->newInstanceArgs($args) :
                               $reflection->newInstanceWithoutConstructor();
@@ -178,7 +178,7 @@ namespace effcore {
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
         $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\has_post_init');
         if ($c_is_post_constructor)
-              $return = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
+              $return = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else  $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
@@ -223,15 +223,15 @@ namespace effcore {
     return array_combine($array, $array);
   }
 
-  static function array_deep_clone($array) {
+  static function array_clone_deep($array) {
     return unserialize(serialize($array));
   }
 
-  static function array_select_values_recursive(&$array, $all = false, $dpath = '') {
+  static function array_values_select_recursive(&$array, $all = false, $dpath = '') {
     $return = [];
     foreach ($array as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value)) $return += static::array_select_values_recursive($c_value, $all, $c_dpath);
+      if (is_array($c_value)) $return += static::array_values_select_recursive($c_value, $all, $c_dpath);
       if (is_array($c_value) == false || $all) $return[$c_dpath] = &$c_value;
     }
     return $return;
@@ -249,26 +249,26 @@ namespace effcore {
   ### mix of array/object functions ###
   #####################################
 
-  static function &arrobj_select_value(&$data, $name) {
+  static function &arrobj_value_select(&$data, $name) {
     if (gettype($data) == 'array')  return $data  [$name];
     if (gettype($data) == 'object') return $data->{$name};
   }
 
-  static function arrobj_insert_value(&$data, $name, $value) {
+  static function arrobj_value_insert(&$data, $name, $value) {
     if (gettype($data) == 'array')  $data  [$name] = $value;
     if (gettype($data) == 'object') $data->{$name} = $value;
   }
 
-  static function arrobj_delete_child(&$data, $name) {
+  static function arrobj_child_delete(&$data, $name) {
     if (gettype($data) == 'array')  unset($data  [$name]);
     if (gettype($data) == 'object') unset($data->{$name});
   }
 
-  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
+  static function arrobj_values_select_recursive(&$data, $all = false, $dpath = '') {
     $return = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))) $return += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value))) $return += static::arrobj_values_select_recursive($c_value, $all, $c_dpath);
       if ((is_array($c_value) || is_object($c_value)) == false || $all) $return[$c_dpath] = &$c_value;
     }
     return $return;
@@ -278,11 +278,11 @@ namespace effcore {
   ### dpath functions ###
   #######################
 
-  static function dpath_get_chain(&$data, $dpath) {
+  static function dpath_chain_get(&$data, $dpath) {
     $chain = [];
     $c_pointer = $data;
     foreach (explode('/', $dpath) as $c_part) {
-      $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
+      $c_pointer = &static::arrobj_value_select($c_pointer, $c_part);
       $chain[$c_part] = &$c_pointer;
     }
     return $chain;
@@ -447,7 +447,7 @@ namespace effcore {
     return md5(serialize($data));
   }
 
-  static function get_random_part() {
+  static function random_part_get() {
     $hex_time = str_pad(dechex(time()),              8, '0', STR_PAD_LEFT);
     $hex_rand = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
     return $hex_time.$hex_rand;
@@ -477,7 +477,7 @@ namespace effcore {
   ### server information ###
   ##########################
 
-  static function server_full_name_get() {
+  static function server_name_full_get() {
     $matches = [];
     preg_match('%^(?<full_name>(?<name>[a-z0-9-]+)/(?<version>[a-z0-9.]+))|'.
                  '(?<full_name_unknown>.*)%i', $_SERVER['SERVER_SOFTWARE'], $matches);

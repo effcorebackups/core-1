@@ -167,7 +167,7 @@ namespace effcore {
         if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
         if ($dst_file->is_exist())
             $dst_file->set_name(
-            $dst_file->name_get().'-'.core::get_random_part());
+            $dst_file->name_get().'-'.core::random_part_get());
         if ($src_file->move(
             $dst_file->get_dirs(),
             $dst_file->get_file())) {
@@ -241,14 +241,14 @@ namespace effcore {
 
   static function sanitize($field, $form, $npath, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: core::get_random_part();
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: core::random_part_get();
       $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');
     # special case for iis and apache
       if ($c_value->file == 'web.config' ||
           $c_value->file == '.htaccess') {
-        $c_value->name = $c_value->file = core::get_random_part();
+        $c_value->name = $c_value->file = core::random_part_get();
         $c_value->type = '';
       }
     }
