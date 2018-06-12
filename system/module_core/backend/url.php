@@ -69,10 +69,10 @@ namespace effcore {
     $this->anchor   = !empty($matches['anchor'])   ? $matches['anchor']   : '';
   }
 
-  function get_type()     {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
+  function type_get()     {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
   function get_protocol() {return $this->protocol;}
   function get_domain()   {return $this->domain;}
-  function get_path()     {return $this->path;}
+  function path_get()     {return $this->path;}
   function get_query()    {return $this->query;}
   function get_anchor()   {return $this->anchor;}
   function get_relative() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
@@ -90,7 +90,7 @@ namespace effcore {
                  $args[$arg_id] : null;
   }
 
-  function get_path_arg($arg_id) {
+  function path_arg_get($arg_id) {
     $args = explode('/', $this->path);
     return isset($args[$arg_id]) ?
                  $args[$arg_id] : null;

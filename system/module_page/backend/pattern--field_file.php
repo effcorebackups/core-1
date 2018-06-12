@@ -52,11 +52,11 @@ namespace effcore {
       if ($c_file->is_exist()) {
         $c_info = new \stdClass;
         $c_info->name = $c_file->name_get();
-        $c_info->type = $c_file->get_type();
-        $c_info->file = $c_file->get_file();
-        $c_info->mime = $c_file->get_mime();
-        $c_info->size = $c_file->get_size();
-        $c_info->old_path = $c_file->get_path();
+        $c_info->type = $c_file->type_get();
+        $c_info->file = $c_file->file_get();
+        $c_info->mime = $c_file->mime_get();
+        $c_info->size = $c_file->size_get();
+        $c_info->old_path = $c_file->path_get();
         $c_info->error = 0;
         $this->pool_old[$c_id] = $c_info;
       }
@@ -127,8 +127,8 @@ namespace effcore {
   # prepare return
     $return = [];
     $return_paths = [];
-    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
-    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->get_path_relative();}
+    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->path_relative_get();}
+    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->path_relative_get();}
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_deleted_items_set('old', []);
@@ -145,13 +145,13 @@ namespace effcore {
         $src_file = new file($c_info->tmp_path);
         $dst_file = new file(temporary::directory.'validation/'.$form->validation_cache_get_date().'/'.$form->validation_id.'-'.$c_id);
         if ($src_file->move_uploaded(
-            $dst_file->get_dirs(),
-            $dst_file->get_file())) {
-          $c_info->pre_path = $dst_file->get_path();
+            $dst_file->dirs_get(),
+            $dst_file->file_get())) {
+          $c_info->pre_path = $dst_file->path_get();
           unset($c_info->tmp_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]), 'error');
-          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]);
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]), 'error');
+          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
           unset($this->pool_new[$c_id]);
         }
       }
@@ -163,19 +163,19 @@ namespace effcore {
       if (isset($c_info->pre_path)) {
         $src_file = new file($c_info->pre_path);
         $dst_file = new file(dynamic::dir_files.$this->upload_dir.$c_info->file);
-        if ($this->fixed_name) $dst_file->set_name(token::replace($this->fixed_name));
-        if ($this->fixed_type) $dst_file->set_type(token::replace($this->fixed_type));
+        if ($this->fixed_name) $dst_file->name_set(token::replace($this->fixed_name));
+        if ($this->fixed_type) $dst_file->type_set(token::replace($this->fixed_type));
         if ($dst_file->is_exist())
-            $dst_file->set_name(
+            $dst_file->name_set(
             $dst_file->name_get().'-'.core::random_part_get());
         if ($src_file->move(
-            $dst_file->get_dirs(),
-            $dst_file->get_file())) {
-          $c_info->new_path = $dst_file->get_path();
+            $dst_file->dirs_get(),
+            $dst_file->file_get())) {
+          $c_info->new_path = $dst_file->path_get();
           unset($c_info->pre_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]), 'error');
-          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->get_dirs(), 'to' => $dst_file->get_dirs_relative()]);
+          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]), 'error');
+          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
         }
       }
     }

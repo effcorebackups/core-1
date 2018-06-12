@@ -19,7 +19,7 @@ namespace effcore {
   function get_description() {return $this->description;}
   function get_version()     {return $this->version;}
   function get_state()       {return $this->state;}
-  function get_path()        {return $this->path;}
+  function path_get()        {return $this->path;}
 
   ###########################
   ### static declarations ###

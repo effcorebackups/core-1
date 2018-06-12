@@ -119,7 +119,7 @@ namespace effcore\modules\user {
         if (isset($avatar_info[0]->path) &&
                   $avatar_info[0]->path) {
            $c_file = new file($avatar_info[0]->path);
-           $user->avatar_path_relative = $c_file->get_path_relative(); } else {
+           $user->avatar_path_relative = $c_file->path_relative_get(); } else {
            $user->avatar_path_relative = '';
         }
         if ($user->update()) {

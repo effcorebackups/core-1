@@ -102,7 +102,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->favicons)) {
           foreach ($c_item->favicons as $c_icon) {
-            $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->get_path().$c_icon->file);
+            $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path_get().$c_icon->file);
             $return->meta->child_insert(new markup_simple('link', [
               'rel'   => $c_icon->rel,
               'type'  => $c_icon->type,
@@ -116,7 +116,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->styles)) {
           foreach ($c_item->styles as $c_style) {
-            $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->get_path().$c_style->file);
+            $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path_get().$c_style->file);
             $return->styles->child_insert(new markup_simple('link', [
               'rel'   => 'stylesheet',
               'media' => $c_style->media,
@@ -129,7 +129,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->scripts)) {
           foreach ($c_item->scripts as $c_script) {
-            $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->get_path().$c_script->file);
+            $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path_get().$c_script->file);
             $return->scripts->child_insert(new markup('script', [
               'src' => $c_url->get_relative()
             ]));
@@ -197,10 +197,10 @@ namespace effcore {
     $args = [];
     if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::current_get()->get_protocol(), $args)) ||
         ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::current_get()->get_domain(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::current_get()->get_path(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::current_get()->path_get(),     $args)) ||
         ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::current_get()->get_query(),    $args)) ||
         ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::current_get()->get_anchor(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::current_get()->get_type(),     $args)) ||
+        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::current_get()->type_get(),     $args)) ||
         ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::current_get()->get_full(),     $args)) ) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }

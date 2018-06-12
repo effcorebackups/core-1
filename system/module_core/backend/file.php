@@ -73,41 +73,41 @@ namespace effcore {
     $this->type = isset($matches['type']) ? ltrim($matches['type'], '.') : '';
   }
 
-  function set_dirs($dirs) {$this->dirs = $dirs;}
-  function set_name($name) {$this->name = $name;}
-  function set_type($type) {$this->type = $type;}
-  function set_data($data) {$this->data = $data;}
+  function dirs_set($dirs) {$this->dirs = $dirs;}
+  function name_set($name) {$this->name = $name;}
+  function type_set($type) {$this->type = $type;}
+  function data_set($data) {$this->data = $data;}
 
-  function get_dirs()          {return $this->dirs;}
-  function get_dirs_parts()    {return explode('/', trim($this->dirs, '/'));}
-  function get_dirs_relative() {return isset($this->dirs[0]) && $this->dirs[0] == '/' ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
+  function dirs_get()          {return $this->dirs;}
+  function dirs_parts_get()    {return explode('/', trim($this->dirs, '/'));}
+  function dirs_relative_get() {return isset($this->dirs[0]) && $this->dirs[0] == '/' ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 # ─────────────────────────────────────────────────────────────────────
   function name_get()          {return $this->name;}
-  function get_type()          {return $this->type;}
-  function get_file()          {return $this->type ? $this->name.'.'.$this->type : $this->name;}
+  function type_get()          {return $this->type;}
+  function file_get()          {return $this->type ? $this->name.'.'.$this->type : $this->name;}
 # ─────────────────────────────────────────────────────────────────────
-  function get_path()          {return $this->type ? $this->dirs.$this->name.'.'.$this->type : $this->dirs.$this->name;}
-  function get_path_relative() {return $this->get_dirs_relative().$this->get_file();}
+  function path_get()          {return $this->type ? $this->dirs.$this->name.'.'.$this->type : $this->dirs.$this->name;}
+  function path_relative_get() {return $this->dirs_relative_get().$this->file_get();}
 
-  function get_parent_name()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
-  function get_hash()          {return @md5_file($this->get_path());}
-  function get_size()          {return @filesize($this->get_path());}
-  function get_mime()          {return @mime_content_type($this->get_path());}
-  function get_data() {
+  function parent_name_get()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
+  function hash_get()          {return @md5_file($this->path_get());}
+  function size_get()          {return @filesize($this->path_get());}
+  function mime_get()          {return @mime_content_type($this->path_get());}
+  function data_get() {
     if (empty($this->data)) $this->load(true);
     return $this->data;
   }
 
   function is_exist() {
-    return file_exists($this->get_path());
+    return file_exists($this->path_get());
   }
 
   function load($reset = false) {
-    $relative = $this->get_path_relative();
+    $relative = $this->path_relative_get();
     timer::tap('file load: '.$relative);
     if (!$reset && isset(static::$cache_data[$relative]))
            $this->data = static::$cache_data[$relative];
-    else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->get_path());
+    else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->path_get());
     timer::tap('file load: '.$relative);
     console::log_add('file', 'load', $relative, 'ok',
       timer::get_period('file load: '.$relative, -1, -2)
@@ -116,18 +116,18 @@ namespace effcore {
   }
 
   function save() {
-    static::mkdir_if_not_exist($this->get_dirs());
-    return  @file_put_contents($this->get_path(), $this->data);
+    static::mkdir_if_not_exist($this->dirs_get());
+    return  @file_put_contents($this->path_get(), $this->data);
   }
 
-  function direct_append($data) {
-    static::mkdir_if_not_exist($this->get_dirs());
-    return  @file_put_contents($this->get_path(), $data, FILE_APPEND);
+  function append_direct($data) {
+    static::mkdir_if_not_exist($this->dirs_get());
+    return  @file_put_contents($this->path_get(), $data, FILE_APPEND);
   }
 
   function copy($new_dirs, $new_name = null) {
-    $path_old = $this->get_path();
-    $path_new = $new_dirs.($new_name ?: $this->get_file());
+    $path_old = $this->path_get();
+    $path_new = $new_dirs.($new_name ?: $this->file_get());
     static::mkdir_if_not_exist($new_dirs);
     if (@copy($path_old, $path_new)) {
       $this->__construct($path_new);
@@ -136,8 +136,8 @@ namespace effcore {
   }
 
   function move($new_dirs, $new_name = null) {
-    $path_old = $this->get_path();
-    $path_new = $new_dirs.($new_name ?: $this->get_file());
+    $path_old = $this->path_get();
+    $path_new = $new_dirs.($new_name ?: $this->file_get());
     static::mkdir_if_not_exist($new_dirs);
     if (@rename($path_old, $path_new)) {
       $this->__construct($path_new);
@@ -146,8 +146,8 @@ namespace effcore {
   }
 
   function move_uploaded($new_dirs, $new_name = null) {
-    $path_old = $this->get_path();
-    $path_new = $new_dirs.($new_name ?: $this->get_file());
+    $path_old = $this->path_get();
+    $path_new = $new_dirs.($new_name ?: $this->file_get());
     static::mkdir_if_not_exist($new_dirs);
     if (@move_uploaded_file($path_old, $path_new)) {
       $this->__construct($path_new);
@@ -156,8 +156,8 @@ namespace effcore {
   }
 
   function rename($new_name) {
-    $path_old = $this->get_path();
-    $path_new = $this->get_dirs().$new_name;
+    $path_old = $this->path_get();
+    $path_new = $this->dirs_get().$new_name;
     if (@rename($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
@@ -165,10 +165,10 @@ namespace effcore {
   }
 
   function insert($once = true) {
-    $relative = $this->get_path_relative();
+    $relative = $this->path_relative_get();
     timer::tap('file insert: '.$relative);
-    $return = $once ? require_once($this->get_path()) :
-                           require($this->get_path());
+    $return = $once ? require_once($this->path_get()) :
+                           require($this->path_get());
     timer::tap('file insert: '.$relative);
     console::log_add('file', 'insertion', $relative, 'ok',
       timer::get_period('file insert: '.$relative, -1, -2)
@@ -193,7 +193,7 @@ namespace effcore {
     }
   }
 
-  static function get_types() {
+  static function types_get() {
     if   (!static::$cache_file_types) static::init();
     return static::$cache_file_types;
   }

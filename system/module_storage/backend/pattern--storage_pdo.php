@@ -49,7 +49,7 @@ namespace effcore {
           );
         }
       } else {
-        $path = (new file(data::directory))->get_path_relative();
+        $path = (new file(data::directory))->path_relative_get();
         $link = (new markup('a', ['href' => '/install'], 'Installation'))->render();
         message::insert(
           translation::get('Credentials for storage %%_id was not setted!', ['id' => $this->id]).br.

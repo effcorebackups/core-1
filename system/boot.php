@@ -62,14 +62,14 @@ namespace effcore {
   # 6. url /file.type/ | is wrong notation - redirect to /file.type
   # ─────────────────────────────────────────────────────────────────────
 
-  if (             url::current_get()->get_path() != '/' &&
-            substr(url::current_get()->get_path(), -1) == '/') {
-     url::go(rtrim(url::current_get()->get_path(), '/')); # p.s. trimming for single redirect
+  if (             url::current_get()->path_get() != '/' &&
+            substr(url::current_get()->path_get(), -1) == '/') {
+     url::go(rtrim(url::current_get()->path_get(), '/')); # p.s. trimming for single redirect
   }
 
-  $type = url::current_get()->get_type();
+  $type = url::current_get()->type_get();
   if ($type) {
-    $file_types = file::get_types();
+    $file_types = file::type_gets();
   # case for protected file
     if (!empty($file_types[$type]->protected)) {
       core::send_header_and_exit('access_denided', '',
@@ -79,7 +79,7 @@ namespace effcore {
     }
 
   # define path of file directory 
-    $path_url = url::current_get()->get_path();
+    $path_url = url::current_get()->path_get();
     if (substr($path_url, 0, 15) === '/dynamic/files/')
          $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
     else $path =                  dir_root.ltrim($path_url, '/');

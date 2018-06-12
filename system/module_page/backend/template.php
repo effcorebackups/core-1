@@ -23,7 +23,7 @@ namespace effcore {
     $this->type = $info->type;
     switch ($this->type) {
       case 'file':
-        $path = module::get($info->module_id)->get_path().$info->path;
+        $path = module::get($info->module_id)->path_get().$info->path;
         $file = new file($path);
         $this->data = $file->load();
         return $this;

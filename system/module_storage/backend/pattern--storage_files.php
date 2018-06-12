@@ -130,9 +130,9 @@ namespace effcore {
   # parse each *._data file and collect modules path
     foreach ($files as $c_file) {
       $c_parsed = static::data_to_code($c_file->load(), $c_file);
-      $parsed[$c_file->get_path_relative()] = $c_parsed;
-      if ($c_file->get_file() == 'module._data' && isset($c_parsed->module->id)) {
-        $modules_path[$c_parsed->module->id] = $c_file->get_dirs_relative();
+      $parsed[$c_file->path_relative_get()] = $c_parsed;
+      if ($c_file->file_get() == 'module._data' && isset($c_parsed->module->id)) {
+        $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
       }
     }
   # build the result
@@ -246,7 +246,7 @@ namespace effcore {
         }
       } else {
         $messages = ['Function: data_to_code', 'Wrong syntax in data at line: '.$line_num];
-        if ($file) $messages[] = 'File relative path: '.$file->get_path_relative();
+        if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
         message::insert(implode(br, $messages), 'error');
       }
     }

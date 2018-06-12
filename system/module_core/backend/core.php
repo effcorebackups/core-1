@@ -66,7 +66,7 @@ namespace effcore {
               }
             }
           # define file path
-            $c_item->file = $c_file->get_path_relative();
+            $c_item->file = $c_file->path_relative_get();
           # add to result pool
             if (!$c_item->namespace)
                  $return[strtolower($c_item->name)] = $c_item;

@@ -223,8 +223,8 @@ namespace effcore {
               case 'name':
                 $c_file = new file(trim(str_replace('/', '', $c_value), '.'));
                 $return[$c_index]->{'name'} = $c_file->name_get();
-                $return[$c_index]->{'type'} = $c_file->get_type();
-                $return[$c_index]->{'file'} = $c_file->get_file();
+                $return[$c_index]->{'type'} = $c_file->type_get();
+                $return[$c_index]->{'file'} = $c_file->file_get();
                 break;
               case 'type'    : $return[$c_index]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
               case 'tmp_name': $return[$c_index]->{'tmp_path'} = $c_value; break;

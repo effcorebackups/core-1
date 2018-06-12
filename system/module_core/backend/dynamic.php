@@ -32,23 +32,23 @@ namespace effcore {
     static::$data[$name] = $data;
     $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
     if ($info) static::$info[$name] = $info;
-    if (file::mkdir_if_not_exist($file->get_dirs()) &&
-                     is_writable($file->get_dirs())) {
-      $file->set_data(
+    if (file::mkdir_if_not_exist($file->dirs_get()) &&
+                     is_writable($file->dirs_get())) {
+      $file->data_set(
         '<?php'.nl.nl.'namespace effcore { # '.static::type.' for '.$name.nl.nl.($info ?
            core::data_to_code($info, '  '.core::class_name_short_get(static::class).'::$info[\''.$name.'\']') : '').
            core::data_to_code($data, '  '.core::class_name_short_get(static::class).'::$data[\''.$name.'\']').nl.
         '}');
       if (!$file->save()) {
-        static::show_message($file);
+        static::message_show($file);
         return false;
       }
       if (function_exists('opcache_invalidate')) {
-        opcache_invalidate($file->get_path());
+        opcache_invalidate($file->path_get());
       }
       return true;
     } else {
-      static::show_message($file);
+      static::message_show($file);
       return false;
     }
   }
@@ -58,13 +58,13 @@ namespace effcore {
         unset(static::$data[$name]);
     $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
     if ($file->is_exist()) {
-      return unlink($file->get_path());
+      return unlink($file->path_get());
     }
   }
 
-  static function show_message($file) {
+  static function message_show($file) {
     message::insert(
-      'Can not write file "'.$file->get_file().'" to the directory "'.$file->get_dirs_relative().'"!'.br.
+      'Can not write file "'.$file->file_get().'" to the directory "'.$file->dirs_relative_get().'"!'.br.
       'Check file (if exists) and directory permissions.', 'error'
     );
   }

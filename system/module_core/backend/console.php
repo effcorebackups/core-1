@@ -41,11 +41,11 @@ namespace effcore {
         foreach ($c_log->args as $c_key => $c_value) {
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
         }
-        if (!$file->direct_append(core::time_get().' | '.
+        if (!$file->append_direct(core::time_get().' | '.
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {
           message::insert(
-            translation::get('Can not write file "%%_file" to the directory "%%_directory"!', ['file' => $file->get_file(), 'directory' => $file->get_dirs_relative()]).br.
+            translation::get('Can not write file "%%_file" to the directory "%%_directory"!', ['file' => $file->file_get(), 'directory' => $file->dirs_relative_get()]).br.
             translation::get('Check file (if exists) and directory permissions.'), 'error'
           );
         }
