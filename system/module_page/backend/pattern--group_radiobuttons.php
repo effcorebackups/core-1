@@ -51,4 +51,12 @@ namespace effcore {
     return $this->child_insert($field, $new_id);
   }
 
+  function value_get() {
+    foreach ($this->children_select() as $c_field) {
+      if ($c_field->value_get()) return
+          $c_field->value_get();
+    }
+    return '';
+  }
+
 }}
