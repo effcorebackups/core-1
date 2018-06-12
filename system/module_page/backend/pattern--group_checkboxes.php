@@ -20,8 +20,9 @@ namespace effcore {
 
   function values_set($values) {
     foreach ($this->children_select() as $c_field) {
-      if (in_array($c_field->value_get(true), $values)) {
-        $c_field->child_select('element')->attribute_insert('checked', 'checked');
+      $value_default = $c_field->value_get(true);
+      if (in_array($value_default, $values)) {
+        $c_field->value_set($value_default);
       }
     }
   }
