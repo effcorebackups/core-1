@@ -31,7 +31,7 @@ namespace effcore {
     $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $new_values = static::new_value_multiple_get($name);
+      $new_values = static::new_values_get($name);
       $result = static::validate_required($field, $form, $npath, $element, $new_values);
       if (core::in_array_string_compare($element->attribute_select('value'), $new_values))
            $element->attribute_insert('checked', 'checked');

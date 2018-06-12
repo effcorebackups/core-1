@@ -179,7 +179,7 @@ namespace effcore {
   # - source[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function new_value_multiple_get($name, $source = '_POST') {
+  static function new_values_get($name, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? [] :
        (is_string(${$source}[$name]) ? [${$source}[$name]] :
@@ -187,7 +187,7 @@ namespace effcore {
                   ${$source}[$name] : []));
   }
 
-  static function new_value_multiple_set($name, $values, $source = '_POST') {
+  static function new_values_set($name, $values, $source = '_POST') {
     global ${$source};
     ${$source}[$name] = $values;
   }
