@@ -41,10 +41,10 @@ namespace effcore\modules\user {
                message::insert(translation::get('User %%_nick was deleted.',     ['nick' => $nick]));}
           else message::insert(translation::get('User %%_nick was not deleted!', ['nick' => $nick]), 'error');
         }
-        url::go(url::get_back_url() ?: '/manage/users');
+        url::go(url::back_url_get() ?: '/manage/users');
         break;
       case 'cancel':
-        url::go(url::get_back_url() ?: '/manage/users');
+        url::go(url::back_url_get() ?: '/manage/users');
         break;
     }
   }
@@ -126,7 +126,7 @@ namespace effcore\modules\user {
           message::insert(
             translation::get('User %%_nick was updated.', ['nick' => $user->nick])
           );
-          url::go(url::get_back_url() ?: '/user/'.$id_user);
+          url::go(url::back_url_get() ?: '/user/'.$id_user);
         } else {
           message::insert(
             translation::get('User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
@@ -134,7 +134,7 @@ namespace effcore\modules\user {
         }
         break;
       case 'cancel':
-        url::go(url::get_back_url() ?: '/user/'.$id_user);
+        url::go(url::back_url_get() ?: '/user/'.$id_user);
         break;
     }
   }
@@ -240,7 +240,7 @@ namespace effcore\modules\user {
         session::delete(user::current_get()->id);
         url::go('/');
       case 'cancel':
-        url::go(url::get_back_url() ?: '/');
+        url::go(url::back_url_get() ?: '/');
         break;
     }
   }

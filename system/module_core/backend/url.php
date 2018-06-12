@@ -70,20 +70,20 @@ namespace effcore {
   }
 
   function type_get()     {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
-  function get_protocol() {return $this->protocol;}
-  function get_domain()   {return $this->domain;}
+  function protocol_get() {return $this->protocol;}
+  function domain_get()   {return $this->domain;}
   function path_get()     {return $this->path;}
-  function get_query()    {return $this->query;}
-  function get_anchor()   {return $this->anchor;}
-  function get_relative() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
+  function query_get()    {return $this->query;}
+  function anchor_get()   {return $this->anchor;}
+  function relative_get() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
                                   ($this->query  ? '?'.$this->query  : '').
                                   ($this->anchor ? '#'.$this->anchor : '');}
-  function get_full()     {return ($this->protocol.'://'.$this->domain).
+  function full_get()     {return ($this->protocol.'://'.$this->domain).
                                   ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
                                   ($this->query  ? '?'.$this->query  : '').
                                   ($this->anchor ? '#'.$this->anchor : '');}
 
-  function get_query_arg($arg_id) {
+  function query_arg_get($arg_id) {
     $args = [];
     parse_str($this->query, $args);
     return isset($args[$arg_id]) ?
@@ -111,13 +111,13 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function get_back_url() {
-    $back_url = static::current_get()->get_query_arg('back');
+  static function back_url_get() {
+    $back_url = static::current_get()->query_arg_get('back');
     return $back_url ? urldecode($back_url) : '';
   }
 
-  static function make_back_part() {
-    return 'back='.urlencode(static::current_get()->get_full());
+  static function back_part_make() {
+    return 'back='.urlencode(static::current_get()->full_get());
   }
 
   static function is_local($url) {
@@ -125,16 +125,16 @@ namespace effcore {
   }
 
   static function is_active($url) {
-    return (new url($url))->get_full() == static::current_get()->get_full();
+    return (new url($url))->full_get() == static::current_get()->full_get();
   }
 
   static function is_active_trail($url) {
-    return strpos(static::current_get()->get_full(), (new url($url))->get_full()) === 0;
+    return strpos(static::current_get()->full_get(), (new url($url))->full_get()) === 0;
   }
 
   static function go($url) {
     core::send_header_and_exit('redirect', '', '',
-      (new url($url))->get_full()
+      (new url($url))->full_get()
     );
   }
 

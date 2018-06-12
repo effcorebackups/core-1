@@ -25,7 +25,7 @@ namespace effcore {
   function render() {
 
   # check https (@todo: enable this message)
-    if (false && !empty($this->https) && url::current_get()->get_protocol() != 'https') {
+    if (false && !empty($this->https) && url::current_get()->protocol_get() != 'https') {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
@@ -107,7 +107,7 @@ namespace effcore {
               'rel'   => $c_icon->rel,
               'type'  => $c_icon->type,
               'sizes' => $c_icon->sizes,
-              'href'  => $c_url->get_relative()
+              'href'  => $c_url->relative_get()
             ]));
           }
         }
@@ -120,7 +120,7 @@ namespace effcore {
             $return->styles->child_insert(new markup_simple('link', [
               'rel'   => 'stylesheet',
               'media' => $c_style->media,
-              'href'  => $c_url->get_relative()
+              'href'  => $c_url->relative_get()
             ]));
           }
         }
@@ -131,7 +131,7 @@ namespace effcore {
           foreach ($c_item->scripts as $c_script) {
             $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path_get().$c_script->file);
             $return->scripts->child_insert(new markup('script', [
-              'src' => $c_url->get_relative()
+              'src' => $c_url->relative_get()
             ]));
           }
         }
@@ -195,13 +195,13 @@ namespace effcore {
 
   static function is_displayed_by_current_url($display) {
     $args = [];
-    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::current_get()->get_protocol(), $args)) ||
-        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::current_get()->get_domain(),   $args)) ||
+    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::current_get()->protocol_get(), $args)) ||
+        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::current_get()->domain_get(),   $args)) ||
         ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::current_get()->path_get(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::current_get()->get_query(),    $args)) ||
-        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::current_get()->get_anchor(),   $args)) ||
+        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::current_get()->query_get(),    $args)) ||
+        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::current_get()->anchor_get(),   $args)) ||
         ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::current_get()->type_get(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::current_get()->get_full(),     $args)) ) {
+        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::current_get()->full_get(),     $args)) ) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
   }
