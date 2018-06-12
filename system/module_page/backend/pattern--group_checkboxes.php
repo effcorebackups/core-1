@@ -12,16 +12,16 @@ namespace effcore {
 
   function values_get() {
     $return = [];
-    foreach ($this->children_select() as $c_id => $c_field)
-                                 $return[$c_id] = $c_field->value_get();
+    foreach ($this->children_select() as $c_id => $c_field) {
+      $return[$c_id] = $c_field->value_get();
+    }
     return $return;
   }
 
   function values_set($values) {
     foreach ($this->children_select() as $c_field) {
-      $c_element = $c_field->child_select('element');
-      if (in_array($c_element->attribute_select('value'), $values)) {
-        $c_element->attribute_insert('checked', 'checked');
+      if (in_array($c_field->value_get(true), $values)) {
+        $c_field->child_select('element')->attribute_insert('checked', 'checked');
       }
     }
   }

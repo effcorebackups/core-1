@@ -59,4 +59,13 @@ namespace effcore {
     return '';
   }
 
+  function value_set($value) {
+    foreach ($this->children_select() as $c_field) {
+      if ($c_field->value_get(true) == $value) {
+        $c_field->child_select('element')->attribute_insert('checked', 'checked');
+        return true;
+      }
+    }
+  }
+
 }}
