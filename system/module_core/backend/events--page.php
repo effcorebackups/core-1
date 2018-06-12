@@ -26,7 +26,7 @@ namespace effcore\modules\core {
       timer::tap('cron');
       event::start('on_cron');
       timer::tap('cron');
-      print 'cron execution time: '.timer::get_period('cron', -1, -2).' sec.';
+      print 'cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
       exit();
     } else {
       core::send_header_and_exit('page_not_found');

@@ -15,10 +15,10 @@ namespace effcore {
   public $path;
 
   function id_get()          {return $this->id;}
-  function get_title()       {return $this->title;}
-  function get_description() {return $this->description;}
-  function get_version()     {return $this->version;}
-  function get_state()       {return $this->state;}
+  function title_get()       {return $this->title;}
+  function description_get() {return $this->description;}
+  function version_get()     {return $this->version;}
+  function state_get()       {return $this->state;}
   function path_get()        {return $this->path;}
 
   ###########################

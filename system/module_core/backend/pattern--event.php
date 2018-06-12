@@ -48,7 +48,7 @@ namespace effcore {
           $return[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);
           timer::tap('event call: '.$c_event->for);
           console::log_add('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
-            timer::get_period('event call: '.$c_event->for, -1, -2)
+            timer::period_get('event call: '.$c_event->for, -1, -2)
           );
         }
       }

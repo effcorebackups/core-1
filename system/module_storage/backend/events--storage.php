@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
   static function on_storage_init_after($storage) {
     timer::tap('storage init');
     console::log_add('storage', 'init.', 'storage %%_id was initialized', 'ok',
-      timer::get_period('storage init', -1, -2), ['id' => $storage->id_get().' | storage_pdo']
+      timer::period_get('storage init', -1, -2), ['id' => $storage->id_get().' | storage_pdo']
     );
   }
 
@@ -39,7 +39,7 @@ namespace effcore\modules\storage {
       count($storage->args) ? 'query = "%%_query"'.br.'args = [%%_args]' :
                               'query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
-      timer::get_period('storage query: '.$s_query, -1, -2),
+      timer::period_get('storage query: '.$s_query, -1, -2),
       ['query' => $s_query_beautiful,
         'args' => $s_query_args_beautiful]
     );
