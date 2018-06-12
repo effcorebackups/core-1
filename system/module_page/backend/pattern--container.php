@@ -27,7 +27,7 @@ namespace effcore {
                               $this->title_position == 'bottom';
     return (new template($this->template, [
       'tag_name'    => $this->tag_name,
-      'attributes'  => core::data_to_attr($this->attribute_select_all()),
+      'attributes'  => core::data_to_attr($this->attributes_select()),
       'content'     => $this->render_children($this->children_select()),
       'description' => $this->render_description(),
       'title_t'     => $is_bottom_title ? '' : $this->render_self(),

@@ -41,7 +41,7 @@ namespace effcore {
         $this->attribute_insert('class', ['active' => 'active']);
       }
     }
-    return (new markup('a', $this->attribute_select_all(),
+    return (new markup('a', $this->attributes_select(),
       token::replace(translation::get($this->title))
     ))->render();
   }

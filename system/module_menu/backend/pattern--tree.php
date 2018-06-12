@@ -54,12 +54,12 @@ namespace effcore {
                  static::$cache_tree_items[$id] : null;
   }
 
-  static function item_all_get() {
+  static function items_get() {
     return static::$cache_tree_items;
   }
 
   static function build() {
-    foreach(static::item_all_get() as $c_item) {
+    foreach(static::items_get() as $c_item) {
       if ($c_item->id_parent) {
         $c_parent = !empty($c_item->parent_is_tree) ?
             tree::get     ($c_item->id_parent) :

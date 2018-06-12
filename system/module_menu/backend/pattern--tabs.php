@@ -12,7 +12,7 @@ namespace effcore {
 
   function render() {
     return (new template($this->template, [
-      'attributes' => core::data_to_attr($this->attribute_select_all()),
+      'attributes' => core::data_to_attr($this->attributes_select()),
       'top_items'  => $this->render_top_items(),
       'sub_items'  => $this->render_sub_items()
     ]))->render();
@@ -88,12 +88,12 @@ namespace effcore {
                  static::$cache_tabs_items[$id] : null;
   }
 
-  static function item_all_get() {
+  static function items_get() {
     return static::$cache_tabs_items;
   }
 
   static function build() {
-    foreach(static::item_all_get() as $c_item) {
+    foreach(static::items_get() as $c_item) {
       if ($c_item->id_parent) {
         $c_parent = !empty($c_item->parent_is_tab) ?
             tabs::get     ($c_item->id_parent) :

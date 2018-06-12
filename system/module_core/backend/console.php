@@ -11,7 +11,7 @@ namespace effcore {
   static protected $data = [];
   static protected $information = [];
 
-  static function logs_all_select() {
+  static function logs_select() {
     return static::$data;
   }
 
@@ -104,7 +104,7 @@ namespace effcore {
   static function markup_logs_get() {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
-    foreach (static::logs_all_select() as $c_log) {
+    foreach (static::logs_select() as $c_log) {
       $c_row_class = core::to_css_class($c_log->object);
       $c_value_class = $c_log->value === 'error' ?
         ['value' => 'value', 'value-error' => 'value-error'] :

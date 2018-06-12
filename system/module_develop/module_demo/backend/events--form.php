@@ -38,7 +38,9 @@ namespace effcore\modules\demo {
     }
     if (count($paths)) data::update('files_demo', $paths);
     else               data::delete('files_demo');
-    message::insert(translation::get('Call %%_name', ['name' => '\\'.__METHOD__]));
+    message::insert(
+      translation::get('Call %%_name', ['name' => '\\'.__METHOD__])
+    );
   }
 
 }}

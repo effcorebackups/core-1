@@ -34,14 +34,14 @@ namespace effcore {
     }
   }
 
-  function field_insert($title = null, $attr = [], $new_id = null) {
+  function field_insert($title = null, $attributes = [], $new_id = null) {
     $field = new $this->field_class();
     $field->title = $title;
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;
     $field->build();
     $element = $field->child_select('element');
-    foreach ($attr + $this->attribute_select_all('element_attributes') as $c_name => $c_value) {
+    foreach ($attributes + $this->attributes_select('element_attributes') as $c_name => $c_value) {
       $element->attribute_insert($c_name, $c_value);
     }
     $value = $element->attribute_select('value');

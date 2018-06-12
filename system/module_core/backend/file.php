@@ -203,7 +203,7 @@ namespace effcore {
                  @mkdir($dirs, 0777, true) : true;
   }
 
-  static function select_all_recursive($path, $filter = '') {
+  static function select_recursive($path, $filter = '') {
     try {
       $return = [];
       foreach (new ri_iterator(new rd_iterator($path, static::scan_dir_mode)) as $c_path => $null) {

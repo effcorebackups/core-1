@@ -27,7 +27,7 @@ namespace effcore {
                  $this->{$scope}[$key] : null;
   }
 
-  function attribute_select_all($scope = 'attributes') {
+  function attributes_select($scope = 'attributes') {
     return $this->{$scope};
   }
 
@@ -52,7 +52,7 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => core::data_to_attr($this->attribute_select_all()),
+        'attributes' => core::data_to_attr($this->attributes_select()),
         'self'       => $this->render_self(),
       ]))->render();
     } else {

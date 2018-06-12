@@ -737,7 +737,7 @@ forms
             - palette|group_palette
                 title: Color (group_palette)
                 element_attributes
-                - name: color
+                - name: palette_color
     - button_submit|markup
         tag_name: button
         attributes
