@@ -36,7 +36,7 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function values_get() {
     $return = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {

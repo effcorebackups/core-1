@@ -15,8 +15,8 @@ namespace effcore\modules\page {
 
   static function on_init_decoration($form, $items) {
     $settings = storage::get('files')->select('settings');
-    $items['colors/color_id'   ]->value_set($settings['page']->color_id   );
-    $items['colors/color_bg_id']->value_set($settings['page']->color_bg_id);
+    $items['colors/color_id'   ]->values_set([$settings['page']->color_id   ]);
+    $items['colors/color_bg_id']->values_set([$settings['page']->color_bg_id]);
   }
 
   static function on_validate_decoration($form, $fields, &$values) {

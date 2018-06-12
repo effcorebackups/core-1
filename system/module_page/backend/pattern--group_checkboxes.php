@@ -51,20 +51,18 @@ namespace effcore {
     return $this->child_insert($field, $new_id);
   }
 
-  function value_set($value) {
-    foreach ($this->children_select() as $c_field) {
-      $c_element = $c_field->child_select('element');
-      if ($c_element->attribute_select('value') == $value) {
-        return $c_element->attribute_insert('checked', 'checked');
-      }
-    }
+  function values_get() {
+    $return = [];
+    foreach ($this->children_select() as $c_id => $c_field)
+                                 $return[$c_id] = $c_field->value_get();
+    return $return;
   }
 
-  function value_get() {
+  function values_set($values) {
     foreach ($this->children_select() as $c_field) {
       $c_element = $c_field->child_select('element');
-      if ($c_element->attribute_select('checked') == 'checked') {
-        return $c_element->attribute_select('value');
+      if (in_array($c_element->attribute_select('value'), $values)) {
+        $c_element->attribute_insert('checked', 'checked');
       }
     }
   }
