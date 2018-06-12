@@ -2,6 +2,15 @@ translations
 - ru|translation
     code: ru
     data
+    - 
+! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+! Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;: 
+! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - Call %%_name: Вызов %%_name
     - call: вызов
     - Canvas: Холст

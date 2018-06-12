@@ -34,7 +34,7 @@ namespace effcore\modules\demo {
     $paths = [];
     foreach ($fields['form_elements/file']->pool_files_save() as $c_info) {
       $c_file = new file($c_info->path);
-      $paths[] = $c_file->get_path_relative();
+      $paths[] = $c_file->path_relative_get();
     }
     if (count($paths)) data::update('files_demo', $paths);
     else               data::delete('files_demo');
