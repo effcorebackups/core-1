@@ -25,19 +25,20 @@ namespace effcore {
   protected $pool_old = [];
   protected $pool_new = [];
 
-  function build() {
-    parent::build();
-    $this->description = translation::get('Maximal file size: %%_value.', [
-      'value' => locale::format_human_bytes($this->file_size_max_get())
-    ]);
-  }
-
   function file_size_max_get() {
     $bytes_1 = core::is_human_bytes($this->max_file_size) ?
                core::human_to_bytes($this->max_file_size) : $this->max_file_size;
     $bytes_2 = core::is_human_bytes(ini_get('upload_max_filesize')) ?
                core::human_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
     return min($bytes_1, $bytes_2);
+  }
+
+  function render_description() {
+                            $return[] = new markup('p', ['class' => ['file_size_max' => 'file_size_max']], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
+    if ($this->description) $return[] = new markup('p', [], $this->description);
+    if (count($return)) {
+      return (new markup($this->description_tag_name, [], $return))->render();
+    }
   }
 
   ############
