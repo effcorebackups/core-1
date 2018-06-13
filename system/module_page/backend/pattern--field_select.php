@@ -49,6 +49,19 @@ namespace effcore {
     return $return;
   }
 
+  function values_allowed_get() {
+    $return = [];
+    $element = $this->child_select('element');
+    foreach ($element->children_select_recursive() as $c_item) {
+      if ($c_item instanceof node       &&
+          $c_item->tag_name == 'option' &&
+         !$c_item->attribute_select('disabled')) {
+        $return[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+      }
+    }
+    return $return;
+  }
+
   function optgroup_select($id) {
     return $this->child_select('element')->child_select($id);
   }
@@ -79,9 +92,9 @@ namespace effcore {
     $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $allowed_values = static::allowed_values_get($element);
+      $values_allowed = $field->values_allowed_get();
       $new_values = static::new_values_get($name);
-      $new_values = array_unique(array_intersect($new_values, $allowed_values)); # filter fake values
+      $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $result = static::validate_required($field, $form, $npath, $element, $new_values) &&
                 static::validate_multiple($field, $form, $npath, $element, $new_values);
       foreach ($element->children_select_recursive() as $c_item) {
@@ -93,18 +106,6 @@ namespace effcore {
       }
       return $result;
     }
-  }
-
-  static function allowed_values_get($element) {
-    $return = [];
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node       &&
-          $c_item->tag_name == 'option' &&
-         !$c_item->attribute_select('disabled')) {
-        $return[] = $c_item->attribute_select('value');
-      }
-    }
-    return $return;
   }
 
   static function validate_required($field, $form, $npath, $element, &$new_values) {
