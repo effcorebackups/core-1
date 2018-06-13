@@ -186,7 +186,7 @@ forms
             element_attributes
             - name: time
             - value: 01:23:45
-      # field select timezone
+      # field timezone
         - timezone|field_timezone
             title: Timezone
             description|text
