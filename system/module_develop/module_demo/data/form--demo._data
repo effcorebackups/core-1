@@ -231,116 +231,36 @@ forms
             title_tag_name: legend
             children
           # field checkbox
-            - checkbox|field
-                title: Checkbox (field)
-                title_position: bottom
-                description|text
-                  text: Element %%_info.
-                  args
-                  - info: &lt;checkbox&gt;
-                attributes
-                - x-type: checkbox
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: checkbox
-                    - name: checkbox
-                    - value: checkbox
-                    - checked: checked
-            - checkbox_macro|field_checkbox
+            - checkbox|field_checkbox
                 title: Checkbox (field_checkbox)
                 description|text
                   text: Element %%_info.
                   args
                   - info: &lt;checkbox&gt;
                 element_attributes
-                - name: checkbox_macro
-                - value: checkbox_macro
+                - name: checkbox
+                - value: checkbox
                 - checked: checked
           # field checkboxes
-            - checkboxes|container
-                tag_name: x-group
-                title: Checkboxes (container)
-                description|text
-                  text: Elements %%_info.
-                  args
-                  - info: &lt;input type="checkbox"&gt;
-                attributes
-                - x-type: checkboxes
-                children
-                - checkboxes_1|field
-                    title: Checkbox 1
-                    title_position: bottom
-                    attributes
-                    - x-type: checkbox
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: checkbox
-                        - name: checkboxes[]
-                        - value: checkboxes_1
-                - checkboxes_2|field
-                    title: Checkbox 2 (checked)
-                    title_position: bottom
-                    attributes
-                    - x-type: checkbox
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: checkbox
-                        - name: checkboxes[]
-                        - value: checkboxes_2
-                        - checked: checked
-                - checkboxes_3|field
-                    title: Checkbox 3 (disabled)
-                    title_position: bottom
-                    attributes
-                    - x-type: checkbox
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: checkbox
-                        - name: checkboxes[]
-                        - value: checkboxes_3
-                        - disabled: disabled
-                - checkboxes_4|field
-                    title: Checkbox 4 (disabled + checked)
-                    title_position: bottom
-                    attributes
-                    - x-type: checkbox
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: checkbox
-                        - name: checkboxes[]
-                        - value: checkboxes_4
-                        - disabled: disabled
-                        - checked: checked
-          # field checkboxes macro
-            - checkboxes_macro|group_checkboxes
+            - checkboxes|group_checkboxes
                 title: Checkboxes (group_checkboxes)
                 description|text
                   text: Elements %%_info.
                   args
                   - info: &lt;input type="checkbox"&gt;
                 element_attributes
-                - name: checkboxes_macro[]
+                - name: checkboxes[]
                 values
-                - checkboxes_macro_1: Checkbox 1
-                - checkboxes_macro_2: Checkbox 2 (checked)
-                - checkboxes_macro_3: Checkbox 3 (disabled)
-                - checkboxes_macro_4: Checkbox 4 (disabled + checked)
+                - checkboxes_1: Checkbox 1
+                - checkboxes_2: Checkbox 2 (checked)
+                - checkboxes_3: Checkbox 3 (disabled)
+                - checkboxes_4: Checkbox 4 (disabled + checked)
                 disabled
-                - checkboxes_macro_3: checkboxes_macro_3
-                - checkboxes_macro_4: checkboxes_macro_4
+                - checkboxes_3: checkboxes_3
+                - checkboxes_4: checkboxes_4
                 checked
-                - checkboxes_macro_2: checkboxes_macro_2
-                - checkboxes_macro_4: checkboxes_macro_4
+                - checkboxes_2: checkboxes_2
+                - checkboxes_4: checkboxes_4
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
