@@ -72,292 +72,110 @@ forms
             - name: file[]
             - multiple: multiple
       # field text
-        - text|field
-            title: Text (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="text"&gt;
-            attributes
-            - x-type: text
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: text
-                - name: text
-                - required: required
-                - value: text in input 1
-                - minlength: 5
-                - maxlength: 255
-                - pattern: %^[a-zA-Z0-9 ]+$%
-        - text_macro|field_text
+        - text|field_text
             title: Text (field_text)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="text"&gt;
             element_attributes
-            - name: text_macro
-            - value: text in input 2
+            - name: text
+            - value: text in input
             - minlength: 5
             - pattern: %^[a-zA-Z0-9 ]+$%
       # field password
-        - password|field
-            title: Password (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="password"&gt;
-            attributes
-            - x-type: password
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: password
-                - name: password
-                - required: required
-                - value: text in password
-                - minlength: 5
-                - maxlength: 255
-                - autocomplete: off
-        - password_macro|field_password
+        - password|field_password
             title: Password (field_password)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="password"&gt;
             element_attributes
-            - name: password_macro
+            - name: password
             - value: text in password
       # field search
-        - search|field
-            title: Search (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="search"&gt;
-            attributes
-            - x-type: search
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: search
-                - name: search
-                - required: required
-                - value: text in search 1
-                - minlength: 5
-                - maxlength: 255
-        - search_macro|field_search
+        - search|field_search
             title: Search (field_search)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="search"&gt;
             element_attributes
-            - name: search_macro
-            - value: text in search 2
+            - name: search
+            - value: text in search
       # field url
-        - url|field
-            title: URL (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="url"&gt;
-            attributes
-            - x-type: url
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: url
-                - name: url
-                - required: required
-                - value: http://1.example.com
-                - minlength: 5
-                - maxlength: 255
-        - url_macro|field_url
+        - url|field_url
             title: URL (field_url)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="url"&gt;
             element_attributes
-            - name: url_macro
-            - value: http://2.example.com
+            - name: url
+            - value: http://example.com
       # field phone
-        - phone|field
-            title: Phone (field)
-            description|text
-              text: Use international format of mobile phone numbers.
-            attributes
-            - x-type: phone
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: tel
-                - name: phone
-                - required: required
-                - value: &#43;0001112222222
-                - minlength: 5
-                - maxlength: 15
-        - phone_macro|field_phone
+        - phone|field_phone
             title: Phone (field_phone)
             description|text
               text: Use international format of mobile phone numbers.
             element_attributes
-            - name: phone_macro
-            - value: &#43;0003334444444
+            - name: phone
+            - value: &#43;000112334455
       # field email
-        - email|field
-            title: EMail (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="email"&gt;
-            attributes
-            - x-type: email
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: email
-                - name: email
-                - required: required
-                - value: test1@example.com,test2@example.com
-                - minlength: 5
-                - maxlength: 64
-                - multiple: multiple
-        - email_macro|field_email
+        - email|field_email
             title: EMail (field_email)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="email"&gt;
             element_attributes
-            - name: email_macro
-            - value: test3@example.com,test4@example.com
+            - name: email
+            - value: test1@example.com,test2@example.com
             - multiple: multiple
       # field number
-        - number|field
-            title: Number (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="number"&gt;
-            attributes
-            - x-type: number
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: number
-                - name: number
-                - required: required
-                - value: 0
-                - min: -1000
-                - max: +1000
-                - step: 0.2
-        - number_macro|field_number
+        - number|field_number
             title: Number (field_number)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="number"&gt;
             element_attributes
-            - name: number_macro
+            - name: number
             - min: -1000
             - max: +1000
             - step: 0.2
       # field range
-        - range|field
-            title: Range (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="range"&gt;
-            attributes
-            - x-type: range
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: range
-                - name: range
-                - required: required
-                - value: 0
-                - min: -1
-                - max: +1
-                - step: 0.2
-        - range_macro|field_range
+        - range|field_range
             title: Range (field_range)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="range"&gt;
             element_attributes
-            - name: range_macro
+            - name: range
             - min: -1
             - max: +1
             - step: 0.2
       # field date
-        - date|field
-            title: Date (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="date"&gt;
-            attributes
-            - x-type: date
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: date
-                - name: date
-                - required: required
-                - value: 2020-01-01
-                - min: 2000-01-01
-                - max: 2050-01-01
-        - date_macro|field_date
+        - date|field_date
             title: Date (field_date)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="date"&gt;
             element_attributes
-            - name: date_macro
+            - name: date
+            - value: 2020-01-01
       # field time
-        - time|field
-            title: Time (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="time"&gt;
-            attributes
-            - x-type: time
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: time
-                - name: time
-                - required: required
-                - value: 03:04:00
-                - min: 01:02:00
-                - max: 05:06:00
-                - step: 60
-        - time_macro|field_time
+        - time|field_time
             title: Time (field_time)
             description|text
               text: Element %%_info.
               args
               - info: &lt;input type="time"&gt;
             element_attributes
-            - name: time_macro
+            - name: time
+            - value: 01:23:45
       # field select timezone
         - select_timezone|field_timezone
             title: Timezone (field_timezone)
@@ -367,49 +185,13 @@ forms
             selected
             - 424: 424
       # field color
-        - color|field
-            title: Color (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;input type="color"&gt;
-            attributes
-            - x-type: color
-            children
-            - element|markup_simple
-                tag_name: input
-                attributes
-                - type: color
-                - name: color
-                - value: #ffffff
-                - required: required
-        - color_macro|field_color
+        - color|field_color
             title: Color (field_color)
             element_attributes
-            - name: color_macro
-            - value: #eeeeee
+            - name: color
+            - value: #ffffff
       # field textarea
-        - textarea|field
-            title: Textarea (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;textarea&gt;&lt;/textarea&gt;
-            attributes
-            - x-type: textarea
-            children
-            - element|markup
-                tag_name: textarea
-                attributes
-                - name: textarea
-                - rows: 5
-                - minlength: 5
-                - maxlength: 255
-                - required: required
-                children
-                - content|text_simple
-                    text: text in textarea 1
-        - textarea_macro|field_textarea
+        - textarea|field_textarea
             title: Textarea (field_textarea)
             description|text
               text: Element %%_info.
@@ -417,102 +199,29 @@ forms
               - info: &lt;textarea&gt;&lt;/textarea&gt;
             element_attributes
             - name: textarea_macro
-            - value: text in textarea 2
+            - value: text in textarea
       # field select
-        - select|field
-            title: Selection list (field)
-            description|text
-              text: Element %%_info.
-              args
-              - info: &lt;select&gt;
-            attributes
-            - x-type: select
-            children
-            - element|markup
-                tag_name: select
-                attributes
-                - name: select
-                - required: required
-                children
-                - not_selected|markup
-                    tag_name: option
-                    attributes
-                    - value: 
-                    children
-                    - label|text
-                        text: - select -
-                - option_1_1|markup
-                    tag_name: option
-                    attributes
-                    - value: option_1_1
-                    - selected: selected
-                    children
-                    - label|text
-                        text: Option 1.1 (selected)
-                - option_1_2|markup
-                    tag_name: option
-                    attributes
-                    - value: option_1_2
-                    - disabled: disabled
-                    children
-                    - label|text
-                        text: Option 1.2 (disabled)
-                - option_1_3|markup
-                    tag_name: option
-                    attributes
-                    - value: option_1_3
-                    children
-                    - label|text
-                        text: Option 1.3
-                - group_1_1|markup
-                    tag_name: optgroup
-                    attributes
-                    - label: Group 1.1
-                    children
-                    - option_1_4|markup
-                        tag_name: option
-                        attributes
-                        - value: option_1_4
-                        children
-                        - label|text
-                            text: Option 1.4
-                    - option_1_5|markup
-                        tag_name: option
-                        attributes
-                        - value: option_1_5
-                        - disabled: disabled
-                        children
-                        - label|text
-                            text: Option 1.5 (disabled)
-                    - option_1_6|markup
-                        tag_name: option
-                        attributes
-                        - value: option_1_6
-                        children
-                        - label|text
-                            text: Option 1.6
-      # field select macro
-        - select_macro|field_select
+        - select|field_select
             title: Selection list (field_select)
             description|text
               text: Element %%_info.
               args
               - info: &lt;select&gt;
             element_attributes
-            - name: select_macro
+            - name: select
             values
             - not_selected: - select -
-            - option_2_1: Option 2.1 (selected)
-            - option_2_2: Option 2.2 (disabled)
-            - option_2_3: Option 2.3
-            - group_2_1
-                title: Group 2.1
+            - option_1: Option 1 (selected)
+            - option_2: Option 2 (disabled)
+            - option_3: Option 3
+            - group_1
+                title: Group 1
                 values
-                - option_2_4: Option 2.4
+                - option_4: Option 4
             selected
-            - option_2_1: option_2_1
+            - option_1: option_1
             disabled
-            - option_2_2: option_2_2
+            - option_2: option_2
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
