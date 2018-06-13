@@ -270,24 +270,7 @@ forms
             title_tag_name: legend
             children
           # field radiobutton
-            - radiobutton|field
-                title: Radiobutton (field)
-                title_position: bottom
-                description|text
-                  text: Element %%_info.
-                  args
-                  - info: &lt;input type="radio"&gt;
-                attributes
-                - x-type: radiobutton
-                children
-                - element|markup_simple
-                    tag_name: input
-                    attributes
-                    - type: radio
-                    - name: radiobutton
-                    - value: radiobutton_1
-                    - checked: checked
-            - radiobutton_macro|field_radiobutton
+            - radiobutton|field_radiobutton
                 title: Radiobutton (field_radiobutton)
                 description|text
                   text: Element %%_info.
@@ -295,73 +278,24 @@ forms
                   - info: &lt;input type="radio"&gt;
                 element_attributes
                 - name: radiobutton
-                - value: radiobutton_2
+                - value: radiobutton
           # field radiobuttons
-            - radiobuttons|container
-                tag_name: x-group
-                title: Radiobuttons (container)
-                description|text
-                  text: Elements %%_info.
-                  args
-                  - info: &lt;input type="radio"&gt;
-                attributes
-                - x-type: radiobuttons
-                children
-                - radiobuttons_1|field
-                    title: Radiobutton 1
-                    title_position: bottom
-                    attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radiobuttons
-                        - value: radiobuttons_1
-                - radiobuttons_2|field
-                    title: Radiobutton 2 (checked)
-                    title_position: bottom
-                    attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radiobuttons
-                        - value: radiobuttons_2
-                        - checked: checked
-                - radiobuttons_3|field
-                    title: Radiobutton 3 (disabled)
-                    title_position: bottom
-                    attributes
-                    - x-type: radiobutton
-                    children
-                    - element|markup_simple
-                        tag_name: input
-                        attributes
-                        - type: radio
-                        - name: radiobuttons
-                        - value: radiobuttons_3
-                        - disabled: disabled
-          # field radiobuttons macro
-            - radiobuttons_macro|group_radiobuttons
+            - radiobuttons|group_radiobuttons
                 title: Radiobuttons (group_radiobuttons)
                 description|text
                   text: Elements %%_info.
                   args
                   - info: &lt;input type="radio"&gt;
                 element_attributes
-                - name: radiobuttons_macro
+                - name: radiobuttons
                 values
-                - radiobuttons_macro_1: Radiobutton 1
-                - radiobuttons_macro_2: Radiobutton 2 (checked)
-                - radiobuttons_macro_3: Radiobutton 3 (disabled)
+                - radiobuttons_1: Radiobutton 1
+                - radiobuttons_2: Radiobutton 2 (checked)
+                - radiobuttons_3: Radiobutton 3 (disabled)
                 disabled
-                - radiobuttons_macro_3: radiobuttons_macro_3
+                - radiobuttons_3: radiobuttons_3
                 checked
-                - radiobuttons_macro_2: radiobuttons_macro_2
+                - radiobuttons_2: radiobuttons_2
           # field radiobuttons color macro
             - palette|group_palette
                 title: Color (group_palette)
