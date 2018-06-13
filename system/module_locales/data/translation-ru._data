@@ -92,6 +92,7 @@ translations
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
     - Field "%%_title" does not support loading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
+    - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_num characters!: Поле "%%_title" должно содержать максимум %%_num символов!
@@ -115,6 +116,7 @@ translations
     - Form elements: Элементы формы
     - Front page: Главная страница
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
+    - Group "%%_title" has a changed value.: Группа "%%_title" имеет измененное значение.
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - If the initial value is not specified, the current value in the UTC time zone will be used.: Если начальное значение не задано, то будет использовано текущее значение в часовом поясе UTC.

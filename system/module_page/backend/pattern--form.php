@@ -86,7 +86,7 @@ namespace effcore {
         }
       # call submit handler (if no errors)
         if (count($this->errors) == 0) {
-          event::start('on_form_submit', $id, [$this, $fields, &$values]);
+          event::start('on_form_submit', $id, [$this, $form_items, &$values]);
         }
       # validation cache
         if (count($this->errors) != 0 &&

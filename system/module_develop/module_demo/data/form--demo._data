@@ -185,14 +185,14 @@ forms
             - name: time
             - value: 01:23:45
       # field select timezone
-        - select_timezone|field_timezone
+        - timezone|field_timezone
             title: Timezone
             description|text
               text: Field %%_type.
               args
               - type: field_timezone
             element_attributes
-            - name: select_timezone
+            - name: timezone
             - required: required
             selected
             - 424: 424

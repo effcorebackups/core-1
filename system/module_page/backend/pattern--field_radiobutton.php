@@ -40,9 +40,9 @@ namespace effcore {
       if (static::is_disabled($field, $element)) return true;
       $new_values = static::new_values_get($name);
       $result = static::validate_required($field, $form, $npath, $element, $new_values);
-      if (core::in_array_string_compare($element->attribute_select('value'), $new_values))
-           $element->attribute_insert('checked', 'checked');
-      else $element->attribute_delete('checked');
+      $value_default = $field->value_get(true);
+      $field->value_set(in_array($value_default, $new_values) ?
+                                 $value_default : '');
       return $result;
     }
   }
