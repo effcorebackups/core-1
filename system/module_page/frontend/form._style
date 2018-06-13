@@ -17,8 +17,8 @@
   form x-title {display: block}
   form x-title, form x-field label {font-size: 1.2em}
   form x-field {display: block; margin: 20px 0}
-  form x-description {display: block; margin-top: 10px; font-size: .9em; line-height: 1.3em; color: darkgray}
-  form x-description p {margin: 5px 0}
+  form x-description {display: block; margin-top: 10px; font-size: .9em; line-height: 1.7em; color: darkgray}
+  form x-description p {margin: 0}
   form b.required {position: absolute; margin-left: .2em; font-size: 1.1em; color: %%_color_error}
 
   /* inputs */

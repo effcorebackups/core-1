@@ -16,8 +16,8 @@ namespace effcore {
   }
 
   function text_select() {return $this->text;}
-  function text_update($text) {$this->text = $text;}
-  function text_append($text) {$this->text.= $text;}
+  function text_update($new_text) {$this->text = $new_text;}
+  function text_append($new_text) {$this->text.= $new_text;}
 
   function render() {
     return $this->text;
