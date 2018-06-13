@@ -28,10 +28,12 @@ translations
     - Can not write file "%%_file" to the directory "%%_directory"!: Не удалось записать файл "%%_file" в каталог "%%_directory"!
     - Cancel: Отмена
     - cancel: отмена
+    - Canvas: Холст
     - Captcha: Защитный код
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
+    - Checkboxes: Флажки
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
@@ -65,8 +67,8 @@ translations
     - duplicate of %%_type "%%_id" was found: был найден дубликат "%%_id" типа %%_type
     - Edit user %%_nick_context{2}: Редактировать пользователя %%_nick_context{2}
     - edit: редактировать
-    - email: адрес электронной почты
     - EMail: Адрес электронной почты
+    - email: адрес электронной почты
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - enable: включить
     - Entity %%_name was installed.: Сущность %%_name была установлена.
@@ -175,6 +177,7 @@ translations
     - ok: ок
     - on this ip: на этом ip
     - Operating System: Операционная система
+    - Ordered list: Упорядоченный список
     - OS Version: Версия ОС
     - Page not found: Страница не найдена
     - Page: Страница
@@ -193,6 +196,8 @@ translations
     - Query error!: Ошибка запроса!
     - query prepare return the false: подготовка запроса вернула false
     - query: запрос
+    - Radiobutton: Переключатель
+    - Radiobuttons: Переключатели
     - Range: Диапазон
     - register: зарегистрировать
     - Registered: Зарегистрированные
@@ -206,9 +211,10 @@ translations
     - roles: роли
     - Roles: Роли
     - save: сохранить
-    - search: поиск
     - Search: Поиск
+    - search: поиск
     - Select: Выбрать
+    - Selection list: Список выбора
     - Server software: Серверное ПО
     - Session expiration date: Дата окончания сессии
     - set: установка
@@ -234,6 +240,7 @@ translations
     - Table: Таблица
     - Test: Тест
     - Text: Текст
+    - Textarea: Текстовая область
     - The changes have been deleted.: Изменения были удалены.
     - The changes have been saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зеленой и "ef" - синей.
@@ -253,6 +260,7 @@ translations
     - uninstall: удалить
     - Update: Обновить
     - updated: обновлено
+    - URL: URL
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
     - User %%_nick was deleted.: Пользователь %%_nick был удален.
     - User %%_nick was not deleted!: Пользователь %%_nick не был удален.
@@ -271,7 +279,6 @@ translations
     - Users: Пользователи
     - val.: знач.
     - Val.: Знач.
-    - Valid HTML5: Действительный HTML5
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
     - Value: Значение
     - Value: Значение

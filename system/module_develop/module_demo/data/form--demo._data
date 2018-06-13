@@ -56,28 +56,32 @@ forms
         children
       # field file
         - file|field_file
-            title: File (field_file)
+            title: File
             max_file_size: 10K
             upload_dir: demo/
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_file
             allowed_types
             - gif: gif
             - jpeg: jpeg
             - jpg: jpg
             - png: png
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="file"&gt;
+              - type: field_file
             element_attributes
             - name: file[]
             - multiple: multiple
       # field text
         - text|field_text
-            title: Text (field_text)
+            title: Text
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="text"&gt;
+              - type: field_text
             element_attributes
             - name: text
             - value: text in input
@@ -85,60 +89,62 @@ forms
             - pattern: %^[a-zA-Z0-9 ]+$%
       # field password
         - password|field_password
-            title: Password (field_password)
+            title: Password
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="password"&gt;
+              - type: field_password
             element_attributes
             - name: password
             - value: text in password
       # field search
         - search|field_search
-            title: Search (field_search)
+            title: Search
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="search"&gt;
+              - type: field_search
             element_attributes
             - name: search
             - value: text in search
       # field url
         - url|field_url
-            title: URL (field_url)
+            title: URL
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="url"&gt;
+              - type: field_url
             element_attributes
             - name: url
             - value: http://example.com
       # field phone
         - phone|field_phone
-            title: Phone (field_phone)
+            title: Phone
             description|text
-              text: Use international format of mobile phone numbers.
+              text: Field %%_type. Use international format of mobile phone numbers.
+              args
+              - type: field_phone
             element_attributes
             - name: phone
             - value: &#43;000112334455
       # field email
         - email|field_email
-            title: EMail (field_email)
+            title: EMail
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="email"&gt;
+              - type: field_email
             element_attributes
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: multiple
       # field number
         - number|field_number
-            title: Number (field_number)
+            title: Number
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="number"&gt;
+              - type: field_number
             element_attributes
             - name: number
             - min: -1000
@@ -146,11 +152,11 @@ forms
             - step: 0.2
       # field range
         - range|field_range
-            title: Range (field_range)
+            title: Range
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="range"&gt;
+              - type: field_range
             element_attributes
             - name: range
             - min: -1
@@ -158,27 +164,31 @@ forms
             - step: 0.2
       # field date
         - date|field_date
-            title: Date (field_date)
+            title: Date
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="date"&gt;
+              - type: field_date
             element_attributes
             - name: date
             - value: 2020-01-01
       # field time
         - time|field_time
-            title: Time (field_time)
+            title: Time
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;input type="time"&gt;
+              - type: field_time
             element_attributes
             - name: time
             - value: 01:23:45
       # field select timezone
         - select_timezone|field_timezone
-            title: Timezone (field_timezone)
+            title: Timezone
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_timezone
             element_attributes
             - name: select_timezone
             - required: required
@@ -186,27 +196,31 @@ forms
             - 424: 424
       # field color
         - color|field_color
-            title: Color (field_color)
+            title: Color
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_color
             element_attributes
             - name: color
             - value: #ffffff
       # field textarea
         - textarea|field_textarea
-            title: Textarea (field_textarea)
+            title: Textarea
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;textarea&gt;&lt;/textarea&gt;
+              - type: field_textarea
             element_attributes
             - name: textarea_macro
             - value: text in textarea
       # field select
         - select|field_select
-            title: Selection list (field_select)
+            title: Selection list
             description|text
-              text: Element %%_info.
+              text: Field %%_type.
               args
-              - info: &lt;select&gt;
+              - type: field_select
             element_attributes
             - name: select
             values
@@ -232,22 +246,22 @@ forms
             children
           # field checkbox
             - checkbox|field_checkbox
-                title: Checkbox (field_checkbox)
+                title: Checkbox
                 description|text
-                  text: Element %%_info.
+                  text: Field %%_type.
                   args
-                  - info: &lt;checkbox&gt;
+                  - type: field_checkbox
                 element_attributes
                 - name: checkbox
                 - value: checkbox
                 - checked: checked
           # field checkboxes
             - checkboxes|group_checkboxes
-                title: Checkboxes (group_checkboxes)
+                title: Checkboxes
                 description|text
-                  text: Elements %%_info.
+                  text: Group %%_type.
                   args
-                  - info: &lt;input type="checkbox"&gt;
+                  - type: group_checkboxes
                 element_attributes
                 - name: checkboxes[]
                 values
@@ -271,21 +285,21 @@ forms
             children
           # field radiobutton
             - radiobutton|field_radiobutton
-                title: Radiobutton (field_radiobutton)
+                title: Radiobutton
                 description|text
-                  text: Element %%_info.
+                  text: Field %%_type.
                   args
-                  - info: &lt;input type="radio"&gt;
+                  - type: field_radiobutton
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
           # field radiobuttons
             - radiobuttons|group_radiobuttons
-                title: Radiobuttons (group_radiobuttons)
+                title: Radiobuttons
                 description|text
-                  text: Elements %%_info.
+                  text: Group %%_type.
                   args
-                  - info: &lt;input type="radio"&gt;
+                  - type: group_radiobuttons
                 element_attributes
                 - name: radiobuttons
                 values
@@ -298,7 +312,11 @@ forms
                 - radiobuttons_2: radiobuttons_2
           # field radiobuttons color macro
             - palette|group_palette
-                title: Color (group_palette)
+                title: Color
+                description|text
+                  text: Group %%_type.
+                  args
+                  - type: group_palette
                 element_attributes
                 - name: palette_color
     - button_submit|markup
