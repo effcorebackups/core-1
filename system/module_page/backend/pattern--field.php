@@ -146,7 +146,7 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
-  # conversion matrix (expected from source - undefined|string|array):
+  # conversion matrix (expected: undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
   # - source[field] == undefined           -> return ''
   # - source[field] == ''                  -> return ''
@@ -167,7 +167,7 @@ namespace effcore {
                   ${$source}[$name][$index] : ''));
   }
 
-  # conversion matrix (expected from source - undefined|string|array):
+  # conversion matrix (expected: undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
   # - source[field] == undefined           -> return []
   # - source[field] == ''                  -> return [0 => '']

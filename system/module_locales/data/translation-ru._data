@@ -281,6 +281,8 @@ translations
     - User with this Nick was already registered!: Пользователь с таким Ником уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
+    - UTC Date: UTC Дата
+    - UTC Time: UTC Время
     - val.: знач.
     - Val.: Знач.
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!

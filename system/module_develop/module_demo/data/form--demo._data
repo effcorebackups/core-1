@@ -164,9 +164,11 @@ forms
             - step: 0.2
       # field date
         - date|field_date
-            title: Date
-            description|text
-              text: Field %%_type.
+            title: UTC Date
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value in the UTC time zone will be used.
+              - 1: Field %%_type.
               args
               - type: field_date
             element_attributes
@@ -174,7 +176,7 @@ forms
             - value: 2020-01-01
       # field time
         - time|field_time
-            title: Time
+            title: UTC Time
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value in the UTC time zone will be used.
@@ -259,7 +261,7 @@ forms
                 - name: checkbox
                 - value: checkbox
                 - checked: checked
-          # field checkboxes
+          # group checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
                 description|text
@@ -297,7 +299,7 @@ forms
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
-          # field radiobuttons
+          # group radiobuttons
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
                 description|text
