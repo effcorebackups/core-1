@@ -19,6 +19,7 @@ namespace effcore {
   }
 
   function values_set($values) {
+    foreach ($this->children_select() as $c_field) $c_field->value_set('');
     foreach ($this->children_select() as $c_field) {
       $value_default = $c_field->value_get(true);
       if (in_array($value_default, $values)) {
