@@ -34,6 +34,11 @@ namespace effcore {
     return $element->child_select('content')->text_select();
   }
 
+  function value_set($value) {
+    $element = $this->child_select('element');
+    return $element->child_select('content')->text_update($value);
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -52,7 +57,7 @@ namespace effcore {
                 static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
                 static::validate_value    ($field, $form, $npath, $element, $new_value) &&
                 static::validate_pattern  ($field, $form, $npath, $element, $new_value);
-      $element->child_select('content')->text_update($new_value);
+      $field->value_set($new_value);
       return $result;
     }
   }
