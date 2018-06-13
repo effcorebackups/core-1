@@ -48,7 +48,7 @@ namespace effcore {
                 static::validate_min      ($field, $form, $npath, $element, $new_value) &&
                 static::validate_max      ($field, $form, $npath, $element, $new_value) &&
                 static::validate_pattern  ($field, $form, $npath, $element, $new_value);
-      $element->attribute_insert('value', $new_value);
+      $field->value_set($new_value);
       return $result;
     }
   }
