@@ -55,7 +55,7 @@ namespace effcore {
 
   function optgroup_insert($id, $title, $attr = []) {
     $this->child_select('element')->child_insert(
-      new markup('optgroup', $attr + ['label' => $title]), $id
+      new markup('optgroup', $attr + ['label' => translation::get($title)]), $id
     );
   }
 
