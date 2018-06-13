@@ -201,8 +201,10 @@ forms
       # field color
         - color|field_color
             title: Color
-            description|text
-              text: Field %%_type.
+            description|text_multiline
+              text
+              - 0: The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.
+              - 1: Field %%_type.
               args
               - type: field_color
             element_attributes
