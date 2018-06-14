@@ -145,6 +145,9 @@ namespace effcore {
     foreach ($form->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {
         $return[$c_npath] = $c_child;
+        if (method_exists($c_child, 'element_name_get')) {
+          $return['#'.$c_child->element_name_get()] = $c_child;
+        }
       }
     }
     return $return;
