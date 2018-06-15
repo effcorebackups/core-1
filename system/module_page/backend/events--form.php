@@ -19,14 +19,14 @@ namespace effcore\modules\page {
     $items['colors/color_bg_id']->value_set($settings['page']->color_bg_id);
   }
 
-  static function on_validate_decoration($form, $fields, &$values) {
+  static function on_validate_decoration($form, $items) {
   }
 
-  static function on_submit_decoration($form, $fields, &$values) {
+  static function on_submit_decoration($form, $items) {
     switch ($form->clicked_button_name) {
       case 'save':
-        storage::get('files')->changes_register('page', 'update', 'settings/page/color_id',    $values['color_id'][0], false);
-        storage::get('files')->changes_register('page', 'update', 'settings/page/color_bg_id', $values['color_bg_id'][0]);
+        storage::get('files')->changes_register('page', 'update', 'settings/page/color_id',    $items['colors/color_id'   ]->value_get(), false);
+        storage::get('files')->changes_register('page', 'update', 'settings/page/color_bg_id', $items['colors/color_bg_id']->value_get());
         message::insert('The changes have been saved.');
         break;
       case 'restore':

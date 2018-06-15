@@ -18,14 +18,14 @@ namespace effcore {
   ### on_validate ###
   ###################
 
-  static function on_validate($form, $fields, &$values) {
+  static function on_validate($form, $items) {
   }
 
   ###################
   ### on_submit ###
   ###################
 
-  static function on_submit($form, $fields, &$values) {
+  static function on_submit($form, $items) {
   }
 
 }}
