@@ -28,7 +28,6 @@ namespace effcore {
     $this->validation_id = static::validation_id_get();
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
-    $values = static::values_get();
     $id = $this->attribute_select('id');
   # build all form elements
     $elements = $this->children_select_recursive();
@@ -75,7 +74,7 @@ namespace effcore {
         }
       # call form validate handlers
         if (empty($this->clicked_button->novalidate)) {
-          event::start('on_form_validate', $id, [$this, $form_items, &$values]);
+          event::start('on_form_validate', $id, [$this, $form_items]);
         }
       # show errors and set error class
         foreach ($this->errors as $c_npath => $c_errors) {
@@ -86,7 +85,7 @@ namespace effcore {
         }
       # call submit handler (if no errors)
         if (count($this->errors) == 0) {
-          event::start('on_form_submit', $id, [$this, $form_items, &$values]);
+          event::start('on_form_submit', $id, [$this, $form_items]);
         }
       # validation cache
         if (count($this->errors) != 0 &&
@@ -155,15 +154,6 @@ namespace effcore {
                            $return[$c_name][] = $c_child;
         }
       }
-    }
-    return $return;
-  }
-
-  static function values_get() { # @todo: delete this function
-    $return = [];
-    foreach ($_POST as $c_field => $c_value) {
-      $return[$c_field] = is_array($c_value) ?
-                                   $c_value : [$c_value];
     }
     return $return;
   }

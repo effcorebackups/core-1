@@ -38,73 +38,70 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_validate_install($form, $fields, &$values) {
+  static function on_validate_install($form, $items) {
     switch ($form->clicked_button_name) {
       case 'install':
-        if (empty($values['driver'][0])) {
+        if ($items['storage/is_mysql' ]->checked_get() == false &&
+            $items['storage/is_sqlite']->checked_get() == false) {
           $form->error_add('storage/is_mysql/element');
           $form->error_add('storage/is_sqlite/element');
           $form->error_add(null, 'Driver is not selected!');
           return;
         }
         if (count($form->errors) == 0) {
-          switch ($values['driver'][0]) {
-            case 'sqlite':
-              $test = storage::get('main')->test($values['driver'][0], (object)[
-                'file_name' => $values['file_name'][0]
-              ]);
-              if ($test !== true) {
-                $form->error_add('storage/sqlite/file_name/element');
-                $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
-                                       translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
-              }
-              break;
-            case 'mysql':
-              $test = storage::get('main')->test($values['driver'][0], (object)[
-                'host_name'  => $values['host_name'][0],
-                'port'       => $values['port'][0],
-                'storage_id' => $values['storage_id'][0],
-                'user_name'  => $values['user_name'][0],
-                'password'   => $values['password'][0]
-              ]);
-              if ($test !== true) {
-                $form->error_add('storage/mysql/storage_id/element');
-                $form->error_add('storage/mysql/host_name/element');
-                $form->error_add('storage/mysql/port/element');
-                $form->error_add('storage/mysql/user_name/element');
-                $form->error_add('storage/mysql/password/element');
-                $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
-                                       translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
-              }
-              break;
+          if ($items['storage/is_mysql']->checked_get()) {
+            $test = storage::get('main')->test('mysql', (object)[
+              'host_name'  => $items['#host_name']->value_get(),
+              'port'       => $items['#port']->value_get(),
+              'storage_id' => $items['#storage_id']->value_get(),
+              'user_name'  => $items['#user_name']->value_get(),
+              'password'   => $items['#password']->value_get()
+            ]);
+            if ($test !== true) {
+              $form->error_add('storage/mysql/storage_id/element');
+              $form->error_add('storage/mysql/host_name/element');
+              $form->error_add('storage/mysql/port/element');
+              $form->error_add('storage/mysql/user_name/element');
+              $form->error_add('storage/mysql/password/element');
+              $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
+                                     translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+            }
+          }
+          if ($items['storage/is_sqlite']->checked_get()) {
+            $test = storage::get('main')->test('sqlite', (object)[
+              'file_name' => $items['#file_name']->value_get()
+            ]);
+            if ($test !== true) {
+              $form->error_add('storage/sqlite/file_name/element');
+              $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
+                                     translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+            }
           }
         }
         break;
     }
   }
 
-  static function on_submit_install($form, $fields, &$values) {
+  static function on_submit_install($form, $items) {
     switch ($form->clicked_button_name) {
       case 'install':
-        switch ($values['driver'][0]) {
-          case 'sqlite':
-            $params = new \stdClass;
-            $params->driver = $values['driver'][0];
-            $params->credentials = new \stdClass;
-            $params->credentials->file_name = $values['file_name'][0];
-            $params->table_prefix           = $values['table_prefix'][0];
-            break;
-          case 'mysql':
-            $params = new \stdClass;
-            $params->driver = $values['driver'][0];
-            $params->credentials = new \stdClass;
-            $params->credentials->host_name  = $values['host_name'][0];
-            $params->credentials->port       = $values['port'][0];
-            $params->credentials->storage_id = $values['storage_id'][0];
-            $params->credentials->user_name  = $values['user_name'][0];
-            $params->credentials->password   = $values['password'][0];
-            $params->table_prefix            = $values['table_prefix'][0];
-            break;
+        if ($items['storage/is_mysql']->checked_get()) {
+          $params = new \stdClass;
+          $params->driver = 'mysql';
+          $params->credentials = new \stdClass;
+          $params->credentials->host_name  = $items['#host_name']->value_get();
+          $params->credentials->port       = $items['#port']->value_get();
+          $params->credentials->storage_id = $items['#storage_id']->value_get();
+          $params->credentials->user_name  = $items['#user_name']->value_get();
+          $params->credentials->password   = $items['#password']->value_get();
+          $params->table_prefix            = $items['#table_prefix']->value_get();
+        }
+        if ($items['storage/is_sqlite']->checked_get()) {
+          $params = new \stdClass;
+          $params->driver = 'sqlite';
+          $params->credentials = new \stdClass;
+          $params->credentials->file_name = $items['#file_name']->value_get();
+          $params->table_prefix           = $items['#table_prefix']->value_get();
         }
         storage::get('files')->changes_register('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
         storage::get('files')->changes_register('core', 'update', 'settings/core/keys', [
