@@ -13,7 +13,9 @@ namespace effcore {
   function values_get() {
     $return = [];
     foreach ($this->children_select() as $c_id => $c_field) {
-      $return[$c_id] = $c_field->value_get();
+      if ($c_field->value_get()) {
+        $return[$c_id] = $c_field->value_get();
+      }
     }
     return $return;
   }

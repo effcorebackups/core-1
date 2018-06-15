@@ -156,16 +156,16 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_validate_login($form, $fields, &$values) {
+  static function on_validate_login($form, $items) {
     switch ($form->clicked_button_name) {
       case 'login':
         if (count($form->errors) == 0) {
           $user = (new instance('user', [
-            'email' => strtolower($values['email'][0])
+            'email' => strtolower($items['#email']->value_get())
           ]))->select();
           if (!$user || (
                $user->password_hash &&
-               $user->password_hash !== core::hash_password_get($values['password'][0]))) {
+               $user->password_hash !== core::hash_password_get($items['#password']->value_get()))) {
             $form->error_add('credentials/email/element');
             $form->error_add('credentials/password/element');
             message::insert('Incorrect email or password!', 'error');
@@ -175,17 +175,17 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_login($form, $fields, &$values) {
+  static function on_submit_login($form, $items, &$values) {
     switch ($form->clicked_button_name) {
       case 'login':
         $user = (new instance('user', [
-          'email' => strtolower($values['email'][0])
+          'email' => strtolower($items['#email']->value_get())
         ]))->select();
         if ($user &&
-            $user->password_hash === core::hash_password_get($values['password'][0])) {
+            $user->password_hash === core::hash_password_get($items['#password']->value_get())) {
           session::insert($user->id,
-            isset($values['session_params']) ? core::array_kmap(
-                  $values['session_params']) : []);
+            core::array_kmap($items['credentials/session_params']->values_get())
+          );
           url::go('/user/'.$user->id);
         }
         break;
