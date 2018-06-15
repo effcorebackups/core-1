@@ -336,19 +336,10 @@ forms
         children
         - label|text
             text: submit
-    - button_button|markup
-        tag_name: button
-        attributes
-        - type: button
-        - name: button
-        - value: button
-        children
-        - label|text
-            text: button
     - button_reset|markup
         tag_name: button
         attributes
-        - type: reset
+        - type: submit
         - name: button
         - value: reset
         children

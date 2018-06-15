@@ -146,6 +146,13 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
+  static function all_value_reset() {
+    $_POST = [];
+    $_GET = [];
+    $_REQUEST = [];
+    $_FILES = [];
+  }
+
   # conversion matrix (expected: undefined|string|array):
   # ─────────────────────────────────────────────────────────────────────
   # - source[field] == undefined           -> return ''

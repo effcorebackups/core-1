@@ -27,13 +27,12 @@ namespace effcore\modules\page {
       case 'save':
         storage::get('files')->changes_register('page', 'update', 'settings/page/color_id',    $items['colors/color_id'   ]->value_get(), false);
         storage::get('files')->changes_register('page', 'update', 'settings/page/color_bg_id', $items['colors/color_bg_id']->value_get());
-        message::insert('The changes have been saved.');
+        message::insert('The changes was saved.');
         break;
       case 'restore':
         storage::get('files')->changes_unregister('page', 'update', 'settings/page/color_id');
         storage::get('files')->changes_unregister('page', 'update', 'settings/page/color_bg_id');
-      # message::insert('The changes have been deleted.');
-        message::insert('UNDER CONSTRUCTION'); # @todo: make functionality
+        message::insert('The changes was deleted.');
         break;
     }
   }
