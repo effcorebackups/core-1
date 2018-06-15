@@ -196,17 +196,17 @@ namespace effcore\modules\user {
   ### form: registration ###
   ##########################
 
-  static function on_validate_registration($form, $fields, &$values) {
+  static function on_validate_registration($form, $items) {
     switch ($form->clicked_button_name) {
       case 'register':
         if (count($form->errors) == 0) {
         # test email
-          if ((new instance('user', ['email' => strtolower($values['email'][0])]))->select()) {
+          if ((new instance('user', ['email' => strtolower($items['#email']->value_get())]))->select()) {
             $form->error_add('credentials/email/element', 'User with this EMail was already registered!');
             return;
           }
         # test nick
-          if ((new instance('user', ['nick' => strtolower($values['nick'][0])]))->select()) {
+          if ((new instance('user', ['nick' => strtolower($items['#nick']->value_get())]))->select()) {
             $form->error_add('credentials/nick/element', 'User with this Nick was already registered!');
             return;
           }
@@ -215,18 +215,18 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_registration($form, $fields, &$values) {
+  static function on_submit_registration($form, $items) {
     switch ($form->clicked_button_name) {
       case 'register':
         $user = (new instance('user', [
-          'email'         => strtolower($values['email'][0]),
-          'nick'          => strtolower($values['nick'][0]),
-          'password_hash' => core::hash_password_get($values['password'][0])
+          'email'         => strtolower($items['#email']->value_get()),
+          'nick'          => strtolower($items['#nick']->value_get()),
+          'password_hash' => core::hash_password_get($items['#password']->value_get())
         ]))->insert();
         if ($user) {
           session::insert($user->id,
-            isset($values['session_params']) ? core::array_kmap(
-                  $values['session_params']) : []);
+            core::array_kmap($items['credentials/session_params']->values_get())
+          );
           url::go('/user/'.$user->id);
         } else {
           message::insert('User was not registered!', 'error');
@@ -239,11 +239,12 @@ namespace effcore\modules\user {
   ### form: logout ###
   ####################
 
-  static function on_submit_logout($form, $fields, &$values) {
+  static function on_submit_logout($form, $items) {
     switch ($form->clicked_button_name) {
       case 'logout':
         session::delete(user::current_get()->id);
         url::go('/');
+        break;
       case 'cancel':
         url::go(url::back_url_get() ?: '/');
         break;
