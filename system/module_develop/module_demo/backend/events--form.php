@@ -31,7 +31,7 @@ namespace effcore\modules\demo {
   static function on_validate_demo($form, $items) {
   }
 
-  static function on_submit_demo($form, $items, &$values) {
+  static function on_submit_demo($form, $items) {
     $def_value_checkboxes = [0 => '', 1 => 'checkboxes_2', 2 => '', 3 => 'checkboxes_4'];
     $def_value_email = 'test1@example.com,test2@example.com';
     $def_value_select = ['option_1' => 'Option 1 (selected)'];

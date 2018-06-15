@@ -22,7 +22,7 @@ namespace effcore\modules\user {
   ### form: user_delete ###
   #########################
 
-  static function on_submit_user_delete($form, $fields, &$values) {
+  static function on_submit_user_delete($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'delete':
@@ -32,6 +32,7 @@ namespace effcore\modules\user {
         if ($user) {
           $nick = $user->nick;
           if ($user->delete()) {
+          # remove user sessions
             $sessions = entity::get('session')->instances_select(['id_user' => $id_user]);
             if ($sessions) {
               foreach ($sessions as $c_session) {
@@ -56,45 +57,49 @@ namespace effcore\modules\user {
   static function on_init_user_edit($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     $user = (new instance('user', ['id' => $id_user]))->select();
-    $items['credentials/email']->child_select('element')->attribute_insert('value', $user->email);
-    $items['credentials/nick']->child_select('element')->attribute_insert('value', $user->nick);
-    $items['credentials/avatar']->pool_values_init_old(
+    $items['#email']->value_set($user->email);
+    $items['#nick']->value_set($user->nick);
+    $items['#avatar']->pool_values_init_old(
       $user->avatar_path_relative ? [$user->avatar_path_relative] : []
     );
   }
 
-  static function on_validate_user_edit($form, $fields, &$values) {
+  static function on_validate_user_edit($form, $items) {
     switch ($form->clicked_button_name) {
       case 'save':
         if (count($form->errors) == 0) {
           $id_user = page::current_get()->args_get('id_user');
         # check security
           $test_pass = (new instance('user', ['id' => $id_user]))->select();
-          if ($test_pass->password_hash !== core::hash_password_get($values['password'][0])) {
+          if ($test_pass->password_hash !== core::hash_password_get($items['#password']->value_get())) {
             $form->error_add('credentials/password/element',
               translation::get('Field "%%_title" contains incorrect value!', [
-                'title' => translation::get($fields['credentials/password']->title)
+                'title' => translation::get($items['#password']->title)
               ])
             );
             return;
           }
         # test email
-          $test_email = (new instance('user', ['email' => strtolower($values['email'][0])]))->select();
+          $test_email = (new instance('user', [
+            'email' => strtolower($items['#email']->value_get())
+          ]))->select();
           if ($test_email &&
               $test_email->id != $id_user) {
             $form->error_add('credentials/email/element', 'User with this EMail was already registered!');
             return;
           }
         # test nick
-          $test_nick = (new instance('user', ['nick' => strtolower($values['nick'][0])]))->select();
+          $test_nick = (new instance('user', [
+            'nick' => strtolower($items['#nick']->value_get())
+          ]))->select();
           if ($test_nick &&
               $test_nick->id != $id_user) {
             $form->error_add('credentials/nick/element', 'User with this Nick was already registered!');
             return;
           }
         # test new password
-          if ($values['password'][0] ==
-              $values['password_new'][0]) {
+          if ($items['#password_new']->value_get() ==
+              $items['#password']    ->value_get()) {
             $form->error_add('credentials/password_new/element',
               'New password must be different from the current password!'
             );
@@ -105,17 +110,17 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_user_edit($form, $fields, &$values) {
+  static function on_submit_user_edit($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button_name) {
       case 'save':
         $user = (new instance('user', ['id' => $id_user]))->select();
-        $user->email = strtolower($values['email'][0]);
-        $user->nick  = strtolower($values['nick'][0]);
-        if ($values['password_new'][0]) {
-          $user->password_hash = core::hash_password_get($values['password_new'][0]);
+        $user->email = strtolower($items['#email']->value_get());
+        $user->nick  = strtolower($items['#nick']->value_get());
+        if ($items['#password_new']->value_get()) {
+          $user->password_hash = core::hash_password_get($items['#password_new']->value_get());
         }
-        $avatar_info = $fields['credentials/avatar']->pool_files_save();
+        $avatar_info = $items['#avatar']->pool_files_save();
         if (isset($avatar_info[0]->path) &&
                   $avatar_info[0]->path) {
            $c_file = new file($avatar_info[0]->path);
