@@ -173,12 +173,12 @@ namespace effcore {
     foreach ($code as $c_key => $c_value) {
       if (is_array ($c_value) && !count($c_value))           continue;
       if (is_object($c_value) && !get_object_vars($c_value)) continue;
-      if (is_array ($c_value))      $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
-      else if (is_object($c_value)) $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
-      else if ($c_value === null)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': null';
-      else if ($c_value === false)  $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': false';
-      else if ($c_value === true)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': true';
-      else                          $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': '.$c_value;
+      if (is_array ($c_value))     $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
+      elseif (is_object($c_value)) $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
+      elseif ($c_value === null)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': null';
+      elseif ($c_value === false)  $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': false';
+      elseif ($c_value === true)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': true';
+      else                         $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': '.$c_value;
     }
     return implode(nl, $return);
   }

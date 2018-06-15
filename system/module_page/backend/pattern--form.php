@@ -146,7 +146,13 @@ namespace effcore {
       if ($c_child instanceof \effcore\container) {
         $return[$c_npath] = $c_child;
         if (method_exists($c_child, 'element_name_get')) {
-          $return['#'.$c_child->element_name_get()] = $c_child;
+          $c_name = '#'.$c_child->element_name_get();
+          if (!isset($return[$c_name]))
+                     $return[$c_name] = $c_child;
+          elseif ($return[$c_name] instanceof \effcore\container)
+                  $return[$c_name] = [$return[$c_name], $c_child];
+          elseif (is_array($return[$c_name]))
+                           $return[$c_name][] = $c_child;
         }
       }
     }
