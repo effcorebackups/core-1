@@ -13,7 +13,7 @@ namespace effcore {
   function values_get() {
     $return = [];
     foreach ($this->children_select() as $c_id => $c_field) {
-      if ($c_field->value_get()) {
+      if ($c_field->checked_get() == true) {
         $return[$c_id] = $c_field->value_get();
       }
     }
@@ -21,11 +21,10 @@ namespace effcore {
   }
 
   function values_set($values) {
-    foreach ($this->children_select() as $c_field) $c_field->value_set('');
+    foreach ($this->children_select() as $c_field) $c_field->checked_set(false);
     foreach ($this->children_select() as $c_field) {
-      $value_default = $c_field->value_get(true);
-      if (in_array($value_default, $values)) {
-        $c_field->value_set($value_default);
+      if (in_array($c_field->value_get(), $values)) {
+        $c_field->checked_set(true);
       }
     }
   }

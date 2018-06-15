@@ -175,7 +175,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_login($form, $items, &$values) {
+  static function on_submit_login($form, $items) {
     switch ($form->clicked_button_name) {
       case 'login':
         $user = (new instance('user', [

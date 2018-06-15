@@ -53,18 +53,18 @@ namespace effcore {
 
   function value_get() {
     foreach ($this->children_select() as $c_field) {
-      if ($c_field->value_get()) return
-          $c_field->value_get();
+      if ($c_field->checked_get() == true) {
+        return $c_field->value_get();
+      }
     }
     return '';
   }
 
   function value_set($value) {
-    foreach ($this->children_select() as $c_field) $c_field->value_set('');
+    foreach ($this->children_select() as $c_field) $c_field->checked_set(false);
     foreach ($this->children_select() as $c_field) {
-      $value_default = $c_field->value_get(true);
-      if ($value_default == $value) {
-        $c_field->value_set($value_default);
+      if ($value == $c_field->value_get()) {
+        $c_field->checked_set(true);
         return true;
       }
     }

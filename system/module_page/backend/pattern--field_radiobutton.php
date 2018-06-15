@@ -15,17 +15,20 @@ namespace effcore {
     'name' => 'radio'
   ];
 
-  function value_get($default = false) {
+  function checked_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('checked') == 'checked' || $default ?
-           $element->attribute_select('value') : '';
+    return $element->attribute_select('checked') == 'checked';
   }
 
-  function value_set($value) {
+  function checked_set($is_checked = true) {
     $element = $this->child_select('element');
-    if  ($element->attribute_select('value') == $value)
-         $element->attribute_insert('checked', 'checked');
-    else $element->attribute_delete('checked');
+    if ($is_checked) $element->attribute_insert('checked', 'checked');
+    else             $element->attribute_delete('checked');
+  }
+
+  function value_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('value');
   }
 
   ###########################
@@ -40,9 +43,7 @@ namespace effcore {
       if (static::is_disabled($field, $element)) return true;
       $new_values = static::new_values_get($name);
       $result = static::validate_required($field, $form, $npath, $element, $new_values);
-      $value_default = $field->value_get(true);
-      $field->value_set(in_array($value_default, $new_values) ?
-                                 $value_default : '');
+      $field->checked_set(in_array($field->value_get(), $new_values));
       return $result;
     }
   }
