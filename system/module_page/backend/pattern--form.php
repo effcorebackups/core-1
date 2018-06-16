@@ -29,20 +29,21 @@ namespace effcore {
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
+    $this->button_clicked_set(
+      field::new_value_get('button')
+    );
   # build all form elements
-    $elements = $this->children_select_recursive();
-    foreach ($elements as $c_element) {
+    foreach ($this->children_select_recursive() as $c_element) {
       if (method_exists($c_element, 'build')) {
         $c_element->build();
       }
     }
   # relate each field with it's form
-    $elements = $this->children_select_recursive();
-    foreach ($elements as $c_path => $c_element) {
+    foreach ($this->children_select_recursive() as $c_path => $c_element) {
       if (method_exists($c_element, 'form_set')) $c_element->form_set($this);
       if (method_exists($c_element, 'path_set')) $c_element->path_set($c_path);
     }
-  # renew elements list after build and get all fields
+  # renew all variables after build process
     $elements   = $this->children_select_recursive();
     $form_items = static::form_items_get($this);
     $fields     = static::fields_get($this);
@@ -51,51 +52,36 @@ namespace effcore {
     event::start('on_form_init', $id, [$this, $form_items]);
 
   # if user click the button
-    if (field::new_value_get('form_id') == $id &&
-        field::new_value_get('button')) {
-    # get more info about clicked button
-      foreach ($elements as $c_element) {
-        if ($c_element instanceof markup &&
-            $c_element->tag_name == 'button' &&
-            $c_element->attribute_select('type') == 'submit' &&
-            $c_element->attribute_select('value') == field::new_value_get('button')) {
-          $this->clicked_button      = $c_element;
-          $this->clicked_button_name = $c_element->attribute_select('value');
-          break;
+    if (field::new_value_get('form_id') == $id && $this->clicked_button_name) {
+    # call field validate
+      if (empty($this->clicked_button->novalidate)) {
+        foreach ($fields as $c_npath => $c_field) {
+          $c_field::validate($c_field, $this, $c_npath);
         }
       }
-    # do anything only if clicked button is exist
-      if ($this->clicked_button) {
-      # call field validate
-        if (empty($this->clicked_button->novalidate)) {
-          foreach ($fields as $c_npath => $c_field) {
-            $c_field::validate($c_field, $this, $c_npath);
-          }
+    # call form validate handlers
+      if (empty($this->clicked_button->novalidate)) {
+        event::start('on_form_validate', $id, [$this, $form_items]);
+      }
+    # show errors and set error class
+      foreach ($this->errors as $c_npath => $c_errors) {
+        foreach ($c_errors as $c_error) {
+          if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
+          if ($c_error) message::insert($c_error, 'error');
         }
-      # call form validate handlers
-        if (empty($this->clicked_button->novalidate)) {
-          event::start('on_form_validate', $id, [$this, $form_items]);
-        }
-      # show errors and set error class
-        foreach ($this->errors as $c_npath => $c_errors) {
-          foreach ($c_errors as $c_error) {
-            if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
-            if ($c_error) message::insert($c_error, 'error');
-          }
-        }
-      # call submit handler (if no errors)
-        if (count($this->errors) == 0) {
-          event::start('on_form_submit', $id, [$this, $form_items]);
-        }
-      # validation cache
-        if (count($this->errors) != 0 &&
-            core::hash_data_get($this->validation_data) != $data_hash) {
-          $this->validation_cache_update($this->validation_data);
-        }
-        if (count($this->errors) == 0 ||
-            count($this->validation_data) == 0) {
-          $this->validation_cache_delete();
-        }
+      }
+    # call submit handler (if no errors)
+      if (count($this->errors) == 0) {
+        event::start('on_form_submit', $id, [$this, $form_items]);
+      }
+    # validation cache
+      if (count($this->errors) != 0 &&
+          core::hash_data_get($this->validation_data) != $data_hash) {
+        $this->validation_cache_update($this->validation_data);
+      }
+      if (count($this->errors) == 0 ||
+          count($this->validation_data) == 0) {
+        $this->validation_cache_delete();
       }
     }
 
@@ -156,6 +142,19 @@ namespace effcore {
       }
     }
     return $return;
+  }
+
+  function button_clicked_set($value) {
+    foreach ($this->children_select_recursive() as $c_element) {
+      if ($c_element instanceof markup                      &&
+          $c_element->tag_name == 'button'                  &&
+          $c_element->attribute_select('type' ) == 'submit' &&
+          $c_element->attribute_select('value') == $value) {
+        $this->clicked_button      = $c_element;
+        $this->clicked_button_name = $value;
+        break;
+      }
+    }
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
