@@ -38,7 +38,7 @@ namespace effcore {
       if (static::is_disabled($field, $element)) return true;
       if (static::is_readonly($field, $element)) return true;
       $cur_index = static::cur_index_get($name);
-      $new_value = static::new_value_get($name, $cur_index);
+      $new_value = static::new_value_get($name, $cur_index, $form->source_get());
       $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
                 static::validate_minlength($field, $form, $npath, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $npath, $element, $new_value) &&

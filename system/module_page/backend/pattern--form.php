@@ -29,9 +29,7 @@ namespace effcore {
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
-    $this->button_clicked_set(
-      field::new_value_get('button')
-    );
+    $this->button_clicked_set(field::new_value_get('button', 0, $this->source_get()));
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
       if (method_exists($c_element, 'build')) {
@@ -45,14 +43,15 @@ namespace effcore {
     }
   # renew all variables after build process
     $elements   = $this->children_select_recursive();
-    $form_items = static::form_items_get($this);
-    $fields     = static::fields_get($this);
+    $form_items = $this->form_items_get();
+    $fields     = $this->fields_get();
 
   # call init handlers
     event::start('on_form_init', $id, [$this, $form_items]);
 
   # if user click the button
-    if (field::new_value_get('form_id') == $id && $this->clicked_button_name) {
+    if ($this->clicked_button_name &&
+        field::new_value_get('form_id', 0, $this->source_get()) == $id) {
     # call field validate
       if (empty($this->clicked_button->novalidate)) {
         foreach ($fields as $c_npath => $c_field) {
@@ -102,22 +101,14 @@ namespace effcore {
     $this->errors[$element_id][] = $message;
   }
 
-  function render() {
-    $this->build();
-    return parent::render();
+  function source_get() {
+    return $this->attribute_select('method') == 'post' ? '_POST' :
+          ($this->attribute_select('method') == 'get'  ? '_GET'  : '_GET');
   }
 
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static function not_external_properties_get() {
-    return [];
-  }
-
-  static function fields_get($form) {
+  function fields_get() {
     $return = [];
-    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
+    foreach ($this->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\field) {
         $return[$c_npath] = $c_child;
       }
@@ -125,17 +116,17 @@ namespace effcore {
     return $return;
   }
 
-  static function form_items_get($form) {
+  function form_items_get() {
     $return = [];
-    foreach ($form->children_select_recursive() as $c_npath => $c_child) {
+    foreach ($this->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) {
         $return[$c_npath] = $c_child;
         if (method_exists($c_child, 'element_name_get')) {
           $c_name = '#'.$c_child->element_name_get();
-          if (!isset($return[$c_name]))
-                     $return[$c_name] = $c_child;
-          elseif ($return[$c_name] instanceof \effcore\container)
-                  $return[$c_name] = [$return[$c_name], $c_child];
+          if (      !isset($return[$c_name]))
+                           $return[$c_name] = $c_child;
+          elseif (         $return[$c_name] instanceof \effcore\container)
+                           $return[$c_name] = [$return[$c_name], $c_child];
           elseif (is_array($return[$c_name]))
                            $return[$c_name][] = $c_child;
         }
@@ -155,6 +146,11 @@ namespace effcore {
         break;
       }
     }
+  }
+
+  function render() {
+    $this->build();
+    return parent::render();
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
@@ -193,9 +189,13 @@ namespace effcore {
     }
   }
 
-  # ──────────────────────────────────────────────────────────────────────────────
-  # validation id functions
-  # ──────────────────────────────────────────────────────────────────────────────
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function not_external_properties_get() {
+    return [];
+  }
 
   static function validation_id_generate() {
     $hex_created = dechex(time());

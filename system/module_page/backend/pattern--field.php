@@ -33,8 +33,8 @@
   # select:option  | + |   |   |   |   |   |   |   |   |   |   |   |
   # input:checkbox | + |   | + |   |   |   |   |   |   | + |   | + |
   # input:radio    | + |   | + |   |   |   |   |   |   | + |   | + |
-  # ─────────────────────────────────────────────────────────────────────
-  # note: x - extended feature of the system
+  # ---------------------------------------------------------------------
+  # note: x - is extended feature of the system
   # ─────────────────────────────────────────────────────────────────────
   # input:hidden         | protected from change the value from user side
   # input:button         | not processed - use button:button instead
