@@ -24,7 +24,7 @@ namespace effcore {
     }
   }
 
-  function changes_register($module_id, $action, $dpath, $value = null, $rebuild = true) {
+  function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
   # add new action
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
@@ -36,7 +36,7 @@ namespace effcore {
     }
   }
 
-  function changes_unregister($module_id, $action, $dpath) {
+  function changes_delete($module_id, $action, $dpath) {
     # @todo: make functionality
   }
 

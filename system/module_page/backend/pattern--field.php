@@ -146,7 +146,7 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
-  static function all_value_reset() {
+  static function values_reset() {
     $_POST = [];
     $_GET = [];
     $_REQUEST = [];

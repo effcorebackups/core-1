@@ -103,8 +103,8 @@ namespace effcore\modules\core {
           $params->credentials->file_name = $items['#file_name']->value_get();
           $params->table_prefix           = $items['#table_prefix']->value_get();
         }
-        storage::get('files')->changes_register('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
-        storage::get('files')->changes_register('core', 'update', 'settings/core/keys', [
+        storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
+        storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
           'cron'            => sha1(rand(0, PHP_INT_MAX)),
           'form_validation' => sha1(rand(0, PHP_INT_MAX)),
           'session'         => sha1(rand(0, PHP_INT_MAX))
