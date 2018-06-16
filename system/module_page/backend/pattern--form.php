@@ -25,7 +25,7 @@ namespace effcore {
   public $validation_data = [];
 
   function build() {
-    $this->validation_id = static::validation_id_get();
+    $this->validation_id = static::validation_id_get($this->source_get());
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
@@ -210,11 +210,12 @@ namespace effcore {
     return $validation_id;
   }
 
-  static function validation_id_get() {
+  static function validation_id_get($source = '_POST') {
+    global ${$source};
     if (static::validation_id_check(
-          isset($_POST['validation_id']) ?
-                $_POST['validation_id'] : '')) {
-      return    $_POST['validation_id']; } else {
+          isset(${$source}['validation_id']) ?
+                ${$source}['validation_id'] : '')) {
+      return    ${$source}['validation_id']; } else {
       return static::validation_id_generate();
     }
   }
