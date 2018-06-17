@@ -118,20 +118,14 @@ namespace effcore {
 
   function form_items_get() {
     $return = [];
-    $buffer = [];
+    $fields = [];
     foreach ($this->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof \effcore\container) $return[$c_npath] = $c_child;
-      if ($c_child instanceof \effcore\field &&
-          method_exists($c_child, 'element_name_get')) {
-        $buffer[$c_child->element_name_get()][] = $c_child;
-      }
+      if ($c_child instanceof \effcore\field)     $fields['#'.$c_child->element_name_get()][] = $c_child;
     }
-    foreach ($buffer as $c_name => $c_group) {
-      foreach ($c_group as $c_item) {
-        if (count($c_group) == 1)
-             $return['#'.$c_name] = $c_item;
-        else $return['#'.$c_name.':'.$c_item->value_get()] = $c_item;
-      }
+    foreach ($fields as $c_name => $c_group) {
+      if (count($c_group) == 1) $return[$c_name] = reset($c_group);
+      if (count($c_group) >= 2) $return[$c_name] = $c_group;
     }
     return $return;
   }
