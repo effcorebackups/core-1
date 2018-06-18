@@ -98,7 +98,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $npath) {
+  static function validate($field, $form) {
     $element = $field->child_select('element');
     $name = $field->element_name_get();
     $type = $field->element_type_get();
@@ -107,16 +107,16 @@ namespace effcore {
       $values_allowed = $field->values_allowed_get();
       $new_values = static::new_values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
-      $result = static::validate_required($field, $form, $npath, $element, $new_values) &&
-                static::validate_multiple($field, $form, $npath, $element, $new_values);
+      $result = static::validate_required($field, $form, $element, $new_values) &&
+                static::validate_multiple($field, $form, $element, $new_values);
       $field->values_set($new_values);
       return $result;
     }
   }
 
-  static function validate_required($field, $form, $npath, $element, &$new_values) {
+  static function validate_required($field, $form, $element, &$new_values) {
     if ($element->attribute_select('required') && empty(array_filter($new_values, 'strlen'))) {
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
       );
     } else {
@@ -124,10 +124,10 @@ namespace effcore {
     }
   }
 
-  static function validate_multiple($field, $form, $npath, $element, &$new_values) {
+  static function validate_multiple($field, $form, $element, &$new_values) {
     if (!$element->attribute_select('multiple') && count($new_values) > 1) {
       $new_values = array_slice($new_values, -1);
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
     } else {

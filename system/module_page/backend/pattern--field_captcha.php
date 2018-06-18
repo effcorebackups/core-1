@@ -132,9 +132,9 @@ namespace effcore {
     $storage->query('DELETE', 'FROM', $s->tables('captcha'), 'WHERE', $s->condition('created', core::datetime_get('-1 hour'), '<'));
   }
 
-  static function validate_value($field, $form, $npath, $element, &$new_value) {
+  static function validate_value($field, $form, $element, &$new_value) {
     if (!$field->captcha_check($new_value)) {
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" contains an incorrect characters from image!', ['title' => translation::get($field->title)])
       );
     } else {

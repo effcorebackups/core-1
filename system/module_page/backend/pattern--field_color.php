@@ -21,7 +21,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $npath) {
+  static function validate($field, $form) {
     $element = $field->child_select('element');
     $name = $field->element_name_get();
     $type = $field->element_type_get();
@@ -31,19 +31,19 @@ namespace effcore {
       $cur_index = static::cur_index_get($name);
       $new_value = static::new_value_get($name, $cur_index, $form->source_get());
       $new_value = strtolower($new_value);
-      $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
-                static::validate_minlength($field, $form, $npath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $npath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $npath, $element, $new_value);
+      $result = static::validate_required ($field, $form, $element, $new_value) &&
+                static::validate_minlength($field, $form, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $element, $new_value) &&
+                static::validate_value    ($field, $form, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $element, $new_value);
       $field->value_set($new_value);
       return $result;
     }
   }
 
-  static function validate_value($field, $form, $npath, $element, &$new_value) {
+  static function validate_value($field, $form, $element, &$new_value) {
     if (!core::validate_hex_color($new_value)) {
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
         translation::get('The color should be specified in a special format.')
       );

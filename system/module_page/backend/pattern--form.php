@@ -20,9 +20,9 @@ namespace effcore {
   public $tag_name = 'form';
   public $clicked_button;
   public $clicked_button_name;
-  public $errors = [];
   public $validation_id;
   public $validation_data = [];
+  protected $_errors = [];
 
   function build() {
     $this->validation_id = static::validation_id_get($this->source_get());
@@ -52,36 +52,44 @@ namespace effcore {
   # if user click the button
     if ($this->clicked_button_name &&
         field::new_value_get('form_id', 0, $this->source_get()) == $id) {
+
     # call field validate
       if (empty($this->clicked_button->novalidate)) {
         foreach ($fields as $c_npath => $c_field) {
           $c_field::validate($c_field, $this, $c_npath);
         }
       }
+
     # call form validate handlers
       if (empty($this->clicked_button->novalidate)) {
         event::start('on_form_validate', $id, [$this, $form_items]);
       }
-    # show errors and set error class
-      foreach ($this->errors as $c_npath => $c_errors) {
-        foreach ($c_errors as $c_error) {
-          if ($c_npath) $elements[$c_npath]->attribute_insert('class', ['error' => 'error']);
-          if ($c_error) message::insert($c_error, 'error');
+
+    # show errors
+      if ($this->errors_count_get() != 0) {
+        $this->attribute_insert('class', ['error' => 'error']);
+        foreach ($this->errors_get() as $c_errors) {
+          foreach ($c_errors as $c_error) {
+            if ($c_error) {
+              message::insert($c_error, 'error');
+            }
+          }
         }
       }
+
     # call submit handler (if no errors)
-      if (count($this->errors) == 0) {
+      if ($this->errors_count_get() == 0) {
         event::start('on_form_submit', $id, [$this, $form_items]);
       }
+
     # validation cache
-      if (count($this->errors) != 0 &&
-          core::hash_data_get($this->validation_data) != $data_hash) {
+      if ($this->errors_count_get() != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
         $this->validation_cache_update($this->validation_data);
       }
-      if (count($this->errors) == 0 ||
-          count($this->validation_data) == 0) {
+      if ($this->errors_count_get() == 0 || count($this->validation_data) == 0) {
         $this->validation_cache_delete();
       }
+
     }
 
   # add form_id to the form markup
@@ -94,11 +102,25 @@ namespace effcore {
       'type'  => 'hidden',
       'name'  => 'validation_id',
       'value' => $this->validation_id,
-      ]), 'hidden_validation_id');
+    ]), 'hidden_validation_id');
   }
 
-  function error_add($element_id = null, $message = null) {
-    $this->errors[$element_id][] = $message;
+  function error_add($message = null) {
+    $this->_errors['_form'][] = $message;
+  }
+
+  function errors_count_get() {
+    return count($this->errors_get());
+  }
+
+  function errors_get() {
+    $return = $this->_errors;
+    foreach ($this->fields_get() as $c_npath => $c_field) {
+      if ($c_field->errors_count_get()) {
+        $return[$c_npath] = $c_field->errors_get();
+      }
+    }
+    return $return;
   }
 
   function source_get() {

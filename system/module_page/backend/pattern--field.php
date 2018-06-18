@@ -58,6 +58,7 @@ namespace effcore {
   public $element_attributes_default = [];
   public $element_attributes = [];
 # ─────────────────────────────────────────────────────────────────────
+  protected $_errors = [];
   protected $_form;
   protected $_path;
 
@@ -76,6 +77,22 @@ namespace effcore {
         if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
       }
     }
+  }
+
+  function error_add($message = null) {
+    if (!count($this->_errors)) {
+      $element = $this->child_select('element');
+      $element->attribute_insert('class', ['error' => 'error']);
+    }
+    $this->_errors[] = $message;
+  }
+
+  function errors_count_get() {
+    return count($this->_errors);
+  }
+
+  function errors_get() {
+    return $this->_errors;
   }
 
   function form_get() {return $this->_form;}
@@ -252,28 +269,28 @@ namespace effcore {
     return $element->attribute_select('readonly') ? true : false;
   }
 
-  static function validate($field, $form, $npath) {
+  static function validate($field, $form) {
     $name = $field->element_name_get();
     $type = $field->element_type_get();
   # add validate functionality to non specified fields
     if ($name && $type && get_called_class() == 'effcore\\field') {
       switch ($type) {
-        case 'input:checkbox': return field_checkbox   ::validate($field, $form, $npath);
-        case 'input:color'   : return field_color      ::validate($field, $form, $npath);
-        case 'input:date'    : return field_date       ::validate($field, $form, $npath);
-        case 'input:email'   : return field_email      ::validate($field, $form, $npath);
-        case 'input:file'    : return field_file       ::validate($field, $form, $npath);
-        case 'input:number'  : return field_number     ::validate($field, $form, $npath);
-        case 'input:password': return field_password   ::validate($field, $form, $npath);
-        case 'input:radio'   : return field_radiobutton::validate($field, $form, $npath);
-        case 'input:range'   : return field_range      ::validate($field, $form, $npath);
-        case 'input:search'  : return field_search     ::validate($field, $form, $npath);
-        case 'input:tel'     : return field_phone      ::validate($field, $form, $npath);
-        case 'input:text'    : return field_text       ::validate($field, $form, $npath);
-        case 'input:time'    : return field_time       ::validate($field, $form, $npath);
-        case 'input:url'     : return field_url        ::validate($field, $form, $npath);
-        case 'select'        : return field_select     ::validate($field, $form, $npath);
-        case 'textarea'      : return field_textarea   ::validate($field, $form, $npath);
+        case 'input:checkbox': return field_checkbox   ::validate($field, $form);
+        case 'input:color'   : return field_color      ::validate($field, $form);
+        case 'input:date'    : return field_date       ::validate($field, $form);
+        case 'input:email'   : return field_email      ::validate($field, $form);
+        case 'input:file'    : return field_file       ::validate($field, $form);
+        case 'input:number'  : return field_number     ::validate($field, $form);
+        case 'input:password': return field_password   ::validate($field, $form);
+        case 'input:radio'   : return field_radiobutton::validate($field, $form);
+        case 'input:range'   : return field_range      ::validate($field, $form);
+        case 'input:search'  : return field_search     ::validate($field, $form);
+        case 'input:tel'     : return field_phone      ::validate($field, $form);
+        case 'input:text'    : return field_text       ::validate($field, $form);
+        case 'input:time'    : return field_time       ::validate($field, $form);
+        case 'input:url'     : return field_url        ::validate($field, $form);
+        case 'select'        : return field_select     ::validate($field, $form);
+        case 'textarea'      : return field_textarea   ::validate($field, $form);
       }
     }
   }

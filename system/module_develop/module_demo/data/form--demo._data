@@ -52,7 +52,7 @@ forms
         title: Form elements
         title_tag_name: legend
         children
-      # field field_file
+      # field_file
         - file|field_file
             title: File
             max_file_size: 10K
@@ -73,7 +73,7 @@ forms
             element_attributes
             - name: file[]
             - multiple: multiple
-      # field field_text
+      # field_text
         - text|field_text
             title: Text
             description|text
@@ -85,7 +85,7 @@ forms
             - value: text in input
             - minlength: 5
             - pattern: %^[a-zA-Z0-9 ]+$%
-      # field field_password
+      # field_password
         - password|field_password
             title: Password
             description|text
@@ -95,7 +95,7 @@ forms
             element_attributes
             - name: password
             - value: text in password
-      # field field_search
+      # field_search
         - search|field_search
             title: Search
             description|text
@@ -105,7 +105,7 @@ forms
             element_attributes
             - name: search
             - value: text in search
-      # field field_url
+      # field_url
         - url|field_url
             title: URL
             description|text
@@ -115,7 +115,7 @@ forms
             element_attributes
             - name: url
             - value: http://example.com
-      # field field_phone
+      # field_phone
         - phone|field_phone
             title: Phone
             description|text_multiline
@@ -127,7 +127,7 @@ forms
             element_attributes
             - name: phone
             - value: &#43;000112334455
-      # field field_email
+      # field_email
         - email|field_email
             title: EMail
             description|text
@@ -138,7 +138,7 @@ forms
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: multiple
-      # field field_number
+      # field_number
         - number|field_number
             title: Number
             description|text
@@ -150,7 +150,7 @@ forms
             - min: -1000
             - max: +1000
             - step: 0.2
-      # field field_range
+      # field_range
         - range|field_range
             title: Range
             description|text
@@ -162,7 +162,7 @@ forms
             - min: -1
             - max: +1
             - step: 0.2
-      # field field_date
+      # field_date
         - date|field_date
             title: UTC Date
             description|text_multiline
@@ -174,7 +174,7 @@ forms
             element_attributes
             - name: date
             - value: 2020-01-01
-      # field field_time
+      # field_time
         - time|field_time
             title: UTC Time
             description|text_multiline
@@ -186,7 +186,7 @@ forms
             element_attributes
             - name: time
             - value: 01:23:45
-      # field field_timezone
+      # field_timezone
         - timezone|field_timezone
             title: Timezone
             description|text
@@ -198,7 +198,7 @@ forms
             - required: required
             selected
             - 424: 424
-      # field field_color
+      # field_color
         - color|field_color
             title: Color
             description|text_multiline
@@ -210,7 +210,7 @@ forms
             element_attributes
             - name: color
             - value: #ffffff
-      # field field_textarea
+      # field_textarea
         - textarea|field_textarea
             title: Textarea
             description|text
@@ -220,7 +220,7 @@ forms
             element_attributes
             - name: textarea
             - value: text in textarea
-      # field field_select
+      # field_select
         - select|field_select
             title: Selection list
             description|text_multiline
@@ -252,7 +252,7 @@ forms
             title: Checkboxes
             title_tag_name: legend
             children
-          # field field_checkbox
+          # field_checkbox
             - checkbox|field_checkbox
                 title: Checkbox
                 description|text
@@ -263,7 +263,7 @@ forms
                 - name: checkbox
                 - value: checkbox
                 - checked: checked
-          # group group_checkboxes
+          # group_checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
                 description|text
@@ -291,7 +291,7 @@ forms
             title: Radiobuttons
             title_tag_name: legend
             children
-          # field field_radiobutton
+          # field_radiobutton
             - radiobutton|field_radiobutton
                 title: Radiobutton
                 description|text
@@ -301,7 +301,7 @@ forms
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
-          # group group_radiobuttons
+          # group_radiobuttons
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
                 description|text
@@ -318,7 +318,7 @@ forms
                 - radiobuttons_3: radiobuttons_3
                 checked
                 - radiobuttons_2: radiobuttons_2
-          # field group_palette
+          # group_palette
             - palette|group_palette
                 title: Color
                 description|text

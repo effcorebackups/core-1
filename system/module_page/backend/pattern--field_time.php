@@ -33,7 +33,7 @@ namespace effcore {
   static function value_min_get($element) {$min = $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_time; return strlen($min) == 5 ? $min.':00' : $min;}
   static function value_max_get($element) {$max = $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_time; return strlen($max) == 5 ? $max.':00' : $max;}
 
-  static function validate($field, $form, $npath) {
+  static function validate($field, $form) {
     $element = $field->child_select('element');
     $name = $field->element_name_get();
     $type = $field->element_type_get();
@@ -43,21 +43,21 @@ namespace effcore {
       $cur_index = static::cur_index_get($name);
       $new_value = static::new_value_get($name, $cur_index, $form->source_get());
       $new_value = strlen($new_value) == 5 ? $new_value.':00' : $new_value;
-      $result = static::validate_required ($field, $form, $npath, $element, $new_value) &&
-                static::validate_minlength($field, $form, $npath, $element, $new_value) &&
-                static::validate_maxlength($field, $form, $npath, $element, $new_value) &&
-                static::validate_value    ($field, $form, $npath, $element, $new_value) &&
-                static::validate_min      ($field, $form, $npath, $element, $new_value) &&
-                static::validate_max      ($field, $form, $npath, $element, $new_value) &&
-                static::validate_pattern  ($field, $form, $npath, $element, $new_value);
+      $result = static::validate_required ($field, $form, $element, $new_value) &&
+                static::validate_minlength($field, $form, $element, $new_value) &&
+                static::validate_maxlength($field, $form, $element, $new_value) &&
+                static::validate_value    ($field, $form, $element, $new_value) &&
+                static::validate_min      ($field, $form, $element, $new_value) &&
+                static::validate_max      ($field, $form, $element, $new_value) &&
+                static::validate_pattern  ($field, $form, $element, $new_value);
       $field->value_set($new_value);
       return $result;
     }
   }
 
-  static function validate_value($field, $form, $npath, $element, &$new_value) {
+  static function validate_value($field, $form, $element, &$new_value) {
     if (!core::validate_time($new_value)) {
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
     } else {

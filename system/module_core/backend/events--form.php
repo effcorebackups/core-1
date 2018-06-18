@@ -41,40 +41,42 @@ namespace effcore\modules\core {
   static function on_validate_install($form, $items) {
     switch ($form->clicked_button_name) {
       case 'install':
-        if ($items['storage/is_mysql' ]->checked_get() == false &&
-            $items['storage/is_sqlite']->checked_get() == false) {
-          $form->error_add('storage/is_mysql/element');
-          $form->error_add('storage/is_sqlite/element');
-          $form->error_add(null, 'Driver is not selected!');
+        if ($items['#driver'][0]->checked_get() == false &&
+            $items['#driver'][1]->checked_get() == false) {
+          $items['#driver'][0]->error_add();
+          $items['#driver'][1]->error_add();
+          $form->error_add('Driver is not selected!');
           return;
         }
-        if (count($form->errors) == 0) {
-          if ($items['storage/is_mysql']->checked_get()) {
+        if ($form->errors_count_get() == 0) {
+          if ($items['#driver'][0]->value_get() == 'mysql' &&
+              $items['#driver'][0]->checked_get()) {
             $test = storage::get('main')->test('mysql', (object)[
+              'storage_id' => $items['#storage_id']->value_get(),
               'host_name'  => $items['#host_name']->value_get(),
               'port'       => $items['#port']->value_get(),
-              'storage_id' => $items['#storage_id']->value_get(),
               'user_name'  => $items['#user_name']->value_get(),
               'password'   => $items['#password']->value_get()
             ]);
             if ($test !== true) {
-              $form->error_add('storage/mysql/storage_id/element');
-              $form->error_add('storage/mysql/host_name/element');
-              $form->error_add('storage/mysql/port/element');
-              $form->error_add('storage/mysql/user_name/element');
-              $form->error_add('storage/mysql/password/element');
-              $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
-                                     translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+              $items['#storage_id']->error_add();
+              $items['#host_name']->error_add();
+              $items['#port']->error_add();
+              $items['#user_name']->error_add();
+              $items['#password']->error_add();
+              $form->error_add(translation::get('Storage is not available with these credentials!').br.
+                               translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
           }
-          if ($items['storage/is_sqlite']->checked_get()) {
+          if ($items['#driver'][1]->value_get() == 'sqlite' &&
+              $items['#driver'][1]->checked_get()) {
             $test = storage::get('main')->test('sqlite', (object)[
               'file_name' => $items['#file_name']->value_get()
             ]);
             if ($test !== true) {
-              $form->error_add('storage/sqlite/file_name/element');
-              $form->error_add(null, translation::get('Storage is not available with these credentials!').br.
-                                     translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+              $items['#file_name']->error_add();
+              $form->error_add(translation::get('Storage is not available with these credentials!').br.
+                               translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
           }
         }
@@ -85,7 +87,8 @@ namespace effcore\modules\core {
   static function on_submit_install($form, $items) {
     switch ($form->clicked_button_name) {
       case 'install':
-        if ($items['storage/is_mysql']->checked_get()) {
+        if ($items['#driver'][0]->value_get() == 'mysql' &&
+            $items['#driver'][0]->checked_get()) {
           $params = new \stdClass;
           $params->driver = 'mysql';
           $params->credentials = new \stdClass;
@@ -96,7 +99,8 @@ namespace effcore\modules\core {
           $params->credentials->password   = $items['#password']->value_get();
           $params->table_prefix            = $items['#table_prefix']->value_get();
         }
-        if ($items['storage/is_sqlite']->checked_get()) {
+        if ($items['#driver'][1]->value_get() == 'sqlite' &&
+            $items['#driver'][1]->checked_get()) {
           $params = new \stdClass;
           $params->driver = 'sqlite';
           $params->credentials = new \stdClass;

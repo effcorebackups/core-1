@@ -22,9 +22,9 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate_value($field, $form, $npath, $element, &$new_value) {
+  static function validate_value($field, $form, $element, &$new_value) {
     if (!core::validate_phone($new_value)) {
-      $form->error_add($npath.'/element',
+      $field->error_add(
         translation::get('Field "%%_title" contains an incorrect phone!', ['title' => translation::get($field->title)])
       );
     } else {
