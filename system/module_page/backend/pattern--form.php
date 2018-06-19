@@ -110,7 +110,11 @@ namespace effcore {
   }
 
   function errors_count_get() {
-    return count($this->errors_get());
+    $return = 0;
+    foreach ($this->errors_get() as $c_errors) {
+      $return += count($c_errors);
+    }
+    return $return;
   }
 
   function errors_get() {
