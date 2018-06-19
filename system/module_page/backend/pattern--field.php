@@ -79,6 +79,16 @@ namespace effcore {
     }
   }
 
+  function form_get() {return $this->_form;}
+  function form_set($form) {$this->_form = $form;}
+
+  function path_get() {return $this->_path;}
+  function path_set($path) {$this->_path = $path;}
+
+  # ─────────────────────────────────────────────────────────────────────
+  # functionality for errors
+  # ─────────────────────────────────────────────────────────────────────
+
   function error_add($message = null) {
     if (!count($this->_errors)) {
       $element = $this->child_select('element');
@@ -94,12 +104,6 @@ namespace effcore {
   function errors_get() {
     return $this->_errors;
   }
-
-  function form_get() {return $this->_form;}
-  function form_set($form) {$this->_form = $form;}
-
-  function path_get() {return $this->_path;}
-  function path_set($path) {$this->_path = $path;}
 
   # ─────────────────────────────────────────────────────────────────────
   # element properties
@@ -120,41 +124,41 @@ namespace effcore {
     }
   }
 
-  function required_get() {
+  function element_required_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('required') == 'required';
   }
 
-  function required_set($is_required = true) {
+  function element_required_set($is_required = true) {
     $element = $this->child_select('element');
     if ($is_required) $element->attribute_insert('required', 'required');
     else              $element->attribute_delete('required');
   }
 
-  function checked_get() {
+  function element_checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') == 'checked';
   }
 
-  function checked_set($is_checked = true) {
+  function element_checked_set($is_checked = true) {
     $element = $this->child_select('element');
     if ($is_checked) $element->attribute_insert('checked', 'checked');
     else             $element->attribute_delete('checked');
   }
 
-  function disabled_get() {
+  function element_disabled_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('disabled') == 'disabled';
   }
 
-  function disabled_set($is_disabled = true) {
+  function element_disabled_set($is_disabled = true) {
     $element = $this->child_select('element');
     if ($is_disabled) $element->attribute_insert('disabled', 'disabled');
     else              $element->attribute_delete('disabled');
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # render functionality
+  # functionality for render
   # ─────────────────────────────────────────────────────────────────────
 
   function render() {
