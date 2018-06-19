@@ -227,13 +227,13 @@ namespace effcore {
   protected function pool_manager_deleted_items_get($type) {
     $name = $this->element_name_get();
     return core::array_kmap(
-      static::new_values_get('manager_delete_'.$name.'_'.$type)
+      static::request_values_get('manager_delete_'.$name.'_'.$type)
     );
   }
 
   protected function pool_manager_deleted_items_set($type, $items) {
     $name = $this->element_name_get();
-    static::new_values_set('manager_delete_'.$name.'_'.$type, $items);
+    static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
   }
 
   ###########################
@@ -261,7 +261,7 @@ namespace effcore {
     $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
-      $new_values = static::new_files_get($name);
+      $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_upload  ($field, $form, $element, $new_values) &&
                 static::validate_required($field, $form, $element, $new_values) &&

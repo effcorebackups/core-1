@@ -10,11 +10,6 @@ namespace effcore {
           class form extends markup
           implements has_external_cache {
 
-  # note:
-  # ─────────────────────────────────────────────────────────────────────
-  # 1. more info in \effcore\field
-  # ─────────────────────────────────────────────────────────────────────
-
   const period_expire_h = 60 * 60;
 
   public $tag_name = 'form';
@@ -29,7 +24,7 @@ namespace effcore {
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
-    $this->button_clicked_set(field::new_value_get('button', 0, $this->source_get()));
+    $this->button_clicked_set(field::request_value_get('button', 0, $this->source_get()));
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
       if (method_exists($c_element, 'build')) {
@@ -51,7 +46,7 @@ namespace effcore {
 
   # if user click the button
     if ($this->clicked_button_name &&
-        field::new_value_get('form_id', 0, $this->source_get()) == $id) {
+        field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
     # call field validate
       if (empty($this->clicked_button->novalidate)) {
@@ -176,7 +171,7 @@ namespace effcore {
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
-  # validation cache functions
+  # functionality for validation cache
   # ──────────────────────────────────────────────────────────────────────────────
 
   function validation_cache_get_date($format = 'Y-m-d') {
@@ -218,6 +213,10 @@ namespace effcore {
   static function not_external_properties_get() {
     return [];
   }
+
+  # ──────────────────────────────────────────────────────────────────────────────
+  # functionality for validation_id
+  # ──────────────────────────────────────────────────────────────────────────────
 
   static function validation_id_generate() {
     $hex_created = dechex(time());

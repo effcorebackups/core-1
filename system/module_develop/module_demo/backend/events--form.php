@@ -19,7 +19,7 @@ namespace effcore\modules\demo {
   static function on_init_demo($form, $items) {
     switch ($form->clicked_button_name) {
       case 'reset':
-        field::values_reset();
+        field::request_values_reset();
         break;
     }
     $items['#select']->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => 'disabled'], 'group_1');

@@ -49,9 +49,9 @@ namespace effcore {
     static::id_regenerate('a');
   }
 
-  ############################
-  ### session_id functions ###
-  ############################
+  ####################################
+  ### functionality for session_id ###
+  ####################################
 
   # anonymous | remember? | on ip? | session id  | do not track?  | secure?  | use
   # ──────────────────────────────────────────────────────────────────────────────

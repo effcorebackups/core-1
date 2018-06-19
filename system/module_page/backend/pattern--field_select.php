@@ -105,7 +105,7 @@ namespace effcore {
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $values_allowed = $field->values_allowed_get();
-      $new_values = static::new_values_get($name, $form->source_get());
+      $new_values = static::request_values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $result = static::validate_required($field, $form, $element, $new_values) &&
                 static::validate_multiple($field, $form, $element, $new_values);

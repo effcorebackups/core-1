@@ -59,9 +59,9 @@ namespace effcore {
     else        static::data_cache_rebuild();
   }
 
-  ######################
-  ### data functions ###
-  ######################
+  ##############################
+  ### functionality for data ###
+  ##############################
 
   static function data_cache_rebuild() {
   # init original data

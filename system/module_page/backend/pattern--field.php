@@ -208,7 +208,11 @@ namespace effcore {
                 ++static::$indexes[$name];
   }
 
-  static function values_reset() {
+  # ──────────────────────────────────────────────────────────────────────────────
+  # functionality for $_POST and $_GET data
+  # ──────────────────────────────────────────────────────────────────────────────
+
+  static function request_values_reset() {
     $_POST = [];
     $_GET = [];
     $_REQUEST = [];
@@ -227,7 +231,7 @@ namespace effcore {
   # - source[field] == [0 => 'value', ...] -> return 'value'
   # ─────────────────────────────────────────────────────────────────────
 
-  static function new_value_get($name, $index = 0, $source = '_POST') {
+  static function request_value_get($name, $index = 0, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? '' :
        (is_string(${$source}[$name]) ? ${$source}[$name] : 
@@ -248,7 +252,7 @@ namespace effcore {
   # - source[field] == [0 => 'value', ...] -> return [0 => 'value', ...]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function new_values_get($name, $source = '_POST') {
+  static function request_values_get($name, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? [] :
        (is_string(${$source}[$name]) ? [${$source}[$name]] :
@@ -256,7 +260,7 @@ namespace effcore {
                   ${$source}[$name] : []));
   }
 
-  static function new_values_set($name, $values, $source = '_POST') {
+  static function request_values_set($name, $values, $source = '_POST') {
     global ${$source};
     ${$source}[$name] = $values;
   }
@@ -270,7 +274,7 @@ namespace effcore {
   # - $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] -> return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']]
   # ─────────────────────────────────────────────────────────────────────
 
-  static function new_files_get($name) {
+  static function request_files_get($name) {
     $return = [];
     if (isset($_FILES[$name]['name'])     &&
         isset($_FILES[$name]['type'])     &&
