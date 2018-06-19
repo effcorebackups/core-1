@@ -5,7 +5,8 @@
   ##################################################################
 
 namespace effcore {
-          class group_radiobuttons extends container {
+          class group_radiobuttons extends container
+          implements group_mono {
 
   public $tag_name = 'x-group';
   public $attributes = ['x-type' => 'radiobuttons'];
@@ -49,6 +50,16 @@ namespace effcore {
     if (isset($this->checked[$value]))  $element->attribute_insert('checked',   'checked');
     if (isset($this->disabled[$value])) $element->attribute_insert('disabled', 'disabled');
     return $this->child_insert($field, $new_id);
+  }
+
+  function first_element_name_get($trim = true) {
+    foreach ($this->children_select() as $c_field) {
+      if ($c_field instanceof $this->field_class) {
+        $element = $c_field->child_select('element');
+        return $trim ? rtrim($element->attribute_select('name'), '[]') :
+                             $element->attribute_select('name');
+      }
+    }
   }
 
   function value_get() {

@@ -146,8 +146,9 @@ namespace effcore {
     $return = [];
     $fields = [];
     foreach ($this->children_select_recursive() as $c_npath => $c_child) {
-      if ($c_child instanceof \effcore\container) $return[$c_npath] = $c_child;
-      if ($c_child instanceof \effcore\field)     $fields['#'.$c_child->element_name_get()][] = $c_child;
+      if ($c_child instanceof \effcore\container)  $return[$c_npath] = $c_child;
+      if ($c_child instanceof \effcore\field)      $fields['#'.$c_child->element_name_get()][] = $c_child;
+      if ($c_child instanceof \effcore\group_mono) $fields['##'.$c_child->first_element_name_get()][] = $c_child;
     }
     foreach ($fields as $c_name => $c_group) {
       if (count($c_group) == 1) $return[$c_name] = reset($c_group);

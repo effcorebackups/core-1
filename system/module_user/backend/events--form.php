@@ -188,7 +188,7 @@ namespace effcore\modules\user {
         if ($user &&
             $user->password_hash === core::hash_password_get($items['#password']->value_get())) {
           session::insert($user->id,
-            core::array_kmap($items['credentials/session_params']->values_get())
+            core::array_kmap($items['##session_params']->values_get())
           );
           url::go('/user/'.$user->id);
         }
@@ -233,7 +233,7 @@ namespace effcore\modules\user {
         ]))->insert();
         if ($user) {
           session::insert($user->id,
-            core::array_kmap($items['credentials/session_params']->values_get())
+            core::array_kmap($items['##session_params']->values_get())
           );
           url::go('/user/'.$user->id);
         } else {

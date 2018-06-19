@@ -21,12 +21,12 @@ namespace effcore\modules\core {
     if (!extension_loaded('pdo')) {
       message::insert('PHP PDO extension is not available.', 'warning');
     }
-    if (!extension_loaded('pdo_mysql')) {
-      $items['storage/is_mysql']->child_select('element')->attribute_insert('disabled', 'disabled');
+    if (!extension_loaded('pdo_mysql') && $items['#driver'][0]->value_get() == 'mysql') {
+      $items['#driver'][0]->disabled_set();
       message::insert(translation::get('PHP PDO driver for %%_name is not available.', ['name' => 'MySQL']), 'warning');
     }
-    if (!extension_loaded('pdo_sqlite')) {
-      $items['storage/is_sqlite']->child_select('element')->attribute_insert('disabled', 'disabled');
+    if (!extension_loaded('pdo_sqlite') && $items['#driver'][1]->value_get() == 'sqlite') {
+      $items['#driver'][1]->disabled_set();
       message::insert(translation::get('PHP PDO driver for %%_name is not available.', ['name' => 'SQLite']), 'warning');
     }
     $main = storage::get('main');
