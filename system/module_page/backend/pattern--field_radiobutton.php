@@ -15,28 +15,6 @@ namespace effcore {
     'name' => 'radio'
   ];
 
-  function checked_get() {
-    $element = $this->child_select('element');
-    return $element->attribute_select('checked') == 'checked';
-  }
-
-  function checked_set($is_checked = true) {
-    $element = $this->child_select('element');
-    if ($is_checked) $element->attribute_insert('checked', 'checked');
-    else             $element->attribute_delete('checked');
-  }
-
-  function disabled_get() {
-    $element = $this->child_select('element');
-    return $element->attribute_select('disabled') == 'disabled';
-  }
-
-  function disabled_set($is_disabled = true) {
-    $element = $this->child_select('element');
-    if ($is_disabled) $element->attribute_insert('disabled', 'disabled');
-    else              $element->attribute_delete('disabled');
-  }
-
   function value_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('value');

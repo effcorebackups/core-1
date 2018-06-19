@@ -101,6 +101,10 @@ namespace effcore {
   function path_get() {return $this->_path;}
   function path_set($path) {$this->_path = $path;}
 
+  # ─────────────────────────────────────────────────────────────────────
+  # element properties
+  # ─────────────────────────────────────────────────────────────────────
+
   function element_name_get($trim = true) {
     $element = $this->child_select('element');
     return $trim ? rtrim($element->attribute_select('name'), '[]') :
@@ -115,6 +119,43 @@ namespace effcore {
       case 'select'  : return 'select';
     }
   }
+
+  function required_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('required') == 'required';
+  }
+
+  function required_set($is_required = true) {
+    $element = $this->child_select('element');
+    if ($is_required) $element->attribute_insert('required', 'required');
+    else              $element->attribute_delete('required');
+  }
+
+  function checked_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('checked') == 'checked';
+  }
+
+  function checked_set($is_checked = true) {
+    $element = $this->child_select('element');
+    if ($is_checked) $element->attribute_insert('checked', 'checked');
+    else             $element->attribute_delete('checked');
+  }
+
+  function disabled_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('disabled') == 'disabled';
+  }
+
+  function disabled_set($is_disabled = true) {
+    $element = $this->child_select('element');
+    if ($is_disabled) $element->attribute_insert('disabled', 'disabled');
+    else              $element->attribute_delete('disabled');
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # render functionality
+  # ─────────────────────────────────────────────────────────────────────
 
   function render() {
     $element = $this->child_select('element');

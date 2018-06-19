@@ -46,9 +46,9 @@ namespace effcore {
       $element->attribute_insert($c_name, $c_value);
     }
     $value = $element->attribute_select('value');
-    if (isset($this->required[$value])) $element->attribute_insert('required', 'required');
-    if (isset($this->checked[$value]))  $element->attribute_insert('checked',   'checked');
-    if (isset($this->disabled[$value])) $element->attribute_insert('disabled', 'disabled');
+    if (isset($this->required[$value])) $field->required_set();
+    if (isset($this->checked[$value]))  $field->checked_set();
+    if (isset($this->disabled[$value])) $field->disabled_set();
     return $this->child_insert($field, $new_id);
   }
 
