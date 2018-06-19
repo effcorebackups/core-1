@@ -90,6 +90,13 @@ namespace effcore {
                  $args[$arg_id] : null;
   }
 
+  function query_arg_set($arg_id, $value) {
+    $args = [];
+    parse_str($this->query, $args);
+    $args[$arg_id] = $value;
+    $this->query = http_build_query($args);
+  }
+
   function path_arg_get($arg_id) {
     $args = explode('/', $this->path);
     return isset($args[$arg_id]) ?
