@@ -243,6 +243,8 @@ blocks
                         text: 
   # pagers
     - demo_pager_1|pager
+        min: 1
+        max: 50
   # title
     - controls_title|markup
         tag_name: h2
