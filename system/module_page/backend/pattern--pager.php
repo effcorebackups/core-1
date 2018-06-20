@@ -86,7 +86,7 @@ namespace effcore {
     $this->init();
     $pager = new markup($this->tag_name);
     $pager_name = $this->pager_name_get();
-    $url = url::current_get();
+    $url = clone url::current_get();
     if ($this->max - $this->min > 0) {
       $url->query_arg_set($pager_name, $this->min);
       $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $this->min));

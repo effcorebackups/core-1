@@ -33,14 +33,8 @@ namespace effcore {
   }
 
   function render_self() {
-    $href = $this->attribute_select('href');
-    if ($href) {
-      $href = token::replace($href);
-      $this->attribute_insert('href', $href);
-      if (url::is_active($href)) {
-        $this->attribute_insert('class', ['active' => 'active']);
-      }
-    }
+    $href    = $this->attribute_select('href');
+    if ($href) $this->attribute_insert('href', token::replace($href));
     return (new markup('a', $this->attributes_select(),
       token::replace(translation::get($this->title))
     ))->render();

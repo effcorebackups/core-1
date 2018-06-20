@@ -18,8 +18,7 @@ namespace effcore {
     $href         = page::current_get()->args_get('base').'/'.($this->action_name);
     $href_default = page::current_get()->args_get('base').'/'.($this->action_default_name ?: $this->action_name);
     $this->attribute_insert('href', $href_default);
-    if (url::is_active($href) ||
-        url::is_active_trail($href)) {
+    if (url::is_active_trail($href)) {
       $this->attribute_insert('class', ['active' => 'active']);
     }
     return parent::render_self();
