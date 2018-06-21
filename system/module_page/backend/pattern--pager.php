@@ -104,9 +104,9 @@ namespace effcore {
       $a     = $this->cur - $this->min < 6 ? max($a_min, $a_max) : min($a_min, $a_max);
       $b     = $this->cur - $this->min < 6 ? max($b_min, $b_max) : min($b_min, $b_max);
 
-    # l-shoulder
+    # l-shoulder part
       if ($a > $this->min + 10) {
-        $pager->child_insert(new text('...'));
+        $pager->child_insert(new text('…'));
         for ($j = 1; $j < 4; $j++) {
           $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
           $url->query_arg_insert($pager_name, $c_i);
@@ -114,9 +114,9 @@ namespace effcore {
         }
       }
 
-    # central links
+    # central links part
       if ($a > $this->min + 1) {
-        $pager->child_insert(new text('...'));
+        $pager->child_insert(new text('…'));
       }
       for ($i = $a; $i <= $b; $i++) {
         if ($i > $this->min && $i < $this->max) {
@@ -127,17 +127,17 @@ namespace effcore {
         }
       }
       if ($b < $this->max - 1) {
-        $pager->child_insert(new text('...'));
+        $pager->child_insert(new text('…'));
       }
 
-    # r-shoulder
+    # r-shoulder part
       if ($b < $this->max - 10) {
         for ($j = 1; $j < 4; $j++) {
           $c_i = $b + (int)(($this->max - $b) / 4 * $j);
           $url->query_arg_insert($pager_name, $c_i);
           $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $c_i));
         }
-        $pager->child_insert(new text('...'));
+        $pager->child_insert(new text('…'));
       }
     }
 
