@@ -83,24 +83,14 @@ namespace effcore {
                                   ($this->query  ? '?'.$this->query  : '').
                                   ($this->anchor ? '#'.$this->anchor : '');}
 
-  function query_arg_get($arg_id) {
-    $args = [];
-    parse_str($this->query, $args);
-    return isset($args[$arg_id]) ?
-                 $args[$arg_id] : null;
-  }
+  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return isset($args[$name]) ? $args[$name] : null;}
+  function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args); $args[$name] = $value; $this->query = http_build_query($args);}
+  function query_arg_delete($name)         {$args = []; parse_str($this->query, $args); unset($args[$name]);   $this->query = http_build_query($args);}
 
-  function query_arg_set($arg_id, $value) {
-    $args = [];
-    parse_str($this->query, $args);
-    $args[$arg_id] = $value;
-    $this->query = http_build_query($args);
-  }
-
-  function path_arg_get($arg_id) {
+  function path_arg_select($name) {
     $args = explode('/', $this->path);
-    return isset($args[$arg_id]) ?
-                 $args[$arg_id] : null;
+    return isset($args[$name]) ?
+                 $args[$name] : null;
   }
 
   ###########################
@@ -119,7 +109,7 @@ namespace effcore {
   }
 
   static function back_url_get() {
-    $back_url = static::current_get()->query_arg_get('back');
+    $back_url = static::current_get()->query_arg_select('back');
     return $back_url ? urldecode($back_url) : '';
   }
 

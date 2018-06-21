@@ -242,9 +242,10 @@ blocks
                     - content|text
                         text: 
   # pagers
-    - demo_pager_1|pager
-        min: 1
-        max: 50
+    - demo_pager_2|pager
+        prefix: my
+        id: pager
+        max: 10000
   # title
     - controls_title|markup
         tag_name: h2

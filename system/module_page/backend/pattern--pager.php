@@ -20,16 +20,11 @@ namespace effcore {
   }
 
   function init() {
-    $this->cur = (int)url::current_get()->query_arg_get($this->pager_name_get());
-    if ($this->cur > $this->max) {
-        $this->cur = $this->max;
-        $this->has_error = true;
-    }
+    $this->cur = url::current_get()->query_arg_select($this->pager_name_get());
+    if (!is_numeric($this->cur)) {$this->cur = $this->min;}
+    if ($this->cur < $this->min) {$this->cur = $this->min; $this->has_error = true;}
+    if ($this->cur > $this->max) {$this->cur = $this->max; $this->has_error = true;}
   }
-
-  function min_get() {return $this->min;}
-  function max_get() {return $this->max;}
-  function cur_get() {return $this->cur;}
 
   function pager_name_get() {
     return $this->id ? $this->prefix.$this->id :
@@ -87,10 +82,20 @@ namespace effcore {
     $pager = new markup($this->tag_name);
     $pager_name = $this->pager_name_get();
     $url = clone url::current_get();
+
+  # ─────────────────────────────────────────────────────────────────────
+  # min part
+  # ─────────────────────────────────────────────────────────────────────
     if ($this->max - $this->min > 0) {
-      $url->query_arg_set($pager_name, $this->min);
-      $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $this->min));
+      $url->query_arg_delete($pager_name);
+      if ($this->cur == $this->min)
+           $pager->child_insert(new markup('a', ['href' => $url->relative_get(), 'class' => ['active' => 'active']], $this->min));
+      else $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $this->min));
     }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # central part
+  # ─────────────────────────────────────────────────────────────────────
     if ($this->max - $this->min > 1) {
       $a_min = $this->cur - $this->min < 6 ? $this->min + 1 : $this->cur - 4;
       $b_min = $this->cur - $this->min < 6 ? $this->min + 9 : $this->cur + 4;
@@ -98,24 +103,54 @@ namespace effcore {
       $b_max = $this->max - $this->cur < 6 ? $this->max - 1 : $this->cur + 4;
       $a     = $this->cur - $this->min < 6 ? max($a_min, $a_max) : min($a_min, $a_max);
       $b     = $this->cur - $this->min < 6 ? max($b_min, $b_max) : min($b_min, $b_max);
-    # generate center links
+
+    # l-shoulder
+      if ($a > $this->min + 10) {
+        $pager->child_insert(new text('...'));
+        for ($j = 1; $j < 4; $j++) {
+          $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
+          $url->query_arg_insert($pager_name, $c_i);
+          $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $c_i));
+        }
+      }
+
+    # central links
       if ($a > $this->min + 1) {
         $pager->child_insert(new text('...'));
       }
       for ($i = $a; $i <= $b; $i++) {
         if ($i > $this->min && $i < $this->max) {
-          $url->query_arg_set($pager_name, $i);
-          $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $i));
+          $url->query_arg_insert($pager_name, $i);
+          if ($this->cur == $i)
+               $pager->child_insert(new markup('a', ['href' => $url->relative_get(), 'class' => ['active' => 'active']], $i));
+          else $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $i));
         }
       }
       if ($b < $this->max - 1) {
         $pager->child_insert(new text('...'));
       }
+
+    # r-shoulder
+      if ($b < $this->max - 10) {
+        for ($j = 1; $j < 4; $j++) {
+          $c_i = $b + (int)(($this->max - $b) / 4 * $j);
+          $url->query_arg_insert($pager_name, $c_i);
+          $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $c_i));
+        }
+        $pager->child_insert(new text('...'));
+      }
     }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # max part
+  # ─────────────────────────────────────────────────────────────────────
     if ($this->max - $this->min > 0) {
-      $url->query_arg_set($pager_name, $this->max);
-      $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $this->max));
+      $url->query_arg_insert($pager_name, $this->max);
+      if ($this->cur == $this->max)
+           $pager->child_insert(new markup('a', ['href' => $url->relative_get(), 'class' => ['active' => 'active']], $this->max));
+      else $pager->child_insert(new markup('a', ['href' => $url->relative_get()], $this->max));
     }
+
     return $pager->render();
   }
 
