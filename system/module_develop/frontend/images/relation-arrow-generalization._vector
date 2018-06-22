@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
    width="30"
    height="90"
    viewBox="0 0 30 90"
@@ -21,7 +20,9 @@
     </rdf:RDF>
   </metadata>
 
-  <path id="hline" d="M 15,0 V 44 H 30" style="fill:none;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter" />
-  <path id="arrow" d="M 20,10 H 10 L 15,0 Z" style="fill:white;stroke:black;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;" />
+  <g id="icon_relation_generalization">
+    <path id="icon_rg-hline" d="M 15,0 V 44 H 30" style="fill:none;stroke:black;stroke-width:1px" />
+    <path id="icon_rg-arrow" d="M 20,10 H 10 L 15,0 Z" style="fill:white;stroke:black;stroke-width:1px" />
+  </g>
 
 </svg>

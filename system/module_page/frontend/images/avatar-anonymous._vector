@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
    width="48"
    height="48"
    viewBox="0 0 48 48"
@@ -21,7 +20,9 @@
     </rdf:RDF>
   </metadata>
 
-  <rect id="bg" x="0" y="0" width="48" height="48" style="fill:whitesmoke" />
-  <path id="human" style="fill:silver" d="M 24,5 A 12.5,12.5 0 0 0 11.5,17.5 12.5,12.5 0 0 0 24,30 12.5,12.5 0 0 0 36.5,17.5 12.5,12.5 0 0 0 24,5 Z m 0,28 A 24,15 0 0 0 0,48 l 48,0 A 24,15 0 0 0 24,33 Z" />
+  <g id="icon_avatar_anonymous">
+    <rect id="icon_avatar_anonymous-bg" x="0" y="0" width="48" height="48" style="fill:whitesmoke" />
+    <path id="icon_avatar_anonymous-human" style="fill:silver" d="M 24,5 A 12.5,12.5 0 0 0 11.5,17.5 12.5,12.5 0 0 0 24,30 12.5,12.5 0 0 0 36.5,17.5 12.5,12.5 0 0 0 24,5 Z m 0,28 A 24,15 0 0 0 0,48 l 48,0 A 24,15 0 0 0 24,33 Z" />
+  </g>
 
 </svg>
