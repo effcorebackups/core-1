@@ -15,7 +15,7 @@ namespace effcore {
         $this->field_insert(null, [
           'value' => $c_color->id,
           'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),
-          'style' => ['background-color: '.$c_color->value]
+          'style' => ['background: '.$c_color->value]
         ], $c_color->id);
       }
     }

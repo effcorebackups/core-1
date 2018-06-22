@@ -89,9 +89,10 @@
   x-group[x-type="palette"] {margin: 5px 0}
   x-group[x-type="palette"] x-title {margin-bottom: 5px}
   x-group[x-type="palette"] x-field {display: inline-block; margin: 0 4px 0 0}
-  x-group[x-type="palette"] x-field input[type="radio"] {margin: 0; border-color: white}
-  x-group[x-type="palette"] x-field input[type="radio"]:checked {border-color: black}
-  x-group[x-type="palette"] x-field input[value="white"] {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
+  x-group[x-type="palette"] x-field input {margin: 0; border-color: white}
+  x-group[x-type="palette"] x-field input:checked {border-color: black}
+  x-group[x-type="palette"] x-field input[value="white"]         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
+  x-group[x-type="palette"] x-field input[value="black"]:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 
   /* license */
   x-license {
