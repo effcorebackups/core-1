@@ -15,10 +15,9 @@
   form x-container {display: block; margin: 20px 0}
   form x-group {display: block; margin: 20px 0}
   form x-title {display: block}
-  form x-title, form x-field label {font-size: 1.2em}
+  form x-title,
+  form x-field label {display: block; font-size: 1.2em}
   form x-field {display: block; margin: 20px 0}
-  form x-description {display: block; margin-top: 10px; font-size: .9em; line-height: 1.7em; color: darkgray}
-  form x-description p {margin: 0}
   form b.required {position: absolute; margin-left: .2em; font-size: 1.1em; color: %%_color_error}
 
   /* inputs */
@@ -27,7 +26,6 @@
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    display: block;
     margin: 5px 0;
     padding: 10px;
     border: 3px solid %%_color_bg;
@@ -55,11 +53,25 @@
   input[type="radio"   ]:checked {background: url('images/icons-form_items._vector') %%_color_bg 0 -20px}
   input[type="checkbox"]:disabled:checked,
   input[type="radio"   ]:disabled:checked {border-color: silver; background-color: lightgray}
-  /* checkboxes and radiobuttons in group */
+  /* checkboxes and radiobuttons inside containers */
+  x-field[x-type="checkbox"    ] label,
+  x-field[x-type="radiobutton" ] label {display: inline}
   x-group[x-type="checkboxes"  ] x-field,
   x-group[x-type="radiobuttons"] x-field {margin: 10px 0}
   x-group[x-type="checkboxes"  ] x-field label,
-  x-group[x-type="radiobuttons"] x-field label {font-size: 1em}
+  x-group[x-type="radiobuttons"] x-field label {display: inline; font-size: 1em}
+
+  /* x-description / x-expander */
+  x-description {
+    display: none;
+    margin-top: 10px;
+    font-size: .9em;
+    line-height: 1.7em;
+    color: darkgray}
+  x-description p {margin: 0}
+  input[x-expander="description"] {display: inline-block; margin: 5px 0 0 5px; border: 0; vertical-align: top; background: url('images/icons-form_items._vector') 0 -40px}
+  input[x-expander="description"]:checked {background: url('images/icons-form_items._vector') 20px -40px}
+  input[x-expander="description"]:checked + x-description {display: block}
 
   /* disabled elements */
   form x-field.disabled * {color: lightgray; cursor: default !important}

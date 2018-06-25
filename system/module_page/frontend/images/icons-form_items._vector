@@ -4,9 +4,9 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
-   width="20"
+   width="40"
    height="60"
-   viewBox="0 0 20 60"
+   viewBox="0 0 40 60"
    style="shape-rendering:auto">
 
   <metadata>
@@ -21,11 +21,18 @@
   </metadata>
 
   <g id="icon_checkbox">
-    <path id="icon_checkbox-bg" style="fill:white" d="M 0 0 L 0 20 L 20 20 L 20 0 L 0 0 z M 4.484375 2.984375 A 1.50015 1.50015 0 0 1 5.5605469 3.4394531 L 10 7.8789062 L 14.439453 3.4394531 A 1.50015 1.50015 0 0 1 15.470703 2.9863281 A 1.50015 1.50015 0 0 1 16.560547 5.5605469 L 12.121094 10 L 16.560547 14.439453 A 1.50015 1.50015 0 1 1 14.439453 16.560547 L 10 12.121094 L 5.5605469 16.560547 A 1.50015 1.50015 0 1 1 3.4394531 14.439453 L 7.8789062 10 L 3.4394531 5.5605469 A 1.50015 1.50015 0 0 1 4.484375 2.984375 z " />
+    <path id="icon_checkbox-bg" style="fill: white" d="M 0 0 L 0 20 L 20 20 L 20 0 L 0 0 z M 4.484375 2.984375 A 1.50015 1.50015 0 0 1 5.5605469 3.4394531 L 10 7.8789062 L 14.439453 3.4394531 A 1.50015 1.50015 0 0 1 15.470703 2.9863281 A 1.50015 1.50015 0 0 1 16.560547 5.5605469 L 12.121094 10 L 16.560547 14.439453 A 1.50015 1.50015 0 1 1 14.439453 16.560547 L 10 12.121094 L 5.5605469 16.560547 A 1.50015 1.50015 0 1 1 3.4394531 14.439453 L 7.8789062 10 L 3.4394531 5.5605469 A 1.50015 1.50015 0 0 1 4.484375 2.984375 z " />
   </g>
 
   <g id="icon_radiobutton">
-    <path id="icon_radiobutton-bg" style="fill:white" d="M 0 20 L 0 40 L 20 40 L 20 20 L 0 20 z M 10 22.5 C 14.124369 22.5 17.5 25.875631 17.5 30 C 17.5 34.124369 14.124369 37.5 10 37.5 C 5.8756313 37.5 2.5 34.124369 2.5 30 C 2.5 25.875631 5.8756313 22.5 10 22.5 z M 10 25.5 C 7.4969517 25.5 5.5 27.496952 5.5 30 C 5.5 32.503048 7.4969517 34.5 10 34.5 C 12.503048 34.5 14.5 32.503048 14.5 30 C 14.5 27.496952 12.503048 25.5 10 25.5 z " />
+    <path id="icon_radiobutton-bg" style="fill: white" d="M 0 20 L 0 40 L 20 40 L 20 20 L 0 20 z M 10 22.5 C 14.124369 22.5 17.5 25.875631 17.5 30 C 17.5 34.124369 14.124369 37.5 10 37.5 C 5.8756313 37.5 2.5 34.124369 2.5 30 C 2.5 25.875631 5.8756313 22.5 10 22.5 z M 10 25.5 C 7.4969517 25.5 5.5 27.496952 5.5 30 C 5.5 32.503048 7.4969517 34.5 10 34.5 C 12.503048 34.5 14.5 32.503048 14.5 30 C 14.5 27.496952 12.503048 25.5 10 25.5 z " />
+  </g>
+
+  <g id="icon_show_description">
+    <circle id="icon_show_description-circle-0" cx="10" cy="50" r="8" style="fill: none; stroke: thistle; stroke-width: 2px" />
+    <circle id="icon_show_description-circle-1" cx="30" cy="50" r="8" style="fill: none; stroke: plum;    stroke-width: 2px" />
+    <text id="icon_show_description-text-0"  x="5.6" y="55" style="font-size: 14px; font-weight: bold; font-family: 'Arial'; fill: thistle">?</text>
+    <text id="icon_show_description-text-1" x="25.6" y="55" style="font-size: 14px; font-weight: bold; font-family: 'Arial'; fill: plum">?</text>
   </g>
 
 </svg>

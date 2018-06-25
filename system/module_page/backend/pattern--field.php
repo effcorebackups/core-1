@@ -192,7 +192,8 @@ namespace effcore {
     }
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
-      return (new markup($this->description_tag_name, [], $return))->render();
+             $expander_rendered = (new markup_simple('input', ['type' => 'checkbox', 'x-expander' => 'description']))->render();
+      return $expander_rendered . (new markup($this->description_tag_name, [], $return))->render();
     }
   }
 
