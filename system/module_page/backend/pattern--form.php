@@ -129,9 +129,9 @@ namespace effcore {
 
   function fields_get() {
     $return = [];
-    foreach ($this->children_select_recursive() as $c_npath => $c_child) {
-      if ($c_child instanceof \effcore\field) {
-        $return[$c_npath] = $c_child;
+    foreach ($this->children_select_recursive() as $c_npath => $c_item) {
+      if ($c_item instanceof \effcore\field) {
+        $return[$c_npath] = $c_item;
       }
     }
     return $return;
@@ -140,10 +140,11 @@ namespace effcore {
   function form_items_get() {
     $return = [];
     $fields = [];
-    foreach ($this->children_select_recursive() as $c_npath => $c_child) {
-      if ($c_child instanceof \effcore\container)  $return[$c_npath] = $c_child;
-      if ($c_child instanceof \effcore\field)      $fields['#'.$c_child->element_name_get()][] = $c_child;
-      if ($c_child instanceof \effcore\group_mono) $fields['##'.$c_child->first_element_name_get()][] = $c_child;
+    foreach ($this->children_select_recursive() as $c_npath => $c_item) {
+      if ($c_item instanceof \effcore\container)         $return[$c_npath] = $c_item;
+      if ($c_item instanceof \effcore\group_mono)        $fields['##'.$c_item->first_element_name_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field)             $fields['#'.$c_item->element_name_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field_radiobutton) $fields['#'.$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
     }
     foreach ($fields as $c_name => $c_group) {
       if (count($c_group) == 1) $return[$c_name] = reset($c_group);
