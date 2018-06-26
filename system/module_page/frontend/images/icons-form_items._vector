@@ -29,10 +29,7 @@
   </g>
 
   <g id="icon_show_description">
-    <circle id="icon_show_description-circle" cx="15" cy="45" r="4.5" style="fill: none; stroke: %%_color_bg; stroke-width: 1px" />
-    <text id="icon_show_description-text" x="1" y="45.5" style="font-size: 8px; font-weight: bold; font-family: 'Arial'; fill: %%_color_bg">…</text>
-    <path id="icon_show_description-cross_part_1" style="stroke: %%_color_bg; stroke-width: 1px; stroke-linecap: round" d="M 17 47 L 13 43" />
-    <path id="icon_show_description-cross_part_2" style="stroke: %%_color_bg; stroke-width: 1px; stroke-linecap: round" d="M 17 43 L 13 47" />
+    <text id="icon_show_description-text" x="4" y="51" style="font-size: 12px; font-weight: bold; font-family: 'Arial'; fill: %%_color_bg">…</text>
   </g>
 
 </svg>
