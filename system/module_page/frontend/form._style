@@ -64,13 +64,13 @@
   /* x-description / x-expander */
   x-description {
     display: none;
-    margin-top: 10px;
+    margin-top: 2px;
     font-size: .9em;
     line-height: 1.7em;
     color: darkgray}
   x-description p {margin: 0}
-  input[x-expander="description"] {display: inline-block; margin: 5px 0 0 5px; border: 0; vertical-align: top; background: url('images/icons-form_items._vector') 0 -40px}
-  input[x-expander="description"]:checked {background: url('images/icons-form_items._vector') 20px -40px}
+  input[x-expander="description"] {display: block; width: 10px; height: 10px; margin: 3px 0 0 0; padding: 0; border: 0; vertical-align: middle; background: url('images/icons-form_items._vector') 0 -40px}
+  input[x-expander="description"]:checked {background: url('images/icons-form_items._vector') -10px -40px}
   input[x-expander="description"]:checked + x-description {display: block}
 
   /* disabled elements */
