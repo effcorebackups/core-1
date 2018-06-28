@@ -37,6 +37,8 @@ namespace effcore {
 
   # wrong paths:
   # ┌─────────────────────────┬────────────────────────────────────────────────┐
+  # │ path                    │ behavior                                       │
+  # ├─────────────────────────┼────────────────────────────────────────────────┤
   # │ c:\dir1                 │ should be ignored                              │
   # │ \dir1                   │ should be ignored                              │
   # │ dir1\                   │ should be ignored                              │

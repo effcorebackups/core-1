@@ -8,46 +8,50 @@ namespace effcore {
           class url {
 
   # valid urls:
-  # ─────────────────────────────────────────────────────────────────────
-  # $urls[] =                        '/';
-  # $urls[] =                        '/?key=value';
-  # $urls[] =                        '/#anchor';
-  # $urls[] =                        '/?key=value#anchor';
-  # $urls[] =                        '/dir/subdir/page';
-  # $urls[] =                        '/dir/subdir/page?key=value';
-  # $urls[] =                        '/dir/subdir/page#anchor';
-  # $urls[] =                        '/dir/subdir/page?key=value#anchor';
-  # $urls[] =        'subdomain.domain';
-  # $urls[] =        'subdomain.domain/?key=value';
-  # $urls[] =        'subdomain.domain/#anchor';
-  # $urls[] =        'subdomain.domain/?key=value#anchor';
-  # $urls[] =        'subdomain.domain/dir/subdir/page';
-  # $urls[] =        'subdomain.domain/dir/subdir/page?key=value';
-  # $urls[] =        'subdomain.domain/dir/subdir/page#anchor';
-  # $urls[] =        'subdomain.domain/dir/subdir/page?key=value#anchor';
-  # $urls[] = 'http://subdomain.domain';
-  # $urls[] = 'http://subdomain.domain/?key=value';
-  # $urls[] = 'http://subdomain.domain/#anchor';
-  # $urls[] = 'http://subdomain.domain/?key=value#anchor';
-  # $urls[] = 'http://subdomain.domain/dir/subdir/page';
-  # $urls[] = 'http://subdomain.domain/dir/subdir/page?key=value';
-  # $urls[] = 'http://subdomain.domain/dir/subdir/page#anchor';
-  # $urls[] = 'http://subdomain.domain/dir/subdir/page?key=value#anchor';
-  # ─────────────────────────────────────────────────────────────────────
+  # ┌──────────────────────────────────────────────────────────┐
+  # │ url                                                      │
+  # ├──────────────────────────────────────────────────────────┤
+  # │                        /                                 │
+  # │                        /?key=value                       │
+  # │                        /#anchor                          │
+  # │                        /?key=value#anchor                │
+  # │                        /dir/subdir/page                  │
+  # │                        /dir/subdir/page?key=value        │
+  # │                        /dir/subdir/page#anchor           │
+  # │                        /dir/subdir/page?key=value#anchor │
+  # │        subdomain.domain                                  │
+  # │        subdomain.domain/?key=value                       │
+  # │        subdomain.domain/#anchor                          │
+  # │        subdomain.domain/?key=value#anchor                │
+  # │        subdomain.domain/dir/subdir/page                  │
+  # │        subdomain.domain/dir/subdir/page?key=value        │
+  # │        subdomain.domain/dir/subdir/page#anchor           │
+  # │        subdomain.domain/dir/subdir/page?key=value#anchor │
+  # │ http://subdomain.domain                                  │
+  # │ http://subdomain.domain/?key=value                       │
+  # │ http://subdomain.domain/#anchor                          │
+  # │ http://subdomain.domain/?key=value#anchor                │
+  # │ http://subdomain.domain/dir/subdir/page                  │
+  # │ http://subdomain.domain/dir/subdir/page?key=value        │
+  # │ http://subdomain.domain/dir/subdir/page#anchor           │
+  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor │
+  # └──────────────────────────────────────────────────────────┘
 
   # wrong urls:
-  # ─────────────────────────────────────────────────────────────────────
-  # 1. 'http://subdomain.domain/' - should be redirected to 'http://subdomain.domain'
-  # 2. 'subdomain.domain/'        - should be redirected to 'http://subdomain.domain'
-  # 3. '/subdomain.domain'        - this domain described like a directory (first char is the slash)
-  # 4. 'dir/subdir/page'          - this directory described like a domain (first char is not the slash)
-  # ─────────────────────────────────────────────────────────────────────
+  # ┌──────────────────────────┬──────────────────────────────────────────────────────────────────────┐
+  # │ url                      │ behavior                                                             │
+  # ├──────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  # │ http://subdomain.domain/ │ should be redirected to 'http://subdomain.domain'                    │
+  # │ subdomain.domain/        │ should be redirected to 'http://subdomain.domain'                    │
+  # │ /subdomain.domain        │ this domain described like a directory (first char is the slash)     │
+  # │ dir/subdir/page          │ this directory described like a domain (first char is not the slash) │
+  # └─────────────────────────────────────────────────────────────────────────────────────────────────┘
 
   # note:
-  # ─────────────────────────────────────────────────────────────────────
+  # ────────────────────────────────────────────────────────────────────────────────────────────
   # 1. in the next url "http://name:pass@subdomain.domain:port/dir/subdir/page?key=value#anchor"
   #    the name, password and port values after parsing will be in the $domain property
-  # ─────────────────────────────────────────────────────────────────────
+  # ────────────────────────────────────────────────────────────────────────────────────────────
 
   public $protocol;
   public $domain;
