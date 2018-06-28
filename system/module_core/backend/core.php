@@ -197,8 +197,8 @@ namespace effcore {
 
   static function array_rotate($data) {
     $return = [];
-    foreach ($data as $c_row) {                  # convert: |1|2| to: |1|3|
-      for ($i = 0; $i < count($c_row); $i++) {   #          |3|4|     |2|4|
+    foreach ($data as $c_row) {                  # convert │1│2│ to │1│3│
+      for ($i = 0; $i < count($c_row); $i++) {   #         │3│4│    │2│4│
         $return[$i][] = $c_row[$i];
       }
     }

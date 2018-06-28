@@ -53,15 +53,15 @@ namespace effcore {
   #######################
 
   # note:
-  # ───────────────────┬─────────────────────────────────────────────────
+  # ───────────────────┬───────────────────────────────────────────────────────────────────────
   # 1. url /           │ is page 'page_front'
   # 2. url /page       │ is page 'page'
   # 3. url /file.type  │ is file 'file.type' (p.s. any file defined by type)
-  # ───────────────────┼─────────────────────────────────────────────────
+  # ───────────────────┼───────────────────────────────────────────────────────────────────────
   # 4. url /page/      │ is wrong notation - redirect to /page and interpreted as a page 'page'
   # 5. url /file/      │ is wrong notation - redirect to /file and interpreted as a page 'file'
   # 6. url /file.type/ │ is wrong notation - redirect to /file.type
-  # ───────────────────┴─────────────────────────────────────────────────
+  # ───────────────────┴───────────────────────────────────────────────────────────────────────
 
   if (             url::current_get()->path_get() != '/' &&
             substr(url::current_get()->path_get(), -1) == '/') {

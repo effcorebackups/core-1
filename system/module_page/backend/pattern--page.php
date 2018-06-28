@@ -98,6 +98,7 @@ namespace effcore {
       if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_item->display))) {
 
+      # ─────────────────────────────────────────────────────────────────────
       # collect favicons
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->favicons)) {
@@ -112,6 +113,7 @@ namespace effcore {
           }
         }
 
+      # ─────────────────────────────────────────────────────────────────────
       # collect styles
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->styles)) {
@@ -125,6 +127,7 @@ namespace effcore {
           }
         }
 
+      # ─────────────────────────────────────────────────────────────────────
       # collect scripts
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->scripts)) {

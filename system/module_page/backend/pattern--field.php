@@ -272,13 +272,13 @@ namespace effcore {
   }
 
   # conversion matrix (expected: undefined|array):
-  # ─────────────────────────────────────────────────────────────────────
+  # ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   # - $_FILES[field] == undefined                             -> return []
   # - $_FILES[field] == [error = 4]                           -> return []
   # - $_FILES[field] == [name = 'file']                       -> return [0 => (object)[name = 'file']]
   # - $_FILES[field] == [name = [0 => 'file']]                -> return [0 => (object)[name = 'file']]
   # - $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] -> return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']]
-  # ─────────────────────────────────────────────────────────────────────
+  # ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
   static function request_files_get($name) {
     $return = [];
