@@ -19,16 +19,16 @@ namespace effcore {
   ##############################################
 
   # note:
-  # ────────────────┬───────┬────────────────┬──────────────────────────────
-  #                 │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements
-  # ────────────────┼───────┼────────────────┼──────────────────────────────
-  # apache v2.4     │ -     │ http           │ http
-  # apache v2.4 ssl │ on    │ https          │ https
-  # nginx  v1.1     │ -     │ http           │ http
-  # nginx  v1.1 ssl │ on    │ https          │ https
-  # iis    v7.5     │ off   │ -              │ http
-  # iis    v7.5 ssl │ on    │ -              │ https
-  # ────────────────┴───────┴────────────────┴──────────────────────────────
+  # ┌─────────────────┬───────┬────────────────┬───────────────────────────────┐
+  # │                 │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements │
+  # ├─────────────────┼───────┼────────────────┼───────────────────────────────┤
+  # │ apache v2.4     │ -     │ http           │ http                          │
+  # │ apache v2.4 ssl │ on    │ https          │ https                         │
+  # │ nginx  v1.1     │ -     │ http           │ http                          │
+  # │ nginx  v1.1 ssl │ on    │ https          │ https                         │
+  # │ iis    v7.5     │ off   │ -              │ http                          │
+  # │ iis    v7.5 ssl │ on    │ -              │ https                         │
+  # └─────────────────┴───────┴────────────────┴───────────────────────────────┘
 
   if (!isset($_SERVER['REQUEST_SCHEME'])) {
     $_SERVER['REQUEST_SCHEME'] = isset($_SERVER['HTTPS']) &&

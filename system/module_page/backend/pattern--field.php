@@ -5,47 +5,47 @@
   ##################################################################
 
   # html5 elements and attributes support:
-  # ───────────────┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬─────
-  #   ╲  attribute │ d │ r │ r │ m │ m │ m │ m │ s │ m │ c │ p │ v │
-  #    ╲           │ i │ e │ e │ i │ a │ i │ a │ t │ u │ h │ a │ a │
-  #     ╲          │ s │ a │ q │ n │ x │ n │ x │ e │ l │ e │ t │ l │
-  #      ╲         │ a │ d │ u │ l │ l │   │   │ p │ t │ c │ t │ u │
-  #       ╲        │ b │ o │ i │ e │ e │   │   │   │ i │ k │ e │ e │
-  #        ╲       │ l │ n │ r │ n │ n │   │   │   │ p │ e │ r │   │
-  #         ╲      │ e │ l │ e │ g │ g │   │   │   │ l │ d │ n │ [ │
-  #          ╲     │ d │ y │ d │ t │ t │   │   │   │ e │   │   │ ] │
-  # element   ╲    │   │   │   │ h │ h │   │   │   │   │   │   │   │
-  # ───────────────┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼─────
-  # input:text     │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # input:color    │ + │ x │ x │ x │ x │   │   │   │   │   │ x │ + │
-  # input:email    │ + │ + │ + │ x │ + │   │   │   │ + │   │ + │ + │
-  # input:file     │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
-  # input:password │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # input:search   │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # input:tel      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # input:url      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # input:date     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # input:time     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # input:number   │ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
-  # input:range    │ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
-  # textarea       │ + │ + │ + │ x │ + │   │   │   │   │   │ x │ + │
-  # select         │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
-  # select:option  │ + │   │   │   │   │   │   │   │   │   │   │   │
-  # input:checkbox │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
-  # input:radio    │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
-  # ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+  # ┌────────────────┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+  # │   ╲  attribute │ d │ r │ r │ m │ m │ m │ m │ s │ m │ c │ p │ v │
+  # │    ╲           │ i │ e │ e │ i │ a │ i │ a │ t │ u │ h │ a │ a │
+  # │     ╲          │ s │ a │ q │ n │ x │ n │ x │ e │ l │ e │ t │ l │
+  # │      ╲         │ a │ d │ u │ l │ l │   │   │ p │ t │ c │ t │ u │
+  # │       ╲        │ b │ o │ i │ e │ e │   │   │   │ i │ k │ e │ e │
+  # │        ╲       │ l │ n │ r │ n │ n │   │   │   │ p │ e │ r │   │
+  # │         ╲      │ e │ l │ e │ g │ g │   │   │   │ l │ d │ n │ [ │
+  # │          ╲     │ d │ y │ d │ t │ t │   │   │   │ e │   │   │ ] │
+  # │ element   ╲    │   │   │   │ h │ h │   │   │   │   │   │   │   │
+  # ├────────────────┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤
+  # │ input:text     │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:color    │ + │ x │ x │ x │ x │   │   │   │   │   │ x │ + │
+  # │ input:email    │ + │ + │ + │ x │ + │   │   │   │ + │   │ + │ + │
+  # │ input:file     │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
+  # │ input:password │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:search   │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:tel      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:url      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:date     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
+  # │ input:time     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
+  # │ input:number   │ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
+  # │ input:range    │ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
+  # │ textarea       │ + │ + │ + │ x │ + │   │   │   │   │   │ x │ + │
+  # │ select         │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
+  # │ select:option  │ + │   │   │   │   │   │   │   │   │   │   │   │
+  # │ input:checkbox │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
+  # │ input:radio    │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
+  # └────────────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
   # note: x - is extended feature of the system
-  # ─────────────────────┬───────────────────────────────────────────────
-  # input:hidden         │ protected from change the value from user side
-  # input:button         │ not processed - use button:button instead
-  # input:reset          │ not processed - use button:reset instead
-  # input:submit         │ not processed - use button:submit instead
-  # input:image          │ not processed - use imgage instead
-  # input:datetime       │ not processed - use date + time instead
-  # input:datetime-local │ not processed - use date + time instead
-  # input:week           │ not processed
-  # input:month          │ not processed
-  # ─────────────────────┴───────────────────────────────────────────────
+  # ┌──────────────────────┬────────────────────────────────────────────────┐
+  # │ input:hidden         │ protected from change the value from user side │
+  # │ input:button         │ not processed - use button:button instead      │
+  # │ input:reset          │ not processed - use button:reset instead       │
+  # │ input:submit         │ not processed - use button:submit instead      │
+  # │ input:image          │ not processed - use imgage instead             │
+  # │ input:datetime       │ not processed - use date + time instead        │
+  # │ input:datetime-local │ not processed - use date + time instead        │
+  # │ input:week           │ not processed                                  │
+  # │ input:month          │ not processed                                  │
+  # └──────────────────────┴────────────────────────────────────────────────┘
 
 namespace effcore {
           class field extends container {
