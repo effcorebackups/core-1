@@ -47,8 +47,8 @@ entities
         not_null: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
-    # mysql  | field_1 integer ... primary key auto_increment
-    # sqlite | field_1 integer ... primary key autoincrement
+    # mysql : field_1 integer ... primary key auto_increment
+    # sqlite: field_1 integer ... primary key autoincrement
     # ─────────────────────────────────────────────────────────────────────
     - key_f_integer_1
         type: primary key
