@@ -63,13 +63,14 @@
 
   /* x-description / x-expander */
   x-description {
-    display: none;
+    display: block;
     margin-top: 2px;
     font-size: .9em;
     line-height: 1.7em;
     color: darkgray}
   x-description p {margin: 0}
   input[x-expander="description"] {display: block; width: 10px; height: 10px; margin: 3px 0 0 0; padding: 0; border: 0; background: url('images/icons-form_items._vector') -5px -45px}
+  input[x-expander="description"] + x-description {display: none}
   input[x-expander="description"]:checked {display: none}
   input[x-expander="description"]:checked + x-description {display: block}
 

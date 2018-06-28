@@ -76,6 +76,7 @@ forms
       # field_text
         - text|field_text
             title: Text
+            description_state: expanded
             description|text
               text: Field %%_type.
               args

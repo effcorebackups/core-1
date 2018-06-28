@@ -57,6 +57,7 @@ namespace effcore {
   public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
+  public $description_state = 'collapsed'; # expanded | collapsed | hidden
 # ─────────────────────────────────────────────────────────────────────
   protected $_errors = [];
   protected $_form;
@@ -192,8 +193,12 @@ namespace effcore {
     }
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
-             $expander_rendered = (new markup_simple('input', ['type' => 'checkbox', 'x-expander' => 'description']))->render();
-      return $expander_rendered . (new markup($this->description_tag_name, [], $return))->render();
+      $expander = new markup_simple('input', ['type' => 'checkbox', 'x-expander' => 'description']);
+      switch ($this->description_state) {
+        case 'collapsed': return $expander->render().(new markup($this->description_tag_name, [], $return))->render();
+        case 'expanded' : return                     (new markup($this->description_tag_name, [], $return))->render();
+        case 'hidden'   : return '';
+      }
     }
   }
 
