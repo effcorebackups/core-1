@@ -194,19 +194,19 @@ namespace effcore {
       $line_num++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
-    # ─────────────────────────────────────────────────────────────────────
-    # valid strings        | description
-    # ─────────────────────────────────────────────────────────────────────
-    # root                 | root element
-    # - name: value        | root item     as null|string|float|integer|boolean
-    #   name: value        | root property as null|string|float|integer|boolean
-    # - name               | root item     as array|object[stdClass]
-    #   name               | root property as array|object[stdClass]
-    # - name|classname     | root item     as object[classname]
-    #   name|classname     | root property as object[classname]
-    # - name|_empty_array  | root item     as empty array
-    #   name|_empty_array  | root property as empty array
-    # ─────────────────────────────────────────────────────────────────────
+    # ┌──────────────────────┬────────────────────────────────────────────────────┐
+    # │ valid strings        │ description                                        │
+    # ├──────────────────────┼────────────────────────────────────────────────────┤
+    # │ root                 │ root element                                       │
+    # │ - name: value        │ root item     as null|string|float|integer|boolean │
+    # │   name: value        │ root property as null|string|float|integer|boolean │
+    # │ - name               │ root item     as array|object:stdClass             │
+    # │   name               │ root property as array|object:stdClass             │
+    # │ - name|classname     │ root item     as object:classname                  │
+    # │   name|classname     │ root property as object:classname                  │
+    # │ - name|_empty_array  │ root item     as empty array                       │
+    # │   name|_empty_array  │ root property as empty array                       │
+    # └──────────────────────┴────────────────────────────────────────────────────┘
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.
                    '(?<prefix>- |)'.
