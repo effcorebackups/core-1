@@ -157,7 +157,7 @@ namespace effcore {
           $pool->child_insert($last_item);
         }
         if ($last_type == 'list') {
-        # create new list sub container (ol/ul)
+        # create new list sub container (ol|ul)
           if (empty($last_item->_p_list[$l_level-0]) &&
               empty($last_item->_p_list[$l_level-1]) == false) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');

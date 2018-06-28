@@ -245,7 +245,7 @@ namespace effcore {
   }
 
   #############################################
-  ### functionality for mix of array/object ###
+  ### functionality for mix of array|object ###
   #############################################
 
   static function &arrobj_value_select(&$data, $name) {
@@ -288,7 +288,7 @@ namespace effcore {
   }
 
   ###################################
-  ### functionality for date/time ###
+  ### functionality for date|time ###
   ###################################
 
   # see: locale::format_time(...);
@@ -378,7 +378,7 @@ namespace effcore {
   }
 
   ##############################
-  ### bytes/human conversion ###
+  ### bytes|human conversion ###
   ##############################
 
   static function is_human_bytes($number) {
@@ -423,7 +423,7 @@ namespace effcore {
 
 
   ##############################################
-  ### functionality for signatures/keys/hash ###
+  ### functionality for signatures|keys|hash ###
   ##############################################
 
   static function signature_get($string, $length = 40, $key_name) {

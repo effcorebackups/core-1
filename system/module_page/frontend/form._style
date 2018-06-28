@@ -56,7 +56,7 @@
   x-group[x-type="checkboxes"  ] x-field label,
   x-group[x-type="radiobuttons"] x-field label {display: inline; font-size: 1em}
 
-  /* x-description / x-expander */
+  /* x-description + x-expander */
   x-description {
     display: block;
     margin-top: 2px;
