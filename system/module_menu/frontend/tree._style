@@ -9,7 +9,7 @@
   x-tree.main > ul > li > a {display: block; padding: 21px}
   x-tree.main > ul > li > ul {position: absolute; padding: 21px; z-index: 10}
   x-tree.main > ul > li > ul > li {}
-  x-tree.main:after {content: ''; clear: both; display: block}
+  x-tree.main::after {content: ''; clear: both; display: block}
 
   /* menu Main: colors */
   x-tree.main {background: %%_color_bg}
