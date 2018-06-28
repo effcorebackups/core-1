@@ -72,7 +72,7 @@ namespace effcore {
     $is_fixed_ip = isset($session_params['fixed_ip']);
     $period = $type == 'f' && !$is_remember ? static::period_expire_d : static::period_expire_m;
     $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : $_SERVER['REMOTE_ADDR'];
-    $hex_type = $type; # 'a' - anonymous user | 'f' - authenticated user
+    $hex_type = $type; # a - anonymous user | f - authenticated user
     $hex_expire = dechex(time() + $period);
     $hex_ip = core::ip_to_hex($ip);
     $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
