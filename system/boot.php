@@ -18,10 +18,10 @@ namespace effcore {
   ### web servers compatibility improvements ###
   ##############################################
 
-  # note:
   # ┌─────────────────┬───────┬────────────────┬───────────────────────────────┐
-  # │                 │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements │
-  # ├─────────────────┼───────┼────────────────┼───────────────────────────────┤
+  # │        ╲  modes │       │                │                               │
+  # │ server  ╲       │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements │
+  # ╞═════════════════╪═══════╪════════════════╪═══════════════════════════════╡
   # │ apache v2.4     │ -     │ http           │ http                          │
   # │ apache v2.4 ssl │ on    │ https          │ https                         │
   # │ nginx  v1.1     │ -     │ http           │ http                          │
@@ -53,7 +53,7 @@ namespace effcore {
   #######################
 
   # note:
-  # ───────────────────┬───────────────────────────────────────────────────────────────────────
+  # ═══════════════════╤═══════════════════════════════════════════════════════════════════════
   # 1. url /           │ is page 'page_front'
   # 2. url /page       │ is page 'page'
   # 3. url /file.type  │ is file 'file.type' (p.s. any file defined by type)

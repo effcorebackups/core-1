@@ -13,7 +13,7 @@ namespace effcore {
   # valid paths:
   # ┌─────────────────────────┬───────────────┬─────────┬──────┬──────────┐
   # │ path                    │ dirs/         │ name    │ type │ relative │
-  # ├─────────────────────────┼───────────────┼─────────┼──────┼──────────┤
+  # ╞═════════════════════════╪═══════════════╪═════════╪══════╪══════════╡
   # │ .fiLe                   │               │ .fiLe   │      │ -        │
   # │ .fiLe.eXt               │               │ .fiLe   │ eXt  │ -        │
   # │ fiLe                    │               │ fiLe    │      │ -        │
@@ -38,7 +38,7 @@ namespace effcore {
   # wrong paths:
   # ┌─────────────────────────┬────────────────────────────────────────────────┐
   # │ path                    │ behavior                                       │
-  # ├─────────────────────────┼────────────────────────────────────────────────┤
+  # ╞═════════════════════════╪════════════════════════════════════════════════╡
   # │ c:\dir1                 │ should be ignored                              │
   # │ \dir1                   │ should be ignored                              │
   # │ dir1\                   │ should be ignored                              │
@@ -50,14 +50,14 @@ namespace effcore {
   # └─────────────────────────┴────────────────────────────────────────────────┘
 
   # note:
-  # ────────────────────────────────────────────────────────────────────────────
+  # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. path = dirs/ + name + '.' + type
   # 2. if the first character in the path is '/' - it's a full path, оtherwise - relative path
   # 3. if the last character in the path is '/' - it's a directory, оtherwise - file
   # 4. path components like '../' should be ignored!
   # 5. path components like './' should be ignored!
   # 6. windows files naming rules should be ignored!
-  # ────────────────────────────────────────────────────────────────────────────
+  # ──────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
 

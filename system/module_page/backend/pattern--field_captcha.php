@@ -96,7 +96,7 @@ namespace effcore {
   ###########################
 
   # note:
-  # ─────────────────────────────────────────────────────────────────────────
+  # ═════════════════════════════════════════════════════════════════════════
   # 1. function id_get:
   #    duplicates of captcha by IP - it's prevention from DDOS attacks -
   #    user can overflow the storage if captcha_id will be a complex value

@@ -1,5 +1,5 @@
 # note:
-# ─────────────────────────────────────────────────────────────────────
+# ═════════════════════════════════════════════════════════════════════════
 # 1. not recommend to use DISABLED|READONLY text fields with shared
 #    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
 #    state from field and change the field VALUE and submit the form - after
@@ -38,7 +38,7 @@
 #      - option[value=1,selected]
 #      - option[value=2,selected]
 #      - option[value=3]
-# ─────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────
 forms
 - demo|form
     attributes

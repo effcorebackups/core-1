@@ -196,7 +196,7 @@ namespace effcore {
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
     # ┌──────────────────────┬────────────────────────────────────────────────────┐
     # │ valid strings        │ description                                        │
-    # ├──────────────────────┼────────────────────────────────────────────────────┤
+    # ╞══════════════════════╪════════════════════════════════════════════════════╡
     # │ root                 │ root element                                       │
     # │ - name: value        │ root item     as null|string|float|integer|boolean │
     # │   name: value        │ root property as null|string|float|integer|boolean │
