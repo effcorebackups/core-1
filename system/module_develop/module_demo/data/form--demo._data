@@ -77,8 +77,10 @@ forms
         - text|field_text
             title: Text
             description_state: expanded
-            description|text
-              text: Field %%_type.
+            description|text_multiline
+              text
+              - 0: This description is always shown.
+              - 1: Field %%_type.
               args
               - type: field_text
             element_attributes

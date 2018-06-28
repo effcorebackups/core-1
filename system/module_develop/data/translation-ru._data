@@ -61,6 +61,7 @@ translations
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
     - Static block: Статический блок
     - Structures: Структуры
+    - This description is always shown.: Это описание всегда показывается.
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
