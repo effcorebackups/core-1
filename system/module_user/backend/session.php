@@ -53,18 +53,19 @@ namespace effcore {
   ### functionality for session_id ###
   ####################################
 
-  # anonymous | remember? | on ip? | session id  | do not track?  | secure?  | use
-  # ──────────────────────────────────────────────────────────────────────────────
-  # yes       | no        | no     | a--01--00-- | yes            | no       | -
-  # yes       | no        | yes    | a--01--ip-- | no             | no       | -
-  # yes       | yes       | no     | a--30--00-- | no             | no       | -
-  # yes       | yes       | yes    | a--30--ip-- | no             | on https | +
-  # ──────────────────────────────────────────────────────────────────────────────
-  # no        | no        | no     | f--01--00-- | no - logged in | no       | +
-  # no        | no        | yes    | f--01--ip-- | no - logged in | no       | +
-  # no        | yes       | no     | f--30--00-- | no - logged in | no       | +
-  # no        | yes       | yes    | f--30--ip-- | no - logged in | on https | +
-  # ──────────────────────────────────────────────────────────────────────────────
+  # ┌───────────┬───────────┬────────┬─────────────┬────────────────┬─────────────┬───────┐
+  # │ anonymous │ remember? │ on ip? │ session id  │ do not track?  │ is secure?  │ used? │
+  # ├───────────┼───────────┼────────┼─────────────┼────────────────┼─────────────┼───────┤
+  # │ yes       │ no        │ no     │ a--01--00-- │ yes            │ no          │ -     │
+  # │ yes       │ no        │ yes    │ a--01--ip-- │ no             │ no          │ -     │
+  # │ yes       │ yes       │ no     │ a--30--00-- │ no             │ no          │ -     │
+  # │ yes       │ yes       │ yes    │ a--30--ip-- │ no             │ on https    │ +     │
+  # ├───────────┼───────────┼────────┼─────────────┼────────────────┼─────────────┼───────┤
+  # │ no        │ no        │ no     │ f--01--00-- │ no - logged in │ no          │ +     │
+  # │ no        │ no        │ yes    │ f--01--ip-- │ no - logged in │ no          │ +     │
+  # │ no        │ yes       │ no     │ f--30--00-- │ no - logged in │ no          │ +     │
+  # │ no        │ yes       │ yes    │ f--30--ip-- │ no - logged in │ on https    │ +     │
+  # └───────────┴───────────┴────────┴─────────────┴────────────────┴─────────────┴───────┘
 
   static function id_regenerate($type, $session_params = []) {
     $is_remember = isset($session_params['remember']);
