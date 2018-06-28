@@ -2,32 +2,32 @@ templates
 - tree
     name: tree
     type: text
-    data: <x-tree %%_attributes> <h3 class="hidden">%%_self</h3> <ul>%%_children</ul> </x-tree>
+    data: <x-tree %%_attributes><h3 class="hidden">%%_self</h3><ul>%%_children</ul></x-tree>
 - tree_item
     name: tree_item
     type: text
-    data: <li %%_attributes> %%_self %%_children </li>
+    data: <li %%_attributes>%%_self%%_children</li>
 - tree_item_children
     name: tree_item_children
     type: text
-    data: <ul> %%_children </ul>
+    data: <ul>%%_children</ul>
 - tabs
     name: tabs
     type: text
-    data: <x-tabs> %%_top_items %%_sub_items </x-tabs>
+    data: <x-tabs>%%_top_items%%_sub_items</x-tabs>
 - tabs_top_items
     name: tabs_top_items
     type: text
-    data: <x-top-items><ul> %%_children </ul></x-top-items>
+    data: <x-top-items><ul>%%_children</ul></x-top-items>
 - tabs_sub_items
     name: tabs_sub_items
     type: text
-    data: <x-sub-items><ul> %%_children </ul></x-sub-items>
+    data: <x-sub-items><ul>%%_children</ul></x-sub-items>
 - tabs_item
     name: tabs_item
     type: text
-    data: <li %%_attributes> %%_self %%_children </li>
+    data: <li %%_attributes>%%_self%%_children</li>
 - tabs_item_children
     name: tabs_item_children
     type: text
-    data: <ul> %%_children </ul>
+    data: <ul>%%_children</ul>
