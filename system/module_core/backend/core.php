@@ -291,9 +291,9 @@ namespace effcore {
   ### functionality for date|time ###
   ###################################
 
-  # see: locale::format_time(...);
-  # see: locale::format_date(...);
-  # see: locale::format_datetime(...);
+  # see: locale::format_time(…);
+  # see: locale::format_date(…);
+  # see: locale::format_datetime(…);
 
   static function time_get    ($offset = '', $format = 'H:i:s')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format($format);}
   static function date_get    ($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format($format);}
@@ -303,7 +303,7 @@ namespace effcore {
   ### filters ###
   ###############
 
-  # number validation matrix - [number('...') => is_valid(0|1|2), ...]
+  # number validation matrix: number(n) => is_valid(0|1|2)
   # ┌───────────────────────┬─────────────────────────┬─────────────────────────┬───────────────────────────┬───────────────────────────┐
   # │ ''   => 0, '-'   => 0 │ '0'   => 1, '-0'   => 0 │ '1'   => 1, '-1'   => 1 │ '01'   => 0, '-01'   => 0 │ '10'   => 1, '-10'   => 1 │
   # │ '.'  => 0, '-.'  => 0 │ '0.'  => 0, '-0.'  => 0 │ '1.'  => 0, '-1.'  => 0 │ '01.'  => 0, '-01.'  => 0 │ '10.'  => 0, '-10.'  => 0 │
@@ -350,7 +350,7 @@ namespace effcore {
   }
 
   static function validate_hash($value, $lenght = 32) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | ...
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | …
   }
 
   static function validate_email($value) {

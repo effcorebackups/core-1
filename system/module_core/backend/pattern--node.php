@@ -12,7 +12,7 @@ namespace effcore {
   function __construct($attributes = [], $children = [], $weight = 0) {
     parent::__construct($attributes, $weight);
   # ─────────────────────────────────────────────────────────────────────
-  # allowed  : null, '', '...', 0, '0', 0.1, [], [...], obj{}, obj{...}
+  # allowed  : null, '', '…', 0, '0', 0.1, [], […], obj{}, obj{…}
   # disalowed: boolean - not used and not controlled anywere!!!
   # ─────────────────────────────────────────────────────────────────────
     if ($children !== null) {
