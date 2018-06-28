@@ -10,47 +10,52 @@ namespace effcore {
           use \RecursiveIteratorIterator as ri_iterator;
           class file {
 
+  # valid paths:
+  # ┌─────────────────────────┬───────────────┬─────────┬──────┬──────────┐
+  # │ path                    │ dirs/         │ name    │ type │ relative │
+  # ├─────────────────────────┼───────────────┼─────────┼──────┼──────────┤
+  # │ .fiLe                   │               │ .fiLe   │      │ -        │
+  # │ .fiLe.eXt               │               │ .fiLe   │ eXt  │ -        │
+  # │ fiLe                    │               │ fiLe    │      │ -        │
+  # │ fiLe.eXt                │               │ fiLe    │ eXt  │ -        │
+  # │ fiLe.0.eXt              │               │ fiLe.0  │ eXt  │ -        │
+  # │ diR.1/                  │ diR.1/        │         │      │ yes      │
+  # │ diR.1/диР.2/            │ diR.1/диР.2/  │         │      │ yes      │
+  # │ diR.1/диР.2/.fiLe       │ diR.1/диР.2/  │ .fiLe   │      │ yes      │
+  # │ diR.1/диР.2/.fiLe.eXt   │ diR.1/диР.2/  │ .fiLe   │ eXt  │ yes      │
+  # │ diR.1/диР.2/fiLe        │ diR.1/диР.2/  │ fiLe    │      │ yes      │
+  # │ diR.1/диР.2/fiLe.eXt    │ diR.1/диР.2/  │ fiLe    │ eXt  │ yes      │
+  # │ diR.1/диР.2/fiLe.0.eXt  │ diR.1/диР.2/  │ fiLe.0  │ eXt  │ yes      │
+  # │ /diR.1/                 │ /diR.1/       │         │      │ no       │
+  # │ /diR.1/диР.2/           │ /diR.1/диР.2/ │         │      │ no       │
+  # │ /diR.1/диР.2/.fiLe      │ /diR.1/диР.2/ │ .fiLe   │      │ no       │
+  # │ /diR.1/диР.2/.fiLe.eXt  │ /diR.1/диР.2/ │ .fiLe   │ eXt  │ no       │
+  # │ /diR.1/диР.2/fiLe       │ /diR.1/диР.2/ │ fiLe    │      │ no       │
+  # │ /diR.1/диР.2/fiLe.eXt   │ /diR.1/диР.2/ │ fiLe    │ eXt  │ no       │
+  # │ /diR.1/диР.2/fiLe.0.eXt │ /diR.1/диР.2/ │ fiLe.0  │ eXt  │ no       │
+  # └─────────────────────────┴───────────────┴─────────┴──────┴──────────┘
+
+  # wrong paths:
+  # ┌─────────────────────────┬────────────────────────────────────────────────┐
+  # │ c:\dir1                 │ should be ignored                              │
+  # │ \dir1                   │ should be ignored                              │
+  # │ dir1\                   │ should be ignored                              │
+  # │ ./dir1                  │ should be ignored                              │
+  # │ ../dir1/                │ should be ignored                              │
+  # │ /dir1/../dir3/          │ should be ignored                              │
+  # │ dir1                    │ should be ignored (interpreted as: file1)      │
+  # │ dir1/dir2               │ should be ignored (interpreted as: dir1/file2) │
+  # └─────────────────────────┴────────────────────────────────────────────────┘
+
   # note:
-  # ─────────────────────────────────────────────────────────────────────
+  # ────────────────────────────────────────────────────────────────────────────
   # 1. path = dirs/ + name + '.' + type
   # 2. if the first character in the path is '/' - it's a full path, оtherwise - relative path
   # 3. if the last character in the path is '/' - it's a directory, оtherwise - file
   # 4. path components like '../' should be ignored!
   # 5. path components like './' should be ignored!
   # 6. windows files naming rules should be ignored!
-  # ─────────────────────────────────────────────────────────────────────
-
-  # path                      | dirs/         | name    | type | relative
-  # ─────────────────────────────────────────────────────────────────────
-  # - .fiLe                   |               | .fiLe   |      | -
-  # - .fiLe.eXt               |               | .fiLe   | eXt  | -
-  # - fiLe                    |               | fiLe    |      | -
-  # - fiLe.eXt                |               | fiLe    | eXt  | -
-  # - fiLe.0.eXt              |               | fiLe.0  | eXt  | -
-  # - diR.1/                  | diR.1/        |         |      | yes
-  # - diR.1/диР.2/            | diR.1/диР.2/  |         |      | yes
-  # - diR.1/диР.2/.fiLe       | diR.1/диР.2/  | .fiLe   |      | yes
-  # - diR.1/диР.2/.fiLe.eXt   | diR.1/диР.2/  | .fiLe   | eXt  | yes
-  # - diR.1/диР.2/fiLe        | diR.1/диР.2/  | fiLe    |      | yes
-  # - diR.1/диР.2/fiLe.eXt    | diR.1/диР.2/  | fiLe    | eXt  | yes
-  # - diR.1/диР.2/fiLe.0.eXt  | diR.1/диР.2/  | fiLe.0  | eXt  | yes
-  # - /diR.1/                 | /diR.1/       |         |      | no
-  # - /diR.1/диР.2/           | /diR.1/диР.2/ |         |      | no
-  # - /diR.1/диР.2/.fiLe      | /diR.1/диР.2/ | .fiLe   |      | no
-  # - /diR.1/диР.2/.fiLe.eXt  | /diR.1/диР.2/ | .fiLe   | eXt  | no
-  # - /diR.1/диР.2/fiLe       | /diR.1/диР.2/ | fiLe    |      | no
-  # - /diR.1/диР.2/fiLe.eXt   | /diR.1/диР.2/ | fiLe    | eXt  | no
-  # - /diR.1/диР.2/fiLe.0.eXt | /diR.1/диР.2/ | fiLe.0  | eXt  | no
-  # ─────────────────────────────────────────────────────────────────────
-  # - c:\dir1                 | should be ignored
-  # - \dir1                   | should be ignored
-  # - dir1\                   | should be ignored
-  # - ./dir1                  | should be ignored
-  # - ../dir1/                | should be ignored
-  # - /dir1/../dir3/          | should be ignored
-  # - dir1                    | should be ignored (interpreted as: file1)
-  # - dir1/dir2               | should be ignored (interpreted as: dir1/file2)
-  # ─────────────────────────────────────────────────────────────────────
+  # ────────────────────────────────────────────────────────────────────────────
 
   const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
 
