@@ -16,7 +16,7 @@
       <defs>
         <linearGradient id="body_gradient" gradientUnits="userSpaceOnUse" x1="0" y1="46" x2="0" y2="96">
           <stop offset="0" style="stop-color: #f8bc67" />
-          <stop offset="1" style="stop-color: #ee8f0b" />
+          <stop offset="1" style="stop-color: #f4a31d" />
         </linearGradient>
       </defs>
       <g id="icon_lock">
