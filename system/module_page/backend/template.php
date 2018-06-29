@@ -44,16 +44,18 @@ namespace effcore {
     if ($this->type == 'text' ||
         $this->type == 'file') {
       $rendered = $this->data;
-      $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
-                                         '(?<prefix>\\%\\%_)'.
-                                         '(?<name>[a-z0-9_]+)'.
-                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
-        return isset($matches['prefix']) &&
-               isset($matches['name']) &&
-               isset($this->args[$matches['name']]) &&
-                     $this->args[$matches['name']] !== '' ? $matches['spacer'].
-                     $this->args[$matches['name']] : '';
-      }, $rendered);
+      if (count($this->args)) {
+        $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
+                                           '(?<prefix>\\%\\%_)'.
+                                           '(?<name>[a-z0-9_]+)'.
+                                           '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
+          return isset($matches['prefix']) &&
+                 isset($matches['name']) &&
+                 isset($this->args[$matches['name']]) &&
+                       $this->args[$matches['name']] !== '' ? $matches['spacer'].
+                       $this->args[$matches['name']] : '';
+        }, $rendered);
+      }
       return $rendered;
     }
     if ($this->type == 'code') {
