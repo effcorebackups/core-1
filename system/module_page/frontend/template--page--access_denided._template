@@ -13,9 +13,15 @@
   <body>
     <h1>%%_title</h1>
     <svg id="icon" width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:auto">
+      <defs>
+        <linearGradient id="body_gradient" gradientUnits="userSpaceOnUse" x1="0" y1="46" x2="0" y2="96">
+          <stop offset="0" style="stop-color: #f8bc67" />
+          <stop offset="1" style="stop-color: #ee8f0b" />
+        </linearGradient>
+      </defs>
       <g id="icon_lock">
-        <path id="icon_lock-body" style="fill:black;fill-opacity:.2" d="m 0,46 96,0 0,50 -96,0 z" />
-        <path id="icon_lock-arc"  style="fill:none;stroke:black;stroke-width:14px;stroke-opacity:.15" d="M 18,46 C 18,32 26.042376,18 48,18 69.957624,18 78,32 78,46" />
+        <path id="icon_lock-body" style="fill: url('#body_gradient')" d="m 0,46 96,0 0,50 -96,0 z" />
+        <path id="icon_lock-arc"  style="fill: none; stroke: #c7d4e2; stroke-width: 14px" d="M 18,46 C 18,32 26.042376,18 48,18 69.957624,18 78,32 78,46" />
       </g>
     </svg>
     <p>%%_message</p>
