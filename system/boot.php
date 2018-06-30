@@ -86,11 +86,15 @@ namespace effcore {
     else $path =                  dir_root.ltrim($path_url, '/');
 
     if (is_file($path) && is_readable($path)) {
+
+    # ─────────────────────────────────────────────────────────────────────
     # case for file with tokens
+    # ─────────────────────────────────────────────────────────────────────
       if (!empty($file_types[$type]->use_tokens)) {
         $file = new file($path);
         $data = token::replace($file->load());
         $etag = base64_encode(md5($data, true));
+
       # send header "304 Not Modified" to the output buffer if HTTP_IF_NONE_MATCH header is received
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
                   $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
@@ -101,6 +105,7 @@ namespace effcore {
 
       # send headers and data to the output buffer
         header('Content-Length: '.strlen($data), true);
+        header('Accept-Ranges: none');
         header('Cache-Control: must-revalidate, private', true);
         header('Etag: '.$etag, true);
         if (!empty($file_types[$type]->headers)) {
@@ -112,9 +117,12 @@ namespace effcore {
         console::log_store();
         exit();
 
+    # ─────────────────────────────────────────────────────────────────────
     # case for any other file (and for large files too)
+    # ─────────────────────────────────────────────────────────────────────
       } else {
         header('Content-Length: '.filesize($path), true);
+        header('Accept-Ranges: none');
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
             header($c_key.': '.$c_value, true);
