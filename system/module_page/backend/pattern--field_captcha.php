@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Captcha';
   public $description = 'Write the characters from the picture.';
-  public $attributes = ['x-type' => 'captcha'];
+  public $attributes = ['data-type' => 'captcha'];
   public $element_attributes_default = [
     'type'         => 'text',
     'name'         => 'captcha',

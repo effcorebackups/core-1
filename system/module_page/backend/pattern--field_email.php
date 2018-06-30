@@ -8,7 +8,7 @@ namespace effcore {
           class field_email extends field_text {
 
   public $title = 'EMail';
-  public $attributes = ['x-type' => 'email'];
+  public $attributes = ['data-type' => 'email'];
   public $element_attributes_default = [
     'type'      => 'email',
     'name'      => 'email',

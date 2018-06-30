@@ -8,7 +8,7 @@ namespace effcore {
           class field_password extends field_text {
 
   public $title = 'Password';
-  public $attributes = ['x-type' => 'password'];
+  public $attributes = ['data-type' => 'password'];
   public $element_attributes_default = [
     'type'         => 'password',
     'name'         => 'password',

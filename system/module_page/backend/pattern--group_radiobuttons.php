@@ -9,7 +9,7 @@ namespace effcore {
           implements group_mono {
 
   public $tag_name = 'x-group';
-  public $attributes = ['x-type' => 'radiobuttons'];
+  public $attributes = ['data-type' => 'radiobuttons'];
 # ─────────────────────────────────────────────────────────────────────
   public $field_tag_name = 'x-field';
   public $field_class = '\\effcore\\field_radiobutton';

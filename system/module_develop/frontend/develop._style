@@ -48,10 +48,10 @@
   x-diagram-uml x-class x-name-wrapper {padding: 3px; padding-bottom: 6px; text-align: center}
   x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
   x-diagram-uml x-class x-namespace {font-size: .9em; line-height: 1em}
-  x-diagram-uml x-class[x-abstract='true'] x-name {font-style: italic}
+  x-diagram-uml x-class[data-abstract='true'] x-name {font-style: italic}
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
-  x-diagram-uml x-item[x-static='true'] {text-decoration: underline}
+  x-diagram-uml x-item[data-static='true'] {text-decoration: underline}
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
   x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
@@ -60,9 +60,9 @@
   x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/relation-hline._vector')                no-repeat}
   x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/relation-arrow-generalization._vector') no-repeat}
 
-  x-diagram-uml x-item[x-visibility='public']::before    {content: '+ '}
-  x-diagram-uml x-item[x-visibility='protected']::before {content: '# '}
-  x-diagram-uml x-item[x-visibility='private']::before   {content: '- '}
+  x-diagram-uml x-item[data-visibility='public']::before    {content: '+ '}
+  x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
+  x-diagram-uml x-item[data-visibility='private']::before   {content: '- '}
 
   x-diagram-uml x-attributes,
   x-diagram-uml x-operations {display: none}

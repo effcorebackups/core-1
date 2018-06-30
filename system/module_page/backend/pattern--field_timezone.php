@@ -7,7 +7,7 @@
 namespace effcore {
           class field_timezone extends field_select {
 
-  public $attributes = ['x-type' => 'timezone'];
+  public $attributes = ['data-type' => 'timezone'];
 
   function build() {
     parent::build();

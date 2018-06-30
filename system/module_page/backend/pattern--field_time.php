@@ -11,7 +11,7 @@ namespace effcore {
   const input_max_time = '23:59:59';
 
   public $title = 'Time';
-  public $attributes = ['x-type' => 'time'];
+  public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
     'type'     => 'time',
     'name'     => 'time',

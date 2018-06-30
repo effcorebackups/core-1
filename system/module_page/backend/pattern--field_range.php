@@ -11,7 +11,7 @@ namespace effcore {
   const input_max_range = 100;
 
   public $title = 'Range';
-  public $attributes = ['x-type' => 'range'];
+  public $attributes = ['data-type' => 'range'];
   public $element_attributes_default = [
     'type'     => 'range',
     'name'     => 'range',

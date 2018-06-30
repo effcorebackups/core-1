@@ -8,7 +8,7 @@ namespace effcore {
           class field_search extends field_text {
 
   public $title = 'Search';
-  public $attributes = ['x-type' => 'search'];
+  public $attributes = ['data-type' => 'search'];
   public $element_attributes_default = [
     'type'      => 'search',
     'name'      => 'search',

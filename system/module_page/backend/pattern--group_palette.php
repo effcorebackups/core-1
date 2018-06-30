@@ -7,7 +7,7 @@
 namespace effcore {
           class group_palette extends group_radiobuttons {
 
-  public $attributes = ['x-type' => 'palette'];
+  public $attributes = ['data-type' => 'palette'];
 
   function build() {
     foreach (storage::get('files')->select('colors') as $c_colors) {

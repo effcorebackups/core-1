@@ -8,7 +8,7 @@ namespace effcore {
           class field_file extends field {
 
   public $title = 'File';
-  public $attributes = ['x-type' => 'file'];
+  public $attributes = ['data-type' => 'file'];
   public $element_attributes_default = [
     'type' => 'file',
     'name' => 'file'

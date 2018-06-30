@@ -19,7 +19,7 @@ namespace effcore\modules\develop {
   ########################
 
   static function on_show_block_structures_list($page) {
-    $list = new markup('x-structures-list', ['x-type' => $page->args_get('type')]);
+    $list = new markup('x-structures-list', ['data-type' => $page->args_get('type')]);
     $targets = new markup('x-targets');
     $groups_by_name = [];
     $u_first_character = null;
@@ -94,7 +94,7 @@ namespace effcore\modules\develop {
       # set abstract mark
         if (!empty($c_item_info->modifier) &&
                    $c_item_info->modifier == 'abstract') {
-          $x_class->attribute_insert('x-abstract', 'true');
+          $x_class->attribute_insert('data-abstract', 'true');
         }
 
       # find properties
@@ -110,9 +110,9 @@ namespace effcore\modules\develop {
                                 $c_matches['value']) : null;
             $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' = '.$c_defaults) :
                                                new text_simple($c_info->name);
-            if ($c_info->isPublic())    $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isProtected()) $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPublic())    $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public']    + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private']   + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
           }
         }
 
@@ -130,9 +130,9 @@ namespace effcore\modules\develop {
                                 $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' ('.$c_defaults.')') :
                                                new text_simple($c_info->name.' ()');
-            if ($c_info->isPublic())    $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'public']    + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isProtected()) $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'protected'] + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate())   $x_operations->child_insert(new markup('x-item', ['x-visibility' => 'private']   + ($c_info->isStatic() ? ['x-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPublic())    $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public']    + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPrivate())   $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private']   + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
           }
         }
       }

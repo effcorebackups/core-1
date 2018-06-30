@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Color';
   public $description = 'The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.';
-  public $attributes = ['x-type' => 'color'];
+  public $attributes = ['data-type' => 'color'];
   public $element_attributes_default = [
     'type'      => 'color',
     'name'      => 'color',

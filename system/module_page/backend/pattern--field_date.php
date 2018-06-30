@@ -11,7 +11,7 @@ namespace effcore {
   const input_max_date = '9999-12-31';
 
   public $title = 'Date';
-  public $attributes = ['x-type' => 'date'];
+  public $attributes = ['data-type' => 'date'];
   public $element_attributes_default = [
     'type'     => 'date',
     'name'     => 'date',

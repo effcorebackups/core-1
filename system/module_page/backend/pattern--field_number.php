@@ -11,7 +11,7 @@ namespace effcore {
   const input_max_number = +10000000000;
 
   public $title = 'Number';
-  public $attributes = ['x-type' => 'number'];
+  public $attributes = ['data-type' => 'number'];
   public $element_attributes_default = [
     'type'     => 'number',
     'name'     => 'number',

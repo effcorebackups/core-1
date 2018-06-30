@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Checkbox';
   public $title_position = 'bottom';
-  public $attributes = ['x-type' => 'checkbox'];
+  public $attributes = ['data-type' => 'checkbox'];
   public $element_attributes_default = [
     'type' => 'checkbox',
     'name' => 'checkbox'
