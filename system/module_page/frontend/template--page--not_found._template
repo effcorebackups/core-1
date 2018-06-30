@@ -14,7 +14,7 @@
     <h1>%%_title</h1>
     <svg id="icon" width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:auto">
       <defs>
-        <linearGradient id="hand_gradient" gradientUnits="userSpaceOnUse" x1="77.715" y1="64.429" x2="77.715" y2="91">
+        <linearGradient id="hand_gradient" gradientUnits="userSpaceOnUse" x1="71.733017" y1="71.733017" x2="69.916824" y2="69.916824">
           <stop offset="0" style="stop-color: #f8bc67" />
           <stop offset="1" style="stop-color: #f4a31d" />
         </linearGradient>
