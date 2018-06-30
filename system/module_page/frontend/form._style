@@ -56,7 +56,7 @@
   x-group[x-type="checkboxes"  ] x-field label,
   x-group[x-type="radiobuttons"] x-field label {display: inline; font-size: 1em}
 
-  /* x-description + x-expander */
+  /* x-description + data-expander */
   x-description {
     display: block;
     margin-top: 2px;
@@ -64,10 +64,10 @@
     line-height: 1.7em;
     color: darkgray}
   x-description p {margin: 0}
-  input[x-expander="description"] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: 0; background: url('images/icons-form_items._vector') 0 -45px}
-  input[x-expander="description"] + x-description {display: none}
-  input[x-expander="description"]:checked {display: none}
-  input[x-expander="description"]:checked + x-description {display: block}
+  input[data-expander="description"] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: 0; background: url('images/icons-form_items._vector') 0 -45px}
+  input[data-expander="description"] + x-description {display: none}
+  input[data-expander="description"]:checked {display: none}
+  input[data-expander="description"]:checked + x-description {display: block}
 
   /* disabled elements */
   x-field.disabled * {color: lightgray; cursor: default !important}

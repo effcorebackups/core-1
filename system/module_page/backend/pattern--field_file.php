@@ -37,7 +37,7 @@ namespace effcore {
                             $return[] = new markup('p', ['class' => ['file_size_max' => 'file_size_max']], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
-      $expander = new markup_simple('input', ['type' => 'checkbox', 'x-expander' => 'description']);
+      $expander = new markup_simple('input', ['type' => 'checkbox', 'data-expander' => 'description']);
       if ($this->description_state == 'hidden'                                   ) return '';
       if ($this->description_state == 'expanded' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
       if ($this->description_state == 'collapsed')             return $expander->render().(new markup($this->description_tag_name, [], $return))->render();
