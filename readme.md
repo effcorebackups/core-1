@@ -3,11 +3,17 @@
 SERVER SOFTWARE REQUIREMENTS
 ---------------------------------------------------------------------
 
-Priority Operating System:
-- Unix (FreeBSD)
-Priority Web Server:
-- Apache v2.2+
-- nginx v1.10+
+Operating System:
+- FreeBSD [priority]
+- Linux
+- Windows
+Platform:
+- x86
+- x64
+Web Server:
+- Apache v2.2+ [priority]
+- NGINX v1.10+ [priority]
+- Internet Information Services (IIS) v7.5+
 Server-side scripting language:
 - PHP v.5.6+
 - PHP v.7.1+
@@ -25,32 +31,30 @@ Apache 2.4 requires the following modules:
 - rewrite_module
 - php5_module|php7_module
 
-Otherwise you get "500 Internal Server Error".
-See Apache error log.
+See the Apache error log if you got "500 Internal Server Error".
 
 
 PHP 5.6 requires the following modules:
 - php_pdo_sqlite|php_pdo_mysql
 
 
-HARDWARE REQUIREMENTS FOR SERVERS WITH THE BEST PERFORMANCE
+RECOMMENDATIONS FOR IMPROVING PERFORMANCE
 ---------------------------------------------------------------------
 
-Memory: DDR4 ECC or newer
-Hard drive: SSD RAID on PCI-Express or newer
-CPU: Intel Xeon/i7/i9 or newer
+Highly recommend to use the Solid State Drives (SSD).
+Recommend to use the PHP OPcache.
 
 
 WEB CLIENTS SUPPORT
 ---------------------------------------------------------------------
 
-- Safari (macOS, iOS 8+);
-- Opera;
-- Firefox;
-- Chrome;
-- MS IE 9+;
-- MS Edge;
-- other modern browsers.
+- Apple Safari v10+;
+- Apple Mobile Safari iOS v8+;
+- Opera modern versions;
+- Mozilla Firefox modern versions;
+- Google Chrome modern versions;
+- Microsoft Internet Explorer 9+;
+- Microsoft Edge.
 
 
 RECOMMENDATION SOFTWARE FOR DEVELOPMENT
@@ -58,7 +62,7 @@ RECOMMENDATION SOFTWARE FOR DEVELOPMENT
 
 - Coda (mac) for working with code|markup|styles.
 - Tower (mac|win) for working git.
-- Charles (mac|win|linux) for debug HTTP/S traffic and validate the markup.
+- Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup.
 - Kaleidoscope (mac) for search differences in code.
 - SequelPro (mac) for working with MySQL databases.
 - Aster SQLite Manager (mac) for working with SQLite databases.
@@ -84,5 +88,5 @@ SECURITY RECOMMENDATIONS
   and using different servers for each service.
 - We recommend to using the secure hardware crypto-processor for storing the private keys.
 - We recommend to using two-factor authentication.
-- We recommend to using TLS v1.1/1.2 or higher.
+- We recommend to using TLS v1.1|1.2 or higher.
 

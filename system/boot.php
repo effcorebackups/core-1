@@ -22,12 +22,12 @@ namespace effcore {
   # │        ╲  modes │       │                │                               │
   # │ server  ╲       │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements │
   # ╞═════════════════╪═══════╪════════════════╪═══════════════════════════════╡
-  # │ apache v2.4     │ -     │ http           │ http                          │
-  # │ apache v2.4 ssl │ on    │ https          │ https                         │
-  # │ nginx  v1.1     │ -     │ http           │ http                          │
-  # │ nginx  v1.1 ssl │ on    │ https          │ https                         │
-  # │ iis    v7.5     │ off   │ -              │ http                          │
-  # │ iis    v7.5 ssl │ on    │ -              │ https                         │
+  # │ Apache v2.4     │ -     │ http           │ http                          │
+  # │ Apache v2.4 SSL │ on    │ https          │ https                         │
+  # │ NGINX  v1.1     │ -     │ http           │ http                          │
+  # │ NGINX  v1.1 SSL │ on    │ https          │ https                         │
+  # │ IIS    v7.5     │ off   │ -              │ http                          │
+  # │ IIS    v7.5 SSL │ on    │ -              │ https                         │
   # └─────────────────┴───────┴────────────────┴───────────────────────────────┘
 
   if (!isset($_SERVER['REQUEST_SCHEME'])) {

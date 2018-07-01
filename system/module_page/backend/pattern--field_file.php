@@ -250,7 +250,7 @@ namespace effcore {
       $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');
-    # special case for iis and apache
+    # special case for IIS and Apache
       if ($c_value->file == 'web.config' ||
           $c_value->file == '.htaccess') {
         $c_value->name = $c_value->file = core::random_part_get();
