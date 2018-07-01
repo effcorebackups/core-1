@@ -4,7 +4,7 @@
     <title>%%_title</title>
     <style>
       body {padding: 100px 30px; font: normal 16px Arial; text-align: center}
-      h1 {font-size: 1.6em}
+      h1 {font-size: 1.75em}
       a {color: #216ce4}
       a:hover {color: black}
       svg#icon {margin: 50px 0}
