@@ -26,7 +26,7 @@ Apache 2.4 requires the following modules:
 - php5_module|php7_module
 
 Otherwise you get "500 Internal Server Error".
-See apache error log.
+See Apache error log.
 
 
 PHP 5.6 requires the following modules:
@@ -53,22 +53,36 @@ WEB CLIENTS SUPPORT
 - other modern browsers.
 
 
-SECURITY RECOMENDATIONS
+RECOMMENDATION SOFTWARE FOR DEVELOPMENT
+---------------------------------------------------------------------
+
+- Coda (mac) for working with code|markup|styles.
+- Tower (mac|win) for working git.
+- Charles (mac|win|linux) for debug HTTP/S traffic and validate the markup.
+- Kaleidoscope (mac) for search differences in code.
+- SequelPro (mac) for working with MySQL databases.
+- Aster SQLite Manager (mac) for working with SQLite databases.
+- StarUML (mac|win|linux) for working with UML diagrams.
+- BoxySVG (mac|win) for working with SVG vector graphics.
+- Monodraw (mac) for working with pseudo-graphics.
+- ColorSnapper (mac) for pick the "right" colors.
+
+
+SECURITY RECOMMENDATIONS
 ---------------------------------------------------------------------
 
 - We recommend to using own servers located in rooms with access control.
-  Deployment of your servers in USA/Russia/China data centers does not guarantee your privacy.
+  Deployment of your servers in non-European data centers does not guarantee your privacy.
   You can get an internal network threat from different sniffers.
-- We recomend to using hardrare firewalls based on open firmware (e.g. NanoBSD and other).
-  Remember that some hardware firewalls (еspecially from the USA) may contain backdoors.
-- We not recomend to using Certification authority (CA) hosted in USA/Russia/China.
-  There is no warranties that your private key will not fall into the hands of
-  special government services.
-- We not recoment to using public email services for restoring passwords
+- We recommend to using hardware firewalls based on open firmware (e.g. NanoBSD and other).
+  Remember that some hardware firewalls (not from Europe) may contain backdoors.
+- We do not recommend to using non-European Certification authority (CA).
+  There is no warranties that your private key will not fall into third hands.
+- We do not recommend to using public email services for restoring passwords
   and sending important correspondence.
   We recommend to using your own dedicated server for email services
   and using different servers for each service.
-- We recommend to using hardware secure cryptoprocessor for storing the private keys.
-- We recommended to using two-factor authentication.
-- We recommended to using TLS v1.1/1.2 or higher.
+- We recommend to using the secure hardware crypto-processor for storing the private keys.
+- We recommend to using two-factor authentication.
+- We recommend to using TLS v1.1/1.2 or higher.
 
