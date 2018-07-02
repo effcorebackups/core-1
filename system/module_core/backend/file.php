@@ -87,7 +87,7 @@ namespace effcore {
 
   function dirs_get()          {return $this->dirs;}
   function dirs_parts_get()    {return explode('/', trim($this->dirs, '/'));}
-  function dirs_relative_get() {return isset($this->dirs[0]) && $this->dirs[0] == '/' ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
+  function dirs_relative_get() {return $this->is_path_full() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 # ─────────────────────────────────────────────────────────────────────
   function name_get()          {return $this->name;}
   function type_get()          {return $this->type;}
@@ -103,6 +103,11 @@ namespace effcore {
   function data_get() {
     if (empty($this->data)) $this->load(true);
     return $this->data;
+  }
+
+  function is_path_full() {
+    if (DIRECTORY_SEPARATOR != '\\') return isset($this->dirs[0]) && $this->dirs[0] == '/';
+    if (DIRECTORY_SEPARATOR == '\\') return isset($this->dirs[1]) && $this->dirs[1] == ':';
   }
 
   function is_exist() {

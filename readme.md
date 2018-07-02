@@ -38,6 +38,10 @@ PHP 5.6 requires the following modules:
 - php_pdo_sqlite|php_pdo_mysql
 
 
+Git on Windows requires:
+- run the command "git config --global core.autocrlf false"
+
+
 RECOMMENDATIONS FOR IMPROVING PERFORMANCE
 ---------------------------------------------------------------------
 
