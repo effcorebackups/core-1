@@ -4,7 +4,7 @@ SERVER SOFTWARE REQUIREMENTS
 ---------------------------------------------------------------------
 
 Operating System:
-- FreeBSD [priority]
+- UNIX (macOS, FreeBSD) [priority]
 - Linux
 - Windows
 Platform:
