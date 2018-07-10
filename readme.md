@@ -11,7 +11,7 @@ Platform:
 - x86
 - x64
 Web Server:
-- Apache v2.2+ [priority]
+- Apache v2.4+ [priority]
 - NGINX v1.10+ [priority]
 - Internet Information Services (IIS) v7.5+
 Server-side scripting language:
