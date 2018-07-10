@@ -14,6 +14,7 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module;
           use \effcore\node;
+          use \effcore\session;
           use \effcore\storage;
           use \effcore\table_body_row_cell;
           use \effcore\table;
@@ -62,6 +63,10 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], php_uname('n')));
     $info->child_insert(new markup('dt', [], 'Cron URL'));
     $info->child_insert(new markup('dd', [], $cron_link));
+    $info->child_insert(new markup('dt', [], 'Session expiration date'));
+    $info->child_insert(new markup('dd', [], locale::format_timestamp(session::id_decode_expire(session::id_get()))));
+    $info->child_insert(new markup('dt', [], 'Server timezone'));
+    $info->child_insert(new markup('dd', [], date_default_timezone_get()));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'no'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));

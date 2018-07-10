@@ -14,6 +14,10 @@ namespace effcore {
   const tb = "\t";
   const br = "<br/>";
 
+  if (!ini_get('date.timezone')) {
+    date_default_timezone_set('UTC');
+  }
+
   #############################
   ### load required classes ###
   #############################

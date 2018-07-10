@@ -220,6 +220,7 @@ translations
     - Select: Выбрать
     - Selection list: Список выбора
     - Server software: Серверное ПО
+    - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
     - set: установка
     - Shared information: Общая информация
