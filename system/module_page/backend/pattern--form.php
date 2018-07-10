@@ -221,8 +221,8 @@ namespace effcore {
 
   static function validation_id_generate() {
     $hex_created = dechex(time());
-    $hex_ip = core::ip_to_hex($_SERVER['REMOTE_ADDR']);
-    $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
+    $hex_ip = core::ip_to_hex(core::server_remote_addr_get());
+    $hex_uagent_hash_8 = substr(md5(core::server_user_agent_get()), 0, 8);
     $hex_random = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
     $validation_id = $hex_created.       # strlen == 8
                      $hex_ip.            # strlen == 8
@@ -257,8 +257,8 @@ namespace effcore {
       $signature     = static::validation_id_decode_signature($value);
       if ($created <= time()                           &&
           $created >= time() - static::period_expire_h &&
-          $ip === $_SERVER['REMOTE_ADDR']              &&
-          $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
+          $ip === core::server_remote_addr_get()       &&
+          $uagent_hash_8 === substr(md5(core::server_user_agent_get()), 0, 8) &&
           $signature === core::signature_get(substr($value, 0, 32), 8, 'form_validation')) {
         return true;
       }

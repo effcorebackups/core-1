@@ -14,27 +14,6 @@ namespace effcore {
   const tb = "\t";
   const br = "<br/>";
 
-  ##############################################
-  ### web servers compatibility improvements ###
-  ##############################################
-
-  # ┌─────────────────┬───────┬────────────────┬───────────────────────────────┐
-  # │        ╲  modes │       │                │                               │
-  # │ server  ╲       │ HTTPS │ REQUEST_SCHEME │ REQUEST_SCHEME + improvements │
-  # ╞═════════════════╪═══════╪════════════════╪═══════════════════════════════╡
-  # │ Apache v2.4     │ -     │ http           │ http                          │
-  # │ Apache v2.4 SSL │ on    │ https          │ https                         │
-  # │ NGINX  v1.1     │ -     │ http           │ http                          │
-  # │ NGINX  v1.1 SSL │ on    │ https          │ https                         │
-  # │ IIS    v7.5     │ off   │ -              │ http                          │
-  # │ IIS    v7.5 SSL │ on    │ -              │ https                         │
-  # └─────────────────┴───────┴────────────────┴───────────────────────────────┘
-
-  if (!isset($_SERVER['REQUEST_SCHEME'])) {
-    $_SERVER['REQUEST_SCHEME'] = isset($_SERVER['HTTPS']) &&
-                                       $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-  }
-
   #############################
   ### load required classes ###
   #############################

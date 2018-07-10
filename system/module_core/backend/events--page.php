@@ -49,7 +49,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'All rights reserved'));
     $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Server software'));
-    $info->child_insert(new markup('dd', [], core::server_name_full_get()));
+    $info->child_insert(new markup('dd', [], core::server_software_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
     $info->child_insert(new markup('dd', [], phpversion()));
     $info->child_insert(new markup('dt', [], 'Architecture'));

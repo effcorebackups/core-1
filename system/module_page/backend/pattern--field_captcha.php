@@ -108,7 +108,7 @@ namespace effcore {
   static protected $glyphs;
 
   static function id_get() {
-    return $_SERVER['REMOTE_ADDR'];
+    return core::server_remote_addr_get();
   }
 
   static function init() {

@@ -71,11 +71,11 @@ namespace effcore {
     $is_remember = isset($session_params['remember']);
     $is_fixed_ip = isset($session_params['fixed_ip']);
     $period = $type == 'f' && !$is_remember ? static::period_expire_d : static::period_expire_m;
-    $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : $_SERVER['REMOTE_ADDR'];
+    $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : core::server_remote_addr_get();
     $hex_type = $type; # a - anonymous user | f - authenticated user
     $hex_expire = dechex(time() + $period);
     $hex_ip = core::ip_to_hex($ip);
-    $hex_uagent_hash_8 = substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8);
+    $hex_uagent_hash_8 = substr(md5(core::server_user_agent_get()), 0, 8);
     $hex_random = str_pad(dechex(rand(0, 0xffffffff)), 8, '0', STR_PAD_LEFT);
     $session_id = $hex_type.          # strlen == 1
                   $hex_expire.        # strlen == 8
@@ -113,10 +113,10 @@ namespace effcore {
       $random        = static::id_decode_random($value);
       $signature     = static::id_decode_signature($value);
       if ($expire >= time() &&
-          $uagent_hash_8 === substr(md5($_SERVER['HTTP_USER_AGENT']), 0, 8) &&
+          $uagent_hash_8 === substr(md5(core::server_user_agent_get()), 0, 8) &&
           $signature === core::signature_get(substr($value, 0, 33), 8, 'session')) {
-        if (($type === 'a' && $ip === $_SERVER['REMOTE_ADDR']) ||
-            ($type === 'f' && $ip === $_SERVER['REMOTE_ADDR']) ||
+        if (($type === 'a' && $ip === core::server_remote_addr_get()) ||
+            ($type === 'f' && $ip === core::server_remote_addr_get()) ||
             ($type === 'f' && $ip === static::empty_ip)) {
           return true;
         }

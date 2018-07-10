@@ -476,7 +476,42 @@ namespace effcore {
   ### server information ###
   ##########################
 
-  static function server_name_full_get() {
+  # ┌─────────────────┬───────┬────────────────┬────────┐
+  # │        ╲  modes │       │                │        │
+  # │ server  ╲       │ HTTPS │ REQUEST_SCHEME │ result │
+  # ╞═════════════════╪═══════╪════════════════╪════════╡
+  # │ Apache v2.4     │ -     │ http           │ http   │
+  # │ Apache v2.4 SSL │ on    │ https          │ https  │
+  # │ NGINX  v1.1     │ -     │ http           │ http   │
+  # │ NGINX  v1.1 SSL │ on    │ https          │ https  │
+  # │ IIS    v7.5     │ off   │ -              │ http   │
+  # │ IIS    v7.5 SSL │ on    │ -              │ https  │
+  # └─────────────────┴───────┴────────────────┴────────┘
+
+  static function server_request_scheme_get() {
+    if (isset($_SERVER['REQUEST_SCHEME']))                     return $_SERVER['REQUEST_SCHEME'];
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') return 'https';
+    return 'http';
+  }
+
+  static function server_host_get() {
+    return $_SERVER['HTTP_HOST'];
+  }
+
+  static function server_remote_addr_get() {
+    return $_SERVER['REMOTE_ADDR'] == '::1' ? '127.0.0.1' :
+           $_SERVER['REMOTE_ADDR'];
+  }
+
+  static function server_user_agent_get() {
+    return $_SERVER['HTTP_USER_AGENT'];
+  }
+
+  static function server_request_uri_get() {
+    return $_SERVER['REQUEST_URI'];
+  }
+
+  static function server_software_get() {
     $matches = [];
     preg_match('%^(?<full_name>(?<name>[a-z0-9-]+)/(?<version>[a-z0-9.]+))|'.
                  '(?<full_name_unknown>.*)%i', $_SERVER['SERVER_SOFTWARE'], $matches);
