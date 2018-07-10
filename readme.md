@@ -1,6 +1,6 @@
 
 
-SERVER SOFTWARE REQUIREMENTS
+Server software requirements
 ---------------------------------------------------------------------
 
 Operating System:
@@ -23,14 +23,10 @@ Storage system:
 
 
 Apache 2.4 requires the following modules:
-- access_compat_module
-- authz_core_module
-- dir_module
-- log_config_module
-- mime_module
-- rewrite_module
 - php5_module|php7_module
-
+- rewrite_module
+- dir_module
+- mime_module
 See the Apache error log if you got "500 Internal Server Error".
 
 
@@ -42,14 +38,14 @@ Git on Windows requires:
 - run the command "git config --global core.autocrlf false"
 
 
-RECOMMENDATIONS FOR IMPROVING PERFORMANCE
+Recommendations for improving performance
 ---------------------------------------------------------------------
 
 Highly recommend to use the Solid State Drives (SSD).
 Recommend to use the PHP OPcache.
 
 
-WEB CLIENTS SUPPORT
+Web clients support
 ---------------------------------------------------------------------
 
 - Apple Safari v10+;
@@ -61,7 +57,7 @@ WEB CLIENTS SUPPORT
 - Microsoft Edge.
 
 
-RECOMMENDATION SOFTWARE FOR DEVELOPMENT
+Recommendation software for development
 ---------------------------------------------------------------------
 
 - Coda (mac) for working with code|markup|styles.
@@ -76,7 +72,7 @@ RECOMMENDATION SOFTWARE FOR DEVELOPMENT
 - ColorSnapper (mac) for pick the "right" colors.
 
 
-SECURITY RECOMMENDATIONS
+Security recommendations
 ---------------------------------------------------------------------
 
 - We recommend to using own servers located in rooms with access control.
