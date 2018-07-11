@@ -27,7 +27,15 @@ Apache 2.4 requires the following modules:
 - rewrite_module
 - dir_module
 - mime_module
-See the Apache error log if you got "500 Internal Server Error".
+If you got "500 Internal Server Error" see the Apache error log.
+
+
+Internet Information Services (IIS) v7.5+ requires:
+- install module "URL Rewrite" from IIS official site
+- in "Turn Windows features on or off" set option "IIS / WWW Services / Application Development Features / CGI"
+- in "Turn Windows features on or off" set option "IIS / WWW Services / Common HTTP Features / Static Content"
+- in "IIS Manager / Handler Mappings" add new "Module Mapping" with parameters: "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe"
+If you got "500 Internal Server Error" check web.config (section "rewrite").
 
 
 PHP 5.6 requires the following modules:
