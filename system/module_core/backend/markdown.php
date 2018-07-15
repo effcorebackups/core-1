@@ -115,7 +115,7 @@ namespace effcore {
         if ($last_type == 'header')   $pool->child_delete($pool->child_select_last_id());
         if ($last_type == 'hr')       $pool->child_delete($pool->child_select_last_id());
       }
-      if (preg_match('%^(?<marker>[#]{1,6})(?<return>.*)$%S', $c_string, $c_matches)) {
+      if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
         $n_header = new markup('h'.strlen($c_matches['marker']), [], $c_matches['return']);
       }
       if ($n_header) {
@@ -147,7 +147,7 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<noises>[ ]{1,})'.
-                       '(?<return>[^ ].+)$%S', $c_string, $c_matches)) {
+                       '(?<return>.+)$%S', $c_string, $c_matches)) {
       # special cases: p|list, blockquote|list, code|list
         if ($last_type == 'p')          {$last_item->child_insert(new text(nl.$c_string)); continue;}
         if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string); continue;}
@@ -234,7 +234,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<noises>[ ]{0,})'.
-                       '(?<return>[^ ].*)$%S', $c_string, $c_matches)) {
+                       '(?<return>.*)$%S', $c_string, $c_matches)) {
       # create new code container
         if ($last_type != 'pre') {
           $last_item = new markup('pre');

@@ -38,14 +38,14 @@ namespace effcore {
   # └──────────────────────────────────────────────────────────┘
 
   # wrong urls:
-  # ┌──────────────────────────┬──────────────────────────────────────────────────────────────────────┐
-  # │ url                      │ behavior                                                             │
-  # ╞══════════════════════════╪══════════════════════════════════════════════════════════════════════╡
-  # │ http://subdomain.domain/ │ should be redirected to 'http://subdomain.domain'                    │
-  # │ subdomain.domain/        │ should be redirected to 'http://subdomain.domain'                    │
-  # │ /subdomain.domain        │ this domain described like a directory (first char is the slash)     │
-  # │ dir/subdir/page          │ this directory described like a domain (first char is not the slash) │
-  # └──────────────────────────┴──────────────────────────────────────────────────────────────────────┘
+  # ┌──────────────────────────╥──────────────────────────────────────────────────────────────────────┐
+  # │ url                      ║ behavior                                                             │
+  # ╞══════════════════════════╬══════════════════════════════════════════════════════════════════════╡
+  # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                    │
+  # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                    │
+  # │ /subdomain.domain        ║ this domain described like a directory (first char is the slash)     │
+  # │ dir/subdir/page          ║ this directory described like a domain (first char is not the slash) │
+  # └──────────────────────────╨──────────────────────────────────────────────────────────────────────┘
 
   # note:
   # ════════════════════════════════════════════════════════════════════════════════════════════
@@ -64,7 +64,7 @@ namespace effcore {
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
                     '(?<domain>[^/]*)'.
                     '(?<path>[^?#]*)'.
-              '(?:\\?(?<query>[^\\#]*)|)'.
+              '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
     $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_request_scheme_get()));
     $this->domain   = !empty($matches['domain'])   ? $matches['domain']   :                                        ( /* case for local ulr */ core::server_host_get());

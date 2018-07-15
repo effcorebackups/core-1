@@ -5,47 +5,47 @@
   ##################################################################
 
   # html5 elements and attributes support:
-  # ┌────────────────┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
-  # │   ╲  attribute │ d │ r │ r │ m │ m │ m │ m │ s │ m │ c │ p │ v │
-  # │    ╲           │ i │ e │ e │ i │ a │ i │ a │ t │ u │ h │ a │ a │
-  # │     ╲          │ s │ a │ q │ n │ x │ n │ x │ e │ l │ e │ t │ l │
-  # │      ╲         │ a │ d │ u │ l │ l │   │   │ p │ t │ c │ t │ u │
-  # │       ╲        │ b │ o │ i │ e │ e │   │   │   │ i │ k │ e │ e │
-  # │        ╲       │ l │ n │ r │ n │ n │   │   │   │ p │ e │ r │   │
-  # │         ╲      │ e │ l │ e │ g │ g │   │   │   │ l │ d │ n │ [ │
-  # │          ╲     │ d │ y │ d │ t │ t │   │   │   │ e │   │   │ ] │
-  # │ element   ╲    │   │   │   │ h │ h │   │   │   │   │   │   │   │
-  # ╞════════════════╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╡
-  # │ input:text     │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # │ input:color    │ + │ x │ x │ x │ x │   │   │   │   │   │ x │ + │
-  # │ input:email    │ + │ + │ + │ x │ + │   │   │   │ + │   │ + │ + │
-  # │ input:file     │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
-  # │ input:password │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # │ input:search   │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # │ input:tel      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # │ input:url      │ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
-  # │ input:date     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # │ input:time     │ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # │ input:number   │ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
-  # │ input:range    │ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
-  # │ textarea       │ + │ + │ + │ x │ + │   │   │   │   │   │ x │ + │
-  # │ select         │ + │   │ + │   │   │   │   │   │ + │   │   │ + │
-  # │ select:option  │ + │   │   │   │   │   │   │   │   │   │   │   │
-  # │ input:checkbox │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
-  # │ input:radio    │ + │   │ + │   │   │   │   │   │   │ + │   │ + │
-  # └────────────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
+  # ┌────────────────╥───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+  # │   ╲  attribute ║ d │ r │ r │ m │ m │ m │ m │ s │ m │ c │ p │ v │
+  # │    ╲           ║ i │ e │ e │ i │ a │ i │ a │ t │ u │ h │ a │ a │
+  # │     ╲          ║ s │ a │ q │ n │ x │ n │ x │ e │ l │ e │ t │ l │
+  # │      ╲         ║ a │ d │ u │ l │ l │   │   │ p │ t │ c │ t │ u │
+  # │       ╲        ║ b │ o │ i │ e │ e │   │   │   │ i │ k │ e │ e │
+  # │        ╲       ║ l │ n │ r │ n │ n │   │   │   │ p │ e │ r │   │
+  # │         ╲      ║ e │ l │ e │ g │ g │   │   │   │ l │ d │ n │ [ │
+  # │          ╲     ║ d │ y │ d │ t │ t │   │   │   │ e │   │   │ ] │
+  # │ element   ╲    ║   │   │   │ h │ h │   │   │   │   │   │   │   │
+  # ╞════════════════╬═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╪═══╡
+  # │ input:text     ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:color    ║ + │ x │ x │ x │ x │   │   │   │   │   │ x │ + │
+  # │ input:email    ║ + │ + │ + │ x │ + │   │   │   │ + │   │ + │ + │
+  # │ input:file     ║ + │   │ + │   │   │   │   │   │ + │   │   │ + │
+  # │ input:password ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:search   ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:tel      ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:url      ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:date     ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
+  # │ input:time     ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
+  # │ input:number   ║ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
+  # │ input:range    ║ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
+  # │ textarea       ║ + │ + │ + │ x │ + │   │   │   │   │   │ x │ + │
+  # │ select         ║ + │   │ + │   │   │   │   │   │ + │   │   │ + │
+  # │ select:option  ║ + │   │   │   │   │   │   │   │   │   │   │   │
+  # │ input:checkbox ║ + │   │ + │   │   │   │   │   │   │ + │   │ + │
+  # │ input:radio    ║ + │   │ + │   │   │   │   │   │   │ + │   │ + │
+  # └────────────────╨───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
   # note: x - is extended feature of the system
-  # ┌──────────────────────┬────────────────────────────────────────────────┐
-  # │ input:hidden         │ protected from change the value from user side │
-  # │ input:button         │ not processed - use button:button instead      │
-  # │ input:reset          │ not processed - use button:reset instead       │
-  # │ input:submit         │ not processed - use button:submit instead      │
-  # │ input:image          │ not processed - use imgage instead             │
-  # │ input:datetime       │ not processed - use date + time instead        │
-  # │ input:datetime-local │ not processed - use date + time instead        │
-  # │ input:week           │ not processed                                  │
-  # │ input:month          │ not processed                                  │
-  # └──────────────────────┴────────────────────────────────────────────────┘
+  # ┌──────────────────────╥────────────────────────────────────────────────┐
+  # │ input:hidden         ║ protected from change the value from user side │
+  # │ input:button         ║ not processed - use button:button instead      │
+  # │ input:reset          ║ not processed - use button:reset instead       │
+  # │ input:submit         ║ not processed - use button:submit instead      │
+  # │ input:image          ║ not processed - use imgage instead             │
+  # │ input:datetime       ║ not processed - use date + time instead        │
+  # │ input:datetime-local ║ not processed - use date + time instead        │
+  # │ input:week           ║ not processed                                  │
+  # │ input:month          ║ not processed                                  │
+  # └──────────────────────╨────────────────────────────────────────────────┘
 
 namespace effcore {
           class field extends container {
@@ -225,18 +225,18 @@ namespace effcore {
   }
 
   # conversion matrix:
-  # ┌──────────────────────────────────────┬───────────────────────────────┐
-  # │ input value (undefined|string|array) │ output value                  │
-  # ╞══════════════════════════════════════╪═══════════════════════════════╡
-  # │ source[field] == undefined           │ return ''                     │
-  # │ source[field] == ''                  │ return ''                     │
-  # │ source[field] == 'value'             │ return 'value'                │
-  # ├──────────────────────────────────────┼───────────────────────────────┤
-  # │ source[field] == [0 => '']           │ return ''                     │
-  # │ source[field] == [0 => '', …]        │ return ''                     │
-  # │ source[field] == [0 => 'value']      │ return 'value'                │
-  # │ source[field] == [0 => 'value', …]   │ return 'value'                │
-  # └──────────────────────────────────────┴───────────────────────────────┘
+  # ┌──────────────────────────────────────╥───────────────────────────────┐
+  # │ input value (undefined|string|array) ║ output value                  │
+  # ╞══════════════════════════════════════╬═══════════════════════════════╡
+  # │ source[field] == undefined           ║ return ''                     │
+  # │ source[field] == ''                  ║ return ''                     │
+  # │ source[field] == 'value'             ║ return 'value'                │
+  # ├──────────────────────────────────────╫───────────────────────────────┤
+  # │ source[field] == [0 => '']           ║ return ''                     │
+  # │ source[field] == [0 => '', …]        ║ return ''                     │
+  # │ source[field] == [0 => 'value']      ║ return 'value'                │
+  # │ source[field] == [0 => 'value', …]   ║ return 'value'                │
+  # └──────────────────────────────────────╨───────────────────────────────┘
 
   static function request_value_get($name, $index = 0, $source = '_POST') {
     global ${$source};
@@ -248,18 +248,18 @@ namespace effcore {
   }
 
   # conversion matrix:
-  # ┌──────────────────────────────────────┬───────────────────────────────┐
-  # │ input value (undefined|string|array) │ output value                  │
-  # ╞══════════════════════════════════════╪═══════════════════════════════╡
-  # │ source[field] == undefined           │ return []                     │
-  # │ source[field] == ''                  │ return [0 => '']              │
-  # │ source[field] == 'value'             │ return [0 => 'value']         │
-  # ├──────────────────────────────────────┼───────────────────────────────┤
-  # │ source[field] == [0 => '']           │ return [0 => '']              │
-  # │ source[field] == [0 => '', …]        │ return [0 => '', …]           │
-  # │ source[field] == [0 => 'value']      │ return [0 => 'value']         │
-  # │ source[field] == [0 => 'value', …]   │ return [0 => 'value', …]      │
-  # └──────────────────────────────────────┴───────────────────────────────┘
+  # ┌──────────────────────────────────────╥───────────────────────────────┐
+  # │ input value (undefined|string|array) ║ output value                  │
+  # ╞══════════════════════════════════════╬═══════════════════════════════╡
+  # │ source[field] == undefined           ║ return []                     │
+  # │ source[field] == ''                  ║ return [0 => '']              │
+  # │ source[field] == 'value'             ║ return [0 => 'value']         │
+  # ├──────────────────────────────────────╫───────────────────────────────┤
+  # │ source[field] == [0 => '']           ║ return [0 => '']              │
+  # │ source[field] == [0 => '', …]        ║ return [0 => '', …]           │
+  # │ source[field] == [0 => 'value']      ║ return [0 => 'value']         │
+  # │ source[field] == [0 => 'value', …]   ║ return [0 => 'value', …]      │
+  # └──────────────────────────────────────╨───────────────────────────────┘
 
   static function request_values_get($name, $source = '_POST') {
     global ${$source};
@@ -275,15 +275,15 @@ namespace effcore {
   }
 
   # conversion matrix:
-  # ┌─────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────┐
-  # │ input value (undefined|array)                           │ output value                                                          │
-  # ╞═════════════════════════════════════════════════════════╪═══════════════════════════════════════════════════════════════════════╡
-  # │ $_FILES[field] == undefined                             │ return []                                                             │
-  # │ $_FILES[field] == [error = 4]                           │ return []                                                             │
-  # │ $_FILES[field] == [name = 'file']                       │ return [0 => (object)[name = 'file']]                                 │
-  # │ $_FILES[field] == [name = [0 => 'file']]                │ return [0 => (object)[name = 'file']]                                 │
-  # │ $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] │ return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']] │
-  # └─────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────┘
+  # ┌─────────────────────────────────────────────────────────╥───────────────────────────────────────────────────────────────────────┐
+  # │ input value (undefined|array)                           ║ output value                                                          │
+  # ╞═════════════════════════════════════════════════════════╬═══════════════════════════════════════════════════════════════════════╡
+  # │ $_FILES[field] == undefined                             ║ return []                                                             │
+  # │ $_FILES[field] == [error = 4]                           ║ return []                                                             │
+  # │ $_FILES[field] == [name = 'file']                       ║ return [0 => (object)[name = 'file']]                                 │
+  # │ $_FILES[field] == [name = [0 => 'file']]                ║ return [0 => (object)[name = 'file']]                                 │
+  # │ $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] ║ return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']] │
+  # └─────────────────────────────────────────────────────────╨───────────────────────────────────────────────────────────────────────┘
 
   static function request_files_get($name) {
     $return = [];
