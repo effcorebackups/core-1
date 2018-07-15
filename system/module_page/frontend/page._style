@@ -59,7 +59,7 @@
     background: url('images/logo._vector')}
 
   x-block.menu-user {float: right}
-  x-block.menu-user .avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: 0; vertical-align: top}
+  x-block.menu-user .avatar {width: 48px; height: 48px; margin: 0 0 0 5px; border: none; vertical-align: top}
   x-block.menu-user x-tree {display: none; padding: 2px; text-align: right}
   x-block.menu-user x-tree ul,
   x-block.menu-user x-tree li {list-style: none; margin: 0; padding: 0}
