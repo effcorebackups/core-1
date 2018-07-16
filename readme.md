@@ -78,6 +78,7 @@ Recommendation software for development
 - BoxySVG (mac|win) for working with SVG vector graphics.
 - Monodraw (mac) for working with pseudo-graphics.
 - ColorSnapper (mac) for pick the "right" colors.
+- RegExRX (mac|win) for improve your regular expressions.
 
 
 Security recommendations

@@ -55,7 +55,7 @@ namespace effcore {
   # 2. if the last character in the path is '/' - it's a directory, оtherwise - file
   # 3. path components like '../' should be ignored!
   # 4. path components like './' should be ignored!
-  # 5. the Windows file name should be converted to UNIX format!
+  # 5. the Windows file path should be convert to UNIX format!
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
