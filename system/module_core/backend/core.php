@@ -527,10 +527,10 @@ namespace effcore {
     $return = new \stdCLass;
   # detect Internet Explorer v.6-v.11
     $matches = [];
-    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5', '0' => '4', '0' => '3', '0' => '2', '0' => '1'];
+    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
     $ie_name_to_core = array_flip($ie_core_to_name);
-    preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>[0-9]+)|)'.
-                 '(?:.+?(?<core>Trident)/(?<core_v>[0-9]+)|)%', static::server_user_agent_get(), $matches);
+    preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>[0-9]{1,2})|)'.
+                 '(?:.+?(?<core>Trident)/(?<core_v>[0-9]{1,2})|)%', static::server_user_agent_get(), $matches);
     $return->name         = isset($matches['name'])   ? $matches['name']   : '';
     $return->name_version = isset($matches['name_v']) ? $matches['name_v'] : '';
     $return->core         = isset($matches['core'])   ? $matches['core']   : '';
