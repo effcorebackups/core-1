@@ -505,29 +505,19 @@ namespace effcore {
            $_SERVER['REMOTE_ADDR'];
   }
 
-  static function server_user_agent_get() {
-    return $_SERVER['HTTP_USER_AGENT'];
-  }
-
   static function server_request_uri_get() {
     return $_SERVER['REQUEST_URI'];
   }
 
-  static function server_software_get() {
-    $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-z0-9-]+)/(?<version>[a-z0-9.]+))|'.
-                 '(?<full_name_unknown>.*)%i', $_SERVER['SERVER_SOFTWARE'], $matches);
-    return !empty($matches['full_name']) ?
-                  $matches['name'].' '.
-                  $matches['version'] :
-                  $matches['full_name_unknown'];
+  static function server_user_agent_get() {
+    return $_SERVER['HTTP_USER_AGENT'];
   }
 
-  static function server_browser_get() {
+  static function server_user_agent_info_get() {
     $return = new \stdCLass;
   # detect Internet Explorer v.6-v.11
     $matches = [];
-    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
+    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5', '0' => '4'];
     $ie_name_to_core = array_flip($ie_core_to_name);
     preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>[0-9]{1,2})|)'.
                  '(?:.+?(?<core>Trident)/(?<core_v>[0-9]{1,2})|)%', static::server_user_agent_get(), $matches);
@@ -538,6 +528,16 @@ namespace effcore {
     if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'MSIE';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
     if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'Trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
     return $return;
+  }
+
+  static function server_software_get() {
+    $matches = [];
+    preg_match('%^(?<full_name>(?<name>[a-z0-9-]+)/(?<version>[a-z0-9.]+))|'.
+                 '(?<full_name_unknown>.*)%i', $_SERVER['SERVER_SOFTWARE'], $matches);
+    return !empty($matches['full_name']) ?
+                  $matches['name'].' '.
+                  $matches['version'] :
+                  $matches['full_name_unknown'];
   }
 
   ########################

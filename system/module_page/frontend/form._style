@@ -1,4 +1,9 @@
 
+  /* IE demo cases */
+  html[data-browser="msie-6"],
+  html[data-browser="msie-7"],
+  html[data-browser="msie-8"] {}
+
   /* form */
   form {margin: 70px 0}
   form .error {border-color: %%_color_error !important}
