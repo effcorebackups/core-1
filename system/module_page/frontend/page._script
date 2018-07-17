@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+  html = document.documentElement;
+  agent_name         = html.getAttribute('data-agent_name')         ? html.getAttribute('data-agent_name')         : '';
+  agent_version      = html.getAttribute('data-agent_version')      ? html.getAttribute('data-agent_version')      : '';
+  agent_core_name    = html.getAttribute('data-agent_core_name')    ? html.getAttribute('data-agent_core_name')    : '';
+  agent_core_version = html.getAttribute('data-agent_core_version') ? html.getAttribute('data-agent_core_version') : '';
+
   effcore = {};
   effcore.tokens = [];
   effcore.tokens['color_id'] = '%%_color_id';

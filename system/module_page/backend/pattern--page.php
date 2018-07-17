@@ -70,7 +70,20 @@ namespace effcore {
 
     timer::tap('total');
     $this->page_information_set();
-    $template->arg_set('attributes', core::data_to_attr(['lang' => language::current_get()]));
+
+    $browser = core::server_browser_get();
+    if ($browser->name == 'MSIE' &&
+        $browser->name_version < 9) {
+      message::insert(translation::get('Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning');
+    }
+
+    $attributes = [];
+    $attributes['lang'] = language::current_get();
+    if ($browser->name) $attributes['data-agent_name']         = $browser->name;
+    if ($browser->name) $attributes['data-agent_version']      = $browser->name_version;
+    if ($browser->core) $attributes['data-agent_core_name']    = $browser->core;
+    if ($browser->core) $attributes['data-agent_core_version'] = $browser->core_version;
+    $template->arg_set('attributes', core::data_to_attr($attributes));
     $template->arg_set('meta',         $frontend->meta->render());
     $template->arg_set('head_styles',  $frontend->styles->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
