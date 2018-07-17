@@ -2,5 +2,5 @@ module|module
   id: page
   title: Page
   description: Module for working with pages.
-  version: 1.00
+  version: 1.000
   state: always_on

@@ -41,11 +41,11 @@ namespace effcore {
   static function format_timestamp($timestamp)            {return \DateTime::createFromFormat('U',           $timestamp                         )->setTimezone(new \DateTimeZone( static::settings_get()->timezone ))->format( static::settings_get()->format_datetime );}
   static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
   static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
-  static function format_version($number)                 {return static::format_number(floatval($number), 2);}
+  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
   static function format_number($number, $precision = 0, $dec_point = null, $thousands = null, $no_zeros = true) {
-    $dec_point = is_null($dec_point) ? static::settings_get()->decimal_point       : $dec_point;
-    $thousands = is_null($thousands) ? static::settings_get()->thousands_separator : $thousands;
+    $dec_point = $dec_point === null ? static::settings_get()->decimal_point       : $dec_point;
+    $thousands = $thousands === null ? static::settings_get()->thousands_separator : $thousands;
     return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
 

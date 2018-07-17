@@ -68,9 +68,9 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'Server timezone'));
     $info->child_insert(new markup('dd', [], date_default_timezone_get()));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
-    $info->child_insert(new markup('dd', [], 'no'));
+    $info->child_insert(new markup('dd', [], 'not applicable'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
-    $info->child_insert(new markup('dd', [], 'no'));
+    $info->child_insert(new markup('dd', [], 'not applicable'));
     return new node([], [$title, $info]);
   }
 

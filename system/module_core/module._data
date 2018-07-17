@@ -2,5 +2,5 @@ module|module
   id: core
   title: Core
   description: Main system module.
-  version: 1.00
+  version: 1.000
   state: always_on

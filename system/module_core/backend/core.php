@@ -478,17 +478,17 @@ namespace effcore {
   ### server information ###
   ##########################
 
-  # ┌─────────────────╥───────┬────────────────┬────────┐
-  # │        ╲  modes ║       │                │        │
-  # │ server  ╲       ║ HTTPS │ REQUEST_SCHEME │ result │
-  # ╞═════════════════╬═══════╪════════════════╪════════╡
-  # │ Apache v2.4     ║ -     │ http           │ http   │
-  # │ Apache v2.4 SSL ║ on    │ https          │ https  │
-  # │ NGINX  v1.1     ║ -     │ http           │ http   │
-  # │ NGINX  v1.1 SSL ║ on    │ https          │ https  │
-  # │ IIS    v7.5     ║ off   │ -              │ http   │
-  # │ IIS    v7.5 SSL ║ on    │ -              │ https  │
-  # └─────────────────╨───────┴────────────────┴────────┘
+  # ┌─────────────────╥───────┬────────────────╥────────┐
+  # │        ╲  modes ║       │                ║        │
+  # │ server  ╲       ║ HTTPS │ REQUEST_SCHEME ║ result │
+  # ╞═════════════════╬═══════╪════════════════╬════════╡
+  # │ Apache v2.4     ║ -     │ http           ║ http   │
+  # │ Apache v2.4 SSL ║ on    │ https          ║ https  │
+  # │ NGINX  v1.1     ║ -     │ http           ║ http   │
+  # │ NGINX  v1.1 SSL ║ on    │ https          ║ https  │
+  # │ IIS    v7.5     ║ off   │ -              ║ http   │
+  # │ IIS    v7.5 SSL ║ on    │ -              ║ https  │
+  # └─────────────────╨───────┴────────────────╨────────┘
 
   static function server_request_scheme_get() {
     if (isset($_SERVER['REQUEST_SCHEME']))                     return $_SERVER['REQUEST_SCHEME'];
@@ -521,6 +521,23 @@ namespace effcore {
                   $matches['name'].' '.
                   $matches['version'] :
                   $matches['full_name_unknown'];
+  }
+
+  static function server_browser_get() {
+    $return = new \stdCLass;
+  # detect Internet Explorer v.6-v.11
+    $matches = [];
+    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6'];
+    $ie_name_to_core = array_flip($ie_core_to_name);
+    preg_match('%^(?:.+?(?<name>MSIE) (?<name_v>6|7|8|9|10|11)|)'.
+                 '(?:.+?(?<core>Trident)/(?<core_v>2|3|4|5|6|7|8)|)%', static::server_user_agent_get(), $matches);
+    $return->name         = isset($matches['name'])   ? $matches['name']   : '';
+    $return->name_version = isset($matches['name_v']) ? $matches['name_v'] : '';
+    $return->core         = isset($matches['core'])   ? $matches['core']   : '';
+    $return->core_version = isset($matches['core_v']) ? $matches['core_v'] : '';
+    if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'MSIE';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
+    if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'Trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
+    return $return;
   }
 
   ########################
