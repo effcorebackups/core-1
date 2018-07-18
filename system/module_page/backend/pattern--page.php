@@ -72,7 +72,7 @@ namespace effcore {
     $this->page_information_set();
 
     $browser = core::server_user_agent_info_get();
-    if ($browser->name == 'MSIE' &&
+    if ($browser->name == 'msie' &&
         $browser->name_version < 9) {
       message::insert(translation::get(
         'Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning'

@@ -516,17 +516,18 @@ namespace effcore {
   static function server_user_agent_info_get() {
     $return = new \stdCLass;
   # detect Internet Explorer v.6-v.11
+  # note: unexist version like "12" will be identified as "1"
     $matches = [];
-    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5', '0' => '4'];
+    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
     $ie_name_to_core = array_flip($ie_core_to_name);
-    preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>[0-9]{1,2})|)'.
-                 '(?:.+?(?<core>Trident)/(?<core_v>[0-9]{1,2})|)%', static::server_user_agent_get(), $matches);
-    $return->name         = isset($matches['name'])   ? $matches['name']   : '';
-    $return->name_version = isset($matches['name_v']) ? $matches['name_v'] : '';
-    $return->core         = isset($matches['core'])   ? $matches['core']   : '';
+    preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>11|10|9|8|7|6|5|4|3|2|1)|)'.
+                 '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::server_user_agent_get(), $matches);
+    $return->name = isset($matches['name']) ? strtolower($matches['name']) : '';
+    $return->core = isset($matches['core']) ? strtolower($matches['core']) : '';
     $return->core_version = isset($matches['core_v']) ? $matches['core_v'] : '';
-    if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'MSIE';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
-    if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'Trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
+    $return->name_version = isset($matches['name_v']) ? $matches['name_v'] : '';
+    if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'msie';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
+    if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
     return $return;
   }
 
