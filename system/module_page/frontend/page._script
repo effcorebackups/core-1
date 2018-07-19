@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   html = document.documentElement;
-  browser      = html.getAttribute('data-browser')      ? html.getAttribute('data-browser')      : '';
-  browser_core = html.getAttribute('data-browser_core') ? html.getAttribute('data-browser_core') : '';
+  uagent = html.getAttribute('data-uagent') ? html.getAttribute('data-uagent') : '';
+  uacore = html.getAttribute('data-uacore') ? html.getAttribute('data-uacore') : '';
 
   effcore = {};
   effcore.tokens = [];

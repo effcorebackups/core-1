@@ -1,9 +1,4 @@
 
-  /* IE demo cases */
-  html[data-browser="msie-6"],
-  html[data-browser="msie-7"],
-  html[data-browser="msie-8"] {}
-
   /* form */
   form {margin: 70px 0}
   form .error {border-color: %%_color_error !important}
@@ -16,11 +11,15 @@
 
   /* form fields */
   x-field {display: block; margin: 20px 0}
-  x-field label b.required {margin-left: .2em; font-size: 1.1em; color: %%_color_error}
   x-field label, x-group x-title {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
+
+  b.required {
+    margin-left: .2em;
+    font-size: 1.1em;
+    color: %%_color_error}
 
   /* inputs */
   input,
@@ -122,3 +121,8 @@
   /* particular cases */
   form#user_delete,
   form#logout {width: 340px; margin: 100px auto}
+
+  /* IE adaptation */
+  html[data-uagent^="msie"] input[type="checkbox"],
+  html[data-uagent^="msie"] input[type="radio"] {padding: 4px}
+  html[data-uagent^="msie"] input[data-expander="description"] {padding: 0; width: 10px}

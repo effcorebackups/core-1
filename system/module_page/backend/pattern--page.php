@@ -71,9 +71,9 @@ namespace effcore {
     timer::tap('total');
     $this->page_information_set();
 
-    $browser = core::server_user_agent_info_get();
-    if ($browser->name == 'msie' &&
-        $browser->name_version < 9) {
+    $user_agent = core::server_user_agent_info_get();
+    if ($user_agent->name == 'msie' &&
+        $user_agent->name_version < 9) {
       message::insert(translation::get(
         'Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning'
       );
@@ -81,8 +81,10 @@ namespace effcore {
 
     $attributes = [];
     $attributes['lang'] = language::current_get();
-    if ($browser->name) $attributes['data-browser']      = strtolower($browser->name.'-'.$browser->name_version);
-    if ($browser->core) $attributes['data-browser_core'] = strtolower($browser->core.'-'.$browser->core_version);
+    if ($user_agent->name) $attributes['data-uagent'] = strtolower($user_agent->name.'-'.$user_agent->name_version);
+    if ($user_agent->core) $attributes['data-uacore'] = strtolower($user_agent->core.'-'.$user_agent->core_version);
+    if ($user_agent->name == 'msie') $frontend->meta->child_insert(new markup_simple('meta', ['http-equiv' => 'X-UA-Compatible', 'content' => 'IE=10']));
+    $frontend->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
     $template->arg_set('attributes', core::data_to_attr($attributes));
     $template->arg_set('meta',         $frontend->meta->render());
     $template->arg_set('head_styles',  $frontend->styles->render());
@@ -105,7 +107,7 @@ namespace effcore {
     $return->meta    = new node();
     $return->styles  = new node();
     $return->scripts = new node();
-    $return->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
+    $return->meta    = new node();
     foreach (static::frontend_all_get() as $c_row_id => $c_item) {
       if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_item->display))) {
