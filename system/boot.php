@@ -87,13 +87,13 @@ namespace effcore {
         }
 
       # send headers and data to the output buffer
-        header('Content-Length: '.strlen($data), true);
+        header('Content-Length: '.strlen($data));
         header('Accept-Ranges: none');
-        header('Cache-Control: must-revalidate, private', true);
-        header('Etag: '.$etag, true);
+        header('Cache-Control: must-revalidate, private');
+        header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
-            header($c_key.': '.$c_value, true);
+            header($c_key.': '.$c_value);
           }
         }
         print $data;
@@ -104,11 +104,12 @@ namespace effcore {
     # case for any other file (and for large files too)
     # ─────────────────────────────────────────────────────────────────────
       } else {
-        header('Content-Length: '.filesize($path), true);
+        header('Content-Length: '.filesize($path));
         header('Accept-Ranges: none');
+        header('Cache-Control: must-revalidate, private');
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
-            header($c_key.': '.$c_value, true);
+            header($c_key.': '.$c_value);
           }
         }
         if ($file = fopen($path, 'rb')) {
@@ -136,7 +137,7 @@ namespace effcore {
       $output.= str_replace(nl.nl, '', $c_result);
     }
   }
-  header('Content-Length: '.strlen($output), true);
+  header('Content-Length: '.strlen($output));
   print $output;
   console::log_store();
   exit();
