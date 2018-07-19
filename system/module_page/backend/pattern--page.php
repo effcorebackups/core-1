@@ -83,7 +83,7 @@ namespace effcore {
     $attributes['lang'] = language::current_get();
     if ($user_agent->name) $attributes['data-uagent'] = strtolower($user_agent->name.'-'.$user_agent->name_version);
     if ($user_agent->core) $attributes['data-uacore'] = strtolower($user_agent->core.'-'.$user_agent->core_version);
-    if ($user_agent->name == 'msie') $frontend->meta->child_insert(new markup_simple('meta', ['http-equiv' => 'X-UA-Compatible', 'content' => 'IE=10']));
+    if ($user_agent->name == 'msie') header('X-UA-Compatible: IE=10');
     $frontend->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
     $template->arg_set('attributes', core::data_to_attr($attributes));
     $template->arg_set('meta',         $frontend->meta->render());
