@@ -12,6 +12,7 @@ namespace effcore {
   public $https;
   public $display;
   public $access;
+  public $charset = 'utf-8';
   public $content = [];
   protected $args = [];
   protected $used_dpaths = [];
@@ -84,7 +85,7 @@ namespace effcore {
     if ($user_agent->name) $attributes['data-uagent'] = strtolower($user_agent->name.'-'.$user_agent->name_version);
     if ($user_agent->core) $attributes['data-uacore'] = strtolower($user_agent->core.'-'.$user_agent->core_version);
     if ($user_agent->name == 'msie') header('X-UA-Compatible: IE=10');
-    $frontend->meta->child_insert(new markup_simple('meta', ['charset' => 'utf-8']));
+    $frontend->meta->child_insert(new markup_simple('meta', ['charset' => $this->charset]));
     $template->arg_set('attributes', core::data_to_attr($attributes));
     $template->arg_set('meta',         $frontend->meta->render());
     $template->arg_set('head_styles',  $frontend->styles->render());
