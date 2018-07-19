@@ -35,6 +35,7 @@ file_types
     use_tokens: 1
     headers
     - Content-type: text/css
+    - X-Content-Type-Options: nosniff
 # ─────────────────────────────────────────────────────────────────────
 # other types
 # ─────────────────────────────────────────────────────────────────────
@@ -86,6 +87,7 @@ file_types
     type: css
     headers
     - Content-type: text/css
+    - X-Content-Type-Options: nosniff
 - der
     type: der
     headers
@@ -170,6 +172,7 @@ file_types
     type: js
     headers
     - Content-type: application/javascript
+    - X-Content-Type-Options: nosniff
 - keynote
     type: keynote
     headers
