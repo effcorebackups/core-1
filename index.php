@@ -7,9 +7,9 @@
   if (version_compare(phpversion(), '5.6.0', '<')) {
     print 'Current version of PHP is '.phpversion().'. Required version 5.6.0+';
   } else {
-    $base_dir = DIRECTORY_SEPARATOR == '\\' ? str_replace('\\', '/', __DIR__) : __DIR__;
-    define('effcore\\dir_root',    $base_dir.'/');
-    define('effcore\\dir_dynamic', $base_dir.'/dynamic/');
-    define('effcore\\dir_system',  $base_dir.'/system/');
+    $www_root = DIRECTORY_SEPARATOR == '\\' ? str_replace('\\', '/', __DIR__) : __DIR__;
+    define('effcore\\dir_root',    $www_root.'/');
+    define('effcore\\dir_dynamic', $www_root.'/dynamic/');
+    define('effcore\\dir_system',  $www_root.'/system/');
     require_once('system/boot.php');
   }

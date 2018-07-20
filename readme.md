@@ -7,7 +7,7 @@ Operating System:
 - UNIX (macOS, FreeBSD) [priority]
 - Linux
 - Windows
-Platform:
+Architecture:
 - x86
 - x64
 Web Server:
@@ -22,24 +22,30 @@ Storage system:
 - SQLite v3+
 
 
-Apache 2.4 requires the following modules:
-- php5_module|php7_module
-- rewrite_module
-- dir_module
-- mime_module
+Apache 2.4 requires:
+- enable module "php5_module"|"php7_module"
+- enable module "rewrite_module"
+- enable module "dir_module"
+- enable module "mime_module"
 If you got "500 Internal Server Error" see the Apache error log.
 
 
-Internet Information Services (IIS) v7.5+ requires:
-- install module "URL Rewrite" from IIS official site
-- in "Turn Windows features on or off" set option "IIS / WWW Services / Application Development Features / CGI"
-- in "Turn Windows features on or off" set option "IIS / WWW Services / Common HTTP Features / Static Content"
-- in "IIS Manager / Handler Mappings" add new "Module Mapping" with parameters: "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe"
-If you got "500 Internal Server Error" check web.config (section "rewrite").
+NGINX requires:
+- in ".nginx" (at the www root) replace placeholders (%%...) to real values
+- enable "php-fpm"
+If you got "502 Bad Gateway" check if php-fpm is running.
 
 
-PHP 5.6 requires the following modules:
-- php_pdo_sqlite|php_pdo_mysql
+IIS requires:
+- enable option "IIS ⇨ WWW Services ⇨ Application Development Features ⇨ CGI" in "Turn Windows features on or off"
+- enable option "IIS ⇨ WWW Services ⇨ Common HTTP Features ⇨ Static Content" in "Turn Windows features on or off"
+- add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager ⇨ Handler Mappings"
+- install the module "URL Rewrite" (from IIS official site)
+If you got "500 Internal Server Error" check "web.config" in www root (section "rewrite").
+
+
+PHP 5.6 requires:
+- enable module "php_pdo_sqlite"|"php_pdo_mysql"
 
 
 Git on Windows requires:
@@ -71,6 +77,7 @@ Recommendation software for development
 - Coda (mac) for working with code|markup|styles.
 - Tower (mac|win) for working git.
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup.
+- Rested (mac) for debug HTTP|S traffic.
 - Kaleidoscope (mac) for search differences in code.
 - SequelPro (mac) for working with MySQL databases.
 - Aster SQLite Manager (mac) for working with SQLite databases.

@@ -11,7 +11,7 @@ class DemoClassPsrNew
 
     public function mainMethod($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        # method body
     }
 
     public $PublicAttribute2;
