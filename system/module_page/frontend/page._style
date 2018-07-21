@@ -35,7 +35,7 @@
   x-body table tr:nth-child(even) td {background-color: %%_color_table_even_bg}
   x-body table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_border}
   x-body table tr td:empty {color: %%_color_table_noitems}
-  x-body table tr td:empty::after {content: "%%_text_no_items"}
+  x-body table tr td:empty::after {content: '%%_text_no_items'}
   x-body table td.actions {font-size: .85em; vertical-align: top; text-align: right}
 
   /* messages */

@@ -511,7 +511,7 @@ namespace effcore {
 
   static function server_user_agent_get() {
     return isset($_SERVER['HTTP_USER_AGENT']) ?
-                 $_SERVER['HTTP_USER_AGENT'] : '';
+          substr($_SERVER['HTTP_USER_AGENT'], 0, 240) : '';
   }
 
   static function server_user_agent_info_get() {
