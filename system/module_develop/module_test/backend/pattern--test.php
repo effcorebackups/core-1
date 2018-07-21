@@ -11,6 +11,17 @@ namespace effcore {
   public $id;
   public $scenario;
 
+  function run() {
+    foreach ($this->scenario as $c_step) {
+      switch ($c_step->type) {
+        case 'set'     : print ' set ';     break; # @todo: make functionality (name|value)
+        case 'request' : print ' request '; break; # @todo: make functionality (url|https)
+        case 'check'   : print ' check ';   break; # @todo: make functionality (where|match|on_success|on_failure)
+        case 'return'  : print ' return ';  break; # @todo: make functionality (value)
+      }
+    }
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -33,19 +44,9 @@ namespace effcore {
 
   static function get($id) {
     if (!isset(static::$cache[$id])) static::init();
-    return     static::$cache[$id];
-  }
-
-  static function run($id) {
-    $test = static::get($id);
-    foreach ($test->scenario as $c_step) {
-      switch ($c_step->type) {
-        case 'set'     : break; # @todo: make functionality (name|value)
-        case 'request' : break; # @todo: make functionality (url|https)
-        case 'check'   : break; # @todo: make functionality (where|match|on_success|on_failure)
-        case 'return'  : break; # @todo: make functionality (value)
-      }
-    }
+    if (static::$cache[$id] instanceof external_cache)
+        static::$cache[$id] = static::$cache[$id]->external_cache_load();
+    return static::$cache[$id];
   }
 
   static function request_send($url) {
