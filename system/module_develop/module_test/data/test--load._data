@@ -1,0 +1,25 @@
+tests
+- load|test
+    id: load
+    scenario
+    - request_page_login|step
+        type: request
+        url: /user/login
+        https: false
+    - response_check|step
+        type: check
+        where: response
+        match: 200
+        on_success
+        - request_page_registration|step
+            type: request
+            url: /user/registration
+            https: false
+        - response_check|step
+            type: check
+            where: response
+            match: 200
+            on_success
+            - return_result|step
+                type: return
+                value: true

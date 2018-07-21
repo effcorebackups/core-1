@@ -9,9 +9,7 @@ namespace effcore {
           implements has_external_cache {
 
   public $id;
-  public $https = false;
-  public $url;
-  public $id_user = 0;
+  public $scenario;
 
   ###########################
   ### static declarations ###
@@ -40,14 +38,12 @@ namespace effcore {
 
   static function run($id) {
     $test = static::get($id);
-    $is_https = $test->https;
-    $url = $test->url;
-    $id_user = $test->id_user;
-    foreach ($test->scenario as $c_action) {
-      switch ($c_action->action_type) {
-        case 'fill':   break; # @todo: make functionality
-        case 'submit': break; # @todo: make functionality
-        case 'check':  break; # @todo: make functionality
+    foreach ($test->scenario as $c_step) {
+      switch ($c_step->type) {
+        case 'set'     : break; # @todo: make functionality (name|value)
+        case 'request' : break; # @todo: make functionality (url|https)
+        case 'check'   : break; # @todo: make functionality (where|match|on_success|on_failure)
+        case 'return'  : break; # @todo: make functionality (value)
       }
     }
   }
