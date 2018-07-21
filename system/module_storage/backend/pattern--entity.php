@@ -105,34 +105,39 @@ namespace effcore {
     ];
   }
 
-  static function init($name = '') {
+  static function init() {
     static::$cache_orig = storage::get('files')->select('entities');
     foreach (static::$cache_orig as $c_module_id => $c_entities) {
       foreach ($c_entities as $c_row_id => $c_entity) {
-        if ($name == '' || (
-            $name && $name == $c_entity->name)) {
-          if ($c_entity instanceof external_cache)
-              $c_entity = $c_entity->external_cache_load();
-          if (isset(static::$cache[$c_entity->name])) console::log_about_duplicate_add('entity', $c_entity->name);
-          static::$cache[$c_entity->name] = $c_entity;
-          static::$cache[$c_entity->name]->module_id = $c_module_id;
-        }
+        if (isset(static::$cache[$c_entity->name])) console::log_about_duplicate_add('entity', $c_entity->name);
+        static::$cache[$c_entity->name] = $c_entity;
+        static::$cache[$c_entity->name]->module_id = $c_module_id;
       }
     }
   }
 
-  static function get($name) {
-    if (!isset(static::$cache[$name])) static::init($name);
-    return     static::$cache[$name];
+  static function get($name, $load = true) {
+    if (!isset(static::$cache)) static::init();
+    if (static::$cache[$name] instanceof external_cache && $load)
+        static::$cache[$name] = static::$cache[$name]->external_cache_load();
+    return static::$cache[$name];
   }
 
-  static function all_get() {
-    if   (!static::$cache) static::init();
+  static function all_get($load = true) {
+    if (!static::$cache) static::init();
+    if ($load)
+      foreach (static::$cache as &$c_item)
+        if ($c_item instanceof external_cache && $load)
+            $c_item = $c_item->external_cache_load();
     return static::$cache;
   }
 
-  static function all_by_module_get($module) {
-    if   (!static::$cache_orig) static::init();
+  static function all_by_module_get($module, $load = true) {
+    if (!static::$cache_orig) static::init();
+    if ($load)
+      foreach (static::$cache_orig[$module] as &$c_item)
+        if ($c_item instanceof external_cache && $load)
+            $c_item = $c_item->external_cache_load();
     return static::$cache_orig[$module];
   }
 

@@ -64,7 +64,7 @@ namespace effcore {
     }
 
   # render
-    $frontend = $this->frontend_get();
+    $frontend = $this->frontend_markup_get();
     $template = new template('page');
     foreach ($contents->children_select() as $c_region => $c_blocks) {
       $template->arg_set($c_region, $c_blocks->render());
@@ -109,7 +109,7 @@ namespace effcore {
     console::information_add('Current language', language::current_get());
   }
 
-  function frontend_get() {
+  function frontend_markup_get() {
     $return = new \stdClass;
     $return->meta    = new node();
     $return->styles  = new node();
@@ -198,9 +198,25 @@ namespace effcore {
     return static::$current;
   }
 
-  static function all_get() {
-    if   (!static::$cache) static::init();
+  static function get($row_id, $load = true) {
+    if (!static::$cache) static::init();
+    if (static::$cache[$row_id] instanceof external_cache && $load)
+        static::$cache[$row_id] = static::$cache[$row_id]->external_cache_load();
+    return static::$cache[$row_id];
+  }
+
+  static function all_get($load = true) {
+    if (!static::$cache) static::init();
+    if ($load)
+      foreach (static::$cache as &$c_item)
+        if ($c_item instanceof external_cache && $load)
+            $c_item = $c_item->external_cache_load();
     return static::$cache;
+  }
+
+  static function frontend_get($row_id) {
+    if   (!static::$cache_frontend) static::init();
+    return static::$cache_frontend[$row_id];
   }
 
   static function frontend_all_get() {
@@ -231,7 +247,7 @@ namespace effcore {
   }
 
   static function find_and_render() {
-    foreach (static::all_get() as $c_page) {
+    foreach (static::all_get(false) as $c_page) {
       $c_args = static::is_displayed_by_current_url($c_page->display);
       if (is_array($c_args)) {
         if (!isset($c_page->access) ||
