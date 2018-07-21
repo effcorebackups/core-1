@@ -20,7 +20,7 @@ namespace effcore {
   }
 
   static function get($row_id) {
-    if   (!static::$cache) static::init();
+    if (!static::$cache) static::init();
     return isset(static::$cache[$row_id]) ?
                  static::$cache[$row_id] : null;
   }

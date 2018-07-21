@@ -31,9 +31,9 @@ namespace effcore {
     static::$cache = storage::get('files')->select('module');
   }
 
-  static function get($module_id) {
+  static function get($id) {
     if   (!static::$cache) static::init();
-    return static::$cache[$module_id];
+    return static::$cache[$id];
   }
 
   static function all_get() {
