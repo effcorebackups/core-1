@@ -8,8 +8,8 @@ pages
       match: %^/user/(?<id_user>[0-9]+)/edit$%
     access
       roles
-      - admins: admins
-      - registered: registered
+      - =: admins
+      - =: registered
     content
     - check_access_user_edit
         region: head

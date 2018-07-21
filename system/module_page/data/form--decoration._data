@@ -2,8 +2,8 @@ forms
 - decoration|form
     attributes
     - id: decoration
-    - novalidate: novalidate
     - method: post
+    - =: novalidate
     children
     - colors|container
         tag_name: fieldset
@@ -13,13 +13,13 @@ forms
         - color_id|group_palette
             title: Color
             attributes
-            - required: required
+            - =: required
             element_attributes
             - name: color_id
         - color_bg_id|group_palette
             title: Background color
             attributes
-            - required: required
+            - =: required
             element_attributes
             - name: color_bg_id
     - button_save|markup
@@ -37,7 +37,7 @@ forms
         - type: submit
         - name: button
         - value: restore
-        - disabled: disabled
+        - =: disabled
         children
         - label|text
             text: restore

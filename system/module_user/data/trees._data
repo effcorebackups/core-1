@@ -5,13 +5,13 @@ trees
     weight: 0
     attributes
     - class
-      - user: user
-      - user-anonymous: user-anonymous
+      - =: user
+      - =: user-anonymous
 - user_logged_in|tree
     id: user_logged_in
     title: User authenticated menu
     weight: 0
     attributes
     - class
-      - user: user
-      - user-logged_in: user-logged_in
+      - =: user
+      - =: user-logged_in

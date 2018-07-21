@@ -2,8 +2,8 @@ forms
 - user_delete|form
     attributes
     - id: user_delete
-    - novalidate: novalidate
     - method: post
+    - =: novalidate
     children
     - button_delete|markup
         tag_name: button

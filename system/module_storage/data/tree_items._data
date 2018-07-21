@@ -5,8 +5,8 @@ tree_items
     title: Instances
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /manage/instances/users/select
     - class
-      - instances: instances
+      - =: instances

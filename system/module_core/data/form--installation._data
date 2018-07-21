@@ -2,8 +2,8 @@ forms
 - install|form
     attributes
     - id: install
-    - novalidate: novalidate
     - method: post
+    - =: novalidate
     children
     - storage|container
         tag_name: fieldset
@@ -15,7 +15,7 @@ forms
             title: MySQL
             attributes
             - class
-              - before-container: before-container
+              - =: before-container
             element_attributes
             - name: driver
             - value: mysql
@@ -68,7 +68,7 @@ forms
             title: SQLite
             attributes
             - class
-              - before-container: before-container
+              - =: before-container
             element_attributes
             - name: driver
             - value: sqlite

@@ -8,7 +8,7 @@ tabs_items
     title: Classes
     attributes
     - class
-      - class: class
+      - =: class
 - class_list|tabs_item
     id: class_list
     id_parent: class
@@ -16,7 +16,7 @@ tabs_items
     title: List
     attributes
     - class
-      - list: list
+      - =: list
 - class_diagram|tabs_item
     id: class_diagram
     id_parent: class
@@ -24,7 +24,7 @@ tabs_items
     title: Diagram
     attributes
     - class
-      - diagram: diagram
+      - =: diagram
 - interface|tabs_item
     id: interface
     id_parent: structures
@@ -34,7 +34,7 @@ tabs_items
     title: Interfaces
     attributes
     - class
-      - interface: interface
+      - =: interface
 - trait|tabs_item
     id: trait
     id_parent: structures
@@ -44,4 +44,4 @@ tabs_items
     title: Traits
     attributes
     - class
-      - trait: trait
+      - =: trait

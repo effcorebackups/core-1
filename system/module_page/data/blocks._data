@@ -3,13 +3,13 @@ blocks
     tag_name: x-block
     attributes
     - class
-      - logo: logo
+      - =: logo
     children
     - link|markup
         tag_name: a
         attributes
         - class
-          - to_front: to_front
+          - =: to_front
         - href: /
         - title|text
             text: to front page

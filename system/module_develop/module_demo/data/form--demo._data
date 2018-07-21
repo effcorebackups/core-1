@@ -43,9 +43,9 @@ forms
 - demo|form
     attributes
     - id: demo
-    - novalidate: novalidate
     - enctype: multipart/form-data
     - method: post
+    - =: novalidate
     children
     - form_elements|container
         tag_name: fieldset
@@ -62,17 +62,17 @@ forms
               args
               - type: field_file
             allowed_types
-            - gif: gif
-            - jpeg: jpeg
-            - jpg: jpg
-            - png: png
+            - =: gif
+            - =: jpeg
+            - =: jpg
+            - =: png
             description|text
               text: Field %%_type.
               args
               - type: field_file
             element_attributes
             - name: file[]
-            - multiple: multiple
+            - =: multiple
       # field_text
         - text|field_text
             title: Text
@@ -140,7 +140,7 @@ forms
             element_attributes
             - name: email
             - value: test1@example.com,test2@example.com
-            - multiple: multiple
+            - =: multiple
       # field_number
         - number|field_number
             title: Number
@@ -244,9 +244,9 @@ forms
                 values
                 - option_4: Option 4
             selected
-            - option_1: option_1
+            - =: option_1
             disabled
-            - option_2: option_2
+            - =: option_2
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
@@ -265,7 +265,7 @@ forms
                 element_attributes
                 - name: checkbox
                 - value: checkbox
-                - checked: checked
+                - =: checked
           # group_checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
@@ -281,11 +281,11 @@ forms
                 - checkboxes_3: Checkbox 3 (disabled)
                 - checkboxes_4: Checkbox 4 (disabled + checked)
                 disabled
-                - checkboxes_3: checkboxes_3
-                - checkboxes_4: checkboxes_4
+                - =: checkboxes_3
+                - =: checkboxes_4
                 checked
-                - checkboxes_2: checkboxes_2
-                - checkboxes_4: checkboxes_4
+                - =: checkboxes_2
+                - =: checkboxes_4
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
@@ -318,9 +318,9 @@ forms
                 - radiobuttons_2: Radiobutton 2 (checked)
                 - radiobuttons_3: Radiobutton 3 (disabled)
                 disabled
-                - radiobuttons_3: radiobuttons_3
+                - =: radiobuttons_3
                 checked
-                - radiobuttons_2: radiobuttons_2
+                - =: radiobuttons_2
           # group_palette
             - palette|group_palette
                 title: Color

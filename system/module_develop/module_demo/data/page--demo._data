@@ -8,7 +8,7 @@ pages
       match: %^/develop/demo$%
     access
       roles
-      - admins: admins
+      - =: admins
     content
     - block_menu_main
         region: main_menu

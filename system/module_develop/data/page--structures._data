@@ -8,7 +8,7 @@ pages
       match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagram|diagram_export)$%
     access
       roles
-      - admins: admins
+      - =: admins
     content
     - block_menu_main
         region: main_menu

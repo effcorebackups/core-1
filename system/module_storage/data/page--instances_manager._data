@@ -8,7 +8,7 @@ pages
       match: %^(?<base>/manage/instances/(?<entity>[a-z_]+))/(?<action>[a-z]+)(/(?<id_user>[a-z0-9]+)|)$%
     access
       roles
-      - admins: admins
+      - =: admins
     content
     - block_menu_main
         region: main_menu

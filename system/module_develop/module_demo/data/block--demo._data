@@ -3,7 +3,7 @@ blocks
     tag_name: x-block
     attributes
     - class
-      - demo: demo
+      - =: demo
     children
   # title
     - block_title|markup
@@ -275,9 +275,9 @@ blocks
                         - demo_actions_list|control_actions_list
                             attributes
                             - class
-                              - demo-actions-list: demo-actions-list
+                              - =: demo-actions-list
                             actions
-                            - edit: edit
-                            - delete: delete
+                            - =: edit
+                            - =: delete
                             active
-                            - edit: edit
+                            - =: edit

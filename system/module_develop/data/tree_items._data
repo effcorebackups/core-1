@@ -7,18 +7,18 @@ tree_items
     weight: 100
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - class
-      - develop: develop
+      - =: develop
 - structures|tree_item
     id: structures
     id_parent: develop
     title: Structures
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /develop/structures/class/list
     - class
-      - structures: structures
+      - =: structures

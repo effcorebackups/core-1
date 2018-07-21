@@ -18,7 +18,7 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id
 - tree_item|entity
     name: tree_item
     storage_id: main
@@ -45,4 +45,4 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id

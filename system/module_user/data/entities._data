@@ -19,7 +19,7 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id
 - relation_role_ws_permission|entity
     name: relation_role_ws_permission
     storage_id: main
@@ -40,8 +40,8 @@ entities
     - key_id
         type: primary key
         fields
-        - id_role: id_role
-        - id_permission: id_permission
+        - =: id_role
+        - =: id_permission
 - relation_role_ws_user|entity
     name: relation_role_ws_user
     storage_id: main
@@ -61,8 +61,8 @@ entities
     - key_id
         type: primary key
         fields
-        - id_role: id_role
-        - id_user: id_user
+        - =: id_role
+        - =: id_user
 - role|entity
     name: role
     storage_id: main
@@ -87,7 +87,7 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id
 - session|entity
     name: session
     storage_id: main
@@ -118,7 +118,7 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id
 - user|entity
     name: user
     storage_id: main
@@ -152,12 +152,12 @@ entities
     - key_id
         type: primary key
         fields
-        - id: id
+        - =: id
     - key_email
         type: unique
         fields
-        - email: email
+        - =: email
     - key_nick
         type: unique
         fields
-        - nick: nick
+        - =: nick

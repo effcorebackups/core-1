@@ -2,8 +2,8 @@ forms
 - logout|form
     attributes
     - id: logout
-    - novalidate: novalidate
     - method: post
+    - =: novalidate
     children
     - button_logout|markup
         tag_name: button

@@ -5,4 +5,4 @@ trees
     weight: 0
     attributes
     - class
-      - main: main
+      - =: main

@@ -8,8 +8,8 @@ pages
       match: %^/user/(?<id_user>[0-9]+)$%
     access
       roles
-      - admins: admins
-      - registered: registered
+      - =: admins
+      - =: registered
     content
     - block_menu_main
         region: main_menu

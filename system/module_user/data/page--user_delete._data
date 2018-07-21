@@ -8,7 +8,7 @@ pages
       match: %^/manage/users/delete/(?<id_user>[0-9]+)$%
     access
       roles
-      - admins: admins
+      - =: admins
     content
     - check_access_user_delete
         region: head

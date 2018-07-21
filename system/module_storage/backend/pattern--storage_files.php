@@ -194,19 +194,21 @@ namespace effcore {
       $line_num++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
-    # ┌─────────────────────╥────────────────────────────────────────────────────┐
-    # │ valid strings       ║ description                                        │
-    # ╞═════════════════════╬════════════════════════════════════════════════════╡
-    # │ root                ║ root element                                       │
-    # │ - name: value       ║ root item     as null|string|float|integer|boolean │
-    # │   name: value       ║ root property as null|string|float|integer|boolean │
-    # │ - name              ║ root item     as array|object:stdClass             │
-    # │   name              ║ root property as array|object:stdClass             │
-    # │ - name|classname    ║ root item     as object:classname                  │
-    # │   name|classname    ║ root property as object:classname                  │
-    # │ - name|_empty_array ║ root item     as empty array                       │
-    # │   name|_empty_array ║ root property as empty array                       │
-    # └─────────────────────╨────────────────────────────────────────────────────┘
+    # ┌─────────────────────╥───────────────────────────────────────────────────────┐
+    # │ valid strings       ║ interpretation                                        │
+    # ╞═════════════════════╬═══════════════════════════════════════════════════════╡
+    # │ root                ║                                                       │
+    # │ - name: value       ║ root[name]  = value:null|string|float|integer|boolean │
+    # │   name: value       ║ root->name  = value:null|string|float|integer|boolean │
+    # │ - =: value          ║ root[value] = value:null|string|float|integer|boolean │
+    # │   =: value          ║ root->value = value:null|string|float|integer|boolean │
+    # │ - name              ║ root[name]  = new stdClass | […]                      │
+    # │   name              ║ root->name  = new stdClass | […]                      │
+    # │ - name|classname    ║ root[name]  = new classname                           │
+    # │   name|classname    ║ root->name  = new classname                           │
+    # │ - name|_empty_array ║ root[name]  = []                                      │
+    # │   name|_empty_array ║ root->name  = []                                      │
+    # └─────────────────────╨───────────────────────────────────────────────────────┘
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.
                    '(?<prefix>- |)'.
@@ -214,18 +216,20 @@ namespace effcore {
                    '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
                    '(?<value>.*)$%S', $c_line, $matches);
       if (strlen($matches['name'])) {
-        $c_depth = intval(strlen($matches['indent'].$matches['prefix']) / 2);
-        $matches['name'] = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+        $c_prefix    = $matches['prefix'];
+        $c_depth     = intval(strlen($matches['indent'].$c_prefix) / 2);
+        $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+        $c_delimiter = $matches['delimiter'];
+        $c_value     = $matches['value'];
+        if ($c_name == '=') $c_name = $c_value;
       # define each value
-        if ($matches['delimiter'] == ': ') {
-          $c_value = core::string_to_data(
-            $matches['value']
-          );
+        if ($c_delimiter == ': ') {
+          $c_value = core::string_to_data($c_value);
         } else {
-          if ($matches['value'] == '_empty_array') {
+          if ($c_value == '_empty_array') {
             $c_value = [];
           } else {
-            $c_class_name = $matches['value'] ? '\\effcore\\'.$matches['value'] : 'stdClass';
+            $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
             $c_is_pc = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
             $c_is_pi = $c_reflection->implementsInterface('\\effcore\\has_post_init');
@@ -238,10 +242,10 @@ namespace effcore {
           }
         }
       # add new item to tree
-        core::arrobj_value_insert($p[$c_depth-1], $matches['name'], $c_value);
-        $p[$c_depth] = &core::arrobj_value_select($p[$c_depth-1], $matches['name']);
+        core::arrobj_value_insert($p[$c_depth-1], $c_name, $c_value);
+        $p[$c_depth] = &core::arrobj_value_select($p[$c_depth-1], $c_name);
       # convert parent item to array
-        if ($matches['prefix'] == '- ' && !is_array($p[$c_depth-1])) {
+        if ($c_prefix == '- ' && !is_array($p[$c_depth-1])) {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {

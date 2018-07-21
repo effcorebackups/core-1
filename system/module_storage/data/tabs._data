@@ -3,4 +3,4 @@ tabs
     id: instance_manage
     attributes
     - class
-      - instance-manage: instance-manage
+      - =: instance-manage

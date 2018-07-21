@@ -24,4 +24,4 @@ entities
     - key_id
         type: primary key
         fields
-        - ip_address: ip_address
+        - =: ip_address

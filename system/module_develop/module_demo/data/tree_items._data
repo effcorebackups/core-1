@@ -5,8 +5,8 @@ tree_items
     title: Demo
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /develop/demo
     - class
-      - demo: demo
+      - =: demo

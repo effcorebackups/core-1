@@ -3,4 +3,4 @@ tabs
     id: structures
     attributes
     - class
-      - structures: structures
+      - =: structures

@@ -2,8 +2,8 @@ forms
 - login|form
     attributes
     - id: login
-    - novalidate: novalidate
     - method: post
+    - =: novalidate
     children
     - credentials|container
         tag_name: fieldset
@@ -19,8 +19,8 @@ forms
             - remember: remember me
             - fixed_ip: on this ip
             checked
-            - remember: remember
-            - fixed_ip: fixed_ip
+            - =: remember
+            - =: fixed_ip
         - captcha|field_captcha
     - button_login|markup
         tag_name: button

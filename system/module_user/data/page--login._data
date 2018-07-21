@@ -8,7 +8,7 @@ pages
       match: %^/user/login$%
     access
       roles
-      - anonymous: anonymous
+      - =: anonymous
     content
     - block_menu_main
         region: main_menu

@@ -6,21 +6,21 @@ tree_items
     title: Management
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - class
-      - manage: manage
+      - =: manage
 - modules|tree_item
     id: modules
     id_parent: manage
     title: Modules
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /manage/modules
     - class
-      - modules: modules
+      - =: modules
 - info|tree_item
     id: info
     id_parent: manage
@@ -28,8 +28,8 @@ tree_items
     weight: 100
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /manage/info
     - class
-      - info: info
+      - =: info

@@ -2,9 +2,9 @@ forms
 - user_edit|form
     attributes
     - id: user_edit
-    - novalidate: novalidate
     - enctype: multipart/form-data
     - method: post
+    - =: novalidate
     children
     - credentials|container
         tag_name: fieldset
@@ -24,10 +24,10 @@ forms
             upload_dir: avatar/
             fixed_name: avatar-%%_id_user
             allowed_types
-            - gif: gif
-            - jpeg: jpeg
-            - jpg: jpg
-            - png: png
+            - =: gif
+            - =: jpeg
+            - =: jpg
+            - =: png
             element_attributes
             - name: avatar
         - password_new|field_password

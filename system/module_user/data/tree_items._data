@@ -7,11 +7,11 @@ tree_items
     weight: -20
     access
       roles
-      - anonymous: anonymous
+      - =: anonymous
     attributes
     - href: /user/login
     - class
-      - login: login
+      - =: login
 - registration|tree_item
     id: registration
     id_parent: user_anonymous
@@ -20,11 +20,11 @@ tree_items
     weight: -10
     access
       roles
-      - anonymous: anonymous
+      - =: anonymous
     attributes
     - href: /user/registration
     - class
-      - registration: registration
+      - =: registration
 # ─────────────────────────────────────────────────────────────────────
 - user_edit|tree_item
     id: user_edit
@@ -34,12 +34,12 @@ tree_items
     weight: -20
     access
       roles
-      - admins: admins
-      - registered: registered
+      - =: admins
+      - =: registered
     attributes
     - href: /user/%%_id_user/edit
     - class
-      - user-edit: user-edit
+      - =: user-edit
 - logout|tree_item
     id: logout
     id_parent: user_logged_in
@@ -48,11 +48,11 @@ tree_items
     weight: -10
     access
       roles
-      - registered: registered
+      - =: registered
     attributes
     - href: /user/logout
     - class
-      - logout: logout
+      - =: logout
 # ─────────────────────────────────────────────────────────────────────
 - roles|tree_item
     id: roles
@@ -60,8 +60,8 @@ tree_items
     title: Roles
     access
       roles
-      - admins: admins
+      - =: admins
     attributes
     - href: /manage/roles
     - class
-      - roles: roles
+      - =: roles

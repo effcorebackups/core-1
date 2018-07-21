@@ -53,7 +53,7 @@ entities
     - key_f_integer_1
         type: primary key
         fields
-        - f_integer_1: f_integer_1
+        - =: f_integer_1
 - demo_constraints|entity
     name: demo_constraints
     storage_id: main
@@ -75,14 +75,14 @@ entities
     - key_f_integer_1
         type: primary key
         fields
-        - f_integer_1: f_integer_1
+        - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name UNIQUE (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
     - key_f_integer_2
         type: unique
         fields
-        - f_integer_2: f_integer_2
+        - =: f_integer_2
 - demo_indexes|entity
     name: demo_indexes
     storage_id: main
@@ -104,11 +104,11 @@ entities
     - idx_f_integer_1
         type: index
         fields
-        - f_integer_1: f_integer_1
+        - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
     # CREATE UNIQUE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
     - idx_f_integer_2
         type: unique index
         fields
-        - f_integer_2: f_integer_2
+        - =: f_integer_2

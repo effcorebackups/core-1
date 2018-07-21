@@ -7,7 +7,7 @@ tabs_items
     title: Insert
     attributes
     - class
-      - insert: insert
+      - =: insert
 - select|tabs_item
     id: select
     id_parent: instance_manage
@@ -17,7 +17,7 @@ tabs_items
     weight: -10
     attributes
     - class
-      - select: select
+      - =: select
 - update|tabs_item
     id: update
     id_parent: instance_manage
@@ -26,7 +26,7 @@ tabs_items
     title: Update
     attributes
     - class
-      - update: update
+      - =: update
 - delete|tabs_item
     id: delete
     id_parent: instance_manage
@@ -35,4 +35,4 @@ tabs_items
     title: Delete
     attributes
     - class
-      - delete: delete
+      - =: delete
