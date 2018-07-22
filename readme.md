@@ -74,7 +74,8 @@ Web clients support
 Recommendation software for development
 ---------------------------------------------------------------------
 
-- Coda (mac) for working with code|markup|styles.
+- macOS Sierra and higher for using quality software and make development environment.
+- Coda (mac) for working with code|markup|styles and searching in the code.
 - Tower (mac|win) for working git.
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup.
 - Rested (mac) for debug HTTP|S traffic.
@@ -86,6 +87,8 @@ Recommendation software for development
 - Monodraw (mac) for working with pseudo-graphics.
 - ColorSnapper (mac) for pick the "right" colors.
 - RegExRX (mac|win) for improve your regular expressions.
+- VMWare Fusion Pro (mac) for working with virtual machines.
+- Find Any Files (mac) for searching in the code (p.s. Coda can search better).
 
 
 Security recommendations

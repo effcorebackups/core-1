@@ -126,7 +126,7 @@ namespace effcore\modules\develop {
                         '(?:function)\\s'.
                         '(?<name>'.$c_info->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-            $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('#(\\$)([a-z_])#i', '$2',
+            $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('%(\\$)([a-z_])%i', '$2',
                                 $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' ('.$c_defaults.')') :
                                                new text_simple($c_info->name.' ()');
