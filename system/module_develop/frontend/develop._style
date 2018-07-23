@@ -2,12 +2,10 @@
   x-console {display: block; max-width: 800px; margin: 100px auto 100px auto}
 
   /* logs */
-  table.logs {border-collapse: collapse; width: 100%; margin: 20px 0; font-size: .9em}
+  table.logs {border-collapse: collapse; width: 100%; margin: 20px 0}
   table.logs thead {border-bottom: 5px solid %%_color_bg}
-  table.logs thead th {padding: 12px 7px; font-weight: normal; font-size: 1.2em; text-align: left}
-  table.logs thead th:first-child {padding-left: 17px}
-  table.logs td {padding: 3px 7px; vertical-align: top}
-  table.logs td:first-child {padding-left: 17px}
+  table.logs thead th {font-weight: normal; font-size: 1.2em; text-align: left}
+  table.logs td {vertical-align: top}
 
   table.logs tr.autoload    {background-color: papayawhip}
   table.logs tr.file        {background-color: aliceblue}
@@ -31,6 +29,9 @@
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
   x-export-link {display: block; margin: 12px 0}
+
+  /* php modules usage list */
+  table.php_mod_usage td.file {width: 90%}
 
   /* x-structures-list */
   x-structures-list {display: block}

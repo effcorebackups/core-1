@@ -118,7 +118,7 @@ namespace effcore {
       ]);
     }
     return (
-      new table(['class' => ['logs' => 'logs']], $tbody, $thead)
+      new table(['class' => ['logs' => 'logs', 'compact' => 'compact']], $tbody, $thead)
     );
   }
 

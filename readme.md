@@ -45,7 +45,17 @@ If you got "500 Internal Server Error" check "web.config" in www root (section "
 
 
 PHP 5.6 requires:
-- enable module "php_pdo_sqlite"|"php_pdo_mysql"
+- enable module "SPL"
+- enable module "date"
+- enable module "fileinfo"
+- enable module "filter"
+- enable module "pcre"
+- enable module "standard"
+- enable module "pdo_sqlite"|"pdo_mysql"
+- enable module "SimpleXML" (for development)
+- enable module "curl" (for development)
+- enable module "json" (for development)
+- enable module "libxml" (for development)
 
 
 Git on Windows requires:
