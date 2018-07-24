@@ -10,11 +10,13 @@ namespace effcore\modules\develop {
           use \effcore\file;
           use \effcore\markup_simple;
           use \effcore\markup;
+          use \effcore\node;
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
           use \effcore\text_simple;
           use \effcore\text;
+          use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
@@ -65,9 +67,10 @@ namespace effcore\modules\develop {
         }
       }
     }
-    return (
-      new table(['class' => ['php_mod_usage' => 'php_mod_usage', 'compact' => 'compact']], $tbody, $thead)
-    );
+    return new markup('x-block', ['class' => ['php-mod-usage-list']], [
+      new markup('p', [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
+      new table(['class' => ['php-mod-usage' => 'php-mod-usage', 'compact' => 'compact']], $tbody, $thead)
+    ]);
   }
 
   ########################
@@ -75,8 +78,8 @@ namespace effcore\modules\develop {
   ########################
 
   static function on_show_block_structures_list($page) {
-    $list = new markup('x-structures-list', ['data-type' => $page->args_get('type')]);
     $targets = new markup('x-targets');
+    $list = new markup('x-structures-list', ['data-type' => $page->args_get('type')]);
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_map_get() as $c_item_full_name => $c_item_info) {
@@ -111,9 +114,10 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new markup('x-block', ['class' => ['structures-list']],
-      [$targets, $list]
-    );
+    return new markup('x-block', ['class' => ['structures-list']], [
+      new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
+      $targets, $list
+    ]);
   }
 
   ###########################
@@ -217,7 +221,8 @@ namespace effcore\modules\develop {
     $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
     return new markup('x-block', ['class' => ['structures-diagram']], [
       new markup('h2', [], 'UML Diagram'),
-      new markup('x-export-link', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
+      new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
+      new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'id' => 'show_expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),
       $diagram

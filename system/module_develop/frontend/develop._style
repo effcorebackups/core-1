@@ -25,8 +25,6 @@
   /* scale in any diagram */
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
-  x-export-link {display: block; margin: 12px 0}
-
   /* php modules usage list */
   table.php_mod_usage td.file {width: 90%}
 

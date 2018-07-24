@@ -97,5 +97,5 @@
   x-file-path x-file {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file_types._vector') no-repeat 0 -30px}
 
   /* menu with targets */
-  x-targets {display: block}
+  x-targets {display: block; margin: 50px 0}
   x-targets a {display: inline-block; margin: 2px 5px 2px 0; padding: 5px 10px; border: 1px solid lightgray}
