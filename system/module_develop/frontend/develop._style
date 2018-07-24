@@ -2,17 +2,14 @@
   x-console {display: block; max-width: 800px; margin: 100px auto 100px auto}
 
   /* logs */
-  table.logs {border-collapse: collapse; width: 100%; margin: 20px 0}
-  table.logs thead {border-bottom: 5px solid %%_color_bg}
-  table.logs thead th {font-weight: normal; font-size: 1.2em; text-align: left}
   table.logs td {vertical-align: top}
-
+  table.logs tr:nth-child(even)   td {background-color: transparent}
+  table.logs tr:nth-last-child(1) td {border-bottom: none}
   table.logs tr.autoload    {background-color: papayawhip}
   table.logs tr.file        {background-color: aliceblue}
   table.logs tr.event       {background-color: lavender}
   table.logs tr.storage     {background-color: honeydew}
   table.logs td.value-error {background-color: pink}
-  
   table.logs tr.query td.name {font-size: .9em}
 
   /* load diagram */
