@@ -107,6 +107,7 @@ namespace effcore {
     # headers
     # ─────────────────────────────────────────────────────────────────────
       $n_header = null;
+      $c_matches = [];
       if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
         if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_num-1]);
         if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_num-1]);
@@ -115,6 +116,7 @@ namespace effcore {
         if ($last_type == 'header')   $pool->child_delete($pool->child_select_last_id());
         if ($last_type == 'hr')       $pool->child_delete($pool->child_select_last_id());
       }
+      $c_matches = [];
       if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
         $n_header = new markup('h'.strlen($c_matches['marker']), [], $c_matches['return']);
       }
@@ -144,6 +146,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # lists
     # ─────────────────────────────────────────────────────────────────────
+      $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<noises>[ ]{1,})'.
@@ -190,6 +193,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # blockquotes
     # ─────────────────────────────────────────────────────────────────────
+      $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
@@ -232,6 +236,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # code (last prioruty)
     # ─────────────────────────────────────────────────────────────────────
+      $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<noises>[ ]{0,})'.
                        '(?<return>.*)$%S', $c_string, $c_matches)) {

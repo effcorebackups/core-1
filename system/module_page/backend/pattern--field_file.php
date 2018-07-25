@@ -15,8 +15,8 @@ namespace effcore {
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size;
-  public $max_lenght_name = 255 - 17 - 1 - 10; # = 255 - '-'.suffix - '.' - type
-  public $max_lenght_type = 10;
+  public $max_length_name = 255 - 17 - 1 - 10; # = 255 - '-'.suffix - '.' - type
+  public $max_length_type = 10;
   public $allowed_types = [];
   public $allowed_chars = 'a-z0-9_\\.\\-';
   public $upload_dir = '';
@@ -246,8 +246,8 @@ namespace effcore {
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_lenght_name) ?: core::random_part_get();
-      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_lenght_type);
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_length_name) ?: core::random_part_get();
+      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_length_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');
     # special case for IIS and Apache

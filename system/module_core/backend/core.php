@@ -320,6 +320,7 @@ namespace effcore {
   }
 
   static function validate_date($value) {
+    $matches = [];
     if (strlen($value) &&
         preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $value, $matches) &&
         checkdate($matches['m'],
@@ -351,8 +352,8 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-z0-9\\-\\+\\.]{1,100}$%i']]);
   }
 
-  static function validate_hash($value, $lenght = 32) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$lenght.'}$%']]); # 32 - md5 | 40 - sha1 | …
+  static function validate_hash($value, $length = 32) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
   }
 
   static function validate_email($value) {
@@ -367,7 +368,7 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_part($value, $allowed_chars, $max_lenght) {
+  static function sanitize_file_part($value, $allowed_chars, $max_length) {
     $value = trim($value, '.');
     $value = preg_replace_callback('%(?<char>[^'.$allowed_chars.'])%uiS', function($m) {
       if ($m['char'] == ' ') return '-';
@@ -376,7 +377,7 @@ namespace effcore {
       if (strlen($m['char']) == 3) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2]));
       if (strlen($m['char']) == 4) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2])).dechex(ord($m['char'][3]));
     }, $value);
-    return substr($value, 0, $max_lenght) ?: '';
+    return substr($value, 0, $max_length) ?: '';
   }
 
   ##############################

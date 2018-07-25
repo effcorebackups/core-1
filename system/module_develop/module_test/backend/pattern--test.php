@@ -14,10 +14,14 @@ namespace effcore {
   function run() {
     foreach ($this->scenario as $c_step) {
       switch ($c_step->type) {
-        case 'set'     : print ' set ';     break; # @todo: make functionality (name|value)
-        case 'request' : print ' request '; break; # @todo: make functionality (url|https)
-        case 'check'   : print ' check ';   break; # @todo: make functionality (where|match|on_success|on_failure)
-        case 'return'  : print ' return ';  break; # @todo: make functionality (value)
+        case 'set':
+          break;
+        case 'request':
+          break;
+        case 'check':
+          break;
+        case 'return':
+          break;
       }
     }
   }
@@ -49,24 +53,26 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function request_send($url) {
+  static function request($url, $headers = []) {
+    $return = ['info' => []];
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+    curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_SSLv3);
-    $data = curl_exec($curl);
-    $info = curl_getinfo($curl);
-    $info['simplexml'] = null;
+    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$return) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
+      if ($c_matches) $return['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
+      return strlen($c_header);
+    });
+    $return['data'] = ltrim(curl_exec($curl), chr(0xff).chr(0xfe));
+    $return['info'] = curl_getinfo($curl);
     curl_close($curl);
-    if ($data && $info['http_code'] == 200) {
-      libxml_use_internal_errors(true);
-      $simplexml = simplexml_load_string($data);
-      if ($simplexml) {
-        $info['simplexml'] = $simplexml;
-      }
-    }
-    return $info;
+    return $return;
   }
 
 }}

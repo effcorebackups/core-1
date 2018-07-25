@@ -36,6 +36,7 @@ namespace effcore\modules\develop {
     $statistic = [];
     $php_files = file::select_recursive(dir_root, '%^.*\\.php$%');
     foreach ($php_files as $c_file) {
+      $c_matches = [];
       preg_match_all('%(?<![a-z0-9_])(?<name>[a-z0-9_]+)\\(%isS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {
         foreach ($c_matches['name'] as $c_func) {
