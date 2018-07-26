@@ -36,7 +36,7 @@ NGINX requires:
 If you got "502 Bad Gateway" check if php-fpm is running.
 
 
-IIS requires:
+IIS requires (for v7.5):
 - enable option "IIS ⇨ WWW Services ⇨ Application Development Features ⇨ CGI" in "Turn Windows features on or off"
 - enable option "IIS ⇨ WWW Services ⇨ Common HTTP Features ⇨ Static Content" in "Turn Windows features on or off"
 - add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager ⇨ Handler Mappings"
@@ -52,10 +52,8 @@ PHP 5.6 requires:
 - enable module "pcre"
 - enable module "standard"
 - enable module "pdo_sqlite"|"pdo_mysql"
-- enable module "SimpleXML" (for development)
 - enable module "curl" (for development)
 - enable module "json" (for development)
-- enable module "libxml" (for development)
 
 
 Git on Windows requires:
@@ -81,7 +79,7 @@ Web clients support
 - Microsoft Edge.
 
 
-Recommendation software for development
+Recommended software for development
 ---------------------------------------------------------------------
 
 - macOS Sierra and higher for using quality software and make development environment.
@@ -117,5 +115,5 @@ Security recommendations
   and using different servers for each service.
 - We recommend to using the secure hardware crypto-processor for storing the private keys.
 - We recommend to using two-factor authentication.
-- We recommend to using TLS v1.1|1.2 or higher.
+- We recommend to using TLS v1.2 or higher.
 

@@ -12,15 +12,22 @@ namespace effcore {
   public $scenario;
 
   function run() {
+    $post = [];
     foreach ($this->scenario as $c_step) {
       switch ($c_step->type) {
         case 'set':
+        # @todo: make functionality
           break;
         case 'request':
+          $url = ($c_step->https ? 'https' : 'http').'://'.url::current_get()->domain.$c_step->url;
+          $result = test::request($url, [], $post);
+        # @todo: make functionality
           break;
         case 'check':
+        # @todo: make functionality
           break;
         case 'return':
+        # @todo: make functionality
           break;
       }
     }
@@ -53,23 +60,35 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function request($url, $headers = []) {
-    $return = ['info' => []];
+  static function request($url, $headers = [], $post = [], $proxy = '') {
+    $return = ['info' => [], 'headers' => []];
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_TIMEOUT, 5);
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_SSLv3);
+    curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
+  # prepare headers
     curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$return) {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
       if ($c_matches) $return['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
       return strlen($c_header);
     });
-    $return['data'] = ltrim(curl_exec($curl), chr(0xff).chr(0xfe));
+  # prepare post query
+    if ($post) {
+      curl_setopt($curl, CURLOPT_POST, true);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+    }
+  # prepare return
+    $data = curl_exec($curl);
+    $return['error_message'] = curl_error($curl);
+    $return['error_num'] = curl_errno($curl);
+    $return['data'] = $data ? ltrim($data, chr(0xff).chr(0xfe)) : '';
     $return['info'] = curl_getinfo($curl);
     curl_close($curl);
     return $return;

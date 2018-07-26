@@ -34,8 +34,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_show_info($page) {
-    $title = new markup('h2', [], 'Shared information'); # @todo: move title to block settings
+  static function on_show_block_info($page) {
     $info = new markup('dl', ['class' => ['info' => 'info']]);
     $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path_get().'frontend/images/logo-effcore._vector', 'alt' => 'effcore']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
@@ -71,10 +70,13 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], 'not applicable'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
-    return new node([], [$title, $info]);
+    return new markup('x-block', ['class' => ['info']], [
+      new markup('h2', [], 'Shared information'),
+      $info
+    ]);
   }
 
-  static function on_show_modules($page) {
+  static function on_show_block_modules($page) {
     $thead = [['Module information', 'State', '']];
     $tbody = [];
     foreach (module::all_get() as $c_module) {

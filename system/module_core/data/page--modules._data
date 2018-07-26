@@ -29,4 +29,4 @@ pages
     - block_modules
         region: content
         type: code
-        handler: \effcore\modules\core\events_page::on_show_modules
+        handler: \effcore\modules\core\events_page::on_show_block_modules
