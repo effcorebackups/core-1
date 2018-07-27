@@ -3,6 +3,7 @@ translations
     code: ru
     data
     - - select -: - выбрать -
+    - © 2017—2018 Maxim Rysevets. All rights reserved.: © 2017—2018 Рысевец Максим Владимирович. Все права защищены.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
     - Access denided: Доступ запрещен
     - action: действие
@@ -11,17 +12,14 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
-    - All rights reserved: Все права защищены
     - always_enabled: всегда_вкл
     - Anonymous: Аноним
     - Architecture: Архитектура
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
-    - Author: Автор
     - autoload: автозагрузка
     - Avatar: Аватар
     - avatar: аватар
     - Background color: Цвет фона
-    - Build years: Года выпуска
     - Bundle build number: Номер сборки пакета
     - button: кнопка
     - cache: кэш
@@ -41,6 +39,7 @@ translations
     - Colors: Цвета
     - Control elements: Элементы управления
     - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
+    - Copyright: Авторские права
     - Core: Ядро
     - created: создано
     - Created: Создано
@@ -152,7 +151,6 @@ translations
     - Main menu: Главное меню
     - Main system module.: Основной модуль системы.
     - Management: Управление
-    - Maxim Rysevets: Рысевец Максим Владимирович
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)

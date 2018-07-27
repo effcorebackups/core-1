@@ -2,25 +2,20 @@
   x-console {display: block; max-width: 800px; margin: 100px auto 100px auto}
 
   /* logs */
-  table.logs td {vertical-align: top}
-  table.logs tr:nth-child(even)   td {background-color: transparent}
-  table.logs tr:nth-last-child(1) td {border-bottom: none}
-  table.logs tr.autoload    {background-color: papayawhip}
-  table.logs tr.file        {background-color: aliceblue}
-  table.logs tr.event       {background-color: lavender}
-  table.logs tr.storage     {background-color: honeydew}
-  table.logs td.value-error {background-color: pink}
-  table.logs tr.query td.name {font-size: .9em}
+  x-block.logs td {vertical-align: top}
+  x-block.logs tr:nth-child(even)   td {background-color: transparent}
+  x-block.logs tr:nth-last-child(1) td {border-bottom: none}
+  x-block.logs tr.autoload    {background-color: papayawhip}
+  x-block.logs tr.file        {background-color: aliceblue}
+  x-block.logs tr.event       {background-color: lavender}
+  x-block.logs tr.storage     {background-color: honeydew}
+  x-block.logs td.value-error {background-color: pink}
+  x-block.logs tr.query td.name {font-size: .9em}
 
   /* load diagram */
-  dl.diagram-load {margin: 50px 0; padding: 30px; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
-  dl.diagram-load dt {margin: 0 10px 0 0; padding: 0; float: left; min-width: 290px; font-size: 1.2em; line-height: 1.2em; text-align: right}
-  dl.diagram-load dd {margin: 0 0 0 300px; padding: 0; font-size: .9em}
-
-  /* info block */
-  x-block.info dl {margin: 50px 0; padding: 5px 0; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
-  x-block.info dl dt {margin: 0 10px 0 0; padding: 3px 3px 3px 14px; float: left; min-width: 200px}
-  x-block.info dl dd {margin: 0 0 0 210px; padding: 3px}
+  x-block.diagram-load dl {margin: 50px 0; padding: 30px; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
+  x-block.diagram-load dl dt {margin: 0 10px 0 0; padding: 0; float: left; min-width: 290px; font-size: 1.2em; line-height: 1.2em; text-align: right}
+  x-block.diagram-load dl dd {margin: 0 0 0 300px; padding: 0; font-size: .9em}
 
   /* scale in any diagram */
   x-scale {display: block; height: 5px; background: %%_color_bg}

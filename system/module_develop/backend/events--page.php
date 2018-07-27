@@ -68,9 +68,9 @@ namespace effcore\modules\develop {
         }
       }
     }
-    return new markup('x-block', ['class' => ['php-mod-usage-list']], [
+    return new markup('x-block', ['class' => ['php-mod-usage-list' => 'php-mod-usage-list']], [
       new markup('p', [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
-      new table(['class' => ['php-mod-usage' => 'php-mod-usage', 'compact' => 'compact']], $tbody, $thead)
+      new table(['class' => ['compact' => 'compact']], $tbody, $thead)
     ]);
   }
 
@@ -115,7 +115,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new markup('x-block', ['class' => ['structures-list']], [
+    return new markup('x-block', ['class' => ['structures-list' => 'structures-list']], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       $targets, $list
     ]);
@@ -220,7 +220,7 @@ namespace effcore\modules\develop {
     }
 
     $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
-    return new markup('x-block', ['class' => ['structures-diagram']], [
+    return new markup('x-block', ['class' => ['structures-diagram' => 'structures-diagram']], [
       new markup('h2', [], 'UML Diagram'),
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),

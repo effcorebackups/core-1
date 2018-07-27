@@ -40,14 +40,10 @@ namespace effcore\modules\core {
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
+    $info->child_insert(new markup('dt', [], 'Copyright'));
+    $info->child_insert(new markup('dd', [], '© 2017—2018 Maxim Rysevets. All rights reserved.'));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
     $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/system/build')));
-    $info->child_insert(new markup('dt', [], 'Author'));
-    $info->child_insert(new markup('dd', [], 'Maxim Rysevets'));
-    $info->child_insert(new markup('dt', [], 'Build years'));
-    $info->child_insert(new markup('dd', [], '2017—2018'));
-    $info->child_insert(new markup('dt', [], 'All rights reserved'));
-    $info->child_insert(new markup('dd', [], 'yes'));
     $info->child_insert(new markup('dt', [], 'Server software'));
     $info->child_insert(new markup('dd', [], core::server_software_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
@@ -60,17 +56,17 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], php_uname('v')));
     $info->child_insert(new markup('dt', [], 'Hostname'));
     $info->child_insert(new markup('dd', [], php_uname('n')));
-    $info->child_insert(new markup('dt', [], 'Cron URL'));
-    $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Session expiration date'));
     $info->child_insert(new markup('dd', [], locale::format_timestamp(session::id_decode_expire(session::id_get()))));
     $info->child_insert(new markup('dt', [], 'Server timezone'));
     $info->child_insert(new markup('dd', [], date_default_timezone_get()));
+    $info->child_insert(new markup('dt', [], 'Cron URL'));
+    $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
-    return new markup('x-block', ['class' => ['info']], [
+    return new markup('x-block', ['class' => ['info' => 'info']], [
       new markup('h2', [], 'Shared information'),
       $info
     ]);
@@ -95,7 +91,7 @@ namespace effcore\modules\core {
         new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list)
       ];
     }
-    return new markup('x-block', ['class' => ['modules']], [
+    return new markup('x-block', ['class' => ['modules' => 'modules']], [
       new table([], $tbody, $thead)
     ]);
   }

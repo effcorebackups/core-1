@@ -45,6 +45,11 @@
   table.compact td:first-child {padding-left: 17px}
   table.compact td:last-child {padding-right: 17px}
 
+  /* info blocks */
+  x-block.info dl {margin: 50px 0; padding: 5px 0; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
+  x-block.info dl dt {margin: 0 10px 0 0; padding: 3px 3px 3px 14px; float: left; min-width: 200px}
+  x-block.info dl dd {margin: 0 0 0 210px; padding: 3px}
+
   /* messages */
   x-messages {display: block; margin: 50px auto}
   x-messages ul {margin: 10px 0; padding: 15px 20px; font-size: 16px; background-color: gray; color: white}

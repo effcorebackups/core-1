@@ -60,22 +60,25 @@ namespace effcore {
 
   static function render() {
     return (new markup('x-console', [], [
-      new markup('h2', [], 'Current page information'), static::markup_information_get(),
-      new markup('h2', [], 'Total load'),               static::markup_diagram_load_get(),
-      new markup('h2', [], 'Execute plan'),             static::markup_logs_get()
+      static::markup_block_information_get(),
+      static::markup_block_diagram_load_get(),
+      static::markup_block_logs_get()
     ]))->render();
   }
 
-  static function markup_information_get() {
-    $info = new markup('dl', ['class' => ['info' => 'info']]);
+  static function markup_block_information_get() {
+    $info = new markup('dl');
     foreach (static::information_all_select() as $c_param => $c_value) {
       $info->child_insert(new markup('dt', [], $c_param));
       $info->child_insert(new markup('dd', [], $c_value));
     }
-    return $info;
+    return new markup('x-block', ['class' => ['info' => 'info']], [
+      new markup('h2', [], 'Current page information'),
+      $info
+    ]);
   }
 
-  static function markup_diagram_load_get() {
+  static function markup_block_diagram_load_get() {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
@@ -86,7 +89,7 @@ namespace effcore {
         $total += floatval($c_log->time);
       }
     }
-    $diagram = new markup('dl', ['class' => ['diagram-load' => 'diagram-load']]);
+    $diagram = new markup('dl');
     foreach ($statistics as $c_param => $c_value) {
       $diagram->child_insert(new markup('dt', [], $c_param));
       $diagram->child_insert(new markup('dd', [], [
@@ -98,10 +101,13 @@ namespace effcore {
         ])
       ]));
     }
-    return $diagram;
+    return new markup('x-block', ['class' => ['diagram-load' => 'diagram-load']], [
+      new markup('h2', [], 'Total load'),
+      $diagram
+    ]);
   }
 
-  static function markup_logs_get() {
+  static function markup_block_logs_get() {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
     foreach (static::logs_select() as $c_log) {
@@ -117,9 +123,10 @@ namespace effcore {
         new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log->value))
       ]);
     }
-    return (
-      new table(['class' => ['logs' => 'logs', 'compact' => 'compact']], $tbody, $thead)
-    );
+    return new markup('x-block', ['class' => ['logs' => 'logs']], [
+      new markup('h2', [], 'Execute plan'),
+      new table(['class' => ['compact' => 'compact']], $tbody, $thead)
+    ]);
   }
 
 }}

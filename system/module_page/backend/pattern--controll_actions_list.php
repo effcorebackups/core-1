@@ -28,7 +28,7 @@ namespace effcore {
     $this->child_insert($list, 'action_list');
     foreach ($this->actions as $c_url => $c_action) {
       $list->child_insert(
-        new markup('x-action', isset($this->active[$c_action]) ? ['class' => ['active']] : [],
+        new markup('x-action', isset($this->active[$c_action]) ? ['class' => ['active' => 'active']] : [],
           new markup('a', ['href' => $c_url], $c_action)
         )
       );

@@ -183,6 +183,22 @@ namespace effcore {
     return implode(nl, $return);
   }
 
+  # ┌─────────────────────╥───────────────────────────────────────────────────────┐
+  # │ valid strings       ║ interpretation                                        │
+  # ╞═════════════════════╬═══════════════════════════════════════════════════════╡
+  # │ root                ║                                                       │
+  # │ - name: value       ║ root[name]  = value:null|string|float|integer|boolean │
+  # │   name: value       ║ root->name  = value:null|string|float|integer|boolean │
+  # │ - =: value          ║ root[value] = value:null|string|float|integer|boolean │
+  # │   =: value          ║ root->value = value:null|string|float|integer|boolean │
+  # │ - name              ║ root[name]  = new stdClass | […]                      │
+  # │   name              ║ root->name  = new stdClass | […]                      │
+  # │ - name|classname    ║ root[name]  = new classname                           │
+  # │   name|classname    ║ root->name  = new classname                           │
+  # │ - name|_empty_array ║ root[name]  = []                                      │
+  # │   name|_empty_array ║ root->name  = []                                      │
+  # └─────────────────────╨───────────────────────────────────────────────────────┘
+
   static function data_to_code($data, $file = null) {
     $return = new \stdClass;
     $p = [-1 => &$return];
@@ -194,21 +210,6 @@ namespace effcore {
       $line_num++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
-    # ┌─────────────────────╥───────────────────────────────────────────────────────┐
-    # │ valid strings       ║ interpretation                                        │
-    # ╞═════════════════════╬═══════════════════════════════════════════════════════╡
-    # │ root                ║                                                       │
-    # │ - name: value       ║ root[name]  = value:null|string|float|integer|boolean │
-    # │   name: value       ║ root->name  = value:null|string|float|integer|boolean │
-    # │ - =: value          ║ root[value] = value:null|string|float|integer|boolean │
-    # │   =: value          ║ root->value = value:null|string|float|integer|boolean │
-    # │ - name              ║ root[name]  = new stdClass | […]                      │
-    # │   name              ║ root->name  = new stdClass | […]                      │
-    # │ - name|classname    ║ root[name]  = new classname                           │
-    # │   name|classname    ║ root->name  = new classname                           │
-    # │ - name|_empty_array ║ root[name]  = []                                      │
-    # │   name|_empty_array ║ root->name  = []                                      │
-    # └─────────────────────╨───────────────────────────────────────────────────────┘
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.
                    '(?<prefix>- |)'.
