@@ -29,7 +29,7 @@ namespace effcore {
     $element->attribute_insert('maxlength', $this->length);
     $element->weight = 100;
   # build canvas on form
-    $captcha = $this->captcha_load();
+    $captcha = $this->captcha_select();
     if (!$captcha) {
       $captcha = $this->captcha_generate();
       $captcha->insert();
@@ -37,22 +37,14 @@ namespace effcore {
     $this->child_insert($captcha->canvas, 'canvas');
   }
 
-  function captcha_check($characters) {
+  function captcha_select() {
     $captcha = (new instance('captcha', [
       'ip_address' => static::id_get()
     ]))->select();
     if ($captcha) {
-      if ($captcha->attempts > 0) {
-        $captcha->attempts--;
-        $captcha->update();
-      } else {
-        $captcha = $this->captcha_generate();
-        $captcha->update();
-        $this->child_change('canvas', $captcha->canvas);
-      }
-      if ($captcha->characters === $characters) {
-        return true;
-      }
+      $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
+      $captcha->canvas->matrix_set($captcha->canvas->hexstr_to_clmask($captcha->canvas_data));
+      return $captcha;
     }
   }
 
@@ -76,18 +68,22 @@ namespace effcore {
     return $captcha;
   }
 
-  function captcha_load() {
+  function captcha_validate($characters) {
     $captcha = (new instance('captcha', [
       'ip_address' => static::id_get()
     ]))->select();
     if ($captcha) {
-      $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
-      $captcha->canvas->matrix_set(
-        $captcha->canvas->hexstr_to_clmask(
-          $captcha->canvas_data
-        )
-      );
-      return $captcha;
+      if ($captcha->attempts > 0) {
+        $captcha->attempts--;
+        $captcha->update();
+      } else {
+        $captcha = $this->captcha_generate();
+        $captcha->update();
+        $this->child_change('canvas', $captcha->canvas);
+      }
+      if ($captcha->characters === $characters) {
+        return true;
+      }
     }
   }
 
@@ -133,7 +129,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!$field->captcha_check($new_value)) {
+    if (!$field->captcha_validate($new_value)) {
       $field->error_add(
         translation::get('Field "%%_title" contains an incorrect characters from image!', ['title' => translation::get($field->title)])
       );

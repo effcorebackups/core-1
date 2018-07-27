@@ -12,16 +12,24 @@ namespace effcore {
   public $scenario;
 
   function run() {
-    $post = [];
+    $values = [];
+    $result = null;
     foreach ($this->scenario as $c_step) {
       switch ($c_step->type) {
         case 'set':
-        # @todo: make functionality
+          $values = $c_step->values;
           break;
         case 'request':
+          if (isset($values['captcha'])) {
+            $captcha = (new instance('captcha', [
+              'ip_address' => '127.0.0.1'
+            ]))->select();
+            if ($captcha) {
+              $values['captcha'] = $captcha->characters;
+            }
+          }
           $url = ($c_step->https ? 'https' : 'http').'://'.url::current_get()->domain.$c_step->url;
-          $result = test::request($url, [], $post);
-        # @todo: make functionality
+          $result = test::request($url, [], $values);
           break;
         case 'check':
         # @todo: make functionality
