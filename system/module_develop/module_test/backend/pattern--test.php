@@ -10,16 +10,29 @@ namespace effcore {
 
   public $id;
   public $scenario;
+  public $max_iteration = 1000;
 
   function run() {
     $values = [];
     $result = null;
-    foreach ($this->scenario as $c_step) {
+    $c_scenario = $this->scenario;
+    $c_step = reset($c_scenario);
+    $c_iteration = 0;
+    while ($c_step !== false) {
+
+    # prevention from looping
+      if (++$c_iteration > $this->max_iteration) {
+        break;
+      }
+
       switch ($c_step->type) {
+
         case 'set':
           $values = $c_step->values;
           break;
+
         case 'request':
+        # prepare captcha
           if (isset($values['captcha'])) {
             $captcha = (new instance('captcha', [
               'ip_address' => '127.0.0.1'
@@ -28,16 +41,33 @@ namespace effcore {
               $values['captcha'] = $captcha->characters;
             }
           }
+        # make request
           $url = ($c_step->https ? 'https' : 'http').'://'.url::current_get()->domain.$c_step->url;
           $result = test::request($url, [], $values);
           break;
+
         case 'check':
-        # @todo: make functionality
+          if ($c_step->where == 'http_code' && isset($result['info']['http_code']) &&
+              $c_step->match ==                      $result['info']['http_code']) {
+            if (isset($c_step->on_success)) {
+              $c_scenario = $c_step->on_success;
+              $c_step = reset($c_scenario);
+              continue 2;
+            }
+          } else {
+            if (isset($c_step->on_failure)) {
+              $c_scenario = $c_step->on_failure;
+              $c_step = reset($c_scenario);
+              continue 2;
+            }
+          }
           break;
+
         case 'return':
-        # @todo: make functionality
-          break;
+          return $c_step->value;
       }
+    # go to the next item
+      $c_step = next($c_scenario);
     }
   }
 
