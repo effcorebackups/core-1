@@ -1,6 +1,7 @@
 tests
 - load|test
     id: load
+    title: Load
     scenario
     - request_page_login|step
         type: request

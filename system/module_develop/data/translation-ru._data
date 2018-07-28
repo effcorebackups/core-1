@@ -64,8 +64,10 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
+    - Select the test: Выберите тест
     - Static block: Статический блок
     - Structures: Структуры
+    - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
     - Total generation time: Общее время генерации
     - Total load: Общая загрука

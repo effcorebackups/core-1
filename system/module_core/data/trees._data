@@ -2,7 +2,6 @@ trees
 - main|tree
     id: main
     title: Main menu
-    weight: 0
     attributes
     - class
       - =: main

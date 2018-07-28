@@ -205,15 +205,33 @@ namespace effcore {
     return $return;
   }
 
+  # ┌───────────────────────────────────┐
+  # │ weight scale by element direction │
+  # ╞═══════════════════════════════════╡
+  # │                 ▲ +100            │
+  # │                 │                 │
+  # │                 │                 │
+  # │ ◀───────────────┼──────────────── │
+  # │ +100            │ 0          -100 │
+  # │                 │                 │
+  # │                 │ -100            │
+  # └───────────────────────────────────┘
+
   static function array_sort_by_weight(&$array) {
-  # prepare weight for stable sorting
+  # note:
+  # ═════════════════════════════════════════════════════════════════════════
+  # if two members compare as equal,
+  # their relative order in the sorted array will be undefined
+  # ─────────────────────────────────────────────────────────────────────────
+  # prepare weight (for weight = 0)
     $c_weight = 0;
     foreach ($array as $c_item) {
-      $c_item->weight = $c_item->weight ?: $c_weight += .0002;
+      if ($c_item->weight === 0)
+          $c_item->weight = $c_weight -= .0001;
     }
   # sorting
     uasort($array, function($a, $b){
-      return $a->weight == $b->weight ? 0 : ($a->weight < $b->weight ? -1 : 1);
+      return $a->weight == $b->weight ? 0 : ($a->weight < $b->weight ? 1 : -1);
     });
     return $array;
   }

@@ -2,7 +2,6 @@ trees
 - user_anonymous|tree
     id: user_anonymous
     title: User anonymous menu
-    weight: 0
     attributes
     - class
       - =: user
@@ -10,7 +9,6 @@ trees
 - user_logged_in|tree
     id: user_logged_in
     title: User authenticated menu
-    weight: 0
     attributes
     - class
       - =: user

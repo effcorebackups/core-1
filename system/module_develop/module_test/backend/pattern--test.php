@@ -9,6 +9,7 @@ namespace effcore {
           implements has_external_cache {
 
   public $id;
+  public $title;
   public $scenario;
   public $max_iteration = 1000;
 
@@ -28,20 +29,20 @@ namespace effcore {
       switch ($c_step->type) {
 
         case 'set':
-          $values = $c_step->values;
+          foreach ($c_step->values as $c_name => $c_value) {
+            if ($c_value == '%%_captcha') {
+              $captcha = (new instance('captcha', [
+                'ip_address' => '127.0.0.1'
+              ]))->select();
+              if ($captcha) {
+                $c_value = $captcha->characters;
+              }
+            }
+            $values[$c_name] = $c_value;
+          }
           break;
 
         case 'request':
-        # prepare captcha
-          if (isset($values['captcha'])) {
-            $captcha = (new instance('captcha', [
-              'ip_address' => '127.0.0.1'
-            ]))->select();
-            if ($captcha) {
-              $values['captcha'] = $captcha->characters;
-            }
-          }
-        # make request
           $url = ($c_step->https ? 'https' : 'http').'://'.url::current_get()->domain.$c_step->url;
           $result = test::request($url, [], $values);
           break;
@@ -78,7 +79,7 @@ namespace effcore {
   static protected $cache;
 
   static function not_external_properties_get() {
-    return ['id' => 'id'];
+    return ['id' => 'id', 'title' => 'title'];
   }
 
   static function init() {
@@ -96,6 +97,15 @@ namespace effcore {
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] = static::$cache[$id]->external_cache_load();
     return static::$cache[$id];
+  }
+
+  static function all_get($load = true) {
+    if (!static::$cache) static::init();
+    if ($load)
+      foreach (static::$cache as &$c_item)
+        if ($c_item instanceof external_cache && $load)
+            $c_item = $c_item->external_cache_load();
+    return static::$cache;
   }
 
   static function request($url, $headers = [], $post = [], $proxy = '') {

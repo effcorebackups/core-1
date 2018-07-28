@@ -1,0 +1,12 @@
+tree_items
+- test|tree_item
+    id: test
+    id_parent: develop
+    title: Test
+    access
+      roles
+      - =: admins
+    attributes
+    - href: /develop/test
+    - class
+      - =: test

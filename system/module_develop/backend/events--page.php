@@ -144,7 +144,7 @@ namespace effcore\modules\develop {
         $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes = new markup('x-attributes');
         $x_operations = new markup('x-operations');
-        $x_children   = new markup('x-children', [], [], 100);
+        $x_children   = new markup('x-children', [], [], -100);
         $x_class->child_insert($x_name_wr, 'name_wrapper');
         $x_class->child_insert($x_attributes, 'attributes');
         $x_class->child_insert($x_operations, 'operations');

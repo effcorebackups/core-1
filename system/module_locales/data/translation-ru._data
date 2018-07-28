@@ -142,6 +142,7 @@ translations
     - Legal information: Правовая информация
     - License agreement: Лицензионное соглашение
     - List: Список
+    - Load: Загрузка
     - load: загрузка
     - Locales: Локализации
     - login: вход
@@ -203,6 +204,7 @@ translations
     - Radiobutton: Переключатель
     - Radiobuttons: Переключатели
     - Range: Диапазон
+    - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered: Зарегистрированные
     - registration: регистрация
@@ -214,6 +216,7 @@ translations
     - return: возврат
     - roles: роли
     - Roles: Роли
+    - run: запустить
     - save: сохранить
     - Search: Поиск
     - search: поиск

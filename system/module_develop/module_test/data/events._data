@@ -1,0 +1,9 @@
+events
+  on_form_init
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_form::on_init_test
+  on_form_submit
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_form::on_submit_test

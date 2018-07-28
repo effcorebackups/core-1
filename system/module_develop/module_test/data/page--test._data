@@ -1,0 +1,32 @@
+pages
+- test|page
+    title: Test
+    https: true
+    display
+      check: url
+      where: path
+      match: %^/develop/test$%
+    access
+      roles
+      - =: admins
+    content
+    - block_menu_main
+        region: main_menu
+        type: link
+        dpath: trees/core/main
+    - block_menu_user
+        region: head
+        type: code
+        handler: \effcore\events_page::on_show_block_menu_user
+    - block_logo
+        region: head
+        type: link
+        dpath: blocks/page/logo
+    - block_title
+        region: title
+        type: code
+        handler: \effcore\events_page::on_show_block_title
+    - form_test
+        region: content
+        type: link
+        dpath: forms/test/test

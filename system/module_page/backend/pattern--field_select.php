@@ -36,6 +36,17 @@ namespace effcore {
     }
   }
 
+  function value_get() {
+    $element = $this->child_select('element');
+    foreach ($element->children_select_recursive() as $c_item) {
+      if ($c_item instanceof node       &&
+          $c_item->tag_name == 'option' &&
+          $c_item->attribute_select('selected') == 'selected') {
+        return $c_item->attribute_select('value');
+      }
+    }
+  }
+
   function values_get() {
     $return = [];
     $element = $this->child_select('element');

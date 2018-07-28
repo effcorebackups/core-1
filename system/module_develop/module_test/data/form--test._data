@@ -1,0 +1,24 @@
+forms
+- test|form
+    attributes
+    - id: test
+    - method: post
+    - =: novalidate
+    children
+    - colors|container
+        tag_name: fieldset
+        title_tag_name: legend
+        children
+        - select_test|field_select
+            title: Select the test
+            element_attributes
+            - name: select_test
+    - button_run|markup
+        tag_name: button
+        attributes
+        - type: submit
+        - name: button
+        - value: run
+        children
+        - label|text
+            text: run

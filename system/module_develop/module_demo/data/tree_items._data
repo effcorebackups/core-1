@@ -3,6 +3,7 @@ tree_items
     id: demo
     id_parent: develop
     title: Demo
+    weight: 100
     access
       roles
       - =: admins

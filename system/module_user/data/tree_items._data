@@ -4,7 +4,7 @@ tree_items
     id_parent: user_anonymous
     parent_is_tree: true
     title: login
-    weight: -20
+    weight: 100
     access
       roles
       - =: anonymous
@@ -17,7 +17,6 @@ tree_items
     id_parent: user_anonymous
     parent_is_tree: true
     title: registration
-    weight: -10
     access
       roles
       - =: anonymous
@@ -31,7 +30,6 @@ tree_items
     id_parent: user_logged_in
     parent_is_tree: true
     title: edit
-    weight: -20
     access
       roles
       - =: admins
@@ -45,7 +43,7 @@ tree_items
     id_parent: user_logged_in
     parent_is_tree: true
     title: logout
-    weight: -10
+    weight: -100
     access
       roles
       - =: registered
