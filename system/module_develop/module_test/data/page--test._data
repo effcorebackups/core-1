@@ -1,11 +1,11 @@
 pages
-- test|page
-    title: Test
+- tests|page
+    title: Tests
     https: true
     display
       check: url
       where: path
-      match: %^/develop/test$%
+      match: %^/develop/tests$%
     access
       roles
       - =: admins

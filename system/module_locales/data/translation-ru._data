@@ -247,6 +247,7 @@ translations
     - Table prefix: Префикс таблиц
     - Table: Таблица
     - Test: Тест
+    - Tests: Тесты
     - Text: Текст
     - Textarea: Текстовая область
     - The changes was deleted.: Изменения были удалены.

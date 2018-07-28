@@ -1,12 +1,12 @@
 tree_items
-- test|tree_item
-    id: test
+- tests|tree_item
+    id: tests
     id_parent: develop
-    title: Test
+    title: Tests
     access
       roles
       - =: admins
     attributes
-    - href: /develop/test
+    - href: /develop/tests
     - class
-      - =: test
+      - =: tests
