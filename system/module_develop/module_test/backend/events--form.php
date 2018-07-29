@@ -17,6 +17,7 @@ namespace effcore\modules\test {
 
   static function on_init_test($form, $items) {
     $tests = test::all_get(false);
+    $items['#select_test']->option_insert('- select -', 'not_selected');
     foreach ($tests as $c_test) {
       $items['#select_test']->option_insert($c_test->title, $c_test->id);
     }

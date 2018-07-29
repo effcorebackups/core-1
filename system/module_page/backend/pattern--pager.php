@@ -16,7 +16,7 @@ namespace effcore {
   public $cur = null;
 
   function __construct($attributes = [], $weight = 0) {
-    parent::__construct($this->tag_name, $attributes, [], $weight);
+    parent::__construct(null, $attributes, [], $weight);
   }
 
   function init() {

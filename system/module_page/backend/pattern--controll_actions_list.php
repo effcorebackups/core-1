@@ -13,8 +13,7 @@ namespace effcore {
   public $active = [];
 
   function __construct($title = null, $attributes = [], $weight = 0) {
-    if ($title) $this->title = $title;
-    parent::__construct($this->tag_name, null, null, $attributes, [], $weight);
+    parent::__construct(null, $title, null, $attributes, [], $weight);
   }
 
   function action_add($url, $title, $is_enabled = true) {

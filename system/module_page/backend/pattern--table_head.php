@@ -10,7 +10,7 @@ namespace effcore {
   public $tag_name = 'thead';
 
   function __construct($attributes = [], $children = [], $weight = 0) {
-    parent::__construct($this->tag_name, $attributes, $children, $weight);
+    parent::__construct(null, $attributes, $children, $weight);
   }
 
   function child_insert($child, $id = null) {
