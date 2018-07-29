@@ -7,7 +7,6 @@
 namespace effcore\modules\test {
           use \effcore\message;
           use \effcore\test;
-          use \effcore\text_simple;
           abstract class events_form extends \effcore\events_form {
 
   ##################
@@ -23,10 +22,9 @@ namespace effcore\modules\test {
 
   static function on_submit_test($form, $items) {
     $test = test::get($items['#select_test']->value_get());
-    $result = $test->run();
-    if ($result) {
-      message::insert('The test was successful.');
-    }
+    $test_result = $test->run();
+    if ($test_result) message::insert('The test was successful.');
+    else              message::insert('The test was failed!', 'error');
   }
 
 }}

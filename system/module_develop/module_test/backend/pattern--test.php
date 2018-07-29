@@ -11,14 +11,14 @@ namespace effcore {
   public $id;
   public $title;
   public $scenario;
+  public $proxy;
   public $max_iteration = 1000;
 
   function run() {
-    $values = [];
-    $result = null;
     $c_scenario = $this->scenario;
     $c_step = reset($c_scenario);
     $c_iteration = 0;
+    $c_results = [];
     while ($c_step !== false) {
 
     # prevention from looping
@@ -26,47 +26,12 @@ namespace effcore {
         break;
       }
 
-      switch ($c_step->type) {
+    # run next step
+      $c_step->run($this, $c_scenario, $c_step, $c_results);
+      if (array_key_exists('is_continue', $c_results)) {unset($c_results['is_continue']); continue;}
+      if (array_key_exists('is_break', $c_results)) break;
+      if (array_key_exists('return', $c_results)) return $c_results;
 
-        case 'set':
-          foreach ($c_step->values as $c_name => $c_value) {
-            if ($c_value == '%%_captcha') {
-              $captcha = (new instance('captcha', [
-                'ip_address' => '127.0.0.1'
-              ]))->select();
-              if ($captcha) {
-                $c_value = $captcha->characters;
-              }
-            }
-            $values[$c_name] = $c_value;
-          }
-          break;
-
-        case 'request':
-          $url = ($c_step->https ? 'https' : 'http').'://'.url::current_get()->domain.$c_step->url;
-          $result = test::request($url, [], $values);
-          break;
-
-        case 'check':
-          if ($c_step->where == 'http_code' && isset($result['info']['http_code']) &&
-              $c_step->match ==                      $result['info']['http_code']) {
-            if (isset($c_step->on_success)) {
-              $c_scenario = $c_step->on_success;
-              $c_step = reset($c_scenario);
-              continue 2;
-            }
-          } else {
-            if (isset($c_step->on_failure)) {
-              $c_scenario = $c_step->on_failure;
-              $c_step = reset($c_scenario);
-              continue 2;
-            }
-          }
-          break;
-
-        case 'return':
-          return $c_step->value;
-      }
     # go to the next item
       $c_step = next($c_scenario);
     }
