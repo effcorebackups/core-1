@@ -5,9 +5,7 @@ forms
     - method: post
     - =: novalidate
     children
-    - test_params|container
-        tag_name: fieldset
-        title_tag_name: legend
+    - test|fieldset
         children
         - select_test|field_select
             title: Select the test

@@ -11,7 +11,6 @@ namespace effcore {
   public $id;
   public $title;
   public $scenario;
-  public $proxy;
   public $max_iteration = 1000;
 
   function run() {
@@ -29,12 +28,12 @@ namespace effcore {
     # run next step
       $c_step->run($this, $c_scenario, $c_step, $c_results);
       if (array_key_exists('is_continue', $c_results)) {unset($c_results['is_continue']); continue;}
-      if (array_key_exists('is_break', $c_results)) break;
-      if (array_key_exists('return', $c_results)) return $c_results;
+      if (array_key_exists('return', $c_results)) break;
 
     # go to the next item
       $c_step = next($c_scenario);
     }
+    return $c_results;
   }
 
   ###########################

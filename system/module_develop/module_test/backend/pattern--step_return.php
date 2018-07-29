@@ -10,7 +10,7 @@ namespace effcore {
   public $value;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $c_results['report'][] = translation::get('return %%_return', ['return' => $this->value]);
+    $c_results['reports'][] = translation::get('return %%_return', ['return' => $this->value]);
     $c_results['return'] = $this->value;
   }
 

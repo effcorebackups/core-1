@@ -9,17 +9,36 @@ namespace effcore {
 
   public $url;
   public $https = false;
+  public $proxy = '';
+  public $headers = [];
   public $post = [];
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $post = $this->post;
-    foreach ($post as $c_name => $c_value) {
+    $c_results['reports'][] = translation::get('make request');
+    $c_results['request'] = test::request(
+      $this->prepared_url_get(),
+      $this->prepared_headers_get(),
+      $this->prepared_post_get(),
+      $this->proxy
+    );
+  }
+
+  function prepared_url_get() {
+    return ($this->https ? 'https' : 'http').'://'.url::current_get()->domain.$this->url;
+  }
+
+  function prepared_headers_get() {
+    return $this->headers;
+  }
+
+  function prepared_post_get() {
+    $return = [];
+    foreach ($this->post as $c_name => $c_value) {
       if ($c_value == '%%_captcha')
           $c_value = $this->captcha_code_get();
-      $post[$c_name] = $c_value;
+      $return[$c_name] = $c_value;
     }
-    $c_results['report'][] = translation::get('make request');
-    $c_results['request'] = test::request($this->url_generate(), [], $post, $test->proxy);
+    return $return;
   }
 
   function captcha_code_get() {
@@ -29,10 +48,6 @@ namespace effcore {
     if ($captcha) {
       return $captcha->characters;
     }
-  }
-
-  function url_generate() {
-    return ($this->https ? 'https' : 'http').'://'.url::current_get()->domain.$this->url;
   }
 
 }}

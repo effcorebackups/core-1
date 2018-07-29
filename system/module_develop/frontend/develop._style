@@ -23,6 +23,10 @@
   /* php modules usage list */
   table.php_mod_usage td.file {width: 90%}
 
+  /* form 'test' */
+  form#test .report {max-height: 400px; overflow: scroll}
+  form#test .report p {margin: 0}
+
   /* x-structures-list */
   x-structures-list {display: block}
   x-structures-list x-item {display: block; margin: 40px 0}

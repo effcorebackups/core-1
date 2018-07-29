@@ -210,6 +210,7 @@ translations
     - registration: регистрация
     - Registration: Регистрация
     - remember me: запомнить меня
+    - Report: Отчёт
     - reset: сбросить
     - Restore the storage credentials in "%%_path" dirrectory or reinstall this system on the page\: %%_link: Восстановите учетные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
     - restore: восстановить

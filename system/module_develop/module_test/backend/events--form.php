@@ -5,6 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\test {
+          use \effcore\fieldset;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\test;
           abstract class events_form extends \effcore\events_form {
@@ -23,8 +25,20 @@ namespace effcore\modules\test {
   static function on_submit_test($form, $items) {
     $test = test::get($items['#select_test']->value_get());
     $test_result = $test->run();
-    if ($test_result) message::insert('The test was successful.');
-    else              message::insert('The test was failed!', 'error');
+  # show message
+    if (!empty($test_result['return']))
+         message::insert('The test was successful.');
+    else message::insert('The test was failed!', 'error');
+  # make report
+    if (!empty($test_result['reports'])) {
+      $report = new fieldset('Report', '', ['class' => ['report' => 'report']]);
+      $items['test']->child_insert($report);
+      foreach ($test_result['reports'] as $c_report) {
+        $report->child_insert(
+          new markup('p', [], $c_report)
+        );
+      }
+    }
   }
 
 }}
