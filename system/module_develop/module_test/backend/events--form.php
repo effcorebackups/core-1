@@ -32,8 +32,9 @@ namespace effcore\modules\test {
     else message::insert('The test was failed!', 'error');
   # make report
     if (!empty($test_result['reports'])) {
-      $report = new fieldset('Report', '', ['class' => ['report' => 'report']]);
-      $items['test']->child_insert($report);
+      $report = new markup('x-document', ['class' => ['report' => 'report']]);
+      $report_wr = new fieldset('Report', '', [], $report);
+      $items['test']->child_insert($report_wr);
       foreach ($test_result['reports'] as $c_report) {
         $report->child_insert(
           new markup('p', [], $c_report)
