@@ -19,14 +19,16 @@ namespace effcore {
         $c_scenario = $this->on_success;
         $c_step = reset($c_scenario);
         $c_results['is_continue'] = true;
-        $c_results['reports'][] = translation::get('result of checking is = "%%_result"', ['result' => 'on_success']);
+        $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $c_results['request']['info']['http_code']]);
+        $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => 'on_success']);
       }
     } else {
       if (isset($this->on_failure)) {
         $c_scenario = $this->on_failure;
         $c_step = reset($c_scenario);
         $c_results['is_continue'] = true;
-        $c_results['reports'][] = translation::get('result of checking is = "%%_result"', ['result' => 'on_failure']);
+        $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $c_results['request']['info']['http_code']]);
+        $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => 'on_failure']);
       }
     }
   }

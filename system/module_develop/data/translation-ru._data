@@ -12,6 +12,7 @@ translations
 ! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 ! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
+    - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell %%_num: ячейка %%_num
@@ -19,6 +20,7 @@ translations
     - Checkbox 2 (checked): Флаг 2 (установлен)
     - Checkbox 3 (disabled): Флаг 3 (отключён)
     - Checkbox 4 (disabled + checked): Флаг 4 (установлен + отключён)
+    - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - class: класс
     - Classes list: Список классов
     - Classes: Классы
@@ -66,7 +68,6 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
-    - result of checking is = "%%_result": результат проверки = "%%_result"
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Static block: Статический блок
