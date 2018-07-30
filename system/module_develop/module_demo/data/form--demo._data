@@ -47,10 +47,8 @@ forms
     - method: post
     - =: novalidate
     children
-    - form_elements|container
-        tag_name: fieldset
+    - form_elements|fieldset
         title: Form elements
-        title_tag_name: legend
         children
       # field_file
         - file|field_file
@@ -250,10 +248,8 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
-        - checkboxes_all|container
-            tag_name: fieldset
+        - checkboxes_all|fieldset
             title: Checkboxes
-            title_tag_name: legend
             children
           # field_checkbox
             - checkbox|field_checkbox
@@ -289,10 +285,8 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
-        - radiobuttons_all|container
-            tag_name: fieldset
+        - radiobuttons_all|fieldset
             title: Radiobuttons
-            title_tag_name: legend
             children
           # field_radiobutton
             - radiobutton|field_radiobutton

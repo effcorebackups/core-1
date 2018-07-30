@@ -5,10 +5,8 @@ forms
     - method: post
     - =: novalidate
     children
-    - colors|container
-        tag_name: fieldset
+    - colors|fieldset
         title: Colors
-        title_tag_name: legend
         children
         - color_id|group_palette
             title: Color
