@@ -3,7 +3,7 @@
 # 1. not recommend to use DISABLED|READONLY text fields with shared
 #    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
 #    state from field and change the field VALUE and submit the form - after
-#    this action the new VALUE will be setted to the next field with
+#    this action the new VALUE will be set to the next field with
 #    shared NAME.
 #    example (default form state):
 #    - input[type=text,name=shared_name[],value=1,disabled|readonly]

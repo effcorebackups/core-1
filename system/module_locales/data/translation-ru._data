@@ -44,7 +44,7 @@ translations
     - Core: Ядро
     - created: создано
     - Created: Создано
-    - Credentials for storage %%_id was not setted!: Учётные данные для хранилища %%_id не были заданы!
+    - Credentials for storage %%_id was not set!: Учётные данные для хранилища %%_id не были заданы!
     - Credentials: Учётные данные
     - credentials: учётные данные
     - Cron job was done.: Задача Cron была выполнена.
@@ -127,7 +127,7 @@ translations
     - insertion: вставка
     - Install: Установить
     - install: установить
-    - Installation is not available because storage credentials was setted!: Установка недоступна потому, что учетные данные хранилища уже были установлены.
+    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учетные данные хранилища уже были установлены.
     - Installation: Установка
     - installation: установка
     - Instances of entity %%_name was added.: Экземпляры сущности %%_name были добавлены.
