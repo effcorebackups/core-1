@@ -9,11 +9,13 @@ namespace effcore {
 
   static protected $cache;
 
-  static function init() {
+  static function init($id) {
     storage_files::init('storages');
     foreach (storage_files::$data['storages'] as $c_module_id => $c_module_storages) {
       foreach ($c_module_storages as $c_row_id => $c_storage) {
-        static::$cache[$c_storage->id] = $c_storage;
+        if ($c_storage->id == $id) {
+          static::$cache[$c_storage->id] = $c_storage;
+        }
       }
     }
   }
@@ -23,7 +25,7 @@ namespace effcore {
   }
 
   static function get($id, $load = true) {
-    if (!isset(static::$cache)) static::init();
+    if (!isset(static::$cache[$id])) static::init($id);
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] = static::$cache[$id]->external_cache_load();
     return static::$cache[$id];
