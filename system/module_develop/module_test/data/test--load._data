@@ -16,4 +16,4 @@ tests
             match: 200
             on_success
             - return_result|step_return
-                value: true
+                value: 1
