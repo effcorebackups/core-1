@@ -11,6 +11,7 @@ translations
 ! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 ! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 ! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
+    - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell %%_num: ячейка %%_num
@@ -41,6 +42,7 @@ translations
     - interface: интерфейс
     - Interfaces: Интерфейсы
     - intr.: интр.
+    - make request to "%%_url": сделать запрос на "%%_url"
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for testing.: Модуль для тестирования.
@@ -64,6 +66,8 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
+    - result of checking is = "%%_result": результат проверки = "%%_result"
+    - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Static block: Статический блок
     - Structures: Структуры
