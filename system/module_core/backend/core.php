@@ -536,7 +536,7 @@ namespace effcore {
   static function server_user_agent_info_get() {
     $return = new \stdCLass;
   # detect Internet Explorer v.6-v.11
-  # note: unexist version like "12" will be identified as "1"
+  # note: unexist version like '12' will be identified as '1'
     $matches = [];
     $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
     $ie_name_to_core = array_flip($ie_core_to_name);

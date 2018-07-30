@@ -29,6 +29,7 @@ translations
     - cancel: отмена
     - Canvas: Холст
     - Captcha: Защитный код
+    - Change your EMail and Password after login to the system!: Измените свой Адрес электронной почты и Пароль после входа в систему!
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
@@ -307,3 +308,4 @@ translations
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да
+    - Your account name is "%%_name" and your password is "%%_password".: Имя вашей учетной записи "%%_name" и ваш пароль "%%_password".

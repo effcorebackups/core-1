@@ -89,9 +89,17 @@
   x-pager {display: block; margin: 30px 0; text-align: center}
   x-pager a {display: inline-block; min-width: 20px; margin: 3px 5px}
 
-  /* license agreement */
-  x-license h1 {margin: 0 0 1em 0; font-size: 1.5em; line-height: 1.2em}
-  x-license h2 {margin: 2em 0 1em 0; font-size: 1.2em}
+  /* x-document ('license agreement' and other) */
+  x-document {
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 15px;
+    border: 1px solid lightgray;
+    background: white}
+  x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}
+  x-document h2 {margin: 2em 0 1em 0; font-size: 1.3em}
 
   /* class list */
   .classes-list {font-size: .9em}

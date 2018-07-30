@@ -105,16 +105,6 @@
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 
-  /* license */
-  x-license {
-    display: block;
-    max-height: 300px;
-    overflow: auto;
-    margin: 5px 0;
-    padding: 15px;
-    border: 1px solid lightgray;
-    background: white}
-
   /* captcha */
   x-field[data-type='captcha'] svg {display: block; margin: 20px 0}
 

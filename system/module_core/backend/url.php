@@ -49,7 +49,7 @@ namespace effcore {
 
   # note:
   # ════════════════════════════════════════════════════════════════════════════════════════════
-  # 1. in the next url "http://name:pass@subdomain.domain:port/dir/subdir/page?key=value#anchor"
+  # 1. in the next url 'http://name:pass@subdomain.domain:port/dir/subdir/page?key=value#anchor'
   #    the name, password and port values after parsing will be in the $domain property
   # ────────────────────────────────────────────────────────────────────────────────────────────
 

@@ -101,7 +101,7 @@ namespace effcore {
         $this->pool_new[] = $c_new_value;
       }
     }
-  # move temporary files from php "tmp" directory to system "tmp" directory
+  # move temporary files from php 'tmp' directory to system 'tmp' directory
     $this->pool_files_move_tmp_to_pre();
   # physically delete of canceled values
     $deleted = $this->pool_manager_deleted_items_get('new');
@@ -127,7 +127,7 @@ namespace effcore {
         @unlink($deleted[$c_id]->old_path);
       }
     }
-  # move new files to the directory "files"
+  # move new files to the directory 'files'
     $this->pool_files_move_pre_to_new();
   # prepare return
     $return = [];
@@ -215,7 +215,7 @@ namespace effcore {
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
-  # insert "delete" checkboxes for old and new files
+  # insert 'delete' checkboxes for old and new files
     foreach ($this->pool_old as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'old');
     foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
   }

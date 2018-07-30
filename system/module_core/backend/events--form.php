@@ -111,7 +111,9 @@ namespace effcore\modules\core {
         ]);
         storage::cache_reset();
         event::start('on_module_install');
-        message::insert('Modules was installed.');
+        message::insert(translation::get('Modules was installed.'));
+        message::insert(translation::get('Your account name is "%%_name" and your password is "%%_password".', ['name' => 'admin', 'password' => '12345']));
+        message::insert(translation::get('Change your EMail and Password after login to the system!'));
         $form->child_delete('storage');
         $form->child_delete('license_agreement');
         $form->child_delete('button_install');

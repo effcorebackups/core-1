@@ -202,9 +202,9 @@ namespace effcore {
   static function data_to_code($data, $file = null) {
     $return = new \stdClass;
     $p = [-1 => &$return];
-    $pc_objects = []; # classes with interface "has_post_constructor"
-    $pi_objects = []; # classes with interface "has_post_init"
-    $pp_objects = []; # classes with interface "has_post_parsing"
+    $pc_objects = []; # classes with interface 'has_post_constructor'
+    $pi_objects = []; # classes with interface 'has_post_init'
+    $pp_objects = []; # classes with interface 'has_post_parsing'
     $line_num = 0;
     foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
       $line_num++;

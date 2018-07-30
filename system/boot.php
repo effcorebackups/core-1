@@ -78,7 +78,7 @@ namespace effcore {
         $data = token::replace($file->load());
         $etag = base64_encode(md5($data, true));
 
-      # send header "304 Not Modified" to the output buffer if HTTP_IF_NONE_MATCH header is received
+      # send header '304 Not Modified' to the output buffer if HTTP_IF_NONE_MATCH header is received
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
                   $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
           header('HTTP/1.1 304 Not Modified');
