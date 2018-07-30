@@ -60,6 +60,9 @@ namespace effcore {
         event::start('on_form_validate', $id, [$this, $form_items]);
       }
 
+    # send specific header
+      header('X-Submit-Errors-Count: '.$this->errors_count_get());
+
     # show errors
       if ($this->errors_count_get() != 0) {
         $this->attribute_insert('class', ['error' => 'error']);
