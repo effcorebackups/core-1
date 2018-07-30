@@ -107,8 +107,12 @@ Security recommendations
   You can get an internal network threat from different sniffers.
 - We recommend to using hardware firewalls based on open firmware (e.g. NanoBSD and other).
   Remember that some hardware firewalls (not from Europe) may contain backdoors.
-- We do not recommend to using non-European Certification authority (CA).
+- Do not buy SSL certificates with with pre-generated private keys from CA (Certificate Authority).
   There is no warranties that your private key will not fall into third hands.
+  You can use CSR (Certificate Signing Request) procedure:
+  generate public and private keys with identifying information on your side
+  and send the public key with the identifying information
+  to the CA for sign the public key.
 - We do not recommend to using public email services for restoring passwords
   and sending important correspondence.
   We recommend to using your own dedicated server for email services
