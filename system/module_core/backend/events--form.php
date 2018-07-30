@@ -52,17 +52,17 @@ namespace effcore\modules\core {
           if ($items['#driver:mysql']->element_checked_get()) {
             $test = storage::get('main')->test('mysql', (object)[
               'storage_id' => $items['#storage_id']->value_get(),
-              'host_name'  => $items['#host_name']->value_get(),
-              'port'       => $items['#port']->value_get(),
-              'user_name'  => $items['#user_name']->value_get(),
-              'password'   => $items['#password']->value_get()
+              'host_name'  => $items['#host_name' ]->value_get(),
+              'port'       => $items['#port'      ]->value_get(),
+              'user_name'  => $items['#user_name' ]->value_get(),
+              'password'   => $items['#password'  ]->value_get()
             ]);
             if ($test !== true) {
               $items['#storage_id']->error_add();
-              $items['#host_name']->error_add();
-              $items['#port']->error_add();
-              $items['#user_name']->error_add();
-              $items['#password']->error_add();
+              $items['#host_name' ]->error_add();
+              $items['#port'      ]->error_add();
+              $items['#user_name' ]->error_add();
+              $items['#password'  ]->error_add();
               $form->error_add(translation::get('Storage is not available with these credentials!').br.
                                translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
@@ -89,18 +89,18 @@ namespace effcore\modules\core {
           $params = new \stdClass;
           $params->driver = 'mysql';
           $params->credentials = new \stdClass;
-          $params->credentials->host_name  = $items['#host_name']->value_get();
-          $params->credentials->port       = $items['#port']->value_get();
-          $params->credentials->storage_id = $items['#storage_id']->value_get();
-          $params->credentials->user_name  = $items['#user_name']->value_get();
-          $params->credentials->password   = $items['#password']->value_get();
+          $params->credentials->host_name  = $items['#host_name'   ]->value_get();
+          $params->credentials->port       = $items['#port'        ]->value_get();
+          $params->credentials->storage_id = $items['#storage_id'  ]->value_get();
+          $params->credentials->user_name  = $items['#user_name'   ]->value_get();
+          $params->credentials->password   = $items['#password'    ]->value_get();
           $params->table_prefix            = $items['#table_prefix']->value_get();
         }
         if ($items['#driver:sqlite']->element_checked_get()) {
           $params = new \stdClass;
           $params->driver = 'sqlite';
           $params->credentials = new \stdClass;
-          $params->credentials->file_name = $items['#file_name']->value_get();
+          $params->credentials->file_name = $items['#file_name'   ]->value_get();
           $params->table_prefix           = $items['#table_prefix']->value_get();
         }
         storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
@@ -112,8 +112,8 @@ namespace effcore\modules\core {
         storage::cache_reset();
         event::start('on_module_install');
         message::insert(translation::get('Modules was installed.'));
-        message::insert(translation::get('Your account name is "%%_name" and your password is "%%_password".', ['name' => 'admin', 'password' => '12345']));
-        message::insert(translation::get('Change your EMail and Password after login to the system!'));
+        message::insert(translation::get('For login to the system was set the EMail "%%_email" and the password "%%_password".', ['email' => 'admin@example.com', 'password' => '12345']));
+        message::insert(translation::get('Change this EMail and Password after login to the system!'));
         $form->child_delete('storage');
         $form->child_delete('license_agreement');
         $form->child_delete('button_install');
