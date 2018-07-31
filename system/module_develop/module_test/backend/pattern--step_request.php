@@ -38,11 +38,26 @@ namespace effcore {
   function prepared_post_get() {
     $return = [];
     foreach ($this->post as $c_name => $c_value) {
-      if ($c_value == '%%_captcha')
-          $c_value = $this->captcha_code_get();
+      if ($c_value == '%%_nick_random')     $c_value = $this->nick_random_get();
+      if ($c_value == '%%_email_random')    $c_value = $this->email_random_get();
+      if ($c_value == '%%_password_random') $c_value = $this->password_random_get();
+      if ($c_value == '%%_captcha')         $c_value = $this->captcha_code_get();
+      if ($c_value == '%%_validation_id')   $c_value = $this->validation_id_get();
       $return[$c_name] = $c_value;
     }
     return $return;
+  }
+
+  function nick_random_get() {
+    return 'user_'.substr(md5(rand()), 0, 8);
+  }
+
+  function email_random_get() {
+    return 'email_'.substr(md5(rand()), 0, 8).'@example.com';
+  }
+
+  function password_random_get() {
+    return substr(md5(rand()), 0, 8);
   }
 
   function captcha_code_get() {
@@ -52,6 +67,10 @@ namespace effcore {
     if ($captcha) {
       return $captcha->characters;
     }
+  }
+
+  function validation_id_get() {
+    return '[UNDER CONSTRUCTION]';
   }
 
 }}
