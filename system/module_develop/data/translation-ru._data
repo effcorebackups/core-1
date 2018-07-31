@@ -68,6 +68,7 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
+    - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Static block: Статический блок

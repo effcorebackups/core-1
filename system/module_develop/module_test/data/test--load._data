@@ -3,17 +3,16 @@ tests
     id: load
     title: Load
     scenario
-    - request_page_login|step_request
-        url: /user/login
-    - response_check|step_check
-        where: http_code
-        match: 200
-        on_success
-        - request_page_registration|step_request
-            url: /user/registration
+    - repeat|step_repeat
+        quantity: 10
+        actions
+        - request_page_login|step_request
+            url: /user/login
         - response_check|step_check
             where: http_code
             match: 200
-            on_success
+            on_failure
             - return_result|step_return
-                value: 1
+                value: 0
+    - return_result|step_return
+        value: 1
