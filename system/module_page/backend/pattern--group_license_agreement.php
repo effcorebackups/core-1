@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_license_agreement extends container {
+          class group_license_agreement extends fieldset {
 
   public $tag_name = 'fieldset';
   public $title = 'License agreement';

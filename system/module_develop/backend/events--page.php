@@ -135,22 +135,22 @@ namespace effcore\modules\develop {
   # build diagram for each class
     foreach ($map as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == 'class') {
-        $c_file       = new file($c_item_info->file);
-        $c_reflection = new \ReflectionClass($c_item_full_name);
-        $x_class_wr   = new markup('x-class-wrapper');
-        $x_class      = new markup('x-class');
-        $x_name       = new markup('x-name', ['title' => $c_item_info->file], new text_simple($c_item_info->name));
-        $x_namespace  = new markup('x-namespace', [], '(from '.$c_item_info->namespace.')');
-        $x_name_wr    = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
-        $x_attributes = new markup('x-attributes');
-        $x_operations = new markup('x-operations');
-        $x_children   = new markup('x-children', [], [], -100);
-        $x_class->child_insert($x_name_wr, 'name_wrapper');
+        $c_file          = new file($c_item_info->file);
+        $c_reflection    = new \ReflectionClass($c_item_full_name);
+        $x_class_wrapper = new markup('x-class-wrapper');
+        $x_class         = new markup('x-class');
+        $x_name          = new markup('x-name', ['title' => $c_item_info->file], new text_simple($c_item_info->name));
+        $x_namespace     = new markup('x-namespace', [], '(from '.$c_item_info->namespace.')');
+        $x_name_wrapper  = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
+        $x_attributes    = new markup('x-attributes');
+        $x_operations    = new markup('x-operations');
+        $x_children      = new markup('x-children', [], [], -100);
+        $x_class->child_insert($x_name_wrapper, 'name_wrapper');
         $x_class->child_insert($x_attributes, 'attributes');
         $x_class->child_insert($x_operations, 'operations');
-        $x_class_wr->child_insert($x_class, 'class');
-        $x_class_wr->child_insert($x_children, 'children');
-        $diagram->child_insert($x_class_wr, $c_item_full_name);
+        $x_class_wrapper->child_insert($x_class, 'class');
+        $x_class_wrapper->child_insert($x_children, 'children');
+        $diagram->child_insert($x_class_wrapper, $c_item_full_name);
 
       # set abstract mark
         if (!empty($c_item_info->modifier) &&
@@ -201,14 +201,14 @@ namespace effcore\modules\develop {
 
   # move children to it's parent
     $items_to_delete = [];
-    foreach ($diagram->children_select() as $c_item_full_name => $c_item_wr) {
+    foreach ($diagram->children_select() as $c_item_full_name => $c_item_wrapper) {
       $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
                                         $map[$c_item_full_name]->extends : null;
       if ($c_item_parent_full_name) {
         $c_parent = $diagram->child_select($c_item_parent_full_name);
         if ($c_parent) {
           $x_parent_children = $c_parent->child_select('children');
-          $x_parent_children->child_insert($c_item_wr, $c_item_full_name);
+          $x_parent_children->child_insert($c_item_wrapper, $c_item_full_name);
           $items_to_delete[$c_item_full_name] = $c_item_full_name;
         }
       }

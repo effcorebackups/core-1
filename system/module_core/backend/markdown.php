@@ -23,16 +23,16 @@ namespace effcore {
   }
 
   static function _list_data_insert($list, $data, $c_indent, $level = null) {
-    if (empty($list->_wr_name))                $list->_wr_name = 'wr_data0';
-    if (is_string($data) && trim($data) == '') $list->_wr_name = 'wr_data1';
-    switch ($list->_wr_name) {
-      case 'wr_data0':
+    if (empty($list->_wrapper_name))           $list->_wrapper_name = 'wrapper_data0';
+    if (is_string($data) && trim($data) == '') $list->_wrapper_name = 'wrapper_data1';
+    switch ($list->_wrapper_name) {
+      case 'wrapper_data0':
       # add data to the list
-        $wr_data0_level = count($list->_p_list);
-        $acceptor = empty($list->_p_list[$wr_data0_level]) ? null :
-                          $list->_p_list[$wr_data0_level];         # get list container
+        $wrapper_data0_level = count($list->_p_list);
+        $acceptor = empty($list->_p_list[$wrapper_data0_level]) ? null :
+                          $list->_p_list[$wrapper_data0_level];         # get list container
         if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
-        if ($acceptor) $acceptor = $acceptor->child_select('wr_data0');
+        if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data0');
         if ($acceptor) {
           $acceptor->child_insert(
             is_string($data) ? new text(nl.$data) : $data
@@ -40,7 +40,7 @@ namespace effcore {
           return true;
         }
         break;
-      case 'wr_data1':
+      case 'wrapper_data1':
       # delete old pointer to the current paragraph
         if (is_string($data) && trim($data) == '') {
           $list->_c_paragraph = null;
@@ -48,11 +48,11 @@ namespace effcore {
         }
       # add new paragraph to the list
         if (empty($list->_c_paragraph) && $c_indent > 0) {
-          $wr_data1_level = min($level, count($list->_p_list));
-          $acceptor = empty($list->_p_list[$wr_data1_level]) ? null :
-                            $list->_p_list[$wr_data1_level];         # get list container
+          $wrapper_data1_level = min($level, count($list->_p_list));
+          $acceptor = empty($list->_p_list[$wrapper_data1_level]) ? null :
+                            $list->_p_list[$wrapper_data1_level];         # get list container
           if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
-          if ($acceptor) $acceptor = $acceptor->child_select('wr_data1');
+          if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data1');
           if ($acceptor) {
             $list->_c_paragraph = new markup('p');
             $acceptor->child_insert(
@@ -64,7 +64,7 @@ namespace effcore {
             if ($c_level <= $level) {
               $acceptor = $list->_p_list[$c_level];
               if ($acceptor) $acceptor = $acceptor->child_select_last();
-              if ($acceptor) $acceptor = $acceptor->child_select('wr_data0');
+              if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data0');
               if ($acceptor) {
                 $new_p = new markup('p');
                 foreach ($acceptor->children_select() as $id => $c_child) {
@@ -169,7 +169,7 @@ namespace effcore {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
                          $last_item->_p_list[$l_level-0] = $new_container;
             $parent_li = $last_item->_p_list[$l_level-1]->child_select_last();
-            if ($parent_li) $parent_li->child_select('wr_container')
+            if ($parent_li) $parent_li->child_select('wrapper_container')
                                       ->child_insert($new_container);
           }
         # delete old pointers to list containers (ol/ul)
@@ -179,11 +179,11 @@ namespace effcore {
             }
           }
         # insert new list item (li)
-          unset($last_item->_wr_name);
+          unset($last_item->_wrapper_name);
           $new_li = new markup('li');
-          $new_li->child_insert(new node(), 'wr_data0');
-          $new_li->child_insert(new node(), 'wr_container');
-          $new_li->child_insert(new node(), 'wr_data1');
+          $new_li->child_insert(new node(), 'wrapper_data0');
+          $new_li->child_insert(new node(), 'wrapper_container');
+          $new_li->child_insert(new node(), 'wrapper_data1');
           $last_item->_p_list[$l_level]->child_insert($new_li);
           static::_list_data_insert($last_item, $c_matches['return'], $c_indent);
           continue;
