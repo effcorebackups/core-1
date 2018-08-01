@@ -1,15 +1,30 @@
 
   /* form */
+
   form {margin: 70px 0}
   form .error {border-color: %%_color_error !important}
 
-  fieldset {margin: 100px 0 50px 0; padding: 10px 16px; border: none; border-top: 5px solid %%_color_bg}
-  fieldset legend {position: absolute; margin: -60px 0 0 -20px; font-size: 1.5em}
-  fieldset, fieldset fieldset fieldset {background: whitesmoke}
-  fieldset fieldset, fieldset fieldset fieldset fieldset {background: white}
+  /* fieldset */
+
+  fieldset {margin: 100px 0 50px 0; padding: 0; border: none}
   x-field.before-container + fieldset {margin-top: 30px}
 
+  fieldset legend {position: absolute; margin: -50px 0 0 -3px; font-size: 1.5em}
+  fieldset input[data-opener-type='fieldset'] ~ legend {margin-left: 35px}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: -52px 0 0 0}
+  fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-content {display: none}
+
+  fieldset x-content {
+    display: block;
+    padding: 10px 16px;
+    border-top: 5px solid %%_color_bg}
+  fieldset x-content,
+  fieldset x-content x-content x-content {background: whitesmoke}
+  fieldset x-content x-content,
+  fieldset x-content x-content x-content x-content {background: white}
+
   /* form fields */
+
   x-field {display: block; margin: 20px 0}
   x-field label, x-group x-title {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
@@ -22,6 +37,7 @@
     color: %%_color_error}
 
   /* inputs */
+
   input,
   textarea,
   select {
@@ -40,6 +56,7 @@
   input[type='email'], input[name='nick'] {text-transform: lowercase}
 
   /* checkboxes and radiobuttons */
+
   input[type='checkbox'],
   input[type='radio'] {
     display: inline-block;
@@ -52,7 +69,9 @@
   input[type='radio'   ]:checked {background: url('images/icons-form_items._vector') %%_color_bg 0 -20px}
   input[type='checkbox']:disabled:checked,
   input[type='radio'   ]:disabled:checked {border-color: silver; background-color: lightgray}
+
   /* checkboxes and radiobuttons inside containers */
+
   x-field[data-type='checkbox'    ] label,
   x-field[data-type='radiobutton' ] label {display: inline}
   x-group[data-type='checkboxes'  ] x-field,
@@ -60,7 +79,8 @@
   x-group[data-type='checkboxes'  ] x-field label,
   x-group[data-type='radiobuttons'] x-field label {display: inline; font-size: 1em}
 
-  /* x-description + data-expander */
+  /* x-description + data-opener-type='description' */
+
   x-description {
     display: block;
     margin-top: 2px;
@@ -68,18 +88,20 @@
     line-height: 1.7em;
     color: darkgray}
   x-description p {margin: 0}
-  input[data-expander='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: none; background: url('images/icons-form_items._vector') 0 -45px}
-  input[data-expander='description'] + x-description {display: none}
-  input[data-expander='description']:checked {display: none}
-  input[data-expander='description']:checked + x-description {display: block}
+  input[data-opener-type='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: none; background: url('images/icons-form_items._vector') 0 -45px}
+  input[data-opener-type='description'] + x-description {display: none}
+  input[data-opener-type='description']:checked {display: none}
+  input[data-opener-type='description']:checked + x-description {display: block}
 
   /* disabled elements */
+
   x-field.disabled * {color: lightgray; cursor: default !important}
   input:disabled,
   textarea:disabled,
   select:disabled {border-color: lightgray}
 
   /* buttons */
+
   button {
     min-width: 150px;
     margin: 5px 20px 5px 0;
@@ -97,6 +119,7 @@
   button:disabled {cursor: default; background-color: lightgray !important}
 
   /* palette */
+
   x-group[data-type='palette'] {margin: 5px 0}
   x-group[data-type='palette'] x-title {margin-bottom: 5px}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0 4px 0 0}
@@ -106,13 +129,16 @@
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 
   /* captcha */
+
   x-field[data-type='captcha'] svg {display: block; margin: 20px 0}
 
   /* particular cases */
+
   form#user_delete,
   form#logout {width: 340px; margin: 100px auto}
 
   /* IE adaptation */
+
   html[data-uagent^='msie'] input[type='checkbox'],
   html[data-uagent^='msie'] input[type='radio'] {padding: 4px}
-  html[data-uagent^='msie'] input[data-expander='description'] {padding: 0; width: 10px}
+  html[data-uagent^='msie'] input[data-opener-type='description'] {padding: 0; width: 10px}

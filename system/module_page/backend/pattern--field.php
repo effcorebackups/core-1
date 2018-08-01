@@ -57,7 +57,7 @@ namespace effcore {
   public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
-  public $description_state = 'collapsed'; # expanded|collapsed|hidden
+  public $description_state = 'closed'; # opened|closed|hidden
 # ─────────────────────────────────────────────────────────────────────
   protected $_errors = [];
   protected $_form;
@@ -193,10 +193,10 @@ namespace effcore {
     }
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
-      $expander = new markup_simple('input', ['type' => 'checkbox', 'data-expander' => 'description']);
-      if ($this->description_state == 'hidden'                                   ) return '';
-      if ($this->description_state == 'expanded' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
-      if ($this->description_state == 'collapsed')             return $expander->render().(new markup($this->description_tag_name, [], $return))->render();
+      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description']);
+      if ($this->description_state == 'hidden'                                 ) return '';
+      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
+      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $return))->render();
       return '';
     }
   }

@@ -74,7 +74,7 @@ forms
       # field_text
         - text|field_text
             title: Text
-            description_state: expanded
+            description_state: opened
             description|text_multiline
               text
               - 0: This description is always shown.

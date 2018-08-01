@@ -1,5 +1,6 @@
 
   /* tabs */
+
   x-tabs {display: block; margin: 100px auto}
   x-tabs x-top-items {display: block; border-bottom: 5px solid %%_color_bg; font-size: 1.1em}
   x-tabs x-top-items ul, x-tabs x-top-items li {list-style: none; margin: 0; padding: 0}

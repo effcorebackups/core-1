@@ -224,7 +224,7 @@ namespace effcore\modules\develop {
       new markup('h2', [], 'UML Diagram'),
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
-      new markup_simple('input', ['type' => 'checkbox', 'id' => 'show_expand', 'checked' => 'checked']),
+      new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),
       $diagram
     ]);

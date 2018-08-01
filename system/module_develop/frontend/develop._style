@@ -2,6 +2,7 @@
   x-console {display: block; max-width: 800px; margin: 100px auto 100px auto}
 
   /* logs */
+
   x-block.logs td {vertical-align: top}
   x-block.logs tr:nth-child(even)   td {background-color: transparent}
   x-block.logs tr:nth-last-child(1) td {border-bottom: none}
@@ -13,21 +14,26 @@
   x-block.logs tr.query td.name {font-size: .9em}
 
   /* load diagram */
+
   x-block.diagram-load dl {margin: 50px 0; padding: 30px; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
   x-block.diagram-load dl dt {margin: 0 10px 0 0; padding: 0; float: left; min-width: 290px; font-size: 1.2em; line-height: 1.2em; text-align: right}
   x-block.diagram-load dl dd {margin: 0 0 0 300px; padding: 0; font-size: .9em}
 
   /* scale in any diagram */
+
   x-scale {display: block; height: 5px; background: %%_color_bg}
 
   /* php modules usage list */
+
   table.php_mod_usage td.file {width: 90%}
 
   /* reports */
+
   x-document.report {max-height: 400px; overflow: scroll}
   x-document.report p {margin: 0}
 
   /* x-structures-list */
+
   x-structures-list {display: block}
   x-structures-list x-item {display: block; margin: 40px 0}
   x-structures-list x-item > x-name {display: block; font-size: 1.5em; line-height: 1.5em}
@@ -36,6 +42,7 @@
   x-structures-list x-file-path:hover x-directory {display: inline-block}
 
   /* uml class diagram */
+
   x-diagram-uml {font-family: 'Arial'; overflow: auto}
   x-diagram-uml, x-diagram-uml * {display: block}
   x-diagram-uml x-children:empty {display: none}
@@ -64,7 +71,7 @@
   x-diagram-uml x-attributes:empty,
   x-diagram-uml x-operations:empty {display: none !important}
 
-  x-block.structures-diagram #show_expand:checked ~ x-diagram-uml x-attributes,
-  x-block.structures-diagram #show_expand:checked ~ x-diagram-uml x-operations {display: block}
+  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-attributes,
+  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-operations {display: block}
 
   x-block.demo-canvas svg {border: 1px solid lightgray}

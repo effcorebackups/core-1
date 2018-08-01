@@ -10,23 +10,28 @@
     background: white}
 
   /* page sizes */
+
   x-head {display: block; max-width: 800px; margin: 18px auto 0 auto}
   x-body {display: block; max-width: 800px; margin: 0 auto; min-height: 200px}
 
   /* headers */
+
   h1 {margin: 4em auto 3em auto; font-size: 2em;   line-height: 1.5em; font-weight: normal; display: block; max-width: 800px}
   h2 {margin: 3em auto 2em auto; font-size: 1.5em; line-height: 1.5em; font-weight: normal}
   h3 {margin: 2em auto 1em auto; font-size: 1em}
 
   /* links */
+
   a        {color: %%_color_bg}
   a:hover  {color: black}
   a.active {color: black}
 
   /* universal classes */
+
   .hidden {display: none}
 
   /* table */
+
   table {border-collapse: collapse; width: 100%; margin: 20px 0}
   table thead {border-bottom: 5px solid %%_color_bg}
   table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
@@ -46,11 +51,13 @@
   table.compact td:last-child {padding-right: 17px}
 
   /* info blocks */
+
   x-block.info dl {margin: 50px 0; padding: 5px 0; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
   x-block.info dl dt {margin: 0 10px 0 0; padding: 3px 3px 3px 14px; float: left; min-width: 200px}
   x-block.info dl dd {margin: 0 0 0 210px; padding: 3px}
 
   /* messages */
+
   x-messages {display: block; margin: 50px auto}
   x-messages ul {margin: 10px 0; padding: 15px 20px; font-size: 16px; background-color: gray; color: white}
   x-messages ul.notice  {background-color: gray}
@@ -62,6 +69,7 @@
   x-messages a {color: white}
 
   /* blocks */
+
   x-block {display: block}
 
   x-block.logo a.to_front {
@@ -80,16 +88,19 @@
   x-block.modules td.state {vertical-align: top}
 
   /* control elements */
+
   x-actions-control {display: block}
   x-actions-control x-title {display: block}
   x-actions-control x-action-list {display: block}
   x-actions-control x-action-list x-action {display: block}
 
   /* pager */
+
   x-pager {display: block; margin: 30px 0; text-align: center}
   x-pager a {display: inline-block; min-width: 20px; margin: 3px 5px}
 
   /* x-document ('license agreement' and other) */
+
   x-document {
     display: block;
     max-height: 300px;
@@ -102,13 +113,16 @@
   x-document h2 {margin: 2em 0 1em 0; font-size: 1.3em}
 
   /* class list */
+
   .classes-list {font-size: .9em}
 
   /* file system icons */
+
   x-file-path {display: inline-block}
   x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; margin-right: 10px; cursor: default; background: url('images/icons-file_types._vector') no-repeat}
   x-file-path x-file {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file_types._vector') no-repeat 0 -30px}
 
   /* menu with targets */
+
   x-targets {display: block; margin: 50px 0}
   x-targets a {display: inline-block; margin: 2px 5px 2px 0; padding: 5px 10px; border: 1px solid lightgray}

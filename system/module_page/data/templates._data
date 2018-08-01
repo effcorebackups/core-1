@@ -19,6 +19,10 @@ templates
     name: container
     type: text
     data: <%%_tag_name %%_attributes>%%_title_t%%_content%%_title_b%%_description</%%_tag_name>
+- fieldset
+    name: fieldset
+    type: text
+    data: <%%_tag_name %%_attributes>%%_title%%_description%%_content</%%_tag_name>
 - page
     name: page
     type: file
