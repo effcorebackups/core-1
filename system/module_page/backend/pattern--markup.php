@@ -32,4 +32,14 @@ namespace effcore {
     ]))->render();
   }
 
+  function render_description() {
+    if ($this->description) {
+      return (
+        new markup($this->description_tag_name, [],
+          new markup('p', [], $this->description)
+        )
+      )->render();
+    }
+  }
+
 }}
