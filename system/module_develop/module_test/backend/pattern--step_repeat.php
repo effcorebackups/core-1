@@ -11,24 +11,14 @@ namespace effcore {
   public $actions = [];
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $r_scenario = $this->actions;
-    $r_step = reset($r_scenario);
-    $r_iteration = 0;
-    while ($r_step !== false) {
-
-    # prevention from looping
-      if (++$r_iteration > $this->quantity) {
-        break;
+    for ($i = 1; $i <= $this->quantity; $i++) {
+      $c_results['reports'][] = translation::get('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $this->quantity]);
+      foreach ($this->actions as $c_step) {
+        $c_step->run($test, $this->actions, $c_step, $c_results);
+        if (array_key_exists('return', $c_results)) {
+          return;
+        }
       }
-
-    # run next step
-      $c_results['reports'][] = translation::get('repeat %%_cur from %%_max', ['cur' => $r_iteration, 'max' => $this->quantity]);
-      $r_step->run($test, $r_scenario, $r_step, $c_results);
-      if (array_key_exists('is_continue', $c_results)) {unset($c_results['is_continue']); continue;}
-      if (array_key_exists('return', $c_results)) break;
-
-    # go to the next item
-      $r_step = next($r_scenario);
     }
   }
 

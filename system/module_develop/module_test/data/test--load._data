@@ -4,10 +4,26 @@ tests
     title: Load
     scenario
     - repeat|step_repeat
-        quantity: 10
+        quantity: 50
         actions
+        - request_page_front|step_request
+            url: /
+        - response_check|step_check
+            where: http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
         - request_page_login|step_request
             url: /user/login
+        - response_check|step_check
+            where: http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        - request_page_registration|step_request
+            url: /user/registration
         - response_check|step_check
             where: http_code
             match: 200

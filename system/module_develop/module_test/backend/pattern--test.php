@@ -11,27 +11,14 @@ namespace effcore {
   public $id;
   public $title;
   public $scenario;
-  public $max_iteration = 1000;
 
   function run() {
-    $c_scenario = $this->scenario;
-    $c_step = reset($c_scenario);
-    $c_iteration = 0;
     $c_results = [];
-    while ($c_step !== false) {
-
-    # prevention from looping
-      if (++$c_iteration > $this->max_iteration) {
+    foreach ($this->scenario as $c_step) {
+      $c_step->run($this, $this->scenario, $c_step, $c_results);
+      if (array_key_exists('return', $c_results)) {
         break;
       }
-
-    # run next step
-      $c_step->run($this, $c_scenario, $c_step, $c_results);
-      if (array_key_exists('is_continue', $c_results)) {unset($c_results['is_continue']); continue;}
-      if (array_key_exists('return', $c_results)) break;
-
-    # go to the next item
-      $c_step = next($c_scenario);
     }
     return $c_results;
   }
