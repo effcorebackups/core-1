@@ -6,12 +6,13 @@
 
   /* fieldset */
 
-  fieldset {margin: 100px 0 50px 0; padding: 0; border: none}
+  fieldset {margin: 50px 0; padding: 0; border: none}
   x-field.before-container + fieldset {margin-top: 30px}
 
-  fieldset legend {position: absolute; margin: -50px 0 0 -3px; font-size: 1.5em}
-  fieldset input[data-opener-type='fieldset'] ~ legend {margin-left: 35px}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: -52px 0 0 0}
+  fieldset x-legend {display: inline-block; margin: 0 0 30px -2px; font-size: 1.5em; line-height: 1.2em}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0}
+  fieldset input[data-opener-type='fieldset'] ~ x-legend {margin-left: 40px}
+  fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-legend {margin-bottom: 0}
   fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-content {display: none}
 
   fieldset x-content {

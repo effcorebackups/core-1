@@ -7,9 +7,7 @@
 namespace effcore {
           class group_license_agreement extends fieldset {
 
-  public $tag_name = 'fieldset';
   public $title = 'License agreement';
-  public $title_tag_name = 'legend';
   public $attributes = ['data-type' => 'license_agreement'];
   public $agree_title = 'I accept the terms of the license agreement';
 

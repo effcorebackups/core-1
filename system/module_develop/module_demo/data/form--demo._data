@@ -250,6 +250,7 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         - checkboxes_all|fieldset
             title: Checkboxes
+            state: opened
             children
           # field_checkbox
             - checkbox|field_checkbox
@@ -287,6 +288,7 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         - radiobuttons_all|fieldset
             title: Radiobuttons
+            state: opened
             children
           # field_radiobutton
             - radiobutton|field_radiobutton

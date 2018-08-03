@@ -11,7 +11,7 @@ namespace effcore {
   public $template = 'fieldset';
 # ─────────────────────────────────────────────────────────────────────
   public $title;
-  public $title_tag_name = 'legend';
+  public $title_tag_name = 'x-legend';
   public $content_wrapper_tag_name = 'x-content';
   public $description;
   public $description_tag_name = 'x-description';
