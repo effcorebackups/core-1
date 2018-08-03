@@ -10,7 +10,8 @@
   x-field.before-container + fieldset {margin-top: 30px}
 
   fieldset x-legend {display: inline-block; margin: 0 0 30px -2px; font-size: 1.5em; line-height: 1.2em}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0;  border-radius: 10px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
+  fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
   fieldset input[data-opener-type='fieldset'] ~ x-legend {margin-left: 40px}
   fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-legend {margin-bottom: 0}
   fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-content {display: none}
@@ -89,7 +90,7 @@
     line-height: 1.7em;
     color: darkgray}
   x-description p {margin: 0}
-  input[data-opener-type='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: none; background: url('images/icons-form_items._vector') 0 -45px}
+  input[data-opener-type='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: none; background: url('images/icons-form_items._vector') 0 -85px}
   input[data-opener-type='description'] + x-description {display: none}
   input[data-opener-type='description']:checked {display: none}
   input[data-opener-type='description']:checked + x-description {display: block}
