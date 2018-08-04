@@ -9,15 +9,15 @@
   fieldset {margin: 50px 0; padding: 0; border: none}
   x-field.before-container + fieldset {margin-top: 30px}
 
-  fieldset x-legend {display: inline-block; margin: 0 0 30px -2px; font-size: 1.5em; line-height: 1.2em}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0;  border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
+  fieldset x-legend {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
   fieldset input[data-opener-type='fieldset'] ~ x-legend {margin-left: 35px}
-  fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-legend {margin-bottom: 0}
-  fieldset input[data-opener-type='fieldset']:not(:checked) ~ x-content {display: none}
+  fieldset input[data-opener-type='fieldset']:checked ~ x-content {display: none}
 
   fieldset x-content {
     display: block;
+    margin-top: 30px;
     padding: 10px 16px;
     border-top: 5px solid %%_color_bg}
   fieldset x-content,

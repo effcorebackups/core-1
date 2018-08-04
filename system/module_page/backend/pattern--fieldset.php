@@ -15,7 +15,7 @@ namespace effcore {
   public $content_wrapper_tag_name = 'x-content';
   public $description;
   public $description_tag_name = 'x-description';
-  public $state = ''; # opened|closed
+  public $state = ''; # opened|closed[checked]
 
   function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
     if ($title)       $this->title       = $title;
@@ -38,8 +38,8 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      $opener = $this->state == 'opened' ? (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'checked' => 'checked']))->render() : (
-                $this->state == 'closed' ? (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset'                        ]))->render() : '');
+      $opener = $this->state == 'opened' ? (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset'                        ]))->render() : (
+                $this->state == 'closed' ? (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'checked' => 'checked']))->render() : '');
       return $opener.(new markup($this->title_tag_name, [], [
         $this->title
       ]))->render();
