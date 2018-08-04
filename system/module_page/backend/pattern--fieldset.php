@@ -11,7 +11,7 @@ namespace effcore {
   public $template = 'fieldset';
 # ─────────────────────────────────────────────────────────────────────
   public $title;
-  public $title_tag_name = 'x-legend';
+  public $title_tag_name = 'label';
   public $content_wrapper_tag_name = 'x-content';
   public $description;
   public $description_tag_name = 'x-description';
@@ -39,13 +39,12 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      $opener = $this->state == 'opened' ? new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'is_closed_'.(++static::$c_index)                        ]) : (
-                $this->state == 'closed' ? new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'is_closed_'.(++static::$c_index), 'checked' => 'checked']) : null);
-      if ($opener && field::request_value_get('form_id') && field::request_value_get('is_closed_'.static::$c_index) == 'on') $opener->attribute_insert('checked', 'checked');
-      if ($opener && field::request_value_get('form_id') && field::request_value_get('is_closed_'.static::$c_index) != 'on') $opener->attribute_delete('checked');
-      return ($opener ? $opener->render() : '').(new markup($this->title_tag_name, [], [
-        $this->title
-      ]))->render();
+      $opener = $this->state == 'opened' ? new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.(++static::$c_index), 'id' => 'f_opener_'.static::$c_index,                       ]) : (
+                $this->state == 'closed' ? new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.(++static::$c_index), 'id' => 'f_opener_'.static::$c_index, 'checked' => 'checked']) : null);
+      if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.static::$c_index) == 'on') $opener->attribute_insert('checked', 'checked');
+      if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.static::$c_index) != 'on') $opener->attribute_delete('checked');
+      return $opener ? $opener->render().(new markup($this->title_tag_name,['for' => 'f_opener_'.static::$c_index], [$this->title]))->render() :
+                                         (new markup($this->title_tag_name,[                                     ], [$this->title]))->render();
     }
   }
 

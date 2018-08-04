@@ -9,10 +9,10 @@
   fieldset {margin: 50px 0; padding: 0; border: none}
   x-field.before-container + fieldset {margin-top: 30px}
 
-  fieldset x-legend {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
+  fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
   fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
-  fieldset input[data-opener-type='fieldset'] ~ x-legend {margin-left: 35px}
+  fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-content {display: none}
 
   fieldset x-content {
