@@ -57,7 +57,7 @@ namespace effcore {
   public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
-  public $description_state = 'closed'; # opened[checked] | closed | hidden
+  public $description_state = 'closed'; # opened | closed[checked] | hidden
 # ─────────────────────────────────────────────────────────────────────
   protected $_errors = [];
   protected $_form;
@@ -193,7 +193,7 @@ namespace effcore {
     }
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
-      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description']);
+      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked']);
       if ($this->description_state == 'hidden'                                 ) return '';
       if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
       if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $return))->render();
