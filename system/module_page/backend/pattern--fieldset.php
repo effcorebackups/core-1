@@ -5,36 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class fieldset extends markup {
+          class fieldset extends container {
 
   public $tag_name = 'fieldset';
-  public $template = 'fieldset';
-# ─────────────────────────────────────────────────────────────────────
-  public $title;
   public $title_tag_name = 'label';
   public $content_wrapper_tag_name = 'x-content';
-  public $description;
-  public $description_tag_name = 'x-description';
+# ─────────────────────────────────────────────────────────────────────
   public $state = ''; # opened | closed[checked]
   static public $c_index = 0;
 
   function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
-    if ($title)       $this->title       = $title;
-    if ($description) $this->description = $description;
-    parent::__construct(null, $attributes, $children, $weight);
-  }
-
-  function render() {
-    $content = $this->content_wrapper_tag_name ? (new markup($this->content_wrapper_tag_name, [],
-      $this->render_children($this->children_select())))->render() : 
-      $this->render_children($this->children_select());
-    return (new template($this->template, [
-      'tag_name'    => $this->tag_name,
-      'attributes'  => core::data_to_attr($this->attributes_select()),
-      'title'       => $this->render_self(),
-      'description' => $this->render_description(),
-      'content'     => $content
-    ]))->render();
+    parent::__construct(null, $title, $description, $attributes, $children, $weight);
   }
 
   function render_self() {

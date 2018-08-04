@@ -16,6 +16,7 @@ namespace effcore {
   public $description;
   public $description_tag_name = 'x-description';
   public $description_position = 'bottom';
+  public $content_wrapper_tag_name;
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
     if ($title)       $this->title       = $title;
@@ -29,11 +30,13 @@ namespace effcore {
     return (new template($this->template, [
       'tag_name'      => $this->tag_name,
       'attributes'    => core::data_to_attr($this->attributes_select()),
-      'content'       => $this->render_children($this->children_select()),
       'title_t'       => $is_bottom_title    ? '' : $this->render_self(),
       'title_b'       => $is_bottom_title    ?      $this->render_self()        : '',
       'description_t' => $is_top_description ?      $this->render_description() : '',
-      'description_b' => $is_top_description ? '' : $this->render_description()
+      'description_b' => $is_top_description ? '' : $this->render_description(),
+      'content'       => $this->content_wrapper_tag_name ? (new markup($this->content_wrapper_tag_name, [],
+                         $this->render_children($this->children_select()) ))->render() :
+                         $this->render_children($this->children_select())
     ]))->render();
   }
 
