@@ -57,7 +57,7 @@ namespace effcore {
   public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
-  public $description_state = 'closed'; # opened|closed|hidden
+  public $description_state = 'closed'; # opened[checked] | closed | hidden
 # ─────────────────────────────────────────────────────────────────────
   protected $_errors = [];
   protected $_form;
