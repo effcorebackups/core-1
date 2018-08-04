@@ -118,9 +118,12 @@ namespace effcore {
 
   function errors_get() {
     $return = $this->_errors;
-    foreach ($this->fields_get() as $c_npath => $c_field) {
-      if ($c_field->errors_count_get()) {
-        $return[$c_npath] = $c_field->errors_get();
+    foreach ($this->form_items_get() as $c_npath => $c_item) {
+      if (method_exists($c_item, 'errors_count_get') &&
+          method_exists($c_item, 'errors_get')) {
+        if ($c_item->errors_count_get()) {
+          $return[$c_npath] = $c_item->errors_get();
+        }
       }
     }
     return $return;
@@ -129,16 +132,6 @@ namespace effcore {
   function source_get() {
     return $this->attribute_select('method') == 'post' ? '_POST' :
           ($this->attribute_select('method') == 'get'  ? '_GET'  : '_GET');
-  }
-
-  function fields_get() {
-    $return = [];
-    foreach ($this->children_select_recursive() as $c_npath => $c_item) {
-      if ($c_item instanceof \effcore\field) {
-        $return[$c_npath] = $c_item;
-      }
-    }
-    return $return;
   }
 
   function form_items_get() {
