@@ -89,8 +89,11 @@ forms
       # field_password
         - password|field_password
             title: Password
-            description|text
-              text: Field %%_type.
+            description_position: top
+            description|text_multiline
+              text
+              - 0: This description is shown on top.
+              - 1: Field %%_type.
               args
               - type: field_password
             element_attributes

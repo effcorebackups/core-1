@@ -30,7 +30,7 @@ namespace effcore {
       # add data to the list
         $wrapper_data0_level = count($list->_p_list);
         $acceptor = empty($list->_p_list[$wrapper_data0_level]) ? null :
-                          $list->_p_list[$wrapper_data0_level];         # get list container
+                          $list->_p_list[$wrapper_data0_level];    # get list container
         if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
         if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data0');
         if ($acceptor) {
@@ -50,7 +50,7 @@ namespace effcore {
         if (empty($list->_c_paragraph) && $c_indent > 0) {
           $wrapper_data1_level = min($level, count($list->_p_list));
           $acceptor = empty($list->_p_list[$wrapper_data1_level]) ? null :
-                            $list->_p_list[$wrapper_data1_level];         # get list container
+                            $list->_p_list[$wrapper_data1_level];    # get list container
           if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
           if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data1');
           if ($acceptor) {

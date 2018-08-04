@@ -15,6 +15,7 @@ namespace effcore {
   public $title_position = 'top';
   public $description;
   public $description_tag_name = 'x-description';
+  public $description_position = 'bottom';
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
     if ($title)       $this->title       = $title;
@@ -23,15 +24,16 @@ namespace effcore {
   }
 
   function render() {
-    $is_bottom_title = !empty($this->title_position) &&
-                              $this->title_position == 'bottom';
+    $is_bottom_title    = !empty($this->title_position)       && $this->title_position       == 'bottom';
+    $is_top_description = !empty($this->description_position) && $this->description_position == 'top';
     return (new template($this->template, [
-      'tag_name'    => $this->tag_name,
-      'attributes'  => core::data_to_attr($this->attributes_select()),
-      'content'     => $this->render_children($this->children_select()),
-      'description' => $this->render_description(),
-      'title_t'     => $is_bottom_title ? '' : $this->render_self(),
-      'title_b'     => $is_bottom_title ?      $this->render_self() : ''
+      'tag_name'      => $this->tag_name,
+      'attributes'    => core::data_to_attr($this->attributes_select()),
+      'content'       => $this->render_children($this->children_select()),
+      'title_t'       => $is_bottom_title    ? '' : $this->render_self(),
+      'title_b'       => $is_bottom_title    ?      $this->render_self()        : '',
+      'description_t' => $is_top_description ?      $this->render_description() : '',
+      'description_b' => $is_top_description ? '' : $this->render_description()
     ]))->render();
   }
 

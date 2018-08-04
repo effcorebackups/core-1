@@ -76,6 +76,7 @@ translations
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
+    - This description is shown on top.: Это описание показано сверху.
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
