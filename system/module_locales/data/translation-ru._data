@@ -231,7 +231,9 @@ translations
     - set: установка
     - Shared information: Общая информация
     - Shared params: Общие параметры
+    - Show description: Показать описание
     - Show more: Показать больше
+    - Show or hide content: Показать или скрыть контент
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
