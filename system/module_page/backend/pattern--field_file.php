@@ -259,7 +259,7 @@ namespace effcore {
     }
   }
 
-  static function validate($field, $form) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->element_name_get();
     $type = $field->element_type_get();

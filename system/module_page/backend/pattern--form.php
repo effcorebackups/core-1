@@ -37,27 +37,28 @@ namespace effcore {
       if (method_exists($c_element, 'path_set')) $c_element->path_set($c_path);
     }
   # renew all variables after build process
-    $elements   = $this->children_select_recursive();
-    $form_items = $this->form_items_get();
-    $fields     = $this->fields_get();
+    $elements = $this->children_select_recursive();
+    $items    = $this->form_items_get();
 
   # call init handlers
-    event::start('on_form_init', $id, [$this, $form_items]);
+    event::start('on_form_init', $id, [$this, $items]);
 
   # if user click the button
     if ($this->clicked_button_name &&
         field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
-    # call field validate
+    # call items validate
       if (empty($this->clicked_button->novalidate)) {
-        foreach ($fields as $c_npath => $c_field) {
-          $c_field::validate($c_field, $this, $c_npath);
+        foreach ($items as $c_npath => $c_item) {
+          if (method_exists($c_item, 'validate')) {
+            $c_item::validate($c_item, $this, $c_npath);
+          }
         }
       }
 
     # call form validate handlers
       if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [$this, $form_items]);
+        event::start('on_form_validate', $id, [$this, $items]);
       }
 
     # send specific header
@@ -77,7 +78,7 @@ namespace effcore {
 
     # call submit handler (if no errors)
       if ($this->errors_count_get() == 0) {
-        event::start('on_form_submit', $id, [$this, $form_items]);
+        event::start('on_form_submit', $id, [$this, $items]);
       }
 
     # validation cache

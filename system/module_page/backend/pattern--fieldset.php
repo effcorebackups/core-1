@@ -29,4 +29,11 @@ namespace effcore {
     }
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function validate($fieldset, $form, $npath) {
+  }
+
 }}

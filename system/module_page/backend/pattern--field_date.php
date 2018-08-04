@@ -32,7 +32,7 @@ namespace effcore {
   static function value_min_get($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_date;}
   static function value_max_get($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_date;}
 
-  static function validate($field, $form) {
+  static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->element_name_get();
     $type = $field->element_type_get();

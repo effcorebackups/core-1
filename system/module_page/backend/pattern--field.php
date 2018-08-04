@@ -329,7 +329,7 @@ namespace effcore {
     return $element->attribute_select('readonly') ? true : false;
   }
 
-  static function validate($field, $form) {
+  static function validate($field, $form, $npath) {
     $name = $field->element_name_get();
     $type = $field->element_type_get();
   # add validate functionality to non specified fields
