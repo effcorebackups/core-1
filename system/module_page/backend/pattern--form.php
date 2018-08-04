@@ -47,7 +47,7 @@ namespace effcore {
     if ($this->clicked_button_name &&
         field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
-    # call items validate
+    # call items validate handlers
       if (empty($this->clicked_button->novalidate)) {
         foreach ($items as $c_npath => $c_item) {
           if (method_exists($c_item, 'validate')) {
@@ -143,14 +143,14 @@ namespace effcore {
 
   function form_items_get() {
     $return = [];
-    $fields = [];
+    $items = [];
     foreach ($this->children_select_recursive() as $c_npath => $c_item) {
       if ($c_item instanceof \effcore\container)         $return[$c_npath] = $c_item;
-      if ($c_item instanceof \effcore\group_mono)        $fields['##'.$c_item->first_element_name_get()][] = $c_item;
-      if ($c_item instanceof \effcore\field)             $fields['#'.$c_item->element_name_get()][] = $c_item;
-      if ($c_item instanceof \effcore\field_radiobutton) $fields['#'.$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
+      if ($c_item instanceof \effcore\group_mono)        $items['##'.$c_item->first_element_name_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field)             $items['#'.$c_item->element_name_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field_radiobutton) $items['#'.$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
     }
-    foreach ($fields as $c_name => $c_group) {
+    foreach ($items as $c_name => $c_group) {
       if (count($c_group) == 1) $return[$c_name] = reset($c_group);
       if (count($c_group) >= 2) $return[$c_name] = $c_group;
     }
