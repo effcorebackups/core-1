@@ -140,7 +140,7 @@ namespace effcore\modules\develop {
         $x_class_wrapper = new markup('x-class-wrapper');
         $x_class         = new markup('x-class');
         $x_name          = new markup('x-name', ['title' => $c_item_info->file], new text_simple($c_item_info->name));
-        $x_namespace     = new markup('x-namespace', [], '(from '.$c_item_info->namespace.')');
+        $x_namespace     = new markup('x-namespace', [], $c_item_info->namespace ? '(from '.$c_item_info->namespace.')' : '');
         $x_name_wrapper  = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes    = new markup('x-attributes');
         $x_operations    = new markup('x-operations');
