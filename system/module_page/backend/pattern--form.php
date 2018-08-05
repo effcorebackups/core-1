@@ -17,7 +17,7 @@ namespace effcore {
   public $clicked_button_name;
   public $validation_id;
   public $validation_data = [];
-  protected $_errors = [];
+  static public $errors = [];
 
   function build() {
     $this->validation_id = static::validation_id_get($this->source_get());
@@ -31,7 +31,7 @@ namespace effcore {
         $c_element->build();
       }
     }
-  # relate each field with it's form
+  # relate each item with it's form
     foreach ($this->children_select_recursive() as $c_path => $c_element) {
       if (method_exists($c_element, 'form_set')) $c_element->form_set($this);
       if (method_exists($c_element, 'path_set')) $c_element->path_set($c_path);
@@ -47,10 +47,10 @@ namespace effcore {
     if ($this->clicked_button_name &&
         field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
-    # call items validate handlers
+    # call items validate methods
       if (empty($this->clicked_button->novalidate)) {
         foreach ($items as $c_npath => $c_item) {
-          if (method_exists($c_item, 'validate')) {
+          if ($c_npath[0] != '#' && method_exists($c_item, 'validate')) {
             $c_item::validate($c_item, $this, $c_npath);
           }
         }
@@ -62,12 +62,12 @@ namespace effcore {
       }
 
     # send specific header
-      header('X-Submit-Errors-Count: '.$this->errors_count_get());
+      header('X-Submit-Errors-Count: '.$this->total_errors_count_get());
 
     # show errors
-      if ($this->errors_count_get() != 0) {
+      if ($this->total_errors_count_get() != 0) {
         $this->attribute_insert('class', ['error' => 'error']);
-        foreach ($this->errors_get() as $c_errors) {
+        foreach ($this->total_errors_get() as $c_errors) {
           foreach ($c_errors as $c_error) {
             if ($c_error) {
               message::insert($c_error, 'error');
@@ -77,15 +77,15 @@ namespace effcore {
       }
 
     # call submit handler (if no errors)
-      if ($this->errors_count_get() == 0) {
+      if ($this->total_errors_count_get() == 0) {
         event::start('on_form_submit', $id, [$this, $items]);
       }
 
     # validation cache
-      if ($this->errors_count_get() != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
+      if ($this->total_errors_count_get() != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
         $this->validation_cache_update($this->validation_data);
       }
-      if ($this->errors_count_get() == 0 || count($this->validation_data) == 0) {
+      if ($this->total_errors_count_get() == 0 || count($this->validation_data) == 0) {
         $this->validation_cache_delete();
       }
 
@@ -102,31 +102,6 @@ namespace effcore {
       'name'  => 'validation_id',
       'value' => $this->validation_id,
     ]), 'hidden_validation_id');
-  }
-
-  function error_add($message = null) {
-    $this->_errors['_form'][] = $message;
-  }
-
-  function errors_count_get() {
-    $return = 0;
-    foreach ($this->errors_get() as $c_errors) {
-      $return += count($c_errors);
-    }
-    return $return;
-  }
-
-  function errors_get() {
-    $return = $this->_errors;
-    foreach ($this->form_items_get() as $c_npath => $c_item) {
-      if (method_exists($c_item, 'errors_count_get') &&
-          method_exists($c_item, 'errors_get')) {
-        if ($c_item->errors_count_get()) {
-          $return[$c_npath] = $c_item->errors_get();
-        }
-      }
-    }
-    return $return;
   }
 
   function source_get() {
@@ -166,6 +141,26 @@ namespace effcore {
   function render() {
     $this->build();
     return parent::render();
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # functionality for errors
+  # ─────────────────────────────────────────────────────────────────────
+
+  function error_set($message = null) {
+    static::$errors['_form'][] = $message;
+  }
+
+  function total_errors_count_get() {
+    $return = 0;
+    foreach ($this->total_errors_get() as $c_errors) {
+      $return += count($c_errors);
+    }
+    return $return;
+  }
+
+  function total_errors_get() {
+    return static::$errors + field::$errors;
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

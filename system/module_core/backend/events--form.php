@@ -43,12 +43,12 @@ namespace effcore\modules\core {
       case 'install':
         if ($items['#driver:mysql' ]->element_checked_get() == false &&
             $items['#driver:sqlite']->element_checked_get() == false) {
-          $items['#driver:mysql' ]->error_add();
-          $items['#driver:sqlite']->error_add();
-          $form->error_add('Driver is not selected!');
+          $items['#driver:mysql' ]->error_set();
+          $items['#driver:sqlite']->error_set();
+          $form->error_set('Driver is not selected!');
           return;
         }
-        if ($form->errors_count_get() == 0) {
+        if ($form->total_errors_count_get() == 0) {
           if ($items['#driver:mysql']->element_checked_get()) {
             $test = storage::get('main')->test('mysql', (object)[
               'storage_id' => $items['#storage_id']->value_get(),
@@ -58,12 +58,12 @@ namespace effcore\modules\core {
               'password'   => $items['#password'  ]->value_get()
             ]);
             if ($test !== true) {
-              $items['#storage_id']->error_add();
-              $items['#host_name' ]->error_add();
-              $items['#port'      ]->error_add();
-              $items['#user_name' ]->error_add();
-              $items['#password'  ]->error_add();
-              $form->error_add(translation::get('Storage is not available with these credentials!').br.
+              $items['#storage_id']->error_set();
+              $items['#host_name' ]->error_set();
+              $items['#port'      ]->error_set();
+              $items['#user_name' ]->error_set();
+              $items['#password'  ]->error_set();
+              $form->error_set(translation::get('Storage is not available with these credentials!').br.
                                translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
           }
@@ -72,8 +72,8 @@ namespace effcore\modules\core {
               'file_name' => $items['#file_name']->value_get()
             ]);
             if ($test !== true) {
-              $items['#file_name']->error_add();
-              $form->error_add(translation::get('Storage is not available with these credentials!').br.
+              $items['#file_name']->error_set();
+              $form->error_set(translation::get('Storage is not available with these credentials!').br.
                                translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
           }

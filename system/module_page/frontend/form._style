@@ -10,6 +10,7 @@
   x-field.before-container + fieldset {margin-top: 30px}
 
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
+  fieldset > label + x-content {margin-top: 30px}
   fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
@@ -17,7 +18,6 @@
 
   fieldset x-content {
     display: block;
-    margin-top: 30px;
     padding: 10px 16px;
     border-top: 5px solid %%_color_bg}
   fieldset x-content,

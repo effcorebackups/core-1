@@ -59,7 +59,7 @@ namespace effcore {
   public $element_attributes = [];
   public $description_state = 'closed'; # opened | closed[checked] | hidden
 # ─────────────────────────────────────────────────────────────────────
-  protected $_errors = [];
+  static public $errors = [];
   protected $_form;
   protected $_path;
 
@@ -81,29 +81,31 @@ namespace effcore {
   }
 
   function form_get() {return $this->_form;}
-  function form_set($form) {$this->_form = $form;}
+  function form_set($form)   {$this->_form = $form;}
 
   function path_get() {return $this->_path;}
-  function path_set($path) {$this->_path = $path;}
+  function path_set($path)   {$this->_path = $path;}
 
   # ─────────────────────────────────────────────────────────────────────
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function error_add($message = null) {
-    if (!count($this->_errors)) {
+  function error_set($message = null) {
+    static::$errors[$this->_path][] = $message;
+    if (count(static::$errors[$this->_path]) == 1) {
       $element = $this->child_select('element');
       $element->attribute_insert('class', ['error' => 'error']);
     }
-    $this->_errors[] = $message;
   }
 
   function errors_count_get() {
-    return count($this->_errors);
+    return isset(static::$errors[$this->_path]) ?
+           count(static::$errors[$this->_path]) : 0;
   }
 
   function errors_get() {
-    return $this->_errors;
+    return isset(static::$errors[$this->_path]) ?
+                 static::$errors[$this->_path] : [];
   }
 
   # ─────────────────────────────────────────────────────────────────────
