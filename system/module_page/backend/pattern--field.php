@@ -91,8 +91,7 @@ namespace effcore {
   }
 
   function errors_count_get() {
-    return isset(static::$errors[$this->npath]) ?
-           count(static::$errors[$this->npath]) : 0;
+    return count($this->errors_get());
   }
 
   function errors_get() {
