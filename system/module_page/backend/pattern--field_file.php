@@ -144,11 +144,10 @@ namespace effcore {
   }
 
   protected function pool_files_move_tmp_to_pre() {
-    $form = $this->form_get();
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
-        $dst_file = new file(temporary::directory.'validation/'.$form->validation_cache_get_date().'/'.$form->validation_id.'-'.$c_id);
+        $dst_file = new file(temporary::directory.'validation/'.$this->cform->validation_cache_get_date().'/'.$this->cform->validation_id.'-'.$c_id);
         if ($src_file->move_uploaded(
             $dst_file->dirs_get(),
             $dst_file->file_get())) {
@@ -192,18 +191,16 @@ namespace effcore {
 
   protected function pool_validation_cache_get($type) {
     $name = $this->element_name_get();
-    $form = $this->form_get();
-    return isset($form->validation_data['pool'][$name][$type]) ?
-                 $form->validation_data['pool'][$name][$type] : [];
+    return isset($this->cform->validation_data['pool'][$name][$type]) ?
+                 $this->cform->validation_data['pool'][$name][$type] : [];
   }
 
   protected function pool_validation_cache_set($type, $data) {
     $name = $this->element_name_get();
-    $form = $this->form_get();
-    $form->validation_data['pool'][$name][$type] = $data;
-    if (count($form->validation_data['pool'][$name][$type]) == 0) unset($form->validation_data['pool'][$name][$type]);
-    if (count($form->validation_data['pool'][$name])        == 0) unset($form->validation_data['pool'][$name]);
-    if (count($form->validation_data['pool'])               == 0) unset($form->validation_data['pool']);
+    $this->cform->validation_data['pool'][$name][$type] = $data;
+    if (count($this->cform->validation_data['pool'][$name][$type]) == 0) unset($this->cform->validation_data['pool'][$name][$type]);
+    if (count($this->cform->validation_data['pool'][$name])        == 0) unset($this->cform->validation_data['pool'][$name]);
+    if (count($this->cform->validation_data['pool'])               == 0) unset($this->cform->validation_data['pool']);
   }
 
   # ─────────────────────────────────────────────────────────────────────

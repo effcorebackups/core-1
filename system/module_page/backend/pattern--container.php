@@ -17,12 +17,17 @@ namespace effcore {
   public $description_tag_name = 'x-description';
   public $description_position = 'bottom';
   public $content_wrapper_tag_name;
+  public $cform;
+  public $npath;
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
     if ($title)       $this->title       = $title;
     if ($description) $this->description = $description;
     parent::__construct($tag_name, $attributes, $children, $weight);
   }
+
+  function cform_set($form) {$this->cform = $form;}
+  function npath_set($path) {$this->npath = $path;}
 
   function render() {
     $is_bottom_title    = !empty($this->title_position)       && $this->title_position       == 'bottom';

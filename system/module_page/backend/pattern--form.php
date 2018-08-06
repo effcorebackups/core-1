@@ -32,9 +32,9 @@ namespace effcore {
       }
     }
   # relate each item with it's form
-    foreach ($this->children_select_recursive() as $c_path => $c_element) {
-      if (method_exists($c_element, 'form_set')) $c_element->form_set($this);
-      if (method_exists($c_element, 'path_set')) $c_element->path_set($c_path);
+    foreach ($this->children_select_recursive() as $c_npath => $c_element) {
+      if (method_exists($c_element, 'cform_set')) $c_element->cform_set($this);
+      if (method_exists($c_element, 'npath_set')) $c_element->npath_set($c_npath);
     }
   # renew all variables after build process
     $elements = $this->children_select_recursive();
