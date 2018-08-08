@@ -156,7 +156,8 @@ namespace effcore\modules\user {
     if (!isset($_COOKIE['cookies_is_on'])) {
       message::insert(
         translation::get('Cookies are disabled. You can not log in!').br.
-        translation::get('Enable cookies before login.'), 'warning');
+        translation::get('Enable cookies before login.'), 'warning'
+      );
     }
   }
 

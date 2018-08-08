@@ -22,7 +22,6 @@ translations
     - Checkbox 4 (disabled + checked): Флаг 4 (установлен + отключён)
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - class: класс
-    - Classes list: Список классов
     - Classes: Классы
     - Console: Консоль
     - Demo: Демо
@@ -43,7 +42,6 @@ translations
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
-    - intr.: интр.
     - make request to "%%_url": сделать запрос на "%%_url"
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
