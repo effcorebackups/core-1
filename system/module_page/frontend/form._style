@@ -143,4 +143,5 @@
 
   html[data-uagent^='msie'] input[type='checkbox'],
   html[data-uagent^='msie'] input[type='radio'] {padding: 4px}
-  html[data-uagent^='msie'] input[data-opener-type='description'] {padding: 0; width: 10px}
+  html[data-uagent^='msie'] input[data-opener-type='description'] {margin-left: 8px; padding: 0; width: 10px}
+  html[data-uagent^='msie'] input[data-opener-type='fieldset'] {background-image: none}
