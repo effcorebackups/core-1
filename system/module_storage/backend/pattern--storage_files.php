@@ -205,9 +205,9 @@ namespace effcore {
     $pc_objects = []; # classes with interface 'has_post_constructor'
     $pi_objects = []; # classes with interface 'has_post_init'
     $pp_objects = []; # classes with interface 'has_post_parsing'
-    $line_num = 0;
+    $line_number = 0;
     foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
-      $line_num++;
+      $line_number++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
       $matches = [];
@@ -250,7 +250,7 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        $messages = ['Function: data_to_code', 'Wrong syntax in data at line: '.$line_num];
+        $messages = ['Function: data_to_code', 'Wrong syntax in data at line: '.$line_number];
         if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
         message::insert(implode(br, $messages), 'error');
       }

@@ -25,6 +25,7 @@ namespace effcore {
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
     $this->button_clicked_set(field::request_value_get('button', 0, $this->source_get()));
+
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
       if (method_exists($c_element, 'build')) {
@@ -36,9 +37,15 @@ namespace effcore {
       if (method_exists($c_element, 'cform_set')) $c_element->cform_set($this);
       if (method_exists($c_element, 'npath_set')) $c_element->npath_set($c_npath);
     }
-  # renew all variables after build process
-    $elements = $this->children_select_recursive();
-    $items    = $this->form_items_get();
+
+  # get form elements (fields, containers, fieldset and etc.)
+    $items = $this->form_items_get();
+  # children must be located before their parents
+    uksort($items, function($a, $b) {
+      if ($a[0] == '#') return 0;
+      if ($b[0] == '#') return 0;
+      return strlen($a) == strlen($b) ? 0 : (strlen($a) < strlen($b) ? 1 : -1);
+    });
 
   # call init handlers
     event::start('on_form_init', $id, [$this, $items]);
@@ -115,8 +122,8 @@ namespace effcore {
     foreach ($this->children_select_recursive() as $c_npath => $c_item) {
       if ($c_item instanceof \effcore\container)         $return[$c_npath] = $c_item;
       if ($c_item instanceof \effcore\group_mono)        $items['##'.$c_item->first_element_name_get()][] = $c_item;
-      if ($c_item instanceof \effcore\field)             $items['#'.$c_item->element_name_get()][] = $c_item;
-      if ($c_item instanceof \effcore\field_radiobutton) $items['#'.$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field)             $items['#' .$c_item->element_name_get()][] = $c_item;
+      if ($c_item instanceof \effcore\field_radiobutton) $items['#' .$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
     }
     foreach ($items as $c_name => $c_group) {
       if (count($c_group) == 1) $return[$c_name] = reset($c_group);

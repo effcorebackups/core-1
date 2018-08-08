@@ -58,4 +58,27 @@ namespace effcore {
     return (new markup('b', ['class' => ['required' => 'required']], '*'))->render();
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+  # functionality for errors
+  # ─────────────────────────────────────────────────────────────────────
+
+  function group_errors_count_get() {
+    $return = 0;
+    foreach ($this->group_errors_get() as $c_errors) {
+      $return += count($c_errors);
+    }
+    return $return;
+  }
+
+  function group_errors_get() {
+    $return = [];
+    foreach ($this->children_select_recursive() as $c_npath => $c_item) {
+      $c_full_npath = $this->npath.'/'.$c_npath;
+      if (isset(field::$errors[$c_full_npath])) {
+        $return[$c_full_npath] = field::$errors[$c_full_npath];
+      }
+    }
+    return $return;
+  }
+
 }}
