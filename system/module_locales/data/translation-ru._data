@@ -95,11 +95,11 @@ translations
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
-    - Field "%%_title" must contain a maximum of %%_num characters!: Поле "%%_title" должно содержать максимум %%_num символов!
-    - Field "%%_title" must contain a minimum of %%_num characters!: Поле "%%_title" должно содержать минимум %%_num символов!
-    - Field must contain %%_num characters.: Поле должно содержать %%_num символов.
-    - Field must contain a maximum of %%_num characters.: Поле должно содержать максимум %%_num символов.
-    - Field must contain a minimum of %%_num characters.: Поле должно содержать минимум %%_num символов.
+    - Field "%%_title" must contain a maximum of %%_number characters!: Поле "%%_title" должно содержать максимум %%_number символов!
+    - Field "%%_title" must contain a minimum of %%_number characters!: Поле "%%_title" должно содержать минимум %%_number символов!
+    - Field must contain %%_number characters.: Поле должно содержать %%_number символов.
+    - Field must contain a maximum of %%_number characters.: Поле должно содержать максимум %%_number символов.
+    - Field must contain a minimum of %%_number characters.: Поле должно содержать минимум %%_number символов.
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
     - Field value is less than %%_value.: Значение поля меньше чем %%_value.
     - Field value is more than %%_value.: Значение поля больше чем %%_value.

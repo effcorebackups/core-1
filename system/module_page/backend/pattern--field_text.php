@@ -63,7 +63,7 @@ namespace effcore {
     if ($element->attribute_select('minlength') &&
         $element->attribute_select('minlength') > strlen($new_value) && strlen($new_value)) {
       $field->error_set(
-        translation::get('Field "%%_title" must contain a minimum of %%_num characters!', ['title' => translation::get($field->title), 'num' => $element->attribute_select('minlength')])
+        translation::get('Field "%%_title" must contain a minimum of %%_number characters!', ['title' => translation::get($field->title), 'number' => $element->attribute_select('minlength')])
       );
     } else {
       return true;
@@ -75,7 +75,7 @@ namespace effcore {
         $element->attribute_select('maxlength') < strlen($new_value)) {
       $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
       $field->error_set(
-        translation::get('Field "%%_title" must contain a maximum of %%_num characters!', ['title' => translation::get($field->title), 'num' => $element->attribute_select('maxlength')]).br.
+        translation::get('Field "%%_title" must contain a maximum of %%_number characters!', ['title' => translation::get($field->title), 'number' => $element->attribute_select('maxlength')]).br.
         translation::get('Value was trimmed to the required length!').br.
         translation::get('Check field again before submit.')
       );

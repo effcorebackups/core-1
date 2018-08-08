@@ -8,7 +8,7 @@ namespace effcore\modules\page {
           use \effcore\storage;
           abstract class events_token extends \effcore\events_token {
 
-  static function on_color_get($name, $arg_1_num = null) {
+  static function on_color_get($name, $arg_1_number = null) {
     $settings = storage::get('files')->select('settings');
     $colors   = storage::get('files')->select('colors');
     switch ($name) {

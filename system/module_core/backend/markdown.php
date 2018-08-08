@@ -94,7 +94,7 @@ namespace effcore {
   static function markdown_to_markup($markdown) {
     $pool = new node();
     $strings = explode(nl, $markdown);
-    foreach ($strings as $c_num => $c_string) {
+    foreach ($strings as $c_number => $c_string) {
       $c_string = str_replace(tb, '    ', $c_string);
       $c_indent = strspn($c_string, ' ');
       $l_level = (int)floor((($c_indent - 0) / 4) + 1) ?: 1;
@@ -109,8 +109,8 @@ namespace effcore {
       $n_header = null;
       $c_matches = [];
       if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
-        if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_num-1]);
-        if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_num-1]);
+        if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_number-1]);
+        if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_number-1]);
       # delete previous insertion
         if ($last_type == 'p' && $last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
         if ($last_type == 'header')   $pool->child_delete($pool->child_select_last_id());

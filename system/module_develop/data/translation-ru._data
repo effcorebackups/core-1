@@ -15,7 +15,7 @@ translations
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - Call %%_name: Вызов %%_name
     - call: вызов
-    - cell %%_num: ячейка %%_num
+    - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флаг 1
     - Checkbox 2 (checked): Флаг 2 (установлен)
     - Checkbox 3 (disabled): Флаг 3 (отключён)
@@ -30,7 +30,7 @@ translations
     - Diagram: Диаграмма
     - Dynamic block: Динамический блок
     - Elements: Элементы
-    - Error message #%%_num.: Сообщение об ошибке #%%_num.
+    - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - event system was initialized: система событий была инициализирована
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
@@ -39,7 +39,7 @@ translations
     - Group %%_type.: Группа %%_type.
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
-    - head cell %%_num: заглавная ячейка %%_num
+    - head cell #%%_number: заглавная ячейка №%%_number
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
@@ -49,8 +49,8 @@ translations
     - Module for development.: Модуль для разработки.
     - Module for testing.: Модуль для тестирования.
     - Module: Модуль
-    - Notice message #%%_num.: Уведомление #%%_num.
-    - Ok message #%%_num.: Хорошее сообщение #%%_num.
+    - Notice message #%%_number.: Уведомление №%%_number.
+    - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
     - Option 2 (disabled): Опция 2 (отключёна) 
     - Option 3: Опция 3
@@ -82,4 +82,4 @@ translations
     - Traits: Трейты
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
-    - Warning message #%%_num.: Предупреждающее сообщение #%%_num.
+    - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
