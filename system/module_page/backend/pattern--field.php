@@ -198,12 +198,12 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $indexes = [];
+  static protected $numbers = [];
 
-  static function cur_index_get($name) {
-    return !isset(static::$indexes[$name]) ?
-                 (static::$indexes[$name] = 0) :
-                ++static::$indexes[$name];
+  static function cur_number_get($name) {
+    return !isset(static::$numbers[$name]) ?
+                 (static::$numbers[$name] = 0) :
+                ++static::$numbers[$name];
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
