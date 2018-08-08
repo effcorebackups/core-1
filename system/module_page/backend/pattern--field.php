@@ -231,13 +231,13 @@ namespace effcore {
   # │ source[field] == [0 => 'value', …]   ║ return 'value'                │
   # └──────────────────────────────────────╨───────────────────────────────┘
 
-  static function request_value_get($name, $index = 0, $source = '_POST') {
+  static function request_value_get($name, $number = 0, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? '' :
        (is_string(${$source}[$name]) ? ${$source}[$name] : 
         (is_array(${$source}[$name]) &&
-            isset(${$source}[$name][$index]) ?
-                  ${$source}[$name][$index] : ''));
+            isset(${$source}[$name][$number]) ?
+                  ${$source}[$name][$number] : ''));
   }
 
   # conversion matrix:
@@ -292,20 +292,20 @@ namespace effcore {
       if (!is_array($info['tmp_name'])) $info['tmp_name'] = [$info['tmp_name']];
       if (!is_array($info['error']))    $info['error']    = [$info['error']];
       foreach ($info as $c_prop => $c_values) {
-        foreach ($c_values as $c_index => $c_value) {
-          if ($info['error'][$c_index] !== UPLOAD_ERR_NO_FILE) {
-            if (!isset($return[$c_index]))
-                       $return[$c_index] = new \stdClass;
+        foreach ($c_values as $c_number => $c_value) {
+          if ($info['error'][$c_number] !== UPLOAD_ERR_NO_FILE) {
+            if (!isset($return[$c_number]))
+                       $return[$c_number] = new \stdClass;
             switch ($c_prop) {
               case 'name':
                 $c_file = new file(trim(str_replace('/', '', $c_value), '.'));
-                $return[$c_index]->{'name'} = $c_file->name_get();
-                $return[$c_index]->{'type'} = $c_file->type_get();
-                $return[$c_index]->{'file'} = $c_file->file_get();
+                $return[$c_number]->{'name'} = $c_file->name_get();
+                $return[$c_number]->{'type'} = $c_file->type_get();
+                $return[$c_number]->{'file'} = $c_file->file_get();
                 break;
-              case 'type'    : $return[$c_index]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
-              case 'tmp_name': $return[$c_index]->{'tmp_path'} = $c_value; break;
-              default        : $return[$c_index]->{$c_prop}    = $c_value;
+              case 'type'    : $return[$c_number]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
+              case 'tmp_name': $return[$c_number]->{'tmp_path'} = $c_value; break;
+              default        : $return[$c_number]->{$c_prop}    = $c_value;
             }
           }
         }
