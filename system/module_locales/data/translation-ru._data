@@ -138,7 +138,7 @@ translations
     - invalid session was deleted!: Недействительный сеанс был удален!
     - Is always on: Всегда включен
     - Is embed: Встроенный
-    - item %%_num: пункт %%_num
+    - item #%%_number: пункт №%%_number
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - Legal information: Правовая информация

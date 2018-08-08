@@ -46,16 +46,16 @@ blocks
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 1
+                - number: 1
         - li_2|markup
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 2
+                - number: 2
             - li_2_ul|markup
                 tag_name: ul
                 children
@@ -63,30 +63,30 @@ blocks
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.1
+                        - number: 2.1
                 - li_2_2|markup
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.2
+                        - number: 2.2
                 - li_2_3|markup
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.3
+                        - number: 2.3
         - li_3|markup
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 3
+                - number: 3
   # ordered list
     - demo_ordered_list_title|markup
         tag_name: h3
@@ -100,16 +100,16 @@ blocks
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 1
+                - number: 1
         - li_2|markup
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 2
+                - number: 2
             - li_2_ol|markup
                 tag_name: ol
                 children
@@ -117,30 +117,30 @@ blocks
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.1
+                        - number: 2.1
                 - li_2_2|markup
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.2
+                        - number: 2.2
                 - li_2_3|markup
                     tag_name: li
                     children
                     - content|text
-                        text: item %%_num
+                        text: item #%%_number
                         args
-                        - num: 2.3
+                        - number: 2.3
         - li_3|markup
             tag_name: li
             children
             - content|text
-                text: item %%_num
+                text: item #%%_number
                 args
-                - num: 3
+                - number: 3
   # table
     - demo_table_title|markup
         tag_name: h3
@@ -156,21 +156,21 @@ blocks
                 - th_1|table_head_row_cell
                     children
                     - content|text
-                        text: head cell %%_num
+                        text: head cell #%%_number
                         args
-                        - num: 1
+                        - number: 1
                 - th_2|table_head_row_cell
                     children
                     - content|text
-                        text: head cell %%_num
+                        text: head cell #%%_number
                         args
-                        - num: 2
+                        - number: 2
                 - th_3|table_head_row_cell
                     children
                     - content|text
-                        text: head cell %%_num
+                        text: head cell #%%_number
                         args
-                        - num: 3
+                        - number: 3
         - body|table_body
             children
             - tr_1|table_body_row
@@ -178,61 +178,61 @@ blocks
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 1.1
+                        - number: 1.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 1.2
+                        - number: 1.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 1.3
+                        - number: 1.3
             - tr_2|table_body_row
                 children
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 2.1
+                        - number: 2.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 2.2
+                        - number: 2.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 2.3
+                        - number: 2.3
             - tr_3|table_body_row
                 children
                 - td_1|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 3.1
+                        - number: 3.1
                 - td_2|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 3.2
+                        - number: 3.2
                 - td_3|table_body_row_cell
                     children
                     - content|text
-                        text: cell %%_num
+                        text: cell #%%_number
                         args
-                        - num: 3.3
+                        - number: 3.3
             - tr_4|table_body_row
                 children
                 - td_1|table_body_row_cell
