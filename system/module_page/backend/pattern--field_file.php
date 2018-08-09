@@ -7,6 +7,44 @@
 namespace effcore {
           class field_file extends field {
 
+  # note:
+  # ══════════════════════════════════════════════════════════════════════════════════════════
+  # 1. if one file from uploaded set of files has an error, all set of uploaded files will be rejected
+  # 2. if uploaded file has an error and some previously downloaded file marked as removed, it will be removed anyway
+  # 3. the old files which should be removed will be removed only after submit action
+  # 4. the new files which should be removed will be removed before submit action (in validation process)
+  # ──────────────────────────────────────────────────────────────────────────────────────────
+
+  # on_init         ╔════════ form ════════╗       ┌─ pool_old ─┐   ╔════════ form ════════╗
+  #                 ║ ┌── upload field ──┐ ║   ┌──▶│ old file 1 │   ║ ┌── upload field ──┐ ║
+  #                 ║ │------------------│ ║   │   └────────────┘   ║ │------------------│ ║
+  #             ┌───╬─│   + new file 1   │ ║   │          │     ┌───╬─│   + new file 2   │ ║
+  #             │   ║ └──────────────────┘ ║   │          │     │   ║ └──────────────────┘ ║
+  #             │   ╚══════════════════════╝   │          └─────┼───╬▶ ▣ delete old file 1─╬────────┐
+  #             │                              │          ┌─────┘   ╚══════════════════════╝        │
+  # ............│..............................│..........│.........................................│.........
+  # on_validate │                              │          │                                         │
+  #             ▼                              │          ▼                                         ▼
+  #      ┌─ pool_new ─┐                        │   ┌─ pool_new ─┐                          ┌─ old_to_delete ─┐
+  #      │ new file 1 │                        │   │ new file 2 │                          │    old file 1   │
+  #      └────────────┘                        │   └────────────┘                          └─────────────────┘
+  #             │                              │          │                                         │
+  #             │   ╔════════ form ════════╗   │          │         ╔════════ form ════════╗        │
+  #             │   ║ ┌── upload field ──┐ ║   │          │         ║ ┌── upload field ──┐ ║        │
+  #             │   ║ │------------------│ ║   │          │         ║ │------------------│ ║        │
+  #             │   ║ └──────────────────┘ ║   │          │         ║ └──────────────────┘ ║        │
+  #             ├───╬◇ □ delete new file 1 ║   │          ├─────────╬◇ □ delete new file 2 ║        │
+  #             │   ╚══════════════════════╝   │          │         ╚══════════════════════╝        │
+  #             │                              │          │                                         │
+  #             │                              │          │                                         │
+  #             │                              │          │                                         │
+  # ............│..............................│..........│.........................................│........
+  # on_submit   │                              │          │                                         │
+  #             ▼                              │          ▼                                         ▼
+  #      ┌── storage ──┐                       │   ┌── storage ──┐                         ┌ ─ ─ ─ ─ ─ ─ ─ ─
+  #      │    file 1   │───────────────────────┘   │    file 2   │                           delete process │
+  #      └─────────────┘                           └─────────────┘                         └ ─ ─ ─ ─ ─ ─ ─ ─
+
   public $title = 'File';
   public $attributes = ['data-type' => 'file'];
   public $element_attributes_default = [
@@ -15,6 +53,7 @@ namespace effcore {
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size;
+  public $max_files_number = 3;
   public $max_length_name = 255 - 17 - 1 - 10; # = 255 - '-'.suffix - '.' - type
   public $max_length_type = 10;
   public $allowed_types = [];
@@ -22,8 +61,8 @@ namespace effcore {
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
-  protected $pool_old = [];
-  protected $pool_new = [];
+  public $pool_old = [];
+  public $pool_new = [];
 
   function file_size_max_get() {
     $bytes_1 = core::is_human_bytes($this->max_file_size) ?
@@ -51,7 +90,7 @@ namespace effcore {
 
   function pool_values_init_old($old_values = []) {
     $this->pool_old = [];
-  # insert old values to the pool
+  # insert old items to the pool
     foreach ($old_values as $c_id => $c_path_relative) {
       $c_file = new file(dir_root.$c_path_relative);
       if ($c_file->is_exist()) {
@@ -75,7 +114,7 @@ namespace effcore {
         $deleted[$c_id]->old_path = $c_info->old_path;
       }
     }
-  # virtual delete of canceled values
+  # virtual delete the deleted items
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         unset($this->pool_old[$c_id]);
@@ -93,20 +132,20 @@ namespace effcore {
   }
 
   function pool_values_init_new($new_values = [], $is_valid) {
-  # insert new values to the pool (from the cache)
+  # insert new items from the cache to the pool
     $this->pool_new = $this->pool_validation_cache_get('new');
-  # insert new values to the pool (from the form)
+  # insert new items from the form to the pool
     if ($is_valid && count($new_values)) {
       foreach ($new_values as $c_new_value) {
         $this->pool_new[] = $c_new_value;
       }
     }
-  # move temporary files from php 'tmp' directory to system 'tmp' directory
+  # move temporary items from php 'tmp' directory to system 'tmp' directory
     $this->pool_files_move_tmp_to_pre();
-  # physically delete of canceled values
-    $deleted = $this->pool_manager_deleted_items_get('new');
+  # physically delete the deleted items
+    $deleted_from_form = $this->pool_manager_deleted_items_get('new');
     foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($deleted[$c_id])) {
+      if (isset($deleted_from_form[$c_id])) {
         if (isset($this->pool_new[$c_id]->pre_path)) {
           @unlink($this->pool_new[$c_id]->pre_path);
             unset($this->pool_new[$c_id]);
@@ -120,14 +159,14 @@ namespace effcore {
   }
 
   function pool_files_save() {
-  # delete canceled old values
+  # delete the old deleted items
     $deleted = $this->pool_validation_cache_get('old_to_delete');
     foreach ($deleted as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         @unlink($deleted[$c_id]->old_path);
       }
     }
-  # move new files to the directory 'files'
+  # move new items to the directory 'files'
     $this->pool_files_move_pre_to_new();
   # prepare return
     $return = [];
@@ -212,7 +251,7 @@ namespace effcore {
     $pool_manager = new group_checkboxes();
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
-  # insert 'delete' checkboxes for old and new files
+  # insert 'delete' checkboxes for the old and the new items
     foreach ($this->pool_old as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'old');
     foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
   }

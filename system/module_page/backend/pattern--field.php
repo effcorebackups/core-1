@@ -323,29 +323,6 @@ namespace effcore {
   }
 
   static function validate($field, $form, $npath) {
-    $name = $field->element_name_get();
-    $type = $field->element_type_get();
-  # add validate functionality to non specified fields
-    if ($name && $type && get_called_class() == 'effcore\\field') {
-      switch ($type) {
-        case 'input:checkbox': return field_checkbox   ::validate($field, $form);
-        case 'input:color'   : return field_color      ::validate($field, $form);
-        case 'input:date'    : return field_date       ::validate($field, $form);
-        case 'input:email'   : return field_email      ::validate($field, $form);
-        case 'input:file'    : return field_file       ::validate($field, $form);
-        case 'input:number'  : return field_number     ::validate($field, $form);
-        case 'input:password': return field_password   ::validate($field, $form);
-        case 'input:radio'   : return field_radiobutton::validate($field, $form);
-        case 'input:range'   : return field_range      ::validate($field, $form);
-        case 'input:search'  : return field_search     ::validate($field, $form);
-        case 'input:tel'     : return field_phone      ::validate($field, $form);
-        case 'input:text'    : return field_text       ::validate($field, $form);
-        case 'input:time'    : return field_time       ::validate($field, $form);
-        case 'input:url'     : return field_url        ::validate($field, $form);
-        case 'select'        : return field_select     ::validate($field, $form);
-        case 'textarea'      : return field_textarea   ::validate($field, $form);
-      }
-    }
   }
 
 }}
