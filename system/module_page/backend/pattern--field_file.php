@@ -72,7 +72,8 @@ namespace effcore {
   }
 
   function render_description() {
-                            $return[] = new markup('p', ['class' => ['file_size_max' => 'file_size_max']], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
+    $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
+    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field must contain maximum %%_number files.', ['number' => $this->max_files_number]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
@@ -87,7 +88,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_values_init_old($old_values = []) {
+  function pool_values_init_old_from_storage($old_values = []) {
     $this->pool_old = [];
   # insert old items to the pool
     foreach ($old_values as $c_id => $c_path_relative) {
@@ -113,7 +114,7 @@ namespace effcore {
         $deleted[$c_id]->old_path = $c_info->old_path;
       }
     }
-  # virtual delete the deleted items
+  # virtual delete the items which marked as 'deleted'
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         unset($this->pool_old[$c_id]);
@@ -121,13 +122,8 @@ namespace effcore {
     }
   # save the poll
     $this->pool_validation_cache_set('old_to_delete', $deleted);
-  # rebuild (refresh) pool manager
+  # update pool manager
     $this->pool_manager_rebuild();
-  # disable the field if it has singular value
-    $element = $this->child_select('element');
-    if (!$element->attribute_select('multiple') && count($this->pool_old) > 0) {
-      $element->attribute_insert('disabled', 'disabled');
-    }
   }
 
   function pool_values_init_new_from_cache() {
@@ -183,7 +179,7 @@ namespace effcore {
     $this->pool_new = [];
     $this->pool_manager_deleted_items_set('old', []);
     $this->pool_validation_cache_set('old_to_delete', []);
-    $this->pool_values_init_old($return_paths);
+    $this->pool_values_init_old_from_storage($return_paths);
   # return result array
     return $return;
   }
@@ -319,6 +315,17 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
+    if (count($field->pool_old) +
+        count($field->pool_new) +
+        count($new_values) > $field->max_files_number) {
+      message::insert(
+        translation::get('You try to upload too much files!').br.
+        translation::get('Maximum allowed only %%_number files.',  ['number' => $field->max_files_number]).br.
+        translation::get('Already been uploaded %%_number files.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
+      );
+      return;
+    }
+  # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {
       if (count($field->allowed_types) &&

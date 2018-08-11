@@ -29,7 +29,7 @@ namespace effcore\modules\demo {
     $items['#select']->option_insert('Option 8 (inserted from code)', 'option_8', [], 'group_2');
     $items['#select']->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
     $items['##palette_color']->value_set('modernblue');
-    $items['#file']->pool_values_init_old(
+    $items['#file']->pool_values_init_old_from_storage(
       data::select('files_demo') ?: []
     );
   }

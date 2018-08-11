@@ -12,6 +12,7 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
+    - Already been uploaded %%_number files.: Уже было загружено %%_number файла/ов.
     - Anonymous: Аноним
     - Architecture: Архитектура
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
@@ -98,6 +99,7 @@ translations
     - Field must contain %%_number characters.: Поле должно содержать %%_number символов.
     - Field must contain a maximum of %%_number characters.: Поле должно содержать максимум %%_number символов.
     - Field must contain a minimum of %%_number characters.: Поле должно содержать минимум %%_number символов.
+    - Field must contain maximum %%_number files.: Поле должно содержать максимум %%_number файлов.
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
     - Field value is less than %%_value.: Значение поля меньше чем %%_value.
     - Field value is more than %%_value.: Значение поля больше чем %%_value.
@@ -150,6 +152,7 @@ translations
     - Management: Управление
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
+    - Maximum allowed only %%_number files.: Допускается максимально только %%_number файла/ов.
     - Memory for php (bytes): Память для php (байт)
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
@@ -301,3 +304,4 @@ translations
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да
+    - You try to upload too much files!: Вы пытаетесь загрузить слишком много файлов!

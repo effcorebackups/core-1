@@ -59,7 +59,7 @@ namespace effcore\modules\user {
     $user = (new instance('user', ['id' => $id_user]))->select();
     $items['#email']->value_set($user->email);
     $items['#nick']->value_set($user->nick);
-    $items['#avatar']->pool_values_init_old(
+    $items['#avatar']->pool_values_init_old_from_storage(
       $user->avatar_path_relative ? [$user->avatar_path_relative] : []
     );
   }
