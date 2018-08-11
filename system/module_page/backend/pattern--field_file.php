@@ -9,10 +9,10 @@ namespace effcore {
 
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
-  # 1. if one file from uploaded set of files has an error, all set of uploaded files will be rejected
-  # 2. if uploaded file has an error and some previously downloaded file marked as removed, it will be removed anyway
-  # 3. the old files which should be removed will be removed only after submit action
-  # 4. the new files which should be removed will be removed before submit action (in validation process)
+  # 1. if one file from new uploaded set of files has an error, all set will be rejected
+  # 2. removing process is undepended from other even if a new uploaded set has an error
+  # 3. the new files which marked as 'removed' will be removed in 'on_validate'
+  # 4. the old files which marked as 'removed' will be removed in 'on_submit'
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
   # on_init         ╔════════ form ════════╗       ╔═ pool_old ═╗   ╔════════ form ════════╗
@@ -130,18 +130,9 @@ namespace effcore {
     }
   }
 
-  function pool_values_init_new($new_values = [], $is_valid) {
-  # insert new items from the cache to the pool
+  function pool_values_init_new_from_cache() {
     $this->pool_new = $this->pool_validation_cache_get('new');
-  # insert new items from the form to the pool
-    if ($is_valid && count($new_values)) {
-      foreach ($new_values as $c_new_value) {
-        $this->pool_new[] = $c_new_value;
-      }
-    }
-  # move temporary items from php 'tmp' directory to system 'tmp' directory
-    $this->pool_files_move_tmp_to_pre();
-  # physically delete the deleted items
+  # physically delete the items which marked as 'deleted'
     $deleted_from_form = $this->pool_manager_deleted_items_get('new');
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted_from_form[$c_id])) {
@@ -153,9 +144,25 @@ namespace effcore {
     }
   # save the poll
     $this->pool_validation_cache_set('new', $this->pool_new);
-  # rebuild (refresh) pool manager
+  # update pool manager
     $this->pool_manager_rebuild();
   }
+
+  function pool_values_init_new_from_form($new_values = []) {
+    foreach ($new_values as $c_new_value) {
+      $this->pool_new[] = $c_new_value;
+    }
+  # move temporary items from php 'tmp' directory to system 'tmp' directory
+    $this->pool_files_move_tmp_to_pre();
+  # save the poll
+    $this->pool_validation_cache_set('new', $this->pool_new);
+  # update pool manager
+    $this->pool_manager_rebuild();
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # moving the files in different situations
+  # ─────────────────────────────────────────────────────────────────────
 
   function pool_files_save() {
   # delete the old deleted items
@@ -300,12 +307,13 @@ namespace effcore {
     $type = $field->element_type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
+      $field->pool_values_init_new_from_cache();
       $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_upload  ($field, $form, $element, $new_values) &&
                 static::validate_required($field, $form, $element, $new_values) &&
                 static::validate_multiple($field, $form, $element, $new_values);
-      $field->pool_values_init_new($new_values, $result);
+      if ($result) $field->pool_values_init_new_from_form($new_values);
       return $result;
     }
   }
