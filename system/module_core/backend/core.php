@@ -388,12 +388,12 @@ namespace effcore {
 
   static function sanitize_file_part($value, $allowed_chars, $max_length) {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$allowed_chars.'])%uiS', function($m) {
-      if ($m['char'] == ' ') return '-';
-      if (strlen($m['char']) == 1) return dechex(ord($m['char'][0]));
-      if (strlen($m['char']) == 2) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1]));
-      if (strlen($m['char']) == 3) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2]));
-      if (strlen($m['char']) == 4) return dechex(ord($m['char'][0])).dechex(ord($m['char'][1])).dechex(ord($m['char'][2])).dechex(ord($m['char'][3]));
+    $value = preg_replace_callback('%(?<char>[^'.$allowed_chars.'])%uiS', function($c_match) {
+      if ($c_match['char'] == ' ') return '-';
+      if (strlen($c_match['char']) == 1) return dechex(ord($c_match['char'][0]));
+      if (strlen($c_match['char']) == 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));
+      if (strlen($c_match['char']) == 3) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2]));
+      if (strlen($c_match['char']) == 4) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2])).dechex(ord($c_match['char'][3]));
     }, $value);
     return substr($value, 0, $max_length) ?: '';
   }

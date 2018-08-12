@@ -25,7 +25,7 @@ namespace effcore {
     $translations = storage::get('files')->select('translations');
     foreach ($translations as $c_module_id => $c_translations) {
       foreach ($c_translations as $c_row_id => $c_translation) {
-        if ($c_translation->code === $code) {
+        if ($c_translation->code == $code) {
           if ($c_translation instanceof external_cache)
               $c_translation = $c_translation->external_cache_load();
           if (!isset(static::$cache[$c_translation->code]))
@@ -41,10 +41,12 @@ namespace effcore {
     if (!isset(static::$cache[$c_code])) static::init($c_code);
     $string = isset(static::$cache[$c_code][$string]) ?
                     static::$cache[$c_code][$string] : $string;
-    foreach ($args as $c_key => $c_value) {
-      $string = str_replace('%%_'.$c_key, $c_value, $string);
-    }
-    return $string;
+    return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)(?:\\{(?<args>[a-z0-9_,=\'"]+)\\}|)%S', function($c_match) use ($args) {
+      $c_name =       $c_match['name'];
+      $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
+      return isset($args[$c_name]) ?
+                   $args[$c_name] : '';
+    }, $string);
   }
 
 }}

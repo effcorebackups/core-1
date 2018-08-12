@@ -47,12 +47,12 @@ namespace effcore {
       $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
                                          '(?<prefix>\\%\\%_)'.
                                          '(?<name>[a-z0-9_]+)'.
-                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
-        return isset($matches['prefix']) &&
-               isset($matches['name']) &&
-               isset($this->args[$matches['name']]) &&
-                     $this->args[$matches['name']] !== '' ? $matches['spacer'].
-                     $this->args[$matches['name']] : '';
+                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
+        return isset($c_match['prefix']) &&
+               isset($c_match['name']) &&
+               isset($this->args[$c_match['name']]) &&
+                     $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
+                     $this->args[$c_match['name']] : '';
       }, $rendered);
       return $rendered;
     }

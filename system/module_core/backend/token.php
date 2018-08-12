@@ -28,9 +28,9 @@ namespace effcore {
   static function replace($string) {
     return preg_replace_callback('%(?<prefix>\\%\\%_)'.
                                   '(?<name>[a-z0-9_]+)'.
-                                  '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($matches) {
-      $name = !empty($matches['name']) ? $matches['name'] : null;
-      $args = !empty($matches['args']) ? explode(',', substr($matches['args'], 1, -1)) : [];
+                                  '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
+      $name = !empty($c_match['name']) ? $c_match['name'] : null;
+      $args = !empty($c_match['args']) ? explode(',', substr($c_match['args'], 1, -1)) : [];
       $info = static::get($name);
       if ($info) {
         switch ($info->type) {
