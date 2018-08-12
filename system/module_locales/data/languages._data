@@ -4,8 +4,19 @@ languages
     title
       en: English
       native: English
+    plurals
+    - s
+        formula: %^(?<t1>[02-9]|[0-9]{2,})$%S
+        matches
+        - t1: s
 - ru|language
     code: ru
     title
       en: Russian
       native: Русский
+    plurals
+    - ov-a
+        formula: %^(?<t1>[05-9]|.*[1][0-9]|.*[^1][05-9])$|^(?<t2>[234]|.*[^1][234])$%S
+        matches
+        - t1: ов
+        - t2: а

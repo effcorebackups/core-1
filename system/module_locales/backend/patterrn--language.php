@@ -31,6 +31,11 @@ namespace effcore {
     return static::$cache[$code];
   }
 
+  static function get_plurals($code) {
+    return isset(static::get($code)->plurals) ?
+                 static::get($code)->plurals : [];
+  }
+
   static function current_get() {
     return locale::settings_get()->lang_code;
   }

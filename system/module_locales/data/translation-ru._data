@@ -2,6 +2,7 @@ translations
 - ru|translation
     code: ru
     data
+    - allowed only %%_number file%%_plural{number,s}: допускается только %%_number файл%%_plural{number,ov-a}
     - - select -: - выбрать -
     - © 2017—2018 Maxim Rysevets. All rights reserved.: © 2017—2018 Рысевец Максим Владимирович. Все права защищены.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
