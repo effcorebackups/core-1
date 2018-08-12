@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   effcore = {};
   effcore.tokens = [];
-  effcore.tokens['color_id'] = '%%_color_id';
-  effcore.tokens['color_bg_id'] = '%%_color_bg_id';
+  effcore.tokens['color'] = '%%_color';
+  effcore.tokens['color_bg'] = '%%_color_bg';
 
 /* polyfils for addition new functionality in older browsers */
   if (NodeList.prototype.forEach === undefined) {

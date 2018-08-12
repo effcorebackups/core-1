@@ -26,17 +26,15 @@ namespace effcore {
   }
 
   static function replace($string) {
-    return preg_replace_callback('%(?<prefix>\\%\\%_)'.
-                                  '(?<name>[a-z0-9_]+)'.
-                                  '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
-      $name = !empty($c_match['name']) ? $c_match['name'] : null;
-      $args = !empty($c_match['args']) ? explode(',', substr($c_match['args'], 1, -1)) : [];
-      $info = static::get($name);
-      if ($info) {
-        switch ($info->type) {
-          case 'code': return call_user_func($info->handler, $name, $args);
-          case 'text': return $info->value;
-          case 'translated_text': return translation::get($info->value);
+    return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)(?:\\{(?<args>[a-z0-9_,=\'"]+)\\}|)%S', function($c_match) {
+      $c_name =       $c_match['name'];
+      $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
+      $c_info = static::get($c_name);
+      if ($c_info) {
+        switch ($c_info->type) {
+          case 'code'           : return call_user_func($c_info->handler, $c_name, $c_args);
+          case 'text'           : return $c_info->value;
+          case 'translated_text': return translation::get($c_info->value);
         }
       } else {
         return '';

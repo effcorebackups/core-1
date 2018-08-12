@@ -45,7 +45,7 @@ namespace effcore {
       $c_name =       $c_match['name'];
       $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
       return isset($args[$c_name]) ?
-                   $args[$c_name] : '';
+                   $args[$c_name] : $c_match[0];
     }, $string);
   }
 
