@@ -48,16 +48,18 @@ namespace effcore {
       if ($c_name == 'plural') {
         if (isset($c_args[0]) &&
             isset($c_args[1])) {
-          $c_number_name = $c_args[0];
-          $c_plural_type = $c_args[1];
-          $c_plurals     = language::get_plurals($c_code);
-          if (isset($c_plurals[$c_plural_type]) &&
-                   isset($args[$c_number_name])) {
-            $p_plural_info = $c_plurals[$c_plural_type];
+          $p_number_name = $c_args[0];
+          $p_plural_type = $c_args[1];
+          $p_plurals     = language::get_plurals($c_code);
+          if (isset($p_plurals[$p_plural_type]) &&
+                   isset($args[$p_number_name])) {
+            $p_plural_info = $p_plurals[$p_plural_type];
             $p_matches     = [];
-            if (preg_match($p_plural_info->formula, (string)$args[$c_number_name], $p_matches)) {
-              $replacement = array_intersect_key($p_plural_info->matches, $p_matches);
+            if (preg_match($p_plural_info->formula, (string)$args[$p_number_name], $p_matches)) {
+              $replacement = array_intersect_key($p_plural_info->matches, array_filter($p_matches, 'strlen'));
               return reset($replacement);
+            } else {
+              return '';
             }
           }
         }
