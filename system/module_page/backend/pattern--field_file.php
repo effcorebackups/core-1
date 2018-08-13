@@ -73,7 +73,7 @@ namespace effcore {
 
   function render_description() {
     $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
-    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field must contain maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
+    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field can contain a maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
