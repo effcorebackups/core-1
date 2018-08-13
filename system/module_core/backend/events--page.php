@@ -1,7 +1,7 @@
 <?php
 
   ##################################################################
-  ### Copyright © 2017—2018 Maxim Rysevets. All rights reserved. ###
+  ### Copyright © 2017—2019 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
 namespace effcore\modules\core {
@@ -41,7 +41,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
     $info->child_insert(new markup('dt', [], 'Copyright'));
-    $info->child_insert(new markup('dd', [], '© 2017—2018 Maxim Rysevets. All rights reserved.'));
+    $info->child_insert(new markup('dd', [], '© 2017—2019 Maxim Rysevets. All rights reserved.'));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
     $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/system/build')));
     $info->child_insert(new markup('dt', [], 'Server software'));
