@@ -2,7 +2,6 @@ translations
 - ru|translation
     code: ru
     data
-    - allowed only %%_number file%%_plural{number,s}: допускается только %%_number файл%%_plural{number,ov-a}
     - - select -: - выбрать -
     - © 2017—2018 Maxim Rysevets. All rights reserved.: © 2017—2018 Рысевец Максим Владимирович. Все права защищены.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
@@ -13,7 +12,7 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
-    - Already been uploaded %%_number files.: Уже было загружено %%_number файла/ов.
+    - Already been uploaded %%_number file%%_plural{number,s}.: Уже было загружено %%_number файл%%_plural{number,ov-a}.
     - Anonymous: Аноним
     - Architecture: Архитектура
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
@@ -95,12 +94,12 @@ translations
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
-    - Field "%%_title" must contain a maximum of %%_number characters!: Поле "%%_title" должно содержать максимум %%_number символов!
-    - Field "%%_title" must contain a minimum of %%_number characters!: Поле "%%_title" должно содержать минимум %%_number символов!
-    - Field must contain %%_number characters.: Поле должно содержать %%_number символов.
-    - Field must contain a maximum of %%_number characters.: Поле должно содержать максимум %%_number символов.
-    - Field must contain a minimum of %%_number characters.: Поле должно содержать минимум %%_number символов.
-    - Field must contain maximum %%_number files.: Поле должно содержать максимум %%_number файлов.
+    - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
+    - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!
+    - Field must contain %%_number character%%_plural{number,s}.: Поле должно содержать %%_number символ%%_plural{number,ov-a}.
+    - Field must contain a maximum of %%_number character%%_plural{number,s}.: Поле должно содержать максимум %%_number символ%%_plural{number,ov-a}.
+    - Field must contain a minimum of %%_number character%%_plural{number,s}.: Поле должно содержать минимум %%_number символ%%_plural{number,ov-a}.
+    - Field must contain maximum %%_number file%%_plural{number,s}.: Поле должно содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
     - Field value is less than %%_value.: Значение поля меньше чем %%_value.
     - Field value is more than %%_value.: Значение поля больше чем %%_value.
@@ -153,7 +152,7 @@ translations
     - Management: Управление
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
-    - Maximum allowed only %%_number files.: Допускается максимально только %%_number файла/ов.
+    - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Memory for php (bytes): Память для php (байт)
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.

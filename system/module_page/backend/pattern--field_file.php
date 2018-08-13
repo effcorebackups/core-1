@@ -73,7 +73,7 @@ namespace effcore {
 
   function render_description() {
     $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
-    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field must contain maximum %%_number files.', ['number' => $this->max_files_number]));
+    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field must contain maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
@@ -320,8 +320,8 @@ namespace effcore {
         count($new_values) > $field->max_files_number) {
       message::insert(
         translation::get('You try to upload too much files!').br.
-        translation::get('Maximum allowed only %%_number files.',  ['number' => $field->max_files_number]).br.
-        translation::get('Already been uploaded %%_number files.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
+        translation::get('Maximum allowed only %%_number file%%_plural{number,s}.',  ['number' => $field->max_files_number]).br.
+        translation::get('Already been uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
       );
       return;
     }
