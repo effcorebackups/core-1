@@ -320,8 +320,8 @@ namespace effcore {
         count($new_values) > $field->max_files_number) {
       message::insert(
         translation::get('You try to upload too much files!').br.
-        translation::get('Maximum allowed only %%_number file%%_plural{number,s}.',  ['number' => $field->max_files_number]).br.
-        translation::get('Already been uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
+        translation::get('Maximum allowed only %%_number file%%_plural{number,s}.',      ['number' => $field->max_files_number]).br.
+        translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
       );
       return;
     }

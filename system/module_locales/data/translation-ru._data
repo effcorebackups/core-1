@@ -12,7 +12,6 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
-    - Already been uploaded %%_number file%%_plural{number,s}.: Уже было загружено %%_number файл%%_plural{number,ov-a}.
     - Anonymous: Аноним
     - Architecture: Архитектура
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
@@ -304,4 +303,5 @@ translations
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да
+    - You have already uploaded %%_number file%%_plural{number,s}.: Вы уже загрузили %%_number файл%%_plural{number,ov-a}.
     - You try to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
