@@ -63,9 +63,10 @@
       <path id="icon_develop-t24" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.376533,82.477038 27.858895,80.545187" />
     </g>
     <g id="icon_develop-crossing">
-      <path id="icon_develop-cline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 40.660254,91 -5.629165,3.25" />
-      <path id="icon_develop-cline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 32,99.5 V 106" />
-      <path id="icon_develop-cline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 23.339746,91 5.629165,3.25" />
+      <path id="icon_develop-cline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 32,86 v 6.5 z" />
+      <path id="icon_develop-cline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 22,96 h 6.5 z" />
+      <path id="icon_develop-cline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 35.5,96 H 42 Z" />
+      <path id="icon_develop-cline_4" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 32,99.5 V 106 Z" />
     </g>
   </g>
 
