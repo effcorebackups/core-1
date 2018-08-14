@@ -128,8 +128,8 @@ namespace effcore {
       case 'string' : return '\''.addcslashes($data, '\'\\').'\'';
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
-      case 'object':
-      case 'array':
+      case 'object' :
+      case 'array'  :
         $expressions = [];
         foreach($data as $c_key => $c_value) {
           $expressions[] = static::data_to_string($c_key).' => '.
@@ -579,11 +579,11 @@ namespace effcore {
 
   static function send_header_and_exit($type, $title = '', $message = '', $p = '') {
     switch ($type) {
-      case 'redirect'       : header('Location: '.$p);          break;
-      case 'page_refresh'   : header('Refresh: ' .$p);          break;
-      case 'access_denided' : header('HTTP/1.1 403 Forbidden'); break;
-      case 'page_not_found' : header('HTTP/1.0 404 Not Found'); break;
-      case 'file_not_found' : header('HTTP/1.0 404 Not Found'); break;
+      case 'redirect'      : header('Location: '.$p);          break;
+      case 'page_refresh'  : header('Refresh: ' .$p);          break;
+      case 'access_denided': header('HTTP/1.1 403 Forbidden'); break;
+      case 'page_not_found': header('HTTP/1.0 404 Not Found'); break;
+      case 'file_not_found': header('HTTP/1.0 404 Not Found'); break;
     }
     $front_page_link = translation::get('go to <a href="/">front page</a>');
     if ($type == 'access_denided') {print (new template('page_access_denided', ['attributes' => core::data_to_attr(['lang' => language::current_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Access denided')]))->render(); exit();}
