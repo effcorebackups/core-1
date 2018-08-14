@@ -51,8 +51,8 @@ namespace effcore {
     'name' => 'file'
   ];
 # ─────────────────────────────────────────────────────────────────────
-  public $max_file_size;
-  public $max_files_number = 3;
+  public $max_file_size = '10K';
+  public $max_files_number = 1;
   public $max_length_name = 255 - 17 - 1 - 10; # = 255 - '-'.suffix - '.' - type
   public $max_length_type = 10;
   public $allowed_types = [];

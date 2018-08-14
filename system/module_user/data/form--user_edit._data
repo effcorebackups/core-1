@@ -19,6 +19,7 @@ forms
         - avatar|field_file
             title: Avatar
             max_file_size: 10K
+            max_files_number: 1
             upload_dir: avatar/
             fixed_name: avatar-%%_id_user
             allowed_types
