@@ -62,7 +62,7 @@
       <path id="icon_develop-t23" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,83.875644 -1,-1.73205" />
       <path id="icon_develop-t24" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.376533,82.477038 27.858895,80.545187" />
     </g>
-    <g id="icon_develop-crossing">
+    <g id="icon_develop-crossing" transform="rotate(45,32,96)">
       <path id="icon_develop-cline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 32,86 v 6.5 z" />
       <path id="icon_develop-cline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 22,96 h 6.5 z" />
       <path id="icon_develop-cline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 35.5,96 H 42 Z" />
