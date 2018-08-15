@@ -306,9 +306,9 @@ namespace effcore {
       $field->pool_values_init_new_from_cache();
       $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
-      $result = static::validate_upload  ($field, $form, $element, $new_values) &&
-                static::validate_required($field, $form, $element, $new_values) &&
-                static::validate_multiple($field, $form, $element, $new_values);
+      $result = static::validate_multiple($field, $form, $element, $new_values) &&
+                static::validate_upload  ($field, $form, $element, $new_values) &&
+                static::validate_required($field, $form, $element, $new_values);
       if ($result) $field->pool_values_init_new_from_form($new_values);
       return $result;
     }
@@ -318,10 +318,10 @@ namespace effcore {
     if (count($field->pool_old) +
         count($field->pool_new) +
         count($new_values) > $field->max_files_number) {
-      message::insert(
+      $field->error_set(
         translation::get('You try to upload too much files!').br.
         translation::get('Maximum allowed only %%_number file%%_plural{number,s}.',      ['number' => $field->max_files_number]).br.
-        translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)]), 'error'
+        translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)])
       );
       return;
     }
