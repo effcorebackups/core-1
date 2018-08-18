@@ -87,7 +87,7 @@ namespace effcore {
     $data = curl_exec($curl);
     $return['error_message'] = curl_error($curl);
     $return['error_number'] = curl_errno($curl);
-    $return['data'] = $data ? ltrim($data, chr(0xff).chr(0xfe)) : '';
+    $return['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
     $return['info'] = curl_getinfo($curl);
     curl_close($curl);
     return $return;

@@ -105,9 +105,9 @@ namespace effcore\modules\core {
         }
         storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
         storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
-          'cron'            => sha1(rand(0, PHP_INT_MAX)),
-          'form_validation' => sha1(rand(0, PHP_INT_MAX)),
-          'session'         => sha1(rand(0, PHP_INT_MAX))
+          'cron'            => sha1(random_int(0, PHP_INT_MAX)),
+          'form_validation' => sha1(random_int(0, PHP_INT_MAX)),
+          'session'         => sha1(random_int(0, PHP_INT_MAX))
         ]);
         storage::cache_reset();
         event::start('on_module_install');
