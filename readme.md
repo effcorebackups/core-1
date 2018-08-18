@@ -15,12 +15,16 @@ Web Server:
 - NGINX v1.10+ [priority]
 - Internet Information Services (IIS) v7.5+
 Server-side scripting language:
-- PHP v.5.6+
 - PHP v.7.1+
 Storage system:
 - MySQL v5.6+
 - SQLite v3+
 
+The many hostings still using the official discontinued software.
+For example: PHP before version 7 or MySQL before version 5.6.
+It's bad practice and we do not recommend to use such hostings.
+Read more about PHP Supported Versions: http://php.net/supported-versions.php
+Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
 
 Apache 2.4 requires:
 - enable module "php5_module"|"php7_module"
