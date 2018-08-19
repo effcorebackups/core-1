@@ -6,7 +6,6 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
-          use const \effcore\ffffffff;
           use \effcore\event;
           use \effcore\message;
           use \effcore\storage;
@@ -106,9 +105,9 @@ namespace effcore\modules\core {
         }
         storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
         storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
-          'cron'            => sha1(random_int(0, ffffffff)),
-          'form_validation' => sha1(random_int(0, ffffffff)),
-          'session'         => sha1(random_int(0, ffffffff))
+          'cron'            => sha1(random_int(0, 0x7fffffff)),
+          'form_validation' => sha1(random_int(0, 0x7fffffff)),
+          'session'         => sha1(random_int(0, 0x7fffffff))
         ]);
         storage::cache_reset();
         event::start('on_module_install');

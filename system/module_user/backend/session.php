@@ -76,7 +76,7 @@ namespace effcore {
     $hex_expire = dechex(time() + $period);
     $hex_ip = core::ip_to_hex($ip);
     $hex_uagent_hash_8 = substr(md5(core::server_user_agent_get()), 0, 8);
-    $hex_random = str_pad(dechex(random_int(0, ffffffff)), 8, '0', STR_PAD_LEFT);
+    $hex_random = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
     $session_id = $hex_type.          # strlen == 1
                   $hex_expire.        # strlen == 8
                   $hex_ip.            # strlen == 8
