@@ -62,7 +62,7 @@ translations
     - PHP modules: PHP модули
     - Pos.: Поз.
     - query = "%%_query": запрос = "%%_query"
-    - query = "%%_query"<br/>args = [%%_args]: запрос = "%%_query"<br/>аргументы = [%%_args]
+    - query = "%%_query"<br>args = [%%_args]: запрос = "%%_query"<br>аргументы = [%%_args]
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
