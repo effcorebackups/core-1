@@ -13,6 +13,7 @@ namespace effcore {
   const nl = "\n";
   const tb = "\t";
   const br = "<br/>";
+  const ffffffff = 4294967295;
 
   if (!ini_get('date.timezone')) {
     date_default_timezone_set('UTC');

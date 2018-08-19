@@ -222,7 +222,7 @@ namespace effcore {
     $hex_created = dechex(time());
     $hex_ip = core::ip_to_hex(core::server_remote_addr_get());
     $hex_uagent_hash_8 = substr(md5(core::server_user_agent_get()), 0, 8);
-    $hex_random = str_pad(dechex(random_int(0, PHP_INT_MAX)), 8, '0', STR_PAD_LEFT);
+    $hex_random = str_pad(dechex(random_int(0, ffffffff)), 8, '0', STR_PAD_LEFT);
     $validation_id = $hex_created.       # strlen == 8
                      $hex_ip.            # strlen == 8
                      $hex_uagent_hash_8. # strlen == 8
