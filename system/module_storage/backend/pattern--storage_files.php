@@ -204,7 +204,6 @@ namespace effcore {
     $p = [-1 => &$return];
     $pc_objects = []; # classes with interface 'has_post_constructor'
     $pi_objects = []; # classes with interface 'has_post_init'
-    $pp_objects = []; # classes with interface 'has_post_parsing'
     $line_number = 0;
     foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
       $line_number++;
@@ -234,12 +233,10 @@ namespace effcore {
             $c_reflection = new \ReflectionClass($c_class_name);
             $c_is_pc = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
             $c_is_pi = $c_reflection->implementsInterface('\\effcore\\has_post_init');
-            $c_is_pp = $c_reflection->implementsInterface('\\effcore\\has_post_parsing');
             if ($c_is_pc) $c_value = core::class_instance_new_get($c_class_name);
             else          $c_value = core::class_instance_new_get($c_class_name, [], true);
             if ($c_is_pc) $pc_objects[] = $c_value;
             if ($c_is_pi) $pi_objects[] = $c_value;
-            if ($c_is_pp) $pp_objects[] = $c_value;
           }
         }
       # add new item to tree
@@ -258,7 +255,6 @@ namespace effcore {
   # call the interface dependent functions
     foreach ($pc_objects as $c_object) $c_object->__construct();
     foreach ($pi_objects as $c_object) $c_object->__post_init();
-    foreach ($pp_objects as $c_object) $c_object->__post_parsing();
     return $return;
   }
 
