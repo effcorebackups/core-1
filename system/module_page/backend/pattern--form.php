@@ -40,12 +40,6 @@ namespace effcore {
 
   # get form elements (fields, containers, fieldset and etc.)
     $items = $this->form_items_get();
-  # children must be located before their parents
-    uksort($items, function($a, $b) {
-      if ($a[0] == '#') return 0;
-      if ($b[0] == '#') return 0;
-      return strlen($a) == strlen($b) ? 0 : (strlen($a) < strlen($b) ? 1 : -1);
-    });
 
   # call init handlers
     event::start('on_form_init', $id, [$this, $items]);
@@ -119,7 +113,7 @@ namespace effcore {
   function form_items_get() {
     $return = [];
     $items = [];
-    foreach ($this->children_select_recursive() as $c_npath => $c_item) {
+    foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
       if ($c_item instanceof \effcore\container)         $return[$c_npath] = $c_item;
       if ($c_item instanceof \effcore\group_mono)        $items['##'.$c_item->first_element_name_get()][] = $c_item;
       if ($c_item instanceof \effcore\field)             $items['#' .$c_item->element_name_get()][] = $c_item;

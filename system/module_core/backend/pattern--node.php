@@ -34,14 +34,13 @@ namespace effcore {
     return $this->children;
   }
 
-  function children_select_recursive($children = null, $npath = '') {
+  function children_select_recursive($children = null, $npath = '', $is_parent_at_last = false) {
     $return = [];
     foreach ($children ?: $this->children as $c_id => $c_child) {
       $c_npath = $npath ? $npath.'/'.$c_id : $c_id;
-      $return[$c_npath] = $c_child;
-      if (!empty($c_child->children)) {
-        $return += $this->children_select_recursive($c_child->children, $c_npath);
-      }
+      if ($is_parent_at_last == false) $return[$c_npath] = $c_child;
+      if (!empty($c_child->children))  $return += $this->children_select_recursive($c_child->children, $c_npath, $is_parent_at_last);
+      if ($is_parent_at_last != false) $return[$c_npath] = $c_child;
     }
     return $return;
   }
