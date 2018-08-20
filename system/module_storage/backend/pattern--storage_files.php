@@ -129,7 +129,7 @@ namespace effcore {
     arsort($files);
   # parse each *._data file and collect modules path
     foreach ($files as $c_file) {
-      $c_parsed = static::dataline_to_date($c_file->load(), $c_file);
+      $c_parsed = static::dataline_to_data($c_file->load(), $c_file);
       $parsed[$c_file->path_relative_get()] = $c_parsed;
       if ($c_file->file_get() == 'module._data' && isset($c_parsed->module->id)) {
         $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
@@ -199,7 +199,7 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                      │
   # └─────────────────────╨───────────────────────────────────────────────────────┘
 
-  static function dataline_to_date($data, $file = null) {
+  static function dataline_to_data($data, $file = null) {
     $return = new \stdClass;
     $p = [-1 => &$return];
     $post_constructor_objects = [];
@@ -248,7 +248,7 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        $messages = ['Function: dataline_to_date', 'Wrong syntax in data at line: '.$line_number];
+        $messages = ['Function: dataline_to_data', 'Wrong syntax in data at line: '.$line_number];
         if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
         message::insert(implode(br, $messages), 'error');
       }
