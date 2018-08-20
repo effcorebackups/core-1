@@ -156,15 +156,15 @@ namespace effcore {
                                             $return;
   }
 
-  static function data_to_code($data, $prefix = '') {
+  static function data_to_codeline($data, $prefix = '') {
     $return = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            $return.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
-                                                                 '['.$c_key.']' :
-                                                   '[\''.addcslashes($c_key, '\'\\').'\']'));
+            $return.= static::data_to_codeline($c_value, $prefix.(is_int($c_key) ?
+                                                                     '['.$c_key.']' :
+                                                       '[\''.addcslashes($c_key, '\'\\').'\']'));
           }
         } else {
           $return.= $prefix.' = [];'.nl;
@@ -181,12 +181,13 @@ namespace effcore {
         else $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $return.= static::data_to_code($c_value, $prefix.'->'.$c_prop);
+          $return.= static::data_to_codeline($c_value, $prefix.'->'.$c_prop);
         }
         if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
         if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
         break;
-      default: $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
+      default:
+        $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
     }
     return $return;
   }

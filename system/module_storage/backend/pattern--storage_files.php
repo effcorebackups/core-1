@@ -129,7 +129,7 @@ namespace effcore {
     arsort($files);
   # parse each *._data file and collect modules path
     foreach ($files as $c_file) {
-      $c_parsed = static::data_to_code($c_file->load(), $c_file);
+      $c_parsed = static::dataline_to_date($c_file->load(), $c_file);
       $parsed[$c_file->path_relative_get()] = $c_parsed;
       if ($c_file->file_get() == 'module._data' && isset($c_parsed->module->id)) {
         $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
@@ -165,20 +165,20 @@ namespace effcore {
   ### parsing ###
   ###############
 
-  static function code_to_data($code, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
+  static function data_to_dataline($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
     $return = [];
     if ($entity_name) {
       $return[] = str_repeat('  ', $depth-1).($depth ? $entity_prefix : '').$entity_name;
     }
-    foreach ($code as $c_key => $c_value) {
+    foreach ($data as $c_key => $c_value) {
       if (is_array ($c_value) && !count($c_value))           continue;
       if (is_object($c_value) && !get_object_vars($c_value)) continue;
-      if (is_array ($c_value))     $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
-      elseif (is_object($c_value)) $return[] = static::code_to_data($c_value, $c_key, is_array($code) ? '- ' : '  ', $depth + 1);
-      elseif ($c_value === null)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': null';
-      elseif ($c_value === false)  $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': false';
-      elseif ($c_value === true)   $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': true';
-      else                         $return[] = str_repeat('  ', $depth).(is_array($code) ? '- ' : '  ').$c_key.': '.$c_value;
+      if (is_array ($c_value))     $return[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_object($c_value)) $return[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif ($c_value === null)   $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
+      elseif ($c_value === false)  $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
+      elseif ($c_value === true)   $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
+      else                         $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.$c_value;
     }
     return implode(nl, $return);
   }
@@ -199,11 +199,11 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                      │
   # └─────────────────────╨───────────────────────────────────────────────────────┘
 
-  static function data_to_code($data, $file = null) {
+  static function dataline_to_date($data, $file = null) {
     $return = new \stdClass;
     $p = [-1 => &$return];
-    $pc_objects = []; # classes with interface 'has_post_constructor'
-    $pi_objects = []; # classes with interface 'has_post_init'
+    $post_constructor_objects = [];
+    $post_init_objects        = [];
     $line_number = 0;
     foreach (explode(nl, str_replace(nl.'!', '', $data)) as $c_line) {
       $line_number++;
@@ -231,12 +231,13 @@ namespace effcore {
           } else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_pc = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
-            $c_is_pi = $c_reflection->implementsInterface('\\effcore\\has_post_init');
-            if ($c_is_pc) $c_value = core::class_instance_new_get($c_class_name);
-            else          $c_value = core::class_instance_new_get($c_class_name, [], true);
-            if ($c_is_pc) $pc_objects[] = $c_value;
-            if ($c_is_pi) $pi_objects[] = $c_value;
+            $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
+            $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\has_post_init');
+            if ($c_is_post_constructor)
+                 $c_value = core::class_instance_new_get($c_class_name);
+            else $c_value = core::class_instance_new_get($c_class_name, [], true);
+            if ($c_is_post_constructor) $post_constructor_objects[] = $c_value;
+            if ($c_is_post_init)        $post_init_objects[]        = $c_value;
           }
         }
       # add new item to tree
@@ -247,14 +248,14 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        $messages = ['Function: data_to_code', 'Wrong syntax in data at line: '.$line_number];
+        $messages = ['Function: dataline_to_date', 'Wrong syntax in data at line: '.$line_number];
         if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
         message::insert(implode(br, $messages), 'error');
       }
     }
   # call the interface dependent functions
-    foreach ($pc_objects as $c_object) $c_object->__construct();
-    foreach ($pi_objects as $c_object) $c_object->__post_init();
+    foreach ($post_constructor_objects as $c_object) $c_object->__construct();
+    foreach ($post_init_objects        as $c_object) $c_object->__post_init();
     return $return;
   }
 
