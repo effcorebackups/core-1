@@ -177,8 +177,8 @@ namespace effcore {
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
         $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\has_post_init');
         if ($c_is_post_constructor)
-              $return = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
-        else  $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
+             $return = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
+        else $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
           $return.= static::data_to_code($c_value, $prefix.'->'.$c_prop);

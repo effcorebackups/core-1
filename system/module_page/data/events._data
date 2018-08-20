@@ -15,10 +15,6 @@ events
   - decoration|event
       for: decoration
       handler: \effcore\modules\page\events_form::on_init_decoration
-  on_form_validate
-  - decoration|event
-      for: decoration
-      handler: \effcore\modules\page\events_form::on_validate_decoration
   on_form_submit
   - decoration|event
       for: decoration

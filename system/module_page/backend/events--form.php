@@ -19,9 +19,6 @@ namespace effcore\modules\page {
     $items['##color_bg_id']->value_set($settings['page']->color_bg_id);
   }
 
-  static function on_validate_decoration($form, $items) {
-  }
-
   static function on_submit_decoration($form, $items) {
     switch ($form->clicked_button_name) {
       case 'save':
