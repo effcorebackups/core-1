@@ -20,3 +20,8 @@ namespace effcore {
 # indicates that the __post_init() should be called after the data load
   interface has_post_init {}
 }
+
+namespace effcore {
+# indicates that the __post_parse() should be called after parse the data
+  interface has_post_parse {}
+}

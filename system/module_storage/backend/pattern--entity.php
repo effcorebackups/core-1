@@ -6,7 +6,7 @@
 
 namespace effcore {
           class entity
-          implements has_external_cache, has_post_init {
+          implements has_external_cache, has_post_parse {
 
   public $name;
   public $storage_id;
@@ -18,7 +18,7 @@ namespace effcore {
   public $constraints = [];
   public $indexes = [];
 
-  function __post_init() {
+  function __post_parse() {
   # add field 'created' and index for it
     if ($this->ws_created) {
       $this->fields->created = new \stdClass;
@@ -46,11 +46,7 @@ namespace effcore {
   function constraints_info_get() {return $this->constraints;}
   function field_info_get($name)  {return $this->fields->{$name};}
   function fields_info_get()      {return $this->fields;}
-  function fields_get() {
-    return core::array_kmap(
-      array_keys((array)$this->fields)
-    );
-  }
+  function fields_name_get()      {return core::array_kmap(array_keys((array)$this->fields));}
 
   function auto_name_get() {
     foreach ($this->fields as $name => $info) {
