@@ -268,18 +268,18 @@ namespace effcore {
   #############################################
 
   static function &arrobj_value_select(&$data, $name) {
-    if (gettype($data) == 'array')  return $data  [$name];
-    if (gettype($data) == 'object') return $data->{$name};
+    if (is_array ($data)) return $data  [$name];
+    if (is_object($data)) return $data->{$name};
   }
 
   static function arrobj_value_insert(&$data, $name, $value) {
-    if (gettype($data) == 'array')  $data  [$name] = $value;
-    if (gettype($data) == 'object') $data->{$name} = $value;
+    if (is_array ($data)) $data  [$name] = $value;
+    if (is_object($data)) $data->{$name} = $value;
   }
 
   static function arrobj_child_delete(&$data, $name) {
-    if (gettype($data) == 'array')  unset($data  [$name]);
-    if (gettype($data) == 'object') unset($data->{$name});
+    if (is_array ($data)) unset($data  [$name]);
+    if (is_object($data)) unset($data->{$name});
   }
 
   static function arrobj_values_select_recursive(&$data, $all = false, $dpath = '') {
