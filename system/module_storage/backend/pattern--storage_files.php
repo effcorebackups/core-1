@@ -244,7 +244,9 @@ namespace effcore {
           }
         }
       # add new item to tree
-        core::arrobj_value_insert($p[$c_depth-1], $c_name, $c_value);
+        if (!($c_value instanceof \stdClass && is_object($p[$c_depth-1]) &&  property_exists($p[$c_depth-1], $c_name) && is_array($p[$c_depth-1]->{$c_name})) &&
+            !($c_value instanceof \stdClass &&  is_array($p[$c_depth-1]) && array_key_exists($c_name, $p[$c_depth-1]) && is_array($p[$c_depth-1]  [$c_name])))
+          core::arrobj_value_insert($p[$c_depth-1], $c_name, $c_value);
         $p[$c_depth] = &core::arrobj_value_select($p[$c_depth-1], $c_name);
       # convert parent item to array
         if ($c_prefix == '- ' && !is_array($p[$c_depth-1])) {
