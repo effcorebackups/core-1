@@ -5,35 +5,35 @@ entities
     catalog_id: demo_types
     title: Demo: types
     fields
-      id
+    - id
         type: autoincrement
         not_null: true
-      description
+    - description
         type: varchar
         size: 255
         null: true
-      f_integer
+    - f_integer
         type: integer
         not_null: true
         default: 0
-      f_varchar
+    - f_varchar
         type: varchar
         size: 255
         not_null: true
         default: default text
-      f_time
+    - f_time
         type: time
         not_null: true
         default: 00:00:00
-      f_date
+    - f_date
         type: date
         not_null: true
         default: 2000-01-01
-      f_datetime
+    - f_datetime
         type: datetime
         not_null: true
         default: 2000-01-01 00:00:00
-      f_blob
+    - f_blob
         type: blob
         null: true
 - demo_autoincrement|entity
@@ -42,7 +42,7 @@ entities
     catalog_id: demo_autoincrement
     title: Demo: autoincrement
     fields
-      f_integer_1
+    - f_integer_1
         type: autoincrement
         not_null: true
     constraints
@@ -60,11 +60,11 @@ entities
     catalog_id: demo_constraints
     title: Demo: constraints
     fields
-      f_integer_1
+    - f_integer_1
         type: integer
         not_null: true
         default: 0
-      f_integer_2
+    - f_integer_2
         type: integer
         not_null: true
         default: 0
@@ -89,11 +89,11 @@ entities
     catalog_id: demo_indexes
     title: Demo: indexes
     fields
-      f_integer_1
+    - f_integer_1
         type: integer
         not_null: true
         default: 0
-      f_integer_2
+    - f_integer_2
         type: integer
         not_null: true
         default: 0

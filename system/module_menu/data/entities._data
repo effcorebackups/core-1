@@ -7,10 +7,10 @@ entities
     ws_updated: true
     title: Tree
     fields
-      id
+    - id
         type: autoincrement
         not_null: true
-      title
+    - title
         type: varchar
         size: 255
         not_null: true
@@ -27,17 +27,17 @@ entities
     ws_updated: true
     title: Tree item
     fields
-      id
+    - id
         type: autoincrement
         not_null: true
-      id_parent
+    - id_parent
         type: integer
         not_null: true
-      parent_is_tree
+    - parent_is_tree
         type: integer
         not_null: true
         default: 0
-      title
+    - title
         type: varchar
         size: 255
         not_null: true

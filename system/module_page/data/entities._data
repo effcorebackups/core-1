@@ -6,18 +6,18 @@ entities
     ws_created: true
     title: Captcha
     fields
-      ip_address
+    - ip_address
         type: varchar
         size: 15
         not_null: true
-      characters
+    - characters
         type: varchar
         size: 32
         not_null: true
-      attempts
+    - attempts
         type: integer
         not_null: true
-      canvas_data
+    - canvas_data
         type: blob
         not_null: true
     constraints
