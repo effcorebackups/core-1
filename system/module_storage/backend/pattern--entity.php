@@ -44,9 +44,9 @@ namespace effcore {
   function catalog_id_get()       {return $this->catalog_id;}
   function indexes_info_get()     {return $this->indexes;}
   function constraints_info_get() {return $this->constraints;}
-  function field_info_get($name)  {return $this->fields->{$name};}
+  function field_info_get($name)  {return $this->fields[$name] ?? null;}
   function fields_info_get()      {return $this->fields;}
-  function fields_name_get()      {return core::array_kmap(array_keys((array)$this->fields));}
+  function fields_name_get()      {return core::array_kmap(array_keys($this->fields));}
 
   function auto_name_get() {
     foreach ($this->fields as $name => $info) {
