@@ -25,6 +25,10 @@ namespace effcore {
     }
   }
 
+  function value_get() {
+    return $this->attribute_select('value');
+  }
+
   function disabled_get() {
     return $this->attribute_select('disabled') == 'disabled';
   }

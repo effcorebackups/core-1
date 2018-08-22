@@ -39,7 +39,7 @@ namespace effcore\modules\core {
   }
 
   static function on_validate_install($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'install':
         if ($items['#driver:mysql' ]->element_checked_get() == false &&
             $items['#driver:sqlite']->element_checked_get() == false) {
@@ -83,7 +83,7 @@ namespace effcore\modules\core {
   }
 
   static function on_submit_install($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'install':
         if ($items['#driver:mysql']->element_checked_get()) {
           $params = new \stdClass;

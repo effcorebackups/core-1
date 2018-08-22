@@ -14,7 +14,6 @@ namespace effcore {
 
   public $tag_name = 'form';
   public $clicked_button;
-  public $clicked_button_name;
   public $validation_id;
   public $validation_data = [];
   static public $errors = [];
@@ -24,7 +23,7 @@ namespace effcore {
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
-    $this->button_clicked_set(field::request_value_get('button', 0, $this->source_get()));
+    $this->button_clicked_set();
 
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
@@ -45,7 +44,7 @@ namespace effcore {
     event::start('on_form_init', $id, [$this, $items]);
 
   # if user click the button
-    if ($this->clicked_button_name &&
+    if ($this->clicked_button &&
         field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
     # call items validate methods
@@ -126,15 +125,14 @@ namespace effcore {
     return $return;
   }
 
-  function button_clicked_set($value) {
+  function button_clicked_set() {
+    $value = field::request_value_get('button', 0, $this->source_get());
     foreach ($this->children_select_recursive() as $c_element) {
-      if ($c_element instanceof markup                      &&
-          $c_element->tag_name == 'button'                  &&
-          $c_element->attribute_select('type' ) == 'submit' &&
-          $c_element->attribute_select('value') == $value) {
-        $this->clicked_button      = $c_element;
-        $this->clicked_button_name = $value;
-        break;
+      if ($c_element instanceof button        &&
+          $c_element->disabled_get() == false &&
+          $c_element->value_get()    == $value) {
+        $this->clicked_button = $c_element;
+        return true;
       }
     }
   }

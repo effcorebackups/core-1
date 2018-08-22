@@ -24,7 +24,7 @@ namespace effcore\modules\user {
 
   static function on_submit_user_delete($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'delete':
         $user = (new instance('user', [
           'id' => $id_user,
@@ -65,7 +65,7 @@ namespace effcore\modules\user {
   }
 
   static function on_validate_user_edit($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'save':
         if ($form->total_errors_count_get() == 0) {
           $id_user = page::current_get()->args_get('id_user');
@@ -116,7 +116,7 @@ namespace effcore\modules\user {
 
   static function on_submit_user_edit($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'save':
         $user = (new instance('user', ['id' => $id_user]))->select();
         $user->email = strtolower($items['#email']->value_get());
@@ -162,7 +162,7 @@ namespace effcore\modules\user {
   }
 
   static function on_validate_login($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'login':
         if ($form->total_errors_count_get() == 0) {
           $user = (new instance('user', [
@@ -181,7 +181,7 @@ namespace effcore\modules\user {
   }
 
   static function on_submit_login($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'login':
         $user = (new instance('user', [
           'email' => strtolower($items['#email']->value_get())
@@ -202,7 +202,7 @@ namespace effcore\modules\user {
   ##########################
 
   static function on_validate_registration($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'register':
         if ($form->total_errors_count_get() == 0) {
         # test email
@@ -225,7 +225,7 @@ namespace effcore\modules\user {
   }
 
   static function on_submit_registration($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'register':
         $user = (new instance('user', [
           'email'         => strtolower($items['#email']->value_get()),
@@ -249,7 +249,7 @@ namespace effcore\modules\user {
   ####################
 
   static function on_submit_logout($form, $items) {
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'logout':
         session::delete(user::current_get()->id);
         url::go('/');

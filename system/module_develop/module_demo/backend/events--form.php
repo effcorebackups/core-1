@@ -17,10 +17,9 @@ namespace effcore\modules\demo {
   ##################
 
   static function on_init_demo($form, $items) {
-    switch ($form->clicked_button_name) {
-      case 'reset':
-        field::request_values_reset();
-        break;
+    if ($form->clicked_button &&
+        $form->clicked_button->value_get() == 'reset') {
+      field::request_values_reset();
     }
     $items['#select']->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => 'disabled'], 'group_1');
     $items['#select']->option_insert('Option 6 (inserted from code)', 'option_6', [], 'group_1');
@@ -44,7 +43,7 @@ namespace effcore\modules\demo {
     message::insert(
       translation::get('Call %%_name', ['name' => '\\'.__METHOD__])
     );
-    switch ($form->clicked_button_name) {
+    switch ($form->clicked_button->value_get()) {
       case 'submit':
         $def_value_checkboxes = [1 => 'checkboxes_2', 3 => 'checkboxes_4'];
         $def_value_email = 'test1@example.com,test2@example.com';
