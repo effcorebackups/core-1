@@ -95,22 +95,12 @@ forms
                 - pattern: %^[a-zA-Z0-9-_]+$%
                 - required: null
     - license_agreement|group_license_agreement
-    - button_install|markup
-        tag_name: button
+    - button_install|button
+        title: install
         attributes
-        - type: submit
-        - name: button
         - value: install
-        children
-        - label|text
-            text: install
-    - button_to_front|markup
-        tag_name: button
+    - button_to_front|button
+        title: to front page
         novalidate: true
         attributes
-        - type: submit
-        - name: button
         - value: to_front
-        children
-        - label|text
-            text: to front page

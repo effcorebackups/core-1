@@ -11,6 +11,7 @@ namespace effcore {
   public $attributes = ['type' => 'submit', 'name' => 'button'];
 # ─────────────────────────────────────────────────────────────────────
   public $title = 'button';
+  public $novalidate = false;
 
   function __construct($title = null, $attributes = [], $weight = 0) {
     if ($title) $this->title = $title;
