@@ -20,22 +20,12 @@ forms
             - =: required
             element_attributes
             - name: color_bg_id
-    - button_save|markup
-        tag_name: button
+    - button_save|button
+        title: save
         attributes
-        - type: submit
-        - name: button
         - value: save
-        children
-        - label|text
-            text: save
-    - button_restore|markup
-        tag_name: button
+    - button_restore|button
+        title: restore
         attributes
-        - type: submit
-        - name: button
         - value: restore
         - =: disabled
-        children
-        - label|text
-            text: restore
