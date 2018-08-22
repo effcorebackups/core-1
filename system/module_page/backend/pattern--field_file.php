@@ -302,7 +302,7 @@ namespace effcore {
     $name = $field->name_get();
     $type = $field->type_get();
     if ($name && $type) {
-      if (static::is_disabled($field, $element)) return true;
+      if ($field->disabled_get()) return true;
       $field->pool_values_init_new_from_cache();
       $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);

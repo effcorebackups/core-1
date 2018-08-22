@@ -35,8 +35,8 @@ namespace effcore {
     $name = $field->name_get();
     $type = $field->type_get();
     if ($name && $type) {
-      if (static::is_disabled($field, $element)) return true;
-      if (static::is_readonly($field, $element)) return true;
+      if ($field->disabled_get()) return true;
+      if ($field->readonly_get()) return true;
       $new_value = static::request_value_get($name, static::cur_number_get($name), $form->source_get());
       $result = static::validate_required ($field, $form, $element, $new_value) &&
                 static::validate_minlength($field, $form, $element, $new_value) &&

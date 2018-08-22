@@ -151,6 +151,17 @@ namespace effcore {
     else              $element->attribute_delete('disabled');
   }
 
+  function readonly_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('readonly') == 'readonly';
+  }
+
+  function readonly_set($is_readonly = true) {
+    $element = $this->child_select('element');
+    if ($is_readonly) $element->attribute_insert('readonly', 'readonly');
+    else              $element->attribute_delete('readonly');
+  }
+
   # ─────────────────────────────────────────────────────────────────────
   # functionality for render
   # ─────────────────────────────────────────────────────────────────────
@@ -204,6 +215,9 @@ namespace effcore {
     return !isset(static::$numbers[$name]) ?
                  (static::$numbers[$name] = 0) :
                 ++static::$numbers[$name];
+  }
+
+  static function validate($field, $form, $npath) {
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
@@ -312,17 +326,6 @@ namespace effcore {
       }
     }
     return $return;
-  }
-
-  static function is_disabled($field, $element) {
-    return $element->attribute_select('disabled') ? true : false;
-  }
-
-  static function is_readonly($field, $element) {
-    return $element->attribute_select('readonly') ? true : false;
-  }
-
-  static function validate($field, $form, $npath) {
   }
 
 }}
