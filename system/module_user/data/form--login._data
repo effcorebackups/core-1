@@ -20,12 +20,7 @@ forms
             - =: remember
             - =: fixed_ip
         - captcha|field_captcha
-    - button_login|markup
-        tag_name: button
+    - button_login|button
+        title: login
         attributes
-        - type: submit
-        - name: button
         - value: login
-        children
-        - label|text
-            text: login

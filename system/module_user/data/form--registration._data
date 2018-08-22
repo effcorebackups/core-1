@@ -26,12 +26,7 @@ forms
             - =: remember
             - =: fixed_ip
         - captcha|field_captcha
-    - button_register|markup
-        tag_name: button
+    - button_register|button
+        title: register
         attributes
-        - type: submit
-        - name: button
         - value: register
-        children
-        - label|text
-            text: register
