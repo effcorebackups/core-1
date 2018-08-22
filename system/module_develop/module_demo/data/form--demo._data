@@ -330,21 +330,11 @@ forms
                   - type: group_palette
                 element_attributes
                 - name: palette_color
-    - button_submit|markup
-        tag_name: button
+    - button_submit|button
+        title: submit
         attributes
-        - type: submit
-        - name: button
         - value: submit
-        children
-        - label|text
-            text: submit
-    - button_reset|markup
-        tag_name: button
+    - button_reset|button
+        title: reset
         attributes
-        - type: submit
-        - name: button
         - value: reset
-        children
-        - label|text
-            text: reset
