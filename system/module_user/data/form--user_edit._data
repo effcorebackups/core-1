@@ -36,22 +36,12 @@ forms
             - name: password_new
             - required: null
         - password|field_password
-    - button_save|markup
-        tag_name: button
+    - button_save|button
+        title: save
         attributes
-        - type: submit
-        - name: button
         - value: save
-        children
-        - label|text
-            text: save
-    - button_cancel|markup
-        tag_name: button
+    - button_cancel_new|button
+        title: cancel
         novalidate: true
         attributes
-        - type: submit
-        - name: button
         - value: cancel
-        children
-        - label|text
-            text: cancel
