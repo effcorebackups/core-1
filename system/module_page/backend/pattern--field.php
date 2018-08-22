@@ -79,27 +79,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # functionality for errors
-  # ─────────────────────────────────────────────────────────────────────
-
-  function error_set($message = null) {
-    static::$errors[$this->npath][] = $message;
-    if (count(static::$errors[$this->npath]) == 1) {
-      $element = $this->child_select('element');
-      $element->attribute_insert('class', ['error' => 'error']);
-    }
-  }
-
-  function errors_count_get() {
-    return count($this->errors_get());
-  }
-
-  function errors_get() {
-    return isset(static::$errors[$this->npath]) ?
-                 static::$errors[$this->npath] : [];
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
   # element properties
   # ─────────────────────────────────────────────────────────────────────
 
@@ -160,6 +139,27 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($is_readonly) $element->attribute_insert('readonly', 'readonly');
     else              $element->attribute_delete('readonly');
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # functionality for errors
+  # ─────────────────────────────────────────────────────────────────────
+
+  function error_set($message = null) {
+    static::$errors[$this->npath][] = $message;
+    if (count(static::$errors[$this->npath]) == 1) {
+      $element = $this->child_select('element');
+      $element->attribute_insert('class', ['error' => 'error']);
+    }
+  }
+
+  function errors_count_get() {
+    return count($this->errors_get());
+  }
+
+  function errors_get() {
+    return isset(static::$errors[$this->npath]) ?
+                 static::$errors[$this->npath] : [];
   }
 
   # ─────────────────────────────────────────────────────────────────────
