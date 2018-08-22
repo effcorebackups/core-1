@@ -40,7 +40,7 @@ forms
         title: save
         attributes
         - value: save
-    - button_cancel_new|button
+    - button_cancel|button
         title: cancel
         novalidate: true
         attributes
