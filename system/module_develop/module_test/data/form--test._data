@@ -11,12 +11,7 @@ forms
             title: Select the test
             element_attributes
             - name: select_test
-    - button_run|markup
-        tag_name: button
+    - button_run|button
+        title: run
         attributes
-        - type: submit
-        - name: button
         - value: run
-        children
-        - label|text
-            text: run
