@@ -5,22 +5,12 @@ forms
     - method: post
     - =: novalidate
     children
-    - button_logout|markup
-        tag_name: button
+    - button_logout|button
+        title: logout
         attributes
-        - type: submit
-        - name: button
         - value: logout
-        children
-        - label|text
-            text: logout
-    - button_cancel|markup
-        tag_name: button
+    - button_cancel|button
+        title: cancel
         novalidate: true
         attributes
-        - type: submit
-        - name: button
         - value: cancel
-        children
-        - label|text
-            text: cancel
