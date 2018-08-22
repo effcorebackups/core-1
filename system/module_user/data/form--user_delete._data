@@ -5,22 +5,12 @@ forms
     - method: post
     - =: novalidate
     children
-    - button_delete|markup
-        tag_name: button
+    - button_delete|button
+        title: delete
         attributes
-        - type: submit
-        - name: button
         - value: delete
-        children
-        - label|text
-            text: delete
-    - button_cancel|markup
-        tag_name: button
+    - button_cancel|button
+        title: cancel
         novalidate: true
         attributes
-        - type: submit
-        - name: button
         - value: cancel
-        children
-        - label|text
-            text: cancel
