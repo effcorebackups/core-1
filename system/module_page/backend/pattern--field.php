@@ -103,13 +103,13 @@ namespace effcore {
   # element properties
   # ─────────────────────────────────────────────────────────────────────
 
-  function element_name_get($trim = true) {
+  function name_get($trim = true) {
     $element = $this->child_select('element');
     return $trim ? rtrim($element->attribute_select('name'), '[]') :
                          $element->attribute_select('name');
   }
 
-  function element_type_get($full = true) {
+  function type_get($full = true) {
     $element = $this->child_select('element');
     switch ($element->tag_name) {
       case 'input'   : return 'input'.($full ? ':'.$element->attribute_select('type') : '');
@@ -118,34 +118,34 @@ namespace effcore {
     }
   }
 
-  function element_required_get() {
+  function required_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('required') == 'required';
   }
 
-  function element_required_set($is_required = true) {
+  function required_set($is_required = true) {
     $element = $this->child_select('element');
     if ($is_required) $element->attribute_insert('required', 'required');
     else              $element->attribute_delete('required');
   }
 
-  function element_checked_get() {
+  function checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') == 'checked';
   }
 
-  function element_checked_set($is_checked = true) {
+  function checked_set($is_checked = true) {
     $element = $this->child_select('element');
     if ($is_checked) $element->attribute_insert('checked', 'checked');
     else             $element->attribute_delete('checked');
   }
 
-  function element_disabled_get() {
+  function disabled_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('disabled') == 'disabled';
   }
 
-  function element_disabled_set($is_disabled = true) {
+  function disabled_set($is_disabled = true) {
     $element = $this->child_select('element');
     if ($is_disabled) $element->attribute_insert('disabled', 'disabled');
     else              $element->attribute_delete('disabled');

@@ -111,8 +111,8 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->element_name_get();
-    $type = $field->element_type_get();
+    $name = $field->name_get();
+    $type = $field->type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $values_allowed = $field->values_allowed_get();

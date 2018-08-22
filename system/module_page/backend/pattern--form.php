@@ -114,9 +114,9 @@ namespace effcore {
     $groups = [];
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
       if ($c_item instanceof container)         $return[$c_npath] = $c_item;
-      if ($c_item instanceof group_mono)        $groups['*'.$c_item->first_element_name_get()][] = $c_item;
-      if ($c_item instanceof field)             $groups['#'.$c_item->element_name_get()][] = $c_item;
-      if ($c_item instanceof field_radiobutton) $groups['#'.$c_item->element_name_get().':'.$c_item->value_get()][] = $c_item;
+      if ($c_item instanceof group_mono)        $groups['*'.$c_item->name_first_get()][] = $c_item;
+      if ($c_item instanceof field)             $groups['#'.$c_item->name_get()][] = $c_item;
+      if ($c_item instanceof field_radiobutton) $groups['#'.$c_item->name_get().':'.$c_item->value_get()][] = $c_item;
       if ($c_item instanceof button)            $return['~'.$c_item->value_get()] = $c_item;
     }
     foreach ($groups as $c_name => $c_group) {

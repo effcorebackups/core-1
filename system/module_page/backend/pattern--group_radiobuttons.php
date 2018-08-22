@@ -46,13 +46,13 @@ namespace effcore {
       $element->attribute_insert($c_name, $c_value);
     }
     $value = $element->attribute_select('value');
-    if (isset($this->required[$value])) $field->element_required_set();
-    if (isset($this->checked[$value]))  $field->element_checked_set();
-    if (isset($this->disabled[$value])) $field->element_disabled_set();
+    if (isset($this->required[$value])) $field->required_set();
+    if (isset($this->checked[$value]))  $field->checked_set();
+    if (isset($this->disabled[$value])) $field->disabled_set();
     return $this->child_insert($field, $new_id);
   }
 
-  function first_element_name_get($trim = true) {
+  function name_first_get($trim = true) {
     foreach ($this->children_select() as $c_field) {
       if ($c_field instanceof $this->field_class) {
         $element = $c_field->child_select('element');
@@ -64,7 +64,7 @@ namespace effcore {
 
   function value_get() {
     foreach ($this->children_select() as $c_field) {
-      if ($c_field->element_checked_get() == true) {
+      if ($c_field->checked_get() == true) {
         return $c_field->value_get();
       }
     }
@@ -72,10 +72,10 @@ namespace effcore {
   }
 
   function value_set($value) {
-    foreach ($this->children_select() as $c_field) $c_field->element_checked_set(false);
+    foreach ($this->children_select() as $c_field) $c_field->checked_set(false);
     foreach ($this->children_select() as $c_field) {
       if ($value == $c_field->value_get()) {
-        $c_field->element_checked_set(true);
+        $c_field->checked_set(true);
         return true;
       }
     }

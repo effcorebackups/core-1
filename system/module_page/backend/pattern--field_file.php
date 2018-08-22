@@ -231,13 +231,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   protected function pool_validation_cache_get($type) {
-    $name = $this->element_name_get();
+    $name = $this->name_get();
     return isset($this->cform->validation_data['pool'][$name][$type]) ?
                  $this->cform->validation_data['pool'][$name][$type] : [];
   }
 
   protected function pool_validation_cache_set($type, $data) {
-    $name = $this->element_name_get();
+    $name = $this->name_get();
     $this->cform->validation_data['pool'][$name][$type] = $data;
     if (count($this->cform->validation_data['pool'][$name][$type]) == 0) unset($this->cform->validation_data['pool'][$name][$type]);
     if (count($this->cform->validation_data['pool'][$name])        == 0) unset($this->cform->validation_data['pool'][$name]);
@@ -259,7 +259,7 @@ namespace effcore {
   }
 
   protected function pool_manager_insert_action($info, $id, $type) {
-    $name = $this->element_name_get();
+    $name = $this->name_get();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
       translation::get('delete file: %%_name', ['name' => $info->file]), ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
@@ -267,14 +267,14 @@ namespace effcore {
   }
 
   protected function pool_manager_deleted_items_get($type) {
-    $name = $this->element_name_get();
+    $name = $this->name_get();
     return core::array_kmap(
       static::request_values_get('manager_delete_'.$name.'_'.$type)
     );
   }
 
   protected function pool_manager_deleted_items_set($type, $items) {
-    $name = $this->element_name_get();
+    $name = $this->name_get();
     static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
   }
 
@@ -299,8 +299,8 @@ namespace effcore {
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
-    $name = $field->element_name_get();
-    $type = $field->element_type_get();
+    $name = $field->name_get();
+    $type = $field->type_get();
     if ($name && $type) {
       if (static::is_disabled($field, $element)) return true;
       $field->pool_values_init_new_from_cache();

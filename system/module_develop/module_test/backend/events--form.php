@@ -19,7 +19,7 @@ namespace effcore\modules\test {
   static function on_init_test($form, $items) {
     $items['#select_test']->option_insert('- select -', 'not_selected');
     if (!extension_loaded('curl')) {
-      $items['#select_test']->element_disabled_set();
+      $items['#select_test']->disabled_set();
       $items['~run']->disabled_set();
       message::insert(
         translation::get('The PHP extension "%%_name" is not available!', ['name' => 'curl']), 'warning'

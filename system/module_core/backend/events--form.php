@@ -22,11 +22,11 @@ namespace effcore\modules\core {
       message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo']), 'warning');
     }
     if (!extension_loaded('pdo_mysql')) {
-      $items['#driver:mysql']->element_disabled_set();
+      $items['#driver:mysql']->disabled_set();
       message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql']), 'warning');
     }
     if (!extension_loaded('pdo_sqlite')) {
-      $items['#driver:sqlite']->element_disabled_set();
+      $items['#driver:sqlite']->disabled_set();
       message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');
     }
     $main = storage::get('main');
@@ -41,15 +41,15 @@ namespace effcore\modules\core {
   static function on_validate_install($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
-        if ($items['#driver:mysql' ]->element_checked_get() == false &&
-            $items['#driver:sqlite']->element_checked_get() == false) {
+        if ($items['#driver:mysql' ]->checked_get() == false &&
+            $items['#driver:sqlite']->checked_get() == false) {
           $items['#driver:mysql' ]->error_set();
           $items['#driver:sqlite']->error_set();
           $form->error_set('Driver is not selected!');
           return;
         }
         if ($form->total_errors_count_get() == 0) {
-          if ($items['#driver:mysql']->element_checked_get()) {
+          if ($items['#driver:mysql']->checked_get()) {
             $test = storage::get('main')->test('mysql', (object)[
               'storage_id' => $items['#storage_id']->value_get(),
               'host_name'  => $items['#host_name' ]->value_get(),
@@ -67,7 +67,7 @@ namespace effcore\modules\core {
                                translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
             }
           }
-          if ($items['#driver:sqlite']->element_checked_get()) {
+          if ($items['#driver:sqlite']->checked_get()) {
             $test = storage::get('main')->test('sqlite', (object)[
               'file_name' => $items['#file_name']->value_get()
             ]);
@@ -85,7 +85,7 @@ namespace effcore\modules\core {
   static function on_submit_install($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
-        if ($items['#driver:mysql']->element_checked_get()) {
+        if ($items['#driver:mysql']->checked_get()) {
           $params = new \stdClass;
           $params->driver = 'mysql';
           $params->credentials = new \stdClass;
@@ -96,7 +96,7 @@ namespace effcore\modules\core {
           $params->credentials->password   = $items['#password'    ]->value_get();
           $params->table_prefix            = $items['#table_prefix']->value_get();
         }
-        if ($items['#driver:sqlite']->element_checked_get()) {
+        if ($items['#driver:sqlite']->checked_get()) {
           $params = new \stdClass;
           $params->driver = 'sqlite';
           $params->credentials = new \stdClass;
