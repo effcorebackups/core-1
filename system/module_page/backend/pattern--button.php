@@ -25,4 +25,13 @@ namespace effcore {
     }
   }
 
+  function disabled_get() {
+    return $this->attribute_select('disabled') == 'disabled';
+  }
+
+  function disabled_set($is_disabled = true) {
+    if ($is_disabled) $this->attribute_insert('disabled', 'disabled');
+    else              $this->attribute_delete('disabled');
+  }
+
 }}
