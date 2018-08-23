@@ -46,8 +46,7 @@ namespace effcore {
                  $c_block->display->check == 'page_args' && preg_match(
                  $c_block->display->match, $this->args_get(
                  $c_block->display->where)))) {
-        $c_region = isset($c_block->region) ?
-                          $c_block->region : 'content';
+        $c_region = $c_block->region ?? 'content';
         if (!$contents->child_select($c_region))
              $contents->child_insert(new node(), $c_region);
         $c_block_markup = null;

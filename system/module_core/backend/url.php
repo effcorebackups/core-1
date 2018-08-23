@@ -87,14 +87,13 @@ namespace effcore {
                                   ($this->query  ? '?'.$this->query  : '').
                                   ($this->anchor ? '#'.$this->anchor : '');}
 
-  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return isset($args[$name]) ? $args[$name] : null;}
+  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;}
   function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args); $args[$name] = $value; $this->query = http_build_query($args);}
   function query_arg_delete($name)         {$args = []; parse_str($this->query, $args); unset($args[$name]);   $this->query = http_build_query($args);}
 
   function path_arg_select($name) {
     $args = explode('/', $this->path);
-    return isset($args[$name]) ?
-                 $args[$name] : null;
+    return $args[$name] ?? null;
   }
 
   ###########################

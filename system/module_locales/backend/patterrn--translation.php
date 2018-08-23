@@ -39,8 +39,7 @@ namespace effcore {
   static function get($string, $args = [], $code = '') {
     $c_code = $code ?: language::current_get();
     if (!isset(static::$cache[$c_code])) static::init($c_code);
-    $string = isset(static::$cache[$c_code][$string]) ?
-                    static::$cache[$c_code][$string] : $string;
+    $string =  static::$cache[$c_code][$string] ?? $string;
     return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)(?:\\{(?<args>[a-z0-9_,=\'"-]+)\\}|)%S', function($c_match) use ($c_code, $args) {
       $c_name =       $c_match['name'];
       $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
@@ -65,8 +64,7 @@ namespace effcore {
         }
       }
     # default case
-      return isset($args[$c_name]) ?
-                   $args[$c_name] : $c_match[0];
+      return $args[$c_name] ?? $c_match[0];
     }, $string);
   }
 

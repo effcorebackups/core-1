@@ -277,9 +277,9 @@ namespace effcore\modules\develop {
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                         '(?<name>'.$c_info->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
-            if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-            if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-            if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => isset($c_matches['value']) ? $c_matches['value'] : '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+            if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
           }
         }
 

@@ -46,8 +46,7 @@ namespace effcore {
   }
 
   function child_select($id) {
-    return isset($this->children[$id]) ?
-                 $this->children[$id] : null;
+    return $this->children[$id] ?? null;
   }
 
   function child_select_prev($child) {reset($this->children); while (next($this->children)) if (current($this->children) == $child) return prev($this->children);}

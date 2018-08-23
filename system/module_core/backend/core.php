@@ -545,8 +545,8 @@ namespace effcore {
                  '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::server_user_agent_get(), $matches);
     $return->name = isset($matches['name']) ? strtolower($matches['name']) : '';
     $return->core = isset($matches['core']) ? strtolower($matches['core']) : '';
-    $return->core_version = isset($matches['core_v']) ? $matches['core_v'] : '';
-    $return->name_version = isset($matches['name_v']) ? $matches['name_v'] : '';
+    $return->core_version = $matches['core_v'] ?? '';
+    $return->name_version = $matches['name_v'] ?? '';
     if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'msie';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
     if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
     return $return;

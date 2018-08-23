@@ -74,8 +74,8 @@ namespace effcore {
     preg_match('%^(?<dirs>.*/|)'.
                  '(?<name>.+?|)'.
                  '(?<type>[.][^.]+|)$%S', $path, $matches);
-    $this->dirs = isset($matches['dirs']) ? $matches['dirs'] : '';
-    $this->name = isset($matches['name']) ? $matches['name'] : '';
+    $this->dirs = $matches['dirs'] ?? '';
+    $this->name = $matches['name'] ?? '';
     $this->type = isset($matches['type']) ? ltrim($matches['type'], '.') : '';
   }
 

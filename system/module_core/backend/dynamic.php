@@ -24,8 +24,7 @@ namespace effcore {
         $file->insert();
       }
     }
-    return isset(static::$data[$name]) ?
-                 static::$data[$name] : null;
+    return static::$data[$name] ?? null;
   }
 
   static function update($name, $data, $sub_dirs = '', $info = null) {

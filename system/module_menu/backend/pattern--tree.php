@@ -41,8 +41,7 @@ namespace effcore {
   }
 
   static function get($id) {
-    return isset(static::$cache_trees[$id]) ?
-                 static::$cache_trees[$id] : null;
+    return static::$cache_trees[$id] ?? null;
   }
 
   static function all_get() {
@@ -50,8 +49,7 @@ namespace effcore {
   }
 
   static function item_get($id) {
-    return isset(static::$cache_tree_items[$id]) ?
-                 static::$cache_tree_items[$id] : null;
+    return static::$cache_tree_items[$id] ?? null;
   }
 
   static function items_get() {

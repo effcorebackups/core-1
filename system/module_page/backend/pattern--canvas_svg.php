@@ -23,8 +23,7 @@ namespace effcore {
   }
 
   function pixel_get($x, $y) {
-    return isset($this->canvas[$y][$x]) ?
-                 $this->canvas[$y][$x] : null;
+    return $this->canvas[$y][$x] ?? null;
   }
 
   function pixel_set($x, $y, $color = '#000000') {
@@ -35,8 +34,7 @@ namespace effcore {
     $matrix = [];
     for ($c_y = 0; $c_y < ($h ?: $this->h); $c_y++) {
     for ($c_x = 0; $c_x < ($w ?: $this->w); $c_x++) {
-      $matrix[$c_y][$c_x] = isset($this->canvas[$c_y + $y][$c_x + $x]) ?
-                                  $this->canvas[$c_y + $y][$c_x + $x] : null;
+      $matrix[$c_y][$c_x] = $this->canvas[$c_y + $y][$c_x + $x] ?? null;
     }}
     return $matrix;
   }

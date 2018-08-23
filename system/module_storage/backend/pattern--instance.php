@@ -76,15 +76,13 @@ namespace effcore {
   }
 
   static function get($row_id) {
-    if         (!static::$cache) static::init();
-    return isset(static::$cache[$row_id]) ?
-                 static::$cache[$row_id] : null;
+    if   (!static::$cache) static::init();
+    return static::$cache[$row_id] ?? null;
   }
 
   static function all_by_module_get($name) {
-    if         (!static::$cache_orig) static::init();
-    return isset(static::$cache_orig[$name]) ?
-                 static::$cache_orig[$name] : [];
+    if   (!static::$cache_orig) static::init();
+    return static::$cache_orig[$name] ?? [];
   }
 
 }}

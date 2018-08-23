@@ -75,8 +75,7 @@ namespace effcore {
   }
 
   static function get($id) {
-    return isset(static::$cache_tabs[$id]) ?
-                 static::$cache_tabs[$id] : null;
+    return static::$cache_tabs[$id] ?? null;
   }
 
   static function all_get() {
@@ -84,8 +83,7 @@ namespace effcore {
   }
 
   static function item_get($id) {
-    return isset(static::$cache_tabs_items[$id]) ?
-                 static::$cache_tabs_items[$id] : null;
+    return static::$cache_tabs_items[$id] ?? null;
   }
 
   static function items_get() {

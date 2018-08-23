@@ -72,7 +72,7 @@ namespace effcore {
     }
   # init dynamic and static changes
     $changes_d = data::select('changes') ?: [];
-    $changes_s = isset($data_orig['changes']) ? $data_orig['changes'] : [];
+    $changes_s =   $data_orig['changes'] ?? [];
   # apply all changes to original data and get final data
     $data = core::array_clone_deep($data_orig);
     static::data_changes_apply($changes_d, $data);

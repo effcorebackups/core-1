@@ -232,8 +232,7 @@ namespace effcore {
 
   protected function pool_validation_cache_get($type) {
     $name = $this->name_get();
-    return isset($this->cform->validation_data['pool'][$name][$type]) ?
-                 $this->cform->validation_data['pool'][$name][$type] : [];
+    return $this->cform->validation_data['pool'][$name][$type] ?? [];
   }
 
   protected function pool_validation_cache_set($type, $data) {

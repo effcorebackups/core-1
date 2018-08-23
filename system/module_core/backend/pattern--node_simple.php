@@ -23,8 +23,7 @@ namespace effcore {
   ##################
 
   function attribute_select($key, $scope = 'attributes') {
-    return isset($this->{$scope}[$key]) ?
-                 $this->{$scope}[$key] : null;
+    return $this->{$scope}[$key] ?? null;
   }
 
   function attributes_select($scope = 'attributes') {
@@ -61,8 +60,7 @@ namespace effcore {
   }
 
   function render_self() {
-    return isset($this->title) ?
-                 $this->title : '';
+    return $this->title ?? '';
   }
 
 }}

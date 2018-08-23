@@ -32,8 +32,7 @@ namespace effcore {
   }
 
   static function get_plurals($code) {
-    return isset(static::get($code)->plurals) ?
-                 static::get($code)->plurals : [];
+    return static::get($code)->plurals ?? [];
   }
 
   static function current_get() {

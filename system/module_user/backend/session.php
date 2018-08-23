@@ -89,12 +89,9 @@ namespace effcore {
   }
 
   static function id_get() {
-    if (static::id_check(
-          isset($_COOKIE['session_id']) ?
-                $_COOKIE['session_id'] : '')) {
-      return    $_COOKIE['session_id']; } else {
-      return static::id_regenerate('a');
-    }
+    if (static::id_check($_COOKIE['session_id'] ?? ''))
+           return        $_COOKIE['session_id'];
+      else return static::id_regenerate('a');
   }
 
   static function id_decode_type($id)          {return substr($id, 0, 1);}

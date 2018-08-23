@@ -226,12 +226,9 @@ namespace effcore {
 
   static function validation_id_get($source = '_POST') {
     global ${$source};
-    if (static::validation_id_check(
-          isset(${$source}['validation_id']) ?
-                ${$source}['validation_id'] : '')) {
-      return    ${$source}['validation_id']; } else {
-      return static::validation_id_generate();
-    }
+    if (static::validation_id_check(${$source}['validation_id'] ?? ''))
+         return                     ${$source}['validation_id'];
+    else return static::validation_id_generate();
   }
 
   static function validation_id_decode_created($id)       {return hexdec(substr($id, 0, 8));}

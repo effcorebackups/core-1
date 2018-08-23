@@ -158,8 +158,7 @@ namespace effcore {
   }
 
   function errors_get() {
-    return isset(static::$errors[$this->npath]) ?
-                 static::$errors[$this->npath] : [];
+    return static::$errors[$this->npath] ?? [];
   }
 
   # ─────────────────────────────────────────────────────────────────────
