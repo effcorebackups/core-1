@@ -146,10 +146,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function error_set($message = null) {
-    static::$errors[$this->npath][] = $message;
-    if (count(static::$errors[$this->npath]) == 1) {
-      $element = $this->child_select('element');
-      $element->attribute_insert('class', ['error' => 'error']);
+    if ($this->disabled_get() == false &&
+        $this->readonly_get() == false) {
+      static::$errors[$this->npath][] = $message;
+      if (count(static::$errors[$this->npath]) == 1) {
+        $element = $this->child_select('element');
+        $element->attribute_insert('class', ['error' => 'error']);
+      }
     }
   }
 

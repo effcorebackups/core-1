@@ -18,8 +18,13 @@ namespace effcore\modules\core {
   #####################
 
   static function on_init_install($form, $items) {
-    if (!extension_loaded('pdo')) {
-      message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo']), 'warning');
+    if (!extension_loaded('pdo') || (
+        !extension_loaded('pdo_mysql') &&
+        !extension_loaded('pdo_sqlite'))) {
+      $items['#driver:mysql' ]->disabled_set();
+      $items['#driver:sqlite']->disabled_set();
+      $items['~install'      ]->disabled_set();
+      message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo']), 'error');
     }
     if (!extension_loaded('pdo_mysql')) {
       $items['#driver:mysql']->disabled_set();
