@@ -42,3 +42,7 @@ pages
         region: content
         type: code
         handler: \effcore\modules\demo\events_page::on_show_block_demo_canvas
+    - block_demo_diagrams
+        region: content
+        type: code
+        handler: \effcore\modules\demo\events_page::on_show_block_demo_diagrams

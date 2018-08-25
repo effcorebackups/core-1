@@ -89,17 +89,9 @@ namespace effcore {
         $total += floatval($c_log->time);
       }
     }
-    $diagram = new markup('dl');
+    $diagram = new diagram();
     foreach ($statistics as $c_param => $c_value) {
-      $diagram->child_insert(new markup('dt', [], $c_param));
-      $diagram->child_insert(new markup('dd', [], [
-        locale::format_msecond($c_value).' sec. ('.
-        locale::format_persent($c_value / $total * 100, 1).')',
-        new markup('x-scale', [
-          'class' => ['scope' => core::to_css_class($c_param)],
-          'style' => ['width: '.(int)($c_value / $total * 100).'%']
-        ])
-      ]));
+      $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.');
     }
     return new markup('x-block', ['class' => ['diagram-load' => 'diagram-load']], [
       new markup('h2', [], 'Total load'),

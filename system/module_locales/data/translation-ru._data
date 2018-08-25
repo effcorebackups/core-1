@@ -33,6 +33,7 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
     - Checkboxes: Флажки
+    - Circular diagram: Круговая диаграмма
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
@@ -58,6 +59,7 @@ translations
     - Delete: Удалить
     - delete: удалить
     - Description: Описание
+    - Diagrams: Диаграммы
     - disable: выключить
     - driver error code\: %%_code: код ошибки драйвера: %%_code
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
@@ -138,6 +140,7 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - License agreement: Лицензионное соглашение
+    - Linear diagram: Линейная диаграмма
     - List: Список
     - Load: Загрузка
     - load: загрузка

@@ -6,11 +6,12 @@
 
 namespace effcore\modules\demo {
           use \effcore\canvas_svg;
+          use \effcore\diagram;
           use \effcore\markup;
           use \effcore\message;
-          use \effcore\table;
-          use \effcore\table_body_row;
           use \effcore\table_body_row_cell;
+          use \effcore\table_body_row;
+          use \effcore\table;
           use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
@@ -64,6 +65,18 @@ namespace effcore\modules\demo {
     return new markup('x-block', ['class' => ['demo-canvas' => 'demo-canvas']], [
       new markup('h2', [], 'Canvas'),
       $canvas
+    ]);
+  }
+
+  static function on_show_block_demo_diagrams($page) {
+    $l_diagram = new diagram('Linear diagram', 'linear');
+    $l_diagram->slice_add('Parameter 1', 40, '0.04 sec.');
+    $l_diagram->slice_add('Parameter 2', 30, '0.03 sec.');
+    $l_diagram->slice_add('Parameter 3', 20, '0.02 sec.');
+    $l_diagram->slice_add('Parameter 4', 10, '0.01 sec.');
+    return new markup('x-block', ['class' => ['demo-diagrams' => 'demo-diagrams']], [
+      new markup('h2', [], 'Diagrams'),
+      $l_diagram
     ]);
   }
 
