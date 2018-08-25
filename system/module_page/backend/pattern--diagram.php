@@ -38,15 +38,19 @@ namespace effcore {
         break;
 
       case 'circular':
-        $diagram = new markup_xml('svg', ['viewBox' => '0 0 64 64', 'width'   => '100', 'height'  => '100']);
-        $diagram->child_insert(new markup_xml_simple('circle', ['r' => '25%', 'cx' => '50%', 'cy' => '50%', 'style' => 'stroke: lightgray; stroke-width: 30%; fill: none']));
+        $coords = ['r' => '25%', 'cx' => '50%', 'cy' => '50%'];
+        $diagram = new markup_xml('svg', ['viewBox' => '0 0 64 64', 'width' => '100', 'height' => '100']);
+        $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' => 'stroke: lightgray; stroke-width: 30%; fill: none']));
         $this->child_insert($diagram, 'diagram');
-        $colors = ['#216ce4', '#30c432', '#fc5740', '#fd9a1e'];
         $c_offset = 0;
         foreach ($this->slices as $c_slice) {
           $c_percent = (int)$c_slice->persent_value;
-          $c_color = array_shift($colors);
-          $diagram->child_insert(new markup_xml_simple('circle', ['r' => '25%', 'cx' => '50%', 'cy' => '50%', 'style' => 'stroke: '.$c_color.'; stroke-dasharray: '.$c_percent.' 100; stroke-dashoffset: '.$c_offset.'; stroke-width: 30%; fill: none']));
+          $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
+            'stroke: '.$c_slice->color.'; '.
+            'stroke-dasharray: '.$c_percent.' 100; '.
+            'stroke-dashoffset: '.$c_offset.'; '.
+            'stroke-width: 30%; '.
+            'fill: none']));
           $c_offset -= $c_percent;
         }
         break;
