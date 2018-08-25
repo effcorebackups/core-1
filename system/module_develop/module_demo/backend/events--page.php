@@ -74,9 +74,15 @@ namespace effcore\modules\demo {
     $l_diagram->slice_add('Parameter 2', 30, '0.03 sec.');
     $l_diagram->slice_add('Parameter 3', 20, '0.02 sec.');
     $l_diagram->slice_add('Parameter 4', 10, '0.01 sec.');
+    $c_diagram = new diagram('Circular diagram', 'circular');
+    $c_diagram->slice_add('Parameter 1', 40, '0.04 sec.');
+    $c_diagram->slice_add('Parameter 2', 30, '0.03 sec.');
+    $c_diagram->slice_add('Parameter 3', 20, '0.02 sec.');
+    $c_diagram->slice_add('Parameter 4', 10, '0.01 sec.');
     return new markup('x-block', ['class' => ['demo-diagrams' => 'demo-diagrams']], [
       new markup('h2', [], 'Diagrams'),
-      $l_diagram
+      $l_diagram,
+      $c_diagram
     ]);
   }
 
