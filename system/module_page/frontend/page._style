@@ -134,3 +134,12 @@
   x-diagram[data-type='linear'] dt {margin: 0; padding: 0; float: left; min-width: 290px; font-size: 1.1em; line-height: 1.5em; text-align: right}
   x-diagram[data-type='linear'] dd {margin: 0 0 0 300px; padding: 0; font-size: .9em}
   x-diagram[data-type='linear'] x-scale {display: block; height: 5px; background: %%_color_bg}
+
+  x-diagram[data-type='radial'] {text-align: center}
+  x-diagram[data-type='radial'] x-title {margin-bottom: 10px}
+  x-diagram[data-type='radial'] svg {display: inline-block; vertical-align: middle}
+  x-diagram[data-type='radial'] x-legends {display: inline-block; margin-left: 10px; vertical-align: middle}
+  x-diagram[data-type='radial'] x-legend {display: block}
+  x-diagram[data-type='radial'] x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
+  x-diagram[data-type='radial'] x-param {display: inline-block; margin-right: 15px}
+  x-diagram[data-type='radial'] x-value {display: inline-block}

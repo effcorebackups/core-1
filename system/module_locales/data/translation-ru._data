@@ -33,7 +33,6 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
     - Checkboxes: Флажки
-    - Circular diagram: Круговая диаграмма
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
@@ -199,6 +198,7 @@ translations
     - Query error!: Ошибка запроса!
     - query prepare return the false: подготовка запроса вернула false
     - query: запрос
+    - Radial diagram: Круговая диаграмма
     - Radiobutton: Переключатель
     - Radiobuttons: Переключатели
     - Range: Диапазон

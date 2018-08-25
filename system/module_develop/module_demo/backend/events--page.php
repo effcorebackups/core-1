@@ -74,7 +74,7 @@ namespace effcore\modules\demo {
     $l_diagram->slice_add('Parameter 2', 30, '0.03 sec.');
     $l_diagram->slice_add('Parameter 3', 20, '0.02 sec.');
     $l_diagram->slice_add('Parameter 4', 10, '0.01 sec.');
-    $c_diagram = new diagram('Circular diagram', 'circular');
+    $c_diagram = new diagram('Radial diagram', 'radial');
     $c_diagram->slice_add('Parameter 1', 40, '0.04 sec.', '#216ce4');
     $c_diagram->slice_add('Parameter 2', 30, '0.03 sec.', '#30c432');
     $c_diagram->slice_add('Parameter 3', 20, '0.02 sec.', '#fc5740');
