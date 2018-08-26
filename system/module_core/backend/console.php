@@ -89,9 +89,10 @@ namespace effcore {
         $total += floatval($c_log->time);
       }
     }
-    $diagram = new diagram();
+    $diagram = new diagram('', 'radial');
+    $colors = ['#216ce4', '#30c432', '#fc5740', '#fd9a1e'];
     foreach ($statistics as $c_param => $c_value) {
-      $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.');
+      $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
     }
     return new markup('x-block', ['class' => ['diagram-load' => 'diagram-load']], [
       new markup('h2', [], 'Total load'),

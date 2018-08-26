@@ -143,6 +143,6 @@
   x-diagram[data-type='radial'] x-legends {display: inline-block; margin-left: 10px; vertical-align: middle; text-align: left}
   x-diagram[data-type='radial'] x-legend {display: block}
   x-diagram[data-type='radial'] x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
-  x-diagram[data-type='radial'] x-param {display: inline-block; margin-right: 15px}
+  x-diagram[data-type='radial'] x-param {display: inline-block; margin-right: 5px}
   x-diagram[data-type='radial'] x-value {display: inline-block}
-  x-diagram[data-type='radial'] x-param:after {content: ':'}
+  x-diagram[data-type='radial'] x-param:after {content: ' – '}
