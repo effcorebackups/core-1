@@ -46,14 +46,13 @@ namespace effcore {
         $this->child_insert($legends, 'legends');
         $c_offset = 0;
         foreach ($this->slices as $c_slice) {
-          $c_percent = (int)$c_slice->persent_value;
           $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
             'stroke: '.$c_slice->color.'; '.
-            'stroke-dasharray: '.$c_percent.' 100; '.
-            'stroke-dashoffset: '.$c_offset.'; '.
+            'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
+            'stroke-dashoffset: '.core::format_number($c_offset,  2).'; '.
             'stroke-width: 30%; '.
             'fill: none']));
-          $c_offset -= $c_percent;
+          $c_offset -= $c_slice->persent_value;
           $x_legend = new markup('x-legend');
           $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
           $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
