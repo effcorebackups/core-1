@@ -70,10 +70,9 @@ namespace effcore\modules\demo {
 
   static function on_show_block_demo_diagrams($page) {
     $l_diagram = new diagram('Linear diagram', 'linear');
-    $l_diagram->slice_add('Parameter 1', 40, '0.04 sec.');
-    $l_diagram->slice_add('Parameter 2', 30, '0.03 sec.');
-    $l_diagram->slice_add('Parameter 3', 20, '0.02 sec.');
-    $l_diagram->slice_add('Parameter 4', 10, '0.01 sec.');
+    $l_diagram->slice_add('Parameter 1', 70, '0.07 sec.');
+    $l_diagram->slice_add('Parameter 2', 20, '0.02 sec.');
+    $l_diagram->slice_add('Parameter 3', 10, '0.01 sec.');
     $c_diagram = new diagram('Radial diagram', 'radial');
     $c_diagram->slice_add('Parameter 1', 40, '0.04 sec.', '#216ce4');
     $c_diagram->slice_add('Parameter 2', 30, '0.03 sec.', '#30c432');

@@ -21,11 +21,10 @@ namespace effcore {
     switch ($this->type) {
 
       case 'linear':
-        $diagram = new markup('dl');
-        $this->child_insert($diagram, 'diagram');
         foreach ($this->slices as $c_slice) {
-          $diagram->child_insert(new markup('dt', [], $c_slice->title));
-          $diagram->child_insert(new markup('dd', [], [
+          $x_slice = new markup('x-slice');
+          $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
+          $x_slice->child_insert(new markup('x-value', [], [
             $c_slice->complex_value ?
             $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
                                          locale::format_persent($c_slice->persent_value, 1),
@@ -34,6 +33,7 @@ namespace effcore {
               'style' => ['width: '.(int)$c_slice->persent_value.'%']
             ])
           ]));
+          $this->child_insert($x_slice);
         }
         break;
 
@@ -54,15 +54,15 @@ namespace effcore {
             'stroke-width: 30%; '.
             'fill: none']));
           $c_offset -= $c_percent;
-          $c_legend = new markup('x-legend');
-          $c_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
-          $c_legend->child_insert(new markup('x-param', [], $c_slice->title));
-          $c_legend->child_insert(new markup('x-value', [], [
+          $x_legend = new markup('x-legend');
+          $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
+          $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
+          $x_legend->child_insert(new markup('x-value', [], [
             $c_slice->complex_value ?
             $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
                                          locale::format_persent($c_slice->persent_value, 1)
           ]));
-          $legends->child_insert($c_legend);
+          $legends->child_insert($x_legend);
         }
         break;
     }
