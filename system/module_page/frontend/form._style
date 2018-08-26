@@ -16,19 +16,25 @@
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-content {display: none}
 
-  fieldset x-content {
+  fieldset > x-content {
     display: block;
     padding: 10px 16px;
     border-top: 5px solid %%_color_bg}
-  fieldset x-content,
-  fieldset x-content x-content x-content {background: whitesmoke}
-  fieldset x-content x-content,
-  fieldset x-content x-content x-content x-content {background: white}
+  fieldset > x-content,
+  fieldset > x-content
+  fieldset > x-content
+  fieldset > x-content {background: whitesmoke}
+  fieldset > x-content
+  fieldset > x-content,
+  fieldset > x-content
+  fieldset > x-content
+  fieldset > x-content
+  fieldset > x-content {background: white}
 
   /* form fields */
 
   x-field {display: block; margin: 20px 0}
-  x-field label, x-group x-title {display: block; font-size: 1.2em}
+  x-field label, x-group > x-title {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
@@ -123,7 +129,7 @@
   /* palette */
 
   x-group[data-type='palette'] {margin: 5px 0}
-  x-group[data-type='palette'] x-title {margin-bottom: 5px}
+  x-group[data-type='palette'] x-title {margin-bottom: 7px}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0 4px 0 0}
   x-group[data-type='palette'] x-field input {margin: 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked {border-color: black}
