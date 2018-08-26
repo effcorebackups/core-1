@@ -6,6 +6,7 @@
 
 namespace effcore\modules\develop {
           use const \effcore\dir_root;
+          use \effcore\block;
           use \effcore\core;
           use \effcore\file;
           use \effcore\markup_simple;
@@ -14,9 +15,9 @@ namespace effcore\modules\develop {
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
+          use \effcore\text_multiline;
           use \effcore\text_simple;
           use \effcore\text;
-          use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_page extends \effcore\events_page {
 
@@ -68,7 +69,7 @@ namespace effcore\modules\develop {
         }
       }
     }
-    return new markup('x-block', ['class' => ['php-mod-usage-list' => 'php-mod-usage-list']], [
+    return new block('', ['class' => ['php-mod-usage-list' => 'php-mod-usage-list']], [
       new markup('p', [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       new table(['class' => ['compact' => 'compact']], $tbody, $thead)
     ]);
@@ -115,7 +116,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new markup('x-block', ['class' => ['structures-list' => 'structures-list']], [
+    return new block('', ['class' => ['structures-list' => 'structures-list']], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       $targets, $list
     ]);
@@ -220,8 +221,7 @@ namespace effcore\modules\develop {
     }
 
     $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
-    return new markup('x-block', ['class' => ['structures-diagram' => 'structures-diagram']], [
-      new markup('h2', [], 'UML Diagram'),
+    return new block('UML Diagram', ['data-styled-title' => 'no', 'class' => ['structures-diagram' => 'structures-diagram']], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),

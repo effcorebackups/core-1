@@ -72,8 +72,7 @@ namespace effcore {
       $info->child_insert(new markup('dt', [], $c_param));
       $info->child_insert(new markup('dd', [], $c_value));
     }
-    return new markup('x-block', ['class' => ['info' => 'info']], [
-      new markup('h2', [], 'Current page information'),
+    return new block('Current page information', ['class' => ['info' => 'info']], [
       $info
     ]);
   }
@@ -94,8 +93,7 @@ namespace effcore {
     foreach ($statistics as $c_param => $c_value) {
       $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
     }
-    return new markup('x-block', ['class' => ['diagram-load' => 'diagram-load']], [
-      new markup('h2', [], 'Total load'),
+    return new block('Total load', ['class' => ['diagram-load' => 'diagram-load']], [
       $diagram
     ]);
   }
@@ -116,8 +114,7 @@ namespace effcore {
         new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log->value))
       ]);
     }
-    return new markup('x-block', ['class' => ['logs' => 'logs']], [
-      new markup('h2', [], 'Execute plan'),
+    return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [
       new table(['class' => ['compact' => 'compact']], $tbody, $thead)
     ]);
   }

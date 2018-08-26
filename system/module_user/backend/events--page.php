@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\block;
           use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
@@ -20,7 +21,7 @@ namespace effcore\modules\user {
     foreach ($tbody as $c_row) {
       $c_row->is_embed = $c_row->is_embed ? 'Yes' : 'No';
     }
-    return new markup('x-block', ['class' => ['roles' => 'roles']],
+    return new block('', ['class' => ['roles' => 'roles']],
       new table([], $tbody, $thead)
     );
   }
@@ -51,7 +52,7 @@ namespace effcore\modules\user {
       # show table
         $thead = [['Parameter', 'Value']];
         $tbody = core::array_rotate([array_keys($values), array_values($values)]);
-        return new markup('x-block', ['class' => ['user-info' => 'user-info']],
+        return new block('', ['class' => ['user-info' => 'user-info']],
           new table([], $tbody, $thead)
         );
       } else {

@@ -1,16 +1,10 @@
 blocks
-- demo|markup
-    tag_name: x-block
+- demo|block
+    title: Static block
     attributes
     - class
       - =: demo
     children
-  # title
-    - block_title|markup
-        tag_name: h2
-        children
-        - content|text
-            text: Static block
   # paragraph
     - demo_paragraph_title|markup
         tag_name: h3

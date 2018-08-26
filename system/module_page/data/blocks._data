@@ -1,6 +1,5 @@
 blocks
-- logo|markup
-    tag_name: x-block
+- logo|block
     attributes
     - class
       - =: logo

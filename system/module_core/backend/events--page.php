@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
+          use \effcore\block;
           use \effcore\control_actions_list;
           use \effcore\core;
           use \effcore\event;
@@ -66,8 +67,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], 'not applicable'));
     $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
-    return new markup('x-block', ['class' => ['info' => 'info']], [
-      new markup('h2', [], 'Shared information'),
+    return new block('Shared information', ['class' => ['info' => 'info']], [
       $info
     ]);
   }
@@ -91,7 +91,7 @@ namespace effcore\modules\core {
         new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list)
       ];
     }
-    return new markup('x-block', ['class' => ['modules' => 'modules']], [
+    return new block('', ['class' => ['modules' => 'modules']], [
       new table([], $tbody, $thead)
     ]);
   }

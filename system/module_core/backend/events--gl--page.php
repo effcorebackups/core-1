@@ -10,7 +10,7 @@ namespace effcore {
   static function on_show_block_menu_user($page) {
     $user = user::current_get();
     if (empty($user->id)) {
-      return new markup('x-block', ['class' => ['menu-user' => 'menu-user']], [
+      return new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_anonymous'),
         new markup_simple('img', [
           'class' => ['avatar' => 'avatar'],
@@ -19,7 +19,7 @@ namespace effcore {
         ])
       ]);
     } else {
-      return new markup('x-block', ['class' => ['menu-user' => 'menu-user']], [
+      return new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_logged_in'),
         new markup('a', ['href' => '/user/'.$user->id],
           new markup_simple('img', [

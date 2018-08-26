@@ -13,13 +13,9 @@
   x-block.logs td.value-error {background-color: pink}
   x-block.logs tr.query td.name {font-size: .9em}
 
-  /* load diagram */
-
-  x-block.diagram-load x-diagram {padding: 20px; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
-
   /* demo diagrams */
 
-  x-block.demo-diagrams x-diagram {padding: 20px; border: 1px solid %%_color_border; border-top: 5px solid %%_color_bg}
+  x-block.demo-diagrams x-diagram {border-bottom: 1px dashed lightgray}
 
   /* php modules usage list */
 
@@ -73,4 +69,4 @@
   x-block.structures-diagram #expand:checked ~ x-diagram-uml x-attributes,
   x-block.structures-diagram #expand:checked ~ x-diagram-uml x-operations {display: block}
 
-  x-block.demo-canvas svg {border: 1px solid lightgray}
+  x-block.demo-canvas > x-content {text-align: center}

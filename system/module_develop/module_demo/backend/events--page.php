@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
+          use \effcore\block;
           use \effcore\canvas_svg;
           use \effcore\diagram;
           use \effcore\markup;
@@ -44,8 +45,7 @@ namespace effcore\modules\demo {
                               translation::get('cell #%%_number', ['number' => 3.2]), new table_body_row_cell([],
                               translation::get('cell #%%_number', ['number' => 3.3]))])
     ];
-    return new markup('x-block', ['class' => ['demo-dynamic' => 'demo-dynamic']], [
-      new markup('h2', [], 'Dynamic block'),
+    return new block('Dynamic block', ['data-styled-title' => 'no', 'class' => ['demo-dynamic' => 'demo-dynamic']], [
       new table(['class' => ['table' => 'table']], $tbody, $thead)
     ]);
   }
@@ -62,8 +62,7 @@ namespace effcore\modules\demo {
     $canvas->glyph_set('10000|10000|10000|10000|10000|01000|00100|00010|00001|11111', 75, 3); # 7
     $canvas->glyph_set('01110|10001|10001|10001|10001|01110|10001|10001|10001|01110', 85, 3); # 8
     $canvas->glyph_set('01000|00100|00010|00001|01110|10001|10001|10001|10001|01110', 95, 3); # 9
-    return new markup('x-block', ['class' => ['demo-canvas' => 'demo-canvas']], [
-      new markup('h2', [], 'Canvas'),
+    return new block('Canvas', ['class' => ['demo-canvas' => 'demo-canvas']], [
       $canvas
     ]);
   }
@@ -78,8 +77,7 @@ namespace effcore\modules\demo {
     $c_diagram->slice_add('Parameter 2', 30, '0.03 sec.', '#30c432');
     $c_diagram->slice_add('Parameter 3', 20, '0.02 sec.', '#fc5740');
     $c_diagram->slice_add('Parameter 4', 10, '0.01 sec.', '#fd9a1e');
-    return new markup('x-block', ['class' => ['demo-diagrams' => 'demo-diagrams']], [
-      new markup('h2', [], 'Diagrams'),
+    return new block('Diagrams', ['class' => ['demo-diagrams' => 'demo-diagrams']], [
       $l_diagram,
       $c_diagram
     ]);
