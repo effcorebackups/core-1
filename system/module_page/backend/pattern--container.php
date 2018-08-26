@@ -13,10 +13,10 @@ namespace effcore {
   public $title;
   public $title_tag_name = 'x-title';
   public $title_position = 'top';
+  public $content_tag_name;
   public $description;
   public $description_tag_name = 'x-description';
   public $description_position = 'bottom';
-  public $content_wrapper_tag_name;
   public $cform;
   public $npath;
 
@@ -39,7 +39,7 @@ namespace effcore {
       'title_b'       => $is_bottom_title    ?      $this->render_self()        : '',
       'description_t' => $is_top_description ?      $this->render_description() : '',
       'description_b' => $is_top_description ? '' : $this->render_description(),
-      'content'       => $this->content_wrapper_tag_name ? (new markup($this->content_wrapper_tag_name, [],
+      'content'       => $this->content_tag_name ? (new markup($this->content_tag_name, [],
                          $this->render_children($this->children_select()) ))->render() :
                          $this->render_children($this->children_select())
     ]))->render();
