@@ -10,7 +10,7 @@ namespace effcore\modules\test {
           use \effcore\message;
           use \effcore\test;
           use \effcore\translation;
-          abstract class events_form extends \effcore\events_form {
+          abstract class events_form_test extends \effcore\events_form {
 
   ##################
   ### form: test ###
