@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use const \effcore\br;
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\message;

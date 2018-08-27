@@ -14,14 +14,14 @@ events
       handler: \effcore\modules\user\events_form::on_init_login
   - user_edit|event
       for: user_edit
-      handler: \effcore\modules\user\events_form::on_init_user_edit
+      handler: \effcore\modules\user\events_form_user_edit::on_init_user_edit
   on_form_validate
   - login|event
       for: login
       handler: \effcore\modules\user\events_form::on_validate_login
   - user_edit|event
       for: user_edit
-      handler: \effcore\modules\user\events_form::on_validate_user_edit
+      handler: \effcore\modules\user\events_form_user_edit::on_validate_user_edit
   - registration|event
       for: registration
       handler: \effcore\modules\user\events_form::on_validate_registration
@@ -37,7 +37,7 @@ events
       handler: \effcore\modules\user\events_form_user_delete::on_submit_user_delete
   - user_edit|event
       for: user_edit
-      handler: \effcore\modules\user\events_form::on_submit_user_edit
+      handler: \effcore\modules\user\events_form_user_edit::on_submit_user_edit
   - registration|event
       for: registration
       handler: \effcore\modules\user\events_form::on_submit_registration
