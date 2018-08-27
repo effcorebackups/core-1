@@ -5,22 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use const \effcore\br;
-          use \effcore\core;
-          use \effcore\entity;
-          use \effcore\file;
-          use \effcore\instance;
-          use \effcore\message;
-          use \effcore\page;
           use \effcore\session;
-          use \effcore\translation;
           use \effcore\url;
           use \effcore\user;
-          abstract class events_form extends \effcore\events_form {
-
-  ####################
-  ### form: logout ###
-  ####################
+          abstract class events_form_logout extends \effcore\events_form {
 
   static function on_submit_logout($form, $items) {
     switch ($form->clicked_button->value_get()) {

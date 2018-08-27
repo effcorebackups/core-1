@@ -31,7 +31,7 @@ events
       handler: \effcore\modules\user\events_form_login::on_submit_login
   - logout|event
       for: logout
-      handler: \effcore\modules\user\events_form::on_submit_logout
+      handler: \effcore\modules\user\events_form_logout::on_submit_logout
   - user_delete|event
       for: user_delete
       handler: \effcore\modules\user\events_form_user_delete::on_submit_user_delete
