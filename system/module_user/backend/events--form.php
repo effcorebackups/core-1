@@ -18,55 +18,6 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_form extends \effcore\events_form {
 
-  ###################
-  ### form: login ###
-  ###################
-
-  static function on_init_login($form, $items) {
-    if (!isset($_COOKIE['cookies_is_on'])) {
-      message::insert(
-        translation::get('Cookies are disabled. You can not log in!').br.
-        translation::get('Enable cookies before login.'), 'warning'
-      );
-    }
-  }
-
-  static function on_validate_login($form, $items) {
-    switch ($form->clicked_button->value_get()) {
-      case 'login':
-        if ($form->total_errors_count_get() == 0) {
-          $user = (new instance('user', [
-            'email' => strtolower($items['#email']->value_get())
-          ]))->select();
-          if (!$user || (
-               $user->password_hash &&
-               $user->password_hash !== core::hash_password_get($items['#password']->value_get()))) {
-            $items['#email'   ]->error_set();
-            $items['#password']->error_set();
-            $form->error_set('Incorrect email or password!');
-          }
-        }
-        break;
-    }
-  }
-
-  static function on_submit_login($form, $items) {
-    switch ($form->clicked_button->value_get()) {
-      case 'login':
-        $user = (new instance('user', [
-          'email' => strtolower($items['#email']->value_get())
-        ]))->select();
-        if ($user &&
-            $user->password_hash === core::hash_password_get($items['#password']->value_get())) {
-          session::insert($user->id,
-            core::array_kmap($items['*session_params']->values_get())
-          );
-          url::go('/user/'.$user->id);
-        }
-        break;
-    }
-  }
-
   ##########################
   ### form: registration ###
   ##########################
