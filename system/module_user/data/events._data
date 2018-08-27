@@ -24,7 +24,7 @@ events
       handler: \effcore\modules\user\events_form_user_edit::on_validate_user_edit
   - registration|event
       for: registration
-      handler: \effcore\modules\user\events_form::on_validate_registration
+      handler: \effcore\modules\user\events_form_registration::on_validate_registration
   on_form_submit
   - login|event
       for: login
@@ -40,4 +40,4 @@ events
       handler: \effcore\modules\user\events_form_user_edit::on_submit_user_edit
   - registration|event
       for: registration
-      handler: \effcore\modules\user\events_form::on_submit_registration
+      handler: \effcore\modules\user\events_form_registration::on_submit_registration
