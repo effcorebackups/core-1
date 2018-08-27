@@ -1,5 +1,6 @@
 blocks
 - logo|block
+    content_tag_name: null
     attributes
     - class
       - =: logo

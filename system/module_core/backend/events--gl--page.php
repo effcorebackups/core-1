@@ -8,9 +8,10 @@ namespace effcore {
           abstract class events_page {
 
   static function on_show_block_menu_user($page) {
+    $block_menu = null;
     $user = user::current_get();
     if (empty($user->id)) {
-      return new block('', ['class' => ['menu-user' => 'menu-user']], [
+      $block_menu = new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_anonymous'),
         new markup_simple('img', [
           'class' => ['avatar' => 'avatar'],
@@ -19,7 +20,7 @@ namespace effcore {
         ])
       ]);
     } else {
-      return new block('', ['class' => ['menu-user' => 'menu-user']], [
+      $block_menu = new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_logged_in'),
         new markup('a', ['href' => '/user/'.$user->id],
           new markup_simple('img', [
@@ -32,6 +33,8 @@ namespace effcore {
         )
       ]);
     }
+    $block_menu->content_tag_name = null;
+    return $block_menu;
   }
 
   static function on_show_block_title($page) {
