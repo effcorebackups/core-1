@@ -21,53 +21,54 @@
   </metadata>
 
   <g id="icon_manage">
-    <path id="icon_manage-tline_1_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20,20 V 37" />
-    <path id="icon_manage-tline_1_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20,44 V 42" />
-    <path id="icon_manage-tline_2_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,29.5 V 20" />
-    <path id="icon_manage-tline_2_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,44 V 34.5" />
-    <path id="icon_manage-tline_3_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44,20 v 2" />
-    <path id="icon_manage-tline_3_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44,27 V 44" />
-    <circle id="icon_manage-thand_1" cx="20"   cy="39.5" r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
-    <circle id="icon_manage-thand_2" cx="32"   cy="32"   r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
-    <circle id="icon_manage-thand_3" cy="24.5" cx="44"   r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20,20 V 37" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20,44 V 42" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,29.5 V 20" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,44 V 34.5" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44,20 v 2" />
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44,27 V 44" />
+    <circle cx="20"   cy="39.5" r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
+    <circle cx="32"   cy="32"   r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
+    <circle cy="24.5" cx="44"   r="2.5" style="fill: white; fill-opacity: .2; stroke: white; stroke-opacity: 1" />
   </g>
 
   <g id="icon_develop">
-    <path id="icon_develop-outter_shadow" style="fill:white;fill-opacity:.2" d="M 32,82 A 14,14 0 0 0 18,96 14,14 0 0 0 32,110 14,14 0 0 0 46,96 14,14 0 0 0 32,82 Z m 0,4 A 10,10 0 0 1 42,96 10,10 0 0 1 32,106 10,10 0 0 1 22,96 10,10 0 0 1 32,86 Z" />
-    <circle id="icon_develop-circle_outter" r="14" cy="96" cx="32" style="fill: none; stroke: white; stroke-width: 1px" />
-    <circle id="icon_develop-circle_inner" cx="32" cy="96" r="3.5" style="fill: none; stroke: white; stroke-width: 1px" />
-    <g id="icon_develop-teeth">
-      <path id="icon_develop-t01" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,82 V 80" />
-      <path id="icon_develop-t02" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,82.477038 0.517638,-1.931851" />
-      <path id="icon_develop-t03" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,83.875644 1,-1.73205" />
-      <path id="icon_develop-t04" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,86.100505 1.414213,-1.414213" />
-      <path id="icon_develop-t05" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,89 1.73205,-1" />
-      <path id="icon_develop-t06" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,92.376533 1.931851,-0.517638" />
-      <path id="icon_develop-t07" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 46,96 h 2" />
-      <path id="icon_develop-t08" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,99.623467 1.931851,0.517633" />
-      <path id="icon_develop-t09" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,103 1.73205,1" />
-      <path id="icon_develop-t10" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,105.89949 1.414213,1.41422" />
-      <path id="icon_develop-t11" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,108.12436 1,1.73205" />
-      <path id="icon_develop-t12" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,109.52296 0.517638,1.93185" />
-      <path id="icon_develop-t13" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 32,110 v 2" />
-      <path id="icon_develop-t14" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 28.376533,109.52296 -0.517638,1.93185" />
-      <path id="icon_develop-t15" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,108.12436 -1,1.73205" />
-      <path id="icon_develop-t16" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 22.100505,105.89949 -1.414213,1.41422" />
-      <path id="icon_develop-t17" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,103 -1.73205,1" />
-      <path id="icon_develop-t18" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,99.623467 16.545187,100.1411" />
-      <path id="icon_develop-t19" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18,96 H 16" />
-      <path id="icon_develop-t20" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,92.376533 16.545187,91.858895" />
-      <path id="icon_develop-t21" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,89 -1.73205,-1" />
-      <path id="icon_develop-t22" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.100505,86.100505 20.686292,84.686292" />
-      <path id="icon_develop-t23" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,83.875644 -1,-1.73205" />
-      <path id="icon_develop-t24" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.376533,82.477038 27.858895,80.545187" />
+    <path style="fill: white; fill-opacity:.2" d="M 32,82 A 14,14 0 0 0 18,96 14,14 0 0 0 32,110 14,14 0 0 0 46,96 14,14 0 0 0 32,82 Z m 0,4 A 10,10 0 0 1 42,96 10,10 0 0 1 32,106 10,10 0 0 1 22,96 10,10 0 0 1 32,86 Z" />
+    <circle r="14" cy="96" cx="32" style="fill: none; stroke: white; stroke-width: 1px" />
+    <circle cx="32" cy="96" r="3.5" style="fill: none; stroke: white; stroke-width: 1px" />
+    <g>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,82 V 80" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,82.477038 0.517638,-1.931851" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,83.875644 1,-1.73205" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,86.100505 1.414213,-1.414213" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,89 1.73205,-1" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,92.376533 1.931851,-0.517638" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 46,96 h 2" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,99.623467 1.931851,0.517633" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,103 1.73205,1" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,105.89949 1.414213,1.41422" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,108.12436 1,1.73205" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,109.52296 0.517638,1.93185" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 32,110 v 2" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 28.376533,109.52296 -0.517638,1.93185" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,108.12436 -1,1.73205" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 22.100505,105.89949 -1.414213,1.41422" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,103 -1.73205,1" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,99.623467 16.545187,100.1411" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18,96 H 16" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,92.376533 16.545187,91.858895" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,89 -1.73205,-1" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.100505,86.100505 20.686292,84.686292" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,83.875644 -1,-1.73205" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.376533,82.477038 27.858895,80.545187" />
     </g>
-    <g id="icon_develop-crossing" transform="rotate(45,32,96)">
-      <path id="icon_develop-cline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 32,86 v 6.5 z" />
-      <path id="icon_develop-cline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 22,96 h 6.5 z" />
-      <path id="icon_develop-cline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 35.5,96 H 42 Z" />
-      <path id="icon_develop-cline_4" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 32,99.5 V 106 Z" />
+    <g transform="rotate(45,32,96)">
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 32,86 v 6.5 z" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 22,96 h 6.5 z" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 35.5,96 H 42 Z" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 32,99.5 V 106 Z" />
     </g>
+    <animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 32 96" to="360 32 96" dur="20s" repeatCount="indefinite" />
   </g>
 
 </svg>

@@ -21,18 +21,18 @@
   </metadata>
 
   <g id="icon_dirrectory">
-    <rect id="icon_dirrectory-bookmark"   x="0" y="4" width="13" height="3"  style="opacity:.5; fill: #47c7f7; stroke: none" />
-    <rect id="icon_dirrectory-dirrectory" x="0" y="7" width="26" height="15" style="opacity: 1; fill: #47c7f7; stroke: none" />
+    <rect x="0" y="4" width="13" height="3"  style="opacity:.5; fill: #47c7f7; stroke: none" />
+    <rect x="0" y="7" width="26" height="15" style="opacity: 1; fill: #47c7f7; stroke: none" />
   </g>
 
   <g id="icon_file">
-    <rect id="icon_file-list" x="0" y="35" width="20" height="19" style="fill: #ededed; stroke: none" />
-    <path id="icon_file-string_1" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,40 H 16" />
-    <path id="icon_file-string_2" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,42 H 16" />
-    <path id="icon_file-string_3" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,44 H 16" />
-    <path id="icon_file-string_4" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,46 H 16" />
-    <path id="icon_file-string_5" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,48 H 16" />
-    <path id="icon_file-string_6" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,50 H 10" />
+    <rect x="0" y="35" width="20" height="19" style="fill: #ededed; stroke: none" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,40 H 16" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,42 H 16" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,44 H 16" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,46 H 16" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,48 H 16" />
+    <path style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,50 H 10" />
   </g>
 
 </svg>
