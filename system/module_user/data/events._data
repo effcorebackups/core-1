@@ -34,7 +34,7 @@ events
       handler: \effcore\modules\user\events_form::on_submit_logout
   - user_delete|event
       for: user_delete
-      handler: \effcore\modules\user\events_form::on_submit_user_delete
+      handler: \effcore\modules\user\events_form_user_delete::on_submit_user_delete
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_form::on_submit_user_edit

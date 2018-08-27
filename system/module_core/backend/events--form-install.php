@@ -13,10 +13,6 @@ namespace effcore\modules\core {
           use \effcore\url;
           abstract class events_form_install extends \effcore\events_form {
 
-  #####################
-  ### form: install ###
-  #####################
-
   static function on_init_install($form, $items) {
     if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
       $items['#driver:mysql' ]->disabled_set();

@@ -12,10 +12,6 @@ namespace effcore\modules\test {
           use \effcore\translation;
           abstract class events_form_test extends \effcore\events_form {
 
-  ##################
-  ### form: test ###
-  ##################
-
   static function on_init_test($form, $items) {
     $items['#select_test']->option_insert('- select -', 'not_selected');
     if (!extension_loaded('curl')) {

@@ -18,38 +18,6 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_form extends \effcore\events_form {
 
-  #########################
-  ### form: user_delete ###
-  #########################
-
-  static function on_submit_user_delete($form, $items) {
-    $id_user = page::current_get()->args_get('id_user');
-    switch ($form->clicked_button->value_get()) {
-      case 'delete':
-        $user = (new instance('user', [
-          'id' => $id_user,
-        ]))->select();
-        if ($user) {
-          $nick = $user->nick;
-          if ($user->delete()) {
-          # remove user sessions
-            $sessions = entity::get('session')->instances_select(['id_user' => $id_user]);
-            if ($sessions) {
-              foreach ($sessions as $c_session) {
-                $c_session->delete();
-              }
-            }
-               message::insert(translation::get('User %%_nick was deleted.',     ['nick' => $nick]));}
-          else message::insert(translation::get('User %%_nick was not deleted!', ['nick' => $nick]), 'error');
-        }
-        url::go(url::back_url_get() ?: '/manage/users');
-        break;
-      case 'cancel':
-        url::go(url::back_url_get() ?: '/manage/users');
-        break;
-    }
-  }
-
   #######################
   ### form: user_edit ###
   #######################

@@ -9,10 +9,6 @@ namespace effcore\modules\page {
           use \effcore\storage;
           abstract class events_form_decoration extends \effcore\events_form {
 
-  ########################
-  ### form: decoration ###
-  ########################
-
   static function on_init_decoration($form, $items) {
     $settings = storage::get('files')->select('settings');
     $items['*color_id'   ]->value_set($settings['page']->color_id   );

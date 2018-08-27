@@ -12,10 +12,6 @@ namespace effcore\modules\demo {
           use \effcore\translation;
           abstract class events_form_demo extends \effcore\events_form {
 
-  ##################
-  ### form: demo ###
-  ##################
-
   static function on_init_demo($form, $items) {
     if ($form->clicked_button &&
         $form->clicked_button->value_get() == 'reset') {
