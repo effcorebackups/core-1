@@ -6,12 +6,12 @@ events
   on_form_init
   - install|event
       for: install
-      handler: \effcore\modules\core\events_form::on_init_install
+      handler: \effcore\modules\core\events_form_install::on_init_install
   on_form_validate
   - install|event
       for: install
-      handler: \effcore\modules\core\events_form::on_validate_install
+      handler: \effcore\modules\core\events_form_install::on_validate_install
   on_form_submit
   - install|event
       for: install
-      handler: \effcore\modules\core\events_form::on_submit_install
+      handler: \effcore\modules\core\events_form_install::on_submit_install

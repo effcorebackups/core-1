@@ -11,7 +11,7 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\translation;
           use \effcore\url;
-          abstract class events_form extends \effcore\events_form {
+          abstract class events_form_install extends \effcore\events_form {
 
   #####################
   ### form: install ###
