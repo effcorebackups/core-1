@@ -317,11 +317,23 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
+  # validate max_files_number
+    if (count($field->pool_old) +
+        count($field->pool_new) +
+        count($new_values) < $field->min_files_number) {
+      $field->error_set(
+        translation::get('You are trying to upload too few files!').br.
+        translation::get('Minimum allowed only %%_number file%%_plural{number,s}.',      ['number' => $field->min_files_number]).br.
+        translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)])
+      );
+      return;
+    }
+  # validate max_files_number
     if (count($field->pool_old) +
         count($field->pool_new) +
         count($new_values) > $field->max_files_number) {
       $field->error_set(
-        translation::get('You try to upload too much files!').br.
+        translation::get('You are trying to upload too much files!').br.
         translation::get('Maximum allowed only %%_number file%%_plural{number,s}.',      ['number' => $field->max_files_number]).br.
         translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)])
       );

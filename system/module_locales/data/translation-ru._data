@@ -159,6 +159,7 @@ translations
     - Memory for php (bytes): Память для php (байт)
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
+    - Minimum allowed only %%_number file%%_plural{number,s}.: Допускается минимально только %%_number файл%%_plural{number,ov-a}.
     - missing a temporary directory: отсутствует временный каталог
     - Moderators: Модераторы
     - Module for internationalization.: Модуль для интернационализации.
@@ -307,5 +308,6 @@ translations
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да
+    - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
+    - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You have already uploaded %%_number file%%_plural{number,s}.: Вы уже загрузили %%_number файл%%_plural{number,ov-a}.
-    - You try to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
