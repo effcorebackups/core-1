@@ -11,9 +11,9 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\translation;
           use \effcore\url;
-          abstract class events_form_install extends \effcore\events_form {
+          abstract class events_form_install {
 
-  static function on_init_install($form, $items) {
+  static function on_init($form, $items) {
     if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
       $items['#driver:mysql' ]->disabled_set();
       $items['#driver:sqlite']->disabled_set();
@@ -33,7 +33,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_validate_install($form, $items) {
+  static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
         if ($items['#driver:mysql' ]->checked_get() == false &&
@@ -77,7 +77,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_submit_install($form, $items) {
+  static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
         if ($items['#driver:mysql']->checked_get()) {
