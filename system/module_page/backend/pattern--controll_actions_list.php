@@ -8,7 +8,8 @@ namespace effcore {
           class control_actions_list extends container {
 
   public $title = 'actions';
-  public $tag_name = 'x-actions-control';
+  public $tag_name = 'x-actions';
+  public $title_tag_name = 'x-actions-title';
   public $actions = [];
   public $active = [];
 

@@ -105,10 +105,10 @@
 
   /* control elements */
 
-  x-actions-control {display: block}
-  x-actions-control x-title {display: block}
-  x-actions-control x-action-list {display: block}
-  x-actions-control x-action-list x-action {display: block}
+  x-actions {display: block}
+  x-actions-title {display: block}
+  x-actions x-action-list {display: block}
+  x-actions x-action-list x-action {display: block}
 
   /* pager */
 
