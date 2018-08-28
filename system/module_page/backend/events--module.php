@@ -7,12 +7,13 @@
 namespace effcore\modules\page {
           use \effcore\console;
           use \effcore\form;
-          use \effcore\message;
+          use \effcore\module;
           use \effcore\page;
-          abstract class events_module extends \effcore\events_module {
+          abstract class events_module {
 
-  static function on_install($module_id = 'page') {
-    return parent::on_install($module_id);
+  static function on_install() {
+    $module = module::get('page');
+    $module->install();
   }
 
   static function on_start() {

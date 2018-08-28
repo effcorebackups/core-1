@@ -5,12 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\module;
           use \effcore\session;
           use \effcore\user;
-          abstract class events_module extends \effcore\events_module {
+          abstract class events_module {
 
-  static function on_install($module_id = 'user') {
-    return parent::on_install($module_id);
+  static function on_install() {
+    $module = module::get('user');
+    $module->install();
   }
 
   static function on_start() {

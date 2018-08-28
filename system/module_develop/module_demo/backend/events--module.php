@@ -5,10 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          abstract class events_module extends \effcore\events_module {
+          use \effcore\module;
+          abstract class events_module {
 
-  static function on_install($module_id = 'demo') {
-    return parent::on_install($module_id);
+  static function on_install() {
+    $module = module::get('demo');
+    $module->install();
   }
 
   static function on_start() {

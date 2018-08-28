@@ -130,11 +130,11 @@ namespace effcore {
 
   static function all_by_module_get($module, $load = true) {
     if (!static::$cache_orig) static::init();
-    if ($load)
+    if ($load && isset(static::$cache_orig[$module]))
       foreach (static::$cache_orig[$module] as &$c_item)
-        if ($c_item instanceof external_cache && $load)
+        if ($c_item instanceof external_cache)
             $c_item = $c_item->external_cache_load();
-    return static::$cache_orig[$module];
+    return static::$cache_orig[$module] ?? [];
   }
 
 }}

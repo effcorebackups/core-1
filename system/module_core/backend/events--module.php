@@ -5,9 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\core {
-          abstract class events_module extends \effcore\events_module {
+          use \effcore\module;
+          abstract class events_module {
 
-  static function on_install($module_id = 'core') {
+  static function on_install() {
+    $module = module::get('core');
+    $module->install();
   }
 
 }}

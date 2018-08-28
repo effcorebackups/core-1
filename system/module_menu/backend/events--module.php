@@ -5,12 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\module;
           use \effcore\tabs;
           use \effcore\tree;
-          abstract class events_module extends \effcore\events_module {
+          abstract class events_module {
 
-  static function on_install($module_id = 'menu') {
-    return parent::on_install($module_id);
+  static function on_install() {
+    $module = module::get('menu');
+    $module->install();
   }
 
   static function on_start() {
