@@ -65,15 +65,15 @@
   /* block */
 
   x-block {display: block; margin: 70px 0}
-  x-block > x-title {
+  x-block-title {
     display: block;
     margin-bottom: 20px;
     padding-bottom: 30px;
     border-bottom: 5px solid %%_color_bg;
     font-size: 1.5em;
     line-height: 1.5em}
-  x-block > x-content {display: block}
-  x-block[data-styled-title='no'] > x-title {border: none}
+  x-block-content {display: block}
+  x-block[data-styled-title='no'] x-block-title {border: none}
 
   /* info blocks */
 

@@ -34,7 +34,7 @@
   /* form fields */
 
   x-field {display: block; margin: 20px 0}
-  x-field label, x-group > x-title {display: block; font-size: 1.2em}
+  x-field label, x-group x-title {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}

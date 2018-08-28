@@ -11,8 +11,8 @@ namespace effcore {
   public $template = 'block';
 # ─────────────────────────────────────────────────────────────────────
   public $title;
-  public $title_tag_name = 'x-title';
-  public $content_tag_name = 'x-content';
+  public $title_tag_name = 'x-block-title';
+  public $content_tag_name = 'x-block-content';
 
   function __construct($title = null, $attributes = [], $children = [], $weight = 0) {
     if ($title) $this->title = $title;
