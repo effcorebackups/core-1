@@ -52,6 +52,7 @@ namespace effcore {
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '10K';
+  public $min_files_number = 0;
   public $max_files_number = 1;
   public $max_length_name = 227; # = 255 - strlen('-ttttttttrrrrrrrr.extensions')
   public $max_length_type = 10;
@@ -60,6 +61,7 @@ namespace effcore {
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
+# ─────────────────────────────────────────────────────────────────────
   public $pool_old = [];
   public $pool_new = [];
 
@@ -73,7 +75,9 @@ namespace effcore {
 
   function render_description() {
     $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
-    $return[] = new markup('p', ['class' => ['file_max_number' => 'file_max_number']], translation::get('Field can contain a maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
+    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
+    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
+    if ($this->min_files_number == $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',          ['number' => $this->min_files_number]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
@@ -306,8 +310,7 @@ namespace effcore {
       $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_multiple($field, $form, $element, $new_values) &&
-                static::validate_upload  ($field, $form, $element, $new_values) &&
-                static::validate_required($field, $form, $element, $new_values);
+                static::validate_upload  ($field, $form, $element, $new_values);
       if ($result) $field->pool_values_init_new_from_form($new_values);
       return $result;
     }
@@ -347,16 +350,6 @@ namespace effcore {
       if ($c_new_value->size > $max_size)        {$field->error_set(translation::get('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])])); return;}
     }
     return true;
-  }
-
-  static function validate_required($field, $form, $element, &$new_values) {
-    if ($element->attribute_select('required') && count($new_values) == 0) {
-      $field->error_set(
-        translation::get('Field "%%_title" must be selected!', ['title' => translation::get($field->title)])
-      );
-    } else {
-      return true;
-    }
   }
 
   static function validate_multiple($field, $form, $element, &$new_values) {

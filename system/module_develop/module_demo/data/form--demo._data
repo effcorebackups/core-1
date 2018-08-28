@@ -54,6 +54,7 @@ forms
         - file|field_file
             title: File
             max_file_size: 10K
+            min_files_number: 0
             max_files_number: 3
             upload_dir: demo/
             description|text

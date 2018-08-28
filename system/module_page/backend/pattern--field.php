@@ -19,7 +19,7 @@
   # │ input:text     ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:color    ║ + │ x │ x │ x │ x │   │   │   │   │   │ x │ + │
   # │ input:email    ║ + │ + │ + │ x │ + │   │   │   │ + │   │ + │ + │
-  # │ input:file     ║ + │   │ + │   │   │   │   │   │ + │   │   │ + │
+  # │ input:file     ║ + │   │   │   │   │   │   │   │ + │   │   │ + │
   # │ input:password ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:search   ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:tel      ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
