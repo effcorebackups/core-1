@@ -14,8 +14,8 @@ events
   on_form_init
   - decoration|event
       for: decoration
-      handler: \effcore\modules\page\events_form_decoration::on_init_decoration
+      handler: \effcore\modules\page\events_form_decoration::on_init
   on_form_submit
   - decoration|event
       for: decoration
-      handler: \effcore\modules\page\events_form_decoration::on_submit_decoration
+      handler: \effcore\modules\page\events_form_decoration::on_submit
