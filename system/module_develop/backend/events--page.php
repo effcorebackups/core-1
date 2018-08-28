@@ -11,7 +11,6 @@ namespace effcore\modules\develop {
           use \effcore\file;
           use \effcore\markup_simple;
           use \effcore\markup;
-          use \effcore\node;
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
@@ -19,7 +18,7 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\translation;
-          abstract class events_page extends \effcore\events_page {
+          abstract class events_page {
 
   #####################
   ### php_mod_usage ###

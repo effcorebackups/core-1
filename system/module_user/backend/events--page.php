@@ -10,10 +10,9 @@ namespace effcore\modules\user {
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\locale;
-          use \effcore\markup;
           use \effcore\table;
           use \effcore\user;
-          abstract class events_page extends \effcore\events_page {
+          abstract class events_page {
 
   static function on_show_block_roles($page) {
     $thead = [['ID', 'Title', 'Is embed']];

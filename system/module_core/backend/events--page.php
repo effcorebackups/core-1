@@ -14,14 +14,13 @@ namespace effcore\modules\core {
           use \effcore\markup_simple;
           use \effcore\markup;
           use \effcore\module;
-          use \effcore\node;
           use \effcore\session;
           use \effcore\storage;
           use \effcore\table_body_row_cell;
           use \effcore\table;
           use \effcore\timer;
           use \effcore\translation;
-          abstract class events_page extends \effcore\events_page {
+          abstract class events_page {
 
   static function on_cron_run($page) {
     if ($page->args_get('key') === core::key_get('cron')) {

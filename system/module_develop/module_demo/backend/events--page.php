@@ -8,13 +8,12 @@ namespace effcore\modules\demo {
           use \effcore\block;
           use \effcore\canvas_svg;
           use \effcore\diagram;
-          use \effcore\markup;
           use \effcore\message;
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
           use \effcore\translation;
-          abstract class events_page extends \effcore\events_page {
+          abstract class events_page {
 
   static function on_show_block_demo_dynamic($page) {
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice');
