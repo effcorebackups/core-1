@@ -12,9 +12,9 @@ namespace effcore\modules\user {
           use \effcore\page;
           use \effcore\translation;
           use \effcore\url;
-          abstract class events_form_user_edit extends \effcore\events_form {
+          abstract class events_form_user_edit {
 
-  static function on_init_user_edit($form, $items) {
+  static function on_init($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     $user = (new instance('user', ['id' => $id_user]))->select();
     $items['#email']->value_set($user->email);
@@ -24,7 +24,7 @@ namespace effcore\modules\user {
     );
   }
 
-  static function on_validate_user_edit($form, $items) {
+  static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         if ($form->total_errors_count_get() == 0) {
@@ -74,7 +74,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_user_edit($form, $items) {
+  static function on_submit($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button->value_get()) {
       case 'save':
