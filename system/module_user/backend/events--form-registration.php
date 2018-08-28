@@ -10,9 +10,9 @@ namespace effcore\modules\user {
           use \effcore\message;
           use \effcore\session;
           use \effcore\url;
-          abstract class events_form_registration extends \effcore\events_form {
+          abstract class events_form_registration {
 
-  static function on_validate_registration($form, $items) {
+  static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         if ($form->total_errors_count_get() == 0) {
@@ -35,7 +35,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit_registration($form, $items) {
+  static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         $user = (new instance('user', [
