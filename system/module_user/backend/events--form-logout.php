@@ -8,9 +8,9 @@ namespace effcore\modules\user {
           use \effcore\session;
           use \effcore\url;
           use \effcore\user;
-          abstract class events_form_logout extends \effcore\events_form {
+          abstract class events_form_logout {
 
-  static function on_submit_logout($form, $items) {
+  static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'logout':
         session::delete(user::current_get()->id);
