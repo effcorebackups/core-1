@@ -10,9 +10,9 @@ namespace effcore\modules\demo {
           use \effcore\file;
           use \effcore\message;
           use \effcore\translation;
-          abstract class events_form_demo extends \effcore\events_form {
+          abstract class events_form_demo {
 
-  static function on_init_demo($form, $items) {
+  static function on_init($form, $items) {
     if ($form->clicked_button &&
         $form->clicked_button->value_get() == 'reset') {
       field::request_values_reset();
@@ -29,13 +29,13 @@ namespace effcore\modules\demo {
     );
   }
 
-  static function on_validate_demo($form, $items) {
+  static function on_validate($form, $items) {
     message::insert(
       translation::get('Call %%_name', ['name' => '\\'.__METHOD__])
     );
   }
 
-  static function on_submit_demo($form, $items) {
+  static function on_submit($form, $items) {
     message::insert(
       translation::get('Call %%_name', ['name' => '\\'.__METHOD__])
     );
