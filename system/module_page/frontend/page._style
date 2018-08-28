@@ -146,7 +146,7 @@
   /* x-diagram */
 
   x-diagram {display: block; padding: 20px 0}
-  x-diagram > x-title {display: block; margin-bottom: 20px; font-size: 1.3em; text-align: center}
+  x-diagram-title {display: block; margin-bottom: 20px; font-size: 1.3em; text-align: center}
 
   x-diagram[data-type='linear'] x-slice {display: block; text-align: center}
   x-diagram[data-type='linear'] x-param {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}

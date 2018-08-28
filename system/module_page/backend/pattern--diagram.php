@@ -8,6 +8,7 @@ namespace effcore {
           class diagram extends container {
 
   public $tag_name = 'x-diagram';
+  public $title_tag_name = 'x-diagram-title';
   public $type = 'linear'; # linear|radial
   public $slices = [];
 
