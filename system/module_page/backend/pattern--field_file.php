@@ -323,7 +323,7 @@ namespace effcore {
         count($new_values) < $field->min_files_number) {
       $field->error_set(
         translation::get('You are trying to upload too few files!').br.
-        translation::get('Minimum allowed only %%_number file%%_plural{number,s}.',      ['number' => $field->min_files_number]).br.
+        translation::get('You must upload at least %%_number file%%_plural{number,s}.',  ['number' => $field->min_files_number]).br.
         translation::get('You have already uploaded %%_number file%%_plural{number,s}.', ['number' => count($field->pool_old) + count($field->pool_new)])
       );
       return;
