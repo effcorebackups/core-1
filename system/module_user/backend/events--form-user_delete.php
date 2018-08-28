@@ -11,9 +11,9 @@ namespace effcore\modules\user {
           use \effcore\page;
           use \effcore\translation;
           use \effcore\url;
-          abstract class events_form_user_delete extends \effcore\events_form {
+          abstract class events_form_user_delete {
 
-  static function on_submit_user_delete($form, $items) {
+  static function on_submit($form, $items) {
     $id_user = page::current_get()->args_get('id_user');
     switch ($form->clicked_button->value_get()) {
       case 'delete':
