@@ -25,7 +25,7 @@ pages
     - block_title
         region: title
         type: code
-        handler: \effcore\events_page::on_show_block_title
+        handler: \effcore\modules\page\events_page::on_show_block_title
     - block_roles
         region: content
         type: code
