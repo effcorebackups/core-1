@@ -10,26 +10,26 @@
   x-field.before-container + fieldset {margin-top: 30px}
 
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
-  fieldset > label + x-content {margin-top: 30px}
+  fieldset > label + x-fieldset-content {margin-top: 30px}
   fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-  fieldset input[data-opener-type='fieldset']:checked ~ x-content {display: none}
+  fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
-  fieldset > x-content {
+  x-fieldset-content {
     display: block;
     padding: 10px 16px;
     border-top: 5px solid %%_color_bg}
-  fieldset > x-content,
-  fieldset > x-content
-  fieldset > x-content
-  fieldset > x-content {background: whitesmoke}
-  fieldset > x-content
-  fieldset > x-content,
-  fieldset > x-content
-  fieldset > x-content
-  fieldset > x-content
-  fieldset > x-content {background: white}
+  x-fieldset-content,
+  x-fieldset-content
+  x-fieldset-content
+  x-fieldset-content {background: whitesmoke}
+  x-fieldset-content
+  x-fieldset-content,
+  x-fieldset-content
+  x-fieldset-content
+  x-fieldset-content
+  x-fieldset-content {background: white}
 
   /* form fields */
 

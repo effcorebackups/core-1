@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'fieldset';
   public $title_tag_name = 'label';
-  public $content_tag_name = 'x-content';
+  public $content_tag_name = 'x-fieldset-content';
 # ─────────────────────────────────────────────────────────────────────
   public $state = ''; # opened | closed[checked] | with_error
   public $number = 0;
