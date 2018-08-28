@@ -10,9 +10,9 @@ namespace effcore\modules\test {
           use \effcore\message;
           use \effcore\test;
           use \effcore\translation;
-          abstract class events_form_test extends \effcore\events_form {
+          abstract class events_form_test {
 
-  static function on_init_test($form, $items) {
+  static function on_init($form, $items) {
     $items['#select_test']->option_insert('- select -', 'not_selected');
     if (!extension_loaded('curl')) {
       $items['#select_test']->disabled_set();
@@ -28,7 +28,7 @@ namespace effcore\modules\test {
     }
   }
 
-  static function on_submit_test($form, $items) {
+  static function on_submit($form, $items) {
     $test_id = $items['#select_test']->value_get();
     if ($test_id) {
       $test = test::get($test_id);
