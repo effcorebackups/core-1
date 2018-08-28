@@ -8,7 +8,7 @@ namespace effcore\modules\user {
           use \effcore\instance;
           use \effcore\url;
           use \effcore\user;
-          abstract class events_token extends \effcore\events_token {
+          abstract class events_token {
 
   static function on_replace($name, $args = []) {
     if (!empty(user::current_get()->id)) {
