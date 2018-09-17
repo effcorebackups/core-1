@@ -12,8 +12,8 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       tabs::item_insert($c_entity->title, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
     }
-    $tab_select = tabs::item_get('instance_select');
-    $tab_insert = tabs::item_get('instance_insert');
+    $tab_select = tabs::item_select('instance_select');
+    $tab_insert = tabs::item_select('instance_insert');
     $tab_select->action_name_default = 'select/'.reset($entities)->name;
     $tab_insert->action_name_default = 'insert/'.reset($entities)->name;
   # selector
@@ -48,8 +48,8 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       tabs::item_insert($c_entity->title, 'instance_insert_'.$c_entity->name, 'instance_insert', 'insert/'.$c_entity->name);
     }
-    $tab_select = tabs::item_get('instance_select');
-    $tab_insert = tabs::item_get('instance_insert');
+    $tab_select = tabs::item_select('instance_select');
+    $tab_insert = tabs::item_select('instance_insert');
     $tab_select->action_name_default = 'select/'.reset($entities)->name;
     $tab_insert->action_name_default = 'insert/'.reset($entities)->name;
     return new text('instance_insert is UNDER CONSTRUCTION');
