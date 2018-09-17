@@ -3,6 +3,7 @@ tabs_items
     id: item_1
     id_parent: T:demo
     action_name: item_1
+    action_name_default: item_1/item_1_1
     title: Top item #1
     attributes
     - class
