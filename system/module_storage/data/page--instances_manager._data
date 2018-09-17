@@ -30,15 +30,7 @@ pages
         region: tabs
         type: link
         dpath: tabs/storage/instance_manage
-    - instance_insert
-        display
-          check: page_args
-          where: action
-          match: %insert%
-        region: content
-        type: code
-        handler: \effcore\instances_manager::instance_insert
-    - instance_select
+    - block_instance_select
         display
           check: page_args
           where: action
@@ -47,7 +39,15 @@ pages
         type: code
         handler: \effcore\instances_manager::instance_select
         items_per_page: 50
-    - instance_update
+    - block_instance_insert
+        display
+          check: page_args
+          where: action
+          match: %insert%
+        region: content
+        type: code
+        handler: \effcore\instances_manager::instance_insert
+    - block_instance_update
         display
           check: page_args
           where: action
@@ -55,7 +55,7 @@ pages
         region: content
         type: code
         handler: \effcore\instances_manager::instance_update
-    - instance_delete
+    - block_instance_delete
         display
           check: page_args
           where: action

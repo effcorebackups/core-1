@@ -20,8 +20,8 @@ namespace effcore {
 
   function args_set($key, $value) {$this->args[$key] = $value;}
   function args_get($id = null) {
-    return $id ? $this->args[$id] :
-                 $this->args;
+    return $id ? ($this->args[$id] ?? null) :
+                  $this->args;
   }
 
   function render() {
