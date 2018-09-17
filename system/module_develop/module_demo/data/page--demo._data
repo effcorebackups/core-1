@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^/develop/demo$%
+      match: %^(?<base>/develop/demo)(/(?<tabs>[a-z0-9_]+)|)$%
     access
       roles
       - =: admins
@@ -26,6 +26,10 @@ pages
         region: title
         type: code
         handler: \effcore\modules\page\events_page::on_show_block_title
+    - tabs_demo
+        region: tabs
+        type: link
+        dpath: tabs/demo/demo
     - form_demo
         region: content
         type: link
