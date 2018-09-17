@@ -75,10 +75,19 @@ translations
     - Select the test: Выберите тест
     - Static block: Статический блок
     - Structures: Структуры
+    - Sub item #1.1: Подпункт №1.1
+    - Sub item #1.2: Подпункт №1.2
+    - Sub item #1.2.1: Подпункт №1.2.1
+    - Sub item #1.2.2: Подпункт №1.2.2
+    - Sub item #1.2.3 (from code): Подпункт №1.2.2 (из кода)
+    - Sub item #1.3: Подпункт №1.3
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.
+    - Top item #1: Верхний пункт №1
+    - Top item #2: Верхний пункт №2
+    - Top item #3: Верхний пункт №3
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты

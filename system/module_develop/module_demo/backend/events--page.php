@@ -12,6 +12,7 @@ namespace effcore\modules\demo {
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
+          use \effcore\tabs;
           use \effcore\translation;
           abstract class events_page {
 
@@ -28,6 +29,7 @@ namespace effcore\modules\demo {
     message::insert(translation::get('Error message #%%_number.',   ['number' => 1]), 'error');
     message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error');
     message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error');
+    tabs::insert_item('Sub item #1.2.3 (from code)', 'item_1_2_3', 'item_1_2', 'item_1_2_3', null, ['class' => ['item-1-2-3' => 'item-1-2-3']]);
     $thead = [[
       translation::get('head cell #%%_number', ['number' => 1]),
       translation::get('head cell #%%_number', ['number' => 2]),
