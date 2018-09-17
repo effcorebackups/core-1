@@ -96,9 +96,15 @@ namespace effcore {
   static function item_delete($id) {
     if (isset(static::$cache_tabs_items[$id])) {
       $id_parent = static::$cache_tabs_items[$id]->id_parent;
-      if (isset(static::$cache_tabs_items[$id_parent]))
-                static::$cache_tabs_items[$id_parent]->child_delete($id);
-          unset(static::$cache_tabs_items[$id]);
+      unset(static::$cache_tabs_items[$id]);
+      if ($id_parent[0] == 'T' &&
+          $id_parent[1] == ':') {
+        if (isset(static::$cache_tabs[substr($id_parent, 2)]))
+                  static::$cache_tabs[substr($id_parent, 2)]->child_delete($id);
+      } else {
+        if (isset(static::$cache_tabs_items[$id_parent]))
+                  static::$cache_tabs_items[$id_parent]->child_delete($id);
+      }
     }
   }
 
