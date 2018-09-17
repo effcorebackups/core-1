@@ -24,12 +24,9 @@ namespace effcore {
   function render_top_items() {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
-      if ($c_item->id_parent[0] == 'T' &&
-          $c_item->id_parent[1] == ':') {
-        $c_clone = clone $c_item;
-        $c_clone->children = [];
-        $rendered.= $c_clone->render();
-      }
+      $c_clone = clone $c_item;
+      $c_clone->children = [];
+      $rendered.= $c_clone->render();
     }
     return $rendered ? (new template('tabs_top_items', [
       'children' => $rendered
@@ -39,15 +36,12 @@ namespace effcore {
   function render_sub_items() {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
-      if ($c_item->id_parent[0] == 'T' &&
-          $c_item->id_parent[1] == ':') {
-        $c_href = page::current_get()->args_get('base').'/'.$c_item->action_name;
-        if (url::is_active_trail($c_href)) {
-          foreach ($c_item->children_select() as $c_child) {
-            $rendered.= $c_child->render();
-          }
-          break;
+      $c_href = page::current_get()->args_get('base').'/'.$c_item->action_name;
+      if (url::is_active_trail($c_href)) {
+        foreach ($c_item->children_select() as $c_child) {
+          $rendered.= $c_child->render();
         }
+        break;
       }
     }
     return $rendered ? (new template('tabs_sub_items', [
