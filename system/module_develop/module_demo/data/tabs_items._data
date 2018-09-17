@@ -55,11 +55,3 @@ tabs_items
     attributes
     - class
       - =: item-2
-- item_3|tabs_item
-    id: item_3
-    id_parent: T:demo
-    action_name: item_3
-    title: Top item #3
-    attributes
-    - class
-      - =: item-3

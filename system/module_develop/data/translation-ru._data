@@ -87,7 +87,7 @@ translations
     - This description is shown on top.: Это описание показано сверху.
     - Top item #1: Верхний пункт №1
     - Top item #2: Верхний пункт №2
-    - Top item #3: Верхний пункт №3
+    - Top item #3 (from code): Верхний пункт №3 (из кода)
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты

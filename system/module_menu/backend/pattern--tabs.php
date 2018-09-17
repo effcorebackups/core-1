@@ -86,14 +86,14 @@ namespace effcore {
     return static::$cache_tabs_items;
   }
 
-  static function subitem_insert($title, $id, $id_parent, $action_name, $action_default_name = null, $attributes = [], $weight = 0) {
+  static function item_insert($title, $id, $id_parent, $action_name, $action_default_name = null, $attributes = [], $weight = 0) {
     $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_default_name, $attributes, $weight);
     static::$cache_tabs_items[$id] = $new_item;
     static::$cache_tabs_items[$id]->module_id = null;
     static::build([$new_item]);
   }
 
-  static function subitem_delete($id) {
+  static function item_delete($id) {
     if (isset(static::$cache_tabs_items[$id])) {
       $id_parent = static::$cache_tabs_items[$id]->id_parent;
       if (isset(static::$cache_tabs_items[$id_parent]))

@@ -9,7 +9,7 @@ namespace effcore {
 
   static function instance_insert($page) {
     foreach (entity::all_get(false) as $c_entity) {
-      tabs::subitem_insert($c_entity->title, 'insert_'.$c_entity->name, 'insert', $c_entity->name);
+      tabs::item_insert($c_entity->title, 'insert_'.$c_entity->name, 'insert', $c_entity->name);
     }
   }
 
