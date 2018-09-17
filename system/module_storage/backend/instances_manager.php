@@ -8,9 +8,14 @@ namespace effcore {
           abstract class instances_manager {
 
   static function instance_select($page) {
-    foreach (entity::all_get(false) as $c_entity) {
-      tabs::item_insert($c_entity->title, 'select_'.$c_entity->name, 'select', 'select/'.$c_entity->name);
+    $entities = entity::all_get(false);
+    foreach ($entities as $c_entity) {
+      tabs::item_insert($c_entity->title, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
     }
+    $tab_select = tabs::item_get('instance_select');
+    $tab_insert = tabs::item_get('instance_insert');
+    $tab_select->action_name_default = 'select/'.reset($entities)->name;
+    $tab_insert->action_name_default = 'insert/'.reset($entities)->name;
   # selector
     $pager = new pager();
     if ($pager->has_error) {
@@ -39,9 +44,15 @@ namespace effcore {
   }
 
   static function instance_insert($page) {
-    foreach (entity::all_get(false) as $c_entity) {
-      tabs::item_insert($c_entity->title, 'insert_'.$c_entity->name, 'insert', 'insert/'.$c_entity->name);
+    $entities = entity::all_get(false);
+    foreach ($entities as $c_entity) {
+      tabs::item_insert($c_entity->title, 'instance_insert_'.$c_entity->name, 'instance_insert', 'insert/'.$c_entity->name);
     }
+    $tab_select = tabs::item_get('instance_select');
+    $tab_insert = tabs::item_get('instance_insert');
+    $tab_select->action_name_default = 'select/'.reset($entities)->name;
+    $tab_insert->action_name_default = 'insert/'.reset($entities)->name;
+    return new text('instance_insert is UNDER CONSTRUCTION');
   }
 
   static function instance_update($page) {
