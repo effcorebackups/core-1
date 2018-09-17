@@ -7,21 +7,11 @@
 namespace effcore {
           abstract class instances_manager {
 
-  static function instance_insert($page) {
-    foreach (entity::all_get(false) as $c_entity) {
-      tabs::item_insert($c_entity->title, 'insert_'.$c_entity->name, 'insert', $c_entity->name);
-    }
-  }
-
-  static function instance_update($page) {
-    return new text('instance_update is UNDER CONSTRUCTION');
-  }
-
-  static function instance_delete($page) {
-    return new text('instance_delete is UNDER CONSTRUCTION');
-  }
-
   static function instance_select($page) {
+    foreach (entity::all_get(false) as $c_entity) {
+      tabs::item_insert($c_entity->title, 'select_'.$c_entity->name, 'select', 'select/'.$c_entity->name);
+    }
+  # selector
     $pager = new pager();
     if ($pager->has_error) {
       core::send_header_and_exit('page_not_found');
@@ -46,6 +36,20 @@ namespace effcore {
         new table([], $tbody, $thead)
       );
     }
+  }
+
+  static function instance_insert($page) {
+    foreach (entity::all_get(false) as $c_entity) {
+      tabs::item_insert($c_entity->title, 'insert_'.$c_entity->name, 'insert', 'insert/'.$c_entity->name);
+    }
+  }
+
+  static function instance_update($page) {
+    return new text('instance_update is UNDER CONSTRUCTION');
+  }
+
+  static function instance_delete($page) {
+    return new text('instance_delete is UNDER CONSTRUCTION');
   }
 
 }}
