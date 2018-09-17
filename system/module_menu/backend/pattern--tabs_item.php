@@ -5,14 +5,34 @@
   ##################################################################
 
 namespace effcore {
-          class tabs_item extends tree_item {
+          class tabs_item extends node {
 
+  public $id;
+  public $id_parent;
   public $parent_is_tab;
   public $action_name;
   public $action_default_name;
   public $title = '';
   public $template = 'tabs_item';
   public $template_children = 'tabs_item_children';
+
+  function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
+    if ($title) $this->title = $title;
+    parent::__construct($attributes, $children, $weight);
+  }
+
+  function render() {
+    if (!isset($this->access) ||
+        (isset($this->access) && access::check($this->access))) {
+      $rendered_children = $this->children_count() ? (new template($this->template_children, [
+        'children' => $this->render_children($this->children_select())]
+      ))->render() : '';
+      return (new template($this->template, [
+        'self'     => $this->render_self(),
+        'children' => $rendered_children
+      ]))->render();
+    }
+  }
 
   function render_self() {
     $href         = page::current_get()->args_get('base').'/'.($this->action_name);
@@ -21,7 +41,9 @@ namespace effcore {
     if (url::is_active_trail($href)) {
       $this->attribute_insert('class', ['active' => 'active']);
     }
-    return parent::render_self();
+    return (new markup('a', $this->attributes_select(),
+      token::replace(translation::get($this->title))
+    ))->render();
   }
 
 }}
