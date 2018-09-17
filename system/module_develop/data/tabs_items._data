@@ -1,6 +1,6 @@
 tabs_items
 - class|tabs_item
-    id: class
+    id: structures_class
     id_parent: T:structures
     action_name: class
     action_name_default: class/list
@@ -9,23 +9,23 @@ tabs_items
     - class
       - =: class
 - class_list|tabs_item
-    id: class_list
-    id_parent: class
+    id: structures_class_list
+    id_parent: structures_class
     action_name: class/list
     title: List
     attributes
     - class
       - =: list
 - class_diagram|tabs_item
-    id: class_diagram
-    id_parent: class
+    id: structures_class_diagram
+    id_parent: structures_class
     action_name: class/diagram
     title: Diagram
     attributes
     - class
       - =: diagram
 - interface|tabs_item
-    id: interface
+    id: structures_interface
     id_parent: T:structures
     action_name: interface
     action_name_default: interface/list
@@ -34,7 +34,7 @@ tabs_items
     - class
       - =: interface
 - trait|tabs_item
-    id: trait
+    id: structures_trait
     id_parent: T:structures
     action_name: trait
     action_name_default: trait/list
