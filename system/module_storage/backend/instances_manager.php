@@ -19,11 +19,11 @@ namespace effcore {
   }
 
   static function instance_update($page) {
-    return new text('users_update is UNDER CONSTRUCTION');
+    return new text('instance_update is UNDER CONSTRUCTION');
   }
 
   static function instance_delete($page) {
-    return new text('users_delete is UNDER CONSTRUCTION');
+    return new text('instance_delete is UNDER CONSTRUCTION');
   }
 
   static function instance_select($page) {

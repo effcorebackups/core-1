@@ -152,6 +152,8 @@ translations
     - Logout: Выход
     - Main menu: Главное меню
     - Main system module.: Основной модуль системы.
+    - Manage entities: Управлять сущностями
+    - Manage instances: Управлять экземплярами
     - Management: Управление
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
