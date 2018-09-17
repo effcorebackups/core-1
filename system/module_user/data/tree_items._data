@@ -1,8 +1,7 @@
 tree_items
 - login|tree_item
     id: login
-    id_parent: user_anonymous
-    parent_is_tree: true
+    id_parent: M:user_anonymous
     title: login
     weight: 100
     access
@@ -14,8 +13,7 @@ tree_items
       - =: login
 - registration|tree_item
     id: registration
-    id_parent: user_anonymous
-    parent_is_tree: true
+    id_parent: M:user_anonymous
     title: registration
     access
       roles
@@ -27,8 +25,7 @@ tree_items
 # ─────────────────────────────────────────────────────────────────────
 - user_edit|tree_item
     id: user_edit
-    id_parent: user_logged_in
-    parent_is_tree: true
+    id_parent: M:user_logged_in
     title: edit
     access
       roles
@@ -40,8 +37,7 @@ tree_items
       - =: user-edit
 - logout|tree_item
     id: logout
-    id_parent: user_logged_in
-    parent_is_tree: true
+    id_parent: M:user_logged_in
     title: logout
     weight: -100
     access

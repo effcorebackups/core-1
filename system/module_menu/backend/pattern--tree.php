@@ -56,12 +56,13 @@ namespace effcore {
     return static::$cache_tree_items;
   }
 
-  static function build() {
-    foreach(static::items_get() as $c_item) {
+  static function build($items = null) {
+    foreach ($items ?: static::items_get() as $c_item) {
       if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tree) ?
-            tree::get     ($c_item->id_parent) :
-            tree::item_get($c_item->id_parent);
+        $c_parent = $c_item->id_parent[0] == 'M' &&
+                    $c_item->id_parent[1] == ':' ?
+                    tree::get(substr($c_item->id_parent, 2)) :
+                    tree::item_get  ($c_item->id_parent);
         $c_parent->child_insert($c_item, $c_item->id);
       }
     };

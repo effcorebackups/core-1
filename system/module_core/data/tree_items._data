@@ -1,8 +1,7 @@
 tree_items
 - manage|tree_item
     id: manage
-    id_parent: main
-    parent_is_tree: true
+    id_parent: M:main
     title: Management
     access
       roles

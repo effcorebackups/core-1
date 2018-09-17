@@ -1,8 +1,7 @@
 tree_items
 - develop|tree_item
     id: develop
-    id_parent: main
-    parent_is_tree: true
+    id_parent: M:main
     title: Develop
     weight: -100
     access

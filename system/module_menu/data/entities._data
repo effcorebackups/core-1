@@ -33,10 +33,6 @@ entities
     - id_parent
         type: integer
         not_null: true
-    - parent_is_tree
-        type: integer
-        not_null: true
-        default: 0
     - title
         type: varchar
         size: 255
