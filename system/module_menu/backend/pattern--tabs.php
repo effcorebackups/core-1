@@ -10,6 +10,9 @@ namespace effcore {
   public $id;
   public $template = 'tabs';
 
+  function insert_item() {
+  }
+
   function render() {
     return (new template($this->template, [
       'attributes' => core::data_to_attr($this->attributes_select()),
@@ -21,7 +24,8 @@ namespace effcore {
   function render_top_items() {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
-      if (!empty($c_item->parent_is_tab)) {
+      if ($c_item->id_parent[0] == 'T' &&
+          $c_item->id_parent[1] == ':') {
         $c_clone = clone $c_item;
         $c_clone->children = [];
         $rendered.= $c_clone->render();
@@ -35,7 +39,8 @@ namespace effcore {
   function render_sub_items() {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
-      if (!empty($c_item->parent_is_tab)) {
+      if ($c_item->id_parent[0] == 'T' &&
+          $c_item->id_parent[1] == ':') {
         $c_href = page::current_get()->args_get('base').'/'.$c_item->action_name;
         if (url::is_active_trail($c_href)) {
           foreach ($c_item->children_select() as $c_child) {
@@ -93,9 +98,10 @@ namespace effcore {
   static function build() {
     foreach(static::items_get() as $c_item) {
       if ($c_item->id_parent) {
-        $c_parent = !empty($c_item->parent_is_tab) ?
-            tabs::get     ($c_item->id_parent) :
-            tabs::item_get($c_item->id_parent);
+        $c_parent = $c_item->id_parent[0] == 'T' &&
+                    $c_item->id_parent[1] == ':' ?
+                    tabs::get(substr($c_item->id_parent, 2)) :
+                    tabs::item_get  ($c_item->id_parent);
         $c_parent->child_insert($c_item, $c_item->id);
       }
     };

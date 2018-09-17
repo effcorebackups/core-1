@@ -9,7 +9,6 @@ namespace effcore {
 
   public $id;
   public $id_parent;
-  public $parent_is_tab;
   public $action_name;
   public $action_default_name;
   public $title = '';

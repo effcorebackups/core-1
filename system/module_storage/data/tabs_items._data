@@ -1,8 +1,7 @@
 tabs_items
 - select|tabs_item
     id: select
-    id_parent: instance_manage
-    parent_is_tab: true
+    id_parent: T:instance_manage
     action_name: select
     title: Select
     weight: 100
@@ -11,8 +10,7 @@ tabs_items
       - =: select
 - insert|tabs_item
     id: insert
-    id_parent: instance_manage
-    parent_is_tab: true
+    id_parent: T:instance_manage
     action_name: insert
     title: Insert
     attributes
@@ -20,8 +18,7 @@ tabs_items
       - =: insert
 - update|tabs_item
     id: update
-    id_parent: instance_manage
-    parent_is_tab: true
+    id_parent: T:instance_manage
     action_name: update
     title: Update
     attributes
@@ -29,8 +26,7 @@ tabs_items
       - =: update
 - delete|tabs_item
     id: delete
-    id_parent: instance_manage
-    parent_is_tab: true
+    id_parent: T:instance_manage
     action_name: delete
     title: Delete
     attributes
