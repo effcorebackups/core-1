@@ -129,7 +129,10 @@ namespace effcore {
   }
 
   static function is_active_trail($url) {
-    return strpos(static::current_get()->full_get(), (new url($url))->full_get()) === 0;
+    $checked =       (new url($url))->full_get();
+    $current = static::current_get()->full_get();
+    return strpos($current.'/',
+                  $checked.'/') === 0;
   }
 
   static function go($url) {
