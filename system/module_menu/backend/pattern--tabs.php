@@ -10,9 +10,6 @@ namespace effcore {
   public $id;
   public $template = 'tabs';
 
-  function insert_item() {
-  }
-
   function render() {
     return (new template($this->template, [
       'attributes' => core::data_to_attr($this->attributes_select()),
@@ -89,8 +86,15 @@ namespace effcore {
     return static::$cache_tabs_items;
   }
 
-  static function build() {
-    foreach(static::items_get() as $c_item) {
+  static function insert_item($title, $id, $id_parent, $action_name, $action_default_name = null, $attributes = [], $weight = 0) {
+    $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_default_name, $attributes, $weight);
+    static::$cache_tabs_items[$id] = $new_item;
+    static::$cache_tabs_items[$id]->module_id = null;
+    static::build([$new_item]);
+  }
+
+  static function build($items = null) {
+    foreach ($items ?: static::items_get() as $c_item) {
       if ($c_item->id_parent) {
         $c_parent = $c_item->id_parent[0] == 'T' &&
                     $c_item->id_parent[1] == ':' ?

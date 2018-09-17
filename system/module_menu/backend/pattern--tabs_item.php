@@ -9,15 +9,19 @@ namespace effcore {
 
   public $id;
   public $id_parent;
+  public $title = '';
   public $action_name;
   public $action_default_name;
-  public $title = '';
   public $template = 'tabs_item';
   public $template_children = 'tabs_item_children';
 
-  function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
-    if ($title) $this->title = $title;
-    parent::__construct($attributes, $children, $weight);
+  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_default_name = null, $attributes = [], $weight = 0) {
+    if ($id)                  $this->id                  = $id;
+    if ($id_parent)           $this->id_parent           = $id_parent;
+    if ($title)               $this->title               = $title;
+    if ($action_name)         $this->action_name         = $action_name;
+    if ($action_default_name) $this->action_default_name = $action_default_name;
+    parent::__construct($attributes, [], $weight);
   }
 
   function render() {

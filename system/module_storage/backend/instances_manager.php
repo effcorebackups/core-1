@@ -8,14 +8,9 @@ namespace effcore {
           abstract class instances_manager {
 
   static function instance_insert($page) {
-    $entities = entity::all_get(false);
-    $links = new markup('ul');
-    foreach ($entities as $c_entity) {
-      $links->child_insert(
-        new markup('li', [], new markup('a', ['href' => '/manage/instances/'.$c_entity->name.'/insert'], $c_entity->title))
-      );
+    foreach (entity::all_get(false) as $c_entity) {
+      tabs::insert_item($c_entity->title, 'insert_'.$c_entity->name, 'insert', $c_entity->name);
     }
-    return $links;
   }
 
   static function instance_update($page) {
