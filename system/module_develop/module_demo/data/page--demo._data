@@ -30,6 +30,10 @@ pages
         region: tabs
         type: link
         dpath: tabs/demo/demo
+    - block_menu_demo
+        region: content
+        type: link
+        dpath: trees/demo/demo
     - form_demo
         region: content
         type: link

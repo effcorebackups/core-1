@@ -1,0 +1,7 @@
+trees
+- demo|tree
+    id: demo
+    title: Demo menu
+    attributes
+    - class
+      - =: demo
