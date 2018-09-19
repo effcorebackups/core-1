@@ -42,6 +42,17 @@ translations
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
+    - item #1: пункт №1
+    - item #1.1: пункт №1.1
+    - item #1.2: пункт №1.2
+    - item #1.2.1: пункт №1.2.1
+    - item #1.2.2: пункт №1.2.2
+    - item #1.2.3: пункт №1.2.3
+    - item #1.2.3 (from code): пункт №1.2.3 (из кода)
+    - item #1.3: пункт №1.3
+    - item #2: пункт №2
+    - item #3: пункт №3
+    - item #3 (from code): пункт №3 (из кода)
     - make request to "%%_url": сделать запрос на "%%_url"
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
@@ -75,19 +86,10 @@ translations
     - Select the test: Выберите тест
     - Static block: Статический блок
     - Structures: Структуры
-    - Sub item #1.1: Подпункт №1.1
-    - Sub item #1.2: Подпункт №1.2
-    - Sub item #1.2.1: Подпункт №1.2.1
-    - Sub item #1.2.2: Подпункт №1.2.2
-    - Sub item #1.2.3 (from code): Подпункт №1.2.3 (из кода)
-    - Sub item #1.3: Подпункт №1.3
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.
-    - Top item #1: Верхний пункт №1
-    - Top item #2: Верхний пункт №2
-    - Top item #3 (from code): Верхний пункт №3 (из кода)
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
