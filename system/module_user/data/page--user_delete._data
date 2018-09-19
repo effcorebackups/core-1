@@ -22,10 +22,10 @@ pages
         region: head
         type: code
         source: \effcore\modules\menu\events_page::on_show_block_menu_user
-    - block_logo
+    - logo|page_part
         region: head
         type: link
-        dpath: blocks/page/logo
+        source: blocks/page/logo
     - block_title
         region: title
         type: code
