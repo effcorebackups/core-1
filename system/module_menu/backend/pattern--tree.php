@@ -48,6 +48,13 @@ namespace effcore {
     return static::$cache_trees;
   }
 
+  static function parent_get($id_parent) {
+    if ($id_parent[0] == 'M' &&
+        $id_parent[1] == ':')
+         return static::$cache_trees[substr($id_parent, 2)] ?? null;
+    else return static::$cache_tree_items  [$id_parent]     ?? null;
+  }
+
   static function item_select($id) {
     return static::$cache_tree_items[$id] ?? null;
   }
@@ -59,10 +66,7 @@ namespace effcore {
   static function build($items = null) {
     foreach ($items ?: static::items_select() as $c_item) {
       if ($c_item->id_parent) {
-        $c_parent = $c_item->id_parent[0] == 'M' &&
-                    $c_item->id_parent[1] == ':' ?
-                    static::get (substr($c_item->id_parent, 2)) :
-                    static::item_select($c_item->id_parent);
+        $c_parent = static::parent_get($c_item->id_parent);
         $c_parent->child_insert($c_item, $c_item->id);
       }
     };
