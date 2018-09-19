@@ -31,46 +31,25 @@ namespace effcore {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
-  # collect page blocks
+  # collect page parts
     $contents = new node();
-    foreach ($this->content as $c_block) {
-      $c_block_markup = null;
-
-      if ($c_block instanceof page_part) {
-        $c_block_markup = $c_block->render($this);
-        if ($c_block->type == 'link' && $c_block_markup) {
-          $this->used_dpaths[] = $c_block->source;
-        }
-      } else {
-        if (!isset($c_block->display) ||
-            (isset($c_block->display) &&
-                   $c_block->display->check == 'page_args' && preg_match(
-                   $c_block->display->match, $this->args_get(
-                   $c_block->display->where)))) {
-          if ($c_block->type == 'link') $this->used_dpaths[] = $c_block->dpath;
-          switch ($c_block->type) {
-            case 'code': $c_block_markup = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
-            case 'link': $c_block_markup = storage::get('files')->select($c_block->dpath, true);                           break;
-            case 'text': $c_block_markup = new text($c_block->content);                                                    break;
-            default    : $c_block_markup = $c_block;
-          }
+    foreach ($this->content as $c_part) {
+      $c_part_markup = $c_part->render($this);
+      if ($c_part_markup) {
+        if (!$contents->child_select($c_part->region))
+             $contents->child_insert(new node(), $c_part->region);
+        $contents->child_select($c_part->region)->child_insert($c_part_markup);
+        if ($c_part->type == 'link') {
+          $this->used_dpaths[] = $c_part->source;
         }
       }
-
-      if ($c_block_markup) {
-        $c_region = $c_block->region ?? 'content';
-        if (!$contents->child_select($c_region))
-             $contents->child_insert(new node(), $c_region);
-        $contents->child_select($c_region)->child_insert($c_block_markup);
-      }
-
     }
 
   # render
     $frontend = $this->frontend_markup_get();
     $template = new template('page');
-    foreach ($contents->children_select() as $c_region => $c_blocks) {
-      $template->arg_set($c_region, $c_blocks->render());
+    foreach ($contents->children_select() as $c_region => $c_parts) {
+      $template->arg_set($c_region, $c_parts->render());
     }
 
     timer::tap('total');
