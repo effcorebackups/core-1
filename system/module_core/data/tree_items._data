@@ -13,22 +13,22 @@ tree_items
     id: modules
     id_parent: manage
     title: Modules
+    href: /manage/modules
     access
       roles
       - =: admins
     attributes
-    - href: /manage/modules
     - class
       - =: modules
 - info|tree_item
     id: info
     id_parent: manage
     title: Information
+    href: /manage/info
     weight: -100
     access
       roles
       - =: admins
     attributes
-    - href: /manage/info
     - class
       - =: info

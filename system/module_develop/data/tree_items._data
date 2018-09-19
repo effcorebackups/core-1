@@ -14,21 +14,21 @@ tree_items
     id: structures
     id_parent: develop
     title: Structures
+    href: /develop/structures/class/list
     access
       roles
       - =: admins
     attributes
-    - href: /develop/structures/class/list
     - class
       - =: structures
 - php_mod_usage|tree_item
     id: php_mod_usage
     id_parent: develop
     title: PHP modules
+    href: /develop/php_mod_usage
     access
       roles
       - =: admins
     attributes
-    - href: /develop/php_mod_usage
     - class
       - =: php_mod_usage

@@ -9,13 +9,17 @@ namespace effcore {
 
   public $id;
   public $id_parent;
+  public $href;
   public $title = '';
   public $template = 'tree_item';
   public $template_children = 'tree_item_children';
 
-  function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
-    if ($title) $this->title = $title;
-    parent::__construct($attributes, $children, $weight);
+  function __construct($title = '', $id = null, $id_parent = null, $href = null, $attributes = [], $weight = 0) {
+    if ($id)        $this->id        = $id;
+    if ($id_parent) $this->id_parent = $id_parent;
+    if ($title)     $this->title     = $title;
+    if ($href)      $this->href      = $href;
+    parent::__construct($attributes, [], $weight);
   }
 
   function render() {
@@ -32,8 +36,10 @@ namespace effcore {
   }
 
   function render_self() {
-    $href    = $this->attribute_select('href');
-    if ($href) $this->attribute_insert('href', token::replace($href));
+    if ($this->href) $this->attribute_insert('href', token::replace($this->href));
+    if (url::is_active_trail($this->href)) {
+      $this->attribute_insert('class', ['active' => 'active']);
+    }
     return (new markup('a', $this->attributes_select(),
       token::replace(translation::get($this->title))
     ))->render();

@@ -3,10 +3,10 @@ tree_items
     id: instances_manager
     id_parent: manage
     title: Instances
+    href: /manage/instances/select
     access
       roles
       - =: admins
     attributes
-    - href: /manage/instances/select
     - class
       - =: instances

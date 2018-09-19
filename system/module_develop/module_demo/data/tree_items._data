@@ -3,110 +3,110 @@ tree_items
     id: demo
     id_parent: develop
     title: Demo
+    href: /develop/demo
     weight: 100
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo
     - class
       - =: demo
 - demo_item_1|tree_item
     id: demo_item_1
     id_parent: M:demo
     title: item #1
+    href: /develop/demo/item_1
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1
     - class
       - =: demo-item-1
 - demo_item_1_1|tree_item
     id: demo_item_1_1
     id_parent: demo_item_1
     title: item #1.1
+    href: /develop/demo/item_1/item_1_1
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_1
     - class
       - =: demo-item-1-1
 - demo_item_1_2|tree_item
     id: demo_item_1_2
     id_parent: demo_item_1
     title: item #1.2
+    href: /develop/demo/item_1/item_1_2
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_2
     - class
       - =: demo-item-1-2
 - demo_item_1_2_1|tree_item
     id: demo_item_1_2_1
     id_parent: demo_item_1_2
     title: item #1.2.1
+    href: /develop/demo/item_1/item_1_2/item_1_2_1
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_2/item_1_2_1
     - class
       - =: demo-item-1-2-1
 - demo_item_1_2_2|tree_item
     id: demo_item_1_2_2
     id_parent: demo_item_1_2
     title: item #1.2.2
+    href: /develop/demo/item_1/item_1_2/item_1_2_2
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_2/item_1_2_2
     - class
       - =: demo-item-1-2-2
 - demo_item_1_2_3|tree_item
     id: demo_item_1_2_3
     id_parent: demo_item_1_2
     title: item #1.2.3
+    href: /develop/demo/item_1/item_1_2/item_1_2_3
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_2/item_1_2_3
     - class
       - =: demo-item-1-2-3
 - demo_item_1_3|tree_item
     id: demo_item_1_3
     id_parent: demo_item_1
     title: item #1.3
+    href: /develop/demo/item_1/item_1_3
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_1/item_1_3
     - class
       - =: demo-item-1-3
 - demo_item_2|tree_item
     id: demo_item_2
     id_parent: M:demo
     title: item #2
+    href: /develop/demo/item_2
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_2
     - class
       - =: demo-item-2
 - demo_item_3|tree_item
     id: demo_item_3
     id_parent: M:demo
     title: item #3
+    href: /develop/demo/item_3
     access
       roles
       - =: admins
     attributes
-    - href: /develop/demo/item_3
     - class
       - =: demo-item-3

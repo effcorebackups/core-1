@@ -3,10 +3,10 @@ tree_items
     id: tests
     id_parent: develop
     title: Tests
+    href: /develop/tests
     access
       roles
       - =: admins
     attributes
-    - href: /develop/tests
     - class
       - =: tests
