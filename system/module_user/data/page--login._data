@@ -26,7 +26,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - form_login
+    - form_login|page_part
         region: content
         type: link
-        dpath: forms/user/login
+        source: forms/user/login

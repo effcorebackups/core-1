@@ -26,31 +26,31 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs_demo
+    - tabs_demo|page_part
         region: tabs
         type: link
-        dpath: tabs/demo/demo
-    - block_menu_demo
+        source: tabs/demo/demo
+    - menu_demo|page_part
         region: content
         type: link
-        dpath: trees/demo/demo
-    - form_demo
+        source: trees/demo/demo
+    - form_demo|page_part
         region: content
         type: link
-        dpath: forms/demo/demo
-    - block_demo_static
+        source: forms/demo/demo
+    - block_demo_static|page_part
         region: content
         type: link
-        dpath: blocks/demo/demo
-    - block_demo_dynamic
+        source: blocks/demo/demo
+    - block_demo_dynamic|page_part
         region: content
         type: code
-        handler: \effcore\modules\demo\events_page::on_show_block_demo_dynamic
-    - block_demo_canvas
+        source: \effcore\modules\demo\events_page::on_show_block_demo_dynamic
+    - block_demo_canvas|page_part
         region: content
         type: code
-        handler: \effcore\modules\demo\events_page::on_show_block_demo_canvas
-    - block_demo_diagrams
+        source: \effcore\modules\demo\events_page::on_show_block_demo_canvas
+    - block_demo_diagrams|page_part
         region: content
         type: code
-        handler: \effcore\modules\demo\events_page::on_show_block_demo_diagrams
+        source: \effcore\modules\demo\events_page::on_show_block_demo_diagrams

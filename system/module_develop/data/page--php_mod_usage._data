@@ -26,7 +26,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - block_php_mod_usage_list
+    - block_php_mod_usage_list|page_part
         region: content
         type: code
-        handler: \effcore\modules\develop\events_page::on_show_block_php_mod_usage_list
+        source: \effcore\modules\develop\events_page::on_show_block_php_mod_usage_list

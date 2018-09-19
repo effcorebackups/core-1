@@ -5,7 +5,9 @@ blocks
     - class
       - =: demo
     children
+  # ─────────────────────────────────────────────────────────────────────
   # paragraph
+  # ─────────────────────────────────────────────────────────────────────
     - demo_paragraph_title|markup
         tag_name: h3
         children
@@ -27,7 +29,9 @@ blocks
             children
             - content|text
                 text: View more
+  # ─────────────────────────────────────────────────────────────────────
   # unordered list
+  # ─────────────────────────────────────────────────────────────────────
     - demo_unordered_list_title|markup
         tag_name: h3
         children
@@ -81,7 +85,9 @@ blocks
                 text: item #%%_number
                 args
                 - number: 3
+  # ─────────────────────────────────────────────────────────────────────
   # ordered list
+  # ─────────────────────────────────────────────────────────────────────
     - demo_ordered_list_title|markup
         tag_name: h3
         children
@@ -135,7 +141,9 @@ blocks
                 text: item #%%_number
                 args
                 - number: 3
+  # ─────────────────────────────────────────────────────────────────────
   # table
+  # ─────────────────────────────────────────────────────────────────────
     - demo_table_title|markup
         tag_name: h3
         children
@@ -235,43 +243,28 @@ blocks
                     children
                     - content|text
                         text: 
-  # pagers
+  # ─────────────────────────────────────────────────────────────────────
+  # pager
+  # ─────────────────────────────────────────────────────────────────────
     - demo_pager_2|pager
         prefix: my
         id: pager
         max: 10000
-  # title
+  # ─────────────────────────────────────────────────────────────────────
+  # control elements
+  # ─────────────────────────────────────────────────────────────────────
     - controls_title|markup
-        tag_name: h2
+        tag_name: h3
         children
         - content|text
             text: Control elements
-    - table_for_controls|table
-        children
-        - head|table_head
-            children
-            - tr|table_head_row
-                children
-                - th_1|table_head_row_cell
-                    children
-                    - content|text
-                        text: Elements
-        - body|table_body
-            children
-            - tr_1|table_body_row
-                children
-                - td_1|table_body_row_cell
-                    children
-                  # actions list
-                    - demo_actions_list_wrapper|markup
-                        tag_name: div
-                        children
-                        - demo_actions_list|control_actions_list
-                            attributes
-                            - class
-                              - =: demo-actions-list
-                            actions
-                            - =: edit
-                            - =: delete
-                            active
-                            - =: edit
+  # actions list
+    - demo_actions_list|control_actions_list
+        attributes
+        - class
+          - =: demo-actions-list
+        actions
+        - =: edit
+        - =: delete
+        active
+        - =: edit

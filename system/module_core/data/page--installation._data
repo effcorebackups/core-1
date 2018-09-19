@@ -26,7 +26,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - form_install
+    - form_install|page_part
         region: content
         type: link
-        dpath: forms/core/install
+        source: forms/core/install
