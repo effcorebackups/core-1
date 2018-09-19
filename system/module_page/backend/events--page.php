@@ -10,7 +10,7 @@ namespace effcore\modules\page {
           use \effcore\translation;
           abstract class events_page {
 
-  static function on_show_block_title($page) {
+  static function on_show_title($page) {
     return new markup('h1', ['id' => 'title'],
       token::replace(translation::get($page->title))
     );

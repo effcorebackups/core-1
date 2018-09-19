@@ -23,10 +23,10 @@ pages
         region: head
         type: link
         source: blocks/page/logo
-    - block_title
+    - title|page_part
         region: title
         type: code
-        handler: \effcore\modules\page\events_page::on_show_block_title
+        source: \effcore\modules\page\events_page::on_show_title
     - block_user_info
         region: content
         type: code
