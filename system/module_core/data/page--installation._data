@@ -14,10 +14,10 @@ pages
         region: main_menu
         type: link
         source: trees/core/main
-    - block_menu_user
+    - menu_user|page_part
         region: head
         type: code
-        handler: \effcore\modules\menu\events_page::on_show_block_menu_user
+        source: \effcore\modules\menu\events_page::on_show_block_menu_user
     - block_logo
         region: head
         type: link
