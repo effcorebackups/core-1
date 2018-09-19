@@ -31,7 +31,7 @@ namespace effcore {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
-  # collect page parts
+  # collect and render page parts
     $contents = new node();
     foreach ($this->content as $c_part) {
       $c_part_markup = $c_part->render($this);
@@ -45,7 +45,7 @@ namespace effcore {
       }
     }
 
-  # render
+  # render page
     $frontend = $this->frontend_markup_get();
     $template = new template('page');
     foreach ($contents->children_select() as $c_region => $c_parts) {
