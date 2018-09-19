@@ -10,10 +10,10 @@ pages
       roles
       - =: admins
     content
-    - check_access_user_delete
+    - check_access_user_delete|page_part
         region: head
         type: code
-        handler: \effcore\modules\user\events_access::on_check_access_user_delete
+        source: \effcore\modules\user\events_access::on_check_access_user_delete
     - menu_main|page_part
         region: main_menu
         type: link
@@ -30,7 +30,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - form_user_delete
+    - form_user_delete|page_part
         region: content
         type: link
-        dpath: forms/user/user_delete
+        source: forms/user/user_delete
