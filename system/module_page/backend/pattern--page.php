@@ -31,35 +31,39 @@ namespace effcore {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
 
-  # collect dpaths which used in page blocks
-    foreach ($this->content as $c_block) {
-      if ($c_block->type == 'link') {
-        $this->used_dpaths[] = $c_block->dpath;
-      }
-    }
-
   # collect page blocks
     $contents = new node();
     foreach ($this->content as $c_block) {
-      if (!isset($c_block->display) ||
-          (isset($c_block->display) &&
-                 $c_block->display->check == 'page_args' && preg_match(
-                 $c_block->display->match, $this->args_get(
-                 $c_block->display->where)))) {
+      $c_block_markup = null;
+
+      if ($c_block instanceof page_part) {
+        $c_block_markup = $c_block->render($this);
+        if ($c_block->type == 'link' && $c_block_markup) {
+          $this->used_dpaths[] = $c_block->source;
+        }
+      } else {
+        if (!isset($c_block->display) ||
+            (isset($c_block->display) &&
+                   $c_block->display->check == 'page_args' && preg_match(
+                   $c_block->display->match, $this->args_get(
+                   $c_block->display->where)))) {
+          if ($c_block->type == 'link') $this->used_dpaths[] = $c_block->dpath;
+          switch ($c_block->type) {
+            case 'code': $c_block_markup = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
+            case 'link': $c_block_markup = storage::get('files')->select($c_block->dpath, true);                           break;
+            case 'text': $c_block_markup = new text($c_block->content);                                                    break;
+            default    : $c_block_markup = $c_block;
+          }
+        }
+      }
+
+      if ($c_block_markup) {
         $c_region = $c_block->region ?? 'content';
         if (!$contents->child_select($c_region))
              $contents->child_insert(new node(), $c_region);
-        $c_block_markup = null;
-        switch ($c_block->type) {
-          case 'code': $c_block_markup = call_user_func_array($c_block->handler, ['page' => $this] + $this->args_get()); break;
-          case 'link': $c_block_markup = storage::get('files')->select($c_block->dpath, true);                           break;
-          case 'text': $c_block_markup = new text($c_block->content);                                                    break;
-          default    : $c_block_markup = $c_block;
-        }
-        if ($c_block_markup) {
-          $contents->child_select($c_region)->child_insert($c_block_markup);
-        }
+        $contents->child_select($c_region)->child_insert($c_block_markup);
       }
+
     }
 
   # render

@@ -15,10 +15,10 @@ pages
         region: head
         type: code
         handler: \effcore\modules\user\events_access::on_check_access_user_edit
-    - block_menu_main
+    - menu_main|page_part
         region: main_menu
         type: link
-        dpath: trees/core/main
+        source: trees/core/main
     - block_menu_user
         region: head
         type: code
