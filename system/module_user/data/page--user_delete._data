@@ -9,7 +9,7 @@ pages
     access
       roles
       - =: admins
-    content
+    children
     - check_access_user_delete|page_part
         region: head
         type: code

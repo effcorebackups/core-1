@@ -5,7 +5,7 @@ pages
       check: url
       where: path
       match: %^/$%
-    content
+    children
     - menu_main|page_part
         region: main_menu
         type: link

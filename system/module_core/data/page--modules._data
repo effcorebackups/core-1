@@ -9,7 +9,7 @@ pages
     access
       roles
       - =: admins
-    content
+    children
     - menu_main|page_part
         region: main_menu
         type: link

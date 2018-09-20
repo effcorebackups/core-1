@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page
+          class page extends node
           implements has_external_cache {
 
   public $title;
@@ -14,7 +14,6 @@ namespace effcore {
   public $access;
   public $charset = 'utf-8';
   public $text_direction = 'ltr';
-  public $content = [];
   protected $args = [];
   protected $used_dpaths = [];
 
@@ -33,7 +32,7 @@ namespace effcore {
 
   # collect and render page parts
     $contents = new node();
-    foreach ($this->content as $c_part) {
+    foreach ($this->children as $c_part) {
       $c_part_markup = $c_part->render($this);
       if ($c_part_markup) {
         if (!$contents->child_select($c_part->region))

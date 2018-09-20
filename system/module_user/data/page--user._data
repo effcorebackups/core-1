@@ -10,7 +10,7 @@ pages
       roles
       - =: admins
       - =: registered
-    content
+    children
     - menu_main|page_part
         region: main_menu
         type: link

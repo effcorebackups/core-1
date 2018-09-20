@@ -10,7 +10,7 @@ pages
       roles
       - =: admins
       - =: registered
-    content
+    children
     - check_access_user_edit|page_part
         region: head
         type: code
