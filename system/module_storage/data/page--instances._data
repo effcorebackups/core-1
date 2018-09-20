@@ -1,6 +1,6 @@
 pages
-- instances_manager|page
-    title: Manage instances
+- instances|page
+    title: Instances
     https: true
     display
       check: url

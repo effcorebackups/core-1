@@ -71,6 +71,7 @@ translations
     - email: адрес электронной почты
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - enable: включить
+    - Entities: Сущности
     - Entity %%_name was installed.: Сущность %%_name была установлена.
     - Entity %%_name was not installed!: Сущность %%_name не была установлена!
     - error: ошибка
@@ -152,13 +153,12 @@ translations
     - Logout: Выход
     - Main menu: Главное меню
     - Main system module.: Основной модуль системы.
-    - Manage entities: Управлять сущностями
-    - Manage instances: Управлять экземплярами
     - Management: Управление
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Memory for php (bytes): Память для php (байт)
+    - Menus: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
