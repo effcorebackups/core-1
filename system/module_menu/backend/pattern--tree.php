@@ -70,6 +70,14 @@ namespace effcore {
     static::build([$new_item]);
   }
 
+  static function item_delete($id) {
+    if (isset(static::$cache_tree_items[$id])) {
+      $id_parent = static::$cache_tree_items[$id]->id_parent;
+             unset(static::$cache_tree_items[$id]);
+      static::parent_get($id_parent)->child_delete($id);
+    }
+  }
+
   static function build($items = null) {
     foreach ($items ?: static::items_select() as $c_item) {
       if ($c_item->id_parent) {
