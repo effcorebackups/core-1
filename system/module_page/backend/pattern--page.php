@@ -69,11 +69,12 @@ namespace effcore {
       header('X-UA-Compatible: IE=10');
     }
 
-    $attributes = ['lang' => language::current_get(), 'dir' => $this->text_direction];
-    if ($user_agent->name) $attributes['data-uagent'] = strtolower($user_agent->name.'-'.$user_agent->name_version);
-    if ($user_agent->core) $attributes['data-uacore'] = strtolower($user_agent->core.'-'.$user_agent->core_version);
+    $this->attribute_insert('lang', language::current_get());
+    $this->attribute_insert('dir', $this->text_direction);
+    if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
+    if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
     $frontend->meta->child_insert(new markup_simple('meta', ['charset' => $this->charset]));
-    $template->arg_set('attributes', core::data_to_attr($attributes));
+    $template->arg_set('attributes', core::data_to_attr($this->attributes_select()));
     $template->arg_set('meta',         $frontend->meta->render());
     $template->arg_set('head_styles',  $frontend->styles->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
