@@ -14,6 +14,7 @@ namespace effcore\modules\demo {
           use \effcore\table;
           use \effcore\tabs;
           use \effcore\translation;
+          use \effcore\tree;
           abstract class events_page {
 
   static function on_show_block_demo_dynamic($page) {
@@ -29,8 +30,10 @@ namespace effcore\modules\demo {
     message::insert(translation::get('Error message #%%_number.',   ['number' => 1]), 'error');
     message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error');
     message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error');
-    tabs::item_insert('item #3 (from code)',     'item_3',     'T:demo',   'item_3',                     null, ['class' => ['item-3'     => 'item-3']]);
-    tabs::item_insert('item #1.2.3 (from code)', 'item_1_2_3', 'item_1_2', 'item_1/item_1_2/item_1_2_3', null, ['class' => ['item-1-2-3' => 'item-1-2-3']]);
+    tabs::item_insert('item #3 (from code)',     'demo_item_3',     'T:demo',        'item_3',                     null,         ['class' => ['demo-item-3'     => 'demo-item-3']]);
+    tabs::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', 'item_1/item_1_2/item_1_2_3', null,         ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
+    tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3']]);
+    tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
     $thead = [[
       translation::get('head cell #%%_number', ['number' => 1]),
       translation::get('head cell #%%_number', ['number' => 2]),

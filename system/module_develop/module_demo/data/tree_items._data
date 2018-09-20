@@ -66,17 +66,6 @@ tree_items
     attributes
     - class
       - =: demo-item-1-2-2
-- demo_item_1_2_3|tree_item
-    id: demo_item_1_2_3
-    id_parent: demo_item_1_2
-    title: item #1.2.3
-    href: /develop/demo/item_1/item_1_2/item_1_2_3
-    access
-      roles
-      - =: admins
-    attributes
-    - class
-      - =: demo-item-1-2-3
 - demo_item_1_3|tree_item
     id: demo_item_1_3
     id_parent: demo_item_1
@@ -99,14 +88,3 @@ tree_items
     attributes
     - class
       - =: demo-item-2
-- demo_item_3|tree_item
-    id: demo_item_3
-    id_parent: M:demo
-    title: item #3
-    href: /develop/demo/item_3
-    access
-      roles
-      - =: admins
-    attributes
-    - class
-      - =: demo-item-3
