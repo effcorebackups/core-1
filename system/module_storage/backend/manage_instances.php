@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          abstract class instances_manager {
+          abstract class manage_instances {
 
   static function instance_select($page) {
     $entities = entity::all_get(false);

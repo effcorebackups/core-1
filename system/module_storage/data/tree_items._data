@@ -1,6 +1,6 @@
 tree_items
-- instances_manager|tree_item
-    id: instances_manager
+- manage_instances|tree_item
+    id: manage_instances
     id_parent: manage
     title: Instances
     href: /manage/instances/select
@@ -9,4 +9,4 @@ tree_items
       - =: admins
     attributes
     - class
-      - =: instances
+      - =: manage-instances

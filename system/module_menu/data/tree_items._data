@@ -1,6 +1,6 @@
 tree_items
-- trees|tree_item
-    id: trees
+- manage_trees|tree_item
+    id: manage_trees
     id_parent: manage
     title: Trees
     href: /manage/trees/select
@@ -9,4 +9,4 @@ tree_items
       - =: admins
     attributes
     - class
-      - =: trees
+      - =: manage-trees
