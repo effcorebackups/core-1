@@ -35,4 +35,8 @@ namespace effcore\modules\menu {
     return $block_menu;
   }
 
+  static function on_show_block_trees($page) {
+    return new markup('div', [], 'trees');
+  }
+
 }}

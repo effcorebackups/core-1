@@ -2,7 +2,7 @@ templates
 - tree
     name: tree
     type: text
-    data: <x-tree %%_attributes><h3 class="hidden">%%_self</h3><ul>%%_children</ul></x-tree>
+    data: <x-tree %%_attributes>%%_self<ul>%%_children</ul></x-tree>
 - tree_item
     name: tree_item
     type: text

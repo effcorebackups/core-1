@@ -9,11 +9,22 @@ namespace effcore {
 
   public $id;
   public $title = '';
+  public $title_state; # hidden | cutted
   public $template = 'tree';
 
   function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
     if ($title) $this->title = $title;
     parent::__construct($attributes, $children, $weight);
+  }
+
+  function render_self() {
+    if ($this->title) {
+      switch ($this->title_state) {
+        case 'cutted': return '';
+        case 'hidden': return (new markup('h2', ['class' => ['hidden' => 'hidden']], $this->title))->render();
+        default:       return (new markup('h2', [],                                  $this->title))->render();
+      }
+    }
   }
 
   ###########################

@@ -79,7 +79,7 @@ namespace effcore {
       } else {
         $captcha = $this->captcha_generate();
         $captcha->update();
-        $this->child_change('canvas', $captcha->canvas);
+        $this->child_update('canvas', $captcha->canvas);
       }
       if ($captcha->characters === $characters) {
         return true;

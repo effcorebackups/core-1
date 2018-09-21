@@ -1,12 +1,12 @@
 tree_items
-- menus|tree_item
-    id: menus
+- trees|tree_item
+    id: trees
     id_parent: manage
-    title: Menus
-    href: /manage/menus
+    title: Trees
+    href: /manage/trees
     access
       roles
       - =: admins
     attributes
     - class
-      - =: menus
+      - =: trees

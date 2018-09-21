@@ -77,7 +77,7 @@ namespace effcore {
     return $id;
   }
 
-  function child_change($id, $new_child) {
+  function child_update($id, $new_child) {
     $this->children[$id] = $new_child;
   }
 

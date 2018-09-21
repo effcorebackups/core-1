@@ -1,14 +1,16 @@
 trees
 - user_anonymous|tree
     id: user_anonymous
-    title: User anonymous menu
+    title: Menu for anonymous user
+    title_state: hidden
     attributes
     - class
       - =: user
       - =: user-anonymous
 - user_logged_in|tree
     id: user_logged_in
-    title: User authenticated menu
+    title: Menu for authenticated user
+    title_state: hidden
     attributes
     - class
       - =: user

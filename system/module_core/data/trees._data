@@ -1,7 +1,8 @@
 trees
 - main|tree
     id: main
-    title: Main menu
+    title: Menu main
+    title_state: hidden
     attributes
     - class
       - =: main
