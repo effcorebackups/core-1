@@ -29,7 +29,7 @@ pages
     - tabs|page_part
         region: tabs
         type: link
-        source: tabs/storage/instance_manage
+        source: tabs/storage/manage_instances
     - block_instance_select|page_part
         display
           check: page_args

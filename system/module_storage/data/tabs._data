@@ -1,6 +1,6 @@
 tabs
-- instance_manage|tabs
-    id: instance_manage
+- manage_instances|tabs
+    id: manage_instances
     attributes
     - class
-      - =: instance-manage
+      - =: manage-instances

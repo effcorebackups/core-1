@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^/manage/trees$%
+      match: %^(?<base>/manage/trees)/(?<action>[a-z]+)$%
     access
       roles
       - =: admins
@@ -26,6 +26,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    - tabs|page_part
+        region: tabs
+        type: link
+        source: tabs/menu/manage_trees
     - block_trees|page_part
         region: content
         type: code

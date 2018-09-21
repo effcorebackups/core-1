@@ -3,7 +3,7 @@ tree_items
     id: trees
     id_parent: manage
     title: Trees
-    href: /manage/trees
+    href: /manage/trees/select
     access
       roles
       - =: admins

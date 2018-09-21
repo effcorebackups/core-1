@@ -1,32 +1,32 @@
 tabs_items
-- select|tabs_item
+- instance_select|tabs_item
     id: instance_select
-    id_parent: T:instance_manage
+    id_parent: T:manage_instances
     action_name: select
     title: Select
     weight: 100
     attributes
     - class
       - =: select
-- insert|tabs_item
+- instance_insert|tabs_item
     id: instance_insert
-    id_parent: T:instance_manage
+    id_parent: T:manage_instances
     action_name: insert
     title: Insert
     attributes
     - class
       - =: insert
-- update|tabs_item
+- instance_update|tabs_item
     id: instance_update
-    id_parent: T:instance_manage
+    id_parent: T:manage_instances
     action_name: update
     title: Update
     attributes
     - class
       - =: update
-- delete|tabs_item
+- instance_delete|tabs_item
     id: instance_delete
-    id_parent: T:instance_manage
+    id_parent: T:manage_instances
     action_name: delete
     title: Delete
     attributes

@@ -1,0 +1,6 @@
+tabs
+- manage_trees|tabs
+    id: manage_trees
+    attributes
+    - class
+      - =: manage-trees

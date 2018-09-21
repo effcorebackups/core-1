@@ -1,0 +1,18 @@
+tabs_items
+- tree_select|tabs_item
+    id: tree_select
+    id_parent: T:manage_trees
+    action_name: select
+    title: Select
+    weight: 100
+    attributes
+    - class
+      - =: select
+- tree_insert|tabs_item
+    id: tree_insert
+    id_parent: T:manage_trees
+    action_name: insert
+    title: Insert
+    attributes
+    - class
+      - =: insert
