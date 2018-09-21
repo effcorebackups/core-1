@@ -9,7 +9,7 @@ namespace effcore {
 
   static function instance_select($page) {
     $entities = entity::all_get(false);
-    if (!$page->args_get('entity')) url::go('/manage/instances/select/'.reset($entities)->name);
+    if (!$page->args_get('id')) url::go($page->args_get('base').'/select/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
       tabs::item_insert($c_entity->title, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
     }
@@ -42,7 +42,7 @@ namespace effcore {
 
   static function instance_insert($page) {
     $entities = entity::all_get(false);
-    if (!$page->args_get('entity')) url::go('/manage/instances/insert/'.reset($entities)->name);
+    if (!$page->args_get('id')) url::go($page->args_get('base').'/insert/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
       tabs::item_insert($c_entity->title, 'instance_insert_'.$c_entity->name, 'instance_insert', 'insert/'.$c_entity->name);
     }

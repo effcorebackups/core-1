@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/manage/trees)/(?<action>[a-z]+)$%
+      match: %^(?<base>/manage/trees)/(?<action>[a-z]+)(/(?<id>[a-z_]+)|)$%
     access
       roles
       - =: admins
