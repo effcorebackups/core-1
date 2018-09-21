@@ -30,7 +30,19 @@ pages
         region: tabs
         type: link
         source: tabs/menu/manage_trees
-    - block_trees|page_part
+    - block_tree_select|page_part
+        display
+          check: page_args
+          where: action
+          match: %select%
         region: content
         type: code
-        source: \effcore\modules\menu\events_page::on_show_block_trees
+        source: \effcore\manage_trees::tree_select
+    - block_tree_insert|page_part
+        display
+          check: page_args
+          where: action
+          match: %insert%
+        region: content
+        type: code
+        source: \effcore\manage_trees::tree_insert

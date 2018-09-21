@@ -7,7 +7,7 @@ tabs_items
     weight: 100
     attributes
     - class
-      - =: select
+      - =: instance-select
 - instance_insert|tabs_item
     id: instance_insert
     id_parent: T:manage_instances
@@ -15,7 +15,7 @@ tabs_items
     title: Insert
     attributes
     - class
-      - =: insert
+      - =: instance-insert
 - instance_update|tabs_item
     id: instance_update
     id_parent: T:manage_instances
@@ -23,7 +23,7 @@ tabs_items
     title: Update
     attributes
     - class
-      - =: update
+      - =: instance-update
 - instance_delete|tabs_item
     id: instance_delete
     id_parent: T:manage_instances
@@ -31,4 +31,4 @@ tabs_items
     title: Delete
     attributes
     - class
-      - =: delete
+      - =: instance-delete
