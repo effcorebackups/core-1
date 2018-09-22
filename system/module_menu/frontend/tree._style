@@ -44,3 +44,4 @@
 
   x-tree.managed li a {font-size: 1.2em; color: black}
   x-tree.managed x-url {display: block; color: gray}
+  x-tree.managed x-url em {padding: 0 2px; font-style: normal}
