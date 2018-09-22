@@ -21,6 +21,6 @@
   </metadata>
 
   <path d="M 15,0 V 44 H 30" style="fill: none; stroke: black; stroke-width: 1px" />
-  <path d="M 29.5,34 V 54" style="fill: none; stroke: black; stroke-width: 1px" />
+  <path d="M 28.5,34 V 54" style="fill: none; stroke: %%_color_bg; stroke-width: 3px" />
 
 </svg>
