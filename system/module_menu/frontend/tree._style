@@ -4,12 +4,10 @@
   /* menu Main: sizes and orientation */
 
   x-tree.main {display: block; max-width: 800px; margin: 0 auto}
-  x-tree.main ul,
-  x-tree.main li {margin: 0; padding: 0; list-style: none}
+  x-tree.main ul, x-tree.main li {margin: 0; padding: 0; list-style: none}
   x-tree.main > ul > li {float: left; cursor: default}
   x-tree.main > ul > li > a {display: block; padding: 21px}
   x-tree.main > ul > li > ul {position: absolute; padding: 21px; z-index: 10}
-  x-tree.main > ul > li > ul > li {}
   x-tree.main::after {content: ''; clear: both; display: block}
 
   /* menu Main: colors */
@@ -34,3 +32,15 @@
 
   x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree._vector') no-repeat 0 0}
   x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree._vector') no-repeat 0 -64px}
+
+  /* managed menu */
+
+  x-tree.managed ul, x-tree.managed li {margin: 0; padding: 0; list-style: none}
+  x-tree.managed li {padding-left: 35px}
+  x-tree.managed li             {background: url('images/branch-hline._vector') no-repeat 0 -23px, url('images/branch-vline._vector') repeat-y}
+  x-tree.managed li:first-child {background: url('images/branch-hline._vector') no-repeat 0 -23px, url('images/branch-vline._vector') repeat-y}
+  x-tree.managed li:last-child  {background: url('images/branch-hline._vector') no-repeat 0 -23px}
+  x-tree.managed li:only-child  {background: url('images/branch-hline._vector') no-repeat 0 -23px}
+
+  x-tree.managed li a {font-size: 1.2em; color: black}
+  x-tree.managed x-url {display: block; color: gray}
