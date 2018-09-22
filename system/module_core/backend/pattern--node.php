@@ -49,12 +49,14 @@ namespace effcore {
     return $this->children[$id] ?? null;
   }
 
-  function child_select_prev($child) {reset($this->children); do if (current($this->children) === $child) return prev($this->children) ?: null; while (next($this->children));}
-  function child_select_next($child) {reset($this->children); do if (current($this->children) === $child) return next($this->children) ?: null; while (next($this->children));}
-  function child_select_first()      {return reset($this->children);}
-  function child_select_last()       {return   end($this->children);}
-  function child_select_first_id()   {$keys = array_keys($this->children); return reset($keys);}
-  function child_select_last_id()    {$keys = array_keys($this->children); return   end($keys);}
+  function child_select_prev($child)    {reset($this->children); do if (current($this->children) === $child) return prev($this->children) ?: null; while (next($this->children));}
+  function child_select_next($child)    {reset($this->children); do if (current($this->children) === $child) return next($this->children) ?: null; while (next($this->children));}
+  function child_select_prev_id($child) {reset($this->children); do if (current($this->children) === $child) return prev($this->children) ? key($this->children) : null; while (next($this->children));}
+  function child_select_next_id($child) {reset($this->children); do if (current($this->children) === $child) return next($this->children) ? key($this->children) : null; while (next($this->children));}
+  function child_select_first()         {return reset($this->children);}
+  function child_select_last()          {return   end($this->children);}
+  function child_select_first_id()      {$keys = array_keys($this->children); return reset($keys);}
+  function child_select_last_id()       {$keys = array_keys($this->children); return   end($keys);}
 
   function child_insert($child, $new_id = null) {
     $id = ($new_id !== null ?
