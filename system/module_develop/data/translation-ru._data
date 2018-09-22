@@ -25,6 +25,10 @@ translations
     - Classes: Классы
     - Console: Консоль
     - Demo: Демо
+    - Demo\: autoincrement: Демо: автоинкремент
+    - Demo\: constraints: Демо: ограничения
+    - Demo\: indexes: Демо: индексы
+    - Demo\: types: Демо: типы
     - Develop: Разработка
     - Diagram: Диаграмма
     - Dynamic block: Динамический блок
@@ -47,12 +51,12 @@ translations
     - item #1.2: пункт №1.2
     - item #1.2.1: пункт №1.2.1
     - item #1.2.2: пункт №1.2.2
-    - item #1.2.3: пункт №1.2.3
     - item #1.2.3 (from code): пункт №1.2.3 (из кода)
+    - item #1.2.3: пункт №1.2.3
     - item #1.3: пункт №1.3
     - item #2: пункт №2
-    - item #3: пункт №3
     - item #3 (from code): пункт №3 (из кода)
+    - item #3: пункт №3
     - make request to "%%_url": сделать запрос на "%%_url"
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.

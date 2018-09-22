@@ -9,6 +9,7 @@ namespace effcore {
 
   static function tree_select($page) {
     $trees = tree::all_get();
+    core::array_sort_by_property($trees, 'title');
     $id = $page->args_get('id');
     if (!$id) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
@@ -16,6 +17,7 @@ namespace effcore {
     }
     if ($id) {
       $tree = clone tree::get($id);
+      $tree->children = core::array_clone_deep($tree->children);
       $tree->attribute_delete('class');
       $tree->attribute_insert('class', ['managed' => 'managed']);
       $tree->title_state = 'cutted';

@@ -222,17 +222,20 @@ namespace effcore {
   # note:
   # ═════════════════════════════════════════════════════════════════════════
   # if two members compare as equal,
-  # their relative order in the sorted array will be undefined
+  # their relative order in the sorted array will be undefined.
+  # we should preprocess items with weight = 0 before sorting
   # ─────────────────────────────────────────────────────────────────────────
-  # prepare weight (for weight = 0)
     $c_weight = 0;
-    foreach ($array as $c_item) {
+    foreach ($array as $c_item)
       if ($c_item->weight === 0)
           $c_item->weight = $c_weight -= .0001;
-    }
-  # sorting
-    uasort($array, function($a, $b) {
-      return $a->weight == $b->weight ? 0 : ($a->weight < $b->weight ? 1 : -1);
+    return static::array_sort_by_property($array, 'weight', 'a');
+  }
+
+  static function array_sort_by_property(&$array, $property, $order = 'd') {
+    uasort($array, function($a, $b) use ($property, $order) {
+      if ($order == 'a') return $b->{$property} <=> $a->{$property};
+      if ($order == 'd') return $a->{$property} <=> $b->{$property};
     });
     return $array;
   }

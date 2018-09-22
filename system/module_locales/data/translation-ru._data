@@ -197,6 +197,7 @@ translations
     - Parameter: Параметр
     - Password: Пароль
     - Path: Путь
+    - Permission: Разрешение
     - Phone: Телефон
     - PHP Version: PHP Версия
     - Port: Порт
@@ -214,12 +215,16 @@ translations
     - Registered: Зарегистрированные
     - registration: регистрация
     - Registration: Регистрация
+    - Relation\: Role + Permission: Связь: Роль + Разрешение
+    - Relation\: Role + User: Связь: Роль + Пользователь
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сбросить
     - Restore the storage credentials in "%%_path" dirrectory or reinstall this system on the page\: %%_link: Восстановите учетные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
     - restore: восстановить
     - return: возврат
+    - role: роль
+    - Role: Роль
     - roles: роли
     - Roles: Роли
     - run: запустить
@@ -231,6 +236,7 @@ translations
     - Server software: Серверное ПО
     - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
+    - Session: Сессия
     - set: установка
     - Shared information: Общая информация
     - Shared params: Общие параметры
@@ -275,6 +281,7 @@ translations
     - token: токен
     - Total: Всего
     - Translate: Перевод
+    - Tree item: Пункт дерева
     - Tree: Дерево
     - Trees: Деревья
     - type: тип
