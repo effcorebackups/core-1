@@ -68,10 +68,20 @@ namespace effcore {
            $new_id : count($this->children));
     $children = [];
     foreach ($this->children as $c_id => $c_child) {
-      $children[$c_id] = $c_child;
-      if ($c_id === $after_id) {
-        $children[$id] = $child;
-      }
+      $children[$c_id] = &$c_child;
+      if ($c_id === $after_id) $children[$id] = $child;
+    }
+    $this->children = $children;
+    return $id;
+  }
+
+  function child_insert_before($child, $before_id, $new_id = null) {
+    $id = ($new_id !== null ?
+           $new_id : count($this->children));
+    $children = [];
+    foreach ($this->children as $c_id => $c_child) {
+      if ($c_id === $before_id) $children[$id] = $child;
+      $children[$c_id] = &$c_child;
     }
     $this->children = $children;
     return $id;
