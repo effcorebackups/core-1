@@ -8,8 +8,22 @@ namespace effcore {
           class selection
           implements has_external_cache {
 
+  public $fields;
+
   function make() {
-    //print_r($this);
+    $used_entities = [];
+    $used_storages = [];
+    foreach ($this->fields as $c_field) {
+      $c_entity = entity::get($c_field->entity_name, false);
+      $used_entities[$c_entity->name]       = $c_entity->name;
+      $used_storages[$c_entity->storage_id] = $c_entity->storage_id;
+    }
+    if (count($used_entities) == 1 &&
+        count($used_storages) == 1) {
+      # @todo: make functionality
+    } else {
+      # @todo: make functionality
+    }
   }
 
   ###########################

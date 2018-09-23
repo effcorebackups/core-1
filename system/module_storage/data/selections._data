@@ -1,10 +1,24 @@
 selections
 - user_list|selection
     fields
-    - id: users.id
-    - email: users.email
-    - nick: users.nick
-    - is_embed: users.is_embed
-    - avatar_path_relative: users.avatar_path_relative
-    - created: users.created
-    - updated: users.updated
+    - id
+        entity_name: user
+        field: id
+    - email
+        entity_name: user
+        field: email
+    - nick
+        entity_name: user
+        field: nick
+    - is_embed
+        entity_name: user
+        field: is_embed
+    - avatar_path_relative
+        entity_name: user
+        field: avatar_path_relative
+    - created
+        entity_name: user
+        field: created
+    - updated
+        entity_name: user
+        field: updated
