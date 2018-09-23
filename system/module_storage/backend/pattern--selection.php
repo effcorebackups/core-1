@@ -24,28 +24,35 @@ namespace effcore {
       $used_entities[$c_entity->name]       = $c_entity->name;
       $used_storages[$c_entity->storage_id] = $c_entity->storage_id;
     }
+  # get data from storage
     if (count($used_entities) == 1 &&
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
-      if ($this->view_type == 'table') {
-        $thead = [];
-        $tbody = [];
-      # make thead
-        foreach ($this->fields as $c_field) {
-          $thead[] = $entity->fields[$c_field->field_name]->title;
-        }
-      # make tbody
-        foreach ($instances as $c_instance) {
-          $c_tbody_row = [];
-          foreach ($this->fields as $c_field)
-            $c_tbody_row[] = $c_instance->{$c_field->field_name};
-          $tbody[] = $c_tbody_row;
-        }
-        return new table([], $tbody, [$thead]);
+    }
+  # make markup
+    if (!empty($entity) && !empty($instances)) {
+      switch ($this->view_type) {
+        case 'table':
+          $thead = [];
+          $tbody = [];
+        # make thead
+          foreach ($this->fields as $c_field) {
+            $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
+              $entity->fields[$c_field->field_name]->title
+            );
+          }
+        # make tbody
+          foreach ($instances as $c_instance) {
+            $c_tbody_row = [];
+            foreach ($this->fields as $c_field)
+              $c_tbody_row[] = new table_body_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
+                $c_instance->{$c_field->field_name}
+              );
+            $tbody[] = $c_tbody_row;
+          }
+          return new table([], $tbody, [$thead]);
       }
-    } else {
-      # @todo: make functionality
     }
   }
 
@@ -53,11 +60,11 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
+  static protected $cache;
+
   static function not_external_properties_get() {
     return [];
   }
-
-  static protected $cache;
 
   static function init() {
     foreach (storage::get('files')->select('selections') as $c_module_id => $c_selections) {
