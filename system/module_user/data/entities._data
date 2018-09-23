@@ -8,10 +8,12 @@ entities
     title: Permission
     fields
     - id
+        title: ID
         type: varchar
         size: 255
         not_null: true
     - title
+        title: Title
         type: varchar
         size: 255
         not_null: true
@@ -29,10 +31,12 @@ entities
     title: Relation: Role + Permission
     fields
     - id_role
+        title: Role ID
         type: varchar
         size: 255
         not_null: true
     - id_permission
+        title: Permission ID
         type: varchar
         size: 255
         not_null: true
@@ -51,10 +55,12 @@ entities
     title: Relation: Role + User
     fields
     - id_role
+        title: Role ID
         type: varchar
         size: 255
         not_null: true
     - id_user
+        title: User ID
         type: integer
         not_null: true
     constraints
@@ -72,14 +78,17 @@ entities
     title: Role
     fields
     - id
+        title: ID
         type: varchar
         size: 255
         not_null: true
     - title
+        title: Title
         type: varchar
         size: 255
         not_null: true
     - is_embed
+        title: Is embed
         type: integer
         not_null: true
         default: 0
@@ -95,23 +104,29 @@ entities
     title: Session
     fields
     - id
+        title: ID
         type: varchar
         size: 255
         not_null: true
     - id_user
+        title: User ID
         type: integer
         not_null: true
     - remember
+        title: Is remember
         type: integer
         not_null: true
         default: 0
     - fixed_ip
+        title: Is fixed IP
         type: integer
         not_null: true
         default: 0
     - expire
+        title: Expire date
         type: datetime
     - data
+        title: Data
         type: blob
         null: true
     constraints
@@ -128,24 +143,30 @@ entities
     title: User
     fields
     - id
+        title: ID
         type: autoincrement
         not_null: true
     - email
+        title: EMail
         type: varchar
         size: 64
         not_null: true
     - nick
+        title: Nick
         type: varchar
         size: 32
         not_null: true
     - password_hash
+        title: Password hash
         type: varchar
         size: 255
     - is_embed
+        title: Is embed
         type: integer
         not_null: true
         default: 0
     - avatar_path_relative
+        title: Avatar relative path
         type: varchar
         size: 1024
     constraints

@@ -8,9 +8,11 @@ entities
     title: Tree
     fields
     - id
+        title: ID
         type: autoincrement
         not_null: true
     - title
+        title: Title
         type: varchar
         size: 255
         not_null: true
@@ -28,12 +30,15 @@ entities
     title: Tree item
     fields
     - id
+        title: ID
         type: autoincrement
         not_null: true
     - id_parent
+        title: Parent ID
         type: integer
         not_null: true
     - title
+        title: Title
         type: varchar
         size: 255
         not_null: true

@@ -3,22 +3,22 @@ selections
     fields
     - id
         entity_name: user
-        field: id
+        field_name: id
     - email
         entity_name: user
-        field: email
+        field_name: email
     - nick
         entity_name: user
-        field: nick
+        field_name: nick
     - is_embed
         entity_name: user
-        field: is_embed
+        field_name: is_embed
     - avatar_path_relative
         entity_name: user
-        field: avatar_path_relative
+        field_name: avatar_path_relative
     - created
         entity_name: user
-        field: created
+        field_name: created
     - updated
         entity_name: user
-        field: updated
+        field_name: updated

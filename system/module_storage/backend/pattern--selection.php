@@ -8,9 +8,15 @@ namespace effcore {
           class selection
           implements has_external_cache {
 
+  public $view_type = 'table';
   public $fields;
+  public $conditions;
+  public $order;
+  public $count;
+  public $offset;
 
-  function make() {
+  function make_markup() {
+    $markup = null;
     $used_entities = [];
     $used_storages = [];
     foreach ($this->fields as $c_field) {
@@ -20,7 +26,24 @@ namespace effcore {
     }
     if (count($used_entities) == 1 &&
         count($used_storages) == 1) {
-      # @todo: make functionality
+      $entity    = entity::get(reset($used_entities));
+      $instances = entity::get(reset($used_entities))->instances_select();
+      if ($this->view_type == 'table') {
+        $thead = [];
+        $tbody = [];
+      # make thead
+        foreach ($this->fields as $c_field) {
+          $thead[] = $entity->fields[$c_field->field_name]->title;
+        }
+      # make tbody
+        foreach ($instances as $c_instance) {
+          $c_tbody_row = [];
+          foreach ($this->fields as $c_field)
+            $c_tbody_row[] = $c_instance->{$c_field->field_name};
+          $tbody[] = $c_tbody_row;
+        }
+        return new table([], $tbody, [$thead]);
+      }
     } else {
       # @todo: make functionality
     }
