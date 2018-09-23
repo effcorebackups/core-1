@@ -123,7 +123,7 @@ namespace effcore {
     if (static::$cache == null) static::init();
     if ($load)
       foreach (static::$cache as &$c_item)
-        if ($c_item instanceof external_cache && $load)
+        if ($c_item instanceof external_cache)
             $c_item = $c_item->external_cache_load();
     return static::$cache;
   }
