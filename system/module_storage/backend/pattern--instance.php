@@ -54,9 +54,6 @@ namespace effcore {
     return $storage->instance_delete($this);
   }
 
-  function render() {
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -76,12 +73,12 @@ namespace effcore {
   }
 
   static function get($row_id) {
-    if   (!static::$cache) static::init();
+    if    (static::$cache == null) static::init();
     return static::$cache[$row_id] ?? null;
   }
 
   static function all_by_module_get($name) {
-    if   (!static::$cache_orig) static::init();
+    if    (static::$cache_orig == null) static::init();
     return static::$cache_orig[$name] ?? [];
   }
 

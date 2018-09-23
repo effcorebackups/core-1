@@ -113,14 +113,14 @@ namespace effcore {
   }
 
   static function get($name, $load = true) {
-    if (!isset(static::$cache)) static::init();
+    if (static::$cache == null) static::init();
     if (static::$cache[$name] instanceof external_cache && $load)
         static::$cache[$name] = static::$cache[$name]->external_cache_load();
     return static::$cache[$name];
   }
 
   static function all_get($load = true) {
-    if (!static::$cache) static::init();
+    if (static::$cache == null) static::init();
     if ($load)
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache && $load)
@@ -129,7 +129,7 @@ namespace effcore {
   }
 
   static function all_by_module_get($module, $load = true) {
-    if (!static::$cache_orig) static::init();
+    if (static::$cache_orig == null) static::init();
     if ($load && isset(static::$cache_orig[$module]))
       foreach (static::$cache_orig[$module] as &$c_item)
         if ($c_item instanceof external_cache)

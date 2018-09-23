@@ -1,0 +1,10 @@
+selections
+- user_list|selection
+    fields
+    - id: users.id
+    - email: users.email
+    - nick: users.nick
+    - is_embed: users.is_embed
+    - avatar_path_relative: users.avatar_path_relative
+    - created: users.created
+    - updated: users.updated

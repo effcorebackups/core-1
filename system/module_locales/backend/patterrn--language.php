@@ -27,7 +27,7 @@ namespace effcore {
   }
 
   static function get($code) {
-    if   (!static::$cache) static::init();
+    if    (static::$cache == null) static::init();
     return static::$cache[$code];
   }
 

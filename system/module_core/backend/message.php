@@ -14,17 +14,16 @@ namespace effcore {
   }
 
   static function select_all() {
-    if   (!static::$cache) static::init();
+    if    (static::$cache == null) static::init();
     return static::$cache;
   }
 
   static function insert($message, $type = 'ok') {
-    if (!static::$cache) static::init();
+    if (static::$cache == null) static::init();
     if (!isset(static::$cache[$type]))
                static::$cache[$type] = [];
-    if (!in_array($message, static::$cache[$type])) {
-      static::$cache[$type][] = $message;
-    }
+    if (!in_array($message, static::$cache[$type]))
+                            static::$cache[$type][] = $message;
   }
 
   static function render_all() {
