@@ -31,7 +31,7 @@ namespace effcore {
       $instances = entity::get(reset($used_entities))->instances_select();
     }
   # make markup
-    if (!empty($entity) && !empty($instances)) {
+    if (!empty($entity)) {
       switch ($this->view_type) {
         case 'table':
           $thead = [];
@@ -54,6 +54,13 @@ namespace effcore {
           return new table([], $tbody, [$thead]);
       }
     }
+  }
+
+  function field_insert($entity_name, $field_name) {
+    $this->fields[$entity_name.'.'.$field_name] = (object)[
+      'entity_name' => $entity_name,
+      'field_name'  => $field_name
+    ];
   }
 
   ###########################

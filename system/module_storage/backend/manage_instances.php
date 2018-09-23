@@ -14,9 +14,13 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       tabs::item_insert($c_entity->title, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
     }
-    $selection = selection::get('user_list');
+    $entity = entity::get($page->args_get('id'));
+    $selection = new selection;
+    foreach ($entity->fields_name_get() as $c_name) {
+      $selection->field_insert($entity->name, $c_name);
+    }
     $markup = $selection->make_markup();
-    return new block('', ['class' => [$c_entity->name => $c_entity->name]],
+    return new block('', ['class' => [$entity->name => $entity->name]],
       $markup
     );
 
