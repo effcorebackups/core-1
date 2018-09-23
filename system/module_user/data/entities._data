@@ -112,12 +112,12 @@ entities
         title: User ID
         type: integer
         not_null: true
-    - remember
+    - is_remember
         title: Is remember
         type: integer
         not_null: true
         default: 0
-    - fixed_ip
+    - is_fixed_ip
         title: Is fixed IP
         type: integer
         not_null: true

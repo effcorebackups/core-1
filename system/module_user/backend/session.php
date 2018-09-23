@@ -28,16 +28,16 @@ namespace effcore {
   }
 
   static function insert($id_user, $session_params = []) {
-    $is_remember = isset($session_params['remember']);
-    $is_fixed_ip = isset($session_params['fixed_ip']);
+    $is_remember = isset($session_params['is_remember']);
+    $is_fixed_ip = isset($session_params['is_fixed_ip']);
     $period = !$is_remember ? static::period_expire_d : static::period_expire_m;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
-      'id'       => static::id_get(),
-      'id_user'  => $id_user,
-      'remember' => $is_remember ? 1 : 0,
-      'fixed_ip' => $is_fixed_ip ? 1 : 0,
-      'expire'   => core::datetime_get('+'.$period.' second'),
+      'id'          => static::id_get(),
+      'id_user'     => $id_user,
+      'is_remember' => $is_remember ? 1 : 0,
+      'is_fixed_ip' => $is_fixed_ip ? 1 : 0,
+      'expire'      => core::datetime_get('+'.$period.' second'),
     ]))->insert();
   }
 
@@ -68,8 +68,8 @@ namespace effcore {
   # └───────────┴───────────┴────────┴─────────────┴────────────────┴─────────────┴───────┘
 
   static function id_regenerate($type, $session_params = []) {
-    $is_remember = isset($session_params['remember']);
-    $is_fixed_ip = isset($session_params['fixed_ip']);
+    $is_remember = isset($session_params['is_remember']);
+    $is_fixed_ip = isset($session_params['is_fixed_ip']);
     $period = $type == 'f' && !$is_remember ? static::period_expire_d : static::period_expire_m;
     $ip     = $type == 'f' && !$is_fixed_ip ? static::empty_ip : core::server_remote_addr_get();
     $hex_type = $type; # a - anonymous user | f - authenticated user

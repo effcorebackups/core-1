@@ -20,11 +20,11 @@ forms
             element_attributes
             - name: session_params[]
             values
-            - remember: remember me
-            - fixed_ip: on this ip
+            - is_remember: remember me
+            - is_fixed_ip: on this ip
             checked
-            - =: remember
-            - =: fixed_ip
+            - =: is_remember
+            - =: is_fixed_ip
         - captcha|field_captcha
     - button_register|button
         title: register
