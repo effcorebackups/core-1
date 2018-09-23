@@ -70,7 +70,7 @@ namespace effcore {
   }
 
   function validation_id_get() {
-    return '[UNDER CONSTRUCTION]';
+    return 'UNDER CONSTRUCTION'; # @todo: make functionality
   }
 
 }}

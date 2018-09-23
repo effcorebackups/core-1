@@ -17,7 +17,7 @@ pages
     - menu_user|page_part
         region: head
         type: code
-        source: \effcore\modules\menu\events_page::on_show_block_menu_user
+        source: \effcore\modules\user\events_page::on_show_block_menu_user
     - logo|page_part
         region: head
         type: link

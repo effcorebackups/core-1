@@ -82,8 +82,8 @@ namespace effcore {
     return $storage->instances_select($this, $conditions, $order, $count, $offset);
   }
 
-  function instances_insert() {} # todo: make functionality
-  function instances_delete() {} # todo: make functionality
+  function instances_insert() {} # @todo: make functionality
+  function instances_delete() {} # @todo: make functionality
 
   ###########################
   ### static declarations ###

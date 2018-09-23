@@ -32,13 +32,7 @@ namespace effcore {
   }
 
   static function tree_insert($page) {
-    return new markup('div', [], 'tree_insert');
-  }
-
-  static function tree_update($page) {
-  }
-
-  static function tree_delete($page) {
+    return new text('tree_insert is UNDER CONSTRUCTION');
   }
 
 }}
