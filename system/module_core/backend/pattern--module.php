@@ -19,7 +19,6 @@ namespace effcore {
   function description_get() {return $this->description;}
   function version_get()     {return $this->version;}
   function state_get()       {return $this->state;}
-  function path_get()        {return $this->path;}
 
   function install() {
   # install entities

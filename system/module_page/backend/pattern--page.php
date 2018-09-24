@@ -106,7 +106,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->favicons)) {
           foreach ($c_item->favicons as $c_icon) {
-            $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path_get().$c_icon->file);
+            $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path.$c_icon->file);
             $return->meta->child_insert(new markup_simple('link', [
               'rel'   => $c_icon->rel,
               'type'  => $c_icon->type,
@@ -121,7 +121,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->styles)) {
           foreach ($c_item->styles as $c_style) {
-            $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path_get().$c_style->file);
+            $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path.$c_style->file);
             $return->styles->child_insert(new markup_simple('link', [
               'rel'   => 'stylesheet',
               'media' => $c_style->media,
@@ -135,7 +135,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_item->scripts)) {
           foreach ($c_item->scripts as $c_script) {
-            $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path_get().$c_script->file);
+            $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path.$c_script->file);
             $return->scripts->child_insert(new markup('script', [
               'src' => $c_url->relative_get()
             ]));
