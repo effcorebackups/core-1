@@ -19,7 +19,7 @@ namespace effcore {
     foreach ($entity->fields_name_get() as $c_name) {
       $selection->field_insert($entity->name, $c_name);
     }
-    $markup = $selection->make_markup();
+    $markup = $selection->build();
     return new block('', ['class' => [$entity->name => $entity->name]],
       $markup
     );

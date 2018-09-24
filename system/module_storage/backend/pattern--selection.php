@@ -15,7 +15,7 @@ namespace effcore {
   public $count;
   public $offset;
 
-  function make_markup() {
+  function build() {
     $markup = null;
     $used_entities = [];
     $used_storages = [];
@@ -61,6 +61,10 @@ namespace effcore {
       'entity_name' => $entity_name,
       'field_name'  => $field_name
     ];
+  }
+
+  function render() {
+    return $this->build()->render();
   }
 
   ###########################
