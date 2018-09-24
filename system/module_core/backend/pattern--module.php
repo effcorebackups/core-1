@@ -14,12 +14,6 @@ namespace effcore {
   public $state;
   public $path;
 
-  function id_get()          {return $this->id;}
-  function title_get()       {return $this->title;}
-  function description_get() {return $this->description;}
-  function version_get()     {return $this->version;}
-  function state_get()       {return $this->state;}
-
   function install() {
   # install entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
