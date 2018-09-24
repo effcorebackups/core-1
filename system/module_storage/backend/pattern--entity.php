@@ -41,14 +41,15 @@ namespace effcore {
     }
   }
 
-  function name_get()             {return $this->name;}
-  function storage_id_get()       {return $this->storage_id;}
-  function catalog_id_get()       {return $this->catalog_id;}
-  function indexes_info_get()     {return $this->indexes;}
-  function constraints_info_get() {return $this->constraints;}
-  function field_info_get($name)  {return $this->fields[$name] ?? null;}
-  function fields_info_get()      {return $this->fields;}
-  function fields_name_get()      {return core::array_kmap(array_keys($this->fields));}
+  function field_get($name) {
+    return $this->fields[$name] ?? null;
+  }
+
+  function fields_name_get() {
+    return core::array_kmap(
+      array_keys($this->fields)
+    );
+  }
 
   function auto_name_get() {
     foreach ($this->fields as $name => $info) {
@@ -70,17 +71,17 @@ namespace effcore {
   }
 
   function install() {
-    $storage = storage::get($this->storage_id_get());
+    $storage = storage::get($this->storage_id);
     return $storage->entity_install($this);
   }
 
   function uninstall() {
-    $storage = storage::get($this->storage_id_get());
+    $storage = storage::get($this->storage_id);
     return $storage->entity_uninstall($this);
   }
 
   function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {
-    $storage = storage::get($this->storage_id_get());
+    $storage = storage::get($this->storage_id);
     return $storage->instances_select($this, $conditions, $order, $count, $offset);
   }
 

@@ -195,7 +195,7 @@ namespace effcore {
   function entity_install($entity) {
     if ($this->init()) {
       $fields = [];
-      foreach ($entity->fields_info_get() as $c_name => $c_info) {
+      foreach ($entity->fields as $c_name => $c_info) {
       # prepare field type
         $c_properties = [$c_name];
         switch ($c_info->type) {
@@ -220,22 +220,22 @@ namespace effcore {
       }
     # prepare constraints
       $auto_name = $entity->auto_name_get();
-      foreach ($entity->constraints_info_get() as $suffix => $c_cstr) {
+      foreach ($entity->constraints as $suffix => $c_cstr) {
         if ($c_cstr->fields != [$auto_name => $auto_name]) {
-          $s_cstr_name = $this->tables($entity->catalog_id_get().'_'.$suffix);
+          $s_cstr_name = $this->tables($entity->catalog_id.'_'.$suffix);
           $fields[] = ['CONSTRAINT', $s_cstr_name, $c_cstr->type, '(', $this->fields($c_cstr->fields), ')'];
           $fields[] = ',';
         }
       }
       array_pop($fields);
     # create entity
-      $s_table_name = $this->tables($entity->catalog_id_get());
+      $s_table_name = $this->tables($entity->catalog_id);
       $this->transaction_begin();
       $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
       $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
     # create indexes
-      foreach ($entity->indexes_info_get() as $suffix => $c_idx) {
-        $s_idx_name = $this->tables($entity->catalog_id_get().'_'.$suffix);
+      foreach ($entity->indexes as $suffix => $c_idx) {
+        $s_idx_name = $this->tables($entity->catalog_id.'_'.$suffix);
         $this->query('CREATE', $c_idx->type, $s_idx_name, 'ON', $s_table_name, '(', $this->fields($c_idx->fields), ')');
       }
       return $this->transaction_commit();
@@ -244,20 +244,20 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      return $this->query('DROP', 'TABLE', $this->tables($entity->catalog_id_get()));
+      return $this->query('DROP', 'TABLE', $this->tables($entity->catalog_id));
     }
   }
 
   function instances_select($entity, $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
-      $query = ['SELECT', '*', 'FROM', $this->tables($entity->catalog_id_get())];
+      $query = ['SELECT', '*', 'FROM', $this->tables($entity->catalog_id)];
       if (count($conditions)) array_push($query, 'WHERE',       $this->attributes($conditions));
       if (count($order))      array_push($query, 'ORDER', 'BY', $this->fields($order));
       if ($limit)             array_push($query, 'LIMIT', $limit);
       if ($offset)            array_push($query, 'OFFSET', $offset);
       $result = $this->query($query);
       foreach ($result as $c_instance) {
-        $c_instance->entity_name_set($entity->name_get());
+        $c_instance->entity_name_set($entity->name);
       }
       return $result;
     }
@@ -270,7 +270,7 @@ namespace effcore {
       $fields = $entity->fields_name_get();
       $result = $this->query(
         'SELECT', $this->fields($fields),
-        'FROM',   $this->tables($entity->catalog_id_get()),
+        'FROM',   $this->tables($entity->catalog_id),
         'WHERE',  $this->attributes($idkeys), 'LIMIT', 1);
       if (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
@@ -288,7 +288,7 @@ namespace effcore {
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
       $new_id = $this->query(
-        'INSERT', 'INTO', $this->tables($entity->catalog_id_get()), '(',
+        'INSERT', 'INTO', $this->tables($entity->catalog_id), '(',
                           $this->fields($fields), ')',
         'VALUES', '(',    $this->values($values), ')');
       if ($new_id !== null && $auto_name == null) return $instance;
@@ -305,7 +305,7 @@ namespace effcore {
       $idkeys = array_intersect_key($instance->values_get(), $entity->keys_get(true, false));
       $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query(
-        'UPDATE', $this->tables($entity->catalog_id_get()),
+        'UPDATE', $this->tables($entity->catalog_id),
         'SET',    $this->attributes($values, ','),
         'WHERE',  $this->attributes($idkeys));
       if ($row_count === 1) {
@@ -319,7 +319,7 @@ namespace effcore {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->keys_get(true, false));
       $row_count = $this->query(
-        'DELETE', 'FROM', $this->tables($entity->catalog_id_get()),
+        'DELETE', 'FROM', $this->tables($entity->catalog_id),
         'WHERE',          $this->attributes($idkeys));
       if ($row_count === 1) {
         $instance->values_set([]);
