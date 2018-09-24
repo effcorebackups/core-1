@@ -87,11 +87,6 @@ namespace effcore {
     }
   }
 
-  function id_get()           {return $this->id;}
-  function driver_get()       {return $this->driver;}
-  function table_prefix_get() {return $this->table_prefix;}
-  function queries_get()      {return $this->queries;}
-
   function transaction_begin()     {if ($this->init()) return $this->connection->beginTransaction();}
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();}
