@@ -22,6 +22,7 @@ entities
         not_null: true
     - canvas_data
         title: Canvas data
+        hidden: true
         type: blob
         not_null: true
     constraints

@@ -127,6 +127,7 @@ entities
         type: datetime
     - data
         title: Data
+        hidden: true
         type: blob
         null: true
     constraints
@@ -158,6 +159,7 @@ entities
         not_null: true
     - password_hash
         title: Password hash
+        hidden: true
         type: varchar
         size: 255
     - is_embed
@@ -167,6 +169,7 @@ entities
         default: 0
     - avatar_path_relative
         title: Avatar relative path
+        hidden: true
         type: varchar
         size: 1024
     constraints

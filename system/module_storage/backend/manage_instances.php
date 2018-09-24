@@ -16,8 +16,11 @@ namespace effcore {
     }
     $entity = entity::get($page->args_get('id'));
     $selection = new selection;
-    foreach ($entity->fields_name_get() as $c_name) {
-      $selection->field_insert($entity->name, $c_name);
+    foreach ($entity->fields as $c_name => $c_info) {
+      if (!isset($c_info->hidden) ||
+                !$c_info->hidden) {
+        $selection->field_insert($entity->name, $c_name);
+      }
     }
     $markup = $selection->build();
     return new block('', ['class' => [$entity->name => $entity->name]],

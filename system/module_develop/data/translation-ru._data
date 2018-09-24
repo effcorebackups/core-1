@@ -40,6 +40,8 @@ translations
     - Field %%_type.: Поле %%_type.
     - Field date + time: Поле date + time
     - Field date: Поле date
+    - Field integer 1: Поле integer 1
+    - Field integer 2: Поле integer 2
     - Field integer: Поле integer
     - Field time: Поле time
     - Field varchar: Поле varchar
