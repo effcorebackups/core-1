@@ -47,15 +47,3 @@ tree_items
     attributes
     - class
       - =: logout
-# ─────────────────────────────────────────────────────────────────────
-- roles|tree_item
-    id: roles
-    id_parent: manage
-    title: Roles
-    href: /manage/roles
-    access
-      roles
-      - =: admins
-    attributes
-    - class
-      - =: roles

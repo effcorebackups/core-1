@@ -40,17 +40,6 @@ namespace effcore\modules\user {
     return $block_menu;
   }
 
-  static function on_show_block_roles($page) {
-    $thead = [['ID', 'Title', 'Is embed']];
-    $tbody = entity::get('role')->instances_select();
-    foreach ($tbody as $c_row) {
-      $c_row->is_embed = $c_row->is_embed ? 'Yes' : 'No';
-    }
-    return new block('', ['class' => ['roles' => 'roles']],
-      new table([], $tbody, $thead)
-    );
-  }
-
   static function on_show_block_user_info($page) {
     $user = (new instance('user', [
       'id' => $page->args_get('id_user')
