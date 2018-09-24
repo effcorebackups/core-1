@@ -5,15 +5,22 @@
   ##################################################################
 
 namespace effcore {
-          class selection
+          class selection extends node
           implements has_external_cache {
 
   public $view_type = 'table';
+  public $title;
   public $fields;
   public $conditions;
   public $order;
   public $count;
   public $offset;
+
+  function __construct($title = '', $view_type = null, $weight = 0) {
+    if ($title)     $this->title     = $title;
+    if ($view_type) $this->view_type = $view_type;
+    parent::__construct([], [], $weight);
+  }
 
   function build() {
     $markup = null;
@@ -63,8 +70,14 @@ namespace effcore {
     ];
   }
 
+  function render_self() {
+    return $this->title ? (new markup('h2', [], $this->title))->render() : '';
+  }
+
   function render() {
-    return $this->build()->render();
+    $this->child_delete('markup');
+    $this->child_insert($this->build(), 'markup');
+    return parent::render();
   }
 
   ###########################

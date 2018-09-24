@@ -46,6 +46,10 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page::on_show_block_demo_dynamic
+    - block_demo_selection|page_part
+        region: content
+        type: link
+        source: selections/demo/demo_types_list
     - block_demo_canvas|page_part
         region: content
         type: code

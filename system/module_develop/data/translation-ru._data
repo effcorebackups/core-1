@@ -38,6 +38,11 @@ translations
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - Field %%_type.: Поле %%_type.
+    - Field date + time: Поле date + time
+    - Field date: Поле date
+    - Field integer: Поле integer
+    - Field time: Поле time
+    - Field varchar: Поле varchar
     - Function: Функция
     - Group %%_type.: Группа %%_type.
     - Group 1: Группа 1
@@ -88,6 +93,7 @@ translations
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
+    - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - Static block: Статический блок
     - Structures: Структуры
     - The test was failed!: Тест не удался!
