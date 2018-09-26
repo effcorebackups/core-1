@@ -7,7 +7,7 @@
 namespace effcore {
           class field_captcha extends field_text {
 
-  public $title = 'Captcha';
+  public $title = 'CAPTCHA';
   public $description = 'Write the characters from the picture.';
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes_default = [

@@ -2,6 +2,7 @@ entities
 - demo_types|entity
     name: demo_types
     title: Demo: types
+    title_plural: Demo: types
     storage_id: main
     catalog_id: demo_types
     fields
@@ -52,6 +53,7 @@ entities
 - demo_autoincrement|entity
     name: demo_autoincrement
     title: Demo: autoincrement
+    title_plural: Demo: autoincrement
     storage_id: main
     catalog_id: demo_autoincrement
     fields
@@ -76,6 +78,7 @@ entities
 - demo_constraints|entity
     name: demo_constraints
     title: Demo: constraints
+    title_plural: Demo: constraints
     storage_id: main
     catalog_id: demo_constraints
     fields
@@ -107,6 +110,7 @@ entities
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes
+    title_plural: Demo: indexes
     storage_id: main
     catalog_id: demo_indexes
     fields

@@ -12,7 +12,7 @@ namespace effcore {
     core::array_sort_by_property($entities, 'title');
     if (!$page->args_get('id')) url::go($page->args_get('base').'/select/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
-      tabs::item_insert($c_entity->title, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
+      tabs::item_insert($c_entity->title_plural, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
     }
     $entity = entity::get($page->args_get('id'));
     $selection = new selection;

@@ -28,7 +28,8 @@ translations
     - Cancel: Отмена
     - cancel: отмена
     - Canvas: Холст
-    - Captcha: Защитный код
+    - CAPTCHA: Защитный код
+    - CAPTCHAs: Защитные коды
     - Change this EMail and Password after login to the system!: Измените этот Адрес электронной почты и Пароль после входа в систему!
     - Characters: Символы
     - Check field again before submit.: Проверьте поле снова перед отправкой.
@@ -206,6 +207,7 @@ translations
     - Path: Путь
     - Permission ID: ID Разрешения
     - Permission: Разрешение
+    - Permissions: Разрешения
     - Phone: Телефон
     - PHP Version: PHP Версия
     - Port: Порт
@@ -225,6 +227,8 @@ translations
     - Registration: Регистрация
     - Relation\: Role + Permission: Связь: Роль + Разрешение
     - Relation\: Role + User: Связь: Роль + Пользователь
+    - Relations\: Role + Permission: Связи: Роль + Разрешение
+    - Relations\: Role + User: Связи: Роль + Пользователь
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сбросить
@@ -246,6 +250,7 @@ translations
     - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
     - Session: Сессия
+    - Sessions: Сессии
     - set: установка
     - Shared information: Общая информация
     - Shared params: Общие параметры
@@ -291,6 +296,7 @@ translations
     - Total: Всего
     - Translate: Перевод
     - Tree item: Пункт дерева
+    - Tree items: Пункты дерева
     - Tree: Дерево
     - Trees: Деревья
     - type: тип

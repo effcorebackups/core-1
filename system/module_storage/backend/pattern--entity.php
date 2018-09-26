@@ -14,6 +14,7 @@ namespace effcore {
   public $ws_created;
   public $ws_updated;
   public $title;
+  public $title_plural;
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
@@ -102,10 +103,11 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [
-      'name'       => 'name',
-      'storage_id' => 'storage_id',
-      'catalog_id' => 'catalog_id',
-      'title'      => 'title'
+      'name'         => 'name',
+      'title'        => 'title',
+      'title_plural' => 'title_plural',
+      'storage_id'   => 'storage_id',
+      'catalog_id'   => 'catalog_id'
     ];
   }
 

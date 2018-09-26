@@ -2,6 +2,7 @@ entities
 - tree|entity
     name: tree
     title: Tree
+    title_plural: Trees
     storage_id: main
     catalog_id: trees
     ws_created: true
@@ -24,6 +25,7 @@ entities
 - tree_item|entity
     name: tree_item
     title: Tree item
+    title_plural: Tree items
     storage_id: main
     catalog_id: tree_items
     ws_created: true

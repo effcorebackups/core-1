@@ -1,7 +1,8 @@
 entities
 - captcha|entity
     name: captcha
-    title: Captcha
+    title: CAPTCHA
+    title_plural: CAPTCHAs
     storage_id: main
     catalog_id: captcha
     ws_created: true
