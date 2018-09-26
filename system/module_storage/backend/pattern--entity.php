@@ -59,14 +59,19 @@ namespace effcore {
     }
   }
 
-  function keys_get($primary = true, $unique = true) {
-    $keys = [];
+  function key_primary_get() {
     foreach ($this->constraints as $c_cstr) {
-      if (($c_cstr->type == 'primary key' && $primary) ||
-          ($c_cstr->type == 'unique'      && $unique)) {
-        $keys += $c_cstr->fields;
+      if ($c_cstr->type == 'primary key') {
+        return core::array_kmap($c_cstr->fields);
       }
     }
+  }
+
+  function keys_unique_get() {
+    $keys = [];
+    foreach ($this->constraints as $c_cstr)
+      if ($c_cstr->type == 'unique')
+        $keys += $c_cstr->fields;
     return core::array_kmap($keys);
   }
 
