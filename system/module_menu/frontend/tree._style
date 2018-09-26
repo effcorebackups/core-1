@@ -16,10 +16,12 @@
   x-tree.main > ul > li:hover {background: %%_color_hover_bg}
   x-tree.main > ul > li > a {color: white}
   x-tree.main > ul > li > a.active,
+  x-tree.main > ul > li > a.active-trail,
   x-tree.main > ul > li > a[href]:hover {color: %%_color_hover}
   x-tree.main > ul > li > a:hover {color: white}
   x-tree.main > ul > li > ul a {color: white}
   x-tree.main > ul > li > ul a.active,
+  x-tree.main > ul > li > ul a.active-trail,
   x-tree.main > ul > li > ul a:hover {color: %%_color_hover}
   x-tree.main > ul > li > ul {background: %%_color_hover_bg}
 

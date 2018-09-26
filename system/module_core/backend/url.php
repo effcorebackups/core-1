@@ -125,7 +125,9 @@ namespace effcore {
   }
 
   static function is_active($url) {
-    return (new url($url))->full_get() == static::current_get()->full_get();
+    $checked =       (new url($url))->full_get();
+    $current = static::current_get()->full_get();
+    return $checked == $current;
   }
 
   static function is_active_trail($url) {

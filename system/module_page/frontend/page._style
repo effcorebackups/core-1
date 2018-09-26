@@ -22,9 +22,10 @@
 
   /* links */
 
-  a        {color: %%_color_bg}
-  a:hover  {color: black}
-  a.active {color: black}
+  a              {color: %%_color_bg}
+  a:hover        {color: black}
+  a.active       {color: black}
+  a.active-trail {color: black}
 
   /* universal classes */
 

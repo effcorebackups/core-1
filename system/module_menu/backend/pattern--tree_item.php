@@ -36,9 +36,9 @@ namespace effcore {
 
   function render_self() {
     if ($this->href) {
-      if (url::is_active_trail($this->href))
-        $this->attribute_insert('class', ['active' => 'active']);
-        $this->attribute_insert('href', token::replace($this->href));
+      if (url::is_active      ($this->href)) $this->attribute_insert('class', ['active'       => 'active']);
+      if (url::is_active_trail($this->href)) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
+      $this->attribute_insert('href', token::replace($this->href));
     }
     return (new markup('a', $this->attributes_select(),
       token::replace(translation::get($this->title))
