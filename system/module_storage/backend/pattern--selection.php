@@ -61,9 +61,9 @@ namespace effcore {
               $id_name = reset($idkeys);
               if (empty($c_instance->is_embed)) {
                 $c_action_list = new control_actions_list();
-                $c_action_list->action_add('/manage/instances/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
-                $c_action_list->action_add('/manage/instances/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
-                $c_action_list->action_add('/manage/instances/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
+                $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
+                $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
+                $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
               }
             }
             $c_tbody_row = [];

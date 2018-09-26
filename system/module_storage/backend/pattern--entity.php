@@ -123,6 +123,7 @@ namespace effcore {
 
   static function get($name, $load = true) {
     if (static::$cache == null) static::init();
+    if (isset(static::$cache[$name]) == false) return;
     if (static::$cache[$name] instanceof external_cache && $load)
         static::$cache[$name] = static::$cache[$name]->external_cache_load();
     return static::$cache[$name];
