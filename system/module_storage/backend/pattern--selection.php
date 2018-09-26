@@ -36,6 +36,8 @@ namespace effcore {
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
+      $idkeys    = $entity->key_primary_get() +
+                   $entity->keys_unique_get();
     }
   # make markup
     if (!empty($entity)) {
@@ -55,12 +57,15 @@ namespace effcore {
           }
         # make tbody
           foreach ($instances as $c_instance) {
-            // if (empty($c_instance->is_embed)) {
-            //   $c_action_list = new control_actions_list();
-            //   $c_action_list->action_add('/manage/instances/select/'.$entity->name.'/'.$c_instance->id, 'select');
-            //   $c_action_list->action_add('/manage/instances/update/'.$entity->name.'/'.$c_instance->id, 'update');
-            //   $c_action_list->action_add('/manage/instances/delete/'.$entity->name.'/'.$c_instance->id, 'delete');
-            // }
+            if (reset($idkeys)) {
+              $id_name = reset($idkeys);
+              if (empty($c_instance->is_embed)) {
+                $c_action_list = new control_actions_list();
+                $c_action_list->action_add('/manage/instances/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
+                $c_action_list->action_add('/manage/instances/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
+                $c_action_list->action_add('/manage/instances/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
+              }
+            }
             $c_tbody_row = [];
             foreach ($this->fields as $c_field) {
               $c_type = $entity->fields[$c_field->field_name]->type;

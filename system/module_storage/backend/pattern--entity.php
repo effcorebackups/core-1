@@ -61,11 +61,10 @@ namespace effcore {
   }
 
   function key_primary_get() {
-    foreach ($this->constraints as $c_cstr) {
-      if ($c_cstr->type == 'primary key') {
+    foreach ($this->constraints as $c_cstr)
+      if ($c_cstr->type == 'primary key')
         return core::array_kmap($c_cstr->fields);
-      }
-    }
+    return [];
   }
 
   function keys_unique_get() {
