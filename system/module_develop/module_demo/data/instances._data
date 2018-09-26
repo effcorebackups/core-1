@@ -1,4 +1,7 @@
 instances
+# ─────────────────────────────────────────────────────────────────────
+# demo types
+# ─────────────────────────────────────────────────────────────────────
 - demo_types_example_1|instance
     entity_name: demo_types
     values
@@ -15,3 +18,54 @@ instances
     - f_date: 2020-12-31
     - f_datetime: 2020-12-31 12:34:56
     - f_blob: 12345
+# ─────────────────────────────────────────────────────────────────────
+# demo autoincrement
+# ─────────────────────────────────────────────────────────────────────
+- demo_autoincrement_1|instance
+    entity_name: demo_autoincrement
+    values
+    - f_integer_2: 1
+- demo_autoincrement_2|instance
+    entity_name: demo_autoincrement
+    values
+    - f_integer_2: 2
+- demo_autoincrement_3|instance
+    entity_name: demo_autoincrement
+    values
+    - f_integer_2: 3
+# ─────────────────────────────────────────────────────────────────────
+# demo constraints
+# ─────────────────────────────────────────────────────────────────────
+- demo_constraints_1|instance
+    entity_name: demo_constraints
+    values
+    - f_integer_1: 1
+    - f_integer_2: 1
+- demo_constraints_2|instance
+    entity_name: demo_constraints
+    values
+    - f_integer_1: 2
+    - f_integer_2: 2
+- demo_constraints_3|instance
+    entity_name: demo_constraints
+    values
+    - f_integer_1: 3
+    - f_integer_2: 3
+# ─────────────────────────────────────────────────────────────────────
+# demo indexes
+# ─────────────────────────────────────────────────────────────────────
+- demo_indexes_1|instance
+    entity_name: demo_indexes
+    values
+    - f_integer_1: 1
+    - f_integer_2: 1
+- demo_indexes_2|instance
+    entity_name: demo_indexes
+    values
+    - f_integer_1: 2
+    - f_integer_2: 2
+- demo_indexes_3|instance
+    entity_name: demo_indexes
+    values
+    - f_integer_1: 3
+    - f_integer_2: 3

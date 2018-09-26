@@ -1,11 +1,11 @@
 entities
 - permission|entity
     name: permission
+    title: Permission
     storage_id: main
     catalog_id: permissions
     ws_created: true
     ws_updated: true
-    title: Permission
     fields
     - id
         title: ID
@@ -24,11 +24,11 @@ entities
         - =: id
 - relation_role_ws_permission|entity
     name: relation_role_ws_permission
+    title: Relation: Role + Permission
     storage_id: main
     catalog_id: relations_role_ws_permission
     ws_created: true
     ws_updated: true
-    title: Relation: Role + Permission
     fields
     - id_role
         title: Role ID
@@ -48,11 +48,11 @@ entities
         - =: id_permission
 - relation_role_ws_user|entity
     name: relation_role_ws_user
+    title: Relation: Role + User
     storage_id: main
     catalog_id: relations_role_ws_user
     ws_created: true
     ws_updated: true
-    title: Relation: Role + User
     fields
     - id_role
         title: Role ID
@@ -71,11 +71,11 @@ entities
         - =: id_user
 - role|entity
     name: role
+    title: Role
     storage_id: main
     catalog_id: roles
     ws_created: true
     ws_updated: true
-    title: Role
     fields
     - id
         title: ID
@@ -99,9 +99,9 @@ entities
         - =: id
 - session|entity
     name: session
+    title: Session
     storage_id: main
     catalog_id: sessions
-    title: Session
     fields
     - id
         title: ID
@@ -137,11 +137,11 @@ entities
         - =: id
 - user|entity
     name: user
+    title: User
     storage_id: main
     catalog_id: users
     ws_created: true
     ws_updated: true
-    title: User
     fields
     - id
         title: ID

@@ -1,11 +1,11 @@
 entities
 - tree|entity
     name: tree
+    title: Tree
     storage_id: main
     catalog_id: trees
     ws_created: true
     ws_updated: true
-    title: Tree
     fields
     - id
         title: ID
@@ -23,11 +23,11 @@ entities
         - =: id
 - tree_item|entity
     name: tree_item
+    title: Tree item
     storage_id: main
     catalog_id: tree_items
     ws_created: true
     ws_updated: true
-    title: Tree item
     fields
     - id
         title: ID

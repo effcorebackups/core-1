@@ -1,9 +1,9 @@
 entities
 - demo_types|entity
     name: demo_types
+    title: Demo: types
     storage_id: main
     catalog_id: demo_types
-    title: Demo: types
     fields
     - id
         title: ID
@@ -44,16 +44,26 @@ entities
         title: Field blob
         type: blob
         null: true
+    constraints
+    - key_id
+        type: primary key
+        fields
+        - =: id
 - demo_autoincrement|entity
     name: demo_autoincrement
+    title: Demo: autoincrement
     storage_id: main
     catalog_id: demo_autoincrement
-    title: Demo: autoincrement
     fields
     - f_integer_1
         title: Field integer 1
         type: autoincrement
         not_null: true
+    - f_integer_2
+        title: Field integer 2
+        type: integer
+        not_null: true
+        default: 0
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
@@ -65,9 +75,9 @@ entities
         - =: f_integer_1
 - demo_constraints|entity
     name: demo_constraints
+    title: Demo: constraints
     storage_id: main
     catalog_id: demo_constraints
-    title: Demo: constraints
     fields
     - f_integer_1
         title: Field integer 1
@@ -96,9 +106,9 @@ entities
         - =: f_integer_2
 - demo_indexes|entity
     name: demo_indexes
+    title: Demo: indexes
     storage_id: main
     catalog_id: demo_indexes
-    title: Demo: indexes
     fields
     - f_integer_1
         title: Field integer 1
