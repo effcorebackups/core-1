@@ -21,6 +21,7 @@ tabs_items
     id_parent: T:manage_instances
     action_name: update
     title: Update
+    hidden: true
     attributes
     - class
       - =: instance-update
@@ -29,6 +30,7 @@ tabs_items
     id_parent: T:manage_instances
     action_name: delete
     title: Delete
+    hidden: true
     attributes
     - class
       - =: instance-delete

@@ -12,27 +12,31 @@ namespace effcore {
   public $title = '';
   public $action_name;
   public $action_name_default;
+  public $hidden = false;
   public $template = 'tabs_item';
   public $template_children = 'tabs_item_children';
 
-  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $hidden = false, $weight = 0) {
     if ($id)                  $this->id                  = $id;
     if ($id_parent)           $this->id_parent           = $id_parent;
     if ($title)               $this->title               = $title;
     if ($action_name)         $this->action_name         = $action_name;
     if ($action_name_default) $this->action_name_default = $action_name_default;
+    if ($hidden)              $this->hidden              = $hidden;
     parent::__construct($attributes, [], $weight);
   }
 
   function render() {
-    if (!isset($this->access) || access::check($this->access)) {
-      $rendered_children = $this->children_count() ? (new template($this->template_children, [
-        'children' => $this->render_children($this->children_select())]
-      ))->render() : '';
-      return (new template($this->template, [
-        'self'     => $this->render_self(),
-        'children' => $rendered_children
-      ]))->render();
+    if (empty($this->hidden)) {
+      if (!isset($this->access) || access::check($this->access)) {
+        $rendered_children = $this->children_count() ? (new template($this->template_children, [
+          'children' => $this->render_children($this->children_select())]
+        ))->render() : '';
+        return (new template($this->template, [
+          'self'     => $this->render_self(),
+          'children' => $rendered_children
+        ]))->render();
+      }
     }
   }
 
