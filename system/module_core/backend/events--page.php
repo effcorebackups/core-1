@@ -75,10 +75,12 @@ namespace effcore\modules\core {
     $thead = [['Module information', 'State', '']];
     $tbody = [];
     foreach (module::all_get() as $c_module) {
-      $c_action_list = new control_actions_list();
-      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/enable', 'enable',       $c_module->state != 'always_on');
-      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/disable', 'disable',     $c_module->state != 'always_on');
-      $c_action_list->action_add('/manage/modules/'.$c_module->id.'/uninstall', 'uninstall', $c_module->state != 'always_on');
+      if ($c_module->state != 'always_on') {
+        $c_action_list = new control_actions_list();
+        $c_action_list->action_add('enable/'.   $c_module->id, 'enable');
+        $c_action_list->action_add('disable/'.  $c_module->id, 'disable');
+        $c_action_list->action_add('uninstall/'.$c_module->id, 'uninstall');
+      }
       $tbody[] = [
         new table_body_row_cell(['class' => ['info' => 'info']],
           translation::get('ID')         .': '.$c_module->id.br.
@@ -87,7 +89,7 @@ namespace effcore\modules\core {
           translation::get('Description').': '.translation::get($c_module->description).br.
           translation::get('Path')       .': '.$c_module->path),
         new table_body_row_cell(['class' => ['state' => 'state']], $c_module->state),
-        new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list)
+        new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list ?? null)
       ];
     }
     return new block('', ['class' => ['modules' => 'modules']], [

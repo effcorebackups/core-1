@@ -17,21 +17,17 @@ namespace effcore {
     parent::__construct(null, $title, null, $attributes, [], $weight);
   }
 
-  function action_add($url, $title, $is_enabled = true) {
-    if ($is_enabled) {
-      $this->actions[$url] = $title;
-    }
+  function action_add($action_name, $title) {
+    $this->actions[$action_name] = $title;
   }
 
   function build() {
     $list = new markup('x-action-list');
     $this->child_insert($list, 'action_list');
-    foreach ($this->actions as $c_url => $c_action) {
-      $list->child_insert(
-        new markup('x-action', isset($this->active[$c_action]) ? ['class' => ['active' => 'active']] : [],
-          new markup('a', ['href' => $c_url], $c_action)
-        )
-      );
+    foreach ($this->actions as $c_action_name => $c_title) {
+      $c_href = $c_action_name[0] == '/' ? $c_action_name : page::current_get()->args_get('base').'/'.($c_action_name);
+      $c_link = new markup('a', ['href' => $c_href], token::replace(translation::get($c_title)));
+      $list->child_insert(new markup('x-action', [], $c_link));
     }
   }
 

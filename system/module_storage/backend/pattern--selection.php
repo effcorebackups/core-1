@@ -39,6 +39,10 @@ namespace effcore {
     }
   # make markup
     if (!empty($entity)) {
+      // $pager = new pager();
+      // if ($pager->has_error) {
+      //   core::send_header_and_exit('page_not_found');
+      // }
       switch ($this->view_type) {
         case 'table':
           $thead = [];
@@ -51,6 +55,12 @@ namespace effcore {
           }
         # make tbody
           foreach ($instances as $c_instance) {
+            // if (empty($c_instance->is_embed)) {
+            //   $c_action_list = new control_actions_list();
+            //   $c_action_list->action_add('/manage/instances/select/'.$entity->name.'/'.$c_instance->id, 'select');
+            //   $c_action_list->action_add('/manage/instances/update/'.$entity->name.'/'.$c_instance->id, 'update');
+            //   $c_action_list->action_add('/manage/instances/delete/'.$entity->name.'/'.$c_instance->id, 'delete');
+            // }
             $c_tbody_row = [];
             foreach ($this->fields as $c_field) {
               $c_type = $entity->fields[$c_field->field_name]->type;

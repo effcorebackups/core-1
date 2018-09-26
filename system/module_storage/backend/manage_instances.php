@@ -26,17 +26,6 @@ namespace effcore {
     return new block('', ['class' => [$entity->name => $entity->name]],
       $markup
     );
-
- // $pager = new pager();
- // if ($pager->has_error) {
- //   core::send_header_and_exit('page_not_found');
- // }
-
- // $c_action_list = new control_actions_list();
- // $c_action_list->action_add('/user/'.$c_user->id, 'view');
- // $c_action_list->action_add('/user/'.$c_user->id.'/edit?'.url::back_part_make(), 'edit');
- // $c_action_list->action_add('/manage/users/delete/'.$c_user->id.'?'.url::back_part_make(), 'delete', !$c_user->is_embed);
-
   }
 
   static function instance_insert($page) {
