@@ -22,10 +22,10 @@ namespace effcore {
       $tree->attribute_insert('class', ['managed' => 'managed']);
       $tree->title_state = 'cutted';
       foreach ($tree->children_select_recursive() as $c_item) {
-        $c_url_info = new markup('x-url', [], $c_item->href ? str_replace('/', (new markup('em', [], '/'))->render(), $c_item->href) : 'no url', 100000);
+        $c_url_info = new markup('x-url', [], $c_item->url ? str_replace('/', (new markup('em', [], '/'))->render(), $c_item->url) : 'no url', 100000);
         $c_item->child_insert_first($c_url_info, 'x_url');
         $c_item->access = null;
-        $c_item->href = '';
+        $c_item->url = '';
       }
       return $tree;
     }

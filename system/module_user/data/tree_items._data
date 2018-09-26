@@ -3,7 +3,7 @@ tree_items
     id: login
     id_parent: M:user_anonymous
     title: login
-    href: /user/login
+    url: /user/login
     weight: 100
     access
       roles
@@ -15,7 +15,7 @@ tree_items
     id: registration
     id_parent: M:user_anonymous
     title: registration
-    href: /user/registration
+    url: /user/registration
     access
       roles
       - =: anonymous
@@ -27,7 +27,7 @@ tree_items
     id: user_edit
     id_parent: M:user_logged_in
     title: edit
-    href: /user/%%_id_user/edit
+    url: /user/%%_id_user/edit
     access
       roles
       - =: admins
@@ -39,7 +39,7 @@ tree_items
     id: logout
     id_parent: M:user_logged_in
     title: logout
-    href: /user/logout
+    url: /user/logout
     weight: -100
     access
       roles

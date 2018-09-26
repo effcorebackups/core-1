@@ -3,7 +3,7 @@ tree_items
     id: decoration
     id_parent: manage
     title: Decoration
-    href: /manage/decoration
+    url: /manage/decoration
     access
       roles
       - =: admins
