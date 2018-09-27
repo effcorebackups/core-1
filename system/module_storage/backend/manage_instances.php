@@ -7,27 +7,14 @@
 namespace effcore {
           abstract class manage_instances {
 
-  # ─────────────────────┬─────────────────────────────────────────────────
-  # redirect_to_select() │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
-  # redirect_to_insert() │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
-  # instance_select_multiple_by_entity_name()              │ /manage/instances/action_select/%%_entity_name
-  # instance_insert_by_entity_name()                       │ /manage/instances/action_insert/%%_entity_name
-  # instance_select_by_entity_name_and_instance_id()       │ /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_update_by_entity_name_and_instance_id()       │ /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_delete_by_entity_name_and_instance_id()       │ /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # ───────────────────────────────────────────────────────┴───────────────
-
-  static function redirect_to_select($page) {
-    $entities = entity::all_get(false);
-    core::array_sort_by_property($entities, 'title');
-    url::go($page->args_get('base').'/select/'.reset($entities)->name);
-  }
-
-  static function redirect_to_insert($page) {
-    $entities = entity::all_get(false);
-    core::array_sort_by_property($entities, 'title');
-    url::go($page->args_get('base').'/insert/'.reset($entities)->name);
-  }
+  # function ←→ url mapping:
+  # ──────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # instance_select_multiple_by_entity_name() │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
+  # instance_insert_by_entity_name()          │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
+  # instance_select_by_entity_name_and_instance_id()                            │ /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_update_by_entity_name_and_instance_id()                            │ /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_delete_by_entity_name_and_instance_id()                            │ /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # ────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
   # select instances and single instance
@@ -60,7 +47,7 @@ namespace effcore {
       );
     } else {
       url::go(
-        $page->args_get('base').'/select'
+        $page->args_get('base').'/select/'.reset($entities)->name
       );
     }
   }
@@ -89,7 +76,7 @@ namespace effcore {
       return new text('instance_insert is UNDER CONSTRUCTION');
     } else {
       url::go(
-        $page->args_get('base').'/insert'
+        $page->args_get('base').'/insert/'.reset($entities)->name
       );
     }
   }
