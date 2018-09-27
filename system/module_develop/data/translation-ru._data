@@ -2,15 +2,14 @@ translations
 - ru|translation
     code: ru
     data
-    - 
-! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-! Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;: 
-! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
-! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
-! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
-! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
+    - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;: 
+!!!!! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+!!!!! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+!!!!! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+!!!!! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - Call %%_name: Вызов %%_name

@@ -13,8 +13,8 @@ pages
       check: url
       where: path
       match: %(?J)^(?<base>/manage/instances)/(?<action>select|insert)$|
-!^(?<base>/manage/instances)/(?<action>select|insert)/(?<entity_name>[a-z_]+)$|
-!^(?<base>/manage/instances)/(?<action>select|update|delete)/(?<entity_name>[a-z_]+)/(?<instances_id>[a-z0-9_/]+)$%
+!!!!!!!!!!!!!!!!!!^(?<base>/manage/instances)/(?<action>select|insert)/(?<entity_name>[a-z_]+)$|
+!!!!!!!!!!!!!!!!!!^(?<base>/manage/instances)/(?<action>select|update|delete)/(?<entity_name>[a-z_]+)/(?<instances_id>[a-z0-9_/]+)$%
     access
       roles
       - =: admins
