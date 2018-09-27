@@ -129,6 +129,7 @@ translations
     - If the initial value is not specified, the current value in the UTC time zone will be used.: Если начальное значение не задано, то будет использовано текущее значение в часовом поясе UTC.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
+    - Insert instance: Вставить экземпляр
     - Insert: Вставить
     - insertion: вставка
     - Install: Установить
@@ -244,6 +245,7 @@ translations
     - save: сохранить
     - Search: Поиск
     - search: поиск
+    - Select instances: Выбрать экземпляры
     - Select: Выбрать
     - Selection list: Список выбора
     - Server software: Серверное ПО

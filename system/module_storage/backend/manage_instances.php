@@ -7,12 +7,42 @@
 namespace effcore {
           abstract class manage_instances {
 
-  static function instance_select($page) {
+  # ─────────────────────┬─────────────────────────────────────────────────
+  # redirect_to_select() │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
+  # redirect_to_insert() │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
+  # instance_select_multiple_by_entity_name()              │ /manage/instances/action_select/%%_entity_name
+  # instance_insert_by_entity_name()                       │ /manage/instances/action_insert/%%_entity_name
+  # instance_select_by_entity_name_and_instance_id()       │ /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_update_by_entity_name_and_instance_id()       │ /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_delete_by_entity_name_and_instance_id()       │ /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # ───────────────────────────────────────────────────────┴───────────────
+
+  static function redirect_to_select($page) {
+    $entities = entity::all_get(false);
+    core::array_sort_by_property($entities, 'title');
+    url::go($page->args_get('base').'/select/'.reset($entities)->name);
+  }
+
+  static function redirect_to_insert($page) {
+    $entities = entity::all_get(false);
+    core::array_sort_by_property($entities, 'title');
+    url::go($page->args_get('base').'/insert/'.reset($entities)->name);
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # select instances and single instance
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function instance_select_multiple_by_entity_name($page) {
     $entities = entity::all_get(false);
   # create tabs
     core::array_sort_by_property($entities, 'title');
     foreach ($entities as $c_entity) {
-      tabs::item_insert($c_entity->title_plural, 'instance_select_'.$c_entity->name, 'instance_select', 'select/'.$c_entity->name);
+      tabs::item_insert($c_entity->title_plural,
+        'instance_select_'.$c_entity->name, # - id
+        'instance_select',                  # - id parent
+                 'select/'.$c_entity->name  # - suffix for url
+      );
     }
   # create selection
     $entity = entity::get($page->args_get('entity_name'));
@@ -30,17 +60,28 @@ namespace effcore {
       );
     } else {
       url::go(
-        $page->args_get('base').'/select/'.reset($entities)->name
+        $page->args_get('base').'/select'
       );
     }
   }
 
-  static function instance_insert($page) {
+  static function instance_select_by_entity_name_and_instance_id($page) {
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # insert single instance
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function instance_insert_by_entity_name($page) {
     $entities = entity::all_get(false);
   # create tabs
     core::array_sort_by_property($entities, 'title');
     foreach ($entities as $c_entity) {
-      tabs::item_insert($c_entity->title, 'instance_insert_'.$c_entity->name, 'instance_insert', 'insert/'.$c_entity->name);
+      tabs::item_insert($c_entity->title,
+        'instance_insert_'.$c_entity->name, # - id
+        'instance_insert',                  # - id parent
+                 'insert/'.$c_entity->name  # - suffix for url
+      );
     }
   # create selection
     $entity = entity::get($page->args_get('entity_name'));
@@ -48,16 +89,24 @@ namespace effcore {
       return new text('instance_insert is UNDER CONSTRUCTION');
     } else {
       url::go(
-        $page->args_get('base').'/insert/'.reset($entities)->name
+        $page->args_get('base').'/insert'
       );
     }
   }
 
-  static function instance_update($page) {
+  # ─────────────────────────────────────────────────────────────────────
+  # update single instance
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function instance_update_by_entity_name_and_instance_id($page) {
     return new text('instance_update is UNDER CONSTRUCTION');
   }
 
-  static function instance_delete($page) {
+  # ─────────────────────────────────────────────────────────────────────
+  # delete single instance
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function instance_delete_by_entity_name_and_instance_id($page) {
     return new text('instance_delete is UNDER CONSTRUCTION');
   }
 
