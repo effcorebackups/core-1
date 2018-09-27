@@ -41,6 +41,7 @@ namespace effcore {
           $selection->field_insert($entity->name, $c_name);
         }
       }
+      $selection->field_insert(null, null, 'actions');
       $markup = $selection->build();
       return new block('', ['class' => [$entity->name => $entity->name]],
         $markup
