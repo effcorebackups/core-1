@@ -7,14 +7,14 @@
 namespace effcore {
           abstract class manage_instances {
 
-  # function ←→ url mapping:
-  # ──────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  # instance_select_multiple_by_entity_name() │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
-  # instance_insert_by_entity_name()          │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
-  # instance_select_by_entity_name_and_instance_id()                            │ /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_update_by_entity_name_and_instance_id()                            │ /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_delete_by_entity_name_and_instance_id()                            │ /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # ────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────
+  # function() ←→ url mapping:
+  # ─────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # instance_select_multiple_by_entity_name()        │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
+  # instance_insert_by_entity_name()                 │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
+  # instance_select_by_entity_name_and_instance_id() │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_update_by_entity_name_and_instance_id() │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # ─────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
   # select instances and single instance
@@ -53,6 +53,7 @@ namespace effcore {
   }
 
   static function instance_select_by_entity_name_and_instance_id($page) {
+    return new text('instance_select is UNDER CONSTRUCTION');
   }
 
   # ─────────────────────────────────────────────────────────────────────
