@@ -57,6 +57,7 @@ translations
     - Decoration: Оформление
     - default type: тип по умолчанию
     - delete file\: %%_name: удалить файл: %%_name
+    - Delete instance: Удалить экземпляр
     - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
     - Delete: Удалить
     - delete: удалить
@@ -245,6 +246,7 @@ translations
     - save: сохранить
     - Search: Поиск
     - search: поиск
+    - Select instance: Выбрать экземпляр
     - Select instances: Выбрать экземпляры
     - Select: Выбрать
     - Selection list: Список выбора
@@ -304,6 +306,7 @@ translations
     - type: тип
     - uninstall: удалить
     - Unordered list: Неупорядоченный список
+    - Update instance: Обновить экземпляр
     - Update: Обновить
     - updated: обновлено
     - Updated: Обновлено

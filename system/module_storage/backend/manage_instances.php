@@ -53,7 +53,16 @@ namespace effcore {
   }
 
   static function instance_select_by_entity_name_and_instance_id($page) {
-    return new text('instance_select is UNDER CONSTRUCTION');
+  # create selection
+    $entity = entity::get($page->args_get('entity_name'));
+    if ($entity) {
+    # @todo: make functionality
+      return new text('instance_select is UNDER CONSTRUCTION');
+    } else {
+      url::go(
+        $page->args_get('base').'/select'
+      );
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -71,9 +80,10 @@ namespace effcore {
                  'insert/'.$c_entity->name  # - suffix for url
       );
     }
-  # create selection
+  # create insert form
     $entity = entity::get($page->args_get('entity_name'));
     if ($entity) {
+    # @todo: make functionality
       return new text('instance_insert is UNDER CONSTRUCTION');
     } else {
       url::go(
@@ -87,7 +97,18 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function instance_update_by_entity_name_and_instance_id($page) {
-    return new text('instance_update is UNDER CONSTRUCTION');
+    $entity = entity::get($page->args_get('entity_name'));
+    if ($entity) {
+      $tab = tabs::item_select('instance_update');
+      $tab->action_name = 'update/'.$entity->name;
+      $tab->hidden = false;
+    # @todo: make functionality
+      return new text('instance_update is UNDER CONSTRUCTION');
+    } else {
+      url::go(
+        $page->args_get('base').'/select'
+      );
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -95,7 +116,18 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function instance_delete_by_entity_name_and_instance_id($page) {
-    return new text('instance_delete is UNDER CONSTRUCTION');
+    $entity = entity::get($page->args_get('entity_name'));
+    if ($entity) {
+      $tab = tabs::item_select('instance_delete');
+      $tab->action_name = 'delete/'.$entity->name;
+      $tab->hidden = false;
+    # @todo: make functionality
+      return new text('instance_delete is UNDER CONSTRUCTION');
+    } else {
+      url::go(
+        $page->args_get('base').'/select'
+      );
+    }
   }
 
 }}
