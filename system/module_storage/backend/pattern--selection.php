@@ -53,36 +53,43 @@ namespace effcore {
           $tbody = [];
         # make thead
           foreach ($this->fields as $c_field) {
-            if ($c_field->type == 'field') {
-              $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
-                $entity->fields[$c_field->field_name]->title
-              );
+            switch ($c_field->type) {
+              case 'actions':
+                $thead[] = '';
+                break;
+              case 'field':
+                $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
+                  $entity->fields[$c_field->field_name]->title
+                );
+                break;
             }
           }
         # make tbody
           foreach ($instances as $c_instance) {
             $c_tbody_row = [];
             foreach ($this->fields as $c_field) {
-              if ($c_field->type == 'field') {
-                $c_type = $entity->fields[$c_field->field_name]->type;
-                $c_value = $c_instance->{$c_field->field_name};
-                if ($c_type == 'date')     $c_value = locale::format_date    ($c_value);
-                if ($c_type == 'time')     $c_value = locale::format_time    ($c_value);
-                if ($c_type == 'datetime') $c_value = locale::format_datetime($c_value);
-                if ($c_type == 'bool')     $c_value = $c_value ? 'Yes' : 'No';
-                $c_tbody_row[] = new table_body_row_cell(['class' => [$c_field->field_name => $c_field->field_name]], $c_value);
-              }
-              if ($c_field->type == 'actions') {
-                if (reset($idkeys)) {
-                  $id_name = reset($idkeys);
-                  if (empty($c_instance->is_embed)) {
-                    $c_action_list = new control_actions_list();
-                    $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
-                    $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
-                    $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
+              switch ($c_field->type) {
+                case 'actions':
+                  if (reset($idkeys)) {
+                    $id_name = reset($idkeys);
+                    if (empty($c_instance->is_embed)) {
+                      $c_action_list = new control_actions_list();
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
+                    }
                   }
-                }
-                $c_tbody_row[] = $c_action_list;
+                  $c_tbody_row[] = $c_action_list;
+                  break;
+                case 'field':
+                  $c_type = $entity->fields[$c_field->field_name]->type;
+                  $c_value = $c_instance->{$c_field->field_name};
+                  if ($c_type == 'date')     $c_value = locale::format_date    ($c_value);
+                  if ($c_type == 'time')     $c_value = locale::format_time    ($c_value);
+                  if ($c_type == 'datetime') $c_value = locale::format_datetime($c_value);
+                  if ($c_type == 'bool')     $c_value = $c_value ? 'Yes' : 'No';
+                  $c_tbody_row[] = new table_body_row_cell(['class' => [$c_field->field_name => $c_field->field_name]], $c_value);
+                  break;
               }
             }
             $tbody[] = $c_tbody_row;
