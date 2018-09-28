@@ -249,6 +249,7 @@ translations
     - Select instance: Выбрать экземпляр
     - Select instances: Выбрать экземпляры
     - Select: Выбрать
+    - select: выбрать
     - Selection list: Список выбора
     - Server software: Серверное ПО
     - Server timezone: Часовой пояс сервера
@@ -308,6 +309,7 @@ translations
     - Unordered list: Неупорядоченный список
     - Update instance: Обновить экземпляр
     - Update: Обновить
+    - update: обновить
     - updated: обновлено
     - Updated: Обновлено
     - URL: URL
