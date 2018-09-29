@@ -1,11 +1,11 @@
 pages
-- instance_update_by_entity_name_and_instance_id|page
-    title: Update instance
+- instance_delete_multiple_by_instances_id|page
+    title: Delete instances
     https: true
     display
       check: url
       where: path
-      match: %^(?<base>/manage/instances)/(?<action>update)/(?<entity_name>[a-z0-9_]+)/(?<instance_id>[a-z0-9_+]+)$%
+      match: %^(?<base>/manage/instances)/(?<action>delete)/(?<entity_name>[a-z0-9_]+)/(?<instances_id>[a-z0-9_+]+/[a-z0-9_+/]+)$%
     access
       roles
       - =: admins
@@ -30,7 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/storage/manage_instances
-    - block_instance_update_by_entity_name_and_instance_id|page_part
+    - block_instance_delete_multiple_by_instances_id|page_part
         region: content
         type: code
-        source: \effcore\manage_instances::instance_update_by_entity_name_and_instance_id
+        source: \effcore\manage_instances::instance_delete_multiple_by_instances_id

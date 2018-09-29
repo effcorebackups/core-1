@@ -11,9 +11,10 @@ namespace effcore {
   # ─────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   # instance_select_multiple_by_entity_name()        │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
   # instance_insert_by_entity_name()                 │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
-  # instance_select_by_entity_name_and_instance_id() │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_update_by_entity_name_and_instance_id() │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
-  # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1.1/…/%%_instance_id_1.N
+  # instance_select_by_entity_name_and_instance_id() │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id
+  # instance_update_by_entity_name_and_instance_id() │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id
+  # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id
+  # instance_delete_multiple_by_instances_id()       │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1/…/%%_instance_id_N
   # ─────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
@@ -129,6 +130,11 @@ namespace effcore {
         $page->args_get('base').'/select'
       );
     }
+  }
+
+  static function instance_delete_multiple_by_instances_id($page) {
+  # @todo: make functionality
+    return new text('instances_delete is UNDER CONSTRUCTION');
   }
 
 }}
