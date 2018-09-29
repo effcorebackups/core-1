@@ -38,8 +38,8 @@ namespace effcore {
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
-      $idkeys    = $entity->key_primary_get() +
-                   $entity->keys_unique_get();
+      $idkeys    = $entity->key_primary_fields_get() +
+                   $entity->keys_unique_fields_get();
     }
   # make markup
     if (!empty($entity)) {
@@ -80,7 +80,10 @@ namespace effcore {
                       $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
                     }
                   }
-                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list);
+                  $c_tbody_row[] = new table_body_row_cell(['class' => [
+                    'actions' =>
+                    'actions']], $c_action_list
+                  );
                   break;
                 case 'field':
                   $c_type = $entity->fields[$c_field->field_name]->type;
@@ -89,14 +92,20 @@ namespace effcore {
                   if ($c_type == 'time')     $c_value = locale::format_time    ($c_value);
                   if ($c_type == 'datetime') $c_value = locale::format_datetime($c_value);
                   if ($c_type == 'bool')     $c_value = $c_value ? 'Yes' : 'No';
-                  $c_tbody_row[] = new table_body_row_cell(['class' => [$c_field->field_name => $c_field->field_name]], $c_value);
+                  $c_tbody_row[] = new table_body_row_cell(['class' => [
+                    $c_field->field_name =>
+                    $c_field->field_name]], $c_value
+                  );
                   break;
               }
             }
             $tbody[] = $c_tbody_row;
           }
-          return new table(['class' => ['selection'                => 'selection',
-                                        'selection-'.$entity->name => 'selection-'.$entity->name]], $tbody, [$thead]);
+          return new table(['class' => [
+            'selection' =>
+            'selection',
+            'selection-'.$entity->name =>
+            'selection-'.$entity->name]], $tbody, [$thead]);
       }
     }
   }
