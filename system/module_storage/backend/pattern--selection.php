@@ -55,7 +55,7 @@ namespace effcore {
           foreach ($this->fields as $c_field) {
             switch ($c_field->type) {
               case 'actions':
-                $thead[] = '';
+                $thead[] = new table_head_row_cell(['class' => ['actions' => 'actions']], '');
                 break;
               case 'field':
                 $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
@@ -80,7 +80,7 @@ namespace effcore {
                       $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
                     }
                   }
-                  $c_tbody_row[] = $c_action_list;
+                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list);
                   break;
                 case 'field':
                   $c_type = $entity->fields[$c_field->field_name]->type;
@@ -95,7 +95,8 @@ namespace effcore {
             }
             $tbody[] = $c_tbody_row;
           }
-          return new table([], $tbody, [$thead]);
+          return new table(['class' => ['selection'                => 'selection',
+                                        'selection-'.$entity->name => 'selection-'.$entity->name]], $tbody, [$thead]);
       }
     }
   }

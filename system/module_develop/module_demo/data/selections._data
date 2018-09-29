@@ -2,33 +2,33 @@ selections
 - demo_types_list|selection
     title: Selection of "demo_types" entities
     fields
-    - demo_types.id
+    - field_id
         type: field
         entity_name: demo_types
         field_name: id
-    - demo_types.description
+    - field_description
         type: field
         entity_name: demo_types
         field_name: description
-    - demo_types.f_integer
+    - field_f_integer
         type: field
         entity_name: demo_types
         field_name: f_integer
-    - demo_types.f_varchar
+    - field_f_varchar
         type: field
         entity_name: demo_types
         field_name: f_varchar
-    - demo_types.f_time
+    - field_f_time
         type: field
         entity_name: demo_types
         field_name: f_time
-    - demo_types.f_date
+    - field_f_date
         type: field
         entity_name: demo_types
         field_name: f_date
-    - demo_types.f_datetime
+    - field_f_datetime
         type: field
         entity_name: demo_types
         field_name: f_datetime
-    - demo_types.actions
+    - actions
         type: actions
