@@ -26,9 +26,9 @@ namespace effcore {
       $this->fields['created']->title = 'Created';
       $this->fields['created']->type = 'datetime';
       $this->fields['created']->not_null = true;
-      $this->indexes['idx_created'] = new \stdClass;
-      $this->indexes['idx_created']->type = 'index';
-      $this->indexes['idx_created']->fields = ['created' => 'created'];
+      $this->indexes['index_created'] = new \stdClass;
+      $this->indexes['index_created']->type = 'index';
+      $this->indexes['index_created']->fields = ['created' => 'created'];
     }
   # add field 'updated' and index for it
     if ($this->ws_updated) {
@@ -36,9 +36,9 @@ namespace effcore {
       $this->fields['updated']->title = 'Updated';
       $this->fields['updated']->type = 'datetime';
       $this->fields['updated']->not_null = true;
-      $this->indexes['idx_updated'] = new \stdClass;
-      $this->indexes['idx_updated']->type = 'index';
-      $this->indexes['idx_updated']->fields = ['updated' => 'updated'];
+      $this->indexes['index_updated'] = new \stdClass;
+      $this->indexes['index_updated']->type = 'index';
+      $this->indexes['index_updated']->fields = ['updated' => 'updated'];
     }
   }
 

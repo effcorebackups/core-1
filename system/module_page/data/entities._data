@@ -27,7 +27,7 @@ entities
         type: blob
         not_null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: ip_address

@@ -19,7 +19,7 @@ entities
         size: 255
         not_null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id
@@ -43,7 +43,7 @@ entities
         size: 255
         not_null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id_role
@@ -67,7 +67,7 @@ entities
         type: integer
         not_null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id_role
@@ -97,7 +97,7 @@ entities
         not_null: true
         default: 0
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id
@@ -136,7 +136,7 @@ entities
         type: blob
         null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id
@@ -179,15 +179,15 @@ entities
         type: varchar
         size: 1024
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id
-    - key_email
+    - unique_email
         type: unique
         fields
         - =: email
-    - key_nick
+    - unique_nick
         type: unique
         fields
         - =: nick

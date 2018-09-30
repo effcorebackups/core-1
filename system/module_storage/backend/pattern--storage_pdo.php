@@ -215,10 +215,10 @@ namespace effcore {
       }
     # prepare constraints
       $auto_name = $entity->auto_name_get();
-      foreach ($entity->constraints as $suffix => $c_cstr) {
-        if ($c_cstr->fields != [$auto_name => $auto_name]) {
-          $s_cstr_name = $this->tables($entity->catalog_id.'_'.$suffix);
-          $fields[] = ['CONSTRAINT', $s_cstr_name, $c_cstr->type, '(', $this->fields($c_cstr->fields), ')'];
+      foreach ($entity->constraints as $c_name => $c_info) {
+        if ($c_info->fields != [$auto_name => $auto_name]) {
+          $s_constraint_name = $this->tables($c_name);
+          $fields[] = ['CONSTRAINT', $s_constraint_name, $c_info->type, '(', $this->fields($c_info->fields), ')'];
           $fields[] = ',';
         }
       }
@@ -229,9 +229,9 @@ namespace effcore {
       $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
       $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
     # create indexes
-      foreach ($entity->indexes as $suffix => $c_idx) {
-        $s_idx_name = $this->tables($entity->catalog_id.'_'.$suffix);
-        $this->query('CREATE', $c_idx->type, $s_idx_name, 'ON', $s_table_name, '(', $this->fields($c_idx->fields), ')');
+      foreach ($entity->indexes as $c_name => $c_info) {
+        $s_index_name = $this->tables($c_name);
+        $this->query('CREATE', $c_info->type, $s_index_name, 'ON', $s_table_name, '(', $this->fields($c_info->fields), ')');
       }
       return $this->transaction_commit();
     }
@@ -262,9 +262,8 @@ namespace effcore {
     if ($this->init()) {
       $entity = $instance->entity_get();
       $idkeys = array_intersect_key($instance->values_get(), $entity->key_primary_fields_get() + $entity->keys_unique_fields_get());
-      $fields = $entity->fields_name_get();
       $result = $this->query(
-        'SELECT', $this->fields($fields),
+        'SELECT', $this->fields($entity->fields_name_get()),
         'FROM',   $this->tables($entity->catalog_id),
         'WHERE',  $this->attributes($idkeys), 'LIMIT', 1);
       if (isset($result[0])) {

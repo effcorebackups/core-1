@@ -46,7 +46,7 @@ entities
         type: blob
         null: true
     constraints
-    - key_id
+    - primary_id
         type: primary key
         fields
         - =: id
@@ -71,7 +71,7 @@ entities
     # mysql : field_1 integer … primary key auto_increment
     # sqlite: field_1 integer … primary key autoincrement
     # ─────────────────────────────────────────────────────────────────────
-    - key_f_integer_1
+    - primary_f_integer_1
         type: primary key
         fields
         - =: f_integer_1
@@ -96,14 +96,14 @@ entities
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
-    - key_f_integer_1
+    - primary_f_integer_1
         type: primary key
         fields
         - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name UNIQUE (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
-    - key_f_integer_2
+    - unique_f_integer_2
         type: unique
         fields
         - =: f_integer_2
@@ -128,14 +128,14 @@ entities
     # ─────────────────────────────────────────────────────────────────────
     # CREATE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
-    - idx_f_integer_1
+    - index_f_integer_1
         type: index
         fields
         - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
     # CREATE UNIQUE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
-    - idx_f_integer_2
+    - index_f_integer_2
         type: unique index
         fields
         - =: f_integer_2
