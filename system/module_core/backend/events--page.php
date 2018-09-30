@@ -35,6 +35,7 @@ namespace effcore\modules\core {
   }
 
   static function on_show_block_info($page) {
+    $storage = storage::get('main');
     $info = new markup('dl', ['class' => ['info' => 'info']]);
     $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore._vector', 'alt' => 'effcore']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
@@ -44,12 +45,14 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], '© 2017—2019 Maxim Rysevets. All rights reserved.'));
     $info->child_insert(new markup('dt', [], 'Bundle build number'));
     $info->child_insert(new markup('dd', [], storage::get('files')->select('bundle/system/build')));
-    $info->child_insert(new markup('dt', [], 'Server software'));
+    $info->child_insert(new markup('dt', [], 'Web server'));
     $info->child_insert(new markup('dd', [], core::server_software_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
     $info->child_insert(new markup('dd', [], phpversion()));
     $info->child_insert(new markup('dt', [], 'Architecture'));
     $info->child_insert(new markup('dd', [], php_uname('m')));
+    $info->child_insert(new markup('dt', [], translation::get('Storage "%%_name"', ['name' => 'main'])));
+    $info->child_insert(new markup('dd', [], $storage->title_get().' '.$storage->version_get()));
     $info->child_insert(new markup('dt', [], 'Operating System'));
     $info->child_insert(new markup('dd', [], php_uname('s')));
     $info->child_insert(new markup('dt', [], 'OS Version'));

@@ -88,6 +88,24 @@ namespace effcore {
     }
   }
 
+  function title_get() {
+    if ($this->init()) {
+      switch ($this->driver) {
+        case 'mysql' : return 'MySQL';
+        case 'sqlite': return 'SQLite';
+      }
+    }
+  }
+
+  function version_get() {
+    if ($this->init()) {
+      switch ($this->driver) {
+        case 'mysql' : return $this->query('SELECT', 'version()',        'as', 'version')[0]->version;
+        case 'sqlite': return $this->query('SELECT', 'sqlite_version()', 'as', 'version')[0]->version;
+      }
+    }
+  }
+
   function transaction_begin()     {if ($this->init()) return $this->connection->beginTransaction();}
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();}

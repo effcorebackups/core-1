@@ -252,7 +252,6 @@ translations
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
-    - Server software: Серверное ПО
     - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
     - Session: Сессия
@@ -265,6 +264,7 @@ translations
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
+    - Storage "%%_name": Хранилище "%%_name"
     - Storage %%_id is not available!: Хранилище %%_id не доступно!
     - storage %%_id was initialized: хранилище %%_id было инициализировано
     - storage %%_id will be initialized: хранилище %%_id будет инициализировано
@@ -341,6 +341,7 @@ translations
     - View more: Смотреть больше
     - view: просмотреть
     - warning: предупреждение
+    - Web server: Веб-сервер
     - Wellcome to our site!: Добро пожаловать на наш сайт!
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
