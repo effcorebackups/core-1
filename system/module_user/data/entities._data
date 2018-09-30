@@ -20,7 +20,7 @@ entities
         not_null: true
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
 - relation_role_ws_permission|entity
@@ -44,7 +44,7 @@ entities
         not_null: true
     constraints
     - primary_id_role_id_permission
-        type: primary key
+        type: primary
         fields
         - =: id_role
         - =: id_permission
@@ -68,7 +68,7 @@ entities
         not_null: true
     constraints
     - primary_id_role_id_user
-        type: primary key
+        type: primary
         fields
         - =: id_role
         - =: id_user
@@ -98,7 +98,7 @@ entities
         default: 0
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
 - session|entity
@@ -137,7 +137,7 @@ entities
         null: true
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
 - user|entity
@@ -180,7 +180,7 @@ entities
         size: 1024
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
     - unique_email

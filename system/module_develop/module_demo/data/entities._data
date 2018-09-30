@@ -47,7 +47,7 @@ entities
         null: true
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
 - demo_autoincrement|entity
@@ -72,7 +72,7 @@ entities
     # sqlite: field_1 integer … primary key autoincrement
     # ─────────────────────────────────────────────────────────────────────
     - primary_f_integer_1
-        type: primary key
+        type: primary
         fields
         - =: f_integer_1
 - demo_constraints|entity
@@ -97,7 +97,7 @@ entities
     # CONSTRAINT name PRIMARY KEY (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
     - primary_f_integer_1
-        type: primary key
+        type: primary
         fields
         - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
@@ -107,6 +107,21 @@ entities
         type: unique
         fields
         - =: f_integer_2
+    # ─────────────────────────────────────────────────────────────────────
+    # CONSTRAINT name FOREIGN KEY (field)
+    #                 REFERENCES other_name(field)
+    #                 ON UPDATE CASCADE|RESTRICT|NO ACTION
+    #                 ON DELETE CASCADE|RESTRICT|NO ACTION
+    # ─────────────────────────────────────────────────────────────────────
+    # - foreign_f_integer_2
+    #     type: foreign
+    #     fields
+    #     - =: f_integer_2
+    #     references: demo_autoincrement
+    #     references_fields
+    #     - =: f_integer_1
+    #     on_update: no action
+    #     on_delete: no action
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes

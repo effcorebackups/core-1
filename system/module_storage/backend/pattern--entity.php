@@ -61,17 +61,17 @@ namespace effcore {
   }
 
   function key_primary_fields_get() {
-    foreach ($this->constraints as $c_cstr)
-      if ($c_cstr->type == 'primary key')
-        return core::array_kmap($c_cstr->fields);
+    foreach ($this->constraints as $c_constraint)
+      if ($c_constraint->type == 'primary')
+        return core::array_kmap($c_constraint->fields);
     return [];
   }
 
   function keys_unique_fields_get() {
     $fields = [];
-    foreach ($this->constraints as $c_cstr)
-      if ($c_cstr->type == 'unique')
-        $fields += $c_cstr->fields;
+    foreach ($this->constraints as $c_constraint)
+      if ($c_constraint->type == 'unique')
+        $fields += $c_constraint->fields;
     return core::array_kmap($fields);
   }
 

@@ -218,7 +218,9 @@ namespace effcore {
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           $s_constraint_name = $this->tables($c_name);
-          $fields[] = ['CONSTRAINT', $s_constraint_name, $c_info->type, '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $s_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type == 'unique')  $fields[] = ['CONSTRAINT', $s_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $s_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'no action', 'ON', 'DELETE', $c_info->on_delete ?? 'no action'];
           $fields[] = ',';
         }
       }
@@ -230,7 +232,7 @@ namespace effcore {
       $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
-        $s_index_name = $this->tables($c_name);
+        $s_index_name = $this->tables($entity->catalog_id.'-'.$c_name);
         $this->query('CREATE', $c_info->type, $s_index_name, 'ON', $s_table_name, '(', $this->fields($c_info->fields), ')');
       }
       return $this->transaction_commit();

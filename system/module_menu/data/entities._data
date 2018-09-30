@@ -19,7 +19,7 @@ entities
         not_null: true
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
 - tree_item|entity
@@ -46,6 +46,6 @@ entities
         not_null: true
     constraints
     - primary_id
-        type: primary key
+        type: primary
         fields
         - =: id
