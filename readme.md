@@ -34,7 +34,7 @@ Server-side scripting language:
 - PHP v.7.1+
 Storage system:
 - MySQL v5.6+
-- SQLite v3+
+- SQLite v3.6.19+
 
 The many hostings still using the official discontinued software.
 For example: PHP before version 7 or MySQL before version 5.6.
@@ -74,6 +74,13 @@ PHP 5.6 requires:
 - enable module "pdo_sqlite"|"pdo_mysql"
 - enable module "curl" (for development)
 - enable module "json" (for development)
+
+
+SQLite requires:
+SQLite support foreign keys when:
+- it is not older than v.3.6.19 and
+- it was compiled without SQLITE_OMIT_FOREIGN_KEY
+  and SQLITE_OMIT_TRIGGER definitions
 
 
 Git on Windows requires:

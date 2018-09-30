@@ -39,6 +39,7 @@ namespace effcore {
               $this->connection = new pdo(
                 $this->driver.':'.data::directory.
                 $this->credentials->file_name);
+              $this->query('PRAGMA', 'foreign_keys', '=', 'ON');
               break;
           }
           event::start('on_storage_init_after', 'pdo', [&$this]);
@@ -114,7 +115,7 @@ namespace effcore {
         );
         return null;
       }
-      switch ($query[0]) {
+      switch (strtoupper($query[0])) {
         case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\\effcore\\instance') : null;
         case 'INSERT': return $this->connection->lastInsertId();
         case 'UPDATE': return $result->rowCount();
@@ -195,7 +196,7 @@ namespace effcore {
         $c_properties = [$c_name];
         switch ($c_info->type) {
           case 'autoincrement':
-            if ($this->driver == 'mysql')  $c_properties[] = 'integer primary key auto_increment';
+            if ($this->driver ==  'mysql') $c_properties[] = 'integer primary key auto_increment';
             if ($this->driver == 'sqlite') $c_properties[] = 'integer primary key autoincrement';
             break;
           default:
@@ -219,7 +220,7 @@ namespace effcore {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           $s_constraint_name = $this->tables($c_name);
           if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $s_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type == 'unique')  $fields[] = ['CONSTRAINT', $s_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $s_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
           if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $s_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'no action', 'ON', 'DELETE', $c_info->on_delete ?? 'no action'];
           $fields[] = ',';
         }
@@ -228,7 +229,11 @@ namespace effcore {
     # create entity
       $s_table_name = $this->tables($entity->catalog_id);
       $this->transaction_begin();
-      $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
+      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=', 'OFF');
+                                     $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
+      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=', 'ON');
       $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {

@@ -113,15 +113,15 @@ entities
     #                 ON UPDATE CASCADE|RESTRICT|NO ACTION
     #                 ON DELETE CASCADE|RESTRICT|NO ACTION
     # ─────────────────────────────────────────────────────────────────────
-    # - foreign_f_integer_2
-    #     type: foreign
-    #     fields
-    #     - =: f_integer_2
-    #     references: demo_autoincrement
-    #     references_fields
-    #     - =: f_integer_1
-    #     on_update: no action
-    #     on_delete: no action
+    - foreign_f_integer_2
+        type: foreign
+        fields
+        - =: f_integer_2
+        references: demo_autoincrement
+        references_fields
+        - =: f_integer_1
+        on_update: cascade
+        on_delete: cascade
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes
