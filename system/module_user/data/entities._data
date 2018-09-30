@@ -43,7 +43,7 @@ entities
         size: 255
         not_null: true
     constraints
-    - primary_id
+    - primary_id_role_id_permission
         type: primary key
         fields
         - =: id_role
@@ -67,7 +67,7 @@ entities
         type: integer
         not_null: true
     constraints
-    - primary_id
+    - primary_id_role_id_user
         type: primary key
         fields
         - =: id_role
