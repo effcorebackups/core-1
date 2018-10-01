@@ -286,7 +286,7 @@ namespace effcore {
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $idkeys = $entity->values_real_id_get($instance->values_get());
+      $idkeys = $entity->real_id_from_values_get($instance->values_get());
       $result = $this->query(
         'SELECT', $this->fields($entity->fields_name_get()),
         'FROM',   $this->tables($entity->catalog_id),
@@ -321,7 +321,7 @@ namespace effcore {
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $idkeys = $entity->values_real_id_get($instance->values_get());
+      $idkeys = $entity->real_id_from_values_get($instance->values_get());
       $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->catalog_id),
@@ -336,7 +336,7 @@ namespace effcore {
   function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $idkeys = array_intersect_key($instance->values_get(), $entity->fields_primary_get());
+      $idkeys = $entity->real_id_from_values_get($instance->values_get());
       $row_count = $this->query(
         'DELETE', 'FROM', $this->tables($entity->catalog_id),
         'WHERE',          $this->attributes($idkeys));

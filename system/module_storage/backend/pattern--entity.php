@@ -60,7 +60,7 @@ namespace effcore {
     }
   }
 
-  function values_real_id_get($values) {
+  function real_id_from_values_get($values) {
     foreach ($this->constraints as $c_constraint) {
       if ($c_constraint->type == 'primary' ||
           $c_constraint->type == 'unique') {
@@ -76,13 +76,6 @@ namespace effcore {
             count($slice)) return $slice;
       }
     }
-    return [];
-  }
-
-  function fields_primary_get() {
-    foreach ($this->constraints as $c_constraint)
-      if ($c_constraint->type == 'primary')
-        return core::array_kmap($c_constraint->fields);
     return [];
   }
 
