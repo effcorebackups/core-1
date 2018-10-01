@@ -38,7 +38,7 @@ namespace effcore {
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
-      $idkeys    = [];
+      $idkeys    = $entity->real_id_get();
     }
   # make markup
     if (!empty($entity)) {
@@ -69,14 +69,14 @@ namespace effcore {
             foreach ($this->fields as $c_field) {
               switch ($c_field->type) {
                 case 'actions':
-                  if (reset($idkeys)) {
-                    $id_name = reset($idkeys);
+                  if ($idkeys) {
+                    $idvalues = array_intersect_key($c_instance->values, $idkeys);
                     if (empty($c_instance->is_embed)) {
                       $c_action_list = new control_actions_list();
                       $c_action_list->title = ' ';
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.$c_instance->{$id_name}, 'select');
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.$c_instance->{$id_name}, 'update');
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.$c_instance->{$id_name}, 'delete');
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $idvalues), 'select');
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $idvalues), 'update');
+                      $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $idvalues), 'delete');
                     }
                   }
                   $c_tbody_row[] = new table_body_row_cell(['class' => [

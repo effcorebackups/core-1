@@ -116,7 +116,7 @@ entities
     - foreign_f_integer_2
         type: foreign
         fields
-        - =: f_integer_2
+        - =: f_integer_1
         references: demo_autoincrement
         references_fields
         - =: f_integer_1
