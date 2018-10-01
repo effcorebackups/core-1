@@ -141,16 +141,16 @@ entities
         default: 0
     indexes
     # ─────────────────────────────────────────────────────────────────────
-    # CREATE INDEX name ON table_name (field_1, …);
+    # CREATE UNIQUE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
     - index_f_integer_1
-        type: index
+        type: unique index
         fields
         - =: f_integer_1
     # ─────────────────────────────────────────────────────────────────────
-    # CREATE UNIQUE INDEX name ON table_name (field_1, …);
+    # CREATE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
     - index_f_integer_2
-        type: unique index
+        type: index
         fields
         - =: f_integer_2
