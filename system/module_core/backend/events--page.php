@@ -48,9 +48,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'Web server'));
     $info->child_insert(new markup('dd', [], core::server_software_get()));
     $info->child_insert(new markup('dt', [], 'PHP Version'));
-    $info->child_insert(new markup('dd', [], phpversion()));
-    $info->child_insert(new markup('dt', [], 'Architecture'));
-    $info->child_insert(new markup('dd', [], php_uname('m')));
+    $info->child_insert(new markup('dd', [], phpversion().' ('.php_uname('m').')'));
     $info->child_insert(new markup('dt', [], translation::get('Storage "%%_name"', ['name' => 'main'])));
     $info->child_insert(new markup('dd', [], $storage->title_get().' '.$storage->version_get()));
     $info->child_insert(new markup('dt', [], 'Operating System'));
