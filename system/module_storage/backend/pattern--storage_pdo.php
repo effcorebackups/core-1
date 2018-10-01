@@ -321,7 +321,7 @@ namespace effcore {
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $idkeys = array_intersect_key($instance->values_get(), $entity->fields_primary_get());
+      $idkeys = $entity->values_real_id_get($instance->values_get());
       $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->catalog_id),
