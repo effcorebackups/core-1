@@ -38,8 +38,7 @@ namespace effcore {
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
-      $idkeys    = $entity->key_primary_fields_get() +
-                   $entity->keys_unique_fields_get();
+      $idkeys    = [];
     }
   # make markup
     if (!empty($entity)) {
