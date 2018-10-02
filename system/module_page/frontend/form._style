@@ -142,8 +142,7 @@
 
   /* particular cases */
 
-  form#user_delete,
-  form#logout {width: 340px; margin: 100px auto}
+  form#logout {text-align: center}
 
   /* IE adaptation */
 
