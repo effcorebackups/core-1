@@ -69,19 +69,8 @@ namespace effcore {
             foreach ($this->fields as $c_field) {
               switch ($c_field->type) {
                 case 'actions':
-                  if ($idkeys) {
-                    $idvalues = array_intersect_key($c_instance->values, $idkeys);
-                    if (empty($c_instance->is_embed)) {
-                      $c_action_list = new control_actions_list();
-                      $c_action_list->title = ' ';
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $idvalues), 'select');
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $idvalues), 'update');
-                      $c_action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $idvalues), 'delete');
-                    }
-                  }
-                  $c_tbody_row[] = new table_body_row_cell(['class' => [
-                    'actions' =>
-                    'actions']], $c_action_list
+                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']],
+                    $idkeys ? $this->action_list_get($entity, $c_instance, $idkeys) : ''
                   );
                   break;
                 case 'field':
@@ -107,6 +96,18 @@ namespace effcore {
             'selection-'.$entity->name =>
             'selection-'.$entity->name]], $tbody, [$thead]);
       }
+    }
+  }
+
+  function action_list_get($entity, $instance, $idkeys) {
+    $idvalues = array_intersect_key($instance->values, $idkeys);
+    if (empty($instance->values['is_embed'])) {
+      $action_list = new control_actions_list();
+      $action_list->title = ' ';
+      $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $idvalues), 'select');
+      $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $idvalues), 'update');
+      $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $idvalues), 'delete');
+      return $action_list;
     }
   }
 
