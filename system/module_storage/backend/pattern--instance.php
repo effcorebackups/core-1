@@ -16,8 +16,9 @@ namespace effcore {
     $this->values_set($values);
   }
 
-  function __get($name)         {return $this->values[$name];}
-  function __set($name, $value) {$this->values[$name] = $value;}
+  function __get  ($name)         {return       $this->values[$name];}
+  function __set  ($name, $value) {             $this->values[$name] = $value;}
+  function __isset($name)         {return isset($this->values[$name]);}
 
   function values_set($values) {$this->values = $values;}
   function values_get($names = []) {

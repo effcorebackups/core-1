@@ -101,7 +101,7 @@ namespace effcore {
 
   function action_list_get($entity, $instance, $idkeys) {
     $idvalues = array_intersect_key($instance->values, $idkeys);
-    if (empty($instance->values['is_embed'])) {
+    if (empty($instance->is_embed)) {
       $action_list = new control_actions_list();
       $action_list->title = ' ';
       $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $idvalues), 'select');
