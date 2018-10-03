@@ -44,7 +44,9 @@ namespace effcore {
       }
       $selection->field_insert(null, null, 'actions');
       $markup = $selection->build();
-      return new block('', ['class' => [$entity->name => $entity->name]],
+      return new block('', ['class' => [
+        $entity->name =>
+        $entity->name]],
         $markup
       );
     } else {
@@ -123,8 +125,18 @@ namespace effcore {
       $tab = tabs::item_select('instance_delete');
       $tab->action_name = 'delete/'.$entity->name;
       $tab->hidden = false;
-    # @todo: make functionality
-      return new text('instance_delete is UNDER CONSTRUCTION');
+    # delete instance
+      $entity_name = $page->args_get('entity_name');
+      $instance_id = $page->args_get('instance_id');
+      $idkeys = entity::get($entity_name)->real_id_get();
+      $idvalues = explode('+', $instance_id);
+      if (count($idkeys) ==
+          count($idvalues)) {
+        $instance = new instance($entity_name, array_combine($idkeys, $idvalues));
+        if ($instance->select()) {
+          // print_R( $instance );
+        }
+      }
     } else {
       url::go(
         $page->args_get('base').'/select'
