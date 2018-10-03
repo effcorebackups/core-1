@@ -15,4 +15,12 @@ namespace effcore {
     'name' => 'checkbox'
   ];
 
+  function build() {
+    parent::build();
+    $element = $this->child_select('element');
+    if ($element->tag_name == 'input') {
+      $this->child_update('element', new markup('x-wrapper', [], $element));
+    }
+  }
+
 }}

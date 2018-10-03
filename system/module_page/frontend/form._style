@@ -84,8 +84,9 @@
   x-field[data-type='checkbox'   ] label,
   x-field[data-type='radiobutton'] label {display: inline}
 
-  x-field[data-type='switcher'] input[type='checkbox'] {width: 15px; height: 15px; padding: 0; border: 0; border-radius: 10px; background: lightgray}
-  x-field[data-type='switcher'] input[type='checkbox']:checked {margin-left: 20px; background: %%_color_bg}
+  x-field[data-type='switcher'] x-wrapper {display: inline-block; width: 30px; margin-right: 2px; padding: 2px; line-height: 1px; border: 3px solid %%_color_bg; border-radius: 15px}
+  x-field[data-type='switcher'] x-wrapper input {width: 15px; height: 15px; margin: 0; padding: 0; border: 0; border-radius: 10px; background: lightgray}
+  x-field[data-type='switcher'] x-wrapper input:checked {margin-left: 15px; background: %%_color_bg}
 
   x-group[data-type='checkboxes'  ] x-field,
   x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
