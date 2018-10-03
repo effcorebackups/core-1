@@ -40,6 +40,11 @@ instances
     values
     - id: user_update
     - title: User: update
+- permission_user_insert|instance
+    entity_name: permission
+    values
+    - id: user_insert
+    - title: User: insert
 - permission_user_delete|instance
     entity_name: permission
     values
@@ -65,3 +70,8 @@ instances
     values
     - id_role: admins
     - id_permission: user_insert
+- relation_role_ws_permission_admins_user_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: admins
+    - id_permission: user_delete

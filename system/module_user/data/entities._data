@@ -48,6 +48,20 @@ entities
         fields
         - =: id_role
         - =: id_permission
+    - foreign_id_role
+        type: foreign
+        fields
+        - =: id_role
+        references: roles
+        references_fields
+        - =: id
+    - foreign_id_permission
+        type: foreign
+        fields
+        - =: id_permission
+        references: permissions
+        references_fields
+        - =: id
 - relation_role_ws_user|entity
     name: relation_role_ws_user
     title: Relation: Role + User
