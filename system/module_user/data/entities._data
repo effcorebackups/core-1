@@ -72,6 +72,20 @@ entities
         fields
         - =: id_role
         - =: id_user
+    - foreign_id_role
+        type: foreign
+        fields
+        - =: id_role
+        references: roles
+        references_fields
+        - =: id
+    - foreign_id_user
+        type: foreign
+        fields
+        - =: id_user
+        references: users
+        references_fields
+        - =: id
 - role|entity
     name: role
     title: Role

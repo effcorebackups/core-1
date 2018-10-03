@@ -236,27 +236,27 @@ namespace effcore {
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
-          $s_constraint_name = $this->tables($c_name);
-          if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $s_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $s_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $s_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
+          $c_constraint_name = $this->tables($entity->catalog_id.'__'.$c_name);
+          if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $c_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $c_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
+          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $c_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
           $fields[] = ',';
         }
       }
       array_pop($fields);
     # create entity
-      $s_table_name = $this->tables($entity->catalog_id);
+      $table_name = $this->tables($entity->catalog_id);
       $this->transaction_begin();
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
       if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
-                                     $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
+                                     $this->query('DROP', 'TABLE', 'IF EXISTS', $table_name);
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
       if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
-                                     $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
+                                     $this->query('CREATE', 'TABLE', $table_name, '(', $fields, ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
-        $s_index_name = $this->tables($entity->catalog_id.'-'.$c_name);
-        $this->query('CREATE', $c_info->type, $s_index_name, 'ON', $s_table_name, '(', $this->fields($c_info->fields), ')');
+        $c_index_name = $this->tables($entity->catalog_id.'__'.$c_name);
+        $this->query('CREATE', $c_info->type, $c_index_name, 'ON', $table_name, '(', $this->fields($c_info->fields), ')');
       }
       return $this->transaction_commit();
     }

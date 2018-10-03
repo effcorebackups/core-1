@@ -10,7 +10,7 @@
   x-block.logs tr.file        {background-color: aliceblue}
   x-block.logs tr.event       {background-color: lavender}
   x-block.logs tr.storage     {background-color: honeydew}
-  x-block.logs td.value-error {background-color: pink}
+  x-block.logs td.value-error {background-color: pink !important}
   x-block.logs tr.query td.name {font-size: .9em}
 
   /* demo diagrams */
