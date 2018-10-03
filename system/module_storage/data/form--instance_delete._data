@@ -1,0 +1,16 @@
+forms
+- instance_delete|form
+    attributes
+    - id: instance_delete
+    - method: post
+    - =: novalidate
+    children
+    - button_delete|button
+        title: delete
+        attributes
+        - value: delete
+    - button_cancel|button
+        title: cancel
+        novalidate: true
+        attributes
+        - value: cancel

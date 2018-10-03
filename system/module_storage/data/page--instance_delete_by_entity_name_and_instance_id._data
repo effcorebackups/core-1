@@ -30,7 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/storage/manage_instances
-    - block_instance_delete_by_entity_name_and_instance_id|page_part
+    - form_instance_delete|page_part
         region: content
-        type: code
-        source: \effcore\manage_instances::instance_delete_by_entity_name_and_instance_id
+        type: link
+        source: forms/storage/instance_delete
