@@ -230,7 +230,6 @@ namespace effcore {
           else                               $c_properties[] = 'default \''.$c_info->default.'\'';
         }
         $fields[] = $c_properties;
-        $fields[] = ',';
       }
     # prepare constraints
       $auto_name = $entity->auto_name_get();
@@ -240,10 +239,8 @@ namespace effcore {
           if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $c_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
           if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $c_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
           if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $c_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
-          $fields[] = ',';
         }
       }
-      array_pop($fields);
     # create entity
       $table_name = $this->tables($entity->catalog_id);
       $this->transaction_begin();
@@ -252,7 +249,7 @@ namespace effcore {
                                      $this->query('DROP', 'TABLE', 'IF EXISTS', $table_name);
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
       if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
-                                     $this->query('CREATE', 'TABLE', $table_name, '(', $fields, ')');
+                                     $this->query('CREATE', 'TABLE', $table_name, '(', $this->fields($fields), ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
         $c_index_name = $this->tables($entity->catalog_id.'__'.$c_name);
