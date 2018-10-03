@@ -239,7 +239,7 @@ namespace effcore {
           $s_constraint_name = $this->tables($c_name);
           if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $s_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
           if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $s_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $s_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'no action', 'ON', 'DELETE', $c_info->on_delete ?? 'no action'];
+          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $s_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
           $fields[] = ',';
         }
       }
@@ -248,11 +248,11 @@ namespace effcore {
       $s_table_name = $this->tables($entity->catalog_id);
       $this->transaction_begin();
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=', 'OFF');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
                                      $this->query('DROP', 'TABLE', 'IF EXISTS', $s_table_name);
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=', 'ON');
-      $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
+                                     $this->query('CREATE', 'TABLE', $s_table_name, '(', $fields, ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
         $s_index_name = $this->tables($entity->catalog_id.'-'.$c_name);
@@ -264,7 +264,12 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      return $this->query('DROP', 'TABLE', $this->tables($entity->catalog_id));
+      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
+      $result =                      $this->query('DROP', 'TABLE', $this->tables($entity->catalog_id));
+      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
+      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
+      return $result;
     }
   }
 

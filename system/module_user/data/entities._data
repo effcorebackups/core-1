@@ -140,6 +140,13 @@ entities
         type: primary
         fields
         - =: id
+    - foreign_id_user
+        type: foreign
+        fields
+        - =: id_user
+        references: users
+        references_fields
+        - =: id
 - user|entity
     name: user
     title: User
