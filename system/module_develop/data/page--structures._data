@@ -34,7 +34,7 @@ pages
         display
           check: page_args
           where: view
-          match: %list%
+          match: %^list$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page::on_show_block_structures_list
@@ -42,7 +42,7 @@ pages
         display
           check: page_args
           where: view
-          match: %diagram%
+          match: %^diagram$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page::on_show_block_structures_diagram
@@ -50,7 +50,7 @@ pages
         display
           check: page_args
           where: view
-          match: %diagram_export%
+          match: %^diagram_export$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page::on_export_diagram

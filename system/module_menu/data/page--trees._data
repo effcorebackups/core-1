@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/manage/trees)/(?<action>[a-z]+)(/(?<id>[a-z_]+)|)$%
+      match: %^(?<base>/manage/trees)/(?<action>select|insert)(/(?<id>[a-z_]+)|)$%
     access
       roles
       - =: admins
@@ -34,7 +34,7 @@ pages
         display
           check: page_args
           where: action
-          match: %select%
+          match: %^select$%
         region: content
         type: code
         source: \effcore\manage_trees::tree_select
@@ -42,7 +42,7 @@ pages
         display
           check: page_args
           where: action
-          match: %insert%
+          match: %^insert$%
         region: content
         type: code
         source: \effcore\manage_trees::tree_insert
