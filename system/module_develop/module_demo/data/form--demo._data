@@ -268,24 +268,6 @@ forms
                 - name: checkbox
                 - value: checkbox
                 - =: checked
-          # field_switcher
-            - switcher|field_switcher
-                title: Switcher
-                element_attributes
-                - name: switcher
-                - value: switcher
-                - =: checked
-            - switcher_disabled|field_switcher
-                title: Switcher (disabled)
-                description|text
-                  text: Field %%_type.
-                  args
-                  - type: field_switcher
-                element_attributes
-                - name: switcher_disabled
-                - value: switcher_disabled
-                - =: checked
-                - =: disabled
           # group_checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
@@ -306,6 +288,37 @@ forms
                 checked
                 - =: checkboxes_2
                 - =: checkboxes_4
+          # field_switcher
+            - switcher|field_switcher
+                title: Switcher
+                description|text
+                  text: Field %%_type.
+                  args
+                  - type: field_switcher
+                element_attributes
+                - name: switcher
+                - value: switcher
+                - =: checked
+          # group_switchers
+            - switchers|group_switchers
+                title: Switchers
+                description|text
+                  text: Group %%_type.
+                  args
+                  - type: group_switchers
+                element_attributes
+                - name: switchers[]
+                values
+                - switcher_1: Switcher 1
+                - switcher_2: Switcher 2 (checked)
+                - switcher_3: Switcher 3 (disabled)
+                - switcher_4: Switcher 4 (disabled + checked)
+                disabled
+                - =: switcher_3
+                - =: switcher_4
+                checked
+                - =: switcher_2
+                - =: switcher_4
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
