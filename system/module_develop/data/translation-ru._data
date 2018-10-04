@@ -97,6 +97,7 @@ translations
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - Static block: Статический блок
     - Structures: Структуры
+    - Switcher (disabled): Переключатель (отключён)
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.

@@ -11,7 +11,7 @@
 
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
   fieldset > label + x-fieldset-content {margin-top: 30px}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -60px}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items._vector') 0 -60px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
@@ -76,13 +76,13 @@
     cursor: pointer;
     background-color: white}
   input[type='radio'] {border-radius: 13px}
-  input[type='checkbox']:checked {background: url('images/icons-form_items._vector') %%_color_bg}
-  input[type='radio'   ]:checked {background: url('images/icons-form_items._vector') %%_color_bg 0 -20px}
+  input[type='checkbox']:checked {background: %%_color_bg url('images/icons-form_items._vector')}
+  input[type='radio'   ]:checked {background: %%_color_bg url('images/icons-form_items._vector') 0 -20px}
   input[type='checkbox']:disabled:checked,
   input[type='radio'   ]:disabled:checked {border-color: silver; background-color: lightgray}
 
-  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: url('images/icons-form_items._vector') 0 -40px gray}
-  input[data-type='switcher']:checked {background: url('images/icons-form_items._vector') -46px -40px %%_color_bg}
+  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: gray url('images/icons-form_items._vector') 0 -40px}
+  input[data-type='switcher']:checked {background: %%_color_bg url('images/icons-form_items._vector') -46px -40px}
 
   /* checkboxes and radiobuttons inside containers */
 

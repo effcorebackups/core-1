@@ -271,14 +271,21 @@ forms
           # field_switcher
             - switcher|field_switcher
                 title: Switcher
+                element_attributes
+                - name: switcher
+                - value: switcher
+                - =: checked
+            - switcher_disabled|field_switcher
+                title: Switcher (disabled)
                 description|text
                   text: Field %%_type.
                   args
                   - type: field_switcher
                 element_attributes
-                - name: switcher
-                - value: switcher
+                - name: switcher_disabled
+                - value: switcher_disabled
                 - =: checked
+                - =: disabled
           # group_checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
