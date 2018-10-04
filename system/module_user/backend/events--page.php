@@ -47,17 +47,10 @@ namespace effcore\modules\user {
     if ($user) {
       if ($user->id == user::current_get()->id ||               # owner
                  isset(user::current_get()->roles['admins'])) { # admin
-      # get roles
-        $roles = [];
-        $storage_roles = entity::get('relation_role_ws_user')->instances_select(['id_user' => $user->id]);
-        if ($storage_roles) {
-          foreach ($storage_roles as $c_role) {
-            $roles[] = $c_role->id_role;
-          }
-        }
       # get values
+        $user_roles = user::id_roles_get($user->id);
         $values = $user->values_get();
-        $values['roles'] = count($roles) ? implode(', ', $roles) : '-';
+        $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
         $values['created'] = locale::format_datetime($values['created']);
         $values['updated'] = locale::format_datetime($values['updated']);
         $values['password_hash'] = '*****';

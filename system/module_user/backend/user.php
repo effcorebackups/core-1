@@ -20,10 +20,8 @@ namespace effcore {
       ]))->select();
       if ($user) {
         static::$cache = (object)($user->values_get());
-        static::$cache->roles = ['registered' => 'registered'];
-        foreach (entity::get('relation_role_ws_user')->instances_select(['id_user' => $user->id]) as $c_role) {
-          static::$cache->roles[$c_role->id_role] = $c_role->id_role;
-        }
+        static::$cache->roles = static::id_roles_get($user->id);
+        static::$cache->roles['registered'] = 'registered';
       }
     }
   }
@@ -31,6 +29,15 @@ namespace effcore {
   static function current_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function id_roles_get($id) {
+    $id_roles = [];
+    $roles = entity::get('relation_role_ws_user')->instances_select(['id_user' => $id]);
+    foreach ($roles as $c_role)
+      $id_roles[$c_role->id_role] =
+                $c_role->id_role;
+    return $id_roles;
   }
 
 }}

@@ -15,6 +15,9 @@ events
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_form_user_edit::on_init
+  - access|event
+      for: access
+      handler: \effcore\modules\user\events_form_access::on_init
   on_form_validate
   - login|event
       for: login
