@@ -26,3 +26,11 @@ pages
         region: content
         type: text
         source: Wellcome to our site!
+    - form_access|page_part
+        display
+          check: user
+          where: role
+          match: %^admins$%
+        region: content
+        type: link
+        source: forms/user/access

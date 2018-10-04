@@ -14,10 +14,8 @@ namespace effcore {
 
   function render($page = null) {
     if (!isset($this->display) ||
-        (isset($this->display) &&
-               $this->display->check == 'page_args' && preg_match(
-               $this->display->match, $page->args_get(
-               $this->display->where)))) {
+        (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->args_get($this->display->where))) ||
+        (isset($this->display) && $this->display->check == 'user' && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
       switch ($this->type) {
         case 'code': return call_user_func_array($this->source, ['page' => $page]);
         case 'link': return storage::get('files')->select($this->source, true);
