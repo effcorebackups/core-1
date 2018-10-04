@@ -11,8 +11,8 @@
 
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
   fieldset > label + x-fieldset-content {margin-top: 30px}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -40px}
-  fieldset input[data-opener-type='fieldset']:checked {background-position: 0 -60px}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: url('images/icons-form_items._vector') %%_color_bg 0 -60px}
+  fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
@@ -68,7 +68,10 @@
   input[type='checkbox'],
   input[type='radio'] {
     display: inline-block;
+    width: 26px;
+    height: 26px;
     margin: 0 5px 2px 0;
+    padding: 0;
     vertical-align: middle;
     cursor: pointer;
     background-color: white}
@@ -78,15 +81,14 @@
   input[type='checkbox']:disabled:checked,
   input[type='radio'   ]:disabled:checked {border-color: silver; background-color: lightgray}
 
+  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: url('images/icons-form_items._vector') 0 -40px gray}
+  input[data-type='switcher']:checked {background: url('images/icons-form_items._vector') -46px -40px %%_color_bg}
+
   /* checkboxes and radiobuttons inside containers */
 
   x-field[data-type='switcher'   ] label,
   x-field[data-type='checkbox'   ] label,
   x-field[data-type='radiobutton'] label {display: inline}
-
-  x-field[data-type='switcher'] x-wrapper {display: inline-block; width: 30px; margin-right: 2px; padding: 2px; line-height: 1px; border: 3px solid %%_color_bg; border-radius: 15px}
-  x-field[data-type='switcher'] x-wrapper input {width: 15px; height: 15px; margin: 0; padding: 0; border: 0; border-radius: 10px; background: lightgray}
-  x-field[data-type='switcher'] x-wrapper input:checked {margin-left: 15px; background: %%_color_bg}
 
   x-group[data-type='checkboxes'  ] x-field,
   x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
@@ -103,7 +105,7 @@
     color: darkgray}
   x-description p {margin: 0}
   input[data-opener-type='description'] {display: none}
-  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; padding: 0; border: none; background: url('images/icons-form_items._vector') 0 -85px}
+  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form_items._vector') 0 -85px}
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
 

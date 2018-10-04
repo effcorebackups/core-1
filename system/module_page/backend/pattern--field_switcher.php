@@ -11,16 +11,9 @@ namespace effcore {
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'switcher'];
   public $element_attributes_default = [
-    'type' => 'checkbox',
-    'name' => 'checkbox'
+    'type'      => 'checkbox',
+    'name'      => 'checkbox',
+    'data-type' => 'switcher',
   ];
-
-  function build() {
-    parent::build();
-    $element = $this->child_select('element');
-    if ($element->tag_name == 'input') {
-      $this->child_update('element', new markup('x-wrapper', [], $element));
-    }
-  }
 
 }}
