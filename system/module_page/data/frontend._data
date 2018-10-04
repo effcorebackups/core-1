@@ -3,7 +3,7 @@ frontend
     display
       check: url
       where: path
-      match: %.*%
+      match: %^.*$%
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
     - icon_32_classic

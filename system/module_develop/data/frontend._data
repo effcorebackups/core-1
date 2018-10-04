@@ -3,7 +3,7 @@ frontend
     display
       check: url
       where: path
-      match: %.*%
+      match: %^.*$%
     styles
     - develop_style
         file: frontend/develop._style
