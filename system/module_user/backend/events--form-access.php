@@ -16,7 +16,7 @@ namespace effcore\modules\user {
     $action_list = new field_select();
     $action_list->element_attributes = ['name' => 'permissions', 'required' => null];
     $action_list->build();
-    $action_list->option_insert('- select -', 'not_selected');
+    $action_list->option_insert('- no -', 'not_selected');
     $action_list->option_insert('select', 's');
     $action_list->option_insert('select | update', 'su');
     $action_list->option_insert('select | update | insert', 'sui');
