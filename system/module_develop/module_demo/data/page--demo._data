@@ -58,3 +58,13 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page::on_show_block_demo_diagrams
+    - form_access|page_part
+        display
+          check: user
+          where: role
+          match: %^admins$%
+        region: content
+        type: link
+        source: forms/user/access
+        source_args
+        - entity_name: page

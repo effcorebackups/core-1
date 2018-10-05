@@ -14,8 +14,8 @@ namespace effcore\modules\user {
     $role_entity = entity::get('role');
     $role_instances = $role_entity->instances_select();
     $access = null;
-    switch ($form->__args['entity_name']) {
-      case 'page': $access = $form->__page->access; break;
+    switch ($form->_args['entity_name']) {
+      case 'page': $access = $form->_page->access; break;
     }
     foreach ($role_instances as $c_role) {
       $c_action_list = new field_select();

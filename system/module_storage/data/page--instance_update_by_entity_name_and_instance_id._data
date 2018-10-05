@@ -34,3 +34,13 @@ pages
         region: content
         type: code
         source: \effcore\manage_instances::instance_update_by_entity_name_and_instance_id
+    - form_access|page_part
+        display
+          check: user
+          where: role
+          match: %^admins$%
+        region: content
+        type: link
+        source: forms/user/access
+        source_args
+        - entity_name: page

@@ -19,13 +19,13 @@ namespace effcore {
         (isset($this->display) && $this->display->check == 'user' && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
       switch ($this->type) {
         case 'link': $result = storage::get('files')->select($this->source, true);
-                     $result->__page = $page;
-                     $result->__args = $this->source_args;
+                     $result->_page = $page;
+                     $result->_args = $this->source_args;
                      return $result;
-        case 'code': $result = call_user_func_array($this->source, ['page' => $page, 'args' => $this->source_args]); return $result;
-        case 'text': $result = new text($this->source); return $result;
-        default    : $result = method_exists($this->source, 'render') ?
-                                             $this->source->render() : null; return $result;
+        case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->source_args]);
+        case 'text': return new text($this->source);;
+        default    : return method_exists($this->source, 'render') ?
+                                          $this->source->render() : null;
       }
     }
   }
