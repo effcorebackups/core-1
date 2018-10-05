@@ -20,6 +20,11 @@ namespace effcore {
     return $element->attribute_select('value');
   }
 
+  function value_set($value) {
+    $element = $this->child_select('element');
+    return $element->attribute_insert('value', $value);
+  }
+
   ###########################
   ### static declarations ###
   ###########################

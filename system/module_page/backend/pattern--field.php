@@ -89,6 +89,11 @@ namespace effcore {
                          $element->attribute_select('name');
   }
 
+  function name_set($name) {
+    $element = $this->child_select('element');
+    $element->attribute_insert('name', $name);
+  }
+
   function type_get($full = true) {
     $element = $this->child_select('element');
     switch ($element->tag_name) {
