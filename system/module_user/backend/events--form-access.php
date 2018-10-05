@@ -7,6 +7,7 @@
 namespace effcore\modules\user {
           use \effcore\entity;
           use \effcore\field_select;
+          use \effcore\field_switcher;
           use \effcore\markup;
           abstract class events_form_access {
 
@@ -18,18 +19,14 @@ namespace effcore\modules\user {
       case 'page': $access = $form->_page->access; break;
     }
     foreach ($role_instances as $c_role) {
-      $c_action_list = new field_select();
-      $c_action_list->element_attributes = ['name' => 'access_for_'.$c_role->id, 'required' => null];
-      $c_action_list->title = $c_role->title;
-      $c_action_list->build();
-      $c_action_list->option_insert('- no -', 'not_selected');
-      $c_action_list->option_insert('select', 's');
-      $c_action_list->option_insert('select | update', 'su');
-      $c_action_list->option_insert('select | update | insert', 'sui');
-      $c_action_list->option_insert('select | update | insert | delete', 'suid');
+      $c_switcher = new field_switcher($c_role->title);
+      $c_switcher->element_attributes = ['name' => 'access_for_'.$c_role->id, 'value' => 'on'];
+      $c_switcher->build();
+      $c_switcher->checked_set(isset($access->roles[$c_role->id]));
+      $c_switcher->disabled_set(true);
       $items['settings']->child_insert(
         new markup('x-role', [], [
-          $c_action_list
+          $c_switcher
         ])
       );
     }

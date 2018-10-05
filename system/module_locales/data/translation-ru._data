@@ -248,9 +248,6 @@ translations
     - save: сохранить
     - Search: Поиск
     - search: поиск
-    - select \| update \| insert \| delete: выбрать | обновить | вставить | удалить
-    - select \| update \| insert: выбрать | обновить | вставить
-    - select \| update: выбрать | обновить
     - Select instance: Выбрать экземпляр
     - Select instances: Выбрать экземпляры
     - Select: Выбрать
