@@ -47,6 +47,17 @@ namespace effcore {
     }
   }
 
+  function value_set($value) {
+    $element = $this->child_select('element');
+    foreach ($element->children_select_recursive() as $c_item) {
+      if ($c_item instanceof node       &&
+          $c_item->tag_name == 'option' &&
+          $c_item->attribute_select('value') == $value) {
+        $c_item->attribute_insert('selected', 'selected');
+      }
+    }
+  }
+
   function values_get() {
     $return = [];
     $element = $this->child_select('element');
@@ -73,14 +84,14 @@ namespace effcore {
     return $return;
   }
 
-  function values_set($values) {
+  function values_set($values, $clear = true) {
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
       if ($c_item instanceof node &&
           $c_item->tag_name == 'option') {
         if (core::in_array_string_compare($c_item->attribute_select('value'), $values))
-             $c_item->attribute_insert('selected', 'selected');
-        else $c_item->attribute_delete('selected');
+                        $c_item->attribute_insert('selected', 'selected');
+        elseif ($clear) $c_item->attribute_delete('selected');
       }
     }
   }
