@@ -34,3 +34,5 @@ pages
         region: content
         type: link
         source: forms/user/access
+        source_args
+        - entity_name: page
