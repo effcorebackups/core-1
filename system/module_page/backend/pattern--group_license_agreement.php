@@ -16,8 +16,10 @@ namespace effcore {
     $license = new file(dir_root.'license'.($lang_code === 'en' ? '' : '-'.$lang_code).'.md');
     $markup_license = new markup('x-document', ['class' => ['license' => 'license']], markdown::markdown_to_markup($license->load()));
     $markup_agree = new field_checkbox($this->agree_title);
-    $markup_agree->element_attributes = ['name' => 'is_agree', 'value' => 'is_agree', 'required' => 'required'];
     $markup_agree->build();
+    $markup_agree->name_set('is_agree');
+    $markup_agree->value_set('is_agree');
+    $markup_agree->required_set(true);
     $this->child_insert($markup_license, 'license');
     $this->child_insert($markup_agree, 'is_agree');
   }
