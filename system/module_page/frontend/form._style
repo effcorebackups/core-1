@@ -33,7 +33,7 @@
   x-fieldset-content {background: white}
 
   fieldset[data-type='roles'] x-fieldset-content {
-    background: url('images/lines._vector');
+    background: url('images/lines._vector') -10px 0;
   }
 
   /* form fields */

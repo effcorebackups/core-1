@@ -22,10 +22,10 @@
 
   <g id="lines">
     <rect x="0" y="0" width="80" height="80" style="fill: white" />
-    <path style="fill: none; stroke: #f5f5f5; stroke-width: 15px; stroke-linecap: square" d="M 0,20 20,0" />
-    <path style="fill: none; stroke: #f5f5f5; stroke-width: 15px; stroke-linecap: square" d="M 0,60 60,0" />
-    <path style="fill: none; stroke: #f5f5f5; stroke-width: 15px; stroke-linecap: square" d="M 20,80 80,20" />
-    <path style="fill: none; stroke: #f5f5f5; stroke-width: 15px; stroke-linecap: square" d="M 60,80 80,60" />
+    <path style="fill: none; stroke: %%_color_bg; stroke-opacity: .08; stroke-width: 15px; stroke-linecap: square" d="M 0,20 20,0" />
+    <path style="fill: none; stroke: %%_color_bg; stroke-opacity: .08; stroke-width: 15px; stroke-linecap: square" d="M 0,60 60,0" />
+    <path style="fill: none; stroke: %%_color_bg; stroke-opacity: .08; stroke-width: 15px; stroke-linecap: square" d="M 20,80 80,20" />
+    <path style="fill: none; stroke: %%_color_bg; stroke-opacity: .08; stroke-width: 15px; stroke-linecap: square" d="M 60,80 80,60" />
   </g>
 
 </svg>
