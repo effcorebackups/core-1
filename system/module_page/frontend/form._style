@@ -20,6 +20,7 @@
     display: block;
     padding: 10px 16px;
     border-top: 5px solid %%_color_bg}
+
   x-fieldset-content,
   x-fieldset-content
   x-fieldset-content
@@ -30,6 +31,10 @@
   x-fieldset-content
   x-fieldset-content
   x-fieldset-content {background: white}
+
+  fieldset[data-type='roles'] x-fieldset-content {
+    background: url('images/lines._vector');
+  }
 
   /* form fields */
 

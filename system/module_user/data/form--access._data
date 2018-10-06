@@ -8,7 +8,7 @@ forms
     - settings|fieldset
         title: Access settings
         attributes
-        - data-dype: roles
+        - data-type: roles
     - button_save|button
         title: save
         attributes
