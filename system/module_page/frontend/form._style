@@ -154,10 +154,6 @@
 
   x-field[data-type='captcha'] svg {display: block; margin: 20px 0}
 
-  /* particular cases */
-
-  form#logout {text-align: center}
-
   /* IE adaptation */
 
   html[data-uagent^='msie'] input[type='checkbox'],
