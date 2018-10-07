@@ -7,7 +7,7 @@ forms
     children
     - settings|fieldset
         title: Access settings
-        description: Access permissions not applicable if no one role is not specified!
+        description: Access settings not applicable if no one role is not actived!
         attributes
         - data-type: roles
     - button_save|button
