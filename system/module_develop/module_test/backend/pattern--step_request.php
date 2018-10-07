@@ -14,15 +14,16 @@ namespace effcore {
   public $post = [];
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+    $prepared_post = $this->prepared_post_get();
     $c_results['reports'][] = translation::get('make request to "%%_url"', ['url' => $this->prepared_url_get()]);
-    foreach ($this->prepared_post_get() as $c_name => $c_value) {
+    foreach ($prepared_post as $c_name => $c_value) {
       $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_name, 'value' => $c_value]);
     }
   # make request
     $c_results['request'] = test::request(
       $this->prepared_url_get(),
       $this->prepared_headers_get(),
-      $this->prepared_post_get(),
+      $prepared_post,
       $this->proxy
     );
   }
