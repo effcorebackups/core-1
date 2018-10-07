@@ -167,6 +167,7 @@ translations
     - Logout: Выход
     - Main system module.: Основной модуль системы.
     - Management: Управление
+    - Managers: Управляющие
     - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
@@ -178,7 +179,6 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
-    - Moderators: Модераторы
     - Module for internationalization.: Модуль для интернационализации.
     - Module for storages support.: Модуль поддержки хранилищ данных.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
@@ -205,6 +205,7 @@ translations
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
     - OS Version: Версия ОС
+    - Owner: Владелец
     - Page not found: Страница не найдена
     - Page: Страница
     - Paragraph: Параграф

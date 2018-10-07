@@ -1,4 +1,7 @@
 instances
+# ─────────────────────────────────────────────────────────────────────
+# users
+# ─────────────────────────────────────────────────────────────────────
 - user_admin|instance
     entity_name: user
     values
@@ -7,6 +10,9 @@ instances
     - email: admin@example.com
     - password_hash: 8cb2237d0679ca88db6464eac60da96345513964
     - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+# roles
+# ─────────────────────────────────────────────────────────────────────
 - role_anonymous|instance
     entity_name: role
     values
@@ -19,17 +25,27 @@ instances
     - id: registered
     - title: Registered
     - is_embed: 1
+- role_owner|instance
+    entity_name: role
+    values
+    - id: owner
+    - title: Owner
+    - is_embed: 1
 - role_admins|instance
     entity_name: role
     values
     - id: admins
     - title: Administrators
     - is_embed: 1
-- role_moderators|instance
+- role_managers|instance
     entity_name: role
     values
-    - id: moderators
-    - title: Moderators
+    - id: managers
+    - title: Managers
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+# permissions
+# ─────────────────────────────────────────────────────────────────────
 - permission_user_select|instance
     entity_name: permission
     values
@@ -50,11 +66,17 @@ instances
     values
     - id: user_delete
     - title: User: delete
+# ─────────────────────────────────────────────────────────────────────
+# relation_role_ws_user
+# ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_user_admins_1|instance
     entity_name: relation_role_ws_user
     values
     - id_role: admins
     - id_user: 1
+# ─────────────────────────────────────────────────────────────────────
+# relation_role_ws_permission
+# ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_admins_user_select|instance
     entity_name: relation_role_ws_permission
     values
