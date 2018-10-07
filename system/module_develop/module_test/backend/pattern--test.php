@@ -10,6 +10,7 @@ namespace effcore {
 
   public $id;
   public $title;
+  public $description;
   public $scenario;
 
   function run() {

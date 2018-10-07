@@ -11,6 +11,8 @@ forms
             title: Select the test
             element_attributes
             - name: select_test
+        - description|markup
+            tag_name: x-test-description
     - button_run|button
         title: run
         attributes

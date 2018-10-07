@@ -11,6 +11,7 @@
 
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
   fieldset > label + x-fieldset-content {margin-top: 30px}
+  fieldset > x-description {margin-top: 20px}
   fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items._vector') 0 -60px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
@@ -35,7 +36,6 @@
   /* fieldset 'roles' */
 
   fieldset[data-type='roles'] x-fieldset-content {background: url('images/lines._vector') -10px 0}
-  fieldset[data-type='roles'] x-description {margin-top: 10px}
 
   /* form fields */
 

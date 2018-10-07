@@ -41,6 +41,7 @@ namespace effcore\modules\test {
       if (!empty($test_result['reports'])) {
         $report = new markup('x-document', ['class' => ['report' => 'report']]);
         $report_wrapper = new fieldset('Report', '', [], $report);
+        $report_wrapper->description = $test->description;
         $items['test']->child_insert($report_wrapper);
         foreach ($test_result['reports'] as $c_report) {
           $report->child_insert(
