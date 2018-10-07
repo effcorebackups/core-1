@@ -141,6 +141,8 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учетные данные хранилища уже были установлены.
     - Installation: Установка
     - installation: установка
+    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удален.
+    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удален!
     - Instances of entity %%_name was added.: Экземпляры сущности %%_name были добавлены.
     - Instances of entity %%_name was not added!: Экземпляры сущности %%_name не были добавлены!
     - Instances: Экземпляры
@@ -319,8 +321,6 @@ translations
     - Updated: Обновлено
     - URL: URL
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
-    - User %%_nick was deleted.: Пользователь %%_nick был удален.
-    - User %%_nick was not deleted!: Пользователь %%_nick не был удален.
     - User %%_nick was not updated.: Пользователь %%_nick не был обновлен.
     - User %%_nick was updated.: Пользователь %%_nick был обновлен.
     - User %%_nick_context{2}: Пользователь %%_nick_context{2}
