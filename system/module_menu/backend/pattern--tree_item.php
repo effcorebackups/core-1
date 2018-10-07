@@ -7,12 +7,13 @@
 namespace effcore {
           class tree_item extends node {
 
-  public $id;
-  public $id_parent;
-  public $url;
-  public $title = '';
   public $template = 'tree_item';
   public $template_children = 'tree_item_children';
+  public $id;
+  public $id_parent;
+  public $title = '';
+  public $url;
+  public $access;
 
   function __construct($title = '', $id = null, $id_parent = null, $url = null, $attributes = [], $weight = 0) {
     if ($id)        $this->id        = $id;
@@ -23,7 +24,7 @@ namespace effcore {
   }
 
   function render() {
-    if (!isset($this->access) || access::check($this->access)) {
+    if ($this->access === null || access::check($this->access)) {
       $rendered_children = $this->children_count() ? (new template($this->template_children, [
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';

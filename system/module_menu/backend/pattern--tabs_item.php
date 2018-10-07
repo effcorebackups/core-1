@@ -7,14 +7,15 @@
 namespace effcore {
           class tabs_item extends node {
 
+  public $template = 'tabs_item';
+  public $template_children = 'tabs_item_children';
   public $id;
   public $id_parent;
   public $title = '';
   public $action_name;
   public $action_name_default;
   public $hidden = false;
-  public $template = 'tabs_item';
-  public $template_children = 'tabs_item_children';
+  public $access;
 
   function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $hidden = false, $weight = 0) {
     if ($id)                  $this->id                  = $id;
@@ -28,7 +29,7 @@ namespace effcore {
 
   function render() {
     if (empty($this->hidden)) {
-      if (!isset($this->access) || access::check($this->access)) {
+      if ($this->access === null || access::check($this->access)) {
         $rendered_children = $this->children_count() ? (new template($this->template_children, [
           'children' => $this->render_children($this->children_select())]
         ))->render() : '';
