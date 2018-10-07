@@ -10,9 +10,13 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_delete {
 
   static function on_submit($form, $items) {
-    manage_instances::instance_delete_by_entity_name_and_instance_id(
-      page::current_get(), $form, $items
-    );
+    switch ($form->clicked_button->value_get()) {
+      case 'delete':
+        manage_instances::instance_delete_by_entity_name_and_instance_id(
+          page::current_get(), $form, $items
+        );
+        break;
+    }
   }
 
 }}

@@ -117,17 +117,17 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function instance_delete_by_entity_name_and_instance_id($page, $form, $items) {
-    $entity = entity::get($page->args_get('entity_name'));
+    $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
+    $entity = entity::get($entity_name);
     if ($entity) {
-      $entity_name = $page->args_get('entity_name');
-      $instance_id = $page->args_get('instance_id');
       $idkeys = entity::get($entity_name)->real_id_get();
       $idvalues = explode('+', $instance_id);
       if (count($idkeys) ==
           count($idvalues)) {
         $instance = new instance($entity_name, array_combine($idkeys, $idvalues));
         if ($instance->select()) {
-          // print_R( $instance );
+          return $instance->delete();
         }
       }
     }
