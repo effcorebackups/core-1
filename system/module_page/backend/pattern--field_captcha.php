@@ -56,7 +56,10 @@ namespace effcore {
     for ($i = 0; $i < $this->length; $i++) {
       $c_glyph = array_rand($glyphs);
       $characters.= $glyphs[$c_glyph];
-      $canvas->glyph_set($c_glyph, rand(0, 2) - 1 + ($i * 5), rand(1, 5));
+      $canvas->glyph_set($c_glyph,
+        random_int(0, 2) - 1 + ($i * 5),
+        random_int(1, 5)
+      );
     }
     $captcha = new instance('captcha', [
       'ip_address'  => static::id_get(),

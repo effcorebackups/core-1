@@ -60,7 +60,7 @@ namespace effcore {
   function fill($color, $x = 0, $y = 0, $w = null, $h = null, $random = 0) {
     for ($c_y = 0; $c_y < ($h ?: $this->h); $c_y++) {
     for ($c_x = 0; $c_x < ($w ?: $this->w); $c_x++) {
-      if (!$random || ($random && rand(0, 10) / 10 > $random)) {
+      if (!$random || ($random && random_int(0, 10) / 10 > $random)) {
         $this->pixel_set($c_x + $x, $c_y + $y, $color);
       }
     }}
