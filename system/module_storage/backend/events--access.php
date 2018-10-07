@@ -26,10 +26,11 @@ namespace effcore\modules\storage {
       if (count($idkeys) ==
           count($idvalues)) {
         $instance = new instance($entity_name, array_combine($idkeys, $idvalues));
-        if (!$instance->select())
-             core::send_header_and_exit('page_not_found');
-      } else core::send_header_and_exit('page_not_found');
-    }   else core::send_header_and_exit('page_not_found');
+        $result = $instance->select();
+        if (!empty($result->is_embed)) core::send_header_and_exit('access_denided');
+        if (!      $result)            core::send_header_and_exit('page_not_found');
+      } else                           core::send_header_and_exit('page_not_found');
+    }   else                           core::send_header_and_exit('page_not_found');
   }
 
 }}
