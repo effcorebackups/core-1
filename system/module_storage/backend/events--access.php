@@ -26,13 +26,10 @@ namespace effcore\modules\storage {
       if (count($idkeys) ==
           count($idvalues)) {
         $instance = new instance($entity_name, array_combine($idkeys, $idvalues));
-        if (!$instance->select()) {
-          core::send_header_and_exit('page_not_found');
-        }
-      }
-    } else {
-      core::send_header_and_exit('page_not_found');
-    }
+        if (!$instance->select())
+             core::send_header_and_exit('page_not_found');
+      } else core::send_header_and_exit('page_not_found');
+    }   else core::send_header_and_exit('page_not_found');
   }
 
 }}
