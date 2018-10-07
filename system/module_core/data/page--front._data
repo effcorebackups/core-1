@@ -5,6 +5,10 @@ pages
       check: url
       where: path
       match: %^/$%
+    access
+      roles
+      - =: anonymous
+      - =: registered
     children
     - menu_main|page_part
         region: main_menu

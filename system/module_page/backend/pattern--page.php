@@ -232,7 +232,7 @@ namespace effcore {
     foreach (static::all_get(false) as $c_page) {
       $c_args = static::is_displayed_by_current_url($c_page->display);
       if (is_array($c_args)) {
-        if (!isset($c_page->access) || access::check($c_page->access)) {
+        if (access::check($c_page->access)) {
           if ($c_page instanceof external_cache)
               $c_page = $c_page->external_cache_load();
           static::$current = $c_page;

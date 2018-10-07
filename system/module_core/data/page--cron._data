@@ -5,6 +5,10 @@ pages
       check: url
       where: path
       match: %^/cron/(?<key>[a-z0-9]{40})$%
+    access
+      roles
+      - =: anonymous
+      - =: registered
     children
     - block_cron|page_part
         region: content
