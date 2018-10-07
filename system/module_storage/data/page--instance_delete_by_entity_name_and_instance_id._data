@@ -10,6 +10,10 @@ pages
       roles
       - =: admins
     children
+    - check_access_instance_delete|page_part
+        region: head
+        type: code
+        source: \effcore\modules\storage\events_access::on_check_access_instance_delete
     - menu_main|page_part
         region: main_menu
         type: link
@@ -26,10 +30,6 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        region: tabs
-        type: link
-        source: tabs/storage/manage_instances
     - form_instance_delete|page_part
         region: content
         type: link

@@ -103,9 +103,6 @@ namespace effcore {
   static function instance_update_by_entity_name_and_instance_id($page) {
     $entity = entity::get($page->args_get('entity_name'));
     if ($entity) {
-      $tab = tabs::item_select('instance_update');
-      $tab->action_name = 'update/'.$entity->name;
-      $tab->hidden = false;
     # @todo: make functionality
       return new text('instance_update is UNDER CONSTRUCTION');
     } else {
@@ -119,13 +116,9 @@ namespace effcore {
   # delete single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_delete_by_entity_name_and_instance_id($page) {
+  static function instance_delete_by_entity_name_and_instance_id($page, $form, $items) {
     $entity = entity::get($page->args_get('entity_name'));
     if ($entity) {
-      $tab = tabs::item_select('instance_delete');
-      $tab->action_name = 'delete/'.$entity->name;
-      $tab->hidden = false;
-    # delete instance
       $entity_name = $page->args_get('entity_name');
       $instance_id = $page->args_get('instance_id');
       $idkeys = entity::get($entity_name)->real_id_get();
@@ -137,10 +130,6 @@ namespace effcore {
           // print_R( $instance );
         }
       }
-    } else {
-      url::go(
-        $page->args_get('base').'/select'
-      );
     }
   }
 

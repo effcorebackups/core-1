@@ -26,10 +26,6 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        region: tabs
-        type: link
-        source: tabs/storage/manage_instances
     - block_instance_delete_multiple_by_instances_id|page_part
         region: content
         type: code

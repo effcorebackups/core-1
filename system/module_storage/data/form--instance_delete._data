@@ -5,6 +5,7 @@ forms
     - method: post
     - =: novalidate
     children
+    - info|fieldset
     - button_delete|button
         title: delete
         attributes
