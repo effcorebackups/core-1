@@ -30,8 +30,8 @@ namespace effcore\modules\storage {
         $result = manage_instances::instance_delete_by_entity_name_and_instance_id(
           page::current_get(), $form, $items
         );
-        if ($result) {
-             message::insert(translation::get('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));}
+        if ($result)
+             message::insert(translation::get('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
         else message::insert(translation::get('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
         url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
         break;
