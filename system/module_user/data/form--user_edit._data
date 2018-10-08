@@ -10,12 +10,7 @@ forms
         title: Credentials
         children
         - email|field_email
-        - nick|field_text
-            title: Nick
-            element_attributes
-            - name: nick
-            - minlength: 4
-            - maxlength: 32
+        - nick|field_nick
         - avatar|field_file
             title: Avatar
             max_file_size: 10K
