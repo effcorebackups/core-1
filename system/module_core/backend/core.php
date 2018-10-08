@@ -366,6 +366,10 @@ namespace effcore {
          '(?<B>[a-f0-9]{2})$%']]);
   }
 
+  static function validate_nick($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z0-9-_]{4,32}$%']]);
+  }
+
   static function validate_phone($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
   }
