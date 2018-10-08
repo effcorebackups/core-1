@@ -27,7 +27,7 @@ tree_items
     id: user_edit
     id_parent: M:user_logged_in
     title: edit
-    url: /user/%%_id_user/edit
+    url: /user/%%_nick/edit
     access
       roles
       - =: admins
