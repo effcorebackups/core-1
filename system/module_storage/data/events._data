@@ -15,6 +15,10 @@ events
   - pdo|event
       for: pdo
       handler: \effcore\modules\storage\events_storage::on_query_after
+  on_form_init
+  - instance_delete|event
+      for: instance_delete
+      handler: \effcore\modules\storage\events_form_instance_delete::on_init
   on_form_submit
   - instance_delete|event
       for: instance_delete

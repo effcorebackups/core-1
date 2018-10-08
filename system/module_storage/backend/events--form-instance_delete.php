@@ -5,12 +5,21 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\fieldset;
           use \effcore\manage_instances;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
           use \effcore\translation;
           use \effcore\url;
           abstract class events_form_instance_delete {
+
+  static function on_init($form, $items) {
+    $entity_name = page::current_get()->args_get('entity_name');
+    $instance_id = page::current_get()->args_get('instance_id');
+    $question = new markup('p', [], translation::get('Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?', ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
+    $items['info']->child_insert($question);
+  }
 
   static function on_submit($form, $items) {
     $base        = page::current_get()->args_get('base');
