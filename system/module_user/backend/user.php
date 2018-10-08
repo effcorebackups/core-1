@@ -9,19 +9,13 @@ namespace effcore {
 
   static protected $cache;
 
-  static function init($id = null) {
-    static::$cache = new \stdClass;
-    static::$cache->id = 0;
-    static::$cache->roles = ['anonymous' => 'anonymous'];
-  # load user from storage
-    if ($id !== null) {
-      $user = (new instance('user', [
-        'id' => $id
-      ]))->select();
-      if ($user) {
-        static::$cache = (object)($user->values_get());
-        static::$cache->roles = static::id_roles_get($user->id);
-        static::$cache->roles['registered'] = 'registered';
+  static function init($nick = null) {
+    static::$cache = new instance('user', ['nick' => null, 'roles' => ['anonymous' => 'anonymous']]);
+    if ($nick != null) {
+      $user = new instance('user', ['nick' => $nick]);
+      if ($user->select()) {
+        $user->roles = static::id_roles_get($nick) + ['registered' => 'registered'];
+        static::$cache = $user;
       }
     }
   }
@@ -31,9 +25,9 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function id_roles_get($id) {
+  static function id_roles_get($nick) {
     $id_roles = [];
-    $roles = entity::get('relation_role_ws_user')->instances_select(['id_user' => $id]);
+    $roles = entity::get('relation_role_ws_user')->instances_select(['nick' => $nick]);
     foreach ($roles as $c_role)
       $id_roles[$c_role->id_role] =
                 $c_role->id_role;

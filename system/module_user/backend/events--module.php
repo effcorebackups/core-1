@@ -18,8 +18,8 @@ namespace effcore\modules\user {
   static function on_start() {
     $session = session::select();
     if ($session &&
-        $session->id_user) {
-      user::init($session->id_user);
+        $session->nick) {
+      user::init($session->nick);
     }
   }
 

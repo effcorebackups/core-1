@@ -27,24 +27,24 @@ namespace effcore {
     }
   }
 
-  static function insert($id_user, $session_params = []) {
+  static function insert($nick, $session_params = []) {
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     $period = !$is_remember ? static::period_expire_d : static::period_expire_m;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
       'id'          => static::id_get(),
-      'id_user'     => $id_user,
+      'nick'        => $nick,
       'is_remember' => $is_remember ? 1 : 0,
       'is_fixed_ip' => $is_fixed_ip ? 1 : 0,
       'expire'      => core::datetime_get('+'.$period.' second'),
     ]))->insert();
   }
 
-  static function delete($id_user) {
+  static function delete($nick) {
     (new instance('session', [
-      'id'      => static::id_get(),
-      'id_user' => $id_user
+      'id'   => static::id_get(),
+      'nick' => $nick
     ]))->delete();
     static::id_regenerate('a');
   }

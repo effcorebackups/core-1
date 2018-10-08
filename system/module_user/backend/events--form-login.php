@@ -31,7 +31,6 @@ namespace effcore\modules\user {
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
           if (!$user || (
-               $user->password_hash &&
                $user->password_hash !== core::hash_password_get($items['#password']->value_get()))) {
             $items['#email'   ]->error_set();
             $items['#password']->error_set();
@@ -50,10 +49,10 @@ namespace effcore\modules\user {
         ]))->select();
         if ($user &&
             $user->password_hash === core::hash_password_get($items['#password']->value_get())) {
-          session::insert($user->id,
+          session::insert($user->nick,
             core::array_kmap($items['*session_params']->values_get())
           );
-          url::go('/user/'.$user->id);
+          url::go('/user/'.$user->nick);
         }
         break;
     }

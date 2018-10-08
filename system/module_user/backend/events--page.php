@@ -48,7 +48,7 @@ namespace effcore\modules\user {
       if ($user->id == user::current_get()->id ||               # owner
                  isset(user::current_get()->roles['admins'])) { # admin
       # get values
-        $user_roles = user::id_roles_get($user->id);
+        $user_roles = user::id_roles_get($user->nick);
         $values = $user->values_get();
         $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
         $values['created'] = locale::format_datetime($values['created']);
