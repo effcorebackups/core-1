@@ -76,16 +76,17 @@ entities
         type: varchar
         size: 255
         not_null: true
-    - id_user
-        title: User ID
-        type: integer
+    - nick
+        title: Nick
+        type: varchar
+        size: 32
         not_null: true
     constraints
-    - primary_id_role_id_user
+    - primary_id_role_nick
         type: primary
         fields
         - =: id_role
-        - =: id_user
+        - =: nick
     - foreign_id_role
         type: foreign
         fields
@@ -93,13 +94,13 @@ entities
         references: roles
         references_fields
         - =: id
-    - foreign_id_user
+    - foreign_nick
         type: foreign
         fields
-        - =: id_user
+        - =: nick
         references: users
         references_fields
-        - =: id
+        - =: nick
 - role|entity
     name: role
     title: Role
@@ -141,9 +142,10 @@ entities
         type: varchar
         size: 255
         not_null: true
-    - id_user
-        title: User ID
-        type: integer
+    - nick
+        title: Nick
+        type: varchar
+        size: 32
         not_null: true
     - is_remember
         title: Is remember
@@ -168,13 +170,13 @@ entities
         type: primary
         fields
         - =: id
-    - foreign_id_user
+    - foreign_nick
         type: foreign
         fields
-        - =: id_user
+        - =: nick
         references: users
         references_fields
-        - =: id
+        - =: nick
 - user|entity
     name: user
     title: User
@@ -184,19 +186,15 @@ entities
     ws_created: true
     ws_updated: true
     fields
-    - id
-        title: ID
-        type: autoincrement
+    - nick
+        title: Nick
+        type: varchar
+        size: 32
         not_null: true
     - email
         title: EMail
         type: varchar
         size: 64
-        not_null: true
-    - nick
-        title: Nick
-        type: varchar
-        size: 32
         not_null: true
     - password_hash
         title: Password hash
@@ -214,15 +212,11 @@ entities
         type: varchar
         size: 1024
     constraints
-    - primary_id
+    - primary_nick
         type: primary
         fields
-        - =: id
+        - =: nick
     - unique_email
         type: unique
         fields
         - =: email
-    - unique_nick
-        type: unique
-        fields
-        - =: nick

@@ -5,7 +5,6 @@ instances
 - user_admin|instance
     entity_name: user
     values
-    - id: 1
     - nick: admin
     - email: admin@example.com
     - password_hash: 8cb2237d0679ca88db6464eac60da96345513964
@@ -73,7 +72,7 @@ instances
     entity_name: relation_role_ws_user
     values
     - id_role: admins
-    - id_user: 1
+    - nick: admin
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
