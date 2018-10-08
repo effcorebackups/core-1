@@ -15,8 +15,8 @@ namespace effcore\modules\user {
           abstract class events_form_user_edit {
 
   static function on_init($form, $items) {
-    $id_user = page::current_get()->args_get('id_user');
-    $user = (new instance('user', ['id' => $id_user]))->select();
+    $nick = page::current_get()->args_get('nick');
+    $user = (new instance('user', ['nick' => $nick]))->select();
     $items['#email']->value_set($user->email);
     $items['#nick']->value_set($user->nick);
     $items['#avatar']->pool_values_init_old_from_storage(
@@ -28,10 +28,12 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         if ($form->total_errors_count_get() == 0) {
-          $id_user = page::current_get()->args_get('id_user');
+          $nick = page::current_get()->args_get('nick');
         # check security
-          $test_pass = (new instance('user', ['id' => $id_user]))->select();
-          if ($test_pass->password_hash !== core::hash_password_get($items['#password']->value_get())) {
+          $test_password = (new instance('user', [
+            'nick' => $nick
+          ]))->select();
+          if ($test_password->password_hash !== core::hash_password_get($items['#password']->value_get())) {
             $items['#password']->error_set(
               translation::get('Field "%%_title" contains incorrect value!', [
                 'title' => translation::get($items['#password']->title)
@@ -44,7 +46,7 @@ namespace effcore\modules\user {
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
           if ($test_email &&
-              $test_email->id != $id_user) {
+              $test_email->nick != $nick) {
             $items['#email']->error_set(
               'User with this EMail was already registered!'
             );
@@ -55,7 +57,7 @@ namespace effcore\modules\user {
             'nick' => strtolower($items['#nick']->value_get())
           ]))->select();
           if ($test_nick &&
-              $test_nick->id != $id_user) {
+              $test_nick->nick != $nick) {
             $items['#nick']->error_set(
               'User with this Nick was already registered!'
             );
@@ -75,10 +77,10 @@ namespace effcore\modules\user {
   }
 
   static function on_submit($form, $items) {
-    $id_user = page::current_get()->args_get('id_user');
+    $nick = page::current_get()->args_get('nick');
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        $user = (new instance('user', ['id' => $id_user]))->select();
+        $user = (new instance('user', ['nick' => $nick]))->select();
         $user->email = strtolower($items['#email']->value_get());
         $user->nick  = strtolower($items['#nick']->value_get());
         if ($items['#password_new']->value_get()) {
@@ -95,7 +97,7 @@ namespace effcore\modules\user {
           message::insert(
             translation::get('User %%_nick was updated.', ['nick' => $user->nick])
           );
-          url::go(url::back_url_get() ?: '/user/'.$id_user);
+          url::go(url::back_url_get() ?: '/user/'.$nick);
         } else {
           message::insert(
             translation::get('User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
@@ -103,7 +105,7 @@ namespace effcore\modules\user {
         }
         break;
       case 'cancel':
-        url::go(url::back_url_get() ?: '/user/'.$id_user);
+        url::go(url::back_url_get() ?: '/user/'.$nick);
         break;
     }
   }

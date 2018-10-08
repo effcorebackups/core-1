@@ -9,12 +9,7 @@ forms
         title: Credentials
         children
         - email|field_email
-        - nick|field_text
-            title: Nick
-            element_attributes
-            - name: nick
-            - minlength: 4
-            - maxlength: 32
+        - nick|field_nick
         - password|field_password
         - session_params|group_checkboxes
             element_attributes

@@ -20,6 +20,10 @@ namespace effcore {
     }
   }
 
+  static function insert($values) {
+    return (new instance('user', $values))->insert();
+  }
+
   static function current_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;

@@ -15,7 +15,7 @@ tests
             - return_result|step_return
                 value: 0
         - request_page_login|step_request
-            url: /user/login
+            url: /login
         - response_check|step_check
             where: http_code
             match: 200
@@ -23,7 +23,7 @@ tests
             - return_result|step_return
                 value: 0
         - request_page_registration|step_request
-            url: /user/registration
+            url: /registration
         - response_check|step_check
             where: http_code
             match: 200

@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^/user/logout$%
+      match: %^/logout$%
     access
       roles
       - =: registered

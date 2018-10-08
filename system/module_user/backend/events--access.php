@@ -12,11 +12,11 @@ namespace effcore\modules\user {
 
   static function on_check_access_user_edit($page) {
     $user = (new instance('user', [
-      'id' => $page->args_get('id_user')
+      'nick' => $page->args_get('nick')
     ]))->select();
     if ($user) {
-      if (!($user->id == user::current_get()->id ||                # not owner or
-                   isset(user::current_get()->roles['admins']))) { # not admin
+      if (!($user->nick == user::current_get()->nick ||              # not owner or
+                     isset(user::current_get()->roles['admins']))) { # not admin
         core::send_header_and_exit('access_denided');
       }
     } else {

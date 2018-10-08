@@ -10,6 +10,7 @@ namespace effcore\modules\user {
           use \effcore\message;
           use \effcore\session;
           use \effcore\url;
+          use \effcore\user;
           abstract class events_form_registration {
 
   static function on_validate($form, $items) {
@@ -38,16 +39,16 @@ namespace effcore\modules\user {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'register':
-        $user = (new instance('user', [
+        $user = user::insert([
           'email'         => strtolower($items['#email']->value_get()),
-          'nick'          => strtolower($items['#nick']->value_get()),
+          'nick'          => strtolower($items['#nick' ]->value_get()),
           'password_hash' => core::hash_password_get($items['#password']->value_get())
-        ]))->insert();
+        ]);
         if ($user) {
-          session::insert($user->id,
+          session::insert($user->nick,
             core::array_kmap($items['*session_params']->values_get())
           );
-          url::go('/user/'.$user->id);
+          url::go('/user/'.$user->nick);
         } else {
           message::insert('User was not registered!', 'error');
         }

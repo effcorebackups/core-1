@@ -102,7 +102,8 @@ namespace effcore\modules\core {
         storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
           'cron'            => sha1(random_int(0, 0x7fffffff)),
           'form_validation' => sha1(random_int(0, 0x7fffffff)),
-          'session'         => sha1(random_int(0, 0x7fffffff))
+          'session'         => sha1(random_int(0, 0x7fffffff)),
+          'salt'            => sha1(random_int(0, 0x7fffffff))
         ]);
         storage::cache_reset();
         event::start('on_module_install');

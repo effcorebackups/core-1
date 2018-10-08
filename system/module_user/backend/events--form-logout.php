@@ -13,7 +13,7 @@ namespace effcore\modules\user {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'logout':
-        session::delete(user::current_get()->id);
+        session::delete(user::current_get()->nick);
         url::go('/');
         break;
       case 'cancel':
