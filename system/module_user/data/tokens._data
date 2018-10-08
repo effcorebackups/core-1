@@ -2,10 +2,6 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # tokens for current user
 # ─────────────────────────────────────────────────────────────────────
-- id_user
-    match: %%_id_user
-    type: code
-    handler: \effcore\modules\user\events_token::on_replace
 - email
     match: %%_email
     type: code
@@ -17,10 +13,6 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # tokens for context user (user id is taken from url)
 # ─────────────────────────────────────────────────────────────────────
-- id_user_context
-    match: %%_id_user_context
-    type: code
-    handler: \effcore\modules\user\events_token::on_replace
 - email_context
     match: %%_email_context
     type: code
