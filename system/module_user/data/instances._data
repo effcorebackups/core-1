@@ -7,7 +7,6 @@ instances
     values
     - nick: admin
     - email: admin@example.com
-    - password_hash: 8cb2237d0679ca88db6464eac60da96345513964
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
 # roles

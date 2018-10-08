@@ -464,8 +464,7 @@ namespace effcore {
   }
 
   static function hash_password_get($data) {
-    return sha1($data);
-  # return static::key_get('salt').sha1($data);
+    return sha1($data.static::key_get('salt'));
   }
 
   static function hash_data_get($data) {
