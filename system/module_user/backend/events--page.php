@@ -20,7 +20,7 @@ namespace effcore\modules\user {
 
   static function on_show_block_menu_user($page) {
     $user = user::current_get();
-    if (empty($user->id)) {
+    if (empty($user->nick)) {
       $src = '/'.module::get('user')->path.'frontend/images/avatar-anonymous._vector';
       $block_menu = new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_anonymous'),
@@ -31,7 +31,7 @@ namespace effcore\modules\user {
          '/'.$user->avatar_path_relative : '/'.module::get('user')->path.'frontend/images/avatar-logged_in._vector';
       $block_menu = new block('', ['class' => ['menu-user' => 'menu-user']], [
         storage::get('files')->select('trees/user/user_logged_in'),
-        new markup('a', ['href' => '/user/'.$user->id],
+        new markup('a', ['href' => '/user/'.$user->nick],
           new markup_simple('img', ['class' => ['avatar' => 'avatar'], 'alt' => 'avatar', 'src' => $src])
         )
       ]);
@@ -42,11 +42,11 @@ namespace effcore\modules\user {
 
   static function on_show_block_user_info($page) {
     $user = (new instance('user', [
-      'id' => $page->args_get('id_user')
+      'nick' => $page->args_get('nick')
     ]))->select();
     if ($user) {
-      if ($user->id == user::current_get()->id ||               # owner
-                 isset(user::current_get()->roles['admins'])) { # admin
+      if ($user->nick == user::current_get()->nick ||             # owner
+                   isset(user::current_get()->roles['admins'])) { # admin
       # get values
         $user_roles = user::id_roles_get($user->nick);
         $values = $user->values_get();
