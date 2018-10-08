@@ -13,7 +13,7 @@ namespace effcore\modules\user {
 
   static function on_init($form, $items) {
     $role_entity = entity::get('role');
-    $role_instances = $role_entity->instances_select();
+    $role_instances = $role_entity->instances_select([], ['is_embed desc', 'title']);
     $access = null;
     switch ($form->_args['entity_name']) {
       case 'page': $access = $form->_page->access; break;
