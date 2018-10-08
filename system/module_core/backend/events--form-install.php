@@ -108,8 +108,6 @@ namespace effcore\modules\core {
         storage::cache_reset();
         event::start('on_module_install');
         message::insert(translation::get('Modules was installed.'));
-        message::insert(translation::get('For login to the system was set the EMail "%%_email" and the password "%%_password".', ['email' => 'admin@example.com', 'password' => '12345']));
-        message::insert(translation::get('Change this EMail and Password after login to the system!'));
         $form->child_delete('storage');
         $form->child_delete('license_agreement');
         $form->child_delete('button_install');
