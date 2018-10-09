@@ -136,7 +136,6 @@ entities
     title_plural: Sessions
     storage_id: main
     catalog_id: sessions
-    ws_created: true
     fields
     - id
         title: ID
