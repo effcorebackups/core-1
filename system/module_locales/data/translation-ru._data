@@ -88,7 +88,6 @@ translations
     - events: события
     - Events: События
     - expand: развернуть
-    - Expire date: Дата истечения
     - failed to write file to disk: не удалось записать файл на диск
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
