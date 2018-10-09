@@ -24,6 +24,14 @@ namespace effcore {
         static::$cache[$c_language->code]->module_id = $c_module_id;
       }
     }
+    foreach (storage::get('files')->select('plurals') as $c_module_id => $c_plurals_by_module) {
+      foreach ($c_plurals_by_module as $c_plurals_by_language) {
+        foreach ($c_plurals_by_language->data as $c_plural_name => $c_plural_info) {
+          if (isset(static::$cache[$c_plurals_by_language->code]))
+                    static::$cache[$c_plurals_by_language->code]->plurals[$c_plural_name] = $c_plural_info;
+        }
+      }
+    }
   }
 
   static function get($code) {
