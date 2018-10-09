@@ -21,9 +21,11 @@ namespace effcore\modules\user {
     if ($admin->select()) {
       $password = dechex(random_int(0x10000000, 0x7fffffff));
       $admin->password_hash = core::hash_password_get($password);
-      $admin->update();
-      message::insert(translation::get('For login to the system was set the EMail "%%_email" and the password "%%_password".', ['email' => 'admin@example.com', 'password' => $password]), 'notice');
-      message::insert(translation::get('Change this EMail and Password after login to the system!'), 'notice');
+      if ($admin->update()) {
+        message::insert(translation::get('Your EMail is: %%_email', ['email' => 'admin@example.com']), 'notice');
+        message::insert(translation::get('Your Password is: %%_password', ['password' => $password]), 'notice');
+        message::insert(translation::get('Change this EMail and Password after login to the system!'), 'notice');
+      }
     }
   }
 
