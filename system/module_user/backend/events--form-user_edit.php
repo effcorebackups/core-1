@@ -97,7 +97,7 @@ namespace effcore\modules\user {
           message::insert(
             translation::get('User %%_nick was updated.', ['nick' => $user->nick])
           );
-          url::go(url::back_url_get() ?: '/user/'.$nick);
+          url::go(url::back_url_get() ?: '/user/'.$user->nick);
         } else {
           message::insert(
             translation::get('User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
@@ -105,7 +105,7 @@ namespace effcore\modules\user {
         }
         break;
       case 'cancel':
-        url::go(url::back_url_get() ?: '/user/'.$nick);
+        url::go(url::back_url_get() ?: '/user/'.$user->nick);
         break;
     }
   }

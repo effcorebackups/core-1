@@ -38,7 +38,7 @@ namespace effcore {
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select();
-      $idkeys    = $entity->real_id_get();
+      $id_keys   = $entity->real_id_get();
     }
   # make markup
     if (!empty($entity)) {
@@ -70,7 +70,7 @@ namespace effcore {
               switch ($c_field->type) {
                 case 'actions':
                   $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']],
-                    $idkeys ? $this->action_list_get($entity, $c_instance, $idkeys) : ''
+                    $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
                   );
                   break;
                 case 'field':
@@ -99,14 +99,14 @@ namespace effcore {
     }
   }
 
-  function action_list_get($entity, $instance, $idkeys) {
-    $idvalues = array_intersect_key($instance->values, $idkeys);
+  function action_list_get($entity, $instance, $id_keys) {
+    $id_values = array_intersect_key($instance->values, $id_keys);
     if (empty($instance->is_embed)) {
       $action_list = new control_actions_list();
       $action_list->title = ' ';
-      $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $idvalues), 'select');
-      $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $idvalues), 'update');
-      $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $idvalues), 'delete');
+      $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values), 'select');
+      $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values), 'update');
+      $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values), 'delete');
       return $action_list;
     }
   }

@@ -121,11 +121,11 @@ namespace effcore {
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $idkeys = entity::get($entity_name)->real_id_get();
-      $idvalues = explode('+', $instance_id);
-      if (count($idkeys) ==
-          count($idvalues)) {
-        $instance = new instance($entity_name, array_combine($idkeys, $idvalues));
+      $id_keys   = entity::get($entity_name)->real_id_get();
+      $id_values = explode('+', $instance_id);
+      if (count($id_keys) ==
+          count($id_values)) {
+        $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
           return $instance->delete();
         }

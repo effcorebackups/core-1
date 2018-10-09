@@ -287,15 +287,16 @@ namespace effcore {
 
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
-      $entity = $instance->entity_get();
-      $idkeys = $entity->real_id_from_values_get($instance->values_get());
-      $result = $this->query(
+      $entity    = $instance->entity_get();
+      $id_fields = $entity->real_id_from_values_get($instance->values_get());
+      $result    = $this->query(
         'SELECT', $this->fields($entity->fields_name_get()),
         'FROM',   $this->tables($entity->catalog_id),
-        'WHERE',  $this->attributes($idkeys), 'LIMIT', 1);
+        'WHERE',  $this->attributes($id_fields), 'LIMIT', 1);
       if (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
           $instance->{$c_name} = $c_value;
+          $instance->_id_fields_original = $id_fields;
         }
         return $instance;
       }
@@ -322,14 +323,15 @@ namespace effcore {
 
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
-      $entity = $instance->entity_get();
-      $idkeys = $entity->real_id_from_values_get($instance->values_get());
-      $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
+      $entity    = $instance->entity_get();
+      $id_fields = $entity->real_id_from_values_get($instance->values_get());
+      $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->catalog_id),
         'SET',    $this->attributes($values, ','),
-        'WHERE',  $this->attributes($idkeys));
+        'WHERE',  $this->attributes($instance->_id_fields_original));
       if ($row_count === 1) {
+        $instance->_id_fields_original = $id_fields;
         return $instance;
       }
     }
@@ -337,11 +339,11 @@ namespace effcore {
 
   function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
-      $entity = $instance->entity_get();
-      $idkeys = $entity->real_id_from_values_get($instance->values_get());
+      $entity    = $instance->entity_get();
+      $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $row_count = $this->query(
         'DELETE', 'FROM', $this->tables($entity->catalog_id),
-        'WHERE',          $this->attributes($idkeys));
+        'WHERE',          $this->attributes($id_fields));
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;
