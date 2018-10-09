@@ -67,7 +67,8 @@
   select {cursor: pointer}
   textarea {display: block; width: 80%; min-width: 100px}
   input[type='range'] {border-radius: 20px}
-  input[type='email'], input[name='nick'] {text-transform: lowercase}
+  input[data-type='email'],
+  input[data-type='nick'] {text-transform: lowercase}
 
   /* checkboxes and radiobuttons */
 
@@ -93,8 +94,8 @@
 
   /* checkboxes and radiobuttons inside containers */
 
-  x-field[data-type='switcher'   ] label,
-  x-field[data-type='checkbox'   ] label,
+  x-field[data-type='switcher']    label,
+  x-field[data-type='checkbox']    label,
   x-field[data-type='radiobutton'] label {display: inline}
 
   x-group[data-type='checkboxes'  ] x-field,

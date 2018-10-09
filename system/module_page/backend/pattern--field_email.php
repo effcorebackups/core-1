@@ -11,6 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'email'];
   public $element_attributes_default = [
     'type'      => 'email',
+    'data-type' => 'email',
     'name'      => 'email',
     'required'  => 'required',
     'minlength' => 5,
