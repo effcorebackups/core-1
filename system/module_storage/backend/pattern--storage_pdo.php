@@ -329,7 +329,7 @@ namespace effcore {
       $row_count = $this->query(
         'UPDATE', $this->tables($entity->catalog_id),
         'SET',    $this->attributes($values, ','),
-        'WHERE',  $this->attributes($instance->_id_fields_original));
+        'WHERE',  $this->attributes($instance->_id_fields_original ?: $id_fields));
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
