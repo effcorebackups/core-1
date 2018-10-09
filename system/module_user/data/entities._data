@@ -107,6 +107,7 @@ entities
     title_plural: Roles
     storage_id: main
     catalog_id: roles
+    ws_weight: true
     ws_created: true
     ws_updated: true
     fields

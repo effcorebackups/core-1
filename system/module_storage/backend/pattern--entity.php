@@ -11,6 +11,7 @@ namespace effcore {
   public $name;
   public $storage_id;
   public $catalog_id;
+  public $ws_weight;
   public $ws_created;
   public $ws_updated;
   public $title;
@@ -20,7 +21,18 @@ namespace effcore {
   public $indexes = [];
 
   function __post_parse() {
-  # add field 'created' and index for it
+  # insert field 'weight' and index for it
+    if ($this->ws_weight) {
+      $this->fields['weight'] = new \stdClass;
+      $this->fields['weight']->title = 'Weight';
+      $this->fields['weight']->type = 'integer';
+      $this->fields['weight']->not_null = true;
+      $this->fields['weight']->default = 0;
+      $this->indexes['index_weight'] = new \stdClass;
+      $this->indexes['index_weight']->type = 'index';
+      $this->indexes['index_weight']->fields = ['weight' => 'weight'];
+    }
+  # insert field 'created' and index for it
     if ($this->ws_created) {
       $this->fields['created'] = new \stdClass;
       $this->fields['created']->title = 'Created';
@@ -30,7 +42,7 @@ namespace effcore {
       $this->indexes['index_created']->type = 'index';
       $this->indexes['index_created']->fields = ['created' => 'created'];
     }
-  # add field 'updated' and index for it
+  # insert field 'updated' and index for it
     if ($this->ws_updated) {
       $this->fields['updated'] = new \stdClass;
       $this->fields['updated']->title = 'Updated';
