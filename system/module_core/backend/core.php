@@ -442,13 +442,14 @@ namespace effcore {
   ### functionality for ip ###
   ############################
 
-  static function ip_to_hex($ip) {
+  static function ip_to_hex($ip, $ip_v6_allways = true) {
     $ip_hex = '';
     $inaddr = inet_pton($ip);
     foreach (str_split($inaddr, 1) as $c_char) {
       $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
     }
-    return $ip_hex;
+    return !$ip_v6_allways ? $ip_hex :
+                     str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
   }
 
   static function hex_to_ip($ip_hex) {
@@ -537,8 +538,7 @@ namespace effcore {
   }
 
   static function server_remote_addr_get() {
-    return $_SERVER['REMOTE_ADDR'] == '::1' ? '127.0.0.1' :
-           $_SERVER['REMOTE_ADDR'];
+    return $_SERVER['REMOTE_ADDR'];
   }
 
   static function server_request_uri_get() {
