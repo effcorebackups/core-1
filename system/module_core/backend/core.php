@@ -443,21 +443,20 @@ namespace effcore {
   ############################
 
   static function ip_to_hex($ip) {
-  # do not use ip2long() on 32-bit platforms
-    $ip_parts_int = explode('.', $ip);
-    return str_pad(dechex($ip_parts_int[0]), 2, '0', STR_PAD_LEFT).
-           str_pad(dechex($ip_parts_int[1]), 2, '0', STR_PAD_LEFT).
-           str_pad(dechex($ip_parts_int[2]), 2, '0', STR_PAD_LEFT).
-           str_pad(dechex($ip_parts_int[3]), 2, '0', STR_PAD_LEFT);
+    $ip_hex = '';
+    $inaddr = inet_pton($ip);
+    foreach (str_split($inaddr, 1) as $c_char) {
+      $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
+    }
+    return $ip_hex;
   }
 
   static function hex_to_ip($ip_hex) {
-  # do not use long2ip() on 32-bit platforms
-    $ip_parts_hex = str_split($ip_hex, 2);
-    return hexdec($ip_parts_hex[0]).'.'.
-           hexdec($ip_parts_hex[1]).'.'.
-           hexdec($ip_parts_hex[2]).'.'.
-           hexdec($ip_parts_hex[3]);
+    $inaddr = '';
+    foreach (str_split($ip_hex, 2) as $c_part) {
+      $inaddr.= chr(hexdec($c_part));
+    }
+    return inet_ntop($inaddr);
   }
 
 
