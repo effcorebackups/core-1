@@ -435,6 +435,7 @@ namespace effcore {
   ############################
 
   static function ip_to_hex($ip) {
+  # do not use ip2long() on 32-bit platforms
     $ip_parts_int = explode('.', $ip);
     return str_pad(dechex($ip_parts_int[0]), 2, '0', STR_PAD_LEFT).
            str_pad(dechex($ip_parts_int[1]), 2, '0', STR_PAD_LEFT).
@@ -443,6 +444,7 @@ namespace effcore {
   }
 
   static function hex_to_ip($ip_hex) {
+  # do not use long2ip() on 32-bit platforms
     $ip_parts_hex = str_split($ip_hex, 2);
     return hexdec($ip_parts_hex[0]).'.'.
            hexdec($ip_parts_hex[1]).'.'.
