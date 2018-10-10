@@ -386,6 +386,14 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
+  static function validate_ip_v4($value) {
+    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+  }
+
+  static function validate_ip_v6($value) {
+    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+  }
+
   static function validate_url($value) {
     return filter_var($value, FILTER_VALIDATE_URL);
   }
