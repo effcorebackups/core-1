@@ -7,10 +7,10 @@ entities
     catalog_id: captcha
     ws_created: true
     fields
-    - ip_address
+    - ip_hex
         title: IP address
         type: varchar
-        size: 15
+        size: 32
         not_null: true
     - characters
         title: Characters
@@ -27,7 +27,7 @@ entities
         type: blob
         not_null: true
     constraints
-    - primary_ip_address
+    - primary_ip_hex
         type: primary
         fields
-        - =: ip_address
+        - =: ip_hex

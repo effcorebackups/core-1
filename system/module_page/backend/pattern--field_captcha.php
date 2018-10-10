@@ -39,7 +39,7 @@ namespace effcore {
 
   function captcha_select() {
     $captcha = (new instance('captcha', [
-      'ip_address' => static::id_get()
+      'ip_hex' => static::id_get()
     ]))->select();
     if ($captcha) {
       $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
@@ -62,7 +62,7 @@ namespace effcore {
       );
     }
     $captcha = new instance('captcha', [
-      'ip_address'  => static::id_get(),
+      'ip_hex'      => static::id_get(),
       'characters'  => $characters,
       'attempts'    => $this->attempts,
       'canvas'      => $canvas,
@@ -73,7 +73,7 @@ namespace effcore {
 
   function captcha_validate($characters) {
     $captcha = (new instance('captcha', [
-      'ip_address' => static::id_get()
+      'ip_hex' => static::id_get()
     ]))->select();
     if ($captcha) {
       if ($captcha->attempts > 0) {
