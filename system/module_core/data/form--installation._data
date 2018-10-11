@@ -37,7 +37,7 @@ forms
                 - value: 127.0.0.1
                 - minlength: 1
                 - maxlength: 253
-                - pattern: %^[a-zA-Z0-9-_:/.]+$%
+                - pattern: %^[a-zA-Z0-9-_:/.\[\]]+$%
           # port
             - port|field_number
                 title: Port
