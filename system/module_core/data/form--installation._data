@@ -34,7 +34,7 @@ forms
                 title: Hostname
                 element_attributes
                 - name: host_name
-                - value: 127.0.0.1
+                - value: [::1]
                 - minlength: 1
                 - maxlength: 253
                 - pattern: %^[a-zA-Z0-9-_:/.\[\]]+$%
