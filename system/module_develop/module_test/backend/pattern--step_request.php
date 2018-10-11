@@ -63,7 +63,7 @@ namespace effcore {
 
   function captcha_code_get() {
     $captcha = (new instance('captcha', [
-      'ip_hex' => '0000000000000000000000007f000001'
+      'ip_hex' => core::ip_to_hex('::1')
     ]))->select();
     if ($captcha) {
       return $captcha->characters;
