@@ -100,7 +100,8 @@ namespace effcore {
   static function id_hex_random_get()         {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function id_hex_signature_get($id)   {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
 
-  static function id_expired_extract($id)           {return hexdec(substr($id, 1, 8));}
+  static function id_expired_extract($id)           {return hexdec(static::id_hex_expired_extract($id));}
+  static function id_hex_expired_extract($id)       {return substr($id,      1,  8);}
   static function id_hex_type_extract($id)          {return substr($id,      0,  1);}
   static function id_hex_ip_extract($id)            {return substr($id,  8 + 1, 32);}
   static function id_hex_uagent_hash_8_extract($id) {return substr($id, 40 + 1,  8);}
@@ -114,7 +115,7 @@ namespace effcore {
       $hex_ip            = static::id_hex_ip_extract($id);
       $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_extract($id);
       $hex_signature     = static::id_hex_signature_extract($id);
-      if ($expired >= time()                                         &&
+      if ($expired >= time()                                        &&
           $hex_uagent_hash_8 === static::id_hex_uagent_hash_8_get() &&
           $hex_signature     === static::id_hex_signature_get($id)) {
         if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||

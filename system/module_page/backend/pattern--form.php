@@ -237,7 +237,8 @@ namespace effcore {
   static function validation_id_hex_random_get()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function validation_id_hex_signature_get($id)  {return core::signature_get(substr($id, 0, 56), 8, 'form_validation');}
 
-  static function validation_id_created_extract($id)           {return hexdec(substr($id, 0, 8));}
+  static function validation_id_created_extract($id)           {return hexdec(static::validation_id_hex_created_extract($id));}
+  static function validation_id_hex_created_extract($id)       {return substr($id,  0 , 8);}
   static function validation_id_hex_ip_extract($id)            {return substr($id,  8, 32);}
   static function validation_id_hex_uagent_hash_8_extract($id) {return substr($id, 40,  8);}
   static function validation_id_hex_random_extract($id)        {return substr($id, 48,  8);}
