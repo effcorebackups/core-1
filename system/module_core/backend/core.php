@@ -538,7 +538,8 @@ namespace effcore {
   }
 
   static function server_remote_addr_get() {
-    return $_SERVER['REMOTE_ADDR'];
+    return $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? '::1' :
+           $_SERVER['REMOTE_ADDR'];
   }
 
   static function server_request_uri_get() {
