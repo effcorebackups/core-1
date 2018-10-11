@@ -251,7 +251,7 @@ namespace effcore {
       $hex_uagent_hash_8 = static::validation_id_hex_uagent_hash_8_extract($id);
       $hex_signature     = static::validation_id_hex_signature_extract($id);
       if ($created <= time()                                                   &&
-          $created >= time() - static::period_expired_h                         &&
+          $created >= time() - static::period_expired_h                        &&
           $hex_ip            === static::validation_id_hex_ip_get()            &&
           $hex_uagent_hash_8 === static::validation_id_hex_uagent_hash_8_get() &&
           $hex_signature     === static::validation_id_hex_signature_get($id)) {
