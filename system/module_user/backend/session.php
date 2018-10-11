@@ -73,7 +73,7 @@ namespace effcore {
     $period      = $hex_type == 'f' && !$is_remember ? static::period_expire_d : static::period_expire_m;
     $ip          = $hex_type == 'f' && !$is_fixed_ip ? static::empty_ip : core::server_remote_addr_get();
   # $hex_type: a - anonymous user | f - authenticated user
-    $hex_expire        = static::id_hex_expired_get($period);
+    $hex_expire        = static::id_hex_expire_get($period);
     $hex_ip            = static::id_hex_ip_get($ip);
     $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_get();
     $hex_random        = static::id_hex_random_get();
@@ -94,26 +94,26 @@ namespace effcore {
       else return static::id_regenerate('a');
   }
 
-  static function id_extract_expire($id)            {return hexdec(substr($id, 1, 8));}
-  static function id_extract_hex_type($id)          {return substr($id,      0,  1);}
-  static function id_extract_hex_ip($id)            {return substr($id,  8 + 1, 32);}
-  static function id_extract_hex_uagent_hash_8($id) {return substr($id, 40 + 1,  8);}
-  static function id_extract_hex_random($id)        {return substr($id, 48 + 1,  8);}
-  static function id_extract_hex_signature($id)     {return substr($id, 56 + 1,  8);}
+  static function id_hex_expire_get($period) {return dechex(time() + $period);}
+  static function id_hex_ip_get($ip)         {return core::ip_to_hex($ip);}
+  static function id_hex_uagent_hash_8_get() {return substr(md5(core::server_user_agent_get()), 0, 8);}
+  static function id_hex_random_get()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
+  static function id_hex_signature_get($id)  {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
 
-  static function id_hex_expired_get($period) {return dechex(time() + $period);}
-  static function id_hex_ip_get($ip)          {return core::ip_to_hex($ip);}
-  static function id_hex_uagent_hash_8_get()  {return substr(md5(core::server_user_agent_get()), 0, 8);}
-  static function id_hex_random_get()         {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function id_hex_signature_get($id)   {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
+  static function id_expire_extract($id)            {return hexdec(substr($id, 1, 8));}
+  static function id_hex_type_extract($id)          {return substr($id,      0,  1);}
+  static function id_hex_ip_extract($id)            {return substr($id,  8 + 1, 32);}
+  static function id_hex_uagent_hash_8_extract($id) {return substr($id, 40 + 1,  8);}
+  static function id_hex_random_extract($id)        {return substr($id, 48 + 1,  8);}
+  static function id_hex_signature_extract($id)     {return substr($id, 56 + 1,  8);}
 
   static function id_check($id) {
     if (core::validate_hash($id, 65)) {
-      $expire            = static::id_extract_expire($id);
-      $hex_type          = static::id_extract_hex_type($id);
-      $hex_ip            = static::id_extract_hex_ip($id);
-      $hex_uagent_hash_8 = static::id_extract_hex_uagent_hash_8($id);
-      $hex_signature     = static::id_extract_hex_signature($id);
+      $expire            = static::id_expire_extract($id);
+      $hex_type          = static::id_hex_type_extract($id);
+      $hex_ip            = static::id_hex_ip_extract($id);
+      $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_extract($id);
+      $hex_signature     = static::id_hex_signature_extract($id);
       if ($expire >= time()                                         &&
           $hex_uagent_hash_8 === static::id_hex_uagent_hash_8_get() &&
           $hex_signature     === static::id_hex_signature_get($id)) {
