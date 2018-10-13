@@ -2,5 +2,5 @@ module|module
   id: storage
   title: Storage
   description: Module for storages support.
-  version: 1.000
+  version: 0.900
   state: always_on

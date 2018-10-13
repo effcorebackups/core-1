@@ -2,5 +2,5 @@ module|module
   id: test
   title: Test
   description: Module for testing.
-  version: 1.000
+  version: 0.900
   state: on
