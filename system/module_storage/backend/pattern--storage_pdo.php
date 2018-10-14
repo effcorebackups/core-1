@@ -247,9 +247,9 @@ namespace effcore {
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
       if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
                                      $this->query('DROP', 'TABLE', 'IF EXISTS', $table_name);
+                                     $this->query('CREATE', 'TABLE', $table_name, '(', $this->fields($fields), ')');
       if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
       if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
-                                     $this->query('CREATE', 'TABLE', $table_name, '(', $this->fields($fields), ')');
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
         $c_index_name = $this->tables($entity->catalog_id.'__'.$c_name);
