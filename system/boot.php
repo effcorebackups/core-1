@@ -62,7 +62,7 @@ namespace effcore {
       );
     }
 
-  # define path of file directory 
+  # define path of file directory
     $path_url = url::current_get()->path_get();
     if (substr($path_url, 0, 15) === '/dynamic/files/')
          $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
@@ -105,10 +105,29 @@ namespace effcore {
     # case for any other file (and for large files too)
     # ─────────────────────────────────────────────────────────────────────
       } else {
+
+        # min and max limits:
+        # ─────────────────────────────────────────────────────────────────────
+        #
+        #           ┌┬┬┬┬┬┬┬┬┐
+        #    ┝━━━━━━┿┷┷┷┷┷┷┷┷┿━━━━━━━━━━━━━━┥
+        #    │0     │min     │max           │length
+        #
+        # .....................................................................
+        #
+        #     0 ≤ MIN < max < length  ==  MIN ≥ 0 < max < length
+        #     0 < min < MAX ≤ length  ==  MAX > 0 > min ≤ length
+        #
+        #     min ≥ 0 │ min < max │ min < length
+        #     max > 0 │ max > min │ max ≤ length
+        #
+        # ─────────────────────────────────────────────────────────────────────
+
         $length = filesize($path);
         $min = core::server_http_range_get()->min;
-        $max = core::server_http_range_get()->max;
-      # @todo: make functionality
+        $max = core::server_http_range_get()->max ?: $length - 1;
+        if (!($min >= 0 && $min < $max && $min <  $length)) $min = 0;
+        if (!($max >  0 && $max > $min && $max <= $length)) $max = $length - 1;
         header('HTTP/1.1 206 Partial Content');
         header('Accept-Ranges: bytes');
         header('Content-Length: '.$length);
