@@ -68,7 +68,8 @@ namespace effcore {
          $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
     else $path =                  dir_root.ltrim($path_url, '/');
 
-    if (is_file($path) && is_readable($path)) {
+    if (is_file    ($path) &&
+        is_readable($path)) {
 
     # ─────────────────────────────────────────────────────────────────────
     # case for file with tokens
@@ -104,8 +105,14 @@ namespace effcore {
     # case for any other file (and for large files too)
     # ─────────────────────────────────────────────────────────────────────
       } else {
-        header('Content-Length: '.filesize($path));
-        header('Accept-Ranges: none');
+        $length = filesize($path);
+        $min = core::server_http_range_get()->min;
+        $max = core::server_http_range_get()->max;
+      # @todo: make functionality
+        header('HTTP/1.1 206 Partial Content');
+        header('Accept-Ranges: bytes');
+        header('Content-Length: '.$length);
+        header('Content-Range: bytes 0-'.($length-1).'/'.$length);
         header('Cache-Control: must-revalidate, private');
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
@@ -121,6 +128,7 @@ namespace effcore {
         console::log_store();
         exit();
       }
+
     } else {
       core::send_header_and_exit('file_not_found');
     }

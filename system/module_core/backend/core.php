@@ -590,6 +590,21 @@ namespace effcore {
           substr($_SERVER['HTTP_USER_AGENT'], 0, 240) : '';
   }
 
+  static function server_http_range_get($parse = true) {
+    if (isset($_SERVER['HTTP_RANGE'])) {
+      if ($parse) {
+        $matches = [];
+        preg_match('%^bytes=(?<min>[0-9]+)-'.
+                           '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'], $matches);
+        $return = new \stdClass;
+        $return->min = isset($matches['min']) ? (int)$matches['min'] : 0;
+        $return->max = isset($matches['max']) ? (int)$matches['max'] : 0;
+        return $return;
+      }
+      return $_SERVER['HTTP_RANGE'];
+    }
+  }
+
   static function server_user_agent_info_get() {
     $return = new \stdCLass;
   # detect Internet Explorer v.6-v.11
