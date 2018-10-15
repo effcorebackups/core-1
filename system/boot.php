@@ -106,7 +106,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       } else {
 
-        # min and max limits:
+        # http ranges limits:
         # ─────────────────────────────────────────────────────────────────────
         #
         #           ┌┬┬┬┬┬┬┬┬┐
@@ -130,8 +130,8 @@ namespace effcore {
         if (!($max >  0 && $max > $min && $max <= $length)) $max = $length - 1;
         header('HTTP/1.1 206 Partial Content');
         header('Accept-Ranges: bytes');
-        header('Content-Length: '.$length);
-        header('Content-Range: bytes 0-'.($length-1).'/'.$length);
+        header('Content-Length: '.($max - $min + 1));
+        header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
         header('Cache-Control: must-revalidate, private');
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
