@@ -115,11 +115,11 @@ namespace effcore {
         #
         # .....................................................................
         #
-        #     0 ≤ MIN < max < length  ==  MIN ≥ 0 < max < length
-        #     0 < min < MAX ≤ length  ==  MAX > 0 > min ≤ length
+        #    0 ≤ MIN < max < length  →  MIN ≥ 0 < max < length
+        #    0 < min < MAX ≤ length  →  MAX > 0 > min ≤ length
         #
-        #     min ≥ 0 │ min < max │ min < length
-        #     max > 0 │ max > min │ max ≤ length
+        #    min ≥ 0 │ min < max │ min < length
+        #    max > 0 │ max > min │ max ≤ length
         #
         # ─────────────────────────────────────────────────────────────────────
 
@@ -139,8 +139,10 @@ namespace effcore {
           }
         }
         if ($file = fopen($path, 'rb')) {
-          while (!feof($file)) {
-            print fread($file, 1024);
+          if (fseek($file, $min) == 0) {
+            while (!feof($file)) {
+              print fread($file, 1024);
+            }
           }
           fclose($file);
         }
