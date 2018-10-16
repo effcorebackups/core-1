@@ -116,18 +116,18 @@ namespace effcore {
         # .....................................................................
         #
         #    0 ≤ MIN < max < length  →  MIN ≥ 0 < max < length
-        #    0 < min < MAX ≤ length  →  MAX > 0 > min ≤ length
+        #    0 < min < MAX < length  →  MAX > 0 > min < length
         #
         #    min ≥ 0 │ min < max │ min < length
-        #    max > 0 │ max > min │ max ≤ length
+        #    max > 0 │ max > min │ max < length
         #
         # ─────────────────────────────────────────────────────────────────────
 
         $length = filesize($path);
         $min = core::server_http_range_get()->min;
         $max = core::server_http_range_get()->max ?: $length - 1;
-        if (!($min >= 0 && $min < $max && $min <  $length)) $min = 0;
-        if (!($max >  0 && $max > $min && $max <= $length)) $max = $length - 1;
+        if (!($min >= 0 && $min < $max && $min < $length)) $min = 0;
+        if (!($max >  0 && $max > $min && $max < $length)) $max = $length - 1;
         header('HTTP/1.1 206 Partial Content');
         header('Accept-Ranges: bytes');
         header('Content-Length: '.($max - $min + 1));
@@ -141,7 +141,8 @@ namespace effcore {
         if ($file = fopen($path, 'rb')) {
           if (fseek($file, $min) == 0) {
             while (!feof($file)) {
-              print fread($file, 1024);
+              if (ftell($file) > $max) break;
+              print fread($file, 1);
             }
           }
           fclose($file);
