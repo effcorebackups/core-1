@@ -590,19 +590,14 @@ namespace effcore {
           substr($_SERVER['HTTP_USER_AGENT'], 0, 240) : '';
   }
 
-  static function server_http_range_get($parse = true) {
-    if (isset($_SERVER['HTTP_RANGE'])) {
-      if ($parse) {
-        $matches = [];
-        preg_match('%^bytes=(?<min>[0-9]+)-'.
-                           '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'], $matches);
-        $return = new \stdClass;
-        $return->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
-        $return->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
-        return $return;
-      }
-      return $_SERVER['HTTP_RANGE'];
-    }
+  static function server_http_range_get() {
+    $matches = [];
+    preg_match('%^bytes=(?<min>[0-9]+)-'.
+                       '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'] ?? '', $matches);
+    $return = new \stdClass;
+    $return->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
+    $return->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
+    return $return;
   }
 
   static function server_user_agent_info_get() {
