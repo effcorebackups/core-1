@@ -597,8 +597,8 @@ namespace effcore {
         preg_match('%^bytes=(?<min>[0-9]+)-'.
                            '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'], $matches);
         $return = new \stdClass;
-        $return->min = isset($matches['min']) ? (int)$matches['min'] : 0;
-        $return->max = isset($matches['max']) ? (int)$matches['max'] : 0;
+        $return->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
+        $return->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
         return $return;
       }
       return $_SERVER['HTTP_RANGE'];

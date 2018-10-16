@@ -124,8 +124,9 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
 
         $length = filesize($path);
-        $min = core::server_http_range_get()->min;
-        $max = core::server_http_range_get()->max ?: $length - 1;
+        $ranges = core::server_http_range_get();
+        $min = $ranges->min !== null ? $ranges->min : 0;
+        $max = $ranges->max !== null ? $ranges->max : $length - 1;
         if (!($min >= 0 && $min <= $max && $min < $length)) $min = 0;
         if (!($max >= 0 && $max >= $min && $max < $length)) $max = $length - 1;
         header('HTTP/1.1 206 Partial Content');
