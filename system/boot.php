@@ -123,6 +123,8 @@ namespace effcore {
         #
         # ─────────────────────────────────────────────────────────────────────
 
+        $file = new file($path);
+        $etag = base64_encode(md5_file($path, true));
         $length = filesize($path);
         $ranges = core::server_http_range_get();
         $min = $ranges->min !== null ? $ranges->min : 0;
@@ -134,6 +136,7 @@ namespace effcore {
         header('Content-Length: '.($max - $min + 1));
         header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
         header('Cache-Control: must-revalidate, private');
+        header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
             header($c_key.': '.$c_value);
