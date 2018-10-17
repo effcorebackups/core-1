@@ -64,7 +64,6 @@ namespace effcore {
 
     header('Content-language: '.language::current_get());
     header('Content-Type: text/html; charset='.$this->charset);
-    header('Cache-Control: no-store, no-cache, must-revalidate');
     if ($user_agent->name == 'msie') {
       header('X-UA-Compatible: IE=10');
     }

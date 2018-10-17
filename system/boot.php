@@ -90,7 +90,7 @@ namespace effcore {
       # send headers and data to the output buffer
         header('Content-Length: '.strlen($data));
         header('Accept-Ranges: none');
-        header('Cache-Control: must-revalidate, private');
+        header('Cache-Control: private, no-cache, no-store, must-revalidate');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
@@ -131,11 +131,12 @@ namespace effcore {
         $max = $ranges->max !== null ? $ranges->max : $length - 1;
         if (!($min >= 0 && $min <= $max && $min < $length)) $min = 0;
         if (!($max >= 0 && $max >= $min && $max < $length)) $max = $length - 1;
-        header('HTTP/1.1 206 Partial Content');
-        header('Accept-Ranges: bytes');
+        if (!($min == 0 && $max == $length - 1)) header('HTTP/1.1 206 Partial Content');
+        if (!($min == 0 && $max == $length - 1)) header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
         header('Content-Length: '.($max - $min + 1));
-        header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
-        header('Cache-Control: must-revalidate, private');
+        header('Accept-Ranges: bytes');
+        header('Cache-Control: private, no-cache, no-store, must-revalidate');
+        header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($path)).' GMT');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
@@ -172,6 +173,7 @@ namespace effcore {
     }
   }
   header('Content-Length: '.strlen($output));
+  header('Cache-Control: private, no-cache, no-store, must-revalidate');
   print $output;
   console::log_store();
   exit();

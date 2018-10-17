@@ -319,7 +319,7 @@ namespace effcore\modules\develop {
   # print result
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=classes.mdj');
-    header('Cache-Control: no-store, no-cache, must-revalidate');
+    header('Cache-Control: private, no-cache, no-store, must-revalidate');
     header('Expires: 0');
     print json_encode(
       (object)[
