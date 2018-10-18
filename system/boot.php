@@ -77,7 +77,7 @@ namespace effcore {
       if (!empty($file_types[$type]->use_tokens)) {
         $file = new file($path);
         $data = token::replace($file->load());
-        $etag = base64_encode(md5($data, true));
+        $etag = md5($data);
 
       # send header '304 Not Modified' to the output buffer if HTTP_IF_NONE_MATCH header is received
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
@@ -124,13 +124,13 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
 
         $file = new file($path);
-        $etag = base64_encode(md5_file($path, true));
+        $etag = md5_file($path);
         $length = filesize($path);
         $ranges = core::server_http_range_get();
         $min = $ranges->min !== null ? $ranges->min : 0;
         $max = $ranges->max !== null ? $ranges->max : $length - 1;
-        if (!($min >= 0 && $min <= $max && $min < $length)) $min = 0;
-        if (!($max >= 0 && $max >= $min && $max < $length)) $max = $length - 1;
+        if (!($min >= 0 && $min <= $max && $min < $length)) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
+        if (!($max >= 0 && $max >= $min && $max < $length)) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
         if (!($min == 0 && $max == $length - 1)) header('HTTP/1.1 206 Partial Content');
         if (!($min == 0 && $max == $length - 1)) header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
         header('Content-Length: '.($max - $min + 1));
@@ -144,10 +144,14 @@ namespace effcore {
           }
         }
         if ($file = fopen($path, 'rb')) {
+          $c_print_length = $min;
           if (fseek($file, $min) == 0) {
             while (!feof($file)) {
-              if (ftell($file) > $max) break;
-              print fread($file, 1);
+              $c_data = fread($file, 1024);
+              for ($i = 0; $i < strlen($c_data); $i++, $c_print_length++) {
+                if ($c_print_length > $max) break 2;
+                print $c_data[$i];
+              }
             }
           }
           fclose($file);
