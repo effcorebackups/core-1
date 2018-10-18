@@ -129,10 +129,13 @@ namespace effcore {
         $ranges = core::server_http_range_get();
         $min = $ranges->min !== null ? $ranges->min : 0;
         $max = $ranges->max !== null ? $ranges->max : $length - 1;
+        if ($max >= $length) $max = $length - 1;
         if (!($min >= 0 && $min <= $max && $min < $length)) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
         if (!($max >= 0 && $max >= $min && $max < $length)) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
-        if (!($min == 0 && $max == $length - 1)) header('HTTP/1.1 206 Partial Content');
-        if (!($min == 0 && $max == $length - 1)) header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
+        if (!($ranges->min === null && $ranges->max === null)) {
+          header('HTTP/1.1 206 Partial Content');
+          header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
+        }
         header('Content-Length: '.($max - $min + 1));
         header('Accept-Ranges: bytes');
         header('Cache-Control: private, no-cache, no-store, must-revalidate');
