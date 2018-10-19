@@ -90,7 +90,7 @@ namespace effcore {
       # send headers and data to the output buffer
         header('Content-Length: '.strlen($data));
         header('Accept-Ranges: none');
-        header('Cache-Control: private');
+        header('Cache-Control: private, no-cache');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
@@ -185,7 +185,7 @@ namespace effcore {
     }
   }
   header('Content-Length: '.strlen($output));
-  header('Cache-Control: private');
+  header('Cache-Control: private, no-cache');
   print $output;
   console::log_store();
   exit();
