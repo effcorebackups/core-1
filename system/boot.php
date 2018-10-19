@@ -90,7 +90,7 @@ namespace effcore {
       # send headers and data to the output buffer
         header('Content-Length: '.strlen($data));
         header('Accept-Ranges: none');
-        header('Cache-Control: private, no-cache, no-store, must-revalidate');
+        header('Cache-Control: private');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
@@ -138,7 +138,7 @@ namespace effcore {
         }
         header('Content-Length: '.($max - $min + 1));
         header('Accept-Ranges: bytes');
-        header('Cache-Control: private, no-cache, no-store, must-revalidate');
+        header('Cache-Control: private');
         header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($path)).' GMT');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
@@ -180,7 +180,7 @@ namespace effcore {
     }
   }
   header('Content-Length: '.strlen($output));
-  header('Cache-Control: private, no-cache, no-store, must-revalidate');
+  header('Cache-Control: private');
   print $output;
   console::log_store();
   exit();
