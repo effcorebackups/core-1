@@ -32,17 +32,17 @@
 
   /* menu Main: icons */
 
-  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree._vector') no-repeat 0 0}
-  x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree._vector') no-repeat 0 -64px}
+  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 0}
+  x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 -64px}
 
   /* managed menu */
 
   x-tree.managed ul, x-tree.managed li {margin: 0; padding: 0; list-style: none}
   x-tree.managed li {padding-left: 35px}
-  x-tree.managed li             {background: url('images/branch-hline._vector') no-repeat 0 -23px, url('images/branch-vline._vector') repeat-y}
-  x-tree.managed li:first-child {background: url('images/branch-hline._vector') no-repeat 0 -23px, url('images/branch-vline._vector') repeat-y}
-  x-tree.managed li:last-child  {background: url('images/branch-hline._vector') no-repeat 0 -23px}
-  x-tree.managed li:only-child  {background: url('images/branch-hline._vector') no-repeat 0 -23px}
+  x-tree.managed li             {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
+  x-tree.managed li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
+  x-tree.managed li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
+  x-tree.managed li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
 
   x-tree.managed li a {font-size: 1.2em; color: black}
   x-tree.managed x-url {display: block; color: gray}

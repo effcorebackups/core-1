@@ -89,7 +89,7 @@
     display: block;
     width: 150px;
     height: 48px;
-    background: url('images/logo._vector')}
+    background: url('images/logo.svgd')}
 
   /* block menu */
 
@@ -136,8 +136,8 @@
   /* file system icons */
 
   x-file-path {display: inline-block}
-  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; margin-right: 10px; cursor: default; background: url('images/icons-file_types._vector') no-repeat}
-  x-file-path x-file {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file_types._vector') no-repeat 0 -30px}
+  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; margin-right: 10px; cursor: default; background: url('images/icons-file_types.svgd') no-repeat}
+  x-file-path x-file {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file_types.svgd') no-repeat 0 -30px}
 
   /* menu with targets */
 

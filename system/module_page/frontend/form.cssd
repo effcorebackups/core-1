@@ -12,7 +12,7 @@
   fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
   fieldset > label + x-fieldset-content {margin-top: 30px}
   fieldset > x-description {margin-top: 20px}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items._vector') 0 -60px}
+  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items.svgd') 0 -60px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
   fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
@@ -35,7 +35,7 @@
 
   /* fieldset 'roles' */
 
-  fieldset[data-type='roles'] x-fieldset-content {background: url('images/lines._vector') -10px 0}
+  fieldset[data-type='roles'] x-fieldset-content {background: url('images/lines.svgd') -10px 0}
 
   /* form fields */
 
@@ -83,13 +83,13 @@
     cursor: pointer;
     background-color: white}
   input[type='radio'] {border-radius: 13px}
-  input[type='checkbox']:checked {background: %%_color_bg url('images/icons-form_items._vector')}
-  input[type='radio'   ]:checked {background: %%_color_bg url('images/icons-form_items._vector') 0 -20px}
+  input[type='checkbox']:checked {background: %%_color_bg url('images/icons-form_items.svgd')}
+  input[type='radio'   ]:checked {background: %%_color_bg url('images/icons-form_items.svgd') 0 -20px}
   input[type='checkbox']:disabled:checked,
   input[type='radio'   ]:disabled:checked {border-color: lightgray; background-color: lightgray}
 
-  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: silver url('images/icons-form_items._vector') 0 -40px}
-  input[data-type='switcher']:checked {background: %%_color_bg url('images/icons-form_items._vector') -46px -40px}
+  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: silver url('images/icons-form_items.svgd') 0 -40px}
+  input[data-type='switcher']:checked {background: %%_color_bg url('images/icons-form_items.svgd') -46px -40px}
   input[data-type='switcher']:disabled {border-color: lightgray; background-color: lightgray}
 
   /* checkboxes and radiobuttons inside containers */
@@ -113,7 +113,7 @@
     color: darkgray}
   x-description p {margin: 0}
   input[data-opener-type='description'] {display: none}
-  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form_items._vector') 0 -85px}
+  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form_items.svgd') 0 -85px}
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
 

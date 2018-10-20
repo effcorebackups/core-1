@@ -20,8 +20,8 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────
-- _vector
-    type: _vector
+- svgd
+    type: svgd
     dynamic: true
     headers
     - Content-type: image/svg+xml

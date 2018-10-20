@@ -37,7 +37,7 @@ namespace effcore\modules\core {
   static function on_show_block_info($page) {
     $storage = storage::get('main');
     $info = new markup('dl', ['class' => ['info' => 'info']]);
-    $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore._vector', 'alt' => 'effcore']);
+    $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore.svgd', 'alt' => 'effcore']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
