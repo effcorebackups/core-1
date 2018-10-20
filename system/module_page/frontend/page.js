@@ -4,11 +4,6 @@ document.addEventListener('DOMContentLoaded', function(){
   uagent = html.getAttribute('data-uagent') ? html.getAttribute('data-uagent') : '';
   uacore = html.getAttribute('data-uacore') ? html.getAttribute('data-uacore') : '';
 
-  effcore = {};
-  effcore.tokens = [];
-  effcore.tokens['color'] = '%%_color';
-  effcore.tokens['color_bg'] = '%%_color_bg';
-
 /* polyfils for addition new functionality in older browsers */
   if (NodeList.prototype.forEach === undefined) {
     NodeList.prototype.forEach = Array.prototype.forEach;

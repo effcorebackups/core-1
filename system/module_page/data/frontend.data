@@ -46,8 +46,10 @@ frontend
         file: frontend/page.cssd
         media: all
     scripts
+    - page_variables
+        file: frontend/vars.jsd
     - page_script
-        file: frontend/page.jsd
+        file: frontend/page.js
 - frontend_form_n
     display
       check: block
@@ -59,4 +61,4 @@ frontend
         media: all
     scripts
     - form_script
-        file: frontend/form.jsd
+        file: frontend/form.js

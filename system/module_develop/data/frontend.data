@@ -6,7 +6,7 @@ frontend
       match: %^.*$%
     styles
     - develop_style
-        file: frontend/develop.css
+        file: frontend/develop.cssd
         media: all
 - frontend_diagram_filter
     display
