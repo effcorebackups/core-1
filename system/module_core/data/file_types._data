@@ -2,8 +2,8 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # protected types
 # ─────────────────────────────────────────────────────────────────────
-- _protected
-    type: _protected
+- protected
+    type: protected
     protected: 1
 - php
     type: php
@@ -11,8 +11,8 @@ file_types
 - sh
     type: sh
     protected: 1
-- _mark
-    type: _mark
+- mark
+    type: mark
     protected: 1
 - _template
     type: _template
