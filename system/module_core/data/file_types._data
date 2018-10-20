@@ -11,28 +11,28 @@ file_types
 - sh
     type: sh
     protected: 1
-- mark
+- markdown
     type: mark
     protected: 1
-- _template
-    type: _template
+- template
+    type: tpl
     protected: 1
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────
-- cssd
+- css_dynamic
     type: cssd
     dynamic: true
     headers
     - Content-type: text/css
     - X-Content-Type-Options: nosniff
-- jsd
+- js_dynamic
     type: jsd
     dynamic: true
     headers
     - Content-type: application/javascript
     - X-Content-Type-Options: nosniff
-- svgd
+- svg_dynamic
     type: svgd
     dynamic: true
     headers

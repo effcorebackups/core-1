@@ -26,20 +26,20 @@ templates
 - page
     name: page
     type: file
-    path: frontend/template--page._template
+    path: frontend/template--page.tpl
 - page_access_denided
     name: page_access_denided
     type: file
-    path: frontend/template--page--access_denided._template
+    path: frontend/template--page--access_denided.tpl
 - page_not_found
     name: page_not_found
     type: file
-    path: frontend/template--page--not_found._template
+    path: frontend/template--page--not_found.tpl
 - page_simple
     name: page_simple
     type: file
-    path: frontend/template--page_simple._template
+    path: frontend/template--page_simple.tpl
 - canvas_svg
     name: canvas_svg
     type: file
-    path: frontend/template--canvas_svg._template
+    path: frontend/template--canvas_svg.tpl
