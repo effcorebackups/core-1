@@ -25,8 +25,8 @@ file_types
     dynamic: true
     headers
     - Content-type: image/svg+xml
-- _script
-    type: _script
+- jsd
+    type: jsd
     dynamic: true
     headers
     - Content-type: application/javascript

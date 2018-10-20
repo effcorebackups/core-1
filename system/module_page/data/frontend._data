@@ -47,7 +47,7 @@ frontend
         media: all
     scripts
     - page_script
-        file: frontend/page._script
+        file: frontend/page.jsd
 - frontend_form_n
     display
       check: block
@@ -59,4 +59,4 @@ frontend
         media: all
     scripts
     - form_script
-        file: frontend/form._script
+        file: frontend/form.jsd
