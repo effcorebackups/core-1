@@ -20,23 +20,23 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────
-- svgd
-    type: svgd
-    dynamic: true
-    headers
-    - Content-type: image/svg+xml
-- jsd
-    type: jsd
-    dynamic: true
-    headers
-    - Content-type: application/javascript
-    - X-Content-Type-Options: nosniff
 - cssd
     type: cssd
     dynamic: true
     headers
     - Content-type: text/css
     - X-Content-Type-Options: nosniff
+- jsd
+    type: jsd
+    dynamic: true
+    headers
+    - Content-type: application/javascript
+    - X-Content-Type-Options: nosniff
+- svgd
+    type: svgd
+    dynamic: true
+    headers
+    - Content-type: image/svg+xml
 # ─────────────────────────────────────────────────────────────────────
 # static types
 # ─────────────────────────────────────────────────────────────────────
