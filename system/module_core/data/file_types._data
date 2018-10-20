@@ -31,8 +31,8 @@ file_types
     headers
     - Content-type: application/javascript
     - X-Content-Type-Options: nosniff
-- _style
-    type: _style
+- cssd
+    type: cssd
     dynamic: true
     headers
     - Content-type: text/css

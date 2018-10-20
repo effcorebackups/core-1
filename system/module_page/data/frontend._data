@@ -43,7 +43,7 @@ frontend
         sizes: 192x192
     styles
     - page_style
-        file: frontend/page._style
+        file: frontend/page.cssd
         media: all
     scripts
     - page_script
@@ -55,7 +55,7 @@ frontend
       match: %^forms/.*$%
     styles
     - form_style
-        file: frontend/form._style
+        file: frontend/form.cssd
         media: all
     scripts
     - form_script

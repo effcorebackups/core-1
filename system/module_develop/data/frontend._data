@@ -6,7 +6,7 @@ frontend
       match: %^.*$%
     styles
     - develop_style
-        file: frontend/develop._style
+        file: frontend/develop.cssd
         media: all
 - frontend_diagram_filter
     display
@@ -15,5 +15,5 @@ frontend
       match: %^/develop/structures/.*$%
     styles
     - form_style
-        file: /system/module_page/frontend/form._style
+        file: /system/module_page/frontend/form.cssd
         media: all

@@ -6,7 +6,7 @@ frontend
       match: %^trees/.*$%
     styles
     - tree_style
-        file: frontend/tree._style
+        file: frontend/tree.cssd
         media: all
 - frontend_block_tabs
     display
@@ -15,5 +15,5 @@ frontend
       match: %^tabs/.*$%
     styles
     - tabs_style
-        file: frontend/tabs._style
+        file: frontend/tabs.cssd
         media: all
