@@ -1,9 +1,9 @@
 file_types
 # ─────────────────────────────────────────────────────────────────────
-# protected
+# protected types
 # ─────────────────────────────────────────────────────────────────────
-- _data
-    type: _data
+- data
+    type: data
     protected: 1
 - sqlite
     type: sqlite

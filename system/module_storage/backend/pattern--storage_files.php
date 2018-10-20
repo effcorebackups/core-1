@@ -125,13 +125,13 @@ namespace effcore {
     $return = [];
     $parsed = [];
     $modules_path = [];
-    $files = file::select_recursive(dir_system, '%^.*\\._data$%');
+    $files = file::select_recursive(dir_system, '%^.*\\.data$%');
     arsort($files);
-  # parse each *._data file and collect modules path
+  # parse each *.data file and collect modules path
     foreach ($files as $c_file) {
       $c_parsed = static::dataline_to_data($c_file->load(), $c_file);
       $parsed[$c_file->path_relative_get()] = $c_parsed;
-      if ($c_file->file_get() == 'module._data' && isset($c_parsed->module->id)) {
+      if ($c_file->file_get() == 'module.data' && isset($c_parsed->module->id)) {
         $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
       }
     }
