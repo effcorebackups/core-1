@@ -1,7 +1,10 @@
 file_types
 # ─────────────────────────────────────────────────────────────────────
-# protected
+# protected types
 # ─────────────────────────────────────────────────────────────────────
+- _protected
+    type: _protected
+    protected: 1
 - php
     type: php
     protected: 1
@@ -11,33 +14,30 @@ file_types
 - _mark
     type: _mark
     protected: 1
-- _protected
-    type: _protected
-    protected: 1
 - _template
     type: _template
     protected: 1
 # ─────────────────────────────────────────────────────────────────────
-# with tokens
+# dynamic types
 # ─────────────────────────────────────────────────────────────────────
 - _vector
     type: _vector
-    use_tokens: 1
+    dynamic: true
     headers
     - Content-type: image/svg+xml
 - _script
     type: _script
-    use_tokens: 1
+    dynamic: true
     headers
     - Content-type: application/javascript
 - _style
     type: _style
-    use_tokens: 1
+    dynamic: true
     headers
     - Content-type: text/css
     - X-Content-Type-Options: nosniff
 # ─────────────────────────────────────────────────────────────────────
-# other types
+# static types
 # ─────────────────────────────────────────────────────────────────────
 - 3gp
     type: 3gp

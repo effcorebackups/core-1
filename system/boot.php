@@ -72,9 +72,9 @@ namespace effcore {
         is_readable($path)) {
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for file with tokens
+    # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
-      if (!empty($file_types[$type]->use_tokens)) {
+      if (!empty($file_types[$type]->dynamic)) {
         $file = new file($path);
         $data = token::replace($file->load());
         $etag = md5($data);
@@ -102,7 +102,7 @@ namespace effcore {
         exit();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for any other file (and for large files too)
+    # case for static file
     # ─────────────────────────────────────────────────────────────────────
       } else {
 
