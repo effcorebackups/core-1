@@ -30,6 +30,7 @@ file_types
     dynamic: true
     headers
     - Content-type: application/javascript
+    - X-Content-Type-Options: nosniff
 - _style
     type: _style
     dynamic: true
