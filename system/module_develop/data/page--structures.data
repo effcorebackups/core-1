@@ -37,7 +37,7 @@ pages
           match: %^list$%
         region: content
         type: code
-        source: \effcore\modules\develop\events_page::on_show_block_structures_list
+        source: \effcore\modules\develop\events_page_structures::on_show_block_structures_list
     - block_structures_diagram|page_part
         display
           check: page_args
@@ -45,7 +45,7 @@ pages
           match: %^diagram$%
         region: content
         type: code
-        source: \effcore\modules\develop\events_page::on_show_block_structures_diagram
+        source: \effcore\modules\develop\events_page_structures::on_show_block_structures_diagram
     - block_structures_diagram_export|page_part
         display
           check: page_args
@@ -53,7 +53,7 @@ pages
           match: %^diagram_export$%
         region: content
         type: code
-        source: \effcore\modules\develop\events_page::on_export_diagram
+        source: \effcore\modules\develop\events_page_structures::on_export_diagram
     - form_access|page_part
         display
           check: user
