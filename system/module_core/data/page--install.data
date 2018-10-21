@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^/install$%
+      match: %^(?<base>/install)(?<code>/[a-z]{2,2}|)$%
     access
       roles
       - =: anonymous
@@ -26,6 +26,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    - tabs_languages|page_part
+        region: tabs
+        type: link
+        source: tabs/locales/languages
     - form_install|page_part
         region: content
         type: link
