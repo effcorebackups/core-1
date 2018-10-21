@@ -31,7 +31,7 @@ namespace effcore {
                 $this->driver.':host='.
                 $this->credentials->host_name.';port='.
                 $this->credentials->port.';dbname='.
-                $this->credentials->storage_id,
+                $this->credentials->storage_name,
                 $this->credentials->user_name,
                 $this->credentials->password);
               break;
@@ -68,7 +68,7 @@ namespace effcore {
             $driver.':host='.
             $params->host_name.';port='.
             $params->port.';dbname='.
-            $params->storage_id,
+            $params->storage_name,
             $params->user_name,
             $params->password);
           break;

@@ -3,7 +3,7 @@ entities
     name: tree
     title: Tree
     title_plural: Trees
-    storage_id: main
+    storage_name: main
     catalog_id: trees
     ws_created: true
     ws_updated: true
@@ -26,7 +26,7 @@ entities
     name: tree_item
     title: Tree item
     title_plural: Tree items
-    storage_id: main
+    storage_name: main
     catalog_id: tree_items
     ws_created: true
     ws_updated: true

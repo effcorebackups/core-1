@@ -20,15 +20,6 @@ forms
       # mysql params
         - mysql|fieldset
             children
-          # storage id (database name)
-            - storage_id|field_text
-                title: Storage ID
-                element_attributes
-                - name: storage_id
-                - value: main
-                - minlength: 1
-                - maxlength: 128
-                - pattern: %^[a-zA-Z0-9-_]+$%
           # host name
             - host_name|field_text
                 title: Hostname
@@ -60,6 +51,15 @@ forms
                 element_attributes
                 - minlength: null
                 - required: null
+          # storage name (database name)
+            - storage_name|field_text
+                title: Storage name
+                element_attributes
+                - name: storage_name
+                - value: main
+                - minlength: 1
+                - maxlength: 128
+                - pattern: %^[a-zA-Z0-9-_]+$%
       # driver
         - is_sqlite|field_radiobutton
             title: SQLite

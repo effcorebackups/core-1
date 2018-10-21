@@ -29,8 +29,8 @@ namespace effcore {
     foreach ($this->fields as $c_field) {
       if ($c_field->type == 'field') {
         $c_entity = entity::get($c_field->entity_name, false);
-        $used_entities[$c_entity->name]       = $c_entity->name;
-        $used_storages[$c_entity->storage_id] = $c_entity->storage_id;
+        $used_entities[$c_entity->name]         = $c_entity->name;
+        $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
       }
     }
   # get data from storage

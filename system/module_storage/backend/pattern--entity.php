@@ -9,7 +9,7 @@ namespace effcore {
           implements has_external_cache, has_post_parse {
 
   public $name;
-  public $storage_id;
+  public $storage_name;
   public $catalog_id;
   public $ws_weight;
   public $ws_created;
@@ -87,17 +87,17 @@ namespace effcore {
   }
 
   function install() {
-    $storage = storage::get($this->storage_id);
+    $storage = storage::get($this->storage_name);
     return $storage->entity_install($this);
   }
 
   function uninstall() {
-    $storage = storage::get($this->storage_id);
+    $storage = storage::get($this->storage_name);
     return $storage->entity_uninstall($this);
   }
 
   function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {
-    $storage = storage::get($this->storage_id);
+    $storage = storage::get($this->storage_name);
     return $storage->instances_select($this, $conditions, $order, $count, $offset);
   }
 
@@ -116,7 +116,7 @@ namespace effcore {
       'name'         => 'name',
       'title'        => 'title',
       'title_plural' => 'title_plural',
-      'storage_id'   => 'storage_id',
+      'storage_name' => 'storage_name',
       'catalog_id'   => 'catalog_id'
     ];
   }
