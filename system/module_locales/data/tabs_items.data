@@ -2,8 +2,6 @@ tabs_items
 - language_select|tabs_item
     id: language_select
     id_parent: T:languages
-    action_name: 
-    action_name_default: en
     title: Language
     attributes
     - class

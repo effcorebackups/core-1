@@ -507,13 +507,15 @@ namespace effcore {
   static function signature_get($string, $length = 40, $key_name) {
     $key = static::key_get($key_name);
     if ($key) return substr(sha1($string.$key), 0, $length);
-    else message::insert(
-      translation::get('Key "%%_name" does not exist!', ['name' => $key_name]), 'error'
-    );
+    else message::insert(translation::get('Key "%%_name" does not exist!', ['name' => $key_name]), 'error');
   }
 
   static function key_get($name) {
     return storage::get('files')->select('settings/core/keys/'.$name);
+  }
+
+  static function key_generate() {
+    return sha1(random_int(0, 0x7fffffff));
   }
 
   static function hash_password_get($data) {
