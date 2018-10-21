@@ -25,8 +25,7 @@ namespace effcore\modules\core {
       if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'warning');}
       if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
     }
-    $main = storage::get('main');
-    if (isset($main->driver)) {
+    if (storage::is_installed()) {
       $form->child_delete('storage');
       $form->child_delete('license_agreement');
       $form->child_delete('button_install');

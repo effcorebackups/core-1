@@ -3,6 +3,7 @@ tabs_items
     id: language_select
     id_parent: T:languages
     title: Language
+    hidden: true
     attributes
     - class
       - =: language-select

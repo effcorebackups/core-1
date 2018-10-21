@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use \effcore\language;
+          use \effcore\storage;
           use \effcore\tabs;
           use \effcore\url;
           abstract class events_page_install {
@@ -13,13 +14,16 @@ namespace effcore\modules\core {
   static function on_init_languages($page) {
     $languages = language::get_all();
     $code = $page->args_get('code');
-    if (!isset($languages[$code])) url::go($page->args_get('base').'/'.reset($languages)->code);
-    language::current_code_set($code);
-    foreach ($languages as $c_language) {
-      tabs::item_insert(   $c_language->title->en.' ('.$c_language->title->native.')',
-        'language_select_'.$c_language->code,
-        'language_select', $c_language->code, null, ['class' => [$c_language->code => $c_language->code]]
-      );
+    if (!isset($languages[$code])) url::go($page->args_get('base').'/en');
+    if (!storage::is_installed()) {
+      language::current_code_set($code);
+      tabs::item_select('language_select')->hidden = false;
+      foreach ($languages as $c_language) {
+        tabs::item_insert(   $c_language->title->en.' ('.$c_language->title->native.')',
+          'language_select_'.$c_language->code,
+          'language_select', $c_language->code, null, ['class' => [$c_language->code => $c_language->code]]
+        );
+      }
     }
   }
 

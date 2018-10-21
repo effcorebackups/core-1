@@ -31,4 +31,8 @@ namespace effcore {
     return static::$cache[$id];
   }
 
+  static function is_installed() {
+    return isset(static::get('main')->driver);
+  }
+
 }}
