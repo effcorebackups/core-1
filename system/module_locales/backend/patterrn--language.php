@@ -15,6 +15,7 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+  static protected $current;
 
   static function init() {
     foreach (storage::get('files')->select('languages') as $c_module_id => $c_languages) {
@@ -48,8 +49,14 @@ namespace effcore {
     return static::get($code)->plurals ?? [];
   }
 
-  static function current_get() {
-    return locale::settings_get()->lang_code;
+  static function current_code_get() {
+    if   (!static::$current)
+           static::$current = locale::settings_get()->lang_code;
+    return static::$current;
+  }
+
+  static function current_code_set($code) {
+    static::$current = $code;
   }
 
 }}

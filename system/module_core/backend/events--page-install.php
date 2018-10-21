@@ -10,10 +10,11 @@ namespace effcore\modules\core {
           use \effcore\url;
           abstract class events_page_install {
 
-  static function on_init_tabs($page) {
+  static function on_init_languages($page) {
     $languages = language::get_all();
     $code = $page->args_get('code');
     if (!isset($languages[$code])) url::go($page->args_get('base').'/'.reset($languages)->code);
+    language::current_code_set($code);
     foreach ($languages as $c_language) {
       tabs::item_insert(   $c_language->title->en.' ('.$c_language->title->native.')',
         'language_select_'.$c_language->code,

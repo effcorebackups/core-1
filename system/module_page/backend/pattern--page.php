@@ -62,13 +62,13 @@ namespace effcore {
       );
     }
 
-    header('Content-language: '.language::current_get());
+    header('Content-language: '.language::current_code_get());
     header('Content-Type: text/html; charset='.$this->charset);
     if ($user_agent->name == 'msie') {
       header('X-UA-Compatible: IE=10');
     }
 
-    $this->attribute_insert('lang', language::current_get());
+    $this->attribute_insert('lang', language::current_code_get());
     $this->attribute_insert('dir', $this->text_direction);
     if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
@@ -87,7 +87,7 @@ namespace effcore {
     console::information_add('Total generation time', locale::format_msecond(timer::period_get('total', 0, 1)));
     console::information_add('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
     console::information_add('User roles', implode(', ', user::current_get()->roles));
-    console::information_add('Current language', language::current_get());
+    console::information_add('Current language', language::current_code_get());
   }
 
   function frontend_markup_get() {
