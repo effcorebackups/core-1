@@ -9,15 +9,11 @@ namespace effcore\modules\core {
           use \effcore\event;
           use \effcore\message;
           use \effcore\storage;
-          use \effcore\tabs;
           use \effcore\translation;
           use \effcore\url;
           abstract class events_form_install {
 
   static function on_init($form, $items) {
-    // tabs::item_insert('English', 'language_select_en', 'language_select', 'en', null, ['class' => ['en' => 'en']]);
-    // tabs::item_insert('Russian', 'language_select_ru', 'language_select', 'ru', null, ['class' => ['ru' => 'ru']]);
-
     if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
       $items['#driver:mysql' ]->disabled_set();
       $items['#driver:sqlite']->disabled_set();

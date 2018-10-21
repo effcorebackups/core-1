@@ -13,4 +13,4 @@ pages
     - block_cron|page_part
         region: content
         type: code
-        source: \effcore\modules\core\events_page::on_cron_run
+        source: \effcore\modules\core\events_page_cron::on_cron_run

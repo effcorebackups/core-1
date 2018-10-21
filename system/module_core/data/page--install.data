@@ -26,6 +26,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    - init_tabs|page_part
+        region: content
+        type: code
+        source: \effcore\modules\core\events_page_install::on_init_tabs
     - tabs_languages|page_part
         region: tabs
         type: link

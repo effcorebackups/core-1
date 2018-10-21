@@ -29,7 +29,7 @@ pages
     - block_info|page_part
         region: content
         type: code
-        source: \effcore\modules\core\events_page::on_show_block_info
+        source: \effcore\modules\core\events_page_info::on_show_block_info
     - form_access|page_part
         display
           check: user

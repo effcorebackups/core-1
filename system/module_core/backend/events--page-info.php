@@ -5,34 +5,16 @@
   ##################################################################
 
 namespace effcore\modules\core {
-          use const \effcore\br;
           use \effcore\block;
-          use \effcore\control_actions_list;
           use \effcore\core;
-          use \effcore\event;
           use \effcore\locale;
           use \effcore\markup_simple;
           use \effcore\markup;
           use \effcore\module;
           use \effcore\session;
           use \effcore\storage;
-          use \effcore\table_body_row_cell;
-          use \effcore\table;
-          use \effcore\timer;
           use \effcore\translation;
-          abstract class events_page {
-
-  static function on_cron_run($page) {
-    if ($page->args_get('key') === core::key_get('cron')) {
-      timer::tap('cron');
-      event::start('on_cron');
-      timer::tap('cron');
-      print 'cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
-      exit();
-    } else {
-      core::send_header_and_exit('page_not_found');
-    }
-  }
+          abstract class events_page_info {
 
   static function on_show_block_info($page) {
     $storage = storage::get('main');
@@ -69,32 +51,6 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], 'not applicable'));
     return new block('Shared information', ['class' => ['info' => 'info']], [
       $info
-    ]);
-  }
-
-  static function on_show_block_modules($page) {
-    $thead = [['Module information', 'State', '']];
-    $tbody = [];
-    foreach (module::all_get() as $c_module) {
-      if ($c_module->state != 'always_on') {
-        $c_action_list = new control_actions_list();
-        $c_action_list->action_add('enable/'.   $c_module->id, 'enable');
-        $c_action_list->action_add('disable/'.  $c_module->id, 'disable');
-        $c_action_list->action_add('uninstall/'.$c_module->id, 'uninstall');
-      }
-      $tbody[] = [
-        new table_body_row_cell(['class' => ['info' => 'info']],
-          translation::get('ID')         .': '.$c_module->id.br.
-          translation::get('Version')    .': '.locale::format_version($c_module->version).br.
-          translation::get('Title')      .': '.translation::get($c_module->title).br.
-          translation::get('Description').': '.translation::get($c_module->description).br.
-          translation::get('Path')       .': '.$c_module->path),
-        new table_body_row_cell(['class' => ['state' => 'state']], $c_module->state),
-        new table_body_row_cell(['class' => ['actions' => 'actions']], $c_action_list ?? null)
-      ];
-    }
-    return new block('', ['class' => ['modules' => 'modules']], [
-      new table([], $tbody, $thead)
     ]);
   }
 
