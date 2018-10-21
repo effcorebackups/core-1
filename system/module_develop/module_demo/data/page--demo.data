@@ -45,7 +45,7 @@ pages
     - block_demo_dynamic|page_part
         region: content
         type: code
-        source: \effcore\modules\demo\events_page::on_show_block_demo_dynamic
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic
     - block_demo_selection|page_part
         region: content
         type: link
@@ -53,11 +53,11 @@ pages
     - block_demo_canvas|page_part
         region: content
         type: code
-        source: \effcore\modules\demo\events_page::on_show_block_demo_canvas
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
     - block_demo_diagrams|page_part
         region: content
         type: code
-        source: \effcore\modules\demo\events_page::on_show_block_demo_diagrams
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
     - form_access|page_part
         display
           check: user

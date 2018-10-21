@@ -15,7 +15,7 @@ namespace effcore\modules\demo {
           use \effcore\tabs;
           use \effcore\translation;
           use \effcore\tree;
-          abstract class events_page {
+          abstract class events_page_demo {
 
   static function on_show_block_demo_dynamic($page) {
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice');
