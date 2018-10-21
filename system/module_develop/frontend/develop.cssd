@@ -13,6 +13,10 @@
   x-block.logs td.value-error {background-color: pink !important}
   x-block.logs tr.query td.name {font-size: .9em}
 
+  x-block.logs x-total {display: block; font-size: .9em; text-align: center; color: lightgray}
+  x-block.logs x-total x-label {}
+  x-block.logs x-total x-value {}
+
   /* demo diagrams */
 
   x-block.demo-diagrams x-diagram {border-bottom: 1px dashed lightgray}

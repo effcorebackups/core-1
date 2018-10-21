@@ -101,21 +101,25 @@ namespace effcore {
   static function markup_block_logs_get() {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
+    $logs_all = static::logs_select();
     foreach (static::logs_select() as $c_log) {
       $c_row_class = core::to_css_class($c_log->object);
       $c_value_class = $c_log->value === 'error' ?
         ['value' => 'value', 'value-error' => 'value-error'] :
         ['value' => 'value'];
       $tbody[] = new table_body_row(['class' => [$c_row_class => $c_row_class]], [
-        new table_body_row_cell(['class' => ['time'        => 'time']],        locale::format_msecond($c_log->time)),
-        new table_body_row_cell(['class' => ['object'      => 'object']],      translation::get($c_log->object,      $c_log->args)),
-        new table_body_row_cell(['class' => ['action'      => 'action']],      translation::get($c_log->action,      $c_log->args)),
+        new table_body_row_cell(['class' => ['time'        => 'time'       ]], locale::format_msecond($c_log->time)),
+        new table_body_row_cell(['class' => ['object'      => 'object'     ]], translation::get($c_log->object,      $c_log->args)),
+        new table_body_row_cell(['class' => ['action'      => 'action'     ]], translation::get($c_log->action,      $c_log->args)),
         new table_body_row_cell(['class' => ['description' => 'description']], translation::get($c_log->description, $c_log->args)),
         new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log->value))
       ]);
     }
     return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [
-      new table(['class' => ['compact' => 'compact']], $tbody, $thead)
+      new table(['class' => ['compact' => 'compact']], $tbody, $thead),
+      new markup('x-total', [], [
+      new markup('x-label', [], ['Total', ': ']),
+      new markup('x-value', [], count($logs_all))])
     ]);
   }
 
