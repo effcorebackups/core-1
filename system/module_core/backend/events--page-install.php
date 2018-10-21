@@ -5,12 +5,21 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\language;
           use \effcore\tabs;
+          use \effcore\url;
           abstract class events_page_install {
 
   static function on_init_tabs($page) {
-    tabs::item_insert('English', 'language_select_en', 'language_select', 'en', null, ['class' => ['en' => 'en']]);
-    tabs::item_insert('Russian', 'language_select_ru', 'language_select', 'ru', null, ['class' => ['ru' => 'ru']]);
+    $languages = language::get_all();
+    $code = $page->args_get('code');
+    if (!isset($languages[$code])) url::go($page->args_get('base').'/'.reset($languages)->code);
+    foreach ($languages as $c_language) {
+      tabs::item_insert(   $c_language->title->en.' ('.$c_language->title->native.')',
+        'language_select_'.$c_language->code,
+        'language_select', $c_language->code, null, ['class' => [$c_language->code => $c_language->code]]
+      );
+    }
   }
 
 }}

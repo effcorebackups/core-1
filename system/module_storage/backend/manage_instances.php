@@ -23,17 +23,17 @@ namespace effcore {
 
   static function instance_select_multiple_by_entity_name($page) {
     $entities = entity::all_get(false);
-  # create tabs
+    $entity_name = $page->args_get('entity_name');  
     core::array_sort_by_property($entities, 'title');
+    if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/select/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
-      tabs::item_insert($c_entity->title_plural,
-        'instance_select_'.$c_entity->name, # - id
-        'instance_select',                  # - id parent
-                 'select/'.$c_entity->name  # - suffix for url
+      tabs::item_insert(             $c_entity->title_plural,
+        'instance_select_'.          $c_entity->name,
+        'instance_select', 'select/'.$c_entity->name
       );
     }
   # create selection
-    $entity = entity::get($page->args_get('entity_name'));
+    $entity = entity::get($entity_name);
     if ($entity) {
       $selection = new selection;
       foreach ($entity->fields as $c_name => $c_info) {
@@ -49,16 +49,12 @@ namespace effcore {
         $entity->name]],
         $markup
       );
-    } else {
-      url::go(
-        $page->args_get('base').'/select/'.reset($entities)->name
-      );
     }
   }
 
   static function instance_select_by_entity_name_and_instance_id($page) {
-  # create selection
-    $entity = entity::get($page->args_get('entity_name'));
+    $entity_name = $page->args_get('entity_name');
+    $entity = entity::get($entity_name);
     if ($entity) {
     # @todo: make functionality
       return new text('instance_select is UNDER CONSTRUCTION');
@@ -75,24 +71,20 @@ namespace effcore {
 
   static function instance_insert_by_entity_name($page) {
     $entities = entity::all_get(false);
-  # create tabs
+    $entity_name = $page->args_get('entity_name');
     core::array_sort_by_property($entities, 'title');
+    if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/insert/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
-      tabs::item_insert($c_entity->title,
-        'instance_insert_'.$c_entity->name, # - id
-        'instance_insert',                  # - id parent
-                 'insert/'.$c_entity->name  # - suffix for url
+      tabs::item_insert(             $c_entity->title,
+        'instance_insert_'.          $c_entity->name,
+        'instance_insert', 'insert/'.$c_entity->name
       );
     }
   # create insert form
-    $entity = entity::get($page->args_get('entity_name'));
+    $entity = entity::get($entity_name);
     if ($entity) {
     # @todo: make functionality
       return new text('instance_insert is UNDER CONSTRUCTION');
-    } else {
-      url::go(
-        $page->args_get('base').'/insert/'.reset($entities)->name
-      );
     }
   }
 
@@ -101,7 +93,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function instance_update_by_entity_name_and_instance_id($page) {
-    $entity = entity::get($page->args_get('entity_name'));
+    $entity_name = $page->args_get('entity_name');
+    $entity = entity::get($entity_name);
     if ($entity) {
     # @todo: make functionality
       return new text('instance_update is UNDER CONSTRUCTION');

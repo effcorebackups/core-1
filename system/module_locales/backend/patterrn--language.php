@@ -39,6 +39,11 @@ namespace effcore {
     return static::$cache[$code];
   }
 
+  static function get_all() {
+    if    (static::$cache == null) static::init();
+    return static::$cache;
+  }
+
   static function get_plurals($code) {
     return static::get($code)->plurals ?? [];
   }

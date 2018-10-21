@@ -9,9 +9,9 @@ namespace effcore {
 
   static function tree_select($page) {
     $trees = tree::all_get();
-    core::array_sort_by_property($trees, 'title');
     $id = $page->args_get('id');
-    if (!$id) url::go($page->args_get('base').'/select/'.reset($trees)->id);
+    core::array_sort_by_property($trees, 'title');
+    if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
       tabs::item_insert($c_tree->title, 'tree_select_'.$c_tree->id, 'tree_select', 'select/'.$c_tree->id);
     }
