@@ -178,7 +178,7 @@ namespace effcore {
   #######################
 
   if (!storage::is_installed()) {
-    if (strpos(url::current_get()->path_get(), '/install') !== 0) {
+    if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::current_get()->path_get())) {
       url::go('/install/en');
     }
   }
