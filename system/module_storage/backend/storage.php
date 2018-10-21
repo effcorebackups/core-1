@@ -9,12 +9,12 @@ namespace effcore {
 
   static protected $cache;
 
-  static function init($id) {
+  static function init($name) {
     storage_files::init('storages');
     foreach (storage_files::$data['storages'] as $c_module_id => $c_module_storages) {
       foreach ($c_module_storages as $c_row_id => $c_storage) {
-        if ($c_storage->id == $id) {
-          static::$cache[$c_storage->id] = $c_storage;
+        if ($c_storage->name == $name) {
+          static::$cache[$c_storage->name] = $c_storage;
         }
       }
     }
@@ -24,15 +24,17 @@ namespace effcore {
     static::$cache = [];
   }
 
-  static function get($id, $load = true) {
-    if (!isset(static::$cache[$id])) static::init($id);
-    if (static::$cache[$id] instanceof external_cache && $load)
-        static::$cache[$id] = static::$cache[$id]->external_cache_load();
-    return static::$cache[$id];
+  static function get($name, $load = true) {
+    if (!isset(static::$cache[$name])) static::init($name);
+    if (static::$cache[$name] instanceof external_cache && $load)
+        static::$cache[$name] = static::$cache[$name]->external_cache_load();
+    return static::$cache[$name];
   }
 
   static function is_installed() {
-    return isset(static::get('main')->driver);
+    $main = static::get('main');
+    return isset($main->driver) &&
+           isset($main->credentials);
   }
 
 }}

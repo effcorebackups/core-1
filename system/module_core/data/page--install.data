@@ -10,22 +10,6 @@ pages
       roles
       - =: anonymous
     children
-    - menu_main|page_part
-        region: main_menu
-        type: link
-        source: trees/core/main
-    - menu_user|page_part
-        region: head
-        type: code
-        source: \effcore\modules\user\events_page::on_show_block_menu_user
-    - logo|page_part
-        region: head
-        type: link
-        source: blocks/page/logo
-    - title|page_part
-        region: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
     - init_languages|page_part
         region: content
         type: code

@@ -177,6 +177,12 @@ namespace effcore {
   ### return the page ###
   #######################
 
+  if (!storage::is_installed()) {
+    if (strpos(url::current_get()->path_get(), '/install') !== 0) {
+      url::go('/install/en');
+    }
+  }
+
   ob_start();
   $output = '';
   foreach (event::start('on_module_start') as $c_results) {

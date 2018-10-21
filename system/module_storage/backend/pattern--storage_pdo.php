@@ -10,7 +10,7 @@ namespace effcore {
           class storage_pdo
           implements has_external_cache {
 
-  public $id;
+  public $name;
   public $driver;
   public $credentials;
   public $table_prefix = '';
@@ -22,7 +22,8 @@ namespace effcore {
     if ($this->connection) return
         $this->connection;
     else {
-      if ($this->credentials) {
+      if ($this->driver &&
+          $this->credentials) {
         try {
           event::start('on_storage_init_before', 'pdo', [&$this]);
           switch ($this->driver) {
@@ -46,15 +47,15 @@ namespace effcore {
           return $this->connection;
         } catch (pdo_exception $e) {
           message::insert(
-            translation::get('Storage %%_id is not available!', ['id' => $this->id]), 'warning'
+            translation::get('Storage %%_name is not available!', ['name' => $this->name]), 'error'
           );
         }
       } else {
         $path = (new file(data::directory))->path_relative_get();
-        $link = (new markup('a', ['href' => '/install'], 'Installation'))->render();
+        $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
         message::insert(
-          translation::get('Credentials for storage %%_id was not set!', ['id' => $this->id]).br.
-          translation::get('Restore the storage credentials in "%%_path" dirrectory or reinstall this system on the page: %%_link', ['path' => $path, 'link' => $link]), 'warning'
+          translation::get('Credentials for storage %%_name was not set!', ['name' => $this->name]).br.
+          translation::get('Restore the storage credentials in "%%_path" directory or reinstall this system on the page: %%_link', ['path' => $path, 'link' => $link]), 'warning'
         );
       }
     }
@@ -356,7 +357,7 @@ namespace effcore {
   ###########################
 
   static function not_external_properties_get() {
-    return ['id' => 'id'];
+    return ['name' => 'name'];
   }
 
 }}

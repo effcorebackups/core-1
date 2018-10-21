@@ -8,6 +8,8 @@ namespace effcore {
           class storage_files
           implements has_external_cache {
 
+  public $name;
+
   function select($dpath, $expand_cache = false) {
     $dpath_parts = explode('/', $dpath);
     $group = array_shift($dpath_parts);
@@ -49,11 +51,11 @@ namespace effcore {
   static public $changes_dynamic;
 
   static function not_external_properties_get() {
-    return ['id' => 'id'];
+    return ['name' => 'name'];
   }
 
   static function init($group) {
-    console::log_add('storage', 'init.', 'storage %%_id will be initialized', 'ok', 0, ['id' => $group.' | storage_files']);
+    console::log_add('storage', 'init.', 'storage %%_name will be initialized', 'ok', 0, ['name' => $group.' | storage_files']);
     $cache = cache::select('data--'.$group);
     if ($cache) static::$data[$group] = $cache;
     else        static::data_cache_rebuild();
