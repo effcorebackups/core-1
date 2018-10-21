@@ -4,7 +4,7 @@ entities
     title: CAPTCHA
     title_plural: CAPTCHAs
     storage_name: main
-    catalog_id: captcha
+    catalog_name: captcha
     ws_created: true
     fields
     - ip_hex

@@ -4,7 +4,7 @@ entities
     title: Demo: types
     title_plural: Demo: types
     storage_name: main
-    catalog_id: demo_types
+    catalog_name: demo_types
     fields
     - id
         title: ID
@@ -55,7 +55,7 @@ entities
     title: Demo: autoincrement
     title_plural: Demo: autoincrement
     storage_name: main
-    catalog_id: demo_autoincrement
+    catalog_name: demo_autoincrement
     fields
     - f_integer_1
         title: Field integer 1
@@ -80,7 +80,7 @@ entities
     title: Demo: constraints
     title_plural: Demo: constraints
     storage_name: main
-    catalog_id: demo_constraints
+    catalog_name: demo_constraints
     fields
     - f_integer_1
         title: Field integer 1
@@ -125,7 +125,7 @@ entities
     title: Demo: indexes
     title_plural: Demo: indexes
     storage_name: main
-    catalog_id: demo_indexes
+    catalog_name: demo_indexes
     fields
     - f_integer_1
         title: Field integer 1

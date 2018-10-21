@@ -10,7 +10,7 @@ namespace effcore {
 
   public $name;
   public $storage_name;
-  public $catalog_id;
+  public $catalog_name;
   public $ws_weight;
   public $ws_created;
   public $ws_updated;
@@ -117,7 +117,7 @@ namespace effcore {
       'title'        => 'title',
       'title_plural' => 'title_plural',
       'storage_name' => 'storage_name',
-      'catalog_id'   => 'catalog_id'
+      'catalog_name' => 'catalog_name'
     ];
   }
 

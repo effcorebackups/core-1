@@ -4,7 +4,7 @@ entities
     title: Tree
     title_plural: Trees
     storage_name: main
-    catalog_id: trees
+    catalog_name: trees
     ws_created: true
     ws_updated: true
     fields
@@ -27,7 +27,7 @@ entities
     title: Tree item
     title_plural: Tree items
     storage_name: main
-    catalog_id: tree_items
+    catalog_name: tree_items
     ws_created: true
     ws_updated: true
     fields
