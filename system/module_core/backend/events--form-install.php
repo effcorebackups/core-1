@@ -30,9 +30,11 @@ namespace effcore\modules\core {
       }
     } else {
       $form->child_delete('elements');
-      $link = (new markup('a', ['href' => '/'], 'front'))->render();
-      message::insert('Installation is not available because storage credentials was set!', 'warning');
-      message::insert(translation::get('Go to page: %%_link.', ['link' => $link]), 'warning');
+      core::send_header_and_exit('access_denided', '',
+        translation::get('Installation is not available because storage credentials was set!').br.br.
+        translation::get('go to <a href="/">front page</a>')
+      );
+
     }
   }
 

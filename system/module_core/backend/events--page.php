@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use \effcore\language;
+          use \effcore\url;
           abstract class events_page {
 
   static function on_switch_language($page) {
