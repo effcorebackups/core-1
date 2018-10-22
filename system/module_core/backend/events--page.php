@@ -10,7 +10,7 @@ namespace effcore\modules\core {
 
   static function on_switch_language($page) {
     $languages = language::get_all();
-    $code = $page->args_get('code');
+    $code = $page->args_get('lang_code');
     if (!isset($languages[$code])) url::go($page->args_get('base').'/en');
     language::current_code_set($code);
   }

@@ -9,12 +9,19 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\event;
           use \effcore\message;
+          use \effcore\page;
           use \effcore\storage;
           use \effcore\translation;
           use \effcore\url;
           abstract class events_form_install {
 
   static function on_init($form, $items) {
+    if (storage::is_installed()) {
+      $form->child_delete('storage');
+      $form->child_delete('license_agreement');
+      $form->child_delete('button_install');
+      message::insert('Installation is not available because storage credentials was set!', 'warning');
+    }
     if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
       $items['#driver:mysql' ]->disabled_set();
       $items['#driver:sqlite']->disabled_set();
@@ -24,12 +31,6 @@ namespace effcore\modules\core {
     } else {
       if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'warning');}
       if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
-    }
-    if (storage::is_installed()) {
-      $form->child_delete('storage');
-      $form->child_delete('license_agreement');
-      $form->child_delete('button_install');
-      message::insert('Installation is not available because storage credentials was set!', 'warning');
     }
   }
 
@@ -99,6 +100,7 @@ namespace effcore\modules\core {
           $params->table_prefix           = $items['#table_prefix']->value_get();
         }
         storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
+        storage::get('files')->changes_insert('core', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
         storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
           'cron'            => core::key_generate(),
           'form_validation' => core::key_generate(),

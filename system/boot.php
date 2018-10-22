@@ -74,6 +74,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
+
       if (!empty($file_types[$type]->dynamic)) {
         $file = new file($path);
         $data = token::replace($file->load());
@@ -101,10 +102,11 @@ namespace effcore {
         console::log_store();
         exit();
 
+      } else {
+
     # ─────────────────────────────────────────────────────────────────────
     # case for static file
     # ─────────────────────────────────────────────────────────────────────
-      } else {
 
         $last_modified = gmdate('D, d M Y H:i:s', filemtime($path)).' GMT';
 

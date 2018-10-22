@@ -55,7 +55,7 @@ namespace effcore {
         $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
         message::insert(
           translation::get('Credentials for storage %%_name was not set!', ['name' => $this->name]).br.
-          translation::get('Restore the storage credentials in "%%_path" directory or reinstall this system on the page: %%_link', ['path' => $path, 'link' => $link]), 'warning'
+          translation::get('Restore the storage credentials in "%%_path" directory or reinstall this system on the page: %%_link', ['path' => $path, 'link' => $link]), 'error'
         );
       }
     }
