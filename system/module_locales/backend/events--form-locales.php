@@ -7,6 +7,7 @@
 namespace effcore\modules\locales {
           use \effcore\language;
           use \effcore\storage;
+          use \effcore\url;
           abstract class events_form_locales {
 
   static function on_init($form, $items) {
@@ -25,9 +26,8 @@ namespace effcore\modules\locales {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        $code_new = $items['#language']->value_get();
-        language::current_code_set($code_new);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $code_new);
+        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $items['#language']->value_get());
+        url::go('/manage/locales');
         break;
     }
   }
