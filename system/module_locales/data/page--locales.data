@@ -1,0 +1,42 @@
+pages
+- locales|page
+    title: Locales
+    https: true
+    display
+      check: url
+      where: path
+      match: %^/manage/locales$%
+    access
+      roles
+      - =: admins
+    children
+    - menu_main|page_part
+        region: main_menu
+        type: link
+        source: trees/core/main
+    - menu_user|page_part
+        region: head
+        type: code
+        source: \effcore\modules\user\events_page::on_show_block_menu_user
+    - logo|page_part
+        region: head
+        type: link
+        source: blocks/page/logo
+    - title|page_part
+        region: title
+        type: code
+        source: \effcore\modules\page\events_page::on_show_title
+    - form_locales|page_part
+        region: content
+        type: link
+        source: forms/locales/locales
+    - form_access|page_part
+        display
+          check: user
+          where: role
+          match: %^admins$%
+        region: content
+        type: link
+        source: forms/user/access
+        source_args
+        - entity_name: page

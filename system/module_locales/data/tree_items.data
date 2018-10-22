@@ -1,0 +1,12 @@
+tree_items
+- locales|tree_item
+    id: locales
+    id_parent: manage
+    title: Locales
+    url: /manage/locales
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: locales

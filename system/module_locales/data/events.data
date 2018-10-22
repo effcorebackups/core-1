@@ -1,0 +1,9 @@
+events
+  on_form_init
+  - locales|event
+      for: locales
+      handler: \effcore\modules\locales\events_form_locales::on_init
+  on_form_submit
+  - locales|event
+      for: locales
+      handler: \effcore\modules\locales\events_form_locales::on_submit

@@ -1,0 +1,23 @@
+forms
+- locales|form
+    attributes
+    - id: locales
+    - method: post
+    - =: novalidate
+    children
+    - settings|fieldset
+        title: Settings
+        children
+        - language|field_select
+            title: Current language
+            element_attributes
+            - name: language
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+    - button_restore|button
+        title: restore
+        attributes
+        - value: restore
+        - =: disabled
