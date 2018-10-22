@@ -51,6 +51,12 @@
   table.compact td:first-child {padding-left: 17px}
   table.compact td:last-child {padding-right: 17px}
 
+  /* languages */
+
+  x-languages {display: block}
+  x-language {margin-right: 10px; padding-right: 10px; border-right: 3px solid %%_color_bg}
+  x-language:last-child {margin-right: 0; padding-right: 0; border: none}
+
   /* messages */
 
   x-messages {display: block; margin: 50px auto}

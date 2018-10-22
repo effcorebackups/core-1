@@ -10,14 +10,18 @@ pages
       roles
       - =: anonymous
     children
-    - init_languages|page_part
-        region: content
+    - language_switcher|page_part
+        region: head
         type: code
-        source: \effcore\modules\core\events_page_install::on_init_languages
-    - tabs_languages|page_part
-        region: tabs
-        type: link
-        source: tabs/locales/languages
+        source: \effcore\modules\core\events_page::on_switch_language
+    - menu_languages|page_part
+        region: head
+        type: code
+        source: \effcore\modules\locales\events_page::on_show_block_menu_languages
+    - title|page_part
+        region: title
+        type: code
+        source: \effcore\modules\page\events_page::on_show_title
     - form_install|page_part
         region: content
         type: link

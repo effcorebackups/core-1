@@ -1,9 +1,0 @@
-tabs_items
-- language_select|tabs_item
-    id: language_select
-    id_parent: T:languages
-    title: Select available language
-    hidden: true
-    attributes
-    - class
-      - =: language-select
