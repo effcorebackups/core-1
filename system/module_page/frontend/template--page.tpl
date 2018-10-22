@@ -15,8 +15,8 @@
     </x-head>
 
     <x-body>
-      %%_messages
       %%_title
+      %%_messages
       %%_tabs
       %%_content
     </x-body>
