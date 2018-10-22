@@ -119,7 +119,7 @@ namespace effcore\modules\core {
           $form->child_delete('elements');
           $link = (new markup('a', ['href' => '/login'], 'login'))->render();
           message::insert(translation::get('Modules was installed.'));
-          message::insert(translation::get('Go to page: %%_link.', ['link' => $link]), 'notice');
+          message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
         }
         break;
     }

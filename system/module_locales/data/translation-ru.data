@@ -32,7 +32,6 @@ translations
     - Canvas: Холст
     - CAPTCHA: Защитный код (CAPTCHA)
     - CAPTCHAs: Защитные коды (CAPTCHAs)
-    - Change this EMail and Password after login to the system!: Измените этот Адрес электронной почты и Пароль после входа в систему!
     - Characters: Символы
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
@@ -130,7 +129,7 @@ translations
     - front: главная
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to front page: перейти на главную страницу
-    - Go to page\: %%_link.: Перейти на страницу: %%_link.
+    - go to page %%_link: перейти на страницу %%_link
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет измененное значение.
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
@@ -142,7 +141,7 @@ translations
     - insertion: вставка
     - Install: Установить
     - install: установить
-    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учетные данные хранилища уже были установлены.
+    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учетные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удален.
@@ -359,5 +358,5 @@ translations
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You have already uploaded %%_number file%%_plural{number,s}.: Вы уже загрузили %%_number файл%%_plural{number,ov-a}.
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
-    - Your EMail is\: %%_email: Ваш Адрес электронной почты: %%_email
-    - Your Password is\: %%_password: Ваш Пароль: %%_password
+    - your EMail is — %%_email: ваш Адрес электронной почты — %%_email
+    - your Password is — %%_password: ваш Пароль — %%_password
