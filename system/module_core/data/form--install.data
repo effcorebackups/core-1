@@ -5,102 +5,99 @@ forms
     - method: post
     - =: novalidate
     children
-    - storage|fieldset
-        title: Storage params
+    - elements|node
         children
-      # driver
-        - is_mysql|field_radiobutton
-            title: MySQL
+        - storage|fieldset
+            title: Storage params
+            children
+          # driver
+            - is_mysql|field_radiobutton
+                title: MySQL
+                attributes
+                - class
+                  - =: before-container
+                element_attributes
+                - name: driver
+                - value: mysql
+          # mysql params
+            - mysql|fieldset
+                children
+              # host name
+                - host_name|field_text
+                    title: Hostname
+                    element_attributes
+                    - name: host_name
+                    - value: [::1]
+                    - minlength: 1
+                    - maxlength: 253
+                    - pattern: %^[a-zA-Z0-9-_:/.\[\]]+$%
+              # port
+                - port|field_number
+                    title: Port
+                    element_attributes
+                    - name: port
+                    - value: 3306
+                    - min: 1024
+                    - max: 49150
+              # user name
+                - user_name|field_text
+                    title: User name
+                    element_attributes
+                    - name: user_name
+                    - value: root
+                    - minlength: 1
+                    - maxlength: 64
+                    - pattern: %^[a-zA-Z0-9-_]+$%
+              # password
+                - password|field_password
+                    element_attributes
+                    - minlength: null
+                    - required: null
+              # storage name (database name)
+                - storage_name|field_text
+                    title: Storage name
+                    element_attributes
+                    - name: storage_name
+                    - value: main
+                    - minlength: 1
+                    - maxlength: 128
+                    - pattern: %^[a-zA-Z0-9-_]+$%
+          # driver
+            - is_sqlite|field_radiobutton
+                title: SQLite
+                attributes
+                - class
+                  - =: before-container
+                element_attributes
+                - name: driver
+                - value: sqlite
+          # sqlite params
+            - sqlite|fieldset
+                children
+              # storage file path
+                - file_name|field_text
+                    title: File name
+                    element_attributes
+                    - name: file_name
+                    - value: data.sqlite
+                    - minlength: 1
+                    - maxlength: 255
+                    - pattern: %^[a-zA-Z0-9-_./]+$%
+                    - readonly: readonly
+          # shared params
+            - params|fieldset
+                title: Shared params
+                children
+              # table prefix
+                - table_prefix|field_text
+                    title: Table prefix
+                    element_attributes
+                    - name: table_prefix
+                    - maxlength: 10
+                    - pattern: %^[a-zA-Z0-9-_]+$%
+                    - required: null
+        - license_agreement|group_license_agreement
+        - button_install|button
+            title: install
             attributes
-            - class
-              - =: before-container
-            element_attributes
-            - name: driver
-            - value: mysql
-      # mysql params
-        - mysql|fieldset
-            children
-          # host name
-            - host_name|field_text
-                title: Hostname
-                element_attributes
-                - name: host_name
-                - value: [::1]
-                - minlength: 1
-                - maxlength: 253
-                - pattern: %^[a-zA-Z0-9-_:/.\[\]]+$%
-          # port
-            - port|field_number
-                title: Port
-                element_attributes
-                - name: port
-                - value: 3306
-                - min: 1024
-                - max: 49150
-          # user name
-            - user_name|field_text
-                title: User name
-                element_attributes
-                - name: user_name
-                - value: root
-                - minlength: 1
-                - maxlength: 64
-                - pattern: %^[a-zA-Z0-9-_]+$%
-          # password
-            - password|field_password
-                element_attributes
-                - minlength: null
-                - required: null
-          # storage name (database name)
-            - storage_name|field_text
-                title: Storage name
-                element_attributes
-                - name: storage_name
-                - value: main
-                - minlength: 1
-                - maxlength: 128
-                - pattern: %^[a-zA-Z0-9-_]+$%
-      # driver
-        - is_sqlite|field_radiobutton
-            title: SQLite
-            attributes
-            - class
-              - =: before-container
-            element_attributes
-            - name: driver
-            - value: sqlite
-      # sqlite params
-        - sqlite|fieldset
-            children
-          # storage file path
-            - file_name|field_text
-                title: File name
-                element_attributes
-                - name: file_name
-                - value: data.sqlite
-                - minlength: 1
-                - maxlength: 255
-                - pattern: %^[a-zA-Z0-9-_./]+$%
-                - readonly: readonly
-      # shared params
-        - params|fieldset
-            title: Shared params
-            children
-          # table prefix
-            - table_prefix|field_text
-                title: Table prefix
-                element_attributes
-                - name: table_prefix
-                - maxlength: 10
-                - pattern: %^[a-zA-Z0-9-_]+$%
-                - required: null
-    - license_agreement|group_license_agreement
-    - button_install|button
-        title: install
-        attributes
-        - value: install
-    - button_to_front|button
-        title: to front page
-        novalidate: true
-        attributes
-        - value: to_front
+            - value: install

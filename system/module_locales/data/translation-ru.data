@@ -127,7 +127,10 @@ translations
     - file: файл
     - Form elements: Элементы формы
     - Front page: Главная страница
+    - front: главная
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
+    - go to front page: перейти на главную страницу
+    - Go to page\: %%_link.: Перейти на страницу: %%_link.
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет измененное значение.
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
@@ -304,7 +307,6 @@ translations
     - Time: Время
     - Timezone: Часовой пояс
     - Title: Заголовок
-    - to front page: на главную страницу
     - token: токен
     - Total: Всего
     - Translate: Перевод
