@@ -279,7 +279,6 @@ translations
     - storage %%_name will be initialized: хранилище %%_name будет инициализировано
     - Storage is not available with these credentials!: Хранилище не доступно с этими учетными данными!
     - Storage name: Имя хранилища
-    - Storage params: Параметры хранилища
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить

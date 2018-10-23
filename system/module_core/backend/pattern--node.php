@@ -104,6 +104,10 @@ namespace effcore {
     unset($this->children[$id]);
   }
 
+  function child_delete_all() {
+    $this->children = [];
+  }
+
   ##############
   ### render ###
   ##############
