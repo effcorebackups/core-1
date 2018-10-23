@@ -117,7 +117,7 @@ namespace effcore\modules\core {
           storage::cache_reset();
           event::start('on_module_install');
           $form->child_delete_all();
-          $link = (new markup('a', ['href' => '/login'], 'login'))->render();
+          $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
           message::insert(translation::get('Modules was installed.'));
           message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
         }

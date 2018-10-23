@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\core;
+          use \effcore\field;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\module;
@@ -21,8 +22,9 @@ namespace effcore\modules\user {
     if ($admin->select()) {
       $password = dechex(random_int(0x10000000, 0x7fffffff));
       $admin->password_hash = core::hash_password_get($password);
+      $admin->email = field::request_values_get('email')[0];
       if ($admin->update()) {
-        message::insert(translation::get('your EMail is — %%_email', ['email' => 'admin@example.com']), 'credentials');
+        message::insert(translation::get('your EMail is — %%_email', ['email' => $admin->email]), 'credentials');
         message::insert(translation::get('your Password is — %%_password', ['password' => $password]), 'credentials');
       }
     }
