@@ -92,6 +92,9 @@
   input[data-type='switcher']:checked {background: %%_color_bg url('images/icons-form_items.svgd') -46px -40px}
   input[data-type='switcher']:disabled {border-color: lightgray; background-color: lightgray}
 
+  input[data-checkbox-is-checked='no']:checked,
+  input[data-checkbox-is-checked='yes']:not(:checked) {border-color: %%_color_ok}
+
   /* checkboxes and radiobuttons inside containers */
 
   x-field[data-type='switcher']    label,
@@ -132,6 +135,7 @@
     padding: 12px 30px;
     cursor: pointer;
     border: none;
+    border-radius: 20px;
     font-family: 'Arial';
     font-size: 16px;
     color: white;

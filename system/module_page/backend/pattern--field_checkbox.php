@@ -15,4 +15,10 @@ namespace effcore {
     'name' => 'checkbox'
   ];
 
+  function render() {
+    $element = $this->child_select('element');
+    $element->attribute_insert('data-checkbox-is-checked', $this->checked_get() ? 'yes' : 'no');
+    return parent::render();
+  }
+
 }}

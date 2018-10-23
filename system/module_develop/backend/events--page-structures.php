@@ -96,7 +96,7 @@ namespace effcore\modules\develop {
       # set abstract mark
         if (!empty($c_item_info->modifier) &&
                    $c_item_info->modifier == 'abstract') {
-          $x_class->attribute_insert('data-abstract', 'true');
+          $x_class->attribute_insert('data-abstract', 'yes');
         }
 
       # find properties
