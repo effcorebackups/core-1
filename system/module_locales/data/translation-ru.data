@@ -177,17 +177,18 @@ translations
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Memory for php (bytes): Память для php (байт)
     - Menu for anonymous user: Меню для анонимного пользователя
-    - Menu for authenticated user: Меню для аутентифицированного пользователя
+    - Menu for authenticated user: Меню для аутетифицированного пользователя
     - Menu for demonstration: Меню для демонстрации
     - Menu main: Меню главное
+    - Menu: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module for internationalization.: Модуль для интернационализации.
-    - Module for storages support.: Модуль поддержки хранилищ данных.
+    - Module for storages support.: Модуль для поддержки хранилищ данных.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
-    - Module for working with pages.: Модуль работы со страницами.
-    - Module for working with user accounts and permissions.: Модуль работы с пользовательскими аккаунтами и разрешениями.
+    - Module for working with pages.: Модуль для работы со страницами.
+    - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Modules was installed.: Модули были установлены.
     - Modules: Модули
     - name: имя
