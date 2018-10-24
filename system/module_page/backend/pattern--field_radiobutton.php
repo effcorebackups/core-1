@@ -7,7 +7,7 @@
 namespace effcore {
           class field_radiobutton extends field {
 
-  public $title = 'Radiobutton';
+  public $title = '';
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'radiobutton'];
   public $element_attributes_default = [

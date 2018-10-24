@@ -7,11 +7,20 @@ events
   - install|event
       for: install
       handler: \effcore\modules\core\events_form_install::on_init
+  - modules|event
+      for: modules
+      handler: \effcore\modules\core\events_form_modules::on_init
   on_form_validate
   - install|event
       for: install
       handler: \effcore\modules\core\events_form_install::on_validate
+  - modules|event
+      for: modules
+      handler: \effcore\modules\core\events_form_modules::on_validate
   on_form_submit
   - install|event
       for: install
       handler: \effcore\modules\core\events_form_install::on_submit
+  - modules|event
+      for: modules
+      handler: \effcore\modules\core\events_form_modules::on_submit

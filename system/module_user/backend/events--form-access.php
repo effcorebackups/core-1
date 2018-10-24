@@ -22,9 +22,9 @@ namespace effcore\modules\user {
       $c_switcher = new field_switcher($c_role->title);
       $c_switcher->build();
       $c_switcher->name_set('access_for_'.$c_role->id);
+      $c_switcher->value_set('on');
       $c_switcher->checked_set(isset($access->roles[$c_role->id]));
       $c_switcher->disabled_set(true);
-      $c_switcher->value_set('on');
       $items['settings']->child_insert(
         new markup('x-role', [], [
           $c_switcher

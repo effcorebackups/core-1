@@ -11,7 +11,7 @@ namespace effcore {
   public $title;
   public $description;
   public $version;
-  public $state;
+  public $state; # off | on | always_on
   public $path;
 
   function install() {

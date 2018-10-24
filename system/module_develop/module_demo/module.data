@@ -3,4 +3,4 @@ module|module
   title: Demo
   description: Module for demonstrating capabilities.
   version: 0.900
-  state: on
+  state: off

@@ -187,7 +187,6 @@ translations
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль работы со страницами.
     - Module for working with user accounts and permissions.: Модуль работы с пользовательскими аккаунтами и разрешениями.
-    - Module information: Информация о модуле
     - Modules was installed.: Модули были установлены.
     - Modules: Модули
     - name: имя
