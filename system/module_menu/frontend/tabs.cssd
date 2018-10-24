@@ -2,12 +2,24 @@
   /* tabs */
 
   x-tabs {display: block; margin: 100px auto}
-  x-tabs x-top-items {display: block; border-bottom: 5px solid %%_color_bg; font-size: 1.1em}
-  x-tabs x-top-items ul, x-tabs x-top-items li {list-style: none; margin: 0; padding: 0}
+
+  x-tabs x-top-items {
+    display: block;
+    border-bottom: 5px solid %%_color_bg;
+    font-size: 1.1em}
+  x-tabs x-top-items ul,
+  x-tabs x-top-items li {
+    list-style: none;
+    margin: 0;
+    padding: 0}
   x-tabs x-top-items li {display: inline-block}
-  x-tabs x-top-items a {display: inline-block; padding: 15px 15px 10px 15px; border-right: 1px solid %%_color_bg}
+
+  x-tabs x-top-items a {
+    display: inline-block;
+    padding: 15px 15px 10px 15px;
+    border-radius: 15px 15px 0 0}
   x-tabs x-top-items a.active,
   x-tabs x-top-items a.active-trail {color: white; background: %%_color_bg}
-  x-tabs x-top-items a:last-child {border-right: 0}
+
   x-tabs x-sub-items {display: block; margin: 10px 0}
   x-tabs x-sub-items > ul {margin: 0; padding-left: 14px; list-style: none}

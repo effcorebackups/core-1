@@ -93,7 +93,7 @@
   input[data-type='switcher']:disabled {border-color: lightgray; background-color: lightgray}
 
   input[data-checkbox-is-checked='no']:checked,
-  input[data-checkbox-is-checked='yes']:not(:checked) {border-color: %%_color_ok}
+  input[data-checkbox-is-checked='yes']:not(:checked) {border-color: %%_color_warning}
 
   /* checkboxes and radiobuttons inside containers */
 
