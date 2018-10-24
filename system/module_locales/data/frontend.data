@@ -1,0 +1,10 @@
+frontend
+- frontend_page_install
+    display
+      check: url
+      where: path
+      match: %^/install/[a-z]{2,2}$%
+    styles
+    - page_style
+        file: frontend/locales.cssd
+        media: all

@@ -17,7 +17,7 @@ namespace effcore\modules\locales {
         $c_language->title->en.' ('.$c_language->title->native.')';
       $href = $page->args_get('base').'/'.$c_language->code;
       $link = new markup('a', ['href' => $href], $title);
-      $link_wrapper = new markup('x-language', ['class' => [$c_language->code => $c_language->code]], $link);
+      $link_wrapper = new markup('x-language', ['data-code' => $c_language->code], $link);
       $menu->child_insert($link_wrapper, $c_language->code);
     }
     return $menu;
