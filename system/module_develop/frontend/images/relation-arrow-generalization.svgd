@@ -21,7 +21,7 @@
   </metadata>
 
   <g id="icon_relation_generalization">
-    <path d="M 15,0 V 44 H 30" style="fill: none; stroke: black; stroke-width: 1px" />
+    <path d="M 15,0 V 44 H 30"      style="fill:  none; stroke: black; stroke-width: 1px" />
     <path d="M 20,10 H 10 L 15,0 Z" style="fill: white; stroke: black; stroke-width: 1px" />
   </g>
 

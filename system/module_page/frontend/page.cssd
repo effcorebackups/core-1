@@ -178,11 +178,11 @@
   /* x-diagram */
 
   x-modules-info {display: block; margin-bottom: 50px}
-  x-module-info {display: block; padding: 20px 0; border-bottom: 1px dashed lightgray}
-  x-module-info x-label {font-weight: bold}
+  x-module-info {display: block; padding: 30px 0; border-bottom: 1px dashed lightgray}
+  x-module-info x-label {color: gray}
+  x-module-title {display: block;  margin-bottom: 10px; font-size: 1.5em}
   x-module-id {display: block}
   x-module-version {display: block}
-  x-module-title {display: block}
   x-module-description {display: block}
   x-module-path {display: block}
   x-module-info x-field[data-type='switcher'] {float: right; margin: 0}

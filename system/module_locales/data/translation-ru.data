@@ -64,6 +64,7 @@ translations
     - Delete: Удалить
     - delete: удалить
     - Description: Описание
+    - description: описание
     - Diagrams: Диаграммы
     - disable: выключить
     - Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?: Вы хотите удалить экземпляр сущности "%%_entity_name" с id = "%%_instance_id"?
@@ -215,6 +216,7 @@ translations
     - Parent ID: ID Родителя
     - Password: Пароль
     - Path: Путь
+    - path: путь
     - Permission ID: ID Разрешения
     - Permission: Разрешение
     - Permissions: Разрешения
@@ -343,6 +345,7 @@ translations
     - Value: Значение
     - Values: Значения
     - Version: Версия
+    - version: версия
     - View more: Смотреть больше
     - view: просмотреть
     - warning: предупреждение
