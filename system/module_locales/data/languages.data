@@ -9,3 +9,4 @@ languages
     title
       en: Russian
       native: Русский
+    license_translation: module_locales/licenses/license-ru.mark
