@@ -11,7 +11,7 @@ forms
         - email|field_email
         - nick|field_nick
         - password|field_password
-        - session_params|group_checkboxes
+        - session_params|group_switchers
             element_attributes
             - name: session_params[]
             values
