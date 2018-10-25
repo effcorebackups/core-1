@@ -18,6 +18,7 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     if (!storage::is_installed()) {
+      $items['#password']->value_set(dechex(random_int(0x10000000, 0x7fffffff)));
       if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();
@@ -52,18 +53,18 @@ namespace effcore\modules\core {
           if ($form->total_errors_count_get() == 0) {
             if ($items['#driver:mysql']->checked_get()) {
               $test = storage::get('main')->test('mysql', (object)[
-                'host_name'    => $items['#host_name'   ]->value_get(),
-                'port'         => $items['#port'        ]->value_get(),
-                'user_name'    => $items['#user_name'   ]->value_get(),
-                'password'     => $items['#password'    ]->value_get(),
-                'storage_name' => $items['#storage_name']->value_get()
+                'host_name'    => $items['#host_name'       ]->value_get(),
+                'port'         => $items['#port'            ]->value_get(),
+                'user_name'    => $items['#storage_login'   ]->value_get(),
+                'password'     => $items['#storage_password']->value_get(),
+                'storage_name' => $items['#storage_name'    ]->value_get()
               ]);
               if ($test !== true) {
-                $items['#host_name'   ]->error_set();
-                $items['#port'        ]->error_set();
-                $items['#user_name'   ]->error_set();
-                $items['#password'    ]->error_set();
-                $items['#storage_name']->error_set();
+                $items['#host_name'       ]->error_set();
+                $items['#port'            ]->error_set();
+                $items['#storage_login'   ]->error_set();
+                $items['#storage_password']->error_set();
+                $items['#storage_name'    ]->error_set();
                 $form->error_set(translation::get('Storage is not available with these credentials!').br.
                                  translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
               }
@@ -92,12 +93,12 @@ namespace effcore\modules\core {
             $params = new \stdClass;
             $params->driver = 'mysql';
             $params->credentials = new \stdClass;
-            $params->credentials->host_name    = $items['#host_name'   ]->value_get();
-            $params->credentials->port         = $items['#port'        ]->value_get();
-            $params->credentials->storage_name = $items['#storage_name']->value_get();
-            $params->credentials->user_name    = $items['#user_name'   ]->value_get();
-            $params->credentials->password     = $items['#password'    ]->value_get();
-            $params->table_prefix              = $items['#table_prefix']->value_get();
+            $params->credentials->host_name    = $items['#host_name'       ]->value_get();
+            $params->credentials->port         = $items['#port'            ]->value_get();
+            $params->credentials->storage_name = $items['#storage_name'    ]->value_get();
+            $params->credentials->user_name    = $items['#storage_login'   ]->value_get();
+            $params->credentials->password     = $items['#storage_password']->value_get();
+            $params->table_prefix              = $items['#table_prefix'    ]->value_get();
           }
           if ($items['#driver:sqlite']->checked_get()) {
             $params = new \stdClass;
@@ -106,20 +107,24 @@ namespace effcore\modules\core {
             $params->credentials->file_name = $items['#file_name'   ]->value_get();
             $params->table_prefix           = $items['#table_prefix']->value_get();
           }
-          storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
-          storage::get('files')->changes_insert('core', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
+          storage::get('main')->init($params->driver, $params->credentials);
           storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
             'cron'            => core::key_generate(),
             'form_validation' => core::key_generate(),
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
           ]);
-          storage::cache_reset();
           event::start('on_module_install');
-          $form->child_delete_all();
-          $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
-          message::insert(translation::get('Modules was installed.'));
-          message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
+          if (count(storage::get('main')->errors) == 0) {
+            $form->child_delete_all();
+            $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
+            message::insert(translation::get('Modules was installed.'));
+            message::insert(translation::get('your EMail is — %%_email', ['email' => $items['#email']->value_get()]), 'credentials');
+            message::insert(translation::get('your Password is — %%_password', ['password' => $items['#password']->value_get()]), 'credentials');
+            message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
+            storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
+            storage::get('files')->changes_insert('core', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'));
+          }
         }
         break;
     }

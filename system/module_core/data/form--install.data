@@ -37,11 +37,11 @@ forms
                 - value: 3306
                 - min: 1024
                 - max: 49150
-          # user name
-            - user_name|field_text
+          # login
+            - storage_login|field_text
                 title: User name
                 element_attributes
-                - name: user_name
+                - name: storage_login
                 - value: root
                 - minlength: 1
                 - maxlength: 64
@@ -49,6 +49,7 @@ forms
           # password
             - password|field_password
                 element_attributes
+                - name: storage_password
                 - minlength: null
                 - required: null
           # storage name (database name)
@@ -99,10 +100,10 @@ forms
         children
       # email
         - email|field_email
-            title: EMail
             element_attributes
-            - name: email
             - value: admin@example.com
+      # password
+        - password|field_password
     - license_agreement|group_license_agreement
     - button_install|button
         title: install

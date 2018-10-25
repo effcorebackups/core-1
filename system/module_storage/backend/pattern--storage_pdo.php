@@ -12,16 +12,19 @@ namespace effcore {
 
   public $name;
   public $driver;
-  public $credentials;
+  public $credentials = [];
   public $table_prefix = '';
   public $args = [];
+  public $errors = [];
   protected $queries = [];
   protected $connection;
 
-  function init() {
+  function init($driver = null, $credentials = []) {
     if ($this->connection) return
         $this->connection;
     else {
+      if ($driver)      $this->driver      = $driver;
+      if ($credentials) $this->credentials = $credentials;
       if ($this->driver &&
           $this->credentials) {
         try {
@@ -61,20 +64,20 @@ namespace effcore {
     }
   }
 
-  function test($driver, $params = []) {
+  function test($driver, $credentials = []) {
     try {
       switch ($driver) {
         case 'mysql':
           $connection = new pdo(
             $driver.':host='.
-            $params->host_name.';port='.
-            $params->port.';dbname='.
-            $params->storage_name,
-            $params->user_name,
-            $params->password);
+            $credentials->host_name.';port='.
+            $credentials->port.';dbname='.
+            $credentials->storage_name,
+            $credentials->user_name,
+            $credentials->password);
           break;
         case 'sqlite':
-          $path = data::directory.$params->file_name;
+          $path = data::directory.$credentials->file_name;
           $connection = new pdo($driver.':'.$path);
           if (!is_writable($path)) {
             throw new \Exception('File is not writable!');
@@ -122,15 +125,16 @@ namespace effcore {
       event::start('on_query_before', 'pdo', [&$this, &$query]);
       $result = $this->connection->prepare($this->query_to_string($query));
       if ($result) $result->execute($this->args);
-      $errors = $result ? $result->errorInfo() : ['query prepare return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', [&$this, &$query, &$result, &$errors]);
+      $c_error = $result ? $result->errorInfo() : ['query prepare return the false', 'no', 'no'];
+      event::start('on_query_after', 'pdo', [&$this, &$query, &$result, &$c_error]);
       $this->args = [];
-      if ($errors !== ['00000', null, null]) {
+      if ($c_error !== ['00000', null, null]) {
+        $this->errors[] = $c_error;
         message::insert(
           translation::get('Query error!').br.
-          translation::get('sql state: %%_state', ['state' => translation::get($errors[0])]).br.
-          translation::get('driver error code: %%_code', ['code' => translation::get($errors[1])]).br.
-          translation::get('driver error text: %%_text', ['text' => translation::get($errors[2])]), 'error'
+          translation::get('sql state: %%_state',        ['state' => translation::get($c_error[0])]).br.
+          translation::get('driver error code: %%_code', ['code'  => translation::get($c_error[1])]).br.
+          translation::get('driver error text: %%_text', ['text'  => translation::get($c_error[2])]), 'error'
         );
         return null;
       }

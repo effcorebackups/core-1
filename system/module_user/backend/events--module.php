@@ -11,21 +11,20 @@ namespace effcore\modules\user {
           use \effcore\message;
           use \effcore\module;
           use \effcore\session;
+          use \effcore\storage;
           use \effcore\translation;
           use \effcore\user;
           abstract class events_module {
 
   static function on_install() {
-    $module = module::get('user');
-    $module->install();
-    $admin = new instance('user', ['nick' => 'admin']);
-    if ($admin->select()) {
-      $password = dechex(random_int(0x10000000, 0x7fffffff));
-      $admin->password_hash = core::hash_password_get($password);
-      $admin->email = field::request_values_get('email')[0];
-      if ($admin->update()) {
-        message::insert(translation::get('your EMail is — %%_email', ['email' => $admin->email]), 'credentials');
-        message::insert(translation::get('your Password is — %%_password', ['password' => $password]), 'credentials');
+    if (count(storage::get('main')->errors) == 0) {
+      $module = module::get('user');
+      $module->install();
+      $admin = new instance('user', ['nick' => 'admin']);
+      if ($admin->select()) {
+        $admin->email = field::request_values_get('email')[0];
+        $admin->password_hash = core::hash_password_get(field::request_values_get('password')[0]);
+        $admin->update();
       }
     }
   }
