@@ -6,6 +6,7 @@ instances
     entity_name: user
     values
     - nick: admin
+    - email: admin@example.com
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
 # roles
