@@ -36,7 +36,7 @@ namespace effcore {
                 $this->credentials->host_name.';port='.
                 $this->credentials->port.';dbname='.
                 $this->credentials->storage_name,
-                $this->credentials->user_name,
+                $this->credentials->login,
                 $this->credentials->password);
               break;
             case 'sqlite':
@@ -73,7 +73,7 @@ namespace effcore {
             $credentials->host_name.';port='.
             $credentials->port.';dbname='.
             $credentials->storage_name,
-            $credentials->user_name,
+            $credentials->login,
             $credentials->password);
           break;
         case 'sqlite':

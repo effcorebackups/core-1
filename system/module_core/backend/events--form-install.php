@@ -55,7 +55,7 @@ namespace effcore\modules\core {
               $test = storage::get('main')->test('mysql', (object)[
                 'host_name'    => $items['#host_name'       ]->value_get(),
                 'port'         => $items['#port'            ]->value_get(),
-                'user_name'    => $items['#storage_login'   ]->value_get(),
+                'login'        => $items['#storage_login'   ]->value_get(),
                 'password'     => $items['#storage_password']->value_get(),
                 'storage_name' => $items['#storage_name'    ]->value_get()
               ]);
@@ -96,7 +96,7 @@ namespace effcore\modules\core {
             $params->credentials->host_name    = $items['#host_name'       ]->value_get();
             $params->credentials->port         = $items['#port'            ]->value_get();
             $params->credentials->storage_name = $items['#storage_name'    ]->value_get();
-            $params->credentials->user_name    = $items['#storage_login'   ]->value_get();
+            $params->credentials->login        = $items['#storage_login'   ]->value_get();
             $params->credentials->password     = $items['#storage_password']->value_get();
             $params->table_prefix              = $items['#table_prefix'    ]->value_get();
           }
