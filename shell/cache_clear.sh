@@ -1,1 +1,1 @@
-rm -f ../dynamic/cache/*.php
+find ../dynamic/cache/ -not -name 'readme.md' -delete
