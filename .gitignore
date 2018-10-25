@@ -1,2 +1,8 @@
 
-/dynamic/data/data.sqlite
+/dynamic/*
+!/dynamic/cache/readme.mark
+!/dynamic/data/readme.mark
+!/dynamic/files/readme.mark
+!/dynamic/logs/readme.mark
+!/dynamic/tmp/readme.mark
+!/dynamic/updates/readme.mark
