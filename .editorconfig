@@ -10,26 +10,26 @@ indent_size = 2
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[*._data]
-file_type = yaml
-syntax = yaml
-
-[*._mark]
-file_type = markdown
-syntax = markdown
-
-[*._script]
-file_type = javascript
-syntax = javascript
-
-[*._style]
+[*.cssd]
 file_type = css
 syntax = css
 
-[*._template]
-file_type = html
-syntax = html
+[*.data]
+file_type = yaml
+syntax = yaml
 
-[*._vector]
+[*.jsd]
+file_type = javascript
+syntax = javascript
+
+[*.mark]
+file_type = markdown
+syntax = markdown
+
+[*.svgd]
 file_type = xml
 syntax = xml
+
+[*.tpl]
+file_type = html
+syntax = html

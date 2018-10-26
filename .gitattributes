@@ -1,0 +1,26 @@
+
+*.config  text eol=lf whitespace=-blank-at-eol
+*.css     text eol=lf whitespace=-blank-at-eol
+*.cssd    text eol=lf whitespace=-blank-at-eol
+*.data    text eol=lf whitespace=-blank-at-eol
+*.html    text eol=lf whitespace=-blank-at-eol
+*.js      text eol=lf whitespace=-blank-at-eol
+*.jsd     text eol=lf whitespace=-blank-at-eol
+*.json    text eol=lf whitespace=-blank-at-eol
+*.log     text eol=lf whitespace=-blank-at-eol
+*.mark    text eol=lf whitespace=-blank-at-eol
+*.php     text eol=lf whitespace=-blank-at-eol
+*.sh      text eol=lf whitespace=-blank-at-eol
+*.svg     text eol=lf whitespace=-blank-at-eol
+*.svgd    text eol=lf whitespace=-blank-at-eol
+*.tpl     text eol=lf whitespace=-blank-at-eol
+*.txt     text eol=lf whitespace=-blank-at-eol
+*.xml     text eol=lf whitespace=-blank-at-eol
+
+*.gif    binary
+*.ico    binary
+*.jpeg   binary
+*.jpg    binary
+*.png    binary
+*.sqlite binary
+*.svgz   binary

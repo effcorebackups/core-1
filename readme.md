@@ -83,10 +83,6 @@ SQLite support foreign keys when:
   and SQLITE_OMIT_TRIGGER definitions
 
 
-Git on Windows requires:
-- run the command "git config --global core.autocrlf false"
-
-
 Recommendations for improving performance
 ---------------------------------------------------------------------
 
