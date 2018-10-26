@@ -35,7 +35,7 @@
 
   /* fieldset 'roles' */
 
-  fieldset[data-type='roles'] x-fieldset-content {background: url('images/lines.svgd') -10px 0}
+  fieldset[data-type='roles'] x-fieldset-content {background: whitesmoke url('images/lines-5.svg') -10px 0}
 
   /* form fields */
 

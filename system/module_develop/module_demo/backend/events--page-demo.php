@@ -18,6 +18,7 @@ namespace effcore\modules\demo {
           abstract class events_page_demo {
 
   static function on_show_block_demo_dynamic($page) {
+    message::insert(translation::get('credentials'), 'credentials');
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice');
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 2]), 'notice');
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 3]), 'notice');

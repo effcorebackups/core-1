@@ -66,7 +66,7 @@
   x-messages ul.credentials {
     list-style: none;
     padding: 30px;
-    background-color: %%_color_bg}
+    background: %%_color_bg url('images/lines-1.svg') -10px 0}
   x-messages ul.credentials li {
     list-style: none;
     padding: 0;
