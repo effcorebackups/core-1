@@ -1,21 +1,21 @@
 
-*.config  text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.css     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.cssd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.data    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.html    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.js      text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.jsd     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.json    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.log     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.mark    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.php     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.sh      text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.svg     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.svgd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.tpl     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.txt     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-*.xml     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.config  text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.css     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.cssd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.data    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.html    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.js      text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.jsd     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.json    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.log     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.mark    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.php     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.sh      text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.svg     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.svgd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.tpl     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.txt     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
+*.xml     text eol=lf whitespace=-blank-at-eol,-blank-at-eof,indent-with-non-tab,tabwidth=2
 
 *.gif    binary
 *.ico    binary
