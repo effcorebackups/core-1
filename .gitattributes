@@ -1,21 +1,21 @@
 
-*.config  text eol=lf whitespace=-blank-at-eol
-*.css     text eol=lf whitespace=-blank-at-eol
-*.cssd    text eol=lf whitespace=-blank-at-eol
-*.data    text eol=lf whitespace=-blank-at-eol
-*.html    text eol=lf whitespace=-blank-at-eol
-*.js      text eol=lf whitespace=-blank-at-eol
-*.jsd     text eol=lf whitespace=-blank-at-eol
-*.json    text eol=lf whitespace=-blank-at-eol
-*.log     text eol=lf whitespace=-blank-at-eol
-*.mark    text eol=lf whitespace=-blank-at-eol
-*.php     text eol=lf whitespace=-blank-at-eol
-*.sh      text eol=lf whitespace=-blank-at-eol
-*.svg     text eol=lf whitespace=-blank-at-eol
-*.svgd    text eol=lf whitespace=-blank-at-eol
-*.tpl     text eol=lf whitespace=-blank-at-eol
-*.txt     text eol=lf whitespace=-blank-at-eol
-*.xml     text eol=lf whitespace=-blank-at-eol
+*.config  text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.css     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.cssd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.data    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.html    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.js      text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.jsd     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.json    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.log     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.mark    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.php     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.sh      text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.svg     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.svgd    text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.tpl     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.txt     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+*.xml     text eol=lf whitespace=-blank-at-eol,-blank-at-eof
 
 *.gif    binary
 *.ico    binary
