@@ -10,5 +10,5 @@ git -C ../ pull
   find .. -maxdepth 1 -type f      -name '.gitattributes' & \
   find .. -maxdepth 1 -type f      -name '.gitignore'     & \
   find .. -maxdepth 1 -type f      -name '.htaccess'      & \
-  find .. -maxdepth 1 -type f      -name '.nginx'; } \
-| zip ../../bundle-0000.zip -@
+  find .. -maxdepth 1 -type f      -name '.nginx'; \
+} | zip ../../bundle-0000.zip -@
