@@ -13,4 +13,4 @@ git -C ../ pull
   find ../dynamic     -type f      -name 'readme.mark'    & \
   find ../shell       -type f -not -name '.*'             & \
   find ../system      -type f -not -name '.*'; \
-} | zip ../../bundle-0000.zip -@
+} | zip -9 ../../bundle-0000.zip -@
