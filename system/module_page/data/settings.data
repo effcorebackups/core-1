@@ -1,3 +1,4 @@
 settings
+  console_display: no
   color_id: black
   color_bg_id: modernblue

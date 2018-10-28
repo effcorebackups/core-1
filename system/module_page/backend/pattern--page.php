@@ -78,8 +78,10 @@ namespace effcore {
     $template->arg_set('head_styles',  $frontend->styles->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
     $template->arg_set('head_title', token::replace(translation::get($this->title)));
-    $template->arg_set('console', console::render()); # @todo: only for admins
     $template->arg_set('messages', message::render_all());
+    if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
+      $template->arg_set('console', console::render());
+    }
     return $template->render();
   }
 
