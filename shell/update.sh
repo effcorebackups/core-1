@@ -2,5 +2,15 @@
 
 git -C ../ reset --hard
 git -C ../ pull
-# git -C ../ stash apply
+
+while true; do
+  read -p 'Apply stash?: ' answer
+  case $answer in
+    y ) git -C ../ stash apply
+        break;;
+    n ) exit;;
+    * ) echo 'Please answer "y" or "n".';;
+  esac
+done
+
 ./cache_clear.sh
