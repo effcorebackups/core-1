@@ -2,5 +2,5 @@
 
 git -C ../ reset --hard
 git -C ../ pull
-git -C ../ stash apply
+# git -C ../ stash apply
 ./cache_clear.sh
