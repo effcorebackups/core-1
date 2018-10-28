@@ -15,6 +15,7 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
+    - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous: Аноним
     - Attempts: Попытки
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
@@ -190,6 +191,7 @@ translations
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Modules was installed.: Модули были установлены.
+    - Modules was not installed!: Модули не были установлены!
     - Modules: Модули
     - name: имя
     - Name: Имя

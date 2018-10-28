@@ -124,6 +124,11 @@ namespace effcore\modules\core {
             message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
             storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
             storage::get('files')->changes_insert('core', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'));
+          } else {
+            message::insert(
+              translation::get('An error occurred during installation!').br.
+              translation::get('Modules was not installed!'), 'error'
+            );
           }
         }
         break;
