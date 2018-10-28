@@ -102,6 +102,12 @@
     height: 48px;
     background: url('images/logo.svgd')}
 
+  /* block logo-system */
+
+  x-block.logo-system {margin: 100px 0}
+  x-block.logo-system x-info-copyright {display: block; margin-top: 20px; font-size: .9em}
+  x-block.logo-system x-info-build {display: block; font-size: .9em}
+
   /* block menu */
 
   x-block.menu-user {float: right; margin: 0}

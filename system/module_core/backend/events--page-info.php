@@ -16,17 +16,28 @@ namespace effcore\modules\core {
           use \effcore\translation;
           abstract class events_page_info {
 
+  static function on_show_logo_system($page) {
+    $logo           = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore.svgd', 'alt' => 'effcore', 'height' => '100']);
+    $info_copyright = new markup('x-info-copyright', [], translation::get('© 2017—2019 Maxim Rysevets. All rights reserved.'));
+    $info_build     = new markup('x-info-build',     [], translation::get('Build number: %%_number', ['number' => storage::get('files')->select('bundle/system/build')]));
+    return new block('', ['class' => ['logo-system' => 'logo-system']], [
+      $logo,
+      $info_copyright,
+      $info_build
+    ]);
+  }
+
   static function on_show_block_info($page) {
     $storage_files = storage::get('files');
     $storage_main = storage::get('main');
     $info = new markup('dl', ['class' => ['info' => 'info']]);
-    $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore.svgd', 'alt' => 'effcore']);
+    $logo_effcore = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-effcore.svgd', 'alt' => 'effcore', 'height' => '30']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_effcore));
     $info->child_insert(new markup('dt', [], 'Copyright'));
     $info->child_insert(new markup('dd', [], '© 2017—2019 Maxim Rysevets. All rights reserved.'));
-    $info->child_insert(new markup('dt', [], 'Bundle build number'));
+    $info->child_insert(new markup('dt', [], 'Build number'));
     $info->child_insert(new markup('dd', [], $storage_files->select('bundle/system/build')));
     $info->child_insert(new markup('dt', [], 'Web server'));
     $info->child_insert(new markup('dd', [], core::server_software_get()));

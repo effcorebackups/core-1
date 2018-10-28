@@ -23,7 +23,8 @@ translations
     - Avatar: Аватар
     - avatar: аватар
     - Background color: Цвет фона
-    - Bundle build number: Номер сборки пакета
+    - Build number\: %%_number: Номер сборки: %%_number
+    - Build number: Номер сборки
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
