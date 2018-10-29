@@ -1,5 +1,5 @@
 frontend
-- frontend_captcha_form_n
+- captcha_form_all
     display
       check: block
       where: dpath

@@ -1,5 +1,5 @@
 frontend
-- frontend_page_n
+- page_all
     display
       check: url
       where: path
@@ -50,7 +50,7 @@ frontend
         file: frontend/vars.jsd
     - page_script
         file: frontend/page.js
-- frontend_form_n
+- form_all
     display
       check: block
       where: dpath

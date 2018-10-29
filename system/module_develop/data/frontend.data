@@ -1,5 +1,5 @@
 frontend
-- frontend_develop_page_n
+- develop_page_all
     display
       check: url
       where: path
@@ -8,7 +8,7 @@ frontend
     - develop_style
         file: frontend/develop.cssd
         media: all
-- frontend_diagram_filter
+- develop_page_structures
     display
       check: url
       where: path

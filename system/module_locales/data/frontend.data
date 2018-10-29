@@ -1,5 +1,5 @@
 frontend
-- frontend_page_install
+- page_install
     display
       check: url
       where: path

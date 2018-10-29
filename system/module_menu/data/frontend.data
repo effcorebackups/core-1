@@ -1,5 +1,5 @@
 frontend
-- frontend_block_tree
+- menu_block_tree
     display
       check: block
       where: dpath
@@ -8,7 +8,7 @@ frontend
     - tree_style
         file: frontend/tree.cssd
         media: all
-- frontend_block_tabs
+- menu_block_tabs
     display
       check: block
       where: dpath
