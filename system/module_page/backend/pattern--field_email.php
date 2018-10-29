@@ -58,7 +58,7 @@ namespace effcore {
     foreach ($multiple_values as $c_value) {
       if (core::validate_email($c_value) == false) {
         $field->error_set(
-          translation::get('Field "%%_title" contains an incorrect email address!', ['title' => translation::get($field->title)])
+          translation::get('Field "%%_title" contains an incorrect EMail address!', ['title' => translation::get($field->title)])
         );
         return;
       }

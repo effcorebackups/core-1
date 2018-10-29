@@ -96,21 +96,21 @@ translations
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
     - Field "%%_title" contains an incorrect characters from image!: Поле "%%_title" содержит неверные символы с изображения!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
-    - Field "%%_title" contains an incorrect email address!: Поле "%%_title" содержит неверный адрес электронной почты!
+    - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
     - Field "%%_title" contains an incorrect phone!: Поле "%%_title" содержит неверный телефон!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
-    - Field "%%_title" does not support loading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
+    - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
     - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!
-    - Field can contain a maximum %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
+    - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле может содержать максимум %%_number символ%%_plural{number,ov-a}.
-    - Field can contain a minimum %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
+    - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле может содержать минимум %%_number символ%%_plural{number,ov-a}.
     - Field can contain only the next characters\: "a-z", "0-9", "-", "_".: Поле может содержать только следующие символы: "a-z", "0-9", "-", "_".
     - Field must contain %%_number character%%_plural{number,s}.: Поле должно содержать %%_number символ%%_plural{number,ov-a}.
@@ -174,8 +174,8 @@ translations
     - Main system module.: Основной модуль системы.
     - Management: Управление
     - Managers: Управляющие
-    - Maximal field value\: %%_value.: Максимальное значение поля: %%_value.
-    - Maximal file size\: %%_value.: Максимальный размер файла: %%_value.
+    - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
+    - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Memory for php (bytes): Память для php (байт)
     - Menu for anonymous user: Меню для анонимного пользователя
@@ -184,7 +184,7 @@ translations
     - Menu main: Меню главное
     - Menu: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
-    - Minimal field value\: %%_value.: Минимальное значение поля: %%_value.
+    - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module for internationalization.: Модуль для интернационализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
@@ -231,7 +231,7 @@ translations
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - Query error!: Ошибка запроса!
-    - query prepare return the false: подготовка запроса вернула false
+    - query preparation return the false: подготовка запроса вернула false
     - query: запрос
     - Radial diagram: Круговая диаграмма
     - Radiobutton: Переключатель
@@ -288,7 +288,7 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить
-    - Subscribe for updates: Подписка на обновления
+    - Subscribe to updates: Подписка на обновления
     - Switcher: Переключатель
     - Switchers: Переключатели
     - System: Система
@@ -356,7 +356,7 @@ translations
     - warning: предупреждение
     - Web server: Веб-сервер
     - Weight: Вес
-    - Wellcome to our site!: Добро пожаловать на наш сайт!
+    - Welcome to our site!: Добро пожаловать на наш сайт!
     - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да

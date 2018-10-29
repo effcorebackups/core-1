@@ -74,10 +74,10 @@ namespace effcore {
   }
 
   function render_description() {
-    $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximal file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
-    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
-    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
-    if ($this->min_files_number == $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',          ['number' => $this->min_files_number]));
+    $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximum file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
+    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
+    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
+    if ($this->min_files_number == $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));
     if ($this->description) $return[] = new markup('p', [], $this->description);
     if (count($return)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
@@ -345,7 +345,7 @@ namespace effcore {
       if (count($field->allowed_types) &&
          !isset($field->allowed_types[$c_new_value->type])) {
         $field->error_set(
-          translation::get('Field "%%_title" does not support loading this file type!', ['title' => translation::get($field->title)])
+          translation::get('Field "%%_title" does not support uploading this file type!', ['title' => translation::get($field->title)])
         );
         return;
       }

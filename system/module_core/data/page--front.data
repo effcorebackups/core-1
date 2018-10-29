@@ -22,10 +22,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - wellcome|page_part
+    - welcome|page_part
         region: content
         type: text
-        source: Wellcome to our site!
+        source: Welcome to our site!
     - form_access|page_part
         display
           check: user

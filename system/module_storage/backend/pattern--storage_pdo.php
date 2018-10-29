@@ -125,7 +125,7 @@ namespace effcore {
       event::start('on_query_before', 'pdo', [&$this, &$query]);
       $result = $this->connection->prepare($this->query_to_string($query));
       if ($result) $result->execute($this->args);
-      $c_error = $result ? $result->errorInfo() : ['query prepare return the false', 'no', 'no'];
+      $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
       event::start('on_query_after', 'pdo', [&$this, &$query, &$result, &$c_error]);
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {

@@ -59,7 +59,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
-    $info->child_insert(new markup('dt', [], 'Subscribe for updates'));
+    $info->child_insert(new markup('dt', [], 'Subscribe to updates'));
     $info->child_insert(new markup('dd', [], 'not applicable'));
     return new block('Shared information', ['class' => ['info' => 'info']], [
       $info
