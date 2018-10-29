@@ -12,7 +12,7 @@ translations
 !!!!! Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
-    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd chalenge the CAPTCHA will change.: После каждых 3-х вставок вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменен.
+    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменен.
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell #%%_number: ячейка №%%_number
