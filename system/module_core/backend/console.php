@@ -59,13 +59,11 @@ namespace effcore {
   }
 
   static function render() {
-    if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
-      return (new markup('x-console', [], [
-        static::markup_block_information_get(),
-        static::markup_block_diagram_load_get(),
-        static::markup_block_logs_get()
-      ]))->render();
-    }
+    return (new markup('x-console', [], [
+      static::markup_block_information_get(),
+      static::markup_block_diagram_load_get(),
+      static::markup_block_logs_get()
+    ]))->render();
   }
 
   static function markup_block_information_get() {
