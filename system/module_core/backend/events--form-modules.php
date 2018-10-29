@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\core;
           use \effcore\field_switcher;
           use \effcore\locale;
           use \effcore\markup;
@@ -14,7 +15,9 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     $info = $form->child_select('info');
-    foreach (module::all_get() as $c_module) {
+    $modules = module::all_get();
+    core::array_sort_by_property($modules, 'title');
+    foreach ($modules as $c_module) {
       $c_info = new markup('x-module-info');
       $c_switcher = new field_switcher();
       $c_switcher->build();

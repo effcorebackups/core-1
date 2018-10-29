@@ -188,6 +188,7 @@ translations
     - missing a temporary directory: отсутствует временный каталог
     - Module for internationalization.: Модуль для интернационализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
+    - Module for working with CAPTCHA in forms.: Модуль для работы с защитным кодом (CAPTCHA) в формах.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
