@@ -1,0 +1,10 @@
+frontend
+- frontend_captcha_form_n
+    display
+      check: block
+      where: dpath
+      match: %^forms/.*$%
+    styles
+    - form_style
+        file: frontend/captcha.css
+        media: all

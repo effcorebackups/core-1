@@ -11,9 +11,9 @@ namespace effcore {
   public $attributes = ['data-type' => 'nick'];
   public $description = 'Field can contain only the next characters: "a-z", "0-9", "-", "_".';
   public $element_attributes_default = [
+    'data-type' => 'nick',
     'name'      => 'nick',
     'required'  => 'required',
-    'data-type' => 'nick',
     'minlength' => 4,
     'maxlength' => 32,
   ];

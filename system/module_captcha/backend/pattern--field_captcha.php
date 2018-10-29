@@ -11,6 +11,7 @@ namespace effcore {
   public $description = 'Write the characters from the picture.';
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes_default = [
+    'data-type'    => 'captcha',
     'type'         => 'text',
     'name'         => 'captcha',
     'required'     => 'required',
@@ -27,14 +28,15 @@ namespace effcore {
     $element->attribute_insert('size',      $this->length);
     $element->attribute_insert('minlength', $this->length);
     $element->attribute_insert('maxlength', $this->length);
-    $element->weight = 100;
   # build canvas on form
     $captcha = $this->captcha_select();
     if (!$captcha) {
       $captcha = $this->captcha_generate();
       $captcha->insert();
     }
-    $this->child_insert($captcha->canvas, 'canvas');
+    $this->child_insert_first(
+      $captcha->canvas, 'canvas'
+    );
   }
 
   function captcha_select() {
@@ -126,6 +128,15 @@ namespace effcore {
   static function glyphs_get() {
     if   (!static::$glyphs) static::init();
     return static::$glyphs;
+  }
+
+  static function captcha_localhost_code_get() {
+    $captcha = (new instance('captcha', [
+      'ip_hex' => core::ip_to_hex('::1')
+    ]))->select();
+    if ($captcha) {
+      return $captcha->characters;
+    }
   }
 
   static function captcha_cleaning() {

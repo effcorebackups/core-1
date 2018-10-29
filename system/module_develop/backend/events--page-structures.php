@@ -164,7 +164,7 @@ namespace effcore\modules\develop {
     return new block('UML Diagram', ['data-styled-title' => 'no', 'class' => ['structures-diagram' => 'structures-diagram']], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
-      new markup_simple('input', ['type' => 'checkbox', 'id' => 'expand', 'checked' => 'checked']),
+      new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => 'checked']),
       new markup('label', [], new text('expand')),
       $diagram
     ]);

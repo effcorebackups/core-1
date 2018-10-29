@@ -62,12 +62,7 @@ namespace effcore {
   }
 
   function captcha_code_get() {
-    $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex('::1')
-    ]))->select();
-    if ($captcha) {
-      return $captcha->characters;
-    }
+    return field_captcha::captcha_localhost_code_get();
   }
 
   function validation_id_get() {
