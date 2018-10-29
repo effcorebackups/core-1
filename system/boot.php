@@ -56,7 +56,7 @@ namespace effcore {
     $file_types = file::types_get();
   # case for protected file
     if (!empty($file_types[$type]->protected)) {
-      core::send_header_and_exit('access_denided', '',
+      core::send_header_and_exit('access_forbidden', '',
         translation::get('file of this type is protected by: %%_name', ['name' => 'file_types.data']).br.br.
         translation::get('go to <a href="/">front page</a>')
       );

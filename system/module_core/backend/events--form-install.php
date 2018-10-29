@@ -31,7 +31,7 @@ namespace effcore\modules\core {
       }
     } else {
       $form->child_delete_all();
-      core::send_header_and_exit('access_denided', '',
+      core::send_header_and_exit('access_forbidden', '',
         translation::get('Installation is not available because storage credentials was set!').br.br.
         translation::get('go to <a href="/">front page</a>')
       );

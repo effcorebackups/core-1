@@ -17,7 +17,7 @@ namespace effcore\modules\user {
     if ($user) {
       if (!($user->nick == user::current_get()->nick ||              # not owner or
                      isset(user::current_get()->roles['admins']))) { # not admin
-        core::send_header_and_exit('access_denided');
+        core::send_header_and_exit('access_forbidden');
       }
     } else {
       core::send_header_and_exit('page_not_found');

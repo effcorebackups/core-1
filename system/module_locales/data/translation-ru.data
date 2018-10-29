@@ -6,7 +6,7 @@ translations
     - - select -: - выбрать -
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
-    - Access denided: Доступ запрещен
+    - Access forbidden: Доступ запрещен
     - Access settings not applicable if no one role is not actived!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access settings: Настройки доступа
     - action: действие

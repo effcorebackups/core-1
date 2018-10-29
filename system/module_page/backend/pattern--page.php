@@ -244,7 +244,7 @@ namespace effcore {
         # render page
           return $c_page->render();
         } else {
-          core::send_header_and_exit('access_denided');
+          core::send_header_and_exit('access_forbidden');
         }
       }
     }

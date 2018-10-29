@@ -27,7 +27,7 @@ namespace effcore\modules\storage {
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         $result = $instance->select();
-        if (!empty($result->is_embed)) core::send_header_and_exit('access_denided');
+        if (!empty($result->is_embed)) core::send_header_and_exit('access_forbidden');
         if (!      $result)            core::send_header_and_exit('page_not_found');
       } else                           core::send_header_and_exit('page_not_found');
     }   else                           core::send_header_and_exit('page_not_found');

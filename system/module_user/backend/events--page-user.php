@@ -35,7 +35,7 @@ namespace effcore\modules\user {
         return new block('', ['class' => ['user-info' => 'user-info']],
           new table([], $tbody, $thead)
         );
-      } else core::send_header_and_exit('access_denided');
+      } else core::send_header_and_exit('access_forbidden');
     }   else core::send_header_and_exit('page_not_found');
   }
 

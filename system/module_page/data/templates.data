@@ -27,10 +27,10 @@ templates
     name: page
     type: file
     path: frontend/template--page.tpl
-- page_access_denided
-    name: page_access_denided
+- page_access_forbidden
+    name: page_access_forbidden
     type: file
-    path: frontend/template--page--access_denided.tpl
+    path: frontend/template--page--access_forbidden.tpl
 - page_not_found
     name: page_not_found
     type: file
