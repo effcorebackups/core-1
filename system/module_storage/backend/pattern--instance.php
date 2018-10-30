@@ -33,9 +33,9 @@ namespace effcore {
   function entity_get() {return entity::get($this->entity_name);}
   function entity_name_set($entity_name) {$this->entity_name = $entity_name;}
 
-  function select($custom_ids = []) {
+  function select() {
     $storage = storage::get($this->entity_get()->storage_name);
-    return $storage->instance_select($this, $custom_ids);
+    return $storage->instance_select($this);
   }
 
   function insert() {

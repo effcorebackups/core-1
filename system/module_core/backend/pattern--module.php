@@ -32,10 +32,8 @@ namespace effcore {
   function uninstall() {
   # delete instances
     foreach (instance::all_by_module_get($this->id) as $c_instance) {
-      if ($c_instance->select() &&
-          $c_instance->delete())
-           message::insert(translation::get('Instances of entity %%_name was deleted.',     ['name' => $c_instance->entity_name]));
-      else message::insert(translation::get('Instances of entity %%_name was not deleted!', ['name' => $c_instance->entity_name]), 'error');
+      $c_instance->select();
+      $c_instance->delete();
     }
   # delete entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
