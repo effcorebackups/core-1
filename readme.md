@@ -121,7 +121,7 @@ Recommended software for development
 - ColorSnapper (mac) for pick the "right" colors.
 - RegExRX (mac|win) for improve your regular expressions.
 - VMWare Fusion Pro (mac) for working with virtual machines.
-- Find Any Files (mac) for searching in the code (p.s. Coda can search better).
+- Find Any Files (mac) for searching in the code (note: Coda can search better).
 
 
 Security recommendations

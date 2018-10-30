@@ -11,11 +11,11 @@ namespace effcore {
   public $title;
   public $description;
   public $version;
-  public $state; # off | on | always_on
+  public $always_on = 'no';
   public $path;
 
   function install() {
-  # install entities
+  # insert entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
       if ($c_entity->install())
            message::insert(translation::get('Entity %%_name was installed.',     ['name' => $c_entity->name]));
@@ -24,13 +24,25 @@ namespace effcore {
   # insert instances
     foreach (instance::all_by_module_get($this->id) as $c_instance) {
       if ($c_instance->insert())
-           message::insert(translation::get('Instances of entity %%_name was added.',     ['name' => $c_entity->name]));
-      else message::insert(translation::get('Instances of entity %%_name was not added!', ['name' => $c_entity->name]), 'error');
+           message::insert(translation::get('Instances of entity %%_name was added.',     ['name' => $c_instance->entity_name]));
+      else message::insert(translation::get('Instances of entity %%_name was not added!', ['name' => $c_instance->entity_name]), 'error');
     }
   }
 
   function uninstall() {
-    # @todo: make functionality
+  # delete instances
+    foreach (instance::all_by_module_get($this->id) as $c_instance) {
+      if ($c_instance->select() &&
+          $c_instance->delete())
+           message::insert(translation::get('Instances of entity %%_name was deleted.',     ['name' => $c_instance->entity_name]));
+      else message::insert(translation::get('Instances of entity %%_name was not deleted!', ['name' => $c_instance->entity_name]), 'error');
+    }
+  # delete entities
+    foreach (entity::all_by_module_get($this->id) as $c_entity) {
+      if ($c_entity->uninstall())
+           message::insert(translation::get('Entity %%_name was uninstalled.',     ['name' => $c_entity->name]));
+      else message::insert(translation::get('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
+    }
   }
 
   ###########################
@@ -51,6 +63,10 @@ namespace effcore {
   static function all_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function enabled_get() {
+    return storage::get('files')->select('settings/core/modules_enabled');
   }
 
 }}

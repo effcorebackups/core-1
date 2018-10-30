@@ -3,4 +3,4 @@ module|module
   title: User
   description: Module for working with user accounts and permissions.
   version: 0.900
-  state: always_on
+  always_on: yes

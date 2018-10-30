@@ -48,7 +48,7 @@ namespace effcore {
 
   if (             url::current_get()->path_get() != '/' &&
             substr(url::current_get()->path_get(), -1) == '/') {
-     url::go(rtrim(url::current_get()->path_get(), '/')); # p.s. trimming for single redirect
+     url::go(rtrim(url::current_get()->path_get(), '/')); # note: trimming for single redirect
   }
 
   $type = url::current_get()->type_get();

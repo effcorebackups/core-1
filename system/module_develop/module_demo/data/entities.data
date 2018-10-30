@@ -75,6 +75,13 @@ entities
         type: primary
         fields
         - =: f_integer_1
+    # ─────────────────────────────────────────────────────────────────────
+    # note: helpers for find instance with unknown id
+    # ─────────────────────────────────────────────────────────────────────
+    - index_f_integer_2
+        type: unique index
+        fields
+        - =: f_integer_2
 - demo_constraints|entity
     name: demo_constraints
     title: Demo: constraints
