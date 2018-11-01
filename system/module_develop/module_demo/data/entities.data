@@ -75,6 +75,7 @@ entities
         type: primary
         fields
         - =: f_integer_1
+    indexes
     # ─────────────────────────────────────────────────────────────────────
     # note: helper for select and delete instance with unknown primary id
     # ─────────────────────────────────────────────────────────────────────
