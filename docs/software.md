@@ -1,7 +1,7 @@
 
 
 Server software support
----------------------------------------------------------------------
+=====================================================================
 
 Operating System:
 - UNIX (macOS, FreeBSD) [priority]
@@ -29,7 +29,7 @@ Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
 
 
 Apache 2.4 requires
-=====================================================================
+---------------------------------------------------------------------
 - enable module "php7_module"
 - enable module "rewrite_module"
 - enable module "dir_module"
@@ -38,7 +38,7 @@ If you got "500 Internal Server Error" see the Apache error log.
 
 
 NGINX requires
-=====================================================================
+---------------------------------------------------------------------
 - enable "php-fpm.conf"
 - run "php-fpm"
 - in ".nginx" replace placeholders started with "%%_" to real values
@@ -46,7 +46,7 @@ If you got "502 Bad Gateway" check if php-fpm is running.
 
 
 IIS requires (for v7.5)
-=====================================================================
+---------------------------------------------------------------------
 - enable option "IIS → WWW Services → Application Development Features → CGI" in "Turn Windows features on or off"
 - enable option "IIS → WWW Services → Common HTTP Features → Static Content" in "Turn Windows features on or off"
 - add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager → Handler Mappings"
@@ -55,7 +55,7 @@ If you got "500 Internal Server Error" check "web.config" in www root (section "
 
 
 PHP requires
-=====================================================================
+---------------------------------------------------------------------
 - enable module "SPL"
 - enable module "date"
 - enable module "fileinfo"
@@ -68,7 +68,7 @@ PHP requires
 
 
 SQLite requires
-=====================================================================
+---------------------------------------------------------------------
 SQLite support foreign keys when:
 - it is not older than v3.6.19 and
 - it was compiled without SQLITE_OMIT_FOREIGN_KEY
@@ -76,7 +76,7 @@ SQLite support foreign keys when:
 
 
 Client software support
----------------------------------------------------------------------
+=====================================================================
 
 - Apple Safari v10+
 - Apple Mobile Safari on iOS v8+
@@ -88,7 +88,7 @@ Client software support
 
 
 Recommended software for development
----------------------------------------------------------------------
+=====================================================================
 
 - macOS Sierra and higher for using quality software and make development environment.
 - Coda (mac) for working with code|markup|styles and searching in the code.
@@ -108,7 +108,7 @@ Recommended software for development
 
 
 Improving performance
----------------------------------------------------------------------
+=====================================================================
 
 Highly recommend to use the SSD (Solid State Drives).
 Recommend to enable the PHP OPcache.

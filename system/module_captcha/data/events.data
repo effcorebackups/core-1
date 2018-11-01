@@ -1,0 +1,5 @@
+events
+  on_module_install
+  - captcha|event
+      for: core
+      handler: \effcore\modules\captcha\events_module::on_install

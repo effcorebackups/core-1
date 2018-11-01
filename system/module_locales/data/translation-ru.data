@@ -23,8 +23,8 @@ translations
     - Avatar: Аватар
     - avatar: аватар
     - Background color: Цвет фона
-    - Build number\: %%_number: Номер сборки: %%_number
     - Build number: Номер сборки
+    - Build number\: %%_number: Номер сборки: %%_number
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
@@ -103,17 +103,17 @@ translations
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
-    - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
+    - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
     - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!
-    - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле может содержать максимум %%_number символ%%_plural{number,ov-a}.
-    - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
+    - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле может содержать минимум %%_number символ%%_plural{number,ov-a}.
+    - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain only the next characters\: "a-z", "0-9", "-", "_".: Поле может содержать только следующие символы: "a-z", "0-9", "-", "_".
     - Field must contain %%_number character%%_plural{number,s}.: Поле должно содержать %%_number символ%%_plural{number,ov-a}.
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
@@ -152,8 +152,8 @@ translations
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удален.
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удален!
     - Instances of entity %%_name was added.: Экземпляры сущности %%_name были добавлены.
-    - Instances of entity %%_name was not added!: Экземпляры сущности %%_name не были добавлены!
     - Instances of entity %%_name was deleted.: Экземпляры сущности %%_name были удалены.
+    - Instances of entity %%_name was not added!: Экземпляры сущности %%_name не были добавлены!
     - Instances of entity %%_name was not deleted!: Экземпляры сущности %%_name не были удалены!
     - Instances: Экземпляры
     - Internet Explorer below version %%_version no longer supported!: Internet Explorer ниже версии %%_version больше не поддерживается!
@@ -178,9 +178,9 @@ translations
     - Main system module.: Основной модуль системы.
     - Management: Управление
     - Managers: Управляющие
+    - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
-    - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Memory for php (bytes): Память для php (байт)
     - Menu for anonymous user: Меню для анонимного пользователя
     - Menu for authenticated user: Меню для аутетифицированного пользователя
@@ -190,14 +190,13 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
+    - Module %%_title (%%_id) was installed.: Модуль %%_title (%%_id) был установлен.
     - Module for internationalization.: Модуль для интернационализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
     - Module for working with CAPTCHA in forms.: Модуль для работы с защитным кодом (CAPTCHA) в формах.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
-    - Modules was installed.: Модули были установлены.
-    - Modules was not installed!: Модули не были установлены!
     - Modules: Модули
     - name: имя
     - Name: Имя
@@ -295,6 +294,8 @@ translations
     - Subscribe to updates: Подписка на обновления
     - Switcher: Переключатель
     - Switchers: Переключатели
+    - System was installed.: Система была установлена.
+    - System was not installed!: Система не была установлена!
     - System: Система
     - Table prefix: Префикс таблиц
     - Table: Таблица

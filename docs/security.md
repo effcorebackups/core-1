@@ -1,7 +1,7 @@
 
 
 Security recommendations
----------------------------------------------------------------------
+=====================================================================
 
 - You can get protection form internal threats only if you used
   own server in isolated area with access control.

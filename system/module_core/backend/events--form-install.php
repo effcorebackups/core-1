@@ -10,6 +10,7 @@ namespace effcore\modules\core {
           use \effcore\event;
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\module;
           use \effcore\page;
           use \effcore\storage;
           use \effcore\translation;
@@ -114,21 +115,27 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
           ]);
-          event::start('on_module_install');
+          $modules = module::all_get();
+          $enabled = module::enabled_get();
+          foreach ($modules as $c_module) {
+            if (isset($enabled[$c_module->id])) event::start('on_module_install', $c_module->id);
+            if (count(storage::get('main')->errors) == 0) message::insert(translation::get('Module %%_title (%%_id) was installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
+            else break;
+          }
           if (count(storage::get('main')->errors) == 0) {
             $form->child_delete_all();
             $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
-            message::insert(translation::get('Modules was installed.'));
+            message::insert(translation::get('System was installed.'));
             message::insert(translation::get('your EMail is — %%_email', ['email' => $items['#email']->value_get()]), 'credentials');
             message::insert(translation::get('your Password is — %%_password', ['password' => $items['#password']->value_get()]), 'credentials');
             message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
-            storage::get('files')->changes_insert('core', 'insert', 'storages/storage/storage_pdo_sql', $params, false);
+            storage::get('files')->changes_insert('core',    'insert', 'storages/storage/storage_pdo_sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'));
-            storage::get('files')->changes_insert('page', 'update', 'settings/page/console_display', 'no');
+            storage::get('files')->changes_insert('page',    'update', 'settings/page/console_display', 'no');
           } else {
             message::insert(
               translation::get('An error occurred during installation!').br.
-              translation::get('Modules was not installed!'), 'error'
+              translation::get('System was not installed!'), 'error'
             );
           }
         }
