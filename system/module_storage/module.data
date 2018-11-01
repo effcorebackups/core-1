@@ -1,6 +1,5 @@
-module|module
+module|module_embed
   id: storage
   title: Storage
   description: Module for storages support.
   version: 0.900
-  always_on: yes

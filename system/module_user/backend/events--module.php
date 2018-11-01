@@ -22,8 +22,8 @@ namespace effcore\modules\user {
       $module->install();
       $admin = new instance('user', ['nick' => 'admin']);
       if ($admin->select()) {
-        $admin->email = field::request_values_get('email')[0];
-        $admin->password_hash = core::hash_password_get(field::request_values_get('password')[0]);
+        $admin->email = field::request_value_get('email');
+        $admin->password_hash = core::hash_password_get(field::request_value_get('password'));
         $admin->update();
       }
     }

@@ -9,6 +9,7 @@ namespace effcore\modules\core {
           use \effcore\field_switcher;
           use \effcore\locale;
           use \effcore\markup;
+          use \effcore\module_embed;
           use \effcore\module;
           use \effcore\translation;
           abstract class events_form_modules {
@@ -22,10 +23,10 @@ namespace effcore\modules\core {
       $c_info = new markup('x-module-info');
       $c_switcher = new field_switcher();
       $c_switcher->build();
-      $c_switcher->name_set('enable_'.$c_module->id);
+      $c_switcher->name_set('module_'.$c_module->id);
       $c_switcher->value_set('on');
-   // $c_switcher->checked_set($c_module->state != 'off');
-      $c_switcher->disabled_set($c_module->always_on == 'yes');
+      $c_switcher->checked_set(isset($enabled[$c_module->id]));
+      $c_switcher->disabled_set($c_module instanceof module ? false : true);
       $c_info->child_insert($c_switcher, 'switcher');
       $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [], $c_module->title)]),                                                                           'title');
       $c_info->child_insert(new markup('x-module-id',          [], [new markup('x-label', [], 'id'),          ': ', new markup('x-value', [], $c_module->id.' ')]),                          'id');
@@ -40,6 +41,18 @@ namespace effcore\modules\core {
   }
 
   static function on_submit($form, $items) {
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        $modules = module::all_get();
+        foreach ($modules as $c_module) {
+          if ($c_module instanceof module) {
+            # event::start('on_module_install', $c_module->id);
+          }
+        }
+        break;
+      case 'refresh':
+        break;
+    }
   }
 
 }}

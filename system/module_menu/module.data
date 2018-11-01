@@ -1,6 +1,5 @@
-module|module
+module|module_embed
   id: menu
   title: Menu
   description: Module for working with navigation elements.
   version: 0.900
-  always_on: yes

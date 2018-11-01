@@ -11,4 +11,7 @@ forms
         title: save
         attributes
         - value: save
-        - =: disabled
+    - button_refresh|button
+        title: refresh
+        attributes
+        - value: refresh

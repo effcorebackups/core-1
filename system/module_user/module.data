@@ -1,6 +1,5 @@
-module|module
+module|module_embed
   id: user
   title: User
   description: Module for working with user accounts and permissions.
   version: 0.900
-  always_on: yes

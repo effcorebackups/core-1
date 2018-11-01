@@ -1,6 +1,5 @@
-module|module
+module|module_embed
   id: core
   title: Core
   description: Main system module.
   version: 0.900
-  always_on: yes
