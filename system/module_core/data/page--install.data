@@ -10,10 +10,10 @@ pages
       roles
       - =: anonymous
     children
-    - language_switcher|page_part
+    - page_init|page_part
         region: head
         type: code
-        source: \effcore\modules\core\events_page::on_switch_language
+        source: \effcore\modules\core\events_page_install::on_page_init
     - menu_languages|page_part
         region: head
         type: code
