@@ -3,3 +3,4 @@ module|module
   title: CAPTCHA
   description: Module for working with CAPTCHA in forms.
   version: 0.900
+  enabled: yes

@@ -116,7 +116,7 @@ namespace effcore\modules\core {
             'salt'            => core::key_generate()
           ]);
           $modules = module::all_get();
-          $enabled = module::enabled_get();
+          $enabled = module::enabled_default_get();
           foreach ($modules as $c_module) {
             if (isset($enabled[$c_module->id])) event::start('on_module_install', $c_module->id);
             if (count(storage::get('main')->errors) == 0) message::insert(translation::get('Module %%_title (%%_id) was installed.', ['title' => $c_module->title, 'id' => $c_module->id]));

@@ -7,6 +7,8 @@
 namespace effcore {
           class module extends module_embed {
 
+  public $enabled = 'no';
+
   function uninstall() {
   # delete instances
     foreach (instance::all_by_module_get($this->id) as $c_instance) {

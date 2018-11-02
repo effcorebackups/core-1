@@ -17,7 +17,7 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $modules = module::all_get();
-    $enabled = module::enabled_get();
+    $enabled = module::enabled_default_get();
     core::array_sort_by_property($modules, 'title');
     foreach ($modules as $c_module) {
       $c_info = new markup('x-module-info');

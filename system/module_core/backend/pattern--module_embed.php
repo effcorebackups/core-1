@@ -12,6 +12,7 @@ namespace effcore {
   public $description;
   public $version;
   public $path;
+  public $enabled = 'yes';
 
   function install() {
   # insert entities
@@ -49,7 +50,17 @@ namespace effcore {
   }
 
   static function enabled_get() {
-    return storage::get('files')->select('settings/core/modules_enabled');
+    //return storage::get('files')->select('settings/core/modules_enabled');
+  }
+
+  static function enabled_default_get() {
+    $result = [];
+    foreach (static::all_get() as $c_module) {
+      if     ($c_module instanceof module_embed &&
+             !$c_module instanceof module) $result[$c_module->id] = $c_module->id;
+      elseif ($c_module->enabled == 'yes') $result[$c_module->id] = $c_module->id;
+    }
+    return $result;
   }
 
 }}
