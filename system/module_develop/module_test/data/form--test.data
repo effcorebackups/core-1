@@ -5,12 +5,16 @@ forms
     - method: post
     - =: novalidate
     children
-    - test|fieldset
+    - params|fieldset
+        title: Parameters
+    - report|fieldset
+        title: Report
         children
-        - select_test|field_select
-            title: Select the test
-            element_attributes
-            - name: select_test
+        - document|markup
+            tag_name: x-document
+            attributes
+            - class
+              - =: report
     - button_run|button
         title: run
         attributes

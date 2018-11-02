@@ -1,0 +1,8 @@
+tabs_items
+- test_execute|tabs_item
+    id: test_execute
+    id_parent: T:tests
+    title: Execute
+    attributes
+    - class
+      - =: test-execute

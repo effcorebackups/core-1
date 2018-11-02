@@ -8,30 +8,30 @@ namespace effcore\modules\test {
           use \effcore\fieldset;
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\page;
           use \effcore\test;
+          use \effcore\text;
           use \effcore\translation;
           abstract class events_form_test {
 
   static function on_init($form, $items) {
-    $items['#select_test']->option_insert('- select -', 'not_selected');
+    $id = page::current_get()->args_get('id');
+    $test = test::get($id);
+    $items['params']->description = $test->description;
+    $items['params']->child_insert(new text('No additional parameters.'));
+    $items['report']->child_select('document')->child_insert(new text('The report will be created after running the test.'));
     if (!extension_loaded('curl')) {
-      $items['#select_test']->disabled_set();
       $items['~run']->disabled_set();
       message::insert(
         translation::get('The PHP extension "%%_name" is not available!', ['name' => 'curl']), 'warning'
       );
-    } else {
-      $tests = test::all_get(false);
-      foreach ($tests as $c_test) {
-        $items['#select_test']->option_insert($c_test->title, $c_test->id);
-      }
     }
   }
 
   static function on_submit($form, $items) {
-    $test_id = $items['#select_test']->value_get();
-    if ($test_id) {
-      $test = test::get($test_id);
+    $id = page::current_get()->args_get('id');
+    if ($id) {
+      $test = test::get($id);
       $test_result = $test->run();
     # show message
       if (!empty($test_result['return']))
@@ -39,12 +39,9 @@ namespace effcore\modules\test {
       else message::insert('The test was failed!', 'error');
     # make report
       if (!empty($test_result['reports'])) {
-        $report = new markup('x-document', ['class' => ['report' => 'report']]);
-        $report_wrapper = new fieldset('Report', '', [], $report);
-        $report_wrapper->description = $test->description;
-        $items['test']->child_insert($report_wrapper);
+        $items['report']->child_select('document')->child_delete_all();
         foreach ($test_result['reports'] as $c_report) {
-          $report->child_insert(
+          $items['report']->child_select('document')->child_insert(
             new markup('p', [], $c_report)
           );
         }

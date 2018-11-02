@@ -91,6 +91,7 @@ translations
     - Event: Событие
     - events: события
     - Events: События
+    - Execute: Выполнить
     - expand: развернуть
     - Expired date: Дата истечения
     - failed to write file to disk: не удалось записать файл на диск
@@ -204,6 +205,7 @@ translations
     - New password: Новый пароль
     - nick: ник
     - Nick: Ник
+    - No additional parameters.: Нет дополнительных параметров.
     - no items: нет элементов
     - no url: нет url
     - No: Нет
@@ -221,6 +223,7 @@ translations
     - Page: Страница
     - Paragraph: Параграф
     - Parameter: Параметр
+    - Parameters: Параметры
     - Parent ID: ID Родителя
     - Password: Пароль
     - Path: Путь
@@ -308,8 +311,9 @@ translations
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зеленой и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
-    - The report was generated in real time but the list of classes is depend on the cache!: Отчет был создан в режиме реального времени, но список классов зависит от кеша!
-    - The report was generated in real time.: Отчет был создан в режиме реального времени.
+    - The report was generated in real time but the list of classes is depend on the cache!: Отчёт был создан в режиме реального времени, но список классов зависит от кеша!
+    - The report was generated in real time.: Отчёт был создан в режиме реального времени.
+    - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загруженного файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP модулей!
