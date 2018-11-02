@@ -180,7 +180,7 @@ namespace effcore\modules\develop {
     }
   # build class diagram
     $map = core::structures_map_get();
-    $return = [];
+    $result = [];
     foreach ($map as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == 'class') {
         $c_reflection = new \ReflectionClass($c_item_full_name);
@@ -253,7 +253,7 @@ namespace effcore\modules\develop {
           }
         }
 
-        $return[] = $c_return;
+        $result[] = $c_return;
       }
     }
 
@@ -276,7 +276,7 @@ namespace effcore\modules\develop {
                 '_id' => 'MAIN-CLASSDIAGRAM',
                 'name' => 'Main',
                 'defaultDiagram' => true,
-                'ownedElements' => $return,
+                'ownedElements' => $result,
                 'ownedViews' => [
                   (object)[
                     '_type' => 'UMLTextView',

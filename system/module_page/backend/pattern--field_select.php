@@ -59,29 +59,29 @@ namespace effcore {
   }
 
   function values_get() {
-    $return = [];
+    $result = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
       if ($c_item instanceof node       &&
           $c_item->tag_name == 'option' &&
           $c_item->attribute_select('selected') == 'selected') {
-        $return[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+        $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
       }
     }
-    return $return;
+    return $result;
   }
 
   function values_allowed_get() {
-    $return = [];
+    $result = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
       if ($c_item instanceof node       &&
           $c_item->tag_name == 'option' &&
          !$c_item->attribute_select('disabled')) {
-        $return[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+        $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
       }
     }
-    return $return;
+    return $result;
   }
 
   function values_set($values, $clear = true) {

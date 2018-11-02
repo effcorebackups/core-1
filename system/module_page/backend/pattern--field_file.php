@@ -74,16 +74,16 @@ namespace effcore {
   }
 
   function render_description() {
-    $return[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximum file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
-    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
-    if ($this->min_files_number != $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
-    if ($this->min_files_number == $this->max_files_number) $return[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));
-    if ($this->description) $return[] = new markup('p', [], $this->description);
-    if (count($return)) {
+    $result[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximum file size: %%_value.', ['value' => locale::format_human_bytes($this->file_size_max_get())]));
+    if ($this->min_files_number != $this->max_files_number) $result[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
+    if ($this->min_files_number != $this->max_files_number) $result[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
+    if ($this->min_files_number == $this->max_files_number) $result[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));
+    if ($this->description) $result[] = new markup('p', [], $this->description);
+    if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                                 ) return '';
-      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
-      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $return))->render();
+      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
   }
@@ -175,17 +175,17 @@ namespace effcore {
   # move new items to the directory 'files'
     $this->pool_files_move_pre_to_new();
   # prepare return
-    $return = [];
-    $return_paths = [];
-    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->path_relative_get();}
-    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $return[] = $c_info; $c_file = new file($c_info->path); $return_paths[] = $c_file->path_relative_get();}
+    $result = [];
+    $result_paths = [];
+    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_relative_get();}
+    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_relative_get();}
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_deleted_items_set('old', []);
     $this->pool_validation_cache_set('old_to_delete', []);
-    $this->pool_values_init_old_from_storage($return_paths);
+    $this->pool_values_init_old_from_storage($result_paths);
   # return result array
-    return $return;
+    return $result;
   }
 
   protected function pool_files_move_tmp_to_pre() {

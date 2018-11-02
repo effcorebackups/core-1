@@ -37,16 +37,16 @@ namespace effcore {
   }
 
   function prepared_post_get() {
-    $return = [];
+    $result = [];
     foreach ($this->post as $c_name => $c_value) {
       if ($c_value == '%%_nick_random')     $c_value = $this->nick_random_get();
       if ($c_value == '%%_email_random')    $c_value = $this->email_random_get();
       if ($c_value == '%%_password_random') $c_value = $this->password_random_get();
       if ($c_value == '%%_captcha')         $c_value = $this->captcha_code_get();
       if ($c_value == '%%_validation_id')   $c_value = $this->validation_id_get();
-      $return[$c_name] = $c_value;
+      $result[$c_name] = $c_value;
     }
-    return $return;
+    return $result;
   }
 
   function nick_random_get() {

@@ -61,7 +61,7 @@ namespace effcore {
   }
 
   static function request($url, $headers = [], $post = [], $proxy = '') {
-    $return = ['info' => [], 'headers' => []];
+    $result = ['info' => [], 'headers' => []];
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -73,10 +73,10 @@ namespace effcore {
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
   # prepare headers
-    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$return) {
+    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$result) {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
-      if ($c_matches) $return['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
+      if ($c_matches) $result['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
       return strlen($c_header);
     });
   # prepare post query
@@ -86,12 +86,12 @@ namespace effcore {
     }
   # prepare return
     $data = curl_exec($curl);
-    $return['error_message'] = curl_error($curl);
-    $return['error_number'] = curl_errno($curl);
-    $return['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
-    $return['info'] = curl_getinfo($curl);
+    $result['error_message'] = curl_error($curl);
+    $result['error_number'] = curl_errno($curl);
+    $result['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
+    $result['info'] = curl_getinfo($curl);
     curl_close($curl);
-    return $return;
+    return $result;
   }
 
 }}

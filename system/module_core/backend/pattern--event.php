@@ -40,12 +40,12 @@ namespace effcore {
   }
 
   static function start($type, $id = null, $args = []) {
-    $return = [];
+    $result = [];
     if (!empty(static::all_get()[$type])) {
       foreach (static::all_get()[$type] as $c_event) {
         if ($id == $c_event->for || $id == null) {
           timer::tap('event call: '.$c_event->for);
-          $return[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);
+          $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);
           timer::tap('event call: '.$c_event->for);
           console::log_add('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
             timer::period_get('event call: '.$c_event->for, -1, -2)
@@ -53,7 +53,7 @@ namespace effcore {
         }
       }
     }
-    return $return;
+    return $result;
   }
 
 }}

@@ -149,44 +149,44 @@ namespace effcore {
   }
 
   function tables(...$tables) {
-    $return = [];
+    $result = [];
     foreach (is_array($tables[0]) ?
                       $tables[0] : $tables as $c_table) {
       switch ($this->driver) {
         case 'mysql' :
-          $return[] = '`'.$this->table_prefix.$c_table.'`';
-          $return[] = $this->op(',');
+          $result[] = '`'.$this->table_prefix.$c_table.'`';
+          $result[] = $this->op(',');
           break;
         case 'sqlite':
-          $return[] = '"'.$this->table_prefix.$c_table.'"';
-          $return[] = $this->op(',');
+          $result[] = '"'.$this->table_prefix.$c_table.'"';
+          $result[] = $this->op(',');
           break;
       }
     }
-    array_pop($return);
-    return $return;
+    array_pop($result);
+    return $result;
   }
 
   function fields(...$fields) {
-    $return = [];
+    $result = [];
     foreach (is_array($fields[0]) ?
                       $fields[0] : $fields as $c_field) {
-      $return[] = $c_field;
-      $return[] = $this->op(',');}
-    array_pop($return);
-    return $return;
+      $result[] = $c_field;
+      $result[] = $this->op(',');}
+    array_pop($result);
+    return $result;
   }
 
   function values(...$values) {
-    $return = [];
+    $result = [];
     foreach (is_array($values[0]) ?
                       $values[0] : $values as $c_value) {
       $this->args[] = $c_value;
-      $return[] = '?';
-      $return[] = $this->op(',');
+      $result[] = '?';
+      $result[] = $this->op(',');
     }
-    array_pop($return);
-    return $return;
+    array_pop($result);
+    return $result;
   }
 
   function condition($field, $value, $op = '=') {
@@ -199,12 +199,12 @@ namespace effcore {
   }
 
   function attributes($data, $op = 'and') {
-    $return = [];
+    $result = [];
     foreach ($data as $c_field => $c_value) {
-      $return[] = is_array($c_value) ? $c_value : $this->condition($c_field, $c_value);
-      $return[] = $this->op($op);}
-    array_pop($return);
-    return $return;
+      $result[] = is_array($c_value) ? $c_value : $this->condition($c_field, $c_value);
+      $result[] = $this->op($op);}
+    array_pop($result);
+    return $result;
   }
 
   ################

@@ -93,11 +93,11 @@ namespace effcore {
   }
 
   function frontend_markup_get() {
-    $return = new \stdClass;
-    $return->meta    = new node();
-    $return->styles  = new node();
-    $return->scripts = new node();
-    $return->meta    = new node();
+    $result = new \stdClass;
+    $result->meta    = new node();
+    $result->styles  = new node();
+    $result->scripts = new node();
+    $result->meta    = new node();
     foreach (static::frontend_all_get() as $c_row_id => $c_item) {
       if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_item->display))) {
@@ -108,7 +108,7 @@ namespace effcore {
         if (isset($c_item->favicons)) {
           foreach ($c_item->favicons as $c_icon) {
             $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path.$c_icon->file);
-            $return->meta->child_insert(new markup_simple('link', [
+            $result->meta->child_insert(new markup_simple('link', [
               'rel'   => $c_icon->rel,
               'type'  => $c_icon->type,
               'sizes' => $c_icon->sizes,
@@ -123,7 +123,7 @@ namespace effcore {
         if (isset($c_item->styles)) {
           foreach ($c_item->styles as $c_style) {
             $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path.$c_style->file);
-            $return->styles->child_insert(new markup_simple('link', [
+            $result->styles->child_insert(new markup_simple('link', [
               'rel'   => 'stylesheet',
               'media' => $c_style->media,
               'href'  => $c_url->relative_get()
@@ -137,7 +137,7 @@ namespace effcore {
         if (isset($c_item->scripts)) {
           foreach ($c_item->scripts as $c_script) {
             $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path.$c_script->file);
-            $return->scripts->child_insert(new markup('script', [
+            $result->scripts->child_insert(new markup('script', [
               'src' => $c_url->relative_get()
             ]));
           }
@@ -145,7 +145,7 @@ namespace effcore {
 
       }
     }
-    return $return;
+    return $result;
   }
 
   ###########################

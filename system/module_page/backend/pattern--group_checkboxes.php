@@ -11,13 +11,13 @@ namespace effcore {
   public $field_class = '\\effcore\\field_checkbox';
 
   function values_get() {
-    $return = [];
+    $result = [];
     foreach ($this->children_select() as $c_id => $c_field) {
       if ($c_field->checked_get() == true) {
-        $return[$c_id] = $c_field->value_get();
+        $result[$c_id] = $c_field->value_get();
       }
     }
-    return $return;
+    return $result;
   }
 
   function values_set($values) {

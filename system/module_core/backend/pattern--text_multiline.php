@@ -24,11 +24,11 @@ namespace effcore {
   function text_append($new_text) {$line = count($this->text); $this->text[$line] = $new_text; return $line;}
 
   function render() {
-    $return = [];
+    $result = [];
     foreach ($this->text as $c_line) {
-      $return[] = translation::get($c_line, $this->args);
+      $result[] = translation::get($c_line, $this->args);
     }
-    return implode($this->delimiter, $return);
+    return implode($this->delimiter, $result);
   }
 
 }}

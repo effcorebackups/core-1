@@ -28,7 +28,7 @@ namespace effcore {
     if ($cache) {
       return $cache;
     } else {
-      $return = [];
+      $result = [];
       $php_files = file::select_recursive(dir_system, '%^.*\\.php$%');
       foreach ($php_files as $c_file) {
         $c_matches = [];
@@ -69,14 +69,14 @@ namespace effcore {
             $c_item->file = $c_file->path_relative_get();
           # add to result pool
             if (!$c_item->namespace)
-                 $return[strtolower($c_item->name)] = $c_item;
-            else $return[strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
+                 $result[strtolower($c_item->name)] = $c_item;
+            else $result[strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
           }
         }
       }
-      ksort($return);
-      cache::update('structures', $return, '', ['build' => static::datetime_get()]);
-      return $return;
+      ksort($result);
+      cache::update('structures', $result, '', ['build' => static::datetime_get()]);
+      return $result;
     }
   }
 
@@ -143,31 +143,31 @@ namespace effcore {
   }
 
   static function data_to_attr($data, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
-    $return = [];
+    $result = [];
     foreach ((array)$data as $c_name => $c_value) {
       switch (gettype($c_value)) {
-        case 'boolean': $return[] = $key_wrapper.$c_name.$key_wrapper; break;
-        case 'array'  : $return[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.implode(' ', $c_value).$value_wrapper; break;
-        case 'object' : $return[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.(method_exists($c_value, 'render') ? $c_value->render() : '').$value_wrapper; break;
-        default       : $return[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.$c_value.$value_wrapper; break;
+        case 'boolean': $result[] = $key_wrapper.$c_name.$key_wrapper; break;
+        case 'array'  : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.implode(' ', $c_value).$value_wrapper; break;
+        case 'object' : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.(method_exists($c_value, 'render') ? $c_value->render() : '').$value_wrapper; break;
+        default       : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.$c_value.$value_wrapper; break;
       }
     }
-    return $join_part ? implode($join_part, $return) :
-                                            $return;
+    return $join_part ? implode($join_part, $result) :
+                                            $result;
   }
 
   static function data_to_codeline($data, $prefix = '') {
-    $return = '';
+    $result = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            $return.= static::data_to_codeline($c_value, $prefix.(is_int($c_key) ?
+            $result.= static::data_to_codeline($c_value, $prefix.(is_int($c_key) ?
                                                                      '['.$c_key.']' :
                                                        '[\''.addcslashes($c_key, '\'\\').'\']'));
           }
         } else {
-          $return.= $prefix.' = [];'.nl;
+          $result.= $prefix.' = [];'.nl;
         }
         break;
       case 'object':
@@ -177,19 +177,19 @@ namespace effcore {
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
         $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\has_post_init');
         if ($c_is_post_constructor)
-             $return = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
-        else $return = $prefix.' = new \\'.$c_class_name.'();'.nl;
+             $result = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
+        else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $return.= static::data_to_codeline($c_value, $prefix.'->'.$c_prop);
+          $result.= static::data_to_codeline($c_value, $prefix.'->'.$c_prop);
         }
-        if ($c_is_post_constructor) $return.= $prefix.'->__construct();'.nl;
-        if ($c_is_post_init)        $return.= $prefix.'->__post_init();'.nl;
+        if ($c_is_post_constructor) $result.= $prefix.'->__construct();'.nl;
+        if ($c_is_post_init)        $result.= $prefix.'->__post_init();'.nl;
         break;
       default:
-        $return.= $prefix.' = '.static::data_to_string($data).';'.nl;
+        $result.= $prefix.' = '.static::data_to_string($data).';'.nl;
     }
-    return $return;
+    return $result;
   }
 
   ################################
@@ -197,13 +197,13 @@ namespace effcore {
   ################################
 
   static function array_rotate($data) {
-    $return = [];
+    $result = [];
     foreach ($data as $c_row) {                  # convert │1│2│ to │1│3│
       for ($i = 0; $i < count($c_row); $i++) {   #         │3│4│    │2│4│
-        $return[$i][] = $c_row[$i];
+        $result[$i][] = $c_row[$i];
       }
     }
-    return $return;
+    return $result;
   }
 
   # ┌───────────────────────────────────┐
@@ -249,13 +249,13 @@ namespace effcore {
   }
 
   static function array_values_select_recursive(&$array, $all = false, $dpath = '') {
-    $return = [];
+    $result = [];
     foreach ($array as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value)) $return += static::array_values_select_recursive($c_value, $all, $c_dpath);
-      if (is_array($c_value) == false || $all) $return[$c_dpath] = &$c_value;
+      if (is_array($c_value)) $result += static::array_values_select_recursive($c_value, $all, $c_dpath);
+      if (is_array($c_value) == false || $all) $result[$c_dpath] = &$c_value;
     }
-    return $return;
+    return $result;
   }
 
   static function in_array_string_compare($value, $array) {
@@ -286,13 +286,13 @@ namespace effcore {
   }
 
   static function arrobj_values_select_recursive(&$data, $all = false, $dpath = '') {
-    $return = [];
+    $result = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))) $return += static::arrobj_values_select_recursive($c_value, $all, $c_dpath);
-      if ((is_array($c_value) || is_object($c_value)) == false || $all) $return[$c_dpath] = &$c_value;
+      if ((is_array($c_value) || is_object($c_value))) $result += static::arrobj_values_select_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] = &$c_value;
     }
-    return $return;
+    return $result;
   }
 
   ###############################
@@ -596,14 +596,14 @@ namespace effcore {
     $matches = [];
     preg_match('%^bytes=(?<min>[0-9]+)-'.
                        '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'] ?? '', $matches);
-    $return = new \stdClass;
-    $return->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
-    $return->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
-    return $return;
+    $result = new \stdClass;
+    $result->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
+    $result->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
+    return $result;
   }
 
   static function server_user_agent_info_get() {
-    $return = new \stdCLass;
+    $result = new \stdCLass;
   # detect Internet Explorer v.6-v.11
   # note: unexist version like '12' will be identified as '1'
     $matches = [];
@@ -611,13 +611,13 @@ namespace effcore {
     $ie_name_to_core = array_flip($ie_core_to_name);
     preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>11|10|9|8|7|6|5|4|3|2|1)|)'.
                  '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::server_user_agent_get(), $matches);
-    $return->name = isset($matches['name']) ? strtolower($matches['name']) : '';
-    $return->core = isset($matches['core']) ? strtolower($matches['core']) : '';
-    $return->core_version = $matches['core_v'] ?? '';
-    $return->name_version = $matches['name_v'] ?? '';
-    if ($return->name == '' && $return->core && isset($ie_core_to_name[$matches['core_v']])) {$return->name = 'msie';    $return->name_version = $ie_core_to_name[$matches['core_v']];}
-    if ($return->core == '' && $return->name && isset($ie_name_to_core[$matches['name_v']])) {$return->core = 'trident'; $return->core_version = $ie_name_to_core[$matches['name_v']];}
-    return $return;
+    $result->name = isset($matches['name']) ? strtolower($matches['name']) : '';
+    $result->core = isset($matches['core']) ? strtolower($matches['core']) : '';
+    $result->core_version = $matches['core_v'] ?? '';
+    $result->name_version = $matches['name_v'] ?? '';
+    if ($result->name == '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
+    if ($result->core == '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
+    return $result;
   }
 
   static function server_software_get() {
@@ -636,14 +636,14 @@ namespace effcore {
 
   static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
-    $return = $precision ? substr(
+    $result = $precision ? substr(
       number_format($number, $precision, $dec_point, $thousands), 0, -5) :
       number_format($number, $precision, $dec_point, $thousands);
     if ($no_zeros) {
-      $return = rtrim($return, '0');
-      $return = rtrim($return, $dec_point);
+      $result = rtrim($result, '0');
+      $result = rtrim($result, $dec_point);
     }
-    return $return;
+    return $result;
   }
 
   static function send_header_and_exit($type, $title = '', $message = '', $p = '') {

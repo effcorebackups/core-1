@@ -96,11 +96,11 @@ namespace effcore {
   }
 
   function render_canvas($canvas) {
-    $return = [];
+    $result = [];
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
       if (isset($this->canvas[$c_y][$c_x])) {
-        $return[] = (new markup_xml_simple('rect', [
+        $result[] = (new markup_xml_simple('rect', [
           'style'  => 'fill:'.$this->canvas[$c_y][$c_x],
           'x'      => 1 * $this->scale * $c_x,
           'y'      => 1 * $this->scale * $c_y,
@@ -109,7 +109,7 @@ namespace effcore {
         ]))->render();
       }
     }}
-    return implode(nl, $return);
+    return implode(nl, $result);
   }
 
 }}

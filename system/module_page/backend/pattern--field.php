@@ -192,23 +192,23 @@ namespace effcore {
   }
 
   function render_description() {
-    $return = [];
+    $result = [];
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if ($element->attribute_select('pattern') !== null)                                                                                          $return[] = new markup('p', ['class' => ['pattern'   => 'pattern']],   translation::get('Field value should match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')]));
-      if ($element->attribute_select('min') !== null)                                                                                              $return[] = new markup('p', ['class' => ['min'       => 'min']],       translation::get('Minimum field value: %%_value.', ['value' => $element->attribute_select('min')]));
-      if ($element->attribute_select('max') !== null)                                                                                              $return[] = new markup('p', ['class' => ['max'       => 'max']],       translation::get('Maximum field value: %%_value.', ['value' => $element->attribute_select('max')]));
-      if ($element->attribute_select('type') == 'range')                                                                                           $return[] = new markup('p', ['class' => ['cur'       => 'cur']],       translation::get('Current field value: %%_value.', ['value' => (new markup('x-value', [], $element->attribute_select('value')))->render()]));
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $return[] = new markup('p', ['class' => ['minlength' => 'minlength']], translation::get('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));
-      if ($element->attribute_select('maxlength') !== null && $element->attribute_select('maxlength') !== $element->attribute_select('minlength')) $return[] = new markup('p', ['class' => ['maxlength' => 'maxlength']], translation::get('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $return[] = new markup('p', ['class' => ['midlength' => 'midlength']], translation::get('Field must contain %%_number character%%_plural{number,s}.',             ['number' => $element->attribute_select('minlength')]));
+      if ($element->attribute_select('pattern') !== null)                                                                                          $result[] = new markup('p', ['class' => ['pattern'   => 'pattern']],   translation::get('Field value should match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')]));
+      if ($element->attribute_select('min') !== null)                                                                                              $result[] = new markup('p', ['class' => ['min'       => 'min']],       translation::get('Minimum field value: %%_value.', ['value' => $element->attribute_select('min')]));
+      if ($element->attribute_select('max') !== null)                                                                                              $result[] = new markup('p', ['class' => ['max'       => 'max']],       translation::get('Maximum field value: %%_value.', ['value' => $element->attribute_select('max')]));
+      if ($element->attribute_select('type') == 'range')                                                                                           $result[] = new markup('p', ['class' => ['cur'       => 'cur']],       translation::get('Current field value: %%_value.', ['value' => (new markup('x-value', [], $element->attribute_select('value')))->render()]));
+      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = new markup('p', ['class' => ['minlength' => 'minlength']], translation::get('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));
+      if ($element->attribute_select('maxlength') !== null && $element->attribute_select('maxlength') !== $element->attribute_select('minlength')) $result[] = new markup('p', ['class' => ['maxlength' => 'maxlength']], translation::get('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));
+      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = new markup('p', ['class' => ['midlength' => 'midlength']], translation::get('Field must contain %%_number character%%_plural{number,s}.',             ['number' => $element->attribute_select('minlength')]));
     }
-    if ($this->description) $return[] = new markup('p', [], $this->description);
-    if (count($return)) {
+    if ($this->description) $result[] = new markup('p', [], $this->description);
+    if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                                 ) return '';
-      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $return))->render();
-      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $return))->render();
+      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
   }
@@ -301,7 +301,7 @@ namespace effcore {
   # └─────────────────────────────────────────────────────────╨───────────────────────────────────────────────────────────────────────┘
 
   static function request_files_get($name) {
-    $return = [];
+    $result = [];
     if (isset($_FILES[$name]['name'])     &&
         isset($_FILES[$name]['type'])     &&
         isset($_FILES[$name]['size'])     &&
@@ -316,24 +316,24 @@ namespace effcore {
       foreach ($info as $c_prop => $c_values) {
         foreach ($c_values as $c_number => $c_value) {
           if ($info['error'][$c_number] !== UPLOAD_ERR_NO_FILE) {
-            if (!isset($return[$c_number]))
-                       $return[$c_number] = new \stdClass;
+            if (!isset($result[$c_number]))
+                       $result[$c_number] = new \stdClass;
             switch ($c_prop) {
               case 'name':
                 $c_file = new file(trim(str_replace('/', '', $c_value), '.'));
-                $return[$c_number]->{'name'} = $c_file->name_get();
-                $return[$c_number]->{'type'} = $c_file->type_get();
-                $return[$c_number]->{'file'} = $c_file->file_get();
+                $result[$c_number]->{'name'} = $c_file->name_get();
+                $result[$c_number]->{'type'} = $c_file->type_get();
+                $result[$c_number]->{'file'} = $c_file->file_get();
                 break;
-              case 'type'    : $return[$c_number]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
-              case 'tmp_name': $return[$c_number]->{'tmp_path'} = $c_value; break;
-              default        : $return[$c_number]->{$c_prop}    = $c_value;
+              case 'type'    : $result[$c_number]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
+              case 'tmp_name': $result[$c_number]->{'tmp_path'} = $c_value; break;
+              default        : $result[$c_number]->{$c_prop}    = $c_value;
             }
           }
         }
       }
     }
-    return $return;
+    return $result;
   }
 
 }}

@@ -110,20 +110,20 @@ namespace effcore {
   }
 
   function form_items_get() {
-    $return = [];
+    $result = [];
     $groups = [];
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
-      if ($c_item instanceof container)         $return[$c_npath] = $c_item;
-      if ($c_item instanceof button)            $return['~'.$c_item->value_get()] = $c_item;
+      if ($c_item instanceof container)         $result[$c_npath] = $c_item;
+      if ($c_item instanceof button)            $result['~'.$c_item->value_get()] = $c_item;
       if ($c_item instanceof group_mono)        $groups['*'.$c_item->name_first_get()][] = $c_item;
       if ($c_item instanceof field)             $groups['#'.$c_item->name_get()][] = $c_item;
       if ($c_item instanceof field_radiobutton) $groups['#'.$c_item->name_get().':'.$c_item->value_get()][] = $c_item;
     }
     foreach ($groups as $c_name => $c_group) {
-      if (count($c_group) == 1) $return[$c_name] = reset($c_group);
-      if (count($c_group) >= 2) $return[$c_name] = $c_group;
+      if (count($c_group) == 1) $result[$c_name] = reset($c_group);
+      if (count($c_group) >= 2) $result[$c_name] = $c_group;
     }
-    return $return;
+    return $result;
   }
 
   function button_clicked_set() {
@@ -152,11 +152,11 @@ namespace effcore {
   }
 
   function total_errors_count_get() {
-    $return = 0;
+    $result = 0;
     foreach ($this->total_errors_get() as $c_errors) {
-      $return += count($c_errors);
+      $result += count($c_errors);
     }
-    return $return;
+    return $result;
   }
 
   function total_errors_get() {

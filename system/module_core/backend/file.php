@@ -178,13 +178,13 @@ namespace effcore {
   function insert($once = true) {
     $relative = $this->path_relative_get();
     timer::tap('file insert: '.$relative);
-    $return = $once ? require_once($this->path_get()) :
+    $result = $once ? require_once($this->path_get()) :
                            require($this->path_get());
     timer::tap('file insert: '.$relative);
     console::log_add('file', 'insertion', $relative, 'ok',
       timer::period_get('file insert: '.$relative, -1, -2)
     );
-    return $return;
+    return $result;
   }
 
   ###########################
@@ -216,13 +216,13 @@ namespace effcore {
 
   static function select_recursive($path, $filter = '') {
     try {
-      $return = [];
+      $result = [];
       foreach (new ri_iterator(new rd_iterator($path, static::scan_dir_mode)) as $c_path => $null) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
-          $return[$c_path] = new static($c_path);
+          $result[$c_path] = new static($c_path);
         }
       }
-      return $return;
+      return $result;
     } catch (\UnexpectedValueException $e) {
       return [];
     }

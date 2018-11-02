@@ -124,7 +124,7 @@ namespace effcore {
   }
 
   static function data_static_find() {
-    $return = [];
+    $result = [];
     $parsed = [];
     $modules_path = [];
     $files = file::select_recursive(dir_system, '%^.*\\.data$%');
@@ -147,20 +147,20 @@ namespace effcore {
           break;
         }
       }
-    # fill the $return
+    # fill the $result
       foreach ($c_parsed as $c_type => $c_data) {
         if (is_object($c_data)) {
           if ($c_type == 'module') $c_data->path = $modules_path[$c_scope];
-          $return[$c_type][$c_scope] = $c_data;
+          $result[$c_type][$c_scope] = $c_data;
         }
         if (is_array($c_data)) {
-          if (!isset($return[$c_type][$c_scope]))
-                     $return[$c_type][$c_scope] = [];
-          $return[$c_type][$c_scope] += $c_data;
+          if (!isset($result[$c_type][$c_scope]))
+                     $result[$c_type][$c_scope] = [];
+          $result[$c_type][$c_scope] += $c_data;
         }
       }
     }
-    return $return;
+    return $result;
   }
 
   ###############
@@ -168,21 +168,21 @@ namespace effcore {
   ###############
 
   static function data_to_dataline($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
-    $return = [];
+    $result = [];
     if ($entity_name) {
-      $return[] = str_repeat('  ', $depth-1).($depth ? $entity_prefix : '').$entity_name;
+      $result[] = str_repeat('  ', $depth-1).($depth ? $entity_prefix : '').$entity_name;
     }
     foreach ($data as $c_key => $c_value) {
       if (is_array ($c_value) && !count($c_value))           continue;
       if (is_object($c_value) && !get_object_vars($c_value)) continue;
-      if (is_array ($c_value))     $return[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_object($c_value)) $return[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif ($c_value === null)   $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
-      elseif ($c_value === false)  $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
-      elseif ($c_value === true)   $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
-      else                         $return[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.$c_value;
+      if (is_array ($c_value))     $result[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_object($c_value)) $result[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif ($c_value === null)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
+      elseif ($c_value === false)  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
+      elseif ($c_value === true)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
+      else                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.$c_value;
     }
-    return implode(nl, $return);
+    return implode(nl, $result);
   }
 
   # ┌─────────────────────╥───────────────────────────────────────────────────────┐
@@ -202,8 +202,8 @@ namespace effcore {
   # └─────────────────────╨───────────────────────────────────────────────────────┘
 
   static function dataline_to_data($data, $file = null) {
-    $return = new \stdClass;
-    $p = [-1 => &$return];
+    $result = new \stdClass;
+    $p = [-1 => &$result];
     $post_constructor_objects = [];
     $post_init_objects        = [];
     $post_parse_objects       = [];
@@ -264,7 +264,7 @@ namespace effcore {
     foreach ($post_constructor_objects as $c_object) $c_object->__construct();
     foreach ($post_init_objects        as $c_object) $c_object->__post_init();
     foreach ($post_parse_objects       as $c_object) $c_object->__post_parse();
-    return $return;
+    return $result;
   }
 
 }}
