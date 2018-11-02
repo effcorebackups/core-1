@@ -8,7 +8,7 @@ namespace effcore\modules\demo {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_install() {
+  static function on_install($demo_args = []) {
     $module = module::get('demo');
     $module->install();
   }
