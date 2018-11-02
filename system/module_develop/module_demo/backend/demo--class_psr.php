@@ -1,10 +1,8 @@
 <?php
 
-# PHP 5.3 and later. PSR-1 style.
+# PSR-1 style.
 
-namespace Vendor\Model;
-
-class DemoClassPsrNew
+class Vendor_Model_DemoClassPsr
 {
 
     public $PublicAttribute1;
