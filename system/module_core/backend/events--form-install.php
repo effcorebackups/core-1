@@ -53,25 +53,25 @@ namespace effcore\modules\core {
           }
           if ($form->total_errors_count_get() == 0) {
             if ($items['#driver:mysql']->checked_get()) {
-              $test = storage::get('main')->test('mysql', (object)[
-                'host_name'    => $items['#host_name'       ]->value_get(),
-                'port'         => $items['#port'            ]->value_get(),
-                'login'        => $items['#storage_login'   ]->value_get(),
-                'password'     => $items['#storage_password']->value_get(),
-                'storage_name' => $items['#storage_name'    ]->value_get()
+              $test = storage::get('sql')->test('mysql', (object)[
+                'host_name' => $items['#host_name'       ]->value_get(),
+                'port'      => $items['#port'            ]->value_get(),
+                'login'     => $items['#storage_login'   ]->value_get(),
+                'password'  => $items['#storage_password']->value_get(),
+                'section'   => $items['#storage_section' ]->value_get()
               ]);
               if ($test !== true) {
                 $items['#host_name'       ]->error_set();
                 $items['#port'            ]->error_set();
                 $items['#storage_login'   ]->error_set();
                 $items['#storage_password']->error_set();
-                $items['#storage_name'    ]->error_set();
+                $items['#storage_section' ]->error_set();
                 $form->error_set(translation::get('Storage is not available with these credentials!').br.
                                  translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
               }
             }
             if ($items['#driver:sqlite']->checked_get()) {
-              $test = storage::get('main')->test('sqlite', (object)[
+              $test = storage::get('sql')->test('sqlite', (object)[
                 'file_name' => $items['#file_name']->value_get()
               ]);
               if ($test !== true) {
@@ -94,12 +94,12 @@ namespace effcore\modules\core {
             $params = new \stdClass;
             $params->driver = 'mysql';
             $params->credentials = new \stdClass;
-            $params->credentials->host_name    = $items['#host_name'       ]->value_get();
-            $params->credentials->port         = $items['#port'            ]->value_get();
-            $params->credentials->storage_name = $items['#storage_name'    ]->value_get();
-            $params->credentials->login        = $items['#storage_login'   ]->value_get();
-            $params->credentials->password     = $items['#storage_password']->value_get();
-            $params->table_prefix              = $items['#table_prefix'    ]->value_get();
+            $params->credentials->host_name = $items['#host_name'       ]->value_get();
+            $params->credentials->port      = $items['#port'            ]->value_get();
+            $params->credentials->section   = $items['#storage_section' ]->value_get();
+            $params->credentials->login     = $items['#storage_login'   ]->value_get();
+            $params->credentials->password  = $items['#storage_password']->value_get();
+            $params->table_prefix           = $items['#table_prefix'    ]->value_get();
           }
           if ($items['#driver:sqlite']->checked_get()) {
             $params = new \stdClass;
@@ -108,7 +108,7 @@ namespace effcore\modules\core {
             $params->credentials->file_name = $items['#file_name'   ]->value_get();
             $params->table_prefix           = $items['#table_prefix']->value_get();
           }
-          storage::get('main')->init($params->driver, $params->credentials);
+          storage::get('sql')->init($params->driver, $params->credentials);
           storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
             'cron'            => core::key_generate(),
             'form_validation' => core::key_generate(),
@@ -119,10 +119,10 @@ namespace effcore\modules\core {
           $enabled = module::enabled_default_get();
           foreach ($modules as $c_module) {
             if (isset($enabled[$c_module->id])) event::start('on_module_install', $c_module->id);
-            if (count(storage::get('main')->errors) == 0) message::insert(translation::get('Module %%_title (%%_id) was installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
+            if (count(storage::get('sql')->errors) == 0) message::insert(translation::get('Module %%_title (%%_id) was installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
             else break;
           }
-          if (count(storage::get('main')->errors) == 0) {
+          if (count(storage::get('sql')->errors) == 0) {
             $form->child_delete_all();
             $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
             message::insert(translation::get('System was installed.'));

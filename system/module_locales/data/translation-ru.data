@@ -34,6 +34,7 @@ translations
     - Canvas: Холст
     - CAPTCHA: Защитный код (CAPTCHA)
     - CAPTCHAs: Защитные коды (CAPTCHAs)
+    - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - Characters: Символы
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
@@ -140,6 +141,7 @@ translations
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - If the initial value is not specified, the current value in the UTC time zone will be used.: Если начальное значение не задано, то будет использовано текущее значение в часовом поясе UTC.
+    - Implies the database name.: Подразумевает имя базы данных.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
     - Insert instance: Вставить экземпляр
@@ -286,12 +288,11 @@ translations
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
-    - Storage "%%_name": Хранилище "%%_name"
     - Storage %%_name is not available!: Хранилище %%_name не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
-    - storage %%_name will be initialized: хранилище %%_name будет инициализировано
+    - Storage %%_name: Хранилище %%_name
     - Storage is not available with these credentials!: Хранилище не доступно с этими учетными данными!
-    - Storage name: Имя хранилища
+    - Storage section: Раздел хранилища
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить

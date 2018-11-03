@@ -52,12 +52,13 @@ forms
                 - name: storage_password
                 - minlength: null
                 - required: null
-          # storage name (database name)
-            - storage_name|field_text
-                title: Storage name
+          # storage section (database name)
+            - storage_section|field_text
+                title: Storage section
+                description: Implies the database name.
                 element_attributes
-                - name: storage_name
-                - value: main
+                - name: storage_section
+                - value: effcore
                 - minlength: 1
                 - maxlength: 128
                 - pattern: %^[a-zA-Z0-9-_]+$%

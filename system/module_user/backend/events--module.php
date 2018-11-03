@@ -17,7 +17,7 @@ namespace effcore\modules\user {
           abstract class events_module {
 
   static function on_install() {
-    if (count(storage::get('main')->errors) == 0) {
+    if (count(storage::get('sql')->errors) == 0) {
       $module = module::get('user');
       $module->install();
       $admin = new instance('user', ['nick' => 'admin']);

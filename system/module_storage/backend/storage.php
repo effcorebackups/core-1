@@ -31,10 +31,10 @@ namespace effcore {
     return static::$cache[$name];
   }
 
-  static function is_installed() {
-    $main = static::get('main');
-    return isset($main->driver) &&
-           isset($main->credentials);
+  static function is_installed($name = 'sql') {
+    $storage = static::get($name);
+    return isset($storage->driver) &&
+           isset($storage->credentials);
   }
 
 }}

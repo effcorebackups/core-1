@@ -3,7 +3,7 @@ entities
     name: permission
     title: Permission
     title_plural: Permissions
-    storage_name: main
+    storage_name: sql
     catalog_name: permissions
     ws_created: true
     ws_updated: true
@@ -27,7 +27,7 @@ entities
     name: relation_role_ws_permission
     title: Relation: Role + Permission
     title_plural: Relations: Role + Permission
-    storage_name: main
+    storage_name: sql
     catalog_name: relations_role_ws_permission
     ws_created: true
     ws_updated: true
@@ -66,7 +66,7 @@ entities
     name: relation_role_ws_user
     title: Relation: Role + User
     title_plural: Relations: Role + User
-    storage_name: main
+    storage_name: sql
     catalog_name: relations_role_ws_user
     ws_created: true
     ws_updated: true
@@ -105,7 +105,7 @@ entities
     name: role
     title: Role
     title_plural: Roles
-    storage_name: main
+    storage_name: sql
     catalog_name: roles
     ws_weight: true
     ws_created: true
@@ -135,7 +135,7 @@ entities
     name: session
     title: Session
     title_plural: Sessions
-    storage_name: main
+    storage_name: sql
     catalog_name: sessions
     fields
     - id
@@ -182,7 +182,7 @@ entities
     name: user
     title: User
     title_plural: Users
-    storage_name: main
+    storage_name: sql
     catalog_name: users
     ws_created: true
     ws_updated: true

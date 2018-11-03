@@ -12,10 +12,10 @@ namespace effcore {
 
   function select($dpath, $expand_cache = false) {
     $dpath_parts = explode('/', $dpath);
-    $group = array_shift($dpath_parts);
-    if (isset(static::$data[$group]) == false) static::init($group);
-    if (isset(static::$data[$group])) {
-      $c_pointer = static::$data[$group];
+    $catalog_name = array_shift($dpath_parts);
+    if (isset(static::$data[$catalog_name]) == false) static::init($catalog_name);
+    if (isset(static::$data[$catalog_name])) {
+      $c_pointer = static::$data[$catalog_name];
       foreach ($dpath_parts as $c_part) {
         $c_pointer = &core::arrobj_value_select($c_pointer, $c_part);
         if ($expand_cache && $c_pointer instanceof external_cache) {
@@ -54,10 +54,10 @@ namespace effcore {
     return ['name' => 'name'];
   }
 
-  static function init($group) {
-    console::log_add('storage', 'init.', 'storage %%_name will be initialized', 'ok', 0, ['name' => $group.' | storage_nosql_files']);
-    $cache = cache::select('data--'.$group);
-    if ($cache) static::$data[$group] = $cache;
+  static function init($catalog_name) {
+    console::log_add('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
+    $cache = cache::select('data--'.$catalog_name);
+    if ($cache) static::$data[$catalog_name] = $cache;
     else        static::data_cache_rebuild();
   }
 
@@ -81,11 +81,11 @@ namespace effcore {
     static::data_changes_apply($changes_s, $data);
     unset($data['changes']);
   # save cache
-    foreach ($data as $c_group => $c_data) {
-      static::$data[$c_group] = $c_data;
+    foreach ($data as $c_catalog_name => $c_data) {
+      static::$data[$c_catalog_name] = $c_data;
       foreach (core::arrobj_values_select_recursive($c_data, true) as $c_dpath => &$c_value) {
         if ($c_value instanceof has_external_cache) {
-          $c_cache_id = 'data--'.$c_group.'-'.str_replace('/', '-', $c_dpath);
+          $c_cache_id = 'data--'.$c_catalog_name.'-'.str_replace('/', '-', $c_dpath);
           $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::not_external_properties_get());
           cache::update($c_cache_id, $c_value);
           $c_value = new external_cache(
@@ -94,7 +94,7 @@ namespace effcore {
           );
         }
       }
-      cache::update('data--'.$c_group, $c_data);
+      cache::update('data--'.$c_catalog_name, $c_data);
     }
   }
 
