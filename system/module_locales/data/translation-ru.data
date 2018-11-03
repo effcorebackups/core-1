@@ -56,6 +56,7 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
+    - Database name: Имя базы данных
     - Date: Дата
     - Decoration: Оформление
     - default type: тип по умолчанию
@@ -140,7 +141,6 @@ translations
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - If the initial value is not specified, the current value in the UTC time zone will be used.: Если начальное значение не задано, то будет использовано текущее значение в часовом поясе UTC.
-    - Implies the database name.: Подразумевает имя базы данных.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
     - Insert instance: Вставить экземпляр
@@ -291,7 +291,6 @@ translations
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage %%_name: Хранилище %%_name
     - Storage is not available with these credentials!: Хранилище не доступно с этими учетными данными!
-    - Storage section: Раздел хранилища
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить

@@ -33,9 +33,9 @@ namespace effcore {
             case 'mysql':
               $this->connection = new pdo(
                 $this->driver.':host='.
-                $this->credentials->host_name.';port='.
+                $this->credentials->host.';port='.
                 $this->credentials->port.';dbname='.
-                $this->credentials->section,
+                $this->credentials->database,
                 $this->credentials->login,
                 $this->credentials->password);
               break;
@@ -70,9 +70,9 @@ namespace effcore {
         case 'mysql':
           $connection = new pdo(
             $driver.':host='.
-            $credentials->host_name.';port='.
+            $credentials->host.';port='.
             $credentials->port.';dbname='.
-            $credentials->section,
+            $credentials->database,
             $credentials->login,
             $credentials->password);
           break;

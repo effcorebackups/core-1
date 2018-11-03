@@ -21,10 +21,10 @@ forms
         - mysql|fieldset
             children
           # host name
-            - host_name|field_text
+            - host|field_text
                 title: Hostname
                 element_attributes
-                - name: host_name
+                - name: host
                 - value: [::1]
                 - minlength: 1
                 - maxlength: 253
@@ -52,12 +52,11 @@ forms
                 - name: storage_password
                 - minlength: null
                 - required: null
-          # storage section (database name)
-            - storage_section|field_text
-                title: Storage section
-                description: Implies the database name.
+          # database name
+            - database_name|field_text
+                title: Database name
                 element_attributes
-                - name: storage_section
+                - name: database_name
                 - value: effcore
                 - minlength: 1
                 - maxlength: 128

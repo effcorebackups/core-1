@@ -54,18 +54,18 @@ namespace effcore\modules\core {
           if ($form->total_errors_count_get() == 0) {
             if ($items['#driver:mysql']->checked_get()) {
               $test = storage::get('sql')->test('mysql', (object)[
-                'host_name' => $items['#host_name'       ]->value_get(),
-                'port'      => $items['#port'            ]->value_get(),
-                'login'     => $items['#storage_login'   ]->value_get(),
-                'password'  => $items['#storage_password']->value_get(),
-                'section'   => $items['#storage_section' ]->value_get()
+                'host'     => $items['#host'            ]->value_get(),
+                'port'     => $items['#port'            ]->value_get(),
+                'login'    => $items['#storage_login'   ]->value_get(),
+                'password' => $items['#storage_password']->value_get(),
+                'database' => $items['#database_name'   ]->value_get()
               ]);
               if ($test !== true) {
-                $items['#host_name'       ]->error_set();
+                $items['#host'            ]->error_set();
                 $items['#port'            ]->error_set();
                 $items['#storage_login'   ]->error_set();
                 $items['#storage_password']->error_set();
-                $items['#storage_section' ]->error_set();
+                $items['#database_name'   ]->error_set();
                 $form->error_set(translation::get('Storage is not available with these credentials!').br.
                                  translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
               }
@@ -94,12 +94,12 @@ namespace effcore\modules\core {
             $params = new \stdClass;
             $params->driver = 'mysql';
             $params->credentials = new \stdClass;
-            $params->credentials->host_name = $items['#host_name'       ]->value_get();
-            $params->credentials->port      = $items['#port'            ]->value_get();
-            $params->credentials->section   = $items['#storage_section' ]->value_get();
-            $params->credentials->login     = $items['#storage_login'   ]->value_get();
-            $params->credentials->password  = $items['#storage_password']->value_get();
-            $params->table_prefix           = $items['#table_prefix'    ]->value_get();
+            $params->credentials->host     = $items['#host'            ]->value_get();
+            $params->credentials->port     = $items['#port'            ]->value_get();
+            $params->credentials->database = $items['#database_name'   ]->value_get();
+            $params->credentials->login    = $items['#storage_login'   ]->value_get();
+            $params->credentials->password = $items['#storage_password']->value_get();
+            $params->table_prefix          = $items['#table_prefix'    ]->value_get();
           }
           if ($items['#driver:sqlite']->checked_get()) {
             $params = new \stdClass;
