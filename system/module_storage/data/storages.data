@@ -1,5 +1,5 @@
 storages
-- sql|storage_sql
+- sql|storage_sql_pdo
     name: main
 - files|storage_nosql_files
     name: files
