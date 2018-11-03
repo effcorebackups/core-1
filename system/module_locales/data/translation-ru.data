@@ -53,7 +53,6 @@ translations
     - Credentials for storage %%_name was not set!: Учётные данные для хранилища %%_name не были заданы!
     - Credentials: Учётные данные
     - credentials: учётные данные
-    - Cron job for module %%_name was done.: Задача Cron для модуля %%_name была выполнена.
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы

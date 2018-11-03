@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\captcha {
-          use \effcore\console;
           use \effcore\field_captcha;
           use \effcore\module;
           abstract class events_module {
@@ -17,8 +16,6 @@ namespace effcore\modules\captcha {
 
   static function on_cron() {
     field_captcha::captcha_cleaning();
-    $module = module::get('captcha');
-    console::log_add('cron', 'clear', 'Cron job for module %%_name was done.', '-', 0, ['name' => $module->title]);
   }
 
 }}

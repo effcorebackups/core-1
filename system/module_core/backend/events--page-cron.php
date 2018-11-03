@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use const \effcore\br;
           use \effcore\core;
           use \effcore\event;
           use \effcore\timer;
@@ -13,9 +14,11 @@ namespace effcore\modules\core {
   static function on_cron_run($page) {
     if ($page->args_get('key') === core::key_get('cron')) {
       timer::tap('cron');
-      event::start('on_cron');
+      $result = event::start('on_cron');
       timer::tap('cron');
-      print 'cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
+      foreach ($result as $c_handler => $c_result)
+        print 'Run: '.$c_handler.br;
+        print 'Cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
       exit();
     } else {
       core::send_header_and_exit('page_not_found');
