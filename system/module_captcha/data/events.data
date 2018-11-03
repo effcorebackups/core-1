@@ -1,5 +1,9 @@
 events
   on_module_install
   - captcha|event
-      for: core
+      for: captcha
       handler: \effcore\modules\captcha\events_module::on_install
+  on_cron
+  - captcha|event
+      for: captcha
+      handler: \effcore\modules\captcha\events_module::on_cron

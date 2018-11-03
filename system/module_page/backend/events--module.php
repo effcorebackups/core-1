@@ -21,8 +21,9 @@ namespace effcore\modules\page {
   }
 
   static function on_cron() {
+    $module = module::get('page');
     form::validation_cache_clean();
-    console::log_add('cron', 'clear', 'Cron job was done.', '-');
+    console::log_add('cron', 'clear', 'Cron job for module %%_name was done.', '-', 0, ['name' => $module->title]);
   }
 
 }}
