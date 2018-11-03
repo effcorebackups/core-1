@@ -243,6 +243,7 @@ translations
     - Radiobutton: Переключатель
     - Radiobuttons: Переключатели
     - Range: Диапазон
+    - refresh: обновить
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered: Зарегистрированные
