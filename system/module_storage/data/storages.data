@@ -1,5 +1,5 @@
 storages
 - sql|storage_sql
     name: main
-- storage_files_nosql|storage_files
+- files|storage_files
     name: files
