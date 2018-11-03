@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class storage_files
+          class storage_nosql_files
           implements has_external_cache {
 
   public $name;
@@ -55,7 +55,7 @@ namespace effcore {
   }
 
   static function init($group) {
-    console::log_add('storage', 'init.', 'storage %%_name will be initialized', 'ok', 0, ['name' => $group.' | storage_files']);
+    console::log_add('storage', 'init.', 'storage %%_name will be initialized', 'ok', 0, ['name' => $group.' | storage_nosql_files']);
     $cache = cache::select('data--'.$group);
     if ($cache) static::$data[$group] = $cache;
     else        static::data_cache_rebuild();
