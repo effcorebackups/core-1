@@ -70,7 +70,6 @@ translations
     - Module for testing.: Модуль для тестирования.
     - Module: Модуль
     - Notice message #%%_number.: Уведомление №%%_number.
-    - Number of iterations: Количество итераций
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
     - Option 2 (disabled): Опция 2 (отключёна) 
@@ -88,6 +87,7 @@ translations
     - PHP modules usage: Использование PHP модулей
     - PHP modules: PHP модули
     - Pos.: Поз.
+    - Quantity of iterations: Количество итераций
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)

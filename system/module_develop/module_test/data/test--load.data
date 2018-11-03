@@ -3,10 +3,10 @@ tests
     id: load
     title: Load
     params
-    - iterations_number|field_number
-        title: Number of iterations
+    - quantity_of_iterations|field_number
+        title: Quantity of iterations
         element_attributes
-        - name: iterations_number
+        - name: quantity_of_iterations
         - value: 50
         - min: 1
         - max: 1000
@@ -14,7 +14,7 @@ tests
     scenario
     - repeat|step_repeat
         quantity|param_from_form
-          name: iterations_number
+          name: quantity_of_iterations
         actions
         - request_page_front|step_request
             url: /
