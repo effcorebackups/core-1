@@ -70,6 +70,7 @@ translations
     - Module for testing.: Модуль для тестирования.
     - Module: Модуль
     - Notice message #%%_number.: Уведомление №%%_number.
+    - Number of iterations: Количество итераций
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
     - Option 2 (disabled): Опция 2 (отключёна) 
