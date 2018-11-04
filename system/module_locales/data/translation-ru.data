@@ -107,7 +107,7 @@ translations
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
-    - Field "%%_title" has a changed value.: Поле "%%_title" имеет измененное значение.
+    - Field "%%_title" has a changed value.: Поле "%%_title" имеет изменённое значение.
     - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
@@ -128,7 +128,7 @@ translations
     - file is empty: файл пуст
     - File name: Имя файла
     - File not found: Файл не найден
-    - file of this type is protected by\: %%_name: файл этого типа защищен с помощью: %%_name
+    - file of this type is protected by\: %%_name: файл этого типа защищён с помощью: %%_name
     - File: Файл
     - file: файл
     - Form elements: Элементы формы
@@ -137,7 +137,7 @@ translations
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to front page: перейти на главную страницу
     - go to page %%_link: перейти на страницу %%_link
-    - Group "%%_title" has a changed value.: Группа "%%_title" имеет измененное значение.
+    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - If the initial value is not specified, the current value in the UTC time zone will be used.: Если начальное значение не задано, то будет использовано текущее значение в часовом поясе UTC.
@@ -148,18 +148,18 @@ translations
     - insertion: вставка
     - Install: Установить
     - install: установить
-    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учетные данные хранилища уже были заданы.
+    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
-    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удален.
-    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удален!
+    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удалён.
+    - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удалён!
     - Instances of entity %%_name was added.: Экземпляры сущности %%_name были добавлены.
     - Instances of entity %%_name was deleted.: Экземпляры сущности %%_name были удалены.
     - Instances of entity %%_name was not added!: Экземпляры сущности %%_name не были добавлены!
     - Instances of entity %%_name was not deleted!: Экземпляры сущности %%_name не были удалены!
     - Instances: Экземпляры
     - Internet Explorer below version %%_version no longer supported!: Internet Explorer ниже версии %%_version больше не поддерживается!
-    - invalid session was deleted!: Недействительный сеанс был удален!
+    - invalid session was deleted!: Недействительный сеанс был удалён!
     - IP address: IP адрес
     - Is embed: Встроенный
     - Is fixed IP: Фиксировать IP
@@ -257,7 +257,7 @@ translations
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сбросить
-    - Restore the storage credentials in "%%_path" directory or reinstall this system on the page\: %%_link: Восстановите учетные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
+    - Restore the storage credentials in "%%_path" directory or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
     - restore: восстановить
     - return: возврат
     - Role ID: ID Роли
@@ -290,7 +290,7 @@ translations
     - Storage %%_name is not available!: Хранилище %%_name не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage %%_name: Хранилище %%_name
-    - Storage is not available with these credentials!: Хранилище не доступно с этими учетными данными!
+    - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить
@@ -308,10 +308,10 @@ translations
     - Textarea: Текстовая область
     - The changes was deleted.: Изменения были удалены.
     - The changes was saved.: Изменения были сохранены.
-    - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зеленой и "ef" - синей.
+    - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
-    - The report was generated in real time but the list of classes is depend on the cache!: Отчёт был создан в режиме реального времени, но список классов зависит от кеша!
+    - The report was generated in real time but the list of classes is depend on the cache!: Отчёт был создан в режиме реального времени, но список классов зависит от кэша!
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size
@@ -338,8 +338,8 @@ translations
     - Updated: Обновлено
     - URL: URL
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
-    - User %%_nick was not updated.: Пользователь %%_nick не был обновлен.
-    - User %%_nick was updated.: Пользователь %%_nick был обновлен.
+    - User %%_nick was not updated.: Пользователь %%_nick не был обновлён.
+    - User %%_nick was updated.: Пользователь %%_nick был обновлён.
     - User %%_nick_context{2}: Пользователь %%_nick_context{2}
     - User %%_nick: Пользователь %%_nick
     - User ID: ID Пользователя
