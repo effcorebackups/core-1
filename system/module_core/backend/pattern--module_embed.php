@@ -36,7 +36,9 @@ namespace effcore {
   static protected $cache;
 
   static function init() {
-    static::$cache = storage::get('files')->select('module');
+    foreach (storage::get('files')->select('module') as $c_row_id => $c_module) {
+      static::$cache[$c_module->id] = $c_module;
+    }
   }
 
   static function get($id) {
@@ -56,9 +58,9 @@ namespace effcore {
 
   static function enabled_by_default_get() {
     $result = [];
-    foreach (static::all_get() as $c_row_id => $c_module) {
+    foreach (static::all_get() as $c_module) {
       if ($c_module->enabled == 'yes') {
-        $result[$c_row_id] = $c_module;
+        $result[$c_module->id] = $c_module;
       }
     }
     return $result;
@@ -66,10 +68,10 @@ namespace effcore {
 
   static function embed_get() {
     $result = [];
-    foreach (static::all_get() as $c_row_id => $c_module) {
+    foreach (static::all_get() as $c_module) {
       if ($c_module instanceof module_embed &&
          !$c_module instanceof module) {
-        $result[$c_row_id] = $c_module;
+        $result[$c_module->id] = $c_module;
       }
     }
     return $result;
