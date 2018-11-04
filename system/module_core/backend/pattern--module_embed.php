@@ -51,14 +51,26 @@ namespace effcore {
 
   static function enabled_get() {
     //return storage::get('files')->select('settings/core/modules_enabled');
+    return [];
   }
 
-  static function enabled_default_get() {
+  static function enabled_by_default_get() {
     $result = [];
-    foreach (static::all_get() as $c_module) {
-      if     ($c_module instanceof module_embed &&
-             !$c_module instanceof module) $result[$c_module->id] = $c_module->id;
-      elseif ($c_module->enabled == 'yes') $result[$c_module->id] = $c_module->id;
+    foreach (static::all_get() as $c_row_id => $c_module) {
+      if ($c_module->enabled == 'yes') {
+        $result[$c_row_id] = $c_module;
+      }
+    }
+    return $result;
+  }
+
+  static function embed_get() {
+    $result = [];
+    foreach (static::all_get() as $c_row_id => $c_module) {
+      if ($c_module instanceof module_embed &&
+         !$c_module instanceof module) {
+        $result[$c_row_id] = $c_module;
+      }
     }
     return $result;
   }

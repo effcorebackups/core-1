@@ -116,9 +116,10 @@ namespace effcore\modules\core {
             'salt'            => core::key_generate()
           ]);
           $modules = module::all_get();
-          $default = module::enabled_default_get();
+          $enabled = module::enabled_by_default_get() +
+                     module::embed_get();
           foreach ($modules as $c_module) {
-            if (isset($default[$c_module->id])) event::start('on_module_install', $c_module->id);
+            if (isset($enabled[$c_module->id])) event::start('on_module_install', $c_module->id);
             if (count(storage::get('sql')->errors) == 0) message::insert(translation::get('Module %%_title (%%_id) was installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
             else break;
           }
@@ -130,7 +131,8 @@ namespace effcore\modules\core {
             message::insert(translation::get('your Password is — %%_password', ['password' => $items['#password']->value_get()]), 'credentials');
             message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'));
+            storage::get('files')->changes_insert('core',    'update', 'settings/core/modules_enabled', core::array_kmap(array_keys($enabled)), false);
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
             storage::get('files')->changes_insert('page',    'update', 'settings/page/console_display', 'no');
           } else {
             message::insert(
