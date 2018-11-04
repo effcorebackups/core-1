@@ -34,8 +34,9 @@ namespace effcore {
           'children' => $this->render_children($this->children_select())]
         ))->render() : '';
         return (new template($this->template, [
-          'self'     => $this->render_self(),
-          'children' => $rendered_children
+          'attributes' => core::data_to_attr($this->attributes_select()),
+          'self'       => $this->render_self(),
+          'children'   => $rendered_children
         ]))->render();
       }
     }

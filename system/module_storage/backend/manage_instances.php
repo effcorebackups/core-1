@@ -29,7 +29,9 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       tabs::item_insert(             $c_entity->title_plural,
         'instance_select_'.          $c_entity->name,
-        'instance_select', 'select/'.$c_entity->name
+        'instance_select', 'select/'.$c_entity->name, null, ['class' => [
+                           'select-'.$c_entity->name =>
+                           'select-'.$c_entity->name]]
       );
     }
   # create selection
@@ -77,7 +79,9 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       tabs::item_insert(             $c_entity->title,
         'instance_insert_'.          $c_entity->name,
-        'instance_insert', 'insert/'.$c_entity->name
+        'instance_insert', 'insert/'.$c_entity->name, null, ['class' => [
+                           'insert-'.$c_entity->name =>
+                           'insert-'.$c_entity->name]]
       );
     }
   # create insert form
