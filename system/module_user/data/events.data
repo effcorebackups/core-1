@@ -28,6 +28,9 @@ events
   - registration|event
       for: registration
       handler: \effcore\modules\user\events_form_registration::on_validate
+  - access|event
+      for: access
+      handler: \effcore\modules\user\events_form_access::on_validate
   on_form_submit
   - login|event
       for: login

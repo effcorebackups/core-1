@@ -33,6 +33,9 @@ namespace effcore\modules\user {
     }
   }
 
+  static function on_validate($form, $items) {
+  }
+
   static function on_submit($form, $items) {
   }
 

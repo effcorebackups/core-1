@@ -37,11 +37,10 @@ namespace effcore {
       if (method_exists($c_element, 'npath_set')) $c_element->npath_set($c_npath);
     }
 
-  # get form elements (fields, containers, fieldset and etc.)
-    $items = $this->form_items_get();
-
   # call init handlers
+    $items = $this->form_items_get();
     event::start('on_form_init', $id, [$this, $items]);
+    $items = $this->form_items_get();
 
   # if user click the button
     if ($this->clicked_button &&
