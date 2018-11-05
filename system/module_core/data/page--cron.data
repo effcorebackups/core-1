@@ -4,7 +4,7 @@ pages
     display
       check: url
       where: path
-      match: %^/cron/(?<key>[a-z0-9]{40})$%
+      match: %^/cron/(?<key>[a-f0-9]{40})$%
     access
       roles
       - =: anonymous

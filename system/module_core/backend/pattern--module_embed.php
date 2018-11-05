@@ -36,9 +36,7 @@ namespace effcore {
   static protected $cache;
 
   static function init() {
-    foreach (storage::get('files')->select('module') as $c_row_id => $c_module) {
-      static::$cache[$c_module->id] = $c_module;
-    }
+    static::$cache = storage::get('files')->select('module');
   }
 
   static function get($id) {

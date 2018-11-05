@@ -379,7 +379,7 @@ namespace effcore {
   }
 
   static function validate_hash($value, $length = 32) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9a-f]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-f0-9]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
   }
 
   static function validate_email($value) {
