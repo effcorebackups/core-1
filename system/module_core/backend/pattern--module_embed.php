@@ -49,9 +49,10 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function enabled_get() {
-    //return storage::get('files')->select('settings/core/modules_enabled');
-    return [];
+  static function enabled_by_settings_get() {
+    $all = static::all_get();
+    $setting = storage::get('files')->select('settings/core/modules_enabled');
+    return array_intersect_key($all, $setting);
   }
 
   static function enabled_by_default_get() {

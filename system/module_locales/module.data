@@ -1,5 +1,5 @@
 module|module_embed
   id: locales
   title: Locales
-  description: Module for internationalization.
+  description: Module for localization.
   version: 0.900

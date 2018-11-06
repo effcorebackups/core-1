@@ -193,7 +193,7 @@ translations
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module %%_title (%%_id) was installed.: Модуль %%_title (%%_id) был установлен.
-    - Module for internationalization.: Модуль для интернационализации.
+    - Module for localization.: Модуль для локализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
     - Module for working with CAPTCHA in forms.: Модуль для работы с защитным кодом (CAPTCHA) в формах.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
