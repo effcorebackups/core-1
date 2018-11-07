@@ -100,7 +100,7 @@ namespace effcore {
 
   static function data_changes_apply($changes, &$data) {
     foreach ($changes as $module_id => $c_module_changes) {
-      foreach ($c_module_changes as $c_action_id => $c_changes) {
+      foreach ($c_module_changes as $c_action => $c_changes) {
         foreach ($c_changes as $c_dpath => $c_data) {
           $c_pointers = core::dpath_pointers_get($data, $c_dpath);
           $c_pointers_keys = array_keys($c_pointers);
@@ -108,10 +108,10 @@ namespace effcore {
           $c_parent_name = array_pop($c_pointers_keys);
           $c_child       = array_pop($c_pointers);
           $c_parent      = array_pop($c_pointers);
-          switch ($c_action_id) {
-            case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # only structured types is supported: array|object
-            case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # only scalar types is supported: string|numeric @todo: test bool|null
-            case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break; # only scalar types is supported: string|numeric @todo: test bool|null
+          switch ($c_action) {
+            case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # supported types: array|object
+            case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # supported types: array|object|string|numeric|bool|null
+            case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break;
           }
         }
       }
