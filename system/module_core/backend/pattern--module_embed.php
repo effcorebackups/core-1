@@ -50,9 +50,8 @@ namespace effcore {
   }
 
   static function enabled_by_settings_get() {
-    $all = static::all_get();
     $setting = storage::get('files')->select('settings/core/modules_enabled');
-    return array_intersect_key($all, $setting);
+    return array_intersect_key(static::all_get(), $setting);
   }
 
   static function enabled_by_default_get() {
