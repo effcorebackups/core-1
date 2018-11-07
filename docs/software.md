@@ -90,11 +90,12 @@ Client software support
 Recommended software for development
 =====================================================================
 
-- macOS Sierra and higher for using quality software and make development environment.
+- macOS High Sierra or newer for using quality software and make development environment.
 - Coda (mac) for working with code|markup|styles and searching in the code.
 - Tower (mac|win) for working with Git.
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup.
-- Rested (mac) for debug HTTP|S traffic.
+- Proxie (mac) for debug HTTP|S traffic.
+- Rested (mac) for debug HTTP traffic.
 - Kaleidoscope (mac) for search differences in code.
 - SequelPro (mac) for working with MySQL databases.
 - Aster SQLite Manager (mac) for working with SQLite databases.
@@ -104,7 +105,9 @@ Recommended software for development
 - ColorSnapper (mac) for pick the "right" colors.
 - RegExRX (mac|win) for improve your regular expressions.
 - VMWare Fusion Pro (mac) for working with virtual machines.
-- Find Any Files (mac) for searching in the code (note: Coda can search better).
+- Find Any Files (mac) for searching in the code (note: can not search is some cases).
+- VisualGrep (mac) for searching in the code.
+- Neor Profile SQL (mac|win|linux) for debug SQL queries.
 
 
 Improving performance
