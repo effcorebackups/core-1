@@ -11,6 +11,7 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module_embed;
           use \effcore\module;
+          use \effcore\storage;
           use \effcore\translation;
           abstract class events_form_modules {
 
@@ -24,8 +25,8 @@ namespace effcore\modules\core {
       $c_info = new markup('x-module-info');
       $c_switcher = new field_switcher();
       $c_switcher->build();
-      $c_switcher->name_set('module_'.$c_module->id);
-      $c_switcher->value_set('on');
+      $c_switcher->name_set('is_enabled[]');
+      $c_switcher->value_set($c_module->id);
       $c_switcher->checked_set(isset($enabled[$c_module->id]));
       $c_switcher->disabled_set($c_module instanceof module ? false : true);
       $c_info->child_insert($c_switcher, 'switcher');
@@ -45,11 +46,16 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $modules = module::all_get();
+        $enabled = [];
         foreach ($modules as $c_module) {
           if ($c_module instanceof module) {
+            if ($items['#is_enabled:'.$c_module->id]->checked_get()) {
+              $enabled[$c_module->id] = $c_module->id;
             # event::start('on_module_install', $c_module->id);
+            }
           }
         }
+        storage::get('files')->changes_insert('core', 'update', 'settings/core/modules_enabled', $enabled);
         break;
       case 'refresh':
         break;
