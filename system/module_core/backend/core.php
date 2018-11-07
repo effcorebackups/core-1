@@ -299,14 +299,14 @@ namespace effcore {
   ### functionality for dpath ###
   ###############################
 
-  static function dpath_chain_get(&$data, $dpath) {
-    $chain = [];
+  static function dpath_pointers_get(&$data, $dpath) {
+    $result = [];
     $c_pointer = $data;
     foreach (explode('/', $dpath) as $c_part) {
       $c_pointer = &static::arrobj_value_select($c_pointer, $c_part);
-      $chain[$c_part] = &$c_pointer;
+      $result[$c_part] = &$c_pointer;
     }
-    return $chain;
+    return $result;
   }
 
   ###################################

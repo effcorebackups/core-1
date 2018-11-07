@@ -11,12 +11,12 @@ namespace effcore {
   public $name;
 
   function select($dpath, $expand_cache = false) {
-    $dpath_parts = explode('/', $dpath);
-    $catalog_name = array_shift($dpath_parts);
+    $parts = explode('/', $dpath);
+    $catalog_name = array_shift($parts);
     if (isset(static::$data[$catalog_name]) == false) static::init($catalog_name);
     if (isset(static::$data[$catalog_name])) {
       $c_pointer = static::$data[$catalog_name];
-      foreach ($dpath_parts as $c_part) {
+      foreach ($parts as $c_part) {
         $c_pointer = &core::arrobj_value_select($c_pointer, $c_part);
         if ($expand_cache && $c_pointer instanceof external_cache) {
           $c_pointer = $c_pointer->external_cache_load();
@@ -27,7 +27,7 @@ namespace effcore {
   }
 
   function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
-  # add new action
+  # save new dynamic changes
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
     data::update('changes', $changes_d, '', ['build' => core::datetime_get()]);
@@ -102,21 +102,15 @@ namespace effcore {
     foreach ($changes as $module_id => $c_module_changes) {
       foreach ($c_module_changes as $c_action_id => $c_changes) {
         foreach ($c_changes as $c_dpath => $c_data) {
-          $c_chain = core::dpath_chain_get($data, $c_dpath);
-          $c_child_name = array_keys($c_chain)[count($c_chain)-1];
-          $c_parent_name = array_keys($c_chain)[count($c_chain)-2];
-          $c_child = &$c_chain[$c_child_name];
-          $c_parent = &$c_chain[$c_parent_name];
+          $c_pointers = core::dpath_pointers_get($data, $c_dpath);
+          $c_parent_name = array_keys($c_pointers)[count($c_pointers)-2];
+          $c_child_name  = array_keys($c_pointers)[count($c_pointers)-1];
+          $c_parent      =           &$c_pointers[$c_parent_name];
+          $c_child       =           &$c_pointers[$c_child_name];
           switch ($c_action_id) {
-          # only structured types is supported: array|object
-            case 'insert':
-              foreach ($c_data as $c_key => $c_value) {
-                core::arrobj_value_insert($c_child, $c_key, $c_value);
-              }
-              break;
-          # only scalar types is supported: string|numeric @todo: test bool|null
-            case 'update': core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break;
-            case 'delete': core::arrobj_child_delete($c_parent, $c_child_name);          break;
+            case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # only structured types is supported: array|object
+            case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # only scalar types is supported: string|numeric @todo: test bool|null
+            case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break; # only scalar types is supported: string|numeric @todo: test bool|null
           }
         }
       }
