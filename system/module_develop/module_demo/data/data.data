@@ -29,8 +29,11 @@ demo_data
     prop_2: property value #2
     prop_3: property value #3
   demo_nested
+    prop_1: property value #1
     demo_nested
+      prop_1: property value #1.1
       demo_nested
+        prop_1: property value #1.1.1
 # ─────────────────────────────────────────────────────────────────────
 # special types
 # ─────────────────────────────────────────────────────────────────────
