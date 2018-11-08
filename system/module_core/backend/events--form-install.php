@@ -115,12 +115,11 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
           ]);
-          $modules            = module::all_get();
           $enabled_by_default = module::enabled_by_default_get();
           $embed              = module::embed_get();
           module::installed_by_boot_set([]);
           module::enabled_by_boot_set  ([]);
-          foreach ($modules as $c_module) {
+          foreach (module::all_get() as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) || 
                 isset($embed             [$c_module->id])) {
               event::start('on_module_install', $c_module->id);

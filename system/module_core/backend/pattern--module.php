@@ -31,7 +31,6 @@ namespace effcore {
     $installed = static::installed_by_boot_get();
     unset($installed[$this->id]);
     static::installed_by_boot_set(core::array_kmap(array_keys($installed)));
-    $this->disable();
   }
 
 }}
