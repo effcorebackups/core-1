@@ -29,6 +29,18 @@ namespace effcore {
     }
   }
 
+  function enabled() {
+    $enabled = static::enabled_by_boot_get();
+    $enabled[$this->id] = $this->id;
+    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+  }
+
+  function disabled() {
+    $enabled = static::enabled_by_boot_get();
+    unset($enabled[$this->id]);
+    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+  }
+
   ###########################
   ### static declarations ###
   ###########################
