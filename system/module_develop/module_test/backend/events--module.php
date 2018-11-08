@@ -14,12 +14,18 @@ namespace effcore\modules\test {
   }
 
   static function on_uninstall() {
+    $module = module::get('test');
+    $module->uninstall();
   }
 
   static function on_enable() {
+    $module = module::get('test');
+    $module->enable();
   }
 
   static function on_disable() {
+    $module = module::get('test');
+    $module->disable();
   }
 
 }}

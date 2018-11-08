@@ -10,16 +10,22 @@ namespace effcore\modules\develop {
 
   static function on_install() {
     $module = module::get('develop');
-    $module->enable();
+    $module->install();
   }
 
   static function on_uninstall() {
+    $module = module::get('develop');
+    $module->uninstall();
   }
 
   static function on_enable() {
+    $module = module::get('develop');
+    $module->enable();
   }
 
   static function on_disable() {
+    $module = module::get('develop');
+    $module->disable();
   }
 
 }}

@@ -16,6 +16,8 @@ namespace effcore\modules\menu {
   }
 
   static function on_enable() {
+    $module = module::get('menu');
+    $module->enable();
   }
 
   static function on_start() {

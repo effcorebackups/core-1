@@ -8,11 +8,9 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\field;
           use \effcore\instance;
-          use \effcore\message;
           use \effcore\module;
           use \effcore\session;
           use \effcore\storage;
-          use \effcore\translation;
           use \effcore\user;
           abstract class events_module {
 
@@ -30,6 +28,8 @@ namespace effcore\modules\user {
   }
 
   static function on_enable() {
+    $module = module::get('user');
+    $module->enable();
   }
 
   static function on_start() {

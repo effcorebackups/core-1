@@ -15,12 +15,18 @@ namespace effcore\modules\captcha {
   }
 
   static function on_uninstall() {
+    $module = module::get('captcha');
+    $module->uninstall();
   }
 
   static function on_enable() {
+    $module = module::get('captcha');
+    $module->enable();
   }
 
   static function on_disable() {
+    $module = module::get('captcha');
+    $module->disable();
   }
 
   static function on_cron() {

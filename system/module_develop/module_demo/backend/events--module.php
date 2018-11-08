@@ -14,12 +14,18 @@ namespace effcore\modules\demo {
   }
 
   static function on_uninstall() {
+    $module = module::get('demo');
+    $module->uninstall();
   }
 
   static function on_enable() {
+    $module = module::get('demo');
+    $module->enable();
   }
 
   static function on_disable() {
+    $module = module::get('demo');
+    $module->disable();
   }
 
   static function on_start() {

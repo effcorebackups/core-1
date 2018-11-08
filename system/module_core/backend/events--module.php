@@ -14,6 +14,8 @@ namespace effcore\modules\core {
   }
 
   static function on_enable() {
+    $module = module::get('core');
+    $module->enable();
   }
 
 }}

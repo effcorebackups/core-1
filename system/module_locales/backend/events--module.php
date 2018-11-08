@@ -14,6 +14,8 @@ namespace effcore\modules\locales {
   }
 
   static function on_enable() {
+    $module = module::get('locales');
+    $module->enable();
   }
 
 }}
