@@ -18,8 +18,8 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $modules = module::all_get();
-    $enabled = module::enabled_by_settings_get() +
-               module::embed_get();
+    $boot_installed = module::installed_by_boot_get();
+    $boot_enabled   = module::enabled_by_boot_get();
     core::array_sort_by_property($modules, 'title');
     foreach ($modules as $c_module) {
       $c_info = new markup('x-module-info');
@@ -27,7 +27,7 @@ namespace effcore\modules\core {
       $c_switcher->build();
       $c_switcher->name_set('is_enabled[]');
       $c_switcher->value_set($c_module->id);
-      $c_switcher->checked_set(isset($enabled[$c_module->id]));
+      $c_switcher->checked_set(isset($boot_enabled[$c_module->id]));
       $c_switcher->disabled_set($c_module instanceof module ? false : true);
       $c_info->child_insert($c_switcher, 'switcher');
       $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [], $c_module->title)]),                                                                           'title');
@@ -45,17 +45,18 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
+        $boot_installed = [];
+        $boot_enabled   = [];
         $modules = module::all_get();
-        $enabled = [];
+        $embed = module::embed_get();
         foreach ($modules as $c_module) {
-          if ($c_module instanceof module) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()) {
-              $enabled[$c_module->id] = $c_module->id;
-            # event::start('on_module_install', $c_module->id);
-            }
+          if (isset($embed[$c_module->id]) || $items['#is_enabled:'.$c_module->id]->checked_get()) {
+            $boot_installed[$c_module->id] = $c_module->id;
+            $boot_enabled  [$c_module->id] = $c_module->id;
           }
         }
-        storage::get('files')->changes_insert('core', 'update', 'settings/core/modules_enabled', $enabled);
+        module::installed_by_boot_set($boot_installed);
+        module::enabled_by_boot_set($boot_enabled);
         break;
       case 'refresh':
         break;

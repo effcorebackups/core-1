@@ -49,9 +49,15 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function enabled_by_settings_get() {
-    $setting = storage::get('files')->select('settings/core/modules_enabled');
-    return array_intersect_key(static::all_get(), $setting);
+  static function embed_get() {
+    $result = [];
+    foreach (static::all_get() as $c_module) {
+      if ($c_module instanceof module_embed &&
+         !$c_module instanceof module) {
+        $result[$c_module->id] = $c_module;
+      }
+    }
+    return $result;
   }
 
   static function enabled_by_default_get() {
@@ -64,15 +70,26 @@ namespace effcore {
     return $result;
   }
 
-  static function embed_get() {
-    $result = [];
-    foreach (static::all_get() as $c_module) {
-      if ($c_module instanceof module_embed &&
-         !$c_module instanceof module) {
-        $result[$c_module->id] = $c_module;
-      }
-    }
-    return $result;
+  static function enabled_by_boot_get() {
+    $boot = data::select('boot') ?: new \stdClass;
+    return array_intersect_key(static::all_get(), $boot->modules_enabled);
+  }
+
+  static function enabled_by_boot_set($enabled) {
+    $boot = data::select('boot') ?: new \stdClass;
+    $boot->modules_enabled = $enabled;
+    data::update('boot', $boot, '', ['build' => core::datetime_get()]);
+  }
+
+  static function installed_by_boot_get() {
+    $boot = data::select('boot') ?: new \stdClass;
+    return array_intersect_key(static::all_get(), $boot->modules_installed);
+  }
+
+  static function installed_by_boot_set($installed) {
+    $boot = data::select('boot') ?: new \stdClass;
+    $boot->modules_installed = $installed;
+    data::update('boot', $boot, '', ['build' => core::datetime_get()]);
   }
 
 }}
