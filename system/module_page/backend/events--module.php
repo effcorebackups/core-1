@@ -15,6 +15,9 @@ namespace effcore\modules\page {
     $module->install();
   }
 
+  static function on_enable() {
+  }
+
   static function on_start() {
     return page::find_and_render();
   }

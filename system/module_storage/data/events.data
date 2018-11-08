@@ -1,4 +1,12 @@
 events
+  on_module_install
+  - storage|event
+      for: storage
+      handler: \effcore\modules\storage\events_module::on_install
+  on_module_enable
+  - storage|event
+      for: storage
+      handler: \effcore\modules\storage\events_module::on_enable
   on_storage_init_before
   - pdo|event
       for: pdo

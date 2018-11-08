@@ -1,13 +1,17 @@
 events
+  on_module_install
+  - user|event
+      for: user
+      handler: \effcore\modules\user\events_module::on_install
+  on_module_enable
+  - user|event
+      for: user
+      handler: \effcore\modules\user\events_module::on_enable
   on_module_start
   - user|event
       for: user
       handler: \effcore\modules\user\events_module::on_start
       weight: 50
-  on_module_install
-  - user|event
-      for: user
-      handler: \effcore\modules\user\events_module::on_install
   on_form_init
   - login|event
       for: login

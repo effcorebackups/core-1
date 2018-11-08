@@ -3,6 +3,10 @@ events
   - page|event
       for: page
       handler: \effcore\modules\page\events_module::on_install
+  on_module_enable
+  - page|event
+      for: page
+      handler: \effcore\modules\page\events_module::on_enable
   on_module_start
   - page|event
       for: page

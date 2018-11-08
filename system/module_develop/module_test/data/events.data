@@ -1,4 +1,20 @@
 events
+  on_module_install
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_module::on_install
+  on_module_uninstall
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_module::on_uninstall
+  on_module_enable
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_module::on_enable
+  on_module_disable
+  - test|event
+      for: test
+      handler: \effcore\modules\test\events_module::on_disable
   on_form_init
   - test|event
       for: test

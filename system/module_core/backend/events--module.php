@@ -13,4 +13,7 @@ namespace effcore\modules\core {
     $module->install();
   }
 
+  static function on_enable() {
+  }
+
 }}

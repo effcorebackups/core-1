@@ -29,6 +29,9 @@ namespace effcore\modules\user {
     }
   }
 
+  static function on_enable() {
+  }
+
   static function on_start() {
     $session = session::select();
     if ($session &&

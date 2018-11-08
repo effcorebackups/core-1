@@ -1,4 +1,12 @@
 events
+  on_module_install
+  - locales|event
+      for: locales
+      handler: \effcore\modules\locales\events_module::on_install
+  on_module_enable
+  - locales|event
+      for: locales
+      handler: \effcore\modules\locales\events_module::on_enable
   on_form_init
   - locales|event
       for: locales

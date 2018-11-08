@@ -13,6 +13,15 @@ namespace effcore\modules\demo {
     $module->install();
   }
 
+  static function on_uninstall() {
+  }
+
+  static function on_enable() {
+  }
+
+  static function on_disable() {
+  }
+
   static function on_start() {
   }
 

@@ -15,6 +15,9 @@ namespace effcore\modules\menu {
     $module->install();
   }
 
+  static function on_enable() {
+  }
+
   static function on_start() {
     tree::init();
     tree::build();

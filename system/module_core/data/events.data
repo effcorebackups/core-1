@@ -3,6 +3,10 @@ events
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_install
+  on_module_enable
+  - core|event
+      for: core
+      handler: \effcore\modules\core\events_module::on_enable
   on_form_init
   - install|event
       for: install
