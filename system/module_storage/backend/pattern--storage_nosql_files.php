@@ -27,7 +27,7 @@ namespace effcore {
   }
 
   function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
-  # save new dynamic changes
+  # insert new dynamic changes
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
     data::update('changes', $changes_d, '', ['build' => core::datetime_get()]);
@@ -38,8 +38,18 @@ namespace effcore {
     }
   }
 
-  function changes_delete($module_id, $action, $dpath) {
-    # @todo: make functionality
+  function changes_delete($module_id, $action, $dpath, $rebuild = true) {
+  # delete old dynamic changes
+    $changes_d = data::select('changes') ?: [];
+    if (isset($changes_d[$module_id]->{$action}[$dpath]))                                           unset($changes_d[$module_id]->{$action}[$dpath]);
+    if (isset($changes_d[$module_id]->{$action}) && (array)$changes_d[$module_id]->{$action} == []) unset($changes_d[$module_id]->{$action});
+    if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            == []) unset($changes_d[$module_id]);
+    data::update('changes', $changes_d, '', ['build' => core::datetime_get()]);
+  # prevent opcache work
+    static::$changes_dynamic['changes'] = $changes_d;
+    if ($rebuild) {
+      static::data_cache_rebuild();
+    }
   }
 
   ###########################
