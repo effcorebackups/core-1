@@ -9,6 +9,12 @@ namespace effcore {
 
   public $enabled = 'no';
 
+  function disable() {
+    $enabled = static::enabled_by_boot_get();
+    unset($enabled[$this->id]);
+    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+  }
+
   function uninstall() {
   # delete instances
     foreach (instance::all_by_module_get($this->id) as $c_instance) {
@@ -21,6 +27,11 @@ namespace effcore {
            message::insert(translation::get('Entity %%_name was uninstalled.',     ['name' => $c_entity->name]));
       else message::insert(translation::get('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
     }
+  # delete from boot
+    $installed = static::installed_by_boot_get();
+    unset($installed[$this->id]);
+    static::installed_by_boot_set(core::array_kmap(array_keys($installed)));
+    $this->disable();
   }
 
 }}

@@ -14,6 +14,15 @@ namespace effcore {
   public $path;
   public $enabled = 'yes';
 
+  function enable() {
+    $enabled = static::enabled_by_boot_get();
+    $enabled[$this->id] = $this->id;
+    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+    if (!$this->is_installed()) {
+      $this->install();
+    }
+  }
+
   function install() {
   # insert entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
@@ -27,18 +36,15 @@ namespace effcore {
            message::insert(translation::get('Instances of entity %%_name was added.',     ['name' => $c_instance->entity_name]));
       else message::insert(translation::get('Instances of entity %%_name was not added!', ['name' => $c_instance->entity_name]), 'error');
     }
+  # insert to boot
+    $installed = static::installed_by_boot_get();
+    $installed[$this->id] = $this->id;
+    static::installed_by_boot_set(core::array_kmap(array_keys($installed)));
   }
 
-  function enabled() {
-    $enabled = static::enabled_by_boot_get();
-    $enabled[$this->id] = $this->id;
-    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
-  }
-
-  function disabled() {
-    $enabled = static::enabled_by_boot_get();
-    unset($enabled[$this->id]);
-    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+  function is_installed() {
+    $installed = static::installed_by_boot_get();
+    return isset($installed[$this->id]);
   }
 
   ###########################
