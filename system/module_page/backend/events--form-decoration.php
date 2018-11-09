@@ -23,7 +23,7 @@ namespace effcore\modules\page {
         message::insert('The changes was saved.');
         break;
       case 'restore':
-        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_id');
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_id', false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_bg_id');
         message::insert('The changes was deleted.');
         break;

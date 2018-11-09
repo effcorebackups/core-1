@@ -28,4 +28,3 @@ forms
         title: restore
         attributes
         - value: restore
-        - =: disabled
