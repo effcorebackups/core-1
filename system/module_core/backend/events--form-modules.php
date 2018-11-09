@@ -7,6 +7,7 @@
 namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\event;
+          use \effcore\storage;
           use \effcore\field_switcher;
           use \effcore\locale;
           use \effcore\markup;
@@ -55,6 +56,7 @@ namespace effcore\modules\core {
         }
         break;
       case 'refresh':
+        storage::get('files')->data_cache_rebuild(true);
         break;
     }
   }

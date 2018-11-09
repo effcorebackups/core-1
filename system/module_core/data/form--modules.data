@@ -15,4 +15,3 @@ forms
         title: refresh
         attributes
         - value: refresh
-        - disabled: disabled

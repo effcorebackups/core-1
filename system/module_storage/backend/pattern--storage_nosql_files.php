@@ -71,14 +71,10 @@ namespace effcore {
     else        static::data_cache_rebuild();
   }
 
-  ##############################
-  ### functionality for data ###
-  ##############################
-
-  static function data_cache_rebuild() {
+  static function data_cache_rebuild($reset = false) {
   # init original data
     $data_orig = cache::select('data_original');
-    if (!$data_orig) {
+    if (!$data_orig || $reset) {
       static::$data_orig = $data_orig = static::data_static_find();
       cache::update('data_original', $data_orig, '', ['build' => core::datetime_get()]);
     }
@@ -132,7 +128,8 @@ namespace effcore {
     $result = [];
     $parsed = [];
     $modules_path = [];
-    $files = file::select_recursive(dir_system, '%^.*\\.data$%');
+    $files = file::select_recursive(dir_system, '%^.*\\.data$%') +
+             file::select_recursive(dir_dynamic.'modules/', '%^.*\\.data$%');
     arsort($files);
   # parse each *.data file and collect modules path
     foreach ($files as $c_file) {
@@ -167,10 +164,6 @@ namespace effcore {
     }
     return $result;
   }
-
-  ###############
-  ### parsing ###
-  ###############
 
   static function data_to_dataline($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
     $result = [];
