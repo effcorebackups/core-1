@@ -5,6 +5,8 @@
   ##################################################################
 
 namespace effcore {
+          use \RecursiveDirectoryIterator as rd_iterator;
+          use \RecursiveIteratorIterator as ri_iterator;
           class storage_nosql_files
           implements has_external_cache {
 
@@ -69,6 +71,15 @@ namespace effcore {
     $cache = cache::select('data--'.$catalog_name);
     if ($cache) static::$data[$catalog_name] = $cache;
     else        static::data_cache_rebuild();
+  }
+
+  static function data_cache_cleaning() {
+    foreach (new ri_iterator(
+             new rd_iterator(cache::directory, file::scan_dir_mode)) as $c_file_path => $null) {
+      if ($c_file_path != cache::directory.'readme.mark') {
+        unlink($c_file_path);
+      }
+    }
   }
 
   static function data_cache_rebuild($reset = false) {

@@ -175,13 +175,14 @@ namespace effcore {
   protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
   protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
 
-  static function validation_cache_clean($limit = 5000) {
+  static function validation_cache_cleaning($limit = 5000) {
     if (file_exists(temporary::directory.'validation/')) {
       $counter = 0;
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_dir_mode) as $c_dir_path => $c_dir_info) {
         if ($c_dir_info->isDir() &&
             core::validate_date($c_dir_info->getFilename()) &&
                                 $c_dir_info->getFilename() < core::date_get()) {
+        # try to recursively delete all files in directory
           foreach (new ri_iterator(
                    new rd_iterator($c_dir_path, file::scan_dir_mode)) as $c_file_path => $null) {
             if ($counter < $limit) {
