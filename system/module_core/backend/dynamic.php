@@ -73,7 +73,7 @@ namespace effcore {
   static function message_delete_show($file) {
     message::insert(
       'Can not delete file "'.$file->file_get().'" in the directory "'.$file->dirs_relative_get().'"!'.br.
-      'Check file (if exists) and directory permissions.', 'error'
+      'Check directory permissions.', 'error'
     );
   }
 
