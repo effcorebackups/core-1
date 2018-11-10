@@ -74,10 +74,17 @@ namespace effcore {
   }
 
   static function data_cache_cleaning() {
-    foreach (new ri_iterator(
-             new rd_iterator(cache::directory, file::scan_dir_mode)) as $c_file_path => $null) {
-      if ($c_file_path != cache::directory.'readme.mark') {
-        unlink($c_file_path);
+    foreach (file::select_recursive(cache::directory, '', true) as $c_path => $c_object) {
+      if ($c_path != cache::directory.'readme.mark') {
+        if ($c_object instanceof file) $c_result = @unlink($c_path);
+        else                                       @rmdir ($c_path);
+        if (!$c_result) {
+          $c_file = new file($c_path);
+          message::insert(
+            'Can not delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_relative_get().'"!'.br.
+            'Check file (if exists) and directory permissions.', 'error'
+          );
+        }
       }
     }
   }

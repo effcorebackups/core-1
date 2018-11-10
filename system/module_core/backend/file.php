@@ -54,11 +54,11 @@ namespace effcore {
   # 1. if the first character in the path is '/' - it's a full path, оtherwise - relative path
   # 2. if the last character in the path is '/' - it's a directory, оtherwise - file
   # 3. path components like '../' should be ignored!
-  # 4. path components like './' should be ignored!
-  # 5. the Windows file path should be convert to UNIX format!
+  # 4. path components like  './' should be ignored!
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
-  const scan_dir_mode = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
+  const scan_mode     = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
+  const scan_with_dir = ri_iterator::SELF_FIRST;
 
   public $dirs;
   public $name;
@@ -214,14 +214,18 @@ namespace effcore {
                  @mkdir($dirs, 0777, true) : true;
   }
 
-  static function select_recursive($path, $filter = '') {
+  static function select_recursive($path, $filter = '', $with_dirs = false) {
     try {
       $result = [];
-      foreach (new ri_iterator(new rd_iterator($path, static::scan_dir_mode)) as $c_path => $null) {
+      $scan = $with_dirs ? new ri_iterator(new rd_iterator($path, static::scan_mode), static::scan_with_dir) :
+                           new ri_iterator(new rd_iterator($path, static::scan_mode));
+      foreach ($scan as $c_path => $spl_file_info) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
-          $result[$c_path] = new static($c_path);
+          if     ($spl_file_info->isFile()) $result[$c_path] = new static($c_path);
+          elseif ($spl_file_info->isDir ()) $result[$c_path] = $c_path;
         }
       }
+      krsort($result);
       return $result;
     } catch (\UnexpectedValueException $e) {
       return [];
