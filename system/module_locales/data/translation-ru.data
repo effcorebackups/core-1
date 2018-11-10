@@ -28,7 +28,7 @@ translations
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Can not write file "%%_file" to the directory "%%_directory"!: Не удалось записать файл "%%_file" в каталог "%%_directory"!
+    - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
     - Cancel: Отмена
     - cancel: отмена
     - Canvas: Холст

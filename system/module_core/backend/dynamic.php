@@ -39,7 +39,7 @@ namespace effcore {
            core::data_to_codeline($data, '  '.core::class_name_short_get(static::class).'::$data[\''.$name.'\']').nl.
         '}');
       if (!$file->save()) {
-        static::message_show($file);
+        static::message_insert_show($file);
         return false;
       }
       if (function_exists('opcache_invalidate')) {
@@ -47,7 +47,7 @@ namespace effcore {
       }
       return true;
     } else {
-      static::message_show($file);
+      static::message_insert_show($file);
       return false;
     }
   }
@@ -57,13 +57,22 @@ namespace effcore {
         unset(static::$data[$name]);
     $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
     if ($file->is_exist()) {
-      return unlink($file->path_get());
+      $result = @unlink($file->path_get());
+      if   (!$result) static::message_delete_show($file);
+      return $result;
     }
   }
 
-  static function message_show($file) {
+  static function message_insert_show($file) {
     message::insert(
-      'Can not write file "'.$file->file_get().'" to the directory "'.$file->dirs_relative_get().'"!'.br.
+      'Can not insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_relative_get().'"!'.br.
+      'Check file (if exists) and directory permissions.', 'error'
+    );
+  }
+
+  static function message_delete_show($file) {
+    message::insert(
+      'Can not delete file "'.$file->file_get().'" in the directory "'.$file->dirs_relative_get().'"!'.br.
       'Check file (if exists) and directory permissions.', 'error'
     );
   }

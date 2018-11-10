@@ -45,7 +45,7 @@ namespace effcore {
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {
           message::insert(
-            translation::get('Can not write file "%%_file" to the directory "%%_directory"!', ['file' => $file->file_get(), 'directory' => $file->dirs_relative_get()]).br.
+            translation::get('Can not insert or update file "%%_file" in the directory "%%_directory"!', ['file' => $file->file_get(), 'directory' => $file->dirs_relative_get()]).br.
             translation::get('Check file (if exists) and directory permissions.'), 'error'
           );
         }
