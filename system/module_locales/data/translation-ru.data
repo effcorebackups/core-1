@@ -36,6 +36,7 @@ translations
     - CAPTCHAs: Защитные коды (CAPTCHAs)
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - Characters: Символы
+    - Check directory permissions.: Проверьте разрешения каталога.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
