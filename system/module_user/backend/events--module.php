@@ -40,4 +40,8 @@ namespace effcore\modules\user {
     }
   }
 
+  static function on_cron() {
+    session::cleaning();
+  }
+
 }}

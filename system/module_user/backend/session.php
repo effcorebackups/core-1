@@ -49,6 +49,12 @@ namespace effcore {
     static::id_regenerate('a');
   }
 
+  static function cleaning() {
+    $storage = $s = storage::get(entity::get('session')->storage_name);
+    $catalog_name =              entity::get('session')->catalog_name;
+    $storage->query('DELETE', 'FROM', $s->tables($catalog_name), 'WHERE', $s->condition('expired', core::datetime_get(''), '<'));
+  }
+
   ####################################
   ### functionality for session_id ###
   ####################################

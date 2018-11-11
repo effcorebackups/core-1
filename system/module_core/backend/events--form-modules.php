@@ -38,9 +38,6 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_validate($form, $items) {
-  }
-
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':

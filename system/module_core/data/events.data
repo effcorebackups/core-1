@@ -18,9 +18,6 @@ events
   - install|event
       for: install
       handler: \effcore\modules\core\events_form_install::on_validate
-  - modules|event
-      for: modules
-      handler: \effcore\modules\core\events_form_modules::on_validate
   on_form_submit
   - install|event
       for: install
