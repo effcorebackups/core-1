@@ -178,22 +178,23 @@ namespace effcore {
   static function validation_cache_cleaning($limit = 5000) {
     if (file_exists(temporary::directory.'validation/')) {
       $counter = 0;
-      foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_dir_info) {
-        if ($c_dir_info->isDir() &&
-            core::validate_date($c_dir_info->getFilename()) &&
-                                $c_dir_info->getFilename() < core::date_get()) {
-        # try to recursively delete all files in directory
-          foreach (new ri_iterator(
-                   new rd_iterator($c_dir_path, file::scan_mode)) as $c_file_path => $null) {
-            if ($counter < $limit) {
-              unlink($c_file_path);
-              $counter++;
-            } else {
-              return;
+      foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_spl_dir_info) {
+        if ($c_spl_dir_info->isDir()) {
+          if (core::validate_date($c_spl_dir_info->getFilename()) &&
+                                  $c_spl_dir_info->getFilename() < core::date_get()) {
+          # try to recursively delete all files in directory
+            foreach (new ri_iterator(
+                     new rd_iterator($c_dir_path, file::scan_mode)) as $c_file_path => $c_spl_file_info) {
+              if ($counter < $limit) {
+                @unlink($c_file_path);
+                $counter++;
+              } else {
+                return;
+              }
             }
+          # try to delete empty directories
+            @rmdir($c_dir_path);
           }
-        # try to delete empty directories
-          rmdir($c_dir_path);
         }
       }
     }
