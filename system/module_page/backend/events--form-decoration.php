@@ -26,6 +26,7 @@ namespace effcore\modules\page {
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_id', false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_bg_id');
         message::insert('The changes was deleted.');
+        static::on_init($form, $items);
         break;
     }
   }
