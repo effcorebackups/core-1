@@ -98,13 +98,13 @@ namespace effcore {
   static function enabled_by_boot_set($enabled) {
     $boot = data::select('boot') ?: new \stdClass;
     $boot->modules_enabled = $enabled;
-    data::update('boot', $boot, '', ['build' => core::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 
   static function installed_by_boot_set($installed) {
     $boot = data::select('boot') ?: new \stdClass;
     $boot->modules_installed = $installed;
-    data::update('boot', $boot, '', ['build' => core::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 
 }}

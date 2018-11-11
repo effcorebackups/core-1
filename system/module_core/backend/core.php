@@ -75,7 +75,7 @@ namespace effcore {
         }
       }
       ksort($result);
-      cache::update('structures', $result, '', ['build' => static::datetime_get()]);
+      cache::update('structures', $result, '', ['build_date' => static::datetime_get()]);
       return $result;
     }
   }
