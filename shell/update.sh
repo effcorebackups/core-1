@@ -5,7 +5,7 @@ git -C ../ reset --hard
 git -C ../ pull
 
 while true; do
-  read -p 'Apply stash?: ' answer
+  read -p 'Apply stash? [y/n]: ' answer
   case $answer in
     y ) git -C ../ stash apply
         break;;
