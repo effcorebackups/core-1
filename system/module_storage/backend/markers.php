@@ -22,6 +22,6 @@ namespace effcore {
 }
 
 namespace effcore {
-# indicates that the __post_parse() should be called after parse the data
-  interface has_post_parse {}
+# indicates that the _postparse() should be called after parse the data
+  interface has_postparse {}
 }

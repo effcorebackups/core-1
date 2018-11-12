@@ -6,7 +6,7 @@
 
 namespace effcore {
           class entity
-          implements has_external_cache, has_post_parse {
+          implements has_external_cache, has_postparse {
 
   public $name;
   public $storage_name;
@@ -20,7 +20,7 @@ namespace effcore {
   public $constraints = [];
   public $indexes = [];
 
-  function __post_parse() {
+  function _postparse() {
   # insert field 'weight' and index for it
     if ($this->ws_weight) {
       $this->fields['weight'] = new \stdClass;
