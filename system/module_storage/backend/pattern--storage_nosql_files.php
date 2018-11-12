@@ -147,7 +147,7 @@ namespace effcore {
     $bundles_path = [];
     $modules_path = [];
     $files = file::select_recursive(dir_system,  '%^.*\\.data$%') +
-             file::select_recursive(dir_modules, '%^.*\\.data$%');
+             file::select_recursive(dir_modules, '%^.*/modules/.*/.*\\.data$%');
   # parse each *.data
     foreach ($files as $c_file) {
       $c_data = static::text_to_data($c_file->load(), $c_file);

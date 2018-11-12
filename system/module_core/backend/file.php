@@ -209,9 +209,9 @@ namespace effcore {
     return static::$cache_file_types;
   }
 
-  static function mkdir_if_not_exist($dirs) {
+  static function mkdir_if_not_exist($dirs, $mode = 0777) {
     return !file_exists($dirs) ?
-                 @mkdir($dirs, 0777, true) : true;
+                 @mkdir($dirs, $mode, true) : true;
   }
 
   static function select_recursive($path, $filter = '', $with_dirs = false) {
