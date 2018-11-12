@@ -22,6 +22,7 @@ rm $bundle_name
   find dynamic/logs    -maxdepth 1 -type f      -name 'readme.mark'    & \
   find dynamic/tmp     -maxdepth 1 -type f      -name 'readme.mark'    & \
   find modules         -maxdepth 1 -type f      -name 'readme.mark'    & \
+  find readme                      -type f -not -name '.*'             & \
   find shell                       -type f -not -name '.*'             & \
   find system                      -type f -not -name '.*';              \
 } | zip -9 $bundle_name -@
