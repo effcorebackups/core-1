@@ -225,9 +225,9 @@ namespace effcore {
   static function text_to_data($data, $file = null) {
     $result = new \stdClass;
     $p = [-1 => &$result];
-    $post_constructor_objects = [];
-    $postinit_objects         = [];
-    $postparse_objects        = [];
+    $postconstructor_objects = [];
+    $postinit_objects        = [];
+    $postparse_objects       = [];
     $line_number = 0;
     foreach (explode(nl, preg_replace('%\n[!]+%', '', $data)) as $c_line) {
       $line_number++;
@@ -255,15 +255,15 @@ namespace effcore {
           } else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
-            $c_is_postinit         = $c_reflection->implementsInterface('\\effcore\\has_postinit');
-            $c_is_postparse        = $c_reflection->implementsInterface('\\effcore\\has_postparse');
-            if ($c_is_post_constructor)
+            $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
+            $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
+            $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
+            if ($c_is_postconstructor)
                  $c_value = core::class_instance_new_get($c_class_name);
             else $c_value = core::class_instance_new_get($c_class_name, [], true);
-            if ($c_is_post_constructor) $post_constructor_objects[] = $c_value;
-            if ($c_is_postinit)         $postinit_objects[]         = $c_value;
-            if ($c_is_postparse)        $postparse_objects[]        = $c_value;
+            if ($c_is_postconstructor) $postconstructor_objects[] = $c_value;
+            if ($c_is_postinit)        $postinit_objects[]        = $c_value;
+            if ($c_is_postparse)       $postparse_objects[]       = $c_value;
           }
         }
       # add new item to tree
@@ -282,9 +282,9 @@ namespace effcore {
       }
     }
   # call the interface dependent functions
-    foreach ($post_constructor_objects as $c_object) $c_object->__construct();
-    foreach ($postinit_objects         as $c_object) $c_object->_postinit();
-    foreach ($postparse_objects        as $c_object) $c_object->_postparse();
+    foreach ($postconstructor_objects as $c_object) $c_object->__construct();
+    foreach ($postinit_objects        as $c_object) $c_object->_postinit();
+    foreach ($postparse_objects       as $c_object) $c_object->_postparse();
     return $result;
   }
 

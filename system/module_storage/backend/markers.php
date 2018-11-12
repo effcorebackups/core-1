@@ -13,7 +13,7 @@ namespace effcore {
 
 namespace effcore {
 # indicates that the __construct() should be called after the data load
-  interface has_post_constructor {}
+  interface has_postconstructor {}
 }
 
 namespace effcore {
