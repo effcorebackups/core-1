@@ -144,21 +144,27 @@ namespace effcore {
   static function data_static_find() {
     $result = [];
     $parsed = [];
+    $bundles_path = [];
     $modules_path = [];
     $files = file::select_recursive(dir_system,  '%^.*\\.data$%') +
              file::select_recursive(dir_modules, '%^.*\\.data$%');
-  # parse each *.data file and collect modules path
+  # parse each *.data
     foreach ($files as $c_file) {
-      $c_parsed = static::text_to_data($c_file->load(), $c_file);
-      $parsed[$c_file->path_relative_get()] = $c_parsed;
-      if ($c_file->file_get() == 'module.data' && isset($c_parsed->module->id)) {
-        $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
-      }
+      $c_data = static::text_to_data($c_file->load(), $c_file);
+      $c_path_relative = $c_file->path_relative_get();
+      $parsed[$c_path_relative] = new \stdClass();
+      $parsed[$c_path_relative]->file = $c_file;
+      $parsed[$c_path_relative]->data = $c_data;
+    }
+  # collect modules and bundles paths
+    foreach ($parsed as $c_file_path => $c_info) {
+      if ($c_info->file->name == 'bundle') $bundles_path[$c_info->data->bundle->id] = $c_info->file->dirs_relative_get();
+      if ($c_info->file->name == 'module') $modules_path[$c_info->data->module->id] = $c_info->file->dirs_relative_get();
     }
   # build the result
-    foreach ($parsed as $c_file_path => $c_parsed) {
+    foreach ($parsed as $c_file_path => $c_info) {
     # define the scope (module_id for each *.data file)
-      $c_scope = 'system';
+      $c_scope = null;
       foreach ($modules_path as $c_module_id => $c_module_path) {
         if (strpos($c_file_path, $c_module_path) === 0) {
           $c_scope = $c_module_id;
@@ -166,15 +172,16 @@ namespace effcore {
         }
       }
     # fill the $result
-      foreach ($c_parsed as $c_type => $c_data) {
-        if (is_object($c_data)) {
-          if ($c_type == 'module') $c_data->path = $modules_path[$c_scope];
-          $result[$c_type][$c_scope] = $c_data;
-        }
-        if (is_array($c_data)) {
-          if (!isset($result[$c_type][$c_scope]))
-                     $result[$c_type][$c_scope] = [];
-          $result[$c_type][$c_scope] += $c_data;
+      foreach ($c_info->data as $c_type => $c_data) {
+        if ($c_type == 'bundle') {$c_scope = $c_data->id; $c_data->path = $bundles_path[$c_scope];};
+        if ($c_type == 'module') {$c_scope = $c_data->id; $c_data->path = $modules_path[$c_scope];};
+        if ($c_scope) {
+          if (is_object($c_data)) $result[$c_type][$c_scope] = $c_data;
+          elseif (is_array($c_data)) {
+            if (!isset($result[$c_type][$c_scope]))
+                       $result[$c_type][$c_scope] = [];
+            $result[$c_type][$c_scope] += $c_data;
+          }
         }
       }
     }
