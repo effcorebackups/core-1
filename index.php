@@ -12,5 +12,6 @@
     define('effcore\\dir_root',    $www_root.'/');
     define('effcore\\dir_dynamic', $www_root.'/dynamic/');
     define('effcore\\dir_system',  $www_root.'/system/');
+    define('effcore\\dir_modules', $www_root.'/modules/');
     require_once('system/boot.php');
   }
