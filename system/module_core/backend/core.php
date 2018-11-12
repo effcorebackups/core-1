@@ -29,7 +29,8 @@ namespace effcore {
       return $cache;
     } else {
       $result = [];
-      $php_files = file::select_recursive(dir_system, '%^.*\\.php$%');
+      $php_files = file::select_recursive(dir_system,  '%^.*\\.php$%') +
+                   file::select_recursive(dir_modules, '%^.*/modules/.*/.*\\.php$%');
       foreach ($php_files as $c_file) {
         $c_matches = [];
         preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
