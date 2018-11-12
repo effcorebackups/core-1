@@ -12,7 +12,7 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module;
           use \effcore\page;
-          use \effcore\storage;
+          use \effcore\storage_nosql_files;
           use \effcore\url;
           abstract class events_form_modules {
 
@@ -55,7 +55,7 @@ namespace effcore\modules\core {
         }
         break;
       case 'refresh':
-        storage::get('files')::data_cache_cleaning();
+        storage_nosql_files::data_cache_cleaning();
         url::go(page::current_get()->args_get('base'));
         break;
     }
