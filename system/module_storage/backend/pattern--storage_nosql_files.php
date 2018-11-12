@@ -173,8 +173,8 @@ namespace effcore {
       }
     # fill the $result
       foreach ($c_info->data as $c_type => $c_data) {
-        if ($c_type == 'bundle') {$c_scope = $c_data->id; $c_data->path = $bundles_path[$c_scope];};
-        if ($c_type == 'module') {$c_scope = $c_data->id; $c_data->path = $modules_path[$c_scope];};
+        if ($c_type == 'bundle' && isset($bundles_path[$c_data->id])) {$c_scope = $c_data->id; $c_data->path = $bundles_path[$c_data->id];};
+        if ($c_type == 'module' && isset($modules_path[$c_data->id])) {$c_scope = $c_data->id; $c_data->path = $modules_path[$c_data->id];};
         if ($c_scope) {
           if (is_object($c_data)) $result[$c_type][$c_scope] = $c_data;
           elseif (is_array($c_data)) {
