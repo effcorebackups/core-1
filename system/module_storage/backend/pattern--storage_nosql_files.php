@@ -5,8 +5,6 @@
   ##################################################################
 
 namespace effcore {
-          use \RecursiveDirectoryIterator as rd_iterator;
-          use \RecursiveIteratorIterator as ri_iterator;
           class storage_nosql_files
           implements has_external_cache {
 
