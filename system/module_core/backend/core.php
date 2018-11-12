@@ -176,7 +176,7 @@ namespace effcore {
         $c_reflection = new \ReflectionClass($c_class_name);
         $c_defs                = $c_reflection->getDefaultProperties();
         $c_is_post_constructor = $c_reflection->implementsInterface('\\effcore\\has_post_constructor');
-        $c_is_post_init        = $c_reflection->implementsInterface('\\effcore\\has_post_init');
+        $c_is_postinit         = $c_reflection->implementsInterface('\\effcore\\has_postinit');
         if ($c_is_post_constructor)
              $result = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
@@ -185,7 +185,7 @@ namespace effcore {
           $result.= static::data_to_codeline($c_value, $prefix.'->'.$c_prop);
         }
         if ($c_is_post_constructor) $result.= $prefix.'->__construct();'.nl;
-        if ($c_is_post_init)        $result.= $prefix.'->__post_init();'.nl;
+        if ($c_is_postinit)         $result.= $prefix.  '->_postinit();'.nl;
         break;
       default:
         $result.= $prefix.' = '.static::data_to_string($data).';'.nl;

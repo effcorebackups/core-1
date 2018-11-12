@@ -17,8 +17,8 @@ namespace effcore {
 }
 
 namespace effcore {
-# indicates that the __post_init() should be called after the data load
-  interface has_post_init {}
+# indicates that the _postinit() should be called after the data load
+  interface has_postinit {}
 }
 
 namespace effcore {
