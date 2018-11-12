@@ -147,10 +147,9 @@ namespace effcore {
     $modules_path = [];
     $files = file::select_recursive(dir_system,             '%^.*\\.data$%') +
              file::select_recursive(dir_dynamic.'modules/', '%^.*\\.data$%');
-    arsort($files);
   # parse each *.data file and collect modules path
     foreach ($files as $c_file) {
-      $c_parsed = static::dataline_to_data($c_file->load(), $c_file);
+      $c_parsed = static::text_to_data($c_file->load(), $c_file);
       $parsed[$c_file->path_relative_get()] = $c_parsed;
       if ($c_file->file_get() == 'module.data' && isset($c_parsed->module->id)) {
         $modules_path[$c_parsed->module->id] = $c_file->dirs_relative_get();
@@ -182,7 +181,7 @@ namespace effcore {
     return $result;
   }
 
-  static function data_to_dataline($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
+  static function data_to_text($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
     $result = [];
     if ($entity_name) {
       $result[] = str_repeat('  ', $depth-1).($depth ? $entity_prefix : '').$entity_name;
@@ -190,8 +189,8 @@ namespace effcore {
     foreach ($data as $c_key => $c_value) {
       if (is_array ($c_value) && !count($c_value))           continue;
       if (is_object($c_value) && !get_object_vars($c_value)) continue;
-      if (is_array ($c_value))     $result[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_object($c_value)) $result[] = static::data_to_dataline($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      if (is_array ($c_value))     $result[] = static::data_to_text($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_object($c_value)) $result[] = static::data_to_text($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
       elseif ($c_value === null)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
       elseif ($c_value === false)  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
       elseif ($c_value === true)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
@@ -216,7 +215,7 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                      │
   # └─────────────────────╨───────────────────────────────────────────────────────┘
 
-  static function dataline_to_data($data, $file = null) {
+  static function text_to_data($data, $file = null) {
     $result = new \stdClass;
     $p = [-1 => &$result];
     $post_constructor_objects = [];
@@ -270,7 +269,7 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        $messages = ['Function: dataline_to_data', 'Wrong syntax in data at line: '.$line_number];
+        $messages = ['Function: text_to_data', 'Wrong syntax in data at line: '.$line_number];
         if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
         message::insert(implode(br, $messages), 'error');
       }
