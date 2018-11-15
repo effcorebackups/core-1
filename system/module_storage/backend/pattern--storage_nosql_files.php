@@ -56,7 +56,6 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static public $data_orig;
   static public $data = [];
   static public $changes_dynamic;
 
@@ -91,7 +90,7 @@ namespace effcore {
   # init original data
     $data_orig = cache::select('data_original');
     if (!$data_orig || $reset) {
-      static::$data_orig = $data_orig = static::data_static_find();
+      $data_orig = static::data_static_find();
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -101,7 +100,23 @@ namespace effcore {
     $data = core::array_clone_deep($data_orig);
     static::data_changes_apply($changes_d, $data);
     static::data_changes_apply($changes_s, $data);
+  # remove unused parts
     unset($data['changes']);
+    $boot = data::select('boot') ?: new \stdClass;
+    $boot_enabled = $boot->modules_enabled ?? [];
+    foreach ($data as $c_catalog_name => &$c_data) {
+      foreach ($c_data as $c_module_id => $null) {
+        if ($c_catalog_name != 'bundle' &&
+            $c_catalog_name != 'module') {
+          if (!isset($boot_enabled[$c_module_id])) {
+            unset($c_data[$c_module_id]);
+          }
+        }
+      }
+      if ($c_data == []) {
+        unset($data[$c_catalog_name]);
+      }
+    }
   # save cache
     foreach ($data as $c_catalog_name => $c_data) {
       static::$data[$c_catalog_name] = $c_data;
@@ -161,24 +176,24 @@ namespace effcore {
     }
   # build the result
     foreach ($parsed as $c_file_path => $c_info) {
-    # define the scope (module_id for each *.data file)
-      $c_scope = null;
-      foreach ($modules_path as $c_module_id => $c_module_path) {
-        if (strpos($c_file_path, $c_module_path) === 0) {
-          $c_scope = $c_module_id;
+    # define the module_id for each *.data file
+      $c_module_id = null;
+      foreach ($modules_path as $c_id => $c_path) {
+        if (strpos($c_file_path, $c_path) === 0) {
+          $c_module_id = $c_id;
           break;
         }
       }
     # fill the $result
       foreach ($c_info->data as $c_type => $c_data) {
-        if ($c_type == 'bundle' && isset($bundles_path[$c_data->id])) {$c_scope = $c_data->id; $c_data->path = $bundles_path[$c_data->id];};
-        if ($c_type == 'module' && isset($modules_path[$c_data->id])) {$c_scope = $c_data->id; $c_data->path = $modules_path[$c_data->id];};
-        if ($c_scope) {
-          if (is_object($c_data)) $result[$c_type][$c_scope] = $c_data;
+        if ($c_type == 'bundle' && isset($bundles_path[$c_data->id])) {$c_module_id = $c_data->id; $c_data->path = $bundles_path[$c_data->id];};
+        if ($c_type == 'module' && isset($modules_path[$c_data->id])) {$c_module_id = $c_data->id; $c_data->path = $modules_path[$c_data->id];};
+        if ($c_module_id) {
+          if (is_object($c_data)) $result[$c_type][$c_module_id] = $c_data;
           elseif (is_array($c_data)) {
-            if (!isset($result[$c_type][$c_scope]))
-                       $result[$c_type][$c_scope] = [];
-            $result[$c_type][$c_scope] += $c_data;
+            if (!isset($result[$c_type][$c_module_id]))
+                       $result[$c_type][$c_module_id] = [];
+            $result[$c_type][$c_module_id] += $c_data;
           }
         }
       }
