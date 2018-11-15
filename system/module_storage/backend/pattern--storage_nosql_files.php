@@ -104,16 +104,16 @@ namespace effcore {
     unset($data['changes']);
     $boot = data::select('boot') ?: new \stdClass;
     $boot_enabled = $boot->modules_enabled ?? [];
-    foreach ($data as $c_catalog_name => &$c_data) {
+    foreach ($data as $c_catalog_name => $c_data) {
       foreach ($c_data as $c_module_id => $null) {
         if ($c_catalog_name != 'bundle' &&
             $c_catalog_name != 'module') {
           if (!isset($boot_enabled[$c_module_id])) {
-            unset($c_data[$c_module_id]);
+            unset($data[$c_catalog_name][$c_module_id]);
           }
         }
       }
-      if ($c_data == []) {
+      if ($data[$c_catalog_name] == []) {
         unset($data[$c_catalog_name]);
       }
     }
