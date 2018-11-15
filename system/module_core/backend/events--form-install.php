@@ -31,7 +31,7 @@ namespace effcore\modules\core {
         if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
       }
     } else {
-      $form->child_delete_all();
+      $form->children_delete_all();
       core::send_header_and_exit('access_forbidden', '',
         translation::get('Installation is not available because storage credentials was set!').br.br.
         translation::get('go to <a href="/">front page</a>')
@@ -131,7 +131,7 @@ namespace effcore\modules\core {
             else break;
           }
           if (count(storage::get('sql')->errors) == 0) {
-            $form->child_delete_all();
+            $form->children_delete_all();
             $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
             message::insert(translation::get('System was installed.'));
             message::insert(translation::get('your EMail is — %%_email', ['email' => $items['#email']->value_get()]), 'credentials');

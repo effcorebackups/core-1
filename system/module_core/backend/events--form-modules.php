@@ -18,7 +18,7 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     $info = $form->child_select('info');
-    $modules = module::all_get();
+    $modules         = module::all_get();
     $enabled_by_boot = module::enabled_by_boot_get();
     $embed           = module::embed_get();
     core::array_sort_by_property($modules, 'title');
@@ -53,10 +53,21 @@ namespace effcore\modules\core {
             } else event::start('on_module_disable', $c_module->id);
           }
         }
+        storage_nosql_files::data_cache_cleaning();
+        url::go(page::current_get()->args_get('base'));
         break;
       case 'refresh':
         storage_nosql_files::data_cache_cleaning();
         url::go(page::current_get()->args_get('base'));
+      # ─────────────────────────────────────────────────────────────────────
+      # note: why 'url::go' better? …
+      # ─────────────────────────────────────────────────────────────────────
+      # - storage_nosql_files::data_cache_cleaning();
+      # - storage_nosql_files::data_cache_update();
+      # - module::init(); # and …::init(); and …::init();
+      # - $form->child_select('info')->children_delete_all();
+      # - static::on_init($form, $items);
+      # ─────────────────────────────────────────────────────────────────────
         break;
     }
   }

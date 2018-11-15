@@ -34,7 +34,7 @@ namespace effcore {
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
-      static::data_cache_rebuild();
+      static::data_cache_update();
     }
   }
 
@@ -48,7 +48,7 @@ namespace effcore {
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
-      static::data_cache_rebuild();
+      static::data_cache_update();
     }
   }
 
@@ -67,7 +67,7 @@ namespace effcore {
     console::log_add('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
     $cache = cache::select('data--'.$catalog_name);
     if ($cache) static::$data[$catalog_name] = $cache;
-    else        static::data_cache_rebuild();
+    else        static::data_cache_update();
   }
 
   static function data_cache_cleaning() {
@@ -86,17 +86,18 @@ namespace effcore {
     }
   }
 
-  static function data_cache_rebuild($reset = false) {
-  # init original data
+  static function data_cache_update($is_update_orig = false) {
+  # init data and original data
+    static::$data = [];
     $data_orig = cache::select('data_original');
-    if (!$data_orig || $reset) {
+    if (!$data_orig || $is_update_orig) {
       $data_orig = static::data_static_find();
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
     $changes_d = data::select('changes') ?: [];
     $changes_s =   $data_orig['changes'] ?? [];
-  # apply all changes to original data and get final data
+  # apply all changes to original data and get the final data
     $data = core::array_clone_deep($data_orig);
     static::data_changes_apply($changes_d, $data);
     static::data_changes_apply($changes_s, $data);

@@ -48,7 +48,7 @@ namespace effcore\modules\test {
       else message::insert('The test was failed!', 'error');
     # make report
       if (!empty($test_result['reports'])) {
-        $items['report']->child_select('document')->child_delete_all();
+        $items['report']->child_select('document')->children_delete_all();
         foreach ($test_result['reports'] as $c_report) {
           $items['report']->child_select('document')->child_insert(
             new markup('p', [], $c_report)
