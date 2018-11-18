@@ -157,15 +157,15 @@ namespace effcore {
                                             $result;
   }
 
-  static function data_to_codeline($data, $prefix = '') {
+  static function data_to_code($data, $prefix = '') {
     $result = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            $result.= static::data_to_codeline($c_value, $prefix.(is_int($c_key) ?
-                                                                     '['.$c_key.']' :
-                                                       '[\''.addcslashes($c_key, '\'\\').'\']'));
+            $result.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
+                                                                 '['.$c_key.']' :
+                                                   '[\''.addcslashes($c_key, '\'\\').'\']'));
           }
         } else {
           $result.= $prefix.' = [];'.nl;
@@ -182,7 +182,7 @@ namespace effcore {
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $result.= static::data_to_codeline($c_value, $prefix.'->'.$c_prop);
+          $result.= static::data_to_code($c_value, $prefix.'->'.$c_prop);
         }
         if ($c_is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($c_is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
@@ -296,15 +296,26 @@ namespace effcore {
     return $result;
   }
 
-  ###############################
-  ### functionality for dpath ###
-  ###############################
+  #################################################################
+  ### functionality for dpath (data path) and npath (node path) ###
+  #################################################################
 
   static function dpath_pointers_get(&$data, $dpath, $is_unique_keys = false) {
     $result = [];
     $c_pointer = $data;
     foreach (explode('/', $dpath) as $c_part) {
       $c_pointer = &static::arrobj_value_select($c_pointer, $c_part);
+      if ($is_unique_keys) $result[]        = &$c_pointer;
+      else                 $result[$c_part] = &$c_pointer;
+    }
+    return $result;
+  }
+
+  static function npath_pointers_get(&$node, $npath, $is_unique_keys = false) {
+    $result = [];
+    $c_pointer = $node;
+    foreach (explode('/', $npath) as $c_part) {
+      $c_pointer = &$c_pointer->children[$c_part];
       if ($is_unique_keys) $result[]        = &$c_pointer;
       else                 $result[$c_part] = &$c_pointer;
     }

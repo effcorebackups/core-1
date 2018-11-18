@@ -19,7 +19,8 @@ forms
             checked
             - =: is_remember
             - =: is_fixed_ip
-        - captcha|field_captcha
+        - captcha|pluggable_class
+            name: field_captcha
     - button_login|button
         title: login
         attributes

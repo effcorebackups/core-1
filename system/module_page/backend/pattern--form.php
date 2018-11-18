@@ -25,6 +25,19 @@ namespace effcore {
     $id = $this->attribute_select('id');
     $this->button_clicked_set();
 
+  # plug external classes
+    foreach ($this->children_select_recursive() as $c_npath => $c_element) {
+      if ($c_element instanceof pluggable_class) {
+        $c_parts = explode('/', $c_npath);
+        $c_lastpart = end($c_parts);
+        $c_properties = $c_element->properties;
+        $c_pointers = core::npath_pointers_get($this, $c_npath);
+        $c_pointers[$c_lastpart] = core::class_instance_new_get($c_element->name[0] == '\\' ? $c_element->name : '\\effcore\\'.$c_element->name, $c_element->args, true);
+        foreach ($c_properties as $c_name => $c_value) {
+          $c_pointers[$c_lastpart]->{$c_name} = $c_value;
+        }
+      }
+    }
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
       if (method_exists($c_element, 'build')) {
