@@ -1,0 +1,9 @@
+translations
+- ru|translation
+    code: ru
+    data
+    - CAPTCHA: Защитный код (CAPTCHA)
+    - CAPTCHAs: Защитные коды (CAPTCHAs)
+    - Field "%%_title" contains an incorrect characters from image!: Поле "%%_title" содержит неверные символы с изображения!
+    - Module for working with CAPTCHA in forms.: Модуль для работы с защитным кодом (CAPTCHA) в формах.
+    - Write the characters from the picture.: Напишите символы с картинки.

@@ -32,8 +32,6 @@ translations
     - Cancel: Отмена
     - cancel: отмена
     - Canvas: Холст
-    - CAPTCHA: Защитный код (CAPTCHA)
-    - CAPTCHAs: Защитные коды (CAPTCHAs)
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - Characters: Символы
     - Check directory permissions.: Проверьте разрешения каталога.
@@ -99,7 +97,6 @@ translations
     - failed to write file to disk: не удалось записать файл на диск
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
-    - Field "%%_title" contains an incorrect characters from image!: Поле "%%_title" содержит неверные символы с изображения!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
     - Field "%%_title" contains an incorrect phone!: Поле "%%_title" содержит неверный телефон!
@@ -196,7 +193,6 @@ translations
     - Module %%_title (%%_id) was installed.: Модуль %%_title (%%_id) был установлен.
     - Module for localization.: Модуль для локализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
-    - Module for working with CAPTCHA in forms.: Модуль для работы с защитным кодом (CAPTCHA) в формах.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
@@ -367,7 +363,6 @@ translations
     - Web server: Веб-сервер
     - Weight: Вес
     - Welcome to our site!: Добро пожаловать на наш сайт!
-    - Write the characters from the picture.: Напишите символы с картинки.
     - Yes: Да
     - yes: да
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
