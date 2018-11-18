@@ -88,28 +88,28 @@ namespace effcore {
     }
   }
 
-  static function class_is_local($class_name) {
-    $parts = static::class_parts_get($class_name);
+  static function structure_is_local($name) {
+    $parts = static::structure_parts_get($name);
     return $parts[0] === __NAMESPACE__;
   }
 
-  static function class_parts_get($class_name) {
-    return explode('\\', $class_name);
+  static function structure_parts_get($name) {
+    return explode('\\', $name);
   }
 
-  static function class_name_short_get($class_name) {
-    $parts = static::class_parts_get($class_name);
+  static function structure_name_short_get($name) {
+    $parts = static::structure_parts_get($name);
     return end($parts);
   }
 
-  static function class_handler_part_get($handler, $partname) {
+  static function structure_handler_part_get($handler, $partname) {
     $parts = explode('::', $handler);
     if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
     if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
   }
 
-  static function class_instance_new_get($class_name, $args = [], $use_constructor = false) {
-    $reflection = new \ReflectionClass($class_name);
+  static function class_instance_new_get($name, $args = [], $use_constructor = false) {
+    $reflection = new \ReflectionClass($name);
     return $use_constructor ? $reflection->newInstanceArgs($args) :
                               $reflection->newInstanceWithoutConstructor();
   }

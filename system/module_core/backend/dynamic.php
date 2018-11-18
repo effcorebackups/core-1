@@ -35,8 +35,8 @@ namespace effcore {
                      is_writable($file->dirs_get())) {
       $file->data_set(
         '<?php'.nl.nl.'namespace effcore { # '.static::type.' for '.$name.nl.nl.($info ?
-           core::data_to_code($info, '  '.core::class_name_short_get(static::class).'::$info[\''.$name.'\']') : '').
-           core::data_to_code($data, '  '.core::class_name_short_get(static::class).'::$data[\''.$name.'\']').nl.
+           core::data_to_code($info, '  '.core::structure_name_short_get(static::class).'::$info[\''.$name.'\']') : '').
+           core::data_to_code($data, '  '.core::structure_name_short_get(static::class).'::$data[\''.$name.'\']').nl.
         '}');
       if (!$file->save()) {
         static::message_insert_show($file);
