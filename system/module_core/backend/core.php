@@ -23,13 +23,6 @@ namespace effcore {
     }
   }
 
-  static function structure_is_exist($name) {
-    $name = strtolower($name);
-    if (isset(static::structures_map_get()[$name])) {
-      return true;
-    }
-  }
-
   static function structures_map_get() {
     $cache = cache::select('structures');
     if ($cache) {
@@ -88,14 +81,11 @@ namespace effcore {
     }
   }
 
-  static function class_parts_get($class_name) {
-    return explode('\\', $class_name);
-  }
-
-  static function class_handler_part_get($handler, $partname) {
-    $parts = explode('::', $handler);
-    if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
-    if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
+  static function structure_is_exist($name) {
+    $name = strtolower($name);
+    if (isset(static::structures_map_get()[$name])) {
+      return true;
+    }
   }
 
   static function class_is_local($class_name) {
@@ -103,9 +93,19 @@ namespace effcore {
     return $parts[0] === __NAMESPACE__;
   }
 
+  static function class_parts_get($class_name) {
+    return explode('\\', $class_name);
+  }
+
   static function class_name_short_get($class_name) {
     $parts = static::class_parts_get($class_name);
     return end($parts);
+  }
+
+  static function class_handler_part_get($handler, $partname) {
+    $parts = explode('::', $handler);
+    if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
+    if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
   }
 
   static function class_instance_new_get($class_name, $args = [], $use_constructor = false) {
