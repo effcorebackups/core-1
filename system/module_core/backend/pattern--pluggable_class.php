@@ -12,4 +12,8 @@ namespace effcore {
   public $properties = [];
   public $weight = 0;
 
+  function render() {
+    return '';
+  }
+
 }}

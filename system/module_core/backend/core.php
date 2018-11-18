@@ -9,17 +9,24 @@ namespace effcore {
 
   static protected $cache;
 
-  #################################
-  ### functionality for classes ###
-  #################################
+  ###############################################
+  ### functionality for class|trait|interface ###
+  ###############################################
 
-  static function autoload($name) {
+  static function structure_autoload($name) {
     console::log_add('autoload', 'search', $name, 'ok');
     $name = strtolower($name);
     if (isset(static::structures_map_get()[$name])) {
       $c_item_info = static::structures_map_get()[$name];
       $c_file = new file($c_item_info->file);
       $c_file->insert();
+    }
+  }
+
+  static function structure_is_exist($name) {
+    $name = strtolower($name);
+    if (isset(static::structures_map_get()[$name])) {
+      return true;
     }
   }
 
