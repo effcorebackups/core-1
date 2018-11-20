@@ -9,7 +9,11 @@ namespace effcore {
 
   static protected $cache;
 
-  static function boot_enabled_get() {
+  ####################
+  ### boot modules ###
+  ####################
+
+  static function boot_default_select() {
     return [
       'captcha' => dir_system.'module_captcha',
       'core'    => dir_system.'module_core',
@@ -19,6 +23,34 @@ namespace effcore {
       'storage' => dir_system.'module_storage',
       'user'    => dir_system.'module_user',
     ];
+  }
+
+  static function boot_enabled_select() {
+    $boot = data::select('boot');
+    if ($boot) return $boot->modules_enabled;
+    else       return static::boot_default_select();
+  }
+
+  static function boot_enabled_insert($module_id, $module_path) {
+    $boot = data::select('boot') ?: new \stdClass;
+    $boot_enabled = [];
+    if  ($boot && isset( $boot->modules_enabled ))
+         $boot_enabled = $boot->modules_enabled;
+    else $boot_enabled = static::boot_default_select();
+    $boot_enabled[$module_id] = $module_path;
+    $boot->modules_enabled = $boot_enabled;
+    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
+  }
+
+  static function boot_enabled_delete($module_id) {
+    $boot = data::select('boot') ?: new \stdClass;
+    $boot_enabled = [];
+    if  ($boot && isset( $boot->modules_enabled ))
+         $boot_enabled = $boot->modules_enabled;
+    else $boot_enabled = static::boot_default_select();
+    unset($boot_enabled[$module_id]);
+    $boot->modules_enabled = $boot_enabled;
+    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 
   ###############################################

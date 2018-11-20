@@ -19,7 +19,7 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $modules         = module::all_get();
-    $enabled_by_boot = module::enabled_by_boot_get();
+    $enabled_by_boot = core::boot_enabled_select();
     $embed           = module::embed_get();
     core::array_sort_by_property($modules, 'title');
     foreach ($modules as $c_module) {
