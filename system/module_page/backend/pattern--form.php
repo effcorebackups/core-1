@@ -28,20 +28,12 @@ namespace effcore {
   # plug external classes
     foreach ($this->children_select_recursive() as $c_npath => $c_element) {
       if ($c_element instanceof pluggable_class) {
-        $c_name = $c_element->name[0] == '\\' ? $c_element->name : 'effcore\\'.$c_element->name;
-        $c_args = $c_element->args;
-        $c_properties = $c_element->properties;
         $c_parts = explode('/', $c_npath);
         $c_last_part = end($c_parts);
         $c_pointers = core::npath_pointers_get($this, $c_npath);
-        if (core::structure_is_exist($c_name)) {
-          $c_pointers[$c_last_part] = core::class_instance_new_get($c_name, $c_args, true);
-          foreach ($c_properties as $c_name => $c_value) {
-            $c_pointers[$c_last_part]->{$c_name} = $c_value;
-          }
-        } else {
-          unset($c_pointers[$c_last_part]);
-        }
+        if ($c_element->class_is_exists())
+                   $c_pointers[$c_last_part] = $c_element->object_get();
+        else unset($c_pointers[$c_last_part]);
       }
     }
   # build all form elements
