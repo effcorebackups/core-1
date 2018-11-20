@@ -15,9 +15,7 @@ namespace effcore {
   public $enabled = 'yes';
 
   function enable() {
-    $enabled = static::enabled_by_boot_get();
-    $enabled[$this->id] = $this->id;
-    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+    core::boot_enabled_insert($this->id, $this->path);
   }
 
   function install() {
@@ -40,7 +38,7 @@ namespace effcore {
   }
 
   function is_installed() {
-    $installed = static::installed_by_boot_get();
+    $installed = core::boot_installed_select();
     return isset($installed[$this->id]);
   }
 
@@ -83,11 +81,6 @@ namespace effcore {
       }
     }
     return $result;
-  }
-
-  static function enabled_by_boot_get() {
-    $boot = data::select('boot') ?: new \stdClass;
-    return array_intersect_key(static::all_get(), $boot->modules_enabled);
   }
 
   static function installed_by_boot_get() {

@@ -10,9 +10,7 @@ namespace effcore {
   public $enabled = 'no';
 
   function disable() {
-    $enabled = static::enabled_by_boot_get();
-    unset($enabled[$this->id]);
-    static::enabled_by_boot_set(core::array_kmap(array_keys($enabled)));
+    core::boot_enabled_delete($this->id);
   }
 
   function uninstall() {
