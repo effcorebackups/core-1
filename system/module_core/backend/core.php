@@ -25,10 +25,11 @@ namespace effcore {
     ];
   }
 
-  static function boot_enabled_select() {
+  static function boot_select($type = 'enabled') {
     $boot = data::select('boot');
-    if ($boot) return $boot->modules_enabled;
-    else       return static::boot_default_select();
+    if ($boot && isset($boot->{'modules_'.$type}))
+                return $boot->{'modules_'.$type};
+    else        return static::boot_default_select();
   }
 
   static function boot_enabled_insert($module_id, $module_path) {

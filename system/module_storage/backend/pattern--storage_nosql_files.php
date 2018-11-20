@@ -144,7 +144,7 @@ namespace effcore {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
-    $enabled_boot = core::boot_enabled_select();
+    $enabled_boot = core::boot_select('enabled');
     $files = file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
              file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
              file::select_recursive(dir_modules, '%^'.dir_modules.'.*/module\\.data$%') +
