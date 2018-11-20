@@ -9,6 +9,18 @@ namespace effcore {
 
   static protected $cache;
 
+  static function boot_enabled_get() {
+    return [
+      'captcha' => dir_system.'module_captcha',
+      'core'    => dir_system.'module_core',
+      'locales' => dir_system.'module_locales',
+      'menu'    => dir_system.'module_menu',
+      'page'    => dir_system.'module_page',
+      'storage' => dir_system.'module_storage',
+      'user'    => dir_system.'module_user',
+    ];
+  }
+
   ###############################################
   ### functionality for class|trait|interface ###
   ###############################################

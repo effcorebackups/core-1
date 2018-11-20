@@ -101,30 +101,7 @@ namespace effcore {
     $data = core::array_clone_deep($data_orig);
     static::data_changes_apply($changes_d, $data);
     static::data_changes_apply($changes_s, $data);
-  # remove unused parts
     unset($data['changes']);
-    $boot = data::select('boot') ?: new \stdClass;
-    $boot_enabled = $boot->modules_enabled ?? [];
-    foreach ($data as $c_catalog_name => $c_catalog_data) {
-      foreach ($c_catalog_data as $c_module_id => $c_data) {
-        if ($c_catalog_name == 'bundle') continue;
-        if ($c_catalog_name == 'module') continue;
-        if (!isset($boot_enabled[$c_module_id])) {
-          if ($c_catalog_name == 'events') {
-            foreach ($c_data as $c_type => $c_events) {
-              if ($c_type == 'on_module_install') continue;
-              if ($c_type == 'on_module_enable')  continue;
-              unset($data[$c_catalog_name][$c_module_id]->{$c_type});
-            }
-          } else {
-            unset($data[$c_catalog_name][$c_module_id]);
-          }
-        }
-      }
-      if ($data[$c_catalog_name] == []) {
-        unset($data[$c_catalog_name]);
-      }
-    }
   # save cache
     foreach ($data as $c_catalog_name => $c_data) {
       static::$data[$c_catalog_name] = $c_data;
@@ -167,8 +144,15 @@ namespace effcore {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
-    $files = file::select_recursive(dir_system,  '%^.*\\.data$%') +
-             file::select_recursive(dir_modules, '%^.*/modules/.*/.*\\.data$%');
+    $enabled_boot = core::boot_enabled_get();
+    $files = file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
+             file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
+             file::select_recursive(dir_modules, '%^'.dir_modules.'.*/module\\.data$%') +
+             file::select_recursive(dir_modules, '%^'.dir_modules.'.*/bundle\\.data$%');
+  # collect *.data from enabled modules
+    foreach ($enabled_boot as $c_module_path) {
+      $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
+    }
   # parse each *.data
     foreach ($files as $c_file) {
       $c_data = static::text_to_data($c_file->load(), $c_file);
