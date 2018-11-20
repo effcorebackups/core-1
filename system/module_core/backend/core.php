@@ -32,25 +32,25 @@ namespace effcore {
     else        return static::boot_default_select();
   }
 
-  static function boot_enabled_insert($module_id, $module_path) {
+  static function boot_insert($module_id, $module_path, $type) {
     $boot = data::select('boot') ?: new \stdClass;
-    $boot_enabled = [];
-    if  ($boot && isset( $boot->modules_enabled ))
-         $boot_enabled = $boot->modules_enabled;
-    else $boot_enabled = static::boot_default_select();
-    $boot_enabled[$module_id] = $module_path;
-    $boot->modules_enabled = $boot_enabled;
+    $boot_buffer = [];
+    if  ($boot && isset($boot->{'modules_'.$type}))
+         $boot_buffer = $boot->{'modules_'.$type};
+    else $boot_buffer = static::boot_default_select();
+    $boot_buffer[$module_id] = $module_path;
+    $boot->{'modules_'.$type} = $boot_buffer;
     data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 
-  static function boot_enabled_delete($module_id) {
+  static function boot_delete($module_id, $type) {
     $boot = data::select('boot') ?: new \stdClass;
-    $boot_enabled = [];
-    if  ($boot && isset( $boot->modules_enabled ))
-         $boot_enabled = $boot->modules_enabled;
-    else $boot_enabled = static::boot_default_select();
-    unset($boot_enabled[$module_id]);
-    $boot->modules_enabled = $boot_enabled;
+    $boot_buffer = [];
+    if  ($boot && isset($boot->{'modules_'.$type}))
+         $boot_buffer = $boot->{'modules_'.$type};
+    else $boot_buffer = static::boot_default_select();
+    unset($boot_buffer[$module_id]);
+    $boot->{'modules_'.$type} = $boot_buffer;
     data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 

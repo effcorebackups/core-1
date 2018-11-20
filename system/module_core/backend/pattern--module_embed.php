@@ -15,7 +15,7 @@ namespace effcore {
   public $enabled = 'yes';
 
   function enable() {
-    core::boot_enabled_insert($this->id, $this->path);
+    core::boot_insert($this->id, $this->path, 'enabled');
   }
 
   function install() {
@@ -32,13 +32,11 @@ namespace effcore {
       else message::insert(translation::get('Instances of entity %%_name was not added!', ['name' => $c_instance->entity_name]), 'error');
     }
   # insert to boot
-    $installed = static::installed_by_boot_get();
-    $installed[$this->id] = $this->id;
-    static::installed_by_boot_set(core::array_kmap(array_keys($installed)));
+    core::boot_insert($this->id, $this->path, 'installed');
   }
 
   function is_installed() {
-    $installed = core::boot_installed_select();
+    $installed = core::boot_select('installed');
     return isset($installed[$this->id]);
   }
 
@@ -81,11 +79,6 @@ namespace effcore {
       }
     }
     return $result;
-  }
-
-  static function installed_by_boot_get() {
-    $boot = data::select('boot') ?: new \stdClass;
-    return array_intersect_key(static::all_get(), $boot->modules_installed);
   }
 
   static function enabled_by_boot_set($enabled) {

@@ -10,7 +10,7 @@ namespace effcore {
   public $enabled = 'no';
 
   function disable() {
-    core::boot_enabled_delete($this->id);
+    core::boot_delete($this->id, 'enabled');
   }
 
   function uninstall() {
@@ -26,9 +26,7 @@ namespace effcore {
       else message::insert(translation::get('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
     }
   # delete from boot
-    $installed = static::installed_by_boot_get();
-    unset($installed[$this->id]);
-    static::installed_by_boot_set(core::array_kmap(array_keys($installed)));
+    core::boot_delete($this->id, 'installed');
   }
 
 }}
