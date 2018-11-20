@@ -97,12 +97,12 @@ namespace effcore {
     return explode('\\', $name);
   }
 
-  static function structure_name_short_get($name) {
+  static function structure_part_name_get($name) {
     $parts = static::structure_parts_get($name);
     return end($parts);
   }
 
-  static function structure_handler_part_get($handler, $partname) {
+  static function structure_part_handler_get($handler, $partname) {
     $parts = explode('::', $handler);
     if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
     if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
