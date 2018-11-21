@@ -26,6 +26,7 @@ namespace effcore {
   }
 
   static function boot_select($type = 'enabled') {
+    require_once('data.php');
     $boot = data::select('boot');
     if ($boot && isset($boot->{'modules_'.$type}))
                 return $boot->{'modules_'.$type};
@@ -33,6 +34,7 @@ namespace effcore {
   }
 
   static function boot_insert($module_id, $module_path, $type) {
+    require_once('data.php');
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
@@ -44,6 +46,7 @@ namespace effcore {
   }
 
   static function boot_delete($module_id, $type) {
+    require_once('data.php');
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
@@ -74,8 +77,10 @@ namespace effcore {
       return $cache;
     } else {
       $result = [];
-      $php_files = file::select_recursive(dir_system,  '%^.*\\.php$%') +
-                   file::select_recursive(dir_modules, '%^.*/modules/.*/.*\\.php$%');
+      $php_files = [];
+      foreach (core::boot_select('enabled') as $c_module_path) {
+        $php_files += file::select_recursive($c_module_path,  '%^.*\\.php$%');
+      }
       foreach ($php_files as $c_file) {
         $c_matches = [];
         preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
