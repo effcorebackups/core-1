@@ -144,13 +144,15 @@ namespace effcore {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
-    $enabled_boot = core::boot_select('enabled');
-    $files = file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
+    $files = [];
+    foreach (file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
              file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
-             file::select_recursive(dir_modules, '%^'.dir_modules.'.*/module\\.data$%') +
-             file::select_recursive(dir_modules, '%^'.dir_modules.'.*/bundle\\.data$%');
+             file::select_recursive(dir_modules, '%^.*/module\\.data$%') +
+             file::select_recursive(dir_modules, '%^.*/bundle\\.data$%') as $c_file) {
+      $files[$c_file->path_relative_get()] = $c_file;
+    }
   # collect *.data from enabled modules
-    foreach ($enabled_boot as $c_module_path) {
+    foreach (core::boot_select('enabled') as $c_module_path) {
       $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
     }
   # parse each *.data
