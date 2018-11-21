@@ -117,8 +117,6 @@ namespace effcore\modules\core {
           ]);
           $enabled_by_default = module::enabled_by_default_get();
           $embed              = module::embed_get();
-          module::installed_by_boot_set([]);
-          module::enabled_by_boot_set  ([]);
           foreach (module::all_get() as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) || 
                 isset($embed             [$c_module->id])) {
