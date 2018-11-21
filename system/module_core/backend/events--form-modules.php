@@ -43,14 +43,21 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        $embed = module::embed_get();
+        $enabled_by_boot = core::boot_select('enabled');
+        $embed           = module::embed_get();
         foreach (module::all_get() as $c_module) {
           if (!isset($embed[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get()) {
-              if (!$c_module->is_installed())
-                   event::start('on_module_install', $c_module->id);
-                   event::start('on_module_enable',  $c_module->id);
-            } else event::start('on_module_disable', $c_module->id);
+              if (!isset($enabled_by_boot[$c_module->id])) {
+                if (!$c_module->is_installed())
+                event::start('on_module_install', $c_module->id);
+                event::start('on_module_enable',  $c_module->id);
+              }
+            } else {
+              if (isset($enabled_by_boot[$c_module->id])) {
+                event::start('on_module_disable', $c_module->id);
+              }
+            }
           }
         }
         storage_nosql_files::data_cache_cleaning();
