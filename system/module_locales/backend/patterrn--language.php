@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class language {
+          class language implements has_cache_cleaning {
 
   public $code;
   public $title;
@@ -17,6 +17,10 @@ namespace effcore {
 
   static protected $cache;
   static protected $current;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     foreach (storage::get('files')->select('languages') as $c_module_id => $c_languages) {

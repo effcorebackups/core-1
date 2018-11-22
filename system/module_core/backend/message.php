@@ -5,9 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          abstract class message {
+          abstract class message implements has_cache_cleaning {
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     static::$cache = [];

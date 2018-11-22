@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tree extends node {
+          class tree extends node implements has_cache_cleaning {
 
   public $id;
   public $title = '';
@@ -33,6 +33,13 @@ namespace effcore {
 
   static protected $cache_trees;
   static protected $cache_tree_items;
+
+  static function cache_cleaning() {
+    static::$cache_trees      = null;
+    static::$cache_tree_items = null;
+    static::init();
+    static::build();
+  }
 
   static function init() {
     foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {

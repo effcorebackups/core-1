@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class test implements has_external_cache {
+          class test implements has_cache_cleaning {
 
   public $id;
   public $title;
@@ -32,6 +32,10 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return ['id' => 'id', 'title' => 'title'];
+  }
+
+  static function cache_cleaning() {
+    static::$cache = null;
   }
 
   static function init() {

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tabs extends node {
+          class tabs extends node implements has_cache_cleaning {
 
   public $id;
   public $template = 'tabs';
@@ -52,6 +52,13 @@ namespace effcore {
 
   static protected $cache_tabs;
   static protected $cache_tabs_items;
+
+  static function cache_cleaning() {
+    static::$cache_tabs       = null;
+    static::$cache_tabs_items = null;
+    static::init();
+    static::build();
+  }
 
   static function init() {
     foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {

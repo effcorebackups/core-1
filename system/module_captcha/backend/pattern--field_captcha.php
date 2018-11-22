@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_captcha extends field_text {
+          class field_captcha extends field_text implements has_cache_cleaning {
 
   public $title = 'CAPTCHA';
   public $description = 'Write the characters from the picture.';
@@ -112,6 +112,10 @@ namespace effcore {
     return core::ip_to_hex(
       core::server_remote_addr_get()
     );
+  }
+
+  static function cache_cleaning() {
+    static::$glyphs = null;
   }
 
   static function init() {

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class selection extends node implements has_external_cache {
+          class selection extends node implements has_external_cache, has_cache_cleaning {
 
   public $view_type = 'table';
   public $title;
@@ -136,6 +136,10 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [];
+  }
+
+  static function cache_cleaning() {
+    static::$cache = null;
   }
 
   static function init() {

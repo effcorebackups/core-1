@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page extends node implements has_external_cache {
+          class page extends node implements has_external_cache, has_cache_cleaning {
 
   public $title;
   public $https;
@@ -157,6 +157,11 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return ['display' => 'display', 'access' => 'access'];
+  }
+
+  static function cache_cleaning() {
+    static::$cache          = null;
+    static::$cache_frontend = null;
   }
 
   static function init() {

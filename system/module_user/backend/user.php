@@ -5,9 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          abstract class user {
+          abstract class user implements has_cache_cleaning {
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init($nick = null) {
     static::$cache = new instance('user', ['nick' => null, 'roles' => ['anonymous' => 'anonymous']]);

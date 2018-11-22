@@ -8,7 +8,7 @@ namespace effcore {
           use \FilesystemIterator as fs_iterator;
           use \RecursiveDirectoryIterator as rd_iterator;
           use \RecursiveIteratorIterator as ri_iterator;
-          class file {
+          class file { # @todo: add "implements has_cache_cleaning"
 
   # valid paths (path = dirs/ + name + '.' + type):
   # ┌─────────────────────────╥───────────────┬─────────┬──────┬──────────┐
@@ -194,6 +194,11 @@ namespace effcore {
   static protected $cache_data;
   static protected $cache_file_types;
 
+  static function cache_cleaning() {
+    static::$cache_data       = null;
+    static::$cache_file_types = null;
+  }
+
   static function init() {
     foreach (storage::get('files')->select('file_types') as $c_module_id => $c_file_types) {
       foreach ($c_file_types as $c_row_id => $c_file_type) {
@@ -205,7 +210,7 @@ namespace effcore {
   }
 
   static function types_get() {
-    if   (!static::$cache_file_types) static::init();
+    if    (static::$cache_file_types == null) static::init();
     return static::$cache_file_types;
   }
 

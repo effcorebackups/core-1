@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class module_embed {
+          class module_embed implements has_cache_cleaning {
 
   public $id;
   public $title;
@@ -45,6 +45,10 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     static::$cache = storage::get('files')->select('module');

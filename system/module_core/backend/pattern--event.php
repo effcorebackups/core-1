@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class event {
+          class event implements has_cache_cleaning {
 
   public $for;
   public $handler;
@@ -16,6 +16,10 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     console::log_add('event', 'init.', 'event system was initialized', '-');

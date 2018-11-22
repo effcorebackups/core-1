@@ -5,9 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          abstract class token {
+          abstract class token implements has_cache_cleaning {
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {

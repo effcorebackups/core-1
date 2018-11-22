@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class url {
+          class url implements has_cache_cleaning {
 
   # valid urls:
   # ┌──────────────────────────────────────────────────────────┐
@@ -101,6 +101,10 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     static::$cache = new url(core::server_request_uri_get());

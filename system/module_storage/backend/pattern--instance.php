@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class instance {
+          class instance implements has_cache_cleaning {
 
   public $entity_name;
   public $values;
@@ -62,6 +62,11 @@ namespace effcore {
 
   static protected $cache;
   static protected $cache_orig;
+
+  static function cache_cleaning() {
+    static::$cache      = null;
+    static::$cache_orig = null;
+  }
 
   static function init() {
     static::$cache_orig = storage::get('files')->select('instances');

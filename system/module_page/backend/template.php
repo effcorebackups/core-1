@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class template {
+          class template implements has_cache_cleaning {
 
   public $name;
   public $type;
@@ -66,6 +66,10 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init() {
     foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {

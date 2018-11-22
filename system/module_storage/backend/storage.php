@@ -5,9 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          abstract class storage {
+          abstract class storage implements has_cache_cleaning {
 
   static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
 
   static function init($name) {
     storage_nosql_files::init('storages');
@@ -18,10 +22,6 @@ namespace effcore {
         }
       }
     }
-  }
-
-  static function cache_reset() {
-    static::$cache = [];
   }
 
   static function get($name, $load = true) {

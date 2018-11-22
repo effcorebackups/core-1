@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class translation implements has_external_cache {
+          class translation implements has_external_cache, has_cache_cleaning {
 
   public $code;
   public $data;
@@ -18,6 +18,10 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return ['code' => 'code'];
+  }
+
+  static function cache_cleaning() {
+    static::$cache = null;
   }
 
   static function init($code) {

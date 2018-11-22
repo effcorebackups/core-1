@@ -5,10 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          abstract class locale {
+          abstract class locale implements has_cache_cleaning {
 
   static protected $cache_settings;
   static protected $cache_countries;
+
+  static function cache_cleaning() {
+    static::$cache_settings  = null;
+    static::$cache_countries = null;
+  }
 
   static function init() {
     static::$cache_settings = storage::get('files')->select('settings/locales');
@@ -22,12 +27,12 @@ namespace effcore {
   }
 
   static function countries_get() {
-    if   (!static::$cache_countries) static::init();
+    if    (static::$cache_countries == null) static::init();
     return static::$cache_countries;
   }
 
   static function settings_get() {
-    if   (!static::$cache_settings) static::init();
+    if    (static::$cache_settings == null) static::init();
     return static::$cache_settings;
   }
 

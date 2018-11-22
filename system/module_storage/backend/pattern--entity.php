@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class entity implements has_external_cache, has_postparse {
+          class entity implements has_external_cache, has_cache_cleaning, has_postparse {
 
   public $name;
   public $storage_name;
@@ -118,6 +118,11 @@ namespace effcore {
       'storage_name' => 'storage_name',
       'catalog_name' => 'catalog_name'
     ];
+  }
+
+  static function cache_cleaning() {
+    static::$cache      = null;
+    static::$cache_orig = null;
   }
 
   static function init() {
