@@ -7,8 +7,6 @@
 namespace effcore {
           abstract class core {
 
-  static protected $cache;
-
   ####################
   ### boot modules ###
   ####################

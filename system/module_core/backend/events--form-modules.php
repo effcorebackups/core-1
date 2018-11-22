@@ -49,6 +49,9 @@ namespace effcore\modules\core {
           if (!isset($embed[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get()) {
               if (!isset($enabled_by_boot[$c_module->id])) {
+                core::structures_map_get(true, [$c_module->id => $c_module->path]);
+                storage_nosql_files::data_cache_update(true, [$c_module->id => $c_module->path]);
+                event::init();
                 if (!$c_module->is_installed())
                 event::start('on_module_install', $c_module->id);
                 event::start('on_module_enable',  $c_module->id);
@@ -60,8 +63,6 @@ namespace effcore\modules\core {
             }
           }
         }
-        storage_nosql_files::data_cache_cleaning();
-        url::go(page::current_get()->args_get('base'));
         break;
       case 'refresh':
         storage_nosql_files::data_cache_cleaning();

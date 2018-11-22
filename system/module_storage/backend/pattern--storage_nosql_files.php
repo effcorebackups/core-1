@@ -86,12 +86,12 @@ namespace effcore {
     }
   }
 
-  static function data_cache_update($is_update_orig = false) {
+  static function data_cache_update($reset_orig = false, $with_paths = []) {
   # init data and original data
     static::$data = [];
     $data_orig = cache::select('data_original');
-    if (!$data_orig || $is_update_orig) {
-      $data_orig = static::data_static_find();
+    if (!$data_orig || $reset_orig) {
+      $data_orig = static::data_static_find($with_paths);
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -139,7 +139,7 @@ namespace effcore {
     }
   }
 
-  static function data_static_find() {
+  static function data_static_find($with_paths = []) {
     $result = [];
     $parsed = [];
     $bundles_path = [];
@@ -152,7 +152,7 @@ namespace effcore {
       $files[$c_file->path_relative_get()] = $c_file;
     }
   # collect *.data from enabled modules
-    foreach (core::boot_select('enabled') as $c_module_path) {
+    foreach (core::boot_select('enabled') + $with_paths as $c_module_path) {
       $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
     }
   # parse each *.data
