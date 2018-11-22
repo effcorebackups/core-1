@@ -71,17 +71,17 @@ namespace effcore {
     }
   }
 
-  static function structures_map_get() {
-    $cache = cache::select('structures');
-    if ($cache) {
-      return $cache;
-    } else {
+  static function structures_map_get($reset = false, $with_paths = []) {
+    $result = cache::select('structures');
+    if (!$reset && $result)
+            return $result;
+    else {
       $result = [];
-      $php_files = [];
-      foreach (core::boot_select('enabled') as $c_module_path) {
-        $php_files += file::select_recursive($c_module_path,  '%^.*\\.php$%');
+      $files = [];
+      foreach (core::boot_select('enabled') + $with_paths as $c_module_path) {
+        $files += file::select_recursive($c_module_path,  '%^.*\\.php$%');
       }
-      foreach ($php_files as $c_file) {
+      foreach ($files as $c_file) {
         $c_matches = [];
         preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
                                      '(?<modifier>abstract|final|)\\s*'.
