@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class entity
-          implements has_external_cache, has_postparse {
+          class entity implements has_external_cache, has_postparse {
 
   public $name;
   public $storage_name;

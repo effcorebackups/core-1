@@ -7,8 +7,7 @@
 namespace effcore {
           use \RecursiveDirectoryIterator as rd_iterator;
           use \RecursiveIteratorIterator as ri_iterator;
-          class form extends markup
-          implements has_external_cache {
+          class form extends markup implements has_external_cache {
 
   const period_expired_h = 60 * 60;
 

@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class storage_nosql_files
-          implements has_external_cache {
+          class storage_nosql_files implements has_external_cache {
 
   public $name;
 

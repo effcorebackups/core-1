@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class translation
-          implements has_external_cache {
+          class translation implements has_external_cache {
 
   public $code;
   public $data;

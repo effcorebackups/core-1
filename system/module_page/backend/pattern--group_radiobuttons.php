@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_radiobuttons extends container
-          implements group_mono {
+          class group_radiobuttons extends container implements group_mono {
 
   public $tag_name = 'x-group';
   public $attributes = ['data-type' => 'radiobuttons'];

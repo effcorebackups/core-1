@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page extends node
-          implements has_external_cache {
+          class page extends node implements has_external_cache {
 
   public $title;
   public $https;

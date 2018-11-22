@@ -5,8 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class test
-          implements has_external_cache {
+          class test implements has_external_cache {
 
   public $id;
   public $title;
