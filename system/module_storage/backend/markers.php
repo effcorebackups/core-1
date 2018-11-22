@@ -5,9 +5,16 @@
   ##################################################################
 
 namespace effcore {
-# indicates that the cache for marked pattern should be separated by files
+# indicates that the cache should be separated by files
   interface has_external_cache {
     static function not_external_properties_get();
+  }
+}
+
+namespace effcore {
+# indicates that the class has cleaner of cache
+  interface has_cache_cleaning {
+    static function cache_cleaning();
   }
 }
 
