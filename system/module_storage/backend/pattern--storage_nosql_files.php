@@ -33,7 +33,7 @@ namespace effcore {
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
-      static::data_cache_update();
+      static::cache_update();
     }
   }
 
@@ -47,7 +47,7 @@ namespace effcore {
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
-      static::data_cache_update();
+      static::cache_update();
     }
   }
 
@@ -66,10 +66,14 @@ namespace effcore {
     console::log_add('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
     $cache = cache::select('data--'.$catalog_name);
     if ($cache) static::$data[$catalog_name] = $cache;
-    else        static::data_cache_update();
+    else        static::cache_update();
   }
 
-  static function data_cache_cleaning() {
+  static function cache_cleaning() {
+    static::$data = [];
+  }
+
+  static function cache_files_cleaning() {
     foreach (file::select_recursive(cache::directory, '', true) as $c_path => $c_object) {
       if ($c_path != cache::directory.'readme.mark') {
         if ($c_object instanceof file) $c_result = @unlink($c_path);
@@ -85,7 +89,7 @@ namespace effcore {
     }
   }
 
-  static function data_cache_update($reset_orig = false, $with_paths = []) {
+  static function cache_update($reset_orig = false, $with_paths = []) {
   # init data and original data
     static::$data = [];
     $data_orig = cache::select('data_original');
