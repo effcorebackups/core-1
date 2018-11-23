@@ -19,8 +19,8 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $enabled_by_boot = core::boot_select('enabled');
-    $modules         = module::all_get();
-    $embed           = module::embed_get();
+    $modules = module::all_get();
+    $embed   = module::embed_get();
     core::array_sort_by_property($modules, 'title');
     foreach ($modules as $c_module) {
       $c_info = new markup('x-module-info');
@@ -44,40 +44,48 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $enabled_by_boot = core::boot_select('enabled');
-        $embed           = module::embed_get();
+        $embed = module::embed_get();
+        $modules_to_enable  = [];
+        $modules_to_disable = [];
         foreach (module::all_get() as $c_module) {
           if (!isset($embed[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()) {
-              if (!isset($enabled_by_boot[$c_module->id])) {
-                core::structures_map_get         (true, [$c_module->id => $c_module->path]);
-                storage_nosql_files::cache_update(true, [$c_module->id => $c_module->path]);
-                core::structures_cache_cleaning();
-                if (!$c_module->is_installed())
-                event::start('on_module_install', $c_module->id);
-                event::start('on_module_enable',  $c_module->id);
-              }
-            } else {
-              if (isset($enabled_by_boot[$c_module->id])) {
-                event::start('on_module_disable', $c_module->id);
-              }
-            }
+            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module->path;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module->path;
           }
         }
+      # enable modules
+        if ($modules_to_enable) {
+          static::cache_full_reset($form, $items, $modules_to_enable);
+          foreach ($modules_to_enable as $c_id => $c_path) {
+            if (!$c_module->is_installed())
+            event::start('on_module_install', $c_id);
+            event::start('on_module_enable',  $c_id);
+          }
+        }
+      # disable modules
+        if ($modules_to_disable) {
+          foreach ($modules_to_disable as $c_id => $c_path) {
+            event::start('on_module_disable', $c_id);
+          }
+        }
+      # update cache and this form
+        static::cache_full_reset($form, $items);
+        $form->child_select('info')->children_delete_all();
+        static::on_init($form, $items);
         break;
       case 'refresh':
-        storage_nosql_files::cache_files_cleaning();
-        url::go(page::current_get()->args_get('base'));
-      # ─────────────────────────────────────────────────────────────────────
-      # note: why 'url::go' better? …
-      # ─────────────────────────────────────────────────────────────────────
-      # - storage_nosql_files::cache_files_cleaning();
-      # - storage_nosql_files::cache_update();
-      # - core::structures_cache_cleaning();
-      # - $form->child_select('info')->children_delete_all();
-      # - static::on_init($form, $items);
-      # ─────────────────────────────────────────────────────────────────────
+        static::cache_full_reset($form, $items);
+        $form->child_select('info')->children_delete_all();
+        static::on_init($form, $items);
         break;
     }
+  }
+
+  static function cache_full_reset($form, $items, $modules_to_enable = []) {
+    storage_nosql_files::cache_files_cleaning();
+    core::structures_map_get         (true, $modules_to_enable);
+    storage_nosql_files::cache_update(true, $modules_to_enable);
+    core::structures_cache_cleaning();
   }
 
 }}
