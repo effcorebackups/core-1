@@ -69,6 +69,14 @@ namespace effcore {
     }
   }
 
+  static function structures_cache_cleaning() {
+    foreach (static::structures_map_get() as $c_full_name => $c_structure) {
+      if (isset($c_structure->implements[__NAMESPACE__.'\has_cache_cleaning'])) {
+        $c_full_name::cache_cleaning();
+      }
+    }
+  }
+
   static function structures_map_get($reset = false, $with_paths = []) {
     $result = cache::select('structures');
     if (!$reset && $result)
