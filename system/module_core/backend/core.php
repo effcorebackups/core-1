@@ -39,6 +39,7 @@ namespace effcore {
          $boot_buffer = $boot->{'modules_'.$type};
     else $boot_buffer = static::boot_default_select();
     $boot_buffer[$module_id] = $module_path;
+    asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
     data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
@@ -84,7 +85,9 @@ namespace effcore {
     else {
       $result = [];
       $files = [];
-      foreach (core::boot_select('enabled') + $with_paths as $c_module_path) {
+      $paths = core::boot_select('enabled') + $with_paths;
+      asort($paths);
+      foreach ($paths as $c_module_path) {
         $files += file::select_recursive($c_module_path,  '%^.*\\.php$%');
       }
       foreach ($files as $c_file) {
