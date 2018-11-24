@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\locales {
+          use \effcore\field_timezone;
           use \effcore\language;
           use \effcore\message;
           use \effcore\storage;
@@ -12,6 +13,7 @@ namespace effcore\modules\locales {
           abstract class events_form_locales {
 
   static function on_init($form, $items) {
+    $items['#timezone_server']->value_set(field_timezone::id_by_title_get(date_default_timezone_get()));
     $languages = language::get_all();
     foreach ($languages as $c_language) {
       $title = $c_language->code == 'en' ?

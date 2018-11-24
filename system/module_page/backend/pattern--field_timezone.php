@@ -17,4 +17,20 @@ namespace effcore {
     }
   }
 
+  static function title_by_id_get($id) {
+    foreach (\DateTimeZone::listIdentifiers() as $c_id => $c_title) {
+      if ($c_id == $id) {
+        return $c_title;
+      }
+    }
+  }
+
+  static function id_by_title_get($title) {
+    foreach (\DateTimeZone::listIdentifiers() as $c_id => $c_title) {
+      if ($c_title == $title) {
+        return $c_id;
+      }
+    }
+  }
+
 }}

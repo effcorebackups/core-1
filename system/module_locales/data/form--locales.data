@@ -12,11 +12,12 @@ forms
             title: Current language
             element_attributes
             - name: language
-        - timezone|field_timezone
-            title: Timezone
+        - timezone_server|field_timezone
+            title: Server timezone
             element_attributes
-            - name: timezone
+            - name: timezone_server
             - required: required
+            - disabled: disabled
         - format_date|field_text
             title: Date format
             description|text
