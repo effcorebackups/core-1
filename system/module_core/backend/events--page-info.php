@@ -51,12 +51,12 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], php_uname('v')));
     $info->child_insert(new markup('dt', [], 'Hostname'));
     $info->child_insert(new markup('dd', [], php_uname('n')));
-    $info->child_insert(new markup('dt', [], 'Session expiration date'));
-    $info->child_insert(new markup('dd', [], locale::format_timestamp(session::id_expired_extract(session::id_get()))));
     $info->child_insert(new markup('dt', [], 'Server timezone'));
     $info->child_insert(new markup('dd', [], date_default_timezone_get()));
     $info->child_insert(new markup('dt', [], 'Server date-time'));
     $info->child_insert(new markup('dd', [], locale::format_datetime(core::datetime_get())));
+    $info->child_insert(new markup('dt', [], 'Session expiration date'));
+    $info->child_insert(new markup('dd', [], locale::format_timestamp(session::id_expired_extract(session::id_get()))));
     $info->child_insert(new markup('dt', [], 'Cron URL'));
     $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
