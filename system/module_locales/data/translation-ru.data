@@ -275,6 +275,7 @@ translations
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
+    - Server date-time: Дата-время сервера
     - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
     - Session: Сессия

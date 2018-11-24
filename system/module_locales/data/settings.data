@@ -5,4 +5,3 @@ settings
   format_datetime: Y-m-d h:i:s
   decimal_point: .
   thousands_separator: 
-  timezone: UTC
