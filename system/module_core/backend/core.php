@@ -241,8 +241,8 @@ namespace effcore {
         $c_class_name = get_class($data);
         $c_reflection = new \ReflectionClass($c_class_name);
         $c_defs               = $c_reflection->getDefaultProperties();
-        $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
-        $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
+        $c_is_postconstructor = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postconstructor');
+        $c_is_postinit        = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postinit');
         if ($c_is_postconstructor)
              $result = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;

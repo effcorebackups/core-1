@@ -265,11 +265,11 @@ namespace effcore {
           if ($c_value == '_empty_array') {
             $c_value = [];
           } else {
-            $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
+            $c_class_name = $c_value ? '\\'.__NAMESPACE__.'\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
-            $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
-            $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
+            $c_is_postconstructor = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postconstructor');
+            $c_is_postinit        = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postinit');
+            $c_is_postparse       = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postparse');
             if ($c_is_postconstructor)
                  $c_value = core::class_instance_new_get($c_class_name);
             else $c_value = core::class_instance_new_get($c_class_name, [], true);
