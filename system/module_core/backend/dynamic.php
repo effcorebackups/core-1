@@ -34,7 +34,7 @@ namespace effcore {
     if (file::mkdir_if_not_exist($file->dirs_get()) &&
                      is_writable($file->dirs_get())) {
       $file->data_set(
-        '<?php'.nl.nl.'namespace effcore { # '.static::type.' for '.$name.nl.nl.($info ?
+        '<?php'.nl.nl.'namespace '.__NAMESPACE__.' { # '.static::type.' for '.$name.nl.nl.($info ?
            core::data_to_code($info, '  '.core::structure_part_name_get(static::class).'::$info[\''.$name.'\']') : '').
            core::data_to_code($data, '  '.core::structure_part_name_get(static::class).'::$data[\''.$name.'\']').nl.
         '}');
