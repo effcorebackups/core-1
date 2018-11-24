@@ -57,7 +57,7 @@ translations
     - Current page information: Информация текущей страницы
     - Database name: Имя базы данных
     - Date format: Формат даты
-    - Date-time format: Формат даты-времени
+    - Date / time format: Формат даты / времени
     - Date: Дата
     - Decimal point: Десятичная точка
     - Decoration: Оформление
@@ -275,7 +275,7 @@ translations
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
-    - Server date-time: Дата-время сервера
+    - Server date / time: Дата / время сервера
     - Server timezone: Часовой пояс сервера
     - Session expiration date: Дата окончания сессии
     - Session: Сессия
