@@ -86,7 +86,7 @@ namespace effcore {
 
   function page_information_set() {
     console::information_add('Total generation time', locale::format_msecond(timer::period_get('total', 0, 1)));
-    console::information_add('Memory for php (bytes)', locale::format_number(memory_get_usage(true), 0, null, ' '));
+    console::information_add('Memory for php (bytes)', locale::format_number(memory_get_usage(true)));
     console::information_add('User roles', implode(', ', user::current_get()->roles));
     console::information_add('Current language', language::current_code_get());
   }
