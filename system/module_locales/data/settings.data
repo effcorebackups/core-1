@@ -1,8 +1,8 @@
 settings
-  lang_code: ru
-  decimal_point: ,
+  lang_code: en
+  format_date: Y-m-d
+  format_time: h:i:s
+  format_datetime: Y-m-d h:i:s
+  decimal_point: .
   thousands_separator: 
-  format_date: d.m.Y
-  format_time: H:i:s
-  format_datetime: d.m.Y H:i:s
   timezone: Europe/Minsk

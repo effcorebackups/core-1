@@ -8,27 +8,13 @@ namespace effcore {
           abstract class locale implements has_cache_cleaning {
 
   static protected $cache_settings;
-  static protected $cache_countries;
 
   static function cache_cleaning() {
-    static::$cache_settings  = null;
-    static::$cache_countries = null;
+    static::$cache_settings = null;
   }
 
   static function init() {
     static::$cache_settings = storage::get('files')->select('settings/locales');
-    foreach (storage::get('files')->select('countries') as $c_module_id => $c_countries) {
-      foreach ($c_countries as $c_row_id => $c_country) {
-        if (isset(static::$cache_countries[$c_country->code])) console::log_about_duplicate_add('country', $c_country->code);
-        static::$cache_countries[$c_country->code] = $c_country;
-        static::$cache_countries[$c_country->code]->module_id = $c_module_id;
-      }
-    }
-  }
-
-  static function countries_get() {
-    if    (static::$cache_countries == null) static::init();
-    return static::$cache_countries;
   }
 
   static function settings_get() {

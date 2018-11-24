@@ -12,12 +12,74 @@ forms
             title: Current language
             element_attributes
             - name: language
+        - timezone|field_timezone
+            title: Timezone
+            element_attributes
+            - name: timezone
+            - required: required
+        - format_date|field_text
+            title: Date format
+            description|text
+              text: Examples: %%_examples.
+              args
+              - examples: "Y-m-d" | "d.m.Y"
+            element_attributes
+            - name: format_date
+            - value: Y-m-d
+            - minlength: 3
+            - maxlength: 100
+        - format_time|field_text
+            title: Time format
+            description|text
+              text: Examples: %%_examples.
+              args
+              - examples: "h:i:s" | "H:i:s"
+            element_attributes
+            - name: format_time
+            - value: h:i:s
+            - minlength: 3
+            - maxlength: 100
+        - format_datetime|field_text
+            title: Date-time format
+            description|text
+              text: Examples: %%_examples.
+              args
+              - examples: "Y-m-d h:i:s" | "d.m.Y H:i:s"
+            element_attributes
+            - name: format_datetime
+            - value: Y-m-d h:i:s
+            - minlength: 3
+            - maxlength: 100
+        - decimal_point|field_text
+            title: Decimal point
+            description|text
+              text: Examples: %%_examples.
+              args
+              - examples: "." | ","
+            element_attributes
+            - name: decimal_point
+            - size: 1
+            - minlength: 0
+            - maxlength: 1
+            - value: .
+        - thousands_separator|field_text
+            title: Thousands separator
+            description|text
+              text: Examples: %%_examples.
+              args
+              - examples: "" | " "
+            element_attributes
+            - name: thousands_separator
+            - size: 1
+            - minlength: 0
+            - maxlength: 1
+            - required: null
     - button_save|button
         title: save
         attributes
         - value: save
     - button_restore|button
         title: restore
+        novalidate: true
         attributes
         - value: restore
-        - =: disabled

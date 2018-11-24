@@ -6,6 +6,7 @@
 
 namespace effcore\modules\locales {
           use \effcore\language;
+          use \effcore\message;
           use \effcore\storage;
           use \effcore\url;
           abstract class events_form_locales {
@@ -14,8 +15,8 @@ namespace effcore\modules\locales {
     $languages = language::get_all();
     foreach ($languages as $c_language) {
       $title = $c_language->code == 'en' ?
-        $c_language->title->en :
-        $c_language->title->en.' ('.$c_language->title->native.')';
+               $c_language->title->en :
+               $c_language->title->en.' ('.$c_language->title->native.')';
       $items['#language']->option_insert($title, $c_language->code);
     }
     $items['#language']->value_set(
@@ -27,6 +28,12 @@ namespace effcore\modules\locales {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $items['#language']->value_get());
+        message::insert('The changes was saved.');
+        url::go('/manage/locales');
+        break;
+      case 'restore':
+        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/lang_code');
+        message::insert('The changes was deleted.');
         url::go('/manage/locales');
         break;
     }

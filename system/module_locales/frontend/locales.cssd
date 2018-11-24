@@ -7,4 +7,4 @@
     border-right: 1px dotted %%_color_bg}
   x-language:last-child {margin-right: 0; padding-right: 0; border: none}
 
-  x-language[data-code='en'] {padding-left: 40px; background: url('images/flag-en-mini.svg') no-repeat 0 2px}
+  x-language[data-code='en'] {padding-left: 40px; background: url('images/flag-us-mini.svg') no-repeat 0 2px}

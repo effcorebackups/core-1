@@ -56,7 +56,10 @@ translations
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Database name: Имя базы данных
+    - Date format: Формат даты
+    - Date-time format: Формат даты-времени
     - Date: Дата
+    - Decimal point: Десятичная точка
     - Decoration: Оформление
     - default type: тип по умолчанию
     - delete file\: %%_name: удалить файл: %%_name
@@ -91,6 +94,7 @@ translations
     - Event: Событие
     - events: события
     - Events: События
+    - Examples\: %%_examples.: Примеры: %%_examples.
     - Execute: Выполнить
     - expand: развернуть
     - Expired date: Дата истечения
@@ -315,6 +319,8 @@ translations
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загруженного файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP модулей!
     - the uploaded file was only partially uploaded: загружаемый файл был загружен только частично
+    - Thousands separator: Разделитель тысяч
+    - Time format: Формат времени
     - Time: Время
     - Timezone: Часовой пояс
     - Title: Заголовок
