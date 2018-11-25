@@ -393,17 +393,17 @@ namespace effcore {
   ###################################
 
   # note:
-  # ┌────────────────────────────┬──────────────────────────────────────────┐
-  # │ function                   │ description                              │
-  # ╞════════════════════════════╪══════════════════════════════════════════╡
-  # │     locale::date_global(…) │ convert local date     to   UTC date     │
-  # │     locale::time_global(…) │ convert local time     to   UTC time     │
-  # │ locale::datetime_global(…) │ convert local datetime to   UTC datetime │
-  # │     locale::date_format(…) │ convert   UTC date     to local date     │
-  # │     locale::time_format(…) │ convert   UTC time     to local time     │
-  # │ locale::datetime_format(…) │ convert   UTC datetime to local datetime │
-  # │ locale::timestmp_format(…) │ convert   UTC timestmp to local datetime │
-  # └────────────────────────────┴──────────────────────────────────────────┘
+  # ┌──────────────────────────────────────┬────────────────────────────────────────────┐
+  # │ function                             │ description                                │
+  # ╞══════════════════════════════════════╪════════════════════════════════════════════╡
+  # │     locale::date_native_to_global(…) │ convert native date     to    UTC date     │
+  # │     locale::time_native_to_global(…) │ convert native time     to    UTC time     │
+  # │ locale::datetime_native_to_global(…) │ convert native datetime to    UTC datetime │
+  # │     locale::date_global_to_native(…) │ convert    UTC date     to native date     │
+  # │     locale::time_global_to_native(…) │ convert    UTC time     to native time     │
+  # │ locale::datetime_global_to_native(…) │ convert    UTC datetime to native datetime │
+  # │ locale::timestmp_global_to_native(…) │ convert    UTC timestmp to native datetime │
+  # └──────────────────────────────────────┴────────────────────────────────────────────┘
 
   static function timezone_offset_int_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_client_get() {return date_default_timezone_get();}

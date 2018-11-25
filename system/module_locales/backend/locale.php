@@ -26,13 +26,13 @@ namespace effcore {
   ### formats ###
   ###############
 
-  static function     date_global($date)     {return \DateTime::createFromFormat(static::settings_get()->format_date,     $date,      new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format( 'Y-m-d'       );}
-  static function     time_global($time)     {return \DateTime::createFromFormat(static::settings_get()->format_time,     $time,      new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format(       'H:i:s' );}
-  static function datetime_global($datetime) {return \DateTime::createFromFormat(static::settings_get()->format_datetime, $datetime,  new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format( 'Y-m-d H:i:s' );}
-  static function     date_format($date)     {return \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_date      );}
-  static function     time_format($time)     {return \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_time      );}
-  static function datetime_format($datetime) {return \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_datetime  );}
-  static function timestmp_format($timestmp) {return \DateTime::createFromFormat('U',           $timestmp                          )->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_datetime  );}
+  static function     date_native_to_global($date)     {return \DateTime::createFromFormat(static::settings_get()->format_date,     $date,      new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format( 'Y-m-d'       );}
+  static function     time_native_to_global($time)     {return \DateTime::createFromFormat(static::settings_get()->format_time,     $time,      new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format(       'H:i:s' );}
+  static function datetime_native_to_global($datetime) {return \DateTime::createFromFormat(static::settings_get()->format_datetime, $datetime,  new \DateTimeZone(core::timezone_client_get()))->setTimezone( new \DateTimeZone('UTC') )->format( 'Y-m-d H:i:s' );}
+  static function     date_global_to_native($date)     {return \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_date      );}
+  static function     time_global_to_native($time)     {return \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_time      );}
+  static function datetime_global_to_native($datetime) {return \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC'))->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_datetime  );}
+  static function timestmp_global_to_native($timestmp) {return \DateTime::createFromFormat('U',           $timestmp                          )->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format( static::settings_get()->format_datetime  );}
 
   static function persent_format($number, $precision = 2) {return static::number_format(floatval($number), $precision).'%';}
   static function msecond_format($number, $precision = 6) {return static::number_format(floatval($number), $precision);}

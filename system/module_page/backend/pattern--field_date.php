@@ -31,13 +31,13 @@ namespace effcore {
   function value_get() {
     $value = parent::value_get();
     if ($this->is_local && core::validate_date_local($value))
-         return locale::date_global($value);
+         return locale::date_native_to_global($value);
     else return $value;
   }
 
   function value_set($value) {
     if ($this->is_local && core::validate_date($value))
-         parent::value_set(locale::date_format($value));
+         parent::value_set(locale::date_global_to_native($value));
     else parent::value_set($value);
   }
 

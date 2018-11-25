@@ -24,8 +24,8 @@ namespace effcore\modules\user {
         $user_roles = user::id_roles_get($user->nick);
         $values = $user->values_get();
         $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
-        $values['created'] = locale::datetime_format($values['created']);
-        $values['updated'] = locale::datetime_format($values['updated']);
+        $values['created'] = locale::datetime_global_to_native($values['created']);
+        $values['updated'] = locale::datetime_global_to_native($values['updated']);
         $values['password_hash'] = '*****';
         $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
         $values['avatar_path_relative'] = $values['avatar_path_relative'] ?: '-';
