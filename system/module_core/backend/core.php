@@ -430,13 +430,6 @@ namespace effcore {
   static function     validate_time_global($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
   static function validate_datetime_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
 
-  static function validate_time($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-          '%^(?<H>[0-1][0-9]|20|21|22|23)'.
-      '(?:[:](?<i>[0-5][0-9]))'.
-      '(?:[:](?<s>[0-5][0-9])|)$%']]);
-  }
-
   static function validate_hex_color($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
       '%^#(?<R>[a-f0-9]{2})'.
