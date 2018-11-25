@@ -10,6 +10,7 @@ namespace effcore {
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
+  public $is_local = false;
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
@@ -24,6 +25,17 @@ namespace effcore {
   function build() {
     $this->attribute_insert('value', core::time_get(), 'element_attributes_default');
     parent::build();
+  }
+
+  function value_get() {
+    $value = parent::value_get();
+    if ($this->is_local) return locale::global_time($value);
+    else                 return $value;
+  }
+
+  function value_set($value) {
+    if ($this->is_local) parent::value_set(locale::format_time($value));
+    else                 parent::value_set($value);
   }
 
   ###########################

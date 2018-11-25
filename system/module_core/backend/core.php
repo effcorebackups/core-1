@@ -396,9 +396,12 @@ namespace effcore {
   # see: locale::format_date(…);
   # see: locale::format_datetime(…);
 
-  static function time_get    ($offset = '', $format = 'H:i:s')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format($format);}
-  static function date_get    ($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format($format);}
-  static function datetime_get($offset = '', $format = 'Y-m-d H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify($offset ?: '+0')->format($format);}
+  static function time_get    ($offset = '', $format = 'H:i:s')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function date_get    ($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function datetime_get($offset = '', $format = 'Y-m-d H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+
+  static function timezone_offset_int_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
+  static function timezone_client_get() {return date_default_timezone_get();}
 
   ###############
   ### filters ###

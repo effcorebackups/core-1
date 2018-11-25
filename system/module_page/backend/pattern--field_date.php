@@ -10,6 +10,7 @@ namespace effcore {
   const input_min_date = '0001-01-01';
   const input_max_date = '9999-12-31';
 
+  public $is_local = false;
   public $title = 'Date';
   public $attributes = ['data-type' => 'date'];
   public $element_attributes_default = [
@@ -23,6 +24,17 @@ namespace effcore {
   function build() {
     $this->attribute_insert('value', core::date_get(), 'element_attributes_default');
     parent::build();
+  }
+
+  function value_get() {
+    $value = parent::value_get();
+    if ($this->is_local) return locale::global_date($value);
+    else                 return $value;
+  }
+
+  function value_set($value) {
+    if ($this->is_local) parent::value_set(locale::format_date($value));
+    else                 parent::value_set($value);
   }
 
   ###########################
