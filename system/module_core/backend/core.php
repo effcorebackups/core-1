@@ -423,12 +423,12 @@ namespace effcore {
        '^(?<float_l>[-]{0,1}[1-9][0-9]+[.][0-9]{1,3})$%']]);
   }
 
-  static function     validate_date_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_date,     $value, new \DateTimeZone('UTC')));}
-  static function     validate_time_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_time,     $value, new \DateTimeZone('UTC')));}
-  static function validate_datetime_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_datetime, $value, new \DateTimeZone('UTC')));}
-  static function     validate_date_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',                                 $value, new \DateTimeZone('UTC')));}
-  static function     validate_time_global($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
-  static function validate_datetime_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
+  static function     validate_date_local($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_date,     $value, new \DateTimeZone('UTC')));}
+  static function     validate_time_local($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_time,     $value, new \DateTimeZone('UTC')));}
+  static function validate_datetime_local($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_datetime, $value, new \DateTimeZone('UTC')));}
+  static function     validate_date      ($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',                                 $value, new \DateTimeZone('UTC')));}
+  static function     validate_time      ($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
+  static function validate_datetime      ($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
 
   static function validate_hex_color($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>

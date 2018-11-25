@@ -37,7 +37,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    if ($this->is_local && core::validate_time_global($value))
+    if ($this->is_local && core::validate_time($value))
          parent::value_set(locale::time_format($value));
     else parent::value_set($value);
   }
@@ -71,8 +71,8 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!(($field->is_local          && core::validate_time_local ($new_value)) ||
-          ($field->is_local == false && core::validate_time_global($new_value)))) {
+    if (!(($field->is_local          && core::validate_time_local($new_value)) ||
+          ($field->is_local == false && core::validate_time      ($new_value)))) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
