@@ -1,7 +1,7 @@
 settings
   lang_code: en
   format_date: Y-m-d
-  format_time: h:i:s
-  format_datetime: Y-m-d h:i:s
+  format_time: H:i:s
+  format_datetime: Y-m-d H:i:s
   decimal_point: .
   thousands_separator: 

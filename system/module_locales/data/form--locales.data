@@ -31,13 +31,9 @@ forms
             - maxlength: 100
         - format_time|field_text
             title: Time format
-            description|text
-              text: Examples: %%_examples.
-              args
-              - examples: "h:i:s" | "H:i:s"
             element_attributes
             - name: format_time
-            - value: h:i:s
+            - value: H:i:s
             - minlength: 3
             - maxlength: 100
         - format_datetime|field_text
@@ -45,10 +41,10 @@ forms
             description|text
               text: Examples: %%_examples.
               args
-              - examples: "Y-m-d h:i:s" | "d.m.Y H:i:s"
+              - examples: "Y-m-d H:i:s" | "d.m.Y H:i:s"
             element_attributes
             - name: format_datetime
-            - value: Y-m-d h:i:s
+            - value: Y-m-d H:i:s
             - minlength: 3
             - maxlength: 100
         - decimal_point|field_text
