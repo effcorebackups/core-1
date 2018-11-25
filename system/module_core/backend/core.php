@@ -420,6 +420,13 @@ namespace effcore {
   static function     validate_time_global($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
   static function validate_datetime_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
 
+  static function     sanitize_date_native($value) {$result = \DateTime::createFromFormat(locale::settings_get()->format_date,     $value, new \DateTimeZone('UTC')); if ($result) return $result->format( locale::settings_get()->format_date     );}
+  static function     sanitize_time_native($value) {$result = \DateTime::createFromFormat(locale::settings_get()->format_time,     $value, new \DateTimeZone('UTC')); if ($result) return $result->format( locale::settings_get()->format_time     );}
+  static function sanitize_datetime_native($value) {$result = \DateTime::createFromFormat(locale::settings_get()->format_datetime, $value, new \DateTimeZone('UTC')); if ($result) return $result->format( locale::settings_get()->format_datetime );}
+  static function     sanitize_date_global($value) {$result = \DateTime::createFromFormat('Y-m-d',                                 $value, new \DateTimeZone('UTC')); if ($result) return $result->format( 'Y-m-d'                                 );}
+  static function     sanitize_time_global($value) {$result = \DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')); if ($result) return $result->format(       'H:i:s'                           );}
+  static function sanitize_datetime_global($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')); if ($result) return $result->format( 'Y-m-d H:i:s'                           );}
+
   ###############
   ### filters ###
   ###############
