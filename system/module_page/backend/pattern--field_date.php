@@ -10,7 +10,7 @@ namespace effcore {
   const input_min_date = '0001-01-01';
   const input_max_date = '9999-12-31';
 
-  public $is_local = false;
+  public $is_native = false;
   public $title = 'Date';
   public $attributes = ['data-type' => 'date'];
   public $element_attributes_default = [
@@ -30,15 +30,17 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_local && core::validate_date_native($value))
+    if ($this->is_native && core::validate_date_native($value))
          return locale::date_native_to_global($value);
     else return $value;
   }
 
   function value_set($value) {
-    if ($this->is_local && core::validate_date_global($value))
-         parent::value_set(locale::date_global_to_native($value));
-    else parent::value_set($value);
+    if ($this->is_native == false && core::validate_date_global($value)) {parent::value_set(core::sanitize_date_global   ($value)); return;}
+    if ($this->is_native == false && core::validate_date_native($value)) {parent::value_set(locale::date_native_to_global($value)); return;}
+    if ($this->is_native          && core::validate_date_global($value)) {parent::value_set(locale::date_global_to_native($value)); return;}
+    if ($this->is_native          && core::validate_date_native($value)) {parent::value_set(core::sanitize_date_native   ($value)); return;}
+    parent::value_set($value);
   }
 
   ###########################
@@ -69,8 +71,8 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!(($field->is_local          && core::validate_date_native($new_value)) ||
-          ($field->is_local == false && core::validate_date_global($new_value)))) {
+    if (!(($field->is_native          && core::validate_date_native($new_value)) ||
+          ($field->is_native == false && core::validate_date_global($new_value)))) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );

@@ -10,7 +10,7 @@ namespace effcore {
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
-  public $is_local = false;
+  public $is_native = false;
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
@@ -31,13 +31,13 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_local && core::validate_time_native($value))
+    if ($this->is_native && core::validate_time_native($value))
          return locale::time_native_to_global($value);
     else return $value;
   }
 
   function value_set($value) {
-    if ($this->is_local && core::validate_time_global($value))
+    if ($this->is_native && core::validate_time_global($value))
          parent::value_set(locale::time_global_to_native($value));
     else parent::value_set($value);
   }
@@ -71,8 +71,8 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!(($field->is_local          && core::validate_time_native($new_value)) ||
-          ($field->is_local == false && core::validate_time_global($new_value)))) {
+    if (!(($field->is_native          && core::validate_time_native($new_value)) ||
+          ($field->is_native == false && core::validate_time_global($new_value)))) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
