@@ -30,13 +30,13 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_local && core::validate_date_local($value))
+    if ($this->is_local && core::validate_date_native($value))
          return locale::date_native_to_global($value);
     else return $value;
   }
 
   function value_set($value) {
-    if ($this->is_local && core::validate_date($value))
+    if ($this->is_local && core::validate_date_global($value))
          parent::value_set(locale::date_global_to_native($value));
     else parent::value_set($value);
   }
@@ -69,8 +69,8 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!(($field->is_local          && core::validate_date_local($new_value)) ||
-          ($field->is_local == false && core::validate_date      ($new_value)))) {
+    if (!(($field->is_local          && core::validate_date_native($new_value)) ||
+          ($field->is_local == false && core::validate_date_global($new_value)))) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );
