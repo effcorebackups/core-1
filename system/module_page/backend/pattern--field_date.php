@@ -28,12 +28,12 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_local) return locale::global_date($value);
+    if ($this->is_local) return locale::date_global($value);
     else                 return $value;
   }
 
   function value_set($value) {
-    if ($this->is_local) parent::value_set(locale::format_date($value));
+    if ($this->is_local) parent::value_set(locale::date_format($value));
     else                 parent::value_set($value);
   }
 

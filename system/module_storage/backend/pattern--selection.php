@@ -75,9 +75,9 @@ namespace effcore {
                 case 'field':
                   $c_type = $entity->fields[$c_field->field_name]->type;
                   $c_value = $c_instance->{$c_field->field_name};
-                  if ($c_type == 'date')     $c_value = locale::format_date    ($c_value);
-                  if ($c_type == 'time')     $c_value = locale::format_time    ($c_value);
-                  if ($c_type == 'datetime') $c_value = locale::format_datetime($c_value);
+                  if ($c_type == 'date')     $c_value = locale::date_format    ($c_value);
+                  if ($c_type == 'time')     $c_value = locale::time_format    ($c_value);
+                  if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);
                   if ($c_type == 'bool')     $c_value = $c_value ? 'Yes' : 'No';
                   $c_tbody_row[] = new table_body_row_cell(['class' => [
                     $c_field->field_name =>

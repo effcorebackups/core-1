@@ -91,7 +91,7 @@ namespace effcore {
     $diagram = new diagram('', 'radial');
     $colors = ['#216ce4', '#30c432', '#fc5740', '#fd9a1e'];
     foreach ($statistics as $c_param => $c_value) {
-      $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
+      $diagram->slice_add($c_param, $c_value / $total * 100, locale::msecond_format($c_value).' sec.', array_shift($colors));
     }
     return new block('Total load', ['class' => ['diagram-load' => 'diagram-load']], [
       $diagram
@@ -108,7 +108,7 @@ namespace effcore {
         ['value' => 'value', 'value-error' => 'value-error'] :
         ['value' => 'value'];
       $tbody[] = new table_body_row(['class' => [$c_row_class => $c_row_class]], [
-        new table_body_row_cell(['class' => ['time'        => 'time'       ]], locale::format_msecond($c_log->time)),
+        new table_body_row_cell(['class' => ['time'        => 'time'       ]], locale::msecond_format($c_log->time)),
         new table_body_row_cell(['class' => ['object'      => 'object'     ]], translation::get($c_log->object,      $c_log->args)),
         new table_body_row_cell(['class' => ['action'      => 'action'     ]], translation::get($c_log->action,      $c_log->args)),
         new table_body_row_cell(['class' => ['description' => 'description']], translation::get($c_log->description, $c_log->args)),

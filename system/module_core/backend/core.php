@@ -392,9 +392,9 @@ namespace effcore {
   ### functionality for date|time ###
   ###################################
 
-  # see: locale::format_time(…);
-  # see: locale::format_date(…);
-  # see: locale::format_datetime(…);
+  # see:     locale::time_format(…);
+  # see:     locale::date_format(…);
+  # see: locale::datetime_format(…);
 
   static function time_get    ($offset = '', $format = 'H:i:s')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function date_get    ($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
@@ -716,7 +716,7 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
+  static function number_format($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
     $result = $precision ? substr(
       number_format($number, $precision, $dec_point, $thousands), 0, -5) :
