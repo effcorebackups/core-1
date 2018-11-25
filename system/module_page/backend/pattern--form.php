@@ -190,8 +190,8 @@ namespace effcore {
       $counter = 0;
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_spl_dir_info) {
         if ($c_spl_dir_info->isDir()) {
-          if (core::validate_date($c_spl_dir_info->getFilename()) &&
-                                  $c_spl_dir_info->getFilename() < core::date_get()) {
+          if (core::validate_date_global($c_spl_dir_info->getFilename()) &&
+                                         $c_spl_dir_info->getFilename() < core::date_get()) {
           # try to recursively delete all files in directory
             foreach (new ri_iterator(
                      new rd_iterator($c_dir_path, file::scan_mode)) as $c_file_path => $c_spl_file_info) {

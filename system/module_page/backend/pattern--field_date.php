@@ -69,7 +69,8 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!core::validate_date($new_value)) {
+    if (!(($field->is_local          && core::validate_date_local ($new_value)) ||
+          ($field->is_local == false && core::validate_date_global($new_value)))) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );

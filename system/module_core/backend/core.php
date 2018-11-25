@@ -430,17 +430,6 @@ namespace effcore {
   static function     validate_time_global($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
   static function validate_datetime_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
 
-  static function validate_date($value) {
-    $matches = [];
-    if (strlen($value) &&
-        preg_match('%^(?<Y>[0-9]{4})-(?<m>[0-1][0-9])-(?<d>[0-3][0-9])$%', $value, $matches) &&
-        checkdate($matches['m'],
-                  $matches['d'],
-                  $matches['Y'])) {
-      return $value;
-    } else return false;
-  }
-
   static function validate_time($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
           '%^(?<H>[0-1][0-9]|20|21|22|23)'.
