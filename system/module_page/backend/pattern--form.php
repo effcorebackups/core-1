@@ -177,8 +177,8 @@ namespace effcore {
   # ──────────────────────────────────────────────────────────────────────────────
 
   function validation_cache_get_date($format = 'Y-m-d') {
-    $timestamp = static::validation_id_created_extract($this->validation_id);
-    return \DateTime::createFromFormat('U', $timestamp)->format($format);
+    $timestmp = static::validation_id_created_extract($this->validation_id);
+    return \DateTime::createFromFormat('U', $timestmp)->format($format);
   }
 
   protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/') ?: [];}

@@ -392,12 +392,12 @@ namespace effcore {
   ### functionality for date|time ###
   ###################################
 
-  # see:     locale::time_format(…);
   # see:     locale::date_format(…);
+  # see:     locale::time_format(…);
   # see: locale::datetime_format(…);
 
-  static function time_get    ($offset = '', $format = 'H:i:s')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function date_get    ($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function     date_get($offset = '', $format = 'Y-m-d')       {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function     time_get($offset = '', $format =       'H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function datetime_get($offset = '', $format = 'Y-m-d H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
   static function timezone_offset_int_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
@@ -422,6 +422,13 @@ namespace effcore {
        '^(?<float_s>[-]{0,1}[0-9][.][0-9]{1,3})$|'.
        '^(?<float_l>[-]{0,1}[1-9][0-9]+[.][0-9]{1,3})$%']]);
   }
+
+  static function     validate_date_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_date,     $value, new \DateTimeZone('UTC')));}
+  static function     validate_time_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_time,     $value, new \DateTimeZone('UTC')));}
+  static function validate_datetime_local ($value) {return (bool)(\DateTime::createFromFormat(locale::settings_get()->format_datetime, $value, new \DateTimeZone('UTC')));}
+  static function     validate_date_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',                                 $value, new \DateTimeZone('UTC')));}
+  static function     validate_time_global($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',                           $value, new \DateTimeZone('UTC')));}
+  static function validate_datetime_global($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',                           $value, new \DateTimeZone('UTC')));}
 
   static function validate_date($value) {
     $matches = [];

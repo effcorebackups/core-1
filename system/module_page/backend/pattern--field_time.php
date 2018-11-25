@@ -23,19 +23,23 @@ namespace effcore {
   ];
 
   function build() {
-    $this->attribute_insert('value', core::time_get(), 'element_attributes_default');
     parent::build();
+    $value = parent::value_get();
+    if ($value) $this->value_set($value);
+    else        $this->value_set(core::time_get());
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_local) return locale::time_global($value);
-    else                 return $value;
+    if ($this->is_local && core::validate_time_local($value))
+         return locale::time_global($value);
+    else return $value;
   }
 
   function value_set($value) {
-    if ($this->is_local) parent::value_set(locale::time_format($value));
-    else                 parent::value_set($value);
+    if ($this->is_local && core::validate_time_global($value))
+         parent::value_set(locale::time_format($value));
+    else parent::value_set($value);
   }
 
   ###########################
