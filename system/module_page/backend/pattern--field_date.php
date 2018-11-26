@@ -7,7 +7,7 @@
 namespace effcore {
           class field_date extends field_text {
 
-  const input_min_date = '0001-01-01';
+  const input_min_date = '0000-01-01';
   const input_max_date = '9999-12-31';
 
   public $is_native = false;
@@ -24,8 +24,8 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value         && $this->is_native == false && core::validate_date_global($value)) {$this->value_set(  core::sanitize_date_global          ($value) ); return;}
-    if ($value         && $this->is_native          && core::validate_date_global($value)) {$this->value_set(locale::date_global_to_native         ($value) ); return;}
+    if ($value         && $this->is_native == false && core::validate_date_global($value)) {$this->value_set(  core::sanitize_date_global           ($value)); return;}
+    if ($value         && $this->is_native          && core::validate_date_global($value)) {$this->value_set(locale::date_global_to_native          ($value)); return;}
     if ($value == null && $this->is_native == false                                      ) {$this->value_set(                              core::date_get() ); return;}
     if ($value == null && $this->is_native                                               ) {$this->value_set(locale::date_global_to_native(core::date_get())); return;}
   }

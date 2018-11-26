@@ -25,8 +25,8 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value         && $this->is_native == false && core::validate_time_global($value)) {$this->value_set(  core::sanitize_time_global          ($value) ); return;}
-    if ($value         && $this->is_native          && core::validate_time_global($value)) {$this->value_set(locale::time_global_to_native         ($value) ); return;}
+    if ($value         && $this->is_native == false && core::validate_time_global($value)) {$this->value_set(  core::sanitize_time_global           ($value)); return;}
+    if ($value         && $this->is_native          && core::validate_time_global($value)) {$this->value_set(locale::time_global_to_native          ($value)); return;}
     if ($value == null && $this->is_native == false                                      ) {$this->value_set(                              core::time_get() ); return;}
     if ($value == null && $this->is_native                                               ) {$this->value_set(locale::time_global_to_native(core::time_get())); return;}
   }
