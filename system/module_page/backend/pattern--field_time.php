@@ -26,7 +26,10 @@ namespace effcore {
     parent::build();
     $value = parent::value_get();
     if ($value) $this->value_set($value);
-    else        $this->value_set(core::time_get());
+    else {
+      if ($this->is_native == false) $this->value_set(                              core::time_get() );
+      if ($this->is_native         ) $this->value_set(locale::time_global_to_native(core::time_get()));
+    }
   }
 
   function value_get() {
@@ -37,10 +40,8 @@ namespace effcore {
   }
 
   function value_set($value) {
-    if ($this->is_native == false && core::validate_time_global($value)) {parent::value_set(core::sanitize_time_global   ($value)); return;}
-    if ($this->is_native == false && core::validate_time_native($value)) {parent::value_set(locale::time_native_to_global($value)); return;}
-    if ($this->is_native          && core::validate_time_global($value)) {parent::value_set(locale::time_global_to_native($value)); return;}
-    if ($this->is_native          && core::validate_time_native($value)) {parent::value_set(core::sanitize_time_native   ($value)); return;}
+    if ($this->is_native == false && core::validate_time_global($value)) {parent::value_set(core::sanitize_time_global($value)); return;}
+    if ($this->is_native          && core::validate_time_native($value)) {parent::value_set(core::sanitize_time_native($value)); return;}
     parent::value_set($value);
   }
 
