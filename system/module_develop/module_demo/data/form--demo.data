@@ -168,42 +168,6 @@ forms
             - min: -1
             - max: +1
             - step: 0.2
-      # field_date
-        - date|field_date
-            title: UTC Date
-            description|text_multiline
-              text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field %%_type.
-              args
-              - type: field_date
-            element_attributes
-            - name: date
-            - value: 2020-01-01
-      # field_time
-        - time|field_time
-            title: UTC Time
-            description|text_multiline
-              text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field %%_type.
-              args
-              - type: field_time
-            element_attributes
-            - name: time
-            - value: 01:23:45
-      # field_timezone
-        - timezone|field_timezone
-            title: Timezone
-            description|text
-              text: Field %%_type.
-              args
-              - type: field_timezone
-            element_attributes
-            - name: timezone
-            - required: required
-            selected
-            - 424: 424
       # field_color
         - color|field_color
             title: Color
@@ -216,7 +180,85 @@ forms
             element_attributes
             - name: color
             - value: #ffffff
-      # field_textarea
+      # ─────────────────────────────────────────────────────────────────────
+      # date/time
+      # ─────────────────────────────────────────────────────────────────────
+        - date|field_date
+            title: UTC Date
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_date
+            element_attributes
+            - name: date
+            - value: 2030-02-01
+      # field_date native
+        - date_native|field_date
+            title: Native Date
+            is_native: true
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_date
+            element_attributes
+            - name: date_native
+            - value: 2030-02-01
+      # field_time
+        - time|field_time
+            title: UTC Time
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_time
+            element_attributes
+            - name: time
+            - value: 01:23:45
+      # field_time native
+        - time_native|field_time
+            title: Native Time
+            is_native: true
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_time
+            element_attributes
+            - name: time_native
+            - value: 01:23:45
+      # field_datetime_native
+        - datetime_native|field_datetime_native
+            title: Native Date/Time
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_datetime_native
+            element_attributes
+            - name: datetime
+            - value: 2030-02-01 01:23:45
+      # field_timezone
+        - timezone|field_timezone
+            title: Timezone
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_timezone
+            element_attributes
+            - name: timezone
+            - required: required
+            selected
+            - 424: 424
+      # ─────────────────────────────────────────────────────────────────────
+      # textarea
+      # ─────────────────────────────────────────────────────────────────────
         - textarea|field_textarea
             title: Textarea
             description|text
@@ -226,7 +268,9 @@ forms
             element_attributes
             - name: textarea
             - value: text in textarea
-      # field_select
+      # ─────────────────────────────────────────────────────────────────────
+      # select
+      # ─────────────────────────────────────────────────────────────────────
         - select|field_select
             title: Selection list
             description|text_multiline

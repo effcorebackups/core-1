@@ -56,8 +56,8 @@ translations
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Database name: Имя базы данных
-    - Date format: Формат даты
     - Date / time format: Формат даты / времени
+    - Date format: Формат даты
     - Date: Дата
     - Decimal point: Десятичная точка
     - Decoration: Оформление
@@ -203,6 +203,9 @@ translations
     - Modules: Модули
     - name: имя
     - Name: Имя
+    - Native Date: Местная Дата
+    - Native Date/Time: Местное Дата/Время
+    - Native Time: Местное Время
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
     - nick: ник
