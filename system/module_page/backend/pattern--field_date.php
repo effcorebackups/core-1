@@ -24,11 +24,12 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value) $this->value_set($value);
-    else {
-      if ($this->is_native == false) $this->value_set(                              core::date_get() );
-      if ($this->is_native         ) $this->value_set(locale::date_global_to_native(core::date_get()));
-    }
+    if ($value         && $this->is_native == false && core::validate_date_global($value)) {$this->value_set(  core::sanitize_date_global          ($value) ); return;}
+    if ($value         && $this->is_native == false && core::validate_date_native($value)) {$this->value_set(locale::date_native_to_global         ($value) ); return;}
+    if ($value         && $this->is_native          && core::validate_date_global($value)) {$this->value_set(locale::date_global_to_native         ($value) ); return;}
+    if ($value         && $this->is_native          && core::validate_date_native($value)) {$this->value_set(  core::sanitize_date_native          ($value) ); return;}
+    if ($value == null && $this->is_native == false                                      ) {$this->value_set(                              core::date_get() ); return;}
+    if ($value == null && $this->is_native                                               ) {$this->value_set(locale::date_global_to_native(core::date_get())); return;}
   }
 
   function value_get() {
