@@ -37,9 +37,11 @@ namespace effcore {
   }
 
   function value_set($value) {
-    if ($this->is_native && core::validate_time_global($value))
-         parent::value_set(locale::time_global_to_native($value));
-    else parent::value_set($value);
+    if ($this->is_native == false && core::validate_time_global($value)) {parent::value_set(core::sanitize_time_global   ($value)); return;}
+    if ($this->is_native == false && core::validate_time_native($value)) {parent::value_set(locale::time_native_to_global($value)); return;}
+    if ($this->is_native          && core::validate_time_global($value)) {parent::value_set(locale::time_global_to_native($value)); return;}
+    if ($this->is_native          && core::validate_time_native($value)) {parent::value_set(core::sanitize_time_native   ($value)); return;}
+    parent::value_set($value);
   }
 
   ###########################
