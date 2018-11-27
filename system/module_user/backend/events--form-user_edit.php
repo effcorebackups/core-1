@@ -19,6 +19,7 @@ namespace effcore\modules\user {
     $user = (new instance('user', ['nick' => $nick]))->select();
     $items['#email']->value_set($user->email);
     $items['#nick']->value_set($user->nick);
+    $items['#timezone']->value_set($user->timezone);
     $items['#avatar']->pool_values_init_old_from_storage(
       $user->avatar_path ? [$user->avatar_path] : []
     );
@@ -83,6 +84,7 @@ namespace effcore\modules\user {
         $user = (new instance('user', ['nick' => $nick]))->select();
         $user->email = strtolower($items['#email']->value_get());
         $user->nick  = strtolower($items['#nick']->value_get());
+        $user->timezone = $items['#timezone']->value_get();
         if ($items['#password_new']->value_get()) {
           $user->password_hash = core::hash_password_get($items['#password_new']->value_get());
         }

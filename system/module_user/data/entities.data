@@ -216,6 +216,7 @@ entities
         title: Timezone
         type: varchar
         size: 64
+        default: UTC
     constraints
     - primary_nick
         type: primary

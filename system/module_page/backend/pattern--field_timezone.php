@@ -7,8 +7,12 @@
 namespace effcore {
           class field_timezone extends field_select {
 
-  public $attributes = ['data-type' => 'timezone'];
   public $sort = 'by_zones'; # by_zones | by_names
+  public $attributes = ['data-type' => 'timezone'];
+  public $element_attributes_default = [
+    'name'     => 'timezone',
+    'required' => 'required'
+  ];
 
   function build() {
     parent::build();

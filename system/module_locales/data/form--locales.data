@@ -16,7 +16,6 @@ forms
             title: Server timezone
             element_attributes
             - name: timezone_server
-            - required: required
             - disabled: disabled
         - format_date|field_text
             title: Date format
