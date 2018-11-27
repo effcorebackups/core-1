@@ -406,8 +406,9 @@ namespace effcore {
   # │ locale::timestmp_global_to_native(…) │ convert any timestmp to native datetime │
   # └──────────────────────────────────────┴─────────────────────────────────────────┘
 
-  static function timezone_offset_int_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_client_get() {return date_default_timezone_get();}
+  static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
+  static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
 
   static function     date_get($offset = '', $format = 'Y-m-d'      ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function     time_get($offset = '', $format =       'H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
