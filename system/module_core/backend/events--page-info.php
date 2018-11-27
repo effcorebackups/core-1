@@ -53,7 +53,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], php_uname('n')));
     $info->child_insert(new markup('dt', [], 'Server timezone'));
     $info->child_insert(new markup('dd', [], date_default_timezone_get()));
-    $info->child_insert(new markup('dt', [], 'Server date / time'));
+    $info->child_insert(new markup('dt', [], 'Server UTC date / time'));
     $info->child_insert(new markup('dd', [], locale::datetime_global_to_native(core::datetime_get())));
     $info->child_insert(new markup('dt', [], 'Session expiration date'));
     $info->child_insert(new markup('dd', [], locale::timestmp_global_to_native(session::id_expired_extract(session::id_get()))));
