@@ -28,10 +28,14 @@ namespace effcore\modules\user {
         $values['updated'] = locale::datetime_global_to_native($values['updated']);
         $values['password_hash'] = '*****';
         $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
-        $values['avatar_path_relative'] = $values['avatar_path_relative'] ?: '-';
+        $values['avatar_path'] = $values['avatar_path'] ?: '-';
+        $values['timezone'] = $values['timezone'] ?: '-';
       # show table
         $thead = [['Parameter', 'Value']];
-        $tbody = core::array_rotate([array_keys($values), array_values($values)]);
+        $tbody = core::array_rotate([
+          array_keys  ($values),
+          array_values($values)
+        ]);
         return new block('', ['class' => ['user-info' => 'user-info']],
           new table([], $tbody, $thead)
         );

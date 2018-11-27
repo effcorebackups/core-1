@@ -207,11 +207,15 @@ entities
         type: integer
         not_null: true
         default: 0
-    - avatar_path_relative
-        title: Avatar relative path
+    - avatar_path
+        title: Avatar path
         hidden: true
         type: varchar
         size: 1024
+    - timezone
+        title: Timezone
+        type: varchar
+        size: 64
     constraints
     - primary_nick
         type: primary

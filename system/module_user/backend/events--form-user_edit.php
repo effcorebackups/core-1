@@ -20,7 +20,7 @@ namespace effcore\modules\user {
     $items['#email']->value_set($user->email);
     $items['#nick']->value_set($user->nick);
     $items['#avatar']->pool_values_init_old_from_storage(
-      $user->avatar_path_relative ? [$user->avatar_path_relative] : []
+      $user->avatar_path ? [$user->avatar_path] : []
     );
   }
 
@@ -90,8 +90,8 @@ namespace effcore\modules\user {
         if (isset($avatar_info[0]->path) &&
                   $avatar_info[0]->path) {
            $c_file = new file($avatar_info[0]->path);
-           $user->avatar_path_relative = $c_file->path_relative_get(); } else {
-           $user->avatar_path_relative = '';
+           $user->avatar_path = $c_file->path_relative_get(); } else {
+           $user->avatar_path = '';
         }
         if ($user->update()) {
           message::insert(
