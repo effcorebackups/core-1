@@ -27,7 +27,7 @@ namespace effcore\modules\locales {
     $items['#format_datetime'    ]->value_set($settings->format_datetime);
     $items['#decimal_point'      ]->value_set($settings->decimal_point);
     $items['#thousands_separator']->value_set($settings->thousands_separator);
-    $items['#timezone_server'    ]->value_set(field_timezone::id_by_title_get(date_default_timezone_get()));
+    $items['#timezone_server'    ]->value_set(date_default_timezone_get());
   }
 
   static function on_submit($form, $items) {
