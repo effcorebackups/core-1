@@ -196,7 +196,7 @@ forms
             - value: 2030-02-01
       # field_time
         - time|field_time
-            title: UTC Time
+            title: Time
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
@@ -219,19 +219,6 @@ forms
             element_attributes
             - name: date_native
             - value: 2030-02-01
-      # field_time native
-        - time_native|field_time
-            title: Native Time
-            is_native: true
-            description|text_multiline
-              text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field %%_type.
-              args
-              - type: field_time
-            element_attributes
-            - name: time_native
-            - value: 01:23:45
       # field_datetime_native
         - datetime_native|field_datetime_native
             title: Native Date/Time

@@ -10,7 +10,6 @@ namespace effcore {
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
-  public $is_native = false;
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
@@ -25,23 +24,21 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value         && $this->is_native == false && core::validate_time_global($value)) {$this->value_set(  core::sanitize_time_global           ($value)); return;}
-    if ($value         && $this->is_native          && core::validate_time_global($value)) {$this->value_set(locale::time_global_to_native          ($value)); return;}
-    if ($value == null && $this->is_native == false                                      ) {$this->value_set(                              core::time_get() ); return;}
-    if ($value == null && $this->is_native                                               ) {$this->value_set(locale::time_global_to_native(core::time_get())); return;}
+    if ($value && core::validate_time_global($value)) {$this->value_set(locale::time_global_to_native($value,           false)); return;}
+    if ($value == null                              ) {$this->value_set(locale::time_global_to_native(core::time_get(), false)); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_native && core::validate_time_native($value))
-         return locale::time_native_to_global($value);
+    if (core::validate_time_global($value))
+         return locale::time_native_to_global($value, false);
     else return $value;
   }
 
   function value_set($value) {
-    if ($this->is_native == false && core::validate_time_global($value)) {parent::value_set(core::sanitize_time_global($value)); return;}
-    if ($this->is_native          && core::validate_time_native($value)) {parent::value_set(core::sanitize_time_native($value)); return;}
-    parent::value_set($value);
+    if (core::validate_time_global($value))
+         parent::value_set(core::sanitize_time_global($value));
+    else parent::value_set($value);
   }
 
   ###########################
@@ -73,8 +70,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!(($field->is_native          && core::validate_time_native($new_value)) ||
-          ($field->is_native == false && core::validate_time_global($new_value)))) {
+    if (!core::validate_time_global($new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );

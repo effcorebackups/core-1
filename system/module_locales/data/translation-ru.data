@@ -206,7 +206,6 @@ translations
     - Name: Имя
     - Native Date: Местная Дата
     - Native Date/Time: Местное Дата/Время
-    - Native Time: Местное Время
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
     - nick: ник
@@ -359,7 +358,6 @@ translations
     - User: Пользователь
     - Users: Пользователи
     - UTC Date: UTC Дата
-    - UTC Time: UTC Время
     - val.: знач.
     - Val.: Знач.
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
