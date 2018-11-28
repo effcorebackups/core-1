@@ -23,20 +23,21 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_datetime_global($value)) {$this->value_set(locale::datetime_global_to_native              ($value)); return;}
-    if ($value == null                                  ) {$this->value_set(locale::datetime_global_to_native(core::datetime_get())); return;}
+    if ($value && core::validate_datetime_global($value)) {$this->value_set(locale::datetime_global_to_t_natv($value,               false)); return;}
+    if ($value == null                                  ) {$this->value_set(locale::datetime_global_to_t_natv(core::datetime_get(), false)); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_datetime_native($value))
-         return locale::datetime_native_to_global($value);
+    if (core::validate_datetime_t_glob($value))
+         return locale::datetime_t_natv_to_global($value, false);
     else return $value;
   }
 
   function value_set($value) {
-    if (core::validate_datetime_native($value)) {parent::value_set(core::sanitize_datetime_native($value)); return;}
-    parent::value_set($value);
+    if (core::validate_datetime_t_glob($value))
+         parent::value_set(core::sanitize_datetime_t_glob($value));
+    else parent::value_set($value);
   }
 
   ###########################
@@ -67,7 +68,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (!core::validate_datetime_native($new_value)) {
+    if (!core::validate_datetime_t_glob($new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date/time!', ['title' => translation::get($field->title)])
       );
