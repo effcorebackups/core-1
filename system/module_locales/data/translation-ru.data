@@ -204,7 +204,6 @@ translations
     - Modules: Модули
     - name: имя
     - Name: Имя
-    - Native Date: Местная Дата
     - Native Date/Time: Местное Дата/Время
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
@@ -357,7 +356,6 @@ translations
     - User with this Nick was already registered!: Пользователь с таким Ником уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
-    - UTC Date: UTC Дата
     - val.: знач.
     - Val.: Знач.
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
