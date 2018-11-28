@@ -206,15 +206,15 @@ forms
             element_attributes
             - name: time
             - value: 01:23:45
-      # field_datetime_native
-        - datetime_native|field_datetime_native
-            title: Native Date/Time
+      # field_datetime
+        - datetime_native|field_datetime
+            title: Date/Time
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
               - 1: Field %%_type.
               args
-              - type: field_datetime_native
+              - type: field_datetime
             element_attributes
             - name: datetime
             - value: 2030-02-01 01:23:45

@@ -59,6 +59,7 @@ translations
     - Date / time format: Формат даты / времени
     - Date format: Формат даты
     - Date: Дата
+    - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - default type: тип по умолчанию
@@ -204,7 +205,6 @@ translations
     - Modules: Модули
     - name: имя
     - Name: Имя
-    - Native Date/Time: Местное Дата/Время
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
     - nick: ник
@@ -277,8 +277,8 @@ translations
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
-    - Server UTC date / time: UTC Дата / время сервера
     - Server timezone: Часовой пояс сервера
+    - Server UTC date / time: UTC Дата / время сервера
     - Session expiration date: Дата окончания сессии
     - Session: Сессия
     - Sessions: Сессии
