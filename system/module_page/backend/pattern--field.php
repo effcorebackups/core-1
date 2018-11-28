@@ -25,7 +25,7 @@
   # │ input:tel            ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:url            ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:date           ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # │ input:datetime-local ║ + │ + │ + │ ? │ ? │ ? │ ? │ - │   │   │ ? │ ? │
+  # │ input:datetime-local ║ + │ + │ + │ x │ x │ ? │ ? │ - │   │   │ ? │ ? │
   # │ input:time           ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
   # │ input:number         ║ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
   # │ input:range          ║ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
