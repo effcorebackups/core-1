@@ -47,8 +47,8 @@ namespace effcore {
     }
   }
 
-  static function value_min_get($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : (float)self::input_min_number;}
-  static function value_max_get($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : (float)self::input_max_number;}
+  static function value_min_get($element) {return $element->attribute_select('min') ?: (float)self::input_min_number;}
+  static function value_max_get($element) {return $element->attribute_select('max') ?: (float)self::input_max_number;}
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && core::validate_number($new_value) === false) {
