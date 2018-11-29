@@ -45,8 +45,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {$min = $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_time; return strlen($min) == 5 ? $min.':00' : $min;}
-  static function value_max_get($element) {$max = $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_time; return strlen($max) == 5 ? $max.':00' : $max;}
+  static function value_min_get($element) {$min = $element->attribute_select('min') !== null ? locale::time_global_to_native($element->attribute_select('min'), false) : locale::time_global_to_native(self::input_min_time, false); return strlen($min) == 5 ? $min.':00' : $min;}
+  static function value_max_get($element) {$max = $element->attribute_select('max') !== null ? locale::time_global_to_native($element->attribute_select('max'), false) : locale::time_global_to_native(self::input_max_time, false); return strlen($max) == 5 ? $max.':00' : $max;}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
@@ -75,6 +75,7 @@ namespace effcore {
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
     } else {
+      $new_value = core::sanitize_time_global($new_value);
       return true;
     }
   }
