@@ -87,7 +87,7 @@ forms
             - name: text
             - value: text in input
             - minlength: 5
-            - pattern: %^[a-zA-Z0-9 ]+$%
+            - pattern: ^[a-zA-Z0-9 ]+$
       # field_password
         - password|field_password
             title: Password
