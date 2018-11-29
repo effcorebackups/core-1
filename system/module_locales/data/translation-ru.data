@@ -128,7 +128,7 @@ translations
     - Field value is more than %%_value.: Значение поля больше чем %%_value.
     - Field value is not a valid number.: Значение поля не является допустимым числом.
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
-    - Field value should match the regular expression %%_expression.: Значение поля должно соответствовать регулярному выражению %%_expression.
+    - Field value should match the regular expression\: %%_expression.: Значение поля должно соответствовать регулярному выражению: %%_expression.
     - file is empty: файл пуст
     - File name: Имя файла
     - File not found: Файл не найден

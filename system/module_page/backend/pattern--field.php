@@ -195,13 +195,13 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if ($element->attribute_select('pattern') !== null)                                                                                          $result[] = new markup('p', ['class' => ['pattern'   => 'pattern']],   translation::get('Field value should match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')]));
-      if ($element->attribute_select('min') !== null)                                                                                              $result[] = new markup('p', ['class' => ['min'       => 'min']],       translation::get('Minimum field value: %%_value.', ['value' => $element->attribute_select('min')]));
-      if ($element->attribute_select('max') !== null)                                                                                              $result[] = new markup('p', ['class' => ['max'       => 'max']],       translation::get('Maximum field value: %%_value.', ['value' => $element->attribute_select('max')]));
-      if ($element->attribute_select('type') == 'range')                                                                                           $result[] = new markup('p', ['class' => ['cur'       => 'cur']],       translation::get('Current field value: %%_value.', ['value' => (new markup('x-value', [], $element->attribute_select('value')))->render()]));
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = new markup('p', ['class' => ['minlength' => 'minlength']], translation::get('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));
-      if ($element->attribute_select('maxlength') !== null && $element->attribute_select('maxlength') !== $element->attribute_select('minlength')) $result[] = new markup('p', ['class' => ['maxlength' => 'maxlength']], translation::get('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = new markup('p', ['class' => ['midlength' => 'midlength']], translation::get('Field must contain %%_number character%%_plural{number,s}.',             ['number' => $element->attribute_select('minlength')]));
+      if ($element->attribute_select('pattern') !== null)                                                                                          $result[] = $this->render_description_pattern  ($element);
+      if ($element->attribute_select('min') !== null)                                                                                              $result[] = $this->render_description_min      ($element);
+      if ($element->attribute_select('max') !== null)                                                                                              $result[] = $this->render_description_max      ($element);
+      if ($element->attribute_select('type') == 'range'    && $element->attribute_select('value'))                                                 $result[] = $this->render_description_cur      ($element);
+      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
+      if ($element->attribute_select('maxlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
+      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
     }
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
@@ -212,6 +212,14 @@ namespace effcore {
       return '';
     }
   }
+
+  function render_description_pattern  ($element) {return new markup('p', ['class' => ['pattern'   => 'pattern']],   translation::get('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));}
+  function render_description_min      ($element) {return new markup('p', ['class' => ['min'       => 'min']],       translation::get('Minimum field value: %%_value.', ['value'                                          => $element->attribute_select('min')]));}
+  function render_description_max      ($element) {return new markup('p', ['class' => ['max'       => 'max']],       translation::get('Maximum field value: %%_value.', ['value'                                          => $element->attribute_select('max')]));}
+  function render_description_cur      ($element) {return new markup('p', ['class' => ['cur'       => 'cur']],       translation::get('Current field value: %%_value.', ['value' => (new markup('x-value', [],               $element->attribute_select('value')))->render()]));}
+  function render_description_minlength($element) {return new markup('p', ['class' => ['minlength' => 'minlength']], translation::get('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));}
+  function render_description_maxlength($element) {return new markup('p', ['class' => ['maxlength' => 'maxlength']], translation::get('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));}
+  function render_description_midlength($element) {return new markup('p', ['class' => ['midlength' => 'midlength']], translation::get('Field must contain %%_number character%%_plural{number,s}.',             ['number' => $element->attribute_select('minlength')]));}
 
   ###########################
   ### static declarations ###
