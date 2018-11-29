@@ -44,8 +44,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {return $element->attribute_select('min') !== null ? locale::date_global_to_native($element->attribute_select('min'), false) : locale::date_global_to_native(self::input_min_date, false);}
-  static function value_max_get($element) {return $element->attribute_select('max') !== null ? locale::date_global_to_native($element->attribute_select('max'), false) : locale::date_global_to_native(self::input_max_date, false);}
+  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_date; return locale::date_global_to_native($min, false);}
+  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_date; return locale::date_global_to_native($max, false);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
