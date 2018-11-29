@@ -10,6 +10,7 @@ namespace effcore {
   const input_min_datetime = '0000-01-01 00:00:00';
   const input_max_datetime = '9999-12-31 23:59:59';
 
+  public $is_return_native = false;
   public $title = 'Date/Time';
   public $attributes = ['data-type' => 'datetime-local'];
   public $element_attributes_default = [
@@ -29,9 +30,9 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_datetime_t_glob($value))
-         return locale::datetime_t_natv_to_global($value, false);
-    else return $value;
+    if ($this->is_return_native == true && core::validate_datetime_t_glob($value)) return locale::datetime_t_natv_to_global($value, false);
+    if ($this->is_return_native != true && core::validate_datetime_t_glob($value)) return locale::datetime_t_natv_to_global($value, false);
+    return $value;
   }
 
   function value_set($value) {
