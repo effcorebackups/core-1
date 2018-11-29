@@ -44,8 +44,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {return $element->attribute_select('min') !== null ? $element->attribute_select('min') : self::input_min_date;}
-  static function value_max_get($element) {return $element->attribute_select('max') !== null ? $element->attribute_select('max') : self::input_max_date;}
+  static function value_min_get($element) {return $element->attribute_select('min') !== null ? locale::date_global_to_native($element->attribute_select('min'), false) : locale::date_global_to_native(self::input_min_date, false);}
+  static function value_max_get($element) {return $element->attribute_select('max') !== null ? locale::date_global_to_native($element->attribute_select('max'), false) : locale::date_global_to_native(self::input_max_date, false);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
@@ -73,6 +73,7 @@ namespace effcore {
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );
     } else {
+      $new_value = core::sanitize_date_global($new_value);
       return true;
     }
   }
