@@ -41,6 +41,9 @@ namespace effcore {
     else parent::value_set($value);
   }
 
+  function render_description_min($element) {return new markup('p', ['class' => ['min' => 'min']], translation::get('Minimum field value: %%_value.', ['value' => locale::datetime_global_to_native($element->attribute_select('min'), false)]));}
+  function render_description_max($element) {return new markup('p', ['class' => ['max' => 'max']], translation::get('Maximum field value: %%_value.', ['value' => locale::datetime_global_to_native($element->attribute_select('max'), false)]));}
+
   ###########################
   ### static declarations ###
   ###########################

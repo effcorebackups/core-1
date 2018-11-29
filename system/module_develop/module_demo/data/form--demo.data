@@ -217,7 +217,7 @@ forms
             - name: time
             - value: 01:23:45
       # field_datetime
-        - datetime_native|field_datetime
+        - datetime|field_datetime
             title: Date/Time
             description|text_multiline
               text

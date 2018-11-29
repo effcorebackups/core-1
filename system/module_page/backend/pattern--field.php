@@ -241,10 +241,10 @@ namespace effcore {
   # ──────────────────────────────────────────────────────────────────────────────
 
   static function request_values_reset() {
-    $_POST = [];
-    $_GET = [];
+    $_POST    = [];
+    $_GET     = [];
     $_REQUEST = [];
-    $_FILES = [];
+    $_FILES   = [];
   }
 
   # conversion matrix:
