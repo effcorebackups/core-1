@@ -9,6 +9,7 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\instance;
           use \effcore\locale;
+          use \effcore\session;
           use \effcore\table;
           use \effcore\user;
           abstract class events_page_user {
@@ -23,9 +24,10 @@ namespace effcore\modules\user {
       # get values
         $user_roles = user::id_roles_get($user->nick);
         $values = $user->values_get();
+        $values['created'] = locale::datetime_format($values['created']);
+        $values['updated'] = locale::datetime_format($values['updated']);
+        if ($user->nick == user::current_get()->nick) $values['current_session_expired'] = locale::timestmp_format(session::id_expired_extract(session::id_get()));
         $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
-        $values['created'] = locale::datetime_global_to_native($values['created']);
-        $values['updated'] = locale::datetime_global_to_native($values['updated']);
         $values['password_hash'] = '*****';
         $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
         $values['avatar_path'] = $values['avatar_path'] ?: '-';

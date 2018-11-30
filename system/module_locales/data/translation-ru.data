@@ -279,7 +279,6 @@ translations
     - Selection list: Список выбора
     - Server timezone: Часовой пояс сервера
     - Server UTC date / time: UTC Дата / время сервера
-    - Session expiration date: Дата окончания сессии
     - Session: Сессия
     - Sessions: Сессии
     - set: установка

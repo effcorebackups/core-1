@@ -392,20 +392,6 @@ namespace effcore {
   ### functionality for date|time ###
   ###################################
 
-  # note:
-  # ┌──────────────────────────────────────┬─────────────────────────────────────────┐
-  # │ function                             │ description                             │
-  # ╞══════════════════════════════════════╪═════════════════════════════════════════╡
-  # │     locale::date_native_to_global(…) │ convert native date     to UTC date     │
-  # │     locale::time_native_to_global(…) │ convert native time     to UTC time     │
-  # │ locale::datetime_native_to_global(…) │ convert native datetime to UTC datetime │
-  # ├──────────────────────────────────────┼─────────────────────────────────────────┤
-  # │     locale::date_global_to_native(…) │ convert UTC date     to native date     │
-  # │     locale::time_global_to_native(…) │ convert UTC time     to native time     │
-  # │ locale::datetime_global_to_native(…) │ convert UTC datetime to native datetime │
-  # │ locale::timestmp_global_to_native(…) │ convert any timestmp to native datetime │
-  # └──────────────────────────────────────┴─────────────────────────────────────────┘
-
   static function timezone_client_get() {return user::current_get()->timezone ?? 'UTC';}
   static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
