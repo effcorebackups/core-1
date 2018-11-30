@@ -25,8 +25,8 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_time_global($value)) {$this->value_set(locale::time_global_to_native($value,           false)); return;}
-    if ($value == null                              ) {$this->value_set(locale::time_global_to_native(core::time_get(), false)); return;}
+    if ($value && core::validate_time_global($value)) {$this->value_set(locale::time_utc_to_loc($value));           return;}
+    if ($value == null                              ) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
   }
 
   function value_get() {
@@ -46,8 +46,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_time; return locale::time_global_to_native(strlen($min) == 5 ? $min.':00' : $min, false);}
-  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_time; return locale::time_global_to_native(strlen($max) == 5 ? $max.':00' : $max, false);}
+  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_time; return locale::time_utc_to_loc(strlen($min) == 5 ? $min.':00' : $min);}
+  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_time; return locale::time_utc_to_loc(strlen($max) == 5 ? $max.':00' : $max);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');

@@ -23,8 +23,8 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_date_global($value)) {$this->value_set(locale::date_global_to_native($value,           false)); return;}
-    if ($value == null                              ) {$this->value_set(locale::date_global_to_native(core::date_get(), false)); return;}
+    if ($value && core::validate_date_global($value)) {$this->value_set(locale::date_utc_to_loc($value));           return;}
+    if ($value == null                              ) {$this->value_set(locale::date_utc_to_loc(core::date_get())); return;}
   }
 
   function value_get() {
@@ -44,8 +44,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_date; return locale::date_global_to_native($min, false);}
-  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_date; return locale::date_global_to_native($max, false);}
+  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_date; return locale::date_utc_to_loc($min);}
+  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_date; return locale::date_utc_to_loc($max);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');

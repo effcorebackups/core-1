@@ -24,8 +24,8 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_datetime_global($value)) {$this->value_set(locale::datetime_global_to_t_natv($value,               false)); return;}
-    if ($value == null                                  ) {$this->value_set(locale::datetime_global_to_t_natv(core::datetime_get(), false)); return;}
+    if ($value && core::validate_datetime_global($value)) {$this->value_set(locale::datetime_utc_to_T_loc($value));               return;}
+    if ($value == null                                  ) {$this->value_set(locale::datetime_utc_to_T_loc(core::datetime_get())); return;}
   }
 
   function value_get() {
@@ -41,15 +41,15 @@ namespace effcore {
     else parent::value_set($value);
   }
 
-  function render_description_min($element) {return new markup('p', ['class' => ['min' => 'min']], translation::get('Minimum field value: %%_value.', ['value' => locale::datetime_global_to_native($element->attribute_select('min'), false)]));}
-  function render_description_max($element) {return new markup('p', ['class' => ['max' => 'max']], translation::get('Maximum field value: %%_value.', ['value' => locale::datetime_global_to_native($element->attribute_select('max'), false)]));}
+  function render_description_min($element) {return new markup('p', ['class' => ['min' => 'min']], translation::get('Minimum field value: %%_value.', ['value' => locale::datetime_utc_to_loc($element->attribute_select('min'))]));}
+  function render_description_max($element) {return new markup('p', ['class' => ['max' => 'max']], translation::get('Maximum field value: %%_value.', ['value' => locale::datetime_utc_to_loc($element->attribute_select('max'))]));}
 
   ###########################
   ### static declarations ###
   ###########################
 
-  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_datetime; return locale::datetime_global_to_t_natv($min, false);}
-  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_datetime; return locale::datetime_global_to_t_natv($max, false);}
+  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_datetime; return locale::datetime_utc_to_T_loc($min);}
+  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_datetime; return locale::datetime_utc_to_T_loc($max);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
