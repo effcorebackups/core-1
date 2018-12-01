@@ -25,20 +25,20 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_time_global($value)) {$this->value_set(locale::time_utc_to_loc($value));           return;}
-    if ($value == null                              ) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
+    if ($value && core::validate_time($value)) {$this->value_set(locale::time_utc_to_loc($value));           return;}
+    if ($value == null                       ) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_time_global($value))
+    if (core::validate_time($value))
          return locale::time_loc_to_utc($value);
     else return $value;
   }
 
   function value_set($value) {
-    if (core::validate_time_global($value))
-         parent::value_set(core::sanitize_time_global($value));
+    if (core::validate_time($value))
+         parent::value_set(core::sanitize_time($value));
     else parent::value_set($value);
   }
 
@@ -71,12 +71,12 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (strlen($new_value) && !core::validate_time_global($new_value)) {
+    if (strlen($new_value) && !core::validate_time($new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
       );
     } else {
-      $new_value = core::sanitize_time_global($new_value);
+      $new_value = core::sanitize_time($new_value);
       return true;
     }
   }

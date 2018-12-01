@@ -24,20 +24,20 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_datetime_global($value)) {$this->value_set(locale::datetime_utc_to_T_loc($value));               return;}
-    if ($value == null                                  ) {$this->value_set(locale::datetime_utc_to_T_loc(core::datetime_get())); return;}
+    if ($value && core::validate_datetime($value)) {$this->value_set(locale::datetime_utc_to_T_loc($value));               return;}
+    if ($value == null                           ) {$this->value_set(locale::datetime_utc_to_T_loc(core::datetime_get())); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_datetime_t_glob($value)) return locale::datetime_T_loc_to_utc($value);
-    if ($this->is_return_native != true && core::validate_datetime_t_glob($value)) return locale::datetime_T_loc_to_utc($value);
+    if ($this->is_return_native == true && core::validate_T_datetime($value)) return locale::datetime_T_loc_to_utc($value);
+    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_T_loc_to_utc($value);
     return $value;
   }
 
   function value_set($value) {
-    if (core::validate_datetime_t_glob($value))
-         parent::value_set(core::sanitize_datetime_t_glob($value));
+    if (core::validate_T_datetime($value))
+         parent::value_set(core::sanitize_T_datetime($value));
     else parent::value_set($value);
   }
 
@@ -72,12 +72,12 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (strlen($new_value) && !core::validate_datetime_t_glob($new_value)) {
+    if (strlen($new_value) && !core::validate_T_datetime($new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date/time!', ['title' => translation::get($field->title)])
       );
     } else {
-      $new_value = core::sanitize_datetime_t_glob($new_value);
+      $new_value = core::sanitize_T_datetime($new_value);
       return true;
     }
   }

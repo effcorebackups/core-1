@@ -23,20 +23,20 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_date_global($value)) {$this->value_set(locale::date_utc_to_loc($value));           return;}
-    if ($value == null                              ) {$this->value_set(locale::date_utc_to_loc(core::date_get())); return;}
+    if ($value && core::validate_date($value)) {$this->value_set(locale::date_utc_to_loc($value));           return;}
+    if ($value == null                       ) {$this->value_set(locale::date_utc_to_loc(core::date_get())); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_date_global($value))
+    if (core::validate_date($value))
          return locale::date_loc_to_utc($value);
     else return $value;
   }
 
   function value_set($value) {
-    if (core::validate_date_global($value))
-         parent::value_set(core::sanitize_date_global($value));
+    if (core::validate_date($value))
+         parent::value_set(core::sanitize_date($value));
     else parent::value_set($value);
   }
 
@@ -68,12 +68,12 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (strlen($new_value) && !core::validate_date_global($new_value)) {
+    if (strlen($new_value) && !core::validate_date($new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains an incorrect date!', ['title' => translation::get($field->title)])
       );
     } else {
-      $new_value = core::sanitize_date_global($new_value);
+      $new_value = core::sanitize_date($new_value);
       return true;
     }
   }
