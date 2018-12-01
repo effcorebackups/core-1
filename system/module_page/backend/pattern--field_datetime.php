@@ -30,8 +30,8 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_datetime_t_glob($value)) return locale::datetime_t_natv_to_global($value, false);
-    if ($this->is_return_native != true && core::validate_datetime_t_glob($value)) return locale::datetime_t_natv_to_global($value, false);
+    if ($this->is_return_native == true && core::validate_datetime_t_glob($value)) return locale::datetime_T_loc_to_utc($value);
+    if ($this->is_return_native != true && core::validate_datetime_t_glob($value)) return locale::datetime_T_loc_to_utc($value);
     return $value;
   }
 

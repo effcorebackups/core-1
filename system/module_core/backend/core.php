@@ -392,6 +392,26 @@ namespace effcore {
   ### functionality for date|time ###
   ###################################
 
+  # note:
+  # ┌───────────────────────────────────────────────────────┬─────────────────────┐
+  # │ function                                              │ result              │
+  # ╞═══════════════════════════════════════════════════════╪═════════════════════╡
+  # │           locale::date_format ('2030-02-01')          │ 01.02.2030          │
+  # │           locale::time_format ('01:02:03')            │ 04.02.03            │
+  # │       locale::datetime_format ('2030-02-01 01:02:03') │ 01.02.2030 04.02.03 │
+  # │       locale::timestmp_format (0)                     │ 01.01.1970 03:00:00 │
+  # ├───────────────────────────────────────────────────────┼─────────────────────┤
+  # │       locale::date_utc_to_loc ('2030-02-01')          │ 2030-02-01          │
+  # │       locale::time_utc_to_loc ('01:02:03')            │ 04:02:03            │
+  # │   locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ 2030-02-01 04:02:03 │
+  # │ locale::datetime_utc_to_T_loc ('2030-02-01 01:02:03') │ 2030-02-01T04:02:03 │
+  # ├───────────────────────────────────────────────────────┼─────────────────────┤
+  # │       locale::date_loc_to_utc ('2030-02-01')          │ 2030-02-01          │
+  # │       locale::time_loc_to_utc ('04:02:03')            │ 01:02:03            │
+  # │   locale::datetime_loc_to_utc ('2030-02-01 04:02:03') │ 2030-02-01 01:02:03 │
+  # │ locale::datetime_T_loc_to_utc ('2030-02-01T04:02:03') │ 2030-02-01 01:02:03 │
+  # └───────────────────────────────────────────────────────┴─────────────────────┘
+
   static function timezone_client_get() {return user::current_get()->timezone ?? 'UTC';}
   static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}

@@ -32,7 +32,7 @@ namespace effcore {
   function value_get() {
     $value = parent::value_get();
     if (core::validate_time_global($value))
-         return locale::time_native_to_global($value, false);
+         return locale::time_loc_to_utc($value);
     else return $value;
   }
 
