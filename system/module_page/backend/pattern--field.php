@@ -103,6 +103,16 @@ namespace effcore {
     }
   }
 
+  function min_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('min');
+  }
+
+  function max_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('max');
+  }
+
   function required_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('required') == 'required';

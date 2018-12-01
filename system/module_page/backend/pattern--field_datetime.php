@@ -7,8 +7,8 @@
 namespace effcore {
           class field_datetime extends field_text {
 
-  const input_min_datetime = '0000-01-01 00:00:00';
-  const input_max_datetime = '9999-12-31 23:59:59';
+  const input_min_T_datetime = '0000-01-01T00:00:00';
+  const input_max_T_datetime = '9999-12-30T23:59:59';
 
   public $is_return_native = false;
   public $title = 'Date/Time';
@@ -17,20 +17,25 @@ namespace effcore {
     'type'     => 'datetime-local',
     'name'     => 'datetime',
     'required' => 'required',
-    'min'      => self::input_min_datetime,
-    'max'      => self::input_max_datetime
+    'min'      => self::input_min_T_datetime,
+    'max'      => self::input_max_T_datetime
   ];
 
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_datetime($value)) {$this->value_set(locale::datetime_utc_to_T_loc($value));               return;}
-    if ($value == null                           ) {$this->value_set(locale::datetime_utc_to_T_loc(core::datetime_get())); return;}
+    $element = $this->child_select('element');
+    $min = $element->attribute_select('min');
+    $max = $element->attribute_select('max');
+    if ($min) $element->attribute_insert('min', locale::datetime_T_utc_to_T_loc($min  ));
+    if ($max) $element->attribute_insert('max', locale::datetime_T_utc_to_T_loc($max  ));
+    if ($value != null)       {$this->value_set(locale::datetime_T_utc_to_T_loc($value));                                              return;}
+    if ($value == null)       {$this->value_set(locale::datetime_T_utc_to_T_loc(locale::datetime_utc_to_T_utc(core::datetime_get()))); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_T_datetime($value)) return locale::datetime_T_loc_to_utc($value);
+    if ($this->is_return_native == true && core::validate_T_datetime($value)) return   core::sanitize_T_datetime  ($value);
     if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_T_loc_to_utc($value);
     return $value;
   }
@@ -41,15 +46,9 @@ namespace effcore {
     else parent::value_set($value);
   }
 
-  function render_description_min($element) {return new markup('p', ['class' => ['min' => 'min']], translation::get('Minimum field value: %%_value.', ['value' => static::value_min_get($this->child_select('element'))]));}
-  function render_description_max($element) {return new markup('p', ['class' => ['max' => 'max']], translation::get('Maximum field value: %%_value.', ['value' => static::value_max_get($this->child_select('element'))]));}
-
   ###########################
   ### static declarations ###
   ###########################
-
-  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_datetime; return locale::datetime_utc_to_T_loc($min);}
-  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_datetime; return locale::datetime_utc_to_T_loc($max);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');

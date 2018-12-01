@@ -227,7 +227,7 @@ forms
               - type: field_datetime
             element_attributes
             - name: datetime
-            - value: 2030-02-01 01:23:45
+            - value: 2030-02-01T01:23:45
       # field_timezone
         - timezone|field_timezone
             title: Timezone
