@@ -39,7 +39,7 @@ namespace effcore {
   static function     date_format      ($date)     {$date = \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC') ); if ($date) return $date->setTime    (0, 0)                                            ->format(static::settings_get()->format_date    );}
   static function     time_format      ($time)     {$date = \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format(static::settings_get()->format_time    );}
   static function datetime_format      ($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format(static::settings_get()->format_datetime);}
-  static function timestmp_format      ($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp                           ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format(static::settings_get()->format_datetime);}
+  static function timestmp_format      ($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp + core::timezone_offset_sec_get(core::timezone_client_get()));                              if ($date) return $date->format(static::settings_get()->format_datetime);}
 
   static function persent_format($number, $precision = 2) {return static::number_format(floatval($number), $precision).'%';}
   static function msecond_format($number, $precision = 6) {return static::number_format(floatval($number), $precision);}

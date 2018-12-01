@@ -399,7 +399,7 @@ namespace effcore {
   # │           locale::date_format ('2030-02-01')          │ 01.02.2030          │
   # │           locale::time_format ('01:02:03')            │ 15:02:03            │
   # │       locale::datetime_format ('2030-02-01 01:02:03') │ 01.02.2030 15:02:03 │
-  # │       locale::timestmp_format (0)                     │ 31.12.1969 13:20:00 │
+  # │       locale::timestmp_format (0)                     │ 01.01.1970 14:00:00 │
   # ├───────────────────────────────────────────────────────┼─────────────────────┤
   # │       locale::date_utc_to_loc ('2030-02-01')          │ 2030-02-01          │
   # │       locale::time_utc_to_loc ('01:02:03')            │ 15:02:03            │
