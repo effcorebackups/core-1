@@ -404,7 +404,6 @@ namespace effcore {
   # │       locale::date_utc_to_loc ('2030-02-01')          │ 2030-02-01          │
   # │       locale::time_utc_to_loc ('01:02:03')            │ 15:02:03            │
   # │   locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ 2030-02-01 15:02:03 │
-  # │ locale::datetime_utc_to_T_loc ('2030-02-01 01:02:03') │ 2030-02-01T15:02:03 │
   # ├───────────────────────────────────────────────────────┼─────────────────────┤
   # │       locale::date_loc_to_utc ('2030-02-01')          │ 2030-02-01          │
   # │       locale::time_loc_to_utc ('15:02:03')            │ 01:02:03            │
@@ -423,7 +422,6 @@ namespace effcore {
   # │       locale::date_utc_to_loc ('2030-02-01')          │ 2030-02-01          │
   # │       locale::time_utc_to_loc ('01:02:03')            │ 14:02:03            │
   # │   locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ 2030-01-31 14:02:03 │
-  # │ locale::datetime_utc_to_T_loc ('2030-02-01 01:02:03') │ 2030-01-31T14:02:03 │
   # ├───────────────────────────────────────────────────────┼─────────────────────┤
   # │       locale::date_loc_to_utc ('2030-02-01')          │ 2030-02-01          │
   # │       locale::time_loc_to_utc ('14:02:03')            │ 01:02:03            │
@@ -435,9 +433,10 @@ namespace effcore {
   static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
 
-  static function     date_get($offset = '', $format = 'Y-m-d'      ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function     time_get($offset = '', $format =       'H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function datetime_get($offset = '', $format = 'Y-m-d H:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function            date_get($offset = '', $format = 'Y-m-d'        ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function            time_get($offset = '', $format =       'H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function        datetime_get($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function      T_datetime_get($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
   static function       validate_date($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')));}
   static function       validate_time($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')));}
