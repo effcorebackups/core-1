@@ -27,16 +27,16 @@ namespace effcore {
     $element = $this->child_select('element');
     $min = $element->attribute_select('min');
     $max = $element->attribute_select('max');
-    if ($min) $element->attribute_insert('min', locale::datetime_T_utc_to_T_loc($min  ));
-    if ($max) $element->attribute_insert('max', locale::datetime_T_utc_to_T_loc($max  ));
-    if ($value != null)       {$this->value_set(locale::datetime_T_utc_to_T_loc($value));                 return;}
-    if ($value == null)       {$this->value_set(locale::datetime_T_utc_to_T_loc(core::T_datetime_get())); return;}
+    if ($min) $element->attribute_insert('min', locale::T_datetime_utc_to_loc($min  ));
+    if ($max) $element->attribute_insert('max', locale::T_datetime_utc_to_loc($max  ));
+    if ($value != null)       {$this->value_set(locale::T_datetime_utc_to_loc($value));                 return;}
+    if ($value == null)       {$this->value_set(locale::T_datetime_utc_to_loc(core::T_datetime_get())); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_T_datetime($value)) return   core::sanitize_T_datetime  ($value);
-    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_T_loc_to_utc($value);
+    if ($this->is_return_native == true && core::validate_T_datetime($value)) return                             locale::T_datetime_to_datetime($value);
+    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(locale::T_datetime_to_datetime($value));
     return $value;
   }
 
