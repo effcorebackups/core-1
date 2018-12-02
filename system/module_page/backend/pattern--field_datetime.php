@@ -8,9 +8,9 @@ namespace effcore {
           class field_datetime extends field_text {
 
   const input_min_datetime = '0000-01-01 12:00:00';
-  const input_max_datetime = '9999-12-30 23:59:59';
+  const input_max_datetime = '9999-12-31 09:00:00';
 
-  public $is_return_native = false;
+  public $is_return_locale = false;
   public $title = 'Date/Time';
   public $attributes = ['data-type' => 'datetime-local'];
   public $element_attributes_default = [
@@ -35,8 +35,8 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
-    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
+    if ($this->is_return_locale == true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
+    if ($this->is_return_locale != true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
     return $value;
   }
 

@@ -10,7 +10,7 @@ namespace effcore {
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
-  public $is_return_native = false;
+  public $is_return_locale = false;
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
