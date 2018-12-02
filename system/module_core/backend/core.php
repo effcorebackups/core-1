@@ -430,13 +430,16 @@ namespace effcore {
   # ┌───────────────────────────────────────────────────────┬─────────────────────┐
   # │                                                       │ result              │
   # ╞═══════════════════════════════════════════════════════╪═════════════════════╡
-  # │ locale::T_datetime_to_datetime('2030-02-01T01:02:03') │ 2030-02-01 01:02:03 │
-  # │ locale::datetime_to_T_datetime('2030-02-01 01:02:03') │ 2030-02-01T01:02:03 │
+  # │   core::T_datetime_to_datetime('2030-02-01T01:02:03') │ 2030-02-01 01:02:03 │
+  # │   core::datetime_to_T_datetime('2030-02-01 01:02:03') │ 2030-02-01T01:02:03 │
   # └───────────────────────────────────────────────────────┴─────────────────────┘
 
   static function timezone_client_get() {return user::current_get()->timezone ?? 'UTC';}
   static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
   static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
+
+  static function T_datetime_to_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
+  static function datetime_to_T_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
 
   static function            date_get($offset = '', $format = 'Y-m-d'        ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function            time_get($offset = '', $format =       'H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}

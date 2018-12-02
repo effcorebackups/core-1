@@ -7,7 +7,7 @@
 namespace effcore {
           class field_datetime extends field_text {
 
-  const input_min_datetime = '0000-01-01 00:00:00';
+  const input_min_datetime = '0000-01-01 12:00:00';
   const input_max_datetime = '9999-12-30 23:59:59';
 
   public $is_return_native = false;
@@ -27,16 +27,16 @@ namespace effcore {
     $element = $this->child_select('element');
     $min = $element->attribute_select('min');
     $max = $element->attribute_select('max');
-    if ($min) $element->attribute_insert('min', locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $min        )));
-    if ($max) $element->attribute_insert('max', locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $max        )));
-    if ($value != null)       {$this->value_set(locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(       $value       ))); return;}
-    if ($value == null)       {$this->value_set(locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(core::datetime_get()))); return;}
+    if ($min) $element->attribute_insert('min', core::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $min        )));
+    if ($max) $element->attribute_insert('max', core::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $max        )));
+    if ($value != null)       {$this->value_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(       $value       ))); return;}
+    if ($value == null)       {$this->value_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(core::datetime_get()))); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
-    if ($this->is_return_native == true && core::validate_T_datetime($value)) return                             locale::T_datetime_to_datetime($value);
-    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(locale::T_datetime_to_datetime($value));
+    if ($this->is_return_native == true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
+    if ($this->is_return_native != true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
     return $value;
   }
 
