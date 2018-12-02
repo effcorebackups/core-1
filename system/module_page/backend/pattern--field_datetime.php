@@ -7,8 +7,8 @@
 namespace effcore {
           class field_datetime extends field_text {
 
-  const input_min_T_datetime = '0000-01-01T00:00:00';
-  const input_max_T_datetime = '9999-12-30T23:59:59';
+  const input_min_datetime = '0000-01-01 00:00:00';
+  const input_max_datetime = '9999-12-30 23:59:59';
 
   public $is_return_native = false;
   public $title = 'Date/Time';
@@ -17,8 +17,8 @@ namespace effcore {
     'type'     => 'datetime-local',
     'name'     => 'datetime',
     'required' => 'required',
-    'min'      => self::input_min_T_datetime,
-    'max'      => self::input_max_T_datetime
+    'min'      => self::input_min_datetime,
+    'max'      => self::input_max_datetime
   ];
 
   function build() {
@@ -27,10 +27,10 @@ namespace effcore {
     $element = $this->child_select('element');
     $min = $element->attribute_select('min');
     $max = $element->attribute_select('max');
-    if ($min) $element->attribute_insert('min', locale::T_datetime_utc_to_loc($min  ));
-    if ($max) $element->attribute_insert('max', locale::T_datetime_utc_to_loc($max  ));
-    if ($value != null)       {$this->value_set(locale::T_datetime_utc_to_loc($value));                 return;}
-    if ($value == null)       {$this->value_set(locale::T_datetime_utc_to_loc(core::T_datetime_get())); return;}
+    if ($min) $element->attribute_insert('min', locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $min        )));
+    if ($max) $element->attribute_insert('max', locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $max        )));
+    if ($value != null)       {$this->value_set(locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(       $value       ))); return;}
+    if ($value == null)       {$this->value_set(locale::datetime_to_T_datetime(locale::datetime_utc_to_loc(core::datetime_get()))); return;}
   }
 
   function value_get() {

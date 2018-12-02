@@ -26,15 +26,13 @@ namespace effcore {
   ### formats ###
   ###############
 
-  static function        date_utc_to_loc($date)     {$date = \DateTime::createFromFormat('Y-m-d',         $date,     new \DateTimeZone('UTC') ); if ($date) return $date->setTime    (0, 0)                                            ->format('Y-m-d'        );}
-  static function        time_utc_to_loc($time)     {$date = \DateTime::createFromFormat(      'H:i:s',   $time,     new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format(      'H:i:s'  );}
-  static function    datetime_utc_to_loc($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format('Y-m-d H:i:s'  );}
-  static function  T_datetime_utc_to_loc($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format('Y-m-d\\TH:i:s');}
+  static function        date_utc_to_loc($date)     {$date = \DateTime::createFromFormat('Y-m-d',         $date,     new \DateTimeZone('UTC') ); if ($date) return $date->setTime    (0, 0)                                            ->format('Y-m-d'      );}
+  static function        time_utc_to_loc($time)     {$date = \DateTime::createFromFormat(      'H:i:s',   $time,     new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format(      'H:i:s');}
+  static function    datetime_utc_to_loc($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_client_get()) )->format('Y-m-d H:i:s');}
 
-  static function        date_loc_to_utc($date)     {$date = \DateTime::createFromFormat('Y-m-d',         $date,     new \DateTimeZone('UTC')                       ); if ($date) return $date->setTime    (0, 0)                      ->format('Y-m-d'        );}
-  static function        time_loc_to_utc($time)     {$date = \DateTime::createFromFormat(      'H:i:s',   $time,     new \DateTimeZone(core::timezone_client_get()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format(      'H:i:s'  );}
-  static function    datetime_loc_to_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone(core::timezone_client_get()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d H:i:s'  );}
-  static function  T_datetime_loc_to_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone(core::timezone_client_get()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d\\TH:i:s');}
+  static function        date_loc_to_utc($date)     {$date = \DateTime::createFromFormat('Y-m-d',         $date,     new \DateTimeZone('UTC')                       ); if ($date) return $date->setTime    (0, 0)                      ->format('Y-m-d'      );}
+  static function        time_loc_to_utc($time)     {$date = \DateTime::createFromFormat(      'H:i:s',   $time,     new \DateTimeZone(core::timezone_client_get()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format(      'H:i:s');}
+  static function    datetime_loc_to_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone(core::timezone_client_get()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d H:i:s');}
 
   static function T_datetime_to_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
   static function datetime_to_T_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
