@@ -46,7 +46,7 @@ namespace effcore {
     }
     $value = $element->attribute_select('value');
     if (isset($this->required[$value])) $field->required_set();
-    if (isset($this->checked[$value]))  $field->checked_set();
+    if (isset($this->checked [$value])) $field-> checked_set();
     if (isset($this->disabled[$value])) $field->disabled_set();
     return $this->child_insert($field, $new_id);
   }
@@ -54,9 +54,7 @@ namespace effcore {
   function name_first_get($trim = true) {
     foreach ($this->children_select() as $c_field) {
       if ($c_field instanceof $this->field_class) {
-        $element = $c_field->child_select('element');
-        return $trim ? rtrim($element->attribute_select('name'), '[]') :
-                             $element->attribute_select('name');
+        return $c_field->name_get($trim);
       }
     }
   }
