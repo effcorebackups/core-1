@@ -175,6 +175,18 @@ forms
             element_attributes
             - name: time
             - value: 01:23:45
+      # field_datetime
+        - datetime|field_datetime
+            title: Date/Time
+            description|text_multiline
+              text
+              - 0: If the initial value is not specified, the current value will be used.
+              - 1: Field %%_type.
+              args
+              - type: field_datetime
+            element_attributes
+            - name: datetime
+            - value: 2030-02-01 01:23:45
       # field_datetime_local
         - datetime_local|field_datetime_local
             title: Local Date/Time
