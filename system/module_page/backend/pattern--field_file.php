@@ -74,10 +74,10 @@ namespace effcore {
   }
 
   function render_description() {
-    $result[] = new markup('p', ['class' => ['file_size_max'   => 'file_size_max'  ]], translation::get('Maximum file size: %%_value.', ['value' => locale::human_bytes_format($this->file_size_max_get())]));
-    if ($this->min_files_number != $this->max_files_number) $result[] = new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));
-    if ($this->min_files_number != $this->max_files_number) $result[] = new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));
-    if ($this->min_files_number == $this->max_files_number) $result[] = new markup('p', ['class' => ['file-max-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));
+    $result[] = new markup('p', ['class' => ['file_size_max' => 'file_size_max']], translation::get('Maximum file size: %%_value.', ['value' => locale::human_bytes_format($this->file_size_max_get())]));
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min();
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max();
+    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid();
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
@@ -87,6 +87,10 @@ namespace effcore {
       return '';
     }
   }
+
+  function render_description_file_min($element = null) {return new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));}
+  function render_description_file_max($element = null) {return new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));}
+  function render_description_file_mid($element = null) {return new markup('p', ['class' => ['file-mid-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));}
 
   ############
   ### pool ###
