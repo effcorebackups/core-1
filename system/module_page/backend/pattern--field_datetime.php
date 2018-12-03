@@ -23,13 +23,12 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    $element = $this->child_select('element');
-    $min = $element->attribute_select('min');
-    $max = $element->attribute_select('max');
-    if ($min) $element->attribute_insert('min', core::datetime_to_T_datetime(        $min        ));
-    if ($max) $element->attribute_insert('max', core::datetime_to_T_datetime(        $max        ));
-    if ($value != null)       {$this->value_set(core::datetime_to_T_datetime(       $value       )); return;}
-    if ($value == null)       {$this->value_set(core::datetime_to_T_datetime(core::datetime_get())); return;}
+    $min = $this->min_get();
+    $max = $this->max_get();
+    if ($min) $this->min_set(core::datetime_to_T_datetime($min));
+    if ($max) $this->max_set(core::datetime_to_T_datetime($max));
+    if ($value != null) {$this->value_set(core::datetime_to_T_datetime(       $value       )); return;}
+    if ($value == null) {$this->value_set(core::datetime_to_T_datetime(core::datetime_get())); return;}
   }
 
   function value_get() {

@@ -110,9 +110,21 @@ namespace effcore {
     return $element->attribute_select('min');
   }
 
+  function min_set($min = null) {
+    $element = $this->child_select('element');
+    if ($min) $element->attribute_insert('min', $min);
+    else      $element->attribute_delete('min');
+  }
+
   function max_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('max');
+  }
+
+  function max_set($max = null) {
+    $element = $this->child_select('element');
+    if ($max) $element->attribute_insert('max', $max);
+    else      $element->attribute_delete('max');
   }
 
   function name_get($trim = true) {
