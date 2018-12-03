@@ -127,6 +127,17 @@ namespace effcore {
     else      $element->attribute_delete('max');
   }
 
+  function multiple_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('multiple') == 'multiple';
+  }
+
+  function multiple_set($is_multiple = true) {
+    $element = $this->child_select('element');
+    if ($is_multiple) $element->attribute_insert('multiple', 'multiple');
+    else              $element->attribute_delete('multiple');
+  }
+
   function name_get($trim = true) {
     $element = $this->child_select('element');
     return $trim ? rtrim($element->attribute_select('name'), '[]') :

@@ -43,7 +43,7 @@ namespace effcore {
 
   static function validate_multiple($field, $form, $element, &$new_value) {
     $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
-    if (!$element->attribute_select('multiple') && count($multiple_values) > 1) {
+    if (!$field->multiple_get() && count($multiple_values) > 1) {
       $new_value = array_pop($multiple_values);
       $field->error_set(
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
