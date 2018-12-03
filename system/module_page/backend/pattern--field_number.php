@@ -60,7 +60,7 @@ namespace effcore {
 
   static function validate_step($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
-      $step = $element->attribute_select('step') ?: 1;
+      $step = $field->step_get() ?: 1;
       $min = (float)$field->min_get();
       $max = (float)$field->max_get();
       if ((int)round(($min - $new_value) / $step, 5) !=

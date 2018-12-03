@@ -160,6 +160,17 @@ namespace effcore {
     else              $element->attribute_delete('required');
   }
 
+  function step_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('step');
+  }
+
+  function step_set($step = null) {
+    $element = $this->child_select('element');
+    if ($step) $element->attribute_insert('step', $step);
+    else       $element->attribute_delete('step');
+  }
+
   function type_get($full = true) {
     $element = $this->child_select('element');
     switch ($element->tag_name) {
