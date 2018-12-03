@@ -22,11 +22,4 @@ namespace effcore {
     'value'    => 0
   ];
 
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static function value_min_get($element) {return $element->attribute_select('min') ?: self::input_min_range;}
-  static function value_max_get($element) {return $element->attribute_select('max') ?: self::input_max_range;}
-
 }}

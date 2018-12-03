@@ -83,47 +83,6 @@ namespace effcore {
   # element properties
   # ─────────────────────────────────────────────────────────────────────
 
-  function name_get($trim = true) {
-    $element = $this->child_select('element');
-    return $trim ? rtrim($element->attribute_select('name'), '[]') :
-                         $element->attribute_select('name');
-  }
-
-  function name_set($name) {
-    $element = $this->child_select('element');
-    $element->attribute_insert('name', $name);
-  }
-
-  function type_get($full = true) {
-    $element = $this->child_select('element');
-    switch ($element->tag_name) {
-      case 'input'   : return 'input'.($full ? ':'.$element->attribute_select('type') : '');
-      case 'textarea': return 'textarea';
-      case 'select'  : return 'select';
-    }
-  }
-
-  function min_get() {
-    $element = $this->child_select('element');
-    return $element->attribute_select('min');
-  }
-
-  function max_get() {
-    $element = $this->child_select('element');
-    return $element->attribute_select('max');
-  }
-
-  function required_get() {
-    $element = $this->child_select('element');
-    return $element->attribute_select('required') == 'required';
-  }
-
-  function required_set($is_required = true) {
-    $element = $this->child_select('element');
-    if ($is_required) $element->attribute_insert('required', 'required');
-    else              $element->attribute_delete('required');
-  }
-
   function checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') == 'checked';
@@ -146,6 +105,27 @@ namespace effcore {
     else              $element->attribute_delete('disabled');
   }
 
+  function min_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('min');
+  }
+
+  function max_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('max');
+  }
+
+  function name_get($trim = true) {
+    $element = $this->child_select('element');
+    return $trim ? rtrim($element->attribute_select('name'), '[]') :
+                         $element->attribute_select('name');
+  }
+
+  function name_set($name) {
+    $element = $this->child_select('element');
+    $element->attribute_insert('name', $name);
+  }
+
   function readonly_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('readonly') == 'readonly';
@@ -155,6 +135,26 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($is_readonly) $element->attribute_insert('readonly', 'readonly');
     else              $element->attribute_delete('readonly');
+  }
+
+  function required_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('required') == 'required';
+  }
+
+  function required_set($is_required = true) {
+    $element = $this->child_select('element');
+    if ($is_required) $element->attribute_insert('required', 'required');
+    else              $element->attribute_delete('required');
+  }
+
+  function type_get($full = true) {
+    $element = $this->child_select('element');
+    switch ($element->tag_name) {
+      case 'input'   : return 'input'.($full ? ':'.$element->attribute_select('type') : '');
+      case 'textarea': return 'textarea';
+      case 'select'  : return 'select';
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -205,10 +205,10 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if ($element->attribute_select('pattern') !== null)                                                                                          $result[] = $this->render_description_pattern  ($element);
-      if ($element->attribute_select('min') !== null)                                                                                              $result[] = $this->render_description_min      ($element);
-      if ($element->attribute_select('max') !== null)                                                                                              $result[] = $this->render_description_max      ($element);
-      if ($element->attribute_select('type') == 'range'    && $element->attribute_select('value'))                                                 $result[] = $this->render_description_cur      ($element);
+      if ($element->attribute_select('pattern')   !== null)                                                                                        $result[] = $this->render_description_pattern  ($element);
+      if ($element->attribute_select('min')       !== null)                                                                                        $result[] = $this->render_description_min      ($element);
+      if ($element->attribute_select('max')       !== null)                                                                                        $result[] = $this->render_description_max      ($element);
+      if ($element->attribute_select('value')     !== null && $element->attribute_select('type') == 'range')                                       $result[] = $this->render_description_cur      ($element);
       if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
       if ($element->attribute_select('maxlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
       if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
