@@ -10,7 +10,6 @@ namespace effcore {
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
-  public $is_return_locale = false;
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
   public $element_attributes_default = [
@@ -25,14 +24,14 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value && core::validate_time($value)) {$this->value_set(locale::time_utc_to_loc($value));           return;}
-    if ($value == null                       ) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
+    if ($value != null) {$this->value_set($value);                                    return;}
+    if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
   }
 
   function value_get() {
     $value = parent::value_get();
     if (core::validate_time($value))
-         return locale::time_loc_to_utc($value);
+         return core::sanitize_time($value);
     else return $value;
   }
 
@@ -42,15 +41,9 @@ namespace effcore {
     else parent::value_set($value);
   }
 
-  function render_description_min($element) {return new markup('p', ['class' => ['min' => 'min']], translation::get('Minimum field value: %%_value.', ['value' => static::value_min_get($this->child_select('element'))]));}
-  function render_description_max($element) {return new markup('p', ['class' => ['max' => 'max']], translation::get('Maximum field value: %%_value.', ['value' => static::value_max_get($this->child_select('element'))]));}
-
   ###########################
   ### static declarations ###
   ###########################
-
-  static function value_min_get($element) {$min = $element->attribute_select('min') ?: self::input_min_time; return locale::time_utc_to_loc(strlen($min) == 5 ? $min.':00' : $min);}
-  static function value_max_get($element) {$max = $element->attribute_select('max') ?: self::input_max_time; return locale::time_utc_to_loc(strlen($max) == 5 ? $max.':00' : $max);}
 
   static function validate($field, $form, $npath) {
     $element = $field->child_select('element');
