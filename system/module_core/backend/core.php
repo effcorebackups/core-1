@@ -569,45 +569,6 @@ namespace effcore {
                      str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
   }
 
-  # hex ip to ip platform differences:
-  # ┌──────────────────────────────────┬─────────────────────────────────────────┬─────────────────────────────────────────┐
-  # │ hex ip                           │                        to ip on win-x86 │                        to ip on osx-x64 │
-  # ├──────────────────────────────────┼─────────────────────────────────────────┼─────────────────────────────────────────┤
-  # │ 00000000000000000000000000000000 │                                      :: │                                      :: │
-  # │ 0000000000000000000000000000000f │                                     ::f │                              ::0.0.0.15 │
-  # │ 000000000000000000000000000000ff │                                    ::ff │                             ::0.0.0.255 │
-  # │ 00000000000000000000000000000fff │                                   ::fff │                            ::0.0.15.255 │
-  # │ 0000000000000000000000000000ffff │                                  ::ffff │                           ::0.0.255.255 │
-  # │ 000000000000000000000000000fffff │                          ::0.15.255.255 │                          ::0.15.255.255 │
-  # │ 00000000000000000000000000ffffff │                         ::0.255.255.255 │                         ::0.255.255.255 │
-  # │ 0000000000000000000000000fffffff │                        ::15.255.255.255 │                        ::15.255.255.255 │
-  # │ 000000000000000000000000ffffffff │                       ::255.255.255.255 │                       ::255.255.255.255 │
-  # │ 00000000000000000000000fffffffff │                           ::f:ffff:ffff │                           ::f:ffff:ffff │
-  # │ 0000000000000000000000ffffffffff │                          ::ff:ffff:ffff │                          ::ff:ffff:ffff │
-  # │ 000000000000000000000fffffffffff │                         ::fff:ffff:ffff │                         ::fff:ffff:ffff │
-  # │ 00000000000000000000ffffffffffff │                  ::ffff:255.255.255.255 │                  ::ffff:255.255.255.255 │
-  # │ 0000000000000000000fffffffffffff │                      ::f:ffff:ffff:ffff │                      ::f:ffff:ffff:ffff │
-  # │ 000000000000000000ffffffffffffff │                     ::ff:ffff:ffff:ffff │                     ::ff:ffff:ffff:ffff │
-  # │ 00000000000000000fffffffffffffff │                    ::fff:ffff:ffff:ffff │                    ::fff:ffff:ffff:ffff │
-  # │ 0000000000000000ffffffffffffffff │                   ::ffff:ffff:ffff:ffff │                   ::ffff:ffff:ffff:ffff │
-  # │ 000000000000000fffffffffffffffff │                 ::f:ffff:ffff:ffff:ffff │                 ::f:ffff:ffff:ffff:ffff │
-  # │ 00000000000000ffffffffffffffffff │                ::ff:ffff:ffff:ffff:ffff │                ::ff:ffff:ffff:ffff:ffff │
-  # │ 0000000000000fffffffffffffffffff │               ::fff:ffff:ffff:ffff:ffff │               ::fff:ffff:ffff:ffff:ffff │
-  # │ 000000000000ffffffffffffffffffff │              ::ffff:ffff:ffff:ffff:ffff │              ::ffff:ffff:ffff:ffff:ffff │
-  # │ 00000000000fffffffffffffffffffff │            ::f:ffff:ffff:ffff:ffff:ffff │            ::f:ffff:ffff:ffff:ffff:ffff │
-  # │ 0000000000ffffffffffffffffffffff │           ::ff:ffff:ffff:ffff:ffff:ffff │           ::ff:ffff:ffff:ffff:ffff:ffff │
-  # │ 000000000fffffffffffffffffffffff │          ::fff:ffff:ffff:ffff:ffff:ffff │          ::fff:ffff:ffff:ffff:ffff:ffff │
-  # │ 00000000ffffffffffffffffffffffff │         ::ffff:ffff:ffff:ffff:ffff:ffff │         ::ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 0000000fffffffffffffffffffffffff |       0:f:ffff:ffff:ffff:ffff:ffff:ffff │       ::f:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 000000ffffffffffffffffffffffffff |      0:ff:ffff:ffff:ffff:ffff:ffff:ffff │      ::ff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 00000fffffffffffffffffffffffffff |     0:fff:ffff:ffff:ffff:ffff:ffff:ffff │     ::fff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 0000ffffffffffffffffffffffffffff |    0:ffff:ffff:ffff:ffff:ffff:ffff:ffff │    ::ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 000fffffffffffffffffffffffffffff |    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff │    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 00ffffffffffffffffffffffffffffff |   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ 0fffffffffffffffffffffffffffffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # │ ffffffffffffffffffffffffffffffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │ ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-  # └──────────────────────────────────┴─────────────────────────────────────────┴─────────────────────────────────────────┘
-
   static function hex_to_ip($ip_hex) {
     $inaddr = '';
     foreach (str_split($ip_hex, 2) as $c_part) {

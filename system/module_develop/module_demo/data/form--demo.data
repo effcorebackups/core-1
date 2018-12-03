@@ -1,44 +1,3 @@
-# note:
-# ═════════════════════════════════════════════════════════════════════════
-# 1. not recommend to use DISABLED|READONLY text fields with shared
-#    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
-#    state from field and change the field VALUE and submit the form - after
-#    this action the new VALUE will be set to the next field with
-#    shared NAME.
-#    example (default form state):
-#    - input[type=text,name=shared_name[],value=1,disabled|readonly]
-#    - input[type=text,name=shared_name[],value=2]
-#    - input[type=text,name=shared_name[],value=3]
-#    example (user made a fake changes):
-#    - input[type=text,name=shared_name[],value=fake_value]
-#    - input[type=text,name=shared_name[],value=2]
-#    - input[type=text,name=shared_name[],value=3]
-#    example (result form state after validate):
-#    - input[type=text,name=shared_name[],value=1,disabled|readonly]
-#    - input[type=text,name=shared_name[],value=fake_value]
-#    - input[type=text,name=shared_name[],value=2]
-# 2. if you used more than 1 element with attribute MULTIPLE and shared
-#    NAME (name="shared_name[]"), after submit you will get merged
-#    arrays of values.
-#    example (result form state before validate):
-#    - select[name=shared_name[],multiple]
-#      - option[value=1,selected]
-#      - option[value=2]
-#      - option[value=3]
-#    - select[name=shared_name[],multiple]
-#      - option[value=1]
-#      - option[value=2,selected]
-#      - option[value=3]
-#    example (result form state after validate):
-#    - select[name=shared_name[],multiple]
-#      - option[value=1,selected]
-#      - option[value=2,selected]
-#      - option[value=3]
-#    - select[name=shared_name[],multiple]
-#      - option[value=1,selected]
-#      - option[value=2,selected]
-#      - option[value=3]
-# ─────────────────────────────────────────────────────────────────────────
 forms
 - demo|form
     attributes
@@ -219,6 +178,7 @@ forms
       # field_datetime
         - datetime|field_datetime
             title: Date/Time
+            is_return_locale: false
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
