@@ -176,6 +176,8 @@ translations
     - List: Список
     - Load: Загрузка
     - load: загрузка
+    - Local Date/Time: Локальное Дата/Время
+    - Local Time: Локальное Время
     - Locales: Локализации
     - login: вход
     - Login: Вход
