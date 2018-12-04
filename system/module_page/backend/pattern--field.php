@@ -127,6 +127,28 @@ namespace effcore {
     else      $element->attribute_delete('max');
   }
 
+  function minlength_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('minlength');
+  }
+
+  function minlength_set($minlength = null) {
+    $element = $this->child_select('element');
+    if ($minlength) $element->attribute_insert('minlength', $minlength);
+    else            $element->attribute_delete('minlength');
+  }
+
+  function maxlength_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('maxlength');
+  }
+
+  function maxlength_set($maxlength = null) {
+    $element = $this->child_select('element');
+    if ($maxlength) $element->attribute_insert('maxlength', $maxlength);
+    else            $element->attribute_delete('maxlength');
+  }
+
   function multiple_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('multiple') == 'multiple';

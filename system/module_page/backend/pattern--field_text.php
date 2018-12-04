@@ -49,7 +49,7 @@ namespace effcore {
   }
 
   static function validate_required($field, $form, $element, &$new_value) {
-    if ($element->attribute_select('required') && strlen($new_value) == 0) {
+    if ($field->required_get() && strlen($new_value) == 0) {
       $field->error_set(
         translation::get('Field "%%_title" can not be blank!', ['title' => translation::get($field->title)])
       );
@@ -59,10 +59,11 @@ namespace effcore {
   }
 
   static function validate_minlength($field, $form, $element, &$new_value) {
-    if ($element->attribute_select('minlength') &&
-        $element->attribute_select('minlength') > strlen($new_value) && strlen($new_value)) {
+    $minlength = $field->minlength_get();
+    if ($minlength &&
+        $minlength > strlen($new_value)) {
       $field->error_set(
-        translation::get('Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $element->attribute_select('minlength')])
+        translation::get('Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $minlength])
       );
     } else {
       return true;
@@ -70,11 +71,12 @@ namespace effcore {
   }
 
   static function validate_maxlength($field, $form, $element, &$new_value) {
-    if ($element->attribute_select('maxlength') &&
-        $element->attribute_select('maxlength') < strlen($new_value)) {
-      $new_value = substr($new_value, 0, $element->attribute_select('maxlength'));
+    $maxlength = $field->maxlength_get();
+    if ($maxlength &&
+        $maxlength < strlen($new_value)) {
+      $new_value = substr($new_value, 0, $maxlength);
       $field->error_set(
-        translation::get('Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $element->attribute_select('maxlength')]).br.
+        translation::get('Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $maxlength]).br.
         translation::get('Value was trimmed to the required length!').br.
         translation::get('Check field again before submit.')
       );
