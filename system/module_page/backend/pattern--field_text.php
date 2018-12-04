@@ -110,11 +110,12 @@ namespace effcore {
   }
 
   static function validate_pattern($field, $form, $element, &$new_value) {
-    if (strlen($new_value) && $element->attribute_select('pattern') &&
-              !preg_match('%'.$element->attribute_select('pattern').'%', $new_value)) {
+    $pattern = $field->pattern_get();
+    if (strlen($new_value) && $pattern &&
+              !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(
         translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]).br.
-        translation::get('Field value does not match the regular expression %%_expression.', ['expression' => $element->attribute_select('pattern')])
+        translation::get('Field value does not match the regular expression %%_expression.', ['expression' => $pattern])
       );
     } else {
       return true;

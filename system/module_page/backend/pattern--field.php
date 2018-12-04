@@ -171,6 +171,17 @@ namespace effcore {
     $element->attribute_insert('name', $name);
   }
 
+  function pattern_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('pattern');
+  }
+
+  function pattern_set($pattern = null) {
+    $element = $this->child_select('element');
+    if ($pattern) $element->attribute_insert('pattern', $pattern);
+    else          $element->attribute_delete('pattern');
+  }
+
   function readonly_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('readonly') == 'readonly';
