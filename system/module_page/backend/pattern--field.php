@@ -224,6 +224,16 @@ namespace effcore {
     }
   }
 
+  function value_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('value');
+  }
+
+  function value_set($value) {
+    $element = $this->child_select('element');
+    return $element->attribute_insert('value', $value);
+  }
+
   # ─────────────────────────────────────────────────────────────────────
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
