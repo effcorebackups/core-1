@@ -88,9 +88,9 @@ namespace effcore {
     }
   }
 
-  function render_description_file_min($element = null) {return new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));}
-  function render_description_file_max($element = null) {return new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));}
-  function render_description_file_mid($element = null) {return new markup('p', ['class' => ['file-mid-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));}
+  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));}
+  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));}
+  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));}
 
   ############
   ### pool ###
@@ -369,7 +369,7 @@ namespace effcore {
   }
 
   static function validate_multiple($field, $form, $element, &$new_values) {
-    if (!$element->attribute_select('multiple') && count($new_values) > 1) {
+    if (!$field->multiple_get() && count($new_values) > 1) {
       $field->error_set(
         translation::get('Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)])
       );
