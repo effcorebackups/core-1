@@ -15,7 +15,7 @@ namespace effcore {
     return static::$data;
   }
 
-  static function log_add($object, $action, $description = '', $value = '', $time = 0, $args = []) {
+  static function log_insert($object, $action, $description = '', $value = '', $time = 0, $args = []) {
     static::$data[] = (object)[
       'object'      => $object,
       'action'      => $action,
@@ -26,8 +26,8 @@ namespace effcore {
     ];
   }
 
-  static function log_about_duplicate_add($type, $id) {
-    return static::log_add('storage', 'load',
+  static function log_about_duplicate_insert($type, $id) {
+    return static::log_insert('storage', 'load',
        'duplicate of %%_type "%%_id" was found', 'error', 0, ['type' => $type, 'id' => $id]
     );
   }
@@ -54,7 +54,7 @@ namespace effcore {
   }
 
   static function information_all_select() {return static::$information;}
-  static function information_add($param, $value) {
+  static function information_insert($param, $value) {
     static::$information[$param] = $value;
   }
 

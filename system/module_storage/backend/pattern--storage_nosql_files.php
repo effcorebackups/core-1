@@ -63,7 +63,7 @@ namespace effcore {
   }
 
   static function init($catalog_name) {
-    console::log_add('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
+    console::log_insert('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
     $cache = cache::select('data--'.$catalog_name);
     if ($cache) static::$data[$catalog_name] = $cache;
     else        static::cache_update();

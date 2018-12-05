@@ -22,7 +22,7 @@ namespace effcore {
   }
 
   static function init() {
-    console::log_add('event', 'init.', 'event system was initialized', '-');
+    console::log_insert('event', 'init.', 'event system was initialized', '-');
     foreach (storage::get('files')->select('events') as $c_module_id => $c_type_group) {
       foreach ($c_type_group as $c_type => $c_events) {
         foreach ($c_events as $c_row_id => $c_event) {
@@ -51,7 +51,7 @@ namespace effcore {
           timer::tap('event call: '.$c_event->for);
           $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);
           timer::tap('event call: '.$c_event->for);
-          console::log_add('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
+          console::log_insert('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
             timer::period_get('event call: '.$c_event->for, -1, -2)
           );
         }

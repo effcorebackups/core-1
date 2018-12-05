@@ -132,7 +132,7 @@ namespace effcore\modules\core {
             $form->children_delete_all();
             $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
             message::insert(translation::get('System was installed.'));
-            message::insert(translation::get('your EMail is — %%_email', ['email' => $items['#email']->value_get()]), 'credentials');
+            message::insert(translation::get('your EMail is — %%_email',       ['email'    => $items['#email'   ]->value_get()]), 'credentials');
             message::insert(translation::get('your Password is — %%_password', ['password' => $items['#password']->value_get()]), 'credentials');
             message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);

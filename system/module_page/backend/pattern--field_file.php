@@ -203,8 +203,8 @@ namespace effcore {
           $c_info->pre_path = $dst_file->path_get();
           unset($c_info->tmp_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]).br.translation::get('Check directory permissions.'), 'error');
-          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
+          message::insert(translation::get   ('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]).br.translation::get('Check directory permissions.'), 'error');
+          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
           unset($this->pool_new[$c_id]);
         }
       }
@@ -227,8 +227,8 @@ namespace effcore {
           $c_info->new_path = $dst_file->path_get();
           unset($c_info->pre_path);
         } else {
-          message::insert(translation::get('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]).br.translation::get('Check directory permissions.'), 'error');
-          console::log_add('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
+          message::insert(translation::get   ('Can not copy file from "%%_from" to "%%_to"!',             ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]).br.translation::get('Check directory permissions.'), 'error');
+          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0, ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
         }
       }
     }

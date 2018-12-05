@@ -85,10 +85,10 @@ namespace effcore {
   }
 
   function page_information_set() {
-    console::information_add('Total generation time', locale::msecond_format(timer::period_get('total', 0, 1)));
-    console::information_add('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
-    console::information_add('User roles', implode(', ', user::current_get()->roles));
-    console::information_add('Current language', language::current_code_get());
+    console::information_insert('Total generation time', locale::msecond_format(timer::period_get('total', 0, 1)));
+    console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
+    console::information_insert('User roles', implode(', ', user::current_get()->roles));
+    console::information_insert('Current language', language::current_code_get());
   }
 
   function frontend_markup_get() {
@@ -167,14 +167,14 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
       foreach ($c_pages as $c_row_id => $c_page) {
-        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_add('page', $c_row_id);
+        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_insert('page', $c_row_id);
         static::$cache[$c_row_id] = $c_page;
         static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
       foreach ($c_frontends as $c_row_id => $c_frontend) {
-        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_add('frontend', $c_row_id);
+        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_insert('frontend', $c_row_id);
         static::$cache_frontend[$c_row_id] = $c_frontend;
         static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
       }

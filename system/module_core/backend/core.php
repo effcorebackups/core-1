@@ -61,7 +61,7 @@ namespace effcore {
   ###############################################
 
   static function structure_autoload($name) {
-    console::log_add('autoload', 'search', $name, 'ok');
+    console::log_insert('autoload', 'search', $name, 'ok');
     $name = strtolower($name);
     if (isset(static::structures_map_get()[$name])) {
       $c_item_info = static::structures_map_get()[$name];

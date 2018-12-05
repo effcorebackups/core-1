@@ -63,14 +63,14 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
       foreach ($c_tabs as $c_row_id => $c_tab) {
-        if (isset(static::$cache_tabs[$c_tab->id])) console::log_about_duplicate_add('tab', $c_tab->id);
+        if (isset(static::$cache_tabs[$c_tab->id])) console::log_about_duplicate_insert('tab', $c_tab->id);
         static::$cache_tabs[$c_tab->id] = $c_tab;
         static::$cache_tabs[$c_tab->id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('tabs_items') as $c_module_id => $c_tabs_items) {
       foreach ($c_tabs_items as $c_row_id => $c_item) {
-        if (isset(static::$cache_tabs_items[$c_item->id])) console::log_about_duplicate_add('tab_item', $c_item->id);
+        if (isset(static::$cache_tabs_items[$c_item->id])) console::log_about_duplicate_insert('tab_item', $c_item->id);
         static::$cache_tabs_items[$c_item->id] = $c_item;
         static::$cache_tabs_items[$c_item->id]->module_id = $c_module_id;
       }
