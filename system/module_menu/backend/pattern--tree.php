@@ -58,6 +58,15 @@ namespace effcore {
     static::build();
   }
 
+  static function build($items = null) {
+    foreach ($items ?: static::items_select() as $c_item) {
+      if ($c_item->id_parent) {
+        $c_parent = static::parent_get($c_item->id_parent);
+        $c_parent->child_insert($c_item, $c_item->id);
+      }
+    };
+  }
+
   static function get($id) {
     if    (static::$cache_trees == null) static::init();
     return static::$cache_trees[$id] ?? null;
@@ -87,26 +96,19 @@ namespace effcore {
 
   static function item_insert($title, $id, $id_parent, $url = null, $attributes = [], $weight = 0) {
     $new_item = new tree_item($title, $id, $id_parent, $url, $attributes, $weight);
-    static::$cache_tree_items[$id] = $new_item;
-    static::$cache_tree_items[$id]->module_id = null;
+    if (static::$cache_tree_items == null) static::init();
+        static::$cache_tree_items[$id] = $new_item;
+        static::$cache_tree_items[$id]->module_id = null;
     static::build([$new_item]);
   }
 
   static function item_delete($id) {
+    if       (static::$cache_tree_items == null) static::init();
     if (isset(static::$cache_tree_items[$id])) {
       $id_parent = static::$cache_tree_items[$id]->id_parent;
              unset(static::$cache_tree_items[$id]);
       static::parent_get($id_parent)->child_delete($id);
     }
-  }
-
-  static function build($items = null) {
-    foreach ($items ?: static::items_select() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = static::parent_get($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
   }
 
 }}

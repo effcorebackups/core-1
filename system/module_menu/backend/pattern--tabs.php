@@ -77,6 +77,15 @@ namespace effcore {
     static::build();
   }
 
+  static function build($items = null) {
+    foreach ($items ?: static::items_select() as $c_item) {
+      if ($c_item->id_parent) {
+        $c_parent = static::parent_get($c_item->id_parent);
+        $c_parent->child_insert($c_item, $c_item->id);
+      }
+    };
+  }
+
   static function get($id) {
     if    (static::$cache_tabs == null) static::init();
     return static::$cache_tabs[$id] ?? null;
@@ -106,26 +115,19 @@ namespace effcore {
 
   static function item_insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $hidden = false, $weight = 0) {
     $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_name_default, $attributes, $hidden, $weight);
-    static::$cache_tabs_items[$id] = $new_item;
-    static::$cache_tabs_items[$id]->module_id = null;
+    if (static::$cache_tabs_items == null) static::init();
+        static::$cache_tabs_items[$id] = $new_item;
+        static::$cache_tabs_items[$id]->module_id = null;
     static::build([$new_item]);
   }
 
   static function item_delete($id) {
+    if       (static::$cache_tabs_items == null) static::init();
     if (isset(static::$cache_tabs_items[$id])) {
       $id_parent = static::$cache_tabs_items[$id]->id_parent;
              unset(static::$cache_tabs_items[$id]);
       static::parent_get($id_parent)->child_delete($id);
     }
-  }
-
-  static function build($items = null) {
-    foreach ($items ?: static::items_select() as $c_item) {
-      if ($c_item->id_parent) {
-        $c_parent = static::parent_get($c_item->id_parent);
-        $c_parent->child_insert($c_item, $c_item->id);
-      }
-    };
   }
 
 }}
