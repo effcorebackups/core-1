@@ -17,7 +17,7 @@ namespace effcore {
 
   function render() {
     $element = $this->child_select('element');
-    $element->attribute_insert('data-checkbox-is-checked', $this->checked_get() ? 'yes' : 'no');
+    $element->attribute_insert('data-is-checked', $this->checked_get() ? 'yes' : 'no');
     return parent::render();
   }
 
