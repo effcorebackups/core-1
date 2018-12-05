@@ -35,8 +35,9 @@ namespace effcore {
   static protected $cache_tree_items;
 
   static function cache_cleaning() {
-    # static::$cache_trees      = null;
-    # static::$cache_tree_items = null;
+    static::$cache_trees      = null;
+    static::$cache_tree_items = null;
+    tree::init();
   }
 
   static function init() {

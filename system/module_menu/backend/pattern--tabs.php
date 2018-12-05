@@ -54,8 +54,9 @@ namespace effcore {
   static protected $cache_tabs_items;
 
   static function cache_cleaning() {
-    # static::$cache_tabs       = null;
-    # static::$cache_tabs_items = null;
+    static::$cache_tabs       = null;
+    static::$cache_tabs_items = null;
+    tabs::init();
   }
 
   static function init() {
