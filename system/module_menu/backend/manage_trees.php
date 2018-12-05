@@ -21,7 +21,7 @@ namespace effcore {
     }
     if ($id) {
       $tree = clone tree::get($id);
-      $tree->children = core::array_clone_deep($tree->children);
+      $tree->children = core::deep_clone($tree->children);
       $tree->attribute_delete('class');
       $tree->attribute_insert('class', ['managed' => 'managed']);
       $tree->title_state = 'cutted';

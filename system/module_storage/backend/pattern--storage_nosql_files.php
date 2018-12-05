@@ -101,7 +101,7 @@ namespace effcore {
     $changes_d = data::select('changes') ?: [];
     $changes_s =   $data_orig['changes'] ?? [];
   # apply all changes to original data and get the final data
-    $data = core::array_clone_deep($data_orig);
+    $data = core::deep_clone($data_orig);
     static::data_changes_apply($changes_d, $data);
     static::data_changes_apply($changes_s, $data);
     unset($data['changes']);

@@ -311,10 +311,6 @@ namespace effcore {
     return array_combine($array, $array);
   }
 
-  static function array_clone_deep($array) {
-    return unserialize(serialize($array));
-  }
-
   static function array_values_select_recursive(&$array, $all = false, $dpath = '') {
     $result = [];
     foreach ($array as $c_key => &$c_value) {
@@ -711,6 +707,10 @@ namespace effcore {
   ########################
   ### shared functions ###
   ########################
+
+  static function deep_clone($array) {
+    return unserialize(serialize($array));
+  }
 
   static function number_format($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
