@@ -708,8 +708,8 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function deep_clone($array) {
-    return unserialize(serialize($array));
+  static function deep_clone($data) {
+    return unserialize(serialize($data));
   }
 
   static function number_format($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
