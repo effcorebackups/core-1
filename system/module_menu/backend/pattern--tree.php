@@ -35,10 +35,8 @@ namespace effcore {
   static protected $cache_tree_items;
 
   static function cache_cleaning() {
-    static::$cache_trees      = null;
-    static::$cache_tree_items = null;
-    static::init();
-    static::build();
+    # static::$cache_trees      = null;
+    # static::$cache_tree_items = null;
   }
 
   static function init() {
@@ -56,29 +54,35 @@ namespace effcore {
         static::$cache_tree_items[$c_tree_item->id]->module_id = $c_module_id;
       }
     }
+  # build by first call
+    static::build();
   }
 
   static function get($id) {
+    if    (static::$cache_trees == null) static::init();
     return static::$cache_trees[$id] ?? null;
   }
 
   static function all_get() {
+    if    (static::$cache_trees == null) static::init();
     return static::$cache_trees;
   }
 
   static function parent_get($id_parent) {
     if ($id_parent[0] == 'M' &&
         $id_parent[1] == ':')
-         return static::$cache_trees[substr($id_parent, 2)] ?? null;
-    else return static::$cache_tree_items  [$id_parent]     ?? null;
-  }
-
-  static function item_select($id) {
-    return static::$cache_tree_items[$id] ?? null;
+         return static::get(substr($id_parent, 2));
+    else return static::item_select($id_parent);
   }
 
   static function items_select() {
-    return static::$cache_tree_items;
+    if    (static::$cache_tree_items == null) static::init();
+    return static::$cache_tree_items ?? [];
+  }
+
+  static function item_select($id) {
+    if    (static::$cache_tree_items == null) static::init();
+    return static::$cache_tree_items[$id] ?? null;
   }
 
   static function item_insert($title, $id, $id_parent, $url = null, $attributes = [], $weight = 0) {
