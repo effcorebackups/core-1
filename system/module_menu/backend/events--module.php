@@ -23,7 +23,6 @@ namespace effcore\modules\menu {
   static function on_start() {
     tree::init();
     tabs::init();
-    tabs::build();
   }
 
 }}
