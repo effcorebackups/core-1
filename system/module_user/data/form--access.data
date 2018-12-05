@@ -7,9 +7,13 @@ forms
     children
     - settings|fieldset
         title: Access settings
-        description: Access settings not applicable if no one role is not actived!
         attributes
         - data-type: roles
+        children
+        - roles|group_switchers
+            description: Access settings not applicable if no one role is active!
+            element_attributes
+            - name: roles[]
     - button_save|button
         title: save
         attributes
