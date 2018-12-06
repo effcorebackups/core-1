@@ -11,6 +11,8 @@ namespace effcore {
   public $template = 'tabs';
 
   function render() {
+    if (static::$cache_tabs       == null ||
+        static::$cache_tabs_items == null) static::init();
     return (new template($this->template, [
       'attributes' => core::data_to_attr($this->attributes_select()),
       'top_items'  => $this->render_top_items(),
@@ -56,7 +58,6 @@ namespace effcore {
   static function cache_cleaning() {
     static::$cache_tabs       = null;
     static::$cache_tabs_items = null;
-    tabs::init();
   }
 
   static function init() {

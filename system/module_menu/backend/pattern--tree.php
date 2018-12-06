@@ -17,6 +17,12 @@ namespace effcore {
     parent::__construct($attributes, $children, $weight);
   }
 
+  function render() {
+    if (static::$cache_trees      == null ||
+        static::$cache_tree_items == null) static::init();
+    return parent::render();
+  }
+
   function render_self() {
     if ($this->title) {
       switch ($this->title_state) {
@@ -37,7 +43,6 @@ namespace effcore {
   static function cache_cleaning() {
     static::$cache_trees      = null;
     static::$cache_tree_items = null;
-    tree::init();
   }
 
   static function init() {

@@ -20,9 +20,4 @@ namespace effcore\modules\menu {
     $module->enable();
   }
 
-  static function on_start() {
-    tree::init();
-    tabs::init();
-  }
-
 }}
