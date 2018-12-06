@@ -1,11 +1,11 @@
 pages
-- php_mod_usage|page
-    title: PHP modules usage
+- php_dependencies|page
+    title: PHP dependencies
     https: true
     display
       check: url
       where: path
-      match: %^/develop/php_mod_usage$%
+      match: %^/develop/php_dependencies$%
     access
       roles
       - =: admins
@@ -26,10 +26,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - block_php_mod_usage_list|page_part
+    - block_php_dependencies_list|page_part
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_php_mod_usage::on_show_block_php_mod_usage_list
+        source: \effcore\modules\develop\events_page_php_dependencies::on_show_block_php_dependencies_list
     - form_access|page_part
         display
           check: user

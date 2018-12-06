@@ -21,10 +21,6 @@
 
   x-block.demo-diagrams x-diagram {border-bottom: 1px dashed lightgray}
 
-  /* php modules usage list */
-
-  table.php_mod_usage td.file {width: 90%}
-
   /* reports */
 
   x-document.report {max-height: 400px; overflow: scroll}

@@ -21,14 +21,14 @@ tree_items
     attributes
     - class
       - =: structures
-- php_mod_usage|tree_item
-    id: php_mod_usage
+- php_dependencies|tree_item
+    id: php_dependencies
     id_parent: develop
-    title: PHP modules
-    url: /develop/php_mod_usage
+    title: PHP dependencies
+    url: /develop/php_dependencies
     access
       roles
       - =: admins
     attributes
     - class
-      - =: php_mod_usage
+      - =: php-dependencies

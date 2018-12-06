@@ -37,6 +37,7 @@ translations
     - event system was initialized: система событий была инициализирована
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
+    - Ext.: Расш.
     - Field %%_type.: Поле %%_type.
     - Field date + time: Поле date + time
     - Field date: Поле date
@@ -84,7 +85,7 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
-    - PHP modules usage: Использование PHP модулей
+    - PHP dependencies: PHP зависимости
     - PHP modules: PHP модули
     - Pos.: Поз.
     - Quantity of iterations: Количество итераций
