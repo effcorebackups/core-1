@@ -59,27 +59,31 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function all_get() {
-    if    (static::$cache == null) static::init();
-    return static::$cache;
+  static function all_get($only_path = false) {
+    $result = [];
+    if      (static::$cache == null) static::init();
+    foreach (static::$cache as $c_module) {
+      $result[$c_module->id] = $only_path ? $c_module->path : $c_module;
+    }
+    return $result;
   }
 
-  static function embed_get() {
+  static function embed_get($only_path = false) {
     $result = [];
     foreach (static::all_get() as $c_module) {
       if ($c_module instanceof module_embed &&
          !$c_module instanceof module) {
-        $result[$c_module->id] = $c_module;
+        $result[$c_module->id] = $only_path ? $c_module->path : $c_module;
       }
     }
     return $result;
   }
 
-  static function enabled_by_default_get() {
+  static function enabled_by_default_get($only_path = false) {
     $result = [];
     foreach (static::all_get() as $c_module) {
       if ($c_module->enabled == 'yes') {
-        $result[$c_module->id] = $c_module;
+        $result[$c_module->id] = $only_path ? $c_module->path : $c_module;
       }
     }
     return $result;

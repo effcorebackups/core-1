@@ -25,17 +25,24 @@ namespace effcore\modules\develop {
         $used_funcs[$c_function] = $c_extension;
       }
     }
-  # collect information about paths of modules in the system
-    $paths = [];
-    foreach (module::all_get() as $c_module) {
-      $paths[$c_module->id] = $c_module->path;
-    }
-    arsort($paths);
+  # get modules path in the system
+    $modules_path = module::all_get(true);
+    arsort($modules_path);
   # scan each php file on used functions
     $statistic = [];
     $php_files = file::select_recursive(dir_root, '%^.*\\.php$%');
     foreach ($php_files as $c_file) {
       $c_matches = [];
+      $c_file_path = $c_file->path_relative_get();
+    # define the module id
+      $c_module_id = '';
+      foreach ($modules_path as $c_id => $c_path) {
+        if (strpos($c_file_path, $c_path) === 0) {
+          $c_module_id = $c_id;
+          break;
+        }
+      }
+    # load file and search functions in it
       preg_match_all('%(?<![a-z0-9_])(?<name>[a-z0-9_]+)\\(%isS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {
         foreach ($c_matches['name'] as $c_match) {
@@ -44,8 +51,9 @@ namespace effcore\modules\develop {
             $c_function = $c_match[0];
             $c_position = $c_match[1];
             $statistic[$c_extension][$c_function][] = (object)[
-              'file'     => $c_file->path_relative_get(),
-              'position' => $c_position
+              'file'     => $c_file_path,
+              'position' => $c_position,
+              'module'   => $c_module_id
             ];
           }
         }
@@ -53,16 +61,17 @@ namespace effcore\modules\develop {
     }
     ksort($statistic);
   # prepare report
-    $thead = [['Ext.', 'Function', 'File', 'Pos.']];
+    $thead = [['Ext.', 'Function', 'File', 'Pos.', 'Module']];
     $tbody = [];
     foreach ($statistic as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
         foreach ($c_positions as $c_position_info) {
           $tbody[] = new table_body_row([], [
-            new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple($c_extension)),
-            new table_body_row_cell(['class' => ['function'  => 'function' ]], new text_simple($c_function)),
-            new table_body_row_cell(['class' => ['file'      => 'file'     ]], new text_simple($c_position_info->file)),
-            new table_body_row_cell(['class' => ['position'  => 'position' ]], new text_simple($c_position_info->position))
+            new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple($c_extension              )),
+            new table_body_row_cell(['class' => ['function'  => 'function' ]], new text_simple($c_function               )),
+            new table_body_row_cell(['class' => ['file'      => 'file'     ]], new text_simple($c_position_info->file    )),
+            new table_body_row_cell(['class' => ['position'  => 'position' ]], new text_simple($c_position_info->position)),
+            new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_position_info->module  ))
           ]);
         }
       }
