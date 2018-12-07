@@ -5,4 +5,4 @@ module|module
   version: 0.900
   dependencies
     php
-    - standard
+    - =: standard

@@ -5,7 +5,7 @@ module|module
   version: 0.900
   dependencies
     php
-    - Core
-    - json
-    - pcre
-    - standard
+    - =: Core
+    - =: json
+    - =: pcre
+    - =: standard

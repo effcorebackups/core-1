@@ -5,7 +5,7 @@ module|module_embed
   version: 0.900
   dependencies
     php
-    - Core
-    - date
-    - pcre
-    - standard
+    - =: Core
+    - =: date
+    - =: pcre
+    - =: standard

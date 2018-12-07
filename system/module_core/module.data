@@ -5,9 +5,9 @@ module|module_embed
   version: 0.900
   dependencies
     php
-    - Core
-    - date
-    - fileinfo
-    - filter
-    - pcre
-    - standard
+    - =: Core
+    - =: date
+    - =: fileinfo
+    - =: filter
+    - =: pcre
+    - =: standard

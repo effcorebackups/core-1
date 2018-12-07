@@ -6,4 +6,4 @@ module|module
   enabled: yes
   dependencies
     php
-    - standard
+    - =: standard
