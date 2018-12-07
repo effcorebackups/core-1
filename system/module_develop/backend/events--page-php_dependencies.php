@@ -65,10 +65,11 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
-    $thead_mod = [['Module', 'Extension']];
+    $thead_mod = [['Module', 'PHP Extension']];
     $tbody_mod = [];
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {
       if ($c_module_id) {
+        ksort($c_extensions);
         $tbody_mod[] = new table_body_row([], [
           new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_module_id)),
           new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple(implode(', ', array_keys($c_extensions))))
@@ -78,17 +79,17 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by php extensions
   # ─────────────────────────────────────────────────────────────────────
-    $thead_ext = [['Ext.', 'Function', 'File', 'Pos.', 'Module']];
+    $thead_ext = [['PHP Ext.', 'Module', 'Function', 'File', 'Pos.']];
     $tbody_ext = [];
     foreach ($statistic_by_ext as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
         foreach ($c_positions as $c_position_info) {
           $tbody_ext[] = new table_body_row([], [
-            new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple($c_extension              )),
-            new table_body_row_cell(['class' => ['function'  => 'function' ]], new text_simple($c_function               )),
-            new table_body_row_cell(['class' => ['file'      => 'file'     ]], new text_simple($c_position_info->file    )),
-            new table_body_row_cell(['class' => ['position'  => 'position' ]], new text_simple($c_position_info->position)),
-            new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_position_info->module  ))
+            new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple($c_extension                   )),
+            new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_position_info->module ?: '-')),
+            new table_body_row_cell(['class' => ['function'  => 'function' ]], new text_simple($c_function                    )),
+            new table_body_row_cell(['class' => ['file'      => 'file'     ]], new text_simple($c_position_info->file         )),
+            new table_body_row_cell(['class' => ['position'  => 'position' ]], new text_simple($c_position_info->position     ))
           ]);
         }
       }

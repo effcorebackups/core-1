@@ -87,6 +87,8 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - PHP dependencies: PHP зависимости
+    - PHP Ext.: PHP Расш.
+    - PHP Extension: PHP Расширение
     - PHP modules: PHP модули
     - Pos.: Поз.
     - Quantity of iterations: Количество итераций

@@ -3,3 +3,11 @@ module|module_embed
   title: Core
   description: Main system module.
   version: 0.900
+  dependencies
+    php
+    - Core
+    - date
+    - fileinfo
+    - filter
+    - pcre
+    - standard

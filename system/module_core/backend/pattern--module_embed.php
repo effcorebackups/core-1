@@ -10,8 +10,9 @@ namespace effcore {
   public $id;
   public $title;
   public $description;
-  public $version;
+  public $version;  
   public $path;
+  public $dependencies;
   public $enabled = 'yes';
 
   function enable() {

@@ -3,3 +3,9 @@ module|module
   title: Test
   description: Module for testing.
   version: 0.900
+  dependencies
+    php
+    - Core
+    - curl
+    - pcre
+    - standard

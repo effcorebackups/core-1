@@ -3,3 +3,9 @@ module|module_embed
   title: Storage
   description: Module for storages support.
   version: 0.900
+  dependencies
+    php
+    - Core
+    - date
+    - pcre
+    - standard

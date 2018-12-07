@@ -3,3 +3,7 @@ module|module_embed
   title: User
   description: Module for working with user accounts and permissions.
   version: 0.900
+  dependencies
+    php
+    - date
+    - standard
