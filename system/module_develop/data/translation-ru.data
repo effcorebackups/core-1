@@ -38,6 +38,7 @@ translations
     - Execute plan: План выполнения
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - Ext.: Расш.
+    - Extension: Расширение
     - Field %%_type.: Поле %%_type.
     - Field date + time: Поле date + time
     - Field date: Поле date
