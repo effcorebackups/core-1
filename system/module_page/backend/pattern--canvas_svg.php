@@ -48,7 +48,7 @@ namespace effcore {
 
   function glyph_set($glyph, $x, $y) {
     $rows = explode('|', $glyph);
-    for ($c_y = 0; $c_y < count($rows);        $c_y++) {
+    for ($c_y = 0; $c_y < count ($rows);       $c_y++) {
     for ($c_x = 0; $c_x < strlen($rows[$c_y]); $c_x++) {
       $c_color = $rows[$c_y][$c_x] == '1' ? '#000000' : null;
       if ($c_color) {

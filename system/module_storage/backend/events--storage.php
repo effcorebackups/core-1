@@ -29,7 +29,7 @@ namespace effcore\modules\storage {
   static function on_query_after($storage, $query, $result, $errors) {
     $buf_args = [];
     foreach ($storage->args as $c_arg) {
-      $buf_args[] = strlen($c_arg) > 40 ? substr($c_arg, 0, 40).'…' : $c_arg;
+      $buf_args[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
     }
     $s_query = $storage->query_to_string($query);
     $s_query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $s_query);
