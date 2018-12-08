@@ -239,6 +239,7 @@ translations
     - Permission: Разрешение
     - Permissions: Разрешения
     - Phone: Телефон
+    - php dependencies: php зависимости
     - PHP Version: PHP Версия
     - Port: Порт
     - Provisioning key: Ключ обеспечения
@@ -303,6 +304,7 @@ translations
     - Subscribe to updates: Подписка на обновления
     - Switcher: Переключатель
     - Switchers: Переключатели
+    - system dependencies: системные зависимости
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система
