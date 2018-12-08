@@ -29,6 +29,7 @@ translations
     - Demo\: constraints: Демо: ограничения
     - Demo\: indexes: Демо: индексы
     - Demo\: types: Демо: типы
+    - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Develop: Разработка
     - Diagram: Диаграмма
     - Dynamic block: Динамический блок
@@ -47,6 +48,7 @@ translations
     - Field integer: Поле integer
     - Field time: Поле time
     - Field varchar: Поле varchar
+    - Full report: Полный отчёт
     - Function: Функция
     - Group %%_type.: Группа %%_type.
     - Group 1: Группа 1
@@ -87,9 +89,9 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - PHP dependencies: PHP зависимости
-    - PHP Ext.: PHP Расш.
-    - PHP Extension: PHP Расширение
-    - PHP modules: PHP модули
+    - PHP ext.: PHP расш.
+    - PHP extension: PHP расширение
+    - PHP functions usage: Использование PHP функций
     - Pos.: Поз.
     - Quantity of iterations: Количество итераций
     - Radiobutton 1: Переключатель 1
@@ -116,4 +118,5 @@ translations
     - Traits: Трейты
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
+    - Usage frequency: Частота использования
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.

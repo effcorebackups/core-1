@@ -18,21 +18,19 @@ namespace effcore\modules\develop {
           abstract class events_page_php_dependencies {
 
   static function on_show_block_php_dependencies_list($page) {
-  # collect information about native php functions
-    $used_funcs = [];
-    foreach (get_loaded_extensions() as $c_extension) {
-      foreach (get_extension_funcs($c_extension) ?: [] as $c_function) {
-        $used_funcs[$c_function] = $c_extension;
-      }
-    }
-  # get modules path
     $modules_path = module::all_get(true);
     arsort($modules_path);
-  # scan each php file on used functions
-    $statistic_by_ext = [];
     $statistic_by_mod = [];
-    $php_files = file::select_recursive(dir_root, '%^.*\\.php$%');
-    foreach ($php_files as $c_file) {
+    $statistic_by_fnc = [];
+    $statistic_by_ext = [];
+    $functions_by_ext = [];
+    foreach (get_loaded_extensions() as $c_extension) {
+      foreach (get_extension_funcs($c_extension) ?: [] as $c_function) {
+        $functions_by_ext[$c_function] = $c_extension;
+      }
+    }
+  # scan each php file on used functions
+    foreach (file::select_recursive(dir_root, '%^.*\\.php$%') as $c_file) {
       $c_matches = [];
       $c_file_path = $c_file->path_relative_get();
     # define module id
@@ -47,10 +45,11 @@ namespace effcore\modules\develop {
       preg_match_all('%(?<![a-z0-9_])(?<name>[a-z0-9_]+)\\(%isS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {
         foreach ($c_matches['name'] as $c_match) {
-          if (isset($used_funcs[$c_match[0]])) {
-            $c_extension = $used_funcs[$c_match[0]];
+          if (isset($functions_by_ext[$c_match[0]])) {
+            $c_extension = $functions_by_ext[$c_match[0]];
             $c_function = $c_match[0];
             $c_position = $c_match[1];
+            $statistic_by_fnc[$c_function][] = $c_position; 
             $statistic_by_mod[$c_module_id][$c_extension][] = $c_position;
             $statistic_by_ext[$c_extension][$c_function][] = (object)[
               'file'     => $c_file_path,
@@ -61,11 +60,13 @@ namespace effcore\modules\develop {
         }
       }
     }
+    ksort($statistic_by_mod);
+    ksort($statistic_by_fnc);
     ksort($statistic_by_ext);
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
-    $thead_mod = [['Module', 'PHP Extension']];
+    $thead_mod = [['Module', 'PHP extension']];
     $tbody_mod = [];
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {
       if ($c_module_id) {
@@ -77,9 +78,20 @@ namespace effcore\modules\develop {
       }
     }
   # ─────────────────────────────────────────────────────────────────────
-  # prepare report by php extensions
+  # prepare report by functions
   # ─────────────────────────────────────────────────────────────────────
-    $thead_ext = [['PHP Ext.', 'Module', 'Function', 'File', 'Pos.']];
+    $thead_fnc = [['Function', 'Usage frequency']];
+    $tbody_fnc = [];
+    foreach ($statistic_by_fnc as $c_function => $c_positions) {
+      $tbody_fnc[] = new table_body_row([], [
+        new table_body_row_cell(['class' => ['function' => 'function']], new text_simple($c_function)),
+        new table_body_row_cell(['class' => ['usage'    => 'usage'   ]], new text_simple(count($c_positions)))
+      ]);
+    }
+  # ─────────────────────────────────────────────────────────────────────
+  # prepare full report
+  # ─────────────────────────────────────────────────────────────────────
+    $thead_ext = [['PHP ext.', 'Module', 'Function', 'File', 'Pos.']];
     $tbody_ext = [];
     foreach ($statistic_by_ext as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
@@ -97,8 +109,9 @@ namespace effcore\modules\develop {
   # return result
     return new block('', ['class' => ['php-dependencies' => 'php-dependencies']], [
       new markup('p', [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
-      new table(['class' => ['report-mod' => 'report-mod', 'compact' => 'compact']], $tbody_mod, $thead_mod),
-      new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
+      new markup('h2', [], 'Dependency of modules by PHP extensions'), new table(['class' => ['report-mod' => 'report-mod', 'compact' => 'compact']], $tbody_mod, $thead_mod),
+      new markup('h2', [], 'PHP functions usage'),                     new table(['class' => ['report-fnc' => 'report-fnc', 'compact' => 'compact']], $tbody_fnc, $thead_fnc),
+      new markup('h2', [], 'Full report'),                             new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
     ]);
   }
 

@@ -33,7 +33,7 @@
 
   /* table */
 
-  table {border-collapse: collapse; width: 100%; margin: 20px 0}
+  table {border-collapse: collapse; width: 100%; margin: 50px 0}
   table thead {border-bottom: 5px solid %%_color_bg}
   table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
   table tbody {background: white}

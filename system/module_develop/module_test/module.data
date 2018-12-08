@@ -9,3 +9,5 @@ module|module
     - =: curl
     - =: pcre
     - =: standard
+    system
+    - =: develop

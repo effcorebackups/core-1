@@ -6,3 +6,5 @@ module|module
   dependencies
     php
     - =: standard
+    system
+    - =: develop
