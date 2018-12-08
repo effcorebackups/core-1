@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/manage/modules)(/(?<action>[a-z]+)/(?<id>[a-z_]+)|)$%
+      match: %^(?<base>/manage/modules)$%
     access
       roles
       - =: admins

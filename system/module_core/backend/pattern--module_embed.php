@@ -41,6 +41,18 @@ namespace effcore {
     return isset($installed[$this->id]);
   }
 
+  function dependencies_status_get() {
+    $dependencies_php = $this->dependencies->php    ?? [];
+    $dependencies_sys = $this->dependencies->system ?? [];
+    $boot_status = core::boot_select();
+    foreach ($dependencies_php as $c_id => $null) $dependencies_php[$c_id] = (int)extension_loaded($dependencies_php[$c_id]);
+    foreach ($dependencies_sys as $c_id => $null) $dependencies_sys[$c_id] = (int)isset($boot_status[$c_id]);
+    return (object)[
+      'php' => $dependencies_php,
+      'sys' => $dependencies_sys
+    ];
+  }
+
   ###########################
   ### static declarations ###
   ###########################

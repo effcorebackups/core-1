@@ -89,6 +89,7 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - PHP dependencies: PHP зависимости
+    - php dependencies: php зависимости
     - PHP ext.: PHP расш.
     - PHP extension: PHP расширение
     - PHP functions usage: Использование PHP функций
@@ -109,6 +110,7 @@ translations
     - Switcher 2 (checked): Переключатель 2 (установлен)
     - Switcher 3 (disabled): Переключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Переключатель 4 (отключён + установлен)
+    - system dependencies: системные зависимости
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
