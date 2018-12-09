@@ -21,8 +21,8 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     $enabled_by_boot = core::boot_select('enabled');
+    $embed = module::embed_get();
     $modules = module::all_get();
-    $embed   = module::embed_get();
     core::array_sort_by_property($modules, 'title');
     foreach ($modules as $c_module) {
       $c_depended               = $c_module->    depended_status_get();
@@ -44,11 +44,11 @@ namespace effcore\modules\core {
       $c_switcher->checked_set (isset($enabled_by_boot[$c_module->id]));
       $c_switcher->disabled_set(isset($embed          [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
       $c_info->child_insert($c_switcher, 'switcher');
-      $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [], $c_module->title)]),                                                                           'title'      );
-      $c_info->child_insert(new markup('x-module-id',          [], [new markup('x-label', [], 'id'),          ': ', new markup('x-value', [], $c_module->id.' ')]),                          'id'         );
-      $c_info->child_insert(new markup('x-module-version',     [], [new markup('x-label', [], 'version'),     ': ', new markup('x-value', [], locale::version_format($c_module->version))]), 'version'    );
-      $c_info->child_insert(new markup('x-module-description', [], [new markup('x-label', [], 'description'), ': ', new markup('x-value', [], $c_module->description)]),                     'description');
-      $c_info->child_insert(new markup('x-module-path',        [], [new markup('x-label', [], 'path'),        ': ', new markup('x-value', [], $c_module->path)]),                            'path'       );
+      $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [],                                                                        $c_module->title       )]), 'title'      );
+      $c_info->child_insert(new markup('x-module-id',          [], [new markup('x-label', [], 'id'),          ': ', new markup('x-value', [],        new text_simple($c_module->id)         )]), 'id'         );
+      $c_info->child_insert(new markup('x-module-version',     [], [new markup('x-label', [], 'version'),     ': ', new markup('x-value', [], locale::version_format($c_module->version    ))]), 'version'    );
+      $c_info->child_insert(new markup('x-module-description', [], [new markup('x-label', [], 'description'), ': ', new markup('x-value', [],                        $c_module->description )]), 'description');
+      $c_info->child_insert(new markup('x-module-path',        [], [new markup('x-label', [], 'path'),        ': ', new markup('x-value', [],                        $c_module->path        )]), 'path'       );
       if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', $c_dependencies_php_items]), 'dependencies_php');
       if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'),        ': ', $c_dependencies_sys_items]), 'dependencies_sys');
       if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'),            ': ', $c_depended_sys_items    ]), 'depended_sys'    );
@@ -61,6 +61,27 @@ namespace effcore\modules\core {
   }
 
   static function on_validate($form, $items) {
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        $enabled_by_boot = core::boot_select('enabled');
+        $embed = module::embed_get();
+        $modules = module::all_get();
+        $modules_to_enable  = [];
+        $modules_to_disable = [];
+        foreach ($modules as $c_module) {
+          if (!isset($embed[$c_module->id])) {
+            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module;
+          }
+        }
+      # check dependencies
+        if ($modules_to_enable) {
+          foreach ($modules_to_enable as $c_module) {
+            # @todo: make functionality
+          }
+        }
+        break;
+    }
   }
 
   static function on_submit($form, $items) {
@@ -68,27 +89,28 @@ namespace effcore\modules\core {
       case 'save':
         $enabled_by_boot = core::boot_select('enabled');
         $embed = module::embed_get();
+        $modules = module::all_get();
         $modules_to_enable  = [];
         $modules_to_disable = [];
-        foreach (module::all_get() as $c_module) {
+        foreach ($modules as $c_module) {
           if (!isset($embed[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module->path;
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module->path;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module;
           }
         }
       # enable modules
         if ($modules_to_enable) {
           static::cache_full_reset($modules_to_enable);
-          foreach ($modules_to_enable as $c_id => $c_path) {
+          foreach ($modules_to_enable as $c_module) {
             if (!$c_module->is_installed())
-            event::start('on_module_install', $c_id);
-            event::start('on_module_enable',  $c_id);
+            event::start('on_module_install', $c_module->id);
+            event::start('on_module_enable',  $c_module->id);
           }
         }
       # disable modules
         if ($modules_to_disable) {
-          foreach ($modules_to_disable as $c_id => $c_path) {
-            event::start('on_module_disable', $c_id);
+          foreach ($modules_to_disable as $c_module) {
+            event::start('on_module_disable', $c_module->id);
           }
         }
       # update cache and this form
@@ -104,9 +126,11 @@ namespace effcore\modules\core {
   }
 
   static function cache_full_reset($modules_to_enable = []) {
+    $paths = [];
+    foreach ($modules_to_enable as $c_module) $paths[$c_module->id] = $c_module->path;
     storage_nosql_files::cache_files_cleaning();
-    core::structures_map_get         (true, $modules_to_enable);
-    storage_nosql_files::cache_update(true, $modules_to_enable);
+    core::structures_map_get         (true, $paths);
+    storage_nosql_files::cache_update(true, $paths);
     core::structures_cache_cleaning();
   }
 
