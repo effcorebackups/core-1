@@ -32,8 +32,10 @@ namespace effcore\modules\core {
       $c_is_ok_sys_depended     = !isset(array_count_values($c_depended         )[1]);
       $c_dependencies_php_items = new node;
       $c_dependencies_sys_items = new node;
-      foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-dependency', ['data-state' => $c_state], new text_simple(strtolower($c_id))), strtolower($c_id));
-      foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-dependency', ['data-state' => $c_state], new text_simple(strtolower($c_id))), strtolower($c_id));
+      $c_depended_sys_items     = new node;
+      foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
+      foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
+      foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-dependency', ['data-state' => $c_state + 2], new text_simple(strtolower($c_id))), strtolower($c_id));
       $c_info = new markup('x-module-info');
       $c_switcher = new field_switcher();
       $c_switcher->build();
@@ -49,6 +51,7 @@ namespace effcore\modules\core {
       $c_info->child_insert(new markup('x-module-path',        [], [new markup('x-label', [], 'path'),        ': ', new markup('x-value', [], $c_module->path)]),                            'path'       );
       if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', $c_dependencies_php_items]), 'dependencies_php');
       if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'),        ': ', $c_dependencies_sys_items]), 'dependencies_sys');
+      if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'),            ': ', $c_depended_sys_items    ]), 'depended_sys'    );
       $info = $form->child_select('info');
       $c_group_name = strtolower($c_module->group);
       if (!$info->child_select($c_group_name))

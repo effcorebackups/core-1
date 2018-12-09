@@ -197,3 +197,5 @@
   x-module-info x-dependencies x-dependency:last-child {margin-right: 0}
   x-module-info x-dependencies x-dependency[data-state='0'] {background: %%_color_warning}
   x-module-info x-dependencies x-dependency[data-state='1'] {background: silver}
+  x-module-info x-dependencies x-dependency[data-state='2'] {background: silver}
+  x-module-info x-dependencies x-dependency[data-state='3'] {background: %%_color_ok}
