@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\test {
-          use \effcore\fieldset;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;

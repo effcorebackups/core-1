@@ -225,6 +225,7 @@ translations
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
     - OS Version: Версия ОС
+    - Other: Другие
     - Owner: Владелец
     - Page not found: Страница не найдена
     - Page: Страница
@@ -276,6 +277,7 @@ translations
     - save: сохранить
     - Search: Поиск
     - search: поиск
+    - Security: Безопасность
     - Select instance: Выбрать экземпляр
     - Select instances: Выбрать экземпляры
     - Select: Выбрать

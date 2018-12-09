@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\fieldset;
           use \effcore\manage_instances;
           use \effcore\markup;
           use \effcore\message;

@@ -5,8 +5,7 @@ forms
     - method: post
     - =: novalidate
     children
-    - info|markup
-        tag_name: x-modules-info
+    - info|node
     - button_save|button
         title: save
         attributes

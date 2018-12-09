@@ -8,6 +8,7 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\event;
           use \effcore\field_switcher;
+          use \effcore\fieldset;
           use \effcore\locale;
           use \effcore\markup;
           use \effcore\module;
@@ -19,7 +20,6 @@ namespace effcore\modules\core {
           abstract class events_form_modules {
 
   static function on_init($form, $items) {
-    $info = $form->child_select('info');
     $enabled_by_boot = core::boot_select('enabled');
     $modules = module::all_get();
     $embed   = module::embed_get();
@@ -47,7 +47,11 @@ namespace effcore\modules\core {
       $c_info->child_insert(new markup('x-module-path',        [], [new markup('x-label', [], 'path'),        ': ', new markup('x-value', [], $c_module->path)]),                            'path'       );
       if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'php dependencies'),    ': ', $c_dependencies_php_items]), 'dependencies_php');
       if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'system dependencies'), ': ', $c_dependencies_sys_items]), 'dependencies_sys');
-      $info->child_insert($c_info, 'module_'.$c_module->id);
+      $info = $form->child_select('info');
+      $c_group_name = strtolower($c_module->group);
+      if (!$info->child_select($c_group_name))
+           $info->child_insert(new fieldset($c_module->group), $c_group_name);
+      $info->child_select($c_group_name)->child_insert($c_info, 'module_'.$c_module->id);
     }
   }
 
