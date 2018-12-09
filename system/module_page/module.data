@@ -3,9 +3,3 @@ module|module_embed
   title: Page
   description: Module for working with pages.
   version: 0.900
-  dependencies
-    php
-    - =: Core
-    - =: date
-    - =: pcre
-    - =: standard

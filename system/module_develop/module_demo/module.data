@@ -5,7 +5,5 @@ module|module
   description: Module for demonstrating capabilities.
   version: 0.900
   dependencies
-    php
-    - =: standard
     system
     - =: develop

@@ -4,9 +4,3 @@ module|module
   group: Develop
   description: Module for development.
   version: 0.900
-  dependencies
-    php
-    - =: Core
-    - =: json
-    - =: pcre
-    - =: standard

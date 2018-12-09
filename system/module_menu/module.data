@@ -3,6 +3,3 @@ module|module_embed
   title: Menu
   description: Module for working with navigation elements.
   version: 0.900
-  dependencies
-    php
-    - =: standard

@@ -3,8 +3,3 @@ module|module_embed
   title: Locales
   description: Module for localization.
   version: 0.900
-  dependencies
-    php
-    - =: date
-    - =: pcre
-    - =: standard
