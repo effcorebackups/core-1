@@ -54,6 +54,18 @@ namespace effcore {
     ];
   }
 
+  function depended_status_get() {
+    $result = [];
+    $boot_status = core::boot_select();
+    foreach (static::all_get() as $c_module) {
+      $c_dependencies_sys = $c_module->dependencies->system ?? [];
+      if (isset($c_dependencies_sys[$this->id])) {
+        $result[$c_module->id] = (int)isset($boot_status[$c_module->id]);
+      }
+    }
+    return $result;
+  }
+
   ###########################
   ### static declarations ###
   ###########################
