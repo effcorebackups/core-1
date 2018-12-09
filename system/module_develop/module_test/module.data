@@ -1,6 +1,7 @@
 module|module
   id: test
   title: Test
+  group: Develop
   description: Module for testing.
   version: 0.900
   dependencies

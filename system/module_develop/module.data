@@ -1,6 +1,7 @@
 module|module
   id: develop
   title: Develop
+  group: Develop
   description: Module for development.
   version: 0.900
   dependencies

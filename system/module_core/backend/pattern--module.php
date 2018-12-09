@@ -7,6 +7,7 @@
 namespace effcore {
           class module extends module_embed {
 
+  public $group = 'Other';
   public $enabled = 'no';
 
   function disable() {

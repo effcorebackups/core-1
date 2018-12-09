@@ -1,6 +1,7 @@
 module|module
   id: demo
   title: Demo
+  group: Develop
   description: Module for demonstrating capabilities.
   version: 0.900
   dependencies

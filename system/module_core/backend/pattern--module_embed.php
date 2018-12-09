@@ -9,6 +9,7 @@ namespace effcore {
 
   public $id;
   public $title;
+  public $group = 'System';
   public $description;
   public $version;  
   public $path;
