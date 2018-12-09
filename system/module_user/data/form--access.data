@@ -7,6 +7,7 @@ forms
     children
     - settings|fieldset
         title: Access settings
+        state: closed
         attributes
         - data-type: roles
         children

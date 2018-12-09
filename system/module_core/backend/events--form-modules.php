@@ -16,6 +16,7 @@ namespace effcore\modules\core {
           use \effcore\page;
           use \effcore\storage_nosql_files;
           use \effcore\text_simple;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_modules {
 
@@ -43,7 +44,7 @@ namespace effcore\modules\core {
       $c_switcher->value_set($c_module->id);
       $c_switcher->checked_set (isset($enabled_by_boot[$c_module->id]));
       $c_switcher->disabled_set(isset($embed          [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
-      $c_info->child_insert($c_switcher, 'switcher');
+      $c_info->child_insert($c_switcher,                                                                                                                                                         'switcher'   );
       $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [],                                                                        $c_module->title       )]), 'title'      );
       $c_info->child_insert(new markup('x-module-id',          [], [new markup('x-label', [], 'id'),          ': ', new markup('x-value', [],        new text_simple($c_module->id)         )]), 'id'         );
       $c_info->child_insert(new markup('x-module-version',     [], [new markup('x-label', [], 'version'),     ': ', new markup('x-value', [], locale::version_format($c_module->version    ))]), 'version'    );
@@ -77,7 +78,18 @@ namespace effcore\modules\core {
       # check dependencies
         if ($modules_to_enable) {
           foreach ($modules_to_enable as $c_module) {
-            # @todo: make functionality
+            $c_dependencies = $c_module->dependencies->system ?? [];
+            foreach ($c_dependencies as $c_dependency) {
+              if (isset($modules_to_disable[$c_dependency])) {
+                $items['#is_enabled:'.$c_dependency]->error_set();
+                $items['#is_enabled:'.$c_module->id]->error_set(
+                  translation::get('Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!', [
+                    'module_id_1' => $c_module->id,
+                    'module_id_2' => $c_dependency
+                  ])
+                );
+              }
+            }
           }
         }
         break;
