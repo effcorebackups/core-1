@@ -69,8 +69,10 @@ translations
     - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
     - Delete: Удалить
     - delete: удалить
+    - Demo: Демо
     - Description: Описание
     - description: описание
+    - Develop: Разработка
     - Diagrams: Диаграммы
     - disable: выключить
     - Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?: Вы хотите удалить экземпляр сущности "%%_entity_name" с id = "%%_instance_id"?
@@ -200,8 +202,11 @@ translations
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module %%_title (%%_id) was installed.: Модуль %%_title (%%_id) был установлен.
+    - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
+    - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
+    - Module for testing.: Модуль для тестирования.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
