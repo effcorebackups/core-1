@@ -44,8 +44,8 @@ namespace effcore {
     if (strlen($new_value) && !core::validate_hex_color($new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
-        'The color should be specified in a special format.'], ['title' => translation::get($field->title)])
-      );
+        'The color should be specified in a special format.'], ['title' => translation::get($field->title)]
+      ));
     } else {
       return true;
     }

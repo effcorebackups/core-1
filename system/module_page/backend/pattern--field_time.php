@@ -69,7 +69,7 @@ namespace effcore {
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_time($new_value)) {
       $field->error_set(
-        translation::get('Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)])
+        'Field "%%_title" contains an incorrect time!', ['title' => translation::get($field->title)]
       );
     } else {
       $new_value = core::sanitize_time($new_value);
