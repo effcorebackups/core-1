@@ -51,7 +51,7 @@ namespace effcore\modules\core {
             $form->error_set('Driver is not selected!');
             return;
           }
-          if ($form->total_errors_count_get() == 0) {
+          if (!form::$errors) {
             if ($items['#driver:mysql']->checked_get()) {
               $test = storage::get('sql')->test('mysql', (object)[
                 'host'     => $items['#host'            ]->value_get(),

@@ -71,33 +71,28 @@ namespace effcore {
       }
 
     # send specific header
-      header('X-Submit-Errors-Count: '.$this->total_errors_count_get());
+      header('X-Submit-Errors-Count: '.count(form::$errors));
 
     # show errors
-      if ($this->total_errors_count_get() != 0) {
+      if (form::$errors) {
         $this->attribute_insert('class', ['error' => 'error']);
-        foreach ($this->total_errors_get() as $c_errors) {
-          foreach ($c_errors as $c_error) {
-            if ($c_error) {
-              message::insert($c_error, 'error');
-            }
+        foreach (form::$errors as $c_error) {
+          if ($c_error->message) {
+            message::insert(
+              translation::get($c_error->message, $c_error->args), 'error'
+            );
           }
         }
       }
 
     # call submit handler (if no errors)
-      if ($this->total_errors_count_get() == 0) {
+      if (!form::$errors) {
         event::start('on_form_submit', $id, [$this, $items]);
       }
 
     # validation cache
-      if ($this->total_errors_count_get() != 0 && core::hash_data_get($this->validation_data) != $data_hash) {
-        $this->validation_cache_update($this->validation_data);
-      }
-      if ($this->total_errors_count_get() == 0 || count($this->validation_data) == 0) {
-        $this->validation_cache_delete();
-      }
-
+      if (form::$errors != [] && core::hash_data_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
+      if (form::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
 
   # add form_id to the form markup
@@ -156,20 +151,12 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function error_set($message = null) {
-    static::$errors['_form'][] = $message;
-  }
-
-  function total_errors_count_get() {
-    $result = 0;
-    foreach ($this->total_errors_get() as $c_errors) {
-      $result += count($c_errors);
-    }
-    return $result;
-  }
-
-  function total_errors_get() {
-    return static::$errors + field::$errors;
+  function error_set($message = null, $args = []) {
+    form::$errors[] = (object)[
+      'message' => $message,
+      'args'    => $args,
+      'pointer' => &$this
+    ];
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

@@ -46,7 +46,7 @@ namespace effcore {
   static function validate($fieldset, $form, $npath) {
     if (($fieldset->state == 'opened'  ||
          $fieldset->state == 'closed') &&
-         $fieldset->group_errors_count_get() != 0) {
+         $fieldset->has_error()) {
       $fieldset->state = 'with_error';
     }
   }

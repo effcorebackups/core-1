@@ -59,8 +59,7 @@ namespace effcore {
   public $element_attributes_default = [];
   public $element_attributes = [];
   public $description_state = 'closed'; # opened | closed[checked] | hidden
-# ─────────────────────────────────────────────────────────────────────
-  static public $errors = [];
+  public $has_error = false;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, [], $weight);
@@ -238,23 +237,23 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function error_set($message = null) {
+  function error_set($message = null, $args = []) {
     if ($this->disabled_get() == false &&
         $this->readonly_get() == false) {
-      static::$errors[$this->npath][] = $message;
-      if (count(static::$errors[$this->npath]) == 1) {
+      form::$errors[] = (object)[
+        'message' => $message,
+        'args'    => $args,
+        'pointer' => &$this];
+      if (!$this->has_error) {
+           $this->has_error = true;
         $element = $this->child_select('element');
         $element->attribute_insert('class', ['error' => 'error']);
       }
     }
   }
 
-  function errors_count_get() {
-    return count($this->errors_get());
-  }
-
-  function errors_get() {
-    return static::$errors[$this->npath] ?? [];
+  function has_error() {
+    return $this->has_error;
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -293,9 +292,9 @@ namespace effcore {
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
-      if ($this->description_state == 'hidden'                                 ) return '';
-      if ($this->description_state == 'opened' || $this->errors_count_get() > 0) return (new markup($this->description_tag_name, [], $result))->render();
-      if ($this->description_state == 'closed')                return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'hidden'                      ) return '';
+      if ($this->description_state == 'opened' || $this->has_error()) return (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'closed'                      ) return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
   }
