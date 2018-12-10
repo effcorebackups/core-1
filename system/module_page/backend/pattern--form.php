@@ -43,8 +43,9 @@ namespace effcore {
     }
   # relate each item with it's form
     foreach ($this->children_select_recursive() as $c_npath => $c_element) {
-      if (method_exists($c_element, 'cform_set')) $c_element->cform_set($this);
-      if (method_exists($c_element, 'npath_set')) $c_element->npath_set($c_npath);
+      if (method_exists($c_element, 'cform_set')) {
+        $c_element->cform_set($this);
+      }
     }
 
   # call init handlers
