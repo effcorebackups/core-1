@@ -13,6 +13,7 @@ namespace effcore\modules\core {
           use \effcore\module;
           use \effcore\page;
           use \effcore\storage;
+          use \effcore\text_multiline;
           use \effcore\translation;
           use \effcore\url;
           abstract class events_form_install {
@@ -66,8 +67,10 @@ namespace effcore\modules\core {
                 $items['#storage_login'   ]->error_set();
                 $items['#storage_password']->error_set();
                 $items['#database_name'   ]->error_set();
-                $form->error_set(translation::get('Storage is not available with these credentials!').br.
-                                 translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+                $form->error_set(new text_multiline([
+                  'Storage is not available with these credentials!',
+                  'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
+                ));
               }
             }
             if ($items['#driver:sqlite']->checked_get()) {
@@ -76,8 +79,10 @@ namespace effcore\modules\core {
               ]);
               if ($test !== true) {
                 $items['#file_name']->error_set();
-                $form->error_set(translation::get('Storage is not available with these credentials!').br.
-                                 translation::get('Message from storage: %%_message', ['message' => strtolower($test['message'])]));
+                $form->error_set(new text_multiline([
+                  'Storage is not available with these credentials!',
+                  'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
+                ));
               }
             }
           }

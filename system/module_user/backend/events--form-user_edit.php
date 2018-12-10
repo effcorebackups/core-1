@@ -36,9 +36,7 @@ namespace effcore\modules\user {
           ]))->select();
           if ($test_password->password_hash !== core::hash_password_get($items['#password']->value_get())) {
             $items['#password']->error_set(
-              translation::get('Field "%%_title" contains incorrect value!', [
-                'title' => translation::get($items['#password']->title)
-              ])
+              'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password']->title)]
             );
             return;
           }
