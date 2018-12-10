@@ -44,7 +44,7 @@ namespace effcore {
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_nick($new_value)) {
       $field->error_set(
-        translation::get('Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)])
+        'Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]
       );
     } else {
       return true;

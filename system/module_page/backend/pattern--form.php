@@ -78,9 +78,9 @@ namespace effcore {
         $this->attribute_insert('class', ['error' => 'error']);
         foreach (form::$errors as $c_error) {
           if ($c_error->message) {
-            message::insert(
-              translation::get($c_error->message, $c_error->args), 'error'
-            );
+            if ($c_error->message instanceof text_multiline)
+                 message::insert(                 $c_error->message->render(),        'error');
+            else message::insert(translation::get($c_error->message, $c_error->args), 'error');
           }
         }
       }

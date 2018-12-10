@@ -83,11 +83,10 @@ namespace effcore\modules\core {
               if (isset($modules_to_disable[$c_dependency])) {
                 $items['#is_enabled:'.$c_dependency]->error_set();
                 $items['#is_enabled:'.$c_module->id]->error_set(
-                  translation::get('Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!', [
-                    'module_id_1' => $c_module->id,
-                    'module_id_2' => $c_dependency
-                  ])
-                );
+                  'Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!', [
+                  'module_id_1' => $c_module->id,
+                  'module_id_2' => $c_dependency
+                ]);
               }
             }
           }
