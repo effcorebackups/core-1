@@ -78,10 +78,9 @@ namespace effcore {
       if (form::$errors) {
         $this->attribute_insert('class', ['error' => 'error']);
         foreach (form::$errors as $c_error) {
-          if ($c_error->message) {
-            if ($c_error->message instanceof text_multiline)
-                 message::insert(                 $c_error->message->render(),        'error');
-            else message::insert(translation::get($c_error->message, $c_error->args), 'error');
+          switch (gettype($c_error->message)) {
+            case 'string':                                                 message::insert(translation::get($c_error->message, $c_error->args), 'error'); break;
+            case 'object': if (method_exists($c_error->message, 'render')) message::insert(                 $c_error->message->render(),        'error'); break;
           }
         }
       }
@@ -158,6 +157,10 @@ namespace effcore {
       'args'    => $args,
       'pointer' => &$this
     ];
+  }
+
+  function has_error() {
+    return count(form::$errors);
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

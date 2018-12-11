@@ -28,7 +28,7 @@ namespace effcore\modules\user {
   static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        if (!$form::$errors) {
+        if (!$form->has_error()) {
           $nick = page::current_get()->args_get('nick');
         # check security
           $test_password = (new instance('user', [

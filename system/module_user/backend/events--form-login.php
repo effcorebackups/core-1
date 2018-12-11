@@ -26,7 +26,7 @@ namespace effcore\modules\user {
   static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'login':
-        if (!$form::$errors) {
+        if (!$form->has_error()) {
           $user = (new instance('user', [
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
