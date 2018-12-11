@@ -160,7 +160,7 @@ namespace effcore {
   }
 
   function has_error() {
-    return count(form::$errors);
+    return (bool)count(form::$errors);
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

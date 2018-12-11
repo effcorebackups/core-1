@@ -11,7 +11,7 @@ namespace effcore {
   public $title_tag_name = 'label';
   public $content_tag_name = 'x-fieldset-content';
 # ─────────────────────────────────────────────────────────────────────
-  public $state = ''; # opened | closed[checked] | with_error
+  public $state = ''; # opened | closed[checked] | has_error
   public $number = 0;
 
   function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
@@ -47,7 +47,7 @@ namespace effcore {
     if (($fieldset->state == 'opened'  ||
          $fieldset->state == 'closed') &&
          $fieldset->has_error()) {
-      $fieldset->state = 'with_error';
+      $fieldset->state = 'has_error';
     }
   }
 

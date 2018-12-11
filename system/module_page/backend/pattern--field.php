@@ -293,7 +293,7 @@ namespace effcore {
     if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                      ) return '';
-      if ($this->description_state == 'opened' || $this->has_error()) return (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'opened' || $this->has_error()) return                   (new markup($this->description_tag_name, [], $result))->render();
       if ($this->description_state == 'closed'                      ) return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
