@@ -147,16 +147,24 @@ namespace effcore {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
-    $files = [];
-    $paths = core::boot_select('enabled') + $with_paths;
-    asort($paths);
+  # collect and parse all module.data and bundle.data
     foreach (file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
              file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/module\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/bundle\\.data$%') as $c_file) {
-      $files[$c_file->path_relative_get()] = $c_file;
+      $c_data = static::text_to_data($c_file->load(), $c_file);
+      $c_path_relative = $c_file->path_relative_get();
+      $c_dirs_relative = $c_file->dirs_relative_get();
+      $parsed[$c_path_relative] = new \stdClass();
+      $parsed[$c_path_relative]->file = $c_file;
+      $parsed[$c_path_relative]->data = $c_data;
+      if ($c_file->name == 'bundle') $c_data->bundle->path = $bundles_path[$c_data->bundle->id] = $c_dirs_relative;
+      if ($c_file->name == 'module') $c_data->module->path = $modules_path[$c_data->module->id] = $c_dirs_relative;
     }
   # collect *.data from enabled modules
+    $files = [];
+    $paths = core::boot_select('enabled') + $with_paths;
+    asort($paths);
     foreach ($paths as $c_module_path) {
       $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
     }
@@ -167,11 +175,6 @@ namespace effcore {
       $parsed[$c_path_relative] = new \stdClass();
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
-    }
-  # collect modules and bundles paths
-    foreach ($parsed as $c_file_path => $c_info) {
-      if ($c_info->file->name == 'bundle') $bundles_path[$c_info->data->bundle->id] = $c_info->file->dirs_relative_get();
-      if ($c_info->file->name == 'module') $modules_path[$c_info->data->module->id] = $c_info->file->dirs_relative_get();
     }
   # build the result
     foreach ($parsed as $c_file_path => $c_info) {

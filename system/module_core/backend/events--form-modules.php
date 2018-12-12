@@ -44,11 +44,11 @@ namespace effcore\modules\core {
       $c_switcher->value_set($c_module->id);
       $c_switcher->checked_set (isset($enabled_by_boot[$c_module->id]));
       $c_switcher->disabled_set(isset($embed          [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
-      $c_info->child_insert($c_switcher,                                                                                                                                                         'switcher'   );
-      $c_info->child_insert(new markup('x-module-title',       [], [new markup('x-value', [],                                                                        $c_module->title       )]), 'title'      );
-      $c_info->child_insert(new markup('x-module-id',          [], [new markup('x-label', [], 'id'),          ': ', new markup('x-value', [],        new text_simple($c_module->id)         )]), 'id'         );
-      $c_info->child_insert(new markup('x-module-version',     [], [new markup('x-label', [], 'version'),     ': ', new markup('x-value', [], locale::version_format($c_module->version    ))]), 'version'    );
-      $c_info->child_insert(new markup('x-module-path',        [], [new markup('x-label', [], 'path'),        ': ', new markup('x-value', [],                        $c_module->path        )]), 'path'       );
+      $c_info->child_insert($c_switcher,                                                                                                                                             'switcher');
+      $c_info->child_insert(new markup('x-module-title',   [], [new markup('x-value', [],                                                                    $c_module->title   )]), 'title'   );
+      $c_info->child_insert(new markup('x-module-id',      [], [new markup('x-label', [], 'id'),      ': ', new markup('x-value', [],        new text_simple($c_module->id)     )]), 'id'      );
+      $c_info->child_insert(new markup('x-module-version', [], [new markup('x-label', [], 'version'), ': ', new markup('x-value', [], locale::version_format($c_module->version))]), 'version' );
+      $c_info->child_insert(new markup('x-module-path',    [], [new markup('x-label', [], 'path'),    ': ', new markup('x-value', [],                        $c_module->path    )]), 'path'    );
       if ($c_module->copyright                       ) $c_info->child_insert(new markup('x-module-copyright',   [],               [new markup('x-label', [], 'copyright'                 ), ': ', new markup('x-value', [], $c_module->copyright     )]), 'copyright'       );
       if ($c_module->description                     ) $c_info->child_insert(new markup('x-module-description', [],               [new markup('x-label', [], 'description'               ), ': ', new markup('x-value', [], $c_module->description   )]), 'description'     );
       if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', new markup('x-value', [], $c_dependencies_php_items)]), 'dependencies_php');
