@@ -21,6 +21,18 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     if (!storage::is_installed()) {
       $items['#password']->value_set(dechex(random_int(0x10000000, 0x7fffffff)));
+    # check for php dependencies
+      $embed = module::embed_get();
+      $dependencies = [];
+      foreach ($embed as $c_module)
+        $dependencies += $c_module->dependencies->php ?? [];
+      foreach ($dependencies as $c_dependency) {
+        if (!extension_loaded($c_dependency)) {
+          message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => $c_dependency]), 'error');
+          $items['~install']->disabled_set();
+        }
+      }
+    # check for php dependencies for storage
       if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();
