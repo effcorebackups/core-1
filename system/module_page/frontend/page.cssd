@@ -190,8 +190,9 @@
   x-module-info x-module-title {display: block; margin-bottom: 10px; font-size: 1.5em}
   x-module-info x-module-id {display: block}
   x-module-info x-module-version {display: block}
-  x-module-info x-module-description {display: block}
   x-module-info x-module-path {display: block}
+  x-module-info x-module-copyright {display: block}
+  x-module-info x-module-description {display: block}
   x-module-info x-dependencies {display: block}
   x-module-info x-dependencies x-dependency {display: inline-block; margin-right: 5px; padding: 1px 5px 2px 5px; border-radius: 5px; line-height: 1.1em; color: white}
   x-module-info x-dependencies x-dependency:last-child {margin-right: 0}

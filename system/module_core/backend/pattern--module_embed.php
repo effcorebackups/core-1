@@ -11,7 +11,8 @@ namespace effcore {
   public $title;
   public $group = 'System';
   public $description;
-  public $version;  
+  public $version;
+  public $copyright;
   public $path;
   public $dependencies;
   public $enabled = 'yes';
