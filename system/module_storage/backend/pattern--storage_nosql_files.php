@@ -168,8 +168,10 @@ namespace effcore {
     foreach ($paths as $c_module_path) {
       $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
     }
-  # parse each *.data
+  # parse collected *.data
     foreach ($files as $c_file) {
+      if ($c_file->name == 'bundle') continue;
+      if ($c_file->name == 'module') continue;
       $c_data = static::text_to_data($c_file->load(), $c_file);
       $c_path_relative = $c_file->path_relative_get();
       $parsed[$c_path_relative] = new \stdClass();
@@ -188,8 +190,7 @@ namespace effcore {
       }
     # fill the $result
       foreach ($c_info->data as $c_type => $c_data) {
-        if ($c_type == 'bundle' && isset($bundles_path[$c_data->id])) {$c_module_id = $c_data->id; $c_data->path = $bundles_path[$c_data->id];};
-        if ($c_type == 'module' && isset($modules_path[$c_data->id])) {$c_module_id = $c_data->id; $c_data->path = $modules_path[$c_data->id];};
+        if ($c_type == 'bundle') $c_module_id = $c_data->id;
         if ($c_module_id) {
           if (is_object($c_data)) $result[$c_type][$c_module_id] = $c_data;
           elseif (is_array($c_data)) {
