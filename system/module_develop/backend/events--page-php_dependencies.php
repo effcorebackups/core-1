@@ -7,6 +7,7 @@
 namespace effcore\modules\develop {
           use const \effcore\dir_root;
           use \effcore\block;
+          use \effcore\core;
           use \effcore\file;
           use \effcore\markup;
           use \effcore\module;
@@ -30,17 +31,10 @@ namespace effcore\modules\develop {
       }
     }
   # scan each php file on used functions
-    foreach (file::select_recursive(dir_root, '%^.*\\.php$%') as $c_file) {
+    foreach (file::select_recursive(dir_root, '%^.*\\.php$%') as $c_path => $c_file) {
       $c_matches = [];
-      $c_file_path = $c_file->path_relative_get();
-    # define module id
-      $c_module_id = '';
-      foreach ($modules_path as $c_id => $c_path) {
-        if (strpos($c_file_path, $c_path) === 0) {
-          $c_module_id = $c_id;
-          break;
-        }
-      }
+      $c_path_relative = $c_file->path_relative_get();
+      $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
     # load file and search functions in it
       preg_match_all('%(?<![a-z0-9_])(?<name>[a-z0-9_]+)\\(%isS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {
@@ -52,7 +46,7 @@ namespace effcore\modules\develop {
             $statistic_by_fnc[$c_function][] = $c_position; 
             $statistic_by_mod[$c_module_id][$c_extension][] = $c_position;
             $statistic_by_ext[$c_extension][$c_function][] = (object)[
-              'file'     => $c_file_path,
+              'file'     => $c_path_relative,
               'position' => $c_position,
               'module'   => $c_module_id
             ];
