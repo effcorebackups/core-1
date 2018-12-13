@@ -163,10 +163,10 @@ namespace effcore {
     }
   # collect *.data from enabled modules
     $files = [];
-    $paths = core::boot_select('enabled') + $with_paths;
-    asort($paths);
-    foreach ($paths as $c_module_path) {
-      $files += file::select_recursive($c_module_path,  '%^.*\\.data$%');
+    $files_path = core::boot_select('enabled') + $with_paths;
+    asort($files_path);
+    foreach ($files_path as $c_path) {
+      $files += file::select_recursive($c_path,  '%^.*\\.data$%');
     }
   # parse collected *.data
     foreach ($files as $c_file) {
@@ -180,15 +180,7 @@ namespace effcore {
     }
   # build the result
     foreach ($parsed as $c_file_path => $c_info) {
-    # define the module_id for each *.data file
-      $c_module_id = null;
-      foreach ($modules_path as $c_id => $c_path) {
-        if (strpos($c_file_path, $c_path) === 0) {
-          $c_module_id = $c_id;
-          break;
-        }
-      }
-    # fill the $result
+      $c_module_id = key(core::in_array_inclusions_find($c_file_path, $modules_path));
       foreach ($c_info->data as $c_type => $c_data) {
         if ($c_type == 'bundle') $c_module_id = $c_data->id;
         if ($c_module_id) {

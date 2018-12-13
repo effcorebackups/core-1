@@ -329,6 +329,16 @@ namespace effcore {
     }
   }
 
+  static function in_array_inclusions_find($value, $array) {
+    $result = [];
+    foreach ($array as $c_key => $c_value) {
+      if (strpos($value, $c_value) === 0) {
+        $result[$c_key] = $c_value;
+      }
+    }
+    return $result;
+  }
+
   #############################################
   ### functionality for mix of array|object ###
   #############################################
