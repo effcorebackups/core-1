@@ -3,6 +3,7 @@ tree_items
     id: manage
     id_parent: M:main
     title: Management
+    shadow_url: /manage
     access
       roles
       - =: admins

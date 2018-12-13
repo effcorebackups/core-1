@@ -13,6 +13,7 @@ namespace effcore {
   public $id_parent;
   public $title = '';
   public $url;
+  public $shadow_url;
   public $access;
 
   function __construct($title = '', $id = null, $id_parent = null, $url = null, $attributes = [], $weight = 0) {
@@ -36,11 +37,10 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->url) {
-      if (url::is_active      ($this->url)) $this->attribute_insert('class', ['active'       => 'active']);
-      if (url::is_active_trail($this->url)) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
-      $this->attribute_insert('href', token::replace($this->url));
-    }
+    if ($this->url)                                                   $this->attribute_insert('href', token::replace($this->url));
+    if ($this->url        && url::is_active      ($this->url       )) $this->attribute_insert('class', ['active'       => 'active'      ]);
+    if ($this->url        && url::is_active_trail($this->url       )) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
+    if ($this->shadow_url && url::is_active_trail($this->shadow_url)) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
     return (new markup('a', $this->attributes_select(),
       token::replace(translation::get($this->title))
     ))->render();
