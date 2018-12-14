@@ -104,6 +104,11 @@ forms
             - value: admin@example.com
       # password
         - password|field_password
+      # timezone
+        - timezone|field_timezone
+            title: Timezone
+            selected
+            - UTC: UTC
     - license_agreement|group_license_agreement
     - button_install|button
         title: install
