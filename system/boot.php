@@ -23,11 +23,12 @@ namespace effcore {
   #############################
 
   require_once('module_core/backend/core.php');
+  require_once('module_core/backend/file.php');
+  require_once('module_core/backend/dynamic.php');
+  require_once('module_core/backend/data.php');
+  require_once('module_core/backend/cache.php');
   require_once('module_core/backend/timer.php');
   require_once('module_core/backend/console.php');
-  require_once('module_core/backend/dynamic.php');
-  require_once('module_core/backend/cache.php');
-  require_once('module_core/backend/file.php');
   spl_autoload_register('\\'.__NAMESPACE__.'\\core::structure_autoload');
   timer::tap('total');
 

@@ -24,7 +24,6 @@ namespace effcore {
   }
 
   static function boot_select($type = 'enabled') {
-    require_once('data.php');
     $boot = data::select('boot');
     if ($boot && isset($boot->{'modules_'.$type}))
                 return $boot->{'modules_'.$type};
@@ -32,7 +31,6 @@ namespace effcore {
   }
 
   static function boot_insert($module_id, $module_path, $type) {
-    require_once('data.php');
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
@@ -45,7 +43,6 @@ namespace effcore {
   }
 
   static function boot_delete($module_id, $type) {
-    require_once('data.php');
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
