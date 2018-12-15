@@ -3,6 +3,7 @@
   <head>
     %%_meta
     <title>%%_head_title</title>
+    %%_head_icons
     %%_head_styles
     %%_head_scripts
   </head>

@@ -71,9 +71,9 @@ namespace effcore {
     $this->attribute_insert('dir', $this->text_direction);
     if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
-    $frontend->meta->child_insert(new markup_simple('meta', ['charset' => $this->charset]));
     $template->arg_set('attributes', core::data_to_attr($this->attributes_select()));
-    $template->arg_set('meta',         $frontend->meta   ->render());
+    $template->arg_set('meta',         (new markup_simple('meta', ['charset' => $this->charset]))->render());
+    $template->arg_set('head_icons',   $frontend->icons  ->render());
     $template->arg_set('head_styles',  $frontend->styles ->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
     $template->arg_set('head_title', token::replace(translation::get($this->title)));
@@ -93,10 +93,9 @@ namespace effcore {
 
   function frontend_markup_get() {
     $result = new \stdClass;
-    $result->meta    = new node();
+    $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
-    $result->meta    = new node();
     foreach (static::frontend_all_get() as $c_row_id => $c_item) {
       if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_item->display))) {
@@ -107,12 +106,12 @@ namespace effcore {
         if (isset($c_item->favicons)) {
           foreach ($c_item->favicons as $c_icon) {
             $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path.$c_icon->file);
-            $result->meta->child_insert(new markup_simple('link', [
+            $result->icons->child_insert(new markup_simple('link', [
               'rel'   => $c_icon->rel,
               'type'  => $c_icon->type,
               'sizes' => $c_icon->sizes,
               'href'  => $c_url->relative_get()
-            ]));
+            ], $c_icon->weight ?? 0));
           }
         }
 
