@@ -73,8 +73,8 @@ namespace effcore {
     if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
     $frontend->meta->child_insert(new markup_simple('meta', ['charset' => $this->charset]));
     $template->arg_set('attributes', core::data_to_attr($this->attributes_select()));
-    $template->arg_set('meta',         $frontend->meta->render());
-    $template->arg_set('head_styles',  $frontend->styles->render());
+    $template->arg_set('meta',         $frontend->meta   ->render());
+    $template->arg_set('head_styles',  $frontend->styles ->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
     $template->arg_set('head_title', token::replace(translation::get($this->title)));
     $template->arg_set('messages', message::render_all());
@@ -126,7 +126,7 @@ namespace effcore {
               'rel'   => 'stylesheet',
               'media' => $c_style->media,
               'href'  => $c_url->relative_get()
-            ]));
+            ], $c_style->weight ?? 0));
           }
         }
 

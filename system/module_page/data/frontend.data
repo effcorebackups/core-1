@@ -48,10 +48,10 @@ frontend
     scripts
     - page_variables
         file: frontend/vars.jsd
-        weight: -100
+        weight: -90
     - page_script
         file: frontend/page.js
-        weight: -90
+        weight: -80
 - form_all
     display
       check: block
@@ -64,4 +64,4 @@ frontend
     scripts
     - form_script
         file: frontend/form.js
-        weight: -80
+        weight: -70
