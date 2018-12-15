@@ -18,9 +18,9 @@ blocks
         children
         - content|text
             text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-!!!!!!!!!!!!!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-!!!!!!!!!!!!!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.
-!!!!!!!!!!!!!!!!! Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
         - link_view_more|markup
             tag_name: a
             attributes

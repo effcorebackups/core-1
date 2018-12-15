@@ -244,7 +244,7 @@ namespace effcore {
     $postinit_objects        = [];
     $postparse_objects       = [];
     $line_number = 0;
-    foreach (explode(nl, preg_replace('%\n[!]+%', '', $data)) as $c_line) {
+    foreach (explode(nl, preg_replace('%\n[>]+%', '', $data)) as $c_line) {
       $line_number++;
     # skip comments
       if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
