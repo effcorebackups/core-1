@@ -7,7 +7,8 @@ frontend
     styles
     - tree_style
         file: frontend/tree.cssd
-        media: all
+        attributes
+        - media: all
 - menu_block_tabs
     display
       check: block
@@ -16,4 +17,5 @@ frontend
     styles
     - tabs_style
         file: frontend/tabs.cssd
-        media: all
+        attributes
+        - media: all

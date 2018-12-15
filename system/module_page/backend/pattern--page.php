@@ -122,10 +122,9 @@ namespace effcore {
           foreach ($c_item->styles as $c_style) {
             $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path.$c_style->file);
             $result->styles->child_insert(new markup_simple('link', [
-              'rel'   => 'stylesheet',
-              'media' => $c_style->media,
-              'href'  => $c_url->relative_get()
-            ], $c_style->weight ?? 0));
+              'rel'  => 'stylesheet',
+              'href' => $c_url->relative_get()
+            ] + $c_style->attributes, $c_style->weight ?? 0));
           }
         }
 

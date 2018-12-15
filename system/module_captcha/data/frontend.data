@@ -7,4 +7,5 @@ frontend
     styles
     - form_style
         file: frontend/captcha.css
-        media: all
+        attributes
+        - media: all

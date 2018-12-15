@@ -7,7 +7,8 @@ frontend
     styles
     - develop_style
         file: frontend/develop.cssd
-        media: all
+        attributes
+        - media: all
 - develop_page_structures
     display
       check: url
@@ -16,4 +17,5 @@ frontend
     styles
     - form_style
         file: /system/module_page/frontend/form.cssd
-        media: all
+        attributes
+        - media: all

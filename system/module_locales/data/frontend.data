@@ -7,4 +7,5 @@ frontend
     styles
     - page_style
         file: frontend/locales.cssd
-        media: all
+        attributes
+        - media: all
