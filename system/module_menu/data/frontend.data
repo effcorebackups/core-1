@@ -8,6 +8,7 @@ frontend
     - tree_style
         file: frontend/tree.cssd
         attributes
+        - rel: stylesheet
         - media: all
 - menu_block_tabs
     display
@@ -18,4 +19,5 @@ frontend
     - tabs_style
         file: frontend/tabs.cssd
         attributes
+        - rel: stylesheet
         - media: all

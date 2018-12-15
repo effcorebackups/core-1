@@ -8,4 +8,5 @@ frontend
     - form_style
         file: frontend/captcha.css
         attributes
+        - rel: stylesheet
         - media: all

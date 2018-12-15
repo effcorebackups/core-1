@@ -7,52 +7,59 @@ frontend
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
     - icon_32_classic
-        type: image/x-icon
-        rel: icon
         file: frontend/images/icon-32.ico
-        sizes: 32x32
+        attributes
+        - rel: icon
+        - type: image/x-icon
+        - sizes: 32x32
   # icon for all modern browsers: Safari, Opera, Chrome, Firefox, IE 11, Edge …
     - icon_32_modern
-        type: image/png
-        rel: icon
         file: frontend/images/icon-32.png
-        sizes: 32x32
+        attributes
+        - rel: icon
+        - type: image/png
+        - sizes: 32x32
   # icon for Safari on iPad 1/2
     - icon_apple_76
-        type: image/png
-        rel: apple-touch-icon
         file: frontend/images/icon-76.png
-        sizes: 76x76
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 76x76
   # icon for Safari on iPhone
     - icon_apple_120
-        type: image/png
-        rel: apple-touch-icon
         file: frontend/images/icon-120.png
-        sizes: 120x120
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 120x120
   # icon for Safari on any iPad
     - icon_apple_152
-        type: image/png
-        rel: apple-touch-icon
         file: frontend/images/icon-152.png
-        sizes: 152x152
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 152x152
   # icon for Safari on iPad 3+, iPhone, macOS
     - icon_apple_192
-        type: image/png
-        rel: apple-touch-icon
         file: frontend/images/icon-192.png
-        sizes: 192x192
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 192x192
     styles
     - page_style
         file: frontend/page.cssd
         attributes
+        - rel: stylesheet
         - media: all
     scripts
     - page_variables
         file: frontend/vars.jsd
-        weight: -90
+        weight: 90
     - page_script
         file: frontend/page.js
-        weight: -80
+        weight: 80
 - form_all
     display
       check: block
@@ -62,8 +69,9 @@ frontend
     - form_style
         file: frontend/form.cssd
         attributes
+        - rel: stylesheet
         - media: all
     scripts
     - form_script
         file: frontend/form.js
-        weight: -70
+        weight: 70

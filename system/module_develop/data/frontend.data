@@ -8,6 +8,7 @@ frontend
     - develop_style
         file: frontend/develop.cssd
         attributes
+        - rel: stylesheet
         - media: all
 - develop_page_structures
     display
@@ -18,4 +19,5 @@ frontend
     - form_style
         file: /system/module_page/frontend/form.cssd
         attributes
+        - rel: stylesheet
         - media: all

@@ -107,11 +107,8 @@ namespace effcore {
           foreach ($c_item->favicons as $c_icon) {
             $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path.$c_icon->file);
             $result->icons->child_insert(new markup_simple('link', [
-              'rel'   => $c_icon->rel,
-              'type'  => $c_icon->type,
-              'sizes' => $c_icon->sizes,
-              'href'  => $c_url->relative_get()
-            ], $c_icon->weight ?? 0));
+              'href' => $c_url->relative_get()
+            ] + ($c_icon->attributes ?? []), $c_icon->weight ?? 0));
           }
         }
 
@@ -122,9 +119,8 @@ namespace effcore {
           foreach ($c_item->styles as $c_style) {
             $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path.$c_style->file);
             $result->styles->child_insert(new markup_simple('link', [
-              'rel'  => 'stylesheet',
               'href' => $c_url->relative_get()
-            ] + $c_style->attributes, $c_style->weight ?? 0));
+            ] + ($c_style->attributes ?? []), $c_style->weight ?? 0));
           }
         }
 
@@ -136,7 +132,7 @@ namespace effcore {
             $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path.$c_script->file);
             $result->scripts->child_insert(new markup('script', [
               'src' => $c_url->relative_get()
-            ], [], $c_script->weight ?? 0));
+            ] + ($c_script->attributes ?? []), [], $c_script->weight ?? 0));
           }
         }
 

@@ -8,4 +8,5 @@ frontend
     - page_style
         file: frontend/locales.cssd
         attributes
+        - rel: stylesheet
         - media: all
