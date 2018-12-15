@@ -138,7 +138,7 @@ namespace effcore {
             $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path.$c_script->file);
             $result->scripts->child_insert(new markup('script', [
               'src' => $c_url->relative_get()
-            ]));
+            ], [], $c_script->weight ?? 0));
           }
         }
 
