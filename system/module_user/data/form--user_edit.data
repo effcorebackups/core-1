@@ -25,7 +25,6 @@ forms
             element_attributes
             - name: avatar
         - timezone|field_timezone
-            title: Timezone
         - password_new|field_password
             title: New password
             description: Leave the field blank if you do not want to change its value.

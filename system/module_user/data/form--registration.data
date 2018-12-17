@@ -11,6 +11,9 @@ forms
         - email|field_email
         - nick|field_nick
         - password|field_password
+        - timezone|field_timezone
+            element_attributes
+            - data-source: uagent-timezone
         - session_params|group_switchers
             element_attributes
             - name: session_params[]

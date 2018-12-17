@@ -106,9 +106,6 @@ forms
         - password|field_password
       # timezone
         - timezone|field_timezone
-            title: Timezone
-            selected
-            - UTC: UTC
             element_attributes
             - data-source: uagent-timezone
     - license_agreement|group_license_agreement
