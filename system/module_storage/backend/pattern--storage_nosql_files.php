@@ -94,7 +94,7 @@ namespace effcore {
     static::$data = [];
     $data_orig = cache::select('data_original');
     if (!$data_orig || $reset_orig) {
-      $data_orig = static::data_static_find($with_paths);
+      $data_orig = static::data_find_and_parse($with_paths);
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -142,7 +142,7 @@ namespace effcore {
     }
   }
 
-  static function data_static_find_modules_and_bundles() {
+  static function data_find_and_parse_modules_and_bundles() {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
@@ -168,9 +168,9 @@ namespace effcore {
     ];
   }
 
-  static function data_static_find($with_paths = []) {
+  static function data_find_and_parse($with_paths = []) {
     $result       = [];
-    $preparse     = static::data_static_find_modules_and_bundles();
+    $preparse     = static::data_find_and_parse_modules_and_bundles();
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;

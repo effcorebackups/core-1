@@ -80,7 +80,7 @@ namespace effcore {
     if (!$reset && $result)
             return $result;
     else {
-      $modules_path = storage_nosql_files::data_static_find_modules_and_bundles()->modules_path;
+      $modules_path = storage_nosql_files::data_find_and_parse_modules_and_bundles()->modules_path;
       $enabled = core::boot_select('enabled') + $with_paths;
       $files = [];
       arsort($enabled);
