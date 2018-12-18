@@ -1,46 +1,44 @@
 
-  var effcore = new effcore();
+  var effcore = new effCore();
 
-  function effcore() {
-
+  function effCore() {
     this.tokens = [];
     this.tokens['color']    = '%%_color';
     this.tokens['color_bg'] = '%%_color_bg';
     this.uagent = document.documentElement.getAttribute('data-uagent') ? document.documentElement.getAttribute('data-uagent') : '';
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
+  }
 
-    this.collection = function(data = {}) {
-      this.data = data;
-      this.length = function()                 {return Object.keys(this.data).length;}
-      this.select = function(id)               {return this.data[id];}
-      this.insert = function(value, id = null) {this.data[id ? id : this.length()] = value;}
-      this.update = function(value, id)        {if (this.data[id]) this.data[id] = value;}
-      this.delete = function(id)               {delete(this.data[id]);}
-      this.doSome = function(user_func) {
-        if (this.length()) {
-          for (id in this.data) {
-            user_func.call(this, this.data[id], id);
-          }
+  effCore.prototype.collection = function(data = {}) {
+    this.data = data;
+    this.length = function()                 {return Object.keys(this.data).length;}
+    this.select = function(id)               {return this.data[id];}
+    this.insert = function(value, id = null) {this.data[id ? id : this.length()] = value;}
+    this.update = function(value, id)        {if (this.data[id]) this.data[id] = value;}
+    this.delete = function(id)               {delete(this.data[id]);}
+    this.doSome = function(user_func) {
+      if (this.length()) {
+        for (var id in this.data) {
+          user_func.call(this, this.data[id], id);
         }
       }
     }
+  }
 
-    this.select = function (query, root = document) {
-      var result = new this.collection();
-      var buffer = root.querySelector(query);
-      if (buffer instanceof Node) result.insert(buffer);
-      return result;
-    }
+  effCore.prototype.select = function (query, root = document) {
+    var result = new this.collection();
+    var buffer = root.querySelector(query);
+    if (buffer instanceof Node) result.insert(buffer);
+    return result;
+  }
 
-    this.select_multiple = function (query, root = document) {
-      var result = new this.collection();
-      var buffer = root.querySelectorAll(query);
-      if (buffer instanceof NodeList) {
-        for (var i = 0; i < buffer.length; i++) {
-          result.insert(buffer[i]);
-        }
+  effCore.prototype.select_multiple = function (query, root = document) {
+    var result = new this.collection();
+    var buffer = root.querySelectorAll(query);
+    if (buffer instanceof NodeList) {
+      for (var i = 0; i < buffer.length; i++) {
+        result.insert(buffer[i]);
       }
-      return result;
     }
-
-  };
+    return result;
+  }
