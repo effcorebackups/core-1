@@ -85,7 +85,13 @@ namespace effcore {
       $files = [];
       arsort($enabled);
       foreach ($enabled as $c_enabled_path) {
-        $files += file::select_recursive($c_enabled_path,  '%^.*\\.php$%');
+        $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.php$%');
+        foreach ($c_files as $c_path => $c_file) {
+          $c_module_id = key(core::in_array_inclusions_find($c_path, $modules_path));
+          if (isset($enabled[$c_module_id])) {
+            $files[$c_path] = $c_file;
+          }
+        }
       }
       foreach ($files as $c_file) {
         $c_matches = [];
