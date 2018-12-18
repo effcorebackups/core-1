@@ -29,6 +29,10 @@ namespace effcore {
   require_once('module_core/backend/cache.php');
   require_once('module_core/backend/timer.php');
   require_once('module_core/backend/console.php');
+  require_once('module_storage/backend/markers.php');
+  require_once('module_core/backend/pattern--module_embed.php');
+  require_once('module_core/backend/pattern--module.php');
+  require_once('module_storage/backend/pattern--storage_nosql_files.php');
   spl_autoload_register('\\'.__NAMESPACE__.'\\core::structure_autoload');
   timer::tap('total');
 

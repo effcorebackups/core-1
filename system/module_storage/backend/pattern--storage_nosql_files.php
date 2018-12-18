@@ -142,12 +142,10 @@ namespace effcore {
     }
   }
 
-  static function data_static_find($with_paths = []) {
-    $result = [];
+  static function data_static_find_modules_and_bundles() {
     $parsed = [];
     $bundles_path = [];
     $modules_path = [];
-  # collect and parse all module.data and bundle.data
     foreach (file::select_recursive(dir_system,  '%^.*/module\\.data$%') +
              file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/module\\.data$%') +
@@ -163,6 +161,19 @@ namespace effcore {
     }
     arsort($bundles_path);
     arsort($modules_path);
+    return (object)[
+      'bundles_path' => $bundles_path,
+      'modules_path' => $modules_path,
+      'parsed'       => $parsed
+    ];
+  }
+
+  static function data_static_find($with_paths = []) {
+    $result = [];
+    $preparse = static::data_static_find_modules_and_bundles();
+    $bundles_path = $preparse->bundles_path;
+    $modules_path = $preparse->modules_path;
+    $parsed       = $preparse->parsed;
   # collect *.data from enabled modules
     $files = [];
     $enabled = core::boot_select('enabled') + $with_paths;
