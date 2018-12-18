@@ -76,16 +76,16 @@ namespace effcore {
   }
 
   static function structures_map_get($reset = false, $with_paths = []) {
-    $result = cache::select('structures');
+    $result = cache::select('structures') ?? [];
     if (!$reset && $result)
             return $result;
     else {
-      $result = [];
+      $modules_path = storage_nosql_files::data_static_find_modules_and_bundles()->modules_path;
+      $enabled = core::boot_select('enabled') + $with_paths;
       $files = [];
-      $paths = core::boot_select('enabled') + $with_paths;
-      asort($paths);
-      foreach ($paths as $c_module_path) {
-        $files += file::select_recursive($c_module_path,  '%^.*\\.php$%');
+      arsort($enabled);
+      foreach ($enabled as $c_enabled_path) {
+        $files += file::select_recursive($c_enabled_path,  '%^.*\\.php$%');
       }
       foreach ($files as $c_file) {
         $c_matches = [];

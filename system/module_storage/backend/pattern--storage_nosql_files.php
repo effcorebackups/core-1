@@ -169,14 +169,14 @@ namespace effcore {
   }
 
   static function data_static_find($with_paths = []) {
-    $result = [];
-    $preparse = static::data_static_find_modules_and_bundles();
+    $result       = [];
+    $preparse     = static::data_static_find_modules_and_bundles();
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;
-  # collect *.data from enabled modules
-    $files = [];
-    $enabled = core::boot_select('enabled') + $with_paths;
+    $enabled      = core::boot_select('enabled') + $with_paths;
+    $files        = [];
+    arsort($enabled);
     foreach ($enabled as $c_enabled_id => $c_enabled_path) {
       $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.data$%');
       foreach ($c_files as $c_path => $c_file) {
