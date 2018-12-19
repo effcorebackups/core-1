@@ -176,7 +176,7 @@ namespace effcore {
   protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
   protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
 
-  static function validation_cache_cleaning($limit = 5000) {
+  static function validation_tmp_cleaning($limit = 5000) {
     if (file_exists(temporary::directory.'validation/')) {
       $counter = 0;
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_spl_dir_info) {

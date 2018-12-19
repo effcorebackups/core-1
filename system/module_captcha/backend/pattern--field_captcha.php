@@ -143,7 +143,7 @@ namespace effcore {
     }
   }
 
-  static function captcha_cleaning() {
+  static function captcha_old_cleaning() {
     $storage = $s = storage::get(entity::get('captcha')->storage_name);
     $catalog_name =              entity::get('captcha')->catalog_name;
     $storage->query('DELETE', 'FROM', $s->tables($catalog_name), 'WHERE', $s->condition('created', core::datetime_get('-1 hour'), '<'));

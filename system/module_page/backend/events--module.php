@@ -25,7 +25,7 @@ namespace effcore\modules\page {
   }
 
   static function on_cron() {
-    form::validation_cache_cleaning();
+    form::validation_tmp_cleaning();
   }
 
 }}

@@ -73,22 +73,6 @@ namespace effcore {
     static::$data = [];
   }
 
-  static function cache_files_cleaning() {
-    foreach (file::select_recursive(cache::directory, '', true) as $c_path => $c_object) {
-      if ($c_path != cache::directory.'readme.mark') {
-        if ($c_object instanceof file) $c_result = @unlink($c_path);
-        else                                       @rmdir ($c_path);
-        if (!$c_result) {
-          $c_file = new file($c_path);
-          message::insert(
-            'Can not delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_relative_get().'"!'.br.
-            'Check directory permissions.', 'error'
-          );
-        }
-      }
-    }
-  }
-
   static function cache_update($reset_orig = false, $with_paths = []) {
   # init data and original data
     static::$data = [];

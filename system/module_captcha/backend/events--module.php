@@ -30,7 +30,7 @@ namespace effcore\modules\captcha {
   }
 
   static function on_cron() {
-    field_captcha::captcha_cleaning();
+    field_captcha::captcha_old_cleaning();
   }
 
 }}

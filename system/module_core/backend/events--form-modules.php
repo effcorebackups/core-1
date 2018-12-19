@@ -140,10 +140,10 @@ namespace effcore\modules\core {
   static function cache_full_reset($modules_to_enable = []) {
     $paths = [];
     foreach ($modules_to_enable as $c_module) $paths[$c_module->id] = $c_module->path;
-    storage_nosql_files::cache_files_cleaning();
-    core::structures_map_get         (true, $paths);
+    core::cache_files_cleaning();
     storage_nosql_files::cache_update(true, $paths);
-    core::structures_cache_cleaning();
+    core::structures_map_get         (true, $paths);
+    core::cache_structures_cleaning();
   }
 
 }}
