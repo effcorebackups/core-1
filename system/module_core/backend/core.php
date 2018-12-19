@@ -53,35 +53,6 @@ namespace effcore {
     data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
   }
 
-  #############
-  ### cache ###
-  #############
-
-  static function cache_files_cleaning() {
-    foreach (file::select_recursive(cache::directory, '', true) as $c_path => $c_object) {
-      if ($c_path != cache::directory.'readme.mark') {
-        if  ($c_object instanceof file)
-             $c_result = @unlink($c_path);
-        else             @rmdir ($c_path);
-        if (!$c_result) {
-          $c_file = new file($c_path);
-          message::insert(
-            'Can not delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_relative_get().'"!'.br.
-            'Check directory permissions.', 'error'
-          );
-        }
-      }
-    }
-  }
-
-  static function cache_structures_cleaning() {
-    foreach (static::structures_map_get() as $c_full_name => $c_structure) {
-      if (isset($c_structure->implements[__NAMESPACE__.'\has_cache_cleaning'])) {
-        $c_full_name::cache_cleaning();
-      }
-    }
-  }
-
   ###############################################
   ### functionality for class|trait|interface ###
   ###############################################
@@ -93,6 +64,14 @@ namespace effcore {
       $c_item_info = static::structures_map_get()[$name];
       $c_file = new file($c_item_info->file);
       $c_file->insert();
+    }
+  }
+
+  static function structures_cache_cleaning() {
+    foreach (static::structures_map_get() as $c_full_name => $c_structure) {
+      if (isset($c_structure->implements[__NAMESPACE__.'\has_cache_cleaning'])) {
+        $c_full_name::cache_cleaning();
+      }
     }
   }
 
