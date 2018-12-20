@@ -33,6 +33,7 @@ namespace effcore\modules\core {
     $info = new markup('dl', ['class' => ['info' => 'info']]);
     $logo_system = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '30']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
+    $is_enabled_opcache = function_exists('opcache_get_status') && !empty(opcache_get_status()['opcache_enabled']);
     $info->child_insert(new markup('dt', [], 'System'));
     $info->child_insert(new markup('dd', [], $logo_system));
     $info->child_insert(new markup('dt', [], 'Copyright'));
@@ -55,6 +56,8 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dd', [], date_default_timezone_get()));
     $info->child_insert(new markup('dt', [], 'Server UTC date / time'));
     $info->child_insert(new markup('dd', [], core::datetime_get()));
+    $info->child_insert(new markup('dt', [], 'OPcache is anebled'));
+    $info->child_insert(new markup('dd', [], $is_enabled_opcache ? 'yes' : 'no'));
     $info->child_insert(new markup('dt', [], 'Cron URL'));
     $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));

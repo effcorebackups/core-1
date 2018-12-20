@@ -43,6 +43,7 @@ namespace effcore {
         return false;
       }
       if (function_exists('opcache_invalidate')) {
+      # reset opcache before load related dynamic files (styles, scripts and etc.)
         opcache_invalidate($file->path_get());
       }
       return true;

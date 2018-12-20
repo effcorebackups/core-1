@@ -232,6 +232,7 @@ translations
     - Object: Объект
     - ok: ок
     - on this ip: на этом ip
+    - OPcache is anebled: OPcache включен
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
     - OS Version: Версия ОС
