@@ -32,7 +32,14 @@ namespace effcore\modules\core {
           $items['~install']->disabled_set();
         }
       }
-    # check for php dependencies for storage
+    # check opcache
+      if (!extension_loaded('Zend OPcache')) {
+        message::insert(new text_multiline([
+          'The PHP extension "%%_name" is not available!',
+          'With it, you can speed up the system from 10x and more.'], ['name' => 'Zend OPcache']
+        ), 'warning');
+      }
+    # check php dependencies for storage
       if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();
