@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\cache;
           use \effcore\core;
           use \effcore\event;
           use \effcore\field_switcher;
@@ -140,9 +141,9 @@ namespace effcore\modules\core {
   static function cache_full_reset($modules_to_enable = []) {
     $paths = [];
     foreach ($modules_to_enable as $c_module) $paths[$c_module->id] = $c_module->path;
-    cache::cleaning();
-    storage_nosql_files::cache_update(true, $paths);
-    core::structures_map_get         (true, $paths);
+    cache::cleaning();                         # delete dynamic/cache/*.php
+    core::structures_select($paths);           # create dynamic/cache/cache--structures.php
+    storage_nosql_files::cache_update($paths); # create dynamic/cache/cache--data-*.php
     core::structures_cache_cleaning();
   }
 

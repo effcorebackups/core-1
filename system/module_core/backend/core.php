@@ -60,26 +60,26 @@ namespace effcore {
   static function structure_autoload($name) {
     console::log_insert('autoload', 'search', $name, 'ok');
     $name = strtolower($name);
-    if (isset(static::structures_map_get()[$name])) {
-      $c_item_info = static::structures_map_get()[$name];
+    if (isset(static::structures_select()[$name])) {
+      $c_item_info = static::structures_select()[$name];
       $c_file = new file($c_item_info->file);
       $c_file->insert();
     }
   }
 
   static function structures_cache_cleaning() {
-    foreach (static::structures_map_get() as $c_full_name => $c_structure) {
+    foreach (static::structures_select() as $c_full_name => $c_structure) {
       if (isset($c_structure->implements[__NAMESPACE__.'\has_cache_cleaning'])) {
         $c_full_name::cache_cleaning();
       }
     }
   }
 
-  static function structures_map_get($reset = false, $with_paths = []) {
+  static function structures_select($with_paths = []) {
     $result = cache::select('structures') ?? [];
-    if (!$reset && $result)
-            return $result;
-    else {
+    if ($result) {
+      return $result;
+    } else {
       $modules_path = storage_nosql_files::data_find_and_parse_modules_and_bundles()->modules_path;
       $enabled = core::boot_select('enabled') + $with_paths;
       $files = [];
@@ -145,7 +145,7 @@ namespace effcore {
 
   static function structure_is_exist($name) {
     $name = strtolower($name);
-    if (isset(static::structures_map_get()[$name])) {
+    if (isset(static::structures_select()[$name])) {
       return true;
     }
   }

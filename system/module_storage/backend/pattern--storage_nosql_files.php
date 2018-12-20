@@ -73,11 +73,11 @@ namespace effcore {
     static::$data = [];
   }
 
-  static function cache_update($reset_orig = false, $with_paths = []) {
+  static function cache_update($with_paths = []) {
   # init data and original data
-    static::$data = [];
-    $data_orig = cache::select('data_original');
-    if (!$data_orig || $reset_orig) {
+    static::$data      = [];
+            $data_orig = cache::select('data_original');
+    if (!$data_orig) {
       $data_orig = static::data_find_and_parse($with_paths);
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }

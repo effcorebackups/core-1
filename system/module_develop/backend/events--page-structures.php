@@ -24,7 +24,7 @@ namespace effcore\modules\develop {
     $list = new markup('x-structures-list', ['data-type' => $page->args_get('type')]);
     $groups_by_name = [];
     $u_first_character = null;
-    foreach (core::structures_map_get() as $c_item_full_name => $c_item_info) {
+    foreach (core::structures_select() as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass;
@@ -70,7 +70,7 @@ namespace effcore\modules\develop {
     if ($page->args_get('type') != 'class') {
       core::send_header_and_exit('page_not_found');
     }
-    $map = core::structures_map_get();
+    $map = core::structures_select();
     $diagram = new markup('x-diagram-uml');
 
   # build diagram for each class
@@ -179,7 +179,7 @@ namespace effcore\modules\develop {
       core::send_header_and_exit('page_not_found');
     }
   # build class diagram
-    $map = core::structures_map_get();
+    $map = core::structures_select();
     $result = [];
     foreach ($map as $c_item_full_name => $c_item_info) {
       if ($c_item_info->type == 'class') {

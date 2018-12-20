@@ -98,7 +98,6 @@ Recommended software for development
 - Rested (mac) for debug HTTP traffic.
 - Kaleidoscope (mac) for search differences in code.
 - SequelPro (mac) for working with MySQL databases.
-- Aster SQLite Manager (mac) for working with SQLite databases.
 - StarUML (mac|win|linux) for working with UML diagrams.
 - BoxySVG (mac|win) for working with SVG vector graphics.
 - Monodraw (mac) for working with pseudo-graphics.
