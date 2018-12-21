@@ -7,7 +7,6 @@
 namespace effcore {
           abstract class cache extends dynamic {
 
-  const type = 'cache';
   const directory = dir_dynamic.'cache/';
   static public $info = []; # own cache info space
   static public $data = []; # own cache data space

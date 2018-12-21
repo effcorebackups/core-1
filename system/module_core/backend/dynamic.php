@@ -7,7 +7,6 @@
 namespace effcore {
           abstract class dynamic {
 
-  const type = 'data';
   const directory = dir_dynamic;
   const dir_files = dir_dynamic.'files/';
   static public $info = [];
@@ -19,7 +18,7 @@ namespace effcore {
 
   static function select($name, $sub_dirs = '') {
     if (!isset(static::$data[$name])) {
-      $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
+      $file = new file(static::directory.$sub_dirs.$name.'.php');
       if ($file->is_exist()) {
         $file->insert();
       }
@@ -29,12 +28,12 @@ namespace effcore {
 
   static function update($name, $data, $sub_dirs = '', $info = null) {
     static::$data[$name] = $data;
-    $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
+    $file = new file(static::directory.$sub_dirs.$name.'.php');
     if ($info) static::$info[$name] = $info;
     if (file::mkdir_if_not_exist($file->dirs_get()) &&
                      is_writable($file->dirs_get())) {
       $file->data_set(
-        '<?php'.nl.nl.'namespace '.__NAMESPACE__.' { # '.static::type.' for '.$name.nl.nl.($info ?
+        '<?php'.nl.nl.'namespace '.__NAMESPACE__.' { # '.$name.nl.nl.($info ?
            core::data_to_code($info, '  '.core::structure_part_name_get(static::class).'::$info[\''.$name.'\']') : '').
            core::data_to_code($data, '  '.core::structure_part_name_get(static::class).'::$data[\''.$name.'\']').nl.
         '}');
@@ -56,7 +55,7 @@ namespace effcore {
   static function delete($name, $sub_dirs = '') {
     if (isset(static::$data[$name]))
         unset(static::$data[$name]);
-    $file = new file(static::directory.$sub_dirs.static::type.'--'.$name.'.php');
+    $file = new file(static::directory.$sub_dirs.$name.'.php');
     if ($file->is_exist()) {
       $result = @unlink($file->path_get());
       if   (!$result) static::message_delete_show($file);
