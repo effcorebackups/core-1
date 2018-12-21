@@ -3,7 +3,7 @@
 How to activate console
 =====================================================================
 
-In "/dynamic/data/data--changes.php" change:
+In "/dynamic/data/changes.php" change:
     data::$data['changes']['page']->update['settings/page/console_display'] = 'no';
 to:
     data::$data['changes']['page']->update['settings/page/console_display'] = 'yes';
@@ -13,7 +13,7 @@ run "/shell/cache_clear.sh"
 How to activate Neor Profile SQL
 =====================================================================
 
-In "/dynamic/data/data--changes.php" change:
+In "/dynamic/data/changes.php" change:
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->host = '[::1]';
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '3306';
 to:

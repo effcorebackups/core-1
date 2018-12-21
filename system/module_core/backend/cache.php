@@ -18,6 +18,7 @@ namespace effcore {
   }
 
   static function cleaning() {
+    static::$info = [];
     static::$data = [];
     foreach (file::select_recursive(static::directory, '', true) as $c_path => $c_object) {
       if ($c_path != static::directory.'readme.mark') {
