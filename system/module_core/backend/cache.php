@@ -9,6 +9,8 @@ namespace effcore {
 
   const type = 'cache';
   const directory = dir_dynamic.'cache/';
+  static public $info = []; # own cache info space
+  static public $data = []; # own cache data space
 
   static function update($name, $data, $sub_dirs = '', $info = null) {
     if (parent::update($name, $data, $sub_dirs, $info)) {

@@ -133,7 +133,8 @@ namespace effcore\modules\core {
         break;
       case 'refresh':
         static::cache_update();
-        url::go(page::current_get()->args_get('base'));
+        $form->child_select('info')->children_delete_all();
+        static::on_init($form, $items);
         break;
     }
   }
@@ -141,10 +142,10 @@ namespace effcore\modules\core {
   static function cache_update($modules_to_enable = []) {
     $paths = [];
     foreach ($modules_to_enable as $c_module) $paths[$c_module->id] = $c_module->path;
-      cache::cleaning();                         # delete dynamic/cache/*.php
-      core::structures_select($paths);           # create dynamic/cache/cache--structures.php
-      storage_nosql_files::cache_update($paths); # create dynamic/cache/cache--data-*.php
-      core::structures_cache_cleaning();
+    cache::cleaning();                         # delete dynamic/cache/*.php
+    core::structures_select($paths);           # create dynamic/cache/cache--structures.php
+    storage_nosql_files::cache_update($paths); # create dynamic/cache/cache--data-*.php
+    core::structures_cache_cleaning();
   }
 
 }}
