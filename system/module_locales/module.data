@@ -1,5 +1,6 @@
 module|module_embed
   id: locales
+  id_bundle: system
   title: Locales
   description: Module for localization.
   version: 0.900

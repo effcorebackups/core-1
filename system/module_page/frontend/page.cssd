@@ -189,6 +189,8 @@
   x-module-info x-module-title {display: block; margin-bottom: 10px; font-size: 1.5em}
   x-module-info x-module-id {display: block}
   x-module-info x-module-version {display: block}
+  x-module-info x-module-bundle_id {display: block}
+  x-module-info x-module-bundle_build {display: block}
   x-module-info x-module-path {display: block}
   x-module-info x-module-copyright {display: block}
   x-module-info x-module-description {display: block}

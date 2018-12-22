@@ -25,6 +25,8 @@ translations
     - Background color: Цвет фона
     - Build number: Номер сборки
     - Build number\: %%_number: Номер сборки: %%_number
+    - bundle build number: номер сборки пакета
+    - bundle id: id пакета
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!

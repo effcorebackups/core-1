@@ -1,5 +1,6 @@
 module|module_embed
   id: page
+  id_bundle: system
   title: Page
   description: Module for working with pages.
   version: 0.900

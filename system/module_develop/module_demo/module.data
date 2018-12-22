@@ -1,5 +1,6 @@
 module|module
   id: demo
+  id_bundle: system
   title: Demo
   group: Develop
   description: Module for demonstrating capabilities.

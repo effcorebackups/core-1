@@ -8,6 +8,7 @@ namespace effcore {
           class module_embed implements has_cache_cleaning {
 
   public $id;
+  public $id_bundle;
   public $title;
   public $group = 'System';
   public $description;
@@ -78,18 +79,24 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache = storage::get('files')->select('module');
+    static::$cache['modules'] = storage::get('files')->select('module');
+    static::$cache['bundles'] = storage::get('files')->select('bundle');
   }
 
   static function get($id) {
     if    (static::$cache == null) static::init();
-    return static::$cache[$id];
+    return static::$cache['modules'][$id];
+  }
+
+  static function get_bundle($id) {
+    if    (static::$cache == null) static::init();
+    return static::$cache['bundles'][$id];
   }
 
   static function all_get($property = null) {
     $result = [];
     if      (static::$cache == null) static::init();
-    foreach (static::$cache as $c_module) {
+    foreach (static::$cache['modules'] as $c_module) {
       $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
     }
     return $result;

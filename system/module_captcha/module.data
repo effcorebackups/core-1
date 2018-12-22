@@ -1,5 +1,6 @@
 module|module
   id: captcha
+  id_bundle: system
   title: CAPTCHA
   group: Security
   description: Module for working with CAPTCHA in forms.
