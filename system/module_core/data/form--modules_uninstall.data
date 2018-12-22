@@ -5,7 +5,8 @@ forms
     - method: post
     - =: novalidate
     children
-    - info|node
+    - info|fieldset
+        title: Delete modules data
     - button_apply|button
         title: apply
         attributes

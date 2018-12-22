@@ -72,6 +72,7 @@ translations
     - delete file\: %%_name: удалить файл: %%_name
     - Delete instance: Удалить экземпляр
     - Delete instances: Удалить экземпляры
+    - Delete modules data: Удалить данные модулей
     - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
     - Delete: Удалить
     - delete: удалить

@@ -185,6 +185,7 @@
   x-module-info {display: block; padding: 30px 0; border-bottom: 1px dashed lightgray}
   x-module-info:last-child {border-bottom: 0}
   x-module-info x-field[data-type='switcher'] {float: right; margin: 0 0 0 10px}
+  x-module-info x-field[data-type='switcher'] input {margin: 0}
   x-module-info x-label {color: gray}
   x-module-info x-module-title {display: block; margin-bottom: 10px; font-size: 1.5em}
   x-module-info x-module-id {display: block}
