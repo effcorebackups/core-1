@@ -1,7 +1,7 @@
 forms
-- modules|form
+- modules_install|form
     attributes
-    - id: modules
+    - id: modules_install
     - method: post
     - =: novalidate
     children

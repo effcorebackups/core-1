@@ -1,0 +1,18 @@
+tabs_items
+- modules_install|tabs_item
+    id: modules_install
+    id_parent: T:manage_modules
+    action_name: install
+    title: Install
+    weight: 100
+    attributes
+    - class
+      - =: modules-install
+- modules_uninstall|tabs_item
+    id: modules_uninstall
+    id_parent: T:manage_modules
+    action_name: uninstall
+    title: Uninstall
+    attributes
+    - class
+      - =: modules-uninstall

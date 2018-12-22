@@ -14,7 +14,7 @@ tree_items
     id: modules
     id_parent: manage
     title: Modules
-    url: /manage/modules
+    url: /manage/modules/install
     access
       roles
       - =: admins

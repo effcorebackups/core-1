@@ -1,0 +1,6 @@
+tabs
+- manage_modules|tabs
+    id: manage_modules
+    attributes
+    - class
+      - =: manage-modules
