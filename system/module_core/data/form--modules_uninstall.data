@@ -1,0 +1,12 @@
+forms
+- modules_uninstall|form
+    attributes
+    - id: modules_uninstall
+    - method: post
+    - =: novalidate
+    children
+    - info|node
+    - button_apply|button
+        title: apply
+        attributes
+        - value: apply

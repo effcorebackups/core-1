@@ -38,6 +38,14 @@ pages
         region: content
         type: link
         source: forms/core/modules_install
+    - form_modules_uninstall|page_part
+        display
+          check: page_args
+          where: action
+          match: %^uninstall$%
+        region: content
+        type: link
+        source: forms/core/modules_uninstall
     - form_access|page_part
         display
           check: user

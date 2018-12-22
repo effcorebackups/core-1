@@ -6,10 +6,10 @@ forms
     - =: novalidate
     children
     - info|node
-    - button_save|button
-        title: save
+    - button_apply|button
+        title: apply
         attributes
-        - value: save
+        - value: apply
     - button_refresh|button
         title: refresh
         attributes

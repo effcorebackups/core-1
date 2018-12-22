@@ -19,7 +19,7 @@ namespace effcore\modules\core {
           use \effcore\text_simple;
           use \effcore\translation;
           use \effcore\url;
-          abstract class events_form_modules {
+          abstract class events_form_modules_install {
 
   static function on_init($form, $items) {
     $enabled_by_boot = core::boot_select('enabled');
@@ -67,7 +67,7 @@ namespace effcore\modules\core {
 
   static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
-      case 'save':
+      case 'apply':
         $enabled_by_boot = core::boot_select('enabled');
         $embed = module::embed_get();
         $modules = module::all_get();
@@ -101,7 +101,7 @@ namespace effcore\modules\core {
 
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
-      case 'save':
+      case 'apply':
         $enabled_by_boot = core::boot_select('enabled');
         $embed = module::embed_get();
         $modules = module::all_get();

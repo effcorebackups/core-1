@@ -17,6 +17,7 @@ translations
     - agree: согласен(а)
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous: Аноним
+    - apply: применить
     - Attempts: Попытки
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
     - autoload: автозагрузка
