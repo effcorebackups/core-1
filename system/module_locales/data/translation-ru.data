@@ -177,6 +177,7 @@ translations
     - invalid session was deleted!: Недействительный сеанс был удалён!
     - IP address: IP адрес
     - Is embed: Встроенный
+    - is embed: встроенный
     - Is fixed IP: Фиксировать IP
     - Is remember: Запоминать
     - item #%%_number: пункт №%%_number
@@ -334,6 +335,7 @@ translations
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
+    - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
     - The report was generated in real time but the list of classes is depend on the cache!: Отчёт был создан в режиме реального времени, но список классов зависит от кэша!
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
