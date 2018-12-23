@@ -115,7 +115,7 @@ namespace effcore\modules\core {
         if ($modules_to_enable) {
           static::cache_update($modules_to_enable);
           foreach ($modules_to_enable as $c_module) {
-            if (!$c_module->is_installed())
+            if (!$c_module->is_installed()) # p.s. module may not have the event "install"
             event::start('on_module_install', $c_module->id);
             event::start('on_module_enable',  $c_module->id);
           }

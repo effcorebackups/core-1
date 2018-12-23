@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use \effcore\core;
+          use \effcore\event;
           use \effcore\group_checkboxes;
           use \effcore\module;
           abstract class events_form_modules_uninstall {
@@ -33,6 +34,13 @@ namespace effcore\modules\core {
   }
 
   static function on_submit($form, $items) {
+    switch ($form->clicked_button->value_get()) {
+      case 'apply':
+        foreach ($items['*uninstall']->values_get() as $c_module_id) {
+          event::start('on_module_uninstall', $c_module_id);
+        }
+        break;
+    }
   }
 
 }}
