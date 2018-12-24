@@ -113,9 +113,9 @@ namespace effcore\modules\core {
         }
       # enable modules
         if ($modules_to_enable) {
-          static::cache_update($modules_to_enable);
+          cache::update_global($modules_to_enable);
           foreach ($modules_to_enable as $c_module) {
-            if (!$c_module->is_installed()) # p.s. module may not have the event "install"
+            if (!$c_module->is_installed()) # p.s. module may not have the event "on_install"
             event::start('on_module_install', $c_module->id);
             event::start('on_module_enable',  $c_module->id);
           }
@@ -127,25 +127,16 @@ namespace effcore\modules\core {
           }
         }
       # update cache and this form
-        static::cache_update();
+        cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
         break;
       case 'refresh':
-        static::cache_update();
+        cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
         break;
     }
-  }
-
-  static function cache_update($modules_to_enable = []) {
-    $paths = [];
-    foreach ($modules_to_enable as $c_module) $paths[$c_module->id] = $c_module->path;
-    cache::cleaning();                         # delete dynamic/cache/*.php
-    core::structures_select($paths);           # create dynamic/cache/structures.php
-    storage_nosql_files::cache_update($paths); # create dynamic/cache/data--*.php
-    core::structures_cache_cleaning();
   }
 
 }}
