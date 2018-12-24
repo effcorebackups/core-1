@@ -62,7 +62,6 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
-    - Data of module %%_title has been removed.: Данные модуля %%_title были удалены.
     - Database name: Имя базы данных
     - Date / time format: Формат даты / времени
     - Date format: Формат даты
@@ -213,7 +212,11 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
-    - Module %%_title (%%_id) was installed.: Модуль %%_title (%%_id) был установлен.
+    - Module %%_title (%%_id) has been disabled.: Модуль %%_title (%%_id) был выключен.
+    - Module %%_title (%%_id) has been enabled.: Модуль %%_title (%%_id) был включен.
+    - Module %%_title (%%_id) has been installed.: Модуль %%_title (%%_id) был установлен.
+    - Module %%_title (%%_id) has been uninstalled.: Модуль %%_title (%%_id) был удалён.
+    - Module data %%_title (%%_id) has been removed.: Данные модуля %%_title (%%_id) были удалены.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.

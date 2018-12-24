@@ -17,6 +17,7 @@ namespace effcore\modules\core {
           use \effcore\node;
           use \effcore\storage_nosql_files;
           use \effcore\text_simple;
+          use \effcore\translation;
           abstract class events_form_modules_install {
 
   static function on_init($form, $items) {
@@ -133,6 +134,26 @@ namespace effcore\modules\core {
         cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
+      # show report
+        $enabled_by_boot = core::boot_select('enabled');
+        if ($modules_to_enable) {
+          foreach ($modules_to_enable as $c_module) {
+            if (isset($enabled_by_boot[$c_module->id])) {
+              message::insert(
+                translation::get('Module %%_title (%%_id) has been enabled.', ['title' => $c_module->title, 'id' => $c_module->id])
+              );
+            }
+          }
+        }
+        if ($modules_to_disable) {
+          foreach ($modules_to_disable as $c_module) {
+            if (!isset($enabled_by_boot[$c_module->id])) {
+              message::insert(
+                translation::get('Module %%_title (%%_id) has been disabled.', ['title' => $c_module->title, 'id' => $c_module->id])
+              );
+            }
+          }
+        }
         break;
       case 'refresh':
       # update caches and this form
