@@ -35,8 +35,12 @@ namespace effcore\modules\core {
     }
     $info = $form->child_select('info');
     if ($checkboxes->children_count())
-         {$info->child_insert($checkboxes, 'checkboxes');}
-    else {$info->child_insert(new text('No items.'), 'message'); $items['~apply']->disabled_set();}
+         $info->child_insert($checkboxes, 'checkboxes');
+    else $info->child_insert(new text('No items.'), 'message');
+    if (count($checkboxes->disabled) ==
+              $checkboxes->children_count()) {
+      $items['~apply']->disabled_set();
+    }
   }
 
   static function on_submit($form, $items) {
