@@ -57,9 +57,13 @@ frontend
     - page_variables
         file: frontend/core.jsd
         weight: 90
+        attributes
+        - defer: defer
     - page_script
         file: frontend/page.js
         weight: 80
+        attributes
+        - defer: defer
 - form_all
     display
       check: block
@@ -75,3 +79,5 @@ frontend
     - form_script
         file: frontend/form.js
         weight: 70
+        attributes
+        - defer: defer

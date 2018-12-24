@@ -1,4 +1,6 @@
 
+  "use strict";
+
   var effcore = new effCore();
 
   function effCore() {
@@ -16,7 +18,7 @@
     this.insert = function(value, id = null) {this.data[id ? id : this.length()] = value;}
     this.update = function(value, id)        {if (this.data[id]) this.data[id] = value;}
     this.delete = function(id)               {delete(this.data[id]);}
-    this.forEach = function(user_func) {
+    this.for_each = function(user_func) {
       if (this.length()) {
         for (var id in this.data) {
           user_func.call(this, this.data[id], id);
