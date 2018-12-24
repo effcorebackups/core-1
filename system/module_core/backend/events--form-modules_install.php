@@ -105,15 +105,17 @@ namespace effcore\modules\core {
         $modules = module::all_get();
         $modules_to_enable  = [];
         $modules_to_disable = [];
+        $include_paths      = [];
+      # collect information
         foreach ($modules as $c_module) {
           if (!isset($embed[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          {$modules_to_disable[$c_module->id] = $c_module;}
           }
         }
       # enable modules
         if ($modules_to_enable) {
-          cache::update_global($modules_to_enable);
+          cache::update_global($include_paths);
           foreach ($modules_to_enable as $c_module) {
             if (!$c_module->is_installed()) # p.s. module may not have the event "on_install"
             event::start('on_module_install', $c_module->id);

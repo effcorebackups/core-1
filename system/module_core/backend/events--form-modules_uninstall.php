@@ -5,10 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\cache;
           use \effcore\core;
           use \effcore\event;
           use \effcore\group_checkboxes;
           use \effcore\module;
+          use \effcore\text;
           abstract class events_form_modules_uninstall {
 
   static function on_init($form, $items) {
@@ -30,15 +32,39 @@ namespace effcore\modules\core {
       }
     }
     $info = $form->child_select('info');
-    $info->child_insert($checkboxes, 'checkboxes');
+    if ($checkboxes->children_count())
+         {$info->child_insert($checkboxes, 'checkboxes');}
+    else {$info->child_insert(new text('No items.'), 'message'); $items['~apply']->disabled_set();}
   }
 
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        foreach ($items['*uninstall']->values_get() as $c_module_id) {
-          event::start('on_module_uninstall', $c_module_id);
+        $embed = module::embed_get();
+        $modules = module::all_get();
+        $modules_to_uninstall = [];
+        $include_paths        = [];
+      # collect information
+        if  (isset($items['*uninstall'])) {
+          foreach ($items['*uninstall']->values_get() as $c_module_id) {
+            $c_module = $modules[$c_module_id];
+            if (!isset($embed[$c_module->id])) {
+              $modules_to_uninstall[$c_module->id] = $c_module;
+              $include_paths       [$c_module->id] = $c_module->path;
+            }
+          }
         }
+      # uninstall modules
+        if ($modules_to_uninstall) {
+          cache::update_global($include_paths);
+          foreach ($modules_to_uninstall as $c_module) {
+            event::start('on_module_uninstall', $c_module->id);
+          }
+        }
+      # update cache and this form
+        cache::update_global();
+        $form->child_select('info')->children_delete_all();
+        static::on_init($form, $items);
         break;
     }
   }
