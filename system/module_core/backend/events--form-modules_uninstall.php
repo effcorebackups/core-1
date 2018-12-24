@@ -9,8 +9,10 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\event;
           use \effcore\group_checkboxes;
+          use \effcore\message;
           use \effcore\module;
           use \effcore\text;
+          use \effcore\translation;
           abstract class events_form_modules_uninstall {
 
   static function on_init($form, $items) {
@@ -61,10 +63,23 @@ namespace effcore\modules\core {
             event::start('on_module_uninstall', $c_module->id);
           }
         }
-      # update cache and this form
+      # update caches and this form
         cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
+      # show report
+        $installed_by_boot = core::boot_select('installed');
+        if ($modules_to_uninstall) {
+          foreach ($modules_to_uninstall as $c_module) {
+            if (!isset($installed_by_boot[$c_module->id])) {
+              message::insert(
+                translation::get('Data of module %%_title has been removed.', ['title' => $c_module->title])
+              );
+            }
+          }
+        } else {
+          message::insert('No one module was selected!', 'warning');
+        }
         break;
     }
   }

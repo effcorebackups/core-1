@@ -15,6 +15,7 @@ translations
     - Actions: Действия
     - Administrators: Администраторы
     - agree: согласен(а)
+    - All caches have been reset.: Все кэши были сброшены.
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous: Аноним
     - apply: применить
@@ -61,6 +62,7 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
+    - Data of module %%_title has been removed.: Данные модуля %%_title были удалены.
     - Database name: Имя базы данных
     - Date / time format: Формат даты / времени
     - Date format: Формат даты
@@ -230,6 +232,7 @@ translations
     - No additional parameters.: Нет дополнительных параметров.
     - no items: нет элементов
     - No items.: Нет элементов.
+    - No one module was selected!: Ни один модуль не был выбран!
     - no url: нет url
     - No: Нет
     - no: нет

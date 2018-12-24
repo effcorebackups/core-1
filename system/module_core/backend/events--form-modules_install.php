@@ -12,6 +12,7 @@ namespace effcore\modules\core {
           use \effcore\fieldset;
           use \effcore\locale;
           use \effcore\markup;
+          use \effcore\message;
           use \effcore\module;
           use \effcore\node;
           use \effcore\storage_nosql_files;
@@ -128,15 +129,20 @@ namespace effcore\modules\core {
             event::start('on_module_disable', $c_module->id);
           }
         }
-      # update cache and this form
+      # update caches and this form
         cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
         break;
       case 'refresh':
+      # update caches and this form
         cache::update_global();
         $form->child_select('info')->children_delete_all();
         static::on_init($form, $items);
+      # show report
+        message::insert(
+          'All caches have been reset.'
+        );
         break;
     }
   }
