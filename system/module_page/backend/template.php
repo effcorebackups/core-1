@@ -9,31 +9,24 @@ namespace effcore {
 
   public $name;
   public $type;
-  public $args = [];
   public $data;
+  public $args = [];
 
   function __construct($name, $args = []) {
+    $template = static::get($name);
     $this->name = $name;
-  # prepare arguments
-    foreach ($args as $c_name => $c_value) {
-      static::arg_set($c_name, $c_value);
-    }
-  # prepare additional properties
-    $info = static::get($name);
-    $this->type = $info->type;
+    $this->type = $template->type;
     switch ($this->type) {
-      case 'file':
-        $path = module::get($info->module_id)->path.$info->path;
-        $file = new file($path);
-        $this->data = $file->load();
-        return $this;
-      case 'text':
-        $this->data = $info->data;
-        return $this;
-      case 'code':
-        $this->handler = $info->handler;
-        return $this;
+      case 'file': $this->data    = (new file( module::get($template->module_id)->path.$template->path ))->load(); break;
+      case 'text': $this->data    = $template->data;                                                               break;
+      case 'code': $this->handler = $template->handler;                                                            break;
     }
+  # prepare argument
+    foreach ($args as $c_name => $c_value) {
+      static::arg_set($c_name,   $c_value);
+    }
+  # return new instance of template
+    return $this;
   }
 
   function arg_set($name, $value) {
@@ -41,23 +34,23 @@ namespace effcore {
   }
 
   function render() {
-    if ($this->type == 'text' ||
-        $this->type == 'file') {
-      $rendered = $this->data;
-      $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
-                                         '(?<prefix>\\%\\%_)'.
-                                         '(?<name>[a-z0-9_]+)'.
-                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
-        return isset($c_match['prefix']) &&
-               isset($c_match['name']) &&
-               isset($this->args[$c_match['name']]) &&
-                     $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
-                     $this->args[$c_match['name']] : '';
-      }, $rendered);
-      return $rendered;
-    }
-    if ($this->type == 'code') {
-      return call_user_func($this->handler, $this->args);
+    switch ($this->type) {
+      case 'text':
+      case 'file':
+        $rendered = $this->data;
+        $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
+                                           '(?<prefix>\\%\\%_)'.
+                                           '(?<name>[a-z0-9_]+)'.
+                                           '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
+          return isset($c_match['prefix']) &&
+                 isset($c_match['name']) &&
+                 isset($this->args[$c_match['name']]) &&
+                       $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
+                       $this->args[$c_match['name']] : '';
+        },     $rendered);
+        return $rendered;
+      case 'code':
+        return call_user_func($this->handler, $this->args);
     }
   }
 

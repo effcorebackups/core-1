@@ -34,7 +34,7 @@ namespace effcore {
     foreach ($this->children as $c_part) {
       $c_part_markup = $c_part->render($this);
       if ($c_part_markup) {
-        if (!$contents->child_select($c_part->region))
+        if (!$contents->child_select(            $c_part->region))
              $contents->child_insert(new node(), $c_part->region);
         $contents->child_select($c_part->region)->child_insert($c_part_markup);
         if ($c_part->type == 'link') {

@@ -13,6 +13,10 @@ namespace effcore {
     static::$cache = [];
   }
 
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
+
   static function select_all() {
     if    (static::$cache == null) static::init();
     return static::$cache;
