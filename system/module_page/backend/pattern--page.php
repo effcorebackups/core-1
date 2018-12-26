@@ -71,12 +71,12 @@ namespace effcore {
     $this->attribute_insert('dir', $this->text_direction);
     if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
-    $template->arg_set('attributes', core::data_to_attr($this->attributes_select()));
-    $template->arg_set('meta',         (new markup_simple('meta', ['charset' => $this->charset]))->render());
+    $template->arg_set('attributes',   $this             ->render_attributes());
     $template->arg_set('head_icons',   $frontend->icons  ->render());
     $template->arg_set('head_styles',  $frontend->styles ->render());
     $template->arg_set('head_scripts', $frontend->scripts->render());
     $template->arg_set('head_title', token::replace(translation::get($this->title)));
+    $template->arg_set('meta', (new markup_simple('meta', ['charset' => $this->charset]))->render());
     $template->arg_set('messages', message::render_all());
     if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
       $template->arg_set('console', console::render());

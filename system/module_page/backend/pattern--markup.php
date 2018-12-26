@@ -27,7 +27,7 @@ namespace effcore {
         $this->attribute_insert('class', ['active' => 'active']);
     return (new template($this->template, [
       'tag_name'   => $this->tag_name,
-      'attributes' => core::data_to_attr($this->attributes_select()),
+      'attributes' => $this->render_attributes(),
       'content'    => $this->render_children($this->children_select())
     ]))->render();
   }

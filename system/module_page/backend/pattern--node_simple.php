@@ -51,12 +51,16 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => core::data_to_attr($this->attributes_select()),
+        'attributes' => $this->render_attributes(),
         'self'       => $this->render_self(),
       ]))->render();
     } else {
       return $this->render_self();
     }
+  }
+
+  function render_attributes() {
+    return core::data_to_attr($this->attributes_select());
   }
 
   function render_self() {

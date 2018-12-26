@@ -14,7 +14,7 @@ namespace effcore {
     if (static::$cache_tabs       == null ||
         static::$cache_tabs_items == null) static::init();
     return (new template($this->template, [
-      'attributes' => core::data_to_attr($this->attributes_select()),
+      'attributes' => $this->render_attributes(),
       'top_items'  => $this->render_top_items(),
       'sub_items'  => $this->render_sub_items()
     ]))->render();

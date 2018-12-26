@@ -12,6 +12,9 @@ namespace effcore {
   public $data;
   public $args = [];
 
+  # public $path    - for type == 'file'
+  # public $handler - for type == 'code'
+
   function __construct($name, $args = []) {
     $template = static::get($name);
     $this->name = $name;
@@ -19,6 +22,7 @@ namespace effcore {
     switch ($this->type) {
       case 'file': $this->data    = (new file( module::get($template->module_id)->path.$template->path ))->load(); break;
       case 'text': $this->data    = $template->data;                                                               break;
+      case 'node': $this->data    = $template->data;                                                               break;
       case 'code': $this->handler = $template->handler;                                                            break;
     }
   # prepare argument
@@ -30,7 +34,12 @@ namespace effcore {
   }
 
   function arg_set($name, $value) {
-    $this->args[$name] = $value;
+    switch ($this->type) {
+      case 'text':
+      case 'file':
+      case 'code': $this->args[$name] = $value; break;
+      case 'node': break;
+    }
   }
 
   function render() {
@@ -48,9 +57,9 @@ namespace effcore {
                        $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
                        $this->args[$c_match['name']] : '';
         },     $rendered);
-        return $rendered;
-      case 'code':
-        return call_user_func($this->handler, $this->args);
+                   return $rendered;
+      case 'code': return call_user_func($this->handler, $this->args);
+      case 'node': return $this->data->render();
     }
   }
 

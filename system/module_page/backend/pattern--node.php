@@ -115,7 +115,7 @@ namespace effcore {
   function render() {
     if ($this->template) {
       return (new template($this->template, [
-        'attributes' => core::data_to_attr($this->attributes_select()),
+        'attributes' => $this->render_attributes(),
         'self'       => $this->render_self(),
         'children'   => $this->render_children($this->children)
       ]))->render();

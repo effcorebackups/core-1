@@ -14,7 +14,7 @@ templates
 - tabs
     name: tabs
     type: text
-    data: <x-tabs>%%_top_items%%_sub_items</x-tabs>
+    data: <x-tabs %%_attributes>%%_top_items%%_sub_items</x-tabs>
 - tabs_top_items
     name: tabs_top_items
     type: text

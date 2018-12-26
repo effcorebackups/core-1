@@ -34,7 +34,7 @@ namespace effcore {
     $is_top_description = !empty($this->description_position) && $this->description_position == 'top';
     return (new template($this->template, [
       'tag_name'      => $this->tag_name,
-      'attributes'    => core::data_to_attr($this->attributes_select()),
+      'attributes'    => $this->render_attributes(),
       'title_t'       => $is_bottom_title    ? '' : $this->render_self(),
       'title_b'       => $is_bottom_title    ?      $this->render_self()        : '',
       'description_t' => $is_top_description ?      $this->render_description() : '',

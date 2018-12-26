@@ -22,7 +22,7 @@ namespace effcore {
   function render() {
     return (new template($this->template, [
       'tag_name'   => $this->tag_name,
-      'attributes' => core::data_to_attr($this->attributes_select()),
+      'attributes' => $this->render_attributes(),
       'title'      => $this->render_self(),
       'content'    => $this->content_tag_name ? (new markup($this->content_tag_name, [],
                       $this->render_children($this->children_select()) ))->render() :
