@@ -12,7 +12,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'      => 'text',
     'name'      => 'text',
-    'required'  => 'required',
+    'required'  => true,
     'maxlength' => 255
   ];
 

@@ -15,7 +15,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'     => 'number',
     'name'     => 'number',
-    'required' => 'required',
+    'required' => true,
     'min'      => self::input_min_number,
     'max'      => self::input_max_number,
     'step'     => 1,

@@ -12,7 +12,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'      => 'url',
     'name'      => 'url',
-    'required'  => 'required',
+    'required'  => true,
     'minlength' => 5,
     'maxlength' => 255
   ];

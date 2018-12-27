@@ -15,7 +15,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'     => 'date',
     'name'     => 'date',
-    'required' => 'required',
+    'required' => true,
     'min'      => self::input_min_date,
     'max'      => self::input_max_date
   ];

@@ -13,7 +13,7 @@ namespace effcore {
   public $element_tag_name = 'textarea';
   public $element_attributes_default = [
     'name'      => 'textarea',
-    'required'  => 'required',
+    'required'  => true,
     'rows'      => 5,
     'minlength' => 5,
     'maxlength' => 255

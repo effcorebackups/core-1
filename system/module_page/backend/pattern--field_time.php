@@ -15,7 +15,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'     => 'time',
     'name'     => 'time',
-    'required' => 'required',
+    'required' => true,
     'min'      => self::input_min_time,
     'max'      => self::input_max_time,
     'step'     => 60

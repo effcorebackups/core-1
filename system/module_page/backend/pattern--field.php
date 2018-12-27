@@ -199,12 +199,13 @@ namespace effcore {
 
   function required_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('required') == 'required';
+    return $element->attribute_select('required') === 'required' ||
+           $element->attribute_select('required') === true;
   }
 
   function required_set($is_required = true) {
     $element = $this->child_select('element');
-    if ($is_required) $element->attribute_insert('required', 'required');
+    if ($is_required) $element->attribute_insert('required', true);
     else              $element->attribute_delete('required');
   }
 

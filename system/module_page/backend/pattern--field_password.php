@@ -12,8 +12,8 @@ namespace effcore {
   public $element_attributes_default = [
     'type'         => 'password',
     'name'         => 'password',
-    'required'     => 'required',
     'autocomplete' => 'off',
+    'required'     => true,
     'minlength'    => 5,
     'maxlength'    => 255
   ];

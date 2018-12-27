@@ -14,8 +14,8 @@ namespace effcore {
     'data-type'    => 'captcha',
     'type'         => 'text',
     'name'         => 'captcha',
-    'required'     => 'required',
-    'autocomplete' => 'off'
+    'autocomplete' => 'off',
+    'required'     => true
   ];
 # ─────────────────────────────────────────────────────────────────────
   public $length   = 6;

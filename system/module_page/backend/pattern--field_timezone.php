@@ -12,7 +12,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'timezone'];
   public $element_attributes_default = [
     'name'     => 'timezone',
-    'required' => 'required'
+    'required' => true
   ];
 
   function build() {

@@ -13,7 +13,7 @@ namespace effcore {
   public $element_attributes_default = [
     'type'      => 'tel',
     'name'      => 'phone',
-    'required'  => 'required',
+    'required'  => true,
     'minlength' => 5,
     'maxlength' => 15
   ];
