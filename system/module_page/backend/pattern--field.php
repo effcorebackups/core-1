@@ -153,12 +153,13 @@ namespace effcore {
 
   function multiple_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('multiple') == 'multiple';
+    return $element->attribute_select('multiple') === 'multiple' ||
+           $element->attribute_select('multiple') === true;
   }
 
   function multiple_set($is_multiple = true) {
     $element = $this->child_select('element');
-    if ($is_multiple) $element->attribute_insert('multiple', 'multiple');
+    if ($is_multiple) $element->attribute_insert('multiple', true);
     else              $element->attribute_delete('multiple');
   }
 

@@ -31,7 +31,7 @@ forms
               - type: field_file
             element_attributes
             - name: file[]
-            - =: multiple
+            - multiple: true
       # field_text
         - text|field_text
             title: Text
@@ -102,7 +102,7 @@ forms
             element_attributes
             - name: email
             - value: test1@example.com,test2@example.com
-            - =: multiple
+            - multiple: true
       # field_nick
         - nick|field_nick
             title: Nick
