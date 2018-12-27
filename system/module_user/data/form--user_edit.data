@@ -4,7 +4,7 @@ forms
     - id: user_edit
     - enctype: multipart/form-data
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - credentials|fieldset
         title: Credentials

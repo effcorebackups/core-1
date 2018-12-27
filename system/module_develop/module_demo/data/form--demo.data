@@ -4,7 +4,7 @@ forms
     - id: demo
     - enctype: multipart/form-data
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - form_elements|fieldset
         title: Form elements

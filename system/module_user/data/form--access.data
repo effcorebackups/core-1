@@ -3,7 +3,7 @@ forms
     attributes
     - id: access
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - settings|fieldset
         title: Access settings

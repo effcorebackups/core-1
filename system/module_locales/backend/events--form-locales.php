@@ -15,6 +15,7 @@ namespace effcore\modules\locales {
 
   static function on_init($form, $items) {
     $settings = locale::settings_get();
+    $items['#lang_code']->option_insert('- select -', 'not_selected');
     foreach (language::get_all() as $c_language) {
       $title = $c_language->code == 'en' ?
                $c_language->title->en :

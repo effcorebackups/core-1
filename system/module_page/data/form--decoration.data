@@ -3,7 +3,7 @@ forms
     attributes
     - id: decoration
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - colors|fieldset
         title: Colors

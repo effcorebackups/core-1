@@ -3,7 +3,7 @@ forms
     attributes
     - id: locales
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - settings|fieldset
         title: Settings

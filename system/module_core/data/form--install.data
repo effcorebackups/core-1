@@ -3,7 +3,7 @@ forms
     attributes
     - id: install
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - storage|fieldset
         title: Storage

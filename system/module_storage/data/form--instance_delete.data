@@ -3,7 +3,7 @@ forms
     attributes
     - id: instance_delete
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - info|fieldset
     - button_delete|button

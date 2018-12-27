@@ -3,7 +3,7 @@ forms
     attributes
     - id: logout
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - button_logout|button
         title: logout

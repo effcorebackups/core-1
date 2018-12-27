@@ -3,7 +3,7 @@ forms
     attributes
     - id: login
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - credentials|fieldset
         title: Credentials

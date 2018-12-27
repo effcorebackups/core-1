@@ -3,7 +3,7 @@ forms
     attributes
     - id: test
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - params|fieldset
         title: Parameters

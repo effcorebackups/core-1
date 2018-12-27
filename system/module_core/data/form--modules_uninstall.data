@@ -3,7 +3,7 @@ forms
     attributes
     - id: modules_uninstall
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - info|fieldset
         title: Delete modules data

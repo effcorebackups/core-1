@@ -3,7 +3,7 @@ forms
     attributes
     - id: registration
     - method: post
-    - =: novalidate
+    - novalidate: true
     children
     - credentials|fieldset
         title: Credentials
