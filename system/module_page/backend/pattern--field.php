@@ -97,12 +97,13 @@ namespace effcore {
 
   function disabled_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('disabled') == 'disabled';
+    return $element->attribute_select('disabled') === 'disabled' ||
+           $element->attribute_select('disabled') === true;
   }
 
   function disabled_set($is_disabled = true) {
     $element = $this->child_select('element');
-    if ($is_disabled) $element->attribute_insert('disabled', 'disabled');
+    if ($is_disabled) $element->attribute_insert('disabled', true);
     else              $element->attribute_delete('disabled');
   }
 

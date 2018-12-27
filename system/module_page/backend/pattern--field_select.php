@@ -75,10 +75,12 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node       &&
-          $c_item->tag_name == 'option' &&
-         !$c_item->attribute_select('disabled')) {
-        $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+      if ($c_item instanceof node &&
+          $c_item->tag_name == 'option') {
+        if ($c_item->attribute_select('disabled') !== 'disabled' &&
+            $c_item->attribute_select('disabled') !== true) {
+          $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+        }
       }
     }
     return $result;
@@ -110,7 +112,7 @@ namespace effcore {
     $option = new markup('option', $attr, ['content' => $title]);
     $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
     if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
-    if (isset($this->disabled[$value])) $option->attribute_insert('disabled', 'disabled');
+    if (isset($this->disabled[$value])) $option->attribute_insert('disabled', true);
     if (!$optgroup_id)
          $this->child_select('element')->child_insert($option, $value);
     else $this->child_select('element')->child_select($optgroup_id)->child_insert($option, $value);

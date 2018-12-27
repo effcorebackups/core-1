@@ -21,8 +21,12 @@ namespace effcore\modules\user {
   }
 
   static function on_submit($form, $items) {
-    foreach ($items['settings/roles']->values_get() as $c_id) {
-      message::insert(translation::get('Role %%_id was selected.', ['id' => $c_id]));
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        foreach ($items['*roles']->values_get() as $c_id) {
+          message::insert(translation::get('Role %%_id was selected.', ['id' => $c_id]));
+        }
+        break;
     }
   }
 

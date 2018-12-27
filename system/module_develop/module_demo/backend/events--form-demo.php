@@ -17,7 +17,7 @@ namespace effcore\modules\demo {
         $form->clicked_button->value_get() == 'reset') {
       field::request_values_reset();
     }
-    $items['#select']->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => 'disabled'], 'group_1');
+    $items['#select']->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => true], 'group_1');
     $items['#select']->option_insert('Option 6 (inserted from code)', 'option_6', [], 'group_1');
     $items['#select']->optgroup_insert('group_2', 'Group 2 (inserted from code)');
     $items['#select']->option_insert('Option 7 (inserted from code)', 'option_7', [], 'group_2');

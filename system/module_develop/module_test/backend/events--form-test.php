@@ -28,32 +28,30 @@ namespace effcore\modules\test {
         new text('No additional parameters.')
       );
     }
-    if (!extension_loaded('curl')) {
-      $items['~run']->disabled_set();
-      message::insert(
-        translation::get('The PHP extension "%%_name" is not available!', ['name' => 'curl']), 'warning'
-      );
-    }
   }
 
   static function on_submit($form, $items) {
-    $id = page::current_get()->args_get('id');
-    if ($id) {
-      $test = test::get($id);
-      $test_result = $test->run();
-    # show message
-      if (!empty($test_result['return']))
-           message::insert('The test was successful.');
-      else message::insert('The test was failed!', 'error');
-    # make report
-      if (!empty($test_result['reports'])) {
-        $items['report']->child_select('document')->children_delete_all();
-        foreach ($test_result['reports'] as $c_report) {
-          $items['report']->child_select('document')->child_insert(
-            new markup('p', [], $c_report)
-          );
+    switch ($form->clicked_button->value_get()) {
+      case 'run':
+        $id = page::current_get()->args_get('id');
+        if ($id) {
+          $test = test::get($id);
+          $test_result = $test->run();
+        # show message
+          if (!empty($test_result['return']))
+               message::insert('The test was successful.');
+          else message::insert('The test was failed!', 'error');
+        # make report
+          if (!empty($test_result['reports'])) {
+            $items['report']->child_select('document')->children_delete_all();
+            foreach ($test_result['reports'] as $c_report) {
+              $items['report']->child_select('document')->child_insert(
+                new markup('p', [], $c_report)
+              );
+            }
+          }
         }
-      }
+        break;
     }
   }
 

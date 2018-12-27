@@ -19,4 +19,4 @@ forms
         title: save
         attributes
         - value: save
-        - =: disabled
+        - disabled: true

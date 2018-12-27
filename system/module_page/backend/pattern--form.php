@@ -22,7 +22,8 @@ namespace effcore {
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
     $id = $this->attribute_select('id');
-    $this->button_clicked_set();
+    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',       'value' => $id                 ]), 'hidden_form_id'      );
+    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id', 'value' => $this->validation_id]), 'hidden_validation_id');
 
   # plug external classes
     foreach ($this->children_select_recursive() as $c_npath => $c_element) {
@@ -53,9 +54,12 @@ namespace effcore {
     event::start('on_form_init', $id, [$this, $items]);
     $items = $this->form_items_get();
 
+  # ─────────────────────────────────────────────────────────────────────
   # if user click the button
-    if ($this->clicked_button &&
-        field::request_value_get('form_id', 0, $this->source_get()) == $id) {
+  # ─────────────────────────────────────────────────────────────────────
+
+    $this->clicked_button_set();
+    if ($this->clicked_button && field::request_value_get('form_id', 0, $this->source_get()) == $id) {
 
     # call items validate methods
       if (empty($this->clicked_button->novalidate)) {
@@ -94,18 +98,6 @@ namespace effcore {
       if (form::$errors != [] && core::hash_data_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
       if (form::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
-
-  # add form_id to the form markup
-    $this->child_insert(new markup_simple('input', [
-      'type'  => 'hidden',
-      'name'  => 'form_id',
-      'value' => $id,
-    ]), 'hidden_form_id');
-    $this->child_insert(new markup_simple('input', [
-      'type'  => 'hidden',
-      'name'  => 'validation_id',
-      'value' => $this->validation_id,
-    ]), 'hidden_validation_id');
   }
 
   function source_get() {
@@ -130,7 +122,7 @@ namespace effcore {
     return $result;
   }
 
-  function button_clicked_set() {
+  function clicked_button_set() {
     $value = field::request_value_get('button', 0, $this->source_get());
     foreach ($this->children_select_recursive() as $c_element) {
       if ($c_element instanceof button        &&

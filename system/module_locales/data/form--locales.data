@@ -16,7 +16,7 @@ forms
             title: Server timezone
             element_attributes
             - name: timezone_server
-            - =: disabled
+            - disabled: true
         - format_date|field_text
             title: Date format
             description|text
