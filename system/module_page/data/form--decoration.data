@@ -11,13 +11,13 @@ forms
         - color_id|group_palette
             title: Color
             attributes
-            - =: required
+            - required: true
             element_attributes
             - name: color_id
         - color_bg_id|group_palette
             title: Background color
             attributes
-            - =: required
+            - required: true
             element_attributes
             - name: color_bg_id
     - button_save|button

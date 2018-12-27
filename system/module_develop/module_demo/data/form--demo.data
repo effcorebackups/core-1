@@ -209,7 +209,7 @@ forms
               - type: field_timezone
             element_attributes
             - name: timezone
-            - =: required
+            - required: true
             selected
             - UTC: UTC
       # ─────────────────────────────────────────────────────────────────────
