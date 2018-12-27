@@ -187,12 +187,13 @@ namespace effcore {
 
   function readonly_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('readonly') == 'readonly';
+    return $element->attribute_select('readonly') === 'readonly' ||
+           $element->attribute_select('readonly') === true;
   }
 
   function readonly_set($is_readonly = true) {
     $element = $this->child_select('element');
-    if ($is_readonly) $element->attribute_insert('readonly', 'readonly');
+    if ($is_readonly) $element->attribute_insert('readonly', true);
     else              $element->attribute_delete('readonly');
   }
 

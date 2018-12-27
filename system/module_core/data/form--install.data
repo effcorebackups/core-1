@@ -82,7 +82,7 @@ forms
                 - minlength: 1
                 - maxlength: 255
                 - pattern: ^[a-zA-Z0-9-_./]+$
-                - =: readonly
+                - readonly: true
       # shared params
         - params|fieldset
             title: Shared params
