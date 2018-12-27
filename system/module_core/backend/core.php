@@ -216,6 +216,7 @@ namespace effcore {
     $result = [];
     foreach ((array)$data as $c_name => $c_value) {
       switch (gettype($c_value)) {
+        case 'NULL'   :                                                                                                                                                              break;
         case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_name.$key_wrapper;                                                                                                 break;
         case 'array'  :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.implode(' ', $c_value).                                       $value_wrapper; break;
         case 'object' :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.(method_exists($c_value, 'render') ? $c_value->render() : '').$value_wrapper; break;

@@ -80,7 +80,7 @@ namespace effcore {
     if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid();
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
-      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => 'checked', 'title' => translation::get('Show description')]);
+      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                      ) return '';
       if ($this->description_state == 'opened' || $this->has_error()) return                   (new markup($this->description_tag_name, [], $result))->render();
       if ($this->description_state == 'closed'                      ) return $opener->render().(new markup($this->description_tag_name, [], $result))->render();

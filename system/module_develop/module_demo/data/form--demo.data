@@ -267,7 +267,7 @@ forms
                 element_attributes
                 - name: checkbox
                 - value: checkbox
-                - =: checked
+                - checked: true
           # group_checkboxes
             - checkboxes|group_checkboxes
                 title: Checkboxes
@@ -298,7 +298,7 @@ forms
                 element_attributes
                 - name: switcher
                 - value: switcher
-                - =: checked
+                - checked: true
           # group_switchers
             - switchers|group_switchers
                 title: Switchers

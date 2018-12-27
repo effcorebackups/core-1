@@ -25,11 +25,11 @@ namespace effcore {
   function render_self() {
     if ($this->title) {
       switch ($this->state) {
-        case 'opened': $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number                        ]); break;
-        case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => 'checked']); break;
+        case 'opened': $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number                   ]); break;
+        case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'fieldset', 'title' => translation::get('Show or hide content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true]); break;
         default      : $opener = null;
       }
-      if ($opener && $this->cform && $this->cform->attribute_select('id') == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', 'checked');
+      if ($opener && $this->cform && $this->cform->attribute_select('id') == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
       if ($opener && $this->cform && $this->cform->attribute_select('id') == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) != 'on') $opener->attribute_delete('checked');
       if ($opener && $this->has_error()                                                                                                                                        ) $opener->attribute_delete('checked');
       return $opener ? $opener->render().(new markup($this->title_tag_name,['for' => 'f_opener_'.$this->number], [$this->title]))->render() :
