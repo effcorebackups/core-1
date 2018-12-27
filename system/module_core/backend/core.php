@@ -187,9 +187,9 @@ namespace effcore {
   # binary notation is not allowed (example: '0b101')
   # ─────────────────────────────────────────────────────────────────────
     if (is_numeric($string)) return $string += 0;
-    if ($string === 'true')  return true;
+    if ($string === 'true' ) return true;
     if ($string === 'false') return false;
-    if ($string === 'null')  return null;
+    if ($string === 'null' ) return null;
     return $string;
   }
 
@@ -216,14 +216,14 @@ namespace effcore {
     $result = [];
     foreach ((array)$data as $c_name => $c_value) {
       switch (gettype($c_value)) {
-        case 'boolean': $result[] = $key_wrapper.$c_name.$key_wrapper; break;
-        case 'array'  : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.implode(' ', $c_value).$value_wrapper; break;
-        case 'object' : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.(method_exists($c_value, 'render') ? $c_value->render() : '').$value_wrapper; break;
-        default       : $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.$c_value.$value_wrapper; break;
+        case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_name.$key_wrapper;                                                                                                 break;
+        case 'array'  :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.implode(' ', $c_value).                                       $value_wrapper; break;
+        case 'object' :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.(method_exists($c_value, 'render') ? $c_value->render() : '').$value_wrapper; break;
+        default       :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.$c_value.                                                     $value_wrapper; break;
       }
     }
-    return $join_part ? implode($join_part, $result) :
-                                            $result;
+    if ($join_part) return implode($join_part, $result);
+    else            return $result;
   }
 
   static function data_to_code($data, $prefix = '') {

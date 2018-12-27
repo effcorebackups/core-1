@@ -30,7 +30,7 @@ forms
             description: Leave the field blank if you do not want to change its value.
             element_attributes
             - name: password_new
-            - required: null
+            - required: false
         - password|field_password
     - button_save|button
         title: save

@@ -69,7 +69,7 @@ forms
             - size: 1
             - minlength: 0
             - maxlength: 1
-            - required: null
+            - required: false
     - button_save|button
         title: save
         attributes
