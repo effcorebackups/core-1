@@ -12,18 +12,21 @@ namespace effcore {
   public $data;
   public $args = [];
 
-  # public $path    - for type == 'file'
-  # public $handler - for type == 'code'
+  # public $path     - for type == 'file'
+  # public $handler  - for type == 'code'
+  # public $pointers - for type == 'node'
 
   function __construct($name, $args = []) {
     $template = static::get($name);
-    $this->name = $name;
-    $this->type = $template->type;
-    switch ($this->type) {
-      case 'file': $this->data    = (new file( module::get($template->module_id)->path.$template->path ))->load(); break;
-      case 'text': $this->data    = $template->data;                                                               break;
-      case 'node': $this->data    = $template->data;                                                               break;
-      case 'code': $this->handler = $template->handler;                                                            break;
+  # copy all properties
+    foreach ($template as $c_property => $c_value) {
+      $this->{$c_property} = $c_value;
+    }
+  # special cases
+    if ($this->type == 'file') {
+      $path = module::get($template->module_id)->path.$template->path;
+      $file = new file($path);
+      $this->data = $file->load();
     }
   # prepare argument
     foreach ($args as $c_name => $c_value) {
@@ -34,12 +37,7 @@ namespace effcore {
   }
 
   function arg_set($name, $value) {
-    switch ($this->type) {
-      case 'text':
-      case 'file':
-      case 'code': $this->args[$name] = $value; break;
-      case 'node': break;
-    }
+    $this->args[$name] = $value;
   }
 
   function render() {
@@ -59,7 +57,13 @@ namespace effcore {
         },     $rendered);
                    return $rendered;
       case 'code': return call_user_func($this->handler, $this->args);
-      case 'node': return $this->data->render();
+      case 'node':
+        foreach ($this->args as $c_name => $c_value) {
+          $c_dpath = $this->pointers[$c_name];
+          $c_pointers = core::dpath_pointers_get($this->data->children, $c_dpath);
+          core::arrobj_value_insert($c_pointers, $c_name, $c_value);
+        }
+        return $this->data->render();
     }
   }
 

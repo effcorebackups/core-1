@@ -46,19 +46,19 @@ templates
 - page_new
     name: page_new
     type: node
-    args
-    - lang_code: html/lang
+    pointers
+    - lang: html/attributes/lang
     - title: html/head/title/content
     data|node
       children
       - doctype|markup_simple
           tag_name: !DOCTYPE
           attributes
-          - html: 
+          - html: true
       - html|markup
           tag_name: html
           attributes
-          - lang: %%_lang_code
+          - lang: en
           children
           - head|markup
               tag_name: head
