@@ -49,8 +49,18 @@ templates
     pointers
     - lang_code: html/attributes/lang
     - text_direction: html/attributes/dir
-    - charset: html/children/head/children/meta_region/children/meta_charset/attributes/charset
-    - title: html/children/head/children/title/children/content/text
+    - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
+    - head_title: html/children/head/children/title/children/content/text
+    - head_icons: html/children/head/children/icons
+    - head_styles: html/children/head/children/styles
+    - head_scripts: html/children/head/children/scripts
+    - main_menu: html/children/body/children/main_menu
+    - head: html/children/body/children/x_head/children/head
+    - title: html/children/body/children/x_body/children/title
+    - messages: html/children/body/children/x_body/children/messages
+    - tabs: html/children/body/children/x_body/children/tabs
+    - content: html/children/body/children/x_body/children/content
+    - console: html/children/body/children/console
     data|node
       children
       - doctype|markup_simple
@@ -66,7 +76,7 @@ templates
           - head|markup
               tag_name: head
               children
-              - meta_region|node
+              - meta|node
                   children
                   - meta_charset|markup_simple
                       tag_name: meta
@@ -78,26 +88,22 @@ templates
                   - content|text
                       is_apply_tokens: true
                       text: 
-              - styles_region|node
-              - script_region|node
+              - icons|node
+              - styles|node
+              - scripts|node
           - body|markup
               tag_name: body
               children
-              - x_grid|markup
-                  tag_name: x-grid
+              - main_menu|node
+              - x_head|markup
+                  tag_name: x-head
                   children
-                  - head_1_region|node
-                  - head_2_region|node
-                  - head_3_region|node
-                  - messages_region|node
-                  - main_1_region|node
-                  - main_2_region|node
-                  - main_3_region|node
-                  - main_4_region|node
-                  - main_5_region|node
-                  - main_6_region|node
-                  - main_7_region|node
-                  - main_8_region|node
-                  - main_9_region|node
-              - console_region|node
-              - copyright_region|node
+                  - head|node
+              - x_body|markup
+                  tag_name: x-body
+                  children
+                  - title|node
+                  - messages|node
+                  - tabs|node
+                  - content|node
+              - console|node
