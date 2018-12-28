@@ -84,8 +84,7 @@ namespace effcore {
 
   function checked_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('checked') === 'checked' ||
-           $element->attribute_select('checked') === true;
+    return $element->attribute_select('checked') === true;
            
   }
 
@@ -97,8 +96,7 @@ namespace effcore {
 
   function disabled_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('disabled') === 'disabled' ||
-           $element->attribute_select('disabled') === true;
+    return $element->attribute_select('disabled') === true;
   }
 
   function disabled_set($is_disabled = true) {
@@ -153,8 +151,7 @@ namespace effcore {
 
   function multiple_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('multiple') === 'multiple' ||
-           $element->attribute_select('multiple') === true;
+    return $element->attribute_select('multiple') === true;
   }
 
   function multiple_set($is_multiple = true) {
@@ -187,8 +184,7 @@ namespace effcore {
 
   function readonly_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('readonly') === 'readonly' ||
-           $element->attribute_select('readonly') === true;
+    return $element->attribute_select('readonly') === true;
   }
 
   function readonly_set($is_readonly = true) {
@@ -199,8 +195,7 @@ namespace effcore {
 
   function required_get() {
     $element = $this->child_select('element');
-    return $element->attribute_select('required') === 'required' ||
-           $element->attribute_select('required') === true;
+    return $element->attribute_select('required') === true;
   }
 
   function required_set($is_required = true) {
