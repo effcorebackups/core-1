@@ -20,13 +20,16 @@ namespace effcore {
   function text_line_select($line) {return $this->text[$line];}
   function text_line_update($new_text, $line) {$this->text[$line] = $new_text;}
   function text_line_append($new_text, $line) {$this->text[$line].= $new_text;}
-  function text_update($new_text) {$this->text = $new_text;}
-  function text_append($new_text) {$line = count($this->text); $this->text[$line] = $new_text; return $line;}
+  function text_update($new_text) {$this->text   = $new_text;}
+  function text_append($new_text) {$this->text[] = $new_text; return count($this->text);}
 
   function render() {
     $result = [];
     foreach ($this->text as $c_line) {
-      $result[] = translation::get($c_line, $this->args);
+      $c_result = $c_line;
+      if ($this->is_apply_translation) $c_result = translation::get($c_result, $this->args);
+      if ($this->is_apply_tokens)      $c_result = token::replace  ($c_result);
+      $result[] = $c_result;
     }
     return implode($this->delimiter, $result);
   }

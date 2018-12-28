@@ -47,8 +47,10 @@ templates
     name: page_new
     type: node
     pointers
-    - lang: html/attributes/lang
-    - title: html/head/title/content
+    - lang: html/attributes
+    - dir: html/attributes
+    - charset: html/children/head/children/meta_region/children/meta_charset/attributes
+    - title: html/children/head/children/title/children/content/text
     data|node
       children
       - doctype|markup_simple
@@ -59,6 +61,7 @@ templates
           tag_name: html
           attributes
           - lang: en
+          - dir: ltr
           children
           - head|markup
               tag_name: head
@@ -73,7 +76,8 @@ templates
                   tag_name: title
                   children
                   - content|text
-                      text: %%_title
+                      is_apply_tokens: true
+                      text: 
               - styles_region|node
               - script_region|node
           - body|markup

@@ -8,6 +8,8 @@ namespace effcore {
           class text extends text_simple {
 
   public $args = [];
+  public $is_apply_translation = true;
+  public $is_apply_tokens = false;
 
   function __construct($text = '', $args = [], $weight = 0) {
     parent::__construct($text, $weight);
@@ -18,7 +20,10 @@ namespace effcore {
   function args_set($args) {$this->args = $args;}
 
   function render() {
-    return translation::get($this->text, $this->args);
+    $result = $this->text;
+    if ($this->is_apply_translation) $result = translation::get($result, $this->args);
+    if ($this->is_apply_tokens)      $result = token::replace  ($result);
+    return $result;
   }
 
 }}

@@ -12,6 +12,7 @@ namespace effcore {
   public $display;
   public $access;
   public $charset = 'utf-8';
+  public $lang_code = 'en';
   public $text_direction = 'ltr';
   protected $args = [];
   protected $used_dpaths = [];

@@ -8,9 +8,9 @@ namespace effcore {
           class node_simple {
 
   public $template;
+  public $is_xml_attr_style = false;
   public $attributes = [];
   public $weight = 0;
-  public $is_xml_attr_style = false;
 
   function __construct($attributes = [], $weight = 0) {
     $this->weight = $weight;
