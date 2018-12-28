@@ -212,9 +212,10 @@ namespace effcore {
     }
   }
 
-  static function data_to_attr($data, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
+  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
     $result = [];
     foreach ((array)$data as $c_name => $c_value) {
+      if ($is_xml_style && $c_value === true) $c_value = $c_name;
       switch (gettype($c_value)) {
         case 'NULL'   :                                                                                                                                                              break;
         case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_name.$key_wrapper;                                                                                                 break;

@@ -10,6 +10,7 @@ namespace effcore {
   public $template;
   public $attributes = [];
   public $weight = 0;
+  public $is_xml_attr_style = false;
 
   function __construct($attributes = [], $weight = 0) {
     $this->weight = $weight;
@@ -60,7 +61,9 @@ namespace effcore {
   }
 
   function render_attributes() {
-    return core::data_to_attr($this->attributes_select());
+    if ($this->is_xml_attr_style)
+         return core::data_to_attr($this->attributes_select(), true);
+    else return core::data_to_attr($this->attributes_select());
   }
 
   function render_self() {
