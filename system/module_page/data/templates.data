@@ -47,9 +47,9 @@ templates
     name: page_new
     type: node
     pointers
-    - lang: html/attributes
-    - dir: html/attributes
-    - charset: html/children/head/children/meta_region/children/meta_charset/attributes
+    - lang_code: html/attributes/lang
+    - text_direction: html/attributes/dir
+    - charset: html/children/head/children/meta_region/children/meta_charset/attributes/charset
     - title: html/children/head/children/title/children/content/text
     data|node
       children

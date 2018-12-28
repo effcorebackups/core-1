@@ -61,8 +61,7 @@ namespace effcore {
         foreach ($this->args as $c_name => $c_value) {
           $c_dpath = $this->pointers[$c_name];
           $c_pointers = core::dpath_pointers_get($this->data->children, $c_dpath, true);
-          $c_pointer_last = &$c_pointers[count($c_pointers) - 1];
-          core::arrobj_value_insert($c_pointer_last, $c_name, $c_value);
+          core::arrobj_value_insert($c_pointers, count($c_pointers) - 1, $c_value);
         }
         return $this->data->render();
     }
