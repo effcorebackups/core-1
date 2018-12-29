@@ -24,6 +24,7 @@ namespace effcore {
   }
 
   function render() {
+    $result = '';
     $user_agent = core::server_user_agent_info_get();
     header('Content-language: '.language::current_code_get());
     header('Content-Type: text/html; charset='.$this->charset);
@@ -73,14 +74,16 @@ namespace effcore {
   
     $template->arg_set('messages', message::markup_get());
     timer::tap('total');
+    $result = $template->render();
+
     if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
       console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
       console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
       console::information_insert('Current language',       language::current_code_get());
       console::information_insert('User roles',             implode(', ', user::current_get()->roles));
-      $template->arg_set('console', console::markup_get());
+      $result = str_replace('</html>', console::markup_get()->render().'</html>', $result);
     }
-    return $template->render();
+    return $result;
   }
 
   function frontend_markup_get() {
