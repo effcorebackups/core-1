@@ -13,7 +13,7 @@ namespace effcore {
   public $source;
   public $source_args;
 
-  function render($page = null) {
+  function markup_get($page = null) {
     if (!isset($this->display) ||
         (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->args_get($this->display->where))) ||
         (isset($this->display) && $this->display->check == 'user' && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
@@ -23,9 +23,8 @@ namespace effcore {
                      $result->_args = $this->source_args;
                      return $result;
         case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->source_args]);
-        case 'text': return new text($this->source);;
-        default    : return method_exists($this->source, 'render') ?
-                                          $this->source->render() : null;
+        case 'text': return new text($this->source);
+        default    : return $this->source;
       }
     }
   }

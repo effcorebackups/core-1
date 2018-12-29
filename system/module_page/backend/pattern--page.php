@@ -24,37 +24,17 @@ namespace effcore {
   }
 
   function render() {
+    $user_agent = core::server_user_agent_info_get();
+    header('Content-language: '.language::current_code_get());
+    header('Content-Type: text/html; charset='.$this->charset);
+    if ($user_agent->name == 'msie') {
+      header('X-UA-Compatible: IE=10');
+    }
 
-  # check https (@todo: enable this message)
+  # show important messages
     if (false && !empty($this->https) && url::current_get()->protocol_get() != 'https') {
       message::insert('This page should be use HTTPS protocol!', 'warning');
     }
-
-  # collect and render page parts
-    $contents = new node();
-    foreach ($this->children as $c_part) {
-      $c_part_markup = $c_part->render($this);
-      if ($c_part_markup) {
-        if (!$contents->child_select(            $c_part->region))
-             $contents->child_insert(new node(), $c_part->region);
-        $contents->child_select($c_part->region)->child_insert($c_part_markup);
-        if ($c_part->type == 'link') {
-          $this->used_dpaths[] = $c_part->source;
-        }
-      }
-    }
-
-  # render page
-    $frontend = $this->frontend_markup_get();
-    $template = new template('page');
-    foreach ($contents->children_select() as $c_region => $c_parts) {
-      $template->arg_set($c_region, $c_parts->render());
-    }
-
-    timer::tap('total');
-    $this->page_information_set();
-
-    $user_agent = core::server_user_agent_info_get();
     if ($user_agent->name == 'msie' &&
         $user_agent->name_version < 9) {
       message::insert(translation::get(
@@ -62,34 +42,45 @@ namespace effcore {
       );
     }
 
-    header('Content-language: '.language::current_code_get());
-    header('Content-Type: text/html; charset='.$this->charset);
-    if ($user_agent->name == 'msie') {
-      header('X-UA-Compatible: IE=10');
+  # render page
+    $contents = new node();
+    $frontend = $this->frontend_markup_get();
+
+    foreach ($this->children as $c_rowid => $c_part) {
+      if (!$contents->child_select(            $c_part->region))
+           $contents->child_insert(new node(), $c_part->region);
+      $c_region = $contents->child_select($c_part->region);
+      $c_region->child_insert($c_part->markup_get(), $c_rowid);
+      if ($c_part->type == 'link') {
+        $this->used_dpaths[] = $c_part->source;
+      }
     }
 
-    $this->attribute_insert('lang', language::current_code_get());
-    $this->attribute_insert('dir', $this->text_direction);
-    if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
-    if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
-    $template->arg_set('attributes',   $this             ->render_attributes());
-    $template->arg_set('head_icons',   $frontend->icons  ->render());
-    $template->arg_set('head_styles',  $frontend->styles ->render());
-    $template->arg_set('head_scripts', $frontend->scripts->render());
-    $template->arg_set('head_title', token::replace(translation::get($this->title)));
-    $template->arg_set('meta', (new markup_simple('meta', ['charset' => $this->charset]))->render());
-    $template->arg_set('messages', message::render_all());
+//  if ($user_agent->name) $this->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
+//  if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
+//  $template->arg_set('attributes', $this->render_attributes());
+
+    $template = new template('page');
+    $template->arg_set('lang_code', language::current_code_get());
+    $template->arg_set('text_direction', $this->text_direction);
+    $template->arg_set('charset',        $this->charset);
+    $template->arg_set('head_title',     $this->title);
+    $template->arg_set('head_icons',     $frontend->icons);
+    $template->arg_set('head_styles',    $frontend->styles);
+    $template->arg_set('head_scripts',   $frontend->scripts);
+    foreach ($contents->children_select() as $c_region => $c_parts) {
+      $template->arg_set($c_region, $c_parts);
+    }
+    $template->arg_set('messages', message::markup_get());
+    timer::tap('total');
     if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
-      $template->arg_set('console', console::render());
+      console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
+      console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
+      console::information_insert('Current language',       language::current_code_get());
+      console::information_insert('User roles',             implode(', ', user::current_get()->roles));
+      $template->arg_set('console', console::markup_get());
     }
     return $template->render();
-  }
-
-  function page_information_set() {
-    console::information_insert('Total generation time', locale::msecond_format(timer::period_get('total', 0, 1)));
-    console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
-    console::information_insert('User roles', implode(', ', user::current_get()->roles));
-    console::information_insert('Current language', language::current_code_get());
   }
 
   function frontend_markup_get() {

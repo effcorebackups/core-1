@@ -19,10 +19,6 @@ templates
     name: container
     type: text
     data: <%%_tag_name %%_attributes>%%_title_t%%_description_t%%_content%%_title_b%%_description_b</%%_tag_name>
-- page
-    name: page
-    type: file
-    path: frontend/template--page.tpl
 - page_access_forbidden
     name: page_access_forbidden
     type: file
@@ -43,8 +39,8 @@ templates
     name: canvas_svg
     type: file
     path: frontend/template--canvas_svg.tpl
-- page_new
-    name: page_new
+- page
+    name: page
     type: node
     pointers
     - lang_code: html/attributes/lang

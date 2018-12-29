@@ -58,12 +58,12 @@ namespace effcore {
     static::$information[$param] = $value;
   }
 
-  static function render() {
-    return (new markup('x-console', [], [
+  static function markup_get() {
+    return new markup('x-console', [], [
       static::markup_block_information_get(),
       static::markup_block_diagram_load_get(),
       static::markup_block_logs_get()
-    ]))->render();
+    ]);
   }
 
   static function markup_block_information_get() {
@@ -89,7 +89,7 @@ namespace effcore {
       }
     }
     $diagram = new diagram('', 'radial');
-    $colors = ['#216ce4', '#30c432', '#fc5740', '#fd9a1e'];
+    $colors = ['#216ce4', 'limegreen', 'orange', 'darkcyan', 'lightseagreen', 'springgreen', 'yellowgreen', 'gold', 'tomato', 'crimson', 'lightcoral', 'thistle', 'moccasin', 'paleturquoise'];
     foreach ($statistics as $c_param => $c_value) {
       $diagram->slice_add($c_param, $c_value / $total * 100, locale::msecond_format($c_value).' sec.', array_shift($colors));
     }
@@ -112,7 +112,7 @@ namespace effcore {
         new table_body_row_cell(['class' => ['object'      => 'object'     ]], translation::get($c_log->object,      $c_log->args)),
         new table_body_row_cell(['class' => ['action'      => 'action'     ]], translation::get($c_log->action,      $c_log->args)),
         new table_body_row_cell(['class' => ['description' => 'description']], translation::get($c_log->description, $c_log->args)),
-        new table_body_row_cell(['class' => $c_value_class],                   translation::get($c_log->value))
+        new table_body_row_cell(['class' => $c_value_class                  ], translation::get($c_log->value                    ))
       ]);
     }
     return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [

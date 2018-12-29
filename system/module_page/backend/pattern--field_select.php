@@ -114,7 +114,7 @@ namespace effcore {
     if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
     if (isset($this->disabled[$value])) $option->attribute_insert('disabled', true);
     if (!$optgroup_id)
-         $this->child_select('element')->child_insert($option, $value);
+         $this->child_select('element')->child_insert(                            $option, $value);
     else $this->child_select('element')->child_select($optgroup_id)->child_insert($option, $value);
   }
 

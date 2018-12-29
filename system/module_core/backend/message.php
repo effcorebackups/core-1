@@ -30,20 +30,20 @@ namespace effcore {
                             static::$cache[$type][] = $message;
   }
 
-  static function render_all() {
-    $groups = [];
+  static function markup_get() {
+    $messages = new markup('x-messages');
     foreach (static::select_all() as $c_type => $c_messages) {
-      $c_grpoup = new markup('ul', ['class' => [$c_type => $c_type]]);
+      if (!$messages->child_select($c_type))
+           $messages->child_insert(new markup('ul', ['class' => [$c_type => $c_type]]), $c_type);
+      $c_grpoup = $messages->child_select($c_type);
       foreach ($c_messages as $c_message) {
         $c_grpoup->child_insert(
           new markup('li', [], $c_message)
         );
       }
-      $groups[] = $c_grpoup;
     }
-    return count($groups) ? (
-      new markup('x-messages', [], $groups)
-    )->render() : '';
+    return $messages->children_count() ?
+           $messages : new node();
   }
 
 }}
