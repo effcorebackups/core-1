@@ -44,13 +44,11 @@ namespace effcore {
 
   # render page
     $contents = new node();
-    $frontend = $this->frontend_markup_get();
-
     foreach ($this->children as $c_rowid => $c_part) {
       if (!$contents->child_select(            $c_part->region))
            $contents->child_insert(new node(), $c_part->region);
       $c_region = $contents->child_select($c_part->region);
-      $c_region->child_insert($c_part->markup_get(), $c_rowid);
+      $c_region->child_insert($c_part->markup_get($this), $c_rowid);
       if ($c_part->type == 'link') {
         $this->used_dpaths[] = $c_part->source;
       }
@@ -60,6 +58,7 @@ namespace effcore {
 //  if ($user_agent->core) $this->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
 //  $template->arg_set('attributes', $this->render_attributes());
 
+    $frontend = $this->frontend_markup_get();
     $template = new template('page');
     $template->arg_set('lang_code', language::current_code_get());
     $template->arg_set('text_direction', $this->text_direction);
@@ -71,6 +70,7 @@ namespace effcore {
     foreach ($contents->children_select() as $c_region => $c_parts) {
       $template->arg_set($c_region, $c_parts);
     }
+  
     $template->arg_set('messages', message::markup_get());
     timer::tap('total');
     if (storage::get('files')->select('settings')['page']->console_display == 'yes') {

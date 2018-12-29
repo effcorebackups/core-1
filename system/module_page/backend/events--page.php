@@ -6,14 +6,13 @@
 
 namespace effcore\modules\page {
           use \effcore\markup;
-          use \effcore\token;
-          use \effcore\translation;
+          use \effcore\text;
           abstract class events_page {
 
   static function on_show_title($page) {
-    return new markup('h1', ['id' => 'title'],
-      token::replace(translation::get($page->title))
-    );
+    $title = new text($page->title);
+    $title->is_apply_tokens = true;
+    return new markup('h1', ['id' => 'title'], $title);
   }
 
 }}
