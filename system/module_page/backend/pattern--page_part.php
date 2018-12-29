@@ -26,6 +26,8 @@ namespace effcore {
         case 'text': return new text($this->source);
         default    : return $this->source;
       }
+    } else {
+      return new node();
     }
   }
 
