@@ -76,6 +76,7 @@ namespace effcore {
     }
     $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());
+    event::start('on_page_before_render', null, [$this, $template]);
     $result = $template->render();
 
     timer::tap('total');
