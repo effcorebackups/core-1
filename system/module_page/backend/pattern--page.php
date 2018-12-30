@@ -59,7 +59,7 @@ namespace effcore {
     }
 
     $frontend = $this->frontend_markup_get();
-    $template = new template('page');
+    $template = template::make_new('page');
     $template->arg_set('lang_code', language::current_code_get());
     $template->arg_set('text_direction', $this->text_direction);
     $template->arg_set('charset',        $this->charset);

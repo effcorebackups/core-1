@@ -114,7 +114,7 @@ namespace effcore {
 
   function render() {
     if ($this->template) {
-      return (new template($this->template, [
+      return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
         'self'       => $this->render_self(),
         'children'   => $this->render_children($this->children)

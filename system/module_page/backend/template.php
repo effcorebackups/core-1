@@ -8,63 +8,19 @@ namespace effcore {
           class template implements has_cache_cleaning {
 
   public $name;
-  public $type;
   public $data;
   public $args = [];
-
-  # public $path     - for type == 'file'
-  # public $handler  - for type == 'code'
-  # public $pointers - for type == 'node'
+  public $module_id;
 
   function __construct($name, $args = []) {
-    $template = static::get($name);
-  # copy all properties
-    foreach ($template as $c_property => $c_value) {
-      $this->{$c_property} = $c_value;
-    }
-  # special cases
-    if ($this->type == 'file') {
-      $path = module::get($template->module_id)->path.$template->path;
-      $file = new file($path);
-      $this->data = $file->load();
-    }
-  # prepare argument
+    $this->name = $name;
     foreach ($args as $c_name => $c_value) {
-      static::arg_set($c_name,   $c_value);
+      $this->arg_set($c_name, $c_value);
     }
-  # return new instance of template
-    return $this;
   }
 
   function arg_set($name, $value) {
     $this->args[$name] = $value;
-  }
-
-  function render() {
-    switch ($this->type) {
-      case 'text':
-      case 'file':
-        $rendered = $this->data;
-        $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
-                                           '(?<prefix>\\%\\%_)'.
-                                           '(?<name>[a-z0-9_]+)'.
-                                           '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
-          return isset($c_match['prefix']) &&
-                 isset($c_match['name']) &&
-                 isset($this->args[$c_match['name']]) &&
-                       $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
-                       $this->args[$c_match['name']] : '';
-        },     $rendered);
-                   return $rendered;
-      case 'code': return call_user_func($this->handler, $this->args);
-      case 'node':
-        foreach ($this->args as $c_name => $c_value) {
-          $c_dpath = $this->pointers[$c_name];
-          $c_pointers = core::dpath_pointers_get($this->data->children, $c_dpath, true);
-          core::arrobj_value_insert($c_pointers, count($c_pointers) - 1, $c_value);
-        }
-        return $this->data->render();
-    }
   }
 
   ###########################
@@ -95,6 +51,21 @@ namespace effcore {
   static function all_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function make_new($name, $args = []) {
+    $result = null;
+    $template = static::get($name);
+    if ($template->type == 'text') $result = new template_text($name, $args);
+    if ($template->type == 'file') $result = new template_file($name, $args);
+    if ($template->type == 'code') $result = new template_code($name, $args);
+    if ($template->type == 'node') $result = new template_node($name, $args);
+    if (isset($template->module_id)) $result->module_id = $template->module_id; # for each type
+    if (isset($template->data     )) $result->data      = $template->data;      # for each type
+    if (isset($template->path     )) $result->path      = $template->path;      # for file type
+    if (isset($template->handler  )) $result->handler   = $template->handler;   # for code type
+    if (isset($template->pointers )) $result->pointers  = $template->pointers;  # for node type
+    return $result;
   }
 
 }}

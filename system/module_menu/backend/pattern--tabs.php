@@ -13,7 +13,7 @@ namespace effcore {
   function render() {
     if (static::$cache_tabs       == null ||
         static::$cache_tabs_items == null) static::init();
-    return (new template($this->template, [
+    return (template::make_new($this->template, [
       'attributes' => $this->render_attributes(),
       'top_items'  => $this->render_top_items(),
       'sub_items'  => $this->render_sub_items()
@@ -27,7 +27,7 @@ namespace effcore {
       $c_clone->children = [];
       $rendered.= $c_clone->render();
     }
-    return $rendered ? (new template('tabs_top_items', [
+    return $rendered ? (template::make_new('tabs_top_items', [
       'children' => $rendered
     ]))->render() : '';
   }
@@ -43,7 +43,7 @@ namespace effcore {
         break;
       }
     }
-    return $rendered ? (new template('tabs_sub_items', [
+    return $rendered ? (template::make_new('tabs_sub_items', [
       'children' => $rendered
     ]))->render() : '';
   }

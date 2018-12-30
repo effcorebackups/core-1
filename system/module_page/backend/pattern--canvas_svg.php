@@ -87,7 +87,7 @@ namespace effcore {
   }
 
   function render() {
-    return (new template($this->template, [
+    return (template::make_new($this->template, [
       'color_bg' => $this->color_bg,
       'width'    => $this->scale * $this->w,
       'height'   => $this->scale * $this->h,

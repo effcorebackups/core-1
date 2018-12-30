@@ -30,10 +30,10 @@ namespace effcore {
   function render() {
     if (empty($this->hidden)) {
       if ($this->access === null || access::check($this->access)) {
-        $rendered_children = $this->children_count() ? (new template($this->template_children, [
+        $rendered_children = $this->children_count() ? (template::make_new($this->template_children, [
           'children' => $this->render_children($this->children_select())]
         ))->render() : '';
-        return (new template($this->template, [
+        return (template::make_new($this->template, [
           'attributes' => $this->render_attributes(),
           'self'       => $this->render_self(),
           'children'   => $rendered_children

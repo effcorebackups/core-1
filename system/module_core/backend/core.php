@@ -751,10 +751,10 @@ namespace effcore {
       case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); break;
     }
     $front_page_link = translation::get('go to <a href="/">front page</a>');
-    if ($type == 'access_forbidden') {print (new template('page_access_forbidden', ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Access forbidden')]))->render(); exit();}
-    if ($type == 'page_not_found')   {print (new template('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render();   exit();}
-    if ($type == 'file_not_found')   {print (new template('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('File not found')]))->render();   exit();}
-    if ($message)                    {print (new template('page_simple',           ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get($title)]))->render();             exit();}
+    if ($type == 'access_forbidden') {print (template::make_new('page_access_forbidden', ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Access forbidden')]))->render(); exit();}
+    if ($type == 'page_not_found')   {print (template::make_new('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render();   exit();}
+    if ($type == 'file_not_found')   {print (template::make_new('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('File not found')]))->render();   exit();}
+    if ($message)                    {print (template::make_new('page_simple',           ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get($title)]))->render();             exit();}
     exit();
   }
 

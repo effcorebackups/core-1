@@ -20,7 +20,7 @@ namespace effcore {
   }
 
   function render() {
-    return (new template($this->template, [
+    return (template::make_new($this->template, [
       'tag_name'   => $this->tag_name,
       'attributes' => $this->render_attributes(),
       'title'      => $this->render_self(),
