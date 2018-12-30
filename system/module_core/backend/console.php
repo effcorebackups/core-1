@@ -89,7 +89,7 @@ namespace effcore {
       }
     }
     $diagram = new diagram('', 'radial');
-    $colors = ['#216ce4', 'limegreen', 'orange', 'darkcyan', 'lightseagreen', 'springgreen', 'yellowgreen', 'gold', 'tomato', 'crimson', 'lightcoral', 'thistle', 'moccasin', 'paleturquoise'];
+    $colors = ['#216ce4', '#30c432', '#fd9a1e', '#fc5740', 'darkcyan', 'lightseagreen', 'springgreen', 'yellowgreen', 'gold', 'crimson', 'lightcoral', 'thistle', 'moccasin', 'paleturquoise'];
     foreach ($statistics as $c_param => $c_value) {
       $diagram->slice_add($c_param, $c_value / $total * 100, locale::msecond_format($c_value).' sec.', array_shift($colors));
     }
