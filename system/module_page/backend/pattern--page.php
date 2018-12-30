@@ -84,7 +84,7 @@ namespace effcore {
       console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
       console::information_insert('Current language',       language::current_code_get());
       console::information_insert('User roles',             implode(', ', user::current_get()->roles));
-      $result = str_replace('</html>', console::markup_get()->render().'</html>', $result);
+      $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
     }
     return $result;
   }
