@@ -30,6 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/core/manage_modules
+    # ─────────────────────────────────────────────────────────────────────
     - form_modules_install|page_part
         display
           check: page_args

@@ -30,6 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/storage/manage_instances
+    # ─────────────────────────────────────────────────────────────────────
     - block_instance_select_by_entity_name_and_instance_id|page_part
         region: content
         type: code

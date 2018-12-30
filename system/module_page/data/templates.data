@@ -15,10 +15,15 @@ templates
     name: markup_xml_simple
     type: text
     data: <%%_tag_name %%_attributes />
+- block
+    name: block
+    type: text
+    data: <%%_tag_name %%_attributes>%%_title%%_content</%%_tag_name>
 - container
     name: container
     type: text
     data: <%%_tag_name %%_attributes>%%_title_t%%_description_t%%_content%%_title_b%%_description_b</%%_tag_name>
+# ─────────────────────────────────────────────────────────────────────
 - page_access_forbidden
     name: page_access_forbidden
     type: file
@@ -31,14 +36,11 @@ templates
     name: page_simple
     type: file
     path: frontend/template--page_simple.tpl
-- block
-    name: block
-    type: text
-    data: <%%_tag_name %%_attributes>%%_title%%_content</%%_tag_name>
 - canvas_svg
     name: canvas_svg
     type: file
     path: frontend/template--canvas_svg.tpl
+# ─────────────────────────────────────────────────────────────────────
 - page
     name: page
     type: node

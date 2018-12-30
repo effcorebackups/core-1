@@ -30,6 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/demo/demo
+    # ─────────────────────────────────────────────────────────────────────
     - menu_demo|page_part
         region: content
         type: link

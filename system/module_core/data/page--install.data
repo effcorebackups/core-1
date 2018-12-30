@@ -10,10 +10,6 @@ pages
       roles
       - =: anonymous
     children
-    - page_init|page_part
-        region: head
-        type: code
-        source: \effcore\modules\core\events_page_install::on_page_init
     - menu_languages|page_part
         region: head
         type: code
@@ -26,6 +22,11 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    # ─────────────────────────────────────────────────────────────────────
+    - page_init|page_part
+        region: content
+        type: code
+        source: \effcore\modules\core\events_page_install::on_page_init
     - form_install|page_part
         region: content
         type: link

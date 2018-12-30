@@ -26,6 +26,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    # ─────────────────────────────────────────────────────────────────────
     - form_locales|page_part
         region: content
         type: link

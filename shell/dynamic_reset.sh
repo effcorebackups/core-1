@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while true; do
-  read -p 'All data will be lost. Are you sure? [y/n]: ' answer
+  read -p '!!!!!!!!!! ALL DATA WILL BE LOST !!!!!!!!!! Are you sure? [y/n]: ' answer
   case $answer in
     y ) find ../dynamic/cache/   -not -name 'readme.md' -delete
         find ../dynamic/data/    -not -name 'readme.md' -delete

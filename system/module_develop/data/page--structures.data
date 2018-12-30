@@ -30,6 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/develop/structures
+    # ─────────────────────────────────────────────────────────────────────
     - block_structures_list|page_part
         display
           check: page_args

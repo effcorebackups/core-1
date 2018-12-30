@@ -11,10 +11,6 @@ pages
       - =: admins
       - =: registered
     children
-    - check_access_user_edit|page_part
-        region: head
-        type: code
-        source: \effcore\modules\user\events_access::on_check_access_user_edit
     - menu_main|page_part
         region: main_menu
         type: link
@@ -31,6 +27,11 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    # ─────────────────────────────────────────────────────────────────────
+    - check_access_user_edit|page_part
+        region: content
+        type: code
+        source: \effcore\modules\user\events_access::on_check_access_user_edit
     - form_user_edit|page_part
         region: content
         type: link

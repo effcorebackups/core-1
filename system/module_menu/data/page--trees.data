@@ -30,6 +30,7 @@ pages
         region: tabs
         type: link
         source: tabs/menu/manage_trees
+    # ─────────────────────────────────────────────────────────────────────
     - block_tree_select|page_part
         display
           check: page_args

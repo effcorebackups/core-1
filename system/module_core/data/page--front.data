@@ -22,6 +22,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    # ─────────────────────────────────────────────────────────────────────
     - welcome|page_part
         region: content
         type: text

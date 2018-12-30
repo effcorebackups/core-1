@@ -74,11 +74,11 @@ namespace effcore {
     foreach ($contents->children_select() as $c_region => $c_parts) {
       $template->arg_set($c_region, $c_parts);
     }
-  
+    $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());
-    timer::tap('total');
     $result = $template->render();
 
+    timer::tap('total');
     if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
       console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
       console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
