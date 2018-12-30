@@ -56,7 +56,6 @@ templates
     - messages: html/children/body/children/x_body/children/messages
     - tabs: html/children/body/children/x_body/children/tabs
     - content: html/children/body/children/x_body/children/content
-    - console: html/children/body/children/console
     data|node
       children
       - doctype|markup_simple
@@ -102,4 +101,3 @@ templates
                   - messages|node
                   - tabs|node
                   - content|node
-              - console|node
