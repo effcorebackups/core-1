@@ -350,6 +350,7 @@ translations
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загруженного файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP модулей!
     - the uploaded file was only partially uploaded: загружаемый файл был загружен только частично
+    - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS протокол!
     - Thousands separator: Разделитель тысяч
     - Time format: Формат времени
     - Time: Время
