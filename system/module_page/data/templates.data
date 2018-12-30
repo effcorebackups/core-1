@@ -53,7 +53,7 @@ templates
     - head_styles: html/children/head/children/styles
     - head_scripts: html/children/head/children/scripts
     - main_menu: html/children/body/children/main_menu
-    - head: html/children/body/children/x_head/children/head
+    - top: html/children/body/children/x_top/children/top
     - title: html/children/body/children/x_body/children/title
     - messages: html/children/body/children/x_body/children/messages
     - tabs: html/children/body/children/x_body/children/tabs
@@ -92,10 +92,10 @@ templates
               tag_name: body
               children
               - main_menu|node
-              - x_head|markup
-                  tag_name: x-head
+              - x_top|markup
+                  tag_name: x-top
                   children
-                  - head|node
+                  - top|node
               - x_body|markup
                   tag_name: x-body
                   children

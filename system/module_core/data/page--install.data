@@ -11,11 +11,11 @@ pages
       - =: anonymous
     children
     - menu_languages|page_part
-        region: head
+        region: top
         type: code
         source: \effcore\modules\locales\events_page::on_show_block_menu_languages
     - logo_system|page_part
-        region: head
+        region: top
         type: code
         source: \effcore\modules\core\events_page_info::on_show_logo_system
     - title|page_part
