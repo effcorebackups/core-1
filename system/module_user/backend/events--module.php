@@ -15,9 +15,9 @@ namespace effcore\modules\user {
           abstract class events_module {
 
   static function on_install() {
+    $module = module::get('user');
+    $module->install();
     if (count(storage::get('sql')->errors) == 0) {
-      $module = module::get('user');
-      $module->install();
       $admin = new instance('user', ['nick' => 'admin']);
       if ($admin->select()) {
         $admin->password_hash = core::hash_password_get(field::request_value_get('password'));
