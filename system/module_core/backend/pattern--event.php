@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class event implements has_cache_cleaning {
+          class event implements should_clear_cache_after_on_install {
 
   public $for;
   public $handler;

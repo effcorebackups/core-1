@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class tabs extends node implements has_cache_cleaning {
+          class tabs extends node implements should_clear_cache_after_on_install {
 
   public $id;
   public $template = 'tabs';

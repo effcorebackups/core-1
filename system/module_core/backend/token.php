@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          abstract class token implements has_cache_cleaning {
+          abstract class token implements should_clear_cache_after_on_install {
 
   static protected $cache;
 

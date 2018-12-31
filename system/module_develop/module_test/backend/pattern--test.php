@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class test implements has_cache_cleaning {
+          class test implements should_clear_cache_after_on_install {
 
   public $id;
   public $title;

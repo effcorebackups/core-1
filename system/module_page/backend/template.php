@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class template implements has_cache_cleaning {
+          class template implements should_clear_cache_after_on_install {
 
   public $name;
   public $data;

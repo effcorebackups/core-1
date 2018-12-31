@@ -67,9 +67,9 @@ namespace effcore {
     }
   }
 
-  static function structures_cache_cleaning() {
+  static function structures_cache_cleaning_after_on_install() {
     foreach (static::structures_select() as $c_full_name => $c_structure) {
-      if (isset($c_structure->implements[__NAMESPACE__.'\has_cache_cleaning'])) {
+      if (isset($c_structure->implements[__NAMESPACE__.'\\should_clear_cache_after_on_install'])) {
         $c_full_name::cache_cleaning();
       }
     }

@@ -12,8 +12,8 @@ namespace effcore {
 }
 
 namespace effcore {
-# indicates that the class has cleaner of cache
-  interface has_cache_cleaning {
+# indicates that the class should clear own cache after install any new module
+  interface should_clear_cache_after_on_install {
     static function cache_cleaning();
   }
 }

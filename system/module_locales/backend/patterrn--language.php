@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class language implements has_cache_cleaning {
+          class language implements should_clear_cache_after_on_install {
 
   public $code;
   public $title;

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page extends node implements has_external_cache, has_cache_cleaning {
+          class page extends node implements has_external_cache, should_clear_cache_after_on_install {
 
   public $title;
   public $https;

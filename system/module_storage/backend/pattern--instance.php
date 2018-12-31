@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class instance implements has_cache_cleaning {
+          class instance implements should_clear_cache_after_on_install {
 
   public $entity_name;
   public $values;

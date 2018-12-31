@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_captcha extends field_text implements has_cache_cleaning {
+          class field_captcha extends field_text implements should_clear_cache_after_on_install {
 
   public $title = 'CAPTCHA';
   public $description = 'Write the characters from the picture.';

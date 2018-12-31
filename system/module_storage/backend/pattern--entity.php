@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class entity implements has_external_cache, has_cache_cleaning, has_postparse {
+          class entity implements has_external_cache, should_clear_cache_after_on_install, has_postparse {
 
   public $name;
   public $storage_name;
