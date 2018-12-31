@@ -24,6 +24,15 @@ namespace effcore {
     parent::__construct($attributes, [], $weight);
   }
 
+  function build() {
+    $this->children_delete_all();
+    foreach (tree::items_select() as $c_item) {
+      if ($c_item->id_parent == $this->id) {
+        $this->child_insert($c_item, $c_item->id);
+      }
+    }
+  }
+
   function render() {
     if ($this->access === null || access::check($this->access)) {
       $rendered_children = $this->children_count() ? (template::make_new($this->template_children, [
