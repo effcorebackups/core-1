@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          abstract class storage implements has_cache_cleaning {
+          abstract class storage {
 
   static protected $cache;
 

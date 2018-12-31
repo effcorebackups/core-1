@@ -8,7 +8,7 @@ namespace effcore {
           use \FilesystemIterator as fs_iterator;
           use \RecursiveDirectoryIterator as rd_iterator;
           use \RecursiveIteratorIterator as ri_iterator;
-          class file { # @todo: add "implements has_cache_cleaning"
+          class file {
 
   # valid paths (path = dirs/ + name + '.' + type):
   # ┌─────────────────────────╥───────────────┬─────────┬──────┬──────────┐

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class url implements has_cache_cleaning {
+          class url {
 
   # valid urls:
   # ┌──────────────────────────────────────────────────────────┐
