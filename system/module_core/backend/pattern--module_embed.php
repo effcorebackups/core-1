@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class module_embed implements should_clear_cache_after_on_install {
+          class module_embed {
 
   public $id;
   public $id_bundle;
