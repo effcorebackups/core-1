@@ -11,7 +11,6 @@ namespace effcore {
   public $template = 'tabs';
 
   function build() {
-    $this->children_delete_all();
     foreach (static::items_select() as $c_item) {
       if ($c_item->id_parent == 'T:'.$this->id) {
         $this->child_insert($c_item, $c_item->id);
@@ -23,7 +22,8 @@ namespace effcore {
   function render() {
     if (static::$cache_tabs       == null ||
         static::$cache_tabs_items == null) static::init();
-    $this->build();
+    if ($this->children_count()   == 0)
+        $this->build();
     return (template::make_new($this->template, [
       'attributes' => $this->render_attributes(),
       'top_items'  => $this->render_top_items(),

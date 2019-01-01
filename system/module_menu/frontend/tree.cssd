@@ -46,6 +46,7 @@
   x-tree.managed li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
   x-tree.managed li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
 
-  x-tree.managed li a {font-size: 1.2em; color: black}
-  x-tree.managed x-url {display: block; color: gray}
-  x-tree.managed x-url em {padding: 0 2px; font-style: normal}
+  x-tree.managed li a {display: block}
+  x-tree.managed li a x-item-title {display: block; font-size: 1.2em; color: black}
+  x-tree.managed li a x-url {display: block; color: gray}
+  x-tree.managed li a x-url em {padding: 0 2px; font-style: normal}

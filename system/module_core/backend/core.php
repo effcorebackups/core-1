@@ -726,8 +726,14 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function deep_clone($data) {
-    return unserialize(serialize($data));
+  static function deep_clone($data, $class_remaping = []) {
+    $string = serialize($data);
+    foreach ($class_remaping as $c_old_name => $c_new_name) {
+      $c_old_name = 'O:'.strlen($c_old_name).':"'.$c_old_name.'"';
+      $c_new_name = 'O:'.strlen($c_new_name).':"'.$c_new_name.'"';
+      $string = str_replace($c_old_name, $c_new_name, $string);
+    }
+    return unserialize($string);
   }
 
   static function number_format($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {

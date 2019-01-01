@@ -21,16 +21,11 @@ namespace effcore {
     }
     if ($id) {
       $tree = clone tree::get($id);
-      $tree->children = core::deep_clone($tree->children);
+      $tree->build();
+      $tree = core::deep_clone($tree, [__NAMESPACE__.'\\tree_item' => __NAMESPACE__.'\\tree_item_managed']);
       $tree->attribute_delete('class');
       $tree->attribute_insert('class', ['managed' => 'managed']);
       $tree->title_state = 'cutted';
-      foreach ($tree->children_select_recursive() as $c_item) {
-        $c_url_info = new markup('x-url', [], $c_item->url ? str_replace('/', (new markup('em', [], '/'))->render(), $c_item->url) : 'no url', 100000);
-        $c_item->child_insert_first($c_url_info, 'x_url');
-        $c_item->access = null;
-        $c_item->url = '';
-      }
       return $tree;
     }
   }

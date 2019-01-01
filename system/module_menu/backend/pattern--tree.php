@@ -18,7 +18,6 @@ namespace effcore {
   }
 
   function build() {
-    $this->children_delete_all();
     foreach (static::items_select() as $c_item) {
       if ($c_item->id_parent == 'M:'.$this->id) {
         $this->child_insert($c_item, $c_item->id);
@@ -30,7 +29,8 @@ namespace effcore {
   function render() {
     if (static::$cache_trees      == null ||
         static::$cache_tree_items == null) static::init();
-    $this->build();
+    if ($this->children_count()   == 0)
+        $this->build();
     return parent::render();
   }
 
