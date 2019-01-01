@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages|canvas|menus|form_elements|diagrams|selections))$%
+      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages|canvas|menus|form_elements|diagrams|selections|static_elements))$%
     access
       roles
       - =: admins
@@ -79,10 +79,14 @@ pages
         region: content
         type: link
         source: selections/demo/demo_selection_types
-#    - block_demo_static|page_part
-#        region: content
-#        type: link
-#        source: blocks/demo/demo
+    - block_demo_static_elements|page_part
+        display
+          check: page_args
+          where: type
+          match: %^static_elements$%
+        region: content
+        type: link
+        source: blocks/demo/demo_static_elements
 #    - block_demo_dynamic|page_part
 #        region: content
 #        type: code

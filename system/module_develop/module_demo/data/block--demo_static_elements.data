@@ -1,6 +1,6 @@
 blocks
-- demo|block
-    title: Static block
+- demo_static_elements|block
+    title: Static elements
     attributes
     - class
       - =: demo

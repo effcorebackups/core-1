@@ -98,7 +98,7 @@ translations
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - sql query = "%%_query": sql запрос = "%%_query"
     - sql query = "%%_query"<br>args = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
-    - Static block: Статический блок
+    - Static elements: Статические элементы
     - Structures: Структуры
     - Switcher 1: Переключатель 1
     - Switcher 2 (checked): Переключатель 2 (установлен)
