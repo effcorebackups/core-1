@@ -47,6 +47,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
+    - demo_messages_description|page_part
+        display
+          check: page_args
+          where: type
+          match: %^messages$%
+        region: content
+        type: text
+        source: All types of messages you can see above.
     - block_demo_canvas|page_part
         display
           check: page_args
