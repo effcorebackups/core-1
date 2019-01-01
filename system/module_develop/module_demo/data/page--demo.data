@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/embedded/(?<type>form_elements|messages|canvas|menus|diagrams|selections|static_elements|dynamic_elements))$%
+      match: %^(?<base>/develop/demo)(/embedded/(?<type>form_elements|static_elements|dynamic_elements|selections|messages|canvas|menus(/.*|)|diagrams))$%
     access
       roles
       - =: admins
@@ -39,6 +39,30 @@ pages
         region: content
         type: link
         source: forms/demo/demo
+    - block_demo_static_elements|page_part
+        display
+          check: page_args
+          where: type
+          match: %^static_elements$%
+        region: content
+        type: link
+        source: blocks/demo/demo_static_elements
+    - block_demo_dynamic_elements|page_part
+        display
+          check: page_args
+          where: type
+          match: %^dynamic_elements$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic_elements
+    - block_demo_selections|page_part
+        display
+          check: page_args
+          where: type
+          match: %^selections$%
+        region: content
+        type: link
+        source: selections/demo/demo_selection_types
     - demo_messages|page_part
         display
           check: page_args
@@ -63,11 +87,19 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
+    - menu_demo_dynamic_changes|page_part
+        display
+          check: page_args
+          where: type
+          match: %^menus(/.*|)$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_menu_demo_do_dynamic_changes
     - menu_demo|page_part
         display
           check: page_args
           where: type
-          match: %^menus$%
+          match: %^menus(/.*|)$%
         region: content
         type: link
         source: trees/demo/demo
@@ -79,30 +111,6 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
-    - block_demo_selections|page_part
-        display
-          check: page_args
-          where: type
-          match: %^selections$%
-        region: content
-        type: link
-        source: selections/demo/demo_selection_types
-    - block_demo_static_elements|page_part
-        display
-          check: page_args
-          where: type
-          match: %^static_elements$%
-        region: content
-        type: link
-        source: blocks/demo/demo_static_elements
-    - block_demo_dynamic_elements|page_part
-        display
-          check: page_args
-          where: type
-          match: %^dynamic_elements$%
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic_elements
     - form_access|page_part
         display
           check: user

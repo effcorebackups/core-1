@@ -16,6 +16,30 @@ tabs_items
     attributes
     - class
       - =: demo-form-elements
+- demo_static_elements|tabs_item
+    id: demo_static_elements
+    id_parent: demo_embedded
+    action_name: embedded/static_elements
+    title: Static elements
+    attributes
+    - class
+      - =: demo-static-elements
+- demo_dynamic_elements|tabs_item
+    id: demo_dynamic_elements
+    id_parent: demo_embedded
+    action_name: embedded/dynamic_elements
+    title: Dynamic elements
+    attributes
+    - class
+      - =: demo-dynamic-elements
+- demo_selections|tabs_item
+    id: demo_selections
+    id_parent: demo_embedded
+    action_name: embedded/selections
+    title: Selections
+    attributes
+    - class
+      - =: demo-selections
 - demo_messages|tabs_item
     id: demo_messages
     id_parent: demo_embedded
@@ -48,27 +72,3 @@ tabs_items
     attributes
     - class
       - =: demo-diagrams
-- demo_selections|tabs_item
-    id: demo_selections
-    id_parent: demo_embedded
-    action_name: embedded/selections
-    title: Selections
-    attributes
-    - class
-      - =: demo-selections
-- demo_static_elements|tabs_item
-    id: demo_static_elements
-    id_parent: demo_embedded
-    action_name: embedded/static_elements
-    title: Static elements
-    attributes
-    - class
-      - =: demo-static-elements
-- demo_dynamic_elements|tabs_item
-    id: demo_dynamic_elements
-    id_parent: demo_embedded
-    action_name: embedded/dynamic_elements
-    title: Dynamic elements
-    attributes
-    - class
-      - =: demo-dynamic-elements
