@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/(?<id>[a-z0-9_/]+)|)$%
+      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages))$%
     access
       roles
       - =: admins
@@ -31,6 +31,14 @@ pages
         type: link
         source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
+    - block_structures_list|page_part
+        display
+          check: page_args
+          where: type
+          match: %^messages$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
     - menu_demo|page_part
         region: content
         type: link

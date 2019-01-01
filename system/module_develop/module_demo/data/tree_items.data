@@ -3,7 +3,7 @@ tree_items
     id: demo
     id_parent: develop
     title: Demo
-    url: /develop/demo
+    url: /develop/demo/embedded/messages
     weight: 100
     access
       roles
