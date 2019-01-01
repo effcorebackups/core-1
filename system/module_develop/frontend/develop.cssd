@@ -21,10 +21,6 @@
 
   x-block.php-dependencies .report-ext td {font-size: .9em}
 
-  /* demo diagrams */
-
-  x-block.demo-diagrams x-diagram {border-bottom: 1px dashed lightgray}
-
   /* reports */
 
   x-document.report {max-height: 400px; overflow: scroll}

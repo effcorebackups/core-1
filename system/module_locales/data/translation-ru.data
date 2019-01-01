@@ -95,6 +95,7 @@ translations
     - edit: редактировать
     - EMail: Адрес электронной почты
     - email: адрес электронной почты
+    - Embedded: Встроенные
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - enable: включить
     - Entities: Сущности
@@ -209,7 +210,9 @@ translations
     - Menu for demonstration: Меню для демонстрации
     - Menu main: Меню главное
     - Menu: Меню
+    - Menus: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
+    - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module %%_title (%%_id) has been disabled.: Модуль %%_title (%%_id) был выключен.

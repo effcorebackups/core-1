@@ -16,3 +16,35 @@ tabs_items
     attributes
     - class
       - =: demo-messages
+- demo_canvas|tabs_item
+    id: demo_canvas
+    id_parent: demo_embedded
+    action_name: embedded/canvas
+    title: Canvas
+    attributes
+    - class
+      - =: demo-canvas
+- demo_menus|tabs_item
+    id: demo_menus
+    id_parent: demo_embedded
+    action_name: embedded/menus
+    title: Menus
+    attributes
+    - class
+      - =: demo-menus
+- demo_form_elements|tabs_item
+    id: demo_form_elements
+    id_parent: demo_embedded
+    action_name: embedded/form_elements
+    title: Form elements
+    attributes
+    - class
+      - =: demo-form-elements
+- demo_diagrams|tabs_item
+    id: demo_diagrams
+    id_parent: demo_embedded
+    action_name: embedded/diagrams
+    title: Diagrams
+    attributes
+    - class
+      - =: demo-diagrams

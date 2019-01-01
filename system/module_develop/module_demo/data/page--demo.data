@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages))$%
+      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages|canvas|menus|form_elements|diagrams))$%
     access
       roles
       - =: admins
@@ -31,7 +31,7 @@ pages
         type: link
         source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
-    - block_structures_list|page_part
+    - demo_messages|page_part
         display
           check: page_args
           where: type
@@ -39,34 +39,50 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
+    - block_demo_canvas|page_part
+        display
+          check: page_args
+          where: type
+          match: %^canvas$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
     - menu_demo|page_part
+        display
+          check: page_args
+          where: type
+          match: %^menus$%
         region: content
         type: link
         source: trees/demo/demo
     - form_demo|page_part
+        display
+          check: page_args
+          where: type
+          match: %^form_elements$%
         region: content
         type: link
         source: forms/demo/demo
-    - block_demo_static|page_part
-        region: content
-        type: link
-        source: blocks/demo/demo
-    - block_demo_dynamic|page_part
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic
-    - block_demo_selection|page_part
-        region: content
-        type: link
-        source: selections/demo/demo_types_list
-    - block_demo_canvas|page_part
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
     - block_demo_diagrams|page_part
+        display
+          check: page_args
+          where: type
+          match: %^diagrams$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
+#    - block_demo_static|page_part
+#        region: content
+#        type: link
+#        source: blocks/demo/demo
+#    - block_demo_dynamic|page_part
+#        region: content
+#        type: code
+#        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic
+#    - block_demo_selection|page_part
+#        region: content
+#        type: link
+#        source: selections/demo/demo_types_list
     - form_access|page_part
         display
           check: user
