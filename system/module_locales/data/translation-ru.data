@@ -308,6 +308,8 @@ translations
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
+    - Selection: Выборка
+    - Selections: Выборки
     - Server timezone: Часовой пояс сервера
     - Server UTC date / time: UTC Дата / время сервера
     - Session: Сессия

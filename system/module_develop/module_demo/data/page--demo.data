@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages|canvas|menus|form_elements|diagrams))$%
+      match: %^(?<base>/develop/demo)(/embedded/(?<type>messages|canvas|menus|form_elements|diagrams|selections))$%
     access
       roles
       - =: admins
@@ -71,6 +71,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
+    - block_demo_selections|page_part
+        display
+          check: page_args
+          where: type
+          match: %^selections$%
+        region: content
+        type: link
+        source: selections/demo/demo_selection_types
 #    - block_demo_static|page_part
 #        region: content
 #        type: link
@@ -79,10 +87,6 @@ pages
 #        region: content
 #        type: code
 #        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic
-#    - block_demo_selection|page_part
-#        region: content
-#        type: link
-#        source: selections/demo/demo_types_list
     - form_access|page_part
         display
           check: user
