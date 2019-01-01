@@ -7,12 +7,16 @@
 namespace effcore\modules\demo {
           use \effcore\block;
           use \effcore\canvas_svg;
+          use \effcore\control_actions_list;
           use \effcore\diagram;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\node;
+          use \effcore\pager;
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
+          use \effcore\text;
           use \effcore\translation;
           use \effcore\tree;
           abstract class events_page_demo {
@@ -72,24 +76,96 @@ namespace effcore\modules\demo {
   }
 
   static function on_show_block_demo_dynamic_elements($page) {
-    $thead = [[
-      translation::get('head cell #%%_number', ['number' => 1]),
-      translation::get('head cell #%%_number', ['number' => 2]),
-      translation::get('head cell #%%_number', ['number' => 3])
+  # ─────────────────────────────────────────────────────────────────────
+  # paragraph
+  # ─────────────────────────────────────────────────────────────────────
+    $paragraph_title = new markup('h3', [], 'Paragraph');
+    $paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
+  # ─────────────────────────────────────────────────────────────────────
+  # unordered list
+  # ─────────────────────────────────────────────────────────────────────
+    $unordered_list_title = new markup('h3', [], 'Unordered list');
+    $unordered_list = new markup('ul', [], [
+      'li_1'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 1])]),
+      'li_2'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 2]),
+        'li_2_ul'  => new markup('ul', [], [
+          'li_2_1' => new markup('li', [], new text('item #%%_number', ['number' => 2.1])),
+          'li_2_2' => new markup('li', [], new text('item #%%_number', ['number' => 2.2])),
+          'li_2_3' => new markup('li', [], new text('item #%%_number', ['number' => 2.3]))])]),
+      'li_3'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 3])])
+    ]);
+  # ─────────────────────────────────────────────────────────────────────
+  # ordered list
+  # ─────────────────────────────────────────────────────────────────────
+    $ordered_list_title = new markup('h3', [], 'Ordered list');
+    $ordered_list = new markup('ol', [], [
+      'li_1'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 1])]),
+      'li_2'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 2]),
+        'li_2_ol'  => new markup('ol', [], [
+          'li_2_1' => new markup('li', [], new text('item #%%_number', ['number' => 2.1])),
+          'li_2_2' => new markup('li', [], new text('item #%%_number', ['number' => 2.2])),
+          'li_2_3' => new markup('li', [], new text('item #%%_number', ['number' => 2.3]))])]),
+      'li_3'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 3])])
+    ]);
+  # ─────────────────────────────────────────────────────────────────────
+  # table (combinations of arrays and table_body_row and table_body_row_cell)
+  # ─────────────────────────────────────────────────────────────────────
+    $table_thead = [[
+      'th_1' => translation::get('head cell #%%_number', ['number' => 1]),
+      'th_2' => translation::get('head cell #%%_number', ['number' => 2]),
+      'th_3' => translation::get('head cell #%%_number', ['number' => 3])
     ]];
-    $tbody = [
-      [translation::get('cell #%%_number', ['number' => 1.1]),
-       translation::get('cell #%%_number', ['number' => 1.2]),
-       translation::get('cell #%%_number', ['number' => 1.3])],
-      [translation::get('cell #%%_number', ['number' => 2.1]),
-       translation::get('cell #%%_number', ['number' => 2.2]), new table_body_row_cell([],
-       translation::get('cell #%%_number', ['number' => 2.3]))],
-      new table_body_row([], [translation::get('cell #%%_number', ['number' => 3.1]),
-                              translation::get('cell #%%_number', ['number' => 3.2]), new table_body_row_cell([],
-                              translation::get('cell #%%_number', ['number' => 3.3]))])
+    $table_tbody = [
+      ['td_1' =>                             translation::get('cell #%%_number', ['number' => 1.1]),
+       'td_2' =>                             translation::get('cell #%%_number', ['number' => 1.2]),
+       'td_3' =>                             translation::get('cell #%%_number', ['number' => 1.3])],
+      ['td_1' =>                             translation::get('cell #%%_number', ['number' => 2.1]),
+       'td_2' =>                             translation::get('cell #%%_number', ['number' => 2.2]),
+       'td_3' => new table_body_row_cell([], translation::get('cell #%%_number', ['number' => 2.3]))],
+      new table_body_row([], [
+       'td_1' =>                             translation::get('cell #%%_number', ['number' => 3.1]),
+       'td_2' =>                             translation::get('cell #%%_number', ['number' => 3.2]),
+       'td_3' => new table_body_row_cell([], translation::get('cell #%%_number', ['number' => 3.3]))]),
+      new table_body_row([], [
+       'td_1' => new table_body_row_cell(['colspan' => 3], new text(''))
+      ])
     ];
-    return new block('Dynamic elements', ['data-styled-title' => 'no', 'class' => ['demo-dynamic' => 'demo-dynamic']], [
-      new table(['class' => ['table' => 'table']], $tbody, $thead)
+    $table = new table(['class' => ['table' => 'table']],
+      $table_tbody,
+      $table_thead
+    );
+  # ─────────────────────────────────────────────────────────────────────
+  # pager
+  # ─────────────────────────────────────────────────────────────────────
+    $pager = new pager();
+    $pager->prefix = 'my';
+    $pager->id = 'pager';
+    $pager->max = 10000;
+  # ─────────────────────────────────────────────────────────────────────
+  # control elements
+  # ─────────────────────────────────────────────────────────────────────
+    $controls_title = new markup('h3', [], 'Control elements');
+  # actions list
+    $actions_list = new control_actions_list('', ['class' => ['demo-actions-list' => 'demo-actions-list']]);
+    $actions_list->actions = [
+      'item_1' => 'item #1',
+      'item_2' => 'item #2',
+      'item_3' => 'item #3'
+    ];
+  # ─────────────────────────────────────────────────────────────────────
+  # result block
+  # ─────────────────────────────────────────────────────────────────────
+    return new block('Dynamic elements', ['class' => ['demo-dynamic' => 'demo-dynamic']], [
+      $paragraph_title,
+      $paragraph,
+      $unordered_list_title,
+      $unordered_list,
+      $ordered_list_title,
+      $ordered_list,
+      $table,
+      $pager,
+      $controls_title,
+      $actions_list
     ]);
   }
 

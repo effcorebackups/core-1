@@ -8,12 +8,12 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # paragraph
   # ─────────────────────────────────────────────────────────────────────
-    - demo_paragraph_title|markup
+    - paragraph_title|markup
         tag_name: h3
         children
         - content|text
             text: Paragraph
-    - demo_paragraph|markup
+    - paragraph|markup
         tag_name: p
         children
         - content|text
@@ -31,12 +31,12 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # unordered list
   # ─────────────────────────────────────────────────────────────────────
-    - demo_unordered_list_title|markup
+    - unordered_list_title|markup
         tag_name: h3
         children
         - content|text
             text: Unordered list
-    - demo_unordered_list|markup
+    - unordered_list|markup
         tag_name: ul
         children
         - li_1|markup
@@ -87,12 +87,12 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # ordered list
   # ─────────────────────────────────────────────────────────────────────
-    - demo_ordered_list_title|markup
+    - ordered_list_title|markup
         tag_name: h3
         children
         - content|text
             text: Ordered list
-    - demo_ordered_list|markup
+    - ordered_list|markup
         tag_name: ol
         children
         - li_1|markup
@@ -143,12 +143,12 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # table
   # ─────────────────────────────────────────────────────────────────────
-    - demo_table_title|markup
+    - table_title|markup
         tag_name: h3
         children
         - content|text
             text: Table
-    - demo_table|table
+    - table|table
         children
         - head|table_head
             children
@@ -245,7 +245,7 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # pager
   # ─────────────────────────────────────────────────────────────────────
-    - demo_pager_2|pager
+    - pager|pager
         prefix: my
         id: pager
         max: 10000
@@ -258,7 +258,7 @@ blocks
         - content|text
             text: Control elements
   # actions list
-    - demo_actions_list|control_actions_list
+    - actions_list|control_actions_list
         attributes
         - class
           - =: demo-actions-list
