@@ -67,7 +67,7 @@ namespace effcore\modules\demo {
     ]);
   }
 
-  static function on_show_block_demo_dynamic($page) {
+  static function on_show_block_demo_dynamic_elements($page) {
     tabs::item_insert('item #3 (from code)',     'demo_item_3',     'T:demo',        'item_3',                     null,         ['class' => ['demo-item-3'     => 'demo-item-3']]);
     tabs::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', 'item_1/item_1_2/item_1_2_3', null,         ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
     tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3']]);
@@ -88,7 +88,7 @@ namespace effcore\modules\demo {
                               translation::get('cell #%%_number', ['number' => 3.2]), new table_body_row_cell([],
                               translation::get('cell #%%_number', ['number' => 3.3]))])
     ];
-    return new block('Dynamic block', ['data-styled-title' => 'no', 'class' => ['demo-dynamic' => 'demo-dynamic']], [
+    return new block('Dynamic elements', ['data-styled-title' => 'no', 'class' => ['demo-dynamic' => 'demo-dynamic']], [
       new table(['class' => ['table' => 'table']], $tbody, $thead)
     ]);
   }

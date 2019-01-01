@@ -30,7 +30,7 @@ translations
     - Demo\: types: Демо: типы
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
-    - Dynamic block: Динамический блок
+    - Dynamic elements: Динамические элементы
     - Elements: Элементы
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - event system was initialized: система событий была инициализирована

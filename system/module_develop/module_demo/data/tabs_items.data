@@ -64,3 +64,11 @@ tabs_items
     attributes
     - class
       - =: demo-static-elements
+- demo_dynamic_elements|tabs_item
+    id: demo_dynamic_elements
+    id_parent: demo_embedded
+    action_name: embedded/dynamic_elements
+    title: Dynamic elements
+    attributes
+    - class
+      - =: demo-dynamic-elements
