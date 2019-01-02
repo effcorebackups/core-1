@@ -8,16 +8,6 @@ namespace effcore\modules\develop {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_install() {
-    $module = module::get('develop');
-    $module->install();
-  }
-
-  static function on_uninstall() {
-    $module = module::get('develop');
-    $module->uninstall();
-  }
-
   static function on_enable() {
     $module = module::get('develop');
     $module->enable();

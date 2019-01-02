@@ -8,11 +8,6 @@ namespace effcore\modules\storage {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_install() {
-    $module = module::get('storage');
-    $module->install();
-  }
-
   static function on_enable() {
     $module = module::get('storage');
     $module->enable();
