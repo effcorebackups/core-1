@@ -80,7 +80,7 @@
     display: inline-block;
     width: 26px;
     height: 26px;
-    margin: 0 5px 2px 0;
+    margin: 2px 7px 2px 0;
     padding: 0;
     vertical-align: middle;
     cursor: pointer;
@@ -102,10 +102,13 @@
 
   x-field[data-type='switcher']    label,
   x-field[data-type='checkbox']    label,
-  x-field[data-type='radiobutton'] label {display: inline}
+  x-field[data-type='radiobutton'] label {display: inline; vertical-align: middle}
 
+  x-group[data-type='switchers'   ] x-field,
   x-group[data-type='checkboxes'  ] x-field,
   x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
+
+  x-group[data-type='switchers'   ] x-field label,
   x-group[data-type='checkboxes'  ] x-field label,
   x-group[data-type='radiobuttons'] x-field label {display: inline; font-size: 1em}
 
@@ -122,6 +125,7 @@
   input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form_items.svgd') 0 -85px}
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
+  x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
 
   /* disabled elements */
 
@@ -154,7 +158,7 @@
   x-group[data-type='palette'] {margin: 5px 0}
   x-group[data-type='palette'] x-title {margin-bottom: 7px}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
-  x-group[data-type='palette'] x-field input {margin: 0; border-color: white}
+  x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked {border-color: black}
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
