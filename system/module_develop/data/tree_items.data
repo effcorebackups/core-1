@@ -33,3 +33,14 @@ tree_items
     attributes
     - class
       - =: php-dependencies
+- console|tree_item
+    id: console
+    id_parent: develop
+    title: Console
+    url: /develop/console
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: console

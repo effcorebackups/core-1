@@ -161,7 +161,7 @@ namespace effcore\modules\core {
             message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
-            storage::get('files')->changes_insert('page',    'update', 'settings/page/console_display', 'no');
+            storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
           } else {
             message::insert(
               translation::get('An error occurred during installation!').br.

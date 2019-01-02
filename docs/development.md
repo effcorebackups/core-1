@@ -1,15 +1,5 @@
 
 
-How to activate console
-=====================================================================
-
-In "/dynamic/data/changes.php" change:
-    data::$data['changes']['page']->update['settings/page/console_display'] = 'no';
-to:
-    data::$data['changes']['page']->update['settings/page/console_display'] = 'yes';
-run "/shell/cache_clear.sh"
-
-
 How to activate Neor Profile SQL
 =====================================================================
 

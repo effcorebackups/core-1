@@ -69,6 +69,7 @@ translations
     - item #3: пункт №3
     - make request to "%%_url": сделать запрос на "%%_url"
     - Module: Модуль
+    - not show: не показывать
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
@@ -97,6 +98,8 @@ translations
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
+    - show for admin: показывать для администратора
+    - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"
     - sql query = "%%_query"<br>args = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
     - Static elements: Элементы статические
@@ -115,4 +118,5 @@ translations
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - Usage frequency: Частота использования
+    - Visibility: Видимость
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.

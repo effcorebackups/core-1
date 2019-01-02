@@ -1,4 +1,4 @@
 settings
-  console_display: no
+  console_visibility: not_show
   color_id: black
   color_bg_id: modernblue

@@ -79,11 +79,14 @@ namespace effcore {
     $result = $template->render();
 
     timer::tap('total');
-    if (storage::get('files')->select('settings')['page']->console_display == 'yes') {
+    $user = user::current_get();
+    $settings = storage::get('files')->select('settings');
+    if (($settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+        ($settings['page']->console_visibility == 'show_for_everyone')) {
       console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
       console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
       console::information_insert('Current language',       language::current_code_get());
-      console::information_insert('User roles',             implode(', ', user::current_get()->roles));
+      console::information_insert('User roles',             implode(', ', $user->roles));
       $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
     }
     return $result;
