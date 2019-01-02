@@ -146,11 +146,11 @@ namespace effcore\modules\core {
                 isset($embed             [$c_module->id])) {
               event::start('on_module_install', $c_module->id);
               event::start('on_module_enable',  $c_module->id);
+            # cancel installation if an error occurred
+              if (count(storage::get('sql')->errors) == 0)
+                message::insert(translation::get('Module %%_title (%%_id) has been installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
+              else break;
             }
-          # cancel installation if an error occurred
-            if (count(storage::get('sql')->errors) == 0)
-              message::insert(translation::get('Module %%_title (%%_id) has been installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
-            else break;
           }
           if (count(storage::get('sql')->errors) == 0) {
             $form->children_delete_all();
