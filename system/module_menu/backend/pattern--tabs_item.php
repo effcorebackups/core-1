@@ -28,10 +28,10 @@ namespace effcore {
   }
 
   function build() {
-    $this->children_delete_all();
     foreach (tabs::items_select() as $c_item) {
       if ($c_item->id_parent == $this->id) {
         $this->child_insert($c_item, $c_item->id);
+        $c_item->build();
       }
     }
   }
