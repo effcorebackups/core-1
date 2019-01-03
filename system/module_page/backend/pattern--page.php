@@ -60,8 +60,7 @@ namespace effcore {
 
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
-    $template->arg_set('lang_code', language::current_code_get());
-    $template->arg_set('text_direction', $this->text_direction);
+    $template->arg_set('attributes', ['lang' => language::current_code_get(), 'dir' => $this->text_direction, 'data-css-path' => core::to_css_class(trim(url::current_get()->path_get(), '/'))]);
     $template->arg_set('charset',        $this->charset);
     $template->arg_set('head_title',     $this->title);
     $template->arg_set('head_icons',     $frontend->icons);
