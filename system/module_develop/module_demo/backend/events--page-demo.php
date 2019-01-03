@@ -19,7 +19,15 @@ namespace effcore\modules\demo {
           use \effcore\text;
           use \effcore\translation;
           use \effcore\tree;
+          use \effcore\url;
           abstract class events_page_demo {
+
+  static function on_page_init($page) {
+    $type = $page->args_get('type');
+    if ($type == null) {
+      url::go($page->args_get('base').'/embedded/form_elements');
+    }
+  }
 
   static function on_show_demo_messages($page) {
     message::insert(translation::get('credentials'), 'credentials');

@@ -28,7 +28,7 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - check_access_user_edit|page_part
+    - check_access|page_part
         region: content
         type: code
         source: \effcore\modules\user\events_access::on_check_access_user_edit

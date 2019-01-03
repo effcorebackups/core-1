@@ -27,7 +27,7 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - check_access_instance_delete|page_part
+    - check_access|page_part
         region: content
         type: code
         source: \effcore\modules\storage\events_access::on_check_access_instance_delete

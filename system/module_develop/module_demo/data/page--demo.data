@@ -6,15 +6,14 @@ pages
       check: url
       where: path
       match: %^(?<base>/develop/demo)
->>>>>>>>>>>>>(/(?<type>embedded/form_elements|
+>>>>>>>>>>>>((/(?<type>embedded/form_elements|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/static_elements|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/dynamic_elements|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/menus(/.*|)|
->>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams)
->>>>>>>>>>>>>)$%
+>>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams))|)$%
     access
       roles
       - =: admins
@@ -40,6 +39,10 @@ pages
         type: link
         source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
+    - page_init|page_part
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_page_init
     - form_demo|page_part
         display
           check: page_args
