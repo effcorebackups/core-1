@@ -39,6 +39,11 @@ namespace effcore {
     core::boot_insert($this->id, $this->path, 'installed');
   }
 
+  function is_enabled() {
+    $enabled = core::boot_select('enabled');
+    return isset($enabled[$this->id]);
+  }
+
   function is_installed() {
     $installed = core::boot_select('installed');
     return isset($installed[$this->id]);
