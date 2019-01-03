@@ -40,8 +40,8 @@ namespace effcore\modules\locales {
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
+        language::current_code_set($items['#lang_code']->value_get());
         message::insert('The changes was saved.');
-        url::go('/manage/locales');
         break;
       case 'restore':
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/lang_code',       false);
