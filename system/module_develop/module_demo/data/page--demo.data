@@ -5,7 +5,16 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/demo)(/embedded/(?<type>form_elements|static_elements|dynamic_elements|selections|messages|canvas|menus(/.*|)|diagrams))$%
+      match: %^(?<base>/develop/demo)
+>>>>>>>>>>>>>(/(?<type>embedded/form_elements|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/static_elements|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/dynamic_elements|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/menus(/.*|)|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams)
+>>>>>>>>>>>>>)$%
     access
       roles
       - =: admins
@@ -35,7 +44,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^form_elements$%
+          match: %^embedded/form_elements$%
         region: content
         type: link
         source: forms/demo/demo
@@ -43,7 +52,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^static_elements$%
+          match: %^embedded/static_elements$%
         region: content
         type: link
         source: blocks/demo/demo_static_elements
@@ -51,7 +60,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^dynamic_elements$%
+          match: %^embedded/dynamic_elements$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_dynamic_elements
@@ -59,7 +68,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^selections$%
+          match: %^embedded/selections$%
         region: content
         type: link
         source: selections/demo/demo_selection_types
@@ -67,7 +76,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^messages$%
+          match: %^embedded/messages$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
@@ -75,7 +84,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^messages$%
+          match: %^embedded/messages$%
         region: content
         type: text
         source: All types of messages you can see above.
@@ -83,7 +92,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^canvas$%
+          match: %^embedded/canvas$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
@@ -91,7 +100,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^menus(/.*|)$%
+          match: %^embedded/menus(/.*|)$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_menu_demo_do_dynamic_changes
@@ -99,7 +108,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^menus(/.*|)$%
+          match: %^embedded/menus(/.*|)$%
         region: content
         type: link
         source: trees/demo/demo
@@ -107,7 +116,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^diagrams$%
+          match: %^embedded/diagrams$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
