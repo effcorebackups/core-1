@@ -107,7 +107,7 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache = new url(core::server_request_uri_get());
+    static::$cache = new static(core::server_request_uri_get());
   }
 
   static function current_get() {
@@ -125,25 +125,30 @@ namespace effcore {
   }
 
   static function is_local($url) {
-    return (new url($url))->domain == core::server_host_get();
+    return (new static($url))->domain == core::server_host_get();
   }
 
-  static function is_active($url) {
-    $checked =       (new url($url))->full_get();
-    $current = static::current_get()->full_get();
-    return $checked == $current;
+  static function is_active($url, $compare_type = 'full') {
+    $checked_url = new static($url);
+    $current_url =     static::current_get();
+    switch ($compare_type) {
+      case 'full': return $checked_url->full_get() ==
+                          $current_url->full_get();
+      case 'path': return $checked_url->domain_get().$checked_url->path_get() ==
+                          $current_url->domain_get().$current_url->path_get();
+    }
   }
 
   static function is_active_trail($url) {
-    $checked =       (new url($url))->full_get();
-    $current = static::current_get()->full_get();
-    return strpos($current.'/',
-                  $checked.'/') === 0;
+    $checked_url = new static($url);
+    $current_url =     static::current_get();
+    return strpos($current_url->full_get().'/',
+                  $checked_url->full_get().'/') === 0;
   }
 
   static function go($url) {
     core::send_header_and_exit('redirect', '', '',
-      (new url($url))->full_get()
+      (new static($url))->full_get()
     );
   }
 
