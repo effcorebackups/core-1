@@ -45,7 +45,7 @@ templates
     name: page
     type: node
     pointers
-    - attributes: html/attributes
+    - html: html
     - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
     - head_title: html/children/head/children/title/children/content/text
     - head_icons: html/children/head/children/icons
