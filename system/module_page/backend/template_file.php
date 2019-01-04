@@ -16,4 +16,12 @@ namespace effcore {
     return parent::render();
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function get_copied_properties() {
+    return ['path' => 'path'] + parent::get_copied_properties();
+  }
+
 }}

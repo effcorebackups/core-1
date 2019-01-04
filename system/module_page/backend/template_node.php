@@ -18,4 +18,12 @@ namespace effcore {
     return $this->data->render();
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function get_copied_properties() {
+    return ['pointers' => 'pointers'] + parent::get_copied_properties();
+  }
+
 }}

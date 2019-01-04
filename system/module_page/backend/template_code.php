@@ -13,4 +13,12 @@ namespace effcore {
     return call_user_func($this->handler, $this->args);
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function get_copied_properties() {
+    return ['handler' => 'handler'] + parent::get_copied_properties();
+  }
+
 }}

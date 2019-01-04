@@ -33,6 +33,13 @@ namespace effcore {
     static::$cache = null;
   }
 
+  static function get_copied_properties() {
+    return [
+      'module_id' => 'module_id',
+      'data'      => 'data'
+    ];
+  }
+
   static function init() {
     foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
       foreach ($c_templates as $c_row_id => $c_template) {
@@ -54,17 +61,14 @@ namespace effcore {
   }
 
   static function make_new($name, $args = []) {
-    $result = null;
     $template = static::get($name);
-    if ($template->type == 'text') $result = new template_text($name, $args);
-    if ($template->type == 'file') $result = new template_file($name, $args);
-    if ($template->type == 'code') $result = new template_code($name, $args);
-    if ($template->type == 'node') $result = new template_node($name, $args);
-    if (isset($template->module_id)) $result->module_id = $template->module_id; # for each type
-    if (isset($template->data     )) $result->data      = $template->data;      # for each type
-    if (isset($template->path     )) $result->path      = $template->path;      # for file type
-    if (isset($template->handler  )) $result->handler   = $template->handler;   # for code type
-    if (isset($template->pointers )) $result->pointers  = $template->pointers;  # for node type
+    $class_name = __NAMESPACE__.'\\template_'.$template->type;
+    $result = new $class_name($name, $args);
+    foreach ($class_name::get_copied_properties() as $c_property_name) {
+      if (property_exists($template, $c_property_name)) {
+        $result->{$c_property_name} = $template->{$c_property_name};
+      }
+    }
     return $result;
   }
 
