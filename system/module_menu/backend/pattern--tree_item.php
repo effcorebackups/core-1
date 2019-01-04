@@ -36,11 +36,11 @@ namespace effcore {
   function render() {
     if ($this->access === null || access::check($this->access)) {
       $rendered_children = $this->children_count() ? (template::make_new($this->template_children, [
-        'children' => $this->render_children($this->children_select())]
-      ))->render() : '';
+        'children' => new text($this->render_children($this->children_select()))
+      ]))->render() : '';
       return (template::make_new($this->template, [
-        'self'     => $this->render_self(),
-        'children' => $rendered_children
+        'self'     => new text($this->render_self()),
+        'children' => new text($rendered_children)
       ]))->render();
     }
   }

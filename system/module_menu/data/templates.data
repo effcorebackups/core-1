@@ -5,12 +5,32 @@ templates
     data: <x-tree %%_attributes>%%_self<ul>%%_children</ul></x-tree>
 - tree_item
     name: tree_item
-    type: text
-    data: <li %%_attributes>%%_self%%_children</li>
+    type: node
+    pointers
+    - attributes: wrapper/attributes
+    - self: wrapper/children/self
+    - children: wrapper/children/children
+    data|node
+      children
+      - wrapper|markup
+          tag_name: li
+          attributes|_empty_array
+          children
+          - self|node
+          - children|node
 - tree_item_children
     name: tree_item_children
-    type: text
-    data: <ul>%%_children</ul>
+    type: node
+    pointers
+    - attributes: wrapper/attributes
+    - children: wrapper/children/children
+    data|node
+      children
+      - wrapper|markup
+          tag_name: ul
+          attributes|_empty_array
+          children
+          - children|node
 - tabs
     name: tabs
     type: text
