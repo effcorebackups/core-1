@@ -135,8 +135,9 @@ namespace effcore {
   }
 
   function render_child($child) {
-    return method_exists($child, 'render') ? $child->render() :
-                                             $child;
+    return is_object($child) &&
+       method_exists($child, 'render') ? $child->render() :
+                                         $child;
   }
 
 }}

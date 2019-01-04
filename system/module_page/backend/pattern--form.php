@@ -38,13 +38,13 @@ namespace effcore {
     }
   # build all form elements
     foreach ($this->children_select_recursive() as $c_element) {
-      if (method_exists($c_element, 'build')) {
+      if (is_object($c_element) && method_exists($c_element, 'build')) {
         $c_element->build();
       }
     }
   # relate each item with it's form
     foreach ($this->children_select_recursive() as $c_npath => $c_element) {
-      if (method_exists($c_element, 'cform_set')) {
+      if (is_object($c_element) && method_exists($c_element, 'cform_set')) {
         $c_element->cform_set($this);
       }
     }
@@ -64,7 +64,7 @@ namespace effcore {
     # call items validate methods
       if (empty($this->clicked_button->novalidate)) {
         foreach ($items as $c_npath => $c_item) {
-          if ($c_npath[0] != '#' && method_exists($c_item, 'validate')) {
+          if ($c_npath[0] != '#' && is_object($c_item) && method_exists($c_item, 'validate')) {
             $c_item::validate($c_item, $this, $c_npath);
           }
         }
