@@ -3,20 +3,20 @@
 Server software support
 =====================================================================
 
-Operating System:
+Operating Systems:
 - UNIX (macOS, FreeBSD) [priority]
 - Linux
 - Windows
-Architecture:
+Architectures:
 - x86
 - x64
-Web Server:
+Web Servers:
 - Apache v2.4+ [priority]
 - NGINX v1.10+ [priority]
 - Internet Information Services (IIS) v7.5+
 Server-side scripting language:
 - PHP v7.1+
-Storage system:
+Storage systems:
 - MySQL v5.6+
 - SQLite v3.6.19+
 
@@ -56,15 +56,19 @@ If you got "500 Internal Server Error" check "web.config" in www root (section "
 
 PHP requires
 ---------------------------------------------------------------------
-- enable module "SPL"
-- enable module "date"
-- enable module "fileinfo"
-- enable module "filter"
-- enable module "pcre"
-- enable module "standard"
-- enable module "pdo_sqlite"|"pdo_mysql"
-- enable module "curl" (for development)
-- enable module "json" (for development)
+- enable module "Core"                                   [always enabled]
+- enable module "date"                                   [always enabled]
+- enable module "fileinfo"                               [enabled by default]
+- enable module "filter"                                 [enabled by default]
+- enable module "mbstring"
+- enable module "pcre"                                   [always enabled]
+- enable module "SPL"                                    [always enabled]
+- enable module "standard"                               [always enabled]
+- enable module "pdo_mysql"    (for working with MySQL)
+- enable module "pdo_sqlite"   (for working with SQLite)
+- enable module "Zend OPcache" (for best performance)
+- enable module "curl"         (for development)
+- enable module "json"         (for development)         [always enabled]
 
 
 SQLite requires
