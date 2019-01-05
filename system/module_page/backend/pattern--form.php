@@ -76,12 +76,12 @@ namespace effcore {
       }
 
     # send specific header
-      header('X-Submit-Errors-Count: '.count(form::$errors));
+      header('X-Submit-Errors-Count: '.count(static::$errors));
 
     # show errors
-      if (form::$errors) {
+      if (static::$errors) {
         $this->attribute_insert('class', ['error' => 'error']);
-        foreach (form::$errors as $c_error) {
+        foreach (static::$errors as $c_error) {
           switch (gettype($c_error->message)) {
             case 'string':                                                 message::insert(translation::get($c_error->message, $c_error->args), 'error'); break;
             case 'object': if (method_exists($c_error->message, 'render')) message::insert(                 $c_error->message->render(),        'error'); break;
@@ -90,13 +90,13 @@ namespace effcore {
       }
 
     # call submit handler (if no errors)
-      if (!form::$errors) {
+      if (!static::$errors) {
         event::start('on_form_submit', $id, [$this, $items]);
       }
 
     # validation cache
-      if (form::$errors != [] && core::hash_data_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
-      if (form::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
+      if (static::$errors != [] && core::hash_data_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
+      if (static::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
   }
 
@@ -144,7 +144,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function error_set($message = null, $args = []) {
-    form::$errors[] = (object)[
+    static::$errors[] = (object)[
       'message' => $message,
       'args'    => $args,
       'pointer' => &$this
@@ -152,7 +152,7 @@ namespace effcore {
   }
 
   function has_error() {
-    return (bool)count(form::$errors);
+    return (bool)count(static::$errors);
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

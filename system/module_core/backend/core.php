@@ -39,7 +39,7 @@ namespace effcore {
     $boot_buffer[$module_id] = $module_path;
     asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
   }
 
   static function boot_delete($module_id, $type) {
@@ -50,7 +50,7 @@ namespace effcore {
     else $boot_buffer = static::boot_default_select();
     unset($boot_buffer[$module_id]);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => core::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
   }
 
   ###############################################
@@ -81,13 +81,13 @@ namespace effcore {
       return $result;
     } else {
       $modules_path = storage_nosql_files::data_find_and_parse_modules_and_bundles()->modules_path;
-      $enabled = core::boot_select('enabled') + $with_paths;
+      $enabled = static::boot_select('enabled') + $with_paths;
       $files = [];
       arsort($enabled);
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.php$%');
         foreach ($c_files as $c_path => $c_file) {
-          $c_module_id = key(core::in_array_inclusions_find($c_path, $modules_path));
+          $c_module_id = key(static::in_array_inclusions_find($c_path, $modules_path));
           if (isset($enabled[$c_module_id])) {
             $files[$c_path] = $c_file;
           }
@@ -757,10 +757,10 @@ namespace effcore {
       case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); break;
     }
     $front_page_link = translation::get('go to <a href="/">front page</a>');
-    if ($type == 'access_forbidden') {print (template::make_new('page_access_forbidden', ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Access forbidden')]))->render(); exit();}
-    if ($type == 'page_not_found')   {print (template::make_new('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render();   exit();}
-    if ($type == 'file_not_found')   {print (template::make_new('page_not_found',        ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('File not found')]))->render();   exit();}
-    if ($message)                    {print (template::make_new('page_simple',           ['attributes' => core::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get($title)]))->render();             exit();}
+    if ($type == 'access_forbidden') {print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Access forbidden')]))->render(); exit();}
+    if ($type == 'page_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('Page not found')]))->render();   exit();}
+    if ($type == 'file_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get('File not found')]))->render();   exit();}
+    if ($message)                    {print (template::make_new('page_simple',           ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => translation::get($title)]))->render();             exit();}
     exit();
   }
 
