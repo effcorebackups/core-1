@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-git -C ../ clean -f
+git -C ../ clean  -d  -fx .
 git -C ../ reset --hard
 git -C ../ pull
 
