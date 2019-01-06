@@ -35,8 +35,8 @@ namespace effcore {
   function render_description() {
     if ($this->description) {
       return (
-        new static($this->description_tag_name, [],
-          new static('p', [], $this->description)
+        new markup($this->description_tag_name, [],
+          new markup('p', [], $this->description)
         )
       )->render();
     }
