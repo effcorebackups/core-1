@@ -1,0 +1,1499 @@
+tests
+- urls_access|test
+    id: urls_access
+    title: URLs access
+    scenario
+    - request_url_afd21aae77|step_request
+        url: /.editorconfig
+    - response_check_afd21aae77|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_244d7f3e0f|step_request
+        url: /.gitattributes
+    - response_check_244d7f3e0f|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_d399adccdc|step_request
+        url: /.gitignore
+    - response_check_d399adccdc|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_fe8611a439|step_request
+        url: /.htaccess
+    - response_check_fe8611a439|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_9e130dc67d|step_request
+        url: /.nginx
+    - response_check_9e130dc67d|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a101c6eb9b|step_request
+        url: /web.config
+    - response_check_a101c6eb9b|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e251273eb7|step_request
+        url: /index.php
+    - response_check_e251273eb7|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f7b9652d2f|step_request
+        url: /license.mark
+    - response_check_f7b9652d2f|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_3cf86549c0|step_request
+        url: /dynamic/cache/data_original.php
+    - response_check_3cf86549c0|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ef0c6cf11d|step_request
+        url: /dynamic/cache/readme.mark
+    - response_check_ef0c6cf11d|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_76b7d91619|step_request
+        url: /dynamic/cache/structures.php
+    - response_check_76b7d91619|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_cd2dde87e4|step_request
+        url: /dynamic/data/boot.php
+    - response_check_cd2dde87e4|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_02b89e8aa3|step_request
+        url: /dynamic/data/changes.php
+    - response_check_02b89e8aa3|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_75db526a36|step_request
+        url: /dynamic/data/data.sqlite
+    - response_check_75db526a36|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_14062e0245|step_request
+        url: /dynamic/data/readme.mark
+    - response_check_14062e0245|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f7f19d60ff|step_request
+        url: /dynamic/files/readme.mark
+    - response_check_f7f19d60ff|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_37d5efbbc5|step_request
+        url: /dynamic/logs/readme.mark
+    - response_check_37d5efbbc5|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1d0374a191|step_request
+        url: /dynamic/tmp/readme.mark
+    - response_check_1d0374a191|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7337b73559|step_request
+        url: /modules/readme.mark
+    - response_check_7337b73559|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_9acb0c5ba9|step_request
+        url: /readme/about.mark
+    - response_check_9acb0c5ba9|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ef3a15e52f|step_request
+        url: /readme/develop.mark
+    - response_check_ef3a15e52f|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_58b6f526f4|step_request
+        url: /readme/hardware.mark
+    - response_check_58b6f526f4|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_47342a30f3|step_request
+        url: /readme/security.mark
+    - response_check_47342a30f3|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c5e5bd5ca1|step_request
+        url: /readme/software.mark
+    - response_check_c5e5bd5ca1|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_43e8030101|step_request
+        url: /shell/bundle_create.sh
+    - response_check_43e8030101|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ebca5ef950|step_request
+        url: /shell/cache_clear.sh
+    - response_check_ebca5ef950|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1e9d5fd640|step_request
+        url: /shell/dynamic_reset.sh
+    - response_check_1e9d5fd640|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8224dad3c3|step_request
+        url: /shell/update.sh
+    - response_check_8224dad3c3|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_63852db111|step_request
+        url: /system/boot.php
+    - response_check_63852db111|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e46828d88a|step_request
+        url: /system/bundle.data
+    - response_check_e46828d88a|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f8e4b82404|step_request
+        url: /system/module_locales/licenses/license-ru.mark
+    - response_check_f8e4b82404|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a9fdcff803|step_request
+        url: /system/module_page/module.data
+    - response_check_a9fdcff803|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7839a6a859|step_request
+        url: /system/module_page/backend/markers.php
+    - response_check_7839a6a859|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5715cb7bd4|step_request
+        url: /system/module_page/frontend/template--canvas_svg.tpl
+    - response_check_5715cb7bd4|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_92dfb7484e|step_request
+        url: /system/module_page/frontend/core.jsd
+    - response_check_92dfb7484e|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ba5a18ba9f|step_request
+        url: /system/module_page/frontend/form.cssd
+    - response_check_ba5a18ba9f|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0aab8b1e81|step_request
+        url: /system/module_page/frontend/form.js
+    - response_check_0aab8b1e81|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_4116155fac|step_request
+        url: /system/module_page/frontend/images/icon-120.png
+    - response_check_4116155fac|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_239420e766|step_request
+        url: /system/module_page/frontend/images/icon-32.ico
+    - response_check_239420e766|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a74f906596|step_request
+        url: /system/module_page/frontend/images/icons-file_types.svgd
+    - response_check_a74f906596|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_fc10446385|step_request
+        url: /system/module_page/frontend/images/lines-1.svg
+    - response_check_fc10446385|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bfefc377e4|step_request
+        url: /system/module_captcha/frontend/captcha.css
+    - response_check_bfefc377e4|step_check
+        where: http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_d549290039|step_request
+        url: /.editorconfig/
+    - response_check_d549290039|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ccb457a2d3|step_request
+        url: /.gitattributes/
+    - response_check_ccb457a2d3|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_48439b5ea5|step_request
+        url: /.gitignore/
+    - response_check_48439b5ea5|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_22aa4e368a|step_request
+        url: /.htaccess/
+    - response_check_22aa4e368a|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b9e8322261|step_request
+        url: /.nginx/
+    - response_check_b9e8322261|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e42602fa29|step_request
+        url: /web.config/
+    - response_check_e42602fa29|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - response_check_e42602fa29_403|step_check
+            where: http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+    - request_url_dd364cd5cc|step_request
+        url: /index.php/
+    - response_check_dd364cd5cc|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bc9f73a292|step_request
+        url: /license.mark/
+    - response_check_bc9f73a292|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c66199b0e6|step_request
+        url: /dynamic/cache/data_original.php/
+    - response_check_c66199b0e6|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7a5855534e|step_request
+        url: /dynamic/cache/readme.mark/
+    - response_check_7a5855534e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7e064481d5|step_request
+        url: /dynamic/cache/structures.php/
+    - response_check_7e064481d5|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8875bbc9b1|step_request
+        url: /dynamic/data/boot.php/
+    - response_check_8875bbc9b1|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_35b5184bcf|step_request
+        url: /dynamic/data/changes.php/
+    - response_check_35b5184bcf|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ad815c83d2|step_request
+        url: /dynamic/data/data.sqlite/
+    - response_check_ad815c83d2|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7d176c8927|step_request
+        url: /dynamic/data/readme.mark/
+    - response_check_7d176c8927|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b7aac71d1d|step_request
+        url: /dynamic/files/readme.mark/
+    - response_check_b7aac71d1d|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ee727b42cd|step_request
+        url: /dynamic/logs/readme.mark/
+    - response_check_ee727b42cd|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bcd121d2ff|step_request
+        url: /dynamic/tmp/readme.mark/
+    - response_check_bcd121d2ff|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a9c06e99aa|step_request
+        url: /modules/readme.mark/
+    - response_check_a9c06e99aa|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8b62c30ee8|step_request
+        url: /readme/about.mark/
+    - response_check_8b62c30ee8|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0bb676c007|step_request
+        url: /readme/develop.mark/
+    - response_check_0bb676c007|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a3f5f1044d|step_request
+        url: /readme/hardware.mark/
+    - response_check_a3f5f1044d|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8a354c873c|step_request
+        url: /readme/security.mark/
+    - response_check_8a354c873c|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_65dab78029|step_request
+        url: /readme/software.mark/
+    - response_check_65dab78029|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_6e76f2a9a6|step_request
+        url: /shell/bundle_create.sh/
+    - response_check_6e76f2a9a6|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_174761c0af|step_request
+        url: /shell/cache_clear.sh/
+    - response_check_174761c0af|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_30fa57fcf3|step_request
+        url: /shell/dynamic_reset.sh/
+    - response_check_30fa57fcf3|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_78b6d9769a|step_request
+        url: /shell/update.sh/
+    - response_check_78b6d9769a|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_fcdefc241c|step_request
+        url: /system/boot.php/
+    - response_check_fcdefc241c|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5ac5b67372|step_request
+        url: /system/bundle.data/
+    - response_check_5ac5b67372|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c076e47ad1|step_request
+        url: /system/module_locales/licenses/license-ru.mark/
+    - response_check_c076e47ad1|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bc8fdb56e3|step_request
+        url: /system/module_page/module.data/
+    - response_check_bc8fdb56e3|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_4313f4c27a|step_request
+        url: /system/module_page/backend/markers.php/
+    - response_check_4313f4c27a|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ae20192278|step_request
+        url: /system/module_page/frontend/template--canvas_svg.tpl/
+    - response_check_ae20192278|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_855150db62|step_request
+        url: /system/module_page/frontend/core.jsd/
+    - response_check_855150db62|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8bf443cec2|step_request
+        url: /system/module_page/frontend/form.cssd/
+    - response_check_8bf443cec2|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b503be6317|step_request
+        url: /system/module_page/frontend/form.js/
+    - response_check_b503be6317|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_2d63b8a3cd|step_request
+        url: /system/module_page/frontend/images/icon-120.png/
+    - response_check_2d63b8a3cd|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bf819ca413|step_request
+        url: /system/module_page/frontend/images/icon-32.ico/
+    - response_check_bf819ca413|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ad7a278c86|step_request
+        url: /system/module_page/frontend/images/icons-file_types.svgd/
+    - response_check_ad7a278c86|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_88b7657da0|step_request
+        url: /system/module_page/frontend/images/lines-1.svg/
+    - response_check_88b7657da0|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7a07abfc8c|step_request
+        url: /system/module_captcha/frontend/captcha.css/
+    - response_check_7a07abfc8c|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1ec5405dad|step_request
+        url: /dynamic
+    - response_check_1ec5405dad|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7d8d7b7a55|step_request
+        url: /dynamic/cache
+    - response_check_7d8d7b7a55|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e1026a7396|step_request
+        url: /dynamic/data
+    - response_check_e1026a7396|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_27296ecbe2|step_request
+        url: /dynamic/files
+    - response_check_27296ecbe2|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_d1aa7a86f3|step_request
+        url: /dynamic/logs
+    - response_check_d1aa7a86f3|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7d8223170b|step_request
+        url: /dynamic/tmp
+    - response_check_7d8223170b|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_86070686ce|step_request
+        url: /modules
+    - response_check_86070686ce|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_2b6e2989cb|step_request
+        url: /readme
+    - response_check_2b6e2989cb|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f07e0bd392|step_request
+        url: /shell
+    - response_check_f07e0bd392|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0ea554b019|step_request
+        url: /system
+    - response_check_0ea554b019|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7adef3ff3c|step_request
+        url: /system/module_captcha
+    - response_check_7adef3ff3c|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c08d4806c5|step_request
+        url: /system/module_captcha/backend
+    - response_check_c08d4806c5|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_dca4f3095f|step_request
+        url: /system/module_captcha/data
+    - response_check_dca4f3095f|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bb37f77a7a|step_request
+        url: /system/module_captcha/frontend
+    - response_check_bb37f77a7a|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_62e280e72e|step_request
+        url: /system/module_core
+    - response_check_62e280e72e|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b65f82961a|step_request
+        url: /system/module_core/backend
+    - response_check_b65f82961a|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_d5e027e46b|step_request
+        url: /system/module_core/data
+    - response_check_d5e027e46b|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_790e8b3e13|step_request
+        url: /system/module_develop
+    - response_check_790e8b3e13|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_dfd7abc550|step_request
+        url: /system/module_develop/backend
+    - response_check_dfd7abc550|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_9f039e2723|step_request
+        url: /system/module_develop/data
+    - response_check_9f039e2723|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_087e76913b|step_request
+        url: /system/module_develop/frontend
+    - response_check_087e76913b|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_6cb1445495|step_request
+        url: /system/module_develop/frontend/images
+    - response_check_6cb1445495|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e71779e5cb|step_request
+        url: /system/module_develop/module_demo
+    - response_check_e71779e5cb|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7f2991f2ee|step_request
+        url: /system/module_develop/module_demo/backend
+    - response_check_7f2991f2ee|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_6a4067cdce|step_request
+        url: /system/module_develop/module_demo/data
+    - response_check_6a4067cdce|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a61bd033dc|step_request
+        url: /system/module_develop/module_test
+    - response_check_a61bd033dc|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_4437085902|step_request
+        url: /system/module_develop/module_test/backend
+    - response_check_4437085902|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1db501f34b|step_request
+        url: /system/module_develop/module_test/data
+    - response_check_1db501f34b|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0fa24a95c1|step_request
+        url: /system/module_locales
+    - response_check_0fa24a95c1|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_43a126303b|step_request
+        url: /system/module_locales/backend
+    - response_check_43a126303b|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_13f4730741|step_request
+        url: /system/module_locales/frontend
+    - response_check_13f4730741|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8ca83ac5e1|step_request
+        url: /system/module_locales/frontend/images
+    - response_check_8ca83ac5e1|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_79e711a182|step_request
+        url: /system/module_locales/licenses
+    - response_check_79e711a182|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e70953d83c|step_request
+        url: /system/module_menu
+    - response_check_e70953d83c|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_55d3290f1d|step_request
+        url: /system/module_menu/backend
+    - response_check_55d3290f1d|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ee392e49a8|step_request
+        url: /system/module_menu/data
+    - response_check_ee392e49a8|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_04491c612c|step_request
+        url: /system/module_menu/frontend
+    - response_check_04491c612c|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1ea21678f9|step_request
+        url: /system/module_menu/frontend/images
+    - response_check_1ea21678f9|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f3fe7c8d2e|step_request
+        url: /system/module_page
+    - response_check_f3fe7c8d2e|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_703195edf2|step_request
+        url: /system/module_page/backend
+    - response_check_703195edf2|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ad7e47cd8e|step_request
+        url: /system/module_page/data
+    - response_check_ad7e47cd8e|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a71a253e6f|step_request
+        url: /system/module_page/frontend
+    - response_check_a71a253e6f|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_814968e596|step_request
+        url: /system/module_page/frontend/images
+    - response_check_814968e596|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_f1175ac799|step_request
+        url: /system/module_storage
+    - response_check_f1175ac799|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b64d6ceae7|step_request
+        url: /system/module_storage/backend
+    - response_check_b64d6ceae7|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5caa9e69bd|step_request
+        url: /system/module_storage/data
+    - response_check_5caa9e69bd|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_34111a19f7|step_request
+        url: /system/module_user
+    - response_check_34111a19f7|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_648e5988e7|step_request
+        url: /system/module_user/backend
+    - response_check_648e5988e7|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e7bf9c912c|step_request
+        url: /system/module_user/data
+    - response_check_e7bf9c912c|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b177f00da5|step_request
+        url: /system/module_user/frontend
+    - response_check_b177f00da5|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ce1c7a227f|step_request
+        url: /system/module_user/frontend/images
+    - response_check_ce1c7a227f|step_check
+        where: http_code
+        match: 404
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bf3ad65fdc|step_request
+        url: /dynamic/
+    - response_check_bf3ad65fdc|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_bb74beee20|step_request
+        url: /dynamic/cache/
+    - response_check_bb74beee20|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a29a62e621|step_request
+        url: /dynamic/data/
+    - response_check_a29a62e621|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_4bb8624da7|step_request
+        url: /dynamic/files/
+    - response_check_4bb8624da7|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_dd8ba44c85|step_request
+        url: /dynamic/logs/
+    - response_check_dd8ba44c85|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_29728363ac|step_request
+        url: /dynamic/tmp/
+    - response_check_29728363ac|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_4c46541097|step_request
+        url: /modules/
+    - response_check_4c46541097|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0322aa515e|step_request
+        url: /readme/
+    - response_check_0322aa515e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0ba099d636|step_request
+        url: /shell/
+    - response_check_0ba099d636|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c0f6bd0f07|step_request
+        url: /system/
+    - response_check_c0f6bd0f07|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_2d07174aa7|step_request
+        url: /system/module_captcha/
+    - response_check_2d07174aa7|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_93aef4203e|step_request
+        url: /system/module_captcha/backend/
+    - response_check_93aef4203e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_da1cc61c51|step_request
+        url: /system/module_captcha/data/
+    - response_check_da1cc61c51|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_67a2bfdae6|step_request
+        url: /system/module_captcha/frontend/
+    - response_check_67a2bfdae6|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5973be53b1|step_request
+        url: /system/module_core/
+    - response_check_5973be53b1|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_8f16d73ace|step_request
+        url: /system/module_core/backend/
+    - response_check_8f16d73ace|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b7f95d2c68|step_request
+        url: /system/module_core/data/
+    - response_check_b7f95d2c68|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b7ed4ca917|step_request
+        url: /system/module_develop/
+    - response_check_b7ed4ca917|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0a7f619f9e|step_request
+        url: /system/module_develop/backend/
+    - response_check_0a7f619f9e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_095ec8b275|step_request
+        url: /system/module_develop/data/
+    - response_check_095ec8b275|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_11726ede36|step_request
+        url: /system/module_develop/frontend/
+    - response_check_11726ede36|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_770c1651ac|step_request
+        url: /system/module_develop/frontend/images/
+    - response_check_770c1651ac|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a63acaa1ba|step_request
+        url: /system/module_develop/module_demo/
+    - response_check_a63acaa1ba|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e3f7458256|step_request
+        url: /system/module_develop/module_demo/backend/
+    - response_check_e3f7458256|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b9b63efb08|step_request
+        url: /system/module_develop/module_demo/data/
+    - response_check_b9b63efb08|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c94edeaf24|step_request
+        url: /system/module_develop/module_test/
+    - response_check_c94edeaf24|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_d499741462|step_request
+        url: /system/module_develop/module_test/backend/
+    - response_check_d499741462|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_0f5b39f84e|step_request
+        url: /system/module_develop/module_test/data/
+    - response_check_0f5b39f84e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7f25132714|step_request
+        url: /system/module_locales/
+    - response_check_7f25132714|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_94503d7d4e|step_request
+        url: /system/module_locales/backend/
+    - response_check_94503d7d4e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_6c22fb0336|step_request
+        url: /system/module_locales/frontend/
+    - response_check_6c22fb0336|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_df2d291527|step_request
+        url: /system/module_locales/frontend/images/
+    - response_check_df2d291527|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a4c7879102|step_request
+        url: /system/module_locales/licenses/
+    - response_check_a4c7879102|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_1cbc84e624|step_request
+        url: /system/module_menu/
+    - response_check_1cbc84e624|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c93f1df859|step_request
+        url: /system/module_menu/backend/
+    - response_check_c93f1df859|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_e04a2ff763|step_request
+        url: /system/module_menu/data/
+    - response_check_e04a2ff763|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_23995021ae|step_request
+        url: /system/module_menu/frontend/
+    - response_check_23995021ae|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_c2eb541d12|step_request
+        url: /system/module_menu/frontend/images/
+    - response_check_c2eb541d12|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_88df262ec4|step_request
+        url: /system/module_page/
+    - response_check_88df262ec4|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5767391836|step_request
+        url: /system/module_page/backend/
+    - response_check_5767391836|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_5b19b6c48e|step_request
+        url: /system/module_page/data/
+    - response_check_5b19b6c48e|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_04bb790646|step_request
+        url: /system/module_page/frontend/
+    - response_check_04bb790646|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_ffd9fb2086|step_request
+        url: /system/module_page/frontend/images/
+    - response_check_ffd9fb2086|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_a842f4cc4f|step_request
+        url: /system/module_storage/
+    - response_check_a842f4cc4f|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7c23fd1dad|step_request
+        url: /system/module_storage/backend/
+    - response_check_7c23fd1dad|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_cecd6e1d5d|step_request
+        url: /system/module_storage/data/
+    - response_check_cecd6e1d5d|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_b0765d419b|step_request
+        url: /system/module_user/
+    - response_check_b0765d419b|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7a91e7becf|step_request
+        url: /system/module_user/backend/
+    - response_check_7a91e7becf|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_6167ef4b50|step_request
+        url: /system/module_user/data/
+    - response_check_6167ef4b50|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_7adadd84a8|step_request
+        url: /system/module_user/frontend/
+    - response_check_7adadd84a8|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - request_url_07542d50bb|step_request
+        url: /system/module_user/frontend/images/
+    - response_check_07542d50bb|step_check
+        where: http_code
+        match: 302
+        on_failure
+        - return_result|step_return
+            value: 0
+    - return_result|step_return
+        value: 1
