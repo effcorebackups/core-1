@@ -53,6 +53,7 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - head cell #%%_number: заглавная ячейка №%%_number
+    - HTTP responses: HTTP ответы
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
@@ -117,7 +118,6 @@ translations
     - Traits: Трейты
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
-    - URLs access: Доступ URLs
     - Usage frequency: Частота использования
     - Visibility: Видимость
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.

@@ -1,7 +1,7 @@
 tests
-- urls_access|test
-    id: urls_access
-    title: URLs access
+- http_responses|test
+    id: http_responses
+    title: HTTP responses
     scenario
     - request_url_afd21aae77|step_request
         url: /.editorconfig
