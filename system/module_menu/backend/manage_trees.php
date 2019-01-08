@@ -30,8 +30,4 @@ namespace effcore {
     }
   }
 
-  static function tree_insert($page) {
-    return new text('tree_insert is UNDER CONSTRUCTION');
-  }
-
 }}
