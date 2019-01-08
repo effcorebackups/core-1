@@ -21,13 +21,21 @@
     </rdf:RDF>
   </metadata>
 
-  <g id="icon_manage">
-    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20,20 V 44" />
-    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,20 V 44" />
-    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44,20 V 44" />
-    <path id="icon_manage-tline_1-motion-path" style="fill: none; stroke-width: 0" d="M 20,24.5 V 40 24.5" />
-    <path id="icon_manage-tline_2-motion-path" style="fill: none; stroke-width: 0" d="M 32,32 V 40 24.5 32" />
-    <path id="icon_manage-tline_3-motion-path" style="fill: none; stroke-width: 0" d="M 44,40 V 24.5 40" />
+  <g>
+    <path style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 38 20 L 38 23.6 L 41 25.4 L 41 20 L 38 20 Z"/>
+    <path style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 17 29 L 32 20 L 47 29 Z"/>
+    <rect x="23" y="32" width="18" height="6" style="fill: white; fill-opacity: .2; stroke: none"/>
+    <rect x="23" y="32" width="18" height="9" style="fill: none; stroke: white; stroke-width: 1px"/>
+    <rect x="20" y="29" width="24" height="15" style="fill: none; stroke: white; stroke-width: 1px"/>
+  </g>
+
+  <g>
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20 84 L 20 93.75 L 20 108"/>
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 84 L 32 108"/>
+    <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44 84 L 44 108"/>
+    <path id="icon_manage-tline_1-motion-path" style="fill: none; stroke-width: 0" d="M 20 88.2 L 20 103.7 L 20 88.2"/>
+    <path id="icon_manage-tline_2-motion-path" style="fill: none; stroke-width: 0" d="M 32 95.7 L 32 103.7 L 32 88.2 L 32 95.7"/>
+    <path id="icon_manage-tline_3-motion-path" style="fill: none; stroke-width: 0" d="M 44 103.7 L 44 88.2 L 44 103.7"/>
     <circle r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1">
       <animateMotion dur="8s" repeatCount="indefinite">
         <mpath xlink:href="#icon_manage-tline_1-motion-path" />
@@ -45,43 +53,43 @@
     </circle>
   </g>
 
-  <g id="icon_develop">
-    <path style="fill: white; fill-opacity: .2" d="M 32,82 A 14,14 0 0 0 18,96 14,14 0 0 0 32,110 14,14 0 0 0 46,96 14,14 0 0 0 32,82 Z m 0,4 A 10,10 0 0 1 42,96 10,10 0 0 1 32,106 10,10 0 0 1 22,96 10,10 0 0 1 32,86 Z" />
-    <circle r="14" cy="96" cx="32" style="fill: none; stroke: white; stroke-width: 1px" />
-    <circle cx="32" cy="96" r="3.5" style="fill: none; stroke: white; stroke-width: 1px" />
+  <g>
+    <path style="fill: white; fill-opacity: .2" d="M 32 146 C 24.268 146 18 152.268 18 160 C 18 167.732 24.268 174 32 174 C 39.732 174 46 167.732 46 160 C 46 152.268 39.732 146 32 146 Z M 32 150 C 37.523 150 42 154.477 42 160 C 42 165.523 37.523 170 32 170 C 26.477 170 22 165.523 22 160 C 22 154.477 26.477 150 32 150 Z"/>
+    <circle r="14" cy="160" cx="32" style="fill: none; stroke: white; stroke-width: 1px"/>
+    <circle cx="32" cy="160" r="3.5" style="fill: none; stroke: white; stroke-width: 1px"/>
     <g>
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32,82 V 80" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,82.477038 0.517638,-1.931851" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,83.875644 1,-1.73205" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,86.100505 1.414213,-1.414213" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,89 1.73205,-1" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,92.376533 1.931851,-0.517638" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 46,96 h 2" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 45.522962,99.623467 1.931851,0.517633" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 44.124356,103 1.73205,1" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 41.899495,105.89949 1.414213,1.41422" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 39,108.12436 1,1.73205" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 35.623467,109.52296 0.517638,1.93185" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 32,110 v 2" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 28.376533,109.52296 -0.517638,1.93185" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,108.12436 -1,1.73205" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 22.100505,105.89949 -1.414213,1.41422" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,103 -1.73205,1" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,99.623467 16.545187,100.1411" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18,96 H 16" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477038,92.376533 16.545187,91.858895" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 19.875644,89 -1.73205,-1" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.100505,86.100505 20.686292,84.686292" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="m 25,83.875644 -1,-1.73205" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.376533,82.477038 27.858895,80.545187" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 146 L 32 144"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 35.623 146.477 L 36.141 144.545"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 39 147.876 L 40 146.144"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 41.899 150.101 L 43.314 148.686"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44.124 153 L 45.856 152"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 45.523 156.377 L 47.455 155.859"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 46 160 L 48 160"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 45.523 163.623 L 47.455 164.141"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44.124 167 L 45.856 168"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 41.899 169.899 L 43.314 171.314"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 39 172.124 L 40 173.856"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 35.623 173.523 L 36.141 175.455"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 174 L 32 176"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.377 173.523 L 27.859 175.455"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 25 172.124 L 24 173.856"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.101 169.899 L 20.686 171.314"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 19.876 167 L 18.144 168"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477 163.623 L 16.545 164.141"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18 160 L 16 160"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477 156.377 L 16.545 155.859"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 19.876 153 L 18.144 152"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.101 150.101 L 20.686 148.686"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 25 147.876 L 24 146.144"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.377 146.477 L 27.859 144.545"/>
     </g>
     <g transform="rotate(45,32,96)">
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 32,86 v 6.5 z" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="m 22,96 h 6.5 z" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 35.5,96 H 42 Z" />
-      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 32,99.5 V 106 Z" />
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 77.248 131.248 L 77.248 137.748 Z"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 67.248 141.248 L 73.748 141.248 Z"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 80.748 141.248 L 87.248 141.248 Z"/>
+      <path style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 77.248 144.748 L 77.248 151.248 Z"/>
     </g>
-    <animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 32 96" to="360 32 96" dur="20s" repeatCount="indefinite" />
+    <animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 32 160" to="360 32 160" dur="20s" repeatCount="indefinite" />
   </g>
 
 </svg>

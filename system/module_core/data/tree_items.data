@@ -1,4 +1,15 @@
 tree_items
+- home|tree_item
+    id: home
+    id_parent: M:main
+    title: Home
+    url: /
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: home
 - manage|tree_item
     id: manage
     id_parent: M:main

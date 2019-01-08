@@ -19,6 +19,7 @@
   x-tree.main > ul > li >    a.active,
   x-tree.main > ul > li >    a.active-trail {color: white; background-color: %%_color_hover_bg}
   x-tree.main > ul > li >    a:hover        {color: white}
+  x-tree.main > ul > li >    a.home         {background-color: transparent}
 
   x-tree.main > ul > li > ul a              {color: white}
   x-tree.main > ul > li > ul a.active,
@@ -34,8 +35,9 @@
 
   /* menu Main: icons */
 
-  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 0}
-  x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 -64px}
+  x-tree.main a.home    {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 0}
+  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 -64px}
+  x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree.svgd') no-repeat 0 -128px}
 
   /* managed menu */
 
