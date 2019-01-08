@@ -23,10 +23,6 @@ pages
         region: top
         type: code
         source: \effcore\modules\user\events_page::on_show_block_menu_user
-    - logo|page_part
-        region: top
-        type: link
-        source: blocks/page/logo
     - title|page_part
         region: title
         type: code
