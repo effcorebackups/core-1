@@ -5,7 +5,12 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/develop/structures)/(?<type>class|interface|trait)/(?<view>list|diagram|diagram_export)$%
+      match: %^(?<base>/develop/structures)
+>>>>>>>>>>>>((/(?<type>class/list|
+>>>>>>>>>>>>>>>>>>>>>>>class/diagram|
+>>>>>>>>>>>>>>>>>>>>>>>class/diagram_export|
+>>>>>>>>>>>>>>>>>>>>>>>interface/list|
+>>>>>>>>>>>>>>>>>>>>>>>trait/list))|)$%
     access
       roles
       - =: admins
@@ -31,27 +36,31 @@ pages
         type: link
         source: tabs/develop/structures
     # ─────────────────────────────────────────────────────────────────────
+    - page_init|page_part
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_structures::on_page_init
     - block_structures_list|page_part
         display
           check: page_args
-          where: view
-          match: %^list$%
+          where: type
+          match: %^class/list|interface/list|trait/list$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page_structures::on_show_block_structures_list
     - block_structures_diagram|page_part
         display
           check: page_args
-          where: view
-          match: %^diagram$%
+          where: type
+          match: %^class/diagram$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page_structures::on_show_block_structures_diagram
     - block_structures_diagram_export|page_part
         display
           check: page_args
-          where: view
-          match: %^diagram_export$%
+          where: type
+          match: %^class/diagram_export$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page_structures::on_export_diagram

@@ -15,7 +15,7 @@ tree_items
     id: structures
     id_parent: develop
     title: Structures
-    url: /develop/structures/class/list
+    url: /develop/structures
     access
       roles
       - =: admins

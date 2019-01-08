@@ -13,7 +13,15 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\translation;
+          use \effcore\url;
           abstract class events_page_structures {
+
+  static function on_page_init($page) {
+    $type = $page->args_get('type');
+    if ($type == null) {
+      url::go($page->args_get('base').'/class/list');
+    }
+  }
 
   ########################
   ### structures: list ###
@@ -21,11 +29,11 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_list($page) {
     $targets = new markup('x-targets');
-    $list = new markup('x-structures-list', ['data-type' => $page->args_get('type')]);
+    $list = new markup('x-structures-list', ['data-type' => core::to_css_class($page->args_get('type'))]);
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_select() as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == $page->args_get('type')) {
+      if ($c_item_info->type.'/list' == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass;
         $c_result->name       = $c_item_info->name;
@@ -67,9 +75,6 @@ namespace effcore\modules\develop {
   ###########################
 
   static function on_show_block_structures_diagram($page) {
-    if ($page->args_get('type') != 'class') {
-      core::send_header_and_exit('page_not_found');
-    }
     $map = core::structures_select();
     $diagram = new markup('x-diagram-uml');
 
@@ -175,9 +180,6 @@ namespace effcore\modules\develop {
   ##########################
 
   static function on_export_diagram($page) {
-    if ($page->args_get('type') != 'class') {
-      core::send_header_and_exit('page_not_found');
-    }
   # build class diagram
     $map = core::structures_select();
     $result = [];
@@ -289,7 +291,7 @@ namespace effcore\modules\develop {
                     'top' => 24,
                     'width' => 305,
                     'height' => 25,
-                    'text' => 'note: insert the class to here from the right sidebar'
+                    'text' => 'note: insert any class from the right sidebar'
                   ]
                 ]
               ]
