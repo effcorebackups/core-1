@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   width="64"
+   height="640"
+   viewBox="0 0 64 640"
+   style="shape-rendering: auto">
+
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:rights><cc:Agent><dc:title>Copyright © 2017—2019 Maxim Rysevets. All rights reserved.</dc:title></cc:Agent></dc:rights>
+        <dc:creator><cc:Agent><dc:title>Maxim Rysevets</dc:title></cc:Agent></dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+  <defs>
+    <linearGradient id="pipe_smoke-alpha" gradientTransform="rotate(90)">
+      <stop offset="0%"   stop-color="white" stop-opacity="0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="1"/>
+    </linearGradient>
+    <mask id="pipe_smoke-mask">
+      <rect id="pipe_smoke-area" x="32" y="0" width="15" height="19.5" style="fill: url(#pipe_smoke-alpha)"/>
+    </mask>
+  </defs>
+
+  <g id="icon_home">
+    <g mask="url(#pipe_smoke-mask)">
+      <path id="pipe_smoke-motion-path" style="fill: none; stroke-width: 0" d="M 39.5 21.5 L 39.5 19 C 39.5 16 37 16 37 13 C 37 10 42 10 42 7 C 42 4 37 4 37 1 C 37 -2 42 -2 42 -5"/>
+      <circle id="pipe_smoke" r="2" style="fill: white; fill-opacity: .5; stroke-opacity: 1px">
+        <animateMotion dur="5s" repeatCount="indefinite">
+          <mpath xlink:href="#pipe_smoke-motion-path"/>
+        </animateMotion>
+      </circle>
+    </g>
+    <path id="pipe" style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 38 20 L 38 23.6 L 41 25.4 L 41 20 L 38 20 Z"/>
+    <path id="roof" style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 17 29 L 32 20 L 47 29 Z"/>
+    <rect id="curtain" x="23.5" y="32.5" width="17" height="5" style="fill: white; fill-opacity: .2; stroke: none"/>
+    <rect id="window" x="23" y="32" width="18" height="9" style="fill: none; stroke: white; stroke-width: 1px; stroke-opacity: .7"/>
+    <rect id="base" x="20" y="29" width="24" height="15" style="fill: none; stroke: white; stroke-width: 1px"/>
+  </g>
+
+  <g id="icon_manage">
+    <path id="ico_man-tline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20 84 L 20 93.75 L 20 108"/>
+    <path id="ico_man-tline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 84 L 32 108"/>
+    <path id="ico_man-tline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44 84 L 44 108"/>
+    <path id="ico_man-tline_1-motion-path" style="fill: none; stroke-width: 0" d="M 20 88.2 L 20 103.7 L 20 88.2"/>
+    <path id="ico_man-tline_2-motion-path" style="fill: none; stroke-width: 0" d="M 32 95.7 L 32 103.7 L 32 88.2 L 32 95.7"/>
+    <path id="ico_man-tline_3-motion-path" style="fill: none; stroke-width: 0" d="M 44 103.7 L 44 88.2 L 44 103.7"/>
+    <circle id="ico_man-thand_1" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath xlink:href="#ico_man-tline_1-motion-path"/>
+      </animateMotion>
+    </circle>
+    <circle id="ico_man-thand_2" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath xlink:href="#ico_man-tline_2-motion-path"/>
+      </animateMotion>
+    </circle>
+    <circle id="ico_man-thand_3" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath xlink:href="#ico_man-tline_3-motion-path"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <g id="icon_develop">
+    <path id="ico_dev-outter_shadow" style="fill: white; fill-opacity: .35" d="M 32 146 C 24.268 146 18 152.268 18 160 C 18 167.732 24.268 174 32 174 C 39.732 174 46 167.732 46 160 C 46 152.268 39.732 146 32 146 Z M 32 150 C 37.523 150 42 154.477 42 160 C 42 165.523 37.523 170 32 170 C 26.477 170 22 165.523 22 160 C 22 154.477 26.477 150 32 150 Z"/>
+    <circle id="ico_dev-circle_outter" r="14" cy="160" cx="32" style="fill: none; stroke: white; stroke-width: 1px"/>
+    <circle id="ico_dev-circle_inner" cx="32" cy="160" r="3.5" style="fill: none; stroke: white; stroke-width: 1px"/>
+    <g id="ico_dev-teeth">
+      <path id="ico_dev-t01" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 146 L 32 144"/>
+      <path id="ico_dev-t02" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 35.623 146.477 L 36.141 144.545"/>
+      <path id="ico_dev-t03" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 39 147.876 L 40 146.144"/>
+      <path id="ico_dev-t04" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 41.899 150.101 L 43.314 148.686"/>
+      <path id="ico_dev-t05" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44.124 153 L 45.856 152"/>
+      <path id="ico_dev-t06" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 45.523 156.377 L 47.455 155.859"/>
+      <path id="ico_dev-t07" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 46 160 L 48 160"/>
+      <path id="ico_dev-t08" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 45.523 163.623 L 47.455 164.141"/>
+      <path id="ico_dev-t09" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44.124 167 L 45.856 168"/>
+      <path id="ico_dev-t10" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 41.899 169.899 L 43.314 171.314"/>
+      <path id="ico_dev-t11" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 39 172.124 L 40 173.856"/>
+      <path id="ico_dev-t12" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 35.623 173.523 L 36.141 175.455"/>
+      <path id="ico_dev-t13" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 174 L 32 176"/>
+      <path id="ico_dev-t14" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.377 173.523 L 27.859 175.455"/>
+      <path id="ico_dev-t15" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 25 172.124 L 24 173.856"/>
+      <path id="ico_dev-t16" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.101 169.899 L 20.686 171.314"/>
+      <path id="ico_dev-t17" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 19.876 167 L 18.144 168"/>
+      <path id="ico_dev-t18" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477 163.623 L 16.545 164.141"/>
+      <path id="ico_dev-t19" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18 160 L 16 160"/>
+      <path id="ico_dev-t20" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 18.477 156.377 L 16.545 155.859"/>
+      <path id="ico_dev-t21" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 19.876 153 L 18.144 152"/>
+      <path id="ico_dev-t22" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 22.101 150.101 L 20.686 148.686"/>
+      <path id="ico_dev-t23" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 25 147.876 L 24 146.144"/>
+      <path id="ico_dev-t24" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 28.377 146.477 L 27.859 144.545"/>
+    </g>
+    <g id="ico_dev-crossing" transform="rotate(45,32,96)">
+      <path id="ico_dev-cline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 77.248 131.248 L 77.248 137.748 Z"/>
+      <path id="ico_dev-cline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 67.248 141.248 L 73.748 141.248 Z"/>
+      <path id="ico_dev-cline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 80.748 141.248 L 87.248 141.248 Z"/>
+      <path id="ico_dev-cline_4" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: butt" d="M 77.248 144.748 L 77.248 151.248 Z"/>
+    </g>
+    <animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 32 160" to="360 32 160" dur="20s" repeatCount="indefinite"/>
+  </g>
+
+</svg>

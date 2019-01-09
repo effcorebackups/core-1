@@ -52,10 +52,10 @@
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
   x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
-  x-diagram-uml x-children x-class-wrapper             {background: url('images/relation-hline.svgd')                no-repeat, url('images/relation-vline.svgd') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:first-child {background: url('images/relation-arrow-generalization.svgd') no-repeat, url('images/relation-vline.svgd') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/relation-hline.svgd')                no-repeat}
-  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/relation-arrow-generalization.svgd') no-repeat}
+  x-diagram-uml x-children x-class-wrapper             {background: url('images/relation-hline.svg')                no-repeat, url('images/relation-vline.svg') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:first-child {background: url('images/relation-arrow-generalization.svg') no-repeat, url('images/relation-vline.svg') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/relation-hline.svg')                no-repeat}
+  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/relation-arrow-generalization.svg') no-repeat}
 
   x-diagram-uml x-item[data-visibility='public']::before    {content: '+ '}
   x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
