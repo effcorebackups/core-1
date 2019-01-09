@@ -316,7 +316,7 @@ tests
         - return_result|step_return
             value: 0
     - request_url_a74f906596|step_request
-        url: /system/module_page/frontend/images/icons-file_types.svgd
+        url: /system/module_page/frontend/images/icons-form_items.svgd
     - response_check_a74f906596|step_check
         where: http_code
         match: 200
@@ -656,7 +656,7 @@ tests
         - return_result|step_return
             value: 0
     - request_url_ad7a278c86|step_request
-        url: /system/module_page/frontend/images/icons-file_types.svgd/
+        url: /system/module_page/frontend/images/icons-form_items.svgd/
     - response_check_ad7a278c86|step_check
         where: http_code
         match: 302
