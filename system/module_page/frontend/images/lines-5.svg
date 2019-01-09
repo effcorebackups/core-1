@@ -13,7 +13,7 @@
     <rdf:RDF>
       <cc:Work>
         <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
         <dc:rights><cc:Agent><dc:title>Copyright © 2017—2019 Maxim Rysevets. All rights reserved.</dc:title></cc:Agent></dc:rights>
         <dc:creator><cc:Agent><dc:title>Maxim Rysevets</dc:title></cc:Agent></dc:creator>
       </cc:Work>
@@ -21,10 +21,10 @@
   </metadata>
 
   <g id="lines">
-    <path style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 0,20 20,0" />
-    <path style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 0,60 60,0" />
-    <path style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 20,80 80,20" />
-    <path style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 60,80 80,60" />
+    <path id="line_1" style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 0,20 20,0"/>
+    <path id="line_2" style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 0,60 60,0"/>
+    <path id="line_3" style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 20,80 80,20"/>
+    <path id="line_4" style="fill: none; stroke: white; stroke-opacity: .5; stroke-width: 15px; stroke-linecap: square" d="M 60,80 80,60"/>
   </g>
 
 </svg>
