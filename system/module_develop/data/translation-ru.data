@@ -39,6 +39,7 @@ translations
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - Ext.: Расш.
     - Extension: Расширение
+    - failure: неудача
     - Field %%_type.: Поле %%_type.
     - Field date + time: Поле date + time
     - Field date: Поле date
@@ -53,7 +54,6 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - head cell #%%_number: заглавная ячейка №%%_number
-    - HTTP responses: HTTP ответы
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
@@ -105,6 +105,7 @@ translations
     - sql query = "%%_query"<br>args = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
     - Static elements: Элементы статические
     - Structures: Структуры
+    - success: успех
     - Switcher 1: Переключатель 1
     - Switcher 2 (checked): Переключатель 2 (установлен)
     - Switcher 3 (disabled): Переключатель 3 (отключён)

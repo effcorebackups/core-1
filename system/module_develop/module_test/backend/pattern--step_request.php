@@ -20,7 +20,7 @@ namespace effcore {
       $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_name, 'value' => $c_value]);
     }
   # make request
-    $c_results['request'] = test::request(
+    $c_results['request'] = static::request(
       $this->prepared_url_get(),
       $this->prepared_headers_get(),
       $prepared_post,
@@ -67,6 +67,44 @@ namespace effcore {
 
   function validation_id_get() {
     return 'UNDER CONSTRUCTION'; # @todo: make functionality
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function request($url, $headers = [], $post = [], $proxy = '') {
+    $result = ['info' => [], 'headers' => []];
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+    curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
+  # prepare headers
+    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$result) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
+      if ($c_matches) $result['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
+      return strlen($c_header);
+    });
+  # prepare post query
+    if ($post) {
+      curl_setopt($curl, CURLOPT_POST, true);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+    }
+  # prepare return
+    $data = curl_exec($curl);
+    $result['error_message'] = curl_error($curl);
+    $result['error_number'] = curl_errno($curl);
+    $result['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
+    $result['info'] = curl_getinfo($curl);
+    curl_close($curl);
+    return $result;
   }
 
 }}

@@ -18,9 +18,9 @@ namespace effcore {
               ($this->where == 'subm_errs' && array_key_exists('X-Submit-Errors-Count', $c_results['request']['headers']) &&
                $this->match == $c_results['request']['headers']['X-Submit-Errors-Count']);
     if ($result) {
+      $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => $this->where, 'value' => $this->match]);
+      $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => translation::get('success')]);
       if (isset($this->on_success)) {
-        $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => $this->where, 'value' => $this->match]);
-        $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => 'success']);
         foreach ($this->on_success as $c_step) {
           $c_step->run($test, $this->on_success, $c_step, $c_results);
           if (array_key_exists('return', $c_results)) {
@@ -29,11 +29,11 @@ namespace effcore {
         }
       }
     } else {
+      $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => $this->where, 'value' => $this->match]);
+      $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => translation::get('failure')]);
       if (isset($this->on_failure)) {
-        $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => $this->where, 'value' => $this->match]);
-        $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => 'failure']);
         foreach ($this->on_failure as $c_step) {
-          $c_step->run($test, $this->on_success, $c_step, $c_results);
+          $c_step->run($test, $this->on_failure, $c_step, $c_results);
           if (array_key_exists('return', $c_results)) {
             return;
           }
