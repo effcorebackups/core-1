@@ -3,7 +3,6 @@ entities
     name: tree
     title: Tree
     title_plural: Trees
-    storage_name: sql
     catalog_name: trees
     ws_created: true
     ws_updated: true
@@ -26,7 +25,6 @@ entities
     name: tree_item
     title: Tree item
     title_plural: Tree items
-    storage_name: sql
     catalog_name: tree_items
     ws_created: true
     ws_updated: true

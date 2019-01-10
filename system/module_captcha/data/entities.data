@@ -3,7 +3,6 @@ entities
     name: captcha
     title: CAPTCHA
     title_plural: CAPTCHAs
-    storage_name: sql
     catalog_name: captcha
     ws_created: true
     fields

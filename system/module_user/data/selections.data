@@ -1,0 +1,25 @@
+selections
+- user|selection
+    title: User %%_nick
+    quantity: 1
+    fields
+    - field_nick
+        type: field
+        entity_name: user
+        field_name: nick
+    - field_email
+        type: field
+        entity_name: user
+        field_name: email
+    - field_timezone
+        type: field
+        entity_name: user
+        field_name: timezone
+    - field_created
+        type: field
+        entity_name: user
+        field_name: created
+    - field_updated
+        type: field
+        entity_name: user
+        field_name: updated

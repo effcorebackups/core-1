@@ -8,7 +8,7 @@ namespace effcore {
           class entity implements has_external_cache, should_clear_cache_after_on_install, has_postparse {
 
   public $name;
-  public $storage_name;
+  public $storage_name = 'sql';
   public $catalog_name;
   public $ws_weight;
   public $ws_created;
@@ -95,9 +95,9 @@ namespace effcore {
     return $storage->entity_uninstall($this);
   }
 
-  function instances_select($conditions = [], $order = [], $count = 0, $offset = 0) {
+  function instances_select($conditions = [], $order = [], $quantity = 0, $offset = 0) {
     $storage = storage::get($this->storage_name);
-    return $storage->instances_select($this, $conditions, $order, $count, $offset);
+    return $storage->instances_select($this, $conditions, $order, $quantity, $offset);
   }
 
   function instances_insert() {} # @todo: make functionality

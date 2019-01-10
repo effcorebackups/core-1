@@ -10,10 +10,10 @@ namespace effcore {
   public $view_type = 'table';
   public $title;
   public $fields;
-  public $conditions;
-  public $order;
-  public $count;
-  public $offset;
+  public $conditions = [];
+  public $order = [];
+  public $quantity = 50;
+  public $offset = 0;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
@@ -36,8 +36,12 @@ namespace effcore {
     if (count($used_entities) == 1 &&
         count($used_storages) == 1) {
       $entity    = entity::get(reset($used_entities));
-      $instances = entity::get(reset($used_entities))->instances_select();
-      $id_keys   = $entity->real_id_get();
+      $instances = entity::get(reset($used_entities))->instances_select(
+        $this->conditions,
+        $this->order,
+        $this->quantity,
+        $this->offset);
+      $id_keys = $entity->real_id_get();
     }
   # make markup
     if (!empty($entity)) {

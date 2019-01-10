@@ -9,6 +9,7 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\instance;
           use \effcore\locale;
+          use \effcore\selection;
           use \effcore\session;
           use \effcore\table;
           use \effcore\user;
@@ -21,26 +22,28 @@ namespace effcore\modules\user {
     if ($user) {
       if ($user->nick == user::current_get()->nick ||             # owner
                    isset(user::current_get()->roles['admins'])) { # admin
-      # get values
-        $user_roles = user::id_roles_get($user->nick);
-        $values = $user->values_get();
-        $values['created'] = locale::datetime_format($values['created']);
-        $values['updated'] = locale::datetime_format($values['updated']);
-        if ($user->nick == user::current_get()->nick) $values['current_session_expired'] = locale::timestmp_format(session::id_expired_extract(session::id_get()));
-        $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
-        $values['password_hash'] = '*****';
-        $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
-        $values['avatar_path'] = $values['avatar_path'] ?: '-';
-        $values['timezone'] = $values['timezone'] ?: '-';
-      # show table
-        $thead = [['Parameter', 'Value']];
-        $tbody = core::array_rotate([
-          array_keys  ($values),
-          array_values($values)
-        ]);
+
+        $selection = selection::get('user');
+        $selection->title = '';
+        $selection->conditions = ['nick' => $user->nick];
         return new block('', ['class' => ['user-info' => 'user-info']],
-          new table([], $tbody, $thead)
+          $selection
         );
+
+      # $user_roles = user::id_roles_get($user->nick);
+      # $values = $user->values_get();
+      # $values['created'] = locale::datetime_format($values['created']);
+      # $values['updated'] = locale::datetime_format($values['updated']);
+      # if ($user->nick == user::current_get()->nick) $values['current_session_expired'] = locale::timestmp_format(session::id_expired_extract(session::id_get()));
+      # $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
+      # $values['is_embed'] = $values['is_embed'] ? 'Yes' : 'No';
+      # $values['avatar_path'] = $values['avatar_path'] ?: '-';
+      # $values['timezone'] = $values['timezone'] ?: '-';
+      # $tbody = core::array_rotate([
+      #   array_keys  ($values),
+      #   array_values($values)
+      # ]);
+
       } else core::send_header_and_exit('access_forbidden');
     }   else core::send_header_and_exit('page_not_found');
   }
