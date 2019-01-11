@@ -15,6 +15,10 @@ selections
         type: field
         entity_name: user
         field_name: timezone
+    - field_is_embed
+        type: field
+        entity_name: user
+        field_name: is_embed
     - field_created
         type: field
         entity_name: user

@@ -198,7 +198,7 @@ entities
         size: 255
     - is_embed
         title: Is embed
-        type: integer
+        type: boolean
         not_null: true
         default: 0
     - avatar_path

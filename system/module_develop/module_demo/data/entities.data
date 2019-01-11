@@ -14,32 +14,58 @@ entities
         type: varchar
         size: 255
         null: true
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: integer
+    # ─────────────────────────────────────────────────────────────────────
     - f_integer
         title: Field integer
         type: integer
         not_null: true
         default: 0
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: text
+    # ─────────────────────────────────────────────────────────────────────
     - f_varchar
         title: Field varchar
         type: varchar
         size: 255
         not_null: true
         default: default text
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: ?
+    # ─────────────────────────────────────────────────────────────────────
     - f_time
         title: Field time
         type: time
         not_null: true
         default: 00:00:00
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: ?
+    # ─────────────────────────────────────────────────────────────────────
     - f_date
         title: Field date
         type: date
         not_null: true
         default: 2000-01-01
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: ?
+    # ─────────────────────────────────────────────────────────────────────
     - f_datetime
         title: Field date + time
         type: datetime
         not_null: true
         default: 2000-01-01 00:00:00
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: numeric
+    # ─────────────────────────────────────────────────────────────────────
+    - f_boolean
+        title: Field boolean
+        type: boolean
+        not_null: true
+        default: 1
+    # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: blob
+    # ─────────────────────────────────────────────────────────────────────
     - f_blob
         title: Field blob
         type: blob

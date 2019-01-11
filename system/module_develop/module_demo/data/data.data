@@ -28,6 +28,9 @@ demo_data
     prop_1: property value #1
     prop_2: property value #2
     prop_3: property value #3
+# ─────────────────────────────────────────────────────────────────────
+# nested
+# ─────────────────────────────────────────────────────────────────────
   demo_nested
     prop_1: property value #1
     demo_nested
