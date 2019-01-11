@@ -23,6 +23,14 @@ entities
         not_null: true
         default: 0
     # ─────────────────────────────────────────────────────────────────────
+    # sqlite implicit storage class: real
+    # ─────────────────────────────────────────────────────────────────────
+    - f_real
+        title: Field real
+        type: real
+        not_null: true
+        default: 0
+    # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
     - f_varchar
@@ -56,14 +64,13 @@ entities
         not_null: true
         default: 2000-01-01 00:00:00
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: numeric
-    # mysql implicit storage class: tinyint
+    # sqlite implicit storage class: numeric | mysql equivalent: tinyint
     # ─────────────────────────────────────────────────────────────────────
     - f_boolean
         title: Field boolean
         type: boolean
         not_null: true
-        default: 1
+        default: 0
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
