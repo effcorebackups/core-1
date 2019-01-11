@@ -119,7 +119,7 @@ entities
         not_null: true
     - is_embed
         title: Is embed
-        type: integer
+        type: boolean
         not_null: true
         default: 0
     constraints
@@ -145,12 +145,12 @@ entities
         not_null: true
     - is_remember
         title: Is remember
-        type: integer
+        type: boolean
         not_null: true
         default: 0
     - is_fixed_ip
         title: Is fixed IP
-        type: integer
+        type: boolean
         not_null: true
         default: 0
     - expired

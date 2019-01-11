@@ -32,7 +32,7 @@ entities
         not_null: true
         default: default text
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: ?
+    # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
     - f_time
         title: Field time
@@ -40,7 +40,7 @@ entities
         not_null: true
         default: 00:00:00
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: ?
+    # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
     - f_date
         title: Field date
@@ -48,7 +48,7 @@ entities
         not_null: true
         default: 2000-01-01
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: ?
+    # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
     - f_datetime
         title: Field date + time
@@ -57,6 +57,7 @@ entities
         default: 2000-01-01 00:00:00
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: numeric
+    # mysql implicit storage class: tinyint
     # ─────────────────────────────────────────────────────────────────────
     - f_boolean
         title: Field boolean
