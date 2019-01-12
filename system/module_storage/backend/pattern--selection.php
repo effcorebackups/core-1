@@ -7,6 +7,7 @@
 namespace effcore {
           class selection extends node implements has_external_cache {
 
+  public $id;
   public $view_type = 'table';
   public $title;
   public $fields;
@@ -33,8 +34,8 @@ namespace effcore {
       }
     }
   # get data from storage
-    if (count($used_entities) == 1 &&
-        count($used_storages) == 1) {
+    if (count($used_storages) == 1 &&
+        count($used_entities) == 1) {
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select(
         $this->conditions,
@@ -42,6 +43,14 @@ namespace effcore {
         $this->quantity,
         $this->offset);
       $id_keys = $entity->real_id_get();
+    }
+    if (count($used_storages) == 1 &&
+        count($used_entities) >= 2) {
+      # @todo: make functionality (query with inner join)
+    }
+    if (count($used_storages) >= 2) {
+      message::insert(translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning');
+      return new node();
     }
   # make markup
     if (!empty($entity)) {
@@ -147,7 +156,7 @@ namespace effcore {
   static protected $cache;
 
   static function not_external_properties_get() {
-    return [];
+    return ['id' => 'id'];
   }
 
   static function cache_cleaning() {
@@ -157,18 +166,18 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('selections') as $c_module_id => $c_selections) {
       foreach ($c_selections as $c_row_id => $c_selection) {
-        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_insert('selection', $c_row_id);
-        static::$cache[$c_row_id] = $c_selection;
-        static::$cache[$c_row_id]->module_id = $c_module_id;
+        if (isset(static::$cache[$c_selection->id])) console::log_about_duplicate_insert('selection', $c_selection->id);
+        static::$cache[$c_selection->id] = $c_selection;
+        static::$cache[$c_selection->id]->module_id = $c_module_id;
       }
     }
   }
 
-  static function get($row_id, $load = true) {
+  static function get($id, $load = true) {
     if (static::$cache == null) static::init();
-    if (static::$cache[$row_id] instanceof external_cache && $load)
-        static::$cache[$row_id] = static::$cache[$row_id]->external_cache_load();
-    return static::$cache[$row_id] ?? null;
+    if (static::$cache[$id] instanceof external_cache && $load)
+        static::$cache[$id] = static::$cache[$id]->external_cache_load();
+    return static::$cache[$id] ?? null;
   }
 
 }}

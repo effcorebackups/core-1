@@ -1,5 +1,6 @@
 selections
 - user|selection
+    id: user
     title: User %%_nick
     quantity: 1
     fields

@@ -1,5 +1,6 @@
 selections
-- demo_selection_types|selection
+- demo_types|selection
+    id: demo_types
     title: Selection of "demo_types" entities
     fields
     - id
