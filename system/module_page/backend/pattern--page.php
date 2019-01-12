@@ -100,43 +100,46 @@ namespace effcore {
     $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
-    foreach (static::frontend_all_get() as $c_row_id => $c_item) {
-      if (is_array(static::is_displayed_by_used_dpaths($c_item->display, $this->used_dpaths)) ||
-          is_array(static::is_displayed_by_current_url($c_item->display))) {
+    foreach (static::frontend_all_get() as $c_row_id => $c_items) {
+      if (is_array(static::is_displayed_by_used_dpaths($c_items->display, $this->used_dpaths)) ||
+          is_array(static::is_displayed_by_current_url($c_items->display))) {
 
       # ─────────────────────────────────────────────────────────────────────
       # collect favicons
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_item->favicons)) {
-          foreach ($c_item->favicons as $c_icon) {
-            $c_url = new url($c_icon->file[0] == '/' ? $c_icon->file : '/'.module::get($c_item->module_id)->path.$c_icon->file);
+        if (isset($c_items->favicons)) {
+          foreach ($c_items->favicons as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->icons->child_insert(new markup_simple('link', [
               'href' => $c_url->relative_get()
-            ] + ($c_icon->attributes ?? []), $c_icon->weight ?? 0));
+            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
           }
         }
 
       # ─────────────────────────────────────────────────────────────────────
       # collect styles
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_item->styles)) {
-          foreach ($c_item->styles as $c_style) {
-            $c_url = new url($c_style->file[0] == '/' ? $c_style->file : '/'.module::get($c_item->module_id)->path.$c_style->file);
+        if (isset($c_items->styles)) {
+          foreach ($c_items->styles as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->styles->child_insert(new markup_simple('link', [
               'href' => $c_url->relative_get()
-            ] + ($c_style->attributes ?? []), $c_style->weight ?? 0));
+            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
           }
         }
 
       # ─────────────────────────────────────────────────────────────────────
       # collect scripts
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_item->scripts)) {
-          foreach ($c_item->scripts as $c_script) {
-            $c_url = new url($c_script->file[0] == '/' ? $c_script->file : '/'.module::get($c_item->module_id)->path.$c_script->file);
+        if (isset($c_items->scripts)) {
+          foreach ($c_items->scripts as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->scripts->child_insert(new markup('script', [
               'src' => $c_url->relative_get()
-            ] + ($c_script->attributes ?? []), [], $c_script->weight ?? 0));
+            ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
           }
         }
 
