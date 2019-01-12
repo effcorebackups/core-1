@@ -41,11 +41,14 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Field %%_type.: Поле %%_type.
-    - Field date + time: Поле date + time
+    - Field blob: Поле blob
+    - Field boolean: Поле boolean
     - Field date: Поле date
+    - Field datetime: Поле datetime
     - Field integer 1: Поле integer 1
     - Field integer 2: Поле integer 2
     - Field integer: Поле integer
+    - Field real: Поле real
     - Field time: Поле time
     - Field varchar: Поле varchar
     - Full report: Полный отчёт

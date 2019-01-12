@@ -59,7 +59,7 @@ entities
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
     - f_datetime
-        title: Field date + time
+        title: Field datetime
         type: datetime
         not_null: true
         default: 2000-01-01 00:00:00

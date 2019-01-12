@@ -3,27 +3,27 @@ selections
     title: User %%_nick
     quantity: 1
     fields
-    - field_nick
+    - nick
         type: field
         entity_name: user
         field_name: nick
-    - field_email
+    - email
         type: field
         entity_name: user
         field_name: email
-    - field_timezone
+    - timezone
         type: field
         entity_name: user
         field_name: timezone
-    - field_is_embed
+    - is_embed
         type: field
         entity_name: user
         field_name: is_embed
-    - field_created
+    - created
         type: field
         entity_name: user
         field_name: created
-    - field_updated
+    - updated
         type: field
         entity_name: user
         field_name: updated

@@ -50,6 +50,9 @@ namespace effcore {
       //   core::send_header_and_exit('page_not_found');
       // }
       switch ($this->view_type) {
+      # ─────────────────────────────────────────────────────────────────────
+      # table
+      # ─────────────────────────────────────────────────────────────────────
         case 'table':
           $thead = [];
           $tbody = [];
@@ -98,6 +101,11 @@ namespace effcore {
             'selection',
             'selection-'.$entity->name =>
             'selection-'.$entity->name]], $tbody, [$thead]);
+      # ─────────────────────────────────────────────────────────────────────
+      # list
+      # ─────────────────────────────────────────────────────────────────────
+        case 'list':
+          return new node();
       }
     }
   }
