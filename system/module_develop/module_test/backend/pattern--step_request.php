@@ -29,7 +29,10 @@ namespace effcore {
   }
 
   function prepared_url_get() {
-    return ($this->https ? 'https' : 'http').'://'.url::current_get()->domain.$this->url;
+    $is_https = $this->https instanceof param_from_form ?
+                $this->https->get() :
+                $this->https;
+    return ($is_https ? 'https' : 'http').'://'.url::current_get()->domain.$this->url;
   }
 
   function prepared_headers_get() {
