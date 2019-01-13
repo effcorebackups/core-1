@@ -336,7 +336,7 @@ namespace effcore {
 
   # conversion matrix:
   # ┌──────────────────────────────────────╥───────────────────────────────┐
-  # │ input value (undefined|string|array) ║ output value                  │
+  # │ input value (undefined|string|array) ║ result value                  │
   # ╞══════════════════════════════════════╬═══════════════════════════════╡
   # │ source[field] == undefined           ║ return ''                     │
   # │ source[field] == ''                  ║ return ''                     │
@@ -359,7 +359,7 @@ namespace effcore {
 
   # conversion matrix:
   # ┌──────────────────────────────────────╥───────────────────────────────┐
-  # │ input value (undefined|string|array) ║ output value                  │
+  # │ input value (undefined|string|array) ║ result value                  │
   # ╞══════════════════════════════════════╬═══════════════════════════════╡
   # │ source[field] == undefined           ║ return []                     │
   # │ source[field] == ''                  ║ return [0 => '']              │
@@ -386,7 +386,7 @@ namespace effcore {
 
   # conversion matrix:
   # ┌─────────────────────────────────────────────────────────╥───────────────────────────────────────────────────────────────────────┐
-  # │ input value (undefined|array)                           ║ output value                                                          │
+  # │ input value (undefined|array)                           ║ result value                                                          │
   # ╞═════════════════════════════════════════════════════════╬═══════════════════════════════════════════════════════════════════════╡
   # │ $_FILES[field] == undefined                             ║ return []                                                             │
   # │ $_FILES[field] == [error = 4]                           ║ return []                                                             │

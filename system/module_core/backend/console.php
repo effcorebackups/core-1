@@ -66,6 +66,10 @@ namespace effcore {
     ]);
   }
 
+  static function text_get() {
+    return static::text_block_logs_get();
+  }
+
   static function markup_block_information_get() {
     $info = new markup('dl');
     foreach (static::information_all_select() as $c_param => $c_value) {
@@ -121,6 +125,21 @@ namespace effcore {
       new markup('x-label', [], ['Total', ': ']),
       new markup('x-value', [], count($logs_all))])
     ]);
+  }
+
+  static function text_block_logs_get() {
+    $result = '  Time     | Object     | Action     | Value | Description'.nl;
+    $result.= '  --------------------------------------------------------'.nl;
+    $logs_all = static::logs_select();
+    foreach (static::logs_select() as $c_log) {
+      $result.= '  '.str_pad(locale::msecond_format($c_log->time), 8).' | ';
+      $result.=      str_pad($c_log->object, 10).' | ';
+      $result.=      str_pad($c_log->action, 10).' | ';
+      $result.=      str_pad($c_log->value,   5).' | ';
+      $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;
+    }
+    $result.= nl.str_repeat(' ', 47).'Total: '.count($logs_all);
+    return nl.$result.nl;
   }
 
 }}

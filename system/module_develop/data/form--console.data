@@ -10,6 +10,7 @@ forms
         children
         - visibility|field_select
             title: Visibility
+            description: CSS/JS console will show only in mode "show for everyone" for performance reasons.
             element_attributes
             - name: visibility
             values

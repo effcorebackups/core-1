@@ -85,7 +85,7 @@ namespace effcore {
         $data = token::replace($file->load());
         $etag = md5($data);
 
-      # send header '304 Not Modified' if the data has not changed
+      # send header '304 Not Modified' if the data has no changes
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
                   $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
           header('HTTP/1.1 304 Not Modified');
@@ -93,17 +93,28 @@ namespace effcore {
           exit();
         }
 
-      # send headers and data to the output buffer
-        header('Content-Length: '.strlen($data));
+      # send default headers
         header('Accept-Ranges: none');
-        header('Cache-Control: private, no-cache');
         header('Etag: '.$etag);
         if (!empty($file_types[$type]->headers)) {
           foreach ($file_types[$type]->headers as $c_key => $c_value) {
             header($c_key.': '.$c_value);
           }
         }
-        print $data;
+
+      # send result data
+        $result = $data;
+        if (module::is_enabled('develop')) {
+          $settings = storage::get('files')->select('settings');
+          if ($settings['page']->console_visibility == 'show_for_everyone') {
+            if ($type == 'cssd' || $type == 'jsd') {
+              $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
+            }
+          }
+        }
+        header('Content-Length: '.strlen($result));
+        header('Cache-Control: private, no-cache');
+        print $result;
         console::log_store();
         exit();
 
@@ -191,15 +202,15 @@ namespace effcore {
   }
 
   ob_start();
-  $output = '';
+  $result = '';
   foreach (event::start('on_module_start') as $c_results) {
     foreach ($c_results as $c_result) {
-      $output.= str_replace(nl.nl, '', $c_result);
+      $result.= str_replace(nl.nl, '', $c_result);
     }
   }
-  header('Content-Length: '.strlen($output));
+  header('Content-Length: '.strlen($result));
   header('Cache-Control: private, no-cache');
-  print $output;
+  print $result;
   console::log_store();
   exit();
 
