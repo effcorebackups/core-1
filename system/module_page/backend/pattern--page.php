@@ -83,9 +83,9 @@ namespace effcore {
     timer::tap('total');
     $user = user::current_get();
     $settings = storage::get('files')->select('settings');
-    $enabled_by_boot = core::boot_select('enabled');
-    if ((isset($enabled_by_boot['develop']) && $settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
-        (isset($enabled_by_boot['develop']) && $settings['page']->console_visibility == 'show_for_everyone')) {
+    $is_enabled_develop = module::is_enabled('develop');
+    if (($is_enabled_develop && $settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+        ($is_enabled_develop && $settings['page']->console_visibility == 'show_for_everyone')) {
       console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
       console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
       console::information_insert('Current language',       language::current_code_get());
