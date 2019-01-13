@@ -208,6 +208,15 @@ namespace effcore {
       $result.= str_replace(nl.nl, '', $c_result);
     }
   }
+  timer::tap('total');
+  if (module::is_enabled('develop')) {
+    $user = user::current_get();
+    $settings = storage::get('files')->select('settings');
+    if (($settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+        ($settings['page']->console_visibility == 'show_for_everyone')) {
+      $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
+    }
+  }
   header('Content-Length: '.strlen($result));
   header('Cache-Control: private, no-cache');
   print $result;

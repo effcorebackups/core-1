@@ -9,7 +9,6 @@ namespace effcore {
 
   const directory = dir_dynamic.'logs/';
   static protected $data = [];
-  static protected $information = [];
 
   static function logs_select() {
     return static::$data;
@@ -53,11 +52,6 @@ namespace effcore {
     }
   }
 
-  static function information_all_select() {return static::$information;}
-  static function information_insert($param, $value) {
-    static::$information[$param] = $value;
-  }
-
   static function markup_get() {
     return new markup('x-console', [], [
       static::markup_block_information_get(),
@@ -71,8 +65,14 @@ namespace effcore {
   }
 
   static function markup_block_information_get() {
+    $user = user::current_get();
+    $information = [];
+    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
+    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
+    $information['Current language'] = language::current_code_get();
+    $information['User roles'] = implode(', ', $user->roles);
     $info = new markup('dl');
-    foreach (static::information_all_select() as $c_param => $c_value) {
+    foreach ($information as $c_param => $c_value) {
       $info->child_insert(new markup('dt', [], $c_param));
       $info->child_insert(new markup('dd', [], $c_value));
     }

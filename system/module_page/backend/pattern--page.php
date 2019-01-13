@@ -24,7 +24,6 @@ namespace effcore {
   }
 
   function render() {
-    $result = '';
     $user_agent = core::server_user_agent_info_get();
     header('Content-language: '.language::current_code_get());
     header('Content-Type: text/html; charset='.$this->charset);
@@ -79,21 +78,7 @@ namespace effcore {
 
     $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());
-    $result = $template->render();
-
-    timer::tap('total');
-    $user = user::current_get();
-    $settings = storage::get('files')->select('settings');
-    $is_enabled_develop = module::is_enabled('develop');
-    if (($is_enabled_develop && $settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
-        ($is_enabled_develop && $settings['page']->console_visibility == 'show_for_everyone')) {
-      console::information_insert('Total generation time',  locale::msecond_format(timer::period_get('total', 0, 1)));
-      console::information_insert('Memory for php (bytes)', locale::number_format(memory_get_usage(true)));
-      console::information_insert('Current language',       language::current_code_get());
-      console::information_insert('User roles',             implode(', ', $user->roles));
-      $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
-    }
-    return $result;
+    return $template->render();
   }
 
   function frontend_markup_get() {

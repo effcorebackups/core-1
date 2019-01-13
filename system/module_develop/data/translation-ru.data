@@ -25,7 +25,7 @@ translations
     - class: класс
     - Classes: Классы
     - Console: Консоль
-    - CSS/JS console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности CSS/JS консоль будет отображаться только в режиме "показать всем".
+    - *.cssd \| *.jsd console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности *.cssd | *.jsd консоль будет отображаться только в режиме "показать всем".
     - Demo\: autoincrement: Демо: автоинкремент
     - Demo\: constraints: Демо: ограничения
     - Demo\: indexes: Демо: индексы
