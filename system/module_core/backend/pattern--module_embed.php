@@ -39,16 +39,6 @@ namespace effcore {
     core::boot_insert($this->id, $this->path, 'installed');
   }
 
-  function is_enabled() {
-    $enabled = core::boot_select('enabled');
-    return isset($enabled[$this->id]);
-  }
-
-  function is_installed() {
-    $installed = core::boot_select('installed');
-    return isset($installed[$this->id]);
-  }
-
   function dependencies_status_get() {
     $dependencies_php = $this->dependencies->php    ?? [];
     $dependencies_sys = $this->dependencies->system ?? [];
@@ -126,6 +116,16 @@ namespace effcore {
       }
     }
     return $result;
+  }
+
+  static function is_enabled($module_id) {
+    $enabled = core::boot_select('enabled');
+    return isset($enabled[$module_id]);
+  }
+
+  static function is_installed($module_id) {
+    $installed = core::boot_select('installed');
+    return isset($installed[$module_id]);
   }
 
 }}
