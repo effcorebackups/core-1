@@ -61,7 +61,8 @@ namespace effcore {
   }
 
   static function text_get() {
-    return static::text_block_logs_get();
+    return static::text_block_diagram_load_get().
+           static::text_block_logs_get();
   }
 
   static function markup_block_information_get() {
@@ -102,6 +103,28 @@ namespace effcore {
     ]);
   }
 
+  static function text_block_diagram_load_get() {
+    $statistics = [];
+    $total = 0;
+    foreach (static::$data as $c_log) {
+      if (floatval($c_log->time)) {
+        if (!isset($statistics[$c_log->object]))
+                   $statistics[$c_log->object] = 0;
+        $statistics[$c_log->object] += floatval($c_log->time);
+        $total += floatval($c_log->time);
+      }
+    }
+    $result = '  TOTAL LOAD'.nl.nl;
+    foreach ($statistics as $c_param => $c_value) {
+      $c_percent = $c_value / $total * 100;
+      $result.= '  '.str_pad($c_param, 34, ' ', STR_PAD_LEFT).' | ';
+      $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').' | ';
+      $result.=      str_pad(core::number_format($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
+      $result.=      locale::msecond_format($c_value).' sec.'.nl;
+    }
+    return $result;
+  }
+
   static function markup_block_logs_get() {
     $thead = [['Time', 'Object', 'Action', 'Description', 'Val.']];
     $tbody = [];
@@ -128,7 +151,9 @@ namespace effcore {
   }
 
   static function text_block_logs_get() {
-    $result = '  Time     | Object     | Action     | Value | Description'.nl;
+    $result = '  EXECUTE PLAN'.nl.nl;
+    $result.= '  --------------------------------------------------------'.nl;
+    $result.= '  Time     | Object     | Action     | Value | Description'.nl;
     $result.= '  --------------------------------------------------------'.nl;
     $logs_all = static::logs_select();
     foreach (static::logs_select() as $c_log) {
