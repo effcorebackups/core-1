@@ -13,10 +13,10 @@ namespace effcore {
   public $on_failure;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $result = ($this->where == 'http_code' && array_key_exists('http_code', $c_results['request']['info']) &&
-               $this->match == $c_results['request']['info']['http_code']) ||
-              ($this->where == 'subm_errs' && array_key_exists('X-Submit-Errors-Count', $c_results['request']['headers']) &&
-               $this->match == $c_results['request']['headers']['X-Submit-Errors-Count']);
+    $result = ($this->where == 'http_code' && array_key_exists('http_code', $c_results['response']['info']) &&
+               $this->match == $c_results['response']['info']['http_code']) ||
+              ($this->where == 'subm_errs' && array_key_exists('X-Form-Submit-Errors-Count', $c_results['response']['headers']) &&
+               $this->match == $c_results['response']['headers']['X-Form-Submit-Errors-Count']);
     if ($result) {
       $c_results['reports'][] = translation::get('checking on "%%_name" = "%%_value"', ['name' => $this->where, 'value' => $this->match]);
       $c_results['reports'][] = translation::get('&ndash; result of checking is = "%%_result"', ['result' => translation::get('success')]);

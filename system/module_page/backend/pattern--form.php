@@ -24,6 +24,10 @@ namespace effcore {
     $id = $this->attribute_select('id');
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',       'value' => $id                 ]), 'hidden_form_id'      );
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id', 'value' => $this->validation_id]), 'hidden_validation_id');
+  # send test headers
+    if (module::is_enabled('test')) {
+      header('X-Form-Validation-Id: '.$this->validation_id);
+    }
 
   # plug external classes
     foreach ($this->children_select_recursive() as $c_npath => $c_element) {
@@ -75,8 +79,10 @@ namespace effcore {
         event::start('on_form_validate', $id, [$this, $items]);
       }
 
-    # send specific header
-      header('X-Submit-Errors-Count: '.count(static::$errors));
+    # send test headers
+      if (module::is_enabled('test')) {
+        header('X-Form-Submit-Errors-Count: '.count(static::$errors));
+      }
 
     # show errors
       if (static::$errors) {
