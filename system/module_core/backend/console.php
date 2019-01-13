@@ -61,7 +61,8 @@ namespace effcore {
   }
 
   static function text_get() {
-    return static::text_block_diagram_load_get().
+    return static::text_block_information_get().
+           static::text_block_diagram_load_get().
            static::text_block_logs_get();
   }
 
@@ -80,6 +81,18 @@ namespace effcore {
     return new block('Current page information', ['class' => ['info' => 'info']], [
       $info
     ]);
+  }
+
+  static function text_block_information_get() {
+    $information = [];
+    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
+    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
+    $result = '  CURRENT PAGE INFORMATION'.nl.nl;
+    foreach ($information as $c_param => $c_value) {
+      $result.= '  '.str_pad($c_param, 60, ' ', STR_PAD_LEFT).' : ';
+      $result.=      $c_value.nl;
+    }
+    return nl.$result.nl;
   }
 
   static function markup_block_diagram_load_get() {
@@ -122,7 +135,7 @@ namespace effcore {
       $result.=      str_pad(core::number_format($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
       $result.=      locale::msecond_format($c_value).' sec.'.nl;
     }
-    return $result;
+    return nl.$result.nl;
   }
 
   static function markup_block_logs_get() {

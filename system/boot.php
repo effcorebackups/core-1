@@ -105,6 +105,7 @@ namespace effcore {
       # send result data
         $result = $data;
         if (module::is_enabled('develop')) {
+          timer::tap('total');
           $settings = storage::get('files')->select('settings');
           if ($settings['page']->console_visibility == 'show_for_everyone') {
             if ($type == 'cssd' || $type == 'jsd') {
@@ -208,8 +209,8 @@ namespace effcore {
       $result.= str_replace(nl.nl, '', $c_result);
     }
   }
-  timer::tap('total');
   if (module::is_enabled('develop')) {
+    timer::tap('total');
     $user = user::current_get();
     $settings = storage::get('files')->select('settings');
     if (($settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
