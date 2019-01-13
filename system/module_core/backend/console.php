@@ -60,12 +60,6 @@ namespace effcore {
     ]);
   }
 
-  static function text_get() {
-    return static::text_block_information_get().
-           static::text_block_diagram_load_get().
-           static::text_block_logs_get();
-  }
-
   static function markup_block_information_get() {
     $user = user::current_get();
     $information = [];
@@ -81,18 +75,6 @@ namespace effcore {
     return new block('Current page information', ['class' => ['info' => 'info']], [
       $info
     ]);
-  }
-
-  static function text_block_information_get() {
-    $information = [];
-    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
-    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
-    $result = '  CURRENT PAGE INFORMATION'.nl.nl;
-    foreach ($information as $c_param => $c_value) {
-      $result.= '  '.str_pad($c_param, 60, ' ', STR_PAD_LEFT).' : ';
-      $result.=      $c_value.nl;
-    }
-    return nl.$result.nl;
   }
 
   static function markup_block_diagram_load_get() {
@@ -114,28 +96,6 @@ namespace effcore {
     return new block('Total load', ['class' => ['diagram-load' => 'diagram-load']], [
       $diagram
     ]);
-  }
-
-  static function text_block_diagram_load_get() {
-    $statistics = [];
-    $total = 0;
-    foreach (static::$data as $c_log) {
-      if (floatval($c_log->time)) {
-        if (!isset($statistics[$c_log->object]))
-                   $statistics[$c_log->object] = 0;
-        $statistics[$c_log->object] += floatval($c_log->time);
-        $total += floatval($c_log->time);
-      }
-    }
-    $result = '  TOTAL LOAD'.nl.nl;
-    foreach ($statistics as $c_param => $c_value) {
-      $c_percent = $c_value / $total * 100;
-      $result.= '  '.str_pad($c_param, 34, ' ', STR_PAD_LEFT).' | ';
-      $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').' | ';
-      $result.=      str_pad(core::number_format($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
-      $result.=      locale::msecond_format($c_value).' sec.'.nl;
-    }
-    return nl.$result.nl;
   }
 
   static function markup_block_logs_get() {
@@ -163,6 +123,46 @@ namespace effcore {
     ]);
   }
 
+  static function text_get() {
+    return static::text_block_information_get().
+           static::text_block_diagram_load_get().
+           static::text_block_logs_get();
+  }
+
+  static function text_block_information_get() {
+    $information = [];
+    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
+    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
+    $result = '  CURRENT PAGE INFORMATION'.nl.nl;
+    foreach ($information as $c_param => $c_value) {
+      $result.= '  '.str_pad($c_param, 60, ' ', STR_PAD_LEFT).' : ';
+      $result.=      $c_value.nl;
+    }
+    return nl.$result.nl;
+  }
+
+  static function text_block_diagram_load_get() {
+    $statistics = [];
+    $total = 0;
+    foreach (static::$data as $c_log) {
+      if (floatval($c_log->time)) {
+        if (!isset($statistics[$c_log->object]))
+                   $statistics[$c_log->object] = 0;
+        $statistics[$c_log->object] += floatval($c_log->time);
+        $total += floatval($c_log->time);
+      }
+    }
+    $result = '  TOTAL LOAD'.nl.nl;
+    foreach ($statistics as $c_param => $c_value) {
+      $c_percent = $c_value / $total * 100;
+      $result.= '  '.str_pad($c_param, 34, ' ', STR_PAD_LEFT).                           ' | ';
+      $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
+      $result.=      str_pad(core::number_format($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
+      $result.=      locale::msecond_format($c_value).' sec.'.nl;
+    }
+    return nl.$result.nl;
+  }
+
   static function text_block_logs_get() {
     $result = '  EXECUTE PLAN'.nl.nl;
     $result.= '  --------------------------------------------------------'.nl;
@@ -171,9 +171,9 @@ namespace effcore {
     $logs_all = static::logs_select();
     foreach (static::logs_select() as $c_log) {
       $result.= '  '.str_pad(locale::msecond_format($c_log->time), 8).' | ';
-      $result.=      str_pad($c_log->object, 10).' | ';
-      $result.=      str_pad($c_log->action, 10).' | ';
-      $result.=      str_pad($c_log->value,   5).' | ';
+      $result.=      str_pad($c_log->object, 10).                     ' | ';
+      $result.=      str_pad($c_log->action, 10).                     ' | ';
+      $result.=      str_pad($c_log->value,   5).                     ' | ';
       $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;
     }
     $result.= nl.str_repeat(' ', 47).'Total: '.count($logs_all);
