@@ -7,6 +7,10 @@ frontend
     styles
     - develop_style
         file: frontend/develop.cssd
+      # ─────────────────────────────────────────────────────────────────────
+      # module_id: … ← should use if you want to enable parts
+      #                of the frondent from other modules
+      # ─────────────────────────────────────────────────────────────────────
         attributes
         - rel: stylesheet
         - media: all

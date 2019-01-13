@@ -19,6 +19,10 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_module::on_start
+  on_page_before_render
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_page::on_before_render
   on_form_init
   - demo|event
       for: demo
