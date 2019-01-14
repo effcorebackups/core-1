@@ -62,6 +62,21 @@ instances
     - f_integer_1: 3
     - f_integer_2: 300
 # ─────────────────────────────────────────────────────────────────────
+# demo collate
+# ─────────────────────────────────────────────────────────────────────
+- demo_collate_1|instance
+    entity_name: demo_collate
+    values
+    - id: 1
+    - f_nocase: aaa
+    - f_binary: aaa
+- demo_collate_2|instance
+    entity_name: demo_collate
+    values
+    - id: 2
+    - f_nocase: AAA
+    - f_binary: AAA
+# ─────────────────────────────────────────────────────────────────────
 # demo indexes
 # ─────────────────────────────────────────────────────────────────────
 - demo_indexes_1|instance

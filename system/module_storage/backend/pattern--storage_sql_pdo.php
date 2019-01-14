@@ -227,6 +227,18 @@ namespace effcore {
                                                '('.$c_info->size.')' : '');
         }
       # prepare field properties
+        if (isset($c_info->collate)) {
+          switch ($c_info->collate) {
+            case 'nocase':
+              if ($this->driver ==  'mysql') $c_properties[] = 'collate utf8_general_ci';
+              if ($this->driver == 'sqlite') $c_properties[] = 'collate nocase';
+              break;
+            case 'binary':
+              if ($this->driver ==  'mysql') $c_properties[] = 'collate utf8_bin';
+              if ($this->driver == 'sqlite') $c_properties[] = 'collate binary';
+              break;
+          }
+        }
         if (property_exists($c_info, 'not_null') && $c_info->not_null) $c_properties[] = 'not null';
         if (property_exists($c_info, 'null')     && $c_info->null)     $c_properties[] = 'null';
         if (property_exists($c_info, 'default')) {

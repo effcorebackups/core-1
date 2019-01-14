@@ -115,6 +115,33 @@ entities
         type: unique index
         fields
         - =: f_integer_2
+- demo_collate|entity
+    name: demo_collate
+    title: Demo: collate
+    title_plural: Demo: collate
+    catalog_name: demo_collate
+    fields
+    - id
+        title: ID
+        type: autoincrement
+        not_null: true
+    - f_nocase
+        title: Field nocase
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+    - f_binary
+        title: Field binary
+        type: varchar
+        size: 255
+        collate: binary
+        not_null: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
 - demo_constraints|entity
     name: demo_constraints
     title: Demo: constraints
