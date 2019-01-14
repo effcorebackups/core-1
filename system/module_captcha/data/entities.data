@@ -10,11 +10,13 @@ entities
         title: IP address
         type: varchar
         size: 32
+        collate: nocase
         not_null: true
     - characters
         title: Characters
         type: varchar
         size: 32
+        collate: nocase
         not_null: true
     - attempts
         title: Attempts

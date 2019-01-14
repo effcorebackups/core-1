@@ -11,11 +11,13 @@ entities
         title: ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - title
         title: Title
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     constraints
     - primary_id
@@ -34,11 +36,13 @@ entities
         title: Role ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - id_permission
         title: Permission ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     constraints
     - primary_id_role_id_permission
@@ -72,11 +76,13 @@ entities
         title: Role ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - nick
         title: Nick
         type: varchar
         size: 32
+        collate: nocase
         not_null: true
     constraints
     - primary_id_role_nick
@@ -111,11 +117,13 @@ entities
         title: ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - title
         title: Title
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - is_embed
         title: Is embed
@@ -137,11 +145,13 @@ entities
         title: ID
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     - nick
         title: Nick
         type: varchar
         size: 32
+        collate: nocase
         not_null: true
     - is_remember
         title: Is remember
@@ -185,17 +195,20 @@ entities
         title: Nick
         type: varchar
         size: 32
+        collate: nocase
         not_null: true
     - email
         title: EMail
         type: varchar
         size: 64
+        collate: nocase
         not_null: true
     - password_hash
         title: Password hash
         hidden: true
         type: varchar
         size: 255
+        collate: binary
     - is_embed
         title: Is embed
         type: boolean
@@ -206,10 +219,12 @@ entities
         hidden: true
         type: varchar
         size: 1024
+        collate: nocase
     - timezone
         title: Timezone
         type: varchar
         size: 64
+        collate: nocase
         default: UTC
     constraints
     - primary_nick

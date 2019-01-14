@@ -14,6 +14,7 @@ entities
     - title
         title: Title
         type: varchar
+        collate: nocase
         size: 255
         not_null: true
     constraints
@@ -41,6 +42,7 @@ entities
         title: Title
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
     constraints
     - primary_id
