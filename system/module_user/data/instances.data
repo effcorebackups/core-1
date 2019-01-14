@@ -5,7 +5,7 @@ instances
 - user_admin|instance
     entity_name: user
     values
-    - nick: admin
+    - nick: Admin
     - email: admin@example.com
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ instances
     entity_name: relation_role_ws_user
     values
     - id_role: admins
-    - nick: admin
+    - nick: Admin
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
