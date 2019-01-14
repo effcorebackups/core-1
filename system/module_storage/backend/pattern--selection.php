@@ -23,9 +23,10 @@ namespace effcore {
   }
 
   function build() {
-    $markup = null;
+    $result = [];
     $used_entities = [];
     $used_storages = [];
+  # analyze
     foreach ($this->fields as $c_field) {
       if ($c_field->type == 'field') {
         $c_entity = entity::get($c_field->entity_name, false);
@@ -52,7 +53,7 @@ namespace effcore {
       message::insert(translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning');
       return new node();
     }
-  # make markup
+  # make result
     if (!empty($entity)) {
       // $pager = new pager();
       // if ($pager->has_error) {
@@ -107,14 +108,14 @@ namespace effcore {
             }
             $tbody[] = $c_tbody_row;
           }
-          return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name],
-            new table(['class' => ['data' => 'data']], $tbody, [$thead])
+          $result[] = new table(['class' => ['data' => 'data']],
+            $tbody, [$thead]
           );
+          break;
       # ─────────────────────────────────────────────────────────────────────
       # list
       # ─────────────────────────────────────────────────────────────────────
         case 'list':
-          $result = new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name]);
           foreach ($instances as $c_instance) {
             $c_list = new markup('ul', ['class' => ['row' => 'row']]);
             foreach ($this->fields as $c_field) {
@@ -136,13 +137,14 @@ namespace effcore {
                   break;
               }
             }
-            $result->child_insert(
-              $c_list
-            );
+            $result[] = $c_list;
           }
-          return $result;
+          break;
       }
     }
+    return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name],
+      $result ?: new markup('x-no-result', [], 'no items')
+    );
   }
 
   function action_list_get($entity, $instance, $id_keys) {

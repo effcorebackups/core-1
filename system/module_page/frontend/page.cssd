@@ -39,8 +39,7 @@
   table td {padding: 12px 15px}
   table tr:nth-child(even)   td {background-color: %%_color_table_even_bg}
   table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_border}
-  table tr td:empty {color: %%_color_table_noitems}
-  table tr td:empty::after {content: '%%_text_no_items'}
+  table tr td:empty::after {content: 'x'; color: gainsboro}
   table td.actions {font-size: .9em; text-align: right}
 
   table.compact {font-size: .9em}
@@ -139,7 +138,8 @@
   x-selection[data-view-type='list'] li {list-style: none; margin: 0; padding: 0}
   x-selection[data-view-type='list'] x-title {font-weight: bold}
   x-selection[data-view-type='list'] x-title::after {content: ': '}
-  x-selection[data-view-type='list'] x-value:empty::after {content: '%%_text_no_items'; color: silver}
+  x-selection[data-view-type='list'] x-value:empty::after {content: 'x'; color: gainsboro}
+  x-selection x-no-result {display: block; color: silver}
 
   /* x-document ('license agreement' and other) */
 
