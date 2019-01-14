@@ -9,10 +9,14 @@ Storage layer characteristics
 - supported transactions: begin, roll_back, commit;
 - supported collations: nocase, binary;
 - supported constraints: primary, unique, foreign;
-- supported indexes: unique index, index;
+- supported indexes: 'unique index', 'index';
 - supported table prefixes (global);
 - supported connections to remote storages via manual initialization process;
 - distributed queries to remote storages not supported.
+
+Foreign key constraint support:
+- on update: 'cascade' (not tested feature: 'restrict'|'no action')
+- on delete: 'cascade' (not tested feature: 'restrict'|'no action')
 
 Supported field types:
 - autoincrement;
