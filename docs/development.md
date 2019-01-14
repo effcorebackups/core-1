@@ -12,25 +12,28 @@ Storage layer characteristics
 - supported indexes: 'unique index', 'index';
 - supported table prefixes (global);
 - supported connections to remote storages via manual initialization process;
-- distributed queries to remote storages not supported.
+- distributed queries to remote storages not supported;
+- storage initialization will start after first data call.
 
 Foreign key constraint support:
-- on update: 'cascade' (not tested feature: 'restrict'|'no action')
-- on delete: 'cascade' (not tested feature: 'restrict'|'no action')
+- on update: 'cascade' (not tested feature: 'restrict'|'no action');
+- on delete: 'cascade' (not tested feature: 'restrict'|'no action').
 
-Supported field types:
+Supported cross-platform field types:
 - autoincrement;
 - integer|real;
 - varchar;
 - time|date|datetime (always UTC);
-- boolean (0|1);
-- blob;
+- boolean (as integer: 0|1);
+- blob.
 
 Other types allowed but not tested.
 We recommend to use only tested types for cross-platform compatibility reasons.
 List of the tested types is sufficient for most tasks.
+The 'date' type has a range of values from '0000-01-01' to '9999-12-31'.
 The type 'timestamp' is not supported because it depends on server
-timezone offset and it's range of values is very limited.
+timezone offset and it's range of values for 32-bit platforms
+is very limited - from '1970-01-01' to '2038-01-19'.
 Use type 'integer' instead.
 
 
