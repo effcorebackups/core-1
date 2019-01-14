@@ -70,8 +70,7 @@
   select {cursor: pointer}
   textarea {display: block; width: 80%; min-width: 100px}
   input[type='range'] {border-radius: 20px}
-  input[data-type='email'],
-  input[data-type='nick'] {text-transform: lowercase}
+  input[data-type='email'] {text-transform: lowercase}
 
   /* checkboxes and radiobuttons */
 

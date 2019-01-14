@@ -25,7 +25,7 @@ namespace effcore\modules\user {
             return;
           }
         # test nick
-          if ((new instance('user', ['nick' => strtolower($items['#nick']->value_get())]))->select()) {
+          if ((new instance('user', ['nick' => $items['#nick']->value_get()]))->select()) {
             $items['#nick']->error_set(
               'User with this Nick was already registered!'
             );
@@ -41,7 +41,7 @@ namespace effcore\modules\user {
       case 'register':
         $user = user::insert([
           'email'         =>              strtolower($items['#email'   ]->value_get()),
-          'nick'          =>              strtolower($items['#nick'    ]->value_get()),
+          'nick'          =>                         $items['#nick'    ]->value_get(),
           'timezone'      =>                         $items['#timezone']->value_get(),
           'password_hash' => core::hash_password_get($items['#password']->value_get())
         ]);

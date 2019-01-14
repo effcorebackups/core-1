@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];
-  public $description = 'Field can contain only the next characters: "a-z", "0-9", "-", "_".';
+  public $description = 'Field can contain only the next characters: "a-z", "A-Z", "0-9", "-", "_".';
   public $element_attributes_default = [
     'data-type' => 'nick',
     'name'      => 'nick',
@@ -30,7 +30,6 @@ namespace effcore {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
       $new_value = static::request_value_get($name, static::cur_number_get($name), $form->source_get());
-      $new_value = strtolower($new_value);
       $result = static::validate_required ($field, $form, $element, $new_value) &&
                 static::validate_minlength($field, $form, $element, $new_value) &&
                 static::validate_maxlength($field, $form, $element, $new_value) &&

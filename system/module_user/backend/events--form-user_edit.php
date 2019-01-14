@@ -53,7 +53,7 @@ namespace effcore\modules\user {
           }
         # test nick
           $test_nick = (new instance('user', [
-            'nick' => strtolower($items['#nick']->value_get())
+            'nick' => $items['#nick']->value_get()
           ]))->select();
           if ($test_nick &&
               $test_nick->nick != $nick) {
@@ -81,7 +81,7 @@ namespace effcore\modules\user {
       case 'save':
         $user = (new instance('user', ['nick' => $nick]))->select();
         $user->email = strtolower($items['#email']->value_get());
-        $user->nick  = strtolower($items['#nick']->value_get());
+        $user->nick  = $items['#nick']->value_get();
         $user->timezone = $items['#timezone']->value_get();
         if ($items['#password_new']->value_get()) {
           $user->password_hash = core::hash_password_get($items['#password_new']->value_get());
