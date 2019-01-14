@@ -2,6 +2,7 @@ selections
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
+    view_type: list
     fields
     - id
         type: field

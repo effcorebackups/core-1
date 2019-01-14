@@ -8,7 +8,7 @@ namespace effcore {
           class selection extends node implements has_external_cache {
 
   public $id;
-  public $view_type = 'table';
+  public $view_type = 'table'; # table | list
   public $title;
   public $fields;
   public $conditions = [];
@@ -68,12 +68,14 @@ namespace effcore {
         # make thead
           foreach ($this->fields as $c_field) {
             switch ($c_field->type) {
-              case 'actions':
-                $thead[] = new table_head_row_cell(['class' => ['actions' => 'actions']], '');
-                break;
               case 'field':
                 $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
                   $entity->fields[$c_field->field_name]->title
+                );
+                break;
+              case 'actions':
+                $thead[] = new table_head_row_cell(['class' => ['actions' => 'actions']],
+                  new text('-')
                 );
                 break;
             }
@@ -83,11 +85,6 @@ namespace effcore {
             $c_tbody_row = [];
             foreach ($this->fields as $c_field) {
               switch ($c_field->type) {
-                case 'actions':
-                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']],
-                    $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
-                  );
-                  break;
                 case 'field':
                   $c_type = $entity->fields[$c_field->field_name]->type;
                   $c_value = $c_instance->{$c_field->field_name};
@@ -101,20 +98,49 @@ namespace effcore {
                     $c_value
                   );
                   break;
+                case 'actions':
+                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']],
+                    $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
+                  );
+                  break;
               }
             }
             $tbody[] = $c_tbody_row;
           }
-          return new table(['class' => [
-            'selection' =>
-            'selection',
-            'selection-'.$entity->name =>
-            'selection-'.$entity->name]], $tbody, [$thead]);
+          return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name],
+            new table(['class' => ['data' => 'data']], $tbody, [$thead])
+          );
       # ─────────────────────────────────────────────────────────────────────
       # list
       # ─────────────────────────────────────────────────────────────────────
         case 'list':
-          return new node();
+          $result = new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name]);
+          foreach ($instances as $c_instance) {
+            $c_list = new markup('ul', ['class' => ['row' => 'row']]);
+            foreach ($this->fields as $c_field) {
+              switch ($c_field->type) {
+                case 'field':
+                  $c_type  = $entity->fields[$c_field->field_name]->type;
+                  $c_title = $entity->fields[$c_field->field_name]->title;
+                  $c_value = $c_instance->  {$c_field->field_name};
+                  if ($c_type == 'date')     $c_value = locale::    date_format($c_value);
+                  if ($c_type == 'time')     $c_value = locale::    time_format($c_value);
+                  if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);
+                  if ($c_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
+                  $c_list->child_insert(
+                    new markup('li', ['class' => [$c_field->field_name => $c_field->field_name]], [
+                      new markup('x-title', [], $c_title),
+                      new markup('x-value', [], $c_value)
+                    ])
+                  );
+                  break;
+              }
+            }
+            $result->child_insert(
+              $c_list
+            );
+          }
+          return $result;
       }
     }
   }
