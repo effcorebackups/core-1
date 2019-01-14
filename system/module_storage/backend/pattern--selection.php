@@ -135,6 +135,15 @@ namespace effcore {
                     ])
                   );
                   break;
+                case 'actions':
+                  if ($id_keys) {
+                    $c_list->child_insert(
+                      new markup('li', ['class' => ['actions' => 'actions']],
+                        $this->action_list_get($entity, $c_instance, $id_keys)
+                      )
+                    );
+                  }
+                  break;
               }
             }
             $result[] = $c_list;
