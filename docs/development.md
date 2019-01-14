@@ -21,9 +21,13 @@ Supported field types:
 - time|date|datetime (always UTC);
 - boolean (0|1);
 - blob;
+
 Other types allowed but not tested.
 We recommend to use only tested types for cross-platform compatibility reasons.
 List of the tested types is sufficient for most tasks.
+The type 'timestamp' is not supported because it depends on server
+timezone offset and it's range of values is very limited.
+Use type 'integer' instead.
 
 
 How to activate Neor Profile SQL
