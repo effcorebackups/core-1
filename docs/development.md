@@ -1,5 +1,31 @@
 
 
+Storage layer characteristics
+=====================================================================
+
+- supported MySQL and SQLite databases;
+- supported prepared queries anywhere (no chance for SQL-injections);
+- supported only UTF-8 anywhere;
+- supported transactions: begin, roll_back, commit;
+- supported collations: nocase, binary;
+- supported constraints: primary, unique, foreign;
+- supported indexes: unique index, index;
+- supported table prefixes (global);
+- supported connections to remote storages via manual initialization process;
+- distributed queries to remote storages not supported.
+
+Supported field types:
+- autoincrement;
+- integer|real;
+- varchar;
+- time|date|datetime (always UTC);
+- boolean (0|1);
+- blob;
+Other types allowed but not tested.
+We recommend to use only tested types for cross-platform compatibility reasons.
+List of the tested types is sufficient for most tasks.
+
+
 How to activate Neor Profile SQL
 =====================================================================
 
