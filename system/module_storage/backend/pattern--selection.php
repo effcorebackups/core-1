@@ -76,7 +76,7 @@ namespace effcore {
                 break;
               case 'actions':
                 $thead[] = new table_head_row_cell(['class' => ['actions' => 'actions']],
-                  new text('-')
+                  new text('')
                 );
                 break;
             }
@@ -108,9 +108,11 @@ namespace effcore {
             }
             $tbody[] = $c_tbody_row;
           }
-          $result[] = new table(['class' => ['data' => 'data']],
-            $tbody, [$thead]
-          );
+          if ($tbody) {
+            $result[] = new table(['class' => ['data' => 'data']],
+              $tbody, [$thead]
+            );
+          }
           break;
       # ─────────────────────────────────────────────────────────────────────
       # list
