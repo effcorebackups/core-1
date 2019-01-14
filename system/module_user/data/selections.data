@@ -21,6 +21,10 @@ selections
         type: field
         entity_name: user
         field_name: is_embed
+    - avatar_path
+        type: field
+        entity_name: user
+        field_name: avatar_path
     - created
         type: field
         entity_name: user

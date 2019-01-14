@@ -22,6 +22,7 @@ translations
     - Attempts: Попытки
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
     - autoload: автозагрузка
+    - Avatar path: Путь аватара
     - Avatar: Аватар
     - avatar: аватар
     - Background color: Цвет фона
@@ -314,6 +315,7 @@ translations
     - Selections: Выборки
     - Server timezone: Часовой пояс сервера
     - Server UTC date / time: UTC Дата / время сервера
+    - Session expired date: Дата истечения сессии
     - Session: Сессия
     - Sessions: Сессии
     - set: установка

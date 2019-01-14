@@ -12,6 +12,8 @@ namespace effcore\modules\user {
           use \effcore\selection;
           use \effcore\session;
           use \effcore\table;
+          use \effcore\text_multiline;
+          use \effcore\text;
           use \effcore\user;
           abstract class events_page_user {
 
@@ -26,19 +28,20 @@ namespace effcore\modules\user {
         $selection = selection::get('user');
         $selection->title = '';
         $selection->conditions = ['nick' => $user->nick];
+        if ($user->nick == user::current_get()->nick) {
+          $selection->field_markup_insert('session_expired', 'Session expired date',
+            new text(locale::timestmp_format(session::id_expired_extract(session::id_get())))
+          );
+        }
+        $user_roles = user::id_roles_get($user->nick);
+        if ($user_roles) {
+          $selection->field_markup_insert('roles', 'Roles',
+            new text_multiline($user_roles)
+          );          
+        }
         return new block('', ['class' => ['user-info' => 'user-info']],
           $selection
         );
-
-      # $user_roles = user::id_roles_get($user->nick);
-      # if ($user->nick == user::current_get()->nick) $values['current_session_expired'] = locale::timestmp_format(session::id_expired_extract(session::id_get()));
-      # $values['roles'] = $user_roles ? implode(', ', $user_roles) : '-';
-      # $values['avatar_path'] = $values['avatar_path'] ?: '-';
-      # $tbody = core::array_rotate([
-      #   array_keys  ($values),
-      #   array_values($values)
-      # ]);
-
       } else core::send_header_and_exit('access_forbidden');
     }   else core::send_header_and_exit('page_not_found');
   }

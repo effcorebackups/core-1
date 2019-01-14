@@ -120,7 +120,7 @@ namespace effcore {
         case 'list':
           foreach ($instances as $c_instance) {
             $c_list = new markup('ul', ['class' => ['row' => 'row']]);
-            foreach ($this->fields as $c_field) {
+            foreach ($this->fields as $c_row_id => $c_field) {
               switch ($c_field->type) {
                 case 'field':
                   $c_type  = $entity->fields[$c_field->field_name]->type;
@@ -146,6 +146,14 @@ namespace effcore {
                     );
                   }
                   break;
+                case 'markup':
+                  $c_list->child_insert(
+                    new markup('li', ['class' => [$c_row_id => $c_row_id]], [
+                      new markup('x-title', [], $c_field->title),
+                      new markup('x-value', [], $c_field->markup)
+                    ])
+                  );
+                  break;
               }
             }
             $result[] = $c_list;
@@ -170,11 +178,25 @@ namespace effcore {
     }
   }
 
-  function field_insert($entity_name = null, $field_name = null, $type = 'field') {
+  function field_entity_insert($entity_name, $field_name) {
     $this->fields[$entity_name.'.'.$field_name] = (object)[
-      'type'        => $type,
+      'type'        => 'field',
       'entity_name' => $entity_name,
       'field_name'  => $field_name
+    ];
+  }
+
+  function field_action_insert() {
+    $this->fields['actions'] = (object)[
+      'type' => 'actions'
+    ];
+  }
+
+  function field_markup_insert($row_id, $title, $markup) {
+    $this->fields[$row_id] = (object)[
+      'type'   => 'markup',
+      'title'  => $title,
+      'markup' => $markup
     ];
   }
 

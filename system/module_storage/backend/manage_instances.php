@@ -41,10 +41,10 @@ namespace effcore {
       foreach ($entity->fields as $c_name => $c_info) {
         if (!isset($c_info->hidden) ||
                   !$c_info->hidden) {
-          $selection->field_insert($entity->name, $c_name);
+          $selection->field_entity_insert($entity->name, $c_name);
         }
       }
-      $selection->field_insert(null, null, 'actions');
+      $selection->field_action_insert();
       $markup = $selection->build();
       return new block('', ['class' => [
         $entity->name =>
