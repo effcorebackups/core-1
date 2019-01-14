@@ -165,9 +165,9 @@ namespace effcore {
 
   static function text_block_logs_get() {
     $result = '  EXECUTE PLAN'.nl.nl;
-    $result.= '  --------------------------------------------------------'.nl;
-    $result.= '  Time     | Object     | Action     | Value | Description'.nl;
-    $result.= '  --------------------------------------------------------'.nl;
+    $result.= '  ------------------------------------------------------------'.nl;
+    $result.= '  Time     | Object     | Action     | Value | Description    '.nl;
+    $result.= '  ------------------------------------------------------------'.nl;
     $logs_all = static::logs_select();
     foreach (static::logs_select() as $c_log) {
       $result.= '  '.str_pad(locale::msecond_format($c_log->time), 8).' | ';
@@ -176,7 +176,8 @@ namespace effcore {
       $result.=      str_pad($c_log->value,   5).                     ' | ';
       $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;
     }
-    $result.= nl.str_repeat(' ', 47).'Total: '.count($logs_all);
+    $result.= '  ------------------------------------------------------------'.nl;
+    $result.= nl.str_repeat(' ', 26).'Total: '.count($logs_all);
     return nl.$result.nl;
   }
 
