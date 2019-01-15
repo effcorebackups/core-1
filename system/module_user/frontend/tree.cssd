@@ -29,5 +29,5 @@
 
   /* menu User: icons */
 
-  x-tree.user a.anonymous  {padding-left: 64px; background: url('...') no-repeat 0 0}
-  x-tree.user a.registered {padding-left: 64px; background: url('...') no-repeat 0 -64px}
+  x-tree.user a.anonymous  {padding-left: 77px; background: url('images/avatar-anonymous.svg'  ) no-repeat 8px 50%}
+  x-tree.user a.registered {padding-left: 77px; background: url('images/avatar-registered.svgd') no-repeat 8px 50%}
