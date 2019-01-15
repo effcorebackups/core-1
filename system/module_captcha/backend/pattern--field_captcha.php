@@ -57,7 +57,8 @@ namespace effcore {
     $canvas->fill('#000000', 0, 0, null, null, $this->noise);
     for ($i = 0; $i < $this->length; $i++) {
       $c_glyph = array_rand($glyphs);
-      $characters.= $glyphs[$c_glyph];
+      $c_character = $glyphs[$c_glyph];
+      $characters.= $c_character;
       $canvas->glyph_set($c_glyph,
         random_int(0, 2) - 1 + ($i * 5),
         random_int(1, 5)
@@ -121,17 +122,25 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
       foreach ($c_characters as $c_row_id => $c_character) {
-        foreach ($c_character->glyphs as $c_glyph) {
-          if (isset(static::$glyphs[$c_glyph])) console::log_about_duplicate_insert('glyph', $c_glyph);
-          static::$glyphs[$c_glyph] = $c_character->character;
+        foreach ($c_character->glyphs as $c_group => $c_glyph) {
+          if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_about_duplicate_insert('glyph', $c_glyph);
+          static::$glyphs[$c_group][$c_glyph] = $c_character->character;
         }
       }
     }
   }
 
-  static function glyphs_get() {
+  static function glyphs_get($group = 'default') {
     if   (!static::$glyphs) static::init();
-    return static::$glyphs;
+    return static::$glyphs[$group] ?? [];
+  }
+
+  static function glyph_character_get($character, $group = 'default') {
+    foreach (static::glyphs_get($group) as $c_glyph => $c_character) {
+      if ($c_character == $character) {
+        return $c_glyph;
+      }
+    }
   }
 
   static function captcha_localhost_code_get() {

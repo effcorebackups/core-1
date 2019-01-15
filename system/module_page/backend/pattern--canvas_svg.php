@@ -47,10 +47,10 @@ namespace effcore {
   }
 
   function glyph_set($glyph, $x, $y) {
-    $rows = explode('|', $glyph);
+    $rows = array_reverse(explode('|', $glyph));
     for ($c_y = 0; $c_y < count ($rows);       $c_y++) {
     for ($c_x = 0; $c_x < strlen($rows[$c_y]); $c_x++) {
-      $c_color = $rows[$c_y][$c_x] == '1' ? '#000000' : null;
+      $c_color = $rows[$c_y][$c_x] == 'X' ? '#000000' : null;
       if ($c_color) {
         $this->pixel_set($c_x + $x, $c_y + $y, $c_color);
       }
