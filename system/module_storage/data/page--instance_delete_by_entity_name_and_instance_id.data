@@ -13,7 +13,7 @@ pages
     - menu_user|page_part
         region: menu
         type: link
-        source: trees/user/user_logged_in
+        source: trees/user/user_registered
     - menu_main|page_part
         region: menu
         type: link

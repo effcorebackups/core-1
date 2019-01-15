@@ -13,7 +13,7 @@ pages
           match: %^registered$%
         region: menu
         type: link
-        source: trees/user/user_logged_in
+        source: trees/user/user_registered
     - menu_user_anonymous|page_part
         display
           check: user

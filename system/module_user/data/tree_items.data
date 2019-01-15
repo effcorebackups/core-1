@@ -2,7 +2,7 @@ tree_items
 - login|tree_item
     id: login
     id_parent: M:user_anonymous
-    title: login
+    title: Login
     url: /login
     weight: 100
     access
@@ -14,7 +14,7 @@ tree_items
 - registration|tree_item
     id: registration
     id_parent: M:user_anonymous
-    title: registration
+    title: Registration
     url: /registration
     access
       roles
@@ -22,10 +22,21 @@ tree_items
     attributes
     - class
       - =: registration
+- recovery|tree_item
+    id: recovery
+    id_parent: M:user_anonymous
+    title: Recovery
+    url: /recovery
+    access
+      roles
+      - =: anonymous
+    attributes
+    - class
+      - =: recovery
 # ─────────────────────────────────────────────────────────────────────
 - user_edit|tree_item
     id: user_edit
-    id_parent: M:user_logged_in
+    id_parent: M:user_registered
     title: edit
     url: /user/%%_nick/edit
     access
@@ -37,7 +48,7 @@ tree_items
       - =: user-edit
 - logout|tree_item
     id: logout
-    id_parent: M:user_logged_in
+    id_parent: M:user_registered
     title: logout
     url: /logout
     weight: -100

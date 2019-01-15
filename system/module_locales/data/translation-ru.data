@@ -209,8 +209,8 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
     - Menu for anonymous user: Меню для анонимного пользователя
-    - Menu for authenticated user: Меню для аутетифицированного пользователя
     - Menu for demonstration: Меню для демонстрации
+    - Menu for registered user: Меню для зарегистрированного пользователя
     - Menu main: Меню главное
     - Menu: Меню
     - Menus: Меню
@@ -280,6 +280,8 @@ translations
     - Radiobutton: Переключатель
     - Radiobuttons: Переключатели
     - Range: Диапазон
+    - recovery: восстановление
+    - Recovery: Восстановление
     - refresh: обновить
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать

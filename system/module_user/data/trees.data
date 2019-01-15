@@ -7,11 +7,11 @@ trees
     - class
       - =: user
       - =: user-anonymous
-- user_logged_in|tree
-    id: user_logged_in
-    title: Menu for authenticated user
+- user_registered|tree
+    id: user_registered
+    title: Menu for registered user
     title_state: hidden
     attributes
     - class
       - =: user
-      - =: user-logged_in
+      - =: user-registered

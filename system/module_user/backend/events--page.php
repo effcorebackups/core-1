@@ -23,9 +23,9 @@ namespace effcore\modules\user {
       ]);
     } else {
       $src = $user->avatar_path ?
-         '/'.$user->avatar_path : '/'.module::get('user')->path.'frontend/images/avatar-logged_in.svgd';
+         '/'.$user->avatar_path : '/'.module::get('user')->path.'frontend/images/avatar-registered.svgd';
       $block_menu = new block('', ['class' => ['menu-user' => 'menu-user']], [
-        storage::get('files')->select('trees/user/user_logged_in'),
+        storage::get('files')->select('trees/user/user_registered'),
         new markup('a', ['href' => '/user/'.$user->nick],
           new markup_simple('img', ['class' => ['avatar' => 'avatar'], 'alt' => 'avatar', 'src' => $src])
         )
