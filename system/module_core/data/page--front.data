@@ -6,10 +6,22 @@ pages
       where: path
       match: %^/$%
     children
-    - menu_user|page_part
+    - menu_user_registered|page_part
+        display
+          check: user
+          where: role
+          match: %^registered$%
         region: menu
-        type: code
-        source: \effcore\modules\user\events_page::on_show_block_menu_user
+        type: link
+        source: trees/user/user_logged_in
+    - menu_user_anonymous|page_part
+        display
+          check: user
+          where: role
+          match: %^anonymous$%
+        region: menu
+        type: link
+        source: trees/user/user_anonymous
     - menu_main|page_part
         region: menu
         type: link

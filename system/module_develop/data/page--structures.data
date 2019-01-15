@@ -17,8 +17,8 @@ pages
     children
     - menu_user|page_part
         region: menu
-        type: code
-        source: \effcore\modules\user\events_page::on_show_block_menu_user
+        type: link
+        source: trees/user/user_logged_in
     - menu_main|page_part
         region: menu
         type: link
