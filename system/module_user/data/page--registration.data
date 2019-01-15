@@ -11,7 +11,7 @@ pages
       - =: anonymous
     children
     - menu_main|page_part
-        region: main_menu
+        region: menu
         type: link
         source: trees/core/main
     - menu_user|page_part
