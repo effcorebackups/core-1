@@ -4,7 +4,7 @@ tree_items
     id_parent: develop
     title: Demo
     url: /develop/demo
-    weight: 100
+    weight: +50
     access
       roles
       - =: admins

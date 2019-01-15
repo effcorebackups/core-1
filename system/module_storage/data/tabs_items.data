@@ -4,7 +4,7 @@ tabs_items
     id_parent: T:manage_instances
     action_name: select
     title: Select
-    weight: 100
+    weight: +50
     attributes
     - class
       - =: instance-select

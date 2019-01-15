@@ -4,7 +4,7 @@ tree_items
     id_parent: M:main
     title: Develop
     shadow_url: /develop
-    weight: -100
+    weight: -50
     access
       roles
       - =: admins

@@ -17,35 +17,35 @@ instances
     - id: admins
     - title: Administrators
     - is_embed: 1
-    - weight: 100
+    - weight: +80
 - role_managers|instance
     entity_name: role
     values
     - id: managers
     - title: Managers
     - is_embed: 1
-    - weight: 80
+    - weight: +70
 - role_owner|instance
     entity_name: role
     values
     - id: owner
     - title: Owner
     - is_embed: 1
-    - weight: 60
+    - weight: +60
 - role_registered|instance
     entity_name: role
     values
     - id: registered
     - title: Registered
     - is_embed: 1
-    - weight: 40
+    - weight: +50
 - role_anonymous|instance
     entity_name: role
     values
     - id: anonymous
     - title: Anonymous
     - is_embed: 1
-    - weight: 20
+    - weight: +40
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────

@@ -37,7 +37,7 @@ tree_items
     id_parent: manage
     title: Information
     url: /manage/info
-    weight: -100
+    weight: -50
     access
       roles
       - =: admins

@@ -4,7 +4,7 @@ tabs_items
     id_parent: T:manage_modules
     action_name: install
     title: Install
-    weight: 100
+    weight: +50
     attributes
     - class
       - =: modules-install

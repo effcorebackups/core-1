@@ -56,12 +56,12 @@ frontend
     scripts
     - page_variables
         file: frontend/core.jsd
-        weight: 90
+        weight: +50
         attributes
         - defer: true
     - page_script
         file: frontend/page.js
-        weight: 80
+        weight: +30
         attributes
         - defer: true
 - form_all
@@ -78,6 +78,6 @@ frontend
     scripts
     - form_script
         file: frontend/form.js
-        weight: 70
+        weight: +10
         attributes
         - defer: true

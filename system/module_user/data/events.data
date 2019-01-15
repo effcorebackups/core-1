@@ -11,7 +11,7 @@ events
   - user|event
       for: user
       handler: \effcore\modules\user\events_module::on_start
-      weight: 50
+      weight: +50
   on_cron
   - user|event
       for: user

@@ -4,7 +4,7 @@ tabs_items
     id_parent: T:manage_trees
     action_name: select
     title: Select
-    weight: 100
+    weight: +50
     attributes
     - class
       - =: tree-select
