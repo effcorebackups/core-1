@@ -37,7 +37,7 @@ tree_items
 - user_edit|tree_item
     id: user_edit
     id_parent: M:user_registered
-    title: edit
+    title: Edit
     url: /user/%%_nick/edit
     access
       roles
@@ -49,7 +49,7 @@ tree_items
 - logout|tree_item
     id: logout
     id_parent: M:user_registered
-    title: logout
+    title: Logout
     url: /logout
     weight: -100
     access

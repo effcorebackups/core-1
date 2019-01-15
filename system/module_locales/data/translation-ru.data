@@ -95,6 +95,7 @@ translations
     - duplicate of %%_type "%%_id" was found: был найден дубликат "%%_id" типа %%_type
     - Edit user %%_nick_context{2}: Редактировать пользователя %%_nick_context{2}
     - edit: редактировать
+    - Edit: Редактировать
     - EMail: Адрес электронной почты
     - email: адрес электронной почты
     - Embedded: Встроенные
