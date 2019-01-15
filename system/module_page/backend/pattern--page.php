@@ -154,14 +154,14 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
       foreach ($c_pages as $c_row_id => $c_page) {
-        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_insert('page', $c_row_id);
+        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_insert('page', $c_row_id, $c_module_id);
         static::$cache[$c_row_id] = $c_page;
         static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
       foreach ($c_frontends as $c_row_id => $c_frontend) {
-        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_insert('frontend', $c_row_id);
+        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_insert('frontend', $c_row_id, $c_module_id);
         static::$cache_frontend[$c_row_id] = $c_frontend;
         static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
       }
