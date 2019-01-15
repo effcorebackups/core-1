@@ -14,7 +14,7 @@ frontend
         attributes
         - rel: stylesheet
         - media: all
-- develop_page_structures
+- page_structures
     display
       check: url
       where: path

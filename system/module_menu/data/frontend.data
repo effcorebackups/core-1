@@ -1,5 +1,5 @@
 frontend
-- menu_block_tree
+- menu_all
     display
       check: block
       where: dpath
@@ -10,7 +10,7 @@ frontend
         attributes
         - rel: stylesheet
         - media: all
-- menu_block_tabs
+- tabs_all
     display
       check: block
       where: dpath

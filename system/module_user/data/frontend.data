@@ -1,0 +1,12 @@
+frontend
+- menu_user
+    display
+      check: block
+      where: dpath
+      match: %^trees/user/.*$%
+    styles
+    - tree_style
+        file: frontend/tree.cssd
+        attributes
+        - rel: stylesheet
+        - media: all

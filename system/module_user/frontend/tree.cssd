@@ -1,0 +1,33 @@
+
+  /* menu User: sizes and orientation */
+
+  x-tree.user {display: block; margin: 0 auto}
+  x-tree.user ul, x-tree.user li {margin: 0; padding: 0; list-style: none}
+  x-tree.user > ul > li {float: left; cursor: default}
+  x-tree.user > ul > li > a {display: block; padding: 21px}
+  x-tree.user > ul > li > ul {position: absolute; padding: 21px; z-index: 10}
+  x-tree.user::after {content: ''; clear: both; display: block}
+
+  /* menu User: colors */
+
+  x-tree.user {background: %%_color_bg}
+  x-tree.user a {color: white}
+
+  x-tree.user > ul > li:hover,
+  x-tree.user > ul > li > a.active,
+  x-tree.user > ul > li > a.active-trail {background-color: %%_color_hover_bg}
+
+  x-tree.user > ul > li > ul {background: %%_color_hover_bg}
+  x-tree.user > ul > li > ul a.active,
+  x-tree.user > ul > li > ul a.active-trail,
+  x-tree.user > ul > li > ul a:hover {color: %%_color_hover}
+
+  /* menu User: dynamic */
+
+  x-tree.user > ul > li > ul {display: none}
+  x-tree.user > ul > li:hover > ul {display: block}
+
+  /* menu User: icons */
+
+  x-tree.user a.anonymous  {padding-left: 64px; background: url('...') no-repeat 0 0}
+  x-tree.user a.registered {padding-left: 64px; background: url('...') no-repeat 0 -64px}
