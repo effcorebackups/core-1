@@ -57,7 +57,7 @@ namespace effcore\modules\core {
     $info->child_insert(new markup('dt', [], 'Server UTC date / time'));
     $info->child_insert(new markup('dd', [], core::datetime_get()));
     $info->child_insert(new markup('dt', [], 'OPcache is anebled'));
-    $info->child_insert(new markup('dd', [], $is_enabled_opcache ? 'yes' : 'no'));
+    $info->child_insert(new markup('dd', [], new markup('x-value', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no')));
     $info->child_insert(new markup('dt', [], 'Cron URL'));
     $info->child_insert(new markup('dd', [], $cron_link));
     $info->child_insert(new markup('dt', [], 'Provisioning key'));
