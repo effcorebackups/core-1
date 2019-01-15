@@ -11,6 +11,7 @@ namespace effcore\modules\user {
           use \effcore\module;
           use \effcore\session;
           use \effcore\storage;
+          use \effcore\tree;
           use \effcore\user;
           abstract class events_module {
 
@@ -38,6 +39,14 @@ namespace effcore\modules\user {
     if ($session &&
         $session->nick) {
       user::init($session->nick);
+      $user = user::current_get();
+      if (isset($user->roles['registered']) &&
+                $user->avatar_path) {
+        $tree_item = tree::item_select('registered');
+        $tree_item->attribute_insert('class', [
+          'with-avatar' => 'with-avatar'
+        ]);
+      }
     }
   }
 
