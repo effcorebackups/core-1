@@ -6,14 +6,14 @@ pages
       where: path
       match: %^/$%
     children
+    - menu_user|page_part
+        region: menu
+        type: code
+        source: \effcore\modules\user\events_page::on_show_block_menu_user
     - menu_main|page_part
         region: menu
         type: link
         source: trees/core/main
-    - menu_user|page_part
-        region: top
-        type: code
-        source: \effcore\modules\user\events_page::on_show_block_menu_user
     - logo|page_part
         region: top
         type: link

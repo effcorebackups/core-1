@@ -13,20 +13,17 @@
   /* menu Main: colors */
 
   x-tree.main {background: %%_color_bg}
-  x-tree.main > ul > li:hover {background: %%_color_hover_bg}
+  x-tree.main a {color: white}
 
-  x-tree.main > ul > li >    a              {color: white}
-  x-tree.main > ul > li >    a.active,
-  x-tree.main > ul > li >    a.active-trail {color: white; background-color: %%_color_hover_bg}
-  x-tree.main > ul > li >    a:hover        {color: white}
-  x-tree.main > ul > li >    a.home         {background-color: transparent}
-
-  x-tree.main > ul > li > ul a              {color: white}
-  x-tree.main > ul > li > ul a.active,
-  x-tree.main > ul > li > ul a.active-trail {color: %%_color_hover}
-  x-tree.main > ul > li > ul a:hover        {color: %%_color_hover}
+  x-tree.main > ul > li:hover,
+  x-tree.main > ul > li > a.active,
+  x-tree.main > ul > li > a.active-trail {background-color: %%_color_hover_bg}
+  x-tree.main > ul > li > a.home         {background-color: transparent}
 
   x-tree.main > ul > li > ul {background: %%_color_hover_bg}
+  x-tree.main > ul > li > ul a.active,
+  x-tree.main > ul > li > ul a.active-trail,
+  x-tree.main > ul > li > ul a:hover {color: %%_color_hover}
 
   /* menu Main: dynamic */
 

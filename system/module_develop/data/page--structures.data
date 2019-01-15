@@ -15,14 +15,14 @@ pages
       roles
       - =: admins
     children
+    - menu_user|page_part
+        region: menu
+        type: code
+        source: \effcore\modules\user\events_page::on_show_block_menu_user
     - menu_main|page_part
         region: menu
         type: link
         source: trees/core/main
-    - menu_user|page_part
-        region: top
-        type: code
-        source: \effcore\modules\user\events_page::on_show_block_menu_user
     - title|page_part
         region: title
         type: code
