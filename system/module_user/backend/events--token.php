@@ -6,23 +6,31 @@
 
 namespace effcore\modules\user {
           use \effcore\instance;
+          use \effcore\session;
           use \effcore\url;
           use \effcore\user;
           abstract class events_token {
 
   static function on_replace($name, $args = []) {
-    if (!empty(user::current_get()->nick)) {
-      switch ($name) {
-        case 'email': return user::current_get()->email;
-        case 'nick' : return user::current_get()->nick;
-        case 'email_context':
-        case 'nick_context':
-          $arg_number = $args[0];
-          $nick = url::current_get()->path_arg_select($arg_number);
-          $user = (new instance('user', ['nick' => $nick]))->select();
-          if ($user && $name == 'email_context') return $user->email;
-          if ($user && $name == 'nick_context')  return $user->nick;
-          return '[unknown nick]';
+    $session = session::select();
+    if ($session &&
+        $session->nick) {
+      user::init($session->nick, false);
+      $user = user::current_get();
+      if (isset($user->roles['registered'])) {
+        switch ($name) {
+          case 'email'     : return     user::current_get()->email;
+          case 'nick'      : return     user::current_get()->nick;
+          case 'avatar_url': return '/'.user::current_get()->avatar_path;
+          case 'email_context':
+          case 'nick_context':
+            $arg_number = $args[0];
+            $nick = url::current_get()->path_arg_select($arg_number);
+            $user = (new instance('user', ['nick' => $nick]))->select();
+            if ($user && $name == 'email_context') return $user->email;
+            if ($user && $name == 'nick_context')  return $user->nick;
+            return '[unknown nick]';
+        }
       }
     }
   }

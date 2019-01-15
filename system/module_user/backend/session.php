@@ -12,8 +12,9 @@ namespace effcore {
   const empty_ip = '::';
 
   static function select() {
-    $session_id = static::id_get();
-    if ($session_id[0] == 'f') {
+    $session_id       = static::id_get();
+    $session_hex_type = static::id_hex_type_extract($session_id);
+    if ($session_hex_type == 'f') {
       $session = (new instance('session', [
         'id' => $session_id
       ]))->select();

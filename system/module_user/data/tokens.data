@@ -10,6 +10,10 @@ tokens
     match: %%_nick
     type: code
     handler: \effcore\modules\user\events_token::on_replace
+- avatar_url
+    match: %%_avatar_url
+    type: code
+    handler: \effcore\modules\user\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────
 # tokens for context user (user id is taken from url)
 # ─────────────────────────────────────────────────────────────────────
