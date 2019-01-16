@@ -1,31 +1,43 @@
 
   /* menu User: sizes and orientation */
 
-  x-tree.user {display: block; margin: 0 auto}
-  x-tree.user ul, x-tree.user li {margin: 0; padding: 0; list-style: none}
-  x-tree.user > ul > li {float: left; cursor: default}
-  x-tree.user > ul > li > a {display: block; padding: 21px}
-  x-tree.user > ul > li > ul {position: absolute; padding: 21px; z-index: 10}
-  x-tree.user::after {content: ''; clear: both; display: block}
+  x-tree.user          {float: right; z-index: 10}
+  x-tree.user li       {float: left}
+  x-tree.user li li    {float: none}
+  x-tree.user ul       {float: left}
+  x-tree.user ul ul    {float: none}
 
-  /* menu User: colors */
+  x-tree.user ul ul    {position: absolute}
+  x-tree.user ul ul ul {position: relative}
 
-  x-tree.user {background: %%_color_bg}
-  x-tree.user a {color: white}
+  x-tree.user li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  x-tree.user ul       {padding: 0; margin: 0}
+  x-tree.user ul ul    {padding: 20px}
+  x-tree.user ul ul ul {padding: 0 0 0 21px}
 
-  x-tree.user > ul > li:hover,
-  x-tree.user > ul > li > a.active,
-  x-tree.user > ul > li > a.active-trail {background-color: %%_color_hover_bg}
-
-  x-tree.user > ul > li > ul {background: %%_color_hover_bg}
-  x-tree.user > ul > li > ul a.active,
-  x-tree.user > ul > li > ul a.active-trail,
-  x-tree.user > ul > li > ul a:hover {color: %%_color_hover}
+  x-tree.user li     a {padding: 21px; display: block}
+  x-tree.user li li  a {padding: 0}
 
   /* menu User: dynamic */
 
-  x-tree.user > ul > li > ul {display: none}
+  x-tree.user > ul > li       > ul {display: none}
   x-tree.user > ul > li:hover > ul {display: block}
+
+  /* menu User: colors */
+
+  x-tree.user ul       {background-color: %%_color_bg}
+  x-tree.user ul ul    {background-color: %%_color_hover_bg}
+  x-tree.user ul ul ul {background-color: transparent}
+
+  x-tree.user              a       {color: white}
+  x-tree.user        li    a:hover {color: white;          background-color: %%_color_hover_bg}
+  x-tree.user        li li a:hover {color: %%_color_hover; background-color: transparent}
+  x-tree.user > ul > li:hover      {                       background-color: %%_color_hover_bg}
+
+  x-tree.user li    a.active,
+  x-tree.user li    a.active-trail {background-color: %%_color_hover_bg}
+  x-tree.user li li a.active,
+  x-tree.user li li a.active-trail {background-color: transparent; color: %%_color_hover}
 
   /* menu User: icons */
 

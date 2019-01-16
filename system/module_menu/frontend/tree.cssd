@@ -3,11 +3,11 @@
 
   /* menu Main: sizes and orientation */
 
-  x-tree.main       {float: left}
-  x-tree.main li    {float: left}
-  x-tree.main li li {float: none}
-  x-tree.main ul    {float: left}
-  x-tree.main ul ul {float: none}
+  x-tree.main          {float: left}
+  x-tree.main li       {float: left}
+  x-tree.main li li    {float: none}
+  x-tree.main ul       {float: left}
+  x-tree.main ul ul    {float: none}
 
   x-tree.main ul ul    {position: absolute}
   x-tree.main ul ul ul {position: relative}
