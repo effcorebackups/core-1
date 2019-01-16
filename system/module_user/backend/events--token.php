@@ -15,8 +15,11 @@ namespace effcore\modules\user {
     $session = session::select();
     if ($session &&
         $session->nick) {
-      user::init($session->nick, false);
       $user = user::current_get();
+      if (!isset($user->roles['registered'])) {
+        user::init($session->nick, false);
+        $user = user::current_get();
+      }
       if (isset($user->roles['registered'])) {
         switch ($name) {
           case 'email'     : return     user::current_get()->email;
