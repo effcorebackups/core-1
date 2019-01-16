@@ -1,6 +1,6 @@
 
 
-Storage layer characteristics
+SQL Storage characteristics
 =====================================================================
 
 - supported MySQL and SQLite databases;
@@ -13,7 +13,7 @@ Storage layer characteristics
 - supported table prefixes (global);
 - supported connections to remote storages via manual initialization process;
 - distributed queries to remote storages not supported;
-- storage initialization will start after first data call.
+- storage will initialize only if required.
 
 Foreign key constraint support:
 - on update: 'cascade' (not tested feature: 'restrict'|'no action');
@@ -35,6 +35,28 @@ The type 'timestamp' is not supported because it depends on server
 timezone offset and it's range of values for 32-bit platforms
 is very limited - from '1970-01-01' to '2038-01-19'.
 Use type 'integer' instead.
+
+
+NoSQL Storage characteristics
+=====================================================================
+
+- the fastest access after 'storages in the memory' (no data compression,
+  all data stored as PHP code, after OPCache enabled you can increase performance
+  over 10x; after organize disk in the memory you can get the best performance
+  from possible and can increase performance over 20-100x);
+- tree structure and no restrictions - each item can have own unique structure;
+- data parts definitions in format 'property: value' on each own line (it's a convenient
+  solution for preview differences in data in tools like 'git' and 'diff');
+- each sub storage will initialize only if required.
+
+Supported types:
+- integer;
+- float;
+- boolean;
+- string;
+- array;
+- object|class_name;
+- null.
 
 
 How to activate Neor Profile SQL
