@@ -3,37 +3,49 @@
 
   /* menu Main: sizes and orientation */
 
-  x-tree.main {display: block; max-width: 800px; margin: 0 auto}
-  x-tree.main ul, x-tree.main li {margin: 0; padding: 0; list-style: none}
-  x-tree.main > ul > li {float: left; cursor: default}
-  x-tree.main > ul > li > a {display: block; padding: 21px}
-  x-tree.main > ul > li > ul {position: absolute; padding: 21px; z-index: 10}
-  x-tree.main::after {content: ''; clear: both; display: block}
+  x-tree.main       {float: left}
+  x-tree.main li    {float: left}
+  x-tree.main li li {float: none}
+  x-tree.main ul    {float: left}
+  x-tree.main ul ul {float: none}
 
-  /* menu Main: colors */
+  x-tree.main ul ul    {position: absolute}
+  x-tree.main ul ul ul {position: relative}
 
-  x-tree.main {background: %%_color_bg}
-  x-tree.main a {color: white}
+  x-tree.main li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  x-tree.main ul       {padding: 0; margin: 0}
+  x-tree.main ul ul    {padding: 20px}
+  x-tree.main ul ul ul {padding: 0 0 0 21px}
 
-  x-tree.main > ul > li:hover,
-  x-tree.main > ul > li > a.active,
-  x-tree.main > ul > li > a.active-trail {background-color: %%_color_hover_bg}
-  x-tree.main > ul > li > a.home         {background-color: transparent}
-
-  x-tree.main > ul > li > ul {background: %%_color_hover_bg}
-  x-tree.main > ul > li > ul a.active,
-  x-tree.main > ul > li > ul a.active-trail,
-  x-tree.main > ul > li > ul a:hover {color: %%_color_hover}
+  x-tree.main li     a {padding: 21px; display: block}
+  x-tree.main li li  a {padding: 0}
 
   /* menu Main: dynamic */
 
-  x-tree.main > ul > li > ul {display: none}
+  x-tree.main > ul > li       > ul {display: none}
   x-tree.main > ul > li:hover > ul {display: block}
+
+  /* menu Main: colors */
+
+  x-tree.main ul       {background-color: %%_color_bg}
+  x-tree.main ul ul    {background-color: %%_color_hover_bg}
+  x-tree.main ul ul ul {background-color: transparent}
+
+  x-tree.main              a       {color: white}
+  x-tree.main        li    a:hover {color: white;          background-color: %%_color_hover_bg}
+  x-tree.main        li li a:hover {color: %%_color_hover; background-color: transparent}
+  x-tree.main > ul > li:hover      {                       background-color: %%_color_hover_bg}
+
+  x-tree.main li    a.active,
+  x-tree.main li    a.active-trail {background-color: %%_color_hover_bg}
+  x-tree.main li li a.active,
+  x-tree.main li li a.active-trail {background-color: transparent; color: %%_color_hover}
+  x-tree.main       a.home         {background-color: transparent !important}
 
   /* menu Main: icons */
 
-  x-tree.main a.home    {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0 0}
-  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0 -64px}
+  x-tree.main a.home    {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0      0}
+  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0  -64px}
   x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0 -128px}
 
   /* managed menu */
