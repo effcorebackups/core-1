@@ -29,6 +29,6 @@
 
   /* menu User: icons */
 
-  x-tree.user a.anonymous   {padding-left: 77px; background: url('images/avatar-anonymous.svg'  ) no-repeat 8px 50%}
-  x-tree.user a.registered  {padding-left: 77px; background: url('images/avatar-registered.svgd') no-repeat 8px 50%}
-  x-tree.user a.with-avatar {padding-left: 77px; background: url('%%_avatar_url') no-repeat 8px 50%; background-size: 48px 48px}
+  x-tree.user a.anonymous  {padding-left: 77px; background: url('images/avatar-anonymous.svg'  ) no-repeat 8px 50%}
+  x-tree.user a.registered {padding-left: 77px; background: url('images/avatar-registered.svgd') no-repeat 8px 50%}
+  x-tree.user a.registered[data-has-avatar='yes'] {padding-left: 77px; background: url('%%_avatar_url') no-repeat 8px 50%; background-size: 48px 48px}
