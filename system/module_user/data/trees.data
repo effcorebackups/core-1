@@ -3,6 +3,9 @@ trees
     id: user_anonymous
     title: Menu for anonymous user
     title_state: hidden
+    access
+      roles
+      - =: anonymous
     attributes
     - class
       - =: user
@@ -11,6 +14,9 @@ trees
     id: user_registered
     title: Menu for registered user
     title_state: hidden
+    access
+      roles
+      - =: registered
     attributes
     - class
       - =: user

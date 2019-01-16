@@ -7,18 +7,10 @@ pages
       match: %^/$%
     children
     - menu_user_registered|page_part
-        display
-          check: user
-          where: role
-          match: %^registered$%
         region: menu
         type: link
         source: trees/user/user_registered
     - menu_user_anonymous|page_part
-        display
-          check: user
-          where: role
-          match: %^anonymous$%
         region: menu
         type: link
         source: trees/user/user_anonymous

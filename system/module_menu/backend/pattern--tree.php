@@ -7,10 +7,11 @@
 namespace effcore {
           class tree extends node {
 
+  public $template = 'tree';
   public $id;
   public $title = '';
   public $title_state; # hidden | cutted
-  public $template = 'tree';
+  public $access;
 
   function __construct($title = '', $attributes = [], $children = [], $weight = 0) {
     if ($title) $this->title = $title;
@@ -27,11 +28,13 @@ namespace effcore {
   }
 
   function render() {
-    if (static::$cache_trees      == null ||
-        static::$cache_tree_items == null) static::init();
-    if ($this->children_count()   == 0)
-        $this->build();
-    return parent::render();
+    if ($this->access === null || access::check($this->access)) {
+      if (static::$cache_trees      == null ||
+          static::$cache_tree_items == null) static::init();
+      if ($this->children_count()   == 0)
+          $this->build();
+      return parent::render();
+    }
   }
 
   function render_self() {
