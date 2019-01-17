@@ -11,10 +11,11 @@ namespace effcore {
   public $args = [];
   public $delimiter = br;
 
-  function __construct($text = [], $args = [], $weight = 0) {
-    if ($text)   $this->text_update($text);
-    if ($args)   $this->args_set($args);
-    if ($weight) $this->weight = $weight;
+  function __construct($text = [], $args = [], $delimiter = br, $weight = 0) {
+    if ($text)      $this->text_update($text);
+    if ($args)      $this->args_set($args);
+    if ($delimiter) $this->delimiter = $delimiter;
+    if ($weight)    $this->weight    = $weight;
   }
 
   function text_line_select($line) {return $this->text[$line];}

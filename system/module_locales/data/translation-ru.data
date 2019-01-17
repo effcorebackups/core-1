@@ -264,6 +264,7 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID Родителя
+    - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
     - Path: Путь
     - path: путь
@@ -354,6 +355,7 @@ translations
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
+    - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
     - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
     - The report was generated in real time but the list of classes is depend on the cache!: Отчёт был создан в режиме реального времени, но список классов зависит от кэша!
@@ -422,5 +424,8 @@ translations
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You have already uploaded %%_current_number file%%_plural{number,s}.: Вы уже загрузили %%_current_number файл%%_plural{number,ov-a}.
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
+    - You received this message because someone tried to recover the password from your %%_domain account.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от вашего %%_domain аккаунта.
     - your EMail is — %%_email: ваш Адрес электронной почты — %%_email
+    - Your EMail is not shown publicly on %%_domain and is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и никогда не передаётся третьим лицам!
+    - Your new password on %%_domain has been changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - your Password is — %%_password: ваш Пароль — %%_password

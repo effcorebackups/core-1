@@ -11,6 +11,7 @@ namespace effcore {
   ##########################
 
   const nl = "\n";
+  const cr = "\r";
   const tb = "\t";
   const br = "<br>";
 

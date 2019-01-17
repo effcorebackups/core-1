@@ -5,9 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use const \effcore\cr;
+          use const \effcore\nl;
           use \effcore\core;
           use \effcore\instance;
           use \effcore\message;
+          use \effcore\text_multiline;
+          use \effcore\text;
+          use \effcore\url;
           abstract class events_form_recovery {
 
   static function on_validate($form, $items) {
@@ -34,9 +39,26 @@ namespace effcore\modules\user {
           $new_password = core::password_generate();
           $user->password_hash = core::hash_password_get($new_password);
           if ($user->update()) {
-          # @todo: make functionality
-          # ... send email
-            message::insert('A new password has been sent to selected EMail.');
+            $current_url = url::current_get();
+            $mail_from = 'From: no-reply@'.$current_url->domain;
+            $mail_to = $user->nick.' <'.$user->email.'>';
+            $mail_subject = new text('Password recovery on %%_domain', ['domain' => $current_url->domain]);
+            $mail_message = new text_multiline([
+              'You received this message because someone tried to recover the password from your %%_domain account.',
+              'Your new password on %%_domain has been changed automatically to: %%_new_password',
+              'Your EMail is not shown publicly on %%_domain and is never shared with third parties!'], [
+              'domain'       => $current_url->domain,
+              'new_password' => $new_password
+            ], cr.nl.cr.nl);
+            $mail_send_result = mail(
+              $mail_to,
+              $mail_subject->render(),
+              $mail_message->render().cr.nl,
+              $mail_from
+            );
+            if ($mail_send_result)
+                 message::insert('A new password has been sent to selected EMail.');
+            else message::insert('The letter was not accepted for transmission.', 'error');
           }
         }
         break;

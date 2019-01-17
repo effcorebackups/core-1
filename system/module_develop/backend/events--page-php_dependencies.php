@@ -102,7 +102,7 @@ namespace effcore\modules\develop {
     }
   # return result
     return new block('', ['class' => ['php-dependencies' => 'php-dependencies']], [
-      new markup('p', [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
+      new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       new markup('h2', [], 'Dependency of modules by PHP extensions'), new table(['class' => ['report-mod' => 'report-mod', 'compact' => 'compact']], $tbody_mod, $thead_mod),
       new markup('h2', [], 'PHP functions usage'),                     new table(['class' => ['report-fnc' => 'report-fnc', 'compact' => 'compact']], $tbody_fnc, $thead_fnc),
       new markup('h2', [], 'Full report'),                             new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
