@@ -49,11 +49,11 @@ namespace effcore\modules\user {
               'Your EMail is not shown publicly on %%_domain and is never shared with third parties!'], [
               'domain'       => $current_url->domain,
               'new_password' => $new_password
-            ], cr.nl.cr.nl);
+            ], nl.nl);
             $mail_send_result = mail(
               $mail_to,
               $mail_subject->render(),
-              $mail_message->render().cr.nl,
+              $mail_message->render(),
               $mail_from
             );
             if ($mail_send_result)
