@@ -396,6 +396,7 @@ translations
     - User roles: Роли пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким Адресом электронной почты уже был зарегистрирован!
+    - User with this EMail was not registered!: Пользователь с таким Адресом электронной почты не был зарегистрирован!
     - User with this Nick was already registered!: Пользователь с таким Ником уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
