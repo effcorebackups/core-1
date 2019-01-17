@@ -610,6 +610,10 @@ namespace effcore {
     return sha1(random_int(0, 0x7fffffff));
   }
 
+  static function password_generate() {
+    return dechex(random_int(0x10000000, 0x7fffffff));
+  }
+
   static function hash_password_get($data) {
     return sha1($data.static::key_get('salt'));
   }

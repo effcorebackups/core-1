@@ -5,7 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\core;
           use \effcore\instance;
+          use \effcore\message;
           abstract class events_form_recovery {
 
   static function on_validate($form, $items) {
@@ -25,6 +27,18 @@ namespace effcore\modules\user {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
+        $user = (new instance('user', [
+          'email' => strtolower($items['#email']->value_get())
+        ]))->select();
+        if ($user) {
+          $new_password = core::password_generate();
+          $user->password_hash = core::hash_password_get($new_password);
+          if ($user->update()) {
+          # @todo: make functionality
+          # ... send email
+            message::insert('A new password has been sent to selected EMail.');
+          }
+        }
         break;
     }
   }

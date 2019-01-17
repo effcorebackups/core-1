@@ -5,6 +5,7 @@ translations
     - - no -: - нет -
     - - select -: - выбрать -
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
+    - A new password has been sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
     - Access forbidden: Доступ запрещён
     - Access settings not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!

@@ -61,7 +61,7 @@ namespace effcore {
   }
 
   function password_random_get() {
-    return substr(md5(random_int(0, 0x7fffffff)), 0, 8);
+    return core::password_generate();
   }
 
   function captcha_code_get() {

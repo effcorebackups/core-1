@@ -20,7 +20,7 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     if (!storage::is_installed()) {
-      $items['#password']->value_set(dechex(random_int(0x10000000, 0x7fffffff)));
+      $items['#password']->value_set(core::password_generate());
     # check for php dependencies
       $embed = module::embed_get();
       $dependencies = [];
