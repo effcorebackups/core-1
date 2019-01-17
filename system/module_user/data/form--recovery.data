@@ -1,0 +1,17 @@
+forms
+- recovery|form
+    attributes
+    - id: recovery
+    - method: post
+    - novalidate: true
+    children
+    - credentials|fieldset
+        title: Credentials
+        children
+        - email|field_email
+        - captcha|pluggable_class
+            name: field_captcha
+    - button_recovery|button
+        title: recovery
+        attributes
+        - value: recovery
