@@ -18,15 +18,15 @@ namespace effcore {
   static public $errors = [];
 
   function build() {
-    $this->validation_id = static::validation_id_get($this->source_get());
+    $id = $this->attribute_select('id');
+    $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_data_get($this->validation_data);
-    $id = $this->attribute_select('id');
-    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',       'value' => $id                 ]), 'hidden_form_id'      );
-    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id', 'value' => $this->validation_id]), 'hidden_validation_id');
+    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',            'value' => $id                 ]), 'hidden_form_id'      );
+    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id-'.$id, 'value' => $this->validation_id]), 'hidden_validation_id');
   # send test headers
     if (module::is_enabled('test')) {
-      header('X-Form-Validation-Id: '.$this->validation_id);
+      header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
     }
 
   # plug external classes
@@ -224,10 +224,10 @@ namespace effcore {
     return $validation_id;
   }
 
-  static function validation_id_get($source = '_POST') {
+  static function validation_id_get($form_id, $source = '_POST') {
     global ${$source};
-    if (static::validation_id_check(${$source}['validation_id'] ?? ''))
-         return                     ${$source}['validation_id'];
+    if (static::validation_id_check(${$source}['validation_id-'.$form_id] ?? ''))
+         return                     ${$source}['validation_id-'.$form_id];
     else return static::validation_id_generate();
   }
 

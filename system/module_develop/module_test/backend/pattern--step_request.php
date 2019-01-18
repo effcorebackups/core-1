@@ -12,9 +12,11 @@ namespace effcore {
   public $proxy = '';
   public $headers = [];
   public $post = [];
+  public $prev_response;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $prepared_post = $this->prepared_post_get($c_results['response'] ?? null);
+    $this->prev_response = $c_results['response'] ?? null;
+    $prepared_post = $this->prepared_post_get();
     $c_results['reports'][] = translation::get('make request to "%%_url"', ['url' => $this->prepared_url_get()]);
     foreach ($prepared_post as $c_name => $c_value) {
       $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_name, 'value' => $c_value]);
@@ -39,14 +41,14 @@ namespace effcore {
     return $this->headers;
   }
 
-  function prepared_post_get($prev_response = null) {
+  function prepared_post_get() {
     $result = [];
     foreach ($this->post as $c_name => $c_value) {
-      if ($c_value == '%%_nick_random')     $c_value = $this->nick_random_get    ($prev_response);
-      if ($c_value == '%%_email_random')    $c_value = $this->email_random_get   ($prev_response);
-      if ($c_value == '%%_password_random') $c_value = $this->password_random_get($prev_response);
-      if ($c_value == '%%_captcha')         $c_value = $this->captcha_code_get   ($prev_response);
-      if ($c_value == '%%_validation_id')   $c_value = $this->validation_id_get  ($prev_response);
+      if ($c_value == '%%_nick_random'    ) $c_value = $this->nick_random_get    ();
+      if ($c_value == '%%_email_random'   ) $c_value = $this->email_random_get   ();
+      if ($c_value == '%%_password_random') $c_value = $this->password_random_get();
+      if ($c_value == '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
+      if ($c_value == '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
       $result[$c_name] = $c_value;
     }
     return $result;
@@ -68,8 +70,10 @@ namespace effcore {
     return field_captcha::captcha_localhost_code_get();
   }
 
-  function validation_id_get($prev_response = null) {
-    return $prev_response['headers']['X-Form-Validation-Id'] ?? '';
+  function validation_id_get() {
+    $form_id            = $this->post         ['form_id']                                    ?? '';
+    $prev_validation_id = $this->prev_response['headers']['X-Form-Validation-Id--'.$form_id] ?? '';
+    return $prev_validation_id;
   }
 
   ###########################
