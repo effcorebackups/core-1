@@ -191,6 +191,10 @@ entities
     ws_created: true
     ws_updated: true
     fields
+    - id
+        title: ID
+        type: autoincrement
+        not_null: true
     - nick
         title: Nick
         type: varchar
@@ -227,8 +231,12 @@ entities
         collate: nocase
         default: UTC
     constraints
-    - primary_nick
+    - primary_id
         type: primary
+        fields
+        - =: id
+    - unique_nick
+        type: unique
         fields
         - =: nick
     - unique_email

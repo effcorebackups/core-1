@@ -5,6 +5,10 @@ selections
     view_type: list
     quantity: 1
     fields
+    - id
+        type: field
+        entity_name: user
+        field_name: id
     - nick
         type: field
         entity_name: user

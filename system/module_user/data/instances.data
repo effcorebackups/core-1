@@ -5,6 +5,7 @@ instances
 - user_admin|instance
     entity_name: user
     values
+    - id: 1
     - nick: Admin
     - email: admin@example.com
     - is_embed: 1
