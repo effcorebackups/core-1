@@ -40,6 +40,7 @@ namespace effcore\modules\user {
           $user->password_hash = core::hash_password_get($new_password);
           if ($user->update()) {
             $current_url = url::current_get();
+            $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
             $mail_to = $user->nick.' <'.$user->email.'>';
             $mail_subject = new text('Password recovery on %%_domain', ['domain' => $current_url->domain]);
@@ -54,7 +55,8 @@ namespace effcore\modules\user {
               $mail_to,
               $mail_subject->render(),
               $mail_message->render(),
-              $mail_from
+              $mail_from.nl.
+              $mail_encoding
             );
             if ($mail_send_result)
                  message::insert('A new password has been sent to selected EMail.');
