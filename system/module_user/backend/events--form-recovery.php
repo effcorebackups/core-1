@@ -43,18 +43,21 @@ namespace effcore\modules\user {
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
             $mail_to = $user->nick.' <'.$user->email.'>';
-            $mail_subject = new text('Password recovery on %%_domain', ['domain' => $current_url->domain]);
-            $mail_message = new text_multiline([
+            $mail_subject = '=?UTF-8?B?'.base64_encode((new text(
+              'Password recovery on %%_domain', [
+              'domain' => $current_url->domain
+            ]))->render()).'?=';
+            $mail_message = (new text_multiline([
               'You received this message because someone tried to recover the password from your %%_domain account.',
               'Your new password on %%_domain has been changed automatically to: %%_new_password',
               'Your EMail is not shown publicly on %%_domain and is never shared with third parties!'], [
               'domain'       => $current_url->domain,
               'new_password' => $new_password
-            ], nl.nl);
+            ], nl.nl))->render();
             $mail_send_result = mail(
               $mail_to,
-              $mail_subject->render(),
-              $mail_message->render(),
+              $mail_subject,
+              $mail_message,
               $mail_from.nl.
               $mail_encoding
             );
