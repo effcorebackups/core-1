@@ -78,8 +78,12 @@ namespace effcore {
   static function id_regenerate($hex_type, $session_params = []) {
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    $period      = $hex_type == 'f' && !$is_remember ? static::period_expired_d : static::period_expired_m;
-    $ip          = $hex_type == 'f' && !$is_fixed_ip ? static::empty_ip : core::server_remote_addr_get();
+    if ($hex_type == 'f' && $is_remember == false) $period = static::period_expired_d;
+    if ($hex_type == 'f' && $is_remember)          $period = static::period_expired_m;
+    if ($hex_type == 'a')                          $period = static::period_expired_m;
+    if ($hex_type == 'f' && $is_fixed_ip == false) $ip     = static::empty_ip;
+    if ($hex_type == 'f' && $is_fixed_ip)          $ip     = core::server_remote_addr_get();
+    if ($hex_type == 'a')                          $ip     = core::server_remote_addr_get();
   # $hex_type: a - anonymous user | f - authenticated user
     $hex_expired       = static::id_hex_expired_get($period);
     $hex_ip            = static::id_hex_ip_get($ip);
