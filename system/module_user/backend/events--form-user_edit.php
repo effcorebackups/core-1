@@ -91,7 +91,7 @@ namespace effcore\modules\user {
                   $avatar_info[0]->path) {
            $c_file = new file($avatar_info[0]->path);
            $user->avatar_path = $c_file->path_relative_get(); } else {
-           $user->avatar_path = '';
+           $user->avatar_path = null;
         }
         if ($user->update()) {
           message::insert(
