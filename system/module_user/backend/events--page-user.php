@@ -33,7 +33,7 @@ namespace effcore\modules\user {
             new text(locale::timestmp_format(session::id_expired_extract(session::id_get())))
           );
         }
-        $user_roles = user::id_roles_get($user->nick);
+        $user_roles = user::id_roles_get($user->id);
         if ($user_roles) {
           $selection->field_markup_insert('roles', 'Roles',
             new text_multiline($user_roles)

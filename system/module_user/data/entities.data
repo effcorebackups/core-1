@@ -78,18 +78,16 @@ entities
         size: 255
         collate: nocase
         not_null: true
-    - nick
-        title: Nick
-        type: varchar
-        size: 32
-        collate: nocase
+    - id_user
+        title: User ID
+        type: integer
         not_null: true
     constraints
-    - primary_id_role_nick
+    - primary_id_role_id_user
         type: primary
         fields
         - =: id_role
-        - =: nick
+        - =: id_user
     - foreign_id_role
         type: foreign
         fields
@@ -97,13 +95,13 @@ entities
         references: roles
         references_fields
         - =: id
-    - foreign_nick
+    - foreign_id_user
         type: foreign
         fields
-        - =: nick
+        - =: id_user
         references: users
         references_fields
-        - =: nick
+        - =: id
 - role|entity
     name: role
     title: Role
