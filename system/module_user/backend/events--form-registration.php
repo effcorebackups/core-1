@@ -46,7 +46,7 @@ namespace effcore\modules\user {
           'password_hash' => core::hash_password_get($items['#password']->value_get())
         ]);
         if ($user) {
-          session::insert($user->nick,
+          session::insert($user->id,
             core::array_kmap($items['*session_params']->values_get())
           );
           url::go('/user/'.$user->nick);

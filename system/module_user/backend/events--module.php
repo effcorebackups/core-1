@@ -37,8 +37,8 @@ namespace effcore\modules\user {
   static function on_start() {
     $session = session::select();
     if ($session &&
-        $session->nick) {
-      user::init($session->nick);
+        $session->id_user) {
+      user::init($session->id_user);
       $user = user::current_get();
       if (isset($user->roles['registered']) &&
                 $user->avatar_path) {

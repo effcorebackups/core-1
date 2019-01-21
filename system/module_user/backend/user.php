@@ -13,14 +13,18 @@ namespace effcore {
     static::$cache = null;
   }
 
-  static function init($nick = null, $is_full = true) {
-    static::$cache = new instance('user', ['nick' => null, 'roles' => ['anonymous' => 'anonymous']]);
-    if ($nick != null) {
-      $user = new instance('user', ['nick' => $nick]);
+  static function init($id = null, $is_full = true) {
+    static::$cache = new instance('user', [
+      'id'    => null,
+      'nick'  => null,
+      'roles' => ['anonymous' => 'anonymous']
+    ]);
+    if ($id != null) {
+      $user = new instance('user', ['id' => $id]);
       if ($user->select()) {
         $user->roles = ['registered' => 'registered'];
         if ($is_full) {
-          $user->roles += static::id_roles_get($user->id);
+          $user->roles += static::id_roles_get($id);
         }
         static::$cache = $user;
       }

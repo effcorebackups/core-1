@@ -14,16 +14,17 @@ namespace effcore\modules\user {
   static function on_replace($name, $args = []) {
     $session = session::select();
     if ($session &&
-        $session->nick) {
+        $session->id_user) {
       $user = user::current_get();
       if (!isset($user->roles['registered'])) {
-        user::init($session->nick, false);
+        user::init($session->id_user, false);
         $user = user::current_get();
       }
       if (isset($user->roles['registered'])) {
         switch ($name) {
-          case 'email'     : return     user::current_get()->email;
+          case 'id'        : return     user::current_get()->id;
           case 'nick'      : return     user::current_get()->nick;
+          case 'email'     : return     user::current_get()->email;
           case 'avatar_url': return '/'.user::current_get()->avatar_path;
           case 'email_context':
           case 'nick_context':
