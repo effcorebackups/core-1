@@ -6,7 +6,7 @@ DirectorySlash Off
   Header unset "X-Powered-By"
 </IfModule>
 
-<FilesMatch "^\..*|web.config$">
+<FilesMatch "^\..*$">
   Require all denied
 </FilesMatch>
 

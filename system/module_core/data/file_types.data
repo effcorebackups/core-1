@@ -2,6 +2,12 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 # protected types
 # ─────────────────────────────────────────────────────────────────────
+- config
+    type: config
+    protected: 1
+- default
+    type: default
+    protected: 1
 - log
     type: log
     protected: 1
