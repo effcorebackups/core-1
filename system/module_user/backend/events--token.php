@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\instance;
+          use \effcore\page;
           use \effcore\session;
           use \effcore\url;
           use \effcore\user;
@@ -22,21 +23,18 @@ namespace effcore\modules\user {
       }
       if (isset($user->roles['registered'])) {
         switch ($name) {
-          case 'id'        : return     user::current_get()->id;
+          case 'user_id'   : return     user::current_get()->id;
           case 'nick'      : return     user::current_get()->nick;
           case 'email'     : return     user::current_get()->email;
           case 'avatar_url': return '/'.user::current_get()->avatar_path;
-          case 'email_context':
-          case 'nick_context':
-            $arg_number = $args[0];
-            $nick = url::current_get()->path_arg_select($arg_number);
-            $user = (new instance('user', ['nick' => $nick]))->select();
-            if ($user && $name == 'email_context') return $user->email;
-            if ($user && $name == 'nick_context')  return $user->nick;
-            return '[unknown nick]';
+          case 'nick_page_context':
+            if ($args[0] == 'nick') {
+              return page::current_get()->args_get('nick');
+            }
         }
       }
     }
+    return '[unknown token]';
   }
 
 }}

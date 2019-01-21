@@ -2,6 +2,10 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # tokens for current user
 # ─────────────────────────────────────────────────────────────────────
+- user_id
+    match: %%_user_id
+    type: code
+    handler: \effcore\modules\user\events_token::on_replace
 - email
     match: %%_email
     type: code
@@ -15,13 +19,9 @@ tokens
     type: code
     handler: \effcore\modules\user\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────
-# tokens for context user (user id is taken from url)
+# tokens for context user
 # ─────────────────────────────────────────────────────────────────────
-- email_context
-    match: %%_email_context
-    type: code
-    handler: \effcore\modules\user\events_token::on_replace
-- nick_context
-    match: %%_nick_context
+- nick_page_context
+    match: %%_nick_page_context
     type: code
     handler: \effcore\modules\user\events_token::on_replace

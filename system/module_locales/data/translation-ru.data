@@ -76,7 +76,6 @@ translations
     - Delete instance: Удалить экземпляр
     - Delete instances: Удалить экземпляры
     - Delete modules data: Удалить данные модулей
-    - Delete user %%_nick_context{4}?: Удалить пользователя %%_nick_context{4}?
     - Delete: Удалить
     - delete: удалить
     - Demo: Демо
@@ -94,7 +93,7 @@ translations
     - Driver is not selected!: Драйвер не выбран!
     - Driver: Драйвер
     - duplicate of %%_type "%%_id" was found: был найден дубликат "%%_id" типа %%_type
-    - Edit user %%_nick_context{2}: Редактировать пользователя %%_nick_context{2}
+    - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
     - EMail: Адрес электронной почты
@@ -392,7 +391,7 @@ translations
     - used by modules: используется модулями
     - User %%_nick was not updated.: Пользователь %%_nick не был обновлён.
     - User %%_nick was updated.: Пользователь %%_nick был обновлён.
-    - User %%_nick_context{2}: Пользователь %%_nick_context{2}
+    - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
     - User %%_nick: Пользователь %%_nick
     - User ID: ID Пользователя
     - User name: Имя пользователя
