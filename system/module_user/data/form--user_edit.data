@@ -16,7 +16,7 @@ forms
             max_file_size: 10K
             max_files_number: 1
             upload_dir: avatar/
-            fixed_name: avatar-%%_nick
+            fixed_name: avatar-%%_user_id
             allowed_types
             - =: gif
             - =: jpeg

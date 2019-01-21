@@ -24,7 +24,6 @@ namespace effcore\modules\user {
     if ($user) {
       if ($user->nick == user::current_get()->nick ||             # owner
                    isset(user::current_get()->roles['admins'])) { # admin
-
         $selection = selection::get('user');
         $selection->title = '';
         $selection->conditions = ['nick' => $user->nick];
