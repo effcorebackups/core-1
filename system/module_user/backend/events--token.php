@@ -34,7 +34,7 @@ namespace effcore\modules\user {
         }
       }
     }
-    return '[unknown token]';
+    return '';
   }
 
 }}
