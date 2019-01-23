@@ -57,19 +57,35 @@ namespace effcore {
      url::go(rtrim(url::current_get()->path_get(), '/')); # note: trimming for single redirect
   }
 
-  $type = url::current_get()->type_get();
-  if ($type) {
+  $file_info = url::current_get()->file_info_get();
+  if ($file_info &&
+      $file_info->type) {
 
     $file_types = file::types_get();
-  # case for protected file
-    if (!empty($file_types[$type]->protected)) {
+
+    # ─────────────────────────────────────────────────────────────────────
+    # case for protected file
+    # ─────────────────────────────────────────────────────────────────────
+
+    if ($file_info->type !== '' &&
+        $file_info->name === '') {
       core::send_header_and_exit('access_forbidden', '',
         translation::get('file of this type is protected').br.br.
         translation::get('go to <a href="/">front page</a>')
       );
     }
 
-  # define path of file directory
+    if (!empty($file_types[$file_info->type]->protected)) {
+      core::send_header_and_exit('access_forbidden', '',
+        translation::get('file of this type is protected').br.br.
+        translation::get('go to <a href="/">front page</a>')
+      );
+    }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # define real path
+    # ─────────────────────────────────────────────────────────────────────
+
     $path_url = url::current_get()->path_get();
     if (substr($path_url, 0, 15) === '/dynamic/files/')
          $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
@@ -82,7 +98,7 @@ namespace effcore {
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
 
-      if (!empty($file_types[$type]->dynamic)) {
+      if (!empty($file_types[$file_info->type]->dynamic)) {
         $file = new file($path);
         $data = token::replace($file->load());
         $etag = md5($data);
@@ -98,8 +114,8 @@ namespace effcore {
       # send default headers
         header('Accept-Ranges: none');
         header('Etag: '.$etag);
-        if (!empty($file_types[$type]->headers)) {
-          foreach ($file_types[$type]->headers as $c_key => $c_value) {
+        if (!empty($file_types[$file_info->type]->headers)) {
+          foreach ($file_types[$file_info->type]->headers as $c_key => $c_value) {
             header($c_key.': '.$c_value);
           }
         }
@@ -110,7 +126,8 @@ namespace effcore {
           timer::tap('total');
           $settings = storage::get('files')->select('settings');
           if ($settings['page']->console_visibility == 'show_for_everyone') {
-            if ($type == 'cssd' || $type == 'jsd') {
+            if ($file_info->type == 'cssd' ||
+                $file_info->type == 'jsd') {
               $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
             }
           }
@@ -166,8 +183,8 @@ namespace effcore {
         header('Accept-Ranges: bytes');
         header('Cache-Control: private, no-cache');
         header('Last-Modified: '.$last_modified);
-        if (!empty($file_types[$type]->headers)) {
-          foreach ($file_types[$type]->headers as $c_key => $c_value) {
+        if (!empty($file_types[$file_info->type]->headers)) {
+          foreach ($file_types[$file_info->type]->headers as $c_key => $c_value) {
             header($c_key.': '.$c_value);
           }
         }

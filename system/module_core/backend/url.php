@@ -73,7 +73,10 @@ namespace effcore {
     $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
   }
 
-  function name_get() {}
+  function file_info_get() {
+    return static::path_parse($this->path_get());
+  }
+
   function type_get() {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
 
   function protocol_get() {return $this->protocol;}
@@ -111,6 +114,26 @@ namespace effcore {
 
   static function init() {
     static::$cache = new static(core::server_request_uri_get());
+  }
+
+  static function path_parse($path) {
+  # each path should begin with '/' and have at least one more character
+    if (!$path || $path[0] !== '/') return;
+    $result = new \stdClass;
+    $result->dirs = '';
+    $result->name = '';
+    $result->type = '';
+    $full_name = substr(strrchr($path, '/'), 1);
+    if ($full_name === '' || $full_name === '..' || $full_name === '.') return;
+    $result->dirs = substr($path, 0, - strlen($full_name));
+    $type = substr(strrchr($full_name, '.'), 1);
+    if ($type !== false &&
+        $type !== '') {
+      $result->type = $type;
+      $result->name = substr($full_name, 0, - strlen($type) - 1); } else {
+      $result->name = $full_name;
+    }
+    return $result;
   }
 
   static function current_get() {

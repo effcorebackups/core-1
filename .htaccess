@@ -6,9 +6,5 @@ DirectorySlash Off
   Header unset "X-Powered-By"
 </IfModule>
 
-<FilesMatch "^\..*$">
-  Require all denied
-</FilesMatch>
-
 RewriteEngine On
 RewriteRule ^.*$ index.php [L]
