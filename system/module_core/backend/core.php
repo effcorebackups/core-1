@@ -95,12 +95,12 @@ namespace effcore {
       }
       foreach ($files as $c_file) {
         $c_matches = [];
-        preg_match_all('%(?:namespace (?<namespace>[a-z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
+        preg_match_all('%(?:namespace (?<namespace>[a-zA-Z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
                                      '(?<modifier>abstract|final|)\\s*'.
                                      '(?<type>class|trait|interface)\\s+'.
-                                     '(?<name>[a-z0-9_]+)\\s*'.
-                          '(?:extends (?<extends>[a-z0-9_\\\\]+)|)\\s*'.
-                       '(?:implements (?<implements>[a-z0-9_,\\s\\\\]+)|)\\s*{%isS', $c_file->load(), $c_matches, PREG_SET_ORDER);
+                                     '(?<name>[a-zA-Z0-9_]+)\\s*'.
+                          '(?:extends (?<extends>[a-zA-Z0-9_\\\\]+)|)\\s*'.
+                       '(?:implements (?<implements>[a-zA-Z0-9_,\\s\\\\]+)|)\\s*{%sS', $c_file->load(), $c_matches, PREG_SET_ORDER);
         foreach ($c_matches as $c_match) {
           if (!empty($c_match['name'])) {
             $c_item = new \stdClass;
@@ -506,7 +506,7 @@ namespace effcore {
   }
 
   static function validate_mime_type($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-z0-9\\-\\+\\.]{1,100}$%i']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z]{1,20}/[a-zA-Z0-9+-.]{1,100}$%']]);
   }
 
   static function validate_hash($value, $length = 32) {
@@ -719,8 +719,8 @@ namespace effcore {
 
   static function server_software_get() {
     $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-z0-9-]+)/(?<version>[a-z0-9.]+))|'.
-                 '(?<full_name_unknown>.*)%i', $_SERVER['SERVER_SOFTWARE'], $matches);
+    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9-]+)/(?<version>[a-zA-Z0-9.]+))|'.
+                 '(?<full_name_unknown>.*)%', $_SERVER['SERVER_SOFTWARE'], $matches);
     return !empty($matches['full_name']) ?
                   $matches['name'].' '.
                   $matches['version'] :
