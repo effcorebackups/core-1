@@ -73,7 +73,7 @@ forms
       # sqlite params
         - sqlite|fieldset
             children
-          # storage file path
+          # storage file name
             - file_name|field_text
                 title: File name
                 element_attributes
@@ -81,7 +81,7 @@ forms
                 - value: data.sqlite
                 - minlength: 1
                 - maxlength: 255
-                - pattern: ^[a-zA-Z0-9_\-\./]+$
+                - pattern: ^[a-zA-Z0-9_\-\.]+$
                 - readonly: true
       # shared params
         - params|fieldset
