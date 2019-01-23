@@ -506,7 +506,7 @@ namespace effcore {
   }
 
   static function validate_mime_type($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
   }
 
   static function validate_hash($value, $length = 32) {
