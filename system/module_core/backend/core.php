@@ -533,9 +533,9 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_part($value, $allowed_chars, $max_length) {
+  static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$allowed_chars.'])%uiS', function($c_match) {
+    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uiS', function($c_match) {
       if ($c_match['char'] == ' ') return '-';
       if (strlen($c_match['char']) == 1) return dechex(ord($c_match['char'][0]));
       if (strlen($c_match['char']) == 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));

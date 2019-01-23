@@ -57,7 +57,8 @@ namespace effcore {
   public $max_length_name = 227; # = 255 - strlen('-ttttttttrrrrrrrr.extensions')
   public $max_length_type = 10;
   public $allowed_types = [];
-  public $allowed_chars = 'a-z0-9_\\.\\-';
+  public $allowed_characters = 'a-z0-9_\\.\\-';
+  public $allowed_characters_title = '"a-z", "0-9", "_", ".", "-"';
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
@@ -78,6 +79,8 @@ namespace effcore {
     if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min();
     if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max();
     if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid();
+    if ($this->allowed_characters_title                   ) $result[] = $this->render_allowed_characters();
+    
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
       $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]);
@@ -88,9 +91,10 @@ namespace effcore {
     }
   }
 
-  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number' => 'file-min-number']], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.', ['number' => $this->min_files_number]));}
-  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number' => 'file-max-number']], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.', ['number' => $this->max_files_number]));}
-  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number' => 'file-mid-number']], translation::get('Field must contain %%_number file%%_plural{number,s}.',             ['number' => $this->min_files_number]));}
+  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     => $this->min_files_number        ]));}
+  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     => $this->max_files_number        ]));}
+  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], translation::get('Field must contain %%_number file%%_plural{number,s}.',              ['number'     => $this->min_files_number        ]));}
+  function render_allowed_characters  () {return new markup('p', ['class' => ['file-allowed-characters' => 'file-allowed-characters']], translation::get('File name can contain only the next characters: %%_characters.',     ['characters' => $this->allowed_characters_title]));}
 
   ############
   ### pool ###
@@ -291,8 +295,8 @@ namespace effcore {
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_chars, $field->max_length_name) ?: core::random_part_get();
-      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_chars, $field->max_length_type);
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_characters, $field->max_length_name) ?: core::random_part_get();
+      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_characters, $field->max_length_type);
       $c_value->file = $c_value->name.($c_value->type ?
                                    '.'.$c_value->type : '');
     # special case for IIS and Apache

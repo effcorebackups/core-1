@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];
-  public $description = 'Field can contain only the next characters: "a-z", "A-Z", "0-9", "-", "_".';
+  public $description = 'Field can contain only the next characters: "a-z", "A-Z", "0-9", "_", "-".';
   public $element_attributes_default = [
     'data-type' => 'nick',
     'name'      => 'nick',
