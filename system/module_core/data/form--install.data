@@ -28,7 +28,7 @@ forms
                 - value: [::1]
                 - minlength: 1
                 - maxlength: 253
-                - pattern: ^[a-zA-Z0-9-_:/.\[\]]+$
+                - pattern: ^[a-zA-Z0-9_-:/.\[\]]+$
           # port
             - port|field_number
                 title: Port
@@ -45,7 +45,7 @@ forms
                 - value: root
                 - minlength: 1
                 - maxlength: 64
-                - pattern: ^[a-zA-Z0-9-_]+$
+                - pattern: ^[a-zA-Z0-9_-]+$
           # password
             - password|field_password
                 element_attributes
@@ -60,7 +60,7 @@ forms
                 - value: effcore
                 - minlength: 1
                 - maxlength: 128
-                - pattern: ^[a-zA-Z0-9-_]+$
+                - pattern: ^[a-zA-Z0-9_-]+$
       # driver
         - is_sqlite|field_radiobutton
             title: SQLite
@@ -81,7 +81,7 @@ forms
                 - value: data.sqlite
                 - minlength: 1
                 - maxlength: 255
-                - pattern: ^[a-zA-Z0-9-_./]+$
+                - pattern: ^[a-zA-Z0-9_-./]+$
                 - readonly: true
       # shared params
         - params|fieldset
@@ -93,7 +93,7 @@ forms
                 element_attributes
                 - name: table_prefix
                 - maxlength: 10
-                - pattern: ^[a-zA-Z0-9-_]+$
+                - pattern: ^[a-zA-Z0-9_-]+$
                 - required: false
     - user|fieldset
         title: User

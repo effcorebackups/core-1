@@ -7,8 +7,8 @@
 namespace effcore {
           class field_nick extends field_text {
 
-  const allowed_characters = 'a-zA-Z0-9-_';
-  const allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-"';
+  const allowed_characters = 'a-zA-Z0-9_-';
+  const allowed_characters_title = '"a-z", "A-Z", "0-9", "-", "_"';
 
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];

@@ -136,7 +136,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле может содержать минимум %%_number символ%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
-    - Field can contain only the next characters\: "a-z", "A-Z", "0-9", "_", "-".: Поле может содержать только следующие символы: "a-z", "A-Z", "0-9", "_", "-".
+    - Field can contain only the next characters\: "a-z", "A-Z", "0-9", "-", "_".: Поле может содержать только следующие символы: "a-z", "A-Z", "0-9", "-", "_".
     - Field must contain %%_number character%%_plural{number,s}.: Поле должно содержать %%_number символ%%_plural{number,ov-a}.
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
