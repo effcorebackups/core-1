@@ -356,7 +356,7 @@ tests
             url: /.editorconfig/
         - response_check_d549290039|step_check
             where: http_code
-            match: 403
+            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -364,7 +364,7 @@ tests
             url: /.gitattributes/
         - response_check_ccb457a2d3|step_check
             where: http_code
-            match: 403
+            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -372,7 +372,7 @@ tests
             url: /.gitignore/
         - response_check_48439b5ea5|step_check
             where: http_code
-            match: 403
+            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -380,15 +380,19 @@ tests
             url: /.htaccess/
         - response_check_22aa4e368a|step_check
             where: http_code
-            match: 403
+            match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check_22aa4e368a_403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         - request_url_b9e8322261|step_request
             url: /.nginx/
         - response_check_b9e8322261|step_check
             where: http_code
-            match: 403
+            match: 302
             on_failure
             - return_result|step_return
                 value: 0
