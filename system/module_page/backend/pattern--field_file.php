@@ -57,7 +57,7 @@ namespace effcore {
   public $max_length_name = 227; # = 255 - strlen('-TimestmpRandom_v.') - max_length_type
   public $max_length_type =  10;
   public $allowed_types = [];
-  public $allowed_characters = 'a-zA-Z0-9_-\\.';
+  public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
   public $allowed_characters_title = '"a-z", "A-Z", "0-9", "-", "_", "."';
   public $upload_dir = '';
   public $fixed_name;

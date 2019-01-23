@@ -5,7 +5,7 @@ pages
     display
       check: url
       where: path
-      match: %^/user/(?<nick>[a-zA-Z0-9_-]{4,32})$%
+      match: %^/user/(?<nick>[a-zA-Z0-9_\-]{4,32})$%
     access
       roles
       - =: admins

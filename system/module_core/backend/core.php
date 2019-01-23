@@ -506,7 +506,7 @@ namespace effcore {
   }
 
   static function validate_mime_type($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z]{1,20}/[a-zA-Z0-9+-.]{1,100}$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
   }
 
   static function validate_hash($value, $length = 32) {
@@ -719,7 +719,7 @@ namespace effcore {
 
   static function server_software_get() {
     $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9-]+)/(?<version>[a-zA-Z0-9.]+))|'.
+    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
                  '(?<full_name_unknown>.*)%', $_SERVER['SERVER_SOFTWARE'], $matches);
     return !empty($matches['full_name']) ?
                   $matches['name'].' '.
