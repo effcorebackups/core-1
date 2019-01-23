@@ -58,7 +58,7 @@ namespace effcore {
   public $max_length_type =  10;
   public $allowed_types = [];
   public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
-  public $allowed_characters_title = '"a-z", "A-Z", "0-9", "-", "_", "."';
+  public $allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-", "."';
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
