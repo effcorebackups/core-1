@@ -36,7 +36,7 @@ namespace effcore\modules\develop {
       $c_path_relative = $c_file->path_relative_get();
       $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
     # load file and search functions in it
-      preg_match_all('%(?<![a-z0-9_])(?<name>[a-z0-9_]+)\\(%isS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
+      preg_match_all('%(?<![a-zA-Z0-9_])(?<name>[a-zA-Z0-9_]+)\\(%sS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {
         foreach ($c_matches['name'] as $c_match) {
           if (isset($functions_by_ext[$c_match[0]])) {
