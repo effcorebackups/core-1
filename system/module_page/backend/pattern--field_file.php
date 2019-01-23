@@ -54,8 +54,8 @@ namespace effcore {
   public $max_file_size = '10K';
   public $min_files_number = 0;
   public $max_files_number = 1;
-  public $max_length_name = 227; # = 255 - strlen('-ttttttttrrrrrrrr.extensions')
-  public $max_length_type = 10;
+  public $max_length_name = 227; # = 255 - strlen('-TimestmpRandom_v.') - max_length_type
+  public $max_length_type =  10;
   public $allowed_types = [];
   public $allowed_characters = 'a-z0-9_\\.\\-';
   public $allowed_characters_title = '"a-z", "0-9", "_", ".", "-"';
@@ -79,6 +79,7 @@ namespace effcore {
     if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min();
     if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max();
     if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid();
+    if ($this->allowed_types                              ) $result[] = $this->render_allowed_types();
     if ($this->allowed_characters_title                   ) $result[] = $this->render_allowed_characters();
     
     if ($this->description) $result[] = new markup('p', [], $this->description);
@@ -91,10 +92,11 @@ namespace effcore {
     }
   }
 
-  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     => $this->min_files_number        ]));}
-  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     => $this->max_files_number        ]));}
-  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], translation::get('Field must contain %%_number file%%_plural{number,s}.',              ['number'     => $this->min_files_number        ]));}
-  function render_allowed_characters  () {return new markup('p', ['class' => ['file-allowed-characters' => 'file-allowed-characters']], translation::get('File name can contain only the next characters: %%_characters.',     ['characters' => $this->allowed_characters_title]));}
+  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], translation::get('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
+  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], translation::get('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
+  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], translation::get('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));}
+  function render_allowed_types       () {return new markup('p', ['class' => ['file-allowed-types'      => 'file-allowed-types'     ]], translation::get('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));}
+  function render_allowed_characters  () {return new markup('p', ['class' => ['file-allowed-characters' => 'file-allowed-characters']], translation::get('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));}
 
   ############
   ### pool ###

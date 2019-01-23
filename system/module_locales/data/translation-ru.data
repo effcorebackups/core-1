@@ -145,6 +145,7 @@ translations
     - Field value is not a valid number.: Значение поля не является допустимым числом.
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
     - Field value should match the regular expression\: %%_expression.: Значение поля должно соответствовать регулярному выражению: %%_expression.
+    - File can only be of the next types\: %%_types.: Файл может быть только следующих типов: %%_types.
     - file is empty: файл пуст
     - File name can contain only the next characters\: %%_characters.: Имя файла может содержать только следующие символы: %%_characters.
     - File name: Имя файла
