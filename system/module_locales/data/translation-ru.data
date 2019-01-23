@@ -148,7 +148,7 @@ translations
     - file is empty: файл пуст
     - File name: Имя файла
     - File not found: Файл не найден
-    - file of this type is protected by\: %%_name: файл этого типа защищён с помощью: %%_name
+    - file of this type is protected: файл этого типа защищён
     - File: Файл
     - file: файл
     - Form elements: Элементы формы

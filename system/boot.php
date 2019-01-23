@@ -43,7 +43,7 @@ namespace effcore {
 
   # note:
   # ═══════════════════╦════════════════════════════════════════════════════════════════════
-  # 1. url /           ║ is page 'page_front'
+  # 1. url /           ║ is page 'page-front'
   # 2. url /page       ║ is page 'page'
   # 3. url /file.type  ║ is file 'file.type'
   # ───────────────────╫────────────────────────────────────────────────────────────────────
@@ -59,11 +59,12 @@ namespace effcore {
 
   $type = url::current_get()->type_get();
   if ($type) {
+
     $file_types = file::types_get();
   # case for protected file
     if (!empty($file_types[$type]->protected)) {
       core::send_header_and_exit('access_forbidden', '',
-        translation::get('file of this type is protected by: %%_name', ['name' => 'file_types.data']).br.br.
+        translation::get('file of this type is protected').br.br.
         translation::get('go to <a href="/">front page</a>')
       );
     }
@@ -120,12 +121,11 @@ namespace effcore {
         console::log_store();
         exit();
 
-      } else {
-
     # ─────────────────────────────────────────────────────────────────────
     # case for static file
     # ─────────────────────────────────────────────────────────────────────
 
+      } else {
         $last_modified = gmdate('D, d M Y H:i:s', filemtime($path)).' GMT';
 
       # send header '304 Not Modified' if the data has not changed

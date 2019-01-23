@@ -38,14 +38,14 @@ namespace effcore {
   # └──────────────────────────────────────────────────────────┘
 
   # wrong urls:
-  # ┌──────────────────────────╥──────────────────────────────────────────────────────────────────────┐
-  # │ url                      ║ behavior                                                             │
-  # ╞══════════════════════════╬══════════════════════════════════════════════════════════════════════╡
-  # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                    │
-  # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                    │
-  # │ /subdomain.domain        ║ this domain described like a directory (first char is the slash)     │
-  # │ dir/subdir/page          ║ this directory described like a domain (first char is not the slash) │
-  # └──────────────────────────╨──────────────────────────────────────────────────────────────────────┘
+  # ┌──────────────────────────╥─────────────────────────────────────────────────────────────-─────────────┐
+  # │ url                      ║ behavior                                                                  │
+  # ╞══════════════════════════╬═══════════════════════════════════════════════════════════════════════════╡
+  # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                         │
+  # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                         │
+  # │ /subdomain.domain        ║ this domain described like a directory (first character is the slash)     │
+  # │ dir/subdir/page          ║ this directory described like a domain (first character is not the slash) │
+  # └──────────────────────────╨───────────────────────────────────────────────────────────────────────────┘
 
   # note:
   # ════════════════════════════════════════════════════════════════════════════════════════════
@@ -67,18 +67,21 @@ namespace effcore {
               '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
     $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_request_scheme_get()));
-    $this->domain   = !empty($matches['domain'])   ? $matches['domain']   :                                        ( /* case for local ulr */ core::server_host_get());
-    $this->path     = !empty($matches['path'])     ? $matches['path']     : '/';
-    $this->query    = !empty($matches['query'])    ? $matches['query']    : '';
-    $this->anchor   = !empty($matches['anchor'])   ? $matches['anchor']   : '';
+    $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_host_get());
+    $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
+    $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
+    $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
   }
 
-  function type_get()     {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
+  function name_get() {}
+  function type_get() {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
+
   function protocol_get() {return $this->protocol;}
   function domain_get()   {return $this->domain;}
   function path_get()     {return $this->path;}
   function query_get()    {return $this->query;}
   function anchor_get()   {return $this->anchor;}
+
   function relative_get() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
                                   ($this->query  ? '?'.$this->query  : '').
                                   ($this->anchor ? '#'.$this->anchor : '');}
