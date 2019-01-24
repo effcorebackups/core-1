@@ -12,10 +12,6 @@ server {
   server_name 127.0.0.1;
   root %%_root;
 
-  location ~ /\..*$ {
-    deny all;
-  }
-
   location / {
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
@@ -33,10 +29,6 @@ server {
   root %%_root;
   ssl_certificate     %%_domain_crt;
   ssl_certificate_key %%_domain_private_key;
-
-  location ~ /\..*$ {
-    deny all;
-  }
 
   location / {
     fastcgi_index index.php;
