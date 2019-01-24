@@ -83,20 +83,21 @@ namespace effcore {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # define real path
+    # define real path (breake all '../' ...)
     # ─────────────────────────────────────────────────────────────────────
 
     $path_url = url::current_get()->path_get();
-    if (substr($path_url, 0, 15) === '/dynamic/files/')
-         $path = dynamic::dir_files.substr(ltrim($path_url, '/'), 14);
-    else $path =                  dir_root.ltrim($path_url, '/');
-
-    if (is_file    ($path) &&
-        is_readable($path)) {
+    $path = realpath(dir_root.ltrim($path_url, '/'));
+    if ($path === false || strpos($path, dir_root) !== 0) {
+      core::send_header_and_exit('file_not_found');
+    }
 
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
+
+    if (is_file    ($path) &&
+        is_readable($path)) {
 
       if (!empty($file_types[$file_info->type]->dynamic)) {
         $file = new file($path);
