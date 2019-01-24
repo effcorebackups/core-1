@@ -8,6 +8,9 @@ file_types
 - default
     type: default
     protected: 1
+- ini
+    type: ini
+    protected: 1
 - log
     type: log
     protected: 1
