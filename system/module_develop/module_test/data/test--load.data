@@ -16,6 +16,9 @@ tests
         quantity|param_from_form
           name: quantity_of_iterations
         actions
+        # ─────────────────────────────────────────────────────────────────────
+        # files
+        # ─────────────────────────────────────────────────────────────────────
         - request_url_afd21aae77|step_request
             url: /.editorconfig
         - response_check_afd21aae77|step_check
@@ -352,6 +355,9 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        # ─────────────────────────────────────────────────────────────────────
+        # files redirect
+        # ─────────────────────────────────────────────────────────────────────
         - request_url_d549290039|step_request
             url: /.editorconfig/
         - response_check_d549290039|step_check
@@ -692,6 +698,9 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        # ─────────────────────────────────────────────────────────────────────
+        # dirs
+        # ─────────────────────────────────────────────────────────────────────
         - request_url_1ec5405dad|step_request
             url: /dynamic
         - response_check_1ec5405dad|step_check
@@ -1100,6 +1109,9 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        # ─────────────────────────────────────────────────────────────────────
+        # dirs redirect
+        # ─────────────────────────────────────────────────────────────────────
         - request_url_bf3ad65fdc|step_request
             url: /dynamic/
         - response_check_bf3ad65fdc|step_check
