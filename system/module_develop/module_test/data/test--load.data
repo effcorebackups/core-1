@@ -402,12 +402,8 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check_e42602fa29_403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         - request_url_dd364cd5cc|step_request
             url: /index.php/
         - response_check_dd364cd5cc|step_check
