@@ -83,11 +83,12 @@ namespace effcore {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # define real path (breake all '../' ...)
+    # define real path (breake all '../' …)
     # ─────────────────────────────────────────────────────────────────────
 
     $path_url = url::current_get()->path_get();
     $path = realpath(dir_root.ltrim($path_url, '/'));
+    if (DIRECTORY_SEPARATOR == '\\') $path = str_replace('\\', '/', $path);
     if ($path === false || strpos($path, dir_root) !== 0) {
       core::send_header_and_exit('file_not_found');
     }
