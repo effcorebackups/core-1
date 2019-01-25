@@ -709,8 +709,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check__editorconfig_403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.gitattributes/
         - request_url__gitattributes_|step_request
             url: /.gitattributes/
@@ -718,8 +722,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check__gitattributes_403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.gitignore/
         - request_url__gitignore_|step_request
             url: /.gitignore/
@@ -727,8 +735,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check__gitignore_403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.htaccess/
         - request_url__htaccess_|step_request
             url: /.htaccess/
@@ -749,8 +761,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check__nginx_403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /web.config/
         - request_url_web_config_|step_request
             url: /web.config/
