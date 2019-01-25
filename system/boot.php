@@ -64,7 +64,7 @@ namespace effcore {
     $file_types = file::types_get();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for protected file
+    # case for protected file - show "forbidden" even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
     if ($file_info->type !== '' &&

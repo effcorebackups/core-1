@@ -17,307 +17,526 @@ tests
           name: quantity_of_iterations
         actions
   # ─────────────────────────────────────────────────────────────────────
-  # possible transpositions of '.|..|...' + '0' + '1' in file path from URL
+  # combinatorics: possible transpositions of '.|..|...' + '0' + '1' in file path from URL
   # ─────────────────────────────────────────────────────────────────────
         # url: /
-        - request_url_|step_request
+        - request_url_c1_|step_request
             url: /
-        - response_check_|step_check
+        - response_check_c1_|step_check
             where: http_code
             match: 200
             on_failure
             - return_result|step_return
                 value: 0
         # url: /.
-        - request_url__|step_request
+        - request_url_c1__|step_request
             url: /.
-        - response_check__|step_check
+        - response_check_c1__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check__403|step_check
+            - response_check_c1__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..
-        - request_url___|step_request
+        - request_url_c1___|step_request
             url: /..
-        - response_check___|step_check
+        - response_check_c1___|step_check
             where: http_code
             match: 400
             on_failure
-            - response_check___403|step_check
+            - response_check_c1___403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /...
-        - request_url____|step_request
+        - request_url_c1____|step_request
             url: /...
-        - response_check____|step_check
+        - response_check_c1____|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check____403|step_check
+            - response_check_c1____403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /0
-        - request_url_0|step_request
+        - request_url_c1_0|step_request
             url: /0
-        - response_check_0|step_check
+        - response_check_c1_0|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0.
-        - request_url_0_|step_request
+        - request_url_c1_0_|step_request
             url: /0.
-        - response_check_0_|step_check
+        - response_check_c1_0_|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0..
-        - request_url_0__|step_request
+        - request_url_c1_0__|step_request
             url: /0..
-        - response_check_0__|step_check
+        - response_check_c1_0__|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0...
-        - request_url_0___|step_request
+        - request_url_c1_0___|step_request
             url: /0...
-        - response_check_0___|step_check
+        - response_check_c1_0___|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /.0
-        - request_url__0|step_request
+        - request_url_c1__0|step_request
             url: /.0
-        - response_check__0|step_check
+        - response_check_c1__0|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check__0403|step_check
+            - response_check_c1__0403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..0
-        - request_url___0|step_request
+        - request_url_c1___0|step_request
             url: /..0
-        - response_check___0|step_check
+        - response_check_c1___0|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___0403|step_check
+            - response_check_c1___0403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /...0
-        - request_url____0|step_request
+        - request_url_c1____0|step_request
             url: /...0
-        - response_check____0|step_check
+        - response_check_c1____0|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check____0403|step_check
+            - response_check_c1____0403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /01
-        - request_url_01|step_request
+        - request_url_c1_01|step_request
             url: /01
-        - response_check_01|step_check
+        - response_check_c1_01|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0.1
-        - request_url_0_1|step_request
+        - request_url_c1_0_1|step_request
             url: /0.1
-        - response_check_0_1|step_check
+        - response_check_c1_0_1|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0..1
-        - request_url_0__1|step_request
+        - request_url_c1_0__1|step_request
             url: /0..1
-        - response_check_0__1|step_check
+        - response_check_c1_0__1|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /0...1
-        - request_url_0___1|step_request
+        - request_url_c1_0___1|step_request
             url: /0...1
-        - response_check_0___1|step_check
+        - response_check_c1_0___1|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /10
-        - request_url_10|step_request
+        - request_url_c1_10|step_request
             url: /10
-        - response_check_10|step_check
+        - response_check_c1_10|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /1.0
-        - request_url_1_0|step_request
+        - request_url_c1_1_0|step_request
             url: /1.0
-        - response_check_1_0|step_check
+        - response_check_c1_1_0|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /1..0
-        - request_url_1__0|step_request
+        - request_url_c1_1__0|step_request
             url: /1..0
-        - response_check_1__0|step_check
+        - response_check_c1_1__0|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /1...0
-        - request_url_1___0|step_request
+        - request_url_c1_1___0|step_request
             url: /1...0
-        - response_check_1___0|step_check
+        - response_check_c1_1___0|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /.0.
-        - request_url__0_|step_request
+        - request_url_c1__0_|step_request
             url: /.0.
-        - response_check__0_|step_check
+        - response_check_c1__0_|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check__0_403|step_check
+            - response_check_c1__0_403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..0..
-        - request_url___0__|step_request
+        - request_url_c1___0__|step_request
             url: /..0..
-        - response_check___0__|step_check
+        - response_check_c1___0__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___0__403|step_check
+            - response_check_c1___0__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /.0.1.
-        - request_url__0_1_|step_request
+        - request_url_c1__0_1_|step_request
             url: /.0.1.
-        - response_check__0_1_|step_check
+        - response_check_c1__0_1_|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check__0_1_403|step_check
+            - response_check_c1__0_1_403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..0.1..
-        - request_url___0_1__|step_request
+        - request_url_c1___0_1__|step_request
             url: /..0.1..
-        - response_check___0_1__|step_check
+        - response_check_c1___0_1__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___0_1__403|step_check
+            - response_check_c1___0_1__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..0..1..
-        - request_url___0__1__|step_request
+        - request_url_c1___0__1__|step_request
             url: /..0..1..
-        - response_check___0__1__|step_check
+        - response_check_c1___0__1__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___0__1__403|step_check
+            - response_check_c1___0__1__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /.1.0.
-        - request_url__1_0_|step_request
+        - request_url_c1__1_0_|step_request
             url: /.1.0.
-        - response_check__1_0_|step_check
+        - response_check_c1__1_0_|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check__1_0_403|step_check
+            - response_check_c1__1_0_403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..1.0..
-        - request_url___1_0__|step_request
+        - request_url_c1___1_0__|step_request
             url: /..1.0..
-        - response_check___1_0__|step_check
+        - response_check_c1___1_0__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___1_0__403|step_check
+            - response_check_c1___1_0__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
         # url: /..1..0..
-        - request_url___1__0__|step_request
+        - request_url_c1___1__0__|step_request
             url: /..1..0..
-        - response_check___1__0__|step_check
+        - response_check_c1___1__0__|step_check
             where: http_code
             match: 404
             on_failure
-            - response_check___1__0__403|step_check
+            - response_check_c1___1__0__403|step_check
                 where: http_code
                 match: 403
                 on_failure
                 - return_result|step_return
                     value: 0
+  # ─────────────────────────────────────────────────────────────────────
+  # combinatorics: possible transpositions of '.' + '/' + '0' in file path from URL (excluding duplicates)
+  # ─────────────────────────────────────────────────────────────────────
+        # url: //
+        - request_url_c2_|step_request
+            url: //
+        - response_check_c2_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /./
+        - request_url_c2___|step_request
+            url: /./
+        - response_check_c2___|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //.
+        - request_url_c2__|step_request
+            url: //.
+        - response_check_c2__|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: ///
+        - request_url_c2_|step_request
+            url: ///
+        - response_check_c2_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //0
+        - request_url_c2_0|step_request
+            url: //0
+        - response_check_c2_0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0/
+        - request_url_c2_0_|step_request
+            url: /0/
+        - response_check_c2_0_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /../
+        - request_url_c2____|step_request
+            url: /../
+        - response_check_c2____|step_check
+            where: http_code
+            match: 400
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /./.
+        - request_url_c2____|step_request
+            url: /./.
+        - response_check_c2____|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /.//
+        - request_url_c2____|step_request
+            url: /.//
+        - response_check_c2____|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /./0
+        - request_url_c2___0|step_request
+            url: /./0
+        - response_check_c2___0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /.0/
+        - request_url_c2__0_|step_request
+            url: /.0/
+        - response_check_c2__0_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //..
+        - request_url_c2___|step_request
+            url: //..
+        - response_check_c2___|step_check
+            where: http_code
+            match: 400
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //./
+        - request_url_c2___|step_request
+            url: //./
+        - response_check_c2___|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //.0
+        - request_url_c2__0|step_request
+            url: //.0
+        - response_check_c2__0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: ///.
+        - request_url_c2__|step_request
+            url: ///.
+        - response_check_c2__|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: ////
+        - request_url_c2_|step_request
+            url: ////
+        - response_check_c2_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: ///0
+        - request_url_c2_0|step_request
+            url: ///0
+        - response_check_c2_0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //0.
+        - request_url_c2_0_|step_request
+            url: //0.
+        - response_check_c2_0_|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: //0/
+        - request_url_c2_0_|step_request
+            url: //0/
+        - response_check_c2_0_|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0./
+        - request_url_c2_0__|step_request
+            url: /0./
+        - response_check_c2_0__|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0.0
+        - request_url_c2_0_0|step_request
+            url: /0.0
+        - response_check_c2_0_0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0/.
+        - request_url_c2_0__|step_request
+            url: /0/.
+        - response_check_c2_0__|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0//
+        - request_url_c2_0__|step_request
+            url: /0//
+        - response_check_c2_0__|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /0/0
+        - request_url_c2_0_0|step_request
+            url: /0/0
+        - response_check_c2_0_0|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
   # ─────────────────────────────────────────────────────────────────────
   # existing files
   # ─────────────────────────────────────────────────────────────────────
