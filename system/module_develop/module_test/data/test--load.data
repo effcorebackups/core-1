@@ -346,8 +346,12 @@ tests
             where: http_code
             match: 404
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-//.-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: ///
         - request_url-///|step_request
             url: ///
@@ -391,8 +395,12 @@ tests
             where: http_code
             match: 404
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-/./.-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.//
         - request_url-/.//|step_request
             url: /.//
@@ -400,8 +408,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-/.//-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /./0
         - request_url-/./0|step_request
             url: /./0
@@ -409,8 +421,12 @@ tests
             where: http_code
             match: 404
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-/./0-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.0/
         - request_url-/.0/|step_request
             url: /.0/
@@ -418,8 +434,12 @@ tests
             where: http_code
             match: 302
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-/.0/-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: //..
         - request_url-//..|step_request
             url: //..
@@ -427,8 +447,12 @@ tests
             where: http_code
             match: 400
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-//..-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: //./
         - request_url-//./|step_request
             url: //./
@@ -445,8 +469,12 @@ tests
             where: http_code
             match: 404
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-//.0-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: ///.
         - request_url-///.|step_request
             url: ///.
@@ -454,8 +482,12 @@ tests
             where: http_code
             match: 404
             on_failure
-            - return_result|step_return
-                value: 0
+            - response_check-///.-403|step_check
+                where: http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: ////
         - request_url-////|step_request
             url: ////
