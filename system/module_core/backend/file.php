@@ -11,43 +11,41 @@ namespace effcore {
           class file {
 
   # valid paths (path = dirs/ + name + '.' + type):
-  # ┌─────────────────────────╥───────────────┬─────────┬──────┬──────────┐
-  # │ path                    ║ dirs/         │ name    │ type │ relative │
-  # ╞═════════════════════════╬═══════════════╪═════════╪══════╪══════════╡
-  # │ .fiLe                   ║               │ .fiLe   │      │ -        │
-  # │ .fiLe.eXt               ║               │ .fiLe   │ eXt  │ -        │
-  # │ fiLe                    ║               │ fiLe    │      │ -        │
-  # │ fiLe.eXt                ║               │ fiLe    │ eXt  │ -        │
-  # │ fiLe.0.eXt              ║               │ fiLe.0  │ eXt  │ -        │
-  # │ diR.1/                  ║ diR.1/        │         │      │ yes      │
-  # │ diR.1/диР.2/            ║ diR.1/диР.2/  │         │      │ yes      │
-  # │ diR.1/диР.2/.fiLe       ║ diR.1/диР.2/  │ .fiLe   │      │ yes      │
-  # │ diR.1/диР.2/.fiLe.eXt   ║ diR.1/диР.2/  │ .fiLe   │ eXt  │ yes      │
-  # │ diR.1/диР.2/fiLe        ║ diR.1/диР.2/  │ fiLe    │      │ yes      │
-  # │ diR.1/диР.2/fiLe.eXt    ║ diR.1/диР.2/  │ fiLe    │ eXt  │ yes      │
-  # │ diR.1/диР.2/fiLe.0.eXt  ║ diR.1/диР.2/  │ fiLe.0  │ eXt  │ yes      │
-  # │ /diR.1/                 ║ /diR.1/       │         │      │ no       │
-  # │ /diR.1/диР.2/           ║ /diR.1/диР.2/ │         │      │ no       │
-  # │ /diR.1/диР.2/.fiLe      ║ /diR.1/диР.2/ │ .fiLe   │      │ no       │
-  # │ /diR.1/диР.2/.fiLe.eXt  ║ /diR.1/диР.2/ │ .fiLe   │ eXt  │ no       │
-  # │ /diR.1/диР.2/fiLe       ║ /diR.1/диР.2/ │ fiLe    │      │ no       │
-  # │ /diR.1/диР.2/fiLe.eXt   ║ /diR.1/диР.2/ │ fiLe    │ eXt  │ no       │
-  # │ /diR.1/диР.2/fiLe.0.eXt ║ /diR.1/диР.2/ │ fiLe.0  │ eXt  │ no       │
-  # └─────────────────────────╨───────────────┴─────────┴──────┴──────────┘
+  # ┌──────────────╥───────────────┬─────────┬──────┬──────────┐
+  # │ path         ║ dirs/         │ name    │ type │ relative │
+  # ╞══════════════╬═══════════════╪═════════╪══════╪══════════╡
+  # │ .n           ║               │ .n      │      │ -        │
+  # │ .n.t         ║               │ .n      │ t    │ -        │
+  # │ n            ║               │ n       │      │ -        │
+  # │ n.t          ║               │ n       │ t    │ -        │
+  # │ d1/          ║ d1/           │         │      │ yes      │
+  # │ d1/d2/       ║ d1/d2/        │         │      │ yes      │
+  # │ d1/d2/.n     ║ d1/d2/        │ .n      │      │ yes      │
+  # │ d1/d2/.n.t   ║ d1/d2/        │ .n      │ t    │ yes      │
+  # │ d1/d2/n      ║ d1/d2/        │ n       │      │ yes      │
+  # │ d1/d2/n.t    ║ d1/d2/        │ n       │ t    │ yes      │
+  # │ /d1/         ║ /d1/          │         │      │ no       │
+  # │ /d1/d2/      ║ /d1/d2/       │         │      │ no       │
+  # │ /d1/d2/.n    ║ /d1/d2/       │ .n      │      │ no       │
+  # │ /d1/d2/.n.t  ║ /d1/d2/       │ .n      │ t    │ no       │
+  # │ /d1/d2/n     ║ /d1/d2/       │ n       │      │ no       │
+  # │ /d1/d2/n.t   ║ /d1/d2/       │ n       │ t    │ no       │
+  # └──────────────╨───────────────┴─────────┴──────┴──────────┘
 
   # wrong paths:
-  # ┌─────────────────────────╥────────────────────────────────────────────────┐
-  # │ path                    ║ behavior                                       │
-  # ╞═════════════════════════╬════════════════════════════════════════════════╡
-  # │ c:\dir1                 ║ should be converted to c:/dir1                 │
-  # │ \dir1                   ║ should be converted to /dir1                   │
-  # │ dir1\                   ║ should be converted to dir/                    │
-  # │ ./dir1                  ║ should be ignored                              │
-  # │ ../dir1/                ║ should be ignored                              │
-  # │ /dir1/../dir3/          ║ should be ignored                              │
-  # │ dir1                    ║ should be ignored (interpreted as: file1)      │
-  # │ dir1/dir2               ║ should be ignored (interpreted as: dir1/file2) │
-  # └─────────────────────────╨────────────────────────────────────────────────┘
+  # ┌────────────────╥─────────────────────────────────────────┐
+  # │ path           ║ behavior                                │
+  # ╞════════════════╬═════════════════════════════════════════╡
+  # │ c:\dir\        ║ should be converted to c:/dir/          │
+  # │ dir\           ║ should be converted to dir/             │
+  # │ \dir\          ║ should be converted to /dir/            │
+  # │ \\dir\         ║ should be ignored                       │
+  # │ ./dir/         ║ should be ignored                       │
+  # │ ../dir/        ║ should be ignored                       │
+  # │ /dir1/../dir3/ ║ should be ignored                       │
+  # │ dir            ║ interpreted as file with name 'dir'     │
+  # │ dir1/dir2      ║ interpreted as file with name 'dir2'    │
+  # └────────────────╨─────────────────────────────────────────┘
 
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
