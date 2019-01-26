@@ -124,7 +124,7 @@ namespace effcore {
     $result->name = '';
     $result->type = '';
     $full_name = substr(strrchr($path, '/'), 1);
-    if ($full_name === '' || $full_name === '..' || $full_name === '.') return;
+    if ($full_name === false || $full_name === '' || $full_name === '..' || $full_name === '.') return;
     $result->dirs = substr($path, 0, - strlen($full_name));
     $type = substr(strrchr($full_name, '.'), 1);
     if ($type !== false &&
