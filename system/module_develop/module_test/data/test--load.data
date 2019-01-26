@@ -35,7 +35,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1__403|step_check
+            - response_check-/.-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -48,7 +48,7 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-_c1___403|step_check
+            - response_check-/..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -61,7 +61,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1____403|step_check
+            - response_check-/...-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -110,7 +110,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1__0403|step_check
+            - response_check-/.0-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -123,7 +123,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___0403|step_check
+            - response_check-/..0-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -136,7 +136,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1____0403|step_check
+            - response_check-/...0-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -221,7 +221,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1__0_403|step_check
+            - response_check-/.0.-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -234,7 +234,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___0__403|step_check
+            - response_check-/..0..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -247,7 +247,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1__0_1_403|step_check
+            - response_check-/.0.1.-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -260,7 +260,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___0_1__403|step_check
+            - response_check-/..0.1..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -273,7 +273,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___0__1__403|step_check
+            - response_check-/..0..1..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -286,7 +286,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1__1_0_403|step_check
+            - response_check-/.1.0.-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -299,7 +299,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___1_0__403|step_check
+            - response_check-/..1.0..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -312,7 +312,7 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-_c1___1__0__403|step_check
+            - response_check-/..1..0..-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -928,7 +928,7 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-__editorconfig_403|step_check
+            - response_check-/.editorconfig/-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -941,7 +941,7 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-__gitattributes_403|step_check
+            - response_check-/.gitattributes/-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -954,7 +954,7 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-__gitignore_403|step_check
+            - response_check-/.gitignore/-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -967,7 +967,7 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-__htaccess_403|step_check
+            - response_check-/.htaccess/-403|step_check
                 where: http_code
                 match: 403
                 on_failure
@@ -980,7 +980,7 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-__nginx_403|step_check
+            - response_check-/.nginx/-403|step_check
                 where: http_code
                 match: 403
                 on_failure
