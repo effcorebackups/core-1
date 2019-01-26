@@ -117,19 +117,19 @@ namespace effcore {
   # └───────────────╨───────┴──────────┴──────┴──────────┘
 
   # wrong paths:
-  # ┌────────────────╥─────────────────────────────────────────┐
-  # │ path           ║ behavior                                │
-  # ╞════════════════╬═════════════════════════════════════════╡
-  # │ c:\dir\        ║ should be converted to c:/dir/          │
-  # │ dir\           ║ should be converted to dir/             │
-  # │ \dir\          ║ should be converted to /dir/            │
-  # │ \\dir\         ║ should be ignored                       │
-  # │ ./dir/         ║ should be ignored                       │
-  # │ ../dir/        ║ should be ignored                       │
-  # │ /dir1/../dir3/ ║ should be ignored                       │
-  # │ dir            ║ interpreted as file with name 'dir'     │
-  # │ dir1/dir2      ║ interpreted as file with name 'dir2'    │
-  # └────────────────╨─────────────────────────────────────────┘
+  # ┌────────────────╥──────────────────────────────────────┐
+  # │ path           ║ behavior                             │
+  # ╞════════════════╬══════════════════════════════════════╡
+  # │ c:\dir\        ║ should be converted to c:/dir/       │
+  # │ dir\           ║ should be converted to dir/          │
+  # │ \dir\          ║ should be converted to /dir/         │
+  # │ \\dir\         ║ should be ignored                    │
+  # │ ./dir/         ║ should be ignored                    │
+  # │ ../dir/        ║ should be ignored                    │
+  # │ /dir1/../dir3/ ║ should be ignored                    │
+  # │ dir            ║ interpreted as file with name 'dir'  │
+  # │ dir1/dir2      ║ interpreted as file with name 'dir2' │
+  # └────────────────╨──────────────────────────────────────┘
 
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
@@ -152,13 +152,12 @@ namespace effcore {
   }
 
   function parse($path) {
-    $matches = [];
-    preg_match('%^(?<dirs>.*/|)'.
-                 '(?<name>.+?|)'.
-                 '(?<type>[.][^.]+|)$%S', $path, $matches);
-    $this->dirs = $matches['dirs'] ?? '';
-    $this->name = $matches['name'] ?? '';
-    $this->type = isset($matches['type']) ? ltrim($matches['type'], '.') : '';
+    $info = static::path_parse($path);
+    if ($info) {
+      $this->dirs = $info->dirs;
+      $this->name = $info->name;
+      $this->type = $info->type;
+    }
   }
 
   function dirs_set($dirs) {$this->dirs = $dirs;}
