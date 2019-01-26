@@ -922,9 +922,9 @@ tests
   # existing files + redirect
   # ─────────────────────────────────────────────────────────────────────
         # url: /.editorconfig/
-        - request_url__editorconfig_|step_request
+        - request_url/.editorconfig/|step_request
             url: /.editorconfig/
-        - response_check__editorconfig_|step_check
+        - response_check/.editorconfig/|step_check
             where: http_code
             match: 302
             on_failure
@@ -935,9 +935,9 @@ tests
                 - return_result|step_return
                     value: 0
         # url: /.gitattributes/
-        - request_url__gitattributes_|step_request
+        - request_url/.gitattributes/|step_request
             url: /.gitattributes/
-        - response_check__gitattributes_|step_check
+        - response_check/.gitattributes/|step_check
             where: http_code
             match: 302
             on_failure
@@ -948,9 +948,9 @@ tests
                 - return_result|step_return
                     value: 0
         # url: /.gitignore/
-        - request_url__gitignore_|step_request
+        - request_url/.gitignore/|step_request
             url: /.gitignore/
-        - response_check__gitignore_|step_check
+        - response_check/.gitignore/|step_check
             where: http_code
             match: 302
             on_failure
@@ -961,9 +961,9 @@ tests
                 - return_result|step_return
                     value: 0
         # url: /.htaccess/
-        - request_url__htaccess_|step_request
+        - request_url/.htaccess/|step_request
             url: /.htaccess/
-        - response_check__htaccess_|step_check
+        - response_check/.htaccess/|step_check
             where: http_code
             match: 302
             on_failure
@@ -974,9 +974,9 @@ tests
                 - return_result|step_return
                     value: 0
         # url: /.nginx/
-        - request_url__nginx_|step_request
+        - request_url/.nginx/|step_request
             url: /.nginx/
-        - response_check__nginx_|step_check
+        - response_check/.nginx/|step_check
             where: http_code
             match: 302
             on_failure
@@ -987,333 +987,333 @@ tests
                 - return_result|step_return
                     value: 0
         # url: /web.config/
-        - request_url_web_config_|step_request
+        - request_url/web.config/|step_request
             url: /web.config/
-        - response_check_web_config_|step_check
+        - response_check/web.config/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /index.php/
-        - request_url_index_php_|step_request
+        - request_url/index.php/|step_request
             url: /index.php/
-        - response_check_index_php_|step_check
+        - response_check/index.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /license.mark/
-        - request_url_license_mark_|step_request
+        - request_url/license.mark/|step_request
             url: /license.mark/
-        - response_check_license_mark_|step_check
+        - response_check/license.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/cache/data_original.php/
-        - request_url_dynamic_cache_data_original_php_|step_request
+        - request_url/dynamic/cache/data_original.php/|step_request
             url: /dynamic/cache/data_original.php/
-        - response_check_dynamic_cache_data_original_php_|step_check
+        - response_check/dynamic/cache/data_original.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/cache/readme.mark/
-        - request_url_dynamic_cache_readme_mark_|step_request
+        - request_url/dynamic/cache/readme.mark/|step_request
             url: /dynamic/cache/readme.mark/
-        - response_check_dynamic_cache_readme_mark_|step_check
+        - response_check/dynamic/cache/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/cache/structures.php/
-        - request_url_dynamic_cache_structures_php_|step_request
+        - request_url/dynamic/cache/structures.php/|step_request
             url: /dynamic/cache/structures.php/
-        - response_check_dynamic_cache_structures_php_|step_check
+        - response_check/dynamic/cache/structures.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data/boot.php/
-        - request_url_dynamic_data_boot_php_|step_request
+        - request_url/dynamic/data/boot.php/|step_request
             url: /dynamic/data/boot.php/
-        - response_check_dynamic_data_boot_php_|step_check
+        - response_check/dynamic/data/boot.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data/changes.php/
-        - request_url_dynamic_data_changes_php_|step_request
+        - request_url/dynamic/data/changes.php/|step_request
             url: /dynamic/data/changes.php/
-        - response_check_dynamic_data_changes_php_|step_check
+        - response_check/dynamic/data/changes.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data/data.sqlite/
-        - request_url_dynamic_data_data_sqlite_|step_request
+        - request_url/dynamic/data/data.sqlite/|step_request
             url: /dynamic/data/data.sqlite/
-        - response_check_dynamic_data_data_sqlite_|step_check
+        - response_check/dynamic/data/data.sqlite/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data/readme.mark/
-        - request_url_dynamic_data_readme_mark_|step_request
+        - request_url/dynamic/data/readme.mark/|step_request
             url: /dynamic/data/readme.mark/
-        - response_check_dynamic_data_readme_mark_|step_check
+        - response_check/dynamic/data/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/files/readme.mark/
-        - request_url_dynamic_files_readme_mark_|step_request
+        - request_url/dynamic/files/readme.mark/|step_request
             url: /dynamic/files/readme.mark/
-        - response_check_dynamic_files_readme_mark_|step_check
+        - response_check/dynamic/files/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/logs/readme.mark/
-        - request_url_dynamic_logs_readme_mark_|step_request
+        - request_url/dynamic/logs/readme.mark/|step_request
             url: /dynamic/logs/readme.mark/
-        - response_check_dynamic_logs_readme_mark_|step_check
+        - response_check/dynamic/logs/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/tmp/readme.mark/
-        - request_url_dynamic_tmp_readme_mark_|step_request
+        - request_url/dynamic/tmp/readme.mark/|step_request
             url: /dynamic/tmp/readme.mark/
-        - response_check_dynamic_tmp_readme_mark_|step_check
+        - response_check/dynamic/tmp/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /modules/readme.mark/
-        - request_url_modules_readme_mark_|step_request
+        - request_url/modules/readme.mark/|step_request
             url: /modules/readme.mark/
-        - response_check_modules_readme_mark_|step_check
+        - response_check/modules/readme.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/about.mark/
-        - request_url_readme_about_mark_|step_request
+        - request_url/readme/about.mark/|step_request
             url: /readme/about.mark/
-        - response_check_readme_about_mark_|step_check
+        - response_check/readme/about.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/develop.mark/
-        - request_url_readme_develop_mark_|step_request
+        - request_url/readme/develop.mark/|step_request
             url: /readme/develop.mark/
-        - response_check_readme_develop_mark_|step_check
+        - response_check/readme/develop.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/hardware.mark/
-        - request_url_readme_hardware_mark_|step_request
+        - request_url/readme/hardware.mark/|step_request
             url: /readme/hardware.mark/
-        - response_check_readme_hardware_mark_|step_check
+        - response_check/readme/hardware.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/security.mark/
-        - request_url_readme_security_mark_|step_request
+        - request_url/readme/security.mark/|step_request
             url: /readme/security.mark/
-        - response_check_readme_security_mark_|step_check
+        - response_check/readme/security.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/software.mark/
-        - request_url_readme_software_mark_|step_request
+        - request_url/readme/software.mark/|step_request
             url: /readme/software.mark/
-        - response_check_readme_software_mark_|step_check
+        - response_check/readme/software.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell/bundle_create.sh/
-        - request_url_shell_bundle_create_sh_|step_request
+        - request_url/shell/bundle_create.sh/|step_request
             url: /shell/bundle_create.sh/
-        - response_check_shell_bundle_create_sh_|step_check
+        - response_check/shell/bundle_create.sh/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell/cache_clear.sh/
-        - request_url_shell_cache_clear_sh_|step_request
+        - request_url/shell/cache_clear.sh/|step_request
             url: /shell/cache_clear.sh/
-        - response_check_shell_cache_clear_sh_|step_check
+        - response_check/shell/cache_clear.sh/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell/dynamic_reset.sh/
-        - request_url_shell_dynamic_reset_sh_|step_request
+        - request_url/shell/dynamic_reset.sh/|step_request
             url: /shell/dynamic_reset.sh/
-        - response_check_shell_dynamic_reset_sh_|step_check
+        - response_check/shell/dynamic_reset.sh/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell/update.sh/
-        - request_url_shell_update_sh_|step_request
+        - request_url/shell/update.sh/|step_request
             url: /shell/update.sh/
-        - response_check_shell_update_sh_|step_check
+        - response_check/shell/update.sh/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/boot.php/
-        - request_url_system_boot_php_|step_request
+        - request_url/system/boot.php/|step_request
             url: /system/boot.php/
-        - response_check_system_boot_php_|step_check
+        - response_check/system/boot.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/bundle.data/
-        - request_url_system_bundle_data_|step_request
+        - request_url/system/bundle.data/|step_request
             url: /system/bundle.data/
-        - response_check_system_bundle_data_|step_check
+        - response_check/system/bundle.data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/licenses/license-ru.mark/
-        - request_url_system_module_locales_licenses_license_ru_mark_|step_request
+        - request_url/system/module_locales/licenses/license-ru.mark/|step_request
             url: /system/module_locales/licenses/license-ru.mark/
-        - response_check_system_module_locales_licenses_license_ru_mark_|step_check
+        - response_check/system/module_locales/licenses/license-ru.mark/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/module.data/
-        - request_url_system_module_page_module_data_|step_request
+        - request_url/system/module_page/module.data/|step_request
             url: /system/module_page/module.data/
-        - response_check_system_module_page_module_data_|step_check
+        - response_check/system/module_page/module.data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/backend/markers.php/
-        - request_url_system_module_page_backend_markers_php_|step_request
+        - request_url/system/module_page/backend/markers.php/|step_request
             url: /system/module_page/backend/markers.php/
-        - response_check_system_module_page_backend_markers_php_|step_check
+        - response_check/system/module_page/backend/markers.php/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/template--canvas_svg.tpl/
-        - request_url_system_module_page_frontend_template__canvas_svg_tpl_|step_request
+        - request_url/system/module_page/frontend/template--canvas_svg.tpl/|step_request
             url: /system/module_page/frontend/template--canvas_svg.tpl/
-        - response_check_system_module_page_frontend_template__canvas_svg_tpl_|step_check
+        - response_check/system/module_page/frontend/template--canvas_svg.tpl/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/core.jsd/
-        - request_url_system_module_page_frontend_core_jsd_|step_request
+        - request_url/system/module_page/frontend/core.jsd/|step_request
             url: /system/module_page/frontend/core.jsd/
-        - response_check_system_module_page_frontend_core_jsd_|step_check
+        - response_check/system/module_page/frontend/core.jsd/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/form.cssd/
-        - request_url_system_module_page_frontend_form_cssd_|step_request
+        - request_url/system/module_page/frontend/form.cssd/|step_request
             url: /system/module_page/frontend/form.cssd/
-        - response_check_system_module_page_frontend_form_cssd_|step_check
+        - response_check/system/module_page/frontend/form.cssd/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/form.js/
-        - request_url_system_module_page_frontend_form_js_|step_request
+        - request_url/system/module_page/frontend/form.js/|step_request
             url: /system/module_page/frontend/form.js/
-        - response_check_system_module_page_frontend_form_js_|step_check
+        - response_check/system/module_page/frontend/form.js/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images/icon-120.png/
-        - request_url_system_module_page_frontend_images_icon_120_png_|step_request
+        - request_url/system/module_page/frontend/images/icon-120.png/|step_request
             url: /system/module_page/frontend/images/icon-120.png/
-        - response_check_system_module_page_frontend_images_icon_120_png_|step_check
+        - response_check/system/module_page/frontend/images/icon-120.png/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images/icon-32.ico/
-        - request_url_system_module_page_frontend_images_icon_32_ico_|step_request
+        - request_url/system/module_page/frontend/images/icon-32.ico/|step_request
             url: /system/module_page/frontend/images/icon-32.ico/
-        - response_check_system_module_page_frontend_images_icon_32_ico_|step_check
+        - response_check/system/module_page/frontend/images/icon-32.ico/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images/icons-form_items.svgd/
-        - request_url_system_module_page_frontend_images_icons_form_items_svgd_|step_request
+        - request_url/system/module_page/frontend/images/icons-form_items.svgd/|step_request
             url: /system/module_page/frontend/images/icons-form_items.svgd/
-        - response_check_system_module_page_frontend_images_icons_form_items_svgd_|step_check
+        - response_check/system/module_page/frontend/images/icons-form_items.svgd/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images/lines-1.svg/
-        - request_url_system_module_page_frontend_images_lines_1_svg_|step_request
+        - request_url/system/module_page/frontend/images/lines-1.svg/|step_request
             url: /system/module_page/frontend/images/lines-1.svg/
-        - response_check_system_module_page_frontend_images_lines_1_svg_|step_check
+        - response_check/system/module_page/frontend/images/lines-1.svg/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/frontend/captcha.css/
-        - request_url_system_module_captcha_frontend_captcha_css_|step_request
+        - request_url/system/module_captcha/frontend/captcha.css/|step_request
             url: /system/module_captcha/frontend/captcha.css/
-        - response_check_system_module_captcha_frontend_captcha_css_|step_check
+        - response_check/system/module_captcha/frontend/captcha.css/|step_check
             where: http_code
             match: 302
             on_failure
@@ -1323,459 +1323,459 @@ tests
   # existing directories
   # ─────────────────────────────────────────────────────────────────────
         # url: /dynamic
-        - request_url_dynamic|step_request
+        - request_url/dynamic|step_request
             url: /dynamic
-        - response_check_dynamic|step_check
+        - response_check/dynamic|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/cache
-        - request_url_dynamic_cache|step_request
+        - request_url/dynamic/cache|step_request
             url: /dynamic/cache
-        - response_check_dynamic_cache|step_check
+        - response_check/dynamic/cache|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data
-        - request_url_dynamic_data|step_request
+        - request_url/dynamic/data|step_request
             url: /dynamic/data
-        - response_check_dynamic_data|step_check
+        - response_check/dynamic/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/files
-        - request_url_dynamic_files|step_request
+        - request_url/dynamic/files|step_request
             url: /dynamic/files
-        - response_check_dynamic_files|step_check
+        - response_check/dynamic/files|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/logs
-        - request_url_dynamic_logs|step_request
+        - request_url/dynamic/logs|step_request
             url: /dynamic/logs
-        - response_check_dynamic_logs|step_check
+        - response_check/dynamic/logs|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/tmp
-        - request_url_dynamic_tmp|step_request
+        - request_url/dynamic/tmp|step_request
             url: /dynamic/tmp
-        - response_check_dynamic_tmp|step_check
+        - response_check/dynamic/tmp|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /modules
-        - request_url_modules|step_request
+        - request_url/modules|step_request
             url: /modules
-        - response_check_modules|step_check
+        - response_check/modules|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme
-        - request_url_readme|step_request
+        - request_url/readme|step_request
             url: /readme
-        - response_check_readme|step_check
+        - response_check/readme|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell
-        - request_url_shell|step_request
+        - request_url/shell|step_request
             url: /shell
-        - response_check_shell|step_check
+        - response_check/shell|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system
-        - request_url_system|step_request
+        - request_url/system|step_request
             url: /system
-        - response_check_system|step_check
+        - response_check/system|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha
-        - request_url_system_module_captcha|step_request
+        - request_url/system/module_captcha|step_request
             url: /system/module_captcha
-        - response_check_system_module_captcha|step_check
+        - response_check/system/module_captcha|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/backend
-        - request_url_system_module_captcha_backend|step_request
+        - request_url/system/module_captcha/backend|step_request
             url: /system/module_captcha/backend
-        - response_check_system_module_captcha_backend|step_check
+        - response_check/system/module_captcha/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/data
-        - request_url_system_module_captcha_data|step_request
+        - request_url/system/module_captcha/data|step_request
             url: /system/module_captcha/data
-        - response_check_system_module_captcha_data|step_check
+        - response_check/system/module_captcha/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/frontend
-        - request_url_system_module_captcha_frontend|step_request
+        - request_url/system/module_captcha/frontend|step_request
             url: /system/module_captcha/frontend
-        - response_check_system_module_captcha_frontend|step_check
+        - response_check/system/module_captcha/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core
-        - request_url_system_module_core|step_request
+        - request_url/system/module_core|step_request
             url: /system/module_core
-        - response_check_system_module_core|step_check
+        - response_check/system/module_core|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core/backend
-        - request_url_system_module_core_backend|step_request
+        - request_url/system/module_core/backend|step_request
             url: /system/module_core/backend
-        - response_check_system_module_core_backend|step_check
+        - response_check/system/module_core/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core/data
-        - request_url_system_module_core_data|step_request
+        - request_url/system/module_core/data|step_request
             url: /system/module_core/data
-        - response_check_system_module_core_data|step_check
+        - response_check/system/module_core/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop
-        - request_url_system_module_develop|step_request
+        - request_url/system/module_develop|step_request
             url: /system/module_develop
-        - response_check_system_module_develop|step_check
+        - response_check/system/module_develop|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/backend
-        - request_url_system_module_develop_backend|step_request
+        - request_url/system/module_develop/backend|step_request
             url: /system/module_develop/backend
-        - response_check_system_module_develop_backend|step_check
+        - response_check/system/module_develop/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/data
-        - request_url_system_module_develop_data|step_request
+        - request_url/system/module_develop/data|step_request
             url: /system/module_develop/data
-        - response_check_system_module_develop_data|step_check
+        - response_check/system/module_develop/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/frontend
-        - request_url_system_module_develop_frontend|step_request
+        - request_url/system/module_develop/frontend|step_request
             url: /system/module_develop/frontend
-        - response_check_system_module_develop_frontend|step_check
+        - response_check/system/module_develop/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/frontend/images
-        - request_url_system_module_develop_frontend_images|step_request
+        - request_url/system/module_develop/frontend/images|step_request
             url: /system/module_develop/frontend/images
-        - response_check_system_module_develop_frontend_images|step_check
+        - response_check/system/module_develop/frontend/images|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo
-        - request_url_system_module_develop_module_demo|step_request
+        - request_url/system/module_develop/module_demo|step_request
             url: /system/module_develop/module_demo
-        - response_check_system_module_develop_module_demo|step_check
+        - response_check/system/module_develop/module_demo|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo/backend
-        - request_url_system_module_develop_module_demo_backend|step_request
+        - request_url/system/module_develop/module_demo/backend|step_request
             url: /system/module_develop/module_demo/backend
-        - response_check_system_module_develop_module_demo_backend|step_check
+        - response_check/system/module_develop/module_demo/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo/data
-        - request_url_system_module_develop_module_demo_data|step_request
+        - request_url/system/module_develop/module_demo/data|step_request
             url: /system/module_develop/module_demo/data
-        - response_check_system_module_develop_module_demo_data|step_check
+        - response_check/system/module_develop/module_demo/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test
-        - request_url_system_module_develop_module_test|step_request
+        - request_url/system/module_develop/module_test|step_request
             url: /system/module_develop/module_test
-        - response_check_system_module_develop_module_test|step_check
+        - response_check/system/module_develop/module_test|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test/backend
-        - request_url_system_module_develop_module_test_backend|step_request
+        - request_url/system/module_develop/module_test/backend|step_request
             url: /system/module_develop/module_test/backend
-        - response_check_system_module_develop_module_test_backend|step_check
+        - response_check/system/module_develop/module_test/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test/data
-        - request_url_system_module_develop_module_test_data|step_request
+        - request_url/system/module_develop/module_test/data|step_request
             url: /system/module_develop/module_test/data
-        - response_check_system_module_develop_module_test_data|step_check
+        - response_check/system/module_develop/module_test/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales
-        - request_url_system_module_locales|step_request
+        - request_url/system/module_locales|step_request
             url: /system/module_locales
-        - response_check_system_module_locales|step_check
+        - response_check/system/module_locales|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/backend
-        - request_url_system_module_locales_backend|step_request
+        - request_url/system/module_locales/backend|step_request
             url: /system/module_locales/backend
-        - response_check_system_module_locales_backend|step_check
+        - response_check/system/module_locales/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/frontend
-        - request_url_system_module_locales_frontend|step_request
+        - request_url/system/module_locales/frontend|step_request
             url: /system/module_locales/frontend
-        - response_check_system_module_locales_frontend|step_check
+        - response_check/system/module_locales/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/frontend/images
-        - request_url_system_module_locales_frontend_images|step_request
+        - request_url/system/module_locales/frontend/images|step_request
             url: /system/module_locales/frontend/images
-        - response_check_system_module_locales_frontend_images|step_check
+        - response_check/system/module_locales/frontend/images|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/licenses
-        - request_url_system_module_locales_licenses|step_request
+        - request_url/system/module_locales/licenses|step_request
             url: /system/module_locales/licenses
-        - response_check_system_module_locales_licenses|step_check
+        - response_check/system/module_locales/licenses|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu
-        - request_url_system_module_menu|step_request
+        - request_url/system/module_menu|step_request
             url: /system/module_menu
-        - response_check_system_module_menu|step_check
+        - response_check/system/module_menu|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/backend
-        - request_url_system_module_menu_backend|step_request
+        - request_url/system/module_menu/backend|step_request
             url: /system/module_menu/backend
-        - response_check_system_module_menu_backend|step_check
+        - response_check/system/module_menu/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/data
-        - request_url_system_module_menu_data|step_request
+        - request_url/system/module_menu/data|step_request
             url: /system/module_menu/data
-        - response_check_system_module_menu_data|step_check
+        - response_check/system/module_menu/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/frontend
-        - request_url_system_module_menu_frontend|step_request
+        - request_url/system/module_menu/frontend|step_request
             url: /system/module_menu/frontend
-        - response_check_system_module_menu_frontend|step_check
+        - response_check/system/module_menu/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/frontend/images
-        - request_url_system_module_menu_frontend_images|step_request
+        - request_url/system/module_menu/frontend/images|step_request
             url: /system/module_menu/frontend/images
-        - response_check_system_module_menu_frontend_images|step_check
+        - response_check/system/module_menu/frontend/images|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page
-        - request_url_system_module_page|step_request
+        - request_url/system/module_page|step_request
             url: /system/module_page
-        - response_check_system_module_page|step_check
+        - response_check/system/module_page|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/backend
-        - request_url_system_module_page_backend|step_request
+        - request_url/system/module_page/backend|step_request
             url: /system/module_page/backend
-        - response_check_system_module_page_backend|step_check
+        - response_check/system/module_page/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/data
-        - request_url_system_module_page_data|step_request
+        - request_url/system/module_page/data|step_request
             url: /system/module_page/data
-        - response_check_system_module_page_data|step_check
+        - response_check/system/module_page/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend
-        - request_url_system_module_page_frontend|step_request
+        - request_url/system/module_page/frontend|step_request
             url: /system/module_page/frontend
-        - response_check_system_module_page_frontend|step_check
+        - response_check/system/module_page/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images
-        - request_url_system_module_page_frontend_images|step_request
+        - request_url/system/module_page/frontend/images|step_request
             url: /system/module_page/frontend/images
-        - response_check_system_module_page_frontend_images|step_check
+        - response_check/system/module_page/frontend/images|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage
-        - request_url_system_module_storage|step_request
+        - request_url/system/module_storage|step_request
             url: /system/module_storage
-        - response_check_system_module_storage|step_check
+        - response_check/system/module_storage|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage/backend
-        - request_url_system_module_storage_backend|step_request
+        - request_url/system/module_storage/backend|step_request
             url: /system/module_storage/backend
-        - response_check_system_module_storage_backend|step_check
+        - response_check/system/module_storage/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage/data
-        - request_url_system_module_storage_data|step_request
+        - request_url/system/module_storage/data|step_request
             url: /system/module_storage/data
-        - response_check_system_module_storage_data|step_check
+        - response_check/system/module_storage/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user
-        - request_url_system_module_user|step_request
+        - request_url/system/module_user|step_request
             url: /system/module_user
-        - response_check_system_module_user|step_check
+        - response_check/system/module_user|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/backend
-        - request_url_system_module_user_backend|step_request
+        - request_url/system/module_user/backend|step_request
             url: /system/module_user/backend
-        - response_check_system_module_user_backend|step_check
+        - response_check/system/module_user/backend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/data
-        - request_url_system_module_user_data|step_request
+        - request_url/system/module_user/data|step_request
             url: /system/module_user/data
-        - response_check_system_module_user_data|step_check
+        - response_check/system/module_user/data|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/frontend
-        - request_url_system_module_user_frontend|step_request
+        - request_url/system/module_user/frontend|step_request
             url: /system/module_user/frontend
-        - response_check_system_module_user_frontend|step_check
+        - response_check/system/module_user/frontend|step_check
             where: http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/frontend/images
-        - request_url_system_module_user_frontend_images|step_request
+        - request_url/system/module_user/frontend/images|step_request
             url: /system/module_user/frontend/images
-        - response_check_system_module_user_frontend_images|step_check
+        - response_check/system/module_user/frontend/images|step_check
             where: http_code
             match: 404
             on_failure
@@ -1785,459 +1785,459 @@ tests
   # existing directories + redirect
   # ─────────────────────────────────────────────────────────────────────
         # url: /dynamic/
-        - request_url_dynamic_|step_request
+        - request_url/dynamic/|step_request
             url: /dynamic/
-        - response_check_dynamic_|step_check
+        - response_check/dynamic/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/cache/
-        - request_url_dynamic_cache_|step_request
+        - request_url/dynamic/cache/|step_request
             url: /dynamic/cache/
-        - response_check_dynamic_cache_|step_check
+        - response_check/dynamic/cache/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/data/
-        - request_url_dynamic_data_|step_request
+        - request_url/dynamic/data/|step_request
             url: /dynamic/data/
-        - response_check_dynamic_data_|step_check
+        - response_check/dynamic/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/files/
-        - request_url_dynamic_files_|step_request
+        - request_url/dynamic/files/|step_request
             url: /dynamic/files/
-        - response_check_dynamic_files_|step_check
+        - response_check/dynamic/files/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/logs/
-        - request_url_dynamic_logs_|step_request
+        - request_url/dynamic/logs/|step_request
             url: /dynamic/logs/
-        - response_check_dynamic_logs_|step_check
+        - response_check/dynamic/logs/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /dynamic/tmp/
-        - request_url_dynamic_tmp_|step_request
+        - request_url/dynamic/tmp/|step_request
             url: /dynamic/tmp/
-        - response_check_dynamic_tmp_|step_check
+        - response_check/dynamic/tmp/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /modules/
-        - request_url_modules_|step_request
+        - request_url/modules/|step_request
             url: /modules/
-        - response_check_modules_|step_check
+        - response_check/modules/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /readme/
-        - request_url_readme_|step_request
+        - request_url/readme/|step_request
             url: /readme/
-        - response_check_readme_|step_check
+        - response_check/readme/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /shell/
-        - request_url_shell_|step_request
+        - request_url/shell/|step_request
             url: /shell/
-        - response_check_shell_|step_check
+        - response_check/shell/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/
-        - request_url_system_|step_request
+        - request_url/system/|step_request
             url: /system/
-        - response_check_system_|step_check
+        - response_check/system/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/
-        - request_url_system_module_captcha_|step_request
+        - request_url/system/module_captcha/|step_request
             url: /system/module_captcha/
-        - response_check_system_module_captcha_|step_check
+        - response_check/system/module_captcha/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/backend/
-        - request_url_system_module_captcha_backend_|step_request
+        - request_url/system/module_captcha/backend/|step_request
             url: /system/module_captcha/backend/
-        - response_check_system_module_captcha_backend_|step_check
+        - response_check/system/module_captcha/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/data/
-        - request_url_system_module_captcha_data_|step_request
+        - request_url/system/module_captcha/data/|step_request
             url: /system/module_captcha/data/
-        - response_check_system_module_captcha_data_|step_check
+        - response_check/system/module_captcha/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_captcha/frontend/
-        - request_url_system_module_captcha_frontend_|step_request
+        - request_url/system/module_captcha/frontend/|step_request
             url: /system/module_captcha/frontend/
-        - response_check_system_module_captcha_frontend_|step_check
+        - response_check/system/module_captcha/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core/
-        - request_url_system_module_core_|step_request
+        - request_url/system/module_core/|step_request
             url: /system/module_core/
-        - response_check_system_module_core_|step_check
+        - response_check/system/module_core/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core/backend/
-        - request_url_system_module_core_backend_|step_request
+        - request_url/system/module_core/backend/|step_request
             url: /system/module_core/backend/
-        - response_check_system_module_core_backend_|step_check
+        - response_check/system/module_core/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_core/data/
-        - request_url_system_module_core_data_|step_request
+        - request_url/system/module_core/data/|step_request
             url: /system/module_core/data/
-        - response_check_system_module_core_data_|step_check
+        - response_check/system/module_core/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/
-        - request_url_system_module_develop_|step_request
+        - request_url/system/module_develop/|step_request
             url: /system/module_develop/
-        - response_check_system_module_develop_|step_check
+        - response_check/system/module_develop/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/backend/
-        - request_url_system_module_develop_backend_|step_request
+        - request_url/system/module_develop/backend/|step_request
             url: /system/module_develop/backend/
-        - response_check_system_module_develop_backend_|step_check
+        - response_check/system/module_develop/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/data/
-        - request_url_system_module_develop_data_|step_request
+        - request_url/system/module_develop/data/|step_request
             url: /system/module_develop/data/
-        - response_check_system_module_develop_data_|step_check
+        - response_check/system/module_develop/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/frontend/
-        - request_url_system_module_develop_frontend_|step_request
+        - request_url/system/module_develop/frontend/|step_request
             url: /system/module_develop/frontend/
-        - response_check_system_module_develop_frontend_|step_check
+        - response_check/system/module_develop/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/frontend/images/
-        - request_url_system_module_develop_frontend_images_|step_request
+        - request_url/system/module_develop/frontend/images/|step_request
             url: /system/module_develop/frontend/images/
-        - response_check_system_module_develop_frontend_images_|step_check
+        - response_check/system/module_develop/frontend/images/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo/
-        - request_url_system_module_develop_module_demo_|step_request
+        - request_url/system/module_develop/module_demo/|step_request
             url: /system/module_develop/module_demo/
-        - response_check_system_module_develop_module_demo_|step_check
+        - response_check/system/module_develop/module_demo/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo/backend/
-        - request_url_system_module_develop_module_demo_backend_|step_request
+        - request_url/system/module_develop/module_demo/backend/|step_request
             url: /system/module_develop/module_demo/backend/
-        - response_check_system_module_develop_module_demo_backend_|step_check
+        - response_check/system/module_develop/module_demo/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_demo/data/
-        - request_url_system_module_develop_module_demo_data_|step_request
+        - request_url/system/module_develop/module_demo/data/|step_request
             url: /system/module_develop/module_demo/data/
-        - response_check_system_module_develop_module_demo_data_|step_check
+        - response_check/system/module_develop/module_demo/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test/
-        - request_url_system_module_develop_module_test_|step_request
+        - request_url/system/module_develop/module_test/|step_request
             url: /system/module_develop/module_test/
-        - response_check_system_module_develop_module_test_|step_check
+        - response_check/system/module_develop/module_test/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test/backend/
-        - request_url_system_module_develop_module_test_backend_|step_request
+        - request_url/system/module_develop/module_test/backend/|step_request
             url: /system/module_develop/module_test/backend/
-        - response_check_system_module_develop_module_test_backend_|step_check
+        - response_check/system/module_develop/module_test/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_develop/module_test/data/
-        - request_url_system_module_develop_module_test_data_|step_request
+        - request_url/system/module_develop/module_test/data/|step_request
             url: /system/module_develop/module_test/data/
-        - response_check_system_module_develop_module_test_data_|step_check
+        - response_check/system/module_develop/module_test/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/
-        - request_url_system_module_locales_|step_request
+        - request_url/system/module_locales/|step_request
             url: /system/module_locales/
-        - response_check_system_module_locales_|step_check
+        - response_check/system/module_locales/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/backend/
-        - request_url_system_module_locales_backend_|step_request
+        - request_url/system/module_locales/backend/|step_request
             url: /system/module_locales/backend/
-        - response_check_system_module_locales_backend_|step_check
+        - response_check/system/module_locales/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/frontend/
-        - request_url_system_module_locales_frontend_|step_request
+        - request_url/system/module_locales/frontend/|step_request
             url: /system/module_locales/frontend/
-        - response_check_system_module_locales_frontend_|step_check
+        - response_check/system/module_locales/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/frontend/images/
-        - request_url_system_module_locales_frontend_images_|step_request
+        - request_url/system/module_locales/frontend/images/|step_request
             url: /system/module_locales/frontend/images/
-        - response_check_system_module_locales_frontend_images_|step_check
+        - response_check/system/module_locales/frontend/images/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_locales/licenses/
-        - request_url_system_module_locales_licenses_|step_request
+        - request_url/system/module_locales/licenses/|step_request
             url: /system/module_locales/licenses/
-        - response_check_system_module_locales_licenses_|step_check
+        - response_check/system/module_locales/licenses/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/
-        - request_url_system_module_menu_|step_request
+        - request_url/system/module_menu/|step_request
             url: /system/module_menu/
-        - response_check_system_module_menu_|step_check
+        - response_check/system/module_menu/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/backend/
-        - request_url_system_module_menu_backend_|step_request
+        - request_url/system/module_menu/backend/|step_request
             url: /system/module_menu/backend/
-        - response_check_system_module_menu_backend_|step_check
+        - response_check/system/module_menu/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/data/
-        - request_url_system_module_menu_data_|step_request
+        - request_url/system/module_menu/data/|step_request
             url: /system/module_menu/data/
-        - response_check_system_module_menu_data_|step_check
+        - response_check/system/module_menu/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/frontend/
-        - request_url_system_module_menu_frontend_|step_request
+        - request_url/system/module_menu/frontend/|step_request
             url: /system/module_menu/frontend/
-        - response_check_system_module_menu_frontend_|step_check
+        - response_check/system/module_menu/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_menu/frontend/images/
-        - request_url_system_module_menu_frontend_images_|step_request
+        - request_url/system/module_menu/frontend/images/|step_request
             url: /system/module_menu/frontend/images/
-        - response_check_system_module_menu_frontend_images_|step_check
+        - response_check/system/module_menu/frontend/images/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/
-        - request_url_system_module_page_|step_request
+        - request_url/system/module_page/|step_request
             url: /system/module_page/
-        - response_check_system_module_page_|step_check
+        - response_check/system/module_page/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/backend/
-        - request_url_system_module_page_backend_|step_request
+        - request_url/system/module_page/backend/|step_request
             url: /system/module_page/backend/
-        - response_check_system_module_page_backend_|step_check
+        - response_check/system/module_page/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/data/
-        - request_url_system_module_page_data_|step_request
+        - request_url/system/module_page/data/|step_request
             url: /system/module_page/data/
-        - response_check_system_module_page_data_|step_check
+        - response_check/system/module_page/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/
-        - request_url_system_module_page_frontend_|step_request
+        - request_url/system/module_page/frontend/|step_request
             url: /system/module_page/frontend/
-        - response_check_system_module_page_frontend_|step_check
+        - response_check/system/module_page/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_page/frontend/images/
-        - request_url_system_module_page_frontend_images_|step_request
+        - request_url/system/module_page/frontend/images/|step_request
             url: /system/module_page/frontend/images/
-        - response_check_system_module_page_frontend_images_|step_check
+        - response_check/system/module_page/frontend/images/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage/
-        - request_url_system_module_storage_|step_request
+        - request_url/system/module_storage/|step_request
             url: /system/module_storage/
-        - response_check_system_module_storage_|step_check
+        - response_check/system/module_storage/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage/backend/
-        - request_url_system_module_storage_backend_|step_request
+        - request_url/system/module_storage/backend/|step_request
             url: /system/module_storage/backend/
-        - response_check_system_module_storage_backend_|step_check
+        - response_check/system/module_storage/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_storage/data/
-        - request_url_system_module_storage_data_|step_request
+        - request_url/system/module_storage/data/|step_request
             url: /system/module_storage/data/
-        - response_check_system_module_storage_data_|step_check
+        - response_check/system/module_storage/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/
-        - request_url_system_module_user_|step_request
+        - request_url/system/module_user/|step_request
             url: /system/module_user/
-        - response_check_system_module_user_|step_check
+        - response_check/system/module_user/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/backend/
-        - request_url_system_module_user_backend_|step_request
+        - request_url/system/module_user/backend/|step_request
             url: /system/module_user/backend/
-        - response_check_system_module_user_backend_|step_check
+        - response_check/system/module_user/backend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/data/
-        - request_url_system_module_user_data_|step_request
+        - request_url/system/module_user/data/|step_request
             url: /system/module_user/data/
-        - response_check_system_module_user_data_|step_check
+        - response_check/system/module_user/data/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/frontend/
-        - request_url_system_module_user_frontend_|step_request
+        - request_url/system/module_user/frontend/|step_request
             url: /system/module_user/frontend/
-        - response_check_system_module_user_frontend_|step_check
+        - response_check/system/module_user/frontend/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
         # url: /system/module_user/frontend/images/
-        - request_url_system_module_user_frontend_images_|step_request
+        - request_url/system/module_user/frontend/images/|step_request
             url: /system/module_user/frontend/images/
-        - response_check_system_module_user_frontend_images_|step_check
+        - response_check/system/module_user/frontend/images/|step_check
             where: http_code
             match: 302
             on_failure
