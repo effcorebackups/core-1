@@ -58,8 +58,7 @@ namespace effcore {
   }
 
   $file_info = url::current_get()->file_info_get();
-  if ($file_info &&
-      $file_info->type) {
+  if ($file_info && strlen($file_info->type)) {
 
     $file_types = file::types_get();
 
