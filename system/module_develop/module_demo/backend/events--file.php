@@ -28,7 +28,10 @@ namespace effcore\modules\demo {
         $result.= 'current user: '.$user->nick.nl;
         $result.= 'current user roles: '.implode(', ', $user->roles).nl;
         header('Content-Length: '.strlen($result));
-        header('Cache-Control: private, no-cache');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=demo.txt');
+        header('Cache-Control: private, no-cache, no-store, must-revalidate');
+        header('Expires: 0');
         print $result;
       }
     }
