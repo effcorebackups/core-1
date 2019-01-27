@@ -64,9 +64,9 @@ namespace effcore {
   # │ session id  │ anonymous │ remember? │ on ip? │ secure │ on https │ used? │
   # ╞═════════════╪═══════════╪═══════════╪════════╪═══════════════════╪═══════╡
   # │ a--01--00-- │ yes       │ no        │ no     │ n/a    | n/a      │ no    │
-  # │ a--01--ip-- │ yes       │ no        │ yes    │ n/a    | n/a      │ no    │
+  # │ a--01--ip-- │ yes       │ no        │ yes    │ +      | ++       │ yes   │
   # │ a--30--00-- │ yes       │ yes       │ no     │ n/a    | n/a      │ no    │
-  # │ a--30--ip-- │ yes       │ yes       │ yes    │ +      | ++       │ yes   │
+  # │ a--30--ip-- │ yes       │ yes       │ yes    │ n/a    | n/a      │ no    │
   # ├─────────────┼───────────┼───────────┼────────┼───────────────────┼───────┤
   # │ f--01--00-- │ no        │ no        │ no     │ +      | ++       │ yes   │
   # │ f--01--ip-- │ no        │ no        │ yes    │ ++     | +++      │ yes   │
@@ -80,7 +80,7 @@ namespace effcore {
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     if ($hex_type == 'f' && $is_remember == false) $period = static::period_expired_d;
     if ($hex_type == 'f' && $is_remember)          $period = static::period_expired_m;
-    if ($hex_type == 'a')                          $period = static::period_expired_m;
+    if ($hex_type == 'a')                          $period = static::period_expired_d;
     if ($hex_type == 'f' && $is_fixed_ip == false) $ip     = static::empty_ip;
     if ($hex_type == 'f' && $is_fixed_ip)          $ip     = core::server_remote_addr_get();
     if ($hex_type == 'a')                          $ip     = core::server_remote_addr_get();
