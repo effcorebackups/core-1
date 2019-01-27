@@ -545,54 +545,6 @@ namespace effcore {
     return substr($value, 0, $max_length) ?: '';
   }
 
-  ##############################
-  ### bytes|human conversion ###
-  ##############################
-
-  static function is_human_bytes($number) {
-    $character = substr($number, -1);
-    return in_array($character, ['B', 'K', 'M', 'G', 'T']);
-  }
-
-  static function bytes_to_human($bytes) {
-    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).'T';
-    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).'G';
-    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).'M';
-    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).'K';
-    else return $bytes.'B';
-  }
-
-  static function human_to_bytes($human) {
-    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
-    $character = strtoupper(substr($human, -1));
-    $value = (int)substr($human, 0, -1);
-    return $value * 1024 ** $powers[$character];
-  }
-
-  ############################
-  ### functionality for ip ###
-  ############################
-
-  static function ip_to_hex($ip, $is_v6 = true, $is_reversed = true) {
-    $ip_hex = '';
-    $inaddr = inet_pton($ip);
-    foreach (str_split($inaddr, 1) as $c_char) {
-      $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
-    }
-    if ($is_v6)       $ip_hex = str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
-    if ($is_reversed) $ip_hex = strrev ($ip_hex);
-    return $ip_hex;
-  }
-
-  static function hex_to_ip($ip_hex) {
-    $inaddr = '';
-    foreach (str_split($ip_hex, 2) as $c_part) {
-      $inaddr.= chr(hexdec($c_part));
-    }
-    return inet_ntop($inaddr);
-  }
-
-
   ##############################################
   ### functionality for signatures|keys|hash ###
   ##############################################
@@ -652,6 +604,53 @@ namespace effcore {
 
   static function data_hash_get($data) {
     return md5(serialize($data));
+  }
+
+  ##############################
+  ### bytes|human conversion ###
+  ##############################
+
+  static function is_human_bytes($number) {
+    $character = substr($number, -1);
+    return in_array($character, ['B', 'K', 'M', 'G', 'T']);
+  }
+
+  static function bytes_to_human($bytes) {
+    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).'T';
+    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).'G';
+    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).'M';
+    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).'K';
+    else return $bytes.'B';
+  }
+
+  static function human_to_bytes($human) {
+    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
+    $character = strtoupper(substr($human, -1));
+    $value = (int)substr($human, 0, -1);
+    return $value * 1024 ** $powers[$character];
+  }
+
+  ############################
+  ### functionality for ip ###
+  ############################
+
+  static function ip_to_hex($ip, $is_v6 = true, $is_reversed = true) {
+    $ip_hex = '';
+    $inaddr = inet_pton($ip);
+    foreach (str_split($inaddr, 1) as $c_char) {
+      $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
+    }
+    if ($is_v6)       $ip_hex = str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
+    if ($is_reversed) $ip_hex = strrev ($ip_hex);
+    return $ip_hex;
+  }
+
+  static function hex_to_ip($ip_hex) {
+    $inaddr = '';
+    foreach (str_split($ip_hex, 2) as $c_part) {
+      $inaddr.= chr(hexdec($c_part));
+    }
+    return inet_ntop($inaddr);
   }
 
   #####################################
