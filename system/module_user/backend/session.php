@@ -63,8 +63,8 @@ namespace effcore {
   # ┌─────────────┬───────────┬───────────┬────────┬───────────────────┬───────┐
   # │ session id  │ anonymous │ remember? │ on ip? │ secure │ on https │ used? │
   # ╞═════════════╪═══════════╪═══════════╪════════╪═══════════════════╪═══════╡
-  # │ a--01--00-- │ yes       │ no        │ no     │ n/a    | n/a      │ no    │
-  # │ a--01--ip-- │ yes       │ no        │ yes    │ +      | ++       │ yes   │
+  # │ a--00--00-- │ yes       │ no        │ no     │ n/a    | n/a      │ no    │
+  # │ a--00--ip-- │ yes       │ no        │ yes    │ +      | ++       │ yes   │
   # │ a--30--00-- │ yes       │ yes       │ no     │ n/a    | n/a      │ no    │
   # │ a--30--ip-- │ yes       │ yes       │ yes    │ n/a    | n/a      │ no    │
   # ├─────────────┼───────────┼───────────┼────────┼───────────────────┼───────┤
@@ -80,7 +80,7 @@ namespace effcore {
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     if ($hex_type == 'f' && $is_remember == false) $expired = time() + static::period_expired_d;
     if ($hex_type == 'f' && $is_remember)          $expired = time() + static::period_expired_m;
-    if ($hex_type == 'a')                          $expired = time() + static::period_expired_d;
+    if ($hex_type == 'a')                          $expired = 0;
     if ($hex_type == 'f' && $is_fixed_ip == false) $ip = static::empty_ip;
     if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_remote_addr_get();
     if ($hex_type == 'a')                          $ip = core::server_remote_addr_get();
@@ -106,7 +106,7 @@ namespace effcore {
       else return static::id_regenerate('a');
   }
 
-  static function id_hex_expired_get($expired) {return dechex($expired);}
+  static function id_hex_expired_get($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
   static function id_hex_ip_get($ip)           {return core::ip_to_hex($ip);}
   static function id_hex_uagent_hash_8_get()   {return core::mini_hash_get(core::server_user_agent_get());}
   static function id_hex_random_get()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
@@ -127,13 +127,16 @@ namespace effcore {
       $hex_ip            = static::id_hex_ip_extract($id);
       $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_extract($id);
       $hex_signature     = static::id_hex_signature_extract($id);
-      if ($expired >= time()                                        &&
-          $hex_uagent_hash_8 === static::id_hex_uagent_hash_8_get() &&
-          $hex_signature     === static::id_hex_signature_get($id)) {
-        if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
-            ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
-            ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
-          return true;
+      if (($hex_type === 'a' && $expired === 0) ||
+          ($hex_type === 'f' && $expired >= time())) {
+        if ($hex_signature === static::id_hex_signature_get($id)) {
+          if ($hex_uagent_hash_8 === static::id_hex_uagent_hash_8_get()) {
+            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
+                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
+                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
+              return true;
+            }
+          }
         }
       }
     }
