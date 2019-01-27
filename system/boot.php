@@ -113,7 +113,8 @@ namespace effcore {
     if (is_file    ($path) &&
         is_readable($path)) {
 
-      if (!empty($file_types[$file_info->type]->dynamic)) {
+      if (isset($file_types[$file_info->type]->kind) &&
+                $file_types[$file_info->type]->kind == 'dynamic') {
         $file = new file($path);
         $data = token::replace($file->load());
         $etag = core::etag_hash_get($data);
