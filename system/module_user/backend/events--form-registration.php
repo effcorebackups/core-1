@@ -43,7 +43,7 @@ namespace effcore\modules\user {
           'email'         =>              strtolower($items['#email'   ]->value_get()),
           'nick'          =>                         $items['#nick'    ]->value_get(),
           'timezone'      =>                         $items['#timezone']->value_get(),
-          'password_hash' => core::hash_password_get($items['#password']->value_get())
+          'password_hash' => core::password_hash_get($items['#password']->value_get())
         ]);
         if ($user) {
           session::insert($user->id,

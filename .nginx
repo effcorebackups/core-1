@@ -1,6 +1,7 @@
 # before start nginx on the 127.0.0.1:
-# - insert "include %%_root/.nginx;" (path to this file) to the file "/usr/local/etc/nginx/nginx.conf" or
-# - insert "include %%_root/.nginx;" (path to this file) to the file           "/etc/nginx/nginx.conf"
+# - copy this file outside the site root path (this file will be reset to default state after each system update)
+# - insert "include path-to-this-file;" to the file "/usr/local/etc/nginx/nginx.conf" or
+# - insert "include path-to-this-file;" to the file           "/etc/nginx/nginx.conf"
 # - here replace the %%_root to your site root path
 # - here replace the %%_include to "/usr/local/etc/nginx/fastcgi.conf" or
 # - here replace the %%_include to           "/etc/nginx/fastcgi.conf"

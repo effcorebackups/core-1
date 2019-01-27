@@ -34,7 +34,7 @@ namespace effcore\modules\user {
           $test_password = (new instance('user', [
             'nick' => $nick
           ]))->select();
-          if ($test_password->password_hash !== core::hash_password_get($items['#password']->value_get())) {
+          if (!core::password_verify($items['#password']->value_get(), $test_password->password_hash)) {
             $items['#password']->error_set(
               'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password']->title)]
             );
@@ -84,7 +84,7 @@ namespace effcore\modules\user {
         $user->nick  = $items['#nick']->value_get();
         $user->timezone = $items['#timezone']->value_get();
         if ($items['#password_new']->value_get()) {
-          $user->password_hash = core::hash_password_get($items['#password_new']->value_get());
+          $user->password_hash = core::password_hash_get($items['#password_new']->value_get());
         }
         $avatar_info = $items['#avatar']->pool_files_save();
         if (isset($avatar_info[0]->path) &&

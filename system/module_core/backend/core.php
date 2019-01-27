@@ -611,16 +611,20 @@ namespace effcore {
     return sha1(random_int(0, 0x7fffffff));
   }
 
+  static function hash_data_get($data) {
+    return md5(serialize($data));
+  }
+
   static function password_generate() {
     return dechex(random_int(0x10000000, 0x7fffffff));
   }
 
-  static function hash_password_get($data) {
+  static function password_hash_get($data) {
     return sha1($data.static::key_get('salt'));
   }
 
-  static function hash_data_get($data) {
-    return md5(serialize($data));
+  static function password_verify($password, $hash) {
+    return static::password_hash_get($password) === $hash;
   }
 
   static function random_part_get() {

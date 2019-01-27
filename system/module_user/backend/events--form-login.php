@@ -30,8 +30,7 @@ namespace effcore\modules\user {
           $user = (new instance('user', [
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
-          if (!$user || (
-               $user->password_hash !== core::hash_password_get($items['#password']->value_get()))) {
+          if (!$user || !core::password_verify($items['#password']->value_get(), $user->password_hash)) {
             $items['#email'   ]->error_set();
             $items['#password']->error_set();
             $form->error_set('Incorrect email or password!');
@@ -47,8 +46,7 @@ namespace effcore\modules\user {
         $user = (new instance('user', [
           'email' => strtolower($items['#email']->value_get())
         ]))->select();
-        if ($user &&
-            $user->password_hash === core::hash_password_get($items['#password']->value_get())) {
+        if ($user && core::password_verify($items['#password']->value_get(), $user->password_hash)) {
           session::insert($user->id,
             core::array_kmap($items['*session_params']->values_get())
           );
