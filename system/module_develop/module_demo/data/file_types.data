@@ -1,0 +1,5 @@
+file_types
+- demotype
+    type: demotype
+    virtual: true
+    handler: \effcore\modules\demo\events_file::process_demotype

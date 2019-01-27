@@ -63,7 +63,7 @@ namespace effcore {
     $file_types = file::types_get();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for protected file - show "forbidden" even if it does not exist!
+    # case for system file ('.type') - show "forbidden" even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
     if ($file_info->type !== '' &&
@@ -74,6 +74,10 @@ namespace effcore {
       );
     }
 
+    # ─────────────────────────────────────────────────────────────────────
+    # case for protected file - show "forbidden" even if it does not exist!
+    # ─────────────────────────────────────────────────────────────────────
+
     if (!empty($file_types[$file_info->type]->protected)) {
       core::send_header_and_exit('access_forbidden', '',
         translation::get('file of this type is protected').br.br.
@@ -82,7 +86,15 @@ namespace effcore {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # define real path (breake all '../' …)
+    # case for virtual file
+    # ─────────────────────────────────────────────────────────────────────
+
+    if (!empty($file_types[$file_info->type]->virtual)) {
+      call_user_func_array($file_types[$file_info->type]->handler, [$file_types[$file_info->type]]);
+    }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # define real path (breake all './', '../', '~/' and etc)
     # ─────────────────────────────────────────────────────────────────────
 
     $path_url = url::current_get()->path_get();
