@@ -4,31 +4,31 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 - config
     type: config
-    protected: 1
+    protected: true
 - default
     type: default
-    protected: 1
+    protected: true
 - ini
     type: ini
-    protected: 1
+    protected: true
 - log
     type: log
-    protected: 1
+    protected: true
 - markdown
     type: mark
-    protected: 1
+    protected: true
 - php
     type: php
-    protected: 1
+    protected: true
 - protected
     type: protected
-    protected: 1
+    protected: true
 - sh
     type: sh
-    protected: 1
+    protected: true
 - template
     type: tpl
-    protected: 1
+    protected: true
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────

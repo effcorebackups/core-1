@@ -4,7 +4,7 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 - data
     type: data
-    protected: 1
+    protected: true
 - sqlite
     type: sqlite
-    protected: 1
+    protected: true
