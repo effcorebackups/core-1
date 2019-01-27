@@ -108,7 +108,7 @@ namespace effcore {
 
   static function id_hex_expired_get($period) {return dechex(time() + $period);}
   static function id_hex_ip_get($ip)          {return core::ip_to_hex($ip);}
-  static function id_hex_uagent_hash_8_get()  {return substr(md5(core::server_user_agent_get()), 0, 8);}
+  static function id_hex_uagent_hash_8_get()  {return core::mini_hash_get(core::server_user_agent_get());}
   static function id_hex_random_get()         {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function id_hex_signature_get($id)   {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
 
