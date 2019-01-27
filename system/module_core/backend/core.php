@@ -621,8 +621,18 @@ namespace effcore {
     return md5(serialize($data));
   }
 
-  static function password_generate() {
-    return dechex(random_int(0x10000000, 0x7fffffff));
+  static function password_generate($length = 8) {
+    $characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '@', '#', '%', '_', '*', '-', '+', '=', ':', ';', '!', '?'];
+    shuffle($characters);
+    $result = '';
+    for ($i = 0; $i < $length; $i++) {
+      $result.= $characters[
+        random_int(0, count($characters) - 1)
+      ];
+    }
+    return $result;
   }
 
   static function password_hash_get($data) {
