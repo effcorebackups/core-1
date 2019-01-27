@@ -90,8 +90,9 @@ namespace effcore {
     # case for virtual file
     # ─────────────────────────────────────────────────────────────────────
 
-    if (!empty($file_types[$file_info->type]->virtual)) {
-      call_user_func_array($file_types[$file_info->type]->handler, [$file_types[$file_info->type]]);
+    if (isset($file_types[$file_info->type]->kind) &&
+              $file_types[$file_info->type]->kind == 'virtual') {
+      call_user_func_array($file_types[$file_info->type]->handler, [$file_info]);
     }
 
     # ─────────────────────────────────────────────────────────────────────

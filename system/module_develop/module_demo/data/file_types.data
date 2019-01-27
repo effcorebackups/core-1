@@ -4,5 +4,5 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 - demotype
     type: demotype
-    virtual: true
+    kind: virtual
     handler: \effcore\modules\demo\events_file::process_demotype
