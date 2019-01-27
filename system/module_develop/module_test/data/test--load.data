@@ -572,6 +572,24 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing files
   # ─────────────────────────────────────────────────────────────────────
+        # url: /~/.ssh/id_rsa
+        - request_url-/~/.ssh/id_rsa|step_request
+            url: /~/.ssh/id_rsa
+        - response_check-/~/.ssh/id_rsa|step_check
+            where: http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /../../../../../../etc/passwd
+        - request_url-/../../../../../../etc/passwd|step_request
+            url: /../../../../../../etc/passwd
+        - response_check-/../../../../../../etc/passwd|step_check
+            where: http_code
+            match: 400
+            on_failure
+            - return_result|step_return
+                value: 0
         # url: /.editorconfig
         - request_url-/.editorconfig|step_request
             url: /.editorconfig
@@ -953,6 +971,24 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing files + redirect
   # ─────────────────────────────────────────────────────────────────────
+        # url: /~/.ssh/id_rsa/
+        - request_url-/~/.ssh/id_rsa/|step_request
+            url: /~/.ssh/id_rsa/
+        - response_check-/~/.ssh/id_rsa/|step_check
+            where: http_code
+            match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url: /../../../../../../etc/passwd/
+        - request_url-/../../../../../../etc/passwd/|step_request
+            url: /../../../../../../etc/passwd/
+        - response_check-/../../../../../../etc/passwd/|step_check
+            where: http_code
+            match: 400
+            on_failure
+            - return_result|step_return
+                value: 0
         # url: /.editorconfig/
         - request_url-/.editorconfig/|step_request
             url: /.editorconfig/
