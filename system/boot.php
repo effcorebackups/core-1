@@ -102,7 +102,7 @@ namespace effcore {
       if (!empty($file_types[$file_info->type]->dynamic)) {
         $file = new file($path);
         $data = token::replace($file->load());
-        $etag = md5($data);
+        $etag = core::etag_hash_get($data);
 
       # send header '304 Not Modified' if the data has no changes
         if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&

@@ -606,6 +606,14 @@ namespace effcore {
     return md5(serialize($data));
   }
 
+  static function etag_hash_get($data) {
+    return md5($data);
+  }
+
+  static function mini_hash_get($data, $length = 8) {
+    return substr(md5($data), 0, $length);
+  }
+
   ##############################
   ### bytes|human conversion ###
   ##############################
