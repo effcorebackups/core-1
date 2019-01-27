@@ -21,7 +21,7 @@ namespace effcore {
     $id = $this->attribute_select('id');
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
-    $data_hash = core::hash_data_get($this->validation_data);
+    $data_hash = core::data_hash_get($this->validation_data);
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',            'value' => $id                 ]), 'hidden_form_id'      );
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id-'.$id, 'value' => $this->validation_id]), 'hidden_validation_id');
   # send test headers
@@ -101,7 +101,7 @@ namespace effcore {
       }
 
     # validation cache
-      if (static::$errors != [] && core::hash_data_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
+      if (static::$errors != [] && core::data_hash_get($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
       if (static::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
   }

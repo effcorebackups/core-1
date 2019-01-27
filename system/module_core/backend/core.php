@@ -597,6 +597,12 @@ namespace effcore {
   ### functionality for signatures|keys|hash ###
   ##############################################
 
+  static function random_part_get() {
+    $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
+    $hex_rand = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
+    return $hex_time.$hex_rand;
+  }
+
   static function signature_get($string, $length = 40, $key_name) {
     $key = static::key_get($key_name);
     if ($key) return substr(sha1($string.$key), 0, $length);
@@ -611,7 +617,7 @@ namespace effcore {
     return sha1(random_int(0, 0x7fffffff));
   }
 
-  static function hash_data_get($data) {
+  static function data_hash_get($data) {
     return md5(serialize($data));
   }
 
@@ -625,12 +631,6 @@ namespace effcore {
 
   static function password_verify($password, $hash) {
     return static::password_hash_get($password) === $hash;
-  }
-
-  static function random_part_get() {
-    $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
-    $hex_rand = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
-    return $hex_time.$hex_rand;
   }
 
   #####################################
