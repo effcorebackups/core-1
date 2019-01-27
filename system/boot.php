@@ -78,7 +78,8 @@ namespace effcore {
     # case for protected file - show "forbidden" even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if (!empty($file_types[$file_info->type]->protected)) {
+    if (isset($file_types[$file_info->type]->kind) &&
+              $file_types[$file_info->type]->kind == 'protected') {
       core::send_header_and_exit('access_forbidden', '',
         translation::get('file of this type is protected').br.br.
         translation::get('go to <a href="/">front page</a>')
