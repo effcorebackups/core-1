@@ -35,3 +35,7 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_form_demo::on_submit
+  on_file_process_demotype
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_file::on_process_demotype
