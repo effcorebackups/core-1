@@ -203,9 +203,7 @@ namespace effcore {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
         $dst_file = new file(temporary::directory.'validation/'.$this->cform->validation_cache_get_date().'/'.$this->cform->validation_id.'-'.$c_id);
-        if ($src_file->move_uploaded(
-            $dst_file->dirs_get(),
-            $dst_file->file_get())) {
+        if ($src_file->move_uploaded($dst_file->dirs_get(), $dst_file->file_get())) {
           $c_info->pre_path = $dst_file->path_get();
           unset($c_info->tmp_path);
         } else {
@@ -224,12 +222,12 @@ namespace effcore {
         $dst_file = new file(dynamic::dir_files.$this->upload_dir.$c_info->file);
         if ($this->fixed_name) $dst_file->name_set(token::replace($this->fixed_name));
         if ($this->fixed_type) $dst_file->type_set(token::replace($this->fixed_type));
-        if ($dst_file->is_exist())
-            $dst_file->name_set(
-            $dst_file->name_get().'-'.core::random_part_get());
-        if ($src_file->move(
-            $dst_file->dirs_get(),
-            $dst_file->file_get())) {
+        if ($dst_file->is_exist()) {
+          $dst_file->name_set(
+            $dst_file->name_get().'-'.core::random_part_get()
+          );
+        }
+        if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
           $c_info->new_path = $dst_file->path_get();
           unset($c_info->pre_path);
         } else {

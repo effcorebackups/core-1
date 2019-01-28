@@ -117,26 +117,28 @@ namespace effcore {
   # └───────────────╨───────┴──────────┴──────┴──────────┘
 
   # wrong paths:
-  # ┌────────────────╥──────────────────────────────────────┐
-  # │ path           ║ behavior                             │
-  # ╞════════════════╬══════════════════════════════════════╡
-  # │ c:\dir\        ║ should be converted to c:/dir/       │
-  # │ dir\           ║ should be converted to dir/          │
-  # │ \dir\          ║ should be converted to /dir/         │
-  # │ \\dir\         ║ should be ignored                    │
-  # │ ./dir/         ║ should be ignored                    │
-  # │ ../dir/        ║ should be ignored                    │
-  # │ /dir1/../dir3/ ║ should be ignored                    │
-  # │ dir            ║ interpreted as file with name 'dir'  │
-  # │ dir1/dir2      ║ interpreted as file with name 'dir2' │
-  # └────────────────╨──────────────────────────────────────┘
+  # ┌────────────────╥────────────────────────────────────────────┐
+  # │ path           ║ behavior                                   │
+  # ╞════════════════╬════════════════════════════════════════════╡
+  # │ c:\dir\        ║ should be converted to c:/dir/             │
+  # │ dir\           ║ should be converted to dir/                │
+  # │ \dir\          ║ should be converted to /dir/               │
+  # │ \\dir\         ║ should be ignored                          │
+  # │ ~/dir/         ║ should be ignored or use realpath() before │
+  # │ ./dir/         ║ should be ignored or use realpath() before │
+  # │ ../dir/        ║ should be ignored or use realpath() before │
+  # │ /dir1/../dir3/ ║ should be ignored or use realpath() before │
+  # │ dir            ║ interpreted as file with name 'dir'        │
+  # │ dir1/dir2      ║ interpreted as file with name 'dir2'       │
+  # └────────────────╨────────────────────────────────────────────┘
 
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. if the first character in the path is '/' - it's a full path, оtherwise - relative path
-  # 2. if the last character in the path is '/' - it's a directory, оtherwise - file
-  # 3. path components like '../' should be ignored!
-  # 4. path components like  './' should be ignored!
+  # 2. if the last  character in the path is '/' - it's a directory, оtherwise - file
+  # 3. path components like  '~/' should be ignored or use realpath() to resolve the path
+  # 4. path components like  './' should be ignored or use realpath() to resolve the path
+  # 5. path components like '../' should be ignored or use realpath() to resolve the path
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_mode     = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
