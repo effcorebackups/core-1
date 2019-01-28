@@ -162,30 +162,69 @@ namespace effcore {
     }
   }
 
-  function dirs_set($dirs) {$this->dirs = $dirs;}
-  function name_set($name) {$this->name = $name;}
-  function type_set($type) {$this->type = $type;}
-  function data_set($data) {$this->data = $data;}
+  # ─────────────────────────────────────────────────────────────────────
+  # work with dirs
+  # ─────────────────────────────────────────────────────────────────────
 
   function dirs_get()          {return $this->dirs;}
   function dirs_parts_get()    {return explode('/', trim($this->dirs, '/'));}
   function dirs_relative_get() {return $this->is_path_full() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
-# ─────────────────────────────────────────────────────────────────────
-  function name_get()          {return $this->name;}
-  function type_get()          {return $this->type;}
-  function file_get()          {return $this->type ? $this->name.'.'.$this->type : $this->name;}
-# ─────────────────────────────────────────────────────────────────────
-  function path_get()          {return $this->type ? $this->dirs.$this->name.'.'.$this->type : $this->dirs.$this->name;}
-  function path_relative_get() {return $this->dirs_relative_get().$this->file_get();}
 
-  function parent_name_get()   {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
-  function hash_get()          {return @md5_file($this->path_get());}
-  function size_get()          {return @filesize($this->path_get());}
-  function mime_get()          {return function_exists('mime_content_type') ? @mime_content_type($this->path_get()) : null;}
+  function dirs_set($dirs) {
+    $this->dirs = $dirs;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # work with file (name + '.' + type)
+  # ─────────────────────────────────────────────────────────────────────
+
+  function name_get() {return $this->name;}
+  function type_get() {return $this->type;}
+  function file_get() {
+    return strlen($this->type) ?
+      $this->name.'.'.$this->type :
+      $this->name;
+  }
+
+  function name_set($name) {$this->name = $name;}
+  function type_set($type) {$this->type = $type;}
+
+  # ─────────────────────────────────────────────────────────────────────
+  # work with path (dirs + name + '.' + type)
+  # ─────────────────────────────────────────────────────────────────────
+
+  function path_get() {
+    return strlen($this->type) ?
+      $this->dirs.$this->name.'.'.$this->type :
+      $this->dirs.$this->name;
+  }
+
+  function path_relative_get() {
+    return $this->dirs_relative_get().
+           $this->file_get();
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # work with file data
+  # ─────────────────────────────────────────────────────────────────────
+
   function data_get() {
     if (empty($this->data)) $this->load(true);
     return $this->data;
   }
+
+  function data_set($data) {
+    $this->data = $data;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function parent_name_get() {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
+  function hash_get()        {return @md5_file($this->path_get());}
+  function size_get()        {return @filesize($this->path_get());}
+  function mime_get()        {return function_exists('mime_content_type') ? @mime_content_type($this->path_get()) : null;}
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function is_path_full() {
     if (DIRECTORY_SEPARATOR != '\\') return isset($this->dirs[0]) && $this->dirs[0] == '/';
@@ -195,6 +234,8 @@ namespace effcore {
   function is_exist() {
     return file_exists($this->path_get());
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function load($reset = false) {
     $relative = $this->path_relative_get();
