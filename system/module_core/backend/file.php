@@ -134,11 +134,12 @@ namespace effcore {
 
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
-  # 1. if the first character in the path is '/' - it's a full path, оtherwise - relative path
-  # 2. if the last  character in the path is '/' - it's a directory, оtherwise - file
-  # 3. path components like  '~/' should be ignored or use realpath() to resolve the path
-  # 4. path components like  './' should be ignored or use realpath() to resolve the path
-  # 5. path components like '../' should be ignored or use realpath() to resolve the path
+  # 1. only files with extension are available in the URL!
+  # 2. if the first character in the path is '/' - it's a full path, оtherwise - relative path
+  # 3. if the last  character in the path is '/' - it's a directory, оtherwise - file
+  # 4. path components like  '~/' should be ignored or use realpath() to resolve the path
+  # 5. path components like  './' should be ignored or use realpath() to resolve the path
+  # 6. path components like '../' should be ignored or use realpath() to resolve the path
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_mode     = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
@@ -190,7 +191,7 @@ namespace effcore {
   function type_set($type) {$this->type = $type;}
 
   # ─────────────────────────────────────────────────────────────────────
-  # work with path (dirs + name + '.' + type)
+  # work with path (dirs/ + name + '.' + type)
   # ─────────────────────────────────────────────────────────────────────
 
   function path_get() {
