@@ -535,14 +535,15 @@ namespace effcore {
 
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uiS', function($c_match) {
+    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function($c_match) {
       if ($c_match['char'] == ' ') return '-';
       if (strlen($c_match['char']) == 1) return dechex(ord($c_match['char'][0]));
       if (strlen($c_match['char']) == 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));
       if (strlen($c_match['char']) == 3) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2]));
       if (strlen($c_match['char']) == 4) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2])).dechex(ord($c_match['char'][3]));
     }, $value);
-    return substr($value, 0, $max_length) ?: '';
+    $value = substr($value, 0, $max_length);
+    return $value;
   }
 
   ##############################################

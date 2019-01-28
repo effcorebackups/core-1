@@ -295,10 +295,12 @@ namespace effcore {
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_characters, $field->max_length_name) ?: core::random_part_get();
+      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_characters, $field->max_length_name);
       $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_characters, $field->max_length_type);
-      $c_value->file = $c_value->name.($c_value->type ?
-                                   '.'.$c_value->type : '');
+      if (!strlen($c_value->name)) $c_value->name = core::random_part_get();
+      if (!strlen($c_value->type)) $c_value->type = 'unknown';
+      $c_value->file = $c_value->name.'.'.
+                       $c_value->type;
     # special case for IIS and Apache
       if ($c_value->file == 'web.config' ||
           $c_value->file == '.htaccess') {
