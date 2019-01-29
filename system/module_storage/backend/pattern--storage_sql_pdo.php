@@ -149,10 +149,8 @@ namespace effcore {
   }
 
   function table($table_name) {
-    switch ($this->driver) {
-      case 'mysql' : return '`'.$this->table_prefix.$table_name.'`';
-      case 'sqlite': return '"'.$this->table_prefix.$table_name.'"';
-    }
+    if ($this->driver == 'mysql' ) return '`'.$this->table_prefix.$table_name.'`';
+    if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
   }
 
   function tables(...$tables) {
@@ -167,13 +165,13 @@ namespace effcore {
   }
 
   function field($field_name) {
-    $result = $field_name;
-    if (strpos($result, '.') !== false) {
-      $field_parts = explode('.', $result);
-      $result = $this->table($field_parts[0]).'.'.
-                             $field_parts[1];
+    if (strpos($field_name, '.') !== false) {
+      $field_parts = explode('.', $field_name);
+      if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.'`'.$field_parts[1].'`';
+      if ($this->driver == 'sqlite') return $this->table($field_parts[0]).'.'.'"'.$field_parts[1].'"'; } else {
+      if ($this->driver == 'mysql' ) return '`'.$field_name.'`';
+      if ($this->driver == 'sqlite') return '"'.$field_name.'"';
     }
-    return $result;
   }
 
   function fields(...$fields) {
@@ -201,7 +199,7 @@ namespace effcore {
 
   function condition($field, $value, $op = '=') {
     return [
-      'field' => $this->field($field),
+      'field' => $this->fields($field),
       'op'    => $op,
       'value' => $this->values($value)
     ];
