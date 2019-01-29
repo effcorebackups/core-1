@@ -170,14 +170,14 @@ namespace effcore {
     $result = [];
     foreach (is_array($fields[0]) ?
                       $fields[0] : $fields as $c_field) {
-      if (strpos($c_field, '.') !== false) {
-        $c_parts = explode('.', $c_field);
-        $result[] = $this->table($c_parts[0]);
-        $result[] = '.';
-        $result[] = $c_parts[1];
-      } else {
+      //if (strpos($c_field, '.') !== false) {
+      //  $c_parts = explode('.', $c_field);
+      //  $result[] = $this->table($c_parts[0]);
+      //  $result[] = '.';
+      //  $result[] = $c_parts[1];
+      //} else {
         $result[] = $c_field;
-      }
+      //}
       $result[] = $this->op(',');
     }
     array_pop($result);

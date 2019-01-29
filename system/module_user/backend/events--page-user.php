@@ -35,7 +35,7 @@ namespace effcore\modules\user {
         $user_roles = user::id_roles_get($user->id);
         if ($user_roles) {
           $selection->field_markup_insert('roles', 'Roles',
-            new text_multiline($user_roles)
+            new text_multiline($user_roles, [], ', ')
           );          
         }
         return new block('', ['class' => ['user-info' => 'user-info']],

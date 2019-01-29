@@ -252,7 +252,6 @@ namespace effcore {
       $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
     }
   }
-  header('Content-Length: '.strlen($result));
   header('Cache-Control: private, no-cache');
   print $result;
   console::log_store();
