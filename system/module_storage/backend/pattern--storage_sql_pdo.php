@@ -167,10 +167,10 @@ namespace effcore {
   function field($field_name) {
     if (strpos($field_name, '.') !== false) {
       $field_parts = explode('.', $field_name);
-      if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.'`'.$field_parts[1].'`';
-      if ($this->driver == 'sqlite') return $this->table($field_parts[0]).'.'.'"'.$field_parts[1].'"'; } else {
-      if ($this->driver == 'mysql' ) return '`'.$field_name.'`';
-      if ($this->driver == 'sqlite') return '"'.$field_name.'"';
+      if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '`'.$field_parts[1].'`');
+      if ($this->driver == 'sqlite') return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '"'.$field_parts[1].'"'); } else {
+      if ($this->driver == 'mysql' ) return $field_name === '*' ? '*' : '`'.$field_name.'`';
+      if ($this->driver == 'sqlite') return $field_name === '*' ? '*' : '"'.$field_name.'"';
     }
   }
 
@@ -301,20 +301,25 @@ namespace effcore {
 
   function instances_select($entity, $join = [], $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
-      $query = ['SELECT', '*', 'FROM', $this->table($entity->catalog_name)];
-   // if (count($join)) {
-   //   foreach ($join as $c_entity_name => $c_join_info) {
-   //     $c_catalog_name = entity::get($c_entity_name)->catalog_name;
-   //     $c_on_left  = reset(array_keys($c_join_info['on']));
-   //     $c_on_right = reset(           $c_join_info['on'] );
-   //     array_push($query, 'LEFT', 'OUTER', 'JOIN', $this->table($c_catalog_name), 'ON');
-   //     array_push($query, $this->fields($entity->catalog_name.'.'.$c_on_left), '=');
-   //     array_push($query, $this->fields($c_catalog_name.'.'.$c_on_right));
-   //   }
-   // }
+      $query = ['SELECT', 'fields' => [$this->field($entity->catalog_name.'.*')],
+                'FROM', $this->table($entity->catalog_name)];
+      if (count($join)) {
+        foreach ($join as $c_entity_name => $c_join_info) {
+          $c_join_catalog_name = entity::get($c_entity_name)->catalog_name;
+          $c_join_L = array_keys  ($c_join_info['on'])[0];
+          $c_join_R = array_values($c_join_info['on'])[0];
+          array_push($query, 'LEFT OUTER JOIN', $this->table($c_join_catalog_name), 'ON');
+          array_push($query, $this->field($entity->catalog_name.'.'.$c_join_L), '=');
+          array_push($query, $this->field($c_join_catalog_name .'.'.$c_join_R));
+          foreach ($c_join_info['fields'] as $c_join_field_name) {
+            $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
+          }
+        }
+      }
+      $query['fields'] = $this->fields($query['fields']);
       if (count($conditions)) array_push($query, 'WHERE',       $this->attributes($conditions));
-      if (count($order))      array_push($query, 'ORDER', 'BY', $this->fields($order));
-      if ($limit)             array_push($query, 'LIMIT', $limit);
+      if (count($order))      array_push($query, 'ORDER', 'BY', $this->fields    ($order     ));
+      if ($limit)             array_push($query, 'LIMIT',  $limit );
       if ($offset)            array_push($query, 'OFFSET', $offset);
       $result = $this->query($query);
       foreach ($result as $c_instance) {
