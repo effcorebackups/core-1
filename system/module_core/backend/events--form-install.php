@@ -134,7 +134,7 @@ namespace effcore\modules\core {
           }
           storage::get('sql')->init($params->driver, $params->credentials);
           storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
-            'cron'            => core::key_generate(),
+            'cron'            => core::key_generate(true),
             'form_validation' => core::key_generate(),
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
