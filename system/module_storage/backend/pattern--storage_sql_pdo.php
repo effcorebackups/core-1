@@ -148,21 +148,31 @@ namespace effcore {
     }
   }
 
-  function table($table) {
+  function table($table_name) {
     switch ($this->driver) {
-      case 'mysql' : return '`'.$this->table_prefix.$table.'`';
-      case 'sqlite': return '"'.$this->table_prefix.$table.'"';
+      case 'mysql' : return '`'.$this->table_prefix.$table_name.'`';
+      case 'sqlite': return '"'.$this->table_prefix.$table_name.'"';
     }
   }
 
   function tables(...$tables) {
     $result = [];
     foreach (is_array($tables[0]) ?
-                      $tables[0] : $tables as $c_table) {
-      $result[] = $this->table($c_table);
+                      $tables[0] : $tables as $c_table_name) {
+      $result[] = $this->table($c_table_name);
       $result[] = $this->op(',');
     }
     array_pop($result);
+    return $result;
+  }
+
+  function field($field_name) {
+    $result = $field_name;
+    if (strpos($result, '.') !== false) {
+      $field_parts = explode('.', $result);
+      $result = $this->table($field_parts[0]).'.'.
+                             $field_parts[1];
+    }
     return $result;
   }
 
@@ -170,14 +180,7 @@ namespace effcore {
     $result = [];
     foreach (is_array($fields[0]) ?
                       $fields[0] : $fields as $c_field) {
-      //if (strpos($c_field, '.') !== false) {
-      //  $c_parts = explode('.', $c_field);
-      //  $result[] = $this->table($c_parts[0]);
-      //  $result[] = '.';
-      //  $result[] = $c_parts[1];
-      //} else {
-        $result[] = $c_field;
-      //}
+      $result[] = $c_field;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -197,8 +200,11 @@ namespace effcore {
   }
 
   function condition($field, $value, $op = '=') {
-    return ['field' => $this->fields($field), 'op' => $op,
-            'value' => $this->values($value)];
+    return [
+      'field' => $this->field($field),
+      'op'    => $op,
+      'value' => $this->values($value)
+    ];
   }
 
   function op($op) {
@@ -223,7 +229,7 @@ namespace effcore {
       $fields = [];
       foreach ($entity->fields as $c_name => $c_info) {
       # prepare field type
-        $c_properties = [$c_name];
+        $c_properties = [$this->field($c_name)];
         switch ($c_info->type) {
           case 'autoincrement':
             if ($this->driver ==  'mysql') $c_properties[] = 'integer primary key auto_increment';
