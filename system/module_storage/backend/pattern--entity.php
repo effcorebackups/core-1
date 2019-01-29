@@ -95,9 +95,9 @@ namespace effcore {
     return $storage->entity_uninstall($this);
   }
 
-  function instances_select($conditions = [], $order = [], $quantity = 0, $offset = 0) {
+  function instances_select($join = [], $conditions = [], $order = [], $quantity = 0, $offset = 0) {
     $storage = storage::get($this->storage_name);
-    return $storage->instances_select($this, $conditions, $order, $quantity, $offset);
+    return $storage->instances_select($this, $join, $conditions, $order, $quantity, $offset);
   }
 
   function instances_insert() {} # @todo: make functionality

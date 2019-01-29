@@ -38,7 +38,7 @@ namespace effcore {
     if (count($used_storages) == 1 &&
         count($used_entities) == 1) {
       $entity    = entity::get(reset($used_entities));
-      $instances = entity::get(reset($used_entities))->instances_select(
+      $instances = entity::get(reset($used_entities))->instances_select([],
         $this->conditions,
         $this->order,
         $this->quantity,

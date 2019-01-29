@@ -148,20 +148,19 @@ namespace effcore {
     }
   }
 
+  function table($table) {
+    switch ($this->driver) {
+      case 'mysql' : return '`'.$this->table_prefix.$table.'`';
+      case 'sqlite': return '"'.$this->table_prefix.$table.'"';
+    }
+  }
+
   function tables(...$tables) {
     $result = [];
     foreach (is_array($tables[0]) ?
                       $tables[0] : $tables as $c_table) {
-      switch ($this->driver) {
-        case 'mysql' :
-          $result[] = '`'.$this->table_prefix.$c_table.'`';
-          $result[] = $this->op(',');
-          break;
-        case 'sqlite':
-          $result[] = '"'.$this->table_prefix.$c_table.'"';
-          $result[] = $this->op(',');
-          break;
-      }
+      $result[] = $this->table($c_table);
+      $result[] = $this->op(',');
     }
     array_pop($result);
     return $result;
@@ -171,8 +170,16 @@ namespace effcore {
     $result = [];
     foreach (is_array($fields[0]) ?
                       $fields[0] : $fields as $c_field) {
-      $result[] = $c_field;
-      $result[] = $this->op(',');}
+      if (strpos($c_field, '.') !== false) {
+        $c_parts = explode('.', $c_field);
+        $result[] = $this->table($c_parts[0]);
+        $result[] = '.';
+        $result[] = $c_parts[1];
+      } else {
+        $result[] = $c_field;
+      }
+      $result[] = $this->op(',');
+    }
     array_pop($result);
     return $result;
   }
@@ -288,9 +295,19 @@ namespace effcore {
     }
   }
 
-  function instances_select($entity, $conditions = [], $order = [], $limit = 0, $offset = 0) {
+  function instances_select($entity, $join = [], $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
-      $query = ['SELECT', '*', 'FROM', $this->tables($entity->catalog_name)];
+      $query = ['SELECT', '*', 'FROM', $this->table($entity->catalog_name)];
+   // if (count($join)) {
+   //   foreach ($join as $c_entity_name => $c_join_info) {
+   //     $c_catalog_name = entity::get($c_entity_name)->catalog_name;
+   //     $c_on_left  = reset(array_keys($c_join_info['on']));
+   //     $c_on_right = reset(           $c_join_info['on'] );
+   //     array_push($query, 'LEFT', 'OUTER', 'JOIN', $this->table($c_catalog_name), 'ON');
+   //     array_push($query, $this->fields($entity->catalog_name.'.'.$c_on_left), '=');
+   //     array_push($query, $this->fields($c_catalog_name.'.'.$c_on_right));
+   //   }
+   // }
       if (count($conditions)) array_push($query, 'WHERE',       $this->attributes($conditions));
       if (count($order))      array_push($query, 'ORDER', 'BY', $this->fields($order));
       if ($limit)             array_push($query, 'LIMIT', $limit);
