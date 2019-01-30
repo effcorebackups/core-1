@@ -226,6 +226,7 @@ namespace effcore {
     if ($this->init()) {
       $fields = [];
       foreach ($entity->fields as $c_name => $c_info) {
+
       # prepare field type
         $c_properties = [$this->field($c_name)];
         switch ($c_info->type) {
@@ -237,6 +238,7 @@ namespace effcore {
             $c_properties[] = $c_info->type.(isset($c_info->size) ?
                                                '('.$c_info->size.')' : '');
         }
+
       # prepare field properties
         if (isset($c_info->collate)) {
           switch ($c_info->collate) {
@@ -259,6 +261,7 @@ namespace effcore {
         }
         $fields[] = $c_properties;
       }
+
     # prepare constraints
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
@@ -269,6 +272,7 @@ namespace effcore {
           if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $c_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
         }
       }
+
     # create entity
       $table_name = $this->table($entity->catalog_name);
       $this->transaction_begin();
@@ -279,11 +283,21 @@ namespace effcore {
       if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields' => $this->fields($fields), 'fields_end' => ')']);
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
+
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
         $c_index_name = $this->table($entity->catalog_name.'__'.$c_name);
-        $this->query('CREATE', $c_info->type, $c_index_name, 'ON', $table_name, '(', $this->fields($c_info->fields), ')');
+        $this->query([
+          'action' => 'CREATE',
+          'type' => $c_info->type, $c_index_name,
+          'on' => 'ON',
+          'target' => $table_name,
+          'fields_begin' => '(',
+          'fields' => $this->fields($c_info->fields),
+          'fields_end' => ')'
+        ]);
       }
+
       return $this->transaction_commit();
     }
   }
@@ -339,7 +353,7 @@ namespace effcore {
     if ($this->init()) {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
-      $query = [
+      $result = $this->query([
         'action' => 'SELECT',
         'fields' => $this->fields($entity->fields_name_get()),
         'target_begin' => 'FROM',
@@ -347,8 +361,7 @@ namespace effcore {
         'condition_begin' => 'WHERE',
         'condition' => $this->attributes($id_fields),
         'limit_begin' => 'LIMIT',
-        'limit' => 1];
-      $result = $this->query($query);
+        'limit' => 1]);
       if  (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
           $instance->{$c_name} = $c_value;
@@ -365,7 +378,7 @@ namespace effcore {
       $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
-      $query = [
+      $new_id = $this->query([
         'action' => 'INSERT',
         'action_subtype' => 'INTO',
         'target' => $this->table($entity->catalog_name),
@@ -374,8 +387,7 @@ namespace effcore {
         'fields_end' => ')',
         'values_begin' => 'VALUES (',
         'values' => $this->values($values),
-        'values_end' => ')'];
-      $new_id = $this->query($query);
+        'values_end' => ')']);
       if ($new_id !== null && $auto_name == null) return $instance;
       if ($new_id !== null && $auto_name != null) {
         $instance->{$auto_name} = $new_id;
@@ -389,14 +401,13 @@ namespace effcore {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
-      $query = [
+      $row_count = $this->query([
         'action' => 'UPDATE',
         'target' => $this->table($entity->catalog_name),
         'fields_and_values_begin' => 'SET',
         'fields_and_values' => $this->attributes($values, ','),
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes($instance->_id_fields_original ?: $id_fields)];
-      $row_count = $this->query($query);
+        'condition' => $this->attributes($instance->_id_fields_original ?: $id_fields)]);
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
@@ -408,13 +419,12 @@ namespace effcore {
     if ($this->init()) {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
-      $query = [
+      $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes($id_fields)];
-      $row_count = $this->query($query);
+        'condition' => $this->attributes($id_fields)]);
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;
