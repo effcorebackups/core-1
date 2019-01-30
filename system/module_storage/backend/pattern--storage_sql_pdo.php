@@ -42,8 +42,8 @@ namespace effcore {
               $this->connection = new pdo(
                 $this->driver.':'.data::directory.
                 $this->credentials->file_name);
-              $this->query('PRAGMA', 'encoding', '=', '"UTF-8"');
-              $this->query('PRAGMA', 'foreign_keys', '=', 'ON');
+              $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     '=' => '=', 'value' => '"UTF-8"']);
+              $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', '=' => '=', 'value' => 'ON'     ]);
               break;
           }
           event::start('on_storage_init_after', 'pdo', [&$this]);
