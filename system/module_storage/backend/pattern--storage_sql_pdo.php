@@ -349,7 +349,7 @@ namespace effcore {
         'limit_begin' => 'LIMIT',
         'limit' => 1];
       $result = $this->query($query);
-      if (isset($result[0])) {
+      if  (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
           $instance->{$c_name} = $c_value;
           $instance->_id_fields_original = $id_fields;
@@ -365,10 +365,17 @@ namespace effcore {
       $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
-      $new_id = $this->query(
-        'INSERT', 'INTO', $this->table($entity->catalog_name), '(',
-                          $this->fields($fields), ')',
-        'VALUES', '(',    $this->values($values), ')');
+      $query = [
+        'action' => 'INSERT',
+        'action_subtype' => 'INTO',
+        'target' => $this->table($entity->catalog_name),
+        'fields_begin' => '(',
+        'fields' => $this->fields($fields),
+        'fields_end' => ')',
+        'values_begin' => 'VALUES (',
+        'values' => $this->values($values),
+        'values_end' => ')'];
+      $new_id = $this->query($query);
       if ($new_id !== null && $auto_name == null) return $instance;
       if ($new_id !== null && $auto_name != null) {
         $instance->{$auto_name} = $new_id;
