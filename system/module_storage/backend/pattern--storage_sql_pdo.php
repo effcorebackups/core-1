@@ -94,19 +94,15 @@ namespace effcore {
 
   function title_get() {
     if ($this->init()) {
-      switch ($this->driver) {
-        case 'mysql' : return 'MySQL';
-        case 'sqlite': return 'SQLite';
-      }
+      if ($this->driver == 'mysql' ) return 'MySQL' ;
+      if ($this->driver == 'sqlite') return 'SQLite';
     }
   }
 
   function version_get() {
     if ($this->init()) {
-      switch ($this->driver) {
-        case 'mysql' : return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
-        case 'sqlite': return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
-      }
+      if ($this->driver == 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
+      if ($this->driver == 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
     }
   }
 
@@ -240,20 +236,12 @@ namespace effcore {
         }
 
       # prepare field properties
-        if (isset($c_info->collate)) {
-          switch ($c_info->collate) {
-            case 'nocase':
-              if ($this->driver ==  'mysql') $c_properties[] = 'collate utf8_general_ci';
-              if ($this->driver == 'sqlite') $c_properties[] = 'collate nocase';
-              break;
-            case 'binary':
-              if ($this->driver ==  'mysql') $c_properties[] = 'collate utf8_bin';
-              if ($this->driver == 'sqlite') $c_properties[] = 'collate binary';
-              break;
-          }
-        }
-        if (property_exists($c_info, 'not_null') && $c_info->not_null) $c_properties[] = 'not null';
-        if (property_exists($c_info, 'null')     && $c_info->null)     $c_properties[] = 'null';
+        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'mysql' ) $c_properties[] = 'collate utf8_general_ci';
+        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'sqlite') $c_properties[] = 'collate nocase';
+        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'mysql' ) $c_properties[] = 'collate utf8_bin';
+        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'sqlite') $c_properties[] = 'collate binary';
+        if (property_exists($c_info, 'not_null') && $c_info->not_null)                            $c_properties[] = 'not null';
+        if (property_exists($c_info, 'null')     && $c_info->null)                                $c_properties[] = 'null';
         if (property_exists($c_info, 'default')) {
           if     ($c_info->default === 0)    $c_properties[] = 'default 0';
           elseif ($c_info->default === null) $c_properties[] = 'default null';
@@ -267,9 +255,9 @@ namespace effcore {
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           $c_constraint_name = $this->table($entity->catalog_name.'__'.$c_name);
-          if ($c_info->type == 'primary') $fields[] = ['CONSTRAINT', $c_constraint_name, 'PRIMARY KEY', '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type ==  'unique') $fields[] = ['CONSTRAINT', $c_constraint_name, 'UNIQUE',      '(', $this->fields($c_info->fields), ')'];
-          if ($c_info->type == 'foreign') $fields[] = ['CONSTRAINT', $c_constraint_name, 'FOREIGN KEY', '(', $this->fields($c_info->fields), ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'primary') $fields[] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type ==  'unique') $fields[] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type == 'foreign') $fields[] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'REFERENCES', $c_info->references, '(', $this->fields($c_info->references_fields), ')', 'ON', 'UPDATE', $c_info->on_update ?? 'cascade', 'ON', 'DELETE', $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -289,7 +277,8 @@ namespace effcore {
         $c_index_name = $this->table($entity->catalog_name.'__'.$c_name);
         $this->query([
           'action' => 'CREATE',
-          'type' => $c_info->type, $c_index_name,
+          'type' => $c_info->type,
+          'name' => $c_index_name,
           'on' => 'ON',
           'target' => $table_name,
           'fields_begin' => '(',
