@@ -408,9 +408,13 @@ namespace effcore {
     if ($this->init()) {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
-      $row_count = $this->query(
-        'DELETE', 'FROM', $this->table($entity->catalog_name),
-        'WHERE',          $this->attributes($id_fields));
+      $query = [
+        'action' => 'DELETE',
+        'target_begin' => 'FROM',
+        'target' => $this->table($entity->catalog_name),
+        'condition_begin' => 'WHERE',
+        'condition' => $this->attributes($id_fields)];
+      $row_count = $this->query($query);
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;
