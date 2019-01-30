@@ -138,7 +138,7 @@ namespace effcore {
         );
         return null;
       }
-      switch (strtoupper($query[0])) {
+      switch (strtoupper(array_values($query)[0])) {
         case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\\'.__NAMESPACE__.'\\instance') : null;
         case 'INSERT': return $this->connection->lastInsertId();
         case 'UPDATE': return $result->rowCount();
@@ -301,26 +301,31 @@ namespace effcore {
 
   function instances_select($entity, $join = [], $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
-      $query = ['SELECT', 'fields' => [$this->field($entity->catalog_name.'.*')],
-                'FROM', $this->table($entity->catalog_name)];
+      $query = ['action' => 'SELECT',
+                'fields' => [$this->field($entity->catalog_name.'.*')],
+                'target_begin' => 'FROM',
+                'target' => $this->table($entity->catalog_name)];
       if (count($join)) {
         foreach ($join as $c_entity_name => $c_join_info) {
           $c_join_catalog_name = entity::get($c_entity_name)->catalog_name;
           $c_join_L = array_keys  ($c_join_info['on'])[0];
           $c_join_R = array_values($c_join_info['on'])[0];
-          array_push($query, 'LEFT OUTER JOIN', $this->table($c_join_catalog_name), 'ON');
-          array_push($query, $this->field($entity->catalog_name.'.'.$c_join_L), '=');
-          array_push($query, $this->field($c_join_catalog_name .'.'.$c_join_R));
+          $query['join_begin-'.$c_entity_name] = 'LEFT OUTER JOIN';
+          $query['join_target-'.$c_entity_name] = $this->table($c_join_catalog_name);
+          $query['join_condition_begin-'.$c_entity_name] = 'ON';
+          $query['join_left_target-'.$c_entity_name] = $this->field($entity->catalog_name.'.'.$c_join_L);
+          $query['join_condition-'.$c_entity_name] = '=';
+          $query['join_right_target-'.$c_entity_name] = $this->field($c_join_catalog_name .'.'.$c_join_R);
           foreach ($c_join_info['fields'] as $c_join_field_name) {
             $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
           }
         }
       }
       $query['fields'] = $this->fields($query['fields']);
-      if (count($conditions)) array_push($query, 'WHERE',       $this->attributes($conditions));
-      if (count($order))      array_push($query, 'ORDER', 'BY', $this->fields    ($order     ));
-      if ($limit)             array_push($query, 'LIMIT',  $limit );
-      if ($offset)            array_push($query, 'OFFSET', $offset);
+      if (count($conditions)) $query += ['condition_begin' => 'WHERE', 'condition' => $this->attributes($conditions)];
+      if (count($order))      $query += ['order_begin' => 'ORDER BY', 'order' => $this->fields($order)];
+      if ($limit)             $query += ['limit_begin' => 'LIMIT', 'limit' => $limit];
+      if ($offset)            $query += ['offset_begin' => 'OFFSET', 'offset' => $offset];
       $result = $this->query($query);
       foreach ($result as $c_instance) {
         $c_instance->entity_name_set($entity->name);
