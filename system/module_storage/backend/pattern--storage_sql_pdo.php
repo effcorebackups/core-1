@@ -272,13 +272,13 @@ namespace effcore {
     # create entity
       $table_name = $this->table($entity->catalog_name);
       $this->transaction_begin();
-      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
-                                     $this->query('DROP', 'TABLE', 'IF EXISTS', $table_name);
-      if ($this->driver ==  'mysql') $this->query('CREATE', 'TABLE', $table_name, '(', $this->fields($fields), ')', 'CHARSET', '=', 'utf8');
-      if ($this->driver == 'sqlite') $this->query('CREATE', 'TABLE', $table_name, '(', $this->fields($fields), ')');
-      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
+                                     $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target' => $table_name]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields' => $this->fields($fields), 'fields_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields' => $this->fields($fields), 'fields_end' => ')']);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
     # create indexes
       foreach ($entity->indexes as $c_name => $c_info) {
         $c_index_name = $this->table($entity->catalog_name.'__'.$c_name);
