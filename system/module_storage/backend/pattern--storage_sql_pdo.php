@@ -290,11 +290,11 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '0');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',  'OFF');
-      $result =                      $this->query('DROP', 'TABLE', $this->table($entity->catalog_name));
-      if ($this->driver ==  'mysql') $this->query('SET', 'FOREIGN_KEY_CHECKS', '=', '1');
-      if ($this->driver == 'sqlite') $this->query('PRAGMA', 'foreign_keys', '=',   'ON');
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'param' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'        ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'param' => 'foreign_keys',       '=' => '=', 'value' => 'OFF'      ]);
+      $result =                      $this->query(['action' => 'DROP',   'type'  => 'TABLE', 'target' => $this->table($entity->catalog_name)]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'param' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'        ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'param' => 'foreign_keys',       '=' => '=', 'value' => 'ON'       ]);
       return $result;
     }
   }
