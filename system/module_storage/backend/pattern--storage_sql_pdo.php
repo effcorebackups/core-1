@@ -389,10 +389,14 @@ namespace effcore {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
-      $row_count = $this->query(
-        'UPDATE', $this->table($entity->catalog_name),
-        'SET',    $this->attributes($values, ','),
-        'WHERE',  $this->attributes($instance->_id_fields_original ?: $id_fields));
+      $query = [
+        'action' => 'UPDATE',
+        'target' => $this->table($entity->catalog_name),
+        'fields_and_values_begin' => 'SET',
+        'fields_and_values' => $this->attributes($values, ','),
+        'condition_begin' => 'WHERE',
+        'condition' => $this->attributes($instance->_id_fields_original ?: $id_fields)];
+      $row_count = $this->query($query);
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
