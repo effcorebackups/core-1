@@ -104,8 +104,8 @@ namespace effcore {
   function version_get() {
     if ($this->init()) {
       switch ($this->driver) {
-        case 'mysql' : return $this->query('SELECT', 'version()',        'as', 'version')[0]->version;
-        case 'sqlite': return $this->query('SELECT', 'sqlite_version()', 'as', 'version')[0]->version;
+        case 'mysql' : return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
+        case 'sqlite': return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
       }
     }
   }
@@ -290,11 +290,11 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'param' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'        ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'param' => 'foreign_keys',       '=' => '=', 'value' => 'OFF'      ]);
-      $result =                      $this->query(['action' => 'DROP',   'type'  => 'TABLE', 'target' => $this->table($entity->catalog_name)]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'param' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'        ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'param' => 'foreign_keys',       '=' => '=', 'value' => 'ON'       ]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'     ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF'   ]);
+      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target' => $this->table($entity->catalog_name)]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'     ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON'    ]);
       return $result;
     }
   }
