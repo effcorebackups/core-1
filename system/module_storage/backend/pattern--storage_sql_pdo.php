@@ -301,10 +301,11 @@ namespace effcore {
 
   function instances_select($entity, $join = [], $conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
-      $query = ['action' => 'SELECT',
-                'fields' => [$this->field($entity->catalog_name.'.*')],
-                'target_begin' => 'FROM',
-                'target' => $this->table($entity->catalog_name)];
+      $query = [
+        'action' => 'SELECT',
+        'fields' => [$this->field($entity->catalog_name.'.*')],
+        'target_begin' => 'FROM',
+        'target' => $this->table($entity->catalog_name)];
       if (count($join)) {
         foreach ($join as $c_entity_name => $c_join_info) {
           $c_join_catalog_name = entity::get($c_entity_name)->catalog_name;
@@ -338,10 +339,16 @@ namespace effcore {
     if ($this->init()) {
       $entity    = $instance->entity_get();
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
-      $result    = $this->query(
-        'SELECT', $this->fields($entity->fields_name_get()),
-        'FROM',   $this->table($entity->catalog_name),
-        'WHERE',  $this->attributes($id_fields), 'LIMIT', 1);
+      $query = [
+        'action' => 'SELECT',
+        'fields' => $this->fields($entity->fields_name_get()),
+        'target_begin' => 'FROM',
+        'target' => $this->table($entity->catalog_name),
+        'condition_begin' => 'WHERE',
+        'condition' => $this->attributes($id_fields),
+        'limit_begin' => 'LIMIT',
+        'limit' => 1];
+      $result = $this->query($query);
       if (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
           $instance->{$c_name} = $c_value;
