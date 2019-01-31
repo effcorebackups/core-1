@@ -223,31 +223,39 @@ namespace effcore {
       $fields = [];
       foreach ($entity->fields as $c_name => $c_info) {
 
+      # prepare field name
+        $c_field = [
+          'name' => $this->field($c_name)
+        ];
+
       # prepare field type
-        $c_properties = [$this->field($c_name)];
         switch ($c_info->type) {
           case 'autoincrement':
-            if ($this->driver ==  'mysql') $c_properties[] = 'integer primary key auto_increment';
-            if ($this->driver == 'sqlite') $c_properties[] = 'integer primary key autoincrement';
+            if ($this->driver ==  'mysql') $c_field += ['type' => 'integer', 'primary_key' => 'primary key', 'autoincrement' => 'auto_increment'];
+            if ($this->driver == 'sqlite') $c_field += ['type' => 'integer', 'primary_key' => 'primary key', 'autoincrement' =>  'autoincrement'];
             break;
           default:
-            $c_properties[] = $c_info->type.(isset($c_info->size) ?
-                                               '('.$c_info->size.')' : '');
+            $c_field['type'] = $c_info->type;
+            if (isset($c_info->size)) {
+              $c_field['size_begin'] = '(';
+              $c_field['size'] = $c_info->size;
+              $c_field['size_end'] = ')';
+            }
         }
 
       # prepare field properties
-        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'mysql' ) $c_properties[] = 'collate utf8_general_ci';
-        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'sqlite') $c_properties[] = 'collate nocase';
-        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'mysql' ) $c_properties[] = 'collate utf8_bin';
-        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'sqlite') $c_properties[] = 'collate binary';
-        if (property_exists($c_info, 'not_null') && $c_info->not_null)                            $c_properties[] = 'not null';
-        if (property_exists($c_info, 'null')     && $c_info->null)                                $c_properties[] = 'null';
+        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_general_ci'];
+        if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'nocase'         ];
+        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_bin'       ];
+        if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'binary'         ];
+        if (property_exists($c_info, 'not_null') && $c_info->not_null)                            $c_field['not_null'] = 'not null';
+        if (property_exists($c_info, 'null')     && $c_info->null)                                $c_field['null'    ] = 'null';
         if (property_exists($c_info, 'default')) {
-          if     ($c_info->default === 0)    $c_properties[] = 'default 0';
-          elseif ($c_info->default === null) $c_properties[] = 'default null';
-          else                               $c_properties[] = 'default \''.$c_info->default.'\'';
+          if     ($c_info->default === 0)    $c_field += ['default_begin' => 'default', 'default' => '0'];
+          elseif ($c_info->default === null) $c_field += ['default_begin' => 'default', 'default' => 'null'];
+          else                               $c_field += ['default_begin' => 'default', 'default' => '\''.$c_info->default.'\''];
         }
-        $fields[] = $c_properties;
+        $fields[$c_name] = $c_field;
       }
 
     # prepare constraints
