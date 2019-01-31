@@ -144,6 +144,16 @@ namespace effcore {
     }
   }
 
+  function list($items = []) {
+    $result = [];
+    foreach ($items as $c_item) {
+      $result[] = $c_item;
+      $result[] = $this->op(',');
+    }
+    array_pop($result);
+    return $result;
+  }
+
   function table($table_name) {
     if ($this->driver == 'mysql' ) return '`'.$this->table_prefix.$table_name.'`';
     if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
@@ -180,10 +190,11 @@ namespace effcore {
     return $result;
   }
 
-  function list($items = []) {
+  function order($info = []) {
     $result = [];
-    foreach ($items as $c_item) {
-      $result[] = $c_item;
+    foreach ($info as $c_field_name => $c_order_type) {
+      $result[] = $this->field_real_name($c_field_name);
+      $result[] = $c_order_type;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -215,7 +226,7 @@ namespace effcore {
 
   function condition($field, $value, $op = '=') {
     return [
-      'field' => $this->fields($field),
+      'field' => $this->field_real_name($field),
       'op'    => $op,
       'value' => $this->values($value)
     ];
@@ -311,7 +322,7 @@ namespace effcore {
           'on' => 'ON',
           'target' => $table_name,
           'fields_begin' => '(',
-          'fields' => $this->fields($c_info->fields),
+          'fields' => $this->fields_real_names($c_info->fields),
           'fields_end' => ')'
         ]);
       }
@@ -354,9 +365,9 @@ namespace effcore {
           }
         }
       }
-      $query['fields'] = $this->fields($query['fields']);
+      $query['fields'] = $this->list($query['fields']);
       if (count($conditions)) $query += ['condition_begin' => 'WHERE', 'condition' => $this->attributes($conditions)];
-      if (count($order))      $query += ['order_begin' => 'ORDER BY', 'order' => $this->fields($order)];
+      if (count($order))      $query += ['order_begin' => 'ORDER BY', 'order' => $this->order($order)];
       if ($limit)             $query += ['limit_begin' => 'LIMIT', 'limit' => $limit];
       if ($offset)            $query += ['offset_begin' => 'OFFSET', 'offset' => $offset];
       $result = $this->query($query);
@@ -401,7 +412,7 @@ namespace effcore {
         'action_subtype' => 'INTO',
         'target' => $this->table($entity->catalog_name),
         'fields_begin' => '(',
-        'fields' => $this->fields($fields),
+        'fields' => $this->fields_real_names($fields),
         'fields_end' => ')',
         'values_begin' => 'VALUES (',
         'values' => $this->values($values),
