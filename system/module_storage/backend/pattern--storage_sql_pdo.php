@@ -170,10 +170,20 @@ namespace effcore {
     }
   }
 
-  function fields_real_name($fields = []) {
+  function fields_real_names($fields = []) {
     $result = [];
     foreach ($fields as $c_field) {
       $result[] = $this->field_real_name($c_field);
+      $result[] = $this->op(',');
+    }
+    array_pop($result);
+    return $result;
+  }
+
+  function list($items = []) {
+    $result = [];
+    foreach ($items as $c_item) {
+      $result[] = $c_item;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -274,9 +284,9 @@ namespace effcore {
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           $c_constraint_name = $this->table($entity->catalog_name.'__'.$c_name);
-          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields_real_names($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -286,8 +296,8 @@ namespace effcore {
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
                                      $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target' => $table_name]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->fields($fields + $constraints), 'fields_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->fields($fields + $constraints), 'fields_end' => ')']);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_end' => ')']);
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
 
@@ -363,7 +373,7 @@ namespace effcore {
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
-        'fields' => $this->fields_real_name($entity->fields_name_get()),
+        'fields' => $this->fields_real_names($entity->fields_name_get()),
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
