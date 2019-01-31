@@ -159,10 +159,9 @@ namespace effcore {
     if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
   }
 
-  function tables(...$tables) {
+  function tables($tables = []) {
     $result = [];
-    foreach (is_array($tables[0]) ?
-                      $tables[0] : $tables as $c_table_name) {
+    foreach ($tables as $c_table_name) {
       $result[] = $this->table($c_table_name);
       $result[] = $this->op(',');
     }
@@ -182,8 +181,8 @@ namespace effcore {
 
   function fields($fields = []) {
     $result = [];
-    foreach ($fields as $c_field) {
-      $result[] = $this->field($c_field);
+    foreach ($fields as $c_field_name) {
+      $result[] = $this->field($c_field_name);
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -201,12 +200,15 @@ namespace effcore {
     return $result;
   }
 
-  function values(...$values) {
+  function value($value) {
+    $this->args[] = $value;
+    return '?';
+  }
+
+  function values($values = []) {
     $result = [];
-    foreach (is_array($values[0]) ?
-                      $values[0] : $values as $c_value) {
-      $this->args[] = $c_value;
-      $result[] = '?';
+    foreach ($values as $c_value) {
+      $result[] = $this->value($c_value);
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -215,9 +217,8 @@ namespace effcore {
 
   function condition($field, $value, $op = '=') {
     return [
-      'field' => $this->field($field),
-      'op'    => $op,
-      'value' => $this->values($value)
+      'field' => $this->field($field), 'op' => $op,
+      'value' => $this->value($value)
     ];
   }
 
