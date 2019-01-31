@@ -170,7 +170,7 @@ namespace effcore {
     return $result;
   }
 
-  function field_real_name($field_name) {
+  function field($field_name) {
     if (strpos($field_name, '.') !== false) {
       $field_parts = explode('.', $field_name);
       if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '`'.$field_parts[1].'`');
@@ -180,10 +180,10 @@ namespace effcore {
     }
   }
 
-  function fields_real_names($fields = []) {
+  function fields($fields = []) {
     $result = [];
     foreach ($fields as $c_field) {
-      $result[] = $this->field_real_name($c_field);
+      $result[] = $this->field($c_field);
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -193,19 +193,8 @@ namespace effcore {
   function order($info = []) {
     $result = [];
     foreach ($info as $c_field_name => $c_order_type) {
-      $result[] = $this->field_real_name($c_field_name);
+      $result[] = $this->field($c_field_name);
       $result[] = $c_order_type;
-      $result[] = $this->op(',');
-    }
-    array_pop($result);
-    return $result;
-  }
-
-  function fields(...$fields) {
-    $result = [];
-    foreach (is_array($fields[0]) ?
-                      $fields[0] : $fields as $c_field) {
-      $result[] = $c_field;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -226,7 +215,7 @@ namespace effcore {
 
   function condition($field, $value, $op = '=') {
     return [
-      'field' => $this->field_real_name($field),
+      'field' => $this->field($field),
       'op'    => $op,
       'value' => $this->values($value)
     ];
@@ -257,7 +246,7 @@ namespace effcore {
 
       # prepare field name
         $c_field = [
-          'name' => $this->field_real_name($c_name)
+          'name' => $this->field($c_name)
         ];
 
       # prepare field type
@@ -295,9 +284,9 @@ namespace effcore {
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           $c_constraint_name = $this->table($entity->catalog_name.'__'.$c_name);
-          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields_real_names($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields_real_names($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -322,7 +311,7 @@ namespace effcore {
           'on' => 'ON',
           'target' => $table_name,
           'fields_begin' => '(',
-          'fields' => $this->fields_real_names($c_info->fields),
+          'fields' => $this->fields($c_info->fields),
           'fields_end' => ')'
         ]);
       }
@@ -346,7 +335,7 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields' => [$this->field_real_name($entity->catalog_name.'.*')],
+        'fields' => [$this->field($entity->catalog_name.'.*')],
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name)];
       if (count($join)) {
@@ -357,11 +346,11 @@ namespace effcore {
           $query['join'][$c_entity_name]['begin'] = 'LEFT OUTER JOIN';
           $query['join'][$c_entity_name]['target'] = $this->table($c_join_catalog_name);
           $query['join'][$c_entity_name]['condition_begin'] = 'ON';
-          $query['join'][$c_entity_name]['left_target'] = $this->field_real_name($entity->catalog_name.'.'.$c_join_L);
+          $query['join'][$c_entity_name]['left_target'] = $this->field($entity->catalog_name.'.'.$c_join_L);
           $query['join'][$c_entity_name]['condition'] = '=';
-          $query['join'][$c_entity_name]['right_target'] = $this->field_real_name($c_join_catalog_name .'.'.$c_join_R);
+          $query['join'][$c_entity_name]['right_target'] = $this->field($c_join_catalog_name .'.'.$c_join_R);
           foreach ($c_join_info['fields'] as $c_join_field_name) {
-            $query['fields'][] = $this->field_real_name($c_join_catalog_name.'.'.$c_join_field_name);
+            $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
           }
         }
       }
@@ -384,7 +373,7 @@ namespace effcore {
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
-        'fields' => $this->fields_real_names($entity->fields_name_get()),
+        'fields' => $this->fields($entity->fields_name_get()),
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
@@ -412,7 +401,7 @@ namespace effcore {
         'action_subtype' => 'INTO',
         'target' => $this->table($entity->catalog_name),
         'fields_begin' => '(',
-        'fields' => $this->fields_real_names($fields),
+        'fields' => $this->fields($fields),
         'fields_end' => ')',
         'values_begin' => 'VALUES (',
         'values' => $this->values($values),
