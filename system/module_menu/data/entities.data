@@ -37,7 +37,8 @@ entities
     - id_parent
         title: Parent ID
         type: integer
-        not_null: true
+        null: true
+        default: null
     - id_tree
         title: Tree ID
         type: integer
@@ -52,11 +53,4 @@ entities
     - primary_id
         type: primary
         fields
-        - =: id
-    - foreign_id_tree
-        type: foreign
-        fields
-        - =: id_tree
-        references: tree
-        references_fields
         - =: id
