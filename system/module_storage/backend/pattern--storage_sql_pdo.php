@@ -159,9 +159,9 @@ namespace effcore {
     if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
   }
 
-  function tables($tables = []) {
+  function tables(...$tables) {
     $result = [];
-    foreach ($tables as $c_table_name) {
+    foreach (is_array($tables[0]) ? $tables[0] : $tables as $c_table_name) {
       $result[] = $this->table($c_table_name);
       $result[] = $this->op(',');
     }
@@ -179,21 +179,10 @@ namespace effcore {
     }
   }
 
-  function fields($fields = []) {
+  function fields(...$fields) {
     $result = [];
-    foreach ($fields as $c_field_name) {
+    foreach (is_array($fields[0]) ? $fields[0] : $fields as $c_field_name) {
       $result[] = $this->field($c_field_name);
-      $result[] = $this->op(',');
-    }
-    array_pop($result);
-    return $result;
-  }
-
-  function order($info = []) {
-    $result = [];
-    foreach ($info as $c_field_name => $c_order_type) {
-      $result[] = $this->field($c_field_name);
-      $result[] = $c_order_type;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -205,10 +194,22 @@ namespace effcore {
     return '?';
   }
 
-  function values($values = []) {
+  function values(...$values) {
     $result = [];
-    foreach ($values as $c_value) {
+    foreach (is_array($values[0]) ? $values[0] : $values as $c_value) {
       $result[] = $this->value($c_value);
+      $result[] = $this->op(',');
+    }
+    array_pop($result);
+    return $result;
+  }
+
+
+  function order($order = []) {
+    $result = [];
+    foreach ($order as $c_field_name => $c_order_type) {
+      $result[] = $this->field($c_field_name);
+      $result[] = $c_order_type;
       $result[] = $this->op(',');
     }
     array_pop($result);
@@ -222,10 +223,6 @@ namespace effcore {
     ];
   }
 
-  function op($op) {
-    return $op;
-  }
-
   function attributes($data, $op = 'and') {
     $result = [];
     foreach ($data as $c_field => $c_value) {
@@ -233,6 +230,10 @@ namespace effcore {
       $result[] = $this->op($op);}
     array_pop($result);
     return $result;
+  }
+
+  function op($op) {
+    return $op;
   }
 
   ################
@@ -356,10 +357,10 @@ namespace effcore {
         }
       }
       $query['fields'] = $this->list($query['fields']);
-      if (count($conditions)) $query += ['condition_begin' => 'WHERE', 'condition' => $this->attributes($conditions)];
-      if (count($order))      $query += ['order_begin' => 'ORDER BY', 'order' => $this->order($order)];
-      if ($limit)             $query += ['limit_begin' => 'LIMIT', 'limit' => $limit];
-      if ($offset)            $query += ['offset_begin' => 'OFFSET', 'offset' => $offset];
+      if (count($conditions)) $query += ['condition_begin' => 'WHERE',    'condition' => $this->attributes($conditions)];
+      if (count($order))      $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($order)          ];
+      if ($limit)             $query += ['limit_begin'     => 'LIMIT',    'limit'     => $limit                        ];
+      if ($offset)            $query += ['offset_begin'    => 'OFFSET',   'offset'    => $offset                       ];
       $result = $this->query($query);
       foreach ($result as $c_instance) {
         $c_instance->entity_name_set($entity->name);
