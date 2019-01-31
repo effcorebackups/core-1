@@ -160,7 +160,7 @@ namespace effcore {
     return $result;
   }
 
-  function field($field_name) {
+  function field_real_name($field_name) {
     if (strpos($field_name, '.') !== false) {
       $field_parts = explode('.', $field_name);
       if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '`'.$field_parts[1].'`');
@@ -168,6 +168,16 @@ namespace effcore {
       if ($this->driver == 'mysql' ) return $field_name === '*' ? '*' : '`'.$field_name.'`';
       if ($this->driver == 'sqlite') return $field_name === '*' ? '*' : '"'.$field_name.'"';
     }
+  }
+
+  function fields_real_name($fields = []) {
+    $result = [];
+    foreach ($fields as $c_field) {
+      $result[] = $this->field_real_name($c_field);
+      $result[] = $this->op(',');
+    }
+    array_pop($result);
+    return $result;
   }
 
   function fields(...$fields) {
@@ -226,7 +236,7 @@ namespace effcore {
 
       # prepare field name
         $c_field = [
-          'name' => $this->field($c_name)
+          'name' => $this->field_real_name($c_name)
         ];
 
       # prepare field type
@@ -315,7 +325,7 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields' => [$this->field($entity->catalog_name.'.*')],
+        'fields' => [$this->field_real_name($entity->catalog_name.'.*')],
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name)];
       if (count($join)) {
@@ -326,11 +336,11 @@ namespace effcore {
           $query['join'][$c_entity_name]['begin'] = 'LEFT OUTER JOIN';
           $query['join'][$c_entity_name]['target'] = $this->table($c_join_catalog_name);
           $query['join'][$c_entity_name]['condition_begin'] = 'ON';
-          $query['join'][$c_entity_name]['left_target'] = $this->field($entity->catalog_name.'.'.$c_join_L);
+          $query['join'][$c_entity_name]['left_target'] = $this->field_real_name($entity->catalog_name.'.'.$c_join_L);
           $query['join'][$c_entity_name]['condition'] = '=';
-          $query['join'][$c_entity_name]['right_target'] = $this->field($c_join_catalog_name .'.'.$c_join_R);
+          $query['join'][$c_entity_name]['right_target'] = $this->field_real_name($c_join_catalog_name .'.'.$c_join_R);
           foreach ($c_join_info['fields'] as $c_join_field_name) {
-            $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
+            $query['fields'][] = $this->field_real_name($c_join_catalog_name.'.'.$c_join_field_name);
           }
         }
       }
@@ -353,7 +363,7 @@ namespace effcore {
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
-        'fields' => $this->fields($entity->fields_name_get()),
+        'fields' => $this->fields_real_name($entity->fields_name_get()),
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
