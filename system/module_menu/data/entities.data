@@ -38,6 +38,10 @@ entities
         title: Parent ID
         type: integer
         not_null: true
+    - id_tree
+        title: Tree ID
+        type: integer
+        not_null: true
     - title
         title: Title
         type: varchar
@@ -48,4 +52,11 @@ entities
     - primary_id
         type: primary
         fields
+        - =: id
+    - foreign_id_tree
+        type: foreign
+        fields
+        - =: id_tree
+        references: tree
+        references_fields
         - =: id
