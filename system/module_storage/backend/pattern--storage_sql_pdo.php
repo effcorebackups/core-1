@@ -314,12 +314,12 @@ namespace effcore {
           $c_join_catalog_name = entity::get($c_entity_name)->catalog_name;
           $c_join_L = array_keys  ($c_join_info['on'])[0];
           $c_join_R = array_values($c_join_info['on'])[0];
-          $query['join_begin-'.$c_entity_name] = 'LEFT OUTER JOIN';
-          $query['join_target-'.$c_entity_name] = $this->table($c_join_catalog_name);
-          $query['join_condition_begin-'.$c_entity_name] = 'ON';
-          $query['join_left_target-'.$c_entity_name] = $this->field($entity->catalog_name.'.'.$c_join_L);
-          $query['join_condition-'.$c_entity_name] = '=';
-          $query['join_right_target-'.$c_entity_name] = $this->field($c_join_catalog_name .'.'.$c_join_R);
+          $query['join'][$c_entity_name]['begin'] = 'LEFT OUTER JOIN';
+          $query['join'][$c_entity_name]['target'] = $this->table($c_join_catalog_name);
+          $query['join'][$c_entity_name]['condition_begin'] = 'ON';
+          $query['join'][$c_entity_name]['left_target'] = $this->field($entity->catalog_name.'.'.$c_join_L);
+          $query['join'][$c_entity_name]['condition'] = '=';
+          $query['join'][$c_entity_name]['right_target'] = $this->field($c_join_catalog_name .'.'.$c_join_R);
           foreach ($c_join_info['fields'] as $c_join_field_name) {
             $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
           }
