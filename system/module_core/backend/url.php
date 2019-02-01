@@ -77,7 +77,9 @@ namespace effcore {
     return static::path_parse($this->path_get());
   }
 
-  function type_get() {return ltrim(strtolower(strrchr($this->path, '.')), '.');}
+  function type_get() {
+    return ltrim(strtolower(strrchr($this->path, '.')), '.');
+  }
 
   function protocol_get() {return $this->protocol;}
   function domain_get()   {return $this->domain;}
@@ -85,13 +87,18 @@ namespace effcore {
   function query_get()    {return $this->query;}
   function anchor_get()   {return $this->anchor;}
 
-  function relative_get() {return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
-                                  ($this->query  ? '?'.$this->query  : '').
-                                  ($this->anchor ? '#'.$this->anchor : '');}
-  function full_get()     {return ($this->protocol.'://'.$this->domain).
-                                  ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
-                                  ($this->query  ? '?'.$this->query  : '').
-                                  ($this->anchor ? '#'.$this->anchor : '');}
+  function relative_get() {
+    return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
+           ($this->query  ? '?'.$this->query  : '').
+           ($this->anchor ? '#'.$this->anchor : '');
+  }
+
+  function full_get() {
+    return ($this->protocol.'://'.$this->domain).
+           ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
+           ($this->query  ? '?'.$this->query  : '').
+           ($this->anchor ? '#'.$this->anchor : '');
+  }
 
   function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;}
   function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args); $args[$name] = $value; $this->query = http_build_query($args);}

@@ -299,7 +299,7 @@ translations
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сбросить
-    - Restore the storage credentials in "%%_path" directory or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в каталоге "%%_path" или переустановите эту систему на странице: %%_link
+    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
     - restore: восстановить
     - return: возврат
     - Role ID: ID Роли

@@ -54,11 +54,11 @@ namespace effcore {
           );
         }
       } else {
-        $path = (new file(data::directory))->path_relative_get();
+        $path = (new file(data::directory.'changes.php'))->path_relative_get();
         $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
         message::insert(
           translation::get('Credentials for storage %%_name was not set!', ['name' => $this->name]).br.
-          translation::get('Restore the storage credentials in "%%_path" directory or reinstall this system on the page: %%_link', ['path' => $path, 'link' => $link]), 'error'
+          translation::get('Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link', ['file' => $path, 'link' => $link]), 'error'
         );
       }
     }
