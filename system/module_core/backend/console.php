@@ -51,6 +51,10 @@ namespace effcore {
     }
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+  # console output as markup
+  # ─────────────────────────────────────────────────────────────────────
+
   static function markup_get() {
     return new markup('x-console', [], [
       static::markup_block_information_get(),
@@ -121,6 +125,10 @@ namespace effcore {
       new markup('x-value', [], count($logs_all))])
     ]);
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # console output as text (for *.jsd | *.cssd)
+  # ─────────────────────────────────────────────────────────────────────
 
   static function text_get() {
     return static::text_block_information_get().
