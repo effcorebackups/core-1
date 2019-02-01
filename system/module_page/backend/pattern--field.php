@@ -231,7 +231,7 @@ namespace effcore {
 
   function value_set($value) {
     $element = $this->child_select('element');
-    return $element->attribute_insert('value', $value);
+    return $element->attribute_insert('value', htmlspecialchars($value, ENT_QUOTES));
   }
 
   # ─────────────────────────────────────────────────────────────────────
