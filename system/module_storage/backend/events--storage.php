@@ -36,13 +36,13 @@ namespace effcore\modules\storage {
     $s_query_args_beautiful = '\''.implode('\', \'', $buf_args).'\'';
     timer::tap('storage query: '.$s_query);
     console::log_insert('storage', 'query',
-      count($storage->args) ? 'sql query = "%%_query"'.br.'args = [%%_args]' :
+      count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'args = [%%_args]' :
                               'sql query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
-      timer::period_get('storage query: '.$s_query, -1, -2),
-      ['query' => $s_query_beautiful,
-        'args' => $s_query_args_beautiful]
-    );
+      timer::period_get('storage query: '.$s_query, -1, -2), [
+      'query' => $s_query_beautiful,
+      'args'  => $s_query_args_beautiful
+    ]);
   }
 
 }}

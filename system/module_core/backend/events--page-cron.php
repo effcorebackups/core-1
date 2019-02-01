@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
+          use \effcore\console;
           use \effcore\core;
           use \effcore\event;
           use \effcore\timer;
@@ -19,6 +20,7 @@ namespace effcore\modules\core {
       foreach ($result as $c_handler => $c_result)
         print 'Run: '.$c_handler.br;
         print 'Cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
+      console::log_store();
       exit();
     } else {
       core::send_header_and_exit('page_not_found');
