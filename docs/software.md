@@ -56,19 +56,20 @@ If you got "500 Internal Server Error" check "web.config" in www root (section "
 
 PHP requires
 ---------------------------------------------------------------------
-- enable module "Core"                                   [always enabled]
-- enable module "date"                                   [always enabled]
-- enable module "fileinfo"                               [enabled by default]
-- enable module "filter"                                 [enabled by default]
-- enable module "mbstring"
-- enable module "pcre"                                   [always enabled]
-- enable module "SPL"                                    [always enabled]
-- enable module "standard"                               [always enabled]
-- enable module "pdo_mysql"    (for working with MySQL)
-- enable module "pdo_sqlite"   (for working with SQLite)
-- enable module "Zend OPcache" (for best performance)
-- enable module "curl"         (for development)
-- enable module "json"         (for development)         [always enabled]
+- enable extension "Core"                                   [always enabled]
+- enable extension "date"                                   [always enabled]
+- enable extension "fileinfo"                               [enabled by default]
+- enable extension "filter"                                 [enabled by default]
+- enable extension "hash"                                   [enabled by default]
+- enable extension "mbstring"
+- enable extension "pcre"                                   [always enabled]
+- enable extension "SPL"                                    [always enabled]
+- enable extension "standard"                               [always enabled]
+- enable extension "pdo_mysql"    (for working with MySQL)
+- enable extension "pdo_sqlite"   (for working with SQLite)
+- enable extension "Zend OPcache" (for best performance)
+- enable extension "curl"         (for development)
+- enable extension "json"         (for development)         [always enabled]
 
 
 SQLite requires

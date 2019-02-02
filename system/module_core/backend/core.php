@@ -612,7 +612,7 @@ namespace effcore {
   }
 
   static function password_verify($password, $hash) {
-    return static::password_hash_get($password) === $hash;
+    return hash_equals($hash, static::password_hash_get($password));
   }
 
   static function data_hash_get($data) {
