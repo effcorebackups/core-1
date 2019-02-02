@@ -550,6 +550,16 @@ namespace effcore {
   ### functionality for signatures|keys|hash ###
   ##############################################
 
+  # hash performance (1 millon iterations):
+  # ┌───────────────────╥─────────────┬────────┬─────────────────────────┐
+  # │ function          ║ time (sec.) │ is hex │ has 32-bit sign problem │
+  # ╞═══════════════════╬═════════════╪════════╪═════════════════════════╡
+  # │ crc32(…)          ║ 2.461183    │ no     │ yes                     │
+  # │ hash('crc32b', …) ║ 2.632847    │ yes    │ no                      │
+  # │ md5(…)            ║ 2.682224    │ yes    │ no                      │
+  # │ sha1(…)           ║ 2.704381    │ yes    │ no                      │
+  # └───────────────────╨─────────────┴────────┴─────────────────────────┘
+
   static function random_part_get() {
     $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
     $hex_rand = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
