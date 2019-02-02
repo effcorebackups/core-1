@@ -93,7 +93,7 @@
   x-block.info dl {margin: 0; padding: 0}
   x-block.info dl dt {margin: 0; padding: 3px 10px 3px 0; float: left; min-width: 200px}
   x-block.info dl dd {margin: 0 0 0 210px; padding: 3px 0 3px 3px}
-  x-block.info x-value {display: inline-block; padding: 1px 5px 2px 5px; border-radius: 5px; line-height: 1.1em; color: white}
+  x-block.info x-value {display: inline-block; padding: 1px 5px 2px 5px; border-radius: 8px; line-height: 1.1em; color: white}
   x-block.info x-value[data-state='ok'] {background: %%_color_ok}
   x-block.info x-value[data-state='warning'] {background: %%_color_warning}
 
@@ -218,7 +218,7 @@
   x-module-info x-module-copyright {display: block}
   x-module-info x-module-description {display: block}
   x-module-info x-dependencies {display: block}
-  x-module-info x-dependencies x-dependency {display: inline-block; margin-right: 5px; padding: 1px 5px 2px 5px; border-radius: 5px; line-height: 1.1em; color: white}
+  x-module-info x-dependencies x-dependency {display: inline-block; margin-right: 5px; padding: 1px 5px 2px 5px; border-radius: 8px; line-height: 1.1em; color: white}
   x-module-info x-dependencies x-dependency:last-child {margin-right: 0}
   x-module-info x-dependencies x-dependency[data-state='0'] {background: %%_color_warning}
   x-module-info x-dependencies x-dependency[data-state='1'] {background: silver}

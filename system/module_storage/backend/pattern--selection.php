@@ -26,6 +26,7 @@ namespace effcore {
     $result = [];
     $used_entities = [];
     $used_storages = [];
+
   # analyze
     foreach ($this->fields as $c_field) {
       if ($c_field->type == 'field') {
@@ -34,6 +35,7 @@ namespace effcore {
         $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
       }
     }
+
   # get data from storage
     if (count($used_storages) == 1 &&
         count($used_entities) == 1) {
@@ -53,6 +55,7 @@ namespace effcore {
       message::insert(translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning');
       return new node();
     }
+
   # make result
     if (!empty($entity)) {
       // $pager = new pager();
@@ -60,6 +63,7 @@ namespace effcore {
       //   core::send_header_and_exit('page_not_found');
       // }
       switch ($this->view_type) {
+
       # ─────────────────────────────────────────────────────────────────────
       # table
       # ─────────────────────────────────────────────────────────────────────
@@ -89,6 +93,7 @@ namespace effcore {
                 case 'field':
                   $c_type = $entity->fields[$c_field->field_name]->type;
                   $c_value = $c_instance->{$c_field->field_name};
+                  if ($c_type == 'real')     $c_value = locale::  number_format($c_value, 10);
                   if ($c_type == 'date')     $c_value = locale::    date_format($c_value);
                   if ($c_type == 'time')     $c_value = locale::    time_format($c_value);
                   if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);
@@ -114,6 +119,7 @@ namespace effcore {
             );
           }
           break;
+
       # ─────────────────────────────────────────────────────────────────────
       # list
       # ─────────────────────────────────────────────────────────────────────
@@ -126,6 +132,7 @@ namespace effcore {
                   $c_type  = $entity->fields[$c_field->field_name]->type;
                   $c_title = $entity->fields[$c_field->field_name]->title;
                   $c_value = $c_instance->  {$c_field->field_name};
+                  if ($c_type == 'real')     $c_value = locale::  number_format($c_value, 10);
                   if ($c_type == 'date')     $c_value = locale::    date_format($c_value);
                   if ($c_type == 'time')     $c_value = locale::    time_format($c_value);
                   if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);

@@ -54,7 +54,7 @@ entities
         title: Field date
         type: date
         not_null: true
-        default: 2000-01-01
+        default: 2030-01-01
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ entities
         title: Field datetime
         type: datetime
         not_null: true
-        default: 2000-01-01 00:00:00
+        default: 2030-01-01 00:00:00
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer | mysql equivalent: tinyint
     # ─────────────────────────────────────────────────────────────────────
