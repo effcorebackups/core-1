@@ -110,19 +110,31 @@ namespace effcore {
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();}
 
-  function query_to_string(...$query) {
-    return implode(' ', core::array_values_select_recursive($query)).';';
+  function query_prepare(...$query) {
+    $flat_query = core::array_values_select_recursive($query);
+    foreach ($flat_query as $c_key => &$c_value) {
+      $c_modifier = strrchr($c_key, '#');
+      switch ($c_modifier) {
+        case '#c': $c_value = $this->table(entity::get($c_value)->catalog_name); break;
+        case '#t': $c_value = $this->table($c_value);                            break;
+        case '#f': $c_value = $this->field($c_value);                            break;
+        case '#v': $c_value = $this->value($c_value);                            break;
+      }
+    }
+    return $flat_query;
   }
 
   function query(...$query) {
     if (is_array($query[0])) $query = $query[0];
     if ($this->init()) {
       $this->queries[] = $query;
-      event::start('on_query_before', 'pdo', [&$this, &$query]);
-      $result = $this->connection->prepare($this->query_to_string($query));
+      $flat_query = $this->query_prepare($query);
+      $flat_query_string = implode(' ', $flat_query).';';
+      event::start('on_query_before', 'pdo', [&$this, &$flat_query]);
+      $result = $this->connection->prepare($flat_query_string);
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', [&$this, &$query, &$result, &$c_error]);
+      event::start('on_query_after', 'pdo', [&$this, &$flat_query, &$result, &$c_error]);
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {
         $this->errors[] = $c_error;

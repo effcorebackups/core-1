@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_query_before($storage, $query) {
-    $s_query = $storage->query_to_string($query);
+    $s_query = implode(' ', $query).';';
     timer::tap('storage query: '.$s_query);
   }
 
@@ -31,7 +31,7 @@ namespace effcore\modules\storage {
     foreach ($storage->args as $c_arg) {
       $buf_args[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
     }
-    $s_query = $storage->query_to_string($query);
+    $s_query = implode(' ', $query).';';
     $s_query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $s_query);
     $s_query_args_beautiful = '\''.implode('\', \'', $buf_args).'\'';
     timer::tap('storage query: '.$s_query);
