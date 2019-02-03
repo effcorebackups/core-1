@@ -10,6 +10,7 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
+    - *.cssd \| *.jsd console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности *.cssd | *.jsd консоль будет отображаться только в режиме "показать всем".
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
@@ -25,7 +26,6 @@ translations
     - class: класс
     - Classes: Классы
     - Console: Консоль
-    - *.cssd \| *.jsd console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности *.cssd | *.jsd консоль будет отображаться только в режиме "показать всем".
     - Demo\: autoincrement: Демо: автоинкремент
     - Demo\: constraints: Демо: ограничения
     - Demo\: indexes: Демо: индексы
@@ -103,6 +103,7 @@ translations
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
+    - Selection with JOIN: Выборка с JOIN
     - show for admin: показывать для администратора
     - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"

@@ -39,9 +39,13 @@ namespace effcore {
   # get data from storage
     if (count($used_storages) == 1 &&
         count($used_entities) == 1) {
+      $storage   = storage::get(reset($used_storages));
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select([],
-        $this->conditions,
+[], //  $storage->condition(
+    //    $this->conditions['field'],
+    //    $this->conditions['value'],
+    //    $this->conditions['operator']),
         $this->order,
         $this->quantity,
         $this->offset);

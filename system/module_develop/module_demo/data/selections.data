@@ -1,4 +1,17 @@
 selections
+- demo_join|selection
+    id: demo_join
+    title: Selection with JOIN
+    view_type: list
+    conditions
+    - field: id
+    - operator: =
+    - value: 1
+    fields
+    - nick
+        type: field
+        entity_name: user
+        field_name: nick
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities

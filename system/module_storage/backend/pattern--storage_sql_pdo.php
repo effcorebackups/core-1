@@ -148,7 +148,7 @@ namespace effcore {
     $result = [];
     foreach ($items as $c_item) {
       $result[] = $c_item;
-      $result[] = $this->op(',');
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
@@ -163,7 +163,7 @@ namespace effcore {
     $result = [];
     foreach (is_array($tables[0]) ? $tables[0] : $tables as $c_table_name) {
       $result[] = $this->table($c_table_name);
-      $result[] = $this->op(',');
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
@@ -183,7 +183,7 @@ namespace effcore {
     $result = [];
     foreach (is_array($fields[0]) ? $fields[0] : $fields as $c_field_name) {
       $result[] = $this->field($c_field_name);
-      $result[] = $this->op(',');
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
@@ -198,7 +198,7 @@ namespace effcore {
     $result = [];
     foreach (is_array($values[0]) ? $values[0] : $values as $c_value) {
       $result[] = $this->value($c_value);
-      $result[] = $this->op(',');
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
@@ -210,30 +210,27 @@ namespace effcore {
     foreach ($order as $c_field_name => $c_order_type) {
       $result[] = $this->field($c_field_name);
       $result[] = $c_order_type;
-      $result[] = $this->op(',');
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
   }
 
-  function condition($field, $value, $op = '=') {
+  function condition($field, $value, $operator = '=') {
     return [
-      'field' => $this->field($field), 'op' => $op,
+      'field' => $this->field($field), 'operator' => $operator,
       'value' => $this->value($value)
     ];
   }
 
-  function attributes($data, $op = 'and') {
+  function attributes($data, $operator = 'and') {
     $result = [];
     foreach ($data as $c_field => $c_value) {
       $result[] = is_array($c_value) ? $c_value : $this->condition($c_field, $c_value);
-      $result[] = $this->op($op);}
+      $result[] = $operator;
+    }
     array_pop($result);
     return $result;
-  }
-
-  function op($op) {
-    return $op;
   }
 
   ################
@@ -337,7 +334,7 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields' => [$this->field($entity->catalog_name.'.*')],
+        'fields' => [$entity->catalog_name.'.*'],
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name)];
       if (count($join)) {
@@ -352,11 +349,11 @@ namespace effcore {
           $query['join'][$c_entity_name]['condition'] = '=';
           $query['join'][$c_entity_name]['right_target'] = $this->field($c_join_catalog_name .'.'.$c_join_R);
           foreach ($c_join_info['fields'] as $c_join_field_name) {
-            $query['fields'][] = $this->field($c_join_catalog_name.'.'.$c_join_field_name);
+            $query['fields'][] = $c_join_catalog_name.'.'.$c_join_field_name;
           }
         }
       }
-      $query['fields'] = $this->list($query['fields']);
+      $query['fields'] = $this->fields($query['fields']);
       if (count($conditions)) $query += ['condition_begin' => 'WHERE',    'condition' => $this->attributes($conditions)];
       if (count($order))      $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($order)          ];
       if ($limit)             $query += ['limit_begin'     => 'LIMIT',    'limit'     => $limit                        ];
