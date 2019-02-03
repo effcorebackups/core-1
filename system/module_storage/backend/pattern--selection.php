@@ -11,7 +11,7 @@ namespace effcore {
   public $view_type = 'table'; # table | list
   public $title;
   public $fields;
-  public $conditions = [];
+  public $pure_conditions = [];
   public $order = [];
   public $quantity = 50;
   public $offset = 0;
@@ -42,10 +42,7 @@ namespace effcore {
       $storage   = storage::get(reset($used_storages));
       $entity    = entity::get(reset($used_entities));
       $instances = entity::get(reset($used_entities))->instances_select([],
-[], //  $storage->condition(
-    //    $this->conditions['field'],
-    //    $this->conditions['value'],
-    //    $this->conditions['operator']),
+        $this->pure_conditions,
         $this->order,
         $this->quantity,
         $this->offset);

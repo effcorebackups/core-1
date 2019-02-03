@@ -342,7 +342,7 @@ namespace effcore {
     }
   }
 
-  function instances_select($entity, $join = [], $conditions = [], $order = [], $limit = 0, $offset = 0) {
+  function instances_select($entity, $join = [], $pure_conditions = [], $order = [], $limit = 0, $offset = 0) {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
@@ -366,10 +366,10 @@ namespace effcore {
         }
       }
       $query['fields'] = $this->fields($query['fields']);
-      if (count($conditions)) $query += ['condition_begin' => 'WHERE',    'condition' => $this->attributes($conditions)];
-      if (count($order))      $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($order)          ];
-      if ($limit)             $query += ['limit_begin'     => 'LIMIT',    'limit'     => $limit                        ];
-      if ($offset)            $query += ['offset_begin'    => 'OFFSET',   'offset'    => $offset                       ];
+      if (count($pure_conditions)) $query += ['condition_begin' => 'WHERE',    'condition' => $pure_conditions    ];
+      if (count($order))           $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($order)];
+      if ($limit)                  $query += ['limit_begin'     => 'LIMIT',    'limit'     => $limit              ];
+      if ($offset)                 $query += ['offset_begin'    => 'OFFSET',   'offset'    => $offset             ];
       $result = $this->query($query);
       foreach ($result as $c_instance) {
         $c_instance->entity_name_set($entity->name);
