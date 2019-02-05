@@ -88,9 +88,10 @@ namespace effcore {
   function anchor_get()   {return $this->anchor;}
 
   function relative_get() {
-    return ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
-           ($this->query  ? '?'.$this->query  : '').
-           ($this->anchor ? '#'.$this->anchor : '');
+    $result = $this->path;
+    if ($this->query ) $result.= '?'.$this->query;
+    if ($this->anchor) $result.= '#'.$this->anchor;
+    return $result;
   }
 
   function full_get() {
