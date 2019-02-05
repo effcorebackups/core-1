@@ -51,14 +51,13 @@ namespace effcore {
   }
 
   static function cleaning() {
-    $s = storage::get(entity::get('session')->storage_name);
-    $catalog_name =   entity::get('session')->catalog_name;
-    $s->query([
+    $storage = storage::get(entity::get('session')->storage_name);
+    $storage->query([
       'action' => 'DELETE',
       'target_begin' => 'FROM',
-      'target' => $s->table($catalog_name),
+      'target_#c' => 'session',
       'condition_begin' => 'WHERE',
-      'condition' => $s->condition('expired', core::datetime_get(),'<')
+      'condition' => ['expired_#f' => 'expired', '<', 'expired_#v' => core::datetime_get()]
     ]);
   }
 

@@ -155,14 +155,13 @@ namespace effcore {
   }
 
   static function captcha_old_cleaning() {
-    $s = storage::get(entity::get('captcha')->storage_name);
-    $catalog_name =   entity::get('captcha')->catalog_name;
-    $s->query([
+    $storage = storage::get(entity::get('captcha')->storage_name);
+    $storage->query([
       'action' => 'DELETE',
       'target_begin' => 'FROM',
-      'target' => $s->table($catalog_name),
+      'target_#c' => 'captcha',
       'condition_begin' => 'WHERE',
-      'condition' => $s->condition('created', core::datetime_get('-1 hour'), '<')
+      'condition' => ['created_#f' => 'created', '<', 'created_#v' => core::datetime_get('-1 hour')]
     ]);
   }
 
