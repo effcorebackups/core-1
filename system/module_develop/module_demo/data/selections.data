@@ -4,9 +4,9 @@ selections
     title: Selection with JOIN
     view_type: list
     pure_conditions
-    - field#f: id
+    - id_#f: id
     - operator: =
-    - value#v: 1
+    - id_#v: 1
     fields
     - nick
         type: field
