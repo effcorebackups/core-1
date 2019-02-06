@@ -8,34 +8,34 @@ namespace effcore {
           class url {
 
   # valid urls:
-  # ┌──────────────────────────────────────────────────────────┐
-  # │ url                                                      │
-  # ╞══════════════════════════════════════════════════════════╡
-  # │                        /                                 │
-  # │                        /?key=value                       │
-  # │                        /#anchor                          │
-  # │                        /?key=value#anchor                │
-  # │                        /dir/subdir/page                  │
-  # │                        /dir/subdir/page?key=value        │
-  # │                        /dir/subdir/page#anchor           │
-  # │                        /dir/subdir/page?key=value#anchor │
-  # │        subdomain.domain                                  │
-  # │        subdomain.domain/?key=value                       │
-  # │        subdomain.domain/#anchor                          │
-  # │        subdomain.domain/?key=value#anchor                │
-  # │        subdomain.domain/dir/subdir/page                  │
-  # │        subdomain.domain/dir/subdir/page?key=value        │
-  # │        subdomain.domain/dir/subdir/page#anchor           │
-  # │        subdomain.domain/dir/subdir/page?key=value#anchor │
-  # │ http://subdomain.domain                                  │
-  # │ http://subdomain.domain/?key=value                       │
-  # │ http://subdomain.domain/#anchor                          │
-  # │ http://subdomain.domain/?key=value#anchor                │
-  # │ http://subdomain.domain/dir/subdir/page                  │
-  # │ http://subdomain.domain/dir/subdir/page?key=value        │
-  # │ http://subdomain.domain/dir/subdir/page#anchor           │
-  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor │
-  # └──────────────────────────────────────────────────────────┘
+  # ┌──────────────────────────────────────────────────────────╥──────────────────────────────────────────────────────────┬───────────────────────────────────┐
+  # │ url                                                      ║ full_get()                                               │ relative_get()                    │
+  # ╞══════════════════════════════════════════════════════════╬══════════════════════════════════════════════════════════╪═══════════════════════════════════╡
+  # │                        /                                 ║ http://subdomain.domain                                  │ /                                 │
+  # │                        /?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │                        /#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │                        /?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │                        /dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │                        /dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │                        /dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │                        /dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │        subdomain.domain                                  ║ http://subdomain.domain                                  │ /                                 │
+  # │        subdomain.domain/?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │        subdomain.domain/#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │        subdomain.domain/?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │        subdomain.domain/dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │        subdomain.domain/dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │        subdomain.domain/dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │        subdomain.domain/dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │ http://subdomain.domain                                  ║ http://subdomain.domain                                  │ /                                 │
+  # │ http://subdomain.domain/?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │ http://subdomain.domain/#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │ http://subdomain.domain/?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │ http://subdomain.domain/dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │ http://subdomain.domain/dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │ http://subdomain.domain/dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # └──────────────────────────────────────────────────────────╨──────────────────────────────────────────────────────────┴───────────────────────────────────┘
 
   # wrong urls:
   # ┌──────────────────────────╥─────────────────────────────────────────────────────────────-─────────────┐
@@ -51,6 +51,7 @@ namespace effcore {
   # ════════════════════════════════════════════════════════════════════════════════════════════
   # 1. in the next url 'http://name:pass@subdomain.domain:port/dir/subdir/page?key=value#anchor'
   #    the name, password and port values after parsing will be in the $domain property
+  # 2. anchor is not sent through the browser
   # ────────────────────────────────────────────────────────────────────────────────────────────
 
   public $protocol;
@@ -82,10 +83,10 @@ namespace effcore {
   }
 
   function protocol_get() {return $this->protocol;}
-  function domain_get()   {return $this->domain;}
-  function path_get()     {return $this->path;}
-  function query_get()    {return $this->query;}
-  function anchor_get()   {return $this->anchor;}
+  function domain_get  () {return $this->domain;  }
+  function path_get    () {return $this->path;    }
+  function query_get   () {return $this->query;   }
+  function anchor_get  () {return $this->anchor;  }
 
   function relative_get() {
     $result = $this->path;
@@ -95,10 +96,10 @@ namespace effcore {
   }
 
   function full_get() {
-    return ($this->protocol.'://'.$this->domain).
-           ($this->path == '/' && !$this->query && !$this->anchor ? '' : $this->path).
-           ($this->query  ? '?'.$this->query  : '').
-           ($this->anchor ? '#'.$this->anchor : '');
+    $result = $this->protocol.'://'.$this->domain.$this->path;
+    if ($this->query ) $result.= '?'.$this->query;
+    if ($this->anchor) $result.= '#'.$this->anchor;
+    return rtrim($result, '/');
   }
 
   function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;}
