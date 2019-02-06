@@ -98,7 +98,7 @@ namespace effcore {
             $c_module_id = $c_item->module_id ?? $c_items->module_id;
             $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->icons->child_insert(new markup_simple('link', [
-              'href' => $c_url->relative_get()
+              'href' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
           }
         }
@@ -111,7 +111,7 @@ namespace effcore {
             $c_module_id = $c_item->module_id ?? $c_items->module_id;
             $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->styles->child_insert(new markup_simple('link', [
-              'href' => $c_url->relative_get()
+              'href' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
           }
         }
@@ -124,7 +124,7 @@ namespace effcore {
             $c_module_id = $c_item->module_id ?? $c_items->module_id;
             $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
             $result->scripts->child_insert(new markup('script', [
-              'src' => $c_url->relative_get()
+              'src' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
           }
         }

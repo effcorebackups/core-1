@@ -9,7 +9,7 @@ namespace effcore {
 
   # valid urls:
   # ┌──────────────────────────────────────────────────────────╥──────────┬──────────────────┬──────────────────┬───────────┬────────┬──────────────────────────────────────────────────────────┬───────────────────────────────────┐
-  # │ url                                                      ║ protocol │ domain           │ path             │ query     │ anchor │ full_get()                                               │ relative_get()                    │
+  # │ url                                                      ║ protocol │ domain           │ path             │ query     │ anchor │ full_get()                                               │ tiny_get()                        │
   # ╞══════════════════════════════════════════════════════════╬══════════╪══════════════════╪══════════════════╪═══════════╪════════╪══════════════════════════════════════════════════════════╪═══════════════════════════════════╡
   # │                        /                                 ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
   # │                        /?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
@@ -88,7 +88,7 @@ namespace effcore {
   function query_get   () {return $this->query;   }
   function anchor_get  () {return $this->anchor;  }
 
-  function relative_get() {
+  function tiny_get() {
     $result = $this->path;
     if ($this->query ) $result.= '?'.$this->query;
     if ($this->anchor) $result.= '#'.$this->anchor;
