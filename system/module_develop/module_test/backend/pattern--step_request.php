@@ -67,7 +67,11 @@ namespace effcore {
   }
 
   function captcha_code_get() {
-    return field_captcha::captcha_localhost_code_get();
+    if (module::is_enabled('captcha')) {
+      return field_captcha::captcha_localhost_code_get();
+    } else {
+      return '';
+    }
   }
 
   function validation_id_get() {

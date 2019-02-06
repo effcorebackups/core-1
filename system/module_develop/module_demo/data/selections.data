@@ -12,6 +12,14 @@ selections
         type: field
         entity_name: user
         field_name: nick
+    - created
+        type: field
+        entity_name: user
+        field_name: created
+    - updated
+        type: field
+        entity_name: user
+        field_name: updated
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
