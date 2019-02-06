@@ -55,10 +55,37 @@ namespace effcore {
 
   static function instance_select_by_entity_name_and_instance_id($page) {
     $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # @todo: make functionality
-      return new text('instance_select is UNDER CONSTRUCTION');
+      $id_keys   = entity::get($entity_name)->real_id_get();
+      $id_values = explode('+', $instance_id);
+      if (count($id_keys) ==
+          count($id_values)) {
+        $storage = storage::get(entity::get($entity_name)->storage_name);
+        $conditions = array_combine($id_keys, $id_values);
+        $conditions_pure = $storage->pure_conditions($conditions);
+        $instance = new instance($entity_name, $conditions);
+        if ($instance->select()) {
+        # create selection
+          $selection = new selection;
+          $selection->title = '';
+          $selection->view_type = 'list';
+          $selection->pure_conditions = $conditions_pure;
+          foreach ($entity->fields as $c_name => $c_info) {
+            if (!empty($c_info->show_in_manager)) {
+              $selection->field_entity_insert($entity->name, $c_name);
+            }
+          }
+          $selection->field_action_insert();
+          $markup = $selection->build();
+          return new block('', ['class' => [
+            $entity->name =>
+            $entity->name]],
+            $markup
+          );
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
     } else {
       url::go(
         $page->args_get('base').'/select'

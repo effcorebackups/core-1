@@ -216,18 +216,6 @@ namespace effcore {
     return $result;
   }
 
-
-  function order($order = []) {
-    $result = [];
-    foreach ($order as $c_field_name => $c_order_type) {
-      $result[] = $this->field($c_field_name);
-      $result[] = $c_order_type;
-      $result[] = ',';
-    }
-    array_pop($result);
-    return $result;
-  }
-
   function condition($field, $value, $operator = '=') {
     return [
       'field' => $this->field($field), 'operator' => $operator,
@@ -235,11 +223,40 @@ namespace effcore {
     ];
   }
 
-  function attributes($data, $operator = 'and') {
+  function conditions($data, $operator = 'and') {
     $result = [];
     foreach ($data as $c_field => $c_value) {
-      $result[] = is_array($c_value) ? $c_value : $this->condition($c_field, $c_value);
+      $result[] = $this->condition($c_field, $c_value);
       $result[] = $operator;
+    }
+    array_pop($result);
+    return $result;
+  }
+
+  function pure_condition($field, $value, $operator = '=') {
+    return [
+      $field.'_#f' => $field,
+      $field.'_op' => $operator,
+      $field.'_#v' => $value
+    ];
+  }
+
+  function pure_conditions($data, $operator = 'and') {
+    $result = [];
+    foreach ($data as $c_field => $c_value) {
+      $result[] = $this->pure_condition($c_field, $c_value);;
+      $result[] = $operator;
+    }
+    array_pop($result);
+    return $result;
+  }
+
+  function order($order = []) {
+    $result = [];
+    foreach ($order as $c_field_name => $c_order_type) {
+      $result[] = $this->field($c_field_name);
+      $result[] = $c_order_type;
+      $result[] = ',';
     }
     array_pop($result);
     return $result;
@@ -388,7 +405,7 @@ namespace effcore {
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes($id_fields),
+        'condition' => $this->conditions($id_fields),
         'limit_begin' => 'LIMIT',
         'limit' => 1]);
       if  (isset($result[0])) {
@@ -434,9 +451,9 @@ namespace effcore {
         'action' => 'UPDATE',
         'target' => $this->table($entity->catalog_name),
         'fields_and_values_begin' => 'SET',
-        'fields_and_values' => $this->attributes($values, ','),
+        'fields_and_values' => $this->conditions($values, ','),
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes($instance->_id_fields_original ?: $id_fields)]);
+        'condition' => $this->conditions($instance->_id_fields_original ?: $id_fields)]);
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
@@ -453,7 +470,7 @@ namespace effcore {
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name),
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes($id_fields)]);
+        'condition' => $this->conditions($id_fields)]);
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;
