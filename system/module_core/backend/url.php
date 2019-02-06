@@ -8,34 +8,34 @@ namespace effcore {
           class url {
 
   # valid urls:
-  # ┌──────────────────────────────────────────────────────────╥──────────────────────────────────────────────────────────┬───────────────────────────────────┐
-  # │ url                                                      ║ full_get()                                               │ relative_get()                    │
-  # ╞══════════════════════════════════════════════════════════╬══════════════════════════════════════════════════════════╪═══════════════════════════════════╡
-  # │                        /                                 ║ http://subdomain.domain                                  │ /                                 │
-  # │                        /?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │                        /#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │                        /?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │                        /dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │                        /dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │                        /dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │                        /dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # │        subdomain.domain                                  ║ http://subdomain.domain                                  │ /                                 │
-  # │        subdomain.domain/?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │        subdomain.domain/#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │        subdomain.domain/?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │        subdomain.domain/dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │        subdomain.domain/dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │        subdomain.domain/dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │        subdomain.domain/dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # │ http://subdomain.domain                                  ║ http://subdomain.domain                                  │ /                                 │
-  # │ http://subdomain.domain/?key=value                       ║ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │ http://subdomain.domain/#anchor                          ║ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │ http://subdomain.domain/?key=value#anchor                ║ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │ http://subdomain.domain/dir/subdir/page                  ║ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │ http://subdomain.domain/dir/subdir/page?key=value        ║ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │ http://subdomain.domain/dir/subdir/page#anchor           ║ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor ║ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # └──────────────────────────────────────────────────────────╨──────────────────────────────────────────────────────────┴───────────────────────────────────┘
+  # ┌──────────────────────────────────────────────────────────╥──────────┬──────────────────┬──────────────────┬───────────┬────────┬──────────────────────────────────────────────────────────┬───────────────────────────────────┐
+  # │ url                                                      ║ protocol │ domain           │ path             │ query     │ anchor │ full_get()                                               │ relative_get()                    │
+  # ╞══════════════════════════════════════════════════════════╬══════════╪══════════════════╪══════════════════╪═══════════╪════════╪══════════════════════════════════════════════════════════╪═══════════════════════════════════╡
+  # │                        /                                 ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
+  # │                        /?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │                        /#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │                        /?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │                        /dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │                        /dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │                        /dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │                        /dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │        subdomain.domain                                  ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
+  # │        subdomain.domain/?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │        subdomain.domain/#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │        subdomain.domain/?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │        subdomain.domain/dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │        subdomain.domain/dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │        subdomain.domain/dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │        subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │ http://subdomain.domain                                  ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
+  # │ http://subdomain.domain/?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │ http://subdomain.domain/#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │ http://subdomain.domain/?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │ http://subdomain.domain/dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │ http://subdomain.domain/dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │ http://subdomain.domain/dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # └──────────────────────────────────────────────────────────╨──────────┴──────────────────┴──────────────────┴───────────┴────────┴──────────────────────────────────────────────────────────┴───────────────────────────────────┘
 
   # wrong urls:
   # ┌──────────────────────────╥─────────────────────────────────────────────────────────────-─────────────┐
