@@ -9,11 +9,13 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - description
         title: Description
         type: varchar
         size: 255
         null: true
+        show_in_manager: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
@@ -93,11 +95,13 @@ entities
         title: Field integer 1
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - f_integer_2
         title: Field integer 2
         type: integer
         not_null: true
         default: 0
+        show_in_manager: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
@@ -125,18 +129,21 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - f_nocase
         title: Field nocase
         type: varchar
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - f_binary
         title: Field binary
         type: varchar
         size: 255
         collate: binary
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
@@ -153,11 +160,13 @@ entities
         type: integer
         not_null: true
         default: 0
+        show_in_manager: true
     - f_integer_2
         title: Field integer 2
         type: integer
         not_null: true
         default: 0
+        show_in_manager: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -199,11 +208,13 @@ entities
         type: integer
         not_null: true
         default: 0
+        show_in_manager: true
     - f_integer_2
         title: Field integer 2
         type: integer
         not_null: true
         default: 0
+        show_in_manager: true
     indexes
     # ─────────────────────────────────────────────────────────────────────
     # CREATE UNIQUE INDEX name ON table_name (field_1, …);

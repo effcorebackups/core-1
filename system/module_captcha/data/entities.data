@@ -12,19 +12,21 @@ entities
         size: 32
         collate: nocase
         not_null: true
+        show_in_manager: true
     - characters
         title: Characters
         type: varchar
         size: 32
         collate: nocase
         not_null: true
+        show_in_manager: true
     - attempts
         title: Attempts
         type: integer
         not_null: true
+        show_in_manager: true
     - canvas_data
         title: Canvas data
-        hidden: true
         type: blob
         not_null: true
     constraints

@@ -13,12 +13,14 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - title
         title: Title
         type: varchar
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
@@ -38,12 +40,14 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - id_permission
         title: Permission ID
         type: varchar
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -78,10 +82,12 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - id_user
         title: User ID
         type: integer
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id_role_id_user
         type: primary
@@ -117,17 +123,20 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - title
         title: Title
         type: varchar
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - is_embed
         title: Is embed
         type: boolean
         not_null: true
         default: 0
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
@@ -145,10 +154,12 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     - id_user
         title: User ID
         type: integer
         not_null: true
+        show_in_manager: true
     - is_remember
         title: Is remember
         type: boolean
@@ -164,7 +175,6 @@ entities
         type: datetime
     - data
         title: Data
-        hidden: true
         type: blob
         null: true
     constraints
@@ -191,21 +201,23 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - nick
         title: Nick
         type: varchar
         size: 32
         collate: nocase
         not_null: true
+        show_in_manager: true
     - email
         title: EMail
         type: varchar
         size: 64
         collate: nocase
         not_null: true
+        show_in_manager: true
     - password_hash
         title: Password hash
-        hidden: true
         type: varchar
         size: 255
         collate: binary
@@ -214,9 +226,9 @@ entities
         type: boolean
         not_null: true
         default: 0
+        show_in_manager: true
     - avatar_path
         title: Avatar path
-        hidden: true
         type: varchar
         size: 1024
         collate: nocase

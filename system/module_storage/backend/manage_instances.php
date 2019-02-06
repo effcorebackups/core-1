@@ -39,8 +39,7 @@ namespace effcore {
     if ($entity) {
       $selection = new selection;
       foreach ($entity->fields as $c_name => $c_info) {
-        if (!isset($c_info->hidden) ||
-                  !$c_info->hidden) {
+        if (!empty($c_info->show_in_manager)) {
           $selection->field_entity_insert($entity->name, $c_name);
         }
       }

@@ -11,12 +11,14 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - title
         title: Title
         type: varchar
         collate: nocase
         size: 255
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
@@ -34,21 +36,25 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        show_in_manager: true
     - id_parent
         title: Parent ID
         type: integer
         null: true
         default: null
+        show_in_manager: true
     - id_tree
         title: Tree ID
         type: integer
         not_null: true
+        show_in_manager: true
     - title
         title: Title
         type: varchar
         size: 255
         collate: nocase
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
