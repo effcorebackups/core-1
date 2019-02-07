@@ -8,7 +8,7 @@ namespace effcore {
           class decorator extends node {
 
   public $data = [];
-  public $view_type = 'table';
+  public $view_type = 'table'; # table | ul | dl
 
   function build() {
     $result = new markup('x-items', ['data-view-type' => $this->view_type]);
@@ -51,9 +51,9 @@ namespace effcore {
         break;
 
     # ─────────────────────────────────────────────────────────────────────
-    # list
+    # ul (unordered list)
     # ─────────────────────────────────────────────────────────────────────
-      case 'list':
+      case 'ul':
         foreach ($this->data as $c_rowid => $c_row) {
           $c_list = new markup('ul', ['data-rowid' => $c_rowid]);
           foreach ($c_row as $c_name => $c_info) {
@@ -61,6 +61,22 @@ namespace effcore {
               'title' => new markup('x-title', [], $c_info['title']),
               'value' => new markup('x-value', [], $c_info['value'])
             ]), $c_name);
+          }
+          $result->child_insert(
+            $c_list, $c_rowid
+          );
+        }
+        break;
+
+    # ─────────────────────────────────────────────────────────────────────
+    # dl (definition list)
+    # ─────────────────────────────────────────────────────────────────────
+      case 'dl':
+        foreach ($this->data as $c_rowid => $c_row) {
+          $c_list = new markup('dl', ['data-rowid' => $c_rowid]);
+          foreach ($c_row as $c_name => $c_info) {
+            $c_list->child_insert(new markup('dt', ['class' => [$c_name => $c_name]], $c_info['title']), 'title-'.$c_name);
+            $c_list->child_insert(new markup('dd', ['class' => [$c_name => $c_name]], $c_info['value']), 'value-'.$c_name);
           }
           $result->child_insert(
             $c_list, $c_rowid
