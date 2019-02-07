@@ -15,7 +15,7 @@ namespace effcore {
 
   function child_insert($child, $id = null) {
     if (is_string($child) || is_numeric($child)) return parent::child_insert(new text($child), $id);
-    else                                         return parent::child_insert($child, $id);
+    else                                         return parent::child_insert(         $child,  $id);
   }
 
 }}

@@ -11,8 +11,10 @@ namespace effcore {
 
   function __construct($attributes = [], $tbody = [], $thead = [], $weight = 0) {
     parent::__construct(null, $attributes, [], $weight);
-    if ($thead) $this->child_insert(new table_head([], $thead), 'head');
-    if ($tbody) $this->child_insert(new table_body([], $tbody), 'body');
+    if ($thead instanceof table_head)          $this->child_insert(                   $thead,  'head');
+    if ($thead instanceof table_head == false) $this->child_insert(new table_head([], $thead), 'head');
+    if ($tbody instanceof table_body)          $this->child_insert(                   $tbody,  'body');
+    if ($tbody instanceof table_body == false) $this->child_insert(new table_body([], $tbody), 'body');
   }
 
 }}
