@@ -27,6 +27,7 @@ translations
     - Classes: Классы
     - Console: Консоль
     - Demo\: autoincrement: Демо: автоинкремент
+    - Demo\: collations: Демо: сравнения
     - Demo\: constraints: Демо: ограничения
     - Demo\: indexes: Демо: индексы
     - Demo\: types: Демо: типы
@@ -42,6 +43,7 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Field %%_type.: Поле %%_type.
+    - Field binary: Поле binary
     - Field blob: Поле blob
     - Field boolean: Поле boolean
     - Field date: Поле date
@@ -49,6 +51,7 @@ translations
     - Field integer 1: Поле integer 1
     - Field integer 2: Поле integer 2
     - Field integer: Поле integer
+    - Field nocase: Поле nocase
     - Field real: Поле real
     - Field time: Поле time
     - Field varchar: Поле varchar

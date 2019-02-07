@@ -119,11 +119,11 @@ entities
         type: unique index
         fields
         - =: f_integer_2
-- demo_collate|entity
-    name: demo_collate
-    title: Demo: collate
-    title_plural: Demo: collate
-    catalog_name: demo_collate
+- demo_collations|entity
+    name: demo_collations
+    title: Demo: collations
+    title_plural: Demo: collations
+    catalog_name: demo_collations
     fields
     - id
         title: ID
