@@ -10,6 +10,7 @@ pages
 >>>>>>>>>>>>>>>>>>>>>>>embedded/markup_static|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/markup_dynamic|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_static|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_dynamic|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
@@ -72,6 +73,14 @@ pages
         region: content
         type: link
         source: blocks/demo/demo_decorators_static
+    - block_demo_decorators_dynamic|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/decorators_dynamic$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
     - block_demo_selection_demo_join|page_part
         display
           check: page_args

@@ -8,6 +8,7 @@ namespace effcore\modules\demo {
           use \effcore\block;
           use \effcore\canvas_svg;
           use \effcore\control_actions_list;
+          use \effcore\decorator;
           use \effcore\diagram;
           use \effcore\markup;
           use \effcore\message;
@@ -81,6 +82,32 @@ namespace effcore\modules\demo {
   static function on_menu_demo_do_dynamic_changes($page) {
     tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/embedded/menus/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
     tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/menus/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
+  }
+
+  static function on_show_block_demo_decorators_dynamic($page) {
+    $decorator = new decorator();
+    $decorator->view_type = 'table';
+    $decorator->data = [
+      'rowid_1' => ['field_1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
+                    'field_2' => ['value' => 'cell #1.2', 'title' => 'head cell #2'],
+                    'field_3' => ['value' => 'cell #1.3', 'title' => 'head cell #3']],
+      'rowid_2' => ['field_1' => ['value' => 'cell #2.1'],
+                    'field_2' => ['value' => 'cell #2.2'],
+                    'field_3' => ['value' => 'cell #2.3']],
+      'rowid_3' => ['field_1' => ['value' => 'cell #3.1'],
+                    'field_2' => ['value' => 'cell #3.2'],
+                    'field_3' => ['value' => 'cell #3.3']]];
+    return $decorator->build();
+//  $decorator->data = [
+//    'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
+//                  'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
+//                  'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
+//    'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
+//                  'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
+//                  'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
+//    'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
+//                  'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
+//                  'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
   }
 
   static function on_show_block_demo_markup_dynamic($page) {
