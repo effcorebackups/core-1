@@ -11,7 +11,7 @@ namespace effcore {
   public $view_type = 'table'; # table | ul | dl
 
   function build() {
-    $result = new markup('x-items', ['data-view-type' => $this->view_type]);
+    $result = new markup('x-decorator', ['data-view-type' => $this->view_type]);
     switch ($this->view_type) {
 
     # ─────────────────────────────────────────────────────────────────────
@@ -86,6 +86,11 @@ namespace effcore {
 
     }
     return $result;
+  }
+
+  function render() {
+    $markup = $this->build();
+    return $markup->render();
   }
 
 }}

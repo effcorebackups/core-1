@@ -141,6 +141,10 @@
   x-pager {display: block; margin: 30px 0; text-align: center}
   x-pager a {display: inline-block; min-width: 20px; margin: 3px 5px}
 
+  /* x-decorator */
+
+  x-decorator {display: block}
+
   /* x-selection */
 
   x-selection {display: block}

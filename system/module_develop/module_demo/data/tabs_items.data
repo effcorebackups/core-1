@@ -23,7 +23,7 @@ tabs_items
     title: Markup static
     attributes
     - class
-      - =: demo-static-elements
+      - =: demo-markup-static
 - demo_markup_dynamic|tabs_item
     id: demo_markup_dynamic
     id_parent: demo_embedded
@@ -31,7 +31,15 @@ tabs_items
     title: Markup dynamic
     attributes
     - class
-      - =: demo-dynamic-elements
+      - =: demo-markup-dynamic
+- demo_decorators_static|tabs_item
+    id: demo_decorators_static
+    id_parent: demo_embedded
+    action_name: embedded/decorators_static
+    title: Decorators static
+    attributes
+    - class
+      - =: demo-decorators-static
 - demo_selections|tabs_item
     id: demo_selections
     id_parent: demo_embedded

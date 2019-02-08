@@ -26,6 +26,8 @@ translations
     - class: класс
     - Classes: Классы
     - Console: Консоль
+    - Decorators dynamic: Декораторы динамические
+    - Decorators static: Декораторы статические
     - Demo\: autoincrement: Демо: автоинкремент
     - Demo\: collations: Демо: сравнения
     - Demo\: constraints: Демо: ограничения
