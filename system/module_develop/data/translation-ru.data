@@ -53,6 +53,15 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Field %%_type.: Поле %%_type.
+    - Field 1.1: Поле 1.1
+    - Field 1.2: Поле 1.3
+    - Field 1.3: Поле 1.3
+    - Field 2.1: Поле 2.1
+    - Field 2.2: Поле 2.3
+    - Field 2.3: Поле 2.3
+    - Field 3.1: Поле 3.1
+    - Field 3.2: Поле 3.3
+    - Field 3.3: Поле 3.3
     - Field binary: Поле binary
     - Field blob: Поле blob
     - Field boolean: Поле boolean
@@ -142,5 +151,14 @@ translations
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - Usage frequency: Частота использования
+    - value 1.1: значение 1.1
+    - value 1.2: значение 1.3
+    - value 1.3: значение 1.3
+    - value 2.1: значение 2.1
+    - value 2.2: значение 2.3
+    - value 2.3: значение 2.3
+    - value 3.1: значение 3.1
+    - value 3.2: значение 3.3
+    - value 3.3: значение 3.3
     - Visibility: Видимость
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
