@@ -30,6 +30,15 @@ namespace effcore\modules\demo {
     }
   }
 
+  static function on_menu_demo_do_dynamic_changes($page) {
+    tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/embedded/menus/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
+    tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/menus/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
+  }
+
+  ################
+  ### messages ###
+  ################
+
   static function on_show_demo_messages($page) {
     message::insert(translation::get('credentials'), 'credentials');
     message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice');
@@ -45,6 +54,10 @@ namespace effcore\modules\demo {
     message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error');
     message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error');
   }
+
+  ##############
+  ### canvas ###
+  ##############
 
   static function on_show_block_demo_canvas($page) {
     $canvas = new canvas_svg(105, 16, 5);
@@ -63,6 +76,10 @@ namespace effcore\modules\demo {
     ]);
   }
 
+  ################
+  ### diagrams ###
+  ################
+
   static function on_show_block_demo_diagrams($page) {
     $diagram_linear = new diagram('Title', 'linear');
     $diagram_linear->slice_add('Parameter 1', 70, '0.07 sec.');
@@ -79,15 +96,18 @@ namespace effcore\modules\demo {
     ]);
   }
 
-  static function on_menu_demo_do_dynamic_changes($page) {
-    tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/embedded/menus/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
-    tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/menus/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
-  }
+  ##################
+  ### decorators ###
+  ##################
 
   static function on_show_block_demo_decorators_dynamic($page) {
-    $decorator = new decorator();
-    $decorator->view_type = 'table';
-    $decorator->data = [
+  # ─────────────────────────────────────────────────────────────────────
+  # table
+  # ─────────────────────────────────────────────────────────────────────
+    $decorator_table_title = new markup('h3', [], 'Table');
+    $decorator_table = new decorator();
+    $decorator_table->view_type = 'table';
+    $decorator_table->data = [
       'rowid_1' => ['field_1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
                     'field_2' => ['value' => 'cell #1.2', 'title' => 'head cell #2'],
                     'field_3' => ['value' => 'cell #1.3', 'title' => 'head cell #3']],
@@ -97,18 +117,54 @@ namespace effcore\modules\demo {
       'rowid_3' => ['field_1' => ['value' => 'cell #3.1'],
                     'field_2' => ['value' => 'cell #3.2'],
                     'field_3' => ['value' => 'cell #3.3']]];
-    return $decorator->build();
-//  $decorator->data = [
-//    'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
-//                  'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
-//                  'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
-//    'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
-//                  'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
-//                  'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
-//    'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
-//                  'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
-//                  'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
+  # ─────────────────────────────────────────────────────────────────────
+  # ul (unordered list)
+  # ─────────────────────────────────────────────────────────────────────
+    $decorator_ul_title = new markup('h3', [], 'Unordered list');
+    $decorator_ul = new decorator();
+    $decorator_ul->view_type = 'ul';
+    $decorator_ul->data = [
+      'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
+                    'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
+                    'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
+      'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
+                    'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
+                    'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
+      'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
+                    'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
+                    'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
+  # ─────────────────────────────────────────────────────────────────────
+  # dl (definition list)
+  # ─────────────────────────────────────────────────────────────────────
+    $decorator_dl_title = new markup('h3', [], 'Definition list');
+    $decorator_dl = new decorator();
+    $decorator_dl->view_type = 'dl';
+    $decorator_dl->data = [
+      'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
+                    'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
+                    'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
+      'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
+                    'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
+                    'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
+      'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
+                    'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
+                    'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
+  # ─────────────────────────────────────────────────────────────────────
+  # result block
+  # ─────────────────────────────────────────────────────────────────────
+    return new block('Decorators dynamic', ['data-styled-title' => 'no', 'class' => ['demo-decorators-dynamic' => 'demo-decorators-dynamic']], [
+      $decorator_table_title,
+      $decorator_table->build(),
+      $decorator_ul_title,
+      $decorator_ul->build(),
+      $decorator_dl_title,
+      $decorator_dl->build()
+    ]);
   }
+
+  ##############
+  ### markup ###
+  ##############
 
   static function on_show_block_demo_markup_dynamic($page) {
   # ─────────────────────────────────────────────────────────────────────
