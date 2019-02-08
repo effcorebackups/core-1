@@ -83,7 +83,7 @@ namespace effcore\modules\demo {
     tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/menus/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
   }
 
-  static function on_show_block_demo_dynamic_elements($page) {
+  static function on_show_block_demo_markup_dynamic($page) {
   # ─────────────────────────────────────────────────────────────────────
   # paragraph
   # ─────────────────────────────────────────────────────────────────────
@@ -138,6 +138,7 @@ namespace effcore\modules\demo {
        'td_1' => new table_body_row_cell(['colspan' => 3], new text(''))
       ])
     ];
+    $table_title = new markup('h3', [], 'Table');
     $table = new table(['class' => ['table' => 'table']],
       $table_tbody,
       $table_thead
@@ -163,13 +164,14 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Dynamic elements', ['class' => ['demo-dynamic' => 'demo-dynamic']], [
+    return new block('Markup dynamic', ['class' => ['demo-markup-dynamic' => 'demo-markup-dynamic']], [
       $paragraph_title,
       $paragraph,
       $unordered_list_title,
       $unordered_list,
       $ordered_list_title,
       $ordered_list,
+      $table_title,
       $table,
       $pager,
       $controls_title,

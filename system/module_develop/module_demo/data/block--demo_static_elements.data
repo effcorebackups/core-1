@@ -1,9 +1,9 @@
 blocks
-- demo_static_elements|block
-    title: Static elements
+- demo_markup_static|block
+    title: Markup static
     attributes
     - class
-      - =: demo
+      - =: demo-markup-static
     children
   # ─────────────────────────────────────────────────────────────────────
   # paragraph

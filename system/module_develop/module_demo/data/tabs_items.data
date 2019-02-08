@@ -16,19 +16,19 @@ tabs_items
     attributes
     - class
       - =: demo-form-elements
-- demo_static_elements|tabs_item
-    id: demo_static_elements
+- demo_markup_static|tabs_item
+    id: demo_markup_static
     id_parent: demo_embedded
-    action_name: embedded/static_elements
-    title: Static elements
+    action_name: embedded/markup_static
+    title: Markup static
     attributes
     - class
       - =: demo-static-elements
-- demo_dynamic_elements|tabs_item
-    id: demo_dynamic_elements
+- demo_markup_dynamic|tabs_item
+    id: demo_markup_dynamic
     id_parent: demo_embedded
-    action_name: embedded/dynamic_elements
-    title: Dynamic elements
+    action_name: embedded/markup_dynamic
+    title: Markup dynamic
     attributes
     - class
       - =: demo-dynamic-elements

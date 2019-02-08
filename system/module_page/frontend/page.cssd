@@ -18,9 +18,9 @@
 
   /* headers */
 
-  h1 {margin: 4em auto 3em auto; font-size: 2em;   line-height: 1.5em; font-weight: normal; display: block; max-width: 800px}
-  h2 {margin: 3em auto 2em auto; font-size: 1.5em; line-height: 1.5em; font-weight: normal}
-  h3 {margin: 2em auto 1em auto; font-size: 1em}
+  h1 {margin: 5em auto 3em auto; font-size: 2em;   line-height: 1.5em; font-weight: normal; display: block; max-width: 800px}
+  h2 {margin: 4em auto 2em auto; font-size: 1.5em; line-height: 1.5em; font-weight: normal}
+  h3 {margin: 3em auto 1em auto; font-size: 1em}
 
   /* links */
 
@@ -34,6 +34,10 @@
   .hidden {display: none}
 
   /* table */
+
+  h1 ~ table,
+  h2 ~ table,
+  h3 ~ table {margin-top: 10px}
 
   table {border-collapse: collapse; width: 100%; margin: 50px 0}
   table thead {border-bottom: 5px solid %%_color_bg}

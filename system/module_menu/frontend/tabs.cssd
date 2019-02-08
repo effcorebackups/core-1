@@ -21,5 +21,8 @@
   x-tabs x-top-items a.active,
   x-tabs x-top-items a.active-trail {color: white; background: %%_color_bg}
 
-  x-tabs x-sub-items {display: block; margin: 10px 0}
+  x-tabs x-sub-items {
+    display: block;
+    padding: 10px 0;
+    border-left: 1px solid %%_color_bg}
   x-tabs x-sub-items > ul {margin: 0; padding-left: 14px; list-style: none}

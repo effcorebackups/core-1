@@ -33,7 +33,6 @@ translations
     - Demo\: types: Демо: типы
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
-    - Dynamic elements: Элементы динамические
     - Elements: Элементы
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - event system was initialized: система событий была инициализирована
@@ -76,6 +75,8 @@ translations
     - item #3 (from code): пункт №3 (из кода)
     - item #3: пункт №3
     - make request to "%%_url": сделать запрос на "%%_url"
+    - Markup dynamic: Разметка динамическая
+    - Markup static: Разметка статическая
     - Module: Модуль
     - not show: не показывать
     - Notice message #%%_number.: Уведомление №%%_number.
@@ -111,7 +112,6 @@ translations
     - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"
     - sql query = "%%_query"<br>args = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
-    - Static elements: Элементы статические
     - Structures: Структуры
     - success: успех
     - Switcher 1: Переключатель 1
