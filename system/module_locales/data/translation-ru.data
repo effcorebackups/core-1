@@ -72,6 +72,7 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - default type: тип по умолчанию
+    - Definition list: Список определений
     - delete file\: %%_name: удалить файл: %%_name
     - Delete instance: Удалить экземпляр
     - Delete instances: Удалить экземпляры
@@ -335,8 +336,8 @@ translations
     - State: Состояние
     - Storage %%_name is not available!: Хранилище %%_name не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
-    - Storage SQL: Хранилище SQL
     - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!
+    - Storage SQL: Хранилище SQL
     - storage: хранилище
     - Storage: Хранилище
     - submit: отправить

@@ -18,6 +18,15 @@ translations
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell #%%_number: ячейка №%%_number
+    - cell #1.1: ячейка №1.1
+    - cell #1.2: ячейка №1.2
+    - cell #1.3: ячейка №1.3
+    - cell #2.1: ячейка №2.1
+    - cell #2.2: ячейка №2.2
+    - cell #2.3: ячейка №2.3
+    - cell #3.1: ячейка №3.1
+    - cell #3.2: ячейка №3.2
+    - cell #3.3: ячейка №3.3
     - Checkbox 1: Флаг 1
     - Checkbox 2 (checked): Флаг 2 (установлен)
     - Checkbox 3 (disabled): Флаг 3 (отключён)
@@ -62,6 +71,9 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - head cell #%%_number: заглавная ячейка №%%_number
+    - head cell #1: заглавная ячейка №1
+    - head cell #2: заглавная ячейка №2
+    - head cell #3: заглавная ячейка №3
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
