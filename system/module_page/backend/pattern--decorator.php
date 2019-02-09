@@ -32,15 +32,17 @@ namespace effcore {
         $thead->child_insert($thead_row, 'head_row_main');
       # make thead
         foreach (reset($this->data) as $c_name => $c_info) {
-          $thead_row->child_insert(
-            new table_head_row_cell(['class' => [$c_name => $c_name]],
-               $c_info['title']
-            ), $c_name
-          );
+          if ($c_name != 'attributes') {
+            $thead_row->child_insert(
+              new table_head_row_cell(['class' => [$c_name => $c_name]],
+                 $c_info['title']
+              ), $c_name
+            );
+          }
         }
       # make tbody
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_tbody_row = new table_body_row();
+          $c_tbody_row = new table_body_row(static::attributes_shift($c_row));
           if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_tbody_row->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_tbody_row->child_insert(
@@ -102,6 +104,14 @@ namespace effcore {
   function render() {
     $this->build();
     return parent::render();
+  }
+
+  static function attributes_shift(&$row) {
+    if (isset($row['attributes'])) {
+      $attributes = $row['attributes'];
+              unset($row['attributes']);
+      return $attributes;
+    } else return [];
   }
 
 }}
