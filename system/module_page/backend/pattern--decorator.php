@@ -10,6 +10,7 @@ namespace effcore {
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl
   public $result_attributes = [];
+  public $is_skip_rowid_int_class = true;
   public $data = [];
 
   function __construct($attributes = [], $weight = 0) {
@@ -39,7 +40,8 @@ namespace effcore {
         }
       # make tbody
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_tbody_row = new table_body_row(['data-rowid' => $c_rowid]);
+          $c_tbody_row = new table_body_row();
+          if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_tbody_row->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_tbody_row->child_insert(
               new table_body_row_cell(['class' => [$c_name => $c_name]],
@@ -62,7 +64,8 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'ul':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('ul', ['data-rowid' => $c_rowid] + $this->attributes_select('result_attributes'));
+          $c_list = new markup('ul', $this->attributes_select('result_attributes'));
+          if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('li', ['class' => [$c_name => $c_name]], [
               'title' => new markup('x-title', [], $c_info['title']),
@@ -80,7 +83,8 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'dl':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('dl', ['data-rowid' => $c_rowid] + $this->attributes_select('result_attributes'));
+          $c_list = new markup('dl', $this->attributes_select('result_attributes'));
+          if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('dt', ['class' => [$c_name => $c_name]], $c_info['title']), 'title-'.$c_name);
             $c_list->child_insert(new markup('dd', ['class' => [$c_name => $c_name]], $c_info['value']), 'value-'.$c_name);
