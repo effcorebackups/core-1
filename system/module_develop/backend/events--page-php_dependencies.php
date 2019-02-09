@@ -76,29 +76,31 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by functions
   # ─────────────────────────────────────────────────────────────────────
-    $thead_fnc = [['Function', 'Usage frequency']];
-    $tbody_fnc = [];
+    $fnc_title = new markup('h2', [], 'PHP functions usage');
+    $fnc_decorator = new decorator(['class' => ['report-fnc' => 'report-fnc']]);
+    $fnc_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_fnc as $c_function => $c_positions) {
-      $tbody_fnc[] = new table_body_row([], [
-        new table_body_row_cell(['class' => ['function' => 'function']], new text_simple($c_function)),
-        new table_body_row_cell(['class' => ['usage'    => 'usage'   ]], new text_simple(count($c_positions)))
-      ]);
+      $fnc_decorator->data[$c_function] = [
+        'function' => ['value' => new text_simple($c_function),         'title' => 'Function'       ],
+        'usage'    => ['value' => new text_simple(count($c_positions)), 'title' => 'Usage frequency']
+      ];
     }
   # ─────────────────────────────────────────────────────────────────────
   # prepare full report
   # ─────────────────────────────────────────────────────────────────────
-    $thead_ext = [['PHP ext.', 'Module', 'Function', 'File', 'Pos.']];
-    $tbody_ext = [];
+    $ext_title = new markup('h2', [], 'Full report');
+    $ext_decorator = new decorator(['class' => ['report-ext' => 'report-ext']]);
+    $ext_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_ext as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
         foreach ($c_positions as $c_position_info) {
-          $tbody_ext[] = new table_body_row([], [
-            new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple($c_extension                   )),
-            new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_position_info->module ?: '-')),
-            new table_body_row_cell(['class' => ['function'  => 'function' ]], new text_simple($c_function                    )),
-            new table_body_row_cell(['class' => ['file'      => 'file'     ]], new text_simple($c_position_info->file         )),
-            new table_body_row_cell(['class' => ['position'  => 'position' ]], new text_simple($c_position_info->position     ))
-          ]);
+          $ext_decorator->data[] = [
+            'extension' => ['value' => new text_simple($c_extension                   ), 'title' => 'PHP ext.'],
+            'module'    => ['value' => new text_simple($c_position_info->module ?: '-'), 'title' => 'Module'  ],
+            'function'  => ['value' => new text_simple($c_function                    ), 'title' => 'Function'],
+            'file'      => ['value' => new text_simple($c_position_info->file         ), 'title' => 'File'    ],
+            'position'  => ['value' => new text_simple($c_position_info->position     ), 'title' => 'Pos.'    ]
+          ];
         }
       }
     }
@@ -107,10 +109,10 @@ namespace effcore\modules\develop {
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       $mod_title,
       $mod_decorator,
-      new markup('h2', [], 'PHP functions usage'),
-      new table(['class' => ['report-fnc' => 'report-fnc', 'compact' => 'compact']], $tbody_fnc, $thead_fnc),
-      new markup('h2', [], 'Full report'),
-      new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
+      $fnc_title,
+      $fnc_decorator,
+      $ext_title,
+      $ext_decorator
     ]);
   }
 
