@@ -12,9 +12,6 @@ namespace effcore\modules\develop {
           use \effcore\file;
           use \effcore\markup;
           use \effcore\module;
-          use \effcore\table_body_row_cell;
-          use \effcore\table_body_row;
-          use \effcore\table;
           use \effcore\text_multiline;
           use \effcore\text_simple;
           abstract class events_page_php_dependencies {

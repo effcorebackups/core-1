@@ -65,18 +65,16 @@ namespace effcore {
 
   static function markup_block_information_get() {
     $user = user::current_get();
-    $information = [];
-    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
-    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
-    $information['Current language'] = language::current_code_get();
-    $information['User roles'] = implode(', ', $user->roles);
-    $info = new markup('dl');
-    foreach ($information as $c_param => $c_value) {
-      $info->child_insert(new markup('dt', [], $c_param));
-      $info->child_insert(new markup('dd', [], $c_value));
-    }
+    $decorator = new decorator();
+    $decorator->view_type = 'dl';
+    $decorator->data = [[
+      'gen_time' => ['title' => 'Total generation time',  'value' => locale::msecond_format(timer::period_get('total', 0, 1))],
+      'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::number_format(memory_get_usage(true))           ],
+      'language' => ['title' => 'Current language',       'value' => language::current_code_get()                            ],
+      'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
+    ]];
     return new block('Current page information', ['class' => ['info' => 'info']], [
-      $info
+      $decorator->build()
     ]);
   }
 
