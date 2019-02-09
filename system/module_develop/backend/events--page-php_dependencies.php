@@ -8,6 +8,7 @@ namespace effcore\modules\develop {
           use const \effcore\dir_root;
           use \effcore\block;
           use \effcore\core;
+          use \effcore\decorator;
           use \effcore\file;
           use \effcore\markup;
           use \effcore\module;
@@ -60,15 +61,16 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
-    $thead_mod = [['Module', 'PHP extension']];
-    $tbody_mod = [];
+    $mod_title = new markup('h2', [], 'Dependency of modules by PHP extensions');
+    $mod_decorator = new decorator(['class' => ['report-mod' => 'report-mod']]);
+    $mod_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {
       if ($c_module_id) {
         ksort($c_extensions);
-        $tbody_mod[] = new table_body_row([], [
-          new table_body_row_cell(['class' => ['module'    => 'module'   ]], new text_simple($c_module_id)),
-          new table_body_row_cell(['class' => ['extension' => 'extension']], new text_simple(implode(', ', array_keys($c_extensions))))
-        ]);
+        $mod_decorator->data[$c_module_id] = [
+          'module'    => ['value' => new text_simple($c_module_id),                             'title' => 'Module'       ],
+          'extension' => ['value' => new text_simple(implode(', ', array_keys($c_extensions))), 'title' => 'PHP extension']
+        ];
       }
     }
   # ─────────────────────────────────────────────────────────────────────
@@ -103,9 +105,12 @@ namespace effcore\modules\develop {
   # return result
     return new block('', ['class' => ['php-dependencies' => 'php-dependencies']], [
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
-      new markup('h2', [], 'Dependency of modules by PHP extensions'), new table(['class' => ['report-mod' => 'report-mod', 'compact' => 'compact']], $tbody_mod, $thead_mod),
-      new markup('h2', [], 'PHP functions usage'),                     new table(['class' => ['report-fnc' => 'report-fnc', 'compact' => 'compact']], $tbody_fnc, $thead_fnc),
-      new markup('h2', [], 'Full report'),                             new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
+      $mod_title,
+      $mod_decorator,
+      new markup('h2', [], 'PHP functions usage'),
+      new table(['class' => ['report-fnc' => 'report-fnc', 'compact' => 'compact']], $tbody_fnc, $thead_fnc),
+      new markup('h2', [], 'Full report'),
+      new table(['class' => ['report-ext' => 'report-ext', 'compact' => 'compact']], $tbody_ext, $thead_ext)
     ]);
   }
 

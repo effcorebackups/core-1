@@ -108,15 +108,15 @@ namespace effcore\modules\demo {
     $decorator_table = new decorator();
     $decorator_table->view_type = 'table';
     $decorator_table->data = [
-      'rowid_1' => ['field_1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
-                    'field_2' => ['value' => 'cell #1.2', 'title' => 'head cell #2'],
-                    'field_3' => ['value' => 'cell #1.3', 'title' => 'head cell #3']],
-      'rowid_2' => ['field_1' => ['value' => 'cell #2.1'],
-                    'field_2' => ['value' => 'cell #2.2'],
-                    'field_3' => ['value' => 'cell #2.3']],
-      'rowid_3' => ['field_1' => ['value' => 'cell #3.1'],
-                    'field_2' => ['value' => 'cell #3.2'],
-                    'field_3' => ['value' => 'cell #3.3']]];
+      'rowid-1' => ['cell-1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
+                    'cell-2' => ['value' => 'cell #1.2', 'title' => 'head cell #2'],
+                    'cell-3' => ['value' => 'cell #1.3', 'title' => 'head cell #3']],
+      'rowid-2' => ['cell-1' => ['value' => 'cell #2.1'],
+                    'cell-2' => ['value' => 'cell #2.2'],
+                    'cell-3' => ['value' => 'cell #2.3']],
+      'rowid-3' => ['cell-1' => ['value' => 'cell #3.1'],
+                    'cell-2' => ['value' => 'cell #3.2'],
+                    'cell-3' => ['value' => 'cell #3.3']]];
   # ─────────────────────────────────────────────────────────────────────
   # ul (unordered list)
   # ─────────────────────────────────────────────────────────────────────
@@ -124,15 +124,15 @@ namespace effcore\modules\demo {
     $decorator_ul = new decorator();
     $decorator_ul->view_type = 'ul';
     $decorator_ul->data = [
-      'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
-                    'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
-                    'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
-      'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
-                    'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
-                    'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
-      'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
-                    'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
-                    'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
+      'rowid-1' => ['field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
+                    'field-2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
+                    'field-3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
+      'rowid-2' => ['field-1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
+                    'field-2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
+                    'field-3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
+      'rowid-3' => ['field-1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
+                    'field-2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
+                    'field-3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
   # ─────────────────────────────────────────────────────────────────────
   # dl (definition list)
   # ─────────────────────────────────────────────────────────────────────
@@ -140,15 +140,15 @@ namespace effcore\modules\demo {
     $decorator_dl = new decorator();
     $decorator_dl->view_type = 'dl';
     $decorator_dl->data = [
-      'rowid_1' => ['field_1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
-                    'field_2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
-                    'field_3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
-      'rowid_2' => ['field_1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
-                    'field_2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
-                    'field_3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
-      'rowid_3' => ['field_1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
-                    'field_2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
-                    'field_3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
+      'rowid-1' => ['field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
+                    'field-2' => ['title' => 'Field 1.2', 'value' => 'Value 1.2'],
+                    'field-3' => ['title' => 'Field 1.3', 'value' => 'Value 1.3']],
+      'rowid-2' => ['field-1' => ['title' => 'Field 2.1', 'value' => 'Value 2.1'],
+                    'field-2' => ['title' => 'Field 2.2', 'value' => 'Value 2.2'],
+                    'field-3' => ['title' => 'Field 2.3', 'value' => 'Value 2.3']],
+      'rowid-3' => ['field-1' => ['title' => 'Field 3.1', 'value' => 'Value 3.1'],
+                    'field-2' => ['title' => 'Field 3.2', 'value' => 'Value 3.2'],
+                    'field-3' => ['title' => 'Field 3.3', 'value' => 'Value 3.3']]];
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────

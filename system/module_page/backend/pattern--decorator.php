@@ -5,13 +5,20 @@
   ##################################################################
 
 namespace effcore {
-          class decorator extends node {
+          class decorator extends markup {
 
-  public $data = [];
+  public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl
+  public $result_attributes = [];
+  public $data = [];
+
+  function __construct($attributes = [], $weight = 0) {
+    parent::__construct(null, $attributes, [], $weight);
+  }
 
   function build() {
-    $result = new markup('x-decorator', ['data-view-type' => $this->view_type]);
+    $this->children_delete_all();
+    $this->attribute_insert('data-view-type', $this->view_type);
     switch ($this->view_type) {
 
     # ─────────────────────────────────────────────────────────────────────
@@ -44,9 +51,9 @@ namespace effcore {
             $c_tbody_row, $c_rowid
           );
         }
-      # return result
-        $result->child_insert(
-          new table([], $tbody, $thead), 'result'
+      # make result
+        $this->child_insert(
+          new table($this->attributes_select('result_attributes'), $tbody, $thead), 'result'
         );
         break;
 
@@ -55,14 +62,14 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'ul':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('ul', ['data-rowid' => $c_rowid]);
+          $c_list = new markup('ul', ['data-rowid' => $c_rowid] + $this->attributes_select('result_attributes'));
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('li', ['class' => [$c_name => $c_name]], [
               'title' => new markup('x-title', [], $c_info['title']),
               'value' => new markup('x-value', [], $c_info['value'])
             ]), $c_name);
           }
-          $result->child_insert(
+          $this->child_insert(
             $c_list, $c_rowid
           );
         }
@@ -73,24 +80,24 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'dl':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('dl', ['data-rowid' => $c_rowid]);
+          $c_list = new markup('dl', ['data-rowid' => $c_rowid] + $this->attributes_select('result_attributes'));
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('dt', ['class' => [$c_name => $c_name]], $c_info['title']), 'title-'.$c_name);
             $c_list->child_insert(new markup('dd', ['class' => [$c_name => $c_name]], $c_info['value']), 'value-'.$c_name);
           }
-          $result->child_insert(
+          $this->child_insert(
             $c_list, $c_rowid
           );
         }
         break;
 
     }
-    return $result;
+    return $this;
   }
 
   function render() {
-    $markup = $this->build();
-    return $markup->render();
+    $this->build();
+    return parent::render();
   }
 
 }}
