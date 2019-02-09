@@ -18,6 +18,10 @@ blocks
         view_type: table
         data
         - rowid-1
+          - attributes
+            - data-attribute-1: value-1
+            - class
+              - =: class-1
           - cell-1
             - title: head cell #1
             - value: cell #1.1
@@ -28,6 +32,10 @@ blocks
             - title: head cell #3
             - value: cell #1.3
         - rowid-2
+          - attributes
+            - data-attribute-1: value-2
+            - class
+              - =: class-2
           - cell-1
             - value: cell #2.1
           - cell-2
@@ -35,6 +43,10 @@ blocks
           - cell-3
             - value: cell #2.3
         - rowid-3
+          - attributes
+            - data-attribute-1: value-3
+            - class
+              - =: class-3
           - cell-1
             - value: cell #3.1
           - cell-2
@@ -53,6 +65,10 @@ blocks
         view_type: ul
         data
         - rowid-1
+          - attributes
+            - data-attribute-1: value-1
+            - class
+              - =: class-1
           - field-1
             - title: Field 1.1
             - value: value 1.1
@@ -63,6 +79,10 @@ blocks
             - title: Field 1.3
             - value: value 1.3
         - rowid-2
+          - attributes
+            - data-attribute-1: value-2
+            - class
+              - =: class-2
           - field-1
             - title: Field 2.1
             - value: value 2.1
@@ -73,6 +93,10 @@ blocks
             - title: Field 2.3
             - value: value 2.3
         - rowid-3
+          - attributes
+            - data-attribute-1: value-3
+            - class
+              - =: class-3
           - field-1
             - title: Field 3.1
             - value: value 3.1
@@ -94,6 +118,10 @@ blocks
         view_type: dl
         data
         - rowid-1
+          - attributes
+            - data-attribute-1: value-1
+            - class
+              - =: class-1
           - field-1
             - title: Field 1.1
             - value: value 1.1
@@ -104,6 +132,10 @@ blocks
             - title: Field 1.3
             - value: value 1.3
         - rowid-2
+          - attributes
+            - data-attribute-1: value-2
+            - class
+              - =: class-2
           - field-1
             - title: Field 2.1
             - value: value 2.1
@@ -114,6 +146,10 @@ blocks
             - title: Field 2.3
             - value: value 2.3
         - rowid-3
+          - attributes
+            - data-attribute-1: value-3
+            - class
+              - =: class-3
           - field-1
             - title: Field 3.1
             - value: value 3.1

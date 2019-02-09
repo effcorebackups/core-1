@@ -66,7 +66,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'ul':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('ul', $this->attributes_select('result_attributes'));
+          $c_list = new markup('ul', $this->attributes_select('result_attributes') + static::attributes_shift($c_row));
           if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('li', ['class' => [$c_name => $c_name]], [
@@ -85,7 +85,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       case 'dl':
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_list = new markup('dl', $this->attributes_select('result_attributes'));
+          $c_list = new markup('dl', $this->attributes_select('result_attributes') + static::attributes_shift($c_row));
           if (!(is_int($c_rowid) && $this->is_skip_rowid_int_class)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_list->child_insert(new markup('dt', ['class' => [$c_name => $c_name]], $c_info['title']), 'title-'.$c_name);
