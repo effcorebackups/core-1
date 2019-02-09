@@ -106,6 +106,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_table_title = new markup('h3', [], 'Table');
     $decorator_table = new decorator('table');
+    $decorator_table->visibility_rowid = 'visible'; # visible | not_int | hidden
     $decorator_table->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'cell-1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
@@ -124,6 +125,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_ul_title = new markup('h3', [], 'Unordered list');
     $decorator_ul = new decorator('ul');
+    $decorator_ul->visibility_rowid = 'visible'; # visible | not_int | hidden
     $decorator_ul->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
@@ -142,6 +144,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_dl_title = new markup('h3', [], 'Definition list');
     $decorator_dl = new decorator('dl');
+    $decorator_dl->visibility_rowid = 'visible'; # visible | not_int | hidden
     $decorator_dl->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
