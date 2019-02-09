@@ -10,7 +10,7 @@ namespace effcore {
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl
   public $result_attributes = [];
-  public $visibility_rowid = 'visible'; # visible | not_int | hidden
+  public $visibility_rowid = 'not_int'; # visible | not_int | hidden
   public $data = [];
 
   function __construct($view_type = 'table', $attributes = [], $weight = 0) {
@@ -35,9 +35,7 @@ namespace effcore {
         foreach (reset($this->data) as $c_name => $c_info) {
           if ($c_name != 'attributes') {
             $thead_row->child_insert(
-              new table_head_row_cell(['class' => [$c_name => $c_name]],
-                 $c_info['title']
-              ), $c_name
+              new table_head_row_cell(['data-cellid' => $c_name], $c_info['title']), $c_name
             );
           }
         }
@@ -48,9 +46,7 @@ namespace effcore {
           if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_tbody_row->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
             $c_tbody_row->child_insert(
-              new table_body_row_cell(['class' => [$c_name => $c_name]],
-                 $c_info['value']
-              ), $c_name
+              new table_body_row_cell(['data-cellid' => $c_name], $c_info['value']), $c_name
             );
           }
           $tbody->child_insert(
@@ -72,7 +68,7 @@ namespace effcore {
           if ($this->visibility_rowid == 'visible'                     ) $c_list->attribute_insert('data-rowid', $c_rowid);
           if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
-            $c_list->child_insert(new markup('li', ['class' => [$c_name => $c_name]], [
+            $c_list->child_insert(new markup('li', ['data-cellid' => $c_name], [
               'title' => new markup('x-title', [], $c_info['title']),
               'value' => new markup('x-value', [], $c_info['value'])
             ]), $c_name);
@@ -92,8 +88,8 @@ namespace effcore {
           if ($this->visibility_rowid == 'visible'                     ) $c_list->attribute_insert('data-rowid', $c_rowid);
           if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_list->attribute_insert('data-rowid', $c_rowid);
           foreach ($c_row as $c_name => $c_info) {
-            $c_list->child_insert(new markup('dt', ['class' => [$c_name => $c_name]], $c_info['title']), 'title-'.$c_name);
-            $c_list->child_insert(new markup('dd', ['class' => [$c_name => $c_name]], $c_info['value']), 'value-'.$c_name);
+            $c_list->child_insert(new markup('dt', ['data-cellid' => $c_name], $c_info['title']), 'title-'.$c_name);
+            $c_list->child_insert(new markup('dd', ['data-cellid' => $c_name], $c_info['value']), 'value-'.$c_name);
           }
           $this->child_insert(
             $c_list, $c_rowid
