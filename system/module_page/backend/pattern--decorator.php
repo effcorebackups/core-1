@@ -13,7 +13,8 @@ namespace effcore {
   public $is_skip_rowid_int_class = true;
   public $data = [];
 
-  function __construct($attributes = [], $weight = 0) {
+  function __construct($view_type = 'table', $attributes = [], $weight = 0) {
+    $this->view_type = $view_type;
     parent::__construct(null, $attributes, [], $weight);
   }
 

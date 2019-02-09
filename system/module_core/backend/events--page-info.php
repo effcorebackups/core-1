@@ -35,8 +35,7 @@ namespace effcore\modules\core {
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_value = new markup('x-value', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
-    $decorator = new decorator();
-    $decorator->view_type = 'dl';
+    $decorator = new decorator('dl');
     $decorator->data = [[
       'system'        => ['title' => 'System',                 'value' => $logo_system                                             ],
       'copyright'     => ['title' => 'Copyright',              'value' => '© 2017—2019 Maxim Rysevets. All rights reserved.'       ],

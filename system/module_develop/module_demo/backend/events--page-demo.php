@@ -105,8 +105,7 @@ namespace effcore\modules\demo {
   # table
   # ─────────────────────────────────────────────────────────────────────
     $decorator_table_title = new markup('h3', [], 'Table');
-    $decorator_table = new decorator();
-    $decorator_table->view_type = 'table';
+    $decorator_table = new decorator('table');
     $decorator_table->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'cell-1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],
@@ -124,8 +123,7 @@ namespace effcore\modules\demo {
   # ul (unordered list)
   # ─────────────────────────────────────────────────────────────────────
     $decorator_ul_title = new markup('h3', [], 'Unordered list');
-    $decorator_ul = new decorator();
-    $decorator_ul->view_type = 'ul';
+    $decorator_ul = new decorator('ul');
     $decorator_ul->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
@@ -143,8 +141,7 @@ namespace effcore\modules\demo {
   # dl (definition list)
   # ─────────────────────────────────────────────────────────────────────
     $decorator_dl_title = new markup('h3', [], 'Definition list');
-    $decorator_dl = new decorator();
-    $decorator_dl->view_type = 'dl';
+    $decorator_dl = new decorator('dl');
     $decorator_dl->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'field-1' => ['title' => 'Field 1.1', 'value' => 'Value 1.1'],
