@@ -33,6 +33,17 @@ tree_items
     attributes
     - class
       - =: php-dependencies
+- events|tree_item
+    id: events
+    id_parent: develop
+    title: Events
+    url: /develop/events
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: events
 - console|tree_item
     id: console
     id_parent: develop

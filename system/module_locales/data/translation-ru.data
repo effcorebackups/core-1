@@ -154,6 +154,7 @@ translations
     - file of this type is protected: файл этого типа защищён
     - File: Файл
     - file: файл
+    - For: Для
     - Form elements: Элементы формы
     - Front page: Главная страница
     - front: главная
@@ -161,6 +162,7 @@ translations
     - go to front page: перейти на главную страницу
     - go to page %%_link: перейти на страницу %%_link
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
+    - Handler: Обработчик
     - Home: Дом
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
@@ -235,6 +237,7 @@ translations
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
+    - Module ID: ID Модуля
     - Modules: Модули
     - name: имя
     - Name: Имя
@@ -380,6 +383,7 @@ translations
     - Tree items: Пункты дерева
     - Tree: Дерево
     - Trees: Деревья
+    - Type: Тип
     - type: тип
     - uninstall: удалить
     - Uninstall: Удалить

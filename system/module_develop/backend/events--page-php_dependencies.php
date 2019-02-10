@@ -59,7 +59,7 @@ namespace effcore\modules\develop {
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
     $mod_title = new markup('h2', [], 'Dependency of modules by PHP extensions');
-    $mod_decorator = new decorator('table', ['class' => ['report-mod' => 'report-mod']]);
+    $mod_decorator = new decorator('table', ['class' => ['report-modules' => 'report-modules']]);
     $mod_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {
       if ($c_module_id) {
@@ -74,7 +74,7 @@ namespace effcore\modules\develop {
   # prepare report by functions
   # ─────────────────────────────────────────────────────────────────────
     $fnc_title = new markup('h2', [], 'PHP functions usage');
-    $fnc_decorator = new decorator('table', ['class' => ['report-fnc' => 'report-fnc']]);
+    $fnc_decorator = new decorator('table', ['class' => ['report-functions' => 'report-functions']]);
     $fnc_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_fnc as $c_function => $c_positions) {
       $fnc_decorator->data[$c_function] = [
@@ -86,7 +86,7 @@ namespace effcore\modules\develop {
   # prepare full report
   # ─────────────────────────────────────────────────────────────────────
     $ext_title = new markup('h2', [], 'Full report');
-    $ext_decorator = new decorator('table', ['class' => ['report-ext' => 'report-ext']]);
+    $ext_decorator = new decorator('table', ['class' => ['report-extensions' => 'report-extensions']]);
     $ext_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($statistic_by_ext as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
