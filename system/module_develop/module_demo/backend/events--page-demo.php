@@ -106,7 +106,8 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_table_title = new markup('h3', [], 'Table');
     $decorator_table = new decorator('table');
-    $decorator_table->visibility_rowid = 'visible'; # visible | not_int | hidden
+    $decorator_table->visibility_rowid  = 'visible'; # visible | not_int | hidden
+    $decorator_table->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_table->data = [
       'rowid-1' => ['attributes' => ['data-attribute-1' => 'value-1', 'class' => ['class-1' => 'class-1']],
                     'cell-1' => ['value' => 'cell #1.1', 'title' => 'head cell #1'],

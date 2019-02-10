@@ -10,7 +10,8 @@ namespace effcore {
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl
   public $result_attributes = [];
-  public $visibility_rowid = 'not_int'; # visible | not_int | hidden
+  public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
+  public $visibility_cellid = 'not_int'; # visible | not_int | hidden
   public $data = [];
 
   function __construct($view_type = 'table', $attributes = [], $weight = 0) {
@@ -41,12 +42,16 @@ namespace effcore {
         }
       # make tbody
         foreach ($this->data as $c_rowid => $c_row) {
-          $c_tbody_row = new table_body_row(static::attributes_shift($c_row));
-          if ($this->visibility_rowid == 'visible'                     ) $c_tbody_row->attribute_insert('data-rowid', $c_rowid);
-          if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_tbody_row->attribute_insert('data-rowid', $c_rowid);
+          $c_row_attributes = static::attributes_shift($c_row);
+          if ($this->visibility_rowid == 'visible'                     ) $c_row_attributes['data-rowid'] = $c_rowid;
+          if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_row_attributes['data-rowid'] = $c_rowid;
+          $c_tbody_row = new table_body_row($c_row_attributes);
           foreach ($c_row as $c_name => $c_info) {
+            $c_cell_attributes = static::attributes_shift($c_info);
+            if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
+            if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
             $c_tbody_row->child_insert(
-              new table_body_row_cell(['data-cellid' => $c_name], $c_info['value']), $c_name
+              new table_body_row_cell($c_cell_attributes, $c_info['value']), $c_name
             );
           }
           $tbody->child_insert(
