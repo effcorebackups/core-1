@@ -43,7 +43,7 @@ namespace effcore {
           $selection->field_entity_insert($entity->name, $c_name);
         }
       }
-      $selection->field_action_insert();
+      $selection->field_action_insert(null);
       $markup = $selection->build();
       return new block('', ['class' => [
         $entity->name =>
@@ -77,7 +77,7 @@ namespace effcore {
               $selection->field_entity_insert($entity->name, $c_name);
             }
           }
-          $selection->field_action_insert();
+          $selection->field_action_insert(null);
           $markup = $selection->build();
           return new block('', ['class' => [
             $entity->name =>

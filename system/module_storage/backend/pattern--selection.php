@@ -87,7 +87,7 @@ namespace effcore {
                 break;
               case 'actions':
                 $c_row[$c_rowid] = [
-                  'title' => 'Actions',
+                  'title' => $c_field->title ?? '',
                   'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
                 ];
                 break;
@@ -132,9 +132,10 @@ namespace effcore {
     ];
   }
 
-  function field_action_insert() {
+  function field_action_insert($title = 'Actions') {
     $this->fields['actions'] = (object)[
-      'type' => 'actions'
+      'type'  => 'actions',
+      'title' => $title,
     ];
   }
 
