@@ -80,13 +80,13 @@ namespace effcore {
                 if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
                 if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
                 if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-                $c_row[] = [
+                $c_row[$c_field->field_name] = [
                   'title' => $c_title,
                   'value' => $c_value
                 ];
                 break;
               case 'actions':
-                $c_row[] = [
+                $c_row['actions'] = [
                   'title' => 'Actions',
                   'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
                 ];
