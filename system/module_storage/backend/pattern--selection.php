@@ -69,7 +69,7 @@ namespace effcore {
         $decorator = new decorator($this->view_type);
         foreach ($instances as $c_instance) {
           $c_row = [];
-          foreach ($this->fields as $c_field) {
+          foreach ($this->fields as $c_rowid => $c_field) {
             switch ($c_field->type) {
               case 'field':
                 $c_title = $entity->fields[$c_field->field_name]->title;
@@ -80,19 +80,19 @@ namespace effcore {
                 if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
                 if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
                 if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-                $c_row[$c_field->field_name] = [
+                $c_row[$c_rowid] = [
                   'title' => $c_title,
                   'value' => $c_value
                 ];
                 break;
               case 'actions':
-                $c_row['actions'] = [
+                $c_row[$c_rowid] = [
                   'title' => 'Actions',
                   'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
                 ];
                 break;
               case 'markup':
-                $c_row[] = [
+                $c_row[$c_rowid] = [
                   'title' => $c_field->title,
                   'value' => $c_field->markup
                 ];
