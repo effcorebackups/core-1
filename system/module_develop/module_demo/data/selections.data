@@ -2,7 +2,7 @@ selections
 - demo_join|selection
     id: demo_join
     title: Selection with JOIN
-    view_type: list
+    view_type: ul
     pure_conditions
     - id_#f: id
     - operator: =
@@ -23,7 +23,7 @@ selections
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
-    view_type: list
+    view_type: ul
     fields
     - id
         type: field

@@ -8,7 +8,7 @@ namespace effcore {
           class selection extends node implements has_external_cache {
 
   public $id;
-  public $view_type = 'table'; # table | list
+  public $view_type = 'table'; # table | ul | dl
   public $title;
   public $fields;
   public $pure_conditions = [];
@@ -23,7 +23,6 @@ namespace effcore {
   }
 
   function build() {
-    $result = [];
     $used_entities = [];
     $used_storages = [];
 
@@ -40,8 +39,8 @@ namespace effcore {
     if (count($used_storages) == 1 &&
         count($used_entities) == 1) {
       $storage   = storage::get(reset($used_storages));
-      $entity    = entity::get(reset($used_entities));
-      $instances = entity::get(reset($used_entities))->instances_select([],
+      $entity    =  entity::get(reset($used_entities));
+      $instances =  entity::get(reset($used_entities))->instances_select([],
         $this->pure_conditions,
         $this->order,
         $this->quantity,
@@ -58,120 +57,59 @@ namespace effcore {
     }
 
   # make result
+    $result = null;
     if (!empty($entity)) {
+      if ($instances) {
+
       // $pager = new pager();
       // if ($pager->has_error) {
       //   core::send_header_and_exit('page_not_found');
       // }
-      switch ($this->view_type) {
 
-      # ─────────────────────────────────────────────────────────────────────
-      # table
-      # ─────────────────────────────────────────────────────────────────────
-        case 'table':
-          $thead = [];
-          $tbody = [];
-        # make thead
+        $decorator = new decorator($this->view_type);
+        foreach ($instances as $c_instance) {
+          $c_row = [];
           foreach ($this->fields as $c_field) {
             switch ($c_field->type) {
               case 'field':
-                $thead[] = new table_head_row_cell(['class' => [$c_field->field_name => $c_field->field_name]],
-                  $entity->fields[$c_field->field_name]->title
-                );
+                $c_title = $entity->fields[$c_field->field_name]->title;
+                $c_value_type = $entity->fields[$c_field->field_name]->type;
+                $c_value = $c_instance->{$c_field->field_name};
+                if ($c_value_type == 'real')     $c_value = locale::  number_format($c_value, 10);
+                if ($c_value_type == 'date')     $c_value = locale::    date_format($c_value);
+                if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
+                if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
+                if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
+                $c_row[] = [
+                  'title' => $c_title,
+                  'value' => $c_value
+                ];
                 break;
               case 'actions':
-                $thead[] = new table_head_row_cell(['class' => ['actions' => 'actions']],
-                  new text('')
-                );
+                $c_row[] = [
+                  'title' => 'Actions',
+                  'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
+                ];
+                break;
+              case 'markup':
+                $c_row[] = [
+                  'title' => $c_field->title,
+                  'value' => $c_field->markup
+                ];
                 break;
             }
           }
-        # make tbody
-          foreach ($instances as $c_instance) {
-            $c_tbody_row = [];
-            foreach ($this->fields as $c_field) {
-              switch ($c_field->type) {
-                case 'field':
-                  $c_type = $entity->fields[$c_field->field_name]->type;
-                  $c_value = $c_instance->{$c_field->field_name};
-                  if ($c_type == 'real')     $c_value = locale::  number_format($c_value, 10);
-                  if ($c_type == 'date')     $c_value = locale::    date_format($c_value);
-                  if ($c_type == 'time')     $c_value = locale::    time_format($c_value);
-                  if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);
-                  if ($c_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-                  $c_tbody_row[] = new table_body_row_cell(['class' => [
-                    $c_field->field_name =>
-                    $c_field->field_name]],
-                    $c_value
-                  );
-                  break;
-                case 'actions':
-                  $c_tbody_row[] = new table_body_row_cell(['class' => ['actions' => 'actions']],
-                    $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
-                  );
-                  break;
-              }
-            }
-            $tbody[] = $c_tbody_row;
-          }
-          if ($tbody) {
-            $result[] = new table(['class' => ['data' => 'data']],
-              $tbody, [$thead]
-            );
-          }
-          break;
+          $decorator->data[] = $c_row;
+        }
+             $result = $decorator->build();
+      } else $result = new markup('x-no-result', [], 'no items');
 
-      # ─────────────────────────────────────────────────────────────────────
-      # list
-      # ─────────────────────────────────────────────────────────────────────
-        case 'list':
-          foreach ($instances as $c_instance) {
-            $c_list = new markup('ul', ['class' => ['row' => 'row']]);
-            foreach ($this->fields as $c_row_id => $c_field) {
-              switch ($c_field->type) {
-                case 'field':
-                  $c_type  = $entity->fields[$c_field->field_name]->type;
-                  $c_title = $entity->fields[$c_field->field_name]->title;
-                  $c_value = $c_instance->  {$c_field->field_name};
-                  if ($c_type == 'real')     $c_value = locale::  number_format($c_value, 10);
-                  if ($c_type == 'date')     $c_value = locale::    date_format($c_value);
-                  if ($c_type == 'time')     $c_value = locale::    time_format($c_value);
-                  if ($c_type == 'datetime') $c_value = locale::datetime_format($c_value);
-                  if ($c_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-                  $c_list->child_insert(
-                    new markup('li', ['class' => [$c_field->field_name => $c_field->field_name]], [
-                      new markup('x-title', [], $c_title),
-                      new markup('x-value', [], $c_value)
-                    ])
-                  );
-                  break;
-                case 'actions':
-                  if ($id_keys) {
-                    $c_list->child_insert(
-                      new markup('li', ['class' => ['actions' => 'actions']],
-                        $this->action_list_get($entity, $c_instance, $id_keys)
-                      )
-                    );
-                  }
-                  break;
-                case 'markup':
-                  $c_list->child_insert(
-                    new markup('li', ['class' => [$c_row_id => $c_row_id]], [
-                      new markup('x-title', [], $c_field->title),
-                      new markup('x-value', [], $c_field->markup)
-                    ])
-                  );
-                  break;
-              }
-            }
-            $result[] = $c_list;
-          }
-          break;
-      }
+    # return result
+      return new markup('x-selection', [
+        'data-view-type' => $this->view_type,
+        'data-entity'    => $entity->name], $result
+      );
     }
-    return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name],
-      $result ?: new markup('x-no-result', [], 'no items')
-    );
   }
 
   function action_list_get($entity, $instance, $id_keys) {

@@ -2,7 +2,7 @@ selections
 - user|selection
     id: user
     title: User %%_nick
-    view_type: list
+    view_type: ul
     quantity: 1
     fields
     - id

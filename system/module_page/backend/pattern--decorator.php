@@ -34,9 +34,12 @@ namespace effcore {
         $thead->child_insert($thead_row, 'head_row_main');
       # make thead
         foreach (reset($this->data) as $c_name => $c_info) {
+          $c_cell_attributes = [];
+          if ($this->visibility_rowid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
+          if ($this->visibility_rowid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
           if ($c_name != 'attributes') {
             $thead_row->child_insert(
-              new table_head_row_cell(['data-cellid' => $c_name], $c_info['title']), $c_name
+              new table_head_row_cell($c_cell_attributes, $c_info['title']), $c_name
             );
           }
         }

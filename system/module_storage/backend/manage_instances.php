@@ -70,7 +70,7 @@ namespace effcore {
         # create selection
           $selection = new selection;
           $selection->title = '';
-          $selection->view_type = 'list';
+          $selection->view_type = 'ul';
           $selection->pure_conditions = $conditions_pure;
           foreach ($entity->fields as $c_name => $c_info) {
             if (!empty($c_info->show_in_manager)) {
