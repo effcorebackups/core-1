@@ -113,7 +113,7 @@ namespace effcore {
 
   static function id_hex_expired_get($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
   static function id_hex_ip_get($ip)           {return core::ip_to_hex($ip);}
-  static function id_hex_uagent_hash_8_get()   {return core::mini_hash_get(core::server_user_agent_get());}
+  static function id_hex_uagent_hash_8_get()   {return core::mini_hash_get(core::server_user_agent_get(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
   static function id_hex_random_get()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function id_hex_signature_get($id)    {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
 

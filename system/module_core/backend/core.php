@@ -730,9 +730,9 @@ namespace effcore {
     return $_SERVER['REQUEST_URI'];
   }
 
-  static function server_user_agent_get() {
+  static function server_user_agent_get($max_length = 240) {
     return isset($_SERVER['HTTP_USER_AGENT']) ?
-          substr($_SERVER['HTTP_USER_AGENT'], 0, 240) : '';
+          substr($_SERVER['HTTP_USER_AGENT'], 0, $max_length) : '';
   }
 
   static function server_http_range_get() {
