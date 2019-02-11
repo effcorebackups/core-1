@@ -40,19 +40,19 @@ namespace effcore\modules\demo {
   ################
 
   static function on_show_demo_messages($page) {
-    message::insert(translation::get('credentials'), 'credentials');
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice');
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 2]), 'notice');
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 3]), 'notice');
+    message::insert(translation::get('credentials'),                                  'credentials'                           );
+    message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice'                                );
+    message::insert(translation::get('Notice message #%%_number.',  ['number' => 2]), 'notice'                                );
+    message::insert(translation::get('Notice message #%%_number.',  ['number' => 3]), 'notice'                                );
     message::insert(translation::get('Ok message #%%_number.',      ['number' => 1]).' ('.translation::get('default type').')');
-    message::insert(translation::get('Ok message #%%_number.',      ['number' => 2]));
-    message::insert(translation::get('Ok message #%%_number.',      ['number' => 3]));
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 1]), 'warning');
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 2]), 'warning');
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 3]), 'warning');
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 1]), 'error');
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error');
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error');
+    message::insert(translation::get('Ok message #%%_number.',      ['number' => 2])                                          );
+    message::insert(translation::get('Ok message #%%_number.',      ['number' => 3])                                          );
+    message::insert(translation::get('Warning message #%%_number.', ['number' => 1]), 'warning'                               );
+    message::insert(translation::get('Warning message #%%_number.', ['number' => 2]), 'warning'                               );
+    message::insert(translation::get('Warning message #%%_number.', ['number' => 3]), 'warning'                               );
+    message::insert(translation::get('Error message #%%_number.',   ['number' => 1]), 'error'                                 );
+    message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error'                                 );
+    message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error'                                 );
   }
 
   ##############
