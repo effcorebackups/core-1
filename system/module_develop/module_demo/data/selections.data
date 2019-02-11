@@ -3,10 +3,11 @@ selections
     id: demo_join
     title: Selection with JOIN
     view_type: ul
-    pure_conditions
-    - id_#f: id
-    - operator: =
-    - id_#v: 1
+    params
+    - pure_conditions
+      - id_#f: id
+      - operator: =
+      - id_#v: 1
     fields
     - nick
         type: field

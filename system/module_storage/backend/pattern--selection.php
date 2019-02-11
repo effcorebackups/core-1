@@ -10,11 +10,8 @@ namespace effcore {
   public $id;
   public $view_type = 'table'; # table | ul | dl
   public $title;
-  public $fields;
-  public $pure_conditions = [];
-  public $order = [];
-  public $quantity = 50;
-  public $offset = 0;
+  public $fields = [];
+  public $params = [];
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
@@ -41,11 +38,11 @@ namespace effcore {
       $storage   = storage::get(reset($used_storages));
       $entity    =  entity::get(reset($used_entities));
       $instances =  entity::get(reset($used_entities))->instances_select([
-        'join'            => [],
-        'pure_conditions' => $this->pure_conditions,
-        'order'           => $this->order,
-        'quantity'        => $this->quantity,
-        'offset'          => $this->offset
+        'join'            => $this->params['join']            ?? [],
+        'pure_conditions' => $this->params['pure_conditions'] ?? [],
+        'order'           => $this->params['order']           ?? [],
+        'limit'           => $this->params['limit']           ?? 50,
+        'offset'          => $this->params['offset']          ?? 0
       ]);
       $id_keys = $entity->real_id_get();
     }
