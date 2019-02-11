@@ -13,6 +13,7 @@ namespace effcore\modules\develop {
           abstract class events_page_events {
 
   static function on_show_block_events_list($page) {
+    $title = new markup('h2', [], 'Registered event handlers');
     $decorator = new decorator('table', ['class' => ['report-events' => 'report-events']]);
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach (event::all_get() as $c_event_type => $c_events) {
@@ -27,6 +28,7 @@ namespace effcore\modules\develop {
       }
     }
     return new block('', ['class' => ['events' => 'events']], [
+      $title,
       $decorator
     ]);
   }
