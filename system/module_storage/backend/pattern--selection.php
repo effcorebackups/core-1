@@ -40,11 +40,13 @@ namespace effcore {
         count($used_entities) == 1) {
       $storage   = storage::get(reset($used_storages));
       $entity    =  entity::get(reset($used_entities));
-      $instances =  entity::get(reset($used_entities))->instances_select([],
-        $this->pure_conditions,
-        $this->order,
-        $this->quantity,
-        $this->offset);
+      $instances =  entity::get(reset($used_entities))->instances_select([
+        'join'            => [],
+        'pure_conditions' => $this->pure_conditions,
+        'order'           => $this->order,
+        'quantity'        => $this->quantity,
+        'offset'          => $this->offset
+      ]);
       $id_keys = $entity->real_id_get();
     }
     if (count($used_storages) == 1 &&

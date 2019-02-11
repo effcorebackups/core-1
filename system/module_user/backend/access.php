@@ -17,7 +17,9 @@ namespace effcore {
 
   static function roles_get($full = false) {
     $result = [];
-    $instances = entity::get('role')->instances_select([], [], ['weight' => 'DESC', 'title' => 'ASC']);
+    $instances = entity::get('role')->instances_select([
+      'order' => ['weight' => 'DESC', 'title' => 'ASC']
+    ]);
     foreach ($instances as $c_instance) {
       $result[$c_instance->id] = $full ?
               $c_instance->values :
