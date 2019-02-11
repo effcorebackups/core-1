@@ -62,13 +62,26 @@ Supported types:
 How to activate Neor Profile SQL
 =====================================================================
 
-In "/dynamic/data/changes.php" change:
+- In file "/dynamic/data/changes.php" change:
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->host = '[::1]';
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '3306';
-to:
+  to:
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->host = '127.0.0.1';
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '4040';
-run "/shell/cache_clear.sh"
+- Run "/shell/cache_clear.sh".
+
+
+How to set cross-domain cookie
+=====================================================================
+
+- For base domain and each subdomain install a new System instance with its own table prefix.
+- For base domain and each subdomain in file "/dynamic/data/changes.php" insert:
+    data::$data['changes']['core']->update['settings/core/cookie_domain'] = BASE_DOMAIN_NAME;
+- For each subdomain in file "/dynamic/data/changes.php" update:
+    data::$data['changes']['core']->update['settings/core/keys']['session'] = KEY_FROM_BASE_DOMAIN;
+    data::$data['changes']['core']->update['settings/core/keys']['salt']    = KEY_FROM_BASE_DOMAIN;
+- For base domain and each subdomain run "/shell/cache_clear.sh".
+- For base domain and each subdomain clear cookie in the browser.
 
 
 About forms
