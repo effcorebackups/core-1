@@ -132,7 +132,11 @@ namespace effcore\modules\core {
             $params->credentials->file_name = $items['#file_name'   ]->value_get();
             $params->table_prefix           = $items['#table_prefix']->value_get();
           }
-          storage::get('sql')->init($params->driver, $params->credentials);
+          storage::get('sql')->init(
+            $params->driver,
+            $params->credentials,
+            $params->table_prefix
+          );
           storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
             'cron'            => core::key_generate(true),
             'form_validation' => core::key_generate(),

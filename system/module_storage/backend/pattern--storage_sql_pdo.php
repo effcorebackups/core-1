@@ -18,12 +18,13 @@ namespace effcore {
   protected $queries = [];
   protected $connection;
 
-  function init($driver = null, $credentials = []) {
+  function init($driver = null, $credentials = [], $table_prefix = '') {
     if ($this->connection) return
         $this->connection;
     else {
-      if ($driver)      $this->driver      = $driver;
-      if ($credentials) $this->credentials = $credentials;
+      if ($driver)       $this->driver       = $driver;
+      if ($credentials)  $this->credentials  = $credentials;
+      if ($table_prefix) $this->table_prefix = $table_prefix;
       if ($this->driver &&
           $this->credentials) {
         try {
