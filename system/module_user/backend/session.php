@@ -81,6 +81,7 @@ namespace effcore {
   # note: n/a = not applicable
 
   static function id_regenerate($hex_type, $session_params = []) {
+    $cookie_domain = storage::get('files')->select('settings/core/cookie_domain');
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     if ($hex_type == 'f' && $is_remember == false) $expired = time() + static::period_expired_d;
@@ -100,8 +101,8 @@ namespace effcore {
                   $hex_uagent_hash_8. # strlen == 8
                   $hex_random;        # strlen == 8
     $session_id.= core::signature_get($session_id, 8, 'session');
-    setcookie('session_id', ($_COOKIE['session_id'] = $session_id), $expired, '/');
-    setcookie('cookies_is_on', 'true',                              $expired, '/');
+    setcookie('session_id', ($_COOKIE['session_id'] = $session_id), $expired, '/', $cookie_domain);
+    setcookie('cookies_is_on', 'true',                              $expired, '/', $cookie_domain);
     return $session_id;
   }
 

@@ -4,3 +4,4 @@ settings
   - form_validation: abcde01234abcde01234abcde01234abcde01234
   - session: abcde01234abcde01234abcde01234abcde01234
   - salt: abcde01234abcde01234abcde01234abcde01234
+  cookie_domain: 
