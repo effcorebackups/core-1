@@ -3,7 +3,7 @@ selections
     id: demo_join
     title: Selection with JOIN
     view_type: ul
-    params
+    query_params
     - pure_conditions
       - id_#f: id
       - operator: =
