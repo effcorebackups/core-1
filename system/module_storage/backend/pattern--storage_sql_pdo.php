@@ -361,28 +361,21 @@ namespace effcore {
   }
 
   function instances_select($entity, $params = []) {
-    $params += ['join' => [], 'pure_conditions' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
+    $params += ['join_fields' => [], 'join' => [], 'pure_conditions' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields' => [$entity->catalog_name.'.*'],
+        'fields' => $this->fields(['all' => $entity->catalog_name.'.*'] + $params['join_fields']),
         'target_begin' => 'FROM',
         'target' => $this->table($entity->catalog_name)];
-      foreach ($params['join'] as $c_entity_name => $c_join_info) {
-        $c_join_catalog_name = entity::get($c_entity_name)->catalog_name;
-        $c_join_L = array_keys  ($c_join_info['on'])[0];
-        $c_join_R = array_values($c_join_info['on'])[0];
-        $query['join'][$c_entity_name]['begin'] = 'LEFT OUTER JOIN';
-        $query['join'][$c_entity_name]['target'] = $this->table($c_join_catalog_name);
-        $query['join'][$c_entity_name]['condition_begin'] = 'ON';
-        $query['join'][$c_entity_name]['left_target'] = $this->field($entity->catalog_name.'.'.$c_join_L);
-        $query['join'][$c_entity_name]['condition'] = '=';
-        $query['join'][$c_entity_name]['right_target'] = $this->field($c_join_catalog_name .'.'.$c_join_R);
-        foreach ($c_join_info['fields'] as $c_join_field_name) {
-          $query['fields'][] = $c_join_catalog_name.'.'.$c_join_field_name;
-        }
+      foreach ($params['join'] as $c_join_id => $c_join_part) {
+        $query['join'][$c_join_id]['begin'] = $c_join_part['type'] ?? 'LEFT OUTER JOIN';
+        $query['join'][$c_join_id]['target'] = $this->table($c_join_part['target']);
+        $query['join'][$c_join_id]['condition_begin'] = 'ON';
+        $query['join'][$c_join_id]['field_left'] = $this->field($c_join_part['condition']['left']);
+        $query['join'][$c_join_id]['operator'] = $c_join_part['condition']['operator'] ?? '=';
+        $query['join'][$c_join_id]['field_right'] = $this->field($c_join_part['condition']['right']);
       }
-      $query['fields'] = $this->fields($query['fields']);
       if (count($params['pure_conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['pure_conditions']    ];
       if (count($params['order']))           $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($params['order'])];
       if ($params['limit'])                  $query += ['limit_begin'     => 'LIMIT',    'limit'     => $params['limit']              ];

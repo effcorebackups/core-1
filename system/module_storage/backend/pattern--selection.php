@@ -12,6 +12,7 @@ namespace effcore {
   public $title;
   public $fields = [];
   public $query_params = [];
+  public $visibility_params = [];
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
@@ -38,6 +39,7 @@ namespace effcore {
       $storage   = storage::get(reset($used_storages));
       $entity    =  entity::get(reset($used_entities));
       $instances =  entity::get(reset($used_entities))->instances_select([
+        'join_fields'     => $this->query_params['join_fields']     ?? [],
         'join'            => $this->query_params['join']            ?? [],
         'pure_conditions' => $this->query_params['pure_conditions'] ?? [],
         'order'           => $this->query_params['order']           ?? [],
@@ -48,7 +50,7 @@ namespace effcore {
     }
     if (count($used_storages) == 1 &&
         count($used_entities) >= 2) {
-      # @todo: make functionality (query with inner join)
+      # @todo: make functionality (query with join)
     }
     if (count($used_storages) >= 2) {
       message::insert(translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning');
