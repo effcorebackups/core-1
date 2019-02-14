@@ -39,12 +39,12 @@ namespace effcore {
       $storage   = storage::get(reset($used_storages));
       $entity    =  entity::get(reset($used_entities));
       $instances =  entity::get(reset($used_entities))->instances_select([
-        'join_fields'     => $this->query_params['join_fields']     ?? [],
-        'join'            => $this->query_params['join']            ?? [],
-        'pure_conditions' => $this->query_params['pure_conditions'] ?? [],
-        'order'           => $this->query_params['order']           ?? [],
-        'limit'           => $this->query_params['limit']           ?? 50,
-        'offset'          => $this->query_params['offset']          ?? 0
+        'join_fields' => $this->query_params['join_fields'] ?? [],
+        'join'        => $this->query_params['join']        ?? [],
+        'conditions'  => $this->query_params['conditions']  ?? [],
+        'order'       => $this->query_params['order']       ?? [],
+        'limit'       => $this->query_params['limit']       ?? 50,
+        'offset'      => $this->query_params['offset']      ?? 0
       ]);
       $id_keys = $entity->real_id_get();
     }

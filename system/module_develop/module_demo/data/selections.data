@@ -4,7 +4,7 @@ selections
     title: Selection with JOIN
     view_type: ul
     query_params
-    - pure_conditions
+    - conditions
       - id_!f: id
       - operator: =
       - id_!v: 1
