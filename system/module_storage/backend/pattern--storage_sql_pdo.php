@@ -111,7 +111,37 @@ namespace effcore {
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();}
 
-  function query_prepare(...$query) {
+  function query_prepare(&$query = []) {
+    foreach ($query as $c_key => &$c_value) {
+      $c_modifier = strrchr($c_key, '!');
+      if (is_array($c_value)) {
+        $this->query_prepare($c_value);
+        switch ($c_modifier) {
+          case '!,':
+          case '!=':
+            $c_new_values = [];
+            foreach ($c_value as $c_sub_key => $c_sub_values) {
+              if (!is_int($c_sub_key))
+                   $c_new_values[$c_sub_key] = $c_sub_values;
+              else $c_new_values[]           = $c_sub_values;
+              $c_new_values[] = ltrim($c_modifier, '!');
+            }
+            array_pop($c_new_values);
+            $c_value = $c_new_values;
+            break;
+        }
+      } else {
+        switch ($c_modifier) {
+          case '!c': $c_value = $this->table(entity::get($c_value)->catalog_name); break;
+          case '!t': $c_value = $this->table($c_value);                            break;
+          case '!f': $c_value = $this->field($c_value);                            break;
+          case '!v': $c_value = $this->value($c_value);                            break;
+        }
+      }
+    }
+  }
+
+  function query_prepare_old(...$query) {
     $flat_query = core::array_values_select_recursive($query);
     foreach ($flat_query as $c_key => &$c_value) {
       $c_modifier = strrchr($c_key, '#');
@@ -129,7 +159,7 @@ namespace effcore {
     if (is_array($query[0])) $query = $query[0];
     if ($this->init()) {
       $this->queries[] = $query;
-      $flat_query = $this->query_prepare($query);
+      $flat_query = $this->query_prepare_old($query);
       $flat_query_string = implode(' ', $flat_query).';';
       event::start('on_query_before', 'pdo', [&$this, &$flat_query]);
       $result = $this->connection->prepare($flat_query_string);
