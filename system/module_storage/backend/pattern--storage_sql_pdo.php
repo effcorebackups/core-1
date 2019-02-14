@@ -108,8 +108,8 @@ namespace effcore {
   }
 
   function transaction_begin()     {if ($this->init()) return $this->connection->beginTransaction();}
-  function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();}
-  function transaction_commit()    {if ($this->init()) return $this->connection->commit();}
+  function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();        }
+  function transaction_commit()    {if ($this->init()) return $this->connection->commit();          }
 
   function query_prepare(&$query = []) {
     foreach ($query as $c_key => &$c_value) {
@@ -141,31 +141,18 @@ namespace effcore {
     }
   }
 
-  function query_prepare_old(...$query) {
-    $flat_query = core::array_values_select_recursive($query);
-    foreach ($flat_query as $c_key => &$c_value) {
-      $c_modifier = strrchr($c_key, '#');
-      switch ($c_modifier) {
-        case '#c': $c_value = $this->table(entity::get($c_value)->catalog_name); break;
-        case '#t': $c_value = $this->table($c_value);                            break;
-        case '#f': $c_value = $this->field($c_value);                            break;
-        case '#v': $c_value = $this->value($c_value);                            break;
-      }
-    }
-    return $flat_query;
-  }
-
   function query(...$query) {
     if (is_array($query[0])) $query = $query[0];
     if ($this->init()) {
-      $this->queries[] = $query;
-      $flat_query = $this->query_prepare_old($query);
-      $flat_query_string = implode(' ', $flat_query).';';
-      event::start('on_query_before', 'pdo', [&$this, &$flat_query]);
-      $result = $this->connection->prepare($flat_query_string);
+      $this->queries[] = $query_prepared = $query;
+      $this->query_prepare($query_prepared);
+      $query_flat = core::array_values_select_recursive($query_prepared);
+      $query_flat_string = implode(' ', $query_flat).';';
+      event::start('on_query_before', 'pdo', [&$this, &$query_flat]);
+      $result = $this->connection->prepare($query_flat_string);
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', [&$this, &$flat_query, &$result, &$c_error]);
+      event::start('on_query_after', 'pdo', [&$this, &$query_flat, &$result, &$c_error]);
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {
         $this->errors[] = $c_error;
@@ -264,30 +251,13 @@ namespace effcore {
     return $result;
   }
 
-  function pure_condition($field, $value, $operator = '=') {
-    return [
-      $field.'_#f' => $field,
-      $field.'_op' => $operator,
-      $field.'_#v' => $value
-    ];
-  }
-
-  function pure_conditions($data, $operator = 'and') {
+  function attributes_to_condition($attributes) {
     $result = [];
-    foreach ($data as $c_field => $c_value) {
-      $result[] = $this->pure_condition($c_field, $c_value);;
-      $result[] = $operator;
-    }
-    array_pop($result);
-    return $result;
-  }
-
-  function order($order = []) {
-    $result = [];
-    foreach ($order as $c_field_name => $c_order_type) {
-      $result[] = $this->field($c_field_name);
-      $result[] = $c_order_type;
-      $result[] = ',';
+    foreach ($attributes as $c_field => $c_value) {
+      $result[$c_field.'_!f'] = $c_field;
+      $result[$c_field.'-operator'] = '=';
+      $result[$c_field.'_!v'] = $c_value;
+      $result[] = 'and';
     }
     array_pop($result);
     return $result;
@@ -345,7 +315,7 @@ namespace effcore {
           $c_constraint_name = $this->table($entity->catalog_name.'__'.$c_name);
           if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
           if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name' => $c_constraint_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -355,8 +325,8 @@ namespace effcore {
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
                                      $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target' => $table_name]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_end' => ')']);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target' => $table_name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints' => $this->list($fields + $constraints), 'fields_and_constraints_end' => ')']);
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
 
@@ -395,21 +365,16 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields' => $this->fields(['all' => $entity->catalog_name.'.*'] + $params['join_fields']),
+        'fields_!,' => ['all_!f' => $entity->catalog_name.'.*'] + $params['join_fields'],
         'target_begin' => 'FROM',
-        'target' => $this->table($entity->catalog_name)];
+        'target_!t' => $entity->catalog_name];
       foreach ($params['join'] as $c_join_id => $c_join_part) {
-        $query['join'][$c_join_id]['begin'] = $c_join_part['type'] ?? 'LEFT OUTER JOIN';
-        $query['join'][$c_join_id]['target'] = $this->table($c_join_part['target']);
-        $query['join'][$c_join_id]['condition_begin'] = 'ON';
-        $query['join'][$c_join_id]['field_left'] = $this->field($c_join_part['condition']['left']);
-        $query['join'][$c_join_id]['operator'] = $c_join_part['condition']['operator'] ?? '=';
-        $query['join'][$c_join_id]['field_right'] = $this->field($c_join_part['condition']['right']);
+        $query['join'][$c_join_id] = $c_join_part;
       }
-      if (count($params['pure_conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['pure_conditions']    ];
-      if (count($params['order']))           $query += ['order_begin'     => 'ORDER BY', 'order'     => $this->order($params['order'])];
-      if ($params['limit'])                  $query += ['limit_begin'     => 'LIMIT',    'limit'     => $params['limit']              ];
-      if ($params['offset'])                 $query += ['offset_begin'    => 'OFFSET',   'offset'    => $params['offset']             ];
+      if (count($params['pure_conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['pure_conditions']];
+      if (count($params['order']))           $query += ['order_begin'     => 'ORDER BY', 'order'     => $params['order']          ];
+      if ($params['limit'])                  $query += ['limit_begin'     => 'LIMIT',    'limit'     => $params['limit']          ];
+      if ($params['offset'])                 $query += ['offset_begin'    => 'OFFSET',   'offset'    => $params['offset']         ];
       $result = $this->query($query);
       foreach ($result as $c_instance) {
         $c_instance->entity_name_set($entity->name);
@@ -424,9 +389,9 @@ namespace effcore {
       $id_fields = $entity->real_id_from_values_get($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
-        'fields' => $this->fields($entity->fields_name_get()),
+        'fields_!,' => ['all_!f' => '*'],
         'target_begin' => 'FROM',
-        'target' => $this->table($entity->catalog_name),
+        'target_!t' => $entity->catalog_name,
         'condition_begin' => 'WHERE',
         'condition' => $this->conditions($id_fields),
         'limit_begin' => 'LIMIT',
@@ -450,7 +415,7 @@ namespace effcore {
       $new_id = $this->query([
         'action' => 'INSERT',
         'action_subtype' => 'INTO',
-        'target' => $this->table($entity->catalog_name),
+        'target_!t' => $entity->catalog_name,
         'fields_begin' => '(',
         'fields' => $this->fields($fields),
         'fields_end' => ')',
@@ -472,7 +437,7 @@ namespace effcore {
       $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query([
         'action' => 'UPDATE',
-        'target' => $this->table($entity->catalog_name),
+        'target_!t' => $entity->catalog_name,
         'fields_and_values_begin' => 'SET',
         'fields_and_values' => $this->conditions($values, ','),
         'condition_begin' => 'WHERE',
@@ -491,7 +456,7 @@ namespace effcore {
       $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',
-        'target' => $this->table($entity->catalog_name),
+        'target_!t' => $entity->catalog_name,
         'condition_begin' => 'WHERE',
         'condition' => $this->conditions($id_fields)]);
       if ($row_count === 1) {

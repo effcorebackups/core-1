@@ -22,26 +22,26 @@ namespace effcore\modules\storage {
   }
 
   static function on_query_before($storage, $query) {
-    $s_query = implode(' ', $query).';';
-    timer::tap('storage query: '.$s_query);
+    $query_string = implode(' ', $query).';';
+    timer::tap('storage query: '.$query_string);
   }
 
   static function on_query_after($storage, $query, $result, $errors) {
-    $buf_args = [];
+    $args_trimmed = [];
     foreach ($storage->args as $c_arg) {
-      $buf_args[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
+      $args_trimmed[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
     }
-    $s_query = implode(' ', $query).';';
-    $s_query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $s_query);
-    $s_query_args_beautiful = '\''.implode('\', \'', $buf_args).'\'';
-    timer::tap('storage query: '.$s_query);
+    $query_string = implode(' ', $query).';';
+    $query_string_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_string);
+    $query_args_beautiful = '\''.implode('\', \'', $args_trimmed).'\'';
+    timer::tap('storage query: '.$query_string);
     console::log_insert('storage', 'query',
       count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'args = [%%_args]' :
                               'sql query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
-      timer::period_get('storage query: '.$s_query, -1, -2), [
-      'query' => $s_query_beautiful,
-      'args'  => $s_query_args_beautiful
+      timer::period_get('storage query: '.$query_string, -1, -2), [
+      'query' => $query_string_beautiful,
+      'args'  => $query_args_beautiful
     ]);
   }
 

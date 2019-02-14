@@ -159,9 +159,9 @@ namespace effcore {
     $storage->query([
       'action' => 'DELETE',
       'target_begin' => 'FROM',
-      'target_#c' => 'captcha',
+      'target_!c' => 'captcha',
       'condition_begin' => 'WHERE',
-      'condition' => ['created_#f' => 'created', '<', 'created_#v' => core::datetime_get('-1 hour')]
+      'condition' => ['created_!f' => 'created', '<', 'created_!v' => core::datetime_get('-1 hour')]
     ]);
   }
 
