@@ -111,11 +111,11 @@ namespace effcore {
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();        }
   function transaction_commit()    {if ($this->init()) return $this->connection->commit();          }
 
-  function query_prepare(&$query = []) {
+  function query_prepare(&$query = [], $is_emulation = false) {
     foreach ($query as $c_key => &$c_value) {
       $c_modifier = strrchr($c_key, '!');
       if (is_array($c_value)) {
-        $this->query_prepare($c_value);
+        $this->query_prepare($c_value, $is_emulation);
         switch ($c_modifier) {
           case '!,':
           case '!=':
@@ -135,7 +135,7 @@ namespace effcore {
           case '!c': $c_value = $this->table(entity::get($c_value)->catalog_name); break;
           case '!t': $c_value = $this->table($c_value);                            break;
           case '!f': $c_value = $this->field($c_value);                            break;
-          case '!v': $c_value = $this->value($c_value);                            break;
+          case '!v': $c_value = $this->value($c_value, $is_emulation);             break;
         }
       }
     }
@@ -144,15 +144,15 @@ namespace effcore {
   function query(...$query) {
     if (is_array($query[0])) $query = $query[0];
     if ($this->init()) {
+      event::start('on_query_before', 'pdo', [&$this, &$query]);
       $this->queries[] = $query_prepared = $query;
       $this->query_prepare($query_prepared);
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
-      event::start('on_query_before', 'pdo', [&$this, &$query_flat]);
       $result = $this->connection->prepare($query_flat_string);
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', [&$this, &$query_flat, &$result, &$c_error]);
+      event::start('on_query_after', 'pdo', [&$this, $query, &$result, &$c_error]);
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {
         $this->errors[] = $c_error;
@@ -219,8 +219,8 @@ namespace effcore {
     return $result;
   }
 
-  function value($value) {
-    $this->args[] = $value;
+  function value($value, $is_emulation = false) {
+    if (!$is_emulation) $this->args[] = $value;
     return '?';
   }
 
