@@ -32,7 +32,7 @@ namespace effcore {
           switch ($this->driver) {
             case 'mysql':
               $this->connection = new pdo(
-                $this->driver.':host='.
+                $this->driver.           ':host='.
                 $this->credentials->host.';port='.
                 $this->credentials->port.';dbname='.
                 $this->credentials->database,
@@ -70,7 +70,7 @@ namespace effcore {
       switch ($driver) {
         case 'mysql':
           $connection = new pdo(
-            $driver.':host='.
+            $driver.           ':host='.
             $credentials->host.';port='.
             $credentials->port.';dbname='.
             $credentials->database,
@@ -179,16 +179,6 @@ namespace effcore {
     if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
   }
 
-  function tables(...$tables) {
-    $result = [];
-    foreach (is_array($tables[0]) ? $tables[0] : $tables as $c_table_name) {
-      $result[] = $this->table($c_table_name);
-      $result[] = ',';
-    }
-    array_pop($result);
-    return $result;
-  }
-
   function field($field_name) {
     if (strpos($field_name, '.') !== false) {
       $field_parts = explode('.', $field_name);
@@ -199,6 +189,21 @@ namespace effcore {
     }
   }
 
+  function value($value, $is_emulation = false) {
+    if (!$is_emulation) $this->args[] = $value;
+    return '?';
+  }
+
+  function tables(...$tables) {
+    $result = [];
+    foreach (is_array($tables[0]) ? $tables[0] : $tables as $c_table_name) {
+      $result[] = $this->table($c_table_name);
+      $result[] = ',';
+    }
+    array_pop($result);
+    return $result;
+  }
+
   function fields(...$fields) {
     $result = [];
     foreach (is_array($fields[0]) ? $fields[0] : $fields as $c_field_name) {
@@ -207,11 +212,6 @@ namespace effcore {
     }
     array_pop($result);
     return $result;
-  }
-
-  function value($value, $is_emulation = false) {
-    if (!$is_emulation) $this->args[] = $value;
-    return '?';
   }
 
   function values(...$values) {
