@@ -70,7 +70,7 @@ namespace effcore {
           $selection = new selection;
           $selection->title = '';
           $selection->view_type = 'ul';
-          $selection->query_params['conditions'] = $storage->attributes_to_condition($conditions);
+          $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           foreach ($entity->fields as $c_name => $c_info) {
             if (!empty($c_info->show_in_manager)) {
               $selection->field_entity_insert($entity->name, $c_name);
