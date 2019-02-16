@@ -55,7 +55,7 @@ namespace effcore {
     $storage->query([
       'action' => 'DELETE',
       'target_begin' => 'FROM',
-      'target_!c' => 'session',
+      'target_!t' => '~session',
       'condition_begin' => 'WHERE',
       'condition' => ['expired_!f' => 'expired', '<', 'expired_!v' => core::datetime_get()]
     ]);

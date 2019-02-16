@@ -132,10 +132,9 @@ namespace effcore {
         }
       } else {
         switch ($c_modifier) {
-          case '!c': $c_value = $this->table(entity::get($c_value)->catalog_name); break;
-          case '!t': $c_value = $this->table($c_value);                            break;
-          case '!f': $c_value = $this->field($c_value);                            break;
-          case '!v': $c_value = $this->value($c_value, $is_emulation);             break;
+          case '!t': $c_value = $this->table($c_value);                break;
+          case '!f': $c_value = $this->field($c_value);                break;
+          case '!v': $c_value = $this->value($c_value, $is_emulation); break;
         }
       }
     }
@@ -174,18 +173,19 @@ namespace effcore {
     }
   }
 
-  function table($table_name) {
-    if ($this->driver == 'mysql' ) return '`'.$this->table_prefix.$table_name.'`';
-    if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$table_name.'"';
+  function table($name) {
+    if ($name[0] == '~') $name = entity::get(ltrim($name, '~'))->catalog_name;
+    if ($this->driver == 'mysql' ) return '`'.$this->table_prefix.$name.'`';
+    if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$name.'"';
   }
 
-  function field($field_name) {
-    if (strpos($field_name, '.') !== false) {
-      $field_parts = explode('.', $field_name);
-      if ($this->driver == 'mysql' ) return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '`'.$field_parts[1].'`');
-      if ($this->driver == 'sqlite') return $this->table($field_parts[0]).'.'.($field_parts[1] === '*' ? '*' : '"'.$field_parts[1].'"'); } else {
-      if ($this->driver == 'mysql' ) return $field_name === '*' ? '*' : '`'.$field_name.'`';
-      if ($this->driver == 'sqlite') return $field_name === '*' ? '*' : '"'.$field_name.'"';
+  function field($name) {
+    if (strpos($name, '.') !== false) {
+      $parts = explode('.', $name);
+      if ($this->driver == 'mysql' ) return $this->table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
+      if ($this->driver == 'sqlite') return $this->table($parts[0]).'.'.($parts[1] === '*' ? '*' : '"'.$parts[1].'"'); } else {
+      if ($this->driver == 'mysql' ) return $name === '*' ? '*' : '`'.$name.'`';
+      if ($this->driver == 'sqlite') return $name === '*' ? '*' : '"'.$name.'"';
     }
   }
 
