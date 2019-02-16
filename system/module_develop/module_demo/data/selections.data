@@ -4,10 +4,33 @@ selections
     title: Selection with JOIN
     view_type: ul
     query_params
+    - join_fields
+      - id_role_!f: relation_role_ws_user.id_role
+      - title_!f: role.title
+    - join
+      - relation_role_ws_user
+        - type: LEFT OUTER JOIN
+        - target_!t: relation_role_ws_user
+        - on: ON
+        - left_!f: user.id
+        - operator: =
+        - right_!f: relation_role_ws_user.id_user
+      - role
+        - type: LEFT OUTER JOIN
+        - target_!t: role
+        - on: ON
+        - left_!f: relation_role_ws_user.id_role
+        - operator: =
+        - right_!f: role.id
     - conditions
-      - id_!f: id
+      - id_!f: user.id
       - operator: =
       - id_!v: 1
+    - order
+      - title_!f: role.title
+      - type: ASC
+    - limit: 2
+    - offset: 0
     fields
     - nick
         type: field
