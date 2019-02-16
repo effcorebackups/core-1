@@ -215,11 +215,10 @@ namespace effcore {
 
   function values(...$values) {
     $result = [];
-    foreach (is_array($values[0]) ? $values[0] : $values as $c_value) {
-      $result[] = $this->value($c_value);
-      $result[] = ',';
+    foreach (is_array($values[0]) ?
+                      $values[0] : $values as $c_id => $c_name) {
+      $result[$c_id.'_!v'] = $c_name;
     }
-    array_pop($result);
     return $result;
   }
 
@@ -321,11 +320,11 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'     ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF'   ]);
-      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target_!t' => $entity->catalog_name           ]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'     ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON'    ]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
+      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target_!t' => $entity->catalog_name        ]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
       return $result;
     }
   }
@@ -390,7 +389,7 @@ namespace effcore {
         'fields_!,' => $this->fields($fields),
         'fields_end' => ')',
         'values_begin' => 'VALUES (',
-        'values' => $this->values($values),
+        'values_!,' => $this->values($values),
         'values_end' => ')']);
       if ($new_id !== null && $auto_name == null) return $instance;
       if ($new_id !== null && $auto_name != null) {
