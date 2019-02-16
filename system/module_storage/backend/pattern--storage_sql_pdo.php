@@ -196,13 +196,13 @@ namespace effcore {
 
   function tables(...$tables) {
     $result = [];
-    foreach (is_array($tables[0]) ? $tables[0] : $tables as $c_table_name) {
-      $result[] = $this->table($c_table_name);
-      $result[] = ',';
+    foreach (is_array($tables[0]) ?
+                      $tables[0] : $tables as $c_id => $c_name) {
+      $result[$c_id.'_!t'] = $c_name;
     }
-    array_pop($result);
     return $result;
   }
+
 
   function fields(...$fields) {
     $result = [];
