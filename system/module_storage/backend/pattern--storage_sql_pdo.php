@@ -206,11 +206,10 @@ namespace effcore {
 
   function fields(...$fields) {
     $result = [];
-    foreach (is_array($fields[0]) ? $fields[0] : $fields as $c_field_name) {
-      $result[] = $this->field($c_field_name);
-      $result[] = ',';
+    foreach (is_array($fields[0]) ?
+                      $fields[0] : $fields as $c_id => $c_name) {
+      $result[$c_id.'_!f'] = $c_name;
     }
-    array_pop($result);
     return $result;
   }
 
@@ -286,9 +285,9 @@ namespace effcore {
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
-          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $entity->catalog_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -311,7 +310,7 @@ namespace effcore {
           'on' => 'ON',
           'target_!t' => $entity->catalog_name,
           'fields_begin' => '(',
-          'fields' => $this->fields($c_info->fields),
+          'fields_!,' => $this->fields($c_info->fields),
           'fields_end' => ')'
         ]);
       }
@@ -388,7 +387,7 @@ namespace effcore {
         'action_subtype' => 'INTO',
         'target_!t' => $entity->catalog_name,
         'fields_begin' => '(',
-        'fields' => $this->fields($fields),
+        'fields_!,' => $this->fields($fields),
         'fields_end' => ')',
         'values_begin' => 'VALUES (',
         'values' => $this->values($values),
