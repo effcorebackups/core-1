@@ -95,9 +95,11 @@
 
   /* block system info */
 
-  x-block.system-info img[src$='logo-system.svg'] {
-    margin-bottom: 40px;
-  }
+  x-block.system-info x-system_logo  {display: block; text-align: center; margin-bottom: 20px}
+  x-block.system-info x-copyright    {display: block; text-align: center; font-size:     .8em}
+  x-block.system-info x-build_number {display: block; text-align: center; margin-bottom: 20px}
+  x-block.system-info x-build_number x-title::after {content: ': '}
+  x-block.system-info x-build_number x-value {font-weight: bold}
 
   /* block environment info */
 

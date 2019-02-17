@@ -30,18 +30,26 @@ namespace effcore\modules\core {
 
   static function on_show_block_system_info($page) {
     $storage_files = storage::get('files');
-    $logo_system = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100']);
+    return new block('', ['class' => ['system-info' => 'system-info']], [
+      new markup('x-system_logo', [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100'])),
+      new markup('x-copyright', [], '© 2017—2019 Maxim Rysevets. All rights reserved.'),
+      new markup('x-build_number', [], [
+        new markup('x-title', [], 'Build number'),
+        new markup('x-value', [], $storage_files->select('bundle/system/build'))
+      ])
+    ]);
+  }
+
+  static function on_show_block_service_info($page) {
+    $storage_files = storage::get('files');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $decorator = new decorator('dl');
     $decorator->data = [[
-      'logo'          => ['title' => '',                     'value' => $logo_system                                      ],
-      'copyright'     => ['title' => 'Copyright',            'value' => '© 2017—2019 Maxim Rysevets. All rights reserved.'],
-      'build_number'  => ['title' => 'Build number',         'value' => $storage_files->select('bundle/system/build')     ],
-      'prov_key'      => ['title' => 'Provisioning key',     'value' => 'not applicable'                                  ],
-      'subscr_to_upd' => ['title' => 'Subscribe to updates', 'value' => 'not applicable'                                  ],
-      'cron_url'      => ['title' => 'Cron URL',             'value' => $cron_link                                        ]
+      'prov_key'      => ['title' => 'Provisioning key',     'value' => 'not applicable'],
+      'subscr_to_upd' => ['title' => 'Subscribe to updates', 'value' => 'not applicable'],
+      'cron_url'      => ['title' => 'Cron URL',             'value' => $cron_link      ]
     ]];
-    return new block('', ['class' => ['system-info' => 'system-info']], [
+    return new block('Service', ['class' => ['service-info' => 'service-info']], [
       $decorator->build()
     ]);
   }
