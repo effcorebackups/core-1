@@ -93,16 +93,22 @@
   x-block-content {display: block}
   x-block[data-styled-title='no'] x-block-title {border: none}
 
-  /* info blocks */
+  /* block system info */
 
-  x-block.info x-value {
+  x-block.system-info img[src$='logo-system.svg'] {
+    margin-bottom: 40px;
+  }
+
+  /* block environment info */
+
+  x-block.environment-info x-value {
     display: inline-block;
     padding: 1px 5px 2px 5px;
     border-radius: 8px;
     line-height: 1.1em;
     color: white}
-  x-block.info x-value[data-state='ok'] {background: %%_color_ok}
-  x-block.info x-value[data-state='warning'] {background: %%_color_warning}
+  x-block.environment-info x-value[data-state='ok'] {background: %%_color_ok}
+  x-block.environment-info x-value[data-state='warning'] {background: %%_color_warning}
 
   /* block logo */
 

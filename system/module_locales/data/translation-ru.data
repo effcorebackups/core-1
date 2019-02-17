@@ -107,6 +107,7 @@ translations
     - Entity %%_name was not installed!: Сущность %%_name не была установлена!
     - Entity %%_name was not uninstalled!: Сущность %%_name не была удалена!
     - Entity %%_name was uninstalled.: Сущность %%_name была удалена.
+    - Environment: Окружение
     - error: ошибка
     - event: событие
     - Event: Событие
@@ -257,7 +258,6 @@ translations
     - Object: Объект
     - ok: ок
     - on this ip: на этом ip
-    - OPcache is anebled: OPcache включен
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
     - OS Version: Версия ОС
@@ -277,6 +277,7 @@ translations
     - Permission: Разрешение
     - Permissions: Разрешения
     - Phone: Телефон
+    - PHP OPcache is anebled: PHP OPcache включен
     - PHP Version: PHP Версия
     - Port: Порт
     - Provisioning key: Ключ обеспечения
@@ -331,7 +332,6 @@ translations
     - Sessions: Сессии
     - set: установка
     - Settings: Настройки
-    - Shared information: Общая информация
     - Shared params: Общие параметры
     - Show description: Показать описание
     - Show or hide content: Показать или скрыть контент

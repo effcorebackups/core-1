@@ -28,32 +28,41 @@ namespace effcore\modules\core {
     ]);
   }
 
-  static function on_show_block_info($page) {
+  static function on_show_block_system_info($page) {
     $storage_files = storage::get('files');
-    $storage_sql   = storage::get('sql');
-    $logo_system = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '30']);
+    $logo_system = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100']);
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
+    $decorator = new decorator('dl');
+    $decorator->data = [[
+      'logo'          => ['title' => '',                     'value' => $logo_system                                      ],
+      'copyright'     => ['title' => 'Copyright',            'value' => '© 2017—2019 Maxim Rysevets. All rights reserved.'],
+      'build_number'  => ['title' => 'Build number',         'value' => $storage_files->select('bundle/system/build')     ],
+      'prov_key'      => ['title' => 'Provisioning key',     'value' => 'not applicable'                                  ],
+      'subscr_to_upd' => ['title' => 'Subscribe to updates', 'value' => 'not applicable'                                  ],
+      'cron_url'      => ['title' => 'Cron URL',             'value' => $cron_link                                        ]
+    ]];
+    return new block('', ['class' => ['system-info' => 'system-info']], [
+      $decorator->build()
+    ]);
+  }
+
+  static function on_show_block_environment_info($page) {
+    $storage_sql = storage::get('sql');
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_value = new markup('x-value', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
     $decorator = new decorator('dl');
     $decorator->data = [[
-      'system'        => ['title' => 'System',                 'value' => $logo_system                                             ],
-      'copyright'     => ['title' => 'Copyright',              'value' => '© 2017—2019 Maxim Rysevets. All rights reserved.'       ],
-      'build_number'  => ['title' => 'Build number',           'value' => $storage_files->select('bundle/system/build')            ],
       'web_server'    => ['title' => 'Web server',             'value' => core::server_software_get()                              ],
       'php_version'   => ['title' => 'PHP Version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
+      'opcache_state' => ['title' => 'PHP OPcache is anebled', 'value' => $is_enabled_opcache_value                                ],
       'storage_sql'   => ['title' => 'Storage SQL',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
       'os_name'       => ['title' => 'Operating System',       'value' => php_uname('s')                                           ],
       'os_version'    => ['title' => 'OS Version',             'value' => php_uname('v')                                           ],
       'hostname'      => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
       'timezone'      => ['title' => 'Server timezone',        'value' => date_default_timezone_get()                              ],
       'datetime'      => ['title' => 'Server UTC date / time', 'value' => core::datetime_get()                                     ],
-      'opcache_state' => ['title' => 'OPcache is anebled',     'value' => $is_enabled_opcache_value                                ],
-      'cron_url'      => ['title' => 'Cron URL',               'value' => $cron_link                                               ],
-      'prov_key'      => ['title' => 'Provisioning key',       'value' => 'not applicable'                                         ],
-      'subscr_to_upd' => ['title' => 'Subscribe to updates',   'value' => 'not applicable'                                         ]
     ]];
-    return new block('Shared information', ['class' => ['info' => 'info']], [
+    return new block('Environment', ['class' => ['environment-info' => 'environment-info']], [
       $decorator->build()
     ]);
   }

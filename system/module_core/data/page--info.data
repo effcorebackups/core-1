@@ -23,10 +23,14 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - block_info|page_part
+    - block_system_info|page_part
         region: content
         type: code
-        source: \effcore\modules\core\events_page_info::on_show_block_info
+        source: \effcore\modules\core\events_page_info::on_show_block_system_info
+    - block_environment_info|page_part
+        region: content
+        type: code
+        source: \effcore\modules\core\events_page_info::on_show_block_environment_info
     - form_access|page_part
         display
           check: user
