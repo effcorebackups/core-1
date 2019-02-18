@@ -7,6 +7,7 @@ forms
     children
     - storage|fieldset
         title: Storage
+        state: opened
         children
       # driver
         - is_mysql|field_radiobutton
@@ -97,6 +98,7 @@ forms
                 - required: false
     - user|fieldset
         title: User
+        state: opened
         children
       # email
         - email|field_email

@@ -294,9 +294,9 @@ namespace effcore {
       $this->transaction_begin();
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
-                                     $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target_!t' => $entity->catalog_name]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => $entity->catalog_name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => $entity->catalog_name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')']);
+                                     $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target_!t' => '~'.$entity->name]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')']);
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
 
@@ -307,7 +307,7 @@ namespace effcore {
           'type' => $c_info->type,
           'name_!f' => $entity->catalog_name.'__'.$c_name,
           'on' => 'ON',
-          'target_!t' => $entity->catalog_name,
+          'target_!t' => '~'.$entity->name,
           'fields_begin' => '(',
           'fields_!,' => $this->fields($c_info->fields),
           'fields_end' => ')'
@@ -322,7 +322,7 @@ namespace effcore {
     if ($this->init()) {
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
-      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target_!t' => $entity->catalog_name        ]);
+      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target_!t' => '~'.$entity->name            ]);
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
       return $result;
@@ -334,9 +334,9 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields_!,' => ['all_!f' => $entity->catalog_name.'.*'] + $params['join_fields'],
+        'fields_!,' => ['all_!f' => '~'.$entity->name.'.*'] + $params['join_fields'],
         'target_begin' => 'FROM',
-        'target_!t' => $entity->catalog_name];
+        'target_!t' => '~'.$entity->name];
       foreach ($params['join'] as $c_join_id => $c_join_part) {
         $query['join'][$c_join_id] = $c_join_part;
       }
@@ -360,7 +360,7 @@ namespace effcore {
         'action' => 'SELECT',
         'fields_!,' => ['all_!f' => '*'],
         'target_begin' => 'FROM',
-        'target_!t' => $entity->catalog_name,
+        'target_!t' => '~'.$entity->name,
         'condition_begin' => 'WHERE',
         'condition' => $this->attributes_prepare($id_fields),
         'limit_begin' => 'LIMIT',
@@ -384,7 +384,7 @@ namespace effcore {
       $new_id = $this->query([
         'action' => 'INSERT',
         'action_subtype' => 'INTO',
-        'target_!t' => $entity->catalog_name,
+        'target_!t' => '~'.$entity->name,
         'fields_begin' => '(',
         'fields_!,' => $this->fields($fields),
         'fields_end' => ')',
@@ -406,7 +406,7 @@ namespace effcore {
       $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
       $row_count = $this->query([
         'action' => 'UPDATE',
-        'target_!t' => $entity->catalog_name,
+        'target_!t' => '~'.$entity->name,
         'fields_and_values_begin' => 'SET',
         'fields_and_values' => $this->attributes_prepare($values, ','),
         'condition_begin' => 'WHERE',
@@ -425,7 +425,7 @@ namespace effcore {
       $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',
-        'target_!t' => $entity->catalog_name,
+        'target_!t' => '~'.$entity->name,
         'condition_begin' => 'WHERE',
         'condition' => $this->attributes_prepare($id_fields)]);
       if ($row_count === 1) {
