@@ -6,35 +6,35 @@ selections
     query_params
     - limit: 1
     fields
-    - id
+    - user.id
         type: field
         entity_name: user
         field_name: id
-    - nick
+    - user.nick
         type: field
         entity_name: user
         field_name: nick
-    - email
+    - user.email
         type: field
         entity_name: user
         field_name: email
-    - timezone
+    - user.timezone
         type: field
         entity_name: user
         field_name: timezone
-    - is_embed
+    - user.is_embed
         type: field
         entity_name: user
         field_name: is_embed
-    - avatar_path
+    - user.avatar_path
         type: field
         entity_name: user
         field_name: avatar_path
-    - created
+    - user.created
         type: field
         entity_name: user
         field_name: created
-    - updated
+    - user.updated
         type: field
         entity_name: user
         field_name: updated

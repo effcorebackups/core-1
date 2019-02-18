@@ -32,15 +32,15 @@ selections
     - limit: 2
     - offset: 0
     fields
-    - nick
+    - user.nick
         type: field
         entity_name: user
         field_name: nick
-    - created
+    - user.created
         type: field
         entity_name: user
         field_name: created
-    - updated
+    - user.updated
         type: field
         entity_name: user
         field_name: updated

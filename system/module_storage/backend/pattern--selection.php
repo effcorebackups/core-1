@@ -12,7 +12,7 @@ namespace effcore {
   public $title;
   public $fields = [];
   public $query_params = [];
-  public $visibility_params = [];
+  public $decorator_params = [];
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
@@ -68,6 +68,10 @@ namespace effcore {
       // }
 
         $decorator = new decorator($this->view_type);
+        foreach ($this->decorator_params as $c_key => $c_value) {
+          $decorator->{$c_key} = $c_value;
+        }
+
         foreach ($instances as $c_instance) {
           $c_row = [];
           foreach ($this->fields as $c_rowid => $c_field) {
@@ -125,16 +129,16 @@ namespace effcore {
     }
   }
 
-  function field_entity_insert($entity_name, $field_name) {
-    $this->fields[$entity_name.'.'.$field_name] = (object)[
+  function field_entity_insert($row_id = null, $entity_name, $field_name) {
+    $this->fields[$row_id ?: $entity_name.'.'.$field_name] = (object)[
       'type'        => 'field',
       'entity_name' => $entity_name,
       'field_name'  => $field_name
     ];
   }
 
-  function field_action_insert($title = 'Actions') {
-    $this->fields['actions'] = (object)[
+  function field_action_insert($row_id = null, $title = '') {
+    $this->fields[$row_id ?: 'actions'] = (object)[
       'type'  => 'actions',
       'title' => $title,
     ];

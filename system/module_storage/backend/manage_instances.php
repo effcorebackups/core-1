@@ -38,12 +38,12 @@ namespace effcore {
     $entity = entity::get($entity_name);
     if ($entity) {
       $selection = new selection;
-      foreach ($entity->fields as $c_name => $c_info) {
-        if (!empty($c_info->show_in_manager)) {
-          $selection->field_entity_insert($entity->name, $c_name);
+      foreach ($entity->fields as $c_field_name => $c_field_info) {
+        if (!empty($c_field_info->show_in_manager)) {
+          $selection->field_entity_insert(null, $entity->name, $c_field_name);
         }
       }
-      $selection->field_action_insert(null);
+      $selection->field_action_insert();
       $markup = $selection->build();
       return new block('', ['class' => [
         $entity->name =>
@@ -71,12 +71,12 @@ namespace effcore {
           $selection->title = '';
           $selection->view_type = 'ul';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
-          foreach ($entity->fields as $c_name => $c_info) {
-            if (!empty($c_info->show_in_manager)) {
-              $selection->field_entity_insert($entity->name, $c_name);
+          foreach ($entity->fields as $c_field_name => $c_field_info) {
+            if (!empty($c_field_info->show_in_manager)) {
+              $selection->field_entity_insert(null, $entity->name, $c_field_name);
             }
           }
-          $selection->field_action_insert(null);
+          $selection->field_action_insert();
           $markup = $selection->build();
           return new block('', ['class' => [
             $entity->name =>
