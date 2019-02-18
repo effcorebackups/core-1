@@ -14,10 +14,10 @@ pages
         region: top
         type: code
         source: \effcore\modules\locales\events_page::on_show_block_menu_languages
-    - logo_system|page_part
+    - block_system_info|page_part
         region: top
         type: code
-        source: \effcore\modules\core\events_page_info::on_show_logo_system
+        source: \effcore\modules\core\events_page_info::on_show_block_system_info
     - title|page_part
         region: title
         type: code

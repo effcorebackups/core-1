@@ -17,26 +17,17 @@ namespace effcore\modules\core {
           use \effcore\translation;
           abstract class events_page_info {
 
-  static function on_show_logo_system($page) {
-    $logo           = new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100']);
-    $info_copyright = new markup('x-info-copyright', [], translation::get('© 2017—2019 Maxim Rysevets. All rights reserved.'));
-    $info_build     = new markup('x-info-build',     [], translation::get('Build number: %%_number', ['number' => storage::get('files')->select('bundle/system/build')]));
-    return new block('', ['class' => ['logo-system' => 'logo-system']], [
-      $logo,
-      $info_copyright,
-      $info_build
-    ]);
-  }
-
   static function on_show_block_system_info($page) {
-    $storage_files = storage::get('files');
+    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100']));
+    $copyright = new markup('x-copyright', [], '© 2017—2019 Maxim Rysevets. All rights reserved.');
+    $build     = new markup('x-build',     [], [
+      new markup('x-title', [], 'Build number'),
+      new markup('x-value', [], storage::get('files')->select('bundle/system/build'))
+    ]);
     return new block('', ['class' => ['system-info' => 'system-info']], [
-      new markup('x-system_logo', [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'height' => '100'])),
-      new markup('x-copyright', [], '© 2017—2019 Maxim Rysevets. All rights reserved.'),
-      new markup('x-build_number', [], [
-        new markup('x-title', [], 'Build number'),
-        new markup('x-value', [], $storage_files->select('bundle/system/build'))
-      ])
+      $logo,
+      $copyright,
+      $build
     ]);
   }
 

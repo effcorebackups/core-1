@@ -28,7 +28,6 @@ translations
     - avatar: аватар
     - Background color: Цвет фона
     - Build number: Номер сборки
-    - Build number\: %%_number: Номер сборки: %%_number
     - bundle build number: номер сборки пакета
     - bundle id: id пакета
     - button: кнопка
