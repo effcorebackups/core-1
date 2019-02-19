@@ -3,25 +3,18 @@ selections
     id: demo_join
     title: Selection with JOIN
     view_type: ul
+    join
+    - relation_role_ws_user
+        entity_name: relation_role_ws_user
+        field_name: id_user
+        on_entity_name: user
+        on_field_name: id
+    - role
+        entity_name: role
+        field_name: id
+        on_entity_name: relation_role_ws_user
+        on_field_name: id_role
     query_params
-    - join_fields
-      - id_role_!f: ~relation_role_ws_user.id_role
-      - title_!f: ~role.title
-    - join
-      - relation_role_ws_user
-        - type: LEFT OUTER JOIN
-        - target_!t: ~relation_role_ws_user
-        - on: ON
-        - left_!f: ~user.id
-        - operator: =
-        - right_!f: ~relation_role_ws_user.id_user
-      - role
-        - type: LEFT OUTER JOIN
-        - target_!t: ~role
-        - on: ON
-        - left_!f: ~relation_role_ws_user.id_role
-        - operator: =
-        - right_!f: ~role.id
     - conditions
       - id_!f: ~user.id
       - operator: =
@@ -30,7 +23,6 @@ selections
       - title_!f: ~role.title
       - type: ASC
     - limit: 2
-    - offset: 0
     fields
     - user.nick
         type: field
@@ -44,6 +36,14 @@ selections
         type: field
         entity_name: user
         field_name: updated
+    - role.title
+        type: join_field
+        entity_name: role
+        field_name: title
+    - relation_role_ws_user.id_role
+        type: join_field
+        entity_name: relation_role_ws_user
+        field_name: id_role
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
