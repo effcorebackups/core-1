@@ -166,6 +166,9 @@
 
   x-selection {display: block}
 
+  /* x-no-result */
+
+  x-decorator[data-view-type='table'] x-no-result,
   x-selection[data-view-type='table'] x-no-result {
     display: block;
     padding: 20px;

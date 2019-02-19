@@ -65,7 +65,8 @@ namespace effcore {
 
   # wrap the result in the decorator
     $result = null;
-    if (isset($instances)) {
+    if (isset($instances) &&
+        count($instances)) {
 
    // $pager = new pager();
    // if ($pager->has_error) {
