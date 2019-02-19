@@ -34,8 +34,7 @@ namespace effcore {
     }
 
   # get data from storage
-    if (count($used_storages) == 1 &&
-        count($used_entities) == 1) {
+    if (count($used_storages) == 1) {
       $storage   = storage::get(reset($used_storages));
       $entity    =  entity::get(reset($used_entities));
       $instances =  entity::get(reset($used_entities))->instances_select([
@@ -47,74 +46,68 @@ namespace effcore {
         'offset'      => $this->query_params['offset']      ?? 0
       ]);
       $id_keys = $entity->real_id_get();
-    }
-    if (count($used_storages) == 1 &&
-        count($used_entities) >= 2) {
-      # @todo: make functionality (query with join)
-    }
-    if (count($used_storages) >= 2) {
-      message::insert(translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning');
+    } else {
+      message::insert(
+        translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
+      );
       return new node();
     }
 
   # make result
     $result = null;
-    if (!empty($entity)) {
-      if ($instances) {
+    if ($instances) {
 
-      // $pager = new pager();
-      // if ($pager->has_error) {
-      //   core::send_header_and_exit('page_not_found');
-      // }
+    // $pager = new pager();
+    // if ($pager->has_error) {
+    //   core::send_header_and_exit('page_not_found');
+    // }
 
-        $decorator = new decorator($this->view_type);
-        foreach ($this->decorator_params as $c_key => $c_value) {
-          $decorator->{$c_key} = $c_value;
-        }
+      $decorator = new decorator($this->view_type);
+      foreach ($this->decorator_params as $c_key => $c_value) {
+        $decorator->{$c_key} = $c_value;
+      }
 
-        foreach ($instances as $c_instance) {
-          $c_row = [];
-          foreach ($this->fields as $c_rowid => $c_field) {
-            switch ($c_field->type) {
-              case 'field':
-                $c_title = $entity->fields[$c_field->field_name]->title;
-                $c_value_type = $entity->fields[$c_field->field_name]->type;
-                $c_value = $c_instance->{$c_field->field_name};
-                if ($c_value_type == 'real')     $c_value = locale::  number_format($c_value, 10);
-                if ($c_value_type == 'date')     $c_value = locale::    date_format($c_value);
-                if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
-                if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
-                if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-                $c_row[$c_rowid] = [
-                  'title' => $c_title,
-                  'value' => $c_value
-                ];
-                break;
-              case 'actions':
-                $c_row[$c_rowid] = [
-                  'title' => $c_field->title ?? '',
-                  'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
-                ];
-                break;
-              case 'markup':
-                $c_row[$c_rowid] = [
-                  'title' => $c_field->title,
-                  'value' => $c_field->markup
-                ];
-                break;
-            }
+      foreach ($instances as $c_instance) {
+        $c_row = [];
+        foreach ($this->fields as $c_rowid => $c_field) {
+          switch ($c_field->type) {
+            case 'field':
+              $c_title = $entity->fields[$c_field->field_name]->title;
+              $c_value_type = $entity->fields[$c_field->field_name]->type;
+              $c_value = $c_instance->{$c_field->field_name};
+              if ($c_value_type == 'real')     $c_value = locale::  number_format($c_value, 10);
+              if ($c_value_type == 'date')     $c_value = locale::    date_format($c_value);
+              if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
+              if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
+              if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
+              $c_row[$c_rowid] = [
+                'title' => $c_title,
+                'value' => $c_value
+              ];
+              break;
+            case 'actions':
+              $c_row[$c_rowid] = [
+                'title' => $c_field->title ?? '',
+                'value' => $id_keys ? $this->action_list_get($entity, $c_instance, $id_keys) : ''
+              ];
+              break;
+            case 'markup':
+              $c_row[$c_rowid] = [
+                'title' => $c_field->title,
+                'value' => $c_field->markup
+              ];
+              break;
           }
-          $decorator->data[] = $c_row;
         }
-             $result = $decorator->build();
-      } else $result = new markup('x-no-result', [], 'no items');
+        $decorator->data[] = $c_row;
+      }
+           $result = $decorator->build();
+    } else $result = new markup('x-no-result', [], 'no items');
 
-    # return result
-      return new markup('x-selection', [
-        'data-view-type' => $this->view_type,
-        'data-entity'    => $entity->name], $result
-      );
-    }
+  # return result
+    return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $entity->name],
+      $result
+    );
   }
 
   function action_list_get($entity, $instance, $id_keys) {

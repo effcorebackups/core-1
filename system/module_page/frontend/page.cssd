@@ -166,7 +166,7 @@
 
   x-selection {display: block}
 
-  x-selection x-no-result {
+  x-selection[data-view-type='table'] x-no-result {
     display: block;
     padding: 20px;
     border-top: 5px solid %%_color_bg;
