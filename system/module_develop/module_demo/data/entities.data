@@ -197,6 +197,25 @@ entities
         - =: f_integer_1
         on_update: cascade
         on_delete: cascade
+- demo_data|entity
+    name: demo_data
+    title: Demo: data
+    title_plural: Demo: data
+    catalog_name: demo_data
+    fields
+    - nick
+        title: Nick
+        type: varchar
+        size: 64
+        not_null: true
+    - created
+        title: Created
+        type: datetime
+        not_null: true
+    - is_even
+        title: Is even
+        type: boolean
+        not_null: true
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes
