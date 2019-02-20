@@ -19,7 +19,7 @@ instances
     entity_name: demo_types
     values
     - id: 2
-    - description: row with non default values
+    - description: row with non-default values
     - f_integer: 123
     - f_real: 123.456
     - f_varchar: text
@@ -85,15 +85,15 @@ instances
 - demo_indexes_1|instance
     entity_name: demo_indexes
     values
-    - f_integer_1: 1
-    - f_integer_2: 100
+    - f_index_unique: unique value 1
+    - f_index: value 1
 - demo_indexes_2|instance
     entity_name: demo_indexes
     values
-    - f_integer_1: 2
-    - f_integer_2: 200
+    - f_index_unique: unique value 2
+    - f_index: value 2
 - demo_indexes_3|instance
     entity_name: demo_indexes
     values
-    - f_integer_1: 3
-    - f_integer_2: 300
+    - f_index_unique: unique value 3
+    - f_index: value 3

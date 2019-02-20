@@ -234,30 +234,32 @@ entities
     title_plural: Demo: indexes
     catalog_name: demo_indexes
     fields
-    - f_integer_1
-        title: Field integer 1
-        type: integer
+    - f_index_unique
+        title: Field index unique
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
-        default: 0
         show_in_manager: true
-    - f_integer_2
-        title: Field integer 2
-        type: integer
+    - f_index
+        title: Field index
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
-        default: 0
         show_in_manager: true
     indexes
     # ─────────────────────────────────────────────────────────────────────
     # CREATE UNIQUE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
-    - index_f_integer_1
+    - index_f_index_unique
         type: unique index
         fields
-        - =: f_integer_1
+        - =: f_index_unique
     # ─────────────────────────────────────────────────────────────────────
     # CREATE INDEX name ON table_name (field_1, …);
     # ─────────────────────────────────────────────────────────────────────
-    - index_f_integer_2
+    - index_f_index
         type: index
         fields
-        - =: f_integer_2
+        - =: f_index
