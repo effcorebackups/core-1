@@ -214,6 +214,10 @@ entities
     title_plural: Demo: data
     catalog_name: demo_data
     fields
+    - id
+        title: ID
+        type: integer
+        not_null: true
     - nick
         title: Nick
         type: varchar
@@ -228,6 +232,20 @@ entities
         title: Is even
         type: boolean
         not_null: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_nick
+        type: unique index
+        fields
+        - =: nick
+    - index_created
+        type: index
+        fields
+        - =: created
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes
