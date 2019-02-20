@@ -8,6 +8,27 @@ instances
     - id: demo
     - title: Demo
 # ─────────────────────────────────────────────────────────────────────
+# demo types
+# ─────────────────────────────────────────────────────────────────────
+- demo_types_example_1|instance
+    entity_name: demo_types
+    values
+    - id: 1
+    - description: row with default values
+- demo_types_example_2|instance
+    entity_name: demo_types
+    values
+    - id: 2
+    - description: row with non default values
+    - f_integer: 123
+    - f_real: 123.456
+    - f_varchar: text
+    - f_time: 12:34:56
+    - f_date: 2030-12-31
+    - f_datetime: 2030-12-31 12:34:56
+    - f_boolean: 1
+    - f_blob: 12345
+# ─────────────────────────────────────────────────────────────────────
 # demo autoincrement
 # ─────────────────────────────────────────────────────────────────────
 - demo_autoincrement_1|instance
@@ -76,24 +97,3 @@ instances
     values
     - f_integer_1: 3
     - f_integer_2: 300
-# ─────────────────────────────────────────────────────────────────────
-# demo types
-# ─────────────────────────────────────────────────────────────────────
-- demo_types_example_1|instance
-    entity_name: demo_types
-    values
-    - id: 1
-    - description: row with default values
-- demo_types_example_2|instance
-    entity_name: demo_types
-    values
-    - id: 2
-    - description: row with non default values
-    - f_integer: 123
-    - f_real: 123.456
-    - f_varchar: text
-    - f_time: 12:34:56
-    - f_date: 2030-12-31
-    - f_datetime: 2030-12-31 12:34:56
-    - f_boolean: 1
-    - f_blob: 12345
