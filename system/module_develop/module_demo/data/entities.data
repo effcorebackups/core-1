@@ -218,20 +218,24 @@ entities
         title: ID
         type: integer
         not_null: true
+        show_in_manager: true
     - nick
         title: Nick
         type: varchar
         size: 64
         collate: nocase
         not_null: true
+        show_in_manager: true
     - created
         title: Created
         type: datetime
         not_null: true
+        show_in_manager: true
     - is_even
         title: Is even
         type: boolean
         not_null: true
+        show_in_manager: true
     constraints
     - primary_id
         type: primary
@@ -246,6 +250,32 @@ entities
         type: index
         fields
         - =: created
+- demo_data_join|entity
+    name: demo_data_join
+    title: Demo: data JOIN
+    title_plural: Demo: data JOIN
+    catalog_name: demo_data_join
+    fields
+    - id_data
+        title: Data ID
+        type: integer
+        not_null: true
+    - email
+        title: EMail
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        show_in_manager: true
+    indexes
+    - index_id_data
+        type: unique index
+        fields
+        - =: id_data
+    - index_email
+        type: unique index
+        fields
+        - =: email
 - demo_indexes|entity
     name: demo_indexes
     title: Demo: indexes
