@@ -81,14 +81,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
-    - block_demo_selection_demo_join|page_part
+    - block_demo_selection_demo_data_join|page_part
         display
           check: page_args
           where: type
           match: %^embedded/selections$%
         region: content
         type: link
-        source: selections/demo/demo_join
+        source: selections/demo/demo_data_join
     - block_demo_selection_demo_types|page_part
         display
           check: page_args

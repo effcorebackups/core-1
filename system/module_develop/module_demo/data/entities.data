@@ -252,8 +252,8 @@ entities
         - =: created
 - demo_data_join|entity
     name: demo_data_join
-    title: Demo: data JOIN
-    title_plural: Demo: data JOIN
+    title: Demo: data + join
+    title_plural: Demo: data + join
     catalog_name: demo_data_join
     fields
     - id_data

@@ -40,6 +40,8 @@ translations
     - Demo\: autoincrement: Демо: автоинкремент
     - Demo\: collations: Демо: сравнения
     - Demo\: constraints: Демо: ограничения
+    - Demo\: data + join: Демо: данные + join
+    - Demo\: data: Демо: данные
     - Demo\: indexes: Демо: индексы
     - Demo\: types: Демо: типы
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
@@ -133,8 +135,8 @@ translations
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
+    - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
-    - Selection with JOIN: Выборка с JOIN
     - show for admin: показывать для администратора
     - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"

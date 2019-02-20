@@ -1,49 +1,44 @@
 selections
-- demo_join|selection
-    id: demo_join
-    title: Selection with JOIN
-    view_type: ul
+- demo_data_join|selection
+    id: demo_data_join
+    title: Selection of "demo_data" entities + join
+    view_type: table
     join
-    - relation_role_ws_user
-        entity_name: relation_role_ws_user
-        field_name: id_user
-        on_entity_name: user
+    - demo_data_join
+        entity_name: demo_data_join
+        field_name: id_data
+        on_entity_name: demo_data
         on_field_name: id
-    - role
-        entity_name: role
-        field_name: id
-        on_entity_name: relation_role_ws_user
-        on_field_name: id_role
     query_params
     - conditions
-      - id_!f: ~user.id
-      - operator: =
-      - id_!v: 1
+      - id_!f: ~demo_data.id
+      - operator: >=
+      - id_!v: 100
     - order
-      - title_!f: ~role.title
+      - title_!f: ~demo_data.id
       - type: ASC
-    - limit: 2
+    - limit: 20
     fields
-    - user.nick
+    - demo_data.id
         type: field
-        entity_name: user
+        entity_name: demo_data
+        field_name: id
+    - demo_data.nick
+        type: field
+        entity_name: demo_data
         field_name: nick
-    - user.created
+    - demo_data.created
         type: field
-        entity_name: user
+        entity_name: demo_data
         field_name: created
-    - user.updated
+    - demo_data.is_even
         type: field
-        entity_name: user
-        field_name: updated
-    - role.title
+        entity_name: demo_data
+        field_name: is_even
+    - demo_data_join.email
         type: join_field
-        entity_name: role
-        field_name: title
-    - relation_role_ws_user.id_role
-        type: join_field
-        entity_name: relation_role_ws_user
-        field_name: id_role
+        entity_name: demo_data_join
+        field_name: email
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
