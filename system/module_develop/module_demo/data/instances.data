@@ -8,59 +8,20 @@ instances
     - id: demo
     - title: Demo
 # ─────────────────────────────────────────────────────────────────────
-# demo types
-# ─────────────────────────────────────────────────────────────────────
-- demo_types_example_1|instance
-    entity_name: demo_types
-    values
-    - id: 1
-    - description: default values
-- demo_types_example_2|instance
-    entity_name: demo_types
-    values
-    - id: 2
-    - description: non default values
-    - f_integer: 123
-    - f_real: 123.456
-    - f_varchar: text
-    - f_time: 12:34:56
-    - f_date: 2030-12-31
-    - f_datetime: 2030-12-31 12:34:56
-    - f_boolean: 1
-    - f_blob: 12345
-# ─────────────────────────────────────────────────────────────────────
 # demo autoincrement
 # ─────────────────────────────────────────────────────────────────────
 - demo_autoincrement_1|instance
     entity_name: demo_autoincrement
     values
-    - f_integer_2: 100
+    - description: row with auto id = 1
 - demo_autoincrement_2|instance
     entity_name: demo_autoincrement
     values
-    - f_integer_2: 200
+    - description: row with auto id = 2
 - demo_autoincrement_3|instance
     entity_name: demo_autoincrement
     values
-    - f_integer_2: 300
-# ─────────────────────────────────────────────────────────────────────
-# demo constraints
-# ─────────────────────────────────────────────────────────────────────
-- demo_constraints_1|instance
-    entity_name: demo_constraints
-    values
-    - f_integer_1: 1
-    - f_integer_2: 100
-- demo_constraints_2|instance
-    entity_name: demo_constraints
-    values
-    - f_integer_1: 2
-    - f_integer_2: 200
-- demo_constraints_3|instance
-    entity_name: demo_constraints
-    values
-    - f_integer_1: 3
-    - f_integer_2: 300
+    - description: row with auto id = 3
 # ─────────────────────────────────────────────────────────────────────
 # demo collations
 # ─────────────────────────────────────────────────────────────────────
@@ -76,6 +37,27 @@ instances
     - id: 2
     - f_nocase: AAA
     - f_binary: AAA
+# ─────────────────────────────────────────────────────────────────────
+# demo constraints
+# ─────────────────────────────────────────────────────────────────────
+- demo_constraints_1|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary value 1
+    - f_unique: unique value 1
+    - f_foreign: 1
+- demo_constraints_2|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary value 2
+    - f_unique: unique value 2
+    - f_foreign: 2
+- demo_constraints_3|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary value 3
+    - f_unique: unique value 3
+    - f_foreign: 3
 # ─────────────────────────────────────────────────────────────────────
 # demo indexes
 # ─────────────────────────────────────────────────────────────────────
@@ -94,3 +76,24 @@ instances
     values
     - f_integer_1: 3
     - f_integer_2: 300
+# ─────────────────────────────────────────────────────────────────────
+# demo types
+# ─────────────────────────────────────────────────────────────────────
+- demo_types_example_1|instance
+    entity_name: demo_types
+    values
+    - id: 1
+    - description: row with default values
+- demo_types_example_2|instance
+    entity_name: demo_types
+    values
+    - id: 2
+    - description: row with non default values
+    - f_integer: 123
+    - f_real: 123.456
+    - f_varchar: text
+    - f_time: 12:34:56
+    - f_date: 2030-12-31
+    - f_datetime: 2030-12-31 12:34:56
+    - f_boolean: 1
+    - f_blob: 12345

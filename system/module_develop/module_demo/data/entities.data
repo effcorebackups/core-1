@@ -14,6 +14,7 @@ entities
         title: Description
         type: varchar
         size: 255
+        collate: nocase
         null: true
         show_in_manager: true
     # ─────────────────────────────────────────────────────────────────────
@@ -39,6 +40,7 @@ entities
         title: Field varchar
         type: varchar
         size: 255
+        collate: nocase
         not_null: true
         default: default text
     # ─────────────────────────────────────────────────────────────────────
@@ -91,34 +93,35 @@ entities
     title_plural: Demo: autoincrement
     catalog_name: demo_autoincrement
     fields
-    - f_integer_1
-        title: Field integer 1
+    - id
+        title: ID
         type: autoincrement
         not_null: true
         show_in_manager: true
-    - f_integer_2
-        title: Field integer 2
-        type: integer
-        not_null: true
-        default: 0
+    - description
+        title: Description
+        type: varchar
+        size: 255
+        collate: nocase
+        null: true
         show_in_manager: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
     # sqlite: field_1 integer … primary key autoincrement
     # ─────────────────────────────────────────────────────────────────────
-    - primary_f_integer_1
+    - primary_id
         type: primary
         fields
-        - =: f_integer_1
+        - =: id
     indexes
     # ─────────────────────────────────────────────────────────────────────
-    # note: helper for select and delete instance with unknown primary id
+    # note: helper for select and delete instance with unknown primary id (on install)
     # ─────────────────────────────────────────────────────────────────────
-    - index_f_integer_2
+    - index_description
         type: unique index
         fields
-        - =: f_integer_2
+        - =: description
 - demo_collations|entity
     name: demo_collations
     title: Demo: collations
@@ -155,14 +158,22 @@ entities
     title_plural: Demo: constraints
     catalog_name: demo_constraints
     fields
-    - f_integer_1
-        title: Field integer 1
-        type: integer
+    - f_primary
+        title: Field primary
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
-        default: 0
         show_in_manager: true
-    - f_integer_2
-        title: Field integer 2
+    - f_unique
+        title: Field unique
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        show_in_manager: true
+    - f_foreign
+        title: Field foreign
         type: integer
         not_null: true
         default: 0
@@ -171,30 +182,30 @@ entities
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
-    - primary_f_integer_1
+    - primary_f_primary
         type: primary
         fields
-        - =: f_integer_1
+        - =: f_primary
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name UNIQUE (field_1, …)
     # ─────────────────────────────────────────────────────────────────────
-    - unique_f_integer_2
+    - unique_f_unique
         type: unique
         fields
-        - =: f_integer_2
+        - =: f_unique
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name FOREIGN KEY (field)
     #                 REFERENCES other_name(field)
     #                 ON UPDATE CASCADE|RESTRICT|NO ACTION
     #                 ON DELETE CASCADE|RESTRICT|NO ACTION
     # ─────────────────────────────────────────────────────────────────────
-    - foreign_f_integer_2
+    - foreign_f_foreign
         type: foreign
         fields
-        - =: f_integer_1
+        - =: f_foreign
         references: demo_autoincrement
         references_fields
-        - =: f_integer_1
+        - =: id
         on_update: cascade
         on_delete: cascade
 - demo_data|entity
@@ -207,6 +218,7 @@ entities
         title: Nick
         type: varchar
         size: 64
+        collate: nocase
         not_null: true
     - created
         title: Created
