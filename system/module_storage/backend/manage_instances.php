@@ -44,11 +44,10 @@ namespace effcore {
         }
       }
       $selection->field_action_insert();
-      $markup = $selection->build();
       return new block('', ['class' => [
         $entity->name =>
         $entity->name]],
-        $markup
+        $selection
       );
     }
   }
@@ -77,11 +76,10 @@ namespace effcore {
             }
           }
           $selection->field_action_insert();
-          $markup = $selection->build();
           return new block('', ['class' => [
             $entity->name =>
             $entity->name]],
-            $markup
+            $selection
           );
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');

@@ -5,22 +5,28 @@
   ##################################################################
 
 namespace effcore {
-          class selection extends node implements has_external_cache {
+          class selection extends markup implements has_external_cache {
 
-  public $id;
+  public $tag_name = 'x-selection';
   public $view_type = 'table'; # table | ul | dl
+  public $id;
   public $title;
   public $fields = [];
   public $query_params = [];
   public $decorator_params = [];
+  public $is_paged = true;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
     if ($view_type) $this->view_type = $view_type;
-    parent::__construct([], [], $weight);
+    parent::__construct(null, [], [], $weight);
   }
 
   function build() {
+    $this->children_delete_all();
+    $this->attribute_insert('data-view-type', $this->view_type);
+    $this->attribute_insert('data-id', $this->id);
+
     $used_entities = [];
     $used_storages = [];
 
@@ -37,6 +43,7 @@ namespace effcore {
   # prepare the query and request data from the storage
     if (count($used_storages) == 1) {
       $main_entity = entity::get(reset($used_entities));
+      $this->attribute_insert('data-main-entity', $main_entity->name);
       $id_keys = $main_entity->real_id_get();
     # prepare join_fields
       foreach ($this->fields as $c_id => $c_field) {
@@ -114,13 +121,17 @@ namespace effcore {
         }
         $decorator->data[] = $c_row;
       }
-           $result = $decorator->build();
-    } else $result = new markup('x-no-result', [], 'no items');
 
-  # return result
-    return new markup('x-selection', ['data-view-type' => $this->view_type, 'data-entity' => $main_entity->name],
-      $result
-    );
+      $this->child_insert(
+        $decorator->build()
+      );
+    } else {
+      $this->child_insert(
+        new markup('x-no-result', [], 'no items')
+      );
+    }
+
+    return $this;
   }
 
   function action_list_get($entity, $instance, $id_keys) {
@@ -163,8 +174,7 @@ namespace effcore {
   }
 
   function render() {
-    $this->child_delete('markup');
-    $this->child_insert($this->build(), 'markup');
+    $this->build();
     return parent::render();
   }
 
