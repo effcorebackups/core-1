@@ -55,7 +55,7 @@ namespace effcore {
 
   # call init handlers
     $items = $this->form_items_get();
-    event::start('on_form_init', $id, [$this, $items]);
+    event::start('on_form_init', $id, [&$this, &$items]);
     $items = $this->form_items_get();
 
   # ─────────────────────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ namespace effcore {
 
     # call form validate handlers
       if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [$this, $items]);
+        event::start('on_form_validate', $id, [&$this, &$items]);
       }
 
     # send test headers
@@ -97,7 +97,7 @@ namespace effcore {
 
     # call submit handler (if no errors)
       if (!static::$errors) {
-        event::start('on_form_submit', $id, [$this, $items]);
+        event::start('on_form_submit', $id, [&$this, &$items]);
       }
 
     # validation cache

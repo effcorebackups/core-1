@@ -57,6 +57,7 @@ namespace effcore {
       }
     }
 
+    event::start('on_page_before_render', null, [&$this, &$template]);
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
     $html = $template->target_get('html');
@@ -74,7 +75,6 @@ namespace effcore {
     }
     if ($user_agent->name) $template->data->children['html']->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $template->data->children['html']->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
-    event::start('on_page_before_render', null, [$this, $template]);
 
     $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());

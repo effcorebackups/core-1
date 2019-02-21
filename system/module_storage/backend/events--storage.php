@@ -11,11 +11,11 @@ namespace effcore\modules\storage {
           use \effcore\timer;
           abstract class events_storage {
 
-  static function on_storage_init_before($storage) {
+  static function on_init_before($storage) {
     timer::tap('storage init');
   }
 
-  static function on_storage_init_after($storage) {
+  static function on_init_after($storage) {
     timer::tap('storage init');
     console::log_insert('storage', 'init.', 'storage %%_name was initialized', 'ok',
       timer::period_get('storage init', -1, -2), ['name' => $storage->name]

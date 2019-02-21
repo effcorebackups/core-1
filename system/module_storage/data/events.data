@@ -6,11 +6,11 @@ events
   on_storage_init_before
   - pdo|event
       for: pdo
-      handler: \effcore\modules\storage\events_storage::on_storage_init_before
+      handler: \effcore\modules\storage\events_storage::on_init_before
   on_storage_init_after
   - pdo|event
       for: pdo
-      handler: \effcore\modules\storage\events_storage::on_storage_init_after
+      handler: \effcore\modules\storage\events_storage::on_init_after
   on_query_before
   - pdo|event
       for: pdo

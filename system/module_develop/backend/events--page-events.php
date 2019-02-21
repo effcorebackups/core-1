@@ -21,7 +21,7 @@ namespace effcore\modules\develop {
         $decorator->data[] = [
           'type'      => ['value' => new text_simple($c_event_type),       'title' => 'Type'     ],
           'module_id' => ['value' => new text_simple($c_event->module_id), 'title' => 'Module ID'],
-          'for'       => ['value' => new text_simple($c_event->for),       'title' => 'For'      ],
+          'for_id'    => ['value' => new text_simple($c_event->for),       'title' => 'For ID'   ],
           'handler'   => ['value' => new text_simple($c_event->handler),   'title' => 'Handler'  ],
           'weight'    => ['value' => new text_simple($c_event->weight),    'title' => 'Weight'   ]
         ];
