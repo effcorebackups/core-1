@@ -106,6 +106,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_table_title = new markup('h3', [], 'Table');
     $decorator_table = new decorator('table');
+    $decorator_table->id = 'demo_table';
     $decorator_table->visibility_rowid  = 'visible'; # visible | not_int | hidden
     $decorator_table->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_table->data = [
@@ -126,6 +127,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_ul_title = new markup('h3', [], 'Unordered list');
     $decorator_ul = new decorator('ul');
+    $decorator_ul->id = 'demo_ul';
     $decorator_ul->visibility_rowid  = 'visible'; # visible | not_int | hidden
     $decorator_ul->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_ul->data = [
@@ -146,6 +148,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $decorator_dl_title = new markup('h3', [], 'Definition list');
     $decorator_dl = new decorator('dl');
+    $decorator_dl->id = 'demo_dl';
     $decorator_dl->visibility_rowid  = 'visible'; # visible | not_int | hidden
     $decorator_dl->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_dl->data = [

@@ -35,6 +35,7 @@ namespace effcore\modules\core {
     $storage_files = storage::get('files');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
     $decorator = new decorator('dl');
+    $decorator->id = 'service_info';
     $decorator->data = [[
       'prov_key'      => ['title' => 'Provisioning key',     'value' => 'not applicable'],
       'subscr_to_upd' => ['title' => 'Subscribe to updates', 'value' => 'not applicable'],
@@ -50,6 +51,7 @@ namespace effcore\modules\core {
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_value = new markup('x-value', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
     $decorator = new decorator('dl');
+    $decorator->id = 'environment_info';
     $decorator->data = [[
       'web_server'    => ['title' => 'Web server',             'value' => core::server_software_get()                              ],
       'php_version'   => ['title' => 'PHP Version',            'value' => phpversion().' ('.php_uname('m').')'                     ],

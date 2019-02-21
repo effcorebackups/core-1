@@ -43,16 +43,44 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function start($type, $id = null, $args = []) {
+  #                                                    ╔══════════════════════════════════════════╗
+  #                                                    ║ - module_1|event                         ║
+  #                                                 ┌─▶║     for: id1                             ║
+  #                                                 │  ║     handler: \…\module_1\events::on_name ║
+  #                                                 │  ╠──────────────────────────────────────────╣
+  # ╔═══════════════════════════════════════════╗   │  ║ - module_2|event                         ║
+  # ║ event::start('on_name', null, [&$param1]) ║───┼─▶║     for: id2                             ║
+  # ╚═══════════════════════════════════════════╝   │  ║     handler: \…\module_2\events::on_name ║
+  #                                                 │  ╠──────────────────────────────────────────╣
+  #                                                 │  ║ - module_3|event                         ║
+  #                                                 └─▶║     for: null                            ║
+  #                                                    ║     handler: \…\module_3\events::on_name ║
+  #                                                    ╚══════════════════════════════════════════╝
+  #
+  #                                                    ╔══════════════════════════════════════════╗
+  #                                                    ║ - module_1|event                         ║
+  #                                                 ┌─▶║     for: id1                             ║
+  #                                                 │  ║     handler: \…\module_1\events::on_name ║
+  #                                                 │  ╠──────────────────────────────────────────╣
+  # ╔═══════════════════════════════════════════╗   │  ║ - module_2|event                         ║
+  # ║ event::start('on_name', 'id1' [&$param1]) ║───┤  ║     for: id2                             ║
+  # ╚═══════════════════════════════════════════╝   │  ║     handler: \…\module_2\events::on_name ║
+  #                                                 │  ╠──────────────────────────────────────────╣
+  #                                                 │  ║ - module_3|event                         ║
+  #                                                 └─▶║     for: null                            ║
+  #                                                    ║     handler: \…\module_3\events::on_name ║
+  #                                                    ╚══════════════════════════════════════════╝
+
+  static function start($type, $for = null, $args = []) {
     $result = [];
     if (!empty(static::all_get()[$type])) {
       foreach (static::all_get()[$type] as $c_event) {
-        if ($id == $c_event->for || $id == null) {
-          timer::tap('event call: '.$c_event->for);
+        if ($for == null || $for == $c_event->for || $c_event->for == null) {
+          timer::tap('event call: '.$type);
           $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, $args);
-          timer::tap('event call: '.$c_event->for);
+          timer::tap('event call: '.$type);
           console::log_insert('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
-            timer::period_get('event call: '.$c_event->for, -1, -2)
+            timer::period_get('event call: '.$type, -1, -2)
           );
         }
       }
