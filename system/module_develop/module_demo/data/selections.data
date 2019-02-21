@@ -3,6 +3,7 @@ selections
     id: demo_data_join
     title: Selection of "demo_data" entities + join
     view_type: table
+    limit: 20
     join
     - demo_data_join
         entity_name: demo_data_join
@@ -17,7 +18,6 @@ selections
     - order
       - title_!f: ~demo_data.id
       - type: ASC
-    - limit: 20
     fields
     - demo_data.id
         type: field

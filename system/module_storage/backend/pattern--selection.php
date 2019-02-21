@@ -14,6 +14,7 @@ namespace effcore {
   public $fields = [];
   public $query_params = [];
   public $decorator_params = [];
+  public $limit = 50;
   public $is_paged = true;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
@@ -59,7 +60,7 @@ namespace effcore {
           'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_field_name
         ];
       }
-      $this->query_params['limit'] = $this->query_params['limit'] ?? 50;
+      $this->query_params['limit'] = $this->limit;
       $instances = $main_entity->instances_select(
         $this->query_params
       );

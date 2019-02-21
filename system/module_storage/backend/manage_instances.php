@@ -66,9 +66,7 @@ namespace effcore {
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
         # create selection
-          $selection = new selection;
-          $selection->title = '';
-          $selection->view_type = 'ul';
+          $selection = new selection('', 'ul');
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           foreach ($entity->fields as $c_field_name => $c_field_info) {
             if (!empty($c_field_info->show_in_manager)) {
