@@ -62,9 +62,8 @@ namespace effcore {
         ];
       }
       $this->query_params['limit'] = $this->limit;
-      $instances = $main_entity->instances_select(
-        $this->query_params
-      );
+      $instances_count = $main_entity->instances_count_select($this->query_params);
+      $instances       = $main_entity->instances_select      ($this->query_params);
     } else {
       message::insert(
         translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'

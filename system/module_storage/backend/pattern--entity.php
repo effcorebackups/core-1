@@ -100,6 +100,11 @@ namespace effcore {
     return $storage->instances_select($this, $params);
   }
 
+  function instances_count_select($params = []) {
+    $storage = storage::get($this->storage_name);
+    return $storage->instances_count_select($this, $params);
+  }
+
   function instances_insert() {} # @todo: make functionality
   function instances_delete() {} # @todo: make functionality
 

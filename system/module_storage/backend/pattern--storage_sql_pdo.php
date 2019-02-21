@@ -352,6 +352,23 @@ namespace effcore {
     }
   }
 
+  function instances_count_select($entity, $params = []) {
+    $params += ['conditions' => [], 'offset' => 0];
+    if ($this->init()) {
+      $query = [
+        'action' => 'SELECT',
+        'fields_!,' => ['count' => ['function' => 'count(*)', 'alias' => 'as count']],
+        'target_begin' => 'FROM',
+        'target_!t' => '~'.$entity->name];
+      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',  'condition' => $params['conditions']];
+      if ($params['offset'])            $query += ['offset_begin'    => 'OFFSET', 'offset'    => $params['offset']    ];
+      $result = $this->query($query);
+      if (isset($result[0]->count))
+         return $result[0]->count;
+    }
+    return 0;
+  }
+
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity    = $instance->entity_get();
