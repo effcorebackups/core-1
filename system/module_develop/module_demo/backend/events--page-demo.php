@@ -169,11 +169,11 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     return new block('Decorators dynamic', ['data-styled-title' => 'no', 'class' => ['demo-decorators-dynamic' => 'demo-decorators-dynamic']], [
       $decorator_table_title,
-      $decorator_table->build(),
+      $decorator_table,
       $decorator_ul_title,
-      $decorator_ul->build(),
+      $decorator_ul,
       $decorator_dl_title,
-      $decorator_dl->build()
+      $decorator_dl
     ]);
   }
 
