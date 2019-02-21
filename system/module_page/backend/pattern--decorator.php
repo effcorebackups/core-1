@@ -7,6 +7,7 @@
 namespace effcore {
           class decorator extends markup {
 
+  public $id;
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl
   public $result_attributes = [];
@@ -23,6 +24,7 @@ namespace effcore {
     $result = new node();
     $this->children_delete_all();
     $this->attribute_insert('data-view-type', $this->view_type);
+    event::start('on_decorator_before_build', $this->id, [&$this]);
 
     if ($this->data) {
       switch ($this->view_type) {
@@ -125,6 +127,7 @@ namespace effcore {
         new markup('x-no-result', [], 'no items'), 'no_result'
       );
     }
+    event::start('on_decorator_after_build', $this->id, [&$this]);
     return $this;
   }
 

@@ -27,6 +27,7 @@ namespace effcore {
     $this->children_delete_all();
     $this->attribute_insert('data-view-type', $this->view_type);
     $this->attribute_insert('data-id', $this->id);
+    event::start('on_selection_before_build', $this->id, [&$this]);
 
     $used_entities = [];
     $used_storages = [];
@@ -137,6 +138,7 @@ namespace effcore {
       );
     }
 
+    event::start('on_selection_after_build', $this->id, [&$this]);
     return $this;
   }
 

@@ -16,6 +16,7 @@ blocks
             text: Table
     - table|decorator
         view_type: table
+        id: demo_table
         data
         - rowid-1
           - attributes
@@ -67,6 +68,7 @@ blocks
             text: Unordered list
     - ul|decorator
         view_type: ul
+        id: demo_ul
         data
         - rowid-1
           - attributes
@@ -124,6 +126,7 @@ blocks
             text: Definition list
     - dl|decorator
         view_type: dl
+        id: demo_dl
         data
         - rowid-1
           - attributes

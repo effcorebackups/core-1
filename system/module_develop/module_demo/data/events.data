@@ -39,3 +39,15 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_file::on_process_demotype
+  on_decorator_before_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_decorator_before_build
+  on_decorator_after_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_decorator_after_build
+  on_selection_before_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_selection_before_build
+  on_selection_after_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_selection_after_build

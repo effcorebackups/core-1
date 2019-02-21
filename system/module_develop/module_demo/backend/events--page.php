@@ -10,4 +10,16 @@ namespace effcore\modules\demo {
   static function on_before_render($page, $template) {
   }
 
+  static function on_decorator_before_build($decorator) {
+  }
+
+  static function on_decorator_after_build($decorator) {
+  }
+
+  static function on_selection_before_build($selection) {
+  }
+
+  static function on_selection_after_build($selection) {
+  }
+
 }}
