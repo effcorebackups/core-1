@@ -76,11 +76,6 @@ namespace effcore {
     if (isset($instances) &&
         count($instances)) {
 
-   // $pager = new pager();
-   // if ($pager->has_error) {
-   //   core::send_header_and_exit('page_not_found');
-   // }
-
       $decorator = new decorator($this->view_type);
       foreach ($this->decorator_params as $c_key => $c_value) {
         $decorator->{$c_key} = $c_value;
@@ -124,11 +119,21 @@ namespace effcore {
       }
 
       $this->child_insert(
-        $decorator->build()
+        $decorator->build(), 'result'
       );
+      if ($this->is_paged) {
+        $pager = new pager();
+        if ($pager->has_error) {
+          core::send_header_and_exit('page_not_found');
+        } else {
+          $this->child_insert(
+            $pager, 'pager'
+          );
+        }
+      }
     } else {
       $this->child_insert(
-        new markup('x-no-result', [], 'no items')
+        new markup('x-no-result', [], 'no items'), 'no_result'
       );
     }
 

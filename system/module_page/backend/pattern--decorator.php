@@ -20,6 +20,7 @@ namespace effcore {
   }
 
   function build() {
+    $result = new node();
     $this->children_delete_all();
     $this->attribute_insert('data-view-type', $this->view_type);
 
@@ -64,8 +65,8 @@ namespace effcore {
             );
           }
         # make result
-          $this->child_insert(
-            new table($this->attributes_select('result_attributes'), $tbody, $thead), 'result'
+          $result->child_insert(
+            new table($this->attributes_select('result_attributes'), $tbody, $thead)
           );
           break;
 
@@ -87,7 +88,7 @@ namespace effcore {
                 'value' => new markup('x-value', [], $c_info['value'])
               ]), $c_name);
             }
-            $this->child_insert(
+            $result->child_insert(
               $c_list, $c_rowid
             );
           }
@@ -109,16 +110,19 @@ namespace effcore {
               $c_list->child_insert(new markup('dt', $c_cell_attributes, $c_info['title']), 'title-'.$c_name);
               $c_list->child_insert(new markup('dd', $c_cell_attributes, $c_info['value']), 'value-'.$c_name);
             }
-            $this->child_insert(
+            $result->child_insert(
               $c_list, $c_rowid
             );
           }
           break;
 
       }
+      $this->child_insert(
+        $result, 'result'
+      );
     } else {
       $this->child_insert(
-        new markup('x-no-result', [], 'no items')
+        new markup('x-no-result', [], 'no items'), 'no_result'
       );
     }
     return $this;
