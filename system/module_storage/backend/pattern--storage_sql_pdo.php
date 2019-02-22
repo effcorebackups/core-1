@@ -340,10 +340,12 @@ namespace effcore {
       foreach ($params['join'] as $c_join_id => $c_join_part) {
         $query['join'][$c_join_id] = $c_join_part;
       }
-      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' =>      $params['conditions'] ];
-      if (count($params['order'])     ) $query += ['order_begin'     => 'ORDER BY', 'order'     =>      $params['order']      ];
-      if (      $params['limit']      ) $query += ['limit_begin'     => 'LIMIT',    'limit'     => (int)$params['limit']      ];
-      if (      $params['offset']     ) $query += ['offset_begin'    => 'OFFSET',   'offset'    => (int)$params['offset']     ];
+      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['conditions']];
+      if (count($params['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $params['order'     ]];
+      if (      $params['limit'     ] ) {
+        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
+        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
+      }
       $result = $this->query($query);
       foreach ($result as $c_instance) {
         $c_instance->entity_name_set($entity->name);
@@ -353,7 +355,7 @@ namespace effcore {
   }
 
   function instances_count_select($entity, $params = []) {
-    $params += ['join' => [], 'conditions' => [], 'offset' => 0];
+    $params += ['join' => [], 'conditions' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
@@ -363,8 +365,11 @@ namespace effcore {
       foreach ($params['join'] as $c_join_id => $c_join_part) {
         $query['join'][$c_join_id] = $c_join_part;
       }
-      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',  'condition' =>      $params['conditions']];
-      if (      $params['offset']     ) $query += ['offset_begin'    => 'OFFSET', 'offset'    => (int)$params['offset']    ];
+      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
+      if (      $params['limit'     ] ) {
+        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
+        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
+      }
       $result = $this->query($query);
       if (isset($result[0]->count))
          return $result[0]->count;
