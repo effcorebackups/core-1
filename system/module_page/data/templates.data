@@ -2,7 +2,7 @@ templates
 - markup_html
     name: markup_html
     type: text
-    data: <%%_tag_name %%_attributes>%%_content</%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
 - markup_html_simple
     name: markup_html_simple
     type: text
@@ -10,7 +10,7 @@ templates
 - markup_xml
     name: markup_xml
     type: text
-    data: <%%_tag_name %%_attributes>%%_content</%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
 - markup_xml_simple
     name: markup_xml_simple
     type: text
@@ -18,11 +18,11 @@ templates
 - block
     name: block
     type: text
-    data: <%%_tag_name %%_attributes>%%_title%%_content</%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
 - container
     name: container
     type: text
-    data: <%%_tag_name %%_attributes>%%_title_t%%_description_t%%_content%%_title_b%%_description_b</%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_self_t%%_description_t%%_children%%_self_b%%_description_b</%%_tag_name>
 # ─────────────────────────────────────────────────────────────────────
 - page_access_forbidden
     name: page_access_forbidden

@@ -23,8 +23,8 @@ namespace effcore {
     return (template::make_new($this->template, [
       'tag_name'   => $this->tag_name,
       'attributes' => $this->render_attributes(),
-      'title'      => $this->render_self(),
-      'content'    => $this->content_tag_name ? (new markup($this->content_tag_name, [],
+      'self'       => $this->render_self(),
+      'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, [],
                       $this->render_children($this->children_select()) ))->render() :
                       $this->render_children($this->children_select())
     ]))->render();

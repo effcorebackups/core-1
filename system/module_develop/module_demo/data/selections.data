@@ -4,7 +4,7 @@ selections
     title: Selection of "demo_data" entities + join
     view_type: table
     is_paged: true
-    limit: 20
+    limit: 10
     join
     - demo_data_join
         entity_name: demo_data_join

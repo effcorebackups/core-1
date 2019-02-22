@@ -8,6 +8,8 @@ namespace effcore {
           class selection extends markup implements has_external_cache {
 
   public $tag_name = 'x-selection';
+  public $template = 'container';
+  public $title_tag_name = 'h2';
   public $view_type = 'table'; # table | ul | dl
   public $id;
   public $title;
@@ -197,12 +199,24 @@ namespace effcore {
   }
 
   function render_self() {
-    return $this->title ? (new markup('h2', [], $this->title))->render() : '';
+    return $this->title ? (
+      new markup($this->title_tag_name, [], $this->title
+    ))->render() : '';
   }
 
   function render() {
     $this->build();
-    return parent::render();
+    if ($this->template) {
+      return (template::make_new($this->template, [
+        'tag_name'   => $this->tag_name,
+        'attributes' => $this->render_attributes(),
+        'self_t'     => $this->render_self(),
+        'children'   => $this->render_children($this->children_select())
+      ]))->render();
+    } else {
+      return $this->render_self().
+             $this->render_children($this->children);
+    }
   }
 
   ###########################

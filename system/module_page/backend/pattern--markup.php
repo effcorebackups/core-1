@@ -25,11 +25,17 @@ namespace effcore {
         $this->attribute_select('href') && url::is_active(
         $this->attribute_select('href')))
         $this->attribute_insert('class', ['active' => 'active']);
-    return (template::make_new($this->template, [
-      'tag_name'   => $this->tag_name,
-      'attributes' => $this->render_attributes(),
-      'content'    => $this->render_children($this->children_select())
-    ]))->render();
+    if ($this->template) {
+      return (template::make_new($this->template, [
+        'tag_name'   => $this->tag_name,
+        'attributes' => $this->render_attributes(),
+        'self'       => $this->render_self(), # note: not used in the self template
+        'children'   => $this->render_children($this->children_select())
+      ]))->render();
+    } else {
+      return $this->render_self().
+             $this->render_children($this->children);
+    }
   }
 
   function render_description() {

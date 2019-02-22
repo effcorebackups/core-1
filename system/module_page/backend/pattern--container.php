@@ -35,11 +35,11 @@ namespace effcore {
     return (template::make_new($this->template, [
       'tag_name'      => $this->tag_name,
       'attributes'    => $this->render_attributes(),
-      'title_t'       => $is_bottom_title    ? '' : $this->render_self(),
-      'title_b'       => $is_bottom_title    ?      $this->render_self()        : '',
+      'self_t'        => $is_bottom_title    ? '' : $this->render_self(),
+      'self_b'        => $is_bottom_title    ?      $this->render_self()        : '',
       'description_t' => $is_top_description ?      $this->render_description() : '',
       'description_b' => $is_top_description ? '' : $this->render_description(),
-      'content'       => $this->content_tag_name ? (new markup($this->content_tag_name, [],
+      'children'      => $this->content_tag_name ? (new markup($this->content_tag_name, [],
                          $this->render_children($this->children_select()) ))->render() :
                          $this->render_children($this->children_select())
     ]))->render();
