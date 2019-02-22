@@ -15,7 +15,9 @@ namespace effcore {
   public $query_params = [];
   public $decorator_params = [];
   public $limit = 50;
-  public $is_paged = true;
+  public $is_paged = false;
+  public $pager_prefix = 'page';
+  public $pager_id = 0;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
     if ($title)     $this->title     = $title;
@@ -47,7 +49,7 @@ namespace effcore {
       $main_entity = entity::get(reset($used_entities));
       $this->attribute_insert('data-main-entity', $main_entity->name);
       $id_keys = $main_entity->real_id_get();
-    # prepare join_fields
+    # prepare query params
       foreach ($this->fields as $c_id => $c_field) {
         if ($c_field->type == 'join_field') {
           $this->query_params['join_fields'][$c_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
@@ -62,8 +64,25 @@ namespace effcore {
         ];
       }
       $this->query_params['limit'] = $this->limit;
-      $instances_count = $main_entity->instances_count_select($this->query_params);
-      $instances       = $main_entity->instances_select      ($this->query_params);
+    # prepare pager
+      if ($this->is_paged) {
+        $instances_count = $main_entity->instances_count_select($this->query_params);
+        $page_max_number = ceil($instances_count / $this->limit);
+        $pager = new pager(1, $page_max_number, null, $this->pager_prefix, $this->pager_id, [], -20);
+        $pager->init();
+        if ($pager->has_error) {
+          core::send_header_and_exit('page_not_found');
+        } else {
+          $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
+          $this->child_insert(
+            $pager, 'pager'
+          );
+        }
+      }
+    # select instances
+      $instances = $main_entity->instances_select(
+        $this->query_params
+      );
     } else {
       message::insert(
         translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
@@ -121,16 +140,6 @@ namespace effcore {
       $this->child_insert(
         $decorator->build(), 'result'
       );
-      if ($this->is_paged) {
-        $pager = new pager();
-        if ($pager->has_error) {
-          core::send_header_and_exit('page_not_found');
-        } else {
-          $this->child_insert(
-            $pager, 'pager'
-          );
-        }
-      }
     } else {
       $this->child_insert(
         new markup('x-no-result', [], 'no items'), 'no_result'

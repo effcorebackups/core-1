@@ -3,6 +3,7 @@ selections
     id: demo_data_join
     title: Selection of "demo_data" entities + join
     view_type: table
+    is_paged: true
     limit: 20
     join
     - demo_data_join

@@ -7,21 +7,27 @@
 namespace effcore {
           class pager extends markup {
 
-  public $id = 0;
-  public $prefix = 'page';
   public $tag_name = 'x-pager';
   public $has_error = false;
+
   public $min = 1;
   public $max = 1;
   public $cur = null;
+  public $prefix = 'page';
+  public $id = 0;
 
-  function __construct($attributes = [], $weight = 0) {
+  function __construct($min = 1, $max = 1, $cur = null, $prefix = 'page', $id = 0,  $attributes = [], $weight = 0) {
+    $this->min    = $min;
+    $this->max    = $max;
+    $this->cur    = $cur;
+    $this->prefix = $prefix;
+    $this->id     = $id;
     parent::__construct(null, $attributes, [], $weight);
   }
 
   function init() {
     $this->cur = url::current_get()->query_arg_select($this->pager_name_get());
-    if (!is_numeric($this->cur)) {$this->cur = $this->min;}
+    if ((string)(int)$this->cur !== $this->cur) {$this->cur = $this->min;}
     if ($this->cur < $this->min) {$this->cur = $this->min; $this->has_error = true;}
     if ($this->cur > $this->max) {$this->cur = $this->max; $this->has_error = true;}
   }
