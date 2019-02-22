@@ -13,7 +13,6 @@ namespace effcore\modules\demo {
           use \effcore\markup;
           use \effcore\message;
           use \effcore\node;
-          use \effcore\pager;
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
@@ -241,10 +240,6 @@ namespace effcore\modules\demo {
       $table_tbody,
       $table_thead
     );
-  # ─────────────────────────────────────────────────────────────────────
-  # pager
-  # ─────────────────────────────────────────────────────────────────────
-    $pager = new pager(1, 10000, 'my', 'pager');
 
   # ─────────────────────────────────────────────────────────────────────
   # control elements
@@ -269,7 +264,6 @@ namespace effcore\modules\demo {
       $ordered_list,
       $table_title,
       $table,
-      $pager,
       $controls_title,
       $actions_list
     ]);
