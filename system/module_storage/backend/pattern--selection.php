@@ -44,11 +44,14 @@ namespace effcore {
       }
     }
 
+  # ─────────────────────────────────────────────────────────────────────
   # prepare the query and request data from the storage
+  # ─────────────────────────────────────────────────────────────────────
     if (count($used_storages) == 1) {
       $main_entity = entity::get(reset($used_entities));
       $this->attribute_insert('data-main-entity', $main_entity->name);
       $id_keys = $main_entity->real_id_get();
+
     # prepare query params
       foreach ($this->fields as $c_id => $c_field) {
         if ($c_field->type == 'join_field') {
@@ -64,25 +67,30 @@ namespace effcore {
         ];
       }
       $this->query_params['limit'] = $this->limit;
+
     # prepare pager
       if ($this->is_paged) {
         $instances_count = $main_entity->instances_count_select($this->query_params);
-        $page_max_number = ceil($instances_count / $this->limit);
-        $pager = new pager(1, $page_max_number, null, $this->pager_prefix, $this->pager_id, [], -20);
-        $pager->init();
-        if ($pager->has_error) {
-          core::send_header_and_exit('page_not_found');
-        } else {
-          $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
-          $this->child_insert(
-            $pager, 'pager'
-          );
+        if ($instances_count > 0) {
+          $page_max_number = ceil($instances_count / $this->limit);
+          $pager = new pager(1, $page_max_number, $this->pager_prefix, $this->pager_id, [], -20);
+          $pager->init();
+          if ($pager->has_error) {
+            core::send_header_and_exit('page_not_found');
+          } else {
+            $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
+            $this->child_insert(
+              $pager, 'pager'
+            );
+          }
         }
       }
+
     # select instances
       $instances = $main_entity->instances_select(
         $this->query_params
       );
+
     } else {
       message::insert(
         translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
@@ -90,7 +98,9 @@ namespace effcore {
       return new node();
     }
 
+  # ─────────────────────────────────────────────────────────────────────
   # wrap the result in the decorator
+  # ─────────────────────────────────────────────────────────────────────
     $result = null;
     if (isset($instances) &&
         count($instances)) {
@@ -140,6 +150,7 @@ namespace effcore {
       $this->child_insert(
         $decorator->build(), 'result'
       );
+
     } else {
       $this->child_insert(
         new markup('x-no-result', [], 'no items'), 'no_result'

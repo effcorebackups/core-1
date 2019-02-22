@@ -16,20 +16,20 @@ namespace effcore {
   public $prefix = 'page';
   public $id = 0;
 
-  function __construct($min = 1, $max = 1, $cur = null, $prefix = 'page', $id = 0,  $attributes = [], $weight = 0) {
+  function __construct($min = 1, $max = 1, $prefix = 'page', $id = 0,  $attributes = [], $weight = 0) {
     $this->min    = $min;
     $this->max    = $max;
-    $this->cur    = $cur;
     $this->prefix = $prefix;
     $this->id     = $id;
     parent::__construct(null, $attributes, [], $weight);
   }
 
   function init() {
-    $this->cur = url::current_get()->query_arg_select($this->pager_name_get());
-    if ((string)(int)$this->cur !== $this->cur) {$this->cur = $this->min;}
-    if ($this->cur < $this->min) {$this->cur = $this->min; $this->has_error = true;}
-    if ($this->cur > $this->max) {$this->cur = $this->max; $this->has_error = true;}
+    $this->cur = url::current_get()->query_arg_select($this->pager_name_get()) ?: $this->min;
+    if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->has_error = true;}
+    if ($this->max < $this->min)                        {$this->max = $this->min; $this->has_error = true;}
+    if ($this->cur < $this->min)                        {$this->cur = $this->min; $this->has_error = true;}
+    if ($this->cur > $this->max)                        {$this->cur = $this->max; $this->has_error = true;}
   }
 
   function pager_name_get() {
