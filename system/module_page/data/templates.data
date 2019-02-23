@@ -1,4 +1,7 @@
 templates
+# ─────────────────────────────────────────────────────────────────────
+# type: text
+# ─────────────────────────────────────────────────────────────────────
 - markup_html
     name: markup_html
     type: text
@@ -24,6 +27,8 @@ templates
     type: text
     data: <%%_tag_name %%_attributes>%%_self_t%%_description_t%%_children%%_self_b%%_description_b</%%_tag_name>
 # ─────────────────────────────────────────────────────────────────────
+# type: file
+# ─────────────────────────────────────────────────────────────────────
 - page_access_forbidden
     name: page_access_forbidden
     type: file
@@ -40,6 +45,8 @@ templates
     name: canvas_svg
     type: file
     path: frontend/template--canvas_svg.tpl
+# ─────────────────────────────────────────────────────────────────────
+# type: node
 # ─────────────────────────────────────────────────────────────────────
 - page
     name: page
