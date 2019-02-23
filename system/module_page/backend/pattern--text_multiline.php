@@ -18,11 +18,13 @@ namespace effcore {
     if ($weight)    $this->weight    = $weight;
   }
 
-  function text_line_select($line) {return $this->text[$line];}
-  function text_line_update($new_text, $line) {$this->text[$line] = $new_text;}
-  function text_line_append($new_text, $line) {$this->text[$line].= $new_text;}
+  function text_line_select($line)     {return $this->text[$line];}
+  function text_line_update($line, $new_text) {$this->text[$line] = $new_text;}
+  function text_line_append($line, $new_text) {$this->text[$line].= $new_text;}
+
+  function text_select()   {return $this->text;}
   function text_update($new_text) {$this->text   = $new_text;}
-  function text_append($new_text) {$this->text[] = $new_text; return count($this->text);}
+  function text_append($new_line) {$this->text[] = $new_line; return count($this->text);}
 
   function render() {
     $result = [];

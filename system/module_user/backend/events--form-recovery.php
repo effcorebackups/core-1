@@ -10,8 +10,6 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\instance;
           use \effcore\message;
-          use \effcore\text_multiline;
-          use \effcore\text;
           use \effcore\url;
           abstract class events_form_recovery {
 
