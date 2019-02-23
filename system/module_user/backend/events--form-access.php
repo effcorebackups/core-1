@@ -7,6 +7,7 @@
 namespace effcore\modules\user {
           use \effcore\access;
           use \effcore\message;
+          use \effcore\page;
           use \effcore\translation;
           abstract class events_form_access {
 
@@ -14,7 +15,7 @@ namespace effcore\modules\user {
     $access = null;
     if (isset($form->entity_name)) {
       switch ($form->entity_name) {
-        case 'page': $access = $form->_page->access; break;
+        case 'page': $access = page::current_get()->access; break;
       }
     }
     $items['settings/roles']->values = access::roles_get();

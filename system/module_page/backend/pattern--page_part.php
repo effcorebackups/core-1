@@ -16,10 +16,9 @@ namespace effcore {
   function markup_get($page = null) {
     if (!isset($this->display) ||
         (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->args_get($this->display->where))) ||
-        (isset($this->display) && $this->display->check == 'user' && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
+        (isset($this->display) && $this->display->check == 'user'      && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
       switch ($this->type) {
         case 'link': $result = storage::get('files')->select($this->source, true);
-                     $result->_page = $page;
                      foreach ($this->properties as $c_key => $c_value) {
                        core::arrobj_value_insert($result, $c_key, $c_value);
                      }

@@ -15,7 +15,6 @@ namespace effcore {
   public $clicked_button;
   public $validation_id;
   public $validation_data = [];
-  static public $errors = [];
 
   function build() {
     $id = $this->attribute_select('id');
@@ -202,6 +201,8 @@ namespace effcore {
   ###########################
   ### static declarations ###
   ###########################
+
+  static public $errors = [];
 
   static function not_external_properties_get() {
     return [];
