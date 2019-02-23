@@ -797,19 +797,19 @@ namespace effcore {
     return $result;
   }
 
-  static function send_header_and_exit($type, $title = '', $message = '', $p = '') {
+  static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
     switch ($type) {
-      case 'redirect'        : header('Location: '.$p);          break;
-      case 'page_refresh'    : header('Refresh: ' .$p);          break;
-      case 'access_forbidden': header('HTTP/1.1 403 Forbidden'); break;
-      case 'page_not_found'  : header('HTTP/1.0 404 Not Found'); break;
-      case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); break;
+      case 'redirect'        : header('Location: '.$p);                                                    break;
+      case 'page_refresh'    : header('Refresh: ' .$p);                                                    break;
+      case 'access_forbidden': header('HTTP/1.1 403 Forbidden'); if (!$title) $title = 'Access forbidden'; break;
+      case 'page_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'Page not found';   break;
+      case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'File not found';   break;
     }
-    $front_page_link = (new text('go to <a href="/">front page</a>'))->render();
-    if ($type == 'access_forbidden') {print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => (new text('Access forbidden'))->render()] ))->render(); exit();}
-    if ($type == 'page_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => (new text('Page not found'  ))->render()] ))->render(); exit();}
-    if ($type == 'file_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => (new text('File not found'  ))->render()] ))->render(); exit();}
-    if ($message)                    {print (template::make_new('page_simple',           ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => $message ?: $front_page_link, 'title' => (new text($title            ))->render()] ))->render(); exit();}
+    if (!$message) $message = 'go to <a href="/">front page</a>';
+    if ($type == 'access_forbidden') {print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render() ]))->render(); exit();}
+    if ($type == 'page_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render() ]))->render(); exit();}
+    if ($type == 'file_not_found')   {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render() ]))->render(); exit();}
+    if ($message)                    {print (template::make_new('page_simple',           ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render() ]))->render(); exit();}
     exit();
   }
 

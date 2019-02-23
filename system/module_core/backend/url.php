@@ -182,7 +182,7 @@ namespace effcore {
   }
 
   static function go($url) {
-    core::send_header_and_exit('redirect', '', '',
+    core::send_header_and_exit('redirect', null, null,
       (new static($url))->full_get()
     );
   }

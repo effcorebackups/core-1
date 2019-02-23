@@ -68,7 +68,7 @@ namespace effcore {
 
     if ($file_info->type !== '' &&
         $file_info->name === '') {
-      core::send_header_and_exit('access_forbidden', '',
+      core::send_header_and_exit('access_forbidden', null,
         translation::get('file of this type is protected').br.br.
         translation::get('go to <a href="/">front page</a>')
       );
@@ -80,7 +80,7 @@ namespace effcore {
 
     if (isset($file_types[$file_info->type]->kind) &&
               $file_types[$file_info->type]->kind == 'protected') {
-      core::send_header_and_exit('access_forbidden', '',
+      core::send_header_and_exit('access_forbidden', null,
         translation::get('file of this type is protected').br.br.
         translation::get('go to <a href="/">front page</a>')
       );
