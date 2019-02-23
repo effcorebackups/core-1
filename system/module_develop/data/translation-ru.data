@@ -136,6 +136,8 @@ translations
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
     - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
+    - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
+    - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - show for admin: показывать для администратора
     - show for everyone: показать всем

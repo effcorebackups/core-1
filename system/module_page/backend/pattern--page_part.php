@@ -18,7 +18,9 @@ namespace effcore {
         (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->args_get($this->display->where))) ||
         (isset($this->display) && $this->display->check == 'user'      && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::current_get()->roles)))) {
       switch ($this->type) {
-        case 'link': $result = storage::get('files')->select($this->source, true);
+        case 'copy':
+        case 'link': if ($this->type == 'copy') $result = clone storage::get('files')->select($this->source, true);
+                     if ($this->type == 'link') $result =       storage::get('files')->select($this->source, true);
                      foreach ($this->properties as $c_key => $c_value) {
                        core::arrobj_value_insert($result, $c_key, $c_value);
                      }
