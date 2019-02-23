@@ -11,7 +11,7 @@ namespace effcore {
   public $display;
   public $type; # code | link | text | …
   public $source;
-  public $source_args;
+  public $properties = [];
 
   function markup_get($page = null) {
     if (!isset($this->display) ||
@@ -20,9 +20,11 @@ namespace effcore {
       switch ($this->type) {
         case 'link': $result = storage::get('files')->select($this->source, true);
                      $result->_page = $page;
-                     $result->_args = $this->source_args;
+                     foreach ($this->properties as $c_key => $c_value) {
+                       core::arrobj_value_insert($result, $c_key, $c_value);
+                     }
                      return $result;
-        case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->source_args]);
+        case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->properties]);
         case 'text': return new text($this->source);
         default    : return $this->source;
       }

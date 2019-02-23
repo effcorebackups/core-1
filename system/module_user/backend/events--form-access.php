@@ -12,8 +12,10 @@ namespace effcore\modules\user {
 
   static function on_init($form, $items) {
     $access = null;
-    switch ($form->_args['entity_name']) {
-      case 'page': $access = $form->_page->access; break;
+    if (isset($form->entity_name)) {
+      switch ($form->entity_name) {
+        case 'page': $access = $form->_page->access; break;
+      }
     }
     $items['settings/roles']->values = access::roles_get();
     $items['settings/roles']->checked = $access->roles ?? [];

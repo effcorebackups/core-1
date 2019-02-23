@@ -68,5 +68,5 @@ pages
         region: content
         type: link
         source: forms/user/access
-        source_args
+        properties
         - entity_name: page
