@@ -58,7 +58,7 @@ namespace effcore {
     if ($href && url::is_active_trail($href))         $this->attribute_insert('class', ['active-trail' => 'active-trail']);
     if ($href_default) $this->attribute_insert('href', $href_default);
     return (new markup('a', $this->attributes_select(),
-      token::replace(translation::get($this->title))
+      new text($this->title, [], true, true)
     ))->render();
   }
 
