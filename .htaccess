@@ -1,5 +1,4 @@
 Options -Indexes
-DirectoryIndex index.php
 DirectorySlash Off
 
 <IfModule headers_module>
