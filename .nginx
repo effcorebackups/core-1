@@ -5,7 +5,7 @@
 # - here replace the %%_root to your site root path
 # - here replace the %%_include to "/usr/local/etc/nginx/fastcgi.conf" or
 # - here replace the %%_include to           "/etc/nginx/fastcgi.conf"
-# - here replace the %%_domain_crt to domain certificate path
+# - here replace the %%_domain_crt         to domain certificate path
 # - here replace the %%_domain_private_key to domain private key path
 
 server {
