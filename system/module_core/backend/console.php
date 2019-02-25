@@ -113,12 +113,12 @@ namespace effcore {
         $c_row_class['error'] = 'error';
       }
       $decorator->data[] = [
-        'attributes'  => ['class' => $c_row_class                                                                 ],
-        'time'        => ['title' => 'Time',        'value' => locale::msecond_format($c_log->time)               ],
-        'object'      => ['title' => 'Object',      'value' => translation::get($c_log->object,      $c_log->args)],
-        'action'      => ['title' => 'Action',      'value' => translation::get($c_log->action,      $c_log->args)],
-        'description' => ['title' => 'Description', 'value' => translation::get($c_log->description, $c_log->args)],
-        'value'       => ['title' => 'Val.',        'value' => translation::get($c_log->value                    )]
+        'attributes'  => ['class' => $c_row_class                                                         ],
+        'time'        => ['title' => 'Time',        'value' => locale::msecond_format($c_log->time)       ],
+        'object'      => ['title' => 'Object',      'value' => new text($c_log->object,      $c_log->args)],
+        'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
+        'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
+        'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]
       ];
     }
     return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [
