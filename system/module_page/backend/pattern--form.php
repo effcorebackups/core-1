@@ -88,8 +88,8 @@ namespace effcore {
         $this->attribute_insert('class', ['error' => 'error']);
         foreach (static::$errors as $c_error) {
           switch (gettype($c_error->message)) {
-            case 'string':                                                 message::insert(translation::get($c_error->message, $c_error->args), 'error'); break;
-            case 'object': if (method_exists($c_error->message, 'render')) message::insert(                 $c_error->message->render(),        'error'); break;
+            case 'string':                                                 message::insert(new text($c_error->message, $c_error->args), 'error'); break;
+            case 'object': if (method_exists($c_error->message, 'render')) message::insert(         $c_error->message->render(),        'error'); break;
           }
         }
       }

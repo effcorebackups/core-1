@@ -23,8 +23,8 @@ namespace effcore {
   # delete entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
       if ($c_entity->uninstall())
-           message::insert(translation::get('Entity %%_name was uninstalled.',     ['name' => $c_entity->name]));
-      else message::insert(translation::get('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
+           message::insert(new text('Entity %%_name was uninstalled.',     ['name' => $c_entity->name]));
+      else message::insert(new text('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
     }
   # delete from boot
     core::boot_delete($this->id, 'installed');
