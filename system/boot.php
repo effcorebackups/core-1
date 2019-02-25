@@ -15,7 +15,7 @@ namespace effcore {
   const tb = "\t";
   const br = "<br>";
 
-  ini_set('pcre.jit', 0);
+  ini_set('pcre.jit', false);
   if (!ini_get('date.timezone')) {
     date_default_timezone_set('UTC');
   }

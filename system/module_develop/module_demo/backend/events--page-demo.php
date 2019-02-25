@@ -16,8 +16,8 @@ namespace effcore\modules\demo {
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
+          use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\translation;
           use \effcore\tree;
           use \effcore\url;
           abstract class events_page_demo {
@@ -39,19 +39,19 @@ namespace effcore\modules\demo {
   ################
 
   static function on_show_demo_messages($page) {
-    message::insert(translation::get('credentials'),                                  'credentials'                           );
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 1]), 'notice'                                );
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 2]), 'notice'                                );
-    message::insert(translation::get('Notice message #%%_number.',  ['number' => 3]), 'notice'                                );
-    message::insert(translation::get('Ok message #%%_number.',      ['number' => 1]).' ('.translation::get('default type').')');
-    message::insert(translation::get('Ok message #%%_number.',      ['number' => 2])                                          );
-    message::insert(translation::get('Ok message #%%_number.',      ['number' => 3])                                          );
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 1]), 'warning'                               );
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 2]), 'warning'                               );
-    message::insert(translation::get('Warning message #%%_number.', ['number' => 3]), 'warning'                               );
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 1]), 'error'                                 );
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 2]), 'error'                                 );
-    message::insert(translation::get('Error message #%%_number.',   ['number' => 3]), 'error'                                 );
+    message::insert( 'credentials',                                            'credentials'                );
+    message::insert( new text('Notice message #%%_number.',  ['number' => 1]), 'notice'                     );
+    message::insert( new text('Notice message #%%_number.',  ['number' => 2]), 'notice'                     );
+    message::insert( new text('Notice message #%%_number.',  ['number' => 3]), 'notice'                     );
+    message::insert( new text_multiline(['Ok message #%%_number.', '(default type)'], ['number' => 1], ' ') );
+    message::insert( new text('Ok message #%%_number.',      ['number' => 2])                               );
+    message::insert( new text('Ok message #%%_number.',      ['number' => 3])                               );
+    message::insert( new text('Warning message #%%_number.', ['number' => 1]), 'warning'                    );
+    message::insert( new text('Warning message #%%_number.', ['number' => 2]), 'warning'                    );
+    message::insert( new text('Warning message #%%_number.', ['number' => 3]), 'warning'                    );
+    message::insert( new text('Error message #%%_number.',   ['number' => 1]), 'error'                      );
+    message::insert( new text('Error message #%%_number.',   ['number' => 2]), 'error'                      );
+    message::insert( new text('Error message #%%_number.',   ['number' => 3]), 'error'                      );
   }
 
   ##############
@@ -216,21 +216,21 @@ namespace effcore\modules\demo {
   # table (combinations of arrays and table_body_row and table_body_row_cell)
   # ─────────────────────────────────────────────────────────────────────
     $table_thead = [[
-      'th_1' => translation::get('head cell #%%_number', ['number' => 1]),
-      'th_2' => translation::get('head cell #%%_number', ['number' => 2]),
-      'th_3' => translation::get('head cell #%%_number', ['number' => 3])
+      'th_1' => new text('head cell #%%_number', ['number' => 1]),
+      'th_2' => new text('head cell #%%_number', ['number' => 2]),
+      'th_3' => new text('head cell #%%_number', ['number' => 3])
     ]];
     $table_tbody = [
-      ['td_1' =>                             translation::get('cell #%%_number', ['number' => 1.1]),
-       'td_2' =>                             translation::get('cell #%%_number', ['number' => 1.2]),
-       'td_3' =>                             translation::get('cell #%%_number', ['number' => 1.3])],
-      ['td_1' =>                             translation::get('cell #%%_number', ['number' => 2.1]),
-       'td_2' =>                             translation::get('cell #%%_number', ['number' => 2.2]),
-       'td_3' => new table_body_row_cell([], translation::get('cell #%%_number', ['number' => 2.3]))],
+      ['td_1' =>                             new text('cell #%%_number', ['number' => 1.1]),
+       'td_2' =>                             new text('cell #%%_number', ['number' => 1.2]),
+       'td_3' =>                             new text('cell #%%_number', ['number' => 1.3])],
+      ['td_1' =>                             new text('cell #%%_number', ['number' => 2.1]),
+       'td_2' =>                             new text('cell #%%_number', ['number' => 2.2]),
+       'td_3' => new table_body_row_cell([], new text('cell #%%_number', ['number' => 2.3]))],
       new table_body_row([], [
-       'td_1' =>                             translation::get('cell #%%_number', ['number' => 3.1]),
-       'td_2' =>                             translation::get('cell #%%_number', ['number' => 3.2]),
-       'td_3' => new table_body_row_cell([], translation::get('cell #%%_number', ['number' => 3.3]))]),
+       'td_1' =>                             new text('cell #%%_number', ['number' => 3.1]),
+       'td_2' =>                             new text('cell #%%_number', ['number' => 3.2]),
+       'td_3' => new table_body_row_cell([], new text('cell #%%_number', ['number' => 3.3]))]),
       new table_body_row([], [
        'td_1' => new table_body_row_cell(['colspan' => 3], new text(''))
       ])

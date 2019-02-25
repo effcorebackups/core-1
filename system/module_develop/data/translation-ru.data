@@ -10,6 +10,7 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
+    - (default type): (тип по умолчанию)
     - *.cssd \| *.jsd console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности *.cssd | *.jsd консоль будет отображаться только в режиме "показать всем".
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
@@ -135,9 +136,9 @@ translations
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
     - Select the test: Выберите тест
-    - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
     - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
+    - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - show for admin: показывать для администратора
     - show for everyone: показать всем

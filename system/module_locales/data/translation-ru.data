@@ -70,7 +70,6 @@ translations
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decoration: Оформление
-    - default type: тип по умолчанию
     - Definition list: Список определений
     - delete file\: %%_name: удалить файл: %%_name
     - Delete instance: Удалить экземпляр
