@@ -286,9 +286,8 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        $messages = ['Function: text_to_data', 'Wrong syntax in data at line: '.$line_number];
-        if ($file) $messages[] = 'File relative path: '.$file->path_relative_get();
-        message::insert(implode(br, $messages), 'error');
+        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_relative_get()]), 'error');
+        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line'],                                ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
       }
     }
   # call the interface dependent functions
