@@ -14,7 +14,7 @@ namespace effcore\modules\core {
           use \effcore\page;
           use \effcore\storage;
           use \effcore\text_multiline;
-          use \effcore\translation;
+          use \effcore\text;
           use \effcore\url;
           abstract class events_form_install {
 
@@ -28,7 +28,7 @@ namespace effcore\modules\core {
         $dependencies += $c_module->dependencies->php ?? [];
       foreach ($dependencies as $c_dependency) {
         if (!extension_loaded($c_dependency)) {
-          message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => $c_dependency]), 'error');
+          message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => $c_dependency]), 'error');
           $items['~install']->disabled_set();
         }
       }
@@ -44,11 +44,11 @@ namespace effcore\modules\core {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();
         $items['~install'      ]->disabled_set();
-        message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'error');
-        message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'error');
+        message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'error');
+        message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'error');
       } else {
-        if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'warning');}
-        if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(translation::get('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
+        if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'warning');}
+        if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
       }
     } else {
       $form->children_delete_all();
@@ -151,24 +151,29 @@ namespace effcore\modules\core {
               event::start('on_module_enable',  $c_module->id);
             # cancel installation if an error occurred
               if (count(storage::get('sql')->errors) == 0)
-                message::insert(translation::get('Module %%_title (%%_id) has been installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
+                message::insert(new text('Module %%_title (%%_id) has been installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
               else break;
             }
           }
           if (count(storage::get('sql')->errors) == 0) {
             $form->children_delete_all();
-            $link = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
-            message::insert(translation::get('System was installed.'));
-            message::insert(translation::get('your EMail is — %%_email',       ['email'    => $items['#email'   ]->value_get()]), 'credentials');
-            message::insert(translation::get('your Password is — %%_password', ['password' => $items['#password']->value_get()]), 'credentials');
-            message::insert(translation::get('go to page %%_link', ['link' => $link]), 'credentials');
+            $link_page_login = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
+            message::insert('System was installed.');
+            message::insert(new text_multiline([
+              'your EMail is — %%_email',
+              'your Password is — %%_password',
+              'go to page %%_link'], [
+              'link'     => $link_page_login,
+              'email'    => $items['#email'   ]->value_get(),
+              'password' => $items['#password']->value_get()
+            ]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
             storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
           } else {
-            message::insert(
-              translation::get('An error occurred during installation!').br.
-              translation::get('System was not installed!'), 'error'
+            message::insert(new text_multiline([
+              'An error occurred during installation!',
+              'System was not installed!']), 'error'
             );
           }
         }
