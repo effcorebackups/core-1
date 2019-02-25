@@ -100,7 +100,7 @@ namespace effcore {
                   $hex_ip.            # strlen == 32
                   $hex_uagent_hash_8. # strlen == 8
                   $hex_random;        # strlen == 8
-    $session_id.= core::signature_get($session_id, 8, 'session');
+    $session_id.= core::signature_get($session_id, 'session', 8);
     setcookie('session_id', ($_COOKIE['session_id'] = $session_id), $expired, '/', $cookie_domain);
     setcookie('cookies_is_on', 'true',                              $expired, '/', $cookie_domain);
     return $session_id;
@@ -116,7 +116,7 @@ namespace effcore {
   static function id_hex_ip_get($ip)           {return core::ip_to_hex($ip);}
   static function id_hex_uagent_hash_8_get()   {return core::mini_hash_get(core::server_user_agent_get(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
   static function id_hex_random_get()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function id_hex_signature_get($id)    {return core::signature_get(substr($id, 0, 56 + 1), 8, 'session');}
+  static function id_hex_signature_get($id)    {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
 
   static function id_expired_extract($id)           {return hexdec(static::id_hex_expired_extract($id));}
   static function id_hex_expired_extract($id)       {return substr($id,      1,  8);}

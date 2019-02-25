@@ -8,7 +8,7 @@ namespace effcore\modules\user {
           use \effcore\access;
           use \effcore\message;
           use \effcore\page;
-          use \effcore\translation;
+          use \effcore\text;
           abstract class events_form_access {
 
   static function on_init($form, $items) {
@@ -27,7 +27,7 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         foreach ($items['*roles']->values_get() as $c_id) {
-          message::insert(translation::get('Role %%_id was selected.', ['id' => $c_id]));
+          message::insert(new text('Role %%_id was selected.', ['id' => $c_id]));
         }
         break;
     }

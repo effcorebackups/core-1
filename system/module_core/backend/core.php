@@ -566,10 +566,10 @@ namespace effcore {
     return $hex_time.$hex_rand;
   }
 
-  static function signature_get($string, $length = 40, $key_name) {
+  static function signature_get($string, $key_name, $length = 40) {
     $key = static::key_get($key_name);
     if ($key) return substr(sha1($string.$key), 0, $length);
-    else message::insert(translation::get('Key "%%_name" does not exist!', ['name' => $key_name]), 'error');
+    else message::insert(new text('Key "%%_name" does not exist!', ['name' => $key_name]), 'error');
   }
 
   static function key_get($name) {

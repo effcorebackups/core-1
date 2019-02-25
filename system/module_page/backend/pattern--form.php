@@ -221,7 +221,7 @@ namespace effcore {
                      $hex_ip.            # strlen == 32
                      $hex_uagent_hash_8. # strlen == 8
                      $hex_random;        # strlen == 8
-    $validation_id.= core::signature_get($validation_id, 8, 'form_validation');
+    $validation_id.= core::signature_get($validation_id, 'form_validation', 8);
     return $validation_id;
   }
 
@@ -236,7 +236,7 @@ namespace effcore {
   static function validation_id_hex_ip_get()            {return core::ip_to_hex(core::server_remote_addr_get());}
   static function validation_id_hex_uagent_hash_8_get() {return core::mini_hash_get(core::server_user_agent_get());}
   static function validation_id_hex_random_get()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function validation_id_hex_signature_get($id)  {return core::signature_get(substr($id, 0, 56), 8, 'form_validation');}
+  static function validation_id_hex_signature_get($id)  {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
 
   static function validation_id_created_extract($id)           {return hexdec(static::validation_id_hex_created_extract($id));}
   static function validation_id_hex_created_extract($id)       {return substr($id,  0 , 8);}
