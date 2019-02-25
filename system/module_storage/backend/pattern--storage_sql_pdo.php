@@ -50,16 +50,19 @@ namespace effcore {
           event::start('on_storage_init_after', 'pdo', [&$this]);
           return $this->connection;
         } catch (pdo_exception $e) {
-          message::insert(
-            translation::get('Storage %%_name is not available!', ['name' => $this->name]), 'error'
+          message::insert(new text(
+            'Storage %%_name is not available!', ['name' => $this->name]), 'error'
           );
         }
       } else {
         $path = (new file(data::directory.'changes.php'))->path_relative_get();
         $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
-        message::insert(
-          translation::get('Credentials for storage %%_name was not set!', ['name' => $this->name]).br.
-          translation::get('Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link', ['file' => $path, 'link' => $link]), 'error'
+        message::insert(new text_multiline([
+          'Credentials for storage %%_name was not set!',
+          'Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link'], [
+          'name' => $this->name,
+          'file' => $path,
+          'link' => $link]), 'error'
         );
       }
     }
@@ -155,11 +158,14 @@ namespace effcore {
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {
         $this->errors[] = $c_error;
-        message::insert(
-          translation::get('Query error!').br.
-          translation::get('sql state: %%_state',        ['state' => translation::get($c_error[0])]).br.
-          translation::get('driver error code: %%_code', ['code'  => translation::get($c_error[1])]).br.
-          translation::get('driver error text: %%_text', ['text'  => translation::get($c_error[2])]), 'error'
+        message::insert(new text_multiline([
+          'Query error!',
+          'sql state: %%_state',
+          'driver error code: %%_code',
+          'driver error text: %%_text'], [
+          'state' => $c_error[0],
+          'code'  => $c_error[1],
+          'text'  => $c_error[2]]), 'error'
         );
         return null;
       }
