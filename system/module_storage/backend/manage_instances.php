@@ -38,6 +38,7 @@ namespace effcore {
     $entity = entity::get($entity_name);
     if ($entity) {
       $selection = new selection;
+      $selection->is_paged = true;
       foreach ($entity->fields as $c_field_name => $c_field_info) {
         if (!empty($c_field_info->show_in_manager)) {
           $selection->field_entity_insert(null, $entity->name, $c_field_name);

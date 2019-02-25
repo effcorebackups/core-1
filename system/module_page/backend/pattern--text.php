@@ -12,10 +12,11 @@ namespace effcore {
   public $is_apply_tokens = false;
 
   function __construct($text = '', $args = [], $with_translation = true, $with_tokens = false, $weight = 0) {
-    parent::__construct($text, $weight);
+    if ($text) $this->text_update($text);
     if ($args) $this->args_set($args);
     $this->is_apply_translation = $with_translation;
     $this->is_apply_tokens      = $with_tokens;
+    $this->weight               = $weight;
   }
 
   function args_get() {return $this->args;}

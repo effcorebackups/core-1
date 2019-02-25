@@ -11,8 +11,8 @@ namespace effcore {
   public $weight = 0;
 
   function __construct($text = '', $weight = 0) {
-    if ($text !== '') $this->text_update($text);
-    if ($weight)      $this->weight = $weight;
+    if ($text) $this->text_update($text);
+    $this->weight = $weight;
   }
 
   function text_select() {return $this->text;}
