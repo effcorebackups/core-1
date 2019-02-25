@@ -167,7 +167,6 @@ namespace effcore {
     $id_values = array_intersect_key($instance->values, $id_keys);
     if (empty($instance->is_embed)) {
       $action_list = new actions_list();
-      $action_list->title = ' ';
       $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values), 'select');
       $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values), 'update');
       $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values), 'delete');

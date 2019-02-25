@@ -242,20 +242,3 @@ blocks
                     children
                     - content|text
                         text: 
-  # ─────────────────────────────────────────────────────────────────────
-  # control elements
-  # ─────────────────────────────────────────────────────────────────────
-    - controls_title|markup
-        tag_name: h3
-        children
-        - content|text
-            text: Control elements
-  # actions list
-    - actions_list|actions_list
-        attributes
-        - class
-          - =: demo-actions-list
-        actions
-        - item_1: item #1
-        - item_2: item #2
-        - item_3: item #3

@@ -49,7 +49,7 @@ namespace effcore {
 
   function render_self() {
     return (new markup($this->title_tag_name, [], [
-      $this->title
+      new text($this->title)
     ]))->render();
   }
 

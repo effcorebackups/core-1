@@ -85,5 +85,3 @@ selections
         type: field
         entity_name: demo_types
         field_name: f_blob
-    - actions
-        type: actions

@@ -74,7 +74,7 @@ namespace effcore {
               $selection->field_entity_insert(null, $entity->name, $c_field_name);
             }
           }
-          $selection->field_action_insert();
+//        $selection->field_action_insert();
           return new block('', ['class' => [
             $entity->name =>
             $entity->name]],

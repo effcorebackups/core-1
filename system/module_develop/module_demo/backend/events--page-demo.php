@@ -7,7 +7,6 @@
 namespace effcore\modules\demo {
           use \effcore\block;
           use \effcore\canvas_svg;
-          use \effcore\actions_list;
           use \effcore\decorator;
           use \effcore\diagram;
           use \effcore\markup;
@@ -240,18 +239,6 @@ namespace effcore\modules\demo {
       $table_tbody,
       $table_thead
     );
-
-  # ─────────────────────────────────────────────────────────────────────
-  # control elements
-  # ─────────────────────────────────────────────────────────────────────
-    $controls_title = new markup('h3', [], 'Control elements');
-  # actions list
-    $actions_list = new actions_list('', ['class' => ['demo-actions-list' => 'demo-actions-list']]);
-    $actions_list->actions = [
-      'item_1' => 'item #1',
-      'item_2' => 'item #2',
-      'item_3' => 'item #3'
-    ];
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
@@ -263,9 +250,7 @@ namespace effcore\modules\demo {
       $ordered_list_title,
       $ordered_list,
       $table_title,
-      $table,
-      $controls_title,
-      $actions_list
+      $table
     ]);
   }
 
