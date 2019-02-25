@@ -94,8 +94,8 @@ namespace effcore {
       );
 
     } else {
-      message::insert(
-        translation::get('Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
+      message::insert(new text(
+        'Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
       );
       return new node();
     }

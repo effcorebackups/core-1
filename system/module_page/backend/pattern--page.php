@@ -33,11 +33,13 @@ namespace effcore {
 
   # show important messages
     if (false && !empty($this->https) && url::current_get()->protocol_get() != 'https') {
-      message::insert('This page should be use HTTPS protocol!', 'warning');
+      message::insert(
+        'This page should be use HTTPS protocol!', 'warning'
+      );
     }
     if ($user_agent->name == 'msie' &&
         $user_agent->name_version < 9) {
-      message::insert(translation::get(
+      message::insert(new text(
         'Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning'
       );
     }
