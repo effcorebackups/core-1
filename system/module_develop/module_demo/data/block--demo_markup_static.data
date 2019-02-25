@@ -251,7 +251,7 @@ blocks
         - content|text
             text: Control elements
   # actions list
-    - actions_list|control_actions_list
+    - actions_list|actions_list
         attributes
         - class
           - =: demo-actions-list

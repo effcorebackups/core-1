@@ -26,6 +26,10 @@ templates
     name: container
     type: text
     data: <%%_tag_name %%_attributes>%%_self_t%%_description_t%%_children%%_self_b%%_description_b</%%_tag_name>
+- actions_list
+    name: actions_list
+    type: text
+    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────

@@ -137,10 +137,28 @@
 
   /* control elements */
 
-  x-actions {display: block}
-  x-actions-title {display: block}
-  x-actions x-action-list {display: block}
+  x-actions {display: inline-block}
+
+  x-actions-title {
+    display: block;
+    margin-bottom: 10px;
+    padding: 0 5px 0 20px;
+    line-height: 1.35em;
+    cursor: default;
+    background: url('images/icons-action_list.svgd') no-repeat}
+  x-actions-title:empty {width: 20px; height: 20px; padding: 0}
+
+  x-actions x-action-list {
+    position: absolute;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: 0 1px 5px 0 rgba(50, 50, 50, 0.3);
+    background: white}
+
   x-actions x-action-list x-action {display: block}
+
+  x-actions[data-list_state='hidden']       x-action-list {display: none}
+  x-actions[data-list_state='hidden']:hover x-action-list {display: block}
 
   /* pager */
 

@@ -7,7 +7,7 @@
 namespace effcore\modules\demo {
           use \effcore\block;
           use \effcore\canvas_svg;
-          use \effcore\control_actions_list;
+          use \effcore\actions_list;
           use \effcore\decorator;
           use \effcore\diagram;
           use \effcore\markup;
@@ -246,7 +246,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $controls_title = new markup('h3', [], 'Control elements');
   # actions list
-    $actions_list = new control_actions_list('', ['class' => ['demo-actions-list' => 'demo-actions-list']]);
+    $actions_list = new actions_list('', ['class' => ['demo-actions-list' => 'demo-actions-list']]);
     $actions_list->actions = [
       'item_1' => 'item #1',
       'item_2' => 'item #2',
