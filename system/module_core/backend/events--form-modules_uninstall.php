@@ -81,7 +81,9 @@ namespace effcore\modules\core {
             }
           }
         } else {
-          message::insert('No one module was selected!', 'warning');
+          message::insert(
+            'No one module was selected!', 'warning'
+          );
         }
         break;
     }

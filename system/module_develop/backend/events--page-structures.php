@@ -12,7 +12,6 @@ namespace effcore\modules\develop {
           use \effcore\markup;
           use \effcore\text_simple;
           use \effcore\text;
-          use \effcore\translation;
           use \effcore\url;
           abstract class events_page_structures {
 
@@ -168,7 +167,7 @@ namespace effcore\modules\develop {
     $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
     return new block('UML Diagram', ['data-styled-title' => 'no', 'class' => ['structures-diagram' => 'structures-diagram']], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
-      new markup('p', [], translation::get('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
+      new markup('p', [], new text('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => true]),
       new markup('label', [], new text('expand')),
       $diagram

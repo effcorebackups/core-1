@@ -42,9 +42,11 @@ namespace effcore {
         if (!$file->append_direct(core::time_get().' | '.
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {
-          message::insert(
-            translation::get('Can not insert or update file "%%_file" in the directory "%%_directory"!', ['file' => $file->file_get(), 'directory' => $file->dirs_relative_get()]).br.
-            translation::get('Check file (if exists) and directory permissions.'), 'error'
+          message::insert(new text_multiline([
+            'Can not insert or update file "%%_file" in the directory "%%_directory"!',
+            'Check file (if exists) and directory permissions.'], [
+            'file'      => $file->file_get(),
+            'directory' => $file->dirs_relative_get()]), 'error'
           );
         }
       }

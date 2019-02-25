@@ -51,7 +51,9 @@ namespace effcore\modules\user {
           );
           url::go('/user/'.$user->nick);
         } else {
-          message::insert('User was not registered!', 'error');
+          message::insert(
+            'User was not registered!', 'error'
+          );
         }
         break;
     }

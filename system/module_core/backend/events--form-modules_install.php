@@ -155,7 +155,9 @@ namespace effcore\modules\core {
           }
         }
         if (!$modules_to_enable && !$modules_to_disable) {
-          message::insert('No one module was selected!', 'warning');
+          message::insert(
+            'No one module was selected!', 'warning'
+          );
         }
         break;
       case 'refresh':
