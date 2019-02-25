@@ -10,6 +10,7 @@ namespace effcore\modules\user {
           use \effcore\instance;
           use \effcore\message;
           use \effcore\page;
+          use \effcore\text;
           use \effcore\translation;
           use \effcore\url;
           abstract class events_form_user_edit {
@@ -94,13 +95,13 @@ namespace effcore\modules\user {
            $user->avatar_path = null;
         }
         if ($user->update()) {
-          message::insert(
-            translation::get('User %%_nick was updated.', ['nick' => $user->nick])
-          );
+          message::insert(new text(
+            'User %%_nick was updated.', ['nick' => $user->nick]
+          ));
           url::go(url::back_url_get() ?: '/user/'.$user->nick);
         } else {
-          message::insert(
-            translation::get('User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
+          message::insert(new text(
+            'User %%_nick was not updated.', ['nick' => $user->nick]), 'warning'
           );
         }
         break;

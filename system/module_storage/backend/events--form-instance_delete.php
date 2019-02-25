@@ -9,14 +9,14 @@ namespace effcore\modules\storage {
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
-          use \effcore\translation;
+          use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_delete {
 
   static function on_init($form, $items) {
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
-    $question = new markup('p', [], translation::get('Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?', ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
+    $question = new markup('p', [], new text('Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?', ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
     $items['info']->child_insert($question);
   }
 
@@ -30,8 +30,8 @@ namespace effcore\modules\storage {
           page::current_get(), $form, $items
         );
         if ($result)
-             message::insert(translation::get('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
-        else message::insert(translation::get('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
+             message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
+        else message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
         url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
         break;
       case 'cancel':

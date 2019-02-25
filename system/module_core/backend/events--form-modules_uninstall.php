@@ -12,7 +12,6 @@ namespace effcore\modules\core {
           use \effcore\message;
           use \effcore\module;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_modules_uninstall {
 
   static function on_init($form, $items) {
@@ -77,7 +76,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_uninstall as $c_module) {
             if (!isset($installed_by_boot[$c_module->id])) {
               message::insert(
-                translation::get('Module data %%_title (%%_id) has been removed.', ['title' => $c_module->title, 'id' => $c_module->id])
+                new text('Module data %%_title (%%_id) has been removed.', ['title' => $c_module->title, 'id' => $c_module->id])
               );
             }
           }

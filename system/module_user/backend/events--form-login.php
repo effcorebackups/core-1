@@ -10,15 +10,15 @@ namespace effcore\modules\user {
           use \effcore\instance;
           use \effcore\message;
           use \effcore\session;
-          use \effcore\translation;
+          use \effcore\text_multiline;
           use \effcore\url;
           abstract class events_form_login {
 
   static function on_init($form, $items) {
     if (!isset($_COOKIE['cookies_is_on'])) {
-      message::insert(
-        translation::get('Cookies are disabled. You can not log in!').br.
-        translation::get('Enable cookies before login.'), 'warning'
+      message::insert(new text_multiline([
+        'Cookies are disabled. You can not log in!',
+        'Enable cookies before login.']), 'warning'
       );
     }
   }
