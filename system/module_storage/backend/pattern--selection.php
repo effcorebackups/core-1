@@ -165,13 +165,11 @@ namespace effcore {
 
   function action_list_get($entity, $instance, $id_keys) {
     $id_values = array_intersect_key($instance->values, $id_keys);
-    if (empty($instance->is_embed)) {
-      $action_list = new actions_list();
-      $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values), 'select');
-      $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values), 'update');
-      $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values), 'delete');
-      return $action_list;
-    }
+    $action_list = new actions_list();
+                                    $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values), 'select');
+                                    $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values), 'update');
+    if (empty($instance->is_embed)) $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values), 'delete');
+    return $action_list;
   }
 
   function field_entity_insert($row_id = null, $entity_name, $field_name) {
