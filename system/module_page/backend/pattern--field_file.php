@@ -75,28 +75,27 @@ namespace effcore {
   }
 
   function render_description() {
-    $result[] = new markup('p', ['class' => ['file_size_max' => 'file_size_max']], new text('Maximum file size: %%_value.', ['value' => locale::human_bytes_format($this->file_size_max_get())]));
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min();
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max();
-    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid();
-    if ($this->allowed_types                              ) $result[] = $this->render_allowed_types();
-    if ($this->allowed_characters_title                   ) $result[] = $this->render_allowed_characters();
-    
+                                                            $result[] = $this->render_description_file_size_max();
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number();
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number();
+    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number();
+    if ($this->allowed_types                              ) $result[] = $this->render_description_allowed_types();
+    if ($this->allowed_characters_title                   ) $result[] = $this->render_description_allowed_characters();
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
-      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                      ) return '';
-      if ($this->description_state == 'opened' || $this->has_error()) return                   (new markup($this->description_tag_name, [], $result))->render();
-      if ($this->description_state == 'closed'                      ) return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
   }
 
-  function render_description_file_min() {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
-  function render_description_file_max() {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
-  function render_description_file_mid() {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));}
-  function render_allowed_types       () {return new markup('p', ['class' => ['file-allowed-types'      => 'file-allowed-types'     ]], new text('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));}
-  function render_allowed_characters  () {return new markup('p', ['class' => ['file-allowed-characters' => 'file-allowed-characters']], new text('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));}
+  function render_description_file_size_max     () {return new markup('p', ['class' => ['file-size-max'           => 'file-size-max'          ]], new text('Maximum file size: %%_value.',                                       ['value'      => locale::human_bytes_format($this->file_size_max_get())]));}
+  function render_description_file_min_number   () {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));         }
+  function render_description_file_max_number   () {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));         }
+  function render_description_file_mid_number   () {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));         }
+  function render_description_allowed_types     () {return new markup('p', ['class' => ['file-allowed-types'      => 'file-allowed-types'     ]], new text('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));         }
+  function render_description_allowed_characters() {return new markup('p', ['class' => ['file-allowed-characters' => 'file-allowed-characters']], new text('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));         }
 
   ############
   ### pool ###

@@ -292,12 +292,15 @@ namespace effcore {
     }
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
-      $opener = new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]);
       if ($this->description_state == 'hidden'                      ) return '';
-      if ($this->description_state == 'opened' || $this->has_error()) return                   (new markup($this->description_tag_name, [], $result))->render();
-      if ($this->description_state == 'closed'                      ) return $opener->render().(new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, [], $result))->render();
       return '';
     }
+  }
+
+  function render_opener() {
+    return (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]))->render();
   }
 
   function render_description_pattern  ($element) {return new markup('p', ['class' => ['pattern'   => 'pattern']],   new text('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));          }
