@@ -18,7 +18,7 @@ namespace effcore {
   public $decorator_params = [];
   public $limit = 50;
   public $is_paged = false;
-  public $pager_prefix = 'page';
+  public $pager_name = 'page';
   public $pager_id = 0;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
@@ -75,7 +75,7 @@ namespace effcore {
         $instances_count = $main_entity->instances_count_select($this->query_params);
         if ($instances_count > 0) {
           $page_max_number = ceil($instances_count / $this->limit);
-          $pager = new pager(1, $page_max_number, $this->pager_prefix, $this->pager_id, [], -20);
+          $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
           $pager->init();
           if ($pager->has_error) {
             core::send_header_and_exit('page_not_found');

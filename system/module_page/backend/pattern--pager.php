@@ -13,14 +13,14 @@ namespace effcore {
   public $min = 1;
   public $max = 1;
   public $cur = null;
-  public $prefix = 'page';
+  public $name = 'page';
   public $id = 0;
 
-  function __construct($min = 1, $max = 1, $prefix = 'page', $id = 0,  $attributes = [], $weight = 0) {
-    $this->min    = $min;
-    $this->max    = $max;
-    $this->prefix = $prefix;
-    $this->id     = $id;
+  function __construct($min = 1, $max = 1, $name = 'page', $id = 0,  $attributes = [], $weight = 0) {
+    $this->min  = $min;
+    $this->max  = $max;
+    $this->name = $name;
+    $this->id   = $id;
     parent::__construct(null, $attributes, [], $weight);
   }
 
@@ -32,9 +32,11 @@ namespace effcore {
     if ($this->cur > $this->max)                        {$this->cur = $this->max; $this->has_error = true;}
   }
 
-  function pager_name_get() {
-    return $this->id ? $this->prefix.$this->id :
-                       $this->prefix;
+  function pager_name_get($optimized = true) {
+    if (!$optimized)
+         return             $this->name.$this->id;
+    else return $this->id ? $this->name.$this->id :
+                            $this->name;
   }
 
  # the dynamic of the pager center part:
@@ -86,14 +88,16 @@ namespace effcore {
   function render() {
     $this->init();
     $pager = new markup($this->tag_name);
-    $pager_name = $this->pager_name_get();
+    $pager_name               = $this->pager_name_get();
+    $pager_name_not_optimized = $this->pager_name_get(false);
     $url = clone url::current_get();
+    $url->query_arg_delete($pager_name);
+    $url->query_arg_delete($pager_name_not_optimized);
 
   # ─────────────────────────────────────────────────────────────────────
   # min part
   # ─────────────────────────────────────────────────────────────────────
     if ($this->max - $this->min > 0) {
-      $url->query_arg_delete($pager_name);
       if ($this->cur == $this->min)
            $pager->child_insert(new markup('a', ['href' => $url->tiny_get(), 'class' => ['active' => 'active']], $this->min));
       else $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $this->min));
