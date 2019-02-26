@@ -10,6 +10,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'palette'];
 
   function build() {
+  # parent::build() not required
     foreach (storage::get('files')->select('colors') as $c_colors) {
       foreach ($c_colors as $c_row_id => $c_color) {
         $this->field_insert(null, [

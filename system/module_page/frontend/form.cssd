@@ -162,6 +162,12 @@
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 
+  /* form install */
+
+  form#install button[value='install'] {
+    display: block;
+    margin: 100px auto 50px auto}
+
   /* IE adaptation */
 
   html[data-uagent^='msie'] input[type='checkbox'],

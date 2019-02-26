@@ -21,10 +21,10 @@ namespace effcore {
   public $checked  = [];
 
   function __construct($values = null, $required = null, $disabled = null, $checked = null) {
-    if ($values)   $this->values   = $values;
+    if ($values  ) $this->values   = $values;
     if ($required) $this->required = $required;
     if ($disabled) $this->disabled = $disabled;
-    if ($checked)  $this->checked  = $checked;
+    if ($checked ) $this->checked  = $checked;
     parent::__construct();
   }
 

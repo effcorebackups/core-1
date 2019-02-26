@@ -7,7 +7,7 @@ forms
     children
     - storage|fieldset
         title: Storage
-        state: opened
+        state: closed
         children
       # driver
         - is_mysql|field_radiobutton
@@ -98,7 +98,7 @@ forms
                 - required: false
     - user|fieldset
         title: User
-        state: opened
+        state: closed
         children
       # email
         - email|field_email
@@ -111,6 +111,7 @@ forms
             element_attributes
             - data-source: uagent-timezone
     - license_agreement|group_license_agreement
+        state: closed
     - button_install|button
         title: install
         attributes
