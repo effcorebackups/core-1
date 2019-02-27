@@ -9,12 +9,13 @@
   fieldset {margin: 50px 0; padding: 0; border: none}
   x-field.before-container + fieldset {margin-top: 30px}
 
-  fieldset > label {display: inline-block; margin-left: -2px; font-size: 1.5em; line-height: 1.2em}
-  fieldset > label + x-fieldset-content {margin-top: 30px}
+  fieldset > label {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
+  fieldset > x-fieldset-content {margin-top: 30px}
   fieldset > x-description {margin-top: 20px}
-  fieldset input[data-opener-type='fieldset'] {position: absolute; margin: 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items.svgd') 0 -60px}
+
+  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items.svgd') 0 -60px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
-  fieldset input[data-opener-type='fieldset'] + label {margin-left: 35px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+  fieldset input[data-opener-type='fieldset'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
   x-fieldset-content {
@@ -154,13 +155,17 @@
 
   /* palette */
 
-  x-group[data-type='palette'] {margin: 5px 0}
-  x-group[data-type='palette'] x-title {margin-bottom: 7px}
+  x-group[data-type='palette'] label {margin: 0; display: inline-block; vertical-align: middle; font-size: 1.2em}
+  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 8px 0; border-top: 1px dashed lightgray}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
-  x-group[data-type='palette'] x-field input:checked {border-color: black}
+  x-group[data-type='palette'] x-field input:checked                {border-color: black}
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
+
+  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 15px}
+  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
+  x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
   /* form install */
 
