@@ -26,17 +26,29 @@ colors
     id: hotpink
     value: hotpink
     group: pastel
-- pink
-    id: pink
-    value: pink
+- palevioletred
+    id: palevioletred
+    value: palevioletred
+    group: pastel
+- lightcoral
+    id: lightcoral
+    value: lightcoral
     group: pastel
 - salmon
     id: salmon
     value: salmon
     group: pastel
-- palevioletred
-    id: palevioletred
-    value: palevioletred
+- darksalmon
+    id: darksalmon
+    value: darksalmon
+    group: pastel
+- lightsalmon
+    id: lightsalmon
+    value: lightsalmon
+    group: pastel
+- pink
+    id: pink
+    value: pink
     group: pastel
 # ─────────────────────────────────────────────────────────────────────
 # orange group
@@ -121,6 +133,14 @@ colors
     id: blueviolet
     value: blueviolet
     group: violet
+- rebeccapurple
+    id: rebeccapurple
+    value: rebeccapurple
+    group: violet
+- indigo
+    id: indigo
+    value: indigo
+    group: violet
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
@@ -140,10 +160,33 @@ colors
     id: crimson
     value: crimson
     group: red
+- red
+    id: red
+    value: red
+    group: red
 - tomato
     id: tomato
     value: tomato
     group: red
+# ─────────────────────────────────────────────────────────────────────
+# brown group
+# ─────────────────────────────────────────────────────────────────────
+- indianred
+    id: indianred
+    value: indianred
+    group: brown
+- firebrick
+    id: firebrick
+    value: firebrick
+    group: brown
+- brown
+    id: brown
+    value: brown
+    group: brown
+- darkred
+    id: darkred
+    value: darkred
+    group: brown
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
