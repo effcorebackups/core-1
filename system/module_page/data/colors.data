@@ -22,21 +22,9 @@ colors
     id: orchid
     value: orchid
     group: pastel
-- hotpink
-    id: hotpink
-    value: hotpink
-    group: pastel
 - palevioletred
     id: palevioletred
     value: palevioletred
-    group: pastel
-- lightcoral
-    id: lightcoral
-    value: lightcoral
-    group: pastel
-- salmon
-    id: salmon
-    value: salmon
     group: pastel
 - darksalmon
     id: darksalmon
@@ -46,17 +34,17 @@ colors
     id: lightsalmon
     value: lightsalmon
     group: pastel
-- pink
-    id: pink
-    value: pink
+- peachpuff
+    id: peachpuff
+    value: peachpuff
     group: pastel
-- lemonchiffon
-    id: lemonchiffon
-    value: lemonchiffon
+- moccasin
+    id: moccasin
+    value: moccasin
     group: pastel
-- lightyellow
-    id: lightyellow
-    value: lightyellow
+- papayawhip
+    id: papayawhip
+    value: papayawhip
     group: pastel
 # ─────────────────────────────────────────────────────────────────────
 # orange group
@@ -69,20 +57,48 @@ colors
     id: darkorange
     value: darkorange
     group: orange
+- coral
+    id: coral
+    value: coral
+    group: orange
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
-- yellow
-    id: yellow
-    value: yellow
+- lightyellow
+    id: lightyellow
+    value: lightyellow
+    group: yellow
+- lemonchiffon
+    id: lemonchiffon
+    value: lemonchiffon
+    group: yellow
+- palegoldenrod
+    id: palegoldenrod
+    value: palegoldenrod
+    group: yellow
+- khaki
+    id: khaki
+    value: khaki
+    group: yellow
+- darkkhaki
+    id: darkkhaki
+    value: darkkhaki
     group: yellow
 - gold
     id: gold
     value: gold
     group: yellow
+- yellow
+    id: yellow
+    value: yellow
+    group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # green group
 # ─────────────────────────────────────────────────────────────────────
+- palegreen
+    id: palegreen
+    value: palegreen
+    group: green
 - mediumaquamarine
     id: mediumaquamarine
     value: mediumaquamarine
@@ -102,6 +118,22 @@ colors
 - yellowgreen
     id: yellowgreen
     value: yellowgreen
+    group: green
+- greenyellow
+    id: greenyellow
+    value: greenyellow
+    group: green
+- lawngreen
+    id: lawngreen
+    value: lawngreen
+    group: green
+- lime
+    id: lime
+    value: lime
+    group: green
+- limegreen
+    id: limegreen
+    value: limegreen
     group: green
 # ─────────────────────────────────────────────────────────────────────
 # blue group
@@ -160,6 +192,10 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
+- hotpink
+    id: hotpink
+    value: hotpink
+    group: red
 - deeppink
     id: deeppink
     value: deeppink
@@ -188,9 +224,17 @@ colors
     id: tomato
     value: tomato
     group: red
-- coral
-    id: coral
-    value: coral
+- salmon
+    id: salmon
+    value: salmon
+    group: red
+- lightcoral
+    id: lightcoral
+    value: lightcoral
+    group: red
+- pink
+    id: pink
+    value: pink
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # brown group
