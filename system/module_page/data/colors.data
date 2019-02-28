@@ -76,37 +76,49 @@ colors
     id: lightgreen
     value: lightgreen
     group: green
+- lawngreen
+    id: lawngreen
+    value: lawngreen
+    group: green
 - mediumspringgreen
     id: mediumspringgreen
     value: mediumspringgreen
     group: green
-- mediumaquamarine
-    id: mediumaquamarine
-    value: mediumaquamarine
+- springgreen
+    id: springgreen
+    value: springgreen
     group: green
-- lightseagreen
-    id: lightseagreen
-    value: lightseagreen
+- mediumseagreen
+    id: mediumseagreen
+    value: mediumseagreen
     group: green
-- darkcyan
-    id: darkcyan
-    value: darkcyan
+- seagreen
+    id: seagreen
+    value: seagreen
     group: green
 - forestgreen
     id: forestgreen
     value: forestgreen
     group: green
-- yellowgreen
-    id: yellowgreen
-    value: yellowgreen
+- green
+    id: green
+    value: green
     group: green
-- greenyellow
-    id: greenyellow
-    value: greenyellow
+- darkgreen
+    id: darkgreen
+    value: darkgreen
     group: green
-- lawngreen
-    id: lawngreen
-    value: lawngreen
+- aquamarine
+    id: aquamarine
+    value: aquamarine
+    group: green
+- mediumaquamarine
+    id: mediumaquamarine
+    value: mediumaquamarine
+    group: green
+- darkseagreen
+    id: darkseagreen
+    value: darkseagreen
     group: green
 - lime
     id: lime
@@ -117,12 +129,66 @@ colors
     value: limegreen
     group: green
 # ─────────────────────────────────────────────────────────────────────
+# marine group
+# ─────────────────────────────────────────────────────────────────────
+- lightcyan
+    id: lightcyan
+    value: lightcyan
+    group: marine
+- paleturquoise
+    id: paleturquoise
+    value: paleturquoise
+    group: marine
+- turquoise
+    id: turquoise
+    value: turquoise
+    group: marine
+- mediumturquoise
+    id: mediumturquoise
+    value: mediumturquoise
+    group: marine
+- darkturquoise
+    id: darkturquoise
+    value: darkturquoise
+    group: marine
+- lightseagreen
+    id: lightseagreen
+    value: lightseagreen
+    group: marine
+- cadetblue
+    id: cadetblue
+    value: cadetblue
+    group: marine
+- darkcyan
+    id: darkcyan
+    value: darkcyan
+    group: marine
+- cyan
+    id: cyan
+    value: cyan
+    group: marine
+# ─────────────────────────────────────────────────────────────────────
+# olive group
+# ─────────────────────────────────────────────────────────────────────
+- greenyellow
+    id: greenyellow
+    value: greenyellow
+    group: olive
+- yellowgreen
+    id: yellowgreen
+    value: yellowgreen
+    group: olive
+- olivedrab
+    id: olivedrab
+    value: olivedrab
+    group: olive
+- darkolivegreen
+    id: darkolivegreen
+    value: darkolivegreen
+    group: olive
+# ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
-- slategray
-    id: slategray
-    value: slategray
-    group: blue
 - steelblue
     id: steelblue
     value: steelblue
@@ -186,9 +252,9 @@ colors
     id: indigo
     value: indigo
     group: violet
-- fuchsia
-    id: fuchsia
-    value: fuchsia
+- magenta
+    id: magenta
+    value: magenta
     group: violet
 # ─────────────────────────────────────────────────────────────────────
 # red group
@@ -290,6 +356,10 @@ colors
 - dimgray
     id: dimgray
     value: dimgray
+    group: grayscale
+- slategray
+    id: slategray
+    value: slategray
     group: grayscale
 - black
     id: black
