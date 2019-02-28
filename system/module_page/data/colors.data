@@ -50,6 +50,14 @@ colors
     id: pink
     value: pink
     group: pastel
+- lemonchiffon
+    id: lemonchiffon
+    value: lemonchiffon
+    group: pastel
+- lightyellow
+    id: lightyellow
+    value: lightyellow
+    group: pastel
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
@@ -57,9 +65,17 @@ colors
     id: orange
     value: orange
     group: orange
+- darkorange
+    id: darkorange
+    value: darkorange
+    group: orange
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
+- yellow
+    id: yellow
+    value: yellow
+    group: yellow
 - gold
     id: gold
     value: gold
@@ -164,9 +180,17 @@ colors
     id: red
     value: red
     group: red
+- orangered
+    id: orangered
+    value: orangered
+    group: red
 - tomato
     id: tomato
     value: tomato
+    group: red
+- coral
+    id: coral
+    value: coral
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # brown group
