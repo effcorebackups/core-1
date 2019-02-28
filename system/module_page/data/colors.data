@@ -39,44 +39,6 @@ colors
     value: palevioletred
     group: pastel
 # ─────────────────────────────────────────────────────────────────────
-# violet group
-# ─────────────────────────────────────────────────────────────────────
-- fuchsia
-    id: fuchsia
-    value: fuchsia
-    group: violet
-- mediumorchid
-    id: mediumorchid
-    value: mediumorchid
-    group: violet
-- darkorchid
-    id: darkorchid
-    value: darkorchid
-    group: violet
-- purple
-    id: purple
-    value: purple
-    group: violet
-# ─────────────────────────────────────────────────────────────────────
-# red group
-# ─────────────────────────────────────────────────────────────────────
-- deeppink
-    id: deeppink
-    value: deeppink
-    group: red
-- mediumvioletred
-    id: mediumvioletred
-    value: mediumvioletred
-    group: red
-- crimson
-    id: crimson
-    value: crimson
-    group: red
-- tomato
-    id: tomato
-    value: tomato
-    group: red
-# ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
 - orange
@@ -124,10 +86,64 @@ colors
     id: steelblue
     value: steelblue
     group: blue
+- mediumpurple
+    id: mediumpurple
+    value: mediumpurple
+    group: blue
+- mediumslateblue
+    id: mediumslateblue
+    value: mediumslateblue
+    group: blue
+- slateblue
+    id: slateblue
+    value: slateblue
+    group: blue
 - darkslateblue
     id: darkslateblue
     value: darkslateblue
     group: blue
+# ─────────────────────────────────────────────────────────────────────
+# violet group
+# ─────────────────────────────────────────────────────────────────────
+- fuchsia
+    id: fuchsia
+    value: fuchsia
+    group: violet
+- mediumorchid
+    id: mediumorchid
+    value: mediumorchid
+    group: violet
+- darkorchid
+    id: darkorchid
+    value: darkorchid
+    group: violet
+- blueviolet
+    id: blueviolet
+    value: blueviolet
+    group: violet
+# ─────────────────────────────────────────────────────────────────────
+# red group
+# ─────────────────────────────────────────────────────────────────────
+- deeppink
+    id: deeppink
+    value: deeppink
+    group: red
+- mediumvioletred
+    id: mediumvioletred
+    value: mediumvioletred
+    group: red
+- purple
+    id: purple
+    value: purple
+    group: red
+- crimson
+    id: crimson
+    value: crimson
+    group: red
+- tomato
+    id: tomato
+    value: tomato
+    group: red
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
