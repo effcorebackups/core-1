@@ -39,53 +39,95 @@ colors
     value: palevioletred
     group: pastel
 # ─────────────────────────────────────────────────────────────────────
-# common group
+# violet group
 # ─────────────────────────────────────────────────────────────────────
 - fuchsia
     id: fuchsia
     value: fuchsia
+    group: violet
+- mediumorchid
+    id: mediumorchid
+    value: mediumorchid
+    group: violet
+- darkorchid
+    id: darkorchid
+    value: darkorchid
+    group: violet
+- purple
+    id: purple
+    value: purple
+    group: violet
+# ─────────────────────────────────────────────────────────────────────
+# red group
+# ─────────────────────────────────────────────────────────────────────
 - deeppink
     id: deeppink
     value: deeppink
+    group: red
 - mediumvioletred
     id: mediumvioletred
     value: mediumvioletred
+    group: red
 - crimson
     id: crimson
     value: crimson
+    group: red
 - tomato
     id: tomato
     value: tomato
+    group: red
+# ─────────────────────────────────────────────────────────────────────
+# orange group
+# ─────────────────────────────────────────────────────────────────────
 - orange
     id: orange
     value: orange
+    group: orange
+# ─────────────────────────────────────────────────────────────────────
+# yellow group
+# ─────────────────────────────────────────────────────────────────────
 - gold
     id: gold
     value: gold
-- yellowgreen
-    id: yellowgreen
-    value: yellowgreen
-- forestgreen
-    id: forestgreen
-    value: forestgreen
+    group: yellow
+# ─────────────────────────────────────────────────────────────────────
+# green group
+# ─────────────────────────────────────────────────────────────────────
 - mediumaquamarine
     id: mediumaquamarine
     value: mediumaquamarine
+    group: green
 - lightseagreen
     id: lightseagreen
     value: lightseagreen
+    group: green
 - darkcyan
     id: darkcyan
     value: darkcyan
-- steelblue
-    id: steelblue
-    value: steelblue
-- darkslateblue
-    id: darkslateblue
-    value: darkslateblue
+    group: green
+- forestgreen
+    id: forestgreen
+    value: forestgreen
+    group: green
+- yellowgreen
+    id: yellowgreen
+    value: yellowgreen
+    group: green
+# ─────────────────────────────────────────────────────────────────────
+# blue group
+# ─────────────────────────────────────────────────────────────────────
 - slategray
     id: slategray
     value: slategray
+    group: blue
+- steelblue
+    id: steelblue
+    value: steelblue
+    group: blue
+- darkslateblue
+    id: darkslateblue
+    value: darkslateblue
+    group: blue
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
