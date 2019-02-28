@@ -1,54 +1,27 @@
 colors
 # ─────────────────────────────────────────────────────────────────────
-# pastel group
+# orange group
 # ─────────────────────────────────────────────────────────────────────
-- lavender
-    id: lavender
-    value: lavender
-    group: pastel
-- thistle
-    id: thistle
-    value: thistle
-    group: pastel
-- plum
-    id: plum
-    value: plum
-    group: pastel
-- violet
-    id: violet
-    value: violet
-    group: pastel
-- orchid
-    id: orchid
-    value: orchid
-    group: pastel
-- palevioletred
-    id: palevioletred
-    value: palevioletred
-    group: pastel
-- darksalmon
-    id: darksalmon
-    value: darksalmon
-    group: pastel
-- lightsalmon
-    id: lightsalmon
-    value: lightsalmon
-    group: pastel
-- peachpuff
-    id: peachpuff
-    value: peachpuff
-    group: pastel
-- moccasin
-    id: moccasin
-    value: moccasin
-    group: pastel
 - papayawhip
     id: papayawhip
     value: papayawhip
-    group: pastel
-# ─────────────────────────────────────────────────────────────────────
-# orange group
-# ─────────────────────────────────────────────────────────────────────
+    group: orange
+- moccasin
+    id: moccasin
+    value: moccasin
+    group: orange
+- peachpuff
+    id: peachpuff
+    value: peachpuff
+    group: orange
+- lightsalmon
+    id: lightsalmon
+    value: lightsalmon
+    group: orange
+- darksalmon
+    id: darksalmon
+    value: darksalmon
+    group: orange
 - orange
     id: orange
     value: orange
@@ -98,6 +71,14 @@ colors
 - palegreen
     id: palegreen
     value: palegreen
+    group: green
+- lightgreen
+    id: lightgreen
+    value: lightgreen
+    group: green
+- mediumspringgreen
+    id: mediumspringgreen
+    value: mediumspringgreen
     group: green
 - mediumaquamarine
     id: mediumaquamarine
@@ -165,9 +146,25 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
-- fuchsia
-    id: fuchsia
-    value: fuchsia
+- lavender
+    id: lavender
+    value: lavender
+    group: violet
+- thistle
+    id: thistle
+    value: thistle
+    group: violet
+- plum
+    id: plum
+    value: plum
+    group: violet
+- violet
+    id: violet
+    value: violet
+    group: violet
+- orchid
+    id: orchid
+    value: orchid
     group: violet
 - mediumorchid
     id: mediumorchid
@@ -189,9 +186,17 @@ colors
     id: indigo
     value: indigo
     group: violet
+- fuchsia
+    id: fuchsia
+    value: fuchsia
+    group: violet
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
+- palevioletred
+    id: palevioletred
+    value: palevioletred
+    group: red
 - hotpink
     id: hotpink
     value: hotpink
