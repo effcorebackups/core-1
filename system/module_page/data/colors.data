@@ -189,6 +189,18 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
+- powderblue
+    id: powderblue
+    value: powderblue
+    group: blue
+- lightblue
+    id: lightblue
+    value: lightblue
+    group: blue
+- lightsteelblue
+    id: lightsteelblue
+    value: lightsteelblue
+    group: blue
 - steelblue
     id: steelblue
     value: steelblue
