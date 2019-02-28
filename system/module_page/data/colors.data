@@ -14,9 +14,25 @@ colors
     id: plum
     value: plum
     group: pastel
+- violet
+    id: violet
+    value: violet
+    group: pastel
+- orchid
+    id: orchid
+    value: orchid
+    group: pastel
+- hotpink
+    id: hotpink
+    value: hotpink
+    group: pastel
 - pink
     id: pink
     value: pink
+    group: pastel
+- salmon
+    id: salmon
+    value: salmon
     group: pastel
 - palevioletred
     id: palevioletred
@@ -25,30 +41,21 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # common group
 # ─────────────────────────────────────────────────────────────────────
-- violet
-    id: violet
-    value: violet
-- orchid
-    id: orchid
-    value: orchid
-- hotpink
-    id: hotpink
-    value: hotpink
+- fuchsia
+    id: fuchsia
+    value: fuchsia
 - deeppink
     id: deeppink
     value: deeppink
 - mediumvioletred
     id: mediumvioletred
     value: mediumvioletred
-- salmon
-    id: salmon
-    value: salmon
-- tomato
-    id: tomato
-    value: tomato
 - crimson
     id: crimson
     value: crimson
+- tomato
+    id: tomato
+    value: tomato
 - orange
     id: orange
     value: orange
@@ -120,6 +127,8 @@ colors
 - modernblue
     id: modernblue
     value: #216ce4
+    group: original
 - moderndarkblue
     id: moderndarkblue
     value: #28334a
+    group: original
