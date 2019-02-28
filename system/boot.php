@@ -14,6 +14,7 @@ namespace effcore {
   const cr = "\r";
   const tb = "\t";
   const br = "<br>";
+  const hr = "<hr>";
 
   ini_set('pcre.jit', false);
   if (!ini_get('date.timezone')) {

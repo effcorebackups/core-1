@@ -13,14 +13,18 @@ namespace effcore {
 
   function build() {
   # parent::build() not required
-    foreach (storage::get('files')->select('colors') as $c_colors) {
-      foreach ($c_colors as $c_row_id => $c_color) {
-        $this->field_insert(null, [
-          'value' => $c_color->id,
-          'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),
-          'style' => ['background: '.$c_color->value]
-        ], $c_color->id);
-      }
+    $c_new_color_group = null;
+    $c_old_color_group = null;
+    foreach (color::all_get() as $c_color) {
+      $c_attributes = [
+        'value' => $c_color->id,
+        'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),
+        'style' => ['background: '.$c_color->value]
+      ];
+          $c_new_color_group  = $c_color->group ?? null;
+      if ($c_new_color_group != $c_old_color_group) $this->child_insert(hr);
+          $c_old_color_group  = $c_new_color_group;
+      $this->field_insert(null, $c_attributes, $c_color->id);
     }
   }
 
@@ -32,7 +36,7 @@ namespace effcore {
 
   function render_opener() {
     $color_id    = $this->value_get();
-    $color_value = $this->color_value_get($color_id);
+    $color_value = color::get($color_id)->value;
     return (new markup_simple('input', [
       'type' => 'checkbox',
       'data-opener-type' => 'palette',
@@ -41,16 +45,6 @@ namespace effcore {
       'style' => ['background: '.$color_value],
       'checked' => true
     ]))->render();
-  }
-
-  function color_value_get($color_id) {
-    foreach (storage::get('files')->select('colors') as $c_colors) {
-      foreach ($c_colors as $c_row_id => $c_color) {
-        if ($c_color->id == $color_id) {
-          return $c_color->value;
-        }
-      }
-    }
   }
 
 }}

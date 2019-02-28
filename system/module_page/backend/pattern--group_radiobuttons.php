@@ -52,27 +52,28 @@ namespace effcore {
   }
 
   function name_first_get($trim = true) {
-    foreach ($this->children_select() as $c_field) {
-      if ($c_field instanceof $this->field_class) {
-        return $c_field->name_get($trim);
+    foreach ($this->children_select() as $c_item) {
+      if ($c_item instanceof $this->field_class) {
+        return $c_item->name_get($trim);
       }
     }
   }
 
   function value_get() {
-    foreach ($this->children_select() as $c_field) {
-      if ($c_field->checked_get() == true) {
-        return $c_field->value_get();
+    foreach ($this->children_select() as $c_item) {
+      if ($c_item instanceof $this->field_class &&
+          $c_item->checked_get() == true) {
+        return $c_item->value_get();
       }
     }
     return '';
   }
 
   function value_set($value) {
-    foreach ($this->children_select() as $c_field) $c_field->checked_set(false);
-    foreach ($this->children_select() as $c_field) {
-      if ($value == $c_field->value_get()) {
-        $c_field->checked_set(true);
+    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) $c_item->checked_set(false);
+    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) {
+      if ($c_item->value_get() == $value) {
+          $c_item->checked_set(true);
         return true;
       }
     }
