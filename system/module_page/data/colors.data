@@ -6,110 +6,79 @@ colors
     id: lavender
     value: lavender
     group: pastel
-    is_dark: false
 - thistle
     id: thistle
     value: thistle
     group: pastel
-    is_dark: false
 - plum
     id: plum
     value: plum
     group: pastel
-    is_dark: false
 - pink
     id: pink
     value: pink
     group: pastel
-    is_dark: false
 - palevioletred
     id: palevioletred
     value: palevioletred
     group: pastel
-    is_dark: false
 # ─────────────────────────────────────────────────────────────────────
 # common group
 # ─────────────────────────────────────────────────────────────────────
 - violet
     id: violet
     value: violet
-    is_dark: false
 - orchid
     id: orchid
     value: orchid
-    is_dark: false
 - hotpink
     id: hotpink
     value: hotpink
-    is_dark: false
 - deeppink
     id: deeppink
     value: deeppink
-    is_dark: false
 - mediumvioletred
     id: mediumvioletred
     value: mediumvioletred
-    is_dark: false
 - salmon
     id: salmon
     value: salmon
-    is_dark: true
 - tomato
     id: tomato
     value: tomato
-    is_dark: true
 - crimson
     id: crimson
     value: crimson
-    is_dark: true
 - orange
     id: orange
     value: orange
-    is_dark: true
 - gold
     id: gold
     value: gold
-    is_dark: false
 - yellowgreen
     id: yellowgreen
     value: yellowgreen
-    is_dark: true
 - forestgreen
     id: forestgreen
     value: forestgreen
-    is_dark: true
 - mediumaquamarine
     id: mediumaquamarine
     value: mediumaquamarine
-    is_dark: false
 - lightseagreen
     id: lightseagreen
     value: lightseagreen
-    is_dark: true
 - darkcyan
     id: darkcyan
     value: darkcyan
-    is_dark: true
 - steelblue
     id: steelblue
     value: steelblue
-    is_dark: true
-- modernblue
-    id: modernblue
-    value: #216ce4
-    is_dark: true
 - darkslateblue
     id: darkslateblue
     value: darkslateblue
-    is_dark: true
-- moderndarkblue
-    id: moderndarkblue
-    value: #28334a
-    is_dark: true
 - slategray
     id: slategray
     value: slategray
-    is_dark: true
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
@@ -117,39 +86,40 @@ colors
     id: white
     value: white
     group: grayscale
-    is_dark: false
 - gainsboro
     id: gainsboro
     value: gainsboro
     group: grayscale
-    is_dark: false
 - lightgray
     id: lightgray
     value: lightgray
     group: grayscale
-    is_dark: false
 - silver
     id: silver
     value: silver
     group: grayscale
-    is_dark: false
 - darkgray
     id: darkgray
     value: darkgray
     group: grayscale
-    is_dark: false
 - gray
     id: gray
     value: gray
     group: grayscale
-    is_dark: false
 - dimgray
     id: dimgray
     value: dimgray
     group: grayscale
-    is_dark: true
 - black
     id: black
     value: black
     group: grayscale
-    is_dark: true
+# ─────────────────────────────────────────────────────────────────────
+# original group
+# ─────────────────────────────────────────────────────────────────────
+- modernblue
+    id: modernblue
+    value: #216ce4
+- moderndarkblue
+    id: moderndarkblue
+    value: #28334a
