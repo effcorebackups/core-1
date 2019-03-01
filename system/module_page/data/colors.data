@@ -2,57 +2,41 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
-- papayawhip
-    id: papayawhip
-    value: papayawhip
-    group: orange
-- moccasin
-    id: moccasin
-    value: moccasin
-    group: orange
-- peachpuff
-    id: peachpuff
-    value: peachpuff
-    group: orange
-- lightsalmon
-    id: lightsalmon
-    value: lightsalmon
-    group: orange
-- darksalmon
-    id: darksalmon
-    value: darksalmon
-    group: orange
-- orange
-    id: orange
-    value: orange
+- coral
+    id: coral
+    value: coral
     group: orange
 - darkorange
     id: darkorange
     value: darkorange
     group: orange
-- coral
-    id: coral
-    value: coral
+- orange
+    id: orange
+    value: orange
+    group: orange
+- darksalmon
+    id: darksalmon
+    value: darksalmon
+    group: orange
+- lightsalmon
+    id: lightsalmon
+    value: lightsalmon
+    group: orange
+- peachpuff
+    id: peachpuff
+    value: peachpuff
+    group: orange
+- moccasin
+    id: moccasin
+    value: moccasin
+    group: orange
+- papayawhip
+    id: papayawhip
+    value: papayawhip
     group: orange
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
-- lightyellow
-    id: lightyellow
-    value: lightyellow
-    group: yellow
-- lemonchiffon
-    id: lemonchiffon
-    value: lemonchiffon
-    group: yellow
-- palegoldenrod
-    id: palegoldenrod
-    value: palegoldenrod
-    group: yellow
-- khaki
-    id: khaki
-    value: khaki
-    group: yellow
 - darkkhaki
     id: darkkhaki
     value: darkkhaki
@@ -65,232 +49,239 @@ colors
     id: yellow
     value: yellow
     group: yellow
+- khaki
+    id: khaki
+    value: khaki
+    group: yellow
+- palegoldenrod
+    id: palegoldenrod
+    value: palegoldenrod
+    group: yellow
+- lemonchiffon
+    id: lemonchiffon
+    value: lemonchiffon
+    group: yellow
+- lightyellow
+    id: lightyellow
+    value: lightyellow
+    group: yellow
+# ─────────────────────────────────────────────────────────────────────
+# olive group
+# ─────────────────────────────────────────────────────────────────────
+- darkolivegreen
+    id: darkolivegreen
+    value: darkolivegreen
+    group: olive
+- olivedrab
+    id: olivedrab
+    value: olivedrab
+    group: olive
+- yellowgreen
+    id: yellowgreen
+    value: yellowgreen
+    group: olive
+- greenyellow
+    id: greenyellow
+    value: greenyellow
+    group: olive
 # ─────────────────────────────────────────────────────────────────────
 # green group
 # ─────────────────────────────────────────────────────────────────────
-- palegreen
-    id: palegreen
-    value: palegreen
-    group: green
-- lightgreen
-    id: lightgreen
-    value: lightgreen
-    group: green
-- lawngreen
-    id: lawngreen
-    value: lawngreen
-    group: green
-- mediumspringgreen
-    id: mediumspringgreen
-    value: mediumspringgreen
-    group: green
-- springgreen
-    id: springgreen
-    value: springgreen
-    group: green
-- mediumseagreen
-    id: mediumseagreen
-    value: mediumseagreen
-    group: green
-- seagreen
-    id: seagreen
-    value: seagreen
-    group: green
-- forestgreen
-    id: forestgreen
-    value: forestgreen
+- darkgreen
+    id: darkgreen
+    value: darkgreen
     group: green
 - green
     id: green
     value: green
     group: green
-- darkgreen
-    id: darkgreen
-    value: darkgreen
+- forestgreen
+    id: forestgreen
+    value: forestgreen
     group: green
-- aquamarine
-    id: aquamarine
-    value: aquamarine
+- seagreen
+    id: seagreen
+    value: seagreen
     group: green
-- mediumaquamarine
-    id: mediumaquamarine
-    value: mediumaquamarine
-    group: green
-- darkseagreen
-    id: darkseagreen
-    value: darkseagreen
-    group: green
-- lime
-    id: lime
-    value: lime
+- mediumseagreen
+    id: mediumseagreen
+    value: mediumseagreen
     group: green
 - limegreen
     id: limegreen
     value: limegreen
     group: green
+- lawngreen
+    id: lawngreen
+    value: lawngreen
+    group: green
+- lightgreen
+    id: lightgreen
+    value: lightgreen
+    group: green
+- palegreen
+    id: palegreen
+    value: palegreen
+    group: green
+- lime
+    id: lime
+    value: lime
+    group: green
+- darkseagreen
+    id: darkseagreen
+    value: darkseagreen
+    group: green
+- mediumaquamarine
+    id: mediumaquamarine
+    value: mediumaquamarine
+    group: green
+- springgreen
+    id: springgreen
+    value: springgreen
+    group: green
+- mediumspringgreen
+    id: mediumspringgreen
+    value: mediumspringgreen
+    group: green
+- aquamarine
+    id: aquamarine
+    value: aquamarine
+    group: green
 # ─────────────────────────────────────────────────────────────────────
 # marine group
 # ─────────────────────────────────────────────────────────────────────
-- lightcyan
-    id: lightcyan
-    value: lightcyan
-    group: marine
-- paleturquoise
-    id: paleturquoise
-    value: paleturquoise
-    group: marine
-- turquoise
-    id: turquoise
-    value: turquoise
-    group: marine
-- mediumturquoise
-    id: mediumturquoise
-    value: mediumturquoise
-    group: marine
-- darkturquoise
-    id: darkturquoise
-    value: darkturquoise
-    group: marine
-- lightseagreen
-    id: lightseagreen
-    value: lightseagreen
+- darkcyan
+    id: darkcyan
+    value: darkcyan
     group: marine
 - cadetblue
     id: cadetblue
     value: cadetblue
     group: marine
-- darkcyan
-    id: darkcyan
-    value: darkcyan
+- lightseagreen
+    id: lightseagreen
+    value: lightseagreen
+    group: marine
+- darkturquoise
+    id: darkturquoise
+    value: darkturquoise
+    group: marine
+- mediumturquoise
+    id: mediumturquoise
+    value: mediumturquoise
+    group: marine
+- turquoise
+    id: turquoise
+    value: turquoise
+    group: marine
+- lightblue
+    id: lightblue
+    value: lightblue
+    group: marine
+- powderblue
+    id: powderblue
+    value: powderblue
+    group: marine
+- paleturquoise
+    id: paleturquoise
+    value: paleturquoise
+    group: marine
+- lightcyan
+    id: lightcyan
+    value: lightcyan
     group: marine
 - cyan
     id: cyan
     value: cyan
     group: marine
 # ─────────────────────────────────────────────────────────────────────
-# olive group
-# ─────────────────────────────────────────────────────────────────────
-- greenyellow
-    id: greenyellow
-    value: greenyellow
-    group: olive
-- yellowgreen
-    id: yellowgreen
-    value: yellowgreen
-    group: olive
-- olivedrab
-    id: olivedrab
-    value: olivedrab
-    group: olive
-- darkolivegreen
-    id: darkolivegreen
-    value: darkolivegreen
-    group: olive
-# ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
-- powderblue
-    id: powderblue
-    value: powderblue
-    group: blue
-- lightblue
-    id: lightblue
-    value: lightblue
-    group: blue
-- lightsteelblue
-    id: lightsteelblue
-    value: lightsteelblue
-    group: blue
-- steelblue
-    id: steelblue
-    value: steelblue
-    group: blue
-- mediumpurple
-    id: mediumpurple
-    value: mediumpurple
-    group: blue
-- mediumslateblue
-    id: mediumslateblue
-    value: mediumslateblue
+- darkslateblue
+    id: darkslateblue
+    value: darkslateblue
     group: blue
 - slateblue
     id: slateblue
     value: slateblue
     group: blue
-- darkslateblue
-    id: darkslateblue
-    value: darkslateblue
+- mediumslateblue
+    id: mediumslateblue
+    value: mediumslateblue
+    group: blue
+- steelblue
+    id: steelblue
+    value: steelblue
+    group: blue
+- lightskyblue
+    id: lightskyblue
+    value: lightskyblue
+    group: blue
+- skyblue
+    id: skyblue
+    value: skyblue
+    group: blue
+- lightsteelblue
+    id: lightsteelblue
+    value: lightsteelblue
     group: blue
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
-- lavender
-    id: lavender
-    value: lavender
-    group: violet
-- thistle
-    id: thistle
-    value: thistle
-    group: violet
-- plum
-    id: plum
-    value: plum
-    group: violet
-- violet
-    id: violet
-    value: violet
-    group: violet
-- orchid
-    id: orchid
-    value: orchid
-    group: violet
-- mediumorchid
-    id: mediumorchid
-    value: mediumorchid
-    group: violet
-- darkorchid
-    id: darkorchid
-    value: darkorchid
-    group: violet
-- blueviolet
-    id: blueviolet
-    value: blueviolet
+- indigo
+    id: indigo
+    value: indigo
     group: violet
 - rebeccapurple
     id: rebeccapurple
     value: rebeccapurple
     group: violet
-- indigo
-    id: indigo
-    value: indigo
+- blueviolet
+    id: blueviolet
+    value: blueviolet
+    group: violet
+- mediumpurple
+    id: mediumpurple
+    value: mediumpurple
     group: violet
 - magenta
     id: magenta
     value: magenta
     group: violet
 # ─────────────────────────────────────────────────────────────────────
+# orchid group
+# ─────────────────────────────────────────────────────────────────────
+- darkorchid
+    id: darkorchid
+    value: darkorchid
+    group: orchid
+- mediumorchid
+    id: mediumorchid
+    value: mediumorchid
+    group: orchid
+- orchid
+    id: orchid
+    value: orchid
+    group: orchid
+- violet
+    id: violet
+    value: violet
+    group: orchid
+- plum
+    id: plum
+    value: plum
+    group: orchid
+- thistle
+    id: thistle
+    value: thistle
+    group: orchid
+- lavender
+    id: lavender
+    value: lavender
+    group: orchid
+# ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
-- palevioletred
-    id: palevioletred
-    value: palevioletred
-    group: red
-- hotpink
-    id: hotpink
-    value: hotpink
-    group: red
-- deeppink
-    id: deeppink
-    value: deeppink
-    group: red
-- mediumvioletred
-    id: mediumvioletred
-    value: mediumvioletred
-    group: red
-- purple
-    id: purple
-    value: purple
-    group: red
 - crimson
     id: crimson
     value: crimson
@@ -320,62 +311,85 @@ colors
     value: pink
     group: red
 # ─────────────────────────────────────────────────────────────────────
+# crimson group
+# ─────────────────────────────────────────────────────────────────────
+- purple
+    id: purple
+    value: purple
+    group: crimson
+- mediumvioletred
+    id: mediumvioletred
+    value: mediumvioletred
+    group: crimson
+- deeppink
+    id: deeppink
+    value: deeppink
+    group: crimson
+- hotpink
+    id: hotpink
+    value: hotpink
+    group: crimson
+# ─────────────────────────────────────────────────────────────────────
 # brown group
 # ─────────────────────────────────────────────────────────────────────
-- indianred
-    id: indianred
-    value: indianred
-    group: brown
-- firebrick
-    id: firebrick
-    value: firebrick
+- darkred
+    id: darkred
+    value: darkred
     group: brown
 - brown
     id: brown
     value: brown
     group: brown
-- darkred
-    id: darkred
-    value: darkred
+- firebrick
+    id: firebrick
+    value: firebrick
+    group: brown
+- indianred
+    id: indianred
+    value: indianred
+    group: brown
+- palevioletred
+    id: palevioletred
+    value: palevioletred
     group: brown
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
-- white
-    id: white
-    value: white
-    group: grayscale
-- gainsboro
-    id: gainsboro
-    value: gainsboro
-    group: grayscale
-- lightgray
-    id: lightgray
-    value: lightgray
-    group: grayscale
-- silver
-    id: silver
-    value: silver
-    group: grayscale
-- darkgray
-    id: darkgray
-    value: darkgray
-    group: grayscale
-- gray
-    id: gray
-    value: gray
-    group: grayscale
-- dimgray
-    id: dimgray
-    value: dimgray
+- black
+    id: black
+    value: black
     group: grayscale
 - slategray
     id: slategray
     value: slategray
     group: grayscale
-- black
-    id: black
-    value: black
+- dimgray
+    id: dimgray
+    value: dimgray
+    group: grayscale
+- gray
+    id: gray
+    value: gray
+    group: grayscale
+- darkgray
+    id: darkgray
+    value: darkgray
+    group: grayscale
+- silver
+    id: silver
+    value: silver
+    group: grayscale
+- lightgray
+    id: lightgray
+    value: lightgray
+    group: grayscale
+- gainsboro
+    id: gainsboro
+    value: gainsboro
+    group: grayscale
+- white
+    id: white
+    value: white
     group: grayscale
 # ─────────────────────────────────────────────────────────────────────
 # original group
