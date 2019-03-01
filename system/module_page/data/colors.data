@@ -2,13 +2,21 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
-- coral
-    id: coral
-    value: coral
+- chocolate
+    id: chocolate
+    value: chocolate
     group: orange
 - darkorange
     id: darkorange
     value: darkorange
+    group: orange
+- sandybrown
+    id: sandybrown
+    value: sandybrown
+    group: orange
+- coral
+    id: coral
+    value: coral
     group: orange
 - darksalmon
     id: darksalmon
@@ -29,6 +37,18 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # brown group
 # ─────────────────────────────────────────────────────────────────────
+- saddlebrown
+    id: saddlebrown
+    value: saddlebrown
+    group: brown
+- sienna
+    id: sienna
+    value: sienna
+    group: brown
+- peru
+    id: peru
+    value: peru
+    group: brown
 - tan
     id: tan
     value: tan
@@ -60,9 +80,13 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
-- darkkhaki
-    id: darkkhaki
-    value: darkkhaki
+- darkgoldenrod
+    id: darkgoldenrod
+    value: darkgoldenrod
+    group: yellow
+- goldenrod
+    id: goldenrod
+    value: goldenrod
     group: yellow
 - khaki
     id: khaki
@@ -84,13 +108,17 @@ colors
     id: lightyellow
     value: lightyellow
     group: yellow
-- gold
-    id: gold
-    value: gold
-    group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # olive group
 # ─────────────────────────────────────────────────────────────────────
+- olive
+    id: olive
+    value: olive
+    group: olive
+- darkkhaki
+    id: darkkhaki
+    value: darkkhaki
+    group: olive
 - darkolivegreen
     id: darkolivegreen
     value: darkolivegreen
@@ -369,24 +397,32 @@ colors
     value: palevioletred
     group: crimson
 # ─────────────────────────────────────────────────────────────────────
-# burgundy group
+# bordo group
 # ─────────────────────────────────────────────────────────────────────
+- maroon
+    id: maroon
+    value: maroon
+    group: bordo
 - darkred
     id: darkred
     value: darkred
-    group: burgundy
+    group: bordo
 - brown
     id: brown
     value: brown
-    group: burgundy
+    group: bordo
 - firebrick
     id: firebrick
     value: firebrick
-    group: burgundy
+    group: bordo
 - indianred
     id: indianred
     value: indianred
-    group: burgundy
+    group: bordo
+- rosybrown
+    id: rosybrown
+    value: rosybrown
+    group: bordo
 # ─────────────────────────────────────────────────────────────────────
 # pure group
 # ─────────────────────────────────────────────────────────────────────
@@ -397,6 +433,10 @@ colors
 - orange
     id: orange
     value: orange
+    group: pure
+- gold
+    id: gold
+    value: gold
     group: pure
 - yellow
     id: yellow
@@ -418,16 +458,16 @@ colors
     id: magenta
     value: magenta
     group: pure
+- slategray
+    id: slategray
+    value: slategray
+    group: pure
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
 - black
     id: black
     value: black
-    group: grayscale
-- slategray
-    id: slategray
-    value: slategray
     group: grayscale
 - dimgray
     id: dimgray
