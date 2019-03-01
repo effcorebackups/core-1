@@ -18,6 +18,10 @@ colors
     id: bisque
     value: bisque
     group: orange
+- seashell
+    id: seashell
+    value: seashell
+    group: orange
 # ─────────────────────────────────────────────────────────────────────
 # brown group
 # ─────────────────────────────────────────────────────────────────────
@@ -57,9 +61,25 @@ colors
     id: blanchedalmond
     value: blanchedalmond
     group: brown
+- antiquewhite
+    id: antiquewhite
+    value: antiquewhite
+    group: brown
 - papayawhip
     id: papayawhip
     value: papayawhip
+    group: brown
+- linen
+    id: linen
+    value: linen
+    group: brown
+- oldlace
+    id: oldlace
+    value: oldlace
+    group: brown
+- floralwhite
+    id: floralwhite
+    value: floralwhite
     group: brown
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
@@ -92,6 +112,10 @@ colors
     id: lightyellow
     value: lightyellow
     group: yellow
+- ivory
+    id: ivory
+    value: ivory
+    group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # olive group
 # ─────────────────────────────────────────────────────────────────────
@@ -115,6 +139,10 @@ colors
     id: darkkhaki
     value: darkkhaki
     group: olive
+- beige
+    id: beige
+    value: beige
+    group: olive
 # ─────────────────────────────────────────────────────────────────────
 # green group
 # ─────────────────────────────────────────────────────────────────────
@@ -134,6 +162,14 @@ colors
     id: mediumseagreen
     value: mediumseagreen
     group: green
+- mediumaquamarine
+    id: mediumaquamarine
+    value: mediumaquamarine
+    group: green
+- darkseagreen
+    id: darkseagreen
+    value: darkseagreen
+    group: green
 - lightgreen
     id: lightgreen
     value: lightgreen
@@ -142,25 +178,13 @@ colors
     id: palegreen
     value: palegreen
     group: green
-- darkseagreen
-    id: darkseagreen
-    value: darkseagreen
+- honeydew
+    id: honeydew
+    value: honeydew
     group: green
-- mediumaquamarine
-    id: mediumaquamarine
-    value: mediumaquamarine
-    group: green
-- springgreen
-    id: springgreen
-    value: springgreen
-    group: green
-- mediumspringgreen
-    id: mediumspringgreen
-    value: mediumspringgreen
-    group: green
-- aquamarine
-    id: aquamarine
-    value: aquamarine
+- mintcream
+    id: mintcream
+    value: mintcream
     group: green
 # ─────────────────────────────────────────────────────────────────────
 # marine group
@@ -201,6 +225,10 @@ colors
     id: lightcyan
     value: lightcyan
     group: marine
+- azure
+    id: azure
+    value: azure
+    group: marine
 # ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
@@ -236,9 +264,9 @@ colors
     id: lightblue
     value: lightblue
     group: blue
-- lightsteelblue
-    id: lightsteelblue
-    value: lightsteelblue
+- aliceblue
+    id: aliceblue
+    value: aliceblue
     group: blue
 # ─────────────────────────────────────────────────────────────────────
 # violet group
@@ -302,6 +330,10 @@ colors
     id: lavender
     value: lavender
     group: orchid
+- ghostwhite
+    id: ghostwhite
+    value: ghostwhite
+    group: orchid
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
@@ -329,6 +361,18 @@ colors
     id: pink
     value: pink
     group: red
+- mistyrose
+    id: mistyrose
+    value: mistyrose
+    group: red
+- lavenderblush
+    id: lavenderblush
+    value: lavenderblush
+    group: red
+- snow
+    id: snow
+    value: snow
+    group: red
 # ─────────────────────────────────────────────────────────────────────
 # crimson group
 # ─────────────────────────────────────────────────────────────────────
@@ -339,10 +383,6 @@ colors
 - mediumvioletred
     id: mediumvioletred
     value: mediumvioletred
-    group: crimson
-- deeppink
-    id: deeppink
-    value: deeppink
     group: crimson
 - hotpink
     id: hotpink
@@ -382,10 +422,6 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # pure group
 # ─────────────────────────────────────────────────────────────────────
-- red
-    id: red
-    value: red
-    group: pure
 - chocolate
     id: chocolate
     value: chocolate
@@ -434,6 +470,18 @@ colors
     id: green
     value: green
     group: pure
+- springgreen
+    id: springgreen
+    value: springgreen
+    group: pure
+- mediumspringgreen
+    id: mediumspringgreen
+    value: mediumspringgreen
+    group: pure
+- aquamarine
+    id: aquamarine
+    value: aquamarine
+    group: pure
 - cyan
     id: cyan
     value: cyan
@@ -454,49 +502,72 @@ colors
     id: steelblue
     value: steelblue
     group: pure
-- slategray
-    id: slategray
-    value: slategray
-    group: pure
 - magenta
     id: magenta
     value: magenta
     group: pure
+- deeppink
+    id: deeppink
+    value: deeppink
+    group: pure
+- red
+    id: red
+    value: red
+    group: pure
 # ─────────────────────────────────────────────────────────────────────
-# grayscale group
+# bluegray group
+# ─────────────────────────────────────────────────────────────────────
+- darkslategray
+    id: darkslategray
+    value: darkslategray
+    group: bluegray
+- slategray
+    id: slategray
+    value: slategray
+    group: bluegray
+- lightslategray
+    id: lightslategray
+    value: lightslategray
+    group: bluegray
+- lightsteelblue
+    id: lightsteelblue
+    value: lightsteelblue
+    group: bluegray
+# ─────────────────────────────────────────────────────────────────────
+# gray group
 # ─────────────────────────────────────────────────────────────────────
 - black
     id: black
     value: black
-    group: grayscale
+    group: gray
 - dimgray
     id: dimgray
     value: dimgray
-    group: grayscale
+    group: gray
 - gray
     id: gray
     value: gray
-    group: grayscale
+    group: gray
 - darkgray
     id: darkgray
     value: darkgray
-    group: grayscale
+    group: gray
 - silver
     id: silver
     value: silver
-    group: grayscale
+    group: gray
 - lightgray
     id: lightgray
     value: lightgray
-    group: grayscale
+    group: gray
 - gainsboro
     id: gainsboro
     value: gainsboro
-    group: grayscale
+    group: gray
 - white
     id: white
     value: white
-    group: grayscale
+    group: gray
 # ─────────────────────────────────────────────────────────────────────
 # original group
 # ─────────────────────────────────────────────────────────────────────
