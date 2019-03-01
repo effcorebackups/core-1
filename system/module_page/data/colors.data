@@ -41,14 +41,6 @@ colors
     id: darkkhaki
     value: darkkhaki
     group: yellow
-- gold
-    id: gold
-    value: gold
-    group: yellow
-- yellow
-    id: yellow
-    value: yellow
-    group: yellow
 - khaki
     id: khaki
     value: khaki
@@ -64,6 +56,14 @@ colors
 - lightyellow
     id: lightyellow
     value: lightyellow
+    group: yellow
+- gold
+    id: gold
+    value: gold
+    group: yellow
+- yellow
+    id: yellow
+    value: yellow
     group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # olive group
@@ -197,21 +197,33 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
-- darkslateblue
-    id: darkslateblue
-    value: darkslateblue
+- midnightblue
+    id: midnightblue
+    value: midnightblue
     group: blue
-- slateblue
-    id: slateblue
-    value: slateblue
+- darkblue
+    id: darkblue
+    value: darkblue
     group: blue
-- mediumslateblue
-    id: mediumslateblue
-    value: mediumslateblue
+- mediumblue
+    id: mediumblue
+    value: mediumblue
     group: blue
-- steelblue
-    id: steelblue
-    value: steelblue
+- royalblue
+    id: royalblue
+    value: royalblue
+    group: blue
+- cornflowerblue
+    id: cornflowerblue
+    value: cornflowerblue
+    group: blue
+- dodgerblue
+    id: dodgerblue
+    value: dodgerblue
+    group: blue
+- deepskyblue
+    id: deepskyblue
+    value: deepskyblue
     group: blue
 - lightskyblue
     id: lightskyblue
@@ -221,24 +233,32 @@ colors
     id: skyblue
     value: skyblue
     group: blue
+- steelblue
+    id: steelblue
+    value: steelblue
+    group: blue
 - lightsteelblue
     id: lightsteelblue
     value: lightsteelblue
     group: blue
+- blue
+    id: blue
+    value: blue
+    group: blue
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
-- indigo
-    id: indigo
-    value: indigo
+- darkslateblue
+    id: darkslateblue
+    value: darkslateblue
     group: violet
-- rebeccapurple
-    id: rebeccapurple
-    value: rebeccapurple
+- slateblue
+    id: slateblue
+    value: slateblue
     group: violet
-- blueviolet
-    id: blueviolet
-    value: blueviolet
+- mediumslateblue
+    id: mediumslateblue
+    value: mediumslateblue
     group: violet
 - mediumpurple
     id: mediumpurple
@@ -251,6 +271,18 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # orchid group
 # ─────────────────────────────────────────────────────────────────────
+- indigo
+    id: indigo
+    value: indigo
+    group: orchid
+- rebeccapurple
+    id: rebeccapurple
+    value: rebeccapurple
+    group: orchid
+- blueviolet
+    id: blueviolet
+    value: blueviolet
+    group: orchid
 - darkorchid
     id: darkorchid
     value: darkorchid
