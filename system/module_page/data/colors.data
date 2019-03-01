@@ -33,10 +33,6 @@ colors
     id: peru
     value: peru
     group: brown
-- sandybrown
-    id: sandybrown
-    value: sandybrown
-    group: brown
 - tan
     id: tan
     value: tan
@@ -99,14 +95,6 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # olive group
 # ─────────────────────────────────────────────────────────────────────
-- olive
-    id: olive
-    value: olive
-    group: olive
-- darkkhaki
-    id: darkkhaki
-    value: darkkhaki
-    group: olive
 - darkolivegreen
     id: darkolivegreen
     value: darkolivegreen
@@ -119,9 +107,13 @@ colors
     id: yellowgreen
     value: yellowgreen
     group: olive
-- greenyellow
-    id: greenyellow
-    value: greenyellow
+- olive
+    id: olive
+    value: olive
+    group: olive
+- darkkhaki
+    id: darkkhaki
+    value: darkkhaki
     group: olive
 # ─────────────────────────────────────────────────────────────────────
 # green group
@@ -142,10 +134,6 @@ colors
     id: mediumseagreen
     value: mediumseagreen
     group: green
-- lawngreen
-    id: lawngreen
-    value: lawngreen
-    group: green
 - lightgreen
     id: lightgreen
     value: lightgreen
@@ -153,10 +141,6 @@ colors
 - palegreen
     id: palegreen
     value: palegreen
-    group: green
-- lime
-    id: lime
-    value: lime
     group: green
 - darkseagreen
     id: darkseagreen
@@ -240,10 +224,6 @@ colors
     id: cornflowerblue
     value: cornflowerblue
     group: blue
-- dodgerblue
-    id: dodgerblue
-    value: dodgerblue
-    group: blue
 - lightskyblue
     id: lightskyblue
     value: lightskyblue
@@ -255,10 +235,6 @@ colors
 - lightblue
     id: lightblue
     value: lightblue
-    group: blue
-- steelblue
-    id: steelblue
-    value: steelblue
     group: blue
 - lightsteelblue
     id: lightsteelblue
@@ -414,6 +390,10 @@ colors
     id: chocolate
     value: chocolate
     group: pure
+- sandybrown
+    id: sandybrown
+    value: sandybrown
+    group: pure
 - coral
     id: coral
     value: coral
@@ -434,6 +414,18 @@ colors
     id: yellow
     value: yellow
     group: pure
+- greenyellow
+    id: greenyellow
+    value: greenyellow
+    group: pure
+- lawngreen
+    id: lawngreen
+    value: lawngreen
+    group: pure
+- lime
+    id: lime
+    value: lime
+    group: pure
 - limegreen
     id: limegreen
     value: limegreen
@@ -450,17 +442,25 @@ colors
     id: deepskyblue
     value: deepskyblue
     group: pure
+- dodgerblue
+    id: dodgerblue
+    value: dodgerblue
+    group: pure
 - blue
     id: blue
     value: blue
     group: pure
-- magenta
-    id: magenta
-    value: magenta
+- steelblue
+    id: steelblue
+    value: steelblue
     group: pure
 - slategray
     id: slategray
     value: slategray
+    group: pure
+- magenta
+    id: magenta
+    value: magenta
     group: pure
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
