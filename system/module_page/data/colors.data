@@ -2,22 +2,6 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
-- chocolate
-    id: chocolate
-    value: chocolate
-    group: orange
-- darkorange
-    id: darkorange
-    value: darkorange
-    group: orange
-- sandybrown
-    id: sandybrown
-    value: sandybrown
-    group: orange
-- coral
-    id: coral
-    value: coral
-    group: orange
 - darksalmon
     id: darksalmon
     value: darksalmon
@@ -30,9 +14,9 @@ colors
     id: peachpuff
     value: peachpuff
     group: orange
-- moccasin
-    id: moccasin
-    value: moccasin
+- bisque
+    id: bisque
+    value: bisque
     group: orange
 # ─────────────────────────────────────────────────────────────────────
 # brown group
@@ -48,6 +32,10 @@ colors
 - peru
     id: peru
     value: peru
+    group: brown
+- sandybrown
+    id: sandybrown
+    value: sandybrown
     group: brown
 - tan
     id: tan
@@ -65,9 +53,9 @@ colors
     id: navajowhite
     value: navajowhite
     group: brown
-- bisque
-    id: bisque
-    value: bisque
+- moccasin
+    id: moccasin
+    value: moccasin
     group: brown
 - blanchedalmond
     id: blanchedalmond
@@ -154,10 +142,6 @@ colors
     id: mediumseagreen
     value: mediumseagreen
     group: green
-- limegreen
-    id: limegreen
-    value: limegreen
-    group: green
 - lawngreen
     id: lawngreen
     value: lawngreen
@@ -221,10 +205,6 @@ colors
     id: turquoise
     value: turquoise
     group: marine
-- lightblue
-    id: lightblue
-    value: lightblue
-    group: marine
 - powderblue
     id: powderblue
     value: powderblue
@@ -264,10 +244,6 @@ colors
     id: dodgerblue
     value: dodgerblue
     group: blue
-- deepskyblue
-    id: deepskyblue
-    value: deepskyblue
-    group: blue
 - lightskyblue
     id: lightskyblue
     value: lightskyblue
@@ -275,6 +251,10 @@ colors
 - skyblue
     id: skyblue
     value: skyblue
+    group: blue
+- lightblue
+    id: lightblue
+    value: lightblue
     group: blue
 - steelblue
     id: steelblue
@@ -303,10 +283,6 @@ colors
     id: mediumpurple
     value: mediumpurple
     group: violet
-- violet
-    id: violet
-    value: violet
-    group: violet
 # ─────────────────────────────────────────────────────────────────────
 # orchid group
 # ─────────────────────────────────────────────────────────────────────
@@ -333,6 +309,10 @@ colors
 - orchid
     id: orchid
     value: orchid
+    group: orchid
+- violet
+    id: violet
+    value: violet
     group: orchid
 - plum
     id: plum
@@ -430,6 +410,18 @@ colors
     id: red
     value: red
     group: pure
+- chocolate
+    id: chocolate
+    value: chocolate
+    group: pure
+- coral
+    id: coral
+    value: coral
+    group: pure
+- darkorange
+    id: darkorange
+    value: darkorange
+    group: pure
 - orange
     id: orange
     value: orange
@@ -442,6 +434,10 @@ colors
     id: yellow
     value: yellow
     group: pure
+- limegreen
+    id: limegreen
+    value: limegreen
+    group: pure
 - green
     id: green
     value: green
@@ -449,6 +445,10 @@ colors
 - cyan
     id: cyan
     value: cyan
+    group: pure
+- deepskyblue
+    id: deepskyblue
+    value: deepskyblue
     group: pure
 - blue
     id: blue
