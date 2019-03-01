@@ -10,10 +10,6 @@ colors
     id: darkorange
     value: darkorange
     group: orange
-- orange
-    id: orange
-    value: orange
-    group: orange
 - darksalmon
     id: darksalmon
     value: darksalmon
@@ -30,10 +26,37 @@ colors
     id: moccasin
     value: moccasin
     group: orange
+# ─────────────────────────────────────────────────────────────────────
+# brown group
+# ─────────────────────────────────────────────────────────────────────
+- tan
+    id: tan
+    value: tan
+    group: brown
+- burlywood
+    id: burlywood
+    value: burlywood
+    group: brown
+- wheat
+    id: wheat
+    value: wheat
+    group: brown
+- navajowhite
+    id: navajowhite
+    value: navajowhite
+    group: brown
+- bisque
+    id: bisque
+    value: bisque
+    group: brown
+- blanchedalmond
+    id: blanchedalmond
+    value: blanchedalmond
+    group: brown
 - papayawhip
     id: papayawhip
     value: papayawhip
-    group: orange
+    group: brown
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
@@ -53,6 +76,10 @@ colors
     id: lemonchiffon
     value: lemonchiffon
     group: yellow
+- cornsilk
+    id: cornsilk
+    value: cornsilk
+    group: yellow
 - lightyellow
     id: lightyellow
     value: lightyellow
@@ -60,10 +87,6 @@ colors
 - gold
     id: gold
     value: gold
-    group: yellow
-- yellow
-    id: yellow
-    value: yellow
     group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # olive group
@@ -90,10 +113,6 @@ colors
 - darkgreen
     id: darkgreen
     value: darkgreen
-    group: green
-- green
-    id: green
-    value: green
     group: green
 - forestgreen
     id: forestgreen
@@ -190,10 +209,6 @@ colors
     id: lightcyan
     value: lightcyan
     group: marine
-- cyan
-    id: cyan
-    value: cyan
-    group: marine
 # ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
@@ -241,10 +256,6 @@ colors
     id: lightsteelblue
     value: lightsteelblue
     group: blue
-- blue
-    id: blue
-    value: blue
-    group: blue
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
@@ -264,9 +275,9 @@ colors
     id: mediumpurple
     value: mediumpurple
     group: violet
-- magenta
-    id: magenta
-    value: magenta
+- violet
+    id: violet
+    value: violet
     group: violet
 # ─────────────────────────────────────────────────────────────────────
 # orchid group
@@ -295,10 +306,6 @@ colors
     id: orchid
     value: orchid
     group: orchid
-- violet
-    id: violet
-    value: violet
-    group: orchid
 - plum
     id: plum
     value: plum
@@ -317,10 +324,6 @@ colors
 - crimson
     id: crimson
     value: crimson
-    group: red
-- red
-    id: red
-    value: red
     group: red
 - orangered
     id: orangered
@@ -361,29 +364,60 @@ colors
     id: hotpink
     value: hotpink
     group: crimson
+- palevioletred
+    id: palevioletred
+    value: palevioletred
+    group: crimson
 # ─────────────────────────────────────────────────────────────────────
-# brown group
+# burgundy group
 # ─────────────────────────────────────────────────────────────────────
 - darkred
     id: darkred
     value: darkred
-    group: brown
+    group: burgundy
 - brown
     id: brown
     value: brown
-    group: brown
+    group: burgundy
 - firebrick
     id: firebrick
     value: firebrick
-    group: brown
+    group: burgundy
 - indianred
     id: indianred
     value: indianred
-    group: brown
-- palevioletred
-    id: palevioletred
-    value: palevioletred
-    group: brown
+    group: burgundy
+# ─────────────────────────────────────────────────────────────────────
+# pure group
+# ─────────────────────────────────────────────────────────────────────
+- red
+    id: red
+    value: red
+    group: pure
+- orange
+    id: orange
+    value: orange
+    group: pure
+- yellow
+    id: yellow
+    value: yellow
+    group: pure
+- green
+    id: green
+    value: green
+    group: pure
+- cyan
+    id: cyan
+    value: cyan
+    group: pure
+- blue
+    id: blue
+    value: blue
+    group: pure
+- magenta
+    id: magenta
+    value: magenta
+    group: pure
 # ─────────────────────────────────────────────────────────────────────
 # grayscale group
 # ─────────────────────────────────────────────────────────────────────
