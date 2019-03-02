@@ -20,16 +20,16 @@ tokens
     value: #28334a
 - color_ok
     match: %%_color_ok
-    type: text
-    value: #30c432
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_error
     match: %%_color_error
-    type: text
-    value: #fc5740
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_warning
     match: %%_color_warning
-    type: text
-    value: #fd9a1e
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 # ─────────────────────────────────────────────────────────────────────
 # other colors
 # ─────────────────────────────────────────────────────────────────────

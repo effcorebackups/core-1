@@ -20,6 +20,24 @@ forms
             - required: true
             element_attributes
             - name: color_bg_id
+        - color_ok_id|group_palette
+            title: Okay
+            attributes
+            - required: true
+            element_attributes
+            - name: color_ok_id
+        - color_warning_id|group_palette
+            title: Warning
+            attributes
+            - required: true
+            element_attributes
+            - name: color_warning_id
+        - color_error_id|group_palette
+            title: Error
+            attributes
+            - required: true
+            element_attributes
+            - name: color_error_id
     - button_save|button
         title: save
         attributes

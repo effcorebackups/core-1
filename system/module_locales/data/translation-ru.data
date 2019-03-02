@@ -106,6 +106,7 @@ translations
     - Entity %%_name was not uninstalled!: Сущность %%_name не была удалена!
     - Entity %%_name was uninstalled.: Сущность %%_name была удалена.
     - Environment: Окружение
+    - Error: Ошибка
     - error: ошибка
     - event: событие
     - Event: Событие
@@ -255,6 +256,7 @@ translations
     - Number: Число
     - Object: Объект
     - ok: ок
+    - Okay: Хорошо
     - on this ip: на этом ip
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
@@ -420,6 +422,7 @@ translations
     - version: версия
     - View more: Смотреть больше
     - view: просмотреть
+    - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер
     - Weight: Вес

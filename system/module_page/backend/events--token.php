@@ -13,8 +13,11 @@ namespace effcore\modules\page {
     $settings = storage::get('files')->select('settings');
     $colors   = color::all_get();
     switch ($name) {
-      case 'color_text': return $colors[$settings['page']->color_text_id]->value;
-      case 'color_bg'  : return $colors[$settings['page']->color_bg_id]->value;
+      case 'color_text'   : return $colors[$settings['page']->color_text_id   ]->value;
+      case 'color_bg'     : return $colors[$settings['page']->color_bg_id     ]->value;
+      case 'color_ok'     : return $colors[$settings['page']->color_ok_id     ]->value;
+      case 'color_warning': return $colors[$settings['page']->color_warning_id]->value;
+      case 'color_error'  : return $colors[$settings['page']->color_error_id  ]->value;
     }
   }
 

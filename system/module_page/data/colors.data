@@ -579,3 +579,15 @@ colors
     id: moderndarkblue
     value: #28334a
     group: original
+- state_ok
+    id: state_ok
+    value: #30c432
+    group: original
+- state_warning
+    id: state_warning
+    value: #fd9a1e
+    group: original
+- state_error
+    id: state_error
+    value: #fc5740
+    group: original
