@@ -18,6 +18,10 @@ colors
     id: bisque
     value: bisque
     group: orange
+- linen
+    id: linen
+    value: linen
+    group: orange
 - seashell
     id: seashell
     value: seashell
@@ -68,10 +72,6 @@ colors
 - papayawhip
     id: papayawhip
     value: papayawhip
-    group: brown
-- linen
-    id: linen
-    value: linen
     group: brown
 - oldlace
     id: oldlace
@@ -357,17 +357,9 @@ colors
     id: lightcoral
     value: lightcoral
     group: red
-- pink
-    id: pink
-    value: pink
-    group: red
 - mistyrose
     id: mistyrose
     value: mistyrose
-    group: red
-- lavenderblush
-    id: lavenderblush
-    value: lavenderblush
     group: red
 - snow
     id: snow
@@ -391,6 +383,14 @@ colors
 - palevioletred
     id: palevioletred
     value: palevioletred
+    group: crimson
+- pink
+    id: pink
+    value: pink
+    group: crimson
+- lavenderblush
+    id: lavenderblush
+    value: lavenderblush
     group: crimson
 # ─────────────────────────────────────────────────────────────────────
 # bordo group
