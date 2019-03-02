@@ -1,5 +1,100 @@
 colors
 # ─────────────────────────────────────────────────────────────────────
+# pure group
+# ─────────────────────────────────────────────────────────────────────
+- chocolate
+    id: chocolate
+    value: chocolate
+    group: pure
+- sandybrown
+    id: sandybrown
+    value: sandybrown
+    group: pure
+- coral
+    id: coral
+    value: coral
+    group: pure
+- darkorange
+    id: darkorange
+    value: darkorange
+    group: pure
+- orange
+    id: orange
+    value: orange
+    group: pure
+- gold
+    id: gold
+    value: gold
+    group: pure
+- yellow
+    id: yellow
+    value: yellow
+    group: pure
+- greenyellow
+    id: greenyellow
+    value: greenyellow
+    group: pure
+- lawngreen
+    id: lawngreen
+    value: lawngreen
+    group: pure
+- lime
+    id: lime
+    value: lime
+    group: pure
+- limegreen
+    id: limegreen
+    value: limegreen
+    group: pure
+- green
+    id: green
+    value: green
+    group: pure
+- springgreen
+    id: springgreen
+    value: springgreen
+    group: pure
+- mediumspringgreen
+    id: mediumspringgreen
+    value: mediumspringgreen
+    group: pure
+- aquamarine
+    id: aquamarine
+    value: aquamarine
+    group: pure
+- cyan
+    id: cyan
+    value: cyan
+    group: pure
+- deepskyblue
+    id: deepskyblue
+    value: deepskyblue
+    group: pure
+- dodgerblue
+    id: dodgerblue
+    value: dodgerblue
+    group: pure
+- blue
+    id: blue
+    value: blue
+    group: pure
+- steelblue
+    id: steelblue
+    value: steelblue
+    group: pure
+- magenta
+    id: magenta
+    value: magenta
+    group: pure
+- deeppink
+    id: deeppink
+    value: deeppink
+    group: pure
+- red
+    id: red
+    value: red
+    group: pure
+# ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
 - darksalmon
@@ -419,101 +514,6 @@ colors
     id: rosybrown
     value: rosybrown
     group: bordo
-# ─────────────────────────────────────────────────────────────────────
-# pure group
-# ─────────────────────────────────────────────────────────────────────
-- chocolate
-    id: chocolate
-    value: chocolate
-    group: pure
-- sandybrown
-    id: sandybrown
-    value: sandybrown
-    group: pure
-- coral
-    id: coral
-    value: coral
-    group: pure
-- darkorange
-    id: darkorange
-    value: darkorange
-    group: pure
-- orange
-    id: orange
-    value: orange
-    group: pure
-- gold
-    id: gold
-    value: gold
-    group: pure
-- yellow
-    id: yellow
-    value: yellow
-    group: pure
-- greenyellow
-    id: greenyellow
-    value: greenyellow
-    group: pure
-- lawngreen
-    id: lawngreen
-    value: lawngreen
-    group: pure
-- lime
-    id: lime
-    value: lime
-    group: pure
-- limegreen
-    id: limegreen
-    value: limegreen
-    group: pure
-- green
-    id: green
-    value: green
-    group: pure
-- springgreen
-    id: springgreen
-    value: springgreen
-    group: pure
-- mediumspringgreen
-    id: mediumspringgreen
-    value: mediumspringgreen
-    group: pure
-- aquamarine
-    id: aquamarine
-    value: aquamarine
-    group: pure
-- cyan
-    id: cyan
-    value: cyan
-    group: pure
-- deepskyblue
-    id: deepskyblue
-    value: deepskyblue
-    group: pure
-- dodgerblue
-    id: dodgerblue
-    value: dodgerblue
-    group: pure
-- blue
-    id: blue
-    value: blue
-    group: pure
-- steelblue
-    id: steelblue
-    value: steelblue
-    group: pure
-- magenta
-    id: magenta
-    value: magenta
-    group: pure
-- deeppink
-    id: deeppink
-    value: deeppink
-    group: pure
-- red
-    id: red
-    value: red
-    group: pure
 # ─────────────────────────────────────────────────────────────────────
 # bluegray group
 # ─────────────────────────────────────────────────────────────────────
