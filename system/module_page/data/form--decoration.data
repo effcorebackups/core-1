@@ -8,6 +8,36 @@ forms
     - colors|fieldset
         title: Colors
         children
+        - color_menu_id|group_palette
+            title: Menu
+            attributes
+            - required: true
+            element_attributes
+            - name: color_menu_id
+        - color_menu_active_id|group_palette
+            title: Menu (active)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_menu_active_id
+        - color_menu_text_id|group_palette
+            title: Menu text
+            attributes
+            - required: true
+            element_attributes
+            - name: color_menu_text_id
+        - color_menu_link_id|group_palette
+            title: Menu link
+            attributes
+            - required: true
+            element_attributes
+            - name: color_menu_link_id
+        - color_menu_link_active_id|group_palette
+            title: Menu link (active)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_menu_link_active_id
         - color_text_id|group_palette
             title: Text
             attributes

@@ -216,10 +216,14 @@ translations
     - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
+    - Menu (active): Меню (активное)
     - Menu for anonymous user: Меню для анонимного пользователя
     - Menu for demonstration: Меню для демонстрации
     - Menu for registered user: Меню для зарегистрированного пользователя
+    - Menu link (active): Меню ссылка (активная)
+    - Menu link: Меню ссылка
     - Menu main: Меню главное
+    - Menu text: Меню текст
     - Menu: Меню
     - Menus: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message

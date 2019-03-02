@@ -97,6 +97,7 @@
 
   x-block.system-info {margin: 150px 0 50px 0; text-align: center}
   x-block.system-info x-logo      {display: block; margin-bottom: 20px}
+  x-block.system-info x-logo img  {width: 100%; max-width: 320px; height: auto}
   x-block.system-info x-copyright {display: block; font-size: .8em}
   x-block.system-info x-build     {display: block}
   x-block.system-info x-build x-title::after {content: ': '}

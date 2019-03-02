@@ -27,19 +27,20 @@
 
   /* menu Main: colors */
 
-  x-tree.main ul       {background-color: %%_color_main}
-  x-tree.main ul ul    {background-color: %%_color_hover_bg}
+  x-tree.main ul       {background-color: %%_color_menu}
+  x-tree.main ul ul    {background-color: %%_color_menu_active}
   x-tree.main ul ul ul {background-color: transparent}
 
-  x-tree.main              a       {color: white}
-  x-tree.main        li    a:hover {color: white;          background-color: %%_color_hover_bg}
-  x-tree.main        li li a:hover {color: %%_color_hover; background-color: transparent}
-  x-tree.main > ul > li:hover      {                       background-color: %%_color_hover_bg}
+  x-tree.main              a:not([href]) {color: %%_color_menu_text !important}
+  x-tree.main              a             {color: %%_color_menu_link}
+  x-tree.main        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree.main        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree.main > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
   x-tree.main li    a.active,
-  x-tree.main li    a.active-trail {background-color: %%_color_hover_bg}
+  x-tree.main li    a.active-trail {background-color: %%_color_menu_active}
   x-tree.main li li a.active,
-  x-tree.main li li a.active-trail {background-color: transparent; color: %%_color_hover}
+  x-tree.main li li a.active-trail {background-color: transparent; color: %%_color_menu_link_active}
   x-tree.main       a.home         {background-color: transparent !important}
 
   /* menu Main: icons */

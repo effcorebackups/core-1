@@ -2,6 +2,26 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # base colors
 # ─────────────────────────────────────────────────────────────────────
+- color_menu
+    match: %%_color_menu
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_menu_active
+    match: %%_color_menu_active
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_menu_text
+    match: %%_color_menu_text
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_menu_link
+    match: %%_color_menu_link
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_menu_link_active
+    match: %%_color_menu_link_active
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_text
     match: %%_color_text
     type: code
@@ -18,14 +38,6 @@ tokens
     match: %%_color_main
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
-- color_hover
-    match: %%_color_hover
-    type: text
-    value: #81a5eb
-- color_hover_bg
-    match: %%_color_hover_bg
-    type: text
-    value: #28334a
 - color_ok
     match: %%_color_ok
     type: code
@@ -38,6 +50,14 @@ tokens
     match: %%_color_warning
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
+- color_hover
+    match: %%_color_hover
+    type: text
+    value: #81a5eb
+- color_hover_bg
+    match: %%_color_hover_bg
+    type: text
+    value: #28334a
 # ─────────────────────────────────────────────────────────────────────
 # other colors
 # ─────────────────────────────────────────────────────────────────────

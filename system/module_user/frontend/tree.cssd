@@ -25,19 +25,20 @@
 
   /* menu User: colors */
 
-  x-tree.user ul       {background-color: %%_color_main}
-  x-tree.user ul ul    {background-color: %%_color_hover_bg}
+  x-tree.user ul       {background-color: %%_color_menu}
+  x-tree.user ul ul    {background-color: %%_color_menu_active}
   x-tree.user ul ul ul {background-color: transparent}
 
-  x-tree.user              a       {color: white}
-  x-tree.user        li    a:hover {color: white;          background-color: %%_color_hover_bg}
-  x-tree.user        li li a:hover {color: %%_color_hover; background-color: transparent}
-  x-tree.user > ul > li:hover      {                       background-color: %%_color_hover_bg}
+  x-tree.user              a:not([href]) {color: %%_color_menu_text !important}
+  x-tree.user              a             {color: %%_color_menu_link}
+  x-tree.user        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree.user        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree.user > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
   x-tree.user li    a.active,
-  x-tree.user li    a.active-trail {background-color: %%_color_hover_bg}
+  x-tree.user li    a.active-trail {background-color: %%_color_menu_active}
   x-tree.user li li a.active,
-  x-tree.user li li a.active-trail {background-color: transparent; color: %%_color_hover}
+  x-tree.user li li a.active-trail {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu User: icons */
 

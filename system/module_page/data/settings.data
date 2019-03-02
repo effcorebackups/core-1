@@ -1,5 +1,10 @@
 settings
   console_visibility: not_show
+  color_menu_id: modernblue
+  color_menu_active_id: moderndarkblue
+  color_menu_text_id: white
+  color_menu_link_id: white
+  color_menu_link_active_id: modernlightblue
   color_text_id: black
   color_link_id: modernblue
   color_link_active_id: black
