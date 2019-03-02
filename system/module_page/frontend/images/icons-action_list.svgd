@@ -21,9 +21,9 @@
   </metadata>
 
   <g id="icon_open">
-    <path id="ico_opn-line-1" style="fill: none; stroke: %%_color_bg; stroke-width: 2px; stroke-linecap: round" d="M 5,5 H 15"/>
-    <path id="ico_opn-line-2" style="fill: none; stroke: %%_color_bg; stroke-width: 2px; stroke-linecap: round" d="M 5,10 H 15"/>
-    <path id="ico_opn-line-3" style="fill: none; stroke: %%_color_bg; stroke-width: 2px; stroke-linecap: round" d="M 5,15 H 15"/>
+    <path id="ico_opn-line-1" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,5 H 15"/>
+    <path id="ico_opn-line-2" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,10 H 15"/>
+    <path id="ico_opn-line-3" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,15 H 15"/>
   </g>
 
 </svg>

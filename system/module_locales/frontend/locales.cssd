@@ -4,7 +4,7 @@
     display: inline-block;
     margin-right: 10px;
     padding-right: 10px;
-    border-right: 1px dotted %%_color_bg}
+    border-right: 1px dotted %%_color_main}
   x-language:last-child {margin-right: 0; padding-right: 0; border: none}
 
   x-language[data-code='en'] {padding-left: 40px; background: url('images/flag-uk-mini.svg') no-repeat 0 2px}

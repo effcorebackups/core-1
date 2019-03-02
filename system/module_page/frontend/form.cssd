@@ -13,7 +13,7 @@
   fieldset > x-fieldset-content {margin-top: 30px}
   fieldset > x-description {margin-top: 20px}
 
-  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color_bg url('images/icons-form_items.svgd') 0 -60px}
+  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color_main url('images/icons-form_items.svgd') 0 -60px}
   fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
   fieldset input[data-opener-type='fieldset'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
@@ -21,7 +21,7 @@
   x-fieldset-content {
     display: block;
     padding: 10px 16px;
-    border-top: 5px solid %%_color_bg}
+    border-top: 5px solid %%_color_main}
 
   x-fieldset-content,
   x-fieldset-content
@@ -63,7 +63,7 @@
     appearance: none;
     margin: 5px 0;
     padding: 10px;
-    border: 3px solid %%_color_bg;
+    border: 3px solid %%_color_main;
     border-radius: 0;
     color: %%_color_text;
     font-family: 'Arial';
@@ -86,13 +86,13 @@
     cursor: pointer;
     background-color: white}
   input[type='radio'] {border-radius: 13px}
-  input[type='checkbox']:checked {background: %%_color_bg url('images/icons-form_items.svgd')}
-  input[type='radio'   ]:checked {background: %%_color_bg url('images/icons-form_items.svgd') 0 -20px}
+  input[type='checkbox']:checked {background: %%_color_main url('images/icons-form_items.svgd')}
+  input[type='radio'   ]:checked {background: %%_color_main url('images/icons-form_items.svgd') 0 -20px}
   input[type='checkbox']:disabled:checked,
   input[type='radio'   ]:disabled:checked {border-color: lightgray; background-color: lightgray}
 
   input[data-type='switcher'] {width: 40px; border-radius: 15px; background: silver url('images/icons-form_items.svgd') 0 -40px}
-  input[data-type='switcher']:checked {background: %%_color_bg url('images/icons-form_items.svgd') -46px -40px}
+  input[data-type='switcher']:checked {background: %%_color_main url('images/icons-form_items.svgd') -46px -40px}
   input[data-type='switcher']:disabled {border-color: lightgray; background-color: lightgray}
 
   input[data-is-checked='no']:checked,
@@ -146,7 +146,7 @@
     font-family: 'Arial';
     font-size: 16px;
     color: white;
-    background: %%_color_bg}
+    background: %%_color_main}
   button:enabled:hover {background-color: %%_color_hover_bg}
   button:enabled:active {background-color: %%_color_hover_bg; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
   button:enabled[value='delete'] {background-color: %%_color_warning}
@@ -156,7 +156,7 @@
   /* palette */
 
   x-group[data-type='palette'] label {margin: 0; display: inline-block; vertical-align: middle; font-size: 1.2em}
-  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 30px; border-top: 5px solid %%_color_bg}
+  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 30px; border-top: 5px solid %%_color_main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}

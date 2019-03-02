@@ -41,9 +41,9 @@
   </g>
 
   <g id="icon_show_description">
-    <circle id="ico_shd-dot-1" cx="6"  cy="90" r="1" style="fill: %%_color_bg; stroke: none"/>
-    <circle id="ico_shd-dot-2" cx="10" cy="90" r="1" style="fill: %%_color_bg; stroke: none"/>
-    <circle id="ico_shd-dot-3" cx="14" cy="90" r="1" style="fill: %%_color_bg; stroke: none"/>
+    <circle id="ico_shd-dot-1" cx="6"  cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_shd-dot-2" cx="10" cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_shd-dot-3" cx="14" cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
   </g>
 
 </svg>

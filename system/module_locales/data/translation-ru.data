@@ -26,7 +26,6 @@ translations
     - Avatar path: Путь аватара
     - Avatar: Аватар
     - avatar: аватар
-    - Background color: Цвет фона
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle id: id пакета
@@ -210,6 +209,7 @@ translations
     - logout: выход
     - Logout: Выход
     - Main system module.: Основной модуль системы.
+    - Main: Основной
     - Management: Управление
     - Managers: Управляющие
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.

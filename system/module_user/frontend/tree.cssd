@@ -25,7 +25,7 @@
 
   /* menu User: colors */
 
-  x-tree.user ul       {background-color: %%_color_bg}
+  x-tree.user ul       {background-color: %%_color_main}
   x-tree.user ul ul    {background-color: %%_color_hover_bg}
   x-tree.user ul ul ul {background-color: transparent}
 

@@ -26,12 +26,12 @@ forms
             - required: true
             element_attributes
             - name: color_link_active_id
-        - color_bg_id|group_palette
-            title: Background color
+        - color_main_id|group_palette
+            title: Main
             attributes
             - required: true
             element_attributes
-            - name: color_bg_id
+            - name: color_main_id
         - color_ok_id|group_palette
             title: Okay
             attributes
