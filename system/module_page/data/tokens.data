@@ -6,6 +6,14 @@ tokens
     match: %%_color_text
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
+- color_link
+    match: %%_color_link
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_link_active
+    match: %%_color_link_active
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_bg
     match: %%_color_bg
     type: code

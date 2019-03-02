@@ -11,28 +11,34 @@ namespace effcore\modules\page {
 
   static function on_init($form, $items) {
     $settings = storage::get('files')->select('settings');
-    $items['*color_text_id'   ]->value_set($settings['page']->color_text_id   );
-    $items['*color_bg_id'     ]->value_set($settings['page']->color_bg_id     );
-    $items['*color_ok_id'     ]->value_set($settings['page']->color_ok_id     );
-    $items['*color_warning_id']->value_set($settings['page']->color_warning_id);
-    $items['*color_error_id'  ]->value_set($settings['page']->color_error_id  );
+    $items['*color_text_id'       ]->value_set($settings['page']->color_text_id       );
+    $items['*color_link_id'       ]->value_set($settings['page']->color_link_id       );
+    $items['*color_link_active_id']->value_set($settings['page']->color_link_active_id);
+    $items['*color_bg_id'         ]->value_set($settings['page']->color_bg_id         );
+    $items['*color_ok_id'         ]->value_set($settings['page']->color_ok_id         );
+    $items['*color_warning_id'    ]->value_set($settings['page']->color_warning_id    );
+    $items['*color_error_id'      ]->value_set($settings['page']->color_error_id      );
   }
 
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_text_id',    $items['*color_text_id'   ]->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_bg_id',      $items['*color_bg_id'     ]->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',      $items['*color_ok_id'     ]->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id', $items['*color_warning_id']->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',   $items['*color_error_id'  ]->value_get());
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_text_id',        $items['*color_text_id'       ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_id',        $items['*color_link_id'       ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_active_id', $items['*color_link_active_id']->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_bg_id',          $items['*color_bg_id'         ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',          $items['*color_ok_id'         ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',     $items['*color_warning_id'    ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',       $items['*color_error_id'      ]->value_get());
         message::insert('The changes was saved.');
         break;
       case 'restore':
-        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_text_id',    false);
-        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_bg_id',      false);
-        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_ok_id',      false);
-        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_warning_id', false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_text_id',        false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_link_id',        false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_link_active_id', false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_bg_id',          false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_ok_id',          false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_warning_id',     false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_error_id');
         message::insert('The changes was deleted.');
         static::on_init($form, $items);

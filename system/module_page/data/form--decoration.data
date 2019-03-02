@@ -14,6 +14,18 @@ forms
             - required: true
             element_attributes
             - name: color_text_id
+        - color_link_id|group_palette
+            title: Link
+            attributes
+            - required: true
+            element_attributes
+            - name: color_link_id
+        - color_link_active_id|group_palette
+            title: Link (active)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_link_active_id
         - color_bg_id|group_palette
             title: Background color
             attributes

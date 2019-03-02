@@ -36,7 +36,7 @@ namespace effcore {
 
   function render_opener() {
     $color_id    = $this->value_get();
-    $color_value = color::get($color_id)->value;
+    $color_value = color::get($color_id ?: 'white')->value;
     return (new markup_simple('input', [
       'type' => 'checkbox',
       'data-opener-type' => 'palette',
