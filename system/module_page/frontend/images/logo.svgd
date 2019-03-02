@@ -22,7 +22,7 @@
 
   <g id="icon_logo">
     <rect id="icon_logo-bg" x="0" y="0" width="150" height="48" style="fill: black; fill-opacity: .04"/>
-    <text id="icon_logo-text" x="75" y="24" text-anchor="middle" alignment-baseline="middle" style="font-family: 'Arial'; font-size: 16px; fill: %%_color; opacity: .2">Logo</text>
+    <text id="icon_logo-text" x="75" y="24" text-anchor="middle" alignment-baseline="middle" style="font-family: 'Arial'; font-size: 16px; fill: %%_color_text; opacity: .2">Logo</text>
   </g>
 
 </svg>

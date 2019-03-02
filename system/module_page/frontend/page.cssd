@@ -5,7 +5,7 @@
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
-    color: %%_color;
+    color: %%_color_text;
     background: white}
 
   /* page sizes */

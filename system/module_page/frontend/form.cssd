@@ -65,7 +65,7 @@
     padding: 10px;
     border: 3px solid %%_color_bg;
     border-radius: 0;
-    color: %%_color;
+    color: %%_color_text;
     font-family: 'Arial';
     font-size: 16px}
   select {cursor: pointer}
@@ -170,7 +170,7 @@
     border: 0;
     border-top: 1px dashed lightgray}
 
-  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 15px; border-width: 1px}
+  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
   x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 

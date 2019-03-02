@@ -5,8 +5,8 @@
 
   function effCore() {
     this.tokens = [];
-    this.tokens['color']    = '%%_color';
-    this.tokens['color_bg'] = '%%_color_bg';
+    this.tokens['color_text'] = '%%_color_text';
+    this.tokens['color_bg']   = '%%_color_bg';
     this.uagent = document.documentElement.getAttribute('data-uagent') ? document.documentElement.getAttribute('data-uagent') : '';
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }

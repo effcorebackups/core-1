@@ -2,8 +2,8 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # base colors
 # ─────────────────────────────────────────────────────────────────────
-- color
-    match: %%_color
+- color_text
+    match: %%_color_text
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
 - color_bg

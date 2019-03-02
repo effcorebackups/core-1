@@ -8,12 +8,12 @@ forms
     - colors|fieldset
         title: Colors
         children
-        - color_id|group_palette
-            title: Color
+        - color_text_id|group_palette
+            title: Text
             attributes
             - required: true
             element_attributes
-            - name: color_id
+            - name: color_text_id
         - color_bg_id|group_palette
             title: Background color
             attributes
