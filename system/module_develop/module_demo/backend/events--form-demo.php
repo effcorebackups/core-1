@@ -24,7 +24,7 @@ namespace effcore\modules\demo {
     $items['#select']->option_insert('Option 7 (inserted from code)', 'option_7', [], 'group_2');
     $items['#select']->option_insert('Option 8 (inserted from code)', 'option_8', [], 'group_2');
     $items['#select']->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
-    $items['*palette_color']->value_set('modernblue');
+    $items['*palette_color']->value_set('modern_blue');
     $items['#file']->pool_values_init_old_from_storage(
       data::select('files_demo') ?: []
     );
@@ -77,7 +77,7 @@ namespace effcore\modules\demo {
         if ($items['#radiobuttons'][2]->checked_get() != false)              message::insert( new text('Field "%%_title" has a changed value.', ['title' => translation::get($items['#radiobuttons'][2]->title)]) ); # …\field_radiobutton
         if ($items['*checkboxes']->values_get() != $def_value_checkboxes)    message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*checkboxes']->title)])      ); # …\group_checkboxes
         if ($items['*radiobuttons']->value_get() != 'radiobuttons_2')        message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*radiobuttons']->title)])    ); # …\group_radiobuttons
-        if ($items['*palette_color']->value_get() != 'modernblue')           message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color']->title)])   ); # …\group_palette
+        if ($items['*palette_color']->value_get() != 'modern_blue')          message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color']->title)])   ); # …\group_palette
       # save the files
         $paths = [];
         foreach ($items['#file']->pool_files_save() as $c_info) {

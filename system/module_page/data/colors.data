@@ -571,16 +571,16 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # original group
 # ─────────────────────────────────────────────────────────────────────
-- modernlightblue
-    id: modernlightblue
+- modern_light_blue
+    id: modern_light_blue
     value: #81a5eb
     group: original
-- modernblue
-    id: modernblue
+- modern_blue
+    id: modern_blue
     value: #216ce4
     group: original
-- moderndarkblue
-    id: moderndarkblue
+- modern_dark_blue
+    id: modern_dark_blue
     value: #28334a
     group: original
 - state_ok
