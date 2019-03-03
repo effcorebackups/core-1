@@ -8,6 +8,12 @@ forms
     - colors|fieldset
         title: Colors
         children
+        - color_page_id|group_palette
+            title: Page
+            attributes
+            - required: true
+            element_attributes
+            - name: color_page_id
         - color_menu_id|group_palette
             title: Menu
             attributes

@@ -6,7 +6,7 @@
     font-size: 15px;
     line-height: 1.5em;
     color: %%_color_text;
-    background: white}
+    background: %%_color_page}
 
   /* page sizes */
 

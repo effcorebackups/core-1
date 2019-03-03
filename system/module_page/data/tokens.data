@@ -2,6 +2,10 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # base colors
 # ─────────────────────────────────────────────────────────────────────
+- color_page
+    match: %%_color_page
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_menu
     match: %%_color_menu
     type: code

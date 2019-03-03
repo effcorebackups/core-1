@@ -1,5 +1,6 @@
 settings
   console_visibility: not_show
+  color_page_id: white
   color_menu_id: modern_blue
   color_menu_active_id: modern_dark_blue
   color_menu_text_id: white

@@ -11,6 +11,7 @@ namespace effcore\modules\page {
 
   static function on_init($form, $items) {
     $settings = storage::get('files')->select('settings');
+    $items['*color_page_id'            ]->value_set($settings['page']->color_page_id            );
     $items['*color_menu_id'            ]->value_set($settings['page']->color_menu_id            );
     $items['*color_menu_active_id'     ]->value_set($settings['page']->color_menu_active_id     );
     $items['*color_menu_text_id'       ]->value_set($settings['page']->color_menu_text_id       );
@@ -28,6 +29,7 @@ namespace effcore\modules\page {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_page_id',             $items['*color_page_id'            ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_id',             $items['*color_menu_id'            ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_active_id',      $items['*color_menu_active_id'     ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $items['*color_menu_text_id'       ]->value_get(), false);
@@ -43,6 +45,7 @@ namespace effcore\modules\page {
         message::insert('The changes was saved.');
         break;
       case 'restore':
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_page_id',             false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_id',             false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_active_id',      false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_text_id',        false);
