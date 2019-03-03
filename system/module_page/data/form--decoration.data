@@ -102,7 +102,7 @@ forms
         title: save
         attributes
         - value: save
-    - button_restore|button
-        title: restore
+    - button_reset|button
+        title: reset
         attributes
-        - value: restore
+        - value: reset

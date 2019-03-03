@@ -48,7 +48,7 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $items['*color_button_active_id'   ]->value_get());
         message::insert('The changes was saved.');
         break;
-      case 'restore':
+      case 'reset':
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_page_id',             false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_id',             false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_active_id',      false);
