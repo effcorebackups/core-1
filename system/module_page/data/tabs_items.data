@@ -1,0 +1,17 @@
+tabs_items
+- decoration_colors|tabs_item
+    id: decoration_colors
+    id_parent: T:decoration
+    action_name: colors
+    title: Colors
+    attributes
+    - class
+      - =: decoration-colors
+- decoration_presets|tabs_item
+    id: decoration_presets
+    id_parent: T:decoration
+    action_name: presets
+    title: Presets
+    attributes
+    - class
+      - =: decoration-presets

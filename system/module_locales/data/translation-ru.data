@@ -288,6 +288,7 @@ translations
     - PHP OPcache is anebled: PHP OPcache включен
     - PHP Version: PHP Версия
     - Port: Порт
+    - Presets: Предустановки
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - Query error!: Ошибка запроса!

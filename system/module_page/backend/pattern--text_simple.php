@@ -11,7 +11,7 @@ namespace effcore {
   public $weight = 0;
 
   function __construct($text = '', $weight = 0) {
-    if ($text) $this->text_update($text);
+    if ($text !== '') $this->text_update($text);
     $this->weight = $weight;
   }
 
