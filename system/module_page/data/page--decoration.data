@@ -7,7 +7,7 @@ pages
       where: path
       match: %^(?<base>/manage/decoration)
 >>>>>>>>>>>>((/(?<type>colors|
->>>>>>>>>>>>>>>>>>>>>>>presets))|)$%
+>>>>>>>>>>>>>>>>>>>>>>>presets(/(?<id>.*)|)))|)$%
     access
       roles
       - =: admins

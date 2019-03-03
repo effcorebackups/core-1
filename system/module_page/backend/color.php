@@ -8,9 +8,11 @@ namespace effcore {
           class color {
 
   static protected $cache;
+  static protected $cache_presets;
 
   static function cache_cleaning() {
-    static::$cache = null;
+    static::$cache         = null;
+    static::$cache_presets = null;
   }
 
   static function init() {
@@ -19,6 +21,13 @@ namespace effcore {
         if (isset(static::$cache[$c_color->id])) console::log_about_duplicate_insert('color', $c_color->id, $c_module_id);
         static::$cache[$c_color->id] = $c_color;
         static::$cache[$c_color->id]->module_id = $c_module_id;
+      }
+    }
+    foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
+      foreach ($c_presets as $c_row_id => $c_preset) {
+        if (isset(static::$cache[$c_preset->id])) console::log_about_duplicate_insert('color_preset', $c_preset->id, $c_module_id);
+        static::$cache_presets[$c_preset->id] = $c_preset;
+        static::$cache_presets[$c_preset->id]->module_id = $c_module_id;
       }
     }
   }
@@ -31,6 +40,16 @@ namespace effcore {
   static function all_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function preset_get($id) {
+    if    (static::$cache_presets == null) static::init();
+    return static::$cache_presets[$id] ?? null;
+  }
+
+  static function preset_all_get() {
+    if    (static::$cache_presets == null) static::init();
+    return static::$cache_presets;
   }
 
 }}
