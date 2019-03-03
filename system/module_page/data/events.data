@@ -16,10 +16,10 @@ events
       for: page
       handler: \effcore\modules\page\events_module::on_cron
   on_form_init
-  - decoration|event
-      for: decoration
-      handler: \effcore\modules\page\events_form_decoration::on_init
+  - colors|event
+      for: colors
+      handler: \effcore\modules\page\events_form_colors::on_init
   on_form_submit
-  - decoration|event
-      for: decoration
-      handler: \effcore\modules\page\events_form_decoration::on_submit
+  - colors|event
+      for: colors
+      handler: \effcore\modules\page\events_form_colors::on_submit

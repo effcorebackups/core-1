@@ -7,7 +7,7 @@
 namespace effcore\modules\page {
           use \effcore\message;
           use \effcore\storage;
-          abstract class events_form_decoration {
+          abstract class events_form_colors {
 
   static function on_init($form, $items) {
     $settings = storage::get('files')->select('settings');

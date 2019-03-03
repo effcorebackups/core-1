@@ -151,7 +151,7 @@
   button:enabled:active {background-color: %%_color_button_active; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
   button:enabled[value='delete'] {background-color: %%_color_warning}
   button:enabled[value='delete']:hover {background-color: %%_color_button_active}
-  button:disabled {cursor: default; background-color: lightgray !important}
+  button:disabled {cursor: default; opacity: .3}
 
   /* palette */
 

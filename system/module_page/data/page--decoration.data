@@ -33,14 +33,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\page\events_page_decoration::on_page_init
-    - form_decoration|page_part
+    - form_colors|page_part
         display
           check: page_args
           where: type
           match: %^colors$%
         region: content
         type: link
-        source: forms/page/decoration
+        source: forms/page/colors
     - form_access|page_part
         display
           check: user

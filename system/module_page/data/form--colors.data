@@ -1,7 +1,7 @@
 forms
-- decoration|form
+- colors|form
     attributes
-    - id: decoration
+    - id: colors
     - method: post
     - novalidate: true
     children
