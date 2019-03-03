@@ -26,6 +26,8 @@ namespace effcore\modules\page {
       case 'color_ok'              : return $colors[$settings['page']->color_ok_id              ]->value;
       case 'color_warning'         : return $colors[$settings['page']->color_warning_id         ]->value;
       case 'color_error'           : return $colors[$settings['page']->color_error_id           ]->value;
+      case 'color_button'          : return $colors[$settings['page']->color_button_id          ]->value;
+      case 'color_button_active'   : return $colors[$settings['page']->color_button_active_id   ]->value;      
     }
   }
 

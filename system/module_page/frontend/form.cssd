@@ -146,11 +146,11 @@
     font-family: 'Arial';
     font-size: 16px;
     color: white;
-    background: %%_color_main}
-  button:enabled:hover {background-color: %%_color_hover_bg}
-  button:enabled:active {background-color: %%_color_hover_bg; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
+    background: %%_color_button}
+  button:enabled:hover {background-color: %%_color_button_active}
+  button:enabled:active {background-color: %%_color_button_active; text-shadow: 0 0 2px black; box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.6)}
   button:enabled[value='delete'] {background-color: %%_color_warning}
-  button:enabled[value='delete']:hover {background-color: %%_color_hover_bg}
+  button:enabled[value='delete']:hover {background-color: %%_color_button_active}
   button:disabled {cursor: default; background-color: lightgray !important}
 
   /* palette */

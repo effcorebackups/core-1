@@ -29,6 +29,8 @@ translations
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle id: id пакета
+    - Button (active): Кнопка (активная)
+    - Button: Кнопка
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
