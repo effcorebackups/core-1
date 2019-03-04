@@ -52,7 +52,12 @@ namespace effcore {
   }
 
   function name_first_get($trim = true) {
-    foreach ($this->children_select() as $c_item) {
+        $element_attributes_name = $this->attributes_select('element_attributes')['name'] ?? '';
+        $element_attributes_name = $trim ? rtrim($element_attributes_name, '[]') : $element_attributes_name;
+    if ($element_attributes_name) return
+        $element_attributes_name;
+  # search in first child (instance of field_class)
+    else foreach ($this->children_select() as $c_item) {
       if ($c_item instanceof $this->field_class) {
         return $c_item->name_get($trim);
       }
@@ -73,7 +78,7 @@ namespace effcore {
     foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) $c_item->checked_set(false);
     foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) {
       if ($c_item->value_get() == $value) {
-          $c_item->checked_set(true);
+        $c_item->checked_set(true);
         return true;
       }
     }
