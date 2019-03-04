@@ -1,0 +1,11 @@
+forms
+- colors_preset|form
+    attributes
+    - id: colors_preset
+    - method: post
+    - novalidate: true
+    children
+    - button_apply|button
+        title: apply colors
+        attributes
+        - value: apply

@@ -19,6 +19,7 @@ translations
     - All caches have been reset.: Все кэши были сброшены.
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous: Аноним
+    - apply colors: применить цвета
     - apply: применить
     - Attempts: Попытки
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
@@ -49,6 +50,7 @@ translations
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
+    - Colors preset: Предустановка цвета
     - Colors: Цвета
     - Control elements: Элементы управления
     - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
@@ -64,6 +66,7 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
+    - Dark: Тёмная
     - Database name: Имя базы данных
     - Date / time format: Формат даты / времени
     - Date format: Формат даты

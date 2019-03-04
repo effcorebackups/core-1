@@ -19,7 +19,13 @@ events
   - colors|event
       for: colors
       handler: \effcore\modules\page\events_form_colors::on_init
+  - colors_preset|event
+      for: colors_preset
+      handler: \effcore\modules\page\events_form_colors_preset::on_init
   on_form_submit
   - colors|event
       for: colors
       handler: \effcore\modules\page\events_form_colors::on_submit
+  - colors_preset|event
+      for: colors_preset
+      handler: \effcore\modules\page\events_form_colors_preset::on_submit
