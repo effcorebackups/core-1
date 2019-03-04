@@ -8,63 +8,63 @@ forms
     - colors|fieldset
         title: Colors preset
         children
-        - color_page_id|group_palette
+        - color_page_id|field_checkbox
             title: Page
             element_attributes
             - name: color_page_id
-        - color_menu_id|group_palette
+        - color_menu_id|field_checkbox
             title: Menu
             element_attributes
             - name: color_menu_id
-        - color_menu_active_id|group_palette
+        - color_menu_active_id|field_checkbox
             title: Menu (active)
             element_attributes
             - name: color_menu_active_id
-        - color_menu_text_id|group_palette
+        - color_menu_text_id|field_checkbox
             title: Menu text
             element_attributes
             - name: color_menu_text_id
-        - color_menu_link_id|group_palette
+        - color_menu_link_id|field_checkbox
             title: Menu link
             element_attributes
             - name: color_menu_link_id
-        - color_menu_link_active_id|group_palette
+        - color_menu_link_active_id|field_checkbox
             title: Menu link (active)
             element_attributes
             - name: color_menu_link_active_id
-        - color_text_id|group_palette
+        - color_text_id|field_checkbox
             title: Text
             element_attributes
             - name: color_text_id
-        - color_link_id|group_palette
+        - color_link_id|field_checkbox
             title: Link
             element_attributes
             - name: color_link_id
-        - color_link_active_id|group_palette
+        - color_link_active_id|field_checkbox
             title: Link (active)
             element_attributes
             - name: color_link_active_id
-        - color_main_id|group_palette
+        - color_main_id|field_checkbox
             title: Main
             element_attributes
             - name: color_main_id
-        - color_ok_id|group_palette
+        - color_ok_id|field_checkbox
             title: Okay
             element_attributes
             - name: color_ok_id
-        - color_warning_id|group_palette
+        - color_warning_id|field_checkbox
             title: Warning
             element_attributes
             - name: color_warning_id
-        - color_error_id|group_palette
+        - color_error_id|field_checkbox
             title: Error
             element_attributes
             - name: color_error_id
-        - color_button_id|group_palette
+        - color_button_id|field_checkbox
             title: Button
             element_attributes
             - name: color_button_id
-        - color_button_active_id|group_palette
+        - color_button_active_id|field_checkbox
             title: Button (active)
             element_attributes
             - name: color_button_active_id
