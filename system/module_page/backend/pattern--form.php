@@ -18,6 +18,11 @@ namespace effcore {
 
   function build() {
     $id = $this->attribute_select('id');
+    if (!$id) {
+      message::insert('Form ID is required!', 'warning');
+      $this->children_delete_all();
+      return;
+    }
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::data_hash_get($this->validation_data);
