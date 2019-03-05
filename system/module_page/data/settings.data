@@ -1,15 +1,15 @@
 settings
   console_visibility: not_show
   color_page_id: white
+  color_text_id: black
+  color_main_id: modern_blue
   color_menu_id: modern_blue
   color_menu_active_id: modern_dark_blue
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: modern_light_blue
-  color_text_id: black
   color_link_id: modern_blue
   color_link_active_id: black
-  color_main_id: modern_blue
   color_ok_id: state_ok
   color_warning_id: state_warning
   color_error_id: state_error

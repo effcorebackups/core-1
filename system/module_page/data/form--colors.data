@@ -5,8 +5,8 @@ forms
     - method: post
     - novalidate: true
     children
-    - colors|fieldset
-        title: Colors
+    - colors_main|fieldset
+        title: Main
         children
         - color_page_id|group_palette
             title: Page
@@ -14,6 +14,21 @@ forms
             - required: true
             element_attributes
             - name: color_page_id
+        - color_text_id|group_palette
+            title: Text
+            attributes
+            - required: true
+            element_attributes
+            - name: color_text_id
+        - color_main_id|group_palette
+            title: Main
+            attributes
+            - required: true
+            element_attributes
+            - name: color_main_id
+    - colors_menu|fieldset
+        title: Menu
+        children
         - color_menu_id|group_palette
             title: Menu
             attributes
@@ -44,12 +59,9 @@ forms
             - required: true
             element_attributes
             - name: color_menu_link_active_id
-        - color_text_id|group_palette
-            title: Text
-            attributes
-            - required: true
-            element_attributes
-            - name: color_text_id
+    - colors_link|fieldset
+        title: Link
+        children
         - color_link_id|group_palette
             title: Link
             attributes
@@ -62,12 +74,9 @@ forms
             - required: true
             element_attributes
             - name: color_link_active_id
-        - color_main_id|group_palette
-            title: Main
-            attributes
-            - required: true
-            element_attributes
-            - name: color_main_id
+    - colors_state|fieldset
+        title: State
+        children
         - color_ok_id|group_palette
             title: Okay
             attributes
@@ -86,6 +95,9 @@ forms
             - required: true
             element_attributes
             - name: color_error_id
+    - colors_button|fieldset
+        title: Button
+        children
         - color_button_id|group_palette
             title: Button
             attributes

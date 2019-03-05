@@ -14,6 +14,14 @@ forms
             title: Page
             element_attributes
             - name: color_page_id
+        - color_text_id|field_checkbox_color
+            title: Text
+            element_attributes
+            - name: color_text_id
+        - color_main_id|field_checkbox_color
+            title: Main
+            element_attributes
+            - name: color_main_id
         - color_menu_id|field_checkbox_color
             title: Menu
             element_attributes
@@ -34,10 +42,6 @@ forms
             title: Menu link (active)
             element_attributes
             - name: color_menu_link_active_id
-        - color_text_id|field_checkbox_color
-            title: Text
-            element_attributes
-            - name: color_text_id
         - color_link_id|field_checkbox_color
             title: Link
             element_attributes
@@ -46,10 +50,6 @@ forms
             title: Link (active)
             element_attributes
             - name: color_link_active_id
-        - color_main_id|field_checkbox_color
-            title: Main
-            element_attributes
-            - name: color_main_id
         - color_ok_id|field_checkbox_color
             title: Okay
             element_attributes
