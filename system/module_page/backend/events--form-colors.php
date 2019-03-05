@@ -24,6 +24,8 @@ namespace effcore\modules\page {
     $items['*color_ok_id'              ]->value_set( $settings['page']->color_ok_id               );
     $items['*color_warning_id'         ]->value_set( $settings['page']->color_warning_id          );
     $items['*color_error_id'           ]->value_set( $settings['page']->color_error_id            );
+    $items['*color_fieldset_id'        ]->value_set( $settings['page']->color_fieldset_id         );
+    $items['*color_fieldset_nested_id' ]->value_set( $settings['page']->color_fieldset_nested_id  );
     $items['*color_button_id'          ]->value_set( $settings['page']->color_button_id           );
     $items['*color_button_active_id'   ]->value_set( $settings['page']->color_button_active_id    );
   }
@@ -44,6 +46,8 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $items['*color_ok_id'              ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $items['*color_warning_id'         ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $items['*color_error_id'           ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_id',         $items['*color_fieldset_id'        ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',  $items['*color_fieldset_nested_id' ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',           $items['*color_button_id'          ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $items['*color_button_active_id'   ]->value_get());
         message::insert('The changes was saved.');
@@ -62,6 +66,8 @@ namespace effcore\modules\page {
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_ok_id',               false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_warning_id',          false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_error_id',            false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_fieldset_id',         false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_fieldset_nested_id',  false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_id',           false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_active_id');
         message::insert('The changes was deleted.');

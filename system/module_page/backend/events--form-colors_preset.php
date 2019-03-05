@@ -27,6 +27,8 @@ namespace effcore\modules\page {
     $items['#color_ok_id'              ]->color_set($preset->colors->color_ok_id              );
     $items['#color_warning_id'         ]->color_set($preset->colors->color_warning_id         );
     $items['#color_error_id'           ]->color_set($preset->colors->color_error_id           );
+    $items['#color_fieldset_id'        ]->color_set($preset->colors->color_fieldset_id        );
+    $items['#color_fieldset_nested_id' ]->color_set($preset->colors->color_fieldset_nested_id );
     $items['#color_button_id'          ]->color_set($preset->colors->color_button_id          );
     $items['#color_button_active_id'   ]->color_set($preset->colors->color_button_active_id   );
   }
@@ -49,6 +51,8 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $preset->colors->color_ok_id,               false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $preset->colors->color_warning_id,          false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $preset->colors->color_error_id,            false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_id',         $preset->colors->color_fieldset_id,         false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',  $preset->colors->color_fieldset_nested_id,  false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',           $preset->colors->color_button_id,           false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id          );
         message::insert('Colors was applied.');

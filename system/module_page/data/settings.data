@@ -13,5 +13,7 @@ settings
   color_ok_id: state_ok
   color_warning_id: state_warning
   color_error_id: state_error
+  color_fieldset_id: whitesmoke
+  color_fieldset_nested_id: white
   color_button_id: modern_blue
   color_button_active_id: modern_dark_blue

@@ -564,6 +564,10 @@ colors
     id: gainsboro
     value: gainsboro
     group: gray
+- whitesmoke
+    id: whitesmoke
+    value: whitesmoke
+    group: gray
 - white
     id: white
     value: white

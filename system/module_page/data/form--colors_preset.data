@@ -62,6 +62,14 @@ forms
             title: Error
             element_attributes
             - name: color_error_id
+        - color_fieldset_id|field_checkbox_color
+            title: Fieldset
+            element_attributes
+            - name: color_fieldset_id
+        - color_fieldset_nested_id|field_checkbox_color
+            title: Fieldset (nested)
+            element_attributes
+            - name: color_fieldset_nested_id
         - color_button_id|field_checkbox_color
             title: Button
             element_attributes

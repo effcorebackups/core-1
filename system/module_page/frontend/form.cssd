@@ -26,13 +26,13 @@
   x-fieldset-content,
   x-fieldset-content
   x-fieldset-content
-  x-fieldset-content {background: whitesmoke}
+  x-fieldset-content {background: %%_color_fieldset}
   x-fieldset-content
   x-fieldset-content,
   x-fieldset-content
   x-fieldset-content
   x-fieldset-content
-  x-fieldset-content {background: white}
+  x-fieldset-content {background: %%_color_fieldset_nested}
 
   /* fieldset 'roles' */
 
@@ -65,7 +65,7 @@
     padding: 10px;
     border: 3px solid %%_color_main;
     border-radius: 0;
-    color: %%_color_text;
+    color: black;
     font-family: 'Arial';
     font-size: 16px}
   select {cursor: pointer}
@@ -176,6 +176,7 @@
     width: 50%;
     margin: 2px 0;
     border: 0;
+    opacity: .2;
     border-top: 1px dashed lightgray}
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}

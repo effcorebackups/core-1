@@ -95,6 +95,21 @@ forms
             - required: true
             element_attributes
             - name: color_error_id
+    - colors_fieldset|fieldset
+        title: Fieldset
+        children
+        - color_fieldset_id|group_palette
+            title: Fieldset
+            attributes
+            - required: true
+            element_attributes
+            - name: color_fieldset_id
+        - color_fieldset_nested_id|group_palette
+            title: Fieldset (nested)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_fieldset_nested_id
     - colors_button|fieldset
         title: Button
         children
