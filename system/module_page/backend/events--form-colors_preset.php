@@ -14,22 +14,21 @@ namespace effcore\modules\page {
   static function on_init($form, $items) {
     $id = page::current_get()->args_get('id');
     $preset = color::preset_get($id);
-    $colors = color::all_get();
-    $items['#color_page_id'            ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_page_id            ]->value, 'attributes');
-    $items['#color_menu_id'            ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_menu_id            ]->value, 'attributes');
-    $items['#color_menu_active_id'     ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_menu_active_id     ]->value, 'attributes');
-    $items['#color_menu_text_id'       ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_menu_text_id       ]->value, 'attributes');
-    $items['#color_menu_link_id'       ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_menu_link_id       ]->value, 'attributes');
-    $items['#color_menu_link_active_id']->attribute_insert('style', 'background: '.$colors[$preset->colors->color_menu_link_active_id]->value, 'attributes');
-    $items['#color_text_id'            ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_text_id            ]->value, 'attributes');
-    $items['#color_link_id'            ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_link_id            ]->value, 'attributes');
-    $items['#color_link_active_id'     ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_link_active_id     ]->value, 'attributes');
-    $items['#color_main_id'            ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_main_id            ]->value, 'attributes');
-    $items['#color_ok_id'              ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_ok_id              ]->value, 'attributes');
-    $items['#color_warning_id'         ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_warning_id         ]->value, 'attributes');
-    $items['#color_error_id'           ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_error_id           ]->value, 'attributes');
-    $items['#color_button_id'          ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_button_id          ]->value, 'attributes');
-    $items['#color_button_active_id'   ]->attribute_insert('style', 'background: '.$colors[$preset->colors->color_button_active_id   ]->value, 'attributes');
+    $items['#color_page_id'            ]->color_set($preset->colors->color_page_id            );
+    $items['#color_menu_id'            ]->color_set($preset->colors->color_menu_id            );
+    $items['#color_menu_active_id'     ]->color_set($preset->colors->color_menu_active_id     );
+    $items['#color_menu_text_id'       ]->color_set($preset->colors->color_menu_text_id       );
+    $items['#color_menu_link_id'       ]->color_set($preset->colors->color_menu_link_id       );
+    $items['#color_menu_link_active_id']->color_set($preset->colors->color_menu_link_active_id);
+    $items['#color_text_id'            ]->color_set($preset->colors->color_text_id            );
+    $items['#color_link_id'            ]->color_set($preset->colors->color_link_id            );
+    $items['#color_link_active_id'     ]->color_set($preset->colors->color_link_active_id     );
+    $items['#color_main_id'            ]->color_set($preset->colors->color_main_id            );
+    $items['#color_ok_id'              ]->color_set($preset->colors->color_ok_id              );
+    $items['#color_warning_id'         ]->color_set($preset->colors->color_warning_id         );
+    $items['#color_error_id'           ]->color_set($preset->colors->color_error_id           );
+    $items['#color_button_id'          ]->color_set($preset->colors->color_button_id          );
+    $items['#color_button_active_id'   ]->color_set($preset->colors->color_button_active_id   );
   }
 
   static function on_submit($form, $items) {

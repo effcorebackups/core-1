@@ -100,9 +100,9 @@
 
   /* checkboxes and radiobuttons inside containers */
 
-  x-field[data-type='switcher']    label,
-  x-field[data-type='checkbox']    label,
-  x-field[data-type='radiobutton'] label {display: inline; vertical-align: middle}
+  x-field[data-type^='switcher']    label,
+  x-field[data-type^='checkbox']    label,
+  x-field[data-type^='radiobutton'] label {display: inline; vertical-align: middle}
 
   x-group[data-type='switchers'   ] x-field,
   x-group[data-type='checkboxes'  ] x-field,
@@ -152,6 +152,14 @@
   button:enabled[value='delete'] {background-color: %%_color_warning}
   button:enabled[value='delete']:hover {background-color: %%_color_button_active}
   button:disabled {cursor: default; opacity: .3}
+
+  /* checkbox color */
+
+  x-field[data-type='checkbox-color'] input {
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    border-width: 1px;
+  }
 
   /* palette */
 
