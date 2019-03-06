@@ -19,7 +19,7 @@
     padding: 15px 15px 10px 15px;
     border-radius: 15px 15px 0 0}
   x-tabs x-top-items a.active,
-  x-tabs x-top-items a.active-trail {color: white; background: %%_color_main}
+  x-tabs x-top-items a.active-trail {color: %%_color_link_active; background: %%_color_main}
 
   x-tabs x-sub-items {
     display: block;

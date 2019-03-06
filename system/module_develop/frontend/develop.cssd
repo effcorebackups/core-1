@@ -12,7 +12,7 @@
   x-block.logs tbody tr.storage  {background-color: honeydew}
   x-block.logs tbody tr.error td[data-cellid='value'] {background-color: pink !important}
 
-  x-block.logs x-total {display: block; font-size: .9em; text-align: center; color: lightgray}
+  x-block.logs x-total {display: block; font-size: .9em; text-align: center; color: %%_color_text}
   x-block.logs x-total x-label {}
   x-block.logs x-total x-value {}
 
