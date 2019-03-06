@@ -13,10 +13,12 @@
   fieldset > x-fieldset-content {margin-top: 30px}
   fieldset > x-description {margin-top: 20px}
 
-  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color_main url('images/icons-form_items.svgd') 0 -60px}
-  fieldset input[data-opener-type='fieldset']:checked {background-position: -20px -60px}
+  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px}
   fieldset input[data-opener-type='fieldset'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
+
+  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('images/icons-form_items.svgd')   0   -60px}
+  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('images/icons-form_items.svgd') -20px -60px}
 
   x-fieldset-content {
     display: block;
@@ -80,28 +82,29 @@
     margin: 2px 7px 2px 0;
     padding: 0;
     vertical-align: middle;
-    cursor: pointer;
-    background-color: %%_color_page}
-  input[type='radio'] {border-radius: 13px}
-  input[type='checkbox']:checked {background: %%_color_main url('images/icons-form_items.svgd')}
-  input[type='radio'   ]:checked {background: %%_color_main url('images/icons-form_items.svgd') 0 -20px}
+    cursor: pointer}
+  input[type='radio']         {border-radius: 13px}
+  input[data-type='switcher'] {border-radius: 15px; width: 40px}
 
-  input[data-type='switcher'] {width: 40px; border-radius: 15px; background: silver url('images/icons-form_items.svgd') 0 -40px}
-  input[data-type='switcher']:checked {background: %%_color_main url('images/icons-form_items.svgd') -46px -40px}
+  input[type='radio'        ]         {background: %%_color_page}
+  input[type='checkbox'     ]         {background: %%_color_page}
+  input[data-type='switcher']         {background: %%_color_page url('images/icons-form_items.svgd')   0   -40px}
+  input[type='radio'        ]:checked {background: %%_color_page url('images/icons-form_items.svgd')   0   -20px}
+  input[type='checkbox'     ]:checked {background: %%_color_page url('images/icons-form_items.svgd')   0     0  }
+  input[data-type='switcher']:checked {background: %%_color_page url('images/icons-form_items.svgd') -46px -40px}
 
   input[data-is-checked='no']:checked,
   input[data-is-checked='yes']:not(:checked) {border-color: %%_color_warning}
 
   /* checkboxes and radiobuttons inside containers */
 
-  x-field[data-type^='switcher']    label,
-  x-field[data-type^='checkbox']    label,
+  x-field[data-type^='switcher'   ] label,
+  x-field[data-type^='checkbox'   ] label,
   x-field[data-type^='radiobutton'] label {display: inline; vertical-align: middle}
 
   x-group[data-type='switchers'   ] x-field,
   x-group[data-type='checkboxes'  ] x-field,
   x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
-
   x-group[data-type='switchers'   ] x-field label,
   x-group[data-type='checkboxes'  ] x-field label,
   x-group[data-type='radiobuttons'] x-field label {display: inline; font-size: 1em}
@@ -124,16 +127,13 @@
   /* disabled elements */
 
   x-field.disabled * {cursor: default !important}
+  x-field.disabled label,
+  x-field.disabled x-description {opacity: .3}
 
-  input:disabled,
+     input:disabled,
   textarea:disabled,
-  select:disabled {border-color: lightgray}
-
-  input[type='checkbox'     ]:disabled:checked,
-  input[type='radio'        ]:disabled:checked,
-  input[data-type='switcher']:disabled {border-color: lightgray; background-color: lightgray}
-
-  button:disabled {cursor: default; opacity: .3}
+    select:disabled,
+    button:disabled {cursor: default; opacity: .3}
 
   /* buttons */
 
@@ -176,8 +176,8 @@
     width: 50%;
     margin: 2px 0;
     border: 0;
-    opacity: .2;
-    border-top: 1px dashed lightgray}
+    opacity: .3;
+    border-top: 1px dashed %%_color_main}
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
