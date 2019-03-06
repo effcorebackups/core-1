@@ -958,10 +958,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/lines-1.svg
-        - request_url-/system/module_page/frontend/images/lines-1.svg|step_request
-            url: /system/module_page/frontend/images/lines-1.svg
-        - response_check-/system/module_page/frontend/images/lines-1.svg|step_check
+        # url: /system/module_page/frontend/images/lines.svg
+        - request_url-/system/module_page/frontend/images/lines.svg|step_request
+            url: /system/module_page/frontend/images/lines.svg
+        - response_check-/system/module_page/frontend/images/lines.svg|step_check
             where: http_code
             match: 200
             on_failure
@@ -1377,10 +1377,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/lines-1.svg/
-        - request_url-/system/module_page/frontend/images/lines-1.svg/|step_request
-            url: /system/module_page/frontend/images/lines-1.svg/
-        - response_check-/system/module_page/frontend/images/lines-1.svg/|step_check
+        # url: /system/module_page/frontend/images/lines.svg/
+        - request_url-/system/module_page/frontend/images/lines.svg/|step_request
+            url: /system/module_page/frontend/images/lines.svg/
+        - response_check-/system/module_page/frontend/images/lines.svg/|step_check
             where: http_code
             match: 302
             on_failure
