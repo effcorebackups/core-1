@@ -30,6 +30,14 @@ forms
             title: Link (active)
             element_attributes
             - name: color_link_active_id
+        - color_table_row_odd_id|field_checkbox_color
+            title: Table row (odd)
+            element_attributes
+            - name: color_table_row_odd_id
+        - color_table_row_even_id|field_checkbox_color
+            title: Table row (even)
+            element_attributes
+            - name: color_table_row_even_id
         - color_menu_id|field_checkbox_color
             title: Menu
             element_attributes

@@ -44,8 +44,9 @@
   table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
   table tbody {background: white}
   table td {padding: 12px 15px}
-  table tr:nth-child(even)   td {background-color: %%_color_table_even_bg}
-  table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_border}
+  table tr:nth-child(odd)    td {background-color: %%_color_table_row_odd}
+  table tr:nth-child(even)   td {background-color: %%_color_table_row_even}
+  table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_main}
   table tr td:empty::after {content: 'x'; color: gainsboro}
   table tr th[data-cellid='actions'] {width: 1%}
   table tr td[data-cellid='actions']:empty::after {content: ''}

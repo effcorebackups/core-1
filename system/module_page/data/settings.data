@@ -5,6 +5,8 @@ settings
   color_main_id: modern_blue
   color_link_id: modern_blue
   color_link_active_id: black
+  color_table_row_odd_id: white
+  color_table_row_even_id: whitesmoke
   color_menu_id: modern_blue
   color_menu_active_id: modern_dark_blue
   color_menu_text_id: white

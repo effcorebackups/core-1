@@ -22,6 +22,14 @@ tokens
     match: %%_color_link_active
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
+- color_table_row_odd
+    match: %%_color_table_row_odd
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_table_row_even
+    match: %%_color_table_row_even
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_menu
     match: %%_color_menu
     type: code
@@ -70,14 +78,3 @@ tokens
     match: %%_color_button_active
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
-# ─────────────────────────────────────────────────────────────────────
-# other colors
-# ─────────────────────────────────────────────────────────────────────
-- color_border
-    match: %%_color_border
-    type: text
-    value: gainsboro
-- color_table_even_bg
-    match: %%_color_table_even_bg
-    type: text
-    value: whitesmoke

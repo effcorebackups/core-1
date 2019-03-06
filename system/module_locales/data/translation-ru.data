@@ -51,6 +51,7 @@ translations
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
     - Color: Цвет
     - Colors preset: Предустановка цвета
+    - Colors was applied.: Цвета были применены.
     - Colors: Цвета
     - Control elements: Элементы управления
     - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
@@ -368,6 +369,8 @@ translations
     - System was not installed!: Система не была установлена!
     - System: Система
     - Table prefix: Префикс таблиц
+    - Table row (even): Таблицы строка (чётная)
+    - Table row (odd): Таблицы строка (не чётная)
     - Table: Таблица
     - Test: Тест
     - Tests: Тесты

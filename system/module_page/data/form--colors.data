@@ -38,6 +38,18 @@ forms
             - required: true
             element_attributes
             - name: color_link_active_id
+        - color_table_row_odd_id|group_palette
+            title: Table row (odd)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_table_row_odd_id
+        - color_table_row_even_id|group_palette
+            title: Table row (even)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_table_row_even_id
     - colors_menu|fieldset
         title: Menu
         children

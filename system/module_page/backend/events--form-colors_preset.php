@@ -19,6 +19,8 @@ namespace effcore\modules\page {
     $items['#color_main_id'            ]->color_set($preset->colors->color_main_id            );
     $items['#color_link_id'            ]->color_set($preset->colors->color_link_id            );
     $items['#color_link_active_id'     ]->color_set($preset->colors->color_link_active_id     );
+    $items['#color_table_row_odd_id'   ]->color_set($preset->colors->color_table_row_odd_id   );
+    $items['#color_table_row_even_id'  ]->color_set($preset->colors->color_table_row_even_id  );
     $items['#color_menu_id'            ]->color_set($preset->colors->color_menu_id            );
     $items['#color_menu_active_id'     ]->color_set($preset->colors->color_menu_active_id     );
     $items['#color_menu_text_id'       ]->color_set($preset->colors->color_menu_text_id       );
@@ -43,6 +45,8 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_main_id',             $preset->colors->color_main_id,             false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_id',             $preset->colors->color_link_id,             false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_active_id',      $preset->colors->color_link_active_id,      false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_odd_id',    $preset->colors->color_table_row_odd_id,    false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_even_id',   $preset->colors->color_table_row_even_id,   false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_id',             $preset->colors->color_menu_id,             false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_active_id',      $preset->colors->color_menu_active_id,      false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $preset->colors->color_menu_text_id,        false);
