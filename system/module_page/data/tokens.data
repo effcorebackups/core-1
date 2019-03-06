@@ -14,6 +14,14 @@ tokens
     match: %%_color_main
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
+- color_link
+    match: %%_color_link
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
+- color_link_active
+    match: %%_color_link_active
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_menu
     match: %%_color_menu
     type: code
@@ -32,14 +40,6 @@ tokens
     handler: \effcore\modules\page\events_token::on_color_get
 - color_menu_link_active
     match: %%_color_menu_link_active
-    type: code
-    handler: \effcore\modules\page\events_token::on_color_get
-- color_link
-    match: %%_color_link
-    type: code
-    handler: \effcore\modules\page\events_token::on_color_get
-- color_link_active
-    match: %%_color_link_active
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
 - color_ok

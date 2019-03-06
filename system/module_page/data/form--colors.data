@@ -26,6 +26,18 @@ forms
             - required: true
             element_attributes
             - name: color_main_id
+        - color_link_id|group_palette
+            title: Link
+            attributes
+            - required: true
+            element_attributes
+            - name: color_link_id
+        - color_link_active_id|group_palette
+            title: Link (active)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_link_active_id
     - colors_menu|fieldset
         title: Menu
         children
@@ -59,21 +71,6 @@ forms
             - required: true
             element_attributes
             - name: color_menu_link_active_id
-    - colors_link|fieldset
-        title: Link
-        children
-        - color_link_id|group_palette
-            title: Link
-            attributes
-            - required: true
-            element_attributes
-            - name: color_link_id
-        - color_link_active_id|group_palette
-            title: Link (active)
-            attributes
-            - required: true
-            element_attributes
-            - name: color_link_active_id
     - colors_state|fieldset
         title: State
         children
