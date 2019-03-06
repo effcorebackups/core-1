@@ -583,6 +583,22 @@ colors
     id: modern_blue
     value: #216ce4
     group: original
+- modern_dark_blue_20
+    id: modern_dark_blue_20
+    value: #535c6d
+    group: original
+- modern_dark_blue_15
+    id: modern_dark_blue_15
+    value: #485164
+    group: original
+- modern_dark_blue_10
+    id: modern_dark_blue_10
+    value: #3e485c
+    group: original
+- modern_dark_blue_5
+    id: modern_dark_blue_5
+    value: #333d52
+    group: original
 - modern_dark_blue
     id: modern_dark_blue
     value: #28334a
