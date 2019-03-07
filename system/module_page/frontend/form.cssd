@@ -168,6 +168,7 @@
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}
+  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3); background: white url('images/icons-form_items.svgd') -20px 0 !important}
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 

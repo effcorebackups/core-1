@@ -25,6 +25,11 @@
     <path id="ico_chk-cross_part_2" style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round" d="M 15.5,15.5 4.5,4.5"/>
   </g>
 
+  <g id="icon_transparent">
+    <path id="ico_trs-cross_part_1" style="stroke: red; stroke-width: 1px; stroke-linecap: round" d="M 35.5 15.5 L 24.5 4.5"/>
+    <path id="ico_trs-cross_part_2" style="stroke: red; stroke-width: 1px; stroke-linecap: round" d="M 24.5 15.5 L 35.5 4.5"/>
+  </g>
+
   <g id="icon_radiobutton">
     <circle id="ico_rbn-circle" cx="10" cy="30" r="6" style="fill: %%_color_main; stroke: none"/>
   </g>

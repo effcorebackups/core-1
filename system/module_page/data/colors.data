@@ -2,6 +2,10 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # pure group
 # ─────────────────────────────────────────────────────────────────────
+- transparent
+    id: transparent
+    value: transparent
+    group: pure
 - chocolate
     id: chocolate
     value: chocolate
