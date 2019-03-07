@@ -168,3 +168,14 @@ This information is actual for function core::hex_to_ip().
     | 0fffffffffffffffffffffffffffffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
     | ffffffffffffffffffffffffffffffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
 
+
+Incompatibility with third-party applications
+=====================================================================
+
+- Kaspersky Internet Security browser plugin can insert to page
+  some CSS with strings like 'appearance: checkbox' and etc.
+  This string can break your own styles of form elements like
+  checkboxes, radios and other.
+  We can not do anything against violating web standards from third side.
+  Just ignore Kaspersky Internet Security.
+

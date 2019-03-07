@@ -60,5 +60,5 @@
 
   x-tree.managed li a {display: block}
   x-tree.managed li a x-item-title {display: block; font-size: 1.2em; color: %%_color_text}
-  x-tree.managed li a x-url {display: block; color: gray}
+  x-tree.managed li a x-url {display: block; color: %%_color_text; opacity: .5}
   x-tree.managed li a x-url em {padding: 0 2px; font-style: normal}
