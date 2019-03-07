@@ -38,6 +38,10 @@ forms
             title: Table row (even)
             element_attributes
             - name: color_table_row_even_id
+        - color_relation_id|field_checkbox_color
+            title: Relation
+            element_attributes
+            - name: color_relation_id
         - color_menu_id|field_checkbox_color
             title: Menu
             element_attributes

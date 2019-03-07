@@ -20,6 +20,7 @@ namespace effcore\modules\page {
       case 'color_link_active'     : return $colors[$settings['page']->color_link_active_id     ]->value;
       case 'color_table_row_odd'   : return $colors[$settings['page']->color_table_row_odd_id   ]->value;
       case 'color_table_row_even'  : return $colors[$settings['page']->color_table_row_even_id  ]->value;
+      case 'color_relation'        : return $colors[$settings['page']->color_relation_id        ]->value;
       case 'color_menu'            : return $colors[$settings['page']->color_menu_id            ]->value;
       case 'color_menu_active'     : return $colors[$settings['page']->color_menu_active_id     ]->value;
       case 'color_menu_text'       : return $colors[$settings['page']->color_menu_text_id       ]->value;

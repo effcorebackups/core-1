@@ -30,6 +30,10 @@ tokens
     match: %%_color_table_row_even
     type: code
     handler: \effcore\modules\page\events_token::on_color_get
+- color_relation
+    match: %%_color_relation
+    type: code
+    handler: \effcore\modules\page\events_token::on_color_get
 - color_menu
     match: %%_color_menu
     type: code

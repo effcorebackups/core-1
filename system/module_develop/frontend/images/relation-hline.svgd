@@ -20,6 +20,6 @@
     </rdf:RDF>
   </metadata>
 
-  <path id="hline" d="M 15,0 V 44 H 30" style="fill: none; stroke: black; stroke-width: 1px"/>
+  <path id="hline" d="M 15,0 V 44 H 30" style="fill: none; stroke: %%_color_relation; stroke-width: 1px"/>
 
 </svg>

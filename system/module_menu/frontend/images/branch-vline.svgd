@@ -20,9 +20,6 @@
     </rdf:RDF>
   </metadata>
 
-  <g id="icon_relation_generalization">
-    <path id="ico_rg-hline" d="M 15,0 V 44 H 30"      style="fill:  none; stroke: black; stroke-width: 1px"/>
-    <path id="ico_rg-arrow" d="M 20,10 H 10 L 15,0 Z" style="fill: white; stroke: black; stroke-width: 1px"/>
-  </g>
+  <path id="vline" d="M 15,0 V 90" style="stroke: %%_color_relation; stroke-width: 1px"/>
 
 </svg>

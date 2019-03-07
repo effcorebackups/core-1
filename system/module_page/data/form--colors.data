@@ -50,6 +50,12 @@ forms
             - required: true
             element_attributes
             - name: color_table_row_even_id
+        - color_relation_id|group_palette
+            title: Relation
+            attributes
+            - required: true
+            element_attributes
+            - name: color_relation_id
     - colors_menu|fieldset
         title: Menu
         children
