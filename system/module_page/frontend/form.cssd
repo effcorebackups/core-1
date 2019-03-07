@@ -65,8 +65,8 @@
     border-radius: 0;
     font-family: 'Arial';
     font-size: 16px;
-    color: %%_color_text;
-    background-color: %%_color_page}
+    color: %%_color_field_text;
+    background-color: %%_color_field}
   select {cursor: pointer}
   textarea {display: block; width: 80%; min-width: 100px}
   input[type='range'] {border-radius: 20px}

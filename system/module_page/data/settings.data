@@ -18,5 +18,7 @@ settings
   color_error_id: state_error
   color_fieldset_id: whitesmoke
   color_fieldset_nested_id: white
+  color_field_id: white
+  color_field_text_id: black
   color_button_id: modern_blue
   color_button_active_id: modern_dark_blue

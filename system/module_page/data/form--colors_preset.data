@@ -82,6 +82,14 @@ forms
             title: Fieldset (nested)
             element_attributes
             - name: color_fieldset_nested_id
+        - color_field_id|field_checkbox_color
+            title: Field
+            element_attributes
+            - name: color_field_id
+        - color_field_text_id|field_checkbox_color
+            title: Field text
+            element_attributes
+            - name: color_field_text_id
         - color_button_id|field_checkbox_color
             title: Button
             element_attributes

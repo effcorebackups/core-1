@@ -125,6 +125,18 @@ forms
             - required: true
             element_attributes
             - name: color_fieldset_nested_id
+        - color_field_id|group_palette
+            title: Field
+            attributes
+            - required: true
+            element_attributes
+            - name: color_field_id
+        - color_field_text_id|group_palette
+            title: Field text
+            attributes
+            - required: true
+            element_attributes
+            - name: color_field_text_id
         - color_button_id|group_palette
             title: Button
             attributes

@@ -31,6 +31,8 @@ namespace effcore\modules\page {
       case 'color_error'           : return $colors[$settings['page']->color_error_id           ]->value;
       case 'color_fieldset'        : return $colors[$settings['page']->color_fieldset_id        ]->value;
       case 'color_fieldset_nested' : return $colors[$settings['page']->color_fieldset_nested_id ]->value;
+      case 'color_field'           : return $colors[$settings['page']->color_field_id           ]->value;
+      case 'color_field_text'      : return $colors[$settings['page']->color_field_text_id      ]->value;
       case 'color_button'          : return $colors[$settings['page']->color_button_id          ]->value;
       case 'color_button_active'   : return $colors[$settings['page']->color_button_active_id   ]->value;
     }
