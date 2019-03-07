@@ -42,6 +42,7 @@ namespace effcore {
       'data-opener-type' => 'palette',
       'title' => translation::get('Select color'),
       'id' => 'f_opener_'.$this->name_first_get(),
+      'value' => $color_value,
       'style' => ['background: '.$color_value],
       'checked' => true
     ]))->render();

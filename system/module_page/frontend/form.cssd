@@ -181,6 +181,7 @@
     border-top: 1px dashed %%_color_main}
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
+  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form_items.svgd') -18px 2px !important}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
   x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 

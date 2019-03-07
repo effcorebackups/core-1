@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     effcore.get_elements('x-field input', wrapper).for_each(function(element){
       element.addEventListener('click', function(){
         opener.style.backgroundColor = element.style.backgroundColor;
+        opener.value                 = element.value;
       });
     });
   });
