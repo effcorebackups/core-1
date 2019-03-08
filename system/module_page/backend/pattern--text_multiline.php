@@ -36,7 +36,9 @@ namespace effcore {
       if ($this->is_apply_tokens)      $c_result = token::replace  ($c_result);
       $result[] = $c_result;
     }
-    return implode($this->delimiter, $result);
+    return implode(
+      html_entity_decode($this->delimiter), $result
+    );
   }
 
 }}

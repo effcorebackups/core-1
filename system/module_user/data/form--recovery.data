@@ -4,13 +4,6 @@ forms
     - id: recovery
     - method: post
     - novalidate: true
-    mail_subject|text
-      text: Password recovery on %%_domain
-    mail_body|text_multiline
-      text
-      - 2: You received this message because someone tried to recover the password from your %%_domain account.
-      - 4: Your new password on %%_domain has been changed automatically to: %%_new_password
-      - 6: Your EMail is not shown publicly on %%_domain and is never shared with third parties!
     children
     - credentials|fieldset
         title: Credentials

@@ -10,6 +10,7 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\instance;
           use \effcore\message;
+          use \effcore\template;
           use \effcore\url;
           abstract class events_form_recovery {
 
@@ -41,13 +42,13 @@ namespace effcore\modules\user {
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
             $mail_to = $user->nick.' <'.$user->email.'>';
-            $mail_subject = clone $form->mail_subject;
-            $mail_subject->args = ['domain' => $current_url->domain];
-            $mail_subject = '=?UTF-8?B?'.base64_encode($mail_subject->render()).'?=';
-            $mail_body = clone $form->mail_body;
-            $mail_body->delimiter = nl.nl;
-            $mail_body->args = ['domain' => $current_url->domain, 'new_password' => $new_password];
-            $mail_body = $mail_body->render();
+            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new('mail_recovery_subject', [
+              'domain' => $current_url->domain
+            ]))->render()).'?=';
+            $mail_body = template::make_new('mail_recovery_body', [
+              'domain'       => $current_url->domain,
+              'new_password' => $new_password
+            ])->render();
             $mail_send_result = mail(
               $mail_to,
               $mail_subject,

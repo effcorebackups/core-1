@@ -62,7 +62,7 @@ namespace effcore {
           'Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link'], [
           'name' => $this->name,
           'file' => $path,
-          'link' => $link]), 'error'
+          'link' => $link]), 'credentials'
         );
       }
     }

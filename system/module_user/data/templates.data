@@ -1,0 +1,15 @@
+templates
+- mail_recovery_subject
+    name: mail_recovery_subject
+    type: text
+    data|text
+      text: Password recovery on %%_domain
+- mail_recovery_body
+    name: mail_recovery_body
+    type: text
+    data|text_multiline
+      delimiter: &#10;&#10;
+      text
+      - 2: You received this message because someone tried to recover the password from your %%_domain account.
+      - 4: Your new password on %%_domain has been changed automatically to: %%_new_password
+      - 6: Your EMail is not shown publicly on %%_domain and is never shared with third parties!
