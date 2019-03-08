@@ -177,7 +177,7 @@
 
   x-decorator[data-view-type='ul'] ul {list-style: none; margin: 30px 0; padding: 0}
   x-decorator[data-view-type='ul'] li {list-style: none; margin: 0; padding: 0}
-  x-decorator[data-view-type='ul'] x-title {font-weight: bold}
+  x-decorator[data-view-type='ul'] x-title {opacity: .5}
   x-decorator[data-view-type='ul'] x-title:empty {display: none}
   x-decorator[data-view-type='ul'] x-value:empty::after {content: 'x'; opacity: .3}
   x-decorator[data-view-type='ul'] x-title:not(:empty)::after {content: ': '}
