@@ -8,17 +8,7 @@ namespace effcore {
           abstract class manage_trees {
 
   static function tree_select($page) {
-    $trees = tree::all_get();
     $id = $page->args_get('id');
-    core::array_sort_by_property($trees, 'title');
-    if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
-    foreach ($trees as $c_tree) {
-      tabs::item_insert(         $c_tree->title,
-        'tree_select_'.          $c_tree->id,
-        'tree_select', 'select/'.$c_tree->id, null, ['class' => [
-                       'select-'.$c_tree->id =>
-                       'select-'.$c_tree->id]]);
-    }
     if ($id) {
       $tree = clone tree::get($id);
       $tree->build();
