@@ -3,7 +3,12 @@
   <head>
     <title>%%_title</title>
     <style>
-      body {padding: 100px 30px; font: normal 16px Arial; text-align: center}
+      body {
+        padding: 100px 30px;
+        font: normal 16px Arial;
+        text-align: center;
+        color: %%_color_text;
+        background: %%_color_page}
       h1 {font-size: 1.6em}
       a {color: #216ce4}
       a:hover {color: black}
