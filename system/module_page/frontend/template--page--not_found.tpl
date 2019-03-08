@@ -9,9 +9,9 @@
         text-align: center;
         color: %%_color_text;
         background: %%_color_page}
+      a       {color: %%_color_link}
+      a:hover {color: %%_color_link_active}
       h1 {font-size: 1.75em}
-      a {color: #216ce4}
-      a:hover {color: black}
       svg#icon {margin: 50px 0}
     </style>
   </head>
