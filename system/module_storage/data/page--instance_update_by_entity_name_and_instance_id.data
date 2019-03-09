@@ -5,7 +5,10 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/manage/instances)/(?<action>update)/(?<entity_name>[a-z0-9_]+)/(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
+      match: %^(?<base>/manage/instances)/
+>>>>>>>>>>>>>>>(?<action>update)/
+>>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
+>>>>>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
     access
       roles
       - =: admins
@@ -27,6 +30,10 @@ pages
         region: content
         type: code
         source: \effcore\manage_instances::instance_update_by_entity_name_and_instance_id
+    - form_instance_update|page_part
+        region: content
+        type: link
+        source: forms/storage/instance_update
     - form_access|page_part
         display
           check: user

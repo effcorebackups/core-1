@@ -18,7 +18,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
-  # select instances and single instance
+  # select multiple instances
   # ─────────────────────────────────────────────────────────────────────
 
   static function instance_select_multiple_by_entity_name($page) {
@@ -52,6 +52,10 @@ namespace effcore {
       );
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # select single instance
+  # ─────────────────────────────────────────────────────────────────────
 
   static function instance_select_by_entity_name_and_instance_id($page) {
     $entity_name = $page->args_get('entity_name');
@@ -135,7 +139,7 @@ namespace effcore {
   # delete single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_delete_by_entity_name_and_instance_id($page, $form, $items) {
+  static function instance_delete_by_entity_name_and_instance_id($page, $emulate = true) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -146,11 +150,16 @@ namespace effcore {
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
-          return $instance->delete();
-        }
-      }
-    }
+          if (!empty($instance->is_embed)) core::send_header_and_exit('access_forbidden');
+          if (!$emulate) return $instance->delete();
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
+    }     else core::send_header_and_exit('page_not_found');
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # delete multiple instances
+  # ─────────────────────────────────────────────────────────────────────
 
   static function instance_delete_multiple_by_instances_id($page) {
   # @todo: make functionality

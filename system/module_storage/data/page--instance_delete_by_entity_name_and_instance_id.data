@@ -5,7 +5,10 @@ pages
     display
       check: url
       where: path
-      match: %^(?<base>/manage/instances)/(?<action>delete)/(?<entity_name>[a-z0-9_]+)/(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
+      match: %^(?<base>/manage/instances)/
+>>>>>>>>>>>>>>>(?<action>delete)/
+>>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
+>>>>>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
     access
       roles
       - =: admins
@@ -23,10 +26,6 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - check_access|page_part
-        region: content
-        type: code
-        source: \effcore\modules\storage\events_access::on_check_access_instance_delete
     - form_instance_delete|page_part
         region: content
         type: link
