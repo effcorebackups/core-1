@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   effcore.get_elements('input[type=range]').for_each(function(element){
-    effcore.get_element('x-value', element.parentNode).for_each(function(value){
+    var x_value = element.parentNode.querySelector('x-value');
+    if (x_value) {
       element.addEventListener('mousemove', function(){
-        value.innerText = element.title = element.value;
+        x_value.innerText = this.title = this.value;
       });
-    });
+    }
   });
 
   effcore.get_elements('select[data-source=uagent-timezone]').for_each(function(element){
@@ -16,13 +17,15 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   effcore.get_elements('x-group[data-type=palette]').for_each(function(wrapper){
-    var opener = effcore.get_element('input[data-opener-type=palette]', wrapper).select(0);
-    effcore.get_elements('x-field input', wrapper).for_each(function(element){
-      element.addEventListener('click', function(){
-        opener.style.backgroundColor = element.style.backgroundColor;
-        opener.value                 = element.value;
+    var opener = wrapper.querySelector('input[data-opener-type=palette]');
+    if (opener) {
+      effcore.get_elements('x-field input', wrapper).for_each(function(element){
+        element.addEventListener('click', function(){
+          opener.style.backgroundColor = element.style.backgroundColor;
+          opener.value                 = element.value;
+        });
       });
-    });
+    }
   });
 
 });

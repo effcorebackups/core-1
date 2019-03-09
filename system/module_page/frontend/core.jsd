@@ -27,13 +27,6 @@
     }
   }
 
-  effCore.prototype.get_element = function (query, root = document) {
-    var result = new this.collection();
-    var buffer = root.querySelector(query);
-    if (buffer instanceof Node) result.insert(buffer);
-    return result;
-  }
-
   effCore.prototype.get_elements = function (query, root = document) {
     var result = new this.collection();
     var buffer = root.querySelectorAll(query);
