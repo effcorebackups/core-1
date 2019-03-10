@@ -44,6 +44,7 @@ namespace effcore {
           $selection->field_entity_insert(null, $entity->name, $c_field_name);
         }
       }
+      $selection->field_checkbox_insert(null, '', -80);
       $selection->field_action_insert();
       return new block('', ['class' => [
         $entity->name =>

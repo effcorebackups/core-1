@@ -36,6 +36,18 @@ namespace effcore {
     $used_entities = [];
     $used_storages = [];
 
+  # sort fields
+    $c_weight = 0;
+    foreach ($this->fields as $c_field) {
+      if (!property_exists($c_field, 'weight')) {
+        $c_field->weight = $c_weight;
+        $c_weight += 5;
+      }
+    }
+    core::array_sort_by_property(
+      $this->fields, 'weight'
+    );
+
   # analyze fields
     foreach ($this->fields as $c_field) {
       if ($c_field->type == 'field' ||
@@ -63,7 +75,7 @@ namespace effcore {
       foreach ($this->join ?? [] as $c_id => $c_join) {
         $this->query_params['join'][$c_id] = [
           'type'      => 'LEFT OUTER JOIN',
-          'target_!t' => '~'.$c_join->entity_name,                            'on' => 'ON',
+          'target_!t' => '~'.$c_join->entity_name,                            'on'       => 'ON',
           'left_!f'   => '~'.$c_join->entity_name   .'.'.$c_join->field_name, 'operator' => '=',
           'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_field_name
         ];
@@ -75,7 +87,9 @@ namespace effcore {
         $instances_count = $main_entity->instances_count_select($this->query_params);
         if ($instances_count > 0) {
           $page_max_number = ceil($instances_count / $this->limit);
-          $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
+          $pager = new pager(1, $page_max_number,
+            $this->pager_name,
+            $this->pager_id, [], -20);
           $pager->init();
           if ($pager->has_error) {
             core::send_header_and_exit('page_not_found');
@@ -132,6 +146,12 @@ namespace effcore {
                 'value' => $c_value
               ];
               break;
+            case 'checkbox':
+              $c_row[$c_rowid] = [
+                'title' => $c_field->title ?? '',
+                'value' => $id_keys ? 'checkbox' : ''
+              ];
+              break;
             case 'actions':
               $c_row[$c_rowid] = [
                 'title' => $c_field->title ?? '',
@@ -142,6 +162,12 @@ namespace effcore {
               $c_row[$c_rowid] = [
                 'title' => $c_field->title,
                 'value' => $c_field->markup
+              ];
+              break;
+            case 'code':
+              $c_row[$c_rowid] = [
+                'title' => $c_field->title,
+                'value' => $c_field->code->call($this, $c_instance)
               ];
               break;
           }
@@ -163,6 +189,53 @@ namespace effcore {
     return $this;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+  # custom fields
+  # ─────────────────────────────────────────────────────────────────────
+
+  function field_entity_insert($row_id = null, $entity_name, $field_name, $weight = 0) {
+    $field = new \stdClass;
+    $field->type = 'field';
+    $field->entity_name = $entity_name;
+    $field->field_name = $field_name;
+    if ($weight) $field->weight = $weight;
+    $this->fields[$row_id ?: $entity_name.'.'.$field_name] = $field;
+  }
+
+  function field_checkbox_insert($row_id = null, $title = '', $weight = 0) {
+    $field = new \stdClass;
+    $field->type = 'checkbox';
+    $field->title = $title;
+    if ($weight) $field->weight = $weight;
+    $this->fields[$row_id ?: 'checkbox'] = $field;
+  }
+
+  function field_action_insert($row_id = null, $title = '', $weight = 0) {
+    $field = new \stdClass;
+    $field->type = 'actions';
+    $field->title = $title;
+    if ($weight) $field->weight = $weight;
+    $this->fields[$row_id ?: 'actions'] = $field;
+  }
+
+  function field_markup_insert($row_id = null, $title = '', $markup, $weight = 0) {
+    $field = new \stdClass;
+    $field->type = 'markup';
+    $field->title = $title;
+    $field->markup = $markup;
+    if ($weight) $field->weight = $weight;
+    $this->fields[$row_id ?: 'markup'] = $field;
+  }
+
+  function field_code_insert($row_id = null, $title = '', $code, $weight = 0) {
+    $field = new \stdClass;
+    $field->type = 'code';
+    $field->title = $title;
+    $field->code = $code;
+    if ($weight) $field->weight = $weight;
+    $this->fields[$row_id ?: 'code'] = $field;
+  }
+
   function action_list_get($entity, $instance, $id_keys) {
     $id_values = array_intersect_key($instance->values, $id_keys);
     $action_list = new actions_list();
@@ -172,28 +245,9 @@ namespace effcore {
     return $action_list;
   }
 
-  function field_entity_insert($row_id = null, $entity_name, $field_name) {
-    $this->fields[$row_id ?: $entity_name.'.'.$field_name] = (object)[
-      'type'        => 'field',
-      'entity_name' => $entity_name,
-      'field_name'  => $field_name
-    ];
-  }
-
-  function field_action_insert($row_id = null, $title = '') {
-    $this->fields[$row_id ?: 'actions'] = (object)[
-      'type'  => 'actions',
-      'title' => $title,
-    ];
-  }
-
-  function field_markup_insert($row_id, $title, $markup) {
-    $this->fields[$row_id] = (object)[
-      'type'   => 'markup',
-      'title'  => $title,
-      'markup' => $markup
-    ];
-  }
+  # ─────────────────────────────────────────────────────────────────────
+  # render
+  # ─────────────────────────────────────────────────────────────────────
 
   function render_self() {
     return $this->title ? (
