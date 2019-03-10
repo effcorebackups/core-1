@@ -86,11 +86,7 @@ namespace effcore {
           );
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
-    } else {
-      url::go(
-        $page->args_get('base').'/select'
-      );
-    }
+    }     else core::send_header_and_exit('page_not_found');
   }
 
   # ─────────────────────────────────────────────────────────────────────
