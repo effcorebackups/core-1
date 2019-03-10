@@ -290,17 +290,11 @@ namespace effcore {
   # │                 ▼ -100            │
   # └───────────────────────────────────┘
 
-  static function array_sort_by_weight(&$array) {
-  # note:
-  # ═════════════════════════════════════════════════════════════════════════
-  # if two members compare as equal,
-  # their relative order in the sorted array will be undefined.
-  # we should preprocess items with weight = 0 before sorting
-  # ─────────────────────────────────────────────────────────────────────────
-    $c_weight = 0;
-    foreach ($array as $c_item)
-      if ($c_item->weight === 0)
-          $c_item->weight = $c_weight -= .0001;
+  static function array_sort_by_weight(&$array, $corrector = 3) {
+    $c_weight = 0;                # if $array[n].weight == 0 && $array[n+1].weight == 0, the relative
+    foreach ($array as $c_item)   # order of these items in the sorted array will be undefined.
+      if ($c_item->weight === 0)  # we should preprocess items with weight = 0 before sorting
+          $c_item->weight = $c_weight -= $corrector;
     return static::array_sort_by_property($array, 'weight', 'a');
   }
 

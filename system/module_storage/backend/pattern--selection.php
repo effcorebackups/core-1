@@ -37,16 +37,8 @@ namespace effcore {
     $used_storages = [];
 
   # sort fields
-    $c_weight = 0;
-    foreach ($this->fields as $c_field) {
-      if (!property_exists($c_field, 'weight')) {
-        $c_field->weight = $c_weight;
-        $c_weight += 5;
-      }
-    }
-    core::array_sort_by_property(
-      $this->fields, 'weight'
-    );
+    foreach ($this->fields as $c_field) if (!property_exists($c_field, 'weight')) $c_field->weight = 0;
+    core::array_sort_by_weight($this->fields);
 
   # analyze fields
     foreach ($this->fields as $c_field) {
@@ -198,7 +190,7 @@ namespace effcore {
     $field->type = 'field';
     $field->entity_name = $entity_name;
     $field->field_name = $field_name;
-    if ($weight) $field->weight = $weight;
+    $field->weight = $weight;
     $this->fields[$row_id ?: $entity_name.'.'.$field_name] = $field;
   }
 
@@ -206,7 +198,7 @@ namespace effcore {
     $field = new \stdClass;
     $field->type = 'checkbox';
     $field->title = $title;
-    if ($weight) $field->weight = $weight;
+    $field->weight = $weight;
     $this->fields[$row_id ?: 'checkbox'] = $field;
   }
 
@@ -214,7 +206,7 @@ namespace effcore {
     $field = new \stdClass;
     $field->type = 'actions';
     $field->title = $title;
-    if ($weight) $field->weight = $weight;
+    $field->weight = $weight;
     $this->fields[$row_id ?: 'actions'] = $field;
   }
 
@@ -223,7 +215,7 @@ namespace effcore {
     $field->type = 'markup';
     $field->title = $title;
     $field->markup = $markup;
-    if ($weight) $field->weight = $weight;
+    $field->weight = $weight;
     $this->fields[$row_id ?: 'markup'] = $field;
   }
 
@@ -232,7 +224,7 @@ namespace effcore {
     $field->type = 'code';
     $field->title = $title;
     $field->code = $code;
-    if ($weight) $field->weight = $weight;
+    $field->weight = $weight;
     $this->fields[$row_id ?: 'code'] = $field;
   }
 
