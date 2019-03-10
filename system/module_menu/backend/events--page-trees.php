@@ -14,7 +14,7 @@ namespace effcore\modules\menu {
   static function on_page_init($page) {
     $trees = tree::all_get();
     $id = $page->args_get('id');
-    core::array_sort_by_property($trees, 'title');
+    core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
       tabs::item_insert(         $c_tree->title,

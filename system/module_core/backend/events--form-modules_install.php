@@ -24,7 +24,7 @@ namespace effcore\modules\core {
     $enabled_by_boot = core::boot_select('enabled');
     $embed = module::embed_get();
     $modules = module::all_get();
-    core::array_sort_by_property($modules, 'title');
+    core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
       $c_depended               = $c_module->    depended_status_get();
       $c_dependencies           = $c_module->dependencies_status_get();

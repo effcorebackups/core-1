@@ -24,7 +24,7 @@ namespace effcore {
   static function instance_select_multiple_by_entity_name($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');  
-    core::array_sort_by_property($entities, 'title');
+    core::array_sort_by_title($entities);
     if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/select/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
       tabs::item_insert(             $c_entity->title_plural,
@@ -97,7 +97,7 @@ namespace effcore {
   static function instance_insert_by_entity_name($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');
-    core::array_sort_by_property($entities, 'title');
+    core::array_sort_by_title($entities);
     if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/insert/'.reset($entities)->name);
     foreach ($entities as $c_entity) {
       tabs::item_insert(             $c_entity->title,

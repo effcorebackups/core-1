@@ -298,7 +298,11 @@ namespace effcore {
     return static::array_sort_by_property($array, 'weight', 'a');
   }
 
-  static function array_sort_by_property(&$array, $property, $order = 'd') {
+  static function array_sort_by_title(&$array) {
+    return static::array_sort_by_property($array, 'title', 'd');
+  }
+
+  static function array_sort_by_property(&$array, $property, $order = 'a') {
     uasort($array, function($a, $b) use ($property, $order) {
       if ($order == 'a') return $b->{$property} <=> $a->{$property};
       if ($order == 'd') return $a->{$property} <=> $b->{$property};
