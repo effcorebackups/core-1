@@ -8,14 +8,13 @@ namespace effcore {
           abstract class manage_instances {
 
   # function() ←→ url mapping:
-  # ─────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  # instance_select_multiple()                       │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
-  # instance_insert()                                │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
-  # instance_select()                                │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id
-  # instance_update()                                │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id
-  # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id
-  # instance_delete_multiple_by_instances_id()       │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1/…/%%_instance_id_N
-  # ─────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # ───────────────────────────┬──────────────────────────────────────────────────────────────────────────────────
+  # instance_select_multiple() │ /manage/instances/select → /manage/instances/select/%%_entity_name
+  # instance_insert()          │ /manage/instances/insert → /manage/instances/insert/%%_entity_name
+  # instance_select()          │                            /manage/instances/select/%%_entity_name/%%_instance_id
+  # instance_update()          │                            /manage/instances/update/%%_entity_name/%%_instance_id
+  # instance_delete()          │                            /manage/instances/delete/%%_entity_name/%%_instance_id
+  # ───────────────────────────┴──────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
   # select multiple instances
@@ -136,7 +135,7 @@ namespace effcore {
   # delete single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_delete_by_entity_name_and_instance_id($page, $emulate = true) {
+  static function instance_delete($page, $emulate = true) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -158,7 +157,7 @@ namespace effcore {
   # delete multiple instances
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_delete_multiple_by_instances_id($page) {
+  static function instance_delete_multiple($page) {
   # @todo: make functionality
     return new text('instances_delete is UNDER CONSTRUCTION');
   }
