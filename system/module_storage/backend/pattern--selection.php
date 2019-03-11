@@ -139,9 +139,14 @@ namespace effcore {
               ];
               break;
             case 'checkbox':
+              $c_id_values = array_intersect_key($c_instance->values, $id_keys);
+              $c_field = new field_checkbox();
+              $c_field->build();
+              $c_field->name_set('is_checked[]');
+              $c_field->value_set(implode('+', $c_id_values));
               $c_row[$c_rowid] = [
                 'title' => $c_field->title ?? '',
-                'value' => $id_keys ? 'checkbox' : ''
+                'value' => $id_keys ? $c_field : ''
               ];
               break;
             case 'actions':
