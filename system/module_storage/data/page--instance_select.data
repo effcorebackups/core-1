@@ -1,5 +1,5 @@
 pages
-- instance_select_by_entity_name_and_instance_id|page
+- instance_select|page
     title: Select instance
     https: true
     display
@@ -30,10 +30,10 @@ pages
         type: link
         source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
-    - block_instance_select_by_entity_name_and_instance_id|page_part
+    - block_instance_select|page_part
         region: content
         type: code
-        source: \effcore\manage_instances::instance_select_by_entity_name_and_instance_id
+        source: \effcore\manage_instances::instance_select
     - form_access|page_part
         display
           check: user

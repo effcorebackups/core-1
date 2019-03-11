@@ -9,9 +9,9 @@ namespace effcore {
 
   # function() ←→ url mapping:
   # ─────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  # instance_select_multiple_by_entity_name()        │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
+  # instance_select_multiple()                       │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
   # instance_insert()                                │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
-  # instance_select_by_entity_name_and_instance_id() │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id
+  # instance_select()                                │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id
   # instance_update()                                │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id
   # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id
   # instance_delete_multiple_by_instances_id()       │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1/…/%%_instance_id_N
@@ -21,7 +21,7 @@ namespace effcore {
   # select multiple instances
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_select_multiple_by_entity_name($page) {
+  static function instance_select_multiple($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');  
     core::array_sort_by_title($entities);
@@ -58,7 +58,7 @@ namespace effcore {
   # select single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_select_by_entity_name_and_instance_id($page) {
+  static function instance_select($page) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
