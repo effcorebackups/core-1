@@ -20,10 +20,22 @@ events
       for: pdo
       handler: \effcore\modules\storage\events_storage::on_query_after
   on_form_init
+  - instance_insert|event
+      for: instance_insert
+      handler: \effcore\modules\storage\events_form_instance_insert::on_init
+  - instance_update|event
+      for: instance_update
+      handler: \effcore\modules\storage\events_form_instance_update::on_init
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_init
   on_form_submit
+  - instance_insert|event
+      for: instance_insert
+      handler: \effcore\modules\storage\events_form_instance_insert::on_submit
+  - instance_update|event
+      for: instance_update
+      handler: \effcore\modules\storage\events_form_instance_update::on_submit
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
