@@ -127,7 +127,7 @@ namespace effcore {
 
   function render_children($children, $join = true) {
     $rendered = [];
-    foreach (core::array_sort_by_weight($children, .0001) as $c_child) {
+    foreach (core::array_sort_by_weight($children) as $c_child) {
       $rendered[] = $this->render_child($c_child);
     }
     return $join ? implode('', $rendered) :

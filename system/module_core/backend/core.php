@@ -290,7 +290,7 @@ namespace effcore {
   # │                 ▼ -100            │
   # └───────────────────────────────────┘
 
-  static function array_sort_by_weight(&$array, $corrector = 3) {
+  static function array_sort_by_weight(&$array, $corrector = .001) {
     $c_weight = 0;                # if $array[n].weight == 0 && $array[n+1].weight == 0, the relative
     foreach ($array as $c_item)   # order of these items in the sorted array will be undefined.
       if ($c_item->weight === 0)  # we should preprocess items with weight = 0 before sorting

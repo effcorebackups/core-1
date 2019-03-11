@@ -38,7 +38,7 @@ namespace effcore {
 
   # sort fields
     foreach ($this->fields as $c_field) if (!property_exists($c_field, 'weight')) $c_field->weight = 0;
-    core::array_sort_by_weight($this->fields);
+    core::array_sort_by_weight($this->fields, 3);
 
   # analyze fields
     foreach ($this->fields as $c_field) {
