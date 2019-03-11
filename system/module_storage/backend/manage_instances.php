@@ -10,9 +10,9 @@ namespace effcore {
   # function() ←→ url mapping:
   # ─────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   # instance_select_multiple_by_entity_name()        │ /manage/instances/action_select → /manage/instances/action_select/%%_entity_name
-  # instance_insert_by_entity_name()                 │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
+  # instance_insert()                                │ /manage/instances/action_insert → /manage/instances/action_insert/%%_entity_name
   # instance_select_by_entity_name_and_instance_id() │                                   /manage/instances/action_select/%%_entity_name/%%_instance_id
-  # instance_update_by_entity_name_and_instance_id() │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id
+  # instance_update()                                │                                   /manage/instances/action_update/%%_entity_name/%%_instance_id
   # instance_delete_by_entity_name_and_instance_id() │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id
   # instance_delete_multiple_by_instances_id()       │                                   /manage/instances/action_delete/%%_entity_name/%%_instance_id_1/…/%%_instance_id_N
   # ─────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -94,7 +94,7 @@ namespace effcore {
   # insert single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_insert_by_entity_name($page) {
+  static function instance_insert($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');
     core::array_sort_by_title($entities);
@@ -119,7 +119,7 @@ namespace effcore {
   # update single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_update_by_entity_name_and_instance_id($page) {
+  static function instance_update($page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {

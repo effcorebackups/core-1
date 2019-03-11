@@ -1,0 +1,17 @@
+forms
+- instance_insert|form
+    attributes
+    - id: instance_insert
+    - method: post
+    - novalidate: true
+    children
+    - fields|fieldset
+    - button_insert|button
+        title: insert
+        attributes
+        - value: insert
+    - button_cancel|button
+        title: cancel
+        novalidate: true
+        attributes
+        - value: cancel

@@ -1,13 +1,14 @@
 pages
-- instance_insert_by_entity_name|page
-    title: Insert instance
+- instance_update|page
+    title: Update instance
     https: true
     display
       check: url
       where: path
       match: %^(?<base>/manage/instances)/
->>>>>>>>>>>>>>>(?<action>insert)(/
->>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)|)$%
+>>>>>>>>>>>>>>>(?<action>update)/
+>>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
+>>>>>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
     access
       roles
       - =: admins
@@ -24,15 +25,15 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        region: tabs
-        type: link
-        source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
-    - block_instance_insert_by_entity_name|page_part
+    - block_instance_update|page_part
         region: content
         type: code
-        source: \effcore\manage_instances::instance_insert_by_entity_name
+        source: \effcore\manage_instances::instance_update
+    - form_instance_update|page_part
+        region: content
+        type: link
+        source: forms/storage/instance_update
     - form_access|page_part
         display
           check: user
