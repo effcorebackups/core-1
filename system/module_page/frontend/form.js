@@ -38,4 +38,22 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  var selections = document.querySelectorAll('x-selection');
+  if (selections instanceof NodeList) {
+    selections.forEach(function(c_selection){
+      var th_for_checkbox = c_selection.querySelector('x-decorator[data-view-type=table] th[data-cellid=checkbox]'),
+          checkboxes      = th_for_checkbox ? th_for_checkbox.parentNode.parentNode.parentNode.querySelectorAll('td[data-cellid=checkbox] input[type=checkbox]') : null;
+      if (th_for_checkbox && checkboxes instanceof NodeList) {
+        var check_all = document.createElement('input');
+            check_all.type = 'checkbox';
+        th_for_checkbox.appendChild(check_all);
+        check_all.addEventListener('change', function(){
+          checkboxes.forEach(function(c_checkbox){
+            c_checkbox.checked = check_all.checked;
+          });
+        })
+      }
+    });
+  }
+
 });
