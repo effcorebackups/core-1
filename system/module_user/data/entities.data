@@ -203,6 +203,8 @@ entities
         not_null: true
         show_in_manager: true
         field_class: \effcore\field_number
+        field_element_attributes
+        - disabled: true
     - nick
         title: Nick
         type: varchar
@@ -210,6 +212,7 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_nick
     - email
         title: EMail
         type: varchar
@@ -217,6 +220,7 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_email
     - password_hash
         title: Password hash
         type: varchar
@@ -239,6 +243,7 @@ entities
         size: 64
         collate: nocase
         default: UTC
+        field_class: \effcore\field_timezone
     constraints
     - primary_id
         type: primary
