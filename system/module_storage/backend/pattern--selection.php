@@ -37,11 +37,13 @@ namespace effcore {
     $used_storages = [];
 
   # sort fields
-    foreach ($this->fields as $c_field) if (!property_exists($c_field, 'weight')) $c_field->weight = 0;
+    foreach ($this->fields as $c_rowid => $c_field)
+      if (!property_exists($c_field, 'weight'))
+        $c_field->weight = 0;
     core::array_sort_by_weight($this->fields, 3);
 
   # analyze fields
-    foreach ($this->fields as $c_field) {
+    foreach ($this->fields as $c_rowid => $c_field) {
       if ($c_field->type == 'field' ||
           $c_field->type == 'join_field') {
         $c_entity = entity::get($c_field->entity_name, false);
@@ -59,7 +61,7 @@ namespace effcore {
       $id_keys = $main_entity->real_id_get();
 
     # prepare query params
-      foreach ($this->fields as $c_id => $c_field) {
+      foreach ($this->fields as $c_rowid => $c_field) {
         if ($c_field->type == 'join_field') {
           $this->query_params['join_fields'][$c_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
         }
@@ -140,13 +142,13 @@ namespace effcore {
               break;
             case 'checkbox':
               $c_id_values = array_intersect_key($c_instance->values, $id_keys);
-              $c_field = new field_checkbox();
-              $c_field->build();
-              $c_field->name_set('is_checked[]');
-              $c_field->value_set(implode('+', $c_id_values));
+              $c_form_field = new field_checkbox();
+              $c_form_field->build();
+              $c_form_field->name_set('is_checked[]');
+              $c_form_field->value_set(implode('+', $c_id_values));
               $c_row[$c_rowid] = [
                 'title' => $c_field->title ?? '',
-                'value' => $id_keys ? $c_field : ''
+                'value' => $id_keys ? $c_form_field : ''
               ];
               break;
             case 'actions':

@@ -38,9 +38,9 @@ namespace effcore {
     if ($entity) {
       $selection = new selection;
       $selection->is_paged = true;
-      foreach ($entity->fields as $c_field_name => $c_field_info) {
-        if (!empty($c_field_info->show_in_manager)) {
-          $selection->field_entity_insert(null, $entity->name, $c_field_name);
+      foreach ($entity->fields as $c_name => $c_field) {
+        if (!empty($c_field->show_in_manager)) {
+          $selection->field_entity_insert(null, $entity->name, $c_name);
         }
       }
       $selection->field_checkbox_insert(null, '', 80);
@@ -73,9 +73,9 @@ namespace effcore {
         # create selection
           $selection = new selection('', 'ul');
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
-          foreach ($entity->fields as $c_field_name => $c_field_info) {
-            if (!empty($c_field_info->show_in_manager)) {
-              $selection->field_entity_insert(null, $entity->name, $c_field_name);
+          foreach ($entity->fields as $c_name => $c_field) {
+            if (!empty($c_field->show_in_manager)) {
+              $selection->field_entity_insert(null, $entity->name, $c_name);
             }
           }
           $selection->field_action_insert(null, 'Action');
