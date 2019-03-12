@@ -93,7 +93,7 @@ namespace effcore {
   # insert single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_insert($page) {
+  static function instance_insert($page, $emulate = true) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');
     core::array_sort_by_title($entities);
@@ -118,7 +118,7 @@ namespace effcore {
   # update single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function instance_update($page) {
+  static function instance_update($page, $emulate = true) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -129,7 +129,8 @@ namespace effcore {
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
-
+        # @todo: make functionality
+       // if (!$emulate) return $instance->update();
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
     }     else core::send_header_and_exit('page_not_found');

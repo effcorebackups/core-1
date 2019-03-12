@@ -5,11 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\manage_instances;
           use \effcore\page;
           use \effcore\url;
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
+    manage_instances::instance_update(page::current_get(), true); # emulation for access checking
+  # @todo: make functionality
   }
 
   static function on_submit($form, $items) {
@@ -18,6 +21,7 @@ namespace effcore\modules\storage {
     $instance_id = page::current_get()->args_get('instance_id');
     switch ($form->clicked_button->value_get()) {
       case 'update':
+      # @todo: make functionality
         break;
       case 'cancel':
         url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);

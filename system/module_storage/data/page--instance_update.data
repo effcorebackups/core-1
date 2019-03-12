@@ -26,10 +26,6 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - block_instance_update|page_part
-        region: content
-        type: code
-        source: \effcore\manage_instances::instance_update
     - form_instance_update|page_part
         region: content
         type: link
