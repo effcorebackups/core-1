@@ -8,7 +8,7 @@ namespace effcore {
           class field_select extends field {
 
   public $attributes = ['data-type' => 'select'];
-  public $element_class = '\\'.__NAMESPACE__.'\\markup';
+  public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'select';
   public $element_attributes_default = [
     'name'     => 'select',

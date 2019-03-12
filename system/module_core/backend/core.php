@@ -69,7 +69,7 @@ namespace effcore {
 
   static function structures_cache_cleaning_after_on_install() {
     foreach (static::structures_select() as $c_full_name => $c_structure) {
-      if (isset($c_structure->implements[__NAMESPACE__.'\\should_clear_cache_after_on_install'])) {
+      if (isset($c_structure->implements['effcore\\should_clear_cache_after_on_install'])) {
         $c_full_name::cache_cleaning();
       }
     }
@@ -152,7 +152,7 @@ namespace effcore {
 
   static function structure_is_local($name) {
     $parts = static::structure_parts_get($name);
-    return $parts[0] === __NAMESPACE__;
+    return $parts[0] === 'effcore';
   }
 
   static function structure_parts_get($name) {
@@ -246,8 +246,8 @@ namespace effcore {
         $c_class_name = get_class($data);
         $c_reflection = new \ReflectionClass($c_class_name);
         $c_defs               = $c_reflection->getDefaultProperties();
-        $c_is_postconstructor = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postconstructor');
-        $c_is_postinit        = $c_reflection->implementsInterface('\\'.__NAMESPACE__.'\\has_postinit');
+        $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
+        $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
         if ($c_is_postconstructor)
              $result = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;

@@ -8,7 +8,7 @@ namespace effcore {
           class group_checkboxes extends group_radiobuttons {
 
   public $attributes = ['data-type' => 'checkboxes'];
-  public $field_class = '\\'.__NAMESPACE__.'\\field_checkbox';
+  public $field_class = '\\effcore\\field_checkbox';
 
   function values_get() {
     $result = [];

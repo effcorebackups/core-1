@@ -11,7 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'radiobuttons'];
 # ─────────────────────────────────────────────────────────────────────
   public $field_tag_name = 'x-field';
-  public $field_class = '\\'.__NAMESPACE__.'\\field_radiobutton';
+  public $field_class = '\\effcore\\field_radiobutton';
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
   public $element_attributes = [];

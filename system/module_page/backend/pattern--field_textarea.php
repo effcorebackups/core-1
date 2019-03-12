@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Textarea';
   public $attributes = ['data-type' => 'textarea'];
-  public $element_class = '\\'.__NAMESPACE__.'\\markup';
+  public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'textarea';
   public $element_attributes_default = [
     'name'      => 'textarea',

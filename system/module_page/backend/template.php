@@ -62,7 +62,7 @@ namespace effcore {
 
   static function make_new($name, $args = []) {
     $template = static::get($name);
-    $class_name = __NAMESPACE__.'\\template_'.$template->type;
+    $class_name = '\\effcore\\template_'.$template->type;
     $result = new $class_name($name, $args);
     foreach ($class_name::get_copied_properties() as $c_property_name) {
       if (property_exists($template, $c_property_name)) {

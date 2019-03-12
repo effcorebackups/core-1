@@ -55,7 +55,7 @@ namespace effcore {
   public $title_tag_name = 'label';
 # ─────────────────────────────────────────────────────────────────────
   public $element_tag_name = 'input';
-  public $element_class = '\\'.__NAMESPACE__.'\\markup_simple';
+  public $element_class = '\\effcore\\markup_simple';
   public $element_attributes_default = [];
   public $element_attributes = [];
   public $description_state = 'closed'; # opened | closed[checked] | hidden
