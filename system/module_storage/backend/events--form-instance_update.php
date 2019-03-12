@@ -7,11 +7,15 @@
 namespace effcore\modules\storage {
           use \effcore\manage_instances;
           use \effcore\page;
+          use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
     manage_instances::instance_update(page::current_get(), true); # emulation for access checking
+    $items['fields']->child_insert(
+      new text('instance_update is UNDER CONSTRUCTION')
+    );
   # @todo: make functionality
   }
 

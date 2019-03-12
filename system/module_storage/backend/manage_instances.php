@@ -110,7 +110,6 @@ namespace effcore {
     $entity = entity::get($entity_name);
     if ($entity) {
     # @todo: make functionality
-      return new text('instance_insert is UNDER CONSTRUCTION');
     }
   }
 
