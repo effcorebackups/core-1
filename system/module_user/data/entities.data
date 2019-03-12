@@ -202,6 +202,7 @@ entities
         type: autoincrement
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_number
     - nick
         title: Nick
         type: varchar
