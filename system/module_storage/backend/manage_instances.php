@@ -120,15 +120,19 @@ namespace effcore {
 
   static function instance_update($page) {
     $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # @todo: make functionality
-      return new text('instance_update is UNDER CONSTRUCTION');
-    } else {
-      url::go(
-        $page->args_get('base').'/select'
-      );
-    }
+      $id_keys   = entity::get($entity_name)->real_id_get();
+      $id_values = explode('+', $instance_id);
+      if (count($id_keys) ==
+          count($id_values)) {
+        $instance = new instance($entity_name, array_combine($id_keys, $id_values));
+        if ($instance->select()) {
+
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
+    }     else core::send_header_and_exit('page_not_found');
   }
 
   # ─────────────────────────────────────────────────────────────────────
