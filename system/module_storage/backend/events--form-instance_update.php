@@ -25,13 +25,13 @@ namespace effcore\modules\storage {
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
-          foreach ($entity->fields as $c_id => $c_field) {
+          foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class)) {
               $c_form_field = new $c_field->field_class();
               $c_form_field->build();
               $c_form_field->title = $c_field->title;
-              $c_form_field->value_set($instance->{$c_id});
-              $items['fields']->child_insert($c_form_field, $c_id);
+              $c_form_field->value_set($instance->{$c_name});
+              $items['fields']->child_insert($c_form_field, $c_name);
             }
           }
         }

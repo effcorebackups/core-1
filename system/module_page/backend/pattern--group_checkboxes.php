@@ -12,19 +12,20 @@ namespace effcore {
 
   function values_get() {
     $result = [];
-    foreach ($this->children_select() as $c_id => $c_field) {
-      if ($c_field->checked_get() == true) {
-        $result[$c_id] = $c_field->value_get();
+    foreach ($this->children_select() as $c_id => $c_item) {
+      if ($c_item instanceof $this->field_class &&
+          $c_item->checked_get() == true) {
+        $result[$c_id] = $c_item->value_get();
       }
     }
     return $result;
   }
 
   function values_set($values) {
-    foreach ($this->children_select() as $c_field) $c_field->checked_set(false);
-    foreach ($this->children_select() as $c_field) {
-      if (in_array($c_field->value_get(), $values)) {
-        $c_field->checked_set(true);
+    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) $c_item->checked_set(false);
+    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) {
+      if (in_array($c_item->value_get(), $values)) {
+        $c_item->checked_set(true);
       }
     }
   }
