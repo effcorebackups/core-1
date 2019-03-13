@@ -8,13 +8,13 @@ namespace effcore {
           abstract class manage_instances {
 
   # function() ←→ url mapping:
-  # ───────────────────────────┬──────────────────────────────────────────────────────────────────────────────────
-  # instance_select_multiple() │ /manage/instances/select → /manage/instances/select/%%_entity_name
-  # instance_insert()          │ /manage/instances/insert → /manage/instances/insert/%%_entity_name
-  # instance_select()          │                            /manage/instances/select/%%_entity_name/%%_instance_id
-  # instance_update()          │                            /manage/instances/update/%%_entity_name/%%_instance_id
-  # instance_delete()          │                            /manage/instances/delete/%%_entity_name/%%_instance_id
-  # ───────────────────────────┴──────────────────────────────────────────────────────────────────────────────────
+  # ────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────
+  # instance_select_multiple()  │ /manage/instances/select → /manage/instances/select/%%_entity_name
+  # instance_insert()           │ /manage/instances/insert → /manage/instances/insert/%%_entity_name
+  # instance_select()           │                            /manage/instances/select/%%_entity_name/%%_instance_id
+  # events_form_instance_update │                            /manage/instances/update/%%_entity_name/%%_instance_id
+  # instance_delete()           │                            /manage/instances/delete/%%_entity_name/%%_instance_id
+  # ────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
   # select multiple instances
@@ -111,28 +111,6 @@ namespace effcore {
     if ($entity) {
     # @todo: make functionality
     }
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # update single instance
-  # ─────────────────────────────────────────────────────────────────────
-
-  static function instance_update($page, $emulate = true) {
-    $entity_name = $page->args_get('entity_name');
-    $instance_id = $page->args_get('instance_id');
-    $entity = entity::get($entity_name);
-    if ($entity) {
-      $id_keys   = $entity->real_id_get();
-      $id_values = explode('+', $instance_id);
-      if (count($id_keys) ==
-          count($id_values)) {
-        $instance = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($instance->select()) {
-        # @todo: make functionality
-       // if (!$emulate) return $instance->update();
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
   }
 
   # ─────────────────────────────────────────────────────────────────────

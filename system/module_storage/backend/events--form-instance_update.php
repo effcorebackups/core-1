@@ -5,16 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
-          use \effcore\manage_instances;
           use \effcore\page;
-          use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
-    manage_instances::instance_update(page::current_get(), true); # emulation for access checking
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -35,9 +33,9 @@ namespace effcore\modules\storage {
               $items['fields']->child_insert($c_form_field, $c_name);
             }
           }
-        }
-      }
-    }
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
+    }     else core::send_header_and_exit('page_not_found');
   }
 
   static function on_submit($form, $items) {
