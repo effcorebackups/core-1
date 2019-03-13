@@ -8,42 +8,6 @@ namespace effcore {
           abstract class manage_instances {
 
   # ─────────────────────────────────────────────────────────────────────
-  # select single instance
-  # ─────────────────────────────────────────────────────────────────────
-
-  static function instance_select($page) {
-    $entity_name = $page->args_get('entity_name');
-    $instance_id = $page->args_get('instance_id');
-    $entity = entity::get($entity_name);
-    if ($entity) {
-      $id_keys   = $entity->real_id_get();
-      $id_values = explode('+', $instance_id);
-      if (count($id_keys) ==
-          count($id_values)) {
-        $storage = storage::get($entity->storage_name);
-        $conditions = array_combine($id_keys, $id_values);
-        $instance = new instance($entity_name, $conditions);
-        if ($instance->select()) {
-        # create selection
-          $selection = new selection('', 'ul');
-          $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
-          foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->show_in_manager)) {
-              $selection->field_entity_insert(null, $entity->name, $c_name);
-            }
-          }
-          $selection->field_action_insert(null, 'Action');
-          return new block('', ['class' => [
-            $entity->name =>
-            $entity->name]],
-            $selection
-          );
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
   # insert single instance
   # ─────────────────────────────────────────────────────────────────────
 
