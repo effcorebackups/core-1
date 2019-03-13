@@ -5,18 +5,16 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\manage_instances;
           use \effcore\page;
           use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_insert {
 
   static function on_init($form, $items) {
-    manage_instances::instance_insert(page::current_get(), true); # emulation for access checking
+    # @todo: make functionality
     $items['fields']->child_insert(
       new text('instance_insert is UNDER CONSTRUCTION')
     );
-  # @todo: make functionality
   }
 
   static function on_submit($form, $items) {
