@@ -11,7 +11,7 @@ namespace effcore\modules\storage {
           use \effcore\selection;
           use \effcore\tabs;
           use \effcore\url;
-          abstract class events_page_manage_instances {
+          abstract class events_page_instances_manage {
 
   # function() ←→ url mapping:
   # ──┬──────────────────────────────────────────────────────────────────────────────────
