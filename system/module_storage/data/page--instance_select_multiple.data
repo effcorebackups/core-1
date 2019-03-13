@@ -32,7 +32,7 @@ pages
     - block_instance_select_multiple|page_part
         region: content
         type: code
-        source: \effcore\manage_instances::instance_select_multiple
+        source: \effcore\modules\storage\events_page_manage_instances::on_show_block_instance_select_multiple
     - form_access|page_part
         display
           check: user
