@@ -238,9 +238,9 @@ namespace effcore {
   function action_list_get($entity, $instance, $id_keys) {
     $id_values = array_intersect_key($instance->values, $id_keys);
     $action_list = new actions_list();
-                                    $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values), 'select');
-                                    $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values), 'update');
-    if (empty($instance->is_embed)) $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values), 'delete');
+                                    $action_list->action_add(page::current_get()->args_get('base').'/select/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'select');
+                                    $action_list->action_add(page::current_get()->args_get('base').'/update/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'update');
+    if (empty($instance->is_embed)) $action_list->action_add(page::current_get()->args_get('base').'/delete/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'delete');
     return $action_list;
   }
 

@@ -151,8 +151,10 @@ namespace effcore {
   }
 
   static function back_url_get() {
-    $back_url = static::current_get()->query_arg_select('back');
-    return $back_url ? urldecode($back_url) : '';
+    $url = urldecode(static::current_get()->query_arg_select('back'));
+    if (core::validate_url($url))
+         return core::sanitize_url($url);
+    else return '';
   }
 
   static function back_part_make() {
