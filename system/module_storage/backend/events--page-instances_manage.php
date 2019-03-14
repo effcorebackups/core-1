@@ -104,7 +104,7 @@ namespace effcore\modules\storage {
   # insert single instance
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_show_block_instance_insert($page) {
+  static function on_page_instance_insert_init($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');
     core::array_sort_by_title($entities);

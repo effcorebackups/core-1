@@ -29,10 +29,10 @@ pages
         type: link
         source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
-    - block_instance_insert|page_part
+    - page_init|page_part
         region: content
         type: code
-        source: \effcore\modules\storage\events_page_instances_manage::on_show_block_instance_insert
+        source: \effcore\modules\storage\events_page_instances_manage::on_page_instance_insert_init
     - form_instance_insert|page_part
         region: content
         type: link
