@@ -68,6 +68,24 @@ namespace effcore\modules\storage {
   # select single instance
   # ─────────────────────────────────────────────────────────────────────
 
+  static function on_page_instance_select_init($page) {
+    $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      $id_keys   = $entity->real_id_get();
+      $id_values = explode('+', $instance_id);
+      if (count($id_keys) ==
+          count($id_values)) {
+        $storage = storage::get($entity->storage_name);
+        $conditions = array_combine($id_keys, $id_values);
+        $instance = new instance($entity_name, $conditions);
+        if ($instance->select()) {
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
+    }     else core::send_header_and_exit('page_not_found');
+  }
+
   static function on_show_block_instance_select($page) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
@@ -95,9 +113,9 @@ namespace effcore\modules\storage {
             $entity->name]],
             $selection
           );
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
+        }
+      }
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
