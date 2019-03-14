@@ -29,6 +29,10 @@ pages
         type: link
         source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
+    - page_init|page_part
+        region: content
+        type: code
+        source: \effcore\modules\storage\events_page_instances_manage::on_page_instance_select_multiple_init
     - block_instance_select_multiple|page_part
         region: content
         type: code

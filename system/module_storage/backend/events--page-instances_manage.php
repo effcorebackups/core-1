@@ -15,20 +15,20 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_page_instances_manage {
 
-  # function() ←→ url mapping:
-  # ──┬──────────────────────────────────────────────────────────────────────────────────
-  # ? │ /manage/instances/select → /manage/instances/select/%%_entity_name
-  # ? │ /manage/instances/insert → /manage/instances/insert/%%_entity_name
-  # ? │                            /manage/instances/select/%%_entity_name/%%_instance_id
-  # ? │                            /manage/instances/update/%%_entity_name/%%_instance_id
-  # ? │                            /manage/instances/delete/%%_entity_name/%%_instance_id
-  # ──┴──────────────────────────────────────────────────────────────────────────────────
+  # URLs for manage:
+  # ─────────────────────────────────────────────────────────────────────────────────
+  # /manage/instances/select → /manage/instances/select/%%_entity_name
+  # /manage/instances/insert → /manage/instances/insert/%%_entity_name
+  #                            /manage/instances/select/%%_entity_name/%%_instance_id
+  #                            /manage/instances/update/%%_entity_name/%%_instance_id
+  #                            /manage/instances/delete/%%_entity_name/%%_instance_id
+  # ─────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
   # select multiple instances
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_show_block_instance_select_multiple($page) {
+  static function on_page_instance_select_multiple_init($page) {
     $entities = entity::all_get(false);
     $entity_name = $page->args_get('entity_name');
     core::array_sort_by_title($entities);
@@ -41,7 +41,10 @@ namespace effcore\modules\storage {
                            'select-'.$c_entity->name]]
       );
     }
-  # create selection
+  }
+
+  static function on_show_block_instance_select_multiple($page) {
+    $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
       $selection = new selection;
