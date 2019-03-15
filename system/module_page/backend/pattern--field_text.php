@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Text';
   public $attributes = ['data-type' => 'text'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'      => 'text',
     'name'      => 'text',
     'required'  => true,

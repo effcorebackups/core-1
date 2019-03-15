@@ -11,7 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'textarea'];
   public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'textarea';
-  public $element_attributes_default = [
+  public $element_attributes = [
     'name'      => 'textarea',
     'required'  => true,
     'rows'      => 5,
@@ -20,13 +20,11 @@ namespace effcore {
   ];
 
   function build() {
-    $value_def = $this->attribute_select('value', 'element_attributes_default') ?: '';
-    $value     = $this->attribute_select('value', 'element_attributes')         ?: '';
-                 $this->attribute_delete('value', 'element_attributes_default');
-                 $this->attribute_delete('value', 'element_attributes');
+    $value = $this->attribute_select('value', 'element_attributes');
+             $this->attribute_delete('value', 'element_attributes');
     parent::build();
     $element = $this->child_select('element');
-    $element->child_insert(new text_simple($value ?: $value_def), 'content');
+    $element->child_insert(new text_simple($value ?: ''), 'content');
   }
 
   function value_get() {

@@ -13,7 +13,7 @@ namespace effcore {
   public $is_return_utc = true;
   public $title = 'Local Date/Time';
   public $attributes = ['data-type' => 'datetime-local'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'     => 'datetime-local',
     'name'     => 'datetime_local',
     'required' => true,

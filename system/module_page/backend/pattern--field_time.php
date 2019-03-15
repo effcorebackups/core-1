@@ -12,10 +12,11 @@ namespace effcore {
 
   public $title = 'Time';
   public $attributes = ['data-type' => 'time'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'     => 'time',
     'name'     => 'time',
     'required' => true,
+    'value'    => self::input_min_time,
     'min'      => self::input_min_time,
     'max'      => self::input_max_time,
     'step'     => 60

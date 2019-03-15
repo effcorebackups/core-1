@@ -10,7 +10,7 @@ namespace effcore {
   public $title = 'Phone';
   public $description = 'Use international format of mobile phone numbers.';
   public $attributes = ['data-type' => 'phone'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'      => 'tel',
     'name'      => 'phone',
     'required'  => true,

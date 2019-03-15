@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'URL';
   public $attributes = ['data-type' => 'url'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'      => 'url',
     'name'      => 'url',
     'required'  => true,

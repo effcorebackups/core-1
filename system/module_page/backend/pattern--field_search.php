@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Search';
   public $attributes = ['data-type' => 'search'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'      => 'search',
     'name'      => 'search',
     'required'  => true,

@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Password';
   public $attributes = ['data-type' => 'password'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'         => 'password',
     'name'         => 'password',
     'autocomplete' => 'off',

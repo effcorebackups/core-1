@@ -12,7 +12,7 @@ namespace effcore {
 
   public $title = 'Range';
   public $attributes = ['data-type' => 'range'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'     => 'range',
     'name'     => 'range',
     'required' => true,

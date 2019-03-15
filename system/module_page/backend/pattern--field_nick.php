@@ -13,7 +13,7 @@ namespace effcore {
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];
   public $description = 'Field can contain only the next characters: '.self::allowed_characters_title.'.';
-  public $element_attributes_default = [
+  public $element_attributes = [
     'data-type' => 'nick',
     'name'      => 'nick',
     'required'  => true,
