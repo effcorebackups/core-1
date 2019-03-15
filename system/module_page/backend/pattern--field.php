@@ -56,7 +56,6 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $element_tag_name = 'input';
   public $element_class = '\\effcore\\markup_simple';
-  public $element_attributes_default = [];
   public $element_attributes = [];
   public $description_state = 'closed'; # opened | closed[checked] | hidden
   public $has_error = false;
@@ -69,9 +68,7 @@ namespace effcore {
     if (!$this->child_select('element')) {
       $element = new $this->element_class($this->element_tag_name);
       $this->child_insert($element, 'element');
-      $attributes = $this->attributes_select('element_attributes') +
-                    $this->attributes_select('element_attributes_default');
-      foreach ($attributes as $c_name => $c_value) {
+      foreach ($this->attributes_select('element_attributes') as $c_name => $c_value) {
         if ($c_value === null) $element->attribute_delete($c_name);
         if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
       }

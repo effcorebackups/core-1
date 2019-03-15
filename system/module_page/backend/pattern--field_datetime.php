@@ -12,7 +12,7 @@ namespace effcore {
 
   public $title = 'Date/Time';
   public $attributes = ['data-type' => 'datetime'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'     => 'datetime-local',
     'name'     => 'datetime',
     'required' => true,

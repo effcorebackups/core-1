@@ -10,7 +10,7 @@ namespace effcore {
   public $title = 'Timezone';
   public $sort = 'by_zones'; # by_zones | by_names
   public $attributes = ['data-type' => 'timezone'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'name'     => 'timezone',
     'required' => true
   ];

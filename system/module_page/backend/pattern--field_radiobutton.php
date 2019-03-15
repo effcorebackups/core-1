@@ -10,7 +10,7 @@ namespace effcore {
   public $title = '';
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'radiobutton'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type' => 'radio',
     'name' => 'radio'
   ];

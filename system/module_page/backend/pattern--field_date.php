@@ -12,7 +12,7 @@ namespace effcore {
 
   public $title = 'Date';
   public $attributes = ['data-type' => 'date'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type'     => 'date',
     'name'     => 'date',
     'required' => true,

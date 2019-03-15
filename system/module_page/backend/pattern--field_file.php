@@ -46,7 +46,7 @@ namespace effcore {
 
   public $title = 'File';
   public $attributes = ['data-type' => 'file'];
-  public $element_attributes_default = [
+  public $element_attributes = [
     'type' => 'file',
     'name' => 'file'
   ];

@@ -10,7 +10,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'select'];
   public $element_class = '\\effcore\\markup';
   public $element_tag_name = 'select';
-  public $element_attributes_default = [
+  public $element_attributes = [
     'name'     => 'select',
     'required' => true
   ];
