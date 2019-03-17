@@ -28,7 +28,7 @@ namespace effcore\modules\storage {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class)) {
               $c_form_field = new $c_field->field_class();
-              $c_form_field->element_attributes += $c_field->field_element_attributes ?? [];
+              $c_form_field->element_attributes = ($c_field->field_element_attributes ?? []) + $c_form_field->element_attributes;
               $c_form_field->title = $c_field->title;
               $c_form_field->build();
               $c_form_field->value_set($instance->{$c_name});
