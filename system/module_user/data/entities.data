@@ -233,6 +233,9 @@ entities
         not_null: true
         default: 0
         show_in_manager: true
+        field_class: \effcore\field_logic
+        field_element_attributes
+        - disabled: true
     - avatar_path
         title: Avatar path
         type: varchar
