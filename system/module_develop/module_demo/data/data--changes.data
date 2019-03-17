@@ -4,19 +4,19 @@ changes
 # ─────────────────────────────────────────────────────────────────────
   insert
   - demo_data/demo/demo_object
-      prop_4: property value #4 (insert)
-      prop_5: property value #5 (insert)
-      prop_6: property value #6 (insert)
+      prop_4: property value 4 (insert)
+      prop_5: property value 5 (insert)
+      prop_6: property value 6 (insert)
   - demo_data/demo/demo_array
-    - item_4: item value #4 (insert)
-    - item_5: item value #5 (insert)
-    - item_6: item value #6 (insert)
+    - item_4: item value 4 (insert)
+    - item_5: item value 5 (insert)
+    - item_6: item value 6 (insert)
 # ─────────────────────────────────────────────────────────────────────
 # only scalar types is supported: string|numeric
 # ─────────────────────────────────────────────────────────────────────
   update
-  - demo_data/demo/demo_object/prop_5: property value #5 (insert + update)
-  - demo_data/demo/demo_array/item_5: item value #5 (insert + update)
+  - demo_data/demo/demo_object/prop_5: property value 5 (insert + update)
+  - demo_data/demo/demo_array/item_5: item value 5 (insert + update)
   delete
   - demo_data/demo/demo_object/prop_4: null
   - demo_data/demo/demo_array/item_4: null

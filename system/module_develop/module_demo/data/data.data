@@ -20,23 +20,23 @@ demo_data
 # ─────────────────────────────────────────────────────────────────────
   demo_array_empty|_empty_array
   demo_array
-  - item_1: item value #1
-  - item_2: item value #2
-  - item_3: item value #3
+  - item_1: item value 1
+  - item_2: item value 2
+  - item_3: item value 3
   demo_object_empty
   demo_object
-    prop_1: property value #1
-    prop_2: property value #2
-    prop_3: property value #3
+    prop_1: property value 1
+    prop_2: property value 2
+    prop_3: property value 3
 # ─────────────────────────────────────────────────────────────────────
 # nested
 # ─────────────────────────────────────────────────────────────────────
   demo_nested
-    prop_1: property value #1
+    prop_1: nested value 1
     demo_nested
-      prop_1: property value #1.1
+      prop_1: nested value 1.1
       demo_nested
-        prop_1: property value #1.1.1
+        prop_1: nested value 1.1.1
 # ─────────────────────────────────────────────────────────────────────
 # special types
 # ─────────────────────────────────────────────────────────────────────
