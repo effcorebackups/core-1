@@ -5,8 +5,6 @@
   ##################################################################
 
 namespace effcore {
+          interface demo_interface {
 
-  interface demo_interface {
-  }
-
-}
+}}

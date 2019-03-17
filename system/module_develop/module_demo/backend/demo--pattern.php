@@ -5,6 +5,6 @@
   ##################################################################
 
 namespace effcore {
-          trait demo_trait {
+          class demo_pattern {
 
 }}

@@ -272,8 +272,8 @@ namespace effcore {
                  $c_value = core::class_instance_new_get($c_class_name);
             else $c_value = core::class_instance_new_get($c_class_name, [], true);
             if ($c_is_postconstructor) $postconstructor_objects[] = $c_value;
-            if ($c_is_postinit)        $postinit_objects[]        = $c_value;
-            if ($c_is_postparse)       $postparse_objects[]       = $c_value;
+            if ($c_is_postinit       ) $postinit_objects       [] = $c_value;
+            if ($c_is_postparse      ) $postparse_objects      [] = $c_value;
           }
         }
       # add new item to tree
