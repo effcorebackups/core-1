@@ -228,12 +228,13 @@ namespace effcore {
     else            return $result;
   }
 
-  static function data_to_code($data, $prefix = '') {
+  static function data_to_code($data, $prefix = '', $defs = null) {
     $result = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
+            if (is_array($defs) && array_key_exists($c_key, $defs) && $defs[$c_key] === $c_value) continue;
             $result.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
                                                                  '['.$c_key.']' :
                                                    '[\''.addcslashes($c_key, '\'\\').'\']'));
@@ -253,7 +254,7 @@ namespace effcore {
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $result.= static::data_to_code($c_value, $prefix.'->'.$c_prop);
+          $result.= static::data_to_code($c_value, $prefix.'->'.$c_prop, $c_defs[$c_prop] ?? null);
         }
         if ($c_is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($c_is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
