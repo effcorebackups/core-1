@@ -276,11 +276,22 @@ namespace effcore {
             if ($c_is_postparse      ) $postparse_objects      [] = $c_value;
           }
         }
-      # add new item to tree
-        if (!($c_value instanceof \stdClass && is_object($p[$c_depth-1]) &&  property_exists($p[$c_depth-1], $c_name) && is_array($p[$c_depth-1]->{$c_name})) &&
-            !($c_value instanceof \stdClass &&  is_array($p[$c_depth-1]) && array_key_exists($c_name, $p[$c_depth-1]) && is_array($p[$c_depth-1]  [$c_name])))
-          core::arrobj_value_insert($p[$c_depth-1], $c_name, $c_value);
-        $p[$c_depth] = &core::arrobj_value_select($p[$c_depth-1], $c_name);
+      # some prevention:
+      # ┌──────┬──────────────────────────────────┬─────────────────────────────┐
+      # │ line │ real class in pattern-*.php      │ object definition in *.data │
+      # ├──────┼──────────────────────────────────┼─────────────────────────────┤
+      # │    1 │ $some_object = new some_class;   ←  some_object|some_class     │
+      # │    2 │ $some_object->prop_as_array = [  ←    prop_as_array            │ ← !!! the right side is the empty object but in the real class this property is an array
+      # │    3 │   'item' => 'value'; …           ←    - item: value            │
+      # └──────┴──────────────────────────────────┴─────────────────────────────┘
+        $c_destination = &core::arrobj_value_select($p[$c_depth-1], $c_name);
+        if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
+          $p[$c_depth] = &$c_destination;
+          continue;
+        }
+      # add new item to tree  
+        core::arrobj_value_insert($p[$c_depth-1], $c_name, $c_value);
+        $p[$c_depth] = &$c_destination;
       # convert parent item to array
         if ($c_prefix == '- ' && !is_array($p[$c_depth-1])) {
           $p[$c_depth-1] = (array)$p[$c_depth-1];

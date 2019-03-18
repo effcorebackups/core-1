@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class demo_pattern {
+          class demo_pattern_class {
 
   public $prop_1 = 'property value 1';
   public $prop_2 = 'property value 2';
