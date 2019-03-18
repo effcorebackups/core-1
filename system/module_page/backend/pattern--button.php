@@ -8,7 +8,10 @@ namespace effcore {
           class button extends markup {
 
   public $tag_name = 'button';
-  public $attributes = ['type' => 'submit', 'name' => 'button'];
+  public $attributes = [
+    'type' => 'submit',
+    'name' => 'button'
+  ];
 # ─────────────────────────────────────────────────────────────────────
   public $title = 'button';
   public $novalidate = false;
