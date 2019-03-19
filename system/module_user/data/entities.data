@@ -16,6 +16,7 @@ entities
         show_in_manager: true
         field_class: \effcore\field_text
         field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
     - title
         title: Title
@@ -47,6 +48,7 @@ entities
         show_in_manager: true
         field_class: \effcore\field_text
         field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
     - id_permission
         title: Permission ID
@@ -57,6 +59,7 @@ entities
         show_in_manager: true
         field_class: \effcore\field_text
         field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
     constraints
     - primary_id_role_id_permission
@@ -95,6 +98,7 @@ entities
         show_in_manager: true
         field_class: \effcore\field_text
         field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
     - id_user
         title: User ID
