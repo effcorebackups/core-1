@@ -407,6 +407,7 @@ translations
     - token: токен
     - Total: Всего
     - Translate: Перевод
+    - Tree ID: ID дерева
     - Tree item: Пункт дерева
     - Tree items: Пункты дерева
     - Tree: Дерево

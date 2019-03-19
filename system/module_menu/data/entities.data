@@ -9,9 +9,15 @@ entities
     fields
     - id
         title: ID
-        type: autoincrement
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -19,6 +25,7 @@ entities
         size: 255
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -37,17 +44,31 @@ entities
         type: autoincrement
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - id_parent
         title: Parent ID
         type: integer
         null: true
         default: null
         show_in_manager: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - id_tree
         title: Tree ID
-        type: integer
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -55,6 +76,7 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary

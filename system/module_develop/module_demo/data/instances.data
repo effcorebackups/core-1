@@ -8,6 +8,38 @@ instances
     - id: demo
     - title: Demo
 # ─────────────────────────────────────────────────────────────────────
+# trees
+# ─────────────────────────────────────────────────────────────────────
+- tree_demo|instance
+    entity_name: tree
+    values
+    - id: demo
+    - title: Demo
+# ─────────────────────────────────────────────────────────────────────
+# tree items
+# ─────────────────────────────────────────────────────────────────────
+- tree_item_1|instance
+    entity_name: tree_item
+    values
+    - id: 1
+    - id_parent: null
+    - id_tree: demo
+    - title: Item 1
+- tree_item_2|instance
+    entity_name: tree_item
+    values
+    - id: 2
+    - id_parent: null
+    - id_tree: demo
+    - title: Item 2
+- tree_item_3|instance
+    entity_name: tree_item
+    values
+    - id: 3
+    - id_parent: null
+    - id_tree: demo
+    - title: Item 3
+# ─────────────────────────────────────────────────────────────────────
 # demo types
 # ─────────────────────────────────────────────────────────────────────
 - demo_types_example_1|instance
