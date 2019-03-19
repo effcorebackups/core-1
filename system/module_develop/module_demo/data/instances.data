@@ -64,19 +64,19 @@ instances
 - demo_constraints_1|instance
     entity_name: demo_constraints
     values
-    - f_primary: primary value 1
+    - f_primary: primary_value_1
     - f_unique: unique value 1
     - f_foreign: 1
 - demo_constraints_2|instance
     entity_name: demo_constraints
     values
-    - f_primary: primary value 2
+    - f_primary: primary_value_2
     - f_unique: unique value 2
     - f_foreign: 2
 - demo_constraints_3|instance
     entity_name: demo_constraints
     values
-    - f_primary: primary value 3
+    - f_primary: primary_value_3
     - f_unique: unique value 3
     - f_foreign: 3
 # ─────────────────────────────────────────────────────────────────────
@@ -85,15 +85,18 @@ instances
 - demo_indexes_1|instance
     entity_name: demo_indexes
     values
+    - id: 1
     - f_index_unique: unique value 1
     - f_index: value 1
 - demo_indexes_2|instance
     entity_name: demo_indexes
     values
+    - id: 2
     - f_index_unique: unique value 2
     - f_index: value 2
 - demo_indexes_3|instance
     entity_name: demo_indexes
     values
+    - id: 3
     - f_index_unique: unique value 3
     - f_index: value 3

@@ -282,6 +282,11 @@ entities
     title_plural: Demo: indexes
     catalog_name: demo_indexes
     fields
+    - id
+        title: ID
+        type: autoincrement
+        not_null: true
+        show_in_manager: true
     - f_index_unique
         title: Field index unique
         type: varchar
@@ -296,6 +301,11 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
     indexes
     # ─────────────────────────────────────────────────────────────────────
     # CREATE UNIQUE INDEX name ON table_name (field_1, …);
