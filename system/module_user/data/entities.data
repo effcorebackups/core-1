@@ -145,6 +145,19 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
+        - disabled: true
+    - is_embed
+        title: Is embed
+        type: boolean
+        not_null: true
+        default: 0
+        show_in_manager: true
+        field_class: \effcore\field_logic
+        field_element_attributes
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -152,12 +165,7 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
-    - is_embed
-        title: Is embed
-        type: boolean
-        not_null: true
-        default: 0
-        show_in_manager: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
