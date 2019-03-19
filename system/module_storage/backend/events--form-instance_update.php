@@ -8,6 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
           use \effcore\text;
@@ -35,6 +36,12 @@ namespace effcore\modules\storage {
               $c_form_field->value_set($instance->{$c_name});
               $items['fields']->child_insert($c_form_field, $c_name);
             }
+          }
+          if ($items['fields']->children_count() == 0) {
+            $items['~update']->disabled_set();
+            $form->child_update(
+              'fields', new markup('x-no-result', [], 'no fields')
+            );
           }
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');

@@ -194,9 +194,9 @@
 
   /* x-no-result */
 
-  x-decorator[data-view-type='table'] x-no-result,
-  x-selection[data-view-type='table'] x-no-result {
+  x-no-result {
     display: block;
+    margin: 50px 0;
     padding: 20px;
     border-top: 5px solid %%_color_main;
     text-align: center;
