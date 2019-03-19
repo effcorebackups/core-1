@@ -14,6 +14,9 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -21,6 +24,7 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -41,6 +45,9 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     - id_permission
         title: Permission ID
         type: varchar
@@ -48,6 +55,9 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -83,11 +93,18 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     - id_user
         title: User ID
         type: integer
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     constraints
     - primary_id_role_id_user
         type: primary
@@ -206,6 +223,15 @@ entities
         field_element_attributes
         - min: 1
         - disabled: true
+    - is_embed
+        title: Is embed
+        type: boolean
+        not_null: true
+        default: 0
+        show_in_manager: true
+        field_class: \effcore\field_logic
+        field_element_attributes
+        - disabled: true
     - nick
         title: Nick
         type: varchar
@@ -227,15 +253,6 @@ entities
         type: varchar
         size: 255
         collate: binary
-    - is_embed
-        title: Is embed
-        type: boolean
-        not_null: true
-        default: 0
-        show_in_manager: true
-        field_class: \effcore\field_logic
-        field_element_attributes
-        - disabled: true
     - avatar_path
         title: Avatar path
         type: varchar

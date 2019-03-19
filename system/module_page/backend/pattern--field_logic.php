@@ -16,8 +16,8 @@ namespace effcore {
   function build() {
     parent::build();
     $this->option_insert('- select -', 'not_selected');
-    $this->option_insert('No',  0);
-    $this->option_insert('Yes', 1);
+    $this->option_insert('No',  '0');
+    $this->option_insert('Yes', '1');
   }
 
 }}

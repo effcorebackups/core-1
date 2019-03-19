@@ -26,6 +26,7 @@ namespace effcore\modules\storage {
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
+          $has_enabled_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class)) {
               $c_form_field = new $c_field->field_class();
@@ -35,10 +36,13 @@ namespace effcore\modules\storage {
               $c_form_field->build();
               $c_form_field->value_set($instance->{$c_name});
               $items['fields']->child_insert($c_form_field, $c_name);
+              if ($c_form_field->disabled_get() == false) {
+                $has_enabled_fields = true;
+              }
             }
           }
+          if ($items['fields']->children_count() == 0 || $has_enabled_fields == false) $items['~update']->disabled_set();
           if ($items['fields']->children_count() == 0) {
-            $items['~update']->disabled_set();
             $form->child_update(
               'fields', new markup('x-no-result', [], 'no fields')
             );
