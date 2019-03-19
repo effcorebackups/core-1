@@ -184,28 +184,43 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
+        - disabled: true
     - id_user
         title: User ID
         type: integer
         not_null: true
         show_in_manager: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - is_remember
         title: Is remember
         type: boolean
         not_null: true
         default: 0
+        field_class: \effcore\field_logic
     - is_fixed_ip
         title: Is fixed IP
         type: boolean
         not_null: true
         default: 0
+        field_class: \effcore\field_logic
     - expired
         title: Expired date
         type: datetime
+        field_class: \effcore\field_datetime
     - data
         title: Data
         type: blob
         null: true
+        field_class: \effcore\field_textarea
+        field_element_attributes
+        - required: false
+        - minlength: 0
     constraints
     - primary_id
         type: primary
