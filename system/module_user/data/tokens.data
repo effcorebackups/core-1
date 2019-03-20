@@ -1,6 +1,6 @@
 tokens
 # ─────────────────────────────────────────────────────────────────────
-# tokens for current user
+# global tokens
 # ─────────────────────────────────────────────────────────────────────
 - user_id
     match: %%_user_id
@@ -19,7 +19,7 @@ tokens
     type: code
     handler: \effcore\modules\user\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────
-# tokens for context user
+# context tokens
 # ─────────────────────────────────────────────────────────────────────
 - nick_page_context
     match: %%_nick_page_context

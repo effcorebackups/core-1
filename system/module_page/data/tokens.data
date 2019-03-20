@@ -1,92 +1,92 @@
 tokens
 # ─────────────────────────────────────────────────────────────────────
-# base colors
+# global tokens
 # ─────────────────────────────────────────────────────────────────────
 - color_page
     match: %%_color_page
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_text
     match: %%_color_text
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_main
     match: %%_color_main
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_link
     match: %%_color_link
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_link_active
     match: %%_color_link_active
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_table_row_odd
     match: %%_color_table_row_odd
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_table_row_even
     match: %%_color_table_row_even
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_relation
     match: %%_color_relation
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_menu
     match: %%_color_menu
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_menu_active
     match: %%_color_menu_active
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_menu_text
     match: %%_color_menu_text
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_menu_link
     match: %%_color_menu_link
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_menu_link_active
     match: %%_color_menu_link_active
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_ok
     match: %%_color_ok
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_error
     match: %%_color_error
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_warning
     match: %%_color_warning
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_fieldset
     match: %%_color_fieldset
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_fieldset_nested
     match: %%_color_fieldset_nested
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_field
     match: %%_color_field
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_field_text
     match: %%_color_field_text
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_button
     match: %%_color_button
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace
 - color_button_active
     match: %%_color_button_active
     type: code
-    handler: \effcore\modules\page\events_token::on_color_get
+    handler: \effcore\modules\page\events_token::on_replace

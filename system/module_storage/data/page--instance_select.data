@@ -1,6 +1,6 @@
 pages
 - instance_select|page
-    title: Select instance
+    title: Instance of %%_entity_name_page_context{entity_name}
     https: true
     display
       check: url
@@ -25,10 +25,6 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        region: tabs
-        type: link
-        source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
     - page_init|page_part
         region: content

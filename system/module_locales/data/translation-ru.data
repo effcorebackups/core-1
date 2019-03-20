@@ -188,6 +188,7 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
+    - Instance of %%_entity_name_page_context{entity_name}: Экземпляр %%_entity_name_page_context{entity_name}
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удалён.
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удалён!
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not updated!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был обновлён!
@@ -342,7 +343,6 @@ translations
     - search: поиск
     - Security: Безопасность
     - Select color: Выбрать цвет
-    - Select instance: Выбрать экземпляр
     - Select instances: Выбрать экземпляры
     - Select: Выбрать
     - select: выбрать
