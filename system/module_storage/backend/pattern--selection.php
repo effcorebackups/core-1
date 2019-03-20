@@ -63,7 +63,7 @@ namespace effcore {
     # prepare query params
       foreach ($this->fields as $c_rowid => $c_field) {
         if ($c_field->type == 'join_field') {
-          $this->query_params['join_fields'][$c_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
+          $this->query_params['join_fields'][$c_rowid.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
         }
       }
       foreach ($this->join ?? [] as $c_id => $c_join) {
