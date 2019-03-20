@@ -14,6 +14,7 @@ namespace effcore {
   public $ws_updated;
   public $title;
   public $title_plural;
+  public $group = 'General';
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
@@ -109,7 +110,8 @@ namespace effcore {
       'title'        => 'title',
       'title_plural' => 'title_plural',
       'storage_name' => 'storage_name',
-      'catalog_name' => 'catalog_name'
+      'catalog_name' => 'catalog_name',
+      'group'        => 'group'
     ];
   }
 

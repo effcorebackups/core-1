@@ -4,6 +4,7 @@ entities
     title: Permission
     title_plural: Permissions
     catalog_name: permissions
+    group: User
     ws_created: true
     ws_updated: true
     fields
@@ -36,6 +37,7 @@ entities
     title: Relation: Role + Permission
     title_plural: Relations: Role + Permission
     catalog_name: relations_role_ws_permission
+    group: User
     ws_created: true
     ws_updated: true
     fields
@@ -86,6 +88,7 @@ entities
     title: Relation: Role + User
     title_plural: Relations: Role + User
     catalog_name: relations_role_ws_user
+    group: User
     ws_created: true
     ws_updated: true
     fields
@@ -134,6 +137,7 @@ entities
     title: Role
     title_plural: Roles
     catalog_name: roles
+    group: User
     ws_created: true
     ws_updated: true
     fields
@@ -189,6 +193,7 @@ entities
     title: Session
     title_plural: Sessions
     catalog_name: sessions
+    group: User
     fields
     - id
         title: ID
@@ -251,6 +256,7 @@ entities
     title: User
     title_plural: Users
     catalog_name: users
+    group: User
     ws_created: true
     ws_updated: true
     fields

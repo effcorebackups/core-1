@@ -532,6 +532,10 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
+  static function sanitize_id($value, $m = '-') {
+    return preg_replace('%[^a-z0-9_\\-]%', $m, strtolower($value));
+  }
+
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
     $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function($c_match) {
@@ -822,10 +826,6 @@ namespace effcore {
     if ($type == 'file_not_found'  ) {print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active ]))->render(); exit();}
     if ($message)                    {print (template::make_new('page_simple',           ['attributes' => static::data_to_attr(['lang' => language::current_code_get()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render()                                                                                                                                   ]))->render(); exit();}
     exit();
-  }
-
-  static function to_css_class($string) {
-    return preg_replace('%[^a-z0-9_\\-]%', '-', strtolower($string));
   }
 
 }}

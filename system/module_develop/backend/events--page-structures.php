@@ -28,7 +28,7 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_list($page) {
     $targets = new markup('x-targets');
-    $list = new markup('x-structures-list', ['data-type' => core::to_css_class($page->args_get('type'))]);
+    $list = new markup('x-structures-list', ['data-type' => core::sanitize_id($page->args_get('type'))]);
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_select() as $c_item_full_name => $c_item_info) {

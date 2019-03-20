@@ -58,7 +58,7 @@ namespace effcore\modules\core {
       if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'       ), ': ', new markup('x-value', [],                        $c_dependencies_sys_items     )]), 'dependencies_sys');
       if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'           ), ': ', new markup('x-value', [],                        $c_depended_sys_items         )]), 'depended_sys'    );
       $info = $form->child_select('info');
-      $c_group_name = strtolower($c_module->group);
+      $c_group_name = core::sanitize_id($c_module->group);
       if (!$info->child_select(                                $c_group_name))
            $info->child_insert(new fieldset($c_module->group), $c_group_name);
       $info->child_select($c_group_name)->child_insert($c_info, 'module_'.$c_module->id);

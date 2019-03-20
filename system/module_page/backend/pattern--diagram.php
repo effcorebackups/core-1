@@ -30,7 +30,7 @@ namespace effcore {
             $c_slice->complex_value.' ('.locale::persent_format($c_slice->persent_value, 1).')' :
                                          locale::persent_format($c_slice->persent_value, 1),
             new markup('x-scale', [
-              'class' => ['scope' => core::to_css_class($c_slice->title)],
+              'class' => ['scope' => core::sanitize_id($c_slice->title)],
               'style' => ['width: '.(int)$c_slice->persent_value.'%']
             ])
           ]));
