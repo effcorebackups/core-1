@@ -5,14 +5,23 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\entity;
           use \effcore\page;
+          use \effcore\translation;
           abstract class events_token {
 
   static function on_replace($name, $args = []) {
     switch ($name) {
-      case 'entity_name_page_context':
-        return page::current_get()->args_get($args[0]);
-    }
+      case 'entity_title_page_context':
+        if (isset($args[0])) {
+          $entity_name = page::current_get()->args_get($args[0]);
+          $entities = entity::all_get(false);
+          if (isset($entities[$entity_name])) {
+            return translation::get($entities[$entity_name]->title);
+          }
+        }
+        break;
+    };
     return '';
   }
 

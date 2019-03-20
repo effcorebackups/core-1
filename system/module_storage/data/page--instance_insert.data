@@ -1,6 +1,6 @@
 pages
 - instance_insert|page
-    title: Insert instance of %%_entity_name_page_context{entity_name}
+    title: Insert instance of %%_entity_title_page_context{entity_name}
     https: true
     display
       check: url

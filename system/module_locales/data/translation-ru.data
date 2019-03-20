@@ -179,7 +179,7 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
-    - Insert instance of %%_entity_name_page_context{entity_name}: Вставить экземпляр %%_entity_name_page_context{entity_name}
+    - Insert instance of %%_entity_title_page_context{entity_name}: Вставить экземпляр %%_entity_title_page_context{entity_name}
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
@@ -188,7 +188,7 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
-    - Instance of %%_entity_name_page_context{entity_name}: Экземпляр %%_entity_name_page_context{entity_name}
+    - Instance of %%_entity_title_page_context{entity_name}: Экземпляр %%_entity_title_page_context{entity_name}
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удалён.
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удалён!
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not updated!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был обновлён!
@@ -417,7 +417,7 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update instance of %%_entity_name_page_context{entity_name}: Обновить экземпляр %%_entity_name_page_context{entity_name}
+    - Update instance of %%_entity_title_page_context{entity_name}: Обновить экземпляр %%_entity_title_page_context{entity_name}
     - Update: Обновить
     - update: обновить
     - updated: обновлено

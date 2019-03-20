@@ -2,7 +2,7 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
-- entity_name_page_context
-    match: %%_entity_name_page_context
+- entity_title_page_context
+    match: %%_entity_title_page_context
     type: code
     handler: \effcore\modules\storage\events_token::on_replace

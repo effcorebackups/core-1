@@ -1,6 +1,6 @@
 pages
 - instance_select|page
-    title: Instance of %%_entity_name_page_context{entity_name}
+    title: Instance of %%_entity_title_page_context{entity_name}
     https: true
     display
       check: url
