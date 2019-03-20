@@ -1,12 +1,11 @@
 pages
 - instance_update|page
-    title: Update instance of %%_entity_title_page_context{entity_name}
+    title: %%_entity_title_page_context{entity_name}: update
     https: true
     display
       check: url
       where: path
-      match: %^(?<base>/manage/instances)/
->>>>>>>>>>>>>>>(?<action>update)/
+      match: %^(?<base>/manage/instance/update)/
 >>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
     access

@@ -29,17 +29,44 @@ namespace effcore\modules\storage {
   # ─────────────────────────────────────────────────────────────────────
 
   static function on_page_instance_select_multiple_init($page) {
-    $entities = entity::all_get(false);
+    $group_id = $page->args_get('group_id');
     $entity_name = $page->args_get('entity_name');
-    core::array_sort_by_title($entities);
-    if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/select/'.reset($entities)->name);
+    $entities = entity::all_get(false);
+    $entities_groups = entity::groups_get();
+    $entities_by_groups = [];
     foreach ($entities as $c_entity) {
-      tabs::item_insert(             $c_entity->title_plural,
-        'instance_select_'.          $c_entity->name,
-        'instance_select', 'select/'.$c_entity->name, null, ['class' => [
-                           'select-'.$c_entity->name =>
-                           'select-'.$c_entity->name]]
-      );
+      $c_group_id = core::sanitize_id($c_entity->group);
+      $entities_by_groups[$c_group_id][$c_entity->name] = $c_entity;
+    }
+    foreach ($entities_by_groups as &$c_entities)
+      ksort($c_entities);
+      ksort($entities_groups);
+      ksort($entities_by_groups);
+  # ┌───────────────────────────────────────────────────────────┬─────────────────────────────────────────┬─────────────┐
+  # │ /manage/instances/select                                  │ group_id != true && entity_name != true │ redirect #1 │
+  # │ /manage/instances/select/      group_id                   │ group_id == true && entity_name != true │ redirect #2 │
+  # │ /manage/instances/select/      group_id/      entity_name │ group_id == true && entity_name == true │ true        │
+  # │ /manage/instances/select/wrong_group_id                   │ group_id != true && entity_name != true │ redirect #1 │
+  # │ /manage/instances/select/wrong_group_id/      entity_name │ group_id != true && entity_name == true │ redirect #1 │
+  # │ /manage/instances/select/      group_id/wrong_entity_name │ group_id == true && entity_name != true │ redirect #2 │
+  # │ /manage/instances/select/wrong_group_id/wrong_entity_name │ group_id != true && entity_name != true │ redirect #1 │
+  # └───────────────────────────────────────────────────────────┴─────────────────────────────────────────┴─────────────┘
+    if (!isset($entities_groups[$group_id   ])) url::go($page->args_get('base').'/'.array_keys($entities_groups)[0].'/'.array_keys($entities_by_groups[$group_id])[0]); # redirect 1
+    if (!isset($entities       [$entity_name])) url::go($page->args_get('base').'/'.           $group_id           .'/'.array_keys($entities_by_groups[$group_id])[0]); # redirect 2
+  # make tabs
+    foreach ($entities_by_groups as $c_group_id => $c_entities) {
+      tabs::item_insert($entities_groups[$c_group_id],
+                       'instance_group_'.$c_group_id,
+                   'T:manage_instances', $c_group_id, null, ['class' => [
+                                'group-'.$c_group_id =>
+                                'group-'.$c_group_id]]);
+      foreach ($c_entities as $c_entity) {
+        tabs::item_insert(                 $c_entity->title_plural,
+                        'instance_select_'.$c_entity->name,
+            'instance_group_'.$c_group_id, $c_group_id.'/'.$c_entity->name, null, ['class' => [
+                                 'select-'.$c_entity->name =>
+                                 'select-'.$c_entity->name]]);
+      }
     }
   }
 

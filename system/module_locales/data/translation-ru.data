@@ -4,6 +4,10 @@ translations
     data
     - - no -: - нет -
     - - select -: - выбрать -
+    - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}
+    - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
+    - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
+    - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
     - A new password has been sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
@@ -78,7 +82,6 @@ translations
     - Decoration: Оформление
     - Definition list: Список определений
     - delete file\: %%_name: удалить файл: %%_name
-    - Delete instance: Удалить экземпляр
     - Delete instances: Удалить экземпляры
     - Delete modules data: Удалить данные модулей
     - Delete: Удалить
@@ -168,6 +171,7 @@ translations
     - Form elements: Элементы формы
     - Front page: Главная страница
     - front: главная
+    - General: Основная
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to front page: перейти на главную страницу
     - go to page %%_link: перейти на страницу %%_link
@@ -179,7 +183,6 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
-    - Insert instance of %%_entity_title_page_context{entity_name}: Вставить экземпляр %%_entity_title_page_context{entity_name}
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
@@ -188,7 +191,6 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
-    - Instance of %%_entity_title_page_context{entity_name}: Экземпляр %%_entity_title_page_context{entity_name}
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был удалён.
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удалён!
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not updated!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был обновлён!
@@ -343,7 +345,6 @@ translations
     - search: поиск
     - Security: Безопасность
     - Select color: Выбрать цвет
-    - Select instances: Выбрать экземпляры
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
@@ -417,7 +418,6 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update instance of %%_entity_title_page_context{entity_name}: Обновить экземпляр %%_entity_title_page_context{entity_name}
     - Update: Обновить
     - update: обновить
     - updated: обновлено

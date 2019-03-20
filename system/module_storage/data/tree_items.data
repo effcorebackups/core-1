@@ -3,7 +3,7 @@ tree_items
     id: manage_instances
     id_parent: manage
     title: Instances
-    url: /manage/instances
+    url: /manage/instances/select
     access
       roles
       - =: admins
