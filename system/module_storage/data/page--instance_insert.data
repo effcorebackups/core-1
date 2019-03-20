@@ -1,6 +1,6 @@
 pages
 - instance_insert|page
-    title: Insert instance
+    title: Insert instance of %%_entity_name_page_context{entity_name}
     https: true
     display
       check: url
@@ -24,15 +24,7 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        region: tabs
-        type: link
-        source: tabs/storage/manage_instances
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\storage\events_page_instances_manage::on_page_instance_insert_init
     - form_instance_insert|page_part
         region: content
         type: link

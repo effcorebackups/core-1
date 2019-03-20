@@ -8,11 +8,3 @@ tabs_items
     attributes
     - class
       - =: instance-select
-- instance_insert|tabs_item
-    id: instance_insert
-    id_parent: T:manage_instances
-    action_name: insert
-    title: Insert
-    attributes
-    - class
-      - =: instance-insert

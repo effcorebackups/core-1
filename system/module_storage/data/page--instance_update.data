@@ -1,6 +1,6 @@
 pages
 - instance_update|page
-    title: Update instance
+    title: Update instance of %%_entity_name_page_context{entity_name}
     https: true
     display
       check: url

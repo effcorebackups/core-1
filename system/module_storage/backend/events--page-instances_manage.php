@@ -118,23 +118,4 @@ namespace effcore\modules\storage {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-  # insert single instance
-  # ─────────────────────────────────────────────────────────────────────
-
-  static function on_page_instance_insert_init($page) {
-    $entities = entity::all_get(false);
-    $entity_name = $page->args_get('entity_name');
-    core::array_sort_by_title($entities);
-    if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/insert/'.reset($entities)->name);
-    foreach ($entities as $c_entity) {
-      tabs::item_insert(             $c_entity->title,
-        'instance_insert_'.          $c_entity->name,
-        'instance_insert', 'insert/'.$c_entity->name, null, ['class' => [
-                           'insert-'.$c_entity->name =>
-                           'insert-'.$c_entity->name]]
-      );
-    }
-  }
-
 }}

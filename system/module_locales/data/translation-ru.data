@@ -179,7 +179,7 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
-    - Insert instance: Вставить экземпляр
+    - Insert instance of %%_entity_name_page_context{entity_name}: Вставить экземпляр %%_entity_name_page_context{entity_name}
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
@@ -417,7 +417,7 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update instance: Обновить экземпляр
+    - Update instance of %%_entity_name_page_context{entity_name}: Обновить экземпляр %%_entity_name_page_context{entity_name}
     - Update: Обновить
     - update: обновить
     - updated: обновлено

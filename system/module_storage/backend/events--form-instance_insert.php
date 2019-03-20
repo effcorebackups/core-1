@@ -5,16 +5,22 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\core;
+          use \effcore\entity;
           use \effcore\page;
           use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_insert {
 
   static function on_init($form, $items) {
-    # @todo: make functionality
-    $items['fields']->child_insert(
-      new text('instance_insert is UNDER CONSTRUCTION')
-    );
+    $entity_name = page::current_get()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      # @todo: make functionality
+      $items['fields']->child_insert(
+        new text('instance_insert is UNDER CONSTRUCTION')
+      );
+    } else core::send_header_and_exit('page_not_found');
   }
 
   static function on_submit($form, $items) {
