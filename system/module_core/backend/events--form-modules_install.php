@@ -29,7 +29,10 @@ namespace effcore\modules\core {
     $modules_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
-      $info->child_insert(new fieldset($c_group_title), $c_group_id);
+      $c_fieldset = new fieldset($c_group_title);
+      $c_fieldset->state = $c_group_id == 'system' ? 'opened' : 'closed';
+      $c_fieldset->build();
+      $info->child_insert($c_fieldset, $c_group_id);
       foreach ($modules as $c_module)
         if ($c_group_id == $c_module->group_id_get())
           $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
