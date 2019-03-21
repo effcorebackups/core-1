@@ -26,44 +26,52 @@ namespace effcore\modules\core {
     $embed = module::embed_get();
     $modules = module::all_get();
     $groups = module::groups_get();
+    $modules_by_groups = [];
     core::array_sort_text($groups);
-    core::array_sort_by_title($modules);
-    foreach ($groups as $c_id => $c_title) {
-      $info->child_insert(new fieldset($c_title), $c_id);
+    foreach ($groups as $c_group_id => $c_group_title) {
+      $info->child_insert(new fieldset($c_group_title), $c_group_id);
+      foreach ($modules as $c_module)
+        if ($c_group_id == $c_module->group_id_get())
+          $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
+      core::array_sort_by_title(
+        $modules_by_groups[$c_group_id]
+      );
     }
-    foreach ($modules as $c_module) {
-      $c_depended               = $c_module->    depended_status_get();
-      $c_dependencies           = $c_module->dependencies_status_get();
-      $c_is_ok_php_dependencies = !isset(array_count_values($c_dependencies->php)[0]);
-      $c_is_ok_sys_dependencies = !isset(array_count_values($c_dependencies->sys)[0]);
-      $c_is_ok_sys_depended     = !isset(array_count_values($c_depended         )[1]);
-      $c_dependencies_php_items = new node;
-      $c_dependencies_sys_items = new node;
-      $c_depended_sys_items     = new node;
-      foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
-      foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
-      foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-dependency', ['data-state' => $c_state + 2], new text_simple(strtolower($c_id))), strtolower($c_id));
-      $c_info = new markup('x-module-info');
-      $c_switcher = new field_switcher();
-      $c_switcher->build();
-      $c_switcher->name_set('is_enabled[]');
-      $c_switcher->value_set($c_module->id);
-      $c_switcher->checked_set (isset($enabled_by_boot[$c_module->id]));
-      $c_switcher->disabled_set(isset($embed          [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
-      $c_info->child_insert($c_switcher, 'switcher');
-                                                       $c_info->child_insert(new markup('x-module-title',        [],              [new markup('x-value', [],                                                                                       $c_module->title              )]), 'title'           );
-                                                       $c_info->child_insert(new markup('x-module-id',           [],              [new markup('x-label', [], 'id'                        ), ': ', new markup('x-value', [],        new text_simple($c_module->id)                )]), 'id'              );
-                                                       $c_info->child_insert(new markup('x-module-version',      [],              [new markup('x-label', [], 'version'                   ), ': ', new markup('x-value', [], locale::version_format($c_module->version)           )]), 'version'         );
-                                                       $c_info->child_insert(new markup('x-module-is-embed',     [],              [new markup('x-label', [], 'is embed'                  ), ': ', new markup('x-value', [],           isset($embed[$c_module->id]) ? 'yes' : 'no')]), 'is_embed'        );
-      if ($c_module->id_bundle                       ) $c_info->child_insert(new markup('x-module-bundle_id',    [],              [new markup('x-label', [], 'bundle id'                 ), ': ', new markup('x-value', [],        new text_simple($c_module->id_bundle)         )]), 'bundle_id'       );
-      if ($c_module->id_bundle                       ) $c_info->child_insert(new markup('x-module-bundle_build', [],              [new markup('x-label', [], 'bundle build number'       ), ': ', new markup('x-value', [],     module::get_bundle($c_module->id_bundle)->build  )]), 'bundle_build'    );
-      if ($c_module->path                            ) $c_info->child_insert(new markup('x-module-path',         [],              [new markup('x-label', [], 'path'                      ), ': ', new markup('x-value', [],                        $c_module->path               )]), 'path'            );
-      if ($c_module->copyright                       ) $c_info->child_insert(new markup('x-module-copyright',    [],              [new markup('x-label', [], 'copyright'                 ), ': ', new markup('x-value', [],                        $c_module->copyright          )]), 'copyright'       );
-      if ($c_module->description                     ) $c_info->child_insert(new markup('x-module-description',  [],              [new markup('x-label', [], 'description'               ), ': ', new markup('x-value', [],                        $c_module->description        )]), 'description'     );
-      if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', new markup('x-value', [],                        $c_dependencies_php_items     )]), 'dependencies_php');
-      if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'       ), ': ', new markup('x-value', [],                        $c_dependencies_sys_items     )]), 'dependencies_sys');
-      if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'           ), ': ', new markup('x-value', [],                        $c_depended_sys_items         )]), 'depended_sys'    );
-      $info->child_select($c_module->group_id_get())->child_insert($c_info, 'module_'.$c_module->id);
+    foreach ($modules_by_groups as $c_modules) {
+      foreach ($c_modules as $c_module) {
+        $c_depended               = $c_module->    depended_status_get();
+        $c_dependencies           = $c_module->dependencies_status_get();
+        $c_is_ok_php_dependencies = !isset(array_count_values($c_dependencies->php)[0]);
+        $c_is_ok_sys_dependencies = !isset(array_count_values($c_dependencies->sys)[0]);
+        $c_is_ok_sys_depended     = !isset(array_count_values($c_depended         )[1]);
+        $c_dependencies_php_items = new node;
+        $c_dependencies_sys_items = new node;
+        $c_depended_sys_items     = new node;
+        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-dependency', ['data-state' => $c_state + 2], new text_simple(strtolower($c_id))), strtolower($c_id));
+        $c_info = new markup('x-module-info');
+        $c_switcher = new field_switcher();
+        $c_switcher->build();
+        $c_switcher->name_set('is_enabled[]');
+        $c_switcher->value_set($c_module->id);
+        $c_switcher->checked_set (isset($enabled_by_boot[$c_module->id]));
+        $c_switcher->disabled_set(isset($embed          [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
+        $c_info->child_insert($c_switcher, 'switcher');
+                                                         $c_info->child_insert(new markup('x-module-title',        [],              [new markup('x-value', [],                                                                                       $c_module->title              )]), 'title'           );
+                                                         $c_info->child_insert(new markup('x-module-id',           [],              [new markup('x-label', [], 'id'                        ), ': ', new markup('x-value', [],        new text_simple($c_module->id)                )]), 'id'              );
+                                                         $c_info->child_insert(new markup('x-module-version',      [],              [new markup('x-label', [], 'version'                   ), ': ', new markup('x-value', [], locale::version_format($c_module->version)           )]), 'version'         );
+                                                         $c_info->child_insert(new markup('x-module-is-embed',     [],              [new markup('x-label', [], 'is embed'                  ), ': ', new markup('x-value', [],           isset($embed[$c_module->id]) ? 'yes' : 'no')]), 'is_embed'        );
+        if ($c_module->id_bundle                       ) $c_info->child_insert(new markup('x-module-bundle_id',    [],              [new markup('x-label', [], 'bundle id'                 ), ': ', new markup('x-value', [],        new text_simple($c_module->id_bundle)         )]), 'bundle_id'       );
+        if ($c_module->id_bundle                       ) $c_info->child_insert(new markup('x-module-bundle_build', [],              [new markup('x-label', [], 'bundle build number'       ), ': ', new markup('x-value', [],     module::get_bundle($c_module->id_bundle)->build  )]), 'bundle_build'    );
+        if ($c_module->path                            ) $c_info->child_insert(new markup('x-module-path',         [],              [new markup('x-label', [], 'path'                      ), ': ', new markup('x-value', [],                        $c_module->path               )]), 'path'            );
+        if ($c_module->copyright                       ) $c_info->child_insert(new markup('x-module-copyright',    [],              [new markup('x-label', [], 'copyright'                 ), ': ', new markup('x-value', [],                        $c_module->copyright          )]), 'copyright'       );
+        if ($c_module->description                     ) $c_info->child_insert(new markup('x-module-description',  [],              [new markup('x-label', [], 'description'               ), ': ', new markup('x-value', [],                        $c_module->description        )]), 'description'     );
+        if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', new markup('x-value', [],                        $c_dependencies_php_items     )]), 'dependencies_php');
+        if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'       ), ': ', new markup('x-value', [],                        $c_dependencies_sys_items     )]), 'dependencies_sys');
+        if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'           ), ': ', new markup('x-value', [],                        $c_depended_sys_items         )]), 'depended_sys'    );
+        $info->child_select($c_module->group_id_get())->child_insert($c_info, 'module_'.$c_module->id);
+      }
     }
   }
 
