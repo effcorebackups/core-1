@@ -4,6 +4,7 @@ entities
     title: Tree
     title_plural: Trees
     catalog_name: trees
+    group: Menu
     ws_created: true
     ws_updated: true
     fields
@@ -36,6 +37,7 @@ entities
     title: Tree item
     title_plural: Tree items
     catalog_name: tree_items
+    group: Menu
     ws_created: true
     ws_updated: true
     fields

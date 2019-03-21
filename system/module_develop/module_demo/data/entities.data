@@ -4,6 +4,7 @@ entities
     title: Demo: types
     title_plural: Demo: types
     catalog_name: demo_types
+    group: Demo
     fields
     - id
         title: ID
@@ -92,6 +93,7 @@ entities
     title: Demo: autoincrement
     title_plural: Demo: autoincrement
     catalog_name: demo_autoincrement
+    group: Demo
     fields
     - id
         title: ID
@@ -127,6 +129,7 @@ entities
     title: Demo: collations
     title_plural: Demo: collations
     catalog_name: demo_collations
+    group: Demo
     fields
     - id
         title: ID
@@ -157,6 +160,7 @@ entities
     title: Demo: constraints
     title_plural: Demo: constraints
     catalog_name: demo_constraints
+    group: Demo
     fields
     - f_primary
         title: Field primary
@@ -213,6 +217,7 @@ entities
     title: Demo: data
     title_plural: Demo: data
     catalog_name: demo_data
+    group: Demo
     fields
     - id
         title: ID
@@ -255,6 +260,7 @@ entities
     title: Demo: data + join
     title_plural: Demo: data + join
     catalog_name: demo_data_join
+    group: Demo
     fields
     - id_data
         title: Data ID
@@ -281,6 +287,7 @@ entities
     title: Demo: indexes
     title_plural: Demo: indexes
     catalog_name: demo_indexes
+    group: Demo
     fields
     - id
         title: ID
