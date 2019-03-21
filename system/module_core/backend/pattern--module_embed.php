@@ -63,6 +63,10 @@ namespace effcore {
     return $result;
   }
 
+  function group_id_get() {
+    return core::sanitize_id($this->group);
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -116,6 +120,14 @@ namespace effcore {
       }
     }
     return $result;
+  }
+
+  static function groups_get() {
+    $groups = [];
+    if      (static::$cache == null) static::init();
+    foreach (static::$cache['modules'] as $c_module)
+      $groups[core::sanitize_id($c_module->group)] = $c_module->group;
+    return $groups;
   }
 
   static function is_enabled($module_id) {

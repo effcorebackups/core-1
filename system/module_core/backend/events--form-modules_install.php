@@ -21,10 +21,16 @@ namespace effcore\modules\core {
           abstract class events_form_modules_install {
 
   static function on_init($form, $items) {
+    $info = $form->child_select('info');
     $enabled_by_boot = core::boot_select('enabled');
     $embed = module::embed_get();
     $modules = module::all_get();
+    $groups = module::groups_get();
+    core::array_sort_text($groups);
     core::array_sort_by_title($modules);
+    foreach ($groups as $c_id => $c_title) {
+      $info->child_insert(new fieldset($c_title), $c_id);
+    }
     foreach ($modules as $c_module) {
       $c_depended               = $c_module->    depended_status_get();
       $c_dependencies           = $c_module->dependencies_status_get();
@@ -57,11 +63,7 @@ namespace effcore\modules\core {
       if ($c_dependencies_php_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), ': ', new markup('x-value', [],                        $c_dependencies_php_items     )]), 'dependencies_php');
       if ($c_dependencies_sys_items->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'       ), ': ', new markup('x-value', [],                        $c_dependencies_sys_items     )]), 'dependencies_sys');
       if ($c_depended_sys_items    ->children_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'           ), ': ', new markup('x-value', [],                        $c_depended_sys_items         )]), 'depended_sys'    );
-      $info = $form->child_select('info');
-      $c_group_name = core::sanitize_id($c_module->group);
-      if (!$info->child_select(                                $c_group_name))
-           $info->child_insert(new fieldset($c_module->group), $c_group_name);
-      $info->child_select($c_group_name)->child_insert($c_info, 'module_'.$c_module->id);
+      $info->child_select($c_module->group_id_get())->child_insert($c_info, 'module_'.$c_module->id);
     }
   }
 

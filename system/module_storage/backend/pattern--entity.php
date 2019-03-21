@@ -159,10 +159,9 @@ namespace effcore {
 
   static function groups_get() {
     $groups = [];
-    if (static::$cache == null) static::init();
-    foreach (static::$cache as $c_item) {
+    if      (static::$cache == null) static::init();
+    foreach (static::$cache as $c_item)
       $groups[core::sanitize_id($c_item->group)] = $c_item->group;
-    }
     return $groups;
   }
 
