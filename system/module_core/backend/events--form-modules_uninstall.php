@@ -9,6 +9,7 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\event;
           use \effcore\group_checkboxes;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\module;
           use \effcore\text;
@@ -22,6 +23,7 @@ namespace effcore\modules\core {
     $checkboxes = new group_checkboxes();
     $checkboxes->description = 'The removing module should be disabled at first. Embed modules cannot be removed.';
     $checkboxes->build();
+    core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
       if  (!isset($embed            [$c_module->id]) &&
             isset($installed_by_boot[$c_module->id])) {
@@ -35,7 +37,7 @@ namespace effcore\modules\core {
     $info = $form->child_select('info');
     if ($checkboxes->children_count())
          $info->child_insert($checkboxes, 'checkboxes');
-    else $info->child_insert(new text('No items.'), 'message');
+    else $form->child_update('info', new markup('x-no-result', [], 'no items'));
     if (count($checkboxes->disabled) ==
               $checkboxes->children_count()) {
       $items['~apply']->disabled_set();
