@@ -1,8 +1,8 @@
 entities
 - demo_types|entity
     name: demo_types
-    title: Demo: types
-    title_plural: Demo: types
+    title: Types
+    title_plural: Types
     catalog_name: demo_types
     group: Demo
     fields
@@ -90,8 +90,8 @@ entities
         - =: id
 - demo_autoincrement|entity
     name: demo_autoincrement
-    title: Demo: autoincrement
-    title_plural: Demo: autoincrement
+    title: Autoincrement
+    title_plural: Autoincrement
     catalog_name: demo_autoincrement
     group: Demo
     fields
@@ -126,8 +126,8 @@ entities
         - =: description
 - demo_collations|entity
     name: demo_collations
-    title: Demo: collations
-    title_plural: Demo: collations
+    title: Collations
+    title_plural: Collations
     catalog_name: demo_collations
     group: Demo
     fields
@@ -157,8 +157,8 @@ entities
         - =: id
 - demo_constraints|entity
     name: demo_constraints
-    title: Demo: constraints
-    title_plural: Demo: constraints
+    title: Constraints
+    title_plural: Constraints
     catalog_name: demo_constraints
     group: Demo
     fields
@@ -214,8 +214,8 @@ entities
         on_delete: cascade
 - demo_data|entity
     name: demo_data
-    title: Demo: data
-    title_plural: Demo: data
+    title: Data
+    title_plural: Data
     catalog_name: demo_data
     group: Demo
     fields
@@ -257,8 +257,8 @@ entities
         - =: created
 - demo_data_join|entity
     name: demo_data_join
-    title: Demo: data + join
-    title_plural: Demo: data + join
+    title: Data + join
+    title_plural: Data + join
     catalog_name: demo_data_join
     group: Demo
     fields
@@ -284,8 +284,8 @@ entities
         - =: email
 - demo_indexes|entity
     name: demo_indexes
-    title: Demo: indexes
-    title_plural: Demo: indexes
+    title: Indexes
+    title_plural: Indexes
     catalog_name: demo_indexes
     group: Demo
     fields

@@ -16,6 +16,7 @@ translations
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений вы можете увидеть выше.
+    - Autoincrement: Автоинкремент
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell #%%_number: ячейка №%%_number
@@ -35,16 +36,13 @@ translations
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - class: класс
     - Classes: Классы
+    - Collations: Сравнения
     - Console: Консоль
+    - Constraints: Ограничения
+    - Data + join: Данные + join
+    - Data: Данные
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
-    - Demo\: autoincrement: Демо: автоинкремент
-    - Demo\: collations: Демо: сравнения
-    - Demo\: constraints: Демо: ограничения
-    - Demo\: data + join: Демо: данные + join
-    - Demo\: data: Демо: данные
-    - Demo\: indexes: Демо: индексы
-    - Demo\: types: Демо: типы
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
     - Elements: Элементы
@@ -89,6 +87,7 @@ translations
     - head cell #1: заглавная ячейка №1
     - head cell #2: заглавная ячейка №2
     - head cell #3: заглавная ячейка №3
+    - Indexes: Индексы
     - init.: инициал.
     - interface: интерфейс
     - Interfaces: Интерфейсы
@@ -157,6 +156,7 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
+    - Types: Типы
     - UML Diagram: UML Диаграмма
     - UNDER CONSTRUCTION: В РАЗРАБОТКЕ
     - Usage frequency: Частота использования
