@@ -74,6 +74,10 @@ namespace effcore {
     return [];
   }
 
+  function group_id_get() {
+    return core::sanitize_id($this->group);
+  }
+
   function install() {
     $storage = storage::get($this->storage_name);
     return $storage->entity_install($this);
