@@ -14,7 +14,7 @@ namespace effcore {
   public $ws_updated;
   public $title;
   public $title_plural;
-  public $group = 'General';
+  public $group = 'Other';
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
