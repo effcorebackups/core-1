@@ -9,9 +9,11 @@ namespace effcore\modules\storage {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
+          use \effcore\markup;
           use \effcore\selection;
           use \effcore\storage;
           use \effcore\tabs;
+          use \effcore\text;
           use \effcore\url;
           abstract class events_page_instances_manage {
 
@@ -74,6 +76,7 @@ namespace effcore\modules\storage {
   static function on_show_block_instance_select_multiple($page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
+    $link_add_new = new markup('a', ['href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'class' => ['link-add-new' => 'link-add-new']], new text('Add new'));
     if ($entity) {
       $selection = new selection;
       $selection->is_paged = true;
@@ -84,11 +87,10 @@ namespace effcore\modules\storage {
       }
       $selection->field_checkbox_insert(null, '', 80);
       $selection->field_action_insert();
-      return new block('', ['class' => [
-        $entity->name =>
-        $entity->name]],
+      return new block('', ['class' => [$entity->name => $entity->name]], [
+        $link_add_new,
         $selection
-      );
+      ]);
     }
   }
 
