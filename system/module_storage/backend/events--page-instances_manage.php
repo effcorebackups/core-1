@@ -43,17 +43,17 @@ namespace effcore\modules\storage {
         $entities_by_groups[$c_id]
       );
     }
-  # ┌───────────────────────────────────────────────────────────┬─────────────────────────────────────────┬─────────────┐
-  # │ /manage/instances/select                                  │ group_id != true && entity_name != true │ redirect #1 │
-  # │ /manage/instances/select/      group_id                   │ group_id == true && entity_name != true │ redirect #2 │
-  # │ /manage/instances/select/      group_id/      entity_name │ group_id == true && entity_name == true │ true        │
-  # │ /manage/instances/select/wrong_group_id                   │ group_id != true && entity_name != true │ redirect #1 │
-  # │ /manage/instances/select/wrong_group_id/      entity_name │ group_id != true && entity_name == true │ redirect #1 │
-  # │ /manage/instances/select/      group_id/wrong_entity_name │ group_id == true && entity_name != true │ redirect #2 │
-  # │ /manage/instances/select/wrong_group_id/wrong_entity_name │ group_id != true && entity_name != true │ redirect #1 │
-  # └───────────────────────────────────────────────────────────┴─────────────────────────────────────────┴─────────────┘
-    if (!isset($groups  [$group_id   ])) url::go($page->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[$group_id])[0]); # redirect 1
-    if (!isset($entities[$entity_name])) url::go($page->args_get('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[$group_id])[0]); # redirect 2
+  # ┌───────────────────────────────────────────────────────────┬─────────────────────────────────────────┐
+  # │ /manage/instances/select                                  │ group_id != true && entity_name != true │
+  # │ /manage/instances/select/      group_id                   │ group_id == true && entity_name != true │
+  # │ /manage/instances/select/      group_id/      entity_name │ group_id == true && entity_name == true │
+  # │ /manage/instances/select/wrong_group_id                   │ group_id != true && entity_name != true │
+  # │ /manage/instances/select/wrong_group_id/      entity_name │ group_id != true && entity_name == true │
+  # │ /manage/instances/select/      group_id/wrong_entity_name │ group_id == true && entity_name != true │
+  # │ /manage/instances/select/wrong_group_id/wrong_entity_name │ group_id != true && entity_name != true │
+  # └───────────────────────────────────────────────────────────┴─────────────────────────────────────────┘
+    if (isset($groups[$group_id])                                                        == false) url::go($page->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
+    if (isset($groups[$group_id]) && isset($entities_by_groups[$group_id][$entity_name]) == false) url::go($page->args_get('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[           $group_id  ])[0]);
   # make tabs
     foreach ($entities_by_groups as $c_id => $c_entities) {
       tabs::item_insert($groups[$c_id],
