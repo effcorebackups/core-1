@@ -130,6 +130,14 @@ namespace effcore {
     return $groups;
   }
 
+  static function updates_get() {
+    $updates = [];
+    foreach (storage::get('files')->select('module_updates') as $c_module_id => $c_updates)
+      foreach ($c_updates as $c_row_id => $c_update)
+        $updates[$c_row_id] = $c_update;
+    return $updates;
+  }
+
   static function is_enabled($module_id) {
     $enabled = core::boot_select('enabled');
     return isset($enabled[$module_id]);
