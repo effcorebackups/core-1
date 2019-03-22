@@ -35,6 +35,7 @@ namespace effcore\modules\page {
       case 'color_field_text'      : return $colors[$settings['page']->color_field_text_id      ]->value;
       case 'color_button'          : return $colors[$settings['page']->color_button_id          ]->value;
       case 'color_button_active'   : return $colors[$settings['page']->color_button_active_id   ]->value;
+      case 'color_button_text'     : return $colors[$settings['page']->color_button_text_id     ]->value;
     }
   }
 

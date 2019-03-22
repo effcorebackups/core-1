@@ -98,6 +98,10 @@ forms
             title: Button (active)
             element_attributes
             - name: color_button_active_id
+        - color_button_text_id|field_checkbox_color
+            title: Button text
+            element_attributes
+            - name: color_button_text_id
     - button_apply|button
         title: apply colors
         attributes

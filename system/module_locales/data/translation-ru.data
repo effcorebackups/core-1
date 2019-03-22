@@ -18,7 +18,7 @@ translations
     - Action: Действие
     - actions: действия
     - Actions: Действия
-    - Add new: Добавить новый
+    - add new: добавить новый
     - Administrators: Администраторы
     - agree: согласен(а)
     - All caches have been reset.: Все кэши были сброшены.
@@ -36,6 +36,7 @@ translations
     - bundle build number: номер сборки пакета
     - bundle id: id пакета
     - Button (active): Кнопка (активная)
+    - Button text: Кнопки текст
     - Button: Кнопка
     - button: кнопка
     - cache: кэш

@@ -36,6 +36,7 @@ namespace effcore\modules\page {
     $items['#color_field_text_id'      ]->color_set($preset->colors->color_field_text_id      );
     $items['#color_button_id'          ]->color_set($preset->colors->color_button_id          );
     $items['#color_button_active_id'   ]->color_set($preset->colors->color_button_active_id   );
+    $items['#color_button_text_id'     ]->color_set($preset->colors->color_button_text_id     );
   }
 
   static function on_submit($form, $items) {
@@ -64,7 +65,8 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_id',            $preset->colors->color_field_id,            false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_text_id',       $preset->colors->color_field_text_id,       false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',           $preset->colors->color_button_id,           false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id          );
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id,    false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_text_id',      $preset->colors->color_button_text_id            );
         message::insert('Colors was applied.');
         static::on_init($form, $items);
         break;

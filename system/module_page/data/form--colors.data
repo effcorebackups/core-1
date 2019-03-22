@@ -149,6 +149,12 @@ forms
             - required: true
             element_attributes
             - name: color_button_active_id
+        - color_button_text_id|group_palette
+            title: Button text
+            attributes
+            - required: true
+            element_attributes
+            - name: color_button_text_id
     - button_save|button
         title: save
         attributes

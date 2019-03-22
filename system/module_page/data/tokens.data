@@ -90,3 +90,7 @@ tokens
     match: %%_color_button_active
     type: code
     handler: \effcore\modules\page\events_token::on_replace
+- color_button_text
+    match: %%_color_button_text
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
