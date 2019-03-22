@@ -78,7 +78,7 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     $link_add_new = new markup('a', ['href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'class' => [
       'like-button'           => 'like-button',
-      'link-add-new-instance' => 'link-add-new-instance']], new text('add new'));
+      'link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
       $selection = new selection;
       $selection->is_paged = true;
