@@ -130,11 +130,12 @@ namespace effcore {
     return $groups;
   }
 
-  static function updates_get() {
+  static function updates_get($module_id) {
     $updates = [];
     foreach (storage::get('files')->select('module_updates') as $c_module_id => $c_updates)
-      foreach ($c_updates as $c_row_id => $c_update)
-        $updates[$c_row_id] = $c_update;
+      if ($c_module_id == $module_id)
+        foreach ($c_updates as $c_row_id => $c_update)
+          $updates[$c_row_id] = $c_update;
     return $updates;
   }
 

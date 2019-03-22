@@ -1,6 +1,5 @@
 module_updates
-- system_1000
-    for: system
+- core_1000
     number: 1000
-    title: System update #1000
-    handler: \effcore\modules\core\events_module_update::on_update_system_1000
+    title: Core update #1000
+    handler: \effcore\modules\core\events_module_update::on_update_1000

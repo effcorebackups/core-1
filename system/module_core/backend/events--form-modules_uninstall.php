@@ -16,6 +16,7 @@ namespace effcore\modules\core {
           abstract class events_form_modules_uninstall {
 
   static function on_init($form, $items) {
+    $info = $form->child_select('info');
     $installed_by_boot = core::boot_select('installed');
     $enabled_by_boot = core::boot_select('enabled');
     $embed = module::embed_get();
@@ -34,7 +35,6 @@ namespace effcore\modules\core {
         );
       }
     }
-    $info = $form->child_select('info');
     if ($checkboxes->children_count())
          $info->child_insert($checkboxes, 'checkboxes');
     else $form->child_update('info', new markup('x-no-result', [], 'no items'));

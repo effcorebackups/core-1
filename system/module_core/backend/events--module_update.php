@@ -7,7 +7,7 @@
 namespace effcore\modules\core {
           abstract class events_module_update {
 
-  static function on_update_system_1000() {
+  static function on_update_1000() {
   }
 
 }}
