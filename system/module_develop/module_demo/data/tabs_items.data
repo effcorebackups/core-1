@@ -72,14 +72,14 @@ tabs_items
     attributes
     - class
       - =: demo-canvas
-- demo_menus|tabs_item
-    id: demo_menus
+- demo_menus_static|tabs_item
+    id: demo_menus_static
     id_parent: demo_embedded
-    action_name: embedded/menus
-    title: Menus
+    action_name: embedded/menus_static
+    title: Menus static
     attributes
     - class
-      - =: demo-menus
+      - =: demo-menus-static
 - demo_diagrams|tabs_item
     id: demo_diagrams
     id_parent: demo_embedded
@@ -88,3 +88,11 @@ tabs_items
     attributes
     - class
       - =: demo-diagrams
+- demo_logo|tabs_item
+    id: demo_logo
+    id_parent: demo_embedded
+    action_name: embedded/logo
+    title: Logo
+    attributes
+    - class
+      - =: demo-logo

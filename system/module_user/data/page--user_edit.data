@@ -19,10 +19,6 @@ pages
         region: menu
         type: link
         source: trees/core/main
-    - logo|page_part
-        region: top
-        type: link
-        source: blocks/page/logo
     - title|page_part
         region: title
         type: code

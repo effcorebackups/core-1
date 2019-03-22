@@ -14,8 +14,9 @@ pages
 >>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
->>>>>>>>>>>>>>>>>>>>>>>embedded/menus(/.*|)|
->>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams))|)$%
+>>>>>>>>>>>>>>>>>>>>>>>embedded/menus_static(/.*|)|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
     access
       roles
       - =: admins
@@ -143,7 +144,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^embedded/menus(/.*|)$%
+          match: %^embedded/menus_static(/.*|)$%
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_menu_demo_do_dynamic_changes
@@ -151,7 +152,7 @@ pages
         display
           check: page_args
           where: type
-          match: %^embedded/menus(/.*|)$%
+          match: %^embedded/menus_static(/.*|)$%
         region: content
         type: link
         source: trees/demo/demo
@@ -163,6 +164,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
+    - demo_logo|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/logo$%
+        region: content
+        type: link
+        source: blocks/page/logo
     - form_access|page_part
         display
           check: user

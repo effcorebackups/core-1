@@ -224,6 +224,7 @@ translations
     - Locales: Локализации
     - login: вход
     - Login: Вход
+    - Logo: Лого
     - logout: выход
     - Logout: Выход
     - Main system module.: Основной модуль системы.
@@ -243,7 +244,7 @@ translations
     - Menu main: Меню главное
     - Menu text: Меню текст
     - Menu: Меню
-    - Menus: Меню
+    - Menus static: Меню статическое
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
