@@ -13,6 +13,9 @@ events
   - modules_uninstall|event
       for: modules_uninstall
       handler: \effcore\modules\core\events_form_modules_uninstall::on_init
+  - modules_update|event
+      for: modules_update
+      handler: \effcore\modules\core\events_form_modules_update::on_init
   on_form_validate
   - install|event
       for: install
@@ -30,3 +33,6 @@ events
   - modules_uninstall|event
       for: modules_uninstall
       handler: \effcore\modules\core\events_form_modules_uninstall::on_submit
+  - modules_update|event
+      for: modules_update
+      handler: \effcore\modules\core\events_form_modules_update::on_submit

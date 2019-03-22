@@ -16,3 +16,11 @@ tabs_items
     attributes
     - class
       - =: modules-uninstall
+- modules_update|tabs_item
+    id: modules_update
+    id_parent: T:manage_modules
+    action_name: update
+    title: Update
+    attributes
+    - class
+      - =: modules-update

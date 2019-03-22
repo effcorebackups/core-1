@@ -5,3 +5,4 @@ settings
   - session: abcde01234abcde01234abcde01234abcde01234
   - salt: abcde01234abcde01234abcde01234abcde01234
   cookie_domain: 
+  last_update_number: 1000

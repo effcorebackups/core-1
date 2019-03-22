@@ -1,0 +1,13 @@
+forms
+- modules_update|form
+    attributes
+    - id: modules_update
+    - method: post
+    - novalidate: true
+    children
+    - info|fieldset
+        title: Update modules data
+    - button_apply|button
+        title: apply
+        attributes
+        - value: apply
