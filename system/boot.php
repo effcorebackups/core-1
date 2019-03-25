@@ -142,8 +142,8 @@ namespace effcore {
         $result = $data;
         if (module::is_enabled('develop')) {
           timer::tap('total');
-          $settings = storage::get('files')->select('settings');
-          if ($settings['page']->console_visibility == 'show_for_everyone') {
+          $settings = module::settings_get('page');
+          if ($settings->console_visibility == 'show_for_everyone') {
             if ($file_info->type == 'cssd' ||
                 $file_info->type == 'jsd') {
               $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
@@ -248,9 +248,9 @@ namespace effcore {
   if (module::is_enabled('develop')) {
     timer::tap('total');
     $user = user::current_get();
-    $settings = storage::get('files')->select('settings');
-    if (($settings['page']->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
-        ($settings['page']->console_visibility == 'show_for_everyone')) {
+    $settings = module::settings_get('page');
+    if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+        ($settings->console_visibility == 'show_for_everyone')) {
       $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
     }
   }

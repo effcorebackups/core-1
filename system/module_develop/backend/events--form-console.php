@@ -6,12 +6,13 @@
 
 namespace effcore\modules\develop {
           use \effcore\message;
+          use \effcore\module;
           use \effcore\storage;
           abstract class events_form_console {
 
   static function on_init($form, $items) {
-    $settings = storage::get('files')->select('settings');
-    $items['#visibility']->value_set($settings['page']->console_visibility);
+    $settings = module::settings_get('page');
+    $items['#visibility']->value_set($settings->console_visibility);
   }
 
   static function on_submit($form, $items) {

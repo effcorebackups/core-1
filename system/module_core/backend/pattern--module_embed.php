@@ -130,13 +130,19 @@ namespace effcore {
     return $groups;
   }
 
-  static function updates_get($module_id) {
+  static function updates_get($module_id, $from_number = 0) {
     $updates = [];
     foreach (storage::get('files')->select('module_updates') as $c_module_id => $c_updates)
       if ($c_module_id == $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
-          $updates[$c_row_id] = $c_update;
+          if ($c_update->number >= $from_number)
+            $updates[$c_row_id] = $c_update;
     return $updates;
+  }
+
+  static function settings_get($module_id) {
+    $settings = storage::get('files')->select('settings');
+    return $settings[$module_id] ?? [];
   }
 
   static function is_enabled($module_id) {
