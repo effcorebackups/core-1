@@ -419,6 +419,8 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
+    - Update #%%_number for module %%_name has been applied.: Обновление №%%_number для модуля %%_name было применено.
+    - Update #%%_number for module %%_name has not been applied!: Обновление №%%_number для модуля %%_name не было применено!
     - Update modules data: Обновить данные модулей
     - Update: Обновить
     - update: обновить

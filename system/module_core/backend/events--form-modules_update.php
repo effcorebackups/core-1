@@ -9,8 +9,10 @@ namespace effcore\modules\core {
           use \effcore\fieldset;
           use \effcore\group_checkboxes;
           use \effcore\markup;
+          use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
+          use \effcore\text;
           abstract class events_form_modules_update {
 
   static function on_init($form, $items) {
@@ -61,6 +63,9 @@ namespace effcore\modules\core {
                   $c_result = call_user_func($c_update->handler, $c_update);
                   if ($c_result) {
                     storage::get('files')->changes_insert($c_module->id, 'insert', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
+                           message::insert(new text('Update #%%_number for module %%_name has been applied.',     ['name' => $c_module->title, 'number' => $c_update->number])         );
+                  } else { message::insert(new text('Update #%%_number for module %%_name has not been applied!', ['name' => $c_module->title, 'number' => $c_update->number]), 'error');
+                    break;
                   }
                 }
               }
