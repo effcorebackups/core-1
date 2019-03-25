@@ -108,18 +108,21 @@ namespace effcore {
   }
 
   static function data_changes_apply($changes, &$data) {
+    $enabled_by_boot = core::boot_select('enabled');
     foreach ($changes as $module_id => $c_module_changes) {
-      foreach ($c_module_changes as $c_action => $c_changes) {
-        foreach ($c_changes as $c_dpath => $c_data) {
-          $c_pointers = core::dpath_pointers_get($data, $c_dpath);
-          $c_parent_name = array_keys($c_pointers)[count($c_pointers)-2];
-          $c_child_name  = array_keys($c_pointers)[count($c_pointers)-1];
-          $c_parent      =           &$c_pointers[$c_parent_name];
-          $c_child       =           &$c_pointers[$c_child_name];
-          switch ($c_action) {
-            case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # supported types: array|object
-            case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # supported types: array|object|string|numeric|bool|null
-            case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break;
+      if (isset($enabled_by_boot[$module_id])) {
+        foreach ($c_module_changes as $c_action => $c_changes) {
+          foreach ($c_changes as $c_dpath => $c_data) {
+            $c_pointers = core::dpath_pointers_get($data, $c_dpath);
+            $c_parent_name = array_keys($c_pointers)[count($c_pointers)-2];
+            $c_child_name  = array_keys($c_pointers)[count($c_pointers)-1];
+            $c_parent      =           &$c_pointers[$c_parent_name];
+            $c_child       =           &$c_pointers[$c_child_name];
+            switch ($c_action) {
+              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # supported types: array|object
+              case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # supported types: array|object|string|numeric|bool|null
+              case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break;
+            }
           }
         }
       }
