@@ -17,7 +17,8 @@ namespace effcore\modules\core {
     $modules = module::all_get();
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
-      $c_updates = module::updates_get($c_module->id);
+      $c_updates            = module::updates_get           ($c_module->id);
+      $c_last_update_number = module::last_update_number_get($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'opened';
@@ -26,7 +27,11 @@ namespace effcore\modules\core {
         $c_checkboxes->build();
         $c_fieldset->child_insert($c_checkboxes, 'checkboxes');
         $info->child_insert($c_fieldset, $c_module->id);
+        core::array_sort_by_property($c_updates, 'number');
         foreach ($c_updates as $c_update) {
+          if ($c_update->number <= $c_last_update_number) {
+            $c_checkboxes->disabled[$c_update->number] = $c_update->number;
+          }
           $c_checkboxes->field_insert(
             $c_update->title, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );

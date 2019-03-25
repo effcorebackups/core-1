@@ -140,6 +140,11 @@ namespace effcore {
     return $updates;
   }
 
+  static function last_update_number_get($module_id) {
+    $settings = static::settings_get($module_id);
+    return $settings->last_update_number ?? 0;
+  }
+
   static function settings_get($module_id) {
     $settings = storage::get('files')->select('settings');
     return $settings[$module_id] ?? [];
