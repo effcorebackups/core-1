@@ -17,6 +17,7 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     $info = $form->child_select('info');
+    $info->children_delete_all();
     $modules = module::all_get();
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
@@ -62,7 +63,7 @@ namespace effcore\modules\core {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
                   $c_result = call_user_func($c_update->handler, $c_update);
                   if ($c_result) {
-                    storage::get('files')->changes_insert($c_module->id, 'insert', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
+                    storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
                            message::insert(new text('Update #%%_number for module %%_name has been applied.',     ['name' => $c_module->title, 'number' => $c_update->number])         );
                   } else { message::insert(new text('Update #%%_number for module %%_name has not been applied!', ['name' => $c_module->title, 'number' => $c_update->number]), 'error');
                     break;
@@ -72,6 +73,7 @@ namespace effcore\modules\core {
             }
           }
         }
+        static::on_init($form, $items);
         break;
     }
   }
