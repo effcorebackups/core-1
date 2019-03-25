@@ -26,6 +26,8 @@ namespace effcore {
            message::insert(new text('Entity %%_name was uninstalled.',     ['name' => $c_entity->name]));
       else message::insert(new text('Entity %%_name was not uninstalled!', ['name' => $c_entity->name]), 'error');
     }
+  # delete changes
+    storage::get('files')->changes_delete_all($this->id);
   # delete from boot
     core::boot_delete($this->id, 'installed');
   }

@@ -51,6 +51,18 @@ namespace effcore {
     }
   }
 
+  function changes_delete_all($module_id, $rebuild = true) {
+  # delete old dynamic changes for specified module
+    $changes_d = data::select('changes') ?: [];
+    unset($changes_d[$module_id]);
+    data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
+  # prevent opcache work
+    static::$changes_dynamic['changes'] = $changes_d;
+    if ($rebuild) {
+      static::cache_update();
+    }
+  }
+
   ###########################
   ### static declarations ###
   ###########################
