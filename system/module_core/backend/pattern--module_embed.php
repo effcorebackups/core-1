@@ -140,9 +140,9 @@ namespace effcore {
     return $updates;
   }
 
-  static function last_update_number_get($module_id) {
+  static function update_last_number_get($module_id) {
     $settings = static::settings_get($module_id);
-    return $settings->last_update_number ?? 0;
+    return $settings->update_last_number ?? 0;
   }
 
   static function settings_get($module_id) {

@@ -10,6 +10,7 @@ namespace effcore\modules\core {
           use \effcore\group_checkboxes;
           use \effcore\markup;
           use \effcore\module;
+          use \effcore\storage;
           abstract class events_form_modules_update {
 
   static function on_init($form, $items) {
@@ -18,7 +19,7 @@ namespace effcore\modules\core {
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
       $c_updates            = module::updates_get           ($c_module->id);
-      $c_last_update_number = module::last_update_number_get($c_module->id);
+      $c_update_last_number = module::update_last_number_get($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'opened';
@@ -29,9 +30,9 @@ namespace effcore\modules\core {
         $info->child_insert($c_fieldset, $c_module->id);
         core::array_sort_by_property($c_updates, 'number');
         foreach ($c_updates as $c_update) {
-          if ($c_update->number <= $c_last_update_number) {
-            $c_checkboxes->disabled[$c_update->number] = $c_update->number;
-          }
+          if ($c_update->number <= $c_update_last_number)
+            $c_checkboxes->disabled[$c_update->number] =
+                                    $c_update->number;
           $c_checkboxes->field_insert(
             $c_update->title, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );
@@ -47,6 +48,25 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
+        $modules = module::all_get();
+        core::array_sort_by_title($modules);
+        foreach ($modules as $c_module) {
+          $c_updates            = module::updates_get           ($c_module->id);
+          $c_update_last_number = module::update_last_number_get($c_module->id);
+          if (count($c_updates)) {
+            core::array_sort_by_property($c_updates, 'number', 'd');
+            foreach ($c_updates as $c_update) {
+              if ($c_update->number > $c_update_last_number) {
+                if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
+                  $c_result = call_user_func($c_update->handler, $c_update);
+                  if ($c_result) {
+                    storage::get('files')->changes_insert($c_module->id, 'insert', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
+                  }
+                }
+              }
+            }
+          }
+        }
         break;
     }
   }
