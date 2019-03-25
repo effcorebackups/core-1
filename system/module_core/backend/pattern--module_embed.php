@@ -145,6 +145,16 @@ namespace effcore {
     return $settings->update_last_number ?? 0;
   }
 
+  static function updates_is_required() {
+    foreach (static::all_get() as $c_module) {
+      $c_updates            = static::updates_get           ($c_module->id);
+      $c_update_last_number = static::update_last_number_get($c_module->id);
+      foreach ($c_updates as $c_update) {
+        if ($c_update->number > $c_update_last_number) return true;
+      }
+    }
+  }
+
   static function settings_get($module_id) {
     $settings = storage::get('files')->select('settings');
     return $settings[$module_id] ?? [];

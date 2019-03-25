@@ -120,16 +120,16 @@
   x-block.system-info x-build x-title::after {content: ': '}
   x-block.system-info x-build x-value {font-weight: bold}
 
-  /* block environment info */
+  /* x-sticker */
 
-  x-block.environment-info x-value {
+  x-sticker {
     display: inline-block;
     padding: 1px 6px 2px 6px;
     border-radius: 8px;
     line-height: 1.1em;
     color: black}
-  x-block.environment-info x-value[data-state='ok'     ] {background: %%_color_ok}
-  x-block.environment-info x-value[data-state='warning'] {background: %%_color_warning}
+  x-sticker[data-state='ok'     ] {background: %%_color_ok}
+  x-sticker[data-state='warning'] {background: %%_color_warning}
 
   /* block logo */
 
