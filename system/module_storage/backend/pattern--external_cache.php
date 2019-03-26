@@ -16,16 +16,13 @@ namespace effcore {
     }
   }
 
-  function external_cache_load() {
-    if (cache::is_exists($this->cache_name)) {
-      return cache::select(
-        $this->cache_name
-      );
-    } else {
-      cache::message_select_show(
-        cache::file_by_name_get($this->cache_name)
-      );
+  function external_cache_load($with_restore = true) {
+    if (!cache::is_exists($this->cache_name) && $with_restore) {
+      storage_nosql_files::cache_update();
     }
+    return cache::select(
+      $this->cache_name
+    );
   }
 
 }}
