@@ -246,6 +246,10 @@ namespace effcore {
            $this->has_error = true;
         $element = $this->child_select('element');
         $element->attribute_insert('class', ['error' => 'error']);
+        $element->attribute_insert('tabindex', ++static::$error_tabindex);
+        if (static::$error_tabindex == 1) {
+          $element->attribute_insert('autofocus', true);
+        }
       }
     }
   }
@@ -313,6 +317,7 @@ namespace effcore {
   ###########################
 
   static protected $numbers = [];
+  static protected $error_tabindex = 0;
 
   static function cur_number_get($name) {
     return !isset(static::$numbers[$name]) ?
