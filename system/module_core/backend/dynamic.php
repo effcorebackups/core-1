@@ -12,13 +12,22 @@ namespace effcore {
   static public $info = [];
   static public $data = [];
 
+  static function file_by_name_get($name, $sub_dirs = '') {
+    return new file(static::directory.$sub_dirs.$name.'.php');
+  }
+
+  static function is_exists($name, $sub_dirs = '') {
+    $file = static::file_by_name_get($name, $sub_dirs);
+    return $file->is_exist();
+  }
+
   static function select_info() {
     return static::$info;
   }
 
   static function select($name, $sub_dirs = '') {
     if (!isset(static::$data[$name])) {
-      $file = new file(static::directory.$sub_dirs.$name.'.php');
+      $file = static::file_by_name_get($name, $sub_dirs);
       if ($file->is_exist()) {
         $file->insert();
       }
@@ -28,7 +37,7 @@ namespace effcore {
 
   static function update($name, $data, $sub_dirs = '', $info = null) {
     static::$data[$name] = $data;
-    $file = new file(static::directory.$sub_dirs.$name.'.php');
+    $file = static::file_by_name_get($name, $sub_dirs);
     if ($info) static::$info[$name] = $info;
     if (file::mkdir_if_not_exist($file->dirs_get()) &&
                      is_writable($file->dirs_get())) {
@@ -55,12 +64,20 @@ namespace effcore {
   static function delete($name, $sub_dirs = '') {
     if (isset(static::$data[$name]))
         unset(static::$data[$name]);
-    $file = new file(static::directory.$sub_dirs.$name.'.php');
+    $file = static::file_by_name_get($name, $sub_dirs);
     if ($file->is_exist()) {
       $result = @unlink($file->path_get());
       if   (!$result) static::message_delete_show($file);
       return $result;
     }
+  }
+
+  static function message_select_show($file) {
+    require_once('message.php');
+    message::insert(
+      'Can not select file "'.$file->file_get().'" from the directory "'.$file->dirs_relative_get().'"!'.br.
+      'Check directory permissions or try to reset the cache.', 'error'
+    );
   }
 
   static function message_insert_show($file) {

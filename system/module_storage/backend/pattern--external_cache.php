@@ -16,14 +16,16 @@ namespace effcore {
     }
   }
 
-  function external_cache_name_get() {
-    return $this->cache_name;
-  }
-
   function external_cache_load() {
-    return cache::select(
-      $this->external_cache_name_get()
-    );
+    if (cache::is_exists($this->cache_name)) {
+      return cache::select(
+        $this->cache_name
+      );
+    } else {
+      cache::message_select_show(
+        cache::file_by_name_get($this->cache_name)
+      );
+    }
   }
 
 }}
