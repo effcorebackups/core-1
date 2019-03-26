@@ -51,6 +51,7 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
+        $has_selection = false;
         $modules = module::all_get();
         core::array_sort_by_title($modules);
         foreach ($modules as $c_module) {
@@ -61,17 +62,23 @@ namespace effcore\modules\core {
             foreach ($c_updates as $c_update) {
               if ($c_update->number > $c_update_last_number) {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
+                  $has_selection = true;
                   $c_result = call_user_func($c_update->handler, $c_update);
                   if ($c_result) {
                     storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
-                           message::insert(new text('Update #%%_number for module %%_name has been applied.',     ['name' => $c_module->title, 'number' => $c_update->number])         );
-                  } else { message::insert(new text('Update #%%_number for module %%_name has not been applied!', ['name' => $c_module->title, 'number' => $c_update->number]), 'error');
+                           message::insert(new text('Update #%%_number for module %%_title (%%_id) has been applied.',     ['title' => $c_module->title, 'id' => $c_module->id, 'number' => $c_update->number])         );
+                  } else { message::insert(new text('Update #%%_number for module %%_title (%%_id) has not been applied!', ['title' => $c_module->title, 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
                     break;
                   }
                 }
               }
             }
           }
+        }
+        if (!$has_selection) {
+          message::insert(
+            'Nothing selected!', 'warning'
+          );
         }
         static::on_init($form, $items);
         break;

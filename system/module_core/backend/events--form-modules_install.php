@@ -169,7 +169,7 @@ namespace effcore\modules\core {
         }
         if (!$modules_to_enable && !$modules_to_disable) {
           message::insert(
-            'No one module was selected!', 'warning'
+            'Nothing selected!', 'warning'
           );
         }
         break;
