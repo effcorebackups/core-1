@@ -50,9 +50,9 @@ namespace effcore\modules\core {
         $c_dependencies_php_items = new node;
         $c_dependencies_sys_items = new node;
         $c_depended_sys_items     = new node;
-        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
-        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-dependency', ['data-state' => $c_state    ], new text_simple(strtolower($c_id))), strtolower($c_id));
-        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-dependency', ['data-state' => $c_state + 2], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok' : ''       ], new text_simple(strtolower($c_id))), strtolower($c_id));
         $c_info = new markup('x-module-info');
         $c_switcher = new field_switcher();
         $c_switcher->build();

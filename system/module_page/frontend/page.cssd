@@ -124,12 +124,15 @@
 
   x-sticker {
     display: inline-block;
+    margin-right: 5px;
     padding: 1px 6px 2px 6px;
     border-radius: 8px;
     line-height: 1.1em;
-    color: black}
+    color: black;
+    background-color: silver}
   x-sticker[data-state='ok'     ] {background: %%_color_ok}
   x-sticker[data-state='warning'] {background: %%_color_warning}
+  x-sticker[data-state='error'  ] {background: %%_color_error}
 
   /* block logo */
 
@@ -295,9 +298,3 @@
   x-module-info x-module-copyright {display: block}
   x-module-info x-module-description {display: block}
   x-module-info x-dependencies {display: block}
-  x-module-info x-dependencies x-dependency {display: inline-block; margin-right: 5px; padding: 1px 6px 2px 6px; border-radius: 8px; line-height: 1.1em; color: black}
-  x-module-info x-dependencies x-dependency:last-child {margin-right: 0}
-  x-module-info x-dependencies x-dependency[data-state='0'] {background: %%_color_warning}
-  x-module-info x-dependencies x-dependency[data-state='1'] {background: silver}
-  x-module-info x-dependencies x-dependency[data-state='2'] {background: silver}
-  x-module-info x-dependencies x-dependency[data-state='3'] {background: %%_color_ok}
