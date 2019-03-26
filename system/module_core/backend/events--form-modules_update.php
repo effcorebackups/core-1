@@ -37,7 +37,9 @@ namespace effcore\modules\core {
             $c_checkboxes->disabled[$c_update->number] =
                                     $c_update->number;
           $c_checkboxes->field_insert(
-            $c_update->title, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
+            $c_update->title,
+            $c_update->description ?? null,
+            ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );
         }
       }

@@ -31,7 +31,7 @@ namespace effcore\modules\core {
         if (isset($enabled_by_boot  [$c_module->id]))
         $checkboxes->disabled[$c_module->id] = $c_module->id;
         $checkboxes->field_insert(
-          $c_module->title, ['name' => 'uninstall[]', 'value' => $c_module->id]
+          $c_module->title, null, ['name' => 'uninstall[]', 'value' => $c_module->id]
         );
       }
     }

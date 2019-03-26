@@ -24,7 +24,7 @@ namespace effcore {
           $c_new_color_group  = $c_color->group ?? null;
       if ($c_new_color_group != $c_old_color_group) $this->child_insert(hr);
           $c_old_color_group  = $c_new_color_group;
-      $this->field_insert(null, $c_attributes, $c_color->id);
+      $this->field_insert(null, null, $c_attributes, $c_color->id);
     }
   }
 

@@ -30,13 +30,14 @@ namespace effcore {
 
   function build() {
     foreach ($this->values as $value => $title) {
-      $this->field_insert($title, ['value' => $value]);
+      $this->field_insert($title, null, ['value' => $value]);
     }
   }
 
-  function field_insert($title = null, $attributes = [], $new_id = null) {
+  function field_insert($title = null, $description = null, $attributes = [], $new_id = null) {
     $field = new $this->field_class();
     $field->title          = $title;
+    $field->description    = $description;
     $field->tag_name       = $this->field_tag_name;
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;
