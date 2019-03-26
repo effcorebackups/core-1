@@ -4,7 +4,7 @@
   ### Copyright © 2017—2019 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\core {
+namespace effcore\modules\demo {
           use \effcore\message;
           abstract class events_module_update {
 
