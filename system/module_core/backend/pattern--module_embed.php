@@ -132,7 +132,7 @@ namespace effcore {
 
   static function updates_get($module_id, $from_number = 0) {
     $updates = [];
-    foreach (storage::get('files')->select('module_updates') ?? [] as $c_module_id => $c_updates)
+    foreach (storage::get('files')->select('module_updates', false, false) ?? [] as $c_module_id => $c_updates)
       if ($c_module_id == $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
           if ($c_update->number >= $from_number)

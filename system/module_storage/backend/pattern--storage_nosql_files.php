@@ -9,7 +9,7 @@ namespace effcore {
 
   public $name;
 
-  function select($dpath, $expand_cache = false, $with_restore = false) {
+  function select($dpath, $expand_cache = false, $with_restore = true) {
     $parts = explode('/', $dpath);
     $catalog_name = array_shift($parts);
     if (isset(static::$data[$catalog_name]) == false) static::init($catalog_name, $with_restore);
