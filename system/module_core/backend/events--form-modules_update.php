@@ -25,7 +25,7 @@ namespace effcore\modules\core {
       $c_update_last_number = module::update_last_number_get($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
-        $c_fieldset->state = 'opened';
+        $c_fieldset->state = 'closed';
         $c_fieldset->build();
         $c_checkboxes = new group_checkboxes();
         $c_checkboxes->build();
@@ -33,11 +33,12 @@ namespace effcore\modules\core {
         $info->child_insert($c_fieldset, $c_module->id);
         core::array_sort_by_property($c_updates, 'number');
         foreach ($c_updates as $c_update) {
-          if ($c_update->number <= $c_update_last_number)
+          if ($c_update->number <= $c_update_last_number) {
             $c_checkboxes->disabled[$c_update->number] =
                                     $c_update->number;
+          } else $c_fieldset->state = 'opened';
           $c_checkboxes->field_insert(
-            $c_update->title,
+            $c_update->number.': '.$c_update->title,
             $c_update->description ?? null,
             ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );

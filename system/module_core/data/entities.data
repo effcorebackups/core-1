@@ -1,0 +1,30 @@
+entities
+- message|entity
+    name: message
+    title: Message
+    title_plural: Messages
+    catalog_name: messages
+    group: Core
+    fields
+    - id_session
+        title: Session ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+    - type
+        title: Type
+        type: varchar
+        size: 32
+        collate: nocase
+        not_null: true
+        default: ok
+    - text
+        title: Text
+        type: blob
+        null: true
+    indexes
+    - index_id_session
+        type: index
+        fields
+        - =: id_session

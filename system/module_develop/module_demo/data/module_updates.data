@@ -1,16 +1,16 @@
 module_updates
 - demo_1000
     number: 1000
-    title: Demo update #1000
-    description: Demo update #1000 description.
+    title: Update title 1
+    description: Update description 1.
     handler: \effcore\modules\demo\events_module_update::on_update_1000
 - demo_1001
     number: 1001
-    title: Demo update #1001
-    description: Demo update #1001 description.
+    title: Update title 2
+    description: Update description 2.
     handler: \effcore\modules\demo\events_module_update::on_update_1001
 - demo_1002
     number: 1002
-    title: Demo update #1002
-    description: Demo update #1002 description.
+    title: Update title 3
+    description: Update description 3.
     handler: \effcore\modules\demo\events_module_update::on_update_1002

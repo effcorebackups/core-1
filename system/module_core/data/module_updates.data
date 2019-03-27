@@ -1,0 +1,6 @@
+module_updates
+- core_1000
+    number: 1000
+    title: Messages
+    description: Added functionality for messages which stored in the SQL database.
+    handler: \effcore\modules\core\events_module_update::on_update_1000
