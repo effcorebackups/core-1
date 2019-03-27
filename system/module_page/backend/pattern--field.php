@@ -245,9 +245,8 @@ namespace effcore {
       if (!$this->has_error) {
            $this->has_error = true;
         $element = $this->child_select('element');
-        $element->attribute_insert('class', ['error' => 'error']);
-        $element->attribute_insert('tabindex', ++static::$error_tabindex);
-        if (static::$error_tabindex == 1) {
+        $element->attribute_insert('aria-invalid', 'true');
+        if (++static::$error_tabindex == 1) {
           $element->attribute_insert('autofocus', true);
         }
       }

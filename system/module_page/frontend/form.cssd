@@ -2,7 +2,7 @@
   /* form */
 
   form {margin: 70px 0}
-  form .error {border-color: %%_color_error !important}
+  form *[aria-invalid=true] {border-color: %%_color_error !important}
 
   /* fieldset */
 
