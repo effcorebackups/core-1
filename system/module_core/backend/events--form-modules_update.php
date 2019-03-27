@@ -13,6 +13,7 @@ namespace effcore\modules\core {
           use \effcore\module;
           use \effcore\storage;
           use \effcore\text;
+          use \effcore\translation;
           abstract class events_form_modules_update {
 
   static function on_init($form, $items) {
@@ -38,7 +39,7 @@ namespace effcore\modules\core {
                                     $c_update->number;
           } else $c_fieldset->state = 'opened';
           $c_checkboxes->field_insert(
-            $c_update->number.': '.$c_update->title,
+            $c_update->number.': '.translation::get($c_update->title),
             $c_update->description ?? null,
             ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );
