@@ -30,8 +30,17 @@ namespace effcore {
     ]);
   }
 
-  static function select_all() {
-    if    (static::$cache == null) static::init();
+  static function select_all($with_storage = true) {
+    if (static::$cache == null) static::init();
+    if ($with_storage) {
+      foreach (static::select_from_storage() as $c_type => $c_messages) {
+        if (!isset(static::$cache[$c_type]))
+                   static::$cache[$c_type] = [];
+        foreach ($c_messages as $c_message) {
+          static::$cache[$c_type][] = $c_message;
+        }
+      }
+    }
     return static::$cache;
   }
 
