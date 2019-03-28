@@ -17,9 +17,39 @@ namespace effcore {
     static::$cache = null;
   }
 
+  static function cleaning($id_session = null) {
+    if ($id_session) $condition = ['id_!f'      => 'id_session', '=', 'id_!v'      => $id_session         ];
+    else             $condition = ['expired_!f' => 'expired',    '<', 'expired_!v' => core::datetime_get()];
+    $storage = storage::get(entity::get('message')->storage_name);
+    $storage->query([
+      'action' => 'DELETE',
+      'target_begin' => 'FROM',
+      'target_!t' => '~message',
+      'condition_begin' => 'WHERE',
+      'condition' => $condition
+    ]);
+  }
+
   static function select_all() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function select_from_storage() {
+    $result = [];
+    $instances = entity::get('message')->instances_select(['conditions' => [
+      'id_!f'    => 'id_session',
+      'operator' => '=',
+      'id_!v'    => session::id_get()
+    ]]);
+    if (count($instances)) {
+      foreach ($instances as $c_instance)
+        $result[$c_instance->type][] = unserialize($c_instance->data);
+      static::cleaning(
+        session::id_get()
+      );
+    }
+    return $result;
   }
 
   static function insert($message, $type = 'ok') {
@@ -28,6 +58,15 @@ namespace effcore {
                static::$cache[$type] = [];
     if (!in_array($message, static::$cache[$type]))
                             static::$cache[$type][] = $message;
+  }
+
+  static function insert_to_storage($message, $type = 'ok', $period = 30) {
+    (new instance('message', [
+      'id_session' => session::id_get(),
+      'type'       => $type,
+      'expired'    => core::datetime_get('+'.$period.' second'),
+      'data'       => serialize($message)
+    ]))->insert();
   }
 
   static function markup_get() {

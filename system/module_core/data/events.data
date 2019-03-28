@@ -7,6 +7,10 @@ events
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_enable
+  on_cron
+  - core|event
+      for: core
+      handler: \effcore\modules\core\events_module::on_cron
   on_form_init
   - install|event
       for: install

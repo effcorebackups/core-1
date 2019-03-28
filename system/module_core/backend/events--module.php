@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\message;
           use \effcore\module;
           abstract class events_module {
 
@@ -16,6 +17,10 @@ namespace effcore\modules\core {
   static function on_enable() {
     $module = module::get('core');
     $module->enable();
+  }
+
+  static function on_cron() {
+    message::cleaning();
   }
 
 }}
