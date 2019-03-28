@@ -52,7 +52,7 @@ instances
     values
     - id: 2
     - description: row with non-default values
-    - f_integer: 123
+    - f_integer: 123456
     - f_real: 123.456
     - f_varchar: text
     - f_time: 12:34:56
