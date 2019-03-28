@@ -360,6 +360,19 @@ namespace effcore {
     }
   }
 
+  function instances_delete($entity, $params = []) {
+    $params += ['conditions' => [], 'limit' => 0];
+    if ($this->init()) {
+      $query = [
+        'action' => 'DELETE',
+        'target_begin' => 'FROM',
+        'target_!t' => '~'.$entity->name];
+      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
+      if (      $params['limit'     ] ) $query += ['limit_begin' => 'LIMIT', 'limit' => (int)$params['limit']];
+      return $this->query($query);
+    }
+  }
+
   function instances_count_select($entity, $params = []) {
     $params += ['join' => [], 'conditions' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {

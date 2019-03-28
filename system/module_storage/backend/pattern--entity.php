@@ -88,18 +88,24 @@ namespace effcore {
     return $storage->entity_uninstall($this);
   }
 
-  function instances_select($params = []) {
-    $storage = storage::get($this->storage_name);
-    return $storage->instances_select($this, $params);
-  }
-
   function instances_count_select($params = []) {
     $storage = storage::get($this->storage_name);
     return $storage->instances_count_select($this, $params);
   }
 
-  function instances_insert() {} # @todo: make functionality
-  function instances_delete() {} # @todo: make functionality
+  function instances_select($params = []) {
+    $storage = storage::get($this->storage_name);
+    return $storage->instances_select($this, $params);
+  }
+
+  function instances_delete($params = []) {
+    $storage = storage::get($this->storage_name);
+    return $storage->instances_delete($this, $params);
+  }
+
+  function instances_insert() {
+    # @todo: make functionality
+  }
 
   ###########################
   ### static declarations ###
