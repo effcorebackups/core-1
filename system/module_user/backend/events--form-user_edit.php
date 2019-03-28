@@ -95,7 +95,7 @@ namespace effcore\modules\user {
            $user->avatar_path = null;
         }
         if ($user->update()) {
-          message::insert(new text(
+          message::insert_to_storage(new text(
             'User %%_nick was updated.', ['nick' => $user->nick]
           ));
           url::go(url::back_url_get() ?: '/user/'.$user->nick);

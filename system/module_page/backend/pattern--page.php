@@ -24,6 +24,7 @@ namespace effcore {
   }
 
   function render() {
+    $settings = module::settings_get('page');
     $user_agent = core::server_user_agent_info_get();
     header('Content-language: '.language::current_code_get());
     header('Content-Type: text/html; charset='.$this->charset);
@@ -32,7 +33,7 @@ namespace effcore {
     }
 
   # show important messages
-    if (false && !empty($this->https) && url::current_get()->protocol_get() != 'https') {
+    if ($settings->show_warning_if_not_https && !empty($this->https) && url::current_get()->protocol_get() != 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
       );
