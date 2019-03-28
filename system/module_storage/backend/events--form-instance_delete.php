@@ -45,8 +45,8 @@ namespace effcore\modules\storage {
         $id_values = explode('+', $instance_id);
         $instance  = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select() && $instance->delete())
-             message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
-        else message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
+             message::insert_to_storage(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was deleted.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
+        else message::insert           (new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
         url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
         break;
       case 'cancel':
