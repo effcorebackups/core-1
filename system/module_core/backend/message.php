@@ -65,8 +65,7 @@ namespace effcore {
     if (static::$cache == null) static::init();
     if (!isset(static::$cache[$type]))
                static::$cache[$type] = [];
-    if (!in_array($message, static::$cache[$type]))
-                            static::$cache[$type][] = $message;
+    static::$cache[$type][] = $message;
   }
 
   static function insert_to_storage($message, $type = 'ok', $period = 30) {

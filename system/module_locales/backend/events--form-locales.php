@@ -19,7 +19,8 @@ namespace effcore\modules\locales {
     foreach (language::get_all() as $c_language) {
       $title = $c_language->code == 'en' ?
                $c_language->title->en :
-               $c_language->title->en.' ('.$c_language->title->native.')';
+               $c_language->title->en.' ('.
+               $c_language->title->native.')';
       $items['#lang_code']->option_insert($title, $c_language->code);
     }
     $items['#lang_code'          ]->value_set($settings->lang_code);
@@ -40,7 +41,9 @@ namespace effcore\modules\locales {
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
+        locale::init();
         language::current_code_set($items['#lang_code']->value_get());
+        static::on_init($form, $items);
         message::insert('The changes was saved.');
         break;
       case 'restore':
@@ -50,8 +53,10 @@ namespace effcore\modules\locales {
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_datetime', false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/decimal_point',   false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/thousands_separator');
+        locale::init();
+        language::current_code_set('en');
+        static::on_init($form, $items);
         message::insert('The changes was deleted.');
-        url::go('/manage/locales');
         break;
     }
   }
