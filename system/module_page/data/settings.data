@@ -1,6 +1,6 @@
 settings
   console_visibility: not_show
-  show_warning_if_not_https: true
+  show_warning_if_not_https: false
   color_page_id: white
   color_text_id: black
   color_main_id: modern_blue

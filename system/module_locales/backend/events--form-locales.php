@@ -9,12 +9,13 @@ namespace effcore\modules\locales {
           use \effcore\language;
           use \effcore\locale;
           use \effcore\message;
+          use \effcore\module;
           use \effcore\storage;
           use \effcore\url;
           abstract class events_form_locales {
 
   static function on_init($form, $items) {
-    $settings = locale::settings_get();
+    $settings = module::settings_get('locales');
     $items['#lang_code']->option_insert('- select -', 'not_selected');
     foreach (language::get_all() as $c_language) {
       $title = $c_language->code == 'en' ?
@@ -41,7 +42,6 @@ namespace effcore\modules\locales {
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
         storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
-        locale::init();
         language::current_code_set($items['#lang_code']->value_get());
         static::on_init($form, $items);
         message::insert('The changes was saved.');
@@ -53,7 +53,6 @@ namespace effcore\modules\locales {
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_datetime', false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/decimal_point',   false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/thousands_separator');
-        locale::init();
         language::current_code_set('en');
         static::on_init($form, $items);
         message::insert('The changes was deleted.');
