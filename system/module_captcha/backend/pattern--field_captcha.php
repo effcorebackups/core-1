@@ -155,13 +155,8 @@ namespace effcore {
   }
 
   static function captcha_old_cleaning() {
-    $storage = storage::get(entity::get('captcha')->storage_name);
-    $storage->query([
-      'action' => 'DELETE',
-      'target_begin' => 'FROM',
-      'target_!t' => '~captcha',
-      'condition_begin' => 'WHERE',
-      'condition' => ['created_!f' => 'created', '<', 'created_!v' => core::datetime_get('-1 hour')]
+    entity::get('captcha')->instances_delete([
+      'conditions' => ['created_!f' => 'created', '<', 'created_!v' => core::datetime_get('-1 hour')]
     ]);
   }
 
