@@ -32,6 +32,11 @@ entities
         type: primary
         fields
         - =: id
+    indexes
+    - index_title
+        type: index
+        fields
+        - =: title
 - tree_item|entity
     name: tree_item
     title: Tree item
@@ -84,3 +89,16 @@ entities
         type: primary
         fields
         - =: id
+    indexes
+    - index_id_parent
+        type: index
+        fields
+        - =: id_parent
+    - index_id_tree
+        type: index
+        fields
+        - =: id_tree
+    - index_title
+        type: index
+        fields
+        - =: title

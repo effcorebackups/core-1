@@ -32,6 +32,11 @@ entities
         type: primary
         fields
         - =: id
+    indexes
+    - index_title
+        type: index
+        fields
+        - =: title
 - relation_role_ws_permission|entity
     name: relation_role_ws_permission
     title: Relation: Role + Permission
@@ -185,6 +190,10 @@ entities
         fields
         - =: id
     indexes
+    - index_title
+        type: index
+        fields
+        - =: title
     - index_weight
         type: index
         fields
@@ -252,6 +261,11 @@ entities
         references: users
         references_fields
         - =: id
+    indexes
+    - index_expired
+        type: index
+        fields
+        - =: expired
 - user|entity
     name: user
     title: User

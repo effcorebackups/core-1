@@ -18,6 +18,7 @@ namespace effcore\modules\core {
           use \effcore\storage_nosql_files;
           use \effcore\text_simple;
           use \effcore\text;
+          use \effcore\translation;
           abstract class events_form_modules_install {
 
   static function on_init($form, $items) {
@@ -30,7 +31,7 @@ namespace effcore\modules\core {
     core::array_sort_text($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
       $c_fieldset = new fieldset($c_group_title);
-      $c_fieldset->state = $c_group_id == 'system' ? 'opened' : 'closed';
+      $c_fieldset->state = 'closed';
       $c_fieldset->build();
       $info->child_insert($c_fieldset, $c_group_id);
       foreach ($modules as $c_module)
@@ -153,7 +154,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_enable as $c_module) {
             if (isset($enabled_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module %%_title (%%_id) has been enabled.', ['title' => $c_module->title, 'id' => $c_module->id])
+                new text('Module %%_title (%%_id) has been enabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }
@@ -162,7 +163,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_disable as $c_module) {
             if (!isset($enabled_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module %%_title (%%_id) has been disabled.', ['title' => $c_module->title, 'id' => $c_module->id])
+                new text('Module %%_title (%%_id) has been disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }

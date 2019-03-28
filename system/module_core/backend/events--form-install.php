@@ -15,6 +15,7 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\text_multiline;
           use \effcore\text;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_install {
 
@@ -151,7 +152,7 @@ namespace effcore\modules\core {
               event::start('on_module_enable',  $c_module->id);
             # cancel installation if an error occurred
               if (count(storage::get('sql')->errors) == 0)
-                message::insert(new text('Module %%_title (%%_id) has been installed.', ['title' => $c_module->title, 'id' => $c_module->id]));
+                message::insert(new text('Module %%_title (%%_id) has been installed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
               else break;
             }
           }

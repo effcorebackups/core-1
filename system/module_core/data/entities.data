@@ -19,12 +19,19 @@ entities
         collate: nocase
         not_null: true
         default: ok
-    - text
-        title: Text
+    - expired
+        title: Expired date
+        type: datetime
+    - data
+        title: Data
         type: blob
-        null: true
+        not_null: true
     indexes
     - index_id_session
         type: index
         fields
         - =: id_session
+    - index_expired
+        type: index
+        fields
+        - =: expired

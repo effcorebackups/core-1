@@ -8,6 +8,11 @@ namespace effcore\modules\core {
           use \effcore\module;
           abstract class events_module {
 
+  static function on_install() {
+    $module = module::get('core');
+    $module->install();
+  }
+
   static function on_enable() {
     $module = module::get('core');
     $module->enable();
