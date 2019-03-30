@@ -103,10 +103,6 @@ namespace effcore {
     return $storage->instances_delete($this, $params);
   }
 
-  function instances_insert() {
-    # @todo: make functionality
-  }
-
   ###########################
   ### static declarations ###
   ###########################
