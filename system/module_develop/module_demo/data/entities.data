@@ -266,6 +266,7 @@ entities
         title: Data ID
         type: integer
         not_null: true
+        show_in_manager: true
     - email
         title: EMail
         type: varchar
