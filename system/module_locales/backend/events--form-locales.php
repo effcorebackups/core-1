@@ -24,13 +24,13 @@ namespace effcore\modules\locales {
                $c_language->title->native.')';
       $items['#lang_code']->option_insert($title, $c_language->code);
     }
-    $items['#lang_code'          ]->value_set($settings->lang_code);
-    $items['#format_date'        ]->value_set($settings->format_date);
-    $items['#format_time'        ]->value_set($settings->format_time);
-    $items['#format_datetime'    ]->value_set($settings->format_datetime);
-    $items['#decimal_point'      ]->value_set($settings->decimal_point);
+    $items['#lang_code'          ]->value_set($settings->lang_code          );
+    $items['#format_date'        ]->value_set($settings->format_date        );
+    $items['#format_time'        ]->value_set($settings->format_time        );
+    $items['#format_datetime'    ]->value_set($settings->format_datetime    );
+    $items['#decimal_point'      ]->value_set($settings->decimal_point      );
     $items['#thousands_separator']->value_set($settings->thousands_separator);
-    $items['#timezone_server'    ]->value_set(date_default_timezone_get());
+    $items['#timezone_server'    ]->value_set(date_default_timezone_get()   );
   }
 
   static function on_submit($form, $items) {

@@ -458,6 +458,7 @@ translations
     - Web server: Веб-сервер
     - Weight: Вес
     - Welcome to our site!: Добро пожаловать на наш сайт!
+    - Welcome, %%_nick!: Добро пожаловать, %%_nick!
     - With it, you can speed up the system from 10x and more.: С его помощью вы можете ускорить систему в 10 и более раз.
     - Yes: Да
     - yes: да

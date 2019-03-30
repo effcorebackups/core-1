@@ -18,4 +18,10 @@ namespace effcore {
     'maxlength'    => 255
   ];
 
+  function value_get($return_hash = true) {
+    $element = $this->child_select('element');
+    return $return_hash == false ? $element->attribute_select('value') :
+           core::password_hash_get($element->attribute_select('value'));
+  }
+
 }}

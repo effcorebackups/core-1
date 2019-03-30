@@ -22,7 +22,7 @@ namespace effcore\modules\user {
       $admin = new instance('user', ['nick' => 'Admin']);
       if ($admin->select()) {
         $admin->password_hash = core::password_hash_get(field::request_value_get('password'));
-        $admin->email = field::request_value_get('email');
+        $admin->email    = field::request_value_get('email'   );
         $admin->timezone = field::request_value_get('timezone');
         $admin->update();
       }

@@ -9,6 +9,7 @@ namespace effcore\modules\user {
           use \effcore\instance;
           use \effcore\message;
           use \effcore\session;
+          use \effcore\text;
           use \effcore\url;
           use \effcore\user;
           abstract class events_form_registration {
@@ -40,14 +41,17 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         $user = user::insert([
-          'email'         =>              strtolower($items['#email'   ]->value_get()),
-          'nick'          =>                         $items['#nick'    ]->value_get(),
-          'timezone'      =>                         $items['#timezone']->value_get(),
-          'password_hash' => core::password_hash_get($items['#password']->value_get())
+          'email'         => strtolower($items['#email'   ]->value_get()),
+          'nick'          =>            $items['#nick'    ]->value_get(),
+          'timezone'      =>            $items['#timezone']->value_get(),
+          'password_hash' =>            $items['#password']->value_get()
         ]);
         if ($user) {
           session::insert($user->id,
             core::array_kmap($items['*session_params']->values_get())
+          );
+          message::insert_to_storage(
+            new text('Welcome, %%_nick!', ['nick' => $user->nick])
           );
           url::go('/user/'.$user->nick);
         } else {

@@ -11,6 +11,7 @@ namespace effcore\modules\user {
           use \effcore\message;
           use \effcore\session;
           use \effcore\text_multiline;
+          use \effcore\text;
           use \effcore\url;
           abstract class events_form_login {
 
@@ -30,7 +31,7 @@ namespace effcore\modules\user {
           $user = (new instance('user', [
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
-          if (!$user || !core::password_verify($items['#password']->value_get(), $user->password_hash)) {
+          if (!$user || !hash_equals($user->password_hash, $items['#password']->value_get())) {
             $items['#email'   ]->error_set();
             $items['#password']->error_set();
             $form->error_set('Incorrect email or password!');
@@ -46,9 +47,12 @@ namespace effcore\modules\user {
         $user = (new instance('user', [
           'email' => strtolower($items['#email']->value_get())
         ]))->select();
-        if ($user && core::password_verify($items['#password']->value_get(), $user->password_hash)) {
+        if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
           session::insert($user->id,
             core::array_kmap($items['*session_params']->values_get())
+          );
+          message::insert_to_storage(
+            new text('Welcome, %%_nick!', ['nick' => $user->nick])
           );
           url::go('/user/'.$user->nick);
         }

@@ -18,8 +18,8 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $nick = page::current_get()->args_get('nick');
     $user = (new instance('user', ['nick' => $nick]))->select();
-    $items['#email']->value_set($user->email);
-    $items['#nick']->value_set($user->nick);
+    $items['#email'   ]->value_set($user->email   );
+    $items['#nick'    ]->value_set($user->nick    );
     $items['#timezone']->value_set($user->timezone);
     $items['#avatar']->pool_values_init_old_from_storage(
       $user->avatar_path ? [$user->avatar_path] : []
@@ -35,7 +35,7 @@ namespace effcore\modules\user {
           $test_password = (new instance('user', [
             'nick' => $nick
           ]))->select();
-          if (!core::password_verify($items['#password']->value_get(), $test_password->password_hash)) {
+          if (!hash_equals($test_password->password_hash, $items['#password']->value_get())) {
             $items['#password']->error_set(
               'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password']->title)]
             );
@@ -45,8 +45,8 @@ namespace effcore\modules\user {
           $test_email = (new instance('user', [
             'email' => strtolower($items['#email']->value_get())
           ]))->select();
-          if ($test_email &&
-              $test_email->nick != $nick) {
+          if ($test_email &&                # another user with this EMail exists
+              $test_email->nick != $nick) { # and this is not current user
             $items['#email']->error_set(
               'User with this EMail was already registered!'
             );
@@ -56,8 +56,8 @@ namespace effcore\modules\user {
           $test_nick = (new instance('user', [
             'nick' => $items['#nick']->value_get()
           ]))->select();
-          if ($test_nick &&
-              $test_nick->nick != $nick) {
+          if ($test_nick &&                # another user with this nick exists
+              $test_nick->nick != $nick) { # and this is not current user
             $items['#nick']->error_set(
               'User with this Nick was already registered!'
             );
@@ -81,11 +81,11 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $user = (new instance('user', ['nick' => $nick]))->select();
-        $user->email = strtolower($items['#email']->value_get());
-        $user->nick  = $items['#nick']->value_get();
-        $user->timezone = $items['#timezone']->value_get();
-        if ($items['#password_new']->value_get()) {
-          $user->password_hash = core::password_hash_get($items['#password_new']->value_get());
+        $user->email    = strtolower($items['#email'   ]->value_get());
+        $user->nick     =            $items['#nick'    ]->value_get();
+        $user->timezone =            $items['#timezone']->value_get();
+        if ($items['#password_new']->value_get(false)) {
+          $user->password_hash = $items['#password_new']->value_get();
         }
         $avatar_info = $items['#avatar']->pool_files_save();
         if (isset($avatar_info[0]->path) &&

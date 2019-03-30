@@ -23,7 +23,7 @@ namespace effcore {
   function build() {
     parent::build();
     $value = parent::value_get();
-    if ($value != null) {$this->value_set($value);           return;}
+    if ($value != null) {$this->value_set($value          ); return;}
     if ($value == null) {$this->value_set(core::date_get()); return;}
   }
 
@@ -37,7 +37,7 @@ namespace effcore {
   function value_set($value) {
     if (core::validate_date($value))
          parent::value_set(core::sanitize_date($value));
-    else parent::value_set($value);
+    else parent::value_set(                    $value );
   }
 
   ###########################

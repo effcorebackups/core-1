@@ -77,14 +77,14 @@ namespace effcore\modules\core {
                 'host'     => $items['#host'            ]->value_get(),
                 'port'     => $items['#port'            ]->value_get(),
                 'login'    => $items['#storage_login'   ]->value_get(),
-                'password' => $items['#storage_password']->value_get(),
+                'password' => $items['#storage_password']->value_get(false),
                 'database' => $items['#database_name'   ]->value_get()
               ]);
               if ($test !== true) {
                 $items['#host'            ]->error_set();
                 $items['#port'            ]->error_set();
                 $items['#storage_login'   ]->error_set();
-                $items['#storage_password']->error_set();
+                $items['#storage_password']->error_set(false);
                 $items['#database_name'   ]->error_set();
                 $form->error_set(new text_multiline([
                   'Storage is not available with these credentials!',
@@ -122,7 +122,7 @@ namespace effcore\modules\core {
             $params->credentials->port     = $items['#port'            ]->value_get();
             $params->credentials->database = $items['#database_name'   ]->value_get();
             $params->credentials->login    = $items['#storage_login'   ]->value_get();
-            $params->credentials->password = $items['#storage_password']->value_get();
+            $params->credentials->password = $items['#storage_password']->value_get(false);
             $params->table_prefix          = $items['#table_prefix'    ]->value_get();
           }
           if ($items['#driver:sqlite']->checked_get()) {
@@ -166,7 +166,7 @@ namespace effcore\modules\core {
               'go to page %%_link'], [
               'link'     => $link_page_login,
               'email'    => $items['#email'   ]->value_get(),
-              'password' => $items['#password']->value_get()
+              'password' => $items['#password']->value_get(false)
             ]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::current_get()->args_get('lang_code'), false);
