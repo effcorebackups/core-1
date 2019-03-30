@@ -69,9 +69,10 @@ namespace effcore\modules\storage {
             }
           }
           if ($instance->update())
-               message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was updated.',     ['entity_name' => $entity_name, 'instance_id' => $instance_id]));
-          else message::insert(new text('Instance of entity "%%_entity_name" with id = "%%_instance_id" was not updated!', ['entity_name' => $entity_name, 'instance_id' => $instance_id]), 'error');
+               message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was updated.',     ['name' => $entity_name, 'id' => $instance_id]));
+          else message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was not updated!', ['name' => $entity_name, 'id' => $instance_id]), 'error');
         }
+        url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
         break;
       case 'cancel':
         url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
