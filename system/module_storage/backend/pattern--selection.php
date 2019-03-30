@@ -101,7 +101,12 @@ namespace effcore {
         $this->query_params
       );
 
-    } else {
+    } elseif (count($used_storages) == 0) {
+      message::insert(new text(
+        'No fields from storage! Selection id: %%_id', ['id' => $this->id]), 'error'
+      );
+      return new node();
+    } elseif (count($used_storages) >= 2) {
       message::insert(new text(
         'Distributed queries not supported! Selection id: %%_id', ['id' => $this->id]), 'warning'
       );
