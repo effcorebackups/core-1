@@ -32,8 +32,8 @@ namespace effcore {
   # insert instances
     foreach (instance::all_by_module_get($this->id) as $c_row_id => $c_instance) {
       if ($c_instance->insert())
-           message::insert(new text('Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was added.',     ['entity_name' => $c_instance->entity_name, 'instance_row_id' => $c_row_id]));
-      else message::insert(new text('Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was not added!', ['entity_name' => $c_instance->entity_name, 'instance_row_id' => $c_row_id]), 'error');
+           message::insert(new text('Instance of entity "%%_name" with row_id = "%%_row_id" was added.',     ['name' => $c_instance->entity_name, 'row_id' => $c_row_id]));
+      else message::insert(new text('Instance of entity "%%_name" with row_id = "%%_row_id" was not added!', ['name' => $c_instance->entity_name, 'row_id' => $c_row_id]), 'error');
     }
   # insert to boot
     core::boot_insert($this->id, $this->path, 'installed');

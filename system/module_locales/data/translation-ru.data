@@ -196,8 +196,8 @@ translations
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not deleted!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был удалён!
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was not updated!: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" не был обновлён!
     - Instance of entity "%%_entity_name" with id = "%%_instance_id" was updated.: Экземпляр сущности "%%_entity_name" с id = "%%_instance_id" был обновлён.
-    - Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was added.: Экземпляр сущности "%%_entity_name" с row_id = "%%_instance_row_id" был добавлен.
-    - Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was not added!: Экземпляр сущности "%%_entity_name" с row_id = "%%_instance_row_id" не был добавлен!
+    - Instance of entity "%%_name" with row_id = "%%_row_id" was added.: Экземпляр сущности "%%_name" с row_id = "%%_row_id" был добавлен.
+    - Instance of entity "%%_name" with row_id = "%%_row_id" was not added!: Экземпляр сущности "%%_name" с row_id = "%%_row_id" не был добавлен!
     - Instances: Экземпляры
     - Internet Explorer below version %%_version no longer supported!: Internet Explorer ниже версии %%_version больше не поддерживается!
     - invalid session was deleted!: Недействительный сеанс был удалён!
