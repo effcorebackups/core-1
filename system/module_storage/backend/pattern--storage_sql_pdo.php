@@ -18,6 +18,10 @@ namespace effcore {
   protected $queries = [];
   protected $connection;
 
+  function is_available() {
+    return $this->connection ? true : false;
+  }
+
   function init($driver = null, $credentials = [], $table_prefix = '') {
     if ($this->connection) return
         $this->connection;

@@ -28,11 +28,14 @@ namespace effcore {
   static function select_all($with_storage = true) {
     if (static::$cache == null) static::init();
     if ($with_storage) {
-      foreach (static::select_from_storage() as $c_type => $c_messages) {
-        if (!isset(static::$cache[$c_type]))
-                   static::$cache[$c_type] = [];
-        foreach ($c_messages as $c_message) {
-          static::$cache[$c_type][] = $c_message;
+      $storage = storage::get(entity::get('message')->storage_name);
+      if ($storage->is_available()) {
+        foreach (static::select_from_storage() as $c_type => $c_messages) {
+          if (!isset(static::$cache[$c_type]))
+                     static::$cache[$c_type] = [];
+          foreach ($c_messages as $c_message) {
+            static::$cache[$c_type][] = $c_message;
+          }
         }
       }
     }
