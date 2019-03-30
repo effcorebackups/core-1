@@ -232,7 +232,7 @@ namespace effcore {
   ### return the page ###
   #######################
 
-  if (!storage::is_installed()) {
+  if (!storage::get('sql')->is_installed()) {
     if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::current_get()->path_get())) {
       url::go('/install/en');
     }

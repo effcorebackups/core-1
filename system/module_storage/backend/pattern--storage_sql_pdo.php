@@ -22,6 +22,11 @@ namespace effcore {
     return $this->connection ? true : false;
   }
 
+  function is_installed() {
+    return $this->driver &&
+           $this->credentials;
+  }
+
   function init($driver = null, $credentials = [], $table_prefix = '') {
     if ($this->connection) return
         $this->connection;

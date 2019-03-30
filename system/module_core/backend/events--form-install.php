@@ -20,7 +20,7 @@ namespace effcore\modules\core {
           abstract class events_form_install {
 
   static function on_init($form, $items) {
-    if (!storage::is_installed()) {
+    if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
     # check for php dependencies
       $embed = module::embed_get();
@@ -63,7 +63,7 @@ namespace effcore\modules\core {
   static function on_validate($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
-        if (!storage::is_installed()) {
+        if (!storage::get('sql')->is_installed()) {
           if ($items['#driver:mysql' ]->checked_get() == false &&
               $items['#driver:sqlite']->checked_get() == false) {
             $items['#driver:mysql' ]->error_set();
@@ -113,7 +113,7 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
-        if (!storage::is_installed()) {
+        if (!storage::get('sql')->is_installed()) {
           if ($items['#driver:mysql']->checked_get()) {
             $params = new \stdClass;
             $params->driver = 'mysql';
