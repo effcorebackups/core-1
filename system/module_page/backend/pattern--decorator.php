@@ -49,10 +49,10 @@ namespace effcore {
             }
           }
         # make tbody
-          foreach ($this->data as $c_rowid => $c_row) {
+          foreach ($this->data as $c_row_id => $c_row) {
             $c_row_attributes = static::attributes_shift($c_row);
-            if ($this->visibility_rowid == 'visible'                     ) $c_row_attributes['data-rowid'] = $c_rowid;
-            if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_row_attributes['data-rowid'] = $c_rowid;
+            if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
+            if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
             $c_tbody_row = new table_body_row($c_row_attributes);
             foreach ($c_row as $c_name => $c_info) {
               $c_cell_attributes = static::attributes_shift($c_info);
@@ -63,7 +63,7 @@ namespace effcore {
               );
             }
             $tbody->child_insert(
-              $c_tbody_row, $c_rowid
+              $c_tbody_row, $c_row_id
             );
           }
         # make result
@@ -76,10 +76,10 @@ namespace effcore {
       # ul (unordered list)
       # ─────────────────────────────────────────────────────────────────────
         case 'ul':
-          foreach ($this->data as $c_rowid => $c_row) {
+          foreach ($this->data as $c_row_id => $c_row) {
             $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
-            if ($this->visibility_rowid == 'visible'                     ) $c_row_attributes['data-rowid'] = $c_rowid;
-            if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_row_attributes['data-rowid'] = $c_rowid;
+            if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
+            if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
             $c_list = new markup('ul', $c_row_attributes);
             foreach ($c_row as $c_name => $c_info) {
               $c_cell_attributes = static::attributes_shift($c_info);
@@ -91,7 +91,7 @@ namespace effcore {
               ]), $c_name);
             }
             $result->child_insert(
-              $c_list, $c_rowid
+              $c_list, $c_row_id
             );
           }
           break;
@@ -100,10 +100,10 @@ namespace effcore {
       # dl (definition list)
       # ─────────────────────────────────────────────────────────────────────
         case 'dl':
-          foreach ($this->data as $c_rowid => $c_row) {
+          foreach ($this->data as $c_row_id => $c_row) {
             $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
-            if ($this->visibility_rowid == 'visible'                     ) $c_row_attributes['data-rowid'] = $c_rowid;
-            if ($this->visibility_rowid == 'not_int' && !is_int($c_rowid)) $c_row_attributes['data-rowid'] = $c_rowid;
+            if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
+            if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
             $c_list = new markup('dl', $c_row_attributes);
             foreach ($c_row as $c_name => $c_info) {
               $c_cell_attributes = static::attributes_shift($c_info);
@@ -113,7 +113,7 @@ namespace effcore {
               $c_list->child_insert(new markup('dd', $c_cell_attributes, $c_info['value']), 'value-'.$c_name);
             }
             $result->child_insert(
-              $c_list, $c_rowid
+              $c_list, $c_row_id
             );
           }
           break;

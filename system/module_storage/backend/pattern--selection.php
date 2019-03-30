@@ -37,13 +37,13 @@ namespace effcore {
     $used_storages = [];
 
   # sort fields
-    foreach ($this->fields as $c_rowid => $c_field)
+    foreach ($this->fields as $c_row_id => $c_field)
       if (!property_exists($c_field, 'weight'))
         $c_field->weight = 0;
     core::array_sort_by_weight($this->fields, 3);
 
   # analyze fields
-    foreach ($this->fields as $c_rowid => $c_field) {
+    foreach ($this->fields as $c_row_id => $c_field) {
       if ($c_field->type == 'field' ||
           $c_field->type == 'join_field') {
         $c_entity = entity::get($c_field->entity_name, false);
@@ -61,9 +61,9 @@ namespace effcore {
       $id_keys = $main_entity->real_id_get();
 
     # prepare query params
-      foreach ($this->fields as $c_rowid => $c_field) {
+      foreach ($this->fields as $c_row_id => $c_field) {
         if ($c_field->type == 'join_field') {
-          $this->query_params['join_fields'][$c_rowid.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
+          $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
         }
       }
       foreach ($this->join ?? [] as $c_id => $c_join) {
@@ -122,7 +122,7 @@ namespace effcore {
 
       foreach ($instances as $c_instance) {
         $c_row = [];
-        foreach ($this->fields as $c_rowid => $c_field) {
+        foreach ($this->fields as $c_row_id => $c_field) {
           switch ($c_field->type) {
             case 'field':
             case 'join_field':
@@ -136,7 +136,7 @@ namespace effcore {
               if ($c_value_type == 'time')     $c_value = locale::    time_format($c_value);
               if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
               if ($c_value_type == 'boolean')  $c_value = $c_value ? 'Yes' : 'No';
-              $c_row[$c_rowid] = [
+              $c_row[$c_row_id] = [
                 'title' => $c_title,
                 'value' => $c_value
               ];
@@ -147,25 +147,25 @@ namespace effcore {
               $c_form_field->build();
               $c_form_field->name_set('is_checked[]');
               $c_form_field->value_set(implode('+', $c_id_values));
-              $c_row[$c_rowid] = [
+              $c_row[$c_row_id] = [
                 'title' => $c_field->title ?? '',
                 'value' => $id_keys ? $c_form_field : ''
               ];
               break;
             case 'actions':
-              $c_row[$c_rowid] = [
+              $c_row[$c_row_id] = [
                 'title' => $c_field->title ?? '',
                 'value' => $id_keys ? $this->action_list_get($main_entity, $c_instance, $id_keys) : ''
               ];
               break;
             case 'markup':
-              $c_row[$c_rowid] = [
+              $c_row[$c_row_id] = [
                 'title' => $c_field->title,
                 'value' => $c_field->markup
               ];
               break;
             case 'code':
-              $c_row[$c_rowid] = [
+              $c_row[$c_row_id] = [
                 'title' => $c_field->title,
                 'value' => $c_field->code->call($this, $c_instance)
               ];

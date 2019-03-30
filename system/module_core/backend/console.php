@@ -104,7 +104,7 @@ namespace effcore {
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
-    foreach (static::logs_select() as $c_rowid => $c_log) {
+    foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_row_class = [
         core::sanitize_id($c_log->object) =>
         core::sanitize_id($c_log->object)

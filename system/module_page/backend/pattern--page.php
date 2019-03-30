@@ -47,13 +47,13 @@ namespace effcore {
 
   # render page
     $contents = new node();
-    foreach ($this->children as $c_rowid => $c_part) {
+    foreach ($this->children as $c_row_id => $c_part) {
       if (!$contents->child_select(            $c_part->region))
            $contents->child_insert(new node(), $c_part->region);
       $c_region = $contents->child_select($c_part->region);
       $c_part_markup = $c_part->markup_get($this);
       if ($c_part_markup) {
-        $c_region->child_insert($c_part_markup, $c_rowid);
+        $c_region->child_insert($c_part_markup, $c_row_id);
         if ($c_part->type == 'link') {
           $this->used_dpaths[] = $c_part->source;
         }
