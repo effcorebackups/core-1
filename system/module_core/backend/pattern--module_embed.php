@@ -26,14 +26,14 @@ namespace effcore {
   # insert entities
     foreach (entity::all_by_module_get($this->id) as $c_entity) {
       if ($c_entity->install())
-           message::insert(new text('Entity %%_name was installed.',     ['name' => $c_entity->name]));
-      else message::insert(new text('Entity %%_name was not installed!', ['name' => $c_entity->name]), 'error');
+           message::insert(new text('Entity "%%_name" was installed.',     ['name' => $c_entity->name]));
+      else message::insert(new text('Entity "%%_name" was not installed!', ['name' => $c_entity->name]), 'error');
     }
   # insert instances
-    foreach (instance::all_by_module_get($this->id) as $c_instance) {
+    foreach (instance::all_by_module_get($this->id) as $c_row_id => $c_instance) {
       if ($c_instance->insert())
-           message::insert(new text('Instances of entity %%_name was added.',     ['name' => $c_instance->entity_name]));
-      else message::insert(new text('Instances of entity %%_name was not added!', ['name' => $c_instance->entity_name]), 'error');
+           message::insert(new text('Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was added.',     ['entity_name' => $c_instance->entity_name, 'instance_row_id' => $c_row_id]));
+      else message::insert(new text('Instance of entity "%%_entity_name" with row_id = "%%_instance_row_id" was not added!', ['entity_name' => $c_instance->entity_name, 'instance_row_id' => $c_row_id]), 'error');
     }
   # insert to boot
     core::boot_insert($this->id, $this->path, 'installed');
