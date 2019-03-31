@@ -81,6 +81,7 @@ namespace effcore\modules\storage {
       'link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
       $selection = new selection;
+      $selection->id = 'instances_manage';
       $selection->is_paged = true;
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->show_in_manager)) {
@@ -133,6 +134,7 @@ namespace effcore\modules\storage {
         if ($instance->select()) {
         # create selection
           $selection = new selection('', 'ul');
+          $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->show_in_manager)) {
