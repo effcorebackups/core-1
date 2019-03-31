@@ -96,7 +96,7 @@ translations
     - Develop: Разработка
     - Diagrams: Диаграммы
     - disable: выключить
-    - Distributed queries not supported! Selection id\: %%_id: Распределенные запросы не поддерживаются! ID выборки: %%_id
+    - Distributed queries not supported! Selection id = %%_id: Распределенные запросы не поддерживаются! ID выборки = %%_id
     - Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?: Вы хотите удалить экземпляр сущности "%%_entity_name" с id = "%%_instance_id"?
     - driver error code\: %%_code: код ошибки драйвера: %%_code
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
@@ -247,11 +247,10 @@ translations
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
-    - Module %%_title (%%_id) has been disabled.: Модуль %%_title (%%_id) был выключен.
-    - Module %%_title (%%_id) has been enabled.: Модуль %%_title (%%_id) был включен.
-    - Module %%_title (%%_id) has been installed.: Модуль %%_title (%%_id) был установлен.
-    - Module %%_title (%%_id) has been uninstalled.: Модуль %%_title (%%_id) был удалён.
-    - Module data %%_title (%%_id) has been removed.: Данные модуля %%_title (%%_id) были удалены.
+    - Module "%%_title" (%%_id) has been disabled.: Модуль "%%_title" (%%_id) был выключен.
+    - Module "%%_title" (%%_id) has been enabled.: Модуль "%%_title" (%%_id) был включен.
+    - Module "%%_title" (%%_id) has been installed.: Модуль "%%_title" (%%_id) был установлен.
+    - Module data "%%_title" (%%_id) has been removed.: Данные модуля "%%_title" (%%_id) были удалены.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
@@ -269,7 +268,7 @@ translations
     - nick: ник
     - Nick: Ник
     - No additional parameters.: Нет дополнительных параметров.
-    - No fields from storage! Selection id\: %%_id: Нет полей из хранилища! ID выборки: %%_id
+    - No fields from storage! Selection id = %%_id: Нет полей из хранилища! ID выборки = %%_id
     - no fields: нет полей
     - no items: нет элементов
     - no url: нет url

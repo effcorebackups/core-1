@@ -79,7 +79,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_uninstall as $c_module) {
             if (!isset($installed_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module data %%_title (%%_id) has been removed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
+                new text('Module data "%%_title" (%%_id) has been removed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }

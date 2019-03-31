@@ -154,7 +154,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_enable as $c_module) {
             if (isset($enabled_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module %%_title (%%_id) has been enabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
+                new text('Module "%%_title" (%%_id) has been enabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }
@@ -163,7 +163,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_disable as $c_module) {
             if (!isset($enabled_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module %%_title (%%_id) has been disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
+                new text('Module "%%_title" (%%_id) has been disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }
