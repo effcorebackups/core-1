@@ -121,6 +121,7 @@ namespace effcore\modules\core {
         $modules = module::all_get();
         $modules_to_enable  = [];
         $modules_to_disable = [];
+        $modules_to_install = [];
         $include_paths      = [];
       # collect information
         foreach ($modules as $c_module) {
@@ -133,9 +134,10 @@ namespace effcore\modules\core {
         if ($modules_to_enable) {
           cache::update_global($include_paths);
           foreach ($modules_to_enable as $c_module) {
-            if (!module::is_installed($c_module->id)) # p.s. module may not have the event "on_install"
-            event::start('on_module_install', $c_module->id);
-            event::start('on_module_enable',  $c_module->id);
+            if (!module::is_installed($c_module->id)) {
+              $modules_to_install[$c_module->id] = $c_module->id;
+              event::start('on_module_install', $c_module->id);
+            } event::start('on_module_enable',  $c_module->id);
           }
         }
       # disable modules
@@ -153,9 +155,9 @@ namespace effcore\modules\core {
         if ($modules_to_enable) {
           foreach ($modules_to_enable as $c_module) {
             if (isset($enabled_by_boot[$c_module->id])) {
-              message::insert(
-                new text('Module "%%_title" (%%_id) has been enabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
-              );
+              if (isset($modules_to_install[$c_module->id]))
+                   message::insert(new text('Module "%%_title" (%%_id) has been installed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
+              else message::insert(new text('Module "%%_title" (%%_id) has been enabled.',   ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
             }
           }
         }
