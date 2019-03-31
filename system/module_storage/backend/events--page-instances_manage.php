@@ -92,6 +92,7 @@ namespace effcore\modules\storage {
       }
       if (!$has_visible_fields) {
         return new block('', ['class' => [$entity->name => $entity->name]], [
+          $link_add_new,
           new markup('x-no-result', [], 'no visible fields')
         ]);
       } else {
