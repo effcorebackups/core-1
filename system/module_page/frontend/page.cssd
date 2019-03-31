@@ -44,6 +44,7 @@
     float: right;
     margin-right: 0;
     margin-bottom: 50px}
+  a.link-add-new-instance + * {clear: both}
 
   /* universal classes */
 
@@ -51,9 +52,9 @@
 
   /* table */
 
-  h1 ~ table,
-  h2 ~ table,
-  h3 ~ table {margin-top: 10px}
+  h1 + table {margin-top: 60px}
+  h2 + table {margin-top: 40px}
+  h3 + table {margin-top: 20px}
 
   table {border-collapse: collapse; width: 100%; margin: 50px 0}
   table thead {border-bottom: 5px solid %%_color_main}
@@ -288,13 +289,13 @@
   x-module-info x-field[data-type='switcher'] {float: right; margin: 0 0 0 10px}
   x-module-info x-field[data-type='switcher'] input {margin: 0}
   x-module-info x-label {opacity: .5}
-  x-module-info x-module-title {display: block; margin-bottom: 10px; font-size: 1.5em}
-  x-module-info x-module-id {display: block}
-  x-module-info x-module-version {display: block}
-  x-module-info x-module-is-embed {display: block}
-  x-module-info x-module-bundle_id {display: block}
+  x-module-info x-module-title        {display: block; margin-bottom: 10px; font-size: 1.5em}
+  x-module-info x-module-id           {display: block}
+  x-module-info x-module-version      {display: block}
+  x-module-info x-module-is-embed     {display: block}
+  x-module-info x-module-bundle_id    {display: block}
   x-module-info x-module-bundle_build {display: block}
-  x-module-info x-module-path {display: block}
-  x-module-info x-module-copyright {display: block}
-  x-module-info x-module-description {display: block}
-  x-module-info x-dependencies {display: block}
+  x-module-info x-module-path         {display: block}
+  x-module-info x-module-copyright    {display: block}
+  x-module-info x-module-description  {display: block}
+  x-module-info x-dependencies        {display: block}

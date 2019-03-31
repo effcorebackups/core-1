@@ -102,8 +102,8 @@ translations
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
     - Driver: Драйвер
-    - duplicate of %%_type with id = "%%_id" was found: был найден дубликат типа %%_type с id = "%%_id"
     - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с id = "%%_id" в модуле "%%_module_id"
+    - duplicate of %%_type with id = "%%_id" was found: был найден дубликат типа %%_type с id = "%%_id"
     - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
@@ -269,10 +269,11 @@ translations
     - nick: ник
     - Nick: Ник
     - No additional parameters.: Нет дополнительных параметров.
-    - No fields from storage! Selection id = "%%_id": Нет полей из хранилища! ID выборки = "%%_id"
+    - No fields for select from storage! Selection id = "%%_id": Нет полей для выборки из хранилища! ID выборки = "%%_id"
     - no fields: нет полей
     - no items: нет элементов
     - no url: нет url
+    - no visible fields: нет видимых полей
     - No: Нет
     - no: нет
     - not applicable: не применимо

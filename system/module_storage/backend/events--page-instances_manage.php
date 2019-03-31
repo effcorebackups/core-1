@@ -83,17 +83,25 @@ namespace effcore\modules\storage {
       $selection = new selection;
       $selection->id = 'instances_manage';
       $selection->is_paged = true;
+      $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->show_in_manager)) {
+          $has_visible_fields = true;
           $selection->field_entity_insert(null, $entity->name, $c_name);
         }
       }
-      $selection->field_checkbox_insert(null, '', 80);
-      $selection->field_action_insert();
-      return new block('', ['class' => [$entity->name => $entity->name]], [
-        $link_add_new,
-        $selection
-      ]);
+      if (!$has_visible_fields) {
+        return new block('', ['class' => [$entity->name => $entity->name]], [
+          new markup('x-no-result', [], 'no visible fields')
+        ]);
+      } else {
+        $selection->field_checkbox_insert(null, '', 80);
+        $selection->field_action_insert();
+        return new block('', ['class' => [$entity->name => $entity->name]], [
+          $link_add_new,
+          $selection
+        ]);
+      }
     }
   }
 

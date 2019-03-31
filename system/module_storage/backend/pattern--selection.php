@@ -103,7 +103,7 @@ namespace effcore {
 
     } elseif (count($used_storages) == 0) {
       message::insert(new text(
-        'No fields from storage! Selection id = "%%_id"', ['id' => $this->id]), 'error'
+        'No fields for select from storage! Selection id = "%%_id"', ['id' => $this->id]), 'error'
       );
       return new node();
     } elseif (count($used_storages) >= 2) {
