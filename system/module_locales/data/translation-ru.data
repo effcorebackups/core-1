@@ -97,7 +97,7 @@ translations
     - Diagrams: Диаграммы
     - disable: выключить
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
-    - Do you want to delete instance of entity "%%_entity_name" with id = "%%_instance_id"?: Вы хотите удалить экземпляр сущности "%%_entity_name" с id = "%%_instance_id"?
+    - Do you want to delete instance of entity "%%_name" with id = "%%_id"?: Вы хотите удалить экземпляр сущности "%%_name" с id = "%%_id"?
     - driver error code\: %%_code: код ошибки драйвера: %%_code
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
