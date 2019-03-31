@@ -63,7 +63,9 @@ namespace effcore {
     if (static::$cache == null) static::init();
     if (!isset(static::$cache[$type]))
                static::$cache[$type] = [];
-    static::$cache[$type][] = $message;
+    static::$cache[$type][] = is_string($message) ?
+                               new text($message) :
+                                        $message;
   }
 
   static function insert_to_storage($message, $type = 'ok', $period = 30) {
@@ -71,20 +73,28 @@ namespace effcore {
       'id_session' => session::id_get(),
       'type'       => $type,
       'expired'    => core::datetime_get('+'.$period.' second'),
-      'data'       => serialize($message)
+      'data'       => serialize(is_string($message) ?
+                                 new text($message) :
+                                          $message)
     ]))->insert();
   }
 
   static function markup_get() {
     $messages = new markup('x-messages');
+    $non_duplicates = [];
     foreach (static::select_all() as $c_type => $c_messages) {
       if (!$messages->child_select($c_type))
            $messages->child_insert(new markup('ul', ['class' => [$c_type => $c_type]]), $c_type);
+      if (!isset($non_duplicates[$c_type]))
+                 $non_duplicates[$c_type] = [];
       $c_grpoup = $messages->child_select($c_type);
       foreach ($c_messages as $c_message) {
-        $c_grpoup->child_insert(
-          new markup('li', [], $c_message)
-        );
+        if (!in_array($c_message->render(), $non_duplicates[$c_type])) {
+          $non_duplicates[$c_type][] = $c_message->render();
+          $c_grpoup->child_insert(
+            new markup('li', [], $c_message)
+          );
+        }
       }
     }
     return $messages->children_count() ?

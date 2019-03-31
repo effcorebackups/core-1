@@ -26,8 +26,8 @@ namespace effcore {
   }
 
   static function log_about_duplicate_insert($type, $id, $module_id = null) {
-    return $module_id ? static::log_insert('storage', 'load', 'duplicate of %%_type "%%_id" was found in module "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]) :
-                        static::log_insert('storage', 'load', 'duplicate of %%_type "%%_id" was found',                          'error', 0, ['type' => $type, 'id' => $id]);
+    return $module_id ? static::log_insert('storage', 'load', 'duplicate of %%_type with id = "%%_id" was found in module "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]) :
+                        static::log_insert('storage', 'load', 'duplicate of %%_type with id = "%%_id" was found',                          'error', 0, ['type' => $type, 'id' => $id]);
   }
 
   static function log_store($log_level = 'error') {

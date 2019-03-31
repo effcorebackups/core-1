@@ -67,7 +67,7 @@ translations
     - Core: Ядро
     - created: создано
     - Created: Создано
-    - Credentials for storage %%_name was not set!: Учётные данные для хранилища %%_name не были заданы!
+    - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - credentials: учётные данные
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
@@ -102,7 +102,8 @@ translations
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
     - Driver: Драйвер
-    - duplicate of %%_type "%%_id" was found: был найден дубликат "%%_id" типа %%_type
+    - duplicate of %%_type with id = "%%_id" was found: был найден дубликат типа %%_type с id = "%%_id"
+    - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с id = "%%_id" в модуле "%%_module_id"
     - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
@@ -363,7 +364,7 @@ translations
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
-    - Storage %%_name is not available!: Хранилище %%_name не доступно!
+    - Storage "%%_name" is not available!: Хранилище "%%_name" не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!
     - Storage SQL: Хранилище SQL

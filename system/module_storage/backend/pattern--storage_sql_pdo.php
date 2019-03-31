@@ -60,14 +60,14 @@ namespace effcore {
           return $this->connection;
         } catch (pdo_exception $e) {
           message::insert(new text(
-            'Storage %%_name is not available!', ['name' => $this->name]), 'error'
+            'Storage "%%_name" is not available!', ['name' => $this->name]), 'error'
           );
         }
       } else {
         $path = (new file(data::directory.'changes.php'))->path_relative_get();
         $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
         message::insert(new text_multiline([
-          'Credentials for storage %%_name was not set!',
+          'Credentials for storage "%%_name" was not set!',
           'Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link'], [
           'name' => $this->name,
           'file' => $path,
