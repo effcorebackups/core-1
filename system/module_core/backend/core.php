@@ -809,7 +809,7 @@ namespace effcore {
     $result = $precision ? substr(
       number_format($number, $precision, $dec_point, $thousands), 0, -5) :
       number_format($number, $precision, $dec_point, $thousands);
-    if ($no_zeros) {
+    if ($no_zeros && strpos($result, $dec_point) !== false) {
       $result = rtrim($result, '0');
       $result = rtrim($result, $dec_point);
     }
