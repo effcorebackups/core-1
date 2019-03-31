@@ -144,17 +144,23 @@ namespace effcore\modules\storage {
           $selection = new selection('', 'ul');
           $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
+          $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->show_in_manager)) {
+              $has_visible_fields = true;
               $selection->field_entity_insert(null, $entity->name, $c_name);
             }
           }
-          $selection->field_action_insert(null, 'Action');
-          return new block('', ['class' => [
-            $entity->name =>
-            $entity->name]],
-            $selection
-          );
+          if (!$has_visible_fields) {
+            return new block('', ['class' => [$entity->name => $entity->name]],
+              new markup('x-no-result', [], 'no visible fields')
+            );
+          } else {
+            $selection->field_action_insert(null, 'Action');
+            return new block('', ['class' => [$entity->name => $entity->name]],
+              $selection
+            );
+          }
         }
       }
     }

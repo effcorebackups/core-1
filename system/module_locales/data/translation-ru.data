@@ -269,9 +269,12 @@ translations
     - nick: ник
     - Nick: Ник
     - No additional parameters.: Нет дополнительных параметров.
+    - no editable fields: нет обновляемых полей
     - No fields for select from storage! Selection id = "%%_id": Нет полей для выборки из хранилища! ID выборки = "%%_id"
     - no fields: нет полей
     - no items: нет элементов
+    - no modules: нет модулей
+    - no updates: нет обновлений
     - no url: нет url
     - no visible fields: нет видимых полей
     - No: Нет

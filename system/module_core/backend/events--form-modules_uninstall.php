@@ -38,7 +38,7 @@ namespace effcore\modules\core {
     }
     if ($checkboxes->children_count())
          $info->child_insert($checkboxes, 'checkboxes');
-    else $form->child_update('info', new markup('x-no-result', [], 'no items'));
+    else $form->child_update('info', new markup('x-no-result', [], 'no modules'));
     if (count($checkboxes->disabled) ==
               $checkboxes->children_count()) {
       $items['~apply']->disabled_set();

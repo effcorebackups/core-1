@@ -44,7 +44,7 @@ namespace effcore\modules\storage {
           if ($items['fields']->children_count() == 0 || $has_enabled_fields == false) $items['~update']->disabled_set();
           if ($items['fields']->children_count() == 0) {
             $form->child_update(
-              'fields', new markup('x-no-result', [], 'no fields')
+              'fields', new markup('x-no-result', [], 'no editable fields')
             );
           }
         } else core::send_header_and_exit('page_not_found');
