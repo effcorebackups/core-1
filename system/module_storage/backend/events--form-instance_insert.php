@@ -26,12 +26,13 @@ namespace effcore\modules\storage {
   static function on_submit($form, $items) {
     $base        = page::current_get()->args_get('base');
     $entity_name = page::current_get()->args_get('entity_name');
+    $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'insert':
       # @todo: make functionality
         break;
       case 'cancel':
-        url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
+        url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
     }
   }

@@ -72,10 +72,10 @@ namespace effcore\modules\storage {
                message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was updated.',     ['name' => $entity_name, 'id' => $instance_id]));
           else message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was not updated!', ['name' => $entity_name, 'id' => $instance_id]), 'error');
         }
-        url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
+        url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
       case 'cancel':
-        url::go(url::back_url_get() ?: $base.'/select/'.$entity_name);
+        url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
     }
   }

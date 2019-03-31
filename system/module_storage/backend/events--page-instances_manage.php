@@ -19,11 +19,11 @@ namespace effcore\modules\storage {
 
   # URLs for manage:
   # ─────────────────────────────────────────────────────────────────────────────────
-  # /manage/instances/select → /manage/instances/select/%%_entity_name
-  # /manage/instances/insert → /manage/instances/insert/%%_entity_name
-  #                            /manage/instances/select/%%_entity_name/%%_instance_id
-  #                            /manage/instances/update/%%_entity_name/%%_instance_id
-  #                            /manage/instances/delete/%%_entity_name/%%_instance_id
+  # /manage/instances/select → /manage/instances/select/%%_group/%%_entity_name
+  # /manage/instance /insert → /manage/instance /insert/%%_entity_name
+  #                            /manage/instance /select/%%_entity_name/%%_instance_id
+  #                            /manage/instance /update/%%_entity_name/%%_instance_id
+  #                            /manage/instance /delete/%%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
   # ─────────────────────────────────────────────────────────────────────
