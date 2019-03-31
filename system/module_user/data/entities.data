@@ -310,11 +310,13 @@ entities
         show_in_manager: true
         field_class: \effcore\field_email
     - password_hash
-        title: Password
+        title: New password
         type: varchar
         size: 255
         collate: binary
         field_class: \effcore\field_password
+        field_element_attributes
+        - required: false
     - avatar_path
         title: Avatar path
         type: varchar
