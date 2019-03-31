@@ -34,7 +34,10 @@ namespace effcore\modules\storage {
               $c_form_field->element_attributes['name'] = $c_name;
               $c_form_field->element_attributes = ($c_field->field_element_attributes ?? []) + $c_form_field->element_attributes;
               $c_form_field->build();
-              $c_form_field->value_set($instance->{$c_name});
+              if (!(isset($c_field->field_is_not_load_storage_value) &&
+                          $c_field->field_is_not_load_storage_value)) {
+                $c_form_field->value_set($instance->{$c_name});
+              }
               $items['fields']->child_insert($c_form_field, $c_name);
               if ($c_form_field->disabled_get() == false) {
                 $has_enabled_fields = true;
