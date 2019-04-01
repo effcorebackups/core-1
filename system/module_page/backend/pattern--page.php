@@ -67,8 +67,8 @@ namespace effcore {
     $html->attribute_insert('lang', language::current_code_get());
     $html->attribute_insert('dir', $this->text_direction);
     $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::current_get()->path_get(), '/')));
-    $head_title = $template->target_get('head_title', true);
-    $head_title->text = $this->title;
+    $head_title_text = $template->target_get('head_title_text', true);
+    $head_title_text->text = $this->title;
     $template->arg_set('charset',        $this->charset);
     $template->arg_set('head_icons',     $frontend->icons);
     $template->arg_set('head_styles',    $frontend->styles);
