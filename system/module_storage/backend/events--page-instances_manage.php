@@ -76,9 +76,7 @@ namespace effcore\modules\storage {
   static function on_show_block_instance_select_multiple($page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
-    $link_add_new = new markup('a', ['href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'class' => [
-      'like-button'           => 'like-button',
-      'link-add-new-instance' => 'link-add-new-instance']], new text('add'));
+    $link_add_new = new markup('a', ['href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'role' => 'button', 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
       $selection = new selection;
       $selection->id = 'instances_manage';
