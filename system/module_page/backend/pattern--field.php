@@ -300,7 +300,13 @@ namespace effcore {
   }
 
   function render_opener() {
-    return (new markup_simple('input', ['type' => 'checkbox', 'data-opener-type' => 'description', 'checked' => true, 'title' => translation::get('Show description')]))->render();
+    return (new markup_simple('input', [
+      'type' => 'checkbox',
+      'role' => 'button',
+      'data-opener-type' => 'description',
+      'checked' => true,
+      'title' => translation::get('Show hidden description')
+    ]))->render();
   }
 
   function render_description_pattern  ($element) {return new markup('p', ['class' => ['pattern'   => 'pattern']],   new text('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));          }
