@@ -305,7 +305,7 @@ namespace effcore {
       'role' => 'button',
       'data-opener-type' => 'description',
       'checked' => true,
-      'title' => translation::get('Show hidden description')
+      'title' => translation::get('Press to show hidden description')
     ]))->render();
   }
 

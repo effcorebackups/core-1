@@ -39,8 +39,9 @@ namespace effcore {
     $color_value = color::get($color_id ?: 'white')->value;
     return (new markup_simple('input', [
       'type' => 'checkbox',
+      'role' => 'button',
       'data-opener-type' => 'palette',
-      'title' => translation::get('Select color'),
+      'title' => translation::get('Press to show or hide available colors'),
       'id' => 'f_opener_'.$this->name_first_get(),
       'value' => $color_value,
       'style' => ['background: '.$color_value],
