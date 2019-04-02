@@ -80,6 +80,25 @@ namespace effcore {
   # element properties
   # ─────────────────────────────────────────────────────────────────────
 
+  function auto_id_generate() {
+    $name = $this->name_get();
+    if ($name !== null) {
+      static::$auto_ids[$name] = isset(static::$auto_ids[$name]) ? ++static::$auto_ids[$name] : 1;
+      $suffix = static::$auto_ids[$name] == 1 ? '' :
+            '-'.static::$auto_ids[$name];
+      return 'auto_id-'.$name.$suffix;
+    }
+  }
+
+  function auto_id_set() {
+    $name = $this->name_get();
+    if ($this->id_get() === null && $name !== null) {
+      $this->id_set(
+        $this->auto_id_generate()
+      );
+    }
+  }
+
   function checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') === true;
@@ -277,20 +296,12 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('class', ['disabled' => 'disabled']);
     if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('class', ['required' => 'required']);
+    if ($this->set_auto_id) $this->auto_id_set();
     return parent::render();
   }
 
   function render_self() {
     $element = $this->child_select('element');
-    $name    = $this->name_get();
-  # set auto id
-    if ($this->set_auto_id && $this->id_get() === null && $name !== null) {
-      static::$auto_ids[$name] = isset(static::$auto_ids[$name]) ? ++static::$auto_ids[$name] : 1;
-      $suffix = static::$auto_ids[$name] == 1 ? '' :
-            '-'.static::$auto_ids[$name];
-      $this->id_set('auto_id-'.$name.$suffix);
-    }
-  # make title
     if ($this->title) {
       $required_mark = $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? $this->render_required_mark() : '';
       return (new markup($this->title_tag_name, ['for' => $this->id_get()], [
