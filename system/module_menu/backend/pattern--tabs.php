@@ -9,6 +9,7 @@ namespace effcore {
 
   public $id;
   public $template = 'tabs';
+  public $attributes = ['role' => 'tablist'];
 
   function build() {
     foreach (static::items_select() as $c_item) {
@@ -24,7 +25,6 @@ namespace effcore {
         static::$cache_tabs_items == null) static::init();
     if ($this->children_count()   == 0)
         $this->build();
-    $this->attribute_insert('role', 'tabs');
     return (template::make_new($this->template, [
       'attributes' => $this->render_attributes(),
       'top_items'  => $this->render_top_items(),

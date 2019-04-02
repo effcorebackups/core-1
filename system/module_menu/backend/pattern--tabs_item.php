@@ -9,6 +9,7 @@ namespace effcore {
 
   public $template = 'tabs_item';
   public $template_children = 'tabs_item_children';
+  public $attributes = ['role' => 'tab'];
   public $id;
   public $id_parent;
   public $title = '';
