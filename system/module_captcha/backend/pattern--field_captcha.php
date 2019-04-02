@@ -41,7 +41,7 @@ namespace effcore {
 
   function captcha_select() {
     $captcha = (new instance('captcha', [
-      'ip_hex' => static::id_get()
+      'ip_hex' => static::client_id_get()
     ]))->select();
     if ($captcha) {
       $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
@@ -65,7 +65,7 @@ namespace effcore {
       );
     }
     $captcha = new instance('captcha', [
-      'ip_hex'      => static::id_get(),
+      'ip_hex'      => static::client_id_get(),
       'characters'  => $characters,
       'attempts'    => $this->attempts,
       'canvas'      => $canvas,
@@ -76,7 +76,7 @@ namespace effcore {
 
   function captcha_validate($characters) {
     $captcha = (new instance('captcha', [
-      'ip_hex' => static::id_get()
+      'ip_hex' => static::client_id_get()
     ]))->select();
     if ($captcha) {
       if ($captcha->attempts > 0) {
@@ -97,19 +97,18 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  # note:
+  # about client_id_get():
   # ═════════════════════════════════════════════════════════════════════════
-  # 1. function id_get:
-  #    duplicates of captcha by IP - it's prevention from DDOS attacks -
-  #    user can overflow the storage if captcha_id will be a complex value
-  #    for example: IP + user_agent (in this case user can falsify user_agent
-  #    on each submit and this action will create a great variety of unique
-  #    captcha_id in the storage and will make it overflowed)
+  # duplicates of captcha by IP - it's prevention from DDOS attacks -
+  # user can overflow the storage if captcha_id will be a complex value
+  # for example: IP + user_agent (in this case user can falsify user_agent
+  # on each submit and this action will create a great variety of unique
+  # captcha_id in the storage and will make it overflowed)
   # ─────────────────────────────────────────────────────────────────────────
 
   static protected $glyphs;
 
-  static function id_get() {
+  static function client_id_get() {
     return core::ip_to_hex(
       core::server_remote_addr_get()
     );
