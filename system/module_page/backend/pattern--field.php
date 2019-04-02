@@ -58,6 +58,7 @@ namespace effcore {
   public $element_tag_name = 'input';
   public $element_attributes = [];
   public $description_state = 'closed'; # opened | closed[checked] | hidden
+  public $set_auto_id = true;
   public $has_error = false;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
@@ -100,6 +101,17 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($is_disabled) $element->attribute_insert('disabled', true);
     else              $element->attribute_delete('disabled');
+  }
+
+  function id_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('id');
+  }
+
+  function id_set($id = null) {
+    $element = $this->child_select('element');
+    if ($id) $element->attribute_insert('id', $id);
+    else     $element->attribute_delete('id');
   }
 
   function min_get() {
@@ -270,9 +282,18 @@ namespace effcore {
 
   function render_self() {
     $element = $this->child_select('element');
+    $name    = $this->name_get();
+  # set auto id
+    if ($this->set_auto_id && $this->id_get() === null && $name !== null) {
+      static::$auto_ids[$name] = isset(static::$auto_ids[$name]) ? ++static::$auto_ids[$name] : 1;
+      $suffix = static::$auto_ids[$name] == 1 ? '' :
+            '-'.static::$auto_ids[$name];
+      $this->id_set('auto_id-'.$name.$suffix);
+    }
+  # make title
     if ($this->title) {
       $required_mark = $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? $this->render_required_mark() : '';
-      return (new markup($this->title_tag_name, [], [
+      return (new markup($this->title_tag_name, ['for' => $this->id_get()], [
         $this->title, $required_mark
       ]))->render();
     }
@@ -323,6 +344,7 @@ namespace effcore {
 
   static protected $numbers = [];
   static protected $error_tabindex = 0;
+  static protected $auto_ids = [];
 
   static function cur_number_get($name) {
     return !isset(static::$numbers[$name]) ?
