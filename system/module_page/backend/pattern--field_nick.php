@@ -13,7 +13,6 @@ namespace effcore {
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];
   public $description = 'Field can contain only the next characters: '.self::allowed_characters_title.'.';
-  public $new_value_must_be_unique = true;
   public $element_attributes = [
     'data-type' => 'nick',
     'name'      => 'nick',
@@ -50,24 +49,20 @@ namespace effcore {
         'Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]
       );
     } else {
-      if ($field->new_value_must_be_unique) {
-        $storage = storage::get(entity::get('user')->storage_name);
-        if ($storage->is_available()) {
-          $user_by_nick = (new instance('user', [
-            'nick' => $new_value
-          ]))->select();
-          if ($user_by_nick &&                                      # user with this nick is exists
-              $user_by_nick->nick != $field->value_initial_get()) { # and this is another user
-            $field->error_set(
-              'User with this Nick was already registered!'
-            );
-          }
-        } else {
-          $field->error_set(
-            'Field "%%_title" cannot access to the storage for check value on uniqueness!', ['title' => translation::get($field->title)]
-          );
-        }
-      }  
+      return true;
+    }
+  }
+
+  static function validate_uniqueness($field, $new_value) {
+    $user_by_nick = (new instance('user', [
+      'nick' => $new_value
+    ]))->select();
+    if ($user_by_nick &&                                      # user with this nick is exists
+        $user_by_nick->nick != $field->value_initial_get()) { # and this is another user
+      $field->error_set(
+        'User with this Nick was already registered!'
+      );
+    } else {
       return true;
     }
   }

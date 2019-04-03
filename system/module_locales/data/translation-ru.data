@@ -132,7 +132,6 @@ translations
     - failed to write file to disk: не удалось записать файл на диск
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
-    - Field "%%_title" cannot access to the storage for check value on uniqueness!: Поле "%%_title" не может получить доступ к хранилищу для проверки значения на уникальность.
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
     - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
