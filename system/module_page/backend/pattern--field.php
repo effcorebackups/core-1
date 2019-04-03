@@ -60,6 +60,7 @@ namespace effcore {
   public $description_state = 'closed'; # opened | closed[checked] | hidden
   public $set_auto_id = true;
   public $has_error = false;
+  protected $initial_value;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, [], $weight);
@@ -258,8 +259,18 @@ namespace effcore {
   }
 
   function value_set($value) {
+    $this->value_initial_set($value);
     $element = $this->child_select('element');
     return $element->attribute_insert('value', htmlspecialchars($value, ENT_QUOTES));
+  }
+
+  function value_initial_get() {
+    return $this->initial_value;
+  }
+
+  function value_initial_set($value) {
+    if ($this->initial_value === null)
+        $this->initial_value = $value;
   }
 
   # ─────────────────────────────────────────────────────────────────────

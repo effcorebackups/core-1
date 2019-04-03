@@ -48,6 +48,7 @@ namespace effcore {
   }
 
   function value_set($value) {
+    $this->value_initial_set($value);
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
       if ($c_item instanceof node       &&

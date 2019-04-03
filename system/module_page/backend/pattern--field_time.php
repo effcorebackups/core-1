@@ -37,6 +37,7 @@ namespace effcore {
   }
 
   function value_set($value) {
+    $this->value_initial_set($value);
     if (core::validate_time($value))
          parent::value_set(core::sanitize_time($value));
     else parent::value_set(                    $value );

@@ -33,6 +33,7 @@ namespace effcore {
   }
 
   function value_set($value) {
+    $this->value_initial_set($value);
     $element = $this->child_select('element');
     return $element->child_select('content')->text_update($value);
   }
