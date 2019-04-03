@@ -294,9 +294,10 @@ namespace effcore {
 
   function render() {
     $element = $this->child_select('element');
+    if ($this->set_auto_id) $this->auto_id_set();
+    if ($this->id_get() && $this->render_description()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
     if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('class', ['disabled' => 'disabled']);
     if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('class', ['required' => 'required']);
-    if ($this->set_auto_id) $this->auto_id_set();
     return parent::render();
   }
 
@@ -325,8 +326,8 @@ namespace effcore {
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
       if ($this->description_state == 'hidden'                      ) return '';
-      if ($this->description_state == 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, [], $result))->render();
-      if ($this->description_state == 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, [], $result))->render();
+      if ($this->description_state == 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, $this->id_get() ? ['id' => 'description-'.$this->id_get()] : [], $result))->render();
+      if ($this->description_state == 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, $this->id_get() ? ['id' => 'description-'.$this->id_get()] : [], $result))->render();
       return '';
     }
   }
