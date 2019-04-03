@@ -305,10 +305,11 @@ namespace effcore {
   function render_self() {
     $element = $this->child_select('element');
     if ($this->title) {
-      $required_mark = $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? $this->render_required_mark() : '';
-      return (new markup($this->title_tag_name, ['id' => $this->id_get() ? 'label-'.$this->id_get() : null, 'for' => $this->id_get()], [
-        $this->title, $required_mark
-      ]))->render();
+      return (new markup($this->title_tag_name, [
+        'for'                => $this->id_get(),
+        'id'                 => $this->id_get() ? 'label-'.$this->id_get() : null,
+        'data-mark-required' => $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? 'true' : null], $this->title
+      ))->render();
     }
   }
 

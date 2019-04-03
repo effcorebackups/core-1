@@ -47,15 +47,10 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      $required_mark = $this->attribute_select('required') ? $this->render_required_mark() : '';
-      return (new markup($this->title_tag_name, [], [
-        $this->title, $required_mark
-      ]))->render();
+      return (new markup($this->title_tag_name, ['data-mark-required' => $this->attribute_select('required') ? 'true' : null],
+        $this->title
+      ))->render();
     }
-  }
-
-  function render_required_mark() {
-    return (new markup('b', ['class' => ['required' => 'required']], '*'))->render();
   }
 
   # ─────────────────────────────────────────────────────────────────────

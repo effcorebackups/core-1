@@ -46,7 +46,10 @@
   x-group:empty {display: none}
   x-group x-title {display: block; margin-bottom: 20px; font-size: 1.2em}
 
-  b.required {
+  /* required mark */
+
+  *[data-mark-required='true']::after {
+    content: '*';
     margin-left: .2em;
     font-size: 1.1em;
     color: %%_color_error}
