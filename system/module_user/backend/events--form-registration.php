@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\core;
+          use \effcore\field_email;
           use \effcore\field_nick;
           use \effcore\instance;
           use \effcore\message;
@@ -20,12 +21,10 @@ namespace effcore\modules\user {
       case 'register':
         if (!$form->has_error()) {
         # test email
-          if ((new instance('user', ['email' => strtolower($items['#email']->value_get())]))->select()) {
-            $items['#email']->error_set(
-              'User with this EMail was already registered!'
-            );
-            return;
-          }
+          if (!field_email::validate_uniqueness(
+            $items['#email'],
+            $items['#email']->value_get()
+          )) return;
         # test nick
           if (!field_nick::validate_uniqueness(
             $items['#nick'],

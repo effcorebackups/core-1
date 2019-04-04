@@ -57,8 +57,8 @@ namespace effcore {
     $user_by_nick = (new instance('user', [
       'nick' => $new_value
     ]))->select();
-    if (($user_by_nick && $old_value === null                                      ) || # insert new nick (registration)
-        ($user_by_nick && $old_value ==! null && $user_by_nick->nick != $old_value)) {  # update old nick
+    if (($user_by_nick && $old_value === null                                     ) || # insert new nick (e.g. registration)
+        ($user_by_nick && $old_value ==! null && $user_by_nick->nick != $old_value)) { # update old nick
       $field->error_set(
         'User with this Nick was already registered!'
       );
