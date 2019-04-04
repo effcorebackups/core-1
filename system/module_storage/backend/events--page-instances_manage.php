@@ -14,6 +14,7 @@ namespace effcore\modules\storage {
           use \effcore\storage;
           use \effcore\tabs;
           use \effcore\text;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_page_instances_manage {
 
@@ -76,7 +77,7 @@ namespace effcore\modules\storage {
   static function on_show_block_instance_select_multiple($page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
-    $link_add_new = new markup('a', ['href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'role' => 'button', 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
+    $link_add_new = new markup('a', ['role' => 'button', 'href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'title' => translation::get('Add new %%_name on new page.', ['name' => translation::get($entity->title)]), 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
       $selection = new selection;
       $selection->id = 'instances_manage';
