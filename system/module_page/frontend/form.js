@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if (th_for_checkbox && checkboxes instanceof NodeList) {
         var check_all = document.createElement('input');
             check_all.type = 'checkbox';
+            check_all.title = effcore.tokens['text_select_all_rows'];
         th_for_checkbox.appendChild(check_all);
         check_all.addEventListener('change', function(){
           checkboxes.forEach(function(c_checkbox){
