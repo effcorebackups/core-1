@@ -18,7 +18,7 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
         if (!$form->has_error()) {
-          if (!(new instance('user', ['email' => strtolower($items['#email']->value_get())]))->select()) {
+          if (!(new instance('user', ['email' => $items['#email']->value_get()]))->select()) {
             $items['#email']->error_set(
               'User with this EMail was not registered!'
             );
@@ -32,7 +32,7 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
         $user = (new instance('user', [
-          'email' => strtolower($items['#email']->value_get())
+          'email' => $items['#email']->value_get()
         ]))->select();
         if ($user) {
           $new_password = core::password_generate();

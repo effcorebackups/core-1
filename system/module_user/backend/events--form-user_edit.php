@@ -73,9 +73,9 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $user = (new instance('user', ['nick' => $nick]))->select();
-        $user->email    = strtolower($items['#email'   ]->value_get());
-        $user->nick     =            $items['#nick'    ]->value_get();
-        $user->timezone =            $items['#timezone']->value_get();
+        $user->email    = $items['#email'   ]->value_get();
+        $user->nick     = $items['#nick'    ]->value_get();
+        $user->timezone = $items['#timezone']->value_get();
         if ($items['#password_new']->value_get(false)) {
           $user->password_hash = $items['#password_new']->value_get();
         }

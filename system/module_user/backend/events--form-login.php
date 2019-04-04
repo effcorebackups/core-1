@@ -29,7 +29,7 @@ namespace effcore\modules\user {
       case 'login':
         if (!$form->has_error()) {
           $user = (new instance('user', [
-            'email' => strtolower($items['#email']->value_get())
+            'email' => $items['#email']->value_get()
           ]))->select();
           if (!$user || !hash_equals($user->password_hash, $items['#password']->value_get())) {
             $items['#email'   ]->error_set();
@@ -45,7 +45,7 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'login':
         $user = (new instance('user', [
-          'email' => strtolower($items['#email']->value_get())
+          'email' => $items['#email']->value_get()
         ]))->select();
         if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
           session::insert($user->id,

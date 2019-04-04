@@ -39,10 +39,10 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         $user = user::insert([
-          'email'         => strtolower($items['#email'   ]->value_get()),
-          'nick'          =>            $items['#nick'    ]->value_get(),
-          'timezone'      =>            $items['#timezone']->value_get(),
-          'password_hash' =>            $items['#password']->value_get()
+          'email'         => $items['#email'   ]->value_get(),
+          'nick'          => $items['#nick'    ]->value_get(),
+          'timezone'      => $items['#timezone']->value_get(),
+          'password_hash' => $items['#password']->value_get()
         ]);
         if ($user) {
           session::insert($user->id,
