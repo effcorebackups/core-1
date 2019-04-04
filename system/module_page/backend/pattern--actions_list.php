@@ -28,8 +28,8 @@ namespace effcore {
     $this->child_insert($list, 'action_list');
     foreach ($this->actions as $c_name => $c_title) {
       $c_href = $c_name[0] == '/' ? $c_name : page::current_get()->args_get('base').'/'.($c_name);
-      $c_link = new markup('a', ['href' => $c_href], token::replace(translation::get($c_title)));
-      $list->child_insert(new markup('x-action', ['data-name' => $c_name],
+      $c_link = new markup('a', ['href' => $c_href], new markup('em', [], token::replace(translation::get($c_title))));
+      $list->child_insert(new markup('x-action', ['data-title' => $c_title],
         $c_link
       ));
     }

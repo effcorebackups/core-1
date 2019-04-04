@@ -159,12 +159,16 @@
 
   /* control elements */
 
-  x-actions {}
+  x-actions       {}
   x-actions-title {}
-  x-action-list {}
+  x-action-list   {}
+
+  x-actions x-action[data-title='select'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100% -40px}
+  x-actions x-action[data-title='update'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100% -60px}
+  x-actions x-action[data-title='delete'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100% -20px}
   x-decorator[data-view-type='table'] x-actions x-action {display: block; font-size: .85em; text-align: right}
-  x-decorator[data-view-type='ul']    x-actions x-action {display: inline-block; margin-right: 5px; padding-right: 5px; border-right: 1px dotted %%_color_main}
-  x-decorator[data-view-type='ul']    x-actions x-action:last-child {border-right: 0}
+  x-decorator[data-view-type='ul'   ] x-actions x-action {display: inline-block; margin-right: 10px; padding-right: 5px; border-right: 1px dotted %%_color_main}
+  x-decorator[data-view-type='ul'   ] x-actions x-action:last-child {border-right: 0}
 
   /* pager */
 
