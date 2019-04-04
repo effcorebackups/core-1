@@ -27,8 +27,8 @@
   </g>
 
   <g id="icon_delete">
-    <path id="ico_del-line-1" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,35 15,25"/>
-    <path id="ico_del-line-2" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,25 15,35"/>
+    <path id="ico_del-line-1" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,35 15,25"/>
+    <path id="ico_del-line-2" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,25 15,35"/>
   </g>
 
   <g id="icon_select">
