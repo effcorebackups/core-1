@@ -56,7 +56,8 @@ namespace effcore\modules\user {
         # test nick
           if (!field_nick::validate_uniqueness(
             $items['#nick'],
-            $items['#nick']->value_get()
+            $items['#nick']->value_get(),
+            $items['#nick']->value_initial_get()
           )) return;
         # test new password
           if ($items['#password_new']->value_get() ==

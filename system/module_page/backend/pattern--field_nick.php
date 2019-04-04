@@ -53,12 +53,12 @@ namespace effcore {
     }
   }
 
-  static function validate_uniqueness($field, $new_value) {
+  static function validate_uniqueness($field, $new_value, $old_value = null) {
     $user_by_nick = (new instance('user', [
       'nick' => $new_value
     ]))->select();
-    if ($user_by_nick &&                                      # user with this nick is exists
-        $user_by_nick->nick != $field->value_initial_get()) { # and this is another user
+    if (($user_by_nick && $old_value === null                                      ) || # insert new nick (registration)
+        ($user_by_nick && $old_value ==! null && $user_by_nick->nick != $old_value)) {  # update old nick
       $field->error_set(
         'User with this Nick was already registered!'
       );

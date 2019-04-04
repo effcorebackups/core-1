@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\core;
+          use \effcore\field_nick;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\session;
@@ -26,12 +27,10 @@ namespace effcore\modules\user {
             return;
           }
         # test nick
-          if ((new instance('user', ['nick' => $items['#nick']->value_get()]))->select()) {
-            $items['#nick']->error_set(
-              'User with this Nick was already registered!'
-            );
-            return;
-          }
+          if (!field_nick::validate_uniqueness(
+            $items['#nick'],
+            $items['#nick']->value_get()
+          )) return;
         }
         break;
     }

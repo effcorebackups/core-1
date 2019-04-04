@@ -123,7 +123,7 @@ namespace effcore {
     }
     return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [
       $decorator, new markup('x-total', [], [
-        new markup('x-label', [], ['Total', ': ']),
+        new markup('x-label', [], 'Total'),
         new markup('x-value', [], count($logs))
       ])
     ]);
