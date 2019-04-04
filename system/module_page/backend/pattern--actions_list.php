@@ -11,7 +11,6 @@ namespace effcore {
   public $tag_name = 'x-actions';
   public $title_tag_name = 'x-actions-title';
   public $template = 'actions_list';
-  public $list_state = 'hidden'; # hidden | opened
   public $actions = [];
   public $active = [];
 
@@ -25,7 +24,6 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('data-list_state', $this->list_state);
     $list = new markup('x-action-list');
     $this->child_insert($list, 'action_list');
     foreach ($this->actions as $c_name => $c_title) {

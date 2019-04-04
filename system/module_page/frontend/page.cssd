@@ -159,32 +159,12 @@
 
   /* control elements */
 
-  x-actions {
-    display: inline-block;
-    vertical-align: middle}
-
-  x-actions-title {
-    display: block;
-    padding: 0 5px 0 20px;
-    min-width: 20px;
-    min-height: 20px;
-    line-height: 1.35em;
-    cursor: default;
-    background: url('images/icons-action_list.svgd') no-repeat}
-  x-actions-title:empty {padding: 0}
-
-  x-actions x-action-list {
-    position: absolute;
-    z-index: 10;
-    padding: 10px;
-    box-shadow: 0 1px 5px 0 rgba(50, 50, 50, 0.3);
-    border: 1px solid %%_color_main;
-    background: %%_color_page}
-
-  x-actions x-action-list x-action {display: block}
-
-  x-actions[data-list_state='hidden']       x-action-list {display: none}
-  x-actions[data-list_state='hidden']:hover x-action-list {display: block}
+  x-actions {}
+  x-actions-title {}
+  x-action-list {}
+  x-decorator[data-view-type='table'] x-actions x-action {display: block; font-size: .85em; text-align: right}
+  x-decorator[data-view-type='ul']    x-actions x-action {display: inline-block; margin-right: 5px; padding-right: 5px; border-right: 1px dotted %%_color_main}
+  x-decorator[data-view-type='ul']    x-actions x-action:last-child {border-right: 0}
 
   /* pager */
 
