@@ -34,8 +34,8 @@ namespace effcore {
   function attribute_insert($key, $data, $scope = 'attributes') {
     if (is_array($data))
       foreach ($data as $c_key => $c_value)
-         $this->{$scope}[$key][$c_key] = is_string($c_value) ? htmlspecialchars($c_value, ENT_QUOTES) : $c_value;
-    else $this->{$scope}[$key]         = is_string($data   ) ? htmlspecialchars($data,    ENT_QUOTES) : $data;
+         $this->{$scope}[$key][$c_key] = is_string($c_value) ? str_replace('"', '&quot;', $c_value) : $c_value;
+    else $this->{$scope}[$key]         = is_string($data   ) ? str_replace('"', '&quot;', $data   ) : $data;
     return $this;
   }
 
