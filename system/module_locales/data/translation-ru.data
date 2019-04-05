@@ -18,7 +18,7 @@ translations
     - Action: Действие
     - actions: действия
     - Actions: Действия
-    - Add new %%_name on new page.: Добавить новый/ого %%_name на новой странице.
+    - Add new instance of type %%_name on new page.: Добавить новый экземпляр типа %%_name на новой странице.
     - add: добавить
     - Administrators: Администраторы
     - agree: согласен(а)
