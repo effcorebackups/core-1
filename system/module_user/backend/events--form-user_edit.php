@@ -80,8 +80,7 @@ namespace effcore\modules\user {
           $user->password_hash = $items['#password_new']->value_get();
         }
         $avatar_info = $items['#avatar']->pool_files_save();
-        if (isset($avatar_info[0]->path) &&
-                  $avatar_info[0]->path) {
+        if (!empty($avatar_info[0]->path)) {
            $c_file = new file($avatar_info[0]->path);
            $user->avatar_path = $c_file->path_relative_get(); } else {
            $user->avatar_path = null;
