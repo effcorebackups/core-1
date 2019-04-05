@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\entity;
+          use \effcore\field_email;
           use \effcore\field_nick;
           use \effcore\message;
           use \effcore\page;
@@ -19,6 +20,12 @@ namespace effcore\modules\user {
       case 'update':
         if ($entity_name == 'user') {
           if (!$form->has_error()) {
+          # test email
+            if (!field_email::validate_uniqueness(
+              $items['#email'],
+              $items['#email']->value_get(),
+              $items['#email']->value_initial_get()
+            )) return;
           # test nick
             if (!field_nick::validate_uniqueness(
               $items['#nick'],
