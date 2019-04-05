@@ -20,20 +20,14 @@
     </rdf:RDF>
   </metadata>
 
-  <g id="icon_open">
-    <path id="ico_opn-line-1" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,5 H 15"/>
-    <path id="ico_opn-line-2" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,10 H 15"/>
-    <path id="ico_opn-line-3" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,15 H 15"/>
-  </g>
-
-  <g id="icon_delete">
-    <path id="ico_del-line-1" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,35 15,25"/>
-    <path id="ico_del-line-2" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,25 15,35"/>
-  </g>
-
   <g id="icon_select">
     <path id="icon_sel-eye" style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round" d="M 10,53.027212 C 8.3393241,53.064022 6.515819,52.218276 5,50 c 1.515819,-2.218276 3.3393241,-3.064022 5,-3.027212 1.660676,-0.03681 3.484181,0.808936 5,3.027212 -1.515819,2.218276 -3.339324,3.064022 -5,3.027212 z"/>
     <circle id="icon_sel-pupil" r="2" cy="50" cx="10" style="fill: %%_color_main; stroke: none"/>
+  </g>
+
+  <g id="icon_insert">
+    <path id="ico_ins-line-1" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 10,5 V 15"/>
+    <path id="ico_ins-line-2" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5,10 H 15"/>
   </g>
 
   <g id="icon_update">
@@ -43,6 +37,11 @@
       <path style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: butt" d="m 10,64 v 8"></path>
     </g>
     <path id="icon_upd-paper" style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round" d="M 5,75 H 15"/>
+  </g>
+
+  <g id="icon_delete">
+    <path id="ico_del-line-1" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,35 15,25"/>
+    <path id="ico_del-line-2" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5,25 15,35"/>
   </g>
 
 </svg>
