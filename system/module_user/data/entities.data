@@ -317,6 +317,8 @@ entities
         field_class: \effcore\field_password
         field_is_not_load_storage_value: true
         field_is_not_save_empty_value: true
+        field_properties
+        - description: Leave the field blank if you do not want to change its value.
         field_element_attributes
         - required: false
     - avatar_path
