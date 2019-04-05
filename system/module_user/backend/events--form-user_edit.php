@@ -76,7 +76,7 @@ namespace effcore\modules\user {
         $user->email    = $items['#email'   ]->value_get();
         $user->nick     = $items['#nick'    ]->value_get();
         $user->timezone = $items['#timezone']->value_get();
-        if ($items['#password_new']->value_get(false)) {
+        if ($items['#password_new']->value_get()) {
           $user->password_hash = $items['#password_new']->value_get();
         }
         $avatar_info = $items['#avatar']->pool_files_save();

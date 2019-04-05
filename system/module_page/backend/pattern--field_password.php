@@ -20,8 +20,10 @@ namespace effcore {
 
   function value_get($return_hash = true) {
     $element = $this->child_select('element');
-    return $return_hash == false ? $element->attribute_select('value') :
-           core::password_hash_get($element->attribute_select('value'));
+    $value = $element->attribute_select('value');
+    if ($value != '' && $return_hash != false) return core::password_hash_get($value);
+    if ($value != '' && $return_hash == false) return                         $value;
+    if ($value == ''                         ) return                         $value;
   }
 
 }}
