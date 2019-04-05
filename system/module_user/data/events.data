@@ -39,6 +39,9 @@ events
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_form_user_edit::on_validate
+  - instance_update_user|event
+      for: instance_update
+      handler: \effcore\modules\user\events_form_instance_update::on_validate
   on_form_submit
   - login|event
       for: login
