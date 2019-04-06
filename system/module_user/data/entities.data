@@ -309,18 +309,6 @@ entities
         not_null: true
         show_in_manager: true
         field_class: \effcore\field_email
-    - password_hash
-        title: New password
-        type: varchar
-        size: 255
-        collate: binary
-        field_class: \effcore\field_password
-        field_is_not_load_storage_value: true
-        field_is_not_save_empty_value: true
-        field_properties
-        - description: Leave the field blank if you do not want to change its value.
-        field_element_attributes
-        - required: false
     - avatar_path
         title: Avatar path
         type: varchar
@@ -333,6 +321,18 @@ entities
         collate: nocase
         default: UTC
         field_class: \effcore\field_timezone
+    - password_hash
+        title: New password
+        type: varchar
+        size: 255
+        collate: binary
+        field_class: \effcore\field_password
+        field_is_not_load_storage_value: true
+        field_is_not_save_empty_value: true
+        field_properties
+        - description: Leave the field blank if you do not want to change its value.
+        field_element_attributes
+        - required: false
     constraints
     - primary_id
         type: primary

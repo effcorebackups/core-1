@@ -18,13 +18,12 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
-    $entity = entity::get($entity_name);
     if ($entity_name == 'user') {
-      $field_password_current = new field_password('Current password', '', [], -50);
-      $field_password_current->build();
-      $field_password_current->name_set('password_current');
+      $field_password_hash_current = new field_password('Current password', '', [], -50);
+      $field_password_hash_current->build();
+      $field_password_hash_current->name_set('password_hash_current');
       $form->child_select('fields')->child_insert(
-        $field_password_current, 'password_current'
+        $field_password_hash_current, 'password_hash_current'
       );
     }
   }
@@ -43,24 +42,32 @@ namespace effcore\modules\user {
             $test_password = (new instance('user',
               array_combine($id_keys, $id_values))
             )->select();
-            if (!hash_equals($test_password->password_hash, $items['#password_current']->value_get())) {
-              $items['#password_current']->error_set(
-                'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_current']->title)]
+            if (!hash_equals($test_password->password_hash, $items['#password_hash_current']->value_get())) {
+              $items['#password_hash_current']->error_set(
+                'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
               );
               return;
             }
-          # test email
-            if (!field_email::validate_uniqueness(
-              $items['#email'],
-              $items['#email']->value_get(),
-              $items['#email']->value_initial_get()
-            )) return;
           # test nick
             if (!field_nick::validate_uniqueness(
               $items['#nick'],
               $items['#nick']->value_get(),
               $items['#nick']->value_initial_get()
             )) return;
+          # test email
+            if (!field_email::validate_uniqueness(
+              $items['#email'],
+              $items['#email']->value_get(),
+              $items['#email']->value_initial_get()
+            )) return;
+          # test new password
+            if ($items['#password_hash_current']->value_get() ==
+                $items['#password_hash'        ]->value_get()) {
+              $items['#password_hash']->error_set(
+                'New password must be different from the current password!'
+              );
+              return;
+            }
           }
         }
         break;
