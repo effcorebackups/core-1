@@ -8,6 +8,10 @@ translations
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
+    - %%_name with id = "%%_id" was deleted.: %%_name с id = "%%_id" удалён/а/о.
+    - %%_name with id = "%%_id" was not deleted!: %%_name с id = "%%_id" не удалён/а/о!
+    - %%_name with id = "%%_id" was not updated!: %%_name с id = "%%_id" не обновлён/а/о!
+    - %%_name with id = "%%_id" was updated.: %%_name с id = "%%_id" обновлён/а/о.
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
     - A new password has been sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
@@ -100,7 +104,6 @@ translations
     - Diagrams: Диаграммы
     - disable: выключить
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
-    - Do you want to delete instance of entity "%%_name" with id = "%%_id"?: Вы хотите удалить экземпляр сущности "%%_name" с id = "%%_id"?
     - driver error code\: %%_code: код ошибки драйвера: %%_code
     - driver error text\: %%_text: текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
@@ -196,10 +199,6 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
-    - Instance of entity "%%_name" with id = "%%_id" was deleted.: Экземпляр сущности "%%_name" с id = "%%_id" был удалён.
-    - Instance of entity "%%_name" with id = "%%_id" was not deleted!: Экземпляр сущности "%%_name" с id = "%%_id" не был удалён!
-    - Instance of entity "%%_name" with id = "%%_id" was not updated!: Экземпляр сущности "%%_name" с id = "%%_id" не был обновлён!
-    - Instance of entity "%%_name" with id = "%%_id" was updated.: Экземпляр сущности "%%_name" с id = "%%_id" был обновлён.
     - Instance with row_id = "%%_row_id" was added.: Экземпляр с row_id = "%%_row_id" был добавлен.
     - Instance with row_id = "%%_row_id" was not added!: Экземпляр с row_id = "%%_row_id" не был добавлен!
     - Instances: Экземпляры
@@ -440,8 +439,6 @@ translations
     - URL: URL
     - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
     - used by modules: используется модулями
-    - User %%_nick was not updated.: Пользователь %%_nick не был обновлён.
-    - User %%_nick was updated.: Пользователь %%_nick был обновлён.
     - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
     - User %%_nick: Пользователь %%_nick
     - User ID: ID Пользователя
@@ -469,6 +466,7 @@ translations
     - Weight: Вес
     - Welcome to our site!: Добро пожаловать на наш сайт!
     - Welcome, %%_nick!: Добро пожаловать, %%_nick!
+    - Will the %%_name with id = "%%_id" be deleted?: %%_name с id = "%%_id" будет удален/а/о?
     - With it, you can speed up the system from 10x and more.: С его помощью вы можете ускорить систему в 10 и более раз.
     - Yes: Да
     - yes: да

@@ -12,6 +12,7 @@ namespace effcore\modules\storage {
           use \effcore\message;
           use \effcore\page;
           use \effcore\text;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_instance_delete {
 
@@ -27,7 +28,7 @@ namespace effcore\modules\storage {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
           if (!empty($instance->is_embed)) core::send_header_and_exit('access_forbidden');
-          $question = new markup('p', [], new text('Do you want to delete instance of entity "%%_name" with id = "%%_id"?', ['name' => $entity_name, 'id' => $instance_id]));
+          $question = new markup('p', [], new text('Will the %%_name with id = "%%_id" be deleted?', ['name' => translation::get($entity->title), 'id' => $instance_id]));
           $items['info']->child_insert($question);
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
@@ -45,8 +46,8 @@ namespace effcore\modules\storage {
         $id_values = explode('+', $instance_id);
         $instance  = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select() && $instance->delete())
-             message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was deleted.',     ['name' => $entity_name, 'id' => $instance_id]));
-        else message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was not deleted!', ['name' => $entity_name, 'id' => $instance_id]), 'error');
+             message::insert_to_storage(new text('%%_name with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
+        else message::insert_to_storage(new text('%%_name with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
         url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
       case 'cancel':

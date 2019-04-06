@@ -11,6 +11,7 @@ namespace effcore\modules\storage {
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
+          use \effcore\translation;
           use \effcore\text;
           use \effcore\url;
           abstract class events_form_instance_update {
@@ -73,8 +74,8 @@ namespace effcore\modules\storage {
             }
           }
           if ($instance->update())
-               message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was updated.',     ['name' => $entity_name, 'id' => $instance_id]));
-          else message::insert_to_storage(new text('Instance of entity "%%_name" with id = "%%_id" was not updated!', ['name' => $entity_name, 'id' => $instance_id]), 'error');
+               message::insert_to_storage(new text('%%_name with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
+          else message::insert_to_storage(new text('%%_name with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
         }
         url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
