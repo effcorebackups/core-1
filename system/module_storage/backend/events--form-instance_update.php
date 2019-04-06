@@ -16,7 +16,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_update {
 
-  static function on_init($form, $items) {
+  static function on_init($form, &$items) {
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -46,6 +46,7 @@ namespace effcore\modules\storage {
               }
             }
           }
+          $items = $form->form_items_get();
           if ($items['fields']->children_count() == 0 || $has_enabled_fields == false) $items['~update']->disabled_set();
           if ($items['fields']->children_count() == 0) {
             $form->child_update(

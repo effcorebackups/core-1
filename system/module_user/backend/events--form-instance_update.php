@@ -19,6 +19,8 @@ namespace effcore\modules\user {
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
     if ($entity_name == 'user') {
+      $user = (new instance('user', ['id' => $instance_id]))->select();
+      $items['#avatar']->pool_values_init_old_from_storage($user->avatar_path ? [$user->avatar_path] : []);
       $field_password_hash_current = new field_password('Current password', '', [], -50);
       $field_password_hash_current->build();
       $field_password_hash_current->name_set('password_hash_current');
