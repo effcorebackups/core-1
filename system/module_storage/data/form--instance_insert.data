@@ -2,6 +2,7 @@ forms
 - instance_insert|form
     attributes
     - id: instance_insert
+    - enctype: multipart/form-data
     - method: post
     - novalidate: true
     children
