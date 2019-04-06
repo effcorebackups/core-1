@@ -327,8 +327,8 @@ entities
         size: 255
         collate: binary
         field_class: \effcore\field_password
-        field_is_not_load_storage_value: true
-        field_is_not_save_empty_value: true
+        field_value_not_select: true
+        field_value_not_insert_if_empty: true
         field_properties
         - description: Leave the field blank if you do not want to change its value.
         field_element_attributes

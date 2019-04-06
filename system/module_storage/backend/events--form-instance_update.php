@@ -36,7 +36,7 @@ namespace effcore\modules\storage {
               $c_form_field->element_attributes = ($c_field->field_element_attributes ?? []) + $c_form_field->element_attributes;
               foreach ($c_field->field_properties ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               $c_form_field->build();
-              if (empty($c_field->field_is_not_load_storage_value)) {
+              if (empty($c_field->field_value_not_select)) {
                 $c_form_field->value_set($instance->{$c_name});
               }
               $items['fields']->child_insert($c_form_field, $c_name);
@@ -69,7 +69,7 @@ namespace effcore\modules\storage {
         if ($instance->select()) {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
-              if (!empty($c_field->field_is_not_save_empty_value) && $items['#'.$c_name]->value_get() == '') continue;
+              if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
               $instance->{$c_name} = $items['#'.$c_name]->value_get();
             }
           }
