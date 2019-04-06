@@ -26,6 +26,10 @@ events
   - access|event
       for: access
       handler: \effcore\modules\user\events_form_access::on_init
+  - instance_update_user|event
+      for: instance_update
+      handler: \effcore\modules\user\events_form_instance_update::on_init
+      weight: -50
   on_form_validate
   - login|event
       for: login
@@ -42,6 +46,7 @@ events
   - instance_update_user|event
       for: instance_update
       handler: \effcore\modules\user\events_form_instance_update::on_validate
+      weight: -50
   on_form_submit
   - login|event
       for: login

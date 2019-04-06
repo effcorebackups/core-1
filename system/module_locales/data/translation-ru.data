@@ -75,6 +75,7 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
+    - Current password: Текущий пароль
     - Dark: Тёмная
     - Data: Данные
     - Database name: Имя базы данных
