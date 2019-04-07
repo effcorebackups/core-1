@@ -20,14 +20,13 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
-    if ($entity_name == 'user') {
-      $user = (new instance('user', ['id' => $instance_id]))->select();
-      $items['#avatar']->pool_values_init_old_from_storage($user->avatar_path ? [$user->avatar_path] : []);
+    if ($entity_name == 'user' && !empty($form->_instance)) {
       $field_password_hash_current = new field_password('Current password', '', [], -50);
       $field_password_hash_current->build();
       $field_password_hash_current->name_set('password_hash_current');
-      $form->child_select('fields')->child_insert(
-        $field_password_hash_current, 'password_hash_current'
+      $form->child_select('fields')->child_insert($field_password_hash_current, 'password_hash_current');
+      $items['#avatar']->pool_values_init_old_from_storage(
+        $form->_instance->avatar_path ? [$form->_instance->avatar_path] : []
       );
     }
   }
@@ -38,40 +37,33 @@ namespace effcore\modules\user {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        if ($entity_name == 'user') {
-          if (!$form->has_error()) {
-            $id_keys   = $entity->real_id_get();
-            $id_values = explode('+', $instance_id);
-          # check security
-            $test_password = (new instance('user',
-              array_combine($id_keys, $id_values))
-            )->select();
-            if (!hash_equals($test_password->password_hash, $items['#password_hash_current']->value_get())) {
-              $items['#password_hash_current']->error_set(
-                'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
-              );
-              return;
-            }
-          # test nick
-            if (!field_nick::validate_uniqueness(
-              $items['#nick'],
-              $items['#nick']->value_get(),
-              $items['#nick']->value_initial_get()
-            )) return;
-          # test email
-            if (!field_email::validate_uniqueness(
-              $items['#email'],
-              $items['#email']->value_get(),
-              $items['#email']->value_initial_get()
-            )) return;
-          # test new password
-            if ($items['#password_hash_current']->value_get() ==
-                $items['#password_hash'        ]->value_get()) {
-              $items['#password_hash']->error_set(
-                'New password must be different from the current password!'
-              );
-              return;
-            }
+        if ($entity_name == 'user' && !$form->has_error() && !empty($form->_instance)) {
+        # check security
+          if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
+            $items['#password_hash_current']->error_set(
+              'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
+            );
+            return;
+          }
+        # test nick
+          if (!field_nick::validate_uniqueness(
+            $items['#nick'],
+            $items['#nick']->value_get(),
+            $items['#nick']->value_initial_get()
+          )) return;
+        # test email
+          if (!field_email::validate_uniqueness(
+            $items['#email'],
+            $items['#email']->value_get(),
+            $items['#email']->value_initial_get()
+          )) return;
+        # test new password
+          if ($items['#password_hash_current']->value_get() ==
+              $items['#password_hash'        ]->value_get()) {
+            $items['#password_hash']->error_set(
+              'New password must be different from the current password!'
+            );
+            return;
           }
         }
         break;
@@ -84,18 +76,12 @@ namespace effcore\modules\user {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        $id_keys   = $entity->real_id_get();
-        $id_values = explode('+', $instance_id);
-        $user = new instance('user', array_combine($id_keys, $id_values));
-        if ($user->select()) {
+        if ($entity_name == 'user' && !empty($form->_instance)) {
           $avatar_info = $items['#avatar']->pool_files_save();
           if (!empty($avatar_info[0]->path)) {
              $c_file = new file($avatar_info[0]->path);
-             $user->avatar_path = $c_file->path_relative_get(); } else {
-             $user->avatar_path = null;
-          }
-          if (!$user->update()) {
-            message::insert_to_storage(new text('Can not update avatar for %%_nick!', ['nick' => $user->nick]), 'warning');
+             $form->_instance->avatar_path = $c_file->path_relative_get(); } else {
+             $form->_instance->avatar_path = null;
           }
         }
         break;

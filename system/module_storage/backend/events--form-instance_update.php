@@ -25,8 +25,8 @@ namespace effcore\modules\storage {
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
-        $instance = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($instance->select()) {
+        $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
+        if ($form->_instance->select()) {
           $has_enabled_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class)) {
@@ -38,7 +38,9 @@ namespace effcore\modules\storage {
               $c_form_field->cform_set($form);
               $c_form_field->build();
               if (empty($c_field->field_value_not_select)) {
-                $c_form_field->value_set($instance->{$c_name});
+                $c_form_field->value_set(
+                  $form->_instance->{$c_name}
+                );
               }
               $items['fields']->child_insert($c_form_field, $c_name);
               if ($c_form_field->disabled_get() == false) {
@@ -58,24 +60,20 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $base        = page::current_get()->args_get('base');
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        $id_keys   = $entity->real_id_get();
-        $id_values = explode('+', $instance_id);
-        $instance  = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($instance->select()) {
+        if (!empty($form->_instance)) {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
               if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
               if (!empty($c_field->field_value_not_insert         )                                          ) continue;
-              $instance->{$c_name} = $items['#'.$c_name]->value_get();
+              $form->_instance->{$c_name} = $items['#'.$c_name]->value_get();
             }
           }
-          if ($instance->update())
+          if ($form->_instance->update())
                message::insert_to_storage(new text('%%_name with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
           else message::insert_to_storage(new text('%%_name with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'warning');
         }
