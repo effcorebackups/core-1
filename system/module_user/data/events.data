@@ -66,3 +66,7 @@ events
   - access|event
       for: access
       handler: \effcore\modules\user\events_form_access::on_submit
+  - instance_update_user|event
+      for: instance_update
+      handler: \effcore\modules\user\events_form_instance_update::on_submit
+      weight: +50

@@ -316,6 +316,7 @@ entities
         collate: nocase
         field_class: \effcore\field_file
         field_value_not_select: true
+        field_value_not_insert: true
         field_properties
         - max_file_size: 10K
         - upload_dir: avatar/

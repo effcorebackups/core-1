@@ -9,9 +9,11 @@ namespace effcore\modules\user {
           use \effcore\field_email;
           use \effcore\field_nick;
           use \effcore\field_password;
+          use \effcore\file;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\page;
+          use \effcore\text;
           use \effcore\translation;
           abstract class events_form_instance_update {
 
@@ -70,6 +72,30 @@ namespace effcore\modules\user {
               );
               return;
             }
+          }
+        }
+        break;
+    }
+  }
+
+  static function on_submit($form, $items) {
+    $entity_name = page::current_get()->args_get('entity_name');
+    $instance_id = page::current_get()->args_get('instance_id');
+    $entity = entity::get($entity_name);
+    switch ($form->clicked_button->value_get()) {
+      case 'update':
+        $id_keys   = $entity->real_id_get();
+        $id_values = explode('+', $instance_id);
+        $user = new instance('user', array_combine($id_keys, $id_values));
+        if ($user->select()) {
+          $avatar_info = $items['#avatar']->pool_files_save();
+          if (!empty($avatar_info[0]->path)) {
+             $c_file = new file($avatar_info[0]->path);
+             $user->avatar_path = $c_file->path_relative_get(); } else {
+             $user->avatar_path = null;
+          }
+          if (!$user->update()) {
+            message::insert_to_storage(new text('Can not update avatar for %%_nick!', ['nick' => $user->nick]), 'warning');
           }
         }
         break;

@@ -71,12 +71,13 @@ namespace effcore\modules\storage {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
               if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+              if (!empty($c_field->field_value_not_insert         )                                          ) continue;
               $instance->{$c_name} = $items['#'.$c_name]->value_get();
             }
           }
           if ($instance->update())
                message::insert_to_storage(new text('%%_name with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
-          else message::insert_to_storage(new text('%%_name with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
+          else message::insert_to_storage(new text('%%_name with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'warning');
         }
         url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
         break;
