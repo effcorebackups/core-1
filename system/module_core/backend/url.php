@@ -158,7 +158,7 @@ namespace effcore {
   }
 
   static function back_part_make() {
-    return 'back='.urlencode(static::current_get()->full_get());
+    return 'back='.urlencode(static::current_get()->tiny_get());
   }
 
   static function is_local($url) {
