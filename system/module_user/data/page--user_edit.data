@@ -24,14 +24,14 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - check_access|page_part
+    - page_init|page_part
         region: content
         type: code
-        source: \effcore\modules\user\events_access::on_check_access_user_edit
-    - form_user_edit|page_part
+        source: \effcore\modules\user\events_page_user_edit::on_page_init
+    - form_instance_update|page_part
         region: content
         type: link
-        source: forms/user/user_edit
+        source: forms/storage/instance_update
     - form_access|page_part
         display
           check: user
