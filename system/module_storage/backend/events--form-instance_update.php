@@ -46,7 +46,7 @@ namespace effcore\modules\storage {
               }
             }
           }
-          $items = $form->form_items_get();
+          $form->form_items_update();
           if ($items['fields']->children_count() == 0 || $has_enabled_fields == false) $items['~update']->disabled_set();
           if ($items['fields']->children_count() == 0) {
             $form->child_update(

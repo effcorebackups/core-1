@@ -15,6 +15,7 @@ namespace effcore {
   public $clicked_button;
   public $validation_id;
   public $validation_data = [];
+  protected $items = [];
 
   function build() {
     $id = $this->attribute_select('id');
@@ -58,9 +59,9 @@ namespace effcore {
     }
 
   # call init handlers
-    $items = $this->form_items_get();
-    event::start('on_form_init', $id, [&$this, &$items]);
-    $items = $this->form_items_get();
+    $this->form_items_update();
+    event::start('on_form_init', $id, [&$this, &$this->items]);
+    $this->form_items_update();
 
   # ─────────────────────────────────────────────────────────────────────
   # if user click the button
@@ -71,7 +72,7 @@ namespace effcore {
 
     # call items validate methods
       if (empty($this->clicked_button->novalidate)) {
-        foreach ($items as $c_npath => $c_item) {
+        foreach ($this->items as $c_npath => $c_item) {
           if ($c_npath[0] != '#' && is_object($c_item) && method_exists($c_item, 'validate')) {
             $c_item::validate($c_item, $this, $c_npath);
           }
@@ -80,7 +81,7 @@ namespace effcore {
 
     # call form validate handlers
       if (empty($this->clicked_button->novalidate)) {
-        event::start('on_form_validate', $id, [&$this, &$items]);
+        event::start('on_form_validate', $id, [&$this, &$this->items]);
       }
 
     # send test headers
@@ -101,7 +102,7 @@ namespace effcore {
 
     # call submit handler (if no errors)
       if (!static::$errors) {
-        event::start('on_form_submit', $id, [&$this, &$items]);
+        event::start('on_form_submit', $id, [&$this, &$this->items]);
       }
 
     # validation cache
@@ -115,21 +116,20 @@ namespace effcore {
           ($this->attribute_select('method') == 'get'  ? '_GET'  : '_GET');
   }
 
-  function form_items_get() {
-    $result = [];
-    $groups = [];
+  function form_items_update() {
+    $this->items = [];
+    $groups      = [];
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
-      if ($c_item instanceof container)         $result[$c_npath] = $c_item;
-      if ($c_item instanceof button)            $result['~'.$c_item->value_get()] = $c_item;
-      if ($c_item instanceof group_mono)        $groups['*'.$c_item->name_first_get()][] = $c_item;
-      if ($c_item instanceof field)             $groups['#'.$c_item->name_get()][] = $c_item;
-      if ($c_item instanceof field_radiobutton) $groups['#'.$c_item->name_get().':'.$c_item->value_get()][] = $c_item;
+      if ($c_item instanceof container)         $this->items[$c_npath                                                ] = $c_item;
+      if ($c_item instanceof button)            $this->items['~'.$c_item->value_get     ()                           ] = $c_item;
+      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_first_get()                         ][] = $c_item;
+      if ($c_item instanceof field)             $groups     ['#'.$c_item->name_get      ()                         ][] = $c_item;
+      if ($c_item instanceof field_radiobutton) $groups     ['#'.$c_item->name_get      ().':'.$c_item->value_get()][] = $c_item;
     }
     foreach ($groups as $c_name => $c_group) {
-      if (count($c_group) == 1) $result[$c_name] = reset($c_group);
-      if (count($c_group) >= 2) $result[$c_name] = $c_group;
+      if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
+      if (count($c_group) >= 2) $this->items[$c_name] =       $c_group;
     }
-    return $result;
   }
 
   function clicked_button_set() {
