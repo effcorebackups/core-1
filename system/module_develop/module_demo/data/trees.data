@@ -1,7 +1,7 @@
 trees
 - demo|tree
     id: demo
-    title: Menu for demonstration
+    title: Tree for demonstration
     attributes
     - class
       - =: demo
