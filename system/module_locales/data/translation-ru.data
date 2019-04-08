@@ -65,6 +65,7 @@ translations
     - Colors preset: Предустановка цвета
     - Colors was applied.: Цвета были применены.
     - Colors: Цвета
+    - Console: Консоль
     - Control elements: Элементы управления
     - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 20XX—20XX Author / rightholder name. All rights reserved.: Copyright © 20XX—20XX Имя автора / правообладателя. Все права защищены.
@@ -305,6 +306,7 @@ translations
     - Permission: Разрешение
     - Permissions: Разрешения
     - Phone: Телефон
+    - PHP dependencies: PHP зависимости
     - PHP OPcache is anebled: PHP OPcache включен
     - PHP Version: PHP Версия
     - Port: Порт
@@ -371,12 +373,14 @@ translations
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
+    - Static trees: Статические деревья
     - Storage "%%_name" is not available!: Хранилище "%%_name" не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!
     - Storage SQL: Хранилище SQL
     - storage: хранилище
     - Storage: Хранилище
+    - Structures: Структуры
     - submit: отправить
     - Subscribe to updates: Подписка на обновления
     - Switcher: Переключатель

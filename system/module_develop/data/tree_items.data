@@ -11,6 +11,17 @@ tree_items
     attributes
     - class
       - =: develop
+- trees_static|tree_item
+    id: trees_static
+    id_parent: develop
+    title: Static trees
+    url: /develop/trees_static
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: trees-static
 - structures|tree_item
     id: structures
     id_parent: develop

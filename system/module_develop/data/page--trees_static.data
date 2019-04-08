@@ -1,11 +1,11 @@
 pages
-- trees|page
-    title: Trees
+- trees_static|page
+    title: Static trees
     https: true
     display
       check: url
       where: path
-      match: %^(?<base>/manage/trees)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
+      match: %^(?<base>/develop/trees_static)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
     access
       roles
       - =: admins
@@ -25,20 +25,20 @@ pages
     - tabs|page_part
         region: tabs
         type: link
-        source: tabs/menu/manage_trees
+        source: tabs/develop/trees_static
     # ─────────────────────────────────────────────────────────────────────
     - page_init|page_part
         region: content
         type: code
-        source: \effcore\modules\menu\events_page_trees::on_page_init
-    - block_tree_select|page_part
+        source: \effcore\modules\develop\events_page_trees_static::on_page_init
+    - block_tree_static|page_part
         display
           check: page_args
           where: action
           match: %^select$%
         region: content
         type: code
-        source: \effcore\manage_trees::tree_select
+        source: \effcore\modules\develop\events_page_trees_static::on_show_block_tree
     - form_access|page_part
         display
           check: user

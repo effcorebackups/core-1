@@ -42,3 +42,12 @@ tabs_items
     attributes
     - class
       - =: trait
+- trees_static_select|tabs_item
+    id: trees_static_select
+    id_parent: T:trees_static
+    action_name: select
+    title: Select
+    weight: +50
+    attributes
+    - class
+      - =: trees-static-select

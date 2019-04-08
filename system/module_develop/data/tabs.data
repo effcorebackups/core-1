@@ -4,3 +4,8 @@ tabs
     attributes
     - class
       - =: structures
+- trees_static|tabs
+    id: trees_static
+    attributes
+    - class
+      - =: trees-static
