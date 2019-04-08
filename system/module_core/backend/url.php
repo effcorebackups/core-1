@@ -152,7 +152,7 @@ namespace effcore {
 
   static function back_url_get() {
     $url = urldecode(static::current_get()->query_arg_select('back'));
-    if (core::validate_url($url))
+    if (core::validate_url((new url($url))->full_get()))
          return core::sanitize_url($url);
     else return '';
   }
