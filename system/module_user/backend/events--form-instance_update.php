@@ -77,12 +77,18 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'update':
         if ($entity_name == 'user' && !empty($form->_instance)) {
+          page::current_get()->args_set('back_update', '/user/'.$items['#nick']->value_get());
           $avatar_info = $items['#avatar']->pool_files_save();
           if (!empty($avatar_info[0]->path)) {
              $c_file = new file($avatar_info[0]->path);
              $form->_instance->avatar_path = $c_file->path_relative_get(); } else {
              $form->_instance->avatar_path = null;
           }
+        }
+        break;
+      case 'cancel':
+        if ($entity_name == 'user' && !empty($form->_instance)) {
+          page::current_get()->args_set('back_cancel', '/user/'.$items['#nick']->value_get());
         }
         break;
     }

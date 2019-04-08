@@ -60,6 +60,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
+    $back_update = page::current_get()->args_get('back_update');
+    $back_cancel = page::current_get()->args_get('back_cancel');
     $entity_name = page::current_get()->args_get('entity_name');
     $instance_id = page::current_get()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -77,11 +79,8 @@ namespace effcore\modules\storage {
                message::insert_to_storage(new text('%%_name with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
           else message::insert_to_storage(new text('%%_name with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'warning');
         }
-        url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
-        break;
-      case 'cancel':
-        url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name);
-        break;
+                     url::go(url::back_url_get() ?: ($back_update ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
+      case 'cancel': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
     }
   }
 
