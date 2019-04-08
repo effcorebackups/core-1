@@ -14,7 +14,7 @@ tree_items
 - trees_static|tree_item
     id: trees_static
     id_parent: develop
-    title: Static trees
+    title: Trees
     url: /develop/trees_static
     access
       roles
