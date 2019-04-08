@@ -244,7 +244,6 @@ translations
     - Menu main: Меню главное
     - Menu text: Меню текст
     - Menu: Меню
-    - Menus static: Меню статическое
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.

@@ -28,9 +28,9 @@ namespace effcore\modules\demo {
     }
   }
 
-  static function on_menu_demo_do_dynamic_changes($page) {
-    tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/embedded/menus_static/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
-    tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/menus_static/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
+  static function on_tree_demo_do_dynamic_changes($page) {
+    tree::item_insert('item #3 (from code)',     'demo_item_3',     'M:demo',        '/develop/demo/embedded/trees_static/item_3',                     ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
+    tree::item_insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/trees_static/item_1/item_1_2/item_1_2_3', ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
   }
 
   ################

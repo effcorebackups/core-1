@@ -14,7 +14,7 @@ pages
 >>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
->>>>>>>>>>>>>>>>>>>>>>>embedded/menus_static(/.*|)|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/trees_static(/.*|)|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
     access
@@ -140,19 +140,19 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
-    - menu_demo_dynamic_changes|page_part
+    - tree_demo_dynamic_changes|page_part
         display
           check: page_args
           where: type
-          match: %^embedded/menus_static(/.*|)$%
+          match: %^embedded/trees_static(/.*|)$%
         region: content
         type: code
-        source: \effcore\modules\demo\events_page_demo::on_menu_demo_do_dynamic_changes
-    - menu_demo|page_part
+        source: \effcore\modules\demo\events_page_demo::on_tree_demo_do_dynamic_changes
+    - tree_demo|page_part
         display
           check: page_args
           where: type
-          match: %^embedded/menus_static(/.*|)$%
+          match: %^embedded/trees_static(/.*|)$%
         region: content
         type: link
         source: trees/demo/demo
