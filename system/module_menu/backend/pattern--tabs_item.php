@@ -10,7 +10,7 @@ namespace effcore {
   public $template = 'tabs_item';
   public $template_children = 'tabs_item_children';
   public $attributes = [];
-  public $link_attributes = ['role' => 'tab'];
+  public $element_attributes = ['role' => 'tab'];
   public $id;
   public $id_parent;
   public $title = '';
@@ -19,13 +19,13 @@ namespace effcore {
   public $hidden = false;
   public $access;
 
-  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $link_attributes = [], $hidden = false, $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
     if ($id)                  $this->id                  = $id;
     if ($id_parent)           $this->id_parent           = $id_parent;
     if ($title)               $this->title               = $title;
     if ($action_name)         $this->action_name         = $action_name;
     if ($action_name_default) $this->action_name_default = $action_name_default;
-    if ($link_attributes)     $this->link_attributes     = $link_attributes;
+    if ($element_attributes)  $this->element_attributes  = $element_attributes;
     if ($hidden)              $this->hidden              = $hidden;
     parent::__construct($attributes, [], $weight);
   }
@@ -57,11 +57,11 @@ namespace effcore {
   function render_self() {
     $href         = rtrim(page::current_get()->args_get('base').'/'.($this->action_name         ?: $this->action_name), '/');
     $href_default = rtrim(page::current_get()->args_get('base').'/'.($this->action_name_default ?: $this->action_name), '/');
-    if ($href && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected', 'true', 'link_attributes');}
-    if ($href && url::is_active_trail($href))         {$this->attribute_insert('aria-selected', 'true', 'link_attributes'); $this->attribute_insert('class', ['active-trail' => 'active-trail'], 'link_attributes');}
-    if ($href_default) $this->attribute_insert('href', $href_default, 'link_attributes');
-    $this->attribute_insert('title', translation::get('Click to open the tab: %%_title', ['title' => translation::get($this->title)]), 'link_attributes');
-    return (new markup('a', $this->attributes_select('link_attributes'),
+    if ($href && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected', 'true', 'element_attributes');}
+    if ($href && url::is_active_trail($href))         {$this->attribute_insert('aria-selected', 'true', 'element_attributes'); $this->attribute_insert('class', ['active-trail' => 'active-trail'], 'element_attributes');}
+    if ($href_default) $this->attribute_insert('href', $href_default, 'element_attributes');
+    $this->attribute_insert('title', translation::get('Click to open the tab: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
+    return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
   }

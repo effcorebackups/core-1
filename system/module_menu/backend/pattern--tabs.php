@@ -116,8 +116,8 @@ namespace effcore {
     return static::$cache_tabs_items[$id] ?? null;
   }
 
-  static function item_insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $link_attributes = [], $hidden = false, $weight = 0) {
-    $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_name_default,        $attributes,      $link_attributes,      $hidden,         $weight);
+  static function item_insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
+    $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_name_default,        $attributes,      $element_attributes,      $hidden,         $weight);
     if (static::$cache_tabs_items == null) static::init();
         static::$cache_tabs_items[$id] = $new_item;
         static::$cache_tabs_items[$id]->module_id = null;
