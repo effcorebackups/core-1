@@ -22,7 +22,7 @@ namespace effcore {
   public $pager_id = 0;
 
   function __construct($title = '', $view_type = null, $weight = 0) {
-    if ($title)     $this->title     = $title;
+    if ($title    ) $this->title     = $title;
     if ($view_type) $this->view_type = $view_type;
     parent::__construct(null, [], [], $weight);
   }

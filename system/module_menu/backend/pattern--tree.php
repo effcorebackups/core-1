@@ -104,8 +104,8 @@ namespace effcore {
     return static::$cache_tree_items[$id] ?? null;
   }
 
-  static function item_insert($title, $id, $id_parent, $url = null, $attributes = [], $weight = 0) {
-    $new_item = new tree_item($title, $id, $id_parent, $url, $attributes, $weight);
+  static function item_insert($title, $id, $id_parent, $url = null, $attributes = [], $element_attributes = [], $weight = 0) {
+    $new_item = new tree_item($title, $id, $id_parent, $url,        $attributes,      $element_attributes,      $weight);
     if (static::$cache_tree_items == null) static::init();
         static::$cache_tree_items[$id] = $new_item;
         static::$cache_tree_items[$id]->module_id = null;

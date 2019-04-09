@@ -15,8 +15,8 @@ namespace effcore {
 
   function child_insert($child, $id = null) {
     if ($child instanceof table_body_row) return parent::child_insert(                       $child,                $id);
-    if ($child instanceof instance)       return parent::child_insert(new table_body_row([], $child->values_get()), $id);
-    if (is_array($child))                 return parent::child_insert(new table_body_row([], $child),               $id);
+    if ($child instanceof instance      ) return parent::child_insert(new table_body_row([], $child->values_get()), $id);
+    if (is_array($child)                ) return parent::child_insert(new table_body_row([], $child),               $id);
   }
 
 }}

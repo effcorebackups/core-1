@@ -19,13 +19,13 @@ namespace effcore {
   public $access;
 
   function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
-    if ($id)                  $this->id                  = $id;
-    if ($id_parent)           $this->id_parent           = $id_parent;
-    if ($title)               $this->title               = $title;
-    if ($action_name)         $this->action_name         = $action_name;
+    if ($id                 ) $this->id                  = $id;
+    if ($id_parent          ) $this->id_parent           = $id_parent;
+    if ($title              ) $this->title               = $title;
+    if ($action_name        ) $this->action_name         = $action_name;
     if ($action_name_default) $this->action_name_default = $action_name_default;
-    if ($element_attributes)  $this->element_attributes  = $element_attributes;
-    if ($hidden)              $this->hidden              = $hidden;
+    if ($element_attributes ) $this->element_attributes  = $element_attributes;
+    if ($hidden             ) $this->hidden              = $hidden;
     parent::__construct($attributes, [], $weight);
   }
 

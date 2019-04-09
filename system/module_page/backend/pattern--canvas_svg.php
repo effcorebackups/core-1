@@ -15,9 +15,9 @@ namespace effcore {
   public $canvas = [];
 
   function __construct($w = 10, $h = 10, $scale = 1, $color_bg = 'white', $weight = 0) {
-    if ($w) $this->w = $w;
-    if ($h) $this->h = $h;
-    if ($scale)    $this->scale    = $scale;
+    if ($w       ) $this->w        = $w;
+    if ($h       ) $this->h        = $h;
+    if ($scale   ) $this->scale    = $scale;
     if ($color_bg) $this->color_bg = $color_bg;
     parent::__construct([], $weight);
   }

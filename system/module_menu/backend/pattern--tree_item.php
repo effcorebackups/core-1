@@ -17,11 +17,12 @@ namespace effcore {
   public $shadow_url;
   public $access;
 
-  function __construct($title = '', $id = null, $id_parent = null, $url = null, $attributes = [], $weight = 0) {
-    if ($id)        $this->id        = $id;
-    if ($id_parent) $this->id_parent = $id_parent;
-    if ($title)     $this->title     = $title;
-    if ($url)       $this->url       = $url;
+  function __construct($title = '', $id = null, $id_parent = null, $url = null, $attributes = [], $element_attributes = [], $weight = 0) {
+    if ($id                ) $this->id                 = $id;
+    if ($id_parent         ) $this->id_parent          = $id_parent;
+    if ($title             ) $this->title              = $title;
+    if ($url               ) $this->url                = $url;
+    if ($element_attributes) $this->element_attributes = $element_attributes;
     parent::__construct($attributes, [], $weight);
   }
 
