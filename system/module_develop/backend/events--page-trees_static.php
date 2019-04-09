@@ -30,6 +30,7 @@ namespace effcore\modules\develop {
     if ($id) {
       $tree = clone tree::get($id);
       $tree->build();
+      $tree->access = null;
       $tree = core::deep_clone($tree, ['effcore\\tree_item' => 'effcore\\tree_item_managed']);
       $tree->attribute_delete('class');
       $tree->attribute_insert('class', ['managed' => 'managed']);
