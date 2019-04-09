@@ -58,6 +58,7 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
     - Checkboxes: Флажки
+    - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
     - Click to open the tab\: %%_title: Нажмите, чтобы открыть вкладку: %%_title
     - collapse: свернуть
     - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
