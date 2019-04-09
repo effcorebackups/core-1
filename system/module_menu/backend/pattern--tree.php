@@ -8,6 +8,7 @@ namespace effcore {
           class tree extends node {
 
   public $template = 'tree';
+  public $attributes = ['role' => 'tree'];
   public $id;
   public $title = '';
   public $title_state; # hidden | cutted

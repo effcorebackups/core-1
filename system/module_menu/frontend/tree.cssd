@@ -37,21 +37,21 @@
   x-tree.main        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
   x-tree.main > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
-  x-tree.main li    a.active,
-  x-tree.main li    a.active-trail {background-color: %%_color_menu_active}
-  x-tree.main li li a.active,
-  x-tree.main li li a.active-trail {background-color: transparent; color: %%_color_menu_link_active}
-  x-tree.main       a.home         {background-color: transparent !important}
+  x-tree.main li    a[aria-selected      ='true'],
+  x-tree.main li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree.main li li a[aria-selected      ='true'],
+  x-tree.main li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu Main: icons */
 
-  x-tree.main a.home    {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0      0}
-  x-tree.main a.manage  {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0  -64px}
-  x-tree.main a.develop {padding-left: 64px; background: url('images/icons-tree.svg') no-repeat 0 -128px}
+  x-tree.main li.home    > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
+  x-tree.main li.manage  > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0  -64px}
+  x-tree.main li.develop > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* managed menu */
 
-  x-tree.managed ul, x-tree.managed li {margin: 0; padding: 0; list-style: none}
+  x-tree.managed ul,
+  x-tree.managed li {margin: 0; padding: 0; list-style: none}
   x-tree.managed li {padding-left: 35px}
   x-tree.managed li             {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
   x-tree.managed li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}

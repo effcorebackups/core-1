@@ -9,6 +9,7 @@ namespace effcore {
 
   public $template = 'tree_item';
   public $template_children = 'tree_item_children';
+  public $element_attributes = ['role' => 'treeitem'];
   public $id;
   public $id_parent;
   public $title = '';
@@ -48,12 +49,12 @@ namespace effcore {
 
   function render_self() {
     $href        = token::replace($this->url);
-    $href_shadow = token::replace($this->shadow_url); 
-    if ($href        && url::is_active      ($href, 'path')) $this->attribute_insert('class', ['active'       => 'active'      ]);
-    if ($href        && url::is_active_trail($href        )) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
-    if ($href_shadow && url::is_active_trail($href_shadow )) $this->attribute_insert('class', ['active-trail' => 'active-trail']);
-    if ($href) $this->attribute_insert('href', $href);
-    return (new markup('a', $this->attributes_select(),
+    $href_shadow = token::replace($this->shadow_url);
+    if ($href        && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected',       'true', 'element_attributes');}
+    if ($href        && url::is_active_trail($href        )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
+    if ($href_shadow && url::is_active_trail($href_shadow )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
+    if ($href) $this->attribute_insert('href', $href, 'element_attributes');
+    return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
   }

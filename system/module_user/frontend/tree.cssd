@@ -35,13 +35,13 @@
   x-tree.user        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
   x-tree.user > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
-  x-tree.user li    a.active,
-  x-tree.user li    a.active-trail {background-color: %%_color_menu_active}
-  x-tree.user li li a.active,
-  x-tree.user li li a.active-trail {background-color: transparent; color: %%_color_menu_link_active}
+  x-tree.user li    a[aria-selected      ='true'],
+  x-tree.user li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree.user li li a[aria-selected      ='true'],
+  x-tree.user li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu User: icons */
 
-  x-tree.user a.anonymous  {padding-left: 77px; background: url('images/avatar-anonymous.svg'  ) no-repeat 8px 50%}
-  x-tree.user a.registered {padding-left: 77px; background: url('images/avatar-registered.svgd') no-repeat 8px 50%}
-  x-tree.user a.registered[data-has-avatar='yes'] {padding-left: 77px; background: url('%%_avatar_url') no-repeat 8px 50%; background-size: 48px 48px}
+  x-tree.user li.anonymous                         > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
+  x-tree.user li.registered                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
+  x-tree.user li[data-has-avatar='yes'].registered > a {padding-left: 77px; background-image: url('%%_avatar_url');                 background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
