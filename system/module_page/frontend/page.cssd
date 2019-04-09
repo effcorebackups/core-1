@@ -78,6 +78,7 @@
   /* messages */
 
   x-messages {display: block; margin: 100px auto}
+  x-messages p {margin: 0; padding: 0}
   x-messages ul {margin: 10px 0; padding: 15px 20px; background-color: gray; color: white}
   x-messages ul.notice  {background-color: %%_color_main}
   x-messages ul.ok      {background-color: %%_color_ok}
