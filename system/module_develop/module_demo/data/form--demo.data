@@ -80,17 +80,17 @@ forms
             element_attributes
             - name: url
             - value: http://example.com
-      # field_phone
-        - phone|field_phone
-            title: Phone
+      # field_tel
+        - tel|field_tel
+            title: Telephone number
             description|text_multiline
               text
-              - 0: Use international format of mobile phone numbers.
+              - 0: Use international mobile telephone number format.
               - 1: Field %%_type.
               args
-              - type: field_phone
+              - type: field_tel
             element_attributes
-            - name: phone
+            - name: tel
             - value: &#43;000112334455
       # field_email
         - email|field_email

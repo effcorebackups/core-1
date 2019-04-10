@@ -143,7 +143,7 @@ translations
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
     - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
-    - Field "%%_title" contains an incorrect phone!: Поле "%%_title" содержит неверный телефон!
+    - Field "%%_title" contains an incorrect telephone number!: Поле "%%_title" содержит неверный номер телефона!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
@@ -308,7 +308,6 @@ translations
     - Permission ID: ID Разрешения
     - Permission: Разрешение
     - Permissions: Разрешения
-    - Phone: Телефон
     - PHP dependencies: PHP зависимости
     - PHP OPcache is anebled: PHP OPcache включен
     - PHP Version: PHP Версия
@@ -395,6 +394,7 @@ translations
     - Table row (even): Таблицы строка (чётная)
     - Table row (odd): Таблицы строка (не чётная)
     - Table: Таблица
+    - Telephone number: Номер телефона
     - Test: Тест
     - Tests: Тесты
     - Text: Текст
@@ -442,7 +442,7 @@ translations
     - updated: обновлено
     - Updated: Обновлено
     - URL: URL
-    - Use international format of mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
+    - Use international mobile telephone number format.: Используйте международный формат номеров мобильных телефонов.
     - used by modules: используется модулями
     - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
     - User %%_nick: Пользователь %%_nick

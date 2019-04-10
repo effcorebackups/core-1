@@ -5,14 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class field_phone extends field_text {
+          class field_tel extends field_text {
 
-  public $title = 'Phone';
-  public $description = 'Use international format of mobile phone numbers.';
-  public $attributes = ['data-type' => 'phone'];
+  public $title = 'Telephone number';
+  public $description = 'Use international mobile telephone number format.';
+  public $attributes = ['data-type' => 'tel'];
   public $element_attributes = [
     'type'      => 'tel',
-    'name'      => 'phone',
+    'name'      => 'tel',
     'required'  => true,
     'minlength' => 5,
     'maxlength' => 15
@@ -23,9 +23,9 @@ namespace effcore {
   ###########################
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if (strlen($new_value) && !core::validate_phone($new_value)) {
+    if (strlen($new_value) && !core::validate_tel($new_value)) {
       $field->error_set(
-        'Field "%%_title" contains an incorrect phone!', ['title' => translation::get($field->title)]
+        'Field "%%_title" contains an incorrect telephone number!', ['title' => translation::get($field->title)]
       );
     } else {
       return true;

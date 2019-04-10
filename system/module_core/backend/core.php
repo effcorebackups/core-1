@@ -516,7 +516,7 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nick::allowed_characters.']{4,32}$%']]);
   }
 
-  static function validate_phone($value) {
+  static function validate_tel($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
   }
 
