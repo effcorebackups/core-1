@@ -213,18 +213,6 @@ forms
             selected
             - UTC: UTC
       # ─────────────────────────────────────────────────────────────────────
-      # textarea
-      # ─────────────────────────────────────────────────────────────────────
-        - textarea|field_textarea
-            title: Textarea
-            description|text
-              text: Field %%_type.
-              args
-              - type: field_textarea
-            element_attributes
-            - name: textarea
-            - value: text in textarea
-      # ─────────────────────────────────────────────────────────────────────
       # select
       # ─────────────────────────────────────────────────────────────────────
         - select|field_select
@@ -250,6 +238,29 @@ forms
             - =: option_1
             disabled
             - =: option_2
+      # field_logic
+        - logic|field_logic
+            title: Logic
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_nick
+            element_attributes
+            - name: logic
+            selected
+            - 1: 1
+       # ─────────────────────────────────────────────────────────────────────
+       # textarea
+       # ─────────────────────────────────────────────────────────────────────
+        - textarea|field_textarea
+            title: Textarea
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_textarea
+            element_attributes
+            - name: textarea
+            - value: text in textarea
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
