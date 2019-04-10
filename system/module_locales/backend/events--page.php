@@ -7,6 +7,7 @@
 namespace effcore\modules\locales {
           use \effcore\language;
           use \effcore\markup;
+          use \effcore\translation;
           abstract class events_page {
 
   static function on_show_block_menu_languages($page) {
@@ -16,7 +17,7 @@ namespace effcore\modules\locales {
         $c_language->title->en :
         $c_language->title->en.' ('.$c_language->title->native.')';
       $href = $page->args_get('base').'/'.$c_language->code;
-      $link = new markup('a', ['href' => $href], $title);
+      $link = new markup('a', ['href' => $href, 'title' => translation::get('go to %%_title language', ['title' => $c_language->title->en], 'en')], $title);
       $link_wrapper = new markup('x-language', ['data-code' => $c_language->code], $link);
       $menu->child_insert($link_wrapper, $c_language->code);
     }

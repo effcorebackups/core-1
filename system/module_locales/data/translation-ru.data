@@ -115,6 +115,7 @@ translations
     - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
+    - effcore logotype: логотип effcore
     - EMail: Адрес электронной почты
     - email: адрес электронной почты
     - Embedded: Встроенные
@@ -182,6 +183,7 @@ translations
     - Form elements: Элементы формы
     - Front page: Главная страница
     - front: главная
+    - go to %%_title language: перейти на %%_title язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to front page: перейти на главную страницу
     - go to page %%_link: перейти на страницу %%_link

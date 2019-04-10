@@ -8,6 +8,7 @@ namespace effcore\modules\core {
           use \effcore\block;
           use \effcore\core;
           use \effcore\decorator;
+          use \effcore\language;
           use \effcore\locale;
           use \effcore\markup_simple;
           use \effcore\markup;
@@ -18,7 +19,7 @@ namespace effcore\modules\core {
           abstract class events_page_info {
 
   static function on_show_block_system_info($page) {
-    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => 'effcore', 'width' => '300']));
+    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svg', 'alt' => translation::get('effcore logotype'), 'width' => '300']));
     $copyright = new markup('x-copyright', [], '© 2017—2019 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
