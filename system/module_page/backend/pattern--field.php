@@ -306,7 +306,6 @@ namespace effcore {
   function render() {
     $element = $this->child_select('element');
     if ($this->set_auto_id) $this->auto_id_set();
-    if ($this->id_get() && $this->render_self       ()) $element->attribute_insert('aria-labelledby',  'label-'.      $this->id_get());
     if ($this->id_get() && $this->render_description()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
     if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('aria-disabled', 'true');
     if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('aria-required', 'true');
@@ -318,7 +317,6 @@ namespace effcore {
     if ($this->title) {
       return (new markup($this->title_tag_name, [
         'for'                => $this->id_get(),
-        'id'                 => $this->id_get() ? 'label-'.$this->id_get() : null,
         'data-mark-required' => $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? 'true' : null], $this->title
       ))->render();
     }
