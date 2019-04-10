@@ -8,32 +8,32 @@ selections
     - user.id
         type: field
         entity_name: user
-        field_name: id
+        entity_field_name: id
     - user.nick
         type: field
         entity_name: user
-        field_name: nick
+        entity_field_name: nick
     - user.email
         type: field
         entity_name: user
-        field_name: email
+        entity_field_name: email
     - user.timezone
         type: field
         entity_name: user
-        field_name: timezone
+        entity_field_name: timezone
     - user.is_embed
         type: field
         entity_name: user
-        field_name: is_embed
+        entity_field_name: is_embed
     - user.avatar_path
         type: field
         entity_name: user
-        field_name: avatar_path
+        entity_field_name: avatar_path
     - user.created
         type: field
         entity_name: user
-        field_name: created
+        entity_field_name: created
     - user.updated
         type: field
         entity_name: user
-        field_name: updated
+        entity_field_name: updated

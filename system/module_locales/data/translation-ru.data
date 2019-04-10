@@ -337,6 +337,7 @@ translations
     - registration: регистрация
     - Registration: Регистрация
     - Relation: Связь
+    - Relation: Связь
     - Relation\: Role + Permission: Связь: Роль + Разрешение
     - Relation\: Role + User: Связь: Роль + Пользователь
     - Relations\: Role + Permission: Связи: Роль + Разрешение

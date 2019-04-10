@@ -244,11 +244,23 @@ forms
             description|text
               text: Field %%_type.
               args
-              - type: field_nick
+              - type: field_logic
             element_attributes
             - name: logic
             selected
             - 1: 1
+      # field_relation
+        - relation|field_relation
+            title: Relation
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_relation
+            entity_name: tree_item
+            entity_field_id_name: id
+            entity_field_title_name: title
+            element_attributes
+            - name: relation
        # ─────────────────────────────────────────────────────────────────────
        # textarea
        # ─────────────────────────────────────────────────────────────────────

@@ -8,9 +8,9 @@ selections
     join
     - demo_data_join
         entity_name: demo_data_join
-        field_name: id_data
+        entity_field_name: id_data
         on_entity_name: demo_data
-        on_field_name: id
+        on_entity_field_name: id
     query_params
     - conditions
       - id_!f: ~demo_data.id
@@ -23,23 +23,23 @@ selections
     - demo_data.id
         type: field
         entity_name: demo_data
-        field_name: id
+        entity_field_name: id
     - demo_data.nick
         type: field
         entity_name: demo_data
-        field_name: nick
+        entity_field_name: nick
     - demo_data.created
         type: field
         entity_name: demo_data
-        field_name: created
+        entity_field_name: created
     - demo_data.is_even
         type: field
         entity_name: demo_data
-        field_name: is_even
+        entity_field_name: is_even
     - demo_data_join.email
         type: join_field
         entity_name: demo_data_join
-        field_name: email
+        entity_field_name: email
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
@@ -48,40 +48,40 @@ selections
     - id
         type: field
         entity_name: demo_types
-        field_name: id
+        entity_field_name: id
     - description
         type: field
         entity_name: demo_types
-        field_name: description
+        entity_field_name: description
     - f_integer
         type: field
         entity_name: demo_types
-        field_name: f_integer
+        entity_field_name: f_integer
     - f_real
         type: field
         entity_name: demo_types
-        field_name: f_real
+        entity_field_name: f_real
     - f_varchar
         type: field
         entity_name: demo_types
-        field_name: f_varchar
+        entity_field_name: f_varchar
     - f_time
         type: field
         entity_name: demo_types
-        field_name: f_time
+        entity_field_name: f_time
     - f_date
         type: field
         entity_name: demo_types
-        field_name: f_date
+        entity_field_name: f_date
     - f_datetime
         type: field
         entity_name: demo_types
-        field_name: f_datetime
+        entity_field_name: f_datetime
     - f_boolean
         type: field
         entity_name: demo_types
-        field_name: f_boolean
+        entity_field_name: f_boolean
     - f_blob
         type: field
         entity_name: demo_types
-        field_name: f_blob
+        entity_field_name: f_blob

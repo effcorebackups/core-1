@@ -63,15 +63,15 @@ namespace effcore {
     # prepare query params
       foreach ($this->fields as $c_row_id => $c_field) {
         if ($c_field->type == 'join_field') {
-          $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->field_name;
+          $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
         }
       }
       foreach ($this->join ?? [] as $c_id => $c_join) {
         $this->query_params['join'][$c_id] = [
           'type'      => 'LEFT OUTER JOIN',
-          'target_!t' => '~'.$c_join->entity_name,                            'on'       => 'ON',
-          'left_!f'   => '~'.$c_join->entity_name   .'.'.$c_join->field_name, 'operator' => '=',
-          'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_field_name
+          'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
+          'left_!f'   => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
+          'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
         ];
       }
       $this->query_params['limit'] = $this->limit;
@@ -132,9 +132,9 @@ namespace effcore {
             case 'field':
             case 'join_field':
               $c_entity = entity::get($c_field->entity_name, false);
-              $c_title      = $c_entity->fields[$c_field->field_name]->title;
-              $c_value_type = $c_entity->fields[$c_field->field_name]->type;
-              $c_value      = $c_instance->    {$c_field->field_name};
+              $c_title      = $c_entity->fields[$c_field->entity_field_name]->title;
+              $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
+              $c_value      = $c_instance->    {$c_field->entity_field_name};
               if ($c_value_type == 'real')     $c_value = locale::  number_format($c_value, 10);
               if ($c_value_type == 'integer')  $c_value = locale::  number_format($c_value);
               if ($c_value_type == 'date')     $c_value = locale::    date_format($c_value);
@@ -198,13 +198,13 @@ namespace effcore {
   # custom fields
   # ─────────────────────────────────────────────────────────────────────
 
-  function field_entity_insert($row_id = null, $entity_name, $field_name, $weight = 0) {
+  function field_entity_insert($row_id = null, $entity_name, $entity_field_name, $weight = 0) {
     $field = new \stdClass;
     $field->type = 'field';
     $field->entity_name = $entity_name;
-    $field->field_name = $field_name;
+    $field->entity_field_name = $entity_field_name;
     $field->weight = $weight;
-    $this->fields[$row_id ?: $entity_name.'.'.$field_name] = $field;
+    $this->fields[$row_id ?: $entity_name.'.'.$entity_field_name] = $field;
   }
 
   function field_checkbox_insert($row_id = null, $title = '', $weight = 0) {
