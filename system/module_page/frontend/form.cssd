@@ -49,10 +49,14 @@
   /* required mark */
 
   *[data-mark-required='true']::after {
-    content: '*';
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
     margin-left: .2em;
-    font-size: 1.1em;
-    color: %%_color_error}
+    border-radius: 3px;
+    vertical-align: top;
+    background: %%_color_error}
 
   /* inputs */
 
