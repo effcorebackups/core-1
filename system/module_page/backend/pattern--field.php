@@ -308,8 +308,8 @@ namespace effcore {
     if ($this->set_auto_id) $this->auto_id_set();
     if ($this->id_get() && $this->render_self       ()) $element->attribute_insert('aria-labelledby',  'label-'.      $this->id_get());
     if ($this->id_get() && $this->render_description()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
-    if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('class', ['disabled' => 'disabled']);
-    if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('class', ['required' => 'required']);
+    if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('aria-disabled', 'true');
+    if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('aria-required', 'true');
     return parent::render();
   }
 

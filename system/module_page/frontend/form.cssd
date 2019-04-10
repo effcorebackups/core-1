@@ -129,9 +129,9 @@
 
   /* disabled elements */
 
-  x-field.disabled * {cursor: default !important}
-  x-field.disabled label,
-  x-field.disabled x-description {opacity: .3}
+  x-field[aria-disabled='true'] * {cursor: default !important}
+  x-field[aria-disabled='true'] label,
+  x-field[aria-disabled='true'] x-description {opacity: .3}
 
      input:disabled,
   textarea:disabled,
