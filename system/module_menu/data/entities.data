@@ -61,10 +61,13 @@ entities
         null: true
         default: null
         show_in_manager: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: tree_item
+        - entity_field_id_name: id
+        - entity_field_title_name: title
         field_element_attributes
-        - min: 1
-        - disabled: true
+        - required: false
     - id_tree
         title: Tree ID
         type: varchar
@@ -72,10 +75,11 @@ entities
         collate: nocase
         not_null: true
         show_in_manager: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: tree
+        - entity_field_id_name: id
+        - entity_field_title_name: title
     - title
         title: Title
         type: varchar
