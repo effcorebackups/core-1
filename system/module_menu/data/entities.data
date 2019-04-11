@@ -62,6 +62,7 @@ entities
         default: null
         show_in_manager: true
         field_class: \effcore\field_relation
+        field_value_insert_null_if_empty: true
         field_properties
         - entity_name: tree_item
         - entity_field_id_name: id
