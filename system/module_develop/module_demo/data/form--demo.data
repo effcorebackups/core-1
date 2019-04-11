@@ -259,8 +259,18 @@ forms
             entity_name: tree_item
             entity_field_id_name: id
             entity_field_title_name: title
+            query_params
+            - conditions
+              - id_!f: id
+              - operator: >=
+              - id_!v: 1
+            - order
+              - weight_!f: weight
+              - type: ASC
             element_attributes
             - name: relation
+            selected
+            - 1: 1
        # ─────────────────────────────────────────────────────────────────────
        # textarea
        # ─────────────────────────────────────────────────────────────────────
