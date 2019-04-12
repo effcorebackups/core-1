@@ -41,7 +41,7 @@ namespace effcore {
       'type' => 'checkbox',
       'role' => 'button',
       'data-opener-type' => 'palette',
-      'title' => translation::get('Press to show or hide available colors'),
+      'title' => new text('Press to show or hide available colors'),
       'id' => 'f_opener_'.$this->name_first_get(),
       'value' => $color_value,
       'style' => ['background: '.$color_value],

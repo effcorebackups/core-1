@@ -55,7 +55,7 @@ namespace effcore {
     if ($href        && url::is_active_trail($href        )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
     if ($href_shadow && url::is_active_trail($href_shadow )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
     if ($href) $this->attribute_insert('href', $href, 'element_attributes');
-    if ($href) $this->attribute_insert('title', translation::get('Click to open the menu item: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
+    if ($href) $this->attribute_insert('title', new text('Click to open the menu item: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
     return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
