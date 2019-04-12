@@ -11,8 +11,8 @@ namespace effcore {
   public $description = 'Write the characters from the picture.';
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes = [
-    'data-type'    => 'captcha',
     'type'         => 'text',
+    'data-type'    => 'captcha',
     'name'         => 'captcha',
     'autocomplete' => 'off',
     'required'     => true

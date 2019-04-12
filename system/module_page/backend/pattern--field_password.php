@@ -10,12 +10,11 @@ namespace effcore {
   public $title = 'Password';
   public $attributes = ['data-type' => 'password'];
   public $element_attributes = [
-    'type'         => 'password',
-    'name'         => 'password',
-    'autocomplete' => 'off',
-    'required'     => true,
-    'minlength'    => 5,
-    'maxlength'    => 255
+    'type'      => 'password',
+    'name'      => 'password',
+    'required'  => true,
+    'minlength' => 5,
+    'maxlength' => 255
   ];
 
   function value_get($return_hash = true) {
