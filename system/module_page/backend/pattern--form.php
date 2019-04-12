@@ -12,6 +12,7 @@ namespace effcore {
   const period_expired_h = 60 * 60;
 
   public $tag_name = 'form';
+  public $attributes = ['accept-charset' => 'UTF-8'];
   public $clicked_button;
   public $validation_id;
   public $validation_data = [];
