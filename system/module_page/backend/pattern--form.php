@@ -94,7 +94,7 @@ namespace effcore {
 
     # show errors
       if (static::$errors) {
-        $this->attribute_insert('class', ['error' => 'error']);
+        $this->attribute_insert('aria-invalid', 'true');
         foreach (static::$errors as $c_error) {
           switch (gettype($c_error->message)) {
             case 'string':                                                 message::insert(new text($c_error->message, $c_error->args), 'error'); break;

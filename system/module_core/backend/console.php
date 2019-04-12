@@ -105,15 +105,15 @@ namespace effcore {
     $decorator = new decorator('table');
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach (static::logs_select() as $c_row_id => $c_log) {
-      $c_row_class = [
+      $c_row_attributes = ['class' => [
         core::sanitize_id($c_log->object) =>
         core::sanitize_id($c_log->object)
-      ];
+      ]];
       if ($c_log->value == 'error') {
-        $c_row_class['error'] = 'error';
+        $c_row_attributes['aria-invalid'] = 'true';
       }
       $decorator->data[] = [
-        'attributes'  => ['class' => $c_row_class                                                         ],
+        'attributes'  => $c_row_attributes,
         'time'        => ['title' => 'Time',        'value' => locale::msecond_format($c_log->time)       ],
         'object'      => ['title' => 'Object',      'value' => new text($c_log->object,      $c_log->args)],
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
