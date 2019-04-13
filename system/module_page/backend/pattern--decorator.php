@@ -122,9 +122,9 @@ namespace effcore {
       # tree
       # ─────────────────────────────────────────────────────────────────────
         case 'tree':
-          $result->child_insert(
-            new text('UNDER CONSTRUCTION')
-          );
+          foreach ($this->data as $c_row_id => $c_row) {
+
+          }
           break;
 
       }

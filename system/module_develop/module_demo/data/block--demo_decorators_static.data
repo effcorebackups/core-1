@@ -174,3 +174,132 @@ blocks
           - field-3
             - title: Field 3.3
             - value: value 3.3
+  # ─────────────────────────────────────────────────────────────────────
+  # tree
+  # ─────────────────────────────────────────────────────────────────────
+    - tree_title|markup
+        tag_name: h3
+        children
+        - content|text
+            text: Tree
+    - tree|decorator
+        view_type: tree
+        id: demo_tree
+        data
+        - rowid-1
+          - cell-id
+            - title: ID
+            - value: 1
+          - cell-id_parent
+            - title: Parent ID
+            - value: null
+          - cell-title
+            - title: Title
+            - value: item #1
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1
+        - rowid-1_1
+          - cell-id
+            - title: ID
+            - value: 2
+          - cell-id_parent
+            - title: Parent ID
+            - value: 1
+          - cell-title
+            - title: Title
+            - value: item #1.1
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_1
+        - rowid-1_2
+          - cell-id
+            - title: ID
+            - value: 3
+          - cell-id_parent
+            - title: Parent ID
+            - value: 1
+          - cell-title
+            - title: Title
+            - value: item #1.2
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_2
+        - rowid-1_2_1
+          - cell-id
+            - title: ID
+            - value: 4
+          - cell-id_parent
+            - title: Parent ID
+            - value: 3
+          - cell-title
+            - title: Title
+            - value: item #1.2.1
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_2/item_1_2_1
+        - rowid-1_2_2
+          - cell-id
+            - title: ID
+            - value: 5
+          - cell-id_parent
+            - title: Parent ID
+            - value: 3
+          - cell-title
+            - title: Title
+            - value: item #1.2.2
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_2/item_1_2_2
+        - rowid-1_2_3
+          - cell-id
+            - title: ID
+            - value: 6
+          - cell-id_parent
+            - title: Parent ID
+            - value: 3
+          - cell-title
+            - title: Title
+            - value: item #1.2.3
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_2/item_1_2_3
+        - rowid-1_3
+          - cell-id
+            - title: ID
+            - value: 7
+          - cell-id_parent
+            - title: Parent ID
+            - value: 1
+          - cell-title
+            - title: Title
+            - value: item #1.3
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_1/item_1_3
+        - rowid-2
+          - cell-id
+            - title: ID
+            - value: 8
+          - cell-id_parent
+            - title: Parent ID
+            - value: null
+          - cell-title
+            - title: Title
+            - value: item #2
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_2
+        - rowid-3
+          - cell-id
+            - title: ID
+            - value: 9
+          - cell-id_parent
+            - title: Parent ID
+            - value: null
+          - cell-title
+            - title: Title
+            - value: item #3
+          - cell-url
+            - title: URL
+            - value: /develop/demo/embedded/trees_dynamic/item_3

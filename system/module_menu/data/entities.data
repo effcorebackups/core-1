@@ -90,6 +90,13 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_text
+    - url
+        title: URL
+        type: varchar
+        size: 2048
+        collate: nocase
+        null: true
+        field_class: \effcore\field_url
     - weight
         title: Weight
         type: integer
