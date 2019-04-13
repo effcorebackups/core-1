@@ -79,7 +79,7 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     $link_add_new = new markup('a', ['role' => 'button', 'href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'title' => new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]), 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
-      $selection = new selection;
+      $selection = new selection('', $entity->view_type_multiple);
       $selection->id = 'instances_manage';
       $selection->is_paged = true;
       $has_visible_fields = false;
@@ -141,7 +141,7 @@ namespace effcore\modules\storage {
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
         # create selection
-          $selection = new selection('', 'ul');
+          $selection = new selection('', $entity->view_type_single);
           $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           $has_visible_fields = false;

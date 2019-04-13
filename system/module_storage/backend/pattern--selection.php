@@ -10,7 +10,7 @@ namespace effcore {
   public $tag_name = 'x-selection';
   public $template = 'container';
   public $title_tag_name = 'h2';
-  public $view_type = 'table'; # table | ul | dl
+  public $view_type = 'table'; # table | ul | dl | tree
   public $id;
   public $title;
   public $fields = [];

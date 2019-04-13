@@ -9,7 +9,7 @@ namespace effcore {
 
   public $id;
   public $tag_name = 'x-decorator';
-  public $view_type = 'table'; # table | ul | dl
+  public $view_type = 'table'; # table | ul | dl | tree
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
   public $visibility_cellid = 'not_int'; # visible | not_int | hidden
@@ -116,6 +116,15 @@ namespace effcore {
               $c_list, $c_row_id
             );
           }
+          break;
+
+      # ─────────────────────────────────────────────────────────────────────
+      # tree
+      # ─────────────────────────────────────────────────────────────────────
+        case 'tree':
+          $result->child_insert(
+            new text('UNDER CONSTRUCTION')
+          );
           break;
 
       }
