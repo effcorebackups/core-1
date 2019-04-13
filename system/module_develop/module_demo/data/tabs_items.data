@@ -48,6 +48,14 @@ tabs_items
     attributes
     - class
       - =: demo-decorators-dynamic
+- demo_trees|tabs_item
+    id: demo_trees
+    id_parent: demo_embedded
+    action_name: embedded/trees
+    title: Trees
+    attributes
+    - class
+      - =: demo-trees
 - demo_selections|tabs_item
     id: demo_selections
     id_parent: demo_embedded
@@ -72,14 +80,6 @@ tabs_items
     attributes
     - class
       - =: demo-canvas
-- demo_trees_static|tabs_item
-    id: demo_trees_static
-    id_parent: demo_embedded
-    action_name: embedded/trees_static
-    title: Trees static
-    attributes
-    - class
-      - =: demo-trees-static
 - demo_diagrams|tabs_item
     id: demo_diagrams
     id_parent: demo_embedded

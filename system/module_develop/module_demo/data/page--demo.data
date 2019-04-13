@@ -11,10 +11,10 @@ pages
 >>>>>>>>>>>>>>>>>>>>>>>embedded/markup_dynamic|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_static|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_dynamic|
+>>>>>>>>>>>>>>>>>>>>>>>embedded/trees(/.*|)|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
->>>>>>>>>>>>>>>>>>>>>>>embedded/trees_static(/.*|)|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams|
 >>>>>>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
     access
@@ -82,6 +82,30 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
+    - tree_demo_dynamic_changes|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_tree_demo_do_dynamic_changes
+    - tree_demo|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: link
+        source: trees/demo/demo
+    - block_demo_decorators_trees|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: link
+        source: blocks/demo/demo_decorators_trees
     - block_demo_selection_demo_data_join_1|page_part
         display
           check: page_args
@@ -140,22 +164,6 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
-    - tree_demo_dynamic_changes|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees_static(/.*|)$%
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_tree_demo_do_dynamic_changes
-    - tree_demo|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees_static(/.*|)$%
-        region: content
-        type: link
-        source: trees/demo/demo
     - block_demo_diagrams|page_part
         display
           check: page_args
