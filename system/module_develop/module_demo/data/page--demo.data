@@ -82,7 +82,7 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
-    - block_demo_decorators_trees|page_part
+    - block_tree_demo_dynamic_via_decorator|page_part
         display
           check: page_args
           where: type
@@ -90,22 +90,22 @@ pages
         region: content
         type: link
         source: blocks/demo/demo_decorators_trees
-    - tree_demo_dynamic_changes|page_part
+    - block_tree_demo_static_do_dynamic_changes|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: code
-        source: \effcore\modules\demo\events_page_demo::on_tree_demo_do_dynamic_changes
-    - tree_demo|page_part
+        source: \effcore\modules\demo\events_page_demo::on_tree_demo_static_do_dynamic_changes
+    - tree_demo_static|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: link
-        source: trees/demo/demo
+        source: trees/demo/demo_static
     - block_demo_selection_demo_data_join_1|page_part
         display
           check: page_args

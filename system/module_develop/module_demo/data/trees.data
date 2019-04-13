@@ -1,13 +1,13 @@
 trees
-- demo|tree
-    id: demo
-    title: Tree static for demonstration
+- demo_static|tree
+    id: demo_static
+    title: Tree static
     attributes
     - class
       - =: demo-static
 - demo_dynamic|tree
     id: demo_dynamic
-    title: Tree dynamic for demonstration
+    title: Tree dynamic
     attributes
     - class
       - =: demo-dynamic

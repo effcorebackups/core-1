@@ -14,7 +14,7 @@ tree_items
 # ─────────────────────────────────────────────────────────────────────
 - demo_item_1|tree_item
     id: demo_item_1
-    id_parent: M:demo
+    id_parent: M:demo_static
     title: item #1
     url: /develop/demo/embedded/trees/item_1
     access
@@ -80,7 +80,7 @@ tree_items
       - =: demo-item-1-3
 - demo_item_2|tree_item
     id: demo_item_2
-    id_parent: M:demo
+    id_parent: M:demo_static
     title: item #2
     url: /develop/demo/embedded/trees/item_2
     access
