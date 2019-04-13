@@ -40,7 +40,6 @@ translations
     - Constraints: Ограничения
     - Data + join: Данные + join
     - Data: Данные
-    - Decorator for tree: Декоратор для дерева
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
@@ -154,7 +153,8 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
-    - Tree for demonstration: Дерево для демонстрации
+    - Tree dynamic for demonstration: Дерево динамическое для демонстрации
+    - Tree static for demonstration: Дерево статическое для демонстрации
     - Trees: Деревья
     - Types: Типы
     - UML Diagram: UML Диаграмма
