@@ -82,6 +82,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
+    - block_demo_decorators_trees|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: link
+        source: blocks/demo/demo_decorators_trees
     - tree_demo_dynamic_changes|page_part
         display
           check: page_args
@@ -98,14 +106,6 @@ pages
         region: content
         type: link
         source: trees/demo/demo
-    - block_demo_decorators_trees|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        region: content
-        type: link
-        source: blocks/demo/demo_decorators_trees
     - block_demo_selection_demo_data_join_1|page_part
         display
           check: page_args
