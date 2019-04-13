@@ -10,14 +10,14 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - description
         title: Description
         type: varchar
         size: 255
         collate: nocase
         null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
@@ -99,14 +99,14 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - description
         title: Description
         type: varchar
         size: 255
         collate: nocase
         null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
@@ -135,21 +135,21 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_nocase
         title: Field nocase
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_binary
         title: Field binary
         type: varchar
         size: 255
         collate: binary
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     constraints
     - primary_id
         type: primary
@@ -168,20 +168,20 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_unique
         title: Field unique
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_foreign
         title: Field foreign
         type: integer
         not_null: true
         default: 0
-        show_in_manager: true
+        field_is_visible_on_select: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -223,24 +223,24 @@ entities
         title: ID
         type: integer
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - nick
         title: Nick
         type: varchar
         size: 64
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - created
         title: Created
         type: datetime
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - is_even
         title: Is even
         type: boolean
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     constraints
     - primary_id
         type: primary
@@ -266,14 +266,14 @@ entities
         title: Data ID
         type: integer
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - email
         title: EMail
         type: varchar
         size: 64
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     indexes
     - index_id_data
         type: unique index
@@ -294,21 +294,21 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_index_unique
         title: Field index unique
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     - f_index
         title: Field index
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
     constraints
     - primary_id
         type: primary

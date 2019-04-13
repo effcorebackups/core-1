@@ -14,7 +14,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -25,7 +25,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -52,7 +52,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -63,7 +63,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -103,7 +103,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -112,7 +112,7 @@ entities
         title: User ID
         type: integer
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -152,7 +152,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -162,7 +162,7 @@ entities
         type: boolean
         not_null: true
         default: 0
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_logic
         field_element_attributes
         - disabled: true
@@ -172,14 +172,14 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
     - weight
         title: Weight
         type: integer
         not_null: true
         default: 0
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: -1000
@@ -211,7 +211,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -220,7 +220,7 @@ entities
         title: User ID
         type: integer
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -279,7 +279,7 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -289,7 +289,7 @@ entities
         type: boolean
         not_null: true
         default: 0
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_logic
         field_element_attributes
         - disabled: true
@@ -299,7 +299,7 @@ entities
         size: 32
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_nick
     - email
         title: EMail
@@ -307,7 +307,7 @@ entities
         size: 64
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_email
     - avatar_path
         title: Avatar

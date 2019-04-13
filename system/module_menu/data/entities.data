@@ -14,7 +14,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -25,7 +25,7 @@ entities
         collate: nocase
         size: 255
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -45,12 +45,13 @@ entities
     group: Menu
     ws_created: true
     ws_updated: true
+    view_type_multiple: tree
     fields
     - id
         title: ID
         type: autoincrement
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -60,7 +61,7 @@ entities
         type: integer
         null: true
         default: null
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_relation
         field_value_insert_null_if_empty: true
         field_properties
@@ -75,7 +76,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: tree
@@ -87,14 +88,14 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_text
     - weight
         title: Weight
         type: integer
         not_null: true
         default: 0
-        show_in_manager: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: -1000

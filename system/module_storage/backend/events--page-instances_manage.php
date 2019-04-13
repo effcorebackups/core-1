@@ -84,7 +84,7 @@ namespace effcore\modules\storage {
       $selection->is_paged = true;
       $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {
-        if (!empty($c_field->show_in_manager)) {
+        if (!empty($c_field->field_is_visible_on_select)) {
           $has_visible_fields = true;
           $selection->field_entity_insert(null, $entity->name, $c_name);
         }
@@ -146,7 +146,7 @@ namespace effcore\modules\storage {
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->show_in_manager)) {
+            if (!empty($c_field->field_is_visible_on_select)) {
               $has_visible_fields = true;
               $selection->field_entity_insert(null, $entity->name, $c_name);
             }
