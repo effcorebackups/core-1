@@ -11,13 +11,13 @@ demo_data
   demo_boolean: true
   demo_string_empty: 
   demo_string: text
+# ─────────────────────────────────────────────────────────────────────
+# compound types
+# ─────────────────────────────────────────────────────────────────────
   demo_string_text|text
     text: some translated text
   demo_string_text_simple|text_simple
     text: some raw text
-# ─────────────────────────────────────────────────────────────────────
-# compound types
-# ─────────────────────────────────────────────────────────────────────
   demo_array_empty|_empty_array
   demo_array
   - item_1: item value 1

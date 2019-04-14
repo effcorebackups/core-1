@@ -7,7 +7,8 @@
 namespace effcore {
           class pager extends markup {
 
-  public $tag_name = 'x-pager';
+  public $tag_name = 'nav';
+  public $attributes = ['data-type' => 'pager'];
   public $has_error = false;
 
   public $min = 1;
@@ -27,9 +28,9 @@ namespace effcore {
   function init() {
     $this->cur = url::current_get()->query_arg_select($this->pager_name_get()) ?: $this->min;
     if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->has_error = true;}
-    if ($this->max < $this->min)                        {$this->max = $this->min; $this->has_error = true;}
-    if ($this->cur < $this->min)                        {$this->cur = $this->min; $this->has_error = true;}
-    if ($this->cur > $this->max)                        {$this->cur = $this->max; $this->has_error = true;}
+    if ($this->max < $this->min                       ) {$this->max = $this->min; $this->has_error = true;}
+    if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->has_error = true;}
+    if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->has_error = true;}
   }
 
   function pager_name_get($optimized = true) {
@@ -87,7 +88,6 @@ namespace effcore {
 
   function render() {
     $this->init();
-    $pager = new markup($this->tag_name);
     $pager_name               = $this->pager_name_get();
     $pager_name_not_optimized = $this->pager_name_get(false);
     $url = clone url::current_get();
@@ -99,8 +99,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
     if ($this->max - $this->min > 0) {
       if ($this->cur == $this->min)
-           $pager->child_insert(new markup('a', ['href' => $url->tiny_get(), 'class' => ['active' => 'active']], $this->min));
-      else $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $this->min));
+           $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get(), 'class' => ['active' => 'active']], $this->min));
+      else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get()], $this->min));
     }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -116,28 +116,28 @@ namespace effcore {
 
     # l-shoulder part
       if ($a > $this->min + 10) {
-        $pager->child_insert(new text('…'));
+        $this->child_insert(new text('…'));
         for ($j = 1; $j < 4; $j++) {
           $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
           $url->query_arg_insert($pager_name, $c_i);
-          $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $c_i));
+          $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
         }
       }
 
     # central links part
       if ($a > $this->min + 1) {
-        $pager->child_insert(new text('…'));
+        $this->child_insert(new text('…'));
       }
       for ($i = $a; $i <= $b; $i++) {
         if ($i > $this->min && $i < $this->max) {
           $url->query_arg_insert($pager_name, $i);
           if ($this->cur == $i)
-               $pager->child_insert(new markup('a', ['href' => $url->tiny_get(), 'class' => ['active' => 'active']], $i));
-          else $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $i));
+               $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get(), 'class' => ['active' => 'active']], $i));
+          else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get()], $i));
         }
       }
       if ($b < $this->max - 1) {
-        $pager->child_insert(new text('…'));
+        $this->child_insert(new text('…'));
       }
 
     # r-shoulder part
@@ -145,9 +145,9 @@ namespace effcore {
         for ($j = 1; $j < 4; $j++) {
           $c_i = $b + (int)(($this->max - $b) / 4 * $j);
           $url->query_arg_insert($pager_name, $c_i);
-          $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $c_i));
+          $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
         }
-        $pager->child_insert(new text('…'));
+        $this->child_insert(new text('…'));
       }
     }
 
@@ -157,11 +157,11 @@ namespace effcore {
     if ($this->max - $this->min > 0) {
       $url->query_arg_insert($pager_name, $this->max);
       if ($this->cur == $this->max)
-           $pager->child_insert(new markup('a', ['href' => $url->tiny_get(), 'class' => ['active' => 'active']], $this->max));
-      else $pager->child_insert(new markup('a', ['href' => $url->tiny_get()], $this->max));
+           $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get(), 'class' => ['active' => 'active']], $this->max));
+      else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get()], $this->max));
     }
 
-    return $pager->render();
+    return parent::render();
   }
 
 }}

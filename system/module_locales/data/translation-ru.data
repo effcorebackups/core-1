@@ -186,6 +186,7 @@ translations
     - go to %%_title language: перейти на %%_title язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to front page: перейти на главную страницу
+    - go to page #%%_number: перейти на страницу №%%_number
     - go to page %%_link: перейти на страницу %%_link
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Handler: Обработчик

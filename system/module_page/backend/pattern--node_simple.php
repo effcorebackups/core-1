@@ -14,8 +14,8 @@ namespace effcore {
 
   function __construct($attributes = [], $weight = 0) {
     $this->weight = $weight;
-    foreach ($attributes as $id => $c_attribute) {
-      $this->attribute_insert($id, $c_attribute);
+    foreach ($attributes as $c_key => $c_value) {
+      $this->attribute_insert($c_key, $c_value);
     }
   }
 

@@ -12,10 +12,12 @@ namespace effcore {
   function __construct($attributes = [], $children = [], $weight = 0) {
     parent::__construct($attributes, $weight);
   # ─────────────────────────────────────────────────────────────────────
-  # allowed  : null, '', '…', 0, '0', 0.1, [], […], obj{}, obj{…}
-  # disalowed: boolean - not used and not controlled anywere!!!
+  # allowed scalar   types: '', '…', '0', 0, 0.1
+  # allowed compound types: [], […], obj{}, obj{…}
   # ─────────────────────────────────────────────────────────────────────
-    if ($children !== null) {
+    if ($children !== null &&
+        $children !== true &&
+        $children !== false) {
       foreach (is_array($children) ? $children : [$children] as $id => $c_child) {
         $this->child_insert($c_child, $id);
       }
