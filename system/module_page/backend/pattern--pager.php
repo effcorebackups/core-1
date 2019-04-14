@@ -7,9 +7,15 @@
 namespace effcore {
           class pager extends markup {
 
+  const ERR_CODE_OK            = 0x0;
+  const ERR_CODE_INVALID_VALUE = 0x1;
+  const ERR_CODE_MAX_LT_MIN    = 0x2;
+  const ERR_CODE_CUR_LT_MIN    = 0x4;
+  const ERR_CODE_CUR_GT_MAX    = 0x8;
+
   public $tag_name = 'nav';
   public $attributes = ['data-type' => 'pager'];
-  public $has_error = false;
+  public $error_code = self::ERR_CODE_OK;
 
   public $min = 1;
   public $max = 1;
@@ -26,18 +32,37 @@ namespace effcore {
   }
 
   function init() {
-    $this->cur = url::current_get()->query_arg_select($this->pager_name_get()) ?: $this->min;
-    if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->has_error = true;}
-    if ($this->max < $this->min                       ) {$this->max = $this->min; $this->has_error = true;}
-    if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->has_error = true;}
-    if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->has_error = true;}
+    if ($this->cur === null) {
+      $this->cur = url::current_get()->query_arg_select($this->name_get());
+      if ($this->cur === null)                            {$this->cur = $this->min;                                                   }
+      if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->error_code |= self::ERR_CODE_INVALID_VALUE;}
+      if ($this->max < $this->min                       ) {$this->max = $this->min; $this->error_code |= self::ERR_CODE_MAX_LT_MIN;   }
+      if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->error_code |= self::ERR_CODE_CUR_LT_MIN;   }
+      if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->error_code |= self::ERR_CODE_CUR_GT_MAX;   }
+    }
   }
 
-  function pager_name_get($optimized = true) {
+  function error_code_get() {
+    $this->init();
+    return $this->error_code;
+  }
+
+  function name_get($optimized = true) {
     if (!$optimized)
          return             $this->name.$this->id;
     else return $this->id ? $this->name.$this->id :
                             $this->name;
+  }
+
+  function last_page_url_get() {
+    $this->init();
+    $pager_name               = $this->name_get();
+    $pager_name_not_optimized = $this->name_get(false);
+    $url = clone url::current_get();
+    $url->query_arg_delete($pager_name);
+    $url->query_arg_delete($pager_name_not_optimized);
+    $url->query_arg_insert($pager_name, $this->max);
+    return $url;
   }
 
  # the dynamic of the pager center part:
@@ -88,8 +113,8 @@ namespace effcore {
 
   function render() {
     $this->init();
-    $pager_name               = $this->pager_name_get();
-    $pager_name_not_optimized = $this->pager_name_get(false);
+    $pager_name               = $this->name_get();
+    $pager_name_not_optimized = $this->name_get(false);
     $url = clone url::current_get();
     $url->query_arg_delete($pager_name);
     $url->query_arg_delete($pager_name_not_optimized);
