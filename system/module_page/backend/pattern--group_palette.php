@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title_tag_name = 'label';
   public $content_tag_name = 'x-group-content';
-  public $attributes = ['data-type' => 'palette'];
+  public $attributes = ['data-type' => 'palette', 'role' => 'group'];
 
   function build() {
   # parent::build() not required
