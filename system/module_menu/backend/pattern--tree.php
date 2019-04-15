@@ -14,10 +14,10 @@ namespace effcore {
   public $title_state; # hidden | cutted
   public $access;
 
-  function __construct($title = '', $id = null, $attributes = [], $children = [], $weight = 0) {
+  function __construct($title = '', $id = null, $attributes = [], $weight = 0) {
     if ($title) $this->title = $title;
-    if ($id   ) $this->id    = $title;
-    parent::__construct($attributes, $children, $weight);
+    if ($id   ) $this->id    = $id;
+    parent::__construct($attributes, [], $weight);
   }
 
   function build() {
@@ -96,7 +96,7 @@ namespace effcore {
   }
 
   static function insert($title = '', $id, $attributes = [], $weight = 0) {
-    $new_tree = new static($title, $id, $attributes, [], $weight);
+    $new_tree = new static($title, $id, $attributes, $weight);
     if (static::$cache_trees == null) static::init();
         static::$cache_trees[$id] = $new_tree;
         static::$cache_trees[$id]->module_id = null;

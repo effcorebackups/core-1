@@ -11,6 +11,11 @@ namespace effcore {
   public $template = 'tabs';
   public $attributes = ['role' => 'tablist'];
 
+  function __construct($id = null, $attributes = [], $weight = 0) {
+    if ($id) $this->id = $id;
+    parent::__construct($attributes, [], $weight);
+  }
+
   function build() {
     foreach (static::items_select() as $c_item) {
       if ($c_item->id_parent == 'T:'.$this->id) {
@@ -106,6 +111,18 @@ namespace effcore {
     else return static::item_select($id_parent);
   }
 
+  static function insert($id, $attributes = [], $weight = 0) {
+    $new_tab = new static($id, $attributes, $weight);
+    if (static::$cache_tabs == null) static::init();
+        static::$cache_tabs[$id] = $new_tab;
+        static::$cache_tabs[$id]->module_id = null;
+  }
+
+  static function delete($id) {
+    if   (static::$cache_tabs == null) static::init();
+    unset(static::$cache_tabs[$id]);
+  }
+
   static function items_select() {
     if    (static::$cache_tabs_items == null) static::init();
     return static::$cache_tabs_items ?? [];
@@ -124,11 +141,8 @@ namespace effcore {
   }
 
   static function item_delete($id) {
-    if       (static::$cache_tabs_items == null) static::init();
-    if (isset(static::$cache_tabs_items[$id])) {
-      $id_parent = static::$cache_tabs_items[$id]->id_parent;
-             unset(static::$cache_tabs_items[$id]);
-    }
+    if   (static::$cache_tabs_items == null) static::init();
+    unset(static::$cache_tabs_items[$id]);
   }
 
 }}
