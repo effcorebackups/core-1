@@ -131,7 +131,7 @@ namespace effcore {
             );
           }
           $result->child_insert(
-            tree::get(reset($this->data)['cell-id_tree']['value'])
+            tree::select(reset($this->data)['cell-id_tree']['value'])
           );
           break;
 

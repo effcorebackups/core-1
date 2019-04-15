@@ -12,7 +12,7 @@ namespace effcore\modules\develop {
           abstract class events_page_trees_static {
 
   static function on_page_init($page) {
-    $trees = tree::all_get();
+    $trees = tree::all_select();
     $id = $page->args_get('id');
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
@@ -28,7 +28,7 @@ namespace effcore\modules\develop {
   static function on_show_block_tree($page) {
     $id = $page->args_get('id');
     if ($id) {
-      $tree = clone tree::get($id);
+      $tree = clone tree::select($id);
       $tree->build();
       $tree->access = null;
       $tree = core::deep_clone($tree, ['effcore\\tree_item' => 'effcore\\tree_item_managed']);
