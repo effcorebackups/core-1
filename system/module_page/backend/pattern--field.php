@@ -390,18 +390,18 @@ namespace effcore {
   }
 
   # conversion matrix:
-  # ┌──────────────────────────────────────╥───────────────────────────────┐
-  # │ input value (undefined|string|array) ║ result value                  │
-  # ╞══════════════════════════════════════╬═══════════════════════════════╡
-  # │ source[field] == undefined           ║ return ''                     │
-  # │ source[field] == ''                  ║ return ''                     │
-  # │ source[field] == 'value'             ║ return 'value'                │
-  # ├──────────────────────────────────────╫───────────────────────────────┤
-  # │ source[field] == [0 => '']           ║ return ''                     │
-  # │ source[field] == [0 => '', …]        ║ return ''                     │
-  # │ source[field] == [0 => 'value']      ║ return 'value'                │
-  # │ source[field] == [0 => 'value', …]   ║ return 'value'                │
-  # └──────────────────────────────────────╨───────────────────────────────┘
+  # ┌──────────────────────────────────────────╥───────────────────────────────┐
+  # │ input value (undefined | string | array) ║ result value                  │
+  # ╞══════════════════════════════════════════╬═══════════════════════════════╡
+  # │ source[field] == undefined               ║ return ''                     │
+  # │ source[field] == ''                      ║ return ''                     │
+  # │ source[field] == 'value'                 ║ return 'value'                │
+  # ├──────────────────────────────────────────╫───────────────────────────────┤
+  # │ source[field] == [0 => '']               ║ return ''                     │
+  # │ source[field] == [0 => '', …]            ║ return ''                     │
+  # │ source[field] == [0 => 'value']          ║ return 'value'                │
+  # │ source[field] == [0 => 'value', …]       ║ return 'value'                │
+  # └──────────────────────────────────────────╨───────────────────────────────┘
 
   static function request_value_get($name, $number = 0, $source = '_POST') {
     global ${$source};
@@ -413,18 +413,18 @@ namespace effcore {
   }
 
   # conversion matrix:
-  # ┌──────────────────────────────────────╥───────────────────────────────┐
-  # │ input value (undefined|string|array) ║ result value                  │
-  # ╞══════════════════════════════════════╬═══════════════════════════════╡
-  # │ source[field] == undefined           ║ return []                     │
-  # │ source[field] == ''                  ║ return [0 => '']              │
-  # │ source[field] == 'value'             ║ return [0 => 'value']         │
-  # ├──────────────────────────────────────╫───────────────────────────────┤
-  # │ source[field] == [0 => '']           ║ return [0 => '']              │
-  # │ source[field] == [0 => '', …]        ║ return [0 => '', …]           │
-  # │ source[field] == [0 => 'value']      ║ return [0 => 'value']         │
-  # │ source[field] == [0 => 'value', …]   ║ return [0 => 'value', …]      │
-  # └──────────────────────────────────────╨───────────────────────────────┘
+  # ┌──────────────────────────────────────────╥───────────────────────────────┐
+  # │ input value (undefined | string | array) ║ result value                  │
+  # ╞══════════════════════════════════════════╬═══════════════════════════════╡
+  # │ source[field] == undefined               ║ return []                     │
+  # │ source[field] == ''                      ║ return [0 => '']              │
+  # │ source[field] == 'value'                 ║ return [0 => 'value']         │
+  # ├──────────────────────────────────────────╫───────────────────────────────┤
+  # │ source[field] == [0 => '']               ║ return [0 => '']              │
+  # │ source[field] == [0 => '', …]            ║ return [0 => '', …]           │
+  # │ source[field] == [0 => 'value']          ║ return [0 => 'value']         │
+  # │ source[field] == [0 => 'value', …]       ║ return [0 => 'value', …]      │
+  # └──────────────────────────────────────────╨───────────────────────────────┘
 
   static function request_values_get($name, $source = '_POST') {
     global ${$source};
@@ -441,7 +441,7 @@ namespace effcore {
 
   # conversion matrix:
   # ┌─────────────────────────────────────────────────────────╥───────────────────────────────────────────────────────────────────────┐
-  # │ input value (undefined|array)                           ║ result value                                                          │
+  # │ input value (undefined | array)                         ║ result value                                                          │
   # ╞═════════════════════════════════════════════════════════╬═══════════════════════════════════════════════════════════════════════╡
   # │ $_FILES[field] == undefined                             ║ return []                                                             │
   # │ $_FILES[field] == [error = 4]                           ║ return []                                                             │

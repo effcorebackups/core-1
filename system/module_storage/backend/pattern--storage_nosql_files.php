@@ -131,8 +131,8 @@ namespace effcore {
             $c_parent      =           &$c_pointers[$c_parent_name];
             $c_child       =           &$c_pointers[$c_child_name];
             switch ($c_action) {
-              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # supported types: array|object
-              case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # supported types: array|object|string|numeric|bool|null
+              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_value_insert($c_child, $c_key, $c_value);        break; # supported types: array | object
+              case 'update':                                         core::arrobj_value_insert($c_parent, $c_child_name, $c_data); break; # supported types: array | object | string | numeric | bool | null
               case 'delete':                                         core::arrobj_child_delete($c_parent, $c_child_name);          break;
             }
           }
@@ -231,21 +231,21 @@ namespace effcore {
     return implode(nl, $result);
   }
 
-  # ┌─────────────────────╥───────────────────────────────────────────────────────┐
-  # │ valid strings       ║ interpretation                                        │
-  # ╞═════════════════════╬═══════════════════════════════════════════════════════╡
-  # │ root                ║                                                       │
-  # │ - name: value       ║ root[name]  = value:null|string|float|integer|boolean │
-  # │   name: value       ║ root->name  = value:null|string|float|integer|boolean │
-  # │ - =: value          ║ root[value] = value:null|string|float|integer|boolean │
-  # │   =: value          ║ root->value = value:null|string|float|integer|boolean │
-  # │ - name              ║ root[name]  = new stdClass | […]                      │
-  # │   name              ║ root->name  = new stdClass | […]                      │
-  # │ - name|classname    ║ root[name]  = new classname                           │
-  # │   name|classname    ║ root->name  = new classname                           │
-  # │ - name|_empty_array ║ root[name]  = []                                      │
-  # │   name|_empty_array ║ root->name  = []                                      │
-  # └─────────────────────╨───────────────────────────────────────────────────────┘
+  # ┌─────────────────────╥────────────────────────────────────────────────────────────────┐
+  # │ valid strings       ║ interpretation                                                 │
+  # ╞═════════════════════╬════════════════════════════════════════════════════════════════╡
+  # │ root                ║                                                                │
+  # │ - name: value       ║ root[name]  = value: null | string | float | integer | boolean │
+  # │   name: value       ║ root->name  = value: null | string | float | integer | boolean │
+  # │ - =: value          ║ root[value] = value: null | string | float | integer | boolean │
+  # │   =: value          ║ root->value = value: null | string | float | integer | boolean │
+  # │ - name              ║ root[name]  = new stdClass | […]                               │
+  # │   name              ║ root->name  = new stdClass | […]                               │
+  # │ - name|classname    ║ root[name]  = new classname                                    │
+  # │   name|classname    ║ root->name  = new classname                                    │
+  # │ - name|_empty_array ║ root[name]  = []                                               │
+  # │   name|_empty_array ║ root->name  = []                                               │
+  # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
   static function text_to_data($data, $file = null) {
     $result = new \stdClass;

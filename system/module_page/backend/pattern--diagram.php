@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-diagram';
   public $title_tag_name = 'x-diagram-title';
-  public $type = 'linear'; # linear|radial
+  public $type = 'linear'; # linear | radial
   public $slices = [];
 
   function __construct($title = null, $type = null, $attributes = [], $weight = 0) {
