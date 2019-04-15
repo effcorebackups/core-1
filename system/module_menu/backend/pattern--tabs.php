@@ -89,20 +89,20 @@ namespace effcore {
     }
   }
 
-  static function get($id) {
+  static function select($id) {
     if    (static::$cache_tabs == null) static::init();
     return static::$cache_tabs[$id] ?? null;
   }
 
-  static function all_get() {
+  static function all_select() {
     if    (static::$cache_tabs == null) static::init();
     return static::$cache_tabs;
   }
 
-  static function parent_get($id_parent) {
+  static function parent_select($id_parent) {
     if ($id_parent[0] == 'T' &&
         $id_parent[1] == ':')
-         return static::get(substr($id_parent, 2));
+         return static::select(substr($id_parent, 2));
     else return static::item_select($id_parent);
   }
 
