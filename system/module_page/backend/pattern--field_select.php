@@ -72,7 +72,7 @@ namespace effcore {
     return $result;
   }
 
-  function values_allowed_get() {
+  function values_get_allowed() {
     $result = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
@@ -129,7 +129,7 @@ namespace effcore {
     $type = $field->type_get();
     if ($name && $type) {
       if ($field->disabled_get()) return true;
-      $values_allowed = $field->values_allowed_get();
+      $values_allowed = $field->values_get_allowed();
       $new_values = static::request_values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $result = static::validate_required($field, $form, $element, $new_values) &&

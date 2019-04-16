@@ -90,9 +90,9 @@ namespace effcore {
     return $storage->entity_uninstall($this);
   }
 
-  function instances_count_select($params = []) {
+  function instances_select_count($params = []) {
     $storage = storage::get($this->storage_name);
-    return $storage->instances_count_select($this, $params);
+    return $storage->instances_select_count($this, $params);
   }
 
   function instances_select($params = []) {
@@ -132,7 +132,7 @@ namespace effcore {
     static::$cache_orig = storage::get('files')->select('entities');
     foreach (static::$cache_orig as $c_module_id => $c_entities) {
       foreach ($c_entities as $c_row_id => $c_entity) {
-        if (isset(static::$cache[$c_entity->name])) console::log_about_duplicate_insert('entity', $c_entity->name, $c_module_id);
+        if (isset(static::$cache[$c_entity->name])) console::log_insert_about_duplicate('entity', $c_entity->name, $c_module_id);
         static::$cache[$c_entity->name] = $c_entity;
         static::$cache[$c_entity->name]->module_id = $c_module_id;
       }

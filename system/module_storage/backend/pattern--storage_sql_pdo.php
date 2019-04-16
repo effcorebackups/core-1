@@ -382,7 +382,7 @@ namespace effcore {
     }
   }
 
-  function instances_count_select($entity, $params = []) {
+  function instances_select_count($entity, $params = []) {
     $params += ['join' => [], 'conditions' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [

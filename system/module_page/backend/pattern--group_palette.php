@@ -30,7 +30,7 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      return $this->render_opener().(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->name_first_get()], [$this->title]))->render();
+      return $this->render_opener().(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->name_get_first()], [$this->title]))->render();
     }
   }
 
@@ -42,7 +42,7 @@ namespace effcore {
       'role' => 'button',
       'data-opener-type' => 'palette',
       'title' => new text('Press to show or hide available colors'),
-      'id' => 'f_opener_'.$this->name_first_get(),
+      'id' => 'f_opener_'.$this->name_get_first(),
       'value' => $color_value,
       'style' => ['background: '.$color_value],
       'checked' => true

@@ -33,17 +33,10 @@ namespace effcore {
     static::$cache = null;
   }
 
-  static function get_copied_properties() {
-    return [
-      'module_id' => 'module_id',
-      'data'      => 'data'
-    ];
-  }
-
   static function init() {
     foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
       foreach ($c_templates as $c_row_id => $c_template) {
-        if (isset(static::$cache[$c_template->name])) console::log_about_duplicate_insert('template', $c_template->name, $c_module_id);
+        if (isset(static::$cache[$c_template->name])) console::log_insert_about_duplicate('template', $c_template->name, $c_module_id);
         static::$cache[$c_template->name] = $c_template;
         static::$cache[$c_template->name]->module_id = $c_module_id;
       }
@@ -58,6 +51,13 @@ namespace effcore {
   static function all_get() {
     if    (static::$cache == null) static::init();
     return static::$cache;
+  }
+
+  static function get_copied_properties() {
+    return [
+      'module_id' => 'module_id',
+      'data'      => 'data'
+    ];
   }
 
   static function make_new($name, $args = []) {

@@ -89,7 +89,7 @@ namespace effcore {
     $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
-    foreach (static::frontend_all_get() as $c_row_id => $c_items) {
+    foreach (static::frontend_get_all() as $c_row_id => $c_items) {
       if (is_array(static::is_displayed_by_used_dpaths($c_items->display, $this->used_dpaths)) ||
           is_array(static::is_displayed_by_current_url($c_items->display))) {
 
@@ -157,14 +157,14 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
       foreach ($c_pages as $c_row_id => $c_page) {
-        if (isset(static::$cache[$c_row_id])) console::log_about_duplicate_insert('page', $c_row_id, $c_module_id);
+        if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('page', $c_row_id, $c_module_id);
         static::$cache[$c_row_id] = $c_page;
         static::$cache[$c_row_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
       foreach ($c_frontends as $c_row_id => $c_frontend) {
-        if (isset(static::$cache_frontend[$c_row_id])) console::log_about_duplicate_insert('frontend', $c_row_id, $c_module_id);
+        if (isset(static::$cache_frontend[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
         static::$cache_frontend[$c_row_id] = $c_frontend;
         static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
       }
@@ -196,7 +196,7 @@ namespace effcore {
     return static::$cache_frontend[$row_id];
   }
 
-  static function frontend_all_get() {
+  static function frontend_get_all() {
     if    (static::$cache_frontend == null) static::init();
     return static::$cache_frontend;
   }

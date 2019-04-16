@@ -6,5 +6,5 @@
 
 namespace effcore { # indicates that the group shold have single type of all fields
           interface group_mono {
-  function name_first_get();
+  function name_get_first();
 }}

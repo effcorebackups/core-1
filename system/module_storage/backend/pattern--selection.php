@@ -78,7 +78,7 @@ namespace effcore {
 
     # prepare pager
       if ($this->is_paged) {
-        $instances_count = $main_entity->instances_count_select($this->query_params);
+        $instances_count = $main_entity->instances_select_count($this->query_params);
         if ($instances_count > 0) {
           $page_max_number = ceil($instances_count / $this->limit);
           $pager = new pager(1, $page_max_number,
@@ -292,7 +292,7 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('selections') as $c_module_id => $c_selections) {
       foreach ($c_selections as $c_row_id => $c_selection) {
-        if (isset(static::$cache[$c_selection->id])) console::log_about_duplicate_insert('selection', $c_selection->id, $c_module_id);
+        if (isset(static::$cache[$c_selection->id])) console::log_insert_about_duplicate('selection', $c_selection->id, $c_module_id);
         static::$cache[$c_selection->id] = $c_selection;
         static::$cache[$c_selection->id]->module_id = $c_module_id;
       }

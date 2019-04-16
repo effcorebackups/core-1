@@ -122,7 +122,7 @@ namespace effcore {
     foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
       foreach ($c_characters as $c_row_id => $c_character) {
         foreach ($c_character->glyphs as $c_group => $c_glyph) {
-          if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_about_duplicate_insert('glyph', $c_glyph, $c_module_id);
+          if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_insert_about_duplicate('glyph', $c_glyph, $c_module_id);
           static::$glyphs[$c_group][$c_glyph] = $c_character->character;
         }
       }

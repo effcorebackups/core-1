@@ -53,7 +53,7 @@ namespace effcore {
     return $this->child_insert($field, $new_id);
   }
 
-  function name_first_get($trim = true) {
+  function name_get_first($trim = true) {
         $element_attributes_name = $this->attributes_select('element_attributes')['name'] ?? '';
         $element_attributes_name = $trim ? rtrim($element_attributes_name, '[]') : $element_attributes_name;
     if ($element_attributes_name) return

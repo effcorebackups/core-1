@@ -126,7 +126,7 @@ namespace effcore {
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
       if ($c_item instanceof container)         $this->items[$c_npath                                                ] = $c_item;
       if ($c_item instanceof button)            $this->items['~'.$c_item->value_get     ()                           ] = $c_item;
-      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_first_get()                         ][] = $c_item;
+      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_get_first()                         ][] = $c_item;
       if ($c_item instanceof field)             $groups     ['#'.$c_item->name_get      ()                         ][] = $c_item;
       if ($c_item instanceof field_radiobutton) $groups     ['#'.$c_item->name_get      ().':'.$c_item->value_get()][] = $c_item;
     }

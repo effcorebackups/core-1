@@ -74,7 +74,7 @@ namespace effcore {
   static function init() {
     foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
       foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-        if (isset(static::$cache_tree_items[$c_tree_item->id])) console::log_about_duplicate_insert('tree_item', $c_tree_item->id, $c_module_id);
+        if (isset(static::$cache_tree_items[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
         static::$cache[$c_tree_item->id] = $c_tree_item;
         static::$cache[$c_tree_item->id]->module_id = $c_module_id;
       }
