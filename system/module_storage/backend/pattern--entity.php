@@ -44,17 +44,17 @@ namespace effcore {
     }
   }
 
-  function field_get($name) {
+  function get_field($name) {
     return $this->fields[$name] ?? null;
   }
 
-  function fields_name_get() {
+  function get_fields_name() {
     return core::array_kmap(
       array_keys($this->fields)
     );
   }
 
-  function auto_name_get() {
+  function get_auto_name() {
     foreach ($this->fields as $name => $info) {
       if ($info->type == 'autoincrement') {
         return $name;
@@ -62,14 +62,14 @@ namespace effcore {
     }
   }
 
-  function real_id_get() {
+  function get_real_id() {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') return $c_constraint->fields;
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) return $c_constraint->fields;
     foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') return $c_index->fields;
     return [];
   }
 
-  function real_id_from_values_get($values) {
+  function get_real_id_from_values($values) {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
     foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') {$slice = array_intersect_key($values, $c_index->fields);      if (count($c_index->fields)      == count($slice)) return $slice;}

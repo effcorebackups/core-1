@@ -296,7 +296,7 @@ namespace effcore {
       }
 
     # prepare constraints
-      $auto_name = $entity->auto_name_get();
+      $auto_name = $entity->get_auto_name();
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
           if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')'];
@@ -408,7 +408,7 @@ namespace effcore {
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_from_values_get($instance->values_get());
+      $id_fields = $entity->get_real_id_from_values($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
         'fields_!,' => ['all_!f' => '*'],
@@ -431,9 +431,9 @@ namespace effcore {
   function instance_insert($instance) { # return: null | instance | instance + new_id
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $values = array_intersect_key($instance->values_get(), $entity->fields_name_get());
+      $values = array_intersect_key($instance->values_get(), $entity->get_fields_name());
       $fields = array_keys($values);
-      $auto_name = $entity->auto_name_get();
+      $auto_name = $entity->get_auto_name();
       $new_id = $this->query([
         'action' => 'INSERT',
         'action_subtype' => 'INTO',
@@ -455,8 +455,8 @@ namespace effcore {
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_from_values_get($instance->values_get());
-      $values    = array_intersect_key($instance->values_get(), $entity->fields_name_get());
+      $id_fields = $entity->get_real_id_from_values($instance->values_get());
+      $values    = array_intersect_key($instance->values_get(), $entity->get_fields_name());
       $row_count = $this->query([
         'action' => 'UPDATE',
         'target_!t' => '~'.$entity->name,
@@ -474,7 +474,7 @@ namespace effcore {
   function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_from_values_get($instance->values_get());
+      $id_fields = $entity->get_real_id_from_values($instance->values_get());
       $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',
