@@ -11,7 +11,7 @@ namespace effcore\modules\user {
           use \effcore\module;
           use \effcore\session;
           use \effcore\storage;
-          use \effcore\tree;
+          use \effcore\tree_item;
           use \effcore\user;
           abstract class events_module {
 

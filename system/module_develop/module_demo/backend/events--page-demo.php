@@ -17,7 +17,7 @@ namespace effcore\modules\demo {
           use \effcore\table;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\tree;
+          use \effcore\tree_item;
           use \effcore\url;
           abstract class events_page_demo {
 
