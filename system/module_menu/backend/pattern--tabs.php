@@ -17,7 +17,7 @@ namespace effcore {
   }
 
   function build() {
-    foreach (tabs_item::all_select() as $c_item) {
+    foreach (tabs_item::select_all() as $c_item) {
       if ($c_item->id_parent == 'T:'.$this->id) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
@@ -84,7 +84,7 @@ namespace effcore {
     }
   }
 
-  static function all_select() {
+  static function select_all() {
     if    (static::$cache == null) static::init();
     return static::$cache ?? [];
   }
@@ -94,7 +94,7 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function parent_select($id_parent) {
+  static function select_parent($id_parent) {
     if ($id_parent[0] == 'T' &&
         $id_parent[1] == ':')
          return static   ::select(substr($id_parent, 2));

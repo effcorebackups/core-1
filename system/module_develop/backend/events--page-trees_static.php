@@ -12,7 +12,7 @@ namespace effcore\modules\develop {
           abstract class events_page_trees_static {
 
   static function on_page_init($page) {
-    $trees = tree::all_select();
+    $trees = tree::select_all();
     $id = $page->args_get('id');
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);

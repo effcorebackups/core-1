@@ -30,7 +30,7 @@ namespace effcore {
   }
 
   function build() {
-    foreach (static::all_select() as $c_item) {
+    foreach (static::select_all() as $c_item) {
       if ($c_item->id_parent == $this->id) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
@@ -85,7 +85,7 @@ namespace effcore {
     }
   }
 
-  static function all_select() {
+  static function select_all() {
     if    (static::$cache == null) static::init();
     return static::$cache ?? [];
   }
