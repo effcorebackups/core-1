@@ -123,7 +123,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         case 'tree':
           foreach ($this->data as $c_row_id => $c_row) {
-            tree::item_insert(
+            tree_item::insert(
               $c_row['cell-title'    ]['value'],
               $c_row['cell-id'       ]['value'],
               $c_row['cell-id_parent']['value'] ?: 'M:'.$c_row['cell-id_tree']['value'],

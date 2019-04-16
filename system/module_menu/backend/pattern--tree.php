@@ -21,7 +21,7 @@ namespace effcore {
   }
 
   function build() {
-    foreach (static::items_select() as $c_item) {
+    foreach (tree_item::all_select() as $c_item) {
       if ($c_item->id_parent == 'M:'.$this->id) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
@@ -30,10 +30,9 @@ namespace effcore {
   }
 
   function render() {
+    if (static::$cache == null) static::init();
     if ($this->access === null || access::check($this->access)) {
-      if (static::$cache_trees      == null ||
-          static::$cache_tree_items == null) static::init();
-      if ($this->children_count()   == 0)
+      if ($this->children_count() == 0)
           $this->build();
       return parent::render();
     }
@@ -53,80 +52,49 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $cache_trees;
-  static protected $cache_tree_items;
+  static protected $cache;
 
   static function cache_cleaning() {
-    static::$cache_trees      = null;
-    static::$cache_tree_items = null;
+    static::$cache = null;
   }
 
   static function init() {
     foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
       foreach ($c_trees as $c_row_id => $c_tree) {
-        if (isset(static::$cache_trees[$c_tree->id])) console::log_about_duplicate_insert('tree', $c_tree->id, $c_module_id);
-        static::$cache_trees[$c_tree->id] = $c_tree;
-        static::$cache_trees[$c_tree->id]->module_id = $c_module_id;
+        if (isset(static::$cache[$c_tree->id])) console::log_about_duplicate_insert('tree', $c_tree->id, $c_module_id);
+        static::$cache[$c_tree->id] = $c_tree;
+        static::$cache[$c_tree->id]->module_id = $c_module_id;
       }
     }
-    foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
-      foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-        if (isset(static::$cache_tree_items[$c_tree_item->id])) console::log_about_duplicate_insert('tree_item', $c_tree_item->id, $c_module_id);
-        static::$cache_tree_items[$c_tree_item->id] = $c_tree_item;
-        static::$cache_tree_items[$c_tree_item->id]->module_id = $c_module_id;
-      }
-    }
-  }
-
-  static function select($id) {
-    if    (static::$cache_trees == null) static::init();
-    return static::$cache_trees[$id] ?? null;
   }
 
   static function all_select() {
-    if    (static::$cache_trees == null) static::init();
-    return static::$cache_trees;
+    if    (static::$cache == null) static::init();
+    return static::$cache ?? [];
+  }
+
+  static function select($id) {
+    if    (static::$cache == null) static::init();
+    return static::$cache[$id] ?? null;
   }
 
   static function parent_select($id_parent) {
     if ($id_parent[0] == 'M' &&
         $id_parent[1] == ':')
-         return static::select(substr($id_parent, 2));
-    else return static::item_select($id_parent);
+         return static   ::select(substr($id_parent, 2));
+    else return tree_item::select       ($id_parent);
   }
 
   static function insert($title = '', $id, $attributes = [], $weight = 0) {
     $new_tree = new static($title, $id, $attributes, $weight);
-    if (static::$cache_trees == null) static::init();
-        static::$cache_trees[$id] = $new_tree;
-        static::$cache_trees[$id]->module_id = null;
+    if (static::$cache == null) static::init();
+        static::$cache[$id] = $new_tree;
+        static::$cache[$id]->module_id = null;
   }
 
   static function delete($id) {
-    if   (static::$cache_trees == null) static::init();
-    unset(static::$cache_trees[$id]);
-  }
-
-  static function items_select() {
-    if    (static::$cache_tree_items == null) static::init();
-    return static::$cache_tree_items ?? [];
-  }
-
-  static function item_select($id) {
-    if    (static::$cache_tree_items == null) static::init();
-    return static::$cache_tree_items[$id] ?? null;
-  }
-
-  static function item_insert($title, $id, $id_parent, $url = null, $attributes = [], $element_attributes = [], $weight = 0) {
-    $new_item = new tree_item($title, $id, $id_parent, $url,        $attributes,      $element_attributes,      $weight);
-    if (static::$cache_tree_items == null) static::init();
-        static::$cache_tree_items[$id] = $new_item;
-        static::$cache_tree_items[$id]->module_id = null;
-  }
-
-  static function item_delete($id) {
-    if   (static::$cache_tree_items == null) static::init();
-    unset(static::$cache_tree_items[$id]);
+    if   (static::$cache == null) static::init();
+    unset(static::$cache[$id]);
   }
 
 }}
