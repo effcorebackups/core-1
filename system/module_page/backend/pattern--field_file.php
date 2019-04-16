@@ -120,7 +120,7 @@ namespace effcore {
     }
   # join deleted items from the cache with deleted items from the form
     $deleted           = $this->pool_validation_cache_get('old_to_delete');
-    $deleted_from_form = $this->pool_manager_deleted_items_get('old');
+    $deleted_from_form = $this->pool_manager_get_deleted_items('old');
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted_from_form[$c_id])) {
         $deleted[$c_id] = new \stdClass;
@@ -142,7 +142,7 @@ namespace effcore {
   function pool_values_init_new_from_cache() {
     $this->pool_new = $this->pool_validation_cache_get('new');
   # physically delete the items which marked as 'deleted'
-    $deleted_from_form = $this->pool_manager_deleted_items_get('new');
+    $deleted_from_form = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($deleted_from_form[$c_id])) {
         if (isset($this->pool_new[$c_id]->pre_path)) {
@@ -190,7 +190,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_relative_get();}
   # move pool_old to pool_new
     $this->pool_new = [];
-    $this->pool_manager_deleted_items_set('old', []);
+    $this->pool_manager_set_deleted_items('old', []);
     $this->pool_validation_cache_set('old_to_delete', []);
     $this->pool_values_init_old_from_storage($result_paths);
   # return result array
@@ -276,14 +276,14 @@ namespace effcore {
     );
   }
 
-  protected function pool_manager_deleted_items_get($type) {
+  protected function pool_manager_get_deleted_items($type) {
     $name = $this->name_get();
     return core::array_kmap(
       static::request_values_get('manager_delete_'.$name.'_'.$type)
     );
   }
 
-  protected function pool_manager_deleted_items_set($type, $items) {
+  protected function pool_manager_set_deleted_items($type, $items) {
     $name = $this->name_get();
     static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
   }
