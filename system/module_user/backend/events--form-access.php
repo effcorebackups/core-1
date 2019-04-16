@@ -18,7 +18,7 @@ namespace effcore\modules\user {
         case 'page': $access = page::current_get()->access; break;
       }
     }
-    $items['settings/roles']->values = access::roles_get();
+    $items['settings/roles']->values = access::get_roles();
     $items['settings/roles']->checked = $access->roles ?? [];
     $items['settings/roles']->build();
   }

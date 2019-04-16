@@ -15,7 +15,7 @@ namespace effcore {
     }
   }
 
-  static function roles_get($full = false) {
+  static function get_roles($full = false) {
     $result = [];
     $instances = entity::get('role')->instances_select([
       'order' => ['weight_!f' => 'weight', 'DESC', ',', 'title_!f' => 'title', 'ASC']

@@ -24,7 +24,7 @@ namespace effcore {
       if ($user->select()) {
         $user->roles = ['registered' => 'registered'];
         if ($is_full) {
-          $user->roles += static::id_roles_get($id);
+          $user->roles += static::get_id_roles($id);
         }
         static::$cache = $user;
       }
@@ -40,7 +40,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function id_roles_get($id_user) {
+  static function get_id_roles($id_user) {
     $id_roles = [];
     $roles = entity::get('relation_role_ws_user')->instances_select([
       'conditions' => ['id_user_!f' => 'id_user', '=', 'id_user_!v' => $id_user]
