@@ -44,9 +44,9 @@ namespace effcore {
   function prepared_post_get() {
     $result = [];
     foreach ($this->post as $c_name => $c_value) {
-      if ($c_value == '%%_nick_random'    ) $c_value = $this->nick_random_get    ();
-      if ($c_value == '%%_email_random'   ) $c_value = $this->email_random_get   ();
-      if ($c_value == '%%_password_random') $c_value = $this->password_random_get();
+      if ($c_value == '%%_nick_random'    ) $c_value = $this->random_nick_get    ();
+      if ($c_value == '%%_email_random'   ) $c_value = $this->random_email_get   ();
+      if ($c_value == '%%_password_random') $c_value = $this->random_password_get();
       if ($c_value == '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
       if ($c_value == '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
       $result[$c_name] = $c_value;
@@ -54,15 +54,15 @@ namespace effcore {
     return $result;
   }
 
-  function nick_random_get() {
+  function random_nick_get() {
     return 'test_'.core::mini_hash_get(random_int(0, 0x7fffffff));
   }
 
-  function email_random_get() {
+  function random_email_get() {
     return 'test_'.core::mini_hash_get(random_int(0, 0x7fffffff)).'@example.com';
   }
 
-  function password_random_get() {
+  function random_password_get() {
     return core::password_generate();
   }
 
