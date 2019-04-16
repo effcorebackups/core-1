@@ -11,7 +11,7 @@ namespace effcore\modules\develop {
           abstract class events_form_console {
 
   static function on_init($form, $items) {
-    $settings = module::settings_get('page');
+    $settings = module::get_settings('page');
     $items['#visibility']->value_set($settings->console_visibility);
   }
 

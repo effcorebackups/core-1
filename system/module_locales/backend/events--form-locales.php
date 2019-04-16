@@ -15,7 +15,7 @@ namespace effcore\modules\locales {
           abstract class events_form_locales {
 
   static function on_init($form, $items) {
-    $settings = module::settings_get('locales');
+    $settings = module::get_settings('locales');
     $items['#lang_code']->option_insert('- select -', 'not_selected');
     foreach (language::get_all() as $c_language) {
       $title = $c_language->code == 'en' ?

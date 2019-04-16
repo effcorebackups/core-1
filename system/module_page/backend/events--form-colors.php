@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           abstract class events_form_colors {
 
   static function on_init($form, $items) {
-    $settings = module::settings_get('page');
+    $settings = module::get_settings('page');
     $items['*color_page_id'            ]->value_set( $settings->color_page_id             );
     $items['*color_text_id'            ]->value_set( $settings->color_text_id             );
     $items['*color_main_id'            ]->value_set( $settings->color_main_id             );

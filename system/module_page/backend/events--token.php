@@ -10,7 +10,7 @@ namespace effcore\modules\page {
           abstract class events_token {
 
   static function on_replace($name, $args = []) {
-    $settings = module::settings_get('page');
+    $settings = module::get_settings('page');
     $colors   = color::get_all();
     switch ($name) {
       case 'color_page'            : return $colors[$settings->color_page_id            ]->value;

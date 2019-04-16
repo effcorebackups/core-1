@@ -82,7 +82,7 @@ namespace effcore {
     static::$cache['bundles'] = storage::get('files')->select('bundle');
   }
 
-  static function settings_get($module_id) {
+  static function get_settings($module_id) {
     $settings = storage::get('files')->select('settings');
     return $settings[$module_id] ?? [];
   }
@@ -146,7 +146,7 @@ namespace effcore {
   }
 
   static function get_update_last_number($module_id) {
-    $settings = static::settings_get($module_id);
+    $settings = static::get_settings($module_id);
     return $settings->update_last_number ?? 0;
   }
 
