@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           abstract class events_page_decoration {
 
   static function on_page_init($page) {
-    $presets = color::preset_all_get();
+    $presets = color::preset_get_all();
     $type = $page->args_get('type');
     $id   = $page->args_get('id');
     core::array_sort_by_title($presets);

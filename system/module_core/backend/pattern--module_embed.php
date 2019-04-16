@@ -24,13 +24,13 @@ namespace effcore {
 
   function install() {
   # insert entities
-    foreach (entity::all_by_module_get($this->id) as $c_entity) {
+    foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())
            message::insert(new text('Entity "%%_name" was installed.',     ['name' => $c_entity->name]));
       else message::insert(new text('Entity "%%_name" was not installed!', ['name' => $c_entity->name]), 'error');
     }
   # insert instances
-    foreach (instance::all_by_module_get($this->id) as $c_row_id => $c_instance) {
+    foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       if ($c_instance->insert())
            message::insert(new text('Instance with row_id = "%%_row_id" was added.',     ['row_id' => $c_row_id]));
       else message::insert(new text('Instance with row_id = "%%_row_id" was not added!', ['row_id' => $c_row_id]), 'error');
@@ -106,7 +106,7 @@ namespace effcore {
     return $result;
   }
 
-  static function embed_get($property = null) {
+  static function get_embed($property = null) {
     $result = [];
     foreach (static::all_get() as $c_module) {
       if ($c_module instanceof module_embed &&
@@ -117,7 +117,7 @@ namespace effcore {
     return $result;
   }
 
-  static function enabled_by_default_get($property = null) {
+  static function get_enabled_by_default($property = null) {
     $result = [];
     foreach (static::all_get() as $c_module) {
       if ($c_module->enabled == 'yes') {
@@ -127,7 +127,7 @@ namespace effcore {
     return $result;
   }
 
-  static function groups_get() {
+  static function get_groups() {
     $groups = [];
     if      (static::$cache == null) static::init();
     foreach (static::$cache['modules'] as $c_module)
@@ -135,7 +135,7 @@ namespace effcore {
     return $groups;
   }
 
-  static function updates_get($module_id, $from_number = 0) {
+  static function get_updates($module_id, $from_number = 0) {
     $updates = [];
     foreach (storage::get('files')->select('module_updates', false, false) ?? [] as $c_module_id => $c_updates)
       if ($c_module_id == $module_id)
@@ -145,15 +145,15 @@ namespace effcore {
     return $updates;
   }
 
-  static function update_last_number_get($module_id) {
+  static function get_update_last_number($module_id) {
     $settings = static::settings_get($module_id);
     return $settings->update_last_number ?? 0;
   }
 
   static function is_required_updates() {
     foreach (static::all_get() as $c_module) {
-      $c_updates            = static::updates_get           ($c_module->id);
-      $c_update_last_number = static::update_last_number_get($c_module->id);
+      $c_updates            = static::get_updates           ($c_module->id);
+      $c_update_last_number = static::get_update_last_number($c_module->id);
       foreach ($c_updates as $c_update) {
         if ($c_update->number > $c_update_last_number) return true;
       }

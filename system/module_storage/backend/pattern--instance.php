@@ -84,7 +84,7 @@ namespace effcore {
     return static::$cache[$row_id] ?? null;
   }
 
-  static function all_by_module_get($name) {
+  static function get_all_by_module($name) {
     if    (static::$cache_orig == null) static::init();
     return static::$cache_orig[$name] ?? [];
   }

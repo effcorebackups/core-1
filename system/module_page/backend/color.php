@@ -47,7 +47,7 @@ namespace effcore {
     return static::$cache_presets[$id] ?? null;
   }
 
-  static function preset_all_get() {
+  static function preset_get_all() {
     if    (static::$cache_presets == null) static::init();
     return static::$cache_presets;
   }

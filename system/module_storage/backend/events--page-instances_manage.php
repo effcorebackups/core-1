@@ -35,7 +35,7 @@ namespace effcore\modules\storage {
     $group_id = $page->args_get('group_id');
     $entity_name = $page->args_get('entity_name');
     $entities = entity::all_get();
-    $groups = entity::groups_get();
+    $groups = entity::get_groups();
     $entities_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_id => $c_title) {

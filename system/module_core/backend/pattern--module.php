@@ -16,12 +16,12 @@ namespace effcore {
 
   function uninstall() {
   # delete instances
-    foreach (instance::all_by_module_get($this->id) as $c_instance) {
+    foreach (instance::get_all_by_module($this->id) as $c_instance) {
       if ($c_instance->select())
           $c_instance->delete();
     }
   # delete entities
-    foreach (entity::all_by_module_get($this->id) as $c_entity) {
+    foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->uninstall())
            message::insert(new text('Entity "%%_name" was uninstalled.',     ['name' => $c_entity->name]));
       else message::insert(new text('Entity "%%_name" was not uninstalled!', ['name' => $c_entity->name]), 'error');

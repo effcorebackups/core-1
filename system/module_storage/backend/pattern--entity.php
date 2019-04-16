@@ -156,7 +156,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function all_by_module_get($module, $load = true) {
+  static function get_all_by_module($module, $load = true) {
     if (static::$cache_orig == null) static::init();
     if ($load && isset(static::$cache_orig[$module]))
       foreach (static::$cache_orig[$module] as &$c_item)
@@ -165,7 +165,7 @@ namespace effcore {
     return static::$cache_orig[$module] ?? [];
   }
 
-  static function groups_get() {
+  static function get_groups() {
     $groups = [];
     if      (static::$cache == null) static::init();
     foreach (static::$cache as $c_item)

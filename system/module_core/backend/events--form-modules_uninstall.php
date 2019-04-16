@@ -20,7 +20,7 @@ namespace effcore\modules\core {
     $info = $form->child_select('info');
     $installed_by_boot = core::boot_select('installed');
     $enabled_by_boot = core::boot_select('enabled');
-    $embed = module::embed_get();
+    $embed = module::get_embed();
     $modules = module::all_get();
     $checkboxes = new group_checkboxes();
     $checkboxes->description = 'The removing module should be disabled at first. Embed modules cannot be removed.';
@@ -48,7 +48,7 @@ namespace effcore\modules\core {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $embed = module::embed_get();
+        $embed = module::get_embed();
         $modules = module::all_get();
         $modules_to_uninstall = [];
         $include_paths        = [];

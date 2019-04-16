@@ -23,7 +23,7 @@ namespace effcore\modules\core {
     if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
     # check for php dependencies
-      $embed = module::embed_get();
+      $embed = module::get_embed();
       $dependencies = [];
       foreach ($embed as $c_module)
         $dependencies += $c_module->dependencies->php ?? [];
@@ -143,8 +143,8 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
           ]);
-          $enabled_by_default = module::enabled_by_default_get();
-          $embed              = module::embed_get();
+          $enabled_by_default = module::get_enabled_by_default();
+          $embed              = module::get_embed();
           foreach (module::all_get() as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) || 
                 isset($embed             [$c_module->id])) {

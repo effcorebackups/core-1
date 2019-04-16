@@ -22,8 +22,8 @@ namespace effcore\modules\core {
     $modules = module::all_get();
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
-      $c_updates            = module::updates_get           ($c_module->id);
-      $c_update_last_number = module::update_last_number_get($c_module->id);
+      $c_updates            = module::get_updates           ($c_module->id);
+      $c_update_last_number = module::get_update_last_number($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'closed';
@@ -59,8 +59,8 @@ namespace effcore\modules\core {
         $modules = module::all_get();
         core::array_sort_by_title($modules);
         foreach ($modules as $c_module) {
-          $c_updates            = module::updates_get           ($c_module->id);
-          $c_update_last_number = module::update_last_number_get($c_module->id);
+          $c_updates            = module::get_updates           ($c_module->id);
+          $c_update_last_number = module::get_update_last_number($c_module->id);
           if (count($c_updates)) {
             core::array_sort_by_property($c_updates, 'number', 'd');
             foreach ($c_updates as $c_update) {
