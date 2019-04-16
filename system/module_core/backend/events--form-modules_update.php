@@ -19,7 +19,7 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $info->children_delete_all();
-    $modules = module::all_get();
+    $modules = module::get_all();
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {
       $c_updates            = module::get_updates           ($c_module->id);
@@ -56,7 +56,7 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $has_selection = false;
-        $modules = module::all_get();
+        $modules = module::get_all();
         core::array_sort_by_title($modules);
         foreach ($modules as $c_module) {
           $c_updates            = module::get_updates           ($c_module->id);

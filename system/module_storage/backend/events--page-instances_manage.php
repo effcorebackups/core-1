@@ -34,8 +34,8 @@ namespace effcore\modules\storage {
   static function on_page_instance_select_multiple_init($page) {
     $group_id = $page->args_get('group_id');
     $entity_name = $page->args_get('entity_name');
-    $entities = entity::all_get();
-    $groups = entity::get_groups();
+    $entities = entity::get_all   ();
+    $groups   = entity::get_groups();
     $entities_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_id => $c_title) {

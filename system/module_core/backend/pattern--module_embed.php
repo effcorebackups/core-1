@@ -54,7 +54,7 @@ namespace effcore {
   function depended_status_get() {
     $result = [];
     $boot_status = core::boot_select();
-    foreach (static::all_get() as $c_module) {
+    foreach (static::get_all() as $c_module) {
       $c_dependencies_sys = $c_module->dependencies->system ?? [];
       if (isset($c_dependencies_sys[$this->id])) {
         $result[$c_module->id] = (int)isset($boot_status[$c_module->id]);
@@ -97,7 +97,7 @@ namespace effcore {
     return static::$cache['bundles'][$id];
   }
 
-  static function all_get($property = null) {
+  static function get_all($property = null) {
     $result = [];
     if      (static::$cache == null) static::init();
     foreach (static::$cache['modules'] as $c_module) {
@@ -108,7 +108,7 @@ namespace effcore {
 
   static function get_embed($property = null) {
     $result = [];
-    foreach (static::all_get() as $c_module) {
+    foreach (static::get_all() as $c_module) {
       if ($c_module instanceof module_embed &&
          !$c_module instanceof module) {
         $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
@@ -119,7 +119,7 @@ namespace effcore {
 
   static function get_enabled_by_default($property = null) {
     $result = [];
-    foreach (static::all_get() as $c_module) {
+    foreach (static::get_all() as $c_module) {
       if ($c_module->enabled == 'yes') {
         $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
       }
@@ -151,7 +151,7 @@ namespace effcore {
   }
 
   static function is_required_updates() {
-    foreach (static::all_get() as $c_module) {
+    foreach (static::get_all() as $c_module) {
       $c_updates            = static::get_updates           ($c_module->id);
       $c_update_last_number = static::get_update_last_number($c_module->id);
       foreach ($c_updates as $c_update) {

@@ -826,7 +826,7 @@ namespace effcore {
     }
     if (!$message) $message = 'go to <a href="/">front page</a>';
     $settings = module::settings_get('page');
-    $colors = color::all_get();
+    $colors = color::get_all();
     $color_page        = $colors[$settings->color_page_id       ]->value;
     $color_text        = $colors[$settings->color_text_id       ]->value;
     $color_link        = $colors[$settings->color_link_id       ]->value;

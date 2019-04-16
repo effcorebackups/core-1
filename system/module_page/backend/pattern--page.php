@@ -182,7 +182,7 @@ namespace effcore {
     return static::$cache[$row_id];
   }
 
-  static function all_get($load = true) {
+  static function get_all($load = true) {
     if (static::$cache == null) static::init();
     if ($load)
       foreach (static::$cache as &$c_item)
@@ -224,7 +224,7 @@ namespace effcore {
   }
 
   static function find_and_render() {
-    foreach (static::all_get(false) as $c_page) {
+    foreach (static::get_all(false) as $c_page) {
       $c_args = static::is_displayed_by_current_url($c_page->display);
       if (is_array($c_args)) {
         if ($c_page->access === null || access::check($c_page->access)) {

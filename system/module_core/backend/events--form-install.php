@@ -145,7 +145,7 @@ namespace effcore\modules\core {
           ]);
           $enabled_by_default = module::get_enabled_by_default();
           $embed              = module::get_embed();
-          foreach (module::all_get() as $c_module) {
+          foreach (module::get_all() as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) || 
                 isset($embed             [$c_module->id])) {
               event::start('on_module_install', $c_module->id);

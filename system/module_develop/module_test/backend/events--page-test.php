@@ -12,7 +12,7 @@ namespace effcore\modules\test {
           abstract class events_page_test {
 
   static function on_page_init($page) {
-    $tests = test::all_get(false);
+    $tests = test::get_all(false);
     $id = $page->args_get('id');
     core::array_sort_by_title($tests);
     if (!isset($tests[$id])) url::go($page->args_get('base').'/'.reset($tests)->id);

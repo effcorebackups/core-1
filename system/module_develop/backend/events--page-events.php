@@ -17,7 +17,7 @@ namespace effcore\modules\develop {
     $decorator = new decorator('table', ['class' => ['report-events' => 'report-events']]);
     $decorator->id = 'events_list';
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
-    foreach (event::all_get() as $c_event_type => $c_events) {
+    foreach (event::get_all() as $c_event_type => $c_events) {
       foreach ($c_events as $c_event) {
         $decorator->data[] = [
           'type'      => ['value' => new text_simple($c_event_type),       'title' => 'Type'     ],

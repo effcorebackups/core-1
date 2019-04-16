@@ -10,7 +10,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'checkbox-color'];
 
   function color_set($color_id) {
-    $colors = color::all_get();
+    $colors = color::get_all();
     $element = $this->child_select('element');
     $element->attribute_insert('style', 'background: '.$colors[$color_id]->value);
   }

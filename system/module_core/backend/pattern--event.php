@@ -38,7 +38,7 @@ namespace effcore {
     }
   }
 
-  static function all_get() {
+  static function get_all() {
     if    (static::$cache == null) static::init();
     return static::$cache;
   }
@@ -73,8 +73,8 @@ namespace effcore {
 
   static function start($type, $for = null, $args = [], $on_after_step = null) {
     $result = [];
-    if (!empty(static::all_get()[$type])) {
-      foreach (static::all_get()[$type] as $c_event) {
+    if (!empty(static::get_all()[$type])) {
+      foreach (static::get_all()[$type] as $c_event) {
         if ($for == null          ||
             $for == $c_event->for ||
                     $c_event->for == null) {

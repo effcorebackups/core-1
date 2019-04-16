@@ -24,9 +24,9 @@ namespace effcore\modules\core {
   static function on_init($form, $items) {
     $info = $form->child_select('info');
     $enabled_by_boot = core::boot_select('enabled');
-    $embed = module::get_embed();
-    $modules = module::all_get();
-    $groups = module::get_groups();
+    $embed   = module::get_embed ();
+    $modules = module::get_all   ();
+    $groups  = module::get_groups();
     $modules_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
@@ -84,8 +84,8 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $enabled_by_boot = core::boot_select('enabled');
-        $embed = module::get_embed();
-        $modules = module::all_get();
+        $embed   = module::get_embed();
+        $modules = module::get_all  ();
         $modules_to_enable  = [];
         $modules_to_disable = [];
         foreach ($modules as $c_module) {
@@ -118,8 +118,8 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $enabled_by_boot = core::boot_select('enabled');
-        $embed = module::get_embed();
-        $modules = module::all_get();
+        $embed   = module::get_embed();
+        $modules = module::get_all  ();
         $modules_to_enable  = [];
         $modules_to_disable = [];
         $modules_to_install = [];

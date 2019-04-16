@@ -147,7 +147,7 @@ namespace effcore {
     return static::$cache[$name];
   }
 
-  static function all_get($load = true) {
+  static function get_all($load = true) {
     if (static::$cache == null) static::init();
     if ($load)
       foreach (static::$cache as &$c_item)

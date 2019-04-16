@@ -15,7 +15,7 @@ namespace effcore {
   # parent::build() not required
     $c_new_color_group = null;
     $c_old_color_group = null;
-    foreach (color::all_get() as $c_color) {
+    foreach (color::get_all() as $c_color) {
       $c_attributes = [
         'value' => $c_color->id,
         'title' => translation::get('Color ID = %%_id (value = %%_value)', ['id' => $c_color->id, 'value' => $c_color->value]),

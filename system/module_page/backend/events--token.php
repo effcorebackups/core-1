@@ -11,7 +11,7 @@ namespace effcore\modules\page {
 
   static function on_replace($name, $args = []) {
     $settings = module::settings_get('page');
-    $colors   = color::all_get();
+    $colors   = color::get_all();
     switch ($name) {
       case 'color_page'            : return $colors[$settings->color_page_id            ]->value;
       case 'color_text'            : return $colors[$settings->color_text_id            ]->value;
