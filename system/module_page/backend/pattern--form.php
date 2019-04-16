@@ -40,7 +40,7 @@ namespace effcore {
       if ($c_element instanceof pluggable_class) {
         $c_parts = explode('/', $c_npath);
         $c_last_part = end($c_parts);
-        $c_pointers = core::npath_pointers_get($this, $c_npath);
+        $c_pointers = core::npath_get_pointers($this, $c_npath);
         if ($c_element->class_is_exists())
                    $c_pointers[$c_last_part] = $c_element->object_get();
         else unset($c_pointers[$c_last_part]);

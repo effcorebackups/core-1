@@ -23,7 +23,7 @@ namespace effcore {
   }
 
   function object_get() {
-    $object = core::class_instance_new_get($this->name_get(), $this->args, true);
+    $object = core::class_get_new_instance($this->name_get(), $this->args, true);
     foreach ($this->properties as $c_name => $c_value) {
       $object->{$c_name} = $c_value;
     }

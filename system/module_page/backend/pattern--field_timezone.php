@@ -32,7 +32,7 @@ namespace effcore {
   static function list_by_zones_get() {
     $result = [];
     foreach (\DateTimeZone::listIdentifiers() as $c_name) {
-      $c_offset = core::timezone_offset_tme_get($c_name);
+      $c_offset = core::timezone_get_offset_tme($c_name);
       $result[$c_name] = $c_offset.' — '.str_replace('/', ' / ', $c_name);
     }
     arsort($result, SORT_NUMERIC);
@@ -42,7 +42,7 @@ namespace effcore {
   static function list_by_names_get() {
     $result = [];
     foreach (\DateTimeZone::listIdentifiers() as $c_name) {
-      $c_offset = core::timezone_offset_tme_get($c_name);
+      $c_offset = core::timezone_get_offset_tme($c_name);
       $result[$c_name] = str_replace('/', ' / ', $c_name).' ('.$c_offset.')';
     }
     return $result;

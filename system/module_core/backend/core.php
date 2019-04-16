@@ -11,7 +11,7 @@ namespace effcore {
   ### boot modules ###
   ####################
 
-  static function boot_default_select() {
+  static function boot_select_default() {
     return [
       'captcha' => 'system/module_captcha/',
       'core'    => 'system/module_core/',
@@ -27,7 +27,7 @@ namespace effcore {
     $boot = data::select('boot');
     if ($boot && isset($boot->{'modules_'.$type}))
                 return $boot->{'modules_'.$type};
-    else        return static::boot_default_select();
+    else        return static::boot_select_default();
   }
 
   static function boot_insert($module_id, $module_path, $type) {
@@ -35,7 +35,7 @@ namespace effcore {
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
          $boot_buffer = $boot->{'modules_'.$type};
-    else $boot_buffer = static::boot_default_select();
+    else $boot_buffer = static::boot_select_default();
     $boot_buffer[$module_id] = $module_path;
     asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
@@ -47,7 +47,7 @@ namespace effcore {
     $boot_buffer = [];
     if  ($boot && isset($boot->{'modules_'.$type}))
          $boot_buffer = $boot->{'modules_'.$type};
-    else $boot_buffer = static::boot_default_select();
+    else $boot_buffer = static::boot_select_default();
     unset($boot_buffer[$module_id]);
     $boot->{'modules_'.$type} = $boot_buffer;
     data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
@@ -151,26 +151,26 @@ namespace effcore {
   }
 
   static function structure_is_local($name) {
-    $parts = static::structure_parts_get($name);
+    $parts = static::structure_get_parts($name);
     return $parts[0] === 'effcore';
   }
 
-  static function structure_parts_get($name) {
+  static function structure_get_parts($name) {
     return explode('\\', $name);
   }
 
-  static function structure_part_name_get($name) {
-    $parts = static::structure_parts_get($name);
+  static function structure_get_part_name($name) {
+    $parts = static::structure_get_parts($name);
     return end($parts);
   }
 
-  static function structure_part_handler_get($handler, $partname) {
+  static function structure_get_part_handler($handler, $partname) {
     $parts = explode('::', $handler);
     if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
     if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
   }
 
-  static function class_instance_new_get($name, $args = [], $use_constructor = false) {
+  static function class_get_new_instance($name, $args = [], $use_constructor = false) {
     $reflection = new \ReflectionClass($name);
     return $use_constructor ? $reflection->newInstanceArgs($args) :
                               $reflection->newInstanceWithoutConstructor();
@@ -250,7 +250,7 @@ namespace effcore {
         $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
         $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
         if ($c_is_postconstructor)
-             $result = $prefix.' = core::class_instance_new_get(\''.addslashes('\\'.$c_class_name).'\');'.nl;
+             $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
         foreach ($data as $c_prop => $c_value) {
           if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
@@ -363,26 +363,26 @@ namespace effcore {
   ### functionality for mix of array|object ###
   #############################################
 
-  static function &arrobj_value_select(&$data, $name) {
+  static function &arrobj_select_value(&$data, $name) {
     if (is_array ($data)) return $data  [$name];
     if (is_object($data)) return $data->{$name};
   }
 
-  static function arrobj_value_insert(&$data, $name, $value) {
+  static function arrobj_insert_value(&$data, $name, $value) {
     if (is_array ($data)) $data  [$name] = $value;
     if (is_object($data)) $data->{$name} = $value;
   }
 
-  static function arrobj_child_delete(&$data, $name) {
+  static function arrobj_delete_child(&$data, $name) {
     if (is_array ($data)) unset($data  [$name]);
     if (is_object($data)) unset($data->{$name});
   }
 
-  static function arrobj_values_select_recursive(&$data, $all = false, $dpath = '') {
+  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
     $result = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))) $result += static::arrobj_values_select_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value))) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
       if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] = &$c_value;
     }
     return $result;
@@ -392,18 +392,18 @@ namespace effcore {
   ### functionality for dpath (data path) and npath (node path) ###
   #################################################################
 
-  static function dpath_pointers_get(&$data, $dpath, $is_unique_keys = false) {
+  static function dpath_get_pointers(&$data, $dpath, $is_unique_keys = false) {
     $result = [];
     $c_pointer = $data;
     foreach (explode('/', $dpath) as $c_part) {
-      $c_pointer = &static::arrobj_value_select($c_pointer, $c_part);
+      $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
       if ($is_unique_keys) $result[]        = &$c_pointer;
       else                 $result[$c_part] = &$c_pointer;
     }
     return $result;
   }
 
-  static function npath_pointers_get(&$node, $npath, $is_unique_keys = false) {
+  static function npath_get_pointers(&$node, $npath, $is_unique_keys = false) {
     $result = [];
     $c_pointer = $node;
     foreach (explode('/', $npath) as $c_part) {
@@ -463,9 +463,9 @@ namespace effcore {
   # note: each function "locale::*_format" uses local date/time format settings
   # which were setted on the page "/manage/locales"
 
-  static function timezone_client_get() {return user::current_get()->timezone ?? 'UTC';}
-  static function timezone_offset_sec_get($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
-  static function timezone_offset_tme_get($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
+  static function timezone_get_client() {return user::current_get()->timezone ?? 'UTC';}
+  static function timezone_get_offset_sec($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}
+  static function timezone_get_offset_tme($name = 'UTC') {return (new \DateTime('now', new \DateTimeZone($name)))->format('P');}
 
   static function T_datetime_to_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
   static function datetime_to_T_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
@@ -627,12 +627,12 @@ namespace effcore {
     return $result;
   }
 
-  static function password_hash_get($data) {
+  static function password_get_hash($data) {
     return sha1(sha1($data).static::key_get('salt'));
   }
 
   static function password_verify($password, $hash) {
-    return hash_equals($hash, static::password_hash_get($password));
+    return hash_equals($hash, static::password_get_hash($password));
   }
 
   static function data_hash_get($data) {

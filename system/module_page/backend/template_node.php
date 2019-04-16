@@ -11,7 +11,7 @@ namespace effcore {
 
   function &target_get($name, $get_parent = false) {
     $dpath = $this->pointers[$name];
-    $pointers = core::dpath_pointers_get($this->data->children, $dpath, true);
+    $pointers = core::dpath_get_pointers($this->data->children, $dpath, true);
     if ($get_parent) return $pointers[count($pointers) - 2];
     else             return $pointers[count($pointers) - 1];
   }
@@ -19,7 +19,7 @@ namespace effcore {
   function render() {
     foreach ($this->args as $c_name => $c_value) {
       $c_target_parent = &$this->target_get($c_name, true);
-      core::arrobj_value_insert($c_target_parent, $c_name, $c_value);
+      core::arrobj_insert_value($c_target_parent, $c_name, $c_value);
     }
     return $this->data->render();
   }

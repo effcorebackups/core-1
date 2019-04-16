@@ -43,8 +43,8 @@ namespace effcore {
                      is_writable($file->dirs_get())) {
       $file->data_set(
         '<?php'.nl.nl.'namespace effcore { # '.$name.nl.nl.($info ?
-           core::data_to_code($info, '  '.core::structure_part_name_get(static::class).'::$info[\''.$name.'\']') : '').
-           core::data_to_code($data, '  '.core::structure_part_name_get(static::class).'::$data[\''.$name.'\']').nl.
+           core::data_to_code($info, '  '.core::structure_get_part_name(static::class).'::$info[\''.$name.'\']') : '').
+           core::data_to_code($data, '  '.core::structure_get_part_name(static::class).'::$data[\''.$name.'\']').nl.
         '}');
       if (!$file->save()) {
         static::message_insert_show($file);

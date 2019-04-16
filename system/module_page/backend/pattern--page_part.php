@@ -22,7 +22,7 @@ namespace effcore {
         case 'link': if ($this->type == 'copy') $result = clone storage::get('files')->select($this->source, true);
                      if ($this->type == 'link') $result =       storage::get('files')->select($this->source, true);
                      foreach ($this->properties as $c_key => $c_value) {
-                       core::arrobj_value_insert($result, $c_key, $c_value);
+                       core::arrobj_insert_value($result, $c_key, $c_value);
                      }
                      return $result;
         case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->properties]);
