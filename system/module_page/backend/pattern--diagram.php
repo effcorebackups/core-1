@@ -27,8 +27,8 @@ namespace effcore {
           $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
           $x_slice->child_insert(new markup('x-value', [], [
             $c_slice->complex_value ?
-            $c_slice->complex_value.' ('.locale::persent_format($c_slice->persent_value, 1).')' :
-                                         locale::persent_format($c_slice->persent_value, 1),
+            $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
+                                         locale::format_persent($c_slice->persent_value, 1),
             new markup('x-scale', [
               'class' => ['scope' => core::sanitize_id($c_slice->title)],
               'style' => ['width: '.(int)$c_slice->persent_value.'%']
@@ -49,8 +49,8 @@ namespace effcore {
         foreach ($this->slices as $c_slice) {
           $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
             'stroke: '.$c_slice->color.'; '.
-            'stroke-dasharray: '. core::number_format($c_slice->persent_value, 2).' 100; '.
-            'stroke-dashoffset: '.core::number_format($c_offset,  2).'; '.
+            'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
+            'stroke-dashoffset: '.core::format_number($c_offset,  2).'; '.
             'stroke-width: 30%; '.
             'fill: none']));
           $c_offset -= $c_slice->persent_value;
@@ -59,8 +59,8 @@ namespace effcore {
           $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
           $x_legend->child_insert(new markup('x-value', [], [
             $c_slice->complex_value ?
-            $c_slice->complex_value.' ('.locale::persent_format($c_slice->persent_value, 1).')' :
-                                         locale::persent_format($c_slice->persent_value, 1)
+            $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
+                                         locale::format_persent($c_slice->persent_value, 1)
           ]));
           $legends->child_insert($x_legend);
         }

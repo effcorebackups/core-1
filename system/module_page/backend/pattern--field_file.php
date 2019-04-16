@@ -90,7 +90,7 @@ namespace effcore {
     }
   }
 
-  function render_description_file_size_max     () {return new markup('p', ['class' => ['file-size-max'           => 'file-size-max'          ]], new text('Maximum file size: %%_value.',                                       ['value'      => locale::human_bytes_format($this->file_size_max_get())]));}
+  function render_description_file_size_max     () {return new markup('p', ['class' => ['file-size-max'           => 'file-size-max'          ]], new text('Maximum file size: %%_value.',                                       ['value'      => locale::format_human_bytes($this->file_size_max_get())]));}
   function render_description_file_min_number   () {return new markup('p', ['class' => ['file-min-number'         => 'file-min-number'        ]], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));         }
   function render_description_file_max_number   () {return new markup('p', ['class' => ['file-max-number'         => 'file-max-number'        ]], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));         }
   function render_description_file_mid_number   () {return new markup('p', ['class' => ['file-mid-number'         => 'file-mid-number'        ]], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));         }
@@ -359,7 +359,7 @@ namespace effcore {
         return;
       }
       switch ($c_new_value->error) {
-        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::human_bytes_format($max_size)])]); return;
+        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])]); return;
         case UPLOAD_ERR_FORM_SIZE : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]);             return;
         case UPLOAD_ERR_PARTIAL   : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]);                                                  return;
         case UPLOAD_ERR_NO_TMP_DIR: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]);                                                                  return;
@@ -368,7 +368,7 @@ namespace effcore {
       }
       if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error]); return;}
       if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')]); return;}
-      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::human_bytes_format($max_size)])]); return;}
+      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])]); return;}
     }
     return true;
   }

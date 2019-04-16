@@ -422,10 +422,10 @@ namespace effcore {
   # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
   # │ +14:00 — Pacific/Kiritimati                           │ to format   │ result              │
   # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
-  # │           locale::date_format ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
-  # │           locale::time_format ('01:02:03')            │ H:i:s       │ 15:02:03            │
-  # │       locale::datetime_format ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 01.02.2030 15:02:03 │
-  # │       locale::timestmp_format (0)                     │ d.m.Y H:i:s │ 01.01.1970 14:00:00 │
+  # │           locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
+  # │           locale::format_time ('01:02:03')            │ H:i:s       │ 15:02:03            │
+  # │       locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 01.02.2030 15:02:03 │
+  # │       locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 01.01.1970 14:00:00 │
   # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
   # │       locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
   # │       locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 15:02:03            │
@@ -439,10 +439,10 @@ namespace effcore {
   # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
   # │ -11:00 — Pacific/Pago_Pago                            │ to format   │ result              │
   # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
-  # │           locale::date_format ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
-  # │           locale::time_format ('01:02:03')            │ H:i:s       │ 14:02:03            │
-  # │       locale::datetime_format ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 31.01.2030 14:02:03 │
-  # │       locale::timestmp_format (0)                     │ d.m.Y H:i:s │ 31.12.1969 13:00:00 │
+  # │           locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
+  # │           locale::format_time ('01:02:03')            │ H:i:s       │ 14:02:03            │
+  # │       locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 31.01.2030 14:02:03 │
+  # │       locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 31.12.1969 13:00:00 │
   # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
   # │       locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
   # │       locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 14:02:03            │
@@ -804,7 +804,7 @@ namespace effcore {
     return unserialize($string);
   }
 
-  static function number_format($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
+  static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
     $result = $precision ? substr(
       number_format($number, $precision, $dec_point, $thousands), 0, -5) :

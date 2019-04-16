@@ -69,8 +69,8 @@ namespace effcore {
     $user = user::current_get();
     $decorator = new decorator('dl');
     $decorator->data = [[
-      'gen_time' => ['title' => 'Total generation time',  'value' => locale::msecond_format(timer::period_get('total', 0, 1))],
-      'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::number_format(memory_get_usage(true))           ],
+      'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
+      'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
       'language' => ['title' => 'Current language',       'value' => language::current_code_get()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
     ]];
@@ -93,7 +93,7 @@ namespace effcore {
     $diagram = new diagram('', 'radial');
     $colors = ['#216ce4', '#30c432', '#fd9a1e', '#fc5740', 'darkcyan', 'lightseagreen', 'springgreen', 'yellowgreen', 'gold', 'crimson', 'lightcoral', 'thistle', 'moccasin', 'paleturquoise'];
     foreach ($statistics as $c_param => $c_value) {
-      $diagram->slice_add($c_param, $c_value / $total * 100, locale::msecond_format($c_value).' sec.', array_shift($colors));
+      $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
     }
     return new block('Total load', ['class' => ['diagram-load' => 'diagram-load']], [
       $diagram
@@ -114,7 +114,7 @@ namespace effcore {
       }
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
-        'time'        => ['title' => 'Time',        'value' => locale::msecond_format($c_log->time)       ],
+        'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)       ],
         'object'      => ['title' => 'Object',      'value' => new text($c_log->object,      $c_log->args)],
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
@@ -141,8 +141,8 @@ namespace effcore {
 
   static function text_block_information_get() {
     $information = [];
-    $information['Total generation time'] = locale::msecond_format(timer::period_get('total', 0, 1));
-    $information['Memory for php (bytes)'] = locale::number_format(memory_get_usage(true));
+    $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
+    $information['Memory for php (bytes)'] = locale::format_number(memory_get_usage(true));
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_param => $c_value) {
       $result.= '  '.str_pad($c_param, 60, ' ', STR_PAD_LEFT).' : ';
@@ -167,8 +167,8 @@ namespace effcore {
       $c_percent = $c_value / $total * 100;
       $result.= '  '.str_pad($c_param, 34, ' ', STR_PAD_LEFT).                           ' | ';
       $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
-      $result.=      str_pad(core::number_format($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
-      $result.=      locale::msecond_format($c_value).' sec.'.nl;
+      $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
+      $result.=      locale::format_msecond($c_value).' sec.'.nl;
     }
     return nl.$result.nl;
   }
@@ -180,7 +180,7 @@ namespace effcore {
     $result.= '  Time     | Object     | Action     | Value | Description    '.nl;
     $result.= '  ------------------------------------------------------------'.nl;
     foreach (static::logs_select() as $c_log) {
-      $result.= '  '.str_pad(locale::msecond_format($c_log->time), 8).' | ';
+      $result.= '  '.str_pad(locale::format_msecond($c_log->time), 8).' | ';
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
       $result.=      str_pad($c_log->value,   5).                     ' | ';

@@ -135,11 +135,11 @@ namespace effcore {
               $c_title      = $c_entity->fields[$c_field->entity_field_name]->title;
               $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
               $c_value      = $c_instance->    {$c_field->entity_field_name};
-              if ($c_value_type == 'real'    ) $c_value = locale::  number_format($c_value, 10);
-              if ($c_value_type == 'integer' ) $c_value = locale::  number_format($c_value);
-              if ($c_value_type == 'date'    ) $c_value = locale::    date_format($c_value);
-              if ($c_value_type == 'time'    ) $c_value = locale::    time_format($c_value);
-              if ($c_value_type == 'datetime') $c_value = locale::datetime_format($c_value);
+              if ($c_value_type == 'real'    ) $c_value = locale::format_number  ($c_value, 10);
+              if ($c_value_type == 'integer' ) $c_value = locale::format_number  ($c_value);
+              if ($c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value);
+              if ($c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value);
+              if ($c_value_type == 'datetime') $c_value = locale::format_datetime($c_value);
               if ($c_value_type == 'boolean' ) $c_value = $c_value ? 'Yes' : 'No';
               $c_row[$c_row_id] = [
                 'title' => $c_title,
