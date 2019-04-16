@@ -29,7 +29,7 @@ namespace effcore\modules\user {
         $selection->query_params['conditions'] = ['field_!f' => 'nick', '=', 'value_!v' => $user->nick];
         if ($user->nick == user::current_get()->nick) {
           $selection->field_insert_markup('session_expired', 'Session expired date',
-            new text(locale::timestmp_format(session::id_expired_extract(session::id_get())))
+            new text(locale::timestmp_format(session::id_extract_expired(session::id_get())))
           );
         }
         $user_roles = user::id_roles_get($user->id);

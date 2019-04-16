@@ -13,7 +13,7 @@ namespace effcore {
 
   static function select() {
     $session_id       = static::id_get();
-    $session_hex_type = static::id_hex_type_extract($session_id);
+    $session_hex_type = static::id_extract_hex_type($session_id);
     if ($session_hex_type == 'f') {
       $session = (new instance('session', [
         'id' => $session_id
@@ -86,10 +86,10 @@ namespace effcore {
     if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_remote_addr_get();
     if ($hex_type == 'a')                          $ip = core::server_remote_addr_get();
   # $hex_type: a - anonymous user | f - authenticated user
-    $hex_expired       = static::id_hex_expired_get($expired);
-    $hex_ip            = static::id_hex_ip_get($ip);
-    $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_get();
-    $hex_random        = static::id_hex_random_get();
+    $hex_expired       = static::id_get_hex_expired($expired);
+    $hex_ip            = static::id_get_hex_ip($ip);
+    $hex_uagent_hash_8 = static::id_get_hex_uagent_hash_8();
+    $hex_random        = static::id_get_hex_random();
     $session_id = $hex_type.          # strlen == 1
                   $hex_expired.       # strlen == 8
                   $hex_ip.            # strlen == 32
@@ -107,31 +107,31 @@ namespace effcore {
       else return static::id_regenerate('a');
   }
 
-  static function id_hex_expired_get($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
-  static function id_hex_ip_get($ip)           {return core::ip_to_hex($ip);}
-  static function id_hex_uagent_hash_8_get()   {return core::mini_hash_get(core::server_user_agent_get(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
-  static function id_hex_random_get()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function id_hex_signature_get($id)    {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
+  static function id_get_hex_expired($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
+  static function id_get_hex_ip($ip)           {return core::ip_to_hex($ip);}
+  static function id_get_hex_uagent_hash_8()   {return core::mini_hash_get(core::server_user_agent_get(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
+  static function id_get_hex_random()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
+  static function id_get_hex_signature($id)    {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
 
-  static function id_expired_extract($id)           {return hexdec(static::id_hex_expired_extract($id));}
-  static function id_hex_expired_extract($id)       {return substr($id,      1,  8);}
-  static function id_hex_type_extract($id)          {return substr($id,      0,  1);}
-  static function id_hex_ip_extract($id)            {return substr($id,  8 + 1, 32);}
-  static function id_hex_uagent_hash_8_extract($id) {return substr($id, 40 + 1,  8);}
-  static function id_hex_random_extract($id)        {return substr($id, 48 + 1,  8);}
-  static function id_hex_signature_extract($id)     {return substr($id, 56 + 1,  8);}
+  static function id_extract_expired          ($id) {return hexdec(static::id_extract_hex_expired($id));}
+  static function id_extract_hex_expired      ($id) {return substr($id,      1,  8);}
+  static function id_extract_hex_type         ($id) {return substr($id,      0,  1);}
+  static function id_extract_hex_ip           ($id) {return substr($id,  8 + 1, 32);}
+  static function id_extract_hex_uagent_hash_8($id) {return substr($id, 40 + 1,  8);}
+  static function id_extract_hex_random       ($id) {return substr($id, 48 + 1,  8);}
+  static function id_extract_hex_signature    ($id) {return substr($id, 56 + 1,  8);}
 
   static function id_check($id) {
     if (core::validate_hash($id, 65)) {
-      $expired           = static::id_expired_extract($id);
-      $hex_type          = static::id_hex_type_extract($id);
-      $hex_ip            = static::id_hex_ip_extract($id);
-      $hex_uagent_hash_8 = static::id_hex_uagent_hash_8_extract($id);
-      $hex_signature     = static::id_hex_signature_extract($id);
+      $expired           = static::id_extract_expired          ($id);
+      $hex_type          = static::id_extract_hex_type         ($id);
+      $hex_ip            = static::id_extract_hex_ip           ($id);
+      $hex_uagent_hash_8 = static::id_extract_hex_uagent_hash_8($id);
+      $hex_signature     = static::id_extract_hex_signature    ($id);
       if (($hex_type === 'a' && $expired === 0) ||
           ($hex_type === 'f' && $expired >= time())) {
-        if ($hex_signature === static::id_hex_signature_get($id)) {
-          if ($hex_uagent_hash_8 === static::id_hex_uagent_hash_8_get()) {
+        if ($hex_signature === static::id_get_hex_signature($id)) {
+          if ($hex_uagent_hash_8 === static::id_get_hex_uagent_hash_8()) {
             if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
