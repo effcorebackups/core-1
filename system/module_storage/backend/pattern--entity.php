@@ -76,7 +76,7 @@ namespace effcore {
     return [];
   }
 
-  function group_id_get() {
+  function get_group_id() {
     return core::sanitize_id($this->group);
   }
 

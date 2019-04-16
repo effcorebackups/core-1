@@ -39,7 +39,7 @@ namespace effcore {
     core::boot_insert($this->id, $this->path, 'installed');
   }
 
-  function dependencies_status_get() {
+  function get_dependencies_status() {
     $dependencies_php = $this->dependencies->php    ?? [];
     $dependencies_sys = $this->dependencies->system ?? [];
     $boot_status = core::boot_select();
@@ -51,7 +51,7 @@ namespace effcore {
     ];
   }
 
-  function depended_status_get() {
+  function get_depended_status() {
     $result = [];
     $boot_status = core::boot_select();
     foreach (static::get_all() as $c_module) {
@@ -63,7 +63,7 @@ namespace effcore {
     return $result;
   }
 
-  function group_id_get() {
+  function get_group_id() {
     return core::sanitize_id($this->group);
   }
 
