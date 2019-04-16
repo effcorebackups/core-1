@@ -28,13 +28,13 @@ namespace effcore\modules\user {
         $selection->title = '';
         $selection->query_params['conditions'] = ['field_!f' => 'nick', '=', 'value_!v' => $user->nick];
         if ($user->nick == user::current_get()->nick) {
-          $selection->field_markup_insert('session_expired', 'Session expired date',
+          $selection->field_insert_markup('session_expired', 'Session expired date',
             new text(locale::timestmp_format(session::id_expired_extract(session::id_get())))
           );
         }
         $user_roles = user::id_roles_get($user->id);
         if ($user_roles) {
-          $selection->field_markup_insert('roles', 'Roles',
+          $selection->field_insert_markup('roles', 'Roles',
             new text_multiline($user_roles, [], ', ')
           );          
         }

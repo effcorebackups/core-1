@@ -86,7 +86,7 @@ namespace effcore\modules\storage {
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->field_is_visible_on_select)) {
           $has_visible_fields = true;
-          $selection->field_entity_insert(null, $entity->name, $c_name);
+          $selection->field_insert_entity(null, $entity->name, $c_name);
         }
       }
       if (!$has_visible_fields) {
@@ -95,8 +95,8 @@ namespace effcore\modules\storage {
           new markup('x-no-result', [], 'no visible fields')
         ]);
       } else {
-        $selection->field_checkbox_insert(null, '', 80);
-        $selection->field_action_insert();
+        $selection->field_insert_checkbox(null, '', 80);
+        $selection->field_insert_action();
         return new block('', ['class' => [$entity->name => $entity->name]], [
           $link_add_new,
           $selection
@@ -148,7 +148,7 @@ namespace effcore\modules\storage {
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->field_is_visible_on_select)) {
               $has_visible_fields = true;
-              $selection->field_entity_insert(null, $entity->name, $c_name);
+              $selection->field_insert_entity(null, $entity->name, $c_name);
             }
           }
           if (!$has_visible_fields) {
@@ -156,7 +156,7 @@ namespace effcore\modules\storage {
               new markup('x-no-result', [], 'no visible fields')
             );
           } else {
-            $selection->field_action_insert(null, 'Action');
+            $selection->field_insert_action(null, 'Action');
             return new block('', ['class' => [$entity->name => $entity->name]],
               $selection
             );

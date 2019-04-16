@@ -198,7 +198,7 @@ namespace effcore {
   # custom fields
   # ─────────────────────────────────────────────────────────────────────
 
-  function field_entity_insert($row_id = null, $entity_name, $entity_field_name, $weight = 0) {
+  function field_insert_entity($row_id = null, $entity_name, $entity_field_name, $weight = 0) {
     $field = new \stdClass;
     $field->type = 'field';
     $field->entity_name = $entity_name;
@@ -207,7 +207,7 @@ namespace effcore {
     $this->fields[$row_id ?: $entity_name.'.'.$entity_field_name] = $field;
   }
 
-  function field_checkbox_insert($row_id = null, $title = '', $weight = 0) {
+  function field_insert_checkbox($row_id = null, $title = '', $weight = 0) {
     $field = new \stdClass;
     $field->type = 'checkbox';
     $field->title = $title;
@@ -215,7 +215,7 @@ namespace effcore {
     $this->fields[$row_id ?: 'checkbox'] = $field;
   }
 
-  function field_action_insert($row_id = null, $title = '', $weight = 0) {
+  function field_insert_action($row_id = null, $title = '', $weight = 0) {
     $field = new \stdClass;
     $field->type = 'actions';
     $field->title = $title;
@@ -223,7 +223,7 @@ namespace effcore {
     $this->fields[$row_id ?: 'actions'] = $field;
   }
 
-  function field_markup_insert($row_id = null, $title = '', $markup, $weight = 0) {
+  function field_insert_markup($row_id = null, $title = '', $markup, $weight = 0) {
     $field = new \stdClass;
     $field->type = 'markup';
     $field->title = $title;
@@ -232,7 +232,7 @@ namespace effcore {
     $this->fields[$row_id ?: 'markup'] = $field;
   }
 
-  function field_code_insert($row_id = null, $title = '', $code, $weight = 0) {
+  function field_insert_code($row_id = null, $title = '', $code, $weight = 0) {
     $field = new \stdClass;
     $field->type = 'code';
     $field->title = $title;
