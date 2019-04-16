@@ -746,7 +746,7 @@ namespace effcore {
   }
 
   static function server_request_uri_get() {
-    return $_SERVER['REQUEST_URI'];
+    return static::sanitize_url($_SERVER['REQUEST_URI']);
   }
 
   static function server_user_agent_get($max_length = 240) {
