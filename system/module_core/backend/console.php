@@ -59,13 +59,13 @@ namespace effcore {
 
   static function markup_get() {
     return new markup('x-console', [], [
-      static::markup_block_information_get(),
-      static::markup_block_diagram_load_get(),
-      static::markup_block_logs_get()
+      static::markup_get_block_information (),
+      static::markup_get_block_diagram_load(),
+      static::markup_get_block_logs        ()
     ]);
   }
 
-  static function markup_block_information_get() {
+  static function markup_get_block_information() {
     $user = user::current_get();
     $decorator = new decorator('dl');
     $decorator->data = [[
@@ -79,7 +79,7 @@ namespace effcore {
     ]);
   }
 
-  static function markup_block_diagram_load_get() {
+  static function markup_get_block_diagram_load() {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
@@ -100,7 +100,7 @@ namespace effcore {
     ]);
   }
 
-  static function markup_block_logs_get() {
+  static function markup_get_block_logs() {
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
@@ -134,12 +134,12 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function text_get() {
-    return static::text_block_information_get().
-           static::text_block_diagram_load_get().
-           static::text_block_logs_get();
+    return static::text_get_block_information ().
+           static::text_get_block_diagram_load().
+           static::text_get_block_logs        ();
   }
 
-  static function text_block_information_get() {
+  static function text_get_block_information() {
     $information = [];
     $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
     $information['Memory for php (bytes)'] = locale::format_number(memory_get_usage(true));
@@ -151,7 +151,7 @@ namespace effcore {
     return nl.$result.nl;
   }
 
-  static function text_block_diagram_load_get() {
+  static function text_get_block_diagram_load() {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
@@ -173,7 +173,7 @@ namespace effcore {
     return nl.$result.nl;
   }
 
-  static function text_block_logs_get() {
+  static function text_get_block_logs() {
     $logs = static::logs_select();
     $result = '  EXECUTE PLAN'.nl.nl;
     $result.= '  ------------------------------------------------------------'.nl;
