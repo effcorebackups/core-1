@@ -83,8 +83,8 @@ namespace effcore {
     if ($hex_type == 'f' && $is_remember)          $expired = time() + static::period_expired_m;
     if ($hex_type == 'a')                          $expired = 0;
     if ($hex_type == 'f' && $is_fixed_ip == false) $ip = static::empty_ip;
-    if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_remote_addr_get();
-    if ($hex_type == 'a')                          $ip = core::server_remote_addr_get();
+    if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_get_remote_addr();
+    if ($hex_type == 'a')                          $ip = core::server_get_remote_addr();
   # $hex_type: a - anonymous user | f - authenticated user
     $hex_expired       = static::id_get_hex_expired($expired);
     $hex_ip            = static::id_get_hex_ip($ip);
@@ -109,7 +109,7 @@ namespace effcore {
 
   static function id_get_hex_expired($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
   static function id_get_hex_ip($ip)           {return core::ip_to_hex($ip);}
-  static function id_get_hex_uagent_hash_8()   {return core::mini_hash_get(core::server_user_agent_get(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
+  static function id_get_hex_uagent_hash_8()   {return core::mini_hash_get(core::server_get_user_agent(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
   static function id_get_hex_random()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function id_get_hex_signature($id)    {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
 
@@ -132,8 +132,8 @@ namespace effcore {
           ($hex_type === 'f' && $expired >= time())) {
         if ($hex_signature === static::id_get_hex_signature($id)) {
           if ($hex_uagent_hash_8 === static::id_get_hex_uagent_hash_8()) {
-            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
-                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_remote_addr_get())) ||
+            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_get_remote_addr())) ||
+                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_get_remote_addr())) ||
                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
               return true;
             }

@@ -730,31 +730,31 @@ namespace effcore {
   # │ IIS    v7.5 SSL ║ on    │ -              ║ https  │
   # └─────────────────╨───────┴────────────────╨────────┘
 
-  static function server_request_scheme_get() {
+  static function server_get_request_scheme() {
     if (isset($_SERVER['REQUEST_SCHEME']))                     return $_SERVER['REQUEST_SCHEME'];
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') return 'https';
     return 'http';
   }
 
-  static function server_host_get() {
+  static function server_get_host() {
     return $_SERVER['HTTP_HOST'];
   }
 
-  static function server_remote_addr_get() {
+  static function server_get_remote_addr() {
     return $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? '::1' :
            $_SERVER['REMOTE_ADDR'];
   }
 
-  static function server_request_uri_get() {
+  static function server_get_request_uri() {
     return static::sanitize_url($_SERVER['REQUEST_URI']);
   }
 
-  static function server_user_agent_get($max_length = 240) {
+  static function server_get_user_agent($max_length = 240) {
     return isset($_SERVER['HTTP_USER_AGENT']) ?
           substr($_SERVER['HTTP_USER_AGENT'], 0, $max_length) : '';
   }
 
-  static function server_http_range_get() {
+  static function server_get_http_range() {
     $matches = [];
     preg_match('%^bytes=(?<min>[0-9]+)-'.
                        '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'] ?? '', $matches);
@@ -764,7 +764,7 @@ namespace effcore {
     return $result;
   }
 
-  static function server_user_agent_info_get() {
+  static function server_get_user_agent_info() {
     $result = new \stdCLass;
   # detect Internet Explorer v.6-v.11
   # note: unexist version like '12' will be identified as '1'
@@ -772,7 +772,7 @@ namespace effcore {
     $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
     $ie_name_to_core = array_flip($ie_core_to_name);
     preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>11|10|9|8|7|6|5|4|3|2|1)|)'.
-                 '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::server_user_agent_get(), $matches);
+                 '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::server_get_user_agent(), $matches);
     $result->name = isset($matches['name']) ? strtolower($matches['name']) : '';
     $result->core = isset($matches['core']) ? strtolower($matches['core']) : '';
     $result->core_version = $matches['core_v'] ?? '';
@@ -782,7 +782,7 @@ namespace effcore {
     return $result;
   }
 
-  static function server_software_get() {
+  static function server_get_software() {
     $matches = [];
     preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
                  '(?<full_name_unknown>.*)%', $_SERVER['SERVER_SOFTWARE'], $matches);

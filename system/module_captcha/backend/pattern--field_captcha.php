@@ -110,7 +110,7 @@ namespace effcore {
 
   static function client_id_get() {
     return core::ip_to_hex(
-      core::server_remote_addr_get()
+      core::server_get_remote_addr()
     );
   }
 

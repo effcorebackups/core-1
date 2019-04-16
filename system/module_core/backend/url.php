@@ -67,8 +67,8 @@ namespace effcore {
                     '(?<path>[^?#]*)'.
               '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
-    $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_request_scheme_get()));
-    $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_host_get());
+    $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
+    $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host());
     $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
     $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
     $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
@@ -122,7 +122,7 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache = new static(core::server_request_uri_get());
+    static::$cache = new static(core::server_get_request_uri());
   }
 
   static function path_parse($path) {
@@ -162,7 +162,7 @@ namespace effcore {
   }
 
   static function is_local($url) {
-    return (new static($url))->domain == core::server_host_get();
+    return (new static($url))->domain == core::server_get_host();
   }
 
   static function is_active($url, $compare_type = 'full') {

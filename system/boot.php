@@ -54,9 +54,9 @@ namespace effcore {
   # 6. url /file.type/ ║ is wrong notation - redirect to /file.type
   # ───────────────────╨────────────────────────────────────────────────────────────────────
 
-  if (             core::server_request_uri_get()     != '/' &&
-                   core::server_request_uri_get()[-1] == '/') {
-     url::go(rtrim(core::server_request_uri_get(), '/')); # note: trimming for single redirect
+  if (             core::server_get_request_uri()     != '/' &&
+                   core::server_get_request_uri()[-1] == '/') {
+     url::go(rtrim(core::server_get_request_uri(), '/')); # note: trimming for single redirect
   }
 
   $file_info = url::current_get()->file_info_get();
@@ -189,7 +189,7 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
 
         $length = filesize($path);
-        $ranges = core::server_http_range_get();
+        $ranges = core::server_get_http_range();
         $min = $ranges->min !== null ? $ranges->min : 0;
         $max = $ranges->max !== null ? $ranges->max : $length - 1;
         if ($max >= $length) $max = $length - 1;
