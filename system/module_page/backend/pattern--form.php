@@ -174,7 +174,7 @@ namespace effcore {
   # ──────────────────────────────────────────────────────────────────────────────
 
   function validation_cache_get_date($format = 'Y-m-d') {
-    $timestmp = static::validation_id_created_extract($this->validation_id);
+    $timestmp = static::validation_id_extract_created($this->validation_id);
     return \DateTime::createFromFormat('U', $timestmp)->format($format);
   }
 
@@ -222,10 +222,10 @@ namespace effcore {
   # ──────────────────────────────────────────────────────────────────────────────
 
   static function validation_id_generate() {
-    $hex_created       = static::validation_id_hex_created_get();
-    $hex_ip            = static::validation_id_hex_ip_get();
-    $hex_uagent_hash_8 = static::validation_id_hex_uagent_hash_8_get();
-    $hex_random        = static::validation_id_hex_random_get();
+    $hex_created       = static::validation_id_get_hex_created      ();
+    $hex_ip            = static::validation_id_get_hex_ip           ();
+    $hex_uagent_hash_8 = static::validation_id_get_hex_uagent_hash_8();
+    $hex_random        = static::validation_id_get_hex_random       ();
     $validation_id = $hex_created.       # strlen == 8
                      $hex_ip.            # strlen == 32
                      $hex_uagent_hash_8. # strlen == 8
@@ -241,30 +241,30 @@ namespace effcore {
     else return static::validation_id_generate();
   }
 
-  static function validation_id_hex_created_get()       {return dechex(time());}
-  static function validation_id_hex_ip_get()            {return core::ip_to_hex(core::server_remote_addr_get());}
-  static function validation_id_hex_uagent_hash_8_get() {return core::mini_hash_get(core::server_user_agent_get());}
-  static function validation_id_hex_random_get()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function validation_id_hex_signature_get($id)  {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
+  static function validation_id_get_hex_created()       {return dechex(time());}
+  static function validation_id_get_hex_ip()            {return core::ip_to_hex(core::server_remote_addr_get());}
+  static function validation_id_get_hex_uagent_hash_8() {return core::mini_hash_get(core::server_user_agent_get());}
+  static function validation_id_get_hex_random()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
+  static function validation_id_get_hex_signature($id)  {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
 
-  static function validation_id_created_extract($id)           {return hexdec(static::validation_id_hex_created_extract($id));}
-  static function validation_id_hex_created_extract($id)       {return substr($id,  0 , 8);}
-  static function validation_id_hex_ip_extract($id)            {return substr($id,  8, 32);}
-  static function validation_id_hex_uagent_hash_8_extract($id) {return substr($id, 40,  8);}
-  static function validation_id_hex_random_extract($id)        {return substr($id, 48,  8);}
-  static function validation_id_hex_signature_extract($id)     {return substr($id, 56,  8);}
+  static function validation_id_extract_created          ($id) {return hexdec(static::validation_id_extract_hex_created($id));}
+  static function validation_id_extract_hex_created      ($id) {return substr($id,  0 , 8);}
+  static function validation_id_extract_hex_ip           ($id) {return substr($id,  8, 32);}
+  static function validation_id_extract_hex_uagent_hash_8($id) {return substr($id, 40,  8);}
+  static function validation_id_extract_hex_random       ($id) {return substr($id, 48,  8);}
+  static function validation_id_extract_hex_signature    ($id) {return substr($id, 56,  8);}
 
   static function validation_id_check($id) {
     if (core::validate_hash($id, 64)) {
-      $created           = static::validation_id_created_extract($id);
-      $hex_ip            = static::validation_id_hex_ip_extract($id);
-      $hex_uagent_hash_8 = static::validation_id_hex_uagent_hash_8_extract($id);
-      $hex_signature     = static::validation_id_hex_signature_extract($id);
+      $created           = static::validation_id_extract_created          ($id);
+      $hex_ip            = static::validation_id_extract_hex_ip           ($id);
+      $hex_uagent_hash_8 = static::validation_id_extract_hex_uagent_hash_8($id);
+      $hex_signature     = static::validation_id_extract_hex_signature    ($id);
       if ($created <= time()                                                   &&
           $created >= time() - static::period_expired_h                        &&
-          $hex_ip            === static::validation_id_hex_ip_get()            &&
-          $hex_uagent_hash_8 === static::validation_id_hex_uagent_hash_8_get() &&
-          $hex_signature     === static::validation_id_hex_signature_get($id)) {
+          $hex_ip            === static::validation_id_get_hex_ip()            &&
+          $hex_uagent_hash_8 === static::validation_id_get_hex_uagent_hash_8() &&
+          $hex_signature     === static::validation_id_get_hex_signature($id)) {
         return true;
       }
     }
