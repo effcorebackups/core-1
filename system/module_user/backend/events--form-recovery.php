@@ -38,7 +38,7 @@ namespace effcore\modules\user {
           $new_password = core::password_generate();
           $user->password_hash = core::password_get_hash($new_password);
           if ($user->update()) {
-            $current_url = url::current_get();
+            $current_url = url::get_current();
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
             $mail_to = $user->nick.' <'.$user->email.'>';

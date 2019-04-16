@@ -16,20 +16,20 @@ namespace effcore\modules\user {
     $session = session::select();
     if ($session &&
         $session->id_user) {
-      $user = user::current_get();
+      $user = user::get_current();
       if (!isset($user->roles['registered'])) {
         user::init($session->id_user, false);
-        $user = user::current_get();
+        $user = user::get_current();
       }
       if (isset($user->roles['registered'])) {
         switch ($name) {
-          case 'user_id'   : return     user::current_get()->id;
-          case 'nick'      : return     user::current_get()->nick;
-          case 'email'     : return     user::current_get()->email;
-          case 'avatar_url': return '/'.user::current_get()->avatar_path;
+          case 'user_id'   : return     user::get_current()->id;
+          case 'nick'      : return     user::get_current()->nick;
+          case 'email'     : return     user::get_current()->email;
+          case 'avatar_url': return '/'.user::get_current()->avatar_path;
           case 'nick_page_context':
             if ($args[0] == 'nick') {
-              return page::current_get()->args_get('nick');
+              return page::get_current()->args_get('nick');
             }
         }
       }

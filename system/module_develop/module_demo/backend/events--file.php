@@ -16,10 +16,10 @@ namespace effcore\modules\demo {
     $session = session::select();
     if ($session &&
         $session->id_user) {
-      $user = user::current_get();
+      $user = user::get_current();
       if (!isset($user->roles['registered'])) {
         user::init($session->id_user, false); # false - do not load roles from the storage
-        $user = user::current_get();
+        $user = user::get_current();
       }
       if (isset($user->roles['registered'])) {
         $data = '';
@@ -37,7 +37,7 @@ namespace effcore\modules\demo {
   }
 
   static function on_process_demotype($file_info, &$data) {
-    $user = user::current_get();
+    $user = user::get_current();
     $data = 'dirs: '.$file_info->dirs.nl;
     $data.= 'name: '.$file_info->name.nl;
     $data.= 'type: '.$file_info->type.nl;

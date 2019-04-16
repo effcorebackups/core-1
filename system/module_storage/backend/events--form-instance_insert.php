@@ -13,7 +13,7 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_insert {
 
   static function on_init($form, $items) {
-    $entity_name = page::current_get()->args_get('entity_name');
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
       # @todo: make functionality
@@ -24,8 +24,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $base        = page::current_get()->args_get('base');
-    $entity_name = page::current_get()->args_get('entity_name');
+    $base        = page::get_current()->args_get('base');
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'insert':

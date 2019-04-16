@@ -59,7 +59,7 @@ namespace effcore {
      url::go(rtrim(core::server_get_request_uri(), '/')); # note: trimming for single redirect
   }
 
-  $file_info = url::current_get()->file_info_get();
+  $file_info = url::get_current()->file_info_get();
   if ($file_info && strlen($file_info->type)) {
 
     $file_types = file::types_get();
@@ -101,7 +101,7 @@ namespace effcore {
     # define real path (breake all './', '../', '~/' and etc)
     # ─────────────────────────────────────────────────────────────────────
 
-    $path_url = url::current_get()->path_get();
+    $path_url = url::get_current()->path_get();
     $path = realpath(dir_root.ltrim($path_url, '/'));
     if (DIRECTORY_SEPARATOR == '\\') $path = str_replace('\\', '/', $path);
     if ($path === false || strpos($path, dir_root) !== 0) {
@@ -233,7 +233,7 @@ namespace effcore {
   #######################
 
   if (!storage::get('sql')->is_installed()) {
-    if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::current_get()->path_get())) {
+    if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::get_current()->path_get())) {
       url::go('/install/en');
     }
   }
@@ -247,7 +247,7 @@ namespace effcore {
   }
   if (module::is_enabled('develop')) {
     timer::tap('total');
-    $user = user::current_get();
+    $user = user::get_current();
     $settings = module::get_settings('page');
     if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
         ($settings->console_visibility == 'show_for_everyone')) {

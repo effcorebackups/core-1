@@ -34,7 +34,7 @@ namespace effcore {
     $is_https = $this->https instanceof param_from_form ?
                 $this->https->get() :
                 $this->https;
-    return ($is_https ? 'https' : 'http').'://'.url::current_get()->domain.$this->url;
+    return ($is_https ? 'https' : 'http').'://'.url::get_current()->domain.$this->url;
   }
 
   function prepared_headers_get() {

@@ -15,7 +15,7 @@ namespace effcore\modules\user {
     $access = null;
     if (isset($form->entity_name)) {
       switch ($form->entity_name) {
-        case 'page': $access = page::current_get()->access; break;
+        case 'page': $access = page::get_current()->access; break;
       }
     }
     $items['settings/roles']->values = access::get_roles();

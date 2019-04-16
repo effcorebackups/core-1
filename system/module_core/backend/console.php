@@ -66,7 +66,7 @@ namespace effcore {
   }
 
   static function markup_get_block_information() {
-    $user = user::current_get();
+    $user = user::get_current();
     $decorator = new decorator('dl');
     $decorator->data = [[
       'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
