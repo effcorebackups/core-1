@@ -73,7 +73,7 @@ namespace effcore {
                     $acceptor->child_delete($id);
                   }
                 }
-                if ($new_p->children_count()) {
+                if ($new_p->children_select_count()) {
                   $acceptor->child_insert($new_p);
                 }
               }

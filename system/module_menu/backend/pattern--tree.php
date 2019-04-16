@@ -32,7 +32,7 @@ namespace effcore {
   function render() {
     if (static::$cache == null) static::init();
     if ($this->access === null || access::check($this->access)) {
-      if ($this->children_count() == 0)
+      if ($this->children_select_count() == 0)
           $this->build();
       return parent::render();
     }

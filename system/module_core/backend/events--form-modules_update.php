@@ -46,7 +46,7 @@ namespace effcore\modules\core {
         }
       }
     }
-    if ($info->children_count() == 0) {
+    if ($info->children_select_count() == 0) {
       $form->child_update('info', new markup('x-no-result', [], 'no updates'));
       $items['~apply']->disabled_set();
     }

@@ -97,7 +97,7 @@ namespace effcore {
         }
       }
     }
-    return $messages->children_count() ?
+    return $messages->children_select_count() ?
            $messages : new node();
   }
 

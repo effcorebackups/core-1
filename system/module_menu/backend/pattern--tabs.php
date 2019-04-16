@@ -27,7 +27,7 @@ namespace effcore {
 
   function render() {
     if (static::$cache == null) static::init();
-    if ($this->children_count() == 0)
+    if ($this->children_select_count() == 0)
         $this->build();
     return (template::make_new($this->template, [
       'attributes' => $this->render_attributes(),

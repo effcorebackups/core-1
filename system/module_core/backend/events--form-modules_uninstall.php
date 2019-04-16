@@ -36,11 +36,11 @@ namespace effcore\modules\core {
         );
       }
     }
-    if ($checkboxes->children_count())
+    if ($checkboxes->children_select_count())
          $info->child_insert($checkboxes, 'checkboxes');
     else $form->child_update('info', new markup('x-no-result', [], 'no modules'));
     if (count($checkboxes->disabled) ==
-              $checkboxes->children_count()) {
+              $checkboxes->children_select_count()) {
       $items['~apply']->disabled_set();
     }
   }

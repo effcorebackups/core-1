@@ -28,7 +28,7 @@ namespace effcore {
   ### children ###
   ################
 
-  function children_count() {
+  function children_select_count() {
     return count($this->children);
   }
 
