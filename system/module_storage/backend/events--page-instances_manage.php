@@ -12,7 +12,7 @@ namespace effcore\modules\storage {
           use \effcore\markup;
           use \effcore\selection;
           use \effcore\storage;
-          use \effcore\tabs;
+          use \effcore\tabs_item;
           use \effcore\text;
           use \effcore\translation;
           use \effcore\url;
@@ -59,13 +59,13 @@ namespace effcore\modules\storage {
     if (isset($groups[$group_id]) && isset($entities_by_groups[$group_id][$entity_name]) == false) url::go($page->args_get('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[           $group_id  ])[0]);
   # make tabs
     foreach ($entities_by_groups as $c_id => $c_entities) {
-      tabs::item_insert($groups[$c_id],
+      tabs_item::insert($groups[$c_id],
               'instance_group_'.$c_id,
           'T:manage_instances', $c_id, null, ['class' => [
                        'group-'.$c_id =>
                        'group-'.$c_id]]);
       foreach ($c_entities as $c_name =>  $c_entity) {
-        tabs::item_insert(      $c_entity->title_plural,
+        tabs_item::insert(      $c_entity->title_plural,
              'instance_select_'.$c_name,
               'instance_group_'.$c_id, $c_id.'/'.$c_name, null, ['class' => [
                       'select-'.$c_name =>

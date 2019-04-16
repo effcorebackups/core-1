@@ -7,7 +7,7 @@
 namespace effcore\modules\page {
           use \effcore\color;
           use \effcore\core;
-          use \effcore\tabs;
+          use \effcore\tabs_item;
           use \effcore\url;
           abstract class events_page_decoration {
 
@@ -22,7 +22,7 @@ namespace effcore\modules\page {
       url::go($page->args_get('base').'/presets/'.reset($presets)->id);
     }
     foreach ($presets as $c_preset) {
-      tabs::item_insert(      $c_preset->title,
+      tabs_item::insert(      $c_preset->title,
         'decoration_presets_'.$c_preset->id,
         'decoration_presets', 'presets/'.$c_preset->id, null, ['class' => [
                    'presets-'.$c_preset->id =>

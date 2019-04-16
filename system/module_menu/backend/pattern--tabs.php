@@ -17,7 +17,7 @@ namespace effcore {
   }
 
   function build() {
-    foreach (static::items_select() as $c_item) {
+    foreach (tabs_item::all_select() as $c_item) {
       if ($c_item->id_parent == 'T:'.$this->id) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
@@ -26,9 +26,8 @@ namespace effcore {
   }
 
   function render() {
-    if (static::$cache_tabs       == null ||
-        static::$cache_tabs_items == null) static::init();
-    if ($this->children_count()   == 0)
+    if (static::$cache == null) static::init();
+    if ($this->children_count() == 0)
         $this->build();
     return (template::make_new($this->template, [
       'attributes' => $this->render_attributes(),
@@ -69,80 +68,49 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $cache_tabs;
-  static protected $cache_tabs_items;
+  static protected $cache;
 
   static function cache_cleaning() {
-    static::$cache_tabs       = null;
-    static::$cache_tabs_items = null;
+    static::$cache = null;
   }
 
   static function init() {
     foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
       foreach ($c_tabs as $c_row_id => $c_tab) {
-        if (isset(static::$cache_tabs[$c_tab->id])) console::log_about_duplicate_insert('tabs', $c_tab->id, $c_module_id);
-        static::$cache_tabs[$c_tab->id] = $c_tab;
-        static::$cache_tabs[$c_tab->id]->module_id = $c_module_id;
+        if (isset(static::$cache[$c_tab->id])) console::log_about_duplicate_insert('tabs', $c_tab->id, $c_module_id);
+        static::$cache[$c_tab->id] = $c_tab;
+        static::$cache[$c_tab->id]->module_id = $c_module_id;
       }
     }
-    foreach (storage::get('files')->select('tabs_items') as $c_module_id => $c_tabs_items) {
-      foreach ($c_tabs_items as $c_row_id => $c_item) {
-        if (isset(static::$cache_tabs_items[$c_item->id])) console::log_about_duplicate_insert('tabs_item', $c_item->id, $c_module_id);
-        static::$cache_tabs_items[$c_item->id] = $c_item;
-        static::$cache_tabs_items[$c_item->id]->module_id = $c_module_id;
-      }
-    }
-  }
-
-  static function select($id) {
-    if    (static::$cache_tabs == null) static::init();
-    return static::$cache_tabs[$id] ?? null;
   }
 
   static function all_select() {
-    if    (static::$cache_tabs == null) static::init();
-    return static::$cache_tabs;
+    if    (static::$cache == null) static::init();
+    return static::$cache ?? [];
+  }
+
+  static function select($id) {
+    if    (static::$cache == null) static::init();
+    return static::$cache[$id] ?? null;
   }
 
   static function parent_select($id_parent) {
     if ($id_parent[0] == 'T' &&
         $id_parent[1] == ':')
-         return static::select(substr($id_parent, 2));
-    else return static::item_select($id_parent);
+         return static   ::select(substr($id_parent, 2));
+    else return tabs_item::select       ($id_parent);
   }
 
   static function insert($id, $attributes = [], $weight = 0) {
     $new_tab = new static($id, $attributes, $weight);
-    if (static::$cache_tabs == null) static::init();
-        static::$cache_tabs[$id] = $new_tab;
-        static::$cache_tabs[$id]->module_id = null;
+    if (static::$cache == null) static::init();
+        static::$cache[$id] = $new_tab;
+        static::$cache[$id]->module_id = null;
   }
 
   static function delete($id) {
-    if   (static::$cache_tabs == null) static::init();
-    unset(static::$cache_tabs[$id]);
-  }
-
-  static function items_select() {
-    if    (static::$cache_tabs_items == null) static::init();
-    return static::$cache_tabs_items ?? [];
-  }
-
-  static function item_select($id) {
-    if    (static::$cache_tabs_items == null) static::init();
-    return static::$cache_tabs_items[$id] ?? null;
-  }
-
-  static function item_insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
-    $new_item = new tabs_item($title, $id, $id_parent, $action_name, $action_name_default,        $attributes,      $element_attributes,      $hidden,         $weight);
-    if (static::$cache_tabs_items == null) static::init();
-        static::$cache_tabs_items[$id] = $new_item;
-        static::$cache_tabs_items[$id]->module_id = null;
-  }
-
-  static function item_delete($id) {
-    if   (static::$cache_tabs_items == null) static::init();
-    unset(static::$cache_tabs_items[$id]);
+    if   (static::$cache == null) static::init();
+    unset(static::$cache[$id]);
   }
 
 }}
