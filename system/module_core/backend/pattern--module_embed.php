@@ -82,6 +82,11 @@ namespace effcore {
     static::$cache['bundles'] = storage::get('files')->select('bundle');
   }
 
+  static function settings_get($module_id) {
+    $settings = storage::get('files')->select('settings');
+    return $settings[$module_id] ?? [];
+  }
+
   static function get($id) {
     if    (static::$cache == null) static::init();
     return static::$cache['modules'][$id];
@@ -145,7 +150,7 @@ namespace effcore {
     return $settings->update_last_number ?? 0;
   }
 
-  static function updates_is_required() {
+  static function is_required_updates() {
     foreach (static::all_get() as $c_module) {
       $c_updates            = static::updates_get           ($c_module->id);
       $c_update_last_number = static::update_last_number_get($c_module->id);
@@ -153,11 +158,6 @@ namespace effcore {
         if ($c_update->number > $c_update_last_number) return true;
       }
     }
-  }
-
-  static function settings_get($module_id) {
-    $settings = storage::get('files')->select('settings');
-    return $settings[$module_id] ?? [];
   }
 
   static function is_enabled($module_id) {

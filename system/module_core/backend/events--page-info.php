@@ -33,7 +33,7 @@ namespace effcore\modules\core {
   }
 
   static function on_show_block_service_info($page) {
-    $is_required_updates = module::updates_is_required();
+    $is_required_updates = module::is_required_updates();
     $is_required_updates_sticker = new markup('x-sticker', ['data-state' => !$is_required_updates ? 'ok' : 'warning'], $is_required_updates ? 'yes' : 'no');
     $storage_files = storage::get('files');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/cron/'.core::key_get('cron')], '/cron/'.core::key_get('cron'));
