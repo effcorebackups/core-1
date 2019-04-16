@@ -32,8 +32,8 @@ namespace effcore\modules\storage {
   # ─────────────────────────────────────────────────────────────────────
 
   static function on_page_instance_select_multiple_init($page) {
-    $group_id = $page->args_get('group_id');
-    $entity_name = $page->args_get('entity_name');
+    $group_id = $page->get_args('group_id');
+    $entity_name = $page->get_args('entity_name');
     $entities = entity::get_all   ();
     $groups   = entity::get_groups();
     $entities_by_groups = [];
@@ -55,8 +55,8 @@ namespace effcore\modules\storage {
   # │ /manage/instances/select/      group_id/wrong_entity_name │ group_id == true && entity_name != true │
   # │ /manage/instances/select/wrong_group_id/wrong_entity_name │ group_id != true && entity_name != true │
   # └───────────────────────────────────────────────────────────┴─────────────────────────────────────────┘
-    if (isset($groups[$group_id])                                                        == false) url::go($page->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
-    if (isset($groups[$group_id]) && isset($entities_by_groups[$group_id][$entity_name]) == false) url::go($page->args_get('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[           $group_id  ])[0]);
+    if (isset($groups[$group_id])                                                        == false) url::go($page->get_args('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
+    if (isset($groups[$group_id]) && isset($entities_by_groups[$group_id][$entity_name]) == false) url::go($page->get_args('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[           $group_id  ])[0]);
   # make tabs
     foreach ($entities_by_groups as $c_id => $c_entities) {
       tabs_item::insert($groups[$c_id],
@@ -75,7 +75,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_show_block_instance_select_multiple($page) {
-    $entity_name = $page->args_get('entity_name');
+    $entity_name = $page->get_args('entity_name');
     $entity = entity::get($entity_name);
     $link_add_new = new markup('a', ['role' => 'button', 'href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'title' => new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]), 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
     if ($entity) {
@@ -110,8 +110,8 @@ namespace effcore\modules\storage {
   # ─────────────────────────────────────────────────────────────────────
 
   static function on_page_instance_select_init($page) {
-    $entity_name = $page->args_get('entity_name');
-    $instance_id = $page->args_get('instance_id');
+    $entity_name = $page->get_args('entity_name');
+    $instance_id = $page->get_args('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->real_id_get();
@@ -128,8 +128,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_show_block_instance_select($page) {
-    $entity_name = $page->args_get('entity_name');
-    $instance_id = $page->args_get('instance_id');
+    $entity_name = $page->get_args('entity_name');
+    $instance_id = $page->get_args('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->real_id_get();

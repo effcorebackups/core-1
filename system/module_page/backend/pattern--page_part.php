@@ -15,7 +15,7 @@ namespace effcore {
 
   function markup_get($page = null) {
     if (!isset($this->display) ||
-        (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->args_get($this->display->where))) ||
+        (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match, $page->get_args($this->display->where))) ||
         (isset($this->display) && $this->display->check == 'user'      && $this->display->where == 'role' && preg_match($this->display->match.'m', implode(nl, user::get_current()->roles)))) {
       switch ($this->type) {
         case 'copy':

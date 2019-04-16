@@ -17,8 +17,8 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_update {
 
   static function on_init($form, &$items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
+    $entity_name = page::get_current()->get_args('entity_name');
+    $instance_id = page::get_current()->get_args('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->real_id_get();
@@ -60,10 +60,10 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $back_update = page::get_current()->args_get('back_update');
-    $back_cancel = page::get_current()->args_get('back_cancel');
-    $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
+    $back_update = page::get_current()->get_args('back_update');
+    $back_cancel = page::get_current()->get_args('back_cancel');
+    $entity_name = page::get_current()->get_args('entity_name');
+    $instance_id = page::get_current()->get_args('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':

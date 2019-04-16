@@ -22,9 +22,9 @@ namespace effcore\modules\demo {
           abstract class events_page_demo {
 
   static function on_page_init($page) {
-    $type = $page->args_get('type');
+    $type = $page->get_args('type');
     if ($type == null) {
-      url::go($page->args_get('base').'/embedded/form_elements');
+      url::go($page->get_args('base').'/embedded/form_elements');
     }
   }
 

@@ -29,7 +29,7 @@ namespace effcore\modules\user {
           case 'avatar_url': return '/'.user::get_current()->avatar_path;
           case 'nick_page_context':
             if ($args[0] == 'nick') {
-              return page::get_current()->args_get('nick');
+              return page::get_current()->get_args('nick');
             }
         }
       }

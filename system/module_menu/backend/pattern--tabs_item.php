@@ -54,8 +54,8 @@ namespace effcore {
   }
 
   function render_self() {
-    $href         = rtrim(page::get_current()->args_get('base').'/'.($this->action_name         ?: $this->action_name), '/');
-    $href_default = rtrim(page::get_current()->args_get('base').'/'.($this->action_name_default ?: $this->action_name), '/');
+    $href         = rtrim(page::get_current()->get_args('base').'/'.($this->action_name         ?: $this->action_name), '/');
+    $href_default = rtrim(page::get_current()->get_args('base').'/'.($this->action_name_default ?: $this->action_name), '/');
     if ($href && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected',       'true', 'element_attributes');}
     if ($href && url::is_active_trail($href))         {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
     if ($href_default) $this->attribute_insert('href', $href_default, 'element_attributes');

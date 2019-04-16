@@ -169,7 +169,7 @@ namespace effcore\modules\core {
               'password' => $items['#password']->value_get(false)
             ]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'), false);
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->get_args('lang_code'), false);
             storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
           } else {
             message::insert(new text_multiline([

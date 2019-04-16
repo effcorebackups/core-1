@@ -15,7 +15,7 @@ namespace effcore\modules\storage {
       case 'entity_title_page_context':
       case 'entity_title_plural_page_context':
         if (isset($args[0])) {
-          $entity_name = page::get_current()->args_get($args[0]);
+          $entity_name = page::get_current()->get_args($args[0]);
           $entities = entity::get_all(false);
           if (isset($entities[$entity_name])) {
             if ($name == 'entity_title_page_context'       ) return translation::get($entities[$entity_name]->title       );

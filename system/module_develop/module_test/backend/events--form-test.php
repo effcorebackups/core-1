@@ -14,7 +14,7 @@ namespace effcore\modules\test {
           abstract class events_form_test {
 
   static function on_init($form, $items) {
-    $id = page::get_current()->args_get('id');
+    $id = page::get_current()->get_args('id');
     $test = test::get($id);
     $items['params']->description = $test->description;
     $items['report']->child_select('document')->child_insert(new text('The report will be created after running the test.'));
@@ -33,7 +33,7 @@ namespace effcore\modules\test {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'run':
-        $id = page::get_current()->args_get('id');
+        $id = page::get_current()->get_args('id');
         if ($id) {
           $test = test::get($id);
           $test_result = $test->run();

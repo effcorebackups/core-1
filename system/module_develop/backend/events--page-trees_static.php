@@ -13,9 +13,9 @@ namespace effcore\modules\develop {
 
   static function on_page_init($page) {
     $trees = tree::select_all();
-    $id = $page->args_get('id');
+    $id = $page->get_args('id');
     core::array_sort_by_title($trees);
-    if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
+    if (!isset($trees[$id])) url::go($page->get_args('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
       tabs_item::insert(                 $c_tree->title,
         'trees_static_select_'.          $c_tree->id,
@@ -26,7 +26,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_tree($page) {
-    $id = $page->args_get('id');
+    $id = $page->get_args('id');
     if ($id) {
       $tree = clone tree::select($id);
       $tree->build();
