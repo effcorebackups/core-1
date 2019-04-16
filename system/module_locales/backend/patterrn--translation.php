@@ -16,7 +16,7 @@ namespace effcore {
 
   static protected $cache;
 
-  static function not_external_properties_get() {
+  static function get_not_external_properties() {
     return ['code' => 'code'];
   }
 

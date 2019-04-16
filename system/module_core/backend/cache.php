@@ -11,12 +11,6 @@ namespace effcore {
   static public $info = []; # own cache info space
   static public $data = []; # own cache data space
 
-  static function update($name, $data, $sub_dirs = '', $info = null) {
-    if (parent::update($name, $data, $sub_dirs, $info)) {
-      console::log_insert('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
-    }
-  }
-
   static function cleaning() {
     static::$info = [];
     static::$data = [];
@@ -33,6 +27,12 @@ namespace effcore {
           );
         }
       }
+    }
+  }
+
+  static function update($name, $data, $sub_dirs = '', $info = null) {
+    if (parent::update($name, $data, $sub_dirs, $info)) {
+      console::log_insert('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
     }
   }
 

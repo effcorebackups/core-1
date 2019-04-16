@@ -492,7 +492,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function not_external_properties_get() {
+  static function get_not_external_properties() {
     return ['name' => 'name'];
   }
 

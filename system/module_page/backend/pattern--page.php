@@ -145,7 +145,7 @@ namespace effcore {
   static protected $cache_frontend;
   static protected $current;
 
-  static function not_external_properties_get() {
+  static function get_not_external_properties() {
     return ['display' => 'display', 'access' => 'access'];
   }
 
