@@ -55,11 +55,11 @@ namespace effcore {
   }
 
   function random_nick_get() {
-    return 'test_'.core::mini_hash_get(random_int(0, 0x7fffffff));
+    return 'test_'.core::mini_get_hash(random_int(0, 0x7fffffff));
   }
 
   function random_email_get() {
-    return 'test_'.core::mini_hash_get(random_int(0, 0x7fffffff)).'@example.com';
+    return 'test_'.core::mini_get_hash(random_int(0, 0x7fffffff)).'@example.com';
   }
 
   function random_password_get() {

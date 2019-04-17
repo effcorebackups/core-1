@@ -635,15 +635,15 @@ namespace effcore {
     return hash_equals($hash, static::password_get_hash($password));
   }
 
-  static function data_hash_get($data) {
+  static function data_get_hash($data) {
     return md5(serialize($data));
   }
 
-  static function etag_hash_get($data) {
+  static function etag_get_hash($data) {
     return md5($data);
   }
 
-  static function mini_hash_get($data, $length = 8) {
+  static function mini_get_hash($data, $length = 8) {
     return substr(md5($data), 0, $length);
   }
 
