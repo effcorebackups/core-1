@@ -22,7 +22,7 @@ namespace effcore {
         if (!$c_result) {
           $c_file = new file($c_path);
           message::insert(
-            'Can not delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_relative_get().'"!'.br.
+            'Can not delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_get_relative().'"!'.br.
             'Check directory permissions.', 'error'
           );
         }

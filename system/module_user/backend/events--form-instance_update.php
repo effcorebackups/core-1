@@ -81,7 +81,7 @@ namespace effcore\modules\user {
           $avatar_info = $items['#avatar']->pool_files_save();
           if (!empty($avatar_info[0]->path)) {
              $c_file = new file($avatar_info[0]->path);
-             $form->_instance->avatar_path = $c_file->path_relative_get(); } else {
+             $form->_instance->avatar_path = $c_file->path_get_relative(); } else {
              $form->_instance->avatar_path = null;
           }
         }

@@ -150,8 +150,8 @@ namespace effcore {
              file::select_recursive(dir_modules, '%^.*/module\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/bundle\\.data$%') as $c_file) {
       $c_data = static::text_to_data($c_file->load(), $c_file);
-      $c_path_relative = $c_file->path_relative_get();
-      $c_dirs_relative = $c_file->dirs_relative_get();
+      $c_path_relative = $c_file->path_get_relative();
+      $c_dirs_relative = $c_file->dirs_get_relative();
       $parsed[$c_path_relative] = new \stdClass();
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
@@ -190,7 +190,7 @@ namespace effcore {
       if ($c_file->name == 'bundle') continue;
       if ($c_file->name == 'module') continue;
       $c_data = static::text_to_data($c_file->load(), $c_file);
-      $c_path_relative = $c_file->path_relative_get();
+      $c_path_relative = $c_file->path_get_relative();
       $parsed[$c_path_relative] = new \stdClass();
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
@@ -312,7 +312,7 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_relative_get()]), 'error');
+        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
         else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line'],                                ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
       }
     }

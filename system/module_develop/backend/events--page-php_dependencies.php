@@ -31,7 +31,7 @@ namespace effcore\modules\develop {
   # scan each php file on used functions
     foreach (file::select_recursive(dir_root, '%^.*\\.php$%') as $c_path => $c_file) {
       $c_matches = [];
-      $c_path_relative = $c_file->path_relative_get();
+      $c_path_relative = $c_file->path_get_relative();
       $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
     # load file and search functions in it
       preg_match_all('%(?<![a-zA-Z0-9_])(?<name>[a-zA-Z0-9_]+)\\(%sS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);

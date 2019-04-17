@@ -186,8 +186,8 @@ namespace effcore {
   # prepare return
     $result = [];
     $result_paths = [];
-    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_relative_get();}
-    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_relative_get();}
+    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_get_relative();}
+    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_get_relative();}
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_set_deleted_items('old', []);
@@ -206,8 +206,8 @@ namespace effcore {
           $c_info->pre_path = $dst_file->path_get();
           unset($c_info->tmp_path);
         } else {
-          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]), 'error');
-          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
+          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
+          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
           unset($this->pool_new[$c_id]);
         }
       }
@@ -230,8 +230,8 @@ namespace effcore {
           $c_info->new_path = $dst_file->path_get();
           unset($c_info->pre_path);
         } else {
-          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]), 'error');
-          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_relative_get()]);
+          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
+          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
         }
       }
     }

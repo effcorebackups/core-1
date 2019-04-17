@@ -170,8 +170,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function dirs_get()          {return $this->dirs;}
-  function dirs_parts_get()    {return explode('/', trim($this->dirs, '/'));}
-  function dirs_relative_get() {return $this->is_path_full() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
+  function dirs_get_parts()    {return explode('/', trim($this->dirs, '/'));}
+  function dirs_get_relative() {return $this->is_path_full() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 
   function dirs_set($dirs) {
     $this->dirs = $dirs;
@@ -202,8 +202,8 @@ namespace effcore {
       $this->dirs.$this->name;
   }
 
-  function path_relative_get() {
-    return $this->dirs_relative_get().
+  function path_get_relative() {
+    return $this->dirs_get_relative().
            $this->file_get();
   }
 
@@ -241,7 +241,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function load($reset = false) {
-    $relative = $this->path_relative_get();
+    $relative = $this->path_get_relative();
     timer::tap('file load: '.$relative);
     if (!$reset && isset(static::$cache_data[$relative]))
            $this->data = static::$cache_data[$relative];
@@ -303,7 +303,7 @@ namespace effcore {
   }
 
   function insert($once = true) {
-    $relative = $this->path_relative_get();
+    $relative = $this->path_get_relative();
     timer::tap('file insert: '.$relative);
     $result = $once ? require_once($this->path_get()) :
                            require($this->path_get());

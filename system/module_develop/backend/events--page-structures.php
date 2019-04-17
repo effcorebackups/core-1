@@ -38,7 +38,7 @@ namespace effcore\modules\develop {
         $c_result->name       = $c_item_info->name;
         $c_result->namespace  = $c_item_info->namespace;
         $c_result->dirs       = $c_file->dirs_get();
-        $c_result->dirs_parts = $c_file->dirs_parts_get();
+        $c_result->dirs_parts = $c_file->dirs_get_parts();
         $c_result->file       = $c_file->file_get();
         $groups_by_name[strtolower($c_item_info->name)][$c_item_info->namespace ?: '-'] = $c_result;
       }

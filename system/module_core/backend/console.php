@@ -46,7 +46,7 @@ namespace effcore {
             'Can not insert or update file "%%_file" in the directory "%%_directory"!',
             'Check file (if exists) and directory permissions.'], [
             'file'      => $file->file_get(),
-            'directory' => $file->dirs_relative_get()]), 'error'
+            'directory' => $file->dirs_get_relative()]), 'error'
           );
         }
       }

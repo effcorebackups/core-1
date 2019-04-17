@@ -64,7 +64,7 @@ namespace effcore {
           );
         }
       } else {
-        $path = (new file(data::directory.'changes.php'))->path_relative_get();
+        $path = (new file(data::directory.'changes.php'))->path_get_relative();
         $link = (new markup('a', ['href' => '/install/en'], 'Installation'))->render();
         message::insert(new text_multiline([
           'Credentials for storage "%%_name" was not set!',

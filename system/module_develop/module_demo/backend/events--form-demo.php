@@ -83,7 +83,7 @@ namespace effcore\modules\demo {
       # save the files
         $paths = [];
         foreach ($items['#file']->pool_files_save() as $c_info) {
-          $paths[] = (new file($c_info->path))->path_relative_get();
+          $paths[] = (new file($c_info->path))->path_get_relative();
         }
         if (count($paths)) data::update('files_demo', $paths);
         else               data::delete('files_demo');
