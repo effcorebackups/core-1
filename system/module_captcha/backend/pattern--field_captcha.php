@@ -134,7 +134,7 @@ namespace effcore {
     return static::$glyphs[$group] ?? [];
   }
 
-  static function character_glyphs_get($character, $group = 'default') {
+  static function character_get_glyphs($character, $group = 'default') {
     $result = [];
     foreach (static::glyphs_get($group) as $c_glyph => $c_character) {
       if ($c_character == $character) {
@@ -144,7 +144,7 @@ namespace effcore {
     return $result;
   }
 
-  static function captcha_localhost_code_get() {
+  static function captcha_get_localhost_code() {
     $captcha = (new instance('captcha', [
       'ip_hex' => core::ip_to_hex('::1')
     ]))->select();

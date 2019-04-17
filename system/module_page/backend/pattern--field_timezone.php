@@ -18,8 +18,8 @@ namespace effcore {
   function build() {
     parent::build();
     $this->option_insert('- select -', 'not_selected');
-    if ($this->sort == 'by_zones') $list = static::list_by_zones_get();
-    if ($this->sort == 'by_names') $list = static::list_by_names_get();
+    if ($this->sort == 'by_zones') $list = static::list_get_by_zones();
+    if ($this->sort == 'by_names') $list = static::list_get_by_names();
     foreach ($list as $c_name => $c_title) {
       $this->option_insert($c_title, $c_name);
     }
@@ -29,7 +29,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function list_by_zones_get() {
+  static function list_get_by_zones() {
     $result = [];
     foreach (\DateTimeZone::listIdentifiers() as $c_name) {
       $c_offset = core::timezone_get_offset_tme($c_name);
@@ -39,7 +39,7 @@ namespace effcore {
     return $result;
   }
 
-  static function list_by_names_get() {
+  static function list_get_by_names() {
     $result = [];
     foreach (\DateTimeZone::listIdentifiers() as $c_name) {
       $c_offset = core::timezone_get_offset_tme($c_name);

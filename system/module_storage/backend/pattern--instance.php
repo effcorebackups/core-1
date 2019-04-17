@@ -13,7 +13,7 @@ namespace effcore {
   public $_id_fields_original;
 
   function __construct($entity_name = '', $values = []) {
-    $this->entity_name_set($entity_name);
+    $this->entity_set_name($entity_name);
     $this->values_set($values);
   }
 
@@ -31,7 +31,7 @@ namespace effcore {
   }
 
   function entity_get() {return entity::get($this->entity_name);}
-  function entity_name_set($entity_name) {$this->entity_name = $entity_name;}
+  function entity_set_name($entity_name) {$this->entity_name = $entity_name;}
 
   function select() {
     $storage = storage::get($this->entity_get()->storage_name);

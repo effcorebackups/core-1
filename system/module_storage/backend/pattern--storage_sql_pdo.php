@@ -363,7 +363,7 @@ namespace effcore {
       }
       $result = $this->query($query);
       foreach ($result as $c_instance) {
-        $c_instance->entity_name_set($entity->name);
+        $c_instance->entity_set_name($entity->name);
       }
       return $result;
     }
