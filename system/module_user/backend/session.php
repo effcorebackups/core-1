@@ -38,7 +38,7 @@ namespace effcore {
       'id_user'     => $id_user,
       'is_remember' => $is_remember ? 1 : 0,
       'is_fixed_ip' => $is_fixed_ip ? 1 : 0,
-      'expired'     => core::datetime_get('+'.$period.' second'),
+      'expired'     => core::get_datetime('+'.$period.' second'),
     ]))->insert();
   }
 
@@ -52,7 +52,7 @@ namespace effcore {
 
   static function cleaning() {
     entity::get('session')->instances_delete([
-      'conditions' => ['expired_!f' => 'expired', '<', 'expired_!v' => core::datetime_get()]
+      'conditions' => ['expired_!f' => 'expired', '<', 'expired_!v' => core::get_datetime()]
     ]);
   }
 

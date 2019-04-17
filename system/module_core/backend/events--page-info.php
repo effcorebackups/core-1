@@ -65,7 +65,7 @@ namespace effcore\modules\core {
       'os_version'    => ['title' => 'OS Version',             'value' => php_uname('v')                                           ],
       'hostname'      => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
       'timezone'      => ['title' => 'Server timezone',        'value' => date_default_timezone_get()                              ],
-      'datetime'      => ['title' => 'Server UTC date / time', 'value' => core::datetime_get()                                     ],
+      'datetime'      => ['title' => 'Server UTC date / time', 'value' => core::get_datetime()                                     ],
     ]];
     return new block('Environment', ['class' => ['environment-info' => 'environment-info']], [
       $decorator->build()

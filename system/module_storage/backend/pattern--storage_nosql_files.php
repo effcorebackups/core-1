@@ -29,7 +29,7 @@ namespace effcore {
   # insert new dynamic changes
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
-    data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
+    data::update('changes', $changes_d, '', ['build_date' => core::get_datetime()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
@@ -43,7 +43,7 @@ namespace effcore {
     if (isset($changes_d[$module_id]->{$action}[$dpath]))                                           unset($changes_d[$module_id]->{$action}[$dpath]);
     if (isset($changes_d[$module_id]->{$action}) && (array)$changes_d[$module_id]->{$action} == []) unset($changes_d[$module_id]->{$action}        );
     if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            == []) unset($changes_d[$module_id]                   );
-    data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
+    data::update('changes', $changes_d, '', ['build_date' => core::get_datetime()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
@@ -55,7 +55,7 @@ namespace effcore {
   # delete old dynamic changes for specified module
     $changes_d = data::select('changes') ?: [];
     unset($changes_d[$module_id]);
-    data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
+    data::update('changes', $changes_d, '', ['build_date' => core::get_datetime()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
@@ -91,7 +91,7 @@ namespace effcore {
             $data_orig = cache::select('data_original');
     if (!$data_orig) {
       $data_orig = static::data_find_and_parse($with_paths);
-      cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
+      cache::update('data_original', $data_orig, '', ['build_date' => core::get_datetime()]);
     }
   # init dynamic and static changes
     $changes_d = data::select('changes') ?: [];

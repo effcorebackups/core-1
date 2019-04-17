@@ -40,14 +40,14 @@ namespace effcore {
 
   function insert() {
     $storage = storage::get($this->entity_get()->storage_name);
-    if ($this->entity_get()->ws_created) $this->created = core::datetime_get();
-    if ($this->entity_get()->ws_updated) $this->updated = core::datetime_get();
+    if ($this->entity_get()->ws_created) $this->created = core::get_datetime();
+    if ($this->entity_get()->ws_updated) $this->updated = core::get_datetime();
     return $storage->instance_insert($this);
   }
 
   function update() {
     $storage = storage::get($this->entity_get()->storage_name);
-    if ($this->entity_get()->ws_updated) $this->updated = core::datetime_get();
+    if ($this->entity_get()->ws_updated) $this->updated = core::get_datetime();
     return $storage->instance_update($this);
   }
 

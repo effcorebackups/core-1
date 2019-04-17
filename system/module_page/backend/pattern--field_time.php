@@ -26,7 +26,7 @@ namespace effcore {
     parent::build();
     $value = parent::value_get();
     if ($value != null) {$this->value_set($value                                   ); return;}
-    if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
+    if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::get_time())); return;}
   }
 
   function value_get() {

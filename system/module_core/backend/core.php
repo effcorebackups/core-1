@@ -39,7 +39,7 @@ namespace effcore {
     $boot_buffer[$module_id] = $module_path;
     asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => static::get_datetime()]);
   }
 
   static function boot_delete($module_id, $type) {
@@ -50,7 +50,7 @@ namespace effcore {
     else $boot_buffer = static::boot_select_default();
     unset($boot_buffer[$module_id]);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
+    data::update('boot', $boot, '', ['build_date' => static::get_datetime()]);
   }
 
   ###############################################
@@ -138,7 +138,7 @@ namespace effcore {
         }
       }
       ksort($result);
-      cache::update('structures', $result, '', ['build_date' => static::datetime_get()]);
+      cache::update('structures', $result, '', ['build_date' => static::get_datetime()]);
       return $result;
     }
   }
@@ -470,19 +470,19 @@ namespace effcore {
   static function T_datetime_to_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
   static function datetime_to_T_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
 
-  static function            date_get($offset = '', $format = 'Y-m-d'        ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function            time_get($offset = '', $format =       'H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function        datetime_get($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-  static function      T_datetime_get($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function get_date           ($offset = '', $format = 'Y-m-d'        ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function get_time           ($offset = '', $format =       'H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function get_datetime       ($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+  static function get_T_datetime     ($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
-  static function       validate_date($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')));}
-  static function       validate_time($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')));}
-  static function   validate_datetime($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')));}
+  static function validate_date      ($value) {return (bool)(\DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')));}
+  static function validate_time      ($value) {return (bool)(\DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')));}
+  static function validate_datetime  ($value) {return (bool)(\DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')));}
   static function validate_T_datetime($value) {return (bool)(\DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')));}
 
-  static function       sanitize_date($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); if ($result) return $result->format('Y-m-d'        );}
-  static function       sanitize_time($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); if ($result) return $result->format(      'H:i:s'  );}
-  static function   sanitize_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); if ($result) return $result->format('Y-m-d H:i:s'  );}
+  static function sanitize_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); if ($result) return $result->format('Y-m-d'        );}
+  static function sanitize_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); if ($result) return $result->format(      'H:i:s'  );}
+  static function sanitize_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); if ($result) return $result->format('Y-m-d H:i:s'  );}
   static function sanitize_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); if ($result) return $result->format('Y-m-d\\TH:i:s');}
 
   ###############
