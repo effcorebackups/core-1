@@ -25,7 +25,7 @@ namespace effcore {
     parent::__construct($tag_name, $attributes, $children, $weight);
   }
 
-  function cform_set($form) {
+  function set_cform($form) {
     $this->cform = $form;
   }
 

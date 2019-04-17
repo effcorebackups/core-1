@@ -223,7 +223,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function parent_name_get() {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
+  function parent_get_name() {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
   function hash_get()        {return @md5_file($this->path_get());}
   function size_get()        {return @filesize($this->path_get());}
   function mime_get()        {return function_exists('mime_content_type') ? @mime_content_type($this->path_get()) : null;}
