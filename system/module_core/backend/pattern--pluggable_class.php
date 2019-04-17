@@ -18,11 +18,11 @@ namespace effcore {
     'effcore\\'.$this->name;
   }
 
-  function class_is_exists() {
+  function is_exists_class() {
     return core::structure_is_exist($this->name_get());
   }
 
-  function object_get() {
+  function get_object() {
     $object = core::class_get_new_instance($this->name_get(), $this->args, true);
     foreach ($this->properties as $c_name => $c_value) {
       $object->{$c_name} = $c_value;

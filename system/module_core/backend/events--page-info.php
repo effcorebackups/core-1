@@ -60,7 +60,7 @@ namespace effcore\modules\core {
       'web_server'    => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
       'php_version'   => ['title' => 'PHP Version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
       'opcache_state' => ['title' => 'PHP OPcache is anebled', 'value' => $is_enabled_opcache_sticker                              ],
-      'storage_sql'   => ['title' => 'Storage SQL',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
+      'storage_sql'   => ['title' => 'Storage SQL',            'value' => $storage_sql->get_title().' '.$storage_sql->get_version()],
       'os_name'       => ['title' => 'Operating System',       'value' => php_uname('s')                                           ],
       'os_version'    => ['title' => 'OS Version',             'value' => php_uname('v')                                           ],
       'hostname'      => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],

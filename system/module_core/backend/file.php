@@ -248,7 +248,7 @@ namespace effcore {
     else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->path_get());
     timer::tap('file load: '.$relative);
     console::log_insert('file', 'load', $relative, 'ok',
-      timer::period_get('file load: '.$relative, -1, -2)
+      timer::get_period('file load: '.$relative, -1, -2)
     );
     return $this->data;
   }
@@ -309,7 +309,7 @@ namespace effcore {
                            require($this->path_get());
     timer::tap('file insert: '.$relative);
     console::log_insert('file', 'insertion', $relative, 'ok',
-      timer::period_get('file insert: '.$relative, -1, -2)
+      timer::get_period('file insert: '.$relative, -1, -2)
     );
     return $result;
   }

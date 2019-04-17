@@ -18,7 +18,7 @@ namespace effcore\modules\storage {
   static function on_init_after($storage) {
     timer::tap('storage init');
     console::log_insert('storage', 'init.', 'storage %%_name was initialized', 'ok',
-      timer::period_get('storage init', -1, -2), ['name' => $storage->name]
+      timer::get_period('storage init', -1, -2), ['name' => $storage->name]
     );
   }
 
@@ -44,7 +44,7 @@ namespace effcore\modules\storage {
       count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'args = [%%_args]' :
                               'sql query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
-      timer::period_get('storage query with hash: '.$query_hash, -1, -2),
+      timer::get_period('storage query with hash: '.$query_hash, -1, -2),
       [ 'query' => $query_flat_string_beautiful,
          'args' => $query_args_beautiful ]
     );

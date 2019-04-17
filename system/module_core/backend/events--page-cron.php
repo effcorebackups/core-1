@@ -19,7 +19,7 @@ namespace effcore\modules\core {
       timer::tap('cron');
       foreach ($result as $c_handler => $c_result)
         print 'Run: '.$c_handler.br;
-        print 'Cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
+        print 'Cron execution time: '.timer::get_period('cron', -1, -2).' sec.';
       console::log_store();
       exit();
     } else {

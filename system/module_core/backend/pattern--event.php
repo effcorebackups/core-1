@@ -83,7 +83,7 @@ namespace effcore {
           if ($on_after_step)                        call_user_func_array($on_after_step, ['event' => $c_event] + $args);
           timer::tap('event call: '.$type);
           console::log_insert('event', 'call', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
-            timer::period_get('event call: '.$type, -1, -2)
+            timer::get_period('event call: '.$type, -1, -2)
           );
         }
       }

@@ -369,7 +369,7 @@ namespace effcore {
   static protected $error_tabindex = 0;
   static protected $auto_ids = [];
 
-  static function cur_number_get($name) {
+  static function get_cur_number($name) {
     return !isset(static::$numbers[$name]) ?
                  (static::$numbers[$name] = 0) :
                 ++static::$numbers[$name];

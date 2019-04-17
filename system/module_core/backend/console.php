@@ -69,7 +69,7 @@ namespace effcore {
     $user = user::get_current();
     $decorator = new decorator('dl');
     $decorator->data = [[
-      'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
+      'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::get_period('total', 0, 1))],
       'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
       'language' => ['title' => 'Current language',       'value' => language::current_code_get()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
@@ -141,7 +141,7 @@ namespace effcore {
 
   static function text_get_block_information() {
     $information = [];
-    $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
+    $information['Total generation time'] = locale::format_msecond(timer::get_period('total', 0, 1));
     $information['Memory for php (bytes)'] = locale::format_number(memory_get_usage(true));
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_param => $c_value) {

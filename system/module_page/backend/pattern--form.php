@@ -41,8 +41,8 @@ namespace effcore {
         $c_parts = explode('/', $c_npath);
         $c_last_part = end($c_parts);
         $c_pointers = core::npath_get_pointers($this, $c_npath);
-        if ($c_element->class_is_exists())
-                   $c_pointers[$c_last_part] = $c_element->object_get();
+        if ($c_element->is_exists_class())
+                   $c_pointers[$c_last_part] = $c_element->get_object();
         else unset($c_pointers[$c_last_part]);
       }
     }
