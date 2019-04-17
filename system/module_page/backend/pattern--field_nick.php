@@ -45,7 +45,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_nick($new_value)) {
-      $field->error_set(
+      $field->set_error(
         'Field "%%_title" contains incorrect value!', ['title' => translation::get($field->title)]
       );
     } else {
@@ -59,7 +59,7 @@ namespace effcore {
     ]))->select();
     if (($user_by_nick && $old_value === null                                     ) || # insert new nick (e.g. registration)
         ($user_by_nick && $old_value ==! null && $user_by_nick->nick != $old_value)) { # update old nick
-      $field->error_set(
+      $field->set_error(
         'User with this Nick was already registered!'
       );
     } else {

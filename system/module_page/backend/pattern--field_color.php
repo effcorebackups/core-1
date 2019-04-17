@@ -42,7 +42,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_hex_color($new_value)) {
-      $field->error_set(new text_multiline([
+      $field->set_error(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'The color should be specified in a special format.'], ['title' => translation::get($field->title)]
       ));

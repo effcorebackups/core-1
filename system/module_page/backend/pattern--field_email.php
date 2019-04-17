@@ -46,7 +46,7 @@ namespace effcore {
     $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
     if (!$field->multiple_get() && count($multiple_values) > 1) {
       $new_value = array_pop($multiple_values);
-      $field->error_set(
+      $field->set_error(
         'Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)]
       );
     } else {
@@ -58,7 +58,7 @@ namespace effcore {
     $multiple_values = strlen($new_value) ? explode(',', $new_value) : [];
     foreach ($multiple_values as $c_value) {
       if (core::validate_email($c_value) == false) {
-        $field->error_set(
+        $field->set_error(
           'Field "%%_title" contains an incorrect EMail address!', ['title' => translation::get($field->title)]
         );
         return;
@@ -73,7 +73,7 @@ namespace effcore {
     ]))->select();
     if (($user_by_email && $old_value === null                                       ) || # insert new email (e.g. registration)
         ($user_by_email && $old_value ==! null && $user_by_email->email != $old_value)) { # update old email
-      $field->error_set(
+      $field->set_error(
         'User with this EMail was already registered!'
       );
     } else {

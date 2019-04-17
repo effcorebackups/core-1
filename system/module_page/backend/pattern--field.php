@@ -277,7 +277,7 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function error_set($message = null, $args = []) {
+  function set_error($message = null, $args = []) {
     if ($this->disabled_get() == false &&
         $this->readonly_get() == false) {
       form::$errors[] = (object)[

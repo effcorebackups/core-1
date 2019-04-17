@@ -182,15 +182,16 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function name_get() {return $this->name;}
+  function name_set($name) {$this->name = $name;}
+
   function type_get() {return $this->type;}
+  function type_set($type) {$this->type = $type;}
+
   function file_get() {
     return strlen($this->type) ?
       $this->name.'.'.$this->type :
       $this->name;
   }
-
-  function name_set($name) {$this->name = $name;}
-  function type_set($type) {$this->type = $type;}
 
   # ─────────────────────────────────────────────────────────────────────
   # work with path (dirs/ + name + '.' + type)

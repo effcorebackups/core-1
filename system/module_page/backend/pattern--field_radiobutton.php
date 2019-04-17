@@ -42,7 +42,7 @@ namespace effcore {
 
   static function validate_required($field, $form, $element, &$new_values) {
     if ($field->required_get() && !core::in_array_string_compare($field->value_get(), $new_values)) {
-      $field->error_set(
+      $field->set_error(
         'Field "%%_title" must be checked!', ['title' => translation::get($field->title)]
       );
     } else {
