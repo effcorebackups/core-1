@@ -352,6 +352,15 @@ forms
                 checked
                 - =: switcher_2
                 - =: switcher_4
+          # group_access
+            - access|group_access
+                title: Access
+                description|text_multiline
+                  text
+                  - 0: Access settings not applicable if no one role is active!
+                  - 1: Group %%_type.
+                  args
+                  - type: group_acces
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
@@ -395,8 +404,6 @@ forms
                   - type: group_palette
                 element_attributes
                 - name: palette_color
-          # group_access
-            - access|group_access
     - button_submit|button
         title: submit
         attributes
