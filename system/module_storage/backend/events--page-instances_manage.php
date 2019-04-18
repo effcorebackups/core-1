@@ -82,6 +82,9 @@ namespace effcore\modules\storage {
       $selection = new selection('', $entity->view_type_multiple);
       $selection->id = 'instances_manage';
       $selection->is_paged = true;
+      foreach ($entity->selection_params as $c_key => $c_value) {
+        $selection->{$c_key} = $c_value;
+      }
       $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->field_is_visible_on_select)) {
@@ -144,6 +147,9 @@ namespace effcore\modules\storage {
           $selection = new selection('', $entity->view_type_single);
           $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
+          foreach ($entity->selection_params as $c_key => $c_value) {
+            $selection->{$c_key} = $c_value;
+          }
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->field_is_visible_on_select)) {

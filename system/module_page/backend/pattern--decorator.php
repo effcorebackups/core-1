@@ -10,6 +10,7 @@ namespace effcore {
   public $id;
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl | tree
+  public $tree_mapping = [];
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
   public $visibility_cellid = 'not_int'; # visible | not_int | hidden
@@ -123,16 +124,23 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         case 'tree':
           foreach ($this->data as $c_row_id => $c_row) {
+            $c_id        = array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : $c_row[$this->tree_mapping['id'       ]]['value'];
+            $c_id_parent = array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : $c_row[$this->tree_mapping['id_parent']]['value'];
+            $c_id_tree   = array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : $c_row[$this->tree_mapping['id_tree'  ]]['value'];
+            $c_title     = array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : $c_row[$this->tree_mapping['title'    ]]['value'];
+            $c_url       = array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : $c_row[$this->tree_mapping['url'      ]]['value'];
             tree_item::insert(
-              $c_row['cell-title'    ]['value'],
-              $c_row['cell-id'       ]['value'],
-              $c_row['cell-id_parent']['value'] ?: 'M:'.$c_row['cell-id_tree']['value'],
-              $c_row['cell-url'      ]['value']
+              $c_title,
+              $c_id,
+              $c_id_parent ?: 'M:'.$c_id_tree,
+              $c_url
             );
           }
-          $result->child_insert(
-            tree::select(reset($this->data)['cell-id_tree']['value'])
-          );
+          if (isset($c_id_tree)) {
+            $result->child_insert(
+              tree::select($c_id_tree)
+            );
+          }
           break;
 
       }

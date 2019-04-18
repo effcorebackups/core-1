@@ -20,6 +20,7 @@ namespace effcore {
   public $indexes = [];
   public $view_type_single = 'ul';
   public $view_type_multiple = 'table';
+  public $selection_params = [];
 
   function _postparse() {
   # insert field 'created' and index for it

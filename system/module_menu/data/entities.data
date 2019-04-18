@@ -46,6 +46,15 @@ entities
     ws_created: true
     ws_updated: true
     view_type_multiple: tree
+    selection_params
+    - decorator_params
+      - tree_mapping
+        - id: tree_item.id
+        - id_parent: tree_item.id_parent
+        - id_tree: tree_item.id_tree
+        - title: tree_item.title
+        - url: tree_item.url
+        - weight: tree_item.weight
     fields
     - id
         title: ID
@@ -96,6 +105,7 @@ entities
         size: 2048
         collate: nocase
         null: true
+        field_is_visible_on_select: true
         field_class: \effcore\field_url
     - weight
         title: Weight

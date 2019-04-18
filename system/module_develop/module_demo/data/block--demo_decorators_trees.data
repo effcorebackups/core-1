@@ -13,146 +13,146 @@ blocks
         id: demo_tree
         data
         - rowid-1
-          - cell-id
+          - id
             - title: ID
             - value: 1
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: null
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1
         - rowid-1_1
-          - cell-id
+          - id
             - title: ID
             - value: 2
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 1
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.1
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_1
         - rowid-1_2
-          - cell-id
+          - id
             - title: ID
             - value: 3
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 1
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.2
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_2
         - rowid-1_2_1
-          - cell-id
+          - id
             - title: ID
             - value: 4
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 3
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.2.1
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_1
         - rowid-1_2_2
-          - cell-id
+          - id
             - title: ID
             - value: 5
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 3
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.2.2
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_2
         - rowid-1_2_3
-          - cell-id
+          - id
             - title: ID
             - value: 6
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 3
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.2.3
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3
         - rowid-1_3
-          - cell-id
+          - id
             - title: ID
             - value: 7
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: 1
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #1.3
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_1/item_1_3
         - rowid-2
-          - cell-id
+          - id
             - title: ID
             - value: 8
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: null
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #2
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_2
         - rowid-3
-          - cell-id
+          - id
             - title: ID
             - value: 9
-          - cell-id_parent
+          - id_parent
             - title: Parent ID
             - value: null
-          - cell-id_tree
+          - id_tree
             - title: Tree ID
             - value: demo_dynamic
-          - cell-title
+          - title
             - title: Title
             - value: item #3
-          - cell-url
+          - url
             - title: URL
             - value: /develop/demo/embedded/trees/item_3
