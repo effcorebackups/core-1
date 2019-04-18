@@ -20,9 +20,6 @@ events
   - login|event
       for: login
       handler: \effcore\modules\user\events_form_login::on_init
-  - access|event
-      for: access
-      handler: \effcore\modules\user\events_form_access::on_init
   - instance_update_user|event
       for: instance_update
       handler: \effcore\modules\user\events_form_instance_update::on_init
@@ -54,9 +51,6 @@ events
   - logout|event
       for: logout
       handler: \effcore\modules\user\events_form_logout::on_submit
-  - access|event
-      for: access
-      handler: \effcore\modules\user\events_form_access::on_submit
   - instance_update_user|event
       for: instance_update
       handler: \effcore\modules\user\events_form_instance_update::on_submit

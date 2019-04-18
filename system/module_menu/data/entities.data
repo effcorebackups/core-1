@@ -45,7 +45,7 @@ entities
     group: Menu
     ws_created: true
     ws_updated: true
-    view_type_multiple: tree
+#   view_type_multiple: tree
     selection_params
     - decorator_params
       - tree_mapping

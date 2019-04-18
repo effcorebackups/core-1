@@ -395,6 +395,8 @@ forms
                   - type: group_palette
                 element_attributes
                 - name: palette_color
+          # group_access
+            - access|group_access
     - button_submit|button
         title: submit
         attributes

@@ -27,13 +27,3 @@ pages
         region: content
         type: code
         source: \effcore\modules\develop\events_page_events::on_show_block_events_list
-    - form_access|page_part
-        display
-          check: user
-          where: role
-          match: %^admins$%
-        region: content
-        type: link
-        source: forms/user/access
-        properties
-        - entity_name: page
