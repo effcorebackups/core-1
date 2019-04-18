@@ -10,6 +10,7 @@ namespace effcore {
   public $name;
   public $storage_name = 'sql';
   public $catalog_name;
+  public $ws_access;
   public $ws_created;
   public $ws_updated;
   public $title;
@@ -23,6 +24,13 @@ namespace effcore {
   public $selection_params = [];
 
   function _postparse() {
+  # insert field 'access'
+    if ($this->ws_access) {
+      $this->fields['access'] = new \stdClass;
+      $this->fields['access']->title = 'Access';
+      $this->fields['access']->type = 'blob';
+      $this->fields['access']->null = true;
+    }
   # insert field 'created' and index for it
     if ($this->ws_created) {
       $this->fields['created'] = new \stdClass;

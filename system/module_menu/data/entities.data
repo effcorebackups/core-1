@@ -43,6 +43,7 @@ entities
     title_plural: Tree items
     catalog_name: tree_items
     group: Menu
+    ws_access: true
     ws_created: true
     ws_updated: true
 #   view_type_multiple: tree
