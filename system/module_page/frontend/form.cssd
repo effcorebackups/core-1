@@ -201,9 +201,7 @@
 
   form#instance_select_multiple button[value='add_new'] {
     float: right;
-    margin-right: 0;
-    margin-bottom: 50px}
-  form#instance_select_multiple button[value='add_new'] + * {clear: both}
+    margin: 27px 0 50px 20px}
 
   /* IE adaptation */
 

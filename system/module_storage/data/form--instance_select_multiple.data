@@ -8,8 +8,17 @@ forms
     children
     - button_add_new|button
         title: add
+        novalidate: true
         attributes
         - value: add_new
+    - actions|field_select
+        title: Actions
+        element_attributes
+        - name: actions
+        - disabled: true
+        values
+        - not_selected: - select -
+        - delete: Delete
     - data|node
     - button_apply|button
         title: apply
