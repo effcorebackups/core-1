@@ -25,7 +25,7 @@ namespace effcore\modules\storage {
   #                            /manage/instance /delete/%%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
-  static function on_page_instance_select_multiple_init($page) {
+  static function on_page_init($page) {
     $group_id = $page->get_args('group_id');
     $entity_name = $page->get_args('entity_name');
     $entities = entity::get_all   ();
