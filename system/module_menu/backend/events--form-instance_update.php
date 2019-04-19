@@ -26,9 +26,8 @@ namespace effcore\modules\menu {
       case 'update':
         if (!empty($form->_instance->entity_get()->ws_access)) {
           $access = $items['*roles']->values_get();
-          $form->_instance->access = serialize(
-            core::array_kmap($access)
-          );
+          if ($access) $form->_instance->access = serialize(core::array_kmap($access));
+          else         $form->_instance->access = null;
         }
         break;
     }
