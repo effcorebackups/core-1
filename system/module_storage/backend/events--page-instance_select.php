@@ -12,13 +12,9 @@ namespace effcore\modules\storage {
           use \effcore\markup;
           use \effcore\selection;
           use \effcore\storage;
-          use \effcore\tabs_item;
-          use \effcore\text;
-          use \effcore\translation;
-          use \effcore\url;
-          abstract class events_page_instances_manage {
+          abstract class events_page_instance_select {
 
-  static function on_page_instance_select_init($page) {
+  static function on_page_init($page) {
     $entity_name = $page->get_args('entity_name');
     $instance_id = $page->get_args('instance_id');
     $entity = entity::get($entity_name);

@@ -28,8 +28,8 @@ pages
     - page_init|page_part
         region: content
         type: code
-        source: \effcore\modules\storage\events_page_instances_manage::on_page_instance_select_init
+        source: \effcore\modules\storage\events_page_instance_select::on_page_init
     - block_instance_select|page_part
         region: content
         type: code
-        source: \effcore\modules\storage\events_page_instances_manage::on_show_block_instance_select
+        source: \effcore\modules\storage\events_page_instance_select::on_show_block_instance_select
