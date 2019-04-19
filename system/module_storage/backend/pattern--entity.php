@@ -11,6 +11,7 @@ namespace effcore {
   public $storage_name = 'sql';
   public $catalog_name;
   public $ws_access;
+  public $ws_weight;
   public $ws_created;
   public $ws_updated;
   public $title;
@@ -30,6 +31,21 @@ namespace effcore {
       $this->fields['access']->title = 'Access';
       $this->fields['access']->type = 'blob';
       $this->fields['access']->null = true;
+    }
+  # insert field 'weight' and index for it
+    if ($this->ws_weight) {
+      $this->fields['weight'] = new \stdClass;
+      $this->fields['weight']->title = 'Weight';
+      $this->fields['weight']->type = 'integer';
+      $this->fields['weight']->not_null = true;
+      $this->fields['weight']->default = 0;
+      $this->fields['weight']->field_class = '\effcore\field_number';
+      $this->fields['weight']->field_is_visible_on_select = true;
+      $this->fields['weight']->field_element_attributes['min'] = -1000;
+      $this->fields['weight']->field_element_attributes['max'] = +1000;
+      $this->indexes['index_weight'] = new \stdClass;
+      $this->indexes['index_weight']->type = 'index';
+      $this->indexes['index_weight']->fields = ['weight' => 'weight'];
     }
   # insert field 'created' and index for it
     if ($this->ws_created) {

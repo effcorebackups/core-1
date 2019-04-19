@@ -143,6 +143,7 @@ entities
     title_plural: Roles
     catalog_name: roles
     group: User
+    ws_weight: true
     ws_created: true
     ws_updated: true
     fields
@@ -174,16 +175,6 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_text
-    - weight
-        title: Weight
-        type: integer
-        not_null: true
-        default: 0
-        field_is_visible_on_select: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: -1000
-        - max: +1000
     constraints
     - primary_id
         type: primary
@@ -194,10 +185,6 @@ entities
         type: index
         fields
         - =: title
-    - index_weight
-        type: index
-        fields
-        - =: weight
 - session|entity
     name: session
     title: Session

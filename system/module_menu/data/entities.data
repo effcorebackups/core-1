@@ -44,6 +44,7 @@ entities
     catalog_name: tree_items
     group: Menu
     ws_access: true
+    ws_weight: true
     ws_created: true
     ws_updated: true
 #   view_type_multiple: tree
@@ -108,16 +109,6 @@ entities
         null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_url
-    - weight
-        title: Weight
-        type: integer
-        not_null: true
-        default: 0
-        field_is_visible_on_select: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: -1000
-        - max: +1000
     constraints
     - primary_id
         type: primary
