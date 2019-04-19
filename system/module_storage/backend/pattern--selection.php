@@ -79,11 +79,9 @@ namespace effcore {
     # prepare pager
       if ($this->is_paged) {
         $instances_count = $main_entity->instances_select_count($this->query_params);
-        if ($instances_count > 0) {
-          $page_max_number = ceil($instances_count / $this->limit);
-          $pager = new pager(1, $page_max_number,
-            $this->pager_name,
-            $this->pager_id, [], -20);
+        $page_max_number = ceil($instances_count / $this->limit);
+        if ($page_max_number > 1) {
+          $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
           if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) {url::go($pager->last_page_url_get()->tiny_get());}
           if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) {
             core::send_header_and_exit('page_not_found');
