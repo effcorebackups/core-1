@@ -13,7 +13,7 @@ namespace effcore\modules\menu {
   static function on_init($form, $items) {
     if (!empty($form->_instance->entity_get()->ws_access)) {
       $group_access = new group_access();
-      $group_access->checked = unserialize($form->_instance->access);
+      if (!empty($form->_instance->access)) $group_access->checked = unserialize($form->_instance->access);
       $group_access->build();
       $form->child_select('fields')->child_insert(
         $group_access, 'group_access'
