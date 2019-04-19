@@ -38,7 +38,7 @@ pages
         region: content
         type: code
         source: \effcore\modules\storage\events_page_instance_select_multiple::on_page_init
-    - block_instance_select_multiple|page_part
+    - form_instance_select_multiple|page_part
         region: content
-        type: code
-        source: \effcore\modules\storage\events_page_instance_select_multiple::on_show_block_instance_select_multiple
+        type: link
+        source: forms/storage/instance_select_multiple

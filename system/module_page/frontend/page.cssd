@@ -40,12 +40,6 @@
   a[role='button']:hover  {background-color: %%_color_button_active}
   a[role='button']:active {background-color: %%_color_button_active; box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.6)}
 
-  a.link-add-new-instance {
-    float: right;
-    margin-right: 0;
-    margin-bottom: 50px}
-  a.link-add-new-instance + * {clear: both}
-
   /* universal classes */
 
   .hidden {display: none}

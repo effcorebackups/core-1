@@ -197,6 +197,14 @@
     display: block;
     margin: 100px auto 50px auto}
 
+  /* form instance_select_multiple */
+
+  form#instance_select_multiple button[value='add_new'] {
+    float: right;
+    margin-right: 0;
+    margin-bottom: 50px}
+  form#instance_select_multiple button[value='add_new'] + * {clear: both}
+
   /* IE adaptation */
 
   html[data-uagent^='msie'] input[type='checkbox'],

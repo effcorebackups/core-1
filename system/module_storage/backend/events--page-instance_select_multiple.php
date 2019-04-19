@@ -5,14 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\block;
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\markup;
-          use \effcore\selection;
           use \effcore\tabs_item;
-          use \effcore\text;
-          use \effcore\translation;
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
@@ -64,40 +59,6 @@ namespace effcore\modules\storage {
               'instance_group_'.$c_id, $c_id.'/'.$c_name, null, ['class' => [
                       'select-'.$c_name =>
                       'select-'.$c_name]]);
-      }
-    }
-  }
-
-  static function on_show_block_instance_select_multiple($page) {
-    $entity_name = $page->get_args('entity_name');
-    $entity = entity::get($entity_name);
-    $link_add_new = new markup('a', ['role' => 'button', 'href' => '/manage/instance/insert/'.$entity_name.'?'.url::back_part_make(), 'title' => new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]), 'class' => ['link-add-new-instance' => 'link-add-new-instance']], new text('add'));
-    if ($entity) {
-      $selection = new selection('', $entity->view_type_multiple);
-      $selection->id = 'instances_manage';
-      $selection->is_paged = true;
-      foreach ($entity->selection_params as $c_key => $c_value) {
-        $selection->{$c_key} = $c_value;
-      }
-      $has_visible_fields = false;
-      foreach ($entity->fields as $c_name => $c_field) {
-        if (!empty($c_field->field_is_visible_on_select)) {
-          $has_visible_fields = true;
-          $selection->field_insert_entity(null, $entity->name, $c_name);
-        }
-      }
-      if (!$has_visible_fields) {
-        return new block('', ['class' => [$entity->name => $entity->name]], [
-          $link_add_new,
-          new markup('x-no-result', [], 'no visible fields')
-        ]);
-      } else {
-        $selection->field_insert_checkbox(null, '', 80);
-        $selection->field_insert_action();
-        return new block('', ['class' => [$entity->name => $entity->name]], [
-          $link_add_new,
-          $selection
-        ]);
       }
     }
   }

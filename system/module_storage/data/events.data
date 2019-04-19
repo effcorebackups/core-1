@@ -20,6 +20,9 @@ events
       for: pdo
       handler: \effcore\modules\storage\events_storage::on_query_after
   on_form_init
+  - instance_select_multiple|event
+      for: instance_select_multiple
+      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_init
   - instance_insert|event
       for: instance_insert
       handler: \effcore\modules\storage\events_form_instance_insert::on_init
@@ -30,6 +33,9 @@ events
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_init
   on_form_submit
+  - instance_select_multiple|event
+      for: instance_select_multiple
+      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_submit
   - instance_insert|event
       for: instance_insert
       handler: \effcore\modules\storage\events_form_instance_insert::on_submit

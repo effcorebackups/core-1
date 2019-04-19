@@ -1,0 +1,18 @@
+forms
+- instance_select_multiple|form
+    attributes
+    - id: instance_select_multiple
+    - enctype: multipart/form-data
+    - method: post
+    - novalidate: true
+    children
+    - button_add_new|button
+        title: add
+        attributes
+        - value: add_new
+    - data|node
+    - button_apply|button
+        title: apply
+        attributes
+        - value: apply
+        - disabled: true
