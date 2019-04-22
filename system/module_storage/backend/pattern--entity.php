@@ -190,7 +190,7 @@ namespace effcore {
     return static::$cache_orig[$module] ?? [];
   }
 
-  static function get_groups() {
+  static function groups_get() {
     $groups = [];
     if      (static::$cache == null) static::init();
     foreach (static::$cache as $c_item)

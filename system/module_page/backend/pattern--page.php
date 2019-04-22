@@ -24,7 +24,7 @@ namespace effcore {
   }
 
   function render() {
-    $settings = module::get_settings('page');
+    $settings = module::settings_get('page');
     $user_agent = core::server_get_user_agent_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);

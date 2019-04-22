@@ -142,7 +142,7 @@ namespace effcore {
         $result = $data;
         if (module::is_enabled('develop')) {
           timer::tap('total');
-          $settings = module::get_settings('page');
+          $settings = module::settings_get('page');
           if ($settings->console_visibility == 'show_for_everyone') {
             if ($file_info->type == 'cssd' ||
                 $file_info->type == 'jsd') {
@@ -248,7 +248,7 @@ namespace effcore {
   if (module::is_enabled('develop')) {
     timer::tap('total');
     $user = user::get_current();
-    $settings = module::get_settings('page');
+    $settings = module::settings_get('page');
     if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
         ($settings->console_visibility == 'show_for_everyone')) {
       $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);

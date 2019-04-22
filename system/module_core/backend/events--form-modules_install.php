@@ -26,7 +26,7 @@ namespace effcore\modules\core {
     $enabled_by_boot = core::boot_select('enabled');
     $embed   = module::get_embed ();
     $modules = module::get_all   ();
-    $groups  = module::get_groups();
+    $groups  = module::groups_get();
     $modules_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
@@ -43,8 +43,8 @@ namespace effcore\modules\core {
     }
     foreach ($modules_by_groups as $c_modules) {
       foreach ($c_modules as $c_module) {
-        $c_depended               = $c_module->get_depended_status    ();
-        $c_dependencies           = $c_module->get_dependencies_status();
+        $c_depended               = $c_module->depended_status_get    ();
+        $c_dependencies           = $c_module->dependencies_status_get();
         $c_is_ok_php_dependencies = !isset(array_count_values($c_dependencies->php)[0]);
         $c_is_ok_sys_dependencies = !isset(array_count_values($c_dependencies->sys)[0]);
         $c_is_ok_sys_depended     = !isset(array_count_values($c_depended         )[1]);
@@ -68,7 +68,7 @@ namespace effcore\modules\core {
                                                                 $c_info->child_insert(new markup('x-module-version',      [],              [new markup('x-label', [], 'version'                   ), new markup('x-value', [], locale::format_version($c_module->version)           )]), 'version'         );
                                                                 $c_info->child_insert(new markup('x-module-is-embed',     [],              [new markup('x-label', [], 'is embed'                  ), new markup('x-value', [],           isset($embed[$c_module->id]) ? 'yes' : 'no')]), 'is_embed'        );
         if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-module-bundle_id',    [],              [new markup('x-label', [], 'bundle id'                 ), new markup('x-value', [],        new text_simple($c_module->id_bundle)         )]), 'bundle_id'       );
-        if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-module-bundle_build', [],              [new markup('x-label', [], 'bundle build number'       ), new markup('x-value', [],     module::get_bundle($c_module->id_bundle)->build  )]), 'bundle_build'    );
+        if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-module-bundle_build', [],              [new markup('x-label', [], 'bundle build number'       ), new markup('x-value', [],     module::bundle_get($c_module->id_bundle)->build  )]), 'bundle_build'    );
         if ($c_module->path                                   ) $c_info->child_insert(new markup('x-module-path',         [],              [new markup('x-label', [], 'path'                      ), new markup('x-value', [],                        $c_module->path               )]), 'path'            );
         if ($c_module->copyright                              ) $c_info->child_insert(new markup('x-module-copyright',    [],              [new markup('x-label', [], 'copyright'                 ), new markup('x-value', [],                        $c_module->copyright          )]), 'copyright'       );
         if ($c_module->description                            ) $c_info->child_insert(new markup('x-module-description',  [],              [new markup('x-label', [], 'description'               ), new markup('x-value', [],                        $c_module->description        )]), 'description'     );

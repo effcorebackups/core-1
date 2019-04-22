@@ -50,17 +50,17 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function get_plurals($code) {
+  static function plurals_get($code) {
     return static::get($code)->plurals ?? [];
   }
 
   static function code_get_current() {
     if   (!static::$current)
-           static::$current = module::get_settings('locales')->lang_code;
+           static::$current = module::settings_get('locales')->lang_code;
     return static::$current;
   }
 
-  static function current_code_set($code) {
+  static function code_set_current($code) {
     static::$current = $code;
   }
 

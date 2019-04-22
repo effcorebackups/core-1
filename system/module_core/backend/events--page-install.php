@@ -13,7 +13,7 @@ namespace effcore\modules\core {
     $languages = language::get_all();
     $code = $page->args_get('lang_code');
     if (!isset($languages[$code])) url::go($page->args_get('base').'/en');
-    language::current_code_set($code);
+    language::code_set_current($code);
   }
 
 }}
