@@ -93,7 +93,7 @@ namespace effcore {
     if ($id_parent[0] == 'M' &&
         $id_parent[1] == ':')
          return static   ::select(substr($id_parent, 2));
-    else return tree_item::select       ($id_parent);
+    else return tree_item::select(       $id_parent    );
   }
 
   static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
@@ -104,7 +104,6 @@ namespace effcore {
   }
 
   static function delete($id) {
-    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 

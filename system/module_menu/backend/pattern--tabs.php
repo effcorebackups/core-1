@@ -98,7 +98,7 @@ namespace effcore {
     if ($id_parent[0] == 'T' &&
         $id_parent[1] == ':')
          return static   ::select(substr($id_parent, 2));
-    else return tabs_item::select       ($id_parent);
+    else return tabs_item::select(       $id_parent    );
   }
 
   static function insert($id, $attributes = [], $weight = 0, $module_id = null) {
@@ -109,7 +109,6 @@ namespace effcore {
   }
 
   static function delete($id) {
-    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 

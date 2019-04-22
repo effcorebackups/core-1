@@ -112,7 +112,6 @@ namespace effcore {
   }
 
   static function delete($id) {
-    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 
