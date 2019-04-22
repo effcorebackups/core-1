@@ -23,7 +23,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_query_before($storage, $query) {
-    $query_hash = core::data_get_hash($query);
+    $query_hash = core::hash_get_data($query);
     timer::tap('storage query with hash: '.$query_hash);
   }
 
@@ -32,7 +32,7 @@ namespace effcore\modules\storage {
     foreach ($storage->args as $c_arg) {
       $args_trimmed[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
     }
-    $query_hash = core::data_get_hash($query);
+    $query_hash = core::hash_get_data($query);
     $query_prepared = $query;
     $storage->query_prepare($query_prepared, true);
     $query_flat = core::array_values_select_recursive($query_prepared);

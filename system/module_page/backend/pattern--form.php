@@ -27,7 +27,7 @@ namespace effcore {
     }
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
-    $data_hash = core::data_get_hash($this->validation_data);
+    $data_hash = core::hash_get_data($this->validation_data);
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',            'value' => $id                 ]), 'hidden_form_id'      );
     $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id-'.$id, 'value' => $this->validation_id]), 'hidden_validation_id');
   # send test headers
@@ -110,7 +110,7 @@ namespace effcore {
       }
 
     # validation cache
-      if (static::$errors != [] && core::data_get_hash($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
+      if (static::$errors != [] && core::hash_get_data($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
       if (static::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
   }
@@ -243,7 +243,7 @@ namespace effcore {
 
   static function validation_id_get_hex_created()       {return dechex(time());}
   static function validation_id_get_hex_ip()            {return core::ip_to_hex(core::server_get_remote_addr());}
-  static function validation_id_get_hex_uagent_hash_8() {return core::mini_get_hash(core::server_get_user_agent());}
+  static function validation_id_get_hex_uagent_hash_8() {return core::hash_get_mini(core::server_get_user_agent());}
   static function validation_id_get_hex_random()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function validation_id_get_hex_signature($id)  {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
 
