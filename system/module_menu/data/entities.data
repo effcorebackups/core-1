@@ -5,6 +5,7 @@ entities
     title_plural: Trees
     catalog_name: trees
     group: Menu
+    ws_access: true
     ws_created: true
     ws_updated: true
     fields
