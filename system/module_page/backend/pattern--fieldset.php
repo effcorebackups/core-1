@@ -19,7 +19,7 @@ namespace effcore {
   }
 
   function build() {
-    $this->number = static::get_cur_number();
+    $this->number = static::current_number_get();
   }
 
   function render_self() {
@@ -49,7 +49,7 @@ namespace effcore {
 
   static protected $c_number = 0;
 
-  static function get_cur_number() {
+  static function current_number_get() {
     return static::$c_number++;
   }
 
