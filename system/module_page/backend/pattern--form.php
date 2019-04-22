@@ -54,8 +54,8 @@ namespace effcore {
     }
   # relate each item with it's form
     foreach ($this->children_select_recursive() as $c_element) {
-      if (is_object($c_element) && method_exists($c_element, 'set_cform')) {
-        $c_element->set_cform($this);
+      if (is_object($c_element) && method_exists($c_element, 'form_current_set')) {
+        $c_element->form_current_set($this);
       }
     }
 
