@@ -39,7 +39,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->value_initial_set($value);
+    $this->value_set_initial($value);
     if (core::validate_T_datetime($value))
          parent::value_set(core::sanitize_T_datetime($value));
     else parent::value_set($value);
@@ -72,7 +72,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_T_datetime($new_value)) {
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" contains an incorrect date/time!', ['title' => translation::get($field->title)]
       );
     } else {

@@ -66,9 +66,9 @@ namespace effcore\modules\core {
         if (!storage::get('sql')->is_installed()) {
           if ($items['#driver:mysql' ]->checked_get() == false &&
               $items['#driver:sqlite']->checked_get() == false) {
-            $items['#driver:mysql' ]->set_error();
-            $items['#driver:sqlite']->set_error();
-            $form->set_error('Driver is not selected!');
+            $items['#driver:mysql' ]->error_set();
+            $items['#driver:sqlite']->error_set();
+            $form->error_set('Driver is not selected!');
             return;
           }
           if (!$form->has_error()) {
@@ -81,12 +81,12 @@ namespace effcore\modules\core {
                 'database' => $items['#database_name'   ]->value_get()
               ]);
               if ($test !== true) {
-                $items['#host'            ]->set_error();
-                $items['#port'            ]->set_error();
-                $items['#storage_login'   ]->set_error();
-                $items['#storage_password']->set_error(false);
-                $items['#database_name'   ]->set_error();
-                $form->set_error(new text_multiline([
+                $items['#host'            ]->error_set();
+                $items['#port'            ]->error_set();
+                $items['#storage_login'   ]->error_set();
+                $items['#storage_password']->error_set(false);
+                $items['#database_name'   ]->error_set();
+                $form->error_set(new text_multiline([
                   'Storage is not available with these credentials!',
                   'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
                 ));
@@ -97,8 +97,8 @@ namespace effcore\modules\core {
                 'file_name' => $items['#file_name']->value_get()
               ]);
               if ($test !== true) {
-                $items['#file_name']->set_error();
-                $form->set_error(new text_multiline([
+                $items['#file_name']->error_set();
+                $form->error_set(new text_multiline([
                   'Storage is not available with these credentials!',
                   'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
                 ));

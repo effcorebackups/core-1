@@ -48,7 +48,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->value_initial_set($value);
+    $this->value_set_initial($value);
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_item) {
       if ($c_item instanceof node       &&
@@ -141,7 +141,7 @@ namespace effcore {
 
   static function validate_required($field, $form, $element, &$new_values) {
     if ($field->required_get() && empty(array_filter($new_values, 'strlen'))) {
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" must be selected!', ['title' => translation::get($field->title)]
       );
     } else {
@@ -152,7 +152,7 @@ namespace effcore {
   static function validate_multiple($field, $form, $element, &$new_values) {
     if (!$field->multiple_get() && count($new_values) > 1) {
       $new_values = array_slice($new_values, -1);
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)]
       );
     } else {

@@ -40,7 +40,7 @@ namespace effcore\modules\user {
         if ($entity_name == 'user' && !$form->has_error() && !empty($form->_instance)) {
         # check security
           if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
-            $items['#password_hash_current']->set_error(
+            $items['#password_hash_current']->error_set(
               'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
             );
             return;
@@ -49,18 +49,18 @@ namespace effcore\modules\user {
           if (!field_nick::validate_uniqueness(
             $items['#nick'],
             $items['#nick']->value_get(),
-            $items['#nick']->value_initial_get()
+            $items['#nick']->value_get_initial()
           )) return;
         # test email
           if (!field_email::validate_uniqueness(
             $items['#email'],
             $items['#email']->value_get(),
-            $items['#email']->value_initial_get()
+            $items['#email']->value_get_initial()
           )) return;
         # test new password
           if ($items['#password_hash_current']->value_get() ==
               $items['#password_hash'        ]->value_get()) {
-            $items['#password_hash']->set_error(
+            $items['#password_hash']->error_set(
               'New password must be different from the current password!'
             );
             return;

@@ -23,7 +23,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_url($new_value)) {
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" contains an incorrect URL!', ['title' => translation::get($field->title)]
       );
     } else {

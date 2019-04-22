@@ -259,16 +259,16 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->value_initial_set($value);
+    $this->value_set_initial($value);
     $element = $this->child_select('element');
     return $element->attribute_insert('value', $value);
   }
 
-  function value_initial_get() {
+  function value_get_initial() {
     return $this->initial_value;
   }
 
-  function value_initial_set($value) {
+  function value_set_initial($value) {
     if ($this->initial_value === null)
         $this->initial_value = $value;
   }
@@ -277,7 +277,7 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function set_error($message = null, $args = []) {
+  function error_set($message = null, $args = []) {
     if ($this->disabled_get() == false &&
         $this->readonly_get() == false) {
       form::$errors[] = (object)[

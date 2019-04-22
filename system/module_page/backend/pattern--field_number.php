@@ -49,7 +49,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && core::validate_number($new_value) === false) {
-      $field->set_error(new text_multiline([
+      $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'Field value is not a valid number.'], ['title' => translation::get($field->title)]
       ));
@@ -65,7 +65,7 @@ namespace effcore {
       $max = (float)$field->max_get();
       if ((int)round(($min - $new_value) / $step, 5) !=
                round(($min - $new_value) / $step, 5)) {
-        $field->set_error(new text_multiline([
+        $field->error_set(new text_multiline([
           'Field "%%_title" contains incorrect value!',
           'Field value is not in valid range.'], ['title' => translation::get($field->title)]
         ));

@@ -157,7 +157,7 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function set_error($message = null, $args = []) {
+  function error_set($message = null, $args = []) {
     static::$errors[] = (object)[
       'message' => $message,
       'args'    => $args,

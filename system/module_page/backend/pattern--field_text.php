@@ -40,7 +40,7 @@ namespace effcore {
 
   static function validate_required($field, $form, $element, &$new_value) {
     if ($field->required_get() && strlen($new_value) == 0) {
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" can not be blank!', ['title' => translation::get($field->title)]
       );
     } else {
@@ -51,7 +51,7 @@ namespace effcore {
   static function validate_minlength($field, $form, $element, &$new_value) {
     $minlength = $field->minlength_get();
     if (strlen($new_value) && $minlength && $minlength > strlen($new_value)) {
-      $field->set_error(
+      $field->error_set(
         'Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $minlength]
       );
     } else {
@@ -63,7 +63,7 @@ namespace effcore {
     $maxlength = $field->maxlength_get();
     if (strlen($new_value) && $maxlength && $maxlength < strlen($new_value)) {
       $new_value = substr($new_value, 0, $maxlength);
-      $field->set_error(new text_multiline([
+      $field->error_set(new text_multiline([
         'Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!',
         'Value was trimmed to the required length!',
         'Check field again before submit.'], ['title' => translation::get($field->title), 'number' => $maxlength]
@@ -76,7 +76,7 @@ namespace effcore {
   static function validate_min($field, $form, $element, &$new_value) {
     $min = $field->min_get();
     if (strlen($new_value) && $min && $new_value < $min) {
-      $field->set_error(new text_multiline([
+      $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'Field value is less than %%_value.'], ['title' => translation::get($field->title), 'value' => $min]
       ));
@@ -88,7 +88,7 @@ namespace effcore {
   static function validate_max($field, $form, $element, &$new_value) {
     $max = $field->max_get();
     if (strlen($new_value) && $max && $new_value > $max) {
-      $field->set_error(new text_multiline([
+      $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'Field value is more than %%_value.'], ['title' => translation::get($field->title), 'value' => $max]
       ));
@@ -101,7 +101,7 @@ namespace effcore {
     $pattern = $field->pattern_get();
     if (strlen($new_value) && $pattern &&
               !preg_match('%'.$pattern.'%', $new_value)) {
-      $field->set_error(new text_multiline([
+      $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'Field value does not match the regular expression %%_expression.'], ['title' => translation::get($field->title), 'expression' => $pattern]
       ));

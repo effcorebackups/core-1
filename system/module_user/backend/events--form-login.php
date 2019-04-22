@@ -32,9 +32,9 @@ namespace effcore\modules\user {
             'email' => $items['#email']->value_get()
           ]))->select();
           if (!$user || !hash_equals($user->password_hash, $items['#password']->value_get())) {
-            $items['#email'   ]->set_error();
-            $items['#password']->set_error();
-            $form->set_error('Incorrect email or password!');
+            $items['#email'   ]->error_set();
+            $items['#password']->error_set();
+            $form->error_set('Incorrect email or password!');
           }
         }
         break;

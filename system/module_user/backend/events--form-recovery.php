@@ -19,7 +19,7 @@ namespace effcore\modules\user {
       case 'recovery':
         if (!$form->has_error()) {
           if (!(new instance('user', ['email' => $items['#email']->value_get()]))->select()) {
-            $items['#email']->set_error(
+            $items['#email']->error_set(
               'User with this EMail was not registered!'
             );
             return;
