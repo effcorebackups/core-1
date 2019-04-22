@@ -137,7 +137,7 @@ namespace effcore {
   static protected $cache;
   static protected $cache_orig;
 
-  static function get_not_external_properties() {
+  static function not_external_properties_get() {
     return [
       'name'         => 'name',
       'title'        => 'title',

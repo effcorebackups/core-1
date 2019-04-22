@@ -11,7 +11,7 @@ namespace effcore { # indicates that the class should clear own cache after inst
 
 namespace effcore { # indicates that the cache should be separated by files
           interface has_external_cache {
-  static function get_not_external_properties();
+  static function not_external_properties_get();
 }}
 
 namespace effcore { # indicates that the __construct() should be called after the data load

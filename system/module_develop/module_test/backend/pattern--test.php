@@ -30,7 +30,7 @@ namespace effcore {
 
   static protected $cache;
 
-  static function get_not_external_properties() {
+  static function not_external_properties_get() {
     return ['id' => 'id', 'title' => 'title'];
   }
 

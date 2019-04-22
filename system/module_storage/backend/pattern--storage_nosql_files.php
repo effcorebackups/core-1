@@ -70,7 +70,7 @@ namespace effcore {
   static public $data = [];
   static public $changes_dynamic;
 
-  static function get_not_external_properties() {
+  static function not_external_properties_get() {
     return ['name' => 'name'];
   }
 
@@ -107,7 +107,7 @@ namespace effcore {
       foreach (core::arrobj_select_values_recursive($c_data, true) as $c_dpath => &$c_value) {
         if ($c_value instanceof has_external_cache) {
           $c_cache_id = 'data--'.$c_catalog_name.'-'.str_replace('/', '-', $c_dpath);
-          $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::get_not_external_properties());
+          $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::not_external_properties_get());
           cache::update($c_cache_id, $c_value);
           $c_value = new external_cache(
             $c_cache_id,
