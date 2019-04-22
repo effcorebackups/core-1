@@ -408,7 +408,7 @@ namespace effcore {
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_get_from_values($instance->values_get());
+      $id_fields = $entity->id_get_real_from_values($instance->values_get());
       $result = $this->query([
         'action' => 'SELECT',
         'fields_!,' => ['all_!f' => '*'],
@@ -455,7 +455,7 @@ namespace effcore {
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_get_from_values($instance->values_get());
+      $id_fields = $entity->id_get_real_from_values($instance->values_get());
       $values    = array_intersect_key($instance->values_get(), $entity->fields_get_name());
       $row_count = $this->query([
         'action' => 'UPDATE',
@@ -474,7 +474,7 @@ namespace effcore {
   function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
       $entity    = $instance->entity_get();
-      $id_fields = $entity->real_id_get_from_values($instance->values_get());
+      $id_fields = $entity->id_get_real_from_values($instance->values_get());
       $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',

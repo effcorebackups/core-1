@@ -19,7 +19,7 @@ namespace effcore\modules\storage {
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $id_keys   = $entity->real_id_get();
+      $id_keys   = $entity->id_get_real();
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
@@ -37,7 +37,7 @@ namespace effcore\modules\storage {
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $id_keys   = $entity->real_id_get();
+      $id_keys   = $entity->id_get_real();
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
