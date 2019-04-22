@@ -53,7 +53,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function get_copied_properties() {
+  static function copied_properties_get() {
     return [
       'module_id' => 'module_id',
       'data'      => 'data'
@@ -64,7 +64,7 @@ namespace effcore {
     $template = static::get($name);
     $class_name = '\\effcore\\template_'.$template->type;
     $result = new $class_name($name, $args);
-    foreach ($class_name::get_copied_properties() as $c_property_name) {
+    foreach ($class_name::copied_properties_get() as $c_property_name) {
       if (property_exists($template, $c_property_name)) {
         $result->{$c_property_name} = $template->{$c_property_name};
       }

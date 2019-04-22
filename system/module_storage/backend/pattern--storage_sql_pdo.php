@@ -105,14 +105,14 @@ namespace effcore {
     }
   }
 
-  function get_title() {
+  function title_get() {
     if ($this->init()) {
       if ($this->driver == 'mysql' ) return 'MySQL' ;
       if ($this->driver == 'sqlite') return 'SQLite';
     }
   }
 
-  function get_version() {
+  function version_get() {
     if ($this->init()) {
       if ($this->driver == 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
       if ($this->driver == 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;

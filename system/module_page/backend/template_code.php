@@ -17,8 +17,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_copied_properties() {
-    return ['handler' => 'handler'] + parent::get_copied_properties();
+  static function copied_properties_get() {
+    return ['handler' => 'handler'] + parent::copied_properties_get();
   }
 
 }}

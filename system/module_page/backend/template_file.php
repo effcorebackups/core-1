@@ -20,8 +20,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function get_copied_properties() {
-    return ['path' => 'path'] + parent::get_copied_properties();
+  static function copied_properties_get() {
+    return ['path' => 'path'] + parent::copied_properties_get();
   }
 
 }}

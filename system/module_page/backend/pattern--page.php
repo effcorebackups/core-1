@@ -63,11 +63,11 @@ namespace effcore {
     event::start('on_page_before_render', null, [&$this, &$template]);
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
-    $html = $template->get_target('html');
+    $html = $template->target_get('html');
     $html->attribute_insert('lang', language::code_get_current());
     $html->attribute_insert('dir', $this->text_direction);
     $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
-    $head_title_text = $template->get_target('head_title_text', true);
+    $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
     $template->arg_set('charset',        $this->charset);
     $template->arg_set('head_icons',     $frontend->icons);
