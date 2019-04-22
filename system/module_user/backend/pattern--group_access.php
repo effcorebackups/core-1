@@ -16,7 +16,7 @@ namespace effcore {
   ];
 
   function build() {
-    foreach (access::get_roles() as $value => $title) {
+    foreach (access::roles_get() as $value => $title) {
       $this->field_insert($title, null, ['value' => $value]);
     }
   }

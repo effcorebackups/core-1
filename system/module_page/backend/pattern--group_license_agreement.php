@@ -13,7 +13,7 @@ namespace effcore {
 
   function build() {
     parent::build();
-    $language = language::get(language::current_code_get());
+    $language = language::get(language::code_get_current());
     $license = new file($language->license_translation ?
              dir_system.$language->license_translation : dir_root.'license.md');
     $markup_license = new markup('x-document', ['class' => ['license' => 'license']], markdown::markdown_to_markup($license->load()));

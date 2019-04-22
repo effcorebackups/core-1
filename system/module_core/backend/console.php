@@ -71,7 +71,7 @@ namespace effcore {
     $decorator->data = [[
       'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::get_period('total', 0, 1))],
       'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
-      'language' => ['title' => 'Current language',       'value' => language::current_code_get()                            ],
+      'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
     ]];
     return new block('Current page information', ['class' => ['info' => 'info']], [

@@ -26,7 +26,7 @@ namespace effcore {
   function render() {
     $settings = module::get_settings('page');
     $user_agent = core::server_get_user_agent_info();
-    header('Content-language: '.language::current_code_get());
+    header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
     if ($user_agent->name == 'msie') {
       header('X-UA-Compatible: IE=10');
@@ -64,7 +64,7 @@ namespace effcore {
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
     $html = $template->get_target('html');
-    $html->attribute_insert('lang', language::current_code_get());
+    $html->attribute_insert('lang', language::code_get_current());
     $html->attribute_insert('dir', $this->text_direction);
     $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
     $head_title_text = $template->get_target('head_title_text', true);

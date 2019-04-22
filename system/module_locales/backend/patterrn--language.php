@@ -54,7 +54,7 @@ namespace effcore {
     return static::get($code)->plurals ?? [];
   }
 
-  static function current_code_get() {
+  static function code_get_current() {
     if   (!static::$current)
            static::$current = module::get_settings('locales')->lang_code;
     return static::$current;
