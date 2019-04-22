@@ -14,9 +14,10 @@ namespace effcore {
   public $title_state; # hidden | cutted
   public $access;
 
-  function __construct($title = '', $id = null, $attributes = [], $weight = 0) {
-    if ($title) $this->title = $title;
-    if ($id   ) $this->id    = $id;
+  function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
+    if ($title ) $this->title  = $title;
+    if ($id    ) $this->id     = $id;
+    if ($access) $this->access = $access;
     parent::__construct($attributes, [], $weight);
   }
 
@@ -66,6 +67,16 @@ namespace effcore {
         static::$cache[$c_tree->id]->module_id = $c_module_id;
       }
     }
+  # load from storage
+    $entity = entity::get('tree');
+    $instances = $entity->instances_select();
+    foreach ($instances as $c_instance) {
+      static::insert(
+        $c_instance->title,
+        $c_instance->id,
+        unserialize($c_instance->access), [], 0, 'menu'
+      );
+    }
   }
 
   static function select_all() {
@@ -85,8 +96,8 @@ namespace effcore {
     else return tree_item::select       ($id_parent);
   }
 
-  static function insert($title = '', $id, $attributes = [], $weight = 0, $module_id = null) {
-    $new_tree = new static($title, $id, $attributes, $weight);
+  static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
+    $new_tree = new static($title, $id, $access, $attributes, $weight);
     if (static::$cache == null) static::init();
         static::$cache[$id] = $new_tree;
         static::$cache[$id]->module_id = $module_id;

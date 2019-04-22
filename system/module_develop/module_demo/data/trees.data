@@ -5,9 +5,3 @@ trees
     attributes
     - class
       - =: demo-static
-- demo_dynamic|tree
-    id: demo_dynamic
-    title: Tree dynamic
-    attributes
-    - class
-      - =: demo-dynamic
