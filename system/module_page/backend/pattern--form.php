@@ -42,7 +42,7 @@ namespace effcore {
         $c_last_part = end($c_parts);
         $c_pointers = core::npath_get_pointers($this, $c_npath);
         if ($c_element->is_exists_class())
-                   $c_pointers[$c_last_part] = $c_element->get_object();
+                   $c_pointers[$c_last_part] = $c_element->object_get();
         else unset($c_pointers[$c_last_part]);
       }
     }
