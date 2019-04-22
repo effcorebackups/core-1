@@ -17,11 +17,12 @@ namespace effcore {
   public $shadow_url;
   public $access;
 
-  function __construct($title = '', $id = null, $id_parent = null, $url = null, $attributes = [], $element_attributes = [], $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
     if ($id                ) $this->id                 = $id;
     if ($id_parent         ) $this->id_parent          = $id_parent;
     if ($url               ) $this->url                = $url;
+    if ($access            ) $this->access             = $access;
     if ($element_attributes) $this->element_attributes = $element_attributes;
     parent::__construct($attributes, [], $weight);
   }
@@ -79,6 +80,18 @@ namespace effcore {
         static::$cache[$c_tree_item->id]->module_id = $c_module_id;
       }
     }
+  # load from storage
+    $entity = entity::get('tree_item');
+    $instances = $entity->instances_select();
+    foreach ($instances as $c_instance) {
+      static::insert(
+        $c_instance->title,
+        $c_instance->id,
+        $c_instance->id_tree,
+        $c_instance->url,
+        unserialize($c_instance->access), [], [], 0, 'menu'
+      );
+    }
   }
 
   static function select_all() {
@@ -91,8 +104,8 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title, $id, $id_parent, $url = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
-    $new_item = new static($title, $id, $id_parent, $url, $attributes, $element_attributes, $weight);
+  static function insert($title, $id, $id_parent, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
+    $new_item = new static($title, $id, $id_parent, $url, $access, $attributes, $element_attributes, $weight);
     if (static::$cache == null) static::init();
         static::$cache[$id] = $new_item;
         static::$cache[$id]->module_id = $module_id;
