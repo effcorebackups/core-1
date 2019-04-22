@@ -13,9 +13,9 @@ namespace effcore\modules\test {
 
   static function on_page_init($page) {
     $tests = test::get_all(false);
-    $id = $page->get_args('id');
+    $id = $page->args_get('id');
     core::array_sort_by_title($tests);
-    if (!isset($tests[$id])) url::go($page->get_args('base').'/'.reset($tests)->id);
+    if (!isset($tests[$id])) url::go($page->args_get('base').'/'.reset($tests)->id);
     foreach ($tests as $c_test) {
       tabs_item::insert($c_test->title,
         'test_execute_'.$c_test->id,

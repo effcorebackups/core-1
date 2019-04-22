@@ -17,8 +17,8 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_delete {
 
   static function on_init($form, $items) {
-    $entity_name = page::get_current()->get_args('entity_name');
-    $instance_id = page::get_current()->get_args('instance_id');
+    $entity_name = page::get_current()->args_get('entity_name');
+    $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->get_real_id();
@@ -36,9 +36,9 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $base        = page::get_current()->get_args('base');
-    $entity_name = page::get_current()->get_args('entity_name');
-    $instance_id = page::get_current()->get_args('instance_id');
+    $base        = page::get_current()->args_get('base');
+    $entity_name = page::get_current()->args_get('entity_name');
+    $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'delete':

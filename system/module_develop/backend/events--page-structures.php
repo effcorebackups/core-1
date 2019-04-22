@@ -16,9 +16,9 @@ namespace effcore\modules\develop {
           abstract class events_page_structures {
 
   static function on_page_init($page) {
-    $type = $page->get_args('type');
+    $type = $page->args_get('type');
     if ($type == null) {
-      url::go($page->get_args('base').'/class/list');
+      url::go($page->args_get('base').'/class/list');
     }
   }
 
@@ -28,11 +28,11 @@ namespace effcore\modules\develop {
 
   static function on_show_block_structures_list($page) {
     $targets = new markup('x-targets');
-    $list = new markup('x-structures-list', ['data-type' => core::sanitize_id($page->get_args('type'))]);
+    $list = new markup('x-structures-list', ['data-type' => core::sanitize_id($page->args_get('type'))]);
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_select() as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type.'/list' == $page->get_args('type')) {
+      if ($c_item_info->type.'/list' == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass;
         $c_result->name       = $c_item_info->name;

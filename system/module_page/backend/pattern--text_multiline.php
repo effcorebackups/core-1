@@ -13,7 +13,7 @@ namespace effcore {
 
   function __construct($text = [], $args = [], $delimiter = br, $with_translation = true, $with_tokens = false, $weight = 0) {
     if ($text) $this->text_update($text);
-    if ($args) $this->set_args($args);
+    if ($args) $this->args_set($args);
     $this->delimiter            = $delimiter;
     $this->is_apply_translation = $with_translation;
     $this->is_apply_tokens      = $with_tokens;

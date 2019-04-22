@@ -9,9 +9,9 @@ namespace effcore\modules\core {
           abstract class events_page_modules {
 
   static function on_page_init($page) {
-    $action = $page->get_args('action');
+    $action = $page->args_get('action');
     if ($action == null) {
-      url::go($page->get_args('base').'/install');
+      url::go($page->args_get('base').'/install');
     }
   }
 

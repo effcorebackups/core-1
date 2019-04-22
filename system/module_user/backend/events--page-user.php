@@ -19,7 +19,7 @@ namespace effcore\modules\user {
 
   static function on_show_block_user_info($page) {
     $user = (new instance('user', [
-      'nick' => $page->get_args('nick')
+      'nick' => $page->args_get('nick')
     ]))->select();
     if ($user) {
       if ($user->nick == user::get_current()->nick ||             # owner

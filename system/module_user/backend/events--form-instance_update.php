@@ -18,8 +18,8 @@ namespace effcore\modules\user {
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
-    $entity_name = page::get_current()->get_args('entity_name');
-    $instance_id = page::get_current()->get_args('instance_id');
+    $entity_name = page::get_current()->args_get('entity_name');
+    $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'user' && !empty($form->_instance)) {
       $field_password_hash_current = new field_password('Current password', '', [], -50);
       $field_password_hash_current->build();
@@ -32,8 +32,8 @@ namespace effcore\modules\user {
   }
 
   static function on_validate($form, $items) {
-    $entity_name = page::get_current()->get_args('entity_name');
-    $instance_id = page::get_current()->get_args('instance_id');
+    $entity_name = page::get_current()->args_get('entity_name');
+    $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
@@ -71,13 +71,13 @@ namespace effcore\modules\user {
   }
 
   static function on_submit($form, $items) {
-    $entity_name = page::get_current()->get_args('entity_name');
-    $instance_id = page::get_current()->get_args('instance_id');
+    $entity_name = page::get_current()->args_get('entity_name');
+    $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
         if ($entity_name == 'user' && !empty($form->_instance)) {
-          page::get_current()->set_args('back_update', '/user/'.$items['#nick']->value_get());
+          page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
           $avatar_info = $items['#avatar']->pool_files_save();
           if (!empty($avatar_info[0]->path)) {
              $c_file = new file($avatar_info[0]->path);
@@ -88,7 +88,7 @@ namespace effcore\modules\user {
         break;
       case 'cancel':
         if ($entity_name == 'user' && !empty($form->_instance)) {
-          page::get_current()->set_args('back_cancel', '/user/'.$items['#nick']->value_get());
+          page::get_current()->args_set('back_cancel', '/user/'.$items['#nick']->value_get());
         }
         break;
     }

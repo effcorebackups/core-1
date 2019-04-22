@@ -15,7 +15,7 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_select_multiple {
 
   static function on_init($form, &$items) {
-    $entity_name = page::get_current()->get_args('entity_name');
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     $items['~add_new']->attribute_insert('title', new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]));
     if ($entity) {
@@ -47,7 +47,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $entity_name = page::get_current()->get_args('entity_name');
+    $entity_name = page::get_current()->args_get('entity_name');
     switch ($form->clicked_button->value_get()) {
       case 'add_new':
         url::go('/manage/instance/insert/'.$entity_name.'?'.url::back_part_make());

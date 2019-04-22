@@ -17,8 +17,8 @@ namespace effcore {
   protected $args = [];
   protected $used_dpaths = [];
 
-  function set_args($key, $value) {$this->args[$key] = $value;}
-  function get_args($id = null) {
+  function args_set($key, $value) {$this->args[$key] = $value;}
+  function args_get($id = null) {
     return $id ? ($this->args[$id] ?? null) :
                   $this->args;
   }
@@ -233,7 +233,7 @@ namespace effcore {
           static::$current = $c_page;
         # filter arguments
           foreach ($c_args as $c_key => $c_value) {
-            $c_page->set_args($c_key, $c_value);
+            $c_page->args_set($c_key, $c_value);
           }
         # render page
           return $c_page->render();

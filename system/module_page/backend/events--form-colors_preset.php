@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           abstract class events_form_colors_preset {
 
   static function on_init($form, $items) {
-    $id = page::get_current()->get_args('id');
+    $id = page::get_current()->args_get('id');
     $preset = color::preset_get($id);
     $items['#color_page_id'            ]->color_set($preset->colors->color_page_id            );
     $items['#color_text_id'            ]->color_set($preset->colors->color_text_id            );
@@ -42,7 +42,7 @@ namespace effcore\modules\page {
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $id = page::get_current()->get_args('id');
+        $id = page::get_current()->args_get('id');
         $preset = color::preset_get($id);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_page_id',             $preset->colors->color_page_id,             false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_text_id',             $preset->colors->color_text_id,             false);

@@ -11,8 +11,8 @@ namespace effcore\modules\core {
 
   static function on_page_init($page) {
     $languages = language::get_all();
-    $code = $page->get_args('lang_code');
-    if (!isset($languages[$code])) url::go($page->get_args('base').'/en');
+    $code = $page->args_get('lang_code');
+    if (!isset($languages[$code])) url::go($page->args_get('base').'/en');
     language::current_code_set($code);
   }
 

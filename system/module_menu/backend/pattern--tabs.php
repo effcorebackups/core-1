@@ -51,7 +51,7 @@ namespace effcore {
   function render_sub_items() {
     $rendered = '';
     foreach ($this->children_select() as $c_item) {
-      $c_url = rtrim(page::get_current()->get_args('base').'/'.$c_item->action_name, '/');
+      $c_url = rtrim(page::get_current()->args_get('base').'/'.$c_item->action_name, '/');
       if (url::is_active_trail($c_url)) {
         foreach ($c_item->children_select() as $c_child) {
           $rendered.= $c_child->render();

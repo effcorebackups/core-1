@@ -16,7 +16,7 @@ namespace effcore\modules\locales {
       $title = $c_language->code == 'en' ?
         $c_language->title->en :
         $c_language->title->en.' ('.$c_language->title->native.')';
-      $href = $page->get_args('base').'/'.$c_language->code;
+      $href = $page->args_get('base').'/'.$c_language->code;
       $link = new markup('a', ['href' => $href, 'title' => translation::get('go to %%_title language', ['title' => $c_language->title->en], 'en')], $title);
       $link_wrapper = new markup('x-language', ['data-code' => $c_language->code], $link);
       $menu->child_insert($link_wrapper, $c_language->code);

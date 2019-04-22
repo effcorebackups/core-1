@@ -15,8 +15,8 @@ namespace effcore\modules\storage {
           abstract class events_page_instance_select {
 
   static function on_page_init($page) {
-    $entity_name = $page->get_args('entity_name');
-    $instance_id = $page->get_args('instance_id');
+    $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->get_real_id();
@@ -33,8 +33,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_show_block_instance_select($page) {
-    $entity_name = $page->get_args('entity_name');
-    $instance_id = $page->get_args('instance_id');
+    $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $id_keys   = $entity->get_real_id();

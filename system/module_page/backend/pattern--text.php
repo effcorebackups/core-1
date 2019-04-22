@@ -13,14 +13,14 @@ namespace effcore {
 
   function __construct($text = '', $args = [], $with_translation = true, $with_tokens = false, $weight = 0) {
     if ($text !== '') $this->text_update($text);
-    if ($args       ) $this->set_args   ($args);
+    if ($args       ) $this->args_set   ($args);
     $this->is_apply_translation = $with_translation;
     $this->is_apply_tokens      = $with_tokens;
     $this->weight               = $weight;
   }
 
-  function get_args() {return $this->args;}
-  function set_args($args) {$this->args = $args;}
+  function args_get() {return $this->args;}
+  function args_set($args) {$this->args = $args;}
 
   function render() {
     $result = translation::get($this->text, $this->args,

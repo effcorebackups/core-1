@@ -13,7 +13,7 @@ namespace effcore\modules\core {
           abstract class events_page_cron {
 
   static function on_cron_run($page) {
-    if ($page->get_args('key') === core::key_get('cron')) {
+    if ($page->args_get('key') === core::key_get('cron')) {
       timer::tap('cron');
       $result = event::start('on_cron');
       timer::tap('cron');
