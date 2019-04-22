@@ -201,7 +201,7 @@ namespace effcore {
     foreach ($this->pool_new as $c_id => $c_info) {
       if (isset($c_info->tmp_path)) {
         $src_file = new file($c_info->tmp_path);
-        $dst_file = new file(temporary::directory.'validation/'.$this->cform->validation_cache_get_date().'/'.$this->cform->validation_id.'-'.$c_id);
+        $dst_file = new file(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$c_id);
         if ($src_file->move_uploaded($dst_file->dirs_get(), $dst_file->file_get())) {
           $c_info->pre_path = $dst_file->path_get();
           unset($c_info->tmp_path);

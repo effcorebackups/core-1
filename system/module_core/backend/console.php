@@ -31,15 +31,15 @@ namespace effcore {
   }
 
   static function log_store($log_level = 'error') {
-    $file = new file(static::directory.core::get_date().'/'.
-                       $log_level.'--'.core::get_date().'.log');
+    $file = new file(static::directory.core::date_get().'/'.
+                       $log_level.'--'.core::date_get().'.log');
     foreach (static::$data as $c_log) {
       if ($c_log->value == $log_level) {
         $c_info = $c_log->description;
         foreach ($c_log->args as $c_key => $c_value) {
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
         }
-        if (!$file->append_direct(core::get_time().' | '.
+        if (!$file->append_direct(core::time_get().' | '.
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {
           message::insert(new text_multiline([

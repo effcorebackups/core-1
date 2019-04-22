@@ -173,14 +173,14 @@ namespace effcore {
   # functionality for validation cache
   # ──────────────────────────────────────────────────────────────────────────────
 
-  function validation_cache_get_date($format = 'Y-m-d') {
+  function validation_cache_date_get($format = 'Y-m-d') {
     $timestmp = static::validation_id_extract_created($this->validation_id);
     return \DateTime::createFromFormat('U', $timestmp)->format($format);
   }
 
-  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/') ?: [];}
-  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_get_date().'/');}
-  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_get_date().'/');}
+  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_date_get().'/') ?: [];}
+  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_date_get().'/');}
+  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_date_get().'/');}
 
   static function validation_tmp_cleaning($limit = 5000) {
     if (file_exists(temporary::directory.'validation/')) {
@@ -188,7 +188,7 @@ namespace effcore {
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_spl_dir_info) {
         if ($c_spl_dir_info->isDir()) {
           if (core::validate_date($c_spl_dir_info->getFilename()) &&
-                                  $c_spl_dir_info->getFilename() < core::get_date()) {
+                                  $c_spl_dir_info->getFilename() < core::date_get()) {
           # try to recursively delete all files in directory
             foreach (new ri_iterator(
                      new rd_iterator($c_dir_path, file::scan_mode)) as $c_file_path => $c_spl_file_info) {

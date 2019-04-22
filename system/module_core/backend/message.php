@@ -19,7 +19,7 @@ namespace effcore {
 
   static function cleaning($id_session = null) {
     if ($id_session) $condition = ['id_!f'      => 'id_session', '=', 'id_!v'      => $id_session         ];
-    else             $condition = ['expired_!f' => 'expired',    '<', 'expired_!v' => core::get_datetime()];
+    else             $condition = ['expired_!f' => 'expired',    '<', 'expired_!v' => core::datetime_get()];
     entity::get('message')->instances_delete([
       'conditions' => $condition
     ]);
@@ -72,7 +72,7 @@ namespace effcore {
     (new instance('message', [
       'id_session' => session::id_get(),
       'type'       => $type,
-      'expired'    => core::get_datetime('+'.$period.' second'),
+      'expired'    => core::datetime_get('+'.$period.' second'),
       'data'       => serialize(is_string($message) ?
                                  new text($message) :
                                           $message)
