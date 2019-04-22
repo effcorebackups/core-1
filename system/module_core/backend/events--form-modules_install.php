@@ -35,7 +35,7 @@ namespace effcore\modules\core {
       $c_fieldset->build();
       $info->child_insert($c_fieldset, $c_group_id);
       foreach ($modules as $c_module)
-        if ($c_group_id == $c_module->get_group_id())
+        if ($c_group_id == $c_module->group_get_id())
           $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
       core::array_sort_by_title(
         $modules_by_groups[$c_group_id]
@@ -75,7 +75,7 @@ namespace effcore\modules\core {
         if ($c_dependencies_php_items->children_select_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'sys'], [new markup('x-label', [], 'depend from php extensions'), new markup('x-value', [],                        $c_dependencies_php_items     )]), 'dependencies_php');
         if ($c_dependencies_sys_items->children_select_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'php'], [new markup('x-label', [], 'depend from modules'       ), new markup('x-value', [],                        $c_dependencies_sys_items     )]), 'dependencies_sys');
         if ($c_depended_sys_items    ->children_select_count()) $c_info->child_insert(new markup('x-dependencies', ['data-type' => 'use'], [new markup('x-label', [], 'used by modules'           ), new markup('x-value', [],                        $c_depended_sys_items         )]), 'depended_sys'    );
-        $info->child_select($c_module->get_group_id())->child_insert($c_info, 'module_'.$c_module->id);
+        $info->child_select($c_module->group_get_id())->child_insert($c_info, 'module_'.$c_module->id);
       }
     }
   }

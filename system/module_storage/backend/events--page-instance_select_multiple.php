@@ -29,7 +29,7 @@ namespace effcore\modules\storage {
     core::array_sort_text($groups);
     foreach ($groups as $c_id => $c_title) {
       foreach ($entities as $c_name => $c_entity)
-        if ($c_id == $c_entity->get_group_id())
+        if ($c_id == $c_entity->group_get_id())
           $entities_by_groups[$c_id][$c_name] = $c_entity;
       core::array_sort_by_title(
         $entities_by_groups[$c_id]

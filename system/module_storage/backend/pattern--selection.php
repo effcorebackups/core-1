@@ -58,7 +58,7 @@ namespace effcore {
     if (count($used_storages) == 1) {
       $main_entity = entity::get(reset($used_entities));
       $this->attribute_insert('data-main-entity', $main_entity->name);
-      $id_keys = $main_entity->get_real_id();
+      $id_keys = $main_entity->real_id_get();
 
     # prepare query params
       foreach ($this->fields as $c_row_id => $c_field) {
