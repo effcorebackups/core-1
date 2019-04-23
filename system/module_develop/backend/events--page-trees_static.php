@@ -17,11 +17,13 @@ namespace effcore\modules\develop {
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
-      tabs_item::insert(                 $c_tree->title,
-        'trees_static_select_'.          $c_tree->id,
-        'trees_static_select', 'select/'.$c_tree->id, null, ['class' => [
-                  'trees-static-select-'.$c_tree->id =>
-                  'trees-static-select-'.$c_tree->id]]);
+      if ($c_tree->is_static) {
+        tabs_item::insert(                 $c_tree->title,
+          'trees_static_select_'.          $c_tree->id,
+          'trees_static_select', 'select/'.$c_tree->id, null, ['class' => [
+                    'trees-static-select-'.$c_tree->id =>
+                    'trees-static-select-'.$c_tree->id]]);
+      }
     }
   }
 
