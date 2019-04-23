@@ -13,6 +13,7 @@ namespace effcore {
   public $title = '';
   public $title_state; # hidden | cutted
   public $access;
+  public $is_static = true;
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
@@ -68,14 +69,11 @@ namespace effcore {
       }
     }
   # load from storage
-    $entity = entity::get('tree');
-    $instances = $entity->instances_select();
-    foreach ($instances as $c_instance) {
-      static::insert(
-        $c_instance->title,
-        $c_instance->id,
-        unserialize($c_instance->access), [], 0, 'menu'
-      );
+    foreach (entity::get('tree')->instances_select() as $c_instance) {
+      $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access), [], 0);
+      static::$cache[$c_tree->id] = $c_tree;
+      static::$cache[$c_tree->id]->module_id = 'menu';
+      static::$cache[$c_tree->id]->is_static = false;
     }
   }
 
@@ -101,9 +99,11 @@ namespace effcore {
     if (static::$cache == null) static::init();
         static::$cache[$id] = $new_tree;
         static::$cache[$id]->module_id = $module_id;
+        static::$cache[$id]->is_static = false;
   }
 
   static function delete($id) {
+    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 

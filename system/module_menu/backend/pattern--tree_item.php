@@ -16,6 +16,7 @@ namespace effcore {
   public $url;
   public $shadow_url;
   public $access;
+  public $is_static = true;
 
   function __construct($title = '', $id = null, $id_parent = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
@@ -81,16 +82,11 @@ namespace effcore {
       }
     }
   # load from storage
-    $entity = entity::get('tree_item');
-    $instances = $entity->instances_select();
-    foreach ($instances as $c_instance) {
-      static::insert(
-        $c_instance->title,
-        $c_instance->id,
-        $c_instance->id_parent ?: 'M:'.$c_instance->id_tree,
-        $c_instance->url,
-        unserialize($c_instance->access), [], [], 0, 'menu'
-      );
+    foreach (entity::get('tree_item')->instances_select() as $c_instance) {
+      $c_tree_item = new static($c_instance->title, $c_instance->id, $c_instance->id_parent ?: 'M:'.$c_instance->id_tree, $c_instance->url, unserialize($c_instance->access));
+      static::$cache[$c_tree_item->id] = $c_tree_item;
+      static::$cache[$c_tree_item->id]->module_id = 'menu';
+      static::$cache[$c_tree_item->id]->is_static = false;
     }
   }
 
@@ -109,9 +105,11 @@ namespace effcore {
     if (static::$cache == null) static::init();
         static::$cache[$id] = $new_item;
         static::$cache[$id]->module_id = $module_id;
+        static::$cache[$id]->is_static = false;
   }
 
   static function delete($id) {
+    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 
