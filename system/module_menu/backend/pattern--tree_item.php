@@ -87,7 +87,7 @@ namespace effcore {
       static::insert(
         $c_instance->title,
         $c_instance->id,
-        $c_instance->id_tree,
+        $c_instance->id_parent ?: 'M:'.$c_instance->id_tree,
         $c_instance->url,
         unserialize($c_instance->access), [], [], 0, 'menu'
       );

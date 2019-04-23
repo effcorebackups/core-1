@@ -14,7 +14,7 @@
   x-menu::after {content: ''; clear: both; display: block}
 
   x-top  {display: block; max-width: 800px; margin: 18px auto 0 auto}
-  x-body {display: block; max-width: 800px; margin: 0 auto 18px auto; min-height: 200px}
+  x-body {display: block; max-width: 800px; margin: 0 auto 70px auto; min-height: 200px}
 
   /* headers */
 

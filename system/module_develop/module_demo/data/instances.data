@@ -14,7 +14,7 @@ instances
     entity_name: tree
     values
     - id: demo_dynamic
-    - title: Demo dynamic
+    - title: Tree dynamic
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────

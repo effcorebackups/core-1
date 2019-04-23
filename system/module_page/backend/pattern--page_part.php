@@ -12,6 +12,7 @@ namespace effcore {
   public $type; # code | link | text | …
   public $source;
   public $properties = [];
+  public $args       = [];
 
   function markup_get($page = null) {
     if (!isset($this->display) ||
@@ -25,7 +26,7 @@ namespace effcore {
                        core::arrobj_insert_value($result, $c_key, $c_value);
                      }
                      return $result;
-        case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->properties]);
+        case 'code': return call_user_func_array($this->source, ['page' => $page, 'args' => $this->args]);
         case 'text': return new text($this->source);
         default    : return $this->source;
       }

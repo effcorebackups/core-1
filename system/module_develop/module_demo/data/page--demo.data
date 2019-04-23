@@ -82,22 +82,32 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
-    - block_tree_demo_dynamic_via_decorator|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        region: content
-        type: link
-        source: blocks/demo/demo_decorators_trees
-    - block_tree_demo_static_do_dynamic_changes|page_part
+#   - block_tree_demo_dynamic_via_decorator|page_part
+#       display
+#         check: page_args
+#         where: type
+#         match: %^embedded/trees(/.*|)$%
+#       region: content
+#       type: link
+#       source: blocks/demo/demo_decorators_trees
+    - tree_demo_dynamic|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: code
-        source: \effcore\modules\demo\events_page_demo::on_tree_demo_static_do_dynamic_changes
+        source: \effcore\modules\menu\events_page::on_show_block_dynamic_tree
+        args
+        - id_tree: demo_dynamic
+    - tree_demo_static_change|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: code
+        source: \effcore\modules\demo\events_page_demo::on_tree_demo_static_change
     - tree_demo_static|page_part
         display
           check: page_args
