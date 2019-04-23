@@ -1,5 +1,7 @@
 
   x-tree {display: block; position: relative}
+  x-tree a[aria-selected      ='true'],
+  x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
   /* menu Main: sizes and orientation */
 
