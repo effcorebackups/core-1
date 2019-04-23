@@ -97,9 +97,10 @@ namespace effcore {
 
   static function insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0, $module_id = null) {
     $new_item = new static($title, $id, $id_parent, $action_name, $action_name_default, $attributes, $element_attributes, $hidden, $weight);
-    if (static::$cache == null) static::init();
-        static::$cache[$id] = $new_item;
-        static::$cache[$id]->module_id = $module_id;
+    if    (static::$cache == null) static::init();
+           static::$cache[$id] = $new_item;
+           static::$cache[$id]->module_id = $module_id;
+    return static::$cache[$id];
   }
 
   static function delete($id) {

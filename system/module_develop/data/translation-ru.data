@@ -153,8 +153,9 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
-    - Tree dynamic: Дерево динамическое
-    - Tree static: Дерево статическое
+    - Tree dynamic (from SQL storage): Дерево динамическое (из SQL хранилища)
+    - Tree static (from NoSQL storage): Дерево статическое (из NoSQL хранилища)
+    - Tree via decorator: Дерево через декоратор
     - Trees: Деревья
     - Types: Типы
     - UML Diagram: UML Диаграмма

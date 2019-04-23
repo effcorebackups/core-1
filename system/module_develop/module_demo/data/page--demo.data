@@ -82,14 +82,14 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
-#   - block_tree_demo_dynamic_via_decorator|page_part
-#       display
-#         check: page_args
-#         where: type
-#         match: %^embedded/trees(/.*|)$%
-#       region: content
-#       type: link
-#       source: blocks/demo/demo_decorators_trees
+    - tree_demo_via_decorator|page_part
+        display
+          check: page_args
+          where: type
+          match: %^embedded/trees(/.*|)$%
+        region: content
+        type: link
+        source: blocks/demo/demo_tree_via_decorator
     - tree_demo_dynamic|page_part
         display
           check: page_args

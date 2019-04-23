@@ -123,24 +123,23 @@ namespace effcore {
       # tree
       # ─────────────────────────────────────────────────────────────────────
         case 'tree':
+          $tree_id = 'decorator-tree-'.$this->id;
+          $tree = tree::insert('Tree via decorator', $tree_id);
           foreach ($this->data as $c_row_id => $c_row) {
             $c_id        = array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : $c_row[$this->tree_mapping['id'       ]]['value'];
             $c_id_parent = array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : $c_row[$this->tree_mapping['id_parent']]['value'];
-            $c_id_tree   = array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : $c_row[$this->tree_mapping['id_tree'  ]]['value'];
             $c_title     = array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : $c_row[$this->tree_mapping['title'    ]]['value'];
             $c_url       = array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : $c_row[$this->tree_mapping['url'      ]]['value'];
             tree_item::insert(
               $c_title,
-              $c_id,
-              $c_id_parent ?: 'M:'.$c_id_tree,
+              $tree_id.'-'.$c_id,
+              $c_id_parent ? $tree_id.'-'.$c_id_parent : 'M:'.$tree_id,
               $c_url
             );
           }
-          if (isset($c_id_tree)) {
-            $result->child_insert(
-              tree::select($c_id_tree)
-            );
-          }
+          $result->child_insert(
+            $tree
+          );
           break;
 
       }

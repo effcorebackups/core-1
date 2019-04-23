@@ -1,7 +1,7 @@
 trees
 - demo_static|tree
     id: demo_static
-    title: Tree static
+    title: Tree static (from NoSQL storage)
     attributes
     - class
       - =: demo-static

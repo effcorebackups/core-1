@@ -96,10 +96,11 @@ namespace effcore {
 
   static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
     $new_tree = new static($title, $id, $access, $attributes, $weight);
-    if (static::$cache == null) static::init();
-        static::$cache[$id] = $new_tree;
-        static::$cache[$id]->module_id = $module_id;
-        static::$cache[$id]->is_static = false;
+    if    (static::$cache == null) static::init();
+           static::$cache[$id] = $new_tree;
+           static::$cache[$id]->module_id = $module_id;
+           static::$cache[$id]->is_static = false;
+    return static::$cache[$id];
   }
 
   static function delete($id) {
