@@ -32,6 +32,8 @@ namespace effcore {
   }
 
   function render() {
+    if ($this->attribute_select('data-id-tree') == null && $this->id)
+        $this->attribute_insert('data-id-tree',            $this->id);
     if (static::$cache == null) static::init();
     if ($this->access === null || access::check($this->access)) {
       if ($this->children_select_count() == 0)

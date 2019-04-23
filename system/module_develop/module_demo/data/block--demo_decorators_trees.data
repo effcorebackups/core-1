@@ -10,6 +10,7 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
     - tree|decorator
         view_type: tree
+        title: Tree via decorator
         id: demo_tree
         data
         - rowid-1
@@ -19,6 +20,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: null
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1
@@ -32,6 +36,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 1
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.1
@@ -45,6 +52,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 1
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.2
@@ -58,6 +68,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 3
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.2.1
@@ -71,6 +84,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 3
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.2.2
@@ -84,6 +100,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 3
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.2.3
@@ -97,6 +116,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: 1
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #1.3
@@ -110,6 +132,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: null
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #2
@@ -123,6 +148,9 @@ blocks
           - id_parent
             - title: Parent ID
             - value: null
+          - id_tree
+            - title: Tree ID
+            - value: demo_tree_via_decorator
           - title
             - title: Title
             - value: item #3
