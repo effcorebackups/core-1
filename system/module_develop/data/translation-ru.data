@@ -42,6 +42,7 @@ translations
     - Data: Данные
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
+    - Demo NoSQL: Демонстрационное NoSQL
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
     - Elements: Элементы
@@ -154,7 +155,6 @@ translations
     - Total load: Общая загрука
     - Traits: Трейты
     - Tree dynamic (from SQL storage): Дерево динамическое (из SQL хранилища)
-    - Tree static (from NoSQL storage): Дерево статическое (из NoSQL хранилища)
     - Tree via decorator: Дерево через декоратор
     - Trees: Деревья
     - Types: Типы
