@@ -8,7 +8,7 @@ namespace effcore\modules\menu {
           use \effcore\tree;
           abstract class events_page {
 
-  static function on_show_block_sql_tree($page, $args) {
+  static function on_show_block_tree_sql($page, $args) {
     if (!empty($args['id_tree'])) {
       return tree::select($args['id_tree']);
     }
