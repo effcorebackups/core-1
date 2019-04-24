@@ -11,17 +11,6 @@ tree_items
     attributes
     - class
       - =: develop
-- trees_static|tree_item
-    id: trees_static
-    id_parent: develop
-    title: Trees
-    url: /develop/trees_static
-    access
-      roles
-      - =: admins
-    attributes
-    - class
-      - =: trees-static
 - structures|tree_item
     id: structures
     id_parent: develop
@@ -33,6 +22,17 @@ tree_items
     attributes
     - class
       - =: structures
+- trees_nosql|tree_item
+    id: trees_nosql
+    id_parent: develop
+    title: NoSQL trees
+    url: /develop/trees_nosql
+    access
+      roles
+      - =: admins
+    attributes
+    - class
+      - =: trees-nosql
 - php_dependencies|tree_item
     id: php_dependencies
     id_parent: develop

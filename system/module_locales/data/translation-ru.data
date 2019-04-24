@@ -286,6 +286,7 @@ translations
     - no visible fields: нет видимых полей
     - No: Нет
     - no: нет
+    - NoSQL trees: NoSQL деревья
     - not applicable: не применимо
     - Nothing selected!: Ничего не выбрано!
     - Number: Число
@@ -379,7 +380,6 @@ translations
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
-    - Static trees: Статические деревья
     - Storage "%%_name" is not available!: Хранилище "%%_name" не доступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!

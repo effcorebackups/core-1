@@ -4,8 +4,8 @@ tabs
     attributes
     - class
       - =: structures
-- trees_static|tabs
-    id: trees_static
+- trees_nosql|tabs
+    id: trees_nosql
     attributes
     - class
-      - =: trees-static
+      - =: trees-nosql

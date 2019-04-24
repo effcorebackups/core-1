@@ -1,11 +1,11 @@
 pages
-- trees_static|page
-    title: Static trees
+- trees_nosql|page
+    title: NoSQL trees
     https: true
     display
       check: url
       where: path
-      match: %^(?<base>/develop/trees_static)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
+      match: %^(?<base>/develop/trees_nosql)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
     access
       roles
       - =: admins
@@ -25,17 +25,17 @@ pages
     - tabs|page_part
         region: tabs
         type: link
-        source: tabs/develop/trees_static
+        source: tabs/develop/trees_nosql
     # ─────────────────────────────────────────────────────────────────────
     - page_init|page_part
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_trees_static::on_page_init
-    - block_tree_static|page_part
+        source: \effcore\modules\develop\events_page_trees_nosql::on_page_init
+    - block_tree_nosql|page_part
         display
           check: page_args
           where: action
           match: %^select$%
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_trees_static::on_show_block_tree
+        source: \effcore\modules\develop\events_page_trees_nosql::on_show_block_tree
