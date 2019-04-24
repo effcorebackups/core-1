@@ -28,9 +28,9 @@ namespace effcore\modules\demo {
     }
   }
 
-  static function on_tree_demo_static_change($page) {
+  static function on_tree_demo_sql_change($page) {
     tree_item::insert('item #1.2.3 (from code)', 'demo_item_1_2_3', 'demo_item_1_2', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, ['class' => ['demo-item-1-2-3' => 'demo-item-1-2-3']]);
-    tree_item::insert('item #3 (from code)',     'demo_item_3',     'M:demo_static', '/develop/demo/embedded/trees/item_3',                     null, ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
+    tree_item::insert('item #3 (from code)',     'demo_item_3',     'M:demo_nosql',  '/develop/demo/embedded/trees/item_3',                     null, ['class' => ['demo-item-3'     => 'demo-item-3'    ]]);
   }
 
   ################

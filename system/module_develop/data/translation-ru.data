@@ -43,6 +43,8 @@ translations
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - Demo NoSQL: Демонстрационное NoSQL
+    - Demo SQL: Демонстрационное SQL
+    - Demo via decorator: Демонстрационное через декоратор
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
     - Elements: Элементы
@@ -154,8 +156,6 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
-    - Tree dynamic (from SQL storage): Дерево динамическое (из SQL хранилища)
-    - Tree via decorator: Дерево через декоратор
     - Trees: Деревья
     - Types: Типы
     - UML Diagram: UML Диаграмма

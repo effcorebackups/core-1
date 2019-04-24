@@ -3,14 +3,14 @@ blocks
     attributes
     - data-styled-title: no
     - class
-      - =: demo-decorators-trees
+      - =: demo-tree-via-decorator
     children
   # ─────────────────────────────────────────────────────────────────────
   # tree
   # ─────────────────────────────────────────────────────────────────────
     - tree|decorator
         view_type: tree
-        title: Tree via decorator
+        title: Demo via decorator
         id: demo_tree
         data
         - rowid-1

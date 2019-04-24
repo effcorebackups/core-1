@@ -50,6 +50,9 @@ pages
         region: content
         type: link
         source: forms/demo/demo
+    # ─────────────────────────────────────────────────────────────────────
+    # markup
+    # ─────────────────────────────────────────────────────────────────────
     - block_demo_markup_static|page_part
         display
           check: page_args
@@ -66,6 +69,9 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_markup_dynamic
+    # ─────────────────────────────────────────────────────────────────────
+    # decorators
+    # ─────────────────────────────────────────────────────────────────────
     - block_demo_decorators_static|page_part
         display
           check: page_args
@@ -82,6 +88,9 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
+    # ─────────────────────────────────────────────────────────────────────
+    # trees
+    # ─────────────────────────────────────────────────────────────────────
     - tree_demo_via_decorator|page_part
         display
           check: page_args
@@ -90,32 +99,35 @@ pages
         region: content
         type: link
         source: blocks/demo/demo_tree_via_decorator
-    - tree_demo_dynamic|page_part
+    - tree_demo_sql|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: code
-        source: \effcore\modules\menu\events_page::on_show_block_dynamic_tree
+        source: \effcore\modules\menu\events_page::on_show_block_sql_tree
         args
-        - id_tree: demo_dynamic
-    - tree_demo_static_change|page_part
+        - id_tree: demo_sql
+    - tree_demo_sql_changes|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: code
-        source: \effcore\modules\demo\events_page_demo::on_tree_demo_static_change
-    - tree_demo_static|page_part
+        source: \effcore\modules\demo\events_page_demo::on_tree_demo_sql_change
+    - tree_demo_nosql|page_part
         display
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
         region: content
         type: link
-        source: trees/demo/demo_static
+        source: trees/demo/demo_nosql
+    # ─────────────────────────────────────────────────────────────────────
+    # selections
+    # ─────────────────────────────────────────────────────────────────────
     - block_demo_selection_demo_data_join_1|page_part
         display
           check: page_args
@@ -150,6 +162,9 @@ pages
         region: content
         type: link
         source: selections/demo/demo_types
+    # ─────────────────────────────────────────────────────────────────────
+    # messages
+    # ─────────────────────────────────────────────────────────────────────
     - demo_messages|page_part
         display
           check: page_args
@@ -166,6 +181,9 @@ pages
         region: content
         type: text
         source: All types of messages you can see above.
+    # ─────────────────────────────────────────────────────────────────────
+    # other
+    # ─────────────────────────────────────────────────────────────────────
     - block_demo_canvas|page_part
         display
           check: page_args
