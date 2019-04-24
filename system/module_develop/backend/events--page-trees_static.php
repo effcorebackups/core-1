@@ -12,18 +12,16 @@ namespace effcore\modules\develop {
           abstract class events_page_trees_static {
 
   static function on_page_init($page) {
-    $trees = tree::select_all();
+    $trees = tree::select_all(true);
     $id = $page->args_get('id');
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
-      if ($c_tree->is_static) {
-        tabs_item::insert(                 $c_tree->title,
-          'trees_static_select_'.          $c_tree->id,
-          'trees_static_select', 'select/'.$c_tree->id, null, ['class' => [
-                    'trees-static-select-'.$c_tree->id =>
-                    'trees-static-select-'.$c_tree->id]]);
-      }
+      tabs_item::insert(                 $c_tree->title,
+        'trees_static_select_'.          $c_tree->id,
+        'trees_static_select', 'select/'.$c_tree->id, null, ['class' => [
+                  'trees-static-select-'.$c_tree->id =>
+                  'trees-static-select-'.$c_tree->id]]);
     }
   }
 

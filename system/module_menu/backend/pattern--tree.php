@@ -13,7 +13,7 @@ namespace effcore {
   public $title = '';
   public $title_state; # hidden | cutted
   public $access;
-  public $is_static = true;
+  public $is_nosql = true;
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
@@ -75,13 +75,18 @@ namespace effcore {
       $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access), [], 0);
       static::$cache[$c_tree->id] = $c_tree;
       static::$cache[$c_tree->id]->module_id = 'menu';
-      static::$cache[$c_tree->id]->is_static = false;
+      static::$cache[$c_tree->id]->is_nosql = false;
     }
   }
 
-  static function select_all() {
-    if    (static::$cache == null) static::init();
-    return static::$cache ?? [];
+  static function select_all($is_only_nosql = false) {
+    if       (static::$cache == null) static::init();
+    $result = static::$cache ?? [];
+    if ($is_only_nosql)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->is_nosql == false)
+          unset($result[$c_id]);
+    return $result;
   }
 
   static function select($id) {
@@ -101,7 +106,7 @@ namespace effcore {
     if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_tree;
            static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->is_static = false;
+           static::$cache[$id]->is_nosql = false;
     return static::$cache[$id];
   }
 
