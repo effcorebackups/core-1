@@ -7,6 +7,7 @@
 namespace effcore\modules\develop {
           use \effcore\core;
           use \effcore\tabs_item;
+          use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
           abstract class events_page_trees_nosql {
@@ -30,12 +31,21 @@ namespace effcore\modules\develop {
     if ($id) {
       $tree = clone tree::select($id);
       $tree->build();
-      $tree->access = null;
-      $tree = core::deep_clone($tree, ['effcore\\tree_item' => 'effcore\\tree_item_managed']);
-      $tree->attribute_delete('class');
-      $tree->attribute_insert('class', ['managed' => 'managed']);
-      $tree->title_state = 'cutted';
-      return $tree;
+      $tree_items = $tree->children_select_recursive();
+      $tree_managed = tree::insert($tree->title ?? '', 'managed_'.$id);
+      $tree_managed->attribute_insert('class', ['managed' => 'managed']);
+      $tree_managed->title_state = 'cutted';
+      foreach ($tree_items as $c_item) {
+        tree_item::insert(
+          $c_item->title, 'managed_'.$c_item->id,
+          $c_item->id_parent == 'M:'.$id ? 'M:managed_'.$id : 'managed_'.$c_item->id_parent,
+          $c_item->url, null,
+          $c_item->attributes,
+          $c_item->element_attributes,
+          $c_item->weight, 'develop'
+        );
+      }
+      return $tree_managed;
     }
   }
 
