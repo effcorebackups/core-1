@@ -33,17 +33,17 @@ namespace effcore\modules\develop {
       $tree->build();
       $tree_items = $tree->children_select_recursive();
       $tree_managed = tree::insert($tree->title ?? '', 'managed_'.$id);
-      $tree_managed->attribute_insert('class', ['managed' => 'managed']);
+      $tree_managed->attribute_insert('data-tree-is-managed', 'true');
       $tree_managed->title_state = 'cutted';
       foreach ($tree_items as $c_item) {
-        tree_item::insert(
+        $c_tree_item = tree_item::insert(
           $c_item->title, 'managed_'.$c_item->id,
           $c_item->id_parent == 'M:'.$id ? 'M:managed_'.$id : 'managed_'.$c_item->id_parent,
           $c_item->url, null,
           $c_item->attributes,
           $c_item->element_attributes,
-          $c_item->weight, 'develop'
-        );
+          $c_item->weight, 'develop');
+        $c_tree_item->is_managed = true;
       }
       return $tree_managed;
     }
