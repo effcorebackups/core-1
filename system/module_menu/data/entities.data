@@ -51,6 +51,7 @@ entities
     view_type_multiple: tree
     selection_params
     - decorator_params
+      - tree_is_managed: true
       - tree_mapping
         - id: tree_item.id
         - id_parent: tree_item.id_parent

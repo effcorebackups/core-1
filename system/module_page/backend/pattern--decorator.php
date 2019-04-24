@@ -10,6 +10,7 @@ namespace effcore {
   public $id;
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl | tree
+  public $tree_is_managed = false;
   public $tree_mapping = [];
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
@@ -132,13 +133,16 @@ namespace effcore {
             $c_url       = array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : $c_row[$this->tree_mapping['url'      ]]['value'];
             if ($trees->child_select($c_id_tree) == null) {
                 $trees->child_insert(tree::insert($this->title ?? '', $c_id_tree), $c_id_tree);
-                $trees->child_select($c_id_tree)->attribute_insert('data-tree-is-managed', 'true');}
+                if ($this->tree_is_managed) {
+                  $trees->child_select($c_id_tree)->attribute_insert('data-tree-is-managed', 'true');
+                }
+            }
             $c_tree_item = tree_item::insert(
               $c_title,
               $c_id_tree.'-'.$c_id,
               $c_id_parent == null ? 'M:'.$c_id_tree : $c_id_tree.'-'.$c_id_parent,
               $c_url);
-            $c_tree_item->is_managed = true;
+            $c_tree_item->is_managed = $this->tree_is_managed;
           }
           $result->child_insert(
             $trees, 'trees'
