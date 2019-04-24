@@ -58,14 +58,6 @@ instances
     - id_tree: demo_sql
     - title: item #1.2.2
     - url: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_2
-- demo_tree_item_1_2_3|instance
-    entity_name: tree_item
-    values
-    - id: 6
-    - id_parent: 3
-    - id_tree: demo_sql
-    - title: item #1.2.3
-    - url: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3
 - demo_tree_item_1_3|instance
     entity_name: tree_item
     values
@@ -82,14 +74,6 @@ instances
     - id_tree: demo_sql
     - title: item #2
     - url: /develop/demo/embedded/trees/item_2
-- demo_tree_item_3|instance
-    entity_name: tree_item
-    values
-    - id: 9
-    - id_parent: null
-    - id_tree: demo_sql
-    - title: item #3
-    - url: /develop/demo/embedded/trees/item_3
 # ─────────────────────────────────────────────────────────────────────
 # demo types
 # ─────────────────────────────────────────────────────────────────────
