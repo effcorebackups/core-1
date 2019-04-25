@@ -138,11 +138,10 @@ namespace effcore {
                   $trees->child_select($c_id_tree)->attribute_insert('data-tree-is-managed', 'true');
                 }
             }
-            $c_tree_item = tree_item::insert(
-              $c_title,
-              $c_id_tree.'-'.$c_id,
-              $c_id_parent == null ? 'M:'.$c_id_tree : $c_id_tree.'-'.$c_id_parent,
-              $c_url);
+            $c_tree_item = tree_item::insert($c_title,
+              $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
+              $c_id_tree.'-'.$c_id_parent : null,
+              $c_id_tree,    $c_url);
             $c_tree_item->is_managed = $this->tree_is_managed;
           }
           $result->child_insert(

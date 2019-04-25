@@ -12,6 +12,7 @@ namespace effcore {
   public $element_attributes = ['role' => 'treeitem'];
   public $id;
   public $id_parent;
+  public $id_tree;
   public $title = '';
   public $url;
   public $shadow_url;
@@ -19,10 +20,11 @@ namespace effcore {
   public $is_managed = false;
   public $is_nosql = true;
 
-  function __construct($title = '', $id = null, $id_parent = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
     if ($id                ) $this->id                 = $id;
     if ($id_parent         ) $this->id_parent          = $id_parent;
+    if ($id_tree           ) $this->id_tree            = $id_tree;
     if ($url               ) $this->url                = $url;
     if ($access            ) $this->access             = $access;
     if ($element_attributes) $this->element_attributes = $element_attributes;
@@ -93,7 +95,12 @@ namespace effcore {
     }
   # load from storage
     foreach (entity::get('tree_item')->instances_select() as $c_instance) {
-      $c_tree_item = new static($c_instance->title, $c_instance->id, $c_instance->id_parent ?: 'M:'.$c_instance->id_tree, $c_instance->url, unserialize($c_instance->access));
+      $c_tree_item = new static(
+        $c_instance->title,
+        $c_instance->id,
+        $c_instance->id_parent,
+        $c_instance->id_tree,
+        $c_instance->url, unserialize($c_instance->access));
       static::$cache[$c_tree_item->id] = $c_tree_item;
       static::$cache[$c_tree_item->id]->module_id = 'menu';
       static::$cache[$c_tree_item->id]->is_nosql = false;
@@ -110,8 +117,8 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title, $id, $id_parent, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
-    $new_item = new static($title, $id, $id_parent, $url, $access, $attributes, $element_attributes, $weight);
+  static function insert($title, $id, $id_parent, $id_tree, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
+    $new_item = new static($title, $id, $id_parent, $id_tree, $url, $access, $attributes, $element_attributes, $weight);
     if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;

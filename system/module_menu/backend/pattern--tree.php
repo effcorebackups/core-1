@@ -24,7 +24,8 @@ namespace effcore {
 
   function build() {
     foreach (tree_item::select_all() as $c_item) {
-      if ($c_item->id_parent == 'M:'.$this->id) {
+      if ($c_item->id_tree   == $this->id &&
+          $c_item->id_parent == null) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
       }
@@ -92,13 +93,6 @@ namespace effcore {
   static function select($id) {
     if    (static::$cache == null) static::init();
     return static::$cache[$id] ?? null;
-  }
-
-  static function select_parent($id_parent) {
-    if ($id_parent[0] == 'M' &&
-        $id_parent[1] == ':')
-         return static   ::select(substr($id_parent, 2));
-    else return tree_item::select(       $id_parent    );
   }
 
   static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {

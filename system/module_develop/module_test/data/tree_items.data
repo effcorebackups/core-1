@@ -2,6 +2,7 @@ tree_items
 - tests|tree_item
     id: tests
     id_parent: develop
+    id_tree: main
     title: Tests
     url: /develop/tests
     access

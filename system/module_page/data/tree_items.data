@@ -2,6 +2,7 @@ tree_items
 - decoration|tree_item
     id: decoration
     id_parent: manage
+    id_tree: main
     title: Decoration
     url: /manage/decoration
     access

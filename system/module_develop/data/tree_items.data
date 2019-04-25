@@ -1,7 +1,8 @@
 tree_items
 - develop|tree_item
     id: develop
-    id_parent: M:main
+    id_parent: null
+    id_tree: main
     title: Develop
     shadow_url: /develop
     weight: -50
@@ -14,6 +15,7 @@ tree_items
 - structures|tree_item
     id: structures
     id_parent: develop
+    id_tree: main
     title: Structures
     url: /develop/structures
     access
@@ -25,6 +27,7 @@ tree_items
 - trees_nosql|tree_item
     id: trees_nosql
     id_parent: develop
+    id_tree: main
     title: NoSQL trees
     url: /develop/trees_nosql
     access
@@ -36,6 +39,7 @@ tree_items
 - php_dependencies|tree_item
     id: php_dependencies
     id_parent: develop
+    id_tree: main
     title: PHP dependencies
     url: /develop/php_dependencies
     access
@@ -47,6 +51,7 @@ tree_items
 - events|tree_item
     id: events
     id_parent: develop
+    id_tree: main
     title: Events
     url: /develop/events
     access
@@ -58,6 +63,7 @@ tree_items
 - console|tree_item
     id: console
     id_parent: develop
+    id_tree: main
     title: Console
     url: /develop/console
     access

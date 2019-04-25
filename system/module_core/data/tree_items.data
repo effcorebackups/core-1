@@ -1,7 +1,8 @@
 tree_items
 - home|tree_item
     id: home
-    id_parent: M:main
+    id_parent: null
+    id_tree: main
     title: Home
     url: /
     access
@@ -12,7 +13,8 @@ tree_items
       - =: home
 - manage|tree_item
     id: manage
-    id_parent: M:main
+    id_parent: null
+    id_tree: main
     title: Management
     shadow_url: /manage
     access
@@ -24,6 +26,7 @@ tree_items
 - modules|tree_item
     id: modules
     id_parent: manage
+    id_tree: main
     title: Modules
     url: /manage/modules
     access
@@ -35,6 +38,7 @@ tree_items
 - info|tree_item
     id: info
     id_parent: manage
+    id_tree: main
     title: Information
     url: /manage/info
     weight: -50

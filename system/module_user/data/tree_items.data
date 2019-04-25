@@ -1,7 +1,8 @@
 tree_items
 - anonymous|tree_item
     id: anonymous
-    id_parent: M:user_anonymous
+    id_parent: null
+    id_tree: user_anonymous
     title: Anonymous
     access
       roles
@@ -12,6 +13,7 @@ tree_items
 - login|tree_item
     id: login
     id_parent: anonymous
+    id_tree: user_anonymous
     title: Login
     url: /login
     weight: +50
@@ -24,6 +26,7 @@ tree_items
 - registration|tree_item
     id: registration
     id_parent: anonymous
+    id_tree: user_anonymous
     title: Registration
     url: /registration
     weight: 0
@@ -36,6 +39,7 @@ tree_items
 - recovery|tree_item
     id: recovery
     id_parent: anonymous
+    id_tree: user_anonymous
     title: Recovery
     url: /recovery
     weight: -50
@@ -48,7 +52,8 @@ tree_items
 # ─────────────────────────────────────────────────────────────────────
 - registered|tree_item
     id: registered
-    id_parent: M:user_registered
+    id_parent: null
+    id_tree: user_registered
     title: %%_nick
     url: /user/%%_nick
     access
@@ -60,6 +65,7 @@ tree_items
 - user_edit|tree_item
     id: user_edit
     id_parent: registered
+    id_tree: user_registered
     title: Edit
     url: /user/%%_nick/edit
     weight: +50
@@ -72,6 +78,7 @@ tree_items
 - logout|tree_item
     id: logout
     id_parent: registered
+    id_tree: user_registered
     title: Logout
     url: /logout
     weight: -50

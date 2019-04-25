@@ -2,6 +2,7 @@ tree_items
 - manage_instances|tree_item
     id: manage_instances
     id_parent: manage
+    id_tree: main
     title: Instances
     url: /manage/instances/select
     access
