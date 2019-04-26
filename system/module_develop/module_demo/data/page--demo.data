@@ -117,14 +117,6 @@ pages
         region: content
         type: link
         source: trees/demo/demo_nosql
-    - tree_demo_changes|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_tree_demo_change
     # ─────────────────────────────────────────────────────────────────────
     # selections
     # ─────────────────────────────────────────────────────────────────────

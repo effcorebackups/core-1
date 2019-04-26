@@ -23,14 +23,14 @@ namespace effcore {
   }
 
   function build() {
+    event::start('on_tree_before_build', $this->id, [&$this]);
     $this->attribute_insert('data-id', $this->id);
     foreach (tree_item::select_all() as $c_item) {
       if ($c_item->id_tree   == $this->id &&
           $c_item->id_parent == null) {
         $this->child_insert($c_item, $c_item->id);
-        $c_item->build();
-      }
-    }
+        $c_item->build();}}
+    event::start('on_tree_after_build', $this->id, [&$this]);
   }
 
   function render() {
