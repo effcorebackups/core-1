@@ -2,5 +2,3 @@ trees
 - demo_nosql|tree
     id: demo_nosql
     title: Demo NoSQL
-    attributes
-    - id: tree-demo_nosql

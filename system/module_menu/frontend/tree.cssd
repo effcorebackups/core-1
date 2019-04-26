@@ -5,50 +5,50 @@
 
   /* menu Main: sizes and orientation */
 
-  #tree-main          {float: left}
-  #tree-main li       {float: left}
-  #tree-main li li    {float: none}
-  #tree-main ul       {float: left}
-  #tree-main ul ul    {float: none}
+  x-tree[data-id='main']          {float: left}
+  x-tree[data-id='main'] li       {float: left}
+  x-tree[data-id='main'] li li    {float: none}
+  x-tree[data-id='main'] ul       {float: left}
+  x-tree[data-id='main'] ul ul    {float: none}
 
-  #tree-main ul ul    {position: absolute}
-  #tree-main ul ul ul {position: relative}
+  x-tree[data-id='main'] ul ul    {position: absolute}
+  x-tree[data-id='main'] ul ul ul {position: relative}
 
-  #tree-main li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  #tree-main ul       {padding: 0; margin: 0}
-  #tree-main ul ul    {padding: 20px}
-  #tree-main ul ul ul {padding: 0 0 0 21px}
+  x-tree[data-id='main'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  x-tree[data-id='main'] ul       {padding: 0; margin: 0}
+  x-tree[data-id='main'] ul ul    {padding: 20px}
+  x-tree[data-id='main'] ul ul ul {padding: 0 0 0 21px}
 
-  #tree-main li     a {padding: 21px; display: block}
-  #tree-main li li  a {padding: 0}
+  x-tree[data-id='main'] li     a {padding: 21px; display: block}
+  x-tree[data-id='main'] li li  a {padding: 0}
 
   /* menu Main: dynamic */
 
-  #tree-main > ul > li       > ul {display: none}
-  #tree-main > ul > li:hover > ul {display: block}
+  x-tree[data-id='main'] > ul > li       > ul {display: none}
+  x-tree[data-id='main'] > ul > li:hover > ul {display: block}
 
   /* menu Main: colors */
 
-  #tree-main ul       {background-color: %%_color_menu}
-  #tree-main ul ul    {background-color: %%_color_menu_active}
-  #tree-main ul ul ul {background-color: transparent}
+  x-tree[data-id='main'] ul       {background-color: %%_color_menu}
+  x-tree[data-id='main'] ul ul    {background-color: %%_color_menu_active}
+  x-tree[data-id='main'] ul ul ul {background-color: transparent}
 
-  #tree-main              a:not([href]) {color: %%_color_menu_text !important}
-  #tree-main              a             {color: %%_color_menu_link}
-  #tree-main        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  #tree-main        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
-  #tree-main > ul > li:hover            {                                  background-color: %%_color_menu_active}
+  x-tree[data-id='main']              a:not([href]) {color: %%_color_menu_text !important}
+  x-tree[data-id='main']              a             {color: %%_color_menu_link}
+  x-tree[data-id='main']        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree[data-id='main']        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree[data-id='main'] > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
-  #tree-main li    a[aria-selected      ='true'],
-  #tree-main li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
-  #tree-main li li a[aria-selected      ='true'],
-  #tree-main li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  x-tree[data-id='main'] li    a[aria-selected      ='true'],
+  x-tree[data-id='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree[data-id='main'] li li a[aria-selected      ='true'],
+  x-tree[data-id='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu Main: icons */
 
-  #tree-main li.home    > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
-  #tree-main li.manage  > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0  -64px}
-  #tree-main li.develop > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0 -128px}
+  x-tree[data-id='main'] li.home    > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
+  x-tree[data-id='main'] li.manage  > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0  -64px}
+  x-tree[data-id='main'] li.develop > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* managed menu */
 

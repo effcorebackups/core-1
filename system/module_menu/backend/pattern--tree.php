@@ -23,6 +23,7 @@ namespace effcore {
   }
 
   function build() {
+    $this->attribute_insert('data-id', $this->id);
     foreach (tree_item::select_all() as $c_item) {
       if ($c_item->id_tree   == $this->id &&
           $c_item->id_parent == null) {
@@ -33,8 +34,6 @@ namespace effcore {
   }
 
   function render() {
-    if ($this->attribute_select('id') == null && $this->id)
-        $this->attribute_insert('id',    'tree-'.$this->id);
     if (static::$cache == null) static::init();
     if ($this->access === null || access::check($this->access)) {
       if ($this->children_select_count() == 0)

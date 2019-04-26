@@ -1,47 +1,47 @@
 
   /* menu User: sizes and orientation */
 
-  #tree-user          {float: right; z-index: 10}
-  #tree-user li       {float: left}
-  #tree-user li li    {float: none}
-  #tree-user ul       {float: left}
-  #tree-user ul ul    {float: none}
+  x-tree[data-id^='user']          {float: right; z-index: 10}
+  x-tree[data-id^='user'] li       {float: left}
+  x-tree[data-id^='user'] li li    {float: none}
+  x-tree[data-id^='user'] ul       {float: left}
+  x-tree[data-id^='user'] ul ul    {float: none}
 
-  #tree-user ul ul    {position: absolute}
-  #tree-user ul ul ul {position: relative}
+  x-tree[data-id^='user'] ul ul    {position: absolute}
+  x-tree[data-id^='user'] ul ul ul {position: relative}
 
-  #tree-user li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  #tree-user ul       {padding: 0; margin: 0}
-  #tree-user ul ul    {padding: 20px}
-  #tree-user ul ul ul {padding: 0 0 0 21px}
+  x-tree[data-id^='user'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  x-tree[data-id^='user'] ul       {padding: 0; margin: 0}
+  x-tree[data-id^='user'] ul ul    {padding: 20px}
+  x-tree[data-id^='user'] ul ul ul {padding: 0 0 0 21px}
 
-  #tree-user li     a {padding: 21px; display: block}
-  #tree-user li li  a {padding: 0}
+  x-tree[data-id^='user'] li     a {padding: 21px; display: block}
+  x-tree[data-id^='user'] li li  a {padding: 0}
 
   /* menu User: dynamic */
 
-  #tree-user > ul > li       > ul {display: none}
-  #tree-user > ul > li:hover > ul {display: block}
+  x-tree[data-id^='user'] > ul > li       > ul {display: none}
+  x-tree[data-id^='user'] > ul > li:hover > ul {display: block}
 
   /* menu User: colors */
 
-  #tree-user ul       {background-color: %%_color_menu}
-  #tree-user ul ul    {background-color: %%_color_menu_active}
-  #tree-user ul ul ul {background-color: transparent}
+  x-tree[data-id^='user'] ul       {background-color: %%_color_menu}
+  x-tree[data-id^='user'] ul ul    {background-color: %%_color_menu_active}
+  x-tree[data-id^='user'] ul ul ul {background-color: transparent}
 
-  #tree-user              a:not([href]) {color: %%_color_menu_text !important}
-  #tree-user              a             {color: %%_color_menu_link}
-  #tree-user        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  #tree-user        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
-  #tree-user > ul > li:hover            {                                  background-color: %%_color_menu_active}
+  x-tree[data-id^='user']              a:not([href]) {color: %%_color_menu_text !important}
+  x-tree[data-id^='user']              a             {color: %%_color_menu_link}
+  x-tree[data-id^='user']        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree[data-id^='user']        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree[data-id^='user'] > ul > li:hover            {                                  background-color: %%_color_menu_active}
 
-  #tree-user li    a[aria-selected      ='true'],
-  #tree-user li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
-  #tree-user li li a[aria-selected      ='true'],
-  #tree-user li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  x-tree[data-id^='user'] li    a[aria-selected      ='true'],
+  x-tree[data-id^='user'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree[data-id^='user'] li li a[aria-selected      ='true'],
+  x-tree[data-id^='user'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu User: icons */
 
-  #tree-user li.anonymous                         > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
-  #tree-user li.registered                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
-  #tree-user li[data-has-avatar='yes'].registered > a {padding-left: 77px; background-image: url('%%_avatar_url');                 background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
+  x-tree[data-id^='user'] li.anonymous                         > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
+  x-tree[data-id^='user'] li.registered                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
+  x-tree[data-id^='user'] li[data-has-avatar='yes'].registered > a {padding-left: 77px; background-image: url('%%_avatar_url');                 background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}

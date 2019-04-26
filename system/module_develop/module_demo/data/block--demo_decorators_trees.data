@@ -3,7 +3,7 @@ blocks
     attributes
     - data-styled-title: no
     - class
-      - =: demo-tree-via-decorator
+      - =: block-demo_tree-via-decorator
     children
   # ─────────────────────────────────────────────────────────────────────
   # tree
