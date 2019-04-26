@@ -7,9 +7,7 @@ trees
       roles
       - =: anonymous
     attributes
-    - class
-      - =: user
-      - =: user-anonymous
+    - id: tree-user
 - user_registered|tree
     id: user_registered
     title: Menu for registered user
@@ -18,6 +16,4 @@ trees
       roles
       - =: registered
     attributes
-    - class
-      - =: user
-      - =: user-registered
+    - id: tree-user

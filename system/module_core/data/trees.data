@@ -4,5 +4,4 @@ trees
     title: Menu main
     title_state: hidden
     attributes
-    - class
-      - =: main
+    - id: tree-main
