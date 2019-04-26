@@ -68,6 +68,7 @@ namespace effcore {
   static function markup_get_block_information() {
     $user = user::get_current();
     $decorator = new decorator('dl');
+    $decorator->id = 'page_information';
     $decorator->data = [[
       'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
       'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
@@ -103,6 +104,7 @@ namespace effcore {
   static function markup_get_block_logs() {
     $logs = static::logs_select();
     $decorator = new decorator('table');
+    $decorator->id = 'console';
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_row_attributes = ['class' => [

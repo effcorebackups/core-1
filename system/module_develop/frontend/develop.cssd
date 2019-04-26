@@ -18,12 +18,12 @@
 
   /* php dependencies */
 
-  x-block.php-dependencies .report-extensions td {font-size: .9em}
+  x-decorator[data-id='extensions_dependency'] td {font-size: .9em}
 
   /* events */
 
-  x-block.events .report-events td {font-size: .9em}
-  x-block.events .report-events td[data-cellid='weight'] {white-space: nowrap}
+  x-decorator[data-id='events_list'] td {font-size: .9em}
+  x-decorator[data-id='events_list'] td[data-cellid='weight'] {white-space: nowrap}
 
   /* reports */
 

@@ -14,7 +14,7 @@ namespace effcore\modules\develop {
 
   static function on_show_block_events_list($page) {
     $title = new markup('h2', [], 'Registered event handlers');
-    $decorator = new decorator('table', ['class' => ['report-events' => 'report-events']]);
+    $decorator = new decorator('table');
     $decorator->id = 'events_list';
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach (event::get_all() as $c_event_type => $c_events) {

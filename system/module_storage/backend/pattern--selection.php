@@ -119,6 +119,7 @@ namespace effcore {
         count($instances)) {
 
       $decorator = new decorator($this->view_type);
+      $decorator->id = $this->id;
       foreach ($this->decorator_params as $c_key => $c_value) {
         $decorator->{$c_key} = $c_value;
       }
