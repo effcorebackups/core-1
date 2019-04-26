@@ -18,7 +18,8 @@ namespace effcore {
 
   function build() {
     foreach (tabs_item::select_all() as $c_item) {
-      if ($c_item->id_parent == 'T:'.$this->id) {
+      if ($c_item->id_tab    == $this->id &&
+          $c_item->id_parent == null) {
         $this->child_insert($c_item, $c_item->id);
         $c_item->build();
       }
@@ -94,13 +95,6 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function select_parent($id_parent) {
-    if ($id_parent[0] == 'T' &&
-        $id_parent[1] == ':')
-         return static   ::select(substr($id_parent, 2));
-    else return tabs_item::select(       $id_parent    );
-  }
-
   static function insert($id, $attributes = [], $weight = 0, $module_id = null) {
     $new_tab = new static($id, $attributes, $weight);
     if    (static::$cache == null) static::init();
@@ -110,6 +104,7 @@ namespace effcore {
   }
 
   static function delete($id) {
+    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 

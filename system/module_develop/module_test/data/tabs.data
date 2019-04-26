@@ -2,5 +2,4 @@ tabs
 - tests|tabs
     id: tests
     attributes
-    - class
-      - =: tests
+    - id: tab-tests

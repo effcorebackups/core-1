@@ -2,5 +2,4 @@ tabs
 - demo|tabs
     id: demo
     attributes
-    - class
-      - =: demo
+    - id: tab-demo

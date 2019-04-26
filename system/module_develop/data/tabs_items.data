@@ -1,53 +1,53 @@
 tabs_items
 - class|tabs_item
     id: structures_class
-    id_parent: T:structures
+    id_parent: null
+    id_tab: structures
     action_name: class
     action_name_default: class/list
     title: Classes
     attributes
-    - class
-      - =: class
+    - id: tabitem-structures-class
 - class_list|tabs_item
     id: structures_class_list
     id_parent: structures_class
+    id_tab: structures
     action_name: class/list
     title: List
     attributes
-    - class
-      - =: list
+    - id: tabitem-structures-class-list
 - class_diagram|tabs_item
     id: structures_class_diagram
     id_parent: structures_class
+    id_tab: structures
     action_name: class/diagram
     title: Diagram
     attributes
-    - class
-      - =: diagram
+    - id: tabitem-structures-class-diagram
 - interface|tabs_item
     id: structures_interface
-    id_parent: T:structures
+    id_parent: null
+    id_tab: structures
     action_name: interface
     action_name_default: interface/list
     title: Interfaces
     attributes
-    - class
-      - =: interface
+    - id: tabitem-structures-interface
 - trait|tabs_item
     id: structures_trait
-    id_parent: T:structures
+    id_parent: null
+    id_tab: structures
     action_name: trait
     action_name_default: trait/list
     title: Traits
     attributes
-    - class
-      - =: trait
+    - id: tabitem-structures-trait
 - trees_nosql_select|tabs_item
     id: trees_nosql_select
-    id_parent: T:trees_nosql
+    id_parent: null
+    id_tab: trees_nosql
     action_name: select
     title: Select
     weight: +50
     attributes
-    - class
-      - =: trees-nosql-select
+    - id: tabitem-trees_nosql-select

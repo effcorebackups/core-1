@@ -1,8 +1,8 @@
 tabs_items
 - test_execute|tabs_item
     id: test_execute
-    id_parent: T:tests
+    id_parent: null
+    id_tab: tests
     title: Execute
     attributes
-    - class
-      - =: test-execute
+    - id: tabitem-test_execute

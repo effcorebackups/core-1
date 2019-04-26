@@ -27,12 +27,12 @@ namespace effcore\modules\storage {
     $groups   = entity::groups_get();
     $entities_by_groups = [];
     core::array_sort_text($groups);
-    foreach ($groups as $c_id => $c_title) {
+    foreach ($groups as $c_grp_id => $c_title) {
       foreach ($entities as $c_name => $c_entity)
-        if ($c_id == $c_entity->group_get_id())
-          $entities_by_groups[$c_id][$c_name] = $c_entity;
+        if ($c_grp_id == $c_entity->group_get_id())
+          $entities_by_groups[$c_grp_id][$c_name] = $c_entity;
       core::array_sort_by_title(
-        $entities_by_groups[$c_id]
+        $entities_by_groups[$c_grp_id]
       );
     }
   # ┌───────────────────────────────────────────────────────────┬─────────────────────────────────────────┐
@@ -47,18 +47,15 @@ namespace effcore\modules\storage {
     if (isset($groups[$group_id])                                                        == false) url::go($page->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
     if (isset($groups[$group_id]) && isset($entities_by_groups[$group_id][$entity_name]) == false) url::go($page->args_get('base').'/'.           $group_id  .'/'.array_keys($entities_by_groups[           $group_id  ])[0]);
   # make tabs
-    foreach ($entities_by_groups as $c_id => $c_entities) {
-      tabs_item::insert($groups[$c_id],
-              'instance_group_'.$c_id,
-          'T:manage_instances', $c_id, null, ['class' => [
-                       'group-'.$c_id =>
-                       'group-'.$c_id]]);
+    foreach ($entities_by_groups as $c_grp_id => $c_entities) {
+      tabs_item::insert($groups[$c_grp_id],
+            'manage_instances_'.$c_grp_id, null,
+            'manage_instances', $c_grp_id, null, ['id' => 'tabitem-manage_instances-'.$c_grp_id]);
       foreach ($c_entities as $c_name =>  $c_entity) {
-        tabs_item::insert(      $c_entity->title_plural,
-             'instance_select_'.$c_name,
-              'instance_group_'.$c_id, $c_id.'/'.$c_name, null, ['class' => [
-                      'select-'.$c_name =>
-                      'select-'.$c_name]]);
+        tabs_item::insert($c_entity->title_plural,
+            'manage_instances_'.$c_grp_id.'_'.$c_name,
+            'manage_instances_'.$c_grp_id,
+            'manage_instances', $c_grp_id.'/'.$c_name, null, ['id' => 'tabitem-manage_instances-'.$c_grp_id.'-'.$c_name]);
       }
     }
   }

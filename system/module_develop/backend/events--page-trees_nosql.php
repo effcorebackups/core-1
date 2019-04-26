@@ -18,11 +18,10 @@ namespace effcore\modules\develop {
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
-      tabs_item::insert(                $c_tree->title,
-        'trees_nosql_select_'.          $c_tree->id,
-        'trees_nosql_select', 'select/'.$c_tree->id, null, ['class' => [
-                  'trees-nosql-select-'.$c_tree->id =>
-                  'trees-nosql-select-'.$c_tree->id]]);
+      tabs_item::insert(      $c_tree->title,
+        'trees_nosql_select_'.$c_tree->id,
+        'trees_nosql_select',
+        'trees_nosql', 'select/'.$c_tree->id, null, ['id' => 'tabitem-trees_nosql-select-'.$c_tree->id]);
     }
   }
 

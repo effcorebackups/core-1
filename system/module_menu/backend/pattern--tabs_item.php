@@ -12,15 +12,17 @@ namespace effcore {
   public $element_attributes = ['role' => 'tab'];
   public $id;
   public $id_parent;
+  public $id_tab;
   public $title = '';
   public $action_name;
   public $action_name_default;
   public $hidden = false;
   public $access;
 
-  function __construct($title = '', $id = null, $id_parent = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
     if ($id                 ) $this->id                  = $id;
     if ($id_parent          ) $this->id_parent           = $id_parent;
+    if ($id_tab             ) $this->id_tab              = $id_tab;
     if ($title              ) $this->title               = $title;
     if ($action_name        ) $this->action_name         = $action_name;
     if ($action_name_default) $this->action_name_default = $action_name_default;
@@ -95,8 +97,8 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title, $id, $id_parent, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0, $module_id = null) {
-    $new_item = new static($title, $id, $id_parent, $action_name, $action_name_default, $attributes, $element_attributes, $hidden, $weight);
+  static function insert($title, $id, $id_parent, $id_tab, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0, $module_id = null) {
+    $new_item = new static($title, $id, $id_parent, $id_tab, $action_name, $action_name_default, $attributes, $element_attributes, $hidden, $weight);
     if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
@@ -104,6 +106,7 @@ namespace effcore {
   }
 
   static function delete($id) {
+    if   (static::$cache == null) static::init();
     unset(static::$cache[$id]);
   }
 
