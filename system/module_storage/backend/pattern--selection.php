@@ -57,6 +57,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
     if (count($used_storages) == 1) {
       $main_entity = entity::get(reset($used_entities));
+      $this->_main_entity = $main_entity->name;
       $this->attribute_insert('data-main-entity', $main_entity->name);
       $id_keys = $main_entity->id_get_real();
 
@@ -120,6 +121,8 @@ namespace effcore {
 
       $decorator = new decorator($this->view_type);
       $decorator->id = $this->id;
+      $decorator->_main_entity = $main_entity->name;
+      $decorator->attribute_insert('data-main-entity', $main_entity->name);
       foreach ($this->decorator_params as $c_key => $c_value) {
         $decorator->{$c_key} = $c_value;
       }
