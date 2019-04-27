@@ -51,6 +51,12 @@ events
   on_selection_after_build
   - demo|event
       handler: \effcore\modules\demo\events_page::on_selection_after_build
+  on_tab_before_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_tab_before_build
+  on_tab_after_build
+  - demo|event
+      handler: \effcore\modules\demo\events_page::on_tab_after_build
   on_tree_before_build
   - demo|event
       handler: \effcore\modules\demo\events_page::on_tree_before_build

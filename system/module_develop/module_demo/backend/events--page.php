@@ -23,6 +23,12 @@ namespace effcore\modules\demo {
   static function on_selection_after_build($selection) {
   }
 
+  static function on_tab_before_build($tab) {
+  }
+
+  static function on_tab_after_build($tab) {
+  }
+
   static function on_tree_before_build($tree) {
     if ($tree->id == 'demo_nosql') {
       tree_item::insert('item #1.2.3 (from code)', 'demo_item_1_2_3','demo_item_1_2', 'demo_nosql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3');
