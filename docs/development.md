@@ -1,5 +1,17 @@
 
 
+About low-quality code editors
+=====================================================================
+
+Atom editor strips trailing whitespace and adds a trailing newline when it's saved.
+This behavior is not incompatible with editing of "*.data" files.
+Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
+Also you can install the "editorconfig" package with this command (for the
+support settings from ".editorconfig" file):
+
+    apm install editorconfig
+
+
 SQL Storage characteristics
 =====================================================================
 
