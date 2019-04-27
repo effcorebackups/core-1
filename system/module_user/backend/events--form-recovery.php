@@ -55,7 +55,9 @@ namespace effcore\modules\user {
               &$mail_subject,
               &$mail_body,
               &$mail_from,
-              &$mail_encoding
+              &$mail_encoding,
+              &$form,
+              &$items
             ]);
             $mail_send_result = mail(
               $mail_to,

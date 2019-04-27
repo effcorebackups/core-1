@@ -42,7 +42,7 @@ namespace effcore\modules\demo {
   static function on_tree_after_build($tree) {
   }
 
-  static function on_email_send_before(&$to, &$subject, &$body, &$from, &$encoding) {
+  static function on_email_send_before(&$to, &$subject, &$body, &$from, &$encoding, &$form, &$items) {
   }
 
 }}
