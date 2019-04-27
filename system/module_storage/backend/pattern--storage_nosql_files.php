@@ -248,7 +248,6 @@ namespace effcore {
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
   static function text_to_data($data, $file = null) {
-    $data = rtrim($data, nl);
     $result = new \stdClass;
     $p = [-1 => &$result];
     $postconstructor_objects = [];
@@ -313,8 +312,8 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
-        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line'],                                ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
+        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Check syntax! Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
+        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Check syntax! Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
       }
     }
   # call the interface dependent functions
