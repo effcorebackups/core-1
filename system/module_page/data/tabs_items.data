@@ -5,13 +5,9 @@ tabs_items
     id_tab: decoration
     action_name: colors
     title: Colors
-    attributes
-    - id: tabitem-decoration_colors
 - decoration_presets|tabs_item
     id: decoration_presets
     id_parent: null
     id_tab: decoration
     action_name: presets
     title: Presets
-    attributes
-    - id: tabitem-decoration_presets

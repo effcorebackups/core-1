@@ -32,6 +32,7 @@ namespace effcore {
   }
 
   function build() {
+    $this->attribute_insert('data-id', $this->id);
     foreach (static::select_all() as $c_item) {
       if ($c_item->id_parent == $this->id) {
         $this->child_insert($c_item, $c_item->id);

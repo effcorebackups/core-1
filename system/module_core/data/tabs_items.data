@@ -6,21 +6,15 @@ tabs_items
     action_name: install
     title: Install
     weight: +50
-    attributes
-    - id: tabitem-manage_modules-install
 - modules_uninstall|tabs_item
     id: modules_uninstall
     id_parent: null
     id_tab: manage_modules
     action_name: uninstall
     title: Uninstall
-    attributes
-    - id: tabitem-manage_modules-uninstall
 - modules_update|tabs_item
     id: modules_update
     id_parent: null
     id_tab: manage_modules
     action_name: update
     title: Update
-    attributes
-    - id: tabitem-manage_modules-update

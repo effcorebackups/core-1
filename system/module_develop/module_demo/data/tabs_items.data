@@ -6,93 +6,69 @@ tabs_items
     action_name: embedded
     action_name_default: embedded/form_elements
     title: Embedded
-    attributes
-    - id: tabitem-demo-embedded
 - demo_form_elements|tabs_item
     id: demo_form_elements
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/form_elements
     title: Form elements
-    attributes
-    - id: tabitem-demo-embedded-form_elements
 - demo_markup_static|tabs_item
     id: demo_markup_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_static
     title: Markup static
-    attributes
-    - id: tabitem-demo-embedded-markup_static
 - demo_markup_dynamic|tabs_item
     id: demo_markup_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_dynamic
     title: Markup dynamic
-    attributes
-    - id: tabitem-demo-embedded-markup_dynamic
 - demo_decorators_static|tabs_item
     id: demo_decorators_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_static
     title: Decorators static
-    attributes
-    - id: tabitem-demo-embedded-decorators_static
 - demo_decorators_dynamic|tabs_item
     id: demo_decorators_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_dynamic
     title: Decorators dynamic
-    attributes
-    - id: tabitem-demo-embedded-decorators_dynamic
 - demo_trees|tabs_item
     id: demo_trees
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/trees
     title: Trees
-    attributes
-    - id: tabitem-demo-embedded-trees
 - demo_selections|tabs_item
     id: demo_selections
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/selections
     title: Selections
-    attributes
-    - id: tabitem-demo-embedded-selections
 - demo_messages|tabs_item
     id: demo_messages
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/messages
     title: Messages
-    attributes
-    - id: tabitem-demo-embedded-messages
 - demo_canvas|tabs_item
     id: demo_canvas
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/canvas
     title: Canvas
-    attributes
-    - id: tabitem-demo-embedded-canvas
 - demo_diagrams|tabs_item
     id: demo_diagrams
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/diagrams
     title: Diagrams
-    attributes
-    - id: tabitem-demo-embedded-diagrams
 - demo_logo|tabs_item
     id: demo_logo
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/logo
     title: Logo
-    attributes
-    - id: tabitem-demo-embedded-logo

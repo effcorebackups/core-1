@@ -6,24 +6,18 @@ tabs_items
     action_name: class
     action_name_default: class/list
     title: Classes
-    attributes
-    - id: tabitem-structures-class
 - class_list|tabs_item
     id: structures_class_list
     id_parent: structures_class
     id_tab: structures
     action_name: class/list
     title: List
-    attributes
-    - id: tabitem-structures-class-list
 - class_diagram|tabs_item
     id: structures_class_diagram
     id_parent: structures_class
     id_tab: structures
     action_name: class/diagram
     title: Diagram
-    attributes
-    - id: tabitem-structures-class-diagram
 - interface|tabs_item
     id: structures_interface
     id_parent: null
@@ -31,8 +25,6 @@ tabs_items
     action_name: interface
     action_name_default: interface/list
     title: Interfaces
-    attributes
-    - id: tabitem-structures-interface
 - trait|tabs_item
     id: structures_trait
     id_parent: null
@@ -40,8 +32,6 @@ tabs_items
     action_name: trait
     action_name_default: trait/list
     title: Traits
-    attributes
-    - id: tabitem-structures-trait
 - trees_nosql_select|tabs_item
     id: trees_nosql_select
     id_parent: null
@@ -49,5 +39,3 @@ tabs_items
     action_name: select
     title: Select
     weight: +50
-    attributes
-    - id: tabitem-trees_nosql-select

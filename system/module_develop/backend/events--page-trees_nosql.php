@@ -21,7 +21,7 @@ namespace effcore\modules\develop {
       tabs_item::insert(      $c_tree->title,
         'trees_nosql_select_'.$c_tree->id,
         'trees_nosql_select',
-        'trees_nosql', 'select/'.$c_tree->id, null, ['id' => 'tabitem-trees_nosql-select-'.$c_tree->id]);
+        'trees_nosql', 'select/'.$c_tree->id);
     }
   }
 

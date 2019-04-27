@@ -50,12 +50,12 @@ namespace effcore\modules\storage {
     foreach ($entities_by_groups as $c_grp_id => $c_entities) {
       tabs_item::insert($groups[$c_grp_id],
             'manage_instances_'.$c_grp_id, null,
-            'manage_instances', $c_grp_id, null, ['id' => 'tabitem-manage_instances-'.$c_grp_id]);
+            'manage_instances', $c_grp_id);
       foreach ($c_entities as $c_name =>  $c_entity) {
         tabs_item::insert($c_entity->title_plural,
             'manage_instances_'.$c_grp_id.'_'.$c_name,
             'manage_instances_'.$c_grp_id,
-            'manage_instances', $c_grp_id.'/'.$c_name, null, ['id' => 'tabitem-manage_instances-'.$c_grp_id.'-'.$c_name]);
+            'manage_instances', $c_grp_id.'/'.$c_name);
       }
     }
   }

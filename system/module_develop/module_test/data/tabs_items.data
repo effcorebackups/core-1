@@ -4,5 +4,3 @@ tabs_items
     id_parent: null
     id_tab: tests
     title: Execute
-    attributes
-    - id: tabitem-test_execute
