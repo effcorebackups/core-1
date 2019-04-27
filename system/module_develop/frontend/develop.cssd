@@ -3,18 +3,18 @@
 
   /* logs */
 
-  x-block.logs tbody    td {vertical-align: top; color: black}
-  x-block.logs tbody tr td       {background-color: transparent}
-  x-block.logs tbody tr          {background-color: white}
-  x-block.logs tbody tr.autoload {background-color: papayawhip}
-  x-block.logs tbody tr.file     {background-color: aliceblue}
-  x-block.logs tbody tr.event    {background-color: lavender}
-  x-block.logs tbody tr.storage  {background-color: honeydew}
-  x-block.logs tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
+  x-block[data-id='logs'] tbody    td {vertical-align: top; color: black}
+  x-block[data-id='logs'] tbody tr td       {background-color: transparent}
+  x-block[data-id='logs'] tbody tr          {background-color: white}
+  x-block[data-id='logs'] tbody tr.autoload {background-color: papayawhip}
+  x-block[data-id='logs'] tbody tr.file     {background-color: aliceblue}
+  x-block[data-id='logs'] tbody tr.event    {background-color: lavender}
+  x-block[data-id='logs'] tbody tr.storage  {background-color: honeydew}
+  x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
 
-  x-block.logs x-total {display: block; font-size: .9em; text-align: center; color: %%_color_text}
-  x-block.logs x-total x-label::after {content: ': '}
-  x-block.logs x-total x-value {}
+  x-block[data-id='logs'] x-total {display: block; font-size: .9em; text-align: center; color: %%_color_text}
+  x-block[data-id='logs'] x-total x-label::after {content: ': '}
+  x-block[data-id='logs'] x-total x-value {}
 
   /* php dependencies */
 
@@ -70,7 +70,7 @@
   x-diagram-uml x-attributes:empty,
   x-diagram-uml x-operations:empty {display: none !important}
 
-  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-attributes,
-  x-block.structures-diagram #expand:checked ~ x-diagram-uml x-operations {display: block}
+  x-block[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
+  x-block[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
-  x-block.demo-canvas x-block-content {text-align: center}
+  x-block[data-id='demo_canvas'] x-block-content {text-align: center}

@@ -75,7 +75,7 @@ namespace effcore {
       'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
     ]];
-    return new block('Current page information', ['class' => ['info' => 'info']], [
+    return new block('Current page information', ['data-id' => 'info'], [
       $decorator->build()
     ]);
   }
@@ -96,7 +96,7 @@ namespace effcore {
     foreach ($statistics as $c_param => $c_value) {
       $diagram->slice_add($c_param, $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
     }
-    return new block('Total load', ['class' => ['diagram-load' => 'diagram-load']], [
+    return new block('Total load', ['data-id' => 'diagram_load'], [
       $diagram
     ]);
   }
@@ -123,7 +123,7 @@ namespace effcore {
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]
       ];
     }
-    return new block('Execute plan', ['data-styled-title' => 'no', 'class' => ['logs' => 'logs']], [
+    return new block('Execute plan', ['data-styled-title' => 'no', 'data-id' => 'logs'], [
       $decorator, new markup('x-total', [], [
         new markup('x-label', [], 'Total'),
         new markup('x-value', [], count($logs))

@@ -63,7 +63,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new block('', ['class' => ['structures-list' => 'structures-list']], [
+    return new block('', ['data-id' => 'structures_list'], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       $targets, $list
     ]);
@@ -165,7 +165,7 @@ namespace effcore\modules\develop {
     }
 
     $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
-    return new block('UML Diagram', ['data-styled-title' => 'no', 'class' => ['structures-diagram' => 'structures-diagram']], [
+    return new block('UML Diagram', ['data-styled-title' => 'no', 'data-id' => 'structures_diagram'], [
       new markup('p', [], 'The report was generated in real time but the list of classes is depend on the cache!'),
       new markup('p', [], new text('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => true]),

@@ -63,7 +63,7 @@ namespace effcore\modules\demo {
     $canvas->glyph_set('XXXXX|----X|---X-|--X--|-X---|X----|X----|X----|X----|X----', 75, 3); # 7
     $canvas->glyph_set('-XXX-|X---X|X---X|X---X|-XXX-|X---X|X---X|X---X|X---X|-XXX-', 85, 3); # 8
     $canvas->glyph_set('-XXX-|X---X|X---X|X---X|X---X|-XXX-|----X|---X-|--X--|-X---', 95, 3); # 9
-    return new block('Canvas', ['class' => ['demo-canvas' => 'demo-canvas']], [
+    return new block('Canvas', ['data-id' => 'demo_canvas'], [
       $canvas
     ]);
   }
@@ -83,8 +83,8 @@ namespace effcore\modules\demo {
     $diagram_radial->slice_add('Parameter 3', 20, '0.02 sec.', '#fc5740');
     $diagram_radial->slice_add('Parameter 4', 10, '0.01 sec.', '#fd9a1e');
     return new node([], [
-      new block('Linear diagram', ['class' => ['demo-diagram-linear' => 'demo-diagram-linear']], $diagram_linear),
-      new block('Radial diagram', ['class' => ['demo-diagram-radial' => 'demo-diagram-radial']], $diagram_radial)
+      new block('Linear diagram', ['data-id' => 'demo_diagram_linear'], $diagram_linear),
+      new block('Radial diagram', ['data-id' => 'demo_diagram_radial'], $diagram_radial)
     ]);
   }
 
@@ -159,7 +159,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Decorators dynamic', ['data-styled-title' => 'no', 'class' => ['demo-decorators-dynamic' => 'demo-decorators-dynamic']], [
+    return new block('Decorators dynamic', ['data-styled-title' => 'no', 'data-id' => 'demo_decorators_dynamic'], [
       $decorator_table_title,
       $decorator_table,
       $decorator_ul_title,
@@ -236,7 +236,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Markup dynamic', ['class' => ['demo-markup-dynamic' => 'demo-markup-dynamic']], [
+    return new block('Markup dynamic', ['data-id' => 'demo_markup_dynamic'], [
       $paragraph_title,
       $paragraph,
       $unordered_list_title,

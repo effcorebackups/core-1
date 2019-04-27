@@ -105,7 +105,7 @@ namespace effcore\modules\develop {
       }
     }
   # return result
-    return new block('', ['class' => ['php-dependencies' => 'php-dependencies']], [
+    return new block('', ['data-id' => 'php_dependencies'], [
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       $mod_title,
       $mod_decorator,

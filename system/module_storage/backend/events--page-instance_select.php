@@ -60,12 +60,12 @@ namespace effcore\modules\storage {
             }
           }
           if (!$has_visible_fields) {
-            return new block('', ['class' => [$entity->name => $entity->name]],
+            return new block('', ['data-id' => 'instance_select', 'data-main-entity' => $entity->name],
               new markup('x-no-result', [], 'no visible fields')
             );
           } else {
             $selection->field_insert_action(null, 'Action');
-            return new block('', ['class' => [$entity->name => $entity->name]],
+            return new block('', ['data-id' => 'instance_select', 'data-main-entity' => $entity->name],
               $selection
             );
           }
