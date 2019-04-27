@@ -248,6 +248,7 @@ namespace effcore {
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
   static function text_to_data($data, $file = null) {
+    $data = rtrim($data, nl);
     $result = new \stdClass;
     $p = [-1 => &$result];
     $postconstructor_objects = [];
