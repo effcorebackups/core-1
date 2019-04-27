@@ -25,7 +25,7 @@ namespace effcore\modules\core {
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('files')->select('bundle/system/build'))
     ]);
-    return new block('', ['class' => ['system-info' => 'system-info']], [
+    return new block('', ['data-id' => 'info_system'], [
       $logo,
       $copyright,
       $build
@@ -45,7 +45,7 @@ namespace effcore\modules\core {
       'upd_is_req'    => ['title' => 'Update is required',   'value' => $is_required_updates_sticker],
       'cron_url'      => ['title' => 'Cron URL',             'value' => $cron_link                  ]
     ]];
-    return new block('Service', ['class' => ['service-info' => 'service-info']], [
+    return new block('Service', ['data-id' => 'info_service'], [
       $decorator->build()
     ]);
   }
@@ -67,7 +67,7 @@ namespace effcore\modules\core {
       'timezone'      => ['title' => 'Server timezone',        'value' => date_default_timezone_get()                              ],
       'datetime'      => ['title' => 'Server UTC date / time', 'value' => core::datetime_get()                                     ],
     ]];
-    return new block('Environment', ['class' => ['environment-info' => 'environment-info']], [
+    return new block('Environment', ['data-id' => 'info_environment'], [
       $decorator->build()
     ]);
   }

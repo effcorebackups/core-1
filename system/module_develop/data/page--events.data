@@ -23,7 +23,11 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - block_events_list|page_part
+    - block_events_registered_types|page_part
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_events::on_show_block_events_list
+        source: \effcore\modules\develop\events_page_events::on_show_block_events_registered_types
+    - block_events_registered_handlers|page_part
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_events::on_show_block_events_registered_handlers

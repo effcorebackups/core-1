@@ -38,7 +38,7 @@ namespace effcore\modules\user {
             new text_multiline($user_roles, [], ', ')
           );          
         }
-        return new block('', ['class' => ['user-info' => 'user-info']],
+        return new block('', ['data-id' => 'user-info'],
           $selection
         );
       } else core::send_header_and_exit('access_forbidden');

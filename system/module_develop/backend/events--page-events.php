@@ -12,10 +12,28 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           abstract class events_page_events {
 
-  static function on_show_block_events_list($page) {
+  static function on_show_block_events_registered_types($page) {
+    $title = new markup('h2', [], 'Registered event types');
+    $decorator = new decorator('table');
+    $decorator->id = 'events_registered_types';
+    $decorator->result_attributes = ['class' => ['compact' => 'compact']];
+    $events = event::get_all();
+    ksort($events);
+    foreach ($events as $c_event_type => $c_events) {
+      $decorator->data[] = [
+        'type' => ['value' => new text_simple($c_event_type), 'title' => 'Type'],
+      ];
+    }
+    return new block('', ['data-id' => 'events_registered_types'], [
+      $title,
+      $decorator
+    ]);
+  }
+
+  static function on_show_block_events_registered_handlers($page) {
     $title = new markup('h2', [], 'Registered event handlers');
     $decorator = new decorator('table');
-    $decorator->id = 'events';
+    $decorator->id = 'events_registered_handlers';
     $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach (event::get_all() as $c_event_type => $c_events) {
       foreach ($c_events as $c_event) {
@@ -28,7 +46,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block('', ['class' => ['events' => 'events']], [
+    return new block('', ['data-id' => 'events_registered_handlers'], [
       $title,
       $decorator
     ]);

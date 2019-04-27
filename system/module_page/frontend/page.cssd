@@ -108,13 +108,13 @@
 
   /* block system info */
 
-  x-block.system-info {margin: 150px 0 50px 0; text-align: center}
-  x-block.system-info x-logo      {display: block; margin-bottom: 20px}
-  x-block.system-info x-logo img  {width: 100%; max-width: 300px}
-  x-block.system-info x-copyright {display: block; font-size: .8em}
-  x-block.system-info x-build     {display: block}
-  x-block.system-info x-build x-title::after {content: ': '}
-  x-block.system-info x-build x-value {font-weight: bold}
+  x-block[data-id='info_system'] {margin: 150px 0 50px 0; text-align: center}
+  x-block[data-id='info_system'] x-logo      {display: block; margin-bottom: 20px}
+  x-block[data-id='info_system'] x-logo img  {width: 100%; max-width: 300px}
+  x-block[data-id='info_system'] x-copyright {display: block; font-size: .8em}
+  x-block[data-id='info_system'] x-build     {display: block}
+  x-block[data-id='info_system'] x-build x-title::after {content: ': '}
+  x-block[data-id='info_system'] x-build x-value {font-weight: bold}
 
   /* x-sticker */
 
