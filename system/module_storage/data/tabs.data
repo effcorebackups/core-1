@@ -1,5 +1,3 @@
 tabs
 - manage_instances|tabs
     id: manage_instances
-    attributes
-    - id: tab-manage_instances

@@ -1,5 +1,3 @@
 tabs
 - tests|tabs
     id: tests
-    attributes
-    - id: tab-tests

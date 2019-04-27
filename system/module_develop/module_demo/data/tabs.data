@@ -1,5 +1,3 @@
 tabs
 - demo|tabs
     id: demo
-    attributes
-    - id: tab-demo

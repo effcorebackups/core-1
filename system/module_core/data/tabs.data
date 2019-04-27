@@ -1,5 +1,3 @@
 tabs
 - manage_modules|tabs
     id: manage_modules
-    attributes
-    - id: tab-manage_modules

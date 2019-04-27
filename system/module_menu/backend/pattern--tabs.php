@@ -17,6 +17,7 @@ namespace effcore {
   }
 
   function build() {
+    $this->attribute_insert('data-id', $this->id);
     foreach (tabs_item::select_all() as $c_item) {
       if ($c_item->id_tab    == $this->id &&
           $c_item->id_parent == null) {

@@ -1,9 +1,5 @@
 tabs
 - structures|tabs
     id: structures
-    attributes
-    - id: tab-structures
 - trees_nosql|tabs
     id: trees_nosql
-    attributes
-    - id: tab-trees_nosql

@@ -1,5 +1,3 @@
 tabs
 - decoration|tabs
     id: decoration
-    attributes
-    - id: tab-decoration
