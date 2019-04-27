@@ -2,8 +2,7 @@ blocks
 - demo_markup_static|block
     title: Markup static
     attributes
-    - class
-      - =: demo-markup-static
+    - data-id: demo_markup_static
     children
   # ─────────────────────────────────────────────────────────────────────
   # paragraph

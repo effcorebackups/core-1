@@ -2,8 +2,7 @@ blocks
 - logo|block
     content_tag_name: null
     attributes
-    - class
-      - =: logo
+    - data-id: logo
     children
     - link|markup
         tag_name: a

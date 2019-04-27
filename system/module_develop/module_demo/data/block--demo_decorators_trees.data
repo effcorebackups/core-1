@@ -2,8 +2,7 @@ blocks
 - demo_tree_via_decorator|block
     attributes
     - data-styled-title: no
-    - class
-      - =: block-demo_tree-via-decorator
+    - data-id: demo_tree_via_decorator
     children
   # ─────────────────────────────────────────────────────────────────────
   # tree

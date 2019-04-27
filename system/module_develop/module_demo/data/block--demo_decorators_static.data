@@ -3,8 +3,7 @@ blocks
     title: Decorators static
     attributes
     - data-styled-title: no
-    - class
-      - =: demo-decorators-static
+    - data-id: demo_decorators_static
     children
   # ─────────────────────────────────────────────────────────────────────
   # table

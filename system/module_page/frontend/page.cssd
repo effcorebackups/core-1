@@ -132,8 +132,8 @@
 
   /* block logo */
 
-  x-block.logo {margin: 0}
-  x-block.logo a.to_front {
+  x-block[data-id='logo'] {margin: 0}
+  x-block[data-id='logo'] a.to_front {
     display: block;
     width: 150px;
     height: 48px;
