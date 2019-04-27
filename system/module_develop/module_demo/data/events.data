@@ -63,3 +63,7 @@ events
   on_tree_after_build
   - demo|event
       handler: \effcore\modules\demo\events_page::on_tree_after_build
+  on_email_send_before
+  - demo|event
+      for: recovery
+      handler: \effcore\modules\demo\events_page::on_email_send_before

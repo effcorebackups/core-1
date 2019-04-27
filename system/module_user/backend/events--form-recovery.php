@@ -8,6 +8,7 @@ namespace effcore\modules\user {
           use const \effcore\cr;
           use const \effcore\nl;
           use \effcore\core;
+          use \effcore\event;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\template;
@@ -49,6 +50,13 @@ namespace effcore\modules\user {
               'domain'       => $current_url->domain,
               'new_password' => $new_password
             ])->render();
+            event::start('on_email_send_before', 'recovery', [
+              &$mail_to,
+              &$mail_subject,
+              &$mail_body,
+              &$mail_from,
+              &$mail_encoding
+            ]);
             $mail_send_result = mail(
               $mail_to,
               $mail_subject,
