@@ -7,9 +7,6 @@ tree_items
     access
       roles
       - =: anonymous
-    attributes
-    - class
-      - =: anonymous
 - login|tree_item
     id: login
     id_parent: anonymous
@@ -20,9 +17,6 @@ tree_items
     access
       roles
       - =: anonymous
-    attributes
-    - class
-      - =: login
 - registration|tree_item
     id: registration
     id_parent: anonymous
@@ -33,9 +27,6 @@ tree_items
     access
       roles
       - =: anonymous
-    attributes
-    - class
-      - =: registration
 - recovery|tree_item
     id: recovery
     id_parent: anonymous
@@ -46,9 +37,6 @@ tree_items
     access
       roles
       - =: anonymous
-    attributes
-    - class
-      - =: recovery
 # ─────────────────────────────────────────────────────────────────────
 - registered|tree_item
     id: registered
@@ -58,9 +46,6 @@ tree_items
     url: /user/%%_nick
     access
       roles
-      - =: registered
-    attributes
-    - class
       - =: registered
 - user_edit|tree_item
     id: user_edit
@@ -72,9 +57,6 @@ tree_items
     access
       roles
       - =: registered
-    attributes
-    - class
-      - =: user-edit
 - logout|tree_item
     id: logout
     id_parent: registered
@@ -85,6 +67,3 @@ tree_items
     access
       roles
       - =: registered
-    attributes
-    - class
-      - =: logout

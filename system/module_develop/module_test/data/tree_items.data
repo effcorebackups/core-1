@@ -8,6 +8,3 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: tests

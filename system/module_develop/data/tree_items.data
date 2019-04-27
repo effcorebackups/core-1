@@ -9,9 +9,6 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: develop
 - structures|tree_item
     id: structures
     id_parent: develop
@@ -21,9 +18,6 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: structures
 - trees_nosql|tree_item
     id: trees_nosql
     id_parent: develop
@@ -33,9 +27,6 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: trees-nosql
 - php_dependencies|tree_item
     id: php_dependencies
     id_parent: develop
@@ -45,9 +36,6 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: php-dependencies
 - events|tree_item
     id: events
     id_parent: develop
@@ -57,9 +45,6 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: events
 - console|tree_item
     id: console
     id_parent: develop
@@ -69,6 +54,3 @@ tree_items
     access
       roles
       - =: admins
-    attributes
-    - class
-      - =: console

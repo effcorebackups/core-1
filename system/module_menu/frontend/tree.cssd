@@ -46,9 +46,9 @@
 
   /* menu Main: icons */
 
-  x-tree[data-id='main'] li.home    > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
-  x-tree[data-id='main'] li.manage  > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0  -64px}
-  x-tree[data-id='main'] li.develop > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0 -128px}
+  x-tree[data-id='main'] li[data-id='home'   ] > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
+  x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0  -64px}
+  x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-tree.svg'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* managed menu */
 
