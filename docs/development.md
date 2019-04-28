@@ -11,17 +11,19 @@ Files "*.data" have next features:
 
 Be sure that your editor has a right settings for editing.
 File ".editorconfig" is describe right settings for any editor
-but only some editors can work with this.
+but only professional editors can work with this feature.
 
 The next editors need some improvements:
-- Coda        : ?
-- TextWrangler: no setting required
-- Textastic   : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab)
-- Sublime     : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true
-- TextMate    : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do
+- BBEdit      : adapts;
+- TextWrangler: adapts;
 - Atom        : strips trailing whitespace and adds a trailing newline when it's saved.
   Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-  Also you can install the "editorconfig" package with this command: apm install editorconfig
+  Also you can install the "editorconfig" package with this command: "apm install editorconfig".
+- Coda        : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) or install package "EditorConfig for Coda";
+- Espresso    : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
+- Textastic   : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
+- TextMate    : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do;
+- Sublime     : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true;
 
 
 SQL Storage characteristics
