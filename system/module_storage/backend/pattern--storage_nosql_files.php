@@ -261,7 +261,7 @@ namespace effcore {
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.
                    '(?<prefix>- |)'.
-                   '(?<name>[^\t]+?)'.
+                   '(?<name>[^\t].*?)'.
                    '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
                    '(?<value>.*)$%S', $c_line, $matches);
       if (array_key_exists('name', $matches)) {
@@ -312,8 +312,8 @@ namespace effcore {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {
-        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Check that there are no empty lines.', 'Check that there is no tabulation.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
-        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Check that there are no empty lines.', 'Check that there is no tabulation.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
+        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Check that there are no empty lines.', 'Check that there is no indent with tabulation characters.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
+        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Check that there are no empty lines.', 'Check that there is no indent with tabulation characters.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/development.mark".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
       }
     }
   # call the interface dependent functions
