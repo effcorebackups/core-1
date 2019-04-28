@@ -1,15 +1,27 @@
 
 
-About low-quality code editors
+When you edit "*.data" files
 =====================================================================
 
-ATOM editor strips trailing whitespace and adds a trailing newline when it's saved.
-This behavior is not incompatible with editing of "*.data" files.
-Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-Also you can install the "editorconfig" package with this command (for the
-support settings from ".editorconfig" file):
+Files "*.data" have next features:
+- does not support empty lines;
+- does not support indent with tab characters;
+- only Unix line endings (LF) are support;
+- only UTF-8 text encoding are support.
 
-    apm install editorconfig
+Be sure that your editor has a right settings for editing.
+File ".editorconfig" is describe right settings for any editor
+but only some editors can work with this.
+
+The next editors need some improvements:
+- Coda        : ?
+- TextWrangler: no setting required
+- Textastic   : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab)
+- Sublime     : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true
+- TextMate    : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do
+- Atom        : strips trailing whitespace and adds a trailing newline when it's saved.
+  Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
+  Also you can install the "editorconfig" package with this command: apm install editorconfig
 
 
 SQL Storage characteristics
