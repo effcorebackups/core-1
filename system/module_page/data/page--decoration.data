@@ -29,10 +29,6 @@ pages
         type: link
         source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\page\events_page_decoration::on_page_init
     - form_colors|page_part
         display
           check: page_args
