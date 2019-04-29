@@ -17,3 +17,7 @@ events
       for: instance_update
       handler: \effcore\modules\menu\events_form_instance_update::on_submit
       weight: +50
+  on_tab_before_build
+  - demo|event
+      for: manage_instances
+      handler: \effcore\modules\menu\events_page::on_tab_before_build
