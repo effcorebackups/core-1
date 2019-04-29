@@ -15,3 +15,7 @@ events
   - console|event
       for: console
       handler: \effcore\modules\develop\events_form_console::on_submit
+  on_tab_before_build
+  - demo|event
+      for: trees_nosql
+      handler: \effcore\modules\develop\events_page_trees_nosql::on_tab_before_build

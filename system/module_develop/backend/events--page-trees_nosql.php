@@ -6,17 +6,18 @@
 
 namespace effcore\modules\develop {
           use \effcore\core;
+          use \effcore\page;
           use \effcore\tabs_item;
           use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
           abstract class events_page_trees_nosql {
 
-  static function on_page_init($page) {
+  static function on_tab_before_build($tab) {
     $trees = tree::select_all(true);
-    $id = $page->args_get('id');
+    $id = page::get_current()->args_get('id');
     core::array_sort_by_title($trees);
-    if (!isset($trees[$id])) url::go($page->args_get('base').'/select/'.reset($trees)->id);
+    if (!isset($trees[$id])) url::go(page::get_current()->args_get('base').'/select/'.reset($trees)->id);
     foreach ($trees as $c_tree) {
       tabs_item::insert(      $c_tree->title,
         'trees_nosql_select_'.$c_tree->id,
@@ -26,8 +27,9 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_tree($page) {
+    $trees = tree::select_all(true);
     $id = $page->args_get('id');
-    if ($id) {
+    if (isset($trees[$id])) {
       $tree = clone tree::select($id);
       $tree->build();
       $tree_items = $tree->children_select_recursive();

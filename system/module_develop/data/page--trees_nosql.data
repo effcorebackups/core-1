@@ -27,10 +27,6 @@ pages
         type: link
         source: tabs/develop/trees_nosql
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\develop\events_page_trees_nosql::on_page_init
     - block_tree_nosql|page_part
         display
           check: page_args
