@@ -30,6 +30,6 @@ events
       for: colors_preset
       handler: \effcore\modules\page\events_form_colors_preset::on_submit
   on_tab_before_build
-  - demo|event
+  - decoration|event
       for: decoration
       handler: \effcore\modules\page\events_page_decoration::on_tab_before_build

@@ -27,10 +27,6 @@ pages
         type: link
         source: tabs/test/tests
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\test\events_page_test::on_page_init
     - form_test|page_part
         region: content
         type: link

@@ -15,3 +15,7 @@ events
   - test|event
       for: test
       handler: \effcore\modules\test\events_form_test::on_submit
+  on_tab_before_build
+  - tests|event
+      for: tests
+      handler: \effcore\modules\test\events_page_test::on_tab_before_build
