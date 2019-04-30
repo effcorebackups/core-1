@@ -14,22 +14,23 @@ File ".editorconfig" is describe right settings for any editor/IDE
 but only professional editors/IDE can work with this feature.
 
 The next editors/IDE need some improvements:
-- BBEdit            : adapts;
-- TextWrangler      : adapts;
+- BBEdit            : Adapt to ".editorconfig" if it's in the parent directory.
+- TextWrangler      : Adapt to ".editorconfig".
 - Atom              : Strips trailing whitespace and adds a trailing newline when it's saved.
-                      Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-                      Also you can install the "editorconfig" package with this command: "apm install editorconfig".
+                      Install package "EditorConfig" with this command: "apm install editorconfig".
+                      Or go to "Settings → Packages → Core Packages" and disable the package "whitespace".
 - PHPStorm          : Strips trailing whitespace when it's saved.
-                      Go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save" or install package "EditorConfig".
+                      Install package "EditorConfig".
+                      Or go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save".
 - Visual Studio Code: Tab Size will be automatically detected when a file is opened based on the file contents.
                       Go to "Preferences → Text Editor → Detect Indentation" and disable it.
-- Coda              : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) or install package "EditorConfig for Coda";
-- Eclipse           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
-- Espresso          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
-- Textastic         : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
-- TextMate          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do;
-- Sublime           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true;
-- Notepad++         : ?
+- Espresso          : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Textastic         : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Coda              : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Eclipse           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Notepad++         : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Sublime           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) (p.s. "translate_tabs_to_spaces" : true).
+- TextMate          : Install plugin "EditorConfig".
 
 
 SQL Storage characteristics
