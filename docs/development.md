@@ -16,19 +16,18 @@ but only professional editors/IDE can work with this feature.
 The next editors/IDE need some improvements:
 - BBEdit            : adapts;
 - TextWrangler      : adapts;
-- Atom              : strips trailing whitespace and adds a trailing newline when it's saved.
-  Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-  Also you can install the "editorconfig" package with this command: "apm install editorconfig".
+- Atom              : Strips trailing whitespace and adds a trailing newline when it's saved.
+                      Go to "Settings → Packages → Core Packages" and disable the package "whitespace".
+                      Also you can install the "editorconfig" package with this command: "apm install editorconfig".
+- PHPStorm          : Strips trailing whitespace when it's saved.
+                      Go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save" or install package "EditorConfig".
 - Coda              : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) or install package "EditorConfig for Coda";
+- Eclipse           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
 - Espresso          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
 - Textastic         : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
 - TextMate          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do;
 - Sublime           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true;
-- Aptana Studio     : ?
-- Eclipse           : ?
-- Netbeans          : ?
 - Notepad++         : ?
-- PHPStorm          : ?
 - Visual Studio Code: ?
 
 
