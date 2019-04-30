@@ -21,6 +21,8 @@ The next editors/IDE need some improvements:
                       Also you can install the "editorconfig" package with this command: "apm install editorconfig".
 - PHPStorm          : Strips trailing whitespace when it's saved.
                       Go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save" or install package "EditorConfig".
+- Visual Studio Code: Tab Size will be automatically detected when a file is opened based on the file contents.
+                      Go to "Preferences → Text Editor → Detect Indentation" and disable it.
 - Coda              : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) or install package "EditorConfig for Coda";
 - Eclipse           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
 - Espresso          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab);
@@ -28,7 +30,6 @@ The next editors/IDE need some improvements:
 - TextMate          : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "Soft tabs" mode is hard to do;
 - Sublime           : set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) | p.s. "translate_tabs_to_spaces": true;
 - Notepad++         : ?
-- Visual Studio Code: ?
 
 
 SQL Storage characteristics
