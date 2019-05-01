@@ -1,5 +1,6 @@
 pages
 - user|page
+    id: user
     title: User %%_nick_page_context{nick}
     https: true
     display

@@ -1,5 +1,6 @@
 pages
 - console|page
+    id: console
     title: Console
     https: true
     display

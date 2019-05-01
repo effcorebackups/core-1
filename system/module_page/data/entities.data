@@ -1,0 +1,40 @@
+entities
+- page|entity
+    name: page
+    title: Page
+    title_plural: Pages
+    catalog_name: pages
+    group: Page
+    ws_access: true
+    ws_created: true
+    ws_updated: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        field_is_visible_on_select: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - pattern: ^[a-zA-Z0-9_\-]+$
+        - disabled: true
+    - title
+        title: Title
+        type: varchar
+        collate: nocase
+        size: 1024
+        not_null: true
+        field_is_visible_on_select: true
+        field_class: \effcore\field_text
+    - is_https
+        title: Is HTTPS
+        type: boolean
+        not_null: true
+        default: 0
+        field_is_visible_on_select: true
+        field_class: \effcore\field_checkbox
+        field_element_attributes
+        - name: is_https
+        - value: is_on

@@ -1,5 +1,6 @@
 pages
 - decoration|page
+    id: decoration
     title: Decoration
     https: true
     display

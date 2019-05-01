@@ -1,5 +1,6 @@
 pages
 - registration|page
+    id: registration
     title: Registration
     https: true
     display

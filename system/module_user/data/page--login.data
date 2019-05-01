@@ -1,5 +1,6 @@
 pages
 - login|page
+    id: login
     title: Login
     https: true
     display

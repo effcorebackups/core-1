@@ -1,5 +1,6 @@
 pages
 - trees_nosql|page
+    id: trees_nosql
     title: NoSQL trees
     https: true
     display

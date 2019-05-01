@@ -1,5 +1,6 @@
 pages
 - instance_delete|page
+    id: instance_delete
     title: %%_entity_title_page_context{entity_name}: delete
     https: true
     display

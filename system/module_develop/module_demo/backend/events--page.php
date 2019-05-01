@@ -8,6 +8,9 @@ namespace effcore\modules\demo {
           use \effcore\tree_item;
           abstract class events_page {
 
+  static function on_before_build($page) {
+  }
+
   static function on_before_render($page, $template) {
   }
 

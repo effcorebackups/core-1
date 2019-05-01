@@ -1,5 +1,6 @@
 pages
 - demo|page
+    id: demo
     title: Demo
     https: true
     display

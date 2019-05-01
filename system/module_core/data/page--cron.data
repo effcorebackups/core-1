@@ -1,5 +1,6 @@
 pages
 - cron|page
+    id: cron
     title: Cron
     display
       check: url

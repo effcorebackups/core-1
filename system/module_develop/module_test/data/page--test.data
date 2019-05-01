@@ -1,5 +1,6 @@
 pages
 - tests|page
+    id: tests
     title: Tests
     https: true
     display

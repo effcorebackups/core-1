@@ -1,5 +1,6 @@
 pages
 - instance_select|page
+    id: instance_select
     title: %%_entity_title_page_context{entity_name}
     https: true
     display

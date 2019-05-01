@@ -1,5 +1,6 @@
 pages
 - locales|page
+    id: locales
     title: Locales
     https: true
     display

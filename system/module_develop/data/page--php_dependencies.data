@@ -1,5 +1,6 @@
 pages
 - php_dependencies|page
+    id: php_dependencies
     title: PHP dependencies
     https: true
     display

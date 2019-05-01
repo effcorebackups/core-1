@@ -1,5 +1,6 @@
 pages
 - front|page
+    id: front
     title: Front page
     display
       check: url

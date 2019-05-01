@@ -1,5 +1,6 @@
 pages
 - events|page
+    id: events
     title: Events
     https: true
     display

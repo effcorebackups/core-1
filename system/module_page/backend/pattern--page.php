@@ -7,6 +7,7 @@
 namespace effcore {
           class page extends node implements has_external_cache {
 
+  public $id;
   public $title;
   public $https;
   public $display;
@@ -23,8 +24,13 @@ namespace effcore {
                   $this->args;
   }
 
+  function build() {
+    event::start('on_page_before_build', $this->id, [&$this]);
+    # @todo: make functionality
+  }
+
   function render() {
-    $settings = module::settings_get('page');
+    $this->build();
     $user_agent = core::server_get_user_agent_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
@@ -34,6 +40,7 @@ namespace effcore {
     }
 
   # show important messages
+    $settings = module::settings_get('page');
     if ($settings->show_warning_if_not_https && !empty($this->https) && url::get_current()->protocol_get() != 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
@@ -61,7 +68,7 @@ namespace effcore {
     }
 
   # render page
-    event::start('on_page_before_render', null, [&$this, &$template]);
+    event::start('on_page_before_render', $this->id, [&$this, &$template]);
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
     $html = $template->target_get('html');
@@ -146,7 +153,7 @@ namespace effcore {
   static protected $current;
 
   static function not_external_properties_get() {
-    return ['display' => 'display', 'access' => 'access'];
+    return ['id' => 'id', 'display' => 'display', 'access' => 'access'];
   }
 
   static function cache_cleaning() {
@@ -156,10 +163,10 @@ namespace effcore {
 
   static function init() {
     foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
-      foreach ($c_pages as $c_row_id => $c_page) {
-        if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('page', $c_row_id, $c_module_id);
-        static::$cache[$c_row_id] = $c_page;
-        static::$cache[$c_row_id]->module_id = $c_module_id;
+      foreach ($c_pages as $c_id => $c_page) {
+        if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
+        static::$cache[$c_id] = $c_page;
+        static::$cache[$c_id]->module_id = $c_module_id;
       }
     }
     foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
@@ -175,11 +182,11 @@ namespace effcore {
     return static::$current;
   }
 
-  static function get($row_id, $load = true) {
+  static function get($id, $load = true) {
     if (static::$cache == null) static::init();
-    if (static::$cache[$row_id] instanceof external_cache && $load)
-        static::$cache[$row_id] = static::$cache[$row_id]->external_cache_load();
-    return static::$cache[$row_id];
+    if (static::$cache[$id] instanceof external_cache && $load)
+        static::$cache[$id] = static::$cache[$id]->external_cache_load();
+    return static::$cache[$id];
   }
 
   static function get_all($load = true) {
@@ -213,12 +220,12 @@ namespace effcore {
   static function is_displayed_by_current_url($display) {
     $args = [];
     if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->protocol_get(), $args)) ||
-        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->path_get(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->query_get(),    $args)) ||
-        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->anchor_get(),   $args)) ||
-        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->type_get(),     $args)) ||
-        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->full_get(),     $args)) ) {
+        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get  (), $args)) ||
+        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->path_get    (), $args)) ||
+        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->query_get   (), $args)) ||
+        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->anchor_get  (), $args)) ||
+        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->type_get    (), $args)) ||
+        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->full_get    (), $args)) ) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
   }
@@ -232,9 +239,8 @@ namespace effcore {
               $c_page = $c_page->external_cache_load();
           static::$current = $c_page;
         # filter arguments
-          foreach ($c_args as $c_key => $c_value) {
-            $c_page->args_set($c_key, $c_value);
-          }
+          foreach ($c_args as $c_key => $c_value)
+            $c_page->args_set($c_key,   $c_value);
         # render page
           return $c_page->render();
         } else {

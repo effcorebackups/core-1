@@ -1,5 +1,6 @@
 pages
 - info|page
+    id: info
     title: Information
     https: true
     display

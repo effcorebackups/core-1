@@ -1,5 +1,6 @@
 pages
 - modules|page
+    id: modules
     title: Modules
     https: true
     display

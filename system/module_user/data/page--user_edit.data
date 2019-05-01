@@ -1,5 +1,6 @@
 pages
 - user_edit|page
+    id: user_edit
     title: Edit user %%_nick_page_context{nick}
     https: true
     display

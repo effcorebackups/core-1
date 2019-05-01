@@ -1,5 +1,6 @@
 pages
 - structures|page
+    id: structures
     title: Structures
     https: true
     display
