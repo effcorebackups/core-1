@@ -10,7 +10,7 @@ pages
     access
       roles
       - =: anonymous
-    children
+    parts
     - menu_user|page_part
         region: menu
         type: link

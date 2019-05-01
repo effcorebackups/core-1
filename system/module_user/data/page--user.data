@@ -11,7 +11,7 @@ pages
       roles
       - =: admins
       - =: registered
-    children
+    parts
     - menu_user|page_part
         region: menu
         type: link

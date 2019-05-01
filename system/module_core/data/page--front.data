@@ -6,7 +6,7 @@ pages
       check: url
       where: path
       match: %^/$%
-    children
+    parts
     - menu_user_registered|page_part
         region: menu
         type: link

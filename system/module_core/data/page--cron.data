@@ -10,7 +10,7 @@ pages
       roles
       - =: anonymous
       - =: registered
-    children
+    parts
     - block_cron|page_part
         region: content
         type: code

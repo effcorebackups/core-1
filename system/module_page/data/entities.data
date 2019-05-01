@@ -29,7 +29,7 @@ entities
         field_is_visible_on_select: true
         field_class: \effcore\field_text
     - is_https
-        title: Is HTTPS
+        title: HTTPS
         type: boolean
         not_null: true
         default: 0

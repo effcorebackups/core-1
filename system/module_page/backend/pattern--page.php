@@ -53,11 +53,10 @@ namespace effcore {
       );
     }
 
-    $contents = new node();
-    foreach ($this->children as $c_row_id => $c_part) {
-      if (!$contents->child_select(            $c_part->region))
-           $contents->child_insert(new node(), $c_part->region);
-      $c_region = $contents->child_select($c_part->region);
+    foreach ($this->parts as $c_row_id => $c_part) {
+      if (!$this->child_select(            $c_part->region))
+           $this->child_insert(new node(), $c_part->region);
+      $c_region = $this->child_select($c_part->region);
       $c_part_markup = $c_part->markup_get($this);
       if ($c_part_markup) {
         $c_region->child_insert($c_part_markup, $c_row_id);
@@ -81,7 +80,7 @@ namespace effcore {
     $template->arg_set('head_icons',     $frontend->icons  );
     $template->arg_set('head_styles',    $frontend->styles );
     $template->arg_set('head_scripts',   $frontend->scripts);
-    foreach ($contents->children_select() as $c_region => $c_parts) {
+    foreach ($this->children_select() as $c_region => $c_parts) {
       $template->arg_set($c_region, $c_parts);
     }
     if ($user_agent->name) $template->data->children['html']->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));

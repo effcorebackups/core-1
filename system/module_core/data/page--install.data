@@ -7,7 +7,7 @@ pages
       check: url
       where: path
       match: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
-    children
+    parts
     - menu_languages|page_part
         region: top
         type: code
