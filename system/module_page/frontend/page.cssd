@@ -126,6 +126,7 @@
     line-height: 1.1em;
     color: black;
     background-color: silver}
+  x-sticker a {color: black}
   x-sticker[data-state='ok'     ] {background: %%_color_ok}
   x-sticker[data-state='warning'] {background: %%_color_warning}
   x-sticker[data-state='error'  ] {background: %%_color_error}
@@ -178,7 +179,7 @@
   x-decorator[data-view-type='ul'] x-title:not(:empty)::after {content: ': '}
 
   x-decorator[data-view-type='dl'] dl    {margin: 0; padding: 0}
-  x-decorator[data-view-type='dl'] dl dt {margin: 0; padding: 3px 10px 3px 0; float: left; min-width: 200px}
+  x-decorator[data-view-type='dl'] dl dt {margin: 0; padding: 3px 10px 3px 0; float: left; clear: left; width: 200px}
   x-decorator[data-view-type='dl'] dl dd {margin: 0 0 0 210px; padding: 3px 0 3px 3px}
 
   /* x-selection */
