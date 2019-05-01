@@ -79,6 +79,7 @@ translations
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - credentials: учётные данные
+    - Cron last run: Последний запуск Cron
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы

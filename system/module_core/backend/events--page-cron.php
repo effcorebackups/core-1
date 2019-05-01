@@ -9,6 +9,7 @@ namespace effcore\modules\core {
           use \effcore\console;
           use \effcore\core;
           use \effcore\event;
+          use \effcore\storage;
           use \effcore\timer;
           abstract class events_page_cron {
 
@@ -20,6 +21,7 @@ namespace effcore\modules\core {
       foreach ($result as $c_handler => $c_result)
         print 'Run: '.$c_handler.br;
         print 'Cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
+      storage::get('files')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', core::datetime_get());
       console::log_store();
       exit();
     } else {
