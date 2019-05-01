@@ -28,7 +28,8 @@ namespace effcore {
     $user_agent = core::server_get_user_agent_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
-    if ($user_agent->name == 'msie') {
+    if ($user_agent->name_version == 11 &&
+        $user_agent->name         == 'msie') {
       header('X-UA-Compatible: IE=10');
     }
 
@@ -45,7 +46,6 @@ namespace effcore {
       );
     }
 
-  # render page
     $contents = new node();
     foreach ($this->children as $c_row_id => $c_part) {
       if (!$contents->child_select(            $c_part->region))
@@ -60,6 +60,7 @@ namespace effcore {
       }
     }
 
+  # render page
     event::start('on_page_before_render', null, [&$this, &$template]);
     $frontend = $this->frontend_markup_get();
     $template = template::make_new('page');
@@ -69,16 +70,15 @@ namespace effcore {
     $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
-    $template->arg_set('charset',        $this->charset);
-    $template->arg_set('head_icons',     $frontend->icons);
-    $template->arg_set('head_styles',    $frontend->styles);
+    $template->arg_set('charset',        $this    ->charset);
+    $template->arg_set('head_icons',     $frontend->icons  );
+    $template->arg_set('head_styles',    $frontend->styles );
     $template->arg_set('head_scripts',   $frontend->scripts);
     foreach ($contents->children_select() as $c_region => $c_parts) {
       $template->arg_set($c_region, $c_parts);
     }
     if ($user_agent->name) $template->data->children['html']->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $template->data->children['html']->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
-
     $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());
     return $template->render();
