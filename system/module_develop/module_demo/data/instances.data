@@ -1,5 +1,77 @@
 instances
 # ─────────────────────────────────────────────────────────────────────
+# demo autoincrement
+# ─────────────────────────────────────────────────────────────────────
+- demo_autoincrement_1|instance
+    entity_name: demo_autoincrement
+    values
+    - description: row with auto id = 1
+- demo_autoincrement_2|instance
+    entity_name: demo_autoincrement
+    values
+    - description: row with auto id = 2
+- demo_autoincrement_3|instance
+    entity_name: demo_autoincrement
+    values
+    - description: row with auto id = 3
+# ─────────────────────────────────────────────────────────────────────
+# demo collations
+# ─────────────────────────────────────────────────────────────────────
+- demo_collations_1|instance
+    entity_name: demo_collations
+    values
+    - id: 1
+    - f_nocase: aaa
+    - f_binary: aaa
+- demo_collations_2|instance
+    entity_name: demo_collations
+    values
+    - id: 2
+    - f_nocase: AAA
+    - f_binary: AAA
+# ─────────────────────────────────────────────────────────────────────
+# demo constraints
+# ─────────────────────────────────────────────────────────────────────
+- demo_constraints_1|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary_value_1
+    - f_unique: unique value 1
+    - f_foreign: 1
+- demo_constraints_2|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary_value_2
+    - f_unique: unique value 2
+    - f_foreign: 2
+- demo_constraints_3|instance
+    entity_name: demo_constraints
+    values
+    - f_primary: primary_value_3
+    - f_unique: unique value 3
+    - f_foreign: 3
+# ─────────────────────────────────────────────────────────────────────
+# demo indexes
+# ─────────────────────────────────────────────────────────────────────
+- demo_indexes_1|instance
+    entity_name: demo_indexes
+    values
+    - id: 1
+    - f_index_unique: unique value 1
+    - f_index: value 1
+- demo_indexes_2|instance
+    entity_name: demo_indexes
+    values
+    - id: 2
+    - f_index_unique: unique value 2
+    - f_index: value 2
+- demo_indexes_3|instance
+    entity_name: demo_indexes
+    values
+    - id: 3
+    - f_index_unique: unique value 3
+    - f_index: value 3
+# ─────────────────────────────────────────────────────────────────────
 # roles
 # ─────────────────────────────────────────────────────────────────────
 - demo_role|instance
@@ -95,75 +167,3 @@ instances
     - f_datetime: 2030-12-31 12:34:56
     - f_boolean: 1
     - f_blob: 12345
-# ─────────────────────────────────────────────────────────────────────
-# demo autoincrement
-# ─────────────────────────────────────────────────────────────────────
-- demo_autoincrement_1|instance
-    entity_name: demo_autoincrement
-    values
-    - description: row with auto id = 1
-- demo_autoincrement_2|instance
-    entity_name: demo_autoincrement
-    values
-    - description: row with auto id = 2
-- demo_autoincrement_3|instance
-    entity_name: demo_autoincrement
-    values
-    - description: row with auto id = 3
-# ─────────────────────────────────────────────────────────────────────
-# demo collations
-# ─────────────────────────────────────────────────────────────────────
-- demo_collations_1|instance
-    entity_name: demo_collations
-    values
-    - id: 1
-    - f_nocase: aaa
-    - f_binary: aaa
-- demo_collations_2|instance
-    entity_name: demo_collations
-    values
-    - id: 2
-    - f_nocase: AAA
-    - f_binary: AAA
-# ─────────────────────────────────────────────────────────────────────
-# demo constraints
-# ─────────────────────────────────────────────────────────────────────
-- demo_constraints_1|instance
-    entity_name: demo_constraints
-    values
-    - f_primary: primary_value_1
-    - f_unique: unique value 1
-    - f_foreign: 1
-- demo_constraints_2|instance
-    entity_name: demo_constraints
-    values
-    - f_primary: primary_value_2
-    - f_unique: unique value 2
-    - f_foreign: 2
-- demo_constraints_3|instance
-    entity_name: demo_constraints
-    values
-    - f_primary: primary_value_3
-    - f_unique: unique value 3
-    - f_foreign: 3
-# ─────────────────────────────────────────────────────────────────────
-# demo indexes
-# ─────────────────────────────────────────────────────────────────────
-- demo_indexes_1|instance
-    entity_name: demo_indexes
-    values
-    - id: 1
-    - f_index_unique: unique value 1
-    - f_index: value 1
-- demo_indexes_2|instance
-    entity_name: demo_indexes
-    values
-    - id: 2
-    - f_index_unique: unique value 2
-    - f_index: value 2
-- demo_indexes_3|instance
-    entity_name: demo_indexes
-    values
-    - id: 3
-    - f_index_unique: unique value 3
-    - f_index: value 3
