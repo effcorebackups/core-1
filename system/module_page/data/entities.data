@@ -38,3 +38,13 @@ entities
         field_element_attributes
         - name: is_https
         - value: is_on
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_title
+        type: index
+        fields
+        - =: title
