@@ -26,10 +26,6 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\storage\events_page_instance_select::on_page_init
     - block_instance_select|page_part
         region: content
         type: code

@@ -49,3 +49,7 @@ events
   - manage_instances|event
       for: manage_instances
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_before_build
+  on_page_before_build
+  - instance_select|event
+      for: instance_select
+      handler: \effcore\modules\storage\events_page_instance_select::on_before_build
