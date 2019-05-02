@@ -3,10 +3,7 @@ pages
     id: events
     title: Events
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/develop/events)$%
+    url: %^(?<base>/develop/events)$%
     access
       roles
       - =: admins

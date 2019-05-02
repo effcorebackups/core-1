@@ -10,7 +10,7 @@ namespace effcore {
   public $id;
   public $title;
   public $https;
-  public $display;
+  public $url;
   public $access;
   public $charset = 'utf-8';
   public $lang_code = 'en';
@@ -92,8 +92,8 @@ namespace effcore {
     $result->styles  = new node();
     $result->scripts = new node();
     foreach (static::frontend_get_all() as $c_row_id => $c_items) {
-      if (is_array(static::is_displayed_by_used_dpaths($c_items->display, $this->used_dpaths)) ||
-          is_array(static::is_displayed_by_current_url($c_items->display))) {
+      if (is_array(static::is_visible_by_display_and_dpaths($c_items->display, $this->used_dpaths)) ||
+          is_array(static::is_visible_by_display           ($c_items->display                    ))) {
 
       # ─────────────────────────────────────────────────────────────────────
       # collect favicons
@@ -148,7 +148,7 @@ namespace effcore {
   static protected $current;
 
   static function not_external_properties_get() {
-    return ['id' => 'id', 'display' => 'display', 'access' => 'access'];
+    return ['id' => 'id', 'url' => 'url', 'access' => 'access'];
   }
 
   static function cache_cleaning() {
@@ -203,16 +203,14 @@ namespace effcore {
     return static::$cache_frontend;
   }
 
-  static function is_displayed_by_used_dpaths($display, $used_dpaths) {
+  static function is_visible_by_url($url) {
     $args = [];
-    if (($display->check == 'block' &&
-         $display->where == 'dpath' && preg_match(
-         $display->match.'m', implode(nl, $used_dpaths), $args))) {
+    if (preg_match($url, url::get_current()->path_get(), $args)) {
       return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
     }
   }
 
-  static function is_displayed_by_current_url($display) {
+  static function is_visible_by_display($display) {
     $args = [];
     if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->protocol_get(), $args)) ||
         ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get  (), $args)) ||
@@ -225,9 +223,18 @@ namespace effcore {
     }
   }
 
+  static function is_visible_by_display_and_dpaths($display, $used_dpaths) {
+    $args = [];
+    if (($display->check == 'block' &&
+         $display->where == 'dpath' && preg_match(
+         $display->match.'m', implode(nl, $used_dpaths), $args))) {
+      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
+    }
+  }
+
   static function find_and_render() {
     foreach (static::get_all(false) as $c_page) {
-      $c_args = static::is_displayed_by_current_url($c_page->display);
+      $c_args = static::is_visible_by_url($c_page->url);
       if (is_array($c_args)) {
         if ($c_page->access === null || access::check($c_page->access)) {
           if ($c_page instanceof external_cache)

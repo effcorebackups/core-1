@@ -3,21 +3,18 @@ pages
     id: demo
     title: Demo
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/develop/demo)
->>>>>>>>>>>>((/(?<type>embedded/form_elements|
->>>>>>>>>>>>>>>>>>>>>>>embedded/markup_static|
->>>>>>>>>>>>>>>>>>>>>>>embedded/markup_dynamic|
->>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_static|
->>>>>>>>>>>>>>>>>>>>>>>embedded/decorators_dynamic|
->>>>>>>>>>>>>>>>>>>>>>>embedded/trees(/.*|)|
->>>>>>>>>>>>>>>>>>>>>>>embedded/selections|
->>>>>>>>>>>>>>>>>>>>>>>embedded/messages|
->>>>>>>>>>>>>>>>>>>>>>>embedded/canvas|
->>>>>>>>>>>>>>>>>>>>>>>embedded/diagrams|
->>>>>>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
+    url: %^(?<base>/develop/demo)
+>>>>>>>>((/(?<type>embedded/form_elements|
+>>>>>>>>>>>>>>>>>>>embedded/markup_static|
+>>>>>>>>>>>>>>>>>>>embedded/markup_dynamic|
+>>>>>>>>>>>>>>>>>>>embedded/decorators_static|
+>>>>>>>>>>>>>>>>>>>embedded/decorators_dynamic|
+>>>>>>>>>>>>>>>>>>>embedded/trees(/.*|)|
+>>>>>>>>>>>>>>>>>>>embedded/selections|
+>>>>>>>>>>>>>>>>>>>embedded/messages|
+>>>>>>>>>>>>>>>>>>>embedded/canvas|
+>>>>>>>>>>>>>>>>>>>embedded/diagrams|
+>>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
     access
       roles
       - =: admins

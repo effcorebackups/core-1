@@ -3,10 +3,7 @@ pages
     id: tests
     title: Tests
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/develop/tests)(/(?<id>[a-z0-9_]+)|)$%
+    url: %^(?<base>/develop/tests)(/(?<id>[a-z0-9_]+)|)$%
     access
       roles
       - =: admins

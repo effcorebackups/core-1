@@ -3,10 +3,7 @@ pages
     id: registration
     title: Registration
     https: true
-    display
-      check: url
-      where: path
-      match: %^/registration$%
+    url: %^/registration$%
     access
       roles
       - =: anonymous

@@ -3,10 +3,7 @@ pages
     id: modules
     title: Modules
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/manage/modules)(/(?<action>install|uninstall|update)|)$%
+    url: %^(?<base>/manage/modules)(/(?<action>install|uninstall|update)|)$%
     access
       roles
       - =: admins

@@ -3,12 +3,9 @@ pages
     id: instance_update
     title: %%_entity_title_page_context{entity_name}: update
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/manage/instance/update)/
->>>>>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
->>>>>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
+    url: %^(?<base>/manage/instance/update)/
+>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
+>>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%
     access
       roles
       - =: admins

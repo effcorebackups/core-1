@@ -3,12 +3,9 @@ pages
     id: decoration
     title: Decoration
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/manage/decoration)
->>>>>>>>>>>>((/(?<type>colors|
->>>>>>>>>>>>>>>>>>>>>>>presets(/(?<id>.*)|)))|)$%
+    url: %^(?<base>/manage/decoration)
+>>>>>>>>((/(?<type>colors|
+>>>>>>>>>>>>>>>>>>>presets(/(?<id>.*)|)))|)$%
     access
       roles
       - =: admins

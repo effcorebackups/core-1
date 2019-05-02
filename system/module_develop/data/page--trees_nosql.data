@@ -3,10 +3,7 @@ pages
     id: trees_nosql
     title: NoSQL trees
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/develop/trees_nosql)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
+    url: %^(?<base>/develop/trees_nosql)(/(?<action>select)(/(?<id>[a-z0-9_]+)|)|)$%
     access
       roles
       - =: admins

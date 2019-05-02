@@ -3,10 +3,7 @@ pages
     id: install
     title: Installation
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
+    url: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
     parts
     - menu_languages|page_part
         region: top

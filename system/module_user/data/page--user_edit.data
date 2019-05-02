@@ -3,10 +3,7 @@ pages
     id: user_edit
     title: Edit user %%_nick_page_context{nick}
     https: true
-    display
-      check: url
-      where: path
-      match: %^/user/(?<nick>[a-zA-Z0-9_\-]{4,32})/edit$%
+    url: %^/user/(?<nick>[a-zA-Z0-9_\-]{4,32})/edit$%
     access
       roles
       - =: admins

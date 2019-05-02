@@ -3,15 +3,12 @@ pages
     id: structures
     title: Structures
     https: true
-    display
-      check: url
-      where: path
-      match: %^(?<base>/develop/structures)
->>>>>>>>>>>>((/(?<type>class/list|
->>>>>>>>>>>>>>>>>>>>>>>class/diagram|
->>>>>>>>>>>>>>>>>>>>>>>class/diagram_export|
->>>>>>>>>>>>>>>>>>>>>>>interface/list|
->>>>>>>>>>>>>>>>>>>>>>>trait/list))|)$%
+    url: %^(?<base>/develop/structures)
+>>>>>>>>((/(?<type>class/list|
+>>>>>>>>>>>>>>>>>>>class/diagram|
+>>>>>>>>>>>>>>>>>>>class/diagram_export|
+>>>>>>>>>>>>>>>>>>>interface/list|
+>>>>>>>>>>>>>>>>>>>trait/list))|)$%
     access
       roles
       - =: admins
