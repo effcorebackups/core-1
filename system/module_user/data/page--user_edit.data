@@ -25,10 +25,6 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\user\events_page_user_edit::on_page_init
     - form_instance_update|page_part
         region: content
         type: link

@@ -55,3 +55,7 @@ events
       for: instance_update
       handler: \effcore\modules\user\events_form_instance_update::on_submit
       weight: +50
+  on_page_before_build
+  - user_edit|event
+      for: user_edit
+      handler: \effcore\modules\user\events_page_user_edit::on_before_build
