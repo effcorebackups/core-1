@@ -38,11 +38,53 @@ entities
         field_element_attributes
         - name: is_https
         - value: is_on
+    - url
+        title: URL
+        type: varchar
+        size: 250
+        collate: nocase
+        not_null: true
+        field_is_visible_on_select: true
+        field_class: \effcore\field_url
+    - charset
+        title: Charset
+        type: varchar
+        size: 32
+        collate: nocase
+        not_null: true
+        default: utf-8
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
+    - lang_code
+        title: Language code
+        type: varchar
+        size: 2
+        collate: nocase
+        not_null: true
+        default: en
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
+    - text_direction
+        title: Text direction
+        type: varchar
+        size: 3
+        collate: nocase
+        not_null: true
+        default: ltr
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    - unique_url
+        type: unique
+        fields
+        - =: url
     indexes
     - index_title
         type: index
