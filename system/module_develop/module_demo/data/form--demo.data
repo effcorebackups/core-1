@@ -282,6 +282,17 @@ forms
             - name: lang_code
             selected
             - en: en
+      # field_text_direction
+        - text_direction|field_text_direction
+            title: Text direction
+            description|text
+              text: Field %%_type.
+              args
+              - type: text_direction
+            element_attributes
+            - name: text_direction
+            selected
+            - ltr: ltr
        # ─────────────────────────────────────────────────────────────────────
        # textarea
        # ─────────────────────────────────────────────────────────────────────

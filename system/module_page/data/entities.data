@@ -71,7 +71,7 @@ entities
         collate: nocase
         not_null: true
         default: ltr
-        field_class: \effcore\field_text
+        field_class: \effcore\field_text_direction
         field_element_attributes
         - disabled: true
     constraints

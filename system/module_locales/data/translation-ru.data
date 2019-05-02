@@ -222,6 +222,7 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Language: Язык
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
+    - left to right: слева направо
     - License agreement: Лицензионное соглашение
     - Linear diagram: Линейная диаграмма
     - Link (active): Ссылка (активная)
@@ -354,6 +355,7 @@ translations
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
     - restore: восстановить
     - return: возврат
+    - right to left: справа налево
     - Role ID: ID Роли
     - role: роль
     - Role: Роль
