@@ -19,3 +19,7 @@ events
   - trees_nosql|event
       for: trees_nosql
       handler: \effcore\modules\develop\events_page_trees_nosql::on_tab_before_build
+  on_page_before_build
+  - structures|event
+      for: structures
+      handler: \effcore\modules\develop\events_page_structures::on_before_build

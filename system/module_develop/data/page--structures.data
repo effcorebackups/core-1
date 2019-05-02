@@ -33,10 +33,6 @@ pages
         type: link
         source: tabs/develop/structures
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\develop\events_page_structures::on_page_init
     - block_structures_list|page_part
         display
           check: page_args
