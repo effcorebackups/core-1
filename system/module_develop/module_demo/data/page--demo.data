@@ -39,10 +39,6 @@ pages
         type: link
         source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
-    - page_init|page_part
-        region: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_page_init
     - form_demo|page_part
         display
           check: page_args

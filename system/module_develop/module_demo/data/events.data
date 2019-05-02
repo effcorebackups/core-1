@@ -39,6 +39,9 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_page_examples::on_before_build
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_page_demo::on_before_build
   on_page_after_build
   - example|event
       for: example

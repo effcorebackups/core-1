@@ -21,7 +21,7 @@ namespace effcore\modules\demo {
           use \effcore\url;
           abstract class events_page_demo {
 
-  static function on_page_init($page) {
+  static function on_before_build($page) {
     $type = $page->args_get('type');
     if ($type == null) {
       url::go($page->args_get('base').'/embedded/form_elements');
