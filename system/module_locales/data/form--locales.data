@@ -8,10 +8,7 @@ forms
     - settings|fieldset
         title: Settings
         children
-        - lang_code|field_select
-            title: Current language
-            element_attributes
-            - name: lang_code
+        - language|field_language
         - timezone_server|field_timezone
             title: Server timezone
             element_attributes

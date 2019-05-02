@@ -27,12 +27,9 @@ namespace effcore {
              !empty($c_data->values)) {
         if (!$this->optgroup_select($c_id))
              $this->optgroup_insert($c_id, $c_data->title);
-        foreach ($c_data->values as $g_id => $g_data) {
-          $this->option_insert($g_data, $g_id, [], $c_id);
-        }
-      } else {
-        $this->option_insert($c_data, $c_id);
-      }
+        foreach ($c_data->values as $g_id => $g_data)
+             $this->option_insert($g_data, $g_id, [], $c_id);
+      } else $this->option_insert($c_data, $c_id);
     }
   }
 
@@ -113,7 +110,7 @@ namespace effcore {
     $option = new markup('option', $attr, ['content' => $title]);
     $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
     if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
-    if (isset($this->disabled[$value])) $option->attribute_insert('disabled', true);
+    if (isset($this->disabled[$value])) $option->attribute_insert('disabled',    true   );
     if (!$optgroup_id)
          $this->child_select('element')->child_insert(                            $option, $value);
     else $this->child_select('element')->child_select($optgroup_id)->child_insert($option, $value);

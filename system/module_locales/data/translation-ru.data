@@ -82,7 +82,6 @@ translations
     - credentials: учётные данные
     - Cron last run: Последний запуск Cron
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
-    - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
     - Dark: Тёмная
@@ -221,7 +220,7 @@ translations
     - Is remember: Запоминать
     - item #%%_number: пункт №%%_number
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
-    - Language code: Код языка
+    - Language: Язык
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - License agreement: Лицензионное соглашение
     - Linear diagram: Линейная диаграмма

@@ -46,6 +46,14 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_url
+    - lang_code
+        title: Language
+        type: varchar
+        size: 2
+        collate: nocase
+        not_null: true
+        default: en
+        field_class: \effcore\field_language
     - charset
         title: Charset
         type: varchar
@@ -53,16 +61,6 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
-        field_class: \effcore\field_text
-        field_element_attributes
-        - disabled: true
-    - lang_code
-        title: Language code
-        type: varchar
-        size: 2
-        collate: nocase
-        not_null: true
-        default: en
         field_class: \effcore\field_text
         field_element_attributes
         - disabled: true

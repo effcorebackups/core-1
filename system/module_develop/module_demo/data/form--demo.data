@@ -271,6 +271,17 @@ forms
             - name: relation
             selected
             - 1: 1
+      # field_language
+        - language|field_language
+            title: Language
+            description|text
+              text: Field %%_type.
+              args
+              - type: field_language
+            element_attributes
+            - name: lang_code
+            selected
+            - en: en
        # ─────────────────────────────────────────────────────────────────────
        # textarea
        # ─────────────────────────────────────────────────────────────────────
