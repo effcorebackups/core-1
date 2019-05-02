@@ -11,6 +11,9 @@ namespace effcore\modules\demo {
   static function on_before_build($page) {
   }
 
+  static function on_after_build($page) {
+  }
+
   static function on_before_render($page, $template) {
   }
 

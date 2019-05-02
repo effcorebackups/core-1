@@ -26,21 +26,30 @@ namespace effcore {
 
   function build() {
     event::start('on_page_before_build', $this->id, [&$this]);
-    # @todo: make functionality
+    foreach ($this->parts as $c_row_id => $c_part) {
+      if (!$this->child_select(            $c_part->region))
+           $this->child_insert(new node(), $c_part->region);
+      $c_region = $this->child_select($c_part->region);
+      $c_part_markup = $c_part->markup_get($this);
+      if ($c_part_markup) {
+        $c_region->child_insert($c_part_markup, $c_row_id);
+        if ($c_part->type == 'link') {
+          $this->used_dpaths[] = $c_part->source;}}}
+    event::start('on_page_after_build', $this->id, [&$this]);
   }
 
   function render() {
     $this->build();
+    $settings = module::settings_get('page');
     $user_agent = core::server_get_user_agent_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
-    if ($user_agent->name_version == 11 &&
-        $user_agent->name         == 'msie') {
+    if ($user_agent->name == 'msie' &&
+        $user_agent->name_version == 11) {
       header('X-UA-Compatible: IE=10');
     }
 
   # show important messages
-    $settings = module::settings_get('page');
     if ($settings->show_warning_if_not_https && !empty($this->https) && url::get_current()->protocol_get() != 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
@@ -51,19 +60,6 @@ namespace effcore {
       message::insert(new text(
         'Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning'
       );
-    }
-
-    foreach ($this->parts as $c_row_id => $c_part) {
-      if (!$this->child_select(            $c_part->region))
-           $this->child_insert(new node(), $c_part->region);
-      $c_region = $this->child_select($c_part->region);
-      $c_part_markup = $c_part->markup_get($this);
-      if ($c_part_markup) {
-        $c_region->child_insert($c_part_markup, $c_row_id);
-        if ($c_part->type == 'link') {
-          $this->used_dpaths[] = $c_part->source;
-        }
-      }
     }
 
   # render page

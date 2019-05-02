@@ -23,6 +23,10 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_page::on_before_build
+  on_page_after_build
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_page::on_after_build
   on_page_before_render
   - demo|event
       for: demo
