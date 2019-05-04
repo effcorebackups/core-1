@@ -38,14 +38,14 @@ namespace effcore {
   # └──────────────────────────────────────────────────────────╨──────────┴──────────────────┴──────────────────┴───────────┴────────┴──────────────────────────────────────────────────────────┴───────────────────────────────────┘
 
   # wrong urls:
-  # ┌──────────────────────────╥─────────────────────────────────────────────────────────────-─────────────┐
-  # │ url                      ║ behavior                                                                  │
-  # ╞══════════════════════════╬═══════════════════════════════════════════════════════════════════════════╡
-  # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                         │
-  # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                         │
-  # │ /subdomain.domain        ║ this domain described like a directory (first character is the slash)     │
-  # │ dir/subdir/page          ║ this directory described like a domain (first character is not the slash) │
-  # └──────────────────────────╨───────────────────────────────────────────────────────────────────────────┘
+  # ┌──────────────────────────╥──────────────────────────────────────────────────────────────────────┐
+  # │ url                      ║ behavior                                                             │
+  # ╞══════════════════════════╬══════════════════════════════════════════════════════════════════════╡
+  # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                    │
+  # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                    │
+  # │ /subdomain.domain        ║ this domain described like a path (first character is the slash)     │
+  # │ dir/subdir/page          ║ this path described like a domain (first character is not the slash) │
+  # └──────────────────────────╨──────────────────────────────────────────────────────────────────────┘
 
   # note:
   # ════════════════════════════════════════════════════════════════════════════════════════════
@@ -54,24 +54,77 @@ namespace effcore {
   # 2. anchor is not sent through the browser
   # ────────────────────────────────────────────────────────────────────────────────────────────
 
+  # matrix check:
+  # ┌───┬───────────────────────────────────────────────┐
+  # │ a │                       path                    │
+  # │ b │                       path +  query           │
+  # │ c │                       path +           anchor │
+  # │ d │                       path +  query +  anchor │
+  # │ e │             domain                            │
+  # │ f │             domain +  path                    │
+  # │ g │             domain +  path +  query           │
+  # │ h │             domain +  path +           anchor │
+  # │ i │             domain +  path +  query +  anchor │
+  # │ j │ protocol +  domain                            │
+  # │ k │ protocol +  domain +  path                    │
+  # │ l │ protocol +  domain +  path +  query           │
+  # │ m │ protocol +  domain +  path +           anchor │
+  # │ n │ protocol +  domain +  path +  query +  anchor │
+  # └───┴───────────────────────────────────────────────┘
+  #                           │
+  #                           ▼
+  # ┌───┬───────────────────────────────────────────────┐
+  # │ a │!protocol + !domain +  path + !query + !anchor │
+  # │ b │!protocol + !domain +  path +  query + !anchor │
+  # │ c │!protocol + !domain +  path + !query +  anchor │
+  # │ d │!protocol + !domain +  path +  query +  anchor │
+  # │ e │!protocol +  domain + !path + !query + !anchor │
+  # │ f │!protocol +  domain +  path + !query + !anchor │
+  # │ g │!protocol +  domain +  path +  query + !anchor │
+  # │ h │!protocol +  domain +  path + !query +  anchor │
+  # │ i │!protocol +  domain +  path +  query +  anchor │
+  # │ j │ protocol +  domain + !path + !query + !anchor │
+  # │ k │ protocol +  domain +  path + !query + !anchor │
+  # │ l │ protocol +  domain +  path +  query + !anchor │
+  # │ m │ protocol +  domain +  path + !query +  anchor │
+  # │ n │ protocol +  domain +  path +  query +  anchor │
+  # └───┴───────────────────────────────────────────────┘
+
   public $protocol;
   public $domain;
   public $path;
   public $query;
   public $anchor;
+  public $has_error;
 
   function __construct($url) {
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
-                    '(?<domain>[^/]*)'.
+                    '(?<domain>[a-z0-9\\-\\.\\]\\[:@]{2,200}|)'.
                     '(?<path>[^?#]*)'.
               '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
-    $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
-    $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host());
-    $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
-    $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
-    $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
+    if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
+         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
+         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
+         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ||  # d
+         ( empty($matches['protocol']) && !empty($matches['domain']) &&  empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # e
+         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # f
+         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # g
+         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # h
+         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ||  # i
+         (!empty($matches['protocol']) && !empty($matches['domain']) &&  empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # j
+         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # k
+         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # l
+         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # m
+         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ) { # n
+      $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
+      $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host());
+      $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
+      $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
+      $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
+           $this->has_error = false;
+    } else $this->has_error = true;
   }
 
   function file_info_get() {
@@ -89,17 +142,21 @@ namespace effcore {
   function anchor_get  () {return $this->anchor;  }
 
   function tiny_get() {
-    $result = $this->path;
-    if ($this->query ) $result.= '?'.$this->query;
-    if ($this->anchor) $result.= '#'.$this->anchor;
-    return $result;
+    if (!$this->has_error) {
+      $result = $this->path;
+      if ($this->query ) $result.= '?'.$this->query;
+      if ($this->anchor) $result.= '#'.$this->anchor;
+      return $result;
+    }
   }
 
   function full_get() {
-    $result = $this->protocol.'://'.$this->domain.$this->path;
-    if ($this->query ) $result.= '?'.$this->query;
-    if ($this->anchor) $result.= '#'.$this->anchor;
-    return rtrim($result, '/');
+    if (!$this->has_error) {
+      $result = $this->protocol.'://'.$this->domain.$this->path;
+      if ($this->query ) $result.= '?'.$this->query;
+      if ($this->anchor) $result.= '#'.$this->anchor;
+      return rtrim($result, '/');
+    }
   }
 
   function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;}
