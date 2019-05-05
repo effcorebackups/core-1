@@ -47,27 +47,29 @@ entities
     ws_updated: true
     fields
     - id_role
-        title: Role ID
+        title: Role
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: role
+        - entity_field_id_name: id
+        - entity_field_title_name: title
     - id_permission
-        title: Permission ID
+        title: Permission
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: permission
+        - entity_field_id_name: id
+        - entity_field_title_name: title
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -97,26 +99,28 @@ entities
     ws_created: true
     ws_updated: true
     fields
+    - id_user
+        title: User
+        type: integer
+        not_null: true
+        field_is_visible_on_select: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: user
+        - entity_field_id_name: id
+        - entity_field_title_name: nick
     - id_role
-        title: Role ID
+        title: Role
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
-    - id_user
-        title: User ID
-        type: integer
-        not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: 1
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: role
+        - entity_field_id_name: id
+        - entity_field_title_name: title
     constraints
     - primary_id_role_id_user
         type: primary
@@ -164,7 +168,7 @@ entities
         not_null: true
         default: 0
         field_is_visible_on_select: true
-        field_class: \effcore\field_logic
+        field_class: \effcore\field_switcher
         field_element_attributes
         - disabled: true
     - title
@@ -208,10 +212,11 @@ entities
         type: integer
         not_null: true
         field_is_visible_on_select: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: 1
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: user
+        - entity_field_id_name: id
+        - entity_field_title_name: nick
     - is_remember
         title: Is remember
         type: boolean
@@ -277,7 +282,7 @@ entities
         not_null: true
         default: 0
         field_is_visible_on_select: true
-        field_class: \effcore\field_logic
+        field_class: \effcore\field_switcher
         field_element_attributes
         - disabled: true
     - nick
