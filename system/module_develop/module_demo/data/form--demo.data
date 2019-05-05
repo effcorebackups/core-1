@@ -352,7 +352,6 @@ forms
                   - type: field_switcher
                 element_attributes
                 - name: switcher
-                - value: switcher
                 - checked: true
           # group_switchers
             - switchers|group_switchers

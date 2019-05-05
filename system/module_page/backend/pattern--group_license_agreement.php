@@ -19,8 +19,7 @@ namespace effcore {
     $markup_license = new markup('x-document', ['class' => ['license' => 'license']], markdown::markdown_to_markup($license->load()));
     $switcher_agree = new field_switcher($this->agree_title);
     $switcher_agree->build();
-    $switcher_agree->name_set ('is_agree');
-    $switcher_agree->value_set('is_agree');
+    $switcher_agree->name_set('is_agree');
     $switcher_agree->required_set(true);
     $this->child_insert($markup_license, 'license' );
     $this->child_insert($switcher_agree, 'is_agree');

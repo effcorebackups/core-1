@@ -14,6 +14,7 @@ namespace effcore {
     'type'      => 'checkbox',
     'name'      => 'checkbox',
     'data-type' => 'switcher',
+    'value'     => 'on',
   ];
 
 }}

@@ -222,13 +222,13 @@ entities
         type: boolean
         not_null: true
         default: 0
-        field_class: \effcore\field_logic
+        field_class: \effcore\field_switcher
     - is_fixed_ip
         title: Is fixed IP
         type: boolean
         not_null: true
         default: 0
-        field_class: \effcore\field_logic
+        field_class: \effcore\field_switcher
     - expired
         title: Expired date
         type: datetime
