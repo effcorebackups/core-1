@@ -5,14 +5,14 @@ pages
     https: true
    # ─────────────────────────────────────────────────────────────────────
    # /manage/instances/select
-   # /manage/instances/select/group_id
-   # /manage/instances/select/group_id/entity_name
-   # /manage/instances/select/group_id/entity_name/entity_group_by
+   # /manage/instances/select/entity_group_id
+   # /manage/instances/select/entity_group_id/entity_name
+   # /manage/instances/select/entity_group_id/entity_name/instances_group_by
    # ─────────────────────────────────────────────────────────────────────
     url: %^(?<base>/manage/instances/select)(/
->>>>>>>>>>>(?<group_id>[a-z0-9_\-]+)(/
+>>>>>>>>>>>(?<entity_group_id>[a-z0-9_\-]+)(/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
->>>>>>>>>>>(?<entity_group_by>[a-z0-9_]+)|)|)|)$%
+>>>>>>>>>>>(?<instances_group_by>[a-z0-9_]+)|)|)|)$%
     access
       roles
       - =: admins

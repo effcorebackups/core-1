@@ -22,6 +22,7 @@ namespace effcore\modules\storage {
       $selection = new selection('', $entity->view_type_multiple);
       $selection->id = 'instances_manage';
       $selection->is_paged = true;
+      $form->_selection = $selection;
       foreach ($entity->selection_params as $c_key => $c_value) {
         $selection->{$c_key} = $c_value;
       }
