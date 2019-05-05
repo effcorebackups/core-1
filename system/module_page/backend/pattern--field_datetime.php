@@ -40,9 +40,9 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if (core::validate_T_datetime($value))
-         parent::value_set(core::sanitize_T_datetime($value));
-    else parent::value_set($value);
+    if     (core::validate_T_datetime($value)) parent::value_set(core::sanitize_T_datetime   ($value));
+    elseif (core::validate_datetime  ($value)) parent::value_set(core::datetime_to_T_datetime($value));
+    else                                       parent::value_set                             ($value);
   }
 
   ###########################
