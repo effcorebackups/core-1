@@ -11,8 +11,9 @@ namespace effcore {
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'checkbox'];
   public $element_attributes = [
-    'type' => 'checkbox',
-    'name' => 'checkbox'
+    'type'  => 'checkbox',
+    'name'  => 'checkbox',
+    'value' => 'on'
   ];
 
   function render() {
