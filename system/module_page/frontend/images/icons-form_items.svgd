@@ -35,7 +35,7 @@
   </g>
 
   <g id="icon_switcher">
-    <circle id="ico_swc-circle-off" cx="10" cy="50" r="7" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_swc-circle-off" cx="10" cy="50" r="6" style="fill: none; stroke: %%_color_main; stroke-width: 2px"/>
     <circle id="ico_swc-circle-on"  cx="70" cy="50" r="7" style="fill: %%_color_main; stroke: none"/>
   </g>
 
