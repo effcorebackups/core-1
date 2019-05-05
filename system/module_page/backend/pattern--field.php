@@ -103,7 +103,6 @@ namespace effcore {
   function checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') === true;
-           
   }
 
   function checked_set($is_checked = true) {

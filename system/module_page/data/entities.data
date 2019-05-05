@@ -34,7 +34,7 @@ entities
         not_null: true
         default: 0
         field_is_visible_on_select: true
-        field_class: \effcore\field_checkbox
+        field_class: \effcore\field_switcher
         field_element_attributes
         - name: is_https
         - value: is_on

@@ -38,9 +38,9 @@ namespace effcore\modules\storage {
               $c_form_field->form_current_set($form);
               $c_form_field->build();
               if (empty($c_field->field_value_not_select)) {
-                $c_form_field->value_set(
-                  $form->_instance->{$c_name}
-                );
+                if ($c_form_field instanceof \effcore\field_checkbox)
+                     $c_form_field->checked_set($form->_instance->{$c_name});
+                else $c_form_field->value_set  ($form->_instance->{$c_name});
               }
               $items['fields']->child_insert($c_form_field, $c_name);
               if ($c_form_field->disabled_get() == false) {
@@ -73,7 +73,9 @@ namespace effcore\modules\storage {
               if (!empty($c_field->field_value_insert_null_if_empty) && $items['#'.$c_name]->value_get() == '') {$form->_instance->{$c_name} = null; continue;}
               if (!empty($c_field->field_value_not_insert_if_empty ) && $items['#'.$c_name]->value_get() == '') {                                    continue;}
               if (!empty($c_field->field_value_not_insert          )                                          ) {                                    continue;}
-              $form->_instance->{$c_name} = $items['#'.$c_name]->value_get();
+              if ($items['#'.$c_name] instanceof \effcore\field_checkbox)
+                   $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
+              else $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
             }
           }
           if ($form->_instance->update())
