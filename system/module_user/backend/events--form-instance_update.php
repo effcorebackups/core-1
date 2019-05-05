@@ -5,11 +5,13 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\field_email;
           use \effcore\field_nick;
           use \effcore\field_password;
           use \effcore\file;
+          use \effcore\group_access;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\page;
@@ -27,6 +29,15 @@ namespace effcore\modules\user {
       $form->child_select('fields')->child_insert($field_password_hash_current, 'password_hash_current');
       $items['#avatar']->pool_values_init_old_from_storage(
         $form->_instance->avatar_path ? [$form->_instance->avatar_path] : []
+      );
+    }
+  # access group
+    if (!empty($form->_instance->entity_get()->ws_access)) {
+      $group_access = new group_access();
+      if (!empty($form->_instance->access)) $group_access->checked = unserialize($form->_instance->access);
+      $group_access->build();
+      $form->child_select('fields')->child_insert(
+        $group_access, 'group_access'
       );
     }
   }
@@ -84,6 +95,12 @@ namespace effcore\modules\user {
              $form->_instance->avatar_path = $c_file->path_get_relative(); } else {
              $form->_instance->avatar_path = null;
           }
+        }
+      # access group
+        if (!empty($form->_instance->entity_get()->ws_access)) {
+          $access = $items['*roles']->values_get();
+          if ($access) $form->_instance->access = serialize(core::array_kmap($access));
+          else         $form->_instance->access = null;
         }
         break;
       case 'cancel':
