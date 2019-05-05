@@ -219,6 +219,7 @@ translations
     - Is fixed IP: Фиксировать IP
     - Is remember: Запоминать
     - item #%%_number: пункт №%%_number
+    - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Language: Язык
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.

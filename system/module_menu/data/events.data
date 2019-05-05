@@ -24,4 +24,5 @@ events
   on_tab_before_build
   - manage_instances|event
       for: manage_instances
+      weight: -50
       handler: \effcore\modules\menu\events_page::on_tab_before_build

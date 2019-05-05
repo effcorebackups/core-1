@@ -7,6 +7,7 @@
 namespace effcore\modules\menu {
           use \effcore\entity;
           use \effcore\tabs_item;
+          use \effcore\translation;
           use \effcore\tree;
           abstract class events_page {
 
@@ -17,10 +18,11 @@ namespace effcore\modules\menu {
   }
 
   static function on_tab_before_build($tab) {
+    tabs_item::delete('manage_instances_menu_tree_item');
     foreach (entity::get('tree')->instances_select() as $c_tree) {
-      tabs_item::insert($c_tree->title,
+      tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),
         'manage_instances_menu_tree_item_'.$c_tree->id,
-        'manage_instances_menu_tree_item',
+        'manage_instances_menu',
         'manage_instances', 'menu/tree_item/'.$c_tree->id);
     }
   }
