@@ -10,8 +10,8 @@
 
   /* page sizes */
 
-  x-menu {display: block; max-width: 800px; margin: 0 auto 18px auto}
-  x-menu::after {content: ''; clear: both; display: block}
+  nav[data-type='menu'] {display: block; max-width: 800px; margin: 0 auto 18px auto}
+  nav[data-type='menu']::after {content: ''; clear: both; display: block}
 
   x-top  {display: block; max-width: 800px; margin: 18px auto 0 auto}
   x-body {display: block; max-width: 800px; margin: 0 auto 70px auto; min-height: 200px}
