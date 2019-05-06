@@ -73,12 +73,12 @@ namespace effcore {
 
   function render_self_managed() {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
-      new markup('x-drop_area-before', [], ''),
-      new markup('x-drop_area-in',     [], ''),
-      new markup('x-item-title',       [], $this->title),
-      new markup('x-item-extra',       [], $this->managed_extra),
-      new markup('x-item-url',         [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url'),
-      new markup('x-drop_area-after',  [], '')
+      new markup('x-drop_area',  ['data-type' => 'before'], '', +50),
+      new markup('x-drop_area',  ['data-type' => 'in'    ], '',   0),
+      new markup('x-drop_area',  ['data-type' => 'after' ], '', -50),
+      new markup('x-item-title', [], $this->title),
+      new markup('x-item-extra', [], $this->managed_extra),
+      new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
     ]))->render();
   }
 
