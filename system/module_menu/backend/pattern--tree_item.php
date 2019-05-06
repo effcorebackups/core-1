@@ -34,6 +34,7 @@ namespace effcore {
 
   function build() {
     $this->attribute_insert('data-id', $this->id);
+    if ($this->managed_is_on) $this->attribute_insert('draggable', 'true');
     foreach (static::select_all() as $c_item) {
       if ($c_item->id_parent == $this->id) {
         $this->child_insert($c_item, $c_item->id);
@@ -71,7 +72,7 @@ namespace effcore {
   }
 
   function render_self_managed() {
-    return (new markup('x-item', $this->attributes_select(), [
+    return (new markup('x-item', $this->attributes_select('element_attributes'), [
       new markup('x-item-title', [], $this->title),
       new markup('x-item-extra', [], $this->managed_extra),
       new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
