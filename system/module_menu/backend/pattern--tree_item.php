@@ -17,7 +17,8 @@ namespace effcore {
   public $url;
   public $shadow_url;
   public $access;
-  public $is_managed = false;
+  public $managed_is_on = false;
+  public $managed_extra;
   public $is_nosql = true;
 
   function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
@@ -49,7 +50,7 @@ namespace effcore {
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
         'children'   => $rendered_children,
-        'self'       => $this->is_managed ?
+        'self'       => $this->managed_is_on ?
                         $this->render_self_managed() :
                         $this->render_self()
       ]))->render();
@@ -70,9 +71,10 @@ namespace effcore {
   }
 
   function render_self_managed() {
-    return (new markup('a', $this->attributes_select(), [
+    return (new markup('x-item', $this->attributes_select(), [
       new markup('x-item-title', [], $this->title),
-      new markup('x-url', [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
+      new markup('x-item-extra', [], $this->managed_extra),
+      new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
     ]))->render();
   }
 

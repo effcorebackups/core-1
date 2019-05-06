@@ -52,15 +52,17 @@
 
   /* managed menu */
 
-  x-tree[data-tree-is-managed='true'] ul,
-  x-tree[data-tree-is-managed='true'] li {margin: 0; padding: 0; list-style: none}
-  x-tree[data-tree-is-managed='true'] li {padding-left: 35px}
-  x-tree[data-tree-is-managed='true'] li             {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-tree-is-managed='true'] li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-tree-is-managed='true'] li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
-  x-tree[data-tree-is-managed='true'] li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
+  x-tree[data-managed-is-on='true'] ul,
+  x-tree[data-managed-is-on='true'] li {margin: 0; padding: 0; list-style: none}
+  x-tree[data-managed-is-on='true'] li {padding-left: 35px}
+  x-tree[data-managed-is-on='true'] li             {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
+  x-tree[data-managed-is-on='true'] li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -23px, url('images/branch-vline.svgd') repeat-y}
+  x-tree[data-managed-is-on='true'] li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
+  x-tree[data-managed-is-on='true'] li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -23px}
 
-  x-tree[data-tree-is-managed='true'] li a {display: block}
-  x-tree[data-tree-is-managed='true'] li a x-item-title {display: block; font-size: 1.2em; color: %%_color_text}
-  x-tree[data-tree-is-managed='true'] li a x-url {display: block; color: %%_color_text; opacity: .5}
-  x-tree[data-tree-is-managed='true'] li a x-url em {padding: 0 2px; font-style: normal}
+  x-tree[data-managed-is-on='true'] x-item {display: block}
+  x-tree[data-managed-is-on='true'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
+  x-tree[data-managed-is-on='true'] x-item-extra {opacity: .8}
+  x-tree[data-managed-is-on='true'] x-item-url {display: block; color: %%_color_text; opacity: .5}
+  x-tree[data-managed-is-on='true'] x-item-url em {padding: 0 2px; font-style: normal}
+  x-tree[data-managed-is-on='true'] x-item x-actions x-action a em {display: none}
