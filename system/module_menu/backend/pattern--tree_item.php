@@ -45,8 +45,8 @@ namespace effcore {
 
   function render() {
     if ($this->access === null || access::check($this->access)) {
-      $rendered_self = $this->managed_is_on ? $this->render_self_managed() : $this->render_self();
-      $rendered_children = $this->children_select_count() ? (template::make_new($this->template_children, [
+      $rendered_self     = $this->managed_is_on ? $this->render_self_managed() : $this->render_self();
+      $rendered_children = $this->managed_is_on || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';
       if ($this->managed_is_on) {
