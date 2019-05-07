@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var droppable = c_tree.querySelectorAll('x-drop_area');
       if (droppable instanceof NodeList) {
         droppable.forEach(function(c_droppable){
-          c_droppable.addEventListener('dragover',  function(event){c_droppable.setAttribute   ('data-drag-active', 'true');}, false);
-          c_droppable.addEventListener('dragleave', function(event){c_droppable.removeAttribute('data-drag-active'        );}, false);
+          c_droppable.addEventListener('dragover',  function(event){event.stopPropagation(); c_droppable.setAttribute   ('data-drag-active', 'true');}, false);
+          c_droppable.addEventListener('dragleave', function(event){event.stopPropagation(); c_droppable.removeAttribute('data-drag-active'        );}, false);
         });
       }
     });

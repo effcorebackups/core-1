@@ -45,15 +45,19 @@ namespace effcore {
 
   function render() {
     if ($this->access === null || access::check($this->access)) {
+      $rendered_self = $this->managed_is_on ? $this->render_self_managed() : $this->render_self();
       $rendered_children = $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';
+      if ($this->managed_is_on) {
+        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], $rendered_self))->render();
+        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''            ))->render().$rendered_self;
+        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''            ))->render();
+      }
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
-        'children'   => $rendered_children,
-        'self'       => $this->managed_is_on ?
-                        $this->render_self_managed() :
-                        $this->render_self()
+        'self'       => $rendered_self,
+        'children'   => $rendered_children
       ]))->render();
     }
   }
@@ -73,9 +77,6 @@ namespace effcore {
 
   function render_self_managed() {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
-      new markup('x-drop_area',  ['data-type' => 'before'], '', +50),
-      new markup('x-drop_area',  ['data-type' => 'in'    ], '',   0),
-      new markup('x-drop_area',  ['data-type' => 'after' ], '', -50),
       new markup('x-item-title', [], $this->title),
       new markup('x-item-extra', [], $this->managed_extra),
       new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
