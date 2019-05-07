@@ -71,3 +71,5 @@
   x-tree[data-managed-is-on='true'] x-drop_area[data-type='after' ] {display: block; height: 5px; background: green}
   x-tree[data-managed-is-on='true'] x-drop_area[data-type='in'    ] {display: block; background: black}
   x-tree[data-managed-is-on='true'] x-drop_area[data-drag-active='true'] {background: orange}
+  x-tree[data-managed-is-on='true'] *[draggable='true'] +
+                                    *[draggable='true'] > x-drop_area[data-type='before'] {display: none}
