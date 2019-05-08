@@ -50,9 +50,9 @@ namespace effcore {
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';
       if ($this->managed_is_on) {
-        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], $rendered_self))->render();
-        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''            ))->render().$rendered_self;
-        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''            ))->render();
+        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;
+        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''))->render().$rendered_self;
+        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();
       }
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
