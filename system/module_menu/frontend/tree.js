@@ -22,10 +22,20 @@ document.addEventListener('DOMContentLoaded', function(){
           c_droppable.addEventListener('dragover',  function(event){event.stopPropagation(); c_droppable.setAttribute   ('data-drag-active', 'true'); event.preventDefault();}, false);
           c_droppable.addEventListener('dragleave', function(event){event.stopPropagation(); c_droppable.removeAttribute('data-drag-active'        ); event.preventDefault();}, false);
           c_droppable.addEventListener('drop',      function(event){event.stopPropagation();
-            var draggable_id = event.dataTransfer.getData('id');            
-            c_droppable.appendChild(
-              c_tree.querySelector('[data-id="'+draggable_id+'"]')
-            );
+            var draggable_id = event.dataTransfer.getData('id'),
+                draggable = c_tree.querySelector('[data-id="'+draggable_id+'"]');
+            switch (c_droppable.getAttribute('data-type')) {
+              case 'before':
+                break;
+              case 'in':
+                c_droppable.removeAttribute('data-drag-active');
+                c_droppable.parentNode.querySelector('ul').appendChild(
+                  c_tree.querySelector('[data-id="'+draggable_id+'"]')
+                );
+                break;
+              case 'after':
+                break;
+            }
           }, false);
         });
       }
