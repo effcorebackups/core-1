@@ -72,7 +72,8 @@
   x-tree[data-managed-is-on='true'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_warning}
   x-tree[data-managed-is-on='true'] x-drop_area[data-type='in'    ] {height: 45px; background: %%_color_main; width: 45px; position: absolute}
   x-tree[data-managed-is-on='true'] x-drop_area[data-drop-hover='true'] {opacity: 1}
+  x-tree[data-managed-is-on='true']:not([data-drag-active='true']) x-drop_area {background: transparent}
   x-tree[data-managed-is-on='true'] *[draggable       ='true'] +
                                     *[draggable       ='true'] > x-drop_area[data-type='before'] {display: none}
   x-tree[data-managed-is-on='true'] *[data-drag-active='true']   x-drop_area {width: 0}
-  x-tree[data-managed-is-on='true'] li:last-child              > x-drop_area[data-type='after'] {margin-bottom: 1px}
+  x-tree[data-managed-is-on='true'] li:last-child > x-drop_area[data-type='after'] {margin-bottom: 1px}

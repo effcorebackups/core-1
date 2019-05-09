@@ -144,7 +144,7 @@ namespace effcore {
               $c_id_tree.'-'.$c_id_parent : null,
               $c_id_tree,    $c_url);
             $c_tree_item->managed_is_on = $this->tree_managed_is_on;
-            $c_tree_item->managed_extra = $c_row['actions'];
+            $c_tree_item->managed_extra = $c_row['actions'] ?? null;
           }
           $result->child_insert(
             $trees, 'trees'

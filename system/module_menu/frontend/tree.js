@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var draggable = c_tree.querySelectorAll('[draggable="true"]');
       if (draggable instanceof NodeList) {
         draggable.forEach(function(c_draggable){
-          c_draggable.addEventListener('dragstart', function(event){event.stopPropagation(); c_draggable.setAttribute   ('data-drag-active', 'true'); event.dataTransfer.setData('text/plain', c_draggable.getAttribute('data-id'));}, false);
-          c_draggable.addEventListener('dragend',   function(event){event.stopPropagation(); c_draggable.removeAttribute('data-drag-active'        );                                                                               }, false);
+          c_draggable.addEventListener('dragstart', function(event){event.stopPropagation(); c_tree.setAttribute   ('data-drag-active', 'true'); c_draggable.setAttribute   ('data-drag-active', 'true'); event.dataTransfer.setData('text/plain', c_draggable.getAttribute('data-id'));}, false);
+          c_draggable.addEventListener('dragend',   function(event){event.stopPropagation(); c_tree.removeAttribute('data-drag-active'        ); c_draggable.removeAttribute('data-drag-active'        );                                                                               }, false);
         });
       }
 
