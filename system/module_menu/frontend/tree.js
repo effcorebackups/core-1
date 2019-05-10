@@ -21,35 +21,13 @@ document.addEventListener('DOMContentLoaded', function(){
           c_droppable.addEventListener('dragleave', function(event){event.stopPropagation(); event.preventDefault(); c_droppable.removeAttribute('data-drop-hover'        );}, false);
           c_droppable.addEventListener('drop',      function(event){event.stopPropagation(); event.preventDefault();
             var draggable_id = event.dataTransfer.getData('text/plain'),
-                draggable = c_tree.querySelector('[data-id="'+draggable_id+'"]');
-            switch (c_droppable.getAttribute('data-type')) {
-              case 'before':
-                c_droppable.removeAttribute('data-drop-hover');
-                c_droppable.parentNode.parentNode.insertBefore(
-                  c_tree.querySelector('[data-id="'+draggable_id+'"]'),
-                  c_droppable.parentNode
-                );
-                break;
-              case 'in':
-                c_droppable.removeAttribute('data-drop-hover');
-                c_droppable.parentNode.querySelector('ul').appendChild(
-                  c_tree.querySelector('[data-id="'+draggable_id+'"]')
-                );
-                break;
-              case 'after':
-                c_droppable.removeAttribute('data-drop-hover');
-                if (c_droppable.parentNode.nextSibling) {
-                  c_droppable.parentNode.parentNode.insertBefore(
-                    c_tree.querySelector('[data-id="'+draggable_id+'"]'),
-                    c_droppable.parentNode.nextSibling
-                  );
-                } else {
-                  c_droppable.parentNode.parentNode.appendChild(
-                    c_tree.querySelector('[data-id="'+draggable_id+'"]')
-                  );
-                }
-                break;
-            }
+                draggable = c_tree.querySelector('[data-id="'+draggable_id+'"]'),
+                droppable_type = c_droppable.getAttribute('data-type');
+            c_droppable.removeAttribute('data-drop-hover');
+            if (droppable_type == 'in'                                                 ) c_droppable.parentNode.querySelector('ul').appendChild(draggable                                    );
+            if (droppable_type == 'before'                                             ) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode            );
+            if (droppable_type == 'after' && c_droppable.parentNode.nextSibling != null) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode.nextSibling);
+            if (droppable_type == 'after' && c_droppable.parentNode.nextSibling == null) c_droppable.parentNode.parentNode         .appendChild(draggable                                    );
           }, false);
         });
       }
