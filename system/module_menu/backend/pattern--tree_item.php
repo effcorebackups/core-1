@@ -52,8 +52,7 @@ namespace effcore {
       if ($this->managed_is_on) {
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''))->render().$rendered_self;
-        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();
-      }
+        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();}
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
         'self'       => $rendered_self,
@@ -63,7 +62,7 @@ namespace effcore {
   }
 
   function render_self() {
-    $href        = token::replace($this->url);
+    $href        = token::replace($this->url       );
     $href_shadow = token::replace($this->shadow_url);
     if ($href        && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected',       'true', 'element_attributes');}
     if ($href        && url::is_active_trail($href        )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
