@@ -52,28 +52,28 @@
 
   /* managed menu */
 
-  x-tree[data-managed-is-on='true'] ul,
-  x-tree[data-managed-is-on='true'] li {margin: 0; padding: 0; list-style: none}
-  x-tree[data-managed-is-on='true'] li {padding-left: 35px}
-  x-tree[data-managed-is-on='true'] li             {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-managed-is-on='true'] li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-managed-is-on='true'] li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
-  x-tree[data-managed-is-on='true'] li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
+  x-tree[data-managed_mode^='simple'] ul,
+  x-tree[data-managed_mode^='simple'] li {margin: 0; padding: 0; list-style: none}
+  x-tree[data-managed_mode^='simple'] li {padding-left: 35px}
+  x-tree[data-managed_mode^='simple'] li             {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
+  x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
+  x-tree[data-managed_mode^='simple'] li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
+  x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
 
-  x-tree[data-managed-is-on='true'] x-item {display: block}
-  x-tree[data-managed-is-on='true'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
-  x-tree[data-managed-is-on='true'] x-item-extra {opacity: .8}
-  x-tree[data-managed-is-on='true'] x-item-url {display: block; color: %%_color_text; opacity: .5}
-  x-tree[data-managed-is-on='true'] x-item-url em {padding: 0 2px; font-style: normal}
-  x-tree[data-managed-is-on='true'] x-item x-actions x-action a em {display: none}
+  x-tree[data-managed_mode^='simple'] x-item {display: block}
+  x-tree[data-managed_mode^='simple'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
+  x-tree[data-managed_mode^='simple'] x-item-extra {opacity: .8}
+  x-tree[data-managed_mode^='simple'] x-item-url {display: block; color: %%_color_text; opacity: .5}
+  x-tree[data-managed_mode^='simple'] x-item-url em {padding: 0 2px; font-style: normal}
+  x-tree[data-managed_mode^='simple'] x-item x-actions x-action a em {display: none}
 
-  x-tree[data-managed-is-on='true'] x-drop_area {display: block; opacity: .5}
-  x-tree[data-managed-is-on='true'] x-drop_area[data-type='before'] {height:  5px; background: %%_color_warning}
-  x-tree[data-managed-is-on='true'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_warning}
-  x-tree[data-managed-is-on='true'] x-drop_area[data-type='in'    ] {height: 45px; background: %%_color_main; width: 45px; position: absolute}
-  x-tree[data-managed-is-on='true'] x-drop_area[data-drop-hover='true'] {opacity: 1}
-  x-tree[data-managed-is-on='true']:not([data-drag-active='true']) x-drop_area {background: transparent}
-  x-tree[data-managed-is-on='true'] *[draggable       ='true'] +
-                                    *[draggable       ='true'] > x-drop_area[data-type='before'] {display: none}
-  x-tree[data-managed-is-on='true'] *[data-drag-active='true']   x-drop_area {width: 0}
-  x-tree[data-managed-is-on='true'] li:last-child > x-drop_area[data-type='after'] {margin-bottom: 1px}
+  x-tree[data-managed_mode$='draggable'] x-drop_area {display: block; opacity: .5}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='before'] {height:  5px; background: %%_color_warning}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_warning}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='in'    ] {height: 45px; background: %%_color_main; width: 45px; position: absolute}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-drop-hover='true'] {opacity: 1}
+  x-tree[data-managed_mode$='draggable']:not([data-drag-active='true']) x-drop_area {background: transparent}
+  x-tree[data-managed_mode$='draggable'] *[draggable       ='true'] +
+                                         *[draggable       ='true'] > x-drop_area[data-type='before'] {display: none}
+  x-tree[data-managed_mode$='draggable'] *[data-drag-active='true']   x-drop_area {width: 0}
+  x-tree[data-managed_mode$='draggable'] li:last-child > x-drop_area[data-type='after'] {margin-bottom: 1px}

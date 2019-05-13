@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* drag-and-drop functionality */
 
-  var trees_dragged = document.querySelectorAll('x-tree[data-managed-is-on="true"]');
-  if (trees_dragged instanceof NodeList) {
-    trees_dragged.forEach(function(c_tree){
+  var trees_draggable = document.querySelectorAll('x-tree[data-managed_mode="simple-draggable"]');
+  if (trees_draggable instanceof NodeList) {
+    trees_draggable.forEach(function(c_tree){
 
-      var draggable = c_tree.querySelectorAll('[draggable="true"]');
+      var draggable = c_tree.querySelectorAll('li');
       if (draggable instanceof NodeList) {
         draggable.forEach(function(c_draggable){
+          c_draggable.setAttribute('draggable', 'true');
           c_draggable.addEventListener('dragstart', function(event){event.stopPropagation(); c_tree.setAttribute   ('data-drag-active', 'true'); c_draggable.setAttribute   ('data-drag-active', 'true'); event.dataTransfer.setData('text/plain', c_draggable.getAttribute('data-id'));}, false);
           c_draggable.addEventListener('dragend',   function(event){event.stopPropagation(); c_tree.removeAttribute('data-drag-active'        ); c_draggable.removeAttribute('data-drag-active'        );                                                                               }, false);
         });

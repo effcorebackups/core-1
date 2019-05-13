@@ -14,7 +14,7 @@ namespace effcore {
   public $title_state; # hidden | cutted
   public $access;
   public $is_nosql = true;
-  public $managed_is_on = false;
+  public $managed_mode; # null | simple | simple-draggable
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
@@ -25,8 +25,8 @@ namespace effcore {
 
   function build() {
     event::start('on_tree_before_build', $this->id, [&$this]);
-    $this->attribute_insert('data-id', $this->id);
-    if ($this->managed_is_on) $this->attribute_insert('data-managed-is-on', 'true');
+    $this->attribute_insert('data-id',           $this->id          );
+    $this->attribute_insert('data-managed_mode', $this->managed_mode);
     foreach (tree_item::select_all() as $c_item) {
       if ($c_item->id_tree   == $this->id &&
           $c_item->id_parent == null) {
