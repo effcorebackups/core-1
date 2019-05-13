@@ -133,12 +133,10 @@ namespace effcore {
             $c_title     = array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : $c_row[$this->tree_mapping['title'    ]]['value'];
             $c_url       = array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : $c_row[$this->tree_mapping['url'      ]]['value'];
             $c_id_tree = 'decorator-'.$c_id_tree;
-            if ($trees->child_select($c_id_tree) == null) {
-                $trees->child_insert(tree::insert($this->title ?? '', $c_id_tree), $c_id_tree);
-                if ($this->tree_managed_is_on) {
-                  $trees->child_select($c_id_tree)->attribute_insert('data-managed-is-on', 'true');
-                }
-            }
+            $c_tree = tree::insert($this->title ?? '', $c_id_tree);
+            $c_tree->managed_is_on = $this->tree_managed_is_on;
+            if ($trees->child_select(         $c_id_tree) == null)
+                $trees->child_insert($c_tree, $c_id_tree);
             $c_tree_item = tree_item::insert($c_title,
               $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
               $c_id_tree.'-'.$c_id_parent : null,

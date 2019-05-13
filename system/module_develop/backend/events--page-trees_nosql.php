@@ -35,7 +35,7 @@ namespace effcore\modules\develop {
       $tree_items = $tree->children_select_recursive();
       $tree_managed_id = 'managed-'.$id;
       $tree_managed = tree::insert($tree->title ?? '', $tree_managed_id);
-      $tree_managed->attribute_insert('data-managed-is-on', 'true');
+      $tree_managed->managed_is_on = true;
       $tree_managed->title_state = 'cutted';
       foreach ($tree_items as $c_item) {
         $c_tree_item = tree_item::insert($c_item->title,

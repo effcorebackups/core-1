@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* drag-and-drop functionality */
 
-  var trees_managed = document.querySelectorAll('x-tree[data-managed-is-on="true"]');
-  if (trees_managed instanceof NodeList) {
-    trees_managed.forEach(function(c_tree){
+  var trees_dragged = document.querySelectorAll('x-tree[data-managed-is-on="true"]');
+  if (trees_dragged instanceof NodeList) {
+    trees_dragged.forEach(function(c_tree){
 
       var draggable = c_tree.querySelectorAll('[draggable="true"]');
       if (draggable instanceof NodeList) {
