@@ -15,9 +15,9 @@ namespace effcore {
   public $id_tree;
   public $title = '';
   public $url;
-  public $shadow_url;
+  public $url_shadow;
+  public $extra;
   public $access;
-  public $managed_extra;
   public $is_nosql = true;
 
   function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
@@ -62,7 +62,7 @@ namespace effcore {
 
   function render_self() {
     $href        = token::replace($this->url       );
-    $href_shadow = token::replace($this->shadow_url);
+    $href_shadow = token::replace($this->url_shadow);
     if ($href        && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected',       'true', 'element_attributes');}
     if ($href        && url::is_active_trail($href        )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
     if ($href_shadow && url::is_active_trail($href_shadow )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
@@ -76,7 +76,7 @@ namespace effcore {
   function render_self_managed() {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
       new markup('x-item-title', [], $this->title),
-      new markup('x-item-extra', [], $this->managed_extra),
+      new markup('x-item-extra', [], $this->extra),
       new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
     ]))->render();
   }

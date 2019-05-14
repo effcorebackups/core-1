@@ -13,7 +13,7 @@ tree_items
     id_parent: null
     id_tree: main
     title: Management
-    shadow_url: /manage
+    url_shadow: /manage
     access
       roles
       - =: admins
