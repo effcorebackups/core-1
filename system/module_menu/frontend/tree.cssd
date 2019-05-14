@@ -55,10 +55,10 @@
   x-tree[data-managed_mode^='simple'] ul,
   x-tree[data-managed_mode^='simple'] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-managed_mode^='simple'] li {padding-left: 35px}
-  x-tree[data-managed_mode^='simple'] li             {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/branch-hline.svgd') no-repeat 0 -21px, url('images/branch-vline.svgd') repeat-y}
-  x-tree[data-managed_mode^='simple'] li:last-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
-  x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/branch-hline.svgd') no-repeat 0 -21px}
+  x-tree[data-managed_mode^='simple'] li             {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
+  x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
+  x-tree[data-managed_mode^='simple'] li:last-child  {background: url('images/tree-hline.svgd') no-repeat 0 -21px}
+  x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/tree-hline.svgd') no-repeat 0 -21px}
 
   x-tree[data-managed_mode^='simple'] x-item {display: block}
   x-tree[data-managed_mode^='simple'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
