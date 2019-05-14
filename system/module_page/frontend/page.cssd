@@ -218,8 +218,8 @@
   /* file system icons */
 
   x-file-path {display: inline-block}
-  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('images/icons-file_types.svg') no-repeat; margin-right: 10px}
-  x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file_types.svg') no-repeat 0 -30px}
+  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('images/icons-file.svg') no-repeat; margin-right: 10px}
+  x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file.svg') no-repeat 0 -30px}
 
   /* menu with targets */
 
