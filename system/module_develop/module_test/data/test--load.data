@@ -948,10 +948,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/icons-form_items.svgd
-        - request_url-/system/module_page/frontend/images/icons-form_items.svgd|step_request
-            url: /system/module_page/frontend/images/icons-form_items.svgd
-        - response_check-/system/module_page/frontend/images/icons-form_items.svgd|step_check
+        # url: /system/module_page/frontend/images/icons-form.svgd
+        - request_url-/system/module_page/frontend/images/icons-form.svgd|step_request
+            url: /system/module_page/frontend/images/icons-form.svgd
+        - response_check-/system/module_page/frontend/images/icons-form.svgd|step_check
             where: http_code
             match: 200
             on_failure
@@ -1367,10 +1367,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/icons-form_items.svgd/
-        - request_url-/system/module_page/frontend/images/icons-form_items.svgd/|step_request
-            url: /system/module_page/frontend/images/icons-form_items.svgd/
-        - response_check-/system/module_page/frontend/images/icons-form_items.svgd/|step_check
+        # url: /system/module_page/frontend/images/icons-form.svgd/
+        - request_url-/system/module_page/frontend/images/icons-form.svgd/|step_request
+            url: /system/module_page/frontend/images/icons-form.svgd/
+        - response_check-/system/module_page/frontend/images/icons-form.svgd/|step_check
             where: http_code
             match: 302
             on_failure

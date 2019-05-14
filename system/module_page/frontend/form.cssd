@@ -17,8 +17,8 @@
   fieldset input[data-opener-type='fieldset'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
-  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('images/icons-form_items.svgd')   0   -60px}
-  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('images/icons-form_items.svgd') -20px -60px}
+  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('images/icons-form.svgd')   0   -60px}
+  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('images/icons-form.svgd') -20px -60px}
 
   x-fieldset-content {
     display: block;
@@ -95,10 +95,10 @@
 
   input[type='radio'        ]         {background: %%_color_page}
   input[type='checkbox'     ]         {background: %%_color_page}
-  input[data-type='switcher']         {background: %%_color_page url('images/icons-form_items.svgd')   0   -40px}
-  input[type='radio'        ]:checked {background: %%_color_page url('images/icons-form_items.svgd')   0   -20px}
-  input[type='checkbox'     ]:checked {background: %%_color_page url('images/icons-form_items.svgd')   0     0  }
-  input[data-type='switcher']:checked {background: %%_color_page url('images/icons-form_items.svgd') -46px -40px}
+  input[data-type='switcher']         {background: %%_color_page url('images/icons-form.svgd')   0   -40px}
+  input[type='radio'        ]:checked {background: %%_color_page url('images/icons-form.svgd')   0   -20px}
+  input[type='checkbox'     ]:checked {background: %%_color_page url('images/icons-form.svgd')   0     0  }
+  input[data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
 
   input[data-is-checked='no']:checked,
   input[data-is-checked='yes']:not(:checked) {border-color: %%_color_warning}
@@ -126,7 +126,7 @@
     opacity: .3}
   x-description p {margin: 0}
   input[data-opener-type='description'] {display: none}
-  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form_items.svgd') 0 -85px}
+  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form.svgd') 0 -85px}
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
   x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
@@ -174,7 +174,7 @@
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}
-  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3); background: white url('images/icons-form_items.svgd') -20px 0 !important}
+  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3); background: white url('images/icons-form.svgd') -20px 0 !important}
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
 
@@ -187,7 +187,7 @@
     border-top: 1px dashed %%_color_main}
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form_items.svgd') -18px 2px !important}
+  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
   x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
