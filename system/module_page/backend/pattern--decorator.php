@@ -141,7 +141,6 @@ namespace effcore {
               $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
               $c_id_tree.'-'.$c_id_parent : null,
               $c_id_tree,    $c_url);
-            $c_tree_item->managed_mode = $this->tree_managed_mode;
             $c_tree_item->managed_extra = $c_row['actions'] ?? null;
           }
           $result->child_insert(

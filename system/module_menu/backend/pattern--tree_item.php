@@ -17,7 +17,6 @@ namespace effcore {
   public $url;
   public $shadow_url;
   public $access;
-  public $managed_mode; # null | simple | simple-draggable
   public $managed_extra;
   public $is_nosql = true;
 
@@ -33,8 +32,7 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('data-id',           $this->id          );
-    $this->attribute_insert('data-managed_mode', $this->managed_mode);
+    $this->attribute_insert('data-id', $this->id);
     foreach (static::select_all() as $c_item) {
       if ($c_item->id_parent == $this->id) {
         $this->child_insert($c_item, $c_item->id);
@@ -44,12 +42,13 @@ namespace effcore {
   }
 
   function render() {
+    $managed_mode = tree::select($this->id_tree)->managed_mode;
     if ($this->access === null || access::check($this->access)) {
-      $rendered_self     = $this->managed_mode ? $this->render_self_managed() : $this->render_self();
-      $rendered_children = $this->managed_mode || $this->children_select_count() ? (template::make_new($this->template_children, [
+      $rendered_self     = $managed_mode ? $this->render_self_managed() : $this->render_self();
+      $rendered_children = $managed_mode || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';
-      if ($this->managed_mode) {
+      if ($managed_mode) {
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''))->render().$rendered_self;
         $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();}

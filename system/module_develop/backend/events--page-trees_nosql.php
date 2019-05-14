@@ -45,8 +45,8 @@ namespace effcore\modules\develop {
           $c_item->url, null,
           $c_item->attributes,
           $c_item->element_attributes,
-          $c_item->weight, 'develop');
-        $c_tree_item->managed_mode = 'simple';
+          $c_item->weight, 'develop'
+        );
       }
       return $tree_managed;
     }
