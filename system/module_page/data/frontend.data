@@ -14,14 +14,14 @@ frontend
         - sizes: 32x32
   # icon for all modern browsers: Safari, Opera, Chrome, Firefox, IE 11, Edge …
     - icon_32_modern
-        file: frontend/images/icon-32.png
+        file: frontend/images/favourite_icon-32.png
         attributes
         - rel: icon
         - type: image/png
         - sizes: 32x32
   # icon for Safari on iPad 1/2
     - icon_apple_76
-        file: frontend/images/icon-76.png
+        file: frontend/images/favourite_icon-76.png
         attributes
         - rel: apple-touch-icon
         - type: image/png
