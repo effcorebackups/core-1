@@ -35,14 +35,14 @@ frontend
         - sizes: 120x120
   # icon for Safari on any iPad
     - icon_apple_152
-        file: frontend/images/icon-152.png
+        file: frontend/images/favourite_icon-152.png
         attributes
         - rel: apple-touch-icon
         - type: image/png
         - sizes: 152x152
   # icon for Safari on iPad 3+, iPhone, macOS
     - icon_apple_192
-        file: frontend/images/icon-192.png
+        file: frontend/images/favourite_icon-192.png
         attributes
         - rel: apple-touch-icon
         - type: image/png
