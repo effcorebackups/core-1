@@ -54,7 +54,7 @@
 
   x-tree[data-managed_mode^='simple'] ul,
   x-tree[data-managed_mode^='simple'] li {margin: 0; padding: 0; list-style: none}
-  x-tree[data-managed_mode^='simple'] li {padding-left: 35px}
+  x-tree[data-managed_mode^='simple'] li {padding-left: 40px}
   x-tree[data-managed_mode^='simple'] li             {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
   x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
   x-tree[data-managed_mode^='simple'] li:last-child  {background: url('images/tree-hline.svgd') no-repeat 0 -21px}
