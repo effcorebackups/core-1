@@ -7,7 +7,7 @@ frontend
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
     - icon_32_classic
-        file: frontend/images/icon-32.ico
+        file: frontend/images/favourite_icon-32.ico
         attributes
         - rel: icon
         - type: image/x-icon

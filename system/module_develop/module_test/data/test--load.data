@@ -939,10 +939,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/icon-32.ico
-        - request_url-/system/module_page/frontend/images/icon-32.ico|step_request
-            url: /system/module_page/frontend/images/icon-32.ico
-        - response_check-/system/module_page/frontend/images/icon-32.ico|step_check
+        # url: /system/module_page/frontend/images/favourite_icon-32.ico
+        - request_url-/system/module_page/frontend/images/favourite_icon-32.ico|step_request
+            url: /system/module_page/frontend/images/favourite_icon-32.ico
+        - response_check-/system/module_page/frontend/images/favourite_icon-32.ico|step_check
             where: http_code
             match: 200
             on_failure
@@ -1358,10 +1358,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/images/icon-32.ico/
-        - request_url-/system/module_page/frontend/images/icon-32.ico/|step_request
-            url: /system/module_page/frontend/images/icon-32.ico/
-        - response_check-/system/module_page/frontend/images/icon-32.ico/|step_check
+        # url: /system/module_page/frontend/images/favourite_icon-32.ico/
+        - request_url-/system/module_page/frontend/images/favourite_icon-32.ico/|step_request
+            url: /system/module_page/frontend/images/favourite_icon-32.ico/
+        - response_check-/system/module_page/frontend/images/favourite_icon-32.ico/|step_check
             where: http_code
             match: 302
             on_failure
