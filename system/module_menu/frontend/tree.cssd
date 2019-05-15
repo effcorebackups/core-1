@@ -67,6 +67,11 @@
   x-tree[data-managed_mode^='simple'] x-item-url em {padding: 0 2px; font-style: normal}
   x-tree[data-managed_mode^='simple'] x-item x-actions x-action a em {display: none}
 
+  x-tree[data-managed_mode$='draggable'] li             {background: url('images/tree-draggable.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
+  x-tree[data-managed_mode$='draggable'] li:first-child {background: url('images/tree-draggable.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
+  x-tree[data-managed_mode$='draggable'] li:last-child  {background: url('images/tree-draggable.svgd') no-repeat 0 -21px}
+  x-tree[data-managed_mode$='draggable'] li:only-child  {background: url('images/tree-draggable.svgd') no-repeat 0 -21px}
+
   x-tree[data-managed_mode$='draggable'] x-drop_area {display: block; opacity: .5}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='before'] {height:  5px; background: %%_color_warning}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_warning}
