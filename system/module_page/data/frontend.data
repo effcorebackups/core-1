@@ -28,7 +28,7 @@ frontend
         - sizes: 76x76
   # icon for Safari on iPhone
     - icon_apple_120
-        file: frontend/images/icon-120.png
+        file: frontend/images/favourite_icon-120.png
         attributes
         - rel: apple-touch-icon
         - type: image/png
