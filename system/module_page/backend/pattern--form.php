@@ -72,9 +72,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
     $this->clicked_button_set();
-    if ($this->clicked_button &&
-        $this->child_select('hidden_id_form')->value_get() ==
-        $this->child_select('hidden_id_form')->value_request_get(0, $this->source_get())) {
+    if ($this->clicked_button && $this->is_active()) {
 
     # call items validate methods
       if (empty($this->clicked_button->novalidate)) {
@@ -153,6 +151,11 @@ namespace effcore {
         return true;
       }
     }
+  }
+
+  function is_active() {
+    return $this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ==
+           $this->child_select('hidden_id_form')->value_get();
   }
 
   function render() {
