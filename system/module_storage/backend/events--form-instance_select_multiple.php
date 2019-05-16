@@ -24,7 +24,7 @@ namespace effcore\modules\storage {
       $selection->is_paged = true;
       $form->_selection = $selection;
       foreach ($entity->selection_params as $c_key => $c_value) {
-        $selection->{$c_key} = $c_value;
+        $selection->                       {$c_key} = $c_value;
       }
       $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {

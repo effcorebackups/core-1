@@ -141,7 +141,7 @@ namespace effcore {
               $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
               $c_id_tree.'-'.$c_id_parent : null,
               $c_id_tree,    $c_url);
-            $c_tree_item->extra = $c_row['actions'] ?? null;
+            $c_tree_item->extra = $c_row['extra'] ?? null;
           }
           $result->child_insert(
             $trees, 'trees'

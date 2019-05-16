@@ -174,7 +174,7 @@ namespace effcore {
             case 'code':
               $c_row[$c_row_id] = [
                 'title' => $c_field->title,
-                'value' => $c_field->code->call($this, $c_instance)
+                'value' => $c_field->code->call($this, $c_row, $c_instance)
               ];
               break;
           }
@@ -202,33 +202,33 @@ namespace effcore {
 
   function field_insert_entity($row_id = null, $entity_name, $entity_field_name, $weight = 0) {
     $field = new \stdClass;
-    $field->type = 'field';
-    $field->entity_name = $entity_name;
+    $field->type              = 'field';
+    $field->entity_name       = $entity_name;
     $field->entity_field_name = $entity_field_name;
-    $field->weight = $weight;
+    $field->weight            = $weight;
     $this->fields[$row_id ?: $entity_name.'.'.$entity_field_name] = $field;
   }
 
   function field_insert_checkbox($row_id = null, $title = '', $weight = 0) {
     $field = new \stdClass;
-    $field->type = 'checkbox';
-    $field->title = $title;
+    $field->type   = 'checkbox';
+    $field->title  = $title;
     $field->weight = $weight;
     $this->fields[$row_id ?: 'checkbox'] = $field;
   }
 
   function field_insert_action($row_id = null, $title = '', $weight = 0) {
     $field = new \stdClass;
-    $field->type = 'actions';
-    $field->title = $title;
+    $field->type   = 'actions';
+    $field->title  = $title;
     $field->weight = $weight;
     $this->fields[$row_id ?: 'actions'] = $field;
   }
 
   function field_insert_markup($row_id = null, $title = '', $markup, $weight = 0) {
     $field = new \stdClass;
-    $field->type = 'markup';
-    $field->title = $title;
+    $field->type   = 'markup';
+    $field->title  = $title;
     $field->markup = $markup;
     $field->weight = $weight;
     $this->fields[$row_id ?: 'markup'] = $field;
@@ -236,9 +236,9 @@ namespace effcore {
 
   function field_insert_code($row_id = null, $title = '', $code, $weight = 0) {
     $field = new \stdClass;
-    $field->type = 'code';
-    $field->title = $title;
-    $field->code = $code;
+    $field->type   = 'code';
+    $field->title  = $title;
+    $field->code   = $code;
     $field->weight = $weight;
     $this->fields[$row_id ?: 'code'] = $field;
   }
