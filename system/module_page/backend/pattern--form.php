@@ -28,8 +28,8 @@ namespace effcore {
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
     $data_hash = core::hash_get_data($this->validation_data);
-    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'form_id',            'value' => $id                 ]), 'hidden_form_id'      );
-    $this->child_insert(new markup_simple('input', ['type'  => 'hidden', 'name'  => 'validation_id-'.$id, 'value' => $this->validation_id]), 'hidden_validation_id');
+    $this->child_insert(new field_hidden('form_id',       $id),                       'hidden_id_form'      );
+    $this->child_insert(new field_hidden('validation_id-'.$id, $this->validation_id), 'hidden_id_validation');
   # send test headers
     if (module::is_enabled('test')) {
       header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
@@ -126,9 +126,10 @@ namespace effcore {
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
       if ($c_item instanceof container)         $this->items[$c_npath                                                ] = $c_item;
       if ($c_item instanceof button)            $this->items['~'.$c_item->value_get     ()                           ] = $c_item;
-      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_get_first()                         ][] = $c_item;
+      if ($c_item instanceof field_hidden)      $this->items['!'.$c_item->name_get      ()                           ] = $c_item;
       if ($c_item instanceof field)             $groups     ['#'.$c_item->name_get      ()                         ][] = $c_item;
       if ($c_item instanceof field_radiobutton) $groups     ['#'.$c_item->name_get      ().':'.$c_item->value_get()][] = $c_item;
+      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_get_first()                         ][] = $c_item;
     }
     foreach ($groups as $c_name => $c_group) {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);

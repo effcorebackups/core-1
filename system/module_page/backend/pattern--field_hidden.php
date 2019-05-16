@@ -12,7 +12,9 @@ namespace effcore {
     'type' => 'hidden',
   ];
 
-  function __construct($attributes = [], $weight = 0) {
+  function __construct($name = null, $value = null, $attributes = [], $weight = 0) {
+    if ($name ) $this-> name_set($name );
+    if ($value) $this->value_set($value);
     parent::__construct(null, $attributes, $weight);
   }
 
