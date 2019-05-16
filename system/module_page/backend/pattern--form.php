@@ -72,7 +72,9 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
     $this->clicked_button_set();
-    if ($this->clicked_button && field::request_value_get('form_id', 0, $this->source_get()) == $id) {
+    if ($this->clicked_button &&
+        $this->child_select('hidden_id_form')->value_get() ==
+        $this->child_select('hidden_id_form')->value_request_get(0, $this->source_get())) {
 
     # call items validate methods
       if (empty($this->clicked_button->novalidate)) {

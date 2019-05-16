@@ -48,8 +48,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'file'];
   public $element_attributes = [
     'type' => 'file',
-    'name' => 'file'
-  ];
+    'name' => 'file'];
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '10K';
   public $min_files_number = 0;

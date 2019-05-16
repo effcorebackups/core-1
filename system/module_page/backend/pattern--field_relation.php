@@ -10,8 +10,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'relation'];
   public $element_attributes = [
     'name'     => 'relation',
-    'required' => true
-  ];
+    'required' => true];
 # ─────────────────────────────────────────────────────────────────────
   public $entity_name;
   public $entity_field_id_name;

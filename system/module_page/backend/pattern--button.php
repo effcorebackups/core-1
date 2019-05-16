@@ -10,8 +10,7 @@ namespace effcore {
   public $tag_name = 'button';
   public $attributes = [
     'type' => 'submit',
-    'name' => 'button'
-  ];
+    'name' => 'button'];
 # ─────────────────────────────────────────────────────────────────────
   public $title = 'button';
   public $novalidate = false;

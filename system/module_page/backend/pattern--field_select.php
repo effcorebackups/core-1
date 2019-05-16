@@ -12,8 +12,7 @@ namespace effcore {
   public $element_tag_name = 'select';
   public $element_attributes = [
     'name'     => 'select',
-    'required' => true
-  ];
+    'required' => true];
 # ─────────────────────────────────────────────────────────────────────
   public $values = [];
   public $selected = [];
