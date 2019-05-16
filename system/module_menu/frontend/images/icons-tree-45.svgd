@@ -22,7 +22,7 @@
   </metadata>
 
   <g id="icon_drag_here">
-    <path style="fill: %%_color_warning; fill-opacity: .3; stroke: %%_color_warning; stroke-width: 4px" d="M 30.25,17.25 17,4 4,17 17.25,30.25 5,42.5 H 42.5 V 5 Z"/>
+    <path style="fill: %%_color_warning; stroke: none" d="M 30.25,17.25 17,4 4,17 17.25,30.25 5,42.5 H 42.5 V 5 Z"/>
   </g>
 
 </svg>
