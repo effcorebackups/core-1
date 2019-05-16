@@ -141,7 +141,7 @@ namespace effcore {
             $c_tree_item = tree_item::insert($c_title,
               $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
               $c_id_tree.'-'.$c_id_parent : null,
-              $c_id_tree,    $c_url);
+              $c_id_tree,    $c_url, null, ['data-real-id' => $c_id]);
             $c_tree_item->extra = $c_extra;
           }
           $result->child_insert(

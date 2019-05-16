@@ -16,7 +16,7 @@ namespace effcore\modules\menu {
     if ($entity_name == 'tree_item' && $instances_group_by && !empty($form->_selection)) {
       $form->_selection->query_params['conditions'] = ['field_!f' => 'id_tree', '=', 'value_!v' => $instances_group_by];
       $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
-        $c_hidden = new field_hidden('parent_id-'.$c_instance->id, $c_instance->id_parent);
+        $c_hidden = new field_hidden('parent_id-'.$c_instance->id, $c_instance->id_parent, ['data-is-id_tree' => 'true']);
         return new node([], ['actions' => $c_row['actions']['value'], 'parent_id' => $c_hidden]);
       });
     }
