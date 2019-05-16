@@ -425,6 +425,10 @@ forms
                   - type: group_palette
                 element_attributes
                 - name: palette_color
+    - hidden|field_hidden
+        attributes
+        - name: hidden_name
+        - value: hidden_value
     - button_submit|button
         title: submit
         attributes
