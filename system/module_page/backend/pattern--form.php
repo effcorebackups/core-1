@@ -19,7 +19,7 @@ namespace effcore {
   protected $items = [];
 
   function build() {
-    $id = $this->attribute_select('id');
+    $id = $this->id_get();
     if (!$id) {
       message::insert('Form ID is required!', 'warning');
       $this->children_delete_all();
@@ -115,6 +115,10 @@ namespace effcore {
       if (static::$errors != [] && core::hash_get_data($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
       if (static::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
     }
+  }
+
+  function id_get() {
+    return $this->attribute_select('id');
   }
 
   function source_get() {

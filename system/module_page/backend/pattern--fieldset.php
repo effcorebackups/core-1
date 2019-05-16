@@ -36,9 +36,9 @@ namespace effcore {
       case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'fieldset', 'title' => new text('Press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true]); break;
       default      : $opener = null;
     }
-    if ($opener && $this->cform && $this->cform->attribute_select('id') == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
-    if ($opener && $this->cform && $this->cform->attribute_select('id') == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
-    if ($opener && $this->has_error()                                                                                                                                        ) $opener->attribute_delete('checked'      );
+    if ($opener && $this->cform && $this->cform->id_get() == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
+    if ($opener && $this->cform && $this->cform->id_get() == field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
+    if ($opener && $this->has_error()                                                                                                                          ) $opener->attribute_delete('checked'      );
     return $opener ?
            $opener->render() : '';
   }
