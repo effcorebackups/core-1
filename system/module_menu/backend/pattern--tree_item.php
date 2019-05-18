@@ -106,7 +106,8 @@ namespace effcore {
         $c_instance->id,
         $c_instance->id_parent,
         $c_instance->id_tree,
-        $c_instance->url, unserialize($c_instance->access));
+        $c_instance->url, unserialize($c_instance->access), [], [],
+        $c_instance->weight);
       static::$cache[$c_tree_item->id] = $c_tree_item;
       static::$cache[$c_tree_item->id]->module_id = 'menu';
       static::$cache[$c_tree_item->id]->is_nosql = false;
