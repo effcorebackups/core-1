@@ -29,8 +29,14 @@ document.addEventListener('DOMContentLoaded', function(){
             if (droppable_type == 'before'                                             ) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode            );
             if (droppable_type == 'after' && c_droppable.parentNode.nextSibling != null) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode.nextSibling);
             if (droppable_type == 'after' && c_droppable.parentNode.nextSibling == null) c_droppable.parentNode.parentNode         .appendChild(draggable                                    );
-            if (draggable.parentNode.parentNode.nodeName == 'LI'    ) draggable.querySelector('input[data-parent="true"]').value = draggable.parentNode.parentNode.getAttribute('data-real-id');
             if (draggable.parentNode.parentNode.nodeName == 'X-TREE') draggable.querySelector('input[data-parent="true"]').value = '';
+            if (draggable.parentNode.parentNode.nodeName == 'LI'    ) draggable.querySelector('input[data-parent="true"]').value = draggable.parentNode.parentNode.getAttribute('data-real-id');
+            var c_weight_num = 0, weights = c_tree.querySelectorAll('[data-id="' + draggable.parentNode.parentNode.getAttribute('data-id') + '"] > ul > li > x-item input[data-weight="true"]');
+            if (weights instanceof NodeList) {
+              weights.forEach(function(c_weight){
+                c_weight.value = c_weight_num++;
+              });
+            }
           }, false);
         });
       }
