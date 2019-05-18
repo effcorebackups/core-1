@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
             if (droppable_type == 'before'                                             ) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode            );
             if (droppable_type == 'after' && c_droppable.parentNode.nextSibling != null) c_droppable.parentNode.parentNode.insertBefore        (draggable, c_droppable.parentNode.nextSibling);
             if (droppable_type == 'after' && c_droppable.parentNode.nextSibling == null) c_droppable.parentNode.parentNode         .appendChild(draggable                                    );
-            if (draggable.parentNode.parentNode.nodeName == 'LI'    ) draggable.querySelector('input[data-is-id_tree="true"]').value = draggable.parentNode.parentNode.getAttribute('data-real-id');
-            if (draggable.parentNode.parentNode.nodeName == 'X-TREE') draggable.querySelector('input[data-is-id_tree="true"]').value = '';
+            if (draggable.parentNode.parentNode.nodeName == 'LI'    ) draggable.querySelector('input[data-parent="true"]').value = draggable.parentNode.parentNode.getAttribute('data-real-id');
+            if (draggable.parentNode.parentNode.nodeName == 'X-TREE') draggable.querySelector('input[data-parent="true"]').value = '';
           }, false);
         });
       }
