@@ -56,7 +56,8 @@ namespace effcore\modules\storage {
         tabs_item::insert($c_entity->title_plural,
             'manage_instances_'.$c_grp_id.'_'.$c_name,
             'manage_instances_'.$c_grp_id,
-            'manage_instances', $c_grp_id.'/'.$c_name);
+            'manage_instances', $c_grp_id.'/'.$c_name
+        );
       }
     }
   }

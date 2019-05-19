@@ -20,7 +20,8 @@ namespace effcore\modules\test {
     foreach ($tests as $c_test) {
       tabs_item::insert($c_test->title,
         'test_execute_'.$c_test->id,
-        'test_execute', 'tests', $c_test->id);
+        'test_execute', 'tests', $c_test->id
+      );
     }
   }
 

@@ -25,7 +25,8 @@ namespace effcore\modules\page {
     foreach ($presets as $c_preset) {
       tabs_item::insert(      $c_preset->title,
         'decoration_presets_'.$c_preset->id,
-        'decoration_presets', 'decoration', 'presets/'.$c_preset->id);
+        'decoration_presets', 'decoration', 'presets/'.$c_preset->id
+      );
     }
   }
 

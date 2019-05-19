@@ -13,7 +13,7 @@ namespace effcore {
   public $title = '';
   public $title_state; # hidden | cutted
   public $access;
-  public $is_nosql = true;
+  public $type = 'nosql'; # nosql | sql | dynamic
   public $managed_mode; # null | simple | simple-draggable
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
@@ -70,6 +70,7 @@ namespace effcore {
         if (isset(static::$cache[$c_tree->id])) console::log_insert_about_duplicate('tree', $c_tree->id, $c_module_id);
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->module_id = $c_module_id;
+        static::$cache[$c_tree->id]->type = 'nosql';
       }
     }
   # load from storage
@@ -77,16 +78,16 @@ namespace effcore {
       $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access), [], 0);
       static::$cache[$c_tree->id] = $c_tree;
       static::$cache[$c_tree->id]->module_id = 'menu';
-      static::$cache[$c_tree->id]->is_nosql = false;
+      static::$cache[$c_tree->id]->type = 'sql';
     }
   }
 
-  static function select_all($is_only_nosql = false) {
+  static function select_all($type = null) {
     if       (static::$cache == null) static::init();
     $result = static::$cache ?? [];
-    if ($is_only_nosql)
+    if ($type)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->is_nosql == false)
+        if ($c_item->type != $type)
           unset($result[$c_id]);
     return $result;
   }
@@ -101,7 +102,7 @@ namespace effcore {
     if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_tree;
            static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->is_nosql = false;
+           static::$cache[$id]->type = 'dynamic';
     return static::$cache[$id];
   }
 

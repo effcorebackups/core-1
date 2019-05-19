@@ -14,7 +14,7 @@ namespace effcore\modules\develop {
           abstract class events_page_trees_nosql {
 
   static function on_tab_before_build($tab) {
-    $trees = tree::select_all(true);
+    $trees = tree::select_all('nosql');
     $id = page::get_current()->args_get('id');
     core::array_sort_by_title($trees);
     if (!isset($trees[$id])) url::go(page::get_current()->args_get('base').'/select/'.reset($trees)->id);
@@ -22,12 +22,13 @@ namespace effcore\modules\develop {
       tabs_item::insert(      $c_tree->title,
         'trees_nosql_select_'.$c_tree->id,
         'trees_nosql_select',
-        'trees_nosql', 'select/'.$c_tree->id);
+        'trees_nosql', 'select/'.$c_tree->id
+      );
     }
   }
 
   static function on_show_block_tree($page) {
-    $trees = tree::select_all(true);
+    $trees = tree::select_all('nosql');
     $id = $page->args_get('id');
     if (isset($trees[$id])) {
       $tree = clone tree::select($id);
