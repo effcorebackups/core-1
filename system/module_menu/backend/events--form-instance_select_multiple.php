@@ -5,7 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\entity;
           use \effcore\field_hidden;
+          use \effcore\field;
           use \effcore\node;
           use \effcore\page;
           abstract class events_form_instance_select_multiple {
@@ -31,6 +33,12 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree) {
+      $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]]);
+      foreach ($tree_items as $c_item) {
+        $c_item->id_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
+        $c_item->weight    = field::request_value_get('weight-'.$c_item->id);
+        $c_item->update();
+      }
     }
   }
 

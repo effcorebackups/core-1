@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
             var c_weight_num = 0, weights = c_tree.querySelectorAll('[data-id="' + draggable.parentNode.parentNode.getAttribute('data-id') + '"] > ul > li > x-item input[data-weight="true"]');
             if (weights instanceof NodeList) {
               weights.forEach(function(c_weight){
-                c_weight.value = c_weight_num++;
+                c_weight.value = c_weight_num--;
               });
             }
           }, false);
