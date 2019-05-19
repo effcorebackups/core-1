@@ -344,7 +344,7 @@ namespace effcore {
     }
   }
 
-  function instances_select($entity, $params = []) {
+  function instances_select($entity, $params = [], $idkey = null) {
     $params += ['join_fields' => [], 'join' => [], 'conditions' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
@@ -361,9 +361,11 @@ namespace effcore {
         $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
         $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
       }
-      $result = $this->query($query);
-      foreach ($result as $c_instance) {
+      $result = [];
+      foreach ($this->query($query) as $c_instance) {
         $c_instance->entity_set_name($entity->name);
+        if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
+        else        $result[                     ] = $c_instance;
       }
       return $result;
     }

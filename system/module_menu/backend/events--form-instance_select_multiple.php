@@ -33,15 +33,17 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree) {
-      $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]]);
+      $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
       foreach ($tree_items as $c_item) {
         $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
         $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: 0;
-        if ($c_item->id_parent != $c_new_parent ||
-            $c_item->weight    != $c_new_weight) {
-          $c_item->id_parent = $c_new_parent;
-          $c_item->weight    = $c_new_weight;
-          $c_item->update();
+        if ($c_new_parent == null || isset($tree_items[$c_new_parent])) {
+          if ($c_item->id_parent != $c_new_parent ||
+              $c_item->weight    != $c_new_weight) {
+              $c_item->id_parent  = $c_new_parent;
+              $c_item->weight     = $c_new_weight;
+              $c_item->update();  
+          }
         }
       }
     }
