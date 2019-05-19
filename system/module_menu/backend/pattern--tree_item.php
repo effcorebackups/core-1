@@ -18,7 +18,7 @@ namespace effcore {
   public $url_shadow;
   public $extra;
   public $access;
-  public $is_nosql = true;
+  public $type = 'nosql'; # nosql | sql | dynamic
 
   function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
@@ -97,6 +97,7 @@ namespace effcore {
         if (isset(static::$cache_tree_items[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
         static::$cache[$c_tree_item->id] = $c_tree_item;
         static::$cache[$c_tree_item->id]->module_id = $c_module_id;
+        static::$cache[$c_tree_item->id]->type = 'nosql';
       }
     }
   # load from storage
@@ -110,7 +111,7 @@ namespace effcore {
         $c_instance->weight);
       static::$cache[$c_tree_item->id] = $c_tree_item;
       static::$cache[$c_tree_item->id]->module_id = 'menu';
-      static::$cache[$c_tree_item->id]->is_nosql = false;
+      static::$cache[$c_tree_item->id]->type = 'sql';
     }
   }
 
@@ -129,7 +130,7 @@ namespace effcore {
     if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->is_nosql = false;
+           static::$cache[$id]->type = 'dynamic';
     return static::$cache[$id];
   }
 

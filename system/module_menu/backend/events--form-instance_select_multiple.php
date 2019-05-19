@@ -28,10 +28,9 @@ namespace effcore\modules\menu {
   }
 
   static function on_submit($form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
+    $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree) {
-
     }
   }
 
