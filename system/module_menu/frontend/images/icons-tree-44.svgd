@@ -23,13 +23,13 @@
 
   <g id="icon_page">
     <rect id="icon_pge-page" width="36" height="44" x="4" style="fill: %%_color_main; stroke: none"/>
-    <path id="icon_pge-line-1" style="fill: none; stroke: white; stroke-width: 2px" d="M 8, 7 H 36"/>
-    <path id="icon_pge-line-2" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,12 H 36"/>
-    <path id="icon_pge-line-3" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,17 H 36"/>
-    <path id="icon_pge-line-4" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,22 H 36"/>
-    <path id="icon_pge-line-5" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,27 H 36"/>
-    <path id="icon_pge-line-6" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,32 H 36"/>
-    <path id="icon_pge-line-7" style="fill: none; stroke: white; stroke-width: 2px" d="M 8,37 H 36"/>
+    <path id="icon_pge-line-1" style="fill: none; stroke: white; stroke-width: 2px" d="M 10  7 L 34  7"/>
+    <path id="icon_pge-line-2" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 12 L 34 12"/>
+    <path id="icon_pge-line-3" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 17 L 34 17"/>
+    <path id="icon_pge-line-4" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 22 L 34 22"/>
+    <path id="icon_pge-line-5" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 27 L 34 27"/>
+    <path id="icon_pge-line-6" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 32 L 34 32"/>
+    <path id="icon_pge-line-7" style="fill: none; stroke: white; stroke-width: 2px" d="M 10 37 L 34 37"/>
   </g>
 
 </svg>
