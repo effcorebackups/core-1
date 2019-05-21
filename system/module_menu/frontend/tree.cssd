@@ -56,9 +56,9 @@
   x-tree[data-managed_mode^='simple'] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-managed_mode^='simple'] li {padding-left: 34px}
   x-tree[data-managed_mode^='simple'] li             {background: url('images/tree-hline.svgd') no-repeat 3px -22px, url('images/tree-vline.svgd') 3px 1px repeat-y}
-  x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/tree-hline.svgd') no-repeat 3px -17px, url('images/tree-vline.svgd') 3px   0 repeat-y}
+  x-tree[data-managed_mode^='simple'] li:first-child {background: url('images/tree-hline.svgd') no-repeat 3px -16px, url('images/tree-vline.svgd') 3px 1px repeat-y}
   x-tree[data-managed_mode^='simple'] li:last-child  {background: url('images/tree-hline.svgd') no-repeat 3px -22px}
-  x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/tree-hline.svgd') no-repeat 3px -21px}
+  x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/tree-hline.svgd') no-repeat 3px -16px}
 
   x-tree[data-managed_mode^='simple'] x-item {display: block}
   x-tree[data-managed_mode^='simple'] x-item-icon {float: left; width: 36px; height: 44px; margin-right: 10px; background: url('images/icons-tree-44.svgd') no-repeat 50% 0}
