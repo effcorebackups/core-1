@@ -61,16 +61,18 @@
   x-tree[data-managed_mode^='simple'] li:only-child  {background: url('images/tree-hline.svgd') no-repeat 0 -21px}
 
   x-tree[data-managed_mode^='simple'] x-item {display: block}
+  x-tree[data-managed_mode^='simple'] x-item-icon {float: left; width: 36px; height: 45px; margin-right: 10px; background: url('images/icons-tree-44.svgd') 50% 0}
   x-tree[data-managed_mode^='simple'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managed_mode^='simple'] x-item-extra {opacity: .8}
   x-tree[data-managed_mode^='simple'] x-item-url {display: block; color: %%_color_text; opacity: .5}
   x-tree[data-managed_mode^='simple'] x-item-url em {padding: 0 2px; font-style: normal}
   x-tree[data-managed_mode^='simple'] x-item x-actions x-action a em {display: none}
 
-  x-tree[data-managed_mode$='draggable'] x-drop_area {display: block}
-  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='before'] {height:  5px; background: %%_color_main}
-  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_main}
-  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='in'    ] {height: 45px; background: url('images/icons-tree-44.svgd') 50% 50%; width: 45px; position: absolute; z-index: 100}
+  x-tree[data-managed_mode$='draggable'] li {cursor: move}
+  x-tree[data-managed_mode$='draggable'] x-drop_area {display: block; background: %%_color_main}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='before'] {height:  5px}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='after' ] {height:  5px}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='in'    ] {height: 45px; width: 36px; position: absolute; z-index: 100; opacity: .5}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-drop-hover='true'] {background-color: %%_color_warning}
   x-tree[data-managed_mode$='draggable']:not([data-drag-active='true']) x-drop_area {background: transparent}
   x-tree[data-managed_mode$='draggable'] *[draggable       ='true'] +
