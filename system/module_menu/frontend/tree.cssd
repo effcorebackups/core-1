@@ -67,15 +67,10 @@
   x-tree[data-managed_mode^='simple'] x-item-url em {padding: 0 2px; font-style: normal}
   x-tree[data-managed_mode^='simple'] x-item x-actions x-action a em {display: none}
 
-  x-tree[data-managed_mode$='draggable'] li             {background: url('images/tree-hline-draggable.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
-  x-tree[data-managed_mode$='draggable'] li:first-child {background: url('images/tree-hline-draggable.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y}
-  x-tree[data-managed_mode$='draggable'] li:last-child  {background: url('images/tree-hline-draggable.svgd') no-repeat 0 -21px}
-  x-tree[data-managed_mode$='draggable'] li:only-child  {background: url('images/tree-hline-draggable.svgd') no-repeat 0 -21px}
-
-  x-tree[data-managed_mode$='draggable'] x-drop_area {display: block; opacity: .7}
+  x-tree[data-managed_mode$='draggable'] x-drop_area {display: block}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='before'] {height:  5px; background: %%_color_main}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='after' ] {height:  5px; background: %%_color_main}
-  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='in'    ] {height: 45px; background: url('images/icons-tree-45.svgd') 50% 50%; width: 45px; position: absolute; z-index: 100}
+  x-tree[data-managed_mode$='draggable'] x-drop_area[data-type='in'    ] {height: 45px; background: url('images/icons-tree-44.svgd') 50% 50%; width: 45px; position: absolute; z-index: 100}
   x-tree[data-managed_mode$='draggable'] x-drop_area[data-drop-hover='true'] {background-color: %%_color_warning}
   x-tree[data-managed_mode$='draggable']:not([data-drag-active='true']) x-drop_area {background: transparent}
   x-tree[data-managed_mode$='draggable'] *[draggable       ='true'] +
