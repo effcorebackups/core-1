@@ -58,8 +58,17 @@
   x-tree[data-managed_mode^='simple'] li            {background: url('images/tree-hline.svgd') no-repeat 4px -15px, url('images/tree-vline.svgd') repeat-y  4px   0  }
   x-tree[data-managed_mode^='simple'] li:last-child {background: url('images/tree-hline.svgd') no-repeat 4px -15px, url('images/tree-vline.svgd') no-repeat 4px -60px}
 
+  x-tree[data-managed_mode^='simple'] x-icon {
+    float: left;
+    position: relative;
+    z-index: 100;
+    width: 36px;
+    height: 44px;
+    margin-right: 10px;
+    cursor: move;
+    background: url('images/icons-tree-44.svgd') no-repeat 50% 0}
+
   x-tree[data-managed_mode^='simple'] x-item {display: block}
-  x-tree[data-managed_mode^='simple'] x-item-icon {float: left; position: relative; z-index: 100; cursor: move; width: 36px; height: 44px; margin-right: 10px; background: url('images/icons-tree-44.svgd') no-repeat 50% 0}
   x-tree[data-managed_mode^='simple'] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managed_mode^='simple'] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   x-tree[data-managed_mode^='simple'] x-item-url em {padding: 0 2px; font-style: normal}
