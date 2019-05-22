@@ -83,4 +83,4 @@
   x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='after' ] {height:  5px; margin-top:    1px}
   x-tree[data-managed_mode$='draggable'] [draggable    ='true'] +
                                          [draggable    ='true'] > x-drop_area[data-type='before'] {height: 0}
-  x-tree[data-managed_mode$='draggable'] [data-drag-out='true']   x-drop_area {width: 0}
+  x-tree[data-managed_mode$='draggable'] [data-drag-out='true']   x-drop_area {width: 0 !important}
