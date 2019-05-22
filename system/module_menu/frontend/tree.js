@@ -2,25 +2,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* drag-and-drop functionality */
 
-  var trees_draggable = document.querySelectorAll('x-tree[data-managed_mode="simple-draggable"]');
+  var trees_draggable = document.querySelectorAll('x-tree[data-managed_mode$="draggable"]');
   if (trees_draggable instanceof NodeList) {
     trees_draggable.forEach(function(c_tree){
 
-      var draggable = c_tree.querySelectorAll('li');
+      var draggable = c_tree.querySelectorAll('x-icon');
       if (draggable instanceof NodeList) {
         draggable.forEach(function(c_draggable){
           c_draggable.setAttribute('draggable', 'true');
-          c_draggable.addEventListener('dragstart', function(event){event.stopPropagation(); c_tree.setAttribute   ('data-drag-active', 'true'); c_draggable.setAttribute   ('data-drag-out', 'true'); event.dataTransfer.setData('text/plain', c_draggable.getAttribute('data-id'));}, false);
-          c_draggable.addEventListener('dragend',   function(event){event.stopPropagation(); c_tree.removeAttribute('data-drag-active'        ); c_draggable.removeAttribute('data-drag-out'        );                                                                               }, false);
+          c_draggable.addEventListener('dragstart', function(event){c_tree.setAttribute   ('data-drag-active', 'true'); c_draggable.parentNode.setAttribute   ('data-drag-out', 'true'); event.dataTransfer.setData('text/plain', c_draggable.parentNode.getAttribute('data-id'));}, false);
+          c_draggable.addEventListener('dragend',   function(event){c_tree.removeAttribute('data-drag-active'        ); c_draggable.parentNode.removeAttribute('data-drag-out'        );                                                                                          }, false);
         });
       }
 
       var droppable = c_tree.querySelectorAll('x-drop_area');
       if (droppable instanceof NodeList) {
         droppable.forEach(function(c_droppable){
-          c_droppable.addEventListener('dragover',  function(event){event.stopPropagation(); event.preventDefault(); c_droppable.setAttribute   ('data-drop-in', 'true');}, false);
-          c_droppable.addEventListener('dragleave', function(event){event.stopPropagation(); event.preventDefault(); c_droppable.removeAttribute('data-drop-in'        );}, false);
-          c_droppable.addEventListener('drop',      function(event){event.stopPropagation(); event.preventDefault();
+          c_droppable.addEventListener('dragover',  function(event){event.preventDefault(); c_droppable.setAttribute   ('data-drop-in', 'true');}, false);
+          c_droppable.addEventListener('dragleave', function(event){event.preventDefault(); c_droppable.removeAttribute('data-drop-in'        );}, false);
+          c_droppable.addEventListener('drop',      function(event){
             var draggable_id = event.dataTransfer.getData('text/plain'),
                 draggable = c_tree.querySelector('[data-id="'+draggable_id+'"]'),
                 droppable_type = c_droppable.getAttribute('data-type');
