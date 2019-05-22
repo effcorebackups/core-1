@@ -55,8 +55,11 @@
   x-tree[data-managed_mode^='simple'] ul,
   x-tree[data-managed_mode^='simple'] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-managed_mode^='simple'] li {padding-left: 40px}
-  x-tree[data-managed_mode^='simple'] li            {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') repeat-y  0   0  }
-  x-tree[data-managed_mode^='simple'] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') no-repeat 0 -60px}
+
+  x-tree[data-managed_mode^='simple'] li                 {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') repeat-y  0   0  }
+  x-tree[data-managed_mode^='simple'] li:last-child      {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') no-repeat 0 -60px}
+  x-tree[data-managed_mode^='simple'] li + li            {background: url('images/tree-hline.svgd') no-repeat 0 -22px, url('images/tree-vline.svgd') repeat-y  0   0  }
+  x-tree[data-managed_mode^='simple'] li + li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -22px, url('images/tree-vline.svgd') no-repeat 0 -67px}
 
   x-tree[data-managed_mode^='simple'] x-icon {
     float: left;
@@ -81,5 +84,5 @@
   x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area[data-type='in'    ] {height: 44px; width: 39px; position: absolute; z-index: 200; opacity: .5}
   x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='before'] {height:  5px; margin-bottom: 1px}
   x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='after' ] {height:  5px; margin-top:    1px}
-  x-tree[data-managed_mode$='draggable'] li + li >                x-drop_area[data-type='before'] {height: 0}
+  x-tree[data-managed_mode$='draggable'] li + li >                x-drop_area[data-type='before'] {height:  0}
   x-tree[data-managed_mode$='draggable'] [data-drag-out='true']   x-drop_area {width: 0 !important}
