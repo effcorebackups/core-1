@@ -55,10 +55,6 @@
   x-tree[data-managed_mode] ul,
   x-tree[data-managed_mode] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-managed_mode] li {padding-left: 40px}
-  x-tree[data-managed_mode] li                 {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-managed_mode]      li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') no-repeat 0 -62px}
-  x-tree[data-managed_mode] li + li            {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-managed_mode] li + li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') no-repeat 0 -67px}
 
   x-tree[data-managed_mode] x-icon {
     float: left;
@@ -68,13 +64,22 @@
     height: 44px;
     margin-right: 9px;
     background: url('images/icons-tree-44.svgd') no-repeat 50% 0}
-  x-tree[data-managed_mode$='draggable'] x-icon {cursor: move}
-
   x-tree[data-managed_mode] x-item {display: block; min-height: 44px}
   x-tree[data-managed_mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managed_mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   x-tree[data-managed_mode] x-item-url em {padding: 0 2px; font-style: normal}
   x-tree[data-managed_mode] x-item-extra x-actions x-action a em {display: none}
+
+  x-tree[data-managed_mode='simple'] li            {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') repeat-y         }
+  x-tree[data-managed_mode='simple'] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') no-repeat 0 -63px}
+  x-tree[data-managed_mode='simple'] x-item {padding-top: 5px}
+  x-tree[data-managed_mode='simple'] x-icon {margin-top:  5px}
+
+  x-tree[data-managed_mode$='draggable'] li                 {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') repeat-y         }
+  x-tree[data-managed_mode$='draggable']      li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') no-repeat 0 -62px}
+  x-tree[data-managed_mode$='draggable'] li + li            {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y         }
+  x-tree[data-managed_mode$='draggable'] li + li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') no-repeat 0 -67px}
+  x-tree[data-managed_mode$='draggable'] x-icon {cursor: move}
 
   x-tree[data-managed_mode$='draggable']                          x-drop_area                      {display: block; margin-left: -9px}
   x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area                      {background: %%_color_warning}
