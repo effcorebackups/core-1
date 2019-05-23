@@ -70,7 +70,7 @@
     background: url('images/icons-tree-44.svgd') no-repeat 50% 0}
   x-tree[data-managed_mode$='draggable'] x-icon {cursor: move}
 
-  x-tree[data-managed_mode] x-item {display: block}
+  x-tree[data-managed_mode] x-item {display: block; min-height: 44px}
   x-tree[data-managed_mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managed_mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   x-tree[data-managed_mode] x-item-url em {padding: 0 2px; font-style: normal}
@@ -79,9 +79,8 @@
   x-tree[data-managed_mode$='draggable']                          x-drop_area                      {display: block; margin-left: -9px}
   x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area                      {background: %%_color_warning}
   x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area[data-drop-in='true'] {background: %%_color_ok}
-
-  x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area[data-type='in'    ] {height: 44px; width: 39px; position: absolute; z-index: 200; opacity: .5}
-  x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='before'] {height:  5px; margin-bottom: 1px}
-  x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='after' ] {height:  5px; margin-top:    1px}
-  x-tree[data-managed_mode$='draggable'] li + li >                x-drop_area[data-type='before'] {height:  1px; margin-bottom: 0; width: 0}
+  x-tree[data-managed_mode$='draggable'][data-drag-active='true'] x-drop_area[data-type='in'    ]  {height: 44px; width: 39px; position: absolute; z-index: 200; opacity: .5}
+  x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='before']  {height:  5px; margin-bottom: 1px}
+  x-tree[data-managed_mode$='draggable']                          x-drop_area[data-type='after' ]  {height:  5px; margin-top:    1px}
+  x-tree[data-managed_mode$='draggable'] li + li >                x-drop_area[data-type='before']  {height:  1px; margin-bottom: 0; width: 0}
   x-tree[data-managed_mode$='draggable'] [data-drag-out='true']   x-drop_area {width: 0 !important}

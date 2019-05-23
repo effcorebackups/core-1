@@ -45,10 +45,10 @@ namespace effcore {
     $managed_mode = tree::select($this->id_tree)->managed_mode;
     if ($this->access === null || access::check($this->access)) {
       $rendered_self     = $managed_mode ? $this->render_self_managed() : $this->render_self();
-      $rendered_children = $managed_mode || $this->children_select_count() ? (template::make_new($this->template_children, [
+      $rendered_children = $managed_mode == 'simple-draggable' || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select())]
       ))->render() : '';
-      if ($managed_mode) {
+      if ($managed_mode == 'simple-draggable') {
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''))->render().$rendered_self;
         $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();}
