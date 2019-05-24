@@ -65,6 +65,7 @@ namespace effcore {
   }
 
   static function init() {
+    static::init_sql();
     foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
       foreach ($c_trees as $c_row_id => $c_tree) {
         if (isset(static::$cache[$c_tree->id])) console::log_insert_about_duplicate('tree', $c_tree->id, $c_module_id);
@@ -73,7 +74,9 @@ namespace effcore {
         static::$cache[$c_tree->id]->type = 'nosql';
       }
     }
-  # load from storage
+  }
+
+  static function init_sql() {
     foreach (entity::get('tree')->instances_select() as $c_instance) {
       $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access), [], 0);
       static::$cache[$c_tree->id] = $c_tree;
