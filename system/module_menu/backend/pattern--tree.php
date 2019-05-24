@@ -27,7 +27,7 @@ namespace effcore {
     event::start('on_tree_before_build', $this->id, [&$this]);
     $this->attribute_insert('data-id',           $this->id          );
     $this->attribute_insert('data-managed_mode', $this->managed_mode);
-    foreach (tree_item::select_all() as $c_item) {
+    foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
       if ($c_item->id_tree   == $this->id &&
           $c_item->id_parent == null) {
         $this->child_insert($c_item, $c_item->id);
