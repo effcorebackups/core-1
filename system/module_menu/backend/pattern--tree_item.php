@@ -134,13 +134,15 @@ namespace effcore {
     return $result;
   }
 
-  static function select($id, $id_tree = null) { # use $id_tree for prevent full load
-    if (       static::$cache == null) static::init    (        );
-    if (!isset(static::$cache[$id])  ) static::init_sql($id_tree);
+  static function select($id, $id_tree) {
+    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
+    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
     return     static::$cache[$id] ?? null;
   }
 
   static function insert($title, $id, $id_parent, $id_tree, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
+    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
+    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
     $new_item = new static($title, $id, $id_parent, $id_tree, $url, $access, $attributes, $element_attributes, $weight);
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
@@ -148,8 +150,10 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function delete($id) {
-    unset(static::$cache[$id]);
+  static function delete($id, $id_tree) {
+    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
+    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
+    unset     (static::$cache[$id]);
   }
 
 }}
