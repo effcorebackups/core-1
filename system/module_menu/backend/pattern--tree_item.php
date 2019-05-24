@@ -134,9 +134,9 @@ namespace effcore {
     return $result;
   }
 
-  static function select($id) {
-    if (       static::$cache == null) static::init    ();
-    if (!isset(static::$cache[$id])  ) static::init_sql(); # full sql load
+  static function select($id, $id_tree = null) { # use $id_tree for prevent full load
+    if (       static::$cache == null) static::init    (        );
+    if (!isset(static::$cache[$id])  ) static::init_sql($id_tree);
     return     static::$cache[$id] ?? null;
   }
 
