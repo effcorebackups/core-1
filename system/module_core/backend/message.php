@@ -9,8 +9,9 @@ namespace effcore {
 
   static protected $cache;
 
-  static function init() {
-    static::$cache = [];
+  static function init($reset = false) {
+    if (static::$cache == null || $reset)
+        static::$cache = [];
   }
 
   static function cache_cleaning() {
@@ -26,7 +27,7 @@ namespace effcore {
   }
 
   static function select_all($with_storage = true) {
-    if (static::$cache == null) static::init();
+    static::init();
     if ($with_storage) {
       $storage = storage::get(entity::get('message')->storage_name);
       if ($storage->is_available()) {
@@ -60,7 +61,7 @@ namespace effcore {
   }
 
   static function insert($message, $type = 'ok') {
-    if (static::$cache == null) static::init();
+    static::init();
     if (!isset(static::$cache[$type]))
                static::$cache[$type] = [];
     static::$cache[$type][] = is_string($message) ?
