@@ -179,7 +179,9 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache = new static(core::server_get_request_uri());
+    if (static::$cache == null) {
+      static::$cache = new static(core::server_get_request_uri());
+    }
   }
 
   static function path_parse($path) {
@@ -203,7 +205,7 @@ namespace effcore {
   }
 
   static function get_current() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache;
   }
 
