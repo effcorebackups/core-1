@@ -14,18 +14,25 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {
-      foreach ($c_tokens as $c_row_id => $c_token) {
-        if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('token', $c_row_id, $c_module_id);
-        static::$cache[$c_row_id] = $c_token;
-        static::$cache[$c_row_id]->module_id = $c_module_id;
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {
+        foreach ($c_tokens as $c_row_id => $c_token) {
+          if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('token', $c_row_id, $c_module_id);
+          static::$cache[$c_row_id] = $c_token;
+          static::$cache[$c_row_id]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function get($row_id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$row_id] ?? null;
+  }
+
+  static function get_all() {
+    static::init();
+    return static::$cache;
   }
 
   static function replace($string) {
