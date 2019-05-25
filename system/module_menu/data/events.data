@@ -12,6 +12,10 @@ events
       for: instance_select_multiple
       weight: -50
       handler: \effcore\modules\menu\events_form_instance_select_multiple::on_init
+  - instance_update_menu|event
+      for: instance_update
+      weight: -50
+      handler: \effcore\modules\menu\events_form_instance_update::on_init
   on_form_submit
   - instance_select_multiple_menu|event
       for: instance_select_multiple
