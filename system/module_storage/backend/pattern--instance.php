@@ -69,23 +69,25 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache_orig = storage::get('files')->select('instances');
-    foreach (static::$cache_orig as $c_module_id => $c_instances) {
-      foreach ($c_instances as $c_row_id => $c_instance) {
-        if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('instance', $c_row_id, $c_module_id);
-        static::$cache[$c_row_id] = $c_instance;
-        static::$cache[$c_row_id]->module_id = $c_module_id;
+    if (static::$cache == null) {
+      static::$cache_orig = storage::get('files')->select('instances');
+      foreach (static::$cache_orig as $c_module_id => $c_instances) {
+        foreach ($c_instances as $c_row_id => $c_instance) {
+          if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('instance', $c_row_id, $c_module_id);
+          static::$cache[$c_row_id] = $c_instance;
+          static::$cache[$c_row_id]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function get($row_id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$row_id] ?? null;
   }
 
   static function get_all_by_module($name) {
-    if    (static::$cache_orig == null) static::init();
+    static::init();
     return static::$cache_orig[$name] ?? [];
   }
 
