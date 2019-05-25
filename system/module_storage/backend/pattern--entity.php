@@ -90,14 +90,14 @@ namespace effcore {
   function id_get_real() {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') return $c_constraint->fields;
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) return $c_constraint->fields;
-    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') return $c_index->fields;
+    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') return $c_index     ->fields;
     return [];
   }
 
   function id_get_real_from_values($values) {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
-    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') {$slice = array_intersect_key($values, $c_index->fields);      if (count($c_index->fields)      == count($slice)) return $slice;}
+    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') {$slice = array_intersect_key($values, $c_index     ->fields); if (count($c_index     ->fields) == count($slice)) return $slice;}
     return [];
   }
 
@@ -153,19 +153,21 @@ namespace effcore {
     static::$cache_orig = null;
   }
 
-  static function init() {
-    static::$cache_orig = storage::get('files')->select('entities');
-    foreach (static::$cache_orig as $c_module_id => $c_entities) {
-      foreach ($c_entities as $c_row_id => $c_entity) {
-        if (isset(static::$cache[$c_entity->name])) console::log_insert_about_duplicate('entity', $c_entity->name, $c_module_id);
-        static::$cache[$c_entity->name] = $c_entity;
-        static::$cache[$c_entity->name]->module_id = $c_module_id;
+  static function init($reset = false) {
+    if (static::$cache == null || $reset) {
+      static::$cache_orig = storage::get('files')->select('entities');
+      foreach (static::$cache_orig as $c_module_id => $c_entities) {
+        foreach ($c_entities as $c_row_id => $c_entity) {
+          if (isset(static::$cache[$c_entity->name]) && !$reset) console::log_insert_about_duplicate('entity', $c_entity->name, $c_module_id);
+          static::$cache[$c_entity->name] = $c_entity;
+          static::$cache[$c_entity->name]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function get($name, $load = true) {
-    if (static::$cache == null) static::init();
+    static::init();
     if (isset(static::$cache[$name]) == false) return;
     if (static::$cache[$name] instanceof external_cache && $load)
         static::$cache[$name] = static::$cache[$name]->external_cache_load();
@@ -173,7 +175,7 @@ namespace effcore {
   }
 
   static function get_all($load = true) {
-    if (static::$cache == null) static::init();
+    static::init();
     if ($load)
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache)
@@ -182,7 +184,7 @@ namespace effcore {
   }
 
   static function get_all_by_module($module, $load = true) {
-    if (static::$cache_orig == null) static::init();
+    static::init();
     if ($load && isset(static::$cache_orig[$module]))
       foreach (static::$cache_orig[$module] as &$c_item)
         if ($c_item instanceof external_cache)
@@ -191,8 +193,8 @@ namespace effcore {
   }
 
   static function groups_get() {
+    static::init();
     $groups = [];
-    if      (static::$cache == null) static::init();
     foreach (static::$cache as $c_item)
       $groups[core::sanitize_id($c_item->group)] = $c_item->group;
     return $groups;
