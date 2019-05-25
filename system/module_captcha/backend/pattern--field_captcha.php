@@ -118,18 +118,20 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
-      foreach ($c_characters as $c_row_id => $c_character) {
-        foreach ($c_character->glyphs as $c_group => $c_glyph) {
-          if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_insert_about_duplicate('glyph', $c_glyph, $c_module_id);
-          static::$glyphs[$c_group][$c_glyph] = $c_character->character;
+    if (!static::$glyphs) {
+      foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
+        foreach ($c_characters as $c_row_id => $c_character) {
+          foreach ($c_character->glyphs as $c_group => $c_glyph) {
+            if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_insert_about_duplicate('glyph', $c_glyph, $c_module_id);
+            static::$glyphs[$c_group][$c_glyph] = $c_character->character;
+          }
         }
       }
     }
   }
 
   static function glyphs_get($group = 'default') {
-    if   (!static::$glyphs) static::init();
+    static::init();
     return static::$glyphs[$group] ?? [];
   }
 
