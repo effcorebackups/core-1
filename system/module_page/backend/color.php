@@ -15,11 +15,11 @@ namespace effcore {
     static::$cache_presets = null;
   }
 
-  static function init($reset = false) {
-    if (static::$cache == null || $reset) {
+  static function init() {
+    if (static::$cache == null) {
       foreach (storage::get('files')->select('colors') as $c_module_id => $c_colors) {
         foreach ($c_colors as $c_row_id => $c_color) {
-          if (isset(static::$cache[$c_color->id]) && !$reset) console::log_insert_about_duplicate('color', $c_color->id, $c_module_id);
+          if (isset(static::$cache[$c_color->id])) console::log_insert_about_duplicate('color', $c_color->id, $c_module_id);
           static::$cache[$c_color->id] = $c_color;
           static::$cache[$c_color->id]->module_id = $c_module_id;
         }
@@ -27,11 +27,11 @@ namespace effcore {
     }
   }
 
-  static function init_presets($reset = false) {
-    if (static::$cache_presets == null || $reset) {
+  static function init_presets() {
+    if (static::$cache_presets == null) {
       foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_row_id => $c_preset) {
-          if (isset(static::$cache[$c_preset->id]) && !$reset) console::log_insert_about_duplicate('color_preset', $c_preset->id, $c_module_id);
+          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('color_preset', $c_preset->id, $c_module_id);
           static::$cache_presets[$c_preset->id] = $c_preset;
           static::$cache_presets[$c_preset->id]->module_id = $c_module_id;
         }

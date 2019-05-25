@@ -9,8 +9,8 @@ namespace effcore {
 
   static protected $cache;
 
-  static function init($reset = false) {
-    if (static::$cache == null || $reset)
+  static function init() {
+    if (static::$cache == null)
         static::$cache = [];
   }
 
