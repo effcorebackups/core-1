@@ -96,12 +96,12 @@ namespace effcore {
     static::$is_init_sql_by_tree = [];
   }
 
-  static function init($reset = false) {
-    if (!static::$is_init_nosql || $reset) {
+  static function init() {
+    if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
       foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
         foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-          if (isset(static::$cache[$c_tree_item->id]) && !$reset) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
+          if (isset(static::$cache[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
           static::$cache[$c_tree_item->id] = $c_tree_item;
           static::$cache[$c_tree_item->id]->module_id = $c_module_id;
           static::$cache[$c_tree_item->id]->type = 'nosql';
@@ -110,8 +110,8 @@ namespace effcore {
     }
   }
 
-  static function init_sql($id_tree, $reset = false) {
-    if (!isset(static::$is_init_sql_by_tree[$id_tree]) || $reset) {
+  static function init_sql($id_tree) {
+    if (!isset(static::$is_init_sql_by_tree[$id_tree])) {
                static::$is_init_sql_by_tree[$id_tree] = true;
       $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
       foreach ($instances as $c_instance) {
