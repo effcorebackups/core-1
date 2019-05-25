@@ -34,22 +34,24 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
-      foreach ($c_templates as $c_row_id => $c_template) {
-        if (isset(static::$cache[$c_template->name])) console::log_insert_about_duplicate('template', $c_template->name, $c_module_id);
-        static::$cache[$c_template->name] = $c_template;
-        static::$cache[$c_template->name]->module_id = $c_module_id;
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
+        foreach ($c_templates as $c_row_id => $c_template) {
+          if (isset(static::$cache[$c_template->name])) console::log_insert_about_duplicate('template', $c_template->name, $c_module_id);
+          static::$cache[$c_template->name] = $c_template;
+          static::$cache[$c_template->name]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function get($row_id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$row_id] ?? null;
   }
 
   static function get_all() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache;
   }
 
