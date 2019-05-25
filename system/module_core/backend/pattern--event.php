@@ -22,34 +22,36 @@ namespace effcore {
   }
 
   static function init() {
-    console::log_insert('event', 'init.', 'event system was initialized', '-');
-    foreach (storage::get('files')->select('events') as $c_module_id => $c_type_group) {
-      foreach ($c_type_group as $c_type => $c_events) {
-        foreach ($c_events as $c_row_id => $c_event) {
-          $c_event->module_id = $c_module_id;
-          static::$cache[$c_type][] = $c_event;
+    if (static::$cache == null) {
+      console::log_insert('event', 'init.', 'event system was initialized', '-');
+      foreach (storage::get('files')->select('events') as $c_module_id => $c_type_group) {
+        foreach ($c_type_group as $c_type => $c_events) {
+          foreach ($c_events as $c_row_id => $c_event) {
+            $c_event->module_id = $c_module_id;
+            static::$cache[$c_type][] = $c_event;
+          }
         }
       }
-    }
-    foreach (static::$cache as &$c_group) {
-      if (count($c_group) > 1) {
-        core::array_sort_by_weight($c_group);
+      foreach (static::$cache as &$c_group) {
+        if (count($c_group) > 1) {
+          core::array_sort_by_weight($c_group);
+        }
       }
     }
   }
 
   static function get_all() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache;
   }
 
   #                                                    ╔══════════════════════════════════════════╗
   #                                                    ║ - module_1|event                         ║
-  #                                                 ┌─▶║     for: id1                             ║
+  #                                                 ┌─▶║     for: idX                             ║
   #                                                 │  ║     handler: \…\module_1\events::on_name ║
   #                                                 │  ╠──────────────────────────────────────────╣
   # ╔═══════════════════════════════════════════╗   │  ║ - module_2|event                         ║
-  # ║ event::start('on_name', null, [&$param1]) ║───┼─▶║     for: id2                             ║
+  # ║ event::start('on_name', null, [&$param1]) ║───┼─▶║     for: idY                             ║
   # ╚═══════════════════════════════════════════╝   │  ║     handler: \…\module_2\events::on_name ║
   #                                                 │  ╠──────────────────────────────────────────╣
   #                                                 │  ║ - module_3|event                         ║
@@ -59,11 +61,11 @@ namespace effcore {
   #
   #                                                    ╔══════════════════════════════════════════╗
   #                                                    ║ - module_1|event                         ║
-  #                                                 ┌─▶║     for: id1                             ║
+  #                                                 ┌─▶║     for: idX                             ║
   #                                                 │  ║     handler: \…\module_1\events::on_name ║
   #                                                 │  ╠──────────────────────────────────────────╣
   # ╔═══════════════════════════════════════════╗   │  ║ - module_2|event                         ║
-  # ║ event::start('on_name', 'id1' [&$param1]) ║───┤  ║     for: id2                             ║
+  # ║ event::start('on_name', 'idX' [&$param1]) ║───┤  ║     for: idY                             ║
   # ╚═══════════════════════════════════════════╝   │  ║     handler: \…\module_2\events::on_name ║
   #                                                 │  ╠──────────────────────────────────────────╣
   #                                                 │  ║ - module_3|event                         ║
