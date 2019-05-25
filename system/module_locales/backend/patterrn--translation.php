@@ -25,15 +25,17 @@ namespace effcore {
   }
 
   static function init($code) {
-    $translations = storage::get('files')->select('translations');
-    foreach ($translations as $c_module_id => $c_translations) {
-      foreach ($c_translations as $c_row_id => $c_translation) {
-        if ($c_translation->code == $code) {
-          if ($c_translation instanceof external_cache)
-              $c_translation = $c_translation->external_cache_load();
-          if (!isset(static::$cache[$c_translation->code]))
-                     static::$cache[$c_translation->code] = [];
-          static::$cache[$c_translation->code] += $c_translation->data;
+    if (!isset(static::$cache[$code])) {
+      $translations = storage::get('files')->select('translations');
+      foreach ($translations as $c_module_id => $c_translations) {
+        foreach ($c_translations as $c_row_id => $c_translation) {
+          if ($c_translation->code == $code) {
+            if ($c_translation instanceof external_cache)
+                $c_translation = $c_translation->external_cache_load();
+            if (!isset(static::$cache[$c_translation->code]))
+                       static::$cache[$c_translation->code] = [];
+            static::$cache[$c_translation->code] += $c_translation->data;
+          }
         }
       }
     }
@@ -41,8 +43,8 @@ namespace effcore {
 
   static function get($string, $args = [], $code = '') {
     $c_code = $code ?: language::code_get_current();
-    if (!isset(static::$cache[$c_code])) static::init($c_code);
-    $string =  static::$cache[$c_code][$string] ?? $string;
+    static::init($c_code);
+    $string = static::$cache[$c_code][$string] ?? $string;
     return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)(?:\\{(?<args>[a-z0-9_,=\'\\"\\-]+)\\}|)%S', function($c_match) use ($c_code, $args) {
       $c_name =       $c_match['name'];
       $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
