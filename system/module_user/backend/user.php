@@ -14,19 +14,21 @@ namespace effcore {
   }
 
   static function init($id = null, $is_full = true) {
-    static::$cache = new instance('user', [
-      'id'    => null,
-      'nick'  => null,
-      'roles' => ['anonymous' => 'anonymous']
-    ]);
-    if ($id != null) {
-      $user = new instance('user', ['id' => $id]);
-      if ($user->select()) {
-        $user->roles = ['registered' => 'registered'];
-        if ($is_full) {
-          $user->roles += static::id_roles_get($id);
+    if (static::$cache == null) {
+      static::$cache = new instance('user', [
+        'id'    => null,
+        'nick'  => null,
+        'roles' => ['anonymous' => 'anonymous']
+      ]);
+      if ($id != null) {
+        $user = new instance('user', ['id' => $id]);
+        if ($user->select()) {
+          $user->roles = ['registered' => 'registered'];
+          if ($is_full) {
+            $user->roles += static::id_roles_get($id);
+          }
+          static::$cache = $user;
         }
-        static::$cache = $user;
       }
     }
   }
@@ -36,7 +38,7 @@ namespace effcore {
   }
 
   static function get_current() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache;
   }
 
