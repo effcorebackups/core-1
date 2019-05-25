@@ -157,18 +157,25 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
-      foreach ($c_pages as $c_id => $c_page) {
-        if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
-        static::$cache[$c_id] = $c_page;
-        static::$cache[$c_id]->module_id = $c_module_id;
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
+        foreach ($c_pages as $c_id => $c_page) {
+          if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
+          static::$cache[$c_id] = $c_page;
+          static::$cache[$c_id]->module_id = $c_module_id;
+        }
       }
     }
-    foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
-      foreach ($c_frontends as $c_row_id => $c_frontend) {
-        if (isset(static::$cache_frontend[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
-        static::$cache_frontend[$c_row_id] = $c_frontend;
-        static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
+  }
+
+  static function init_frontend() {
+    if (static::$cache_frontend == null) {
+      foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
+        foreach ($c_frontends as $c_row_id => $c_frontend) {
+          if (isset(static::$cache_frontend[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
+          static::$cache_frontend[$c_row_id] = $c_frontend;
+          static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
+        }
       }
     }
   }
@@ -178,14 +185,14 @@ namespace effcore {
   }
 
   static function get($id, $load = true) {
-    if (static::$cache == null) static::init();
+    static::init();
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] = static::$cache[$id]->external_cache_load();
     return static::$cache[$id];
   }
 
   static function get_all($load = true) {
-    if (static::$cache == null) static::init();
+    static::init();
     if ($load)
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache)
@@ -194,12 +201,12 @@ namespace effcore {
   }
 
   static function frontend_get($row_id) {
-    if    (static::$cache_frontend == null) static::init();
+    static::init_frontend();
     return static::$cache_frontend[$row_id];
   }
 
   static function frontend_get_all() {
-    if    (static::$cache_frontend == null) static::init();
+    static::init_frontend();
     return static::$cache_frontend;
   }
 
