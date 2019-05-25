@@ -12,7 +12,7 @@ namespace effcore {
   function select($dpath, $expand_cache = false, $with_restore = true) {
     $parts = explode('/', $dpath);
     $catalog_name = array_shift($parts);
-    if (isset(static::$data[$catalog_name]) == false) static::init($catalog_name, $with_restore);
+    static::init($catalog_name, $with_restore);
     if (isset(static::$data[$catalog_name])) {
       $c_pointer = static::$data[$catalog_name];
       foreach ($parts as $c_part) {
@@ -75,10 +75,12 @@ namespace effcore {
   }
 
   static function init($catalog_name, $with_restore = true) {
-    console::log_insert('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
-    $cache = cache::select('data--'.$catalog_name);
-    if     ($cache       ) static::$data[$catalog_name] = $cache;
-    elseif ($with_restore) static::cache_update();
+    if (!isset(static::$data[$catalog_name])) {
+      console::log_insert('storage', 'init.', 'catalog %%_catalog_name in storage %%_storage_name will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
+      $cache = cache::select('data--'.$catalog_name);
+      if     ($cache       ) static::$data[$catalog_name] = $cache;
+      elseif ($with_restore) static::cache_update();
+    }
   }
 
   static function cache_cleaning() {
