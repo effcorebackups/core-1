@@ -36,7 +36,7 @@ namespace effcore {
   }
 
   function render() {
-    if (static::$cache == null) static::init();
+    static::init();
     if ($this->access === null || access::check($this->access)) {
       if ($this->children_select_count() == 0)
           $this->build();
@@ -65,13 +65,15 @@ namespace effcore {
   }
 
   static function init() {
-    static::init_sql();
-    foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
-      foreach ($c_trees as $c_row_id => $c_tree) {
-        if (isset(static::$cache[$c_tree->id])) console::log_insert_about_duplicate('tree', $c_tree->id, $c_module_id);
-        static::$cache[$c_tree->id] = $c_tree;
-        static::$cache[$c_tree->id]->module_id = $c_module_id;
-        static::$cache[$c_tree->id]->type = 'nosql';
+    if (static::$cache == null) {
+      static::init_sql();
+      foreach (storage::get('files')->select('trees') as $c_module_id => $c_trees) {
+        foreach ($c_trees as $c_row_id => $c_tree) {
+          if (isset(static::$cache[$c_tree->id])) console::log_insert_about_duplicate('tree', $c_tree->id, $c_module_id);
+          static::$cache[$c_tree->id] = $c_tree;
+          static::$cache[$c_tree->id]->module_id = $c_module_id;
+          static::$cache[$c_tree->id]->type = 'nosql';
+        }
       }
     }
   }
@@ -86,7 +88,7 @@ namespace effcore {
   }
 
   static function select_all($type = null) {
-    if       (static::$cache == null) static::init();
+    static::init();
     $result = static::$cache ?? [];
     if ($type)
       foreach ($result as $c_id => $c_item)
@@ -96,13 +98,13 @@ namespace effcore {
   }
 
   static function select($id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$id] ?? null;
   }
 
   static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
+    static::init();
     $new_tree = new static($title, $id, $access, $attributes, $weight);
-    if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_tree;
            static::$cache[$id]->module_id = $module_id;
            static::$cache[$id]->type = 'dynamic';
@@ -110,7 +112,7 @@ namespace effcore {
   }
 
   static function delete($id) {
-    if   (static::$cache == null) static::init();
+    static::init();
     unset(static::$cache[$id]);
   }
 
