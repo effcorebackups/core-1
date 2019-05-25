@@ -4,7 +4,7 @@ module|module
   title: Demo
   group: Develop
   description: Module for demonstrating capabilities.
-  copyright: Copyright © 20XX—20XX Author / rightholder name. All rights reserved.
+  copyright: Copyright © 2017—2019 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
     system

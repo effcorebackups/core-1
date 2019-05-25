@@ -3,6 +3,7 @@ module|module_embed
   id_bundle: system
   title: Storage
   description: Module for storages support.
+  copyright: Copyright © 2017—2019 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
     php
