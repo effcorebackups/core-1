@@ -15,40 +15,47 @@ namespace effcore {
     static::$cache_presets = null;
   }
 
-  static function init() {
-    foreach (storage::get('files')->select('colors') as $c_module_id => $c_colors) {
-      foreach ($c_colors as $c_row_id => $c_color) {
-        if (isset(static::$cache[$c_color->id])) console::log_insert_about_duplicate('color', $c_color->id, $c_module_id);
-        static::$cache[$c_color->id] = $c_color;
-        static::$cache[$c_color->id]->module_id = $c_module_id;
+  static function init($reset = false) {
+    if (static::$cache == null || $reset) {
+      foreach (storage::get('files')->select('colors') as $c_module_id => $c_colors) {
+        foreach ($c_colors as $c_row_id => $c_color) {
+          if (isset(static::$cache[$c_color->id]) && !$reset) console::log_insert_about_duplicate('color', $c_color->id, $c_module_id);
+          static::$cache[$c_color->id] = $c_color;
+          static::$cache[$c_color->id]->module_id = $c_module_id;
+        }
       }
     }
-    foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
-      foreach ($c_presets as $c_row_id => $c_preset) {
-        if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('color_preset', $c_preset->id, $c_module_id);
-        static::$cache_presets[$c_preset->id] = $c_preset;
-        static::$cache_presets[$c_preset->id]->module_id = $c_module_id;
+  }
+
+  static function init_presets($reset = false) {
+    if (static::$cache_presets == null || $reset) {
+      foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
+        foreach ($c_presets as $c_row_id => $c_preset) {
+          if (isset(static::$cache[$c_preset->id]) && !$reset) console::log_insert_about_duplicate('color_preset', $c_preset->id, $c_module_id);
+          static::$cache_presets[$c_preset->id] = $c_preset;
+          static::$cache_presets[$c_preset->id]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function get($id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$id] ?? null;
   }
 
   static function get_all() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache;
   }
 
   static function preset_get($id) {
-    if    (static::$cache_presets == null) static::init();
+    static::init_presets();
     return static::$cache_presets[$id] ?? null;
   }
 
   static function preset_get_all() {
-    if    (static::$cache_presets == null) static::init();
+    static::init_presets();
     return static::$cache_presets;
   }
 
