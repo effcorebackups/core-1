@@ -87,47 +87,52 @@ namespace effcore {
   ###########################
 
   static protected $cache;
-  static protected $cache_inits;
+  static protected $is_init_nosql = false;
+  static protected $is_init_sql_by_tree = [];
 
   static function cache_cleaning() {
-    static::$cache       = null;
-    static::$cache_inits = null;
+    static::$cache               = null;
+    static::$is_init_nosql       = false;
+    static::$is_init_sql_by_tree = [];
   }
 
   static function init() {
-    foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
-      foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-        if (isset(static::$cache[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
-        static::$cache[$c_tree_item->id] = $c_tree_item;
-        static::$cache[$c_tree_item->id]->module_id = $c_module_id;
-        static::$cache[$c_tree_item->id]->type = 'nosql';
-        static::$cache_inits[$c_tree_item->id_tree] = true;
+    if (!static::$is_init_nosql) {
+      static::$is_init_nosql = true;
+      foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
+        foreach ($c_tree_items as $c_row_id => $c_tree_item) {
+          if (isset(static::$cache[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
+          static::$cache[$c_tree_item->id] = $c_tree_item;
+          static::$cache[$c_tree_item->id]->module_id = $c_module_id;
+          static::$cache[$c_tree_item->id]->type = 'nosql';
+        }
       }
     }
   }
 
-  static function init_sql($id_tree = null) {
-    if ($id_tree) $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
-    else          $instances = entity::get('tree_item')->instances_select([                                                                      ], 'id');
-    foreach ($instances as $c_instance) {
-      $c_tree_item = new static(
-        $c_instance->title,
-        $c_instance->id,
-        $c_instance->id_parent,
-        $c_instance->id_tree,
-        $c_instance->url, unserialize($c_instance->access), [], [],
-        $c_instance->weight);
-      static::$cache[$c_tree_item->id] = $c_tree_item;
-      static::$cache[$c_tree_item->id]->module_id = 'menu';
-      static::$cache[$c_tree_item->id]->type = 'sql';
-      static::$cache_inits[$c_instance->id_tree] = true;
+  static function init_sql($id_tree) {
+    if (!isset(static::$is_init_sql_by_tree[$id_tree])) {
+      $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
+      static::$is_init_sql_by_tree[$id_tree] = true;
+      foreach ($instances as $c_instance) {
+        $c_tree_item = new static(
+          $c_instance->title,
+          $c_instance->id,
+          $c_instance->id_parent,
+          $c_instance->id_tree,
+          $c_instance->url, unserialize($c_instance->access), [], [],
+          $c_instance->weight);
+        static::$cache[$c_tree_item->id] = $c_tree_item;
+        static::$cache[$c_tree_item->id]->module_id = 'menu';
+        static::$cache[$c_tree_item->id]->type = 'sql';
+      }
     }
   }
 
   static function select_all_by_id_tree($id_tree) {
     $result = [];
-    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
-    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
+    static::init    (        );
+    static::init_sql($id_tree);
     foreach (static::$cache ?? [] as $c_item)
       if ($c_item->id_tree == $id_tree)
         $result[$c_item->id] = $c_item;
@@ -135,14 +140,14 @@ namespace effcore {
   }
 
   static function select($id, $id_tree) {
-    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
-    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
-    return     static::$cache[$id] ?? null;
+    static::init    (        );
+    static::init_sql($id_tree);
+    return static::$cache[$id] ?? null;
   }
 
   static function insert($title, $id, $id_parent, $id_tree, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0, $module_id = null) {
-    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
-    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
+    static::init    (        );
+    static::init_sql($id_tree);
     $new_item = new static($title, $id, $id_parent, $id_tree, $url, $access, $attributes, $element_attributes, $weight);
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
@@ -151,9 +156,9 @@ namespace effcore {
   }
 
   static function delete($id, $id_tree) {
-    if (!isset(static::$cache_inits[$id_tree])) static::init    (        );
-    if (!isset(static::$cache_inits[$id_tree])) static::init_sql($id_tree);
-    unset     (static::$cache[$id]);
+    static::init    (        );
+    static::init_sql($id_tree);
+    unset(static::$cache[$id]);
   }
 
 }}
