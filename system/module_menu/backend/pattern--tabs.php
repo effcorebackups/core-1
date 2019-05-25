@@ -28,7 +28,7 @@ namespace effcore {
   }
 
   function render() {
-    if (static::$cache == null) static::init();
+    static::init();
     if ($this->children_select_count() == 0)
         $this->build();
     return (template::make_new($this->template, [
@@ -77,35 +77,37 @@ namespace effcore {
   }
 
   static function init() {
-    foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
-      foreach ($c_tabs as $c_row_id => $c_tab) {
-        if (isset(static::$cache[$c_tab->id])) console::log_insert_about_duplicate('tabs', $c_tab->id, $c_module_id);
-        static::$cache[$c_tab->id] = $c_tab;
-        static::$cache[$c_tab->id]->module_id = $c_module_id;
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('tabs') as $c_module_id => $c_tabs) {
+        foreach ($c_tabs as $c_row_id => $c_tab) {
+          if (isset(static::$cache[$c_tab->id])) console::log_insert_about_duplicate('tabs', $c_tab->id, $c_module_id);
+          static::$cache[$c_tab->id] = $c_tab;
+          static::$cache[$c_tab->id]->module_id = $c_module_id;
+        }
       }
     }
   }
 
   static function select_all() {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache ?? [];
   }
 
   static function select($id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache[$id] ?? null;
   }
 
   static function insert($id, $attributes = [], $weight = 0, $module_id = null) {
+    static::init();
     $new_tab = new static($id, $attributes, $weight);
-    if    (static::$cache == null) static::init();
            static::$cache[$id] = $new_tab;
            static::$cache[$id]->module_id = $module_id;
     return static::$cache[$id];
   }
 
   static function delete($id) {
-    if   (static::$cache == null) static::init();
+    static::init();
     unset(static::$cache[$id]);
   }
 
