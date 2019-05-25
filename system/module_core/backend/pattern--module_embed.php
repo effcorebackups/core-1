@@ -78,18 +78,20 @@ namespace effcore {
   }
 
   static function init() {
-    static::$cache['modules'] = storage::get('files')->select('module');
-    static::$cache['bundles'] = storage::get('files')->select('bundle');
+    if (static::$cache == null) {
+      static::$cache['modules'] = storage::get('files')->select('module');
+      static::$cache['bundles'] = storage::get('files')->select('bundle');
+    }
   }
 
   static function get($id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache['modules'][$id];
   }
 
   static function get_all($property = null) {
+    static::init();
     $result = [];
-    if      (static::$cache == null) static::init();
     foreach (static::$cache['modules'] as $c_module) {
       $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
     }
@@ -123,13 +125,13 @@ namespace effcore {
   }
 
   static function bundle_get($id) {
-    if    (static::$cache == null) static::init();
+    static::init();
     return static::$cache['bundles'][$id];
   }
 
   static function groups_get() {
+    static::init();
     $groups = [];
-    if      (static::$cache == null) static::init();
     foreach (static::$cache['modules'] as $c_module)
       $groups[core::sanitize_id($c_module->group)] = $c_module->group;
     return $groups;
