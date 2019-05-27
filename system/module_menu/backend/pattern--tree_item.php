@@ -113,19 +113,22 @@ namespace effcore {
   static function init_sql($id_tree) {
     if (isset(static::$is_init_nosql_by_tree[$id_tree])) return;
     if (isset(static::$is_init___sql_by_tree[$id_tree])) return;
-              static::$is_init___sql_by_tree[$id_tree] = true;
-    $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
-    foreach ($instances as $c_instance) {
-      $c_tree_item = new static(
-        $c_instance->title,
-        $c_instance->id,
-        $c_instance->id_parent,
-        $c_instance->id_tree,
-        $c_instance->url, unserialize($c_instance->access), [], [],
-        $c_instance->weight);
-      static::$cache[$c_tree_item->id] = $c_tree_item;
-      static::$cache[$c_tree_item->id]->module_id = 'menu';
-      static::$cache[$c_tree_item->id]->type = 'sql';
+    if (isset(tree::select_all()[$id_tree]) &&
+              tree::select_all()[$id_tree]->type == 'sql') {
+      static::$is_init___sql_by_tree[$id_tree] = true;
+      $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
+      foreach ($instances as $c_instance) {
+        $c_tree_item = new static(
+          $c_instance->title,
+          $c_instance->id,
+          $c_instance->id_parent,
+          $c_instance->id_tree,
+          $c_instance->url, unserialize($c_instance->access), [], [],
+          $c_instance->weight);
+        static::$cache[$c_tree_item->id] = $c_tree_item;
+        static::$cache[$c_tree_item->id]->module_id = 'menu';
+        static::$cache[$c_tree_item->id]->type = 'sql';
+      }
     }
   }
 
