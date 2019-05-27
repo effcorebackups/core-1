@@ -113,8 +113,8 @@ namespace effcore {
   static function init_sql($id_tree) {
     if (isset(static::$is_init_nosql_by_tree[$id_tree])) return;
     if (isset(static::$is_init___sql_by_tree[$id_tree])) return;
-    if (isset(tree::select_all()[$id_tree]) &&
-              tree::select_all()[$id_tree]->type == 'sql') {
+    if (tree::select($id_tree)       &&
+        tree::select($id_tree)->type == 'sql') {
       static::$is_init___sql_by_tree[$id_tree] = true;
       $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
       foreach ($instances as $c_instance) {
