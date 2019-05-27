@@ -95,6 +95,8 @@ entities
         - entity_name: tree
         - entity_field_id_name: id
         - entity_field_title_name: title
+        field_element_attributes
+        - disabled: true
     - title
         title: Title
         type: varchar
