@@ -8,7 +8,7 @@ events
       for: menu
       handler: \effcore\modules\menu\events_module::on_enable
   on_form_init
-  - instance_select_multiple_menu|event
+  - instance_select_multiple_menu_item|event
       for: instance_select_multiple
       weight: -50
       handler: \effcore\modules\menu\events_form_instance_select_multiple::on_init
@@ -17,7 +17,7 @@ events
       weight: -50
       handler: \effcore\modules\menu\events_form_instance_delete::on_init
   on_form_submit
-  - instance_select_multiple_menu|event
+  - instance_select_multiple_menu_item|event
       for: instance_select_multiple
       handler: \effcore\modules\menu\events_form_instance_select_multiple::on_submit
   on_tab_before_build
