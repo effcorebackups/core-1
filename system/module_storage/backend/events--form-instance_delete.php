@@ -23,7 +23,7 @@ namespace effcore\modules\storage {
     if ($entity) {
       $id_keys   = $entity->id_get_real();
       $id_values = explode('+', $instance_id);
-      if (count($id_keys) ==
+      if (count($id_keys  ) ==
           count($id_values)) {
         $instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select()) {
@@ -36,7 +36,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($form, $items) {
-    $base        = page::get_current()->args_get('base');
+    $base        = page::get_current()->args_get('base'       );
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -46,7 +46,7 @@ namespace effcore\modules\storage {
         $id_values = explode('+', $instance_id);
         $instance  = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($instance->select() && $instance->delete())
-             message::insert_to_storage(new text('%%_name with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
+             message::insert_to_storage(new text('%%_name with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
         else message::insert_to_storage(new text('%%_name with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
                      url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;
       case 'cancel': url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;

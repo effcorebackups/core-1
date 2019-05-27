@@ -87,52 +87,52 @@ namespace effcore {
   ###########################
 
   static protected $cache;
-  static protected $is_init_nosql = false;
-  static protected $is_init_sql_by_tree = [];
+  static protected $is_init_nosql_by_tree = [];
+  static protected $is_init___sql_by_tree = [];
 
   static function cache_cleaning() {
-    static::$cache               = null;
-    static::$is_init_nosql       = false;
-    static::$is_init_sql_by_tree = [];
+    static::$cache                 = null;
+    static::$is_init_nosql_by_tree = [];
+    static::$is_init___sql_by_tree = [];
   }
 
   static function init() {
-    if (!static::$is_init_nosql) {
-         static::$is_init_nosql = true;
+    if (static::$is_init_nosql_by_tree == []) {
       foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
         foreach ($c_tree_items as $c_row_id => $c_tree_item) {
           if (isset(static::$cache[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
           static::$cache[$c_tree_item->id] = $c_tree_item;
           static::$cache[$c_tree_item->id]->module_id = $c_module_id;
           static::$cache[$c_tree_item->id]->type = 'nosql';
+          static::$is_init_nosql_by_tree[$c_tree_item->id_tree] = true;
         }
       }
     }
   }
 
   static function init_sql($id_tree) {
-    if (!isset(static::$is_init_sql_by_tree[$id_tree])) {
-               static::$is_init_sql_by_tree[$id_tree] = true;
-      $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
-      foreach ($instances as $c_instance) {
-        $c_tree_item = new static(
-          $c_instance->title,
-          $c_instance->id,
-          $c_instance->id_parent,
-          $c_instance->id_tree,
-          $c_instance->url, unserialize($c_instance->access), [], [],
-          $c_instance->weight);
-        static::$cache[$c_tree_item->id] = $c_tree_item;
-        static::$cache[$c_tree_item->id]->module_id = 'menu';
-        static::$cache[$c_tree_item->id]->type = 'sql';
-      }
+    if (isset(static::$is_init_nosql_by_tree[$id_tree])) return;
+    if (isset(static::$is_init___sql_by_tree[$id_tree])) return;
+              static::$is_init___sql_by_tree[$id_tree] = true;
+    $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
+    foreach ($instances as $c_instance) {
+      $c_tree_item = new static(
+        $c_instance->title,
+        $c_instance->id,
+        $c_instance->id_parent,
+        $c_instance->id_tree,
+        $c_instance->url, unserialize($c_instance->access), [], [],
+        $c_instance->weight);
+      static::$cache[$c_tree_item->id] = $c_tree_item;
+      static::$cache[$c_tree_item->id]->module_id = 'menu';
+      static::$cache[$c_tree_item->id]->type = 'sql';
     }
   }
 
   static function select_all_by_id_tree($id_tree) {
-    $result = [];
     static::init    (        );
     static::init_sql($id_tree);
+    $result = [];
     foreach (static::$cache ?? [] as $c_item)
       if ($c_item->id_tree == $id_tree)
         $result[$c_item->id] = $c_item;
