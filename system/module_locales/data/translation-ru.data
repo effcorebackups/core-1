@@ -91,12 +91,11 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - Definition list: Список определений
-    - Delete all items below?: Удалить все элементы ниже?
     - delete file "%%_name": удалить файл "%%_name"
     - Delete instances: Удалить экземпляры
-    - Delete item?: Удалить элемент?
+    - Delete item of type "%%_name" with id = "%%_id"?: Удалить элемент типа "%%_name" с id = "%%_id"?
+    - Delete related items of type "%%_name" with id = "%%_id"?: Удалить связанные элементы типа "%%_name" с id = "%%_id"?
     - Delete modules data: Удалить данные модулей
-    - Delete the %%_name with id = "%%_id"?: Удалить %%_name с id = "%%_id"?
     - Delete: Удалить
     - delete: удалить
     - Demo: Демо
@@ -220,8 +219,8 @@ translations
     - item #%%_number: пункт №%%_number
     - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент типа "%%_name" с id = "%%_id" был удалён.
     - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент типа "%%_name" с id = "%%_id" не был удалён!
-    - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Item of type "%%_name" with id = "%%_id" was not updated!: Элемент типа "%%_name" с id = "%%_id" не был обновлён!
+    - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Language: Язык
