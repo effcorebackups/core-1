@@ -63,7 +63,7 @@ translations
     - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
     - Click to open the tab\: %%_title: Нажмите, чтобы открыть вкладку: %%_title
     - collapse: свернуть
-    - Color ID = %%_id (value = %%_value): ID цвета = %%_id (значение = %%_value)
+    - color id = "%%_id" and value = "%%_value": id цвета = "%%_id" и значение = "%%_value"
     - Color: Цвет
     - Colors preset: Предустановка цвета
     - Colors was applied.: Цвета были применены.
@@ -98,6 +98,7 @@ translations
     - delete file "%%_name": удалить файл "%%_name"
     - Delete instances: Удалить экземпляры
     - Delete modules data: Удалить данные модулей
+    - Delete the %%_name with id = "%%_id"?: Удалить %%_name с id = "%%_id"?
     - Delete: Удалить
     - delete: удалить
     - Demo: Демо
@@ -482,7 +483,6 @@ translations
     - Weight: Вес
     - Welcome to our site!: Добро пожаловать на наш сайт!
     - Welcome, %%_nick!: Добро пожаловать, %%_nick!
-    - Will the %%_name with id = "%%_id" be deleted?: %%_name с id = "%%_id" будет удален/а/о?
     - With it, you can speed up the system from 10x and more.: С его помощью вы можете ускорить систему в 10 и более раз.
     - Yes: Да
     - yes: да
