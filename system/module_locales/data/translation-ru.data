@@ -8,8 +8,6 @@ translations
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
-    - %%_name with id = "%%_id" was not updated!: %%_name с id = "%%_id" не обновлён/а/о!
-    - %%_name with id = "%%_id" was updated.: %%_name с id = "%%_id" обновлён/а/о.
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
     - A new password has been sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
@@ -222,6 +220,8 @@ translations
     - item #%%_number: пункт №%%_number
     - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент типа "%%_name" с id = "%%_id" был удалён.
     - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент типа "%%_name" с id = "%%_id" не был удалён!
+    - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
+    - Item of type "%%_name" with id = "%%_id" was not updated!: Элемент типа "%%_name" с id = "%%_id" не был обновлён!
     - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Language: Язык
