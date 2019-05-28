@@ -44,8 +44,8 @@ namespace effcore\modules\storage {
       case 'delete':
         if ($form->_instance &&
             $form->_instance->delete())
-             message::insert_to_storage(new text('%%_name with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-        else message::insert_to_storage(new text('%%_name with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
+             message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
+        else message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
                      url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;
       case 'cancel': url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;
     }

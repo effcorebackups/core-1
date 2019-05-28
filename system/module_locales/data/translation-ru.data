@@ -8,8 +8,6 @@ translations
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
-    - %%_name with id = "%%_id" was deleted.: %%_name с id = "%%_id" удалён/а/о.
-    - %%_name with id = "%%_id" was not deleted!: %%_name с id = "%%_id" не удалён/а/о!
     - %%_name with id = "%%_id" was not updated!: %%_name с id = "%%_id" не обновлён/а/о!
     - %%_name with id = "%%_id" was updated.: %%_name с id = "%%_id" обновлён/а/о.
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
@@ -222,6 +220,8 @@ translations
     - Is fixed IP: Фиксировать IP
     - Is remember: Запоминать
     - item #%%_number: пункт №%%_number
+    - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент типа "%%_name" с id = "%%_id" был удалён.
+    - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент типа "%%_name" с id = "%%_id" не был удалён!
     - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Language: Язык
@@ -348,6 +348,8 @@ translations
     - Registered: Зарегистрированные
     - registration: регистрация
     - Registration: Регистрация
+    - Related items of type "%%_name" with id = "%%_id" was deleted.: Связанные элементы типа "%%_name" с id = "%%_id" были удалены.
+    - Related items of type "%%_name" with id = "%%_id" was not deleted!: Связанные элементы типа "%%_name" с id = "%%_id" не были удалены.
     - Relation: Связь
     - Relation: Связь
     - Relation\: Role + Permission: Связь: Роль + Разрешение
