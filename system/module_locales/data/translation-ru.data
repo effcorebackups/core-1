@@ -95,7 +95,7 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - Definition list: Список определений
-    - Delete all of these items?: Удалить все эти элементы?
+    - Delete all items below?: Удалить все элементы ниже?
     - delete file "%%_name": удалить файл "%%_name"
     - Delete instances: Удалить экземпляры
     - Delete item?: Удалить элемент?

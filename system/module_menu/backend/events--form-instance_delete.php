@@ -23,11 +23,14 @@ namespace effcore\modules\menu {
         $c_child->url = '';
       }
       if (isset($form->_related))
-           $question = new markup('p', [], 'Delete all of these items?');
+           $question = new markup('p', [], 'Delete all items below?');
       else $question = new markup('p', [], 'Delete item?');
       $items['info']->child_insert($question,                        'question');
       $items['info']->child_insert(new markup('ul', [], $tree_item), 'sub_tree');
     }
+  }
+
+  static function on_submit($form, $items) {
   }
 
 }}
