@@ -96,8 +96,8 @@ namespace effcore {
   }
 
   static function select_all($type = null) {
-    if ($type ==   'sql') {static::init    ();                    }
-    if ($type == 'nosql') {static::init_sql();                    }
+    if ($type == 'nosql') {static::init    ();                    }
+    if ($type ==   'sql') {static::init_sql();                    }
     if ($type ==    null) {static::init    (); static::init_sql();}
     $result = static::$cache ?? [];
     if ($type)
