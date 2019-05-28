@@ -29,7 +29,7 @@ namespace effcore\modules\storage {
         if ($form->_instance->select()) {
           if (!empty($instance->is_embed)) core::send_header_and_exit('access_forbidden');
           $question = new markup('p', [], new text('Delete the %%_name with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => $instance_id]));
-          $items['info']->child_insert($question);
+          $items['info']->child_insert($question, 'question');
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
     }     else core::send_header_and_exit('page_not_found');

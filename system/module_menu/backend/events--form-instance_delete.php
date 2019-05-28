@@ -6,6 +6,7 @@
 
 namespace effcore\modules\menu {
           use \effcore\instance;
+          use \effcore\markup;
           use \effcore\page;
           use \effcore\tree_item;
           abstract class events_form_instance_delete {
@@ -15,9 +16,17 @@ namespace effcore\modules\menu {
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'tree_item' && $form->_instance) {
       $tree_item = tree_item::select($instance_id, $form->_instance->id_tree);
+      $tree_item->url = '';
       $tree_item->build();
-      $tree_item_children = $tree_item->children_select_recursive();
-      # @todo: make functionality
+      foreach ($tree_item->children_select_recursive() as $c_child) {
+        $form->_related[$c_child->id] = $c_child;
+        $c_child->url = '';
+      }
+      if (isset($form->_related))
+           $question = new markup('p', [], 'Delete all of these items?');
+      else $question = new markup('p', [], 'Delete item?');
+      $items['info']->child_insert($question,                        'question');
+      $items['info']->child_insert(new markup('ul', [], $tree_item), 'sub_tree');
     }
   }
 

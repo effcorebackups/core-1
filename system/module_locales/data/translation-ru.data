@@ -95,8 +95,10 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - Definition list: Список определений
+    - Delete all of these items?: Удалить все эти элементы?
     - delete file "%%_name": удалить файл "%%_name"
     - Delete instances: Удалить экземпляры
+    - Delete item?: Удалить элемент?
     - Delete modules data: Удалить данные модулей
     - Delete the %%_name with id = "%%_id"?: Удалить %%_name с id = "%%_id"?
     - Delete: Удалить
