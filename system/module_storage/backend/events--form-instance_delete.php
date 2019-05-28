@@ -25,8 +25,8 @@ namespace effcore\modules\storage {
       $id_values = explode('+', $instance_id);
       if (count($id_keys  ) ==
           count($id_values)) {
-        $instance = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($instance->select()) {
+        $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
+        if ($form->_instance->select()) {
           if (!empty($instance->is_embed)) core::send_header_and_exit('access_forbidden');
           $question = new markup('p', [], new text('Delete the %%_name with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => $instance_id]));
           $items['info']->child_insert($question);
@@ -42,10 +42,8 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'delete':
-        $id_keys   = $entity->id_get_real();
-        $id_values = explode('+', $instance_id);
-        $instance  = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($instance->select() && $instance->delete())
+        if ($form->_instance &&
+            $form->_instance->delete())
              message::insert_to_storage(new text('%%_name with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
         else message::insert_to_storage(new text('%%_name with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
                      url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;

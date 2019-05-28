@@ -13,9 +13,8 @@ namespace effcore\modules\menu {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
-    if ($entity_name == 'tree_item') {
-      $tree_item_instance = (new instance('tree_item', ['id' => $instance_id]))->select();
-      $tree_item = tree_item::select($instance_id, $tree_item_instance->id_tree);
+    if ($entity_name == 'tree_item' && $form->_instance) {
+      $tree_item = tree_item::select($instance_id, $form->_instance->id_tree);
       $tree_item->build();
       $tree_item_children = $tree_item->children_select_recursive();
       # @todo: make functionality
