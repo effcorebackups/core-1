@@ -54,6 +54,15 @@ tree_items
     access
       roles
       - =: admins
+- templates|tree_item
+    id: templates
+    id_parent: develop
+    id_tree: main
+    title: Templates
+    url: /develop/templates
+    access
+      roles
+      - =: admins
 - console|tree_item
     id: console
     id_parent: develop
