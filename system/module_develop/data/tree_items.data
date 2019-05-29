@@ -45,6 +45,15 @@ tree_items
     access
       roles
       - =: admins
+- tokens|tree_item
+    id: tokens
+    id_parent: develop
+    id_tree: main
+    title: Tokens
+    url: /develop/tokens
+    access
+      roles
+      - =: admins
 - console|tree_item
     id: console
     id_parent: develop

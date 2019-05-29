@@ -94,8 +94,8 @@ translations
     - delete file "%%_name": удалить файл "%%_name"
     - Delete instances: Удалить экземпляры
     - Delete item of type "%%_name" with id = "%%_id"?: Удалить элемент типа "%%_name" с id = "%%_id"?
-    - Delete related items of type "%%_name" with id = "%%_id"?: Удалить связанные элементы типа "%%_name" с id = "%%_id"?
     - Delete modules data: Удалить данные модулей
+    - Delete related items of type "%%_name" with id = "%%_id"?: Удалить связанные элементы типа "%%_name" с id = "%%_id"?
     - Delete: Удалить
     - delete: удалить
     - Demo: Демо
@@ -247,6 +247,7 @@ translations
     - Main: Основной
     - Management: Управление
     - Managers: Управляющие
+    - Match: Соответствие
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
@@ -437,6 +438,7 @@ translations
     - title: заголовок
     - Title: Заголовок
     - token: токен
+    - Tokens: Токены
     - Total: Всего
     - Translate: Перевод
     - Tree ID: ID дерева
