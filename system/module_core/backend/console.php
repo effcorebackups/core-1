@@ -105,7 +105,7 @@ namespace effcore {
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->id = 'console';
-    $decorator->result_attributes = ['class' => ['compact' => 'compact']];
+    $decorator->result_attributes = ['data-is-compact' => 'true'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_row_attributes = ['class' => [
         core::sanitize_id($c_log->object) =>

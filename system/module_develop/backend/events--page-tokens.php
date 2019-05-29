@@ -14,7 +14,6 @@ namespace effcore\modules\develop {
   static function on_show_block_tokens($page) {
     $decorator = new decorator('table');
     $decorator->id = 'tokens_registered';
-    $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     $tokens = token::get_all();
     ksort($tokens);
     foreach ($tokens as $c_row_id => $c_token) {

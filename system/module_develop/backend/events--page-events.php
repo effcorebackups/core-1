@@ -22,7 +22,7 @@ namespace effcore\modules\develop {
       $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type));
       $c_decorator = new decorator('table');
       $c_decorator->id = 'events_registered_handlers_'.$c_event_type;
-      $c_decorator->result_attributes = ['class' => ['compact' => 'compact']];
+      $c_decorator->result_attributes = ['data-is-compact' => 'true'];
       $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type], $c_event_type), $c_event_type.'_header'   );
       $report->child_insert($c_decorator,                                                     $c_event_type.'_decorator');
       foreach ($c_events as $c_event) {

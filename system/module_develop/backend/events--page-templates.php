@@ -14,7 +14,6 @@ namespace effcore\modules\develop {
   static function on_show_block_templates($page) {
     $decorator = new decorator('table');
     $decorator->id = 'templates_registered';
-    $decorator->result_attributes = ['class' => ['compact' => 'compact']];
     $templates = template::get_all();
     ksort($templates);
     foreach ($templates as $c_template) {

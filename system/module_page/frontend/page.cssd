@@ -62,12 +62,12 @@
   table tr th[data-cellid='actions'] {width: 1%}
   table tr td[data-cellid='actions']:empty::after {content: ''}
 
-  table.compact {font-size: .9em}
-  table.compact th {padding: 12px 7px}
-  table.compact thead th:first-child {padding-left: 17px}
-  table.compact td {padding: 3px 7px}
-  table.compact td:first-child {padding-left: 17px}
-  table.compact td:last-child {padding-right: 17px}
+  table[data-is-compact='true'] {font-size: .9em}
+  table[data-is-compact='true'] th {padding: 12px 7px}
+  table[data-is-compact='true'] thead th:first-child {padding-left: 17px}
+  table[data-is-compact='true'] td {padding: 3px 7px}
+  table[data-is-compact='true'] td:first-child {padding-left: 17px}
+  table[data-is-compact='true'] td:last-child {padding-right: 17px}
 
   /* messages */
 
