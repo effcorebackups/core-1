@@ -19,13 +19,12 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report for each registered event types
   # ─────────────────────────────────────────────────────────────────────
-    $ret_title = new markup('h2', [], 'Registered event types');
     $ret_decorator = new decorator('table');
     $ret_decorator->id = 'events_registered_types';
     $ret_decorator->result_attributes = ['class' => ['compact' => 'compact']];
     foreach ($events as $c_event_type => $c_events) {
       $ret_decorator->data[] = [
-        'type' => ['value' => new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type), 'title' => 'Type']
+        'type' => ['value' => new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type), 'title' => 'Registered event types']
       ];
     }
   # ─────────────────────────────────────────────────────────────────────
@@ -48,7 +47,6 @@ namespace effcore\modules\develop {
       }
     }
     return new block('', ['data-id' => 'events_registered'], [
-      $ret_title,
       $ret_decorator,
       $reh_report
     ]);
