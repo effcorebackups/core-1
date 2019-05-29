@@ -308,6 +308,7 @@ translations
     - on this ip: на этом ip
     - Operating System: Операционная система
     - Ordered list: Упорядоченный список
+    - Original: Оригинал
     - OS Version: Версия ОС
     - Other: Другие
     - Owner: Владелец
@@ -445,6 +446,8 @@ translations
     - Tokens: Токены
     - Total: Всего
     - Translate: Перевод
+    - Translation: Перевод
+    - Translations: Переводы
     - Tree ID: ID дерева
     - Tree item: Пункт дерева
     - Tree items: Пункты дерева
