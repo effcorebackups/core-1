@@ -21,7 +21,7 @@ pages
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - block_events_registered|page_part
+    - block_events|page_part
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_events::on_show_block_events_registered
+        source: \effcore\modules\develop\events_page_events::on_show_block_events

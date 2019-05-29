@@ -12,7 +12,7 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           abstract class events_page_events {
 
-  static function on_show_block_events_registered($page) {
+  static function on_show_block_events($page) {
     $ret_title = new markup('h2', [], 'Registered event types');
     $reh_title = new markup('h2', [], 'Registered event handlers');
     $ret_decorator = new decorator('table');
