@@ -22,8 +22,7 @@
 
   /* events */
 
-  x-decorator[data-id='events_registered_handlers'] td {font-size: .9em}
-  x-decorator[data-id='events_registered_handlers'] td[data-cellid='weight'] {white-space: nowrap}
+  x-decorator[data-id^='events_registered_handlers'] td[data-cellid='weight'] {white-space: nowrap}
 
   /* reports */
 
