@@ -35,7 +35,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block('', ['data-id' => 'events_registered_handlers'], [
+    return new block('', ['data-id' => 'events_registered'], [
       $ret_title,
       $ret_decorator,
       $reh_title,
