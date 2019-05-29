@@ -63,6 +63,15 @@ tree_items
     access
       roles
       - =: admins
+- file_types|tree_item
+    id: file_types
+    id_parent: develop
+    id_tree: main
+    title: File types
+    url: /develop/file_types
+    access
+      roles
+      - =: admins
 - console|tree_item
     id: console
     id_parent: develop

@@ -178,6 +178,7 @@ translations
     - File name: Имя файла
     - File not found: Файл не найден
     - file of this type is protected: файл этого типа защищён
+    - File types: Типы файлов
     - File: Файл
     - file: файл
     - fix: исправить
@@ -192,6 +193,7 @@ translations
     - go to page %%_link: перейти на страницу %%_link
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Handler: Обработчик
+    - Headers: Заголовки
     - Home: Дом
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
@@ -223,6 +225,7 @@ translations
     - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
+    - Kind: Вид
     - Language: Язык
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - left to right: слева направо
