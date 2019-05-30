@@ -120,6 +120,13 @@ entities
         type: primary
         fields
         - =: id
+    - foreign_id_tree
+        type: foreign
+        fields
+        - =: id_tree
+        references: trees
+        references_fields
+        - =: id
     indexes
     - index_id_parent
         type: index
