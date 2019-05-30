@@ -16,8 +16,8 @@ namespace effcore {
   public $ws_updated;
   public $title;
   public $title_plural;
-  public $group = 'Other';
   public $managing_is_on = false;
+  public $managing_group = 'Other';
   public $fields = [];
   public $constraints = [];
   public $indexes = [];
@@ -102,8 +102,8 @@ namespace effcore {
     return [];
   }
 
-  function group_get_id() {
-    return core::sanitize_id($this->group);
+  function group_managing_get_id() {
+    return core::sanitize_id($this->managing_group);
   }
 
   function install() {
@@ -140,12 +140,12 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [
-      'name'         => 'name',
-      'title'        => 'title',
-      'title_plural' => 'title_plural',
-      'storage_name' => 'storage_name',
-      'catalog_name' => 'catalog_name',
-      'group'        => 'group'
+      'name'           => 'name',
+      'title'          => 'title',
+      'title_plural'   => 'title_plural',
+      'storage_name'   => 'storage_name',
+      'catalog_name'   => 'catalog_name',
+      'managing_group' => 'managing_group'
     ];
   }
 
@@ -193,11 +193,11 @@ namespace effcore {
     return static::$cache_orig[$module] ?? [];
   }
 
-  static function groups_get() {
+  static function groups_managing_get() {
     static::init();
     $groups = [];
     foreach (static::$cache as $c_item)
-      $groups[core::sanitize_id($c_item->group)] = $c_item->group;
+      $groups[core::sanitize_id($c_item->managing_group)] = $c_item->managing_group;
     return $groups;
   }
 

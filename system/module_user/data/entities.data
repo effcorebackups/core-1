@@ -4,8 +4,8 @@ entities
     title: Permission
     title_plural: Permissions
     catalog_name: permissions
-    group: User
     managing_is_on: true
+    managing_group: User
     ws_created: true
     ws_updated: true
     fields
@@ -43,8 +43,8 @@ entities
     title: Relation: Role + Permission
     title_plural: Relations: Role + Permission
     catalog_name: relations_role_ws_permission
-    group: User
     managing_is_on: true
+    managing_group: User
     ws_created: true
     ws_updated: true
     fields
@@ -97,8 +97,8 @@ entities
     title: Relation: Role + User
     title_plural: Relations: Role + User
     catalog_name: relations_role_ws_user
-    group: User
     managing_is_on: true
+    managing_group: User
     ws_created: true
     ws_updated: true
     fields
@@ -149,8 +149,8 @@ entities
     title: Role
     title_plural: Roles
     catalog_name: roles
-    group: User
     managing_is_on: true
+    managing_group: User
     ws_weight: true
     ws_created: true
     ws_updated: true
@@ -248,8 +248,8 @@ entities
     title: User
     title_plural: Users
     catalog_name: users
-    group: User
     managing_is_on: true
+    managing_group: User
     ws_created: true
     ws_updated: true
     fields

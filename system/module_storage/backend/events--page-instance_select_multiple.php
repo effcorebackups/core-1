@@ -24,13 +24,13 @@ namespace effcore\modules\storage {
   static function on_tab_before_build($tab) {
     $entity_group_id = page::get_current()->args_get('entity_group_id');
     $entity_name     = page::get_current()->args_get('entity_name'    );
-    $entities = entity::get_all   ();
-    $groups   = entity::groups_get();
+    $entities = entity::get_all();
+    $groups   = entity::groups_managing_get();
     $entities_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_grp_id => $c_title) {
       foreach ($entities as $c_name => $c_entity)
-        if ($c_entity->managing_is_on && $c_grp_id == $c_entity->group_get_id())
+        if ($c_entity->managing_is_on && $c_grp_id == $c_entity->group_managing_get_id())
           $entities_by_groups[$c_grp_id][$c_name] = $c_entity;
       if (isset($entities_by_groups[$c_grp_id]))
         core::array_sort_by_title($entities_by_groups[$c_grp_id]);

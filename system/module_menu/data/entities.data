@@ -4,8 +4,8 @@ entities
     title: Tree
     title_plural: Trees
     catalog_name: trees
-    group: Menu
     managing_is_on: true
+    managing_group: Menu
     ws_access: true
     ws_created: true
     ws_updated: true
@@ -44,8 +44,8 @@ entities
     title: Tree item
     title_plural: Tree items
     catalog_name: tree_items
-    group: Menu
     managing_is_on: true
+    managing_group: Menu
     ws_access: true
     ws_weight: true
     ws_created: true
