@@ -68,7 +68,6 @@
   x-tree[data-managed_mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managed_mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   x-tree[data-managed_mode] x-item-url em {padding: 0 2px; font-style: normal}
-  x-tree[data-managed_mode] x-item-extra x-actions x-action a em {display: none}
 
   x-tree[data-managed_mode='simple'] li            {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') repeat-y         }
   x-tree[data-managed_mode='simple'] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') no-repeat 0 -63px}
