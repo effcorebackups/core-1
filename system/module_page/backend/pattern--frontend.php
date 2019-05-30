@@ -44,4 +44,79 @@ namespace effcore {
     return static::$cache[$row_id];
   }
 
+  static function markup_get($used_dpaths) {
+    $result          = new \stdClass;
+    $result->icons   = new node();
+    $result->styles  = new node();
+    $result->scripts = new node();
+    foreach (static::get_all() as $c_row_id => $c_items) {
+      if (is_array(static::is_visible_by_display_and_dpaths($c_items->display, $used_dpaths)) ||
+          is_array(static::is_visible_by_display           ($c_items->display              ))) {
+
+      # ─────────────────────────────────────────────────────────────────────
+      # collect favicons
+      # ─────────────────────────────────────────────────────────────────────
+        if (isset($c_items->favicons)) {
+          foreach ($c_items->favicons as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $result->icons->child_insert(new markup_simple('link', [
+              'href' => $c_url->tiny_get()
+            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
+          }
+        }
+
+      # ─────────────────────────────────────────────────────────────────────
+      # collect styles
+      # ─────────────────────────────────────────────────────────────────────
+        if (isset($c_items->styles)) {
+          foreach ($c_items->styles as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $result->styles->child_insert(new markup_simple('link', [
+              'href' => $c_url->tiny_get()
+            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
+          }
+        }
+
+      # ─────────────────────────────────────────────────────────────────────
+      # collect scripts
+      # ─────────────────────────────────────────────────────────────────────
+        if (isset($c_items->scripts)) {
+          foreach ($c_items->scripts as $c_item) {
+            $c_module_id = $c_item->module_id ?? $c_items->module_id;
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $result->scripts->child_insert(new markup('script', [
+              'src' => $c_url->tiny_get()
+            ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
+          }
+        }
+
+      }
+    }
+    return $result;
+  }
+
+  static function is_visible_by_display_and_dpaths($display, $used_dpaths) {
+    $args = [];
+    if (($display->check == 'block' &&
+         $display->where == 'dpath' && preg_match(
+         $display->match.'m', implode(nl, $used_dpaths), $args))) {
+      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
+    }
+  }
+
+  static function is_visible_by_display($display) {
+    $args = [];
+    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->protocol_get(), $args)) ||
+        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get  (), $args)) ||
+        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->path_get    (), $args)) ||
+        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->query_get   (), $args)) ||
+        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->anchor_get  (), $args)) ||
+        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->type_get    (), $args)) ||
+        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->full_get    (), $args)) ) {
+      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
+    }
+  }
+
 }}
