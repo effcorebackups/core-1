@@ -5,7 +5,7 @@ entities
     title_plural: Pages
     catalog_name: pages
     group: Content
-    is_managed: true
+    managing_is_on: true
     ws_access: true
     ws_created: true
     ws_updated: true
