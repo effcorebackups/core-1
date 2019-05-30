@@ -1,5 +1,5 @@
 frontend
-- menu_user
+- menu_user|frontend
     display
       check: block
       where: dpath

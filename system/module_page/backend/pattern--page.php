@@ -12,6 +12,7 @@ namespace effcore {
   public $https;
   public $url;
   public $access;
+  public $parts;
   public $charset = 'utf-8';
   public $lang_code = 'en';
   public $text_direction = 'ltr';
@@ -91,7 +92,7 @@ namespace effcore {
     $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
-    foreach (static::frontend_get_all() as $c_row_id => $c_items) {
+    foreach (frontend::get_all() as $c_row_id => $c_items) {
       if (is_array(static::is_visible_by_display_and_dpaths($c_items->display, $this->used_dpaths)) ||
           is_array(static::is_visible_by_display           ($c_items->display                    ))) {
 
@@ -144,7 +145,6 @@ namespace effcore {
   ###########################
 
   static protected $cache;
-  static protected $cache_frontend;
   static protected $current;
 
   static function not_external_properties_get() {
@@ -152,8 +152,7 @@ namespace effcore {
   }
 
   static function cache_cleaning() {
-    static::$cache          = null;
-    static::$cache_frontend = null;
+    static::$cache = null;
   }
 
   static function init() {
@@ -163,18 +162,6 @@ namespace effcore {
           if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
           static::$cache[$c_id] = $c_page;
           static::$cache[$c_id]->module_id = $c_module_id;
-        }
-      }
-    }
-  }
-
-  static function init_frontend() {
-    if (static::$cache_frontend == null) {
-      foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
-        foreach ($c_frontends as $c_row_id => $c_frontend) {
-          if (isset(static::$cache_frontend[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
-          static::$cache_frontend[$c_row_id] = $c_frontend;
-          static::$cache_frontend[$c_row_id]->module_id = $c_module_id;
         }
       }
     }
@@ -199,16 +186,6 @@ namespace effcore {
         if ($c_item instanceof external_cache)
             $c_item = $c_item->external_cache_load();
     return static::$cache;
-  }
-
-  static function frontend_get($row_id) {
-    static::init_frontend();
-    return static::$cache_frontend[$row_id];
-  }
-
-  static function frontend_get_all() {
-    static::init_frontend();
-    return static::$cache_frontend;
   }
 
   static function is_visible_by_url($url) {

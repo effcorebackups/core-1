@@ -1,5 +1,5 @@
 frontend
-- menu_all
+- menu_all|frontend
     display
       check: block
       where: dpath
@@ -15,7 +15,7 @@ frontend
         file: frontend/tree.js
         attributes
         - defer: true
-- tabs_all
+- tabs_all|frontend
     display
       check: block
       where: dpath
