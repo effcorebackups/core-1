@@ -4,7 +4,7 @@ entities
     title: Page
     title_plural: Pages
     catalog_name: pages
-    group: Page
+    group: Content
     is_managed: true
     ws_access: true
     ws_created: true
