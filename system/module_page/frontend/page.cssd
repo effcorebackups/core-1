@@ -143,9 +143,9 @@
   /* control elements */
 
   x-actions x-action a em {display: none}
-  x-actions x-action[data-title='select'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100%  -1px}
-  x-actions x-action[data-title='update'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100% -41px}
-  x-actions x-action[data-title='delete'] a {padding-right: 25px; background: url('images/icons-action_list.svgd') no-repeat 100% -61px}
+  x-actions x-action[data-title='select'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100%  -1px}
+  x-actions x-action[data-title='update'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100% -41px}
+  x-actions x-action[data-title='delete'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100% -61px}
 
   /* pager */
 

@@ -24,8 +24,8 @@ namespace effcore {
   }
 
   function build() {
-    $list = new markup('x-action-list');
-    $this->child_insert($list, 'action_list');
+    $list = new markup('x-actions-list');
+    $this->child_insert($list, 'actions_list');
     foreach ($this->actions as $c_name => $c_title) {
       $c_href = $c_name[0] == '/' ? $c_name : page::get_current()->args_get('base').'/'.($c_name);
       $c_link = new markup('a', ['href' => $c_href], new markup('em', [], token::replace(translation::get($c_title))));

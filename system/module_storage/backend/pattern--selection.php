@@ -162,7 +162,7 @@ namespace effcore {
             case 'actions':
               $c_row[$c_row_id] = [
                 'title' => $c_field->title ?? '',
-                'value' => $id_keys ? $this->action_list_get($main_entity, $c_instance, $id_keys) : ''
+                'value' => $id_keys ? $this->actions_list_get($main_entity, $c_instance, $id_keys) : ''
               ];
               break;
             case 'markup':
@@ -243,13 +243,13 @@ namespace effcore {
     $this->fields[$row_id ?: 'code'] = $field;
   }
 
-  function action_list_get($entity, $instance, $id_keys) {
+  function actions_list_get($entity, $instance, $id_keys) {
     $id_values = array_intersect_key($instance->values, $id_keys);
-    $action_list = new actions_list();
-                                    $action_list->action_add('/manage/instance/select/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'select');
-                                    $action_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'update');
-    if (empty($instance->is_embed)) $action_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'delete');
-    return $action_list;
+    $actions_list = new actions_list();
+    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'delete');
+                                    $actions_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'update');
+                                    $actions_list->action_add('/manage/instance/select/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'select');
+    return $actions_list;
   }
 
   # ─────────────────────────────────────────────────────────────────────
