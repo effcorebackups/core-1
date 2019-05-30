@@ -4,6 +4,13 @@
   form {margin: 70px 0}
   form *[aria-invalid=true] {border-color: %%_color_error !important}
 
+  label[for] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none}
+
   /* fieldset */
 
   fieldset {margin: 50px 0; padding: 0; border: none}
@@ -14,7 +21,6 @@
   fieldset > x-description {margin-top: 20px}
 
   fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px}
-  fieldset input[data-opener-type='fieldset'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
   fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('images/icons-form.svgd')   0   -60px}
