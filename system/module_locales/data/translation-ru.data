@@ -81,7 +81,6 @@ translations
     - Current field value\: %%_value.: Текущее значение поля: %%_value.
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
-    - Dark: Тёмная
     - Data update is required: Требуется обновл. данных
     - Data: Данные
     - Database name: Имя базы данных
@@ -231,6 +230,7 @@ translations
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
+    - Light: Светлая
     - Linear diagram: Линейная диаграмма
     - Link (active): Ссылка (активная)
     - Link: Ссылка
