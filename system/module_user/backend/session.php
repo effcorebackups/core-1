@@ -11,19 +11,20 @@ namespace effcore {
   const period_expired_m = 60 * 60 * 24 * 30;
   const empty_ip = '::';
 
+  static protected $current;
+
   static function select() {
     $session_id       = static::id_get();
     $session_hex_type = static::id_extract_hex_type($session_id);
     if ($session_hex_type == 'f') {
-      $session = (new instance('session', [
-        'id' => $session_id
-      ]))->select();
-      if (!$session) {
+      if (!static::$current)
+           static::$current = (new instance('session', ['id' => $session_id]))->select();
+      if (!static::$current) {
         static::id_regenerate('a');
         message::insert('invalid session was deleted!', 'warning');
         return null;
       } else {
-        return $session;
+        return static::$current;
       }
     }
   }
