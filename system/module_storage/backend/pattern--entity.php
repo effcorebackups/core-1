@@ -17,6 +17,7 @@ namespace effcore {
   public $title;
   public $title_plural;
   public $group = 'Other';
+  public $is_managed = false;
   public $fields = [];
   public $constraints = [];
   public $indexes = [];

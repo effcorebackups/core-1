@@ -12,39 +12,20 @@ entities
         size: 32
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-z0-9]+$
-        - maxlength: 32
-        - size: 40
     - characters
         title: Characters
         type: varchar
         size: 32
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - maxlength: 32
     - attempts
         title: Attempts
         type: integer
         not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: 0
-        - max: 100
     - canvas_data
         title: Canvas data
         type: blob
         not_null: true
-        field_class: \effcore\field_textarea
-        field_element_attributes
-        - pattern: ^[a-f0-9]+$
-        - disabled: true
     constraints
     - primary_ip_hex
         type: primary

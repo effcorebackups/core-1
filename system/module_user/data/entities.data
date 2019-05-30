@@ -5,6 +5,7 @@ entities
     title_plural: Permissions
     catalog_name: permissions
     group: User
+    is_managed: true
     ws_created: true
     ws_updated: true
     fields
@@ -43,6 +44,7 @@ entities
     title_plural: Relations: Role + Permission
     catalog_name: relations_role_ws_permission
     group: User
+    is_managed: true
     ws_created: true
     ws_updated: true
     fields
@@ -96,6 +98,7 @@ entities
     title_plural: Relations: Role + User
     catalog_name: relations_role_ws_user
     group: User
+    is_managed: true
     ws_created: true
     ws_updated: true
     fields
@@ -147,6 +150,7 @@ entities
     title_plural: Roles
     catalog_name: roles
     group: User
+    is_managed: true
     ws_weight: true
     ws_created: true
     ws_updated: true
@@ -202,45 +206,27 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
     - id_user
         title: User ID
         type: integer
         not_null: true
-        field_is_visible_on_select: true
-        field_class: \effcore\field_relation
-        field_properties
-        - entity_name: user
-        - entity_field_id_name: id
-        - entity_field_title_name: nick
     - is_remember
         title: Is remember
         type: boolean
         not_null: true
         default: 0
-        field_class: \effcore\field_switcher
     - is_fixed_ip
         title: Is fixed IP
         type: boolean
         not_null: true
         default: 0
-        field_class: \effcore\field_switcher
     - expired
         title: Expired date
         type: datetime
-        field_class: \effcore\field_datetime
     - data
         title: Data
         type: blob
         null: true
-        field_class: \effcore\field_textarea
-        field_element_attributes
-        - required: false
-        - minlength: 0
     constraints
     - primary_id
         type: primary
@@ -264,6 +250,7 @@ entities
     title_plural: Users
     catalog_name: users
     group: User
+    is_managed: true
     ws_created: true
     ws_updated: true
     fields

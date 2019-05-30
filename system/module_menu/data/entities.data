@@ -5,6 +5,7 @@ entities
     title_plural: Trees
     catalog_name: trees
     group: Menu
+    is_managed: true
     ws_access: true
     ws_created: true
     ws_updated: true
@@ -44,6 +45,7 @@ entities
     title_plural: Tree items
     catalog_name: tree_items
     group: Menu
+    is_managed: true
     ws_access: true
     ws_weight: true
     ws_created: true
