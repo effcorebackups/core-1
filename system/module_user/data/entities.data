@@ -198,7 +198,6 @@ entities
     title: Session
     title_plural: Sessions
     catalog_name: sessions
-    group: User
     fields
     - id
         title: ID

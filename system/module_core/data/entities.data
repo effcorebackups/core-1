@@ -4,7 +4,6 @@ entities
     title: Message
     title_plural: Messages
     catalog_name: messages
-    group: Core
     fields
     - id_session
         title: Session ID
