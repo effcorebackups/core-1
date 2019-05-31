@@ -4,12 +4,12 @@
   /* logs */
 
   x-block[data-id='logs'] tbody    td {vertical-align: top; color: black}
-  x-block[data-id='logs'] tbody tr td       {background-color: transparent}
-  x-block[data-id='logs'] tbody tr          {background-color: white}
-  x-block[data-id='logs'] tbody tr.autoload {background-color: papayawhip}
-  x-block[data-id='logs'] tbody tr.file     {background-color: aliceblue}
-  x-block[data-id='logs'] tbody tr.event    {background-color: lavender}
-  x-block[data-id='logs'] tbody tr.storage  {background-color: honeydew}
+  x-block[data-id='logs'] tbody tr td                      {background-color: transparent}
+  x-block[data-id='logs'] tbody tr                         {background-color: white}
+  x-block[data-id='logs'] tbody tr[data-object='autoload'] {background-color: palegoldenrod}
+  x-block[data-id='logs'] tbody tr[data-object='file'    ] {background-color: burlywood}
+  x-block[data-id='logs'] tbody tr[data-object='event'   ] {background-color: darkturquoise}
+  x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: yellowgreen}
   x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
 
   x-block[data-id='logs'] x-total {display: block; font-size: .9em; text-align: center; color: %%_color_text}

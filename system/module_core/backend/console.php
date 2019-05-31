@@ -107,10 +107,7 @@ namespace effcore {
     $decorator->id = 'console';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
-      $c_row_attributes = ['class' => [
-        core::sanitize_id($c_log->object) =>
-        core::sanitize_id($c_log->object)
-      ]];
+      $c_row_attributes = ['data-object' => core::sanitize_id($c_log->object)];
       if ($c_log->value == 'error') {
         $c_row_attributes['aria-invalid'] = 'true';
       }
