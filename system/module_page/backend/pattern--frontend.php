@@ -34,12 +34,12 @@ namespace effcore {
     }
   }
 
-  static function get_all() {
+  static function select_all() {
     static::init();
     return static::$cache;
   }
 
-  static function get($row_id) {
+  static function select($row_id) {
     static::init();
     return static::$cache[$row_id];
   }
@@ -49,7 +49,7 @@ namespace effcore {
     $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
-    foreach (static::get_all() as $c_row_id => $c_items) {
+    foreach (static::select_all() as $c_row_id => $c_items) {
       if (is_array(static::is_visible_by_display_and_dpaths($c_items->display, $used_dpaths)) ||
           is_array(static::is_visible_by_display           ($c_items->display              ))) {
 
@@ -58,8 +58,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_items->favicons)) {
           foreach ($c_items->favicons as $c_item) {
-            $c_module_id = $c_item->module_id ?? $c_items->module_id;
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
             $result->icons->child_insert(new markup_simple('link', [
               'href' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
@@ -71,8 +70,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_items->styles)) {
           foreach ($c_items->styles as $c_item) {
-            $c_module_id = $c_item->module_id ?? $c_items->module_id;
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
             $result->styles->child_insert(new markup_simple('link', [
               'href' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
@@ -84,8 +82,7 @@ namespace effcore {
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_items->scripts)) {
           foreach ($c_items->scripts as $c_item) {
-            $c_module_id = $c_item->module_id ?? $c_items->module_id;
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_module_id)->path.$c_item->file);
+            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
             $result->scripts->child_insert(new markup('script', [
               'src' => $c_url->tiny_get()
             ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
