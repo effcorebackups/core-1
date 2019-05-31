@@ -3,7 +3,7 @@ pages
     id: registration
     title: Registration
     https: true
-    url: %^/registration$%
+    url: /registration
     access
       roles
       - =: anonymous

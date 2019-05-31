@@ -3,7 +3,7 @@ pages
     id: logout
     title: Logout
     https: true
-    url: %^/logout$%
+    url: /logout
     access
       roles
       - =: registered

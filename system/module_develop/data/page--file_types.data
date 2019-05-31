@@ -3,7 +3,7 @@ pages
     id: file_types
     title: File types
     https: true
-    url: %^(?<base>/develop/file_types)$%
+    url: /develop/file_types
     access
       roles
       - =: admins

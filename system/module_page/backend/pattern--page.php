@@ -135,29 +135,22 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function is_visible_by_url($url) {
-    $args = [];
-    if (preg_match($url, url::get_current()->path_get(), $args)) {
-      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
-    }
-  }
-
   static function find_and_render() {
+    $is_match = false;
+    $path_current = url::get_current()->path_get();
+    $path_args = [];
     foreach (static::get_all(false) as $c_page) {
-      $c_args = static::is_visible_by_url($c_page->url);
-      if (is_array($c_args)) {
-        if ($c_page->access === null || access::check($c_page->access)) {
+      if ($c_page->url[0] != '%' && $path_current == $c_page->url                            ) {$is_match = true; $path_args = ['base' => $path_current];                                  }
+      if ($c_page->url[0] == '%' &&       preg_match($c_page->url, $path_current, $path_args)) {$is_match = true; $path_args = array_filter($path_args, 'is_string', ARRAY_FILTER_USE_KEY);}
+      if ($is_match) {
+        if ($c_page->access == null || access::check($c_page->access)) {
           if ($c_page instanceof external_cache)
               $c_page = $c_page->external_cache_load();
+          foreach ($path_args as $c_key => $c_value)
+            $c_page->args_set   ($c_key,   $c_value);
           static::$current = $c_page;
-        # filter arguments
-          foreach ($c_args as $c_key => $c_value)
-            $c_page->args_set($c_key,   $c_value);
-        # render page
-          return $c_page->render();
-        } else {
-          core::send_header_and_exit('access_forbidden');
-        }
+          return static::$current->render();
+        } else core::send_header_and_exit('access_forbidden');
       }
     }
   # no matches case

@@ -3,7 +3,7 @@ pages
     id: php_dependencies
     title: PHP dependencies
     https: true
-    url: %^/develop/php_dependencies$%
+    url: /develop/php_dependencies
     access
       roles
       - =: admins

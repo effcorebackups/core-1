@@ -3,7 +3,7 @@ pages
     id: info
     title: Information
     https: true
-    url: %^/manage/info$%
+    url: /manage/info
     access
       roles
       - =: admins

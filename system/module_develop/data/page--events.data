@@ -3,7 +3,7 @@ pages
     id: events
     title: Events
     https: true
-    url: %^(?<base>/develop/events)$%
+    url: /develop/events
     access
       roles
       - =: admins

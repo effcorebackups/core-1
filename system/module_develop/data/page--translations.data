@@ -3,7 +3,7 @@ pages
     id: translations
     title: Translations
     https: true
-    url: %^(?<base>/develop/translations)$%
+    url: /develop/translations
     access
       roles
       - =: admins

@@ -3,7 +3,7 @@ pages
     id: locales
     title: Locales
     https: true
-    url: %^/manage/locales$%
+    url: /manage/locales
     access
       roles
       - =: admins

@@ -3,7 +3,7 @@ pages
     id: recovery
     title: Recovery
     https: true
-    url: %^/recovery$%
+    url: /recovery
     access
       roles
       - =: anonymous

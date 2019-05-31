@@ -3,7 +3,7 @@ pages
     id: console
     title: Console
     https: true
-    url: %^(?<base>/develop/console)$%
+    url: /develop/console
     access
       roles
       - =: admins

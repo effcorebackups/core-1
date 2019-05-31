@@ -3,7 +3,7 @@ pages
     id: login
     title: Login
     https: true
-    url: %^/login$%
+    url: /login
     access
       roles
       - =: anonymous

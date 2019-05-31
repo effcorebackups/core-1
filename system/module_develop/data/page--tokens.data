@@ -3,7 +3,7 @@ pages
     id: tokens
     title: Tokens
     https: true
-    url: %^(?<base>/develop/tokens)$%
+    url: /develop/tokens
     access
       roles
       - =: admins

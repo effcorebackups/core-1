@@ -3,7 +3,7 @@ pages
     id: templates
     title: Templates
     https: true
-    url: %^(?<base>/develop/templates)$%
+    url: /develop/templates
     access
       roles
       - =: admins
