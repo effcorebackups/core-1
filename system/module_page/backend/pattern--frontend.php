@@ -8,9 +8,9 @@ namespace effcore {
           class frontend {
 
   public $display;
-  public $favicons;
-  public $styles;
-  public $scripts;
+  public $favicons = [];
+  public $styles   = [];
+  public $scripts  = [];
 
   ###########################
   ### static declarations ###
@@ -44,49 +44,52 @@ namespace effcore {
     return static::$cache[$row_id];
   }
 
+  static function insert($row_id, $display = null, $type = 'styles', $element) {
+    static::init();
+    static::$cache[$row_id] = new static;
+    static::$cache[$row_id]->display = $display;
+    static::$cache[$row_id]->module_id = null;
+    static::$cache[$row_id]->{$type}[] = (object)$element;
+  }
+
   static function markup_get($used_dpaths) {
     $result          = new \stdClass;
     $result->icons   = new node();
     $result->styles  = new node();
     $result->scripts = new node();
     foreach (static::select_all() as $c_row_id => $c_items) {
-      if (is_array(static::is_visible_by_display_and_dpaths($c_items->display, $used_dpaths)) ||
+      if (                                                  $c_items->display == null         ||
+          is_array(static::is_visible_by_display_and_dpaths($c_items->display, $used_dpaths)) ||
           is_array(static::is_visible_by_display           ($c_items->display              ))) {
 
       # ─────────────────────────────────────────────────────────────────────
       # collect favicons
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_items->favicons)) {
-          foreach ($c_items->favicons as $c_item) {
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
-            $result->icons->child_insert(new markup_simple('link', [
-              'href' => $c_url->tiny_get()
-            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
-          }
+        foreach ($c_items->favicons as $c_item) {
+          $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
+          $result->icons->child_insert(new markup_simple('link', [
+            'href' => $c_url->tiny_get()
+          ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
         }
 
       # ─────────────────────────────────────────────────────────────────────
       # collect styles
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_items->styles)) {
-          foreach ($c_items->styles as $c_item) {
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
-            $result->styles->child_insert(new markup_simple('link', [
-              'href' => $c_url->tiny_get()
-            ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
-          }
+        foreach ($c_items->styles as $c_item) {
+          $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
+          $result->styles->child_insert(new markup_simple('link', [
+            'href' => $c_url->tiny_get()
+          ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
         }
 
       # ─────────────────────────────────────────────────────────────────────
       # collect scripts
       # ─────────────────────────────────────────────────────────────────────
-        if (isset($c_items->scripts)) {
-          foreach ($c_items->scripts as $c_item) {
-            $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
-            $result->scripts->child_insert(new markup('script', [
-              'src' => $c_url->tiny_get()
-            ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
-          }
+        foreach ($c_items->scripts as $c_item) {
+          $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
+          $result->scripts->child_insert(new markup('script', [
+            'src' => $c_url->tiny_get()
+          ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
         }
 
       }

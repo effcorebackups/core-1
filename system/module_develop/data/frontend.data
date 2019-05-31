@@ -3,14 +3,14 @@ frontend
     display
       check: url
       where: path
-      match: %^.*$%
+      match: %^/develop/.*$%
     styles
     - develop_style
         file: frontend/develop.cssd
         attributes
         - rel: stylesheet
         - media: all
-- page_structures|frontend
+- develop_page_structures|frontend
     display
       check: url
       where: path
