@@ -58,13 +58,11 @@ namespace effcore {
     $result->styles  = new node();
     $result->scripts = new node();
     foreach (static::select_all() as $c_row_id => $c_items) {
-      if (                                                  $c_items->display == null         ||
-          is_array(static::is_visible_by_display_and_dpaths($c_items->display, $used_dpaths)) ||
-          is_array(static::is_visible_by_display           ($c_items->display              ))) {
+      if (                            $c_items->display == null ||
+          static::is_visible_by_url  ($c_items->display)        ||
+          static::is_visible_by_dpath($c_items->display, $used_dpaths) ) {
 
-      # ─────────────────────────────────────────────────────────────────────
       # collect favicons
-      # ─────────────────────────────────────────────────────────────────────
         foreach ($c_items->favicons as $c_item) {
           $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
           $result->icons->child_insert(new markup_simple('link', [
@@ -72,9 +70,7 @@ namespace effcore {
           ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
         }
 
-      # ─────────────────────────────────────────────────────────────────────
       # collect styles
-      # ─────────────────────────────────────────────────────────────────────
         foreach ($c_items->styles as $c_item) {
           $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
           $result->styles->child_insert(new markup_simple('link', [
@@ -82,9 +78,7 @@ namespace effcore {
           ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
         }
 
-      # ─────────────────────────────────────────────────────────────────────
       # collect scripts
-      # ─────────────────────────────────────────────────────────────────────
         foreach ($c_items->scripts as $c_item) {
           $c_url = new url($c_item->file[0] == '/' ? $c_item->file : '/'.module::get($c_items->module_id)->path.$c_item->file);
           $result->scripts->child_insert(new markup('script', [
@@ -97,26 +91,20 @@ namespace effcore {
     return $result;
   }
 
-  static function is_visible_by_display_and_dpaths($display, $used_dpaths) {
-    $args = [];
-    if (($display->check == 'block' &&
-         $display->where == 'dpath' && preg_match(
-         $display->match.'m', implode(nl, $used_dpaths), $args))) {
-      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
-    }
+  static function is_visible_by_dpath($display, $used_dpaths) {
+    return ($display->check == 'block' &&
+            $display->where == 'dpath' && preg_match(
+            $display->match.'m', implode(nl, $used_dpaths)));
   }
 
-  static function is_visible_by_display($display) {
-    $args = [];
-    if (($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->protocol_get(), $args)) ||
-        ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get  (), $args)) ||
-        ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->path_get    (), $args)) ||
-        ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->query_get   (), $args)) ||
-        ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->anchor_get  (), $args)) ||
-        ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->type_get    (), $args)) ||
-        ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->full_get    (), $args)) ) {
-      return array_filter($args, 'is_string', ARRAY_FILTER_USE_KEY);
-    }
+  static function is_visible_by_url($display) {
+    return ($display->check == 'url' && $display->where == 'protocol' && preg_match($display->match, url::get_current()->protocol_get())) ||
+           ($display->check == 'url' && $display->where == 'domain'   && preg_match($display->match, url::get_current()->domain_get  ())) ||
+           ($display->check == 'url' && $display->where == 'path'     && preg_match($display->match, url::get_current()->path_get    ())) ||
+           ($display->check == 'url' && $display->where == 'query'    && preg_match($display->match, url::get_current()->query_get   ())) ||
+           ($display->check == 'url' && $display->where == 'anchor'   && preg_match($display->match, url::get_current()->anchor_get  ())) ||
+           ($display->check == 'url' && $display->where == 'type'     && preg_match($display->match, url::get_current()->type_get    ())) ||
+           ($display->check == 'url' && $display->where == 'full'     && preg_match($display->match, url::get_current()->full_get    ()));
   }
 
 }}
