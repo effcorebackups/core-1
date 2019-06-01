@@ -6,10 +6,10 @@
   x-block[data-id='logs'] tbody    td {vertical-align: top; color: black}
   x-block[data-id='logs'] tbody tr td                      {background-color: transparent}
   x-block[data-id='logs'] tbody tr                         {background-color: white}
-  x-block[data-id='logs'] tbody tr[data-object='autoload'] {background-color: palegoldenrod}
-  x-block[data-id='logs'] tbody tr[data-object='file'    ] {background-color: burlywood}
-  x-block[data-id='logs'] tbody tr[data-object='event'   ] {background-color: darkturquoise}
-  x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: yellowgreen}
+  x-block[data-id='logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+  x-block[data-id='logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+  x-block[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+  x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
   x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
 
   x-block[data-id='logs'] tbody tr[data-loading_level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
