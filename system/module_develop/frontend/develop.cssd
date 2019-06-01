@@ -65,9 +65,9 @@
   x-diagram-uml x-children x-class-wrapper:last-child  {background: url('images/diagram-hline.svgd')                no-repeat}
   x-diagram-uml x-children x-class-wrapper:only-child  {background: url('images/diagram-arrow-generalization.svgd') no-repeat}
 
-  x-diagram-uml x-item[data-visibility='public']::before    {content: '+ '}
+  x-diagram-uml x-item[data-visibility='public'   ]::before {content: '+ '}
   x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
-  x-diagram-uml x-item[data-visibility='private']::before   {content: '- '}
+  x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 
   x-diagram-uml x-attributes,
   x-diagram-uml x-operations {display: none}
