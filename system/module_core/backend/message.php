@@ -85,7 +85,7 @@ namespace effcore {
     $non_duplicates = [];
     foreach (static::select_all() as $c_type => $c_messages) {
       if (!$messages->child_select($c_type))
-           $messages->child_insert(new markup('ul', ['class' => [$c_type => $c_type]]), $c_type);
+           $messages->child_insert(new markup('ul', ['data-type' => $c_type]), $c_type);
       if (!isset($non_duplicates[$c_type]))
                  $non_duplicates[$c_type] = [];
       $c_grpoup = $messages->child_select($c_type);

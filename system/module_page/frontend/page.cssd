@@ -74,19 +74,19 @@
   x-messages {display: block; margin: 100px auto}
   x-messages p {margin: 0; padding: 0}
   x-messages ul {margin: 10px 0; padding: 15px 20px; background-color: gray; color: white}
-  x-messages ul.notice  {background-color: %%_color_main}
-  x-messages ul.ok      {background-color: %%_color_ok}
-  x-messages ul.warning {background-color: %%_color_warning}
-  x-messages ul.error   {background-color: %%_color_error}
+  x-messages ul[data-type='notice' ] {background-color: %%_color_main}
+  x-messages ul[data-type='ok'     ] {background-color: %%_color_ok}
+  x-messages ul[data-type='warning'] {background-color: %%_color_warning}
+  x-messages ul[data-type='error'  ] {background-color: %%_color_error}
   x-messages ul li {margin: 0 0 0 15px; padding: 0; font-size: 16px; line-height: 1.5em}
   x-messages ul li:only-child {margin: 0; list-style: none}
   x-messages a {color: white}
 
-  x-messages ul.credentials {
+  x-messages ul[data-type='credentials'] {
     list-style: none;
     padding: 30px;
     background: %%_color_main url('images/lines.svg') -10px 0}
-  x-messages ul.credentials li {
+  x-messages ul[data-type='credentials'] li {
     list-style: none;
     padding: 0;
     margin: 0;
