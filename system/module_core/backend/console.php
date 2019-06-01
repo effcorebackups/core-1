@@ -14,15 +14,16 @@ namespace effcore {
     return static::$data;
   }
 
-  static function log_insert($object, $action, $description = '', $value = '', $time = 0, $args = []) {
-    static::$data[] = (object)[
+  static function &log_insert($object, $action, $description = '', $value = '', $time = 0, $args = []) {
+    $new_log = (object)[
       'object'      => $object,
       'action'      => $action,
       'description' => $description,
       'value'       => $value,
       'time'        => $time,
-      'args'        => $args,
-    ];
+      'args'        => $args];
+    static::$data[] = $new_log;
+    return $new_log;
   }
 
   static function log_insert_about_duplicate($type, $id, $module_id = null) {
