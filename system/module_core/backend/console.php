@@ -108,9 +108,12 @@ namespace effcore {
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_row_attributes = ['data-object' => core::sanitize_id($c_log->object)];
-      if ($c_log->value == 'error') {
-        $c_row_attributes['aria-invalid'] = 'true';
-      }
+      if ($c_log->value == 'error') $c_row_attributes['aria-invalid'] = 'true';
+      if ($c_log->time  >= .000099) $c_row_attributes['data-loading_level'] = 1;
+      if ($c_log->time  >=  .00099) $c_row_attributes['data-loading_level'] = 2;
+      if ($c_log->time  >=   .0099) $c_row_attributes['data-loading_level'] = 3;
+      if ($c_log->time  >=    .099) $c_row_attributes['data-loading_level'] = 4;
+      if ($c_log->time  >=     .99) $c_row_attributes['data-loading_level'] = 5;
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
         'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)       ],

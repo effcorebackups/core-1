@@ -12,6 +12,11 @@
   x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: yellowgreen}
   x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
 
+  x-block[data-id='logs'] tbody tr[data-loading_level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
+  x-block[data-id='logs'] tbody tr[data-loading_level='3'] td[data-cellid='time'] {background-color: %%_color_error}
+  x-block[data-id='logs'] tbody tr[data-loading_level='4'] td[data-cellid='time'] {background-color: %%_color_error}
+  x-block[data-id='logs'] tbody tr[data-loading_level='5'] td[data-cellid='time'] {background-color: %%_color_error}
+
   x-block[data-id='logs'] x-total {display: block; font-size: .9em; text-align: center; color: %%_color_text}
   x-block[data-id='logs'] x-total x-label::after {content: ': '}
   x-block[data-id='logs'] x-total x-value {}
