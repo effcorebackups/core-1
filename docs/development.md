@@ -75,8 +75,8 @@ NoSQL Storage characteristics
 
 - the fastest access after 'storages in the memory' (no data compression,
   all data stored as PHP code, after OPCache enabled you can increase performance
-  over 10x; after organize disk in the memory you can get the best performance
-  from possible and can increase performance over 20-100x);
+  over 2-3x; after organize disk in the memory you can get the best performance
+  from possible and can increase performance over 3-5x);
 - tree structure and no restrictions - each item can have own unique structure;
 - data parts definitions in format 'property: value' on each own line (it's a convenient
   solution for preview differences in data in tools like 'git' and 'diff');

@@ -54,22 +54,25 @@ IIS requires (for v7.5)
 If you got "500 Internal Server Error" check "web.config" in www root (section "rewrite").
 
 
-PHP requires
+PHP extension requires
 ---------------------------------------------------------------------
-- enable extension "Core"                                   [always enabled]
-- enable extension "date"                                   [always enabled]
-- enable extension "fileinfo"                               [enabled by default]
-- enable extension "filter"                                 [enabled by default]
-- enable extension "hash"                                   [enabled by default]
-- enable extension "mbstring"
-- enable extension "pcre"                                   [always enabled]
-- enable extension "SPL"                                    [always enabled]
-- enable extension "standard"                               [always enabled]
-- enable extension "pdo_mysql"    (for working with MySQL)
-- enable extension "pdo_sqlite"   (for working with SQLite)
-- enable extension "Zend OPcache" (for best performance)
-- enable extension "curl"         (for development)
-- enable extension "json"         (for development)         [always enabled]
+
+    | name         | is enabled | description             |
+    |-----------------------------------------------------|
+    | Core         | always     |                         |
+    | date         | always     |                         |
+    | fileinfo     | by default |                         |
+    | filter       | by default |                         |
+    | hash         | by default |                         |
+    | mbstring     | no         |                         |
+    | pcre         | always     |                         |
+    | SPL          | always     |                         |
+    | standard     | always     |                         |
+    | pdo_mysql    | no         | for working with MySQL  |
+    | pdo_sqlite   | no         | for working with SQLite |
+    | Zend OPcache | no         | for best performance    |
+    | curl         | no         | for development         |
+    | json         | always     | for development         |
 
 
 SQLite requires
