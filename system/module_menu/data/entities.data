@@ -82,6 +82,7 @@ entities
         field_properties
         - entity_name: tree_item
         - entity_field_id_name: id
+        - entity_field_id_parent_name: id_parent
         - entity_field_title_name: title
         field_element_attributes
         - required: false
