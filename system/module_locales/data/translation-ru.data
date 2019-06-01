@@ -116,7 +116,6 @@ translations
     - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
-    - effcore logotype: логотип effcore
     - EMail: Адрес электронной почты
     - email: адрес электронной почты
     - Embedded: Встроенные
@@ -244,7 +243,6 @@ translations
     - Logic: Логика
     - login: вход
     - Login: Вход
-    - Logo: Лого
     - logout: выход
     - Logout: Выход
     - Main system module.: Основной модуль системы.
@@ -408,6 +406,7 @@ translations
     - Subscribe to updates: Подписка на обновления
     - Switcher: Переключатель
     - Switchers: Переключатели
+    - system logotype: логотип системы
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система

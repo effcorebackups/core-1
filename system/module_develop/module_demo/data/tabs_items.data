@@ -66,9 +66,3 @@ tabs_items
     id_tab: demo
     action_name: embedded/diagrams
     title: Diagrams
-- demo_logo|tabs_item
-    id: demo_logo
-    id_parent: demo_embedded
-    id_tab: demo
-    action_name: embedded/logo
-    title: Logo

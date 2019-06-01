@@ -131,15 +131,6 @@
   x-sticker[data-state='warning'] {background: %%_color_warning}
   x-sticker[data-state='error'  ] {background: %%_color_error}
 
-  /* block logo */
-
-  x-block[data-id='logo'] {margin: 0}
-  x-block[data-id='logo'] a.to_front {
-    display: block;
-    width: 150px;
-    height: 48px;
-    background: url('images/logo.svgd')}
-
   /* control elements */
 
   x-actions x-action a em {display: none}

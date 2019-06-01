@@ -13,8 +13,7 @@ pages
 >>>>>>>>>>>>>>>>>>>embedded/selections|
 >>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>embedded/canvas|
->>>>>>>>>>>>>>>>>>>embedded/diagrams|
->>>>>>>>>>>>>>>>>>>embedded/logo))|)$%
+>>>>>>>>>>>>>>>>>>>embedded/diagrams))|)$%
     access
       roles
       - =: admins
@@ -186,11 +185,3 @@ pages
         region: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
-    - demo_logo|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/logo$%
-        region: content
-        type: link
-        source: blocks/page/logo
