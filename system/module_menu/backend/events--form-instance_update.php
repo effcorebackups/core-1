@@ -18,9 +18,12 @@ namespace effcore\modules\menu {
         $form->_instance->id_tree);
       $tree_item->build();
       foreach ($tree_item->children_select_recursive() as $c_child)
-        $items['#id_parent']->disabled[$c_child->id] = $c_child->id;
+        $items['#id_parent']->disabled[$c_child        ->id] = $c_child        ->id;
+        $items['#id_parent']->disabled[$form->_instance->id] = $form->_instance->id;
         $items['#id_parent']->build();
-        $items['#id_parent']->value_set($form->_instance->id);
+        $items['#id_parent']->value_set(
+          $form->_instance->id_parent
+        );
     }
   }
 
