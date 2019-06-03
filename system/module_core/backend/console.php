@@ -105,10 +105,11 @@ namespace effcore {
   static function markup_get_block_logs() {
     $logs = static::logs_select();
     $decorator = new decorator('table');
-    $decorator->id = 'console';
+    $decorator->id = 'logs';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
-      $c_row_attributes = ['data-object' => core::sanitize_id($c_log->object)];
+      $c_row_attributes  = ['data-object' => core::sanitize_id($c_log->object)];
+      $c_row_attributes += ['data-action' => core::sanitize_id($c_log->action)];
       if ($c_log->value == 'error') $c_row_attributes['aria-invalid'] = 'true';
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading_level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading_level'] = 2;

@@ -12,6 +12,9 @@
   x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
   x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
 
+  x-block[data-id='logs'] tbody tr[data-object='event'][data-action='begin'] {}
+  x-block[data-id='logs'] tbody tr[data-object='event'][data-action='end'  ] {}
+
   x-block[data-id='logs'] tbody tr[data-loading_level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
   x-block[data-id='logs'] tbody tr[data-loading_level='3'] td[data-cellid='time'] {background-color: %%_color_error}
   x-block[data-id='logs'] tbody tr[data-loading_level='4'] td[data-cellid='time'] {background-color: %%_color_error}

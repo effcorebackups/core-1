@@ -80,13 +80,14 @@ namespace effcore {
         if ($for == null          ||
             $for == $c_event->for ||
                     $c_event->for == null) {
-          $c_log = console::log_insert('event', 'call', ltrim($c_event->handler, '\\'));
+          console::log_insert('event', 'begin', ltrim($c_event->handler, '\\'), '-', 0);
           timer::tap('event call: '.$type);
           $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler,                      $args);
           if ($on_after_step)                        call_user_func_array($on_after_step, ['event' => $c_event] + $args);
           timer::tap('event call: '.$type);
-          $c_log->time = timer::period_get('event call: '.$type, -1, -2);
-          $c_log->value = $c_return ? 'ok' : '-';
+          console::log_insert('event', 'end', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
+            timer::period_get('event call: '.$type, -1, -2)
+          );
         }
       }
     }

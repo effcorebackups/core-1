@@ -34,6 +34,7 @@ translations
     - Avatar path: Путь аватара
     - Avatar: Аватар
     - avatar: аватар
+    - begin: начало
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle id: id пакета
@@ -121,6 +122,7 @@ translations
     - Embedded: Встроенные
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - enable: включить
+    - end: конец
     - Entities: Сущности
     - Entity "%%_name" was installed.: Сущность "%%_name" была установлена.
     - Entity "%%_name" was not installed!: Сущность "%%_name" не была установлена!
