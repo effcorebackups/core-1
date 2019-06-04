@@ -13,21 +13,21 @@ namespace effcore {
     static::$cache = null;
   }
 
-  static function init($id = null, $is_full = true) {
+  static function init($is_load_roles = true) {
     if (static::$cache == null) {
-      static::$cache = new instance('user', [
-        'id'    => null,
-        'nick'  => null,
-        'roles' => ['anonymous' => 'anonymous']
-      ]);
-      if ($id != null) {
-        $user = new instance('user', ['id' => $id]);
+        static::$cache = new instance('user');
+        static::$cache->nick  = null;
+        static::$cache->id    = null;
+        static::$cache->roles = ['anonymous' => 'anonymous'];
+      $session = session::select();
+      if ($session &&
+          $session->id_user) {
+        $user = new instance('user', ['id' => $session->id_user]);
         if ($user->select()) {
-          $user->roles = ['registered' => 'registered'];
-          if ($is_full) {
-            $user->roles += static::id_roles_get($id);
-          }
           static::$cache = $user;
+          static::$cache->roles = $is_load_roles ?
+            ['registered' => 'registered'] + static::id_roles_get($session->id_user) :
+            ['registered' => 'registered'];
         }
       }
     }

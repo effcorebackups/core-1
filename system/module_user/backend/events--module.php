@@ -35,16 +35,11 @@ namespace effcore\modules\user {
   }
 
   static function on_start() {
-    $session = session::select();
-    if ($session &&
-        $session->id_user) {
-      user::init($session->id_user);
-      $user = user::get_current();
-      if (isset($user->roles['registered']) &&
-                $user->avatar_path) {
-        $tree_item = tree_item::select('registered', 'user_registered');
-        $tree_item->attribute_insert('data-has-avatar', 'yes');
-      }
+    $user = user::get_current();
+    if (isset($user->roles['registered']) &&
+              $user->avatar_path) {
+      $tree_item = tree_item::select('registered', 'user_registered');
+      $tree_item->attribute_insert('data-has-avatar', 'yes');
     }
   }
 
