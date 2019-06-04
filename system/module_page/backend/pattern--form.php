@@ -183,14 +183,25 @@ namespace effcore {
   # functionality for validation cache
   # ──────────────────────────────────────────────────────────────────────────────
 
+  protected function validation_cache_select() {
+    $cache = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
+    return $cache ? unserialize($cache->data) : [];
+  }
+
+  protected function validation_cache_update($cache) {
+    $instance = new instance('cache_validation', ['id' => $this->validation_id, 'data' => serialize($cache)]);
+    if ($instance->select()) return $instance->update();
+    else                     return $instance->insert();
+  }
+
+  protected function validation_cache_delete() {
+    return (new instance('cache_validation', ['id' => $this->validation_id]))->delete();
+  }
+
   function validation_cache_date_get($format = 'Y-m-d') {
     $timestmp = static::validation_id_extract_created($this->validation_id);
     return \DateTime::createFromFormat('U', $timestmp)->format($format);
   }
-
-  protected function validation_cache_select()       {return temporary::select('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_date_get().'/') ?: [];}
-  protected function validation_cache_update($cache) {return temporary::update('validation-'.$this->validation_id, $cache, 'validation/'.$this->validation_cache_date_get().'/');}
-  protected function validation_cache_delete()       {return temporary::delete('validation-'.$this->validation_id,         'validation/'.$this->validation_cache_date_get().'/');}
 
   static function validation_tmp_cleaning($limit = 5000) {
     if (file_exists(temporary::directory.'validation/')) {
@@ -215,6 +226,9 @@ namespace effcore {
         }
       }
     }
+    entity::get('cache_validation')->instances_delete([
+      'conditions' => ['updated_!f' => 'updated', '<', 'updated_!v' => core::datetime_get('-'.session::period_expired_d.' second')]
+    ]);
   }
 
   ###########################
