@@ -42,7 +42,7 @@ namespace effcore\modules\menu {
               $c_item->weight    != $c_new_weight) {
               $c_item->id_parent  = $c_new_parent;
               $c_item->weight     = $c_new_weight;
-              $c_item->update();  
+              $c_item->update();
           }
         }
       }
