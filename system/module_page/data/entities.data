@@ -1,4 +1,27 @@
 entities
+- cache_validation|entity
+    name: cache_validation
+    title: Cache for validation process
+    title_plural: Caches for validation process
+    catalog_name: cache_validation
+    ws_created: true
+    ws_updated: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+    - data
+        title: Data
+        type: blob
+        null: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
 - page|entity
     name: page
     title: Page
