@@ -25,7 +25,7 @@ namespace effcore {
     }
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
-    $data_hash = core::hash_get_data($this->validation_data);
+    $validation_data_hash = core::hash_get_data($this->validation_data);
     $this->child_insert(new field_hidden('form_id',       $id),                       'hidden_id_form'      );
     $this->child_insert(new field_hidden('validation_id-'.$id, $this->validation_id), 'hidden_id_validation');
   # send test headers
@@ -92,7 +92,7 @@ namespace effcore {
       }
 
     # show errors
-      if (static::$errors) {
+      if (static::has_error() == true) {
         $this->attribute_insert('aria-invalid', 'true');
         foreach (static::$errors as $c_error) {
           switch (gettype($c_error->message)) {
@@ -103,13 +103,13 @@ namespace effcore {
       }
 
     # call submit handler (if no errors)
-      if (!static::$errors) {
+      if (static::has_error() == false) {
         event::start('on_form_submit', $id, [&$this, &$this->items]);
       }
 
     # validation cache
-      if (static::$errors != [] && core::hash_get_data($this->validation_data) != $data_hash) $this->validation_cache_update($this->validation_data);
-      if (static::$errors == [] ||               count($this->validation_data) == 0         ) $this->validation_cache_delete();
+      if (static::has_error() == true && core::hash_get_data($this->validation_data) != $validation_data_hash) $this->validation_cache_update($this->validation_data);
+      if (static::has_error() != true ||               count($this->validation_data) == 0                    ) $this->validation_cache_delete();
     }
   }
 
