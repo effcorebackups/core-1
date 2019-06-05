@@ -109,6 +109,7 @@ translations
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
     - Module: Модуль
+    - NoSQL data: NoSQL данные
     - not show: не показывать
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.

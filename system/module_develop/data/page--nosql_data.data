@@ -1,0 +1,41 @@
+pages
+- nosql_data|page
+    id: nosql_data
+    title: NoSQL data
+    https: true
+    url: %^(?<base>/develop/nosql_data)
+>>>>>>>>((/(?<type>events|
+>>>>>>>>>>>>>>>>>>>file_types|
+>>>>>>>>>>>>>>>>>>>templates|
+>>>>>>>>>>>>>>>>>>>tokens|
+>>>>>>>>>>>>>>>>>>>translations|
+>>>>>>>>>>>>>>>>>>>trees))|)$%
+    access
+      roles
+      - =: admins
+    parts
+    - menu_user|page_part
+        region: menu
+        type: link
+        source: trees/user/user_registered
+    - menu_main|page_part
+        region: menu
+        type: link
+        source: trees/core/main
+    - title|page_part
+        region: title
+        type: code
+        source: \effcore\modules\page\events_page::on_show_title
+    - tabs|page_part
+        region: tabs
+        type: link
+        source: tabs/develop/nosql_data
+    # ─────────────────────────────────────────────────────────────────────
+    - block_nosql_data|page_part
+        display
+          check: page_args
+          where: action
+          match: %^select$%
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_nosql_data
