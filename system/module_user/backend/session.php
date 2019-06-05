@@ -7,7 +7,9 @@
 namespace effcore {
           abstract class session {
 
+  const period_expired_h = 60 * 60;
   const period_expired_d = 60 * 60 * 24;
+  const period_expired_w = 60 * 60 * 24 * 7;
   const period_expired_m = 60 * 60 * 24 * 30;
   const empty_ip = '::';
 

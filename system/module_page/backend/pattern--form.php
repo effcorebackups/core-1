@@ -9,8 +9,6 @@ namespace effcore {
           use \RecursiveIteratorIterator as ri_iterator;
           class form extends markup implements has_external_cache {
 
-  const period_expired_h = 60 * 60;
-
   public $tag_name = 'form';
   public $attributes = ['accept-charset' => 'UTF-8'];
   public $clicked_button;
@@ -285,7 +283,7 @@ namespace effcore {
       $hex_uagent_hash_8 = static::validation_id_extract_hex_uagent_hash_8($id);
       $hex_signature     = static::validation_id_extract_hex_signature    ($id);
       if ($created <= time()                                                   &&
-          $created >= time() - static::period_expired_h                        &&
+          $created >= time() - session::period_expired_h                       &&
           $hex_ip            === static::validation_id_get_hex_ip()            &&
           $hex_uagent_hash_8 === static::validation_id_get_hex_uagent_hash_8() &&
           $hex_signature     === static::validation_id_get_hex_signature($id)) {
