@@ -189,9 +189,9 @@ namespace effcore {
   }
 
   protected function validation_cache_update($cache) {
-    $instance = new instance('cache_validation', ['id' => $this->validation_id, 'data' => serialize($cache)]);
-    if ($instance->select()) return $instance->update();
-    else                     return $instance->insert();
+    $instance = new instance('cache_validation', ['id' => $this->validation_id]);
+    if ($instance->select()) {$instance->data = serialize($cache); return $instance->update();}
+    else                     {$instance->data = serialize($cache); return $instance->insert();}
   }
 
   protected function validation_cache_delete() {
