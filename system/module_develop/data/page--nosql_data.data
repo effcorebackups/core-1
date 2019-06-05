@@ -55,3 +55,11 @@ pages
         region: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
+    - block_templates|page_part
+        display
+          check: page_args
+          where: type
+          match: %^templates$%
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_templates
