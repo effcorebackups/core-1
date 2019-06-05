@@ -21,9 +21,9 @@ events
       for: console
       handler: \effcore\modules\develop\events_form_console::on_submit
   on_tab_before_build
-  - trees_nosql|event
-      for: trees_nosql
-      handler: \effcore\modules\develop\events_page_trees_nosql::on_tab_before_build
+  - nosql_data|event
+      for: nosql_data
+      handler: \effcore\modules\develop\events_page_nosql_data::on_tab_before_build
   on_page_before_build
   - structures|event
       for: structures

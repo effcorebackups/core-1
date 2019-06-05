@@ -7,19 +7,65 @@
 namespace effcore\modules\develop {
           use const \effcore\br;
           use \effcore\block;
+          use \effcore\core;
           use \effcore\decorator;
           use \effcore\event;
           use \effcore\file;
           use \effcore\language;
           use \effcore\markup;
           use \effcore\node;
+          use \effcore\page;
+          use \effcore\tabs_item;
           use \effcore\template;
           use \effcore\text_simple;
           use \effcore\token;
           use \effcore\translation;
+          use \effcore\tree_item;
+          use \effcore\tree;
+          use \effcore\url;
           abstract class events_page_nosql_data {
 
-  static function on_show_block_nosql_data() {
+  static function on_tab_before_build($tab) {
+    $type = page::get_current()->args_get('type');
+    $id   = page::get_current()->args_get('id'  );
+    if ($type == null) url::go(page::get_current()->args_get('base').'/trees');
+    if (strpos($type, 'trees') === 0) {
+      $trees = tree::select_all('nosql');
+      core::array_sort_by_title($trees);
+      if (!isset($trees[$id])) url::go(page::get_current()->args_get('base').'/trees/'.reset($trees)->id);
+      foreach ($trees as $c_tree) {
+        tabs_item::insert($c_tree->title,
+           'nosql_trees_'.$c_tree->id,
+           'nosql_trees', 'nosql_data', 'trees/'.$c_tree->id
+        );
+      }
+    }
+  }
+
+  static function on_show_block_tree($page) {
+    $trees = tree::select_all('nosql');
+    $id = $page->args_get('id');
+    if (isset($trees[$id])) {
+      $tree = clone tree::select($id);
+      $tree->build();
+      $tree_items = $tree->children_select_recursive();
+      $tree_managed_id = 'managed-'.$id;
+      $tree_managed = tree::insert($tree->title ?? '', $tree_managed_id);
+      $tree_managed->managed_mode = 'simple';
+      $tree_managed->title_state = 'cutted';
+      foreach ($tree_items as $c_item) {
+        $c_tree_item = tree_item::insert($c_item->title,
+          $tree_managed_id.'-'.$c_item->id, $c_item->id_parent !== null ?
+          $tree_managed_id.'-'.$c_item->id_parent : null,
+          $tree_managed_id,
+          $c_item->url, null,
+          $c_item->attributes,
+          $c_item->element_attributes,
+          $c_item->weight, 'develop'
+        );
+      }
+      return $tree_managed;
+    }
   }
 
   static function on_show_block_events($page) {

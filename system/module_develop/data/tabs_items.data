@@ -32,15 +32,14 @@ tabs_items
     action_name: trait
     action_name_default: trait/list
     title: Traits
-- trees_nosql_select|tabs_item
-    id: trees_nosql_select
+- nosql_trees|tabs_item
+    id: nosql_trees
     id_parent: null
-    id_tab: trees_nosql
-    action_name: select
-    title: Select
-    weight: +50
-- nosql_data_events|tabs_item
-    id: nosql_data_events
+    id_tab: nosql_data
+    action_name: trees
+    title: Trees
+- nosql_events|tabs_item
+    id: nosql_events
     id_parent: null
     id_tab: nosql_data
     action_name: events
@@ -69,9 +68,3 @@ tabs_items
     id_tab: nosql_data
     action_name: translations
     title: Translations
-- nosql_trees|tabs_item
-    id: nosql_trees
-    id_parent: null
-    id_tab: nosql_data
-    action_name: trees
-    title: Trees

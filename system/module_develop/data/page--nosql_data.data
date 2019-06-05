@@ -4,12 +4,12 @@ pages
     title: NoSQL data
     https: true
     url: %^(?<base>/develop/nosql_data)
->>>>>>>>((/(?<type>events|
+>>>>>>>>((/(?<type>trees(/(?<id>[a-z0-9_]+)|)|
+>>>>>>>>>>>>>>>>>>>events|
 >>>>>>>>>>>>>>>>>>>file_types|
 >>>>>>>>>>>>>>>>>>>templates|
 >>>>>>>>>>>>>>>>>>>tokens|
->>>>>>>>>>>>>>>>>>>translations|
->>>>>>>>>>>>>>>>>>>trees))|)$%
+>>>>>>>>>>>>>>>>>>>translations))|)$%
     access
       roles
       - =: admins
@@ -31,14 +31,14 @@ pages
         type: link
         source: tabs/develop/nosql_data
     # ─────────────────────────────────────────────────────────────────────
-    - block_nosql_data|page_part
+    - block_trees|page_part
         display
           check: page_args
           where: type
-          match: %^events$%
+          match: %^trees/.*$%
         region: content
         type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_nosql_data
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tree
     - block_events|page_part
         display
           check: page_args

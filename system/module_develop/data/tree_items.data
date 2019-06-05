@@ -27,15 +27,6 @@ tree_items
     access
       roles
       - =: admins
-- trees_nosql|tree_item
-    id: trees_nosql
-    id_parent: develop
-    id_tree: main
-    title: NoSQL trees
-    url: /develop/trees_nosql
-    access
-      roles
-      - =: admins
 - php_dependencies|tree_item
     id: php_dependencies
     id_parent: develop
