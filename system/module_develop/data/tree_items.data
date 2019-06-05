@@ -45,15 +45,6 @@ tree_items
     access
       roles
       - =: admins
-- translations|tree_item
-    id: translations
-    id_parent: develop
-    id_tree: main
-    title: Translations
-    url: /develop/translations
-    access
-      roles
-      - =: admins
 - console|tree_item
     id: console
     id_parent: develop

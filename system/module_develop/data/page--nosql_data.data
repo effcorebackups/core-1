@@ -71,3 +71,11 @@ pages
         region: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tokens
+    - block_translations|page_part
+        display
+          check: page_args
+          where: type
+          match: %^translations$%
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_translations

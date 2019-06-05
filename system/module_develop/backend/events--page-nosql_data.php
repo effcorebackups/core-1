@@ -10,11 +10,13 @@ namespace effcore\modules\develop {
           use \effcore\decorator;
           use \effcore\event;
           use \effcore\file;
+          use \effcore\language;
           use \effcore\markup;
           use \effcore\node;
           use \effcore\template;
           use \effcore\text_simple;
           use \effcore\token;
+          use \effcore\translation;
           abstract class events_page_nosql_data {
 
   static function on_show_block_nosql_data() {
@@ -96,6 +98,23 @@ namespace effcore\modules\develop {
       ];
     }
     return new block('', ['data-id' => 'tokens_registered'], [
+      $decorator
+    ]);
+  }
+
+  static function on_show_block_translations($page) {
+    $decorator = new decorator('table');
+    $decorator->id = 'translations_registered';
+    $decorator->result_attributes = ['data-is-compact' => 'true'];
+    $translations = translation::get_all_by_code();
+    ksort($translations);
+    foreach ($translations as $c_orig => $c_tran) {
+      $decorator->data[] = [
+        'orig' => ['value' => new text_simple($c_orig), 'title' => 'Original'   ],
+        'tran' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
+      ];
+    }
+    return new block('', ['data-id' => 'translations_registered'], [
       $decorator
     ]);
   }
