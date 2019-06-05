@@ -34,8 +34,16 @@ pages
     - block_nosql_data|page_part
         display
           check: page_args
-          where: action
-          match: %^select$%
+          where: type
+          match: %^events$%
         region: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_nosql_data
+    - block_events|page_part
+        display
+          check: page_args
+          where: type
+          match: %^events$%
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events

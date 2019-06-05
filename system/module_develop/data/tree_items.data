@@ -45,15 +45,6 @@ tree_items
     access
       roles
       - =: admins
-- events|tree_item
-    id: events
-    id_parent: develop
-    id_tree: main
-    title: Events
-    url: /develop/events
-    access
-      roles
-      - =: admins
 - tokens|tree_item
     id: tokens
     id_parent: develop
