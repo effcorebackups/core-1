@@ -47,3 +47,11 @@ pages
         region: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events
+    - block_file_types|page_part
+        display
+          check: page_args
+          where: type
+          match: %^file_types$%
+        region: content
+        type: code
+        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
