@@ -22,6 +22,9 @@ events
   - colors_preset|event
       for: colors_preset
       handler: \effcore\modules\page\events_form_colors_preset::on_init
+  - layouts|event
+      for: layouts
+      handler: \effcore\modules\page\events_form_layouts::on_init
   on_form_submit
   - colors|event
       for: colors
@@ -29,6 +32,9 @@ events
   - colors_preset|event
       for: colors_preset
       handler: \effcore\modules\page\events_form_colors_preset::on_submit
+  - layouts|event
+      for: layouts
+      handler: \effcore\modules\page\events_form_layouts::on_submit
   on_tab_before_build
   - decoration|event
       for: decoration
