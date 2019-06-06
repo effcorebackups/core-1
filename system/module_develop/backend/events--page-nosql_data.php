@@ -151,6 +151,7 @@ namespace effcore\modules\develop {
   static function on_show_block_translations($page) {
     $decorator = new decorator('table');
     $decorator->id = 'translations_registered';
+    $decorator->view_type = 'ul';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     $translations = translation::get_all_by_code();
     ksort($translations);
