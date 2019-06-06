@@ -1,0 +1,27 @@
+pages
+- layouts|page
+    id: layouts
+    title: Layouts
+    https: true
+    url: %^(?<base>/manage/layouts)$%
+    access
+      roles
+      - =: admins
+    parts
+    - menu_user|page_part
+        region: menu
+        type: link
+        source: trees/user/user_registered
+    - menu_main|page_part
+        region: menu
+        type: link
+        source: trees/core/main
+    - title|page_part
+        region: title
+        type: code
+        source: \effcore\modules\page\events_page::on_show_title
+    # ─────────────────────────────────────────────────────────────────────
+    - form_layouts|page_part
+        region: content
+        type: link
+        source: forms/page/layouts

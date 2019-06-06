@@ -1,0 +1,13 @@
+forms
+- layouts|form
+    attributes
+    - id: layouts
+    - method: post
+    - novalidate: true
+    children
+    - modeling|fieldset
+        title: Modeling
+    - button_save|button
+        title: save
+        attributes
+        - value: save
