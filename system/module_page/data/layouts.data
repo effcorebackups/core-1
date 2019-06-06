@@ -1,0 +1,7 @@
+layouts
+- simple|node
+    title: Simple
+    children
+    - header|area
+    - content|area
+    - footer|area
