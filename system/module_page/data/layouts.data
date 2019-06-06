@@ -1,5 +1,5 @@
 layouts
-- simple|node
+- simple|layout
     title: Simple
     children
     - header|area
