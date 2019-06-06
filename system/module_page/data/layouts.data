@@ -1,5 +1,6 @@
 layouts
 - simple|layout
+    id: simple
     title: Simple
     children
     - header|area

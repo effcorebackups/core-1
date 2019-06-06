@@ -11,3 +11,9 @@ tabs_items
     id_tab: decoration
     action_name: presets
     title: Presets
+- layouts_all|tabs_item
+    id: layouts_all
+    id_parent: null
+    id_tab: layouts
+    action_name: all
+    title: All

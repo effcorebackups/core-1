@@ -1,3 +1,5 @@
 tabs
 - decoration|tabs
     id: decoration
+- layouts|tabs
+    id: layouts

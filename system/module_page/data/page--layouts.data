@@ -3,7 +3,7 @@ pages
     id: layouts
     title: Layouts
     https: true
-    url: %^(?<base>/manage/layouts)$%
+    url: %^(?<base>/manage/layouts).*$%
     access
       roles
       - =: admins
@@ -20,6 +20,10 @@ pages
         region: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
+    - tabs|page_part
+        region: tabs
+        type: link
+        source: tabs/page/layouts
     # ─────────────────────────────────────────────────────────────────────
     - form_layouts|page_part
         region: content

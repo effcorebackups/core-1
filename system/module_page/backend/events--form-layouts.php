@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\layout;
           use \effcore\message;
           abstract class events_form_layouts {
 
