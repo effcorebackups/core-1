@@ -8,6 +8,7 @@ namespace effcore {
           class page extends node implements has_external_cache {
 
   public $id;
+  public $id_layout = 'simple';
   public $title;
   public $https;
   public $url;

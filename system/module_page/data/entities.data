@@ -44,6 +44,13 @@ entities
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
+    - id_layout
+        title: Layout ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        default: simple
     - title
         title: Title
         type: varchar
