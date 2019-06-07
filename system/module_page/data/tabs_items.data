@@ -15,5 +15,4 @@ tabs_items
     id: layouts_all
     id_parent: null
     id_tab: layouts
-    action_name: all
     title: All
