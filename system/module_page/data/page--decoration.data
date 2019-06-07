@@ -5,7 +5,7 @@ pages
     https: true
     url: %^(?<base>/manage/decoration)
 >>>>>>>>((/(?<type>colors|
->>>>>>>>>>>>>>>>>>>presets(/(?<id>.*)|)))|)$%
+>>>>>>>>>>>>>>>>>>>presets(/(?<id>[a-z0-9_]+)|)))|)$%
     access
       roles
       - =: admins
