@@ -6,3 +6,10 @@ layouts
     - header|area
     - content|area
     - footer|area
+- classic|layout
+    id: classic
+    title: Classic
+    children
+    - header|area
+    - content|area
+    - footer|area

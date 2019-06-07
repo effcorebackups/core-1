@@ -58,6 +58,7 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флаг
     - Checkboxes: Флажки
+    - Classic: Классический
     - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
     - Click to open the tab\: %%_title: Нажмите, чтобы открыть вкладку: %%_title
     - collapse: свернуть
@@ -270,6 +271,7 @@ translations
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
+    - Modeling: Моделирование
     - Module "%%_title" (%%_id) has been disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) has been enabled.: Модуль "%%_title" (%%_id) был включен.
     - Module "%%_title" (%%_id) has been installed.: Модуль "%%_title" (%%_id) был установлен.
@@ -396,6 +398,7 @@ translations
     - set: установка
     - Settings: Настройки
     - Shared params: Общие параметры
+    - Simple: Простой
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
     - State: Состояние
