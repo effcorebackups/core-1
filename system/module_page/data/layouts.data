@@ -3,18 +3,26 @@ layouts
     id: simple
     title: Simple
     children
-    - header|area
-        id: header
+    - menu|area
+        id: menu
+    - top|area
+        id: top
+    - title|area
+        id: title
+    - messages|area
+        id: messages
+    - tabs|area
+        id: tabs
     - content|area
         id: content
-    - footer|area
-        id: footer
 - classic|layout
     id: classic
     title: Classic
     children
-    - header|area
-        id: header
+    - menu|area
+        id: menu
+    - top|area
+        id: top
     - content|area
         type: table
         children
@@ -26,8 +34,14 @@ layouts
         - center_wrapper|area
             type: column
             children
-            - center|area
-                id: center
+            - title|area
+                id: title
+            - messages|area
+                id: messages
+            - tabs|area
+                id: tabs
+            - content|area
+                id: content
             - center_2x2|area
                 type: table
                 children

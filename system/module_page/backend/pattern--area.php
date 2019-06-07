@@ -15,7 +15,7 @@ namespace effcore {
   function render() {
     if ($this->type) $this->attribute_insert('data-type', $this->type);
                      $this->attribute_insert('data-id',   $this->id);
-    if ($this->id) $this->child_insert($this->id, 'id');
+    if ($this->id) $this->child_insert(new text_simple($this->id), 'id');
     return parent::render();
   }
 
