@@ -7,11 +7,15 @@
 namespace effcore {
           class area extends markup {
 
+  public $id;
+  public $title;
   public $tag_name = 'x-area';
-  public $type; # null | table | row | col
+  public $type; # null | table | row | column
 
   function render() {
     if ($this->type) $this->attribute_insert('data-type', $this->type);
+                     $this->attribute_insert('data-id',   $this->id);
+    if ($this->id) $this->child_insert($this->id, 'id');
     return parent::render();
   }
 

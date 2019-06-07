@@ -4,13 +4,64 @@ layouts
     title: Simple
     children
     - header|area
+        id: header
     - content|area
+        id: content
     - footer|area
+        id: footer
 - classic|layout
     id: classic
     title: Classic
     children
     - header|area
+        id: header
     - content|area
         type: table
+        children
+        - left|area
+            id: left
+            type: column
+            attributes
+            - style: width: 200px
+        - center_wrapper|area
+            type: column
+            children
+            - center|area
+                id: center
+            - center_2x2|area
+                type: table
+                children
+                - center_2x2_1|area
+                    id: center_2x2_1
+                    type: column
+                - center_2x2_2|area
+                    id: center_2x2_2
+                    type: column
+            - center_4x4|area
+                type: table
+                children
+                - center_4x4_row_1|area
+                    type: row
+                    children
+                    - center_4x4_1|area
+                        id: center_4x4_1
+                        type: column
+                    - center_4x4_2|area
+                        id: center_4x4_2
+                        type: column
+                - center_4x4_row_2|area
+                    type: row
+                    children
+                    - center_4x4_3|area
+                        id: center_4x4_3
+                        type: column
+                    - center_4x4_4|area
+                        id: center_4x4_4
+                        type: column
+        - right|area
+            id: right
+            type: column
+            attributes
+            - style: width: 200px
     - footer|area
+        id: footer
