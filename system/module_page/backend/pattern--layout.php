@@ -5,8 +5,9 @@
   ##################################################################
 
 namespace effcore {
-          class layout extends node {
+          class layout extends markup {
 
+  public $tag_name = 'content';
   public $id;
   public $title;
 

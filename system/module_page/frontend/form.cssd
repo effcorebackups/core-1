@@ -210,6 +210,15 @@
     margin: 27px 0 0 20px}
   form#instance_select_multiple x-selection {margin: 100px 0}
 
+  /* form layouts */
+
+  form#layouts fieldset[data-type='modeling'] x-fieldset-content {padding: 30px; min-height: 50px}
+  form#layouts fieldset[data-type='modeling'] x-area {
+    display: block;
+    margin: 1px;
+    min-height: 20px;
+    border: 1px dashed %%_color_main}
+
   /* IE adaptation */
 
   html[data-uagent^='msie'] input[type='checkbox'],

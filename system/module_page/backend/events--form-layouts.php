@@ -7,9 +7,15 @@
 namespace effcore\modules\page {
           use \effcore\layout;
           use \effcore\message;
+          use \effcore\page;
           abstract class events_form_layouts {
 
   static function on_init($form, $items) {
+    $id = page::get_current()->args_get('id');
+    if ($id) {
+      $layout = layout::select($id);
+      $items['modeling']->child_insert($layout, 'layout');
+    }
   }
 
   static function on_submit($form, $items) {

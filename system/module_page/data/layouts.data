@@ -12,4 +12,5 @@ layouts
     children
     - header|area
     - content|area
+        type: table
     - footer|area
