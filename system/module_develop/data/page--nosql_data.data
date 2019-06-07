@@ -15,19 +15,19 @@ pages
       - =: admins
     parts
     - menu_user|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/user/user_registered
     - menu_main|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/core/main
     - title|page_part
-        region: title
+        id_area: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     - tabs|page_part
-        region: tabs
+        id_area: tabs
         type: link
         source: tabs/develop/nosql_data
     # ─────────────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ pages
           check: page_args
           where: type
           match: %^trees/.*$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tree
     - block_events|page_part
@@ -44,7 +44,7 @@ pages
           check: page_args
           where: type
           match: %^events$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events
     - block_file_types|page_part
@@ -52,7 +52,7 @@ pages
           check: page_args
           where: type
           match: %^file_types$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
     - block_templates|page_part
@@ -60,7 +60,7 @@ pages
           check: page_args
           where: type
           match: %^templates$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_templates
     - block_tokens|page_part
@@ -68,7 +68,7 @@ pages
           check: page_args
           where: type
           match: %^tokens$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tokens
     - block_translations|page_part
@@ -76,6 +76,6 @@ pages
           check: page_args
           where: type
           match: %^translations$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\develop\events_page_nosql_data::on_show_block_translations

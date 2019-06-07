@@ -29,12 +29,12 @@ namespace effcore {
   function build() {
     event::start('on_page_before_build', $this->id, [&$this]);
     foreach ($this->parts as $c_row_id => $c_part) {
-      if (!$this->child_select(            $c_part->region))
-           $this->child_insert(new node(), $c_part->region);
-      $c_region = $this->child_select($c_part->region);
+      if (!$this->child_select(            $c_part->id_area))
+           $this->child_insert(new node(), $c_part->id_area);
+      $c_area = $this->child_select       ($c_part->id_area);
       $c_part_markup = $c_part->markup_get($this);
       if ($c_part_markup) {
-        $c_region->child_insert($c_part_markup, $c_row_id);
+        $c_area->child_insert($c_part_markup, $c_row_id);
         if ($c_part->type == 'link') {
           $this->used_dpaths[] = $c_part->source;}}}
     event::start('on_page_after_build', $this->id, [&$this]);
@@ -78,8 +78,8 @@ namespace effcore {
     $template->arg_set('head_icons',     $frontend->icons  );
     $template->arg_set('head_styles',    $frontend->styles );
     $template->arg_set('head_scripts',   $frontend->scripts);
-    foreach ($this->children_select() as $c_region => $c_parts) {
-      $template->arg_set($c_region, $c_parts);
+    foreach ($this->children_select() as $c_area => $c_parts) {
+      $template->arg_set($c_area, $c_parts);
     }
     if ($user_agent->name) $template->data->children['html']->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $template->data->children['html']->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));

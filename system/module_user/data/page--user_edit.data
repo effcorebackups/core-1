@@ -10,19 +10,19 @@ pages
       - =: registered
     parts
     - menu_user|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/user/user_registered
     - menu_main|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/core/main
     - title|page_part
-        region: title
+        id_area: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
     - form_instance_update|page_part
-        region: content
+        id_area: content
         type: link
         source: forms/storage/instance_update

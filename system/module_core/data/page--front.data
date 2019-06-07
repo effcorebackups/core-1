@@ -5,23 +5,23 @@ pages
     url: /
     parts
     - menu_user_registered|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/user/user_registered
     - menu_user_anonymous|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/user/user_anonymous
     - menu_main|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/core/main
     - title|page_part
-        region: title
+        id_area: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
     - welcome|page_part
-        region: content
+        id_area: content
         type: text
         source: Welcome to our site!

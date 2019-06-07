@@ -19,19 +19,19 @@ pages
       - =: admins
     parts
     - menu_user|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/user/user_registered
     - menu_main|page_part
-        region: menu
+        id_area: menu
         type: link
         source: trees/core/main
     - title|page_part
-        region: title
+        id_area: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     - tabs|page_part
-        region: tabs
+        id_area: tabs
         type: link
         source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
@@ -40,7 +40,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/form_elements$%
-        region: content
+        id_area: content
         type: link
         source: forms/demo/demo
     # ─────────────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/markup_static$%
-        region: content
+        id_area: content
         type: link
         source: blocks/demo/demo_markup_static
     - block_demo_markup_dynamic|page_part
@@ -59,7 +59,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/markup_dynamic$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_markup_dynamic
     # ─────────────────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/decorators_static$%
-        region: content
+        id_area: content
         type: link
         source: blocks/demo/demo_decorators_static
     - block_demo_decorators_dynamic|page_part
@@ -78,7 +78,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/decorators_dynamic$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
     # ─────────────────────────────────────────────────────────────────────
@@ -89,7 +89,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
-        region: content
+        id_area: content
         type: link
         source: blocks/demo/demo_tree_via_decorator
     - tree_demo_sql|page_part
@@ -97,7 +97,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\menu\events_page::on_show_block_tree_sql
         args
@@ -107,7 +107,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/trees(/.*|)$%
-        region: content
+        id_area: content
         type: link
         source: trees/demo/demo_nosql
     # ─────────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/selections$%
-        region: content
+        id_area: content
         type: copy
         source: selections/demo/demo_data_join
         properties
@@ -128,7 +128,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/selections$%
-        region: content
+        id_area: content
         type: copy
         source: selections/demo/demo_data_join
         properties
@@ -144,7 +144,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/selections$%
-        region: content
+        id_area: content
         type: link
         source: selections/demo/demo_types
     # ─────────────────────────────────────────────────────────────────────
@@ -155,7 +155,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/messages$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
     - demo_messages_description|page_part
@@ -163,7 +163,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/messages$%
-        region: content
+        id_area: content
         type: text
         source: All types of messages you can see above.
     # ─────────────────────────────────────────────────────────────────────
@@ -174,7 +174,7 @@ pages
           check: page_args
           where: type
           match: %^embedded/canvas$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
     - block_demo_diagrams|page_part
@@ -182,6 +182,6 @@ pages
           check: page_args
           where: type
           match: %^embedded/diagrams$%
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams

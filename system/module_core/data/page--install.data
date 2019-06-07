@@ -6,19 +6,19 @@ pages
     url: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
     parts
     - menu_languages|page_part
-        region: top
+        id_area: top
         type: code
         source: \effcore\modules\locales\events_page::on_show_block_menu_languages
     - block_system_info|page_part
-        region: top
+        id_area: top
         type: code
         source: \effcore\modules\core\events_page_info::on_show_block_system_info
     - title|page_part
-        region: title
+        id_area: title
         type: code
         source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
     - form_install|page_part
-        region: content
+        id_area: content
         type: link
         source: forms/core/install

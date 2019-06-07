@@ -7,7 +7,7 @@
 namespace effcore {
           class page_part extends node {
 
-  public $region = 'content';
+  public $id_area = 'content';
   public $display;
   public $type; # code | link | text | …
   public $source;

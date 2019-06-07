@@ -9,6 +9,6 @@ pages
       - =: registered
     parts
     - block_cron|page_part
-        region: content
+        id_area: content
         type: code
         source: \effcore\modules\core\events_page_cron::on_cron_run
