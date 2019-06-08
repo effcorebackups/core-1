@@ -5,6 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\area;
+          use \effcore\core;
           use \effcore\layout;
           use \effcore\message;
           use \effcore\page;
@@ -13,7 +15,9 @@ namespace effcore\modules\page {
   static function on_init($form, $items) {
     $id = page::get_current()->args_get('id');
     if ($id) {
-      $layout = layout::select($id);
+      $layout = core::deep_clone(layout::select($id));
+      foreach ($layout->children_select_recursive() as $c_child)
+        if ($c_child instanceof area) $c_child->is_managed = true;
       $items['modeling']->child_insert($layout, 'layout');
     }
   }
