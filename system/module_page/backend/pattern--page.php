@@ -28,6 +28,7 @@ namespace effcore {
 
   function build() {
     event::start('on_page_before_build', $this->id, [&$this]);
+    core::array_sort_by_weight($this->parts);
     foreach ($this->parts as $c_row_id => $c_part) {
       if (!$this->child_select(            $c_part->id_area))
            $this->child_insert(new node(), $c_part->id_area);
@@ -83,8 +84,9 @@ namespace effcore {
     if ($user_agent->name) $html->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $html->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
 
-    foreach ($this->children_select() as $c_area => $c_parts)
-      $template->arg_set                ($c_area,   $c_parts);
+    foreach ($this->children_select() as $c_id_area => $c_parts) {
+      $template->arg_set($c_id_area, $c_parts);
+    }
     $template->args['content'] = new text($template->args['content']->render());
     $template->arg_set('messages', message::markup_get());
     return $template->render();
