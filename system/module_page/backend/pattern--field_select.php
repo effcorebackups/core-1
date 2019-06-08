@@ -34,11 +34,11 @@ namespace effcore {
 
   function value_get() {
     $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node       &&
-          $c_item->tag_name == 'option' &&
-          $c_item->attribute_select('selected') == 'selected') {
-        return $c_item->attribute_select('value');
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node       &&
+          $c_child->tag_name == 'option' &&
+          $c_child->attribute_select('selected') == 'selected') {
+        return $c_child->attribute_select('value');
       }
     }
   }
@@ -46,11 +46,11 @@ namespace effcore {
   function value_set($value) {
     $this->value_set_initial($value);
     $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node       &&
-          $c_item->tag_name == 'option' &&
-          $c_item->attribute_select('value') == $value) {
-        $c_item->attribute_insert('selected', 'selected');
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node       &&
+          $c_child->tag_name == 'option' &&
+          $c_child->attribute_select('value') == $value) {
+        $c_child->attribute_insert('selected', 'selected');
       }
     }
   }
@@ -58,11 +58,11 @@ namespace effcore {
   function values_get() {
     $result = [];
     $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node       &&
-          $c_item->tag_name == 'option' &&
-          $c_item->attribute_select('selected') == 'selected') {
-        $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node       &&
+          $c_child->tag_name == 'option' &&
+          $c_child->attribute_select('selected') == 'selected') {
+        $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
       }
     }
     return $result;
@@ -71,12 +71,12 @@ namespace effcore {
   function values_get_allowed() {
     $result = [];
     $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node &&
-          $c_item->tag_name == 'option') {
-        if ($c_item->attribute_select('disabled') !== 'disabled' &&
-            $c_item->attribute_select('disabled') !== true) {
-          $result[$c_item->attribute_select('value')] = $c_item->child_select('content')->text_select();
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node &&
+          $c_child->tag_name == 'option') {
+        if ($c_child->attribute_select('disabled') !== 'disabled' &&
+            $c_child->attribute_select('disabled') !== true) {
+          $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
         }
       }
     }
@@ -85,12 +85,12 @@ namespace effcore {
 
   function values_set($values, $clear = true) {
     $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_item) {
-      if ($c_item instanceof node &&
-          $c_item->tag_name == 'option') {
-        if (core::in_array_string_compare($c_item->attribute_select('value'), $values))
-                        $c_item->attribute_insert('selected', 'selected');
-        elseif ($clear) $c_item->attribute_delete('selected');
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node &&
+          $c_child->tag_name == 'option') {
+        if (core::in_array_string_compare($c_child->attribute_select('value'), $values))
+                        $c_child->attribute_insert('selected', 'selected');
+        elseif ($clear) $c_child->attribute_delete('selected');
       }
     }
   }

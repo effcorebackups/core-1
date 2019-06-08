@@ -34,26 +34,26 @@ namespace effcore {
     }
 
   # plug external classes
-    foreach ($this->children_select_recursive() as $c_npath => $c_element) {
-      if ($c_element instanceof pluggable_class) {
+    foreach ($this->children_select_recursive() as $c_npath => $c_child) {
+      if ($c_child instanceof pluggable_class) {
         $c_parts = explode('/', $c_npath);
         $c_last_part = end($c_parts);
         $c_pointers = core::npath_get_pointers($this, $c_npath);
-        if ($c_element->is_exists_class())
-                   $c_pointers[$c_last_part] = $c_element->object_get();
+        if ($c_child->is_exists_class())
+                   $c_pointers[$c_last_part] = $c_child->object_get();
         else unset($c_pointers[$c_last_part]);
       }
     }
   # build all form elements
-    foreach ($this->children_select_recursive() as $c_element) {
-      if (is_object($c_element) && method_exists($c_element, 'build')) {
-        $c_element->build();
+    foreach ($this->children_select_recursive() as $c_child) {
+      if (is_object($c_child) && method_exists($c_child, 'build')) {
+        $c_child->build();
       }
     }
   # relate each item with it's form
-    foreach ($this->children_select_recursive() as $c_element) {
-      if (is_object($c_element) && method_exists($c_element, 'form_current_set')) {
-        $c_element->form_current_set($this);
+    foreach ($this->children_select_recursive() as $c_child) {
+      if (is_object($c_child) && method_exists($c_child, 'form_current_set')) {
+        $c_child->form_current_set($this);
       }
     }
 
@@ -125,13 +125,13 @@ namespace effcore {
   function form_items_update() {
     $this->items = [];
     $groups      = [];
-    foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_item) {
-      if ($c_item instanceof container)         $this->items[$c_npath                                                ] = $c_item;
-      if ($c_item instanceof button)            $this->items['~'.$c_item->value_get     ()                           ] = $c_item;
-      if ($c_item instanceof field_hidden)      $this->items['!'.$c_item->name_get      ()                           ] = $c_item;
-      if ($c_item instanceof field)             $groups     ['#'.$c_item->name_get      ()                         ][] = $c_item;
-      if ($c_item instanceof field_radiobutton) $groups     ['#'.$c_item->name_get      ().':'.$c_item->value_get()][] = $c_item;
-      if ($c_item instanceof group_mono)        $groups     ['*'.$c_item->name_get_first()                         ][] = $c_item;
+    foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+      if ($c_child instanceof container)         $this->items[$c_npath                                                  ] = $c_child;
+      if ($c_child instanceof button)            $this->items['~'.$c_child->value_get     ()                            ] = $c_child;
+      if ($c_child instanceof field_hidden)      $this->items['!'.$c_child->name_get      ()                            ] = $c_child;
+      if ($c_child instanceof field)             $groups     ['#'.$c_child->name_get      ()                          ][] = $c_child;
+      if ($c_child instanceof field_radiobutton) $groups     ['#'.$c_child->name_get      ().':'.$c_child->value_get()][] = $c_child;
+      if ($c_child instanceof group_mono)        $groups     ['*'.$c_child->name_get_first()                          ][] = $c_child;
     }
     foreach ($groups as $c_name => $c_group) {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
@@ -141,11 +141,11 @@ namespace effcore {
 
   function clicked_button_set() {
     $value = field::request_value_get('button', 0, $this->source_get());
-    foreach ($this->children_select_recursive() as $c_element) {
-      if ($c_element instanceof button        &&
-          $c_element->disabled_get() == false &&
-          $c_element->value_get()    == $value) {
-        $this->clicked_button = $c_element;
+    foreach ($this->children_select_recursive() as $c_child) {
+      if ($c_child instanceof button        &&
+          $c_child->disabled_get() == false &&
+          $c_child->value_get()    == $value) {
+        $this->clicked_button = $c_child;
         return true;
       }
     }

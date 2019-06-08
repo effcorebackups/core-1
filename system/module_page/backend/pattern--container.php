@@ -58,9 +58,9 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function has_error() {
-    foreach ($this->children_select_recursive() as $c_item) {
-      if ($c_item instanceof container &&
-          $c_item->has_error()) {
+    foreach ($this->children_select_recursive() as $c_child) {
+      if ($c_child instanceof container &&
+          $c_child->has_error()) {
         return true;
       }
     }

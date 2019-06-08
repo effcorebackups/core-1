@@ -59,28 +59,28 @@ namespace effcore {
     if ($element_attributes_name) return
         $element_attributes_name;
   # search in first child (instance of field_class)
-    else foreach ($this->children_select() as $c_item) {
-      if ($c_item instanceof $this->field_class) {
-        return $c_item->name_get($trim);
+    else foreach ($this->children_select() as $c_child) {
+      if ($c_child instanceof $this->field_class) {
+        return $c_child->name_get($trim);
       }
     }
   }
 
   function value_get() {
-    foreach ($this->children_select() as $c_item) {
-      if ($c_item instanceof $this->field_class &&
-          $c_item->checked_get() == true) {
-        return $c_item->value_get();
+    foreach ($this->children_select() as $c_child) {
+      if ($c_child instanceof $this->field_class &&
+          $c_child->checked_get() == true) {
+        return $c_child->value_get();
       }
     }
     return '';
   }
 
   function value_set($value) {
-    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) $c_item->checked_set(false);
-    foreach ($this->children_select() as $c_item) if ($c_item instanceof $this->field_class) {
-      if ($c_item->value_get() == $value) {
-        $c_item->checked_set(true);
+    foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) $c_child->checked_set(false);
+    foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) {
+      if ($c_child->value_get() == $value) {
+        $c_child->checked_set(true);
         return true;
       }
     }

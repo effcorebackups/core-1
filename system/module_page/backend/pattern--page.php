@@ -30,14 +30,13 @@ namespace effcore {
     event::start('on_page_before_build', $this->id, [&$this]);
     core::array_sort_by_weight($this->parts);
     foreach ($this->parts as $c_row_id => $c_part) {
-      if (!$this->child_select(            $c_part->id_area))
-           $this->child_insert(new node(), $c_part->id_area);
-      $c_area = $this->child_select       ($c_part->id_area);
       $c_part_markup = $c_part->markup_get($this);
       if ($c_part_markup) {
+        if (     !$this->child_select(            $c_part->id_area))
+                  $this->child_insert(new node(), $c_part->id_area);
+        $c_area = $this->child_select(            $c_part->id_area);
         $c_area->child_insert($c_part_markup, $c_row_id);
-        if ($c_part->type == 'link') {
-          $this->used_dpaths[] = $c_part->source;}}}
+        if ($c_part->type == 'link') $this->used_dpaths[] = $c_part->source;}}
     event::start('on_page_after_build', $this->id, [&$this]);
   }
 
@@ -69,7 +68,6 @@ namespace effcore {
     event::start('on_page_before_render', $this->id, [&$this, &$template]);
     $frontend = frontend::markup_get($this->used_dpaths);
     $template = template::make_new('page');
-    $layout = layout::select($this->id_layout);
 
     $html = $template->target_get('html');
     $html->attribute_insert('lang', language::code_get_current());
@@ -84,11 +82,23 @@ namespace effcore {
     if ($user_agent->name) $html->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $html->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
 
-    foreach ($this->children_select() as $c_id_area => $c_parts) {
-      $template->arg_set($c_id_area, $c_parts);
+    $p_cnt = null;
+    $p_msg = null;
+    $layout = layout::select($this->id_layout);
+    foreach ($layout->children_select_recursive() as $c_child) {
+      if ($c_child instanceof area && isset($c_child->id)) {
+        $c_markup = $this->child_select($c_child->id);
+        if ($c_child->id == 'content' ) $p_cnt = $c_child;
+        if ($c_child->id == 'messages') $p_msg = $c_child;
+        if ($c_markup && $c_markup->children_select_count()) {
+          $c_child->children = $c_markup->children;
+        }
+      }
     }
-    $template->args['content'] = new text($template->args['content']->render());
-    $template->arg_set('messages', message::markup_get());
+
+    if ($p_cnt) $p_cnt->children = [new node([], $p_cnt->render     ())];
+    if ($p_msg) $p_msg->children = [new node([], message::markup_get())];
+    $template->arg_set('body', $layout->render());
     return $template->render();
   }
 

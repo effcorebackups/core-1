@@ -40,8 +40,8 @@ namespace effcore {
 
   function render_top_items() {
     $rendered = '';
-    foreach ($this->children_select() as $c_item) {
-      $c_clone = clone $c_item;
+    foreach ($this->children_select() as $c_child) {
+      $c_clone = clone $c_child;
       $c_clone->children = [];
       $rendered.= $c_clone->render();
     }
