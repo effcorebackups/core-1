@@ -7,7 +7,6 @@
 namespace effcore {
           class area extends markup {
 
-  public $tag_name = 'x-area';
   public $id;
   public $title;
   public $type; # null | table | row | column

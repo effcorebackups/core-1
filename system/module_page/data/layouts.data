@@ -4,6 +4,7 @@ layouts
     title: Simple
     children
     - menu|area
+        tag_name: nav
         id: menu
     - top|area
         id: top
