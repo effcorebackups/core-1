@@ -17,8 +17,9 @@ namespace effcore\modules\page {
     if ($id) {
       $layout = core::deep_clone(layout::select($id));
       foreach ($layout->children_select_recursive() as $c_child)
-        if ($c_child instanceof area)
+        if ($c_child instanceof area) {
             $c_child->is_managed = true;
+            $c_child->tag_name = 'div';}
       $items['modeling']->child_insert($layout, 'layout');
     }
   }
