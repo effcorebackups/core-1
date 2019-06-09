@@ -32,10 +32,10 @@ namespace effcore {
     foreach ($this->parts as $c_row_id => $c_part) {
       $c_part_markup = $c_part->markup_get($this);
       if ($c_part_markup) {
-        if (     !$this->child_select(            $c_part->id_area))
-                  $this->child_insert(new node(), $c_part->id_area);
-        $c_area = $this->child_select(            $c_part->id_area);
-        $c_area->child_insert($c_part_markup, $c_row_id);
+        if (!$this->child_select(            $c_part->id_area))
+             $this->child_insert(new node(), $c_part->id_area);
+        $c_area_markup = $this->child_select($c_part->id_area);
+        $c_area_markup->child_insert($c_part_markup, $c_row_id);
         if ($c_part->type == 'link') $this->used_dpaths[] = $c_part->source;}}
     event::start('on_page_after_build', $this->id, [&$this]);
   }
@@ -86,18 +86,19 @@ namespace effcore {
     $layout = core::deep_clone(layout::select($this->id_layout));
     foreach ($layout->children_select_recursive() as $c_area) {
       if ($c_area instanceof area && isset($c_area->id)) {
-        $c_markup = $this->child_select($c_area->id);
         $p_areas[$c_area->id] = $c_area;
-        if ($c_markup && $c_markup->children_select_count()) {
+        $c_area_markup = $this->child_select($c_area->id);
+        if ($c_area_markup && $c_area_markup->children_select_count()) {
           $c_area->children_update(
-            $c_markup->children_select()
+            $c_area_markup->children_select()
           );
         }
       }
     }
 
-    $p_areas['content' ]->children_update( [new text_simple($p_areas['content']  ->render())] );
-    $p_areas['messages']->children_update( [new text_simple(message::markup_get()->render())] );
+    /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple($p_areas['content']  ->render())] );
+    foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple($c_area              ->render())] );
+    /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple(message::markup_get()->render())] );
     $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
