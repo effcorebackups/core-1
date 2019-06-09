@@ -82,24 +82,24 @@ namespace effcore {
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
 
-    $p_cnt = null;
-    $p_msg = null;
+    $p_area_contents = null;
+    $p_area_messages = null;
     $layout = core::deep_clone(layout::select($this->id_layout));
-    foreach ($layout->children_select_recursive() as $c_child) {
-      if ($c_child instanceof area && isset($c_child->id)) {
-        $c_markup = $this->child_select($c_child->id);
-        if ($c_child->id == 'content' ) $p_cnt = $c_child;
-        if ($c_child->id == 'messages') $p_msg = $c_child;
+    foreach ($layout->children_select_recursive() as $c_area) {
+      if ($c_area instanceof area && isset($c_area->id)) {
+        $c_markup = $this->child_select($c_area->id);
+        if ($c_area->id == 'content' ) $p_area_contents = $c_area;
+        if ($c_area->id == 'messages') $p_area_messages = $c_area;
         if ($c_markup && $c_markup->children_select_count()) {
-          $c_child->children_update(
+          $c_area->children_update(
             $c_markup->children_select()
           );
         }
       }
     }
 
-    if ($p_cnt) $p_cnt->children_update([new text_simple($p_cnt               ->render())]);
-    if ($p_msg) $p_msg->children_update([new text_simple(message::markup_get()->render())]);
+    if ($p_area_contents) $p_area_contents->children_update([new text_simple($p_area_contents     ->render())]);
+    if ($p_area_messages) $p_area_messages->children_update([new text_simple(message::markup_get()->render())]);
     $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
