@@ -20,7 +20,7 @@ namespace effcore {
     $id = $this->id_get();
     if (!$id) {
       message::insert('Form ID is required!', 'warning');
-      $this->children_delete_all();
+      $this->children_delete();
       return;
     }
     $this->validation_id = static::validation_id_get($id, $this->source_get());

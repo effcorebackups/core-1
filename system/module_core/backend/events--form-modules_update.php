@@ -18,7 +18,7 @@ namespace effcore\modules\core {
 
   static function on_init($form, $items) {
     $info = $form->child_select('info');
-    $info->children_delete_all();
+    $info->children_delete();
     $modules = module::get_all();
     core::array_sort_by_title($modules);
     foreach ($modules as $c_module) {

@@ -71,7 +71,7 @@ namespace effcore\modules\core {
         }
       # update caches and this form
         cache::update_global();
-        $form->child_select('info')->children_delete_all();
+        $form->child_select('info')->children_delete();
         static::on_init($form, $items);
       # show report
         $installed_by_boot = core::boot_select('installed');

@@ -47,6 +47,14 @@ namespace effcore {
     return $result;
   }
 
+  function children_update($new_children) {
+    $this->children = $new_children;
+  }
+
+  function children_delete() {
+    $this->children = [];
+  }
+
   function child_select($id) {
     return $this->children[$id] ?? null;
   }
@@ -104,10 +112,6 @@ namespace effcore {
 
   function child_delete($id) {
     unset($this->children[$id]);
-  }
-
-  function children_delete_all() {
-    $this->children = [];
   }
 
   ##############

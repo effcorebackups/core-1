@@ -149,7 +149,7 @@ namespace effcore\modules\core {
         }
       # update caches and this form
         cache::update_global();
-        $form->child_select('info')->children_delete_all();
+        $form->child_select('info')->children_delete();
         static::on_init($form, $items);
       # show report
         $enabled_by_boot = core::boot_select('enabled');
@@ -180,7 +180,7 @@ namespace effcore\modules\core {
       case 'refresh':
       # update caches and this form
         cache::update_global();
-        $form->child_select('info')->children_delete_all();
+        $form->child_select('info')->children_delete();
         static::on_init($form, $items);
       # show report
         message::insert(

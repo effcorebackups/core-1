@@ -24,7 +24,7 @@ namespace effcore {
 
   function build() {
     $result = new node();
-    $this->children_delete_all();
+    $this->children_delete();
     $this->attribute_insert('data-view-type', $this->view_type);
     $this->attribute_insert('data-id', $this->id);
     event::start('on_decorator_before_build', $this->id, [&$this]);

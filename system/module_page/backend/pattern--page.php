@@ -91,13 +91,15 @@ namespace effcore {
         if ($c_child->id == 'content' ) $p_cnt = $c_child;
         if ($c_child->id == 'messages') $p_msg = $c_child;
         if ($c_markup && $c_markup->children_select_count()) {
-          $c_child->children = $c_markup->children;
+          $c_child->children_update(
+            $c_markup->children_select()
+          );
         }
       }
     }
 
-    if ($p_cnt) $p_cnt->children = [new node([], $p_cnt->render     ())];
-    if ($p_msg) $p_msg->children = [new node([], message::markup_get())];
+    if ($p_cnt) $p_cnt->children_update([new text_simple($p_cnt               ->render())]);
+    if ($p_msg) $p_msg->children_update([new text_simple(message::markup_get()->render())]);
     $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
