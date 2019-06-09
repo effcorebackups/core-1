@@ -1,5 +1,5 @@
 
-  x-languages {display: block}
+  x-languages {display: block; margin: 15px 0}
   x-language {
     display: inline-block;
     margin-right: 10px;

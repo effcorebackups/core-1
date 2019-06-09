@@ -170,8 +170,7 @@
   x-field[data-type='checkbox-color'] input {
     margin: 0 10px 0 0;
     border-radius: 5px;
-    border-width: 1px;
-  }
+    border-width: 1px}
 
   /* palette */
 
@@ -212,25 +211,13 @@
 
   /* form layouts */
 
-  x-area                     {display: block; box-sizing: border-box; vertical-align: top}
-  x-area[data-type='table' ] {display: table; width: 100%}
-  x-area[data-type='column'] {display: table-cell}
-  x-area[data-type='row'   ] {display: table-row}
-
-  form#layouts fieldset[data-type='modeling'] x-area {
-    margin: 5px 0;
-    padding: 5px;
-    min-width: 20px;
-    min-height: 20px;
-    text-align: center;
-    border: 3px solid %%_color_main}
-  form#layouts fieldset[data-type='modeling'] x-area[data-type='table' ] {border: 3px solid %%_color_ok;                 padding: 0}
-  form#layouts fieldset[data-type='modeling'] x-area[data-type='column'] {border: 3px solid %%_color_warning; margin: 0}
-  form#layouts fieldset[data-type='modeling'] x-area[data-type='row'   ] {                                    margin: 0; padding: 0}
-  form#layouts fieldset[data-type='modeling'] x-area[data-type='column'] > *:first-child {margin-top:    0}
-  form#layouts fieldset[data-type='modeling'] x-area[data-type='column'] > *:last-child  {margin-bottom: 0}
-
   form#layouts fieldset[data-type='modeling'] x-fieldset-content {padding: 30px; min-height: 50px}
+  form#layouts fieldset[data-type='modeling'] *[data-area-id]            {margin: 5px 0; padding: 5px; border: 3px solid %%_color_main; text-align: center}
+  form#layouts fieldset[data-type='modeling'] *[data-area-type='table' ] {margin: 5px 0; padding:   0; border: 3px solid %%_color_ok}
+  form#layouts fieldset[data-type='modeling'] *[data-area-type='row'   ] {margin:     0; padding:   0; border: none}
+  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
+  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] > *:first-child {margin-top:    0}
+  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
 
   /* IE adaptation */
 

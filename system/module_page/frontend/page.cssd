@@ -10,11 +10,17 @@
 
   /* page sizes */
 
-  nav[data-type='menu'] {display: block; max-width: 800px; margin: 0 auto 18px auto}
-  nav[data-type='menu']::after {content: ''; clear: both; display: block}
+  content {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto 100px auto}
 
-  x-top  {display: block; max-width: 800px; margin: 18px auto 0 auto}
-  x-body {display: block; max-width: 800px; margin: 0 auto 70px auto; min-height: 200px}
+  *[data-area-id] {display: block; vertical-align: top}
+  *[data-area-id]:empty {display: none}
+  *[data-area-id]::after {content: ''; clear: both; display: block}
+  *[data-area-type='table' ] {display: table; width: 100%; box-sizing: border-box}
+  *[data-area-type='column'] {display: table-cell}
+  *[data-area-type='row'   ] {display: table-row}
 
   /* headers */
 

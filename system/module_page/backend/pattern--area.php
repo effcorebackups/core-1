@@ -13,8 +13,8 @@ namespace effcore {
   public $is_managed = false;
 
   function render() {
-    if ($this->type) $this->attribute_insert('data-type', $this->type);
-    if ($this->id)   $this->attribute_insert('data-id',   $this->id);
+    if ($this->type) $this->attribute_insert('data-area-type', $this->type);
+    if ($this->id)   $this->attribute_insert('data-area-id',   $this->id);
     if ($this->is_managed &&
         $this->id) $this->child_insert(new text_simple($this->id), 'id');
     return parent::render();
