@@ -84,7 +84,7 @@ namespace effcore {
 
     $p_cnt = null;
     $p_msg = null;
-    $layout = layout::select($this->id_layout);
+    $layout = core::deep_clone(layout::select($this->id_layout));
     foreach ($layout->children_select_recursive() as $c_child) {
       if ($c_child instanceof area && isset($c_child->id)) {
         $c_markup = $this->child_select($c_child->id);
