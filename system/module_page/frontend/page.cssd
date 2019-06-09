@@ -1,19 +1,17 @@
 
   body {
-    margin: 0;
-    padding: 0 40px;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 30px 100px 30px;
+    box-sizing: border-box;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
     color: %%_color_text;
     background: %%_color_page}
 
-  /* page sizes */
-
-  content {
-    display: block;
-    max-width: 800px;
-    margin: 0 auto 100px auto}
+  /* page areas */
 
   *[data-area-id] {display: block; vertical-align: top}
   *[data-area-id]:empty {display: none}

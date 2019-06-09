@@ -1,5 +1,6 @@
 layouts
 - simple|layout
+    template: children
     id: simple
     title: Simple
     children
