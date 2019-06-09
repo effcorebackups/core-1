@@ -2,6 +2,10 @@ templates
 # ─────────────────────────────────────────────────────────────────────
 # type: text
 # ─────────────────────────────────────────────────────────────────────
+- children
+    name: children
+    type: text
+    data: %%_children
 - markup_html
     name: markup_html
     type: text
