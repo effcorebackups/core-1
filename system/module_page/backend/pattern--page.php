@@ -69,18 +69,18 @@ namespace effcore {
     $frontend = frontend::markup_get($this->used_dpaths);
     $template = template::make_new('page');
 
-    $html = $template->target_get('html');
-    $html->attribute_insert('lang', language::code_get_current());
-    $html->attribute_insert('dir', $this->text_direction);
-    $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
+                           $html = $template->target_get('html');
+                           $html->attribute_insert('lang', language::code_get_current());
+                           $html->attribute_insert('dir', $this->text_direction);
+                           $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
+    if ($user_agent->name) $html->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
+    if ($user_agent->core) $html->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
     $template->arg_set('charset',      $this    ->charset);
     $template->arg_set('head_icons',   $frontend->icons  );
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
-    if ($user_agent->name) $html->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
-    if ($user_agent->core) $html->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
 
     $p_cnt = null;
     $p_msg = null;
@@ -98,7 +98,7 @@ namespace effcore {
 
     if ($p_cnt) $p_cnt->children = [new node([], $p_cnt->render     ())];
     if ($p_msg) $p_msg->children = [new node([], message::markup_get())];
-    $template->arg_set('body', $layout->render());
+    $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
 

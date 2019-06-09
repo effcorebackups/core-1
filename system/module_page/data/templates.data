@@ -58,7 +58,8 @@ templates
     pointers
     - html: html
     - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
-    - head_title: html/children/head/children/title/children/content/text
+    - head: html/children/head
+    - head_title: html/children/head/children/title
     - head_title_text: html/children/head/children/title/children/content/text
     - head_icons: html/children/head/children/icons
     - head_styles: html/children/head/children/styles
