@@ -5,11 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class layout extends markup {
+          class layout extends node {
 
-  public $tag_name = 'content';
   public $id;
   public $title;
+
+  function render_self() {
+    return '';
+  }
 
   ###########################
   ### static declarations ###
