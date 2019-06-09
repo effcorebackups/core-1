@@ -82,14 +82,12 @@ namespace effcore {
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
 
-    $p_area_contents = null;
-    $p_area_messages = null;
+    $p_areas = [];
     $layout = core::deep_clone(layout::select($this->id_layout));
     foreach ($layout->children_select_recursive() as $c_area) {
       if ($c_area instanceof area && isset($c_area->id)) {
         $c_markup = $this->child_select($c_area->id);
-        if ($c_area->id == 'content' ) $p_area_contents = $c_area;
-        if ($c_area->id == 'messages') $p_area_messages = $c_area;
+        $p_areas[$c_area->id] = $c_area;
         if ($c_markup && $c_markup->children_select_count()) {
           $c_area->children_update(
             $c_markup->children_select()
@@ -98,8 +96,8 @@ namespace effcore {
       }
     }
 
-    if ($p_area_contents) $p_area_contents->children_update([new text_simple($p_area_contents     ->render())]);
-    if ($p_area_messages) $p_area_messages->children_update([new text_simple(message::markup_get()->render())]);
+    $p_areas['content' ]->children_update( [new text_simple($p_areas['content']  ->render())] );
+    $p_areas['messages']->children_update( [new text_simple(message::markup_get()->render())] );
     $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
