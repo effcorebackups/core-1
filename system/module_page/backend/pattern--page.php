@@ -96,9 +96,9 @@ namespace effcore {
       }
     }
 
-    /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple($p_areas['content']  ->render())] );
-    foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple($c_area              ->render())] );
-    /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple(message::markup_get()->render())] );
+    /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple( (new node([], $p_areas['content']->children_select()))->render() )] );
+    foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple( (new node([], $c_area            ->children_select()))->render() )] );
+    /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple( (new node([], message::markup_get()                 ))->render() )] );
     $template->target_get('body')->child_insert($layout, 'layout');
     return $template->render();
   }
