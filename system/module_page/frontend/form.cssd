@@ -209,15 +209,15 @@
     margin: 27px 0 0 20px}
   form#instance_select_multiple x-selection {margin: 100px 0}
 
-  /* form layouts */
+  /* form layout */
 
-  form#layouts fieldset[data-type='modeling'] x-fieldset-content {padding: 30px; min-height: 50px}
-  form#layouts fieldset[data-type='modeling'] *[data-area-id]            {margin: 5px 0; padding: 5px; border: 3px solid %%_color_main; text-align: center}
-  form#layouts fieldset[data-type='modeling'] *[data-area-type='table' ] {margin: 5px 0; padding:   0; border: 3px solid %%_color_ok}
-  form#layouts fieldset[data-type='modeling'] *[data-area-type='row'   ] {margin:     0; padding:   0; border: none}
-  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
-  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] > *:first-child {margin-top:    0}
-  form#layouts fieldset[data-type='modeling'] *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
+  form#layout x-layout {display: block; min-height: 50px; margin: 50px 0}
+  form#layout *[data-area-id]            {margin: 5px 0; padding: 5px; border: 3px solid %%_color_main; text-align: center}
+  form#layout *[data-area-type='table' ] {margin: 5px 0; padding:   0; border: 3px solid %%_color_ok}
+  form#layout *[data-area-type='row'   ] {margin:     0; padding:   0; border: none}
+  form#layout *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
+  form#layout *[data-area-type='column'] > *:first-child {margin-top:    0}
+  form#layout *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
 
   /* IE adaptation */
 

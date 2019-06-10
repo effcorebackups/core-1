@@ -1,14 +1,12 @@
 forms
-- layouts|form
+- layout|form
     attributes
-    - id: layouts
+    - id: layout
     - method: post
     - novalidate: true
     children
-    - modeling|fieldset
-        title: Modeling
-        attributes
-        - data-type: modeling
+    - manage|markup
+        tag_name: x-layout
     - button_save|button
         title: save
         attributes

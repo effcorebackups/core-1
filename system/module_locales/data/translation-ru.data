@@ -271,7 +271,6 @@ translations
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
-    - Modeling: Моделирование
     - Module "%%_title" (%%_id) has been disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) has been enabled.: Модуль "%%_title" (%%_id) был включен.
     - Module "%%_title" (%%_id) has been installed.: Модуль "%%_title" (%%_id) был установлен.

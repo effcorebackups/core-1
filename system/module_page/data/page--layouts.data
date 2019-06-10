@@ -25,7 +25,7 @@ pages
         type: link
         source: tabs/page/layouts
     # ─────────────────────────────────────────────────────────────────────
-    - form_layouts|page_part
+    - form_layout|page_part
         id_area: content
         type: link
-        source: forms/page/layouts
+        source: forms/page/layout

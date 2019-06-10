@@ -10,7 +10,7 @@ namespace effcore\modules\page {
           use \effcore\layout;
           use \effcore\message;
           use \effcore\page;
-          abstract class events_form_layouts {
+          abstract class events_form_layout {
 
   static function on_init($form, $items) {
     $id = page::get_current()->args_get('id');
@@ -20,7 +20,7 @@ namespace effcore\modules\page {
         if ($c_child instanceof area) {
             $c_child->is_managed = true;
             $c_child->tag_name = 'div';}
-      $items['modeling']->child_insert($layout, 'layout');
+      $form->child_select('manage')->child_insert($layout, 'current');
     }
   }
 
