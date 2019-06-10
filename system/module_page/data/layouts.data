@@ -81,3 +81,66 @@ layouts
             - style: width: 200px
     - footer|area
         id: footer
+- grid_2x5|layout
+    id: grid_2x5
+    title: Grid 2x5
+    children
+    - menu|area
+        id: menu
+        tag_name: nav
+    - top|area
+        id: top
+    - title|area
+        id: title
+    - messages|area
+        id: messages
+    - tabs|area
+        id: tabs
+    - grid_2x5|area
+        type: table
+        children
+        - row_1|area
+            type: row
+            children
+            - column_1_1|area
+                id: column_1_1
+                type: column
+            - column_1_2|area
+                id: column_1_2
+                type: column
+        - row_2|area
+            type: row
+            children
+            - column_2_1|area
+                id: column_2_1
+                type: column
+            - column_2_2|area
+                id: column_2_2
+                type: column
+        - row_3|area
+            type: row
+            children
+            - column_3_1|area
+                id: column_3_1
+                type: column
+            - column_3_2|area
+                id: column_3_2
+                type: column
+        - row_4|area
+            type: row
+            children
+            - column_4_1|area
+                id: column_4_1
+                type: column
+            - column_4_2|area
+                id: column_4_2
+                type: column
+        - row_5|area
+            type: row
+            children
+            - column_5_1|area
+                id: column_5_1
+                type: column
+            - column_5_2|area
+                id: column_5_2
+                type: column
