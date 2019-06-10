@@ -146,3 +146,83 @@ layouts
                 type: column
     - footer|area
         id: footer
+- grid_3x5|layout
+    id: grid_3x5
+    title: Grid 3x5
+    children
+    - menu|area
+        id: menu
+        tag_name: nav
+    - top|area
+        id: top
+    - title|area
+        id: title
+    - messages|area
+        id: messages
+    - tabs|area
+        id: tabs
+    - grid_3x5|area
+        type: table
+        children
+        - row_1|area
+            type: row
+            children
+            - col_1_1|area
+                id: col_1_1
+                type: column
+            - col_1_2|area
+                id: col_1_2
+                type: column
+            - col_1_3|area
+                id: col_1_3
+                type: column
+        - row_2|area
+            type: row
+            children
+            - col_2_1|area
+                id: col_2_1
+                type: column
+            - col_2_2|area
+                id: col_2_2
+                type: column
+            - col_2_3|area
+                id: col_2_3
+                type: column
+        - row_3|area
+            type: row
+            children
+            - col_3_1|area
+                id: col_3_1
+                type: column
+            - col_3_2|area
+                id: col_3_2
+                type: column
+            - col_3_3|area
+                id: col_3_3
+                type: column
+        - row_4|area
+            type: row
+            children
+            - col_4_1|area
+                id: col_4_1
+                type: column
+            - col_4_2|area
+                id: col_4_2
+                type: column
+            - col_4_3|area
+                id: col_4_3
+                type: column
+        - row_5|area
+            type: row
+            children
+            - col_5_1|area
+                id: col_5_1
+                type: column
+            - col_5_2|area
+                id: col_5_2
+                type: column
+            - col_5_3|area
+                id: col_5_3
+                type: column
+    - footer|area
+        id: footer
