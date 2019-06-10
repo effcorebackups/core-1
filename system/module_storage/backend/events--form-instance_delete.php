@@ -27,7 +27,7 @@ namespace effcore\modules\storage {
           count($id_values)) {
         $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($form->_instance->select()) {
-          if (!empty($instance->is_embed)) core::send_header_and_exit('access_forbidden');
+          if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
           $question = new markup('p', [], new text('Delete item of type "%%_name" with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => $instance_id]));
           $items['info']->child_insert($question, 'question');
         } else core::send_header_and_exit('page_not_found');
