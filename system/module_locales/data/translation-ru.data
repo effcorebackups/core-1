@@ -194,6 +194,10 @@ translations
     - go to front page: перейти на главную страницу
     - go to page #%%_number: перейти на страницу №%%_number
     - go to page %%_link: перейти на страницу %%_link
+    - Grid 2x5: Сетка 2x5
+    - Grid 3x5: Сетка 3x5
+    - Grid 4x5: Сетка 4x5
+    - Grid 5x5: Сетка 5x5
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Handler: Обработчик
     - Headers: Заголовки

@@ -44,35 +44,35 @@ layouts
                 id: tabs
             - content|area
                 id: content
-            - center_2x2|area
+            - grid_2x2|area
                 type: table
                 children
-                - center_2x2_1|area
-                    id: center_2x2_1
+                - col_1_1|area
+                    id: grid_2x2_col_1_1
                     type: column
-                - center_2x2_2|area
-                    id: center_2x2_2
+                - col_1_2|area
+                    id: grid_2x2_col_1_2
                     type: column
-            - center_4x4|area
+            - grid_4x4|area
                 type: table
                 children
-                - center_4x4_row_1|area
+                - row_1|area
                     type: row
                     children
-                    - center_4x4_1|area
-                        id: center_4x4_1
+                    - col_1_1|area
+                        id: grid_4x4_col_1_1
                         type: column
-                    - center_4x4_2|area
-                        id: center_4x4_2
+                    - col_1_2|area
+                        id: grid_4x4_col_1_2
                         type: column
-                - center_4x4_row_2|area
+                - row_2|area
                     type: row
                     children
-                    - center_4x4_3|area
-                        id: center_4x4_3
+                    - col_2_1|area
+                        id: grid_4x4_col_2_1
                         type: column
-                    - center_4x4_4|area
-                        id: center_4x4_4
+                    - col_2_2|area
+                        id: grid_4x4_col_2_2
                         type: column
         - right|area
             id: right
@@ -102,45 +102,47 @@ layouts
         - row_1|area
             type: row
             children
-            - column_1_1|area
-                id: column_1_1
+            - col_1_1|area
+                id: col_1_1
                 type: column
-            - column_1_2|area
-                id: column_1_2
+            - col_1_2|area
+                id: col_1_2
                 type: column
         - row_2|area
             type: row
             children
-            - column_2_1|area
-                id: column_2_1
+            - col_2_1|area
+                id: col_2_1
                 type: column
-            - column_2_2|area
-                id: column_2_2
+            - col_2_2|area
+                id: col_2_2
                 type: column
         - row_3|area
             type: row
             children
-            - column_3_1|area
-                id: column_3_1
+            - col_3_1|area
+                id: col_3_1
                 type: column
-            - column_3_2|area
-                id: column_3_2
+            - col_3_2|area
+                id: col_3_2
                 type: column
         - row_4|area
             type: row
             children
-            - column_4_1|area
-                id: column_4_1
+            - col_4_1|area
+                id: col_4_1
                 type: column
-            - column_4_2|area
-                id: column_4_2
+            - col_4_2|area
+                id: col_4_2
                 type: column
         - row_5|area
             type: row
             children
-            - column_5_1|area
-                id: column_5_1
+            - col_5_1|area
+                id: col_5_1
                 type: column
-            - column_5_2|area
-                id: column_5_2
+            - col_5_2|area
+                id: col_5_2
                 type: column
+    - footer|area
+        id: footer
