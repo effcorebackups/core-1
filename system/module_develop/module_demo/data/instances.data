@@ -79,6 +79,7 @@ instances
     values
     - id: about
     - title: About
+    - url: /about
     - is_https: 0
     - access: null
 # ─────────────────────────────────────────────────────────────────────
