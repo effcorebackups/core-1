@@ -20,7 +20,7 @@ namespace effcore\modules\page {
         if ($c_child instanceof area) {
             $c_child->managing_is_on = true;
             $c_child->tag_name = 'div';}
-      $form->child_select('layout_manager')->child_insert($layout, 'current');
+      $form->child_select('layout_manager')->child_insert($layout);
     }
   }
 

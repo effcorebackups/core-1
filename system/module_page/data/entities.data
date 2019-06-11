@@ -41,6 +41,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_text
+        field_properties
+        - weight: 90
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
         - disabled: true
@@ -59,6 +61,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_text
+        field_properties
+        - weight: 80
     - is_https
         title: HTTPS
         type: boolean
@@ -74,6 +78,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_url
+        field_properties
+        - weight: 70
     - lang_code
         title: Language
         type: varchar

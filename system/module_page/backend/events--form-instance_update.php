@@ -5,6 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\area;
+          use \effcore\core;
+          use \effcore\layout;
+          use \effcore\markup;
           use \effcore\page;
           abstract class events_form_instance_update {
 
@@ -12,6 +16,14 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
+      $layout = core::deep_clone(layout::select($form->_instance->id_layout));
+      foreach ($layout->children_select_recursive() as $c_child)
+        if ($c_child instanceof area) {
+            $c_child->managing_is_on = true;
+            $c_child->tag_name = 'div';}
+      $form->child_insert_after(
+        new markup('x-layout-manager', [], $layout), 'fields', 'layout_manager'
+      );
     }
   }
 
