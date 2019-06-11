@@ -49,22 +49,22 @@ namespace effcore\modules\develop {
       $tree = clone tree::select($id);
       $tree->build();
       $tree_items = $tree->children_select_recursive();
-      $tree_managed_id = 'managed-'.$id;
-      $tree_managed = tree::insert($tree->title ?? '', $tree_managed_id);
-      $tree_managed->managed_mode = 'simple';
-      $tree_managed->title_state = 'cutted';
+      $tree_managing_id = 'managed-'.$id;
+      $tree_managing = tree::insert($tree->title ?? '', $tree_managing_id);
+      $tree_managing->managing_mode = 'simple';
+      $tree_managing->title_state = 'cutted';
       foreach ($tree_items as $c_item) {
         $c_tree_item = tree_item::insert($c_item->title,
-          $tree_managed_id.'-'.$c_item->id, $c_item->id_parent !== null ?
-          $tree_managed_id.'-'.$c_item->id_parent : null,
-          $tree_managed_id,
+          $tree_managing_id.'-'.$c_item->id, $c_item->id_parent !== null ?
+          $tree_managing_id.'-'.$c_item->id_parent : null,
+          $tree_managing_id,
           $c_item->url, null,
           $c_item->attributes,
           $c_item->element_attributes,
           $c_item->weight, 'develop'
         );
       }
-      return $tree_managed;
+      return $tree_managing;
     }
   }
 

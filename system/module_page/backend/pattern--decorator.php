@@ -10,7 +10,7 @@ namespace effcore {
   public $id;
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | ul | dl | tree
-  public $tree_managed_mode; # null | simple | simple-draggable
+  public $tree_managing_mode; # null | simple | simple-draggable
   public $tree_mapping = [];
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
@@ -137,7 +137,7 @@ namespace effcore {
             $c_extra     = array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : ( array_key_exists('extra',     $this->tree_mapping) ? $c_row[$this->tree_mapping['extra'    ]]['value'] : null);
             $c_id_tree = 'decorator-'.$c_id_tree;
             $c_tree = tree::insert($this->title ?? '', $c_id_tree);
-            $c_tree->managed_mode = $this->tree_managed_mode;
+            $c_tree->managing_mode = $this->tree_managing_mode;
             if ($trees->child_select(         $c_id_tree) == null)
                 $trees->child_insert($c_tree, $c_id_tree);
             $c_tree_item = tree_item::insert($c_title,

@@ -209,7 +209,7 @@
     margin: 27px 0 0 20px}
   form#instance_select_multiple x-selection {margin: 100px 0}
 
-  /* manage layout */
+  /* layout manage */
 
   x-layout-manager {display: block; margin: 50px 0}
   x-layout-manager *[data-area-id]            {margin: 5px 0; padding: 5px; border: 3px solid %%_color_main; text-align: center; min-height: 20px}
