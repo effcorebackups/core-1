@@ -5,8 +5,8 @@ forms
     - method: post
     - novalidate: true
     children
-    - manage|markup
-        tag_name: x-layout
+    - layout_manager|markup
+        tag_name: x-layout-manager
     - button_save|button
         title: save
         attributes

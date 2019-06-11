@@ -10,13 +10,13 @@ namespace effcore {
   public $id;
   public $title;
   public $type; # null | table | row | column
-  public $is_managed = false;
+  public $managing_is_on = false;
 
   function render() {
     if ($this->type) $this->attribute_insert('data-area-type', $this->type);
     if ($this->id)   $this->attribute_insert('data-area-id',   $this->id);
-    if ($this->is_managed &&
-        $this->id) $this->child_insert(new text_simple($this->id), 'id');
+    if ($this->managing_is_on && $this->id)
+      $this->child_insert(new markup('x-title', [], $this->id), 'id');
     return parent::render();
   }
 
