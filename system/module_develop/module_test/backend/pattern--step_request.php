@@ -8,7 +8,7 @@ namespace effcore {
           class step_request {
 
   public $url;
-  public $https = false;
+  public $is_https = false;
   public $proxy = '';
   public $headers = [];
   public $post = [];
@@ -31,9 +31,9 @@ namespace effcore {
   }
 
   function prepared_get_url() {
-    $is_https = $this->https instanceof param_from_form ?
-                $this->https->get() :
-                $this->https;
+    $is_https = $this->is_https instanceof param_from_form ?
+                $this->is_https->get() :
+                $this->is_https;
     return ($is_https ? 'https' : 'http').'://'.url::get_current()->domain.$this->url;
   }
 
