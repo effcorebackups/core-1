@@ -397,7 +397,7 @@ namespace effcore {
     $c_pointer = $data;
     foreach (explode('/', $dpath) as $c_part) {
       $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
-      if ($is_unique_keys) $result[]        = &$c_pointer;
+      if ($is_unique_keys) $result[       ] = &$c_pointer;
       else                 $result[$c_part] = &$c_pointer;
     }
     return $result;
@@ -408,7 +408,7 @@ namespace effcore {
     $c_pointer = $node;
     foreach (explode('/', $npath) as $c_part) {
       $c_pointer = &$c_pointer->children[$c_part];
-      if ($is_unique_keys) $result[]        = &$c_pointer;
+      if ($is_unique_keys) $result[       ] = &$c_pointer;
       else                 $result[$c_part] = &$c_pointer;
     }
     return $result;
