@@ -130,6 +130,23 @@ namespace effcore {
     }
   }
 
+  static function init_sql($url) {
+    static::init();
+    $instance = (new instance('page', [
+      'url' => $url
+    ]))->select();
+    if ($instance) {
+      $page = new static;
+      foreach ($instance->values_get() as $c_name => $c_value) {
+        if ($c_name === 'access') $page->{$c_name} = $c_value ? unserialize($c_value) : null;
+        else                      $page->{$c_name} = $c_value;
+      }
+             static::$cache[$page->id] = $page;
+             static::$cache[$page->id]->module_id = 'page';
+      return static::$cache[$page->id];
+    }
+  }
+
   static function get_current() {
     return static::$current;
   }
@@ -164,10 +181,19 @@ namespace effcore {
               $c_page = $c_page->external_cache_load();
           foreach ($path_args as $c_key => $c_value)
             $c_page->args_set   ($c_key,   $c_value);
-          static::$current = $c_page;
+                 static::$current = $c_page;
           return static::$current->render();
         } else core::send_header_and_exit('access_forbidden');
       }
+    }
+  # try to load from the sql storage
+    $c_page = static::init_sql($path_current);
+    if ($c_page && $c_page->url == $path_current) {
+      if ($c_page->access == null || access::check($c_page->access)) {
+        $c_page->args_set('base', $path_current);
+               static::$current = $c_page;
+        return static::$current->render();
+      } else core::send_header_and_exit('access_forbidden');
     }
   # no matches case
     core::send_header_and_exit('page_not_found');
