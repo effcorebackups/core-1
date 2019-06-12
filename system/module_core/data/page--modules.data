@@ -2,7 +2,7 @@ pages
 - modules|page
     id: modules
     title: Modules
-    https: true
+    is_https: true
     url: %^(?<base>/manage/modules)(/(?<action>install|uninstall|update)|)$%
     access
       roles

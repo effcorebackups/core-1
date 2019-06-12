@@ -2,7 +2,7 @@ pages
 - demo|page
     id: demo
     title: Demo
-    https: true
+    is_https: true
     url: %^(?<base>/develop/demo)
 >>>>>>>>((/(?<type>embedded/form_elements|
 >>>>>>>>>>>>>>>>>>>embedded/markup_static|

@@ -2,7 +2,7 @@ pages
 - install|page
     id: install
     title: Installation
-    https: true
+    is_https: true
     url: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
     parts
     - menu_languages|page_part

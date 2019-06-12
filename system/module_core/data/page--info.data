@@ -2,7 +2,7 @@ pages
 - info|page
     id: info
     title: Information
-    https: true
+    is_https: true
     url: /manage/info
     access
       roles

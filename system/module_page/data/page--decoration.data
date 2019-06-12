@@ -2,7 +2,7 @@ pages
 - decoration|page
     id: decoration
     title: Decoration
-    https: true
+    is_https: true
     url: %^(?<base>/manage/decoration)
 >>>>>>>>((/(?<type>colors|
 >>>>>>>>>>>>>>>>>>>presets(/(?<id>[a-z0-9_]+)|)))|)$%

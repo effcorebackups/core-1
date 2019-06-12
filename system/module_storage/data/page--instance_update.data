@@ -2,7 +2,7 @@ pages
 - instance_update|page
     id: instance_update
     title: %%_entity_title_page_context{entity_name}: update
-    https: true
+    is_https: true
     url: %^(?<base>/manage/instance/update)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%

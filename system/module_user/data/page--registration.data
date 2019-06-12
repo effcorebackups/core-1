@@ -2,7 +2,7 @@ pages
 - registration|page
     id: registration
     title: Registration
-    https: true
+    is_https: true
     url: /registration
     access
       roles

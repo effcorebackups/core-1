@@ -2,7 +2,7 @@ pages
 - console|page
     id: console
     title: Console
-    https: true
+    is_https: true
     url: /develop/console
     access
       roles

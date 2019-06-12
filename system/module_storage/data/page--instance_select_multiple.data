@@ -2,7 +2,7 @@ pages
 - instance_select_multiple|page
     id: instance_select_multiple
     title: %%_entity_title_plural_page_context{entity_name}
-    https: true
+    is_https: true
    # ─────────────────────────────────────────────────────────────────────
    # /manage/instances/select
    # /manage/instances/select/entity_group_id

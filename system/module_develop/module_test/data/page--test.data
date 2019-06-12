@@ -2,7 +2,7 @@ pages
 - tests|page
     id: tests
     title: Tests
-    https: true
+    is_https: true
     url: %^(?<base>/develop/tests)(/(?<id>[a-z0-9_]+)|)$%
     access
       roles

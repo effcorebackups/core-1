@@ -2,7 +2,7 @@ pages
 - locales|page
     id: locales
     title: Locales
-    https: true
+    is_https: true
     url: /manage/locales
     access
       roles

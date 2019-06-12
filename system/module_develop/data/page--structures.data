@@ -2,7 +2,7 @@ pages
 - structures|page
     id: structures
     title: Structures
-    https: true
+    is_https: true
     url: %^(?<base>/develop/structures)
 >>>>>>>>((/(?<type>class/list|
 >>>>>>>>>>>>>>>>>>>class/diagram|

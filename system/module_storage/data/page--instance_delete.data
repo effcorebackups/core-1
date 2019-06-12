@@ -2,7 +2,7 @@ pages
 - instance_delete|page
     id: instance_delete
     title: %%_entity_title_page_context{entity_name}: delete
-    https: true
+    is_https: true
     url: %^(?<base>/manage/instance/delete)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>(?<instance_id>[a-zA-Z0-9_\-\+]+)$%

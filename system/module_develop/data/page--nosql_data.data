@@ -2,7 +2,7 @@ pages
 - nosql_data|page
     id: nosql_data
     title: NoSQL data
-    https: true
+    is_https: true
     url: %^(?<base>/develop/nosql_data)
 >>>>>>>>((/(?<type>trees(/(?<id>[a-z0-9_]+)|)|
 >>>>>>>>>>>>>>>>>>>events|

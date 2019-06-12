@@ -2,7 +2,7 @@ pages
 - layouts|page
     id: layouts
     title: Layouts
-    https: true
+    is_https: true
     url: %^(?<base>/manage/layouts)(/(?<id>[a-z0-9_]+)|)$%
     access
       roles

@@ -10,7 +10,7 @@ namespace effcore {
   public $id;
   public $id_layout = 'simple';
   public $title;
-  public $https;
+  public $is_https;
   public $url;
   public $access;
   public $parts;
@@ -52,7 +52,7 @@ namespace effcore {
     }
 
   # show important messages
-    if ($settings->show_warning_if_not_https && !empty($this->https) && url::get_current()->protocol_get() != 'https') {
+    if ($settings->show_warning_if_not_https && !empty($this->is_https) && url::get_current()->protocol_get() != 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
       );

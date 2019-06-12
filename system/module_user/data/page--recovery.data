@@ -2,7 +2,7 @@ pages
 - recovery|page
     id: recovery
     title: Recovery
-    https: true
+    is_https: true
     url: /recovery
     access
       roles

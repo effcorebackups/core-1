@@ -2,7 +2,7 @@ pages
 - logout|page
     id: logout
     title: Logout
-    https: true
+    is_https: true
     url: /logout
     access
       roles
