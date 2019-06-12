@@ -32,4 +32,36 @@ namespace effcore {
     }
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
+
+  static function init() {
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('page_parts') as $c_module_id => $c_page_parts) {
+        foreach ($c_page_parts as $c_row_id => $c_page_part) {
+          if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('page_part', $c_row_id, $c_module_id);
+          static::$cache[$c_row_id] = $c_page_part;
+          static::$cache[$c_row_id]->module_id = $c_module_id;
+        }
+      }
+    }
+  }
+
+  static function select_all() {
+    static::init();
+    return static::$cache;
+  }
+
+  static function select($row_id) {
+    static::init();
+    return static::$cache[$row_id];
+  }
+
 }}
