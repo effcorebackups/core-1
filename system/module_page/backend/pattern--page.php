@@ -139,8 +139,8 @@ namespace effcore {
     if ($instance) {
       $page = new static;
       foreach ($instance->values_get() as $c_name => $c_value) {
-        if ($c_name === 'access') $page->{$c_name} = $c_value ? unserialize($c_value) : null;
-        else                      $page->{$c_name} = $c_value;
+        if ($c_name === 'access') $page->{$c_name} = unserialize($c_value) ?: null;
+        else                      $page->{$c_name} =             $c_value;
       }
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';

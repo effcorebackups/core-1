@@ -87,7 +87,7 @@ namespace effcore {
     if (!static::$is_init___sql) {
          static::$is_init___sql = true;
       foreach (entity::get('tree')->instances_select() as $c_instance) {
-        $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access), [], 0);
+        $c_tree = new static($c_instance->title, $c_instance->id, unserialize($c_instance->access) ?: null, [], 0);
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->module_id = 'menu';
         static::$cache[$c_tree->id]->type = 'sql';
