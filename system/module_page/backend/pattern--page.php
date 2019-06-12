@@ -177,7 +177,7 @@ namespace effcore {
       if ($c_page->url[0] != '%' && $path_current == $c_page->url                            ) {$is_match = true; $path_args = ['base' => $path_current];                                  }
       if ($c_page->url[0] == '%' &&       preg_match($c_page->url, $path_current, $path_args)) {$is_match = true; $path_args = array_filter($path_args, 'is_string', ARRAY_FILTER_USE_KEY);}
       if ($is_match) {
-        if ($c_page->access == null || access::check($c_page->access)) {
+        if ($c_page->access === null || access::check($c_page->access)) {
           if ($c_page instanceof external_cache)
               $c_page = $c_page->external_cache_load();
           foreach ($path_args as $c_key => $c_value)
@@ -190,7 +190,7 @@ namespace effcore {
   # try to load from the sql storage
     $c_page = static::init_sql($path_current);
     if ($c_page && $c_page->url == $path_current) {
-      if ($c_page->access == null || access::check($c_page->access)) {
+      if ($c_page->access === null || access::check($c_page->access)) {
         $c_page->args_set('base', $path_current);
                static::$current = $c_page;
         return static::$current->render();

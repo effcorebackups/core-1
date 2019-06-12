@@ -21,4 +21,14 @@ namespace effcore {
     }
   }
 
+  function roles_get() {
+    return core::array_kmap(
+      $this->values_get()
+    );
+  }
+
+  function roles_set($roles) {
+    $this->checked = core::array_kmap($roles);
+  }
+
 }}
