@@ -379,7 +379,7 @@ namespace effcore {
       foreach ($scan as $c_path => $spl_file_info) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
           if     ($spl_file_info->isFile()) $result[$c_path] = new static($c_path);
-          elseif ($spl_file_info->isDir ()) $result[$c_path] = $c_path;
+          elseif ($spl_file_info->isDir ()) $result[$c_path] =            $c_path;
         }
       }
       krsort($result);

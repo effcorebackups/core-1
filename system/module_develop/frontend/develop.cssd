@@ -1,5 +1,5 @@
 
-  x-console {display: block; max-width: 800px; margin: 100px auto 100px auto}
+  x-console {display: block; margin: 100px auto}
 
   /* logs */
 

@@ -1,7 +1,7 @@
 
   body {
     display: block;
-    max-width: 800px;
+    max-width: 950px;
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;

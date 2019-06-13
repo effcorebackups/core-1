@@ -55,9 +55,14 @@ namespace effcore {
     }
   }
 
-  static function select_all() {
+  static function select_all($id_area = null) {
     static::init();
-    return static::$cache;
+    $result = static::$cache;
+    if ($id_area)
+      foreach ($result as $c_row_id => $c_item)
+        if ($c_item->id_area != $id_area)
+          unset($result[$c_row_id]);
+    return $result;
   }
 
   static function select($row_id) {

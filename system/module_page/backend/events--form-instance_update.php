@@ -7,6 +7,7 @@
 namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
+          use \effcore\field_page_part;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\page;
@@ -21,6 +22,10 @@ namespace effcore\modules\page {
         if ($c_child instanceof area) {
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
+          $c_field_page_part = new field_page_part;
+          $c_field_page_part->id_area = $c_child->id;
+          $c_field_page_part->build();
+          $c_child->child_insert($c_field_page_part);
         }
       }
       $form->child_insert_after(
