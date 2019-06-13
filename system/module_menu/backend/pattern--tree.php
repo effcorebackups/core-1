@@ -24,22 +24,24 @@ namespace effcore {
   }
 
   function build() {
-    event::start('on_tree_before_build', $this->id, [&$this]);
-    $this->attribute_insert('data-id',            $this->id           );
-    $this->attribute_insert('data-managing_mode', $this->managing_mode);
-    foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
-      if ($c_item->id_tree   == $this->id &&
-          $c_item->id_parent == null) {
-        $this->child_insert($c_item, $c_item->id);
-        $c_item->build();}}
-    event::start('on_tree_after_build', $this->id, [&$this]);
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      event::start('on_tree_before_build', $this->id, [&$this]);
+      $this->attribute_insert('data-id',            $this->id           );
+      $this->attribute_insert('data-managing_mode', $this->managing_mode);
+      foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
+        if ($c_item->id_tree   == $this->id &&
+            $c_item->id_parent == null) {
+          $this->child_insert($c_item, $c_item->id);
+          $c_item->build();}}
+      event::start('on_tree_after_build', $this->id, [&$this]);
+    }
   }
 
   function render() {
     static::init();
     if ($this->access === null || access::check($this->access)) {
-      if ($this->children_select_count() == 0)
-          $this->build();
+      $this->build();
       return parent::render();
     }
   }

@@ -32,11 +32,14 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('data-id', $this->id);
-    foreach (static::select_all_by_id_tree($this->id_tree) as $c_item) {
-      if ($c_item->id_parent == $this->id) {
-        $this->child_insert($c_item, $c_item->id);
-        $c_item->build();
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      $this->attribute_insert('data-id', $this->id);
+      foreach (static::select_all_by_id_tree($this->id_tree) as $c_item) {
+        if ($c_item->id_parent == $this->id) {
+          $this->child_insert($c_item, $c_item->id);
+          $c_item->build();
+        }
       }
     }
   }

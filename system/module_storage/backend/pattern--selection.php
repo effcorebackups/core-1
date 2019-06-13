@@ -32,7 +32,7 @@ namespace effcore {
          $this->is_builded = true;
 
       $this->attribute_insert('data-view-type', $this->view_type);
-      $this->attribute_insert('data-id', $this->id);
+      $this->attribute_insert('data-id',        $this->id);
       event::start('on_selection_before_build', $this->id, [&$this]);
 
       $used_entities = [];
