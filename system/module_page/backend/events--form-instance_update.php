@@ -23,6 +23,7 @@ namespace effcore\modules\page {
         if ($c_child instanceof area) {
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
+          $c_child->build();
           $c_field_page_part = new field_page_part;
           $c_field_page_part->id_area = $c_child->id;
           $c_field_page_part->build();

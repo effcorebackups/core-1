@@ -16,9 +16,14 @@ namespace effcore {
     'value' => 'on'
   ];
 
-  function render() {
+  function build() {
+    parent::build();
     $element = $this->child_select('element');
     $element->attribute_insert('data-is-checked', $this->checked_get() ? 'yes' : 'no');
+  }
+
+  function render() {
+    $this->build();
     return parent::render();
   }
 
