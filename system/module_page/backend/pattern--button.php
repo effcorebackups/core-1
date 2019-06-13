@@ -21,7 +21,8 @@ namespace effcore {
   }
 
   function build() {
-    if (!$this->child_select('label')) {
+    if (!$this->is_builded) {
+         $this->is_builded = true;
       $label = new text($this->title);
       $this->child_insert($label, 'label');
     }

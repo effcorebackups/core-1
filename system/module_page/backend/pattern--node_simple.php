@@ -11,6 +11,7 @@ namespace effcore {
   public $is_xml_attr_style = false;
   public $attributes = [];
   public $weight = 0;
+  public $is_builded = false;
 
   function __construct($attributes = [], $weight = 0) {
     $this->weight = $weight;

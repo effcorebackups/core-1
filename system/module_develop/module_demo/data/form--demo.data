@@ -435,5 +435,6 @@ forms
         - value: submit
     - button_reset|button
         title: reset
+        novalidate: true
         attributes
         - value: reset
