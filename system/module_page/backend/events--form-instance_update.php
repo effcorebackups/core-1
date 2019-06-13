@@ -17,10 +17,12 @@ namespace effcore\modules\page {
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
-      foreach ($layout->children_select_recursive() as $c_child)
+      foreach ($layout->children_select_recursive() as $c_child) {
         if ($c_child instanceof area) {
-            $c_child->managing_is_on = true;
-            $c_child->tag_name = 'div';}
+          $c_child->managing_is_on = true;
+          $c_child->tag_name = 'div';
+        }
+      }
       $form->child_insert_after(
         new markup('x-layout-manager', [], $layout), 'fields', 'layout_manager'
       );

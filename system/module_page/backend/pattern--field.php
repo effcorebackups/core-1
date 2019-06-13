@@ -70,9 +70,9 @@ namespace effcore {
     if (!$this->child_select('element')) {
       $element = new $this->element_class($this->element_tag_name);
       $this->child_insert($element, 'element');
-      foreach ($this->attributes_select('element_attributes') as $c_name => $c_value) {
-        if ($c_value === null) $element->attribute_delete($c_name);
-        if ($c_value !== null) $element->attribute_insert($c_name, $c_value);
+      foreach ($this->attributes_select('element_attributes') as $c_key => $c_value) {
+        if ($c_value === null) $element->attribute_delete($c_key);
+        if ($c_value !== null) $element->attribute_insert($c_key, $c_value);
       }
     }
   }

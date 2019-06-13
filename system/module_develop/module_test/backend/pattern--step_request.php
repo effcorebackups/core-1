@@ -18,8 +18,8 @@ namespace effcore {
     $this->prev_response = $c_results['response'] ?? null;
     $prepared_post = $this->prepared_get_post();
     $c_results['reports'][] = translation::get('make request to "%%_url"', ['url' => $this->prepared_get_url()]);
-    foreach ($prepared_post as $c_name => $c_value) {
-      $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_name, 'value' => $c_value]);
+    foreach ($prepared_post as $c_key => $c_value) {
+      $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
     }
   # make request
     $c_results['response'] = static::request(
@@ -43,13 +43,13 @@ namespace effcore {
 
   function prepared_get_post() {
     $result = [];
-    foreach ($this->post as $c_name => $c_value) {
+    foreach ($this->post as $c_key => $c_value) {
       if ($c_value == '%%_nick_random'    ) $c_value = $this->random_get_nick    ();
       if ($c_value == '%%_email_random'   ) $c_value = $this->random_get_email   ();
       if ($c_value == '%%_password_random') $c_value = $this->random_get_password();
       if ($c_value == '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
       if ($c_value == '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
-      $result[$c_name] = $c_value;
+      $result[$c_key] = $c_value;
     }
     return $result;
   }

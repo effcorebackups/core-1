@@ -17,9 +17,9 @@ namespace effcore {
   }
 
   function render() {
-    foreach ($this->args as $c_name => $c_value) {
-      $c_target_parent = &$this->target_get($c_name, true);
-      core::arrobj_insert_value($c_target_parent, $c_name, $c_value);
+    foreach ($this->args as $c_key => $c_value) {
+      $c_target_parent = &$this->target_get($c_key, true);
+      core::arrobj_insert_value($c_target_parent, $c_key, $c_value);
     }
     return $this->data->render();
   }

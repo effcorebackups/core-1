@@ -43,9 +43,8 @@ namespace effcore {
     $field->title_position = $this->field_title_position;
     $field->build();
     $element = $field->child_select('element');
-    foreach ($attributes + $this->attributes_select('element_attributes') as $c_name => $c_value) {
-      $element->attribute_insert($c_name, $c_value);
-    }
+    foreach ($attributes + $this->attributes_select('element_attributes') as $c_key => $c_value)
+      $element->attribute_insert                                            ($c_key,   $c_value);
     $value = $element->attribute_select('value');
     if (isset($this->required[$value])) $field->required_set();
     if (isset($this->checked [$value])) $field-> checked_set();

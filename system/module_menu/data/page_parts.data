@@ -1,9 +1,16 @@
 page_parts
 - menu_user|page_part
+    managing_title: Menu: User
     id_area: menu
     type: link
     source: trees/user/user_registered
 - menu_main|page_part
+    managing_title: Menu: Main
     id_area: menu
     type: link
     source: trees/core/main
+- title|page_part
+    managing_title: Title
+    id_area: title
+    type: code
+    source: \effcore\modules\page\events_page::on_show_title

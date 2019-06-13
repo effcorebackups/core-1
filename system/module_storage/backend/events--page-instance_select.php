@@ -50,7 +50,7 @@ namespace effcore\modules\storage {
           $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
           foreach ($entity->selection_params as $c_key => $c_value) {
-            $selection->{$c_key} = $c_value;
+            $selection->                       {$c_key} = $c_value;
           }
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {

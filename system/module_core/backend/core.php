@@ -214,14 +214,14 @@ namespace effcore {
 
   static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
     $result = [];
-    foreach ((array)$data as $c_name => $c_value) {
-      if ($is_xml_style && $c_value === true) $c_value = $c_name;
+    foreach ((array)$data as $c_key => $c_value) {
+      if ($is_xml_style && $c_value === true) $c_value = $c_key;
       switch (gettype($c_value)) {
         case 'NULL'   :                                                                                                                                                                                          break;
-        case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_name.$key_wrapper;                                                                                                                             break;
-        case 'array'  :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
-        case 'object' :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
-        default       :               $result[] = $key_wrapper.$c_name.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
+        case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_key.$key_wrapper;                                                                                                                             break;
+        case 'array'  :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
+        case 'object' :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
+        default       :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
       }
     }
     if ($join_part) return implode($join_part, $result);
@@ -252,9 +252,9 @@ namespace effcore {
         if ($c_is_postconstructor)
              $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
         else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
-        foreach ($data as $c_prop => $c_value) {
-          if (array_key_exists($c_prop, $c_defs) && $c_defs[$c_prop] === $c_value) continue;
-          $result.= static::data_to_code($c_value, $prefix.'->'.$c_prop, $c_defs[$c_prop] ?? null);
+        foreach ($data as $c_key => $c_value) {
+          if (array_key_exists($c_key, $c_defs) && $c_defs[$c_key] === $c_value) continue;
+          $result.= static::data_to_code($c_value, $prefix.'->'.$c_key, $c_defs[$c_key] ?? null);
         }
         if ($c_is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($c_is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
