@@ -27,18 +27,21 @@ namespace effcore {
   }
 
   function build() {
-    event::start('on_page_before_build', $this->id, [&$this]);
-    if (is_array($this->parts)) {
-      core::array_sort_by_weight($this->parts);
-      foreach ($this->parts as $c_row_id => $c_part) {
-        $c_part_markup = $c_part->markup_get($this);
-        if ($c_part_markup) {
-          if (!$this->child_select(            $c_part->id_area))
-               $this->child_insert(new node(), $c_part->id_area);
-          $c_area_markup = $this->child_select($c_part->id_area);
-          $c_area_markup->child_insert($c_part_markup, $c_row_id);
-          if ($c_part->type == 'link') $this->used_dpaths[] = $c_part->source;}}}
-    event::start('on_page_after_build', $this->id, [&$this]);
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      event::start('on_page_before_build', $this->id, [&$this]);
+      if (is_array($this->parts)) {
+        core::array_sort_by_weight($this->parts);
+        foreach ($this->parts as $c_row_id => $c_part) {
+          $c_part_markup = $c_part->markup_get($this);
+          if ($c_part_markup) {
+            if (!$this->child_select(            $c_part->id_area))
+                 $this->child_insert(new node(), $c_part->id_area);
+            $c_area_markup = $this->child_select($c_part->id_area);
+            $c_area_markup->child_insert($c_part_markup, $c_row_id);
+            if ($c_part->type == 'link') $this->used_dpaths[] = $c_part->source;}}}
+      event::start('on_page_after_build', $this->id, [&$this]);
+    }
   }
 
   function render() {

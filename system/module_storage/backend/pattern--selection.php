@@ -28,172 +28,176 @@ namespace effcore {
   }
 
   function build() {
-    $this->children_delete();
-    $this->attribute_insert('data-view-type', $this->view_type);
-    $this->attribute_insert('data-id', $this->id);
-    event::start('on_selection_before_build', $this->id, [&$this]);
+    if (!$this->is_builded) {
+         $this->is_builded = true;
 
-    $used_entities = [];
-    $used_storages = [];
+      $this->attribute_insert('data-view-type', $this->view_type);
+      $this->attribute_insert('data-id', $this->id);
+      event::start('on_selection_before_build', $this->id, [&$this]);
 
-  # sort fields
-    foreach ($this->fields as $c_row_id => $c_field)
-      if (!property_exists($c_field, 'weight'))
-        $c_field->weight = 0;
-    core::array_sort_by_weight($this->fields, 3);
+      $used_entities = [];
+      $used_storages = [];
 
-  # analyze fields
-    foreach ($this->fields as $c_row_id => $c_field) {
-      if ($c_field->type == 'field' ||
-          $c_field->type == 'join_field') {
-        $c_entity = entity::get($c_field->entity_name, false);
-        $used_entities[$c_entity->name]         = $c_entity->name;
-        $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
-      }
-    }
+    # sort fields
+      foreach ($this->fields as $c_row_id => $c_field)
+        if (!property_exists($c_field, 'weight'))
+          $c_field->weight = 0;
+      core::array_sort_by_weight($this->fields, 3);
 
-  # ─────────────────────────────────────────────────────────────────────
-  # prepare the query and request data from the storage
-  # ─────────────────────────────────────────────────────────────────────
-    if (count($used_storages) == 1) {
-      $main_entity = entity::get(reset($used_entities));
-      $this->_main_entity = $main_entity->name;
-      $this->attribute_insert('data-main-entity', $main_entity->name);
-      $id_keys = $main_entity->id_get_real();
-
-    # prepare query params
+    # analyze fields
       foreach ($this->fields as $c_row_id => $c_field) {
-        if ($c_field->type == 'join_field') {
-          $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
-        }
-      }
-      foreach ($this->join ?? [] as $c_id => $c_join) {
-        $this->query_params['join'][$c_id] = [
-          'type'      => 'LEFT OUTER JOIN',
-          'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
-          'left_!f'   => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
-          'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
-        ];
-      }
-      $this->query_params['limit'] = $this->limit;
-
-    # prepare pager
-      if ($this->is_paged) {
-        $instances_count = $main_entity->instances_select_count($this->query_params);
-        $page_max_number = ceil($instances_count / $this->limit);
-        if ($page_max_number > 1) {
-          $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
-          if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) {url::go($pager->last_page_url_get()->tiny_get());}
-          if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) {
-            core::send_header_and_exit('page_not_found');
-          } else {
-            $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
-            $this->child_insert(
-              $pager, 'pager'
-            );
-          }
+        if ($c_field->type == 'field' ||
+            $c_field->type == 'join_field') {
+          $c_entity = entity::get($c_field->entity_name, false);
+          $used_entities[$c_entity->name]         = $c_entity->name;
+          $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
         }
       }
 
-    # select instances
-      $instances = $main_entity->instances_select(
-        $this->query_params
-      );
+    # ─────────────────────────────────────────────────────────────────────
+    # prepare the query and request data from the storage
+    # ─────────────────────────────────────────────────────────────────────
+      if (count($used_storages) == 1) {
+        $main_entity = entity::get(reset($used_entities));
+        $this->_main_entity = $main_entity->name;
+        $this->attribute_insert('data-main-entity', $main_entity->name);
+        $id_keys = $main_entity->id_get_real();
 
-    } elseif (count($used_storages) == 0) {
-      message::insert(new text(
-        'No fields for select from storage! Selection id = "%%_id"', ['id' => $this->id]), 'error'
-      );
-      return new node();
-    } elseif (count($used_storages) >= 2) {
-      message::insert(new text(
-        'Distributed queries not supported! Selection id = "%%_id"', ['id' => $this->id]), 'warning'
-      );
-      return new node();
-    }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # wrap the result in the decorator
-  # ─────────────────────────────────────────────────────────────────────
-    $result = null;
-    if (isset($instances) &&
-        count($instances)) {
-
-      $decorator = new decorator($this->view_type);
-      $decorator->id = $this->id;
-      $decorator->_main_entity = $main_entity->name;
-      $decorator->attribute_insert('data-main-entity', $main_entity->name);
-      foreach ($this->decorator_params as $c_key => $c_value) {
-        $decorator->{$c_key} = $c_value;
-      }
-
-      foreach ($instances as $c_instance) {
-        $c_row = [];
+      # prepare query params
         foreach ($this->fields as $c_row_id => $c_field) {
-          switch ($c_field->type) {
-            case 'field':
-            case 'join_field':
-              $c_entity = entity::get($c_field->entity_name, false);
-              $c_title      = $c_entity->fields[$c_field->entity_field_name]->title;
-              $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
-              $c_value      = $c_instance->    {$c_field->entity_field_name};
-              if ($c_value !== null && $c_value_type == 'real'    ) $c_value = locale::format_number  ($c_value, 10);
-              if ($c_value !== null && $c_value_type == 'integer' ) $c_value = locale::format_number  ($c_value);
-              if ($c_value !== null && $c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value);
-              if ($c_value !== null && $c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value);
-              if ($c_value !== null && $c_value_type == 'datetime') $c_value = locale::format_datetime($c_value);
-              if ($c_value !== null && $c_value_type == 'boolean' ) $c_value = $c_value ? 'Yes' : 'No';
-              $c_row[$c_row_id] = [
-                'title' => $c_title,
-                'value' => $c_value
-              ];
-              break;
-            case 'checkbox':
-              $c_id_values = array_intersect_key($c_instance->values, $id_keys);
-              $c_form_field = new field_checkbox();
-              $c_form_field->build();
-              $c_form_field->name_set('is_checked[]');
-              $c_form_field->value_set(implode('+', $c_id_values));
-              $c_row[$c_row_id] = [
-                'title' => $c_field->title ?? '',
-                'value' => $id_keys ? $c_form_field : ''
-              ];
-              break;
-            case 'actions':
-              $c_row[$c_row_id] = [
-                'title' => $c_field->title ?? '',
-                'value' => $id_keys ? $this->actions_list_get($main_entity, $c_instance, $id_keys) : ''
-              ];
-              break;
-            case 'markup':
-              $c_row[$c_row_id] = [
-                'title' => $c_field->title,
-                'value' => $c_field->markup
-              ];
-              break;
-            case 'code':
-              $c_row[$c_row_id] = [
-                'title' => $c_field->title,
-                'value' => $c_field->code->call($this, $c_row, $c_instance)
-              ];
-              break;
+          if ($c_field->type == 'join_field') {
+            $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
           }
         }
-        $decorator->data[] = $c_row;
+        foreach ($this->join ?? [] as $c_id => $c_join) {
+          $this->query_params['join'][$c_id] = [
+            'type'      => 'LEFT OUTER JOIN',
+            'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
+            'left_!f'   => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
+            'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
+          ];
+        }
+        $this->query_params['limit'] = $this->limit;
+
+      # prepare pager
+        if ($this->is_paged) {
+          $instances_count = $main_entity->instances_select_count($this->query_params);
+          $page_max_number = ceil($instances_count / $this->limit);
+          if ($page_max_number > 1) {
+            $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
+            if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) {url::go($pager->last_page_url_get()->tiny_get());}
+            if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) {
+              core::send_header_and_exit('page_not_found');
+            } else {
+              $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
+              $this->child_insert(
+                $pager, 'pager'
+              );
+            }
+          }
+        }
+
+      # select instances
+        $instances = $main_entity->instances_select(
+          $this->query_params
+        );
+
+      } elseif (count($used_storages) == 0) {
+        message::insert(new text(
+          'No fields for select from storage! Selection id = "%%_id"', ['id' => $this->id]), 'error'
+        );
+        return new node();
+      } elseif (count($used_storages) >= 2) {
+        message::insert(new text(
+          'Distributed queries not supported! Selection id = "%%_id"', ['id' => $this->id]), 'warning'
+        );
+        return new node();
       }
 
-      $this->child_insert(
-        $decorator, 'result'
-      );
+    # ─────────────────────────────────────────────────────────────────────
+    # wrap the result in the decorator
+    # ─────────────────────────────────────────────────────────────────────
+      $result = null;
+      if (isset($instances) &&
+          count($instances)) {
 
-    } else {
-      $this->child_insert(
-        new markup('x-no-result', [], 'no items'), 'no_result'
-      );
+        $decorator = new decorator($this->view_type);
+        $decorator->id = $this->id;
+        $decorator->_main_entity = $main_entity->name;
+        $decorator->attribute_insert('data-main-entity', $main_entity->name);
+        foreach ($this->decorator_params as $c_key => $c_value) {
+          $decorator->{$c_key} = $c_value;
+        }
+
+        foreach ($instances as $c_instance) {
+          $c_row = [];
+          foreach ($this->fields as $c_row_id => $c_field) {
+            switch ($c_field->type) {
+              case 'field':
+              case 'join_field':
+                $c_entity = entity::get($c_field->entity_name, false);
+                $c_title      = $c_entity->fields[$c_field->entity_field_name]->title;
+                $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
+                $c_value      = $c_instance->    {$c_field->entity_field_name};
+                if ($c_value !== null && $c_value_type == 'real'    ) $c_value = locale::format_number  ($c_value, 10);
+                if ($c_value !== null && $c_value_type == 'integer' ) $c_value = locale::format_number  ($c_value);
+                if ($c_value !== null && $c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value);
+                if ($c_value !== null && $c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value);
+                if ($c_value !== null && $c_value_type == 'datetime') $c_value = locale::format_datetime($c_value);
+                if ($c_value !== null && $c_value_type == 'boolean' ) $c_value = $c_value ? 'Yes' : 'No';
+                $c_row[$c_row_id] = [
+                  'title' => $c_title,
+                  'value' => $c_value
+                ];
+                break;
+              case 'checkbox':
+                $c_id_values = array_intersect_key($c_instance->values, $id_keys);
+                $c_form_field = new field_checkbox();
+                $c_form_field->build();
+                $c_form_field->name_set('is_checked[]');
+                $c_form_field->value_set(implode('+', $c_id_values));
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title ?? '',
+                  'value' => $id_keys ? $c_form_field : ''
+                ];
+                break;
+              case 'actions':
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title ?? '',
+                  'value' => $id_keys ? $this->actions_list_get($main_entity, $c_instance, $id_keys) : ''
+                ];
+                break;
+              case 'markup':
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title,
+                  'value' => $c_field->markup
+                ];
+                break;
+              case 'code':
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title,
+                  'value' => $c_field->code->call($this, $c_row, $c_instance)
+                ];
+                break;
+            }
+          }
+          $decorator->data[] = $c_row;
+        }
+
+        $this->child_insert(
+          $decorator, 'result'
+        );
+
+      } else {
+        $this->child_insert(
+          new markup('x-no-result', [], 'no items'), 'no_result'
+        );
+      }
+
+      event::start('on_selection_after_build', $this->id, [&$this]);
+      return $this;
+
     }
-
-    event::start('on_selection_after_build', $this->id, [&$this]);
-    return $this;
   }
 
   # ─────────────────────────────────────────────────────────────────────

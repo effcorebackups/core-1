@@ -18,53 +18,58 @@ namespace effcore {
   }
 
   function build() {
-    $this->attribute_insert('data-type', $this->type);
-    switch ($this->type) {
+    if (!$this->is_builded) {
+         $this->is_builded = true;
 
-      case 'linear':
-        foreach ($this->slices as $c_slice) {
-          $x_slice = new markup('x-slice');
-          $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
-          $x_slice->child_insert(new markup('x-value', [], [
-            $c_slice->complex_value ?
-            $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
-                                         locale::format_persent($c_slice->persent_value, 1),
-            new markup('x-scale', [
-              'class' => ['scope' => core::sanitize_id($c_slice->title)],
-              'style' => ['width: '.(int)$c_slice->persent_value.'%']
-            ])
-          ]));
-          $this->child_insert($x_slice);
-        }
-        break;
+      $this->attribute_insert('data-type', $this->type);
+      switch ($this->type) {
 
-      case 'radial':
-        $coords = ['r' => '25%', 'cx' => '50%', 'cy' => '50%'];
-        $diagram = new markup_xml('svg', ['viewBox' => '0 0 64 64', 'width' => '100', 'height' => '100']);
-        $legends = new markup('x-legends');
-        $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' => 'stroke: lightgray; stroke-width: 30%; fill: none']));
-        $this->child_insert($diagram, 'diagram');
-        $this->child_insert($legends, 'legends');
-        $c_offset = 0;
-        foreach ($this->slices as $c_slice) {
-          $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
-            'stroke: '.$c_slice->color.'; '.
-            'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
-            'stroke-dashoffset: '.core::format_number($c_offset,  2).'; '.
-            'stroke-width: 30%; '.
-            'fill: none']));
-          $c_offset -= $c_slice->persent_value;
-          $x_legend = new markup('x-legend');
-          $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
-          $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
-          $x_legend->child_insert(new markup('x-value', [], [
-            $c_slice->complex_value ?
-            $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
-                                         locale::format_persent($c_slice->persent_value, 1)
-          ]));
-          $legends->child_insert($x_legend);
-        }
-        break;
+        case 'linear':
+          foreach ($this->slices as $c_slice) {
+            $x_slice = new markup('x-slice');
+            $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
+            $x_slice->child_insert(new markup('x-value', [], [
+              $c_slice->complex_value ?
+              $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
+                                           locale::format_persent($c_slice->persent_value, 1),
+              new markup('x-scale', [
+                'class' => ['scope' => core::sanitize_id($c_slice->title)],
+                'style' => ['width: '.(int)$c_slice->persent_value.'%']
+              ])
+            ]));
+            $this->child_insert($x_slice);
+          }
+          break;
+
+        case 'radial':
+          $coords = ['r' => '25%', 'cx' => '50%', 'cy' => '50%'];
+          $diagram = new markup_xml('svg', ['viewBox' => '0 0 64 64', 'width' => '100', 'height' => '100']);
+          $legends = new markup('x-legends');
+          $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' => 'stroke: lightgray; stroke-width: 30%; fill: none']));
+          $this->child_insert($diagram, 'diagram');
+          $this->child_insert($legends, 'legends');
+          $c_offset = 0;
+          foreach ($this->slices as $c_slice) {
+            $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
+              'stroke: '.$c_slice->color.'; '.
+              'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
+              'stroke-dashoffset: '.core::format_number($c_offset,  2).'; '.
+              'stroke-width: 30%; '.
+              'fill: none']));
+            $c_offset -= $c_slice->persent_value;
+            $x_legend = new markup('x-legend');
+            $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
+            $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
+            $x_legend->child_insert(new markup('x-value', [], [
+              $c_slice->complex_value ?
+              $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
+                                           locale::format_persent($c_slice->persent_value, 1)
+            ]));
+            $legends->child_insert($x_legend);
+          }
+          break;
+      }
+
     }
   }
 
