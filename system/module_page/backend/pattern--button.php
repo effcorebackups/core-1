@@ -31,6 +31,10 @@ namespace effcore {
     return $this->attribute_select('value');
   }
 
+  function value_set($value) {
+    return $this->attribute_insert('value', $value);
+  }
+
   function disabled_get() {
     return $this->attribute_select('disabled') === 'disabled' ||
            $this->attribute_select('disabled') === true;

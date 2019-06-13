@@ -6,6 +6,7 @@
 
 namespace effcore\modules\page {
           use \effcore\area;
+          use \effcore\button;
           use \effcore\core;
           use \effcore\field_page_part;
           use \effcore\layout;
@@ -25,7 +26,14 @@ namespace effcore\modules\page {
           $c_field_page_part = new field_page_part;
           $c_field_page_part->id_area = $c_child->id;
           $c_field_page_part->build();
+          $c_field_page_part->name_set('page_part-'.$c_child->id);
+          $c_field_page_part->required_set(false);
+          $c_button_add = new button('add');
+          $c_button_add->build();
+          $c_button_add->novalidate = true;
+          $c_button_add->value_set('button_add_to_area-'.$c_child->id);
           $c_child->child_insert($c_field_page_part);
+          $c_child->child_insert($c_button_add);
         }
       }
       $form->child_insert_after(
