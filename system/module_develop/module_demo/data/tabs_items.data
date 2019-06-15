@@ -3,8 +3,6 @@ tabs_items
     id: demo_embedded
     id_parent: null
     id_tab: demo
-    action_name: embedded
-    action_name_default: embedded/form_elements
     title: Embedded
 - demo_form_elements|tabs_item
     id: demo_form_elements

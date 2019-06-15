@@ -7,7 +7,8 @@
 namespace effcore {
           class group_page_part_insert extends fieldset {
 
-  public $attributes = ['data-type' => 'page_part_insert'];
+  public $tag_name = 'x-page_part-insert';
+  public $content_tag_name = null;
   public $id_area;
 
   function build() {

@@ -16,10 +16,10 @@ namespace effcore {
   public $title = '';
   public $action_name;
   public $action_name_default;
-  public $hidden = false;
+  public $is_hidden = false;
   public $access;
 
-  function __construct($title = '', $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0) {
+  function __construct($title = '', $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0) {
     if ($id                 ) $this->id                  = $id;
     if ($id_parent          ) $this->id_parent           = $id_parent;
     if ($id_tab             ) $this->id_tab              = $id_tab;
@@ -27,7 +27,7 @@ namespace effcore {
     if ($action_name        ) $this->action_name         = $action_name;
     if ($action_name_default) $this->action_name_default = $action_name_default;
     if ($element_attributes ) $this->element_attributes  = $element_attributes;
-    if ($hidden             ) $this->hidden              = $hidden;
+    if ($is_hidden          ) $this->is_hidden           = $is_hidden;
     parent::__construct($attributes, [], $weight);
   }
 
@@ -45,7 +45,7 @@ namespace effcore {
   }
 
   function render() {
-    if (empty($this->hidden)) {
+    if (empty($this->is_hidden)) {
       if ($this->access === null || access::check($this->access)) {
         $rendered_children = $this->children_select_count() ? (template::make_new($this->template_children, [
           'children' => $this->render_children($this->children_select())
@@ -93,9 +93,22 @@ namespace effcore {
     }
   }
 
-  static function select_all() {
+  static function select_all($id_tab = null, $id_parent = null, $is_skip_hidden = true) {
     static::init();
-    return static::$cache ?? [];
+    $result = static::$cache ?? [];
+    if ($id_tab)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->id_tab != $id_tab)
+          unset($result[$c_id]);
+    if ($id_parent)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->id_parent != $id_parent)
+          unset($result[$c_id]);
+    if ($is_skip_hidden)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->is_hidden == true)
+          unset($result[$c_id]);
+    return $result;
   }
 
   static function select($id) {
@@ -103,9 +116,9 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title, $id, $id_parent, $id_tab, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $hidden = false, $weight = 0, $module_id = null) {
+  static function insert($title, $id, $id_parent, $id_tab, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0, $module_id = null) {
     static::init();
-    $new_item = new static($title, $id, $id_parent, $id_tab, $action_name, $action_name_default, $attributes, $element_attributes, $hidden, $weight);
+    $new_item = new static($title, $id, $id_parent, $id_tab, $action_name, $action_name_default, $attributes, $element_attributes, $is_hidden, $weight);
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
     return static::$cache[$id];
