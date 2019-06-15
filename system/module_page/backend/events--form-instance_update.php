@@ -8,7 +8,7 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\button;
           use \effcore\core;
-          use \effcore\field_page_part;
+          use \effcore\group_page_part_insert;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\page;
@@ -24,17 +24,10 @@ namespace effcore\modules\page {
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
           $c_child->build();
-          $c_field_page_part = new field_page_part;
-          $c_field_page_part->id_area = $c_child->id;
-          $c_field_page_part->build();
-          $c_field_page_part->name_set('page_part-'.$c_child->id);
-          $c_field_page_part->required_set(false);
-          $c_button_add = new button('add');
-          $c_button_add->build();
-          $c_button_add->novalidate = true;
-          $c_button_add->value_set('button_add_to_area-'.$c_child->id);
-          $c_child->child_insert($c_field_page_part);
-          $c_child->child_insert($c_button_add);
+          $c_part_insert = new group_page_part_insert();
+          $c_part_insert->id_area = $c_child->id;
+          $c_part_insert->build();
+          $c_child->child_insert($c_part_insert, 'part_insert');
         }
       }
       $form->child_insert_after(

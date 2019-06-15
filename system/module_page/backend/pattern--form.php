@@ -44,12 +44,14 @@ namespace effcore {
         else unset($c_pointers[$c_last_part]);
       }
     }
+
   # build all form elements
     foreach ($this->children_select_recursive() as $c_child) {
       if (is_object($c_child) && method_exists($c_child, 'build')) {
         $c_child->build();
       }
     }
+
   # relate each item with it's form
     foreach ($this->children_select_recursive() as $c_child) {
       if (is_object($c_child) && method_exists($c_child, 'form_current_set')) {
