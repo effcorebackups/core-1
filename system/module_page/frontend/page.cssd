@@ -44,9 +44,9 @@
   a[role='button']:hover  {background-color: %%_color_button_active}
   a[role='button']:active {background-color: %%_color_button_active; box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .6)}
 
-  /* universal classes */
+  /* universal styles */
 
-  .hidden {display: none}
+  *[aria-hidden='true'] {display: none}
 
   /* table */
 
@@ -248,7 +248,6 @@
   x-module-info x-field[data-type='switcher'] {float: right; margin: 0 0 0 10px}
   x-module-info x-field[data-type='switcher'] input {margin: 0}
   x-module-info x-label {opacity: .5}
-  x-module-info x-label[hidden='true'] {display: none}
   x-module-info x-label::after {content: ': '}
   x-module-info x-module-title        {display: block; margin-bottom: 10px; font-size: 1.5em}
   x-module-info x-module-id           {display: block}

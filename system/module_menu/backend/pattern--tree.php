@@ -50,8 +50,8 @@ namespace effcore {
     if ($this->title) {
       switch ($this->title_state) {
         case 'cutted': return '';
-        case 'hidden': return (new markup('h2', ['class' => ['hidden' => 'hidden']], $this->title))->render();
-        default:       return (new markup('h2', [                                 ], $this->title))->render();
+        case 'hidden': return (new markup('h2', ['aria-hidden' => 'true'], $this->title))->render();
+        default:       return (new markup('h2', [                       ], $this->title))->render();
       }
     }
   }
