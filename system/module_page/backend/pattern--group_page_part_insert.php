@@ -24,7 +24,8 @@ namespace effcore {
       foreach ($page_parts as $c_row_id => $c_part) {
         $c_field_page_part->option_insert($c_part->managing_title, $c_row_id);
       }
-      $c_button_add = new button('add');
+      $c_button_add = new button;
+      $c_button_add->title = '';
       $c_button_add->build();
       $c_button_add->novalidate = true;
       $c_button_add->value_set('button_add_for_'.$this->id_area);
