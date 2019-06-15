@@ -161,7 +161,7 @@
     color: %%_color_button_text;
     background: %%_color_button}
   button:enabled:hover                 {background-color: %%_color_button_active}
-  button:enabled:active                {background-color: %%_color_button_active; box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.6)}
+  button:enabled:active                {background-color: %%_color_button_active; box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .6)}
   button:enabled[value='delete']       {background-color: %%_color_warning}
   button:enabled[value='delete']:hover {background-color: %%_color_button_active}
 
@@ -179,9 +179,9 @@
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}
-  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3); background: white url('images/icons-form.svgd') -20px 0 !important}
-  x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3)}
-  x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8)}
+  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('images/icons-form.svgd') -20px 0 !important}
+  x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
+  x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
 
   x-group[data-type='palette'] hr:first-child {display: none}
   x-group[data-type='palette'] hr {
@@ -218,7 +218,7 @@
   x-layout-manager *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
   x-layout-manager *[data-area-type='column'] > *:first-child {margin-top:    0}
   x-layout-manager *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
-  x-layout-manager *[data-area-id] x-title {display: block; border-bottom: 1px dashed %%_color_main}
+  x-layout-manager *[data-area-id] x-title {display: block; background: rgba(50, 50, 50, .2)}
 
   /* IE adaptation */
 

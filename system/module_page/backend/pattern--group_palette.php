@@ -15,19 +15,21 @@ namespace effcore {
   ];
 
   function build() {
-  # parent::build() not required
-    $c_new_color_group = null;
-    $c_old_color_group = null;
-    foreach (color::get_all() as $c_color) {
-      $c_attributes = [
-        'value' => $c_color->id,
-        'title' => translation::get('color id = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
-        'style' => ['background: '.$c_color->value]
-      ];
-          $c_new_color_group  = $c_color->group ?? null;
-      if ($c_new_color_group != $c_old_color_group) $this->child_insert(hr);
-          $c_old_color_group  = $c_new_color_group;
-      $this->field_insert(null, null, $c_attributes, $c_color->id);
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+    # the "parent::build()" is not required here
+      $c_new_group_name = null;
+      $c_old_group_name = null;
+      foreach (color::get_all() as $c_color) {
+            $c_new_group_name  = $c_color->group ?? null;
+        if ($c_new_group_name != $c_old_group_name) $this->child_insert(hr);
+            $c_old_group_name  = $c_new_group_name;
+        $this->field_insert(null, null, [
+          'value' => $c_color->id,
+          'title' => translation::get('color id = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
+          'style' => ['background: '.$c_color->value]
+        ], $c_color->id);
+      }
     }
   }
 

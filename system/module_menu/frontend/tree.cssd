@@ -33,11 +33,13 @@
   x-tree[data-id='main'] ul ul    {background-color: %%_color_menu_active}
   x-tree[data-id='main'] ul ul ul {background-color: transparent}
 
-  x-tree[data-id='main']              a:not([href]) {color: %%_color_menu_text !important}
-  x-tree[data-id='main']              a             {color: %%_color_menu_link}
-  x-tree[data-id='main']        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  x-tree[data-id='main']        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
-  x-tree[data-id='main'] > ul > li:hover            {                                  background-color: %%_color_menu_active}
+  x-tree[data-id='main']              a[aria-selected      ='true'],
+  x-tree[data-id='main']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  x-tree[data-id='main']              a:not([href])                 {color: %%_color_menu_text !important}
+  x-tree[data-id='main']              a                             {color: %%_color_menu_link}
+  x-tree[data-id='main']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree[data-id='main']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree[data-id='main'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
   x-tree[data-id='main'] li    a[aria-selected      ='true'],
   x-tree[data-id='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
@@ -46,7 +48,7 @@
 
   /* menu Main: icons */
 
-  x-tree[data-id='main'] li[data-id='home'   ] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important}
+  x-tree[data-id='main'] li[data-id='home'   ] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
   x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
   x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 

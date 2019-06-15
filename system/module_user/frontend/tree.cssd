@@ -29,11 +29,13 @@
   x-tree[data-id^='user'] ul ul    {background-color: %%_color_menu_active}
   x-tree[data-id^='user'] ul ul ul {background-color: transparent}
 
-  x-tree[data-id^='user']              a:not([href]) {color: %%_color_menu_text !important}
-  x-tree[data-id^='user']              a             {color: %%_color_menu_link}
-  x-tree[data-id^='user']        li    a:hover       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  x-tree[data-id^='user']        li li a:hover       {color: %%_color_menu_link_active; background-color: transparent}
-  x-tree[data-id^='user'] > ul > li:hover            {                                  background-color: %%_color_menu_active}
+  x-tree[data-id^='user']              a[aria-selected      ='true'],
+  x-tree[data-id^='user']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  x-tree[data-id^='user']              a:not([href])                 {color: %%_color_menu_text !important}
+  x-tree[data-id^='user']              a                             {color: %%_color_menu_link}
+  x-tree[data-id^='user']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree[data-id^='user']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree[data-id^='user'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
   x-tree[data-id^='user'] li    a[aria-selected      ='true'],
   x-tree[data-id^='user'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
