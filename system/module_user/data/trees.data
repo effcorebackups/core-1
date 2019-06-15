@@ -6,6 +6,8 @@ trees
     access
       roles
       - =: anonymous
+    attributes
+    - data-style: main
 - user_registered|tree
     id: user_registered
     title: Menu for registered user
@@ -13,3 +15,5 @@ trees
     access
       roles
       - =: registered
+    attributes
+    - data-style: main

@@ -1,46 +1,7 @@
 
   /* menu User: sizes and orientation */
 
-  x-tree[data-id^='user']          {float: right; z-index: 10}
-  x-tree[data-id^='user'] li       {float: left}
-  x-tree[data-id^='user'] li li    {float: none}
-  x-tree[data-id^='user'] ul       {float: left}
-  x-tree[data-id^='user'] ul ul    {float: none}
-
-  x-tree[data-id^='user'] ul ul    {position: absolute}
-  x-tree[data-id^='user'] ul ul ul {position: relative}
-
-  x-tree[data-id^='user'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  x-tree[data-id^='user'] ul       {padding: 0; margin: 0}
-  x-tree[data-id^='user'] ul ul    {padding: 20px}
-  x-tree[data-id^='user'] ul ul ul {padding: 0 0 0 21px}
-
-  x-tree[data-id^='user'] li     a {padding: 21px; display: block}
-  x-tree[data-id^='user'] li li  a {padding: 0}
-
-  /* menu User: dynamic */
-
-  x-tree[data-id^='user'] > ul > li       > ul {display: none}
-  x-tree[data-id^='user'] > ul > li:hover > ul {display: block}
-
-  /* menu User: colors */
-
-  x-tree[data-id^='user'] ul       {background-color: %%_color_menu}
-  x-tree[data-id^='user'] ul ul    {background-color: %%_color_menu_active}
-  x-tree[data-id^='user'] ul ul ul {background-color: transparent}
-
-  x-tree[data-id^='user']              a[aria-selected      ='true'],
-  x-tree[data-id^='user']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  x-tree[data-id^='user']              a:not([href])                 {color: %%_color_menu_text !important}
-  x-tree[data-id^='user']              a                             {color: %%_color_menu_link}
-  x-tree[data-id^='user']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  x-tree[data-id^='user']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  x-tree[data-id^='user'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
-
-  x-tree[data-id^='user'] li    a[aria-selected      ='true'],
-  x-tree[data-id^='user'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
-  x-tree[data-id^='user'] li li a[aria-selected      ='true'],
-  x-tree[data-id^='user'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  x-tree[data-style='main'][data-id^='user'] {float: right; z-index: 10}
 
   /* menu User: icons */
 

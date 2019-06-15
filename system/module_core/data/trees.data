@@ -3,3 +3,5 @@ trees
     id: main
     title: Menu main
     title_state: hidden
+    attributes
+    - data-style: main

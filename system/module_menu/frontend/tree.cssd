@@ -3,48 +3,48 @@
   x-tree a[aria-selected      ='true'],
   x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
-  /* menu Main: sizes and orientation */
+  /* menu style "main": sizes and orientation */
 
-  x-tree[data-id='main']          {float: left}
-  x-tree[data-id='main'] li       {float: left}
-  x-tree[data-id='main'] li li    {float: none}
-  x-tree[data-id='main'] ul       {float: left}
-  x-tree[data-id='main'] ul ul    {float: none}
+  x-tree[data-style='main']          {float: left}
+  x-tree[data-style='main'] li       {float: left}
+  x-tree[data-style='main'] li li    {float: none}
+  x-tree[data-style='main'] ul       {float: left}
+  x-tree[data-style='main'] ul ul    {float: none}
 
-  x-tree[data-id='main'] ul ul    {position: absolute}
-  x-tree[data-id='main'] ul ul ul {position: relative}
+  x-tree[data-style='main'] ul ul    {position: absolute}
+  x-tree[data-style='main'] ul ul ul {position: relative}
 
-  x-tree[data-id='main'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  x-tree[data-id='main'] ul       {padding: 0; margin: 0}
-  x-tree[data-id='main'] ul ul    {padding: 20px}
-  x-tree[data-id='main'] ul ul ul {padding: 0 0 0 21px}
+  x-tree[data-style='main'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  x-tree[data-style='main'] ul       {padding: 0; margin: 0}
+  x-tree[data-style='main'] ul ul    {padding: 20px}
+  x-tree[data-style='main'] ul ul ul {padding: 0 0 0 21px}
 
-  x-tree[data-id='main'] li     a {padding: 21px; display: block}
-  x-tree[data-id='main'] li li  a {padding: 0}
+  x-tree[data-style='main'] li     a {padding: 21px; display: block}
+  x-tree[data-style='main'] li li  a {padding: 0}
 
-  /* menu Main: dynamic */
+  /* menu style "main": dynamic */
 
-  x-tree[data-id='main'] > ul > li       > ul {display: none}
-  x-tree[data-id='main'] > ul > li:hover > ul {display: block}
+  x-tree[data-style='main'] > ul > li       > ul {display: none}
+  x-tree[data-style='main'] > ul > li:hover > ul {display: block}
 
-  /* menu Main: colors */
+  /* menu style "main": colors */
 
-  x-tree[data-id='main'] ul       {background-color: %%_color_menu}
-  x-tree[data-id='main'] ul ul    {background-color: %%_color_menu_active}
-  x-tree[data-id='main'] ul ul ul {background-color: transparent}
+  x-tree[data-style='main'] ul       {background-color: %%_color_menu}
+  x-tree[data-style='main'] ul ul    {background-color: %%_color_menu_active}
+  x-tree[data-style='main'] ul ul ul {background-color: transparent}
 
-  x-tree[data-id='main']              a[aria-selected      ='true'],
-  x-tree[data-id='main']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  x-tree[data-id='main']              a:not([href])                 {color: %%_color_menu_text !important}
-  x-tree[data-id='main']              a                             {color: %%_color_menu_link}
-  x-tree[data-id='main']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  x-tree[data-id='main']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  x-tree[data-id='main'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
+  x-tree[data-style='main']              a[aria-selected      ='true'],
+  x-tree[data-style='main']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  x-tree[data-style='main']              a:not([href])                 {color: %%_color_menu_text !important}
+  x-tree[data-style='main']              a                             {color: %%_color_menu_link}
+  x-tree[data-style='main']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  x-tree[data-style='main']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  x-tree[data-style='main'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
-  x-tree[data-id='main'] li    a[aria-selected      ='true'],
-  x-tree[data-id='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
-  x-tree[data-id='main'] li li a[aria-selected      ='true'],
-  x-tree[data-id='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  x-tree[data-style='main'] li    a[aria-selected      ='true'],
+  x-tree[data-style='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree[data-style='main'] li li a[aria-selected      ='true'],
+  x-tree[data-style='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu Main: icons */
 
