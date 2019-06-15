@@ -19,7 +19,10 @@ namespace effcore {
   }
 
   function build() {
-    $this->number = static::current_number_get();
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      $this->number = static::current_number_get();
+    }
   }
 
   function render_self() {
