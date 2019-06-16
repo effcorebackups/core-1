@@ -221,7 +221,7 @@
   x-layout-manager *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
   x-layout-manager *[data-area-type='column'] > *:first-child {margin-top:    0}
   x-layout-manager *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
-  x-layout-manager *[data-area-id] x-title {
+  x-layout-manager *[data-area-id] x-id {
     display: block;
     margin-top: -5px;
     margin-bottom: 5px;

@@ -18,7 +18,7 @@ namespace effcore {
       if ($this->type) $this->attribute_insert('data-area-type', $this->type);
       if ($this->id)   $this->attribute_insert('data-area-id',   $this->id);
       if ($this->managing_is_on && $this->id) {
-        $this->child_insert(new markup('x-title', [], $this->id), 'id');
+        $this->child_insert(new markup('x-id', [], ['simple' => new text_simple($this->id)]), 'id');
       }
     }
   }

@@ -29,8 +29,8 @@ namespace effcore {
       $c_button_add->build();
       $c_button_add->novalidate = true;
       $c_button_add->value_set('button_add_for_'.$this->id_area);
-      $this->child_insert($c_field_page_part);
-      $this->child_insert($c_button_add);
+      $this->child_insert($c_field_page_part, 'select');
+      $this->child_insert($c_button_add,      'button');
     }
   }
 

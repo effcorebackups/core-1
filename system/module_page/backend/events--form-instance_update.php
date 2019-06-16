@@ -11,6 +11,7 @@ namespace effcore\modules\page {
           use \effcore\group_page_part_insert;
           use \effcore\layout;
           use \effcore\markup;
+          use \effcore\message;
           use \effcore\page;
           abstract class events_form_instance_update {
 
@@ -20,7 +21,7 @@ namespace effcore\modules\page {
     if ($entity_name == 'page' && !empty($form->_instance)) {
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
       foreach ($layout->children_select_recursive() as $c_child) {
-        if ($c_child instanceof area) {
+        if ($c_child instanceof area && $c_child->id) {
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
           $c_child->build();
@@ -40,6 +41,16 @@ namespace effcore\modules\page {
     switch ($form->clicked_button->value_get()) {
       case 'update':
         break;
+      default:
+        $layout = core::deep_clone(layout::select($form->_instance->id_layout));
+        foreach ($layout->children_select_recursive() as $c_child) {
+          if ($c_child instanceof area && $c_child->id) {
+            if ($form->clicked_button->value_get() == 'button_add_for_'.$c_child->id) {
+              message::insert('ID = '.$c_child->id);
+              return;
+            }
+          }
+        }
     }
   }
 
