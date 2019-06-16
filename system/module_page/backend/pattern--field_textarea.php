@@ -20,22 +20,25 @@ namespace effcore {
   ];
 
   function build() {
-    $value = $this->attribute_select('value', 'element_attributes');
-             $this->attribute_delete('value', 'element_attributes');
-    parent::build();
-    $element = $this->child_select('element');
-    $element->child_insert(new text_simple($value ?: ''), 'content');
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      parent::build();
+      $value = $this->attribute_select('value', 'element_attributes');
+               $this->attribute_delete('value', 'element_attributes');
+      $element = $this->child_select('element');
+      $element->child_insert(new text_simple($value ?: ''), 'content');
+    }
   }
 
   function value_get() {
     $element = $this->child_select('element');
-    return $element->child_select('content')->text_select();
+    return  $element->child_select('content')->text_select();
   }
 
   function value_set($value) {
     $this->value_set_initial($value);
     $element = $this->child_select('element');
-    return $element->child_select('content')->text_update($value);
+    return  $element->child_select('content')->text_update($value);
   }
 
 }}
