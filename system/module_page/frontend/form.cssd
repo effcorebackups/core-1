@@ -4,7 +4,8 @@
   form {margin: 70px 0}
   form *[aria-invalid=true] {border-color: %%_color_error !important}
 
-  label[for] {
+  input[type='checkbox'] ~ label[for],
+  input[type='radio'   ] ~ label[for] {
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
@@ -89,7 +90,7 @@
   /* checkboxes and radiobuttons */
 
   input[type='checkbox'],
-  input[type='radio'] {
+  input[type='radio'   ] {
     display: inline-block;
     width: 26px;
     height: 26px;
@@ -97,15 +98,15 @@
     padding: 0;
     vertical-align: middle;
     cursor: pointer}
-  input[type='radio']         {border-radius: 13px}
-  input[data-type='switcher'] {border-radius: 15px; width: 40px}
+  input[type='radio'   ] {border-radius: 13px}
+  input[type='checkbox'][data-type='switcher'] {border-radius: 15px; width: 40px}
 
-  input[type='radio'        ]         {background: %%_color_page}
-  input[type='checkbox'     ]         {background: %%_color_page}
-  input[data-type='switcher']         {background: %%_color_page url('images/icons-form.svgd')   0   -40px}
-  input[type='radio'        ]:checked {background: %%_color_page url('images/icons-form.svgd')   0   -20px}
-  input[type='checkbox'     ]:checked {background: %%_color_page url('images/icons-form.svgd')   0     0  }
-  input[data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
+  input[type='radio'   ]                               {background: %%_color_page}
+  input[type='checkbox']                               {background: %%_color_page}
+  input[type='checkbox'][data-type='switcher']         {background: %%_color_page url('images/icons-form.svgd')   0   -40px}
+  input[type='radio'   ]:checked                       {background: %%_color_page url('images/icons-form.svgd')   0   -20px}
+  input[type='checkbox']:checked                       {background: %%_color_page url('images/icons-form.svgd')   0     0  }
+  input[type='checkbox'][data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
 
   input[data-is-checked='no']:checked,
   input[data-is-checked='yes']:not(:checked) {border-color: %%_color_warning}
