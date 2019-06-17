@@ -22,20 +22,23 @@ namespace effcore {
   public $noise    = 1;
 
   function build() {
-    parent::build();
-    $element = $this->child_select('element');
-    $element->attribute_insert('size',      $this->length);
-    $element->attribute_insert('minlength', $this->length);
-    $element->attribute_insert('maxlength', $this->length);
-  # build canvas on form
-    $captcha = $this->captcha_select();
-    if (!$captcha) {
-      $captcha = $this->captcha_generate();
-      $captcha->insert();
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      parent::build();
+      $element = $this->child_select('element');
+      $element->attribute_insert('size',      $this->length);
+      $element->attribute_insert('minlength', $this->length);
+      $element->attribute_insert('maxlength', $this->length);
+    # build canvas on form
+      $captcha = $this->captcha_select();
+      if (!$captcha) {
+        $captcha = $this->captcha_generate();
+        $captcha->insert();
+      }
+      $this->child_insert_first(
+        $captcha->canvas, 'canvas'
+      );
     }
-    $this->child_insert_first(
-      $captcha->canvas, 'canvas'
-    );
   }
 
   function captcha_select() {
