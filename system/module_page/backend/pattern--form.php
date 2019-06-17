@@ -69,7 +69,7 @@ namespace effcore {
     );
 
   # if user click the button
-    $this->clicked_button_set();
+    $this->clicked_button = $this->clicked_button_get();
     if ($this->is_submitted() && $this->clicked_button) {
 
     # call validate methods
@@ -120,6 +120,15 @@ namespace effcore {
           ($this->attribute_select('method') == 'get'  ? '_GET'  : '_GET');
   }
 
+  function clicked_button_get() {
+    foreach ($this->children_select_recursive() as $c_child) {
+      if ($c_child instanceof button &&
+          $c_child->is_clicked(0, $this->source_get())) {
+        return $c_child;
+      }
+    }
+  }
+
   function form_items_update() {
     $this->items = [];
     $groups      = [];
@@ -134,18 +143,6 @@ namespace effcore {
     foreach ($groups as $c_name => $c_group) {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
       if (count($c_group) >= 2) $this->items[$c_name] =       $c_group;
-    }
-  }
-
-  function clicked_button_set() {
-    $request_value = field::request_value_get('button', 0, $this->source_get());
-    foreach ($this->children_select_recursive() as $c_child) {
-      if ($c_child instanceof button        &&
-          $c_child->disabled_get() == false &&
-          $c_child->value_get()    == $request_value) {
-        $this->clicked_button = $c_child;
-        return true;
-      }
     }
   }
 
