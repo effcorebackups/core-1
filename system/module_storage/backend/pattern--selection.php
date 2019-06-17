@@ -248,7 +248,7 @@ namespace effcore {
   }
 
   function actions_list_get($entity, $instance, $id_keys) {
-    $id_values = array_intersect_key($instance->values, $id_keys);
+    foreach ($id_keys as $c_id) $id_values[$c_id] = $instance->values[$c_id];
     $actions_list = new actions_list();
     if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'delete');
                                     $actions_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'update');

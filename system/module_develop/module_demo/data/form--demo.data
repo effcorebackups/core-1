@@ -258,6 +258,7 @@ forms
               - type: field_relation
             entity_name: tree_item
             entity_field_id_name: id
+            entity_field_id_parent_name: id_parent
             entity_field_title_name: title
             query_params
             - conditions
@@ -266,7 +267,7 @@ forms
               - id_!v: 1
             - order
               - weight_!f: weight
-              - type: ASC
+              - type: DESC
             element_attributes
             - name: relation
             selected
