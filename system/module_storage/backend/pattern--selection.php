@@ -151,7 +151,8 @@ namespace effcore {
                 ];
                 break;
               case 'checkbox':
-                $c_id_values = array_intersect_key($c_instance->values, $id_keys);
+                $c_id_values = [];
+                foreach ($id_keys as $c_id) $c_id_values[$c_id] = $c_instance->values[$c_id];
                 $c_form_field = new field_checkbox();
                 $c_form_field->build();
                 $c_form_field->name_set('is_checked[]');
