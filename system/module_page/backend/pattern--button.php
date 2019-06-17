@@ -48,8 +48,9 @@ namespace effcore {
 
   function is_clicked($number = 0, $source = '_POST') {
     $request_value = field::request_value_get('button', $number, $source);
-    if ($request_value &&
-        $request_value == $this->value_get()) {
+    if ($this->disabled_get() == false &&
+        $request_value                 &&
+        $request_value        == $this->value_get()) {
       return true;
     }
   }

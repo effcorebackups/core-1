@@ -70,7 +70,7 @@ namespace effcore {
 
   # if user click the button
     $this->clicked_button_set();
-    if ($this->clicked_button && $this->is_submitted()) {
+    if ($this->is_submitted() && $this->clicked_button) {
 
     # call validate methods
       if (empty($this->clicked_button->novalidate)) {
@@ -138,11 +138,11 @@ namespace effcore {
   }
 
   function clicked_button_set() {
-    $value = field::request_value_get('button', 0, $this->source_get());
+    $request_value = field::request_value_get('button', 0, $this->source_get());
     foreach ($this->children_select_recursive() as $c_child) {
       if ($c_child instanceof button        &&
           $c_child->disabled_get() == false &&
-          $c_child->value_get()    == $value) {
+          $c_child->value_get()    == $request_value) {
         $this->clicked_button = $c_child;
         return true;
       }
