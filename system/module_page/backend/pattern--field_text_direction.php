@@ -15,10 +15,13 @@ namespace effcore {
   ];
 
   function build() {
-    parent::build();
-    $this->option_insert('- no -', 'not_selected');
-    $this->option_insert('left to right', 'ltr');
-    $this->option_insert('right to left', 'rtl');
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      parent::build();
+      $this->option_insert('- no -', 'not_selected');
+      $this->option_insert('left to right', 'ltr');
+      $this->option_insert('right to left', 'rtl');
+    }
   }
 
 }}
