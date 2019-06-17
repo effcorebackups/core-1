@@ -154,12 +154,14 @@ namespace effcore\modules\develop {
     $decorator->view_type = 'ul';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     $translations = translation::get_all_by_code();
-    ksort($translations);
-    foreach ($translations as $c_orig => $c_tran) {
-      $decorator->data[] = [
-        'orig' => ['value' => new text_simple($c_orig), 'title' => 'Original'   ],
-        'tran' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
-      ];
+    if ($translations) {
+      ksort($translations);
+      foreach ($translations as $c_orig => $c_tran) {
+        $decorator->data[] = [
+          'orig' => ['value' => new text_simple($c_orig), 'title' => 'Original'   ],
+          'tran' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
+        ];
+      }
     }
     return new block('', ['data-id' => 'translations_registered'], [
       $decorator
