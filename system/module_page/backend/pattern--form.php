@@ -28,6 +28,7 @@ namespace effcore {
     $validation_data_hash = core::hash_get_data($this->validation_data);
     $this->child_insert(new field_hidden('form_id',       $id),                       'hidden_id_form'      );
     $this->child_insert(new field_hidden('validation_id-'.$id, $this->validation_id), 'hidden_id_validation');
+
   # send test headers
     if (module::is_enabled('test')) {
       header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
@@ -67,24 +68,15 @@ namespace effcore {
       }
     );
 
-  # ─────────────────────────────────────────────────────────────────────
   # if user click the button
-  # ─────────────────────────────────────────────────────────────────────
-
     $this->clicked_button_set();
-    if ($this->clicked_button && $this->is_active()) {
+    if ($this->clicked_button && $this->is_submitted()) {
 
-    # call items validate methods
+    # call validate methods
       if (empty($this->clicked_button->novalidate)) {
-        foreach ($this->items as $c_npath => $c_item) {
-          if ($c_npath[0] != '#' && is_object($c_item) && method_exists($c_item, 'validate')) {
+        foreach ($this->items as $c_npath => $c_item)
+          if ($c_npath[0] != '#' && is_object($c_item) && method_exists($c_item, 'validate'))
             $c_item::validate($c_item, $this, $c_npath);
-          }
-        }
-      }
-
-    # call form validate handlers
-      if (empty($this->clicked_button->novalidate)) {
         event::start('on_form_validate', $id, [&$this, &$this->items]);
       }
 
@@ -114,6 +106,10 @@ namespace effcore {
       if (static::has_error() != true ||               count($this->validation_data) == 0                    ) $this->validation_cache_delete();
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # shared functionality
+  # ─────────────────────────────────────────────────────────────────────
 
   function id_get() {
     return $this->attribute_select('id');
@@ -153,7 +149,7 @@ namespace effcore {
     }
   }
 
-  function is_active() {
+  function is_submitted() {
     return $this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ==
            $this->child_select('hidden_id_form')->value_get();
   }
