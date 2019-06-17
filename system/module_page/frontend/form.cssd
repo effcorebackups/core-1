@@ -230,7 +230,7 @@
 
   x-page_part-insert {}
   x-page_part-insert x-field {display: inline-block; margin: 0 0 0 5px}
-  x-page_part-insert x-field select {}
+  x-page_part-insert x-field select {width: 130px}
   x-page_part-insert button {margin: 5px; padding: 0; width: 44px; min-width: 44px}
 
   /* IE adaptation */

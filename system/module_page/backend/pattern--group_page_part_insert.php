@@ -33,6 +33,14 @@ namespace effcore {
     }
   }
 
+  function request_value_get() {
+    $select = $this->child_select('select');
+    $button = $this->child_select('button');
+    if ($button->is_clicked() && $select->value_get()) {
+      return                     $select->value_get();
+    }
+  }
+
   ###########################
   ### static declarations ###
   ###########################

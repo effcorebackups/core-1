@@ -22,7 +22,6 @@ namespace effcore\modules\page {
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
       foreach ($layout->children_select_recursive() as $c_child) {
         if ($c_child instanceof area && $c_child->id) {
-          $form->_areas_id[$c_child->id] = $c_child->id;
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
           $c_child->build();
@@ -30,6 +29,7 @@ namespace effcore\modules\page {
           $c_part_insert->id_area = $c_child->id;
           $c_part_insert->build();
           $c_child->child_insert($c_part_insert, 'part_insert');
+          $form->_parts_insert[$c_child->id] = $c_part_insert;
         }
       }
       $form->child_insert_after(
@@ -43,9 +43,9 @@ namespace effcore\modules\page {
       case 'update':
         break;
       default:
-        foreach ($form->_areas_id as $c_id) {
-          if ($form->clicked_button->value_get() == 'button_add_for_'.$c_id) {
-            message::insert('ID = '.$c_id);
+        foreach ($form->_parts_insert as $c_part_insert) {
+          if ($c_part_insert->request_value_get()) {
+            message::insert('ID = '.$c_part_insert->id_area);
             return;
           }
         }
