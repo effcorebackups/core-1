@@ -5,13 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\locales {
-          use \effcore\field_timezone;
           use \effcore\language;
-          use \effcore\locale;
           use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
-          use \effcore\url;
           abstract class events_form_locales {
 
   static function on_init($form, $items) {

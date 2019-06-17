@@ -16,12 +16,15 @@ namespace effcore {
   ];
 
   function build() {
-    parent::build();
-    $this->option_insert('- select -', 'not_selected');
-    if ($this->sort == 'by_zones') $list = static::list_get_by_zones();
-    if ($this->sort == 'by_names') $list = static::list_get_by_names();
-    foreach ($list as $c_name => $c_title) {
-      $this->option_insert($c_title, $c_name);
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      parent::build();
+      $this->option_insert('- select -', 'not_selected');
+      if ($this->sort == 'by_zones') $list = static::list_get_by_zones();
+      if ($this->sort == 'by_names') $list = static::list_get_by_names();
+      foreach ($list as $c_name => $c_title) {
+        $this->option_insert($c_title, $c_name);
+      }
     }
   }
 
