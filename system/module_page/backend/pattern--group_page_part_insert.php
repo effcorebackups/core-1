@@ -33,25 +33,27 @@ namespace effcore {
     }
   }
 
-  function request_value_get() {
-    $select = $this->child_select('select');
-    $button = $this->child_select('button');
-    if ($button->is_clicked() && $select->value_get()) {
-      return                     $select->value_get();
-    }
-  }
-
   ###########################
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $npath) {
-    $select = $field->child_select('select');
-    $button = $field->child_select('button');
+  static function validate($group, $form, $npath) {
+    $select = $group->child_select('select');
+    $button = $group->child_select('button');
     if ($button->is_clicked() && !$select->value_get()) {
       $select->error_set(
         'Field "%%_title" must be selected!', ['title' => translation::get($select->title)]
       );
+    }
+  }
+
+  static function submit(&$group, $form, $npath) {
+    $select = $group->child_select('select');
+    $button = $group->child_select('button');
+    if ($button->is_clicked() && $select->value_get()) {
+      $id_part = $select->value_get(  );
+                 $select->value_set('');
+      return $id_part;
     }
   }
 

@@ -47,10 +47,10 @@ namespace effcore {
     $this->value_set_initial($value);
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node       &&
-          $c_child->tag_name == 'option' &&
-          $c_child->attribute_select('value') == $value) {
-        $c_child->attribute_insert('selected', 'selected');
+      if ($c_child instanceof node &&
+          $c_child->tag_name == 'option') {
+        if ($c_child->attribute_select('value') == $value) $c_child->attribute_insert('selected', 'selected');
+        if ($c_child->attribute_select('value') != $value) $c_child->attribute_delete('selected');
       }
     }
   }

@@ -44,8 +44,9 @@ namespace effcore\modules\page {
         break;
       default:
         foreach ($form->_parts_insert as $c_part_insert) {
-          if ($c_part_insert->request_value_get()) {
-            message::insert('ID = '.$c_part_insert->id_area);
+          $id_part = group_page_part_insert::submit($c_part_insert, null, null);
+          if ($id_part) {
+            message::insert('ID area = '.$c_part_insert->id_area.'; ID part = '.$id_part);
             return;
           }
         }

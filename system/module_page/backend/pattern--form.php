@@ -14,6 +14,7 @@ namespace effcore {
   public $clicked_button;
   public $validation_id;
   public $validation_data = [];
+  public $validation_data_hash;
   protected $items = [];
 
   function build() {
@@ -23,13 +24,17 @@ namespace effcore {
       $this->children_delete();
       return;
     }
+
+  # variables for validation
     $this->validation_id = static::validation_id_get($id, $this->source_get());
     $this->validation_data = $this->validation_cache_select();
-    $validation_data_hash = core::hash_get_data($this->validation_data);
-    $this->child_insert(new field_hidden('form_id',       $id),                       'hidden_id_form'      );
+    $this->validation_data_hash = core::hash_get_data($this->validation_data);
+
+  # hidden fields
+    $this->child_insert(new field_hidden('form_id',       $id                      ), 'hidden_id_form'      );
     $this->child_insert(new field_hidden('validation_id-'.$id, $this->validation_id), 'hidden_id_validation');
 
-  # send test headers
+  # send test headers "X-Form-Validation-Id--form_id: validation_id"
     if (module::is_enabled('test')) {
       header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
     }
@@ -37,12 +42,12 @@ namespace effcore {
   # plug external classes
     foreach ($this->children_select_recursive() as $c_npath => $c_child) {
       if ($c_child instanceof pluggable_class) {
-        $c_parts = explode('/', $c_npath);
-        $c_last_part = end($c_parts);
+        $c_npath_parts = explode('/', $c_npath);
+        $c_npath_last_part = end($c_npath_parts);
         $c_pointers = core::npath_get_pointers($this, $c_npath);
         if ($c_child->is_exists_class())
-                   $c_pointers[$c_last_part] = $c_child->object_get();
-        else unset($c_pointers[$c_last_part]);
+                   $c_pointers[$c_npath_last_part] = $c_child->object_get();
+        else unset($c_pointers[$c_npath_last_part]);
       }
     }
 
@@ -68,7 +73,7 @@ namespace effcore {
       }
     );
 
-  # if user click the button
+  # if user click the button (p.s. dynamic buttons may inserted before)
     $this->clicked_button = $this->clicked_button_get();
     if ($this->is_submitted() && $this->clicked_button) {
 
@@ -80,7 +85,7 @@ namespace effcore {
         event::start('on_form_validate', $id, [&$this, &$this->items]);
       }
 
-    # send test headers
+    # send test headers "X-Form-Submit-Errors-Count: N"
       if (module::is_enabled('test')) {
         header('X-Form-Submit-Errors-Count: '.count(static::$errors));
       }
@@ -102,8 +107,8 @@ namespace effcore {
       }
 
     # validation cache
-      if (static::has_error() == true && core::hash_get_data($this->validation_data) != $validation_data_hash) $this->validation_cache_update($this->validation_data);
-      if (static::has_error() != true ||               count($this->validation_data) == 0                    ) $this->validation_cache_delete();
+      if (static::has_error() == true && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_update($this->validation_data);
+      if (static::has_error() != true ||               count($this->validation_data) == 0                          ) $this->validation_cache_delete();
     }
   }
 
