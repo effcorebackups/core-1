@@ -13,7 +13,6 @@ namespace effcore\modules\locales {
 
   static function on_init($form, $items) {
     $settings = module::settings_get('locales');
-    $items['#lang_code'          ]->build(); # @todo: make it better
     $items['#lang_code'          ]->value_set($settings->lang_code          );
     $items['#format_date'        ]->value_set($settings->format_date        );
     $items['#format_time'        ]->value_set($settings->format_time        );

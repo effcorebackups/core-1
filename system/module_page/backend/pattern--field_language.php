@@ -15,15 +15,18 @@ namespace effcore {
   ];
 
   function build() {
-    parent::build();
-    $languages = language::get_all();
-    ksort($languages);
-    $this->option_insert('- no -', 'not_selected');
-    foreach ($languages as $c_code => $c_info) {
-      $this->option_insert(
-        $c_info->title->en.($c_code != 'en' ? ' ('.
-        $c_info->title->native.')' : ''), $c_code
-      );
+    if (!$this->is_builded) {
+         $this->is_builded = true;
+      parent::build();
+      $languages = language::get_all();
+      ksort($languages);
+      $this->option_insert('- no -', 'not_selected');
+      foreach ($languages as $c_code => $c_info) {
+        $this->option_insert(
+          $c_info->title->en.($c_code != 'en' ? ' ('.
+          $c_info->title->native.')' : ''), $c_code
+        );
+      }
     }
   }
 
