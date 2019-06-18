@@ -29,8 +29,10 @@ namespace effcore {
   }
 
   function build() {
-    foreach ($this->values as $value => $title) {
-      $this->field_insert($title, null, ['value' => $value]);
+    if (!$this->is_builded) {
+      foreach ($this->values as $value => $title)
+        $this->field_insert($title, null, ['value' => $value]);
+      $this->is_builded = true;
     }
   }
 
