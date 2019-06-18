@@ -9,6 +9,12 @@
         text-align: center;
         color: %%_color_text;
         background: %%_color_page}
+      pre {
+        display: inline-block;
+        max-width: 40em;
+        overflow: scroll;
+        margin: 100px auto;
+        text-align: left}
       a       {color: %%_color_link}
       a:hover {color: %%_color_link_active}
       h1 {font-size: 1.75em}
@@ -30,5 +36,6 @@
       </g>
     </svg>
     <p>%%_message</p>
+  %%_console
   </body>
 </html>

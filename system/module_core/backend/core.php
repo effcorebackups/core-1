@@ -817,6 +817,7 @@ namespace effcore {
   }
 
   static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
+    timer::tap('total');
     switch ($type) {
       case 'redirect'        : header('Location: '.$p); exit();
       case 'page_refresh'    : header('Refresh: ' .$p); exit();
@@ -831,9 +832,10 @@ namespace effcore {
     $color_text        = $colors[$settings->color_text_id       ]->value;
     $color_link        = $colors[$settings->color_link_id       ]->value;
     $color_link_active = $colors[$settings->color_link_active_id]->value;
-    if ($type == 'access_forbidden') print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active ]))->render();
-    if ($type == 'page_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active ]))->render();
-    if ($type == 'file_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active ]))->render();
+    $console           = module::is_enabled('develop') && $settings->console_visibility == 'show_for_everyone' ? (new markup('pre', [], console::text_get()))->render() : '';
+    if ($type == 'access_forbidden') print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
+    if ($type == 'page_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
+    if ($type == 'file_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
     exit();
   }
 

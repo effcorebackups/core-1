@@ -148,7 +148,7 @@ namespace effcore {
     $information['Memory for php (bytes)'] = locale::format_number(memory_get_usage(true));
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_key => $c_value) {
-      $result.= '  '.str_pad($c_key, 60, ' ', STR_PAD_LEFT).' : ';
+      $result.= '  '.str_pad($c_key, 38, ' ', STR_PAD_LEFT).' : ';
       $result.=      $c_value.nl;
     }
     return nl.$result.nl;
@@ -168,7 +168,7 @@ namespace effcore {
     $result = '  TOTAL LOAD'.nl.nl;
     foreach ($statistics as $c_key => $c_value) {
       $c_percent = $c_value / $total * 100;
-      $result.= '  '.str_pad($c_key, 34, ' ', STR_PAD_LEFT).                           ' | ';
+      $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                           ' | ';
       $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
       $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
       $result.=      locale::format_msecond($c_value).' sec.'.nl;
