@@ -20,9 +20,14 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       $this->number = static::current_number_get();
+      $this->is_builded = true;
     }
+  }
+
+  function render() {
+    $this->build();
+    return parent::render();
   }
 
   function render_self() {

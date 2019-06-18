@@ -77,7 +77,7 @@ namespace effcore {
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]
     ]];
     return new block('Current page information', ['data-id' => 'info'], [
-      $decorator->build()
+      $decorator
     ]);
   }
 

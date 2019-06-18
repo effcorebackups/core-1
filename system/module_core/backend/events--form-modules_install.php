@@ -32,7 +32,6 @@ namespace effcore\modules\core {
     foreach ($groups as $c_group_id => $c_group_title) {
       $c_fieldset = new fieldset($c_group_title);
       $c_fieldset->state = 'closed';
-      $c_fieldset->build();
       $info->child_insert($c_fieldset, $c_group_id);
       foreach ($modules as $c_module)
         if ($c_group_id == $c_module->group_get_id())
