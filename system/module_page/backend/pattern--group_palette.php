@@ -16,7 +16,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
     # the "parent::build()" is not required here
       $c_new_group_name = null;
       $c_old_group_name = null;
@@ -28,8 +27,8 @@ namespace effcore {
           'value' => $c_color->id,
           'title' => translation::get('color id = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
           'style' => ['background: '.$c_color->value]
-        ], $c_color->id);
-      }
+        ], $c_color->id);}
+      $this->is_builded = true;
     }
   }
 

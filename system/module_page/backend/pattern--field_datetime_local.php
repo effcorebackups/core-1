@@ -23,7 +23,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       field_text::build();
       $value = field_text::value_get();
       $min = $this->min_get();
@@ -32,6 +31,7 @@ namespace effcore {
       if ($max          ) {$this->  max_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $max        )));        }
       if ($value != null) {$this->value_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(       $value       ))); return;}
       if ($value == null) {$this->value_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(core::datetime_get()))); return;}
+      $this->is_builded = true;
     }
   }
 

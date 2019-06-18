@@ -21,12 +21,12 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $value = $this->attribute_select('value', 'element_attributes');
                $this->attribute_delete('value', 'element_attributes');
       $element = $this->child_select('element');
       $element->child_insert(new text_simple($value ?: ''), 'content');
+      $this->is_builded = true;
     }
   }
 
