@@ -29,7 +29,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
 
       $this->attribute_insert('data-view-type', $this->view_type);
       $this->attribute_insert('data-id',        $this->id);
@@ -196,6 +195,7 @@ namespace effcore {
       }
 
       event::start('on_selection_after_build', $this->id, [&$this]);
+      $this->is_builded = true;
       return $this;
 
     }

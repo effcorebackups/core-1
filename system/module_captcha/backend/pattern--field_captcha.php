@@ -23,7 +23,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $element = $this->child_select('element');
       $element->attribute_insert('size',      $this->length);
@@ -35,9 +34,8 @@ namespace effcore {
         $captcha = $this->captcha_generate();
         $captcha->insert();
       }
-      $this->child_insert_first(
-        $captcha->canvas, 'canvas'
-      );
+      $this->child_insert_first($captcha->canvas, 'canvas');
+      $this->is_builded = true;
     }
   }
 

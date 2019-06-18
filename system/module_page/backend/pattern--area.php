@@ -14,12 +14,11 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       if ($this->type) $this->attribute_insert('data-area-type', $this->type);
       if ($this->id)   $this->attribute_insert('data-area-id',   $this->id);
-      if ($this->managing_is_on && $this->id) {
+      if ($this->managing_is_on && $this->id)
         $this->child_insert(new markup('x-id', [], ['simple' => new text_simple($this->id)]), 'id');
-      }
+      $this->is_builded = true;
     }
   }
 
