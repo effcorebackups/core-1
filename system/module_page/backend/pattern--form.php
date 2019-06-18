@@ -80,9 +80,9 @@ namespace effcore {
 
       # call validate methods
         if (empty($this->clicked_button->novalidate)) {
-          foreach ($this->items as $c_npath => $c_item)
-            if ($c_npath[0] != '#' && is_object($c_item) && method_exists($c_item, 'validate'))
-              $c_item::validate($c_item, $this, $c_npath);
+          foreach ($this->children_select_recursive() as $c_npath => $c_child)
+            if (is_object($c_child) && method_exists($c_child, 'validate'))
+              $c_child::validate($c_child, $this, $c_npath);
           event::start('on_form_validate', $id, [&$this, &$this->items]);
         }
 
