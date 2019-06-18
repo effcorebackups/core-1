@@ -16,7 +16,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $languages = language::get_all();
       ksort($languages);
@@ -24,9 +23,8 @@ namespace effcore {
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(
           $c_info->title->en.($c_code != 'en' ? ' ('.
-          $c_info->title->native.')' : ''), $c_code
-        );
-      }
+          $c_info->title->native.')' : ''), $c_code);}
+      $this->is_builded = true;
     }
   }
 

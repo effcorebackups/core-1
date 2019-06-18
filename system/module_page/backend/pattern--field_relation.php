@@ -20,7 +20,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $this->option_insert('- no -', 'not_selected');
       $entity = entity::get($this->entity_name);
@@ -52,6 +51,7 @@ namespace effcore {
           );
         }
       }
+      $this->is_builded = true;
     }
   }
 

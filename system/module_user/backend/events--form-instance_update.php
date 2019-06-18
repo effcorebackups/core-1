@@ -22,6 +22,14 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
+    if ($entity_name == 'relation_role_ws_user' && !empty($form->_instance)) {
+      $items['#id_role']->is_builded = false;
+      $items['#id_role']->disabled['anonymous' ] = 'anonymous';
+      $items['#id_role']->disabled['registered'] = 'registered';
+      $items['#id_role']->disabled['owner'     ] = 'owner';
+      $items['#id_role']->build();
+      $items['#id_role']->value_set($form->_instance->id_role);
+    }
     if ($entity_name == 'user' && !empty($form->_instance)) {
       $field_password_hash_current = new field_password('Current password', '', [], -50);
       $field_password_hash_current->build();

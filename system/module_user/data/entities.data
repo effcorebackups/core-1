@@ -60,6 +60,8 @@ entities
         - entity_name: role
         - entity_field_id_name: id
         - entity_field_title_name: title
+        field_element_attributes
+        - disabled: true
     - id_permission
         title: Permission
         type: varchar
@@ -112,6 +114,8 @@ entities
         - entity_name: user
         - entity_field_id_name: id
         - entity_field_title_name: nick
+        field_element_attributes
+        - disabled: true
     - id_role
         title: Role
         type: varchar
@@ -313,6 +317,8 @@ entities
         collate: nocase
         default: UTC
         field_class: \effcore\field_timezone
+        field_element_attributes
+        - data-source: uagent-timezone
     - password_hash
         title: New password
         type: varchar

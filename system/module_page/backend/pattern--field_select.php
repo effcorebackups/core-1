@@ -19,16 +19,18 @@ namespace effcore {
   public $disabled = [];
 
   function build() {
-    parent::build();
-    foreach ($this->values as $c_id => $c_data) {
-      if (is_object($c_data) &&
-             !empty($c_data->title) &&
-             !empty($c_data->values)) {
-        if (!$this->optgroup_select($c_id))
-             $this->optgroup_insert($c_id, $c_data->title);
-        foreach ($c_data->values as $g_id => $g_data)
-             $this->option_insert($g_data, $g_id, [], $c_id);
-      } else $this->option_insert($c_data, $c_id);
+    if (!$this->is_builded) {
+      parent::build();
+      foreach ($this->values as $c_id => $c_data) {
+        if (is_object($c_data) &&
+               !empty($c_data->title) &&
+               !empty($c_data->values)) {
+          if (!$this->optgroup_select($c_id))
+               $this->optgroup_insert($c_id, $c_data->title);
+          foreach ($c_data->values as $g_id => $g_data)
+               $this->option_insert($g_data, $g_id, [], $c_id);
+        } else $this->option_insert($c_data, $c_id);}
+      $this->is_builded = true;
     }
   }
 

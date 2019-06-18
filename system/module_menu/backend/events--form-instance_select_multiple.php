@@ -8,8 +8,11 @@ namespace effcore\modules\menu {
           use \effcore\entity;
           use \effcore\field_hidden;
           use \effcore\field;
+          use \effcore\message;
           use \effcore\node;
           use \effcore\page;
+          use \effcore\text;
+          use \effcore\translation;
           abstract class events_form_instance_select_multiple {
 
   static function on_init($form, &$items) { # drag-and-drop functionality
@@ -32,6 +35,7 @@ namespace effcore\modules\menu {
   static function on_submit($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
+    $entity = entity::get($entity_name);
     if ($entity_name == 'tree_item' && $id_tree) {
       $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
       foreach ($tree_items as $c_item) {
@@ -42,7 +46,8 @@ namespace effcore\modules\menu {
               $c_item->weight    != $c_new_weight) {
               $c_item->id_parent  = $c_new_parent;
               $c_item->weight     = $c_new_weight;
-              $c_item->update();
+            if ($c_item->update()) message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $c_item->id]));
+            else                   message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
           }
         }
       }

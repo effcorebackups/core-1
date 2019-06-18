@@ -15,11 +15,11 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $this->option_insert('- select -', 'not_selected');
       $this->option_insert('No',  '0');
       $this->option_insert('Yes', '1');
+      $this->is_builded = true;
     }
   }
 
