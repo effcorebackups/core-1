@@ -21,14 +21,17 @@ namespace effcore {
   ];
 
   function build() {
-    parent::build();
-    $value = parent::value_get();
-    $min = $this->min_get();
-    $max = $this->max_get();
-    if ($min) $this->min_set(core::datetime_to_T_datetime($min));
-    if ($max) $this->max_set(core::datetime_to_T_datetime($max));
-    if ($value != null) {$this->value_set(core::datetime_to_T_datetime(       $value       )); return;}
-    if ($value == null) {$this->value_set(core::datetime_to_T_datetime(core::datetime_get())); return;}
+    if (!$this->is_builded) {
+      parent::build();
+      $value = parent::value_get();
+      $min = $this->min_get();
+      $max = $this->max_get();
+      if ($min) $this->min_set(core::datetime_to_T_datetime($min));
+      if ($max) $this->max_set(core::datetime_to_T_datetime($max));
+      if ($value != null) {$this->value_set(core::datetime_to_T_datetime(       $value       )); return;}
+      if ($value == null) {$this->value_set(core::datetime_to_T_datetime(core::datetime_get())); return;}
+      $this->is_builded = true;
+    }
   }
 
   function value_get() {

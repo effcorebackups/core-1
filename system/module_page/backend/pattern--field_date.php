@@ -21,10 +21,13 @@ namespace effcore {
   ];
 
   function build() {
-    parent::build();
-    $value = parent::value_get();
-    if ($value != null) {$this->value_set($value          ); return;}
-    if ($value == null) {$this->value_set(core::date_get()); return;}
+    if (!$this->is_builded) {
+      parent::build();
+      $value = parent::value_get();
+      if ($value != null) {$this->value_set(     $value     ); return;}
+      if ($value == null) {$this->value_set(core::date_get()); return;}
+      $this->is_builded = true;
+    }
   }
 
   function value_get() {
