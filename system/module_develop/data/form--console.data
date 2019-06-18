@@ -11,6 +11,7 @@ forms
         - visibility|field_select
             title: Visibility
             description: *.cssd | *.jsd console will show only in mode "show for everyone" for performance reasons.
+            description_state: opened
             element_attributes
             - name: visibility
             values
