@@ -50,7 +50,7 @@ namespace effcore\modules\core {
       'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ]
     ]];
     return new block('Service', ['data-id' => 'info_service'], [
-      $decorator->build()
+      $decorator
     ]);
   }
 
@@ -72,7 +72,7 @@ namespace effcore\modules\core {
       'datetime'      => ['title' => 'Server UTC date / time', 'value' => core::datetime_get()                                     ],
     ]];
     return new block('Environment', ['data-id' => 'info_environment'], [
-      $decorator->build()
+      $decorator
     ]);
   }
 

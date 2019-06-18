@@ -25,7 +25,6 @@ namespace effcore {
       return;
     }
     if (!$this->is_builded) {
-         $this->is_builded = true;
 
     # variables for validation
       $this->validation_id = static::validation_id_get($id, $this->source_get());
@@ -113,6 +112,7 @@ namespace effcore {
         if (static::has_error() != true ||               count($this->validation_data) == 0                          ) $this->validation_cache_delete();
       }
 
+      $this->is_builded = true;
     }
   }
 

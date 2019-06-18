@@ -13,7 +13,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $page_parts = page_part::select_all($this->id_area);
       $c_field_page_part = new field_select;
@@ -30,6 +29,7 @@ namespace effcore {
       $c_button_add->value_set('button_add_for_'.$this->id_area);
       $this->child_insert($c_field_page_part, 'select');
       $this->child_insert($c_button_add,      'button');
+      $this->is_builded = true;
     }
   }
 

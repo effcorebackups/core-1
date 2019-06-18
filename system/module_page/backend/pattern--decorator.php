@@ -24,7 +24,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
 
       $result = new node();
       $this->attribute_insert('data-view-type', $this->view_type);
@@ -163,6 +162,7 @@ namespace effcore {
         );
       }
       event::start('on_decorator_after_build', $this->id, [&$this]);
+      $this->is_builded = true;
       return $this;
 
     }
