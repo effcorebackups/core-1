@@ -46,14 +46,12 @@ namespace effcore\modules\develop {
     $trees = tree::select_all('nosql');
     $id = $page->args_get('id');
     if (isset($trees[$id])) {
-      $tree = clone tree::select($id);
-      $tree->build();
-      $tree_items = $tree->children_select_recursive();
+      $tree = tree::select($id);
       $tree_managing_id = 'managed-'.$id;
       $tree_managing = tree::insert($tree->title ?? '', $tree_managing_id);
       $tree_managing->managing_mode = 'simple';
       $tree_managing->title_state = 'cutted';
-      foreach ($tree_items as $c_item) {
+      foreach (tree_item::select_all_by_id_tree($id) as $c_item) {
         $c_tree_item = tree_item::insert($c_item->title,
           $tree_managing_id.'-'.$c_item->id, $c_item->id_parent !== null ?
           $tree_managing_id.'-'.$c_item->id_parent : null,

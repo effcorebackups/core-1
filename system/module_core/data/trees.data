@@ -3,5 +3,8 @@ trees
     id: main
     title: Menu main
     title_state: hidden
+    access
+      roles
+      - =: admins
     attributes
     - data-style: main
