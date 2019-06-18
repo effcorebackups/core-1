@@ -19,7 +19,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
 
       $this->attribute_insert('data-type', $this->type);
       switch ($this->type) {
@@ -70,6 +69,7 @@ namespace effcore {
           break;
       }
 
+      $this->is_builded = true;
     }
   }
 

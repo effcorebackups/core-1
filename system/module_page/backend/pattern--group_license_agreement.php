@@ -13,7 +13,6 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       parent::build();
       $language = language::get(language::code_get_current());
       $license_file = new file($language->license_translation ?
@@ -25,6 +24,7 @@ namespace effcore {
       $switcher_agree->required_set(true);
       $this->child_insert($markup_license, 'license' );
       $this->child_insert($switcher_agree, 'is_agree');
+      $this->is_builded = true;
     }
   }
 
