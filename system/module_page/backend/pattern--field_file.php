@@ -118,7 +118,7 @@ namespace effcore {
       }
     }
   # join deleted items from the cache with deleted items from the form
-    $deleted           = $this->pool_validation_cache_get('old_to_delete');
+    $deleted           = $this->pool_validation_cache_get($this->name_get().'_files_pool_old_to_delete');
     $deleted_from_form = $this->pool_manager_get_deleted_items('old');
     foreach ($this->pool_old as $c_id => $c_info) {
       if (isset($deleted_from_form[$c_id])) {
@@ -133,13 +133,13 @@ namespace effcore {
       }
     }
   # save the poll
-    $this->pool_validation_cache_set('old_to_delete', $deleted);
+    $this->pool_validation_cache_set($this->name_get().'_files_pool_old_to_delete', $deleted);
   # update pool manager
     $this->pool_manager_rebuild();
   }
 
   function pool_values_init_new_from_cache() {
-    $this->pool_new = $this->pool_validation_cache_get('new');
+    $this->pool_new = $this->pool_validation_cache_get($this->name_get().'_files_pool_new');
   # physically delete the items which marked as 'deleted'
     $deleted_from_form = $this->pool_manager_get_deleted_items('new');
     foreach ($this->pool_new as $c_id => $c_info) {
@@ -151,7 +151,7 @@ namespace effcore {
       }
     }
   # save the poll
-    $this->pool_validation_cache_set('new', $this->pool_new);
+    $this->pool_validation_cache_set($this->name_get().'_files_pool_new', $this->pool_new);
   # update pool manager
     $this->pool_manager_rebuild();
   }
@@ -163,7 +163,7 @@ namespace effcore {
   # move temporary items from php 'tmp' directory to system 'tmp' directory
     $this->pool_files_move_tmp_to_pre();
   # save the poll
-    $this->pool_validation_cache_set('new', $this->pool_new);
+    $this->pool_validation_cache_set($this->name_get().'_files_pool_new', $this->pool_new);
   # update pool manager
     $this->pool_manager_rebuild();
   }
@@ -174,7 +174,7 @@ namespace effcore {
 
   function pool_files_save() {
   # delete the old deleted items
-    $deleted = $this->pool_validation_cache_get('old_to_delete');
+    $deleted = $this->pool_validation_cache_get($this->name_get().'_files_pool_old_to_delete');
     foreach ($deleted as $c_id => $c_info) {
       if (isset($deleted[$c_id])) {
         @unlink($deleted[$c_id]->old_path);
@@ -190,7 +190,7 @@ namespace effcore {
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_set_deleted_items('old', []);
-    $this->pool_validation_cache_set('old_to_delete', []);
+    $this->pool_validation_cache_set($this->name_get().'_files_pool_old_to_delete', []);
     $this->pool_values_init_old_from_storage($result_paths);
   # return result array
     return $result;
@@ -240,17 +240,14 @@ namespace effcore {
   # pool validation cache
   # ─────────────────────────────────────────────────────────────────────
 
-  protected function pool_validation_cache_get($type) {
-    $name = $this->name_get();
-    return $this->cform->validation_data['pool'][$name][$type] ?? [];
+  protected function pool_validation_cache_get($id) {
+    return $this->cform->validation_data[$id] ?? [];
   }
 
-  protected function pool_validation_cache_set($type, $data) {
-    $name = $this->name_get();
-    $this->cform->validation_data['pool'][$name][$type] = $data;
-    if (count($this->cform->validation_data['pool'][$name][$type]) == 0) unset($this->cform->validation_data['pool'][$name][$type]);
-    if (count($this->cform->validation_data['pool'][$name])        == 0) unset($this->cform->validation_data['pool'][$name]);
-    if (count($this->cform->validation_data['pool'])               == 0) unset($this->cform->validation_data['pool']);
+  protected function pool_validation_cache_set($id, $data) {
+              $this->cform->validation_data[$id] = $data;
+    if (count($this->cform->validation_data[$id]) == 0)
+        unset($this->cform->validation_data[$id]);
   }
 
   # ─────────────────────────────────────────────────────────────────────
