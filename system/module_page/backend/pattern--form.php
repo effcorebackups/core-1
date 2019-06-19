@@ -13,7 +13,7 @@ namespace effcore {
   public $attributes = ['accept-charset' => 'UTF-8'];
   public $clicked_button;
   public $validation_id;
-  public $validation_data = [];
+  public $validation_data;
   public $validation_data_hash;
   protected $items = [];
 
@@ -28,8 +28,6 @@ namespace effcore {
 
     # variables for validation
       $this->validation_id = static::validation_id_get($id, $this->source_get());
-      $this->validation_data = $this->validation_cache_storage_select();
-      $this->validation_data_hash = core::hash_get_data($this->validation_data);
 
     # hidden fields
       $this->child_insert(new field_hidden('form_id',       $id                      ), 'hidden_id_form'      );
@@ -187,6 +185,10 @@ namespace effcore {
 
 
   function validation_cache_get($id) {
+    if ($this->validation_data === null) {
+      $instance = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
+      $this->validation_data = $instance ? unserialize($instance->data) : [];
+      $this->validation_data_hash = core::hash_get_data($this->validation_data);}
     return $this->validation_data[$id] ?? [];
   }
 
@@ -194,14 +196,6 @@ namespace effcore {
               $this->validation_data[$id] = $data;
     if (count($this->validation_data[$id]) == 0)
         unset($this->validation_data[$id]);
-  }
-
-  protected function validation_cache_storage_select() {
-    $storage = storage::get(entity::get('cache_validation')->storage_name);
-    if ($storage->is_available()) {
-      $cache = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
-      return $cache ? unserialize($cache->data) : [];
-    }
   }
 
   protected function validation_cache_storage_update($cache) {
