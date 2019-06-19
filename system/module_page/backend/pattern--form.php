@@ -105,9 +105,11 @@ namespace effcore {
           event::start('on_form_submit', $id, [&$this, &$this->items]);
         }
 
-      # validation cache
-        if (static::has_error() == true && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update($this->validation_data);
-        if (static::has_error() != true ||               count($this->validation_data) == 0                          ) $this->validation_cache_storage_delete();
+      # update or delete validation cache
+        if ($this->validation_data !== null) {
+          if (static::has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
+          if (static::has_error() == false                                                                              ) $this->validation_cache_storage_delete();
+        }
       }
 
       $this->is_builded = true;
@@ -183,40 +185,39 @@ namespace effcore {
   # functionality for validation cache
   # ──────────────────────────────────────────────────────────────────────────────
 
+  function validation_cache_date_get($format = 'Y-m-d') {
+    $timestmp = static::validation_id_extract_created($this->validation_id);
+    return \DateTime::createFromFormat('U', $timestmp)->format($format);
+  }
 
-  function validation_cache_get($id) {
+  function validation_cache_init() {
     if ($this->validation_data === null) {
       $instance = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
       $this->validation_data = $instance ? unserialize($instance->data) : [];
-      $this->validation_data_hash = core::hash_get_data($this->validation_data);}
+      $this->validation_data_hash = core::hash_get_data($this->validation_data);
+    }
+  }
+
+  function validation_cache_get($id) {
+    $this->validation_cache_init();
     return $this->validation_data[$id] ?? [];
   }
 
   function validation_cache_set($id, $data) {
-              $this->validation_data[$id] = $data;
-    if (count($this->validation_data[$id]) == 0)
-        unset($this->validation_data[$id]);
+    $this->validation_cache_init();
+    $this->validation_data[$id] = $data;
   }
 
-  protected function validation_cache_storage_update($cache) {
-    $storage = storage::get(entity::get('cache_validation')->storage_name);
-    if ($storage->is_available()) {
-      $instance = new instance('cache_validation', ['id' => $this->validation_id]);
-      if ($instance->select()) {$instance->data = serialize($cache); return $instance->update();}
-      else                     {$instance->data = serialize($cache); return $instance->insert();}
-    }
+  function validation_cache_storage_update() {
+    $instance = new instance('cache_validation', ['id' => $this->validation_id]);
+    if ($instance->select()) {$instance->data = serialize($this->validation_data); return $instance->update();}
+    else                     {$instance->data = serialize($this->validation_data); return $instance->insert();}
   }
 
-  protected function validation_cache_storage_delete() {
-    $storage = storage::get(entity::get('cache_validation')->storage_name);
-    if ($storage->is_available()) {
-      return (new instance('cache_validation', ['id' => $this->validation_id]))->delete();
-    }
-  }
-
-  function validation_cache_date_get($format = 'Y-m-d') {
-    $timestmp = static::validation_id_extract_created($this->validation_id);
-    return \DateTime::createFromFormat('U', $timestmp)->format($format);
+  function validation_cache_storage_delete() {
+    return (new instance('cache_validation', [
+      'id' => $this->validation_id
+    ]))->delete();
   }
 
   static function validation_tmp_cleaning($limit = 5000) {
