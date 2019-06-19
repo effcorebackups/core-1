@@ -28,7 +28,7 @@ namespace effcore {
 
     # variables for validation
       $this->validation_id = static::validation_id_get($id, $this->source_get());
-      $this->validation_data = $this->validation_cache_select();
+      $this->validation_data = $this->validation_cache_storage_select();
       $this->validation_data_hash = core::hash_get_data($this->validation_data);
 
     # hidden fields
@@ -108,8 +108,8 @@ namespace effcore {
         }
 
       # validation cache
-        if (static::has_error() == true && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_update($this->validation_data);
-        if (static::has_error() != true ||               count($this->validation_data) == 0                          ) $this->validation_cache_delete();
+        if (static::has_error() == true && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update($this->validation_data);
+        if (static::has_error() != true ||               count($this->validation_data) == 0                          ) $this->validation_cache_storage_delete();
       }
 
       $this->is_builded = true;
@@ -185,7 +185,18 @@ namespace effcore {
   # functionality for validation cache
   # ──────────────────────────────────────────────────────────────────────────────
 
-  protected function validation_cache_select() {
+
+  function validation_cache_get($id) {
+    return $this->validation_data[$id] ?? [];
+  }
+
+  function validation_cache_set($id, $data) {
+              $this->validation_data[$id] = $data;
+    if (count($this->validation_data[$id]) == 0)
+        unset($this->validation_data[$id]);
+  }
+
+  protected function validation_cache_storage_select() {
     $storage = storage::get(entity::get('cache_validation')->storage_name);
     if ($storage->is_available()) {
       $cache = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
@@ -193,7 +204,7 @@ namespace effcore {
     }
   }
 
-  protected function validation_cache_update($cache) {
+  protected function validation_cache_storage_update($cache) {
     $storage = storage::get(entity::get('cache_validation')->storage_name);
     if ($storage->is_available()) {
       $instance = new instance('cache_validation', ['id' => $this->validation_id]);
@@ -202,7 +213,7 @@ namespace effcore {
     }
   }
 
-  protected function validation_cache_delete() {
+  protected function validation_cache_storage_delete() {
     $storage = storage::get(entity::get('cache_validation')->storage_name);
     if ($storage->is_available()) {
       return (new instance('cache_validation', ['id' => $this->validation_id]))->delete();
