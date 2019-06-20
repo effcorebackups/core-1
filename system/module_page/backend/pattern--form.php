@@ -15,6 +15,7 @@ namespace effcore {
   public $validation_id;
   public $validation_data;
   public $validation_data_hash;
+  public $validation_data_is_persistent = false;
   protected $items = [];
 
   function build() {
@@ -107,8 +108,9 @@ namespace effcore {
 
       # update or delete validation cache
         if ($this->validation_data !== null) {
-          if (static::has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
-          if (static::has_error() == false                                                                              ) $this->validation_cache_storage_delete();
+          if ($this->validation_data_is_persistent != false &&                                 core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
+          if ($this->validation_data_is_persistent == false && static::has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
+          if ($this->validation_data_is_persistent == false && static::has_error() == false                                                                              ) $this->validation_cache_storage_delete();
         }
       }
 

@@ -19,6 +19,7 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
+      $form->validation_data_is_persistent = true;
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
       foreach ($layout->children_select_recursive() as $c_child) {
         if ($c_child instanceof area && $c_child->id) {
