@@ -13,6 +13,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
+          use \effcore\text;
           abstract class events_form_instance_update {
 
   static function on_init($form, &$items) {
@@ -51,7 +52,7 @@ namespace effcore\modules\page {
             $page_parts = $form->validation_cache_get('page_parts');
             $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
             $form->validation_cache_set('page_parts', $page_parts);
-            message::insert('ID area = '.$c_part_insert->id_area.'; ID part = '.$id_part);
+            message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $id_part, 'id_area' => $c_part_insert->id_area]));
             return;
           }
         }
