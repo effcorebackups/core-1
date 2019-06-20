@@ -49,15 +49,16 @@ namespace effcore\modules\page {
   }
 
   static function on_submit($form, $items) {
+    $page_parts = $form->validation_cache_get('page_parts');
     switch ($form->clicked_button->value_get()) {
       case 'update':
+        $form->_instance->parts = serialize($page_parts);
         break;
       default:
         foreach ($form->_parts_insert as $c_part_insert) {
           $id_part = group_page_part_insert::submit($c_part_insert, null, null);
           if ($id_part) {
             $form->validation_data_is_persistent = true;
-            $page_parts = $form->validation_cache_get('page_parts');
             $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
             $form->validation_cache_set('page_parts', $page_parts);
             message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $id_part, 'id_area' => $c_part_insert->id_area]));

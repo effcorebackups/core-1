@@ -108,6 +108,10 @@ entities
         field_class: \effcore\field_text_direction
         field_element_attributes
         - disabled: true
+    - parts
+        title: Parts
+        type: blob
+        null: true
     constraints
     - primary_id
         type: primary
