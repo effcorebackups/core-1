@@ -20,13 +20,14 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
-      $layout = core::deep_clone(layout::select($form->_instance->id_layout));
+    # build page parts
       $page_parts = $form->validation_cache_get('page_parts');
-      foreach (unserialize($form->_instance->parts) ?: [] as $c_area => $c_stored_parts) {
-        foreach ($c_stored_parts as $c_id_stored_part) {
+      foreach (unserialize($form->_instance->parts) ?: [] as $c_area => $c_stored_parts)
+        foreach ($c_stored_parts as $c_id_stored_part)
           $page_parts[$c_area][$c_id_stored_part] = $c_id_stored_part;
-        }
-      }
+      $form->validation_cache_set('page_parts', $page_parts);
+    # build layout
+      $layout = core::deep_clone(layout::select($form->_instance->id_layout));
       foreach ($layout->children_select_recursive() as $c_child) {
         if ($c_child instanceof area && $c_child->id) {
           $c_child->managing_is_on = true;
