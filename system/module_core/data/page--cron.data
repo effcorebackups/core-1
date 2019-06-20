@@ -8,7 +8,7 @@ pages
       - =: anonymous
       - =: registered
     parts
-    - block_cron|page_part
-        id_area: content
-        type: code
-        source: \effcore\modules\core\events_page_cron::on_cron_run
+    - content
+      - block_cron|page_part
+          type: code
+          source: \effcore\modules\core\events_page_cron::on_cron_run

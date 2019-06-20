@@ -18,170 +18,155 @@ pages
       roles
       - =: admins
     parts
-    - menu_user|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_registered
-    - menu_main|page_part
-        id_area: menu
-        type: link
-        source: trees/core/main
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        id_area: tabs
-        type: link
-        source: tabs/demo/demo
+    - menu
+      - menu_user|page_part
+          type: link
+          source: trees/user/user_registered
+      - menu_main|page_part
+          type: link
+          source: trees/core/main
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
+    - tabs
+      - tabs|page_part
+          type: link
+          source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
-    - form_demo|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/form_elements$%
-        id_area: content
-        type: link
-        source: forms/demo/demo
-    # ─────────────────────────────────────────────────────────────────────
-    # markup
-    # ─────────────────────────────────────────────────────────────────────
-    - block_demo_markup_static|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/markup_static$%
-        id_area: content
-        type: link
-        source: blocks/demo/demo_markup_static
-    - block_demo_markup_dynamic|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/markup_dynamic$%
-        id_area: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_markup_dynamic
-    # ─────────────────────────────────────────────────────────────────────
-    # decorators
-    # ─────────────────────────────────────────────────────────────────────
-    - block_demo_decorators_static|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/decorators_static$%
-        id_area: content
-        type: link
-        source: blocks/demo/demo_decorators_static
-    - block_demo_decorators_dynamic|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/decorators_dynamic$%
-        id_area: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
-    # ─────────────────────────────────────────────────────────────────────
-    # trees
-    # ─────────────────────────────────────────────────────────────────────
-    - tree_demo_via_decorator|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        id_area: content
-        type: link
-        source: blocks/demo/demo_tree_via_decorator
-    - tree_demo_sql|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        id_area: content
-        type: code
-        source: \effcore\modules\menu\events_page::on_show_block_tree_sql
-        args
-        - id_tree: demo_sql
-    - tree_demo_nosql|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/trees(/.*|)$%
-        id_area: content
-        type: link
-        source: trees/demo/demo_nosql
-    # ─────────────────────────────────────────────────────────────────────
-    # selections
-    # ─────────────────────────────────────────────────────────────────────
-    - block_demo_selection_demo_data_join_1|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/selections$%
-        id_area: content
-        type: copy
-        source: selections/demo/demo_data_join
-        properties
-        - title: Selection of "demo_data" entities + join (ID: 100+)
-    - block_demo_selection_demo_data_join_2|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/selections$%
-        id_area: content
-        type: copy
-        source: selections/demo/demo_data_join
-        properties
-        - title: Selection of "demo_data" entities + join (ID: 200+)
-        - pager_id: 2
-        - query_params
-          - conditions
-            - id_!f: ~demo_data.id
-            - operator: >=
-            - id_!v: 200
-    - block_demo_selection_demo_types|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/selections$%
-        id_area: content
-        type: link
-        source: selections/demo/demo_types
-    # ─────────────────────────────────────────────────────────────────────
-    # messages
-    # ─────────────────────────────────────────────────────────────────────
-    - demo_messages|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/messages$%
-        id_area: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
-    - demo_messages_description|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/messages$%
-        id_area: content
-        type: text
-        source: All types of messages you can see above.
-    # ─────────────────────────────────────────────────────────────────────
-    # other
-    # ─────────────────────────────────────────────────────────────────────
-    - block_demo_canvas|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/canvas$%
-        id_area: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
-    - block_demo_diagrams|page_part
-        display
-          check: page_args
-          where: type
-          match: %^embedded/diagrams$%
-        id_area: content
-        type: code
-        source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
+    - content
+      - form_demo|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/form_elements$%
+          type: link
+          source: forms/demo/demo
+      # ─────────────────────────────────────────────────────────────────────
+      # markup
+      # ─────────────────────────────────────────────────────────────────────
+      - block_demo_markup_static|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/markup_static$%
+          type: link
+          source: blocks/demo/demo_markup_static
+      - block_demo_markup_dynamic|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/markup_dynamic$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_markup_dynamic
+      # ─────────────────────────────────────────────────────────────────────
+      # decorators
+      # ─────────────────────────────────────────────────────────────────────
+      - block_demo_decorators_static|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/decorators_static$%
+          type: link
+          source: blocks/demo/demo_decorators_static
+      - block_demo_decorators_dynamic|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/decorators_dynamic$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
+      # ─────────────────────────────────────────────────────────────────────
+      # trees
+      # ─────────────────────────────────────────────────────────────────────
+      - tree_demo_via_decorator|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: link
+          source: blocks/demo/demo_tree_via_decorator
+      - tree_demo_sql|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: code
+          source: \effcore\modules\menu\events_page::on_show_block_tree_sql
+          args
+          - id_tree: demo_sql
+      - tree_demo_nosql|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: link
+          source: trees/demo/demo_nosql
+      # ─────────────────────────────────────────────────────────────────────
+      # selections
+      # ─────────────────────────────────────────────────────────────────────
+      - block_demo_selection_demo_data_join_1|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/selections$%
+          type: copy
+          source: selections/demo/demo_data_join
+          properties
+          - title: Selection of "demo_data" entities + join (ID: 100+)
+      - block_demo_selection_demo_data_join_2|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/selections$%
+          type: copy
+          source: selections/demo/demo_data_join
+          properties
+          - title: Selection of "demo_data" entities + join (ID: 200+)
+          - pager_id: 2
+          - query_params
+            - conditions
+              - id_!f: ~demo_data.id
+              - operator: >=
+              - id_!v: 200
+      - block_demo_selection_demo_types|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/selections$%
+          type: link
+          source: selections/demo/demo_types
+      # ─────────────────────────────────────────────────────────────────────
+      # messages
+      # ─────────────────────────────────────────────────────────────────────
+      - demo_messages|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/messages$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
+      - demo_messages_description|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/messages$%
+          type: text
+          source: All types of messages you can see above.
+      # ─────────────────────────────────────────────────────────────────────
+      # other
+      # ─────────────────────────────────────────────────────────────────────
+      - block_demo_canvas|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/canvas$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
+      - block_demo_diagrams|page_part
+          display
+            check: page_args
+            where: type
+            match: %^embedded/diagrams$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams

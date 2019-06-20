@@ -4,24 +4,22 @@ pages
     title: Front page
     url: /
     parts
-    - menu_user_registered|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_registered
-    - menu_user_anonymous|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_anonymous
-    - menu_main|page_part
-        id_area: menu
-        type: link
-        source: trees/core/main
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
+    - menu
+      - menu_user_registered|page_part
+          type: link
+          source: trees/user/user_registered
+      - menu_user_anonymous|page_part
+          type: link
+          source: trees/user/user_anonymous
+      - menu_main|page_part
+          type: link
+          source: trees/core/main
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - welcome|page_part
-        id_area: content
-        type: text
-        source: Welcome to our site!
+    - content
+      - welcome|page_part
+          type: text
+          source: Welcome to our site!

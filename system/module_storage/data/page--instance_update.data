@@ -10,20 +10,19 @@ pages
       roles
       - =: admins
     parts
-    - menu_user|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_registered
-    - menu_main|page_part
-        id_area: menu
-        type: link
-        source: trees/core/main
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
+    - menu
+      - menu_user|page_part
+          type: link
+          source: trees/user/user_registered
+      - menu_main|page_part
+          type: link
+          source: trees/core/main
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - form_instance_update|page_part
-        id_area: content
-        type: link
-        source: forms/storage/instance_update
+    - content
+      - form_instance_update|page_part
+          type: link
+          source: forms/storage/instance_update

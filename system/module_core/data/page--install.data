@@ -5,20 +5,19 @@ pages
     is_https: true
     url: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
     parts
-    - menu_languages|page_part
-        id_area: top
-        type: code
-        source: \effcore\modules\locales\events_page::on_show_block_menu_languages
-    - block_system_info|page_part
-        id_area: top
-        type: code
-        source: \effcore\modules\core\events_page_info::on_show_block_system_info
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
+    - top
+      - menu_languages|page_part
+          type: code
+          source: \effcore\modules\locales\events_page::on_show_block_menu_languages
+      - block_system_info|page_part
+          type: code
+          source: \effcore\modules\core\events_page_info::on_show_block_system_info
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
     # ─────────────────────────────────────────────────────────────────────
-    - form_install|page_part
-        id_area: content
-        type: link
-        source: forms/core/install
+    - content
+      - form_install|page_part
+          type: link
+          source: forms/core/install

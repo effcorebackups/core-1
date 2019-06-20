@@ -10,36 +10,34 @@ pages
       roles
       - =: admins
     parts
-    - menu_user|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_registered
-    - menu_main|page_part
-        id_area: menu
-        type: link
-        source: trees/core/main
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        id_area: tabs
-        type: link
-        source: tabs/page/decoration
+    - menu
+      - menu_user|page_part
+          type: link
+          source: trees/user/user_registered
+      - menu_main|page_part
+          type: link
+          source: trees/core/main
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
+    - tabs
+      - tabs|page_part
+          type: link
+          source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
-    - form_colors|page_part
-        display
-          check: page_args
-          where: type
-          match: %^colors$%
-        id_area: content
-        type: link
-        source: forms/page/colors
-    - form_colors_preset|page_part
-        display
-          check: page_args
-          where: type
-          match: %^presets/.*$%
-        id_area: content
-        type: link
-        source: forms/page/colors_preset
+    - content
+      - form_colors|page_part
+          display
+            check: page_args
+            where: type
+            match: %^colors$%
+          type: link
+          source: forms/page/colors
+      - form_colors_preset|page_part
+          display
+            check: page_args
+            where: type
+            match: %^presets/.*$%
+          type: link
+          source: forms/page/colors_preset

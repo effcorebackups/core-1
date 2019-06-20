@@ -14,68 +14,62 @@ pages
       roles
       - =: admins
     parts
-    - menu_user|page_part
-        id_area: menu
-        type: link
-        source: trees/user/user_registered
-    - menu_main|page_part
-        id_area: menu
-        type: link
-        source: trees/core/main
-    - title|page_part
-        id_area: title
-        type: code
-        source: \effcore\modules\page\events_page::on_show_title
-    - tabs|page_part
-        id_area: tabs
-        type: link
-        source: tabs/develop/nosql_data
+    - menu
+      - menu_user|page_part
+          type: link
+          source: trees/user/user_registered
+      - menu_main|page_part
+          type: link
+          source: trees/core/main
+    - title
+      - title|page_part
+          type: code
+          source: \effcore\modules\page\events_page::on_show_title
+    - tabs
+      - tabs|page_part
+          type: link
+          source: tabs/develop/nosql_data
     # ─────────────────────────────────────────────────────────────────────
-    - block_trees|page_part
-        display
-          check: page_args
-          where: type
-          match: %^trees/.*$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tree
-    - block_events|page_part
-        display
-          check: page_args
-          where: type
-          match: %^events$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events
-    - block_file_types|page_part
-        display
-          check: page_args
-          where: type
-          match: %^file_types$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
-    - block_templates|page_part
-        display
-          check: page_args
-          where: type
-          match: %^templates$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_templates
-    - block_tokens|page_part
-        display
-          check: page_args
-          where: type
-          match: %^tokens$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tokens
-    - block_translations|page_part
-        display
-          check: page_args
-          where: type
-          match: %^translations$%
-        id_area: content
-        type: code
-        source: \effcore\modules\develop\events_page_nosql_data::on_show_block_translations
+    - content
+      - block_trees|page_part
+          display
+            check: page_args
+            where: type
+            match: %^trees/.*$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tree
+      - block_events|page_part
+          display
+            check: page_args
+            where: type
+            match: %^events$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events
+      - block_file_types|page_part
+          display
+            check: page_args
+            where: type
+            match: %^file_types$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
+      - block_templates|page_part
+          display
+            check: page_args
+            where: type
+            match: %^templates$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_templates
+      - block_tokens|page_part
+          display
+            check: page_args
+            where: type
+            match: %^tokens$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tokens
+      - block_translations|page_part
+          display
+            check: page_args
+            where: type
+            match: %^translations$%
+          type: code
+          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_translations

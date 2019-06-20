@@ -30,15 +30,22 @@ namespace effcore {
     if (!$this->is_builded) {
       event::start('on_page_before_build', $this->id, [&$this]);
       if (is_array($this->parts)) {
-        core::array_sort_by_weight($this->parts);
-        foreach ($this->parts as $c_row_id => $c_part) {
-          $c_part_markup = $c_part->markup_get($this);
-          if ($c_part_markup) {
-            if (!$this->child_select(            $c_part->id_area))
-                 $this->child_insert(new node(), $c_part->id_area);
-            $c_area_markup = $this->child_select($c_part->id_area);
-            $c_area_markup->child_insert($c_part_markup, $c_row_id);
-            if ($c_part->type == 'link') $this->used_dpaths[] = $c_part->source;}}}
+        foreach ($this->parts as $c_id_area => $c_parts) {
+          core::array_sort_by_weight($c_parts);
+          if (!$this->child_select(            $c_id_area))
+               $this->child_insert(new node(), $c_id_area);
+          foreach ($c_parts as $c_row_id => $c_part) {
+            $c_part_markup = $c_part->markup_get($this);
+            if ($c_part_markup) {
+              $c_area_markup = $this->child_select($c_id_area);
+              $c_area_markup->child_insert($c_part_markup, $c_row_id);
+              if ($c_part->type == 'link') {
+                $this->used_dpaths[] = $c_part->source;
+              }
+            }
+          }
+        }  
+      }
       event::start('on_page_after_build', $this->id, [&$this]);
       $this->is_builded = true;
     }
@@ -142,8 +149,9 @@ namespace effcore {
     if ($instance) {
       $page = new static;
       foreach ($instance->values_get() as $c_key => $c_value) {
-        if   ($c_key == 'access') $page->{$c_key} = unserialize($c_value) ?: null;
-        else                      $page->{$c_key} =             $c_value;
+        if     ($c_key == 'parts' ) $page->{$c_key} = unserialize($c_value) ?: null;
+        elseif ($c_key == 'access') $page->{$c_key} = unserialize($c_value) ?: null;
+        else                        $page->{$c_key} =             $c_value;
       }
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
