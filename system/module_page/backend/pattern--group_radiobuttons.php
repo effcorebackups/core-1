@@ -55,6 +55,7 @@ namespace effcore {
   }
 
   function name_get_first($trim = true) {
+  # try to find the name in "element_attributes"
         $element_attributes_name = $this->attributes_select('element_attributes')['name'] ?? '';
         $element_attributes_name = $trim ? rtrim($element_attributes_name, '[]') : $element_attributes_name;
     if ($element_attributes_name) return
