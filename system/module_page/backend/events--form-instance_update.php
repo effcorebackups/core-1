@@ -19,8 +19,8 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
-      $form->validation_data_is_persistent = true;
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
+      $page_parts = $form->validation_cache_get('page_parts');
       foreach ($layout->children_select_recursive() as $c_child) {
         if ($c_child instanceof area && $c_child->id) {
           $c_child->managing_is_on = true;
@@ -47,6 +47,7 @@ namespace effcore\modules\page {
         foreach ($form->_parts_insert as $c_part_insert) {
           $id_part = group_page_part_insert::submit($c_part_insert, null, null);
           if ($id_part) {
+            $form->validation_data_is_persistent = true;
             $page_parts = $form->validation_cache_get('page_parts');
             $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
             $form->validation_cache_set('page_parts', $page_parts);
