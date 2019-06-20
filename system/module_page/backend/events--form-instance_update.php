@@ -27,6 +27,13 @@ namespace effcore\modules\page {
           $c_child->managing_is_on = true;
           $c_child->tag_name = 'div';
           $c_child->build();
+          if (isset($page_parts[$c_child->id])) {
+            foreach ($page_parts[$c_child->id] as $c_id_part) {
+              $c_child->child_insert(
+                new markup('div', [], $c_id_part), $c_id_part
+              );
+            }
+          }
           $c_part_insert = new group_page_part_insert();
           $c_part_insert->id_area = $c_child->id;
           $c_part_insert->build();
