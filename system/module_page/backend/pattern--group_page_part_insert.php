@@ -51,9 +51,7 @@ namespace effcore {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && $select->value_get()) {
-      $id_part = $select->value_get(  );
-                 $select->value_set('');
-      return $id_part;
+      return $select->value_get();
     }
   }
 

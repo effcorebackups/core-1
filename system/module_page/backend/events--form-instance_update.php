@@ -41,6 +41,7 @@ namespace effcore\modules\page {
           $form->_parts_insert[$c_child->id] = $c_part_insert;
         }
       }
+      $form->child_delete('layout_manager');
       $form->child_insert_after(
         new markup('x-layout-manager', [], $layout), 'fields', 'layout_manager'
       );
@@ -60,6 +61,7 @@ namespace effcore\modules\page {
             $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
             $form->validation_cache_set('page_parts', $page_parts);
             message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $id_part, 'id_area' => $c_part_insert->id_area]));
+            static::on_init($form, $items);
             return;
           }
         }
