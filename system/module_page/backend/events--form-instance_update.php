@@ -46,6 +46,9 @@ namespace effcore\modules\page {
         foreach ($form->_parts_insert as $c_part_insert) {
           $id_part = group_page_part_insert::submit($c_part_insert, null, null);
           if ($id_part) {
+            $page_parts = $form->validation_cache_get('page_parts');
+            $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
+            $form->validation_cache_set('page_parts', $page_parts);
             message::insert('ID area = '.$c_part_insert->id_area.'; ID part = '.$id_part);
             return;
           }

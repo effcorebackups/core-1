@@ -74,11 +74,11 @@ namespace effcore {
   }
 
   function render_description() {
-                                                            $result[] = $this->render_description_file_size_max();
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number();
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number();
-    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number();
-    if ($this->allowed_types                              ) $result[] = $this->render_description_allowed_types();
+                                                            $result[] = $this->render_description_file_size_max     ();
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number   ();
+    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number   ();
+    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number   ();
+    if ($this->allowed_types                              ) $result[] = $this->render_description_allowed_types     ();
     if ($this->allowed_characters_title                   ) $result[] = $this->render_description_allowed_characters();
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
