@@ -76,7 +76,7 @@ namespace effcore {
       $this->clicked_button = $this->clicked_button_get();
       if ($this->is_submitted() && $this->clicked_button) {
 
-      # call validate methods
+      # call validate methods (parent must be at the end)
         if (empty($this->clicked_button->novalidate)) {
           foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child)
             if (is_object($c_child) && method_exists($c_child, 'validate'))
