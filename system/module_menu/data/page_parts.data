@@ -1,15 +1,22 @@
 page_parts
-- menu_user|page_part
-    id: menu_user
-    managing_title: Menu: User
-    type: link
-    source: trees/user/user_registered
-    in_areas
-    - =: menu
 - menu_main|page_part
     id: menu_main
     managing_title: Menu: Main
     type: link
     source: trees/core/main
+    in_areas
+    - =: menu
+- menu_user_registered|page_part
+    id: menu_user_registered
+    managing_title: Menu: User (registered)
+    type: link
+    source: trees/user/user_registered
+    in_areas
+    - =: menu
+- menu_user_anonymous|page_part
+    id: menu_user_anonymous
+    managing_title: Menu: User (anonymous)
+    type: link
+    source: trees/user/user_anonymous
     in_areas
     - =: menu

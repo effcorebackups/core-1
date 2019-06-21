@@ -272,6 +272,9 @@ translations
     - Menu main: Меню главное
     - Menu text: Меню текст
     - Menu: Меню
+    - Menu\: Main: Меню: Основное
+    - Menu\: User (anonymous): Меню: Пользователь (аноним)
+    - Menu\: User (registered): Меню: Пользователь (зарегистрированный)
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
