@@ -1,6 +1,10 @@
 page_parts
 - title|page_part
+    id: title
     managing_title: Title
-    id_area: title
     type: code
     source: \effcore\modules\page\events_page::on_show_title
+    in_areas
+    - =: top
+    - =: title
+    - =: content

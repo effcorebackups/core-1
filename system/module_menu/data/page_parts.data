@@ -1,11 +1,15 @@
 page_parts
 - menu_user|page_part
+    id: menu_user
     managing_title: Menu: User
-    id_area: menu
     type: link
     source: trees/user/user_registered
+    in_areas
+    - =: menu
 - menu_main|page_part
+    id: menu_main
     managing_title: Menu: Main
-    id_area: menu
     type: link
     source: trees/core/main
+    in_areas
+    - =: menu

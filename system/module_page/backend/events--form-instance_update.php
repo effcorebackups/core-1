@@ -22,29 +22,27 @@ namespace effcore\modules\page {
     if ($entity_name == 'page' && !empty($form->_instance)) {
     # build page parts
       $page_parts = $form->validation_cache_get('page_parts');
-      foreach (unserialize($form->_instance->parts) ?: [] as $c_area => $c_stored_parts)
+      foreach (unserialize($form->_instance->parts) ?: [] as $c_id_area => $c_stored_parts)
         foreach ($c_stored_parts as $c_id_stored_part)
-          $page_parts[$c_area][$c_id_stored_part] = $c_id_stored_part;
+          $page_parts[$c_id_area][$c_id_stored_part] = $c_id_stored_part;
       $form->validation_cache_set('page_parts', $page_parts);
     # build layout
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
-      foreach ($layout->children_select_recursive() as $c_child) {
-        if ($c_child instanceof area && $c_child->id) {
-          $c_child->managing_is_on = true;
-          $c_child->tag_name = 'div';
-          $c_child->build();
-          if (isset($page_parts[$c_child->id])) {
-            foreach ($page_parts[$c_child->id] as $c_id_part) {
-              $c_child->child_insert(
-                new markup('div', [], $c_id_part), $c_id_part
-              );
-            }
+      foreach ($layout->children_select_recursive() as $c_area) {
+        if ($c_area instanceof area && $c_area->id) {
+          $c_area->managing_is_on = true;
+          $c_area->tag_name = 'div';
+          $c_area->build();
+          foreach ($page_parts[$c_area->id] ?? [] as $c_id_part) {
+            $c_area->child_insert(
+              new markup('div', [], $c_id_part), $c_id_part
+            );
           }
           $c_part_insert = new group_page_part_insert();
-          $c_part_insert->id_area = $c_child->id;
+          $c_part_insert->in_area = $c_area->id;
           $c_part_insert->build();
-          $c_child->child_insert($c_part_insert, 'part_insert');
-          $form->_parts_insert[$c_child->id] = $c_part_insert;
+          $c_area->child_insert($c_part_insert, 'part_insert');
+          $form->_parts_insert[$c_area->id] = $c_part_insert;
         }
       }
       $form->child_delete('layout_manager');
@@ -62,12 +60,12 @@ namespace effcore\modules\page {
         break;
       default:
         foreach ($form->_parts_insert as $c_part_insert) {
-          $id_part = group_page_part_insert::submit($c_part_insert, null, null);
-          if ($id_part) {
+          $c_id_part = group_page_part_insert::submit($c_part_insert, null, null);
+          if ($c_id_part) {
             $form->validation_data_is_persistent = true;
-            $page_parts[$c_part_insert->id_area][$id_part] = $id_part;
+            $page_parts[$c_part_insert->in_area][$c_id_part] = $c_id_part;
             $form->validation_cache_set('page_parts', $page_parts);
-            message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $id_part, 'id_area' => $c_part_insert->id_area]));
+            message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $c_id_part, 'id_area' => $c_part_insert->in_area]));
             static::on_init($form, $items);
             return;
           }

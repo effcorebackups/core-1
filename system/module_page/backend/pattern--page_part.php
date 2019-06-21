@@ -7,10 +7,11 @@
 namespace effcore {
           class page_part extends node {
 
-  public $id_area = 'content';
+  public $id;
   public $managing_title;
   public $display;
   public $type; # code | link | text | …
+  public $in_areas;
   public $source;
   public $properties = [];
   public $args       = [];
@@ -46,10 +47,10 @@ namespace effcore {
   static function init() {
     if (static::$cache == null) {
       foreach (storage::get('files')->select('page_parts') as $c_module_id => $c_page_parts) {
-        foreach ($c_page_parts as $c_row_id => $c_page_part) {
-          if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('page_part', $c_row_id, $c_module_id);
-          static::$cache[$c_row_id] = $c_page_part;
-          static::$cache[$c_row_id]->module_id = $c_module_id;
+        foreach ($c_page_parts as $c_page_part) {
+          if (isset(static::$cache[$c_page_part->id])) console::log_insert_about_duplicate('page_part', $c_page_part->id, $c_module_id);
+          static::$cache[$c_page_part->id] = $c_page_part;
+          static::$cache[$c_page_part->id]->module_id = $c_module_id;
         }
       }
     }
@@ -59,15 +60,16 @@ namespace effcore {
     static::init();
     $result = static::$cache;
     if ($id_area)
-      foreach ($result as $c_row_id => $c_item)
-        if ($c_item->id_area != $id_area)
-          unset($result[$c_row_id]);
+      foreach ($result as $c_id => $c_item)
+        if (is_array(          $c_item->in_areas) &&
+           !in_array($id_area, $c_item->in_areas))
+          unset($result[$c_id]);
     return $result;
   }
 
-  static function select($row_id) {
+  static function select($id) {
     static::init();
-    return static::$cache[$row_id];
+    return static::$cache[$id];
   }
 
 }}
