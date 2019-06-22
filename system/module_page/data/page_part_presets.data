@@ -1,4 +1,4 @@
-page_parts
+page_part_presets
 - title|page_part_preset
     id: title
     managing_title: Title

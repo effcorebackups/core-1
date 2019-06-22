@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\message;
-          use \effcore\page_part;
+          use \effcore\page_part_preset;
           use \effcore\page;
           use \effcore\text_simple;
           use \effcore\text;
@@ -22,7 +22,7 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     if ($entity_name == 'page' && !empty($form->_instance)) {
-    # build page parts
+    # collect page parts
       $page_parts = $form->validation_cache_get('page_parts');
       foreach (unserialize($form->_instance->parts) ?: [] as $c_id_area => $c_stored_parts)
         foreach ($c_stored_parts as $c_id_stored_part => $c_stored_part)
@@ -65,7 +65,7 @@ namespace effcore\modules\page {
           $c_id_part = group_page_part_insert::submit($c_part_insert, null, null);
           if ($c_id_part) {
             $form->validation_data_is_persistent = true;
-            $page_parts[$c_part_insert->in_area][$c_id_part] = page_part::select($c_id_part);
+            $page_parts[$c_part_insert->in_area][$c_id_part] = page_part_preset::select($c_id_part);
             $form->validation_cache_set('page_parts', $page_parts);
             message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $c_id_part, 'id_area' => $c_part_insert->in_area]));
             static::on_init($form, $items);

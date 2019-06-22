@@ -14,23 +14,23 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $page_parts = page_part::select_all($this->in_area);
-      $c_field_page_part = new field_select;
-      $c_field_page_part->title = 'Insert part';
-      $c_field_page_part->build();
-      $c_field_page_part->name_set('page_part_for_'.$this->in_area);
-      $c_field_page_part->required_set(false);
-      $c_field_page_part->option_insert('- no -', 'not_selected');
-      foreach ($page_parts as $c_part)
-        $c_field_page_part->option_insert(
-          $c_part->managing_title,
-          $c_part->id);
+      $presets = page_part_preset::select_all($this->in_area);
+      $c_select_preset = new field_select;
+      $c_select_preset->title = 'Insert part';
+      $c_select_preset->build();
+      $c_select_preset->name_set('page_part_for_'.$this->in_area);
+      $c_select_preset->required_set(false);
+      $c_select_preset->option_insert('- no -', 'not_selected');
+      foreach ($presets as $c_preset)
+        $c_select_preset->option_insert(
+          $c_preset->managing_title,
+          $c_preset->id);
       $c_button_add = new button;
       $c_button_add->title = '';
       $c_button_add->build();
       $c_button_add->value_set('button_add_for_'.$this->in_area);
-      $this->child_insert($c_field_page_part, 'select');
-      $this->child_insert($c_button_add,      'button');
+      $this->child_insert($c_select_preset, 'select');
+      $this->child_insert($c_button_add,    'button');
       $this->is_builded = true;
     }
   }

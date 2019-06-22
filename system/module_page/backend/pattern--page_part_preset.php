@@ -15,4 +15,42 @@ namespace effcore {
     return parent::markup_get($page);
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static protected $cache;
+
+  static function cache_cleaning() {
+    static::$cache = null;
+  }
+
+  static function init() {
+    if (static::$cache == null) {
+      foreach (storage::get('files')->select('page_part_presets') as $c_module_id => $c_presets) {
+        foreach ($c_presets as $c_preset) {
+          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('page_part_preset', $c_preset->id, $c_module_id);
+          static::$cache[$c_preset->id] = $c_preset;
+          static::$cache[$c_preset->id]->module_id = $c_module_id;
+        }
+      }
+    }
+  }
+
+  static function select_all($id_area = null) {
+    static::init();
+    $result = static::$cache;
+    if ($id_area)
+      foreach ($result as $c_id => $c_preset)
+        if (is_array(          $c_preset->in_areas) &&
+           !in_array($id_area, $c_preset->in_areas))
+          unset($result[$c_id]);
+    return $result;
+  }
+
+  static function select($id) {
+    static::init();
+    return static::$cache[$id];
+  }
+
 }}
