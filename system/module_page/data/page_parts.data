@@ -1,5 +1,5 @@
 page_parts
-- title|page_part
+- title|page_part_preset
     id: title
     managing_title: Title
     type: code
@@ -8,3 +8,8 @@ page_parts
     - =: top
     - =: title
     - =: content
+- welcome|page_part_preset
+    id: welcome
+    managing_title: Welcome message
+    type: text
+    source: Welcome to our site!

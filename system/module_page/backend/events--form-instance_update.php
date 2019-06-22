@@ -14,6 +14,7 @@ namespace effcore\modules\page {
           use \effcore\message;
           use \effcore\page_part;
           use \effcore\page;
+          use \effcore\text_simple;
           use \effcore\text;
           abstract class events_form_instance_update {
 
@@ -36,7 +37,7 @@ namespace effcore\modules\page {
           $c_area->build();
           foreach ($page_parts[$c_area->id] ?? [] as $c_part) {
             $c_area->child_insert(
-              new markup('div', [], $c_part->id), $c_part->id
+              new markup('div', [], [$c_part->managing_title, ' (', new text_simple($c_part->id), ')']), $c_part->id
             );
           }
           $c_part_insert = new group_page_part_insert();
