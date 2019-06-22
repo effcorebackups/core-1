@@ -35,6 +35,8 @@ namespace effcore {
           if (!$this->child_select(            $c_id_area))
                $this->child_insert(new node(), $c_id_area);
           foreach ($c_parts as $c_row_id => $c_part) {
+            if ($c_part instanceof page_part_preset)
+                $c_part = $c_part->object_get();
             $c_part_markup = $c_part->markup_get($this);
             if ($c_part_markup) {
               $c_area_markup = $this->child_select($c_id_area);

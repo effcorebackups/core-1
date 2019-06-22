@@ -13,9 +13,8 @@ pages
           type: code
           source: \effcore\modules\core\events_page_info::on_show_block_system_info
     - title
-      - title|page_part
-          type: code
-          source: \effcore\modules\page\events_page::on_show_title
+      - title|page_part_preset
+          id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_install|page_part

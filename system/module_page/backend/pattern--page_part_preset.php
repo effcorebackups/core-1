@@ -11,8 +11,13 @@ namespace effcore {
   public $managing_title;
   public $in_areas;
 
-  function markup_get($page = null) {
-    return parent::markup_get($page);
+  function object_get() {
+    $preset = static::select($this->id);
+    $page_part = new page_part;
+    foreach ($page_part as $c_key => $c_value)
+      $page_part->{$c_key} =
+         $preset->{$c_key};
+    return $page_part;
   }
 
   ###########################

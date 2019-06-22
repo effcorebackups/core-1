@@ -9,16 +9,13 @@ pages
       - =: anonymous
     parts
     - menu
-      - menu_user|page_part
-          type: link
-          source: trees/user/user_anonymous
-      - menu_main|page_part
-          type: link
-          source: trees/core/main
+      - menu_user_anonymous|page_part_preset
+          id: menu_user_anonymous
+      - menu_main|page_part_preset
+          id: menu_main
     - title
-      - title|page_part
-          type: code
-          source: \effcore\modules\page\events_page::on_show_title
+      - title|page_part_preset
+          id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_recovery|page_part
