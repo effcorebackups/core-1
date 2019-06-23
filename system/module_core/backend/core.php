@@ -217,7 +217,7 @@ namespace effcore {
     foreach ((array)$data as $c_key => $c_value) {
       if ($is_xml_style && $c_value === true) $c_value = $c_key;
       switch (gettype($c_value)) {
-        case 'NULL'   :                                                                                                                                                                                          break;
+        case 'NULL'   :                                                                                                                                                                                         break;
         case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_key.$key_wrapper;                                                                                                                             break;
         case 'array'  :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
         case 'object' :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
@@ -228,13 +228,15 @@ namespace effcore {
     else            return $result;
   }
 
-  static function data_to_code($data, $prefix = '', $defs = null) {
+  static function data_to_code($data, $prefix = '', $array_defaults = null) {
     $result = '';
     switch (gettype($data)) {
       case 'array':
         if (count($data)) {
           foreach ($data as $c_key => $c_value) {
-            if (is_array($defs) && array_key_exists($c_key, $defs) && $defs[$c_key] === $c_value) continue;
+            if (is_array($array_defaults) && array_key_exists($c_key,
+                         $array_defaults) &&
+                         $array_defaults[$c_key] === $c_value) continue;
             $result.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
                                                                  '['.$c_key.']' :
                                                    '[\''.addcslashes($c_key, '\'\\').'\']'));
@@ -244,23 +246,57 @@ namespace effcore {
         }
         break;
       case 'object':
-        $c_class_name = get_class($data);
-        $c_reflection = new \ReflectionClass($c_class_name);
-        $c_defs               = $c_reflection->getDefaultProperties();
-        $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
-        $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
-        if ($c_is_postconstructor)
-             $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$c_class_name).'\');'.nl;
-        else $result = $prefix.' = new \\'.$c_class_name.'();'.nl;
+        $class_name = get_class($data);
+        $reflection = new \ReflectionClass($class_name);
+        $defaults           = $reflection->getDefaultProperties();
+        $is_postconstructor = $reflection->implementsInterface('\\effcore\\has_postconstructor');
+        $is_postinit        = $reflection->implementsInterface('\\effcore\\has_postinit'       );
+        if ($is_postconstructor)
+             $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$class_name).'\');'.nl;
+        else $result = $prefix.' = new \\'.$class_name.'();'.nl;
         foreach ($data as $c_key => $c_value) {
-          if (array_key_exists($c_key, $c_defs) && $c_defs[$c_key] === $c_value) continue;
-          $result.= static::data_to_code($c_value, $prefix.'->'.$c_key, $c_defs[$c_key] ?? null);
+          if (array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
+          $result.= static::data_to_code($c_value, $prefix.'->'.$c_key, $defaults[$c_key] ?? null);
         }
-        if ($c_is_postconstructor) $result.= $prefix.'->__construct();'.nl;
-        if ($c_is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
+        if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
+        if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
       default:
         $result.= $prefix.' = '.static::data_to_string($data).';'.nl;
+    }
+    return $result;
+  }
+
+  static function data_serialize($data, $is_effective = true) {
+    $result = '';
+    switch (gettype($data)) {
+      case 'string' : return 's:'.strlen($data).':"'.$data            .'";';
+      case 'boolean': return 'b:'.                  ($data ? '1' : '0').';';
+      case 'integer': return 'i:'.                   $data             .';';
+      case 'double' : return 'd:'.                   $data             .';';
+      case 'NULL'   : return 'N'                                       .';';
+      case 'array'  :
+        $result_children = [];
+        foreach ($data as $c_key => $c_val) {
+        $result_children[] = static::data_serialize($c_key, $is_effective);
+        $result_children[] = static::data_serialize($c_val, $is_effective);}
+        $result = 'a:'.count($data).':{'.implode('', $result_children).'}';
+        break;
+      case 'object':
+        $class_name = get_class($data);
+        $reflection = new \ReflectionClass($class_name);
+        $defaults = $reflection->getDefaultProperties();
+        $result_children = [];
+        foreach ($data as $c_key => $c_val) {
+          if ($is_effective && array_key_exists($c_key,  $defaults)
+                            &&        $defaults[$c_key] === $c_val) continue;
+        $result_children[] = static::data_serialize($c_key, $is_effective);
+        $result_children[] = static::data_serialize($c_val, $is_effective);}
+        $result = 'O:'.strlen($class_name).':"'.
+                              $class_name.'":'.(int)(count($result_children) / 2).':{'.
+                                               implode('', $result_children).'}';
+        break;
+      default:
     }
     return $result;
   }

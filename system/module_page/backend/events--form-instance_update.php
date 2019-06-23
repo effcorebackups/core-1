@@ -58,7 +58,9 @@ namespace effcore\modules\page {
     $page_parts = $form->validation_cache_get('page_parts');
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        $form->_instance->parts = serialize($page_parts);
+        $form->_instance->parts = serialize(
+          $page_parts
+        );
         break;
       default:
         foreach ($form->_parts_insert as $c_part_insert) {
