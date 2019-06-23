@@ -9,8 +9,8 @@ pages
       - =: anonymous
     parts
     - menu
-      - menu_user_registered|page_part_preset
-          id: menu_user_registered
+      - menu_user_anonymous|page_part_preset
+          id: menu_user_anonymous
       - menu_main|page_part_preset
           id: menu_main
     - title
