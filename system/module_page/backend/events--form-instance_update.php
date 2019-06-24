@@ -24,7 +24,7 @@ namespace effcore\modules\page {
     if ($entity_name == 'page' && !empty($form->_instance)) {
     # collect page parts
       $page_parts = $form->validation_cache_get('page_parts');
-      foreach (unserialize($form->_instance->parts) ?: [] as $c_id_area => $c_stored_parts)
+      foreach ($form->_instance->parts ?: [] as $c_id_area => $c_stored_parts)
         foreach ($c_stored_parts as $c_id_stored_part => $c_stored_part)
             $page_parts[$c_id_area][$c_id_stored_part] = $c_stored_part;
       $form->validation_cache_set('page_parts', $page_parts);
@@ -58,9 +58,7 @@ namespace effcore\modules\page {
     $page_parts = $form->validation_cache_get('page_parts');
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        $form->_instance->parts = core::data_serialize(
-          $page_parts
-        );
+        $form->_instance->parts = $page_parts;
         break;
       default:
         foreach ($form->_parts_insert as $c_part_insert) {

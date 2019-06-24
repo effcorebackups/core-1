@@ -409,8 +409,9 @@ namespace effcore {
 
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
-      $entity    = $instance->entity_get();
-      $id_fields = $entity->id_get_real_from_values($instance->values_get());
+      $entity = $instance->entity_get();
+      $values = $instance->values_get();
+      $id_fields = $entity->id_get_real_from_values($values);
       $result = $this->query([
         'action' => 'SELECT',
         'fields_!,' => ['all_!f' => '*'],
@@ -422,9 +423,10 @@ namespace effcore {
         'limit' => 1]);
       if  (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
-          $instance->{$c_name} = $c_value;
-          $instance->_id_fields_original = $id_fields;
-        }
+          if (isset($entity->fields[$c_name]->filter_select))
+               $instance->{$c_name} = ($entity->fields[$c_name]->filter_select)($c_value);
+          else $instance->{$c_name} =                                           $c_value;
+          $instance->_id_fields_original = $id_fields;}
         return $instance;
       }
     }
@@ -433,7 +435,11 @@ namespace effcore {
   function instance_insert($instance) { # return: null | instance | instance + new_id
     if ($this->init()) {
       $entity = $instance->entity_get();
-      $values = array_intersect_key($instance->values_get(), $entity->fields_get_name());
+      $values = $instance->values_get();
+      foreach ($values as $c_name => $c_value)
+        if (isset(            $entity->fields[$c_name]->filter_insert))
+          $values[$c_name] = ($entity->fields[$c_name]->filter_insert)($c_value);
+      $values = array_intersect_key($values, $entity->fields_get_name());
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
       $new_id = $this->query([
@@ -456,9 +462,13 @@ namespace effcore {
 
   function instance_update($instance) { # return: null | instance
     if ($this->init()) {
-      $entity    = $instance->entity_get();
-      $id_fields = $entity->id_get_real_from_values($instance->values_get());
-      $values    = array_intersect_key($instance->values_get(), $entity->fields_get_name());
+      $entity = $instance->entity_get();
+      $values = $instance->values_get();
+      foreach ($values as $c_name => $c_value)
+        if (isset(            $entity->fields[$c_name]->filter_update))
+          $values[$c_name] = ($entity->fields[$c_name]->filter_update)($c_value);
+      $values = array_intersect_key($values, $entity->fields_get_name());
+      $id_fields = $entity->id_get_real_from_values($values);
       $row_count = $this->query([
         'action' => 'UPDATE',
         'target_!t' => '~'.$entity->name,
@@ -475,8 +485,9 @@ namespace effcore {
 
   function instance_delete($instance) { # return: null | instance + empty(values)
     if ($this->init()) {
-      $entity    = $instance->entity_get();
-      $id_fields = $entity->id_get_real_from_values($instance->values_get());
+      $entity = $instance->entity_get();
+      $values = $instance->values_get();
+      $id_fields = $entity->id_get_real_from_values($values);
       $row_count = $this->query([
         'action' => 'DELETE',
         'target_begin' => 'FROM',

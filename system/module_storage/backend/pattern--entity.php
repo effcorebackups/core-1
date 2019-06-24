@@ -10,18 +10,19 @@ namespace effcore {
   public $name;
   public $storage_name = 'sql';
   public $catalog_name;
-  public $ws_is_embed;
-  public $ws_access;
-  public $ws_weight;
-  public $ws_created;
-  public $ws_updated;
+  public $fields      = [];
+  public $constraints = [];
+  public $indexes     = [];
+  public $ws_is_embed = false;
+  public $ws_access   = false;
+  public $ws_weight   = false;
+  public $ws_created  = false;
+  public $ws_updated  = false;
+
   public $title;
   public $title_plural;
   public $managing_is_on = false;
   public $managing_group = 'Other';
-  public $fields = [];
-  public $constraints = [];
-  public $indexes = [];
   public $view_type_single = 'ul';
   public $view_type_multiple = 'table';
   public $selection_params = [];
@@ -154,10 +155,10 @@ namespace effcore {
   static function not_external_properties_get() {
     return [
       'name'           => 'name',
-      'title'          => 'title',
-      'title_plural'   => 'title_plural',
       'storage_name'   => 'storage_name',
       'catalog_name'   => 'catalog_name',
+      'title'          => 'title',
+      'title_plural'   => 'title_plural',
       'managing_group' => 'managing_group'
     ];
   }

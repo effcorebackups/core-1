@@ -1,0 +1,26 @@
+instances
+# ─────────────────────────────────────────────────────────────────────
+# pages
+# ─────────────────────────────────────────────────────────────────────
+- page_front|instance
+    entity_name: page
+    values
+    - id: front
+    - title: Front page
+    - url: /
+    - is_https: 0
+    - access: null
+    - parts
+      - menu
+        - menu_user_registered|page_part_preset
+            id: menu_user_registered
+        - menu_user_anonymous|page_part_preset
+            id: menu_user_anonymous
+        - menu_main|page_part_preset
+            id: menu_main
+      - title
+        - title|page_part_preset
+            id: title
+      - content
+        - welcome|page_part_preset
+            id: welcome

@@ -113,6 +113,9 @@ entities
         title: Parts
         type: blob
         null: true
+        filter_select: unserialize
+        filter_insert: serialize
+        filter_update: serialize
     constraints
     - primary_id
         type: primary
