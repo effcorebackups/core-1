@@ -225,7 +225,7 @@ namespace effcore {
       }
     }
     if ($join_part) return implode($join_part, $result);
-    else            return $result;
+    else            return                     $result;
   }
 
   static function data_to_code($data, $prefix = '', $array_defaults = null) {
