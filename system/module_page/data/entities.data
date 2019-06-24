@@ -29,6 +29,7 @@ entities
     catalog_name: pages
     managing_is_on: true
     managing_group: Content
+    ws_is_embed: true
     ws_access: true
     ws_created: true
     ws_updated: true

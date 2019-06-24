@@ -155,6 +155,7 @@ entities
     catalog_name: roles
     managing_is_on: true
     managing_group: User
+    ws_is_embed: true
     ws_weight: true
     ws_created: true
     ws_updated: true
@@ -169,15 +170,6 @@ entities
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
-        - disabled: true
-    - is_embed
-        title: Is embed
-        type: boolean
-        not_null: true
-        default: 0
-        field_is_visible_on_select: true
-        field_class: \effcore\field_switcher
-        field_element_attributes
         - disabled: true
     - title
         title: Title
@@ -254,6 +246,7 @@ entities
     catalog_name: users
     managing_is_on: true
     managing_group: User
+    ws_is_embed: true
     ws_created: true
     ws_updated: true
     fields
@@ -265,15 +258,6 @@ entities
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
-        - disabled: true
-    - is_embed
-        title: Is embed
-        type: boolean
-        not_null: true
-        default: 0
-        field_is_visible_on_select: true
-        field_class: \effcore\field_switcher
-        field_element_attributes
         - disabled: true
     - nick
         title: Nick
