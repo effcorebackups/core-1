@@ -9,6 +9,7 @@ instances
     - title: Front page
     - url: /
     - is_https: 0
+    - is_embed: 1
     - access: null
     - parts
       - menu
