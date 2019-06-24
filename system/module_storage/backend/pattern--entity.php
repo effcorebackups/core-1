@@ -28,7 +28,7 @@ namespace effcore {
 
   function _postparse() {
   # insert field 'is_embed'
-    if ($this->ws_created) {
+    if ($this->ws_is_embed) {
       $this->fields['is_embed'] = new \stdClass;
       $this->fields['is_embed']->title = 'Is embed';
       $this->fields['is_embed']->type = 'boolean';
