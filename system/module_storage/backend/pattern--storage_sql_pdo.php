@@ -363,6 +363,11 @@ namespace effcore {
       }
       $result = [];
       foreach ($this->query($query) as $c_instance) {
+        foreach ($c_instance->values as $c_name => $c_value) {
+          if (isset($entity->fields[$c_name]->filter_select))
+               $c_instance->{$c_name} = ($entity->fields[$c_name]->filter_select)($c_value);
+          else $c_instance->{$c_name} =                                           $c_value;
+        }
         $c_instance->entity_set_name($entity->name);
         if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
         else        $result[                     ] = $c_instance;

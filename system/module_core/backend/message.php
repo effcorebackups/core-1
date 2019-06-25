@@ -52,7 +52,7 @@ namespace effcore {
     ]]);
     if (count($instances)) {
       foreach ($instances as $c_instance)
-        $result[$c_instance->type][] = unserialize($c_instance->data);
+        $result[$c_instance->type][] = $c_instance->data;
       static::cleaning(
         session::id_get()
       );
@@ -74,9 +74,8 @@ namespace effcore {
       'id_session' => session::id_get(),
       'type'       => $type,
       'expired'    => core::datetime_get('+'.$period.' second'),
-      'data'       => serialize(is_string($message) ?
-                                 new text($message) :
-                                          $message)
+      'data'       => is_string($message) ?
+                       new text($message) : $message
     ]))->insert();
   }
 
