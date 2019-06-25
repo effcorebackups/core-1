@@ -442,8 +442,8 @@ namespace effcore {
       $entity = $instance->entity_get();
       $values = $instance->values_get();
       foreach ($values as $c_name => $c_value)
-        if (isset(            $entity->fields[$c_name]->filter_insert))
-          $values[$c_name] = ($entity->fields[$c_name]->filter_insert)($c_value);
+        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->filter_insert))
+            $values[$c_name] =                ($entity->fields[$c_name]->filter_insert)($c_value);
       $values = array_intersect_key($values, $entity->fields_get_name());
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
@@ -470,8 +470,8 @@ namespace effcore {
       $entity = $instance->entity_get();
       $values = $instance->values_get();
       foreach ($values as $c_name => $c_value)
-        if (isset(            $entity->fields[$c_name]->filter_update))
-          $values[$c_name] = ($entity->fields[$c_name]->filter_update)($c_value);
+        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->filter_update))
+            $values[$c_name] =                ($entity->fields[$c_name]->filter_update)($c_value);
       $values = array_intersect_key($values, $entity->fields_get_name());
       $id_fields = $entity->id_get_real_from_values($values);
       $row_count = $this->query([

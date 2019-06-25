@@ -42,8 +42,9 @@ namespace effcore\modules\user {
   # access group
     if (!empty($form->_instance->entity_get()->ws_access)) {
       $group_access = new group_access();
-      $access = unserialize($form->_instance->access);
-      if ($access && is_array($access->roles)) $group_access->roles_set($access->roles);
+      if ($form->_instance->access && is_array(
+          $form->_instance->access->roles)) $group_access->roles_set(
+          $form->_instance->access->roles);
       $group_access->build();
       $form->child_select('fields')->child_insert(
         $group_access, 'group_access'
@@ -108,7 +109,7 @@ namespace effcore\modules\user {
       # access group
         if (!empty($form->_instance->entity_get()->ws_access)) {
           $roles = $items['fields/group_access']->roles_get();
-          if ($roles) $form->_instance->access = serialize((object)['roles' => $roles]);
+          if ($roles) $form->_instance->access = (object)['roles' => $roles];
           else        $form->_instance->access = null;
         }
         break;
