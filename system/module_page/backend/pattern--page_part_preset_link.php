@@ -10,6 +10,15 @@ namespace effcore {
   public $id;
   public $weight = 0;
 
+  function __construct($id = null) {
+    if ($id) $this->id = $id;
+  }
+
+  function page_part_preset_get() {
+    $preset = page_part_preset::select($this->id);
+    return $preset;
+  }
+
   function page_part_get() {
     $preset = page_part_preset::select($this->id);
     $page_part = new page_part;

@@ -11,6 +11,10 @@ namespace effcore {
   public $managing_title;
   public $in_areas;
 
+  function page_part_preset_get() {
+    return $this;
+  }
+
   function page_part_get() {
     $preset = static::select($this->id);
     $page_part = new page_part;
