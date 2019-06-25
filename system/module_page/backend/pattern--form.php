@@ -194,7 +194,7 @@ namespace effcore {
   function validation_cache_init() {
     if ($this->validation_data === null) {
       $instance = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
-      $this->validation_data = $instance ? unserialize($instance->data) : [];
+      $this->validation_data = $instance ? $instance->data : [];
       $this->validation_data_hash = core::hash_get_data($this->validation_data);
     }
   }
@@ -211,8 +211,8 @@ namespace effcore {
 
   function validation_cache_storage_update() {
     $instance = new instance('cache_validation', ['id' => $this->validation_id]);
-    if ($instance->select()) {$instance->data = serialize($this->validation_data); return $instance->update();}
-    else                     {$instance->data = serialize($this->validation_data); return $instance->insert();}
+    if ($instance->select()) {$instance->data = $this->validation_data; return $instance->update();}
+    else                     {$instance->data = $this->validation_data; return $instance->insert();}
   }
 
   function validation_cache_storage_delete() {
