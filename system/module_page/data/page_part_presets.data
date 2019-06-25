@@ -2,12 +2,12 @@ page_part_presets
 - title|page_part_preset
     id: title
     managing_title: Title
-    type: code
-    source: \effcore\modules\page\events_page::on_show_title
     in_areas
     - =: top
     - =: title
     - =: content
+    type: code
+    source: \effcore\modules\page\events_page::on_show_title
 - welcome|page_part_preset
     id: welcome
     managing_title: Welcome message

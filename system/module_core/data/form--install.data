@@ -13,8 +13,7 @@ forms
         - is_mysql|field_radiobutton
             title: MySQL
             attributes
-            - class
-              - =: before-container
+            - data-is-before_container: true
             element_attributes
             - name: driver
             - value: mysql
@@ -66,8 +65,7 @@ forms
         - is_sqlite|field_radiobutton
             title: SQLite
             attributes
-            - class
-              - =: before-container
+            - data-is-before_container: true
             element_attributes
             - name: driver
             - value: sqlite

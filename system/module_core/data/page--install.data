@@ -13,7 +13,7 @@ pages
           type: code
           source: \effcore\modules\core\events_page_info::on_show_block_system_info
     - title
-      - title|page_part_preset
+      - title|page_part_preset_link
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content

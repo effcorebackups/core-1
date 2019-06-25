@@ -2,21 +2,21 @@ page_part_presets
 - menu_main|page_part_preset
     id: menu_main
     managing_title: Menu: Main
-    type: link
-    source: trees/core/main
     in_areas
     - =: menu
+    type: link
+    source: trees/core/main
 - menu_user_registered|page_part_preset
     id: menu_user_registered
     managing_title: Menu: User (registered)
-    type: link
-    source: trees/user/user_registered
     in_areas
     - =: menu
+    type: link
+    source: trees/user/user_registered
 - menu_user_anonymous|page_part_preset
     id: menu_user_anonymous
     managing_title: Menu: User (anonymous)
-    type: link
-    source: trees/user/user_anonymous
     in_areas
     - =: menu
+    type: link
+    source: trees/user/user_anonymous

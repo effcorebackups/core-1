@@ -18,12 +18,12 @@ pages
       - =: admins
     parts
     - menu
-      - menu_user_registered|page_part_preset
+      - menu_user_registered|page_part_preset_link
           id: menu_user_registered
-      - menu_main|page_part_preset
+      - menu_main|page_part_preset_link
           id: menu_main
     - title
-      - title|page_part_preset
+      - title|page_part_preset_link
           id: title
     - tabs
       - tabs|page_part
