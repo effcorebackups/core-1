@@ -17,7 +17,7 @@ namespace effcore {
       $language = language::get(language::code_get_current());
       $license_file = new file($language->license_translation ?
                     dir_system.$language->license_translation : dir_root.'license.md');
-      $markup_license = new markup('x-document', ['class' => ['license' => 'license']], markdown::markdown_to_markup($license_file->load()));
+      $markup_license = new markup('x-document', ['data-type' => 'license'], markdown::markdown_to_markup($license_file->load()));
       $switcher_agree = new field_switcher($this->agree_title);
       $switcher_agree->build();
       $switcher_agree->name_set('is_agree');

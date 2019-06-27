@@ -13,8 +13,7 @@ forms
         - document|markup
             tag_name: x-document
             attributes
-            - class
-              - =: report
+            - data-type: report
     - button_run|button
         title: run
         attributes

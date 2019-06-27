@@ -7,4 +7,4 @@
 
   x-tree[data-id^='user'] li[data-id='anonymous' ]                        > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
   x-tree[data-id^='user'] li[data-id='registered']                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
-  x-tree[data-id^='user'] li[data-id='registered'][data-has-avatar='yes'] > a {padding-left: 77px; background-image: url('%%_avatar_url');                 background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
+  x-tree[data-id^='user'] li[data-id='registered'][data-has-avatar='yes'] > a {padding-left: 77px; background-image: url('%%_avatar_url'                ); background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}

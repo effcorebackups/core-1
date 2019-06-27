@@ -1,5 +1,5 @@
 
-  x-console {display: block; margin: 100px auto}
+  x-console {display: block; margin: 300px auto 0 auto}
 
   /* logs */
 
@@ -36,8 +36,8 @@
 
   /* reports */
 
-  x-document.report {max-height: 400px; overflow: scroll}
-  x-document.report p {margin: 0}
+  x-document[data-type='report'] {max-height: 400px}
+  x-document[data-type='report'] p {margin: 0}
 
   /* x-structures-list */
 
