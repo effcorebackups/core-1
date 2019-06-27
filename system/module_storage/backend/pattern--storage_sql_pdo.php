@@ -119,9 +119,9 @@ namespace effcore {
     }
   }
 
-  function transaction_begin()     {if ($this->init()) return $this->connection->beginTransaction();}
+  function transaction_begin    () {if ($this->init()) return $this->connection->beginTransaction();}
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();        }
-  function transaction_commit()    {if ($this->init()) return $this->connection->commit();          }
+  function transaction_commit   () {if ($this->init()) return $this->connection->commit();          }
 
   function query_prepare(&$query = [], $is_emulation = false) {
     foreach ($query as $c_key => &$c_value) {
@@ -298,7 +298,7 @@ namespace effcore {
           else                               $c_field += ['default_begin' => 'default', 'default' => '\''.$c_info->default.'\''];
         }
       # CHECK Constraint
-        if (isset($c_info->check)) $c_field['check'] = ['check_begin' => 'check', 'check' => $c_info->check];
+        if ($this->driver == 'sqlite' && isset($c_info->check)) $c_field['check'] = ['check_begin' => 'check', 'check' => $c_info->check];
         $fields[$c_name] = $c_field;
       }
 
