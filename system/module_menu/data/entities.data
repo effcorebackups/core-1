@@ -77,7 +77,6 @@ entities
     - id_parent
         title: Parent ID
         type: integer
-        null: true
         default: null
         field_is_visible_on_select: true
         field_class: \effcore\field_relation
@@ -117,7 +116,6 @@ entities
         type: varchar
         size: 2048
         collate: nocase
-        null: true
         field_is_visible_on_select: true
         field_class: \effcore\field_url
     constraints

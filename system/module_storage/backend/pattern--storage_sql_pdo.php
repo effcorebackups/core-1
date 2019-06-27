@@ -288,16 +288,16 @@ namespace effcore {
         if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'nocase'         ];
         if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_bin'       ];
         if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'binary'         ];
-      # NOT NULL Constraint
-        if (property_exists($c_info, 'not_null') && $c_info->not_null) $c_field['not_null'] = 'not null';
-        if (property_exists($c_info, 'null'    ) && $c_info->null    ) $c_field['null'    ] = 'null';
-      # DEFAULT Constraint
+      # NOT NULL constraint
+        if (property_exists($c_info, 'not_null') &&
+                            $c_info->not_null) $c_field['not_null'] = 'not null';
+      # DEFAULT constraint
         if (property_exists($c_info, 'default')) {
           if     ($c_info->default === 0)    $c_field += ['default_begin' => 'default', 'default' => '0'                       ];
           elseif ($c_info->default === null) $c_field += ['default_begin' => 'default', 'default' => 'null'                    ];
           else                               $c_field += ['default_begin' => 'default', 'default' => '\''.$c_info->default.'\''];
         }
-      # CHECK Constraint
+      # CHECK constraint
         if ($this->driver == 'sqlite' && isset($c_info->check)) $c_field['check'] = ['check_begin' => 'check', 'check' => $c_info->check];
         $fields[$c_name] = $c_field;
       }
