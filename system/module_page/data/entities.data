@@ -13,6 +13,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (id <> '')
     - data
         title: Data
         type: blob
@@ -43,6 +44,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (id <> '')
         field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_properties
@@ -63,6 +65,7 @@ entities
         collate: nocase
         size: 1024
         not_null: true
+        check: (title <> '')
         field_is_visible_on_select: true
         field_class: \effcore\field_text
         field_properties

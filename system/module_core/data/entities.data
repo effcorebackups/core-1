@@ -11,6 +11,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (id_session <> '')
     - type
         title: Type
         type: varchar

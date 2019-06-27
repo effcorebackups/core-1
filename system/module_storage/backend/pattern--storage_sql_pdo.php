@@ -261,11 +261,13 @@ namespace effcore {
       foreach ($entity->fields as $c_name => $c_info) {
 
       # prepare field name
+      # ─────────────────────────────────────────────────────────────────────
         $c_field = [
           'name_!f' => $c_name
         ];
 
       # prepare field type
+      # ─────────────────────────────────────────────────────────────────────
         switch ($c_info->type) {
           case 'autoincrement':
             if ($this->driver ==  'mysql') $c_field += ['type' => 'integer', 'primary_key' => 'primary key', 'autoincrement' => 'auto_increment'];
@@ -281,21 +283,27 @@ namespace effcore {
         }
 
       # prepare field properties
+      # ─────────────────────────────────────────────────────────────────────
         if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_general_ci'];
         if (isset($c_info->collate) && $c_info->collate == 'nocase' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'nocase'         ];
         if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_bin'       ];
         if (isset($c_info->collate) && $c_info->collate == 'binary' && $this->driver == 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'binary'         ];
-        if (property_exists($c_info, 'not_null') && $c_info->not_null)                            $c_field['not_null'] = 'not null';
-        if (property_exists($c_info, 'null')     && $c_info->null)                                $c_field['null'    ] = 'null';
+      # NOT NULL Constraint
+        if (property_exists($c_info, 'not_null') && $c_info->not_null) $c_field['not_null'] = 'not null';
+        if (property_exists($c_info, 'null'    ) && $c_info->null    ) $c_field['null'    ] = 'null';
+      # DEFAULT Constraint
         if (property_exists($c_info, 'default')) {
-          if     ($c_info->default === 0)    $c_field += ['default_begin' => 'default', 'default' => '0'];
-          elseif ($c_info->default === null) $c_field += ['default_begin' => 'default', 'default' => 'null'];
+          if     ($c_info->default === 0)    $c_field += ['default_begin' => 'default', 'default' => '0'                       ];
+          elseif ($c_info->default === null) $c_field += ['default_begin' => 'default', 'default' => 'null'                    ];
           else                               $c_field += ['default_begin' => 'default', 'default' => '\''.$c_info->default.'\''];
         }
+      # CHECK Constraint
+        if (isset($c_info->check)) $c_field['check'] = ['check_begin' => 'check', 'check' => $c_info->check];
         $fields[$c_name] = $c_field;
       }
 
-    # prepare constraints
+    # PRIMARY, UNIQUE, FOREIGN constraints
+    # ─────────────────────────────────────────────────────────────────────
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
@@ -306,6 +314,7 @@ namespace effcore {
       }
 
     # create entity
+    # ─────────────────────────────────────────────────────────────────────
       $this->transaction_begin();
       if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
@@ -316,6 +325,7 @@ namespace effcore {
       if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
 
     # create indexes
+    # ─────────────────────────────────────────────────────────────────────
       foreach ($entity->indexes as $c_name => $c_info) {
         $this->query([
           'action' => 'CREATE',

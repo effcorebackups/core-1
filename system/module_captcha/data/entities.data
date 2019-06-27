@@ -12,6 +12,7 @@ entities
         size: 32
         collate: nocase
         not_null: true
+        check: (ip_hex <> '')
     - characters
         title: Characters
         type: varchar
