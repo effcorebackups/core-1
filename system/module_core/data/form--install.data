@@ -5,6 +5,8 @@ forms
     - method: post
     - novalidate: true
     children
+    - license_agreement|group_license_agreement
+        state: closed
     - storage|fieldset
         title: Storage
         state: closed
@@ -108,8 +110,6 @@ forms
         - timezone|field_timezone
             element_attributes
             - data-source: uagent-timezone
-    - license_agreement|group_license_agreement
-        state: closed
     - button_install|button
         title: install
         attributes
