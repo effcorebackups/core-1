@@ -187,6 +187,7 @@ translations
     - fix: исправить
     - For ID: Для ID
     - Form elements: Элементы формы
+    - form: форма
     - Front page: Главная страница
     - front: главная
     - go to %%_title language: перейти на %%_title язык
@@ -496,6 +497,7 @@ translations
     - Users: Пользователи
     - val.: знач.
     - Val.: Знач.
+    - validation: валидация
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
     - Value: Значение
     - Value: Значение

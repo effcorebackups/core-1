@@ -73,7 +73,7 @@ namespace effcore {
   #                                                    ║     handler: \…\module_3\events::on_name ║
   #                                                    ╚══════════════════════════════════════════╝
 
-  static function start($type, $for = null, $args = [], $on_after_step = null) {
+  static function start($type, $for = null, $args = [], $on_before_step = null, $on_after_step = null) {
     $result = [];
     if (!empty(static::get_all()[$type])) {
       foreach (static::get_all()[$type] as $c_event) {
@@ -82,8 +82,9 @@ namespace effcore {
                     $c_event->for == null) {
           console::log_insert('event', 'begin', ltrim($c_event->handler, '\\'), '-', 0);
           timer::tap('event call: '.$type);
-          $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler,                      $args);
-          if ($on_after_step)                        call_user_func_array($on_after_step, ['event' => $c_event] + $args);
+          if ($on_before_step)                       call_user_func_array($on_before_step, ['event' => $c_event] + $args);
+          $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler,                       $args);
+          if ($on_after_step)                        call_user_func_array($on_after_step,  ['event' => $c_event] + $args);
           timer::tap('event call: '.$type);
           console::log_insert('event', 'end', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : '-',
             timer::period_get('event call: '.$type, -1, -2)

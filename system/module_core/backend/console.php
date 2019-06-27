@@ -109,7 +109,7 @@ namespace effcore {
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_row_attributes  = ['data-object' => core::sanitize_id($c_log->object)];
       $c_row_attributes += ['data-action' => core::sanitize_id($c_log->action)];
-      if ($c_log->value == 'error') $c_row_attributes['aria-invalid'] = 'true';
+      $c_row_attributes += ['data-value'  => core::sanitize_id($c_log->value )];
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading_level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading_level'] = 2;
       if ($c_log->time  >=   .0099) $c_row_attributes['data-loading_level'] = 3;

@@ -10,7 +10,9 @@
   x-block[data-id='logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
   x-block[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
   x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  x-block[data-id='logs'] tbody tr[aria-invalid='true'] td[data-cellid='value'] {background-color: pink !important}
+  x-block[data-id='logs'] tbody tr[data-object='form'    ] {background-color: plum}
+  x-block[data-id='logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
+  x-block[data-id='logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
 
   x-block[data-id='logs'] tbody tr[data-object='event'][data-action='begin'] {}
   x-block[data-id='logs'] tbody tr[data-object='event'][data-action='end'  ] {}
