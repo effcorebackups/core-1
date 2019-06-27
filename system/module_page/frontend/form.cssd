@@ -110,8 +110,8 @@
   input[type='checkbox']:checked                       {background: %%_color_page url('images/icons-form.svgd')   0     0  }
   input[type='checkbox'][data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
 
-  input[data-is-checked='no']:checked,
-  input[data-is-checked='yes']:not(:checked) {border-color: %%_color_warning}
+  input[data-default_state='not_checked']:checked,
+  input[data-default_state='checked'    ]:not(:checked) {border-color: %%_color_warning}
 
   /* checkboxes and radiobuttons inside containers */
 
