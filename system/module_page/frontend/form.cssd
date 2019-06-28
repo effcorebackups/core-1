@@ -228,8 +228,7 @@
   x-layout-manager x-area-id {
     display: block;
     margin: -9px -9px 0 -9px;
-    padding: 3px 10px 3px 5px;
-    text-align: center;
+    padding: 3px 8px;
     color: %%_color_text;
     background: %%_color_main}
   x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning}

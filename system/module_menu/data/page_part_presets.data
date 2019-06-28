@@ -1,11 +1,4 @@
 page_part_presets
-- menu_main|page_part_preset
-    id: menu_main
-    managing_title: Menu: Main
-    in_areas
-    - =: menu
-    type: link
-    source: trees/core/main
 - menu_user_registered|page_part_preset
     id: menu_user_registered
     managing_title: Menu: User (registered)
@@ -20,3 +13,10 @@ page_part_presets
     - =: menu
     type: link
     source: trees/user/user_anonymous
+- menu_main|page_part_preset
+    id: menu_main
+    managing_title: Menu: Main
+    in_areas
+    - =: menu
+    type: link
+    source: trees/core/main

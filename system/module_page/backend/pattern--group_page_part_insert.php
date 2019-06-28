@@ -25,12 +25,12 @@ namespace effcore {
         $c_select_preset->option_insert(
           $c_preset->managing_title,
           $c_preset->id);
-      $c_button_add = new button;
-      $c_button_add->title = '';
-      $c_button_add->build();
-      $c_button_add->value_set('button_add_for_'.$this->in_area);
+      $c_button_insert = new button;
+      $c_button_insert->title = '';
+      $c_button_insert->build();
+      $c_button_insert->value_set('button_insert_for_'.$this->in_area);
       $this->child_insert($c_select_preset, 'select');
-      $this->child_insert($c_button_add,    'button');
+      $this->child_insert($c_button_insert, 'button');
       $this->is_builded = true;
     }
   }
