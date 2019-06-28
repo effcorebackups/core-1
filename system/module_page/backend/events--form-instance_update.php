@@ -9,6 +9,7 @@ namespace effcore\modules\page {
           use \effcore\button;
           use \effcore\core;
           use \effcore\group_page_part_insert;
+          use \effcore\group_page_part_manage;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\message;
@@ -37,15 +38,14 @@ namespace effcore\modules\page {
           $c_area->managing_is_on = true;
           $c_area->tag_name = 'div';
           $c_area->build();
-          foreach ($page_parts[$c_area->id] ?? [] as $c_part) {
-            if ($c_part instanceof page_part_preset_link) $c_part = $c_part->page_part_preset_get();
-            if ($c_part instanceof page_part_preset)      $c_part = $c_part->page_part_preset_get();
-            $c_area->child_insert(
-              new markup('div', [], [$c_part->managing_title, ' (',
-                     new text_simple($c_part->id), ')']), $c_part->id
-            );
-          }
-          $c_part_insert = new group_page_part_insert();
+          foreach ($page_parts[$c_area->id] ?? [] as $c_part)
+            if ($c_part instanceof page_part_preset_link) {
+              $c_preset = $c_part->page_part_preset_get();
+              $c_part_manage = new group_page_part_manage;
+              $c_part_manage->id_preset = $c_preset->id;
+              $c_part_manage->build();
+              $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);}
+          $c_part_insert = new group_page_part_insert;
           $c_part_insert->in_area = $c_area->id;
           $c_part_insert->build();
           $c_area->child_insert($c_part_insert, 'part_insert');
