@@ -15,9 +15,8 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $preset = page_part_preset::select($this->id_preset);
-      $this->child_insert(
-        new markup('div', [], [$preset->managing_title, ' (',
-               new text_simple($preset->id), ')']), 'manage_'.$preset->id);
+      $this->child_insert(new markup('x-title', [], $preset->managing_title), 'title');
+      $this->child_insert(new markup('x-id',    [], $preset->id            ), 'id'   );
       $this->is_builded = true;
     }
   }

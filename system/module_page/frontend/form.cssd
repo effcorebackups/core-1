@@ -219,23 +219,31 @@
   /* layout manage */
 
   x-layout-manager {display: block; margin: 50px 0}
-  x-layout-manager *[data-area-id]            {margin: 5px 0; padding: 5px; border: 3px solid %%_color_main; min-height: 20px}
-  x-layout-manager *[data-area-type='table' ] {margin: 5px 0; padding:   0; border: 3px solid %%_color_ok}
-  x-layout-manager *[data-area-type='row'   ] {margin:     0; padding:   0; border: none}
-  x-layout-manager *[data-area-type='column'] {margin:     0; padding: 5px; border: 3px solid %%_color_warning}
+  x-layout-manager *[data-area-id]            {margin: 10px 0; padding: 10px; border: 3px solid %%_color_main; min-height: 20px}
+  x-layout-manager *[data-area-type='table' ] {margin: 10px 0; padding:    0; border: 3px solid %%_color_ok}
+  x-layout-manager *[data-area-type='row'   ] {margin:      0; padding:    0; border: none}
+  x-layout-manager *[data-area-type='column'] {margin:      0; padding: 10px; border: 3px solid %%_color_warning}
   x-layout-manager *[data-area-type='column'] > *:first-child {margin-top:    0}
   x-layout-manager *[data-area-type='column'] > *:last-child  {margin-bottom: 0}
-  x-layout-manager *[data-area-id] x-id {
+  x-layout-manager x-area-id {
     display: block;
-    margin-top: -5px;
-    margin-bottom: 5px;
-    padding: 5px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 3px 5px;
+    color: %%_color_text;
+    text-align: center;
     border-bottom: 1px dotted %%_color_main}
+  x-layout-manager *[data-area-type='column'] > x-area-id {border-bottom-color: %%_color_warning}
 
-  x-page_part-insert {}
-  x-page_part-insert x-field {display: inline-block; margin: 0 0 0 5px}
-  x-page_part-insert x-field select {width: 130px}
-  x-page_part-insert button {margin: 5px; padding: 0; width: 44px; min-width: 44px}
+  x-page_part-manage {display: block; margin: 10px 0; padding: 5px 10px; border: 1px dotted %%_color_main}
+  x-page_part-manage x-title {display: block}
+  x-page_part-manage x-id {display: block; opacity: .5}
+
+  x-page_part-insert {display: block; margin-top: 10px}
+  x-page_part-insert x-field {display: inline-block; margin: 0}
+  x-page_part-insert x-field label {margin-bottom: 5px}
+  x-page_part-insert x-field select {width: 130px; margin: 0}
+  x-page_part-insert button {margin: 0 0 0 8px; padding: 0; width: 44px; min-width: 44px}
 
   /* IE adaptation */
 
