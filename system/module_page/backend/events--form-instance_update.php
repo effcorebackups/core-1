@@ -42,6 +42,7 @@ namespace effcore\modules\page {
             if ($c_part instanceof page_part_preset_link) {
               $c_preset = $c_part->page_part_preset_get();
               $c_part_manage = new group_page_part_manage;
+              $c_part_manage->id_area   = $c_area  ->id;
               $c_part_manage->id_preset = $c_preset->id;
               $c_part_manage->build();
               $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);}

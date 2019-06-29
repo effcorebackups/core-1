@@ -228,22 +228,35 @@
   x-layout-manager x-area-id {
     display: block;
     margin: -9px -9px 0 -9px;
-    padding: 3px 8px;
+    padding: 8px;
+    text-transform: uppercase;
+    font-size: .85em;
+    line-height: .9em;
     color: %%_color_text;
     background: %%_color_main}
   x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning}
 
-  x-page_part-manage {display: block; margin: 10px 0; padding: 5px 10px; border: 1px dotted %%_color_main}
+  x-page_part-manage {display: block; margin: 10px 0; padding: 8px; border: 1px dotted %%_color_main}
   x-page_part-manage x-title {display: block}
   x-page_part-manage x-id {display: block; opacity: .5}
+  x-page_part-manage button {position: relative; float: right; z-index: 10}
 
   x-page_part-insert {display: block; margin-top: 10px}
   x-page_part-insert x-field {display: inline-block; margin: 0}
   x-page_part-insert x-field label {margin-bottom: 5px}
   x-page_part-insert x-field select {width: 130px; margin: 0}
-  x-page_part-insert button {margin: 0 0 0 8px; padding: 0; width: 44px; min-width: 44px}
 
-  /* IE adaptation */
+  x-page_part-manage::after,
+  x-page_part-insert::after {content: ''; clear: both; display: block}
+  x-page_part-manage button,
+  x-page_part-insert button {
+    margin: 0 0 0 8px;
+    padding: 0;
+    width: 44px;
+    min-width: auto;
+    border-radius: 0}
+
+  /* degrade for IE (not beautiful) */
 
   html[data-uagent^='msie'] input[type='checkbox'],
   html[data-uagent^='msie'] input[type='radio'] {padding: 4px}
