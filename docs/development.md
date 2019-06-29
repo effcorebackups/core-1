@@ -212,3 +212,65 @@ Incompatibility with third-party applications
   We can not do anything against violating web standards from third side.
   Just ignore Kaspersky Internet Security.
 
+
+CORE SCHEME
+=====================================================================
+
+
+    ┌────────────────── classes ──────────────────┐             ┌────────────── noSQL data ──────────────┐
+    │                                             │             │                                        │
+    │  ╔═══════════════════════════════════════╗  │             │   ╔════════════════════════════════╗   │
+    │  ║ /module_N/backend/pattern-class_1.php ║  │             │   ║ /module_N/data/instance_1.data ║   │
+    │  ╠═══════════════════════════════════════╣  │             │   ╠════════════════════════════════╣   │
+    │  ║ /module_N/backend/pattern-class_2.php ║  │             │   ║ /module_N/data/instance_2.data ║   │
+    │  ╚═══════════════════════════════════════╝  │             │   ╚════════════════════════════════╝   │
+    │                     ...                     │             │                  ...                   │
+    │  ╔═══════════════════════════════════════╗  │    ┌───┐    │   ╔════════════════════════════════╗   │
+    │  ║ /module_N/backend/pattern-class_N.php ║──────▶│ + │◀───────║ /module_N/data/instance_N.data ║   │
+    │  ╚═══════════════════════════════════════╝  │    └───┘    │   ╚════════════════════════════════╝   │
+    │                                             │      │      │                                        │
+    └─────────────────────────────────────────────┘      │      └────────────────────────────────────────┘
+                                                         │
+                                                         │
+    ╔═════════════ big tree (memory) ═════════════╗      │
+    ║                                             ║      │
+    ║   data[class_instance_1] = new instance {   ║      │
+    ║     property_1: value_1                     ║      │
+    ║     property_2: value_2                     ║      │
+    ║     property_N: value_N }                   ║      │
+    ║                                             ║      │
+    ║   data[class_instance_2] = new instance {   ║      │
+    ║     property_1: value_1                     ║      │
+    ║     property_2: value_2                     ║◀─────┘
+    ║     property_N: value_N }                   ║
+    ║   ...                                       ║
+    ║   data[class_instance_N] = new instance {   ║
+    ║     property_1: value_1                     ║
+    ║     property_2: value_2                     ║
+    ║     property_N: value_N }                   ║
+    ║                                             ║
+    ╚═════════════════════════════════════════════╝
+                           │
+                           ▼
+    ╔════════════ /dynamic/cache/*.php ═══════════╗
+    ║                                             ║
+    ║   cache[instance_1] = new instance          ║
+    ║   cache[instance_1]->property_1 = value_1   ║
+    ║   cache[instance_1]->property_2 = value_2   ║
+    ║   cache[instance_1]->property_N = value_N   ║
+    ║                                             ║
+    ║   cache[instance_2] = new instance          ║
+    ║   cache[instance_2]->property_1 = value_1   ║
+    ║   cache[instance_2]->property_2 = value_2   ║
+    ║   cache[instance_2]->property_N = value_N   ║
+    ║   ...                                       ║
+    ║   cache[instance_N] = new instance          ║
+    ║   cache[instance_N]->property_1 = value_1   ║
+    ║   cache[instance_N]->property_2 = value_2   ║
+    ║   cache[instance_N]->property_N = value_N   ║
+    ║                                             ║
+    ╚═════════════════════════════════════════════╝
+    
+    
+    ─────────────────────────────────────────────────────────────────
+
