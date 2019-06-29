@@ -32,6 +32,8 @@ namespace effcore\modules\page {
             $page_parts[$c_id_area][$c_id_stored_part] = $c_stored_part;
       $form->validation_cache_set('page_parts', $page_parts);
     # build layout
+      $form->_parts_manage = [];
+      $form->_parts_insert = [];
       $layout = core::deep_clone(layout::select($form->_instance->id_layout));
       foreach ($layout->children_select_recursive() as $c_area) {
         if ($c_area instanceof area && $c_area->id) {
@@ -45,9 +47,10 @@ namespace effcore\modules\page {
               $c_part_manage->id_area   = $c_area  ->id;
               $c_part_manage->id_preset = $c_preset->id;
               $c_part_manage->build();
-              $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);}
+              $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);
+              $form->_parts_manage[$c_area->id.'-'.$c_preset->id] = $c_part_manage;}
           $c_part_insert = new group_page_part_insert;
-          $c_part_insert->in_area = $c_area->id;
+          $c_part_insert->id_area = $c_area->id;
           $c_part_insert->build();
           $c_area->child_insert($c_part_insert, 'part_insert');
           $form->_parts_insert[$c_area->id] = $c_part_insert;
@@ -67,16 +70,24 @@ namespace effcore\modules\page {
         $form->_instance->parts = $page_parts;
         break;
       default:
-        foreach ($form->_parts_insert as $c_part_insert) {
-          $c_id_part = group_page_part_insert::submit($c_part_insert, null, null);
-          if ($c_id_part) {
-            $form->validation_data_is_persistent = true;
-            $page_parts[$c_part_insert->in_area][$c_id_part] = new page_part_preset_link($c_id_part);
-            $form->validation_cache_set('page_parts', $page_parts);
-            message::insert(new text('Part of the page with id = "%%_id_page_part" has been added to the area with id = "%%_id_area".', ['id_page_part' => $c_id_part, 'id_area' => $c_part_insert->in_area]));
-            static::on_init($form, $items);
-            return;
-          }
+        $manage_result = null;
+        $insert_result = null;
+        foreach ($form->_parts_manage as $c_part_manage) {$manage_result = group_page_part_manage::submit($c_part_manage, null, null); if ($manage_result) break;}
+        foreach ($form->_parts_insert as $c_part_insert) {$insert_result = group_page_part_insert::submit($c_part_insert, null, null); if ($insert_result) break;}
+        if ($manage_result) {
+          unset($page_parts[$manage_result->id_area][$manage_result->id_preset]);
+          $form->validation_data_is_persistent = true;
+          $form->validation_cache_set('page_parts', $page_parts);
+          message::insert(new text('Part of the page with id = "%%_id_page_part" has been deleted from the area with id = "%%_id_area".', ['id_page_part' => $manage_result->id_preset, 'id_area' => $manage_result->id_area]));
+          static::on_init($form, $items);
+          return;
+        } else if ($insert_result) {
+          $page_parts[$insert_result->id_area][$insert_result->id_preset] = new page_part_preset_link($insert_result->id_preset);
+          $form->validation_data_is_persistent = true;
+          $form->validation_cache_set('page_parts', $page_parts);
+          message::insert(new text('Part of the page with id = "%%_id_page_part" has been inserted to the area with id = "%%_id_area".', ['id_page_part' => $insert_result->id_preset, 'id_area' => $insert_result->id_area]));
+          static::on_init($form, $items);
+          return;
         }
     }
   }

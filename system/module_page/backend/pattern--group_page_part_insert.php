@@ -9,16 +9,16 @@ namespace effcore {
 
   public $tag_name = 'x-page_part-insert';
   public $content_tag_name = null;
-  public $in_area;
+  public $id_area;
 
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $presets = page_part_preset::select_all($this->in_area);
+      $presets = page_part_preset::select_all($this->id_area);
       $c_select_preset = new field_select;
       $c_select_preset->title = 'Insert part';
       $c_select_preset->build();
-      $c_select_preset->name_set('insert_to_'.$this->in_area);
+      $c_select_preset->name_set('insert_to_'.$this->id_area);
       $c_select_preset->required_set(false);
       $c_select_preset->option_insert('- no -', 'not_selected');
       foreach ($presets as $c_preset)
@@ -28,7 +28,7 @@ namespace effcore {
       $c_button_insert = new button;
       $c_button_insert->title = '';
       $c_button_insert->build();
-      $c_button_insert->value_set('button_insert_to_'.$this->in_area);
+      $c_button_insert->value_set('button_insert_to_'.$this->id_area);
       $this->child_insert($c_select_preset, 'select');
       $this->child_insert($c_button_insert, 'button');
       $this->is_builded = true;
@@ -53,7 +53,9 @@ namespace effcore {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && $select->value_get()) {
-      return                     $select->value_get();
+      return (object)[
+        'id_area'   => $group->id_area,
+        'id_preset' => $select->value_get()];
     }
   }
 

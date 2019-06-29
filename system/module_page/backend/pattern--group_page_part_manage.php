@@ -27,4 +27,17 @@ namespace effcore {
     }
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function submit(&$group, $form, $npath) {
+    $button = $group->child_select('button');
+    if ($button->is_clicked()) {
+      return (object)[
+        'id_area'   => $group->id_area,
+        'id_preset' => $group->id_preset];
+    }
+  }
+
 }}
