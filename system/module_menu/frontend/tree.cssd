@@ -48,9 +48,9 @@
 
   /* menu Main: icons */
 
-  x-tree[data-id='main'] li[data-id='home'   ] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
-  x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
-  x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-tree-64.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
+  x-tree[data-id='main'] li[data-id='home'   ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
+  x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
+  x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* menu manager */
 
