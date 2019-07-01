@@ -78,8 +78,8 @@ entities
         title: Parent ID
         type: integer
         default: null
-        filter_insert: effcore\core::null_if_empty
-        filter_update: effcore\core::null_if_empty
+        filter_insert: \effcore\core::null_if_empty
+        filter_update: \effcore\core::null_if_empty
         field_is_visible_on_select: true
         field_class: \effcore\field_relation
         field_properties
