@@ -13,9 +13,9 @@ namespace effcore {
   public $weight = 0;
 
   function name_get() {
-         return $this->name[0] == '\\' ?
-                $this->name :
-    'effcore\\'.$this->name;
+           return $this->name[0] == '\\' ?
+                  $this->name :
+    '\\effcore\\'.$this->name;
   }
 
   function is_exists_class() {

@@ -144,7 +144,7 @@ namespace effcore {
   }
 
   static function structure_is_exist($name) {
-    $name = strtolower($name);
+    $name = trim(strtolower($name), '\\');
     if (isset(static::structures_select()[$name])) {
       return true;
     }
@@ -156,7 +156,7 @@ namespace effcore {
   }
 
   static function structure_get_parts($name) {
-    return explode('\\', $name);
+    return explode('\\', trim($name, '\\'));
   }
 
   static function structure_get_part_name($name) {
