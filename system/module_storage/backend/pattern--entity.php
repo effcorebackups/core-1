@@ -47,8 +47,8 @@ namespace effcore {
       $this->fields['access']->type = 'blob';
       $this->fields['access']->null = true;
       $this->fields['access']->filter_select = 'unserialize';
-      $this->fields['access']->filter_insert = 'effcore\\core::data_serialize';
-      $this->fields['access']->filter_update = 'effcore\\core::data_serialize';
+      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
+      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
     }
   # insert field 'weight' and index for it
     if ($this->ws_weight) {
