@@ -70,9 +70,8 @@ namespace effcore\modules\storage {
         if (!empty($form->_instance)) {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
-              if (!empty($c_field->field_value_insert_null_if_empty) && $items['#'.$c_name]->value_get() == '') {$form->_instance->{$c_name} = null; continue;}
-              if (!empty($c_field->field_value_not_insert_if_empty ) && $items['#'.$c_name]->value_get() == '') {                                    continue;}
-              if (!empty($c_field->field_value_not_insert          )                                          ) {                                    continue;}
+              if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+              if (!empty($c_field->field_value_not_insert         )                                          ) continue;
               if ($items['#'.$c_name] instanceof \effcore\field_checkbox)
                    $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
               else $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();

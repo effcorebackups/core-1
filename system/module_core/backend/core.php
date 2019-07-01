@@ -840,6 +840,10 @@ namespace effcore {
     return unserialize($string);
   }
 
+  static function null_if_empty($value) {
+    return $value ?: null;
+  }
+
   static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
     $result = $precision ? substr(
