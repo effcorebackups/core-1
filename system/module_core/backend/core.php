@@ -830,6 +830,10 @@ namespace effcore {
   ### shared functions ###
   ########################
 
+  static function return_null_if_empty($value) {
+    return $value ?: null;
+  }
+
   static function deep_clone($data, $class_remaping = []) {
     $string = serialize($data);
     foreach ($class_remaping as $c_old_name => $c_new_name) {
@@ -838,10 +842,6 @@ namespace effcore {
       $string = str_replace($c_old_name, $c_new_name, $string);
     }
     return unserialize($string);
-  }
-
-  static function null_if_empty($value) {
-    return $value ?: null;
   }
 
   static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
