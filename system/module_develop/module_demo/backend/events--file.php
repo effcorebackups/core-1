@@ -41,7 +41,7 @@ namespace effcore\modules\demo {
     $data = 'dirs: '.$file_info->dirs.nl;
     $data.= 'name: '.$file_info->name.nl;
     $data.= 'type: '.$file_info->type.nl;
-    $data.= 'call \effcore\modules\demo\events_file::on_process_demotype'.nl;
+    $data.= 'call \\effcore\\modules\\demo\\events_file::on_process_demotype'.nl;
     $data.= 'current user: '.$user->nick.nl;
     $data.= 'current user roles: '.implode(', ', $user->roles);
   }

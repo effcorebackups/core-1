@@ -7,12 +7,13 @@
 namespace effcore\modules\storage {
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\field_checkbox;
           use \effcore\instance;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
-          use \effcore\translation;
           use \effcore\text;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_instance_update {
 
@@ -38,7 +39,7 @@ namespace effcore\modules\storage {
               $c_form_field->form_current_set($form);
               $c_form_field->build();
               if (empty($c_field->field_value_not_select)) {
-                if ($c_form_field instanceof \effcore\field_checkbox)
+                if ($c_form_field instanceof field_checkbox)
                      $c_form_field->checked_set($form->_instance->{$c_name});
                 else $c_form_field->value_set  ($form->_instance->{$c_name});
               }
@@ -72,7 +73,7 @@ namespace effcore\modules\storage {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
               if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
               if (!empty($c_field->field_value_not_insert         )                                          ) continue;
-              if ($items['#'.$c_name] instanceof \effcore\field_checkbox)
+              if ($items['#'.$c_name] instanceof field_checkbox)
                    $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
               else $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
             }
