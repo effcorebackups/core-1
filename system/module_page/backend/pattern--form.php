@@ -202,7 +202,7 @@ namespace effcore {
 
   function validation_cache_get($id) {
     $this->validation_cache_init();
-    return $this->validation_data[$id] ?? [];
+    return $this->validation_data[$id] ?? null;
   }
 
   function validation_cache_set($id, $data) {

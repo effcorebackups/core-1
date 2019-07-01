@@ -243,7 +243,7 @@ namespace effcore {
   protected function pool_cache_get($id) {
     return $this->cform->validation_cache_get(
       $this->name_get().'_files_pool_'.$id
-    );
+    ) ?: [];
   }
 
   protected function pool_cache_set($id, $data) {
