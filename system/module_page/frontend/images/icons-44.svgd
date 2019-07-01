@@ -6,8 +6,8 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    width="44"
-   height="44"
-   viewBox="0 0 44 44"
+   height="440"
+   viewBox="0 0 44 440"
    style="shape-rendering: auto">
 
   <metadata>
@@ -30,6 +30,15 @@
     <path id="icon_pge-line-5" style="fill: none; stroke: white; stroke-width: 2px" d="M 12 27 L 32 27"/>
     <path id="icon_pge-line-6" style="fill: none; stroke: white; stroke-width: 2px" d="M 12 32 L 32 32"/>
     <path id="icon_pge-line-7" style="fill: none; stroke: white; stroke-width: 2px" d="M 12 37 L 32 37"/>
+  </g>
+
+  <g id="icon_plus">
+    <rect x="12" y="64" width="20" height="4" style="fill: %%_color_button_text; stroke: none"/>
+    <rect x="20" y="56" width="4" height="20" style="fill: %%_color_button_text; stroke: none"/>
+  </g>
+
+  <g id="icon_minus">
+    <rect x="12" y="108" width="20" height="4" style="fill: %%_color_button_text; stroke: none"/>
   </g>
 
 </svg>

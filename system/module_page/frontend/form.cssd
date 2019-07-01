@@ -254,7 +254,11 @@
     padding: 0;
     width: 44px;
     min-width: auto;
-    border-radius: 0}
+    border-radius: 5px;
+    background-image: url('images/icons-44.svgd');
+    background-repeat: no-repeat}
+  x-page_part-manage button {background-position: 50% -88px}
+  x-page_part-insert button {background-position: 50% -44px}
 
   /* degrade for IE (not beautiful) */
 
