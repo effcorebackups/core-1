@@ -75,6 +75,8 @@ namespace effcore\modules\page {
             $new_parts[$c_id_area][$c_id_part] = $c_part;
         $form->_instance->parts = $new_parts ?: null;
         break;
+      case 'cancel':
+        break;
       default:
         $manage_result = null;
         $insert_result = null;
