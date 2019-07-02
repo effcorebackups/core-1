@@ -38,11 +38,8 @@ namespace effcore\modules\storage {
               foreach ($c_field->field_properties ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               $c_form_field->form_current_set($form);
               $c_form_field->build();
-              if (empty($c_field->field_value_not_select)) {
-                if ($c_form_field instanceof field_checkbox)
-                     $c_form_field->checked_set($form->_instance->{$c_name});
-                else $c_form_field->value_set  ($form->_instance->{$c_name});
-              }
+              if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
+              if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});
               $items['fields']->child_insert($c_form_field, $c_name);
               if ($c_form_field->disabled_get() == false) {
                 $has_enabled_fields = true;
@@ -71,11 +68,10 @@ namespace effcore\modules\storage {
         if (!empty($form->_instance)) {
           foreach ($entity->fields as $c_name => $c_field) {
             if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
-              if (!empty($c_field->field_value_not_insert_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-              if (!empty($c_field->field_value_not_insert         )                                          ) continue;
-              if ($items['#'.$c_name] instanceof field_checkbox)
-                   $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
-              else $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+              if (!empty($c_field->field_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+              if (!empty($c_field->field_value_manual_get         )                                          ) continue;
+              if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
+              if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
             }
           }
           if ($form->_instance->update())
