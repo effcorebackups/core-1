@@ -28,7 +28,7 @@ namespace effcore\modules\storage {
       }
       $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {
-        if (!empty($c_field->field_is_visible_on_select)) {
+        if (!empty($c_field->field_can_select)) {
           $has_visible_fields = true;
           $selection->field_insert_entity(null, $entity->name, $c_name);
         }

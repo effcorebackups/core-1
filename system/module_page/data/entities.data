@@ -44,7 +44,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
+        field_can_select: true
         field_class: \effcore\field_text
         field_properties
         - weight: 90
@@ -65,7 +65,7 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
+        field_can_select: true
         field_class: \effcore\field_text
         field_properties
         - weight: 80
@@ -74,7 +74,7 @@ entities
         type: boolean
         not_null: true
         default: 0
-        field_is_visible_on_select: true
+        field_can_select: true
         field_class: \effcore\field_switcher
     - url
         title: URL
@@ -82,7 +82,7 @@ entities
         size: 250
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
+        field_can_select: true
         field_class: \effcore\field_url
         field_properties
         - weight: 70
