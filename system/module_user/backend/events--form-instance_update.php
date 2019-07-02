@@ -22,6 +22,7 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
+    $entity = entity::get($entity_name);
     if ($entity_name == 'relation_role_ws_user' && !empty($form->_instance)) {
       $items['#id_role']->is_builded = false;
       $items['#id_role']->disabled['anonymous' ] = 'anonymous';
@@ -40,7 +41,7 @@ namespace effcore\modules\user {
       );
     }
   # access group
-    if (!empty($form->_instance->entity_get()->ws_access)) {
+    if ($entity->ws_access) {
       $group_access = new group_access();
       if ($form->_instance->access && is_array(
           $form->_instance->access->roles)) $group_access->roles_set(

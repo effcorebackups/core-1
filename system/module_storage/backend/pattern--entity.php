@@ -40,6 +40,23 @@ namespace effcore {
       $this->fields['is_embed']->field_properties['weight'] = 95;
       $this->fields['is_embed']->field_element_attributes['disabled'] = true;
     }
+  # insert field 'weight' and index for it
+    if ($this->ws_weight) {
+      $this->fields['weight'] = new \stdClass;
+      $this->fields['weight']->title = 'Weight';
+      $this->fields['weight']->type = 'integer';
+      $this->fields['weight']->not_null = true;
+      $this->fields['weight']->default = 0;
+      $this->fields['weight']->field_can_select = true;
+      $this->fields['weight']->field_can_insert = true;
+      $this->fields['weight']->field_can_update = true;
+      $this->fields['weight']->field_class = '\\effcore\\field_number';
+      $this->fields['weight']->field_element_attributes['min'] = -1000;
+      $this->fields['weight']->field_element_attributes['max'] = +1000;
+      $this->indexes['index_weight'] = new \stdClass;
+      $this->indexes['index_weight']->type = 'index';
+      $this->indexes['index_weight']->fields = ['weight' => 'weight'];
+    }
   # insert field 'access'
     if ($this->ws_access) {
       $this->fields['access'] = new \stdClass;
@@ -49,21 +66,6 @@ namespace effcore {
       $this->fields['access']->filter_select = 'unserialize';
       $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
       $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
-    }
-  # insert field 'weight' and index for it
-    if ($this->ws_weight) {
-      $this->fields['weight'] = new \stdClass;
-      $this->fields['weight']->title = 'Weight';
-      $this->fields['weight']->type = 'integer';
-      $this->fields['weight']->not_null = true;
-      $this->fields['weight']->default = 0;
-      $this->fields['weight']->field_can_select = true;
-      $this->fields['weight']->field_class = '\\effcore\\field_number';
-      $this->fields['weight']->field_element_attributes['min'] = -1000;
-      $this->fields['weight']->field_element_attributes['max'] = +1000;
-      $this->indexes['index_weight'] = new \stdClass;
-      $this->indexes['index_weight']->type = 'index';
-      $this->indexes['index_weight']->fields = ['weight' => 'weight'];
     }
   # insert field 'created' and index for it
     if ($this->ws_created) {

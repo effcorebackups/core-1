@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_update {
 
-  static function on_init($form, &$items) {
+  static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -30,7 +30,7 @@ namespace effcore\modules\storage {
         if ($form->_instance->select()) {
           $has_enabled_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
-            if (isset($c_field->field_class)) {
+            if (!empty($c_field->field_can_update) && isset($c_field->field_class)) {
               $c_form_field = new $c_field->field_class;
               $c_form_field->title = $c_field->title;
               $c_form_field->element_attributes['name'] = $c_name;

@@ -15,7 +15,7 @@ namespace effcore\modules\menu {
           use \effcore\translation;
           abstract class events_form_instance_select_multiple {
 
-  static function on_init($form, &$items) { # drag-and-drop functionality
+  static function on_init($form, $items) { # drag-and-drop functionality
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree && !empty($form->_selection)) {

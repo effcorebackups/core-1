@@ -45,6 +45,8 @@ entities
         not_null: true
         check: (id <> '')
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_text
         field_properties
         - weight: 90
@@ -58,6 +60,12 @@ entities
         collate: nocase
         not_null: true
         default: simple
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
+        - value: simple
     - title
         title: Title
         type: varchar
@@ -66,6 +74,8 @@ entities
         not_null: true
         check: (title <> '')
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_text
         field_properties
         - weight: 80
@@ -75,6 +85,8 @@ entities
         not_null: true
         default: 0
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_switcher
     - url
         title: URL
@@ -83,6 +95,8 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_url
         field_properties
         - weight: 70
@@ -93,6 +107,8 @@ entities
         collate: nocase
         not_null: true
         default: en
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_language
     - charset
         title: Charset
@@ -101,9 +117,12 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - disabled: true
+        - value: utf-8
     - text_direction
         title: Text direction
         type: varchar
@@ -111,7 +130,12 @@ entities
         collate: nocase
         not_null: true
         default: ltr
+        field_can_insert: true
+        field_can_update: true
         field_class: \effcore\field_text_direction
+        field_properties
+        - values
+          - ltr: ltr
         field_element_attributes
         - disabled: true
     - parts

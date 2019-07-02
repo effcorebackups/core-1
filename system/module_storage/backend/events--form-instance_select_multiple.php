@@ -14,7 +14,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_select_multiple {
 
-  static function on_init($form, &$items) {
+  static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     $items['~add_new']->attribute_insert('title', new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]));
