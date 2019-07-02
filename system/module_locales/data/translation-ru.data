@@ -229,7 +229,9 @@ translations
     - Is remember: Запоминать
     - item #%%_number: пункт №%%_number
     - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент типа "%%_name" с id = "%%_id" был удалён.
+    - Item of type "%%_name" with id = "%%_id" was inserted.: Элемент типа "%%_name" с id = "%%_id" был добавлен.
     - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент типа "%%_name" с id = "%%_id" не был удалён!
+    - Item of type "%%_name" with id = "%%_id" was not inserted!: Элемент типа "%%_name" с id = "%%_id" не был добавлен!
     - Item of type "%%_name" with id = "%%_id" was not updated!: Элемент типа "%%_name" с id = "%%_id" не был обновлён!
     - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Items for\: %%_title: Пункты для: %%_title
