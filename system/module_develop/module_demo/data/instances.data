@@ -22,13 +22,13 @@ instances
     values
     - id: 1
     - f_nocase: aaa
-    - f_binary: aaa
+    - f_binary: bbb
 - demo_collations_2|instance
     entity_name: demo_collations
     values
     - id: 2
     - f_nocase: AAA
-    - f_binary: AAA
+    - f_binary: BBB
 # ─────────────────────────────────────────────────────────────────────
 # demo constraints
 # ─────────────────────────────────────────────────────────────────────

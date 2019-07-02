@@ -18,6 +18,9 @@ entities
         size: 255
         collate: nocase
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
@@ -26,6 +29,9 @@ entities
         type: integer
         not_null: true
         default: 0
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_number
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: real
     # ─────────────────────────────────────────────────────────────────────
@@ -34,6 +40,9 @@ entities
         type: real
         not_null: true
         default: 0
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -44,6 +53,9 @@ entities
         collate: nocase
         not_null: true
         default: default text
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -52,6 +64,9 @@ entities
         type: time
         not_null: true
         default: 00:00:00
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_time
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -60,6 +75,9 @@ entities
         type: date
         not_null: true
         default: 2030-01-01
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_date
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -68,6 +86,9 @@ entities
         type: datetime
         not_null: true
         default: 2030-01-01 00:00:00
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_datetime
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer | mysql equivalent: tinyint
     # ─────────────────────────────────────────────────────────────────────
@@ -76,15 +97,22 @@ entities
         type: boolean
         not_null: true
         default: 0
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_logic
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
     - f_blob
         title: Field blob
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        filter_insert: \effcore\core::return_null_if_empty
+        filter_update: \effcore\core::return_null_if_empty
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_textarea
+        field_element_attributes
+        - required: false
     constraints
     - primary_id
         type: primary
@@ -155,6 +183,9 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     - f_binary
         title: Field binary
         type: varchar
@@ -162,6 +193,9 @@ entities
         collate: binary
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -182,6 +216,11 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
     - f_unique
         title: Field unique
         type: varchar
@@ -189,12 +228,22 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     - f_foreign
         title: Field foreign
         type: integer
         not_null: true
         default: 0
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: demo_autoincrement
+        - entity_field_id_name: id
+        - entity_field_title_name: description
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -238,6 +287,11 @@ entities
         type: integer
         not_null: true
         field_can_select: true
+        field_can_update: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - nick
         title: Nick
         type: varchar
@@ -245,14 +299,20 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
-    - created
-        title: Created
-        type: datetime
-        not_null: true
-        field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_nick
     - is_even
         title: Is even
         type: boolean
+        not_null: true
+        field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_logic
+    - created
+        title: Created
+        type: datetime
         not_null: true
         field_can_select: true
     constraints
@@ -282,6 +342,11 @@ entities
         type: integer
         not_null: true
         field_can_select: true
+        field_can_update: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - email
         title: EMail
         type: varchar
@@ -289,6 +354,9 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_email
     indexes
     - index_id_data
         type: unique index
@@ -311,6 +379,11 @@ entities
         type: autoincrement
         not_null: true
         field_can_select: true
+        field_can_update: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - f_index_unique
         title: Field index unique
         type: varchar
@@ -318,6 +391,9 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     - f_index
         title: Field index
         type: varchar
@@ -325,6 +401,9 @@ entities
         collate: nocase
         not_null: true
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
