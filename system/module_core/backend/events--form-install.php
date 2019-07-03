@@ -37,7 +37,7 @@ namespace effcore\modules\core {
       if (!extension_loaded('Zend OPcache')) {
         message::insert(new text_multiline([
           'The PHP extension "%%_name" is not available!',
-          'With it, you can speed up the system from 10x and more.'], ['name' => 'Zend OPcache']
+          'With it, you can speed up the system from 2-3x and more.'], ['name' => 'Zend OPcache']
         ), 'warning');
       }
     # check php dependencies for storage
