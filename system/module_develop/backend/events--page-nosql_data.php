@@ -43,9 +43,9 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_tree($page) {
-    $trees = tree::select_all('nosql');
     $id = $page->args_get('id');
-    if (isset($trees[$id])) {
+    $trees = tree::select_all('nosql');
+    if ($id && isset($trees[$id])) {
       $tree = tree::select($id);
       $tree_managing_id = 'managed-'.$id;
       $tree_managing = tree::insert($tree->title ?? '', $tree_managing_id);
