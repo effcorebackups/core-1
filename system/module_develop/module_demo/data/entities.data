@@ -284,7 +284,7 @@ entities
     fields
     - id
         title: ID
-        type: integer
+        type: autoincrement
         not_null: true
         field_can_select: true
         field_can_update: true
@@ -314,7 +314,11 @@ entities
         title: Created
         type: datetime
         not_null: true
+        default: 2030-01-01 00:00:00
         field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_datetime
     constraints
     - primary_id
         type: primary

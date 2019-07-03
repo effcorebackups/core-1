@@ -16,10 +16,10 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_select_multiple {
 
   static function on_init($form, $items) { # drag-and-drop functionality
-    $items['~apply']->disabled_set(false);
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree && !empty($form->_selection)) {
+      $items['~apply']->disabled_set(false);
       $form->_selection->query_params['conditions'] = ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree];
       $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
         $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
