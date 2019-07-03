@@ -13,8 +13,8 @@ namespace effcore\modules\test {
           abstract class events_page_test {
 
   static function on_tab_before_build($tab) {
-    $tests = test::get_all(false);
     $id = page::get_current()->args_get('id');
+    $tests = test::get_all(false);
     core::array_sort_by_title($tests);
     if (!isset($tests[$id])) url::go(page::get_current()->args_get('base').'/'.reset($tests)->id);
     foreach ($tests as $c_test) {

@@ -15,18 +15,20 @@ namespace effcore\modules\test {
 
   static function on_init($form, $items) {
     $id = page::get_current()->args_get('id');
-    $test = test::get($id);
-    $items['params']->description = $test->description;
-    $items['report']->child_select('document')->child_insert(new text('The report will be created after running the test.'));
-    if ($test->params) {
-      foreach ($test->params as $c_id => $c_param) {
-        $items['params']->child_insert($c_param, $c_id);
-        $c_param->build();
+    if ($id) {
+      $test = test::get($id);
+      $items['params']->description = $test->description;
+      $items['report']->child_select('document')->child_insert(new text('The report will be created after running the test.'));
+      if ($test->params) {
+        foreach ($test->params as $c_id => $c_param) {
+          $items['params']->child_insert($c_param, $c_id);
+          $c_param->build();
+        }
+      } else {
+        $items['params']->child_insert(
+          new text('No additional parameters.')
+        );
       }
-    } else {
-      $items['params']->child_insert(
-        new text('No additional parameters.')
-      );
     }
   }
 
