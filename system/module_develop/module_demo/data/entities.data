@@ -235,7 +235,6 @@ entities
         title: Field foreign
         type: integer
         not_null: true
-        default: 0
         field_can_select: true
         field_can_insert: true
         field_can_update: true
@@ -261,9 +260,9 @@ entities
         - =: f_unique
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name FOREIGN KEY (field)
-    #                 REFERENCES other_name(field)
-    #                 ON UPDATE CASCADE|RESTRICT|NO ACTION
-    #                 ON DELETE CASCADE|RESTRICT|NO ACTION
+    #   REFERENCES other_name(field)
+    #   ON UPDATE CASCADE|RESTRICT|NO ACTION
+    #   ON DELETE CASCADE|RESTRICT|NO ACTION
     # ─────────────────────────────────────────────────────────────────────
     - foreign_f_foreign
         type: foreign
@@ -346,11 +345,13 @@ entities
         type: integer
         not_null: true
         field_can_select: true
+        field_can_insert: true
         field_can_update: true
-        field_class: \effcore\field_number
-        field_element_attributes
-        - min: 1
-        - disabled: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: demo_data
+        - entity_field_id_name: id
+        - entity_field_title_name: nick
     - email
         title: EMail
         type: varchar
@@ -361,6 +362,14 @@ entities
         field_can_insert: true
         field_can_update: true
         field_class: \effcore\field_email
+    constraints
+    - foreign_id_data
+        type: foreign
+        fields
+        - =: id_data
+        references: demo_data
+        references_fields
+        - =: id
     indexes
     - index_id_data
         type: unique index
