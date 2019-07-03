@@ -219,8 +219,6 @@ entities
         field_can_insert: true
         field_can_update: true
         field_class: \effcore\field_text
-        field_element_attributes
-        - disabled: true
     - f_unique
         title: Field unique
         type: varchar

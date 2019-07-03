@@ -61,7 +61,6 @@ namespace effcore\modules\storage {
     $back_update = page::get_current()->args_get('back_update');
     $back_cancel = page::get_current()->args_get('back_cancel');
     $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
@@ -75,8 +74,8 @@ namespace effcore\modules\storage {
             }
           }
           if ($form->_instance->update())
-               message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id])           );
-          else message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'warning');
+               message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $entity->id_get_real_from_values($form->_instance->values_get())) ])           );
+          else message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $entity->id_get_real_from_values($form->_instance->values_get())) ]), 'warning');
         }
                      url::go(url::back_url_get() ?: ($back_update ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
       case 'cancel': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
