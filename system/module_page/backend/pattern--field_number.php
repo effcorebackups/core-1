@@ -64,8 +64,8 @@ namespace effcore {
       $step = $field->step_get() ?: 1;
       $min = (float)$field->min_get();
       $max = (float)$field->max_get();
-      if ((int)round(($min - $new_value) / $step, 5) !=
-               round(($min - $new_value) / $step, 5)) {
+      if ((int)round(($new_value - $min) / $step, 11) !=
+               round(($new_value - $min) / $step, 11)) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains incorrect value!',
           'Field value is not in valid range.'], ['title' => translation::get($field->title)]
