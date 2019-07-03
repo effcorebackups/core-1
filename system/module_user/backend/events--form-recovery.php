@@ -67,7 +67,7 @@ namespace effcore\modules\user {
               $mail_encoding
             );
             if ($mail_send_result)
-                 message::insert('A new password has been sent to selected EMail.');
+                 message::insert('A new password has been sent to selected EMail.'       );
             else message::insert('The letter was not accepted for transmission.', 'error');
           }
         }

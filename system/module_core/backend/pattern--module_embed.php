@@ -26,13 +26,13 @@ namespace effcore {
   # insert entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())
-           message::insert(new text('Entity "%%_name" was installed.',     ['name' => $c_entity->name]));
+           message::insert(new text('Entity "%%_name" was installed.',     ['name' => $c_entity->name])         );
       else message::insert(new text('Entity "%%_name" was not installed!', ['name' => $c_entity->name]), 'error');
     }
   # insert instances
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       if ($c_instance->insert())
-           message::insert(new text('Instance with row_id = "%%_row_id" was added.',     ['row_id' => $c_row_id]));
+           message::insert(new text('Instance with row_id = "%%_row_id" was added.',     ['row_id' => $c_row_id])         );
       else message::insert(new text('Instance with row_id = "%%_row_id" was not added!', ['row_id' => $c_row_id]), 'error');
     }
   # insert to boot

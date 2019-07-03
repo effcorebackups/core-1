@@ -39,7 +39,7 @@ namespace effcore\modules\test {
           $test_result = $test->run();
         # show message
           if (!empty($test_result['return']))
-               message::insert('The test was successful.');
+               message::insert('The test was successful.'     );
           else message::insert('The test was failed!', 'error');
         # make report
           if (!empty($test_result['reports'])) {

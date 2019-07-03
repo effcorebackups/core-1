@@ -16,6 +16,7 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_select_multiple {
 
   static function on_init($form, $items) { # drag-and-drop functionality
+    $items['~apply']->disabled_set(false);
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     if ($entity_name == 'tree_item' && $id_tree && !empty($form->_selection)) {
@@ -46,7 +47,7 @@ namespace effcore\modules\menu {
               $c_item->weight    != $c_new_weight) {
               $c_item->id_parent  = $c_new_parent;
               $c_item->weight     = $c_new_weight;
-            if ($c_item->update()) message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $c_item->id]));
+            if ($c_item->update()) message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $c_item->id])           );
             else                   message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
           }
         }

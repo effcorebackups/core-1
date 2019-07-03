@@ -75,7 +75,7 @@ namespace effcore\modules\storage {
             }
           }
           if ($form->_instance->update())
-               message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id]));
+               message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $instance_id])           );
           else message::insert_to_storage(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'warning');
         }
                      url::go(url::back_url_get() ?: ($back_update ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
