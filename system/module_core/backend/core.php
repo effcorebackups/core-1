@@ -537,8 +537,8 @@ namespace effcore {
   static function validate_number($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
       '%^(?<integer>[-]{0,1}[1-9][0-9]*|0)$|'.
-       '^(?<float_s>[-]{0,1}[0-9][.][0-9]{1,3})$|'.
-       '^(?<float_l>[-]{0,1}[1-9][0-9]+[.][0-9]{1,3})$%']]);
+       '^(?<float_s>[-]{0,1}[0-9]'.   '[.][0-9]{1,})$|'.
+       '^(?<float_l>[-]{0,1}[1-9][0-9]+[.][0-9]{1,})$%']]);
   }
 
   static function validate_hex_color($value) {

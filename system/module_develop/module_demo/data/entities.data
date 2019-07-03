@@ -42,7 +42,9 @@ entities
         default: 0
         field_can_insert: true
         field_can_update: true
-        field_class: \effcore\field_text
+        field_class: \effcore\field_number
+        field_element_attributes
+        - step: 0.00001
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
