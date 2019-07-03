@@ -17,8 +17,8 @@ namespace effcore\modules\storage {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-    $items['~add_new']->attribute_insert('title', new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]));
     if ($entity) {
+      $items['~add_new']->attribute_insert('title', new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]));
       $selection = new selection('', $entity->view_type_multiple);
       $selection->id = 'instances_manage';
       $selection->is_paged = true;
