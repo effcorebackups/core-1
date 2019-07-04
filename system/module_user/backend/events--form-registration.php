@@ -48,7 +48,7 @@ namespace effcore\modules\user {
           session::insert($user->id,
             core::array_kmap($items['*session_params']->values_get())
           );
-          message::insert_to_storage(
+          message::insert(
             new text('Welcome, %%_nick!', ['nick' => $user->nick])
           );
           url::go('/user/'.$user->nick);

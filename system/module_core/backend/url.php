@@ -241,6 +241,10 @@ namespace effcore {
   }
 
   static function go($url) {
+    $messages = message::select_all(false);
+    foreach ($messages as $c_type => $c_messages)
+      foreach ($c_messages as $c_message)
+        message::insert_to_storage($c_message, $c_type);
     core::send_header_and_exit('redirect', null, null,
       (new static($url))->full_get()
     );
