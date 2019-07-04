@@ -41,6 +41,7 @@ namespace effcore {
                 static::validate_value    ($field, $form, $element, $new_value) &&
                 static::validate_min      ($field, $form, $element, $new_value) &&
                 static::validate_max      ($field, $form, $element, $new_value) &&
+                static::validate_fraction ($field, $form, $element, $new_value) &&
                 static::validate_step     ($field, $form, $element, $new_value) &&
                 static::validate_pattern  ($field, $form, $element, $new_value);
       $field->value_set($new_value);
@@ -59,13 +60,29 @@ namespace effcore {
     }
   }
 
+  static function validate_fraction($field, $form, $element, &$new_value) {
+    if (strlen($new_value)) {
+      $step = $field->step_get() ?: 1;
+      $fraction_step_length      = strlen(ltrim(rtrim(strrchr(number_format($step, 11), '.'), '0'), '.'));
+      $fraction_new_value_length = strlen(ltrim(rtrim(strrchr(              $new_value, '.'), '0'), '.'));
+      if ($fraction_new_value_length > 11 ||
+          $fraction_new_value_length > $fraction_step_length) {
+        $field->error_set(new text_multiline([
+          'Field "%%_title" contains incorrect value!',
+          'Fraction part is too long.'], ['title' => translation::get($field->title)]
+        ));
+        return;
+      }
+    }
+    return true;
+  }
+
   static function validate_step($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
       $step = $field->step_get() ?: 1;
       $min = (float)$field->min_get();
       $max = (float)$field->max_get();
-      if ((int)round(($new_value - $min) / $step, 11) !=
-               round(($new_value - $min) / $step, 11)) {
+      if (rtrim(strrchr(number_format(($new_value - $min) / $step, 11), '.'), '.0') !== '') {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains incorrect value!',
           'Field value is not in valid range.'], ['title' => translation::get($field->title)]

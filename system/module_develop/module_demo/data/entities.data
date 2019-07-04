@@ -44,7 +44,9 @@ entities
         field_can_update: true
         field_class: \effcore\field_number
         field_element_attributes
-        - step: 0.00001
+        - min: -1000
+        - max: +1000
+        - step: 0.2
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
