@@ -15,6 +15,15 @@ namespace effcore {
 
   static protected $current;
 
+  static function select_all_by_id_user($id_user) {
+    return entity::get('session')->instances_select([
+      'conditions' => [
+        'id_user_!f' => 'id_user', '=',
+        'id_user_!v' => $id_user], 'order' => [
+        'expired_!f' => 'expired', 'DESC']], 'id'
+    );
+  }
+
   static function select() {
     $session_id       = static::id_get();
     $session_hex_type = static::id_extract_hex_type($session_id);
@@ -45,12 +54,14 @@ namespace effcore {
     ]))->insert();
   }
 
-  static function delete($id_user) {
-    (new instance('session', [
-      'id'      => static::id_get(),
+  static function delete($id_user, $id_session = null) {
+    $result = (new instance('session', [
+      'id'      => $id_session ?: static::id_get(),
       'id_user' => $id_user
     ]))->delete();
-    static::id_regenerate('a');
+  # regenerate id_session if session is current
+    if ($id_session == null) static::id_regenerate('a');
+    return $result;
   }
 
   static function cleaning() {

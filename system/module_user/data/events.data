@@ -28,6 +28,9 @@ events
       for: instance_update
       weight: -50
       handler: \effcore\modules\user\events_form_instance_update::on_init
+  - logout|event
+      for: logout
+      handler: \effcore\modules\user\events_form_logout::on_init
   on_form_validate
   - login|event
       for: login

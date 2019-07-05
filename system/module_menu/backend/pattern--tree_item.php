@@ -117,7 +117,7 @@ namespace effcore {
     if (tree::select($id_tree)       &&
         tree::select($id_tree)->type == 'sql') {
       static::$is_init___sql_by_tree[$id_tree] = true;
-      $instances = entity::get('tree_item')->instances_select(['conditions' => ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree]], 'id');
+      $instances = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', '=', 'id_tree_!v' => $id_tree]], 'id');
       foreach ($instances as $c_instance) {
         $c_tree_item = new static(
           $c_instance->title,

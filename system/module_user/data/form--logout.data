@@ -5,6 +5,10 @@ forms
     - method: post
     - novalidate: true
     children
+    - checkboxes|group_checkboxes
+        title: Sessions
+        element_attributes
+        - name: sessions[]
     - button_logout|button
         title: logout
         attributes

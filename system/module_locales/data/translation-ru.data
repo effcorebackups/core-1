@@ -405,6 +405,8 @@ translations
     - Server UTC date / time: UTC Дата / время сервера
     - Service: Обслуживание
     - Session expired date: Дата истечения сессии
+    - Session with id = "%%_id" was deleted.: Сессия с id = "%%_id" была удалена.
+    - Session with id = "%%_id" was not deleted!: Сессия с id = "%%_id" не была удалена!
     - Session: Сессия
     - Sessions: Сессии
     - set: установка
