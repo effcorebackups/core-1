@@ -143,6 +143,10 @@
   x-actions x-action[data-title='delete'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100% -61px}
   x-decorator[data-view-type='table'] td[data-cellid='actions'] {text-align: right}
 
+  /* sessions_logout */
+
+  x-decorator[data-id='sessions_logout'] td[data-cellid='expired'] {width: 20%}
+
   /* pager */
 
   nav[data-type='pager'] {

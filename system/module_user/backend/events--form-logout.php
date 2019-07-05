@@ -5,6 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\decorator;
+          use \effcore\field_checkbox;
+          use \effcore\locale;
           use \effcore\message;
           use \effcore\session;
           use \effcore\text;
@@ -15,24 +18,41 @@ namespace effcore\modules\user {
   static function on_init($form, $items) {
     $sessions       = session::select_all_by_id_user(user::get_current()->id);
     $session_active = session::select();
-    $items['*sessions']->children_delete();
+    $decorator = new decorator('table');
+    $decorator->id = 'sessions_logout';
+    $form->child_select('info')->children_delete();
+    $form->child_select('info')->child_insert($decorator);
     foreach ($sessions as $c_session) {
-      if ($c_session->id == $session_active->id)
-        $items['*sessions']->checked[$session_active->id] = $session_active->id;
-        $items['*sessions']->field_insert($c_session->data->user_agent, null, ['value' => $c_session->id]);
-    }
+      $c_checkbox = new field_checkbox();
+      $c_checkbox->build();
+      $c_checkbox->name_set('is_checked[]');
+      $c_checkbox->value_set($c_session->id);
+      $c_checkbox->checked_set($c_session->id == $session_active->id);
+      $decorator->data[$c_session->id] = [
+        'checkbox'  => ['value' => $c_checkbox,                                          'title' => ''               ],
+        'is_active' => ['value' => $c_session->id == $session_active->id ? 'Yes' : 'No', 'title' => 'Is active'      ],
+        'info'      => ['value' => $c_session->data->user_agent,                         'title' => 'User agent'     ],
+        'expired'   => ['value' => locale::format_datetime($c_session->expired),         'title' => 'Expiration date']
+      ];}
+    $decorator->build();
   }
 
   static function on_submit($form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'logout':
-        if ($items['*sessions']->values_get()) {
-          $messages = [];
-          $session_active = session::select();
-          foreach ($items['*sessions']->values_get() as $c_id_session) {
-            if (session::delete(user::get_current()->id, $session_active->id == $c_id_session ? null /* for regenerate */ : $c_id_session))
-                 $messages['ok'     ][] = new text('Session with id = "%%_id" was deleted.',     ['id' => $c_id_session]);
-            else $messages['warning'][] = new text('Session with id = "%%_id" was not deleted!', ['id' => $c_id_session]);}
+        $messages       = [];
+        $has_selection  = false;
+        $sessions       = session::select_all_by_id_user(user::get_current()->id);
+        $session_active = session::select();
+        foreach ($sessions as $c_session) {
+          if ($items['#is_checked:'.$c_session->id]->checked_get()) {
+            $has_selection = true;
+            if (session::delete(user::get_current()->id, $session_active->id == $c_session->id ? null /* for regenerate */ : $c_session->id))
+                 $messages['ok'     ][] = new text('Session with id = "%%_id" was deleted.',     ['id' => $c_session->id]);
+            else $messages['warning'][] = new text('Session with id = "%%_id" was not deleted!', ['id' => $c_session->id]);
+          }
+        }
+        if ($has_selection) {
           if (!session::select()) url::go('/'); else {
             static::on_init($form, $items);
             foreach ($messages as $c_type => $c_messages_by_type) {
