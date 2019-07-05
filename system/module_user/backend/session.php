@@ -51,6 +51,7 @@ namespace effcore {
       'is_remember' => $is_remember ? 1 : 0,
       'is_fixed_ip' => $is_fixed_ip ? 1 : 0,
       'expired'     => core::datetime_get('+'.$period.' second'),
+      'data'        => (object)['user_agent' => core::server_get_user_agent(2048)]
     ]))->insert();
   }
 

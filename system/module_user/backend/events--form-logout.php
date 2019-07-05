@@ -19,7 +19,7 @@ namespace effcore\modules\user {
     foreach ($sessions as $c_session) {
       if ($c_session->id == $session_active->id)
         $items['*sessions']->checked[$session_active->id] = $session_active->id;
-        $items['*sessions']->field_insert($c_session->id, null, ['value' => $c_session->id]);
+        $items['*sessions']->field_insert($c_session->data->user_agent, null, ['value' => $c_session->id]);
     }
   }
 
