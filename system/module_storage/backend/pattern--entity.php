@@ -114,7 +114,7 @@ namespace effcore {
     return [];
   }
 
-  function id_get_real_from_values($values) {
+  function id_get_from_values($values) {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) {$slice = array_intersect_key($values, $c_constraint->fields); if (count($c_constraint->fields) == count($slice)) return $slice;}
     foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') {$slice = array_intersect_key($values, $c_index     ->fields); if (count($c_index     ->fields) == count($slice)) return $slice;}
