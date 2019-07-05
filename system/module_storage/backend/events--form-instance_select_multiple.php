@@ -7,6 +7,7 @@
 namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\markup;
+          use \effcore\message;
           use \effcore\page;
           use \effcore\selection;
           use \effcore\text;
@@ -40,6 +41,7 @@ namespace effcore\modules\storage {
       } else {
         $selection->field_insert_checkbox(null, '', 80);
         $selection->field_insert_action();
+        $selection->build();
         $form->child_select('data')->child_insert(
           $selection
         );
@@ -50,6 +52,14 @@ namespace effcore\modules\storage {
   static function on_submit($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     switch ($form->clicked_button->value_get()) {
+      case 'apply':
+        foreach ($form->_selection->_instances as $c_instance) {
+          $id_values = implode('+', $c_instance->entity_get()->id_get_real_from_values($c_instance->values_get()));
+          if ($items['#is_checked:'.$id_values]->checked_get()) {
+            message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
+          }
+        }
+        break;
       case 'add_new':
         url::go('/manage/instance/insert/'.$entity_name.'?'.url::back_part_make());
         break;

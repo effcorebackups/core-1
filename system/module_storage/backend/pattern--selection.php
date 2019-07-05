@@ -97,7 +97,7 @@ namespace effcore {
         }
 
       # select instances
-        $instances = $main_entity->instances_select(
+        $this->_instances = $main_entity->instances_select(
           $this->query_params
         );
 
@@ -117,8 +117,8 @@ namespace effcore {
     # wrap the result in the decorator
     # ─────────────────────────────────────────────────────────────────────
       $result = null;
-      if (isset($instances) &&
-          count($instances)) {
+      if (isset($this->_instances) &&
+          count($this->_instances)) {
 
         $decorator = new decorator($this->view_type);
         $decorator->id = $this->id;
@@ -128,7 +128,7 @@ namespace effcore {
           $decorator->{$c_key} = $c_value;
         }
 
-        foreach ($instances as $c_instance) {
+        foreach ($this->_instances as $c_instance) {
           $c_row = [];
           foreach ($this->fields as $c_row_id => $c_field) {
             switch ($c_field->type) {
@@ -184,9 +184,8 @@ namespace effcore {
           $decorator->data[] = $c_row;
         }
 
-        $this->child_insert(
-          $decorator, 'result'
-        );
+        $this->child_insert($decorator, 'result');
+        $decorator->build();
 
       } else {
         $this->child_insert(
