@@ -54,7 +54,7 @@ namespace effcore\modules\storage {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         foreach ($form->_selection->_instances as $c_instance) {
-          $id_values = implode('+', $c_instance->entity_get()->id_get_from_values($c_instance->values_get()));
+          $id_values = implode('+', $c_instance->values_id_get());
           if ($items['#is_checked:'.$id_values]->checked_get()) {
             message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
           }

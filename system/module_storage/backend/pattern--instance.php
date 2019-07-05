@@ -30,6 +30,12 @@ namespace effcore {
     }
   }
 
+  function values_id_get() {
+    return $this->entity_get()->id_get_from_values(
+      $this->values_get()
+    );
+  }
+
   function entity_get() {return entity::get($this->entity_name);}
   function entity_set_name($entity_name) {$this->entity_name = $entity_name;}
 
