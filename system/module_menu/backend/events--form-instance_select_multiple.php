@@ -21,7 +21,7 @@ namespace effcore\modules\menu {
     if ($entity_name == 'tree_item' && $id_tree && !empty($form->_selection)) {
       $items['#actions']->disabled_set();
       $form->_selection->is_builded = false;
-      $form->_selection->query_params['conditions'] = ['field_!f' => 'id_tree', '=', 'value_!v' => $id_tree];
+      $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', '=', 'id_tree_!v' => $id_tree];
       $form->_selection->field_insert_action();
       $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
         $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
