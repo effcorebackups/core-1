@@ -49,10 +49,8 @@ namespace effcore\modules\menu {
               $c_item->id_parent  = $c_new_parent;
               $c_item->weight     = $c_new_weight;
             if ($c_item->update()) message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $c_item->id])           );
-            else                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
-          }
-        }
-      }
+            else                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');}}}
+      static::on_init($form, $items);
     }
   }
 
