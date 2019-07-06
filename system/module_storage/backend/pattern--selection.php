@@ -247,12 +247,11 @@ namespace effcore {
     $this->fields[$row_id ?: 'code'] = $field;
   }
 
-  function actions_list_get($entity, $instance, $id_keys) {
-    foreach ($id_keys as $c_id) $id_values[$c_id] = $instance->values[$c_id];
+  function actions_list_get($entity, $instance) {
     $actions_list = new actions_list();
-    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'delete');
-                                    $actions_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'update');
-                                    $actions_list->action_add('/manage/instance/select/'.$entity->name.'/'.join('+', $id_values).'?'.url::back_part_make(), 'select');
+    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'delete');
+                                    $actions_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'update');
+                                    $actions_list->action_add('/manage/instance/select/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'select');
     return $actions_list;
   }
 
