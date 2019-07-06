@@ -31,6 +31,9 @@ namespace effcore\modules\menu {
           'hidden_parent' => $c_hidden_parent,
           'hidden_weight' => $c_hidden_weight]);});
       $form->_selection->build();
+      if (!count($form->_selection->_instances)) {
+        $items['~apply']->disabled_set();
+      }
     }
   }
 
