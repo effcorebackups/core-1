@@ -31,7 +31,7 @@ namespace effcore {
     if (!$this->is_builded) {
 
       $this->attribute_insert('data-view-type', $this->view_type);
-      $this->attribute_insert('data-id',        $this->id);
+      $this->attribute_insert('data-id',        $this->id       );
       event::start('on_selection_before_build', $this->id, [&$this]);
 
       $used_entities = [];
@@ -48,7 +48,7 @@ namespace effcore {
         if ($c_field->type == 'field' ||
             $c_field->type == 'join_field') {
           $c_entity = entity::get($c_field->entity_name, false);
-          $used_entities[$c_entity->name]         = $c_entity->name;
+          $used_entities[$c_entity->name        ] = $c_entity->name;
           $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
         }
       }
@@ -134,7 +134,7 @@ namespace effcore {
             switch ($c_field->type) {
               case 'field':
               case 'join_field':
-                $c_entity = entity::get($c_field->entity_name, false);
+                $c_entity     = entity::get($c_field->entity_name, false);
                 $c_title      = $c_entity->fields[$c_field->entity_field_name]->title;
                 $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
                 $c_value      = $c_instance->    {$c_field->entity_field_name};

@@ -42,9 +42,11 @@ namespace effcore\modules\storage {
         $selection->field_insert_checkbox(null, '', 80);
         $selection->field_insert_action();
         $selection->build();
-        $form->child_select('data')->child_insert(
-          $selection
-        );
+        $form->child_select('data')->child_insert($selection);
+        if (!count($selection->_instances)) {
+          $items['~apply'  ]->disabled_set();
+          $items['#actions']->disabled_set();
+        }
       }
     }
   }
@@ -53,11 +55,18 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     switch ($form->clicked_button->value_get()) {
       case 'apply':
+        $has_selection = false;
         foreach ($form->_selection->_instances as $c_instance) {
           $id_values = implode('+', $c_instance->values_id_get());
           if ($items['#is_checked:'.$id_values]->checked_get()) {
+            $has_selection = true;
             message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
           }
+        }
+        if (!$has_selection) {
+          message::insert(
+            'Nothing selected!', 'warning'
+          );
         }
         break;
       case 'add_new':

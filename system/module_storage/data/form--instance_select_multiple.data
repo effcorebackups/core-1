@@ -15,7 +15,6 @@ forms
         title: Actions
         element_attributes
         - name: actions
-        - disabled: true
         values
         - not_selected: - select -
         - delete: Delete
@@ -24,4 +23,3 @@ forms
         title: apply
         attributes
         - value: apply
-        - disabled: true
