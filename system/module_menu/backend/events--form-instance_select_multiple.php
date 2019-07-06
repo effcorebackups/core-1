@@ -39,6 +39,7 @@ namespace effcore\modules\menu {
     $id_tree     = page::get_current()->args_get('instances_group_by');
     $entity = entity::get($entity_name);
     if ($entity_name == 'tree_item' && $id_tree) {
+      $has_selection = false;
       $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', '=', 'id_tree_!v' => $id_tree]], 'id');
       foreach ($tree_items as $c_item) {
         $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
@@ -48,8 +49,17 @@ namespace effcore\modules\menu {
               $c_item->weight    != $c_new_weight) {
               $c_item->id_parent  = $c_new_parent;
               $c_item->weight     = $c_new_weight;
+              $has_selection      = true;
             if ($c_item->update()) message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => $c_item->id])           );
-            else                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');}}}
+            else                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
+          }
+        }
+      }
+      if (!$has_selection) {
+        message::insert(
+          'Nothing selected!', 'warning'
+        );
+      }
       static::on_init($form, $items);
     }
   }
