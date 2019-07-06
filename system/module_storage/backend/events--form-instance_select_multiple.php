@@ -55,18 +55,20 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $has_selection = false;
-        foreach ($form->_selection->_instances as $c_instance) {
-          $id_values = implode('+', $c_instance->values_id_get());
-          if ($items['#is_checked:'.$id_values]->checked_get()) {
-            $has_selection = true;
-            message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
+        if (!$items['#actions']->disabled_get()) {
+          $has_selection = false;
+          foreach ($form->_selection->_instances as $c_instance) {
+            $id_values = implode('+', $c_instance->values_id_get());
+            if ($items['#is_checked:'.$id_values]->checked_get()) {
+              $has_selection = true;
+              message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
+            }
           }
-        }
-        if (!$has_selection) {
-          message::insert(
-            'Nothing selected!', 'warning'
-          );
+          if (!$has_selection) {
+            message::insert(
+              'Nothing selected!', 'warning'
+            );
+          }
         }
         break;
       case 'add_new':
