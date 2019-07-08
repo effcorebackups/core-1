@@ -162,7 +162,7 @@ namespace effcore {
               case 'actions':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? '',
-                  'value' => $this->actions_list_get($c_instance)
+                  'value' => $this->actions_list_get($c_instance, $c_field->allowed)
                 ];
                 break;
               case 'markup':
@@ -219,14 +219,6 @@ namespace effcore {
     $this->fields[$row_id ?: 'checkbox'] = $field;
   }
 
-  function field_insert_action($row_id = null, $title = '', $weight = 0) {
-    $field = new \stdClass;
-    $field->type   = 'actions';
-    $field->title  = $title;
-    $field->weight = $weight;
-    $this->fields[$row_id ?: 'actions'] = $field;
-  }
-
   function field_insert_markup($row_id = null, $title = '', $markup, $weight = 0) {
     $field = new \stdClass;
     $field->type   = 'markup';
@@ -245,11 +237,23 @@ namespace effcore {
     $this->fields[$row_id ?: 'code'] = $field;
   }
 
-  function actions_list_get($instance) {
+  function field_insert_action($row_id = null, $title = '', $allowed = ['select', 'update', 'delete'], $weight = 0) {
+    $field = new \stdClass;
+    $field->type    = 'actions';
+    $field->title   = $title;
+    $field->weight  = $weight;
+    $field->allowed = $allowed;
+    $this->fields[$row_id ?: 'actions'] = $field;
+  }
+
+  function actions_list_get($instance, $allowed = ['select', 'update', 'delete']) {
     $actions_list = new actions_list();
-    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'delete');
-                                    $actions_list->action_add('/manage/instance/update/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'update');
-                                    $actions_list->action_add('/manage/instance/select/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'select');
+    foreach ($allowed as $c_action_name) {
+      if ($c_action_name == 'delete' && !empty($instance->is_embed)) continue;
+      $actions_list->action_add(
+        '/manage/instance/'.$c_action_name.'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), $c_action_name
+      );
+    }
     return $actions_list;
   }
 

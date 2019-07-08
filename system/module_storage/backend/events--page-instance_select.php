@@ -49,9 +49,8 @@ namespace effcore\modules\storage {
           $selection = new selection('', $entity->view_type_single);
           $selection->id = 'instance_manage';
           $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
-          foreach ($entity->selection_params as $c_key => $c_value) {
-            $selection->                       {$c_key} = $c_value;
-          }
+          foreach ($entity->selection_params as $c_key => $c_value)
+                                   $selection->{$c_key} = $c_value;
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->field_can_select)) {
@@ -64,7 +63,7 @@ namespace effcore\modules\storage {
               new markup('x-no-result', [], 'no visible fields')
             );
           } else {
-            $selection->field_insert_action(null, 'Action');
+            $selection->field_insert_action(null, 'Action', ['delete', 'update']);
             return new block('', ['data-id' => 'instance_select', 'data-main-entity' => $entity->name],
               $selection
             );

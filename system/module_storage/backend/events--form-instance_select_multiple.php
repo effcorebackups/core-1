@@ -40,7 +40,7 @@ namespace effcore\modules\storage {
         );
       } else {
         $selection->field_insert_checkbox(null, '', 80);
-        $selection->field_insert_action();
+        $selection->field_insert_action(null, '', ['delete', 'select', 'update']);
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
         if (!count($selection->_instances)) {
