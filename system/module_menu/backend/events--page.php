@@ -15,10 +15,10 @@ namespace effcore\modules\menu {
 
   static function on_tab_before_build($tab) {
     $trees = tree::select_all('sql');
-    $entity_name = page::get_current()->args_get('entity_name'       );
-    $id          = page::get_current()->args_get('instances_group_by');
+    $entity_name      = page::get_current()->args_get('entity_name'       );
+    $group_by_id_tree = page::get_current()->args_get('instances_group_by');
     core::array_sort_by_title($trees);
-    if ($entity_name == 'tree_item' && !isset($trees[$id])) core::send_header_and_exit('page_not_found');
+    if ($entity_name == 'tree_item' && !isset($trees[$group_by_id_tree])) core::send_header_and_exit('page_not_found');
     tabs_item::delete('manage_instances_menu_tree_item');
     foreach ($trees as $c_tree) {
       tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),

@@ -5,12 +5,12 @@ pages
     is_https: true
    # ─────────────────────────────────────────────────────────────────────
    # /manage/instances/select
-   # /manage/instances/select/entity_group_id
-   # /manage/instances/select/entity_group_id/entity_name
-   # /manage/instances/select/entity_group_id/entity_name/instances_group_by
+   # /manage/instances/select/managing_group
+   # /manage/instances/select/managing_group/entity_name
+   # /manage/instances/select/managing_group/entity_name/instances_group_by
    # ─────────────────────────────────────────────────────────────────────
     url: %^(?<base>/manage/instances/select)(/
->>>>>>>>>>>(?<entity_group_id>[a-z0-9_\-]+)(/
+>>>>>>>>>>>(?<managing_group>[a-z0-9_\-]+)(/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
 >>>>>>>>>>>(?<instances_group_by>[a-z0-9_]+)|)|)|)$%
     access
