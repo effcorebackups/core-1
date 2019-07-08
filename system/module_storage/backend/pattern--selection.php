@@ -61,7 +61,6 @@ namespace effcore {
         $main_entity = entity::get(reset($used_entities));
         $this->_main_entity = $main_entity->name;
         $this->attribute_insert('data-main-entity', $main_entity->name);
-        $id_keys = $main_entity->id_get_real();
 
       # prepare query params
         foreach ($this->fields as $c_row_id => $c_field) {
@@ -157,13 +156,13 @@ namespace effcore {
                 $c_form_field->value_set(implode('+', $c_instance->values_id_get()));
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? '',
-                  'value' => $id_keys ? $c_form_field : ''
+                  'value' => $c_form_field
                 ];
                 break;
               case 'actions':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? '',
-                  'value' => $id_keys ? $this->actions_list_get($main_entity, $c_instance, $id_keys) : ''
+                  'value' => $this->actions_list_get($c_instance)
                 ];
                 break;
               case 'markup':
@@ -246,11 +245,11 @@ namespace effcore {
     $this->fields[$row_id ?: 'code'] = $field;
   }
 
-  function actions_list_get($entity, $instance) {
+  function actions_list_get($instance) {
     $actions_list = new actions_list();
-    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'delete');
-                                    $actions_list->action_add('/manage/instance/update/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'update');
-                                    $actions_list->action_add('/manage/instance/select/'.$entity->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'select');
+    if (empty($instance->is_embed)) $actions_list->action_add('/manage/instance/delete/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'delete');
+                                    $actions_list->action_add('/manage/instance/update/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'update');
+                                    $actions_list->action_add('/manage/instance/select/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), 'select');
     return $actions_list;
   }
 
