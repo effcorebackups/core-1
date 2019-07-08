@@ -80,6 +80,24 @@ entities
         field_element_attributes
         - min: 1
         - disabled: true
+    - id_tree
+        title: Tree ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        field_can_select: true
+        field_can_insert: true
+        field_can_update: true
+        field_class: \effcore\field_relation
+        field_properties
+        - entity_name: tree
+        - entity_field_id_name: id
+        - entity_field_title_name: title
+        field_element_attributes
+        - disabled: true
+        field_element_attributes_on_insert
+        - disabled: false
     - id_parent
         title: Parent ID
         type: integer
@@ -97,22 +115,6 @@ entities
         - entity_field_title_name: title
         field_element_attributes
         - required: false
-    - id_tree
-        title: Tree ID
-        type: varchar
-        size: 255
-        collate: nocase
-        not_null: true
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
-        field_class: \effcore\field_relation
-        field_properties
-        - entity_name: tree
-        - entity_field_id_name: id
-        - entity_field_title_name: title
-        field_element_attributes_on_update
-        - disabled: true
     - title
         title: Title
         type: varchar
