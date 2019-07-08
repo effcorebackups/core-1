@@ -16,9 +16,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -30,9 +30,9 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -61,9 +61,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: role
@@ -78,9 +78,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_permission <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: permission
@@ -121,9 +121,9 @@ entities
         type: integer
         not_null: true
         check: (id_user <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: user
@@ -138,9 +138,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: role
@@ -185,9 +185,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -199,9 +199,9 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -282,8 +282,8 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -295,9 +295,9 @@ entities
         collate: nocase
         not_null: true
         check: (nick <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_nick
     - email
         title: EMail
@@ -306,17 +306,17 @@ entities
         collate: nocase
         not_null: true
         check: (email <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_email
     - avatar_path
         title: Avatar
         type: varchar
         size: 1024
         collate: nocase
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_file
         field_value_manual_set: true
         field_value_manual_get: true
@@ -337,8 +337,8 @@ entities
         size: 64
         collate: nocase
         default: UTC
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_timezone
         field_element_attributes
         - data-source: uagent-timezone
@@ -347,8 +347,8 @@ entities
         type: varchar
         size: 255
         collate: binary
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_password
         field_value_manual_set: true
         field_value_manual_get_if_empty: true

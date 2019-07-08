@@ -44,9 +44,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_properties
         - weight: 90
@@ -60,8 +60,8 @@ entities
         collate: nocase
         not_null: true
         default: simple
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - disabled: true
@@ -73,9 +73,9 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_properties
         - weight: 80
@@ -84,9 +84,9 @@ entities
         type: boolean
         not_null: true
         default: 0
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_switcher
     - url
         title: URL
@@ -94,9 +94,9 @@ entities
         size: 250
         collate: nocase
         not_null: true
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_url
         field_properties
         - weight: 70
@@ -107,8 +107,8 @@ entities
         collate: nocase
         not_null: true
         default: en
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_language
     - charset
         title: Charset
@@ -117,8 +117,8 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - disabled: true
@@ -130,8 +130,8 @@ entities
         collate: nocase
         not_null: true
         default: ltr
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text_direction
         field_properties
         - values

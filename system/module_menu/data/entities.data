@@ -17,9 +17,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
@@ -32,9 +32,9 @@ entities
         size: 255
         not_null: true
         check: (title <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -74,8 +74,8 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
-        field_can_select: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: 1
@@ -86,9 +86,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: tree
@@ -104,9 +104,9 @@ entities
         default: null
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - entity_name: tree_item
@@ -122,18 +122,18 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_text
     - url
         title: URL
         type: varchar
         size: 2048
         collate: nocase
-        field_can_select: true
-        field_can_insert: true
-        field_can_update: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
         field_class: \effcore\field_url
     constraints
     - primary_id

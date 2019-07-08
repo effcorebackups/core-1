@@ -35,7 +35,7 @@ namespace effcore {
       $this->fields['is_embed']->type = 'boolean';
       $this->fields['is_embed']->not_null = true;
       $this->fields['is_embed']->default = 0;
-      $this->fields['is_embed']->field_can_select = true;
+      $this->fields['is_embed']->field_is_visible_on_select = true;
       $this->fields['is_embed']->field_class = '\\effcore\\field_switcher';
       $this->fields['is_embed']->field_properties['weight'] = 95;
       $this->fields['is_embed']->field_element_attributes['disabled'] = true;
@@ -47,9 +47,9 @@ namespace effcore {
       $this->fields['weight']->type = 'integer';
       $this->fields['weight']->not_null = true;
       $this->fields['weight']->default = 0;
-      $this->fields['weight']->field_can_select = true;
-      $this->fields['weight']->field_can_insert = true;
-      $this->fields['weight']->field_can_update = true;
+      $this->fields['weight']->field_is_visible_on_select = true;
+      $this->fields['weight']->field_is_visible_on_insert = true;
+      $this->fields['weight']->field_is_visible_on_update = true;
       $this->fields['weight']->field_class = '\\effcore\\field_number';
       $this->fields['weight']->field_element_attributes['min'] = -1000;
       $this->fields['weight']->field_element_attributes['max'] = +1000;
