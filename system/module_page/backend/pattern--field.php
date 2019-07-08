@@ -325,13 +325,13 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if ($element->attribute_select('pattern')   !== null)                                                                                        $result[] = $this->render_description_pattern  ($element);
-      if ($element->attribute_select('min')       !== null)                                                                                        $result[] = $this->render_description_min      ($element);
-      if ($element->attribute_select('max')       !== null)                                                                                        $result[] = $this->render_description_max      ($element);
-      if ($element->attribute_select('value')     !== null && $element->attribute_select('type') == 'range')                                       $result[] = $this->render_description_cur      ($element);
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
-      if ($element->attribute_select('maxlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
-      if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
+      if ($element->attribute_select('pattern') !== null)                                                                                             $result[] = $this->render_description_pattern  ($element);
+      if ($element->attribute_select('min')     !== null)                                                                                             $result[] = $this->render_description_min      ($element);
+      if ($element->attribute_select('max')     !== null)                                                                                             $result[] = $this->render_description_max      ($element);
+      if ($element->attribute_select('value')   !== null && $element->attribute_select('type') == 'range')                                            $result[] = $this->render_description_cur      ($element);
+      if (is_numeric($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
+      if (is_numeric($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
+      if (is_numeric($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
     }
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
@@ -358,7 +358,7 @@ namespace effcore {
   function render_description_cur      ($element) {return new markup('p', ['class' => ['cur'       => 'cur']],       new text('Current field value: %%_value.', ['value' => (new markup('x-value', [],               $element->attribute_select('value')))->render()]));}
   function render_description_minlength($element) {return new markup('p', ['class' => ['minlength' => 'minlength']], new text('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));        }
   function render_description_maxlength($element) {return new markup('p', ['class' => ['maxlength' => 'maxlength']], new text('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));        }
-  function render_description_midlength($element) {return new markup('p', ['class' => ['midlength' => 'midlength']], new text('Field must contain %%_number character%%_plural{number,s}.',             ['number' => $element->attribute_select('minlength')]));        }
+  function render_description_midlength($element) {return new markup('p', ['class' => ['midlength' => 'midlength']], new text('Field can contain %%_number character%%_plural{number,s}.',              ['number' => $element->attribute_select('minlength')]));        }
 
   ###########################
   ### static declarations ###

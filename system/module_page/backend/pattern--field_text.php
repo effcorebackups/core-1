@@ -50,7 +50,7 @@ namespace effcore {
 
   static function validate_minlength($field, $form, $element, &$new_value) {
     $minlength = $field->minlength_get();
-    if (strlen($new_value) && $minlength && $minlength > strlen($new_value)) {
+    if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
       $field->error_set(
         'Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $minlength]
       );
@@ -61,7 +61,7 @@ namespace effcore {
 
   static function validate_maxlength($field, $form, $element, &$new_value) {
     $maxlength = $field->maxlength_get();
-    if (strlen($new_value) && $maxlength && $maxlength < strlen($new_value)) {
+    if (strlen($new_value) && is_numeric($maxlength) && $maxlength < strlen($new_value)) {
       $new_value = substr($new_value, 0, $maxlength);
       $field->error_set(new text_multiline([
         'Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!',
