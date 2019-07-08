@@ -23,6 +23,7 @@ entities
         field_class: \effcore\field_text
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
+        field_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -110,7 +111,7 @@ entities
         - entity_name: tree
         - entity_field_id_name: id
         - entity_field_title_name: title
-        field_element_attributes
+        field_element_attributes_on_update
         - disabled: true
     - title
         title: Title
