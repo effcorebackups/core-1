@@ -181,6 +181,11 @@ entities
         type: autoincrement
         not_null: true
         field_can_select: true
+        field_can_update: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - f_nocase
         title: Field nocase
         type: varchar
