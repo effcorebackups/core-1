@@ -47,9 +47,7 @@ entities
         field_is_visible_on_select: true
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-z0-9_\-]+$
+        field_class: \effcore\field_id_text
         field_element_attributes_on_update
         - disabled: true
     - id_layout
