@@ -52,6 +52,7 @@ entities
         - weight: 90
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
+        field_element_attributes_on_update
         - disabled: true
     - id_layout
         title: Layout ID
@@ -63,9 +64,8 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_text
-        field_element_attributes
+        field_element_attributes_on_update
         - disabled: true
-        - value: simple
     - title
         title: Title
         type: varchar
@@ -77,17 +77,6 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_text
-        field_properties
-        - weight: 80
-    - is_https
-        title: HTTPS
-        type: boolean
-        not_null: true
-        default: 0
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
-        field_class: \effcore\field_switcher
     - url
         title: URL
         type: varchar
@@ -98,8 +87,15 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_url
-        field_properties
-        - weight: 70
+    - is_https
+        title: HTTPS
+        type: boolean
+        not_null: true
+        default: 0
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_switcher
     - lang_code
         title: Language
         type: varchar
@@ -136,8 +132,8 @@ entities
         field_properties
         - values
           - ltr: ltr
-        field_element_attributes
-        - disabled: true
+        - disabled
+          - rtl: rtl
     - parts
         title: Parts
         type: blob
