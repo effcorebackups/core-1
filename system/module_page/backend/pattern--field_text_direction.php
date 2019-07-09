@@ -13,15 +13,10 @@ namespace effcore {
     'name'     => 'text_direction',
     'required' => true
   ];
-
-  function build() {
-    if (!$this->is_builded) {
-      parent::build();
-      $this->option_insert('- no -', 'not_selected');
-      $this->option_insert('left to right', 'ltr');
-      $this->option_insert('right to left', 'rtl');
-      $this->is_builded = true;
-    }
-  }
+  public $values = [
+    'not_selected' => '- no -',
+    'ltr'          => 'left to right',
+    'rtl'          => 'right to left'
+  ];
 
 }}
