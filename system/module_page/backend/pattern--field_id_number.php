@@ -5,16 +5,17 @@
   ##################################################################
 
 namespace effcore {
-          class field_id_text extends field_text {
+          class field_id_number extends field_number {
 
   public $title = 'ID';
-  public $attributes = ['data-type' => 'id_text'];
+  public $attributes = ['data-type' => 'id_number'];
   public $element_attributes = [
-    'type'      => 'text',
-    'name'      => 'id',
-    'pattern'   => '^[a-z0-9_\-]+$',
-    'required'  => true,
-    'maxlength' => 255
+    'type'     => 'number',
+    'name'     => 'id',
+    'required' => true,
+    'min'      => 1,
+    'max'      => self::input_max_number,
+    'step'     => 1
   ];
 
 }}

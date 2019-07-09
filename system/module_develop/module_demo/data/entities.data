@@ -14,9 +14,8 @@ entities
         check: (id <> '')
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - description
         title: Description
@@ -144,9 +143,8 @@ entities
         check: (id <> '')
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - description
         title: Description
@@ -188,9 +186,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - f_nocase
         title: Field nocase
@@ -303,9 +300,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - nick
         title: Nick
@@ -409,9 +405,8 @@ entities
         not_null: true
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - f_index_unique
         title: Field index unique

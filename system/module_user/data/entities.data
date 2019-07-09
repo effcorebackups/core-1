@@ -282,9 +282,8 @@ entities
         check: (id <> '')
         field_is_visible_on_select: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_number
+        field_class: \effcore\field_id_number
         field_element_attributes
-        - min: 1
         - disabled: true
     - nick
         title: Nick
