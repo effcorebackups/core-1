@@ -241,6 +241,7 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - Kind: Вид
     - Language: Язык
+    - Layout: Макет
     - Layouts: Макеты
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
     - left to right: слева направо

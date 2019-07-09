@@ -55,7 +55,7 @@ entities
         field_element_attributes_on_update
         - disabled: true
     - id_layout
-        title: Layout ID
+        title: Layout
         type: varchar
         size: 255
         collate: nocase
@@ -63,7 +63,7 @@ entities
         default: simple
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_text
+        field_class: \effcore\field_layout
         field_element_attributes_on_update
         - disabled: true
     - title
