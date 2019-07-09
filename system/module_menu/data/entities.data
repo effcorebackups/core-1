@@ -94,10 +94,8 @@ entities
         - entity_name: tree
         - entity_field_id_name: id
         - entity_field_title_name: title
-        field_element_attributes
+        field_element_attributes_on_update
         - disabled: true
-        field_element_attributes_on_insert
-        - disabled: false
     - id_parent
         title: Parent ID
         type: integer
@@ -115,6 +113,8 @@ entities
         - entity_field_title_name: title
         field_element_attributes
         - required: false
+        field_element_attributes_on_insert
+        - disabled: true
     - title
         title: Title
         type: varchar

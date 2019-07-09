@@ -48,8 +48,6 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_text
-        field_properties
-        - weight: 90
         field_element_attributes
         - pattern: ^[a-zA-Z0-9_\-]+$
         field_element_attributes_on_update
