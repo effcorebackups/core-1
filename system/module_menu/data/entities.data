@@ -22,7 +22,7 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
-        - pattern: ^[a-zA-Z0-9_\-]+$
+        - pattern: ^[a-z0-9_\-]+$
         field_element_attributes_on_update
         - disabled: true
     - title
