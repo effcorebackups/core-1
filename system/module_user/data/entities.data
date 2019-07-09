@@ -19,9 +19,8 @@ entities
         field_is_visible_on_select: true
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-z0-9_\-]+$
+        field_class: \effcore\field_id_text
+        field_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -69,7 +68,7 @@ entities
         - entity_name: role
         - entity_field_id_name: id
         - entity_field_title_name: title
-        field_element_attributes
+        field_element_attributes_on_update
         - disabled: true
     - id_permission
         title: Permission
@@ -129,7 +128,7 @@ entities
         - entity_name: user
         - entity_field_id_name: id
         - entity_field_title_name: nick
-        field_element_attributes
+        field_element_attributes_on_update
         - disabled: true
     - id_role
         title: Role
@@ -188,9 +187,8 @@ entities
         field_is_visible_on_select: true
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - pattern: ^[a-z0-9_\-]+$
+        field_class: \effcore\field_id_text
+        field_element_attributes_on_update
         - disabled: true
     - title
         title: Title
