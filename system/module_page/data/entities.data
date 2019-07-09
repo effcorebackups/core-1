@@ -104,19 +104,6 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_language
-    - charset
-        title: Charset
-        type: varchar
-        size: 32
-        collate: nocase
-        not_null: true
-        default: utf-8
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
-        field_class: \effcore\field_text
-        field_element_attributes
-        - disabled: true
-        - value: utf-8
     - text_direction
         title: Text direction
         type: varchar
@@ -132,6 +119,19 @@ entities
           - ltr: ltr
         - disabled
           - rtl: rtl
+    - charset
+        title: Charset
+        type: varchar
+        size: 32
+        collate: nocase
+        not_null: true
+        default: utf-8
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - disabled: true
+        - value: utf-8
     - parts
         title: Parts
         type: blob
