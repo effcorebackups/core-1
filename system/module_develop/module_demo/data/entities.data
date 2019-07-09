@@ -11,7 +11,13 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        check: (id <> '')
         field_is_visible_on_select: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_number
+        field_element_attributes
+        - min: 1
+        - disabled: true
     - description
         title: Description
         type: varchar
@@ -228,7 +234,9 @@ entities
         field_is_visible_on_select: true
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_text
+        field_class: \effcore\field_id_text
+        field_element_attributes_on_update
+        - disabled: true
     - f_unique
         title: Field unique
         type: varchar
