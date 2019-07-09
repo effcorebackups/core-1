@@ -160,7 +160,7 @@ instances
     - id: 2
     - description: row with non-default values
     - f_integer: 123456
-    - f_real: 123456.789
+    - f_real: 123.789
     - f_varchar: text
     - f_time: 12:34:56
     - f_date: 2030-12-31
