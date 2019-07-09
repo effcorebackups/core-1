@@ -85,6 +85,10 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_url
+        field_properties
+        - description: Field value should be start with "/".
+        field_element_attributes
+        - pattern: ^/.*$
     - is_https
         title: HTTPS
         type: boolean
@@ -117,6 +121,10 @@ entities
         field_properties
         - disabled
           - rtl: rtl
+        - selected
+          - ltr: ltr
+        field_element_attributes_on_update
+        - disabled: true
     - charset
         title: Charset
         type: varchar
