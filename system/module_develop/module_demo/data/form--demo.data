@@ -261,9 +261,9 @@ forms
             related_entity_field_title_name: title
             query_params
             - conditions
-              - id_!f: id
-              - operator: >=
-              - id_!v: 1
+              - id_!f: id_tree
+              - operator: =
+              - id_!v: demo_sql
             - order
               - weight_!f: title
               - type: ASC
@@ -284,9 +284,9 @@ forms
             related_entity_field_title_name: title
             query_params
             - conditions
-              - id_!f: id
-              - operator: >=
-              - id_!v: 1
+              - id_!f: id_tree
+              - operator: =
+              - id_!v: demo_sql
             element_attributes
             - name: relation_tree
             selected
