@@ -119,9 +119,10 @@ namespace effcore {
     $result = $field->value_is_unique_in_storage_sql($new_value);
     if (($old_value === null && $result instanceof instance                                                      ) || # insert new value
         ($old_value ==! null && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
-      $field->error_set(
-        'This field value is already in use!'
-      );
+      $field->error_set(new text_multiline([
+        'Field "%%_title" contains a duplicate value!',
+        'Only unique value is allowed.'], ['title' => translation::get($field->title)]
+      ));
     } else {
       return true;
     }

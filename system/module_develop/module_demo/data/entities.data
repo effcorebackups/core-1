@@ -246,6 +246,8 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_text
+        field_properties
+        - is_validate_uniqueness: true
     - f_foreign
         title: Field foreign
         type: integer
