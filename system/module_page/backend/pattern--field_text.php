@@ -33,7 +33,7 @@ namespace effcore {
                 static::validate_maxlength ($field, $form, $element, $new_value) &&
                 static::validate_value     ($field, $form, $element, $new_value) &&
                 static::validate_pattern   ($field, $form, $element, $new_value) && ($field->is_validate_uniqueness ?
-                static::validate_uniqueness($field, $new_value) : true);
+                static::validate_uniqueness($field, $new_value, $field->value_get_initial()) : true);
       $field->value_set($new_value);
       return $result;
     }
@@ -115,9 +115,10 @@ namespace effcore {
     return true;
   }
 
-  static function validate_uniqueness($field, $new_value) {
+  static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if ($result instanceof instance) {
+    if (($old_value === null && $result instanceof instance                                                      ) || # insert new value
+        ($old_value ==! null && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(
         'This field value is already in use!'
       );
