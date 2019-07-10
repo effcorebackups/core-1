@@ -26,7 +26,7 @@ namespace effcore\modules\storage {
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
-        $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
+        $form->_instance = new instance($entity->name, array_combine($id_keys, $id_values));
         if ($form->_instance->select()) {
           $has_enabled_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
@@ -39,6 +39,8 @@ namespace effcore\modules\storage {
               foreach ($c_field->field_properties           ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               foreach ($c_field->field_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               $c_form_field->form_current_set($form);
+              $c_form_field->entity_name = $entity->name;
+              $c_form_field->entity_field_name = $c_name;
               $c_form_field->build();
               if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
               if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});

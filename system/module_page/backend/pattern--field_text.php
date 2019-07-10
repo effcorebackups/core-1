@@ -114,4 +114,15 @@ namespace effcore {
     return true;
   }
 
+  static function validate_uniqueness($field, $new_value) {
+    $result = $field->value_is_unique_in_storage_sql($new_value);
+    if ($result instanceof instance) {
+      $field->error_set(
+        'This field value is already in use!'
+      );
+    } else {
+      return true;
+    }
+  }
+
 }}

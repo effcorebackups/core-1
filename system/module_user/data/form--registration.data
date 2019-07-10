@@ -9,6 +9,8 @@ forms
         title: Credentials
         children
         - email|field_email
+            entity_name: user
+            entity_field_name: email
         - nick|field_nick
         - password|field_password
         - timezone|field_timezone
