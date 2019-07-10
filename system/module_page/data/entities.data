@@ -48,6 +48,8 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_id_text
+        field_properties
+        - is_validate_uniqueness: true
         field_element_attributes_on_update
         - disabled: true
     - id_layout
@@ -84,6 +86,7 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_url
         field_properties
+        - is_validate_uniqueness: true
         - description: Field value should be start with "/".
         field_element_attributes
         - pattern: ^/.*$
