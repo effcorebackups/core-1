@@ -12,6 +12,8 @@ forms
             entity_name: user
             entity_field_name: email
         - nick|field_nick
+            entity_name: user
+            entity_field_name: nick
         - password|field_password
         - timezone|field_timezone
             element_attributes
