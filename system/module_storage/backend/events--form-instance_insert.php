@@ -33,6 +33,8 @@ namespace effcore\modules\storage {
             foreach ($c_field->field_properties           ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
             foreach ($c_field->field_properties_on_insert ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
             $c_form_field->form_current_set($form);
+            $c_form_field->entity_name = $entity->name;
+            $c_form_field->entity_field_name = $c_name;
             $c_form_field->build();
             $items['fields']->child_insert($c_form_field, $c_name);
             if ($c_form_field->disabled_get() == false) {

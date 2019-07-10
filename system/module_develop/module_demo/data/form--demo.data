@@ -256,9 +256,9 @@ forms
               text: Field %%_type.
               args
               - type: field_relation
-            entity_name: tree_item
-            entity_field_id_name: id
-            entity_field_title_name: title
+            related_entity_name: tree_item
+            related_entity_field_id_name: id
+            related_entity_field_title_name: title
             query_params
             - conditions
               - id_!f: id
@@ -278,10 +278,10 @@ forms
               text: Field %%_type.
               args
               - type: field_relation
-            entity_name: tree_item
-            entity_field_id_name: id
-            entity_field_id_parent_name: id_parent
-            entity_field_title_name: title
+            related_entity_name: tree_item
+            related_entity_field_id_name: id
+            related_entity_field_id_parent_name: id_parent
+            related_entity_field_title_name: title
             query_params
             - conditions
               - id_!f: id

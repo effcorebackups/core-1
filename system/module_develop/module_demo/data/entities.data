@@ -232,6 +232,8 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_id_text
+        field_properties
+        - is_validate_uniqueness: true
         field_element_attributes_on_update
         - disabled: true
     - f_unique
@@ -253,9 +255,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: demo_autoincrement
-        - entity_field_id_name: id
-        - entity_field_title_name: description
+        - related_entity_name: demo_autoincrement
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: description
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -361,9 +363,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: demo_data
-        - entity_field_id_name: id
-        - entity_field_title_name: nick
+        - related_entity_name: demo_data
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: nick
     - email
         title: EMail
         type: varchar

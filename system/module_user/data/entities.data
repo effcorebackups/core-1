@@ -65,9 +65,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: role
-        - entity_field_id_name: id
-        - entity_field_title_name: title
+        - related_entity_name: role
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: title
         field_element_attributes_on_update
         - disabled: true
     - id_permission
@@ -82,9 +82,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: permission
-        - entity_field_id_name: id
-        - entity_field_title_name: title
+        - related_entity_name: permission
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: title
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -125,9 +125,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: user
-        - entity_field_id_name: id
-        - entity_field_title_name: nick
+        - related_entity_name: user
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: nick
         field_element_attributes_on_update
         - disabled: true
     - id_role
@@ -142,9 +142,9 @@ entities
         field_is_visible_on_update: true
         field_class: \effcore\field_relation
         field_properties
-        - entity_name: role
-        - entity_field_id_name: id
-        - entity_field_title_name: title
+        - related_entity_name: role
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: title
     constraints
     - primary_id_role_id_user
         type: primary
