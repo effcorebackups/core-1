@@ -79,10 +79,8 @@ namespace effcore {
 
       # call validate methods (parent must be at the end)
         if (empty($this->clicked_button->novalidate)) {
-          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child)
-            if (is_object($c_child) && method_exists($c_child, 'validate')) {
-              $c_result = $c_child::validate($c_child, $this, $c_npath);
-              console::log_insert('form', 'validation', $c_npath, $c_result ? 'ok' : 'warning', 0);}
+          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate'))         {$c_result = $c_child::validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning', 0);}
+          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate_phase_2')) {$c_result = $c_child::validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning', 0);}
           event::start('on_form_validate', $id, [&$this, &$this->items]);
         }
 
