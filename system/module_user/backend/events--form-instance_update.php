@@ -67,18 +67,6 @@ namespace effcore\modules\user {
             );
             return;
           }
-        # test nick
-          if (!field_nick::validate_uniqueness(
-            $items['#nick'],
-            $items['#nick']->value_get(),
-            $items['#nick']->value_get_initial()
-          )) return;
-        # test email
-          if (!field_email::validate_uniqueness(
-            $items['#email'],
-            $items['#email']->value_get(),
-            $items['#email']->value_get_initial()
-          )) return;
         # test new password
           if ($items['#password_hash_current']->value_get() ==
               $items['#password_hash'        ]->value_get()) {
