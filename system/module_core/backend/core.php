@@ -576,6 +576,10 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
   }
 
+  static function validate_id($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::allowed_characters.']+$%']]);
+  }
+
   static function validate_url($value) {
     return filter_var($value, FILTER_VALIDATE_URL);
   }
