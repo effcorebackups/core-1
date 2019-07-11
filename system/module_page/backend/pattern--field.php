@@ -62,7 +62,6 @@ namespace effcore {
   public $has_error = false;
   public $entity_name;
   public $entity_field_name;
-  public $is_validate_uniqueness = false;
   protected $initial_value;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
