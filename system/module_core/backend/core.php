@@ -548,24 +548,16 @@ namespace effcore {
          '(?<B>[a-f0-9]{2})$%']]);
   }
 
-  static function validate_nick($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nick::allowed_characters.']{4,32}$%']]);
-  }
-
-  static function validate_tel($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
-  }
-
-  static function validate_mime_type($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
+  static function validate_email($value) {
+    return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
   static function validate_hash($value, $length = 32) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-f0-9]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
   }
 
-  static function validate_email($value) {
-    return filter_var($value, FILTER_VALIDATE_EMAIL);
+  static function validate_id($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::allowed_characters.']+$%']]);
   }
 
   static function validate_ip_v4($value) {
@@ -576,20 +568,28 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
   }
 
-  static function validate_id($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::allowed_characters.']+$%']]);
+  static function validate_mime_type($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
+  }
+
+  static function validate_nick($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nick::allowed_characters.']{4,32}$%']]);
+  }
+
+  static function validate_tel($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
   }
 
   static function validate_url($value) {
     return filter_var($value, FILTER_VALIDATE_URL);
   }
 
-  static function sanitize_url($value) {
-    return filter_var($value, FILTER_SANITIZE_URL);
-  }
-
   static function sanitize_id($value, $m = '-') {
     return preg_replace('%[^a-z0-9_\\-]%', $m, strtolower($value));
+  }
+
+  static function sanitize_url($value) {
+    return filter_var($value, FILTER_SANITIZE_URL);
   }
 
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
