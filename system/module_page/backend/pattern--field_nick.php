@@ -43,6 +43,23 @@ namespace effcore {
     }
   }
 
+  static function validate_phase_2($field, $form, $npath) {
+    $element = $field->child_select('element');
+    $name = $field->name_get();
+    $type = $field->type_get();
+    if ($name && $type) {
+      if ($field->disabled_get()) return true;
+      if ($field->readonly_get()) return true;
+      $new_value = static::request_value_get($name, static::current_number_get($name), $form->source_get());
+      $new_value = strtolower($new_value);
+      $old_value = $field->value_get_initial();
+      if (!$form->has_error() && !empty($field->is_validate_uniqueness)) {
+        $result = static::validate_uniqueness($field, $new_value, $old_value);
+             return $result;
+      } else return true;
+    }
+  }
+
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_nick($new_value)) {
       $field->error_set(
@@ -55,8 +72,8 @@ namespace effcore {
 
   static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if (($old_value === null && $result instanceof instance                               ) || # insert new nick (e.g. registration)
-        ($old_value ==! null && $result instanceof instance && $result->nick != $old_value)) { # update old nick
+    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new nick (e.g. registration)
+        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old nick
       $field->error_set(
         'User with this Nick was already registered!'
       );

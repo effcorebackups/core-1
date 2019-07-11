@@ -38,9 +38,6 @@ events
   - login|event
       for: login
       handler: \effcore\modules\user\events_form_login::on_validate
-  - registration|event
-      for: registration
-      handler: \effcore\modules\user\events_form_registration::on_validate
   - recovery|event
       for: recovery
       handler: \effcore\modules\user\events_form_recovery::on_validate

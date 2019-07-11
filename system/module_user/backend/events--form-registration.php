@@ -18,20 +18,7 @@ namespace effcore\modules\user {
 
   static function on_init($form, $items) {
     $items['#email']->value_set('');
-  }
-
-  static function on_validate($form, $items) {
-    switch ($form->clicked_button->value_get()) {
-      case 'register':
-        if (!$form->has_error()) {
-        # test nick
-          if (!field_nick::validate_uniqueness(
-            $items['#nick'],
-            $items['#nick']->value_get()
-          )) return;
-        }
-        break;
-    }
+    $items['#nick' ]->value_set('');
   }
 
   static function on_submit($form, $items) {
