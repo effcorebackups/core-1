@@ -90,7 +90,7 @@ namespace effcore {
         }
 
       # show errors
-        if (static::has_error() == true) {
+        if ($this->has_error() == true) {
           $this->attribute_insert('aria-invalid', 'true');
           foreach (static::$errors as $c_error) {
             switch (gettype($c_error->message)) {
@@ -101,14 +101,14 @@ namespace effcore {
         }
 
       # call submit handler (if no errors)
-        if (static::has_error() == false) {
+        if ($this->has_error() == false) {
           event::start('on_form_submit', $id, [&$this, &$this->items]);
         }
 
       # update or delete validation cache
-        if ($this->validation_data !== null && $this->validation_data_is_persistent != false &&                                 core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
-        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && static::has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
-        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && static::has_error() == false                                                                              ) $this->validation_cache_storage_delete();
+        if ($this->validation_data !== null && $this->validation_data_is_persistent != false &&                                core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
+        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
+        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && $this->has_error() == false                                                                              ) $this->validation_cache_storage_delete();
 
       }
 

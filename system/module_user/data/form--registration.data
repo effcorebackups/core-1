@@ -11,9 +11,11 @@ forms
         - email|field_email
             entity_name: user
             entity_field_name: email
+            is_validate_uniqueness: true
         - nick|field_nick
             entity_name: user
             entity_field_name: nick
+            is_validate_uniqueness: true
         - password|field_password
         - timezone|field_timezone
             element_attributes

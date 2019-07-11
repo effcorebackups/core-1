@@ -59,8 +59,8 @@ namespace effcore\modules\page {
         }
       }
       $form->child_delete('layout_manager');
-      $form->child_insert_after(
-        new markup('x-layout-manager', [], $layout), 'fields', 'layout_manager'
+      $form->child_insert(
+        new markup('x-layout-manager', [], $layout), 'layout_manager'
       );
     }
   }

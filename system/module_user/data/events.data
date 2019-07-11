@@ -20,6 +20,9 @@ events
   - login|event
       for: login
       handler: \effcore\modules\user\events_form_login::on_init
+  - registration|event
+      for: registration
+      handler: \effcore\modules\user\events_form_registration::on_init
   - instance_insert_user|event
       for: instance_insert
       weight: -50
