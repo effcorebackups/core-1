@@ -120,7 +120,7 @@ namespace effcore {
     if (($old_value === null && $result instanceof instance                                                      ) || # insert new value
         ($old_value ==! null && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains a duplicate value!',
+        'Field "%%_title" contains the previously used value!',
         'Only unique value is allowed.'], ['title' => translation::get($field->title)]
       ));
     } else {
