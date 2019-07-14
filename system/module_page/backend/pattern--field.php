@@ -265,12 +265,13 @@ namespace effcore {
     return $element->attribute_insert('value', $value);
   }
 
-  function value_is_unique_in_storage_sql($value) {
+  function value_is_unique_in_storage_sql($value) { # return: null | false | instance
     if ($this->entity_name &&
         $this->entity_field_name) {
-      return (new instance($this->entity_name, [
-        $this->entity_field_name => $value
-      ]))->select() ?: false;
+      $result = entity::get($this->entity_name)->instances_select(['conditions' => [
+        'field_!f' => $this->entity_field_name, '=',
+        'field_!v' => $value], 'limit' => 1]);
+      return reset($result);
     }
   }
 
