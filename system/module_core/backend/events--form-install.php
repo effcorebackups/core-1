@@ -153,7 +153,7 @@ namespace effcore\modules\core {
             # cancel installation if an error occurred
               if (count(storage::get('sql')->errors) == 0)
                    {message::insert(new text('Module "%%_title" (%%_id) was installed.',     ['title' => translation::get($c_module->title), 'id' => $c_module->id])         );}
-              else {message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => translation::get($c_module->title), 'id' => $c_module->id]), 'error'); break};
+              else {message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => translation::get($c_module->title), 'id' => $c_module->id]), 'error'); break;}
             }
           }
           if (count(storage::get('sql')->errors) == 0) {
