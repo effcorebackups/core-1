@@ -16,7 +16,6 @@ namespace effcore\modules\core {
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\translation;
-          use \effcore\url;
           abstract class events_form_install {
 
   static function on_init($form, $items) {
@@ -152,7 +151,7 @@ namespace effcore\modules\core {
               event::start('on_module_enable',  $c_module->id);
             # cancel installation if an error occurred
               if (count(storage::get('sql')->errors) == 0)
-                   {message::insert(new text('Module "%%_title" (%%_id) was installed.',     ['title' => translation::get($c_module->title), 'id' => $c_module->id])         );}
+                   {message::insert(new text('Module "%%_title" (%%_id) was installed.',     ['title' => translation::get($c_module->title), 'id' => $c_module->id])         );       }
               else {message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => translation::get($c_module->title), 'id' => $c_module->id]), 'error'); break;}
             }
           }
@@ -166,8 +165,7 @@ namespace effcore\modules\core {
               'go to page %%_link'], [
               'link'     => $link_page_login,
               'email'    => $items['#email'   ]->value_get(),
-              'password' => $items['#password']->value_get(false)
-            ]), 'credentials');
+              'password' => $items['#password']->value_get(false)]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'), false);
             storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
