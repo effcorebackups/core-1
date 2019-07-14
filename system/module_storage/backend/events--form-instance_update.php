@@ -42,6 +42,7 @@ namespace effcore\modules\storage {
               $c_form_field->entity_name = $entity->name;
               $c_form_field->entity_field_name = $c_name;
               $c_form_field->build();
+              $c_form_field->value_set_initial($form->_instance->{$c_name}, true);
               if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
               if (empty($c_field->field_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});
               $items['fields']->child_insert($c_form_field, $c_name);

@@ -279,8 +279,8 @@ namespace effcore {
     return $this->initial_value;
   }
 
-  function value_set_initial($value) {
-    if ($this->initial_value === null)
+  function value_set_initial($value, $reset = false) {
+    if ($this->initial_value === null || $reset == true)
         $this->initial_value = $value;
   }
 
