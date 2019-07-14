@@ -372,7 +372,7 @@ namespace effcore {
         $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
       }
       $result = [];
-      foreach ($this->query($query) ?: as $c_instance) {
+      foreach ($this->query($query) ?: [] as $c_instance) {
         foreach ($c_instance->values as $c_name => $c_value) {
           if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
                $c_instance->{$c_name} =  ($entity->fields[$c_name]->filter_select)($c_value);
