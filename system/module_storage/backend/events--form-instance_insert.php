@@ -36,6 +36,7 @@ namespace effcore\modules\storage {
             $c_form_field->entity_name = $entity->name;
             $c_form_field->entity_field_name = $c_name;
             $c_form_field->build();
+            $c_form_field->value_set_initial(null, true);
             $items['fields']->child_insert($c_form_field, $c_name);
             if ($c_form_field->disabled_get() == false) {
               $has_enabled_fields = true;
