@@ -86,8 +86,8 @@ namespace effcore {
 
   static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if ((strlen($old_value) == 0 && $result instanceof instance                            ) || # insert new email (e.g. registration)
-        (strlen($old_value) != 0 && $result instanceof instance && $new_value != $old_value)) { # update old email
+    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new email (e.g. registration)
+        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old email
       $field->error_set(
         'User with this EMail was already registered!'
       );
