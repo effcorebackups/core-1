@@ -119,8 +119,8 @@ namespace effcore {
 
   static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if ((strlen($old_value) == 0 && $result instanceof instance                            ) || # insert new value
-        (strlen($old_value) != 0 && $result instanceof instance && $new_value != $old_value)) { # update old value
+    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new value
+        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(new text_multiline([
         'Field "%%_title" contains the previously used value!',
         'Only unique value is allowed.'], ['title' => translation::get($field->title)]
