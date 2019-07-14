@@ -51,8 +51,7 @@ namespace effcore {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
       $new_value = static::request_value_get($name, static::current_number_get($name), $form->source_get());
-      $new_value = strtolower(         $new_value        );
-      $old_value = strtolower($field->value_get_initial());
+      $old_value = $field->value_get_initial();
       if (!$form->has_error() && !empty($field->is_validate_uniqueness)) {
         $result = static::validate_uniqueness($field, $new_value, $old_value);
              return $result;
