@@ -291,7 +291,8 @@ translations
     - missing a temporary directory: отсутствует временный каталог
     - Module "%%_title" (%%_id) has been disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) has been enabled.: Модуль "%%_title" (%%_id) был включен.
-    - Module "%%_title" (%%_id) has been installed.: Модуль "%%_title" (%%_id) был установлен.
+    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
+    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не был установлен!
     - Module data "%%_title" (%%_id) has been removed.: Данные модуля "%%_title" (%%_id) были удалены.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
