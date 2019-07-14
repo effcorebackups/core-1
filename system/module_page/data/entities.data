@@ -154,8 +154,3 @@ entities
         type: unique
         fields
         - =: url
-    indexes
-    - index_title
-        type: index
-        fields
-        - =: title
