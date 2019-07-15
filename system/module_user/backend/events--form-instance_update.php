@@ -96,7 +96,7 @@ namespace effcore\modules\user {
           }
         }
       # access group
-        if (!empty($form->_instance->entity_get()->ws_access)) {
+        if (!empty($entity->ws_access)) {
           $roles = $items['fields/group_access']->roles_get();
           if ($roles) $form->_instance->access = (object)['roles' => $roles];
           else        $form->_instance->access = null;

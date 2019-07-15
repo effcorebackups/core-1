@@ -31,4 +31,19 @@ namespace effcore\modules\user {
     }
   }
 
+  static function on_submit($form, $items) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    switch ($form->clicked_button->value_get()) {
+      case 'insert':
+      # access group
+        if (!empty($entity->ws_access) && !empty($form->_instance)) {
+          $roles = $items['fields/group_access']->roles_get();
+          if ($roles) $form->_instance->access = (object)['roles' => $roles];
+          else        $form->_instance->access = null;
+        }
+        break;
+    }
+  }
+
 }}
