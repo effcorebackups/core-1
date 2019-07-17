@@ -18,8 +18,8 @@ namespace effcore {
   static function select_all_by_id_user($id_user) {
     return entity::get('session')->instances_select([
       'conditions' => [
-        'id_user_!f' => 'id_user', '=',
-        'id_user_!v' => $id_user], 'order' => [
+        'id_user_!f' => 'id_user', 'operator' => '=',
+        'id_user_!v' => $id_user], 'order'    => [
         'expired_!f' => 'expired', 'DESC']], 'id'
     );
   }

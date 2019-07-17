@@ -21,7 +21,7 @@ namespace effcore\modules\menu {
     if ($entity_name == 'tree_item' && $id_tree && !empty($form->_selection)) {
       $items['#actions']->disabled_set();
       $form->_selection->is_builded = false;
-      $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', '=', 'id_tree_!v' => $id_tree];
+      $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree];
       $form->_selection->field_insert_action(null, '', ['delete', 'select', 'update']);
       $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
         $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
@@ -43,7 +43,7 @@ namespace effcore\modules\menu {
     $entity = entity::get($entity_name);
     if ($entity_name == 'tree_item' && $id_tree) {
       $has_selection = false;
-      $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', '=', 'id_tree_!v' => $id_tree]], 'id');
+      $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree]], 'id');
       foreach ($tree_items as $c_item) {
         $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
         $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: 0;

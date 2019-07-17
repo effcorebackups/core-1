@@ -48,12 +48,8 @@ namespace effcore\modules\user {
           'email' => $items['#email']->value_get()
         ]))->select();
         if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
-          session::insert($user->id,
-            core::array_kmap($items['*session_params']->values_get())
-          );
-          message::insert(
-            new text('Welcome, %%_nick!', ['nick' => $user->nick])
-          );
+          session::insert($user->id, core::array_kmap($items['*session_params']->values_get()));
+          message::insert(new text('Welcome, %%_nick!', ['nick' => $user->nick]));
           url::go('/user/'.$user->nick);
         }
         break;

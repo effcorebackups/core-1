@@ -26,7 +26,7 @@ namespace effcore\modules\user {
                    isset(user::get_current()->roles['admins'])) { # admin
         $selection = selection::get('user');
         $selection->title = '';
-        $selection->query_params['conditions'] = ['field_!f' => 'nick', '=', 'value_!v' => $user->nick];
+        $selection->query_params['conditions'] = ['nick_!f' => 'nick', 'operator' => '=', 'nick_!v' => $user->nick];
         if ($user->nick == user::get_current()->nick) {
           $selection->field_insert_markup('session_expired', 'Session expired date',
             new text(locale::format_timestmp(session::id_extract_expired(session::id_get())))
