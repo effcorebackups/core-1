@@ -23,7 +23,7 @@ namespace effcore\modules\user {
         $items['#id_role']->build();
       }
     # group 'access'
-      if ($entity->ws_access) {
+      if (!empty($entity->ws_access) && !empty($form->_instance)) {
         $group_access = new group_access();
         $group_access->build();
         $form->child_select('fields')->child_insert(
