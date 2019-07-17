@@ -65,7 +65,7 @@ namespace effcore\modules\storage {
           if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
             if (!empty($c_field->field_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
             if (!empty($c_field->field_value_manual_get         )                                          ) continue;
-            if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get();
+            if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
             if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
           }
         }
