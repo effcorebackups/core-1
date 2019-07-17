@@ -14,6 +14,7 @@ namespace effcore\modules\user {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
+  # field 'role'
     if ($entity_name == 'relation_role_ws_user') {
       $items['#id_role']->is_builded = false;
       $items['#id_role']->disabled['anonymous' ] = 'anonymous';
@@ -21,7 +22,7 @@ namespace effcore\modules\user {
       $items['#id_role']->disabled['owner'     ] = 'owner';
       $items['#id_role']->build();
     }
-  # access group
+  # group 'access'
     if ($entity->ws_access) {
       $group_access = new group_access();
       $group_access->build();
@@ -36,7 +37,7 @@ namespace effcore\modules\user {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'insert':
-      # access group
+      # group 'access'
         if (!empty($entity->ws_access) && !empty($form->_instance)) {
           $roles = $items['fields/group_access']->roles_get();
           if ($roles) $form->_instance->access = (object)['roles' => $roles];

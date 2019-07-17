@@ -23,6 +23,7 @@ namespace effcore\modules\user {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
+  # field 'role'
     if ($entity_name == 'relation_role_ws_user' && !empty($form->_instance)) {
       $items['#id_role']->is_builded = false;
       $items['#id_role']->disabled['anonymous' ] = 'anonymous';
@@ -31,6 +32,7 @@ namespace effcore\modules\user {
       $items['#id_role']->build();
       $items['#id_role']->value_set($form->_instance->id_role);
     }
+  # field 'password' + field 'avatar'
     if ($entity_name == 'user' && !empty($form->_instance)) {
       $field_password_hash_current = new field_password('Current password', '', [], -50);
       $field_password_hash_current->build();
@@ -40,7 +42,7 @@ namespace effcore\modules\user {
         $form->_instance->avatar_path ? [$form->_instance->avatar_path] : []
       );
     }
-  # access group
+  # group 'access'
     if ($entity->ws_access) {
       $group_access = new group_access();
       if ($form->_instance->access && is_array(
@@ -60,14 +62,14 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'update':
         if ($entity_name == 'user' && !$form->has_error() && !empty($form->_instance)) {
-        # check security
+        # check old password
           if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
             $items['#password_hash_current']->error_set(
               'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
             );
             return;
           }
-        # test new password
+        # check new password
           if ($items['#password_hash_current']->value_get() ==
               $items['#password_hash'        ]->value_get()) {
             $items['#password_hash']->error_set(
@@ -86,6 +88,7 @@ namespace effcore\modules\user {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
+      # field 'avatar'
         if ($entity_name == 'user' && !empty($form->_instance)) {
           page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
           $avatar_info = $items['#avatar']->pool_files_save();
@@ -95,7 +98,7 @@ namespace effcore\modules\user {
              $form->_instance->avatar_path = null;
           }
         }
-      # access group
+      # group 'access'
         if (!empty($entity->ws_access)) {
           $roles = $items['fields/group_access']->roles_get();
           if ($roles) $form->_instance->access = (object)['roles' => $roles];

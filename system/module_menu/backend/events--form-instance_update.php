@@ -12,6 +12,7 @@ namespace effcore\modules\menu {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
+  # field 'parent'
     if ($entity_name == 'tree_item' && !empty($form->_instance)) {
       $tree_item = tree_item::select(
         $form->_instance->id,
