@@ -29,9 +29,11 @@ events
       handler: \effcore\modules\demo\events_form_demo::on_validate
   - instance_insert_demo|event
       for: instance_insert
+      weight: -50
       handler: \effcore\modules\demo\events_form_instance_insert::on_validate
   - instance_update_demo|event
       for: instance_update
+      weight: -50
       handler: \effcore\modules\demo\events_form_instance_update::on_validate
   on_form_submit
   - demo|event
