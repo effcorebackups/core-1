@@ -46,6 +46,8 @@ namespace effcore {
       $select->error_set(
         'Field "%%_title" must be selected!', ['title' => translation::get($select->title)]
       );
+    } else {
+      return true;
     }
   }
 
