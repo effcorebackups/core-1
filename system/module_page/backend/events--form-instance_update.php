@@ -6,68 +6,68 @@
 
 namespace effcore\modules\page {
           use \effcore\area;
-          use \effcore\button;
           use \effcore\core;
+          use \effcore\entity;
           use \effcore\group_page_part_insert;
           use \effcore\group_page_part_manage;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page_part_preset_link;
-          use \effcore\page_part_preset;
-          use \effcore\page_part;
           use \effcore\page;
-          use \effcore\text_simple;
           use \effcore\text;
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
-    if ($entity_name == 'page' && !empty($form->_instance)) {
-    # init cache pool
-      $cache = $form->validation_cache_get('page_parts');
-      if ($cache === null) {
-        foreach ($form->_instance->parts ?: [] as $c_id_area => $c_old_parts)
-          foreach ($c_old_parts as $c_id_part => $c_part)
-                $cache[$c_id_area][$c_id_part] = $c_part;
-        $form->validation_cache_set('page_parts', $cache);
-      }
-    # build layout
-      $form->_parts_manage = [];
-      $form->_parts_insert = [];
-      $layout = core::deep_clone(layout::select($form->_instance->id_layout));
-      foreach ($layout->children_select_recursive() as $c_area) {
-        if ($c_area instanceof area && $c_area->id) {
-          $c_area->managing_is_on = true;
-          $c_area->tag_name = 'div';
-          $c_area->build();
-          foreach ($cache[$c_area->id] ?? [] as $c_part)
-            if ($c_part instanceof page_part_preset_link) {
-              $c_preset = $c_part->page_part_preset_get();
-              $c_part_manage = new group_page_part_manage;
-              $c_part_manage->id_area   = $c_area  ->id;
-              $c_part_manage->id_preset = $c_preset->id;
-              $c_part_manage->build();
-              $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);
-              $form->_parts_manage[$c_area->id.'-'.$c_preset->id] = $c_part_manage;}
-          $c_part_insert = new group_page_part_insert;
-          $c_part_insert->id_area = $c_area->id;
-          $c_part_insert->build();
-          $c_area->child_insert($c_part_insert, 'part_insert');
-          $form->_parts_insert[$c_area->id] = $c_part_insert;
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if ($entity->name == 'page' && !empty($form->_instance)) {
+      # init cache pool
+        $cache = $form->validation_cache_get('page_parts');
+        if ($cache === null) {
+          foreach ($form->_instance->parts ?: [] as $c_id_area => $c_old_parts)
+            foreach ($c_old_parts as $c_id_part => $c_part)
+                  $cache[$c_id_area][$c_id_part] = $c_part;
+          $form->validation_cache_set('page_parts', $cache);
         }
+      # build layout
+        $form->_parts_manage = [];
+        $form->_parts_insert = [];
+        $layout = core::deep_clone(layout::select($form->_instance->id_layout));
+        foreach ($layout->children_select_recursive() as $c_area) {
+          if ($c_area instanceof area && $c_area->id) {
+            $c_area->managing_is_on = true;
+            $c_area->tag_name = 'div';
+            $c_area->build();
+            foreach ($cache[$c_area->id] ?? [] as $c_part)
+              if ($c_part instanceof page_part_preset_link) {
+                $c_preset = $c_part->page_part_preset_get();
+                $c_part_manage = new group_page_part_manage;
+                $c_part_manage->id_area   = $c_area  ->id;
+                $c_part_manage->id_preset = $c_preset->id;
+                $c_part_manage->build();
+                $c_area->child_insert($c_part_manage, 'part_manage_'.$c_preset->id);
+                $form->_parts_manage[$c_area->id.'-'.$c_preset->id] = $c_part_manage;}
+            $c_part_insert = new group_page_part_insert;
+            $c_part_insert->id_area = $c_area->id;
+            $c_part_insert->build();
+            $c_area->child_insert($c_part_insert, 'part_insert');
+            $form->_parts_insert[$c_area->id] = $c_part_insert;
+          }
+        }
+        $form->child_delete('layout_manager');
+        $form->child_insert(
+          new markup('x-layout-manager', [], $layout), 'layout_manager'
+        );
       }
-      $form->child_delete('layout_manager');
-      $form->child_insert(
-        new markup('x-layout-manager', [], $layout), 'layout_manager'
-      );
     }
   }
 
   static function on_submit($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
-    if ($entity_name == 'page' && !empty($form->_instance)) {
+    $entity = entity::get($entity_name);
+    if ($entity->name == 'page' && !empty($form->_instance)) {
       $cache = $form->validation_cache_get('page_parts');
       switch ($form->clicked_button->value_get()) {
         case 'update':

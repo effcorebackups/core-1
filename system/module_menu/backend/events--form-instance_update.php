@@ -5,15 +5,16 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\entity;
           use \effcore\page;
           use \effcore\tree_item;
           abstract class events_form_instance_update {
 
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
+    $entity = entity::get($entity_name);
   # field 'parent'
-    if ($entity_name == 'tree_item' && !empty($form->_instance)) {
+    if ($entity->name == 'tree_item' && !empty($form->_instance)) {
       $tree_item = tree_item::select(
         $form->_instance->id,
         $form->_instance->id_tree);
