@@ -26,6 +26,7 @@ namespace effcore\modules\page {
       # init cache pool
         $cache = $form->validation_cache_get('page_parts');
         if ($cache === null) {
+          $cache = [];
           foreach ($form->_instance->parts ?: [] as $c_id_area => $c_old_parts)
             foreach ($c_old_parts as $c_id_part => $c_part)
                   $cache[$c_id_area][$c_id_part] = $c_part;
