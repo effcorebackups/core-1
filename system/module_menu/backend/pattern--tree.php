@@ -128,9 +128,12 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function delete($id) {
+  static function delete($id, $with_items = true) {
     static::init    (   );
     static::init_sql($id);
+    if ($with_items)
+      foreach (tree_item::select_all_by_id_tree($id) as $c_item)
+        tree_item::delete($c_item->id, $id);
     unset(static::$cache[$id]);
   }
 

@@ -21,11 +21,13 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $this->child_select('element')->children_delete();
       $this->option_insert('- no -', 'not_selected');
       $entity = entity::get($this->related_entity_name);
       $instances = $entity->instances_select($this->query_params);
       if ($this->related_entity_field_id_parent_name) {
         $tree_id = 'field_relation-'.$this->name_get();
+                tree::delete(    $tree_id);
         $tree = tree::insert('', $tree_id);
         foreach ($instances as $c_instance) {
           $c_tree_item = tree_item::insert(
