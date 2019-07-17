@@ -18,16 +18,17 @@ namespace effcore {
     $this->prev_response = $c_results['response'] ?? null;
     $prepared_post = $this->prepared_get_post();
     $c_results['reports'][] = translation::get('make request to "%%_url"', ['url' => $this->prepared_get_url()]);
-    foreach ($prepared_post as $c_key => $c_value) {
+    foreach ($prepared_post as $c_key => $c_value)
       $c_results['reports'][] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
-    }
   # make request
-    $c_results['response'] = static::request(
+    $response = static::request(
       $this->prepared_get_url(),
       $this->prepared_get_headers(),
       $prepared_post,
       $this->proxy
     );
+    $c_results['response'] = $response;
+    $c_results['reports'][] = translation::get('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $response['info']['http_code']]);
   }
 
   function prepared_get_url() {
@@ -117,7 +118,7 @@ namespace effcore {
   # prepare return
     $data = curl_exec($curl);
     $result['error_message'] = curl_error($curl);
-    $result['error_number'] = curl_errno($curl);
+    $result['error_number' ] = curl_errno($curl);
     $result['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
     $result['info'] = curl_getinfo($curl);
     curl_close($curl);
