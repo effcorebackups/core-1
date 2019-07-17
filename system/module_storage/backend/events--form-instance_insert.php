@@ -21,6 +21,7 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
+      $form->_instance = new instance($entity_name);
       if ($entity->managing_is_on) {
         $has_enabled_fields = false;
         foreach ($entity->fields as $c_name => $c_field) {
@@ -60,7 +61,6 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'insert':
-        $form->_instance = new instance($entity_name);
         foreach ($entity->fields as $c_name => $c_field) {
           if (isset($c_field->field_class) && isset($items['#'.$c_name])) {
             if (!empty($c_field->field_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
