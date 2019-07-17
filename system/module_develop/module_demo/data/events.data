@@ -27,6 +27,12 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_form_demo::on_validate
+  - instance_insert_demo|event
+      for: instance_insert
+      handler: \effcore\modules\demo\events_form_instance_insert::on_validate
+  - instance_update_demo|event
+      for: instance_update
+      handler: \effcore\modules\demo\events_form_instance_update::on_validate
   on_form_submit
   - demo|event
       for: demo

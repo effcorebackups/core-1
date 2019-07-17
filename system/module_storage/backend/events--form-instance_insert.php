@@ -21,7 +21,7 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $form->_instance = new instance($entity_name);
+      $form->_instance = new instance($entity->name);
       if ($entity->managing_is_on) {
         $has_enabled_fields = false;
         foreach ($entity->fields as $c_name => $c_field) {
