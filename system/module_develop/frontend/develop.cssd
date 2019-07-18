@@ -37,7 +37,8 @@
   /* reports */
 
   x-document[data-type='report'] {max-height: 400px}
-  x-document[data-type='report'] p {margin: 0}
+  x-document[data-type='report'] p:first-child {margin-top:    0}
+  x-document[data-type='report'] p:last-child  {margin-bottom: 0}
 
   /* x-structures-list */
 

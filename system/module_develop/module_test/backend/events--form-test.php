@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\test {
+          use const \effcore\br;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
@@ -18,7 +19,8 @@ namespace effcore\modules\test {
     if ($id) {
       $test = test::get($id);
       $items['params']->description = $test->description;
-      $items['report']->child_select('document')->child_insert(new text('The report will be created after running the test.'));
+      $items['report']->child_select('document')->child_insert(
+        new text('The report will be created after running the test.'));
       if ($test->params) {
         foreach ($test->params as $c_id => $c_param) {
           $items['params']->child_insert($c_param, $c_id);
@@ -46,10 +48,10 @@ namespace effcore\modules\test {
         # make report
           if (!empty($test_result['reports'])) {
             $items['report']->child_select('document')->children_delete();
-            foreach ($test_result['reports'] as $c_report) {
-              $items['report']->child_select('document')->child_insert(
-                new markup('p', [], $c_report)
-              );
+            foreach ($test_result['reports'] as $c_part) {
+              if (is_array($c_part))
+                   $items['report']->child_select('document')->child_insert(new markup('p', [], implode(br, $c_part)));
+              else $items['report']->child_select('document')->child_insert(new markup('p', [],             $c_part) );
             }
           }
         }
