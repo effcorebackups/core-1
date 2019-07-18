@@ -15,7 +15,7 @@ namespace effcore {
                 $this->quantity->get() :
                 $this->quantity;
     for ($i = 1; $i <= $quantity; $i++) {
-      $c_results['reports'][] = translation::get('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
+      $c_results['reports'][] = new text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
       foreach ($this->actions as $c_step) {
         $c_step->run($test, $this->actions, $c_step, $c_results);
         if (array_key_exists('return', $c_results)) {
