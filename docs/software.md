@@ -50,7 +50,7 @@ IIS requires (for v7.5)
 - enable option "IIS → WWW Services → Application Development Features → CGI" in "Turn Windows features on or off"
 - enable option "IIS → WWW Services → Common HTTP Features → Static Content" in "Turn Windows features on or off"
 - add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager → Handler Mappings"
-- install the module "URL Rewrite" (from IIS official site)
+- install the module "URL Rewrite" v7.2.2 (7.1.761.0) or newer from IIS official site
 If you got "500 Internal Server Error" check "web.config" in www root (section "rewrite").
 
 
