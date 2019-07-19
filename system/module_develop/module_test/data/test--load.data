@@ -34,12 +34,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..
         - request_url-/..|step_request
             url: /..
@@ -47,16 +49,18 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-/..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - response_check-/..-404|step_check
-                    where: http_code
-                    match: 404
-                    on_failure
-                    - return_result|step_return
-                        value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - response_check-/..-404|step_check
+#                    where: http_code
+#                    match: 404
+#                    on_failure
+#                    - return_result|step_return
+#                        value: 0
         # url: /...
         - request_url-/...|step_request
             url: /...
@@ -64,12 +68,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/...-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/...-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /0
         - request_url-/0|step_request
             url: /0
@@ -111,14 +117,16 @@ tests
             url: /.0
         - response_check-/.0|step_check
             where: http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check-/.0-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.0-404|step_check
+#                where: http_code
+#                match: 404
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..0
         - request_url-/..0|step_request
             url: /..0
@@ -126,12 +134,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..0-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..0-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /...0
         - request_url-/...0|step_request
             url: /...0
@@ -139,12 +149,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/...0-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/...0-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /01
         - request_url-/01|step_request
             url: /01
@@ -224,12 +236,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/.0.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.0.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..0..
         - request_url-/..0..|step_request
             url: /..0..
@@ -237,12 +251,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..0..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..0..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.0.1.
         - request_url-/.0.1.|step_request
             url: /.0.1.
@@ -250,12 +266,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/.0.1.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.0.1.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..0.1..
         - request_url-/..0.1..|step_request
             url: /..0.1..
@@ -263,12 +281,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..0.1..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..0.1..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..0..1..
         - request_url-/..0..1..|step_request
             url: /..0..1..
@@ -276,12 +296,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..0..1..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..0..1..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.1.0.
         - request_url-/.1.0.|step_request
             url: /.1.0.
@@ -289,12 +311,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/.1.0.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.1.0.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..1.0..
         - request_url-/..1.0..|step_request
             url: /..1.0..
@@ -302,12 +326,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..1.0..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..1.0..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /..1..0..
         - request_url-/..1..0..|step_request
             url: /..1..0..
@@ -315,12 +341,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/..1..0..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/..1..0..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
   # ─────────────────────────────────────────────────────────────────────
   # combinatorics: possible transpositions of '.' + '/' + '0' in file path from URL (excluding duplicates)
   # ─────────────────────────────────────────────────────────────────────
@@ -349,12 +377,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-//.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-//.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: ///
         - request_url-///|step_request
             url: ///
@@ -389,12 +419,14 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-/../-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/../-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /./.
         - request_url-/./.|step_request
             url: /./.
@@ -402,12 +434,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/./.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/./.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.//
         - request_url-/.//|step_request
             url: /.//
@@ -415,12 +449,14 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.//-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.//-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /./0
         - request_url-/./0|step_request
             url: /./0
@@ -428,12 +464,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-/./0-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/./0-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.0/
         - request_url-/.0/|step_request
             url: /.0/
@@ -441,12 +479,14 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.0/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.0/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: //..
         - request_url-//..|step_request
             url: //..
@@ -454,16 +494,18 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-//..-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - response_check-//..-404|step_check
-                    where: http_code
-                    match: 404
-                    on_failure
-                    - return_result|step_return
-                        value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-//..-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - response_check-//..-404|step_check
+#                    where: http_code
+#                    match: 404
+#                    on_failure
+#                    - return_result|step_return
+#                        value: 0
         # url: //./
         - request_url-//./|step_request
             url: //./
@@ -478,14 +520,16 @@ tests
             url: //.0
         - response_check-//.0|step_check
             where: http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check-//.0-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-//.0-404|step_check
+#                where: http_code
+#                match: 404
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: ///.
         - request_url-///.|step_request
             url: ///.
@@ -493,12 +537,14 @@ tests
             where: http_code
             match: 404
             on_failure
-            - response_check-///.-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-///.-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: ////
         - request_url-////|step_request
             url: ////
@@ -599,12 +645,14 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-/../../../../../../etc/passwd-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/../../../../../../etc/passwd-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.editorconfig
         - request_url-/.editorconfig|step_request
             url: /.editorconfig
@@ -1002,12 +1050,14 @@ tests
             where: http_code
             match: 400
             on_failure
-            - response_check-/../../../../../../etc/passwd/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/../../../../../../etc/passwd/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.editorconfig/
         - request_url-/.editorconfig/|step_request
             url: /.editorconfig/
@@ -1015,12 +1065,14 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.editorconfig/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.editorconfig/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.gitattributes/
         - request_url-/.gitattributes/|step_request
             url: /.gitattributes/
@@ -1028,12 +1080,14 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.gitattributes/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.gitattributes/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.gitignore/
         - request_url-/.gitignore/|step_request
             url: /.gitignore/
@@ -1041,25 +1095,29 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.gitignore/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.gitignore/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.htaccess/
         - request_url-/.htaccess/|step_request
             url: /.htaccess/
         - response_check-/.htaccess/|step_check
             where: http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check-/.htaccess/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.htaccess/-302|step_check
+#                where: http_code
+#                match: 302
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /.nginx/
         - request_url-/.nginx/|step_request
             url: /.nginx/
@@ -1067,12 +1125,14 @@ tests
             where: http_code
             match: 302
             on_failure
-            - response_check-/.nginx/-403|step_check
-                where: http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
+#            - response_check-/.nginx/-403|step_check
+#                where: http_code
+#                match: 403
+#                on_failure
+#                - return_result|step_return
+#                    value: 0
         # url: /web.config/
         - request_url-/web.config/|step_request
             url: /web.config/
