@@ -49,15 +49,16 @@ tests
             where: http_code
             match: 400
             on_failure
-            - return_result|step_return
-                value: 0
-#            - response_check-/..-403|step_check
-#                where: http_code
-#                match: 403
-#                on_failure
-#                - response_check-/..-404|step_check
+            # case for: nginx
+            - response_check-/..-404|step_check
+                where: http_code
+                match: 404
+                on_failure
+                - return_result|step_return
+                    value: 0
+#                - response_check-/..-403|step_check
 #                    where: http_code
-#                    match: 404
+#                    match: 403
 #                    on_failure
 #                    - return_result|step_return
 #                        value: 0
@@ -494,15 +495,16 @@ tests
             where: http_code
             match: 400
             on_failure
-            - return_result|step_return
-                value: 0
-#            - response_check-//..-403|step_check
-#                where: http_code
-#                match: 403
-#                on_failure
-#                - response_check-//..-404|step_check
+            # case for: nginx
+            - response_check-//..-404|step_check
+                where: http_code
+                match: 404
+                on_failure
+                - return_result|step_return
+                    value: 0
+#                - response_check-//..-403|step_check
 #                    where: http_code
-#                    match: 404
+#                    match: 403
 #                    on_failure
 #                    - return_result|step_return
 #                        value: 0
@@ -1110,14 +1112,13 @@ tests
             where: http_code
             match: 403
             on_failure
-            - return_result|step_return
-                value: 0
-#            - response_check-/.htaccess/-302|step_check
-#                where: http_code
-#                match: 302
-#                on_failure
-#                - return_result|step_return
-#                    value: 0
+            # case for: nginx
+            - response_check-/.htaccess/-302|step_check
+                where: http_code
+                match: 302
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url: /.nginx/
         - request_url-/.nginx/|step_request
             url: /.nginx/
