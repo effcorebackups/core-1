@@ -786,7 +786,8 @@ namespace effcore {
   }
 
   static function server_get_request_uri() {
-    return static::sanitize_url($_SERVER['REQUEST_URI']);
+    if (!empty($_SERVER['IIS_Was_Url_Rewritten'])) return static::sanitize_url($_SERVER['UNENCODED_URL']);
+    else                                           return static::sanitize_url($_SERVER[ 'REQUEST_URI' ]);
   }
 
   static function server_get_user_agent($max_length = 240) {
