@@ -1,9 +1,9 @@
 tree_items
-- home|tree_item
-    id: home
+- front|tree_item
+    id: front
     id_parent: null
     id_tree: main
-    title: Home
+    title: Front
     url: /
     access
       roles

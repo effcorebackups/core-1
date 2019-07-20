@@ -194,10 +194,10 @@ translations
     - form: форма
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front page: Главная страница
+    - Front: Главная
     - front: главная
     - go to %%_title language: перейти на %%_title язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
-    - go to front page: перейти на главную страницу
     - go to page #%%_number: перейти на страницу №%%_number
     - go to page %%_link: перейти на страницу %%_link
     - Grid 2x5: Сетка 2x5
@@ -207,7 +207,6 @@ translations
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Handler: Обработчик
     - Headers: Заголовки
-    - Home: Дом
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement: Я принимаю условия лицензионного соглашения
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
