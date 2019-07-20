@@ -40,6 +40,7 @@ translations
     - Collations: Сравнения
     - Constraints: Ограничения
     - Data + join: Данные + join
+    - Data hash: Хэш данных
     - Data: Данные
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
@@ -142,6 +143,7 @@ translations
     - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
     - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
+    - Sequence hash: Хэш последовательности
     - show for admin: показывать для администратора
     - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"

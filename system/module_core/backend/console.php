@@ -99,14 +99,17 @@ namespace effcore {
   }
 
   static function markup_get_block_logs() {
-    $total_log_hash = '';
+    $total_sequence_hash = '';
+    $total_data_hash     = '';
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->id = 'logs';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
-      $c_log_hash     = core::hash_get_data(['time' => 0] + (array)$c_log);
-      $total_log_hash = core::hash_get($total_log_hash.$c_log_hash);
+      $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
+      $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
+      $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
+      $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
       $c_row_attributes  = ['data-object' => core::sanitize_id($c_log->object)];
       $c_row_attributes += ['data-action' => core::sanitize_id($c_log->action)];
       $c_row_attributes += ['data-value'  => core::sanitize_id($c_log->value )];
@@ -123,8 +126,9 @@ namespace effcore {
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
     return new block('Execute plan', ['data-styled-title' => 'no', 'data-id' => 'logs'], [$decorator,
-      new markup('x-total', [], [new markup('x-label', [], 'Total'), new markup('x-value', [],  count($logs)  )]),
-      new markup('x-dhash', [], [new markup('x-label', [], 'DHash'), new markup('x-value', [], $total_log_hash)])
+      new markup('x-total', [], [new markup('x-label', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
+      new markup('x-shash', [], [new markup('x-label', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
+      new markup('x-dhash', [], [new markup('x-label', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])
     ]);
   }
 
@@ -169,15 +173,18 @@ namespace effcore {
   }
 
   static function text_get_block_logs() {
-    $total_log_hash = '';
+    $total_sequence_hash = '';
+    $total_data_hash     = '';
     $logs = static::logs_select();
     $result = '  EXECUTE PLAN'.nl.nl;
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= '  Time     | Object     | Action     | Value | Description    '.nl;
     $result.= '  ------------------------------------------------------------'.nl;
     foreach (static::logs_select() as $c_log) {
-      $c_log_hash     = core::hash_get_data(['time' => 0] + (array)$c_log);
-      $total_log_hash = core::hash_get($total_log_hash.$c_log_hash);
+      $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
+      $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
+      $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
+      $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
       $result.= '  '.str_pad(locale::format_msecond($c_log->time), 8).' | ';
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
@@ -185,7 +192,8 @@ namespace effcore {
       $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;}
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.'Total: '.count($logs);
-    $result.= nl.'  '.'DHash: '.$total_log_hash;
+    $result.= nl.'  '.'Sequence hash: '.$total_sequence_hash;
+    $result.= nl.'  '.'Data hash: '    .$total_data_hash;
     return nl.$result.nl;
   }
 
