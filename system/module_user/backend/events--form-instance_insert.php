@@ -49,11 +49,12 @@ namespace effcore\modules\user {
               $result = $entity->instances_select(['conditions' => [
                 'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user, 'and',
                 'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role],
-                'limit' => 1]);
+                'limit'      => 1]);
               if ($result) {
+                $items['#id_user']->error_set();
                 $items['#id_role']->error_set(new text_multiline([
-                  'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::get($items['#id_role']->title)]
+                  'Field "%%_title" contains incorrect value!',
+                  'This combination of values is already in use!'], ['title' => translation::get($items['#id_role']->title)]
                 ));
               }
             }
