@@ -41,6 +41,10 @@ events
   - recovery|event
       for: recovery
       handler: \effcore\modules\user\events_form_recovery::on_validate
+  - instance_insert_user|event
+      for: instance_insert
+      weight: -50
+      handler: \effcore\modules\user\events_form_instance_insert::on_validate
   - instance_update_user|event
       for: instance_update
       weight: -50
