@@ -188,7 +188,7 @@ namespace effcore\modules\develop {
         $c_file = new file($c_item_info->file);
         $c_return = new \stdClass;
         $c_return->_type = 'UMLClass';
-        $c_return->_id = 'CLASS-'.md5($c_item_full_name);
+        $c_return->_id = 'CLASS-'.core::hash_get($c_item_full_name);
         $c_return->name = $c_item_info->name;
         $c_return->visibility = 'public';
         $c_return->isAbstract = !empty($c_item_info->modifier) && $c_item_info->modifier == 'abstract';
@@ -204,8 +204,8 @@ namespace effcore\modules\develop {
           $c_relation->_type = 'UMLGeneralization';
           $c_relation->source = new \stdClass;
           $c_relation->target = new \stdClass;
-          $c_relation->source->{'$ref'} = 'CLASS-'.md5($c_item_full_name);
-          $c_relation->target->{'$ref'} = 'CLASS-'.md5($c_item_parent_full_name);
+          $c_relation->source->{'$ref'} = 'CLASS-'.core::hash_get($c_item_full_name);
+          $c_relation->target->{'$ref'} = 'CLASS-'.core::hash_get($c_item_parent_full_name);
           $c_return->ownedElements = [$c_relation];
         }
 
