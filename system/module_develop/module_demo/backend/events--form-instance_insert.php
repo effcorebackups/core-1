@@ -18,8 +18,8 @@ namespace effcore\modules\demo {
         $entity = entity::get($entity_name);
         if ($entity) {
           if ($entity->name == 'demo_data_join') {
-            $id_data = $items['#id_data']->value_get();
-            if ($id_data) {
+            if (!$form->has_error()) {
+              $id_data = $items['#id_data']->value_get();
               $result = $entity->instances_select(['conditions' => [
                 'id_data_!f' => 'id_data', 'operator' => '=',
                 'id_data_!v' => $id_data],
