@@ -43,9 +43,9 @@ namespace effcore\modules\user {
         if ($entity) {
         # field 'user' + field 'role'
           if ($entity->name == 'relation_role_ws_user') {
-            $id_user = $items['#id_user']->value_get();
-            $id_role = $items['#id_role']->value_get();
-            if ($id_user && $id_role) {
+            if (!$form->has_error()) {
+              $id_user = $items['#id_user']->value_get();
+              $id_role = $items['#id_role']->value_get();
               $result = $entity->instances_select(['conditions' => [
                 'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user, 'and',
                 'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role],
