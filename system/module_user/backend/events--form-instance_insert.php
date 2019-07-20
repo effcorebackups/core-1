@@ -38,27 +38,32 @@ namespace effcore\modules\user {
   static function on_validate($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-    if ($entity) {
-    # field field 'user' + 'role'
-      if ($entity->name == 'relation_role_ws_user') {
-        $id_user = $items['#id_user']->value_get();
-        $id_role = $items['#id_role']->value_get();
-        if ($id_user && $id_role) {
-          $result = $entity->instances_select(['conditions' => [
-            'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user, 'and',
-            'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role],
-            'limit' => 1]);
-          if ($result) {
-            $items['#id_role']->error_set(new text_multiline([
-              'Field "%%_title" contains the previously used value!',
-              'Only unique value is allowed.'], ['title' => translation::get($items['#id_role']->title)]
-            ));
+    switch ($form->clicked_button->value_get()) {
+      case 'insert':
+        if ($entity) {
+        # field 'user' + field 'role'
+          if ($entity->name == 'relation_role_ws_user') {
+            $id_user = $items['#id_user']->value_get();
+            $id_role = $items['#id_role']->value_get();
+            if ($id_user && $id_role) {
+              $result = $entity->instances_select(['conditions' => [
+                'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user, 'and',
+                'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role],
+                'limit' => 1]);
+              if ($result) {
+                $items['#id_role']->error_set(new text_multiline([
+                  'Field "%%_title" contains the previously used value!',
+                  'Only unique value is allowed.'], ['title' => translation::get($items['#id_role']->title)]
+                ));
+              }
+            }
+          }
+        # field 'role' + field 'permission'
+          if ($entity->name == 'relation_role_ws_permission') {
+            # @todo: make functionality
           }
         }
-      }
-    # field field 'role' + 'permission'
-      if ($entity->name == 'relation_role_ws_permission') {
-      }
+        break;
     }
   }
 
