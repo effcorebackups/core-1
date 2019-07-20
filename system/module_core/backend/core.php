@@ -132,7 +132,7 @@ namespace effcore {
             $c_item->file = $c_file->path_get_relative();
           # add to result pool
             if (!$c_item->namespace)
-                 $result[strtolower($c_item->name)] = $c_item;
+                 $result[strtolower(                        $c_item->name)] = $c_item;
             else $result[strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
           }
         }
@@ -584,8 +584,8 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_URL);
   }
 
-  static function sanitize_id($value, $m = '-') {
-    return preg_replace('%[^a-z0-9_\\-]%', $m, strtolower($value));
+  static function sanitize_id($value, $corrector = '-') {
+    return preg_replace('%[^a-z0-9_\\-]%', $corrector, strtolower($value));
   }
 
   static function sanitize_url($value) {

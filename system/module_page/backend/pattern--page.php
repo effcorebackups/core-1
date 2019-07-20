@@ -85,9 +85,9 @@ namespace effcore {
                            $html = $template->target_get('html');
                            $html->attribute_insert('lang', language::code_get_current());
                            $html->attribute_insert('dir', $this->text_direction);
-                           $html->attribute_insert('data-css-path', core::sanitize_id(trim(url::get_current()->path_get(), '/')));
-    if ($user_agent->name) $html->attribute_insert('data-uagent', strtolower($user_agent->name.'-'.$user_agent->name_version));
-    if ($user_agent->core) $html->attribute_insert('data-uacore', strtolower($user_agent->core.'-'.$user_agent->core_version));
+                           $html->attribute_insert('data-css-path', core::sanitize_id(   trim(url::get_current()->path_get(), '/')   ));
+    if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
+    if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
     $template->arg_set('charset',      $this    ->charset);
