@@ -12,24 +12,29 @@ namespace effcore\modules\demo {
           abstract class events_form_instance_update {
 
   static function on_validate($form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
-    if ($entity) {
-      if ($entity->name == 'demo_data_join') {
-        $id_data_new = $items['#id_data']->value_get();
-        $id_data_old = $items['#id_data']->value_get_initial();
-        if ($id_data_new) {
-          $result = $entity->instances_select(['conditions' => [
-            'id_data_!f' => 'id_data',     'operator' => '=',
-            'id_data_!v' => $id_data_new], 'limit'    =>  1]);
-          if ($result && $id_data_new != $id_data_old) {
-            $items['#id_data']->error_set(new text_multiline([
-              'Field "%%_title" contains the previously used value!',
-              'Only unique value is allowed.'], ['title' => translation::get($items['#id_data']->title)]
-            ));
+    switch ($form->clicked_button->value_get()) {
+      case 'update':
+        $entity_name = page::get_current()->args_get('entity_name');
+        $entity = entity::get($entity_name);
+        if ($entity) {
+          if ($entity->name == 'demo_data_join') {
+            $id_data_new = $items['#id_data']->value_get();
+            $id_data_old = $items['#id_data']->value_get_initial();
+            if ($id_data_new != $id_data_old) {
+              $result = $entity->instances_select(['conditions' => [
+                'id_data_!f' => 'id_data', 'operator' => '=',
+                'id_data_!v' => $id_data_new],
+                'limit'      => 1]);
+              if ($result) {
+                $items['#id_data']->error_set(new text_multiline([
+                  'Field "%%_title" contains the previously used combination of values!',
+                  'Only unique value is allowed.'], ['title' => translation::get($items['#id_data']->title)]
+                ));
+              }
+            }
           }
         }
-      }
+        break;
     }
   }
 

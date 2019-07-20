@@ -152,6 +152,7 @@ translations
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains incorrect value!: Поле "%%_title" содержит неверное значение!
+    - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" содержит ранее использованную комбинацию значений!
     - Field "%%_title" contains the previously used value!: Поле "%%_title" содержит ранее использованное значение!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!

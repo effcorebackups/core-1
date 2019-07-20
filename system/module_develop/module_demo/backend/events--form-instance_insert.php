@@ -12,23 +12,28 @@ namespace effcore\modules\demo {
           abstract class events_form_instance_insert {
 
   static function on_validate($form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
-    if ($entity) {
-      if ($entity->name == 'demo_data_join') {
-        $id_data = $items['#id_data']->value_get();
-        if ($id_data) {
-          $result = $entity->instances_select(['conditions' => [
-            'id_data_!f' => 'id_data', 'operator' => '=',
-            'id_data_!v' => $id_data], 'limit'    =>  1]);
-          if ($result) {
-            $items['#id_data']->error_set(new text_multiline([
-              'Field "%%_title" contains the previously used value!',
-              'Only unique value is allowed.'], ['title' => translation::get($items['#id_data']->title)]
-            ));
+    switch ($form->clicked_button->value_get()) {
+      case 'insert':
+        $entity_name = page::get_current()->args_get('entity_name');
+        $entity = entity::get($entity_name);
+        if ($entity) {
+          if ($entity->name == 'demo_data_join') {
+            $id_data = $items['#id_data']->value_get();
+            if ($id_data) {
+              $result = $entity->instances_select(['conditions' => [
+                'id_data_!f' => 'id_data', 'operator' => '=',
+                'id_data_!v' => $id_data],
+                'limit'      => 1]);
+              if ($result) {
+                $items['#id_data']->error_set(new text_multiline([
+                  'Field "%%_title" contains the previously used combination of values!',
+                  'Only unique value is allowed.'], ['title' => translation::get($items['#id_data']->title)]
+                ));
+              }
+            }
           }
         }
-      }
+        break;
     }
   }
 
