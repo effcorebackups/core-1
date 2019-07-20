@@ -93,13 +93,14 @@ namespace effcore {
   static function request($url, $headers = [], $post = [], $proxy = '') {
     $result = ['info' => [], 'headers' => []];
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_PATH_AS_IS, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HEADER, false);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($curl, CURLOPT_TIMEOUT,        static::$curlopt_timeout);
-    curl_setopt($curl, CURLOPT_SSLVERSION,     static::$curlopt_sslversion);
+    curl_setopt($curl, CURLOPT_URL,             $url);
+    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
+    curl_setopt($curl, CURLOPT_HEADER,         false);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($curl, CURLOPT_HTTPHEADER,  $headers);
+    curl_setopt($curl, CURLOPT_TIMEOUT,        static::$curlopt_timeout       );
+    curl_setopt($curl, CURLOPT_SSLVERSION,     static::$curlopt_sslversion    );
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, static::$curlopt_ssl_verifyhost);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, static::$curlopt_ssl_verifypeer);
     if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
@@ -112,7 +113,7 @@ namespace effcore {
     });
   # prepare post query
     if ($post) {
-      curl_setopt($curl, CURLOPT_POST, true);
+      curl_setopt($curl, CURLOPT_POST,        true);
       curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
     }
   # prepare return
