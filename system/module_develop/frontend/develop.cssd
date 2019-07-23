@@ -88,4 +88,5 @@
 
   x-block[data-id='demo_canvas'] x-block-content {text-align: center}
 
-  x-block[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px; background: %%_color_main}
+  x-block[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(1) {background: %%_color_main{10,10,10}}
