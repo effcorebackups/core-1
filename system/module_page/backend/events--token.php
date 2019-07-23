@@ -37,8 +37,21 @@ namespace effcore\modules\page {
       case 'color_button'          : $result = $colors[$settings->color_button_id          ]; break;
       case 'color_button_active'   : $result = $colors[$settings->color_button_active_id   ]; break;
       case 'color_button_text'     : $result = $colors[$settings->color_button_text_id     ]; break;}
-    if (!empty($result->value))
-        return $result->value;
+    if (!empty($result->value) && count($args) == 0)   return $result->value;
+    if (!empty($result->value) && count($args) == 3 && !empty($result->value_hex)) {
+      $color = ltrim($result->value_hex, '#');
+      $color_parts = [];
+      if (strlen($color) == 6) {$color_parts = str_split($color, 2);                                                                                                         }
+      if (strlen($color) == 3) {$color_parts = str_split($color, 1); $color_parts[0].= $color_parts[0]; $color_parts[1].= $color_parts[1]; $color_parts[2].= $color_parts[2];}
+      if (!empty($color_parts)) {
+        $r = max(min(hexdec($color_parts[0]) + (int)$args[0], 255), 0);
+        $g = max(min(hexdec($color_parts[1]) + (int)$args[1], 255), 0);
+        $b = max(min(hexdec($color_parts[2]) + (int)$args[2], 255), 0);
+        return '#'.str_pad(dechex($r), 2, '0', STR_PAD_LEFT).
+                   str_pad(dechex($g), 2, '0', STR_PAD_LEFT).
+                   str_pad(dechex($b), 2, '0', STR_PAD_LEFT);
+      }
+    }
   }
 
 }}

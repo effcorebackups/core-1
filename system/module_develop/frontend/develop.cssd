@@ -89,4 +89,12 @@
   x-block[data-id='demo_canvas'] x-block-content {text-align: center}
 
   x-block[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px}
-  x-block[data-id='demo_markup_colors'] x-color:nth-child(1) {background: %%_color_main{10,10,10}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(1) {background: %%_color_main          }
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(2) {background: %%_color_main{10,10,10}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(3) {background: %%_color_main{20,20,20}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(4) {background: %%_color_main{30,30,30}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(5) {background: %%_color_main{40,40,40}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(6) {background: %%_color_main{50,50,50}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(7) {background: %%_color_main{60,60,60}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(8) {background: %%_color_main{70,70,70}}
+  x-block[data-id='demo_markup_colors'] x-color:nth-child(9) {background: %%_color_main{80,80,80}}

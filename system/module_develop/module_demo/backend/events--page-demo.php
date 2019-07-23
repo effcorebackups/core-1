@@ -266,9 +266,10 @@ namespace effcore\modules\demo {
   ##############
 
   static function on_show_block_demo_colors($page) {
-    return new block('Gradient of main color', ['data-id' => 'demo_markup_colors'], [
-      new markup('x-color')
-    ]);
+    $colors = [];
+    for ($i = 0; $i < 9; $i++)
+      $colors[] = new markup('x-color');
+    return new block('Gradient of main color', ['data-id' => 'demo_markup_colors'], $colors);
   }
 
 }}
