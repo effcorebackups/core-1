@@ -17,6 +17,7 @@ namespace effcore\modules\demo {
         $entity_name = page::get_current()->args_get('entity_name');
         $entity = entity::get($entity_name);
         if ($entity) {
+        # field 'id_data'
           if ($entity->name == 'demo_data_join') {
             if (!$form->has_error()) {
               $id_data = $items['#id_data']->value_get();
