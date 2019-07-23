@@ -84,6 +84,7 @@ translations
     - Field varchar: Поле varchar
     - Full report: Полный отчёт
     - Function: Функция
+    - Gradient of main color: Градиент основного цвета
     - Group %%_type.: Группа %%_type.
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)

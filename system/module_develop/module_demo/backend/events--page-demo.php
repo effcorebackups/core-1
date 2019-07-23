@@ -266,8 +266,8 @@ namespace effcore\modules\demo {
   ##############
 
   static function on_show_block_demo_colors($page) {
-    return new block('Colors', ['data-id' => 'demo_markup_colors'], [
-      new text('UNDER CONSTRUCTION')
+    return new block('Gradient of main color', ['data-id' => 'demo_markup_colors'], [
+      new markup('x-color')
     ]);
   }
 
