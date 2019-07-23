@@ -61,7 +61,21 @@ namespace effcore\modules\user {
           }
         # field 'role' + field 'permission'
           if ($entity->name == 'relation_role_ws_permission') {
-            # @todo: make functionality
+            if (!$form->has_error()) {
+              $id_role       = $items['#id_role'      ]->value_get();
+              $id_permission = $items['#id_permission']->value_get();
+              $result = $entity->instances_select(['conditions' => [
+                'id_role_!f'       => 'id_role',       'id_role_operator'       => '=', 'id_role_!v'       => $id_role, 'and',
+                'id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission],
+                'limit'            => 1]);
+              if ($result) {
+                $items['#id_role'      ]->error_set();
+                $items['#id_permission']->error_set(new text_multiline([
+                  'Field "%%_title" contains incorrect value!',
+                  'This combination of values is already in use!'], ['title' => translation::get($items['#id_permission']->title)]
+                ));
+              }
+            }
           }
         }
         break;
