@@ -13,21 +13,23 @@ namespace effcore\modules\menu {
   static function on_init($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-  # field 'parent'
-    if ($entity->name == 'tree_item' && !empty($form->_instance)) {
-      $tree_item = tree_item::select(
-        $form->_instance->id,
-        $form->_instance->id_tree);
-      $tree_item->build();
-      foreach ($tree_item->children_select_recursive() as $c_child)
-        $items['#id_parent']->disabled[$c_child        ->id] = $c_child        ->id;
-        $items['#id_parent']->disabled[$form->_instance->id] = $form->_instance->id;
-        $items['#id_parent']->is_builded = false;
-        $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->_instance->id_tree];
-        $items['#id_parent']->build();
-        $items['#id_parent']->value_set(
-          $form->_instance->id_parent
-        );
+    if ($entity) {
+    # field 'parent'
+      if ($entity->name == 'tree_item' && !empty($form->_instance)) {
+        $tree_item = tree_item::select(
+          $form->_instance->id,
+          $form->_instance->id_tree);
+        $tree_item->build();
+        foreach ($tree_item->children_select_recursive() as $c_child)
+          $items['#id_parent']->disabled[$c_child        ->id] = $c_child        ->id;
+          $items['#id_parent']->disabled[$form->_instance->id] = $form->_instance->id;
+          $items['#id_parent']->is_builded = false;
+          $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->_instance->id_tree];
+          $items['#id_parent']->build();
+          $items['#id_parent']->value_set(
+            $form->_instance->id_parent
+          );
+      }
     }
   }
 
