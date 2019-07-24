@@ -4,7 +4,8 @@ pages
     title: %%_entity_title_page_context{entity_name}: insert
     is_https: true
     url: %^(?<base>/manage/instance/insert)/
->>>>>>>>>>>(?<entity_name>[a-z0-9_]+)$%
+>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
+>>>>>>>>>>>(?<group>[a-z0-9_]+)|)$%
     access
       roles
       - =: admins
