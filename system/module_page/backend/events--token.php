@@ -44,9 +44,9 @@ namespace effcore\modules\page {
       if (strlen($color) == 6) {$color_parts = str_split($color, 2);                                                                                                         }
       if (strlen($color) == 3) {$color_parts = str_split($color, 1); $color_parts[0].= $color_parts[0]; $color_parts[1].= $color_parts[1]; $color_parts[2].= $color_parts[2];}
       if (!empty($color_parts)) {
-        $r = max(min(hexdec($color_parts[0]) + (int)$args[0], 255), 0);
-        $g = max(min(hexdec($color_parts[1]) + (int)$args[1], 255), 0);
-        $b = max(min(hexdec($color_parts[2]) + (int)$args[2], 255), 0);
+        $r = max(min((int)hexdec($color_parts[0]) + (int)$args[0], 255), 0);
+        $g = max(min((int)hexdec($color_parts[1]) + (int)$args[1], 255), 0);
+        $b = max(min((int)hexdec($color_parts[2]) + (int)$args[2], 255), 0);
         return '#'.str_pad(dechex($r), 2, '0', STR_PAD_LEFT).
                    str_pad(dechex($g), 2, '0', STR_PAD_LEFT).
                    str_pad(dechex($b), 2, '0', STR_PAD_LEFT);
