@@ -19,17 +19,19 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get('tree_item');
-    if ($entity_name == 'tree_item' && $form->_instance) {
-      $tree_item = tree_item::select(
-        $form->_instance->id,
-        $form->_instance->id_tree);
-      $tree_item->url = '';
-      $tree_item->build();
-      $tree_item_children = $tree_item->children_select_recursive();
-      if ($tree_item_children) {
-        foreach ($tree_item_children as $c_child) {$form->_related[] = $c_child->id; $c_child->url = '';}
-        $question = new markup('p', [], new text('Delete related items of type "%%_name" with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]));
-        $items['info']->child_insert($question, 'question_for_related');
+    if ($entity) {
+      if ($entity->name == 'tree_item' && $form->_instance) {
+        $tree_item = tree_item::select(
+          $form->_instance->id,
+          $form->_instance->id_tree);
+        $tree_item->url = '';
+        $tree_item->build();
+        $tree_item_children = $tree_item->children_select_recursive();
+        if ($tree_item_children) {
+          foreach ($tree_item_children as $c_child) {$form->_related[] = $c_child->id; $c_child->url = '';}
+          $question = new markup('p', [], new text('Delete related items of type "%%_name" with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]));
+          $items['info']->child_insert($question, 'question_for_related');
+        }
       }
     }
   }
