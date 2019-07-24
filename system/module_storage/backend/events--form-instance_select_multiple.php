@@ -53,15 +53,20 @@ namespace effcore\modules\storage {
 
   static function on_submit($form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         if (!$items['#actions']->disabled_get()) {
           $has_selection = false;
           foreach ($form->_selection->_instances as $c_instance) {
-            $id_values = implode('+', $c_instance->values_id_get());
-            if ($items['#is_checked:'.$id_values]->checked_get()) {
+            $c_instance_id = implode('+', $c_instance->values_id_get());
+            if ($items['#is_checked:'.$c_instance_id]->checked_get()) {
               $has_selection = true;
-              message::insert(new text('Instance with id = "%%_id" was selected.', ['id' => $id_values]));
+              if ($items['#actions']->value_get() == 'delete') {
+                if ($c_instance->delete())
+                     message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $c_instance_id])         );
+                else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $c_instance_id]), 'error');
+              }
             }
           }
           if (!$has_selection) {
@@ -70,6 +75,7 @@ namespace effcore\modules\storage {
             );
           }
         }
+        static::on_init($form, $items);
         break;
       case 'add_new':
         url::go('/manage/instance/insert/'.$entity_name.'?'.url::back_part_make());
