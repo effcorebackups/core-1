@@ -30,7 +30,7 @@
   /* menu style "main": colors */
 
   x-tree[data-style='main'] ul       {background-color: %%_color_menu}
-  x-tree[data-style='main'] ul ul    {background-color: %%_color_menu_active}
+  x-tree[data-style='main'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
   x-tree[data-style='main'] ul ul ul {background-color: transparent}
 
   x-tree[data-style='main']              a[aria-selected      ='true'],
@@ -42,7 +42,7 @@
   x-tree[data-style='main'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
   x-tree[data-style='main'] li    a[aria-selected      ='true'],
-  x-tree[data-style='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active}
+  x-tree[data-style='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
   x-tree[data-style='main'] li li a[aria-selected      ='true'],
   x-tree[data-style='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
@@ -51,6 +51,17 @@
   x-tree[data-id='main'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
   x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
   x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
+
+  /* menu Main: adaptivity */
+
+  @media screen and (max-width: 600px) {
+    x-tree[data-style='main']       {float: none}
+    x-tree[data-style='main'] ul    {float: none}
+    x-tree[data-style='main'] li    {float: none; display: block}
+    x-tree[data-style='main'] ul ul {position: relative}
+  }
+
+
 
   /* menu manager */
 

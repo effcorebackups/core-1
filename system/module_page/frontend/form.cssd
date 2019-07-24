@@ -233,8 +233,8 @@
     font-size: .85em;
     line-height: .9em;
     color: %%_color_text;
-    background: %%_color_main}
-  x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning}
+    background: %%_color_main{20,20,20}}
+  x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning{20,20,20}}
 
   x-page_part-manage {display: block; margin: 10px 0; padding: 8px; border: 1px dotted %%_color_main}
   x-page_part-manage x-title {display: block}
