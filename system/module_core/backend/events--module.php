@@ -9,17 +9,17 @@ namespace effcore\modules\core {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_install() {
+  static function on_install($event) {
     $module = module::get('core');
     $module->install();
   }
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('core');
     $module->enable();
   }
 
-  static function on_cron() {
+  static function on_cron($event) {
     message::cleaning();
   }
 

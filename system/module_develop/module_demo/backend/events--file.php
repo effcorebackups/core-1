@@ -36,7 +36,7 @@ namespace effcore\modules\demo {
     }
   }
 
-  static function on_process_demotype($file_info, &$data) {
+  static function on_process_demotype($event, $file_info, &$data) {
     $user = user::get_current();
     $data = 'dirs: '.$file_info->dirs.nl;
     $data.= 'name: '.$file_info->name.nl;

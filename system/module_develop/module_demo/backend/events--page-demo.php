@@ -22,7 +22,7 @@ namespace effcore\modules\demo {
           use \effcore\url;
           abstract class events_page_demo {
 
-  static function on_before_build($page) {
+  static function on_before_build($event, $page) {
     $type = $page->args_get('type');
     if ($type == null) {
       $items = tabs_item::select_all(null, 'demo_embedded');
@@ -30,12 +30,12 @@ namespace effcore\modules\demo {
     }
   }
 
-  static function on_tree_before_build_demo_nosql($tree) {
+  static function on_tree_before_build_demo_nosql($event, $tree) {
     tree_item::insert('item #1.2.3 (from code)', 'demo_item_1_2_3','demo_item_1_2', 'demo_nosql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10);
     tree_item::insert('item #3 (from code)',     'demo_item_3',     null,           'demo_nosql', '/develop/demo/embedded/trees/item_3',                     null, [], [], -10);
   }
 
-  static function on_tree_before_build_demo_sql($tree) {
+  static function on_tree_before_build_demo_sql($event, $tree) {
     tree_item::insert('item #1.2.3 (from code)', '6',               '3',            'demo_sql',   '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10);
     tree_item::insert('item #3 (from code)',     '9',               null,           'demo_sql',   '/develop/demo/embedded/trees/item_3',                     null, [], [], -10);
   }

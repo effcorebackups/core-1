@@ -15,7 +15,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_select_multiple {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
@@ -51,7 +51,7 @@ namespace effcore\modules\storage {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
@@ -75,7 +75,7 @@ namespace effcore\modules\storage {
             );
           }
         }
-        static::on_init($form, $items);
+        static::on_init(null, $form, $items);
         break;
       case 'add_new':
         url::go('/manage/instance/insert/'.$entity->name.'?'.url::back_part_make());

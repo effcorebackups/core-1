@@ -10,7 +10,7 @@ namespace effcore\modules\demo {
           use \effcore\storage;
           abstract class events_module {
 
-  static function on_install($demo_args = []) {
+  static function on_install($event, $demo_args = []) {
     $module = module::get('demo');
     $module->install();
     if (count(storage::get('sql')->errors) == 0) {
@@ -35,22 +35,22 @@ namespace effcore\modules\demo {
     }
   }
 
-  static function on_uninstall() {
+  static function on_uninstall($event) {
     $module = module::get('demo');
     $module->uninstall();
   }
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('demo');
     $module->enable();
   }
 
-  static function on_disable() {
+  static function on_disable($event) {
     $module = module::get('demo');
     $module->disable();
   }
 
-  static function on_start() {
+  static function on_start($event) {
   }
 
 }}

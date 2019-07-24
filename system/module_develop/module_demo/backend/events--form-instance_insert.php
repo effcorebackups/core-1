@@ -11,7 +11,7 @@ namespace effcore\modules\demo {
           use \effcore\translation;
           abstract class events_form_instance_insert {
 
-  static function on_validate($form, $items) {
+  static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'insert':
         $entity_name = page::get_current()->args_get('entity_name');

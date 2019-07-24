@@ -15,7 +15,7 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_form_logout {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $sessions       = session::select_all_by_id_user(user::get_current()->id);
     $session_active = session::select();
     $decorator = new decorator('table');
@@ -37,7 +37,7 @@ namespace effcore\modules\user {
     $decorator->build();
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'logout':
         $messages       = [];
@@ -54,7 +54,7 @@ namespace effcore\modules\user {
         }
         if ($has_selection) {
           if (!session::select()) url::go('/'); else {
-            static::on_init($form, $items);
+            static::on_init(null, $form, $items);
             foreach ($messages as $c_type => $c_messages_by_type) {
               foreach ($c_messages_by_type as $c_message) {
                 message::insert($c_message, $c_type);

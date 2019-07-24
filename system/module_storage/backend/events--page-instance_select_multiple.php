@@ -21,7 +21,7 @@ namespace effcore\modules\storage {
   #                            /manage/instance /delete/                  %%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
-  static function on_tab_before_build($tab) {
+  static function on_tab_before_build($event, $tab) {
     $managing_group = page::get_current()->args_get('managing_group');
     $entity_name    = page::get_current()->args_get('entity_name'   );
     $entities = entity::get_all();

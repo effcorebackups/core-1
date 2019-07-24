@@ -18,7 +18,7 @@ namespace effcore\modules\core {
           use \effcore\translation;
           abstract class events_form_install {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
     # check for php dependencies
@@ -59,7 +59,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_validate($form, $items) {
+  static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
         if (!storage::get('sql')->is_installed()) {
@@ -109,7 +109,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'install':
         if (!storage::get('sql')->is_installed()) {

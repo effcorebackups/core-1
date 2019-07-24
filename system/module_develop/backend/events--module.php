@@ -10,17 +10,17 @@ namespace effcore\modules\develop {
           use \effcore\user;
           abstract class events_module {
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('develop');
     $module->enable();
   }
 
-  static function on_disable() {
+  static function on_disable($event) {
     $module = module::get('develop');
     $module->disable();
   }
 
-  static function on_start() {
+  static function on_start($event) {
     $user = user::get_current();
     $settings = module::settings_get('page');
     if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||

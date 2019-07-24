@@ -12,7 +12,7 @@ namespace effcore\modules\test {
           use \effcore\url;
           abstract class events_page_test {
 
-  static function on_tab_before_build($tab) {
+  static function on_tab_before_build($event, $tab) {
     $id = page::get_current()->args_get('id');
     $tests = test::get_all(false);
     core::array_sort_by_title($tests);

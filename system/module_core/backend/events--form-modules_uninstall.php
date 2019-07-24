@@ -16,7 +16,7 @@ namespace effcore\modules\core {
           use \effcore\translation;
           abstract class events_form_modules_uninstall {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
     $installed_by_boot = core::boot_select('installed');
     $enabled_by_boot   = core::boot_select('enabled'  );
@@ -45,7 +45,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $embed   = module::get_embed();
@@ -72,7 +72,7 @@ namespace effcore\modules\core {
       # update caches and this form
         cache::update_global();
         $form->child_select('info')->children_delete();
-        static::on_init($form, $items);
+        static::on_init(null, $form, $items);
       # show report
         $installed_by_boot = core::boot_select('installed');
         if ($modules_to_uninstall) {

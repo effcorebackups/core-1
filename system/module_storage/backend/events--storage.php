@@ -11,23 +11,23 @@ namespace effcore\modules\storage {
           use \effcore\timer;
           abstract class events_storage {
 
-  static function on_init_before($storage) {
+  static function on_init_before($event, $storage) {
     timer::tap('storage init');
   }
 
-  static function on_init_after($storage) {
+  static function on_init_after($event, $storage) {
     timer::tap('storage init');
     console::log_insert('storage', 'init.', 'storage %%_name was initialized', 'ok',
       timer::period_get('storage init', -1, -2), ['name' => $storage->name]
     );
   }
 
-  static function on_query_before($storage, $query) {
+  static function on_query_before($event, $storage, $query) {
     $query_hash = core::hash_get_data($query);
     timer::tap('storage query with hash: '.$query_hash);
   }
 
-  static function on_query_after($storage, $query, $result, $errors) {
+  static function on_query_after($event, $storage, $query, $result, $errors) {
     $args_trimmed = [];
     foreach ($storage->args as $c_arg) {
       $args_trimmed[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');

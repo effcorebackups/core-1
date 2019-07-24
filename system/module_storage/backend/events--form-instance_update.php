@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_update {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -62,7 +62,7 @@ namespace effcore\modules\storage {
     }     else core::send_header_and_exit('page_not_found');
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     $back_update = page::get_current()->args_get('back_update');
     $back_cancel = page::get_current()->args_get('back_cancel');
     $entity_name = page::get_current()->args_get('entity_name');

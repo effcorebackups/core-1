@@ -10,7 +10,7 @@ namespace effcore\modules\page {
           use \effcore\storage;
           abstract class events_form_colors {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $settings = module::settings_get('page');
     $items['*color_page_id'            ]->value_set( $settings->color_page_id             );
     $items['*color_text_id'            ]->value_set( $settings->color_text_id             );
@@ -37,7 +37,7 @@ namespace effcore\modules\page {
     $items['*color_button_text_id'     ]->value_set( $settings->color_button_text_id      );
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_page_id',             $items['*color_page_id'            ]->value_get(), false);
@@ -90,7 +90,7 @@ namespace effcore\modules\page {
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_active_id',    false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_text_id'            );
         message::insert('The changes was deleted.');
-        static::on_init($form, $items);
+        static::on_init(null, $form, $items);
         break;
     }
   }

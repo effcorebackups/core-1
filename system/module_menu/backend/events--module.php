@@ -10,12 +10,12 @@ namespace effcore\modules\menu {
           use \effcore\tree;
           abstract class events_module {
 
-  static function on_install() {
+  static function on_install($event) {
     $module = module::get('menu');
     $module->install();
   }
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('menu');
     $module->enable();
   }

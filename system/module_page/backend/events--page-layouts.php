@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page_layouts {
 
-  static function on_tab_before_build($tab) {
+  static function on_tab_before_build($event, $tab) {
     $layouts = layout::select_all();
     $id = page::get_current()->args_get('id');
     core::array_sort_by_title($layouts);

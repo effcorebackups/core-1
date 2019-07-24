@@ -15,7 +15,7 @@ namespace effcore\modules\user {
           use \effcore\url;
           abstract class events_form_login {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     if (!isset($_COOKIE['cookies_is_on'])) {
       message::insert(new text_multiline([
         'Cookies are disabled. You can not log in!',
@@ -24,7 +24,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_validate($form, $items) {
+  static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'login':
         if (!$form->has_error()) {
@@ -41,7 +41,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'login':
         $user = (new instance('user', [

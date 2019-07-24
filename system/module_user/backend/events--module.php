@@ -15,7 +15,7 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_module {
 
-  static function on_install() {
+  static function on_install($event) {
     $module = module::get('user');
     $module->install();
     if (count(storage::get('sql')->errors) == 0) {
@@ -29,12 +29,12 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('user');
     $module->enable();
   }
 
-  static function on_start() {
+  static function on_start($event) {
     $user = user::get_current();
     if (isset($user->roles['registered']) &&
               $user->avatar_path) {
@@ -43,7 +43,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_cron() {
+  static function on_cron($event) {
     session::cleaning();
   }
 

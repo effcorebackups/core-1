@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           use \effcore\storage;
           abstract class events_form_colors_preset {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $id = page::get_current()->args_get('id');
     if ($id) {
       $preset = color::preset_get($id);
@@ -41,7 +41,7 @@ namespace effcore\modules\page {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $id = page::get_current()->args_get('id');
@@ -70,7 +70,7 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id,    false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_text_id',      $preset->colors->color_button_text_id            );
         message::insert('Colors was applied.');
-        static::on_init($form, $items);
+        static::on_init(null, $form, $items);
         break;
     }
   }

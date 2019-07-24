@@ -15,7 +15,7 @@ namespace effcore\modules\develop {
           use \effcore\url;
           abstract class events_page_structures {
 
-  static function on_before_build($page) {
+  static function on_before_build($event, $page) {
     $type = $page->args_get('type');
     if ($type == null) {
       url::go($page->args_get('base').'/class/list');

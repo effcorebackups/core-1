@@ -12,7 +12,7 @@ namespace effcore\modules\user {
           use \effcore\translation;
           abstract class events_form_instance_insert {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
@@ -35,7 +35,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_validate($form, $items) {
+  static function on_validate($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
@@ -82,7 +82,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {

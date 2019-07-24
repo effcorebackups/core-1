@@ -14,7 +14,7 @@ namespace effcore\modules\storage {
           use \effcore\storage;
           abstract class events_page_instance_select {
 
-  static function on_before_build($page) {
+  static function on_before_build($event, $page) {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);

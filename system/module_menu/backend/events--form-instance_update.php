@@ -10,7 +10,7 @@ namespace effcore\modules\menu {
           use \effcore\tree_item;
           abstract class events_form_instance_update {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {

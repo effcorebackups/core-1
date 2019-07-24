@@ -15,7 +15,7 @@ namespace effcore\modules\menu {
           use \effcore\translation;
           abstract class events_form_instance_select_multiple {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     $entity = entity::get($entity_name);
@@ -41,7 +41,7 @@ namespace effcore\modules\menu {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name'       );
     $id_tree     = page::get_current()->args_get('instances_group_by');
     $entity = entity::get($entity_name);
@@ -70,7 +70,7 @@ namespace effcore\modules\menu {
                 'Nothing selected!', 'warning'
               );
             }
-            static::on_init($form, $items);
+            static::on_init(null, $form, $items);
           }
           break;
         case 'add_new':

@@ -16,7 +16,7 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_delete {
 
-  static function on_init($form, $items) {
+  static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
@@ -35,15 +35,15 @@ namespace effcore\modules\storage {
     }     else core::send_header_and_exit('page_not_found');
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     $base        = page::get_current()->args_get('base'       );
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'delete':
-        if ($form->_instance &&
-            $form->_instance->delete())
+        if (!empty($form->_instance) &&
+                   $form->_instance->delete())
              message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
         else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
                      url::go(url::back_url_get() ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name); break;

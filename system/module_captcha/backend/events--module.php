@@ -9,27 +9,27 @@ namespace effcore\modules\captcha {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_install() {
+  static function on_install($event) {
     $module = module::get('captcha');
     $module->install();
   }
 
-  static function on_uninstall() {
+  static function on_uninstall($event) {
     $module = module::get('captcha');
     $module->uninstall();
   }
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('captcha');
     $module->enable();
   }
 
-  static function on_disable() {
+  static function on_disable($event) {
     $module = module::get('captcha');
     $module->disable();
   }
 
-  static function on_cron() {
+  static function on_cron($event) {
     field_captcha::captcha_old_cleaning();
   }
 

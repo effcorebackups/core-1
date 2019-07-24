@@ -8,7 +8,7 @@ namespace effcore\modules\locales {
           use \effcore\module;
           abstract class events_module {
 
-  static function on_enable() {
+  static function on_enable($event) {
     $module = module::get('locales');
     $module->enable();
   }

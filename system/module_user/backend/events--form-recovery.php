@@ -15,7 +15,7 @@ namespace effcore\modules\user {
           use \effcore\url;
           abstract class events_form_recovery {
 
-  static function on_validate($form, $items) {
+  static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
         if (!$form->has_error()) {
@@ -29,7 +29,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_submit($form, $items) {
+  static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
         $user = (new instance('user', [
