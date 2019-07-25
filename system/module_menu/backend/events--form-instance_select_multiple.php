@@ -13,6 +13,7 @@ namespace effcore\modules\menu {
           use \effcore\page;
           use \effcore\text;
           use \effcore\translation;
+          use \effcore\url;
           abstract class events_form_instance_select_multiple {
 
   static function on_init($event, $form, $items) {
@@ -49,6 +50,7 @@ namespace effcore\modules\menu {
       switch ($form->clicked_button->value_get()) {
         case 'apply':
           if ($entity->name == 'tree_item' && $id_tree) {
+            $event->is_last = true;
             $has_selection = false;
             $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree]], 'id');
             foreach ($tree_items as $c_item) {
@@ -67,14 +69,17 @@ namespace effcore\modules\menu {
             }
             if (!$has_selection) {
               message::insert(
-                'Nothing selected!', 'warning'
+                'You have not made any changes before!', 'warning'
               );
             }
             static::on_init(null, $form, $items);
           }
           break;
         case 'add_new':
-          //url::go('/manage/instance/insert/'.$entity->name.'?'.url::back_part_make());
+          if ($entity->name == 'tree_item' && $id_tree) {
+            $event->is_last = true;
+            url::go('/manage/instance/insert/'.$entity->name.'/'.$id_tree.'?'.url::back_part_make());
+          }
           break;
       }
     }

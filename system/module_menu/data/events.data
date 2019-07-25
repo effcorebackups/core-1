@@ -23,6 +23,7 @@ events
   on_form_submit
   - instance_select_multiple_menu_item|event
       for: instance_select_multiple
+      weight: +50
       handler: \effcore\modules\menu\events_form_instance_select_multiple::on_submit
   - instance_delete_menu_item|event
       for: instance_delete
