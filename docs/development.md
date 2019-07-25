@@ -26,7 +26,7 @@ The next editors/IDE need some improvements:
                       Go to "Preferences → Text Editor → Detect Indentation" and disable it.
 - Espresso          : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
 - Textastic         : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Coda              : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
+- Coda2             : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
 - Eclipse           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
 - Notepad++         : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
 - Sublime           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) (p.s. "translate_tabs_to_spaces" : true).
