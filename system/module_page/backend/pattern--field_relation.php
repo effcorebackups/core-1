@@ -38,7 +38,7 @@ namespace effcore {
           $c_tree_item->id_real = $c_instance->{$this->related_entity_field_id_name};
         }
         $tree->build();
-        foreach ($tree->children_select_recursive() as $c_npath => $c_child) {
+        foreach ($tree->children_select_recursive(null, '', false, true) as $c_npath => $c_child) {
           $c_depth = count_chars($c_npath, 1)[ord('/')] ?? 0;
           $this->option_insert(str_repeat('- ', $c_depth + 1).
             $c_child->title,
