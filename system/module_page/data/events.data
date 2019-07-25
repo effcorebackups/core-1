@@ -25,6 +25,10 @@ events
   - layout|event
       for: layout
       handler: \effcore\modules\page\events_form_layout::on_init
+  - instance_insert_page|event
+      for: instance_insert
+      weight: -50
+      handler: \effcore\modules\page\events_form_instance_insert::on_init
   - instance_update_page|event
       for: instance_update
       weight: -50
