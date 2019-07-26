@@ -24,4 +24,13 @@ namespace effcore\modules\menu {
     }
   }
 
+  static function on_validate($event, $form, $items) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if ($entity->name == 'tree') {
+      }
+    }
+  }
+
 }}
