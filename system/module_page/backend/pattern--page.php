@@ -170,6 +170,19 @@ namespace effcore {
     return static::$cache[$id];
   }
 
+  static function get_by_url($url, $load = true) {
+    $result = null;
+    $result_args = [];
+    static::init();
+    foreach (static::$cache as $c_item) {
+      if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
+      if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
+    if ($result instanceof external_cache && $load)
+        $result = $result->external_cache_load();
+           $result->_match_args = $result_args;
+    return $result;
+  }
+
   static function get_all($load = true) {
     static::init();
     if ($load)
