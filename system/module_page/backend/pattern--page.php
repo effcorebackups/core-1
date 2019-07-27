@@ -187,7 +187,7 @@ namespace effcore {
       if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
     if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
     if ($result == null)                            $result = static::init_sql($url);
-    if ($result != null)                            $result->_match_args = $result_args;
+    if ($result != null)                            $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
     return $result;
   }
 
@@ -201,34 +201,18 @@ namespace effcore {
   }
 
   static function find_and_render() {
-    $is_match = false;
     $path_current = url::get_current()->path_get();
-    $path_args = [];
-    foreach (static::get_all(false) as $c_page) {
-      if ($c_page->url[0] != '%' && $path_current == $c_page->url                            ) {$is_match = true; $path_args = ['base' => $path_current];                                  }
-      if ($c_page->url[0] == '%' &&       preg_match($c_page->url, $path_current, $path_args)) {$is_match = true; $path_args = array_filter($path_args, 'is_string', ARRAY_FILTER_USE_KEY);}
-      if ($is_match) {
-        if ($c_page->access === null || access::check($c_page->access)) {
-          if ($c_page instanceof external_cache)
-              $c_page = $c_page->external_cache_load();
-          foreach ($path_args as $c_key => $c_value)
-            $c_page->args_set   ($c_key,   $c_value);
-                 static::$current = $c_page;
-          return static::$current->render();
-        } else core::send_header_and_exit('access_forbidden');
-      }
-    }
-  # try to load from the sql storage
-    $c_page = static::init_sql($path_current);
-    if ($c_page && $c_page->url == $path_current) {
-      if ($c_page->access === null || access::check($c_page->access)) {
-        $c_page->args_set('base', $path_current);
-               static::$current = $c_page;
+    $page = static::get_by_url($path_current);
+    if ($page) {
+      if ($page->access === null || access::check($page->access)) {
+        if ($page->_match_args == [])
+            $page->_match_args['base'] = $path_current;
+        foreach ($page->_match_args as $c_key => $c_value)
+          $page->args_set             ($c_key,   $c_value);
+               static::$current = $page;
         return static::$current->render();
       } else core::send_header_and_exit('access_forbidden');
-    }
-  # no matches case
-    core::send_header_and_exit('page_not_found');
+    }   else core::send_header_and_exit('page_not_found'  );
   }
 
 }}
