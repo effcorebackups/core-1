@@ -31,7 +31,10 @@ namespace effcore {
   static protected $cache;
 
   static function not_external_properties_get() {
-    return ['id' => 'id', 'title' => 'title'];
+    return [
+      'id'    => 'id',
+      'title' => 'title'
+    ];
   }
 
   static function cache_cleaning() {

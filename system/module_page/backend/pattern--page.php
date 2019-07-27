@@ -12,11 +12,13 @@ namespace effcore {
   public $title;
   public $is_https;
   public $url;
-  public $access;
-  public $parts;
   public $charset = 'utf-8';
   public $lang_code = 'en';
   public $text_direction = 'ltr';
+  public $type = 'nosql'; # nosql | sql
+  public $is_embed = 1;
+  public $access;
+  public $parts;
   protected $args = [];
   protected $used_dpaths = [];
 
@@ -124,7 +126,11 @@ namespace effcore {
   static protected $current;
 
   static function not_external_properties_get() {
-    return ['id' => 'id', 'url' => 'url', 'access' => 'access'];
+    return [
+      'id'     => 'id',
+      'url'    => 'url',
+      'access' => 'access'
+    ];
   }
 
   static function cache_cleaning() {
@@ -138,6 +144,7 @@ namespace effcore {
           if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
           static::$cache[$c_id] = $c_page;
           static::$cache[$c_id]->module_id = $c_module_id;
+          static::$cache[$c_id]->type = 'nosql';
         }
       }
     }
@@ -154,6 +161,7 @@ namespace effcore {
         $page->{$c_key} = $c_value;
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
+             static::$cache[$page->id]->type = 'sql';
       return static::$cache[$page->id];
     }
   }
@@ -177,9 +185,9 @@ namespace effcore {
     foreach (static::$cache as $c_item) {
       if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
       if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
-    if ($result instanceof external_cache && $load)
-        $result = $result->external_cache_load();
-           $result->_match_args = $result_args;
+    if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
+    if ($result == null)                            $result = static::init_sql($url);
+    if ($result != null)                            $result->_match_args = $result_args;
     return $result;
   }
 

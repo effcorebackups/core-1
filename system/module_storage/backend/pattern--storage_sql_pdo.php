@@ -212,9 +212,8 @@ namespace effcore {
   function tables(...$tables) {
     $result = [];
     foreach (is_array($tables[0]) ?
-                      $tables[0] : $tables as $c_id => $c_name) {
+                      $tables[0] : $tables as $c_id => $c_name)
       $result[$c_id.'_!t'] = $c_name;
-    }
     return $result;
   }
 
@@ -222,18 +221,16 @@ namespace effcore {
   function fields(...$fields) {
     $result = [];
     foreach (is_array($fields[0]) ?
-                      $fields[0] : $fields as $c_id => $c_name) {
+                      $fields[0] : $fields as $c_id => $c_name)
       $result[$c_id.'_!f'] = $c_name;
-    }
     return $result;
   }
 
   function values(...$values) {
     $result = [];
     foreach (is_array($values[0]) ?
-                      $values[0] : $values as $c_id => $c_name) {
+                      $values[0] : $values as $c_id => $c_name)
       $result[$c_id.'_!v'] = $c_name;
-    }
     return $result;
   }
 
@@ -521,7 +518,9 @@ namespace effcore {
   ###########################
 
   static function not_external_properties_get() {
-    return ['name' => 'name'];
+    return [
+      'name' => 'name'
+    ];
   }
 
 }}

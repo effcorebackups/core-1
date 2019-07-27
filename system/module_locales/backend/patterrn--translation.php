@@ -17,7 +17,9 @@ namespace effcore {
   static protected $cache;
 
   static function not_external_properties_get() {
-    return ['code' => 'code'];
+    return [
+      'code' => 'code'
+    ];
   }
 
   static function cache_cleaning() {

@@ -17,12 +17,12 @@ namespace effcore {
   }
 
   function external_cache_load($with_restore = true) {
-    if (!cache::is_exists($this->cache_name) && $with_restore) {
+    if (!cache::is_exists($this->cache_name) && $with_restore)
       storage_nosql_files::cache_update();
-    }
-    return cache::select(
-      $this->cache_name
-    );
+    $result = cache::select($this->cache_name);
+    if ($result && !empty($this->module_id)) $result->module_id = $this->module_id;
+    if ($result && !empty($this->type     )) $result->type      = $this->type;
+    return $result;
   }
 
 }}

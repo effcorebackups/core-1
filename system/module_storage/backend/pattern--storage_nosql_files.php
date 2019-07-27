@@ -71,7 +71,9 @@ namespace effcore {
   static public $changes_dynamic;
 
   static function not_external_properties_get() {
-    return ['name' => 'name'];
+    return [
+      'name' => 'name'
+    ];
   }
 
   static function init($catalog_name, $with_restore = true) {
