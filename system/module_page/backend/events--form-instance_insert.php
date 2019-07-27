@@ -40,6 +40,17 @@ namespace effcore\modules\page {
           }
         }
       }
+    # field 'url'
+      if ($entity->name == 'page' && !empty($form->_instance)) {
+        if ($items['#url']->value_get()) {
+          if (page::get_by_url($items['#url']->value_get(), false)) {
+            $items['#url']->error_set(new text_multiline([
+              'Field "%%_title" contains the previously used value!',
+              'Only unique value is allowed.'], ['title' => translation::get($items['#url']->title)]
+            ));
+          }
+        }
+      }
     }
   }
 
