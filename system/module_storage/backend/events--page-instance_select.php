@@ -11,7 +11,6 @@ namespace effcore\modules\storage {
           use \effcore\instance;
           use \effcore\markup;
           use \effcore\selection;
-          use \effcore\storage;
           abstract class events_page_instance_select {
 
   static function on_before_build($event, $page) {
@@ -23,7 +22,6 @@ namespace effcore\modules\storage {
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
-        $storage = storage::get($entity->storage_name);
         $conditions = array_combine($id_keys, $id_values);
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
@@ -41,14 +39,13 @@ namespace effcore\modules\storage {
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
           count($id_values)) {
-        $storage = storage::get($entity->storage_name);
         $conditions = array_combine($id_keys, $id_values);
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
         # create selection
           $selection = new selection('', $entity->view_type_single);
           $selection->id = 'instance_manage';
-          $selection->query_params['conditions'] = $storage->attributes_prepare($conditions);
+          $selection->query_params['conditions'] = $entity->storage_get()->attributes_prepare($conditions);
           foreach ($entity->selection_params as $c_key => $c_value)
                                    $selection->{$c_key} = $c_value;
           $has_visible_fields = false;

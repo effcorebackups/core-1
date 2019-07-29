@@ -130,28 +130,23 @@ namespace effcore {
   }
 
   function install() {
-    $storage = storage::get($this->storage_name);
-    return $storage->entity_install($this);
+    return $this->storage_get()->entity_install($this);
   }
 
   function uninstall() {
-    $storage = storage::get($this->storage_name);
-    return $storage->entity_uninstall($this);
+    return $this->storage_get()->entity_uninstall($this);
   }
 
   function instances_select_count($params = []) {
-    $storage = storage::get($this->storage_name);
-    return $storage->instances_select_count($this, $params);
+    return $this->storage_get()->instances_select_count($this, $params);
   }
 
   function instances_select($params = [], $idkey = null) {
-    $storage = storage::get($this->storage_name);
-    return $storage->instances_select($this, $params, $idkey);
+    return $this->storage_get()->instances_select($this, $params, $idkey);
   }
 
   function instances_delete($params = []) {
-    $storage = storage::get($this->storage_name);
-    return $storage->instances_delete($this, $params);
+    return $this->storage_get()->instances_delete($this, $params);
   }
 
   ###########################
