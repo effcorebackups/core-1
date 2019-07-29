@@ -48,6 +48,29 @@ instances
       - content
         - form_login|page_part_preset_link
             id: form_login
+- page_recovery|instance
+    entity_name: page
+    values
+    - id: recovery
+    - title: Recovery
+    - url: /recovery
+    - is_https: 1
+    - is_embed: 1
+    - access
+        roles
+        - =: anonymous
+    - parts
+      - menu
+        - menu_user_anonymous|page_part_preset_link
+            id: menu_user_anonymous
+        - menu_main|page_part_preset_link
+            id: menu_main
+      - title
+        - title|page_part_preset_link
+            id: title
+      - content
+        - form_recovery|page_part_preset_link
+            id: form_recovery
 - page_registration|instance
     entity_name: page
     values

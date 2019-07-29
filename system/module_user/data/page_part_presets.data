@@ -27,3 +27,10 @@ page_part_presets
     - =: content
     type: link
     source: forms/user/registration
+- form_recovery|page_part_preset
+    id: form_recovery
+    managing_title: Form: Recovery
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/recovery
