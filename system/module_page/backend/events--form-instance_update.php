@@ -57,7 +57,9 @@ namespace effcore\modules\page {
             $form->_parts_insert[$c_area->id] = $c_part_insert;
           }
         }
-        $form->child_delete('layout_manager');
+        $form->child_delete('layout_manager'    );
+        $form->child_delete('button_update_copy');
+        $form->child_delete('button_cancel_copy');
         $form->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager');
         $form->child_insert(core::deep_clone($items['~update']), 'button_update_copy');
         $form->child_insert(core::deep_clone($items['~cancel']), 'button_cancel_copy');
