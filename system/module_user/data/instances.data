@@ -10,6 +10,60 @@ instances
     - email: admin@example.com
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+# permissions
+# ─────────────────────────────────────────────────────────────────────
+- permission_user_select|instance
+    entity_name: permission
+    values
+    - id: user_select
+    - title: User: select
+- permission_user_update|instance
+    entity_name: permission
+    values
+    - id: user_update
+    - title: User: update
+- permission_user_insert|instance
+    entity_name: permission
+    values
+    - id: user_insert
+    - title: User: insert
+- permission_user_delete|instance
+    entity_name: permission
+    values
+    - id: user_delete
+    - title: User: delete
+# ─────────────────────────────────────────────────────────────────────
+# relation_role_ws_permission
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_admins_user_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: admins
+    - id_permission: user_select
+- relation_role_ws_permission_admins_user_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: admins
+    - id_permission: user_update
+- relation_role_ws_permission_admins_user_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: admins
+    - id_permission: user_insert
+- relation_role_ws_permission_admins_user_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: admins
+    - id_permission: user_delete
+# ─────────────────────────────────────────────────────────────────────
+# relation_role_ws_user
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_user_admins_1|instance
+    entity_name: relation_role_ws_user
+    values
+    - id_role: admins
+    - id_user: 1
+# ─────────────────────────────────────────────────────────────────────
 # roles
 # ─────────────────────────────────────────────────────────────────────
 - role_admins|instance
@@ -47,57 +101,3 @@ instances
     - title: Anonymous
     - is_embed: 1
     - weight: +40
-# ─────────────────────────────────────────────────────────────────────
-# permissions
-# ─────────────────────────────────────────────────────────────────────
-- permission_user_select|instance
-    entity_name: permission
-    values
-    - id: user_select
-    - title: User: select
-- permission_user_update|instance
-    entity_name: permission
-    values
-    - id: user_update
-    - title: User: update
-- permission_user_insert|instance
-    entity_name: permission
-    values
-    - id: user_insert
-    - title: User: insert
-- permission_user_delete|instance
-    entity_name: permission
-    values
-    - id: user_delete
-    - title: User: delete
-# ─────────────────────────────────────────────────────────────────────
-# relation_role_ws_user
-# ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_user_admins_1|instance
-    entity_name: relation_role_ws_user
-    values
-    - id_role: admins
-    - id_user: 1
-# ─────────────────────────────────────────────────────────────────────
-# relation_role_ws_permission
-# ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_admins_user_select|instance
-    entity_name: relation_role_ws_permission
-    values
-    - id_role: admins
-    - id_permission: user_select
-- relation_role_ws_permission_admins_user_update|instance
-    entity_name: relation_role_ws_permission
-    values
-    - id_role: admins
-    - id_permission: user_update
-- relation_role_ws_permission_admins_user_insert|instance
-    entity_name: relation_role_ws_permission
-    values
-    - id_role: admins
-    - id_permission: user_insert
-- relation_role_ws_permission_admins_user_delete|instance
-    entity_name: relation_role_ws_permission
-    values
-    - id_role: admins
-    - id_permission: user_delete
