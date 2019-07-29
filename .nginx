@@ -10,13 +10,13 @@
 
 server {
   listen 127.0.0.1:80;
-  server_name effcore;
-  root /Volumes/WWW/www/effcore/effcore;
+  server_name 127.0.0.1;
+  root %%_root;
 
   location / {
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
-    include /usr/local/etc/nginx/fastcgi.conf;
+    include %%_include;
     fastcgi_param SCRIPT_NAME /index.php;
     fastcgi_param PHP_SELF /index.php;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
@@ -26,15 +26,15 @@ server {
 
 server {
   listen 127.0.0.1:443 ssl;
-  server_name effcore;
-  root /Volumes/WWW/www/effcore/effcore;
-  ssl_certificate     /Volumes/WWW/www/security/domain.crt;
-  ssl_certificate_key /Volumes/WWW/www/security/domain.private.key;
+  server_name 127.0.0.1;
+  root %%_root;
+  ssl_certificate     %%_domain_crt;
+  ssl_certificate_key %%_domain_private_key;
 
   location / {
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
-    include /usr/local/etc/nginx/fastcgi.conf;
+    include %%_include;
     fastcgi_param SCRIPT_NAME /index.php;
     fastcgi_param PHP_SELF /index.php;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
