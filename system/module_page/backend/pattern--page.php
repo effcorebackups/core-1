@@ -166,6 +166,21 @@ namespace effcore {
     }
   }
 
+  static function init_current() {
+    $path_current = url::get_current()->path_get();
+    $page = static::get_by_url($path_current);
+    if ($page) {
+      if ($page->access === null || access::check($page->access)) {
+        if ($page->_match_args == [])
+            $page->_match_args['base'] = $path_current;
+        foreach ($page->_match_args as $c_key => $c_value)
+          $page->args_set             ($c_key,   $c_value);
+               static::$current = $page;
+        return static::$current->render();
+      } else core::send_header_and_exit('access_forbidden');
+    }   else core::send_header_and_exit('page_not_found'  );
+  }
+
   static function get_current() {
     return static::$current;
   }
@@ -198,21 +213,6 @@ namespace effcore {
         if ($c_item instanceof external_cache)
             $c_item = $c_item->external_cache_load();
     return static::$cache;
-  }
-
-  static function find_and_render() {
-    $path_current = url::get_current()->path_get();
-    $page = static::get_by_url($path_current);
-    if ($page) {
-      if ($page->access === null || access::check($page->access)) {
-        if ($page->_match_args == [])
-            $page->_match_args['base'] = $path_current;
-        foreach ($page->_match_args as $c_key => $c_value)
-          $page->args_set             ($c_key,   $c_value);
-               static::$current = $page;
-        return static::$current->render();
-      } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found'  );
   }
 
 }}

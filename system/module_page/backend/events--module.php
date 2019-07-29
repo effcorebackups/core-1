@@ -21,7 +21,7 @@ namespace effcore\modules\page {
   }
 
   static function on_start($event) {
-    return page::find_and_render();
+    return page::init_current();
   }
 
   static function on_cron($event) {
