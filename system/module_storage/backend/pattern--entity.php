@@ -89,6 +89,10 @@ namespace effcore {
     }
   }
 
+  function storage_get() {
+    return storage::get($this->storage_name);
+  }
+
   function field_get($name) {
     return $this->fields[$name] ?? null;
   }

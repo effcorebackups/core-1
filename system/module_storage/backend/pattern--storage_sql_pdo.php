@@ -52,8 +52,8 @@ namespace effcore {
               $this->connection = new pdo(
                 $this->driver.':'.data::directory.
                 $this->credentials->file_name);
-              $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     '=' => '=', 'value' => '"UTF-8"']);
-              $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', '=' => '=', 'value' => 'ON'     ]);
+              $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     'operator' => '=', 'value' => '"UTF-8"']);
+              $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', 'operator' => '=', 'value' =>  'ON'    ]);
               break;
           }
           event::start('on_storage_init_after', 'pdo', [&$this]);
@@ -116,6 +116,15 @@ namespace effcore {
     if ($this->init()) {
       if ($this->driver == 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
       if ($this->driver == 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
+    }
+  }
+
+  function foreign_keys_checks_set($is_check = true) {
+    if ($this->init()) {
+      if ($this->driver ==  'mysql' && $is_check != true) $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '0'  ]);
+      if ($this->driver == 'sqlite' && $is_check != true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       'operator' => '=', 'value' => 'OFF']);
+      if ($this->driver ==  'mysql' && $is_check == true) $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '1'  ]);
+      if ($this->driver == 'sqlite' && $is_check == true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       'operator' => '=', 'value' => 'ON' ]);
     }
   }
 
@@ -313,13 +322,11 @@ namespace effcore {
     # create entity
     # ─────────────────────────────────────────────────────────────────────
       $this->transaction_begin();
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
-                                     $this->query(['action' => 'DROP',   'type'    => 'TABLE', 'if_exists' => 'IF EXISTS', 'target_!t' => '~'.$entity->name]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type'    => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')']);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
+      $this->foreign_keys_checks_set(0);
+                                     $this->query(['action' => 'DROP',   'type' => 'TABLE', 'if_exists' => 'IF EXISTS', 'target_!t' => '~'.$entity->name]);
+      if ($this->driver ==  'mysql') $this->query(['action' => 'CREATE', 'type' => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
+      if ($this->driver == 'sqlite') $this->query(['action' => 'CREATE', 'type' => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')'                                                                               ]);
+      $this->foreign_keys_checks_set(1);
 
     # create indexes
     # ─────────────────────────────────────────────────────────────────────
@@ -342,11 +349,9 @@ namespace effcore {
 
   function entity_uninstall($entity) {
     if ($this->init()) {
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '0'  ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'OFF']);
-      $result =                      $this->query(['action' => 'DROP',   'type' => 'TABLE', 'target_!t' => '~'.$entity->name            ]);
-      if ($this->driver ==  'mysql') $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', '=' => '=', 'value' => '1'  ]);
-      if ($this->driver == 'sqlite') $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       '=' => '=', 'value' => 'ON' ]);
+      $this->foreign_keys_checks_set(0);
+      $result = $this->query(['action' => 'DROP', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name]);
+      $this->foreign_keys_checks_set(1);
       return $result;
     }
   }
