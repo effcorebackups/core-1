@@ -170,7 +170,7 @@ namespace effcore {
     $path_current = url::get_current()->path_get();
     $page = static::get_by_url($path_current);
     if ($page) {
-      if ($page->access === null || access::check($page->access)) {
+      if (access::check($page->access)) {
         if ($page->_match_args == [])
             $page->_match_args['base'] = $path_current;
         foreach ($page->_match_args as $c_key => $c_value)

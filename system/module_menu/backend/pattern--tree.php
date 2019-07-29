@@ -39,7 +39,7 @@ namespace effcore {
   }
 
   function render() {
-    if ($this->access === null || access::check($this->access)) {
+    if (access::check($this->access)) {
       static::init();
       $this->build();
       return parent::render();
