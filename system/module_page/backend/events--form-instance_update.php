@@ -58,9 +58,9 @@ namespace effcore\modules\page {
           }
         }
         $form->child_delete('layout_manager');
-        $form->child_insert(
-          new markup('x-layout-manager', [], $layout), 'layout_manager'
-        );
+        $form->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager');
+        $form->child_insert(core::deep_clone($items['~update']), 'button_update_copy');
+        $form->child_insert(core::deep_clone($items['~cancel']), 'button_cancel_copy');
       }
     }
   }
