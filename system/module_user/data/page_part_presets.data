@@ -20,3 +20,10 @@ page_part_presets
     - =: content
     type: link
     source: forms/user/login
+- form_registration|page_part_preset
+    id: form_registration
+    managing_title: Form: Registration
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/registration
