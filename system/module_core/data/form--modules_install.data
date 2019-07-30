@@ -10,7 +10,3 @@ forms
         title: apply
         attributes
         - value: apply
-    - button_refresh|button
-        title: refresh
-        attributes
-        - value: refresh

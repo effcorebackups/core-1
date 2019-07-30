@@ -15,7 +15,6 @@ namespace effcore\modules\core {
           use \effcore\message;
           use \effcore\module;
           use \effcore\node;
-          use \effcore\storage_nosql_files;
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\translation;
@@ -156,8 +155,8 @@ namespace effcore\modules\core {
           foreach ($modules_to_enable as $c_module) {
             if (isset($enabled_by_boot[$c_module->id])) {
               if (isset($modules_to_install[$c_module->id]))
-                   message::insert(new text('Module "%%_title" (%%_id) has been installed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
-              else message::insert(new text('Module "%%_title" (%%_id) has been enabled.',   ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
+                   message::insert(new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
+              else message::insert(new text('Module "%%_title" (%%_id) was enabled.',   ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
             }
           }
         }
@@ -165,7 +164,7 @@ namespace effcore\modules\core {
           foreach ($modules_to_disable as $c_module) {
             if (!isset($enabled_by_boot[$c_module->id])) {
               message::insert(
-                new text('Module "%%_title" (%%_id) has been disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
+                new text('Module "%%_title" (%%_id) was disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
               );
             }
           }
@@ -175,16 +174,6 @@ namespace effcore\modules\core {
             'Nothing selected!', 'warning'
           );
         }
-        break;
-      case 'refresh':
-      # update caches and this form
-        cache::update_global();
-        $form->child_select('info')->children_delete();
-        static::on_init(null, $form, $items);
-      # show report
-        message::insert(
-          'All caches have been reset.'
-        );
         break;
     }
   }

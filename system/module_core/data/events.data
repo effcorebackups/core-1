@@ -44,6 +44,9 @@ events
   - modules_update|event
       for: modules_update
       handler: \effcore\modules\core\events_form_modules_update::on_submit
+  - cache_update|event
+      for: cache_update
+      handler: \effcore\modules\core\events_form_cache_update::on_submit
   on_page_before_build
   - install|event
       for: install

@@ -22,6 +22,9 @@ pages
           source: tabs/core/manage_modules
     # ─────────────────────────────────────────────────────────────────────
     - content
+      - form_cache_update|page_part
+          type: link
+          source: forms/core/cache_update
       - form_modules_install|page_part
           display
             check: page_args

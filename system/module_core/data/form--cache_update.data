@@ -1,0 +1,11 @@
+forms
+- cache_update|form
+    attributes
+    - id: cache_update
+    - method: post
+    - novalidate: true
+    children
+    - button_refresh|button
+        title: refresh
+        attributes
+        - value: refresh
