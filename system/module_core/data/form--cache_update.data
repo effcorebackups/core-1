@@ -6,6 +6,6 @@ forms
     - novalidate: true
     children
     - button_refresh|button
-        title: refresh
+        title: 
         attributes
         - value: refresh

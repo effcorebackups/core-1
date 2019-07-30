@@ -203,18 +203,29 @@
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
   x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
-  /* form install */
+  /* form 'install' */
 
   form#install button[value='install'] {
     display: block;
     margin: 100px auto 50px auto}
 
-  /* form instance_select_multiple */
+  /* form 'instance_select_multiple' */
 
   form#instance_select_multiple button[value='add_new'] {
     float: right;
     margin: 27px 0 0 20px}
   form#instance_select_multiple x-selection {margin: 100px 0}
+
+  /* form 'cache_update' */
+
+  form#cache_update {text-align: right}
+  form#cache_update button[value='refresh'] {
+    width: 44px;
+    min-width: auto;
+    margin: 0;
+    padding: 0;
+    background-image: url('images/icons-button.svgd');
+    background-repeat: no-repeat}
 
   /* layout manage */
 
@@ -255,7 +266,7 @@
     width: 44px;
     min-width: auto;
     border-radius: 5px;
-    background-image: url('images/icons-44.svgd');
+    background-image: url('images/icons-button.svgd');
     background-repeat: no-repeat}
   x-page_part-manage button {background-position: 50% -88px}
   x-page_part-insert button {background-position: 50% -44px}

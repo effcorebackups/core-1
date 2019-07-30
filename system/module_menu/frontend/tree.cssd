@@ -3,7 +3,7 @@
   x-tree a[aria-selected      ='true'],
   x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
-  /* menu style "main": sizes and orientation */
+  /* menu style 'main': sizes and orientation */
 
   x-tree[data-style='main']          {float: left}
   x-tree[data-style='main'] li       {float: left}
@@ -22,12 +22,12 @@
   x-tree[data-style='main'] li     a {padding: 21px; display: block}
   x-tree[data-style='main'] li li  a {padding: 0}
 
-  /* menu style "main": dynamic */
+  /* menu style 'main': dynamic */
 
   x-tree[data-style='main'] > ul > li       > ul {display: none}
   x-tree[data-style='main'] > ul > li:hover > ul {display: block}
 
-  /* menu style "main": colors */
+  /* menu style 'main': colors */
 
   x-tree[data-style='main'] ul       {background-color: %%_color_menu}
   x-tree[data-style='main'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
@@ -46,13 +46,13 @@
   x-tree[data-style='main'] li li a[aria-selected      ='true'],
   x-tree[data-style='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
-  /* menu Main: icons */
+  /* menu 'Main': icons */
 
   x-tree[data-id='main'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
   x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
   x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 
-  /* menu Main: adaptivity */
+  /* menu 'Main': adaptivity */
 
   @media screen and (max-width: 600px) {
     x-tree[data-style='main']       {float: none}
