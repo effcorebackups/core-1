@@ -21,8 +21,8 @@
   </metadata>
 
   <g id="icon_select">
-    <path id="icon_sel-eye" style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round" d="M 10 13.027 C 8.339 13.064 6.516 12.218 5 10 C 6.516 7.782 8.339 6.936 10 6.973 C 11.661 6.936 13.484 7.782 15 10 C 13.484 12.218 11.661 13.064 10 13.027 Z"/>
-    <circle id="icon_sel-pupil" r="2" cy="10" cx="10" style="fill: %%_color_main; stroke: none"/>
+    <path id="icon_sel-eye" style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round" d="m 10,6 c 2.085005,0 4.399779,1.3855338 6,4 -1.600221,2.614466 -3.914995,4 -6,4 C 7.9149953,14 5.6002213,12.614466 4,10 5.6002213,7.3855338 7.9149953,6 10,6 Z"/>
+    <circle id="icon_sel-pupil" r="2.5" cy="10" cx="10" style="fill: %%_color_main; stroke: none"/>
   </g>
 
   <g id="icon_insert">
