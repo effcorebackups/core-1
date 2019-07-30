@@ -23,6 +23,10 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_cache_update|page_part
+          display
+            check: page_args
+            where: action
+            match: %^install$%
           type: link
           source: forms/core/cache_update
       - form_modules_install|page_part
