@@ -234,7 +234,7 @@
     line-height: .9em;
     color: %%_color_text;
     background: %%_color_main{20,20,20}}
-  x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning{20,20,20}}
+  x-layout-manager *[data-area-type='column'] > x-area-id {background: %%_color_warning}
 
   x-page_part-manage {display: block; margin: 10px 0; padding: 8px; border: 1px dotted %%_color_main}
   x-page_part-manage x-title {display: block}
@@ -259,6 +259,9 @@
     background-repeat: no-repeat}
   x-page_part-manage button {background-position: 50% -88px}
   x-page_part-insert button {background-position: 50% -44px}
+
+  form#instance_update x-layout-manager *[data-area-id] {border-color: %%_color_warning}
+  form#instance_update x-layout-manager x-area-id {background-color: %%_color_warning}
 
   /* degrade for IE (not beautiful) */
 
