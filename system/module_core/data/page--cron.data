@@ -2,7 +2,7 @@ pages
 - cron|page
     id: cron
     title: Cron
-    url: %^/cron/(?<key>[a-f0-9]{40})$%
+    url: %^/manage/cron/(?<key>[a-f0-9]{40})$%
     access
       roles
       - =: anonymous
