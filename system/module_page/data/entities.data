@@ -78,18 +78,15 @@ entities
     - url
         title: URL
         type: varchar
-        size: 250
+        size: 255
         collate: nocase
         not_null: true
         field_is_visible_on_select: true
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_url
+        field_class: \effcore\field_url_page
         field_properties
         - is_validate_uniqueness: true
-        - description: Field value should be start with "/".
-        field_element_attributes
-        - pattern: ^/.*$
     - is_https
         title: HTTPS
         type: boolean
