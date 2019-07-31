@@ -78,10 +78,10 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_tab_before_build
-  on_tab_after_build
+  on_tab_build_after
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_tab_after_build
+      handler: \effcore\modules\demo\events_examples::on_tab_build_after
   on_tree_before_build
   - example|event
       for: example

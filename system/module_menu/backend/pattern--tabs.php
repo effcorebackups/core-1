@@ -25,7 +25,7 @@ namespace effcore {
             $c_item->id_parent == null) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build();}}
-      event::start('on_tab_after_build', $this->id, [&$this]);
+      event::start('on_tab_build_after', $this->id, [&$this]);
       $this->is_builded = true;
     }
   }
