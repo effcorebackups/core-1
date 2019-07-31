@@ -42,7 +42,7 @@ namespace effcore {
   function select() {
     event::start('on_instance_select_before', $this->entity_name, [&$this]);
     $result = $this->entity_get()->storage_get()->instance_select($this);
-    event::start('on_instance_select_after',  $this->entity_name, [&$this]);
+    event::start('on_instance_select_after',  $this->entity_name, [&$this, $result]);
     return $result;
   }
 
@@ -51,13 +51,16 @@ namespace effcore {
     if ($this->entity_get()->ws_created) $this->created = core::datetime_get();
     if ($this->entity_get()->ws_updated) $this->updated = core::datetime_get();
     $result = $this->entity_get()->storage_get()->instance_insert($this);
-    event::start('on_instance_insert_after',  $this->entity_name, [&$this]);
+    event::start('on_instance_insert_after',  $this->entity_name, [&$this, $result]);
     return $result;
   }
 
   function update() {
+    event::start('on_instance_update_before', $this->entity_name, [&$this]);
     if ($this->entity_get()->ws_updated) $this->updated = core::datetime_get();
-    return $this->entity_get()->storage_get()->instance_update($this);
+    $result = $this->entity_get()->storage_get()->instance_update($this);
+    event::start('on_instance_update_after',  $this->entity_name, [&$this, $result]);
+    return $result;
   }
 
   function delete() {
