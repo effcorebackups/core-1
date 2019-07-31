@@ -40,7 +40,10 @@ namespace effcore {
   function entity_set_name($entity_name) {$this->entity_name = $entity_name;}
 
   function select() {
-    return $this->entity_get()->storage_get()->instance_select($this);
+    event::start('on_instance_select_before', $this->entity_name, [&$this]);
+    $result = $this->entity_get()->storage_get()->instance_select($this);
+    event::start('on_instance_select_after',  $this->entity_name, [&$this]);
+    return $result;
   }
 
   function insert() {

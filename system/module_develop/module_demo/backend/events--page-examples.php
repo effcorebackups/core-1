@@ -43,4 +43,10 @@ namespace effcore\modules\demo {
   static function on_email_send_before($event, &$to, &$subject, &$body, &$from, &$encoding, &$form, &$items) {
   }
 
+  static function on_instance_select_before($event, $instance) {
+  }
+
+  static function on_instance_select_after($event, $instance) {
+  }
+
 }}
