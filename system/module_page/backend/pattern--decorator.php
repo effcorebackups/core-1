@@ -28,7 +28,7 @@ namespace effcore {
       $result = new node();
       $this->attribute_insert('data-view-type', $this->view_type);
       $this->attribute_insert('data-id', $this->id);
-      event::start('on_decorator_before_build', $this->id, [&$this]);
+      event::start('on_decorator_build_before', $this->id, [&$this]);
 
       if ($this->data) {
         switch ($this->view_type) {
@@ -161,7 +161,7 @@ namespace effcore {
           new markup('x-no-result', [], 'no items'), 'no_result'
         );
       }
-      event::start('on_decorator_after_build', $this->id, [&$this]);
+      event::start('on_decorator_build_after', $this->id, [&$this]);
       $this->is_builded = true;
       return $this;
 
