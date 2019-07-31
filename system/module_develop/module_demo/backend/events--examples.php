@@ -37,7 +37,7 @@ namespace effcore\modules\demo {
   static function on_tree_before_build($event, $tree) {
   }
 
-  static function on_tree_after_build($event, $tree) {
+  static function on_tree_build_after($event, $tree) {
   }
 
   static function on_email_send_before($event, &$to, &$subject, &$body, &$from, &$encoding, &$form, &$items) {

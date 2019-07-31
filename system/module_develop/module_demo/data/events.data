@@ -92,10 +92,10 @@ events
   - demo_sql|event
       for: demo_sql
       handler: \effcore\modules\demo\events_page_demo::on_tree_before_build_demo_sql
-  on_tree_after_build
+  on_tree_build_after
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_tree_after_build
+      handler: \effcore\modules\demo\events_examples::on_tree_build_after
   on_email_send_before
   - example|event
       for: example
