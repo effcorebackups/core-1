@@ -12,8 +12,7 @@ namespace effcore {
     'name'      => 'url',
     'required'  => true,
     'minlength' => 1,
-    'maxlength' => 255,
-    'pattern'   => '^/.*$'
+    'maxlength' => 255
   ];
 
   function render_description() {
@@ -30,7 +29,8 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if ( (strlen($new_value) &&  core::sanitize_url(         $new_value) != $new_value) ||
-         (strlen($new_value) && !core::validate_url((new url($new_value))->full_get())) ) {
+         (strlen($new_value) && !core::validate_url((new url($new_value))->full_get())) || 
+         (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$|^/user$|^/user/.*$|^[^/].*$%', $new_value))) {
       $field->error_set(
         'Field "%%_title" contains an incorrect URL!', ['title' => translation::get($field->title)]
       );
