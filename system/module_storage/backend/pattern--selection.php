@@ -191,7 +191,7 @@ namespace effcore {
         );
       }
 
-      event::start('on_selection_after_build', $this->id, [&$this]);
+      event::start('on_selection_build_after', $this->id, [&$this]);
       $this->is_builded = true;
       return $this;
 
