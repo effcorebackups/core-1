@@ -23,6 +23,9 @@ namespace effcore\modules\page {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'page' && !empty($form->_instance)) {
+        if (!empty($form->_instance->is_embed)) {
+          $items['#url']->disabled_set(true);
+        }
       # init cache pool
         $cache = $form->validation_cache_get('page_parts');
         if ($cache === null) {
