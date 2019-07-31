@@ -69,8 +69,8 @@ namespace effcore\modules\core {
                   $c_result = call_user_func($c_update->handler, $c_update);
                   if ($c_result) {
                     storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
-                           message::insert(new text('Update #%%_number for module "%%_title" (%%_id) has been applied.',     ['title' => translation::get($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number])         );
-                  } else { message::insert(new text('Update #%%_number for module "%%_title" (%%_id) has not been applied!', ['title' => translation::get($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
+                           message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => translation::get($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number])         );
+                  } else { message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => translation::get($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
                     break;
                   }
                 }

@@ -9,7 +9,7 @@ translations
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
     - © 2017—2019 Maxim Rysevets. All rights reserved.: © 2017—2019 Рысевец Максим Владимирович. Все права защищены.
-    - A new password has been sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
+    - A new password was sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: расширение php остановило загрузку файла
     - Access forbidden: Доступ запрещён
     - Access settings not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
@@ -489,8 +489,8 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update #%%_number for module "%%_title" (%%_id) has been applied.: Обновление №%%_number для модуля "%%_title" (%%_id) было применено.
-    - Update #%%_number for module "%%_title" (%%_id) has not been applied!: Обновление №%%_number для модуля "%%_title" (%%_id) не было применено!
+    - Update #%%_number for module "%%_title" (%%_id) was applied.: Обновление №%%_number для модуля "%%_title" (%%_id) было применено.
+    - Update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление №%%_number для модуля "%%_title" (%%_id) не было применено!
     - Update modules data: Обновить данные модулей
     - Update: Обновить
     - update: обновить
