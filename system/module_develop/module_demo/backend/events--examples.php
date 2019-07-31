@@ -22,7 +22,7 @@ namespace effcore\modules\demo {
   static function on_decorator_build_after($event, $decorator) {
   }
 
-  static function on_selection_before_build($event, $selection) {
+  static function on_selection_build_before($event, $selection) {
   }
 
   static function on_selection_build_after($event, $selection) {

@@ -66,10 +66,10 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_decorator_build_after
-  on_selection_before_build
+  on_selection_build_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_selection_before_build
+      handler: \effcore\modules\demo\events_examples::on_selection_build_before
   on_selection_build_after
   - example|event
       for: example
