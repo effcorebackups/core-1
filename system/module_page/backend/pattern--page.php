@@ -30,7 +30,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_page_before_build', $this->id, [&$this]);
+      event::start('on_page_build_before', $this->id, [&$this]);
       if (is_array($this->parts)) {
         foreach ($this->parts as $c_id_area => $c_parts) {
           core::array_sort_by_weight($c_parts);

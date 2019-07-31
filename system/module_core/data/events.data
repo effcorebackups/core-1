@@ -47,10 +47,10 @@ events
   - cache_update|event
       for: cache_update
       handler: \effcore\modules\core\events_form_cache_update::on_submit
-  on_page_before_build
+  on_page_build_before
   - install|event
       for: install
-      handler: \effcore\modules\core\events_page_install::on_before_build
+      handler: \effcore\modules\core\events_page_install::on_build_before
   - modules|event
       for: modules
-      handler: \effcore\modules\core\events_page_modules::on_before_build
+      handler: \effcore\modules\core\events_page_modules::on_build_before

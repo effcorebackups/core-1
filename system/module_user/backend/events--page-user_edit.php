@@ -10,7 +10,7 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_page_user_edit {
 
-  static function on_before_build($event, $page) {
+  static function on_build_before($event, $page) {
     $user = (new instance('user', [
       'nick' => $page->args_get('nick')
     ]))->select();

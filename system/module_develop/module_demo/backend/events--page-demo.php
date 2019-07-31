@@ -22,7 +22,7 @@ namespace effcore\modules\demo {
           use \effcore\url;
           abstract class events_page_demo {
 
-  static function on_before_build($event, $page) {
+  static function on_build_before($event, $page) {
     $type = $page->args_get('type');
     if ($type == null) {
       $items = tabs_item::select_all(null, 'demo_embedded');
