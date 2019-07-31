@@ -12,7 +12,6 @@ namespace effcore {
 
   public $title = 'Nick';
   public $attributes = ['data-type' => 'nick'];
-  public $description = 'Field can contain only the next characters: '.self::allowed_characters_title.'.';
   public $element_attributes = [
     'data-type' => 'nick',
     'name'      => 'nick',
@@ -20,6 +19,11 @@ namespace effcore {
     'minlength' => 4,
     'maxlength' => 32,
   ];
+
+  function render_description() {
+    $this->description = new text('Field can contain only the next characters: %%_characters', ['characters' => self::allowed_characters_title]);
+    return parent::render_description();
+  }
 
   ###########################
   ### static declarations ###

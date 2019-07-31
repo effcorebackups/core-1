@@ -7,7 +7,6 @@
 namespace effcore {
           class field_url_page extends field_url {
 
-  public $description = 'Field value should be start with "/".';
   public $element_attributes = [
     'type'      => 'url',
     'name'      => 'url',
@@ -16,5 +15,28 @@ namespace effcore {
     'maxlength' => 255,
     'pattern'   => '^/.*$'
   ];
+
+  function render_description() {
+    $this->description = [
+      new text('Field value should be start with "%%_value".', ['value' => '/'       ]), br,
+      new text('Field value cannot be start with "%%_value".', ['value' => '/manage/']), br,
+      new text('Field value cannot be start with "%%_value".', ['value' => '/user/'  ])];
+    return parent::render_description();
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function validate_value($field, $form, $element, &$new_value) {
+    if ( (strlen($new_value) &&  core::sanitize_url(         $new_value) != $new_value) ||
+         (strlen($new_value) && !core::validate_url((new url($new_value))->full_get())) ) {
+      $field->error_set(
+        'Field "%%_title" contains an incorrect URL!', ['title' => translation::get($field->title)]
+      );
+    } else {
+      return true;
+    }
+  }
 
 }}
