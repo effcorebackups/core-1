@@ -13,10 +13,10 @@ namespace effcore\modules\core {
           use \effcore\timer;
           abstract class events_page_cron {
 
-  static function on_cron_run($page) {
+  static function on_show_block_cron($page) {
     if ($page->args_get('key') === core::key_get('cron')) {
       timer::tap('cron');
-      $result = event::start('on_cron');
+      $result = event::start('on_cron_run');
       timer::tap('cron');
       foreach ($result as $c_handler => $c_result)
         print 'Run: '.$c_handler.br;

@@ -19,7 +19,7 @@ namespace effcore\modules\core {
     $module->enable();
   }
 
-  static function on_cron($event) {
+  static function on_cron_run($event) {
     message::cleaning();
   }
 

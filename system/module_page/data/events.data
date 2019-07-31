@@ -11,10 +11,10 @@ events
   - page|event
       for: page
       handler: \effcore\modules\page\events_module::on_start
-  on_cron
+  on_cron_run
   - page|event
       for: page
-      handler: \effcore\modules\page\events_module::on_cron
+      handler: \effcore\modules\page\events_module::on_cron_run
   on_form_init
   - colors|event
       for: colors

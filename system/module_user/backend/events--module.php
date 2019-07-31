@@ -43,7 +43,7 @@ namespace effcore\modules\user {
     }
   }
 
-  static function on_cron($event) {
+  static function on_cron_run($event) {
     session::cleaning();
   }
 

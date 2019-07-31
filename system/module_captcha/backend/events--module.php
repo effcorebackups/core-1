@@ -29,7 +29,7 @@ namespace effcore\modules\captcha {
     $module->disable();
   }
 
-  static function on_cron($event) {
+  static function on_cron_run($event) {
     field_captcha::captcha_old_cleaning();
   }
 
