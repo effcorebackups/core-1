@@ -124,3 +124,11 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_instance_update_after
+  on_instance_delete_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_delete_before
+  on_instance_delete_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_delete_after

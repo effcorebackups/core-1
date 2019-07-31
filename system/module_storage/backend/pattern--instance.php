@@ -64,7 +64,10 @@ namespace effcore {
   }
 
   function delete() {
-    return $this->entity_get()->storage_get()->instance_delete($this);
+    event::start('on_instance_delete_before', $this->entity_name, [&$this]);
+    $result = $this->entity_get()->storage_get()->instance_delete($this);
+    event::start('on_instance_delete_after',  $this->entity_name, [&$this, $result]);
+    return $result;
   }
 
   ###########################

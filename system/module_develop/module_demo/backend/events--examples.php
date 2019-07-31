@@ -61,4 +61,10 @@ namespace effcore\modules\demo {
   static function on_instance_update_after($event, $instance, $result) {
   }
 
+  static function on_instance_delete_before($event, $instance) {
+  }
+
+  static function on_instance_delete_after($event, $instance, $result) {
+  }
+
 }}
