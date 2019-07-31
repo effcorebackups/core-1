@@ -54,10 +54,10 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_after_build
-  on_page_before_render
+  on_page_render_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_before_render
+      handler: \effcore\modules\demo\events_examples::on_page_render_before
   on_decorator_build_before
   - example|event
       for: example

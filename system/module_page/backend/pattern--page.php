@@ -80,7 +80,7 @@ namespace effcore {
     }
 
   # render page
-    event::start('on_page_before_render', $this->id, [&$this, &$template]);
+    event::start('on_page_render_before', $this->id, [&$this, &$template]);
     $frontend = frontend::markup_get($this->used_dpaths);
     $template = template::make_new('page');
 

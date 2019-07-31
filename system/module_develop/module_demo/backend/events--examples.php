@@ -13,7 +13,7 @@ namespace effcore\modules\demo {
   static function on_after_build($event, $page) {
   }
 
-  static function on_before_render($event, $page, $template) {
+  static function on_page_render_before($event, $page, $template) {
   }
 
   static function on_decorator_build_before($event, $decorator) {
