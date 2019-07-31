@@ -108,3 +108,11 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_instance_select_after
+  on_instance_insert_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_insert_before
+  on_instance_insert_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_insert_after

@@ -49,4 +49,10 @@ namespace effcore\modules\demo {
   static function on_instance_select_after($event, $instance) {
   }
 
+  static function on_instance_insert_before($event, $instance) {
+  }
+
+  static function on_instance_insert_after($event, $instance) {
+  }
+
 }}

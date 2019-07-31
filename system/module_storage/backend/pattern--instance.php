@@ -47,9 +47,12 @@ namespace effcore {
   }
 
   function insert() {
+    event::start('on_instance_insert_before', $this->entity_name, [&$this]);
     if ($this->entity_get()->ws_created) $this->created = core::datetime_get();
     if ($this->entity_get()->ws_updated) $this->updated = core::datetime_get();
-    return $this->entity_get()->storage_get()->instance_insert($this);
+    $result = $this->entity_get()->storage_get()->instance_insert($this);
+    event::start('on_instance_insert_after',  $this->entity_name, [&$this]);
+    return $result;
   }
 
   function update() {
