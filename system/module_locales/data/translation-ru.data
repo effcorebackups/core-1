@@ -23,7 +23,7 @@ translations
     - add: добавить
     - Administrators: Администраторы
     - agree: согласен(а)
-    - All caches have been reset.: Все кэши были сброшены.
+    - All caches was reset.: Все кэши были сброшены.
     - All: Все
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous: Аноним
@@ -539,5 +539,5 @@ translations
     - You received this message because someone tried to recover the password from your %%_domain account.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от вашего %%_domain аккаунта.
     - your EMail is — %%_email: ваш Адрес электронной почты — %%_email
     - Your EMail is not shown publicly on %%_domain and is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и никогда не передаётся третьим лицам!
-    - Your new password on %%_domain has been changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
+    - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - your Password is — %%_password: ваш Пароль — %%_password

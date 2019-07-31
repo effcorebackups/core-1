@@ -13,7 +13,7 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'refresh':
         cache::update_global();
-        message::insert('All caches have been reset.');
+        message::insert('All caches was reset.');
         break;
     }
   }

@@ -11,5 +11,5 @@ templates
       delimiter: &#10;&#10;
       text
       - 2: You received this message because someone tried to recover the password from your %%_domain account.
-      - 4: Your new password on %%_domain has been changed automatically to: %%_new_password
+      - 4: Your new password on %%_domain was changed automatically to: %%_new_password
       - 6: Your EMail is not shown publicly on %%_domain and is never shared with third parties!
