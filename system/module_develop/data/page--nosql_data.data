@@ -28,6 +28,9 @@ pages
           source: tabs/develop/nosql_data
     # ─────────────────────────────────────────────────────────────────────
     - content
+      - form_cache_update|page_part
+          type: link
+          source: forms/core/cache_update
       - block_trees|page_part
           display
             check: page_args

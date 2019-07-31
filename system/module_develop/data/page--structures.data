@@ -27,6 +27,13 @@ pages
           source: tabs/develop/structures
     # ─────────────────────────────────────────────────────────────────────
     - content
+      - form_cache_update|page_part
+          display
+            check: page_args
+            where: type
+            match: %^class/list|interface/list|trait/list|class/diagram$%
+          type: link
+          source: forms/core/cache_update
       - block_structures_list|page_part
           display
             check: page_args
