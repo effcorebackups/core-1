@@ -25,7 +25,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_tree_before_build', $this->id, [&$this]);
+      event::start('on_tree_build_before', $this->id, [&$this]);
       $this->attribute_insert('data-id',            $this->id           );
       $this->attribute_insert('data-managing_mode', $this->managing_mode);
       foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {

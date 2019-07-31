@@ -82,16 +82,16 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_tab_build_after
-  on_tree_before_build
+  on_tree_build_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_tree_before_build
+      handler: \effcore\modules\demo\events_examples::on_tree_build_before
   - demo_nosql|event
       for: demo_nosql
-      handler: \effcore\modules\demo\events_page_demo::on_tree_before_build_demo_nosql
+      handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_demo_nosql
   - demo_sql|event
       for: demo_sql
-      handler: \effcore\modules\demo\events_page_demo::on_tree_before_build_demo_sql
+      handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_demo_sql
   on_tree_build_after
   - example|event
       for: example

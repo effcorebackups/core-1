@@ -34,7 +34,7 @@ namespace effcore\modules\demo {
   static function on_tab_build_after($event, $tab) {
   }
 
-  static function on_tree_before_build($event, $tree) {
+  static function on_tree_build_before($event, $tree) {
   }
 
   static function on_tree_build_after($event, $tree) {
