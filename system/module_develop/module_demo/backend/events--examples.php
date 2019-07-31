@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          abstract class events_page_examples {
+          abstract class events_examples {
 
   static function on_before_build($event, $page) {
   }

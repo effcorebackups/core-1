@@ -46,46 +46,46 @@ events
   on_page_before_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_before_build
+      handler: \effcore\modules\demo\events_examples::on_before_build
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_page_demo::on_before_build
   on_page_after_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_after_build
+      handler: \effcore\modules\demo\events_examples::on_after_build
   on_page_before_render
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_before_render
+      handler: \effcore\modules\demo\events_examples::on_before_render
   on_decorator_before_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_decorator_before_build
+      handler: \effcore\modules\demo\events_examples::on_decorator_before_build
   on_decorator_after_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_decorator_after_build
+      handler: \effcore\modules\demo\events_examples::on_decorator_after_build
   on_selection_before_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_selection_before_build
+      handler: \effcore\modules\demo\events_examples::on_selection_before_build
   on_selection_after_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_selection_after_build
+      handler: \effcore\modules\demo\events_examples::on_selection_after_build
   on_tab_before_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_tab_before_build
+      handler: \effcore\modules\demo\events_examples::on_tab_before_build
   on_tab_after_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_tab_after_build
+      handler: \effcore\modules\demo\events_examples::on_tab_after_build
   on_tree_before_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_tree_before_build
+      handler: \effcore\modules\demo\events_examples::on_tree_before_build
   - demo_nosql|event
       for: demo_nosql
       handler: \effcore\modules\demo\events_page_demo::on_tree_before_build_demo_nosql
@@ -95,16 +95,16 @@ events
   on_tree_after_build
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_tree_after_build
+      handler: \effcore\modules\demo\events_examples::on_tree_after_build
   on_email_send_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_email_send_before
+      handler: \effcore\modules\demo\events_examples::on_email_send_before
   on_instance_select_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_instance_select_before
+      handler: \effcore\modules\demo\events_examples::on_instance_select_before
   on_instance_select_after
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_page_examples::on_instance_select_after
+      handler: \effcore\modules\demo\events_examples::on_instance_select_after
