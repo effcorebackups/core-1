@@ -10,7 +10,7 @@ namespace effcore\modules\demo {
   static function on_before_build($event, $page) {
   }
 
-  static function on_after_build($event, $page) {
+  static function on_page_build_after($event, $page) {
   }
 
   static function on_page_render_before($event, $page, $template) {

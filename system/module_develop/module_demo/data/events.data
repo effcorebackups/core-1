@@ -50,10 +50,10 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_page_demo::on_before_build
-  on_page_after_build
+  on_page_build_after
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_after_build
+      handler: \effcore\modules\demo\events_examples::on_page_build_after
   on_page_render_before
   - example|event
       for: example
