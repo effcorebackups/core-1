@@ -95,14 +95,14 @@ namespace effcore\modules\page {
               unset($cache[$manage_result->id_area][$manage_result->id_preset]);
               $form->validation_data_is_persistent = true;
               $form->validation_cache_set('page_parts', $cache);
-              message::insert(new text('Part of the page with id = "%%_id_page_part" has been deleted from the area with id = "%%_id_area".', ['id_page_part' => $manage_result->id_preset, 'id_area' => $manage_result->id_area]));
+              message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $manage_result->id_preset, 'id_area' => $manage_result->id_area]));
               static::on_init(null, $form, $items);
               return;
             } else if ($insert_result) {
               $cache[$insert_result->id_area][$insert_result->id_preset] = new page_part_preset_link($insert_result->id_preset);
               $form->validation_data_is_persistent = true;
               $form->validation_cache_set('page_parts', $cache);
-              message::insert(new text('Part of the page with id = "%%_id_page_part" has been inserted to the area with id = "%%_id_area".', ['id_page_part' => $insert_result->id_preset, 'id_area' => $insert_result->id_area]));
+              message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $insert_result->id_preset, 'id_area' => $insert_result->id_area]));
               static::on_init(null, $form, $items);
               return;
             }
