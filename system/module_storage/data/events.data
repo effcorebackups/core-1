@@ -32,6 +32,10 @@ events
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_init
+  on_form_validate
+  - instance_select_multiple|event
+      for: instance_select_multiple
+      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_validate
   on_form_submit
   - instance_select_multiple|event
       for: instance_select_multiple
