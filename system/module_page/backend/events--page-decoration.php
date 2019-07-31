@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page_decoration {
 
-  static function on_tab_before_build($event, $tab) {
+  static function on_tab_build_before($event, $tab) {
     $presets = color::preset_get_all();
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');

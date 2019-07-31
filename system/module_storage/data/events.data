@@ -49,10 +49,10 @@ events
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
-  on_tab_before_build
+  on_tab_build_before
   - manage_instances|event
       for: manage_instances
-      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_before_build
+      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_build_before
   on_page_before_build
   - instance_select|event
       for: instance_select

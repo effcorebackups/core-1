@@ -13,7 +13,7 @@ namespace effcore\modules\menu {
           use \effcore\tree;
           abstract class events_page {
 
-  static function on_tab_before_build($event, $tab) {
+  static function on_tab_build_before($event, $tab) {
     $trees = tree::select_all('sql');
     $entity_name      = page::get_current()->args_get('entity_name'       );
     $group_by_id_tree = page::get_current()->args_get('instances_group_by');

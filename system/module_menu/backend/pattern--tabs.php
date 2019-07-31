@@ -18,7 +18,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_tab_before_build', $this->id, [&$this]);
+      event::start('on_tab_build_before', $this->id, [&$this]);
       $this->attribute_insert('data-id', $this->id);
       foreach (tabs_item::select_all() as $c_item) {
         if ($c_item->id_tab    == $this->id &&

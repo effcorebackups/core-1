@@ -38,8 +38,8 @@ events
       for: instance_delete
       weight: +50
       handler: \effcore\modules\menu\events_form_instance_delete::on_submit
-  on_tab_before_build
+  on_tab_build_before
   - manage_instances|event
       for: manage_instances
       weight: -50
-      handler: \effcore\modules\menu\events_page::on_tab_before_build
+      handler: \effcore\modules\menu\events_page::on_tab_build_before
