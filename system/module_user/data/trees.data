@@ -6,14 +6,3 @@ trees
     access
       roles
       - =: anonymous
-    attributes
-    - data-style: main
-- user_registered|tree
-    id: user_registered
-    title: Menu for registered user
-    title_state: hidden
-    access
-      roles
-      - =: registered
-    attributes
-    - data-style: main

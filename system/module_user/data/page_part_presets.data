@@ -4,8 +4,10 @@ page_part_presets
     managing_title: Menu: User (registered)
     in_areas
     - =: menu
-    type: link
-    source: trees/user/user_registered
+    type: code
+    source: \effcore\modules\menu\events_page::on_show_block_tree_sql
+    args
+    - id_tree: user_registered
 - menu_user_anonymous|page_part_preset
     id: menu_user_anonymous
     managing_title: Menu: User (anonymous)

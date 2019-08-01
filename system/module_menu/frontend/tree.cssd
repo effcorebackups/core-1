@@ -3,48 +3,50 @@
   x-tree a[aria-selected      ='true'],
   x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
+  nav[data-area-id='menu'] h2 {display: none}
+
   /* menu style 'main': sizes and orientation */
 
-  x-tree[data-style='main']          {float: left}
-  x-tree[data-style='main'] li       {float: left}
-  x-tree[data-style='main'] li li    {float: none}
-  x-tree[data-style='main'] ul       {float: left}
-  x-tree[data-style='main'] ul ul    {float: none}
+  nav[data-area-id='menu'] x-tree          {float: left}
+  nav[data-area-id='menu'] x-tree li       {float: left}
+  nav[data-area-id='menu'] x-tree li li    {float: none}
+  nav[data-area-id='menu'] x-tree ul       {float: left}
+  nav[data-area-id='menu'] x-tree ul ul    {float: none}
 
-  x-tree[data-style='main'] ul ul    {position: absolute}
-  x-tree[data-style='main'] ul ul ul {position: relative}
+  nav[data-area-id='menu'] x-tree ul ul    {position: absolute}
+  nav[data-area-id='menu'] x-tree ul ul ul {position: relative}
 
-  x-tree[data-style='main'] li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  x-tree[data-style='main'] ul       {padding: 0; margin: 0}
-  x-tree[data-style='main'] ul ul    {padding: 20px}
-  x-tree[data-style='main'] ul ul ul {padding: 0 0 0 21px}
+  nav[data-area-id='menu'] x-tree li       {padding: 0; margin: 0; list-style: none; cursor: default}
+  nav[data-area-id='menu'] x-tree ul       {padding: 0; margin: 0}
+  nav[data-area-id='menu'] x-tree ul ul    {padding: 20px}
+  nav[data-area-id='menu'] x-tree ul ul ul {padding: 0 0 0 21px}
 
-  x-tree[data-style='main'] li     a {padding: 21px; display: block}
-  x-tree[data-style='main'] li li  a {padding: 0}
+  nav[data-area-id='menu'] x-tree li     a {padding: 21px; display: block}
+  nav[data-area-id='menu'] x-tree li li  a {padding: 0}
 
   /* menu style 'main': dynamic */
 
-  x-tree[data-style='main'] > ul > li       > ul {display: none}
-  x-tree[data-style='main'] > ul > li:hover > ul {display: block}
+  nav[data-area-id='menu'] x-tree > ul > li       > ul {display: none}
+  nav[data-area-id='menu'] x-tree > ul > li:hover > ul {display: block}
 
   /* menu style 'main': colors */
 
-  x-tree[data-style='main'] ul       {background-color: %%_color_menu}
-  x-tree[data-style='main'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
-  x-tree[data-style='main'] ul ul ul {background-color: transparent}
+  nav[data-area-id='menu'] x-tree ul       {background-color: %%_color_menu}
+  nav[data-area-id='menu'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
+  nav[data-area-id='menu'] x-tree ul ul ul {background-color: transparent}
 
-  x-tree[data-style='main']              a[aria-selected      ='true'],
-  x-tree[data-style='main']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  x-tree[data-style='main']              a:not([href])                 {color: %%_color_menu_text !important}
-  x-tree[data-style='main']              a                             {color: %%_color_menu_link}
-  x-tree[data-style='main']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  x-tree[data-style='main']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  x-tree[data-style='main'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
+  nav[data-area-id='menu'] x-tree              a[aria-selected      ='true'],
+  nav[data-area-id='menu'] x-tree              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  nav[data-area-id='menu'] x-tree              a:not([href])                 {color: %%_color_menu_text !important}
+  nav[data-area-id='menu'] x-tree              a                             {color: %%_color_menu_link}
+  nav[data-area-id='menu'] x-tree        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  nav[data-area-id='menu'] x-tree        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  nav[data-area-id='menu'] x-tree > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
-  x-tree[data-style='main'] li    a[aria-selected      ='true'],
-  x-tree[data-style='main'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
-  x-tree[data-style='main'] li li a[aria-selected      ='true'],
-  x-tree[data-style='main'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  nav[data-area-id='menu'] x-tree li    a[aria-selected      ='true'],
+  nav[data-area-id='menu'] x-tree li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
+  nav[data-area-id='menu'] x-tree li li a[aria-selected      ='true'],
+  nav[data-area-id='menu'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu 'Main': icons */
 
@@ -55,10 +57,10 @@
   /* menu 'Main': adaptivity */
 
   @media screen and (max-width: 600px) {
-    x-tree[data-style='main']       {float: none}
-    x-tree[data-style='main'] ul    {float: none}
-    x-tree[data-style='main'] li    {float: none; display: block}
-    x-tree[data-style='main'] ul ul {position: relative}
+    nav[data-area-id='menu'] x-tree       {float: none}
+    nav[data-area-id='menu'] x-tree ul    {float: none}
+    nav[data-area-id='menu'] x-tree li    {float: none; display: block}
+    nav[data-area-id='menu'] x-tree ul ul {position: relative}
   }
 
 

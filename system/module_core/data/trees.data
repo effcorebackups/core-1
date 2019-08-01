@@ -6,5 +6,3 @@ trees
     access
       roles
       - =: admins
-    attributes
-    - data-style: main

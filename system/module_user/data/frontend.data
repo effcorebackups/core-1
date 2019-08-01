@@ -3,7 +3,7 @@ frontend
     display
       check: block
       where: dpath
-      match: %^trees/user/.*$%
+      match: %^trees/.*$%
     styles
     - tree_style
         file: frontend/tree.cssd

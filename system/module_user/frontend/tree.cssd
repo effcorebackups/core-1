@@ -1,18 +1,18 @@
 
   /* menu 'User': sizes and orientation */
 
-  x-tree[data-style='main'][data-id^='user'] {float: right; z-index: 10}
+  nav[data-area-id='menu'] x-tree[data-id^='user'] {float: right; z-index: 10}
 
   /* menu 'User': icons */
 
-  x-tree[data-style='main'][data-id^='user'] li[data-id='anonymous' ]                        > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
-  x-tree[data-style='main'][data-id^='user'] li[data-id='registered']                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
-  x-tree[data-style='main'][data-id^='user'] li[data-id='registered'][data-has-avatar='yes'] > a {padding-left: 77px; background-image: url('%%_avatar_url'                ); background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
+  nav[data-area-id='menu'] x-tree[data-id^='user'] li[data-id='anonymous' ]                > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
+  nav[data-area-id='menu'] x-tree[data-id^='user'] li[data-id='10']                        > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
+  nav[data-area-id='menu'] x-tree[data-id^='user'] li[data-id='10'][data-has-avatar='yes'] > a {padding-left: 77px; background-image: url('%%_avatar_url'                ); background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
 
   /* menu 'User': adaptivity */
 
   @media screen and (max-width: 600px) {
-    x-tree[data-style='main'][data-id^='user']    {float: none}
-    x-tree[data-style='main'][data-id^='user'] ul {float: none}
-    x-tree[data-style='main'][data-id^='user'] li {float: none; display: block}
+    nav[data-area-id='menu'] x-tree[data-id^='user']    {float: none}
+    nav[data-area-id='menu'] x-tree[data-id^='user'] ul {float: none}
+    nav[data-area-id='menu'] x-tree[data-id^='user'] li {float: none; display: block}
   }
