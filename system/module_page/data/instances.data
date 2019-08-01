@@ -94,3 +94,26 @@ instances
       - content
         - form_registration|page_part_preset_link
             id: form_registration
+- page_logout|instance
+    entity_name: page
+    values
+    - id: logout
+    - title: Logout
+    - url: /logout
+    - is_https: 1
+    - is_embed: 1
+    - access
+        roles
+        - =: registered
+    - parts
+      - menu
+        - menu_user_registered|page_part_preset_link
+            id: menu_user_registered
+        - menu_main|page_part_preset_link
+            id: menu_main
+      - title
+        - title|page_part_preset_link
+            id: title
+      - content
+        - form_logout|page_part_preset_link
+            id: form_logout

@@ -194,6 +194,7 @@ translations
     - Form elements: Элементы формы
     - form: форма
     - Form\: Login: Форма: Вход
+    - Form\: Logout: Форма: Выход
     - Form\: Recovery: Форма: Восстановление
     - Form\: Registration: Форма: Регистрация
     - Fraction part is too long.: Дробная часть слишком длинная.

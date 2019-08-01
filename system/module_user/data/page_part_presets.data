@@ -34,3 +34,10 @@ page_part_presets
     - =: content
     type: link
     source: forms/user/recovery
+- form_logout|page_part_preset
+    id: form_logout
+    managing_title: Form: Logout
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/logout
