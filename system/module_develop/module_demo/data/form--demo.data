@@ -270,7 +270,7 @@ forms
             element_attributes
             - name: relation
             selected
-            - 1: 1
+            - demo_sql_item_1: demo_sql_item_1
       # field_relation (mode: tree)
         - relation_tree|field_relation
             title: Relation (tree)
@@ -290,7 +290,7 @@ forms
             element_attributes
             - name: relation_tree
             selected
-            - 1: 1
+            - demo_sql_item_1: demo_sql_item_1
       # field_language
         - language|field_language
             title: Language
