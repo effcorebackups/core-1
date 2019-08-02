@@ -73,13 +73,18 @@ entities
     fields
     - id
         title: ID
-        type: autoincrement
+        type: varchar
+        size: 255
+        collate: nocase
         not_null: true
         check: (id <> '')
         field_is_visible_on_select: true
+        field_is_visible_on_insert: true
         field_is_visible_on_update: true
-        field_class: \effcore\field_id_number
-        field_element_attributes
+        field_class: \effcore\field_id_text
+        field_properties
+        - is_validate_uniqueness: true
+        field_element_attributes_on_update
         - disabled: true
     - id_tree
         title: Tree ID
@@ -99,8 +104,11 @@ entities
         - disabled: true
     - id_parent
         title: Parent ID
-        type: integer
+        type: varchar
+        size: 255
+        collate: nocase
         default: null
+        check: (id <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
         field_is_visible_on_select: true
