@@ -16,7 +16,9 @@ namespace effcore\modules\menu {
     if ($entity) {
     # field 'parent'
       if ($entity->name == 'tree_item' && !empty($form->_instance)) {
-        $tree_item = tree_item::select($form->_instance->id, $form->_instance->id_tree);
+        $tree_item = tree_item::select(
+          $form->_instance->id,
+          $form->_instance->id_tree);
         $tree_item->build();
         foreach ($tree_item->children_select_recursive() as $c_child)
           $items['#id_parent']->disabled[$c_child        ->id] = $c_child        ->id;

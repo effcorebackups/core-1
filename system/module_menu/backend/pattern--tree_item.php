@@ -145,7 +145,13 @@ namespace effcore {
   }
 
   static function select($id, $id_tree) {
-    static::init    (        );
+    static::init();
+    if (empty(static::$cache[$id]) && $id_tree === null) {
+      $instance = (new instance('tree_item', [
+        'id' => $id
+      ]))->select();
+      if (!empty($instance->id_tree)) $id_tree =
+                 $instance->id_tree;}
     static::init_sql($id_tree);
     return static::$cache[$id] ?? null;
   }
