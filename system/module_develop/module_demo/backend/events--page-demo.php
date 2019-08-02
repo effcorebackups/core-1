@@ -31,10 +31,10 @@ namespace effcore\modules\demo {
   }
 
   static function on_tree_build_before($event, $tree) {
-    tree_item::insert('item #1.2.3 (from code)', 'demo_nosql_item_1_2_3', 'demo_nosql_item_1_2', 'demo_nosql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10);
-    tree_item::insert('item #1.2.3 (from code)',   'demo_sql_item_1_2_3',   'demo_sql_item_1_2',   'demo_sql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10);
-    tree_item::insert('item #3 (from code)',     'demo_nosql_item_3',      null,                 'demo_nosql', '/develop/demo/embedded/trees/item_3',                     null, [], [], -10);
-    tree_item::insert('item #3 (from code)',       'demo_sql_item_3',      null,                   'demo_sql', '/develop/demo/embedded/trees/item_3',                     null, [], [], -10);
+    tree_item::insert('item #1.2.3 (from code)', 'demo_nosql_item_1_2_3', 'demo_nosql_item_1_2', 'demo_nosql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10, 'demo');
+    tree_item::insert('item #1.2.3 (from code)',   'demo_sql_item_1_2_3',   'demo_sql_item_1_2',   'demo_sql', '/develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3', null, [], [], -10, 'demo');
+    tree_item::insert('item #3 (from code)',     'demo_nosql_item_3',      null,                 'demo_nosql', '/develop/demo/embedded/trees/item_3',                     null, [], [], -10, 'demo');
+    tree_item::insert('item #3 (from code)',       'demo_sql_item_3',      null,                   'demo_sql', '/develop/demo/embedded/trees/item_3',                     null, [], [], -10, 'demo');
   }
 
   ##############
