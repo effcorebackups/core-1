@@ -7,7 +7,7 @@ tests
         title: Quantity of iterations
         element_attributes
         - name: quantity_of_iterations
-        - value: 5
+        - value: 1
         - min: 1
         - max: 5000
     scenario
