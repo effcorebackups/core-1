@@ -11,6 +11,15 @@ instances
     - access
         roles
         - =: registered
+- tree_user_anonymous|instance
+    entity_name: tree
+    values
+    - id: user_anonymous
+    - title: Anonymous user menu
+    - is_embed: 1
+    - access
+        roles
+        - =: anonymous
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
@@ -52,3 +61,53 @@ instances
     - access
         roles
         - =: registered
+# ─────────────────────────────────────────────────────────────────────
+- tree_item_anonymous|instance
+    entity_name: tree_item
+    values
+    - id: anonymous
+    - id_parent: null
+    - id_tree: user_anonymous
+    - title: Anonymous
+    - is_embed: 1
+    - access
+        roles
+        - =: anonymous
+- tree_item_login|instance
+    entity_name: tree_item
+    values
+    - id: login
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Login
+    - url: /login
+    - is_embed: 1
+    - weight: +50
+    - access
+        roles
+        - =: anonymous
+- tree_item_registration|instance
+    entity_name: tree_item
+    values
+    - id: registration
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Registration
+    - url: /registration
+    - is_embed: 1
+    - access
+        roles
+        - =: anonymous
+- tree_item_recovery|instance
+    entity_name: tree_item
+    values
+    - id: recovery
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Recovery
+    - url: /recovery
+    - is_embed: 1
+    - weight: -50
+    - access
+        roles
+        - =: anonymous
