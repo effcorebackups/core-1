@@ -1,0 +1,23 @@
+pages
+- security|page
+    id: security
+    title: Security
+    is_https: true
+    url: /manage/security
+    access
+      roles
+      - =: admins
+    parts
+    - menu
+      - menu_user_registered|page_part_preset_link
+          id: menu_user_registered
+      - menu_main|page_part_preset_link
+          id: menu_main
+    - title
+      - title|page_part_preset_link
+          id: title
+    # ─────────────────────────────────────────────────────────────────────
+    - content
+      - block_security|page_part
+          type: code
+          source: \effcore\modules\core\events_page_security::on_show_block_security

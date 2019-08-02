@@ -17,16 +17,16 @@ instances
     values
     - id: user_select
     - title: User: select
-- permission_user_update|instance
-    entity_name: permission
-    values
-    - id: user_update
-    - title: User: update
 - permission_user_insert|instance
     entity_name: permission
     values
     - id: user_insert
     - title: User: insert
+- permission_user_update|instance
+    entity_name: permission
+    values
+    - id: user_update
+    - title: User: update
 - permission_user_delete|instance
     entity_name: permission
     values
