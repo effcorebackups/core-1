@@ -6,7 +6,7 @@ instances
     entity_name: tree
     values
     - id: user_registered
-    - title: Menu for registered user
+    - title: Registered user menu
     - is_embed: 1
     - access
         roles

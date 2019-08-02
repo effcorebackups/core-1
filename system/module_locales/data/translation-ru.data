@@ -279,8 +279,8 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
     - Menu (active): Меню (активное)
-    - Menu for anonymous user: Меню для анонимного пользователя
-    - Menu for registered user: Меню для зарегистрированного пользователя
+    - Anonymous user menu: Меню анонимного пользователя
+    - Registered user menu: Меню зарегистрированного пользователя
     - Menu link (active): Меню ссылка (активная)
     - Menu link: Меню ссылка
     - Menu main: Меню главное

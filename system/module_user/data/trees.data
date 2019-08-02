@@ -1,7 +1,7 @@
 trees
 - user_anonymous|tree
     id: user_anonymous
-    title: Menu for anonymous user
+    title: Anonymous user menu
     title_state: hidden
     access
       roles
