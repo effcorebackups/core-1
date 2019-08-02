@@ -17,7 +17,7 @@ instances
 - tree_item_registered|instance
     entity_name: tree_item
     values
-    - id: 10
+    - id: registered
     - id_parent: null
     - id_tree: user_registered
     - title: %%_nick
@@ -29,8 +29,8 @@ instances
 - tree_item_user_edit|instance
     entity_name: tree_item
     values
-    - id: 20
-    - id_parent: 10
+    - id: user_edit
+    - id_parent: registered
     - id_tree: user_registered
     - title: Edit
     - url: /user/%%_nick/edit
@@ -42,8 +42,8 @@ instances
 - tree_item_logout|instance
     entity_name: tree_item
     values
-    - id: 30
-    - id_parent: 10
+    - id: logout
+    - id_parent: registered
     - id_tree: user_registered
     - title: Logout
     - url: /logout
