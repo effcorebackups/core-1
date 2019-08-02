@@ -364,9 +364,8 @@ namespace effcore {
         'fields_!,' => ['all_!f' => '~'.$entity->name.'.*'] + $params['join_fields'],
         'target_begin' => 'FROM',
         'target_!t' => '~'.$entity->name];
-      foreach ($params['join'] as $c_join_id => $c_join_part) {
-        $query['join'][$c_join_id] = $c_join_part;
-      }
+      foreach ($params['join'] as $c_join_id => $c_join_part)
+                $query['join']   [$c_join_id] = $c_join_part;
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['conditions']];
       if (count($params['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $params['order'     ]];
       if (      $params['limit'     ] ) {
@@ -409,9 +408,8 @@ namespace effcore {
         'fields_!,' => ['count' => ['function' => 'count(*)', 'alias' => 'as count']],
         'target_begin' => 'FROM',
         'target_!t' => '~'.$entity->name];
-      foreach ($params['join'] as $c_join_id => $c_join_part) {
-        $query['join'][$c_join_id] = $c_join_part;
-      }
+      foreach ($params['join'] as $c_join_id => $c_join_part)
+                $query['join']   [$c_join_id] = $c_join_part;
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
       if (      $params['limit'     ] ) {
         $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
