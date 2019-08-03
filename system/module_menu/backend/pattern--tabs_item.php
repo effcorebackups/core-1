@@ -46,7 +46,7 @@ namespace effcore {
     if (empty($this->is_hidden)) {
       if (access::check($this->access)) {
         $rendered_children = $this->children_select_count() ? (template::make_new($this->template_children, [
-          'children' => $this->render_children($this->children_select())
+          'children' => $this->render_children($this->children_select(true))
         ]))->render() : '';
         return (template::make_new($this->template, [
           'attributes' => $this->render_attributes(),

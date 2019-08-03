@@ -124,17 +124,17 @@ namespace effcore {
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
         'self'       => $this->render_self(),
-        'children'   => $this->render_children($this->children)
+        'children'   => $this->render_children($this->children_select(true))
       ]))->render();
     } else {
       return $this->render_self().
-             $this->render_children($this->children);
+             $this->render_children($this->children_select(true));
     }
   }
 
   function render_children($children, $join = true) {
     $rendered = [];
-    foreach (core::array_sort_by_weight($children) as $c_child)
+    foreach ($children as $c_child)
       $rendered[] = $this->render_child($c_child);
     return $join ? implode('', $rendered) :
                                $rendered;

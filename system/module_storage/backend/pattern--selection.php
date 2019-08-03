@@ -274,11 +274,11 @@ namespace effcore {
         'tag_name'   => $this->tag_name,
         'attributes' => $this->render_attributes(),
         'self_t'     => $this->render_self(),
-        'children'   => $this->render_children($this->children_select())
+        'children'   => $this->render_children($this->children_select(true))
       ]))->render();
     } else {
       return $this->render_self().
-             $this->render_children($this->children);
+             $this->render_children($this->children_select(true));
     }
   }
 

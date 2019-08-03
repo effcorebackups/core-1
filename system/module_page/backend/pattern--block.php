@@ -25,8 +25,8 @@ namespace effcore {
       'attributes' => $this->render_attributes(),
       'self'       => $this->render_self(),
       'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, [],
-                      $this->render_children($this->children_select()) ))->render() :
-                      $this->render_children($this->children_select())
+                      $this->render_children($this->children_select(true)) ))->render() :
+                      $this->render_children($this->children_select(true))
     ]))->render();
   }
 

@@ -47,7 +47,7 @@ namespace effcore {
     if (access::check($this->access)) {
       $rendered_self     = $managing_mode ? $this->render_self_managed() : $this->render_self();
       $rendered_children = $managing_mode == 'simple-draggable' || $this->children_select_count() ? (template::make_new($this->template_children, [
-        'children' => $this->render_children($this->children_select())]
+        'children' => $this->render_children($this->children_select(true))]
       ))->render() : '';
       if ($managing_mode == 'simple-draggable') {
         $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;

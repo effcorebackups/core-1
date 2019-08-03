@@ -41,7 +41,7 @@ namespace effcore {
       'tag_name'   => $this->tag_name,
       'attributes' => $this->render_attributes(),
       'self'       => $this->render_self(),
-      'children'   => $this->render_children($this->children_select())
+      'children'   => $this->render_children($this->children_select(true))
     ]))->render();
   }
 

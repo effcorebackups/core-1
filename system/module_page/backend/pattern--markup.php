@@ -30,11 +30,11 @@ namespace effcore {
         'tag_name'   => $this->tag_name,
         'attributes' => $this->render_attributes(),
         'self'       => $this->render_self(), # note: not used in the self template
-        'children'   => $this->render_children($this->children_select())
+        'children'   => $this->render_children($this->children_select(true))
       ]))->render();
     } else {
       return $this->render_self().
-             $this->render_children($this->children);
+             $this->render_children($this->children_select(true));
     }
   }
 

@@ -40,8 +40,8 @@ namespace effcore {
       'description_t' => $is_top_description ?      $this->render_description() : '',
       'description_b' => $is_top_description ? '' : $this->render_description(),
       'children'      => $this->content_tag_name ? (new markup($this->content_tag_name, [],
-                         $this->render_children($this->children_select()) ))->render() :
-                         $this->render_children($this->children_select())
+                         $this->render_children($this->children_select(true)) ))->render() :
+                         $this->render_children($this->children_select(true))
     ]))->render();
   }
 
