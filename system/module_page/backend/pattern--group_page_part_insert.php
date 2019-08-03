@@ -15,19 +15,21 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $presets = page_part_preset::select_all($this->id_area);
+      core::array_sort_by_text_property($presets, 'managing_title');
+      $options = ['not_selected' => '- no -'];
+      foreach ($presets as $c_preset) {
+        $c_group_id = core::sanitize_id($c_preset->managing_group);
+        if (!isset($options[$c_group_id])) {
+                   $options[$c_group_id] = new \stdClass;
+                   $options[$c_group_id]->title = $c_preset->managing_group;}
+        $options[$c_group_id]->values[$c_preset->id] = $c_preset->managing_title;
+      }
       $select_preset = new field_select;
       $select_preset->title = 'Insert part';
+      $select_preset->values = $options;
       $select_preset->build();
       $select_preset->name_set('insert_to_'.$this->id_area);
       $select_preset->required_set(false);
-      $select_preset->option_insert('- no -', 'not_selected');
-      foreach ($presets as $c_preset) {
-        if (!$select_preset->optgroup_select(core::sanitize_id($c_preset->managing_group)))
-             $select_preset->optgroup_insert(core::sanitize_id($c_preset->managing_group), $c_preset->managing_group);
-        $select_preset->option_insert(
-          $c_preset->managing_title,
-          $c_preset->id, [], core::sanitize_id(
-          $c_preset->managing_group));}
       $button_insert = new button;
       $button_insert->title = '';
       $button_insert->build();

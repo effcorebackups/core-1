@@ -337,6 +337,16 @@ namespace effcore {
     return $array;
   }
 
+  static function array_sort_by_text_property(&$array, $property = 'title', $order = 'd', $translated = true) {
+    uasort($array, function($a, $b) use ($property, $order, $translated) {
+      if ($order == 'a' && $translated == false) return                  $b->{$property}  <=>                  $a->{$property};
+      if ($order == 'd' && $translated == false) return                  $a->{$property}  <=>                  $b->{$property};
+      if ($order == 'a' && $translated)          return translation::get($b->{$property}) <=> translation::get($a->{$property});
+      if ($order == 'd' && $translated)          return translation::get($a->{$property}) <=> translation::get($b->{$property});
+    });
+    return $array;
+  }
+
   static function array_sort_by_title(&$array, $order = 'd', $translated = true) {
     uasort($array, function($a, $b) use ($order, $translated) {
       if ($order == 'a' && $translated == false) return                  $b->title  <=>                  $a->title;

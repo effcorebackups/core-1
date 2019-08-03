@@ -243,8 +243,8 @@ namespace effcore {
   # │   name: value       ║ root->name  = value: null | string | float | integer | boolean │
   # │ - =: value          ║ root[value] = value: null | string | float | integer | boolean │
   # │   =: value          ║ root->value = value: null | string | float | integer | boolean │
-  # │ - name              ║ root[name]  = new stdClass | […]                               │
-  # │   name              ║ root->name  = new stdClass | […]                               │
+  # │ - name              ║ root[name]  = new \stdClass | […]                              │
+  # │   name              ║ root->name  = new \stdClass | […]                              │
   # │ - name|classname    ║ root[name]  = new classname                                    │
   # │   name|classname    ║ root->name  = new classname                                    │
   # │ - name|_empty_array ║ root[name]  = []                                               │
