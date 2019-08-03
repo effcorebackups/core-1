@@ -15,8 +15,8 @@ translations
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
-    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
-    - All types of messages you can see above.: Все типы сообщений вы можете увидеть выше.
+    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
+    - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - Autoincrement: Автоинкремент
     - Call %%_name: Вызов %%_name
     - call: вызов

@@ -26,6 +26,7 @@ translations
     - All caches was reset.: Все кэши были сброшены.
     - All: Все
     - An error occurred during installation!: При установке произошла ошибка!
+    - Anonymous user menu: Меню анонимного пользователя
     - Anonymous: Аноним
     - apply colors: применить цвета
     - apply: применить
@@ -59,6 +60,7 @@ translations
     - Checkbox: Флаг
     - Checkboxes: Флажки
     - Classic: Классический
+    - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
     - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
     - Click to open the tab\: %%_title: Нажмите, чтобы открыть вкладку: %%_title
     - collapse: свернуть
@@ -250,7 +252,7 @@ translations
     - Language: Язык
     - Layout: Макет
     - Layouts: Макеты
-    - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если не хотите менять его значение.
+    - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если Вы не желаете изменять его значение.
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
     - Light: Светлая
@@ -279,8 +281,6 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
     - Menu (active): Меню (активное)
-    - Anonymous user menu: Меню анонимного пользователя
-    - Registered user menu: Меню зарегистрированного пользователя
     - Menu link (active): Меню ссылка (активная)
     - Menu link: Меню ссылка
     - Menu main: Меню главное
@@ -377,6 +377,7 @@ translations
     - Recovery: Восстановление
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
+    - Registered user menu: Меню зарегистрированного пользователя
     - Registered: Зарегистрированные
     - registration: регистрация
     - Registration: Регистрация
@@ -529,7 +530,7 @@ translations
     - Welcome message: Приветственное сообщение
     - Welcome to our site!: Добро пожаловать на наш сайт!
     - Welcome, %%_nick!: Добро пожаловать, %%_nick!
-    - With it, you can speed up the system from 2-3x and more.: С его помощью вы можете ускорить систему в 2-3 и более раз.
+    - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
     - Yes: Да
     - yes: да
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
@@ -537,8 +538,8 @@ translations
     - You have already uploaded %%_current_number file%%_plural{number,s}.: Вы уже загрузили %%_current_number файл%%_plural{number,ov-a}.
     - You have not made any changes before!: Вы не производили изменений ранее!
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
-    - You received this message because someone tried to recover the password from your %%_domain account.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от вашего %%_domain аккаунта.
-    - your EMail is — %%_email: ваш Адрес электронной почты — %%_email
+    - You received this message because someone tried to recover the password from your %%_domain account.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего %%_domain аккаунта.
+    - your EMail is — %%_email: Ваш Адрес электронной почты — %%_email
     - Your EMail is not shown publicly on %%_domain and is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и никогда не передаётся третьим лицам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
-    - your Password is — %%_password: ваш Пароль — %%_password
+    - your Password is — %%_password: Ваш Пароль — %%_password
