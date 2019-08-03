@@ -33,9 +33,9 @@ namespace effcore\modules\storage {
         if ($c_entity->managing_is_on && $c_group_id == $c_entity->group_managing_get_id())
           $entities_by_groups[$c_group_id][$c_name] = $c_entity;
       if (isset($entities_by_groups[$c_group_id]))
-        core::array_sort_by_title($entities_by_groups[$c_group_id]);
-      else {                unset($entities_by_groups[$c_group_id]);
-                            unset($groups            [$c_group_id]);
+        core::array_sort_by_text_property($entities_by_groups[$c_group_id]);
+      else {                        unset($entities_by_groups[$c_group_id]);
+                                    unset($groups            [$c_group_id]);
       }
     }
 

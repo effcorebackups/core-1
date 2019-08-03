@@ -35,7 +35,7 @@ namespace effcore\modules\core {
       foreach ($modules as $c_module)
         if ($c_group_id == $c_module->group_get_id())
           $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
-      core::array_sort_by_title(
+      core::array_sort_by_text_property(
         $modules_by_groups[$c_group_id]
       );
     }

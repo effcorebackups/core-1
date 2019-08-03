@@ -16,7 +16,7 @@ namespace effcore\modules\page {
     $presets = color::preset_get_all();
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');
-    core::array_sort_by_title($presets);
+    core::array_sort_by_text_property($presets);
     if ($type == null)      url::go(page::get_current()->args_get('base').'/colors');
     if ($type == 'presets') url::go(page::get_current()->args_get('base').'/presets/'.reset($presets)->id);
     if (strpos($type, 'presets/') === 0 && !isset($presets[$id])) {

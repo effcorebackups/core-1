@@ -20,7 +20,7 @@ namespace effcore\modules\core {
     $info = $form->child_select('info');
     $info->children_delete();
     $modules = module::get_all();
-    core::array_sort_by_title($modules);
+    core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
       $c_updates            = module::updates_get           ($c_module->id);
       $c_update_last_number = module::update_get_last_number($c_module->id);
@@ -56,7 +56,7 @@ namespace effcore\modules\core {
       case 'apply':
         $has_selection = false;
         $modules = module::get_all();
-        core::array_sort_by_title($modules);
+        core::array_sort_by_text_property($modules);
         foreach ($modules as $c_module) {
           $c_updates            = module::updates_get           ($c_module->id);
           $c_update_last_number = module::update_get_last_number($c_module->id);

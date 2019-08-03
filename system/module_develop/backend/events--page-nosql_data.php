@@ -31,7 +31,7 @@ namespace effcore\modules\develop {
     if ($type == null) url::go(page::get_current()->args_get('base').'/trees');
     if (strpos($type, 'trees') === 0) {
       $trees = tree::select_all('nosql');
-      core::array_sort_by_title($trees);
+      core::array_sort_by_text_property($trees);
       if (!isset($trees[$id])) url::go(page::get_current()->args_get('base').'/trees/'.reset($trees)->id);
       foreach ($trees as $c_tree) {
         tabs_item::insert($c_tree->title,

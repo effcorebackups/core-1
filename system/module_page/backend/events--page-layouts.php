@@ -15,7 +15,7 @@ namespace effcore\modules\page {
   static function on_tab_build_before($event, $tab) {
     $layouts = layout::select_all();
     $id = page::get_current()->args_get('id');
-    core::array_sort_by_title($layouts);
+    core::array_sort_by_text_property($layouts);
     if (!isset($layouts[$id])) url::go(page::get_current()->args_get('base').'/'.reset($layouts)->id);
     foreach ($layouts as $c_layout) {
       tabs_item::insert($c_layout->title,

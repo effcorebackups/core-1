@@ -347,12 +347,10 @@ namespace effcore {
     return $array;
   }
 
-  static function array_sort_by_title(&$array, $order = 'd', $translated = true) {
-    uasort($array, function($a, $b) use ($order, $translated) {
-      if ($order == 'a' && $translated == false) return                  $b->title  <=>                  $a->title;
-      if ($order == 'd' && $translated == false) return                  $a->title  <=>                  $b->title;
-      if ($order == 'a' && $translated)          return translation::get($b->title) <=> translation::get($a->title);
-      if ($order == 'd' && $translated)          return translation::get($a->title) <=> translation::get($b->title);
+  static function array_sort_by_property(&$array, $property, $order = 'a') {
+    uasort($array, function($a, $b) use ($property, $order) {
+      if ($order == 'a') return $b->{$property} <=> $a->{$property};
+      if ($order == 'd') return $a->{$property} <=> $b->{$property};
     });
     return $array;
   }
@@ -363,14 +361,6 @@ namespace effcore {
       if ($c_item->weight === 0)  # we should preprocess items with weight = 0 before sorting
           $c_item->weight = $c_weight -= $corrector;
     return static::array_sort_by_property($array, 'weight', 'a');
-  }
-
-  static function array_sort_by_property(&$array, $property, $order = 'a') {
-    uasort($array, function($a, $b) use ($property, $order) {
-      if ($order == 'a') return $b->{$property} <=> $a->{$property};
-      if ($order == 'd') return $a->{$property} <=> $b->{$property};
-    });
-    return $array;
   }
 
   static function array_kmap($array) {
