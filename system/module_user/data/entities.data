@@ -327,8 +327,8 @@ entities
         field_value_manual_get: true
         field_properties
         - max_file_size: 10K
-        - upload_dir: avatar/
-        - fixed_name: avatar-%%_user_id
+        - upload_dir: avatars/
+        - fixed_name: avatars-%%_user_id
         - allowed_types
           - =: gif
           - =: jpeg

@@ -151,3 +151,83 @@ entities
         type: unique
         fields
         - =: url
+- logotype|entity
+    name: logotype
+    title: Logotype
+    title_plural: Logotypes
+    catalog_name: logotypes
+    managing_is_on: true
+    managing_group: Content
+    ws_is_embed: true
+    ws_created: true
+    ws_updated: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_id_text
+        field_properties
+        - is_validate_uniqueness: true
+        field_element_attributes_on_update
+        - disabled: true
+    - title
+        title: Title
+        type: varchar
+        collate: nocase
+        size: 1024
+        not_null: true
+        check: (title <> '')
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - required: false
+    - url
+        title: URL
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_url
+        field_element_attributes
+        - required: false
+    - logotype_path
+        title: Logotype
+        type: varchar
+        size: 1024
+        collate: nocase
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_file
+        field_value_manual_set: true
+        field_value_manual_get: true
+        field_properties
+        - max_file_size: 10K
+        - upload_dir: logotypes/
+        - fixed_name: logotypes-%%_instance_id
+        - allowed_types
+          - =: gif
+          - =: jpeg
+          - =: jpg
+          - =: png
+          - =: svg
+        field_element_attributes
+        - name: avatar
+        field_element_attributes_on_insert
+        - disabled: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id

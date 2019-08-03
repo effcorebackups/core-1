@@ -117,3 +117,12 @@ instances
       - content
         - form_logout|page_part_preset_link
             id: form_logout
+# ─────────────────────────────────────────────────────────────────────
+- logotype_main|instance
+    entity_name: logotype
+    values
+    - id: main
+    - title: Main
+    - url: /
+    - logotype_path: null
+    - is_embed: 1
