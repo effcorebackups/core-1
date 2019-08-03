@@ -194,11 +194,8 @@ translations
     - fix: исправить
     - For ID: Для ID
     - Form elements: Элементы формы
+    - Form: Форма
     - form: форма
-    - Form\: Login: Форма: Вход
-    - Form\: Logout: Форма: Выход
-    - Form\: Recovery: Форма: Восстановление
-    - Form\: Registration: Форма: Регистрация
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front page: Главная страница
     - Front: Главная
@@ -272,7 +269,7 @@ translations
     - logout: выход
     - Logout: Выход
     - Main system module.: Основной модуль системы.
-    - Main: Основной
+    - Main: Основн/ое/ой/ая
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
@@ -286,9 +283,6 @@ translations
     - Menu main: Меню главное
     - Menu text: Меню текст
     - Menu: Меню
-    - Menu\: Main: Меню: Основное
-    - Menu\: User (anonymous): Меню: Пользователь (аноним)
-    - Menu\: User (registered): Меню: Пользователь (зарегистрированный)
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
@@ -504,8 +498,10 @@ translations
     - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
     - User %%_nick: Пользователь %%_nick
     - User agent: Пользовательский агент
+    - User anonymous: Пользователь анонимный
     - User ID: ID Пользователя
     - User name: Имя пользователя
+    - User registered: Пользователь зарегистрированный
     - User roles: Роли пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким Адресом электронной почты уже был зарегистрирован!

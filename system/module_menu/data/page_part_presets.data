@@ -1,7 +1,8 @@
 page_part_presets
 - menu_main|page_part_preset
     id: menu_main
-    managing_title: Menu: Main
+    managing_group: Menu
+    managing_title: Main
     in_areas
     - =: menu
     type: link

@@ -8,6 +8,7 @@ namespace effcore {
           class page_part_preset extends page_part {
 
   public $id;
+  public $managing_group = 'Text';
   public $managing_title;
   public $in_areas;
 

@@ -1,6 +1,7 @@
 page_part_presets
 - title|page_part_preset
     id: title
+    managing_group: Text
     managing_title: Title
     in_areas
     - =: top
@@ -10,6 +11,7 @@ page_part_presets
     source: \effcore\modules\page\events_page::on_show_title
 - welcome|page_part_preset
     id: welcome
+    managing_group: Text
     managing_title: Welcome message
     type: text
     source: Welcome to our site!

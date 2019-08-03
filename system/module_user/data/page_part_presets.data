@@ -1,7 +1,8 @@
 page_part_presets
 - menu_user_registered|page_part_preset
     id: menu_user_registered
-    managing_title: Menu: User (registered)
+    managing_group: Menu
+    managing_title: User registered
     in_areas
     - =: menu
     type: code
@@ -10,7 +11,8 @@ page_part_presets
     - id_tree: user_registered
 - menu_user_anonymous|page_part_preset
     id: menu_user_anonymous
-    managing_title: Menu: User (anonymous)
+    managing_group: Menu
+    managing_title: User anonymous
     in_areas
     - =: menu
     type: code
@@ -19,28 +21,32 @@ page_part_presets
     - id_tree: user_anonymous
 - form_login|page_part_preset
     id: form_login
-    managing_title: Form: Login
+    managing_group: Form
+    managing_title: Login
     in_areas
     - =: content
     type: link
     source: forms/user/login
 - form_registration|page_part_preset
     id: form_registration
-    managing_title: Form: Registration
+    managing_group: Form
+    managing_title: Registration
     in_areas
     - =: content
     type: link
     source: forms/user/registration
 - form_recovery|page_part_preset
     id: form_recovery
-    managing_title: Form: Recovery
+    managing_group: Form
+    managing_title: Recovery
     in_areas
     - =: content
     type: link
     source: forms/user/recovery
 - form_logout|page_part_preset
     id: form_logout
-    managing_title: Form: Logout
+    managing_group: Form
+    managing_title: Logout
     in_areas
     - =: content
     type: link
