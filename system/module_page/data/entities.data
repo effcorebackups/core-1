@@ -202,7 +202,7 @@ entities
         field_class: \effcore\field_url
         field_element_attributes
         - required: false
-    - logotype_path
+    - path
         title: Logotype
         type: varchar
         size: 1024

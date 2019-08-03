@@ -15,3 +15,9 @@ page_part_presets
     managing_title: Welcome message
     type: text
     source: Welcome to our site!
+- logotype_main|page_part_preset
+    id: logotype_main
+    managing_group: Text
+    managing_title: Logotype main
+    type: link
+    source: selections/page/logotype_main

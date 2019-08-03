@@ -124,5 +124,5 @@ instances
     - id: main
     - title: Main
     - url: /
-    - logotype_path: null
+    - path: null
     - is_embed: 1

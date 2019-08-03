@@ -1,0 +1,24 @@
+selections
+- logotype_main|selection
+    id: logotype_main
+    title: Logotype main
+    view_type: ul
+    limit: 1
+    query_params
+    - conditions
+      - id_!f: ~logotype.id
+      - operator: =
+      - id_!v: main
+    fields
+    - logotype.title
+        type: field
+        entity_name: logotype
+        entity_field_name: title
+    - logotype.url
+        type: field
+        entity_name: logotype
+        entity_field_name: url
+    - logotype.path
+        type: field
+        entity_name: logotype
+        entity_field_name: path
