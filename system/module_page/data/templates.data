@@ -34,6 +34,10 @@ templates
     name: actions_list
     type: text
     data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
+- logotype
+    name: logotype
+    type: text
+    data: <a href="%%_url" data-id="logotype"><img src="%%_src" alt="%%_alt"/></a>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────
