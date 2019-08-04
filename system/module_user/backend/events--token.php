@@ -22,8 +22,8 @@ namespace effcore\modules\user {
         case 'email'     : return     user::get_current()->email;
         case 'avatar_url': return '/'.user::get_current()->avatar_path;
         case 'nick_page_context':
-          if ($args[0] == 'nick') {
-            return page::get_current()->args_get('nick');
+          if (!empty($args[0])) {
+            return page::get_current()->args_get($args[0]);
           }
       }
     }

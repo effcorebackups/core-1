@@ -214,7 +214,9 @@ namespace effcore {
   }
 
   function value($value, $is_emulation = false) {
-    if (!$is_emulation) $this->args[] = $value;
+    if (!$is_emulation)
+      $this->args[] = is_object($value) &&
+                  method_exists($value, 'render') ? $value->render() : $value;
     return '?';
   }
 

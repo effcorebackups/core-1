@@ -1,10 +1,16 @@
 selections
 - user|selection
     id: user
-    title: User %%_nick
+    title: User %%_nick_page_context{nick}
     view_type: ul
     query_params
-    - limit: 1
+    - conditions
+      - id_!f: ~user.nick
+      - operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_nick_page_context{nick}
     fields
     - user.id
         type: field
