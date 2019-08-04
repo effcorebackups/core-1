@@ -19,6 +19,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_user_info|page_part
-          type: code
-          source: \effcore\modules\user\events_page_user::on_show_block_user_info
+      - selection_user|page_part
+          type: link
+          source: selections/user/user

@@ -171,6 +171,12 @@ namespace effcore {
                   'value' => $c_field->markup
                 ];
                 break;
+              case 'handler':
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title,
+                  'value' => call_user_func($c_field->handler, $c_row, $c_instance)
+                ];
+                break;
               case 'code':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title,
@@ -235,6 +241,15 @@ namespace effcore {
     $field->code   = $code;
     $field->weight = $weight;
     $this->fields[$row_id ?: 'code'] = $field;
+  }
+
+  function field_insert_handler($row_id = null, $title = '', $handler, $weight = 0) {
+    $field = new \stdClass;
+    $field->type    = 'handler';
+    $field->title   = $title;
+    $field->handler = $handler;
+    $field->weight  = $weight;
+    $this->fields[$row_id ?: 'handler'] = $field;
   }
 
   function field_insert_action($row_id = null, $title = '', $allowed = ['select', 'update', 'delete'], $weight = 0) {

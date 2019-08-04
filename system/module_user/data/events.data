@@ -79,6 +79,9 @@ events
       weight: +50
       handler: \effcore\modules\user\events_form_instance_delete::on_submit
   on_page_build_before
+  - user|event
+      for: user
+      handler: \effcore\modules\user\events_page_user::on_build_before
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_page_user_edit::on_build_before

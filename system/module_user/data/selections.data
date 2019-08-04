@@ -1,7 +1,6 @@
 selections
 - user|selection
     id: user
-    title: User %%_nick_page_context{nick}
     view_type: ul
     query_params
     - conditions
@@ -44,3 +43,7 @@ selections
         type: field
         entity_name: user
         entity_field_name: updated
+    - roles
+        type: handler
+        title: Roles
+        handler: \effcore\modules\user\events_page_user::on_show_user_roles

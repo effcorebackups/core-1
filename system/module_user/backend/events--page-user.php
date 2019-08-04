@@ -5,38 +5,27 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\block;
           use \effcore\core;
           use \effcore\instance;
-          use \effcore\locale;
-          use \effcore\selection;
-          use \effcore\session;
-          use \effcore\table;
           use \effcore\text_multiline;
-          use \effcore\text;
           use \effcore\user;
           abstract class events_page_user {
 
-  static function on_show_block_user_info($page) {
+  static function on_build_before($event, $page) {
     $user = (new instance('user', [
       'nick' => $page->args_get('nick')
     ]))->select();
     if ($user) {
       if ($user->nick == user::get_current()->nick ||             # owner
                    isset(user::get_current()->roles['admins'])) { # admin
-        $selection = selection::get('user');
-        $selection->title = '';
-        $user_roles = user::id_roles_get($user->id);
-        if ($user_roles) {
-          $selection->field_insert_markup('roles', 'Roles',
-            new text_multiline($user_roles, [], ', ')
-          );          
-        }
-        return new block('', ['data-id' => 'info_user'],
-          $selection
-        );
       } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found');
+    }   else core::send_header_and_exit('page_not_found'  );
+  }
+
+  static function on_show_user_roles($c_row, $c_instance) {
+    return new text_multiline(
+      user::id_roles_get($c_instance->id), [], ', '
+    );
   }
 
 }}
