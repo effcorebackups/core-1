@@ -17,7 +17,7 @@ namespace effcore {
   public $query_params = [];
   public $decorator_params = [];
   public $limit = 50;
-  public $is_paged = false;
+  public $pager_is_on = false;
   public $pager_name = 'page';
   public $pager_id = 0;
 
@@ -79,7 +79,7 @@ namespace effcore {
         $this->query_params['limit'] = $this->limit;
 
       # prepare pager
-        if ($this->is_paged) {
+        if ($this->pager_is_on) {
           $instances_count = $main_entity->instances_select_count($this->query_params);
           $page_max_number = ceil($instances_count / $this->limit);
           if ($page_max_number > 1) {
