@@ -127,6 +127,10 @@ pages
               - id_!f: ~demo_data.id
               - operator: >=
               - id_!v: 200
+            - order
+              - title_!f: ~demo_data.id
+              - type: ASC
+            - limit: 5
       - block_demo_selection_demo_types|page_part
           display
             check: page_args

@@ -16,7 +16,6 @@ namespace effcore {
   public $fields = [];
   public $query_params = [];
   public $decorator_params = [];
-  public $limit = 50;
   public $pager_is_on = false;
   public $pager_name = 'page';
   public $pager_id = 0;
@@ -76,19 +75,20 @@ namespace effcore {
             'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
           ];
         }
-        $this->query_params['limit'] = $this->limit;
+        if (empty($this->query_params['limit']))
+                  $this->query_params['limit'] = 50;
 
       # prepare pager
         if ($this->pager_is_on) {
           $instances_count = $main_entity->instances_select_count($this->query_params);
-          $page_max_number = ceil($instances_count / $this->limit);
+          $page_max_number = ceil($instances_count / $this->query_params['limit']);
           if ($page_max_number > 1) {
             $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
             if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) {url::go($pager->last_page_url_get()->tiny_get());}
             if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) {
               core::send_header_and_exit('page_not_found');
             } else {
-              $this->query_params['offset'] = ($pager->cur - 1) * $this->limit;
+              $this->query_params['offset'] = ($pager->cur - 1) * $this->query_params['limit'];
               $this->child_insert(
                 $pager, 'pager'
               );

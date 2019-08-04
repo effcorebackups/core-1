@@ -3,7 +3,8 @@ selections
     id: user
     title: User %%_nick
     view_type: ul
-    limit: 1
+    query_params
+    - limit: 1
     fields
     - user.id
         type: field

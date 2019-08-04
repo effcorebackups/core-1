@@ -4,7 +4,6 @@ selections
     title: Selection of "demo_data" entities + join
     view_type: table
     pager_is_on: true
-    limit: 5
     join
     - demo_data_join
         entity_name: demo_data_join
@@ -19,6 +18,7 @@ selections
     - order
       - title_!f: ~demo_data.id
       - type: ASC
+    - limit: 5
     fields
     - demo_data.id
         type: field
@@ -44,6 +44,8 @@ selections
     id: demo_types
     title: Selection of "demo_types" entities
     view_type: ul
+    query_params
+    - limit: 10
     fields
     - id
         type: field
