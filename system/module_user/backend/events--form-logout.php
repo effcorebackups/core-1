@@ -8,6 +8,7 @@ namespace effcore\modules\user {
           use \effcore\decorator;
           use \effcore\field_checkbox;
           use \effcore\locale;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\session;
           use \effcore\text;
@@ -21,7 +22,8 @@ namespace effcore\modules\user {
     $decorator = new decorator('table');
     $decorator->id = 'sessions_logout';
     $form->child_select('info')->children_delete();
-    $form->child_select('info')->child_insert($decorator);
+    $form->child_select('info')->child_insert(new markup('h2', [], 'Sessions'), 'title');
+    $form->child_select('info')->child_insert($decorator, 'decorator');
     foreach ($sessions as $c_session) {
       $c_checkbox = new field_checkbox();
       $c_checkbox->build();
