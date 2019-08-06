@@ -8,6 +8,22 @@ namespace effcore {
           abstract class console {
 
   const directory = dir_dynamic.'logs/';
+  const diagram_colors = [
+    'palegoldenrod',
+    'mediumaquamarine',
+    'palegreen',
+    'darkcyan',
+    'lightseagreen',
+    'springgreen',
+    'yellowgreen',
+    'gold',
+    'crimson',
+    'lightcoral',
+    'thistle',
+    'moccasin',
+    'paleturquoise'
+  ];
+
   static protected $data = [];
 
   static function logs_select() {
@@ -90,9 +106,9 @@ namespace effcore {
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time);}}
     $diagram = new diagram('', 'radial');
-    $colors = ['palegoldenrod', 'mediumaquamarine', 'palegreen', 'darkcyan', 'lightseagreen', 'springgreen', 'yellowgreen', 'gold', 'crimson', 'lightcoral', 'thistle', 'moccasin', 'paleturquoise'];
+    $colors = self::diagram_colors;
     foreach ($statistics as $c_key => $c_value)
-        $diagram->slice_add($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
+      $diagram->slice_add  ($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
     return new block('Total load', ['data-id' => 'diagram_load'], [
       $diagram
     ]);

@@ -28,6 +28,8 @@
   x-block[data-id='logs'] x-total x-label::after,
   x-block[data-id='logs'] x-shash x-label::after,
   x-block[data-id='logs'] x-dhash x-label::after {content: ': '}
+  x-block[data-id='logs'] x-shash x-value,
+  x-block[data-id='logs'] x-dhash x-value {font-family: monospace}
 
   /* php dependencies */
 

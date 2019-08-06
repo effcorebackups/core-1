@@ -148,7 +148,7 @@ translations
     - show for admin: показывать для администратора
     - show for everyone: показать всем
     - sql query = "%%_query": sql запрос = "%%_query"
-    - sql query = "%%_query"<br>args = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
+    - sql query = "%%_query"<br>arguments = [%%_args]: sql запрос = "%%_query"<br>аргументы = [%%_args]
     - success: успех
     - Switcher 1: Переключатель 1
     - Switcher 2 (checked): Переключатель 2 (установлен)

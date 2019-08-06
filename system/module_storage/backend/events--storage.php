@@ -41,7 +41,7 @@ namespace effcore\modules\storage {
     $query_args_beautiful = '\''.implode('\', \'', $args_trimmed).'\'';
     timer::tap('storage query with hash: '.$query_hash);
     console::log_insert('storage', 'query',
-      count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'args = [%%_args]' :
+      count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'arguments = [%%_args]' :
                               'sql query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
       timer::period_get('storage query with hash: '.$query_hash, -1, -2),
