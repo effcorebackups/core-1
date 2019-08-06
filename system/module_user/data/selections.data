@@ -1,7 +1,8 @@
 selections
 - user|selection
     id: user
-    view_type: ul
+    decorator_params
+    - view_type: ul
     query_params
     - conditions
       - id_!f: ~user.nick

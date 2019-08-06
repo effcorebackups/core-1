@@ -2,7 +2,8 @@ selections
 - logotype_main|selection
     id: logotype_main
     title: Logotype main
-    view_type: ul
+    decorator_params
+    - view_type: ul
     query_params
     - conditions
       - id_!f: ~logotype.id

@@ -10,7 +10,6 @@ namespace effcore {
   public $tag_name = 'x-selection';
   public $template = 'container';
   public $title_tag_name = 'h2';
-  public $view_type = 'table'; # table | ul | dl | tree
   public $id;
   public $title;
   public $fields = [];
@@ -20,9 +19,8 @@ namespace effcore {
   public $pager_name = 'page';
   public $pager_id = 0;
 
-  function __construct($title = '', $view_type = null, $weight = 0) {
-    if ($title    ) $this->title     = $title;
-    if ($view_type) $this->view_type = $view_type;
+  function __construct($title = '', $weight = 0) {
+    if ($title) $this->title = $title;
     parent::__construct(null, [], [], $weight);
   }
 
@@ -30,8 +28,7 @@ namespace effcore {
     if (!$this->is_builded) {
 
       $this->children_delete();
-      $this->attribute_insert('data-view-type', $this->view_type);
-      $this->attribute_insert('data-id',        $this->id       );
+      $this->attribute_insert('data-id',        $this->id          );
       event::start('on_selection_build_before', $this->id, [&$this]);
 
       $used_entities = [];
@@ -120,13 +117,12 @@ namespace effcore {
       if (isset($this->_instances) &&
           count($this->_instances)) {
 
-        $decorator = new decorator($this->view_type);
+        $decorator = new decorator;
         $decorator->id = $this->id;
         $decorator->_main_entity = $main_entity->name;
         $decorator->attribute_insert('data-main-entity', $main_entity->name);
-        foreach ($this->decorator_params as $c_key => $c_value) {
-          $decorator->{$c_key} = $c_value;
-        }
+        foreach ($this->decorator_params as $c_key => $c_value)
+          $decorator->                     {$c_key} = $c_value;
 
         foreach ($this->_instances as $c_instance) {
           $c_row = [];

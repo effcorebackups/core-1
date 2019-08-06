@@ -43,11 +43,12 @@ namespace effcore\modules\storage {
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
         # create selection
-          $selection = new selection('', $entity->view_type_single);
+          $selection = new selection;
           $selection->id = 'instance_manage';
-          $selection->query_params['conditions'] = $entity->storage_get()->attributes_prepare($conditions);
           foreach ($entity->selection_params as $c_key => $c_value)
-                                   $selection->{$c_key} = $c_value;
+            $selection                       ->{$c_key} = $c_value;
+            $selection->decorator_params['view_type'] = $entity->view_type_single;
+            $selection->query_params['conditions']    = $entity->storage_get()->attributes_prepare($conditions);
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->field_is_visible_on_select)) {

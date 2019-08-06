@@ -179,8 +179,8 @@
   /* x-selection */
 
   x-selection {display: block}
-  x-selection[data-view-type='table'] td[data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  x-selection[data-view-type='table'] td[data-cellid='checkbox'] x-field {margin: 0}
+  x-selection x-decorator[data-view-type='table'] td[data-cellid='checkbox'] {width: 1%; padding-right: 0}
+  x-selection x-decorator[data-view-type='table'] td[data-cellid='checkbox'] x-field {margin: 0}
 
   /* x-no-result */
 

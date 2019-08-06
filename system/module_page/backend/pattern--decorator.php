@@ -26,8 +26,8 @@ namespace effcore {
     if (!$this->is_builded) {
 
       $result = new node();
-      $this->attribute_insert('data-view-type', $this->view_type);
-      $this->attribute_insert('data-id', $this->id);
+      $this->attribute_insert('data-view-type', $this->view_type   );
+      $this->attribute_insert('data-id',        $this->id          );
       event::start('on_decorator_build_before', $this->id, [&$this]);
 
       if ($this->data) {

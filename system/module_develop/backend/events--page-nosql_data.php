@@ -73,7 +73,7 @@ namespace effcore\modules\develop {
     ksort($events);
     foreach ($events as $c_event_type => $c_events) {
       $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type));
-      $c_decorator = new decorator('table');
+      $c_decorator = new decorator;
       $c_decorator->id = 'events_registered_handlers_'.$c_event_type;
       $c_decorator->result_attributes = ['data-is-compact' => 'true'];
       $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type], $c_event_type), $c_event_type.'_header'   );
@@ -94,7 +94,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_file_types($page) {
-    $decorator = new decorator('table');
+    $decorator = new decorator;
     $decorator->id = 'file_types_registered';
     $file_types = file::types_get();
     ksort($file_types);
@@ -112,7 +112,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_templates($page) {
-    $decorator = new decorator('table');
+    $decorator = new decorator;
     $decorator->id = 'templates_registered';
     $templates = template::get_all();
     ksort($templates);
@@ -129,7 +129,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_tokens($page) {
-    $decorator = new decorator('table');
+    $decorator = new decorator;
     $decorator->id = 'tokens_registered';
     $tokens = token::get_all();
     ksort($tokens);
@@ -147,9 +147,8 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_translations($page) {
-    $decorator = new decorator('table');
+    $decorator = new decorator('ul');
     $decorator->id = 'translations_registered';
-    $decorator->view_type = 'ul';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     $translations = translation::get_all_by_code();
     if ($translations) {

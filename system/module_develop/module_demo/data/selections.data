@@ -2,7 +2,8 @@ selections
 - demo_data_join|selection
     id: demo_data_join
     title: Selection of "demo_data" entities + join
-    view_type: table
+    decorator_params
+    - view_type: table
     pager_is_on: true
     join
     - demo_data_join
@@ -43,7 +44,8 @@ selections
 - demo_types|selection
     id: demo_types
     title: Selection of "demo_types" entities
-    view_type: ul
+    decorator_params
+    - view_type: ul
     query_params
     - limit: 10
     fields
