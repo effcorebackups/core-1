@@ -7,4 +7,4 @@ module|module_embed
   version: 0.900
   dependencies
     php
-    - =: mbstring
+    - mbstring: 7.1.0

@@ -49,9 +49,9 @@ namespace effcore\modules\core {
         $c_dependencies_php_items = new node;
         $c_dependencies_sys_items = new node;
         $c_depended_sys_items     = new node;
-        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], new text_simple(strtolower($c_id))), strtolower($c_id));
-        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], new text_simple(strtolower($c_id))), strtolower($c_id));
-        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok' : ''       ], new text_simple(strtolower($c_id))), strtolower($c_id));
+        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [],                        $c_module->dependencies->php   [$c_id] )] ), strtolower($c_id));
+        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [], locale::format_version($c_module->dependencies->system[$c_id]))] ), strtolower($c_id));
+        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok' : ''       ], [new markup('x-title', [], new text_simple(strtoupper($c_id)))]                                                                                              ), strtolower($c_id));
         $c_info = new markup('x-module-info');
         $c_switcher = new field_switcher();
         $c_switcher->attribute_insert('title', new text('Press to select module %%_title to be enabled or disabled', ['title' => $c_module->title]), 'element_attributes');
@@ -96,13 +96,13 @@ namespace effcore\modules\core {
         if ($modules_to_enable) {
           foreach ($modules_to_enable as $c_module) {
             $c_dependencies = $c_module->dependencies->system ?? [];
-            foreach ($c_dependencies as $c_dependency) {
-              if (isset($modules_to_disable[$c_dependency])) {
-                $items['#is_enabled:'.$c_dependency]->error_set();
+            foreach ($c_dependencies as $c_id => $c_version_min) {
+              if (isset($modules_to_disable[$c_id])) {
+                $items['#is_enabled:'.$c_id        ]->error_set();
                 $items['#is_enabled:'.$c_module->id]->error_set(
                   'Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!', [
                   'module_id_1' => $c_module->id,
-                  'module_id_2' => $c_dependency
+                  'module_id_2' => $c_id
                 ]);
               }
             }

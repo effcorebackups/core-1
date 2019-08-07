@@ -7,6 +7,6 @@ module|module_embed
   version: 0.900
   dependencies
     php
-    - =: fileinfo
-    - =: filter
-    - =: hash
+    - fileinfo: 1.0
+    - filter: 7.1.0
+    - hash: 1.0

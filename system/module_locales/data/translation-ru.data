@@ -455,11 +455,14 @@ translations
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
+    - The current version is %%_version_cur: Текущая версия %%_version_cur
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
+    - The PHP extension "%%_name" is too old!: PHP расширение "%%_name" слишком старое!
     - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
+    - The required version is %%_version_req: Требуемая версия %%_version_req
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загруженного файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP модулей!

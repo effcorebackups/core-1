@@ -8,6 +8,6 @@ module|module
   version: 0.900
   dependencies
     php
-    - =: curl
+    - curl: 7.1.0
     system
-    - =: develop
+    - develop: 0.900

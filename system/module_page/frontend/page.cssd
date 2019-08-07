@@ -125,7 +125,7 @@
   x-sticker {
     display: inline-block;
     margin-right: 5px;
-    padding: 1px 6px 2px 6px;
+    padding: 2px 7px;
     border-radius: 8px;
     line-height: 1.1em;
     color: black;
@@ -134,6 +134,10 @@
   x-sticker[data-state='ok'     ] {background: %%_color_ok}
   x-sticker[data-state='warning'] {background: %%_color_warning}
   x-sticker[data-state='error'  ] {background: %%_color_error}
+
+  x-module-info x-sticker {padding: 3px 7px 2px 7px; line-height: 1em; font-size: .8em}
+  x-module-info x-sticker x-version:before {content: 'v'}
+  x-module-info x-sticker x-version {margin-left: .5em}
 
   /* control elements */
 
@@ -253,13 +257,13 @@
   x-module-info x-field[data-type='switcher'] input {margin: 0}
   x-module-info x-label {opacity: .5}
   x-module-info x-label::after {content: ': '}
-  x-module-info x-module-title        {display: block; margin-bottom: 10px; font-size: 1.5em}
-  x-module-info x-module-id           {display: block}
-  x-module-info x-module-version      {display: block}
-  x-module-info x-module-is-embed     {display: block}
-  x-module-info x-module-bundle_id    {display: block}
-  x-module-info x-module-bundle_build {display: block}
-  x-module-info x-module-path         {display: block}
-  x-module-info x-module-copyright    {display: block}
-  x-module-info x-module-description  {display: block}
-  x-module-info x-dependencies        {display: block}
+  x-module-info x-module-title        {display: block; margin-bottom: 20px; font-size: 1.5em}
+  x-module-info x-module-id           {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-version      {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-is-embed     {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-bundle_id    {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-bundle_build {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-path         {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-copyright    {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-module-description  {display: block; margin: 2px 0 2px 20px}
+  x-module-info x-dependencies        {display: block; margin: 2px 0 2px 20px}

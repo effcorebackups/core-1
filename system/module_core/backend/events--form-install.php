@@ -26,10 +26,22 @@ namespace effcore\modules\core {
       $dependencies = [];
       foreach ($embed as $c_module)
         $dependencies += $c_module->dependencies->php ?? [];
-      foreach ($dependencies as $c_dependency) {
-        if (!extension_loaded($c_dependency)) {
-          message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => $c_dependency]), 'error');
+      foreach ($dependencies as $c_name => $c_version_min) {
+        if (!extension_loaded($c_name)) {
+          message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => $c_name]), 'error');
           $items['~install']->disabled_set();
+        } else {
+          $c_version_cur = (new \ReflectionExtension($c_name))->getVersion();
+          if (!version_compare($c_version_cur, $c_version_min, '>=')) {
+            message::insert(new text_multiline([
+              'The PHP extension "%%_name" is too old!',
+              'The current version is %%_version_cur',
+              'The required version is %%_version_req'], [
+              'name'        => $c_name,
+              'version_cur' => $c_version_cur,
+              'version_req' => $c_version_min]), 'error');
+            $items['~install']->disabled_set();
+          }
         }
       }
     # check opcache

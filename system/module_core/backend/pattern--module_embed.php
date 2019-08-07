@@ -44,8 +44,8 @@ namespace effcore {
     $dependencies_php = $this->dependencies->php    ?? [];
     $dependencies_sys = $this->dependencies->system ?? [];
     $boot_status = core::boot_select();
-    foreach ($dependencies_php as $c_id => $null) $dependencies_php[$c_id] = (int)extension_loaded($dependencies_php[$c_id]);
-    foreach ($dependencies_sys as $c_id => $null) $dependencies_sys[$c_id] = (int)isset($boot_status[$c_id]);
+    foreach ($dependencies_php as $c_id => $c_version_min) $dependencies_php[$c_id] = (int)(extension_loaded  ($c_id)  && version_compare((new \ReflectionExtension($c_id))->getVersion(), $c_version_min, '>='));
+    foreach ($dependencies_sys as $c_id => $c_version_min) $dependencies_sys[$c_id] = (int)(isset($boot_status[$c_id]) &&                               static::get($c_id)->version   >=   $c_version_min       );
     return (object)[
       'php' => $dependencies_php,
       'sys' => $dependencies_sys

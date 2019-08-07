@@ -8,4 +8,4 @@ module|module
   version: 0.900
   dependencies
     system
-    - =: develop
+    - develop: 0.900
