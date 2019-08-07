@@ -18,6 +18,6 @@ page_part_presets
 - logotype_main|page_part_preset
     id: logotype_main
     managing_group: Text
-    managing_title: Logotype main
+    managing_title: Main logotype
     type: link
     source: selections/page/logotype_main

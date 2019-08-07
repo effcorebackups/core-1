@@ -19,7 +19,7 @@ forms
             element_attributes
             - name: color_text_id
         - color_main_id|field_checkbox_color
-            title: Main
+            title: Main color
             element_attributes
             - name: color_main_id
         - color_link_id|field_checkbox_color

@@ -1,7 +1,7 @@
 selections
 - logotype_main|selection
     id: logotype_main
-    title: Logotype main
+    title: Main logotype
     decorator_params
     - view_type: ul
     query_params

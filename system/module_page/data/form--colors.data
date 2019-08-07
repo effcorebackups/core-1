@@ -6,7 +6,7 @@ forms
     - novalidate: true
     children
     - colors_main|fieldset
-        title: Main
+        title: Main colors
         children
         - color_page_id|group_palette
             title: Page
@@ -21,7 +21,7 @@ forms
             element_attributes
             - name: color_text_id
         - color_main_id|group_palette
-            title: Main
+            title: Main color
             attributes
             - required: true
             element_attributes

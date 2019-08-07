@@ -266,12 +266,14 @@ translations
     - Logic: Логика
     - login: вход
     - Login: Вход
-    - Logotype main: Логотип основной
     - Logotypes: Логотипы
     - logout: выход
     - Logout: Выход
+    - Main color: Основной цвет
+    - Main colors: Основные цвета
+    - Main logotype: Основной логотип
+    - Main menu: Основное меню
     - Main system module.: Основной модуль системы.
-    - Main: Основн/ое/ой/ая
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
