@@ -43,7 +43,7 @@ namespace effcore {
             $thead->child_insert($thead_row, 'head_row_main');
           # make thead
             foreach (reset($this->data) as $c_name => $c_info) {
-              $c_cell_attributes = [];
+              if (true)                                                     $c_cell_attributes = [];
               if ($this->visibility_rowid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
               if ($c_name != 'attributes') {
@@ -54,12 +54,12 @@ namespace effcore {
             }
           # make tbody
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_row_attributes = static::attributes_shift($c_row);
+              if (true)                                                       $c_row_attributes = static::attributes_shift($c_row);
               if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
               $c_tbody_row = new table_body_row($c_row_attributes);
               foreach ($c_row as $c_name => $c_info) {
-                $c_cell_attributes = static::attributes_shift($c_info);
+                if (true)                                                      $c_cell_attributes = static::attributes_shift($c_info);
                 if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
                 if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
                 $c_tbody_row->child_insert(
@@ -86,7 +86,7 @@ namespace effcore {
             $thead->child_insert($thead_row, 'head_row_main');
           # make thead
             foreach (reset($this->data) as $c_name => $c_info) {
-              $c_cell_attributes = [];
+              if (true)                                                     $c_cell_attributes = [];
               if ($this->visibility_rowid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
               if ($c_name != 'attributes') {
@@ -97,12 +97,12 @@ namespace effcore {
             }
           # make tbody
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_row_attributes = static::attributes_shift($c_row);
+              if (true)                                                       $c_row_attributes = static::attributes_shift($c_row);
               if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
               $c_tbody_row = new table_body_row($c_row_attributes);
               foreach ($c_row as $c_name => $c_info) {
-                $c_cell_attributes = static::attributes_shift($c_info);
+                if (true)                                                      $c_cell_attributes = static::attributes_shift($c_info);
                 if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
                 if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
                 $c_tbody_row->child_insert(
@@ -124,12 +124,12 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
           case 'ul':
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
+              if (true)                                                       $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
               if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
               $c_list = new markup('ul', $c_row_attributes);
               foreach ($c_row as $c_name => $c_info) {
-                $c_cell_attributes = static::attributes_shift($c_info);
+                if (true)                                                      $c_cell_attributes = static::attributes_shift($c_info);
                 if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
                 if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
                 $c_list->child_insert(new markup('li', $c_cell_attributes, [
@@ -148,12 +148,12 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
           case 'dl':
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
+              if (true)                                                       $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
               if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
               $c_list = new markup('dl', $c_row_attributes);
               foreach ($c_row as $c_name => $c_info) {
-                $c_cell_attributes = static::attributes_shift($c_info);
+                if (true)                                                      $c_cell_attributes = static::attributes_shift($c_info);
                 if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
                 if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
                 $c_list->child_insert(new markup('dt', $c_cell_attributes, $c_info['title']), 'title-'.$c_name);
