@@ -9,7 +9,7 @@ namespace effcore {
 
   public $id;
   public $tag_name = 'x-decorator';
-  public $view_type = 'table'; # table | ul | dl | tree
+  public $view_type = 'table'; # table | table-adaptive | ul | dl | tree
   public $tree_managing_mode; # null | simple | simple-draggable
   public $tree_mapping = [];
   public $result_attributes = [];
@@ -74,6 +74,13 @@ namespace effcore {
             $result->child_insert(
               new table($this->attributes_select('result_attributes'), $tbody, $thead)
             );
+            break;
+
+        # ─────────────────────────────────────────────────────────────────────
+        # table-adaptive
+        # ─────────────────────────────────────────────────────────────────────
+          case 'table-adaptive':
+          # @todo: under construction
             break;
 
         # ─────────────────────────────────────────────────────────────────────

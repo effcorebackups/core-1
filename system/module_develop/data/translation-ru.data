@@ -15,21 +15,13 @@ translations
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
+    - Adaptive table: Адаптивная таблица
     - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - Autoincrement: Автоинкремент
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell #%%_number: ячейка №%%_number
-    - cell #1.1: ячейка №1.1
-    - cell #1.2: ячейка №1.2
-    - cell #1.3: ячейка №1.3
-    - cell #2.1: ячейка №2.1
-    - cell #2.2: ячейка №2.2
-    - cell #2.3: ячейка №2.3
-    - cell #3.1: ячейка №3.1
-    - cell #3.2: ячейка №3.2
-    - cell #3.3: ячейка №3.3
     - Checkbox 1: Флаг 1
     - Checkbox 2 (checked): Флаг 2 (установлен)
     - Checkbox 3 (disabled): Флаг 3 (отключён)
@@ -59,13 +51,13 @@ translations
     - failure: неудача
     - Field %%_type.: Поле %%_type.
     - Field 1.1: Поле 1.1
-    - Field 1.2: Поле 1.3
+    - Field 1.2: Поле 1.2
     - Field 1.3: Поле 1.3
     - Field 2.1: Поле 2.1
-    - Field 2.2: Поле 2.3
+    - Field 2.2: Поле 2.2
     - Field 2.3: Поле 2.3
     - Field 3.1: Поле 3.1
-    - Field 3.2: Поле 3.3
+    - Field 3.2: Поле 3.2
     - Field 3.3: Поле 3.3
     - Field binary: Поле binary
     - Field blob: Поле blob
@@ -168,13 +160,13 @@ translations
     - validation_1: валидация_1
     - validation_2: валидация_2
     - value 1.1: значение 1.1
-    - value 1.2: значение 1.3
+    - value 1.2: значение 1.2
     - value 1.3: значение 1.3
     - value 2.1: значение 2.1
-    - value 2.2: значение 2.3
+    - value 2.2: значение 2.2
     - value 2.3: значение 2.3
     - value 3.1: значение 3.1
-    - value 3.2: значение 3.3
+    - value 3.2: значение 3.2
     - value 3.3: значение 3.3
     - Visibility: Видимость
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
