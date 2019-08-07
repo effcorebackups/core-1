@@ -95,7 +95,7 @@ namespace effcore {
       }
       foreach ($files as $c_file) {
         $c_matches = [];
-        preg_match_all('%(?:namespace (?<namespace>[a-zA-Z0-9_\\\\]+)\\s*[{;]\\s*(?<dependencies>.*?|)|)\\s*'.
+        preg_match_all('%(?:namespace (?<namespace>[a-zA-Z0-9_\\\\]+)\\s*[{;]\\s*(?<use>.*?|)|)\\s*'.
                                      '(?<modifier>abstract|final|)\\s*'.
                                      '(?<type>class|trait|interface)\\s+'.
                                      '(?<name>[a-zA-Z0-9_]+)\\s*'.
