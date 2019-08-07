@@ -50,15 +50,9 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Field %%_type.: Поле %%_type.
-    - Field 1.1: Поле 1.1
-    - Field 1.2: Поле 1.2
-    - Field 1.3: Поле 1.3
-    - Field 2.1: Поле 2.1
-    - Field 2.2: Поле 2.2
-    - Field 2.3: Поле 2.3
-    - Field 3.1: Поле 3.1
-    - Field 3.2: Поле 3.2
-    - Field 3.3: Поле 3.3
+    - Field 1: Поле 1
+    - Field 2: Поле 2
+    - Field 3: Поле 3
     - Field binary: Поле binary
     - Field blob: Поле blob
     - Field boolean: Поле boolean
@@ -81,9 +75,6 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - head cell #%%_number: заглавная ячейка №%%_number
-    - head cell #1: заглавная ячейка №1
-    - head cell #2: заглавная ячейка №2
-    - head cell #3: заглавная ячейка №3
     - Indexes: Индексы
     - init.: инициал.
     - interface: интерфейс
