@@ -50,9 +50,9 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Field %%_type.: Поле %%_type.
-    - Field 1: Поле 1
-    - Field 2: Поле 2
-    - Field 3: Поле 3
+    - Field #1: Поле №1
+    - Field #2: Поле №2
+    - Field #3: Поле №3
     - Field binary: Поле binary
     - Field blob: Поле blob
     - Field boolean: Поле boolean

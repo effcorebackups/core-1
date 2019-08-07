@@ -134,9 +134,9 @@ namespace effcore\modules\demo {
     $decorator_table->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_table->data = [
       'rowid-1' => ['attributes' => ['data-row_attribute' => 'value-1', 'class' => ['row_class-1' => 'row_class-1']],
-                    'cell-1' => ['value' => 'value 1.1', 'title' => 'Field 1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
-                    'cell-2' => ['value' => 'value 1.2', 'title' => 'Field 2'],
-                    'cell-3' => ['value' => 'value 1.3', 'title' => 'Field 3']],
+                    'cell-1' => ['value' => 'value 1.1', 'title' => 'Field #1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
+                    'cell-2' => ['value' => 'value 1.2', 'title' => 'Field #2'],
+                    'cell-3' => ['value' => 'value 1.3', 'title' => 'Field #3']],
       'rowid-2' => ['attributes' => ['data-row_attribute' => 'value-2', 'class' => ['row_class-2' => 'row_class-2']],
                     'cell-1' => ['value' => 'value 2.1'],
                     'cell-2' => ['value' => 'value 2.2'],
@@ -155,17 +155,17 @@ namespace effcore\modules\demo {
     $decorator_ul->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_ul->data = [
       'rowid-1' => ['attributes' => ['data-row_attribute' => 'value-1', 'class' => ['row_class-1' => 'row_class-1']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 1.1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 1.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 1.3']],
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 1.1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 1.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 1.3']],
       'rowid-2' => ['attributes' => ['data-row_attribute' => 'value-2', 'class' => ['row_class-2' => 'row_class-2']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 2.1'],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 2.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 2.3']],
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 2.1'],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 2.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 2.3']],
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 3.1'],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 3.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 3.3']]];
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 3.1'],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 3.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 3.3']]];
   # ─────────────────────────────────────────────────────────────────────
   # dl (definition list)
   # ─────────────────────────────────────────────────────────────────────
@@ -176,17 +176,17 @@ namespace effcore\modules\demo {
     $decorator_dl->visibility_cellid = 'visible'; # visible | not_int | hidden
     $decorator_dl->data = [
       'rowid-1' => ['attributes' => ['data-row_attribute' => 'value-1', 'class' => ['row_class-1' => 'row_class-1']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 1.1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 1.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 1.3']],
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 1.1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 1.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 1.3']],
       'rowid-2' => ['attributes' => ['data-row_attribute' => 'value-2', 'class' => ['row_class-2' => 'row_class-2']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 2.1'],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 2.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 2.3']],
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 2.1'],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 2.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 2.3']],
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
-                    'field-1' => ['title' => 'Field 1', 'value' => 'value 3.1'],
-                    'field-2' => ['title' => 'Field 2', 'value' => 'value 3.2'],
-                    'field-3' => ['title' => 'Field 3', 'value' => 'value 3.3']]];
+                    'field-1' => ['title' => 'Field #1', 'value' => 'value 3.1'],
+                    'field-2' => ['title' => 'Field #2', 'value' => 'value 3.2'],
+                    'field-3' => ['title' => 'Field #3', 'value' => 'value 3.3']]];
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
