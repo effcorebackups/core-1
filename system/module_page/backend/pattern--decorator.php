@@ -80,7 +80,43 @@ namespace effcore {
         # table-adaptive
         # ─────────────────────────────────────────────────────────────────────
           case 'table-adaptive':
-          # @todo: under construction
+            $thead     = new markup('x-thead'    );
+            $thead_row = new markup('x-thead-row');
+            $tbody     = new markup('x-tbody'    );
+            $thead->child_insert($thead_row, 'head_row_main');
+          # make thead
+            foreach (reset($this->data) as $c_name => $c_info) {
+              $c_cell_attributes = [];
+              if ($this->visibility_rowid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
+              if ($this->visibility_rowid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
+              if ($c_name != 'attributes') {
+                $thead_row->child_insert(
+                  new table_head_row_cell($c_cell_attributes, $c_info['title']), $c_name
+                );
+              }
+            }
+          # make tbody
+            foreach ($this->data as $c_row_id => $c_row) {
+              $c_row_attributes = static::attributes_shift($c_row);
+              if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
+              if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
+              $c_tbody_row = new table_body_row($c_row_attributes);
+              foreach ($c_row as $c_name => $c_info) {
+                $c_cell_attributes = static::attributes_shift($c_info);
+                if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
+                if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
+                $c_tbody_row->child_insert(
+                  new table_body_row_cell($c_cell_attributes, $c_info['value']), $c_name
+                );
+              }
+              $tbody->child_insert(
+                $c_tbody_row, $c_row_id
+              );
+            }
+          # make result
+            $result->child_insert(
+              new markup('x-table', $this->attributes_select('result_attributes'), [$tbody, $thead])
+            );
             break;
 
         # ─────────────────────────────────────────────────────────────────────
