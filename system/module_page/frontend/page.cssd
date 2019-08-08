@@ -87,16 +87,20 @@
   x-table x-body {border-bottom: 1px solid %%_color_main; background: %%_color_table_row_even}
   x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color_table_row_odd}
   x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color_table_row_even}
-  x-table x-body x-row                 x-cell:empty::after {content: 'x'; opacity: .3}
+  x-table x-body x-row                 x-cell x-title {display: none}
+  x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
   x-table x-head x-cell[data-cellid='actions'] {width: 1%}
-  x-table x-body x-cell[data-cellid='actions']:empty::after {content: ''}
+  x-table x-body x-cell[data-cellid='actions'] x-value:empty::after {content: ''}
 
   @media screen and (max-width: 600px) {
-    x-table        {display: block}
-    x-table x-head {display: block}
-    x-table x-body {display: block}
-    x-table x-row  {display: block}
-    x-table x-cell {display: block}
+    x-table              {display: block}
+    x-table x-head       {display: block}
+    x-table x-head x-row {display: none}
+    x-table x-body       {display: block}
+    x-table x-row        {display: block}
+    x-table x-cell       {display: block}
+    x-table x-body x-row x-cell x-title {display: inline-block; margin-right: .5em}
+    x-table x-body x-row x-cell x-title::after {content: ':'}
   }
 
   /* messages */
@@ -205,6 +209,7 @@
   x-decorator[data-view-type='dl'] dl    {margin: 0; padding: 0}
   x-decorator[data-view-type='dl'] dl dt {margin: 0; padding: 3px 10px 3px 0; float: left; clear: left; width: 200px}
   x-decorator[data-view-type='dl'] dl dd {margin: 0 0 0 210px; padding: 3px 0 3px 3px}
+  x-decorator[data-view-type='dl'] dl dd:empty::after {content: 'x'; opacity: .3}
 
   /* x-selection */
 
