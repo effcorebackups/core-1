@@ -144,7 +144,7 @@ namespace effcore\modules\demo {
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
                     'cell-1' => ['value' => 'value 3.1'],
                     'cell-2' => ['value' => 'value 3.2'],
-                    'cell-3' => ['value' => 'value 3.3']]];
+                    'cell-3' => ['value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
   # ul (unordered list)
   # ─────────────────────────────────────────────────────────────────────
@@ -165,7 +165,7 @@ namespace effcore\modules\demo {
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
                     'field-1' => ['title' => 'Field #1', 'value' => 'value 3.1'],
                     'field-2' => ['title' => 'Field #2', 'value' => 'value 3.2'],
-                    'field-3' => ['title' => 'Field #3', 'value' => 'value 3.3']]];
+                    'field-3' => ['title' => 'Field #3', 'value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
   # dl (definition list)
   # ─────────────────────────────────────────────────────────────────────
@@ -186,7 +186,7 @@ namespace effcore\modules\demo {
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
                     'field-1' => ['title' => 'Field #1', 'value' => 'value 3.1'],
                     'field-2' => ['title' => 'Field #2', 'value' => 'value 3.2'],
-                    'field-3' => ['title' => 'Field #3', 'value' => 'value 3.3']]];
+                    'field-3' => ['title' => 'Field #3', 'value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────

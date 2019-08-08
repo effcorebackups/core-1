@@ -55,14 +55,13 @@
   h3 + table {margin-top: 20px}
 
   table {border-collapse: collapse; width: 100%; margin: 50px 0}
+  table td, table th {padding: 12px 15px}
   table thead {border-bottom: 5px solid %%_color_main}
-  table thead th {padding: 12px 15px; font-weight: normal; font-size: 1.2em; text-align: left}
-  table tbody {background: %%_color_table_row_even}
-  table td {padding: 12px 15px}
-  table tr:nth-child(odd)    td {background-color: %%_color_table_row_odd}
-  table tr:nth-child(even)   td {background-color: %%_color_table_row_even}
-  table tr:nth-last-child(1) td {border-bottom: 1px solid %%_color_main}
-  table tr td:empty::after {content: 'x'; opacity: .3}
+  table thead th {font-weight: normal; text-align: left; font-size: 1.2em}
+  table tbody {border-bottom: 1px solid %%_color_main; background: %%_color_table_row_even}
+  table tbody tr:nth-child(odd)  td {background-color: %%_color_table_row_odd}
+  table tbody tr:nth-child(even) td {background-color: %%_color_table_row_even}
+  table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
   table tr th[data-cellid='actions'] {width: 1%}
   table tr td[data-cellid='actions']:empty::after {content: ''}
 
@@ -75,11 +74,22 @@
 
   /* adaptive table */
 
-  x-table {display: table; width: 100%; box-sizing: border-box; border-collapse: collapse; margin: 50px 0}
+  x-table        {display: table}
   x-table x-head {display: table-header-group}
   x-table x-body {display: table-row-group}
   x-table x-row  {display: table-row}
   x-table x-cell {display: table-cell}
+
+  x-table {width: 100%; box-sizing: border-box; border-collapse: collapse; margin: 50px 0}
+  x-table x-cell {padding: 12px 15px}
+  x-table x-head {border-bottom: 5px solid %%_color_main}
+  x-table x-head x-cell {font-size: 1.2em}
+  x-table x-body {border-bottom: 1px solid %%_color_main; background: %%_color_table_row_even}
+  x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color_table_row_odd}
+  x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color_table_row_even}
+  x-table x-body x-row                 x-cell:empty::after {content: 'x'; opacity: .3}
+  x-table x-head x-cell[data-cellid='actions'] {width: 1%}
+  x-table x-body x-cell[data-cellid='actions']:empty::after {content: ''}
 
   /* messages */
 
