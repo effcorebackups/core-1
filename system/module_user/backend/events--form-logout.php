@@ -19,7 +19,7 @@ namespace effcore\modules\user {
   static function on_init($event, $form, $items) {
     $sessions       = session::select_all_by_id_user(user::get_current()->id);
     $session_active = session::select();
-    $decorator = new decorator('table');
+    $decorator = new decorator('table-adaptive');
     $decorator->id = 'sessions_logout';
     $form->child_select('info')->children_delete();
     $form->child_select('info')->child_insert(new markup('h2', [], 'Sessions'), 'title');
