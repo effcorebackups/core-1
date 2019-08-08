@@ -90,6 +90,7 @@
   x-table x-body x-row                 x-cell x-title {display: none}
   x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
   x-table x-head x-cell[data-cellid='actions'] {width: 1%}
+  x-table x-body x-cell[data-cellid='actions'] {text-align: right}
   x-table x-body x-cell[data-cellid='actions'] x-value:empty::after {content: ''}
 
   @media screen and (max-width: 600px) {
@@ -98,10 +99,13 @@
     x-table x-head x-row {display: none}
     x-table x-body       {display: block}
     x-table x-row        {display: block}
-    x-table x-cell       {display: block}
+    x-table x-cell       {display: block; padding: 3px 15px}
+    x-table x-cell:first-child {padding-top:    14px}
+    x-table x-cell:last-child  {padding-bottom: 14px}
     x-table x-body x-row x-cell x-title {display: inline-block; margin-right: .5em}
     x-table x-body x-row x-cell x-title:empty {display: none}
     x-table x-body x-row x-cell x-title:not(:empty)::after {content: ':'}
+    x-table x-body x-row x-cell[data-cellid='actions'] {text-align: left}
   }
 
   /* messages */
@@ -173,10 +177,9 @@
   /* control elements */
 
   x-actions x-action a em {display: none}
-  x-actions x-action[data-title='select'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100%  -1px}
-  x-actions x-action[data-title='update'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100% -41px}
-  x-actions x-action[data-title='delete'] a {padding-right: 25px; background: url('images/icons-actions_list.svgd') no-repeat 100% -61px}
-  x-decorator[data-view-type='table'] td[data-cellid='actions'] {text-align: right}
+  x-actions x-action[data-title='select'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0  -1px}
+  x-actions x-action[data-title='update'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -41px}
+  x-actions x-action[data-title='delete'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -61px}
 
   /* sessions_logout */
 
