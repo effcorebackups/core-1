@@ -100,7 +100,8 @@
     x-table x-row        {display: block}
     x-table x-cell       {display: block}
     x-table x-body x-row x-cell x-title {display: inline-block; margin-right: .5em}
-    x-table x-body x-row x-cell x-title::after {content: ':'}
+    x-table x-body x-row x-cell x-title:empty {display: none}
+    x-table x-body x-row x-cell x-title:not(:empty)::after {content: ':'}
   }
 
   /* messages */
@@ -214,8 +215,9 @@
   /* x-selection */
 
   x-selection {display: block}
-  x-selection x-decorator[data-view-type='table'] td[data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  x-selection x-decorator[data-view-type='table'] td[data-cellid='checkbox'] x-field {margin: 0}
+  x-selection table *[data-cellid='checkbox'] {width: 1%; padding-right: 0}
+  x-selection       *[data-cellid='checkbox'] x-field {margin: 0}
+  x-selection       *[data-cellid='checkbox'] x-field input {margin: 0}
 
   /* x-no-result */
 

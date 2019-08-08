@@ -3,7 +3,7 @@ selections
     id: demo_data_join
     title: Selection of "demo_data" entities + join
     decorator_params
-    - view_type: table
+    - view_type: table-adaptive
     pager_is_on: true
     join
     - demo_data_join
