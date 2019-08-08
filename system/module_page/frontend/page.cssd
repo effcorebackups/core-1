@@ -17,8 +17,8 @@
   *[data-area-id]:empty {display: none}
   *[data-area-id]::after {content: ''; clear: both; display: block}
   *[data-area-type='table' ] {display: table; width: 100%; box-sizing: border-box}
-  *[data-area-type='column'] {display: table-cell}
   *[data-area-type='row'   ] {display: table-row}
+  *[data-area-type='column'] {display: table-cell}
 
   /* headers */
 
@@ -72,6 +72,14 @@
   table[data-is-compact='true'] td {padding: 3px 7px}
   table[data-is-compact='true'] td:first-child {padding-left: 17px}
   table[data-is-compact='true'] td:last-child {padding-right: 17px}
+
+  /* adaptive table */
+
+  x-table {display: table; width: 100%; box-sizing: border-box; border-collapse: collapse; margin: 50px 0}
+  x-table x-head {display: table-header-group}
+  x-table x-body {display: table-row-group}
+  x-table x-row  {display: table-row}
+  x-table x-cell {display: table-cell}
 
   /* messages */
 
