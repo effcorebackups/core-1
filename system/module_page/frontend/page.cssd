@@ -91,6 +91,14 @@
   x-table x-head x-cell[data-cellid='actions'] {width: 1%}
   x-table x-body x-cell[data-cellid='actions']:empty::after {content: ''}
 
+  @media screen and (max-width: 600px) {
+    x-table        {display: block}
+    x-table x-head {display: block}
+    x-table x-body {display: block}
+    x-table x-row  {display: block}
+    x-table x-cell {display: block}
+  }
+
   /* messages */
 
   x-messages {display: block; margin: 100px auto}
