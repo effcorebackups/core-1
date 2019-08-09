@@ -9,7 +9,10 @@ namespace effcore {
 
   public $id;
   public $tag_name = 'x-decorator';
-  public $view_type = 'table'; # table | table-adaptive | ul | dl | tree
+  public $view_type = 'table'; # table | table-adaptive | ul | dl | tree | template
+  public $template = 'markup_html';
+  public $template_row = null;
+  public $template_row_mapping = [];
   public $tree_managing_mode; # null | simple | simple-draggable
   public $tree_mapping = [];
   public $result_attributes = [];
@@ -206,6 +209,23 @@ namespace effcore {
             $result->child_insert(
               $trees, 'trees'
             );
+            break;
+
+        # ─────────────────────────────────────────────────────────────────────
+        # template
+        # ─────────────────────────────────────────────────────────────────────
+          case 'template':
+            foreach ($this->data as $c_row_id => $c_row) {
+              $c_template = template::make_new($this->template_row);
+              foreach ($this->template_row_mapping as $c_arg_name => $c_cell_name) {
+                if (is_array($c_row[$c_cell_name])) {
+                  $c_template->arg_set($c_arg_name, $c_row[$c_cell_name]['value']);
+                }
+              }
+              $result->child_insert(
+                new text($c_template->render()), $c_row_id
+              );
+            }
             break;
 
         }

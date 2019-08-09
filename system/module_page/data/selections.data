@@ -3,7 +3,12 @@ selections
     id: logotype_main
     title: Main logotype
     decorator_params
-    - view_type: ul
+    - view_type: template
+    - template_row: logotype
+    - template_row_mapping
+      - alt: logotype.title
+      - url: logotype.url
+      - src: logotype.path
     query_params
     - conditions
       - id_!f: ~logotype.id
