@@ -19,6 +19,9 @@ instances
             id: menu_user_anonymous
         - menu_main|page_part_preset_link
             id: menu_main
+      - top
+        - logotype_main|page_part_preset_link
+            id: logotype_main
       - title
         - title|page_part_preset_link
             id: title
@@ -42,6 +45,9 @@ instances
             id: menu_user_anonymous
         - menu_main|page_part_preset_link
             id: menu_main
+      - top
+        - logotype_main|page_part_preset_link
+            id: logotype_main
       - title
         - title|page_part_preset_link
             id: title
@@ -65,6 +71,9 @@ instances
             id: menu_user_anonymous
         - menu_main|page_part_preset_link
             id: menu_main
+      - top
+        - logotype_main|page_part_preset_link
+            id: logotype_main
       - title
         - title|page_part_preset_link
             id: title
@@ -88,6 +97,9 @@ instances
             id: menu_user_anonymous
         - menu_main|page_part_preset_link
             id: menu_main
+      - top
+        - logotype_main|page_part_preset_link
+            id: logotype_main
       - title
         - title|page_part_preset_link
             id: title
@@ -111,6 +123,9 @@ instances
             id: menu_user_registered
         - menu_main|page_part_preset_link
             id: menu_main
+      - top
+        - logotype_main|page_part_preset_link
+            id: logotype_main
       - title
         - title|page_part_preset_link
             id: title
