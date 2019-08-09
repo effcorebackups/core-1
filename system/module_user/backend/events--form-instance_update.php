@@ -39,9 +39,6 @@ namespace effcore\modules\user {
     # field 'avatar'
       if ($entity->name == 'user' && !empty($form->_instance)) {
         $items['#avatar']->fixed_name = 'avatar-'.$form->_instance->id;
-        $items['#avatar']->pool_values_init_old_from_storage(
-          $form->_instance->avatar_path ? [$form->_instance->avatar_path] : []
-        );
       }
     # group 'access'
       if (!empty($entity->ws_access) && !empty($form->_instance)) {

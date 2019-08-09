@@ -25,9 +25,7 @@ namespace effcore\modules\demo {
     $items['#select']->option_insert('Option 8 (inserted from code)', 'option_8', [], 'group_2');
     $items['#select']->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
     $items['*palette_color']->value_set('modern_blue');
-    $items['#file']->pool_values_init_old_from_storage(
-      data::select('files_demo') ?: []
-    );
+    $items['#file']->value_set(data::select('files_demo'));
   }
 
   static function on_validate($event, $form, $items) {

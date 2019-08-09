@@ -65,6 +65,15 @@ namespace effcore {
   public $pool_old = [];
   public $pool_new = [];
 
+  function value_get() {
+  }
+
+  function value_set($value) {
+    if (is_string($value)) $value = [$value];
+    if (is_null  ($value)) $value = [      ];
+    $this->pool_values_init_old_from_storage($value);
+  }
+
   function file_size_max_get() {
     $bytes_1 = core::is_human_bytes($this->max_file_size) ?
                core::human_to_bytes($this->max_file_size) : $this->max_file_size;
@@ -364,8 +373,8 @@ namespace effcore {
         case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]);                                                                   return;
         case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]);                                                        return;
       }
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error]); return;}
-      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')]); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error                                                                                               ]); return;}
+      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')                                                                                 ]); return;}
       if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])]); return;}
     }
     return true;

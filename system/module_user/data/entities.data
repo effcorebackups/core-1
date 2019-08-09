@@ -323,7 +323,6 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_file
-        field_value_manual_set: true
         field_value_manual_get: true
         field_properties
         - max_file_size: 10K
