@@ -72,15 +72,15 @@ namespace effcore {
        return $values[0];
   }
 
+  function value_set($value) {
+    $this->pool_values_init_old_from_storage($value ? [$value] : []);
+  }
+
   function values_get() {
     if ($this->pool_result == [])
       foreach ($this->pool_files_save() as $c_info)
         $this->pool_result[] = (new file($c_info->path))->path_get_relative();
     return $this->pool_result;
-  }
-
-  function value_set($value) {
-    $this->pool_values_init_old_from_storage($value ? [$value] : []);
   }
 
   function values_set($values) {

@@ -1,6 +1,6 @@
 tokens
 # ─────────────────────────────────────────────────────────────────────
-# global tokens
+# colors
 # ─────────────────────────────────────────────────────────────────────
 - color_page
     match: %%_color_page
@@ -92,5 +92,12 @@ tokens
     handler: \effcore\modules\page\events_token::on_replace
 - color_button_text
     match: %%_color_button_text
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
+# ─────────────────────────────────────────────────────────────────────
+# mixed
+# ─────────────────────────────────────────────────────────────────────
+- instance_id_context
+    match: %%_instance_id_context
     type: code
     handler: \effcore\modules\page\events_token::on_replace

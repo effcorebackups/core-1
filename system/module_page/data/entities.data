@@ -203,19 +203,17 @@ entities
         field_element_attributes
         - required: false
     - path
-        title: Logotype
+        title: File
         type: varchar
         size: 1024
         collate: nocase
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_file
-        field_value_manual_set: true
-        field_value_manual_get: true
         field_properties
         - max_file_size: 10K
         - upload_dir: logotypes/
-        - fixed_name: logotypes-%%_instance_id
+        - fixed_name: logotype-%%_instance_id_context
         - allowed_types
           - =: gif
           - =: jpeg
