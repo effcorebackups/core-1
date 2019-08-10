@@ -67,6 +67,12 @@ namespace effcore {
   public $pool_result = [];
 
   function value_get() {
+    $values = $this->values_get();
+    if (isset($values[0]))
+       return $values[0];
+  }
+
+  function values_get() {
     if ($this->pool_result == [])
       foreach ($this->pool_files_save() as $c_info)
         $this->pool_result[] = (new file($c_info->path))->path_get_relative();
@@ -74,10 +80,11 @@ namespace effcore {
   }
 
   function value_set($value) {
-    if (is_string($value) && strlen($value) != 0) $value = [$value];
-    if (is_string($value) && strlen($value) == 0) $value = [      ];
-    if (is_null  ($value)                       ) $value = [      ];
-    $this->pool_values_init_old_from_storage($value);
+    $this->pool_values_init_old_from_storage($value ? [$value] : []);
+  }
+
+  function values_set($values) {
+    $this->pool_values_init_old_from_storage($values ?: []);
   }
 
   function file_size_max_get() {

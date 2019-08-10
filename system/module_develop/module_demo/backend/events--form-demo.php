@@ -25,7 +25,7 @@ namespace effcore\modules\demo {
     $items['#select']->option_insert('Option 8 (inserted from code)', 'option_8', [], 'group_2');
     $items['#select']->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
     $items['*palette_color']->value_set('modern_blue');
-    $items['#file']->value_set(data::select('files_demo'));
+    $items['#file']->values_set(data::select('files_demo'));
   }
 
   static function on_validate($event, $form, $items) {
@@ -84,7 +84,7 @@ namespace effcore\modules\demo {
         if ($items['*radiobuttons'   ]->value_get  ()      != 'radiobuttons_2'     ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*radiobuttons'   ]->title)]) ); # …\group_radiobuttons
         if ($items['*palette_color'  ]->value_get  ()      != 'modern_blue'        ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color'  ]->title)]) ); # …\group_palette
       # save the files
-        $paths = $items['#file']->value_get();
+        $paths = $items['#file']->values_get();
         if (count($paths)) data::update('files_demo', $paths);
         else               data::delete('files_demo');
         break;

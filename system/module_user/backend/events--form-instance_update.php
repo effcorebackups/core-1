@@ -131,9 +131,6 @@ namespace effcore\modules\user {
         # field 'avatar'
           if ($entity->name == 'user' && !empty($form->_instance)) {
             page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
-            $avatar_info = $items['#avatar_path']->value_get();
-            $form->_instance->avatar_path = !empty($avatar_info[0]) ?
-                                                   $avatar_info[0] : null;
           }
         # group 'access'
           if (!empty($entity->ws_access) && !empty($form->_instance)) {
