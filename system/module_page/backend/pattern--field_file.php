@@ -62,14 +62,15 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
 # ─────────────────────────────────────────────────────────────────────
-  public $pool_old = [];
-  public $pool_new = [];
+  public $pool_old    = [];
+  public $pool_new    = [];
+  public $pool_result = [];
 
   function value_get() {
-    $result = [];
-    foreach ($this->pool_files_save() as $c_info)
-      $result[] = (new file($c_info->path))->path_get_relative();
-    return $result;
+    if ($this->pool_result == [])
+      foreach ($this->pool_files_save() as $c_info)
+        $this->pool_result[] = (new file($c_info->path))->path_get_relative();
+    return $this->pool_result;
   }
 
   function value_set($value) {
