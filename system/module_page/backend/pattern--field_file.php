@@ -10,7 +10,7 @@ namespace effcore {
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. if one file from new uploaded set of files has an error, all set will be rejected
-  # 2. removing process is undepended from other even if a new uploaded set has an error
+  # 2. removing process does not depend from other even if a new uploaded set has an error
   # 3. the new files which marked as 'removed' will be removed in 'on_validate'
   # 4. the old files which marked as 'removed' will be removed in 'on_submit'
   # ──────────────────────────────────────────────────────────────────────────────────────────
@@ -66,6 +66,10 @@ namespace effcore {
   public $pool_new = [];
 
   function value_get() {
+    $result = [];
+    foreach ($this->pool_files_save() as $c_info)
+      $result[] = (new file($c_info->path))->path_get_relative();
+    return $result;
   }
 
   function value_set($value) {

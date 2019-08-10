@@ -84,10 +84,7 @@ namespace effcore\modules\demo {
         if ($items['*radiobuttons'   ]->value_get  ()      != 'radiobuttons_2'     ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*radiobuttons'   ]->title)]) ); # …\group_radiobuttons
         if ($items['*palette_color'  ]->value_get  ()      != 'modern_blue'        ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color'  ]->title)]) ); # …\group_palette
       # save the files
-        $paths = [];
-        foreach ($items['#file']->pool_files_save() as $c_info) {
-          $paths[] = (new file($c_info->path))->path_get_relative();
-        }
+        $paths = $items['#file']->value_get();
         if (count($paths)) data::update('files_demo', $paths);
         else               data::delete('files_demo');
         break;
