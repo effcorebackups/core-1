@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', function(){
   var selections = document.querySelectorAll('x-selection');
   if (selections instanceof NodeList) {
     selections.forEach(function(c_selection){
-      var th_for_checkbox = c_selection.querySelector('x-decorator[data-view-type=table] th[data-cellid=checkbox]'),
-          checkboxes      = th_for_checkbox ? th_for_checkbox.parentNode.parentNode.parentNode.querySelectorAll('td[data-cellid=checkbox] input[type=checkbox]') : null;
-      if (th_for_checkbox && checkboxes instanceof NodeList) {
+      var x_head_cell = c_selection.querySelector('x-decorator[data-view-type=table-adaptive]        x-head x-cell[data-cellid=checkbox]'),
+          checkboxes  = x_head_cell ? x_head_cell.parentNode.parentNode.parentNode.querySelectorAll('x-body x-cell[data-cellid=checkbox] input[type=checkbox]') : null;
+      if (x_head_cell && checkboxes instanceof NodeList) {
         var check_all = document.createElement('input');
             check_all.type = 'checkbox';
             check_all.title = effcore.tokens['text_select_all_rows'];
-        th_for_checkbox.appendChild(check_all);
+        x_head_cell.appendChild(check_all);
         check_all.addEventListener('change', function(){
           checkboxes.forEach(function(c_checkbox){
             c_checkbox.checked = check_all.checked;
