@@ -73,8 +73,9 @@ namespace effcore {
   }
 
   function value_set($value) {
-    if (is_string($value)) $value = [$value];
-    if (is_null  ($value)) $value = [      ];
+    if (is_string($value) && strlen($value) != 0) $value = [$value];
+    if (is_string($value) && strlen($value) == 0) $value = [      ];
+    if (is_null  ($value)                       ) $value = [      ];
     $this->pool_values_init_old_from_storage($value);
   }
 

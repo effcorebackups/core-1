@@ -333,8 +333,6 @@ entities
           - =: jpeg
           - =: jpg
           - =: png
-        field_element_attributes
-        - name: avatar
         field_element_attributes_on_insert
         - disabled: true
     - timezone

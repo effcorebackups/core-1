@@ -38,7 +38,7 @@ namespace effcore\modules\user {
       }
     # field 'avatar'
       if ($entity->name == 'user' && !empty($form->_instance)) {
-        $items['#avatar']->fixed_name = 'avatar-'.$form->_instance->id;
+        $items['#avatar_path']->fixed_name = 'avatar-'.$form->_instance->id;
       }
     # group 'access'
       if (!empty($entity->ws_access) && !empty($form->_instance)) {
@@ -131,12 +131,9 @@ namespace effcore\modules\user {
         # field 'avatar'
           if ($entity->name == 'user' && !empty($form->_instance)) {
             page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
-            $avatar_info = $items['#avatar']->pool_files_save();
-            if (!empty($avatar_info[0]->path)) {
-               $c_file = new file($avatar_info[0]->path);
-               $form->_instance->avatar_path = $c_file->path_get_relative(); } else {
-               $form->_instance->avatar_path = null;
-            }
+            $avatar_info = $items['#avatar_path']->value_get();
+            $form->_instance->avatar_path = !empty($avatar_info[0]) ?
+                                                   $avatar_info[0] : null;
           }
         # group 'access'
           if (!empty($entity->ws_access) && !empty($form->_instance)) {
