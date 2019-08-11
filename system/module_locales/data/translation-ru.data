@@ -452,6 +452,7 @@ translations
     - Text direction: Направление текста
     - Text: Текст
     - Textarea: Текстовая область
+    - Texts: Тексты
     - The changes was deleted.: Изменения были удалены.
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.

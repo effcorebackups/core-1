@@ -227,3 +227,58 @@ entities
         type: primary
         fields
         - =: id
+- text|entity
+    name: text
+    title: Text
+    title_plural: Texts
+    catalog_name: texts
+    managing_is_on: true
+    managing_group: Content
+    ws_created: true
+    ws_updated: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_id_text
+        field_properties
+        - is_validate_uniqueness: true
+        field_element_attributes_on_update
+        - disabled: true
+    - description
+        title: Description
+        type: varchar
+        collate: nocase
+        size: 1024
+        not_null: true
+        check: (title <> '')
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - required: false
+        - maxlength: 1024
+    - text
+        title: Text
+        type: blob
+        filter_insert: \effcore\core::return_null_if_empty
+        filter_update: \effcore\core::return_null_if_empty
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_textarea
+        field_element_attributes
+        - required: false
+        - minlength: 1
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id

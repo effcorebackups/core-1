@@ -141,3 +141,10 @@ instances
     - url: /
     - path: null
     - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- text_welcome|instance
+    entity_name: text
+    values
+    - id: welcome
+    - description: Welcome message
+    - text: Welcome to our site!
