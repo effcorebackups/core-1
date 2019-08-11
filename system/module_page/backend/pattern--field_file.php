@@ -212,7 +212,7 @@ namespace effcore {
   # move pool_old to pool_new
     $this->pool_new = [];
     $this->pool_manager_set_deleted_items('old', []);
-    $this->pool_cache_set('old_to_delete', []);
+    $this->pool_cache_set('old_to_delete',       []);
     $this->pool_values_init_old_from_storage($result_paths);
   # return result array
     return $result;
@@ -290,22 +290,29 @@ namespace effcore {
 
   protected function pool_manager_insert_action($info, $id, $type) {
     $name = $this->name_get();
+    $element_attributes['name'    ] = 'manager_delete_'.$name.'_'.$type.'[]';
+    $element_attributes['value'   ] = $id;
+    $element_attributes['disabled'] = $this->disabled_get();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
-      new text('delete file "%%_name"', ['name' => $info->file]), null, ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
+      new text('delete file "%%_name"', ['name' => $info->file]), null, $element_attributes
     );
   }
 
   protected function pool_manager_get_deleted_items($type) {
-    $name = $this->name_get();
-    return core::array_kmap(
-      static::request_values_get('manager_delete_'.$name.'_'.$type)
-    );
+    if ($this->disabled_get() == false) {
+      $name = $this->name_get();
+      return core::array_kmap(
+        static::request_values_get('manager_delete_'.$name.'_'.$type)
+      );
+    }
   }
 
   protected function pool_manager_set_deleted_items($type, $items) {
-    $name = $this->name_get();
-    static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
+    if ($this->disabled_get() == false) {
+      $name = $this->name_get();
+      static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
+    }
   }
 
   ###########################
