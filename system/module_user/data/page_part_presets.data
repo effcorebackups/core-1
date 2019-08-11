@@ -19,6 +19,7 @@ page_part_presets
     source: \effcore\modules\menu\events_page::on_show_block_tree_sql
     args
     - id_tree: user_anonymous
+# ─────────────────────────────────────────────────────────────────────
 - form_login|page_part_preset
     id: form_login
     managing_group: Form
@@ -51,3 +52,12 @@ page_part_presets
     - =: content
     type: link
     source: forms/user/logout
+# ─────────────────────────────────────────────────────────────────────
+- selection_user|page_part_preset
+    id: selection_user
+    managing_group: Selection
+    managing_title: User
+    in_areas
+    - =: content
+    type: link
+    source: selections/user/user
