@@ -30,3 +30,17 @@ selections
         type: field
         entity_name: logotype
         entity_field_name: path
+- text_welcome|selection
+    id: text_welcome
+    title: Welcome message
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - operator: =
+      - id_!v: welcome
+    - limit: 1
+    fields
+    - text.text
+        type: field
+        entity_name: text
+        entity_field_name: text

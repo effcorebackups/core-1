@@ -1,25 +1,26 @@
 page_part_presets
 - title|page_part_preset
     id: title
-    managing_group: Text
-    managing_title: Title
+    managing_group: Other
+    managing_title: Page title
     in_areas
     - =: top
     - =: title
     - =: content
     type: code
     source: \effcore\modules\page\events_page::on_show_title
-- welcome|page_part_preset
-    id: welcome
-    managing_group: Text
-    managing_title: Welcome message
-    in_areas
-    - =: content
-    type: text
-    source: Welcome to our site!
+# ─────────────────────────────────────────────────────────────────────
 - logotype_main|page_part_preset
     id: logotype_main
-    managing_group: Text
+    managing_group: Selection
     managing_title: Main logotype
     type: link
     source: selections/page/logotype_main
+- text_welcome|page_part_preset
+    id: text_welcome
+    managing_group: Selection
+    managing_title: Welcome message
+    in_areas
+    - =: content
+    type: link
+    source: selections/page/text_welcome

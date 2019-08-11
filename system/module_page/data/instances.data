@@ -26,8 +26,8 @@ instances
         - title|page_part_preset_link
             id: title
       - content
-        - welcome|page_part_preset_link
-            id: welcome
+        - text_welcome|page_part_preset_link
+            id: text_welcome
 - page_login|instance
     entity_name: page
     values
