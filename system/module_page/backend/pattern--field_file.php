@@ -292,7 +292,7 @@ namespace effcore {
     $name = $this->name_get();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
-      translation::get('delete file "%%_name"', ['name' => $info->file]), null, ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
+      new text('delete file "%%_name"', ['name' => $info->file]), null, ['name' => 'manager_delete_'.$name.'_'.$type.'[]', 'value' => $id]
     );
   }
 
