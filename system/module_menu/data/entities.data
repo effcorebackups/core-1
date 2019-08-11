@@ -146,6 +146,7 @@ entities
         field_class: \effcore\field_url
         field_element_attributes
         - required: false
+        - maxlength: 2048
     constraints
     - primary_id
         type: primary

@@ -75,6 +75,8 @@ entities
         field_is_visible_on_insert: true
         field_is_visible_on_update: true
         field_class: \effcore\field_text
+        field_element_attributes
+        - maxlength: 1024
     - url
         title: URL
         type: varchar
@@ -190,6 +192,7 @@ entities
         field_class: \effcore\field_text
         field_element_attributes
         - required: false
+        - maxlength: 1024
     - url
         title: URL
         type: varchar
