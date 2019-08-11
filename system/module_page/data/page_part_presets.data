@@ -13,6 +13,8 @@ page_part_presets
     id: welcome
     managing_group: Text
     managing_title: Welcome message
+    in_areas
+    - =: content
     type: text
     source: Welcome to our site!
 - logotype_main|page_part_preset

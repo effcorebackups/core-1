@@ -1,0 +1,9 @@
+page_part_presets
+- selection_user|page_part_preset
+    id: selection_user
+    managing_group: Selection
+    managing_title: User
+    in_areas
+    - =: content
+    type: link
+    source: selections/user/user

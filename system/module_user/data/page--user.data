@@ -19,6 +19,5 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - selection_user|page_part
-          type: link
-          source: selections/user/user
+      - selection_user|page_part_preset_link
+          id: selection_user
