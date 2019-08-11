@@ -37,7 +37,7 @@ templates
 - logotype
     name: logotype
     type: text
-    data: <a href="%%_url" data-id="logotype"><img src="%%_src" alt="%%_alt"/></a>
+    data: <a data-id="logotype" href="%%_url" title="%%_title"><img src="%%_src" alt="%%_title"/></a>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────

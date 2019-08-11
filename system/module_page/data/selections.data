@@ -8,7 +8,7 @@ selections
     - template: children
     - template_row: logotype
     - template_row_mapping
-      - alt: logotype.title
+      - title: logotype.title
       - url: logotype.url
       - src: logotype.path
     query_params
