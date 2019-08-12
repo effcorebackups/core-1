@@ -33,6 +33,13 @@ selections
 - text_welcome|selection
     id: text_welcome
     title: Welcome message
+    template: children
+    decorator_params
+    - view_type: template
+    - template: children
+    - template_row: text
+    - template_row_mapping
+      - text: text.text
     query_params
     - conditions
       - id_!f: ~text.id

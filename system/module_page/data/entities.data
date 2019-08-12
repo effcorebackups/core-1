@@ -280,6 +280,7 @@ entities
         field_element_attributes
         - required: false
         - minlength: 1
+        - maxlength: false
     constraints
     - primary_id
         type: primary
