@@ -3,8 +3,6 @@ page_part_presets
     id: menu_user_registered
     managing_group: Menu
     managing_title: User registered
-    in_areas
-    - =: menu
     type: code
     source: \effcore\modules\menu\events_page::on_show_block_tree_sql
     args
@@ -13,8 +11,6 @@ page_part_presets
     id: menu_user_anonymous
     managing_group: Menu
     managing_title: User anonymous
-    in_areas
-    - =: menu
     type: code
     source: \effcore\modules\menu\events_page::on_show_block_tree_sql
     args
@@ -57,7 +53,5 @@ page_part_presets
     id: selection_user
     managing_group: Selection
     managing_title: User
-    in_areas
-    - =: content
     type: link
     source: selections/user/user

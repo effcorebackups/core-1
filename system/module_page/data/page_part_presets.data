@@ -3,10 +3,6 @@ page_part_presets
     id: title
     managing_group: Other
     managing_title: Page title
-    in_areas
-    - =: top
-    - =: title
-    - =: content
     type: code
     source: \effcore\modules\page\events_page::on_show_title
 # ─────────────────────────────────────────────────────────────────────
@@ -20,7 +16,5 @@ page_part_presets
     id: text_welcome
     managing_group: Selection
     managing_title: Welcome message
-    in_areas
-    - =: content
     type: link
     source: selections/page/text_welcome
