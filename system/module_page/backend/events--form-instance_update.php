@@ -32,9 +32,9 @@ namespace effcore\modules\page {
         $links = $form->validation_cache_get('presets_link');
         if ($links === null) {
             $links = [];
-          foreach ($form->_instance->parts ?: [] as $c_id_area => $c_old_links)
-            foreach ($c_old_links as $c_id_part => $c_old_link)
-              $links[$c_id_area]    [$c_id_part] = $c_old_link;
+          foreach ($form->_instance->parts ?: [] as $c_id_area => $c_links_old)
+            foreach ($c_links_old as $c_id_part => $c_link_old)
+              $links[$c_id_area]    [$c_id_part] = $c_link_old;
           $form->validation_cache_set('presets_link', $links);
         }
       # build layout
@@ -85,11 +85,7 @@ namespace effcore\modules\page {
           case 'cancel':
             break;
           case 'update':
-            $new_parts = [];
-            foreach ($links as $c_id_area => $c_new_parts)
-              foreach ($c_new_parts as $c_id_part => $c_part)
-                $new_parts[$c_id_area][$c_id_part] = $c_part;
-            $form->_instance->parts = $new_parts ?: null;
+            $form->_instance->parts = $links ?: null;
             break;
           default:
             $manage_result = null;
