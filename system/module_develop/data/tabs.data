@@ -1,5 +1,5 @@
 tabs
 - structures|tabs
     id: structures
-- nosql_data|tabs
-    id: nosql_data
+- data_nosql|tabs
+    id: data_nosql

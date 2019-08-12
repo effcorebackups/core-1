@@ -23,7 +23,7 @@ namespace effcore\modules\develop {
           use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
-          abstract class events_page_nosql_data {
+          abstract class events_page_data_nosql {
 
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
@@ -36,7 +36,7 @@ namespace effcore\modules\develop {
       foreach ($trees as $c_tree) {
         tabs_item::insert($c_tree->title,
            'nosql_trees_'.$c_tree->id,
-           'nosql_trees', 'nosql_data', 'trees/'.$c_tree->id
+           'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id
         );
       }
     }

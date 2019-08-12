@@ -35,36 +35,36 @@ tabs_items
 - nosql_trees|tabs_item
     id: nosql_trees
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: trees
     title: Trees
 - nosql_events|tabs_item
     id: nosql_events
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: events
     title: Events
 - nosql_file_types|tabs_item
     id: nosql_file_types
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: file_types
     title: File types
 - nosql_templates|tabs_item
     id: nosql_templates
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: templates
     title: Templates
 - nosql_tokens|tabs_item
     id: nosql_tokens
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: tokens
     title: Tokens
 - nosql_translations|tabs_item
     id: nosql_translations
     id_parent: null
-    id_tab: nosql_data
+    id_tab: data_nosql
     action_name: translations
     title: Translations

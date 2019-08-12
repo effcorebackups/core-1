@@ -1,9 +1,9 @@
 pages
-- nosql_data|page
-    id: nosql_data
+- data_nosql|page
+    id: data_nosql
     title: NoSQL data
     is_https: true
-    url: %^(?<base>/develop/nosql_data)
+    url: %^(?<base>/develop/data_nosql)
 >>>>>>>>((/(?<type>trees(/(?<id>[a-z0-9_]+)|)|
 >>>>>>>>>>>>>>>>>>>events|
 >>>>>>>>>>>>>>>>>>>file_types|
@@ -25,7 +25,7 @@ pages
     - tabs
       - tabs|page_part
           type: link
-          source: tabs/develop/nosql_data
+          source: tabs/develop/data_nosql
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_cache_update|page_part
@@ -37,39 +37,39 @@ pages
             where: type
             match: %^trees/.*$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tree
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tree
       - block_events|page_part
           display
             check: page_args
             where: type
             match: %^events$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_events
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_events
       - block_file_types|page_part
           display
             check: page_args
             where: type
             match: %^file_types$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_file_types
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_file_types
       - block_templates|page_part
           display
             check: page_args
             where: type
             match: %^templates$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_templates
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_templates
       - block_tokens|page_part
           display
             check: page_args
             where: type
             match: %^tokens$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_tokens
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tokens
       - block_translations|page_part
           display
             check: page_args
             where: type
             match: %^translations$%
           type: code
-          source: \effcore\modules\develop\events_page_nosql_data::on_show_block_translations
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_translations

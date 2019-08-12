@@ -18,12 +18,12 @@ tree_items
     access
       roles
       - =: admins
-- nosql_data|tree_item
-    id: nosql_data
+- data_nosql|tree_item
+    id: data_nosql
     id_parent: develop
     id_tree: main
     title: NoSQL data
-    url: /develop/nosql_data
+    url: /develop/data_nosql
     access
       roles
       - =: admins
