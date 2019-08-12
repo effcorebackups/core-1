@@ -122,7 +122,8 @@ entities
         field_class: \effcore\field_textarea
         field_element_attributes
         - required: false
-        - minlength: 1
+        - minlength: false
+        - maxlength: false
     constraints
     - primary_id
         type: primary
