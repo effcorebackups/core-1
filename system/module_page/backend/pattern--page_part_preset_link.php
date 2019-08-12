@@ -19,13 +19,9 @@ namespace effcore {
   }
 
   function page_part_make() {
-    $preset = page_part_preset::select($this->id);
+    $preset = $this->page_part_preset_get($this->id);
     if ($preset) {
-      $page_part = new page_part;
-      foreach ($page_part as $c_key => $c_value)
-        $page_part->{$c_key} =
-           $preset->{$c_key};
-      return $page_part;
+      return $preset->page_part_make();
     }
   }
 
