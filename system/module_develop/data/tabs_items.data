@@ -38,6 +38,12 @@ tabs_items
     id_tab: data_nosql
     action_name: trees
     title: Trees
+- nosql_selections|tabs_item
+    id: nosql_selections
+    id_parent: null
+    id_tab: data_nosql
+    action_name: selections
+    title: Selections
 - nosql_events|tabs_item
     id: nosql_events
     id_parent: null

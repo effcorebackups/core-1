@@ -5,6 +5,7 @@ pages
     is_https: true
     url: %^(?<base>/develop/data_nosql)
 >>>>>>>>((/(?<type>trees(/(?<id>[a-z0-9_]+)|)|
+>>>>>>>>>>>>>>>>>>>selections|
 >>>>>>>>>>>>>>>>>>>events|
 >>>>>>>>>>>>>>>>>>>file_types|
 >>>>>>>>>>>>>>>>>>>templates|
@@ -38,6 +39,13 @@ pages
             match: %^trees/.*$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tree
+      - block_selections|page_part
+          display
+            check: page_args
+            where: type
+            match: %^selections$%
+          type: code
+          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_selections
       - block_events|page_part
           display
             check: page_args

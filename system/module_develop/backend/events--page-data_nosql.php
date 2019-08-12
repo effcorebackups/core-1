@@ -66,6 +66,11 @@ namespace effcore\modules\develop {
     }
   }
 
+  static function on_show_block_selections($page) {
+    return new block('', ['data-id' => 'selections_registered'], [
+    ]);
+  }
+
   static function on_show_block_events($page) {
     $targets = new markup('x-targets');
     $report = new node();
