@@ -70,9 +70,9 @@
   table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
   table tr th[data-cellid='actions'] {width: 1%}
   table tr td[data-cellid='actions']:empty::after {content: ''}
-  table *[data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  table *[data-cellid='checkbox'] x-field {margin: 0}
-  table *[data-cellid='checkbox'] x-field input {margin: 0}
+  table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
+  table [data-cellid='checkbox'] x-field {margin: 0}
+  table [data-cellid='checkbox'] x-field input {margin: 0}
 
   table[data-is-compact='true'] {font-size: .9em}
   table[data-is-compact='true'] th {padding: 12px 7px}
@@ -101,9 +101,16 @@
   x-table x-head x-cell[data-cellid='actions'] {width: 1%}
   x-table x-body x-cell[data-cellid='actions'] {text-align: right}
   x-table x-body x-cell[data-cellid='actions'] x-value:empty::after {content: ''}
-  x-table *[data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  x-table *[data-cellid='checkbox'] x-field {margin: 0}
-  x-table *[data-cellid='checkbox'] x-field input {margin: 0}
+  x-table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
+  x-table [data-cellid='checkbox'] x-field {margin: 0}
+  x-table [data-cellid='checkbox'] x-field input {margin: 0}
+
+  x-table[data-is-compact='true'] {font-size: .9em}
+  x-table[data-is-compact='true'] x-head x-cell {padding: 12px 7px}
+  x-table[data-is-compact='true'] x-head x-cell:first-child {padding-left: 17px}
+  x-table[data-is-compact='true'] x-cell {padding: 3px 7px}
+  x-table[data-is-compact='true'] x-cell:first-child {padding-left: 17px}
+  x-table[data-is-compact='true'] x-cell:last-child {padding-right: 17px}
 
   @media screen and (max-width: 600px) {
     x-table              {display: block}
