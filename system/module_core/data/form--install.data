@@ -19,7 +19,7 @@ forms
             element_attributes
             - name: driver
             - value: mysql
-      # mysql params
+      # mysql parameters
         - mysql|fieldset
             children
           # host name
@@ -71,7 +71,7 @@ forms
             element_attributes
             - name: driver
             - value: sqlite
-      # sqlite params
+      # sqlite parameters
         - sqlite|fieldset
             children
           # storage file name
@@ -84,9 +84,9 @@ forms
                 - maxlength: 255
                 - pattern: ^[a-zA-Z0-9_\-\.]+$
                 - readonly: true
-      # shared params
+      # shared parameters
         - params|fieldset
-            title: Shared params
+            title: Shared parameters
             children
           # table prefix
             - table_prefix|field_text

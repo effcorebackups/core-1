@@ -423,7 +423,7 @@ translations
     - Sessions: Сессии
     - set: установка
     - Settings: Настройки
-    - Shared params: Общие параметры
+    - Shared parameters: Общие параметры
     - Simple: Простой
     - sql state\: %%_state: sql состояние: %%_state
     - state: состояние
