@@ -37,7 +37,7 @@
 
   /* events */
 
-  x-decorator[data-id^='events_registered_handlers'] td[data-cellid='weight'] {width: 1%; white-space: nowrap}
+  x-decorator[data-id^='events_nosql_handlers'] x-cell[data-cellid='weight'] {width: 1%; white-space: nowrap}
 
   /* reports */
 

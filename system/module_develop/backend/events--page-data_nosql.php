@@ -67,7 +67,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_selections($page) {
-    return new block('', ['data-id' => 'selections_registered'], [
+    return new block('', ['data-id' => 'selections_nosql'], [
     ]);
   }
 
@@ -79,7 +79,7 @@ namespace effcore\modules\develop {
     foreach ($events as $c_event_type => $c_events) {
       $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type));
       $c_decorator = new decorator('table-adaptive');
-      $c_decorator->id = 'events_registered_handlers_'.$c_event_type;
+      $c_decorator->id = 'events_nosql_handlers_'.$c_event_type;
       $c_decorator->result_attributes = ['data-is-compact' => 'true'];
       $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type], $c_event_type), $c_event_type.'_header'   );
       $report->child_insert($c_decorator,                                                     $c_event_type.'_decorator');
@@ -92,7 +92,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block('', ['data-id' => 'events_registered'], [
+    return new block('', ['data-id' => 'events_nosql'], [
       $targets,
       $report
     ]);
@@ -100,7 +100,7 @@ namespace effcore\modules\develop {
 
   static function on_show_block_file_types($page) {
     $decorator = new decorator('table-adaptive');
-    $decorator->id = 'file_types_registered';
+    $decorator->id = 'file_types_nosql';
     $file_types = file::types_get();
     ksort($file_types);
     foreach ($file_types as $c_type) {
@@ -111,14 +111,14 @@ namespace effcore\modules\develop {
         'headers'   => ['value' => new text_simple(isset($c_type->headers) ? implode(br, $c_type->headers) : ''), 'title' => 'Headers'  ]
       ];
     }
-    return new block('', ['data-id' => 'file_types_registered'], [
+    return new block('', ['data-id' => 'file_types_nosql'], [
       $decorator
     ]);
   }
 
   static function on_show_block_templates($page) {
     $decorator = new decorator('table-adaptive');
-    $decorator->id = 'templates_registered';
+    $decorator->id = 'templates_nosql';
     $templates = template::get_all();
     ksort($templates);
     foreach ($templates as $c_template) {
@@ -128,14 +128,14 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_template->module_id), 'title' => 'Module ID'],
       ];
     }
-    return new block('', ['data-id' => 'templates_registered'], [
+    return new block('', ['data-id' => 'templates_nosql'], [
       $decorator
     ]);
   }
 
   static function on_show_block_tokens($page) {
     $decorator = new decorator('table-adaptive');
-    $decorator->id = 'tokens_registered';
+    $decorator->id = 'tokens_nosql';
     $tokens = token::get_all();
     ksort($tokens);
     foreach ($tokens as $c_row_id => $c_token) {
@@ -146,14 +146,14 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_token->module_id), 'title' => 'Module ID']
       ];
     }
-    return new block('', ['data-id' => 'tokens_registered'], [
+    return new block('', ['data-id' => 'tokens_nosql'], [
       $decorator
     ]);
   }
 
   static function on_show_block_translations($page) {
     $decorator = new decorator('table-adaptive');
-    $decorator->id = 'translations_registered';
+    $decorator->id = 'translations_nosql';
     $decorator->result_attributes = ['data-is-compact' => 'true'];
     $translations = translation::get_all_by_code();
     if ($translations) {
@@ -165,7 +165,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block('', ['data-id' => 'translations_registered'], [
+    return new block('', ['data-id' => 'translations_nosql'], [
       $decorator
     ]);
   }
