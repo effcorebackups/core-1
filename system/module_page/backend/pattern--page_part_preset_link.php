@@ -15,17 +15,18 @@ namespace effcore {
   }
 
   function page_part_preset_get() {
-    $preset = page_part_preset::select($this->id);
-    return $preset;
+    return page_part_preset::select($this->id);
   }
 
-  function page_part_get() {
+  function page_part_make() {
     $preset = page_part_preset::select($this->id);
-    $page_part = new page_part;
-    foreach ($page_part as $c_key => $c_value)
-      $page_part->{$c_key} =
-         $preset->{$c_key};
-    return $page_part;
+    if ($preset) {
+      $page_part = new page_part;
+      foreach ($page_part as $c_key => $c_value)
+        $page_part->{$c_key} =
+           $preset->{$c_key};
+      return $page_part;
+    }
   }
 
 }}

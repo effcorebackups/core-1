@@ -12,17 +12,15 @@ namespace effcore {
   public $managing_title;
   public $in_areas;
 
-  function page_part_preset_get() {
-    return $this;
-  }
-
-  function page_part_get() {
+  function page_part_make() {
     $preset = static::select($this->id);
-    $page_part = new page_part;
-    foreach ($page_part as $c_key => $c_value)
-      $page_part->{$c_key} =
-         $preset->{$c_key};
-    return $page_part;
+    if ($preset) {
+      $page_part = new page_part;
+      foreach ($page_part as $c_key => $c_value)
+        $page_part->{$c_key} =
+           $preset->{$c_key};
+      return $page_part;
+    }
   }
 
   ###########################
@@ -60,7 +58,7 @@ namespace effcore {
 
   static function select($id) {
     static::init();
-    return static::$cache[$id];
+    return static::$cache[$id] ?? null;
   }
 
 }}
