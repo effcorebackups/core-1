@@ -18,6 +18,7 @@ namespace effcore {
   public $pager_is_on = false;
   public $pager_name = 'page';
   public $pager_id = 0;
+  public $type = 'nosql'; # nosql | sql
 
   function __construct($title = '', $weight = 0) {
     if ($title) $this->title = $title;
@@ -298,6 +299,8 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+  static protected $is_init_nosql = false;
+  static protected $is_init___sql = false;
 
   static function not_external_properties_get() {
     return [
@@ -306,17 +309,50 @@ namespace effcore {
   }
 
   static function cache_cleaning() {
-    static::$cache = null;
+    static::$cache         = null;
+    static::$is_init_nosql = false;
+    static::$is_init___sql = false;
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (!static::$is_init_nosql) {
+         static::$is_init_nosql = true;
       foreach (storage::get('files')->select('selections') as $c_module_id => $c_selections) {
         foreach ($c_selections as $c_row_id => $c_selection) {
           if (isset(static::$cache[$c_selection->id])) console::log_insert_about_duplicate('selection', $c_selection->id, $c_module_id);
           static::$cache[$c_selection->id] = $c_selection;
           static::$cache[$c_selection->id]->module_id = $c_module_id;
+          static::$cache[$c_selection->id]->type = 'nosql';
         }
+      }
+    }
+  }
+
+  static function init_sql($id = null) {
+    if ($id && isset(static::$cache[$id])) return;
+    if ($id) {
+      $instance = (new instance('selection', [
+        'id' => $id
+      ]))->select();
+      if ($instance) {
+        $selection = new static;
+        foreach ($instance->values_get() as $c_key => $c_value)
+          $selection->                     {$c_key} = $c_value;
+        static::$cache[$selection->id] = $selection;
+        static::$cache[$selection->id]->module_id = 'storage';
+        static::$cache[$selection->id]->type = 'sql';
+        return;
+      }
+    }
+    if (!static::$is_init___sql && $id == null) {
+         static::$is_init___sql = true;
+      foreach (entity::get('selection')->instances_select() as $c_instance) {
+        $c_selection = new static;
+        foreach ($c_instance->values_get() as $c_key => $c_value)
+          $c_selection->                     {$c_key} = $c_value;
+        static::$cache[$c_selection->id] = $c_selection;
+        static::$cache[$c_selection->id]->module_id = 'storage';
+        static::$cache[$c_selection->id]->type = 'sql';
       }
     }
   }

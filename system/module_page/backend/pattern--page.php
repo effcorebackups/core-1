@@ -160,7 +160,7 @@ namespace effcore {
     if ($instance) {
       $page = new static;
       foreach ($instance->values_get() as $c_key => $c_value)
-        $page->{$c_key} = $c_value;
+        $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
              static::$cache[$page->id]->type = 'sql';
