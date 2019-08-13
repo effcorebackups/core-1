@@ -56,11 +56,9 @@ namespace effcore\modules\page {
         }
       }
     }
-  # instance_id
-    if ($name == 'instance_id_context') {
-      return page::get_current()->args_get('instance_id');
-    }
-
+  # other
+    if ($name == 'instance_id_context') return page::get_current()->args_get('instance_id');
+    if ($name == 'entity_name_context') return page::get_current()->args_get('entity_name');
   }
 
 }}
