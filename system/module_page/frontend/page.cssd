@@ -78,18 +78,19 @@
 
   table[data-is-compact='true'] {font-size: .9em}
   table[data-is-compact='true'] thead th {padding: 12px 7px}
-  table[data-is-compact='true'] thead th:first-child {padding-left: 17px}
-  table[data-is-compact='true']       td {padding: 3px 7px}
-  table[data-is-compact='true']       td:first-child {padding-left: 17px}
-  table[data-is-compact='true']       td:last-child {padding-right: 17px}
+  table[data-is-compact='true'] thead th:first-child {padding-left:  17px}
+  table[data-is-compact='true']       td             {padding:    3px 7px}
+  table[data-is-compact='true']       td:first-child {padding-left:  17px}
+  table[data-is-compact='true']       td:last-child  {padding-right: 17px}
 
   /* adaptive table */
 
-  x-table        {display: table}
-  x-table x-head {display: table-header-group}
-  x-table x-body {display: table-row-group}
-  x-table x-row  {display: table-row}
-  x-table x-cell {display: table-cell}
+  x-table                {display: table}
+  x-table x-head         {display: table-header-group}
+  x-table x-body         {display: table-row-group}
+  x-table x-row          {display: table-row}
+  x-table x-cell         {display: table-cell}
+  x-table x-cell x-title {display: none}
 
   x-table {width: 100%; box-sizing: border-box; border-collapse: collapse; margin: 50px 0}
   x-table x-cell {padding: 12px 15px; vertical-align: middle}
@@ -98,7 +99,6 @@
   x-table x-body {border-bottom: 1px solid %%_color_main; background: %%_color_table_row_even}
   x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color_table_row_odd}
   x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color_table_row_even}
-  x-table x-body x-row                 x-cell x-title {display: none}
   x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
 
   x-table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
@@ -116,19 +116,20 @@
   x-table[data-is-compact='true']        x-cell:last-child {padding-right: 17px}
 
   @media screen and (max-width: 600px) {
-    x-table              {display: block}
-    x-table x-head       {display: block}
-    x-table x-head x-row {display: none}
-    x-table x-body       {display: block}
-    x-table x-row        {display: block}
-    x-table x-cell       {display: block}
+    x-table                      {display: block}
+    x-table x-head               {display: block}
+    x-table x-head x-row         {display: none}
+    x-table x-body               {display: block}
+    x-table x-row                {display: block}
+    x-table x-cell               {display: block}
+    x-table x-cell x-title       {display: inline-block}
+    x-table x-cell x-title:empty {display: none}
 
     x-table x-cell             {padding:    3px 15px}
     x-table x-cell:first-child {padding-top:    14px}
     x-table x-cell:last-child  {padding-bottom: 14px}
-    x-table x-body x-row x-cell x-title {display: inline-block; margin-right: .5em}
-    x-table x-body x-row x-cell x-title:empty {display: none}
-    x-table x-body x-row x-cell x-title:not(:empty)::after {content: ':'}
+    x-table x-cell x-title {margin-right: .5em}
+    x-table x-cell x-title::after {content: ':'}
 
     x-table x-body [data-cellid='checkbox'] {width: auto; padding-right: 15px}
     x-table x-body [data-cellid='actions' ] {text-align: left}
