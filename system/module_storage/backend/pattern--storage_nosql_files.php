@@ -18,7 +18,8 @@ namespace effcore {
       foreach ($parts as $c_part) {
         $c_pointer = &core::arrobj_select_value($c_pointer, $c_part);
         if ($expand_cache && $c_pointer instanceof external_cache) {
-          $c_pointer = $c_pointer->external_cache_load();
+          $c_pointer =
+          $c_pointer->external_cache_load();
         }
       }
       return $c_pointer;

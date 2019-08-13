@@ -33,7 +33,8 @@ namespace effcore {
         foreach ($c_translations as $c_row_id => $c_translation) {
           if ($c_translation->code == $code) {
             if ($c_translation instanceof external_cache)
-                $c_translation = $c_translation->external_cache_load();
+                $c_translation =
+                $c_translation->external_cache_load();
             if (!isset(static::$cache[$c_translation->code]))
                        static::$cache[$c_translation->code] = [];
             static::$cache[$c_translation->code] += $c_translation->data;
