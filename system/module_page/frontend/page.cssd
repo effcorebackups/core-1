@@ -73,8 +73,8 @@
   table [data-cellid='checkbox'] x-field,
   table [data-cellid='checkbox'] x-field input {margin: 0}
 
-  table tr th[data-cellid='actions'] {width: 1%}
-  table tr td[data-cellid='actions']:empty::after {content: ''}
+  table thead [data-cellid='actions'] {width: 1%}
+  table tbody [data-cellid='actions']:empty::after {content: ''}
 
   table[data-is-compact='true'] {font-size: .9em}
   table[data-is-compact='true'] th {padding: 12px 7px}
@@ -105,9 +105,9 @@
   x-table [data-cellid='checkbox'] x-field,
   x-table [data-cellid='checkbox'] x-field input {margin: 0}
 
-  x-table x-head x-cell[data-cellid='actions'] {width: 1%}
-  x-table x-body x-cell[data-cellid='actions'] {text-align: right}
-  x-table x-body x-cell[data-cellid='actions'] x-value:empty::after {content: ''}
+  x-table x-head [data-cellid='actions'] {width: 1%}
+  x-table x-body [data-cellid='actions'] {text-align: right}
+  x-table x-body [data-cellid='actions'] x-value:empty::after {content: ''}
 
   x-table[data-is-compact='true'] {font-size: .9em}
   x-table[data-is-compact='true'] x-head x-cell {padding-top: 12px; padding-bottom: 12px}
@@ -130,10 +130,10 @@
     x-table x-body x-row x-cell x-title:empty {display: none}
     x-table x-body x-row x-cell x-title:not(:empty)::after {content: ':'}
 
-    x-table x-body x-row x-cell[data-cellid='checkbox'] {width: auto; padding-right: 15px}
-    x-table x-body x-row x-cell[data-cellid='actions' ] {text-align: left}
+    x-table x-body [data-cellid='checkbox'] {width: auto; padding-right: 15px}
+    x-table x-body [data-cellid='actions' ] {text-align: left}
 
-    x-table[data-is-compact='true'] x-cell {padding: 3px 15px}
+    x-table[data-is-compact='true'] x-cell             {padding:    3px 15px}
     x-table[data-is-compact='true'] x-cell:first-child {padding-top:    14px}
     x-table[data-is-compact='true'] x-cell:last-child  {padding-bottom: 14px}
   }
