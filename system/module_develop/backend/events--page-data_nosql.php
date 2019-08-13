@@ -15,9 +15,11 @@ namespace effcore\modules\develop {
           use \effcore\markup;
           use \effcore\node;
           use \effcore\page;
+          use \effcore\selection;
           use \effcore\tabs_item;
           use \effcore\template;
           use \effcore\text_simple;
+          use \effcore\text;
           use \effcore\token;
           use \effcore\translation;
           use \effcore\tree_item;
@@ -67,7 +69,17 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_selections($page) {
+    $selection = selection::get_all('nosql');
+    $decorator = new decorator('table-adaptive');
+    $decorator->id = 'selections_nosql';
+    foreach ($selection as $c_selection) {
+      $decorator->data[] = [
+        'id'    => ['value' => new text_simple($c_selection->id   ), 'title' => 'ID'   ],
+        'title' => ['value' => new text       ($c_selection->title), 'title' => 'Title']
+      ];
+    }
     return new block('', ['data-id' => 'selections_nosql'], [
+      $decorator
     ]);
   }
 

@@ -366,14 +366,21 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function get_all($load = true) {
-    static::init();
-    if ($load)
+  static function get_all($type = null, $load = true) {
+    if ($type == 'nosql') {static::init    ();                    }
+    if ($type ==   'sql') {static::init_sql();                    }
+    if ($type ==    null) {static::init    (); static::init_sql();}
+    if ($load && ($type == 'nosql' || $type == null))
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache)
             $c_item =
             $c_item->external_cache_load();
-    return static::$cache;
+    $result = static::$cache ?? [];
+    if ($type)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->type != $type)
+          unset($result[$c_id]);
+    return $result;
   }
 
 }}
