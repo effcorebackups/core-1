@@ -70,7 +70,7 @@
   table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
 
   table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  table [data-cellid='checkbox'] x-field {margin: 0}
+  table [data-cellid='checkbox'] x-field,
   table [data-cellid='checkbox'] x-field input {margin: 0}
 
   table tr th[data-cellid='actions'] {width: 1%}
@@ -102,7 +102,7 @@
   x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
 
   x-table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  x-table [data-cellid='checkbox'] x-field {margin: 0}
+  x-table [data-cellid='checkbox'] x-field,
   x-table [data-cellid='checkbox'] x-field input {margin: 0}
 
   x-table x-head x-cell[data-cellid='actions'] {width: 1%}
@@ -123,14 +123,14 @@
     x-table x-row        {display: block}
     x-table x-cell       {display: block}
 
-    x-table x-cell {padding: 3px 15px}
+    x-table x-cell             {padding:    3px 15px}
     x-table x-cell:first-child {padding-top:    14px}
     x-table x-cell:last-child  {padding-bottom: 14px}
     x-table x-body x-row x-cell x-title {display: inline-block; margin-right: .5em}
     x-table x-body x-row x-cell x-title:empty {display: none}
     x-table x-body x-row x-cell x-title:not(:empty)::after {content: ':'}
 
-    x-table x-body x-row x-cell[data-cellid='checkbox'] {width: auto}
+    x-table x-body x-row x-cell[data-cellid='checkbox'] {width: auto; padding-right: 15px}
     x-table x-body x-row x-cell[data-cellid='actions' ] {text-align: left}
 
     x-table[data-is-compact='true'] x-cell {padding: 3px 15px}
