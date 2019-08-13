@@ -13,12 +13,12 @@
 
   /* page areas */
 
-  *[data-area-id] {display: block; vertical-align: top}
-  *[data-area-id]:empty {display: none}
-  *[data-area-id]::after {content: ''; clear: both; display: block}
-  *[data-area-type='table' ] {display: table; width: 100%; box-sizing: border-box}
-  *[data-area-type='row'   ] {display: table-row}
-  *[data-area-type='column'] {display: table-cell}
+  [data-area-id] {display: block; vertical-align: top}
+  [data-area-id]:empty {display: none}
+  [data-area-id]::after {content: ''; clear: both; display: block}
+  [data-area-type='table' ] {display: table; width: 100%; box-sizing: border-box}
+  [data-area-type='row'   ] {display: table-row}
+  [data-area-type='column'] {display: table-cell}
 
   /* headers */
 
@@ -52,7 +52,7 @@
 
   /* universal styles */
 
-  *[aria-hidden='true'] {display: none}
+  [aria-hidden='true'] {display: none}
 
   /* table */
 
