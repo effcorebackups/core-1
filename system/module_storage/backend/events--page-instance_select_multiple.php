@@ -14,11 +14,12 @@ namespace effcore\modules\storage {
 
   # URLs for manage:
   # ─────────────────────────────────────────────────────────────────────────────────
-  # /manage/instances/select → /manage/instances/select/%%_managing_group/%%_entity_name/%%_instances_group_by
-  # /manage/data/insert      → /manage/data/insert/%%_entity_name/%%_category
-  #                            /manage/data/select/%%_entity_name/%%_instance_id
-  #                            /manage/data/update/%%_entity_name/%%_instance_id
-  #                            /manage/data/delete/%%_entity_name/%%_instance_id
+  # /manage/data/select_multiple → /manage/data/select_multiple/%%_managing_group/%%_entity_name/%%_instances_group_by
+  # /manage/data/insert          → /manage/data/insert/%%_entity_name
+  #                                /manage/data/insert/%%_entity_name/%%_category
+  #                                /manage/data/select/%%_entity_name/%%_instance_id
+  #                                /manage/data/update/%%_entity_name/%%_instance_id
+  #                                /manage/data/delete/%%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
   static function on_tab_build_before($event, $tab) {
@@ -39,15 +40,15 @@ namespace effcore\modules\storage {
       }
     }
 
-  # ┌─────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────┐
-  # │ /manage/instances/select                                        │ managing_group != true && entity_name != true │
-  # │ /manage/instances/select/      managing_group                   │ managing_group == true && entity_name != true │
-  # │ /manage/instances/select/      managing_group/      entity_name │ managing_group == true && entity_name == true │
-  # │ /manage/instances/select/wrong_managing_group                   │ managing_group != true && entity_name != true │
-  # │ /manage/instances/select/wrong_managing_group/      entity_name │ managing_group != true && entity_name == true │
-  # │ /manage/instances/select/      managing_group/wrong_entity_name │ managing_group == true && entity_name != true │
-  # │ /manage/instances/select/wrong_managing_group/wrong_entity_name │ managing_group != true && entity_name != true │
-  # └─────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────┘
+  # ┌─────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────┐
+  # │ /manage/data/select_multiple                                        │ managing_group != true && entity_name != true │
+  # │ /manage/data/select_multiple/      managing_group                   │ managing_group == true && entity_name != true │
+  # │ /manage/data/select_multiple/      managing_group/      entity_name │ managing_group == true && entity_name == true │
+  # │ /manage/data/select_multiple/wrong_managing_group                   │ managing_group != true && entity_name != true │
+  # │ /manage/data/select_multiple/wrong_managing_group/      entity_name │ managing_group != true && entity_name == true │
+  # │ /manage/data/select_multiple/      managing_group/wrong_entity_name │ managing_group == true && entity_name != true │
+  # │ /manage/data/select_multiple/wrong_managing_group/wrong_entity_name │ managing_group != true && entity_name != true │
+  # └─────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────┘
     if (isset($groups[$managing_group])                                                              == false) url::go(page::get_current()->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
     if (isset($groups[$managing_group]) && isset($entities_by_groups[$managing_group][$entity_name]) == false) url::go(page::get_current()->args_get('base').'/'.   $managing_group    .'/'.array_keys($entities_by_groups[   $managing_group    ])[0]);
 

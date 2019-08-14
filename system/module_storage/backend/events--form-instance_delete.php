@@ -46,8 +46,8 @@ namespace effcore\modules\storage {
                    $form->_instance->delete())
              message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
         else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
-                     url::go(url::back_url_get() ?: '/manage/instances/select/'.$entity->group_managing_get_id().'/'.$entity->name); break;
-      case 'cancel': url::go(url::back_url_get() ?: '/manage/instances/select/'.$entity->group_managing_get_id().'/'.$entity->name); break;
+                     url::go(url::back_url_get() ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name); break;
+      case 'cancel': url::go(url::back_url_get() ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name); break;
     }
   }
 
