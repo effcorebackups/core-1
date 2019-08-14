@@ -69,6 +69,7 @@ translations
     - Colors preset: Предустановка цвета
     - Colors was applied.: Цвета были применены.
     - Colors: Цвета
+    - Conditions: Условия
     - Console: Консоль
     - Content: Содержимое
     - Control elements: Элементы управления
@@ -181,6 +182,7 @@ translations
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".
     - Field value should match the regular expression\: %%_expression.: Значение поля должно соответствовать регулярному выражению: %%_expression.
     - Field: Поле
+    - Fields: Поля
     - Fieldset (nested): Группа полей (вложенная)
     - Fieldset: Группа полей
     - File can only be of the next types\: %%_types.: Файл может быть только следующих типов: %%_types.
@@ -254,6 +256,7 @@ translations
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
     - Light: Светлая
+    - Limit: Лимит
     - Linear diagram: Линейная диаграмма
     - Link (active): Ссылка (активная)
     - Link: Ссылка
@@ -335,6 +338,7 @@ translations
     - on this ip: на этом ip
     - Only unique value is allowed.: Допускается только уникальное значение.
     - Operating System: Операционная система
+    - Order: Порядок
     - Ordered list: Упорядоченный список
     - Original: Оригинал
     - OS Version: Версия ОС

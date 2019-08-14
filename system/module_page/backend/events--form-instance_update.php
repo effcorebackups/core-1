@@ -8,6 +8,7 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\group_page_part_insert;
           use \effcore\group_page_part_manage;
@@ -74,14 +75,24 @@ namespace effcore\modules\page {
         $form->child_insert(core::deep_clone($items['~cancel']),         'button_cancel_copy');
       }
       if ($entity->name == 'selection' && !empty($form->_instance)) {
-        $query_params = new fieldset('Query parameters');
-        $form->child_select('fields')->child_insert(
-          $query_params, 'query_params'
-        );
+        $fields           = new fieldset('Fields');
+        $query_params     = new fieldset('Query parameters');
         $decorator_params = new fieldset('Decorator parameters');
-        $form->child_select('fields')->child_insert(
-          $decorator_params, 'decorator_params'
-        );
+        $conditions       = new fieldset('Conditions');
+        $order            = new fieldset('Order');
+        $limit = new field_number('Limit');
+        $limit->build();
+        $limit->name_set('limit');
+        $limit->value_set(1);
+        $limit->min_set(1);
+        $limit->max_set(10000);
+
+        $query_params                ->child_insert($conditions,       'conditions'      );
+        $query_params                ->child_insert($order,            'order'           );
+        $query_params                ->child_insert($limit,            'limit'           );
+        $form->child_select('fields')->child_insert($fields,           'fields'          );
+        $form->child_select('fields')->child_insert($query_params,     'query_params'    );
+        $form->child_select('fields')->child_insert($decorator_params, 'decorator_params');
       }
     }
   }

@@ -24,8 +24,7 @@ namespace effcore {
                    $options[$c_group_id]->title = $c_preset->managing_group;}
         $options[$c_group_id]->values[$c_preset->id] = $c_preset->managing_title;
       }
-      $select_preset = new field_select;
-      $select_preset->title = 'Insert part';
+      $select_preset = new field_select('Insert part');
       $select_preset->values = $options;
       $select_preset->build();
       $select_preset->name_set('insert_to_'.$this->id_area);
