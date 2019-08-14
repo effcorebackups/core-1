@@ -1,6 +1,6 @@
 tabs_items
-- structures_class|tabs_item
-    id: structures_class
+- structures_classes|tabs_item
+    id: structures_classes
     id_parent: null
     id_tab: structures
     action_name: class
@@ -8,13 +8,13 @@ tabs_items
     title: Classes
 - structures_classes_list|tabs_item
     id: structures_classes_list
-    id_parent: structures_class
+    id_parent: structures_classes
     id_tab: structures
     action_name: class/list
     title: List
 - structures_classes_diagram|tabs_item
     id: structures_classes_diagram
-    id_parent: structures_class
+    id_parent: structures_classes
     id_tab: structures
     action_name: class/diagram
     title: Diagram
