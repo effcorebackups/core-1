@@ -6,27 +6,27 @@ tabs_items
     action_name: class
     action_name_default: class/list
     title: Classes
-- structures_class_list|tabs_item
-    id: structures_class_list
+- structures_classes_list|tabs_item
+    id: structures_classes_list
     id_parent: structures_class
     id_tab: structures
     action_name: class/list
     title: List
-- structures_class_diagram|tabs_item
-    id: structures_class_diagram
+- structures_classes_diagram|tabs_item
+    id: structures_classes_diagram
     id_parent: structures_class
     id_tab: structures
     action_name: class/diagram
     title: Diagram
-- structures_interface|tabs_item
-    id: structures_interface
+- structures_interfaces|tabs_item
+    id: structures_interfaces
     id_parent: null
     id_tab: structures
     action_name: interface
     action_name_default: interface/list
     title: Interfaces
-- structures_trait|tabs_item
-    id: structures_trait
+- structures_traits|tabs_item
+    id: structures_traits
     id_parent: null
     id_tab: structures
     action_name: trait
