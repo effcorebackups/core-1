@@ -19,7 +19,7 @@ pages
     - tabs
       - tabs|page_part
           type: link
-          source: tabs/core/manage_modules
+          source: tabs/core/modules
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_cache_update|page_part
