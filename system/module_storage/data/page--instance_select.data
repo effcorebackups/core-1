@@ -3,7 +3,7 @@ pages
     id: instance_select
     title: %%_entity_title_page_context{entity_name}
     is_https: true
-    url: %^(?<base>/manage/instance/select)/
+    url: %^(?<base>/manage/data/select)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>(?<instance_id>[a-z0-9_\-\+]+)$%
     access

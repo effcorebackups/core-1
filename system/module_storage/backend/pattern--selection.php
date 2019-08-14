@@ -263,7 +263,7 @@ namespace effcore {
     foreach ($allowed as $c_action_name) {
       if ($c_action_name == 'delete' && !empty($instance->is_embed)) continue;
       $actions_list->action_add(
-        '/manage/instance/'.$c_action_name.'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), $c_action_name
+        '/manage/data/'.$c_action_name.'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), $c_action_name
       );
     }
     return $actions_list;

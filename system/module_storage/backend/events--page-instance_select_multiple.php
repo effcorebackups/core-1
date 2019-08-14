@@ -15,10 +15,10 @@ namespace effcore\modules\storage {
   # URLs for manage:
   # ─────────────────────────────────────────────────────────────────────────────────
   # /manage/instances/select → /manage/instances/select/%%_managing_group/%%_entity_name/%%_instances_group_by
-  # /manage/instance /insert → /manage/instance /insert/                  %%_entity_name
-  #                            /manage/instance /select/                  %%_entity_name/%%_instance_id
-  #                            /manage/instance /update/                  %%_entity_name/%%_instance_id
-  #                            /manage/instance /delete/                  %%_entity_name/%%_instance_id
+  # /manage/data/insert      → /manage/data/insert/%%_entity_name/%%_category
+  #                            /manage/data/select/%%_entity_name/%%_instance_id
+  #                            /manage/data/update/%%_entity_name/%%_instance_id
+  #                            /manage/data/delete/%%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
   static function on_tab_build_before($event, $tab) {
