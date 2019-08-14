@@ -25,6 +25,9 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
+    # ─────────────────────────────────────────────────────────────────────
+    # page
+    # ─────────────────────────────────────────────────────────────────────
       if ($entity->name == 'page' && !empty($form->_instance)) {
       # disable url field for embedded instance
         if (!empty($form->_instance->is_embed)) {
@@ -67,13 +70,12 @@ namespace effcore\modules\page {
             $form->_parts_insert[$c_area->id] = $c_part_insert;
           }
         }
-        $form->child_delete('layout_manager'    );
-        $form->child_delete('button_update_copy');
-        $form->child_delete('button_cancel_copy');
-        $form->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager'    );
-        $form->child_insert(core::deep_clone($items['~update']),         'button_update_copy');
-        $form->child_insert(core::deep_clone($items['~cancel']),         'button_cancel_copy');
+        $form->child_select('fields')->child_delete(                                             'layout_manager');
+        $form->child_select('fields')->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager');
       }
+    # ─────────────────────────────────────────────────────────────────────
+    # selection
+    # ─────────────────────────────────────────────────────────────────────
       if ($entity->name == 'selection' && !empty($form->_instance)) {
         $fields           = new fieldset('Fields');
         $query_params     = new fieldset('Query parameters');
@@ -101,6 +103,9 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
+    # ─────────────────────────────────────────────────────────────────────
+    # page
+    # ─────────────────────────────────────────────────────────────────────
       if ($entity->name == 'page' && !empty($form->_instance)) {
         $links = $form->validation_cache_get('presets_link');
         switch ($form->clicked_button->value_get()) {
