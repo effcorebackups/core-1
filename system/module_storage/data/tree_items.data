@@ -1,9 +1,9 @@
 tree_items
-- manage_instances|tree_item
-    id: manage_instances
+- data|tree_item
+    id: data
     id_parent: manage
     id_tree: main
-    title: Instances
+    title: Data
     url: /manage/instances/select
     access
       roles
