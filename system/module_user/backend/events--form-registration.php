@@ -6,9 +6,6 @@
 
 namespace effcore\modules\user {
           use \effcore\core;
-          use \effcore\field_email;
-          use \effcore\field_nick;
-          use \effcore\instance;
           use \effcore\message;
           use \effcore\session;
           use \effcore\text;

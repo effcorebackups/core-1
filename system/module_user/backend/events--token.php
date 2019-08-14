@@ -5,10 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\instance;
           use \effcore\page;
-          use \effcore\session;
-          use \effcore\url;
           use \effcore\user;
           abstract class events_token {
 
