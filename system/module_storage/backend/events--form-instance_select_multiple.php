@@ -89,7 +89,7 @@ namespace effcore\modules\storage {
         static::on_init(null, $form, $items);
         break;
       case 'add_new':
-        url::go('/manage/instance/insert/'.$entity->name.'?'.url::back_part_make());
+        url::go('/manage/data/insert/'.$entity->name.'?'.url::back_part_make());
         break;
     }
   }

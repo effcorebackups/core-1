@@ -72,8 +72,8 @@ namespace effcore\modules\storage {
           if ($form->_instance->insert())
                message::insert(new text('Item of type "%%_name" with id = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
-                     url::go(url::back_url_get() ?: ($back_update ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
-      case 'cancel': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/instances/select/'.core::sanitize_id($entity->group).'/'.$entity->name)); break;
+                     url::go(url::back_url_get() ?: ($back_update ?: '/manage/instances/select/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
+      case 'cancel': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/instances/select/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
     }
   }
 

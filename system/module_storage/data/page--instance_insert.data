@@ -3,7 +3,7 @@ pages
     id: instance_insert
     title: %%_entity_title_page_context{entity_name}: insert
     is_https: true
-    url: %^(?<base>/manage/instance/insert)/
+    url: %^(?<base>/manage/data/insert)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
 >>>>>>>>>>>(?<category>[a-z0-9_]+)|)$%
     access
