@@ -255,6 +255,20 @@ entities
         - is_validate_uniqueness: true
         field_element_attributes_on_update
         - disabled: true
+    - title
+        title: Title
+        type: varchar
+        collate: nocase
+        size: 1024
+        not_null: true
+        check: (title <> '')
+        field_is_visible_on_select: true
+        field_is_visible_on_insert: true
+        field_is_visible_on_update: true
+        field_class: \effcore\field_text
+        field_element_attributes
+        - required: false
+        - maxlength: 1024
     - fields
         title: Fields
         type: blob

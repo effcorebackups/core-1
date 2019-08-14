@@ -8,6 +8,7 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\fieldset;
           use \effcore\group_page_part_insert;
           use \effcore\group_page_part_manage;
           use \effcore\layout;
@@ -71,6 +72,16 @@ namespace effcore\modules\page {
         $form->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager'    );
         $form->child_insert(core::deep_clone($items['~update']),         'button_update_copy');
         $form->child_insert(core::deep_clone($items['~cancel']),         'button_cancel_copy');
+      }
+      if ($entity->name == 'selection' && !empty($form->_instance)) {
+        $query_params = new fieldset('Query parameters');
+        $form->child_select('fields')->child_insert(
+          $query_params, 'query_params'
+        );
+        $decorator_params = new fieldset('Decorator parameters');
+        $form->child_select('fields')->child_insert(
+          $decorator_params, 'decorator_params'
+        );
       }
     }
   }
