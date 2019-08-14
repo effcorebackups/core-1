@@ -19,12 +19,12 @@ namespace effcore\modules\menu {
     $group_by_id_tree = page::get_current()->args_get('instances_group_by');
     core::array_sort_by_text_property($trees);
     if ($entity_name == 'tree_item' && !isset($trees[$group_by_id_tree])) core::send_header_and_exit('page_not_found');
-    tabs_item::delete('manage_instances_menu_tree_item');
+    tabs_item::delete('data_menu_tree_item');
     foreach ($trees as $c_tree) {
       tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),
-        'manage_instances_menu_tree_item_'.$c_tree->id,
-        'manage_instances_menu',
-        'manage_instances', 'menu/tree_item/'.$c_tree->id
+        'data_menu_tree_item_'.$c_tree->id,
+        'data_menu',
+        'data', 'menu/tree_item/'.$c_tree->id
       );
     }
   }

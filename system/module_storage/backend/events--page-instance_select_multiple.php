@@ -54,13 +54,13 @@ namespace effcore\modules\storage {
   # make tabs
     foreach ($entities_by_groups as $c_group_id => $c_entities) {
       tabs_item::insert($groups[$c_group_id],
-            'manage_instances_'.$c_group_id, null,
-            'manage_instances', $c_group_id);
+            'data_'.$c_group_id, null,
+            'data', $c_group_id);
       foreach ($c_entities as $c_name =>  $c_entity) {
         tabs_item::insert($c_entity->title_plural,
-            'manage_instances_'.$c_group_id.'_'.$c_name,
-            'manage_instances_'.$c_group_id,
-            'manage_instances', $c_group_id.'/'.$c_name
+            'data_'.$c_group_id.'_'.$c_name,
+            'data_'.$c_group_id,
+            'data', $c_group_id.'/'.$c_name
         );
       }
     }

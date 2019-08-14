@@ -50,8 +50,8 @@ events
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
   on_tab_build_before
-  - manage_instances|event
-      for: manage_instances
+  - data|event
+      for: data
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_build_before
   on_page_build_before
   - instance_select|event

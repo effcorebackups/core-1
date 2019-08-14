@@ -28,7 +28,7 @@ pages
     - tabs
       - tabs|page_part
           type: link
-          source: tabs/storage/manage_instances
+          source: tabs/storage/data
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_instance_select_multiple|page_part
