@@ -19,7 +19,7 @@ namespace effcore {
   function build() {
     parent::build();
     $element = $this->child_select('element');
-    $element->attribute_insert('data-default_state', $this->checked_get() ? 'checked' : 'not_checked');
+    $element->attribute_insert('data-state-default', $this->checked_get() ? 'checked' : 'not_checked');
   }
 
   function render() {

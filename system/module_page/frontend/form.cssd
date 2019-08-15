@@ -2,7 +2,7 @@
   /* form */
 
   form {margin: 70px 0}
-  form [aria-invalid=true] {border-color: %%_color_error !important}
+  form [aria-invalid='true'] {border-color: %%_color_error !important}
 
   input[type='checkbox'] ~ label[for],
   input[type='radio'   ] ~ label[for] {
@@ -16,8 +16,8 @@
 
   fieldset {margin: 50px 0; padding: 0; border: none}
 
-  x-field[data-before_container] {margin-bottom: 0}
-  x-field[data-before_container] + fieldset {margin-top: 0; margin-left: 34px}
+  x-field[data-before-container='true'] {margin-bottom: 0}
+  x-field[data-before-container='true'] + fieldset {margin-top: 0; margin-left: 34px}
 
   fieldset > label {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   fieldset > x-fieldset-content {margin-top: 30px}
@@ -110,8 +110,8 @@
   input[type='checkbox']:checked                       {background: %%_color_page url('images/icons-form.svgd')   0     0  }
   input[type='checkbox'][data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
 
-  input[data-default_state='not_checked']:checked,
-  input[data-default_state='checked'    ]:not(:checked) {border-color: %%_color_warning}
+  input[data-state-default='not_checked']:checked,
+  input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color_warning}
 
   /* checkboxes and radiobuttons inside containers */
 
