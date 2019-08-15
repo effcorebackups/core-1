@@ -8,8 +8,6 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\field_number;
-          use \effcore\fieldset;
           use \effcore\group_page_part_insert;
           use \effcore\group_page_part_manage;
           use \effcore\layout;
@@ -19,15 +17,12 @@ namespace effcore\modules\page {
           use \effcore\page;
           use \effcore\text;
           use \effcore\translation;
-          abstract class events_form_instance_update {
+          abstract class events_form_instance_update_page {
 
   static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # ─────────────────────────────────────────────────────────────────────
-    # page
-    # ─────────────────────────────────────────────────────────────────────
       if ($entity->name == 'page' && !empty($form->_instance)) {
       # disable url field for embedded instance
         if (!empty($form->_instance->is_embed)) {
@@ -73,29 +68,6 @@ namespace effcore\modules\page {
         $form->child_select('fields')->child_delete(                                             'layout_manager');
         $form->child_select('fields')->child_insert(new markup('x-layout-manager', [], $layout), 'layout_manager');
       }
-    # ─────────────────────────────────────────────────────────────────────
-    # selection
-    # ─────────────────────────────────────────────────────────────────────
-      if ($entity->name == 'selection' && !empty($form->_instance)) {
-        $fields           = new fieldset('Fields');
-        $query_params     = new fieldset('Query parameters');
-        $decorator_params = new fieldset('Decorator parameters');
-        $conditions       = new fieldset('Conditions');
-        $order            = new fieldset('Order');
-        $limit = new field_number('Limit');
-        $limit->build();
-        $limit->name_set('limit');
-        $limit->value_set(1);
-        $limit->min_set(1);
-        $limit->max_set(10000);
-
-        $query_params                ->child_insert($conditions,       'conditions'      );
-        $query_params                ->child_insert($order,            'order'           );
-        $query_params                ->child_insert($limit,            'limit'           );
-        $form->child_select('fields')->child_insert($fields,           'fields'          );
-        $form->child_select('fields')->child_insert($query_params,     'query_params'    );
-        $form->child_select('fields')->child_insert($decorator_params, 'decorator_params');
-      }
     }
   }
 
@@ -103,9 +75,6 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # ─────────────────────────────────────────────────────────────────────
-    # page
-    # ─────────────────────────────────────────────────────────────────────
       if ($entity->name == 'page' && !empty($form->_instance)) {
         $links = $form->validation_cache_get('presets_link');
         switch ($form->clicked_button->value_get()) {
