@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class color {
+          abstract class color {
 
   static protected $cache;
   static protected $cache_presets;

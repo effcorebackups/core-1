@@ -187,7 +187,7 @@ namespace effcore\modules\develop {
         $c_return = new \stdClass;
         $c_return->_type = 'UMLClass';
         $c_return->_id = 'CLASS-'.core::hash_get($c_item_full_name);
-        $c_return->name = $c_item_info->name;
+        $c_return->name = ucfirst($c_item_info->name);
         $c_return->visibility = 'public';
         $c_return->isAbstract = !empty($c_item_info->modifier) && $c_item_info->modifier == 'abstract';
         $c_return->isFinalSpecialization = !empty($c_item_info->modifier) && $c_item_info->modifier == 'final';
@@ -216,9 +216,9 @@ namespace effcore\modules\develop {
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
                         '(?<name>'.$c_info->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
-            if ($c_info->isPublic())    $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPublic   ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
             if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-            if ($c_info->isPrivate())   $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPrivate  ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
           }
         }
 
@@ -232,9 +232,9 @@ namespace effcore\modules\develop {
                         '(?:function)\\s'.
                         '(?<name>'.$c_info->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-            if ($c_info->isPublic())    $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPublic   ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
             if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-            if ($c_info->isPrivate())   $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if ($c_info->isPrivate  ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
             if (!empty($c_matches['params'])) {
               foreach (explode(',', $c_matches['params']) as $c_param) {
                 $c_param_parts = explode('=', $c_param);
