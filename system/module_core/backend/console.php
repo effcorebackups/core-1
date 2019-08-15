@@ -141,7 +141,7 @@ namespace effcore {
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
-    return new block('Execute plan', ['data-styled-title' => 'no', 'data-id' => 'logs'], [$decorator,
+    return new block('Execute plan', ['data-is-title-styled' => 'no', 'data-id' => 'logs'], [$decorator,
       new markup('x-total', [], [new markup('x-label', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-shash', [], [new markup('x-label', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-dhash', [], [new markup('x-label', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])
