@@ -40,7 +40,7 @@ namespace effcore\modules\user {
               $user->avatar_path) {
       $tree_item = tree_item::select('registered', 'user_registered');
       if ($tree_item)
-          $tree_item->attribute_insert('data-has-avatar', 'yes');
+          $tree_item->attribute_insert('data-has-avatar', 'true');
     }
   }
 
