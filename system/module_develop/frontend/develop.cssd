@@ -64,10 +64,10 @@
   x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
   x-diagram-uml x-class x-namespace {margin-bottom: 3px; font-size: .9em; line-height: 1em}
   x-diagram-uml x-class x-namespace:empty {display: none}
-  x-diagram-uml x-class[data-abstract='yes'] x-name {font-style: italic}
+  x-diagram-uml x-class[data-abstract='true'] x-name {font-style: italic}
   x-diagram-uml x-class x-attributes,
   x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
-  x-diagram-uml x-item[data-static='yes'] {text-decoration: underline}
+  x-diagram-uml x-item[data-static='true'] {text-decoration: underline}
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
   x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
