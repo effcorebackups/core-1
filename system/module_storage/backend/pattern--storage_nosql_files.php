@@ -280,9 +280,10 @@ namespace effcore {
         if ($c_delimiter == ': ') {
           $c_value = core::string_to_data($c_value);
         } else {
-          if ($c_value == '_empty_array') {
-            $c_value = [];
-          } else {
+          if      ($c_value == '_empty_array' ) $c_value = [];
+          else if ($c_value == '_string_true' ) $c_value = 'true';
+          else if ($c_value == '_string_false') $c_value = 'false';
+          else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
             $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');

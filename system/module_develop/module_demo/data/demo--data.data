@@ -28,8 +28,10 @@ demo_data
     prop_1: property value 1
     prop_2: property value 2
     prop_3: property value 3
+  demo_string_true|_string_true
+  demo_string_false|_string_false
 # ─────────────────────────────────────────────────────────────────────
-# nested
+# nesting
 # ─────────────────────────────────────────────────────────────────────
   demo_nested
     prop_1: nested value 1
