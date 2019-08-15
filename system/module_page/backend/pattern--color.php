@@ -5,7 +5,16 @@
   ##################################################################
 
 namespace effcore {
-          abstract class color {
+          class color {
+
+  public $id;
+  public $value;
+  public $value_hex;
+  public $group;
+
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
   static protected $cache_presets;
