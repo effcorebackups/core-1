@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* drag-and-drop functionality */
 
-  var trees_draggable = document.querySelectorAll('x-tree[data-managing_mode$="draggable"]');
+  var trees_draggable = document.querySelectorAll('x-tree[data-managing-mode$="draggable"]');
   if (trees_draggable instanceof NodeList) {
     trees_draggable.forEach(function(c_tree){
 
