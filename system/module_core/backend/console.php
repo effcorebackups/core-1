@@ -129,11 +129,11 @@ namespace effcore {
       $c_row_attributes  = ['data-object' => core::sanitize_id($c_log->object)];
       $c_row_attributes += ['data-action' => core::sanitize_id($c_log->action)];
       $c_row_attributes += ['data-value'  => core::sanitize_id($c_log->value )];
-      if ($c_log->time  >= .000099) $c_row_attributes['data-loading_level'] = 1;
-      if ($c_log->time  >=  .00099) $c_row_attributes['data-loading_level'] = 2;
-      if ($c_log->time  >=   .0099) $c_row_attributes['data-loading_level'] = 3;
-      if ($c_log->time  >=    .099) $c_row_attributes['data-loading_level'] = 4;
-      if ($c_log->time  >=     .99) $c_row_attributes['data-loading_level'] = 5;
+      if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
+      if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
+      if ($c_log->time  >=   .0099) $c_row_attributes['data-loading-level'] = 3;
+      if ($c_log->time  >=    .099) $c_row_attributes['data-loading-level'] = 4;
+      if ($c_log->time  >=     .99) $c_row_attributes['data-loading-level'] = 5;
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
         'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)       ],

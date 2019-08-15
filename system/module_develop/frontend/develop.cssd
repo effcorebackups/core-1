@@ -17,10 +17,10 @@
   x-block[data-id='logs'] tbody tr[data-object='event'][data-action='begin'] {}
   x-block[data-id='logs'] tbody tr[data-object='event'][data-action='end'  ] {}
 
-  x-block[data-id='logs'] tbody tr[data-loading_level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
-  x-block[data-id='logs'] tbody tr[data-loading_level='3'] td[data-cellid='time'] {background-color: %%_color_error}
-  x-block[data-id='logs'] tbody tr[data-loading_level='4'] td[data-cellid='time'] {background-color: %%_color_error}
-  x-block[data-id='logs'] tbody tr[data-loading_level='5'] td[data-cellid='time'] {background-color: %%_color_error}
+  x-block[data-id='logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
+  x-block[data-id='logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
+  x-block[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
+  x-block[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
   x-block[data-id='logs'] x-total,
   x-block[data-id='logs'] x-shash,
