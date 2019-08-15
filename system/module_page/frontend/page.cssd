@@ -163,7 +163,7 @@
     font-size: 1.5em;
     line-height: 1.5em}
   x-block-content {display: block}
-  x-block[data-title-styled='no'] x-block-title {border: none}
+  x-block[data-title-styled='false'] x-block-title {border: none}
 
   /* block system info */
 
