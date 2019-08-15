@@ -16,8 +16,7 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $preset = page_part_preset::select($this->id_preset);
-      $button_delete = new button;
-      $button_delete->title = '';
+      $button_delete = new button('');
       $button_delete->build();
       $button_delete->value_set('button_delete_'.$this->id_preset.'_in_'.$this->id_area);
       $this->child_insert($button_delete, 'button');

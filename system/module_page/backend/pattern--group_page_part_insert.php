@@ -29,8 +29,7 @@ namespace effcore {
       $select_preset->build();
       $select_preset->name_set('insert_to_'.$this->id_area);
       $select_preset->required_set(false);
-      $button_insert = new button;
-      $button_insert->title = '';
+      $button_insert = new button('');
       $button_insert->build();
       $button_insert->value_set('button_insert_to_'.$this->id_area);
       $this->child_insert($select_preset, 'select');

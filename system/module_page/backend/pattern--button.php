@@ -16,7 +16,7 @@ namespace effcore {
   public $novalidate = false;
 
   function __construct($title = null, $attributes = [], $weight = 0) {
-    if ($title) $this->title = $title;
+    if ($title !== null) $this->title = $title;
     parent::__construct(null, $attributes, [], $weight);
   }
 

@@ -9,6 +9,7 @@ namespace effcore\modules\page {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
+          use \effcore\group_selection_field_insert;
           use \effcore\page;
           abstract class events_form_instance_update_selection {
 
@@ -22,6 +23,11 @@ namespace effcore\modules\page {
         $decorator_params = new fieldset('Decorator parameters');
         $conditions       = new fieldset('Conditions');
         $order            = new fieldset('Order');
+
+        $field_insert = new group_selection_field_insert;
+        $field_insert->build();
+        $fields->child_insert($field_insert, 'field_insert');
+
         $limit = new field_number('Limit');
         $limit->build();
         $limit->name_set('limit');
