@@ -172,6 +172,16 @@
   button:enabled[value='delete']       {background-color: %%_color_warning}
   button:enabled[value='delete']:hover {background-color: %%_color_button_active}
 
+  button[data-style^='narrow'] {
+    margin: 0 0 0 8px;
+    padding: 0;
+    width: 44px;
+    min-width: auto;
+    background-repeat: no-repeat}
+  button[data-style^='narrow-reload'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
+  button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
+  button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
+
   /* checkbox color */
 
   x-field[data-type='checkbox-color'] input {
@@ -218,14 +228,7 @@
 
   /* form 'cache_update' */
 
-  form#cache_update {text-align: right}
-  form#cache_update button[value='refresh'] {
-    width: 44px;
-    min-width: auto;
-    margin: 0;
-    padding: 0;
-    background-image: url('images/icons-button.svgd');
-    background-repeat: no-repeat}
+                                               form#cache_update {text-align: right}
   html[data-css-path='manage-modules-install'] form#cache_update {margin: -70px 0}
 
   /* layout manage */
@@ -248,29 +251,15 @@
     background: %%_color_main{20,20,20}}
   x-layout-manager [data-area-type='column'] > x-area-id {background: %%_color_warning}
 
-  x-page_part-manage {display: block; margin: 10px 0; padding: 8px; border: 1px dotted %%_color_main}
+  x-page_part-manage {display: block; margin: 10px 0; padding: 8px; border: 1px dotted %%_color_main; border-radius: 0 30px 30px 0}
   x-page_part-manage x-title {display: block}
   x-page_part-manage x-id {display: block; opacity: .5}
-  x-page_part-manage button {position: relative; float: right; z-index: 10}
+  x-page_part-manage button {float: right; position: relative; z-index: 10}
 
   x-page_part-insert {display: block; margin-top: 10px}
   x-page_part-insert x-field {display: inline-block; margin: 0}
   x-page_part-insert x-field label {margin-bottom: 5px}
   x-page_part-insert x-field select {width: 130px; margin: 0}
-
-  x-page_part-manage::after,
-  x-page_part-insert::after {content: ''; clear: both; display: block}
-  x-page_part-manage {border-radius: 0 30px 30px 0}
-  x-page_part-manage button,
-  x-page_part-insert button {
-    margin: 0 0 0 8px;
-    padding: 0;
-    width: 44px;
-    min-width: auto;
-    background-image: url('images/icons-button.svgd');
-    background-repeat: no-repeat}
-  x-page_part-manage button {background-position: 50% -88px}
-  x-page_part-insert button {background-position: 50% -44px}
 
   form#instance_update x-layout-manager [data-area-id] {border-color: %%_color_warning}
   form#instance_update x-layout-manager x-area-id  {background-color: %%_color_warning}

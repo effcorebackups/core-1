@@ -8,4 +8,5 @@ forms
     - button_refresh|button
         title: 
         attributes
+        - data-style: narrow-reload
         - value: refresh
