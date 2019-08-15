@@ -13,7 +13,9 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $options = ['not_selected' => '- no -'];
       $select_field = new field_select('Insert field');
+      $select_field->values = $options;
       $select_field->build();
       $select_field->name_set('insert_field');
       $select_field->required_set(false);
