@@ -92,7 +92,7 @@ namespace effcore\modules\develop {
       $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type));
       $c_decorator = new decorator('table-adaptive');
       $c_decorator->id = 'events_nosql_handlers_'.$c_event_type;
-      $c_decorator->result_attributes = ['data-is-compact' => 'true'];
+      $c_decorator->result_attributes = ['data-compact' => 'true'];
       $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type], $c_event_type), $c_event_type.'_header'   );
       $report->child_insert($c_decorator,                                                     $c_event_type.'_decorator');
       foreach ($c_events as $c_event) {
@@ -166,7 +166,7 @@ namespace effcore\modules\develop {
   static function on_show_block_translations($page) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'translations_nosql';
-    $decorator->result_attributes = ['data-is-compact' => 'true'];
+    $decorator->result_attributes = ['data-compact' => 'true'];
     $translations = translation::get_all_by_code();
     if ($translations) {
       ksort($translations);

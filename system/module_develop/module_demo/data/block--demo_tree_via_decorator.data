@@ -1,7 +1,7 @@
 blocks
 - demo_tree_via_decorator|block
     attributes
-    - data-is-title-styled: no
+    - data-title-styled: no
     - data-id: demo_tree_via_decorator
     children
   # ─────────────────────────────────────────────────────────────────────

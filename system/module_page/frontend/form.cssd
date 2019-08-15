@@ -16,8 +16,8 @@
 
   fieldset {margin: 50px 0; padding: 0; border: none}
 
-  x-field[data-is-before_container] {margin-bottom: 0}
-  x-field[data-is-before_container] + fieldset {margin-top: 0; margin-left: 34px}
+  x-field[data-before_container] {margin-bottom: 0}
+  x-field[data-before_container] + fieldset {margin-top: 0; margin-left: 34px}
 
   fieldset > label {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   fieldset > x-fieldset-content {margin-top: 30px}

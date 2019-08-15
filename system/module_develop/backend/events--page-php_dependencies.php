@@ -76,7 +76,7 @@ namespace effcore\modules\develop {
     $fnc_title = new markup('h2', [], 'PHP functions usage');
     $fnc_decorator = new decorator('table');
     $fnc_decorator->id = 'functions_usage';
-    $fnc_decorator->result_attributes = ['data-is-compact' => 'true'];
+    $fnc_decorator->result_attributes = ['data-compact' => 'true'];
     foreach ($statistic_by_fnc as $c_function => $c_positions) {
       $fnc_decorator->data[$c_function] = [
         'function' => ['value' => new text_simple($c_function),         'title' => 'Function'       ],
@@ -89,7 +89,7 @@ namespace effcore\modules\develop {
     $ext_title = new markup('h2', [], 'Full report');
     $ext_decorator = new decorator('table');
     $ext_decorator->id = 'extensions_dependency';
-    $ext_decorator->result_attributes = ['data-is-compact' => 'true'];
+    $ext_decorator->result_attributes = ['data-compact' => 'true'];
     foreach ($statistic_by_ext as $c_extension => $c_functions) {
       foreach ($c_functions as $c_function => $c_positions) {
         foreach ($c_positions as $c_position_info) {
