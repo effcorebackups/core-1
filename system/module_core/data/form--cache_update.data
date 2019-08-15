@@ -5,8 +5,8 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_refresh|button
+    - button_reload|button
         title: 
         attributes
         - data-style: narrow-reload
-        - value: refresh
+        - value: reload
