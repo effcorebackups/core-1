@@ -9,7 +9,9 @@ namespace effcore {
 
   public $title = 'Access';
   public $description = 'Access settings not applicable if no one role is active!';
-  public $attributes = ['data-type' => 'switchers', 'role' => 'group'];
+  public $attributes = [
+    'data-type' => 'switchers',
+    'role'      => 'group'];
   public $element_attributes = [
     'data-type' => 'switcher',
     'name'      => 'roles[]'

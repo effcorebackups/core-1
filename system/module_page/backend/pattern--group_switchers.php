@@ -7,7 +7,9 @@
 namespace effcore {
           class group_switchers extends group_checkboxes {
 
-  public $attributes = ['data-type' => 'switchers', 'role' => 'group'];
+  public $attributes = [
+    'data-type' => 'switchers',
+    'role'      => 'group'];
   public $element_attributes = [
     'data-type' => 'switcher'
   ];
