@@ -5,13 +5,16 @@ forms
     - method: post
     - novalidate: true
     children
+    - button_default|button_default
+        attributes
+        - value: delete
+    - button_return|button
+        title: return
+        novalidate: true
+        attributes
+        - value: return
     - info|fieldset
     - button_delete|button
         title: delete
         attributes
         - value: delete
-    - button_cancel|button
-        title: cancel
-        novalidate: true
-        attributes
-        - value: cancel
