@@ -141,7 +141,7 @@ namespace effcore\modules\user {
           break;
         case 'return':
           if ($entity->name == 'user' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_cancel', '/user/'.$items['#nick']->value_get());
+            page::get_current()->args_set('back_return', '/user/'.$items['#nick']->value_get());
           }
           break;
       }

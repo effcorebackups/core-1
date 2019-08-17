@@ -64,7 +64,7 @@ namespace effcore\modules\storage {
 
   static function on_submit($event, $form, $items) {
     $back_update = page::get_current()->args_get('back_update');
-    $back_cancel = page::get_current()->args_get('back_cancel');
+    $back_return = page::get_current()->args_get('back_return');
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
@@ -83,7 +83,7 @@ namespace effcore\modules\storage {
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
         }
                      url::go(url::back_url_get() ?: ($back_update ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
-      case 'return': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
+      case 'return': url::go(url::back_url_get() ?: ($back_return ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
     }
   }
 
