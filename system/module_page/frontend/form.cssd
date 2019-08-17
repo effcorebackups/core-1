@@ -155,7 +155,6 @@
   /* buttons */
 
   button {
-    min-width: 180px;
     min-height: 44px;
     margin: 10px 20px 10px 0;
     padding: 13px 30px;
@@ -176,7 +175,6 @@
     margin: 0 0 0 8px;
     padding: 0;
     width: 44px;
-    min-width: auto;
     background-repeat: no-repeat}
   button[data-style^='narrow-reload'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
   button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
