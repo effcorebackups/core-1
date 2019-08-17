@@ -261,7 +261,7 @@ namespace effcore {
   function actions_list_get($instance, $allowed = ['select', 'update', 'delete']) {
     $actions_list = new actions_list();
     foreach ($allowed as $c_action_name) {
-      if ($c_action_name == 'delete' && !empty($instance->is_embed)) continue;
+      if (!empty($instance->is_embed) && $c_action_name == 'delete') continue;
       $actions_list->action_add(
         '/manage/data/'.$c_action_name.'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'?'.url::back_part_make(), $c_action_name
       );

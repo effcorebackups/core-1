@@ -221,9 +221,7 @@
 
   /* form 'instance_select_multiple' */
 
-  form#instance_select_multiple button[value='add_new'] {
-    float: right;
-    margin: 27px 0 0 20px}
+  form#instance_select_multiple button[value='insert'] {float: right; margin-top: 27px}
   form#instance_select_multiple x-selection {margin: 100px 0}
 
   /* form 'cache_update' */

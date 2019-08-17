@@ -19,7 +19,6 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $items['~add_new']->attribute_insert('title', new text('Add new instance of type %%_name on new page.', ['name' => translation::get($entity->title)]));
       $selection = new selection;
       $selection->id = 'instances_manage';
       $selection->pager_is_on = true;
@@ -88,7 +87,7 @@ namespace effcore\modules\storage {
         }
         static::on_init(null, $form, $items);
         break;
-      case 'add_new':
+      case 'insert':
         url::go('/manage/data/insert/'.$entity->name.'?'.url::back_part_make());
         break;
     }

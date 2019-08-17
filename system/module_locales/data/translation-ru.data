@@ -19,7 +19,7 @@ translations
     - Action: Действие
     - actions: действия
     - Actions: Действия
-    - Add new instance of type %%_name on new page.: Добавить новый экземпляр типа %%_name на новой странице.
+    - Add new instance of type "%%_entity_name_context" on new page.: Добавить новый экземпляр типа "%%_entity_name_context" на новой странице.
     - add: добавить
     - Administrators: Администраторы
     - agree: согласен(а)

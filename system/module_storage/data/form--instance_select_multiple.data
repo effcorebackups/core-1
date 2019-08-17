@@ -6,11 +6,15 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_add_new|button
-        title: add
+    - button_insert|button
+        title: 
         novalidate: true
         attributes
-        - value: add_new
+        - title|text
+            text: Add new instance of type "%%_entity_name_context" on new page.
+            is_apply_tokens: true
+        - data-style: narrow-insert
+        - value: insert
     - actions|field_select
         title: Actions
         element_attributes

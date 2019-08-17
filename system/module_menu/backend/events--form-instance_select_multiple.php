@@ -75,7 +75,7 @@ namespace effcore\modules\menu {
             static::on_init(null, $form, $items);
           }
           break;
-        case 'add_new':
+        case 'insert':
           if ($entity->name == 'tree_item' && $id_tree) {
             url::go('/manage/data/insert/'.$entity->name.'/'.$id_tree.'?'.url::back_part_make());
           }
