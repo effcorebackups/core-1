@@ -73,7 +73,7 @@ namespace effcore\modules\storage {
                message::insert(new text('Item of type "%%_name" with id = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
                      url::go(url::back_url_get() ?: ($back_update ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
-      case 'cancel': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
+      case 'return': url::go(url::back_url_get() ?: ($back_cancel ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
     }
   }
 

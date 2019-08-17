@@ -9,11 +9,11 @@ forms
     - button_default|button_default
         attributes
         - value: insert
-    - button_cancel|button
-        title: cancel
+    - button_return|button
+        title: return
         novalidate: true
         attributes
-        - value: cancel
+        - value: return
     - fields|fieldset
     - button_insert|button
         title: insert
