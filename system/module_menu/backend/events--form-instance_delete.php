@@ -31,7 +31,7 @@ namespace effcore\modules\menu {
           $children = new markup('ul');
           $question = new markup('p', [], ['question' => new text('The following related items will also be deleted:'), 'children' => $children]);
           foreach ($tree_item_children as $c_child) {
-            $children->child_insert(new markup('li', [], $c_child->title));
+            $children->child_insert(new markup('li', [], $c_child->id));
             $form->_related[] = $c_child->id;}
           $items['info']->child_insert($question, 'question_for_related');
         }
