@@ -64,7 +64,7 @@ namespace effcore\modules\storage {
             }
           }
           if ($form->_selected_instances == []) {
-            $form->error_set('No one item was selected!');
+            message::insert('Nothing selected!', 'warning');
             foreach ($form->_selection->_instances as $c_instance) {
               $c_instance_id = implode('+', $c_instance->values_id_get());
               $items['#is_checked:'.$c_instance_id]->error_set();

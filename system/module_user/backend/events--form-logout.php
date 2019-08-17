@@ -64,9 +64,10 @@ namespace effcore\modules\user {
             }
           }
         } else {
-          message::insert(
-            'Nothing selected!', 'warning'
-          );
+          message::insert('Nothing selected!', 'warning');
+          foreach ($sessions as $c_session) {
+            $items['#is_checked:'.$c_session->id]->error_set();
+          }
         }
         break;
       case 'return':
