@@ -70,7 +70,7 @@ namespace effcore\modules\user {
         }
         break;
       case 'return':
-        url::go(url::back_url_get() ?: '/');
+        url::go(url::back_url_get() ?: '/user/'.user::get_current()->nick);
         break;
     }
   }
