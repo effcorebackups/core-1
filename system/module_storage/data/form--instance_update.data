@@ -6,13 +6,16 @@ forms
     - method: post
     - novalidate: true
     children
+    - button_default|button_default
+        attributes
+        - value: update
+    - button_return|button
+        title: return
+        novalidate: true
+        attributes
+        - value: return
     - fields|fieldset
     - button_update|button
         title: update
         attributes
         - value: update
-    - button_cancel|button
-        title: cancel
-        novalidate: true
-        attributes
-        - value: cancel

@@ -139,7 +139,7 @@ namespace effcore\modules\user {
             else        $form->_instance->access = null;
           }
           break;
-        case 'cancel':
+        case 'return':
           if ($entity->name == 'user' && !empty($form->_instance)) {
             page::get_current()->args_set('back_cancel', '/user/'.$items['#nick']->value_get());
           }
