@@ -9,9 +9,10 @@ namespace effcore {
 
   public $title = '';
   public $attributes = [
-    'role' => 'button-default', 
-    'type' => 'submit',
-    'name' => 'button'];
+    'tabindex' => -1,
+    'role'     => 'button-default', 
+    'type'     => 'submit',
+    'name'     => 'button'];
 
   function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, $attributes, [], $weight);
