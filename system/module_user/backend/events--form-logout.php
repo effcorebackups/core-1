@@ -57,11 +57,10 @@ namespace effcore\modules\user {
         if ($has_selection) {
           if (!session::select()) url::go('/'); else {
             static::on_init(null, $form, $items);
-            foreach ($messages as $c_type => $c_messages_by_type) {
-              foreach ($c_messages_by_type as $c_message) {
+            foreach ($messages as $c_type => $c_messages_by_type)
+              foreach ($c_messages_by_type as $c_message)
                 message::insert($c_message, $c_type);
-              }
-            }
+            url::go(url::back_url_get() ?: '/user/'.user::get_current()->nick);
           }
         } else {
           message::insert('No one item was selected!', 'warning');
