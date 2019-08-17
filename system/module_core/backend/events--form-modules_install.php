@@ -171,7 +171,7 @@ namespace effcore\modules\core {
         }
         if (!$modules_to_enable && !$modules_to_disable) {
           message::insert(
-            'Nothing selected!', 'warning'
+            'No one item was selected!', 'warning'
           );
         }
         break;

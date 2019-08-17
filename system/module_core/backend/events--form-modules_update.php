@@ -80,7 +80,7 @@ namespace effcore\modules\core {
         }
         if (!$has_selection) {
           message::insert(
-            'Nothing selected!', 'warning'
+            'No one item was selected!', 'warning'
           );
         }
         static::on_init(null, $form, $items);
