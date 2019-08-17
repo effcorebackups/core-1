@@ -28,8 +28,11 @@ namespace effcore\modules\menu {
         $tree_item->build();
         $tree_item_children = $tree_item->children_select_recursive();
         if ($tree_item_children) {
-          foreach ($tree_item_children as $c_child) {$form->_related[] = $c_child->id; $c_child->url = '';}
-          $question = new markup('p', [], new text('Delete related items of type "%%_name" with id = "%%_id"?', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]));
+          $children = new markup('ul');
+          $question = new markup('p', [], ['question' => new text('The following related items will also be deleted:'), 'children' => $children]);
+          foreach ($tree_item_children as $c_child) {
+            $children->child_insert(new markup('li', [], $c_child->title));
+            $form->_related[] = $c_child->id;}
           $items['info']->child_insert($question, 'question_for_related');
         }
       }
