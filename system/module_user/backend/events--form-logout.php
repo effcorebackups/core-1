@@ -69,7 +69,7 @@ namespace effcore\modules\user {
           );
         }
         break;
-      case 'cancel':
+      case 'return':
         url::go(url::back_url_get() ?: '/');
         break;
     }

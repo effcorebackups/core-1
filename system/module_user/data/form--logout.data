@@ -5,13 +5,16 @@ forms
     - method: post
     - novalidate: true
     children
+    - button_default|button_default
+        attributes
+        - value: logout
+    - button_return|button
+        title: return
+        novalidate: true
+        attributes
+        - value: return
     - info|node
     - button_logout|button
         title: logout
         attributes
         - value: logout
-    - button_cancel|button
-        title: cancel
-        novalidate: true
-        attributes
-        - value: cancel
