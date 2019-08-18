@@ -12,6 +12,7 @@ forms
         title: return
         novalidate: true
         attributes
+        - data-style: chameleon
         - value: return
     - info|fieldset
     - button_delete|button

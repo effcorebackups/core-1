@@ -13,6 +13,7 @@ forms
         title: return
         novalidate: true
         attributes
+        - data-style: chameleon
         - value: return
     - fields|fieldset
     - button_update|button
