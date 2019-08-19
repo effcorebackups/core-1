@@ -1,0 +1,15 @@
+forms
+- instance_select|form
+    attributes
+    - id: instance_select
+    - enctype: multipart/form-data
+    - method: post
+    - novalidate: true
+    children
+    - button_return|button
+        title: return
+        novalidate: true
+        attributes
+        - data-style: chameleon
+        - value: return
+    - data|node

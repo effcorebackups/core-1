@@ -20,6 +20,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_instance_select|page_part
-          type: code
-          source: \effcore\modules\storage\events_page_instance_select::on_show_block_instance_select
+      - form_instance_select|page_part
+          type: link
+          source: forms/storage/instance_select
