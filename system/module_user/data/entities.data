@@ -8,6 +8,7 @@ entities
     managing_group: User
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id
         title: ID
@@ -54,6 +55,7 @@ entities
     managing_group: User
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id_role
         title: Role
@@ -116,6 +118,7 @@ entities
     managing_group: User
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id_user
         title: User
@@ -178,6 +181,7 @@ entities
     ws_weight: true
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id
         title: ID
@@ -278,6 +282,7 @@ entities
     ws_is_embed: true
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id
         title: ID

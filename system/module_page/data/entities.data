@@ -164,6 +164,7 @@ entities
     ws_is_embed: true
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id
         title: ID
@@ -240,6 +241,7 @@ entities
     managing_group: Content
     ws_created: true
     ws_updated: true
+    ws_updated_parallel_checking: true
     fields
     - id
         title: ID
