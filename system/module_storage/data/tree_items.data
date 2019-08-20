@@ -4,7 +4,7 @@ tree_items
     id_parent: manage
     id_tree: main
     title: Data
-    url: /manage/data/select_multiple
+    url: /manage/data
     access
       roles
       - =: admins

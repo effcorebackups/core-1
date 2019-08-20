@@ -42,4 +42,4 @@ events
   - data|event
       for: data
       weight: -50
-      handler: \effcore\modules\menu\events_page::on_tab_build_before
+      handler: \effcore\modules\menu\events_page_instance_select_multiple::on_tab_build_before

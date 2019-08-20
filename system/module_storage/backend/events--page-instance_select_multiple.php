@@ -14,17 +14,20 @@ namespace effcore\modules\storage {
 
   # URLs for manage:
   # ─────────────────────────────────────────────────────────────────────────────────
-  # /manage/data/select_multiple → /manage/data/select_multiple/%%_managing_group/%%_entity_name/%%_instances_group_by
-  # /manage/data/insert          → /manage/data/insert/%%_entity_name
-  #                                /manage/data/insert/%%_entity_name/%%_category
-  #                                /manage/data/select/%%_entity_name/%%_instance_id
-  #                                /manage/data/update/%%_entity_name/%%_instance_id
-  #                                /manage/data/delete/%%_entity_name/%%_instance_id
+  # /manage/data                 → /manage/data/%%_action_name=select_multiple
+  # /manage/data/select_multiple → /manage/data/%%_action_name=select_multiple/%%_managing_group/%%_entity_name/%%_instances_group_by
+  # /manage/data/insert          → /manage/data/%%_action_name=insert/%%_entity_name
+  #                                /manage/data/%%_action_name=insert/%%_entity_name/%%_category
+  #                                /manage/data/%%_action_name=select/%%_entity_name/%%_instance_id
+  #                                /manage/data/%%_action_name=update/%%_entity_name/%%_instance_id
+  #                                /manage/data/%%_action_name=delete/%%_entity_name/%%_instance_id
   # ─────────────────────────────────────────────────────────────────────────────────
 
   static function on_tab_build_before($event, $tab) {
+    $action_name    = page::get_current()->args_get('action_name'   );
     $managing_group = page::get_current()->args_get('managing_group');
     $entity_name    = page::get_current()->args_get('entity_name'   );
+    if (!$action_name) url::go(page::get_current()->args_get('base').'/select_multiple');
     $entities = entity::get_all();
     $groups   = entity::groups_managing_get();
     $entities_by_groups = [];
@@ -49,19 +52,19 @@ namespace effcore\modules\storage {
   # │ /manage/data/select_multiple/      managing_group/wrong_entity_name │ managing_group == true && entity_name != true │
   # │ /manage/data/select_multiple/wrong_managing_group/wrong_entity_name │ managing_group != true && entity_name != true │
   # └─────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────┘
-    if (isset($groups[$managing_group])                                                              == false) url::go(page::get_current()->args_get('base').'/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
-    if (isset($groups[$managing_group]) && isset($entities_by_groups[$managing_group][$entity_name]) == false) url::go(page::get_current()->args_get('base').'/'.   $managing_group    .'/'.array_keys($entities_by_groups[   $managing_group    ])[0]);
+    if (isset($groups[$managing_group])                                                              == false) url::go(page::get_current()->args_get('base').'/select_multiple/'.array_keys($groups)[0].'/'.array_keys($entities_by_groups[array_keys($groups)[0]])[0]);
+    if (isset($groups[$managing_group]) && isset($entities_by_groups[$managing_group][$entity_name]) == false) url::go(page::get_current()->args_get('base').'/select_multiple/'.   $managing_group    .'/'.array_keys($entities_by_groups[   $managing_group    ])[0]);
 
   # make tabs
     foreach ($entities_by_groups as $c_group_id => $c_entities) {
-      tabs_item::insert($groups[$c_group_id],
-            'data_'.$c_group_id, null,
-            'data', $c_group_id);
+      tabs_item::insert(       $groups[$c_group_id],
+            'data_'.                   $c_group_id, null,
+            'data', 'select_multiple/'.$c_group_id);
       foreach ($c_entities as $c_name =>  $c_entity) {
-        tabs_item::insert($c_entity->title_plural,
-            'data_'.$c_group_id.'_'.$c_name,
-            'data_'.$c_group_id,
-            'data', $c_group_id.'/'.$c_name
+        tabs_item::insert(             $c_entity->title_plural,
+            'data_'                   .$c_group_id.'_'.$c_name,
+            'data_'.                   $c_group_id,
+            'data', 'select_multiple/'.$c_group_id.'/'.$c_name
         );
       }
     }

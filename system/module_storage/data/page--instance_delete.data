@@ -3,7 +3,8 @@ pages
     id: instance_delete
     title: %%_entity_title_page_context{entity_name}: delete
     is_https: true
-    url: %^(?<base>/manage/data/delete)/
+    url: %^(?<base>/manage/data)/
+>>>>>>>>>>>(?<action_name>delete)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>(?<instance_id>[a-z0-9_\-\+]+)$%
     access

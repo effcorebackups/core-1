@@ -3,7 +3,8 @@ pages
     id: instance_update
     title: %%_entity_title_page_context{entity_name}: update
     is_https: true
-    url: %^(?<base>/manage/data/update)/
+    url: %^(?<base>/manage/data)/
+>>>>>>>>>>>(?<action_name>update)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
 >>>>>>>>>>>(?<instance_id>[a-z0-9_\-\+]+)$%
     access

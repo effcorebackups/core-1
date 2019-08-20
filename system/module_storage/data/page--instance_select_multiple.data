@@ -4,15 +4,17 @@ pages
     title: %%_entity_title_plural_page_context{entity_name}
     is_https: true
    # ─────────────────────────────────────────────────────────────────────
+   # /manage/data
    # /manage/data/select_multiple
    # /manage/data/select_multiple/managing_group
    # /manage/data/select_multiple/managing_group/entity_name
    # /manage/data/select_multiple/managing_group/entity_name/instances_group_by
    # ─────────────────────────────────────────────────────────────────────
-    url: %^(?<base>/manage/data/select_multiple)(/
+    url: %^(?<base>/manage/data)(/
+>>>>>>>>>>>(?<action_name>select_multiple)(/
 >>>>>>>>>>>(?<managing_group>[a-z0-9_\-]+)(/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
->>>>>>>>>>>(?<instances_group_by>[a-z0-9_]+)|)|)|)$%
+>>>>>>>>>>>(?<instances_group_by>[a-z0-9_]+)|)|)|)|)$%
     access
       roles
       - =: admins

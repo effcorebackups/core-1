@@ -52,8 +52,7 @@ namespace effcore\modules\menu {
               'id_!f'    => 'id',
               'in_begin' => 'in (',
               'in_!,'    => $in_values,
-              'in_end'   => ')'
-            ]]);
+              'in_end'   => ')']]);
             if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
             else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');
           }
