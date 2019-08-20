@@ -90,7 +90,7 @@ namespace effcore\modules\page {
             foreach ($form->_parts_insert as $c_part_insert) {$insert_result = group_page_part_insert::submit($c_part_insert, null, null); if ($insert_result) break;}
             if ($manage_result) {
               unset($links[$manage_result->id_area][$manage_result->id_preset]);
-              $form->validation_data_is_persistent = true;
+              $form->validation_cache_is_persistent = true;
               $form->validation_cache_set('presets_link', $links);
               message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $manage_result->id_preset, 'id_area' => $manage_result->id_area]));
               message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
@@ -98,7 +98,7 @@ namespace effcore\modules\page {
               return;
             } else if ($insert_result) {
               $links[$insert_result->id_area][$insert_result->id_preset] = new page_part_preset_link($insert_result->id_preset);
-              $form->validation_data_is_persistent = true;
+              $form->validation_cache_is_persistent = true;
               $form->validation_cache_set('presets_link', $links);
               message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $insert_result->id_preset, 'id_area' => $insert_result->id_area]));
               message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');

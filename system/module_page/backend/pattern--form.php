@@ -13,9 +13,9 @@ namespace effcore {
   public $attributes = ['accept-charset' => 'UTF-8'];
   public $clicked_button;
   public $validation_id;
-  public $validation_data;
-  public $validation_data_hash;
-  public $validation_data_is_persistent = false;
+  public $validation_cache;
+  public $validation_cache_hash;
+  public $validation_cache_is_persistent = false;
   protected $items = [];
 
   function build() {
@@ -107,9 +107,9 @@ namespace effcore {
         }
 
       # update or delete validation cache
-        if ($this->validation_data !== null && $this->validation_data_is_persistent != false &&                                core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
-        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_data) != $this->validation_data_hash) $this->validation_cache_storage_update();
-        if ($this->validation_data !== null && $this->validation_data_is_persistent == false && $this->has_error() == false                                                                              ) $this->validation_cache_storage_delete();
+        if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
+        if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
+        if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() == false                                                                                ) $this->validation_cache_storage_delete();
 
       }
 
@@ -192,27 +192,27 @@ namespace effcore {
   }
 
   function validation_cache_init() {
-    if ($this->validation_data === null) {
+    if ($this->validation_cache === null) {
       $instance = (new instance('cache_validation', ['id' => $this->validation_id]))->select();
-      $this->validation_data = $instance ? $instance->data : [];
-      $this->validation_data_hash = core::hash_get_data($this->validation_data);
+      $this->validation_cache = $instance ? $instance->data : [];
+      $this->validation_cache_hash = core::hash_get_data($this->validation_cache);
     }
   }
 
   function validation_cache_get($id) {
     $this->validation_cache_init();
-    return $this->validation_data[$id] ?? null;
+    return $this->validation_cache[$id] ?? null;
   }
 
   function validation_cache_set($id, $data) {
     $this->validation_cache_init();
-    $this->validation_data[$id] = $data;
+    $this->validation_cache[$id] = $data;
   }
 
   function validation_cache_storage_update() {
     $instance = new instance('cache_validation', ['id' => $this->validation_id]);
-    if ($instance->select()) {$instance->data = $this->validation_data; return $instance->update();}
-    else                     {$instance->data = $this->validation_data; return $instance->insert();}
+    if ($instance->select()) {$instance->data = $this->validation_cache; return $instance->update();}
+    else                     {$instance->data = $this->validation_cache; return $instance->insert();}
   }
 
   function validation_cache_storage_delete() {
