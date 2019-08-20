@@ -13,6 +13,7 @@ namespace effcore\modules\menu {
           use \effcore\text;
           use \effcore\translation;
           use \effcore\tree_item;
+          use \effcore\url;
           abstract class events_form_instance_delete {
 
   static function on_init($event, $form, $items) {
@@ -57,6 +58,9 @@ namespace effcore\modules\menu {
             else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');
           }
         }
+        break;
+      case 'return':
+        url::go(url::back_url_get() ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree);
         break;
     }
   }
