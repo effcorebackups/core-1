@@ -395,6 +395,7 @@ translations
     - Relation\: Role + User: Связь: Роль + Пользователь
     - Relations\: Role + Permission: Связи: Роль + Разрешение
     - Relations\: Role + User: Связи: Роль + Пользователь
+    - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и внесите изменения снова чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сбросить
@@ -542,6 +543,7 @@ translations
     - Welcome message: Приветственное сообщение
     - Welcome to our site!: Добро пожаловать на наш сайт!
     - Welcome, %%_nick!: Добро пожаловать, %%_nick!
+    - While editing this form, someone made changes in parallel and saved them!: Во время редактирования этой формы кто-то параллельно внёс изменения и сохранил их!
     - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
     - Yes: Да
     - yes: да

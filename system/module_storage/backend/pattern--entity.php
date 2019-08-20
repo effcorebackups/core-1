@@ -18,6 +18,7 @@ namespace effcore {
   public $ws_weight   = false;
   public $ws_created  = false;
   public $ws_updated  = false;
+  public $ws_updated_parallel_checking = false;
 
   public $title;
   public $title_plural;

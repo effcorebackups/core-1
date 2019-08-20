@@ -39,6 +39,9 @@ events
   - instance_select_multiple|event
       for: instance_select_multiple
       handler: \effcore\modules\storage\events_form_instance_select_multiple::on_validate
+  - instance_update|event
+      for: instance_update
+      handler: \effcore\modules\storage\events_form_instance_update::on_validate
   on_form_submit
   - instance_select_multiple|event
       for: instance_select_multiple
