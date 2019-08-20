@@ -22,7 +22,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true
@@ -82,7 +82,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true
@@ -96,7 +96,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_relation
-        field_properties
+        managing_properties
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -115,7 +115,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_relation
-        field_properties
+        managing_properties
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent

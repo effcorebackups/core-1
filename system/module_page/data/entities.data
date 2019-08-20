@@ -48,7 +48,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true
@@ -87,7 +87,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_url_page
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
     - is_https
         title: HTTPS
@@ -118,7 +118,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text_direction
-        field_properties
+        managing_properties
         - disabled
           - rtl: rtl
         - selected
@@ -175,7 +175,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true
@@ -213,7 +213,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_file
-        field_properties
+        managing_properties
         - max_file_size: 10K
         - upload_dir: logotypes/
         - fixed_name: logotype-%%_instance_id_context
@@ -251,7 +251,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true
@@ -319,7 +319,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_text
-        field_properties
+        managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
         - disabled: true

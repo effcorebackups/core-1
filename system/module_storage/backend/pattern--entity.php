@@ -37,7 +37,7 @@ namespace effcore {
       $this->fields['is_embed']->default = 0;
       $this->fields['is_embed']->managing_is_on_select = true;
       $this->fields['is_embed']->managing_class = '\\effcore\\field_switcher';
-      $this->fields['is_embed']->field_properties['weight'] = 95;
+      $this->fields['is_embed']->managing_properties['weight'] = 95;
       $this->fields['is_embed']->managing_element_attributes['disabled'] = true;
     }
   # insert field 'weight' and index for it
