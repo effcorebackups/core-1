@@ -34,8 +34,8 @@ namespace effcore\modules\storage {
               $c_form_field = new $c_field->managing_class;
               $c_form_field->title = $c_field->title;
               $c_form_field->element_attributes['name'] = $c_name;
-              $c_form_field->element_attributes = ($c_field->field_element_attributes           ?? []) + $c_form_field->element_attributes;
-              $c_form_field->element_attributes = ($c_field->field_element_attributes_on_update ?? []) + $c_form_field->element_attributes;
+              $c_form_field->element_attributes = ($c_field->managing_element_attributes           ?? []) + $c_form_field->element_attributes;
+              $c_form_field->element_attributes = ($c_field->managing_element_attributes_on_update ?? []) + $c_form_field->element_attributes;
               foreach ($c_field->field_properties           ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               foreach ($c_field->field_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
               $c_form_field->form_current_set($form);

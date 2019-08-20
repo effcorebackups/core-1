@@ -50,7 +50,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - id_layout
         title: Layout
@@ -62,7 +62,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_layout
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -75,7 +75,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
-        field_element_attributes
+        managing_element_attributes
         - maxlength: 1024
     - url
         title: URL
@@ -123,7 +123,7 @@ entities
           - rtl: rtl
         - selected
           - ltr: ltr
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - charset
         title: Charset
@@ -135,7 +135,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
         - value: utf-8
     - parts
@@ -177,7 +177,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -190,7 +190,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - maxlength: 1024
     - url
@@ -203,7 +203,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_url
-        field_element_attributes
+        managing_element_attributes
         - required: false
     - path
         title: File
@@ -223,7 +223,7 @@ entities
           - =: jpg
           - =: png
           - =: svg
-        field_element_attributes_on_insert
+        managing_element_attributes_on_insert
         - disabled: true
     constraints
     - primary_id
@@ -253,7 +253,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -266,7 +266,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - maxlength: 1024
     - fields
@@ -321,7 +321,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - description
         title: Description
@@ -334,7 +334,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - maxlength: 1024
     - text
@@ -345,7 +345,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_textarea
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - minlength: false
         - maxlength: false

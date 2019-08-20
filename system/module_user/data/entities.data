@@ -22,7 +22,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -70,7 +70,7 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - id_permission
         title: Permission
@@ -130,7 +130,7 @@ entities
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nick
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - id_role
         title: Role
@@ -192,7 +192,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -287,7 +287,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - nick
         title: Nick
@@ -332,7 +332,7 @@ entities
           - =: jpeg
           - =: jpg
           - =: png
-        field_element_attributes_on_insert
+        managing_element_attributes_on_insert
         - disabled: true
     - timezone
         title: Timezone
@@ -343,7 +343,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_timezone
-        field_element_attributes
+        managing_element_attributes
         - data-source: uagent-timezone
     - password_hash
         title: New password
@@ -357,9 +357,9 @@ entities
         field_value_manual_get_if_empty: true
         field_properties
         - description: Leave the field blank if you do not want to change its value.
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - required: false
-        field_element_attributes_on_insert
+        managing_element_attributes_on_insert
         - required: true
     constraints
     - primary_id

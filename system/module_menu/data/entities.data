@@ -24,7 +24,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -84,7 +84,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - id_tree
         title: Tree ID
@@ -100,7 +100,7 @@ entities
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - id_parent
         title: Parent ID
@@ -120,9 +120,9 @@ entities
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
-        field_element_attributes
+        managing_element_attributes
         - required: false
-        field_element_attributes_on_insert
+        managing_element_attributes_on_insert
         - disabled: true
     - title
         title: Title
@@ -144,7 +144,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_url
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - maxlength: 2048
     constraints

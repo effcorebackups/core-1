@@ -38,7 +38,7 @@ namespace effcore {
       $this->fields['is_embed']->managing_is_on_select = true;
       $this->fields['is_embed']->managing_class = '\\effcore\\field_switcher';
       $this->fields['is_embed']->field_properties['weight'] = 95;
-      $this->fields['is_embed']->field_element_attributes['disabled'] = true;
+      $this->fields['is_embed']->managing_element_attributes['disabled'] = true;
     }
   # insert field 'weight' and index for it
     if ($this->ws_weight) {
@@ -51,8 +51,8 @@ namespace effcore {
       $this->fields['weight']->managing_is_on_insert = true;
       $this->fields['weight']->managing_is_on_update = true;
       $this->fields['weight']->managing_class = '\\effcore\\field_number';
-      $this->fields['weight']->field_element_attributes['min'] = -1000;
-      $this->fields['weight']->field_element_attributes['max'] = +1000;
+      $this->fields['weight']->managing_element_attributes['min'] = -1000;
+      $this->fields['weight']->managing_element_attributes['max'] = +1000;
       $this->indexes['index_weight'] = new \stdClass;
       $this->indexes['index_weight']->type = 'index';
       $this->indexes['index_weight']->fields = ['weight' => 'weight'];

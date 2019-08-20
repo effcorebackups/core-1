@@ -15,7 +15,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - description
         title: Description
@@ -48,7 +48,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_number
-        field_element_attributes
+        managing_element_attributes
         - min: -1000
         - max: +1000
         - step: 0.0000000002
@@ -120,7 +120,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_textarea
-        field_element_attributes
+        managing_element_attributes
         - required: false
         - minlength: false
         - maxlength: false
@@ -145,7 +145,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - description
         title: Description
@@ -188,7 +188,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - f_nocase
         title: Field nocase
@@ -235,7 +235,7 @@ entities
         managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
-        field_element_attributes_on_update
+        managing_element_attributes_on_update
         - disabled: true
     - f_unique
         title: Field unique
@@ -306,7 +306,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - nick
         title: Nick
@@ -413,7 +413,7 @@ entities
         managing_is_on_select: true
         managing_is_on_update: true
         managing_class: \effcore\field_id_number
-        field_element_attributes
+        managing_element_attributes
         - disabled: true
     - f_index_unique
         title: Field index unique
