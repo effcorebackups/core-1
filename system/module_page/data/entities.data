@@ -275,24 +275,24 @@ entities
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        field_value_manual_get: true
-        field_value_manual_set: true
+        managing_value_manual_get: true
+        managing_value_manual_set: true
     - query_params
         title: Query parameters
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        field_value_manual_get: true
-        field_value_manual_set: true
+        managing_value_manual_get: true
+        managing_value_manual_set: true
     - decorator_params
         title: Decorator parameters
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        field_value_manual_get: true
-        field_value_manual_set: true
+        managing_value_manual_get: true
+        managing_value_manual_set: true
     constraints
     - primary_id
         type: primary

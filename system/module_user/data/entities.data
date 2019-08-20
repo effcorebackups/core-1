@@ -353,8 +353,8 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_password
-        field_value_manual_set: true
-        field_value_manual_get_if_empty: true
+        managing_value_manual_set: true
+        managing_value_manual_get_if_empty: true
         managing_properties
         - description: Leave the field blank if you do not want to change its value.
         managing_element_attributes_on_update
