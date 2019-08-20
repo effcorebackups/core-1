@@ -19,7 +19,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -34,7 +34,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -65,7 +65,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_relation
+        managing_class: \effcore\field_relation
         field_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
@@ -82,7 +82,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_relation
+        managing_class: \effcore\field_relation
         field_properties
         - related_entity_name: permission
         - related_entity_field_id_name: id
@@ -125,7 +125,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_relation
+        managing_class: \effcore\field_relation
         field_properties
         - related_entity_name: user
         - related_entity_field_id_name: id
@@ -142,7 +142,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_relation
+        managing_class: \effcore\field_relation
         field_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
@@ -189,7 +189,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -204,7 +204,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -286,7 +286,7 @@ entities
         check: (id <> '')
         managing_is_on_select: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_number
+        managing_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
     - nick
@@ -299,7 +299,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_nick
+        managing_class: \effcore\field_nick
         field_properties
         - is_validate_uniqueness: true
     - email
@@ -312,7 +312,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_email
+        managing_class: \effcore\field_email
         field_properties
         - is_validate_uniqueness: true
     - avatar_path
@@ -322,7 +322,7 @@ entities
         collate: nocase
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_file
+        managing_class: \effcore\field_file
         field_properties
         - max_file_size: 10K
         - upload_dir: avatars/
@@ -342,7 +342,7 @@ entities
         default: UTC
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_timezone
+        managing_class: \effcore\field_timezone
         field_element_attributes
         - data-source: uagent-timezone
     - password_hash
@@ -352,7 +352,7 @@ entities
         collate: binary
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_password
+        managing_class: \effcore\field_password
         field_value_manual_set: true
         field_value_manual_get_if_empty: true
         field_properties

@@ -47,7 +47,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -61,7 +61,7 @@ entities
         default: simple
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_layout
+        managing_class: \effcore\field_layout
         field_element_attributes_on_update
         - disabled: true
     - title
@@ -74,7 +74,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
         field_element_attributes
         - maxlength: 1024
     - url
@@ -86,7 +86,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_url_page
+        managing_class: \effcore\field_url_page
         field_properties
         - is_validate_uniqueness: true
     - is_https
@@ -97,7 +97,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_switcher
+        managing_class: \effcore\field_switcher
     - lang_code
         title: Language
         type: varchar
@@ -107,7 +107,7 @@ entities
         default: en
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_language
+        managing_class: \effcore\field_language
     - text_direction
         title: Text direction
         type: varchar
@@ -117,7 +117,7 @@ entities
         default: ltr
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text_direction
+        managing_class: \effcore\field_text_direction
         field_properties
         - disabled
           - rtl: rtl
@@ -134,7 +134,7 @@ entities
         default: utf-8
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
         field_element_attributes
         - disabled: true
         - value: utf-8
@@ -174,7 +174,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -189,7 +189,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
         field_element_attributes
         - required: false
         - maxlength: 1024
@@ -202,7 +202,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_url
+        managing_class: \effcore\field_url
         field_element_attributes
         - required: false
     - path
@@ -212,7 +212,7 @@ entities
         collate: nocase
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_file
+        managing_class: \effcore\field_file
         field_properties
         - max_file_size: 10K
         - upload_dir: logotypes/
@@ -250,7 +250,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -265,7 +265,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
         field_element_attributes
         - required: false
         - maxlength: 1024
@@ -318,7 +318,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_id_text
+        managing_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
         field_element_attributes_on_update
@@ -333,7 +333,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_text
+        managing_class: \effcore\field_text
         field_element_attributes
         - required: false
         - maxlength: 1024
@@ -344,7 +344,7 @@ entities
         filter_update: \effcore\core::return_null_if_empty
         managing_is_on_insert: true
         managing_is_on_update: true
-        field_class: \effcore\field_textarea
+        managing_class: \effcore\field_textarea
         field_element_attributes
         - required: false
         - minlength: false
