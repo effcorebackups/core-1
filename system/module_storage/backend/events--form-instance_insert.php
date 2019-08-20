@@ -25,7 +25,7 @@ namespace effcore\modules\storage {
       if ($entity->managing_is_on) {
         $has_enabled_fields = false;
         foreach ($entity->fields as $c_name => $c_field) {
-          if (!empty($c_field->field_is_visible_on_insert) && isset($c_field->field_class)) {
+          if (!empty($c_field->managing_is_on_insert) && isset($c_field->field_class)) {
             $c_form_field = new $c_field->field_class;
             $c_form_field->title = $c_field->title;
             $c_form_field->element_attributes['name'] = $c_name;

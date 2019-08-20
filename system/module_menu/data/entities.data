@@ -18,9 +18,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -33,9 +33,9 @@ entities
         size: 255
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -78,9 +78,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -92,9 +92,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: tree
@@ -111,9 +111,9 @@ entities
         check: (id <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: tree_item
@@ -131,18 +131,18 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     - url
         title: URL
         type: varchar
         size: 2048
         collate: nocase
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_url
         field_element_attributes
         - required: false

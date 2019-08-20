@@ -44,9 +44,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -59,8 +59,8 @@ entities
         collate: nocase
         not_null: true
         default: simple
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_layout
         field_element_attributes_on_update
         - disabled: true
@@ -71,9 +71,9 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - maxlength: 1024
@@ -83,9 +83,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_url_page
         field_properties
         - is_validate_uniqueness: true
@@ -94,9 +94,9 @@ entities
         type: boolean
         not_null: true
         default: 0
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_switcher
     - lang_code
         title: Language
@@ -105,8 +105,8 @@ entities
         collate: nocase
         not_null: true
         default: en
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_language
     - text_direction
         title: Text direction
@@ -115,8 +115,8 @@ entities
         collate: nocase
         not_null: true
         default: ltr
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text_direction
         field_properties
         - disabled
@@ -132,8 +132,8 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - disabled: true
@@ -171,9 +171,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -186,9 +186,9 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - required: false
@@ -199,9 +199,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_url
         field_element_attributes
         - required: false
@@ -210,8 +210,8 @@ entities
         type: varchar
         size: 1024
         collate: nocase
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_file
         field_properties
         - max_file_size: 10K
@@ -247,9 +247,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -262,9 +262,9 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - required: false
@@ -315,9 +315,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -330,9 +330,9 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_element_attributes
         - required: false
@@ -342,8 +342,8 @@ entities
         type: blob
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_textarea
         field_element_attributes
         - required: false

@@ -12,8 +12,8 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -22,9 +22,9 @@ entities
         type: varchar
         size: 255
         collate: nocase
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
@@ -34,8 +34,8 @@ entities
         type: integer
         not_null: true
         default: 0
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_number
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: real
@@ -45,8 +45,8 @@ entities
         type: real
         not_null: true
         default: 0
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_number
         field_element_attributes
         - min: -1000
@@ -62,8 +62,8 @@ entities
         collate: nocase
         not_null: true
         default: default text
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
@@ -73,8 +73,8 @@ entities
         type: time
         not_null: true
         default: 00:00:00
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_time
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
@@ -84,8 +84,8 @@ entities
         type: date
         not_null: true
         default: 2030-01-01
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_date
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
@@ -95,8 +95,8 @@ entities
         type: datetime
         not_null: true
         default: 2030-01-01 00:00:00
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_datetime
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer | mysql equivalent: tinyint
@@ -106,8 +106,8 @@ entities
         type: boolean
         not_null: true
         default: 0
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_logic
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
@@ -117,8 +117,8 @@ entities
         type: blob
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_textarea
         field_element_attributes
         - required: false
@@ -142,8 +142,8 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -152,9 +152,9 @@ entities
         type: varchar
         size: 255
         collate: nocase
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     # ─────────────────────────────────────────────────────────────────────
@@ -185,8 +185,8 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -196,9 +196,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     - f_binary
         title: Field binary
@@ -206,9 +206,9 @@ entities
         size: 255
         collate: binary
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -229,9 +229,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -243,9 +243,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_properties
         - is_validate_uniqueness: true
@@ -253,9 +253,9 @@ entities
         title: Field foreign
         type: integer
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: demo_autoincrement
@@ -303,8 +303,8 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -314,9 +314,9 @@ entities
         size: 64
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_properties
         - is_validate_uniqueness: true
@@ -324,18 +324,18 @@ entities
         title: Is even
         type: boolean
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_logic
     - created
         title: Created
         type: datetime
         not_null: true
         default: 2030-01-01 00:00:00
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_datetime
     constraints
     - primary_id
@@ -363,9 +363,9 @@ entities
         title: Data ID
         type: integer
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: demo_data
@@ -377,9 +377,9 @@ entities
         size: 64
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_email
     constraints
     - foreign_id_data
@@ -410,8 +410,8 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -421,9 +421,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
         field_properties
         - is_validate_uniqueness: true
@@ -433,9 +433,9 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id

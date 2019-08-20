@@ -16,9 +16,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -31,9 +31,9 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -62,9 +62,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: role
@@ -79,9 +79,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_permission <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: permission
@@ -122,9 +122,9 @@ entities
         type: integer
         not_null: true
         check: (id_user <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: user
@@ -139,9 +139,9 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_relation
         field_properties
         - related_entity_name: role
@@ -186,9 +186,9 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_text
         field_properties
         - is_validate_uniqueness: true
@@ -201,9 +201,9 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_text
     constraints
     - primary_id
@@ -284,8 +284,8 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_update: true
         field_class: \effcore\field_id_number
         field_element_attributes
         - disabled: true
@@ -296,9 +296,9 @@ entities
         collate: nocase
         not_null: true
         check: (nick <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_nick
         field_properties
         - is_validate_uniqueness: true
@@ -309,9 +309,9 @@ entities
         collate: nocase
         not_null: true
         check: (email <> '')
-        field_is_visible_on_select: true
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_email
         field_properties
         - is_validate_uniqueness: true
@@ -320,8 +320,8 @@ entities
         type: varchar
         size: 1024
         collate: nocase
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_file
         field_properties
         - max_file_size: 10K
@@ -340,8 +340,8 @@ entities
         size: 64
         collate: nocase
         default: UTC
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_timezone
         field_element_attributes
         - data-source: uagent-timezone
@@ -350,8 +350,8 @@ entities
         type: varchar
         size: 255
         collate: binary
-        field_is_visible_on_insert: true
-        field_is_visible_on_update: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
         field_class: \effcore\field_password
         field_value_manual_set: true
         field_value_manual_get_if_empty: true
