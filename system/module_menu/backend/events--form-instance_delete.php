@@ -62,12 +62,8 @@ namespace effcore\modules\menu {
                 'in_end'   => ')']]);
               if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
               else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');}
-            if (!empty($form->_instance) &&
-                       $form->_instance->delete())
-                 message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-            else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
-                         url::go($back_delete_n ?: (url::back_url_get() ?: ($back_delete_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree))); break;
-          case 'return': url::go($back_return_n ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree))); break;
+                         page::get_current()->args_set('back_delete_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree); break;
+          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree); break;
         }
       }
     }
