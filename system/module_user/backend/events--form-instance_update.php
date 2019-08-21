@@ -7,7 +7,6 @@
 namespace effcore\modules\user {
           use \effcore\entity;
           use \effcore\field_password;
-          use \effcore\file;
           use \effcore\group_access;
           use \effcore\page;
           use \effcore\text_multiline;

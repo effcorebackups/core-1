@@ -6,7 +6,6 @@
 
 namespace effcore\modules\menu {
           use \effcore\entity;
-          use \effcore\instance;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;

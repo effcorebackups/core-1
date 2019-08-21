@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\block;
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\markup;
