@@ -70,10 +70,6 @@ events
       for: instance_update
       weight: +50
       handler: \effcore\modules\user\events_form_instance_update::on_submit
-  - instance_delete_user|event
-      for: instance_delete
-      weight: +50
-      handler: \effcore\modules\user\events_form_instance_delete::on_submit
   on_page_build_before
   - user|event
       for: user
