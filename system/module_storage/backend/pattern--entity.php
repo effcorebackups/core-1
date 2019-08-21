@@ -10,15 +10,16 @@ namespace effcore {
   public $name;
   public $storage_name = 'sql';
   public $catalog_name;
-  public $fields      = [];
-  public $constraints = [];
-  public $indexes     = [];
-  public $ws_is_embed = false;
-  public $ws_access   = false;
-  public $ws_weight   = false;
-  public $ws_created  = false;
-  public $ws_updated  = false;
+  public $fields                       = [];
+  public $constraints                  = [];
+  public $indexes                      = [];
+  public $ws_is_embed                  = false;
+  public $ws_weight                    = false;
+  public $ws_access                    = false;
+  public $ws_created                   = false;
+  public $ws_updated                   = false;
   public $ws_updated_parallel_checking = false;
+  public $ws_data                      = false;
 
   public $title;
   public $title_plural;
@@ -87,6 +88,16 @@ namespace effcore {
       $this->indexes['index_updated'] = new \stdClass;
       $this->indexes['index_updated']->type = 'index';
       $this->indexes['index_updated']->fields = ['updated' => 'updated'];
+    }
+  # insert field 'data'
+    if ($this->ws_updated) {
+      $this->fields['data'] = new \stdClass;
+      $this->fields['data']->title = 'Data';
+      $this->fields['data']->type = 'blob';
+      $this->fields['data']->not_null = true;
+      $this->fields['data']->filter_select = 'unserialize';
+      $this->fields['data']->filter_insert = '\\effcore\\core::data_serialize';
+      $this->fields['data']->filter_update = '\\effcore\\core::data_serialize';
     }
   }
 
