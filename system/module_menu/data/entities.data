@@ -56,8 +56,8 @@ entities
     managing_is_on: true
     managing_group: Menu
     ws_is_embed: true
-    ws_access: true
     ws_weight: true
+    ws_access: true
     ws_created: true
     ws_updated: true
     ws_updated_parallel_checking: true

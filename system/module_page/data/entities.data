@@ -6,6 +6,7 @@ entities
     catalog_name: cache_validation
     ws_created: true
     ws_updated: true
+    ws_data: true
     fields
     - id
         title: ID
@@ -14,12 +15,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-    - data
-        title: Data
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
     constraints
     - primary_id
         type: primary

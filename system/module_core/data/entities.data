@@ -4,6 +4,7 @@ entities
     title: Message
     title_plural: Messages
     catalog_name: messages
+    ws_data: true
     fields
     - id_session
         title: Session ID
@@ -22,13 +23,6 @@ entities
     - expired
         title: Expired date
         type: datetime
-    - data
-        title: Data
-        type: blob
-        not_null: true
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
     indexes
     - index_id_session
         type: index

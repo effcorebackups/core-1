@@ -90,7 +90,7 @@ namespace effcore {
       $this->indexes['index_updated']->fields = ['updated' => 'updated'];
     }
   # insert field 'data'
-    if ($this->ws_updated) {
+    if ($this->ws_data) {
       $this->fields['data'] = new \stdClass;
       $this->fields['data']->title = 'Data';
       $this->fields['data']->type = 'blob';

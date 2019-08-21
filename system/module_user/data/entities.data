@@ -224,6 +224,7 @@ entities
     title: Session
     title_plural: Sessions
     catalog_name: sessions
+    ws_data: true
     fields
     - id
         title: ID
@@ -249,12 +250,6 @@ entities
     - expired
         title: Expired date
         type: datetime
-    - data
-        title: Data
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
     constraints
     - primary_id
         type: primary
