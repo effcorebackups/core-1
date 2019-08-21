@@ -36,6 +36,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
+    $back_delete = page::get_current()->args_get('back_delete');
+    $back_return = page::get_current()->args_get('back_return');
     $base        = page::get_current()->args_get('base'       );
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
@@ -45,9 +47,9 @@ namespace effcore\modules\storage {
         if (!empty($form->_instance) &&
                    $form->_instance->delete())
              message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-        else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
-                     url::go(                       '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name); break;
-      case 'return': url::go(url::back_url_get() ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name); break;
+        else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error'); 
+                     url::go(url::back_url_get() ?: ($back_delete ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
+      case 'return': url::go(url::back_url_get() ?: ($back_return ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)); break;
     }
   }
 
