@@ -56,4 +56,20 @@ namespace effcore\modules\menu {
     }
   }
 
+  static function on_submit($event, $form, $items) {
+    $back_insert_n = page::get_current()->args_get('back_insert_n');
+    $back_return_n = page::get_current()->args_get('back_return_n');
+    $entity_name   = page::get_current()->args_get('entity_name'  );
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if ($entity->name == 'tree_item') {
+        $id_tree = page::get_current()->args_get('category');
+        switch ($form->clicked_button->value_get()) {
+          case 'insert': page::get_current()->args_set('back_insert_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree);
+          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree);
+        }
+      }
+    }
+  }
+
 }}

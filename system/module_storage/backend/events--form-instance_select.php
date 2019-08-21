@@ -53,12 +53,14 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-    $back_return = page::get_current()->args_get('back_return');
-    $entity_name = page::get_current()->args_get('entity_name');
+    $back_return_0 = page::get_current()->args_get('back_return_0');
+    $back_return_n = page::get_current()->args_get('back_return_n');
+    $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'return':
-        url::go(url::back_url_get() ?: ($back_return ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name));
+        url::go($back_return_0 ?: (url::back_url_get() ?: (
+                $back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)));
         break;
     }
   }

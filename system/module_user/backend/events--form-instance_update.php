@@ -135,12 +135,12 @@ namespace effcore\modules\user {
           }
         # field 'avatar'
           if ($entity->name == 'user' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
+            page::get_current()->args_set('back_update_n', '/user/'.$items['#nick']->value_get());
           }
           break;
         case 'return':
           if ($entity->name == 'user' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_return', '/user/'.$items['#nick']->value_get());
+            page::get_current()->args_set('back_return_n', '/user/'.$items['#nick']->value_get());
           }
           break;
       }

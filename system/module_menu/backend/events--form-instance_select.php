@@ -11,13 +11,15 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_select {
 
   static function on_submit($event, $form, $items) {
-    $back_return = page::get_current()->args_get('back_return');
-    $entity_name = page::get_current()->args_get('entity_name');
+    $back_return_0 = page::get_current()->args_get('back_return_0');
+    $back_return_n = page::get_current()->args_get('back_return_n');
+    $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'return':
         if ($entity->name == 'tree_item' && !empty($form->_instance)) {
-          url::go(url::back_url_get() ?: ($back_delete ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree));
+          url::go($back_return_0 ?: (url::back_url_get() ?: (
+                  $back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree)));
           break;
         }
     }
