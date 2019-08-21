@@ -54,6 +54,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
+    $back_return = page::get_current()->args_get('back_return');
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
