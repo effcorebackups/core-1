@@ -44,28 +44,30 @@ namespace effcore\modules\menu {
     $back_return = page::get_current()->args_get('back_return');
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
-    $id_tree = $form->_instance->id_tree;
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'delete':
-        if ($entity) {
-          if ($entity->name == 'tree_item') {
-            if (!empty($form->_related)) {
-              $in_values = [];
-              foreach ($form->_related as $c_id) $in_values['in_value_'.$c_id.'_!v'] = $c_id;
-              $result = entity::get('tree_item')->instances_delete(['conditions' => [
-                'id_!f'    => 'id',
-                'in_begin' => 'in (',
-                'in_!,'    => $in_values,
-                'in_end'   => ')']]);
-              if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
-              else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');}
-            if (!empty($form->_instance) &&
-                       $form->_instance->delete())
-                 message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-            else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');}}
-                     url::go(url::back_url_get() ?: ($back_delete ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree)); break;
-      case 'return': url::go(url::back_url_get() ?: ($back_return ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree)); break;
+    if ($entity->name == 'tree_item') {
+      $id_tree = $form->_instance->id_tree;
+      switch ($form->clicked_button->value_get()) {
+        case 'delete':
+          if ($entity) {
+              if (!empty($form->_related)) {
+                $in_values = [];
+                foreach ($form->_related as $c_id) $in_values['in_value_'.$c_id.'_!v'] = $c_id;
+                $result = entity::get('tree_item')->instances_delete(['conditions' => [
+                  'id_!f'    => 'id',
+                  'in_begin' => 'in (',
+                  'in_!,'    => $in_values,
+                  'in_end'   => ')']]);
+                if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
+                else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');
+              }
+              if (!empty($form->_instance) &&
+                         $form->_instance->delete())
+                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
+              else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');}
+                       url::go(url::back_url_get() ?: ($back_delete ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree)); break;
+        case 'return': url::go(url::back_url_get() ?: ($back_return ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$id_tree)); break;
+      }
     }
   }
 
