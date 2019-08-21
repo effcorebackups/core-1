@@ -64,7 +64,6 @@ namespace effcore {
       $this->fields['access'] = new \stdClass;
       $this->fields['access']->title = 'Access';
       $this->fields['access']->type = 'blob';
-      $this->fields['access']->null = true;
       $this->fields['access']->filter_select = 'unserialize';
       $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
       $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
@@ -94,7 +93,6 @@ namespace effcore {
       $this->fields['data'] = new \stdClass;
       $this->fields['data']->title = 'Data';
       $this->fields['data']->type = 'blob';
-      $this->fields['data']->not_null = true;
       $this->fields['data']->filter_select = 'unserialize';
       $this->fields['data']->filter_insert = '\\effcore\\core::data_serialize';
       $this->fields['data']->filter_update = '\\effcore\\core::data_serialize';

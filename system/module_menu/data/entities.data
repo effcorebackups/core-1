@@ -11,6 +11,7 @@ entities
     ws_created: true
     ws_updated: true
     ws_updated_parallel_checking: true
+    ws_data: true
     fields
     - id
         title: ID
@@ -61,6 +62,7 @@ entities
     ws_created: true
     ws_updated: true
     ws_updated_parallel_checking: true
+    ws_data: true
     view_type_multiple: tree
     selection_params
     - decorator_params
