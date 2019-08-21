@@ -17,6 +17,17 @@ namespace effcore\modules\user {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
+    # group 'access'
+      if (!empty($entity->ws_access) && !empty($form->_instance)) {
+        $group_access = new group_access();
+        if ($form->_instance->access && is_array(
+            $form->_instance->access->roles)) $group_access->roles_set(
+            $form->_instance->access->roles);
+        $group_access->build();
+        $form->child_select('fields')->child_insert(
+          $group_access, 'group_access'
+        );
+      }
     # field 'role'
       if ($entity->name == 'relation_role_ws_user' && !empty($form->_instance)) {
         $items['#id_role']->is_builded = false;
@@ -38,17 +49,6 @@ namespace effcore\modules\user {
     # field 'avatar'
       if ($entity->name == 'user' && !empty($form->_instance)) {
         $items['#avatar_path']->fixed_name = 'avatar-'.$form->_instance->id;
-      }
-    # group 'access'
-      if (!empty($entity->ws_access) && !empty($form->_instance)) {
-        $group_access = new group_access();
-        if ($form->_instance->access && is_array(
-            $form->_instance->access->roles)) $group_access->roles_set(
-            $form->_instance->access->roles);
-        $group_access->build();
-        $form->child_select('fields')->child_insert(
-          $group_access, 'group_access'
-        );
       }
     }
   }
@@ -127,15 +127,15 @@ namespace effcore\modules\user {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-        # field 'avatar'
-          if ($entity->name == 'user' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
-          }
         # group 'access'
           if (!empty($entity->ws_access) && !empty($form->_instance)) {
             $roles = $items['fields/group_access']->roles_get();
             if ($roles) $form->_instance->access = (object)['roles' => $roles];
             else        $form->_instance->access = null;
+          }
+        # field 'avatar'
+          if ($entity->name == 'user' && !empty($form->_instance)) {
+            page::get_current()->args_set('back_update', '/user/'.$items['#nick']->value_get());
           }
           break;
         case 'return':
