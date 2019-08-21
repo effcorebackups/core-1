@@ -381,6 +381,8 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_email
+        managing_properties
+        - is_validate_uniqueness: true
     constraints
     - foreign_id_data
         type: foreign

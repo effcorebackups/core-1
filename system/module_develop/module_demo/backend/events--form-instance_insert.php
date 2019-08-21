@@ -12,11 +12,11 @@ namespace effcore\modules\demo {
           abstract class events_form_instance_insert {
 
   static function on_validate($event, $form, $items) {
-    switch ($form->clicked_button->value_get()) {
-      case 'insert':
-        $entity_name = page::get_current()->args_get('entity_name');
-        $entity = entity::get($entity_name);
-        if ($entity) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
         # field 'id_data'
           if ($entity->name == 'demo_data_join') {
             if (!$form->has_error()) {
@@ -33,8 +33,8 @@ namespace effcore\modules\demo {
               }
             }
           }
-        }
-        break;
+          break;
+      }
     }
   }
 
