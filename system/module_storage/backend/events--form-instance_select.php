@@ -23,8 +23,8 @@ namespace effcore\modules\storage {
       if (count($id_keys) ==
           count($id_values)) {
         $conditions = array_combine($id_keys, $id_values);
-        $instance = new instance($entity_name, $conditions);
-        if ($instance->select()) {
+        $form->_instance = new instance($entity_name, $conditions);
+        if ($form->_instance->select()) {
           $selection = new selection;
           $selection->id = 'instance_manage';
           foreach ($entity->selection_params as $c_key => $c_value)
