@@ -85,18 +85,12 @@ namespace effcore {
     $is_dark = false;
     $colors = color::get_all();
     $color_page = $colors[$settings->color_page_id];
-    if (!empty($color_page->value_hex)) {
-      $color = ltrim($color_page->value_hex, '#');
-      $color_parts = [];
-      if (strlen($color) == 6) {$color_parts = str_split($color, 2);                                                                                                         }
-      if (strlen($color) == 3) {$color_parts = str_split($color, 1); $color_parts[0].= $color_parts[0]; $color_parts[1].= $color_parts[1]; $color_parts[2].= $color_parts[2];}
-      if (!empty($color_parts)) {
-        $r = (int)hexdec($color_parts[0]);
-        $g = (int)hexdec($color_parts[1]);
-        $b = (int)hexdec($color_parts[2]);
-        if ($r + $g + $b <= 127 * 3) {
-          $is_dark = true;
-        }
+    $color_page_rgb = $color_page->rgb_get();
+    if ($color_page_rgb) {
+      if ($color_page_rgb['r'] +
+          $color_page_rgb['g'] +
+          $color_page_rgb['b'] <= 127 * 3) {
+        $is_dark = true;
       }
     }
 

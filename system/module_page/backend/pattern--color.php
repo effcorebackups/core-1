@@ -12,6 +12,32 @@ namespace effcore {
   public $value_hex;
   public $group;
 
+  function rgb_get($is_int = true) {
+    if (!empty($this->value_hex)) {
+      $value = ltrim($this->value_hex, '#');
+      $value_parts = [];
+      if (strlen($value) == 3) {
+        $value_parts['r'] = $value[0];
+        $value_parts['r'].= $value[0];
+        $value_parts['g'] = $value[1];
+        $value_parts['g'].= $value[1];
+        $value_parts['b'] = $value[2];
+        $value_parts['b'].= $value[2];}
+      if (strlen($value) == 6) {
+        $value_parts['r'] = $value[0];
+        $value_parts['r'].= $value[1];
+        $value_parts['g'] = $value[2];
+        $value_parts['g'].= $value[3];
+        $value_parts['b'] = $value[4];
+        $value_parts['b'].= $value[5];}
+      if ($value_parts && $is_int) {
+        $value_parts['r'] = (int)hexdec($value_parts['r']);
+        $value_parts['g'] = (int)hexdec($value_parts['g']);
+        $value_parts['b'] = (int)hexdec($value_parts['b']);}
+      return $value_parts ?: null;
+    }
+  }
+
   ###########################
   ### static declarations ###
   ###########################
