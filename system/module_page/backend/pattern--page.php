@@ -85,13 +85,8 @@ namespace effcore {
     $is_dark = false;
     $colors = color::get_all();
     $color_page = $colors[$settings->color_page_id];
-    $color_page_rgb = $color_page->rgb_get();
-    if ($color_page_rgb) {
-      if ($color_page_rgb['r'] +
-          $color_page_rgb['g'] +
-          $color_page_rgb['b'] <= 127 * 3) {
-        $is_dark = true;
-      }
+    if ($color_page) {
+      $is_dark = $color_page->is_dark();
     }
 
   # render page

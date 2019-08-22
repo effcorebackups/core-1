@@ -38,6 +38,15 @@ namespace effcore {
     }
   }
 
+  function is_dark() { # return: true | false | null
+    $rgb = $this->rgb_get();
+    if ($rgb) {
+      return $rgb['r'] +
+             $rgb['g'] +
+             $rgb['b'] <= 127 * 3;
+    }
+  }
+
   ###########################
   ### static declarations ###
   ###########################
