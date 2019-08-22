@@ -57,9 +57,7 @@ namespace effcore\modules\menu {
   }
 
   static function on_submit($event, $form, $items) {
-    $back_insert_n = page::get_current()->args_get('back_insert_n');
-    $back_return_n = page::get_current()->args_get('back_return_n');
-    $entity_name   = page::get_current()->args_get('entity_name'  );
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'tree_item') {
