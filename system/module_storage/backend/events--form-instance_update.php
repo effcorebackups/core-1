@@ -34,8 +34,7 @@ namespace effcore\modules\storage {
           if ($entity->ws_updated &&
               $entity->ws_updated_parallel_checking) {
             $hidden_updated = new field_hidden('updated');
-            $hidden_updated->value_set($hidden_updated->value_request_get() ?
-               core::sanitize_datetime($hidden_updated->value_request_get()) : $form->_instance->updated);
+            $hidden_updated->value_set(core::sanitize_datetime($hidden_updated->value_request_get()) ?: $form->_instance->updated);
             $form->child_insert($hidden_updated, 'hidden_updated');
           }
         # make fields for managing
