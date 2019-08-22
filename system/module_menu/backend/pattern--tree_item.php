@@ -19,6 +19,8 @@ namespace effcore {
   public $extra;
   public $access;
   public $type = 'nosql'; # nosql | sql | dynamic
+  public $cache_href;
+  public $cache_href_shadow;
 
   function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
@@ -42,6 +44,23 @@ namespace effcore {
     }
   }
 
+  function href_get       () {if ($this->cache_href        === null) $this->cache_href        = token::replace($this->url       ); return $this->cache_href;       }
+  function href_shadow_get() {if ($this->cache_href_shadow === null) $this->cache_href_shadow = token::replace($this->url_shadow); return $this->cache_href_shadow;}
+
+  function is_active() {
+    $href = $this->href_get();
+    if ($href && url::is_active($href, 'path')) {
+      return true;
+    }
+  }
+
+  function is_active_trail() {
+    $href        = $this->href_get       ();
+    $href_shadow = $this->href_shadow_get();
+    if ($href        && url::is_active_trail($href       )) return true;
+    if ($href_shadow && url::is_active_trail($href_shadow)) return true;
+  }
+
   function render() {
     $managing_mode = tree::select($this->id_tree)->managing_mode;
     if (access::check($this->access)) {
@@ -62,13 +81,11 @@ namespace effcore {
   }
 
   function render_self() {
-    $href        = token::replace($this->url       );
-    $href_shadow = token::replace($this->url_shadow);
-    if ($href        && url::is_active      ($href, 'path')) {$this->attribute_insert('aria-selected',       'true', 'element_attributes');}
-    if ($href        && url::is_active_trail($href        )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
-    if ($href_shadow && url::is_active_trail($href_shadow )) {$this->attribute_insert('data-selected-trail', 'true', 'element_attributes');}
-    if ($href) $this->attribute_insert('href', $href, 'element_attributes');
+    $href = $this->href_get();
     if ($href) $this->attribute_insert('title', new text('Click to open the menu item: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
+    if ($href) $this->attribute_insert('href', $href, 'element_attributes');
+    if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes');
+    if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
     return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
