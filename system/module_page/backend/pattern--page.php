@@ -81,6 +81,25 @@ namespace effcore {
       );
     }
 
+  # page color is dark or light
+    $is_dark = false;
+    $colors = color::get_all();
+    $color_page = $colors[$settings->color_page_id];
+    if (!empty($color_page->value_hex)) {
+      $color = ltrim($color_page->value_hex, '#');
+      $color_parts = [];
+      if (strlen($color) == 6) {$color_parts = str_split($color, 2);                                                                                                         }
+      if (strlen($color) == 3) {$color_parts = str_split($color, 1); $color_parts[0].= $color_parts[0]; $color_parts[1].= $color_parts[1]; $color_parts[2].= $color_parts[2];}
+      if (!empty($color_parts)) {
+        $r = (int)hexdec($color_parts[0]);
+        $g = (int)hexdec($color_parts[1]);
+        $b = (int)hexdec($color_parts[2]);
+        if ($r + $g + $b <= 127 * 3) {
+          $is_dark = true;
+        }
+      }
+    }
+
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
     $frontend = frontend::markup_get($this->used_dpaths);
@@ -90,6 +109,7 @@ namespace effcore {
                            $html->attribute_insert('lang', language::code_get_current());
                            $html->attribute_insert('dir', $this->text_direction);
                            $html->attribute_insert('data-css-path', core::sanitize_id(   trim(url::get_current()->path_get(), '/')   ));
+                           $html->attribute_insert('data-page-color-is-dark',             $is_dark ? 'true' : 'false'                 );
     if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
     $head_title_text = $template->target_get('head_title_text', true);
