@@ -6,7 +6,7 @@ pages
     url: %^(?<base>/manage/data)/
 >>>>>>>>>>>(?<action_name>insert)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
->>>>>>>>>>>(?<category>[a-z0-9_]+)|)$%
+>>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)$%
     access
       roles
       - =: admins

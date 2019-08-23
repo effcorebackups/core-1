@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
   # /manage/data                 → /manage/data/%%_action_name=select_multiple
   # /manage/data/select_multiple → /manage/data/%%_action_name=select_multiple/%%_managing_group/%%_entity_name/%%_instances_group_by
   # /manage/data/insert          → /manage/data/%%_action_name=insert/%%_entity_name
-  #                                /manage/data/%%_action_name=insert/%%_entity_name/%%_category
+  #                                /manage/data/%%_action_name=insert/%%_entity_name/%%_category_id
   #                                /manage/data/%%_action_name=select/%%_entity_name/%%_instance_id
   #                                /manage/data/%%_action_name=update/%%_entity_name/%%_instance_id
   #                                /manage/data/%%_action_name=delete/%%_entity_name/%%_instance_id
