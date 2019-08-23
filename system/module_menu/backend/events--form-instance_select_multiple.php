@@ -18,14 +18,14 @@ namespace effcore\modules\menu {
 
   static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name'       );
-    $id_tree     = page::get_current()->args_get('instances_group_by');
+    $group_by_id = page::get_current()->args_get('instances_group_by');
     $entity = entity::get($entity_name);
     if ($entity) {
     # drag-and-drop functionality
-      if ($entity->name == 'tree_item' && $id_tree && !empty($form->_selection)) {
+      if ($entity->name == 'tree_item' && $group_by_id && !empty($form->_selection)) {
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
-        $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree];
+        $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $group_by_id];
         $form->_selection->field_insert_action(null, '', ['delete', 'select', 'update']);
         $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
           $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
@@ -44,15 +44,15 @@ namespace effcore\modules\menu {
 
   static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name'       );
-    $id_tree     = page::get_current()->args_get('instances_group_by');
+    $group_by_id = page::get_current()->args_get('instances_group_by');
     $entity = entity::get($entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'apply':
-          if ($entity->name == 'tree_item' && $id_tree) {
+          if ($entity->name == 'tree_item' && $group_by_id) {
             $event->is_last = true;
             $has_selection = false;
-            $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree]], 'id');
+            $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $group_by_id]], 'id');
             foreach ($tree_items as $c_item) {
               $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
               $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: 0;
@@ -76,8 +76,8 @@ namespace effcore\modules\menu {
           }
           break;
         case 'insert':
-          if ($entity->name == 'tree_item' && $id_tree) {
-            url::go('/manage/data/insert/'.$entity->name.'/'.$id_tree.'?'.url::back_part_make());
+          if ($entity->name == 'tree_item' && $group_by_id) {
+            url::go('/manage/data/insert/'.$entity->name.'/'.$group_by_id.'?'.url::back_part_make());
           }
           break;
       }
