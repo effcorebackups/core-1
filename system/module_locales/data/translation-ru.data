@@ -37,6 +37,7 @@ translations
     - Avatar: Аватар
     - avatar: аватар
     - begin: начало
+    - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle id: id пакета

@@ -4,7 +4,7 @@ tree_items
     id_parent: null
     id_tree: main
     title: Develop
-    url_shadow: /develop
+    url_hidden: /develop
     weight: -50
     access
       roles

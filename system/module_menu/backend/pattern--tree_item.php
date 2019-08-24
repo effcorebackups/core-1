@@ -15,12 +15,12 @@ namespace effcore {
   public $id_tree;
   public $title = '';
   public $url;
-  public $url_shadow;
+  public $url_hidden;
   public $extra;
   public $access;
   public $type = 'nosql'; # nosql | sql | dynamic
   public $cache_href;
-  public $cache_href_shadow;
+  public $cache_href_hidden;
 
   function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
@@ -45,7 +45,7 @@ namespace effcore {
   }
 
   function href_get       () {if ($this->cache_href        === null) $this->cache_href        = token::replace($this->url       ); return $this->cache_href;       }
-  function href_shadow_get() {if ($this->cache_href_shadow === null) $this->cache_href_shadow = token::replace($this->url_shadow); return $this->cache_href_shadow;}
+  function href_hidden_get() {if ($this->cache_href_hidden === null) $this->cache_href_hidden = token::replace($this->url_hidden); return $this->cache_href_hidden;}
 
   function is_active() {
     $href = $this->href_get();
@@ -56,9 +56,9 @@ namespace effcore {
 
   function is_active_trail() {
     $href        = $this->href_get       ();
-    $href_shadow = $this->href_shadow_get();
+    $href_hidden = $this->href_hidden_get();
     if ($href        && url::is_active_trail($href       )) return true;
-    if ($href_shadow && url::is_active_trail($href_shadow)) return true;
+    if ($href_hidden && url::is_active_trail($href_hidden)) return true;
   }
 
   function render() {
