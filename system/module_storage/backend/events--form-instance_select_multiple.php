@@ -76,7 +76,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
+    $managing_group_id = page::get_current()->args_get('managing_group_id');
+    $entity_name       = page::get_current()->args_get('entity_name'      );
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'apply':
@@ -92,7 +93,7 @@ namespace effcore\modules\storage {
         static::on_init(null, $form, $items);
         break;
       case 'insert':
-        url::go('/manage/data/insert/'.$entity->name.'?'.url::back_part_make());
+        url::go('/manage/data/'.$managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
         break;
     }
   }

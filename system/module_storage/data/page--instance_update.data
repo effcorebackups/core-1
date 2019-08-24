@@ -4,9 +4,10 @@ pages
     title: %%_entity_title_page_context{entity_name}: update
     is_https: true
     url: %^(?<base>/manage/data)/
->>>>>>>>>>>(?<action_name>update)/
+>>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/
->>>>>>>>>>>(?<instance_id>[a-z0-9_\-\+]+)$%
+>>>>>>>>>>>(?<instance_id>[a-z0-9_\-\+]+)/
+>>>>>>>>>>>(?<action_name>update)$%
     access
       roles
       - =: admins

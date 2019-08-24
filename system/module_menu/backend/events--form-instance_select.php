@@ -19,7 +19,7 @@ namespace effcore\modules\menu {
       case 'return':
         if ($entity->name == 'tree_item' && !empty($form->_instance)) {
           url::go($back_return_0 ?: (url::back_url_get() ?: (
-                  $back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree)));
+                  $back_return_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$form->_instance->id_tree)));
           break;
         }
     }

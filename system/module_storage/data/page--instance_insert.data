@@ -4,8 +4,9 @@ pages
     title: %%_entity_title_page_context{entity_name}: insert
     is_https: true
     url: %^(?<base>/manage/data)/
->>>>>>>>>>>(?<action_name>insert)/
->>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
+>>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/
+>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)//
+>>>>>>>>>>>(?<action_name>insert)(/
 >>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)$%
     access
       roles

@@ -39,8 +39,8 @@ namespace effcore\modules\menu {
     if ($entity) {
       if ($entity->name == 'tree_item') {
         switch ($form->clicked_button->value_get()) {
-          case 'update': page::get_current()->args_set('back_update_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree);
-          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name.'/'.$form->_instance->id_tree);
+          case 'update': page::get_current()->args_set('back_update_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$form->_instance->id_tree);
+          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$form->_instance->id_tree);
         }
       }
     }

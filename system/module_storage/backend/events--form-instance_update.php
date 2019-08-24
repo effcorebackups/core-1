@@ -122,8 +122,8 @@ namespace effcore\modules\storage {
           if ($form->_instance->update())
                message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
-                     url::go($back_update_0 ?: (url::back_url_get() ?: ($back_update_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
-      case 'return': url::go($back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
+                     url::go($back_update_0 ?: (url::back_url_get() ?: ($back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
+      case 'return': url::go($back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
     }
   }
 

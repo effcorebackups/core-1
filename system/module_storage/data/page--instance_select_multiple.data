@@ -3,18 +3,10 @@ pages
     id: instance_select_multiple
     title: %%_entity_title_plural_page_context{entity_name}
     is_https: true
-   # ─────────────────────────────────────────────────────────────────────
-   # /manage/data
-   # /manage/data/select_multiple
-   # /manage/data/select_multiple/managing_group
-   # /manage/data/select_multiple/managing_group/entity_name
-   # /manage/data/select_multiple/managing_group/entity_name/category_id
-   # ─────────────────────────────────────────────────────────────────────
     url: %^(?<base>/manage/data)(/
->>>>>>>>>>>(?<action_name>select_multiple)(/
->>>>>>>>>>>(?<managing_group>[a-z0-9_\-]+)(/
->>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(/
->>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)|)|)|)$%
+>>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)(/
+>>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(///
+>>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)|)|)$%
     access
       roles
       - =: admins

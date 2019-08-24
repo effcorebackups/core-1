@@ -43,8 +43,9 @@ namespace effcore\modules\menu {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $category_id = page::get_current()->args_get('category_id');
+    $managing_group_id = page::get_current()->args_get('managing_group_id');
+    $entity_name       = page::get_current()->args_get('entity_name'      );
+    $category_id       = page::get_current()->args_get('category_id'      );
     $entity = entity::get($entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
@@ -77,7 +78,7 @@ namespace effcore\modules\menu {
           break;
         case 'insert':
           if ($entity->name == 'tree_item' && $category_id) {
-            url::go('/manage/data/insert/'.$entity->name.'/'.$category_id.'?'.url::back_part_make());
+            url::go('/manage/data/'.$managing_group_id.'/'.$entity->name.'//insert/'.$category_id.'?'.url::back_part_make());
           }
           break;
       }

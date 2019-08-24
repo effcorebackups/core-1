@@ -60,7 +60,7 @@ namespace effcore\modules\storage {
     switch ($form->clicked_button->value_get()) {
       case 'return':
         url::go($back_return_0 ?: (url::back_url_get() ?: (
-                $back_return_n ?: '/manage/data/select_multiple/'.$entity->group_managing_get_id().'/'.$entity->name)));
+                $back_return_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
         break;
     }
   }

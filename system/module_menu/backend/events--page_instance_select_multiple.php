@@ -23,7 +23,7 @@ namespace effcore\modules\menu {
       tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),
         'data_menu_tree_item_'.$c_tree->id,
         'data_menu',
-        'data', 'select_multiple/menu/tree_item/'.$c_tree->id
+        'data', 'menu/tree_item///'.$c_tree->id
       );
     }
   }
