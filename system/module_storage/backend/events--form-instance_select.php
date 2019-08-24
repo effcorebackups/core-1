@@ -14,6 +14,7 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_select {
 
   static function on_init($event, $form, $items) {
+                   page::get_current()->args_set('action_name', 'select');
     $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
