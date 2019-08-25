@@ -29,7 +29,7 @@
   /* links */
 
   a              {color: %%_color_link}
-  a:hover        {color: %%_color_link_active}
+  a[href]:hover  {color: %%_color_link_active}
   a.active       {color: %%_color_link_active}
   a.active-trail {color: %%_color_link_active}
 
@@ -42,6 +42,17 @@
   /* universal styles */
 
   [aria-hidden='true'] {display: none}
+
+  /* breadcrumbs */
+
+  x-breadcrumbs {display: block; margin: 100px 0}
+  x-breadcrumbs a {
+    display: inline-block;
+    margin: 2px 5px 2px 0;
+    padding: 5px 10px;
+    border: 1px solid %%_color_main;
+    border-radius: 10px}
+  x-breadcrumbs a:not([href]) {opacity: .5}
 
   /* table */
 
