@@ -498,116 +498,116 @@ colors
     value_hex: #f0f8ff
     group: blue
 # ─────────────────────────────────────────────────────────────────────
-# orchid group
+# violet group
 # ─────────────────────────────────────────────────────────────────────
 - indigo|color
     id: indigo
     value: indigo
     value_hex: #4b0082
-    group: orchid
+    group: violet
 - rebeccapurple|color
     id: rebeccapurple
     value: rebeccapurple
     value_hex: #663399
-    group: orchid
+    group: violet
 - blueviolet|color
     id: blueviolet
     value: blueviolet
     value_hex: #8a2be2
-    group: orchid
+    group: violet
 - mediumpurple|color
     id: mediumpurple
     value: mediumpurple
     value_hex: #9370db
-    group: orchid
+    group: violet
 - darkviolet|color
     id: darkviolet
     value: darkviolet
     value_hex: #9400d3
-    group: orchid
+    group: violet
 - darkorchid|color
     id: darkorchid
     value: darkorchid
     value_hex: #9932cc
-    group: orchid
+    group: violet
 - mediumorchid|color
     id: mediumorchid
     value: mediumorchid
     value_hex: #ba55d3
-    group: orchid
+    group: violet
 - orchid|color
     id: orchid
     value: orchid
     value_hex: #da70d6
-    group: orchid
+    group: violet
 - violet|color
     id: violet
     value: violet
     value_hex: #ee82ee
-    group: orchid
+    group: violet
 - plum|color
     id: plum
     value: plum
     value_hex: #dda0dd
-    group: orchid
+    group: violet
 - thistle|color
     id: thistle
     value: thistle
     value_hex: #d8bfd8
-    group: orchid
+    group: violet
 - lavender|color
     id: lavender
     value: lavender
     value_hex: #e6e6fa
-    group: orchid
+    group: violet
 - ghostwhite|color
     id: ghostwhite
     value: ghostwhite
     value_hex: #f8f8ff
-    group: orchid
+    group: violet
 # ─────────────────────────────────────────────────────────────────────
-# crimson group
+# pink group
 # ─────────────────────────────────────────────────────────────────────
 - purple|color
     id: purple
     value: purple
     value_hex: #800080
-    group: crimson
+    group: pink
 - darkmagenta|color
     id: darkmagenta
     value: darkmagenta
     value_hex: #8b008b
-    group: crimson
+    group: pink
 - mediumvioletred|color
     id: mediumvioletred
     value: mediumvioletred
     value_hex: #c71585
-    group: crimson
+    group: pink
 - hotpink|color
     id: hotpink
     value: hotpink
     value_hex: #ff69b4
-    group: crimson
+    group: pink
 - palevioletred|color
     id: palevioletred
     value: palevioletred
     value_hex: #db7093
-    group: crimson
+    group: pink
 - lightpink|color
     id: lightpink
     value: lightpink
     value_hex: #ffb6c1
-    group: crimson
+    group: pink
 - pink|color
     id: pink
     value: pink
     value_hex: #ffc0cb
-    group: crimson
+    group: pink
 - lavenderblush|color
     id: lavenderblush
     value: lavenderblush
     value_hex: #fff0f5
-    group: crimson
+    group: pink
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
