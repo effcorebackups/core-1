@@ -46,15 +46,20 @@ namespace effcore\modules\demo {
 
   static function on_show_block_demo_markup_dynamic($page) {
   # ─────────────────────────────────────────────────────────────────────
-  # paragraph
+  # headers
   # ─────────────────────────────────────────────────────────────────────
-    $paragraph_title = new markup('h3', [], 'Paragraph');
-    $paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
+    $header_h1 = new markup('h1', [], [new text('Header %%_size', ['size' => 'H1'])]);
+    $header_h2 = new markup('h2', [], [new text('Header %%_size', ['size' => 'H2'])]);
+    $header_h3 = new markup('h3', [], [new text('Header %%_size', ['size' => 'H3'])]);
+    $header_h1_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;',                                                                  ]);
+    $header_h2_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;',                                                                  ]);
+    $header_h3_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
   # ─────────────────────────────────────────────────────────────────────
   # unordered list
   # ─────────────────────────────────────────────────────────────────────
-    $unordered_list_title = new markup('h3', [], 'Unordered list');
-    $unordered_list = new markup('ul', [], [
+    $list_title = new markup('h2', [], 'Lists');
+    $list_unordered_title = new markup('h3', [], 'Unordered list');
+    $list_unordered = new markup('ul', [], [
       'li_1'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 1])]),
       'li_2'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 2]),
         'li_2_ul'  => new markup('ul', [], [
@@ -66,8 +71,8 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # ordered list
   # ─────────────────────────────────────────────────────────────────────
-    $ordered_list_title = new markup('h3', [], 'Ordered list');
-    $ordered_list = new markup('ol', [], [
+    $list_ordered_title = new markup('h3', [], 'Ordered list');
+    $list_ordered = new markup('ol', [], [
       'li_1'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 1])]),
       'li_2'       => new markup('li', [], ['content' => new text('item #%%_number', ['number' => 2]),
         'li_2_ol'  => new markup('ol', [], [
@@ -99,7 +104,7 @@ namespace effcore\modules\demo {
        'td_1' => new table_body_row_cell(['colspan' => 3], new text(''))
       ])
     ];
-    $table_title = new markup('h3', [], 'Table');
+    $table_title = new markup('h2', [], 'Table');
     $table = new table(['class' => ['table' => 'table']],
       $table_tbody,
       $table_thead
@@ -108,12 +113,17 @@ namespace effcore\modules\demo {
   # result block
   # ─────────────────────────────────────────────────────────────────────
     return new block('Markup dynamic', ['data-id' => 'demo_markup_dynamic'], [
-      $paragraph_title,
-      $paragraph,
-      $unordered_list_title,
-      $unordered_list,
-      $ordered_list_title,
-      $ordered_list,
+      $header_h1,
+      $header_h1_paragraph,
+      $header_h2,
+      $header_h2_paragraph,
+      $header_h3,
+      $header_h3_paragraph,
+      $list_title,
+      $list_unordered_title,
+      $list_unordered,
+      $list_ordered_title,
+      $list_ordered,
       $table_title,
       $table
     ]);

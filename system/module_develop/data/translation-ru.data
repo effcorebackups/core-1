@@ -49,10 +49,10 @@ translations
     - Ext.: Расш.
     - Extension: Расширение
     - failure: неудача
-    - Field %%_type.: Поле %%_type.
     - Field #1: Поле №1
     - Field #2: Поле №2
     - Field #3: Поле №3
+    - Field %%_type.: Поле %%_type.
     - Field binary: Поле binary
     - Field blob: Поле blob
     - Field boolean: Поле boolean
@@ -75,6 +75,7 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - head cell #%%_number: заглавная ячейка №%%_number
+    - Header %%_size: Заголовок %%_size
     - Indexes: Индексы
     - init.: инициал.
     - interface: интерфейс
@@ -91,6 +92,7 @@ translations
     - item #2: пункт №2
     - item #3 (from code): пункт №3 (из кода)
     - item #3: пункт №3
+    - Lists: Списки
     - make request to "%%_url": сделать запрос на "%%_url"
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
@@ -108,6 +110,7 @@ translations
     - Option 7 (inserted from code): Опция 7 (вставлена из кода)
     - Option 8 (inserted from code): Опция 8 (вставлена из кода)
     - Option 9 (inserted from code): Опция 9 (вставлена из кода)
+    - Paragraph: Параграф
     - Parameter 1: Параметр 1
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3

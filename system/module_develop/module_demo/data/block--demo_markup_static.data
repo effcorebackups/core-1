@@ -5,14 +5,46 @@ blocks
     - data-id: demo_markup_static
     children
   # ─────────────────────────────────────────────────────────────────────
-  # paragraph
+  # headers
   # ─────────────────────────────────────────────────────────────────────
-    - paragraph_title|markup
+    - header_h1|markup
+        tag_name: h1
+        children
+        - content|text
+            text: Header %%_size
+            args
+            - size: H1
+    - header_h1_paragraph|markup
+        tag_name: p
+        children
+        - content|text
+            text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+    - header_h2|markup
+        tag_name: h2
+        children
+        - content|text
+            text: Header %%_size
+            args
+            - size: H2
+    - header_h2_paragraph|markup
+        tag_name: p
+        children
+        - content|text
+            text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+    - header_h3|markup
         tag_name: h3
         children
         - content|text
-            text: Paragraph
-    - paragraph|markup
+            text: Header %%_size
+            args
+            - size: H3
+    - header_h3_paragraph|markup
         tag_name: p
         children
         - content|text
@@ -30,12 +62,17 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # unordered list
   # ─────────────────────────────────────────────────────────────────────
-    - unordered_list_title|markup
+    - list_title|markup
+        tag_name: h2
+        children
+        - content|text
+            text: Lists
+    - list_unordered_title|markup
         tag_name: h3
         children
         - content|text
             text: Unordered list
-    - unordered_list|markup
+    - list_unordered|markup
         tag_name: ul
         children
         - li_1|markup
@@ -86,12 +123,12 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
   # ordered list
   # ─────────────────────────────────────────────────────────────────────
-    - ordered_list_title|markup
+    - list_ordered_title|markup
         tag_name: h3
         children
         - content|text
             text: Ordered list
-    - ordered_list|markup
+    - list_ordered|markup
         tag_name: ol
         children
         - li_1|markup
@@ -143,7 +180,7 @@ blocks
   # table
   # ─────────────────────────────────────────────────────────────────────
     - table_title|markup
-        tag_name: h3
+        tag_name: h2
         children
         - content|text
             text: Table
