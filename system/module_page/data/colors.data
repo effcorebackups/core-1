@@ -121,6 +121,11 @@ colors
     value: magenta
     value_hex: #ff00ff
     group: pure
+- fuchsia|color
+    id: fuchsia
+    value: fuchsia
+    value_hex: #ff00ff
+    group: pure
 - deeppink|color
     id: deeppink
     value: deeppink
@@ -254,6 +259,11 @@ colors
     id: palegoldenrod
     value: palegoldenrod
     value_hex: #eee8aa
+    group: yellow
+- lightgoldenrodyellow|color
+    id: lightgoldenrodyellow
+    value: lightgoldenrodyellow
+    value_hex: #fafad2
     group: yellow
 - lemonchiffon|color
     id: lemonchiffon
@@ -582,6 +592,11 @@ colors
     id: palevioletred
     value: palevioletred
     value_hex: #db7093
+    group: crimson
+- lightpink|color
+    id: lightpink
+    value: lightpink
+    value_hex: #ffb6c1
     group: crimson
 - pink|color
     id: pink
