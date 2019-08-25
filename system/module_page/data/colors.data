@@ -51,6 +51,11 @@ colors
     value: lawngreen
     value_hex: #7cfc00
     group: pure
+- chartreuse|color
+    id: chartreuse
+    value: chartreuse
+    value_hex: #7fff00
+    group: pure
 - lime|color
     id: lime
     value: lime
@@ -84,6 +89,11 @@ colors
 - cyan|color
     id: cyan
     value: cyan
+    value_hex: #00ffff
+    group: pure
+- aqua|color
+    id: aqua
+    value: aqua
     value_hex: #00ffff
     group: pure
 - deepskyblue|color
@@ -354,6 +364,11 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # marine group
 # ─────────────────────────────────────────────────────────────────────
+- teal|color
+    id: teal
+    value: teal
+    value_hex: #008080
+    group: marine
 - darkcyan|color
     id: darkcyan
     value: darkcyan
@@ -407,10 +422,30 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # blue group
 # ─────────────────────────────────────────────────────────────────────
+- darkslateblue|color
+    id: darkslateblue
+    value: darkslateblue
+    value_hex: #483d8b
+    group: blue
+- slateblue|color
+    id: slateblue
+    value: slateblue
+    value_hex: #6a5acd
+    group: blue
+- mediumslateblue|color
+    id: mediumslateblue
+    value: mediumslateblue
+    value_hex: #7b68ee
+    group: blue
 - midnightblue|color
     id: midnightblue
     value: midnightblue
     value_hex: #191970
+    group: blue
+- navy|color
+    id: navy
+    value: navy
+    value_hex: #000080
     group: blue
 - darkblue|color
     id: darkblue
@@ -453,29 +488,6 @@ colors
     value_hex: #f0f8ff
     group: blue
 # ─────────────────────────────────────────────────────────────────────
-# violet group
-# ─────────────────────────────────────────────────────────────────────
-- darkslateblue|color
-    id: darkslateblue
-    value: darkslateblue
-    value_hex: #483d8b
-    group: violet
-- slateblue|color
-    id: slateblue
-    value: slateblue
-    value_hex: #6a5acd
-    group: violet
-- mediumslateblue|color
-    id: mediumslateblue
-    value: mediumslateblue
-    value_hex: #7b68ee
-    group: violet
-- mediumpurple|color
-    id: mediumpurple
-    value: mediumpurple
-    value_hex: #9370db
-    group: violet
-# ─────────────────────────────────────────────────────────────────────
 # orchid group
 # ─────────────────────────────────────────────────────────────────────
 - indigo|color
@@ -492,6 +504,16 @@ colors
     id: blueviolet
     value: blueviolet
     value_hex: #8a2be2
+    group: orchid
+- mediumpurple|color
+    id: mediumpurple
+    value: mediumpurple
+    value_hex: #9370db
+    group: orchid
+- darkviolet|color
+    id: darkviolet
+    value: darkviolet
+    value_hex: #9400d3
     group: orchid
 - darkorchid|color
     id: darkorchid
@@ -534,6 +556,44 @@ colors
     value_hex: #f8f8ff
     group: orchid
 # ─────────────────────────────────────────────────────────────────────
+# crimson group
+# ─────────────────────────────────────────────────────────────────────
+- purple|color
+    id: purple
+    value: purple
+    value_hex: #800080
+    group: crimson
+- darkmagenta|color
+    id: darkmagenta
+    value: darkmagenta
+    value_hex: #8b008b
+    group: crimson
+- mediumvioletred|color
+    id: mediumvioletred
+    value: mediumvioletred
+    value_hex: #c71585
+    group: crimson
+- hotpink|color
+    id: hotpink
+    value: hotpink
+    value_hex: #ff69b4
+    group: crimson
+- palevioletred|color
+    id: palevioletred
+    value: palevioletred
+    value_hex: #db7093
+    group: crimson
+- pink|color
+    id: pink
+    value: pink
+    value_hex: #ffc0cb
+    group: crimson
+- lavenderblush|color
+    id: lavenderblush
+    value: lavenderblush
+    value_hex: #fff0f5
+    group: crimson
+# ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
 - crimson|color
@@ -571,39 +631,6 @@ colors
     value: snow
     value_hex: #fffafa
     group: red
-# ─────────────────────────────────────────────────────────────────────
-# crimson group
-# ─────────────────────────────────────────────────────────────────────
-- purple|color
-    id: purple
-    value: purple
-    value_hex: #800080
-    group: crimson
-- mediumvioletred|color
-    id: mediumvioletred
-    value: mediumvioletred
-    value_hex: #c71585
-    group: crimson
-- hotpink|color
-    id: hotpink
-    value: hotpink
-    value_hex: #ff69b4
-    group: crimson
-- palevioletred|color
-    id: palevioletred
-    value: palevioletred
-    value_hex: #db7093
-    group: crimson
-- pink|color
-    id: pink
-    value: pink
-    value_hex: #ffc0cb
-    group: crimson
-- lavenderblush|color
-    id: lavenderblush
-    value: lavenderblush
-    value_hex: #fff0f5
-    group: crimson
 # ─────────────────────────────────────────────────────────────────────
 # bordo group
 # ─────────────────────────────────────────────────────────────────────
