@@ -49,8 +49,10 @@ namespace effcore {
 
   # note:
   # ════════════════════════════════════════════════════════════════════════════════════════════
-  # 1. in the next url 'http://name:pass@subdomain.domain:port/dir/subdir/page?key=value#anchor'
-  #    the name, password and port values after parsing will be in the $domain property
+  # 1. in the next url 'http://name:password@subdomain.domain:port/dir/subdir/page?key=value#anchor'
+  #    the name, password and port values after parsing will be in the $domain property.
+  #    in any case, the use of credentials in this form is deprecated.
+  #    for more details see RFC 3986 clause 3.2.1 (user information) and 7.5 (sensitive information)
   # 2. anchor is not sent through the browser
   # ────────────────────────────────────────────────────────────────────────────────────────────
 
