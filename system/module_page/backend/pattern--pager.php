@@ -111,81 +111,88 @@ namespace effcore {
  #
  # ─────────────────────────────────────────────────────────────────────
 
+  function build() {
+    if (!$this->is_builded) {
+      $this->init();
+      $pager_name               = $this->name_get();
+      $pager_name_not_optimized = $this->name_get(false);
+      $url = clone url::get_current();
+      $url->query_arg_delete($pager_name);
+      $url->query_arg_delete($pager_name_not_optimized);
+
+    # ─────────────────────────────────────────────────────────────────────
+    # min part
+    # ─────────────────────────────────────────────────────────────────────
+      if ($this->max - $this->min > 0) {
+        if ($this->cur == $this->min)
+             $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->min));
+        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get()], $this->min));
+      }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # central part
+    # ─────────────────────────────────────────────────────────────────────
+      if ($this->max - $this->min > 1) {
+        $a_min = $this->cur - $this->min < 6 ? $this->min + 1 : $this->cur - 4;
+        $b_min = $this->cur - $this->min < 6 ? $this->min + 9 : $this->cur + 4;
+        $a_max = $this->max - $this->cur < 6 ? $this->max - 9 : $this->cur - 4;
+        $b_max = $this->max - $this->cur < 6 ? $this->max - 1 : $this->cur + 4;
+        $a     = $this->cur - $this->min < 6 ? max($a_min, $a_max) : min($a_min, $a_max);
+        $b     = $this->cur - $this->min < 6 ? max($b_min, $b_max) : min($b_min, $b_max);
+
+      # l-shoulder part
+        if ($a > $this->min + 10) {
+          $this->child_insert(new text('…'));
+          for ($j = 1; $j < 4; $j++) {
+            $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
+            $url->query_arg_insert($pager_name, $c_i);
+            $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
+          }
+        }
+
+      # central links part
+        if ($a > $this->min + 1) {
+          $this->child_insert(new text('…'));
+        }
+        for ($i = $a; $i <= $b; $i++) {
+          if ($i > $this->min && $i < $this->max) {
+            $url->query_arg_insert($pager_name, $i);
+            if ($this->cur == $i)
+                 $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $i));
+            else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get()], $i));
+          }
+        }
+        if ($b < $this->max - 1) {
+          $this->child_insert(new text('…'));
+        }
+
+      # r-shoulder part
+        if ($b < $this->max - 10) {
+          for ($j = 1; $j < 4; $j++) {
+            $c_i = $b + (int)(($this->max - $b) / 4 * $j);
+            $url->query_arg_insert($pager_name, $c_i);
+            $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
+          }
+          $this->child_insert(new text('…'));
+        }
+      }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # max part
+    # ─────────────────────────────────────────────────────────────────────
+      if ($this->max - $this->min > 0) {
+        $url->query_arg_insert($pager_name, $this->max);
+        if ($this->cur == $this->max)
+             $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->max));
+        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get()], $this->max));
+      }
+
+      $this->is_builded = true;
+    }
+  }
+
   function render() {
-    $this->init();
-    $pager_name               = $this->name_get();
-    $pager_name_not_optimized = $this->name_get(false);
-    $url = clone url::get_current();
-    $url->query_arg_delete($pager_name);
-    $url->query_arg_delete($pager_name_not_optimized);
-
-  # ─────────────────────────────────────────────────────────────────────
-  # min part
-  # ─────────────────────────────────────────────────────────────────────
-    if ($this->max - $this->min > 0) {
-      if ($this->cur == $this->min)
-           $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->min));
-      else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get()], $this->min));
-    }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # central part
-  # ─────────────────────────────────────────────────────────────────────
-    if ($this->max - $this->min > 1) {
-      $a_min = $this->cur - $this->min < 6 ? $this->min + 1 : $this->cur - 4;
-      $b_min = $this->cur - $this->min < 6 ? $this->min + 9 : $this->cur + 4;
-      $a_max = $this->max - $this->cur < 6 ? $this->max - 9 : $this->cur - 4;
-      $b_max = $this->max - $this->cur < 6 ? $this->max - 1 : $this->cur + 4;
-      $a     = $this->cur - $this->min < 6 ? max($a_min, $a_max) : min($a_min, $a_max);
-      $b     = $this->cur - $this->min < 6 ? max($b_min, $b_max) : min($b_min, $b_max);
-
-    # l-shoulder part
-      if ($a > $this->min + 10) {
-        $this->child_insert(new text('…'));
-        for ($j = 1; $j < 4; $j++) {
-          $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
-          $url->query_arg_insert($pager_name, $c_i);
-          $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
-        }
-      }
-
-    # central links part
-      if ($a > $this->min + 1) {
-        $this->child_insert(new text('…'));
-      }
-      for ($i = $a; $i <= $b; $i++) {
-        if ($i > $this->min && $i < $this->max) {
-          $url->query_arg_insert($pager_name, $i);
-          if ($this->cur == $i)
-               $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $i));
-          else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get()], $i));
-        }
-      }
-      if ($b < $this->max - 1) {
-        $this->child_insert(new text('…'));
-      }
-
-    # r-shoulder part
-      if ($b < $this->max - 10) {
-        for ($j = 1; $j < 4; $j++) {
-          $c_i = $b + (int)(($this->max - $b) / 4 * $j);
-          $url->query_arg_insert($pager_name, $c_i);
-          $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->tiny_get()], $c_i));
-        }
-        $this->child_insert(new text('…'));
-      }
-    }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # max part
-  # ─────────────────────────────────────────────────────────────────────
-    if ($this->max - $this->min > 0) {
-      $url->query_arg_insert($pager_name, $this->max);
-      if ($this->cur == $this->max)
-           $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->max));
-      else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get()], $this->max));
-    }
-
+    $this->build();
     return parent::render();
   }
 
