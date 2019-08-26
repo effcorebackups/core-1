@@ -6,12 +6,16 @@
 
 namespace effcore\modules\core {
           use \effcore\markup;
+          use \effcore\tabs_item;
           use \effcore\text;
           use \effcore\tree_item;
           abstract class events_page {
 
   static function on_breadcrumbs_build($event, $breadcrumbs) {
+
+  # ─────────────────────────────────────────────────────────────────────
   # find all active menu items
+  # ─────────────────────────────────────────────────────────────────────
     $branches = [];
     foreach (tree_item::select_all_by_id_tree('main') as $c_item) {
       if ($c_item->is_active      () ||
@@ -38,7 +42,7 @@ namespace effcore\modules\core {
         $longest = $c_branch;
       }
     }
-  # make result
+  # insert new links to breadcrumbs
     foreach (array_reverse($longest) as $c_item) {
       $breadcrumbs->child_insert(
         new markup('a', ['href' => $c_item->href_get() ?: false],
@@ -46,6 +50,12 @@ namespace effcore\modules\core {
         )
       );
     }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # find all active tabs items
+  # ─────────────────────────────────────────────────────────────────────
+
+
   }
 
 }}

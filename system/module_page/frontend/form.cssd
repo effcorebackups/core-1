@@ -173,7 +173,8 @@
 
   button[role='button-default'] {
     position: absolute;
-    top: -10000px}
+    top: -10000px;
+    left: -10000px}
 
   button[data-style^='narrow'] {
     margin: 0 0 0 8px;

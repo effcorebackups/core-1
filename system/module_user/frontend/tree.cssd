@@ -1,7 +1,7 @@
 
   /* menu 'User': sizes and orientation */
 
-  nav[data-area-id='menu'] x-tree[data-id^='user'] {float: right; z-index: 10}
+  nav[data-area-id='menu'] x-tree[data-id^='user'] {float: right}
 
   /* menu 'User': icons */
 

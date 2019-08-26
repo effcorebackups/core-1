@@ -4,6 +4,7 @@
   x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
   nav[data-area-id='menu'] h2 {display: none}
+  nav[data-area-id='menu'] x-tree {z-index: 300}
 
   /* menu style 'main': sizes and orientation */
 
