@@ -5,6 +5,7 @@ tree_items
     id_tree: main
     title: Front
     url: /
+    weight: +80
     access
       roles
       - =: admins

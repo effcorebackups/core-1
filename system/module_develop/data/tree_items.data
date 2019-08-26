@@ -5,7 +5,7 @@ tree_items
     id_tree: main
     title: Develop
     url_hidden: /develop
-    weight: -50
+    weight: -80
     access
       roles
       - =: admins
