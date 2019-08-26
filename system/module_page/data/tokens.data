@@ -94,14 +94,3 @@ tokens
     match: %%_color_button_text
     type: code
     handler: \effcore\modules\page\events_token::on_replace
-# ─────────────────────────────────────────────────────────────────────
-# mixed
-# ─────────────────────────────────────────────────────────────────────
-- instance_id_context
-    match: %%_instance_id_context
-    type: code
-    handler: \effcore\modules\page\events_token::on_replace
-- entity_name_context
-    match: %%_entity_name_context
-    type: code
-    handler: \effcore\modules\page\events_token::on_replace

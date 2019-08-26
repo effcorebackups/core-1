@@ -12,6 +12,8 @@ namespace effcore\modules\storage {
 
   static function on_replace($name, $args = []) {
     switch ($name) {
+      case 'instance_id_context': return page::get_current()->args_get('instance_id');
+      case 'entity_name_context': return page::get_current()->args_get('entity_name');
       case 'entity_title_page_context':
       case 'entity_title_plural_page_context':
         if (isset($args[0])) {

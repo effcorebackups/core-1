@@ -1,6 +1,6 @@
 tokens
 # ─────────────────────────────────────────────────────────────────────
-# shared tokens
+# mixed tokens
 # ─────────────────────────────────────────────────────────────────────
 - text_no_items
     match: %%_text_no_items
@@ -13,6 +13,14 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
+- instance_id_context
+    match: %%_instance_id_context
+    type: code
+    handler: \effcore\modules\storage\events_token::on_replace
+- entity_name_context
+    match: %%_entity_name_context
+    type: code
+    handler: \effcore\modules\storage\events_token::on_replace
 - entity_title_page_context
     match: %%_entity_title_page_context
     type: code
