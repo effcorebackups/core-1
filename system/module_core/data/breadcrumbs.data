@@ -1,0 +1,11 @@
+breadcrumbs
+- main|breadcrumbs
+    id: main
+    children
+    - front|markup
+        tag_name: a
+        attributes
+        - href: /
+        children
+        - content|text
+            text: Front page

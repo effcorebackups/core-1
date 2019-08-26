@@ -11,5 +11,5 @@ page_part_presets
     id: breadcrumbs_main
     managing_group: Menu
     managing_title: Breadcrumbs Main
-    type: code
-    source: \effcore\modules\menu\events_page::on_show_block_breadcrumbs_main
+    type: link
+    source: breadcrumbs/core/main

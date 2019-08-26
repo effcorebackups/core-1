@@ -132,3 +132,7 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_instance_delete_after
+  on_breadcrumbs_build
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build
