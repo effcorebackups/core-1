@@ -6,6 +6,9 @@
 
 namespace effcore\modules\core {
           use \effcore\markup;
+          use \effcore\page_part;
+          use \effcore\page;
+          use \effcore\storage;
           use \effcore\tabs_item;
           use \effcore\text;
           use \effcore\tree_item;
@@ -54,8 +57,23 @@ namespace effcore\modules\core {
   # ─────────────────────────────────────────────────────────────────────
   # find all active tabs items
   # ─────────────────────────────────────────────────────────────────────
-
-
+    $page_parts = page::get_current()->parts;
+    $active_tab = null;
+    if (is_array($page_parts)) {
+      foreach ($page_parts as $c_parts) {
+        foreach ( $c_parts as $c_part ) {
+          if ($c_part instanceof page_part &&
+              $c_part->type == 'link'      && strpos(
+              $c_part->source, 'tabs/') === 0) {
+            $active_tab = storage::get('files')->select($c_part->source, true);
+          }
+        }
+      }
+    }
+    if ($active_tab) {
+      $active_tab->build();
+      $tabs_items = tabs_item::select_all($active_tab->id);
+    }
   }
 
 }}
