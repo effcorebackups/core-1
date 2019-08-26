@@ -1,4 +1,13 @@
 tree_items
+- front|tree_item
+    id: front
+    id_parent: null
+    id_tree: main
+    title: Front
+    url: /
+    access
+      roles
+      - =: admins
 - decoration|tree_item
     id: decoration
     id_parent: manage
