@@ -18,12 +18,3 @@ tree_items
     access
       roles
       - =: admins
-- layouts|tree_item
-    id: layouts
-    id_parent: manage
-    id_tree: main
-    title: Layouts
-    url: /manage/layouts
-    access
-      roles
-      - =: admins

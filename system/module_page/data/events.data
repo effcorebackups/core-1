@@ -64,6 +64,3 @@ events
   - decoration|event
       for: decoration
       handler: \effcore\modules\page\events_page_decoration::on_tab_build_before
-  - layouts|event
-      for: layouts
-      handler: \effcore\modules\page\events_page_layouts::on_tab_build_before

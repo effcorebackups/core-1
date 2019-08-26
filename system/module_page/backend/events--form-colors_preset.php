@@ -13,8 +13,8 @@ namespace effcore\modules\page {
 
   static function on_init($event, $form, $items) {
     $id = page::get_current()->args_get('id');
-    if ($id) {
-      $preset = color::preset_get($id);
+    $preset = color::preset_get($id);
+    if ($preset) {
       $items['#color_page_id'            ]->color_set($preset->colors->color_page_id            );
       $items['#color_text_id'            ]->color_set($preset->colors->color_text_id            );
       $items['#color_main_id'            ]->color_set($preset->colors->color_main_id            );
@@ -38,7 +38,7 @@ namespace effcore\modules\page {
       $items['#color_button_id'          ]->color_set($preset->colors->color_button_id          );
       $items['#color_button_active_id'   ]->color_set($preset->colors->color_button_active_id   );
       $items['#color_button_text_id'     ]->color_set($preset->colors->color_button_text_id     );
-    }
+    } else $items['~apply']->disabled_set(true);
   }
 
   static function on_submit($event, $form, $items) {
@@ -46,31 +46,33 @@ namespace effcore\modules\page {
       case 'apply':
         $id = page::get_current()->args_get('id');
         $preset = color::preset_get($id);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_page_id',             $preset->colors->color_page_id,             false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_text_id',             $preset->colors->color_text_id,             false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_main_id',             $preset->colors->color_main_id,             false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_id',             $preset->colors->color_link_id,             false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_active_id',      $preset->colors->color_link_active_id,      false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_odd_id',    $preset->colors->color_table_row_odd_id,    false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_even_id',   $preset->colors->color_table_row_even_id,   false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_relation_id',         $preset->colors->color_relation_id,         false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_id',             $preset->colors->color_menu_id,             false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_active_id',      $preset->colors->color_menu_active_id,      false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $preset->colors->color_menu_text_id,        false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_id',        $preset->colors->color_menu_link_id,        false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id', $preset->colors->color_menu_link_active_id, false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $preset->colors->color_ok_id,               false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $preset->colors->color_warning_id,          false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $preset->colors->color_error_id,            false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_id',         $preset->colors->color_fieldset_id,         false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',  $preset->colors->color_fieldset_nested_id,  false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_id',            $preset->colors->color_field_id,            false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_text_id',       $preset->colors->color_field_text_id,       false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',           $preset->colors->color_button_id,           false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id,    false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_text_id',      $preset->colors->color_button_text_id            );
-        message::insert('Colors was applied.');
-        static::on_init(null, $form, $items);
+        if ($preset) {
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_page_id',             $preset->colors->color_page_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_text_id',             $preset->colors->color_text_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_main_id',             $preset->colors->color_main_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_id',             $preset->colors->color_link_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_link_active_id',      $preset->colors->color_link_active_id,      false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_odd_id',    $preset->colors->color_table_row_odd_id,    false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_table_row_even_id',   $preset->colors->color_table_row_even_id,   false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_relation_id',         $preset->colors->color_relation_id,         false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_id',             $preset->colors->color_menu_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_active_id',      $preset->colors->color_menu_active_id,      false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $preset->colors->color_menu_text_id,        false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_id',        $preset->colors->color_menu_link_id,        false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id', $preset->colors->color_menu_link_active_id, false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $preset->colors->color_ok_id,               false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $preset->colors->color_warning_id,          false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $preset->colors->color_error_id,            false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_id',         $preset->colors->color_fieldset_id,         false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',  $preset->colors->color_fieldset_nested_id,  false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_id',            $preset->colors->color_field_id,            false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_field_text_id',       $preset->colors->color_field_text_id,       false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',           $preset->colors->color_button_id,           false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',    $preset->colors->color_button_active_id,    false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_text_id',      $preset->colors->color_button_text_id            );
+          message::insert('Colors was applied.');
+          static::on_init(null, $form, $items);
+        }
         break;
     }
   }

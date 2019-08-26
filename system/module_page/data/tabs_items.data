@@ -5,14 +5,21 @@ tabs_items
     id_tab: decoration
     action_name: colors
     title: Colors
-- decoration_presets|tabs_item
-    id: decoration_presets
+- decoration_colors_presets|tabs_item
+    id: decoration_colors_presets
     id_parent: null
     id_tab: decoration
-    action_name: presets
-    title: Presets
-- layouts_all|tabs_item
-    id: layouts_all
+    action_name: colors_presets
+    title: Colors presets
+- decoration_layouts|tabs_item
+    id: decoration_layouts
     id_parent: null
-    id_tab: layouts
-    title: All
+    id_tab: decoration
+    action_name: layouts
+    title: Layouts
+- decoration_settings|tabs_item
+    id: decoration_settings
+    id_parent: null
+    id_tab: decoration
+    action_name: settings
+    title: Settings

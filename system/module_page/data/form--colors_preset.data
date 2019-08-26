@@ -6,7 +6,7 @@ forms
     - novalidate: true
     children
     - colors|fieldset
-        title: Colors preset
+        title: All colors
         attributes
         - data-type: colors-preset
         children

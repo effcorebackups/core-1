@@ -24,6 +24,7 @@ translations
     - Administrators: Администраторы
     - agree: согласен(а)
     - All caches was reset.: Все кэши были сброшены.
+    - All colors: Все цвета
     - All: Все
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous user menu: Меню анонимного пользователя
@@ -67,7 +68,7 @@ translations
     - collapse: свернуть
     - color id = "%%_id" and value = "%%_value": id цвета = "%%_id" и значение = "%%_value"
     - Color: Цвет
-    - Colors preset: Предустановка цвета
+    - Colors presets: Цветовые предустановки
     - Colors was applied.: Цвета были применены.
     - Colors: Цвета
     - Conditions: Условия
@@ -364,7 +365,6 @@ translations
     - PHP OPcache is anebled: PHP OPcache включен
     - PHP Version: PHP Версия
     - Port: Порт
-    - Presets: Предустановки
     - Press to select module %%_title to be enabled or disabled: Нажмите, чтобы выбрать модуль %%_title для включения или отключения
     - Press to show hidden description: Нажмите, чтобы показать скрытое описание
     - Press to show or hide available colors: Нажмите, чтобы показать или скрыть доступные цвета

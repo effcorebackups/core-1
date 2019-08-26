@@ -1,0 +1,17 @@
+forms
+- decoration_settings|form
+    attributes
+    - id: decoration_settings
+    - method: post
+    - novalidate: true
+    children
+    - settings|fieldset
+        title: Settings
+        children
+        - info|text
+            text: UNDER CONSTRUCTION
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        - disabled: true
