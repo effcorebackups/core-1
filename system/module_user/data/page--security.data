@@ -20,4 +20,4 @@ pages
     - content
       - block_security|page_part
           type: code
-          source: \effcore\modules\core\events_page_security::on_show_block_security
+          source: \effcore\modules\user\events_page_security::on_show_block_security
