@@ -1,11 +1,10 @@
 tree_items
-- data|tree_item
-    id: data
+- security|tree_item
+    id: security
     id_parent: manage
     id_tree: main
-    title: Data
-    url: /manage/data
-    weight: +80
+    title: Security
+    url: /manage/security
     access
       roles
       - =: admins
