@@ -17,7 +17,7 @@ namespace effcore\modules\menu {
     $category_id = page::get_current()->args_get('category_id');
     $trees = tree::select_all('sql');
     core::array_sort_by_text_property($trees);
-    if ($entity_name == 'tree_item' && !isset($trees[$category_id])) core::send_header_and_exit('page_not_found');
+    if ($entity_name == 'tree_item' && empty($trees[$category_id])) core::send_header_and_exit('page_not_found');
     tabs_item::delete('data_menu_tree_item');
     foreach ($trees as $c_tree) {
       tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),

@@ -39,8 +39,8 @@ namespace effcore\modules\storage {
     }
   # remove empty groups
     foreach ($groups as $c_group_id => $c_group_title) {
-      if (!isset($entities_by_groups[$c_group_id])) {
-           unset($groups            [$c_group_id]);
+      if (empty($entities_by_groups[$c_group_id])) {
+          unset($groups            [$c_group_id]);
       }
     }
   # sorting
