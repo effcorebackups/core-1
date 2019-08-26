@@ -5,7 +5,7 @@
 
   function effCore() {
     this.tokens = [];
-    this.tokens['text_no_items']        = '%%_text_no_items';
+    this.tokens['text_no_items'       ] = '%%_text_no_items';
     this.tokens['text_select_all_rows'] = '%%_text_select_all_rows';
     this.uagent = document.documentElement.getAttribute('data-uagent') ? document.documentElement.getAttribute('data-uagent') : '';
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';

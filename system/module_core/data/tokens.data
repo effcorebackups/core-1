@@ -1,9 +1,0 @@
-tokens
-- text_no_items
-    match: %%_text_no_items
-    type: translated_text
-    value: no items
-- text_select_all_rows
-    match: %%_text_select_all_rows
-    type: translated_text
-    value: select all rows
