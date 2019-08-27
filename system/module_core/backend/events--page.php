@@ -47,10 +47,10 @@ namespace effcore\modules\core {
     }
   # insert new links to breadcrumbs
     foreach (array_reverse($longest) as $c_item) {
-      $breadcrumbs->child_insert(
-        new markup('a', ['href' => $c_item->href_get() ?: false],
-          new text($c_item->title, [], true, true)
-        )
+      $breadcrumbs->link_insert(
+        $c_item->id,
+        $c_item->title,
+        $c_item->href_get() ?: false
       );
     }
 
@@ -101,10 +101,10 @@ namespace effcore\modules\core {
     }
   # insert new links to breadcrumbs
     foreach (array_reverse($longest) as $c_item) {
-      $breadcrumbs->child_insert(
-        new markup('a', ['href' => $c_item->href_get() ?: false],
-          new text($c_item->title, [], true, true)
-        )
+      $breadcrumbs->link_insert(
+        $c_item->id,
+        $c_item->title,
+        $c_item->href_get() ?: false
       );
     }
 

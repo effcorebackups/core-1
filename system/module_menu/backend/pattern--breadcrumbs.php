@@ -9,12 +9,28 @@ namespace effcore {
 
   public $tag_name = 'x-breadcrumbs';
   public $id;
+  public $links = [];
 
   function build() {
     if (!$this->is_builded) {
       event::start('on_breadcrumbs_build', $this->id, [&$this]);
+      $this->children_delete();
+      foreach ($this->links as $rowid => $c_link) {
+        $this->child_insert(
+          new markup('a', ['href' => $c_link->url],
+            new text($c_link->title, [], true, true)
+          )
+        );
+      }
       $this->is_builded = true;
     }
+  }
+
+  function link_insert($rowid, $title, $url) {
+    $this->links[$rowid] = (object)[
+      'title' => $title,
+      'url'   => $url
+    ];
   }
 
   function render() {
@@ -34,12 +50,12 @@ namespace effcore {
 
   static function init() {
     if (static::$cache == null) {
-      foreach (storage::get('files')->select('breadcrumbs') as $c_module_id => $c_breadcrumbs) {
-        foreach ($c_breadcrumbs as $c_breadcrumb) {
-          if (isset(static::$cache[$c_breadcrumb->id])) console::log_insert_about_duplicate('breadcrumbs', $c_breadcrumb->id, $c_module_id);
-          static::$cache[$c_breadcrumb->id] = $c_breadcrumb;
-          static::$cache[$c_breadcrumb->id]->module_id = $c_module_id;
-          static::$cache[$c_breadcrumb->id]->type = 'nosql';
+      foreach (storage::get('files')->select('breadcrumbs') as $c_module_id => $c_breadcrumbs_by_module) {
+        foreach ($c_breadcrumbs_by_module as $c_breadcrumbs) {
+          if (isset(static::$cache[$c_breadcrumbs->id])) console::log_insert_about_duplicate('breadcrumbs', $c_breadcrumbs->id, $c_module_id);
+          static::$cache[$c_breadcrumbs->id] = $c_breadcrumbs;
+          static::$cache[$c_breadcrumbs->id]->module_id = $c_module_id;
+          static::$cache[$c_breadcrumbs->id]->type = 'nosql';
         }
       }
     }
