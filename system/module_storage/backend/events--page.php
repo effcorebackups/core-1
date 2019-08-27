@@ -12,7 +12,6 @@ namespace effcore\modules\storage {
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
     $managing_group_id = page::get_current()->args_get('managing_group_id');
     $entity_name       = page::get_current()->args_get('entity_name'      );
-    $category_id       = page::get_current()->args_get('category_id'      );
     if (page::get_current()->id == 'instance_insert') {
       $groups = entity::groups_managing_get();
       $entity = entity::get($entity_name);
