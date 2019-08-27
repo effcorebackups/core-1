@@ -66,3 +66,8 @@ events
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
+  on_breadcrumbs_build_before
+  - main|event
+      for: main
+      weight: -50
+      handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
