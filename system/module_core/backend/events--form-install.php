@@ -169,7 +169,7 @@ namespace effcore\modules\core {
           }
           if (count(storage::get('sql')->errors) == 0) {
             $form->children_delete();
-            $link_page_login = (new markup('a', ['href' => '/login', 'target' => 'login'], 'login'))->render();
+            $link_page_login = (new markup('a', ['href' => '/login', 'target' => '_blank'], 'login'))->render();
             message::insert('System was installed.');
             message::insert(new text_multiline([
               'your EMail is — %%_email',
