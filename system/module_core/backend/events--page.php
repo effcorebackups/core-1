@@ -14,7 +14,7 @@ namespace effcore\modules\core {
           use \effcore\tree_item;
           abstract class events_page {
 
-  static function on_breadcrumbs_build($event, $breadcrumbs) {
+  static function on_breadcrumbs_build_before($event, $breadcrumbs) {
 
   # ─────────────────────────────────────────────────────────────────────
   # find all active menu items

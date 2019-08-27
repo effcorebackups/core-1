@@ -13,7 +13,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_breadcrumbs_build', $this->id, [&$this]);
+      event::start('on_breadcrumbs_build_before', $this->id, [&$this]);
       $this->children_delete();
       foreach ($this->links as $rowid => $c_link) {
         $this->child_insert(
@@ -22,6 +22,7 @@ namespace effcore {
           )
         );
       }
+      event::start('on_breadcrumbs_build_after', $this->id, [&$this]);
       $this->is_builded = true;
     }
   }

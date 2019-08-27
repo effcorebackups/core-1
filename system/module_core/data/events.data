@@ -54,7 +54,7 @@ events
   - modules|event
       for: modules
       handler: \effcore\modules\core\events_page_modules::on_build_before
-  on_breadcrumbs_build
+  on_breadcrumbs_build_before
   - main|event
       for: main
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
