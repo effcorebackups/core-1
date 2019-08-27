@@ -3,13 +3,13 @@ breadcrumbs
     id: main
     links
     - front
-        title: Front page
+        title: Front
         url: /
         weight: 0
 - user|breadcrumbs
     id: user
     links
     - front
-        title: Front page
+        title: Front
         url: /
         weight: 0

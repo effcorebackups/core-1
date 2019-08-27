@@ -6,7 +6,7 @@ instances
     entity_name: page
     values
     - id: front
-    - title: Front page
+    - title: Front
     - url: /
     - is_https: 0
     - is_embed: 1
