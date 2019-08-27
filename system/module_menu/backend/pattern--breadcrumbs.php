@@ -18,7 +18,7 @@ namespace effcore {
       foreach ($this->links as $rowid => $c_link) {
         $this->child_insert(
           new markup('a', ['href' => $c_link->url],
-            new text($c_link->title, [], true, true)
+            new text($c_link->title, [], true, true), $c_link->weight ?? 0
           )
         );
       }
@@ -27,11 +27,31 @@ namespace effcore {
     }
   }
 
-  function link_insert($rowid, $title, $url) {
+  function link_select_all() {
+    return $this->links;
+  }
+
+  function link_select($rowid) {
+    return $this->links[$rowid];
+  }
+
+  function link_insert($rowid, $title, $url, $weight = null) {
     $this->links[$rowid] = (object)[
-      'title' => $title,
-      'url'   => $url
+      'title'  => $title,
+      'url'    => $url,
+      'weight' => $weight === null ? - count($this->links) :
+                  $weight
     ];
+  }
+
+  function link_update($rowid, $title = null, $url = null, $weight = null) {
+    if ($title  !== null) $this->links[$rowid]->title  = $title;
+    if ($url    !== null) $this->links[$rowid]->url    = $url;
+    if ($weight !== null) $this->links[$rowid]->weight = $weight;
+  }
+
+  function link_delete($rowid) {
+    unset($this->links[$rowid]);
   }
 
   function render() {

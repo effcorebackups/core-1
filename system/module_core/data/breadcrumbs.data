@@ -5,3 +5,4 @@ breadcrumbs
     - front
         title: Front page
         url: /
+        weight: 0
