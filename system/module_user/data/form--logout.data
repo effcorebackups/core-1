@@ -8,12 +8,6 @@ forms
     - button_default|button_default
         attributes
         - value: logout
-    - button_return|button
-        title: return
-        novalidate: true
-        attributes
-        - data-style: chameleon
-        - value: return
     - info|node
     - button_logout|button
         title: logout
