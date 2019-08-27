@@ -6,3 +6,10 @@ breadcrumbs
         title: Front page
         url: /
         weight: 0
+- user|breadcrumbs
+    id: user
+    links
+    - front
+        title: Front page
+        url: /
+        weight: 0

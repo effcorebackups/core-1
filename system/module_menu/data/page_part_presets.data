@@ -13,3 +13,9 @@ page_part_presets
     managing_title: Breadcrumbs Main
     type: link
     source: breadcrumbs/core/main
+- breadcrumbs_user|page_part_preset
+    id: breadcrumbs_user
+    managing_group: Menu
+    managing_title: Breadcrumbs User
+    type: link
+    source: breadcrumbs/core/user

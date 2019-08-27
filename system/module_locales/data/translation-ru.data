@@ -38,6 +38,8 @@ translations
     - Avatar: Аватар
     - avatar: аватар
     - begin: начало
+    - Breadcrumbs Main: Хлебные крошки Основные
+    - Breadcrumbs User: Хлебные крошки Пользователь
     - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета

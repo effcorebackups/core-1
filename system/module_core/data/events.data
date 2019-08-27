@@ -58,3 +58,6 @@ events
   - main|event
       for: main
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+  - user|event
+      for: user
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before

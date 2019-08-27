@@ -20,7 +20,7 @@ namespace effcore\modules\core {
   # find all active menu items
   # ─────────────────────────────────────────────────────────────────────
     $branches = [];
-    foreach (tree_item::select_all_by_id_tree('main') as $c_item) {
+    foreach (tree_item::select_all_by_id_tree($breadcrumbs->id) as $c_item) {
       if ($c_item->is_active      () ||
           $c_item->is_active_trail()) {
         $branches[][$c_item->id] = $c_item;
@@ -33,7 +33,7 @@ namespace effcore\modules\core {
         if ($counter++ >= 15) break;
         $c_parent_id = end($c_branch)->id_parent;
         if ($c_parent_id) {
-            $c_parent = tree_item::select($c_parent_id, 'main');
+            $c_parent = tree_item::select($c_parent_id, $breadcrumbs->id);
             $c_branch[$c_parent->id] = $c_parent;}
         else break;
       }
