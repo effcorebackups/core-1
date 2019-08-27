@@ -40,7 +40,7 @@ namespace effcore\modules\core {
     }
   # find the longest branch
     $longest = [];
-    foreach ($branches as $c_branch) {
+    foreach ($branches as &$c_branch) {
       if (count($c_branch) > count($longest)) {
         $longest = $c_branch;
       }
@@ -57,8 +57,8 @@ namespace effcore\modules\core {
   # ─────────────────────────────────────────────────────────────────────
   # find all active tabs items
   # ─────────────────────────────────────────────────────────────────────
-    $page_parts = page::get_current()->parts;
     $active_tab = null;
+    $page_parts = page::get_current()->parts;
     if (is_array($page_parts)) {
       foreach ($page_parts as $c_parts) {
         foreach ( $c_parts as $c_part ) {
@@ -70,10 +70,44 @@ namespace effcore\modules\core {
         }
       }
     }
+    $branches = [];
     if ($active_tab) {
       $active_tab->build();
-      $tabs_items = tabs_item::select_all($active_tab->id);
+      foreach (tabs_item::select_all($active_tab->id) as $c_item) {
+        if ($c_item->is_active      () ||
+            $c_item->is_active_trail()) {
+          $branches[][$c_item->id] = $c_item;
+        }
+      }
     }
+  # find all parents (resolve all branches)
+    foreach ($branches as &$c_branch) {
+      $counter = 0;
+      while (true) {
+        if ($counter++ >= 15) break;
+        $c_parent_id = end($c_branch)->id_parent;
+        if ($c_parent_id) {
+            $c_parent = tabs_item::select($c_parent_id);
+            $c_branch[$c_parent->id] = $c_parent;}
+        else break;
+      }
+    }
+  # find the longest branch
+    $longest = [];
+    foreach ($branches as &$c_branch) {
+      if (count($c_branch) > count($longest)) {
+        $longest = $c_branch;
+      }
+    }
+  # insert new links to breadcrumbs
+    foreach (array_reverse($longest) as $c_item) {
+      $breadcrumbs->child_insert(
+        new markup('a', ['href' => $c_item->href_get() ?: false],
+          new text($c_item->title, [], true, true)
+        )
+      );
+    }
+
   }
 
 }}
