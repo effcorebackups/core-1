@@ -57,8 +57,6 @@ namespace effcore\modules\storage {
   static function on_submit($event, $form, $items) {
     $back_insert_0 = page::get_current()->args_get('back_insert_0');
     $back_insert_n = page::get_current()->args_get('back_insert_n');
-    $back_return_0 = page::get_current()->args_get('back_return_0');
-    $back_return_n = page::get_current()->args_get('back_return_n');
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
     switch ($form->clicked_button->value_get()) {
@@ -74,8 +72,9 @@ namespace effcore\modules\storage {
           if ($form->_instance->insert())
                message::insert(new text('Item of type "%%_name" with id = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
-                     url::go($back_insert_0 ?: (url::back_url_get() ?: ($back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
-      case 'return': url::go($back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name))); break;
+        url::go($back_insert_0 ?: (url::back_url_get() ?: (
+                $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+        break;
     }
   }
 

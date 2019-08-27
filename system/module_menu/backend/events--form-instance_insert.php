@@ -21,7 +21,8 @@ namespace effcore\modules\menu {
     # field 'id_tree'
       if ($entity->name == 'tree_item') {
         $items['#id_tree']->value_set(
-          tree::select($category_id) ? $category_id : null
+          tree::select($category_id) ?
+                       $category_id : null
         );
       }
     }
@@ -63,8 +64,9 @@ namespace effcore\modules\menu {
       if ($entity->name == 'tree_item') {
         $id_tree = page::get_current()->args_get('category_id');
         switch ($form->clicked_button->value_get()) {
-          case 'insert': page::get_current()->args_set('back_insert_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree); break;
-          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree); break;
+          case 'insert':
+            page::get_current()->args_set('back_insert_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
+            break;
         }
       }
     }
