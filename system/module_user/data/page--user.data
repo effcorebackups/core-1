@@ -15,8 +15,8 @@ pages
       - menu_main|page_part_preset_link
           id: menu_main
     - top
-      - breadcrumbs_user|page_part_preset_link
-          id: breadcrumbs_user
+      - breadcrumbs_user_registered|page_part_preset_link
+          id: breadcrumbs_user_registered
     - title
       - title|page_part_preset_link
           id: title

@@ -39,7 +39,8 @@ translations
     - avatar: аватар
     - begin: начало
     - Breadcrumbs Main: Хлебные крошки Основные
-    - Breadcrumbs User: Хлебные крошки Пользователь
+    - Breadcrumbs User anonymous: Хлебные крошки Пользователь анонимный
+    - Breadcrumbs User registered: Хлебные крошки Пользователь зарегистрированный
     - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета

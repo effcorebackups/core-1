@@ -6,8 +6,15 @@ breadcrumbs
         title: Front
         url: /
         weight: 0
-- user|breadcrumbs
-    id: user
+- user_registered|breadcrumbs
+    id: user_registered
+    links
+    - front
+        title: Front
+        url: /
+        weight: 0
+- user_anonymous|breadcrumbs
+    id: user_anonymous
     links
     - front
         title: Front

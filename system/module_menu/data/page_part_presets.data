@@ -13,9 +13,15 @@ page_part_presets
     managing_title: Breadcrumbs Main
     type: link
     source: breadcrumbs/core/main
-- breadcrumbs_user|page_part_preset
-    id: breadcrumbs_user
+- breadcrumbs_user_registered|page_part_preset
+    id: breadcrumbs_user_registered
     managing_group: Menu
-    managing_title: Breadcrumbs User
+    managing_title: Breadcrumbs User registered
     type: link
-    source: breadcrumbs/core/user
+    source: breadcrumbs/core/user_registered
+- breadcrumbs_user_anonymous|page_part_preset
+    id: breadcrumbs_user_anonymous
+    managing_group: Menu
+    managing_title: Breadcrumbs User anonymous
+    type: link
+    source: breadcrumbs/core/user_anonymous

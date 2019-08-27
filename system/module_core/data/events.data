@@ -58,6 +58,9 @@ events
   - main|event
       for: main
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
-  - user|event
-      for: user
+  - user_registered|event
+      for: user_registered
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+  - user_anonymous|event
+      for: user_anonymous
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
