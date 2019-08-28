@@ -138,11 +138,6 @@ namespace effcore\modules\user {
             page::get_current()->args_set('back_update_n', '/user/'.$items['#nick']->value_get());
           }
           break;
-        case 'return':
-          if ($entity->name == 'user' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_return_n', '/user/'.$items['#nick']->value_get());
-          }
-          break;
       }
     }
   }

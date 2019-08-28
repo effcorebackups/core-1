@@ -26,7 +26,8 @@ namespace effcore\modules\menu {
     $back_return_n = page::get_current()->args_get('back_return_n');
     if ($entity_name == 'tree_item') {
       if (page::get_current()->id == 'instance_select' ||
-          page::get_current()->id == 'instance_insert') {
+          page::get_current()->id == 'instance_insert' ||
+          page::get_current()->id == 'instance_update') {
         $tree = null;
         if ($category_id) {                                                    $tree = tree::select($category_id       );}
         if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}

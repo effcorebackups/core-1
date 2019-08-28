@@ -78,8 +78,6 @@ namespace effcore\modules\page {
       if ($entity->name == 'page' && !empty($form->_instance)) {
         $links = $form->validation_cache_get('presets_link');
         switch ($form->clicked_button->value_get()) {
-          case 'return':
-            break;
           case 'update':
             $form->_instance->parts = $links ?: null;
             break;
