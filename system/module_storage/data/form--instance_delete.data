@@ -8,12 +8,6 @@ forms
     - button_default|button_default
         attributes
         - value: delete
-    - button_return|button
-        title: return
-        novalidate: true
-        attributes
-        - data-style: chameleon
-        - value: return
     - info|fieldset
     - button_delete|button
         title: delete

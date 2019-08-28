@@ -56,8 +56,8 @@ namespace effcore\modules\menu {
                 'in_end'   => ')']]);
               if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
               else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');}
-                         page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree); break;
-          case 'return': page::get_current()->args_set('back_return_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree); break;
+            page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
+            break;
         }
       }
     }

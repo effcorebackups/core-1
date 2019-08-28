@@ -185,10 +185,6 @@
   button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
   button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
 
-  button[data-style='chameleon'] {
-    border: 1px solid %%_color_button;
-    background: transparent}
-
   /* checkbox color */
 
   x-field[data-type='checkbox-color'] input {
