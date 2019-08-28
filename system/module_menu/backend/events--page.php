@@ -7,6 +7,7 @@
 namespace effcore\modules\menu {
           use \effcore\page;
           use \effcore\translation;
+          use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
           abstract class events_page {
@@ -19,14 +20,19 @@ namespace effcore\modules\menu {
 
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
     $entity_name   = page::get_current()->args_get('entity_name'  );
+    $instance_id   = page::get_current()->args_get('instance_id'  );
     $category_id   = page::get_current()->args_get('category_id'  );
     $back_return_0 = page::get_current()->args_get('back_return_0');
     $back_return_n = page::get_current()->args_get('back_return_n');
-    if (page::get_current()->id == 'instance_insert' && $entity_name == 'tree_item') {
-      $trees = tree::select_all('sql');
-      if (!empty($trees[$category_id]))
-           $breadcrumbs->link_update('entity', translation::get('Items for: %%_title', ['title' => translation::get($trees[$category_id]->title)]), $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/menu/tree_item///'.$category_id)));
-      else $breadcrumbs->link_delete('entity');
+    if ($entity_name == 'tree_item') {
+      if (page::get_current()->id == 'instance_select' ||
+          page::get_current()->id == 'instance_insert') {
+        $tree = null;
+        if ($category_id) {                                                    $tree = tree::select($category_id       );}
+        if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
+        if ($tree) $breadcrumbs->link_update('entity', translation::get('Items for: %%_title', ['title' => translation::get($tree->title)]), $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/menu/tree_item///'.$tree->id)));
+        else       $breadcrumbs->link_delete('entity');
+      }
     }
   }
 
