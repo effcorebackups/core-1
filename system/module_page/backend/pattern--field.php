@@ -364,13 +364,13 @@ namespace effcore {
     ]))->render();
   }
 
-  function render_description_pattern  ($element) {return new markup('p', ['class' => ['pattern'   => 'pattern']],   new text('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));          }
-  function render_description_min      ($element) {return new markup('p', ['class' => ['min'       => 'min']],       new text('Minimum field value: %%_value.', ['value'                                          => $element->attribute_select('min')]));              }
-  function render_description_max      ($element) {return new markup('p', ['class' => ['max'       => 'max']],       new text('Maximum field value: %%_value.', ['value'                                          => $element->attribute_select('max')]));              }
-  function render_description_cur      ($element) {return new markup('p', ['class' => ['cur'       => 'cur']],       new text('Current field value: %%_value.', ['value' => (new markup('x-value', [],               $element->attribute_select('value')))->render()]));}
-  function render_description_minlength($element) {return new markup('p', ['class' => ['minlength' => 'minlength']], new text('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));        }
-  function render_description_maxlength($element) {return new markup('p', ['class' => ['maxlength' => 'maxlength']], new text('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));        }
-  function render_description_midlength($element) {return new markup('p', ['class' => ['midlength' => 'midlength']], new text('Field can contain %%_number character%%_plural{number,s}.',              ['number' => $element->attribute_select('minlength')]));        }
+  function render_description_pattern  ($element) {return new markup('p', ['data-id' => 'pattern'  ], new text('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));          }
+  function render_description_min      ($element) {return new markup('p', ['data-id' => 'min'      ], new text('Minimum field value: %%_value.', ['value'                                          => $element->attribute_select('min')]));              }
+  function render_description_max      ($element) {return new markup('p', ['data-id' => 'max'      ], new text('Maximum field value: %%_value.', ['value'                                          => $element->attribute_select('max')]));              }
+  function render_description_cur      ($element) {return new markup('p', ['data-id' => 'cur'      ], new text('Current field value: %%_value.', ['value' => (new markup('x-value', [],               $element->attribute_select('value')))->render()]));}
+  function render_description_minlength($element) {return new markup('p', ['data-id' => 'minlength'], new text('Field can contain a minimum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('minlength')]));        }
+  function render_description_maxlength($element) {return new markup('p', ['data-id' => 'maxlength'], new text('Field can contain a maximum of %%_number character%%_plural{number,s}.', ['number' => $element->attribute_select('maxlength')]));        }
+  function render_description_midlength($element) {return new markup('p', ['data-id' => 'midlength'], new text('Field can contain %%_number character%%_plural{number,s}.',              ['number' => $element->attribute_select('minlength')]));        }
 
   ###########################
   ### static declarations ###

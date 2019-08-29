@@ -25,16 +25,13 @@ namespace effcore {
 
         case 'linear':
           foreach ($this->slices as $c_slice) {
-            $x_slice = new markup('x-slice');
+            $x_slice = new markup('x-slice', ['data-id' => core::sanitize_id($c_slice->title)]);
             $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
             $x_slice->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
                                            locale::format_persent($c_slice->persent_value, 1),
-              new markup('x-scale', [
-                'class' => ['scope' => core::sanitize_id($c_slice->title)],
-                'style' => ['width: '.(int)$c_slice->persent_value.'%']
-              ])
+              new markup('x-scale', ['style' => ['width: '.(int)$c_slice->persent_value.'%']])
             ]));
             $this->child_insert($x_slice);
           }
