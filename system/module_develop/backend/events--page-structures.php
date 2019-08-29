@@ -17,9 +17,9 @@ namespace effcore\modules\develop {
 
   static function on_build_before($event, $page) {
     $type = $page->args_get('type');
-    if ($type == null) {
-      url::go($page->args_get('base').'/class/list');
-    }
+    $view = $page->args_get('view');
+    if ($type == null) url::go($page->args_get('base'). '/class'.'/list');
+    if ($view == null) url::go($page->args_get('base').'/'.$type.'/list');
   }
 
   ########################
