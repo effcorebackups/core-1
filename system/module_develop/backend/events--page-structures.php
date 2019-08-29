@@ -32,7 +32,7 @@ namespace effcore\modules\develop {
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_select() as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type.'/list' == $page->args_get('type')) {
+      if ($c_item_info->type == $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass;
         $c_result->name       = $c_item_info->name;
@@ -48,16 +48,16 @@ namespace effcore\modules\develop {
       foreach ($c_group as $c_item) {
         $c_file_parts = new markup('x-file-path');
         foreach ($c_item->dirs_parts as $c_part)
-          $c_file_parts->child_insert(new markup('x-directory', [], new text_simple($c_part)), $c_part);
-          $c_file_parts->child_insert(new markup('x-file', [], $c_item->file), $c_item->file);
+          $c_file_parts->child_insert(new markup('x-directory', [], new text_simple($c_part)), $c_part      );
+          $c_file_parts->child_insert(new markup('x-file',      [], $c_item->file           ), $c_item->file);
         if ($u_first_character != strtoupper($c_item->name[0])) {
-          $u_first_character = strtoupper($c_item->name[0]);
-          $l_first_character = strtolower($c_item->name[0]);
+            $u_first_character  = strtoupper($c_item->name[0]);
+            $l_first_character  = strtolower($c_item->name[0]);
           $targets->child_insert(new markup('a', ['href' => '#character_'.$l_first_character], $u_first_character));
-          $list->child_insert(new markup('h2', ['id' => 'character_'.$l_first_character, 'class' => ['character' => 'character']], $u_first_character));
+          $list->child_insert(new markup('h2', ['id' => 'character_'.$l_first_character, 'data-role' => 'targets'], $u_first_character));
         }
         $c_return = new markup('x-item');
-        $c_return->child_insert(new markup('x-name', [], new text_simple($c_item->name)), 'name');
+        $c_return->child_insert(new markup('x-name',      [], new text_simple($c_item->name)),               'name'     );
         $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
         $c_return->child_insert($c_file_parts, 'file');
         $list->child_insert($c_return);
@@ -78,7 +78,7 @@ namespace effcore\modules\develop {
 
   # build diagram for each class
     foreach ($map as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == 'class') {
+      if ($c_item_info->type == $page->args_get('type')) {
         $c_file          = new file($c_item_info->file);
         $c_reflection    = new \ReflectionClass($c_item_full_name);
         $x_class_wrapper = new markup('x-class-wrapper');
@@ -89,11 +89,11 @@ namespace effcore\modules\develop {
         $x_attributes    = new markup('x-attributes');
         $x_operations    = new markup('x-operations');
         $x_children      = new markup('x-children', [], [], -100);
-        $x_class->child_insert($x_name_wrapper, 'name_wrapper');
-        $x_class->child_insert($x_attributes, 'attributes');
-        $x_class->child_insert($x_operations, 'operations');
-        $x_class_wrapper->child_insert($x_class, 'class');
-        $x_class_wrapper->child_insert($x_children, 'children');
+        $x_class        ->child_insert($x_name_wrapper, 'name_wrapper');
+        $x_class        ->child_insert($x_attributes,   'attributes'  );
+        $x_class        ->child_insert($x_operations,   'operations'  );
+        $x_class_wrapper->child_insert($x_class,        'class'       );
+        $x_class_wrapper->child_insert($x_children,     'children'    );
         $diagram->child_insert($x_class_wrapper, $c_item_full_name);
 
       # set abstract mark
@@ -113,11 +113,12 @@ namespace effcore\modules\develop {
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['value']) ? str_replace(' => ', ' = ',
                                 $c_matches['value']) : null;
-            $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' = '.$c_defaults) :
-                                               new text_simple($c_info->name);
-            if ($c_info->isPublic())    $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public']    + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            $c_name = ($c_defaults !== null) ?
+              new text_simple($c_info->name.' = '.$c_defaults) :
+              new text_simple($c_info->name);
+            if ($c_info->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate())   $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private']   + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
           }
         }
 
@@ -133,11 +134,12 @@ namespace effcore\modules\develop {
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('%(\\$)([a-zA-Z_])%', '$2',
                                 $c_matches['params'])) : null;
-            $c_name = ($c_defaults !== null) ? new text_simple($c_info->name.' ('.$c_defaults.')') :
-                                               new text_simple($c_info->name.' ()');
-            if ($c_info->isPublic())    $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public']    + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            $c_name = ($c_defaults !== null) ?
+              new text_simple($c_info->name.' ('.$c_defaults.')') :
+              new text_simple($c_info->name.' ()');
+            if ($c_info->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
             if ($c_info->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate())   $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private']   + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+            if ($c_info->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
           }
         }
       }
@@ -163,7 +165,7 @@ namespace effcore\modules\develop {
       $diagram->child_delete($c_item);
     }
 
-    $export_link = new markup('a', ['href' => '/develop/structures/class/diagram_export'], 'classes.mdj');
+    $export_link = new markup('a', ['href' => $page->args_get('base').'/'.$page->args_get('type').'/export'], $page->args_get('type').'.mdj');
     return new block('UML Diagram', ['data-title-styled' => 'false', 'data-id' => 'structures_diagram'], [
       new markup('p', [], new text('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => true]),
@@ -176,12 +178,12 @@ namespace effcore\modules\develop {
   ### export UML diagram ###
   ##########################
 
-  static function on_export_diagram($page) {
+  static function on_export($page) {
   # build class diagram
     $map = core::structures_select();
     $result = [];
     foreach ($map as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == 'class') {
+      if ($c_item_info->type == $page->args_get('type')) {
         $c_reflection = new \ReflectionClass($c_item_full_name);
         $c_file = new file($c_item_info->file);
         $c_return = new \stdClass;
@@ -202,7 +204,7 @@ namespace effcore\modules\develop {
           $c_relation->_type = 'UMLGeneralization';
           $c_relation->source = new \stdClass;
           $c_relation->target = new \stdClass;
-          $c_relation->source->{'$ref'} = 'CLASS-'.core::hash_get($c_item_full_name);
+          $c_relation->source->{'$ref'} = 'CLASS-'.core::hash_get($c_item_full_name       );
           $c_relation->target->{'$ref'} = 'CLASS-'.core::hash_get($c_item_parent_full_name);
           $c_return->ownedElements = [$c_relation];
         }
@@ -258,7 +260,7 @@ namespace effcore\modules\develop {
 
   # print result
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename=classes.mdj');
+    header('Content-Disposition: attachment; filename='.$page->args_get('type').'.mdj');
     header('Cache-Control: private, no-cache, no-store, must-revalidate');
     header('Expires: 0');
     print json_encode(

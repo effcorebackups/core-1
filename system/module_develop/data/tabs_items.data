@@ -25,6 +25,12 @@ tabs_items
     action_name: interface
     action_name_default: interface/list
     title: Interfaces
+- structures_interfaces_list|tabs_item
+    id: structures_interfaces_list
+    id_parent: structures_interfaces
+    id_tab: structures
+    action_name: interface/list
+    title: List
 - structures_traits|tabs_item
     id: structures_traits
     id_parent: null
@@ -32,6 +38,12 @@ tabs_items
     action_name: trait
     action_name_default: trait/list
     title: Traits
+- structures_traits_list|tabs_item
+    id: structures_traits_list
+    id_parent: structures_traits
+    id_tab: structures
+    action_name: trait/list
+    title: List
 - nosql_trees|tabs_item
     id: nosql_trees
     id_parent: null

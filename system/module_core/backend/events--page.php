@@ -104,7 +104,7 @@ namespace effcore\modules\core {
       $breadcrumbs->link_insert(
         $c_item->id,
         $c_item->title,
-        $c_item->href_get() ?: false
+        $c_item->href_default_get() ?: false
       );
     }
 

@@ -3,12 +3,9 @@ pages
     id: structures
     title: Structures
     is_https: true
-    url: %^(?<base>/develop/structures)
->>>>>>>>((/(?<type>class/list|
->>>>>>>>>>>>>>>>>>>class/diagram|
->>>>>>>>>>>>>>>>>>>class/diagram_export|
->>>>>>>>>>>>>>>>>>>interface/list|
->>>>>>>>>>>>>>>>>>>trait/list))|)$%
+    url: %^(?<base>/develop/structures)(/
+>>>>>>>>>>>(?<type>class|interface|trait)(/
+>>>>>>>>>>>(?<view>list|diagram|export)|)|)$%
     access
       roles
       - =: admins
@@ -31,30 +28,26 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - form_cache_update|page_part
-          display
-            check: page_args
-            where: type
-            match: %^class/list|interface/list|trait/list|class/diagram$%
           type: link
           source: forms/core/cache_update
       - block_structures_list|page_part
           display
             check: page_args
-            where: type
-            match: %^class/list|interface/list|trait/list$%
+            where: view
+            match: %^list$%
           type: code
           source: \effcore\modules\develop\events_page_structures::on_show_block_structures_list
       - block_structures_diagram|page_part
           display
             check: page_args
-            where: type
-            match: %^class/diagram$%
+            where: view
+            match: %^diagram$%
           type: code
           source: \effcore\modules\develop\events_page_structures::on_show_block_structures_diagram
-      - block_structures_diagram_export|page_part
+      - block_structures_export|page_part
           display
             check: page_args
-            where: type
-            match: %^class/diagram_export$%
+            where: view
+            match: %^export$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::on_export_diagram
+          source: \effcore\modules\develop\events_page_structures::on_export
