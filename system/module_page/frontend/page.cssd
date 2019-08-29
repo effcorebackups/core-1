@@ -28,9 +28,10 @@
 
   /* links */
 
-  a             {color: %%_color_link}
-  a[href]:hover {color: %%_color_link_active}
-  a.active      {color: %%_color_link_active}
+  a                             {color: %%_color_link}
+  a[href]:hover                 {color: %%_color_link_active}
+  a[aria-selected='true']       {color: %%_color_link_active}
+  a[data-selected-trail='true'] {color: %%_color_link_active}
 
   a[data-id='logotype'] {display: inline-block; margin: 30px 0}
   a[data-id='logotype'] img[src=''] {
@@ -52,6 +53,8 @@
     border: 1px solid %%_color_main;
     border-radius: 10px}
   x-breadcrumbs a:not([href]) {opacity: .5}
+  x-breadcrumbs a[aria-selected='true'      ]:not(:last-child) {color: %%_color_link}
+  x-breadcrumbs a[data-selected-trail='true']:not(:last-child) {color: %%_color_link}
 
   /* table */
 

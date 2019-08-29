@@ -21,10 +21,6 @@ namespace effcore {
   }
 
   function render() {
-    if ($this->tag_name == 'a'          &&
-        $this->attribute_select('href') && url::is_active(
-        $this->attribute_select('href')))
-        $this->attribute_insert('class', ['active' => 'active']);
     if ($this->template) {
       return (template::make_new($this->template, [
         'tag_name'   => $this->tag_name,
