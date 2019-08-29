@@ -126,7 +126,7 @@ namespace effcore {
       if ($this->max - $this->min > 0) {
         if ($this->cur == $this->min)
              $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->min));
-        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get()], $this->min));
+        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->tiny_get()                          ], $this->min));
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -159,7 +159,7 @@ namespace effcore {
             $url->query_arg_insert($pager_name, $i);
             if ($this->cur == $i)
                  $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $i));
-            else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get()], $i));
+            else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $i]), 'href' => $url->tiny_get()                          ], $i));
           }
         }
         if ($b < $this->max - 1) {
@@ -184,7 +184,7 @@ namespace effcore {
         $url->query_arg_insert($pager_name, $this->max);
         if ($this->cur == $this->max)
              $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get(), 'aria-current' => 'true'], $this->max));
-        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get()], $this->max));
+        else $this->child_insert(new markup('a', ['title' => new text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->tiny_get()                          ], $this->max));
       }
 
       $this->is_builded = true;
