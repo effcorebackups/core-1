@@ -177,6 +177,27 @@ namespace effcore\modules\demo {
                     'cell-2' => ['value' => 'value 3.2'],
                     'cell-3' => ['value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
+  # table-dl
+  # ─────────────────────────────────────────────────────────────────────
+    $decorator_table_dl_title = new markup('h3', [], 'DL table');
+    $decorator_table_dl = new decorator('table-dl');
+    $decorator_table_dl->id = 'demo_table_dl';
+    $decorator_table_dl->visibility_rowid  = 'visible'; # visible | not_int | hidden
+    $decorator_table_dl->visibility_cellid = 'visible'; # visible | not_int | hidden
+    $decorator_table_dl->data = [
+      'rowid-1' => ['attributes' => ['data-row_attribute' => 'value-1', 'class' => ['row_class-1' => 'row_class-1']],
+                    'cell-1' => ['value' => 'value 1.1', 'title' => 'Field #1', 'attributes' => ['data-cell_attribute' => 'value-1.1', 'class' => ['cell_class-1.1' => 'cell_class-1.1']]],
+                    'cell-2' => ['value' => 'value 1.2', 'title' => 'Field #2'],
+                    'cell-3' => ['value' => 'value 1.3', 'title' => 'Field #3']],
+      'rowid-2' => ['attributes' => ['data-row_attribute' => 'value-2', 'class' => ['row_class-2' => 'row_class-2']],
+                    'cell-1' => ['value' => 'value 2.1'],
+                    'cell-2' => ['value' => 'value 2.2'],
+                    'cell-3' => ['value' => 'value 2.3']],
+      'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
+                    'cell-1' => ['value' => 'value 3.1'],
+                    'cell-2' => ['value' => 'value 3.2'],
+                    'cell-3' => ['value' => ''         ]]];
+  # ─────────────────────────────────────────────────────────────────────
   # ul (unordered list)
   # ─────────────────────────────────────────────────────────────────────
     $decorator_ul_title = new markup('h3', [], 'Unordered list');
@@ -226,6 +247,8 @@ namespace effcore\modules\demo {
       $decorator_table,
       $decorator_table_adaptive_title,
       $decorator_table_adaptive,
+      $decorator_table_dl_title,
+      $decorator_table_dl,
       $decorator_ul_title,
       $decorator_ul,
       $decorator_dl_title,

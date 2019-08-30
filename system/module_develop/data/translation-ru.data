@@ -41,6 +41,7 @@ translations
     - Demo via decorator: Демонстрационное через декоратор
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
     - Diagram: Диаграмма
+    - DL table: DL Таблица
     - Elements: Элементы
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - event system was initialized: система событий была инициализирована
