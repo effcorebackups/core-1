@@ -4,7 +4,7 @@ pages
     title: Decoration
     is_https: true
     url: %^(?<base>/manage/decoration)(/
->>>>>>>>>>>(?<type>colors|colors_presets|layouts|settings)(/
+>>>>>>>>>>>(?<type>colors/current|colors/presets|colors|layouts|settings)(/
 >>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
     access
       roles
@@ -31,14 +31,14 @@ pages
           display
             check: page_args
             where: type
-            match: %^colors$%
+            match: %^colors/current$%
           type: link
           source: forms/page/colors
       - form_colors_preset|page_part
           display
             check: page_args
             where: type
-            match: %^colors_presets$%
+            match: %^colors/presets$%
           type: link
           source: forms/page/colors_preset
       - form_layout|page_part

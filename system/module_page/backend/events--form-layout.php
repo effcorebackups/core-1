@@ -14,7 +14,7 @@ namespace effcore\modules\page {
 
   static function on_init($event, $form, $items) {
     $id = page::get_current()->args_get('id');
-    if ($id) {
+    if (layout::select($id)) {
       $layout = core::deep_clone(layout::select($id));
       foreach ($layout->children_select_recursive() as $c_child)
         if ($c_child instanceof area) {

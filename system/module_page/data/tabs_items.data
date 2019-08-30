@@ -4,13 +4,20 @@ tabs_items
     id_parent: null
     id_tab: decoration
     action_name: colors
+    action_name_default: colors/current
     title: Colors
+- decoration_colors_current|tabs_item
+    id: decoration_colors_current
+    id_parent: decoration_colors
+    id_tab: decoration
+    action_name: colors/current
+    title: Current
 - decoration_colors_presets|tabs_item
     id: decoration_colors_presets
-    id_parent: null
+    id_parent: decoration_colors
     id_tab: decoration
-    action_name: colors_presets
-    title: Colors presets
+    action_name: colors/presets
+    title: Presets
 - decoration_layouts|tabs_item
     id: decoration_layouts
     id_parent: null

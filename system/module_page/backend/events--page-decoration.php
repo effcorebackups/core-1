@@ -16,16 +16,16 @@ namespace effcore\modules\page {
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id'  );
-    if ($type == null) url::go(page::get_current()->args_get('base').'/colors');
+    if ($type == null || $type == 'colors') url::go(page::get_current()->args_get('base').'/colors/current');
   # colors presets
-    if ($type == 'colors_presets') {
+    if ($type == 'colors/presets') {
       $presets = color::preset_get_all();
       core::array_sort_by_text_property($presets);
-      if (empty($presets[$id])) url::go(page::get_current()->args_get('base').'/colors_presets/'.reset($presets)->id);
+      if (empty($presets[$id])) url::go(page::get_current()->args_get('base').'/colors/presets/'.reset($presets)->id);
       foreach ($presets as $c_preset) {
         tabs_item::insert(                                             $c_preset->title,
           'decoration_colors_presets_'.                                $c_preset->id,
-          'decoration_colors_presets', 'decoration', 'colors_presets/'.$c_preset->id
+          'decoration_colors_presets', 'decoration', 'colors/presets/'.$c_preset->id
         );
       }
     }
