@@ -204,7 +204,7 @@
   x-sticker[data-state='error'  ] {background: %%_color_error}
 
   x-module-info x-sticker {padding: 3px 7px 2px 7px; line-height: 1em; font-size: .8em}
-  x-module-info x-sticker x-version:before {content: 'v'}
+  x-module-info x-sticker x-version::before {content: 'v'}
   x-module-info x-sticker x-version {margin-left: .5em}
 
   /* control elements */
