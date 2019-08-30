@@ -9,7 +9,7 @@ namespace effcore {
 
   public $id;
   public $tag_name = 'x-decorator';
-  public $view_type = 'table'; # table | table-adaptive | ul | dl | tree | template
+  public $view_type = 'table'; # table | table-adaptive | table-dl | ul | dl | tree | template
   public $template = 'markup_html';
   public $template_row = null;
   public $template_row_mapping = [];
@@ -125,6 +125,34 @@ namespace effcore {
             $result->child_insert(
               new markup('x-table', $this->attributes_select('result_attributes'), [$xhead, $xbody])
             );
+            break;
+
+        # ─────────────────────────────────────────────────────────────────────
+        # table-dl
+        # ─────────────────────────────────────────────────────────────────────
+          case 'table-dl':
+            $titles = [];
+            foreach (reset($this->data) as $c_name => $c_info)
+              if ($c_name != 'attributes')
+                $titles[$c_name] = $c_info['title'];
+            foreach ($this->data as $c_row_id => $c_row) {
+              if (true)                                                       $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
+              if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
+              if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
+              $c_table = new markup('x-table', $c_row_attributes);
+              foreach ($c_row as $c_name => $c_info) {
+                if (true)                                                      $c_cell_attributes = static::attributes_shift($c_info);
+                if ($this->visibility_cellid == 'visible'                    ) $c_cell_attributes['data-cellid'] = $c_name;
+                if ($this->visibility_cellid == 'not_int' && !is_int($c_name)) $c_cell_attributes['data-cellid'] = $c_name;
+                $c_table->child_insert(new markup('x-row', $c_cell_attributes, [
+                  'title' => new markup('x-cell', ['data-role' => 'title'], $c_info['title'] ?? $titles[$c_name]),
+                  'value' => new markup('x-cell', ['data-role' => 'value'], $c_info['value']                    )
+                ]), $c_name);
+              }
+              $result->child_insert(
+                $c_table, $c_row_id
+              );
+            }
             break;
 
         # ─────────────────────────────────────────────────────────────────────
