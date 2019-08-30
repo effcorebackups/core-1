@@ -19,6 +19,7 @@ namespace effcore\modules\storage {
         page::get_current()->id == 'instance_insert' ||
         page::get_current()->id == 'instance_update' ||
         page::get_current()->id == 'instance_delete') {
+      $breadcrumbs->is_remove_last_link = false;
       $groups = entity::groups_managing_get();
       $entity = entity::get($entity_name);
       $breadcrumbs->link_insert('entity_group', $groups[$managing_group_id],                                                              '/manage/data/'.$managing_group_id                    );
