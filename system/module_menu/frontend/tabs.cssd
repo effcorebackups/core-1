@@ -26,5 +26,7 @@
     padding: 10px 0;
     border-left: 1px solid %%_color_main}
   x-tabs x-sub-items ul {margin: 0; padding-left: 14px; list-style: none}
+  x-tabs x-sub-items ul ul {padding-left: 0}
+  x-tabs x-sub-items ul ul li::before {content: '— '}
   x-tabs x-sub-items a[aria-selected      ='true'],
   x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color_link_active}
