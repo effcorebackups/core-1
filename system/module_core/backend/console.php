@@ -84,14 +84,14 @@ namespace effcore {
 
   static function markup_get_block_information() {
     $user = user::get_current();
-    $decorator = new decorator('dl');
+    $decorator = new decorator('table-dl');
     $decorator->id = 'page_information';
     $decorator->data = [[
       'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
       'memory'   => ['title' => 'Memory for php (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
       'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]]];
-    return new block('Current page information', ['data-id' => 'info'], [
+    return new block('Current page information', ['data-id' => 'info', 'data-title-styled' => 'false'], [
       $decorator
     ]);
   }
@@ -141,7 +141,7 @@ namespace effcore {
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
-    return new block('Execute plan', ['data-title-styled' => 'false', 'data-id' => 'logs'], [$decorator,
+    return new block('Execute plan', ['data-id' => 'logs', 'data-title-styled' => 'false'], [$decorator,
       new markup('x-total', [], [new markup('x-label', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-shash', [], [new markup('x-label', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-dhash', [], [new markup('x-label', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])

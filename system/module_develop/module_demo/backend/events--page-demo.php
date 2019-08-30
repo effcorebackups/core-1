@@ -242,7 +242,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Decorators dynamic', ['data-title-styled' => 'false', 'data-id' => 'demo_decorators_dynamic'], [
+    return new block('Decorators dynamic', ['data-id' => 'demo_decorators_dynamic', 'data-title-styled' => 'false'], [
       $decorator_table_title,
       $decorator_table,
       $decorator_table_adaptive_title,
