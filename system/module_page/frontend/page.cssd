@@ -111,6 +111,9 @@
   x-table x-body [data-cellid='actions'] {text-align: right}
   x-table x-body [data-cellid='actions'] x-value:empty::after {content: ''}
 
+  x-table[data-view-type='table-dl'] x-cell[data-role='title'] {background-color: %%_color_table_row_odd; border-right: 5px solid %%_color_main}
+  x-table[data-view-type='table-dl'] x-cell[data-role='value'] {background-color: %%_color_table_row_even}
+
   x-table[data-compact='true'] {font-size: .9em}
   x-table[data-compact='true'] x-head x-cell {padding-top: 12px; padding-bottom: 12px}
   x-table[data-compact='true']        x-cell {padding: 3px 7px}
@@ -135,6 +138,11 @@
 
     x-table x-body [data-cellid='checkbox'] {width: auto; padding-right: 15px}
     x-table x-body [data-cellid='actions' ] {text-align: left}
+
+    x-table[data-view-type='table-dl'] {border-top: 5px solid %%_color_main}
+    x-table[data-view-type='table-dl'] x-cell[data-role='title'] {border-right: none}
+    x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell {background-color: %%_color_table_row_odd}
+    x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell {background-color: %%_color_table_row_even}
 
     x-table[data-compact='true'] x-cell             {padding:    3px 15px}
     x-table[data-compact='true'] x-cell:first-child {padding-top:    14px}

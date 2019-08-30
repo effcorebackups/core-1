@@ -136,7 +136,7 @@ namespace effcore {
               if ($c_name != 'attributes')
                 $titles[$c_name] = $c_info['title'];
             foreach ($this->data as $c_row_id => $c_row) {
-              if (true)                                                       $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row);
+              if (true)                                                       $c_row_attributes = $this->attributes_select('result_attributes') + static::attributes_shift($c_row) + ['data-view-type' => 'table-dl'];
               if ($this->visibility_rowid == 'visible'                      ) $c_row_attributes['data-rowid'] = $c_row_id;
               if ($this->visibility_rowid == 'not_int' && !is_int($c_row_id)) $c_row_attributes['data-rowid'] = $c_row_id;
               $c_table = new markup('x-table', $c_row_attributes);
