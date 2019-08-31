@@ -4,7 +4,7 @@ module|module
   title: Test
   group: Develop
   description: Module for testing.
-  copyright: Copyright © 2017—2019 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
     php

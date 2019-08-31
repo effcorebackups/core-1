@@ -3,5 +3,5 @@ module|module_embed
   id_bundle: system
   title: Locales
   description: Module for localization.
-  copyright: Copyright © 2017—2019 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
   version: 0.900
