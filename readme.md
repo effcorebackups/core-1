@@ -11,7 +11,7 @@
       ○○○○   ○○○○   ○○○    ○○○    ○○○     ○○○  ○○○     ○○○   ○○     ○○○     ○○○
         ○○○○○○○     ○○○    ○○○      ○○○○○○○      ○○○○○○○     ○○       ○○○○○○○
                   ○○○○   ○○○○
-                ○○○○   ○○○○                Copyright © 2017—2019 Maxim Rysevets.
+                ○○○○   ○○○○                Copyright © 2017—2020 Maxim Rysevets.
 
 
 Server software requirements
