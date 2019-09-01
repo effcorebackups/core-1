@@ -751,55 +751,55 @@ colors
     value_hex: #ffffff
     group: gray
 # ─────────────────────────────────────────────────────────────────────
-# original group
+# system group
 # ─────────────────────────────────────────────────────────────────────
-- modern_light_blue|color
-    id: modern_light_blue
+- system_light|color
+    id: system_light
     value: #81a5eb
     value_hex: #81a5eb
-    group: original
-- modern_blue|color
-    id: modern_blue
+    group: system
+- system|color
+    id: system
     value: #216ce4
     value_hex: #216ce4
-    group: original
-- modern_dark_blue_20|color
-    id: modern_dark_blue_20
+    group: system
+- system_dark_5|color
+    id: system_dark_5
     value: #4c5266
     value_hex: #4c5266
-    group: original
-- modern_dark_blue_15|color
-    id: modern_dark_blue_15
+    group: system
+- system_dark_4|color
+    id: system_dark_4
     value: #444a5f
     value_hex: #444a5f
-    group: original
-- modern_dark_blue_10|color
-    id: modern_dark_blue_10
+    group: system
+- system_dark_3|color
+    id: system_dark_3
     value: #3b4157
     value_hex: #3b4157
-    group: original
-- modern_dark_blue_5|color
-    id: modern_dark_blue_5
+    group: system
+- system_dark_2|color
+    id: system_dark_2
     value: #313852
     value_hex: #313852
-    group: original
-- modern_dark_blue|color
-    id: modern_dark_blue
+    group: system
+- system_dark_1|color
+    id: system_dark_1
     value: #2a304a
     value_hex: #2a304a
-    group: original
+    group: system
 - state_ok|color
     id: state_ok
     value: #30c432
     value_hex: #30c432
-    group: original
+    group: system
 - state_warning|color
     id: state_warning
     value: #fd9a1e
     value_hex: #fd9a1e
-    group: original
+    group: system
 - state_error|color
     id: state_error
     value: #fc5740
     value_hex: #fc5740
-    group: original
+    group: system
