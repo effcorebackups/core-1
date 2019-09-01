@@ -22,14 +22,10 @@
   x-block[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
   x-block[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
-  x-block[data-id='logs'] x-total,
-  x-block[data-id='logs'] x-shash,
-  x-block[data-id='logs'] x-dhash {display: block; font-size: .9em; color: %%_color_text}
-  x-block[data-id='logs'] x-total x-label::after,
-  x-block[data-id='logs'] x-shash x-label::after,
-  x-block[data-id='logs'] x-dhash x-label::after {content: ': '}
-  x-block[data-id='logs'] x-shash x-value,
-  x-block[data-id='logs'] x-dhash x-value {font-family: monospace}
+  x-block[data-id='logs'] x-param {display: block; font-size: .9em; color: %%_color_text}
+  x-block[data-id='logs'] x-param x-label {width: 200px; display: inline-block}
+  x-block[data-id='logs'] x-param x-label::after {content: ': '}
+  x-block[data-id='logs'] x-param x-value {font-family: monospace}
 
   /* php dependencies */
 
