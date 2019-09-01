@@ -21,7 +21,7 @@ namespace effcore\modules\core {
 
   static function on_show_block_system_info($page) {
     $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-system.svgd', 'alt' => new text('system logotype'), 'width' => '300']));
-    $copyright = new markup('x-copyright', [], '© 2017—2020 Maxim Rysevets. All rights reserved.');
+    $copyright = new markup('x-copyright', [], 'Copyright © 2017—2020 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('files')->select('bundle/system/build'))]);
