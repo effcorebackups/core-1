@@ -207,9 +207,9 @@ namespace effcore {
       $result.=      str_pad($c_log->value,   5).                     ' | ';
       $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;}
     $result.= '  ------------------------------------------------------------'.nl;
-    $result.= nl.'  '.'Total: '.count($logs);
-    $result.= nl.'  '.'Sequence hash: '.$total_sequence_hash;
-    $result.= nl.'  '.'Data hash: '    .$total_data_hash;
+    $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
+    $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;
+    $result.= nl.'  '.str_pad('Data hash: ',     16).$total_data_hash;
     return nl.$result.nl;
   }
 
