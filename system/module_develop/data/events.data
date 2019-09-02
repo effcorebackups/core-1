@@ -12,6 +12,22 @@ events
       for: develop
       weight: +50
       handler: \effcore\modules\develop\events_module::on_start
+  on_storage_init_before
+  - pdo|event
+      for: pdo
+      handler: \effcore\modules\develop\events_storage::on_init_before
+  on_storage_init_after
+  - pdo|event
+      for: pdo
+      handler: \effcore\modules\develop\events_storage::on_init_after
+  on_query_before
+  - pdo|event
+      for: pdo
+      handler: \effcore\modules\develop\events_storage::on_query_before
+  on_query_after
+  - pdo|event
+      for: pdo
+      handler: \effcore\modules\develop\events_storage::on_query_after
   on_form_init
   - console|event
       for: console
