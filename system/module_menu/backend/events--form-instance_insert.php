@@ -62,9 +62,9 @@ namespace effcore\modules\menu {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'tree_item') {
-        $id_tree = page::get_current()->args_get('category_id');
         switch ($form->clicked_button->value_get()) {
           case 'insert':
+            $id_tree = page::get_current()->args_get('category_id');
             page::get_current()->args_set('back_insert_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
             break;
         }
