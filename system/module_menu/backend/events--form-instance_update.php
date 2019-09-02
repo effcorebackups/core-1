@@ -37,12 +37,12 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'tree_item') {
-        switch ($form->clicked_button->value_get()) {
-          case 'update':
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'tree_item') {
             page::get_current()->args_set('back_update_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$form->_instance->id_tree);
-            break;
-        }
+          }
+          break;
       }
     }
   }
