@@ -54,25 +54,27 @@ namespace effcore\modules\storage {
   static function on_validate($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'apply':
-        if (!$items['#actions']->disabled_get()) {
-          $form->_selected_instances = [];
-          foreach ($form->_selection->_instances as $c_instance) {
-            $c_instance_id = implode('+', $c_instance->values_id_get());
-            if ($items['#is_checked:'.   $c_instance_id]->checked_get()) {
-              $form->_selected_instances[$c_instance_id] = $c_instance;
-            }
-          }
-          if ($form->_selected_instances == []) {
-            message::insert('No one item was selected!', 'warning');
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'apply':
+          if (!$items['#actions']->disabled_get()) {
+            $form->_selected_instances = [];
             foreach ($form->_selection->_instances as $c_instance) {
               $c_instance_id = implode('+', $c_instance->values_id_get());
-              $items['#is_checked:'.$c_instance_id]->error_set();
+              if ($items['#is_checked:'.   $c_instance_id]->checked_get()) {
+                $form->_selected_instances[$c_instance_id] = $c_instance;
+              }
+            }
+            if ($form->_selected_instances == []) {
+              message::insert('No one item was selected!', 'warning');
+              foreach ($form->_selection->_instances as $c_instance) {
+                $c_instance_id = implode('+', $c_instance->values_id_get());
+                $items['#is_checked:'.$c_instance_id]->error_set();
+              }
             }
           }
-        }
-        break;
+          break;
+      }
     }
   }
 
@@ -80,22 +82,24 @@ namespace effcore\modules\storage {
     $managing_group_id = page::get_current()->args_get('managing_group_id');
     $entity_name       = page::get_current()->args_get('entity_name'      );
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'apply':
-        if (!empty($form->_selected_instances)) {
-          foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
-            if ($items['#actions']->value_get() == 'delete') {
-              if (empty($c_instance->is_embed) && $c_instance->delete())
-                   message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $c_instance_id])         );
-              else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $c_instance_id]), 'error');
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'apply':
+          if (!empty($form->_selected_instances)) {
+            foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
+              if ($items['#actions']->value_get() == 'delete') {
+                if (empty($c_instance->is_embed) && $c_instance->delete())
+                     message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $c_instance_id])         );
+                else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $c_instance_id]), 'error');
+              }
             }
           }
-        }
-        static::on_init(null, $form, $items);
-        break;
-      case 'insert':
-        url::go('/manage/data/'.$managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
-        break;
+          static::on_init(null, $form, $items);
+          break;
+        case 'insert':
+          url::go('/manage/data/'.$managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
+          break;
+      }
     }
   }
 
