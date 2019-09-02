@@ -42,10 +42,9 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'tree_item') {
-        $id_tree = $form->_instance->id_tree;
-        switch ($form->clicked_button->value_get()) {
-          case 'delete':
+      switch ($form->clicked_button->value_get()) {
+        case 'delete':
+          if ($entity->name == 'tree_item' && !empty($form->_instance)) {
             if (!empty($form->_related)) {
               $in_values = [];
               foreach ($form->_related as $c_id) $in_values['in_value_'.$c_id.'_!v'] = $c_id;
@@ -56,9 +55,10 @@ namespace effcore\modules\menu {
                 'in_end'   => ')']]);
               if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
               else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');}
+            $id_tree = $form->_instance->id_tree;
             page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
-            break;
-        }
+          }
+          break;
       }
     }
   }
