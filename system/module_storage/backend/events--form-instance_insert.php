@@ -59,22 +59,24 @@ namespace effcore\modules\storage {
     $back_insert_n = page::get_current()->args_get('back_insert_n');
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'insert':
-        foreach ($entity->fields as $c_name => $c_field) {
-          if (isset($c_field->managing_class) && isset($items['#'.$c_name])) {
-            if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-            if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
-            if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
-            if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+          foreach ($entity->fields as $c_name => $c_field) {
+            if (isset($c_field->managing_class) && isset($items['#'.$c_name])) {
+              if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+              if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
+              if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
+              if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+            }
           }
-        }
-          if ($form->_instance->insert())
-               message::insert(new text('Item of type "%%_name" with id = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-          else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
-        url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
-        break;
+            if ($form->_instance->insert())
+                 message::insert(new text('Item of type "%%_name" with id = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+            else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
+          url::go($back_insert_0 ?: (url::back_url_get() ?: (
+                  $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+          break;
+      }
     }
   }
 
