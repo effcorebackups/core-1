@@ -32,27 +32,31 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # field 'id'
-      if ($entity->name == 'tree') {
-        if ($items['#id']->value_get()) {
-          if (tree::select($items['#id']->value_get())) {
-            $items['#id']->error_set(new text_multiline([
-              'Field "%%_title" contains the previously used value!',
-              'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
-            ));
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+        # field 'id'
+          if ($entity->name == 'tree') {
+            if ($items['#id']->value_get()) {
+              if (tree::select($items['#id']->value_get())) {
+                $items['#id']->error_set(new text_multiline([
+                  'Field "%%_title" contains the previously used value!',
+                  'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
+                ));
+              }
+            }
           }
-        }
-      }
-    # field 'id'
-      if ($entity->name == 'tree_item') {
-        if ($items['#id']->value_get()) {
-          if (tree_item::select($items['#id']->value_get(), null)) {
-            $items['#id']->error_set(new text_multiline([
-              'Field "%%_title" contains the previously used value!',
-              'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
-            ));
+        # field 'id'
+          if ($entity->name == 'tree_item') {
+            if ($items['#id']->value_get()) {
+              if (tree_item::select($items['#id']->value_get(), null)) {
+                $items['#id']->error_set(new text_multiline([
+                  'Field "%%_title" contains the previously used value!',
+                  'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
+                ));
+              }
+            }
           }
-        }
+          break;
       }
     }
   }
@@ -61,13 +65,13 @@ namespace effcore\modules\menu {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'tree_item') {
-        switch ($form->clicked_button->value_get()) {
-          case 'insert':
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+          if ($entity->name == 'tree_item') {
             $id_tree = page::get_current()->args_get('category_id');
             page::get_current()->args_set('back_insert_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
-            break;
-        }
+          }
+          break;
       }
     }
   }
