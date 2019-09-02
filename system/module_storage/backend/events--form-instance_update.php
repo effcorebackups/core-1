@@ -106,25 +106,27 @@ namespace effcore\modules\storage {
     $back_return_n = page::get_current()->args_get('back_return_n');
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'update':
-        if (!empty($form->_instance)) {
-        # transfer new values to instance
-          foreach ($entity->fields as $c_name => $c_field) {
-            if (isset($c_field->managing_class) && isset($items['#'.$c_name])) {
-              if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-              if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
-              if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
-              if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if (!empty($form->_instance)) {
+          # transfer new values to instance
+            foreach ($entity->fields as $c_name => $c_field) {
+              if (isset($c_field->managing_class) && isset($items['#'.$c_name])) {
+                if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+                if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
+                if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
+                if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+              }
             }
-          }
-        # update values
-          if ($form->_instance->update())
-               message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-          else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
-        url::go($back_update_0 ?: (url::back_url_get() ?: (
-                $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
-        break;
+          # update values
+            if ($form->_instance->update())
+                 message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+            else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
+          url::go($back_update_0 ?: (url::back_url_get() ?: (
+                  $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+          break;
+      }
     }
   }
 
