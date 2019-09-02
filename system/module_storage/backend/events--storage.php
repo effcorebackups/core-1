@@ -6,8 +6,10 @@
 
 namespace effcore\modules\storage {
           use const \effcore\br;
+          use const \effcore\dir_root;
           use \effcore\console;
           use \effcore\core;
+          use \effcore\field_file;
           use \effcore\timer;
           abstract class events_storage {
 
@@ -48,6 +50,20 @@ namespace effcore\modules\storage {
       [ 'query' => $query_flat_string_beautiful,
          'args' => $query_args_beautiful ]
     );
+  }
+
+  static function on_instance_delete_before($event, $instance) {
+    $entity = $instance->entity_get();
+    foreach ($entity->fields as $c_name => $c_field) {
+      if (!empty($c_field->managing_class)) {
+        $c_reflection = new \ReflectionClass($c_field->managing_class);
+        if ($c_reflection->newInstanceWithoutConstructor() instanceof field_file) {
+          if (!empty($instance->{$c_name})) {
+            @unlink(dir_root.$instance->{$c_name});
+          }
+        }
+      }
+    }
   }
 
 }}

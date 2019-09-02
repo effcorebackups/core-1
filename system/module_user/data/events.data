@@ -77,7 +77,3 @@ events
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_page_user_edit::on_build_before
-  on_instance_delete_before
-  - user|event
-      for: user
-      handler: \effcore\modules\user\events_storage::on_instance_delete_before

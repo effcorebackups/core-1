@@ -68,3 +68,6 @@ events
       for: main
       weight: -50
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
+  on_instance_delete_before
+  - all|event
+      handler: \effcore\modules\storage\events_storage::on_instance_delete_before
