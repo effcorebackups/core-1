@@ -43,15 +43,17 @@ namespace effcore\modules\storage {
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $instance_id   = page::get_current()->args_get('instance_id'  );
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'delete':
-        if (!empty($form->_instance) &&
-                   $form->_instance->delete())
-             message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-        else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
-        url::go($back_delete_0 ?: (url::back_url_get() ?: (
-                $back_delete_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
-        break;
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'delete':
+          if (!empty($form->_instance) &&
+                     $form->_instance->delete())
+               message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
+          else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
+          url::go($back_delete_0 ?: (url::back_url_get() ?: (
+                  $back_delete_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+          break;
+      }
     }
   }
 
