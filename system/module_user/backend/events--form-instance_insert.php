@@ -38,9 +38,9 @@ namespace effcore\modules\user {
   static function on_validate($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'insert':
-        if ($entity) {
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
         # field 'user' + field 'role'
           if ($entity->name == 'relation_role_ws_user') {
             if (!$form->has_error()) {
@@ -77,23 +77,25 @@ namespace effcore\modules\user {
               }
             }
           }
-        }
-        break;
+          break;
+      }
     }
   }
 
   static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
-    switch ($form->clicked_button->value_get()) {
-      case 'insert':
-      # group 'access'
-        if (!empty($entity->ws_access) && !empty($form->_instance)) {
-          $roles = $items['fields/group_access']->roles_get();
-          if ($roles) $form->_instance->access = (object)['roles' => $roles];
-          else        $form->_instance->access = null;
-        }
-        break;
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+        # group 'access'
+          if (!empty($entity->ws_access) && !empty($form->_instance)) {
+            $roles = $items['fields/group_access']->roles_get();
+            if ($roles) $form->_instance->access = (object)['roles' => $roles];
+            else        $form->_instance->access = null;
+          }
+          break;
+      }
     }
   }
 
