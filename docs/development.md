@@ -42,7 +42,7 @@ SQL Storage characteristics
 - supported transactions: begin, roll_back, commit;
 - supported collations: nocase, binary;
 - supported constraints: primary, unique, foreign;
-- supported indexes: 'unique index', 'index';
+- supported indexes: "unique index", "index";
 - supported checks;
 - supported table prefixes (global);
 - supported connections to remote storages via manual initialization process;
@@ -50,8 +50,8 @@ SQL Storage characteristics
 - storage will initialize only if required.
 
 Foreign key constraint support:
-- on update: 'cascade' (not tested feature: 'restrict'|'no action');
-- on delete: 'cascade' (not tested feature: 'restrict'|'no action').
+- on update: "cascade" (not tested feature: "restrict"|"no action");
+- on delete: "cascade" (not tested feature: "restrict"|"no action").
 
 Supported cross-platform field types:
 - autoincrement;
@@ -64,23 +64,23 @@ Supported cross-platform field types:
 Other types allowed but not tested.
 We recommend to use only tested types for cross-platform compatibility reasons.
 List of the tested types is sufficient for most tasks.
-The 'date' type has a range of values from '0000-01-01' to '9999-12-31'.
-The type 'timestamp' is not supported because it depends on server
+The "date" type has a range of values from "0000-01-01" to "9999-12-31".
+The type "timestamp" is not supported because it depends on server
 timezone offset and it's range of values for 32-bit platforms
-is very limited - from '1970-01-01' to '2038-01-19'.
-Use type 'integer' instead.
+is very limited - from "1970-01-01" to "2038-01-19".
+Use type "integer" instead.
 
 
 NoSQL Storage characteristics
 =====================================================================
 
-- the fastest access after 'storages in the memory' (no data compression,
+- the fastest access after "storages in the memory" (no data compression,
   all data stored as PHP code, after OPCache enabled you can increase performance
   over 2-3x; after organize disk in the memory you can get the best performance
   from possible and can increase performance over 3-5x);
 - tree structure and no restrictions - each item can have own unique structure;
-- data parts definitions in format 'property: value' on each own line (it's a convenient
-  solution for preview differences in data in tools like 'git' and 'diff');
+- data parts definitions in format "property: value" on each own line (it's a convenient
+  solution for preview differences in data in tools like "git" and "diff");
 - each sub storage will initialize only if required.
 
 Supported types:
@@ -207,7 +207,7 @@ Incompatibility with third-party applications
 =====================================================================
 
 - Kaspersky Internet Security browser plugin can insert to page
-  some CSS with strings like 'appearance: checkbox' and etc.
+  some CSS with strings like "appearance: checkbox" and etc.
   This string can break your own styles of form elements like
   checkboxes, radios and other.
   We can not do anything against violating web standards from third side.
