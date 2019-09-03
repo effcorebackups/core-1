@@ -36,19 +36,6 @@ The next editors/IDE need some improvements:
 SQL Storage characteristics
 =====================================================================
 
-- supported MySQL and SQLite databases;
-- supported prepared queries anywhere (no chance for SQL-injections);
-- supported only UTF-8 anywhere;
-- supported transactions: begin, roll_back, commit;
-- supported collations: nocase, binary;
-- supported constraints: primary, unique, foreign;
-- supported indexes: "unique index", "index";
-- supported checks;
-- supported table prefixes (global);
-- supported connections to remote storages via manual initialization process;
-- distributed queries to remote storages not supported;
-- storage will initialize only if required.
-
 Foreign key constraint support:
 - on update: "cascade" (not tested feature: "restrict"|"no action");
 - on delete: "cascade" (not tested feature: "restrict"|"no action").
