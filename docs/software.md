@@ -78,7 +78,7 @@ PHP extension requires
 SQLite requires
 ---------------------------------------------------------------------
 SQLite support foreign keys when:
-- it is not older than v3.6.19 and
+- it's not older than v3.6.19 and
 - it was compiled without SQLITE_OMIT_FOREIGN_KEY
   and SQLITE_OMIT_TRIGGER definitions
 
