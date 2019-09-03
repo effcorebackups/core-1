@@ -308,7 +308,7 @@ namespace effcore\modules\demo {
     $diagram_linear->slice_add('Parameter 3', 10, '0.01 sec.');
     $diagram_radial = new diagram('Title', 'radial');
     $diagram_radial->slice_add('Parameter 1', 40, '0.04 sec.', '#216ce4');
-    $diagram_radial->slice_add('Parameter 2', 30, '0.03 sec.', '#30c432');
+    $diagram_radial->slice_add('Parameter 2', 30, '0.03 sec.', '#48be38');
     $diagram_radial->slice_add('Parameter 3', 20, '0.02 sec.', '#fc5740');
     $diagram_radial->slice_add('Parameter 4', 10, '0.01 sec.', '#fd9a1e');
     return new node([], [

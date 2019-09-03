@@ -790,8 +790,8 @@ colors
     group: system
 - state_ok|color
     id: state_ok
-    value: #30c432
-    value_hex: #30c432
+    value: #48be38
+    value_hex: #48be38
     group: system
 - state_warning|color
     id: state_warning
