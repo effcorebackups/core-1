@@ -43,6 +43,7 @@ SQL Storage characteristics
 - supported collations: nocase, binary;
 - supported constraints: primary, unique, foreign;
 - supported indexes: 'unique index', 'index';
+- supported checks;
 - supported table prefixes (global);
 - supported connections to remote storages via manual initialization process;
 - distributed queries to remote storages not supported;
