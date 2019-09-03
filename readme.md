@@ -72,7 +72,7 @@ Cross-platform field types are supported:
 
 Other types allowed but not tested.
 List of the tested types is sufficient for most tasks.
-We recommend to use only tested types for cross-platform compatibility reasons.
+Only tested types are recommended for cross-platform compatibility reasons.
 Distributed queries to remote storages not supported.
 
 The main focus is on ANSI SQL.
@@ -80,7 +80,7 @@ PostgreSQL was excluded during development as Web RDBMS with
 least compatible of ANSI standards.
 
 It was decided not to use field of type timestamp.
-Instead, we recommended to use a field of type datetime.
+Instead, it's recommended to use field of type datetime.
 This field has a wide range of acceptable values (from "0000-01-01"
 to "9999-12-31"), and also does not depend on the time zone.
 When adding data to the server, dates should be converted to time zone UTC±0:00.
