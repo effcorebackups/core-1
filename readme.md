@@ -79,7 +79,21 @@ file of the following form:
       cache::$data['demo']->array_1['item_N'] = 'value N';
     }
 
-…
+This architecture allows you to access NoSQL data as quickly as possible.
+When using the PHP module OPcache, the access speed can increase
+from 2 to 3 times. In fact, to access NoSQL data, it's enough to
+load a PHP file of a certain entity and data will be available
+immediately after loading.
+
+Thus, the core of the system is the aforementioned set of class-patterns
+and NoSQL storage, which cache is represented as PHP code, containing
+instances of these classes in tree form with any level of nesting
+and unlimited by structure.
+
+Changing the structure of NoSQL data is possible only from the side of PHP code.
+For example, the main menu is located in NoSQL storage and the user cannot
+disrupt its work. The anonymous user menu is stored in SQL storage and
+the user can edit this menu through the system interface.
 
 
 Core: SQL
