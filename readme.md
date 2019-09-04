@@ -31,6 +31,26 @@ Security
 Core: NoSQL
 ---------------------------------------------------------------------
 
+Any instance of the class and other NoSQL data can be described
+in text format in a file of type * .data, like YAML, but has a more
+stringent rules such as "each string can contain the only one
+phrase in the form "key: value".
+
+It's comfortable for controlling changes in the code - any change
+of one key or value will be highlighted in "git diff" with just one line.
+Also, this format significantly speeds up parsing the files.
+
+Below is given an example of *.data file.
+
+    demo
+      object_1|class_name
+        property_1: value 1
+        property_2: value 2 …
+        property_N: value N
+      array_1
+      - item_1: value 1
+      - item_2: value 2 …
+      - item_N: value N
 
 …
 
