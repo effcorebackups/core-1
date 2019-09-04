@@ -31,6 +31,10 @@ Security
 Core: NoSQL
 ---------------------------------------------------------------------
 
+All data is stored as PHP code.
+Perhaps the fastest storage after "storage in RAM".
+After organizing the disk in RAM, you can increase performance by 3-5 times.
+
 Any instance of the class and other NoSQL data can be described
 in text format in a file of type * .data, like YAML, but has a more
 stringent rules such as "each string can contain the only one
