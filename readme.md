@@ -114,6 +114,7 @@ Core: SQL
 ---------------------------------------------------------------------
 
 MySQL and SQLite can be used as SQL storages.
+The required versions can be found in the readme/software.mark file.
 Storage connection and data retrieval will initialize only if required.
 Denying access to SQL storage will not raise an error, but will only
 make inaccessible part of the possibilities (for example, sessions
@@ -180,8 +181,8 @@ Event model
 Web server
 ---------------------------------------------------------------------
 
-
-…
+As a web server, Apache, NGINX, IIS are supported.
+The required versions can be found in the readme/software.mark file.
 
 
 Caching
