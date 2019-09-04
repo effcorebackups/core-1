@@ -33,15 +33,6 @@ The next editors/IDE need some improvements:
 - TextMate          : Install plugin "EditorConfig".
 
 
-NoSQL Storage characteristics
-=====================================================================
-
-- tree structure and no restrictions - each item can have own unique structure;
-- data parts definitions in format "property: value" on each own line (it's a convenient
-  solution for preview differences in data in tools like "git" and "diff");
-- each sub storage will initialize only if required.
-
-
 How to activate Neor Profile SQL
 =====================================================================
 
