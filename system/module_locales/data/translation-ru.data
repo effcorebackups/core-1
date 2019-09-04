@@ -374,7 +374,7 @@ translations
     - Press to select module %%_title to be enabled or disabled: Нажмите, чтобы выбрать модуль %%_title для включения или отключения
     - Press to show hidden description: Нажмите, чтобы показать скрытое описание
     - Press to show or hide available colors: Нажмите, чтобы показать или скрыть доступные цвета
-    - Press to show or hide nested content: Нажмите, чтобы показать или скрыть вложенный контент
+    - Press to show or hide nested content: Нажмите, чтобы показать или скрыть вложенное содержимое
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - Query error!: Ошибка запроса!
