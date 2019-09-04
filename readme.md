@@ -3,6 +3,14 @@
 About the project
 =====================================================================
 
+Type            : content management system
+Author          : Maxim Rysevets
+Developer       : Maxim Rysevets
+Initial release : 2020-01-01
+Written in      : PHP
+Operating system: macOS, UNIX, Linux, Microsoft Windows
+License         : proprietary software
+Website         : http://effcore.com
 
 …
 
