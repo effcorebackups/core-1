@@ -65,6 +65,20 @@ entity, as shown in the example below:
 - dynamic/cache/data--file_types.php
 and so on.
 
+The example described above will be converted to a PHP
+file of the following form:
+
+    namespace effcore {
+      cache::$data['demo'] = new \stdClass;
+      cache::$data['demo']->object_1 = new class_name;
+      cache::$data['demo']->object_1->property_1 = 'value 1';
+      cache::$data['demo']->object_1->property_2 = 'value 2';
+      cache::$data['demo']->object_1->property_N = 'value N';
+      cache::$data['demo']->array_1['item_1'] = 'value 1';
+      cache::$data['demo']->array_1['item_2'] = 'value 2';
+      cache::$data['demo']->array_1['item_N'] = 'value N';
+    }
+
 …
 
 

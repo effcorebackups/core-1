@@ -152,7 +152,7 @@ OPcache) или 0,02 секунды (с выключенным OPcache), что 
 - dynamic/cache/data--file_types.php
 и так далее.
 
-Описанный выше пример будет преобразован в PHP файл следующего вида: 
+Описанный выше пример будет преобразован в PHP файл следующего вида:
 
     namespace effcore {
       cache::$data['demo'] = new \stdClass;
