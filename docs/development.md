@@ -45,15 +45,6 @@ NoSQL Storage characteristics
   solution for preview differences in data in tools like "git" and "diff");
 - each sub storage will initialize only if required.
 
-Supported types:
-- integer;
-- float;
-- boolean;
-- string;
-- array;
-- object|class_name;
-- null.
-
 
 How to activate Neor Profile SQL
 =====================================================================

@@ -95,6 +95,15 @@ For example, the main menu is located in NoSQL storage and the user cannot
 disrupt its work. The anonymous user menu is stored in SQL storage and
 the user can edit this menu through the system interface.
 
+Field types are supported:
+- integer;
+- float;
+- boolean;
+- string;
+- array;
+- object|class_name;
+- null.
+
 
 Core: SQL
 ---------------------------------------------------------------------
