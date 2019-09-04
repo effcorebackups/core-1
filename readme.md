@@ -52,6 +52,19 @@ Below is given an example of *.data file.
       - item_2: value 2 …
       - item_N: value N
 
+At the same time, both objects (instances of class-patterns) and arrays
+can have any nesting levels and contain inside any other objects or
+arrays.
+
+After parsing * .data files, the result is converted to PHP code (single
+tree of objects - instances of class-patterns), after which it's
+saved to files dynamic/cache/cache-*.php separately for each kind of
+entity, as shown in the example below:
+- dynamic/cache/data--blocks.php
+- dynamic/cache/data--breadcrumbs.php
+- dynamic/cache/data--file_types.php
+and so on.
+
 …
 
 
