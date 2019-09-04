@@ -2,6 +2,10 @@ translations
 - ru|translation
     code: ru
     data
+    - KiB: КиБ
+    - MiB: МиБ
+    - GiB: ГиБ
+    - TiB: ТиБ
     - - no -: - нет -
     - - select -: - выбрать -
     - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}

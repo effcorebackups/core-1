@@ -88,10 +88,10 @@ namespace effcore {
   }
 
   function file_size_max_get() {
-    $bytes_1 = core::is_human_bytes($this->max_file_size) ?
-               core::human_to_bytes($this->max_file_size) : $this->max_file_size;
-    $bytes_2 = core::is_human_bytes(ini_get('upload_max_filesize')) ?
-               core::human_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
+    $bytes_1 = core::is_abbreviated_bytes($this->max_file_size) ?
+               core::abbreviated_to_bytes($this->max_file_size) : $this->max_file_size;
+    $bytes_2 = core::is_abbreviated_bytes(ini_get('upload_max_filesize')) ?
+               core::abbreviated_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
     return min($bytes_1, $bytes_2);
   }
 
@@ -111,12 +111,12 @@ namespace effcore {
     }
   }
 
-  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text('Maximum file size: %%_value.',                                       ['value'      => locale::format_human_bytes($this->file_size_max_get())]));}
-  function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));         }
-  function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));         }
-  function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));         }
-  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));         }
-  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));         }
+  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text('Maximum file size: %%_value.',                                       ['value'      => locale::format_bytes($this->file_size_max_get())]));}
+  function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));   }
+  function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));   }
+  function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));   }
+  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));   }
+  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));   }
 
   ############
   ### pool ###
@@ -386,16 +386,16 @@ namespace effcore {
         return;
       }
       switch ($c_new_value->error) {
-        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])]); return;
-        case UPLOAD_ERR_FORM_SIZE : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]);             return;
-        case UPLOAD_ERR_PARTIAL   : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]);                                                  return;
-        case UPLOAD_ERR_NO_TMP_DIR: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]);                                                                  return;
-        case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]);                                                                   return;
-        case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]);                                                        return;
+        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;
+        case UPLOAD_ERR_FORM_SIZE : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]);       return;
+        case UPLOAD_ERR_PARTIAL   : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the uploaded file was only partially uploaded')]);                                            return;
+        case UPLOAD_ERR_NO_TMP_DIR: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]);                                                            return;
+        case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]);                                                             return;
+        case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a php extension stopped the file upload')]);                                                  return;
       }
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error                                                                                               ]); return;}
-      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')                                                                                 ]); return;}
-      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_human_bytes($max_size)])]); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error                                                                                         ]); return;}
+      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')                                                                           ]); return;}
+      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;}
     }
     return true;
   }

@@ -691,28 +691,28 @@ namespace effcore {
     return md5(serialize($data));
   }
 
-  ##############################
-  ### bytes|human conversion ###
-  ##############################
+  ########################
+  ### bytes conversion ###
+  ########################
 
-  static function is_human_bytes($number) {
+  static function is_abbreviated_bytes($number) {
     $character = substr($number, -1);
     return in_array($character, ['B', 'K', 'M', 'G', 'T']);
   }
 
-  static function bytes_to_human($bytes) {
-    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).'T';
-    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).'G';
-    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).'M';
-    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).'K';
-    else return $bytes.'B';
+  static function abbreviated_to_bytes($abbreviated) {
+    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
+    $character = strtoupper(substr($abbreviated, -1));
+    $value = (int)substr($abbreviated, 0, -1);
+    return $value * 1024 ** $powers[$character];
   }
 
-  static function human_to_bytes($human) {
-    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
-    $character = strtoupper(substr($human, -1));
-    $value = (int)substr($human, 0, -1);
-    return $value * 1024 ** $powers[$character];
+  static function bytes_to_abbreviated($bytes, $is_iec = false) {
+    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).($is_iec ? 'TiB' : 'T');
+    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).($is_iec ? 'GiB' : 'G');
+    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).($is_iec ? 'MiB' : 'M');
+    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).($is_iec ? 'KiB' : 'K');
+    else return $bytes.'B';
   }
 
   ############################

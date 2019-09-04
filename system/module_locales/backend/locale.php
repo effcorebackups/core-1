@@ -30,8 +30,13 @@ namespace effcore {
     return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
 
-  static function format_human_bytes($bytes, $decimals = 2) {
-    return core::bytes_to_human($bytes, $decimals, module::settings_get('locales')->decimal_point);
+  static function format_bytes($bytes) {
+    $translations = [
+      'KiB' => translation::get('KiB'),
+      'MiB' => translation::get('MiB'),
+      'GiB' => translation::get('GiB'),
+      'TiB' => translation::get('TiB')];
+    return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
   }
 
 }}
