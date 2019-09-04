@@ -32,10 +32,10 @@ namespace effcore {
 
   static function format_bytes($bytes) {
     $translations = [
-      'KiB' => translation::get('KiB'),
-      'MiB' => translation::get('MiB'),
-      'GiB' => translation::get('GiB'),
-      'TiB' => translation::get('TiB')];
+      'KiB' => ' '.translation::get('KiB'),
+      'MiB' => ' '.translation::get('MiB'),
+      'GiB' => ' '.translation::get('GiB'),
+      'TiB' => ' '.translation::get('TiB')];
     return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
   }
 
