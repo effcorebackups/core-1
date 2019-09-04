@@ -176,7 +176,7 @@ Incompatibility with third-party applications
   Just ignore Kaspersky Internet Security.
 
 
-CORE SCHEME
+Core scheme
 =====================================================================
 
 
