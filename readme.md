@@ -15,6 +15,13 @@ Website         : http://effcore.com
 …
 
 
+Architecture
+---------------------------------------------------------------------
+
+
+…
+
+
 Security
 ---------------------------------------------------------------------
 
@@ -195,4 +202,6 @@ Anyone can create a website, portal or service on the basis of it,
 both personally and for any customer.
 However, you cannot distribute system files in their original or
 modified form or in conjunction with anything else.
+This restriction does not apply to third-party modules
+whose authors themselves determine the licensing policy.
 
