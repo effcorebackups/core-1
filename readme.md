@@ -50,8 +50,26 @@ program format.
 Security
 ---------------------------------------------------------------------
 
+Also an important factor in the system is security.
+As solutions to increase the level of security were used:
+- the ability to work without JS;
+- key-signed user sessions;
+- key-signed form validation identifiers;
+- the use of prepared SQL queries;
+- filtering of user input in form fields;
+- filtering of URL argument;
+- single entry point of any HTTP request,
+  as a result - no negative effects when the web server
+  is configured incorrectly (.htaccess, web.config);
+- the ability to create a new file type with full access control;
+- the ability to get a page assembly hash in the system console;
+- CAPTCHA base module.
 
-…
+Determinism in the system work - another important factor.
+With the same input parameters, the same result should be reproduced
+regardless of platform and as result - complete rejection of
+functions which work depends on the environment (for example "setlocale"
+and others).
 
 
 Core: NoSQL
