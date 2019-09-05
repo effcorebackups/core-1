@@ -140,9 +140,9 @@ instances of these classes in tree form with any level of nesting
 and unlimited by structure.
 
 Changing the structure of NoSQL data is possible only from the side of PHP code.
-For example, the main menu is located in NoSQL storage and the user cannot
+For example, the main menu is located in NoSQL storage and nobody cannot
 disrupt its work. The anonymous user menu is stored in SQL storage and
-the user can edit this menu through the system interface.
+the administrator can edit this menu through the system interface.
 
 Field types are supported:
 - integer;
