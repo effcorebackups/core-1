@@ -18,8 +18,33 @@ Website         : http://effcore.com
 Architecture
 ---------------------------------------------------------------------
 
+The architecture is made according to the classical MVC scheme.
+It's a hybrid system of NoSQL and SQL storages and a set of
+classes/class-patterns.
 
-…
+The system code is adapted for reuse.
+The system consists of many small classes/class-patterns,
+containing on average from 3 to 15 methods,
+consisting on average of 3-7 lines of code.
+
+Thanks to the "matrix" style of code layout, its perception is
+greatly facilitated (reminds Python syntax in some places), and proper
+location of files in the system allows you to determine their purpose
+without resorting to any documentation (in each module everything
+necessary for frontend development is stored in the "module_*/frontend"
+directory, and for backend development - in the "module_*/backend" directory).
+Also, everything that seems complicated was rejected or remade.
+Each function iteratively improved from 3 to 10 times.
+Functional testing was performed on the whole set of
+combinatorial permutations.
+
+Has a built-in parser and class loader PSR-0, thanks to which, to add
+a new library (a set of classes), it's enough to place the files
+containing them on a web server and reset the cache, after which they
+become available from anywhere in the system.
+The system includes a page with a UML diagram of all classes and a link
+to download a JSON file with a description of the classes in StarUML
+program format.
 
 
 Security
