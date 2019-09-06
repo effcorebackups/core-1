@@ -21,6 +21,11 @@ Can be used as a tool for building sites by simple users, and also
 as a tool for the development of sites, portals and services by
 professional web developers.
 
+The name of the system is an acronym and comes from the phrase "effective core".
+The system was made from scratch. Its main principle is the complete absence of
+third-party code (to exclude legal claims and also any other restrictions
+which related with borrowing), and third-party ideas (to search for new
+innovative solutions).
 …
 
 
