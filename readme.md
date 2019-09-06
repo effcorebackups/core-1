@@ -26,7 +26,38 @@ The system was made from scratch. Its main principle is the complete absence of
 third-party code (to exclude legal claims and also any other restrictions
 which related with borrowing), and third-party ideas (to search for new
 innovative solutions).
-…
+
+The impetus for the creation of the system was a massive degradation in the
+development of Open Source projects. If you consider this situation,
+you can see that the developers of such projects are people with different
+skill levels and located in different parts of the planet.
+Incoordination in their actions and different views on solutions
+in the project is only part of the problem.
+Second significant flaw - this is an extensive way to develop code in such
+projects as opposed to intensive, i.e. instead of creating own code,
+they usually take another library which it's written not clear by whom
+and it's not clear by where and try to combine it with a group of the
+same libraries, not coordinated among themselves and having, usually,
+redundant and not fully tested functionality.
+As a result, we get a set of obscure and inconsistent libraries with poorly
+tested redundant functionality which is constantly growing in volume.
+Unfortunately, many developers are bogged down in such code and
+are trying to deny the obvious.
+
+Content management in the system is focused on the inline insertion
+of any available block (menu, text, forms, breadcrumbs and others)
+directly to the layout of the edited page. When creating a new page,
+the user is given a choice of layout and each new page can have its
+own unique design and layout of blocks.
+
+The main emphasis in the system is on to get maximum performance.
+As evaluation criteria, a simple and understandable condition was applied:
+a system which installed on a hosting with the cheapest tariff plan,
+but compliant with the minimum installation requirements (from ~3$ per month),
+should generate a homepage in 0.002 seconds (when OPcache is enabled),
+or 0.02 seconds (when OPcache is disabled), which in the first case
+allows serving up to ~500 clients per second, and in the second
+to ~50 (excluding parallel loading of connected files).
 
 
 Architecture
