@@ -219,7 +219,11 @@ CSS, JS, SASS, LESS
 Event model
 ---------------------------------------------------------------------
 
-…
+The event model is built fairly transparent and predictable.
+It's enough to register a new event in the "events.data" of your module,
+specify its weight and handler in PHP code, flush the cache and
+the event will begin to be processed. On the "NoSQL Data → Events" page,
+you can view all events registered in the system.
 
 
 Web server
