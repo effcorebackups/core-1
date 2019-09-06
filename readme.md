@@ -12,6 +12,15 @@ Operating system: macOS, UNIX, Linux, Microsoft Windows
 License         : proprietary software
 Website         : http://effcore.com
 
+effcore is a next-generation content management system (CMS)
+developed by between 2017 and 2020.
+It incorporates all the new Web 2.0/3.0 technologies including
+HTML5, CSS3, JS ES6, IP v6, SVG, SMIL, UTF8, UTC.
+
+Can be used as a tool for building sites by simple users, and also
+as a tool for the development of sites, portals and services by
+professional web developers.
+
 …
 
 
@@ -206,7 +215,6 @@ to "9999-12-31"), and also does not depend on the time zone.
 When adding data to the server, dates should be converted to time zone UTC±0:00.
 Instead of the original timestamp type, it's recommended
 to use the integer type.
-
 
 
 CSS, JS, SASS, LESS
