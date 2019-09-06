@@ -232,8 +232,9 @@ The required versions can be found in the readme/software.mark file.
 Caching
 ---------------------------------------------------------------------
 
-
-…
+Due to its architecture, mid-level projects do not require caching.
+For large projects, caching is usually done by third-party web server tools,
+what is originally supposed by the author.
 
 
 Licensing
