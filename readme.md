@@ -60,7 +60,7 @@ As solutions to increase the level of security were used:
 - filtering of URL argument;
 - single entry point of any HTTP request,
   as a result - no negative effects when the web server
-  is configured incorrectly (.htaccess, web.config);
+  is configured incorrectly (".htaccess", "web.config");
 - the ability to create a new file type with full access control;
 - the ability to get a page assembly hash in the system console;
 - CAPTCHA base module.
@@ -81,7 +81,7 @@ After organizing the disk in RAM, you can increase performance by 3-5 times.
 Each storage subdirectory will be initialized only if required.
 
 Any instance of the class and other NoSQL data can be described
-in text format in a file of type * .data, like YAML, but has a more
+in text format in a file of type "*.data", like YAML, but has a more
 stringent rules such as "each string can contain the only one
 phrase in the form "key: value".
 
@@ -89,7 +89,7 @@ It's comfortable for controlling changes in the code - any change
 of one key or value will be highlighted in "git diff" with just one line.
 Also, this format significantly speeds up parsing the files.
 
-Below is given an example of *.data file.
+Below is given an example of "*.data" file.
 
     demo
       object_1|class_name
@@ -105,9 +105,9 @@ At the same time, both objects (instances of class-patterns) and arrays
 can have any nesting levels and contain inside any other objects or
 arrays.
 
-After parsing * .data files, the result is converted to PHP code (single
+After parsing "*.data" files, the result is converted to PHP code (single
 tree of objects - instances of class-patterns), after which it's
-saved to files dynamic/cache/cache-*.php separately for each kind of
+saved to files "dynamic/cache/cache-*.php" separately for each kind of
 entity, as shown in the example below:
 - dynamic/cache/data--blocks.php
 - dynamic/cache/data--breadcrumbs.php
@@ -158,7 +158,7 @@ Core: SQL
 ---------------------------------------------------------------------
 
 MySQL and SQLite can be used as SQL storages.
-The required versions can be found in the readme/software.mark file.
+The required versions can be found in the "readme/software.mark" file.
 Storage connection and data retrieval will initialize only if required.
 Denying access to SQL storage will not raise an error, but will only
 make inaccessible part of the possibilities (for example, sessions
@@ -230,7 +230,7 @@ Web server
 ---------------------------------------------------------------------
 
 As a web server, Apache, NGINX, IIS are supported.
-The required versions can be found in the readme/software.mark file.
+The required versions can be found in the "readme/software.mark" file.
 
 
 Caching
