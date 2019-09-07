@@ -3,6 +3,11 @@
 Security recommendations
 =====================================================================
 
+- The many hostings still using the official discontinued software.
+  For example: PHP before version 7 or MySQL before version 5.6.
+  This is bad practice and it's not recommended to use such hosting!
+  Read more about PHP Supported Versions: http://php.net/supported-versions.php
+  Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
 - You can get maximum protection from internal threats only if you used
   own server in isolated area with access control.
   If you host the server in a data center in a shared rack

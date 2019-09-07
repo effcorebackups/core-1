@@ -20,14 +20,6 @@ Storage systems:
 - MySQL v5.6+
 - SQLite v3.6.19+
 
-
-Note: the many hostings still using the official discontinued software.
-For example: PHP before version 7 or MySQL before version 5.6.
-This is bad practice and it's not recommended to use such hosting!
-Read more about PHP Supported Versions: http://php.net/supported-versions.php
-Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
-
-
 Apache 2.4 requires
 ---------------------------------------------------------------------
 
