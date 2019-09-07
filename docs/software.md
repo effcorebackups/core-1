@@ -1,7 +1,7 @@
 
 
 Server software support
-=====================================================================
+---------------------------------------------------------------------
 
 Operating Systems:
 - UNIX (macOS, FreeBSD) [priority]
@@ -23,13 +23,14 @@ Storage systems:
 
 Note: the many hostings still using the official discontinued software.
 For example: PHP before version 7 or MySQL before version 5.6.
-It's bad practice and we do not recommend to use such hostings.
+This is bad practice and it's not recommended to use such hosting!
 Read more about PHP Supported Versions: http://php.net/supported-versions.php
 Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
 
 
 Apache 2.4 requires
 ---------------------------------------------------------------------
+
 - enable module "php7_module"
 - enable module "rewrite_module"
 - enable module "dir_module"
@@ -39,6 +40,7 @@ If you got "500 Internal Server Error" see the Apache error log.
 
 NGINX requires
 ---------------------------------------------------------------------
+
 - enable "php-fpm.conf"
 - run "php-fpm"
 - in ".nginx" replace placeholders started with "%%_" to real values
@@ -47,6 +49,7 @@ If you got "502 Bad Gateway" check if php-fpm is running.
 
 IIS requires (for v7.5)
 ---------------------------------------------------------------------
+
 - enable option "IIS → WWW Services → Application Development Features → CGI" in "Turn Windows features on or off"
 - enable option "IIS → WWW Services → Common HTTP Features → Static Content" in "Turn Windows features on or off"
 - add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager → Handler Mappings"
@@ -77,14 +80,15 @@ PHP extension requires
 
 SQLite requires
 ---------------------------------------------------------------------
+
 SQLite support foreign keys when:
 - it's not older than v3.6.19 and
 - it was compiled without SQLITE_OMIT_FOREIGN_KEY
   and SQLITE_OMIT_TRIGGER definitions
 
 
-Client software support
-=====================================================================
+Clients software support
+---------------------------------------------------------------------
 
 - Apple Safari v10+
 - Apple Mobile Safari on iOS v8+
@@ -95,8 +99,8 @@ Client software support
 - Microsoft Edge
 
 
-Recommended software for development
-=====================================================================
+Recommended Development Software
+---------------------------------------------------------------------
 
 - macOS High Sierra or newer for using quality software and make development environment.
 - Coda (mac) for working with code|markup|styles and searching in the code.
@@ -119,8 +123,19 @@ Recommended software for development
 
 
 Improving performance
-=====================================================================
+---------------------------------------------------------------------
 
-Highly recommend to use the SSD (Solid State Drives).
-Recommend to enable the PHP OPcache.
+It's recommended to use the SSD (Solid State Drives).
+It's recommended to enable the PHP OPcache.
+
+
+Incompatibility with third-party applications
+---------------------------------------------------------------------
+
+- Kaspersky Internet Security browser plugin can insert to page
+  some CSS with strings like "appearance: checkbox" and etc.
+  This string can break your own styles of form elements like
+  checkboxes, radios and other. Developers can not do anything
+  against violating web standards from third side.
+  Just ignore Kaspersky Internet Security.
 

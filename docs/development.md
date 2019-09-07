@@ -1,7 +1,7 @@
 
 
 When you edit "*.data" files
-=====================================================================
+---------------------------------------------------------------------
 
 Files "*.data" have next features:
 - does not support empty lines;
@@ -34,7 +34,7 @@ The next editors/IDE need some improvements:
 
 
 How to activate Neor Profile SQL
-=====================================================================
+---------------------------------------------------------------------
 
 - In file "/dynamic/data/changes.php" change:
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->host = '[::1]';
@@ -46,7 +46,7 @@ How to activate Neor Profile SQL
 
 
 How to set cross-domain cookie
-=====================================================================
+---------------------------------------------------------------------
 
 - For base domain and each subdomain install a new System instance with its own table prefix.
 - For base domain and each subdomain in file "/dynamic/data/changes.php" insert:
@@ -59,28 +59,33 @@ How to set cross-domain cookie
 
 
 About forms
-=====================================================================
+---------------------------------------------------------------------
 
-1. Not recommend to use DISABLED|READONLY text fields with shared
+1. It's not recommended to use DISABLED|READONLY text fields with shared
    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
    state from field and change the field VALUE and submit the form - after
    this action the new VALUE will be set to the next field with
    shared NAME.
+
    example (default form state):
    - input[type=text,name=shared_name[],value=1,disabled|readonly]
    - input[type=text,name=shared_name[],value=2]
    - input[type=text,name=shared_name[],value=3]
+
    example (user made a fake changes):
    - input[type=text,name=shared_name[],value=fake_value]
    - input[type=text,name=shared_name[],value=2]
    - input[type=text,name=shared_name[],value=3]
+
    example (result form state after validate):
    - input[type=text,name=shared_name[],value=1,disabled|readonly]
    - input[type=text,name=shared_name[],value=fake_value]
    - input[type=text,name=shared_name[],value=2]
+
 2. If you used more than 1 element with attribute MULTIPLE and shared
    NAME (name="shared_name[]"), after submit you will get merged
    arrays of values.
+
    example (result form state before validate):
    - select[name=shared_name[],multiple]
      - option[value=1,selected]
@@ -90,6 +95,7 @@ About forms
      - option[value=1]
      - option[value=2,selected]
      - option[value=3]
+
    example (result form state after validate):
    - select[name=shared_name[],multiple]
      - option[value=1,selected]
@@ -102,7 +108,7 @@ About forms
 
 
 Platforms differences in IP conversion
-=====================================================================
+---------------------------------------------------------------------
 
 This information is actual for function core::hex_to_ip().
 
@@ -143,19 +149,8 @@ This information is actual for function core::hex_to_ip().
     | ffffffffffffffffffffffffffffffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
 
 
-Incompatibility with third-party applications
-=====================================================================
-
-- Kaspersky Internet Security browser plugin can insert to page
-  some CSS with strings like "appearance: checkbox" and etc.
-  This string can break your own styles of form elements like
-  checkboxes, radios and other.
-  We can not do anything against violating web standards from third side.
-  Just ignore Kaspersky Internet Security.
-
-
-Core scheme
-=====================================================================
+Core: scheme
+---------------------------------------------------------------------
 
 
     ┌────────────────── classes ──────────────────┐             ┌────────────── noSQL data ──────────────┐
@@ -211,7 +206,4 @@ Core scheme
     ║   cache[instance_N]->property_N = value_N   ║
     ║                                             ║
     ╚═════════════════════════════════════════════╝
-    
-    
-    ─────────────────────────────────────────────────────────────────
 
