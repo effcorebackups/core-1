@@ -20,36 +20,43 @@ Storage systems:
 - MySQL v5.6+
 - SQLite v3.6.19+
 
-Apache 2.4 requires
+Apache
 ---------------------------------------------------------------------
 
-- enable module "php7_module"
-- enable module "rewrite_module"
-- enable module "dir_module"
-- enable module "mime_module"
+To enable Apache, do the following:
+- enable module "php7_module";
+- enable module "rewrite_module";
+- enable module "dir_module";
+- enable module "mime_module".
+
 If you got "500 Internal Server Error" see the Apache error log.
 
 
-NGINX requires
+NGINX
 ---------------------------------------------------------------------
 
-- enable "php-fpm.conf"
-- run "php-fpm"
-- in ".nginx" replace placeholders started with "%%_" to real values
+To enable NGINX, do the following:
+- enable "php-fpm.conf";
+- run "php-fpm";
+- in ".nginx" replace placeholders started with "%%_" to real values.
+
 If you got "502 Bad Gateway" check if php-fpm is running.
 
 
-IIS requires (for v7.5)
+Internet Information Services (IIS)
 ---------------------------------------------------------------------
 
-- enable option "IIS → WWW Services → Application Development Features → CGI" in "Turn Windows features on or off"
-- enable option "IIS → WWW Services → Common HTTP Features → Static Content" in "Turn Windows features on or off"
-- add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager → Handler Mappings"
-- install the module "URL Rewrite" v7.2.2 (7.1.761.0) or newer from IIS official site
-If you got "500 Internal Server Error" check "web.config" in www root (section "rewrite").
+To enable IIS (for v7.5), do the following:
+- enable option "IIS → WWW Services → Application Development Features → CGI" in "Turn Windows features on or off";
+- enable option "IIS → WWW Services → Common HTTP Features → Static Content" in "Turn Windows features on or off";
+- add new "Module Mapping" with parameters "Request Path = *.php", "Module = FastCgiModule", "Executable = {PHP_ROOT}\php-cgi.exe" in "IIS Manager → Handler Mappings";
+- install the module "URL Rewrite" v7.2.2 (7.1.761.0) or newer from IIS official site.
+
+If you got "500 Internal Server Error" check "web.config"
+in www root (section "rewrite").
 
 
-PHP extension requires
+PHP
 ---------------------------------------------------------------------
 
     | name         | is enabled | description             |
@@ -70,30 +77,33 @@ PHP extension requires
     | json         | always     | for development         |
 
 
-SQLite requires
+SQLite
 ---------------------------------------------------------------------
 
 SQLite support foreign keys when:
 - it's not older than v3.6.19 and
 - it was compiled without SQLITE_OMIT_FOREIGN_KEY
-  and SQLITE_OMIT_TRIGGER definitions
+  and SQLITE_OMIT_TRIGGER definitions.
 
 
 Clients software support
 ---------------------------------------------------------------------
 
-- Apple Safari v10+
-- Apple Mobile Safari on iOS v8+
-- Opera           (modern versions)
-- Mozilla Firefox (modern versions)
-- Google Chrome   (modern versions)
-- Microsoft Internet Explorer v9+
-- Microsoft Edge
+The following clients are supported:
+- Apple Safari v10+;
+- Apple Mobile Safari on iOS v8+;
+- Opera           (modern versions);
+- Mozilla Firefox (modern versions);
+- Google Chrome   (modern versions);
+- Microsoft Internet Explorer v9+;
+- Microsoft Edge.
 
 
 Recommended Development Software
 ---------------------------------------------------------------------
 
+Only high quality licensed expensive software was used for create the project.
+It's recommended to use the next software:
 - macOS High Sierra or newer for using quality software and make development environment.
 - Coda (mac) for working with code|markup|styles and searching in the code.
 - Tower (mac|win) for working with Git.
@@ -121,9 +131,10 @@ It's recommended to use the SSD (Solid State Drives).
 It's recommended to enable the PHP OPcache.
 
 
-Incompatibility with third-party applications
+Incompatibility with third-party software
 ---------------------------------------------------------------------
 
+The following software is incompatible:
 - Kaspersky Internet Security browser plugin can insert to page
   some CSS with strings like "appearance: checkbox" and etc.
   This string can break your own styles of form elements like
