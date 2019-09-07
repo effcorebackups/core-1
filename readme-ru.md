@@ -272,24 +272,24 @@ Core: схема
     └─────────────────────────────────────────────┘      │      └────────────────────────────────────────┘
                                                          │
                                                          │
-          ╔═══════ big tree (memory) ══════╗             │
-          ║                                ║             │
-          ║   data[class_instance_1] = {   ║             │
-          ║     property_1: value_1        ║             │
-          ║     property_2: value_2 …      ║             │
-          ║     property_N: value_N }      ║             │
-          ║                                ║             │
-          ║   data[class_instance_2] = {   ║             │
-          ║     property_1: value_1        ║             │
-          ║     property_2: value_2 …      ║◀────────────┘
-          ║     property_N: value_N }      ║
-          ║   …                            ║
-          ║   data[class_instance_N] = {   ║
-          ║     property_1: value_1        ║
-          ║     property_2: value_2 …      ║
-          ║     property_N: value_N }      ║
-          ║                                ║
-          ╚════════════════════════════════╝
+           ╔══════ big tree (memory) ═════╗              │
+           ║                              ║              │
+           ║  data[class_instance_1] = {  ║              │
+           ║    property_1: value_1       ║              │
+           ║    property_2: value_2 …     ║              │
+           ║    property_N: value_N }     ║              │
+           ║                              ║              │
+           ║  data[class_instance_2] = {  ║              │
+           ║    property_1: value_1       ║              │
+           ║    property_2: value_2 …     ║◀─────────────┘
+           ║    property_N: value_N }     ║
+           ║  …                           ║
+           ║  data[class_instance_N] = {  ║
+           ║    property_1: value_1       ║
+           ║    property_2: value_2 …     ║
+           ║    property_N: value_N }     ║
+           ║                              ║
+           ╚══════════════════════════════╝
                            │
                            ▼
     ╔════════════ /dynamic/cache/*.php ═══════════╗
