@@ -253,6 +253,65 @@ Instead of the original timestamp type, it's recommended
 to use the integer type.
 
 
+Core: scheme
+---------------------------------------------------------------------
+
+
+    ┌────────────────── classes ──────────────────┐             ┌────────────── noSQL data ──────────────┐
+    │                                             │             │                                        │
+    │  ╔═══════════════════════════════════════╗  │             │   ╔════════════════════════════════╗   │
+    │  ║ /module_X/backend/pattern-class_1.php ║  │             │   ║ /module_X/data/instance_1.data ║   │
+    │  ╠═══════════════════════════════════════╣  │             │   ╠════════════════════════════════╣   │
+    │  ║ /module_X/backend/pattern-class_2.php ║  │             │   ║ /module_X/data/instance_2.data ║   │
+    │  ╚═══════════════════════════════════════╝  │             │   ╚════════════════════════════════╝   │
+    │                      …                      │             │                    …                   │
+    │  ╔═══════════════════════════════════════╗  │    ┌───┐    │   ╔════════════════════════════════╗   │
+    │  ║ /module_X/backend/pattern-class_N.php ║──────▶│ + │◀───────║ /module_X/data/instance_N.data ║   │
+    │  ╚═══════════════════════════════════════╝  │    └───┘    │   ╚════════════════════════════════╝   │
+    │                                             │      │      │                                        │
+    └─────────────────────────────────────────────┘      │      └────────────────────────────────────────┘
+                                                         │
+                                                         │
+          ╔═══════ big tree (memory) ══════╗             │
+          ║                                ║             │
+          ║   data[class_instance_1] = {   ║             │
+          ║     property_1: value_1        ║             │
+          ║     property_2: value_2 …      ║             │
+          ║     property_N: value_N }      ║             │
+          ║                                ║             │
+          ║   data[class_instance_2] = {   ║             │
+          ║     property_1: value_1        ║             │
+          ║     property_2: value_2 …      ║◀────────────┘
+          ║     property_N: value_N }      ║
+          ║   …                            ║
+          ║   data[class_instance_N] = {   ║
+          ║     property_1: value_1        ║
+          ║     property_2: value_2 …      ║
+          ║     property_N: value_N }      ║
+          ║                                ║
+          ╚════════════════════════════════╝
+                           │
+                           ▼
+    ╔════════════ /dynamic/cache/*.php ═══════════╗
+    ║                                             ║
+    ║   cache[instance_1] = new class()           ║
+    ║   cache[instance_1]->property_1 = value_1   ║
+    ║   cache[instance_1]->property_2 = value_2 … ║
+    ║   cache[instance_1]->property_N = value_N   ║
+    ║                                             ║
+    ║   cache[instance_2] = new class()           ║
+    ║   cache[instance_2]->property_1 = value_1   ║
+    ║   cache[instance_2]->property_2 = value_2 … ║
+    ║   cache[instance_2]->property_N = value_N   ║
+    ║   …                                         ║
+    ║   cache[instance_N] = new class()           ║
+    ║   cache[instance_N]->property_1 = value_1   ║
+    ║   cache[instance_N]->property_2 = value_2 … ║
+    ║   cache[instance_N]->property_N = value_N   ║
+    ║                                             ║
+    ╚═════════════════════════════════════════════╝
+
+
 CSS, JS, SASS, LESS
 ---------------------------------------------------------------------
 
