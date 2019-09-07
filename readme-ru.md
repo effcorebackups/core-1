@@ -8,7 +8,7 @@
 Разработчик         : Рысевец Максим Владимирович
 Первый выпуск       : 01.01.2020
 Написан на          : PHP
-Операционная система: macOS, UNIX, Linux, Microsoft Windows
+Операционная система: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
 Лицензия            : проприетарное программное обеспечение
 Сайт                : http://effcore.com
 
