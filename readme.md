@@ -361,6 +361,16 @@ For large projects, caching is usually done by third-party web server tools,
 what is originally supposed by the author.
 
 
+Improving performance
+---------------------------------------------------------------------
+
+It's recommended to enable the PHP OPcache.
+It's recommended to use the SSD (Solid State Drives).
+In many cases, the "dynamic/cache" directory can be organized in RAM.
+To increase the level of reliability, such RAM should support
+ECC (error-correcting code).
+
+
 Licensing
 ---------------------------------------------------------------------
 

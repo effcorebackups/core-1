@@ -3,6 +3,23 @@
 Supported Software
 =====================================================================
 
+
+Clients Software
+---------------------------------------------------------------------
+
+The following clients are supported:
+- Apple Safari v10+;
+- Apple Mobile Safari on iOS v8+;
+- Opera           (modern versions);
+- Mozilla Firefox (modern versions);
+- Google Chrome   (modern versions);
+- Microsoft Internet Explorer v9+;
+- Microsoft Edge.
+
+
+Server Software
+---------------------------------------------------------------------
+
 Operating Systems:
 - UNIX (Apple macOS, FreeBSD) [priority];
 - Linux;
@@ -95,21 +112,8 @@ SQLite support foreign keys when:
   and SQLITE_OMIT_TRIGGER definitions.
 
 
-Clients software support
----------------------------------------------------------------------
-
-The following clients are supported:
-- Apple Safari v10+;
-- Apple Mobile Safari on iOS v8+;
-- Opera           (modern versions);
-- Mozilla Firefox (modern versions);
-- Google Chrome   (modern versions);
-- Microsoft Internet Explorer v9+;
-- Microsoft Edge.
-
-
 Recommended Development Software
----------------------------------------------------------------------
+=====================================================================
 
 Only high quality licensed expensive software was used for create the project.
 It's recommended to use the next software:
@@ -133,15 +137,8 @@ It's recommended to use the next software:
 - Neor Profile SQL (mac|win|linux) for debug SQL queries.
 
 
-Improving performance
----------------------------------------------------------------------
-
-It's recommended to use the SSD (Solid State Drives).
-It's recommended to enable the PHP OPcache.
-
-
 Incompatibility with third-party software
----------------------------------------------------------------------
+=====================================================================
 
 The following software is incompatible:
 - Kaspersky Internet Security browser plugin can insert to page
