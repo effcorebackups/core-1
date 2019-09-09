@@ -44,12 +44,6 @@ tested redundant functionality which is constantly growing in volume.
 Unfortunately, many developers are bogged down in such code and
 are trying to deny the obvious.
 
-Content management in the system is focused on the inline insertion
-of any available block (menu, text, forms, breadcrumbs and others)
-directly to the layout of the edited page. When creating a new page,
-the user is given a choice of layout and each new page can have its
-own unique design and layout of blocks.
-
 The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
 a system which installed on a hosting with the cheapest tariff plan,
@@ -58,6 +52,15 @@ should generate a homepage in 0.002 seconds (when OPcache is enabled),
 or 0.02 seconds (when OPcache is disabled), which in the first case
 allows serving up to ~500 clients per second, and in the second
 to ~50 (excluding parallel loading of connected files).
+
+
+Content management
+---------------------------------------------------------------------
+Content management in the system is focused on the inline insertion
+of any available block (menu, text, forms, breadcrumbs and others)
+directly to the layout of the edited page. When creating a new page,
+the user is given a choice of layout and each new page can have its
+own unique design and layout of blocks.
 
 
 Architecture
