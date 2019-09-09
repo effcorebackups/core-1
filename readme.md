@@ -12,7 +12,7 @@ Operating system: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
 License         : proprietary software
 Website         : http://effcore.com
 
-effcore is a next-generation content management system (CMS)
+effcore is a next-generation CMS (content management system)
 developed by between 2017 and 2020.
 It incorporates all the new Web 2.0/3.0 technologies including
 HTML5, CSS3, JS ES6, IP v6, SVG, SMIL, UTF8, UTC.
@@ -122,7 +122,8 @@ Core: NoSQL
 
 All data is stored as PHP code.
 Perhaps the fastest storage after "storage in RAM".
-After organizing the disk in RAM, you can increase performance by 3-5 times.
+After organizing the disk in RAM, you can increase performance
+by 3-5 times (more details in the section "Performance improvement").
 Each storage subdirectory will be initialized only if required.
 
 Any instance of the class and other NoSQL data can be described
@@ -361,14 +362,15 @@ For large projects, caching is usually done by third-party web server tools,
 what is originally supposed by the author.
 
 
-Improving performance
+Performance improvement
 ---------------------------------------------------------------------
 
 It's recommended to enable the PHP OPcache.
 It's recommended to use the SSD (Solid State Drives).
 In many cases, the "dynamic/cache" directory can be organized in RAM.
-To increase the level of reliability, such RAM should support
-ECC (error-correcting code).
+To increase the reliability level of the server, such RAM should
+support ECC (error-correcting code), and the server itself should
+work together with an UPS (uninterruptible power supply).
 
 
 Licensing
