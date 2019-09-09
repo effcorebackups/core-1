@@ -53,7 +53,7 @@ own unique design and layout of blocks.
 The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
 a system which installed on a hosting with the cheapest tariff plan,
-but compliant with the minimum installation requirements (from ~3$ per month),
+but compliant with the minimum installation requirements (from ~3-5$ per month),
 should generate a homepage in 0.002 seconds (when OPcache is enabled),
 or 0.02 seconds (when OPcache is disabled), which in the first case
 allows serving up to ~500 clients per second, and in the second
