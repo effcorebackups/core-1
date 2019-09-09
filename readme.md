@@ -3,7 +3,7 @@
 About the project
 =====================================================================
 
-Type            : content management system
+Type            : content management system/framework
 Author          : Maxim Rysevets
 Developer       : Maxim Rysevets
 Initial release : 2020-01-01
@@ -12,8 +12,8 @@ Operating system: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
 License         : proprietary software
 Website         : http://effcore.com
 
-effcore is a next-generation CMS (content management system)
-developed by between 2017 and 2020.
+effcore is a next-generation CMS (Content Management System)
+and CMF (Content Management Framework) developed by between 2017 and 2020.
 It incorporates all the new Web 2.0/3.0 technologies including
 HTML5, CSS3, JS ES6, IP v6, SVG, SMIL, UTF8, UTC.
 
