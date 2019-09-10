@@ -27,4 +27,10 @@ When using archive and FTP manager
   modules and continue the installation.
   At the first time also recommended to enable "display_errors", "log_errors"
   and set to "E_ALL" the "error_reporting".
+- If you will be using a MySQL database, make sure that you have
+  one empty database and credentials for it.
+  If you do not have a database, you can create a new database
+  and user with known credentials for it through the hosting panel.
+- If you get the message "unknown mysql server host [::1]" then try
+  to use the value "127.0.0.1" in the "Hostname" field.
 
