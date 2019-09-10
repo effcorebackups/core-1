@@ -149,7 +149,7 @@ The following software is incompatible:
   Just ignore Kaspersky Internet Security.
 
 
-Application with subscription
+Applications with subscription
 =====================================================================
 
 Our project condemns all software (not services) which distributed
