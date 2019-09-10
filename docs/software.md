@@ -148,3 +148,12 @@ The following software is incompatible:
   against violating web standards from third side.
   Just ignore Kaspersky Internet Security.
 
+
+Application with subscription
+=====================================================================
+
+Our project condemns all software (not services) which distributed
+only by subscription, without the possibility of buying a not time-limited
+version. People are not cows which they can to milk! We urge you to
+ignore such software!
+

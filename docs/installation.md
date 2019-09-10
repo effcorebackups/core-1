@@ -12,7 +12,8 @@ When using archive and FTP manager
   unpacked (including invisible files like ".htaccess" and other).
   If you can not see the invisible files in your archiver, make them visible.
   If you can not see the invisible files in your OS, make them visible.
-- Download utility like Transmit, Cyberduck, FileZilla or other.
+- Download utility like Cyberduck (mac|win), Transmit (mac),
+  FileZilla (mac|win|linux) or other.
   Use them to establish a connection with the hosting server via FTP protocol.
   It's recommended to use the "SFTP" or "FTP with implicit SSL" or
   "FTP with TSL/SSL". In used utility enable the viewing of hidden files.
