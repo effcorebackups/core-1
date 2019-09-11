@@ -53,9 +53,9 @@ namespace effcore {
     foreach (static::$data as $c_log) {
       if ($c_log->value == $log_level) {
         $c_info = $c_log->description;
-        foreach ($c_log->args as $c_key => $c_value) {
+        foreach ($c_log->args as $c_key => $c_value)
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
-        }
+          $c_info = str_replace(br, ' | ', $c_info);
         if (!$file->append_direct(core::time_get().' | '.
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {

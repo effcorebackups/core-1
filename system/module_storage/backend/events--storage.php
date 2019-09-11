@@ -6,6 +6,7 @@
 
 namespace effcore\modules\storage {
           use const \effcore\dir_root;
+          use const \effcore\br;
           use \effcore\console;
           use \effcore\core;
           use \effcore\field_file;
@@ -34,8 +35,8 @@ namespace effcore\modules\storage {
       $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
       $query_beautiful_args = '\''.implode('\', \'', $storage->args).'\'';
       console::log_insert('storage', 'query',  count($storage->args) ?
-        'state = %%_state; code = %%_code; text = %%_text | query = "%%_query" | arguments = [%%_args]' :
-        'state = %%_state; code = %%_code; text = %%_text | query = "%%_query"',
+        'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"'.br.'arguments = [%%_args]' :
+        'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"',
         'error', 0, [
         'state' => $errors[0],
         'code'  => $errors[1],
