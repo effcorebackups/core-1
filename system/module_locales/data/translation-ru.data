@@ -2,10 +2,6 @@ translations
 - ru|translation
     code: ru
     data
-    - KiB: КиБ
-    - MiB: МиБ
-    - GiB: ГиБ
-    - TiB: ТиБ
     - - no -: - нет -
     - - select -: - выбрать -
     - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}
@@ -120,8 +116,8 @@ translations
     - Diagrams: Диаграммы
     - disable: выключить
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
-    - driver error code\: %%_code: код ошибки драйвера: %%_code
-    - driver error text\: %%_text: текст ошибки драйвера: %%_text
+    - Driver error code\: %%_code: Код ошибки драйвера: %%_code
+    - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
     - Driver: Драйвер
     - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с id = "%%_id" в модуле "%%_module_id"
@@ -208,6 +204,7 @@ translations
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front: Главная
     - front: главная
+    - GiB: ГиБ
     - go to %%_title language: перейти на %%_title язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to page #%%_number: перейти на страницу №%%_number
@@ -254,6 +251,7 @@ translations
     - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Items for\: %%_title: Пункты для: %%_title
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
+    - KiB: КиБ
     - Kind: Вид
     - Language: Язык
     - Layout: Макет
@@ -301,6 +299,7 @@ translations
     - Menu: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
+    - MiB: МиБ
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
@@ -318,6 +317,7 @@ translations
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Module ID: ID Модуля
     - Modules: Модули
+    - More info in %%_info: Больше информации в %%_info
     - name: имя
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
@@ -437,7 +437,7 @@ translations
     - Settings: Настройки
     - Shared parameters: Общие параметры
     - Simple: Простой
-    - sql state\: %%_state: sql состояние: %%_state
+    - SQL state\: %%_state: SQL состояние: %%_state
     - state: состояние
     - State: Состояние
     - Storage "%%_name" is not available!: Хранилище "%%_name" не доступно!
@@ -487,6 +487,7 @@ translations
     - This combination of values is already in use!: Такая комбинация значений уже используется!
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS протокол!
     - Thousands separator: Разделитель тысяч
+    - TiB: ТиБ
     - Time format: Формат времени
     - Time: Время
     - Timezone: Часовой пояс
