@@ -173,18 +173,24 @@ namespace effcore {
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
       event::start('on_query_after', 'pdo', [&$this, $query, &$result, &$c_error]);
-      $this->args = [];
+      $query_args = $this->args;
+                    $this->args = [];
       if ($c_error !== ['00000', null, null]) {
+        $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
+        $query_beautiful_args = $query_args ? '\''.implode('\', \'', $query_args).'\'' : 'n/a';
         $this->errors[] = $c_error;
         message::insert(new text_multiline([
           'Query error!',
           'sql state: %%_state',
           'driver error code: %%_code',
-          'driver error text: %%_text'], [
+          'driver error text: %%_text',
+          'query: %%_query',
+          'query arguments: %%_args'], [
           'state' => $c_error[0],
           'code'  => $c_error[1],
-          'text'  => $c_error[2]]), 'error'
-        );
+          'text'  => $c_error[2],
+          'query' => $query_beautiful,
+          'args'  => $query_beautiful_args]), 'error');
         return null;
       }
       switch (strtoupper(array_values($query)[0])) {

@@ -332,7 +332,7 @@ entities
         collate: nocase
         size: 1024
         not_null: true
-        check: (title <> '')
+        check: (description <> '')
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
