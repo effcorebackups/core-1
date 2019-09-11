@@ -784,6 +784,11 @@ namespace effcore {
     return $_SERVER['HTTP_HOST'];
   }
 
+  static function server_get_addr() {
+    return $_SERVER['SERVER_ADDR'] == '127.0.0.1' ? '::1' :
+           $_SERVER['SERVER_ADDR'];
+  }
+
   static function server_get_remote_addr() {
     return $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? '::1' :
            $_SERVER['REMOTE_ADDR'];

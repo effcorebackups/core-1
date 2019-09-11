@@ -148,7 +148,7 @@ namespace effcore {
 
   static function captcha_get_localhost_code() {
     $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex('::1')
+      'ip_hex' => core::ip_to_hex(core::server_get_addr())
     ]))->select();
     if ($captcha) {
       return $captcha->characters;
