@@ -14,6 +14,7 @@ namespace effcore {
   public $credentials = [];
   public $table_prefix = '';
   public $args = [];
+  public $args_previous = [];
   public $errors = [];
   protected $queries = [];
   protected $connection;
@@ -173,9 +174,12 @@ namespace effcore {
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
       event::start('on_query_after', 'pdo', [&$this, $query, &$result, &$c_error]);
+      $this->args_previous = $this->args;
       $this->args = [];
       if ($c_error !== ['00000', null, null]) {
         $this->errors[] = $c_error;
+        $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
+        $query_beautiful_args = '\''.implode('\', \'', $this->args_previous).'\'';
         message::insert(new text_multiline([
           'Query error!',
           'SQL state: %%_state',
@@ -186,6 +190,15 @@ namespace effcore {
           'code'  => $c_error[1],
           'text'  => $c_error[2],
           'info'  => '"dynamic/logs/"']), 'error');
+        console::log_insert('storage', 'query', count($this->args_previous) ?
+          'state = %%_state; code = %%_code; text = %%_text | query = "%%_query" | arguments = [%%_args]' :
+          'state = %%_state; code = %%_code; text = %%_text | query = "%%_query"',
+          'error', 0, [
+          'state' => $c_error[0],
+          'code'  => $c_error[1],
+          'text'  => $c_error[2],
+          'query' => $query_beautiful,
+          'args'  => $query_beautiful_args]);
         return null;
       }
       switch (strtoupper(array_values($query)[0])) {

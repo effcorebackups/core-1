@@ -37,17 +37,17 @@ namespace effcore\modules\develop {
     $storage->query_prepare($query_prepared, true);
     $query_flat = core::array_values_select_recursive($query_prepared);
     $query_flat_string = implode(' ', $query_flat).';';
-    $query_flat_string_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
-    $query_args_beautiful = '\''.implode('\', \'', $args_trimmed).'\'';
+    $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
+    $query_beautiful_args = '\''.implode('\', \'', $args_trimmed).'\'';
     timer::tap('storage query with hash: '.$query_hash);
-    console::log_insert('storage', 'query',
-      count($storage->args) ? 'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'arguments = [%%_args]' :
-                              'sql query = "%%_query"',
+    console::log_insert('storage', 'query', count($storage->args) ?
+      'sql query = "%%_query"'.($errors[0] == '00000' ? br : '; ').'arguments = [%%_args]' :
+      'sql query = "%%_query"',
       $errors[0] == '00000' ? 'ok' : 'error',
-      timer::period_get('storage query with hash: '.$query_hash, -1, -2),
-      [ 'query' => $query_flat_string_beautiful,
-         'args' => $query_args_beautiful ]
-    );
+      timer::period_get('storage query with hash: '.$query_hash, -1, -2), [
+      'query' => $query_beautiful,
+      'args'  => $query_beautiful_args
+    ]);
   }
 
 }}
