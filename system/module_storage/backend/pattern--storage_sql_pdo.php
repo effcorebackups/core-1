@@ -5,6 +5,9 @@
   ##################################################################
 
 namespace effcore {
+          use const \effcore\br;
+          use \effcore\console;
+          use \effcore\core;
           use \PDO as pdo;
           use \PDOException as pdo_exception;
           class storage_sql_pdo implements has_external_cache {
@@ -188,6 +191,17 @@ namespace effcore {
           'code'  => $c_error[1],
           'text'  => $c_error[2],
           'info'  => '"dynamic/logs/"']), 'error');
+        $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
+        $query_beautiful_args = '\''.implode('\', \'', $this->args_previous).'\'';
+        console::log_insert('storage', 'query',  count($this->args_previous) ?
+          'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"'.br.'arguments = [%%_args]' :
+          'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"',
+          'error', 0, [
+          'state' => $c_error[0],
+          'code'  => $c_error[1],
+          'text'  => $c_error[2],
+          'query' => $query_beautiful,
+          'args'  => $query_beautiful_args]);
         return null;
       }
       switch (strtoupper(array_values($query)[0])) {
