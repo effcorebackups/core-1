@@ -3,6 +3,10 @@ events
   - storage|event
       for: storage
       handler: \effcore\modules\storage\events_module::on_enable
+  on_query_after
+  - pdo|event
+      for: pdo
+      handler: \effcore\modules\storage\events_storage::on_query_after
   on_form_init
   - instance_select_multiple|event
       for: instance_select_multiple

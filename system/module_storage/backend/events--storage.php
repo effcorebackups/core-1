@@ -6,6 +6,8 @@
 
 namespace effcore\modules\storage {
           use const \effcore\dir_root;
+          use \effcore\console;
+          use \effcore\core;
           use \effcore\field_file;
           abstract class events_storage {
 
@@ -20,6 +22,27 @@ namespace effcore\modules\storage {
           }
         }
       }
+    }
+  }
+
+  static function on_query_after($event, $storage, $query, $result, $errors) {
+    if ($errors[0] != '00000') {
+      $query_prepared = $query;
+      $storage->query_prepare($query_prepared, true);
+      $query_flat = core::array_values_select_recursive($query_prepared);
+      $query_flat_string = implode(' ', $query_flat).';';
+      $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
+      $query_beautiful_args = '\''.implode('\', \'', $storage->args).'\'';
+      console::log_insert('storage', 'query',  count($storage->args) ?
+        'state = %%_state; code = %%_code; text = %%_text | query = "%%_query" | arguments = [%%_args]' :
+        'state = %%_state; code = %%_code; text = %%_text | query = "%%_query"',
+        'error', 0, [
+        'state' => $errors[0],
+        'code'  => $errors[1],
+        'text'  => $errors[2],
+        'query' => $query_beautiful,
+        'args'  => $query_beautiful_args
+      ]);
     }
   }
 
