@@ -23,7 +23,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_text
+        managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
@@ -38,7 +38,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         selection_params
         - is_apply_translation: true
     constraints
@@ -87,7 +87,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_text
+        managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
@@ -101,7 +101,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_relation
+        managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: tree
         - related_entity_field_id_name: id
@@ -120,7 +120,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_relation
+        managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
@@ -140,7 +140,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
     - url
         title: URL
         type: varchar
@@ -149,7 +149,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_url
+        managing_form_class: \effcore\field_url
         managing_element_attributes
         - required: false
         - maxlength: 2048

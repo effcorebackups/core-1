@@ -20,7 +20,7 @@ entities
         check: (id <> '')
         managing_is_on_select: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_number
+        managing_form_class: \effcore\field_id_number
         managing_element_attributes
         - disabled: true
     - description
@@ -31,7 +31,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         selection_params
         - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
@@ -44,7 +44,7 @@ entities
         default: 0
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_number
+        managing_form_class: \effcore\field_number
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: real
     # ─────────────────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ entities
         default: 0
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_number
+        managing_form_class: \effcore\field_number
         managing_element_attributes
         - min: -1000
         - max: +1000
@@ -72,7 +72,7 @@ entities
         default: default text
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ entities
         default: 00:00:00
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_time
+        managing_form_class: \effcore\field_time
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -94,7 +94,7 @@ entities
         default: 2030-01-01
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_date
+        managing_form_class: \effcore\field_date
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ entities
         default: 2030-01-01 00:00:00
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_datetime
+        managing_form_class: \effcore\field_datetime
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer | mysql equivalent: tinyint
     # ─────────────────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ entities
         default: 0
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_logic
+        managing_form_class: \effcore\field_logic
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
@@ -127,7 +127,7 @@ entities
         filter_update: \effcore\core::return_null_if_empty
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_textarea
+        managing_form_class: \effcore\field_textarea
         managing_element_attributes
         - required: false
         - minlength: false
@@ -152,7 +152,7 @@ entities
         check: (id <> '')
         managing_is_on_select: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_number
+        managing_form_class: \effcore\field_id_number
         managing_element_attributes
         - disabled: true
     - description
@@ -163,7 +163,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         selection_params
         - is_apply_translation: true
     constraints
@@ -197,7 +197,7 @@ entities
         not_null: true
         managing_is_on_select: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_number
+        managing_form_class: \effcore\field_id_number
         managing_element_attributes
         - disabled: true
     - f_nocase
@@ -209,7 +209,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
     - f_binary
         title: Field binary
         type: varchar
@@ -219,7 +219,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
@@ -242,7 +242,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_text
+        managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
         managing_element_attributes_on_update
@@ -256,7 +256,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         managing_properties
         - is_validate_uniqueness: true
     - f_foreign
@@ -266,7 +266,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_relation
+        managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: demo_autoincrement
         - related_entity_field_id_name: id
@@ -315,7 +315,7 @@ entities
         not_null: true
         managing_is_on_select: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_number
+        managing_form_class: \effcore\field_id_number
         managing_element_attributes
         - disabled: true
     - nick
@@ -327,7 +327,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         managing_properties
         - is_validate_uniqueness: true
     - is_even
@@ -337,7 +337,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_logic
+        managing_form_class: \effcore\field_logic
         selection_params
         - is_apply_translation: true
     - created
@@ -348,7 +348,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_datetime
+        managing_form_class: \effcore\field_datetime
     constraints
     - primary_id
         type: primary
@@ -378,7 +378,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_relation
+        managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: demo_data
         - related_entity_field_id_name: id
@@ -392,7 +392,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_email
+        managing_form_class: \effcore\field_email
         managing_properties
         - is_validate_uniqueness: true
     constraints
@@ -426,7 +426,7 @@ entities
         not_null: true
         managing_is_on_select: true
         managing_is_on_update: true
-        managing_class: \effcore\field_id_number
+        managing_form_class: \effcore\field_id_number
         managing_element_attributes
         - disabled: true
     - f_index_unique
@@ -438,7 +438,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
         managing_properties
         - is_validate_uniqueness: true
     - f_index
@@ -450,7 +450,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_class: \effcore\field_text
+        managing_form_class: \effcore\field_text
     constraints
     - primary_id
         type: primary
