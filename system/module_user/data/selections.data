@@ -20,6 +20,8 @@ selections
         type: field
         entity_name: user
         entity_field_name: nick
+        is_apply_translation: false
+        is_apply_tokens: false
     - user.email
         type: field
         entity_name: user

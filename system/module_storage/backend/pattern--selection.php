@@ -128,6 +128,7 @@ namespace effcore {
         foreach ($this->_instances as $c_instance) {
           $c_row = [];
           foreach ($this->fields as $c_row_id => $c_field) {
+          # prepare value to use in decorator
             switch ($c_field->type) {
               case 'field':
               case 'join_field':
@@ -136,11 +137,11 @@ namespace effcore {
                 $c_value_type = $c_entity->fields[$c_field->entity_field_name]->type;
                 $c_value      = $c_instance->    {$c_field->entity_field_name};
                 if ($c_value !== null && $c_value_type == 'real'    ) $c_value = locale::format_number  ($c_value, 10);
-                if ($c_value !== null && $c_value_type == 'integer' ) $c_value = locale::format_number  ($c_value);
-                if ($c_value !== null && $c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value);
-                if ($c_value !== null && $c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value);
-                if ($c_value !== null && $c_value_type == 'datetime') $c_value = locale::format_datetime($c_value);
-                if ($c_value !== null && $c_value_type == 'boolean' ) $c_value = $c_value ? 'Yes' : 'No';
+                if ($c_value !== null && $c_value_type == 'integer' ) $c_value = locale::format_number  ($c_value    );
+                if ($c_value !== null && $c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value    );
+                if ($c_value !== null && $c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value    );
+                if ($c_value !== null && $c_value_type == 'datetime') $c_value = locale::format_datetime($c_value    );
+                if ($c_value !== null && $c_value_type == 'boolean' ) $c_value =                         $c_value ? 'Yes' : 'No';
                 $c_row[$c_row_id] = [
                   'title' => $c_title,
                   'value' => $c_value
@@ -180,6 +181,14 @@ namespace effcore {
                   'value' => $c_field->code->call($this, $c_row, $c_instance)
                 ];
                 break;
+            }
+          # translate or replace tokens in value, if required
+            if (is_string($c_row[$c_row_id]['value']) &&
+                   strlen($c_row[$c_row_id]['value'])) {
+                          $c_row[$c_row_id]['value'] = new text(
+                          $c_row[$c_row_id]['value']);
+              if (property_exists($c_field, 'is_apply_translation')) $c_row[$c_row_id]['value']->is_apply_translation = $c_field->is_apply_translation;
+              if (property_exists($c_field, 'is_apply_tokens'     )) $c_row[$c_row_id]['value']->is_apply_tokens      = $c_field->is_apply_tokens;
             }
           }
           $decorator->data[] = $c_row;
