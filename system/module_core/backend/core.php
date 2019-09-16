@@ -844,6 +844,13 @@ namespace effcore {
   ### shared functions ###
   ########################
 
+  static function return_rendered($value) {
+    return is_object($value) &&
+       method_exists($value, 'render') ?
+                     $value-> render() :
+                     $value;
+  }
+
   static function return_null_if_empty($value) {
     return $value ?: null;
   }

@@ -213,13 +213,15 @@ namespace effcore {
   # custom fields
   # ─────────────────────────────────────────────────────────────────────
 
-  function field_insert_entity($row_id = null, $entity_name, $entity_field_name, $weight = 0) {
-    $field = new \stdClass;
-    $field->type              = 'field';
-    $field->entity_name       = $entity_name;
-    $field->entity_field_name = $entity_field_name;
-    $field->weight            = $weight;
-    $this->fields[$row_id ?: $entity_name.'.'.$entity_field_name] = $field;
+  function field_insert_entity($row_id = null, $entity_name, $entity_field_name, $params = []) {
+    $row_id = $row_id ?: $entity_name.'.'.$entity_field_name;
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'field';
+    $this->fields[$row_id]->entity_name = $entity_name;
+    $this->fields[$row_id]->entity_field_name = $entity_field_name;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
   function field_insert_checkbox($row_id = null, $title = '', $weight = 0) {

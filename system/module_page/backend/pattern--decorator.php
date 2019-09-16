@@ -215,14 +215,14 @@ namespace effcore {
           case 'tree':
             $trees = new node;
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_id        = array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : ( array_key_exists('id',        $this->tree_mapping) ? $c_row[$this->tree_mapping['id'       ]]['value'] : null);
-              $c_id_parent = array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : ( array_key_exists('id_parent', $this->tree_mapping) ? $c_row[$this->tree_mapping['id_parent']]['value'] : null);
-              $c_id_tree   = array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : ( array_key_exists('id_tree',   $this->tree_mapping) ? $c_row[$this->tree_mapping['id_tree'  ]]['value'] : null);
-              $c_title     = array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : ( array_key_exists('title',     $this->tree_mapping) ? $c_row[$this->tree_mapping['title'    ]]['value'] : null);
-              $c_url       = array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : ( array_key_exists('url',       $this->tree_mapping) ? $c_row[$this->tree_mapping['url'      ]]['value'] : null);
-              $c_access    = array_key_exists('access',    $c_row) ? $c_row['access'   ]['value'] : ( array_key_exists('access',    $this->tree_mapping) ? $c_row[$this->tree_mapping['access'   ]]['value'] : null);
-              $c_weight    = array_key_exists('weight',    $c_row) ? $c_row['weight'   ]['value'] : ( array_key_exists('weight',    $this->tree_mapping) ? $c_row[$this->tree_mapping['weight'   ]]['value'] : null);
-              $c_extra     = array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : ( array_key_exists('extra',     $this->tree_mapping) ? $c_row[$this->tree_mapping['extra'    ]]['value'] : null);
+              $c_id        = core::return_rendered( array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : ( array_key_exists('id',        $this->tree_mapping) ? $c_row[$this->tree_mapping['id'       ]]['value'] : null) );
+              $c_id_parent = core::return_rendered( array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : ( array_key_exists('id_parent', $this->tree_mapping) ? $c_row[$this->tree_mapping['id_parent']]['value'] : null) );
+              $c_id_tree   = core::return_rendered( array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : ( array_key_exists('id_tree',   $this->tree_mapping) ? $c_row[$this->tree_mapping['id_tree'  ]]['value'] : null) );
+              $c_title     = core::return_rendered( array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : ( array_key_exists('title',     $this->tree_mapping) ? $c_row[$this->tree_mapping['title'    ]]['value'] : null) );
+              $c_url       = core::return_rendered( array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : ( array_key_exists('url',       $this->tree_mapping) ? $c_row[$this->tree_mapping['url'      ]]['value'] : null) );
+              $c_weight    = core::return_rendered( array_key_exists('weight',    $c_row) ? $c_row['weight'   ]['value'] : ( array_key_exists('weight',    $this->tree_mapping) ? $c_row[$this->tree_mapping['weight'   ]]['value'] : null) );
+              $c_access    =                        array_key_exists('access',    $c_row) ? $c_row['access'   ]['value'] : ( array_key_exists('access',    $this->tree_mapping) ? $c_row[$this->tree_mapping['access'   ]]['value'] : null);
+              $c_extra     =                        array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : ( array_key_exists('extra',     $this->tree_mapping) ? $c_row[$this->tree_mapping['extra'    ]]['value'] : null);
               $c_id_tree = 'decorator-'.$c_id_tree;
               $c_tree = tree::insert($this->title ?? '', $c_id_tree);
               $c_tree->managing_mode = $this->tree_managing_mode;
@@ -248,10 +248,7 @@ namespace effcore {
               foreach ($this->template_row_mapping as $c_arg_name => $c_cell_name) {
                 if (is_array($c_row[$c_cell_name])) {
                   $c_template->arg_set($c_arg_name,
-                        is_object($c_row[$c_cell_name]['value']) &&
-                    method_exists($c_row[$c_cell_name]['value'], 'render') ?
-                                  $c_row[$c_cell_name]['value']->render() :
-                                  $c_row[$c_cell_name]['value']
+                    core::return_rendered($c_row[$c_cell_name]['value'])
                   );
                 }
               }

@@ -39,6 +39,8 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_class: \effcore\field_text
+        selection_params
+        - is_apply_translation: true
     constraints
     - primary_id
         type: primary
