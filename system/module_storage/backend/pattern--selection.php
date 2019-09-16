@@ -185,10 +185,9 @@ namespace effcore {
           # translate or replace tokens in value, if required
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
-                          $c_row[$c_row_id]['value'] = new text(
-                          $c_row[$c_row_id]['value']);
-              if (property_exists($c_field, 'is_apply_translation')) $c_row[$c_row_id]['value']->is_apply_translation = $c_field->is_apply_translation;
-              if (property_exists($c_field, 'is_apply_tokens'     )) $c_row[$c_row_id]['value']->is_apply_tokens      = $c_field->is_apply_tokens;
+              $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
+              $c_row[$c_row_id]['value']->is_apply_translation = !empty($c_field->is_apply_translation) ? true : false;
+              $c_row[$c_row_id]['value']->is_apply_tokens      = !empty($c_field->is_apply_tokens     ) ? true : false;
             }
           }
           $decorator->data[] = $c_row;

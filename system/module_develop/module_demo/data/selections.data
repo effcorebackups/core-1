@@ -37,6 +37,7 @@ selections
         type: field
         entity_name: demo_data
         entity_field_name: is_even
+        is_apply_translation: true
     - demo_data_join.email
         type: join_field
         entity_name: demo_data_join
@@ -57,6 +58,7 @@ selections
         type: field
         entity_name: demo_types
         entity_field_name: description
+        is_apply_translation: true
     - f_integer
         type: field
         entity_name: demo_types
@@ -85,6 +87,7 @@ selections
         type: field
         entity_name: demo_types
         entity_field_name: f_boolean
+        is_apply_translation: true
     - f_blob
         type: field
         entity_name: demo_types

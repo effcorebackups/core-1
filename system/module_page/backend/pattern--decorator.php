@@ -247,7 +247,12 @@ namespace effcore {
               $c_template = template::make_new($this->template_row);
               foreach ($this->template_row_mapping as $c_arg_name => $c_cell_name) {
                 if (is_array($c_row[$c_cell_name])) {
-                  $c_template->arg_set($c_arg_name, $c_row[$c_cell_name]['value']);
+                  $c_template->arg_set($c_arg_name,
+                        is_object($c_row[$c_cell_name]['value']) &&
+                    method_exists($c_row[$c_cell_name]['value'], 'render') ?
+                                  $c_row[$c_cell_name]['value']->render() :
+                                  $c_row[$c_cell_name]['value']
+                  );
                 }
               }
               $result->child_insert(

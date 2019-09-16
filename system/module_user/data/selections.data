@@ -20,8 +20,6 @@ selections
         type: field
         entity_name: user
         entity_field_name: nick
-        is_apply_translation: false
-        is_apply_tokens: false
     - user.email
         type: field
         entity_name: user
@@ -30,10 +28,12 @@ selections
         type: field
         entity_name: user
         entity_field_name: timezone
+        is_apply_translation: true
     - user.is_embed
         type: field
         entity_name: user
         entity_field_name: is_embed
+        is_apply_translation: true
     - user.avatar_path
         type: field
         entity_name: user
