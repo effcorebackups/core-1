@@ -224,48 +224,58 @@ namespace effcore {
     }
   }
 
-  function field_insert_checkbox($row_id = null, $title = '', $weight = 0) {
-    $field = new \stdClass;
-    $field->type   = 'checkbox';
-    $field->title  = $title;
-    $field->weight = $weight;
-    $this->fields[$row_id ?: 'checkbox'] = $field;
+  function field_insert_checkbox($row_id = null, $title = '', $params = []) {
+    $row_id = $row_id ?: 'checkbox';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'checkbox';
+    $this->fields[$row_id]->title = $title;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
-  function field_insert_markup($row_id = null, $title = '', $markup, $weight = 0) {
-    $field = new \stdClass;
-    $field->type   = 'markup';
-    $field->title  = $title;
-    $field->markup = $markup;
-    $field->weight = $weight;
-    $this->fields[$row_id ?: 'markup'] = $field;
+  function field_insert_markup($row_id = null, $title = '', $markup, $params = []) {
+    $row_id = $row_id ?: 'markup';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'markup';
+    $this->fields[$row_id]->title = $title;
+    $this->fields[$row_id]->markup = $markup;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
-  function field_insert_code($row_id = null, $title = '', $code, $weight = 0) {
-    $field = new \stdClass;
-    $field->type   = 'code';
-    $field->title  = $title;
-    $field->code   = $code;
-    $field->weight = $weight;
-    $this->fields[$row_id ?: 'code'] = $field;
+  function field_insert_code($row_id = null, $title = '', $code, $params = []) {
+    $row_id = $row_id ?: 'code';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'code';
+    $this->fields[$row_id]->title = $title;
+    $this->fields[$row_id]->code = $code;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
-  function field_insert_handler($row_id = null, $title = '', $handler, $weight = 0) {
-    $field = new \stdClass;
-    $field->type    = 'handler';
-    $field->title   = $title;
-    $field->handler = $handler;
-    $field->weight  = $weight;
-    $this->fields[$row_id ?: 'handler'] = $field;
+  function field_insert_handler($row_id = null, $title = '', $handler, $params = []) {
+    $row_id = $row_id ?: 'handler';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'handler';
+    $this->fields[$row_id]->title = $title;
+    $this->fields[$row_id]->handler = $handler;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
-  function field_insert_action($row_id = null, $title = '', $allowed = ['select', 'update', 'delete'], $weight = 0) {
-    $field = new \stdClass;
-    $field->type    = 'actions';
-    $field->title   = $title;
-    $field->weight  = $weight;
-    $field->allowed = $allowed;
-    $this->fields[$row_id ?: 'actions'] = $field;
+  function field_insert_action($row_id = null, $title = '', $allowed = ['select', 'update', 'delete'], $params = []) {
+    $row_id = $row_id ?: 'actions';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type = 'actions';
+    $this->fields[$row_id]->title = $title;
+    $this->fields[$row_id]->allowed = $allowed;
+    foreach ($params as $c_key => $c_value) {
+      $this->fields[$row_id]->{$c_key} = $c_value;
+    }
   }
 
   function actions_list_get($instance, $allowed = ['select', 'update', 'delete']) {

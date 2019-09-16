@@ -41,7 +41,7 @@ namespace effcore\modules\storage {
           new markup('x-no-result', [], 'no visible fields'), 'no_result'
         );
       } else {
-        $selection->field_insert_checkbox(null, '', 80);
+        $selection->field_insert_checkbox(null, '', ['weight' => 80]);
         $selection->field_insert_action(null, '', ['delete', 'select', 'update']);
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
