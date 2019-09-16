@@ -47,7 +47,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - id_layout
         title: Layout
@@ -59,7 +59,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_layout
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -72,7 +72,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        managing_element_attributes
+        managing_form_element_attributes
         - maxlength: 1024
         selection_params
         - is_apply_translation: true
@@ -124,7 +124,7 @@ entities
           - rtl: rtl
         - selected
           - ltr: ltr
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - charset
         title: Charset
@@ -136,7 +136,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        managing_element_attributes
+        managing_form_element_attributes
         - disabled: true
         - value: utf-8
     - parts
@@ -180,7 +180,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -193,7 +193,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        managing_element_attributes
+        managing_form_element_attributes
         - required: false
         - maxlength: 1024
         selection_params
@@ -208,7 +208,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_url
-        managing_element_attributes
+        managing_form_element_attributes
         - required: false
     - path
         title: File
@@ -228,7 +228,7 @@ entities
           - =: jpg
           - =: png
           - =: svg
-        managing_element_attributes_on_insert
+        managing_form_element_attributes_on_insert
         - disabled: true
     constraints
     - primary_id
@@ -260,7 +260,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -273,7 +273,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        managing_element_attributes
+        managing_form_element_attributes
         - required: false
         - maxlength: 1024
         selection_params
@@ -332,7 +332,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
-        managing_element_attributes_on_update
+        managing_form_element_attributes_on_update
         - disabled: true
     - description
         title: Description
@@ -345,7 +345,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        managing_element_attributes
+        managing_form_element_attributes
         - required: false
         - maxlength: 1024
         selection_params
@@ -358,7 +358,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_textarea
-        managing_element_attributes
+        managing_form_element_attributes
         - required: false
         - minlength: false
         - maxlength: false
