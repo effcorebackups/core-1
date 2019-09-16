@@ -30,7 +30,7 @@ namespace effcore\modules\storage {
           $selection->id = 'instance_manage';
           foreach ($entity->selection_params as $c_key => $c_value)
             $selection                       ->{$c_key} = $c_value;
-            $selection->decorator_params['view_type'] = $entity->view_type_single;
+            $selection->decorator_params['view_type'] = $entity->decorator_view_type_single;
             $selection->query_params['conditions']    = $entity->storage_get()->attributes_prepare($conditions);
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {

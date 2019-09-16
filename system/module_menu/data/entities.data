@@ -63,7 +63,7 @@ entities
     ws_updated: true
     ws_updated_parallel_checking: true
     ws_data: true
-    view_type_multiple: tree
+    decorator_view_type_multiple: tree
     selection_params
     - decorator_params
       - tree_managing_mode: simple-draggable

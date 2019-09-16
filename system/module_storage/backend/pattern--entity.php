@@ -25,8 +25,8 @@ namespace effcore {
   public $title_plural;
   public $managing_is_on = false;
   public $managing_group = 'Other';
-  public $view_type_single = 'ul';
-  public $view_type_multiple = 'table-adaptive';
+  public $decorator_view_type_single = 'ul';
+  public $decorator_view_type_multiple = 'table-adaptive';
   public $selection_params = [];
 
   function _postparse() {
