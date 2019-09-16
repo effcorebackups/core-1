@@ -22,6 +22,7 @@ selections
         type: field
         entity_name: logotype
         entity_field_name: title
+        is_apply_translation: true
     - logotype.url
         type: field
         entity_name: logotype
