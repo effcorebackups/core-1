@@ -27,7 +27,7 @@ namespace effcore\modules\storage {
   static function on_tab_build_before($event, $tab) {
     $managing_group_id = page::get_current()->args_get('managing_group_id');
     $entity_name       = page::get_current()->args_get('entity_name'      );
-    $groups = entity::groups_managing_get();
+    $groups   = entity::groups_managing_get();
     $entities = entity::get_all();
     $entities_by_groups = [];
   # collect manageable entities
