@@ -15,7 +15,8 @@ Website         : http://effcore.com
 effcore is a next-generation CMS (Content Management System)
 and CMF (Content Management Framework) developed by between 2017 and 2020.
 It incorporates all the new Web 2.0/3.0 technologies including
-HTML5, CSS3, JS ES6, IP v6, SVG, SMIL, UTF8, UTC.
+HTML5, CSS3, JS ES6, IP v6, SVG, SMIL, UTF8, UTC, WAI-ARIA,
+NoSQL, Markdown, UML, PSR-0.
 
 Can be used as a tool for building sites by simple users, and also
 as a tool for the development of sites, portals and services by
