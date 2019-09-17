@@ -8,7 +8,7 @@ namespace effcore {
           use const \effcore\br;
           use \effcore\console;
           use \effcore\core;
-          use \PDO as pdo;
+          use \PDO          as pdo;
           use \PDOException as pdo_exception;
           class storage_sql_pdo implements has_external_cache {
 

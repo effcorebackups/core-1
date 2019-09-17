@@ -6,7 +6,7 @@
 
 namespace effcore {
           use \RecursiveDirectoryIterator as rd_iterator;
-          use \RecursiveIteratorIterator as ri_iterator;
+          use  \RecursiveIteratorIterator as ri_iterator;
           class form extends markup implements has_external_cache {
 
   public $tag_name = 'form';
@@ -95,8 +95,8 @@ namespace effcore {
           $this->attribute_insert('aria-invalid', 'true');
           foreach (static::$errors as $c_error) {
             switch (gettype($c_error->message)) {
-              case 'string':                                                 message::insert(new text($c_error->message, $c_error->args), 'error'); break;
-              case 'object': if (method_exists($c_error->message, 'render')) message::insert(         $c_error->message->render(),        'error'); break;
+              case 'string': message::insert(new text($c_error->message, $c_error->args), 'error'); break;
+              case 'object': message::insert(         $c_error->message,                  'error'); break;
             }
           }
         }
