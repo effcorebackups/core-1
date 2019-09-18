@@ -16,13 +16,15 @@ namespace effcore {
       $options = ['not_selected' => '- no -'];
       $entities = entity::get_all();
       foreach ($entities as $c_entity) {
-        foreach ($c_entity->fields_get_title() as $c_name => $c_title) {
-          if (!isset($options[$c_entity->name])) {
-                     $options[$c_entity->name] = new \stdClass;
-                     $options[$c_entity->name]->title = $c_entity->title;}
-          $options[$c_entity->name]->values[ $c_entity->name.'.'.$c_name ] = new text_multiline([
-            'title' => $c_title, 'id' => '('.$c_entity->name.'.'.$c_name.')'], [], ' '
-          );
+        if (!empty($c_entity->managing_is_on)) {
+          foreach ($c_entity->fields_get_title() as $c_name => $c_title) {
+            if (!isset($options[$c_entity->name])) {
+                       $options[$c_entity->name] = new \stdClass;
+                       $options[$c_entity->name]->title = $c_entity->title;}
+            $options[$c_entity->name]->values[ $c_entity->name.'.'.$c_name ] = new text_multiline([
+              'title' => $c_title, 'id' => '('.$c_entity->name.'.'.$c_name.')'], [], ' '
+            );
+          }
         }
       }
       $select_field = new field_select('Insert field');
