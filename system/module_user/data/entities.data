@@ -36,7 +36,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     constraints
     - primary_id
@@ -212,7 +212,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     constraints
     - primary_id
@@ -351,7 +351,7 @@ entities
         managing_form_class: \effcore\field_timezone
         managing_form_element_attributes
         - data-source: uagent-timezone
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - password_hash
         title: New password

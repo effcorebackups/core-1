@@ -23,8 +23,8 @@ namespace effcore\modules\storage {
       $selection = new selection;
       $selection->id = 'instances_manage-'.$entity->name;
       $selection->pager_is_on = true;
-      foreach ($entity->selection_params as $c_key => $c_value)
-        $selection->                       {$c_key} = $c_value;
+      foreach ($entity->managing_selection_params as $c_key => $c_value)
+        $selection->                                {$c_key} = $c_value;
         $selection->decorator_params['view_type'] = $entity->decorator_view_type_multiple;
       $form->_selection = $selection;
       $has_visible_fields = false;
@@ -32,7 +32,7 @@ namespace effcore\modules\storage {
         if (!empty($c_field->managing_is_on_select)) {
           $has_visible_fields = true;
           $selection->field_insert_entity(null,
-            $entity->name, $c_name, $c_field->selection_params ?? []
+            $entity->name, $c_name, $c_field->managing_selection_params ?? []
           );
         }
       }

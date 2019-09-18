@@ -39,7 +39,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     constraints
     - primary_id
@@ -66,7 +66,7 @@ entities
     ws_updated_parallel_checking: true
     ws_data: true
     decorator_view_type_multiple: tree
-    selection_params
+    managing_selection_params
     - decorator_params
       - tree_managing_mode: simple-draggable
       - tree_mapping

@@ -27,7 +27,7 @@ namespace effcore {
   public $managing_group = 'Other';
   public $decorator_view_type_single = 'ul';
   public $decorator_view_type_multiple = 'table-adaptive';
-  public $selection_params = [];
+  public $managing_selection_params = [];
 
   function _postparse() {
   # insert field 'is_embed'
@@ -41,7 +41,7 @@ namespace effcore {
       $this->fields['is_embed']->managing_form_class = '\\effcore\\field_switcher';
       $this->fields['is_embed']->managing_properties['weight'] = 95;
       $this->fields['is_embed']->managing_form_element_attributes['disabled'] = true;
-      $this->fields['is_embed']->selection_params['is_apply_translation'] = true;
+      $this->fields['is_embed']->managing_selection_params['is_apply_translation'] = true;
     }
   # insert field 'weight' and index for it
     if ($this->ws_weight) {

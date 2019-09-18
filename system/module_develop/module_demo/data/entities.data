@@ -32,7 +32,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
@@ -164,7 +164,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
@@ -338,7 +338,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_logic
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - created
         title: Created

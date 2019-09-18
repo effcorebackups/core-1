@@ -74,7 +74,7 @@ entities
         managing_form_class: \effcore\field_text
         managing_form_element_attributes
         - maxlength: 1024
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - url
         title: URL
@@ -97,7 +97,7 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_switcher
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - lang_code
         title: Language
@@ -196,7 +196,7 @@ entities
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - url
         title: URL
@@ -276,7 +276,7 @@ entities
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - fields
         title: Fields
@@ -348,7 +348,7 @@ entities
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
-        selection_params
+        managing_selection_params
         - is_apply_translation: true
     - text
         title: Text
