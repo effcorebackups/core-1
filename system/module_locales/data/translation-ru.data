@@ -359,6 +359,7 @@ translations
     - Parent ID: ID Родителя
     - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Часть страницы с id = "%%_id_page_part" была удалена из область с id = "%%_id_area".
     - Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".: Часть страницы с id = "%%_id_page_part" была вставлена в область с id = "%%_id_area".
+    - Parts: Части
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
     - Path: Путь

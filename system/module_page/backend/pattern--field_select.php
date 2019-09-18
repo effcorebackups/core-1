@@ -14,7 +14,7 @@ namespace effcore {
     'name'     => 'select',
     'required' => true];
 # ─────────────────────────────────────────────────────────────────────
-  public $values = [];
+  public $values   = [];
   public $selected = [];
   public $disabled = [];
 
