@@ -114,6 +114,13 @@ namespace effcore {
     );
   }
 
+  function fields_get_title() {
+    $result = [];
+    foreach ($this->fields as $name => $info)
+      $result[$name] = $info->title ?? '';
+    return $result;
+  }
+
   function auto_name_get() {
     foreach ($this->fields as $name => $info) {
       if ($info->type == 'autoincrement') {
