@@ -67,10 +67,10 @@ namespace effcore {
         }
         foreach ($this->join ?? [] as $c_id => $c_join) {
           $this->query_params['join'][$c_id] = [
-            'type'      => 'LEFT OUTER JOIN',
+              'type'    => 'LEFT OUTER JOIN',
             'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
-            'left_!f'   => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
-            'right_!f'  => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
+              'left_!f' => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
+             'right_!f' => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
           ];
         }
         if (empty($this->query_params['limit']))
@@ -82,10 +82,10 @@ namespace effcore {
           $page_max_number = ceil($instances_count / $this->query_params['limit']);
           if ($page_max_number > 1) {
             $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
-            if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) {url::go($pager->last_page_url_get()->tiny_get());}
-            if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) {
+            if ($pager->error_code_get() && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) url::go($pager->last_page_url_get()->tiny_get());
+            if ($pager->error_code_get() && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX)
               core::send_header_and_exit('page_not_found');
-            } else {
+            else {
               $this->query_params['offset'] = ($pager->cur - 1) * $this->query_params['limit'];
               $this->child_insert(
                 $pager, 'pager'
