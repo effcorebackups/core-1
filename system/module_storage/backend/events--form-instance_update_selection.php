@@ -46,7 +46,16 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if ($entity->name == 'selection' && !empty($form->_instance)) {
+        switch ($form->clicked_button->value_get()) {
+          case 'update':
+            break;
+        }
+      }
+    }
   }
 
 }}
