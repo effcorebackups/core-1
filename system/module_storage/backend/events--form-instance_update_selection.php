@@ -10,6 +10,7 @@ namespace effcore\modules\storage {
           use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\group_selection_field_insert;
+          use \effcore\group_selection_field_manage;
           use \effcore\page;
           abstract class events_form_instance_update_selection {
 
@@ -28,6 +29,12 @@ namespace effcore\modules\storage {
                   $form->validation_cache_set('fields', $form->_instance->fields ?: []);
         $fields = $form->validation_cache_get('fields');
       # field 'Field insert'
+        foreach ($fields as $c_id => $c_info) {
+          $c_field_manage = new group_selection_field_manage;
+          $c_field_manage->id   = $c_id;
+          $c_field_manage->info = $c_info;
+          $c_field_manage->build();
+          $fieldset_fields->child_insert($c_field_manage, $c_id);}
         $field_insert = new group_selection_field_insert;
         $field_insert->build();
         $fieldset_fields->child_insert($field_insert, 'field_insert');
