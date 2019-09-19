@@ -29,14 +29,9 @@ namespace effcore\modules\page {
           $items['#url']->disabled_set(true);
         }
       # init pool of links
+        if      ($form->validation_cache_get('presets_link') === null)
+                 $form->validation_cache_set('presets_link', $form->_instance->parts ?: []);
         $links = $form->validation_cache_get('presets_link');
-        if ($links === null) {
-            $links = [];
-          foreach ($form->_instance->parts ?: [] as $c_id_area => $c_links_old)
-            foreach ($c_links_old as $c_id_part => $c_link_old)
-              $links[$c_id_area]    [$c_id_part] = $c_link_old;
-          $form->validation_cache_set('presets_link', $links);
-        }
       # build layout
         $form->_parts_manage = [];
         $form->_parts_insert = [];

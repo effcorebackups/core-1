@@ -23,10 +23,10 @@ namespace effcore\modules\storage {
         $fieldset_decorator_params = new fieldset('Decorator parameters');
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_order            = new fieldset('Order');
-      # fields
+      # init pool of fields
+        if       ($form->validation_cache_get('fields') === null)
+                  $form->validation_cache_set('fields', $form->_instance->fields ?: []);
         $fields = $form->validation_cache_get('fields');
-        if ($fields === null) {
-        }
       # field 'Field insert'
         $field_insert = new group_selection_field_insert;
         $field_insert->build();
