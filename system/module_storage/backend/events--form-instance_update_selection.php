@@ -18,29 +18,33 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'selection' && !empty($form->_instance)) {
-        $fields           = new fieldset('Fields');
-        $query_params     = new fieldset('Query parameters');
-        $decorator_params = new fieldset('Decorator parameters');
-        $conditions       = new fieldset('Conditions');
-        $order            = new fieldset('Order');
-
+        $fieldset_fields           = new fieldset('Fields');
+        $fieldset_query_params     = new fieldset('Query parameters');
+        $fieldset_decorator_params = new fieldset('Decorator parameters');
+        $fieldset_conditions       = new fieldset('Conditions');
+        $fieldset_order            = new fieldset('Order');
+      # fields
+        $fields = $form->validation_cache_get('fields');
+        if ($fields === null) {
+        }
+      # field 'Field insert'
         $field_insert = new group_selection_field_insert;
         $field_insert->build();
-        $fields->child_insert($field_insert, 'field_insert');
-
-        $limit = new field_number('Limit');
-        $limit->build();
-        $limit->name_set('limit');
-        $limit->value_set(1);
-        $limit->min_set(1);
-        $limit->max_set(10000);
-
-        $query_params                ->child_insert($conditions,       'conditions'      );
-        $query_params                ->child_insert($order,            'order'           );
-        $query_params                ->child_insert($limit,            'limit'           );
-        $form->child_select('fields')->child_insert($fields,           'fields'          );
-        $form->child_select('fields')->child_insert($query_params,     'query_params'    );
-        $form->child_select('fields')->child_insert($decorator_params, 'decorator_params');
+        $fieldset_fields->child_insert($field_insert, 'field_insert');
+      # field 'Limit'
+        $field_limit = new field_number('Limit');
+        $field_limit->build();
+        $field_limit->name_set('limit');
+        $field_limit->value_set(1);
+        $field_limit->min_set(1);
+        $field_limit->max_set(10000);
+      # fill the form
+        $fieldset_query_params       ->child_insert($fieldset_conditions,       'conditions'      );
+        $fieldset_query_params       ->child_insert($fieldset_order,            'order'           );
+        $fieldset_query_params       ->child_insert($field_limit,               'limit'           );
+        $form->child_select('fields')->child_insert($fieldset_fields,           'fields'          );
+        $form->child_select('fields')->child_insert($fieldset_query_params,     'query_params'    );
+        $form->child_select('fields')->child_insert($fieldset_decorator_params, 'decorator_params');
       }
     }
   }
