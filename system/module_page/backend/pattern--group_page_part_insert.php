@@ -22,7 +22,9 @@ namespace effcore {
         if (!isset($options[$c_group_id])) {
                    $options[$c_group_id] = new \stdClass;
                    $options[$c_group_id]->title = $c_preset->managing_group;}
-        $options[$c_group_id]->values[$c_preset->id] = $c_preset->managing_title;
+        $options[$c_group_id]->values[$c_preset->id] = new text_multiline([
+          'title' => $c_preset->managing_title, 'id' => '('.$c_preset->id.')'], [], ' '
+        );
       }
       $select_preset = new field_select('Insert part');
       $select_preset->values = $options;

@@ -31,8 +31,8 @@ namespace effcore\modules\storage {
       # field 'Field insert'
         foreach ($fields as $c_id => $c_info) {
           $c_field_manage = new group_selection_field_manage;
-          $c_field_manage->id   = $c_id;
-          $c_field_manage->info = $c_info;
+          $c_field_manage->entity_name       = $c_info->entity_name;
+          $c_field_manage->entity_field_name = $c_info->entity_field_name;
           $c_field_manage->build();
           $fieldset_fields->child_insert($c_field_manage, $c_id);}
         $field_insert = new group_selection_field_insert;
