@@ -4,7 +4,7 @@
   ### Copyright © 2017—2020 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\page {
+namespace effcore\modules\storage {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\field_number;
@@ -46,6 +46,7 @@ namespace effcore\modules\page {
   }
 
   static function on_submit($event, $form, $items) {
+
   }
 
 }}

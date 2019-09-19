@@ -33,10 +33,6 @@ events
       for: instance_update
       weight: -50
       handler: \effcore\modules\page\events_form_instance_update_page::on_init
-  - instance_update_selection|event
-      for: instance_update
-      weight: -50
-      handler: \effcore\modules\page\events_form_instance_update_selection::on_init
   on_form_validate
   - instance_insert_page|event
       for: instance_insert
@@ -56,10 +52,6 @@ events
       for: instance_update
       weight: +50
       handler: \effcore\modules\page\events_form_instance_update_page::on_submit
-  - instance_update_selection|event
-      for: instance_update
-      weight: +50
-      handler: \effcore\modules\page\events_form_instance_update_selection::on_submit
   on_tab_build_before
   - decoration|event
       for: decoration

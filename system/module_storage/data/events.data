@@ -19,6 +19,10 @@ events
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_init
+  - instance_update_selection|event
+      for: instance_update
+      weight: -50
+      handler: \effcore\modules\storage\events_form_instance_update_selection::on_init
   on_form_validate
   - instance_select_multiple|event
       for: instance_select_multiple
@@ -39,6 +43,10 @@ events
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
+  - instance_update_selection|event
+      for: instance_update
+      weight: +50
+      handler: \effcore\modules\storage\events_form_instance_update_selection::on_submit
   on_tab_build_before
   - data|event
       for: data
