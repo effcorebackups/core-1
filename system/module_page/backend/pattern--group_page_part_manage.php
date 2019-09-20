@@ -19,7 +19,7 @@ namespace effcore {
       $button_delete = new button('', ['data-style' => 'narrow-delete']);
       $button_delete->build();
       $button_delete->value_set('button_delete_'.$this->id_preset.'_in_'.$this->id_area);
-      $this->child_insert($button_delete, 'button');
+      $this->child_insert($button_delete, 'button_delete');
       $this->child_insert(new markup('x-title', [], $preset->managing_title ?? 'LOST PART'), 'title');
       $this->child_insert(new markup('x-id',    [], new text_simple($this->id_preset)     ), 'id'   );
       $this->is_builded = true;
@@ -31,7 +31,7 @@ namespace effcore {
   ###########################
 
   static function submit(&$group, $form, $npath) {
-    $button = $group->child_select('button');
+    $button = $group->child_select('button_delete');
     if ($button->is_clicked()) {
       return (object)[
         'id_area'   => $group->id_area,
