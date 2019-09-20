@@ -36,7 +36,7 @@ namespace effcore {
       $button_insert->build();
       $button_insert->value_set('button_field_insert');
       $this->child_insert($select_field,  'select');
-      $this->child_insert($button_insert, 'button');
+      $this->child_insert($button_insert, 'button_field_insert');
       $this->is_builded = true;
     }
   }
@@ -49,6 +49,23 @@ namespace effcore {
   }
 
   static function submit(&$group, $form, $npath) {
+    $select        = $group->child_select('select');
+    $button_insert = $group->child_select('button_field_insert');
+    if ($button_insert->is_clicked() && $select->value_get()) {
+      $fields = $form->validation_cache_get('fields');
+      $entity_info = explode('.', $select->value_get());
+      $fields[$select->value_get()] = (object)[
+        'type'              => 'field',
+        'entity_name'       => $entity_info[0],
+        'entity_field_name' => $entity_info[1]];
+      $form->validation_cache_is_persistent = true;
+      $form->validation_cache_set('fields', $fields);
+      $entity = entity::get(             $entity_info[0]);
+      $entity_field = $entity->field_get($entity_info[1]);
+      message::insert(new text('Field "%%_name" was inserted.', ['name' => translation::get($entity->title).': '.translation::get($entity_field->title)]));
+      message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+      return true;
+    }
   }
 
 }}

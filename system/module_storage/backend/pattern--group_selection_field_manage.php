@@ -21,8 +21,8 @@ namespace effcore {
         if ($entity_field) {
           $button_delete = new button('', ['data-style' => 'narrow-delete']);
           $button_delete->build();
-          $button_delete->value_set('button_field_delete_'.$this->entity_field_name);
-          $this->child_insert($button_delete, 'button');
+          $button_delete->value_set('button_field_delete_'.$this->entity_name.'_'.$this->entity_field_name);
+          $this->child_insert($button_delete, 'button_field_delete');
           $this->child_insert(new markup('x-title', [], [$entity->title, ': ', $entity_field->title]), 'title');
           $this->child_insert(new markup('x-id',    [], [
             new text_simple($this->entity_name), '.',
@@ -38,15 +38,15 @@ namespace effcore {
   ###########################
 
   static function submit(&$group, $form, $npath) {
-    $button = $group->child_select('button');
-    if ($button->is_clicked()) {
+    $button_delete = $group->child_select('button_field_delete');
+    if ($button_delete->is_clicked()) {
       $fields = $form->validation_cache_get('fields');
       foreach ($fields as $c_row_id => $c_field) {
         if ($c_field->entity_name       == $group->entity_name &&
             $c_field->entity_field_name == $group->entity_field_name) {
           unset($fields[$c_row_id]);
-          $form->validation_cache_set('fields', $fields);
           $form->validation_cache_is_persistent = true;
+          $form->validation_cache_set('fields', $fields);
           $entity = entity::get($group->entity_name);
           $entity_field = $entity->field_get($group->entity_field_name);
           message::insert(new text('Field "%%_name" was deleted.', ['name' => translation::get($entity->title).': '.translation::get($entity_field->title)]));

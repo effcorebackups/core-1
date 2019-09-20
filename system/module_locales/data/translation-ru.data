@@ -150,6 +150,7 @@ translations
     - Expired date: Дата истечения
     - failed to write file to disk: не удалось записать файл на диск
     - Field "%%_name" was deleted.: Поле "%%_name" было удалено.
+    - Field "%%_name" was inserted.: Поле "%%_name" было вставлено.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
