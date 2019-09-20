@@ -72,7 +72,7 @@ namespace effcore {
       $form->validation_cache_set('fields', $fields);
       $entity = entity::get(             $entity_info[0]);
       $entity_field = $entity->field_get($entity_info[1]);
-      message::insert(new text('Field "%%_name" was inserted.', ['name' => translation::get($entity->title).': '.translation::get($entity_field->title)]));
+      message::insert(new text('Field "%%_title" (%%_id) was inserted.', ['title' => translation::get($entity->title).': '.translation::get($entity_field->title), 'id' => $entity_info[0].'.'.$entity_info[1]]));
       message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
       return true;
     }

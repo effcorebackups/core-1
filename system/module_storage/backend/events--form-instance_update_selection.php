@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;

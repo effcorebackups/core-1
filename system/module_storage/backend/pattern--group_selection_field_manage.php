@@ -45,7 +45,7 @@ namespace effcore {
           $form->validation_cache_set('fields', $fields);
           $entity = entity::get($group->entity_name);
           $entity_field = $entity ? $entity->field_get($group->entity_field_name) : null;
-          message::insert(new text('Field "%%_name" was deleted.', ['name' => isset($entity_field->title) ? translation::get($entity->title).': '.translation::get($entity_field->title) : 'LOST PART']));
+          message::insert(new text('Field "%%_title" (%%_id) was deleted.', ['title' => isset($entity_field->title) ? translation::get($entity->title).': '.translation::get($entity_field->title) : 'LOST PART', 'id' => $group->entity_name.'.'.$group->entity_field_name]));
           message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
           return true;
         }

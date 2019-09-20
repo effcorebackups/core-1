@@ -12,11 +12,8 @@ namespace effcore\modules\page {
           use \effcore\group_page_part_manage;
           use \effcore\layout;
           use \effcore\markup;
-          use \effcore\message;
           use \effcore\page_part_preset_link;
           use \effcore\page;
-          use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_instance_update_page {
 
   static function on_init($event, $form, $items) {
@@ -46,9 +43,7 @@ namespace effcore\modules\page {
                 $c_part_manage->id_area   = $c_area->id;
                 $c_part_manage->id_preset = $c_part->id;
                 $c_part_manage->build();
-                $c_area->child_insert($c_part_manage, 'part_manage_'.$c_part->id);
-              }
-            }
+                $c_area->child_insert($c_part_manage, 'part_manage_'.$c_part->id);}}
           # insert group 'Part insert'
             $c_part_insert = new group_page_part_insert;
             $c_part_insert->id_area = $c_area->id;
