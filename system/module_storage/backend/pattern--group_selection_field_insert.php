@@ -13,8 +13,9 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $options = ['not_selected' => '- no -'];
       $entities = entity::get_all();
+      core::array_sort_by_text_property($entities);
+      $options = ['not_selected' => '- no -'];
       foreach ($entities as $c_entity) {
         if (!empty($c_entity->managing_is_on)) {
           foreach ($c_entity->fields_get_title() as $c_name => $c_title) {
@@ -27,16 +28,16 @@ namespace effcore {
           }
         }
       }
-      $select_field = new field_select('Insert field');
-      $select_field->values = $options;
-      $select_field->build();
-      $select_field->name_set('insert_field');
-      $select_field->required_set(false);
-      $button_insert = new button('', ['data-style' => 'narrow-insert']);
-      $button_insert->build();
-      $button_insert->value_set('button_field_insert');
-      $this->child_insert($select_field,  'select');
-      $this->child_insert($button_insert, 'button_field_insert');
+      $select = new field_select('Insert field');
+      $select->values = $options;
+      $select->build();
+      $select->name_set('field_insert');
+      $select->required_set(false);
+      $button = new button('', ['data-style' => 'narrow-insert']);
+      $button->build();
+      $button->value_set('button_field_insert');
+      $this->child_insert($select, 'select');
+      $this->child_insert($button, 'button');
       $this->is_builded = true;
     }
   }
@@ -49,9 +50,9 @@ namespace effcore {
   }
 
   static function submit(&$group, $form, $npath) {
-    $select        = $group->child_select('select');
-    $button_insert = $group->child_select('button_field_insert');
-    if ($button_insert->is_clicked() && $select->value_get()) {
+    $select = $group->child_select('select');
+    $button = $group->child_select('button');
+    if ($button->is_clicked() && $select->value_get()) {
       $fields = $form->validation_cache_get('fields');
       $entity_info = explode('.', $select->value_get());
       $fields[$select->value_get()] = (object)[

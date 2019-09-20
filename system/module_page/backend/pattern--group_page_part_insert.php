@@ -26,16 +26,16 @@ namespace effcore {
           'title' => $c_preset->managing_title, 'id' => '('.$c_preset->id.')'], [], ' '
         );
       }
-      $select_preset = new field_select('Insert part');
-      $select_preset->values = $options;
-      $select_preset->build();
-      $select_preset->name_set('insert_to_'.$this->id_area);
-      $select_preset->required_set(false);
-      $button_insert = new button('', ['data-style' => 'narrow-insert']);
-      $button_insert->build();
-      $button_insert->value_set('button_insert_to_'.$this->id_area);
-      $this->child_insert($select_preset, 'select');
-      $this->child_insert($button_insert, 'button');
+      $select = new field_select('Insert part');
+      $select->values = $options;
+      $select->build();
+      $select->name_set('part_insert_to_'.$this->id_area);
+      $select->required_set(false);
+      $button = new button('', ['data-style' => 'narrow-insert']);
+      $button->build();
+      $button->value_set('button_part_insert_to_'.$this->id_area);
+      $this->child_insert($select, 'select');
+      $this->child_insert($button, 'button');
       $this->is_builded = true;
     }
   }
