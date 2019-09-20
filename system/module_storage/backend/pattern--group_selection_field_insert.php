@@ -47,6 +47,15 @@ namespace effcore {
   ###########################
 
   static function validate($group, $form, $npath) {
+    $select = $group->child_select('select');
+    $button = $group->child_select('button');
+    if ($button->is_clicked() && !$select->value_get()) {
+      $select->error_set(
+        'Field "%%_title" must be selected!', ['title' => translation::get($select->title)]
+      );
+    } else {
+      return true;
+    }
   }
 
   static function submit(&$group, $form, $npath) {
