@@ -60,9 +60,14 @@ namespace effcore {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && $select->value_get()) {
-      return (object)[
-        'id_area'   => $group->id_area,
-        'id_preset' => $select->value_get()];
+      $id_preset = $select->value_get();
+      $parts = $form->validation_cache_get('parts');
+      $parts[$group->id_area][$id_preset] = new page_part_preset_link($id_preset);
+      $form->validation_cache_is_persistent = true;
+      $form->validation_cache_set('parts', $parts);
+      message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $id_preset, 'id_area' => $group->id_area]));
+      message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+      return true;
     }
   }
 

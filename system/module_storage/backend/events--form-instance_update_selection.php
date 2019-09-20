@@ -27,18 +27,18 @@ namespace effcore\modules\storage {
       # init pool of fields
         if ($form->validation_cache_get('fields') === null)
             $form->validation_cache_set('fields', $form->_instance->fields ?: []);
-      # groups 'Field delete'
+      # insert groups 'Field manage'
         foreach ($form->validation_cache_get('fields') as $c_id => $c_info) {
           $c_field_manage = new group_selection_field_manage;
           $c_field_manage->entity_name       = $c_info->entity_name;
           $c_field_manage->entity_field_name = $c_info->entity_field_name;
           $c_field_manage->build();
           $fieldset_fields->child_insert($c_field_manage, $c_id);}
-      # group 'Field insert'
+      # insert group 'Field insert'
         $field_insert = new group_selection_field_insert;
         $field_insert->build();
         $fieldset_fields->child_insert($field_insert, 'field_insert');
-      # field 'Limit'
+      # insert field 'Limit'
         $field_limit = new field_number('Limit');
         $field_limit->build();
         $field_limit->name_set('limit');
@@ -62,13 +62,13 @@ namespace effcore\modules\storage {
     if ($entity) {
       if ($entity->name == 'selection' && !empty($form->_instance)) {
         if ($form->clicked_button->value_get() == 'update')
-          $form->_instance->fields = $form->validation_cache_get('fields');
+          $form->_instance->fields = $form->validation_cache_get('fields') ?: null;
         else {
         # manual submit for groups (widgets)
           foreach ($items as $c_npath => $c_item)
             if (is_object($c_item) && method_exists($c_item, 'submit'))
               $c_item::submit($c_item, $form, $c_npath);
-          static::on_init(null, $form, $items);          
+          static::on_init(null, $form, $items);
         }
       }
     }
