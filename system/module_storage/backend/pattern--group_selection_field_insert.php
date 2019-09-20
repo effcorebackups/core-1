@@ -34,7 +34,7 @@ namespace effcore {
       $select_field->required_set(false);
       $button_insert = new button('', ['data-style' => 'narrow-insert']);
       $button_insert->build();
-      $button_insert->value_set('button_insert');
+      $button_insert->value_set('button_field_insert');
       $this->child_insert($select_field,  'select');
       $this->child_insert($button_insert, 'button');
       $this->is_builded = true;

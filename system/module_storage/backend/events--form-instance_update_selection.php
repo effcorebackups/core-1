@@ -25,16 +25,16 @@ namespace effcore\modules\storage {
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_order            = new fieldset('Order');
       # init pool of fields
-        if       ($form->validation_cache_get('fields') === null)
-                  $form->validation_cache_set('fields', $form->_instance->fields ?: []);
-        $fields = $form->validation_cache_get('fields');
-      # field 'Field insert'
-        foreach ($fields as $c_id => $c_info) {
+        if ($form->validation_cache_get('fields') === null)
+            $form->validation_cache_set('fields', $form->_instance->fields ?: []);
+      # groups 'Field delete'
+        foreach ($form->validation_cache_get('fields') as $c_id => $c_info) {
           $c_field_manage = new group_selection_field_manage;
           $c_field_manage->entity_name       = $c_info->entity_name;
           $c_field_manage->entity_field_name = $c_info->entity_field_name;
           $c_field_manage->build();
           $fieldset_fields->child_insert($c_field_manage, $c_id);}
+      # group 'Field insert'
         $field_insert = new group_selection_field_insert;
         $field_insert->build();
         $fieldset_fields->child_insert($field_insert, 'field_insert');
@@ -64,6 +64,13 @@ namespace effcore\modules\storage {
         switch ($form->clicked_button->value_get()) {
           case 'update':
             break;
+          default:
+          # manual submit for groups (widgets)
+            foreach ($items as $c_npath => $c_item) {
+              if (is_object($c_item) && method_exists($c_item, 'submit')) {
+                $c_item::submit($c_item, $form, $c_npath);
+              }
+            }
         }
       }
     }
