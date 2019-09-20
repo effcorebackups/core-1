@@ -7,7 +7,7 @@
 namespace effcore {
           class group_page_part_manage extends fieldset {
 
-  public $tag_name = 'x-page_part-manage';
+  public $tag_name = 'x-part-manage';
   public $content_tag_name = null;
   public $id_area;
   public $id_preset;
@@ -21,7 +21,7 @@ namespace effcore {
       $button_delete->value_set('button_delete_'.$this->id_preset.'_in_'.$this->id_area);
       $this->child_insert($button_delete, 'button');
       $this->child_insert(new markup('x-title', [], $preset->managing_title ?? 'LOST PART'), 'title');
-      $this->child_insert(new markup('x-id',    [], $this->id_preset                      ), 'id'   );
+      $this->child_insert(new markup('x-id',    [], new text_simple($this->id_preset)     ), 'id'   );
       $this->is_builded = true;
     }
   }

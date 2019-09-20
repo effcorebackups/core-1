@@ -7,7 +7,7 @@
 namespace effcore {
           class group_selection_field_manage extends fieldset {
 
-  public $tag_name = 'x-selection_field-manage';
+  public $tag_name = 'x-part-manage';
   public $content_tag_name = null;
   public $entity_name;
   public $entity_field_name;
