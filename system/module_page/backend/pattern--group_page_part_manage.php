@@ -35,6 +35,8 @@ namespace effcore {
     if ($button_delete->is_clicked()) {
       $parts = $form->validation_cache_get('parts');
       unset($parts[$group->id_area][$group->id_preset]);
+      if   ($parts[$group->id_area] == [])
+      unset($parts[$group->id_area]);
       $form->validation_cache_is_persistent = true;
       $form->validation_cache_set('parts', $parts);
       message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $group->id_preset, 'id_area' => $group->id_area]));
