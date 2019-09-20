@@ -61,16 +61,14 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'selection' && !empty($form->_instance)) {
-        switch ($form->clicked_button->value_get()) {
-          case 'update':
-            break;
-          default:
-          # manual submit for groups (widgets)
-            foreach ($items as $c_npath => $c_item) {
-              if (is_object($c_item) && method_exists($c_item, 'submit')) {
-                $c_item::submit($c_item, $form, $c_npath);
-              }
-            }
+        if ($form->clicked_button->value_get() == 'update')
+          $form->_instance->fields = $form->validation_cache_get('fields');
+        else {
+        # manual submit for groups (widgets)
+          foreach ($items as $c_npath => $c_item)
+            if (is_object($c_item) && method_exists($c_item, 'submit'))
+              $c_item::submit($c_item, $form, $c_npath);
+          static::on_init(null, $form, $items);          
         }
       }
     }
