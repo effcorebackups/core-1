@@ -13,7 +13,7 @@ namespace effcore\modules\menu {
   static function on_build_before($event, $page) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
-    if ($entity_name == 'tree_item') {
+    if ($entity_name == 'tree_item' && $category_id) {
       $trees = tree::select_all('sql');
       if (empty($trees[$category_id])) {
         core::send_header_and_exit('page_not_found');
