@@ -854,8 +854,7 @@ namespace effcore {
                 $src_resource) {
         $src_w = imagesx($src_resource);
         $src_h = imagesy($src_resource);
-        $ratio = $src_w / $src_h;
-        $dst_h = $dst_w * $ratio;
+        $dst_h = (int)($src_h / ($src_w / $dst_w));
         $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
         if ($dst_resource) {
           @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
