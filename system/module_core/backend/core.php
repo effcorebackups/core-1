@@ -844,7 +844,7 @@ namespace effcore {
   ### image ###
   #############
 
-  static function thumbnail_create($src_path, $dst_path, $dst_w = 100, $result_format = 'png') {
+  static function thumbnail_create($src_path, $dst_path, $dst_w = 100, $result_format = null) {
     $type = @exif_imagetype($src_path);
     if ($type !== false) {
       if ($type == IMAGETYPE_GIF  && function_exists('imagecreatefromgif' )) $src_resource = @imagecreatefromgif ($src_path);
@@ -859,9 +859,9 @@ namespace effcore {
         $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
         if ($dst_resource) {
           @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
-          if ($result_format == 'png'  && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_path.'.png' );
-          if ($result_format == 'jpeg' && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_path.'.jpeg');
-          if ($result_format == 'gif'  && function_exists('imagegif' )) $result = @imagegif ($dst_resource, $dst_path.'.gif' );
+          if ((($type == IMAGETYPE_PNG  && $result_format == null) || $result_format == 'png' ) && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_path.'.png' );
+          if ((($type == IMAGETYPE_JPEG && $result_format == null) || $result_format == 'jpeg') && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_path.'.jpeg');
+          if ((($type == IMAGETYPE_GIF  && $result_format == null) || $result_format == 'gif' ) && function_exists('imagegif' )) $result = @imagegif ($dst_resource, $dst_path.'.gif' );
           imagedestroy($dst_resource);
           return $result ?? null;
         }
