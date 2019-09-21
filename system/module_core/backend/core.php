@@ -856,6 +856,9 @@ namespace effcore {
         $src_h = imagesy($src_resource);
         $dst_h = (int)($src_h / ($src_w / $dst_w));
         $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
+        @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
+        @imagealphablending   ($dst_resource, $type == IMAGETYPE_GIF);
+        @imagesavealpha       ($dst_resource, true);
         if ($dst_resource) {
           @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
           if ((($type == IMAGETYPE_PNG  && $result_format == null) || $result_format == 'png' ) && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_path.'.png' );
