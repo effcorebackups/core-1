@@ -862,7 +862,7 @@ namespace effcore {
           if ((($type == IMAGETYPE_PNG  && $result_format == null) || $result_format == 'png' ) && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_path.'.png' );
           if ((($type == IMAGETYPE_JPEG && $result_format == null) || $result_format == 'jpeg') && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_path.'.jpeg');
           if ((($type == IMAGETYPE_GIF  && $result_format == null) || $result_format == 'gif' ) && function_exists('imagegif' )) $result = @imagegif ($dst_resource, $dst_path.'.gif' );
-          imagedestroy($dst_resource);
+          @imagedestroy($dst_resource);
           return $result ?? null;
         }
       }
