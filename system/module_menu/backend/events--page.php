@@ -30,8 +30,8 @@ namespace effcore\modules\menu {
           page::get_current()->id == 'instance_delete') {
         if ($category_id) {                                                    $tree = tree::select($category_id       );}
         if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
-        $breadcrumbs->link_update('entity', 'Tree item', '/manage/data/menu/tree_item');
-        if (isset($tree)) {
+        $breadcrumbs->link_update('entity', 'Tree items', '/manage/data/menu/tree_item');
+        if (isset($tree)) { # p.s. $tree is undefined on "insert instance" page
           $breadcrumbs->link_insert('category', $tree->title,
             $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/menu/tree_item///'.$tree->id))
           );
