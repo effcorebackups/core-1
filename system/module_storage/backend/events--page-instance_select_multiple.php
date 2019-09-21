@@ -34,7 +34,7 @@ namespace effcore\modules\storage {
     foreach ($entities as $c_entity) {
       if ($c_entity->managing_is_on) {
         $entities_by_groups[$c_entity->group_managing_get_id()]
-                           [$c_entity->name                   ] = $c_entity->title;
+                           [$c_entity->name                   ] = $c_entity->title_plural;
       }
     }
   # remove empty groups
