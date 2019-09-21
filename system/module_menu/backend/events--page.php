@@ -6,7 +6,6 @@
 
 namespace effcore\modules\menu {
           use \effcore\page;
-          use \effcore\translation;
           use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
@@ -29,11 +28,14 @@ namespace effcore\modules\menu {
           page::get_current()->id == 'instance_insert' ||
           page::get_current()->id == 'instance_update' ||
           page::get_current()->id == 'instance_delete') {
-        $tree = null;
         if ($category_id) {                                                    $tree = tree::select($category_id       );}
         if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
-        if ($tree) $breadcrumbs->link_update('entity', translation::get('Items for: %%_title', ['title' => translation::get($tree->title)]), $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/menu/tree_item///'.$tree->id)));
-        else       $breadcrumbs->link_delete('entity');
+        $breadcrumbs->link_update('entity', 'Tree item', '/manage/data/menu/tree_item');
+        if (isset($tree)) {
+          $breadcrumbs->link_insert('category', $tree->title,
+            $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/menu/tree_item///'.$tree->id))
+          );
+        }
       }
     }
   }

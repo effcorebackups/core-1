@@ -8,23 +8,24 @@ namespace effcore\modules\menu {
           use \effcore\core;
           use \effcore\page;
           use \effcore\tabs_item;
-          use \effcore\translation;
           use \effcore\tree;
+          use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
   static function on_tab_build_before($event, $tab) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
-    $trees = tree::select_all('sql');
-    core::array_sort_by_text_property($trees);
-    if ($entity_name == 'tree_item' && empty($trees[$category_id])) core::send_header_and_exit('page_not_found');
-    tabs_item::delete('data_menu_tree_item');
-    foreach ($trees as $c_tree) {
-      tabs_item::insert(translation::get('Items for: %%_title', ['title' => translation::get($c_tree->title)]),
-        'data_menu_tree_item_'.$c_tree->id,
-        'data_menu',
-        'data', 'menu/tree_item///'.$c_tree->id
-      );
+    if ($entity_name == 'tree_item') {
+      $trees = tree::select_all('sql');
+      core::array_sort_by_text_property($trees);
+      if (empty($trees[$category_id])) url::go(page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
+      foreach ($trees as $c_tree) {
+        tabs_item::insert($c_tree->title,
+          'data_menu_tree_item_'.$c_tree->id,
+          'data_menu_tree_item',
+          'data', 'menu/tree_item///'.$c_tree->id
+        );
+      }
     }
   }
 
