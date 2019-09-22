@@ -33,5 +33,5 @@ When using archive and FTP manager
   If you do not have a database, you can create a new database
   and user with known credentials for it through the hosting panel.
 - If you get the message "unknown mysql server host [::1]" then try
-  to use the value "127.0.0.1" in the "Hostname" field.
+  to use the value "127.0.0.1" or "localhost" in the "Hostname" field.
 
