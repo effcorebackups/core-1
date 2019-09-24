@@ -54,7 +54,7 @@ namespace effcore\modules\core {
 
   static function on_show_block_environment_info($page) {
     $storage_sql = storage::get('sql');
-    $is_enabled_opcache = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
+    $is_enabled_opcache = function_exists('opcache_get_status') && !empty(@opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_sticker = new markup('x-sticker', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
