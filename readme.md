@@ -128,7 +128,7 @@ All data is stored as PHP code.
 Perhaps the fastest storage after "storage in RAM".
 After organizing the disk in RAM, you can increase performance
 by 3-5 times (more details in the section "Performance improvement").
-Each storage subdirectory will be initialized only if required.
+Each storage subdirectory will be initialized only on demand.
 
 Any instance of the class and other NoSQL data can be described
 in text format in a file of type "*.data", like YAML, but has a more
@@ -209,7 +209,7 @@ Core: SQL
 
 MySQL and SQLite can be used as SQL storages.
 The required versions can be found in the "readme/software.mark" file.
-Storage connection and data retrieval will initialize only if required.
+Storage connection and data retrieval will initialize only on demand.
 Denying access to SQL storage will not raise an error, but will only
 make inaccessible part of the possibilities (for example, sessions
 and login will be disconnected, and on the pages with election
