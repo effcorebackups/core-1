@@ -6,7 +6,9 @@
 
 namespace effcore\modules\storage {
           use \effcore\entity;
+          use \effcore\page_part_preset;
           use \effcore\page;
+          use \effcore\selection;
           use \effcore\url;
           abstract class events_page {
 
@@ -24,6 +26,15 @@ namespace effcore\modules\storage {
       $entity = entity::get($entity_name);
       $breadcrumbs->link_insert('entity_group', $groups[$managing_group_id],                                                              '/manage/data/'.$managing_group_id                    );
       $breadcrumbs->link_insert('entity',       $entity->title,              $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$managing_group_id.'/'.$entity->name)));
+    }
+  }
+
+  static function on_page_parts_init_dynamic() {
+    foreach (selection::get_all() as $c_selection) {
+      page_part_preset::insert(
+        'selection_'.$c_selection->id,
+        'Selection', $c_selection->title ?: 'NO TITLE', [], null, 'code', '', 0, 'storage'
+      );
     }
   }
 

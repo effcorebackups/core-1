@@ -13,6 +13,10 @@ namespace effcore {
   public $properties = [];
   public $args       = [];
 
+  function __construct($weight = 0) {
+    parent::__construct([], [], $weight);
+  }
+
   function markup_get($page = null) {
     if (!isset($this->display) ||
         (isset($this->display) && $this->display->check == 'page_args' && preg_match($this->display->match,        $page->args_get($this->display->where))) ||
