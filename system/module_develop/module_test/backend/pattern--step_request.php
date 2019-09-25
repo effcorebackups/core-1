@@ -94,7 +94,7 @@ namespace effcore {
     $result = ['info' => [], 'headers' => []];
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL,             $url);
-    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true);
+    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true); # added in CURL v.7.42.0 (2015-04-22)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
     curl_setopt($curl, CURLOPT_HEADER,         false);
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
