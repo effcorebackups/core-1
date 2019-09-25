@@ -50,7 +50,7 @@ namespace effcore {
               }
             }
           }
-        }  
+        }
       }
       event::start('on_page_build_after', $this->id, [&$this]);
       $this->is_builded = true;
