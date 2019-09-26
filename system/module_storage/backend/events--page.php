@@ -12,6 +12,19 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_page {
 
+  static function on_show_block_selection_sql($page, $args) {
+    if (!empty($args['id'])) {
+      return selection::get($args['id']);
+    }
+  }
+
+  static function on_page_parts_init_dynamic() {
+    foreach (selection::get_all('sql') as $c_selection) {
+      page_part_preset::insert('selection_sql_'.$c_selection->id, 'Selection (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::on_show_block_selection_sql', 0, 'storage');
+      page_part_preset::select('selection_sql_'.$c_selection->id)->args['id'] = $c_selection->id;
+    }
+  }
+
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
     $managing_group_id = page::get_current()->args_get('managing_group_id');
     $entity_name       = page::get_current()->args_get('entity_name'      );
@@ -26,15 +39,6 @@ namespace effcore\modules\storage {
       $entity = entity::get($entity_name);
       $breadcrumbs->link_insert('entity_group', $groups[$managing_group_id],                                                              '/manage/data/'.$managing_group_id                    );
       $breadcrumbs->link_insert('entity',       $entity->title,              $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$managing_group_id.'/'.$entity->name)));
-    }
-  }
-
-  static function on_page_parts_init_dynamic() {
-    foreach (selection::get_all() as $c_selection) {
-      page_part_preset::insert(
-        'selection_'.$c_selection->id,
-        'Selection', $c_selection->title ?: 'NO TITLE', [], null, 'code', '', 0, 'storage'
-      );
     }
   }
 

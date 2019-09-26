@@ -119,8 +119,8 @@ namespace effcore {
         $decorator->id = $this->id;
         $decorator->_main_entity = $main_entity->name;
         $decorator->attribute_insert('data-main-entity', $main_entity->name);
-        foreach ($this->decorator_params as $c_key => $c_value)
-          $decorator->                     {$c_key} = $c_value;
+        foreach ($this->decorator_params ?? [] as $c_key => $c_value)
+          $decorator->                           {$c_key} = $c_value;
 
         foreach ($this->_instances as $c_instance) {
           $c_row = [];

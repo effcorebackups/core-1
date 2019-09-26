@@ -6,14 +6,14 @@ page_part_presets
     type: code
     source: \effcore\modules\page\events_page::on_show_title
 # ─────────────────────────────────────────────────────────────────────
-- logotype_main|page_part_preset
-    id: logotype_main
+- selections_logotype_main|page_part_preset
+    id: selections_logotype_main
     managing_group: Selection
     managing_title: Main logotype
     type: link
     source: selections/page/logotype_main
-- text_welcome|page_part_preset
-    id: text_welcome
+- selections_text_welcome|page_part_preset
+    id: selections_text_welcome
     managing_group: Selection
     managing_title: Welcome message
     type: link
