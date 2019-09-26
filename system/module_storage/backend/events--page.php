@@ -18,7 +18,7 @@ namespace effcore\modules\storage {
     }
   }
 
-  static function on_page_parts_init_dynamic() {
+  static function on_page_parts_init_dynamic($event) {
     foreach (selection::get_all('sql') as $c_selection) {
       page_part_preset::insert('selection_sql_'.$c_selection->id, 'Selection (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::on_show_block_selection_sql', 0, 'storage');
       page_part_preset::select('selection_sql_'.$c_selection->id)->args['id'] = $c_selection->id;
