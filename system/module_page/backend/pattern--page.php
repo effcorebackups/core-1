@@ -135,6 +135,8 @@ namespace effcore {
 
   static protected $current;
   static protected $cache;
+  static protected $is_init_nosql = false;
+  static protected $is_init___sql = false;
 
   static function not_external_properties_get() {
     return [
@@ -145,11 +147,14 @@ namespace effcore {
   }
 
   static function cache_cleaning() {
-    static::$cache = null;
+    static::$cache         = null;
+    static::$is_init_nosql = false;
+    static::$is_init___sql = false;
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (!static::$is_init_nosql) {
+         static::$is_init_nosql = true;
       foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
         foreach ($c_pages as $c_id => $c_page) {
           if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
@@ -157,6 +162,20 @@ namespace effcore {
           static::$cache[$c_id]->module_id = $c_module_id;
           static::$cache[$c_id]->origin = 'nosql';
         }
+      }
+    }
+  }
+
+  static function init_sql() {
+    if (!static::$is_init___sql) {
+         static::$is_init___sql = true;
+      foreach (entity::get('page')->instances_select() as $c_instance) {
+        $c_page = new static;
+        foreach ($c_instance->values_get() as $c_key => $c_value)
+          $c_page->                          {$c_key} = $c_value;
+        static::$cache[$c_page->id] = $c_page;
+        static::$cache[$c_page->id]->module_id = 'page';
+        static::$cache[$c_page->id]->origin = 'sql';
       }
     }
   }
@@ -222,14 +241,21 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function get_nosql_all($load = true) {
-    static::init();
-    if ($load)
+  static function get_all($origin = 'nosql', $load = true) {
+    if ($origin == 'nosql') {static::init    ();                    }
+    if ($origin ==   'sql') {static::init_sql();                    }
+    if ($origin ==    null) {static::init    (); static::init_sql();}
+    if ($load && ($origin == 'nosql' || $origin == null))
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache)
             $c_item =
             $c_item->external_cache_load();
-    return static::$cache;
+    $result = static::$cache ?? [];
+    if ($origin)
+      foreach ($result as $c_id => $c_item)
+        if ($c_item->origin != $origin)
+          unset($result[$c_id]);
+    return $result;
   }
 
   static function get_by_url($url, $load = true) {

@@ -44,7 +44,7 @@ namespace effcore {
   static protected $is_init_dynamic = false;
 
   static function cache_cleaning() {
-    static::$cache = null;
+    static::$cache           = null;
     static::$is_init_nosql   = false;
     static::$is_init_dynamic = false;
   }
