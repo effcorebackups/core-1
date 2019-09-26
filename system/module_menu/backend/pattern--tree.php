@@ -13,7 +13,7 @@ namespace effcore {
   public $title = '';
   public $title_state; # hidden | cutted
   public $access;
-  public $type = 'nosql'; # nosql | sql | dynamic
+  public $origin = 'nosql'; # nosql | sql | dynamic
   public $managing_mode; # null | simple | simple-draggable
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
@@ -78,7 +78,7 @@ namespace effcore {
           if (isset(static::$cache[$c_tree->id])) console::log_insert_about_duplicate('tree', $c_tree->id, $c_module_id);
           static::$cache[$c_tree->id] = $c_tree;
           static::$cache[$c_tree->id]->module_id = $c_module_id;
-          static::$cache[$c_tree->id]->type = 'nosql';
+          static::$cache[$c_tree->id]->origin = 'nosql';
         }
       }
     }
@@ -95,19 +95,19 @@ namespace effcore {
           $c_instance->access, [], 0);
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->module_id = 'menu';
-        static::$cache[$c_tree->id]->type = 'sql';
+        static::$cache[$c_tree->id]->origin = 'sql';
       }
     }
   }
 
-  static function select_all($type = null) {
-    if ($type == 'nosql') {static::init    ();                    }
-    if ($type ==   'sql') {static::init_sql();                    }
-    if ($type ==    null) {static::init    (); static::init_sql();}
+  static function select_all($origin = null) {
+    if ($origin == 'nosql') {static::init    ();                    }
+    if ($origin ==   'sql') {static::init_sql();                    }
+    if ($origin ==    null) {static::init    (); static::init_sql();}
     $result = static::$cache ?? [];
-    if ($type)
+    if ($origin)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->type != $type)
+        if ($c_item->origin != $origin)
           unset($result[$c_id]);
     return $result;
   }
@@ -124,7 +124,7 @@ namespace effcore {
     $new_tree = new static($title, $id, $access, $attributes, $weight);
            static::$cache[$id] = $new_tree;
            static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->type = 'dynamic';
+           static::$cache[$id]->origin = 'dynamic';
     return static::$cache[$id];
   }
 

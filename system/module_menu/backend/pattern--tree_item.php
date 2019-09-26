@@ -18,7 +18,7 @@ namespace effcore {
   public $url_hidden;
   public $extra;
   public $access;
-  public $type = 'nosql'; # nosql | sql | dynamic
+  public $origin = 'nosql'; # nosql | sql | dynamic
   public $cache_href;
   public $cache_href_hidden;
 
@@ -121,7 +121,7 @@ namespace effcore {
           if (isset(static::$cache[$c_tree_item->id])) console::log_insert_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
           static::$cache[$c_tree_item->id] = $c_tree_item;
           static::$cache[$c_tree_item->id]->module_id = $c_module_id;
-          static::$cache[$c_tree_item->id]->type = 'nosql';
+          static::$cache[$c_tree_item->id]->origin = 'nosql';
           static::$is_init_nosql_by_tree[$c_tree_item->id_tree] = true;
         }
       }
@@ -131,8 +131,8 @@ namespace effcore {
   static function init_sql($id_tree) {
     if (isset(static::$is_init_nosql_by_tree[$id_tree])) return;
     if (isset(static::$is_init___sql_by_tree[$id_tree])) return;
-    if (tree::select($id_tree)       &&
-        tree::select($id_tree)->type == 'sql') {
+    if (tree::select($id_tree)         &&
+        tree::select($id_tree)->origin == 'sql') {
       static::$is_init___sql_by_tree[$id_tree] = true;
       $instances = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $id_tree]], 'id');
       foreach ($instances as $c_instance) {
@@ -146,7 +146,7 @@ namespace effcore {
           $c_instance->weight);
         static::$cache[$c_tree_item->id] = $c_tree_item;
         static::$cache[$c_tree_item->id]->module_id = 'menu';
-        static::$cache[$c_tree_item->id]->type = 'sql';
+        static::$cache[$c_tree_item->id]->origin = 'sql';
       }
     }
   }
@@ -179,7 +179,7 @@ namespace effcore {
     $new_item = new static($title, $id, $id_parent, $id_tree, $url, $access, $attributes, $element_attributes, $weight);
            static::$cache[$id] = $new_item;
            static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->type = 'dynamic';
+           static::$cache[$id]->origin = 'dynamic';
     return static::$cache[$id];
   }
 
