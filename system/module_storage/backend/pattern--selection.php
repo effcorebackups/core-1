@@ -36,13 +36,14 @@ namespace effcore {
       $used_storages = [];
 
     # sort fields
-      foreach ($this->fields as $c_row_id => $c_field)
+      foreach ($this->fields ?? [] as $c_row_id => $c_field)
         if (!property_exists($c_field, 'weight'))
           $c_field->weight = 0;
-      core::array_sort_by_weight($this->fields, 3);
+      if (!empty($this->fields))
+        core::array_sort_by_weight($this->fields, 3);
 
     # analyze fields
-      foreach ($this->fields as $c_row_id => $c_field) {
+      foreach ($this->fields ?? [] as $c_row_id => $c_field) {
         if ($c_field->type == 'field' ||
             $c_field->type == 'join_field') {
           $c_entity = entity::get($c_field->entity_name, false);
