@@ -320,7 +320,8 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [
-      'id' => 'id'
+      'id'    => 'id',
+      'title' => 'title'
     ];
   }
 
