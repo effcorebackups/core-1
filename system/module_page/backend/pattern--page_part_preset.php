@@ -11,6 +11,7 @@ namespace effcore {
   public $managing_group = 'Text';
   public $managing_title;
   public $in_areas;
+  public $origin = 'nosql'; # nosql | dynamic
 
   function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $display = null, $type = null, $source = null, $weight = 0) {
     if ($id)             $this->id             = $id;
@@ -56,6 +57,7 @@ namespace effcore {
           if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('page_part_preset', $c_preset->id, $c_module_id);
           static::$cache[$c_preset->id] = $c_preset;
           static::$cache[$c_preset->id]->module_id = $c_module_id;
+          static::$cache[$c_preset->id]->origin = 'nosql';
         }
       }
     }
@@ -90,6 +92,7 @@ namespace effcore {
     $new_part = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $weight);
            static::$cache[$id] = $new_part;
            static::$cache[$id]->module_id = $module_id;
+           static::$cache[$id]->origin = 'dynamic';
     return static::$cache[$id];
   }
 
