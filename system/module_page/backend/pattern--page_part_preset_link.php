@@ -9,9 +9,12 @@ namespace effcore {
 
   public $id;
   public $weight = 0;
+  public $preset_origin = 'nosql'; # nosql | dynamic
 
-  function __construct($id = null) {
-    if ($id) $this->id = $id;
+  function __construct($id = null, $preset_origin = 'nosql', $weight = 0) {
+    if ($id)            $this->id            = $id;
+    if ($preset_origin) $this->preset_origin = $preset_origin;
+    if ($weight)        $this->weight        = $weight;
   }
 
   function page_part_preset_get() {
