@@ -280,9 +280,9 @@ namespace effcore {
         if ($c_delimiter == ': ') {
           $c_value = core::string_to_data($c_value);
         } else {
-          if      ($c_value == '_empty_array' ) $c_value = [];
-          else if ($c_value == '_string_true' ) $c_value = 'true';
-          else if ($c_value == '_string_false') $c_value = 'false';
+          if     ($c_value == '_empty_array' ) $c_value = [];
+          elseif ($c_value == '_string_true' ) $c_value = 'true';
+          elseif ($c_value == '_string_false') $c_value = 'false';
           else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             $c_reflection = new \ReflectionClass($c_class_name);
@@ -310,7 +310,7 @@ namespace effcore {
           $p[$c_depth] = &$c_destination;
           continue;
         }
-      # add new item to tree  
+      # add new item to tree
         core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
         $p[$c_depth] = &$c_destination;
       # convert parent item to array

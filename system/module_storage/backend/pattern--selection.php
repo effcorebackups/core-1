@@ -18,7 +18,7 @@ namespace effcore {
   public $pager_is_on = false;
   public $pager_name = 'page';
   public $pager_id = 0;
-  public $type = 'nosql'; # nosql | sql
+  public $origin = 'nosql'; # nosql | sql
 
   function __construct($title = '', $weight = 0) {
     if ($title) $this->title = $title;
@@ -338,7 +338,7 @@ namespace effcore {
           if (isset(static::$cache[$c_selection->id])) console::log_insert_about_duplicate('selection', $c_selection->id, $c_module_id);
           static::$cache[$c_selection->id] = $c_selection;
           static::$cache[$c_selection->id]->module_id = $c_module_id;
-          static::$cache[$c_selection->id]->type = 'nosql';
+          static::$cache[$c_selection->id]->origin = 'nosql';
         }
       }
     }
@@ -346,7 +346,7 @@ namespace effcore {
 
   static function init_sql($id = null) {
     if ($id && isset(static::$cache[$id])) return;
-    if ($id) {
+    if ($id != null) {
       $instance = (new instance('selection', [
         'id' => $id
       ]))->select();
@@ -356,8 +356,7 @@ namespace effcore {
           $selection->                     {$c_key} = $c_value;
         static::$cache[$selection->id] = $selection;
         static::$cache[$selection->id]->module_id = 'storage';
-        static::$cache[$selection->id]->type = 'sql';
-        return;
+        static::$cache[$selection->id]->origin = 'sql';
       }
     }
     if (!static::$is_init___sql && $id == null) {
@@ -368,13 +367,14 @@ namespace effcore {
           $c_selection->                     {$c_key} = $c_value;
         static::$cache[$c_selection->id] = $c_selection;
         static::$cache[$c_selection->id]->module_id = 'storage';
-        static::$cache[$c_selection->id]->type = 'sql';
+        static::$cache[$c_selection->id]->origin = 'sql';
       }
     }
   }
 
   static function get($id, $load = true) {
     static::init();
+    if (isset(static::$cache[$id]) == false) static::init_sql($id);
     if (isset(static::$cache[$id]) == false) return;
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] =
@@ -382,19 +382,19 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function get_all($type = null, $load = true) {
-    if ($type == 'nosql') {static::init    ();                    }
-    if ($type ==   'sql') {static::init_sql();                    }
-    if ($type ==    null) {static::init    (); static::init_sql();}
-    if ($load && ($type == 'nosql' || $type == null))
+  static function get_all($origin = null, $load = true) {
+    if ($origin == 'nosql') {static::init    ();                    }
+    if ($origin ==   'sql') {static::init_sql();                    }
+    if ($origin ==    null) {static::init    (); static::init_sql();}
+    if ($load && ($origin == 'nosql' || $origin == null))
       foreach (static::$cache as &$c_item)
         if ($c_item instanceof external_cache)
             $c_item =
             $c_item->external_cache_load();
     $result = static::$cache ?? [];
-    if ($type)
+    if ($origin)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->type != $type)
+        if ($c_item->origin != $origin)
           unset($result[$c_id]);
     return $result;
   }
