@@ -77,7 +77,7 @@ namespace effcore {
           if (isset(static::$cache[$c_breadcrumbs->id])) console::log_insert_about_duplicate('breadcrumbs', $c_breadcrumbs->id, $c_module_id);
           static::$cache[$c_breadcrumbs->id] = $c_breadcrumbs;
           static::$cache[$c_breadcrumbs->id]->module_id = $c_module_id;
-          static::$cache[$c_breadcrumbs->id]->type = 'nosql';
+          static::$cache[$c_breadcrumbs->id]->origin = 'nosql';
         }
       }
     }
