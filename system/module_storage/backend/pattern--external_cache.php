@@ -21,7 +21,7 @@ namespace effcore {
       storage_nosql_files::cache_update();
     $result = cache::select($this->cache_name);
     if ($result && !empty($this->module_id)) $result->module_id = $this->module_id;
-    if ($result && !empty($this->type     )) $result->type      = $this->type;
+    if ($result && !empty($this->origin   )) $result->origin    = $this->origin;
     return $result;
   }
 
