@@ -15,7 +15,7 @@ namespace effcore {
   public $charset = 'utf-8';
   public $lang_code = 'en';
   public $text_direction = 'ltr';
-  public $type = 'nosql'; # nosql | sql
+  public $origin = 'nosql'; # nosql | sql
   public $is_embed = 1;
   public $access;
   public $parts;
@@ -133,8 +133,8 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $cache;
   static protected $current;
+  static protected $cache;
 
   static function not_external_properties_get() {
     return [
@@ -155,13 +155,29 @@ namespace effcore {
           if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
           static::$cache[$c_id] = $c_page;
           static::$cache[$c_id]->module_id = $c_module_id;
-          static::$cache[$c_id]->type = 'nosql';
+          static::$cache[$c_id]->origin = 'nosql';
         }
       }
     }
   }
 
-  static function init_sql($url) {
+  static function init_sql_by_id($id) {
+    static::init();
+    $instance = (new instance('page', [
+      'id' => $id
+    ]))->select();
+    if ($instance) {
+      $page = new static;
+      foreach ($instance->values_get() as $c_key => $c_value)
+        $page->                          {$c_key} = $c_value;
+             static::$cache[$page->id] = $page;
+             static::$cache[$page->id]->module_id = 'page';
+             static::$cache[$page->id]->origin = 'sql';
+      return static::$cache[$page->id];
+    }
+  }
+
+  static function init_sql_by_url($url) {
     static::init();
     $instance = (new instance('page', [
       'url' => $url
@@ -172,7 +188,7 @@ namespace effcore {
         $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
-             static::$cache[$page->id]->type = 'sql';
+             static::$cache[$page->id]->origin = 'sql';
       return static::$cache[$page->id];
     }
   }
@@ -198,11 +214,22 @@ namespace effcore {
 
   static function get($id, $load = true) {
     static::init();
+    if (isset(static::$cache[$id]) == false) static::init_sql_by_id($id);
     if (isset(static::$cache[$id]) == false) return;
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] =
         static::$cache[$id]->external_cache_load();
     return static::$cache[$id];
+  }
+
+  static function get_nosql_all($load = true) {
+    static::init();
+    if ($load)
+      foreach (static::$cache as &$c_item)
+        if ($c_item instanceof external_cache)
+            $c_item =
+            $c_item->external_cache_load();
+    return static::$cache;
   }
 
   static function get_by_url($url, $load = true) {
@@ -213,19 +240,9 @@ namespace effcore {
       if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
       if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
     if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
-    if ($result == null)                            $result = static::init_sql($url);
+    if ($result == null)                            $result = static::init_sql_by_url($url);
     if ($result != null)                            $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
     return $result;
-  }
-
-  static function get_all($load = true) {
-    static::init();
-    if ($load)
-      foreach (static::$cache as &$c_item)
-        if ($c_item instanceof external_cache)
-            $c_item =
-            $c_item->external_cache_load();
-    return static::$cache;
   }
 
 }}
