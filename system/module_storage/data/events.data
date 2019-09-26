@@ -63,6 +63,6 @@ events
   on_instance_delete_before
   - all|event
       handler: \effcore\modules\storage\events_storage::on_instance_delete_before
-  on_page_parts_init_dynamic
+  on_page_parts_dynamic_build
   - all|event
-      handler: \effcore\modules\storage\events_page::on_page_parts_init_dynamic
+      handler: \effcore\modules\storage\events_page::on_page_parts_dynamic_build
