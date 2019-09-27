@@ -120,13 +120,14 @@ It's recommended to use the next software:
 - macOS High Sierra or newer for using quality software and make development environment;
 - Coda, Nova (mac) for working with code|markup|styles and searching in the code;
 - Tower (mac|win) for working with Git;
+- Kaleidoscope (mac) for search differences in code;
 - Transmit (mac) for working with FTP;
+- SequelPro (mac) for working with MySQL databases;
+- SQLiteFlow (mac) for working with SQLite databases;
+- Neor Profile SQL (mac|win|linux) for debug SQL queries;
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup;
 - Proxie (mac) for debug HTTP|S traffic;
 - Rested (mac) for debug HTTP traffic;
-- Kaleidoscope (mac) for search differences in code;
-- SequelPro (mac) for working with MySQL databases;
-- SQLiteFlow (mac) for working with SQLite databases;
 - StarUML (mac|win|linux) for working with UML diagrams;
 - BoxySVG (mac|win) for working with SVG vector graphics;
 - Monodraw (mac) for working with pseudo-graphics;
@@ -134,8 +135,7 @@ It's recommended to use the next software:
 - RegExRX (mac|win) for improve your regular expressions;
 - VMWare Fusion Pro (mac) for working with virtual machines;
 - Find Any Files (mac) for searching in the code (note: can not search is some cases);
-- VisualGrep (mac) for searching in the code;
-- Neor Profile SQL (mac|win|linux) for debug SQL queries.
+- VisualGrep (mac) for searching in the code.
 
 
 Incompatibility with third-party software
