@@ -599,10 +599,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /license.mark
-        - request_url-/license.mark|step_request
-            url: /license.mark
-        - response_check-/license.mark|step_check
+        # url: /license.md
+        - request_url-/license.md|step_request
+            url: /license.md
+        - response_check-/license.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -617,10 +617,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/cache/readme.mark
-        - request_url-/dynamic/cache/readme.mark|step_request
-            url: /dynamic/cache/readme.mark
-        - response_check-/dynamic/cache/readme.mark|step_check
+        # url: /dynamic/cache/readme.md
+        - request_url-/dynamic/cache/readme.md|step_request
+            url: /dynamic/cache/readme.md
+        - response_check-/dynamic/cache/readme.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -662,91 +662,91 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/data/readme.mark
-        - request_url-/dynamic/data/readme.mark|step_request
-            url: /dynamic/data/readme.mark
-        - response_check-/dynamic/data/readme.mark|step_check
+        # url: /dynamic/data/readme.md
+        - request_url-/dynamic/data/readme.md|step_request
+            url: /dynamic/data/readme.md
+        - response_check-/dynamic/data/readme.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/files/readme.mark
-        - request_url-/dynamic/files/readme.mark|step_request
-            url: /dynamic/files/readme.mark
-        - response_check-/dynamic/files/readme.mark|step_check
+        # url: /dynamic/files/readme.md
+        - request_url-/dynamic/files/readme.md|step_request
+            url: /dynamic/files/readme.md
+        - response_check-/dynamic/files/readme.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/logs/readme.mark
-        - request_url-/dynamic/logs/readme.mark|step_request
-            url: /dynamic/logs/readme.mark
-        - response_check-/dynamic/logs/readme.mark|step_check
+        # url: /dynamic/logs/readme.md
+        - request_url-/dynamic/logs/readme.md|step_request
+            url: /dynamic/logs/readme.md
+        - response_check-/dynamic/logs/readme.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/tmp/readme.mark
-        - request_url-/dynamic/tmp/readme.mark|step_request
-            url: /dynamic/tmp/readme.mark
-        - response_check-/dynamic/tmp/readme.mark|step_check
+        # url: /dynamic/tmp/readme.md
+        - request_url-/dynamic/tmp/readme.md|step_request
+            url: /dynamic/tmp/readme.md
+        - response_check-/dynamic/tmp/readme.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /modules/readme.mark
-        - request_url-/modules/readme.mark|step_request
-            url: /modules/readme.mark
-        - response_check-/modules/readme.mark|step_check
+        # url: /modules/readme.md
+        - request_url-/modules/readme.md|step_request
+            url: /modules/readme.md
+        - response_check-/modules/readme.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/about.mark
-        - request_url-/readme/about.mark|step_request
-            url: /readme/about.mark
-        - response_check-/readme/about.mark|step_check
+        # url: /readme/about.md
+        - request_url-/readme/about.md|step_request
+            url: /readme/about.md
+        - response_check-/readme/about.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/develop.mark
-        - request_url-/readme/develop.mark|step_request
-            url: /readme/develop.mark
-        - response_check-/readme/develop.mark|step_check
+        # url: /readme/develop.md
+        - request_url-/readme/develop.md|step_request
+            url: /readme/develop.md
+        - response_check-/readme/develop.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/hardware.mark
-        - request_url-/readme/hardware.mark|step_request
-            url: /readme/hardware.mark
-        - response_check-/readme/hardware.mark|step_check
+        # url: /readme/hardware.md
+        - request_url-/readme/hardware.md|step_request
+            url: /readme/hardware.md
+        - response_check-/readme/hardware.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/security.mark
-        - request_url-/readme/security.mark|step_request
-            url: /readme/security.mark
-        - response_check-/readme/security.mark|step_check
+        # url: /readme/security.md
+        - request_url-/readme/security.md|step_request
+            url: /readme/security.md
+        - response_check-/readme/security.md|step_check
             where: http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/software.mark
-        - request_url-/readme/software.mark|step_request
-            url: /readme/software.mark
-        - response_check-/readme/software.mark|step_check
+        # url: /readme/software.md
+        - request_url-/readme/software.md|step_request
+            url: /readme/software.md
+        - response_check-/readme/software.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -806,10 +806,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/licenses/license-ru.mark
-        - request_url-/system/module_locales/licenses/license-ru.mark|step_request
-            url: /system/module_locales/licenses/license-ru.mark
-        - response_check-/system/module_locales/licenses/license-ru.mark|step_check
+        # url: /system/module_locales/licenses/license-ru.md
+        - request_url-/system/module_locales/licenses/license-ru.md|step_request
+            url: /system/module_locales/licenses/license-ru.md
+        - response_check-/system/module_locales/licenses/license-ru.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -1008,10 +1008,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /license.mark/
-        - request_url-/license.mark/|step_request
-            url: /license.mark/
-        - response_check-/license.mark/|step_check
+        # url: /license.md/
+        - request_url-/license.md/|step_request
+            url: /license.md/
+        - response_check-/license.md/|step_check
             where: http_code
             match: 302
             on_failure
@@ -1026,10 +1026,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/cache/readme.mark/
-        - request_url-/dynamic/cache/readme.mark/|step_request
-            url: /dynamic/cache/readme.mark/
-        - response_check-/dynamic/cache/readme.mark/|step_check
+        # url: /dynamic/cache/readme.md/
+        - request_url-/dynamic/cache/readme.md/|step_request
+            url: /dynamic/cache/readme.md/
+        - response_check-/dynamic/cache/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
@@ -1071,91 +1071,91 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/data/readme.mark/
-        - request_url-/dynamic/data/readme.mark/|step_request
-            url: /dynamic/data/readme.mark/
-        - response_check-/dynamic/data/readme.mark/|step_check
+        # url: /dynamic/data/readme.md/
+        - request_url-/dynamic/data/readme.md/|step_request
+            url: /dynamic/data/readme.md/
+        - response_check-/dynamic/data/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/files/readme.mark/
-        - request_url-/dynamic/files/readme.mark/|step_request
-            url: /dynamic/files/readme.mark/
-        - response_check-/dynamic/files/readme.mark/|step_check
+        # url: /dynamic/files/readme.md/
+        - request_url-/dynamic/files/readme.md/|step_request
+            url: /dynamic/files/readme.md/
+        - response_check-/dynamic/files/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/logs/readme.mark/
-        - request_url-/dynamic/logs/readme.mark/|step_request
-            url: /dynamic/logs/readme.mark/
-        - response_check-/dynamic/logs/readme.mark/|step_check
+        # url: /dynamic/logs/readme.md/
+        - request_url-/dynamic/logs/readme.md/|step_request
+            url: /dynamic/logs/readme.md/
+        - response_check-/dynamic/logs/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /dynamic/tmp/readme.mark/
-        - request_url-/dynamic/tmp/readme.mark/|step_request
-            url: /dynamic/tmp/readme.mark/
-        - response_check-/dynamic/tmp/readme.mark/|step_check
+        # url: /dynamic/tmp/readme.md/
+        - request_url-/dynamic/tmp/readme.md/|step_request
+            url: /dynamic/tmp/readme.md/
+        - response_check-/dynamic/tmp/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /modules/readme.mark/
-        - request_url-/modules/readme.mark/|step_request
-            url: /modules/readme.mark/
-        - response_check-/modules/readme.mark/|step_check
+        # url: /modules/readme.md/
+        - request_url-/modules/readme.md/|step_request
+            url: /modules/readme.md/
+        - response_check-/modules/readme.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/about.mark/
-        - request_url-/readme/about.mark/|step_request
-            url: /readme/about.mark/
-        - response_check-/readme/about.mark/|step_check
+        # url: /readme/about.md/
+        - request_url-/readme/about.md/|step_request
+            url: /readme/about.md/
+        - response_check-/readme/about.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/develop.mark/
-        - request_url-/readme/develop.mark/|step_request
-            url: /readme/develop.mark/
-        - response_check-/readme/develop.mark/|step_check
+        # url: /readme/develop.md/
+        - request_url-/readme/develop.md/|step_request
+            url: /readme/develop.md/
+        - response_check-/readme/develop.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/hardware.mark/
-        - request_url-/readme/hardware.mark/|step_request
-            url: /readme/hardware.mark/
-        - response_check-/readme/hardware.mark/|step_check
+        # url: /readme/hardware.md/
+        - request_url-/readme/hardware.md/|step_request
+            url: /readme/hardware.md/
+        - response_check-/readme/hardware.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/security.mark/
-        - request_url-/readme/security.mark/|step_request
-            url: /readme/security.mark/
-        - response_check-/readme/security.mark/|step_check
+        # url: /readme/security.md/
+        - request_url-/readme/security.md/|step_request
+            url: /readme/security.md/
+        - response_check-/readme/security.md/|step_check
             where: http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/software.mark/
-        - request_url-/readme/software.mark/|step_request
-            url: /readme/software.mark/
-        - response_check-/readme/software.mark/|step_check
+        # url: /readme/software.md/
+        - request_url-/readme/software.md/|step_request
+            url: /readme/software.md/
+        - response_check-/readme/software.md/|step_check
             where: http_code
             match: 302
             on_failure
@@ -1215,10 +1215,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/licenses/license-ru.mark/
-        - request_url-/system/module_locales/licenses/license-ru.mark/|step_request
-            url: /system/module_locales/licenses/license-ru.mark/
-        - response_check-/system/module_locales/licenses/license-ru.mark/|step_check
+        # url: /system/module_locales/licenses/license-ru.md/
+        - request_url-/system/module_locales/licenses/license-ru.md/|step_request
+            url: /system/module_locales/licenses/license-ru.md/
+        - response_check-/system/module_locales/licenses/license-ru.md/|step_check
             where: http_code
             match: 302
             on_failure
