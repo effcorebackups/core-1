@@ -208,7 +208,7 @@ Core: SQL
 ---------------------------------------------------------------------
 
 MySQL and SQLite can be used as SQL storages.
-The required versions can be found in the "readme/software.mark" file.
+The required versions can be found in the "readme/software.md" file.
 Storage connection and data retrieval will initialize only on demand.
 Denying access to SQL storage will not raise an error, but will only
 make inaccessible part of the possibilities (for example, sessions
@@ -355,7 +355,7 @@ Web server
 ---------------------------------------------------------------------
 
 As a web server, Apache, NGINX, IIS are supported.
-The required versions can be found in the "readme/software.mark" file.
+The required versions can be found in the "readme/software.md" file.
 
 
 Caching
