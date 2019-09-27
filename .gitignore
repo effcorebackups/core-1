@@ -5,6 +5,12 @@
 !/dynamic/files/readme.mark
 !/dynamic/logs/readme.mark
 !/dynamic/tmp/readme.mark
+!/dynamic/cache/readme.md
+!/dynamic/data/readme.md
+!/dynamic/files/readme.md
+!/dynamic/logs/readme.md
+!/dynamic/tmp/readme.md
 
 /modules/*
 !/modules/readme.mark
+!/modules/readme.md
