@@ -707,10 +707,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/about.md
-        - request_url-/readme/about.md|step_request
-            url: /readme/about.md
-        - response_check-/readme/about.md|step_check
+        # url: /readme/about-en.md
+        - request_url-/readme/about-en.md|step_request
+            url: /readme/about-en.md
+        - response_check-/readme/about-en.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -725,10 +725,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/hardware.md
-        - request_url-/readme/hardware.md|step_request
-            url: /readme/hardware.md
-        - response_check-/readme/hardware.md|step_check
+        # url: /readme/installation.md
+        - request_url-/readme/installation.md|step_request
+            url: /readme/installation.md
+        - response_check-/readme/installation.md|step_check
             where: http_code
             match: 403
             on_failure
@@ -1116,10 +1116,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/about.md/
-        - request_url-/readme/about.md/|step_request
-            url: /readme/about.md/
-        - response_check-/readme/about.md/|step_check
+        # url: /readme/about-en.md/
+        - request_url-/readme/about-en.md/|step_request
+            url: /readme/about-en.md/
+        - response_check-/readme/about-en.md/|step_check
             where: http_code
             match: 302
             on_failure
@@ -1134,10 +1134,10 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /readme/hardware.md/
-        - request_url-/readme/hardware.md/|step_request
-            url: /readme/hardware.md/
-        - response_check-/readme/hardware.md/|step_check
+        # url: /readme/installation.md/
+        - request_url-/readme/installation.md/|step_request
+            url: /readme/installation.md/
+        - response_check-/readme/installation.md/|step_check
             where: http_code
             match: 302
             on_failure
