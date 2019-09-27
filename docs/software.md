@@ -118,8 +118,9 @@ Recommended Development Software
 Only high quality licensed expensive software was used for create the project.
 It's recommended to use the next software:
 - macOS High Sierra or newer for using quality software and make development environment;
-- Coda (mac) for working with code|markup|styles and searching in the code;
+- Coda, Nova (mac) for working with code|markup|styles and searching in the code;
 - Tower (mac|win) for working with Git;
+- Transmit (mac) for working with FTP;
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup;
 - Proxie (mac) for debug HTTP|S traffic;
 - Rested (mac) for debug HTTP traffic;
