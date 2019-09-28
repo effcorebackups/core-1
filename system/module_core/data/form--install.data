@@ -25,6 +25,7 @@ forms
           # host name
             - host|field_text
                 title: Hostname
+                description: Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [::1]".
                 element_attributes
                 - name: host
                 - value: [::1]
