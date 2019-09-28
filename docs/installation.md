@@ -44,8 +44,8 @@ Actions for installations:
   a message about which modules should be enabled.
   Through the hosting service panel, you can enable the missing
   modules and continue the installation.
-  At the first time also recommended to enable "display_errors",
-  "log_errors" and set to "E_ALL" the "error_reporting".
+  For the first time also recommended to enable "display_errors",
+  "log_errors" and set "error_reporting" to "E_ALL".
 - If you get the message "unknown mysql server host [::1]" then try
   to use the value "127.0.0.1" or "localhost" in the "Hostname" field.
 

@@ -25,28 +25,29 @@
 - Проверьте, включена ли видимость скрытых файлов в архиваторе,
   операционной системе и FTP-клиенте.
 
-Actions for installations:
-- Download the distribution kit of the system in archive from the
-  official site of this project.
-- Unpack archive of the system to some local directory.
-  All files should be unpacked (including invisible files like ".htaccess" and other).
-  If you can not see the invisible files in your archiver, make them visible.
-  If you can not see the invisible files in your OS, make them visible.
-- Establish a connection with the web server via FTP protocol.
-  It's recommended to use the "SFTP" or "FTP with implicit SSL" or
+Действия для установки:
+- Скачайте дистрибутив системы в архиве с официального
+  сайта этого проекта.
+- Распакуйте архив системы в какой-нибудь локальный каталог.
+  Все файлы должны быть распакованы (включая невидимые файлы как ".htaccess" и другие).
+  Если Вы не можете видеть невидимые файлы в вашем архиваторе, сделайте их видимыми.
+  Если Вы не можете видеть невидимые файлы в вашей ОС, сделайте их видимыми.
+- Установите соединение с веб-сервером по протоколу FTP.
+  Рекомендуется использовать "SFTP" или "FTP with implicit SSL" или
   "FTP with TSL/SSL".
-- Via FTP client go to the www root directory on the web server
-  and copy all files of this system from the local directory
-  into www root.
-- Open a web browser and go to your domain (which you
-  will use to deploy your site).
-- If PHP is enabled you will see installation page of the system.
-- If some required PHP modules are missing, you will receive
-  a message about which modules should be enabled.
-  Through the hosting service panel, you can enable the missing
-  modules and continue the installation.
-  At the first time also recommended to enable "display_errors",
-  "log_errors" and set to "E_ALL" the "error_reporting".
-- If you get the message "unknown mysql server host [::1]" then try
-  to use the value "127.0.0.1" or "localhost" in the "Hostname" field.
+- Через FTP-клиент перейдите в корневой каталог www на веб-сервере
+  и скопируйте все файлы этой системы из локального каталога
+  в корневой каталог www.
+- Откройте веб-браузер и перейдите на свой домен (который Вы будете
+  использовать для развёртывания вашего сайта).
+- Если PHP включен, Вы увидите страницу установки системы.
+- Если некоторые необходимые модули PHP отсутствуют, Вы получите
+  сообщение о том, какие модули должны быть включены.
+  Через панель службы хостинга Вы можете включить отсутствующие
+  модули и продолжить установку.
+  На первое время также рекомендуется включить "display_errors",
+  "log_errors" и установить "error_reporting" в "E_ALL".
+- Если Вы получили сообщение "unknown mysql server host [::1]", тогда
+  попробуйте использовать значение "127.0.0.1" или "localhost"
+  в поле "Имя узла сети".
 
