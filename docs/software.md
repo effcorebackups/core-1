@@ -98,7 +98,7 @@ PHP
     | standard     | always     |                         |
     | pdo_mysql    | no         | for working with MySQL  |
     | pdo_sqlite   | no         | for working with SQLite |
-    | Zend OPcache | no         | for best performance    |
+    | Zend OPCache | no         | for best performance    |
     | curl         | no         | for development         |
     | json         | always     | for development         |
 

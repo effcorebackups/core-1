@@ -370,7 +370,7 @@ translations
     - Permission: Разрешение
     - Permissions: Разрешения
     - PHP dependencies: PHP зависимости
-    - PHP OPcache is anebled: PHP OPcache включен
+    - PHP OPCache is anebled: PHP OPCache включен
     - PHP Version: PHP Версия
     - Port: Порт
     - Presets: Предустановки

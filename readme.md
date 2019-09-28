@@ -47,10 +47,10 @@ are trying to deny the obvious.
 
 The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
-a system which installed on a hosting with the cheapest tariff plan,
+a system which installed on a web hosting with the cheapest tariff plan,
 but compliant with the minimum installation requirements (from ~3-5$ per month),
-should generate a homepage in 0.002 seconds (when OPcache is enabled),
-or 0.02 seconds (when OPcache is disabled), which in the first case
+should generate a homepage in 0.002 seconds (when OPCache is enabled),
+or 0.02 seconds (when OPCache is disabled), which in the first case
 allows serving up to ~500 clients per second, and in the second
 to ~50 (excluding parallel loading of connected files).
 
@@ -179,7 +179,7 @@ file of the following form:
     }
 
 This architecture allows you to access NoSQL data as quickly as possible.
-When using the PHP module OPcache, the access speed can increase
+When using the PHP module OPCache, the access speed can increase
 from 2 to 3 times. In fact, to access NoSQL data, it's enough to
 load a PHP file of a certain entity and data will be available
 immediately after loading.
@@ -369,7 +369,7 @@ what is originally supposed by the author.
 Performance improvement
 ---------------------------------------------------------------------
 
-It's recommended to enable the PHP OPcache.
+It's recommended to enable the PHP OPCache.
 It's recommended to use the SSD (Solid State Drives).
 In many cases, the "dynamic/cache" directory can be organized in RAM.
 To increase the reliability level of the server, such RAM should

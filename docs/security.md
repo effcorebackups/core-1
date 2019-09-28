@@ -3,16 +3,17 @@
 Security recommendations
 =====================================================================
 
-- The many hostings still using the official discontinued software.
+- The many web hosting services still using the official discontinued software.
   For example: PHP before version 7 or MySQL before version 5.6.
-  This is bad practice and it's not recommended to use such hosting!
+  This is bad practice and it's not recommended to use such services!
   Read more about PHP Supported Versions: http://php.net/supported-versions.php
   Read Oracle Lifetime Support Policy for identifying the life cycle of MySQL.
 - You can get maximum protection from internal threats only if you used
   own server in isolated area with access control.
   If you host the server in a data center in a shared rack
   there is no warranty from external access to the ports or hard drives.
-  It's recommended to use server hosting in European data centers.
+  It's recommended to use hosting services with servers
+  located in European data centers.
 - It's recommended to using hardware firewalls based on open firmware (e.g.
   NanoBSD and other). Remember that some hardware firewalls (not from Europe)
   may contain backdoors.
