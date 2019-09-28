@@ -14,15 +14,16 @@
   DirectAdmin, ISPmanager, cPanel, Plesk и другие).
   Если у Вас нет базы данных, создайте одну, а также учётную запись
   пользователя для работы с ней.
-- Check if you have credentials (hostname, login, password)
-  for FTP service which running on hosting web server.
-  If you do not have credentials, create new FTP user account
-  or reset the password of exist account via hosting service panel.
-- Check if you have FTP Client for transfer files
-  to the web server. For example: Transmit (mac),
-  Cyberduck (mac|win), FileZilla (mac|win|linux) and etc.  
-- Check if you enabled visibility of hidden files
-  in the archiver, operating system and FTP Client.
+- Проверьте, есть ли у Вас учётные данные (имя узла сети, логин, пароль)
+  для службы FTP, работающей на веб-сервере хостинга.
+  Если у Вас нет учётных данных, создайте новый аккаунт
+  пользователя FTP или сбросьте пароль существующего аккаунта
+  через панель хостинга.
+- Проверьте, есть ли у вас FTP-клиент для передачи файлов
+  на веб-сервер. Например: Transmit (mac), Cyberduck (mac|win),
+  FileZilla (mac|win|linux) и другие.
+- Проверьте, включена ли видимость скрытых файлов в архиваторе,
+  операционной системе и FTP-клиенте.
 
 Actions for installations:
 - Download the distribution kit of the system in archive from the

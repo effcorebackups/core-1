@@ -19,10 +19,10 @@ Actions before installation:
   If you do not have credentials, create new FTP user account
   or reset the password of exist account via hosting service panel.
 - Check if you have FTP Client for transfer files
-  to the web server. For example: Transmit (mac),
-  Cyberduck (mac|win), FileZilla (mac|win|linux) and etc.  
-- Check if you enabled visibility of hidden files
-  in the archiver, operating system and FTP Client.
+  to the web server. For example: Transmit (mac), Cyberduck (mac|win),
+  FileZilla (mac|win|linux) and other.
+- Check if you enabled visibility of hidden files in the archiver,
+  operating system and FTP Client.
 
 Actions for installations:
 - Download the distribution kit of the system in archive from the
