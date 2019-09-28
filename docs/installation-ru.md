@@ -1,19 +1,19 @@
 
 
-Installation
+Установка
 =====================================================================
 
-When using archive and FTP client
+Когда используется архив и FTP-клиент
 ---------------------------------------------------------------------
 
-Actions before installation:
-- When you will use MySQL to store data, check if you have
-  credentials for it (login, password, database name).
-  If you do not have credentials, check if you have the database and
-  the user account for it via hosting service panel (for example
-  DirectAdmin, ISPmanager, cPanel, Plesk and others).
-  If you do not have database, create one
-  and also user account to work with it.
+Действия перед установкой:
+- Когда Вы будете использовать MySQL для хранения данных, проверьте,
+  есть ли у Вас учётные данные для этого (логин, пароль, имя базы данных).
+  Если у Вас нет учётных данных, проверьте, есть ли у Вас база данных
+  и учётная запись пользователя для неё через панель хостинга (например,
+  DirectAdmin, ISPmanager, cPanel, Plesk и другие).
+  Если у Вас нет базы данных, создайте одну, а также учётную запись
+  пользователя для работы с ней.
 - Check if you have credentials (hostname, login, password)
   for FTP service which running on hosting web server.
   If you do not have credentials, create new FTP user account
