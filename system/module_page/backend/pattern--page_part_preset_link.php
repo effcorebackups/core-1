@@ -8,19 +8,19 @@ namespace effcore {
           class page_part_preset_link {
 
   public $id;
-  public $dynamic_data = [];
+  public $extra = [];
   public $weight = 0;
 
-  function __construct($id = null, $dynamic_data = [], $weight = 0) {
-    if ($id)           $this->id           = $id;
-    if ($dynamic_data) $this->dynamic_data = $dynamic_data;
-    if ($weight)       $this->weight       = $weight;
+  function __construct($id = null, $extra = [], $weight = 0) {
+    if ($id)     $this->id     = $id;
+    if ($extra)  $this->extra  = $extra;
+    if ($weight) $this->weight = $weight;
   }
 
   function page_part_preset_get() {
     return page_part_preset::select(
       $this->id,
-      $this->dynamic_data
+      $this->extra
     );
   }
 

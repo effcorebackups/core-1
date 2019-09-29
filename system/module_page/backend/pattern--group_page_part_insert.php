@@ -64,8 +64,8 @@ namespace effcore {
       $preset = page_part_preset::select($id_preset);
       $parts = $form->validation_cache_get('parts');
       if ($preset->origin == 'dynamic')
-           $parts[$group->id_area][$preset->id] = new page_part_preset_link($preset->id, $preset->dynamic_data);
-      else $parts[$group->id_area][$preset->id] = new page_part_preset_link($preset->id                       );
+           $parts[$group->id_area][$preset->id] = new page_part_preset_link($preset->id, $preset->extra);
+      else $parts[$group->id_area][$preset->id] = new page_part_preset_link($preset->id                );
       $form->validation_cache_is_persistent = true;
       $form->validation_cache_set('parts', $parts);
       message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $preset->id, 'id_area' => $group->id_area]));
