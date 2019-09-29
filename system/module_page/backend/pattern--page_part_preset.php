@@ -13,7 +13,7 @@ namespace effcore {
   public $in_areas;
   public $origin = 'nosql'; # nosql | dynamic
 
-  function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $display = null, $type = null, $source = null, $weight = 0) {
+  function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0) {
     if ($id)             $this->id             = $id;
     if ($managing_group) $this->managing_group = $managing_group;
     if ($managing_title) $this->managing_title = $managing_title;
@@ -21,6 +21,8 @@ namespace effcore {
     if ($display)        $this->display        = $display;
     if ($type)           $this->type           = $type;
     if ($source)         $this->source         = $source;
+    if ($properties)     $this->properties     = $properties;
+    if ($args)           $this->args           = $args;
     parent::__construct($weight);
   }
 
@@ -87,9 +89,9 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $display = null, $type = null, $source = null, $weight = 0, $module_id = null) {
+  static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0, $module_id = null) {
     static::init();
-    $new_part = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $weight);
+    $new_part = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $properties, $args, $weight);
            static::$cache[$id] = $new_part;
            static::$cache[$id]->module_id = $module_id;
            static::$cache[$id]->origin = 'dynamic';

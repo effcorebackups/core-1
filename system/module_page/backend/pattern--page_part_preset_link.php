@@ -8,12 +8,10 @@ namespace effcore {
           class page_part_preset_link {
 
   public $id;
-  public $args = [];
   public $weight = 0;
 
-  function __construct($id = null, $args = [], $weight = 0) {
+  function __construct($id = null, $weight = 0) {
     if ($id)     $this->id     = $id;
-    if ($args)   $this->args   = $args;
     if ($weight) $this->weight = $weight;
   }
 
