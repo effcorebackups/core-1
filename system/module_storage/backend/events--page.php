@@ -18,15 +18,14 @@ namespace effcore\modules\storage {
     }
   }
 
-  static function on_page_parts_dynamic_build($event, $id = null, $extra = []) {
-    $selections = [];
-    if ($id !== null && !empty($extra['type']) && $extra['type'] == 'selection')
-                      $selections = [selection::get($extra['id'])];
-    if ($id === null) $selections =  selection::get_all('sql');
-    foreach ($selections as $c_selection) {
+  static function on_page_parts_dynamic_build($event) {
+    foreach (selection::get_all('sql') as $c_selection) {
       page_part_preset::insert('selection_sql_'.$c_selection->id, 'Selection (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::on_show_block_selection_sql', 0, 'storage');
-      page_part_preset::select('selection_sql_'.$c_selection->id)->args['id'] = $c_selection->id;
-      page_part_preset::select('selection_sql_'.$c_selection->id)->extra = ['type' => 'selection', 'id' => $c_selection->id];
+      page_part_preset::select('selection_sql_'.$c_selection->id)->args = [
+        'id'        => $c_selection->id,
+        'type'      => 'selection',
+        'module_id' => 'storage',
+        'origin'    => 'dynamic'];
     }
   }
 
