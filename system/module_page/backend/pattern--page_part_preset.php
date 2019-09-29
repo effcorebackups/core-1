@@ -63,9 +63,9 @@ namespace effcore {
     }
   }
 
-  static function init_dynamic($id = null) {
-    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_page_parts_dynamic_build'             );}
-    if ($id !== null                             ) {                                 event::start('on_page_parts_dynamic_build', null, [$id]);}
+  static function init_dynamic($id = null, $dynamic_data = []) {
+    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_page_parts_dynamic_build'                            );}
+    if ($id !== null                             ) {                                 event::start('on_page_parts_dynamic_build', null, [$id, $dynamic_data]);}
   }
 
   static function select_all($id_area = null, $origin = null) {
@@ -81,9 +81,9 @@ namespace effcore {
     return $result;
   }
 
-  static function select($id) {
+  static function select($id, $dynamic_data = []) {
     static::init();
-    if (isset(static::$cache[$id]) == false) static::init_dynamic($id);
+    if (isset(static::$cache[$id]) == false) static::init_dynamic($id, $dynamic_data);
     return static::$cache[$id] ?? null;
   }
 

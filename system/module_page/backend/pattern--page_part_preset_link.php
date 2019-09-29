@@ -8,21 +8,24 @@ namespace effcore {
           class page_part_preset_link {
 
   public $id;
-  public $preset_origin = 'nosql'; # nosql | dynamic
+  public $dynamic_data = [];
   public $weight = 0;
 
-  function __construct($id = null, $preset_origin = 'nosql', $weight = 0) {
-    if ($id)            $this->id            = $id;
-    if ($preset_origin) $this->preset_origin = $preset_origin;
-    if ($weight)        $this->weight        = $weight;
+  function __construct($id = null, $dynamic_data = [], $weight = 0) {
+    if ($id)           $this->id           = $id;
+    if ($dynamic_data) $this->dynamic_data = $dynamic_data;
+    if ($weight)       $this->weight       = $weight;
   }
 
   function page_part_preset_get() {
-    return page_part_preset::select($this->id);
+    return page_part_preset::select(
+      $this->id,
+      $this->dynamic_data
+    );
   }
 
   function page_part_make() {
-    $preset = $this->page_part_preset_get($this->id);
+    $preset = $this->page_part_preset_get();
     if (isset($preset)) {
       return $preset->page_part_make();
     }
