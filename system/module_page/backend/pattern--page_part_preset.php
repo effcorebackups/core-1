@@ -70,9 +70,10 @@ namespace effcore {
     }
   }
 
-  static function select_all($id_area = null, $with_dynamic = true) {
-                       static::init        ();
-    if ($with_dynamic) static::init_dynamic();
+  static function select_all($id_area = null, $origin = null) {
+    if ($origin ==   'nosql') {static::init();                        }
+    if ($origin == 'dynamic') {static::init(); static::init_dynamic();}
+    if ($origin ==      null) {static::init(); static::init_dynamic();}
     $result = static::$cache;
     if ($id_area)
       foreach ($result as $c_id => $c_preset)
