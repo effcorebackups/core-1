@@ -22,8 +22,6 @@ namespace effcore {
   }
 
   function page_part_make() {
-    if ($this->preset_origin == 'dynamic')
-      event::start('on_page_parts_dynamic_build', null, [$this->id]);
     $preset = $this->page_part_preset_get($this->id);
     if (isset($preset)) {
       return $preset->page_part_make();
