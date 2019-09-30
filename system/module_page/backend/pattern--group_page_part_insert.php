@@ -15,16 +15,19 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $presets = page_part_preset::select_all($this->id_area);
-      core::array_sort_by_text_property($presets, 'managing_title');
+      core::array_sort_by_text_property($presets, 'managing_group');
       $options = ['not_selected' => '- no -'];
       foreach ($presets as $c_preset) {
         $c_group_id = core::sanitize_id($c_preset->managing_group);
         if (!isset($options[$c_group_id])) {
                    $options[$c_group_id] = new \stdClass;
                    $options[$c_group_id]->title = $c_preset->managing_group;}
-        $options[$c_group_id]->values[$c_preset->id] = new text_multiline([
-          'title' => $c_preset->managing_title, 'id' => '('.$c_preset->id.')'], [], ' '
-        );
+        $options[$c_group_id]->values[$c_preset->id] = translation::get($c_preset->managing_title).' ('.$c_preset->id.')';
+      }
+      foreach ($options as $c_group) {
+        if ($c_group instanceof \stdClass) {
+          core::array_sort_text($c_group->values);
+        }
       }
       $select = new field_select('Insert part');
       $select->values = $options;
