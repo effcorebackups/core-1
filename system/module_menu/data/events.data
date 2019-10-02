@@ -60,3 +60,6 @@ events
       for: main
       weight: -60
       handler: \effcore\modules\menu\events_page::on_breadcrumbs_build_before
+  on_page_parts_dynamic_build
+  - all|event
+      handler: \effcore\modules\menu\events_page::on_page_parts_dynamic_build

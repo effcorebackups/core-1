@@ -9,6 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\page_part_preset;
           use \effcore\page;
           use \effcore\selection;
+          use \effcore\translation;
           use \effcore\url;
           abstract class events_page {
 
@@ -22,7 +23,7 @@ namespace effcore\modules\storage {
     if ($id === null || strpos($id, 'selection_sql_') === 0) {
       $selection_id = substr($id, strlen('selection_sql_'));
       foreach ($selection_id ? [selection::get($selection_id)] : selection::get_all('sql') as $c_selection) {
-        page_part_preset::insert('selection_sql_'.$c_selection->id, 'Selection (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::on_show_block_selection_sql', [], ['id' => $c_selection->id], 0, 'storage');
+        page_part_preset::insert('selection_sql_'.$c_selection->id, translation::get('Selection').' (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::on_show_block_selection_sql', [], ['id' => $c_selection->id], 0, 'storage');
       }
     }
   }

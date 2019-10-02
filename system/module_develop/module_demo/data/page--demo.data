@@ -95,7 +95,7 @@ pages
           type: code
           source: \effcore\modules\menu\events_page::on_show_block_tree_sql
           args
-          - id_tree: demo_sql
+          - id: demo_sql
       - tree_demo_nosql|page_part
           display
             check: page_args
