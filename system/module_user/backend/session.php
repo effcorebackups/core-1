@@ -98,8 +98,8 @@ namespace effcore {
     if ($hex_type == 'f' && $is_remember)          $expired = time() + static::period_expired_m;
     if ($hex_type == 'a')                          $expired = 0;
     if ($hex_type == 'f' && $is_fixed_ip == false) $ip = static::empty_ip;
-    if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_get_remote_addr();
-    if ($hex_type == 'a')                          $ip = core::server_get_remote_addr();
+    if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_get_addr_remote();
+    if ($hex_type == 'a')                          $ip = core::server_get_addr_remote();
   # $hex_type: a - anonymous user | f - authenticated user
     $hex_expired       = static::id_get_hex_expired($expired);
     $hex_ip            = static::id_get_hex_ip($ip);
@@ -147,8 +147,8 @@ namespace effcore {
           ($hex_type === 'f' && $expired >= time())) {
         if ($hex_signature === static::id_get_hex_signature($id)) {
           if ($hex_uagent_hash_8 === static::id_get_hex_uagent_hash_8()) {
-            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_get_remote_addr())) ||
-                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_get_remote_addr())) ||
+            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_get_addr_remote())) ||
+                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_get_addr_remote())) ||
                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
               return true;
             }

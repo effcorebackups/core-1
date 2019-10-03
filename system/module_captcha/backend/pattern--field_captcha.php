@@ -50,7 +50,7 @@ namespace effcore {
 
   function captcha_select() {
     $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_remote_addr())
+      'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
     ]))->select();
     if ($captcha) {
       $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
@@ -74,7 +74,7 @@ namespace effcore {
       );
     }
     $captcha = new instance('captcha', [
-      'ip_hex'      => core::ip_to_hex(core::server_get_remote_addr()),
+      'ip_hex'      => core::ip_to_hex(core::server_get_addr_remote()),
       'characters'  => $characters,
       'attempts'    => $this->attempts,
       'canvas'      => $canvas,
@@ -85,7 +85,7 @@ namespace effcore {
 
   function captcha_validate($characters) {
     $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_remote_addr())
+      'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
     ]))->select();
     if ($captcha) {
       if ($captcha->attempts > 0) {
