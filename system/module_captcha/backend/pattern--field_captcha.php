@@ -140,9 +140,9 @@ namespace effcore {
     return $result;
   }
 
-  static function captcha_get_localhost_code() {
+  static function get_code_by_id($id) {
     $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_addr())
+      'ip_hex' => $id
     ]))->select();
     if ($captcha) {
       return $captcha->characters;
