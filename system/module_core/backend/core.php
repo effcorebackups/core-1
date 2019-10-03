@@ -917,7 +917,8 @@ namespace effcore {
       case 'page_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'Page not found';   break;
       case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'File not found';   break;
     }
-    if (!$message) $message = 'go to <a href="/">front page</a>';
+    if (!$message && core::server_get_request_uri() != '/')
+         $message = 'go to <a href="/">front page</a>';
     $settings = module::settings_get('page');
     $colors = color::get_all();
     $color_page        = $colors[$settings->color_page_id       ]->value;
