@@ -9,13 +9,12 @@ namespace effcore {
 
   public $url;
   public $is_https = false;
-  public $proxy = '';
-  public $headers = [];
-  public $post = [];
-  public $prev_response;
+  public $proxy    = '';
+  public $headers  = [];
+  public $post     = [];
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    $this->prev_response = $c_results['response'] ?? null;
+    if (isset($c_results['response'])) static::$history_responses[] = $c_results['response'];
     $prepared_post = $this->prepared_get_post();
     $reports[] = translation::get('make request to "%%_url"', ['url' => $this->prepared_get_url()]);
     foreach ($prepared_post as $c_key => $c_value)
@@ -76,15 +75,19 @@ namespace effcore {
   }
 
   function validation_id_get() {
-    $form_id            = $this->post         ['form_id']                                    ?? '';
-    $prev_validation_id = $this->prev_response['headers']['X-Form-Validation-Id--'.$form_id] ?? '';
-    return $prev_validation_id;
+    $last_responce = end(static::$history_responses);
+    if ($last_responce) {
+      $form_id            = $this->post   ['form_id']                                    ?? '';
+      $prev_validation_id = $last_responce['headers']['X-Form-Validation-Id--'.$form_id] ?? '';
+      return $prev_validation_id;
+    }
   }
 
   ###########################
   ### static declarations ###
   ###########################
 
+  static $history_responses = [];
   static $curlopt_timeout = 5;
   static $curlopt_sslversion = CURL_SSLVERSION_TLSv1_2;
   static $curlopt_ssl_verifyhost = false;
