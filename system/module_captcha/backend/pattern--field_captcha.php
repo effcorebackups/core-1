@@ -7,6 +7,15 @@
 namespace effcore {
           class field_captcha extends field_text {
 
+  # about CAPTCHA id:
+  # ═════════════════════════════════════════════════════════════════════════
+  # duplicates of captcha by IP - it's prevention from DDOS attacks -
+  # user can overflow the storage if captcha_id will be a complex value
+  # for example: IP + user_agent (in this case user can falsify user_agent
+  # on each submit and this action will create a great variety of unique
+  # captcha_id in the storage and will make it overflowed)
+  # ─────────────────────────────────────────────────────────────────────────
+
   public $title = 'CAPTCHA';
   public $description = 'Write the characters from the picture.';
   public $attributes = ['data-type' => 'captcha'];
@@ -41,7 +50,7 @@ namespace effcore {
 
   function captcha_select() {
     $captcha = (new instance('captcha', [
-      'ip_hex' => static::client_id_get()
+      'ip_hex' => core::ip_to_hex(core::server_get_remote_addr())
     ]))->select();
     if ($captcha) {
       $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
@@ -65,7 +74,7 @@ namespace effcore {
       );
     }
     $captcha = new instance('captcha', [
-      'ip_hex'      => static::client_id_get(),
+      'ip_hex'      => core::ip_to_hex(core::server_get_remote_addr()),
       'characters'  => $characters,
       'attempts'    => $this->attempts,
       'canvas'      => $canvas,
@@ -76,7 +85,7 @@ namespace effcore {
 
   function captcha_validate($characters) {
     $captcha = (new instance('captcha', [
-      'ip_hex' => static::client_id_get()
+      'ip_hex' => core::ip_to_hex(core::server_get_remote_addr())
     ]))->select();
     if ($captcha) {
       if ($captcha->attempts > 0) {
@@ -97,22 +106,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  # about client_id_get():
-  # ═════════════════════════════════════════════════════════════════════════
-  # duplicates of captcha by IP - it's prevention from DDOS attacks -
-  # user can overflow the storage if captcha_id will be a complex value
-  # for example: IP + user_agent (in this case user can falsify user_agent
-  # on each submit and this action will create a great variety of unique
-  # captcha_id in the storage and will make it overflowed)
-  # ─────────────────────────────────────────────────────────────────────────
-
   static protected $glyphs;
-
-  static function client_id_get() {
-    return core::ip_to_hex(
-      core::server_get_remote_addr()
-    );
-  }
 
   static function cache_cleaning() {
     static::$glyphs = null;
