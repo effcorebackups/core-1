@@ -785,13 +785,11 @@ namespace effcore {
   }
 
   static function server_get_addr() {
-    return $_SERVER['SERVER_ADDR'] == '127.0.0.1' ? '::1' :
-           $_SERVER['SERVER_ADDR'];
+    return $_SERVER['SERVER_ADDR'];
   }
 
   static function server_get_addr_remote() {
-    return $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? '::1' :
-           $_SERVER['REMOTE_ADDR'];
+    return $_SERVER['REMOTE_ADDR'];
   }
 
   static function server_get_request_uri() {

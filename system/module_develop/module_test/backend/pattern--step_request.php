@@ -71,10 +71,7 @@ namespace effcore {
       $last_responce = end(static::$history_responses);
       if ($last_responce) {
         return field_captcha::get_code_by_id(
-          core::ip_to_hex(
-            $last_responce['info']['primary_ip'] == '127.0.0.1' ? '::1' :
-            $last_responce['info']['primary_ip']
-          )
+          core::ip_to_hex($last_responce['info']['primary_ip'])
         );
       }
     }
