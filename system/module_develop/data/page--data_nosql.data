@@ -18,8 +18,8 @@ pages
     - menu
       - tree_sql_user_registered|page_part_preset_link
           id: tree_sql_user_registered
-      - menu_main|page_part_preset_link
-          id: menu_main
+      - tree_main|page_part_preset_link
+          id: tree_main
     - top
       - breadcrumbs_main|page_part_preset_link
           id: breadcrumbs_main

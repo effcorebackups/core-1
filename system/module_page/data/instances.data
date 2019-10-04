@@ -17,8 +17,8 @@ instances
             id: tree_sql_user_registered
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
-        - menu_main|page_part_preset_link
-            id: menu_main
+        - tree_main|page_part_preset_link
+            id: tree_main
       - title
         - title|page_part_preset_link
             id: title
@@ -40,8 +40,8 @@ instances
       - menu
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
-        - menu_main|page_part_preset_link
-            id: menu_main
+        - tree_main|page_part_preset_link
+            id: tree_main
       - top
         - breadcrumbs_user_anonymous|page_part_preset_link
             id: breadcrumbs_user_anonymous
@@ -66,8 +66,8 @@ instances
       - menu
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
-        - menu_main|page_part_preset_link
-            id: menu_main
+        - tree_main|page_part_preset_link
+            id: tree_main
       - top
         - breadcrumbs_user_anonymous|page_part_preset_link
             id: breadcrumbs_user_anonymous
@@ -92,8 +92,8 @@ instances
       - menu
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
-        - menu_main|page_part_preset_link
-            id: menu_main
+        - tree_main|page_part_preset_link
+            id: tree_main
       - top
         - breadcrumbs_user_anonymous|page_part_preset_link
             id: breadcrumbs_user_anonymous
@@ -118,8 +118,8 @@ instances
       - menu
         - tree_sql_user_registered|page_part_preset_link
             id: tree_sql_user_registered
-        - menu_main|page_part_preset_link
-            id: menu_main
+        - tree_main|page_part_preset_link
+            id: tree_main
       - top
         - breadcrumbs_user_registered|page_part_preset_link
             id: breadcrumbs_user_registered
