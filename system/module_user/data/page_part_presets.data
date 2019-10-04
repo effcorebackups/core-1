@@ -1,13 +1,4 @@
 page_part_presets
-- menu_user_registered|page_part_preset
-    id: menu_user_registered
-    managing_group: Menu
-    managing_title: User registered
-    type: code
-    source: \effcore\modules\menu\events_page::on_show_block_tree_sql
-    args
-    - id: user_registered
-# ─────────────────────────────────────────────────────────────────────
 - form_login|page_part_preset
     id: form_login
     managing_group: Form
