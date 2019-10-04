@@ -7,14 +7,6 @@ page_part_presets
     source: \effcore\modules\menu\events_page::on_show_block_tree_sql
     args
     - id: user_registered
-- menu_user_anonymous|page_part_preset
-    id: menu_user_anonymous
-    managing_group: Menu
-    managing_title: User anonymous
-    type: code
-    source: \effcore\modules\menu\events_page::on_show_block_tree_sql
-    args
-    - id: user_anonymous
 # ─────────────────────────────────────────────────────────────────────
 - form_login|page_part_preset
     id: form_login
