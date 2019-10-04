@@ -1,5 +1,5 @@
 frontend
-- menu_all|frontend
+- tree_all|frontend
     display
       check: block
       where: dpath

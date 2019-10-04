@@ -41,15 +41,17 @@ namespace effcore {
 
   static function select($row_id) {
     static::init();
-    return static::$cache[$row_id];
+    return static::$cache[$row_id] ?? null;
   }
 
-  static function insert($row_id, $display = null, $type = 'styles', $element) {
+  static function insert($row_id, $display = null, $type = 'styles', $element, $element_row_id = null, $mudule_id = null) {
     static::init();
-    static::$cache[$row_id] = new static;
-    static::$cache[$row_id]->display = $display;
-    static::$cache[$row_id]->module_id = null;
-    static::$cache[$row_id]->{$type}[] = (object)$element;
+    if (!isset(static::$cache[$row_id]))
+               static::$cache[$row_id] = new static;
+    static::$cache[$row_id]->display   = $display;
+    static::$cache[$row_id]->module_id = $mudule_id;
+    if ($element_row_id) static::$cache[$row_id]->{$type}[$element_row_id] = (object)$element;
+    else                 static::$cache[$row_id]->{$type}[               ] = (object)$element;
   }
 
   static function markup_get($used_dpaths) {

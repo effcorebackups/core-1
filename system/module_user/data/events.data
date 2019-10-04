@@ -77,3 +77,10 @@ events
   - user_edit|event
       for: user_edit
       handler: \effcore\modules\user\events_page_user_edit::on_build_before
+  on_tree_build_before
+  - user_registered|event
+      for: user_registered
+      handler: \effcore\modules\user\events_page::on_tree_build_before
+  - user_anonymous|event
+      for: user_anonymous
+      handler: \effcore\modules\user\events_page::on_tree_build_before
