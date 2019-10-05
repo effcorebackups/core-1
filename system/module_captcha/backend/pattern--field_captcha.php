@@ -45,6 +45,8 @@ namespace effcore {
       }
       $this->child_insert_first($captcha->canvas, 'canvas');
       $this->is_builded = true;
+      if (!frontend::select('captcha_form'))
+           frontend::insert('captcha_form', null, 'styles', ['file' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
     }
   }
 

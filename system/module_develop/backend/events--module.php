@@ -27,8 +27,8 @@ namespace effcore\modules\develop {
         ($settings->console_visibility == 'show_for_everyone')) {
       frontend::insert('console', null, 'styles', [
         'file'       => '/system/module_develop/frontend/develop.cssd',
-        'attributes' => ['rel' => 'stylesheet', 'media' => 'all'
-      ]]);
+        'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'develop_style', 'develop'
+      );
     }
   }
 
