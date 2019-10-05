@@ -123,6 +123,7 @@ namespace effcore\modules\core {
         $modules_to_install = [];
         $include_paths      = [];
       # collect information
+        core::array_sort_by_property($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
           if (!isset($embed[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
