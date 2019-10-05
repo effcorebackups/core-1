@@ -17,6 +17,7 @@ namespace effcore {
   public $path;
   public $dependencies;
   public $enabled = 'yes';
+  public $deploy_weight = 0;
 
   function enable() {
     core::boot_insert($this->id, $this->path, 'enabled');
