@@ -1,0 +1,9 @@
+events
+  on_module_enable
+  - example_translation|event
+      for: example_translation
+      handler: \effcore\modules\example_translation\events_module::on_enable
+  on_module_disable
+  - example_translation|event
+      for: example_translation
+      handler: \effcore\modules\example_translation\events_module::on_disable

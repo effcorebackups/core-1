@@ -149,6 +149,7 @@ translations
     - events: события
     - Events: События
     - Example of empty module.: Пример пустого модуля.
+    - Example of translation.: Пример перевода.
     - Examples: Примеры
     - Examples\: %%_examples.: Примеры: %%_examples.
     - Execute: Выполнить
