@@ -1,0 +1,5 @@
+bundle
+  id: examples
+  title: Examples
+  description: Bundle with examples.
+  build: 1000

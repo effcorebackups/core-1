@@ -1,0 +1,17 @@
+events
+  on_module_install
+  - example_empty|event
+      for: example_empty
+      handler: \effcore\modules\example_empty\events_module::on_install
+  on_module_uninstall
+  - example_empty|event
+      for: example_empty
+      handler: \effcore\modules\example_empty\events_module::on_uninstall
+  on_module_enable
+  - example_empty|event
+      for: example_empty
+      handler: \effcore\modules\example_empty\events_module::on_enable
+  on_module_disable
+  - example_empty|event
+      for: example_empty
+      handler: \effcore\modules\example_empty\events_module::on_disable

@@ -1,0 +1,8 @@
+module|module
+  id: example_empty
+  id_bundle: examples
+  title: Empty module
+  group: Examples
+  description: Example of empty module.
+  copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
+  version: 1.000
