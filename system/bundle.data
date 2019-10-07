@@ -1,5 +1,5 @@
 bundle
   id: system
   title: System
-  description: Bundle with System.
+  description: Bundle with system.
   build: 1000

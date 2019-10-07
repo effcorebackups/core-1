@@ -43,7 +43,10 @@ translations
     - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
+    - bundle description: описание пакета
     - bundle id: id пакета
+    - Bundle with examples.: Пакет с примерами.
+    - Bundle with system.: Пакет с системой.
     - Button (active): Кнопка (активная)
     - Button text: Кнопки текст
     - Button: Кнопка
