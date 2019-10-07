@@ -1,0 +1,7 @@
+languages
+- ru|language
+    code: ru
+    title
+      en: Russian
+      native: Русский
+    license_translation: module_translation/licenses/license-ru.md

@@ -263,6 +263,7 @@ translations
     - KiB: КиБ
     - Kind: Вид
     - Language %%_name was enabled.: Язык %%_name был включен.
+    - Language %%_name was inserted.: Язык %%_name был добавлен.
     - Language: Язык
     - Layout: Макет
     - Layouts: Макеты
@@ -509,8 +510,9 @@ translations
     - Tokens: Токены
     - Total: Всего
     - Translate: Перевод
+    - Translating to Russian language.: Перевод на русский язык.
     - Translation: Перевод
-    - Translations for language %%_name was enabled.: Перевод для языка %%_name был включен.
+    - Translations for language %%_name was inserted.: Перевод для языка %%_name был добавлен.
     - Translations: Переводы
     - Tree ID: ID дерева
     - Tree item: Пункт дерева

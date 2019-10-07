@@ -4,9 +4,3 @@ languages
     title
       en: English
       native: English
-- ru|language
-    code: ru
-    title
-      en: Russian
-      native: Русский
-    license_translation: module_locales/licenses/license-ru.md
