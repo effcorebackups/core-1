@@ -2,7 +2,7 @@ module|module
   id: translation
   id_bundle: system
   title: Translation
-  group: Translation
+  group: Translations
   description: Translating to Russian language.
   copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
   version: 0.900
