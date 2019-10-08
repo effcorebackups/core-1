@@ -11,32 +11,16 @@ namespace effcore {
   ### boot modules ###
   ####################
 
-  static function boot_select_default() {
-    return [
-      'captcha'        => 'system/module_captcha/',
-      'core'           => 'system/module_core/',
-      'locales'        => 'system/module_locales/',
-      'translation_ru' => 'system/module_translation_ru/',
-      'menu'           => 'system/module_menu/',
-      'page'           => 'system/module_page/',
-      'storage'        => 'system/module_storage/',
-      'user'           => 'system/module_user/',
-    ];
-  }
-
   static function boot_select($type = 'enabled') {
     $boot = data::select('boot');
-    if ($boot && isset($boot->{'modules_'.$type}))
-                return $boot->{'modules_'.$type};
-    else        return static::boot_select_default();
+    return $boot->{'modules_'.$type} ?? [];
   }
 
   static function boot_insert($module_id, $module_path, $type) {
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
-    if  ($boot && isset($boot->{'modules_'.$type}))
-         $boot_buffer = $boot->{'modules_'.$type};
-    else $boot_buffer = static::boot_select_default();
+    if ($boot && isset($boot->{'modules_'.$type}))
+        $boot_buffer = $boot->{'modules_'.$type};
     $boot_buffer[$module_id] = $module_path;
     asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
@@ -46,9 +30,8 @@ namespace effcore {
   static function boot_delete($module_id, $type) {
     $boot = data::select('boot') ?: new \stdClass;
     $boot_buffer = [];
-    if  ($boot && isset($boot->{'modules_'.$type}))
-         $boot_buffer = $boot->{'modules_'.$type};
-    else $boot_buffer = static::boot_select_default();
+    if ($boot && isset($boot->{'modules_'.$type}))
+        $boot_buffer = $boot->{'modules_'.$type};
     unset($boot_buffer[$module_id]);
     $boot->{'modules_'.$type} = $boot_buffer;
     data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
@@ -81,16 +64,25 @@ namespace effcore {
     if ($result) {
       return $result;
     } else {
-      $modules_path = storage_nosql_files::data_find_and_parse_modules_and_bundles()->modules_path;
-      $enabled = static::boot_select('enabled') + $with_paths;
-      $files = [];
+      $files        = [];
+      $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
+      $modules_path = $preparse->modules_path;
+      $enabled      = static::boot_select('enabled') + $with_paths;
+      if ($enabled == []) {
+        foreach ($preparse->parsed as $c_info) {
+          if (!empty($c_info->data->module)         &&
+                     $c_info->data->module->enabled == 'yes') {
+            $enabled[$c_info->data->module->id] = $c_info->data->module->path;
+          }
+        }
+      }
       arsort($enabled);
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.php$%');
-        foreach ($c_files as $c_path => $c_file) {
-          $c_module_id = key(static::in_array_inclusions_find($c_path, $modules_path));
+        foreach ($c_files as $c_file_path => $c_file) {
+          $c_module_id = key(static::in_array_inclusions_find($c_file_path, $modules_path));
           if (isset($enabled[$c_module_id])) {
-            $files[$c_path] = $c_file;
+            $files[$c_file_path] = $c_file;
           }
         }
       }

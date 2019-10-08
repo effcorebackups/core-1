@@ -5,4 +5,5 @@ module|module
   group: Translations
   description: Translating to Russian language.
   copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
+  enabled: yes
   version: 0.900

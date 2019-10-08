@@ -10,16 +10,15 @@ namespace effcore\modules\translation_ru {
           use \effcore\module;
           use \effcore\storage;
           use \effcore\text;
+          use \effcore\translation;
           abstract class events_module {
 
   static function on_enable() {
     $module = module::get('translation_ru');
     $module->enable();
-    message::insert(new text('Translations for language %%_name was inserted.', ['name' => language::get('ru')->title_en]));
-    message::insert(new text('Language %%_name was inserted.',                  ['name' => language::get('ru')->title_en]));
-    message::insert(new text('Language %%_name was enabled.',                   ['name' => language::get('ru')->title_en]));
-    storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', 'ru');
-    language::code_set_current('ru');
+    message::insert(new text('Translations for language %%_name was inserted.',                 ['name' => language::get('ru')->title_en                                       ]));
+    message::insert(new text('Language %%_name was inserted.',                                  ['name' => language::get('ru')->title_en                                       ]));
+    message::insert(new text('You can enable or disable the language %%_name on page %%_page.', ['name' => language::get('ru')->title_en, 'page' => translation::get('Locales')]));
   }
 
   static function on_disable() {

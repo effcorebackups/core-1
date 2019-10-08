@@ -125,20 +125,20 @@ namespace effcore {
   }
 
   static function data_changes_apply($changes, &$data) {
-    $enabled_by_boot = core::boot_select('enabled');
     foreach ($changes as $module_id => $c_module_changes) {
-      if (isset($enabled_by_boot[$module_id])) {
-        foreach ($c_module_changes as $c_action => $c_changes) {
-          foreach ($c_changes as $c_dpath => $c_data) {
-            $c_pointers = core::dpath_get_pointers($data, $c_dpath);
-            $c_parent_name = array_keys($c_pointers)[count($c_pointers)-2];
-            $c_child_name  = array_keys($c_pointers)[count($c_pointers)-1];
-            $c_parent      =           &$c_pointers[$c_parent_name];
-            $c_child       =           &$c_pointers[$c_child_name];
+      foreach ($c_module_changes as $c_action => $c_changes) {
+        foreach ($c_changes as $c_dpath => $c_data) {
+          $c_pointers   = @core::dpath_get_pointers($data, $c_dpath);
+          $c_parnt_name = array_keys($c_pointers)[count($c_pointers)-2];
+          $c_child_name = array_keys($c_pointers)[count($c_pointers)-1];
+          $c_parnt      =           &$c_pointers[$c_parnt_name];
+          $c_child      =           &$c_pointers[$c_child_name];
+          if ($c_parnt !== null &&
+              $c_child !== null) {
             switch ($c_action) {
-              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_insert_value($c_child, $c_key, $c_value);        break; # supported types: array | object
-              case 'update':                                         core::arrobj_insert_value($c_parent, $c_child_name, $c_data); break; # supported types: array | object | string | numeric | bool | null
-              case 'delete':                                         core::arrobj_delete_child($c_parent, $c_child_name);          break;
+              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_insert_value($c_child, $c_key, $c_value);       break; # supported types: array | object
+              case 'update':                                         core::arrobj_insert_value($c_parnt, $c_child_name, $c_data); break; # supported types: array | object | string | numeric | bool | null
+              case 'delete':                                         core::arrobj_delete_child($c_parnt, $c_child_name);          break;
             }
           }
         }
@@ -174,19 +174,27 @@ namespace effcore {
 
   static function data_find_and_parse($with_paths = []) {
     $result       = [];
+    $files        = [];
     $preparse     = static::data_find_and_parse_modules_and_bundles();
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;
     $enabled      = core::boot_select('enabled') + $with_paths;
-    $files        = [];
+    if ($enabled == []) {
+      foreach ($preparse->parsed as $c_info) {
+        if (!empty($c_info->data->module)         &&
+                   $c_info->data->module->enabled == 'yes') {
+          $enabled[$c_info->data->module->id] = $c_info->data->module->path;
+        }
+      }
+    }
     arsort($enabled);
-    foreach ($enabled as $c_enabled_id => $c_enabled_path) {
+    foreach ($enabled as $c_enabled_path) {
       $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.data$%');
-      foreach ($c_files as $c_path => $c_file) {
-        $c_module_id = key(core::in_array_inclusions_find($c_path, $modules_path));
+      foreach ($c_files as $c_file_path => $c_file) {
+        $c_module_id = key(core::in_array_inclusions_find($c_file_path, $modules_path));
         if (isset($enabled[$c_module_id])) {
-          $files[$c_path] = $c_file;
+          $files[$c_file_path] = $c_file;
         }
       }
     }
@@ -201,8 +209,8 @@ namespace effcore {
       $parsed[$c_path_relative]->data = $c_data;
     }
   # build the result
-    foreach ($parsed as $c_path => $c_file) {
-      $c_module_id = key(core::in_array_inclusions_find($c_path, $modules_path));
+    foreach ($parsed as $c_file_path => $c_file) {
+      $c_module_id = key(core::in_array_inclusions_find($c_file_path, $modules_path));
       foreach ($c_file->data as $c_type => $c_data) {
         if ($c_type == 'bundle') $c_module_id = $c_data->id;
         if ($c_module_id) {
