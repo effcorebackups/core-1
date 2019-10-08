@@ -13,14 +13,14 @@ namespace effcore {
 
   static function boot_select_default() {
     return [
-      'captcha'     => 'system/module_captcha/',
-      'core'        => 'system/module_core/',
-      'locales'     => 'system/module_locales/',
-      'translation' => 'system/module_translation/',
-      'menu'        => 'system/module_menu/',
-      'page'        => 'system/module_page/',
-      'storage'     => 'system/module_storage/',
-      'user'        => 'system/module_user/',
+      'captcha'        => 'system/module_captcha/',
+      'core'           => 'system/module_core/',
+      'locales'        => 'system/module_locales/',
+      'translation_ru' => 'system/module_translation_ru/',
+      'menu'           => 'system/module_menu/',
+      'page'           => 'system/module_page/',
+      'storage'        => 'system/module_storage/',
+      'user'           => 'system/module_user/',
     ];
   }
 

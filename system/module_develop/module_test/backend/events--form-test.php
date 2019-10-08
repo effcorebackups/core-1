@@ -11,7 +11,6 @@ namespace effcore\modules\test {
           use \effcore\page;
           use \effcore\test;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_test {
 
   static function on_init($event, $form, $items) {
