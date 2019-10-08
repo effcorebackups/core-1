@@ -154,6 +154,7 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(),
             'salt'            => core::key_generate()
           ]);
+          $lang_code = page::get_current()->args_get('lang_code');
           $enabled_by_default = module::get_enabled_by_default();
           $embed              = module::get_embed();
           $modules            = module::get_all();
@@ -171,17 +172,16 @@ namespace effcore\modules\core {
           }
           if (count(storage::get('sql')->errors) == 0) {
             $form->children_delete();
-            $link_page_login = (new markup('a', ['href' => '/login', 'target' => '_blank'], 'login'))->render();
             message::insert('System was installed.');
             message::insert(new text_multiline([
               'your EMail is — %%_email',
               'your Password is — %%_password',
               'go to page %%_link'], [
-              'link'     => $link_page_login,
+              'link'     => (new markup('a', ['href' => '/login', 'target' => '_blank'], 'login'))->render(),
               'email'    => $items['#email'   ]->value_get(),
               'password' => $items['#password']->value_get(false)]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'), false);
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code, false);
             storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
           } else {
             message::insert(new text_multiline([
