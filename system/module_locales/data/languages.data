@@ -1,6 +1,5 @@
 languages
 - en|language
     code: en
-    title
-      en: English
-      native: English
+    title_en: English
+    title_native: English

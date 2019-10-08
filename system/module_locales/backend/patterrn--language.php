@@ -8,7 +8,8 @@ namespace effcore {
           class language {
 
   public $code;
-  public $title;
+  public $title_en;
+  public $title_native;
   public $license_translation;
 
   ###########################

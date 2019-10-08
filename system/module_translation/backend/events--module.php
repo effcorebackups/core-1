@@ -15,9 +15,9 @@ namespace effcore\modules\translation {
   static function on_enable() {
     $module = module::get('translation');
     $module->enable();
-    message::insert(new text('Translations for language %%_name was inserted.', ['name' => language::get('ru')->title->en]));
-    message::insert(new text('Language %%_name was inserted.',                  ['name' => language::get('ru')->title->en]));
-    message::insert(new text('Language %%_name was enabled.',                   ['name' => language::get('ru')->title->en]));
+    message::insert(new text('Translations for language %%_name was inserted.', ['name' => language::get('ru')->title_en]));
+    message::insert(new text('Language %%_name was inserted.',                  ['name' => language::get('ru')->title_en]));
+    message::insert(new text('Language %%_name was enabled.',                   ['name' => language::get('ru')->title_en]));
     storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', 'ru');
     language::code_set_current('ru');
   }

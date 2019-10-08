@@ -18,12 +18,12 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $languages = language::get_all();
-      ksort($languages);
+      core::array_sort_by_text_property($languages, 'title_en');
       $this->option_insert('- no -', 'not_selected');
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(
-          $c_info->title->en.($c_code != 'en' ? ' ('.
-          $c_info->title->native.')' : ''), $c_code);}
+          $c_info->title_en.($c_code != 'en' ? ' ('.
+          $c_info->title_native.')' : ''), $c_code);}
       $this->is_builded = true;
     }
   }
