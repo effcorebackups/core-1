@@ -262,7 +262,6 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - KiB: КиБ
     - Kind: Вид
-    - Language %%_name was inserted.: Язык %%_name был добавлен.
     - Language: Язык
     - Layout: Макет
     - Layouts: Макеты
@@ -512,7 +511,6 @@ translations
     - Translating to Russian language.: Перевод на русский язык.
     - Translation RU: Перевод RU
     - Translation: Перевод
-    - Translations for language %%_name was inserted.: Перевод для языка %%_name был добавлен.
     - Translations: Переводы
     - Tree ID: ID дерева
     - Tree item: Пункт дерева
