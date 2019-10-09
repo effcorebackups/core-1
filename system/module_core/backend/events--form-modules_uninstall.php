@@ -45,6 +45,31 @@ namespace effcore\modules\core {
     }
   }
 
+  static function on_validate($event, $form, $items) {
+    switch ($form->clicked_button->value_get()) {
+      case 'apply':
+        $embed   = module::get_embed();
+        $modules = module::get_all  ();
+        $modules_to_uninstall = [];
+      # collect information
+        if  (isset($items['*uninstall'])) {
+          foreach ($items['*uninstall']->values_get() as $c_module_id) {
+            $c_module = $modules[$c_module_id];
+            if (!isset($embed[$c_module->id])) {
+              $modules_to_uninstall[$c_module->id] = $c_module;
+            }
+          }
+        }
+      # if no one item is selected
+        if (!$modules_to_uninstall) {
+          message::insert(
+            'No one item was selected!', 'warning'
+          );
+        }
+        break;
+    }
+  }
+
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
@@ -73,21 +98,6 @@ namespace effcore\modules\core {
         cache::update_global();
         $form->child_select('info')->children_delete();
         static::on_init(null, $form, $items);
-      # show report
-        $installed_by_boot = core::boot_select('installed');
-        if ($modules_to_uninstall) {
-          foreach ($modules_to_uninstall as $c_module) {
-            if (!isset($installed_by_boot[$c_module->id])) {
-              message::insert(
-                new text('Module data "%%_title" (%%_id) was removed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
-              );
-            }
-          }
-        } else {
-          message::insert(
-            'No one item was selected!', 'warning'
-          );
-        }
         break;
     }
   }

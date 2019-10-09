@@ -21,6 +21,9 @@ namespace effcore {
 
   function enable() {
     core::boot_insert($this->id, $this->path, 'enabled');
+    message::insert(
+      new text('Module "%%_title" (%%_id) was enabled.', ['title' => translation::get($this->title), 'id' => $this->id])
+    );
   }
 
   function install() {
@@ -39,6 +42,9 @@ namespace effcore {
     }
   # insert to boot
     core::boot_insert($this->id, $this->path, 'installed');
+    message::insert(
+      new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::get($this->title), 'id' => $this->id])
+    );
   }
 
   function dependencies_status_get() {

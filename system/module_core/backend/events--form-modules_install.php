@@ -89,8 +89,8 @@ namespace effcore\modules\core {
         $modules_to_disable = [];
         foreach ($modules as $c_module) {
           if (!isset($embed[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          $modules_to_disable[$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled_by_boot[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]) != false) $modules_to_disable[$c_module->id] = $c_module;
           }
         }
       # check dependencies
@@ -108,6 +108,12 @@ namespace effcore\modules\core {
               }
             }
           }
+        }
+      # if no one item is selected
+        if (!$modules_to_enable && !$modules_to_disable) {
+          message::insert(
+            'No one item was selected!', 'warning'
+          );
         }
         break;
     }
@@ -127,8 +133,8 @@ namespace effcore\modules\core {
         core::array_sort_by_property($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
           if (!isset($embed[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get()          && isset($enabled_by_boot[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]))          {$modules_to_disable[$c_module->id] = $c_module;                                                 }
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled_by_boot[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled_by_boot[$c_module->id]) != false) {$modules_to_disable[$c_module->id] = $c_module;                                                 }
           }
         }
       # enable modules
@@ -151,31 +157,6 @@ namespace effcore\modules\core {
         cache::update_global();
         $form->child_select('info')->children_delete();
         static::on_init(null, $form, $items);
-      # show report
-        $enabled_by_boot = core::boot_select('enabled');
-        if ($modules_to_enable) {
-          foreach ($modules_to_enable as $c_module) {
-            if (isset($enabled_by_boot[$c_module->id])) {
-              if (isset($modules_to_install[$c_module->id]))
-                   message::insert(new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
-              else message::insert(new text('Module "%%_title" (%%_id) was enabled.',   ['title' => translation::get($c_module->title), 'id' => $c_module->id]));
-            }
-          }
-        }
-        if ($modules_to_disable) {
-          foreach ($modules_to_disable as $c_module) {
-            if (!isset($enabled_by_boot[$c_module->id])) {
-              message::insert(
-                new text('Module "%%_title" (%%_id) was disabled.', ['title' => translation::get($c_module->title), 'id' => $c_module->id])
-              );
-            }
-          }
-        }
-        if (!$modules_to_enable && !$modules_to_disable) {
-          message::insert(
-            'No one item was selected!', 'warning'
-          );
-        }
         break;
     }
   }
