@@ -329,6 +329,8 @@
   x-module-info x-field[data-type='switcher'] {float: right; margin: 0 0 0 10px}
   x-module-info x-field[data-type='switcher'] input {margin: 0}
   x-module-info x-param {display: block; margin: 2px 0}
+  x-module-info x-param[data-type='icon'] {float: left; margin: 3px 1em 3px 0}
+  x-module-info x-param[data-type='icon'] x-value img {display: block}
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
   x-module-info x-param x-label {opacity: .5}
   x-module-info x-param x-label::after {content: ': '}

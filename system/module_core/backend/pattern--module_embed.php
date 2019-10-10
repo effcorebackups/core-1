@@ -17,6 +17,7 @@ namespace effcore {
   public $path;
   public $dependencies;
   public $enabled = 'yes';
+  public $icon_path;
   public $deploy_weight = 0;
 
   function enable() {
