@@ -1,10 +1,9 @@
 module|module
-  id: translation_ru
+  id: translation_by
   id_bundle: system
-  title: Russian
+  title: Belarusian
   group: Translations
-  description: Translating to Russian language.
+  description: Translating to Belarusian language.
   copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
-  icon_path: frontend/images/flag-ru-mini.svg
-  enabled: yes
+  icon_path: frontend/images/flag-by-mini.svg
   version: 0.900

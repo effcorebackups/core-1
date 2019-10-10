@@ -37,6 +37,7 @@ translations
     - Avatar: Аватар
     - avatar: аватар
     - begin: начало
+    - Belarusian: Белорусский
     - Breadcrumbs Main: Хлебные крошки Основные
     - Breadcrumbs User anonymous: Хлебные крошки Пользователь анонимный
     - Breadcrumbs User registered: Хлебные крошки Пользователь зарегистрированный
@@ -426,6 +427,7 @@ translations
     - roles: роли
     - Roles: Роли
     - run: запустить
+    - Russian: Русский
     - save: сохранить
     - Search: Поиск
     - search: поиск
@@ -508,8 +510,8 @@ translations
     - Tokens: Токены
     - Total: Всего
     - Translate: Перевод
+    - Translating to Belarusian language.: Перевод на белорусский язык.
     - Translating to Russian language.: Перевод на русский язык.
-    - Translation RU: Перевод RU
     - Translation: Перевод
     - Translations: Переводы
     - Tree ID: ID дерева
