@@ -12,7 +12,6 @@ translations
     - a php extension stopped the file upload: php-расширение остановило загрузку файла
     - Access forbidden: Доступ запрещён
     - Access settings not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
-    - Access settings: Настройки доступа
     - Access: Доступ
     - action: действие
     - Action: Действие
@@ -21,7 +20,6 @@ translations
     - Add new item of type "%%_entity_name_context" on new page.: Добавить новый элемент типа "%%_entity_name_context" на новой странице.
     - add: добавить
     - Administrators: Администраторы
-    - agree: согласен(а)
     - All caches was reset.: Все кэши были сброшены.
     - All colors: Все цвета
     - All: Все
