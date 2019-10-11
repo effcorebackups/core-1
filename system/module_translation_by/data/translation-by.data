@@ -3,3 +3,12 @@ translations
     code: by
     data
     - - no -: - няма -
+    - - select -: - выбраць -
+    - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}
+    - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: выдаліць
+    - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: ўставіць
+    - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: абнавіць
+    - A new password was sent to selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
+    - a php extension stopped the file upload: php-пашырэнне спыніла загрузку файла
+    - Access forbidden: Доступ забаронены
+    - Access settings not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
