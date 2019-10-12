@@ -24,6 +24,7 @@ translations
     - begin: начало
     - Call %%_name: Вызов %%_name
     - call: вызов
+    - Canvas: Холст
     - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флаг 1
     - Checkbox 2 (checked): Флаг 2 (установлен)

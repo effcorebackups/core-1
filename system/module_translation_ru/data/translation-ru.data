@@ -43,11 +43,8 @@ translations
     - button: кнопка
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1" когда вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
+    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1" когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
-    - Cancel: Отмена
-    - cancel: отмена
-    - Canvas: Холст
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - Characters: Символы
     - Charset: Кодировка
