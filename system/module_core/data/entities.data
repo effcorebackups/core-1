@@ -21,7 +21,7 @@ entities
         not_null: true
         default: ok
     - expired
-        title: Expired date
+        title: Expiration date
         type: datetime
     indexes
     - index_id_session

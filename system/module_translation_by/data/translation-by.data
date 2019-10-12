@@ -105,3 +105,8 @@ translations
     - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
     - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдаленая!
     - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдаленая.
+    - Environment: Атачэнне
+    - Error: Памылка
+    - Example of empty module.: Прыклад пустога модуля.
+    - Examples: Прыклады
+    - Expiration date: Дата заканчэння
