@@ -89,3 +89,10 @@ translations
     - depend from php extensions: залежыць ад php-пашырэнняў
     - Description: Апісанне
     - description: апісанне
+    - Distributed queries not supported! Selection id = "%%_id": Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id"
+    - Driver error code\: %%_code: Код памылкі драйвера: %%_code
+    - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
+    - Driver is not selected!: Драйвер не абраны!
+    - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу %%_type з id = "%%_id" у модулі "%%_module_id"
+    - duplicate of %%_type with id = "%%_id" was found: быў знойдзены дублікат тыпу %%_type з id = "%%_id"
+    - Edit user %%_nick_page_context{nick}: Рэдагаваць карыстальніка %%_nick_page_context{nick}
