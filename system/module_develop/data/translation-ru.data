@@ -31,6 +31,8 @@ translations
     - Checkbox 2 (checked): Флаг 2 (установлен)
     - Checkbox 3 (disabled): Флаг 3 (отключён)
     - Checkbox 4 (disabled + checked): Флаг 4 (установлен + отключён)
+    - Checkbox: Флаг
+    - Checkboxes: Флажки
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - class: класс
     - Classes: Классы

@@ -48,3 +48,5 @@ translations
     - Check directory permissions.: Праверце дазвалення каталога.
     - Check field again before submit.: Праверце поле зноў перад адпраўкай.
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
+    - Classic: Класічны
+    - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!

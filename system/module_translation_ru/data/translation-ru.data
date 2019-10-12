@@ -49,8 +49,6 @@ translations
     - Check directory permissions.: Проверьте разрешения каталога.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
-    - Checkbox: Флаг
-    - Checkboxes: Флажки
     - Classic: Классический
     - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
     - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
