@@ -33,7 +33,7 @@ forms
             - minlength: 3
             - maxlength: 100
         - format_datetime|field_text
-            title: Date / time format
+            title: Date/time format
             description|text
               text: Examples: %%_examples.
               args
