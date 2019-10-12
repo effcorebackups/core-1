@@ -89,11 +89,9 @@ translations
     - delete: удалить
     - Demo: Демо
     - depend from modules: зависит от модулей
-    - depend from php extensions: зависит от php расширений
+    - depend from php extensions: зависит от php-расширений
     - Description: Описание
     - description: описание
-    - Develop: Разработка
-    - Diagrams: Диаграммы
     - disable: выключить
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code

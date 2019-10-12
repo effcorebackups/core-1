@@ -80,3 +80,12 @@ translations
     - Decimal point: Дзесятковая кропка
     - Decoration: Афармленне
     - Decorator parameters: Параметры афармлення
+    - delete file "%%_name": выдаліць файл "%%_name"
+    - Delete item of type "%%_name" with id = "%%_id"?: Выдаліць элемент тыпу "%%_name" з id = "%%_id"?
+    - Delete modules data: Выдаліць даныя модуляў
+    - Delete: Выдаліць
+    - delete: выдаліць
+    - depend from modules: залежыць ад модуляў
+    - depend from php extensions: залежыць ад php-пашырэнняў
+    - Description: Апісанне
+    - description: апісанне

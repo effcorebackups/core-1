@@ -49,7 +49,9 @@ translations
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор
     - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
+    - Develop: Разработка
     - Diagram: Диаграмма
+    - Diagrams: Диаграммы
     - DL table: DL Таблица
     - Elements: Элементы
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
