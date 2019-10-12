@@ -31,14 +31,13 @@ translations
     - Breadcrumbs Main: Хлебные крошки Основные
     - Breadcrumbs User anonymous: Хлебные крошки Пользователь анонимный
     - Breadcrumbs User registered: Хлебные крошки Пользователь зарегистрированный
-    - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle description: описание пакета
     - bundle id: id пакета
     - Bundle with examples.: Пакет с примерами.
     - Bundle with system.: Пакет с системой.
-    - Button (active): Кнопка (активная)
+    - Button active: Кнопка активная
     - Button text: Кнопки текст
     - Button: Кнопка
     - button: кнопка
@@ -186,7 +185,7 @@ translations
     - Field value should match the regular expression\: %%_expression.: Значение поля должно соответствовать регулярному выражению: %%_expression.
     - Field: Поле
     - Fields: Поля
-    - Fieldset (nested): Группа полей (вложенная)
+    - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
     - File can only be of the next types\: %%_types.: Файл может быть только следующих типов: %%_types.
     - file is empty: файл пуст
@@ -262,7 +261,7 @@ translations
     - light: светлая
     - Limit: Лимит
     - Linear diagram: Линейная диаграмма
-    - Link (active): Ссылка (активная)
+    - Link active: Ссылка активная
     - Link: Ссылка
     - List: Список
     - Load: Загрузка
@@ -291,8 +290,8 @@ translations
     - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for php (bytes): Память для php (байт)
-    - Menu (active): Меню (активное)
-    - Menu link (active): Меню ссылка (активная)
+    - Menu active: Меню активное
+    - Menu link active: Меню ссылка активная
     - Menu link: Меню ссылка
     - Menu main: Меню главное
     - Menu text: Меню текст
@@ -459,8 +458,8 @@ translations
     - System was not installed!: Система не была установлена!
     - System: Система
     - Table prefix: Префикс таблиц
-    - Table row (even): Таблицы строка (чётная)
-    - Table row (odd): Таблицы строка (не чётная)
+    - Table row even: Таблицы строка чётная
+    - Table row odd: Таблицы строка не чётная
     - Table: Таблица
     - Telephone number: Номер телефона
     - Templates: Шаблоны

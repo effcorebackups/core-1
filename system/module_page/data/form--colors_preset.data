@@ -27,15 +27,15 @@ forms
             element_attributes
             - name: color_link_id
         - color_link_active_id|field_checkbox_color
-            title: Link (active)
+            title: Link active
             element_attributes
             - name: color_link_active_id
         - color_table_row_odd_id|field_checkbox_color
-            title: Table row (odd)
+            title: Table row odd
             element_attributes
             - name: color_table_row_odd_id
         - color_table_row_even_id|field_checkbox_color
-            title: Table row (even)
+            title: Table row even
             element_attributes
             - name: color_table_row_even_id
         - color_relation_id|field_checkbox_color
@@ -47,7 +47,7 @@ forms
             element_attributes
             - name: color_menu_id
         - color_menu_active_id|field_checkbox_color
-            title: Menu (active)
+            title: Menu active
             element_attributes
             - name: color_menu_active_id
         - color_menu_text_id|field_checkbox_color
@@ -59,7 +59,7 @@ forms
             element_attributes
             - name: color_menu_link_id
         - color_menu_link_active_id|field_checkbox_color
-            title: Menu link (active)
+            title: Menu link active
             element_attributes
             - name: color_menu_link_active_id
         - color_ok_id|field_checkbox_color
@@ -79,7 +79,7 @@ forms
             element_attributes
             - name: color_fieldset_id
         - color_fieldset_nested_id|field_checkbox_color
-            title: Fieldset (nested)
+            title: Fieldset nested
             element_attributes
             - name: color_fieldset_nested_id
         - color_field_id|field_checkbox_color
@@ -95,7 +95,7 @@ forms
             element_attributes
             - name: color_button_id
         - color_button_active_id|field_checkbox_color
-            title: Button (active)
+            title: Button active
             element_attributes
             - name: color_button_active_id
         - color_button_text_id|field_checkbox_color
