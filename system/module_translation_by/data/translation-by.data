@@ -110,3 +110,9 @@ translations
     - Example of empty module.: Прыклад пустога модуля.
     - Examples: Прыклады
     - Expiration date: Дата заканчэння
+    - failed to write file to disk: не ўдалося запісаць файл на дыск
+    - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было выдалена.
+    - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было ўстаўлена.
+    - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" пасля спробы запампаваць файл вярнула памылку: %%_error!
+    - Field "%%_title" can not be blank!: Поле "%%_title" не можа быць пустым!
+    - Field "%%_title" contains an incorrect date!: Поле "%%_title" змяшчае няправільную дату!
