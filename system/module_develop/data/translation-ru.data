@@ -44,6 +44,7 @@ translations
     - Data: Данные
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
+    - Definition list: Список определений
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор

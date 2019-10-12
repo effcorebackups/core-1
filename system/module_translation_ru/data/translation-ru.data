@@ -82,7 +82,6 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - Decorator parameters: Параметры оформления
-    - Definition list: Список определений
     - delete file "%%_name": удалить файл "%%_name"
     - Delete item of type "%%_name" with id = "%%_id"?: Удалить элемент типа "%%_name" с id = "%%_id"?
     - Delete modules data: Удалить данные модулей
