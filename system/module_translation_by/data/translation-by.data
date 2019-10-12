@@ -44,3 +44,7 @@ translations
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1" калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
+    - Charset: Кадоўка
+    - Check directory permissions.: Праверце дазвалення каталога.
+    - Check field again before submit.: Праверце поле зноў перад адпраўкай.
+    - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.

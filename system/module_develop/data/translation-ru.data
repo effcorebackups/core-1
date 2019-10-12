@@ -25,6 +25,7 @@ translations
     - Call %%_name: Вызов %%_name
     - call: вызов
     - Canvas: Холст
+    - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флаг 1
     - Checkbox 2 (checked): Флаг 2 (установлен)
