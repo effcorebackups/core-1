@@ -116,3 +116,18 @@ translations
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" пасля спробы запампаваць файл вярнула памылку: %%_error!
     - Field "%%_title" can not be blank!: Поле "%%_title" не можа быць пустым!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" змяшчае няправільную дату!
+    - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" змяшчае няправільную дату/час!
+    - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" змяшчае няправільны адрас электроннай пошты!
+    - Field "%%_title" contains an incorrect telephone number!: Поле "%%_title" змяшчае няправільны нумар тэлефона!
+    - Field "%%_title" contains an incorrect time!: Поле "%%_title" змяшчае няправільнае час!
+    - Field "%%_title" contains an incorrect URL!: Поле "%%_title" змяшчае няправільны URL!
+    - Field "%%_title" contains incorrect value!: Поле "%%_title" змяшчае няправільнае значэнне!
+    - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" змяшчае раней выкарыстаную камбінацыю значэнняў!
+    - Field "%%_title" contains the previously used value!: Поле "%%_title" змяшчае раней выкарыстанае значэнне!
+    - Field "%%_title" does not support multiple select!: Поле "%%_title" не падтрымлівае множны выбар!
+    - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не падтрымлівае загрузку такога тыпу файла!
+    - Field "%%_title" has a changed value.: Поле "%%_title" мае змененае значэнне.
+    - Field "%%_title" must be checked!: Поле "%%_title" павінна быць ўстаноўлена!
+    - Field "%%_title" must be selected!: Поле "%%_title" павінна быць абрана!
+    - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна ўтрымліваць максімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна ўтрымліваць мінімум %%_number сімвал%%_plural{number,au-a}!
