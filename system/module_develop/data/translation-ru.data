@@ -20,6 +20,8 @@ translations
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
     - Autoincrement: Автоинкремент
+    - autoload: автозагрузка
+    - begin: начало
     - Call %%_name: Вызов %%_name
     - call: вызов
     - cell #%%_number: ячейка №%%_number
