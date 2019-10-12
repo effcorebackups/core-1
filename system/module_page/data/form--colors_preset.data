@@ -103,6 +103,6 @@ forms
             element_attributes
             - name: color_button_text_id
     - button_apply|button
-        title: apply colors
+        title: apply
         attributes
         - value: apply
