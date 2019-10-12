@@ -37,6 +37,7 @@ translations
     - class: класс
     - Classes: Классы
     - Collations: Сравнения
+    - Console: Консоль
     - Constraints: Ограничения
     - Data + join: Данные + join
     - Data hash: Хэш данных

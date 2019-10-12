@@ -52,3 +52,10 @@ translations
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"
+    - color id = "%%_id" and value = "%%_value": id колеру = "%%_id" і значэнне = "%%_value"
+    - Color: Колер
+    - Colors was applied.: Колеры былі ўжыты.
+    - Colors: Колеры
+    - Conditions: Умовы
+    - Content: Змесціва
+    - Cookies are disabled. You can not log in!: Cookies адключаны. Вы не можаце ўвайсці ў сістэму!
