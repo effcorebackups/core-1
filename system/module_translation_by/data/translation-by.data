@@ -50,3 +50,5 @@ translations
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Classic: Класічны
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
+    - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
+    - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"

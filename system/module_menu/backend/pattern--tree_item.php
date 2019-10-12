@@ -82,7 +82,7 @@ namespace effcore {
 
   function render_self() {
     $href = $this->href_get();
-    if ($href                   ) $this->attribute_insert('title', new text('Click to open the menu item: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
+    if ($href                   ) $this->attribute_insert('title', new text('click to open the menu item "%%_title"', ['title' => translation::get($this->title)]), 'element_attributes');
     if ($href                   ) $this->attribute_insert('href', $href,                 'element_attributes');
     if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes');
     if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');

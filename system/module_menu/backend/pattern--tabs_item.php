@@ -70,7 +70,7 @@ namespace effcore {
     if ($href_default           ) $this->attribute_insert('href', $href_default,         'element_attributes');
     if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes');
     if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
-                                  $this->attribute_insert('title', new text('Click to open the tab: %%_title', ['title' => translation::get($this->title)]), 'element_attributes');
+                                  $this->attribute_insert('title', new text('click to open the tab "%%_title"', ['title' => translation::get($this->title)]), 'element_attributes');
     return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();

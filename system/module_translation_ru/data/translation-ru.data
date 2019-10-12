@@ -51,8 +51,8 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Classic: Классический
     - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
-    - Click to open the menu item\: %%_title: Нажмите, чтобы открыть пункт меню: %%_title
-    - Click to open the tab\: %%_title: Нажмите, чтобы открыть вкладку: %%_title
+    - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
+    - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - collapse: свернуть
     - color id = "%%_id" and value = "%%_value": id цвета = "%%_id" и значение = "%%_value"
     - Color: Цвет
