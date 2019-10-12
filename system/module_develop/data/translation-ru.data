@@ -54,6 +54,8 @@ translations
     - Diagrams: Диаграммы
     - DL table: DL Таблица
     - Elements: Элементы
+    - Embedded: Встроенные
+    - end: конец
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"<br>аргументы = [%%_args]

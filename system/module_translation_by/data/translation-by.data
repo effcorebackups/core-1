@@ -96,3 +96,12 @@ translations
     - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу %%_type з id = "%%_id" у модулі "%%_module_id"
     - duplicate of %%_type with id = "%%_id" was found: быў знойдзены дублікат тыпу %%_type з id = "%%_id"
     - Edit user %%_nick_page_context{nick}: Рэдагаваць карыстальніка %%_nick_page_context{nick}
+    - edit: рэдагаваць
+    - Edit: Рэдагаваць
+    - EMail: Адрас электроннай пошты
+    - Empty module: Пусты модуль
+    - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
+    - Entity "%%_name" was installed.: Сутнасць "%%_name" была ўсталявана.
+    - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
+    - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдаленая!
+    - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдаленая.
