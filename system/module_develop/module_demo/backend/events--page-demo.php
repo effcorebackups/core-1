@@ -261,7 +261,7 @@ namespace effcore\modules\demo {
   ################
 
   static function on_show_demo_messages($page) {
-    message::insert( 'credentials',                                            'credentials'                );
+    message::insert( 'Credentials',                                            'credentials'                );
     message::insert( new text('Notice message #%%_number.',  ['number' => 1]), 'notice'                     );
     message::insert( new text('Notice message #%%_number.',  ['number' => 2]), 'notice'                     );
     message::insert( new text('Notice message #%%_number.',  ['number' => 3]), 'notice'                     );

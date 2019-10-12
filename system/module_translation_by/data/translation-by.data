@@ -64,3 +64,9 @@ translations
     - copyright: аўтарскія правы
     - Core: Ядро
     - Created: Створана
+    - Credentials for storage "%%_name" was not set!: Уліковыя даныя для сховішча "%%_name" не былі зададзеныя!
+    - Credentials: Уліковыя даныя
+    - Cron last run: Апошні запуск Cron
+    - Current field value\: %%_value.: Бягучае значэнне поля: %%_value.
+    - Current page information: Інфармацыя бягучай старонкі
+    - Current password: Бягучы пароль
