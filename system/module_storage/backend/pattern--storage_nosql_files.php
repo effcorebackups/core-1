@@ -129,17 +129,14 @@ namespace effcore {
       foreach ($c_module_changes as $c_action => $c_changes) {
         foreach ($c_changes as $c_dpath => $c_data) {
           $c_pointers   = @core::dpath_get_pointers($data, $c_dpath);
-          $c_parnt_name = array_keys($c_pointers)[count($c_pointers)-2];
-          $c_child_name = array_keys($c_pointers)[count($c_pointers)-1];
-          $c_parnt      =           &$c_pointers[$c_parnt_name];
-          $c_child      =           &$c_pointers[$c_child_name];
-          if ($c_parnt !== null &&
-              $c_child !== null) {
-            switch ($c_action) {
-              case 'insert': foreach ($c_data as $c_key => $c_value) core::arrobj_insert_value($c_child, $c_key, $c_value);       break; # supported types: array | object
-              case 'update':                                         core::arrobj_insert_value($c_parnt, $c_child_name, $c_data); break; # supported types: array | object | string | numeric | bool | null
-              case 'delete':                                         core::arrobj_delete_child($c_parnt, $c_child_name);          break;
-            }
+          $c_parnt_name = @array_keys($c_pointers)[count($c_pointers)-2];
+          $c_child_name = @array_keys($c_pointers)[count($c_pointers)-1];
+          $c_parnt      =            &$c_pointers[$c_parnt_name];
+          $c_child      =            &$c_pointers[$c_child_name];
+          switch ($c_action) {
+            case 'insert': if ($c_child !== null) {foreach ($c_data as $c_key => $c_value) core::arrobj_insert_value($c_child, $c_key,        $c_value);} break; # supported types: array | object
+            case 'update': if ($c_parnt !== null) {                                        core::arrobj_insert_value($c_parnt, $c_child_name, $c_data );} break; # supported types: array | object | string | numeric | bool | null
+            case 'delete': if ($c_parnt !== null) {                                        core::arrobj_delete_child($c_parnt, $c_child_name          );} break;
           }
         }
       }
