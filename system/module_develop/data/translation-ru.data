@@ -103,9 +103,11 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Indexes: Индексы
     - init.: инициал.
+    - insertion: вставка
     - interface: интерфейс
     - Interfaces: Интерфейсы
     - Is even: Чётное
+    - item #%%_number: пункт №%%_number
     - item #1: пункт №1
     - item #1.1: пункт №1.1
     - item #1.2: пункт №1.2
