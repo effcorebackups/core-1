@@ -146,3 +146,23 @@ translations
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лiчбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
+    - Field value should match the regular expression\: %%_expression.: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression.
+    - Field: Поле
+    - Fields: Палі
+    - Fieldset nested: Група палёў укладзеная
+    - Fieldset: Група палёў
+    - File can only be of the next types\: %%_types.: Файл можа быць толькі наступных тыпаў: %%_types.
+    - file is empty: файл пусты
+    - File name can contain only the next characters\: %%_characters.: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters.
+    - File name: Імя файла
+    - File not found: Файл не знойдзены
+    - file of this type is protected: файл гэтага тыпу абаронены
+    - File types: Тыпы файлаў
+    - File: Файл
+    - file: файл
+    - fix: выправіць
+    - Form elements: Элементы формы
+    - Form: Форма
+    - form: форма
+    - Fraction part is too long.: Дробавая частка занадта доўгая.
+    - Front: Галоўная
