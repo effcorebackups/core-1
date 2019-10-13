@@ -129,5 +129,11 @@ translations
     - Field "%%_title" has a changed value.: Поле "%%_title" мае змененае значэнне.
     - Field "%%_title" must be checked!: Поле "%%_title" павінна быць ўстаноўлена!
     - Field "%%_title" must be selected!: Поле "%%_title" павінна быць абрана!
-    - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна ўтрымліваць максімум %%_number сімвал%%_plural{number,au-a}!
-    - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна ўтрымліваць мінімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць максімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}!
+    - Field can contain %%_number character%%_plural{number,s}.: Поле павінна змяшчаць %%_number сімвал%%_plural{number,au-a}.
+    - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
+    - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
+    - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
+    - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
+    - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
