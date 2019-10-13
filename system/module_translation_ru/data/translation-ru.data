@@ -391,7 +391,7 @@ translations
     - Selection: Выборка
     - Selections: Выборки
     - Server timezone: Часовой пояс сервера
-    - Server UTC date / time: UTC Дата / время сервера
+    - Server UTC date/time: UTC дата/время сервера
     - Service: Обслуживание
     - Session with id = "%%_id" was deleted.: Сессия с id = "%%_id" была удалена.
     - Session with id = "%%_id" was not deleted!: Сессия с id = "%%_id" не была удалена!
