@@ -6,6 +6,6 @@ plurals
     # standard english plural
     # ─────────────────────────────────────────────────────────────────────
     - s
-        formula: %^(?<t1>[02-9]|[0-9]{2,})$%S
+        formula: %^(?<variant_1>[02-9]|[0-9]{2,})$%S
         matches
-        - t1: s
+        - variant_1: s
