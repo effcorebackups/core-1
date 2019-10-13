@@ -100,6 +100,7 @@ translations
     - head cell #%%_number: заглавная ячейка №%%_number
     - Header %%_size: Заголовок %%_size
     - Headers: Заголовки
+    - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Indexes: Индексы
     - init.: инициал.
     - interface: интерфейс

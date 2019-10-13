@@ -15,7 +15,7 @@ namespace effcore\modules\locales {
   static function on_show_block_menu_languages($page) {
     $menu = new markup('x-languages');
     $languages = language::get_all();
-    core::array_sort_by_text_property($languages, 'title_en');
+    core::array_sort_by_text_property($languages, 'title_en', 'd', false);
     foreach ($languages as $c_language) {
       $c_title = $c_language->code == 'en' ?
         $c_language->title_en :

@@ -18,7 +18,7 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $languages = language::get_all();
-      core::array_sort_by_text_property($languages, 'title_en');
+      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       $this->option_insert('- no -', 'not_selected');
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(
