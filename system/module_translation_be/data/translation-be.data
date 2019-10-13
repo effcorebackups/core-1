@@ -237,3 +237,13 @@ translations
     - Managers: Кіраўнікі
     - Match: Адпаведнасць
     - Maximum allowed only %%_number file%%_plural{number,s}.: Дазваляецца максімальна толькі %%_number файл%%_plural{number,au-a}.
+    - Maximum field value\: %%_value.: Максімальнае значэнне поля: %%_value.
+    - Maximum file size\: %%_value.: Максімальны памер файла: %%_value.
+    - Memory for PHP (bytes): Памяць для PHP (байты)
+    - Menu active: Меню актыўнае
+    - Menu link active: Меню спасылка актыўная
+    - Menu link: Меню спасылка
+    - Menu main: Меню галоўнае
+    - Menu text: Меню тэкст
+    - Menu: Меню
+    - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message

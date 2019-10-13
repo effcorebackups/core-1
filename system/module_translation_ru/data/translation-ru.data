@@ -242,7 +242,7 @@ translations
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
-    - Memory for php (bytes): Память для php (байт)
+    - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
     - Menu link active: Меню ссылка активная
     - Menu link: Меню ссылка
