@@ -166,3 +166,14 @@ translations
     - form: форма
     - Fraction part is too long.: Дробавая частка занадта доўгая.
     - Front: Галоўная
+    - GiB: ГiБ
+    - go to %%_title language: перайсці на %%_title мову
+    - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
+    - go to page #%%_number: перайсці на старонку №%%_number
+    - go to page %%_link: перайсці на старонку %%_link
+    - Grid 2x5: Сетка 2x5
+    - Grid 3x5: Сетка 3x5
+    - Grid 4x5: Сетка 4x5
+    - Grid 5x5: Сетка 5x5
+    - Hostname: Імя вузла сеткі
+    - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнай дамовы.

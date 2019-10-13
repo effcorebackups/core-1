@@ -92,11 +92,14 @@ translations
     - Full report: Полный отчёт
     - Function: Функция
     - Gradient of main color: Градиент основного цвета
+    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Group %%_type.: Группа %%_type.
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
+    - Handler: Обработчик
     - head cell #%%_number: заглавная ячейка №%%_number
     - Header %%_size: Заголовок %%_size
+    - Headers: Заголовки
     - Indexes: Индексы
     - init.: инициал.
     - interface: интерфейс

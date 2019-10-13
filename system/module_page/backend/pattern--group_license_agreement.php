@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'License agreement';
   public $attributes = ['data-type' => 'license_agreement'];
-  public $agree_title = 'I accept the terms of the license agreement';
+  public $agree_title = 'I accept the terms of the license agreement.';
 
   function build() {
     if (!$this->is_builded) {
