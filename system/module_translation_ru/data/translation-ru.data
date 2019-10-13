@@ -206,7 +206,6 @@ translations
     - Item of type "%%_name" with id = "%%_id" was updated.: Элемент типа "%%_name" с id = "%%_id" был обновлён.
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - KiB: КиБ
-    - Kind: Вид
     - Language: Язык
     - Layout: Макет
     - Layouts: Макеты
@@ -215,7 +214,6 @@ translations
     - License agreement: Лицензионное соглашение
     - light: светлая
     - Limit: Лимит
-    - Linear diagram: Линейная диаграмма
     - Link active: Ссылка активная
     - Link: Ссылка
     - List: Список

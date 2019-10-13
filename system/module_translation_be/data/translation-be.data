@@ -176,7 +176,7 @@ translations
     - Grid 4x5: Сетка 4x5
     - Grid 5x5: Сетка 5x5
     - Hostname: Імя вузла сеткі
-    - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнай дамовы.
+    - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Information: Інфармацыя
     - Insert field: Уставіць поле
@@ -195,3 +195,20 @@ translations
     - Is active: Актыўная
     - Is embed: Убудаваны
     - is embed: убудаваны
+    - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент тыпу "%%_name" з id = "%%_id" быў выдалены.
+    - Item of type "%%_name" with id = "%%_id" was inserted.: Элемент тыпу "%%_name" з id = "%%_id" быў дададзены.
+    - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент тыпу "%%_name" з id = "%%_id" ня быў выдалены!
+    - Item of type "%%_name" with id = "%%_id" was not inserted!: Элемент тыпу "%%_name" з id = "%%_id" ня быў дададзены!
+    - Item of type "%%_name" with id = "%%_id" was not updated!: Элемент тыпу "%%_name" з id = "%%_id" ня быў абноўлены!
+    - Item of type "%%_name" with id = "%%_id" was updated.: Элемент тыпу "%%_name" з id = "%%_id" быў абноўлены.
+    - Key "%%_name" does not exist!: Ключ "%%_name" не існуе!
+    - KiB: КіБ
+    - Language: Мова
+    - Layout: Макет
+    - Layouts: Макеты
+    - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць яго значэнне.
+    - left to right: злева направа
+    - License agreement: Ліцэнзійнае пагадненне
+    - light: светлая
+    - Limit: Ліміт
+    - Link active: Спасылка актыўная
