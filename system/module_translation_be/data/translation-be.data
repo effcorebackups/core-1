@@ -137,3 +137,12 @@ translations
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
+    - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
+    - Field text: Поля тэкст
+    - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
+    - Field value does not match the regular expression %%_expression.: Значэнне поля не адпавядае рэгулярнаму выразу %%_expression.
+    - Field value is less than %%_value.: Значэнне поля менш чым %%_value.
+    - Field value is more than %%_value.: Значэнне поля больш чым %%_value.
+    - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лiчбай.
+    - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
+    - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
