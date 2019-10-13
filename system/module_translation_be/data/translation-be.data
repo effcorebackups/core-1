@@ -143,7 +143,7 @@ translations
     - Field value does not match the regular expression %%_expression.: Значэнне поля не адпавядае рэгулярнаму выразу %%_expression.
     - Field value is less than %%_value.: Значэнне поля менш чым %%_value.
     - Field value is more than %%_value.: Значэнне поля больш чым %%_value.
-    - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лiчбай.
+    - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
     - Field value should match the regular expression\: %%_expression.: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression.
@@ -166,7 +166,7 @@ translations
     - form: форма
     - Fraction part is too long.: Дробавая частка занадта доўгая.
     - Front: Галоўная
-    - GiB: ГiБ
+    - GiB: ГіБ
     - go to %%_title language: перайсці на %%_title мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
     - go to page #%%_number: перайсці на старонку №%%_number
@@ -178,3 +178,4 @@ translations
     - Hostname: Імя вузла сеткі
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнай дамовы.
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
+    - Information: Інфармацыя
