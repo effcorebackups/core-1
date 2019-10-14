@@ -274,7 +274,7 @@ translations
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
-    - nick: прозвище
+    - nickname: прозвище
     - Nickname: Прозвище
     - No additional parameters.: Нет дополнительных параметров.
     - No fields for select from storage! Selection id = "%%_id": Нет полей для выборки из хранилища! ID выборки = "%%_id"

@@ -75,8 +75,8 @@ namespace effcore {
 
   static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new nick (e.g. registration)
-        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old nick
+    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new nickname (e.g. registration)
+        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old nickname
       $field->error_set(
         'User with this Nickname was already registered!'
       );
