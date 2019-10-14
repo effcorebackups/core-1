@@ -64,7 +64,7 @@ translations
     - copyright: аўтарскія правы
     - Core: Ядро
     - Created: Створана
-    - Credentials for storage "%%_name" was not set!: Уліковыя даныя для сховішча "%%_name" не былі зададзеныя!
+    - Credentials for storage "%%_name" was not set!: Уліковыя даныя для сховішча "%%_name" не былі зададзены!
     - Credentials: Уліковыя даныя
     - Cron last run: Апошні запуск Cron
     - Current field value\: %%_value.: Бягучае значэнне поля: %%_value.
@@ -256,3 +256,20 @@ translations
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
     - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
+    - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
+    - Module for development.: Модуль для распрацоўкі.
+    - Module for localization.: Модуль для лакалізацыі.
+    - Module for storages support.: Модуль для падтрымкі сховішчаў даных.
+    - Module for testing.: Модуль для тэставання.
+    - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
+    - Module for working with pages.: Модуль для працы са старонкамі.
+    - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
+    - Module ID: ID Модуля
+    - Modules: Модулі
+    - More info in %%_info: Больш інфармацыі ў %%_info
+    - name: імя
+    - Name: Імя
+    - New password must be different from the current password!: Новы пароль павінен адрознівацца ад бягучага!
+    - New password: Новы пароль
+    - nick: мянушка
+    - Nick: Мянушка
