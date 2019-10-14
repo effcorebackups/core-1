@@ -60,7 +60,7 @@ namespace effcore\modules\user {
             foreach ($messages as $c_type => $c_messages_by_type)
               foreach ($c_messages_by_type as $c_message)
                 message::insert($c_message, $c_type);
-            url::go(url::back_url_get() ?: '/user/'.user::get_current()->nick);
+            url::go(url::back_url_get() ?: '/user/'.user::get_current()->nickname);
           }
         } else {
           message::insert('No one item was selected!', 'warning');

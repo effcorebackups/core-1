@@ -14,7 +14,7 @@ forms
             is_validate_uniqueness: true
         - nickname|field_nickname
             entity_name: user
-            entity_field_name: nick
+            entity_field_name: nickname
             is_validate_uniqueness: true
         - password|field_password
         - timezone|field_timezone

@@ -15,7 +15,7 @@ namespace effcore\modules\user {
     if (isset($user->roles['registered'])) {
       switch ($name) {
         case 'user_id'   : return     user::get_current()->id;
-        case 'nickname'  : return     user::get_current()->nick;
+        case 'nickname'  : return     user::get_current()->nickname;
         case 'email'     : return     user::get_current()->email;
         case 'avatar_url': return '/'.user::get_current()->avatar_path;
         case 'nickname_page_context':

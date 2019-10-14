@@ -318,7 +318,7 @@ entities
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
         - disabled: true
-    - nick
+    - nickname
         title: Nickname
         type: varchar
         size: 64
@@ -355,10 +355,10 @@ entities
         fields
         - =: id
     indexes
-    - index_nick
+    - index_nickname
         type: unique index
         fields
-        - =: nick
+        - =: nickname
     - index_created
         type: index
         fields
@@ -382,7 +382,7 @@ entities
         managing_properties
         - related_entity_name: demo_data
         - related_entity_field_id_name: id
-        - related_entity_field_title_name: nick
+        - related_entity_field_title_name: nickname
     - email
         title: EMail
         type: varchar

@@ -42,7 +42,7 @@ namespace effcore\modules\user {
             $current_url = url::get_current();
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
-            $mail_to = $user->nick.' <'.$user->email.'>';
+            $mail_to = $user->nickname.' <'.$user->email.'>';
             $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new('mail_recovery_subject', [
               'domain' => $current_url->domain
             ]))->render()).'?=';

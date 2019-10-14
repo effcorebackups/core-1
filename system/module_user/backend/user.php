@@ -16,9 +16,9 @@ namespace effcore {
   static function init($is_load_roles = true) {
     if (static::$cache == null) {
         static::$cache = new instance('user');
-        static::$cache->nick  = null;
-        static::$cache->id    = null;
-        static::$cache->roles = ['anonymous' => 'anonymous'];
+        static::$cache->nickname = null;
+        static::$cache->id       = null;
+        static::$cache->roles    = ['anonymous' => 'anonymous'];
       $session = session::select();
       if ($session &&
           $session->id_user) {

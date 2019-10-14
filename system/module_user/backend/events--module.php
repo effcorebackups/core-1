@@ -19,7 +19,7 @@ namespace effcore\modules\user {
     $module = module::get('user');
     $module->install();
     if (count(storage::get('sql')->errors) == 0) {
-      $admin = new instance('user', ['nick' => 'Admin']);
+      $admin = new instance('user', ['nickname' => 'Admin']);
       if ($admin->select()) {
         $admin->password_hash = core::password_get_hash(field::request_value_get('password'));
         $admin->email    = field::request_value_get('email'   );

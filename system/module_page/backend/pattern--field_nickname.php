@@ -11,9 +11,9 @@ namespace effcore {
   const allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-"';
 
   public $title = 'Nickname';
-  public $attributes = ['data-type' => 'nick'];
+  public $attributes = ['data-type' => 'nickname'];
   public $element_attributes = [
-    'data-type' => 'nick',
+    'data-type' => 'nickname',
     'name'      => 'nickname',
     'required'  => true,
     'minlength' => 4,

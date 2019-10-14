@@ -22,10 +22,10 @@ namespace effcore\modules\demo {
         $c_created = $c_base_date->modify('-'.$i.' second')->format('Y-m-d H:i:s');
         $c_is_even = $i % 2 ? 0 : 1;
         (new instance('demo_data', [
-          'id'      => $c_id,
-          'nick'    => $c_nickname,
-          'created' => $c_created,
-          'is_even' => $c_is_even
+          'id'       => $c_id,
+          'nickname' => $c_nickname,
+          'created'  => $c_created,
+          'is_even'  => $c_is_even
         ]))->insert();
         (new instance('demo_data_join', [
           'id_data' => $c_id,

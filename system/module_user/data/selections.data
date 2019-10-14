@@ -5,7 +5,7 @@ selections
     - view_type: ul
     query_params
     - conditions
-      - id_!f: ~user.nick
+      - id_!f: ~user.nickname
       - operator: =
       - id_!v|text
           is_apply_translation: false
@@ -19,7 +19,7 @@ selections
     - user.nickname
         type: field
         entity_name: user
-        entity_field_name: nick
+        entity_field_name: nickname
     - user.email
         type: field
         entity_name: user
