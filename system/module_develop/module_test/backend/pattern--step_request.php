@@ -44,9 +44,9 @@ namespace effcore {
   function prepared_get_post() {
     $result = [];
     foreach ($this->post as $c_key => $c_value) {
-      if ($c_value == '%%_nick_random'    ) $c_value = $this->random_get_nick    ();
-      if ($c_value == '%%_email_random'   ) $c_value = $this->random_get_email   ();
+      if ($c_value == '%%_nickname_random') $c_value = $this->random_get_nickname();
       if ($c_value == '%%_password_random') $c_value = $this->random_get_password();
+      if ($c_value == '%%_email_random'   ) $c_value = $this->random_get_email   ();
       if ($c_value == '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
       if ($c_value == '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
       $result[$c_key] = $c_value;
@@ -54,7 +54,7 @@ namespace effcore {
     return $result;
   }
 
-  function random_get_nick() {
+  function random_get_nickname() {
     return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));
   }
 
