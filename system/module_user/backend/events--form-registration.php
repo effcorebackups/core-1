@@ -32,7 +32,7 @@ namespace effcore\modules\user {
             core::array_kmap($items['*session_params']->values_get())
           );
           message::insert(
-            new text('Welcome, %%_nick!', ['nick' => $user->nick])
+            new text('Welcome, %%_nickname!', ['nickname' => $user->nick])
           );
           url::go('/user/'.$user->nick);
         } else {

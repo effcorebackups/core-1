@@ -131,8 +131,8 @@ instances
     - id: registered
     - id_parent: null
     - id_tree: user_registered
-    - title: %%_nick
-    - url: /user/%%_nick
+    - title: %%_nickname
+    - url: /user/%%_nickname
     - is_embed: 1
     - access
         roles
@@ -144,7 +144,7 @@ instances
     - id_parent: registered
     - id_tree: user_registered
     - title: Edit
-    - url: /user/%%_nick/edit
+    - url: /user/%%_nickname/edit
     - is_embed: 1
     - weight: +50
     - access

@@ -10,8 +10,8 @@ tokens
     match: %%_email
     type: code
     handler: \effcore\modules\user\events_token::on_replace
-- nick
-    match: %%_nick
+- nickname
+    match: %%_nickname
     type: code
     handler: \effcore\modules\user\events_token::on_replace
 - avatar_url

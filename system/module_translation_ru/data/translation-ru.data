@@ -506,7 +506,7 @@ translations
     - Weight: Вес
     - Welcome message: Приветственное сообщение
     - Welcome to our site!: Добро пожаловать на наш сайт!
-    - Welcome, %%_nick!: Добро пожаловать, %%_nick!
+    - Welcome, %%_nickname!: Добро пожаловать, %%_nickname!
     - While editing this form, someone made changes in parallel and saved them!: Во время редактирования этой формы кто-то параллельно внёс изменения и сохранил их!
     - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
     - Yes: Да
