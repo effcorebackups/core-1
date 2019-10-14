@@ -22,6 +22,7 @@ translations
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінуты.
     - All colors: Усе колеры
+    - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
     - Anonymous user menu: Меню ананімнага карыстальніка
     - Anonymous: Ананім
     - apply: прымяніць
@@ -73,6 +74,7 @@ translations
     - Current: Бягучыя
     - Data update is required: Патрабуецца абнаўленне даных
     - Data: Даныя
+    - Database name: Імя базы даных
     - Date format: Фармат даты
     - Date: Дата
     - Date/time format: Фармат даты/часу
@@ -85,10 +87,12 @@ translations
     - Delete modules data: Выдаліць даныя модуляў
     - Delete: Выдаліць
     - delete: выдаліць
+    - Demo: Дэма
     - depend from modules: залежыць ад модуляў
     - depend from php extensions: залежыць ад php-пашырэнняў
     - Description: Апісанне
     - description: апісанне
+    - Develop: Распрацоўка
     - Distributed queries not supported! Selection id = "%%_id": Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id"
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
