@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_nick extends field_text {
+          class field_nickname extends field_text {
 
   const allowed_characters = 'a-zA-Z0-9_\\-';
   const allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-"';

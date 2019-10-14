@@ -12,7 +12,7 @@ forms
             entity_name: user
             entity_field_name: email
             is_validate_uniqueness: true
-        - nick|field_nick
+        - nick|field_nickname
             entity_name: user
             entity_field_name: nick
             is_validate_uniqueness: true

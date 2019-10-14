@@ -566,7 +566,7 @@ namespace effcore {
   }
 
   static function validate_nick($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nick::allowed_characters.']{4,32}$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nickname::allowed_characters.']{4,32}$%']]);
   }
 
   static function validate_tel($value) {

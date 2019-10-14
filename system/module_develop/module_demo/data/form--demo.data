@@ -103,13 +103,13 @@ forms
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: true
-      # field_nick
-        - nick|field_nick
+      # field_nickname
+        - nick|field_nickname
             title: Nickname
             description|text
               text: Field %%_type.
               args
-              - type: field_nick
+              - type: field_nickname
             element_attributes
             - name: nick
             - value: user

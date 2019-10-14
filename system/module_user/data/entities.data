@@ -305,7 +305,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_form_class: \effcore\field_nick
+        managing_form_class: \effcore\field_nickname
         managing_properties
         - is_validate_uniqueness: true
     - email
