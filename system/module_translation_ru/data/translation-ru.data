@@ -478,7 +478,6 @@ translations
     - Use international mobile telephone number format.: Используйте международный формат номеров мобильных телефонов.
     - used by modules: используется модулями
     - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
-    - User %%_nick: Пользователь %%_nick
     - User agent: Пользовательский агент
     - User anonymous: Пользователь анонимный
     - User ID: ID Пользователя
