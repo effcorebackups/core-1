@@ -10,7 +10,7 @@ namespace effcore {
   const allowed_characters = 'a-zA-Z0-9_\\-';
   const allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-"';
 
-  public $title = 'Nick';
+  public $title = 'Nickname';
   public $attributes = ['data-type' => 'nick'];
   public $element_attributes = [
     'data-type' => 'nick',
@@ -78,7 +78,7 @@ namespace effcore {
     if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new nick (e.g. registration)
         (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old nick
       $field->error_set(
-        'User with this Nick was already registered!'
+        'User with this Nickname was already registered!'
       );
     } else {
       return true;

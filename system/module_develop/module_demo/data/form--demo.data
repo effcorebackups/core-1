@@ -105,7 +105,7 @@ forms
             - multiple: true
       # field_nick
         - nick|field_nick
-            title: Nick
+            title: Nickname
             description|text
               text: Field %%_type.
               args

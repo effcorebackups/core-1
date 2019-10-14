@@ -275,7 +275,7 @@ translations
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
     - nick: прозвище
-    - Nick: Прозвище
+    - Nickname: Прозвище
     - No additional parameters.: Нет дополнительных параметров.
     - No fields for select from storage! Selection id = "%%_id": Нет полей для выборки из хранилища! ID выборки = "%%_id"
     - no fields: нет полей
@@ -488,7 +488,7 @@ translations
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким Адресом электронной почты уже был зарегистрирован!
     - User with this EMail was not registered!: Пользователь с таким Адресом электронной почты не был зарегистрирован!
-    - User with this Nick was already registered!: Пользователь с таким Ником уже был зарегистрирован!
+    - User with this Nickname was already registered!: Пользователь с таким Прозвищем уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
     - val.: знач.

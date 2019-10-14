@@ -319,7 +319,7 @@ entities
         managing_form_element_attributes
         - disabled: true
     - nick
-        title: Nick
+        title: Nickname
         type: varchar
         size: 64
         collate: nocase
