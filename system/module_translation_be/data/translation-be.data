@@ -247,3 +247,12 @@ translations
     - Menu text: Меню тэкст
     - Menu: Меню
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
+    - Messages: Паведамлення
+    - MiB: МіБ
+    - Minimum field value\: %%_value.: Мінімальнае значэнне поля: %%_value.
+    - missing a temporary directory: адсутнічае часовы каталог
+    - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
+    - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
+    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
+    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
+    - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
