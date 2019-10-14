@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_nick_page_context{nick}
+          text: %%_nickname_page_context{nick}
     fields
     - user.id
         type: field

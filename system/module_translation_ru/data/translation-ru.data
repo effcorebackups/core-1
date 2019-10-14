@@ -98,7 +98,7 @@ translations
     - Driver is not selected!: Драйвер не выбран!
     - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с id = "%%_id" в модуле "%%_module_id"
     - duplicate of %%_type with id = "%%_id" was found: был найден дубликат типа %%_type с id = "%%_id"
-    - Edit user %%_nick_page_context{nick}: Редактировать пользователя %%_nick_page_context{nick}
+    - Edit user %%_nickname_page_context{nick}: Редактировать пользователя %%_nickname_page_context{nick}
     - edit: редактировать
     - Edit: Редактировать
     - EMail: Адрес электронной почты
@@ -477,7 +477,7 @@ translations
     - URL: URL
     - Use international mobile telephone number format.: Используйте международный формат номеров мобильных телефонов.
     - used by modules: используется модулями
-    - User %%_nick_page_context{nick}: Пользователь %%_nick_page_context{nick}
+    - User %%_nickname_page_context{nick}: Пользователь %%_nickname_page_context{nick}
     - User agent: Пользовательский агент
     - User anonymous: Пользователь анонимный
     - User ID: ID Пользователя

@@ -95,7 +95,7 @@ translations
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу %%_type з id = "%%_id" у модулі "%%_module_id"
     - duplicate of %%_type with id = "%%_id" was found: быў знойдзены дублікат тыпу %%_type з id = "%%_id"
-    - Edit user %%_nick_page_context{nick}: Рэдагаваць карыстальніка %%_nick_page_context{nick}
+    - Edit user %%_nickname_page_context{nick}: Рэдагаваць карыстальніка %%_nickname_page_context{nick}
     - edit: рэдагаваць
     - Edit: Рэдагаваць
     - EMail: Адрас электроннай пошты

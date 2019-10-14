@@ -1,7 +1,7 @@
 pages
 - user_edit|page
     id: user_edit
-    title: Edit user %%_nick_page_context{nick}
+    title: Edit user %%_nickname_page_context{nick}
     is_https: true
     url: %^/user/(?<nick>[a-zA-Z0-9_\-]{4,32})/edit$%
     access
