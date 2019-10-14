@@ -75,9 +75,9 @@ translations
     - Data update is required: Требуется обновление данных
     - Data: Данные
     - Database name: Имя базы данных
-    - Date/time format: Формат даты/времени
     - Date format: Формат даты
     - Date: Дата
+    - Date/time format: Формат даты/времени
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decoration: Оформление
@@ -92,6 +92,7 @@ translations
     - depend from php extensions: зависит от php-расширений
     - Description: Описание
     - description: описание
+    - Develop: Разработка
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
