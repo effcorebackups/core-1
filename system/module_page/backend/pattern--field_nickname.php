@@ -14,7 +14,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'nick'];
   public $element_attributes = [
     'data-type' => 'nick',
-    'name'      => 'nick',
+    'name'      => 'nickname',
     'required'  => true,
     'minlength' => 4,
     'maxlength' => 32,

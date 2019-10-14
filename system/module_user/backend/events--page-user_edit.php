@@ -12,7 +12,7 @@ namespace effcore\modules\user {
 
   static function on_build_before($event, $page) {
     $user = (new instance('user', [
-      'nick' => $page->args_get('nick')
+      'nick' => $page->args_get('nickname')
     ]))->select();
     if ($user) {
       if ($user->nick == user::get_current()->nick ||             # owner

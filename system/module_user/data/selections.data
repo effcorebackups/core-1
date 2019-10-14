@@ -10,13 +10,13 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_nickname_page_context{nick}
+          text: %%_nickname_page_context{nickname}
     fields
     - user.id
         type: field
         entity_name: user
         entity_field_name: id
-    - user.nick
+    - user.nickname
         type: field
         entity_name: user
         entity_field_name: nick

@@ -14,8 +14,8 @@ namespace effcore\modules\user {
           abstract class events_form_registration {
 
   static function on_init($event, $form, $items) {
-    $items['#email']->value_set('');
-    $items['#nick' ]->value_set('');
+    $items['#email'   ]->value_set('');
+    $items['#nickname']->value_set('');
   }
 
   static function on_submit($event, $form, $items) {
@@ -23,7 +23,7 @@ namespace effcore\modules\user {
       case 'register':
         $user = user::insert([
           'email'         => $items['#email'   ]->value_get(),
-          'nick'          => $items['#nick'    ]->value_get(),
+          'nick'          => $items['#nickname']->value_get(),
           'timezone'      => $items['#timezone']->value_get(),
           'password_hash' => $items['#password']->value_get()
         ]);

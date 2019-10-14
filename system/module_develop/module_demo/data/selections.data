@@ -25,7 +25,7 @@ selections
         type: field
         entity_name: demo_data
         entity_field_name: id
-    - demo_data.nick
+    - demo_data.nickname
         type: field
         entity_name: demo_data
         entity_field_name: nick
