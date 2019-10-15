@@ -346,3 +346,11 @@ translations
     - Registered: Зарэгістраваны
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
+    - Related items of type "%%_name" with id = "%%_id" was deleted.: Звязаныя элементы тыпу "%%_name" з id = "%%_id" былі выдалены.
+    - Related items of type "%%_name" with id = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_name" з id = "%%_id" не былі выдалены.
+    - Relation: Сувязь
+    - Relations: Сувязі
+    - Relation\: Role + Permission: Сувязь: Роля + Дазваленне
+    - Relation\: Role + User: Сувязь: Роля + Карыстальнік
+    - Relations\: Role + Permission: Сувязі: Роля + Дазваленне
+    - Relations\: Role + User: Сувязі: Роля + Карыстальнік

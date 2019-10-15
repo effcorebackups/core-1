@@ -348,8 +348,8 @@ translations
     - Registration: Регистрация
     - Related items of type "%%_name" with id = "%%_id" was deleted.: Связанные элементы типа "%%_name" с id = "%%_id" были удалены.
     - Related items of type "%%_name" with id = "%%_id" was not deleted!: Связанные элементы типа "%%_name" с id = "%%_id" не были удалены.
-    - Relation (tree): Связь (дерево)
     - Relation: Связь
+    - Relations: Связи
     - Relation\: Role + Permission: Связь: Роль + Разрешение
     - Relation\: Role + User: Связь: Роль + Пользователь
     - Relations\: Role + Permission: Связи: Роль + Разрешение
