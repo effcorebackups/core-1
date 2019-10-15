@@ -323,3 +323,9 @@ translations
     - PHP dependencies: PHP-залежнасці
     - PHP OPCache is anebled: PHP OPCache уключаны
     - PHP version: PHP версія
+    - Port: Порт
+    - Presets: Перадусталёўкі
+    - press to enable or disable the module "%%_title": націсніце, каб уключыць альбо выключыць модуль "%%_title"
+    - press to show hidden description: націсніце, каб паказаць схаванае апісанне
+    - press to show or hide available colors: націсніце, каб паказаць альбо схаваць даступныя колеры
+    - press to show or hide nested content: націсніце, каб паказаць альбо схаваць укладзенае змесціва

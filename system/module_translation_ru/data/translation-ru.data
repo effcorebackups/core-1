@@ -325,10 +325,10 @@ translations
     - PHP version: PHP версия
     - Port: Порт
     - Presets: Предустановки
-    - Press to select module %%_title to be enabled or disabled: Нажмите, чтобы выбрать модуль %%_title для включения или отключения
-    - Press to show hidden description: Нажмите, чтобы показать скрытое описание
-    - Press to show or hide available colors: Нажмите, чтобы показать или скрыть доступные цвета
-    - Press to show or hide nested content: Нажмите, чтобы показать или скрыть вложенное содержимое
+    - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
+    - press to show hidden description: нажмите, чтобы показать скрытое описание
+    - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
+    - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Provisioning key: Ключ обеспечения
     - Queries: Запросы
     - Query error!: Ошибка запроса!

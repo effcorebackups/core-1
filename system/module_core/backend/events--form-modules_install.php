@@ -55,7 +55,7 @@ namespace effcore\modules\core {
         foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok' : ''       ], [new markup('x-title', [], new text_simple(strtoupper($c_id)))]                                                                                              ), strtolower($c_id));
         $c_info = new markup('x-module-info', ['data-id' => $c_module->id]);
         $c_switcher = new field_switcher();
-        $c_switcher->attribute_insert('title', new text('Press to select module %%_title to be enabled or disabled', ['title' => $c_module->title]), 'element_attributes');
+        $c_switcher->attribute_insert('title', new text('press to enable or disable the module "%%_title"', ['title' => $c_module->title]), 'element_attributes');
         $c_switcher->build();
         $c_switcher->name_set('is_enabled[]');
         $c_switcher->value_set($c_module->id);
