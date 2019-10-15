@@ -108,8 +108,8 @@ translations
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - Entity "%%_name" was installed.: Сутнасць "%%_name" была ўсталявана.
     - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
-    - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдаленая!
-    - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдаленая.
+    - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдалена!
+    - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдалена.
     - Environment: Атачэнне
     - Error: Памылка
     - Example of empty module.: Прыклад пустога модуля.
@@ -307,3 +307,19 @@ translations
     - Owner: Уладальнік
     - Page not found: Старонка не знойдзена
     - Page title: Загаловак старонкі
+    - Page: Старонка
+    - Pages: Старонкі
+    - Parameter: Параметр
+    - Parameters: Параметры
+    - Parent ID: ID Бацькі
+    - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была выдалена з вобласці з id = "%%_id_area".
+    - Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была ўстаўлена ў вобласць з id = "%%_id_area".
+    - Password recovery on %%_domain: Аднаўленне пароля на %%_domain
+    - Password: Пароль
+    - Path: Шлях
+    - path: шлях
+    - Permission: Дазваленне
+    - Permissions: Дазвалення
+    - PHP dependencies: PHP-залежнасці
+    - PHP OPCache is anebled: PHP OPCache уключаны
+    - PHP version: PHP версія

@@ -60,7 +60,7 @@ namespace effcore\modules\core {
     $decorator->id = 'environment_info';
     $decorator->data = [[
       'web_server'    => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
-      'php_version'   => ['title' => 'PHP Version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
+      'php_version'   => ['title' => 'PHP version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
       'opcache_state' => ['title' => 'PHP OPCache is anebled', 'value' => $is_enabled_opcache_sticker                              ],
       'storage_sql'   => ['title' => 'Storage SQL',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
       'os_name'       => ['title' => 'Operating System',       'value' => php_uname('s')                                           ],
