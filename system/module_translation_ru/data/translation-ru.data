@@ -298,7 +298,8 @@ translations
     - on this ip: на этом ip
     - Only unique value is allowed.: Допускается только уникальное значение.
     - Operating System: Операционная система
-    - Order: Порядок
+    - Order: Заказ
+    - Sequence: Последовательность
     - Ordered list: Упорядоченный список
     - Original: Оригинал
     - OS Version: Версия ОС

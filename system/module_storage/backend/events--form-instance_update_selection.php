@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
         $fieldset_query_params     = new fieldset('Query parameters');
         $fieldset_decorator_params = new fieldset('Decorator parameters');
         $fieldset_conditions       = new fieldset('Conditions');
-        $fieldset_order            = new fieldset('Order');
+        $fieldset_sequence         = new fieldset('Sequence');
       # init pool of fields
         if ($form->validation_cache_get('fields') === null)
             $form->validation_cache_set('fields', $form->_instance->fields ?: []);
@@ -46,7 +46,7 @@ namespace effcore\modules\storage {
         $field_limit->max_set(10000);
       # fill the form
         $fieldset_query_params       ->child_insert($fieldset_conditions,       'conditions'      );
-        $fieldset_query_params       ->child_insert($fieldset_order,            'order'           );
+        $fieldset_query_params       ->child_insert($fieldset_sequence,         'sequence'        );
         $fieldset_query_params       ->child_insert($field_limit,               'limit'           );
         $form->child_select('fields')->child_insert($fieldset_fields,           'fields'          );
         $form->child_select('fields')->child_insert($fieldset_query_params,     'query_params'    );
