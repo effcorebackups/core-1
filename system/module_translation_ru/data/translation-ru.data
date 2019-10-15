@@ -343,7 +343,7 @@ translations
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered user menu: Меню зарегистрированного пользователя
-    - Registered: Зарегистрированные
+    - Registered: Зарегистрированный
     - registration: регистрация
     - Registration: Регистрация
     - Related items of type "%%_name" with id = "%%_id" was deleted.: Связанные элементы типа "%%_name" с id = "%%_id" были удалены.
