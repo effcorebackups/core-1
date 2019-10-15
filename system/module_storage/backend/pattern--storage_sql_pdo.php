@@ -175,7 +175,7 @@ namespace effcore {
       $query_flat_string = implode(' ', $query_flat).';';
       $result = $this->connection->prepare($query_flat_string);
       if ($result) $result->execute($this->args);
-      $c_error = $result ? $result->errorInfo() : ['query preparation return the false', 'no', 'no'];
+      $c_error = $result ? $result->errorInfo() : ['query preparation process return the false', 'no', 'no'];
       event::start('on_query_after', 'pdo', [&$this, $query, &$result, &$c_error]);
       $this->args_previous = $this->args;
       $this->args = [];

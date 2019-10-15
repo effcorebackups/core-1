@@ -330,10 +330,9 @@ translations
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Provisioning key: Ключ обеспечения
-    - Queries: Запросы
     - Query error!: Ошибка запроса!
     - Query parameters: Параметры запроса
-    - query preparation return the false: подготовка запроса вернула false
+    - query preparation process return the false: процесс подготовки запроса вернул false
     - query: запрос
     - Radial diagram: Круговая диаграмма
     - Radiobutton: Переключатель
