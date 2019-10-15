@@ -93,6 +93,7 @@ translations
     - Description: Описание
     - description: описание
     - Develop: Разработка
+    - Digit: Цифра
     - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
@@ -289,9 +290,8 @@ translations
     - no visible fields: нет видимых полей
     - No: Нет
     - no: нет
-    - NoSQL trees: NoSQL деревья
     - not applicable: не применимо
-    - Number: Число
+    - Number: Номер
     - Object: Объект
     - ok: ок
     - Okay: Хорошо

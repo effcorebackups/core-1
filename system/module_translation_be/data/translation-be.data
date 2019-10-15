@@ -93,6 +93,7 @@ translations
     - Description: Апісанне
     - description: апісанне
     - Develop: Распрацоўка
+    - Digit: Лічба
     - Distributed queries not supported! Selection id = "%%_id": Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id"
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
@@ -277,3 +278,17 @@ translations
     - New password: Новы пароль
     - nickname: мянушка
     - Nickname: Мянушка
+    - No additional parameters.: Няма дадатковых параметраў.
+    - No fields for select from storage! Selection id = "%%_id": Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id"
+    - no fields: няма палёў
+    - no items: няма элементаў
+    - no modules: няма модуляў
+    - No one item was selected!: Ні адзін элемент не быў абраны!
+    - NO TITLE: НЯМА ЗАГАЛОЎКУ
+    - no updates: няма абнаўленняў
+    - no url: няма url
+    - no visible fields: няма бачных палёў
+    - No: Не
+    - no: не
+    - not applicable: не ўжываецца
+    - Number: Нумар

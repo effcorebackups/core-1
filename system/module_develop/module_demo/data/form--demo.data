@@ -115,7 +115,7 @@ forms
             - value: user
       # field_number
         - number|field_number
-            title: Number
+            title: Digit
             description|text
               text: Field %%_type.
               args

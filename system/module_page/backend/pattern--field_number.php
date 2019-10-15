@@ -10,7 +10,7 @@ namespace effcore {
   const input_min_number = -10000000000;
   const input_max_number = +10000000000;
 
-  public $title = 'Number';
+  public $title = 'Digit';
   public $attributes = ['data-type' => 'number'];
   public $element_attributes = [
     'type'     => 'number',
