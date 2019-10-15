@@ -186,7 +186,7 @@ namespace effcore {
           'SQL state: %%_state',
           'Driver error code: %%_code',
           'Driver error text: %%_text',
-          'More info in %%_info'], [
+          'More info in %%_info.'], [
           'state' => $c_error[0],
           'code'  => $c_error[1],
           'text'  => $c_error[2],

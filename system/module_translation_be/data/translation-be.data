@@ -94,7 +94,7 @@ translations
     - description: апісанне
     - Develop: Распрацоўка
     - Digit: Лічба
-    - Distributed queries not supported! Selection id = "%%_id": Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id"
+    - Distributed queries not supported! Selection id = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
@@ -141,7 +141,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
-    - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
+    - Field can contain only the next characters\: %%_characters.: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters.
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
     - Field text: Поля тэкст
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
@@ -271,7 +271,7 @@ translations
     - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
     - Module ID: ID Модуля
     - Modules: Модулі
-    - More info in %%_info: Больш інфармацыі ў %%_info
+    - More info in %%_info.: Больш інфармацыі ў %%_info.
     - name: імя
     - Name: Імя
     - New password must be different from the current password!: Новы пароль павінен адрознівацца ад бягучага!
@@ -279,7 +279,7 @@ translations
     - nickname: мянушка
     - Nickname: Мянушка
     - No additional parameters.: Няма дадатковых параметраў.
-    - No fields for select from storage! Selection id = "%%_id": Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id"
+    - No fields for select from storage! Selection id = "%%_id".: Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id".
     - no fields: няма палёў
     - no items: няма элементаў
     - no modules: няма модуляў

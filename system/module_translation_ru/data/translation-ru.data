@@ -94,7 +94,7 @@ translations
     - description: описание
     - Develop: Разработка
     - Digit: Цифра
-    - Distributed queries not supported! Selection id = "%%_id": Распределенные запросы не поддерживаются! ID выборки = "%%_id"
+    - Distributed queries not supported! Selection id = "%%_id".: Распределенные запросы не поддерживаются! ID выборки = "%%_id".
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
@@ -141,7 +141,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле может содержать минимум %%_number символ%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
-    - Field can contain only the next characters\: %%_characters: Поле может содержать только следующие символы: %%_characters
+    - Field can contain only the next characters\: %%_characters.: Поле может содержать только следующие символы: %%_characters.
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
     - Field text: Поля текст
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
@@ -271,7 +271,7 @@ translations
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Module ID: ID Модуля
     - Modules: Модули
-    - More info in %%_info: Больше информации в %%_info
+    - More info in %%_info.: Больше информации в %%_info.
     - name: имя
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
@@ -279,7 +279,7 @@ translations
     - nickname: прозвище
     - Nickname: Прозвище
     - No additional parameters.: Нет дополнительных параметров.
-    - No fields for select from storage! Selection id = "%%_id": Нет полей для выборки из хранилища! ID выборки = "%%_id"
+    - No fields for select from storage! Selection id = "%%_id".: Нет полей для выборки из хранилища! ID выборки = "%%_id".
     - no fields: нет полей
     - no items: нет элементов
     - no modules: нет модулей
@@ -410,8 +410,6 @@ translations
     - System was not installed!: Система не была установлена!
     - System: Система
     - Table prefix: Префикс таблиц
-    - Table row even: Таблицы строка чётная
-    - Table row odd: Таблицы строка не чётная
     - Table: Таблица
     - Telephone number: Номер телефона
     - Templates: Шаблоны
@@ -425,7 +423,7 @@ translations
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The color should be specified in a special format.: Цвет должен указываться в специальном формате.
-    - The current version is %%_version_cur: Текущая версия %%_version_cur
+    - The current version is %%_version_cur.: Текущая версия %%_version_cur.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
@@ -433,7 +431,7 @@ translations
     - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
-    - The required version is %%_version_req: Требуемая версия %%_version_req
+    - The required version is %%_version_req.: Требуемая версия %%_version_req.
     - the size of uploaded file more than %%_size: размер загруженного файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загруженного файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP-модулей!
