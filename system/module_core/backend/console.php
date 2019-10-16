@@ -141,7 +141,7 @@ namespace effcore {
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
-    return new block('Execute plan', ['data-id' => 'logs', 'data-title-styled' => 'false'], [$decorator, new markup('x-total', [], [
+    return new block('Execution plan', ['data-id' => 'logs', 'data-title-styled' => 'false'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-label', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-label', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-param', ['data-id' => 'dhash'], [new markup('x-label', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])]),
@@ -192,7 +192,7 @@ namespace effcore {
     $total_sequence_hash = '';
     $total_data_hash     = '';
     $logs = static::logs_select();
-    $result = '  EXECUTE PLAN'.nl.nl;
+    $result = '  EXECUTION PLAN'.nl.nl;
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= '  Time     | Object     | Action     | Value | Description    '.nl;
     $result.= '  ------------------------------------------------------------'.nl;

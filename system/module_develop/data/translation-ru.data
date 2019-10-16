@@ -61,7 +61,7 @@ translations
     - event system was initialized: система событий была инициализирована
     - event: событие
     - Events: События
-    - Execute plan: План выполнения
+    - Execution plan: План выполнения
     - Execution: Выполнение
     - expand: развернуть
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
