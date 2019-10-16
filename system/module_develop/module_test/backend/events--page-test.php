@@ -19,8 +19,8 @@ namespace effcore\modules\test {
     if (empty($tests[$id])) url::go(page::get_current()->args_get('base').'/'.reset($tests)->id);
     foreach ($tests as $c_test) {
       tabs_item::insert($c_test->title,
-        'test_execute_'.$c_test->id,
-        'test_execute', 'tests', $c_test->id
+        'test_execution_'.$c_test->id,
+        'test_execution', 'tests', $c_test->id
       );
     }
   }

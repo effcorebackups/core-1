@@ -62,7 +62,7 @@ translations
     - event: событие
     - Events: События
     - Execute plan: План выполнения
-    - Execute: Выполнить
+    - Execution: Выполнение
     - expand: развернуть
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - Ext.: Расш.

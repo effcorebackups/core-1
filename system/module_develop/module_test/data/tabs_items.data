@@ -1,6 +1,6 @@
 tabs_items
-- test_execute|tabs_item
-    id: test_execute
+- test_execution|tabs_item
+    id: test_execution
     id_parent: null
     id_tab: tests
-    title: Execute
+    title: Execution
