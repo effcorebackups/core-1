@@ -317,14 +317,14 @@ forms
        # textarea
        # ─────────────────────────────────────────────────────────────────────
         - textarea|field_textarea
-            title: Textarea
+            title: Text area
             description|text
               text: Field %%_type.
               args
               - type: field_textarea
             element_attributes
             - name: textarea
-            - value: text in textarea
+            - value: text in text area
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
