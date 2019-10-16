@@ -209,6 +209,7 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не існуе!
     - KiB: КіБ
     - Language: Мова
+    - launching: запуск
     - Layout: Макет
     - Layouts: Макеты
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць яго значэнне.
@@ -299,7 +300,6 @@ translations
     - Only unique value is allowed.: Дазваляецца толькі унікальнае значэнне.
     - Operating System: Аперацыйная сістэма
     - Order: Заказ
-    - Sequence: Паслядоўнасць
     - Ordered list: Спарадкаваны спіс
     - Original: Арыгінал
     - OS Version: Версія АС
@@ -349,9 +349,9 @@ translations
     - Related items of type "%%_name" with id = "%%_id" was deleted.: Звязаныя элементы тыпу "%%_name" з id = "%%_id" былі выдалены.
     - Related items of type "%%_name" with id = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_name" з id = "%%_id" не былі выдалены.
     - Relation: Сувязь
-    - Relations: Сувязі
     - Relation\: Role + Permission: Сувязь: Роля + Дазваленне
     - Relation\: Role + User: Сувязь: Роля + Карыстальнік
+    - Relations: Сувязі
     - Relations\: Role + Permission: Сувязі: Роля + Дазваленне
     - Relations\: Role + User: Сувязі: Роля + Карыстальнік
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і унясіце змены зноў каб прадухіліць нязладжанасць дзеянняў.
@@ -359,3 +359,9 @@ translations
     - Report: Справаздача
     - reset: скід
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце уліковыя даныя сховішча ў "%%_file" альбо пераўсталюйце гэтую сістэму на старонцы: %%_link
+    - right to left: справа налева
+    - role: роля
+    - Role: Роля
+    - roles: ролі
+    - Roles: Ролі
+    - Sequence: Паслядоўнасць

@@ -209,6 +209,7 @@ translations
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - KiB: КиБ
     - Language: Язык
+    - launching: запуск
     - Layout: Макет
     - Layouts: Макеты
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если Вы не желаете изменять его значение.
@@ -299,7 +300,6 @@ translations
     - Only unique value is allowed.: Допускается только уникальное значение.
     - Operating System: Операционная система
     - Order: Заказ
-    - Sequence: Последовательность
     - Ordered list: Упорядоченный список
     - Original: Оригинал
     - OS Version: Версия ОС
@@ -349,9 +349,9 @@ translations
     - Related items of type "%%_name" with id = "%%_id" was deleted.: Связанные элементы типа "%%_name" с id = "%%_id" были удалены.
     - Related items of type "%%_name" with id = "%%_id" was not deleted!: Связанные элементы типа "%%_name" с id = "%%_id" не были удалены.
     - Relation: Связь
-    - Relations: Связи
     - Relation\: Role + Permission: Связь: Роль + Разрешение
     - Relation\: Role + User: Связь: Роль + Пользователь
+    - Relations: Связи
     - Relations\: Role + Permission: Связи: Роль + Разрешение
     - Relations\: Role + User: Связи: Роль + Пользователь
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и внесите изменения снова чтобы предотвратить несогласованность действий.
@@ -359,14 +359,11 @@ translations
     - Report: Отчёт
     - reset: сброс
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
-    - return: возврат
     - right to left: справа налево
-    - Role ID: ID Роли
     - role: роль
     - Role: Роль
     - roles: роли
     - Roles: Роли
-    - run: запустить
     - Russian: Русский
     - save: сохранить
     - Search: Поиск
@@ -379,6 +376,7 @@ translations
     - Selection list: Список выбора
     - Selection: Выборка
     - Selections: Выборки
+    - Sequence: Последовательность
     - Server timezone: Часовой пояс сервера
     - Server UTC date/time: UTC дата/время сервера
     - Service: Обслуживание
