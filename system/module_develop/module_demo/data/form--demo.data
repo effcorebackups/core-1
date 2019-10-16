@@ -449,10 +449,10 @@ forms
         attributes
         - name: hidden_name
         - value: hidden_value
-    - button_submit|button
-        title: submit
+    - button_send|button
+        title: send
         attributes
-        - value: submit
+        - value: send
     - button_reset|button
         title: reset
         novalidate: true

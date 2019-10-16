@@ -39,7 +39,7 @@ namespace effcore\modules\demo {
       new text('Call %%_name', ['name' => '\\'.__METHOD__])
     );
     switch ($form->clicked_button->value_get()) {
-      case 'submit':
+      case 'send':
         $def_value_checkboxes = [1 => 'checkboxes_2', 3 => 'checkboxes_4'];
         $def_value_email = 'test1@example.com,test2@example.com';
         $def_value_select = ['option_1' => 'Option 1 (selected)'];
