@@ -35,7 +35,7 @@ namespace effcore\modules\locales {
         static::on_init(null, $form, $items);
         message::insert('The changes was saved.');
         break;
-      case 'restore':
+      case 'reset':
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/lang_code',       false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_date',     false);
         storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_time',     false);

@@ -357,9 +357,8 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и внесите изменения снова чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт
-    - reset: сбросить
+    - reset: сброс
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
-    - restore: восстановить
     - return: возврат
     - right to left: справа налево
     - Role ID: ID Роли
