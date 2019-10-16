@@ -364,7 +364,6 @@ translations
     - Role: Роля
     - roles: ролі
     - Roles: Ролі
-    - Sequence: Паслядоўнасць
     - Russian: Рускі
     - save: захаваць
     - Search: Пошук
@@ -378,3 +377,12 @@ translations
     - selection: выбарка
     - selections: выбаркі
     - Selections: Выбаркі
+    - Sequence: Паслядоўнасць
+    - Server time zone: Гадзінны пояс сервера
+    - Server UTC date/time: UTC дата/час сервера
+    - Service: Абслугоўванне
+    - Session with id = "%%_id" was deleted.: Сесія з id = "%%_id" была выдалена.
+    - Session with id = "%%_id" was not deleted!: Сесія з id = "%%_id" не была выдалена!
+    - Session: Сесія
+    - Sessions: Сесіі
+    - Settings: Налады

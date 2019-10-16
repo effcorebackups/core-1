@@ -378,14 +378,13 @@ translations
     - Selections: Выборки
     - selections: выборки
     - Sequence: Последовательность
-    - Server timezone: Часовой пояс сервера
+    - Server time zone: Часовой пояс сервера
     - Server UTC date/time: UTC дата/время сервера
     - Service: Обслуживание
     - Session with id = "%%_id" was deleted.: Сессия с id = "%%_id" была удалена.
     - Session with id = "%%_id" was not deleted!: Сессия с id = "%%_id" не была удалена!
     - Session: Сессия
     - Sessions: Сессии
-    - set: установка
     - Settings: Настройки
     - Shared parameters: Общие параметры
     - Simple: Простой

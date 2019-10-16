@@ -10,7 +10,7 @@ forms
         children
         - language|field_language
         - timezone_server|field_timezone
-            title: Server timezone
+            title: Server time zone
             element_attributes
             - name: timezone_server
             - disabled: true
