@@ -35,7 +35,7 @@ namespace effcore\modules\test {
 
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
-      case 'launching':
+      case 'launch':
         $id = page::get_current()->args_get('id');
         if ($id) {
           $test = test::get($id);

@@ -14,7 +14,7 @@ forms
             tag_name: x-document
             attributes
             - data-type: report
-    - button_launching|button
-        title: launching
+    - button_launch|button
+        title: launch
         attributes
-        - value: launching
+        - value: launch
