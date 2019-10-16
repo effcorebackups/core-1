@@ -45,8 +45,8 @@ namespace effcore\modules\core {
       'prov_key'      => ['title' => 'Provisioning key',        'value' => 'not applicable'                                                                                                                                   ],
       'subscr_to_upd' => ['title' => 'Subscribe to updates',    'value' => 'not applicable'                                                                                                                                   ],
       'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_updates ? [$is_required_updates_sticker, new text(' → '), $is_required_updates_fixlink] : [$is_required_updates_sticker])],
-      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ],
-      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ]]];
+      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ],
+      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ]]];
     return new block('Service', ['data-id' => 'info_service', 'data-title-styled' => 'false'], [
       $decorator
     ]);
@@ -59,16 +59,15 @@ namespace effcore\modules\core {
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
-      'web_server'    => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
-      'php_version'   => ['title' => 'PHP version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
-      'opcache_state' => ['title' => 'PHP OPCache is anebled', 'value' => $is_enabled_opcache_sticker                              ],
-      'storage_sql'   => ['title' => 'Storage SQL',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
-      'os_name'       => ['title' => 'Operating System',       'value' => php_uname('s')                                           ],
-      'os_version'    => ['title' => 'OS Version',             'value' => php_uname('v')                                           ],
-      'hostname'      => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
-      'timezone'      => ['title' => 'Server time zone',       'value' => date_default_timezone_get()                              ],
-      'datetime'      => ['title' => 'Server UTC date/time',   'value' => core::datetime_get()                                     ]]];
-    return new block('Environment', ['data-id' => 'info_environment', 'data-title-styled' => 'false'], [
+      'web_server'       => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
+      'php_version'      => ['title' => 'PHP version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
+      'opcache_state'    => ['title' => 'PHP OPCache is anebled', 'value' => $is_enabled_opcache_sticker                              ],
+      'storage_sql'      => ['title' => 'SQL storage',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
+      'operating_system' => ['title' => 'Operating System',       'value' => php_uname('s').' | '.php_uname('v')                      ],
+      'hostname'         => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
+      'timezone'         => ['title' => 'Time zone',              'value' => date_default_timezone_get()                              ],
+      'datetime'         => ['title' => 'UTC date/time',          'value' => core::datetime_get()                                     ]]];
+    return new block('Server', ['data-id' => 'info_server', 'data-title-styled' => 'false'], [
       $decorator
     ]);
   }

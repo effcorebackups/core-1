@@ -38,9 +38,9 @@ translations
     - Bundle with examples.: Пакет с примерами.
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
-    - Button\: text: Кнопка: текст
     - Button: Кнопка
     - button: кнопка
+    - Button\: text: Кнопка: текст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1" когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
@@ -110,7 +110,6 @@ translations
     - Entity "%%_name" was not installed!: Сущность "%%_name" не была установлена!
     - Entity "%%_name" was not uninstalled!: Сущность "%%_name" не была удалена!
     - Entity "%%_name" was uninstalled.: Сущность "%%_name" была удалена.
-    - Environment: Окружение
     - Error: Ошибка
     - Example of empty module.: Пример пустого модуля.
     - Examples: Примеры
@@ -143,7 +142,6 @@ translations
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain only the next characters\: %%_characters.: Поле может содержать только следующие символы: %%_characters.
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
-    - Field\: text: Поле: текст
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
     - Field value is less than %%_value.: Значение поля меньше чем %%_value.
@@ -153,6 +151,7 @@ translations
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".
     - Field value should match the regular expression\: %%_expression.: Значение поля должно соответствовать регулярному выражению: %%_expression.
     - Field: Поле
+    - Field\: text: Поле: текст
     - Fields: Поля
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
@@ -247,11 +246,11 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
+    - Menu main: Меню главное
+    - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
     - Menu\: link: Меню: ссылка
-    - Menu main: Меню главное
     - Menu\: text: Меню: текст
-    - Menu: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - MiB: МиБ
@@ -302,7 +301,6 @@ translations
     - Order: Заказ
     - Ordered list: Упорядоченный список
     - Original: Оригинал
-    - OS Version: Версия ОС
     - Other: Другие
     - Owner: Владелец
     - Page not found: Страница не найдена
@@ -379,7 +377,7 @@ translations
     - selections: выборки
     - Sequence: Последовательность
     - Server time zone: Часовой пояс сервера
-    - Server UTC date/time: UTC дата/время сервера
+    - Server: Сервер
     - Service: Обслуживание
     - Session with id = "%%_id" was deleted.: Сессия с id = "%%_id" была удалена.
     - Session with id = "%%_id" was not deleted!: Сессия с id = "%%_id" не была удалена!
@@ -389,12 +387,12 @@ translations
     - Shared parameters: Общие параметры
     - Simple layout: Простой макет
     - SQL state\: %%_state: SQL состояние: %%_state
+    - SQL storage: SQL хранилище
     - state: состояние
     - State: Состояние
     - Storage "%%_name" is not available!: Хранилище "%%_name" недоступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage is not available with these credentials!: Хранилище недоступно с этими учётными данными!
-    - Storage SQL: Хранилище SQL
     - storage: хранилище
     - Storage: Хранилище
     - Structures: Структуры
@@ -438,6 +436,7 @@ translations
     - Thousands separator: Разделитель тысяч
     - TiB: ТиБ
     - Time format: Формат времени
+    - Time zone: Часовой пояс
     - Time: Время
     - Timezone: Часовой пояс
     - title: заголовок
@@ -484,6 +483,7 @@ translations
     - User with this Nickname was already registered!: Пользователь с таким Прозвищем уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
+    - UTC date/time: UTC дата/время
     - val.: знач.
     - Val.: Знач.
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!

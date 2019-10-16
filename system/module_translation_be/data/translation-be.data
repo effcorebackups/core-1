@@ -38,9 +38,9 @@ translations
     - Bundle with examples.: Пакет з прыкладамі.
     - Bundle with system.: Пакет з сістэмай.
     - Button active: Кнопка актыўная
-    - Button\: text: Кнопка: тэкст
     - Button: Кнопка
     - button: кнопка
+    - Button\: text: Кнопка: тэкст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1" калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
@@ -110,7 +110,6 @@ translations
     - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
     - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдалена!
     - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдалена.
-    - Environment: Атачэнне
     - Error: Памылка
     - Example of empty module.: Прыклад пустога модуля.
     - Examples: Прыклады
@@ -143,7 +142,6 @@ translations
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field can contain only the next characters\: %%_characters.: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters.
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
-    - Field\: text: Поле: тэкст
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
     - Field value does not match the regular expression %%_expression.: Значэнне поля не адпавядае рэгулярнаму выразу %%_expression.
     - Field value is less than %%_value.: Значэнне поля менш чым %%_value.
@@ -153,6 +151,7 @@ translations
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
     - Field value should match the regular expression\: %%_expression.: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression.
     - Field: Поле
+    - Field\: text: Поле: тэкст
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
@@ -247,11 +246,11 @@ translations
     - Maximum file size\: %%_value.: Максімальны памер файла: %%_value.
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
+    - Menu main: Меню галоўнае
+    - Menu: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
-    - Menu main: Меню галоўнае
     - Menu\: text: Меню: тэкст
-    - Menu: Меню
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
     - Messages: Паведамлення
     - MiB: МіБ
@@ -302,7 +301,6 @@ translations
     - Order: Заказ
     - Ordered list: Спарадкаваны спіс
     - Original: Арыгінал
-    - OS Version: Версія АС
     - Other: Іншыя
     - Owner: Уладальнік
     - Page not found: Старонка не знойдзена
@@ -379,7 +377,7 @@ translations
     - Selections: Выбаркі
     - Sequence: Паслядоўнасць
     - Server time zone: Гадзінны пояс сервера
-    - Server UTC date/time: UTC дата/час сервера
+    - Server: Сервер
     - Service: Абслугоўванне
     - Session with id = "%%_id" was deleted.: Сесія з id = "%%_id" была выдалена.
     - Session with id = "%%_id" was not deleted!: Сесія з id = "%%_id" не была выдалена!
@@ -389,8 +387,11 @@ translations
     - Shared parameters: Агульныя параметры
     - Simple layout: Просты макет
     - SQL state\: %%_state: SQL стан: %%_state
+    - SQL storage: SQL сховішча
     - state: стан
     - State: Стан
     - Storage "%%_name" is not available!: Сховішча "%%_name" недаступна!
     - storage %%_name was initialized: сховішча %%_name было ініцыялізавана
     - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі данымі!
+    - Time zone: Гадзінны пояс
+    - UTC date/time: UTC дата/час
