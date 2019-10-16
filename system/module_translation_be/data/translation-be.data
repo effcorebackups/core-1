@@ -3,7 +3,7 @@ translations
     code: be
     data
     - - no -: - няма -
-    - - select -: - выбраць -
+    - - select -: - абраць -
     - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: выдаліць
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: ўставіць
@@ -365,3 +365,16 @@ translations
     - roles: ролі
     - Roles: Ролі
     - Sequence: Паслядоўнасць
+    - Russian: Рускі
+    - save: захаваць
+    - Search: Пошук
+    - search: пошук
+    - Security: Бяспека
+    - select all rows: абраць усе радкі
+    - Select: Абраць
+    - select: абраць
+    - Selection list: Спіс выбару
+    - Selection: Выбарка
+    - selection: выбарка
+    - selections: выбаркі
+    - Selections: Выбаркі

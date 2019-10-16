@@ -370,12 +370,13 @@ translations
     - search: поиск
     - Security: Безопасность
     - select all rows: выбрать все строки
-    - Select color: Выбрать цвет
     - Select: Выбрать
     - select: выбрать
     - Selection list: Список выбора
     - Selection: Выборка
+    - selection: выборка
     - Selections: Выборки
+    - selections: выборки
     - Sequence: Последовательность
     - Server timezone: Часовой пояс сервера
     - Server UTC date/time: UTC дата/время сервера
