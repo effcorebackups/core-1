@@ -202,7 +202,7 @@ forms
             - value: 2030-02-01 01:23:45
       # field_timezone
         - timezone|field_timezone
-            title: Timezone
+            title: Time zone
             description|text
               text: Field %%_type.
               args

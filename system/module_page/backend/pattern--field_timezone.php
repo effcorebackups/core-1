@@ -7,7 +7,7 @@
 namespace effcore {
           class field_timezone extends field_select {
 
-  public $title = 'Timezone';
+  public $title = 'Time zone';
   public $sort = 'by_zones'; # by_zones | by_names
   public $attributes = ['data-type' => 'timezone'];
   public $element_attributes = [

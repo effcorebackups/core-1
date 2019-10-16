@@ -341,7 +341,7 @@ entities
         managing_form_element_attributes_on_insert
         - disabled: true
     - timezone
-        title: Timezone
+        title: Time zone
         type: varchar
         size: 64
         collate: nocase
