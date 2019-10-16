@@ -168,8 +168,8 @@ translations
     - Switcher 2 (checked): Переключатель 2 (установлен)
     - Switcher 3 (disabled): Переключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Переключатель 4 (отключён + установлен)
-    - Table row even: Таблицы строка чётная
-    - Table row odd: Таблицы строка не чётная
+    - Table\: row even: Таблица: строка чётная
+    - Table\: row odd: Таблица: строка не чётная
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.

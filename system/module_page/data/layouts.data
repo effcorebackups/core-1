@@ -1,7 +1,7 @@
 layouts
 - simple|layout
     id: simple
-    title: Simple
+    title: Simple layout
     children
     - menu|area
         id: menu
@@ -18,7 +18,7 @@ layouts
         id: content
 - classic|layout
     id: classic
-    title: Classic
+    title: Classic layout
     children
     - menu|area
         id: menu

@@ -39,13 +39,13 @@ forms
             element_attributes
             - name: color_link_active_id
         - color_table_row_odd_id|group_palette
-            title: Table row odd
+            title: Table: row odd
             attributes
             - required: true
             element_attributes
             - name: color_table_row_odd_id
         - color_table_row_even_id|group_palette
-            title: Table row even
+            title: Table: row even
             attributes
             - required: true
             element_attributes
@@ -72,19 +72,19 @@ forms
             element_attributes
             - name: color_menu_active_id
         - color_menu_text_id|group_palette
-            title: Menu text
+            title: Menu: text
             attributes
             - required: true
             element_attributes
             - name: color_menu_text_id
         - color_menu_link_id|group_palette
-            title: Menu link
+            title: Menu: link
             attributes
             - required: true
             element_attributes
             - name: color_menu_link_id
         - color_menu_link_active_id|group_palette
-            title: Menu link active
+            title: Menu: link active
             attributes
             - required: true
             element_attributes
@@ -132,7 +132,7 @@ forms
             element_attributes
             - name: color_field_id
         - color_field_text_id|group_palette
-            title: Field text
+            title: Field: text
             attributes
             - required: true
             element_attributes
@@ -150,7 +150,7 @@ forms
             element_attributes
             - name: color_button_active_id
         - color_button_text_id|group_palette
-            title: Button text
+            title: Button: text
             attributes
             - required: true
             element_attributes

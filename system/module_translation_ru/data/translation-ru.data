@@ -38,7 +38,7 @@ translations
     - Bundle with examples.: Пакет с примерами.
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
-    - Button text: Кнопки текст
+    - Button\: text: Кнопка: текст
     - Button: Кнопка
     - button: кнопка
     - cache: кэш
@@ -49,7 +49,7 @@ translations
     - Check directory permissions.: Проверьте разрешения каталога.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
-    - Classic: Классический
+    - Classic layout: Классический макет
     - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
@@ -143,7 +143,7 @@ translations
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain only the next characters\: %%_characters.: Поле может содержать только следующие символы: %%_characters.
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
-    - Field text: Поля текст
+    - Field\: text: Поле: текст
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
     - Field value is less than %%_value.: Значение поля меньше чем %%_value.
@@ -215,7 +215,7 @@ translations
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если Вы не желаете изменять его значение.
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
-    - light: светлая
+    - light preset: светлая предустановка
     - Limit: Лимит
     - Link active: Ссылка активная
     - Link: Ссылка
@@ -247,10 +247,10 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
-    - Menu link active: Меню ссылка активная
-    - Menu link: Меню ссылка
+    - Menu\: link active: Меню: ссылка активная
+    - Menu\: link: Меню: ссылка
     - Menu main: Меню главное
-    - Menu text: Меню текст
+    - Menu\: text: Меню: текст
     - Menu: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
@@ -387,7 +387,7 @@ translations
     - Sessions: Сессии
     - Settings: Настройки
     - Shared parameters: Общие параметры
-    - Simple: Простой
+    - Simple layout: Простой макет
     - SQL state\: %%_state: SQL состояние: %%_state
     - state: состояние
     - State: Состояние
