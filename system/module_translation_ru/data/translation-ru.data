@@ -391,9 +391,9 @@ translations
     - SQL state\: %%_state: SQL состояние: %%_state
     - state: состояние
     - State: Состояние
-    - Storage "%%_name" is not available!: Хранилище "%%_name" не доступно!
+    - Storage "%%_name" is not available!: Хранилище "%%_name" недоступно!
     - storage %%_name was initialized: хранилище %%_name было инициализировано
-    - Storage is not available with these credentials!: Хранилище не доступно с этими учётными данными!
+    - Storage is not available with these credentials!: Хранилище недоступно с этими учётными данными!
     - Storage SQL: Хранилище SQL
     - storage: хранилище
     - Storage: Хранилище
@@ -423,8 +423,8 @@ translations
     - The current version is %%_version_cur.: Текущая версия %%_version_cur.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
-    - The PHP extension "%%_name" is not available!: PHP расширение "%%_name" не доступно!
-    - The PHP extension "%%_name" is too old!: PHP расширение "%%_name" слишком старое!
+    - The PHP extension "%%_name" is not available!: PHP-расширение "%%_name" недоступно!
+    - The PHP extension "%%_name" is too old!: PHP-расширение "%%_name" слишком старое!
     - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.

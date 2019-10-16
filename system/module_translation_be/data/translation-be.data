@@ -388,3 +388,9 @@ translations
     - Settings: Налады
     - Shared parameters: Агульныя параметры
     - Simple layout: Просты макет
+    - SQL state\: %%_state: SQL стан: %%_state
+    - state: стан
+    - State: Стан
+    - Storage "%%_name" is not available!: Сховішча "%%_name" недаступна!
+    - storage %%_name was initialized: сховішча %%_name было ініцыялізавана
+    - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі данымі!
