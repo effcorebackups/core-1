@@ -375,6 +375,7 @@ translations
     - selection: выборка
     - Selections: Выборки
     - selections: выборки
+    - send: отправить
     - Sequence: Последовательность
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
@@ -396,7 +397,6 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - Structures: Структуры
-    - send: отправить
     - Subscribe to updates: Подписка на обновления
     - Switcher: Выключатель
     - Switchers: Выключатели
@@ -410,14 +410,15 @@ translations
     - Templates: Шаблоны
     - Test: Тест
     - Tests: Тесты
+    - Text area: Текстовая область
     - Text direction: Направление текста
     - Text: Текст
-    - Text area: Текстовая область
     - Texts: Текст
     - The changes was deleted.: Изменения были удалены.
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Цвет должен быть в формате "#abcdef", где "ab" - это значение красной компоненты, "cd" - зелёной и "ef" - синей.
     - The current version is %%_version_cur.: Текущая версия %%_version_cur.
+    - the file was only partially uploaded: файл был загружен только частично
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP-расширение "%%_name" недоступно!
@@ -426,7 +427,6 @@ translations
     - The required version is %%_version_req.: Требуемая версия %%_version_req.
     - the size of uploaded file more than %%_size: размер загружаемого файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
-    - the file was only partially uploaded: файл был загружен только частично
     - This combination of values is already in use!: Такая комбинация значений уже используется!
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
@@ -476,7 +476,7 @@ translations
     - UTC date/time: UTC дата/время
     - val.: знач.
     - Val.: Знач.
-    - Value was trimmed to the required length!: Значение было обрезано до требуемой длинны!
+    - Value was trimmed to the required length!: Значение было обрезано до требуемой длины!
     - Value: Значение
     - Value: Значение
     - Values: Значения

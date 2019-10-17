@@ -375,6 +375,7 @@ translations
     - selection: выбарка
     - selections: выбаркі
     - Selections: Выбаркі
+    - send: адправіць
     - Sequence: Паслядоўнасць
     - Server time zone: Гадзінны пояс сервера
     - Server: Сервер
@@ -393,12 +394,9 @@ translations
     - Storage "%%_name" is not available!: Сховішча "%%_name" недаступна!
     - storage %%_name was initialized: сховішча %%_name было ініцыялізавана
     - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі данымі!
-    - Time zone: Гадзінны пояс
-    - UTC date/time: UTC дата/час
     - storage: сховішча
     - Storage: Сховішча
     - Structures: Структуры
-    - send: адправіць
     - Subscribe to updates: Падпіска на абнаўлення
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
@@ -412,14 +410,15 @@ translations
     - Templates: Шаблоны
     - Test: Тэст
     - Tests: Тэсты
+    - Text area: Тэкставая вобласць
     - Text direction: Напрамак тэксту
     - Text: Тэкст
-    - Text area: Тэкставая вобласць
     - Texts: Тэкст
     - The changes was deleted.: Змены былі выдалены.
     - The changes was saved.: Змены былі захаваны.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" - гэта значэнне чырвонай кампаненты, "cd" - зялёнай і "ef" - сіняй.
     - The current version is %%_version_cur.: Бягучая версія %%_version_cur.
+    - the file was only partially uploaded: файл быў загружаны толькі часткова
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
@@ -428,7 +427,6 @@ translations
     - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
-    - the file was only partially uploaded: файл быў загружаны толькі часткова
     - This combination of values is already in use!: Такая камбінацыя значэнняў ўжо выкарыстоўваецца!
     - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
     - Thousands separator: Падзельнік тысяч
@@ -473,3 +471,9 @@ translations
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
     - User with this Nickname was already registered!: Карыстальнік з такой мянушкай ўжо быў зарэгістраваны!
+    - User: Карыстальнік
+    - Users: Карыстальнікі
+    - UTC date/time: UTC дата/час
+    - val.: знач.
+    - Val.: Знач.
+    - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
