@@ -12,4 +12,4 @@ templates
       text
       - 2: You received this message because someone tried to recover the password from your account on %%_domain.
       - 4: Your new password on %%_domain was changed automatically to: %%_new_password
-      - 6: Your EMail is not shown publicly on %%_domain and is never shared with third parties!
+      - 6: Your EMail is not shown publicly on %%_domain and it's never shared with third parties!

@@ -498,3 +498,5 @@ translations
     - You have not made any changes before!: Вы не выраблялі ніякіх змяненняў раней!
     - You must upload at least %%_number file%%_plural{number,s}.: Неабходна загрузіць як мінімум %%_number файл%%_plural{number,au-a}.
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы атрымалі гэтае паведамленне, таму што хтосьці спрабаваў аднавіць пароль ад Вашага акаўнту на %%_domain.
+    - your EMail is — %%_email: Ваш адрас электроннай пошты — %%_email
+    - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрас электроннай пошты не адлюстроўваецца публічна на %%_domain і ён ніколі не перадаецца трэцім асобам!
