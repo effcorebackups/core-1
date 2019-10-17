@@ -497,9 +497,9 @@ translations
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You can enable or disable the language "%%_name" on page "%%_page".: Вы можете включить или отключить язык "%%_name" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
-    - You have not made any changes before!: Вы не производили изменений ранее!
+    - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
-    - You received this message because someone tried to recover the password from your %%_domain account.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего %%_domain аккаунта.
+    - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
     - your EMail is — %%_email: Ваш адрес электронной почты — %%_email
     - Your EMail is not shown publicly on %%_domain and is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и никогда не передаётся третьим лицам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
