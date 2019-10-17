@@ -168,7 +168,7 @@ translations
     - Form elements: Элементы формы
     - Form: Форма
     - form: форма
-    - Fraction part is too long.: Дробавая частка занадта доўгая.
+    - Fraction part is too long.: Дробавая частка надта доўгая.
     - Front: Галоўная
     - GiB: ГіБ
     - go to %%_title language: перайсці на %%_title мову
@@ -422,7 +422,7 @@ translations
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
-    - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" занадта старое!
+    - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" надта старое!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль ў пачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
@@ -489,3 +489,8 @@ translations
     - Welcome message: Прывітальнае паведамленне
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!
+    - Yes: Так
+    - yes: так
+    - You are trying to upload too few files!: Вы спрабуеце загрузіць замала файлаў!
+    - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
+    - You can enable or disable the language %%_name on page %%_page.: Вы можаце ўключыць альбо адключыць мову %%_name на старонцы %%_page.
