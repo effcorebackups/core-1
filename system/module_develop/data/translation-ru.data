@@ -172,6 +172,7 @@ translations
     - Table\: row odd: Таблица: строка не чётная
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
+    - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.

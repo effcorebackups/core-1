@@ -425,3 +425,6 @@ translations
     - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
     - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" занадта старое!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль ў пачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
+    - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
+    - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
+    - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
