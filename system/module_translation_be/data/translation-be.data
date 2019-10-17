@@ -189,7 +189,7 @@ translations
     - Insert: Уставіць
     - Install: Інсталяваць
     - install: інсталяваць
-    - Installation is not available because storage credentials was set!: Устаноўка недаступная таму, што уліковыя дадзеныя сховішча ўжо былі зададзены.
+    - Installation is not available because storage credentials was set!: Устаноўка недаступная таму, што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
     - Instance with row_id = "%%_row_id" was added.: Асобнік з row_id = "%%_row_id" быў дададзены.
@@ -260,7 +260,7 @@ translations
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
-    - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
+    - Module data "%%_title" (%%_id) was removed.: Даныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
     - Module for localization.: Модуль для лакалізацыі.
@@ -416,3 +416,6 @@ translations
     - Text: Тэкст
     - Text area: Тэкставая вобласць
     - Texts: Тэкст
+    - The changes was deleted.: Змены былі выдалены.
+    - The changes was saved.: Змены былі захаваны.
+    - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" - гэта значэнне чырвонай кампаненты, "cd" - зялёнай і "ef" - сіняй.
