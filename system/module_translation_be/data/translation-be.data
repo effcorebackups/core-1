@@ -428,3 +428,25 @@ translations
     - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
+    - the file was only partially uploaded: файл быў загружаны толькі часткова
+    - This combination of values is already in use!: Такая камбінацыя значэнняў ўжо выкарыстоўваецца!
+    - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
+    - Thousands separator: Падзельнік тысяч
+    - TiB: ТіБ
+    - Time format: Фармат часу
+    - Time zone: Гадзінны пояс
+    - Time: Час
+    - title: загаловак
+    - Title: Загаловак
+    - Token: Токен
+    - Tokens: Токены
+    - Total: Усяго
+    - Translating to Belarusian language.: Пераклад на беларускую мову.
+    - Translating to Russian language.: Пераклад на рускую мову.
+    - Translation: Пераклад
+    - Translations: Пераклады
+    - Tree ID: ID дрэва
+    - Tree item: Пункт дрэва
+    - Tree items: Пункты дрэва
+    - Tree: Дрэва
+    - Trees: Дрэвы

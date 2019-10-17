@@ -426,21 +426,19 @@ translations
     - The required version is %%_version_req.: Требуемая версия %%_version_req.
     - the size of uploaded file more than %%_size: размер загружаемого файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
-    - the uploaded file was only partially uploaded: загружаемый файл был загружен только частично
+    - the file was only partially uploaded: файл был загружен только частично
     - This combination of values is already in use!: Такая комбинация значений уже используется!
-    - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS протокол!
+    - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
     - TiB: ТиБ
     - Time format: Формат времени
     - Time zone: Часовой пояс
     - Time: Время
-    - Time zone: Часовой пояс
     - title: заголовок
     - Title: Заголовок
-    - token: токен
+    - Token: Токен
     - Tokens: Токены
     - Total: Всего
-    - Translate: Перевод
     - Translating to Belarusian language.: Перевод на белорусский язык.
     - Translating to Russian language.: Перевод на русский язык.
     - Translation: Перевод
