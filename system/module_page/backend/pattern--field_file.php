@@ -360,7 +360,7 @@ namespace effcore {
       $field->error_set(new text_multiline([
         'You are trying to upload too few files!',
         'You must upload at least %%_number file%%_plural{number,s}.',
-        'You have already uploaded %%_current_number file%%_plural{number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
+        'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
       ));
       return;
     }
@@ -371,7 +371,7 @@ namespace effcore {
       $field->error_set(new text_multiline([
         'You are trying to upload too much files!',
         'Maximum allowed only %%_number file%%_plural{number,s}.',
-        'You have already uploaded %%_current_number file%%_plural{number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
+        'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
       ));
       return;
     }

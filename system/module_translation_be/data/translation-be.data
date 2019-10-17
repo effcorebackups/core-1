@@ -494,3 +494,4 @@ translations
     - You are trying to upload too few files!: Вы спрабуеце загрузіць замала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
     - You can enable or disable the language "%%_name" on page "%%_page".: Вы можаце ўключыць альбо адключыць мову "%%_name" на старонцы "%%_page".
+    - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number,au-a}.
