@@ -8,7 +8,7 @@ namespace effcore {
           class field_tel extends field_text {
 
   public $title = 'Telephone number';
-  public $description = 'Use international mobile telephone number format.';
+  public $description = 'Use the international format for mobile phone numbers.';
   public $attributes = ['data-type' => 'tel'];
   public $element_attributes = [
     'type'      => 'tel',

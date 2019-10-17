@@ -450,3 +450,17 @@ translations
     - Tree items: Пункты дрэва
     - Tree: Дрэва
     - Trees: Дрэвы
+    - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
+    - Type: Тып
+    - type: тып
+    - uninstall: выдаліць
+    - Uninstall: Выдаліць
+    - Unordered list: Неўпарадкаваных спіс
+    - Update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне №%%_number для модуля "%%_title" (%%_id) было ўжыта.
+    - Update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
+    - Update modules data: Абнавіць даныя модуляў
+    - Update: Абнавіць
+    - update: абнавіць
+    - updated: абноўлена
+    - Updated: Абноўлена
+    - Use the international format for mobile phone numbers.: Выкарыстоўвайце міжнародны фармат нумароў мабільных тэлефонаў.

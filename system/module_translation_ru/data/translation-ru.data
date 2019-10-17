@@ -461,8 +461,7 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
-    - URL: URL
-    - Use international mobile telephone number format.: Используйте международный формат номеров мобильных телефонов.
+    - Use the international format for mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Пользовательский агент
