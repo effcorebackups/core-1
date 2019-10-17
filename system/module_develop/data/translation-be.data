@@ -1,0 +1,6 @@
+translations
+- be|translation
+    code: be
+    data
+    - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
+    - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.

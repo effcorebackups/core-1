@@ -170,6 +170,8 @@ translations
     - Switcher 4 (disabled + checked): Переключатель 4 (отключён + установлен)
     - Table\: row even: Таблица: строка чётная
     - Table\: row odd: Таблица: строка не чётная
+    - The report was generated in real time.: Отчёт был создан в режиме реального времени.
+    - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
     - This description is always shown.: Это описание всегда показывается.
