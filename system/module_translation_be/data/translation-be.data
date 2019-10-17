@@ -469,3 +469,7 @@ translations
     - User agent: Карыстальніцкі агент
     - User name: Імя карыстальніка
     - User roles: Ролі карыстальніка
+    - User was not registered!: Карыстальнік не быў зарэгістраваны!
+    - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
+    - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
+    - User with this Nickname was already registered!: Карыстальнік з такой мянушкай ўжо быў зарэгістраваны!
