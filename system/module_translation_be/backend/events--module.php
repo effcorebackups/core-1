@@ -24,8 +24,10 @@ namespace effcore\modules\translation_be {
   static function on_disable() {
     $module = module::get('translation_be');
     $module->disable();
-    storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', 'en');
-    language::code_set_current('en');
+    if (language::code_get_current() == 'be') {
+      storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', 'en');
+      language::code_set_current('en');
+    }
   }
 
 }}
