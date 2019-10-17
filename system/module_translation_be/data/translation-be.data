@@ -373,8 +373,8 @@ translations
     - Selection list: Спіс выбару
     - Selection: Выбарка
     - selection: выбарка
-    - selections: выбаркі
     - Selections: Выбаркі
+    - selections: выбаркі
     - send: адправіць
     - Sequence: Паслядоўнасць
     - Server time zone: Гадзінны пояс сервера
@@ -477,3 +477,10 @@ translations
     - val.: знач.
     - Val.: Знач.
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
+    - Value: Значэнне
+    - Values: Значэння
+    - Version: Версія
+    - version: версія
+    - View more: Глядзець больш
+    - Warning: Папярэджанне
+    - warning: папярэджанне
