@@ -422,7 +422,7 @@ translations
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP-расширение "%%_name" недоступно!
     - The PHP extension "%%_name" is too old!: PHP-расширение "%%_name" слишком старое!
-    - The removing module should be disabled at first. Embed modules cannot be removed.: Удаляемый модуль в начале должен быть отключен. Встроенные модули невозможно отключить.
+    - The removing module must be disabled at first. Embed modules cannot be disabled.: Удаляемый модуль в начале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - The required version is %%_version_req.: Требуемая версия %%_version_req.

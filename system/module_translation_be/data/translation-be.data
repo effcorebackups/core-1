@@ -419,3 +419,9 @@ translations
     - The changes was deleted.: Змены былі выдалены.
     - The changes was saved.: Змены былі захаваны.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" - гэта значэнне чырвонай кампаненты, "cd" - зялёнай і "ef" - сіняй.
+    - The current version is %%_version_cur.: Бягучая версія %%_version_cur.
+    - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
+    - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
+    - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
+    - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" занадта старое!
+    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль ў пачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
