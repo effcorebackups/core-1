@@ -493,4 +493,4 @@ translations
     - yes: так
     - You are trying to upload too few files!: Вы спрабуеце загрузіць замала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
-    - You can enable or disable the language %%_name on page %%_page.: Вы можаце ўключыць альбо адключыць мову %%_name на старонцы %%_page.
+    - You can enable or disable the language "%%_name" on page "%%_page".: Вы можаце ўключыць альбо адключыць мову "%%_name" на старонцы "%%_page".

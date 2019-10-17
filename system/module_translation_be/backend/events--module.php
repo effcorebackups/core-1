@@ -17,7 +17,7 @@ namespace effcore\modules\translation_be {
     $module = module::get('translation_be');
     $module->enable();
     message::insert(
-      new text('You can enable or disable the language %%_name on page %%_page.', ['name' => language::get('be')->title_en, 'page' => translation::get('Locales')])
+      new text('You can enable or disable the language "%%_name" on page "%%_page".', ['name' => language::get('be')->title_en, 'page' => translation::get('Locales')])
     );
   }
 

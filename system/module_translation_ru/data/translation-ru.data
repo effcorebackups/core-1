@@ -495,7 +495,7 @@ translations
     - yes: да
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
-    - You can enable or disable the language %%_name on page %%_page.: Вы можете включить или отключить язык %%_name на странице %%_page.
+    - You can enable or disable the language "%%_name" on page "%%_page".: Вы можете включить или отключить язык "%%_name" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{number,s}.: Вы уже загрузили %%_current_number файл%%_plural{number,ov-a}.
     - You have not made any changes before!: Вы не производили изменений ранее!
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
