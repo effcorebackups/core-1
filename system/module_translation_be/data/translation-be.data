@@ -464,3 +464,8 @@ translations
     - updated: абноўлена
     - Updated: Абноўлена
     - Use the international format for mobile phone numbers.: Выкарыстоўвайце міжнародны фармат нумароў мабільных тэлефонаў.
+    - used by modules: выкарыстоўваецца модулямі
+    - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
+    - User agent: Карыстальніцкі агент
+    - User name: Імя карыстальніка
+    - User roles: Ролі карыстальніка
