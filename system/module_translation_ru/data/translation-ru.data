@@ -504,3 +504,5 @@ translations
     - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - your Password is — %%_password: Ваш Пароль — %%_password
+    - Checkbox: Флажок
+    - Checkboxes: Флажки
