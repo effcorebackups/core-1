@@ -106,9 +106,12 @@ forms
       # field_nickname
         - nickname|field_nickname
             title: Nickname
-            description|text
-              text: Field "%%_title".
+            description|text_multiline
+              text
+              - 0: Field can contain only the next characters: %%_characters.
+              - 1: Field "%%_title".
               args
+              - characters: "a-z", "A-Z", "0-9", "_", "-"
               - title: field_nickname
             element_attributes
             - name: nickname
