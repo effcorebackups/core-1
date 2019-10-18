@@ -17,18 +17,18 @@ forms
             max_files_number: 3
             upload_dir: demo/
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_file
+              - title: field_file
             allowed_types
             - =: gif
             - =: jpeg
             - =: jpg
             - =: png
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_file
+              - title: field_file
             element_attributes
             - name: file[]
             - multiple: true
@@ -39,9 +39,9 @@ forms
             description|text_multiline
               text
               - 0: This description is always shown.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_text
+              - title: field_text
             element_attributes
             - name: text
             - value: text in input
@@ -54,9 +54,9 @@ forms
             description|text_multiline
               text
               - 0: This description is shown on top.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_password
+              - title: field_password
             element_attributes
             - name: password
             - value: text in password
@@ -64,9 +64,9 @@ forms
         - search|field_search
             title: Search
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_search
+              - title: field_search
             element_attributes
             - name: search
             - value: text in search
@@ -74,9 +74,9 @@ forms
         - url|field_url
             title: URL
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_url
+              - title: field_url
             element_attributes
             - name: url
             - value: http://example.com
@@ -86,9 +86,9 @@ forms
             description|text_multiline
               text
               - 0: Use the international format for mobile phone numbers.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_tel
+              - title: field_tel
             element_attributes
             - name: tel
             - value: &#43;000112334455
@@ -96,9 +96,9 @@ forms
         - email|field_email
             title: EMail
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_email
+              - title: field_email
             element_attributes
             - name: email
             - value: test1@example.com,test2@example.com
@@ -107,9 +107,9 @@ forms
         - nickname|field_nickname
             title: Nickname
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_nickname
+              - title: field_nickname
             element_attributes
             - name: nickname
             - value: user
@@ -117,9 +117,9 @@ forms
         - number|field_number
             title: Digit
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_number
+              - title: field_number
             element_attributes
             - name: number
             - min: -1000
@@ -129,9 +129,9 @@ forms
         - range|field_range
             title: Range
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_range
+              - title: field_range
             element_attributes
             - name: range
             - min: -1
@@ -143,9 +143,9 @@ forms
             description|text_multiline
               text
               - 0: The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_color
+              - title: field_color
             element_attributes
             - name: color
             - value: #ffffff
@@ -157,9 +157,9 @@ forms
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_date
+              - title: field_date
             element_attributes
             - name: date
             - value: 2030-02-01
@@ -169,9 +169,9 @@ forms
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_time
+              - title: field_time
             element_attributes
             - name: time
             - value: 01:23:45
@@ -181,9 +181,9 @@ forms
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_datetime
+              - title: field_datetime
             element_attributes
             - name: datetime
             - value: 2030-02-01 01:23:45
@@ -194,9 +194,9 @@ forms
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_datetime_local
+              - title: field_datetime_local
             element_attributes
             - name: datetime_local
             - value: 2030-02-01 01:23:45
@@ -204,9 +204,9 @@ forms
         - timezone|field_timezone
             title: Time zone
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_timezone
+              - title: field_timezone
             element_attributes
             - name: timezone
             - required: true
@@ -220,9 +220,9 @@ forms
             description|text_multiline
               text
               - 0: Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).
-              - 1: Field "%%_name".
+              - 1: Field "%%_title".
               args
-              - name: field_select
+              - title: field_select
             element_attributes
             - name: select
             values
@@ -242,9 +242,9 @@ forms
         - logic|field_logic
             title: Logic
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_logic
+              - title: field_logic
             element_attributes
             - name: logic
             selected
@@ -253,9 +253,9 @@ forms
         - relation|field_relation
             title: Relation
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_relation
+              - title: field_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_title_name: title
@@ -275,9 +275,9 @@ forms
         - relation_tree|field_relation
             title: Relation (tree)
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_relation
+              - title: field_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_id_parent_name: id_parent
@@ -295,9 +295,9 @@ forms
         - language|field_language
             title: Language
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_language
+              - title: field_language
             element_attributes
             - name: lang_code
             selected
@@ -306,9 +306,9 @@ forms
         - text_direction|field_text_direction
             title: Text direction
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: text_direction
+              - title: text_direction
             element_attributes
             - name: text_direction
             selected
@@ -319,9 +319,9 @@ forms
         - textarea|field_textarea
             title: Text area
             description|text
-              text: Field "%%_name".
+              text: Field "%%_title".
               args
-              - name: field_textarea
+              - title: field_textarea
             element_attributes
             - name: textarea
             - value: text in text area
@@ -336,9 +336,9 @@ forms
             - checkbox|field_checkbox
                 title: Checkbox
                 description|text
-                  text: Field "%%_name".
+                  text: Field "%%_title".
                   args
-                  - name: field_checkbox
+                  - title: field_checkbox
                 element_attributes
                 - name: checkbox
                 - value: checkbox
@@ -347,9 +347,9 @@ forms
             - checkboxes|group_checkboxes
                 title: Checkboxes
                 description|text
-                  text: Group "%%_name".
+                  text: Group "%%_title".
                   args
-                  - name: group_checkboxes
+                  - title: group_checkboxes
                 element_attributes
                 - name: checkboxes[]
                 values
@@ -367,9 +367,9 @@ forms
             - switcher|field_switcher
                 title: Switcher
                 description|text
-                  text: Field "%%_name".
+                  text: Field "%%_title".
                   args
-                  - name: field_switcher
+                  - title: field_switcher
                 element_attributes
                 - name: switcher
                 - checked: true
@@ -377,9 +377,9 @@ forms
             - switchers|group_switchers
                 title: Switchers
                 description|text
-                  text: Group "%%_name".
+                  text: Group "%%_title".
                   args
-                  - name: group_switchers
+                  - title: group_switchers
                 element_attributes
                 - name: switchers[]
                 values
@@ -399,9 +399,9 @@ forms
                 description|text_multiline
                   text
                   - 0: Access settings not applicable if no one role is active!
-                  - 1: Group "%%_name".
+                  - 1: Group "%%_title".
                   args
-                  - name: group_acces
+                  - title: group_acces
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
@@ -413,9 +413,9 @@ forms
             - radiobutton|field_radiobutton
                 title: Radiobutton
                 description|text
-                  text: Field "%%_name".
+                  text: Field "%%_title".
                   args
-                  - name: field_radiobutton
+                  - title: field_radiobutton
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
@@ -423,9 +423,9 @@ forms
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
                 description|text
-                  text: Group "%%_name".
+                  text: Group "%%_title".
                   args
-                  - name: group_radiobuttons
+                  - title: group_radiobuttons
                 element_attributes
                 - name: radiobuttons
                 values
@@ -440,9 +440,9 @@ forms
             - palette|group_palette
                 title: Color
                 description|text
-                  text: Group "%%_name".
+                  text: Group "%%_title".
                   args
-                  - name: group_palette
+                  - title: group_palette
                 element_attributes
                 - name: palette_color
     - hidden|field_hidden

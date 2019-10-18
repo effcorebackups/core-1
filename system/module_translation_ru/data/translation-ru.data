@@ -518,5 +518,6 @@ translations
     - Extension: Расширение
     - failure: неудача
     - Function: Функция
-    - Group "%%_name".: Группа "%%_name".
-    - Field "%%_name".: Поле "%%_name".
+    - Group "%%_title".: Группа "%%_title".
+    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
+    - Field "%%_title".: Поле "%%_title".
