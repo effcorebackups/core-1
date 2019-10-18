@@ -506,3 +506,17 @@ translations
     - your Password is — %%_password: Ваш Пароль — %%_password
     - Checkbox: Флажок
     - Checkboxes: Флажки
+    - Data: Данные
+    - Definition list: Список определений
+    - Diagram: Диаграмма
+    - Diagrams: Диаграммы
+    - Elements: Элементы
+    - Embedded: Встроенные
+    - event: событие
+    - Events: События
+    - expand: развернуть
+    - Extension: Расширение
+    - failure: неудача
+    - Function: Функция
+    - Group "%%_name".: Группа "%%_name".
+    - Field "%%_name".: Поле "%%_name".
