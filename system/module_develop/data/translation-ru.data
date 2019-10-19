@@ -12,11 +12,11 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - (default type): (тип по умолчанию)
     - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: По соображениям производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
-    - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
+    - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - Adaptive table: Адаптивная таблица
-    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки Защитный код (CAPTCHA) будет изменён.
+    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
     - Autoincrement: Автоинкремент
@@ -29,7 +29,7 @@ translations
     - Checkbox 1: Флажок 1
     - Checkbox 2 (checked): Флажок 2 (установлен)
     - Checkbox 3 (disabled): Флажок 3 (отключён)
-    - Checkbox 4 (disabled + checked): Флажок 4 (установлен + отключён)
+    - Checkbox 4 (disabled + checked): Флажок 4 (отключён + установлен)
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - class: класс
     - Classes: Классы

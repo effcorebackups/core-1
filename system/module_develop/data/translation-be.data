@@ -12,6 +12,12 @@ translations
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&#10;
     - (default type): (тып па змаўчанню)
     - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Па меркаваннях прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
+    - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
+    - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
+    - &ndash; result of checking is = "%%_result": &ndash; вынік праверкі = "%%_result"
+    - Adaptive table: Адаптыўная табліца
+    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х уставак Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.
+#
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
