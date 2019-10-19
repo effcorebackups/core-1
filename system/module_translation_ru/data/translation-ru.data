@@ -477,7 +477,6 @@ translations
     - Tree items: Пункты дерева
     - Tree: Дерево
     - Trees: Деревья
-    - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
     - Type: Тип
     - type: тип
