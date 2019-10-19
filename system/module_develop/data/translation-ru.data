@@ -11,7 +11,7 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - (default type): (тип по умолчанию)
-    - *.cssd \| *.jsd console will show only in mode "show for everyone" for performance reasons.: По соображениям производительности *.cssd | *.jsd консоль будет отображаться только в режиме "показать всем".
+    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: По соображениям производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"

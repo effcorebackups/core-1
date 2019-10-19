@@ -2,6 +2,16 @@ translations
 - be|translation
     code: be
     data
+    - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;: 
+>>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
+>>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
+>>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
+>>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&#10;
+    - (default type): (тып па змаўчанню)
+    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Па меркаваннях прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!

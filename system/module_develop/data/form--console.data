@@ -10,7 +10,7 @@ forms
         children
         - visibility|field_select
             title: Visibility
-            description: *.cssd | *.jsd console will show only in mode "show for everyone" for performance reasons.
+            description: For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.
             description_state: opened
             element_attributes
             - name: visibility
