@@ -3,7 +3,7 @@ tabs_items
     id: demo_embedded
     id_parent: null
     id_tab: demo
-    title: Embedded
+    title: Embedded elements
 - demo_form_elements|tabs_item
     id: demo_form_elements
     id_parent: demo_embedded

@@ -504,3 +504,35 @@ translations
     - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрас электроннай пошты не адлюстроўваецца публічна на %%_domain і ён ніколі не перадаецца трэцім асобам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новы пароль на %%_domain быў зменены аўтаматычна на: %%_new_password
     - your Password is — %%_password: Ваш Пароль — %%_password
+    - Checkbox: Сцяжок
+    - Checkboxes: Сцяжкі
+    - Definition list: Спіс азначэнняў
+    - Diagram: Дыяграма
+    - Diagrams: Дыяграмы
+    - event: падзея
+    - Event: Падзея
+    - Events: Падзеі
+    - events: падзеі
+    - expand: разгарнуць
+    - failure: няўдача
+    - Function: Функцыя
+    - Group "%%_title".: Група "%%_title".
+    - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
+    - Field "%%_title".: Поле "%%_title".
+    - Headers: Загалоўкі
+    - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
+    - insertion: устаўка
+    - interface: інтэрфейс
+    - Interface: Інтэрфейс
+    - Interfaces: Інтэрфейсы
+    - interfaces: інтэрфейсы
+    - Linear diagram: Лінейная дыяграма
+    - Lists: Спісы
+    - Module: Модуль
+    - do not show: не паказваць
+    - Canvas: Палатно
+    - Execution: Выкананне
+    - success: поспех
+    - Trees: Дрэвы
+    - Types: Типы
+    - Visibility: Бачнасць

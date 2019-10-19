@@ -506,16 +506,14 @@ translations
     - your Password is — %%_password: Ваш Пароль — %%_password
     - Checkbox: Флажок
     - Checkboxes: Флажки
-    - Data: Данные
     - Definition list: Список определений
     - Diagram: Диаграмма
     - Diagrams: Диаграммы
-    - Elements: Элементы
-    - Embedded: Встроенные
     - event: событие
+    - Event: Событие
     - Events: События
+    - events: события
     - expand: развернуть
-    - Extension: Расширение
     - failure: неудача
     - Function: Функция
     - Group "%%_title".: Группа "%%_title".
@@ -525,12 +523,13 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - insertion: вставка
     - interface: интерфейс
+    - Interface: Интерфейс
     - Interfaces: Интерфейсы
+    - interfaces: интерфейсы
     - Linear diagram: Линейная диаграмма
     - Lists: Списки
     - Module: Модуль
     - do not show: не показывать
-    - Paragraph: Параграф
     - Canvas: Холст
     - Execution: Выполнение
     - success: успех
