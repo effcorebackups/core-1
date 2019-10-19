@@ -24,7 +24,6 @@ translations
     - beginning: начало
     - Call %%_name: Вызов %%_name
     - call: вызов
-    - Canvas: Холст
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флажок 1
@@ -44,7 +43,7 @@ translations
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор
-    - Dependency of modules by PHP extensions: Зависимость модулей от PHP расширений
+    - Dependency of modules by PHP extensions: Зависимость модулей от PHP-расширений
     - DL table: DL Таблица
     - end: конец
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
@@ -52,7 +51,6 @@ translations
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"<br>аргументы = [%%_args]
     - event system was initialized: система событий была инициализирована
     - Execution plan: План выполнения
-    - Execution: Выполнение
     - Export diagram to %%_file for using with StarUML software.: Экспорт диаграммы в файл %%_file для использования в программе StarUML.
     - Ext.: Расш.
     - Field #1: Поле №1
@@ -81,13 +79,8 @@ translations
     - Handler: Обработчик
     - head cell #%%_number: заглавная ячейка №%%_number
     - Header %%_size: Заголовок %%_size
-    - Headers: Заголовки
-    - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Indexes: Индексы
     - init.: инициал.
-    - insertion: вставка
-    - interface: интерфейс
-    - Interfaces: Интерфейсы
     - Is even: Чётное
     - item #%%_number: пункт №%%_number
     - item #1: пункт №1
@@ -102,14 +95,10 @@ translations
     - item #3 (from code): пункт №3 (из кода)
     - item #3: пункт №3
     - Kind: Вид
-    - Linear diagram: Линейная диаграмма
-    - Lists: Списки
     - make request to "%%_url": сделать запрос на "%%_url"
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
-    - Module: Модуль
     - NoSQL data: NoSQL данные
-    - not show: не показывать
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
@@ -121,14 +110,13 @@ translations
     - Option 7 (inserted from code): Опция 7 (вставлена из кода)
     - Option 8 (inserted from code): Опция 8 (вставлена из кода)
     - Option 9 (inserted from code): Опция 9 (вставлена из кода)
-    - Paragraph: Параграф
     - Parameter 1: Параметр 1
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
-    - PHP ext.: PHP расш.
-    - PHP extension: PHP расширение
-    - PHP functions usage: Использование PHP функций
+    - PHP ext.: PHP-расш.
+    - PHP extension: PHP-расширение
+    - PHP functions usage: Использование PHP-функций
     - Pos.: Поз.
     - Quantity of iterations: Количество итераций
     - query = "%%_query": запрос = "%%_query"
@@ -146,7 +134,6 @@ translations
     - Sequence hash: Хэш последовательности
     - show for admin: показывать для администратора
     - show for everyone: показать всем
-    - success: успех
     - Switcher 1: Выключатель 1
     - Switcher 2 (checked): Выключатель 2 (установлен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)
@@ -163,8 +150,6 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрука
     - Traits: Трейты
-    - Trees: Деревья
-    - Types: Типы
     - UML Diagram: UML Диаграмма
     - Usage frequency: Частота использования
     - validation_1: валидация_1
@@ -178,5 +163,4 @@ translations
     - value 3.1: значение 3.1
     - value 3.2: значение 3.2
     - value 3.3: значение 3.3
-    - Visibility: Видимость
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.

@@ -521,3 +521,19 @@ translations
     - Group "%%_title".: Группа "%%_title".
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Field "%%_title".: Поле "%%_title".
+    - Headers: Заголовки
+    - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
+    - insertion: вставка
+    - interface: интерфейс
+    - Interfaces: Интерфейсы
+    - Linear diagram: Линейная диаграмма
+    - Lists: Списки
+    - Module: Модуль
+    - do not show: не показывать
+    - Paragraph: Параграф
+    - Canvas: Холст
+    - Execution: Выполнение
+    - success: успех
+    - Trees: Деревья
+    - Types: Типы
+    - Visibility: Видимость

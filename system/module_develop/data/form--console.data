@@ -16,7 +16,7 @@ forms
             - name: visibility
             values
             - not_selected: - select -
-            - not_show: not show
+            - not_show: do not show
             - show_for_admin: show for admin
             - show_for_everyone: show for everyone
             selected
