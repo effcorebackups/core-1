@@ -220,16 +220,36 @@ forms
       # ─────────────────────────────────────────────────────────────────────
         - select|field_select
             title: Selection list
-            description|text_multiline
-              text
-              - 0: Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).
-              - 1: Field "%%_title".
+            description|text
+              text: Field "%%_title".
               args
               - title: field_select
             element_attributes
             - name: select
             values
             - not_selected: - select -
+            - option_1: Option 1 (selected)
+            - option_2: Option 2 (disabled)
+            - option_3: Option 3
+            - group_1
+                title: Group 1
+                values
+                - option_4: Option 4
+            selected
+            - =: option_1
+            disabled
+            - =: option_2
+        - select_multiple|field_select
+            title: Selection list (multiple select)
+            description|text
+              text: Field "%%_title".
+              args
+              - title: field_select
+            element_attributes
+            - name: select_multiple[]
+            - multiple: true
+            - size: 11
+            values
             - option_1: Option 1 (selected)
             - option_2: Option 2 (disabled)
             - option_3: Option 3

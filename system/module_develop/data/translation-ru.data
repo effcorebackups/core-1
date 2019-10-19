@@ -18,7 +18,6 @@ translations
     - Adaptive table: Адаптивная таблица
     - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
-    - Attribute "multiple" is not supported on touch devices (tablets, smartphones, monitors with touch screens).: Атрибут "multiple" не поддерживается на сенсорных устройствах (планшеты, смартфоны, мониторы с сенсорными экранами).
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
     - beginning: начало
