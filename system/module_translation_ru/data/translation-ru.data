@@ -45,10 +45,13 @@ translations
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1" когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
+    - Canvas: Холст
     - Charset: Кодировка
     - Check directory permissions.: Проверьте разрешения каталога.
     - Check field again before submit.: Проверьте поле снова перед отправкой.
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
+    - Checkbox: Флажок
+    - Checkboxes: Флажки
     - Classic layout: Классический макет
     - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
@@ -82,6 +85,7 @@ translations
     - Decimal point: Десятичная точка
     - Decoration: Оформление
     - Decorator parameters: Параметры оформления
+    - Definition list: Список определений
     - delete file "%%_name": удалить файл "%%_name"
     - Delete item of type "%%_name" with id = "%%_id"?: Удалить элемент типа "%%_name" с id = "%%_id"?
     - Delete modules data: Удалить данные модулей
@@ -93,8 +97,11 @@ translations
     - Description: Описание
     - description: описание
     - Develop: Разработка
+    - Diagram: Диаграмма
+    - Diagrams: Диаграммы
     - Digit: Цифра
     - Distributed queries not supported! Selection id = "%%_id".: Распределенные запросы не поддерживаются! ID выборки = "%%_id".
+    - do not show: не показывать
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
@@ -111,10 +118,17 @@ translations
     - Entity "%%_name" was not uninstalled!: Сущность "%%_name" не была удалена!
     - Entity "%%_name" was uninstalled.: Сущность "%%_name" была удалена.
     - Error: Ошибка
+    - event: событие
+    - Event: Событие
+    - Events: События
+    - events: события
     - Example of empty module.: Пример пустого модуля.
     - Examples: Примеры
+    - Execution: Выполнение
+    - expand: развернуть
     - Expiration date: Дата окончания
     - failed to write file to disk: не удалось записать файл на диск
+    - failure: неудача
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было вставлено.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
@@ -135,6 +149,7 @@ translations
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
     - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!
+    - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле может содержать %%_number символ%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле может содержать максимум %%_number символ%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
@@ -170,6 +185,7 @@ translations
     - form: форма
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front: Главная
+    - Function: Функция
     - GiB: ГиБ
     - go to %%_title language: перейти на %%_title язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
@@ -179,14 +195,19 @@ translations
     - Grid 3x5: Сетка 3x5
     - Grid 4x5: Сетка 4x5
     - Grid 5x5: Сетка 5x5
+    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
+    - Group "%%_title".: Группа "%%_title".
+    - Headers: Заголовки
     - Hostname: Имя узла сети
     - I accept the terms of the license agreement.: Я принимаю условия лицензионного соглашения.
+    - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
     - Insert field: Вставить поле
     - Insert part: Вставить часть
     - insert: вставить
     - Insert: Вставить
+    - insertion: вставка
     - Install: Установить
     - install: установить
     - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
@@ -194,6 +215,10 @@ translations
     - installation: установка
     - Instance with row_id = "%%_row_id" was added.: Экземпляр с row_id = "%%_row_id" был добавлен.
     - Instance with row_id = "%%_row_id" was not added!: Экземпляр с row_id = "%%_row_id" не был добавлен!
+    - interface: интерфейс
+    - Interface: Интерфейс
+    - Interfaces: Интерфейсы
+    - interfaces: интерфейсы
     - Internet Explorer below version %%_version no longer supported!: Internet Explorer ниже версии %%_version больше не поддерживается!
     - invalid session was deleted!: Недействительный сеанс был удалён!
     - Is active: Активная
@@ -216,9 +241,11 @@ translations
     - License agreement: Лицензионное соглашение
     - light preset: светлая предустановка
     - Limit: Лимит
+    - Linear diagram: Линейная диаграмма
     - Link active: Ссылка активная
     - Link: Ссылка
     - List: Список
+    - Lists: Списки
     - Load: Загрузка
     - load: загрузка
     - Local Date: Локальная Дата
@@ -270,6 +297,7 @@ translations
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Module ID: ID Модуля
+    - Module: Модуль
     - Modules: Модули
     - More info in %%_info.: Больше информации в %%_info.
     - name: имя
@@ -398,6 +426,7 @@ translations
     - Storage: Хранилище
     - Structures: Структуры
     - Subscribe to updates: Подписка на обновления
+    - success: успех
     - Switcher: Выключатель
     - Switchers: Выключатели
     - system logotype: логотип системы
@@ -448,9 +477,11 @@ translations
     - Tree items: Пункты дерева
     - Tree: Дерево
     - Trees: Деревья
+    - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
     - Type: Тип
     - type: тип
+    - Types: Типы
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
@@ -482,6 +513,7 @@ translations
     - Version: Версия
     - version: версия
     - View more: Смотреть больше
+    - Visibility: Видимость
     - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер
@@ -504,35 +536,3 @@ translations
     - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - your Password is — %%_password: Ваш Пароль — %%_password
-    - Checkbox: Флажок
-    - Checkboxes: Флажки
-    - Definition list: Список определений
-    - Diagram: Диаграмма
-    - Diagrams: Диаграммы
-    - event: событие
-    - Event: Событие
-    - Events: События
-    - events: события
-    - expand: развернуть
-    - failure: неудача
-    - Function: Функция
-    - Group "%%_title".: Группа "%%_title".
-    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
-    - Field "%%_title".: Поле "%%_title".
-    - Headers: Заголовки
-    - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
-    - insertion: вставка
-    - interface: интерфейс
-    - Interface: Интерфейс
-    - Interfaces: Интерфейсы
-    - interfaces: интерфейсы
-    - Linear diagram: Линейная диаграмма
-    - Lists: Списки
-    - Module: Модуль
-    - do not show: не показывать
-    - Canvas: Холст
-    - Execution: Выполнение
-    - success: успех
-    - Trees: Деревья
-    - Types: Типы
-    - Visibility: Видимость

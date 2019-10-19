@@ -45,10 +45,13 @@ translations
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1" калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
+    - Canvas: Палатно
     - Charset: Кадоўка
     - Check directory permissions.: Праверце дазвалення каталога.
     - Check field again before submit.: Праверце поле зноў перад адпраўкай.
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
+    - Checkbox: Сцяжок
+    - Checkboxes: Сцяжкі
     - Classic layout: Класічны макет
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
@@ -82,6 +85,7 @@ translations
     - Decimal point: Дзесятковая кропка
     - Decoration: Афармленне
     - Decorator parameters: Параметры афармлення
+    - Definition list: Спіс азначэнняў
     - delete file "%%_name": выдаліць файл "%%_name"
     - Delete item of type "%%_name" with id = "%%_id"?: Выдаліць элемент тыпу "%%_name" з id = "%%_id"?
     - Delete modules data: Выдаліць даныя модуляў
@@ -93,8 +97,11 @@ translations
     - Description: Апісанне
     - description: апісанне
     - Develop: Распрацоўка
+    - Diagram: Дыяграма
+    - Diagrams: Дыяграмы
     - Digit: Лічба
     - Distributed queries not supported! Selection id = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
+    - do not show: не паказваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
@@ -111,10 +118,17 @@ translations
     - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдалена!
     - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдалена.
     - Error: Памылка
+    - event: падзея
+    - Event: Падзея
+    - Events: Падзеі
+    - events: падзеі
     - Example of empty module.: Прыклад пустога модуля.
     - Examples: Прыклады
+    - Execution: Выкананне
+    - expand: разгарнуць
     - Expiration date: Дата заканчэння
     - failed to write file to disk: не ўдалося запісаць файл на дыск
+    - failure: няўдача
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было выдалена.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было ўстаўлена.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" пасля спробы запампаваць файл вярнула памылку: %%_error!
@@ -135,6 +149,7 @@ translations
     - Field "%%_title" must be selected!: Поле "%%_title" павінна быць абрана!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць максімум %%_number сімвал%%_plural{number,au-a}!
     - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле павінна змяшчаць %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
@@ -170,6 +185,7 @@ translations
     - form: форма
     - Fraction part is too long.: Дробавая частка надта доўгая.
     - Front: Галоўная
+    - Function: Функцыя
     - GiB: ГіБ
     - go to %%_title language: перайсці на %%_title мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
@@ -179,14 +195,19 @@ translations
     - Grid 3x5: Сетка 3x5
     - Grid 4x5: Сетка 4x5
     - Grid 5x5: Сетка 5x5
+    - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
+    - Group "%%_title".: Група "%%_title".
+    - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
+    - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Information: Інфармацыя
     - Insert field: Уставіць поле
     - Insert part: Уставіць частку
     - insert: уставіць
     - Insert: Уставіць
+    - insertion: устаўка
     - Install: Інсталяваць
     - install: інсталяваць
     - Installation is not available because storage credentials was set!: Устаноўка недаступная таму, што уліковыя даныя сховішча ўжо былі зададзены.
@@ -194,6 +215,10 @@ translations
     - installation: інсталяванне
     - Instance with row_id = "%%_row_id" was added.: Асобнік з row_id = "%%_row_id" быў дададзены.
     - Instance with row_id = "%%_row_id" was not added!: Асобнік з row_id = "%%_row_id" не быў дададзены!
+    - interface: інтэрфейс
+    - Interface: Інтэрфейс
+    - Interfaces: Інтэрфейсы
+    - interfaces: інтэрфейсы
     - Internet Explorer below version %%_version no longer supported!: Internet Explorer ніжэй версіі %%_version больш не падтрымліваецца!
     - invalid session was deleted!: Несапраўдны сеанс быў выдалены!
     - Is active: Актыўная
@@ -216,9 +241,11 @@ translations
     - License agreement: Ліцэнзійнае пагадненне
     - light preset: светлая перадусталёўка
     - Limit: Ліміт
+    - Linear diagram: Лінейная дыяграма
     - Link active: Спасылка актыўная
     - Link: Спасылка
     - List: Спіс
+    - Lists: Спісы
     - Load: Загрузка
     - load: загрузка
     - Local Date: Лакальная Дата
@@ -270,6 +297,7 @@ translations
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
     - Module ID: ID Модуля
+    - Module: Модуль
     - Modules: Модулі
     - More info in %%_info.: Больш інфармацыі ў %%_info.
     - name: імя
@@ -398,6 +426,7 @@ translations
     - Storage: Сховішча
     - Structures: Структуры
     - Subscribe to updates: Падпіска на абнаўлення
+    - success: поспех
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
     - system logotype: лагатып сістэмы
@@ -448,9 +477,11 @@ translations
     - Tree items: Пункты дрэва
     - Tree: Дрэва
     - Trees: Дрэвы
+    - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
     - Type: Тып
     - type: тып
+    - Types: Типы
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваных спіс
@@ -482,6 +513,7 @@ translations
     - Version: Версія
     - version: версія
     - View more: Глядзець больш
+    - Visibility: Бачнасць
     - Warning: Папярэджанне
     - warning: папярэджанне
     - Web server: Вэб-сервер
@@ -504,35 +536,3 @@ translations
     - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрас электроннай пошты не адлюстроўваецца публічна на %%_domain і ён ніколі не перадаецца трэцім асобам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новы пароль на %%_domain быў зменены аўтаматычна на: %%_new_password
     - your Password is — %%_password: Ваш Пароль — %%_password
-    - Checkbox: Сцяжок
-    - Checkboxes: Сцяжкі
-    - Definition list: Спіс азначэнняў
-    - Diagram: Дыяграма
-    - Diagrams: Дыяграмы
-    - event: падзея
-    - Event: Падзея
-    - Events: Падзеі
-    - events: падзеі
-    - expand: разгарнуць
-    - failure: няўдача
-    - Function: Функцыя
-    - Group "%%_title".: Група "%%_title".
-    - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Field "%%_title".: Поле "%%_title".
-    - Headers: Загалоўкі
-    - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
-    - insertion: устаўка
-    - interface: інтэрфейс
-    - Interface: Інтэрфейс
-    - Interfaces: Інтэрфейсы
-    - interfaces: інтэрфейсы
-    - Linear diagram: Лінейная дыяграма
-    - Lists: Спісы
-    - Module: Модуль
-    - do not show: не паказваць
-    - Canvas: Палатно
-    - Execution: Выкананне
-    - success: поспех
-    - Trees: Дрэвы
-    - Types: Типы
-    - Visibility: Бачнасць
