@@ -108,7 +108,7 @@ namespace effcore {
     $diagram = new diagram('', 'radial');
     $colors = self::diagram_colors;
     foreach ($statistics as $c_key => $c_value)
-      $diagram->slice_add  ($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' sec.', array_shift($colors));
+      $diagram->slice_add  ($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::get('sec.'), array_shift($colors));
     return new block('Total load', ['data-id' => 'diagram_load'], [
       $diagram
     ]);

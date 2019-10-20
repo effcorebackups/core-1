@@ -71,8 +71,45 @@ translations
     - Full report: Поўная справаздача
     - Gradient of main color: Градыент асноўнага колеру
     - Group 1: Група 1
-    - Group 2 (inserted from code): Група 2 (ўстаўлена з кода)
+    - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
+    - head cell #%%_number: загалоўная вочка №%%_number
+    - Header %%_size: Загаловак %%_size
+    - Indexes: Індэксы
+    - init.: ініцыял.
+    - item #%%_number: пункт №%%_number
+    - item #1: пункт №1
+    - item #1.1: пункт №1.1
+    - item #1.2: пункт №1.2
+    - item #1.2.1: пункт №1.2.1
+    - item #1.2.2: пункт №1.2.2
+    - item #1.2.3 (from code): пункт №1.2.3 (з кода)
+    - item #1.2.3: пункт №1.2.3
+    - item #1.3: пункт №1.3
+    - item #2: пункт №2
+    - item #3 (from code): пункт №3 (з кода)
+    - item #3: пункт №3
+    - Kind: Від
+    - make request to "%%_url": зрабіць запыт на "%%_url"
+    - Markup dynamic: Разметка дынамічная
+    - Markup static: Разметка статычная
+    - NoSQL data: NoSQL даныя
+    - Notice message #%%_number.: Паведамленне №%%_number.
+    - Ok message #%%_number.: Добрае паведамленне №%%_number.
+    - Option 1 (selected): Опция 1 (абрана)
+    - Option 2 (disabled): Опция 2 (адключана) 
+    - Option 3: Опция 3
+    - Option 4: Опция 4
+    - Option 5 (inserted + disabled from code): Опция 5 (устаўлена + адключана з кода)
+    - Option 6 (inserted from code): Опция 6 (устаўлена з кода)
+    - Option 7 (inserted from code): Опция 7 (устаўлена з кода)
+    - Option 8 (inserted from code): Опция 8 (устаўлена з кода)
+    - Option 9 (inserted from code): Опция 9 (устаўлена з кода)
+    - Parameter 1: Параметр 1
+    - Parameter 2: Параметр 2
+    - Parameter 3: Параметр 3
+    - Parameter 4: Параметр 4
+    - sec.: сек.
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
