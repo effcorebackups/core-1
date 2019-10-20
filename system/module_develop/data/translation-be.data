@@ -110,6 +110,25 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - sec.: сек.
+    - PHP ext.: PHP-паш.
+    - PHP extension: PHP-пашырэнне
+    - PHP functions usage: Выкарыстоўванне PHP-функцый
+    - Pos.: Паз.
+    - Quantity of iterations: Колькасць ітэрацый
+    - query = "%%_query": запыт = "%%_query"
+    - query = "%%_query"<br>arguments = [%%_args]: запыт = "%%_query"<br>аргументы = [%%_args]
+    - Radiobutton 1: Перамыкач 1
+    - Radiobutton 2 (checked): Перамыкач 2 (усталяваны)
+    - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
+    - Relation (tree view): Сувязь (у выглядзе дрэва)
+    - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
+    - return = "%%_return": вяртанне = "%%_return"
+    - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)
+    - Selection of "demo_data" entities + join (ID\: 200+): Выбарка сутнасцяў "demo_data" + join (ID: 200+)
+    - Selection of "demo_types" entities: Выбарка сутнасцяў "demo_types"
+    - Sequence hash: Хэш паслядоўнасці
+    - show for admin: паказваць адміністратару
+    - show for everyone: паказваць усім
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.

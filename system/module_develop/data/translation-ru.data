@@ -121,16 +121,15 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (установлен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
-    - Relation (tree): Связь (дерево)
+    - Relation (tree view): Связь (в виде дерева)
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
-    - Select the test: Выберите тест
     - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - Sequence hash: Хэш последовательности
-    - show for admin: показывать для администратора
-    - show for everyone: показать всем
+    - show for admin: показывать администратору
+    - show for everyone: показывать всем
     - Switcher 1: Выключатель 1
     - Switcher 2 (checked): Выключатель 2 (установлен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)

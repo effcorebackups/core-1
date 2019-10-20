@@ -296,7 +296,7 @@ forms
             - demo_sql_item_1: demo_sql_item_1
       # field_relation (mode: tree)
         - relation_tree|field_relation
-            title: Relation (tree)
+            title: Relation (tree view)
             description|text
               text: Field "%%_title".
               args
