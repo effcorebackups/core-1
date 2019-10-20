@@ -25,9 +25,9 @@ translations
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флажок 1
-    - Checkbox 2 (checked): Флажок 2 (установлен)
+    - Checkbox 2 (checked): Флажок 2 (отмечен)
     - Checkbox 3 (disabled): Флажок 3 (отключён)
-    - Checkbox 4 (disabled + checked): Флажок 4 (отключён + установлен)
+    - Checkbox 4 (disabled + checked): Флажок 4 (отключён + отмечен)
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - Classes: Классы
     - Collations: Сравнения
@@ -119,7 +119,7 @@ translations
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br>arguments = [%%_args]: запрос = "%%_query"<br>аргументы = [%%_args]
     - Radiobutton 1: Переключатель 1
-    - Radiobutton 2 (checked): Переключатель 2 (установлен)
+    - Radiobutton 2 (checked): Переключатель 2 (отмечен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
     - Relation (tree view): Связь (в виде дерева)
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
@@ -131,9 +131,9 @@ translations
     - show for admin: показывать администратору
     - show for everyone: показывать всем
     - Switcher 1: Выключатель 1
-    - Switcher 2 (checked): Выключатель 2 (установлен)
+    - Switcher 2 (checked): Выключатель 2 (отмечен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)
-    - Switcher 4 (disabled + checked): Выключатель 4 (отключён + установлен)
+    - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
     - Table\: row even: Таблица: строка чётная
     - Table\: row odd: Таблица: строка не чётная
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.

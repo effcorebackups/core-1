@@ -145,7 +145,7 @@ translations
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет изменённое значение.
-    - Field "%%_title" must be checked!: Поле "%%_title" должно быть установлено!
+    - Field "%%_title" must be enabled!: Поле "%%_title" должно быть включено!
     - Field "%%_title" must be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
     - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!

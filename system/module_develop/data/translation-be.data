@@ -25,9 +25,9 @@ translations
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталаг %%_catalog_name у сховішчы %%_storage_name будзе ініцыялізаваны
     - cell #%%_number: вочка №%%_number
     - Checkbox 1: Сцяжок 1
-    - Checkbox 2 (checked): Сцяжок 2 (усталяваны)
+    - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
-    - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + усталяваны)
+    - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + адзначаны)
     - checking on "%%_name" = "%%_value": праверка на "%%_name" = "%%_value"
     - Classes: Класы
     - Collations: Параўнанні
@@ -118,7 +118,7 @@ translations
     - query = "%%_query": запыт = "%%_query"
     - query = "%%_query"<br>arguments = [%%_args]: запыт = "%%_query"<br>аргументы = [%%_args]
     - Radiobutton 1: Перамыкач 1
-    - Radiobutton 2 (checked): Перамыкач 2 (усталяваны)
+    - Radiobutton 2 (checked): Перамыкач 2 (адзначаны)
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
