@@ -96,15 +96,15 @@ translations
     - NoSQL data: NoSQL даныя
     - Notice message #%%_number.: Паведамленне №%%_number.
     - Ok message #%%_number.: Добрае паведамленне №%%_number.
-    - Option 1 (selected): Опция 1 (абрана)
-    - Option 2 (disabled): Опция 2 (адключана) 
-    - Option 3: Опция 3
-    - Option 4: Опция 4
-    - Option 5 (inserted + disabled from code): Опция 5 (устаўлена + адключана з кода)
-    - Option 6 (inserted from code): Опция 6 (устаўлена з кода)
-    - Option 7 (inserted from code): Опция 7 (устаўлена з кода)
-    - Option 8 (inserted from code): Опция 8 (устаўлена з кода)
-    - Option 9 (inserted from code): Опция 9 (устаўлена з кода)
+    - Option 1 (selected): Опцыя 1 (абрана)
+    - Option 2 (disabled): Опцыя 2 (адключана) 
+    - Option 3: Опцыя 3
+    - Option 4: Опцыя 4
+    - Option 5 (inserted + disabled from code): Опцыя 5 (устаўлена + адключана з кода)
+    - Option 6 (inserted from code): Опцыя 6 (устаўлена з кода)
+    - Option 7 (inserted from code): Опцыя 7 (устаўлена з кода)
+    - Option 8 (inserted from code): Опцыя 8 (устаўлена з кода)
+    - Option 9 (inserted from code): Опцыя 9 (устаўлена з кода)
     - Parameter 1: Параметр 1
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
@@ -129,6 +129,10 @@ translations
     - Sequence hash: Хэш паслядоўнасці
     - show for admin: паказваць адміністратару
     - show for everyone: паказваць усім
+    - Switcher 1: Выключальнік 1
+    - Switcher 2 (checked): Выключальнік 2 (адзначаны)
+    - Switcher 3 (disabled): Выключальнік 3 (адключаны)
+    - Switcher 4 (disabled + checked): Выключальнік 4 (адключаны + адзначаны)
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
