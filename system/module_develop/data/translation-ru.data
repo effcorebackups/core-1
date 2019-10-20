@@ -21,8 +21,7 @@ translations
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
     - beginning: начало
-    - Call %%_name: Вызов %%_name
-    - call: вызов
+    - Call "%%_title": Вызов "%%_title"
     - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталог %%_catalog_name в хранилище %%_storage_name будет инициализирован
     - cell #%%_number: ячейка №%%_number
     - Checkbox 1: Флажок 1
@@ -164,3 +163,4 @@ translations
     - value 3.3: значение 3.3
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
     - Embedded elements: Встроенные элементы
+    - Selection list (multiple select): Список выбора (множественный выбор)

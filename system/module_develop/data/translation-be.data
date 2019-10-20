@@ -18,6 +18,16 @@ translations
     - Adaptive table: Адаптыўная табліца
     - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х уставак Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.
     - All types of messages you can see above.: Усе тыпы паведамленняў Вы можаце ўбачыць вышэй.
+    - Autoincrement: Аўтаінкрымент
+    - autoload: аўтазагрузка
+    - beginning: пачатак
+    - Call "%%_title": Выклік "%%_title"
+    - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталаг %%_catalog_name у сховішчы %%_storage_name будзе ініцыялізаваны
+    - cell #%%_number: вочка №%%_number
+    - Checkbox 1: Сцяжок 1
+    - Checkbox 2 (checked): Сцяжок 2 (усталяваны)
+    - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
+    - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + усталяваны)
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
