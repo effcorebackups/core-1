@@ -279,7 +279,7 @@ translations
     - Menu\: link: Меню: спасылка
     - Menu\: text: Меню: тэкст
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
-    - Messages: Паведамлення
+    - Messages: Паведамленні
     - MiB: МіБ
     - Minimum field value\: %%_value.: Мінімальнае значэнне поля: %%_value.
     - missing a temporary directory: адсутнічае часовы каталог
@@ -296,7 +296,7 @@ translations
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
-    - Module ID: ID Модуля
+    - Module ID: ID модуля
     - Module: Модуль
     - Modules: Модулі
     - More info in %%_info.: Больш інфармацыі ў %%_info.
@@ -337,7 +337,7 @@ translations
     - Pages: Старонкі
     - Parameter: Параметр
     - Parameters: Параметры
-    - Parent ID: ID Бацькі
+    - Parent ID: ID бацькі
     - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была выдалена з вобласці з id = "%%_id_area".
     - Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была ўстаўлена ў вобласць з id = "%%_id_area".
     - Password recovery on %%_domain: Аднаўленне пароля на %%_domain

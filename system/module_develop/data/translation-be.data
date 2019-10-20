@@ -41,6 +41,38 @@ translations
     - Demo SQL: Дэманстрацыйнае SQL
     - Demo via decorator: Дэманстрацыйнае праз дэкаратар
     - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
+    - DL table: DL табліца
+    - end: канец
+    - Error message #%%_number.: Паведамленне пра памылку №%%_number.
+    - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"
+    - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"<br>аргументы = [%%_args]
+    - event system was initialized: сістэма падзей была ініцыялізавана
+    - Execution plan: План выканання
+    - Export diagram to file "%%_file" for using with "StarUML" software.: Экспарт дыяграмы ў файл "%%_file" для выкарыстання ў праграме "StarUML".
+    - Field #1: Поле №1
+    - Field #2: Поле №2
+    - Field #3: Поле №3
+    - Field binary: Поле binary
+    - Field blob: Поле blob
+    - Field boolean: Поле boolean
+    - Field date: Поле date
+    - Field datetime: Поле datetime
+    - Field foreign: Поле foreign
+    - Field index unique: Поле index unique
+    - Field index: Поле index
+    - Field integer: Поле integer
+    - Field nocase: Поле nocase
+    - Field primary: Поле primary
+    - Field real: Поле real
+    - Field time: Поле time
+    - Field unique: Поле unique
+    - Field varchar: Поле varchar
+    - For ID: Для ID
+    - Full report: Поўная справаздача
+    - Gradient of main color: Градыент асноўнага колеру
+    - Group 1: Група 1
+    - Group 2 (inserted from code): Група 2 (ўстаўлена з кода)
+    - Handler: Апрацоўшчык
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.

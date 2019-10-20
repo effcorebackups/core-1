@@ -167,7 +167,7 @@ namespace effcore\modules\develop {
 
     $export_link = new markup('a', ['href' => $page->args_get('base').'/'.$page->args_get('type').'/export'], $page->args_get('type').'.mdj');
     return new block('UML Diagram', ['data-id' => 'structures_diagram', 'data-title-styled' => 'false'], [
-      new markup('p', [], new text('Export diagram to %%_file for using with StarUML software.', ['file' => $export_link->render()])),
+      new markup('p', [], new text('Export diagram to file "%%_file" for using with "StarUML" software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => true]),
       new markup('label', [], new text('expand')),
       $diagram
