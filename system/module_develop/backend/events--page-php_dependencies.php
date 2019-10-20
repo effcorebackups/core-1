@@ -58,7 +58,7 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
-    $mod_title = new markup('h2', [], 'Dependency of modules by PHP extensions');
+    $mod_title = new markup('h2', [], 'Module dependencies from PHP extensions');
     $mod_decorator = new decorator('table');
     $mod_decorator->id = 'modules_dependency';
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {

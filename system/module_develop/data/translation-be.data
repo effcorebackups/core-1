@@ -28,6 +28,19 @@ translations
     - Checkbox 2 (checked): Сцяжок 2 (усталяваны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
     - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + усталяваны)
+    - checking on "%%_name" = "%%_value": праверка на "%%_name" = "%%_value"
+    - Classes: Класы
+    - Collations: Параўнанні
+    - Console: Кансоль
+    - Constraints: Абмежаванні
+    - Data + join: Даныя + join
+    - Data hash: Хэш даных
+    - Decorators dynamic: Дэкаратары дынамічныя
+    - Decorators static: Дэкаратары статычныя
+    - Demo NoSQL: Дэманстрацыйнае NoSQL
+    - Demo SQL: Дэманстрацыйнае SQL
+    - Demo via decorator: Дэманстрацыйнае праз дэкаратар
+    - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
 #
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.

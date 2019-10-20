@@ -29,7 +29,6 @@ translations
     - Checkbox 3 (disabled): Флажок 3 (отключён)
     - Checkbox 4 (disabled + checked): Флажок 4 (отключён + установлен)
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
-    - class: класс
     - Classes: Классы
     - Collations: Сравнения
     - Console: Консоль
@@ -41,7 +40,7 @@ translations
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор
-    - Dependency of modules by PHP extensions: Зависимость модулей от PHP-расширений
+    - Module dependencies from PHP extensions: Зависимости модулей от PHP-расширений
     - DL table: DL Таблица
     - end: конец
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
