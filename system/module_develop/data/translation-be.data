@@ -11,7 +11,6 @@ translations
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&#10;
     - (default type): (тып па змаўчанню)
-    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Па меркаваннях прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; вынік праверкі = "%%_result"
@@ -40,8 +39,8 @@ translations
     - Demo NoSQL: Дэманстрацыйнае NoSQL
     - Demo SQL: Дэманстрацыйнае SQL
     - Demo via decorator: Дэманстрацыйнае праз дэкаратар
-    - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
     - DL table: DL табліца
+    - Embedded elements: Убудаваныя элементы
     - end: канец
     - Error message #%%_number.: Паведамленне пра памылку №%%_number.
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"
@@ -68,6 +67,7 @@ translations
     - Field unique: Поле unique
     - Field varchar: Поле varchar
     - For ID: Для ID
+    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Па меркаваннях прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
     - Full report: Поўная справаздача
     - Gradient of main color: Градыент асноўнага колеру
     - Group 1: Група 1
@@ -77,6 +77,7 @@ translations
     - Header %%_size: Загаловак %%_size
     - Indexes: Індэксы
     - init.: ініцыял.
+    - Is even: Цотнае
     - item #%%_number: пункт №%%_number
     - item #1: пункт №1
     - item #1.1: пункт №1.1
@@ -93,6 +94,7 @@ translations
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
+    - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
     - NoSQL data: NoSQL даныя
     - Notice message #%%_number.: Паведамленне №%%_number.
     - Ok message #%%_number.: Добрае паведамленне №%%_number.
@@ -109,7 +111,6 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
-    - sec.: сек.
     - PHP ext.: PHP-паш.
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
@@ -123,6 +124,8 @@ translations
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - return = "%%_return": вяртанне = "%%_return"
+    - sec.: сек.
+    - Selection list (multiple select): Спіс выбару (множны выбар)
     - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выбарка сутнасцяў "demo_data" + join (ID: 200+)
     - Selection of "demo_types" entities: Выбарка сутнасцяў "demo_types"
@@ -159,5 +162,3 @@ translations
     - value 3.2: значэнне 3.2
     - value 3.3: значэнне 3.3
     - Warning message #%%_number.: Папераджальнае паведамленне №%%_number.
-    - Embedded elements: Убудаваныя элементы
-    - Selection list (multiple select): Спіс выбару (множны выбар)

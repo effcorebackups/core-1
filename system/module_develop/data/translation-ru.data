@@ -11,7 +11,6 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&#10;
     - (default type): (тип по умолчанию)
-    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: По соображениям производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
@@ -40,8 +39,8 @@ translations
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор
-    - Module dependencies from PHP extensions: Зависимости модулей от PHP-расширений
     - DL table: DL таблица
+    - Embedded elements: Встроенные элементы
     - end: конец
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"
@@ -68,6 +67,7 @@ translations
     - Field unique: Поле unique
     - Field varchar: Поле varchar
     - For ID: Для ID
+    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: По соображениям производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
     - Full report: Полный отчёт
     - Gradient of main color: Градиент основного цвета
     - Group 1: Группа 1
@@ -94,6 +94,7 @@ translations
     - make request to "%%_url": сделать запрос на "%%_url"
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
+    - Module dependencies from PHP extensions: Зависимости модулей от PHP-расширений
     - NoSQL data: NoSQL данные
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
@@ -110,7 +111,6 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
-    - sec.: сек.
     - PHP ext.: PHP-расш.
     - PHP extension: PHP-расширение
     - PHP functions usage: Использование PHP-функций
@@ -124,6 +124,8 @@ translations
     - Relation (tree view): Связь (в виде дерева)
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
+    - sec.: сек.
+    - Selection list (multiple select): Список выбора (множественный выбор)
     - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
     - Selection of "demo_types" entities: Выборка сущностей "demo_types"
@@ -160,5 +162,3 @@ translations
     - value 3.2: значение 3.2
     - value 3.3: значение 3.3
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
-    - Embedded elements: Встроенные элементы
-    - Selection list (multiple select): Список выбора (множественный выбор)
