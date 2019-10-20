@@ -135,7 +135,7 @@ translations
     - Switcher 3 (disabled): Выключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
     - Table\: row even: Таблица: строка чётная
-    - Table\: row odd: Таблица: строка не чётная
+    - Table\: row odd: Таблица: строка нечётная
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP-модулей!
@@ -144,9 +144,9 @@ translations
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.
     - Total generation time: Общее время генерации
-    - Total load: Общая загрука
+    - Total load: Общая загрузка
     - Traits: Трейты
-    - UML Diagram: UML Диаграмма
+    - UML Diagram: UML-диаграмма
     - Usage frequency: Частота использования
     - validation_1: валидация_1
     - validation_2: валидация_2
