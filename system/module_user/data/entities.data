@@ -363,7 +363,7 @@ entities
         managing_form_class: \effcore\field_password
         managing_value_manual_set: true
         managing_value_manual_get_if_empty: true
-        managing_properties
+        managing_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_form_element_attributes_on_update
         - required: false
