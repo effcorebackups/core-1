@@ -136,8 +136,6 @@ translations
     - Switcher 2 (checked): Выключатель 2 (отмечен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
-    - Table\: row even: Таблица: строка чётная
-    - Table\: row odd: Таблица: строка нечётная
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The report will be created after running the test.: Отчёт будет создан после запуска теста.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включенных PHP-модулей!

@@ -436,6 +436,8 @@ translations
     - System: Система
     - Table prefix: Префикс таблиц
     - Table: Таблица
+    - Table\: row even: Таблица: строка чётная
+    - Table\: row odd: Таблица: строка нечётная
     - Telephone number: Номер телефона
     - Templates: Шаблоны
     - Test: Тест

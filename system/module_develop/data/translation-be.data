@@ -136,8 +136,6 @@ translations
     - Switcher 2 (checked): Выключальнік 2 (адзначаны)
     - Switcher 3 (disabled): Выключальнік 3 (адключаны)
     - Switcher 4 (disabled + checked): Выключальнік 4 (адключаны + адзначаны)
-    - Table\: row even: Табліца: радок цотны
-    - Table\: row odd: Табліца: радок няцотны
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
