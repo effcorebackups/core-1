@@ -124,6 +124,7 @@ translations
     - events: события
     - Example of empty module.: Пример пустого модуля.
     - Examples: Примеры
+    - Examples\: %%_examples.: Примеры: %%_examples.
     - Execution: Выполнение
     - expand: развернуть
     - Expiration date: Дата окончания
