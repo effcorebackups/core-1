@@ -16,6 +16,7 @@ namespace effcore\modules\locales {
     $menu = new markup('x-languages');
     $languages = language::get_all();
     core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+    $languages = ['en' => $languages['en']] + $languages;
     foreach ($languages as $c_language) {
       $c_title = $c_language->code == 'en' ?
         $c_language->title_en :
