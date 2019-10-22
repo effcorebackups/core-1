@@ -195,7 +195,7 @@
   /* palette */
 
   x-group[data-type='palette'] label {margin: 0; display: inline-block; vertical-align: middle; font-size: 1.2em}
-  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 30px; border-top: 5px solid %%_color_main}
+  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}

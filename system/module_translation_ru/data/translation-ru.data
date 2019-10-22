@@ -190,6 +190,7 @@ translations
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to page #%%_number: перейти на страницу №%%_number
     - go to page %%_link: перейти на страницу %%_link
+    - go to section "%%_title": перейти на раздзел "%%_title"
     - Grid 2x5: Сетка 2x5
     - Grid 3x5: Сетка 3x5
     - Grid 4x5: Сетка 4x5

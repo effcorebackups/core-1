@@ -89,7 +89,7 @@ namespace effcore\modules\develop {
     $events = event::get_all();
     ksort($events);
     foreach ($events as $c_event_type => $c_events) {
-      $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type], $c_event_type));
+      $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type, 'title' => new text('go to section "%%_title"', ['title' => $c_event_type])], $c_event_type));
       $c_decorator = new decorator('table-adaptive');
       $c_decorator->id = 'events_nosql_handlers_'.$c_event_type;
       $c_decorator->result_attributes = ['data-compact' => 'true'];
