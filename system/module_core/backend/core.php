@@ -364,8 +364,8 @@ namespace effcore {
     $result = [];
     foreach ($array as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value)) $result += static::array_values_select_recursive($c_value, $all, $c_dpath);
-      if (is_array($c_value) == false || $all) $result[$c_dpath] = &$c_value;
+      if (is_array($c_value)                 ) $result += static::array_values_select_recursive($c_value, $all, $c_dpath);
+      if (is_array($c_value) == false || $all) $result[$c_dpath] =                             &$c_value;
     }
     return $result;
   }
@@ -411,8 +411,8 @@ namespace effcore {
     $result = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
-      if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] = &$c_value;
+      if ((is_array($c_value) || is_object($c_value))                 ) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] =                              &$c_value;
     }
     return $result;
   }
