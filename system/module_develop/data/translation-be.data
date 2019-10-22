@@ -130,6 +130,7 @@ translations
     - Selection list (multiple select): Спіс выбару (множны выбар)
     - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выбарка сутнасцяў "demo_data" + join (ID: 200+)
+    - Selection of "demo_data" entities + join: Выбарка сутнасцяў "demo_data" + join
     - Selection of "demo_types" entities: Выбарка сутнасцяў "demo_types"
     - Sequence hash: Хэш паслядоўнасці
     - show for admin: паказваць адміністратару
