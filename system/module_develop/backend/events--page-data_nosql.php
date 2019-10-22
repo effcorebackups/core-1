@@ -93,8 +93,8 @@ namespace effcore\modules\develop {
       $c_decorator = new decorator('table-adaptive');
       $c_decorator->id = 'events_nosql_handlers_'.$c_event_type;
       $c_decorator->result_attributes = ['data-compact' => 'true'];
-      $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type], $c_event_type), $c_event_type.'_header'   );
-      $report->child_insert($c_decorator,                                                     $c_event_type.'_decorator');
+      $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type, 'title' => new text('Section "%%_title"', ['title' => $c_event_type])], $c_event_type), $c_event_type.'_header'   );
+      $report->child_insert($c_decorator,                                                                                                                            $c_event_type.'_decorator');
       foreach ($c_events as $c_event) {
         $c_decorator->data[] = [
           'module_id' => ['value' => new text_simple($c_event->module_id), 'title' => 'Module ID'],

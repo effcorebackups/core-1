@@ -190,7 +190,7 @@ translations
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
     - go to page #%%_number: перайсці на старонку №%%_number
     - go to page %%_link: перайсці на старонку %%_link
-    - go to section "%%_title": перайсці на раздзел "%%_title"
+    - go to section "%%_title": перайсці на падзел "%%_title"
     - Grid 2x5: Сетка 2x5
     - Grid 3x5: Сетка 3x5
     - Grid 4x5: Сетка 4x5
@@ -395,6 +395,7 @@ translations
     - save: захаваць
     - Search: Пошук
     - search: пошук
+    - Section "%%_title": Падзел "%%_title"
     - Security: Бяспека
     - select all rows: абраць усе радкі
     - Select: Абраць

@@ -395,6 +395,7 @@ translations
     - save: сохранить
     - Search: Поиск
     - search: поиск
+    - Section "%%_title": Раздел "%%_title"
     - Security: Безопасность
     - select all rows: выбрать все строки
     - Select: Выбрать
