@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
+          use \effcore\cache;
           use \effcore\core;
           use \effcore\event;
           use \effcore\markup;
@@ -150,9 +151,9 @@ namespace effcore\modules\core {
           );
           storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
             'cron'            => core::key_generate(true),
-            'form_validation' => core::key_generate(),
-            'session'         => core::key_generate(),
-            'salt'            => core::key_generate()
+            'form_validation' => core::key_generate(    ),
+            'session'         => core::key_generate(    ),
+            'salt'            => core::key_generate(    )
           ]);
           $lang_code = page::get_current()->args_get('lang_code');
           $enabled_by_default = module::get_enabled_by_default();
@@ -172,6 +173,7 @@ namespace effcore\modules\core {
             }
           }
           if (count(storage::get('sql')->errors) == 0) {
+            cache::update_global(core::boot_select('enabled'));
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([
