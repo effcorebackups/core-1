@@ -17,7 +17,7 @@ namespace effcore {
       parent::build();
       $entity = entity::get($this->entity_name);
       $entity_field = $entity ? $entity->field_get($this->entity_field_name) : null;
-      $button_delete = new button('', ['data-style' => 'narrow-delete']);
+      $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
       $button_delete->build();
       $button_delete->value_set('button_field_delete_'.$this->entity_name.'_'.$this->entity_field_name);
       $this->child_insert($button_delete, 'button_delete');

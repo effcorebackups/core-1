@@ -34,7 +34,7 @@ namespace effcore {
       $select->build();
       $select->name_set('part_insert_to_'.$this->id_area);
       $select->required_set(false);
-      $button = new button('', ['data-style' => 'narrow-insert']);
+      $button = new button('', ['data-style' => 'narrow-insert', 'title' => new text('Insert')]);
       $button->build();
       $button->value_set('button_part_insert_to_'.$this->id_area);
       $this->child_insert($select, 'select');
