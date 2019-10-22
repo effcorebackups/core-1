@@ -32,9 +32,9 @@ namespace effcore {
           }
         }
       }
-      foreach (static::$cache as &$c_group) {
+      foreach (static::$cache as $c_type => $c_group) {
         if (count($c_group) > 1) {
-          core::array_sort_by_weight($c_group);
+          core::array_sort_by_weight(static::$cache[$c_type]);
         }
       }
     }

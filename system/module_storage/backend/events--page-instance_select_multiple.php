@@ -45,8 +45,8 @@ namespace effcore\modules\storage {
     }
   # sorting
     core::array_sort_text($groups);
-    foreach ($entities_by_groups as $c_group_id => &$c_entities) {
-      core::array_sort_text                        ($c_entities);
+    foreach ($entities_by_groups as $c_group_id => $c_entities) {
+      core::array_sort_text($entities_by_groups[$c_group_id]);
     }
   # redirect if required
     if (empty($entities_by_groups[$managing_group_id][$entity_name])) {
