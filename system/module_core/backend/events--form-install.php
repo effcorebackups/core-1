@@ -173,7 +173,7 @@ namespace effcore\modules\core {
             }
           }
           if (count(storage::get('sql')->errors) == 0) {
-            cache::update_global(core::boot_select('enabled'));
+            cache::update_global();
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([
