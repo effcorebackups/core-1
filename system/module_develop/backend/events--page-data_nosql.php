@@ -46,7 +46,8 @@ namespace effcore\modules\develop {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       unset($languages['en']);
-      if (count($languages) && empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/'.reset($languages)->code);
+      if (count($languages) == 0 && $id != null           ) url::go(page::get_current()->args_get('base').'/translations/'                        );
+      if (count($languages) != 0 && empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/'.reset($languages)->code);
       foreach ($languages as $c_language) {
         tabs_item::insert(      $c_language->title_en,
           'nosql_translations_'.$c_language->code,
