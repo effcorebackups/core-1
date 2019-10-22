@@ -5,8 +5,10 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_reload|button
+    - button_update|button
         title: 
         attributes
-        - data-style: narrow-reload
-        - value: reload
+        - data-style: narrow-update
+        - title|text
+            text: Update
+        - value: update

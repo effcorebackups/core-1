@@ -11,7 +11,7 @@ namespace effcore\modules\core {
 
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
-      case 'reload':
+      case 'update':
         cache::update_global();
         message::insert('All caches was reset.');
         break;

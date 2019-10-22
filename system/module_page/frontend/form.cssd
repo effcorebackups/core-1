@@ -181,7 +181,7 @@
     padding: 0;
     width: 44px;
     background-repeat: no-repeat}
-  button[data-style^='narrow-reload'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
+  button[data-style^='narrow-update'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
   button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
   button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
 
