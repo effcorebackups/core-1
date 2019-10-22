@@ -45,8 +45,8 @@ namespace effcore\modules\develop {
     if ($type == 'translations') {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
-      $languages = ['en' => $languages['en']] + $languages;
-      if (empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/en');
+      unset($languages['en']);
+      if (count($languages) && empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/'.reset($languages)->code);
       foreach ($languages as $c_language) {
         tabs_item::insert(      $c_language->title_en,
           'nosql_translations_'.$c_language->code,
@@ -176,16 +176,17 @@ namespace effcore\modules\develop {
   }
 
   static function on_show_block_translations($page) {
+    $id = page::get_current()->args_get('id');
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'translations_nosql';
     $decorator->result_attributes = ['data-compact' => 'true'];
-    $translations = translation::get_all_by_code();
+    $translations = translation::get_all_by_code($id);
     if ($translations) {
       ksort($translations);
-      foreach ($translations as $c_orig => $c_tran) {
+      foreach ($translations as $c_english => $c_translated) {
         $decorator->data[] = [
-          'english'     => ['value' => new text_simple($c_orig), 'title' => 'English'    ],
-          'translation' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
+          'english'     => ['value' => new text_simple($c_english   ), 'title' => 'English'    ],
+          'translation' => ['value' => new text_simple($c_translated), 'title' => 'Translation']
         ];
       }
     }

@@ -47,7 +47,7 @@ namespace effcore {
   static function get_all_by_code($code = '') {
     $c_code = $code ?: language::code_get_current();
     static::init($c_code);
-    return static::$cache[$c_code];
+    return static::$cache[$c_code] ?? [];
   }
 
   static function get($string, $args = [], $code = '') {
