@@ -4,7 +4,11 @@ pages
     title: Decoration
     is_https: true
     url: %^(?<base>/manage/decoration)(/
->>>>>>>>>>>(?<type>colors/current|colors/presets|colors|layouts|settings)(/
+>>>>>>>>>>>(?<type>colors/current|
+>>>>>>>>>>>>>>>>>>>colors/presets|
+>>>>>>>>>>>>>>>>>>>colors|
+>>>>>>>>>>>>>>>>>>>layouts|
+>>>>>>>>>>>>>>>>>>>settings)(/
 >>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
     access
       roles

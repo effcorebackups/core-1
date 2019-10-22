@@ -4,8 +4,12 @@ pages
     title: Structures
     is_https: true
     url: %^(?<base>/develop/structures)(/
->>>>>>>>>>>(?<type>class|interface|trait)(/
->>>>>>>>>>>(?<view>list|diagram|export)|)|)$%
+>>>>>>>>>>>(?<type>class|
+>>>>>>>>>>>>>>>>>>>interface|
+>>>>>>>>>>>>>>>>>>>trait)(/
+>>>>>>>>>>>(?<view>list|
+>>>>>>>>>>>>>>>>>>>diagram|
+>>>>>>>>>>>>>>>>>>>export)|)|)$%
     access
       roles
       - =: admins
