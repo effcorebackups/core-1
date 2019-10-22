@@ -17,7 +17,6 @@ translations
     - Action: Дзеянне
     - actions: дзеянні
     - Actions: Дзеянні
-    - add: дадаць
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінуты.
     - All colors: Усе колеры
@@ -214,8 +213,8 @@ translations
     - Installation is not available because storage credentials was set!: Устаноўка недаступная таму, што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
-    - Instance with row_id = "%%_row_id" was added.: Асобнік з row_id = "%%_row_id" быў дададзены.
-    - Instance with row_id = "%%_row_id" was not added!: Асобнік з row_id = "%%_row_id" не быў дададзены!
+    - Instance with row_id = "%%_row_id" was inserted.: Асобнік з row_id = "%%_row_id" быў дададзены.
+    - Instance with row_id = "%%_row_id" was not inserted!: Асобнік з row_id = "%%_row_id" не быў дададзены!
     - interface: інтэрфейс
     - Interface: Інтэрфейс
     - Interfaces: Інтэрфейсы

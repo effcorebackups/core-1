@@ -19,7 +19,7 @@ namespace effcore {
     $this->title = $title;
   }
 
-  function action_add($action_name, $title) {
+  function action_insert($action_name, $title) {
     $this->actions[$action_name] = $title;
   }
 

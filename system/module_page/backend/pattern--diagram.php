@@ -70,7 +70,7 @@ namespace effcore {
     }
   }
 
-  function slice_add($title, $persent_value, $complex_value = null, $color = null) {
+  function slice_insert($title, $persent_value, $complex_value = null, $color = null) {
     $this->slices[] = (object)[
       'title'         => $title,
       'persent_value' => $persent_value,

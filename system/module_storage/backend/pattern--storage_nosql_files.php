@@ -315,7 +315,7 @@ namespace effcore {
           $p[$c_depth] = &$c_destination;
           continue;
         }
-      # add new item to tree
+      # insert new item to tree
         core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
         $p[$c_depth] = &$c_destination;
       # convert parent item to array

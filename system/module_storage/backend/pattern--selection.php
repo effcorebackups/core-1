@@ -279,9 +279,9 @@ namespace effcore {
   function actions_list_get($instance, $allowed = ['select', 'update', 'delete']) {
     $actions_list = new actions_list();
     foreach ($allowed as $c_action_name) {
-      if ($c_action_name == 'select'                              ) $actions_list->action_add('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).       '?'.url::back_part_make(), 'select');
-      if ($c_action_name == 'update'                              ) $actions_list->action_add('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
-      if ($c_action_name == 'delete' && empty($instance->is_embed)) $actions_list->action_add('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
+      if ($c_action_name == 'select'                              ) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).       '?'.url::back_part_make(), 'select');
+      if ($c_action_name == 'update'                              ) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+      if ($c_action_name == 'delete' && empty($instance->is_embed)) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
     }
     return $actions_list;
   }

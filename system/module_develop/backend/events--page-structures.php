@@ -196,7 +196,7 @@ namespace effcore\modules\develop {
         $c_return->attributes = [];
         $c_return->operations = [];
 
-      # add relation to parent class
+      # insert relation to parent class
         $c_item_parent_full_name = !empty($map[$c_item_full_name]->extends) ?
                                           $map[$c_item_full_name]->extends : null;
         if ($c_item_parent_full_name) {

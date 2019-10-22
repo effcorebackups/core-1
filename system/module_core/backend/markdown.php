@@ -27,7 +27,7 @@ namespace effcore {
     if (is_string($data) && trim($data) == '') $list->_wrapper_name = 'wrapper_data1';
     switch ($list->_wrapper_name) {
       case 'wrapper_data0':
-      # add data to the list
+      # insert data to the list
         $wrapper_data0_level = count($list->_p_list);
         $acceptor = empty($list->_p_list[$wrapper_data0_level]) ? null :
                           $list->_p_list[$wrapper_data0_level];    # get list container
@@ -46,7 +46,7 @@ namespace effcore {
           $list->_c_paragraph = null;
           return true;
         }
-      # add new paragraph to the list
+      # insert new paragraph to the list
         if (empty($list->_c_paragraph) && $c_indent > 0) {
           $wrapper_data1_level = min($level, count($list->_p_list));
           $acceptor = empty($list->_p_list[$wrapper_data1_level]) ? null :
@@ -80,7 +80,7 @@ namespace effcore {
             }
           }
         }
-      # add data to current paragraph
+      # insert data to current paragraph
         if (empty($list->_c_paragraph) == false) {
           $list->_c_paragraph->child_insert(
             is_string($data) ? new text(nl.$data) : $data

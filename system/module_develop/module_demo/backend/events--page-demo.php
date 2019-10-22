@@ -304,14 +304,14 @@ namespace effcore\modules\demo {
 
   static function on_show_block_demo_diagrams($page) {
     $diagram_linear = new diagram('Title', 'linear');
-    $diagram_linear->slice_add('Parameter 1', 70, '0.07 '.translation::get('sec.'));
-    $diagram_linear->slice_add('Parameter 2', 20, '0.02 '.translation::get('sec.'));
-    $diagram_linear->slice_add('Parameter 3', 10, '0.01 '.translation::get('sec.'));
+    $diagram_linear->slice_insert('Parameter 1', 70, '0.07 '.translation::get('sec.'));
+    $diagram_linear->slice_insert('Parameter 2', 20, '0.02 '.translation::get('sec.'));
+    $diagram_linear->slice_insert('Parameter 3', 10, '0.01 '.translation::get('sec.'));
     $diagram_radial = new diagram('Title', 'radial');
-    $diagram_radial->slice_add('Parameter 1', 40, '0.04 '.translation::get('sec.'), '#216ce4');
-    $diagram_radial->slice_add('Parameter 2', 30, '0.03 '.translation::get('sec.'), '#48be38');
-    $diagram_radial->slice_add('Parameter 3', 20, '0.02 '.translation::get('sec.'), '#fc5740');
-    $diagram_radial->slice_add('Parameter 4', 10, '0.01 '.translation::get('sec.'), '#fd9a1e');
+    $diagram_radial->slice_insert('Parameter 1', 40, '0.04 '.translation::get('sec.'), '#216ce4');
+    $diagram_radial->slice_insert('Parameter 2', 30, '0.03 '.translation::get('sec.'), '#48be38');
+    $diagram_radial->slice_insert('Parameter 3', 20, '0.02 '.translation::get('sec.'), '#fc5740');
+    $diagram_radial->slice_insert('Parameter 4', 10, '0.01 '.translation::get('sec.'), '#fd9a1e');
     return new node([], [
       new block('Linear diagram', ['data-id' => 'demo_diagram_linear'], $diagram_linear),
       new block('Radial diagram', ['data-id' => 'demo_diagram_radial'], $diagram_radial)
