@@ -32,6 +32,7 @@ translations
     - Collations: Сравнения
     - Console: Консоль
     - Constraints: Ограничения
+    - Current language: Текущий язык
     - Data + join: Данные + join
     - Data hash: Хэш данных
     - Decorators dynamic: Декораторы динамические
@@ -124,6 +125,7 @@ translations
     - Relation (tree view): Связь (в виде дерева)
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - return = "%%_return": возврат = "%%_return"
+    - Row ID: ID строки
     - sec.: сек.
     - Selection list (multiple select): Список выбора (множественный выбор)
     - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
