@@ -111,6 +111,7 @@ translations
     - EMail: Адрас электроннай пошты
     - Empty module: Пусты модуль
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
+    - English: Англійская
     - Entity "%%_name" was installed.: Сутнасць "%%_name" была ўсталявана.
     - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
     - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдалена!
@@ -329,7 +330,6 @@ translations
     - Operating System: Аперацыйная сістэма
     - Order: Заказ
     - Ordered list: Спарадкаваны спіс
-    - Original: Арыгінал
     - Other: Іншыя
     - Owner: Уладальнік
     - Page not found: Старонка не знойдзена

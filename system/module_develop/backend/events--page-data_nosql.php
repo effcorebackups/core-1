@@ -31,7 +31,7 @@ namespace effcore\modules\develop {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id'  );
     if ($type == null) url::go(page::get_current()->args_get('base').'/trees');
-    if (strpos($type, 'trees') === 0) {
+    if ($type == 'trees') {
       $trees = tree::select_all('nosql');
       core::array_sort_by_text_property($trees);
       if (empty($trees[$id])) url::go(page::get_current()->args_get('base').'/trees/'.reset($trees)->id);
@@ -39,6 +39,18 @@ namespace effcore\modules\develop {
         tabs_item::insert($c_tree->title,
            'nosql_trees_'.$c_tree->id,
            'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id
+        );
+      }
+    }
+    if ($type == 'translations') {
+      $languages = language::get_all();
+      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+      $languages = ['en' => $languages['en']] + $languages;
+      if (empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/en');
+      foreach ($languages as $c_language) {
+        tabs_item::insert(      $c_language->title_en,
+          'nosql_translations_'.$c_language->code,
+          'nosql_translations', 'data_nosql', 'translations/'.$c_language->code
         );
       }
     }
@@ -172,8 +184,8 @@ namespace effcore\modules\develop {
       ksort($translations);
       foreach ($translations as $c_orig => $c_tran) {
         $decorator->data[] = [
-          'orig' => ['value' => new text_simple($c_orig), 'title' => 'Original'   ],
-          'tran' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
+          'english'     => ['value' => new text_simple($c_orig), 'title' => 'English'    ],
+          'translation' => ['value' => new text_simple($c_tran), 'title' => 'Translation']
         ];
       }
     }

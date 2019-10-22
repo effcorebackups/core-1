@@ -3,14 +3,15 @@ pages
     id: data_nosql
     title: NoSQL data
     is_https: true
-    url: %^(?<base>/develop/data_nosql)
->>>>>>>>((/(?<type>trees(/(?<id>[a-z0-9_]+)|)|
+    url: %^(?<base>/develop/data_nosql)(/
+>>>>>>>>>>>(?<type>trees|
 >>>>>>>>>>>>>>>>>>>selections|
 >>>>>>>>>>>>>>>>>>>events|
 >>>>>>>>>>>>>>>>>>>file_types|
 >>>>>>>>>>>>>>>>>>>templates|
 >>>>>>>>>>>>>>>>>>>tokens|
->>>>>>>>>>>>>>>>>>>translations))|)$%
+>>>>>>>>>>>>>>>>>>>translations)(/
+>>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
     access
       roles
       - =: admins
@@ -39,7 +40,7 @@ pages
           display
             check: page_args
             where: type
-            match: %^trees/.*$%
+            match: %^trees$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tree
       - block_selections|page_part

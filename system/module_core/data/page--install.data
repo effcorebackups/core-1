@@ -3,7 +3,8 @@ pages
     id: install
     title: Installation
     is_https: true
-    url: %^(?<base>/install)(/(?<lang_code>[a-z]{2,2})|)$%
+    url: %^(?<base>/install)(/
+>>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
     parts
     - top
       - menu_languages|page_part

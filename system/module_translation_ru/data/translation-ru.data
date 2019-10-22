@@ -111,6 +111,7 @@ translations
     - EMail: Адрес электронной почты
     - Empty module: Пустой модуль
     - Enable cookies before login.: Включите cookies до начала входа в систему.
+    - English: Английский
     - Entity "%%_name" was installed.: Сущность "%%_name" была установлена.
     - Entity "%%_name" was not installed!: Сущность "%%_name" не была установлена!
     - Entity "%%_name" was not uninstalled!: Сущность "%%_name" не была удалена!
@@ -329,7 +330,6 @@ translations
     - Operating System: Операционная система
     - Order: Заказ
     - Ordered list: Упорядоченный список
-    - Original: Оригинал
     - Other: Другие
     - Owner: Владелец
     - Page not found: Страница не найдена

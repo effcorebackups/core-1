@@ -3,7 +3,10 @@ pages
     id: modules
     title: Modules
     is_https: true
-    url: %^(?<base>/manage/modules)(/(?<action>install|uninstall|update)|)$%
+    url: %^(?<base>/manage/modules)(/
+>>>>>>>>>>>(?<action>install|
+>>>>>>>>>>>>>>>>>>>>>uninstall|
+>>>>>>>>>>>>>>>>>>>>>update)|)$%
     access
       roles
       - =: admins

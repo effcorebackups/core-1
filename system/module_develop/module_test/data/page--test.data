@@ -3,7 +3,8 @@ pages
     id: tests
     title: Tests
     is_https: true
-    url: %^(?<base>/develop/tests)(/(?<id>[a-z0-9_]+)|)$%
+    url: %^(?<base>/develop/tests)(/
+>>>>>>>>>>>(?<id>[a-z0-9_]+)|)$%
     access
       roles
       - =: admins
