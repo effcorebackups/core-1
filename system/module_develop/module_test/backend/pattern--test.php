@@ -65,10 +65,10 @@ namespace effcore {
   static function get_all($load = true) {
     static::init();
     if ($load)
-      foreach (static::$cache as &$c_item)
-        if ($c_item instanceof external_cache)
-            $c_item =
-            $c_item->external_cache_load();
+      foreach (static::$cache as $id => $c_item)
+           if (static::$cache[$id] instanceof external_cache)
+               static::$cache[$id] =
+               static::$cache[$id]->external_cache_load();
     return static::$cache;
   }
 

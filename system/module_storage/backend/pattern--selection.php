@@ -389,10 +389,10 @@ namespace effcore {
     if ($origin ==   'sql') {static::init_sql();                    }
     if ($origin ==    null) {static::init    (); static::init_sql();}
     if ($load && ($origin == 'nosql' || $origin == null))
-      foreach (static::$cache as &$c_item)
-        if ($c_item instanceof external_cache)
-            $c_item =
-            $c_item->external_cache_load();
+      foreach (static::$cache as $c_id => $c_item)
+           if (static::$cache[$c_id] instanceof external_cache)
+               static::$cache[$c_id] =
+               static::$cache[$c_id]->external_cache_load();
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)
