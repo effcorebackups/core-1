@@ -17,7 +17,6 @@ translations
     - Action: Дзеянне
     - actions: дзеянні
     - Actions: Дзеянні
-    - Add new item of type "%%_entity_name_context" on new page.: Дадаць новы элемент тыпу "%%_entity_name_context" на новай старонцы.
     - add: дадаць
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінуты.
@@ -205,6 +204,7 @@ translations
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Information: Інфармацыя
     - Insert field: Уставіць поле
+    - Insert new item of type "%%_entity_name_context" on new page.: Уставіць новы элемент тыпу "%%_entity_name_context" на новай старонцы.
     - Insert part: Уставіць частку
     - insert: уставіць
     - Insert: Уставіць
