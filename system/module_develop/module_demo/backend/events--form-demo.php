@@ -46,8 +46,8 @@ namespace effcore\modules\demo {
     );
     switch ($form->clicked_button->value_get()) {
       case 'send':
-        $def_value_checkboxes = [1 => 'checkboxes_2', 3 => 'checkboxes_4'];
-        $def_value_switchers  = [1 => 'switcher_2',   3 => 'switcher_4'  ];
+        $def_value_checkboxes = [1 => 'checkbox_2', 3 => 'checkbox_4'];
+        $def_value_switchers  = [1 => 'switcher_2', 3 => 'switcher_4'];
         $def_value_email = 'test1@example.com,test2@example.com';
         $def_value_select          = ['option_1' => 'Option 1 (selected)'];
         $def_value_select_multiple = ['option_1' => 'Option 1 (selected)'];
