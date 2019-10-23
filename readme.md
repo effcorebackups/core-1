@@ -57,6 +57,7 @@ to ~50 (excluding parallel loading of connected files).
 
 Content management
 ---------------------------------------------------------------------
+
 Content management in the system is focused on the inline insertion
 of any available block (menu, text, forms, breadcrumbs and others)
 directly to the layout of the edited page. When creating a new page,
