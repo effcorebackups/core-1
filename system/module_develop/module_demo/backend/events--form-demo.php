@@ -47,6 +47,7 @@ namespace effcore\modules\demo {
     switch ($form->clicked_button->value_get()) {
       case 'send':
         $def_value_checkboxes = [1 => 'checkboxes_2', 3 => 'checkboxes_4'];
+        $def_value_switchers  = [1 => 'switcher_2',   3 => 'switcher_4'  ];
         $def_value_email = 'test1@example.com,test2@example.com';
         $def_value_select          = ['option_1' => 'Option 1 (selected)'];
         $def_value_select_multiple = ['option_1' => 'Option 1 (selected)'];
@@ -89,6 +90,7 @@ namespace effcore\modules\demo {
         if ($items['#radiobuttons'][2]->checked_get()      != false                     ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => translation::get($items['#radiobuttons'][2]->title)]) ); # …\field_radiobutton
         if ($items['*roles'          ]->values_get ()      != []                        ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*roles'          ]->title)]) ); # …\group_access
         if ($items['*checkboxes'     ]->values_get ()      != $def_value_checkboxes     ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*checkboxes'     ]->title)]) ); # …\group_checkboxes
+        if ($items['*switchers'      ]->values_get ()      != $def_value_switchers      ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*switchers'      ]->title)]) ); # …\group_switchers
         if ($items['*radiobuttons'   ]->value_get  ()      != 'radiobuttons_2'          ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*radiobuttons'   ]->title)]) ); # …\group_radiobuttons
         if ($items['*palette_color'  ]->value_get  ()      != 'system'                  ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color'  ]->title)]) ); # …\group_palette
       # save the files
