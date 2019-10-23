@@ -184,8 +184,7 @@ namespace effcore\modules\core {
               'email'    => $items['#email'   ]->value_get(),
               'password' => $items['#password']->value_get(false)]), 'credentials');
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code, false);
-            storage::get('files')->changes_insert('page',    'update', 'settings/page/console_visibility', 'not_show');
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code);
           } else {
             message::insert(new text_multiline([
               'An error occurred during installation!',
