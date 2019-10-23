@@ -47,8 +47,8 @@ are trying to deny the obvious.
 
 The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
-a system which installed on a web hosting with the cheapest tariff plan,
-but compliant with the minimum installation requirements (from ~3-5$ per month),
+a system which installed on a web hosting with the cheapest tariff plan (from
+~3-5$ per month), but compliant with the minimum installation requirements,
 should generate a homepage in 0.002 seconds (when OPCache is enabled),
 or 0.02 seconds (when OPCache is disabled), which in the first case
 allows serving up to ~500 clients per second, and in the second
@@ -62,7 +62,7 @@ Content management in the system is focused on the inline insertion
 of any available block (menu, text, forms, breadcrumbs and others)
 directly to the layout of the edited page. When creating a new page,
 the user is given a choice of layout and each new page can have its
-own unique design and layout of blocks.
+own unique blocks arrangement.
 
 
 Architecture
@@ -190,7 +190,7 @@ and NoSQL storage, which cache is represented as PHP code, containing
 instances of these classes in tree form with any level of nesting
 and unlimited by structure.
 
-Changing the structure of NoSQL data is possible only from the side of PHP code.
+Changing the structure of NoSQL data is possible only through a special mechanism.
 For example, the main menu is located in NoSQL storage and nobody cannot
 disrupt its work. The anonymous user menu is stored in SQL storage and
 the administrator can edit this menu through the system interface.
@@ -349,7 +349,8 @@ The event model is built fairly transparent and predictable.
 It's enough to register a new event in the "events.data" of your module,
 specify its weight and handler in PHP code, flush the cache and
 the event will begin to be processed. On the "NoSQL Data → Events" page,
-you can view all events registered in the system.
+you can view all events registered in the system (this section will be
+available after enable the module "Develop").
 
 
 Web server
