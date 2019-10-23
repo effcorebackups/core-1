@@ -35,6 +35,7 @@ translations
     - Current language: Текущий язык
     - Data + join: Данные + join
     - Data hash: Хэш данных
+    - Data ID: ID данных
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - Demo NoSQL: Демонстрационное NoSQL
