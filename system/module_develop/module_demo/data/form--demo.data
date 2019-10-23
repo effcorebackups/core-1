@@ -452,13 +452,13 @@ forms
                 element_attributes
                 - name: radiobuttons
                 values
-                - radiobuttons_1: Radiobutton 1
-                - radiobuttons_2: Radiobutton 2 (checked)
-                - radiobuttons_3: Radiobutton 3 (disabled)
+                - radiobutton_1: Radiobutton 1
+                - radiobutton_2: Radiobutton 2 (checked)
+                - radiobutton_3: Radiobutton 3 (disabled)
                 disabled
-                - =: radiobuttons_3
+                - =: radiobutton_3
                 checked
-                - =: radiobuttons_2
+                - =: radiobutton_2
           # group_palette
             - palette|group_palette
                 title: Color
