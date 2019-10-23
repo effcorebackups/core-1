@@ -504,10 +504,10 @@ namespace effcore {
   static function datetime_get       ($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function T_datetime_get     ($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
-  static function validate_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d'        )) == strlen('yyyy-mm-dd'         );}
-  static function validate_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format(      'H:i:s'  )) == strlen(           'hh:ii:ss');}
-  static function validate_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d H:i:s'  )) == strlen('yyyy-mm-dd hh:ii:ss');}
-  static function validate_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d\\TH:i:s')) == strlen('yyyy-mm-ddThh:ii:ss');}
+  static function validate_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d'        )) == strlen(field_date    ::input_max_date    );}
+  static function validate_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format(      'H:i:s'  )) == strlen(field_time    ::input_max_time    );}
+  static function validate_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d H:i:s'  )) == strlen(field_datetime::input_max_datetime);}
+  static function validate_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d\\TH:i:s')) == strlen(field_datetime::input_max_datetime);}
 
   static function sanitize_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format('Y-m-d'        ) : null;}
   static function sanitize_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format(      'H:i:s'  ) : null;}
