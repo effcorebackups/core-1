@@ -33,6 +33,7 @@ translations
     - bundle build number: номер сборки пакета
     - bundle description: описание пакета
     - bundle id: id пакета
+    - bundle title: заголовок пакета
     - Bundle with examples.: Пакет с примерами.
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
