@@ -420,12 +420,12 @@ from the administrative interface.
 Deployment
 ---------------------------------------------------------------------
 
-Вносить изменения в файлы системы является плохой идеей, так как все они
-будут потеряны после обновления системы.
+Making changes in system files is a bad idea, because all of them
+will be lost after updating the system.
 
-Хорошим решением является создание собственного модуля в директории "modules".
-В пакете "Примеры" имеется модуль "Пустой модуль", который можно
-использовать в качестве основы для создания такого модуля.
+A good solution is to create your own module in the "modules" directory.
+In the bundle "Examples" there is a module "Empty module", which can be used
+as a basis for creating such a module.
 
 В собственном модуле можно будет применить механизм "Changes".
 Данный механизм даёт возможность вносить изменения в работу системы.
