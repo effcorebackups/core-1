@@ -65,6 +65,20 @@ the user is given a choice of layout and each new page can have its
 own unique blocks arrangement.
 
 
+File organization
+---------------------------------------------------------------------
+
+In each module everything necessary for frontend development
+is stored in the "module_*/frontend" directory,
+and for backend development - in the "module_*/backend" directory.
+All NoSQL data is located in a directory "module_*/data".
+
+In fact, the operation of the files does not depend on their location
+and if necessary they will still be found and processed, and their
+location in certain directories - it's only an organizational measure
+designed to facilitate the work with the system.
+
+
 Architecture
 ---------------------------------------------------------------------
 
@@ -80,9 +94,7 @@ consisting on average of 3-7 lines of code.
 Thanks to the "matrix" style of code layout, its perception is
 greatly facilitated (reminds Python syntax in some places), and proper
 location of files in the system allows you to determine their purpose
-without resorting to any documentation (in each module everything
-necessary for frontend development is stored in the "module_*/frontend"
-directory, and for backend development - in the "module_*/backend" directory).
+without resorting to any documentation.
 Also, everything that seems complicated was rejected or remade.
 Each function iteratively improved from 3 to 10 times.
 Functional testing was performed on the whole set of
