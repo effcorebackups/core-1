@@ -380,6 +380,88 @@ For large projects, caching is usually done by third-party web server tools,
 what is originally supposed by the author.
 
 
+Decoration
+---------------------------------------------------------------------
+
+For decoration of the site/portal in the system exists the section "Decoration".
+In this section, the administrator can change the color scheme of the page elements.
+The number of colors is limited by the full set of named CSS colors (for example, "black",
+"white" and so on). Also in this section there are a color presets and in one click the
+administrator can change the design of all available elements (for example,
+activate the light design theme). There is also a list of the layouts which
+available in the system.
+
+The system operates with only one type of file collection - these are modules.
+There are no a themes which familiar to many people.
+
+However, nothing prevents to create a theme in the form of a module,
+which may contain, for example, the following functionality:
+- colors;
+- color presets;
+- static cascading style files "*.css";
+- static JavaScript files "*.js";
+- dynamic cascading style files "*.cssd";
+- dynamic JavaScript files "*.jsd";
+- templates;
+- layouts;
+- images;
+- favicons.
+
+Do not be afraid of the process of creating a new module.
+According the template "Empty module" (see the section "Deployment")
+and simple text files of type "*.data" the new functionality (for example
+like described above) can be introduced without programming.
+It's enough to create files of type "*.data", place them in a new module,
+upload this module to the server and flush the cache.
+After these actions the new elements will be available
+from the administrative interface.
+
+
+Deployment
+---------------------------------------------------------------------
+
+Вносить изменения в файлы системы является плохой идеей, так как все они
+будут потеряны после обновления системы.
+
+Хорошим решением является создание собственного модуля в директории "modules".
+В пакете "Примеры" имеется модуль "Пустой модуль", который можно
+использовать в качестве основы для создания такого модуля.
+
+В собственном модуле можно будет применить механизм "Changes".
+Данный механизм даёт возможность вносить изменения в работу системы.
+Его пример показан в файле "demo--data--changes.data" модуля "Демо".
+Механизм "Changes" изменяет глобальное NoSQL-дерево, которое
+после очистки кэша будет преобразовано системой в PHP-код.
+
+После создания собственного модуля с нужными настройками процесс
+развёртывания будет выглядеть предельно просто - достаточно установить
+систему и включить собственный модуль.
+
+
+Localization
+---------------------------------------------------------------------
+
+В системе уже имеются переводы её интерфейса на Белорусский и Русский языки.
+Предполагается, что для каждой языковой версии сайта/портала
+администратор организует свой собственный поддомен.
+Во многих случаях разные языковые версии сайта/портала имеют отличия
+не только в содержании, но и в структуре. Например, главное меню на одной
+языковой версии может иметь одни пункты меню, а на другой - совсем иные,
+при этом будут отличаться и названия самих пунктов и их адреса и количество
+этих пунктов. Именно поэтому было принято решение не усложнять систему
+и не вводить во многих аспектах бесполезный функционал.
+
+Если же какая либо страница будет иметь язык отличный от всего сайта, то
+этот язык можно будет указать при создании/редактировании такой страницы.
+При этом администратор должен контролировать язык контента, который появится
+на данной странице.
+
+Система использует более совершенную систему "Plural".
+С помощью регулярных выражений можно описать практически любую
+зависимость части слова от присутствующих во фразе числовых
+и не числовых аргументов.
+
+
 Performance improvement
 ---------------------------------------------------------------------
 
