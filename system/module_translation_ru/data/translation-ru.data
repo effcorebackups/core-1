@@ -99,7 +99,7 @@ translations
     - Diagram: Диаграмма
     - Diagrams: Диаграммы
     - Digit: Цифра
-    - Distributed queries are not supported! Selection id = "%%_id".: Распределенные запросы не поддерживаются! ID выборки = "%%_id".
+    - Distributed queries are not supported! Selection id = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".
     - do not show: не показывать
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
@@ -340,7 +340,7 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID родителя
-    - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Часть страницы с id = "%%_id_page_part" была удалена из область с id = "%%_id_area".
+    - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Часть страницы с id = "%%_id_page_part" была удалена из области с id = "%%_id_area".
     - Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".: Часть страницы с id = "%%_id_page_part" была вставлена в область с id = "%%_id_area".
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
@@ -382,7 +382,7 @@ translations
     - Relations: Связи
     - Relations\: Role + Permission: Связи: Роль + Разрешение
     - Relations\: Role + User: Связи: Роль + Пользователь
-    - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и внесите изменения снова чтобы предотвратить несогласованность действий.
+    - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и внесите изменения снова, чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сброс
@@ -428,7 +428,7 @@ translations
     - storage: хранилище
     - Storage: Хранилище
     - Structures: Структуры
-    - Subscribe to updates: Подписка на обновления
+    - Subscription to updates: Подписка на обновления
     - success: успех
     - Switcher: Выключатель
     - Switchers: Выключатели

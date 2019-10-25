@@ -43,7 +43,7 @@ namespace effcore\modules\core {
     $decorator->id = 'service_info';
     $decorator->data = [[
       'prov_key'      => ['title' => 'Provisioning key',        'value' => 'not applicable'                                                                                                                                   ],
-      'subscr_to_upd' => ['title' => 'Subscribe to updates',    'value' => 'not applicable'                                                                                                                                   ],
+      'subscr_to_upd' => ['title' => 'Subscription to updates', 'value' => 'not applicable'                                                                                                                                   ],
       'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_updates ? [$is_required_updates_sticker, new text(' → '), $is_required_updates_fixlink] : [$is_required_updates_sticker])],
       'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ],
       'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ]]];

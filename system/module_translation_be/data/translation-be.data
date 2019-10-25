@@ -382,7 +382,7 @@ translations
     - Relations: Сувязі
     - Relations\: Role + Permission: Сувязі: Роля + Дазваленне
     - Relations\: Role + User: Сувязі: Роля + Карыстальнік
-    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і унясіце змены зноў каб прадухіліць нязладжанасць дзеянняў.
+    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і унясіце змены зноў, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
     - Report: Справаздача
     - reset: скід
@@ -428,7 +428,7 @@ translations
     - storage: сховішча
     - Storage: Сховішча
     - Structures: Структуры
-    - Subscribe to updates: Падпіска на абнаўлення
+    - Subscription to updates: Падпіска на абнаўлення
     - success: поспех
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
