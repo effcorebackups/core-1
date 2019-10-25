@@ -15,7 +15,7 @@ translations
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
     - Adaptive table: Адаптивная таблица
-    - After each 3 insertions you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х вставок Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
+    - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х регистраций Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
@@ -101,10 +101,10 @@ translations
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
-    - Option 2 (disabled): Опция 2 (отключёна) 
+    - Option 2 (disabled): Опция 2 (отключена) 
     - Option 3: Опция 3
     - Option 4: Опция 4
-    - Option 5 (inserted + disabled from code): Опция 5 (вставлена + отключёна из кода)
+    - Option 5 (inserted + disabled from code): Опция 5 (вставлена + отключена из кода)
     - Option 6 (inserted from code): Опция 6 (вставлена из кода)
     - Option 7 (inserted from code): Опция 7 (вставлена из кода)
     - Option 8 (inserted from code): Опция 8 (вставлена из кода)
