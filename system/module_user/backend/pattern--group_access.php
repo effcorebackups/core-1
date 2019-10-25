@@ -8,7 +8,7 @@ namespace effcore {
           class group_access extends group_switchers {
 
   public $title = 'Access';
-  public $description = 'Access settings not applicable if no one role is active!';
+  public $description = 'Access settings are not applicable if no one role is active!';
   public $attributes = [
     'data-type' => 'switchers',
     'role'      => 'group'];

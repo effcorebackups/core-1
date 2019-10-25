@@ -421,7 +421,7 @@ forms
                 title: Access
                 description|text_multiline
                   text
-                  - 0: Access settings not applicable if no one role is active!
+                  - 0: Access settings are not applicable if no one role is active!
                   - 1: Group "%%_title".
                   args
                   - title: group_acces

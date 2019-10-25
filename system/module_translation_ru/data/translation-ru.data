@@ -8,10 +8,10 @@ translations
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
-    - A new password was sent to selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
+    - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: php-расширение остановило загрузку файла
     - Access forbidden: Доступ запрещён
-    - Access settings not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
+    - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access: Доступ
     - action: действие
     - Action: Действие
@@ -42,7 +42,7 @@ translations
     - Button\: text: Кнопка: текст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1" когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
+    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1", когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
     - Canvas: Холст
     - Charset: Кодировка
@@ -99,7 +99,7 @@ translations
     - Diagram: Диаграмма
     - Diagrams: Диаграммы
     - Digit: Цифра
-    - Distributed queries not supported! Selection id = "%%_id".: Распределенные запросы не поддерживаются! ID выборки = "%%_id".
+    - Distributed queries are not supported! Selection id = "%%_id".: Распределенные запросы не поддерживаются! ID выборки = "%%_id".
     - do not show: не показывать
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
@@ -206,14 +206,14 @@ translations
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
     - Insert field: Вставить поле
-    - Insert new item of type "%%_entity_name_context" on new page.: Вставить новый элемент типа "%%_entity_name_context" на новой странице.
+    - Insert a new item of type "%%_entity_name_context" on new page.: Вставить новый элемент типа "%%_entity_name_context" на новой странице.
     - Insert part: Вставить часть
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
     - Install: Установить
     - install: установить
-    - Installation is not available because storage credentials was set!: Установка недоступна потому, что учётные данные хранилища уже были заданы.
+    - Installation is not available because storage credentials was set!: Установка недоступна, потому что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
     - Instance with row_id = "%%_row_id" was inserted.: Экземпляр с row_id = "%%_row_id" был добавлен.
@@ -239,7 +239,7 @@ translations
     - launch: запуск
     - Layout: Макет
     - Layouts: Макеты
-    - Leave the field blank if you do not want to change its value.: Оставьте поле пустым если Вы не желаете изменять его значение.
+    - Leave the field blank if you do not want to change its value.: Оставьте поле пустым, если Вы не желаете изменять его значение.
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
     - light preset: светлая предустановка
@@ -287,7 +287,7 @@ translations
     - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
     - missing a temporary directory: отсутствует временный каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
-    - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включен.
+    - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не был установлен!
     - Module data "%%_title" (%%_id) was removed.: Данные модуля "%%_title" (%%_id) были удалены.
@@ -349,7 +349,7 @@ translations
     - Permission: Разрешение
     - Permissions: Разрешения
     - PHP dependencies: PHP-зависимости
-    - PHP OPCache is anebled: PHP OPCache включен
+    - PHP OPCache is enabled: PHP OPCache включён
     - PHP version: PHP версия
     - Port: Порт
     - Presets: Предустановки

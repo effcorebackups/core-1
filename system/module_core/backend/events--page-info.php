@@ -61,7 +61,7 @@ namespace effcore\modules\core {
     $decorator->data = [[
       'web_server'       => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
       'php_version'      => ['title' => 'PHP version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
-      'opcache_state'    => ['title' => 'PHP OPCache is anebled', 'value' => $is_enabled_opcache_sticker                              ],
+      'opcache_state'    => ['title' => 'PHP OPCache is enabled', 'value' => $is_enabled_opcache_sticker                              ],
       'storage_sql'      => ['title' => 'SQL storage',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
       'operating_system' => ['title' => 'Operating System',       'value' => php_uname('s').' | '.php_uname('v')                      ],
       'hostname'         => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],

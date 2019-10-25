@@ -8,10 +8,10 @@ translations
     - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: выдаліць
     - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: ўставіць
     - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: абнавіць
-    - A new password was sent to selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
+    - A new password was sent to the selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - a php extension stopped the file upload: php-пашырэнне спыніла загрузку файла
     - Access forbidden: Доступ забаронены
-    - Access settings not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
+    - Access settings are not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
     - Access: Доступ
     - action: дзеянне
     - Action: Дзеянне
@@ -42,7 +42,7 @@ translations
     - Button\: text: Кнопка: тэкст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
-    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1" калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
+    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1", калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
     - Canvas: Палатно
     - Charset: Кадоўка
@@ -99,7 +99,7 @@ translations
     - Diagram: Дыяграма
     - Diagrams: Дыяграмы
     - Digit: Лічба
-    - Distributed queries not supported! Selection id = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
+    - Distributed queries are not supported! Selection id = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - do not show: не паказваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
@@ -206,14 +206,14 @@ translations
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Information: Інфармацыя
     - Insert field: Уставіць поле
-    - Insert new item of type "%%_entity_name_context" on new page.: Уставіць новы элемент тыпу "%%_entity_name_context" на новай старонцы.
+    - Insert a new item of type "%%_entity_name_context" on new page.: Уставіць новы элемент тыпу "%%_entity_name_context" на новай старонцы.
     - Insert part: Уставіць частку
     - insert: уставіць
     - Insert: Уставіць
     - insertion: устаўка
     - Install: Інсталяваць
     - install: інсталяваць
-    - Installation is not available because storage credentials was set!: Устаноўка недаступная таму, што уліковыя даныя сховішча ўжо былі зададзены.
+    - Installation is not available because storage credentials was set!: Устаноўка недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
     - Instance with row_id = "%%_row_id" was inserted.: Асобнік з row_id = "%%_row_id" быў дададзены.
@@ -349,7 +349,7 @@ translations
     - Permission: Дазваленне
     - Permissions: Дазвалення
     - PHP dependencies: PHP-залежнасці
-    - PHP OPCache is anebled: PHP OPCache уключаны
+    - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP version: PHP версія
     - Port: Порт
     - Presets: Перадусталёўкі
