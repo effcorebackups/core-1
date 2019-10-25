@@ -24,9 +24,9 @@ professional web developers.
 
 The name of the system is an acronym and comes from the phrase "effective core".
 The system was made from scratch. Its main principle is the complete absence of
-third-party code (to exclude legal claims and also any other restrictions
-which related with borrowing), and third-party ideas (to search for new
-innovative solutions).
+third-party code (to exclude legal claims and any other restrictions which
+related with borrowing), and third-party ideas (to search for new innovative
+solutions).
 
 The impetus for the creation of the system was a massive degradation in the
 development of Open Source projects. If consider this situation,
@@ -38,8 +38,8 @@ Second significant flaw - this is an extensive way to develop code in such
 projects as opposed to intensive, i.e. instead of creating own code,
 they usually take another library which it's written not clear by whom
 and it's not clear by where and try to combine it with a group of the
-same libraries, not coordinated among themselves and having, usually,
-redundant and not fully tested functionality.
+same libraries, not coordinated among themselves and having redundant
+and not fully tested functionality.
 As a result, we get a set of obscure and inconsistent libraries with poorly
 tested redundant functionality which is constantly growing in volume.
 Unfortunately, many developers are bogged down in such code and
@@ -48,7 +48,7 @@ are trying to deny the obvious.
 The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
 a system which installed on a web hosting with the cheapest tariff plan (from
-~3-5$ per month), but compliant with the minimum installation requirements,
+~3-5$ per month), which compliant with the minimum installation requirements,
 should generate a homepage in 0.002 seconds (when OPCache is enabled),
 or 0.02 seconds (when OPCache is disabled), which in the first case
 allows serving up to ~500 clients per second, and in the second
