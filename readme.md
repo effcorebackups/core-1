@@ -344,8 +344,8 @@ compression technology obsolete due to the following reasons:
   transfer rate is not significant, at the same time, compression
   takes web server resources, and for unpacking - the client (which
   ultimately affects the battery charge of mobile clients).
-- for CSS, a file size above 10 KiB is considered a consequence
-  of improper cascading of styles, together with the use of disastrous
+- for CSS, a file size above 10 KiB is considered to be the result
+  of improper cascading of styles and/or usage of disastrous
   technology such as SASS or LESS, which condoning "badcoding".
 - JS files can be initially compressed and obfuscated by
   reducing-reorganization of JS code by third-party
