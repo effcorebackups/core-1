@@ -457,7 +457,7 @@ translations
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
     - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" надта старое!
-    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль ў пачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
+    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
@@ -496,7 +496,7 @@ translations
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
-    - Use the international format for mobile phone numbers.: Выкарыстоўвайце міжнародны фармат нумароў мабільных тэлефонаў.
+    - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
     - User agent: Карыстальніцкі агент
@@ -505,7 +505,7 @@ translations
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
-    - User with this Nickname was already registered!: Карыстальнік з такой мянушкай ўжо быў зарэгістраваны!
+    - User with this nickname was already registered!: Карыстальнік з такой мянушкай ўжо быў зарэгістраваны!
     - User: Карыстальнік
     - Users: Карыстальнікі
     - UTC date/time: UTC дата/час

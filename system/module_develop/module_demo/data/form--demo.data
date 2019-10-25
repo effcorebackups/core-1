@@ -85,7 +85,7 @@ forms
             title: Telephone number
             description|text_multiline
               text
-              - 0: Use the international format for mobile phone numbers.
+              - 0: Use the international format for phone number.
               - 1: Field "%%_title".
               args
               - title: field_tel

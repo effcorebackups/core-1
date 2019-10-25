@@ -457,7 +457,7 @@ translations
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The PHP extension "%%_name" is not available!: PHP-расширение "%%_name" недоступно!
     - The PHP extension "%%_name" is too old!: PHP-расширение "%%_name" слишком старое!
-    - The removing module must be disabled at first. Embed modules cannot be disabled.: Удаляемый модуль в начале должен быть отключен. Встроенные модули не могут быть отключены.
+    - The removing module must be disabled at first. Embed modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The required version is %%_version_req.: Требуемая версия %%_version_req.
     - the size of uploaded file more than %%_size: размер загружаемого файла больше чем %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
@@ -496,7 +496,7 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
-    - Use the international format for mobile phone numbers.: Используйте международный формат номеров мобильных телефонов.
+    - Use the international format for phone number.: Используйте международный формат номера телефона.
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Пользовательский агент
@@ -505,7 +505,7 @@ translations
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
     - User with this EMail was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
-    - User with this Nickname was already registered!: Пользователь с таким Прозвищем уже был зарегистрирован!
+    - User with this nickname was already registered!: Пользователь с таким прозвищем уже был зарегистрирован!
     - User: Пользователь
     - Users: Пользователи
     - UTC date/time: UTC дата/время
