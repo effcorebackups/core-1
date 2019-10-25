@@ -29,9 +29,9 @@ which related with borrowing), and third-party ideas (to search for new
 innovative solutions).
 
 The impetus for the creation of the system was a massive degradation in the
-development of Open Source projects. If you consider this situation,
-you can see that the developers of such projects are people with different
-skill levels and located in different parts of the planet.
+development of Open Source projects. If consider this situation,
+it's can see that the developers of such projects are people with the
+different skill levels and which located in different parts of the planet.
 Incoordination in their actions and different views on solutions
 in the project is only part of the problem.
 Second significant flaw - this is an extensive way to develop code in such
@@ -92,9 +92,9 @@ containing on average from 3 to 15 methods,
 consisting on average of 3-7 lines of code.
 
 Thanks to the "matrix" style of code layout, its perception is
-greatly facilitated (reminds Python syntax in some places), and proper
-location of files in the system allows you to determine their purpose
-without resorting to any documentation.
+greatly facilitated (reminds Python syntax in some places), and
+proper location of files in the system give ability to determine
+their purpose without resorting to any documentation.
 Also, everything that seems complicated was rejected or remade.
 Each function iteratively improved from 3 to 10 times.
 Functional testing was performed on the whole set of
@@ -139,7 +139,7 @@ Core: NoSQL
 
 All data is stored as PHP code.
 Perhaps the fastest storage after "storage in RAM".
-After organizing the disk in RAM, you can increase performance
+After organizing the disk in RAM, it's possible to increase performance
 by 3-5 times (more details in the section "Performance improvement").
 Each storage subdirectory will be initialized only on demand.
 
@@ -191,7 +191,7 @@ file of the following form:
       cache::$data['demo']->array_1['item_N'] = 'value N';
     }
 
-This architecture allows you to access NoSQL data as quickly as possible.
+This architecture give ability to access NoSQL data as quickly as possible.
 When using the PHP module OPCache, the access speed can increase
 from 2 to 3 times. In fact, to access NoSQL data, it's enough to
 load a PHP file of a certain entity and data will be available
@@ -358,10 +358,10 @@ Event model
 ---------------------------------------------------------------------
 
 The event model is built fairly transparent and predictable.
-It's enough to register a new event in the "events.data" of your module,
+It's enough to register a new event in the "events.data" of own module,
 specify its weight and handler in PHP code, flush the cache and
 the event will begin to be processed. On the "NoSQL Data → Events" page,
-you can view all events registered in the system (this section will be
+can view all events registered in the system (this section will be
 available after enable the module "Develop").
 
 
@@ -423,43 +423,43 @@ Deployment
 Making changes in system files is a bad idea, because all of them
 will be lost after updating the system.
 
-A good solution is to create your own module in the "modules" directory.
+A good solution is to create own module in the "modules" directory.
 In the bundle "Examples" there is a module "Empty module", which can be used
 as a basis for creating such a module.
 
-В собственном модуле можно будет применить механизм "Changes".
-Данный механизм даёт возможность вносить изменения в работу системы.
-Его пример показан в файле "demo--data--changes.data" модуля "Демо".
-Механизм "Changes" изменяет глобальное NoSQL-дерево, которое
-после очистки кэша будет преобразовано системой в PHP-код.
+In the own module, it will be possible to apply the "Changes" mechanism.
+This mechanism give ability to make changes in the system.
+Its example is shown in the file "demo--data--changes.data" of the module "Demo".
+The "Changes" mechanism modifies the global NoSQL tree, which, after clearing
+the cache, will be converted by the system into PHP code.
 
-После создания собственного модуля с нужными настройками процесс
-развёртывания будет выглядеть предельно просто - достаточно установить
-систему и включить собственный модуль.
+After creating own module with the necessary settings the deployment process
+will look extremely simple - just install the system and enable own module.
 
 
 Localization
 ---------------------------------------------------------------------
 
-В системе уже имеются переводы её интерфейса на Белорусский и Русский языки.
-Предполагается, что для каждой языковой версии сайта/портала
-администратор организует свой собственный поддомен.
-Во многих случаях разные языковые версии сайта/портала имеют отличия
-не только в содержании, но и в структуре. Например, главное меню на одной
-языковой версии может иметь одни пункты меню, а на другой - совсем иные,
-при этом будут отличаться и названия самих пунктов и их адреса и количество
-этих пунктов. Именно поэтому было принято решение не усложнять систему
-и не вводить во многих аспектах бесполезный функционал.
+The system already has translations of its interface into
+Belarusian and Russian languages.
+It's assumed that for each language version of the site/portal,
+the administrator organizes his own subdomain.
+In many cases, different language versions of a site/portal differ
+not only in content, but also in a structure. For example, the main menu in one
+language version may have one set of menu items, and on another - completely different,
+in this case, the names of the menu items and their addresses and count will differ.
+That is why it was decided not to complicate the system and not to introduce
+in many aspects useless functionality.
 
-Если же какая либо страница будет иметь язык отличный от всего сайта, то
-этот язык можно будет указать при создании/редактировании такой страницы.
-При этом администратор должен контролировать язык контента, который появится
-на данной странице.
+If any page has a language different from the whole site, then this language
+can be specified when creating/editing such a page.
+In this case, the administrator must control the language of the content
+that appears on this page.
 
-Система использует более совершенную систему "Plural".
-С помощью регулярных выражений можно описать практически любую
-зависимость части слова от присутствующих во фразе числовых
-и не числовых аргументов.
+The system uses the more perfect "Plural" system.
+Using regular expressions, it's possible to describe almost any
+dependence of a part of a word on the numeric and non-numeric arguments
+which present in the phrase.
 
 
 Performance improvement
@@ -480,7 +480,7 @@ The system is open and free.
 The system is not in the public domain.
 Anyone can create a website, portal or service on the basis of it,
 both personally and for any customer.
-However, you cannot distribute system files in their original or
+However, not allowed to distribute system files in their original or
 modified form or in conjunction with anything else.
 This restriction does not apply to third-party modules
 whose authors themselves determine the licensing policy.
