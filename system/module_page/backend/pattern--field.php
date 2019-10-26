@@ -24,9 +24,9 @@
   # │ input:search         ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:tel            ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
   # │ input:url            ║ + │ + │ + │ x │ + │   │   │   │   │   │ + │ + │
+  # │ input:time           ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
   # │ input:date           ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
   # │ input:datetime-local ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
-  # │ input:time           ║ + │ + │ + │ x │ x │ + │ + │ - │   │   │ x │ + │
   # │ input:number         ║ + │ + │ + │ x │ x │ + │ + │ + │   │   │ x │ + │
   # │ input:range          ║ + │ x │ x │ x │ x │ + │ + │ + │   │   │ x │ + │
   # │ textarea             ║ + │ + │ + │ x │ + │   │   │   │   │   │ x │ + │

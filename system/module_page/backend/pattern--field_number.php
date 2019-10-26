@@ -7,6 +7,8 @@
 namespace effcore {
           class field_number extends field_text {
 
+  use field_validate_min_max;
+
   const input_min_number = -10000000000;
   const input_max_number = +10000000000;
 

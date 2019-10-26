@@ -7,6 +7,8 @@
 namespace effcore {
           class field_time extends field_text {
 
+  use field_validate_min_max;
+
   const input_min_time = '00:00:00';
   const input_max_time = '23:59:59';
 
