@@ -46,7 +46,7 @@ namespace effcore\modules\develop {
     ksort($groups_by_name);
     foreach ($groups_by_name as $c_group) {
       foreach ($c_group as $c_item) {
-        $c_file_parts = new markup('x-file-path');
+        $c_file_parts = new markup('x-file-path', ['title' => new text('file path')]);
         foreach ($c_item->dirs_parts as $c_part)
           $c_file_parts->child_insert(new markup('x-directory', [], new text_simple($c_part)), $c_part      );
           $c_file_parts->child_insert(new markup('x-file',      [], $c_item->file           ), $c_item->file);
@@ -57,8 +57,8 @@ namespace effcore\modules\develop {
           $list->child_insert(new markup('h2', ['id' => 'character_'.$l_first_character, 'data-role' => 'targets', 'title' => new text('Section "%%_title"', ['title' => $u_first_character])], $u_first_character));
         }
         $c_return = new markup('x-item');
-        $c_return->child_insert(new markup('x-name',      [], new text_simple($c_item->name)),               'name'     );
-        $c_return->child_insert(new markup('x-namespace', [], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
+        $c_return->child_insert(new markup('x-name',      ['title' => new text('name'     )], new text_simple($c_item->name)),               'name'     );
+        $c_return->child_insert(new markup('x-namespace', ['title' => new text('namespace')], str_replace('\\', ' | ', $c_item->namespace)), 'namespace');
         $c_return->child_insert($c_file_parts, 'file');
         $list->child_insert($c_return);
       }
@@ -136,7 +136,7 @@ namespace effcore\modules\develop {
                                 $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_method->name.' ('.$c_defaults.')') :
-              new text_simple($c_refl_method->name.' ()');
+              new text_simple($c_refl_method->name.' ('.            ')');
             if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
             if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
             if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);

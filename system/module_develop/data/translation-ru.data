@@ -97,6 +97,7 @@ translations
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
     - Module dependencies from PHP extensions: Зависимости модулей от PHP-расширений
+    - namespace: пространство имён
     - NoSQL data: NoSQL данные
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
