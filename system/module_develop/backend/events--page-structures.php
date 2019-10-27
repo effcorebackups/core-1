@@ -82,9 +82,9 @@ namespace effcore\modules\develop {
         $c_file          = new file($c_item_info->file);
         $c_reflection    = new \ReflectionClass($c_item_full_name);
         $x_class_wrapper = new markup('x-class-wrapper');
-        $x_class         = new markup('x-class');
-        $x_name          = new markup('x-name', ['title' => $c_item_info->file], new text_simple($c_item_info->name));
-        $x_namespace     = new markup('x-namespace', [], $c_item_info->namespace ? '(from '.$c_item_info->namespace.')' : '');
+        $x_class         = new markup('x-class', ['title' => $c_item_info->file]);
+        $x_name          = new markup('x-name', ['title' => new text('name')], new text_simple($c_item_info->name));
+        $x_namespace     = new markup('x-namespace', ['title' => new text('namespace')], $c_item_info->namespace ? '(from '.$c_item_info->namespace.')' : '');
         $x_name_wrapper  = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes    = new markup('x-attributes');
         $x_operations    = new markup('x-operations');
@@ -116,9 +116,9 @@ namespace effcore\modules\develop {
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_property->name.' = '.$c_defaults) :
               new text_simple($c_refl_property->name);
-            if ($c_refl_property->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
-            if ($c_refl_property->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
-            if ($c_refl_property->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('property public'   )] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('property protected')] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('property private'  )] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
           }
         }
 
@@ -137,9 +137,9 @@ namespace effcore\modules\develop {
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_method->name.' ('.$c_defaults.')') :
               new text_simple($c_refl_method->name.' ('.            ')');
-            if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
-            if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
-            if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('method public'   )] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('method protected')] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('method private'  )] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
           }
         }
       }

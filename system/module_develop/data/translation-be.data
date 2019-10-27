@@ -96,6 +96,9 @@ translations
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
+    - method private: метад прыватны
+    - method protected: метад абаронены
+    - method public: метад публічны
     - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
     - namespace: прастора імёнаў
     - NoSQL data: NoSQL даныя
@@ -118,6 +121,9 @@ translations
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
+    - property private: ўласцівасць прыватная
+    - property protected: ўласцівасць абароненая
+    - property public: ўласцівасць публічная
     - Quantity of iterations: Колькасць ітэрацый
     - query = "%%_query": запыт = "%%_query"
     - query = "%%_query"<br>arguments = [%%_args]: запыт = "%%_query"<br>аргументы = [%%_args]
