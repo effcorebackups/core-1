@@ -103,43 +103,43 @@ namespace effcore\modules\develop {
         }
 
       # find properties
-        foreach ($c_reflection->getProperties() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
+        foreach ($c_reflection->getProperties() as $c_refl_property) {
+          if ($c_refl_property->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
                         '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
-                        '(?<name>'.$c_info->name.') = '.
+                        '(?<name>'.$c_refl_property->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['value']) ? str_replace(' => ', ' = ',
                                 $c_matches['value']) : null;
             $c_name = ($c_defaults !== null) ?
-              new text_simple($c_info->name.' = '.$c_defaults) :
-              new text_simple($c_info->name);
-            if ($c_info->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+              new text_simple($c_refl_property->name.' = '.$c_defaults) :
+              new text_simple($c_refl_property->name);
+            if ($c_refl_property->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
           }
         }
 
       # find methods
-        foreach ($c_reflection->getMethods() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
+        foreach ($c_reflection->getMethods() as $c_refl_method) {
+          if ($c_refl_method->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
                         '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static|final|)\\s'.
                         '(?:function)\\s'.
-                        '(?<name>'.$c_info->name.')\\s*\\('.
+                        '(?<name>'.$c_refl_method->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
             $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('%(\\$)([a-zA-Z_])%', '$2',
                                 $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ?
-              new text_simple($c_info->name.' ('.$c_defaults.')') :
-              new text_simple($c_info->name.' ()');
-            if ($c_info->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
-            if ($c_info->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_info->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_info->name);
+              new text_simple($c_refl_method->name.' ('.$c_defaults.')') :
+              new text_simple($c_refl_method->name.' ()');
+            if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public'   ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected'] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private'  ] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
           }
         }
       }
@@ -210,33 +210,33 @@ namespace effcore\modules\develop {
         }
 
       # find properties
-        foreach ($c_reflection->getProperties() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
+        foreach ($c_reflection->getProperties() as $c_refl_property) {
+          if ($c_refl_property->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
                         '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static)\\s+\\$'.
-                        '(?<name>'.$c_info->name.') = '.
+                        '(?<name>'.$c_refl_property->name.') = '.
                         '(?<value>.+?);%s', $c_file->load(), $c_matches);
-            if ($c_info->isPublic   ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-            if ($c_info->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-            if ($c_info->isPrivate  ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_info->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if ($c_refl_property->isPublic   ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_refl_property->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'public',    'isStatic' => $c_refl_property->isStatic()];
+            if ($c_refl_property->isProtected()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_refl_property->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'protected', 'isStatic' => $c_refl_property->isStatic()];
+            if ($c_refl_property->isPrivate  ()) $c_return->attributes[] = (object)['_type' => 'UMLAttribute', 'name' => $c_refl_property->name, 'defaultValue' => $c_matches['value'] ?? '', 'visibility' => 'private',   'isStatic' => $c_refl_property->isStatic()];
           }
         }
 
       # find methods
-        foreach ($c_reflection->getMethods() as $c_info) {
-          if ($c_info->getDeclaringClass()->name === $c_item_full_name) {
+        foreach ($c_reflection->getMethods() as $c_refl_method) {
+          if ($c_refl_method->getDeclaringClass()->name === $c_item_full_name) {
             $c_matches = [];
             preg_match('%(?<type>class|trait|interface)\\s+'.
                         '(?<class_name>'.$c_item_info->name.').*?'.
                         '(?<last_modifier>public|protected|private|static|final|)\\s'.
                         '(?:function)\\s'.
-                        '(?<name>'.$c_info->name.')\\s*\\('.
+                        '(?<name>'.$c_refl_method->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-            if ($c_info->isPublic   ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'public',    'isStatic' => $c_info->isStatic()];
-            if ($c_info->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'protected', 'isStatic' => $c_info->isStatic()];
-            if ($c_info->isPrivate  ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_info->name, 'visibility' => 'private',   'isStatic' => $c_info->isStatic()];
+            if ($c_refl_method->isPublic   ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_refl_method->name, 'visibility' => 'public',    'isStatic' => $c_refl_method->isStatic()];
+            if ($c_refl_method->isProtected()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_refl_method->name, 'visibility' => 'protected', 'isStatic' => $c_refl_method->isStatic()];
+            if ($c_refl_method->isPrivate  ()) $c_operation = (object)['_type' => 'UMLOperation', 'name' => $c_refl_method->name, 'visibility' => 'private',   'isStatic' => $c_refl_method->isStatic()];
             if (!empty($c_matches['params'])) {
               foreach (explode(',', $c_matches['params']) as $c_param) {
                 $c_param_parts = explode('=', $c_param);
