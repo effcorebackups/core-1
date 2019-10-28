@@ -1,0 +1,18 @@
+layouts
+- example|layout
+    id: example
+    title: Layout "Example"
+    children
+    - menu|area
+        id: menu
+        tag_name: nav
+    - top|area
+        id: top
+    - title|area
+        id: title
+    - messages|area
+        id: messages
+    - tabs|area
+        id: tabs
+    - content|area
+        id: content

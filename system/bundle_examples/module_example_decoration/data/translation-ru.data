@@ -1,0 +1,5 @@
+translations
+- ru|translation
+    code: ru
+    data
+    - Layout "Example": Макет "Пример"

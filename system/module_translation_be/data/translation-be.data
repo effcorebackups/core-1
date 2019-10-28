@@ -51,7 +51,6 @@ translations
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
-    - Classic layout: Класічны макет
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"
@@ -238,6 +237,8 @@ translations
     - KiB: КіБ
     - Language: Мова
     - launch: запуск
+    - Layout "Classic": Макет "Класічны"
+    - Layout "Simple": Макет "Просты"
     - Layout: Макет
     - Layouts: Макеты
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць яго значэнне.
@@ -420,7 +421,6 @@ translations
     - Sessions: Сесіі
     - Settings: Налады
     - Shared parameters: Агульныя параметры
-    - Simple layout: Просты макет
     - SQL state\: %%_state: SQL стан: %%_state
     - SQL storage: SQL сховішча
     - state: стан
