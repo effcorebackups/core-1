@@ -1,0 +1,8 @@
+module|module
+  id: example_decoration
+  id_bundle: examples
+  title: Decoration
+  group: Examples
+  description: Module for decoration example.
+  copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
+  version: 1.000

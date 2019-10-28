@@ -291,7 +291,9 @@ translations
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не был установлен!
+    - Module as an example of an empty module.: Модуль как пример пустого модуля.
     - Module data "%%_title" (%%_id) was removed.: Данные модуля "%%_title" (%%_id) были удалены.
+    - Module for decoration example.: Модуль для примера оформления.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
