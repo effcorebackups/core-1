@@ -1,0 +1,19 @@
+colors
+# ─────────────────────────────────────────────────────────────────────
+# example group
+# ─────────────────────────────────────────────────────────────────────
+- example_1|color
+    id: example_1
+    value: #ff0000
+    value_hex: #ff0000
+    group: example
+- example_2|color
+    id: example_2
+    value: #00ff00
+    value_hex: #00ff00
+    group: example
+- example_3|color
+    id: example_3
+    value: #0000ff
+    value_hex: #0000ff
+    group: example

@@ -84,7 +84,7 @@ namespace effcore {
   # page color is dark or light
     $is_dark = false;
     $colors = color::get_all();
-    $color_page = $colors[$settings->color_page_id];
+    $color_page = $colors[$settings->color_page_id] ?? null;
     if ($color_page) {
       $is_dark = $color_page->is_dark();
     }
