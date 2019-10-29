@@ -45,10 +45,10 @@ namespace effcore {
           switch ($this->driver) {
             case 'mysql':
               $this->connection = new pdo(
-                $this->driver.           ':host='.
-                $this->credentials->host.';port='.
-                $this->credentials->port.';dbname='.
-                $this->credentials->database,
+                $this->driver.               ':host='.
+                $this->credentials->host.    ';port='.
+                $this->credentials->port.    ';dbname='.
+                $this->credentials->database.';charset=utf8',
                 $this->credentials->login,
                 $this->credentials->password);
               break;
