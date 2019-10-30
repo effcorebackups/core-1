@@ -110,6 +110,12 @@ forms
             - required: true
             element_attributes
             - name: color_tabs_link_active_id
+        - color_tabs_link_active_no_bg_id|group_palette
+            title: Tabs: link active (no background)
+            attributes
+            - required: true
+            element_attributes
+            - name: color_tabs_link_active_no_bg_id
     - colors_state|fieldset
         title: State
         children

@@ -74,6 +74,10 @@ forms
             title: Tabs: link active
             element_attributes
             - name: color_tabs_link_active_id
+        - color_tabs_link_active_no_bg_id|field_checkbox_color
+            title: Tabs: link active (no background)
+            element_attributes
+            - name: color_tabs_link_active_no_bg_id
         - color_ok_id|field_checkbox_color
             title: Okay
             element_attributes

@@ -66,6 +66,10 @@ tokens
     match: %%_color_tabs_link_active
     type: code
     handler: \effcore\modules\page\events_token::on_replace
+- color_tabs_link_active_no_bg
+    match: %%_color_tabs_link_active_no_bg
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
 - color_ok
     match: %%_color_ok
     type: code
