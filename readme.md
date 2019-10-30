@@ -408,11 +408,10 @@ which may contain, for example, the following functionality:
 - favicons.
 
 Do not be afraid of the process of creating a new module.
-According the template "Empty module" (see the section "Deployment")
-and simple text files of type "*.data" the new functionality (for example
-like described above) can be introduced without programming.
-It's enough to create files of type "*.data", place them in a new module,
-upload this module to the server and flush the cache.
+Using the "Decoration" module as template from the "Examples" group,
+it's possible to create own design settings. It's enough to copy this module
+into the "modules" directory, replace examples of settings in "*.data"
+files to own and flush the cache.
 After these actions the new elements will be available
 from the administrative interface.
 
