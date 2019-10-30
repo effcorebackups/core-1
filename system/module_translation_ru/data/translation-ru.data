@@ -446,6 +446,9 @@ translations
     - Table: Таблица
     - Table\: row even: Таблица: строка чётная
     - Table\: row odd: Таблица: строка нечётная
+    - Tabs: Вкладки
+    - Tabs\: link active: Вкладки: ссылка активная
+    - Tabs\: link: Вкладки: ссылка
     - Telephone number: Номер телефона
     - Templates: Шаблоны
     - Test: Тест
