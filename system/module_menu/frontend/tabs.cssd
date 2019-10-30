@@ -5,7 +5,7 @@
 
   x-tabs x-top-items {
     display: block;
-    border-bottom: 5px solid %%_color_main;
+    border-bottom: 5px solid %%_color_tabs;
     font-size: 1.1em}
   x-tabs x-top-items ul,
   x-tabs x-top-items li {
@@ -17,16 +17,19 @@
   x-tabs x-top-items a {
     display: inline-block;
     padding: 15px 15px 10px 15px;
-    border-radius: 15px 15px 0 0}
+    border-radius: 15px 15px 0 0;
+    color: %%_color_tabs_link}
   x-tabs x-top-items a[aria-selected      ='true'],
-  x-tabs x-top-items a[data-selected-trail='true'] {color: %%_color_link_active; background: %%_color_main}
+  x-tabs x-top-items a[data-selected-trail='true'] {color: %%_color_tabs_link_active; background: %%_color_tabs}
 
   x-tabs x-sub-items {
     display: block;
     padding: 10px 0;
-    border-left: 1px solid %%_color_main}
+    border-left: 1px solid %%_color_tabs}
   x-tabs x-sub-items ul {margin: 0; padding-left: 14px; list-style: none}
   x-tabs x-sub-items ul ul {padding-left: 0}
   x-tabs x-sub-items ul ul li::before {content: '— '}
+
+  x-tabs x-sub-items a {color: %%_color_tabs_link}
   x-tabs x-sub-items a[aria-selected      ='true'],
-  x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color_link_active}
+  x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color_tabs_link_active}

@@ -62,6 +62,18 @@ forms
             title: Menu: link active
             element_attributes
             - name: color_menu_link_active_id
+        - color_tabs_id|field_checkbox_color
+            title: Tabs
+            element_attributes
+            - name: color_tabs_id
+        - color_tabs_link_id|field_checkbox_color
+            title: Tabs: link
+            element_attributes
+            - name: color_tabs_link_id
+        - color_tabs_link_active_id|field_checkbox_color
+            title: Tabs: link active
+            element_attributes
+            - name: color_tabs_link_active_id
         - color_ok_id|field_checkbox_color
             title: Okay
             element_attributes

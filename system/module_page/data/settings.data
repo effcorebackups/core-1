@@ -14,6 +14,9 @@ settings
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: gold
+  color_tabs_id: royalblue
+  color_tabs_link_id: white
+  color_tabs_link_active_id: gold
   color_ok_id: state_ok
   color_warning_id: state_warning
   color_error_id: state_error

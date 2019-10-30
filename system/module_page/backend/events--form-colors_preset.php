@@ -28,6 +28,9 @@ namespace effcore\modules\page {
       $items['#color_menu_text_id'       ]->color_set($preset->colors->color_menu_text_id       );
       $items['#color_menu_link_id'       ]->color_set($preset->colors->color_menu_link_id       );
       $items['#color_menu_link_active_id']->color_set($preset->colors->color_menu_link_active_id);
+      $items['#color_tabs_id'            ]->color_set($preset->colors->color_tabs_id            );
+      $items['#color_tabs_link_id'       ]->color_set($preset->colors->color_tabs_link_id       );
+      $items['#color_tabs_link_active_id']->color_set($preset->colors->color_tabs_link_active_id);
       $items['#color_ok_id'              ]->color_set($preset->colors->color_ok_id              );
       $items['#color_warning_id'         ]->color_set($preset->colors->color_warning_id         );
       $items['#color_error_id'           ]->color_set($preset->colors->color_error_id           );
@@ -60,6 +63,9 @@ namespace effcore\modules\page {
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $preset->colors->color_menu_text_id,        false);
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_id',        $preset->colors->color_menu_link_id,        false);
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id', $preset->colors->color_menu_link_active_id, false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_id',             $preset->colors->color_tabs_id,             false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_link_id',        $preset->colors->color_tabs_link_id,        false);
+          storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_id', $preset->colors->color_tabs_link_active_id, false);
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $preset->colors->color_ok_id,               false);
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $preset->colors->color_warning_id,          false);
           storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $preset->colors->color_error_id,            false);

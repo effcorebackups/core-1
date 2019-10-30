@@ -29,6 +29,9 @@ namespace effcore\modules\page {
       case 'color_menu_text'       : $color_result = $colors[$settings->color_menu_text_id       ] ?? null; break;
       case 'color_menu_link'       : $color_result = $colors[$settings->color_menu_link_id       ] ?? null; break;
       case 'color_menu_link_active': $color_result = $colors[$settings->color_menu_link_active_id] ?? null; break;
+      case 'color_tabs'            : $color_result = $colors[$settings->color_tabs_id            ] ?? null; break;
+      case 'color_tabs_link'       : $color_result = $colors[$settings->color_tabs_link_id       ] ?? null; break;
+      case 'color_tabs_link_active': $color_result = $colors[$settings->color_tabs_link_active_id] ?? null; break;
       case 'color_ok'              : $color_result = $colors[$settings->color_ok_id              ] ?? null; break;
       case 'color_warning'         : $color_result = $colors[$settings->color_warning_id         ] ?? null; break;
       case 'color_error'           : $color_result = $colors[$settings->color_error_id           ] ?? null; break;

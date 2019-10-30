@@ -25,6 +25,9 @@ namespace effcore\modules\page {
     $items['*color_menu_text_id'       ]->value_set( $settings->color_menu_text_id        );
     $items['*color_menu_link_id'       ]->value_set( $settings->color_menu_link_id        );
     $items['*color_menu_link_active_id']->value_set( $settings->color_menu_link_active_id );
+    $items['*color_tabs_id'            ]->value_set( $settings->color_tabs_id             );
+    $items['*color_tabs_link_id'       ]->value_set( $settings->color_tabs_link_id        );
+    $items['*color_tabs_link_active_id']->value_set( $settings->color_tabs_link_active_id );
     $items['*color_ok_id'              ]->value_set( $settings->color_ok_id               );
     $items['*color_warning_id'         ]->value_set( $settings->color_warning_id          );
     $items['*color_error_id'           ]->value_set( $settings->color_error_id            );
@@ -53,6 +56,9 @@ namespace effcore\modules\page {
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_text_id',        $items['*color_menu_text_id'       ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_id',        $items['*color_menu_link_id'       ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id', $items['*color_menu_link_active_id']->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_id',             $items['*color_tabs_id'            ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_link_id',        $items['*color_tabs_link_id'       ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_id', $items['*color_tabs_link_active_id']->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_ok_id',               $items['*color_ok_id'              ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_warning_id',          $items['*color_warning_id'         ]->value_get(), false);
         storage::get('files')->changes_insert('page', 'update', 'settings/page/color_error_id',            $items['*color_error_id'           ]->value_get(), false);
@@ -79,6 +85,9 @@ namespace effcore\modules\page {
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_text_id',        false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_link_id',        false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_menu_link_active_id', false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_tabs_id',             false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_tabs_link_id',        false);
+        storage::get('files')->changes_delete('page', 'update', 'settings/page/color_tabs_link_active_id', false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_ok_id',               false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_warning_id',          false);
         storage::get('files')->changes_delete('page', 'update', 'settings/page/color_error_id',            false);

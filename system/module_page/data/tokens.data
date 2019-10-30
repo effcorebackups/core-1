@@ -54,6 +54,18 @@ tokens
     match: %%_color_menu_link_active
     type: code
     handler: \effcore\modules\page\events_token::on_replace
+- color_tabs
+    match: %%_color_tabs
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
+- color_tabs_link
+    match: %%_color_tabs_link
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
+- color_tabs_link_active
+    match: %%_color_tabs_link_active
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
 - color_ok
     match: %%_color_ok
     type: code
