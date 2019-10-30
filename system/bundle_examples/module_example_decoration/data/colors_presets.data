@@ -1,0 +1,28 @@
+colors_presets
+- example
+    id: example
+    title: example
+    colors
+      color_page_id: white
+      color_text_id: black
+      color_main_id: example_mono_7
+      color_link_id: coral
+      color_link_active_id: black
+      color_table_row_odd_id: white
+      color_table_row_even_id: whitesmoke
+      color_relation_id: black
+      color_menu_id: example_mono_6
+      color_menu_active_id: example_mono_1
+      color_menu_text_id: white
+      color_menu_link_id: white
+      color_menu_link_active_id: state_warning
+      color_ok_id: state_ok
+      color_warning_id: state_warning
+      color_error_id: state_error
+      color_fieldset_id: whitesmoke
+      color_fieldset_nested_id: white
+      color_field_id: white
+      color_field_text_id: black
+      color_button_id: coral
+      color_button_active_id: state_warning
+      color_button_text_id: white

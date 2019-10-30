@@ -122,7 +122,10 @@ translations
     - Events: События
     - events: события
     - Example of empty module.: Пример пустого модуля.
+    - example: пример
+    - Example: Пример
     - Examples: Примеры
+    - examples: примеры
     - Examples\: %%_examples.: Примеры: %%_examples.
     - Execution: Выполнение
     - expand: развернуть

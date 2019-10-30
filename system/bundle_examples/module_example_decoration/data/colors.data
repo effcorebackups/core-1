@@ -2,6 +2,81 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # example group
 # ─────────────────────────────────────────────────────────────────────
+- example_mono_1|color
+    id: example_mono_1
+    value: #101010
+    value_hex: #101010
+    group: example
+- example_mono_2|color
+    id: example_mono_2
+    value: #202020
+    value_hex: #202020
+    group: example
+- example_mono_3|color
+    id: example_mono_3
+    value: #303030
+    value_hex: #303030
+    group: example
+- example_mono_4|color
+    id: example_mono_4
+    value: #404040
+    value_hex: #404040
+    group: example
+- example_mono_5|color
+    id: example_mono_5
+    value: #505050
+    value_hex: #505050
+    group: example
+- example_mono_6|color
+    id: example_mono_6
+    value: #606060
+    value_hex: #606060
+    group: example
+- example_mono_7|color
+    id: example_mono_7
+    value: #707070
+    value_hex: #707070
+    group: example
+- example_mono_8|color
+    id: example_mono_8
+    value: #808080
+    value_hex: #808080
+    group: example
+- example_mono_9|color
+    id: example_mono_9
+    value: #909090
+    value_hex: #909090
+    group: example
+- example_mono_a|color
+    id: example_mono_a
+    value: #a0a0a0
+    value_hex: #a0a0a0
+    group: example
+- example_mono_b|color
+    id: example_mono_b
+    value: #b0b0b0
+    value_hex: #b0b0b0
+    group: example
+- example_mono_c|color
+    id: example_mono_c
+    value: #c0c0c0
+    value_hex: #c0c0c0
+    group: example
+- example_mono_d|color
+    id: example_mono_d
+    value: #d0d0d0
+    value_hex: #d0d0d0
+    group: example
+- example_mono_e|color
+    id: example_mono_e
+    value: #e0e0e0
+    value_hex: #e0e0e0
+    group: example
+- example_mono_f|color
+    id: example_mono_f
+    value: #f0f0f0
+    value_hex: #f0f0f0
+    group: example
 - example_1|color
     id: example_1
     value: #ff0000
