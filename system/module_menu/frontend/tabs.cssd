@@ -19,6 +19,7 @@
     padding: 15px 15px 10px 15px;
     border-radius: 15px 15px 0 0;
     color: %%_color_tabs_link}
+  x-tabs x-top-items a[href]:hover {color: %%_color_tabs_link_active}
   x-tabs x-top-items a[aria-selected      ='true'],
   x-tabs x-top-items a[data-selected-trail='true'] {color: %%_color_tabs_link_active; background: %%_color_tabs}
 
@@ -30,6 +31,7 @@
   x-tabs x-sub-items ul ul {padding-left: 0}
   x-tabs x-sub-items ul ul li::before {content: '— '}
 
-  x-tabs x-sub-items a {color: %%_color_tabs_link}
+  x-tabs x-sub-items a             {color: %%_color_tabs_link}
+  x-tabs x-sub-items a[href]:hover {color: %%_color_tabs_link_active}
   x-tabs x-sub-items a[aria-selected      ='true'],
   x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color_tabs_link_active}
