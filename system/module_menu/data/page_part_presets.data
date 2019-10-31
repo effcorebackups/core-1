@@ -1,18 +1,18 @@
 page_part_presets
-- tree_main|page_part_preset
-    id: tree_main
+- tree_system|page_part_preset
+    id: tree_system
     managing_group: Menu
-    managing_title: Main menu
+    managing_title: System menu
     in_areas
     - =: menu
     type: link
-    source: trees/core/main
-- breadcrumbs_main|page_part_preset
-    id: breadcrumbs_main
+    source: trees/core/system
+- breadcrumbs_system|page_part_preset
+    id: breadcrumbs_system
     managing_group: Menu
-    managing_title: Breadcrumbs Main
+    managing_title: Breadcrumbs System
     type: link
-    source: breadcrumbs/core/main
+    source: breadcrumbs/core/system
 - breadcrumbs_user_registered|page_part_preset
     id: breadcrumbs_user_registered
     managing_group: Menu

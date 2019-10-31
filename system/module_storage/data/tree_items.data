@@ -2,7 +2,7 @@ tree_items
 - data|tree_item
     id: data
     id_parent: manage
-    id_tree: main
+    id_tree: system
     title: Data
     url: /manage/data
     weight: +80

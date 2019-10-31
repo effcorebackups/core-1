@@ -1,7 +1,7 @@
 trees
-- main|tree
-    id: main
-    title: Menu main
+- system|tree
+    id: system
+    title: Menu system
     title_state: hidden
     access
       roles

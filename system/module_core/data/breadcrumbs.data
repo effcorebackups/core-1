@@ -1,6 +1,6 @@
 breadcrumbs
-- main|breadcrumbs
-    id: main
+- system|breadcrumbs
+    id: system
     links
     - front
         title: Front

@@ -2,7 +2,7 @@ tree_items
 - front|tree_item
     id: front
     id_parent: null
-    id_tree: main
+    id_tree: system
     title: Front
     url: /
     weight: +80
@@ -12,7 +12,7 @@ tree_items
 - decoration|tree_item
     id: decoration
     id_parent: manage
-    id_tree: main
+    id_tree: system
     title: Decoration
     url: /manage/decoration
     access

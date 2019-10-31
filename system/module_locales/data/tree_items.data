@@ -2,7 +2,7 @@ tree_items
 - locales|tree_item
     id: locales
     id_parent: manage
-    id_tree: main
+    id_tree: system
     title: Locales
     url: /manage/locales
     access

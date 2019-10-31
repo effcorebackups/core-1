@@ -26,7 +26,7 @@ translations
     - apply: применить
     - Avatar: Аватар
     - Belarusian: Белорусский
-    - Breadcrumbs Main: Хлебные крошки Основные
+    - Breadcrumbs System: Хлебные крошки Системные
     - Breadcrumbs User anonymous: Хлебные крошки Пользователь анонимный
     - Breadcrumbs User registered: Хлебные крошки Пользователь зарегистрированный
     - Build number: Номер сборки
@@ -271,7 +271,6 @@ translations
     - Main color: Основной цвет
     - Main colors: Основные цвета
     - Main logotype: Логотип основной
-    - Main menu: Меню основное
     - Main system module.: Основной модуль системы.
     - Management: Управление
     - Managers: Управляющие
@@ -281,7 +280,7 @@ translations
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
-    - Menu main: Меню главное
+    - Menu system: Меню системное
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
     - Menu\: link: Меню: ссылка
@@ -439,6 +438,7 @@ translations
     - Switcher: Выключатель
     - Switchers: Выключатели
     - system logotype: логотип системы
+    - System menu: Меню системное
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система

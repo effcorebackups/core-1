@@ -2,7 +2,7 @@ tree_items
 - manage|tree_item
     id: manage
     id_parent: null
-    id_tree: main
+    id_tree: system
     title: Management
     url_hidden: /manage
     access
@@ -11,7 +11,7 @@ tree_items
 - modules|tree_item
     id: modules
     id_parent: manage
-    id_tree: main
+    id_tree: system
     title: Modules
     url: /manage/modules
     access
@@ -20,7 +20,7 @@ tree_items
 - info|tree_item
     id: info
     id_parent: manage
-    id_tree: main
+    id_tree: system
     title: Information
     url: /manage/info
     weight: -80

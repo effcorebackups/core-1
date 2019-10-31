@@ -6,7 +6,7 @@
   nav[data-area-id='menu'] h2 {display: none}
   nav[data-area-id='menu'] x-tree {z-index: 300}
 
-  /* menu style 'main': sizes and orientation */
+  /* menu 'System': sizes and orientation */
 
   nav[data-area-id='menu'] x-tree          {float: left}
   nav[data-area-id='menu'] x-tree li       {float: left}
@@ -25,12 +25,12 @@
   nav[data-area-id='menu'] x-tree li     a {padding: 21px; display: block}
   nav[data-area-id='menu'] x-tree li li  a {padding: 0}
 
-  /* menu style 'main': dynamic */
+  /* menu 'System': dynamics */
 
   nav[data-area-id='menu'] x-tree > ul > li       > ul {display: none}
   nav[data-area-id='menu'] x-tree > ul > li:hover > ul {display: block}
 
-  /* menu style 'main': colors */
+  /* menu 'System': colors */
 
   nav[data-area-id='menu'] x-tree ul       {background-color: %%_color_menu}
   nav[data-area-id='menu'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
@@ -49,13 +49,13 @@
   nav[data-area-id='menu'] x-tree li li a[aria-selected      ='true'],
   nav[data-area-id='menu'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
-  /* menu 'Main': icons */
+  /* menu 'System': icons */
 
-  x-tree[data-id='main'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
-  x-tree[data-id='main'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
-  x-tree[data-id='main'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
+  x-tree[data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
+  x-tree[data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
+  x-tree[data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 
-  /* menu 'Main': adaptivity */
+  /* menu 'System': adaptivity */
 
   @media screen and (max-width: 600px) {
     nav[data-area-id='menu'] x-tree       {float: none}

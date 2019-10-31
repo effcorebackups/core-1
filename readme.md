@@ -203,7 +203,7 @@ instances of these classes in tree form with any level of nesting
 and unlimited by structure.
 
 Changing the structure of NoSQL data is possible only through a special mechanism.
-For example, the main menu is located in NoSQL storage and nobody cannot
+For example, the system menu is located in NoSQL storage and nobody cannot
 disrupt its work. The anonymous user menu is stored in SQL storage and
 the administrator can edit this menu through the system interface.
 
