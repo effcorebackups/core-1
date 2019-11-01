@@ -13,6 +13,8 @@ instances
     - access: null
     - parts
       - menu
+        - page_actions|page_part_preset_link
+            id: page_actions
         - tree_sql_user_registered|page_part_preset_link
             id: tree_sql_user_registered
         - tree_sql_user_anonymous|page_part_preset_link
@@ -116,6 +118,8 @@ instances
         - =: registered
     - parts
       - menu
+        - page_actions|page_part_preset_link
+            id: page_actions
         - tree_sql_user_registered|page_part_preset_link
             id: tree_sql_user_registered
         - tree_system|page_part_preset_link
