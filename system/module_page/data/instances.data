@@ -1,5 +1,16 @@
 instances
 # ─────────────────────────────────────────────────────────────────────
+# logotypes
+# ─────────────────────────────────────────────────────────────────────
+- logotype_main|instance
+    entity_name: logotype
+    values
+    - id: main
+    - title: Main logotype
+    - url: /
+    - path: null
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
 - page_front|instance
@@ -134,14 +145,7 @@ instances
         - form_logout|page_part_preset_link
             id: form_logout
 # ─────────────────────────────────────────────────────────────────────
-- logotype_main|instance
-    entity_name: logotype
-    values
-    - id: main
-    - title: Main logotype
-    - url: /
-    - path: null
-    - is_embed: 1
+# texts
 # ─────────────────────────────────────────────────────────────────────
 - text_welcome|instance
     entity_name: text
@@ -149,3 +153,12 @@ instances
     - id: welcome
     - description: Welcome message
     - text: Welcome to our site!
+# ─────────────────────────────────────────────────────────────────────
+# trees
+# ─────────────────────────────────────────────────────────────────────
+- tree_main|instance
+    entity_name: tree
+    values
+    - id: main
+    - title: Main menu
+    - is_embed: 1
