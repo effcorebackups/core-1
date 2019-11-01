@@ -144,6 +144,14 @@
     x-table[data-compact='true'] x-cell:last-child  {padding-bottom: 14px}
   }
 
+  /* x-page-actions */
+
+  x-page-actions {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: %%_color_main url('images/lines.svg') -10px 0}
+
   /* breadcrumbs */
 
   x-breadcrumbs {display: block; margin: 100px 0}
@@ -225,10 +233,10 @@
 
   /* control elements */
 
-  x-actions x-action a em {display: none}
-  x-actions x-action[data-title='select'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0  -1px}
-  x-actions x-action[data-title='update'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -41px}
-  x-actions x-action[data-title='delete'] a {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -61px}
+  x-actions a em {display: none}
+  x-actions a[data-id='select'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0  -1px}
+  x-actions a[data-id='update'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -41px}
+  x-actions a[data-id='delete'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -61px}
 
   /* sessions_logout */
 

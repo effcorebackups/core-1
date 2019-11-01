@@ -339,6 +339,7 @@ translations
     - Ordered list: Упорядоченный список
     - Other: Другие
     - Owner: Владелец
+    - Page actions: Дзеянні старонкі
     - Page not found: Страница не найдена
     - Page title: Заголовок страницы
     - Page: Страница
@@ -502,6 +503,7 @@ translations
     - Update #%%_number for module "%%_title" (%%_id) was applied.: Обновление №%%_number для модуля "%%_title" (%%_id) было применено.
     - Update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление №%%_number для модуля "%%_title" (%%_id) не было применено!
     - Update modules data: Обновить данные модулей
+    - update this page: обновить эту страницу
     - Update: Обновить
     - update: обновить
     - updated: обновлено

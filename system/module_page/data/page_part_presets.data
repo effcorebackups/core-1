@@ -5,6 +5,12 @@ page_part_presets
     managing_title: Page title
     type: code
     source: \effcore\modules\page\events_page::on_show_title
+- page_actions|page_part_preset
+    id: page_actions
+    managing_group: Other
+    managing_title: Page actions
+    type: code
+    source: \effcore\modules\page\events_page::on_show_page_actions
 # ─────────────────────────────────────────────────────────────────────
 - selections_logotype_main|page_part_preset
     id: selections_logotype_main
