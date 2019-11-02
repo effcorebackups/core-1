@@ -6,7 +6,6 @@
 
 namespace effcore\modules\storage {
           use \effcore\actions_list;
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\markup;
           use \effcore\message;
@@ -43,15 +42,9 @@ namespace effcore\modules\storage {
           new markup('x-no-result', [], 'no visible fields'), 'no_result'
         );
       } else {
-        $modules_enabled = core::boot_select('enabled');
         $selection->field_insert_checkbox(null, '', ['weight' => 80]);
       # $c_row 'actions'
-        $form->_selection->field_insert_code('actions', '', function (&$c_row, $c_instance) use ($modules_enabled) {
-          if ($c_instance->entity_get()->ws_module_id && $c_instance->module_id && empty($modules_enabled[$c_instance->module_id])) {
-            $c_row['attributes']['data-is-disabled'] = true;
-            $c_row['checkbox']['value'] = ' ';
-            return;
-          }
+        $form->_selection->field_insert_code('actions', '', function ($c_row, $c_instance) {
           $c_actions_list = new actions_list();
           if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
           if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');

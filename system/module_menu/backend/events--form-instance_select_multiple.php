@@ -6,7 +6,6 @@
 
 namespace effcore\modules\menu {
           use \effcore\actions_list;
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\field_hidden;
           use \effcore\field;
@@ -25,12 +24,11 @@ namespace effcore\modules\menu {
     if ($entity) {
     # drag-and-drop functionality
       if ($entity->name == 'tree_item' && $category_id && !empty($form->_selection)) {
-        $modules_enabled = core::boot_select('enabled');
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
         $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $category_id];
       # $c_row 'actions'
-        $form->_selection->field_insert_code('actions', '', function (&$c_row, $c_instance) {
+        $form->_selection->field_insert_code('actions', '', function ($c_row, $c_instance) {
           $c_actions_list = new actions_list();
           if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
           if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
@@ -38,12 +36,7 @@ namespace effcore\modules\menu {
           return $c_actions_list;
         });
       # $c_row 'extra'
-        $form->_selection->field_insert_code('extra', '', function ($c_row, $c_instance) use ($modules_enabled) {
-          if ($c_instance->entity_get()->ws_module_id && $c_instance->module_id && empty($modules_enabled[$c_instance->module_id])) {
-            $c_row['attributes']['data-is-disabled'] = true;
-            $c_row['checkbox']['value'] = ' ';
-            return;
-          }
+        $form->_selection->field_insert_code('extra', '', function ($c_row, $c_instance) {
           $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
           $c_hidden_weight = new field_hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-weight' => 'true']);
           return new node([], [

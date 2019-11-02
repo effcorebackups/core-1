@@ -96,7 +96,6 @@
   x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color_table_row_odd}
   x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color_table_row_even}
   x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
-  x-table x-body x-row[data-is-disabled] {opacity: .5}
 
   x-table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
   x-table [data-cellid='checkbox'] x-field,
