@@ -43,12 +43,11 @@ namespace effcore\modules\storage {
           new markup('x-no-result', [], 'no visible fields'), 'no_result'
         );
       } else {
-        $selection->field_insert_checkbox(null, '', ['weight' => 80]);
         $modules_enabled = core::boot_select('enabled');
+        $selection->field_insert_checkbox(null, '', ['weight' => 80]);
+      # $c_row 'actions'
         $form->_selection->field_insert_code('actions', '', function (&$c_row, $c_instance) use ($modules_enabled) {
-          if ($c_instance->entity_get()      ->ws_module_id &&
-              $c_instance                       ->module_id &&
-              empty($modules_enabled[$c_instance->module_id])) {
+          if ($c_instance->entity_get()->ws_module_id && $c_instance->module_id && empty($modules_enabled[$c_instance->module_id])) {
             $c_row['attributes']['data-is-disabled'] = true;
             $c_row['checkbox']['value'] = ' ';
             return;
