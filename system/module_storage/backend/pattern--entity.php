@@ -19,6 +19,7 @@ namespace effcore {
   public $ws_access             = false;
   public $ws_created            = false;
   public $ws_updated            = false;
+  public $ws_module_id          = false;
   public $ws_data               = false;
 
   public $title;
@@ -88,6 +89,14 @@ namespace effcore {
       $this->indexes['index_updated'] = new \stdClass;
       $this->indexes['index_updated']->type = 'index';
       $this->indexes['index_updated']->fields = ['updated' => 'updated'];
+    }
+  # insert field 'module_id'
+    if ($this->ws_module_id) {
+      $this->fields['module_id'] = new \stdClass;
+      $this->fields['module_id']->title = 'Module ID';
+      $this->fields['module_id']->type = 'varchar';
+      $this->fields['module_id']->size = 64;
+      $this->fields['module_id']->collate = 'nocase';
     }
   # insert field 'data'
     if ($this->ws_data) {

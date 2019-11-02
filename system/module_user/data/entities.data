@@ -9,6 +9,7 @@ entities
     has_parallel_checking: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     fields
     - id
         title: ID
@@ -58,6 +59,7 @@ entities
     has_parallel_checking: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     fields
     - id_role
         title: Role
@@ -121,6 +123,7 @@ entities
     has_parallel_checking: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     fields
     - id_user
         title: User
@@ -184,6 +187,7 @@ entities
     ws_weight: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     ws_data: true
     fields
     - id
@@ -229,6 +233,7 @@ entities
     title: Session
     title_plural: Sessions
     catalog_name: sessions
+    ws_module_id: true
     ws_data: true
     fields
     - id
@@ -283,6 +288,7 @@ entities
     ws_is_embed: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     ws_data: true
     fields
     - id

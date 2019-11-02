@@ -11,6 +11,7 @@ entities
     ws_access: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     ws_data: true
     fields
     - id
@@ -64,6 +65,7 @@ entities
     ws_access: true
     ws_created: true
     ws_updated: true
+    ws_module_id: true
     ws_data: true
     decorator_view_type_multiple: tree
     managing_selection_params
