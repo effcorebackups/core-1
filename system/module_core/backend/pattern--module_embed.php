@@ -128,6 +128,49 @@ namespace effcore {
     return $result;
   }
 
+  static function get_enabled_by_boot() {
+    return core::boot_select('enabled');
+  }
+
+  static function get_installed_by_boot() {
+    return core::boot_select('installed');
+  }
+
+  static function is_enabled($module_id) {
+    $enabled = core::boot_select('enabled');
+    return isset($enabled[$module_id]);
+  }
+
+  static function is_installed($module_id) {
+    $installed = core::boot_select('installed');
+    return isset($installed[$module_id]);
+  }
+
+  static function is_required_updates() {
+    foreach (static::get_all() as $c_module) {
+      $c_updates            = static::updates_get           ($c_module->id);
+      $c_update_last_number = static::update_get_last_number($c_module->id);
+      foreach ($c_updates as $c_update) {
+        if ($c_update->number > $c_update_last_number) return true;
+      }
+    }
+  }
+
+  static function update_get_last_number($module_id) {
+    $settings = static::settings_get($module_id);
+    return $settings->update_last_number ?? 0;
+  }
+
+  static function updates_get($module_id, $from_number = 0) {
+    $updates = [];
+    foreach (storage::get('files')->select('module_updates', false, false) ?? [] as $c_module_id => $c_updates)
+      if ($c_module_id == $module_id)
+        foreach ($c_updates as $c_row_id => $c_update)
+          if ($c_update->number >= $from_number)
+            $updates[$c_row_id] = $c_update;
+    return $updates;
+  }
+
   static function settings_get($module_id) {
     $settings = storage::get('files')->select('settings');
     return $settings[$module_id] ?? [];
@@ -144,41 +187,6 @@ namespace effcore {
     foreach (static::$cache['modules'] as $c_module)
       $groups[core::sanitize_id($c_module->group)] = $c_module->group;
     return $groups;
-  }
-
-  static function updates_get($module_id, $from_number = 0) {
-    $updates = [];
-    foreach (storage::get('files')->select('module_updates', false, false) ?? [] as $c_module_id => $c_updates)
-      if ($c_module_id == $module_id)
-        foreach ($c_updates as $c_row_id => $c_update)
-          if ($c_update->number >= $from_number)
-            $updates[$c_row_id] = $c_update;
-    return $updates;
-  }
-
-  static function update_get_last_number($module_id) {
-    $settings = static::settings_get($module_id);
-    return $settings->update_last_number ?? 0;
-  }
-
-  static function is_required_updates() {
-    foreach (static::get_all() as $c_module) {
-      $c_updates            = static::updates_get           ($c_module->id);
-      $c_update_last_number = static::update_get_last_number($c_module->id);
-      foreach ($c_updates as $c_update) {
-        if ($c_update->number > $c_update_last_number) return true;
-      }
-    }
-  }
-
-  static function is_enabled($module_id) {
-    $enabled = core::boot_select('enabled');
-    return isset($enabled[$module_id]);
-  }
-
-  static function is_installed($module_id) {
-    $installed = core::boot_select('installed');
-    return isset($installed[$module_id]);
   }
 
 }}

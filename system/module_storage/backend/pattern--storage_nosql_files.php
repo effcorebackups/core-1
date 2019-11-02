@@ -177,7 +177,7 @@ namespace effcore {
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;
-    $enabled      = core::boot_select('enabled') + $with_paths;
+    $enabled      = module::get_enabled_by_boot() + $with_paths;
     if ($enabled == []) {
       foreach ($preparse->parsed as $c_info) {
         if (!empty($c_info->data->module)         &&

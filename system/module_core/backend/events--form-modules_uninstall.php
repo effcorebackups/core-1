@@ -18,18 +18,18 @@ namespace effcore\modules\core {
 
   static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
-    $installed_by_boot = core::boot_select('installed');
-    $enabled_by_boot   = core::boot_select('enabled'  );
-    $embed   = module::get_embed();
-    $modules = module::get_all  ();
+    $installed = module::get_installed_by_boot();
+    $enabled   = module::get_enabled_by_boot  ();
+    $embed     = module::get_embed            ();
+    $modules   = module::get_all              ();
     $checkboxes = new group_checkboxes();
     $checkboxes->description = 'The removing module must be disabled at first. Embed modules cannot be disabled.';
     $checkboxes->build();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
-      if  (!isset($embed            [$c_module->id]) &&
-            isset($installed_by_boot[$c_module->id])) {
-        if (isset($enabled_by_boot  [$c_module->id]))
+      if  (!isset($embed    [$c_module->id]) &&
+            isset($installed[$c_module->id])) {
+        if (isset($enabled  [$c_module->id]))
         $checkboxes->disabled[$c_module->id] = $c_module->id;
         $checkboxes->field_insert(
           $c_module->title, null, ['name' => 'uninstall[]', 'value' => $c_module->id]
