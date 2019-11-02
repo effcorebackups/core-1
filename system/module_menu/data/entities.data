@@ -8,10 +8,10 @@ entities
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
-    ws_access: true
     ws_created: true
     ws_updated: true
     ws_module_id: true
+    ws_access: true
     ws_data: true
     fields
     - id
@@ -62,10 +62,10 @@ entities
     has_parallel_checking: true
     ws_is_embed: true
     ws_weight: true
-    ws_access: true
     ws_created: true
     ws_updated: true
     ws_module_id: true
+    ws_access: true
     ws_data: true
     decorator_view_type_multiple: tree
     managing_selection_params

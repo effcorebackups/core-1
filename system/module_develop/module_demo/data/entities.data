@@ -8,9 +8,9 @@ entities
     managing_group: Demo
     ws_is_embed: true
     ws_weight: true
-    ws_access: true
     ws_created: true
     ws_updated: true
+    ws_access: true
     ws_data: true
     fields
     - id

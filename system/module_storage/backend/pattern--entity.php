@@ -16,10 +16,10 @@ namespace effcore {
   public $has_parallel_checking = false;
   public $ws_is_embed           = false;
   public $ws_weight             = false;
-  public $ws_access             = false;
   public $ws_created            = false;
   public $ws_updated            = false;
   public $ws_module_id          = false;
+  public $ws_access             = false;
   public $ws_data               = false;
 
   public $title;
@@ -61,15 +61,6 @@ namespace effcore {
       $this->indexes['index_weight']->type = 'index';
       $this->indexes['index_weight']->fields = ['weight' => 'weight'];
     }
-  # insert field 'access'
-    if ($this->ws_access) {
-      $this->fields['access'] = new \stdClass;
-      $this->fields['access']->title = 'Access';
-      $this->fields['access']->type = 'blob';
-      $this->fields['access']->filter_select = 'unserialize';
-      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
-      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
-    }
   # insert field 'created' and index for it
     if ($this->ws_created) {
       $this->fields['created'] = new \stdClass;
@@ -97,6 +88,15 @@ namespace effcore {
       $this->fields['module_id']->type = 'varchar';
       $this->fields['module_id']->size = 64;
       $this->fields['module_id']->collate = 'nocase';
+    }
+  # insert field 'access'
+    if ($this->ws_access) {
+      $this->fields['access'] = new \stdClass;
+      $this->fields['access']->title = 'Access';
+      $this->fields['access']->type = 'blob';
+      $this->fields['access']->filter_select = 'unserialize';
+      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
+      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
     }
   # insert field 'data'
     if ($this->ws_data) {

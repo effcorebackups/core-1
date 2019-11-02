@@ -29,10 +29,10 @@ entities
     managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
-    ws_access: true
     ws_created: true
     ws_updated: true
     ws_module_id: true
+    ws_access: true
     ws_data: true
     fields
     - id
