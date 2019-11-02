@@ -10,16 +10,16 @@ namespace effcore {
   public $name;
   public $storage_name = 'sql';
   public $catalog_name;
-  public $fields                       = [];
-  public $constraints                  = [];
-  public $indexes                      = [];
-  public $ws_is_embed                  = false;
-  public $ws_weight                    = false;
-  public $ws_access                    = false;
-  public $ws_created                   = false;
-  public $ws_updated                   = false;
-  public $ws_updated_parallel_checking = false;
-  public $ws_data                      = false;
+  public $fields                = [];
+  public $constraints           = [];
+  public $indexes               = [];
+  public $has_parallel_checking = false;
+  public $ws_is_embed           = false;
+  public $ws_weight             = false;
+  public $ws_access             = false;
+  public $ws_created            = false;
+  public $ws_updated            = false;
+  public $ws_data               = false;
 
   public $title;
   public $title_plural;

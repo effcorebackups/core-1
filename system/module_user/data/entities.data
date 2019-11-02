@@ -6,9 +6,9 @@ entities
     catalog_name: permissions
     managing_is_on: true
     managing_group: User
+    has_parallel_checking: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     fields
     - id
         title: ID
@@ -55,9 +55,9 @@ entities
     catalog_name: relations_role_ws_permission
     managing_is_on: true
     managing_group: User
+    has_parallel_checking: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     fields
     - id_role
         title: Role
@@ -118,9 +118,9 @@ entities
     catalog_name: relations_role_ws_user
     managing_is_on: true
     managing_group: User
+    has_parallel_checking: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     fields
     - id_user
         title: User
@@ -179,11 +179,11 @@ entities
     catalog_name: roles
     managing_is_on: true
     managing_group: User
+    has_parallel_checking: true
     ws_is_embed: true
     ws_weight: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id
@@ -279,10 +279,10 @@ entities
     catalog_name: users
     managing_is_on: true
     managing_group: User
+    has_parallel_checking: true
     ws_is_embed: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id

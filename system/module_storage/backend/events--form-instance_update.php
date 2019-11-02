@@ -31,8 +31,7 @@ namespace effcore\modules\storage {
         $form->_instance = new instance($entity->name, array_combine($id_keys, $id_values));
         if ($form->_instance->select()) {
         # fixation of 'updated' value for prevent parallel update (not secure: only for organizational methods)
-          if ($entity->ws_updated &&
-              $entity->ws_updated_parallel_checking) {
+          if ($entity->has_parallel_checking && $entity->ws_updated) {
             $hidden_updated = new field_hidden('updated');
             $hidden_updated->value_set(core::sanitize_datetime($hidden_updated->value_request_get()) ?: $form->_instance->updated);
             $form->child_insert($hidden_updated, 'hidden_updated');
@@ -80,8 +79,7 @@ namespace effcore\modules\storage {
         case 'update':
           if (!empty($form->_instance)) {
           # prevent parallel update
-            if ($entity->ws_updated &&
-                $entity->ws_updated_parallel_checking) {
+            if ($entity->has_parallel_checking && $entity->ws_updated) {
               $hidden_updated = $form->child_select('hidden_updated');
               $hidden_updated->value_get();
               $fresh_instance = clone $form->_instance;

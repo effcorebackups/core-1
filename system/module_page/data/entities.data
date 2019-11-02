@@ -27,11 +27,11 @@ entities
     catalog_name: pages
     managing_is_on: true
     managing_group: Content
+    has_parallel_checking: true
     ws_is_embed: true
     ws_access: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id
@@ -161,10 +161,10 @@ entities
     catalog_name: logotypes
     managing_is_on: true
     managing_group: Content
+    has_parallel_checking: true
     ws_is_embed: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id
@@ -242,9 +242,9 @@ entities
     catalog_name: selections
     managing_is_on: true
     managing_group: Content
+    has_parallel_checking: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id
@@ -314,9 +314,9 @@ entities
     catalog_name: texts
     managing_is_on: true
     managing_group: Content
+    has_parallel_checking: true
     ws_created: true
     ws_updated: true
-    ws_updated_parallel_checking: true
     ws_data: true
     fields
     - id
