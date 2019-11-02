@@ -10,6 +10,7 @@ instances
     - url: /
     - path: null
     - is_embed: 1
+    - module_id: page
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
@@ -22,6 +23,7 @@ instances
     - is_https: 0
     - is_embed: 1
     - access: null
+    - module_id: page
     - parts
       - menu
         - page_actions|page_part_preset_link
@@ -46,6 +48,7 @@ instances
     - url: /login
     - is_https: 1
     - is_embed: 1
+    - module_id: page
     - access
         roles
         - =: anonymous
@@ -72,6 +75,7 @@ instances
     - url: /recovery
     - is_https: 1
     - is_embed: 1
+    - module_id: page
     - access
         roles
         - =: anonymous
@@ -98,6 +102,7 @@ instances
     - url: /registration
     - is_https: 1
     - is_embed: 1
+    - module_id: page
     - access
         roles
         - =: anonymous
@@ -124,6 +129,7 @@ instances
     - url: /logout
     - is_https: 1
     - is_embed: 1
+    - module_id: page
     - access
         roles
         - =: registered
@@ -153,6 +159,7 @@ instances
     - id: welcome
     - description: Welcome message
     - text: Welcome to our site!
+    - module_id: page
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
@@ -162,3 +169,4 @@ instances
     - id: main
     - title: Main menu
     - is_embed: 1
+    - module_id: page

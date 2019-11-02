@@ -233,7 +233,6 @@ entities
     title: Session
     title_plural: Sessions
     catalog_name: sessions
-    ws_module_id: true
     ws_data: true
     fields
     - id
