@@ -18,7 +18,7 @@ namespace effcore {
       $rendered = preg_replace_callback('%(?<spacer>[ ]*)'.
                                          '(?<prefix>\\%\\%_)'.
                                          '(?<name>[a-z0-9_]+)'.
-                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function($c_match) {
+                                         '(?<args>\\{[a-z0-9_,]+\\}|)%S', function ($c_match) {
         return isset($c_match['prefix']) &&
                isset($c_match['name']) &&
                isset($this->args[$c_match['name']]) &&

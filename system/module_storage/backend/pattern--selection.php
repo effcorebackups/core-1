@@ -163,8 +163,8 @@ namespace effcore {
                 break;
               case 'code':
                 $c_row[$c_row_id] = [
-                  'title' => $c_field->title,
-                  'value' => $c_field->code->call($this, $c_row, $c_instance)
+                  'title' =>  $c_field->title,
+                  'value' => ($c_field->code)($c_row, $c_instance)
                 ];
                 break;
               case 'handler':

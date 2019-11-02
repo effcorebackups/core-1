@@ -329,7 +329,7 @@ namespace effcore {
   # └───────────────────────────────────┘  └─────────┘  └────────┘  └───────┘  └──────┘  └─────┘  └────┘  └───┘  └──┘  └─┘
 
   static function array_sort_text(&$array, $order = 'd', $translated = true) {
-    uasort($array, function($a, $b) use ($order, $translated) {
+    uasort($array, function ($a, $b) use ($order, $translated) {
       if ($order == 'a' && $translated == false) return                  $b  <=>                  $a;
       if ($order == 'd' && $translated == false) return                  $a  <=>                  $b;
       if ($order == 'a' && $translated)          return translation::get($b) <=> translation::get($a);
@@ -339,7 +339,7 @@ namespace effcore {
   }
 
   static function array_sort_by_text_property(&$array, $property = 'title', $order = 'd', $translated = true) {
-    uasort($array, function($a, $b) use ($property, $order, $translated) {
+    uasort($array, function ($a, $b) use ($property, $order, $translated) {
       if ($order == 'a' && $translated == false) return                  $b->{$property}  <=>                  $a->{$property};
       if ($order == 'd' && $translated == false) return                  $a->{$property}  <=>                  $b->{$property};
       if ($order == 'a' && $translated)          return translation::get($b->{$property}) <=> translation::get($a->{$property});
@@ -349,7 +349,7 @@ namespace effcore {
   }
 
   static function array_sort_by_property(&$array, $property, $order = 'a') {
-    uasort($array, function($a, $b) use ($property, $order) {
+    uasort($array, function ($a, $b) use ($property, $order) {
       if ($order == 'a') return $b->{$property} <=> $a->{$property};
       if ($order == 'd') return $a->{$property} <=> $b->{$property};
     });
@@ -595,7 +595,7 @@ namespace effcore {
 
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function($c_match) {
+    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function ($c_match) {
       if ($c_match['char'] == ' ') return '-';
       if (strlen($c_match['char']) == 1) return dechex(ord($c_match['char'][0]));
       if (strlen($c_match['char']) == 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));

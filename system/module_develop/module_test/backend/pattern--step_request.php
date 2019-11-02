@@ -111,7 +111,7 @@ namespace effcore {
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, static::$curlopt_ssl_verifypeer);
     if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
   # prepare headers
-    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $c_header) use (&$result) {
+    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
       if ($c_matches) $result['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");

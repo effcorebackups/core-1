@@ -68,7 +68,7 @@ namespace effcore {
     # call init handlers
       $this->form_items_update();
       event::start('on_form_init', $id, [&$this, &$this->items], null,
-        function($event, $form, $items){ # == $on_after_step
+        function ($event, $form, $items) { # == $on_after_step
           $form->form_items_update();
         }
       );
