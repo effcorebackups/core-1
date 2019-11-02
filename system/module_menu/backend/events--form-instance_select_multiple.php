@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\actions_list;
           use \effcore\entity;
           use \effcore\field_hidden;
           use \effcore\field;
@@ -26,14 +27,22 @@ namespace effcore\modules\menu {
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
         $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $category_id];
-        $form->_selection->field_insert_action(null, '', ['delete', 'select', 'update']);
+        $form->_selection->field_insert_code('actions', '', function($c_row, $c_instance){
+          $c_actions_list = new actions_list();
+          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+          return $c_actions_list;
+        });
         $form->_selection->field_insert_code('extra', '', function($c_row, $c_instance){
           $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
           $c_hidden_weight = new field_hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-weight' => 'true']);
           return new node([], [
             'actions'       => $c_row['actions']['value'],
             'hidden_parent' => $c_hidden_parent,
-            'hidden_weight' => $c_hidden_weight]);});
+            'hidden_weight' => $c_hidden_weight
+          ]);
+        });
         $form->_selection->build();
         if (!count($form->_selection->_instances)) {
           $items['~apply']->disabled_set();

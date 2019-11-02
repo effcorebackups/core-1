@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\actions_list;
           use \effcore\entity;
           use \effcore\markup;
           use \effcore\message;
@@ -42,7 +43,13 @@ namespace effcore\modules\storage {
         );
       } else {
         $selection->field_insert_checkbox(null, '', ['weight' => 80]);
-        $selection->field_insert_action(null, '', ['delete', 'select', 'update']);
+        $form->_selection->field_insert_code('actions', '', function($c_row, $c_instance){
+          $c_actions_list = new actions_list();
+          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+          return $c_actions_list;
+        });
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
         if (!count($selection->_instances)) {

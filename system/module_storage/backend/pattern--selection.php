@@ -155,28 +155,22 @@ namespace effcore {
                   'value' => $c_form_field
                 ];
                 break;
-              case 'actions':
-                $c_row[$c_row_id] = [
-                  'title' => $c_field->title ?? '',
-                  'value' => $this->actions_list_get($c_instance, $c_field->allowed)
-                ];
-                break;
               case 'markup':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title,
                   'value' => $c_field->markup
                 ];
                 break;
-              case 'handler':
-                $c_row[$c_row_id] = [
-                  'title' => $c_field->title,
-                  'value' => call_user_func($c_field->handler, $c_row, $c_instance)
-                ];
-                break;
               case 'code':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title,
                   'value' => $c_field->code->call($this, $c_row, $c_instance)
+                ];
+                break;
+              case 'handler':
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title,
+                  'value' => call_user_func($c_field->handler, $c_row, $c_instance)
                 ];
                 break;
             }
@@ -263,27 +257,6 @@ namespace effcore {
     foreach ($params as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
-  }
-
-  function field_insert_action($row_id = null, $title = '', $allowed = ['select', 'update', 'delete'], $params = []) {
-    $row_id = $row_id ?: 'actions';
-    $this->fields[$row_id] = new \stdClass;
-    $this->fields[$row_id]->type = 'actions';
-    $this->fields[$row_id]->title = $title;
-    $this->fields[$row_id]->allowed = $allowed;
-    foreach ($params as $c_key => $c_value) {
-      $this->fields[$row_id]->{$c_key} = $c_value;
-    }
-  }
-
-  function actions_list_get($instance, $allowed = ['select', 'update', 'delete']) {
-    $actions_list = new actions_list();
-    foreach ($allowed as $c_action_name) {
-      if ($c_action_name == 'select'                              ) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).       '?'.url::back_part_make(), 'select');
-      if ($c_action_name == 'update'                              ) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
-      if ($c_action_name == 'delete' && empty($instance->is_embed)) $actions_list->action_insert('/manage/data/'.$instance->entity_get()->group_managing_get_id().'/'.$instance->entity_get()->name.'/'.join('+', $instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
-    }
-    return $actions_list;
   }
 
   # ─────────────────────────────────────────────────────────────────────
