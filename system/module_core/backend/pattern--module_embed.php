@@ -136,6 +136,16 @@ namespace effcore {
     return core::boot_select('installed');
   }
 
+  static function get_installed_disabled() {
+    $result    = [];
+    $installed = core::boot_select('installed');
+    $enabled   = core::boot_select('enabled'  );
+    foreach ($installed as $c_installed_id => $c_installed_path)
+       if (!isset($enabled[$c_installed_id]))
+                   $result[$c_installed_id] = $c_installed_path;
+    return $result;
+  }
+
   static function is_enabled($module_id) {
     $enabled = core::boot_select('enabled');
     return isset($enabled[$module_id]);
