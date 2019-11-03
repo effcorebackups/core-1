@@ -128,11 +128,11 @@ namespace effcore {
     return $result;
   }
 
-  static function get_enabled_by_boot() {
+  static function get_enabled() {
     return core::boot_select('enabled');
   }
 
-  static function get_installed_by_boot() {
+  static function get_installed() {
     return core::boot_select('installed');
   }
 
