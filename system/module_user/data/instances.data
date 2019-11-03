@@ -9,7 +9,6 @@ instances
     - nickname: Admin
     - email: admin@example.com
     - is_embed: 1
-    - module_id: user
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
@@ -18,25 +17,21 @@ instances
     values
     - id: user_select
     - title: User: select
-    - module_id: user
 - permission_user_insert|instance
     entity_name: permission
     values
     - id: user_insert
     - title: User: insert
-    - module_id: user
 - permission_user_update|instance
     entity_name: permission
     values
     - id: user_update
     - title: User: update
-    - module_id: user
 - permission_user_delete|instance
     entity_name: permission
     values
     - id: user_delete
     - title: User: delete
-    - module_id: user
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
@@ -45,25 +40,21 @@ instances
     values
     - id_role: admins
     - id_permission: user_select
-    - module_id: user
 - relation_role_ws_permission_admins_user_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
     - id_permission: user_update
-    - module_id: user
 - relation_role_ws_permission_admins_user_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
     - id_permission: user_insert
-    - module_id: user
 - relation_role_ws_permission_admins_user_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
     - id_permission: user_delete
-    - module_id: user
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_user
 # ─────────────────────────────────────────────────────────────────────
@@ -72,7 +63,6 @@ instances
     values
     - id_role: admins
     - id_user: 1
-    - module_id: user
 # ─────────────────────────────────────────────────────────────────────
 # roles
 # ─────────────────────────────────────────────────────────────────────
@@ -83,7 +73,6 @@ instances
     - title: Administrators
     - is_embed: 1
     - weight: +80
-    - module_id: user
 - role_managers|instance
     entity_name: role
     values
@@ -91,7 +80,6 @@ instances
     - title: Managers
     - is_embed: 1
     - weight: +70
-    - module_id: user
 - role_owner|instance
     entity_name: role
     values
@@ -99,7 +87,6 @@ instances
     - title: Owner
     - is_embed: 1
     - weight: +60
-    - module_id: user
 - role_registered|instance
     entity_name: role
     values
@@ -107,7 +94,6 @@ instances
     - title: Registered
     - is_embed: 1
     - weight: +50
-    - module_id: user
 - role_anonymous|instance
     entity_name: role
     values
@@ -115,7 +101,6 @@ instances
     - title: Anonymous
     - is_embed: 1
     - weight: +40
-    - module_id: user
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
@@ -125,7 +110,6 @@ instances
     - id: user_registered
     - title: Registered user menu
     - is_embed: 1
-    - module_id: user
     - access
         roles
         - =: registered
@@ -135,7 +119,6 @@ instances
     - id: user_anonymous
     - title: Anonymous user menu
     - is_embed: 1
-    - module_id: user
     - access
         roles
         - =: anonymous
@@ -151,7 +134,6 @@ instances
     - title: %%_nickname
     - url: /user/%%_nickname
     - is_embed: 1
-    - module_id: user
     - access
         roles
         - =: registered
@@ -165,7 +147,6 @@ instances
     - url: /user/%%_nickname/edit
     - is_embed: 1
     - weight: +50
-    - module_id: user
     - access
         roles
         - =: registered
@@ -179,7 +160,6 @@ instances
     - url: /logout
     - is_embed: 1
     - weight: -50
-    - module_id: user
     - access
         roles
         - =: registered
@@ -192,7 +172,6 @@ instances
     - id_tree: user_anonymous
     - title: Anonymous
     - is_embed: 1
-    - module_id: user
     - access
         roles
         - =: anonymous
@@ -206,7 +185,6 @@ instances
     - url: /login
     - is_embed: 1
     - weight: +50
-    - module_id: user
     - access
         roles
         - =: anonymous
@@ -219,7 +197,6 @@ instances
     - title: Registration
     - url: /registration
     - is_embed: 1
-    - module_id: user
     - access
         roles
         - =: anonymous
@@ -233,7 +210,6 @@ instances
     - url: /recovery
     - is_embed: 1
     - weight: -50
-    - module_id: user
     - access
         roles
         - =: anonymous
