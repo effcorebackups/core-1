@@ -11,7 +11,7 @@ namespace effcore {
   public $attributes = ['role' => 'tree'];
   public $id;
   public $title = '';
-  public $title_state; # hidden | cutted
+  public $title_is_visible = 1;
   public $access;
   public $origin = 'nosql'; # nosql | sql | dynamic
   public $managing_mode; # null | simple | simple-draggable
@@ -48,11 +48,9 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      switch ($this->title_state) {
-        case 'cutted': return '';
-        case 'hidden': return (new markup('h2', ['aria-hidden' => 'true'], $this->title))->render();
-        default:       return (new markup('h2', [                       ], $this->title))->render();
-      }
+//var_dump($this->title_is_visible);
+      if ($this->title_is_visible == 0) return (new markup('h2', ['aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible != 0) return (new markup('h2', [                       ], $this->title))->render();
     }
   }
 
@@ -96,6 +94,7 @@ namespace effcore {
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->module_id = 'menu';
         static::$cache[$c_tree->id]->origin = 'sql';
+        static::$cache[$c_tree->id]->title_is_visible = $c_instance->title_is_visible;
       }
     }
   }

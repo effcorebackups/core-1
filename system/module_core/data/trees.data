@@ -2,7 +2,7 @@ trees
 - system|tree
     id: system
     title: Menu system
-    title_state: hidden
+    title_is_visible: 0
     access
       roles
       - =: admins

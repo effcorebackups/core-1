@@ -65,7 +65,6 @@ namespace effcore\modules\develop {
       $tree_managing_id = 'managed-'.$id;
       $tree_managing = tree::insert($tree->title ?? '', $tree_managing_id);
       $tree_managing->managing_mode = 'simple';
-      $tree_managing->title_state = 'cutted';
       foreach (tree_item::select_all_by_id_tree($id) as $c_item) {
         $c_tree_item = tree_item::insert($c_item->title,
           $tree_managing_id.'-'.$c_item->id, $c_item->id_parent !== null ?

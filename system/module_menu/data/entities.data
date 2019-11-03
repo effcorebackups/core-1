@@ -42,6 +42,14 @@ entities
         managing_form_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
+    - title_is_visible
+        title: Title is visible
+        type: boolean
+        not_null: true
+        default: 1
+        managing_is_on_insert: true
+        managing_is_on_update: true
+        managing_form_class: \effcore\field_logic
     constraints
     - primary_id
         type: primary

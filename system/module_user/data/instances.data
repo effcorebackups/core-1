@@ -109,6 +109,7 @@ instances
     values
     - id: user_registered
     - title: Registered user menu
+    - title_is_visible: 0
     - is_embed: 1
     - access
         roles
@@ -118,6 +119,7 @@ instances
     values
     - id: user_anonymous
     - title: Anonymous user menu
+    - title_is_visible: 0
     - is_embed: 1
     - access
         roles

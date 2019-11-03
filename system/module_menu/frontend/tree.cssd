@@ -3,12 +3,9 @@
   x-tree a[aria-selected      ='true'],
   x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
 
-  nav[data-area-id='menu'] h2 {display: none}
-  nav[data-area-id='menu'] x-tree {z-index: 300}
-
   /* menu 'System': sizes and orientation */
 
-  nav[data-area-id='menu'] x-tree          {float: left}
+  nav[data-area-id='menu'] x-tree          {float: left; z-index: 300}
   nav[data-area-id='menu'] x-tree li       {float: left}
   nav[data-area-id='menu'] x-tree li li    {float: none}
   nav[data-area-id='menu'] x-tree ul       {float: left}
