@@ -7,6 +7,30 @@
 namespace effcore {
           class module_embed {
 
+  # module state diagram for modules without installation process
+  # ─────────────────────────────────────────────────────────────────────
+  #
+  #   ┌──────────────┐             ◯◉           ┌─────────────┐
+  #   │              ├──────────────────────────▶             │
+  #   │   disabled   │                          │   enabled   │
+  #   │              ◀──────────────────────────┤             │
+  #   └──────────────┘             ◎◯           └─────────────┘
+
+
+  # module state diagram for modules with installation process
+  # ─────────────────────────────────────────────────────────────────────
+  #
+  #   ┌────────────────────────┐   ◯◉   ┌─────────────────────┐
+  #   │ uninstalled + disabled │────────▶ installed + enabled │
+  #   └────────────▲───────────┘        └──────────┬──────────┘
+  #                │                               │
+  #                │ ▣ uninstall                   │
+  #                │   process                     │
+  #                │                               │
+  #   ┌────────────┴───────────┐   ◎◯              │
+  #   │  installed + disabled  ◀───────────────────┘
+  #   └────────────────────────┘
+
   public $id;
   public $id_bundle;
   public $title;
