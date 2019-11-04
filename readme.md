@@ -6,7 +6,7 @@ About the project
 Type            : content management system/framework
 Author          : Maxim Rysevets
 Developer       : Maxim Rysevets
-Initial release : 2020-01-01
+Initial release : 2020-03-01
 Written in      : PHP
 Operating system: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
 License         : proprietary software
