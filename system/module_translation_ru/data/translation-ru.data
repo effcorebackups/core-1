@@ -360,6 +360,7 @@ translations
     - PHP dependencies: PHP-зависимости
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP version: PHP версия
+    - Poll: Опрос
     - Polls: Опросы
     - Port: Порт
     - Presets: Предустановки

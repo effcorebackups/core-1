@@ -1,0 +1,33 @@
+entities
+- poll|entity
+    name: poll
+    title: Poll
+    title_plural: Polls
+    catalog_name: polls
+    managing_is_on: true
+    has_parallel_checking: true
+    ws_created: true
+    ws_updated: true
+    ws_module_id: true
+    ws_data: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        managing_is_on_select: true
+        managing_is_on_insert: true
+        managing_is_on_update: true
+        managing_form_class: \effcore\field_id_text
+        managing_properties
+        - is_validate_uniqueness: true
+        managing_form_element_attributes_on_update
+        - disabled: true
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
