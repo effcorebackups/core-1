@@ -305,6 +305,7 @@ translations
     - Module for testing.: Модуль для тэставання.
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
+    - Module for working with polls.: Модуль для працы з апытаннямі.
     - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
     - Module ID: ID модуля
     - Module: Модуль
@@ -359,6 +360,7 @@ translations
     - PHP dependencies: PHP-залежнасці
     - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP version: PHP версія
+    - Polls: Апытанні
     - Port: Порт
     - Presets: Перадусталёўкі
     - press to enable or disable the module "%%_title": націсніце, каб уключыць альбо выключыць модуль "%%_title"
