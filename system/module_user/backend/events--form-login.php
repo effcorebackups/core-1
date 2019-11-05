@@ -16,7 +16,7 @@ namespace effcore\modules\user {
           abstract class events_form_login {
 
   static function on_init($event, $form, $items) {
-    if (!isset($_COOKIE['cookies_is_on'])) {
+    if (!isset($_COOKIE['cookies_is_enabled'])) {
       message::insert(new text_multiline([
         'Cookies are disabled. You can not log in!',
         'Enable cookies before login.']), 'warning'
