@@ -15,7 +15,7 @@ namespace effcore {
   public $fields = [];
   public $query_params = [];
   public $decorator_params = [];
-  public $pager_is_on = false;
+  public $pager_is_enabled = false;
   public $pager_name = 'page';
   public $pager_id = 0;
   public $origin = 'nosql'; # nosql | sql
@@ -78,7 +78,7 @@ namespace effcore {
                   $this->query_params['limit'] = 50;
 
       # prepare pager
-        if ($this->pager_is_on) {
+        if ($this->pager_is_enabled) {
           $instances_count = $main_entity->instances_select_count($this->query_params);
           $page_max_number = ceil($instances_count / $this->query_params['limit']);
           if ($page_max_number > 1) {

@@ -4,7 +4,7 @@ selections
     title: Selection of "demo_data" entities + join
     decorator_params
     - view_type: table-adaptive
-    pager_is_on: true
+    pager_is_enabled: true
     join
     - demo_data_join
         entity_name: demo_data_join
