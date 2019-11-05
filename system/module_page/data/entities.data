@@ -25,7 +25,7 @@ entities
     title: Page
     title_plural: Pages
     catalog_name: pages
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
@@ -160,7 +160,7 @@ entities
     title: Logotype
     title_plural: Logotypes
     catalog_name: logotypes
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
@@ -242,7 +242,7 @@ entities
     title: Selection
     title_plural: Selections
     catalog_name: selections
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
     ws_created: true
@@ -315,7 +315,7 @@ entities
     title: Text
     title_plural: Texts
     catalog_name: texts
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
     ws_created: true

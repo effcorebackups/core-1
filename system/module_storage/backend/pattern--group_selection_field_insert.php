@@ -17,7 +17,7 @@ namespace effcore {
       core::array_sort_by_text_property($entities);
       $options = ['not_selected' => '- no -'];
       foreach ($entities as $c_entity) {
-        if (!empty($c_entity->managing_is_on)) {
+        if (!empty($c_entity->managing_is_enabled)) {
           foreach ($c_entity->fields_get_title() as $c_name => $c_title) {
             if (!isset($options[$c_entity->name])) {
                        $options[$c_entity->name] = new \stdClass;

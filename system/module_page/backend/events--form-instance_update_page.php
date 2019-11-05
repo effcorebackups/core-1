@@ -33,7 +33,7 @@ namespace effcore\modules\page {
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         foreach ($layout->children_select_recursive() as $c_area) {
           if ($c_area instanceof area && $c_area->id) {
-            $c_area->managing_is_on = true;
+            $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
           # insert groups 'Field manage'

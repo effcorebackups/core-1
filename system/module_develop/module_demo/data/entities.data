@@ -4,7 +4,7 @@ entities
     title: Types
     title_plural: Types
     catalog_name: demo_types
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     ws_is_embed: true
     ws_weight: true
@@ -143,7 +143,7 @@ entities
     title: Autoincrement
     title_plural: Autoincrement
     catalog_name: demo_autoincrement
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - id
@@ -190,7 +190,7 @@ entities
     title: Collations
     title_plural: Collations
     catalog_name: demo_collations
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - id
@@ -233,7 +233,7 @@ entities
     title: Constraints
     title_plural: Constraints
     catalog_name: demo_constraints
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - f_primary
@@ -309,7 +309,7 @@ entities
     title: Data
     title_plural: Data
     catalog_name: demo_data
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - id
@@ -373,7 +373,7 @@ entities
     title: Data + join
     title_plural: Data + join
     catalog_name: demo_data_join
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - id_data
@@ -423,7 +423,7 @@ entities
     title: Indexes
     title_plural: Indexes
     catalog_name: demo_indexes
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Demo
     fields
     - id

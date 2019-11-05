@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     if ($entity) {
       $form->_instance = new instance($entity->name);
-      if ($entity->managing_is_on) {
+      if ($entity->managing_is_enabled) {
         $has_enabled_fields = false;
         foreach ($entity->fields as $c_name => $c_field) {
           if (!empty($c_field->managing_is_on_insert) && isset($c_field->managing_form_class)) {

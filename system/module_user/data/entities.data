@@ -4,7 +4,7 @@ entities
     title: Permission
     title_plural: Permissions
     catalog_name: permissions
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
     ws_created: true
@@ -54,7 +54,7 @@ entities
     title: Relation: Role + Permission
     title_plural: Relations: Role + Permission
     catalog_name: relations_role_ws_permission
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
     ws_created: true
@@ -118,7 +118,7 @@ entities
     title: Relation: Role + User
     title_plural: Relations: Role + User
     catalog_name: relations_role_ws_user
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
     ws_created: true
@@ -180,7 +180,7 @@ entities
     title: Role
     title_plural: Roles
     catalog_name: roles
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true
@@ -281,7 +281,7 @@ entities
     title: User
     title_plural: Users
     catalog_name: users
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true

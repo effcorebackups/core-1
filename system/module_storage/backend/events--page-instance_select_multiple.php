@@ -32,7 +32,7 @@ namespace effcore\modules\storage {
     $entities_by_groups = [];
   # collect manageable entities
     foreach ($entities as $c_entity) {
-      if ($c_entity->managing_is_on) {
+      if ($c_entity->managing_is_enabled) {
         $entities_by_groups[$c_entity->group_managing_get_id()]
                            [$c_entity->name                   ] = $c_entity->title_plural;
       }

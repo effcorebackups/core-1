@@ -4,7 +4,7 @@ entities
     title: Poll
     title_plural: Polls
     catalog_name: polls
-    managing_is_on: true
+    managing_is_enabled: true
     has_parallel_checking: true
     ws_created: true
     ws_updated: true

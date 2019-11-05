@@ -4,7 +4,7 @@ entities
     title: Tree
     title_plural: Trees
     catalog_name: trees
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
@@ -65,7 +65,7 @@ entities
     title: Tree item
     title_plural: Tree items
     catalog_name: tree_items
-    managing_is_on: true
+    managing_is_enabled: true
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
