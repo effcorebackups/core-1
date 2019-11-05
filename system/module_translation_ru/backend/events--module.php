@@ -14,7 +14,7 @@ namespace effcore\modules\translation_ru {
           use \effcore\translation;
           abstract class events_module {
 
-  static function on_enable() {
+  static function on_enable($event) {
     if ((page::get_current()->args_get('base') == '/install' && language::code_get_current() == 'ru') ||
         (page::get_current()->args_get('base') != '/install')) {
       $module = module::get('translation_ru');
@@ -25,7 +25,7 @@ namespace effcore\modules\translation_ru {
     }
   }
 
-  static function on_disable() {
+  static function on_disable($event) {
     $module = module::get('translation_ru');
     $module->disable();
     if (language::code_get_current() == 'ru') {
