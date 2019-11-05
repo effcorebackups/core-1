@@ -19,6 +19,7 @@ entities
         not_null: true
         check: (id <> '')
         managing_is_on_select: true
+        managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
@@ -151,6 +152,7 @@ entities
         not_null: true
         check: (id <> '')
         managing_is_on_select: true
+        managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
@@ -196,6 +198,7 @@ entities
         type: autoincrement
         not_null: true
         managing_is_on_select: true
+        managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
@@ -314,6 +317,7 @@ entities
         type: autoincrement
         not_null: true
         managing_is_on_select: true
+        managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
@@ -427,6 +431,7 @@ entities
         type: autoincrement
         not_null: true
         managing_is_on_select: true
+        managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_id_number
         managing_form_element_attributes
