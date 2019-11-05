@@ -112,8 +112,8 @@ translations
     - Empty module: Пусты модуль
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - English: Англійская
-    - Entity "%%_name" was installed.: Сутнасць "%%_name" была ўсталявана.
-    - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была ўсталявана!
+    - Entity "%%_name" was installed.: Сутнасць "%%_name" была заінсталявана.
+    - Entity "%%_name" was not installed!: Сутнасць "%%_name" не была заінсталявана!
     - Entity "%%_name" was not uninstalled!: Сутнасць "%%_name" не была выдалена!
     - Entity "%%_name" was uninstalled.: Сутнасць "%%_name" была выдалена.
     - Error: Памылка
@@ -214,9 +214,9 @@ translations
     - insert: уставіць
     - Insert: Уставіць
     - insertion: устаўка
-    - Install: Інсталяваць
-    - install: інсталяваць
-    - Installation is not available because storage credentials was set!: Устаноўка недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
+    - Install: Заінсталяваць
+    - install: заінсталяваць
+    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
     - Instance with row_id = "%%_row_id" was inserted.: Асобнік з row_id = "%%_row_id" быў дададзены.
@@ -293,8 +293,8 @@ translations
     - missing a temporary directory: адсутнічае часовы каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
-    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
-    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
+    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў заінсталяваны.
+    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў заінсталяваны!
     - Module as an example of an empty module.: Модуль як прыклад пустога модуля.
     - Module data "%%_title" (%%_id) was removed.: Даныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for decoration example.: Модуль для прыкладу афармлення.
@@ -396,7 +396,7 @@ translations
     - remember me: запомніць мяне
     - Report: Справаздача
     - reset: скід
-    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце уліковыя даныя сховішча ў "%%_file" альбо пераўсталюйце гэтую сістэму на старонцы: %%_link
+    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце уліковыя даныя сховішча ў "%%_file" альбо заінсталюйце гэтую сістэму зноў на старонцы: %%_link
     - right to left: справа налева
     - role: роля
     - Role: Роля
