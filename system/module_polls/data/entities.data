@@ -60,6 +60,21 @@ entities
           - not_selected: - select -
           - linear: Linear diagram
           - radial: Radial diagram
+    - user_type
+        title: User type
+        type: integer
+        not_null: true
+        default: 1
+        managing_is_on_insert: true
+        managing_is_on_update: true
+        managing_form_class: \effcore\field_select
+        managing_properties
+        - values
+          - not_selected: - select -
+          - 0: All users
+          - 1: Registered users
+        - disabled
+          - 0: 0
     constraints
     - primary_id
         type: primary

@@ -20,6 +20,7 @@ translations
     - Administrators: Администраторы
     - All caches was reset.: Все кэши были сброшены.
     - All colors: Все цвета
+    - All users: Все пользователи
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous user menu: Меню анонимного пользователя
     - Anonymous: Аноним
@@ -384,6 +385,7 @@ translations
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered user menu: Меню зарегистрированного пользователя
+    - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
     - registration: регистрация
     - Registration: Регистрация
@@ -521,6 +523,7 @@ translations
     - User agent: Пользовательский агент
     - User name: Имя пользователя
     - User roles: Роли пользователя
+    - User type: Тип пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
     - User with this EMail was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
