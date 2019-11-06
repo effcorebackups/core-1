@@ -4,10 +4,10 @@ translations
     data
     - - no -: - нет -
     - - select -: - выбрать -
-    - %%_entity_title_page_context{entity_name}: %%_entity_title_page_context{entity_name}
-    - %%_entity_title_page_context{entity_name}\: delete: %%_entity_title_page_context{entity_name}: удалить
-    - %%_entity_title_page_context{entity_name}\: insert: %%_entity_title_page_context{entity_name}: вставить
-    - %%_entity_title_page_context{entity_name}\: update: %%_entity_title_page_context{entity_name}: обновить
+    - %%_entity_title_context: %%_entity_title_context
+    - %%_entity_title_context\: delete: %%_entity_title_context: удалить
+    - %%_entity_title_context\: insert: %%_entity_title_context: вставить
+    - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a php extension stopped the file upload: php-расширение остановило загрузку файла
     - Access forbidden: Доступ запрещён
@@ -208,7 +208,7 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Information: Информация
-    - Insert a new item of type "%%_entity_name_context" on new page.: Вставить новый элемент типа "%%_entity_name_context" на новой странице.
+    - Insert a new item of type "%%_entity_title_context" on new page.: Вставить новый элемент типа "%%_entity_title_context" на новой странице.
     - Insert field: Вставить поле
     - Insert part: Вставить часть
     - insert: вставить

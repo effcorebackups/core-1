@@ -1,7 +1,7 @@
 pages
 - instance_update|page
     id: instance_update
-    title: %%_entity_title_page_context{entity_name}: update
+    title: %%_entity_title_context: update
     is_https: true
     url: %^(?<base>/manage/data)/
 >>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/

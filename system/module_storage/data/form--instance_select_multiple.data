@@ -11,7 +11,7 @@ forms
         novalidate: true
         attributes
         - title|text
-            text: Insert a new item of type "%%_entity_name_context" on new page.
+            text: Insert a new item of type "%%_entity_title_context" on new page.
             is_apply_tokens: true
         - data-style: narrow-insert
         - value: insert

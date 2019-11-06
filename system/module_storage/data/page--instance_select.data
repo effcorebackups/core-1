@@ -1,7 +1,7 @@
 pages
 - instance_select|page
     id: instance_select
-    title: %%_entity_title_page_context{entity_name}
+    title: %%_entity_title_context
     is_https: true
     url: %^(?<base>/manage/data)/
 >>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/

@@ -1,7 +1,7 @@
 pages
 - instance_insert|page
     id: instance_insert
-    title: %%_entity_title_page_context{entity_name}: insert
+    title: %%_entity_title_context: insert
     is_https: true
     url: %^(?<base>/manage/data)/
 >>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/
