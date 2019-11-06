@@ -96,6 +96,7 @@ translations
     - description: описание
     - Develop: Разработка
     - Diagram: Диаграмма
+    - Diagramm type: Тип диаграммы
     - Diagrams: Диаграммы
     - Digit: Цифра
     - Distributed queries are not supported! Selection id = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".

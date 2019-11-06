@@ -45,6 +45,21 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_datetime
+    - diagram_type
+        title: Diagramm type
+        type: varchar
+        collate: nocase
+        size: 32
+        not_null: true
+        check: (title <> '')
+        managing_is_on_insert: true
+        managing_is_on_update: true
+        managing_form_class: \effcore\field_select
+        managing_properties
+        - values
+          - not_selected: - select -
+          - linear: Linear diagram
+          - radial: Radial diagram
     constraints
     - primary_id
         type: primary
