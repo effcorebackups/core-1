@@ -139,6 +139,7 @@ entities
         managing_form_class: \effcore\field_text
         managing_form_element_attributes
         - disabled: true
+        - maxlength: 32
         - value: utf-8
     - parts
         title: Parts

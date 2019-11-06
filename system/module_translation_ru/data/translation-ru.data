@@ -373,6 +373,7 @@ translations
     - Query parameters: Параметры запроса
     - query preparation process return the false: процесс подготовки запроса вернул false
     - query: запрос
+    - Question: Вопрос
     - Radial diagram: Круговая диаграмма
     - Radiobutton: Переключатель
     - Radiobuttons: Переключатели
