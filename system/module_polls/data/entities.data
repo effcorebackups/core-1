@@ -93,3 +93,31 @@ entities
         type: primary
         fields
         - =: id
+- poll_vote|entity
+    name: poll_vote
+    title: Poll vote
+    title_plural: Poll votes
+    catalog_name: poll_votes
+    fields
+    - id_poll
+        title: Poll ID
+        type: integer
+        not_null: true
+    - id_answer
+        title: Answer ID
+        type: integer
+        not_null: true
+    - id_user
+        title: User ID
+        type: integer
+        not_null: true
+    indexes
+    - index_id_poll
+        type: index
+        fields
+        - =: id_poll
+    - index_id_poll_id_answer
+        type: index
+        fields
+        - =: id_poll
+        - =: id_answer
