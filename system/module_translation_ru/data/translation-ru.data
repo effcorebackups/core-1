@@ -313,6 +313,7 @@ translations
     - Module: Модуль
     - Modules: Модули
     - More info in %%_info.: Больше информации в %%_info.
+    - Multiple choice: Множественный выбор
     - name: имя
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
