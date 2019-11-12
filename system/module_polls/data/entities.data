@@ -28,7 +28,7 @@ entities
         collate: nocase
         size: 2048
         not_null: true
-        check: (title <> '')
+        check: (question <> '')
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -51,7 +51,7 @@ entities
         collate: nocase
         size: 32
         not_null: true
-        check: (title <> '')
+        check: (diagram_type <> '')
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_select
