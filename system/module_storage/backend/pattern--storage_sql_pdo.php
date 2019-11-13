@@ -350,14 +350,14 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
       foreach ($entity->indexes as $c_name => $c_info) {
         $this->query([
-          'action' => 'CREATE',
-          'type' => $c_info->type,
-          'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name,
-          'on' => 'ON',
-          'target_!t' => '~'.$entity->name,
+          'action'       => 'CREATE',
+          'type'         => $c_info->type,
+          'name_!f'      => $this->table_prefix.$entity->catalog_name.'__'.$c_name,
+          'on'           => 'ON',
+          'target_!t'    => '~'.$entity->name,
           'fields_begin' => '(',
-          'fields_!,' => $this->fields($c_info->fields),
-          'fields_end' => ')'
+          'fields_!,'    => $this->fields($c_info->fields),
+          'fields_end'   => ')'
         ]);
       }
 
@@ -368,7 +368,10 @@ namespace effcore {
   function entity_uninstall($entity) {
     if ($this->init()) {
       $this->foreign_keys_checks_set(0);
-      $result = $this->query(['action' => 'DROP', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name]);
+      $result = $this->query([
+        'action'    => 'DROP',
+        'type'      => 'TABLE',
+        'target_!t' => '~'.$entity->name]);
       $this->foreign_keys_checks_set(1);
       return $result;
     }
@@ -378,10 +381,10 @@ namespace effcore {
     $params += ['join_fields' => [], 'join' => [], 'conditions' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
-        'action' => 'SELECT',
-        'fields_!,' => ['all_!f' => '~'.$entity->name.'.*'] + $params['join_fields'],
+        'action'       => 'SELECT',
+        'fields_!,'    => ['all_!f' => '~'.$entity->name.'.*'] + $params['join_fields'],
         'target_begin' => 'FROM',
-        'target_!t' => '~'.$entity->name];
+        'target_!t'    => '~'.$entity->name];
       foreach ($params['join'] as $c_join_id => $c_join_part)
                 $query['join']   [$c_join_id] = $c_join_part;
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['conditions']];
@@ -409,9 +412,9 @@ namespace effcore {
     $params += ['conditions' => [], 'limit' => 0];
     if ($this->init()) {
       $query = [
-        'action' => 'DELETE',
+        'action'       => 'DELETE',
         'target_begin' => 'FROM',
-        'target_!t' => '~'.$entity->name];
+        'target_!t'    => '~'.$entity->name];
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
       if (      $params['limit'     ] ) $query += ['limit_begin' => 'LIMIT', 'limit' => (int)$params['limit']];
       return $this->query($query);
@@ -423,9 +426,15 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action' => 'SELECT',
-        'fields_!,' => ['count' => ['function' => 'count(*)', 'alias' => 'as count']],
+        'fields_!,' => [
+          'count' => [
+            'function_begin' => 'count(',
+            'function_field' => '*',
+            'function_end'   => ')',
+            'alias_begin'    => 'as',
+            'alias'          => 'count']],
         'target_begin' => 'FROM',
-        'target_!t' => '~'.$entity->name];
+        'target_!t'    => '~'.$entity->name];
       foreach ($params['join'] as $c_join_id => $c_join_part)
                 $query['join']   [$c_join_id] = $c_join_part;
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
@@ -446,14 +455,14 @@ namespace effcore {
       $values = $instance->values_get();
       $id_fields = $entity->id_get_from_values($values);
       $result = $this->query([
-        'action' => 'SELECT',
-        'fields_!,' => ['all_!f' => '*'],
-        'target_begin' => 'FROM',
-        'target_!t' => '~'.$entity->name,
+        'action'          => 'SELECT',
+        'fields_!,'       => ['all_!f' => '*'],
+        'target_begin'    => 'FROM',
+        'target_!t'       => '~'.$entity->name,
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes_prepare($id_fields),
-        'limit_begin' => 'LIMIT',
-        'limit' => 1]);
+        'condition'       => $this->attributes_prepare($id_fields),
+        'limit_begin'     => 'LIMIT',
+        'limit'           => 1]);
       if  (isset($result[0])) {
         foreach ($result[0]->values as $c_name => $c_value) {
           if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
@@ -476,15 +485,15 @@ namespace effcore {
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
       $new_id = $this->query([
-        'action' => 'INSERT',
+        'action'         => 'INSERT',
         'action_subtype' => 'INTO',
-        'target_!t' => '~'.$entity->name,
-        'fields_begin' => '(',
-        'fields_!,' => $this->fields($fields),
-        'fields_end' => ')',
-        'values_begin' => 'VALUES (',
-        'values_!,' => $this->values($values),
-        'values_end' => ')']);
+        'target_!t'      => '~'.$entity->name,
+        'fields_begin'   => '(',
+        'fields_!,'      => $this->fields($fields),
+        'fields_end'     => ')',
+        'values_begin'   => 'VALUES (',
+        'values_!,'      => $this->values($values),
+        'values_end'     => ')']);
       if ($new_id !== null && $auto_name == null) return $instance;
       if ($new_id !== null && $auto_name != null) {
         $instance->{$auto_name} = $new_id;
@@ -503,12 +512,12 @@ namespace effcore {
       $values = array_intersect_key($values, $entity->fields_get_name());
       $id_fields = $entity->id_get_from_values($values);
       $row_count = $this->query([
-        'action' => 'UPDATE',
-        'target_!t' => '~'.$entity->name,
+        'action'                  => 'UPDATE',
+        'target_!t'               => '~'.$entity->name,
         'fields_and_values_begin' => 'SET',
-        'fields_and_values' => $this->attributes_prepare($values, ','),
-        'condition_begin' => 'WHERE',
-        'condition' => $this->attributes_prepare($instance->_id_fields_original ?: $id_fields)]);
+        'fields_and_values'       => $this->attributes_prepare($values, ','),
+        'condition_begin'         => 'WHERE',
+        'condition'               => $this->attributes_prepare($instance->_id_fields_original ?: $id_fields)]);
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
@@ -522,11 +531,11 @@ namespace effcore {
       $values = $instance->values_get();
       $id_fields = $entity->id_get_from_values($values);
       $row_count = $this->query([
-        'action' => 'DELETE',
-        'target_begin' => 'FROM',
-        'target_!t' => '~'.$entity->name,
+        'action'          => 'DELETE',
+        'target_begin'    => 'FROM',
+        'target_!t'       => '~'.$entity->name,
         'condition_begin' => 'WHERE',
-        'condition' => $this->attributes_prepare($id_fields)]);
+        'condition'       => $this->attributes_prepare($id_fields)]);
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;
