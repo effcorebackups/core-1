@@ -15,3 +15,21 @@ events
   - polls|event
       for: polls
       handler: \effcore\modules\polls\events_module::on_disable
+  on_form_init
+  - instance_insert_poll|event
+      for: instance_insert
+      weight: -50
+      handler: \effcore\modules\poll\events_form_instance_insert::on_init
+  - instance_update_poll|event
+      for: instance_update
+      weight: -50
+      handler: \effcore\modules\poll\events_form_instance_update::on_init
+  on_form_submit
+  - instance_insert_poll|event
+      for: instance_insert
+      weight: +50
+      handler: \effcore\modules\poll\events_form_instance_insert::on_submit
+  - instance_update_poll|event
+      for: instance_update
+      weight: +50
+      handler: \effcore\modules\poll\events_form_instance_update::on_submit
