@@ -464,17 +464,17 @@ namespace effcore {
 
   static function request_files_get($name) {
     $result = [];
-    if (isset($_FILES[$name]['name'])     &&
-        isset($_FILES[$name]['type'])     &&
-        isset($_FILES[$name]['size'])     &&
+    if (isset($_FILES[$name]['name'    ]) &&
+        isset($_FILES[$name]['type'    ]) &&
+        isset($_FILES[$name]['size'    ]) &&
         isset($_FILES[$name]['tmp_name']) &&
-        isset($_FILES[$name]['error'])) {
+        isset($_FILES[$name]['error'   ])) {
       $info = $_FILES[$name];
-      if (!is_array($info['name']))     $info['name']     = [$info['name']];
-      if (!is_array($info['type']))     $info['type']     = [$info['type']];
-      if (!is_array($info['size']))     $info['size']     = [$info['size']];
+      if (!is_array($info['name'    ])) $info['name'    ] = [$info['name'    ]];
+      if (!is_array($info['type'    ])) $info['type'    ] = [$info['type'    ]];
+      if (!is_array($info['size'    ])) $info['size'    ] = [$info['size'    ]];
       if (!is_array($info['tmp_name'])) $info['tmp_name'] = [$info['tmp_name']];
-      if (!is_array($info['error']))    $info['error']    = [$info['error']];
+      if (!is_array($info['error'   ])) $info['error'   ] = [$info['error'   ]];
       foreach ($info as $c_prop => $c_values) {
         foreach ($c_values as $c_number => $c_value) {
           if ($info['error'][$c_number] !== UPLOAD_ERR_NO_FILE) {

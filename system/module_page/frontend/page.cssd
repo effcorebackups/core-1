@@ -271,6 +271,12 @@
 
   x-selection {display: block}
 
+  /* x-box */
+
+  x-box {display: block; border-bottom: 1px dashed %%_color_main}
+  x-box:last-child {border-bottom: 0}
+  x-box[data-field-order-type='inline'] x-field {display: inline-block; margin-right: 10px}
+
   /* x-no-result */
 
   x-no-result {
