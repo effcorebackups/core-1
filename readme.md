@@ -83,8 +83,9 @@ Architecture
 ---------------------------------------------------------------------
 
 The architecture is made according to the classical MVC scheme.
-It's a hybrid system of NoSQL and SQL storages and a set of
-classes/class-patterns.
+It's a hybrid system of NoSQL and SQL storages.
+In turn, the NoSQL subsystem implements an object-oriented model
+based on a set of class-patterns.
 
 The system code is adapted for reuse.
 The system consists of many small classes/class-patterns,
