@@ -36,7 +36,7 @@ namespace effcore\modules\poll {
           $c_field_answer_text->build();
           $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
           $c_field_answer_text->required_set($c_answer_id == 1);
-        # group previous fields to box
+        # group fields to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
           $c_box_answer->child_insert($c_field_answer_id,   'answer_id'  );
           $c_box_answer->child_insert($c_field_answer_text, 'answer_text');

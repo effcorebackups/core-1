@@ -26,7 +26,7 @@ namespace effcore\modules\poll {
           $c_field_answer_text->build();
           $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
           $c_field_answer_text->required_set($c_answer_id == 1);
-        # group previous fields to box
+        # group field to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
           $c_box_answer->child_insert($c_field_answer_text, 'answer_text');
           $fieldset_answers->child_insert($c_box_answer, 'answer_'.$c_answer_id);
@@ -36,6 +36,16 @@ namespace effcore\modules\poll {
   }
 
   static function on_submit($event, $form, $items) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if ($entity->name == 'poll') {
+        switch ($form->clicked_button->value_get()) {
+          case 'insert':
+            break;
+        }
+      }
+    }
   }
 
 }}
