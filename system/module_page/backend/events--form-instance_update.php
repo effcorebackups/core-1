@@ -14,7 +14,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\page_part_preset_link;
           use \effcore\page;
-          abstract class events_form_instance_update_page {
+          abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
