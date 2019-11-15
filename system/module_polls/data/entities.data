@@ -112,6 +112,10 @@ entities
         type: integer
         not_null: true
     indexes
+    - index_id_user
+        type: index
+        fields
+        - =: id_user
     - index_id_poll
         type: index
         fields
