@@ -20,6 +20,7 @@ namespace effcore\modules\poll {
       if ($entity->name == 'poll') {
         $fieldset_answers = new fieldset('Answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
+        $answers = $form->_instance->data['answers'];
         for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++) {
         # field for answer id
           $c_field_answer_id = new field_number('ID');
@@ -35,6 +36,7 @@ namespace effcore\modules\poll {
           $c_field_answer_text->description_state = 'hidden';
           $c_field_answer_text->build();
           $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
+          $c_field_answer_text->value_set($answers[$c_answer_id] ?? '');
           $c_field_answer_text->required_set($c_answer_id == 1);
         # group fields to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
@@ -47,6 +49,16 @@ namespace effcore\modules\poll {
   }
 
   static function on_submit($event, $form, $items) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'poll') {
+          }
+          break;
+      }
+    }
   }
 
 }}
