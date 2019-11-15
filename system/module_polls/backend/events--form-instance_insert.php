@@ -39,11 +39,11 @@ namespace effcore\modules\poll {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'poll') {
-        switch ($form->clicked_button->value_get()) {
-          case 'insert':
-            break;
-        }
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+          if ($entity->name == 'poll') {
+          }
+          break;
       }
     }
   }
