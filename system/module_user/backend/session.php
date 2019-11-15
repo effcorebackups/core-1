@@ -123,10 +123,10 @@ namespace effcore {
   }
 
   static function id_get_hex_expired($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
-  static function id_get_hex_ip($ip)           {return core::ip_to_hex($ip);}
-  static function id_get_hex_uagent_hash_8()   {return core::hash_get_mini(core::server_get_user_agent(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
-  static function id_get_hex_random()          {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function id_get_hex_signature($id)    {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
+  static function id_get_hex_ip          ($ip) {return core::ip_to_hex($ip);}
+  static function id_get_hex_uagent_hash_8  () {return core::hash_get_mini(core::server_get_user_agent(80));} # note: why 80? when you add a page to your favourites in Safari the browser sends a user-agent header with a shorter string length than usual
+  static function id_get_hex_random         () {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
+  static function id_get_hex_signature   ($id) {return core::signature_get(substr($id, 0, 56 + 1), 'session', 8);}
 
   static function id_extract_expired          ($id) {return hexdec(static::id_extract_hex_expired($id));}
   static function id_extract_hex_expired      ($id) {return substr($id,      1,  8);}

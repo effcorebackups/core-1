@@ -283,11 +283,11 @@ namespace effcore {
     else return static::validation_id_generate();
   }
 
-  static function validation_id_get_hex_created()       {return dechex(time());}
-  static function validation_id_get_hex_ip()            {return core::ip_to_hex(core::server_get_addr_remote());}
+  static function validation_id_get_hex_created      () {return dechex(time());}
+  static function validation_id_get_hex_ip           () {return core::ip_to_hex(core::server_get_addr_remote());}
   static function validation_id_get_hex_uagent_hash_8() {return core::hash_get_mini(core::server_get_user_agent());}
-  static function validation_id_get_hex_random()        {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
-  static function validation_id_get_hex_signature($id)  {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
+  static function validation_id_get_hex_random       () {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
+  static function validation_id_get_hex_signature ($id) {return core::signature_get(substr($id, 0, 56), 'form_validation', 8);}
 
   static function validation_id_extract_created          ($id) {return hexdec(static::validation_id_extract_hex_created($id));}
   static function validation_id_extract_hex_created      ($id) {return substr($id,  0,  8);}
