@@ -17,7 +17,7 @@ namespace effcore\modules\page {
     $entity = entity::get($entity_name);
     if ($entity) {
     # field 'lang_code'
-      if ($entity->name == 'page' && !empty($form->_instance)) {
+      if ($entity->name == 'page') {
         $items['#lang_code']->value_set(
           language::code_get_current()
         );
@@ -32,7 +32,7 @@ namespace effcore\modules\page {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         # field 'id'
-          if ($entity->name == 'page' && !empty($form->_instance)) {
+          if ($entity->name == 'page') {
             if ($items['#id']->value_get()) {
               if (page::get($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
@@ -43,7 +43,7 @@ namespace effcore\modules\page {
             }
           }
         # field 'url'
-          if ($entity->name == 'page' && !empty($form->_instance)) {
+          if ($entity->name == 'page') {
             if ($items['#url']->value_get()) {
               if (page::get_by_url($items['#url']->value_get(), false)) {
                 $items['#url']->error_set(new text_multiline([

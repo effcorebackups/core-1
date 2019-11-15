@@ -39,7 +39,7 @@ namespace effcore\modules\menu {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-          if ($entity->name == 'tree_item') {
+          if ($entity->name == 'tree_item' && !empty($form->_instance)) {
             page::get_current()->args_set('back_update_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$form->_instance->id_tree);
           }
           break;

@@ -38,7 +38,7 @@ namespace effcore\modules\user {
         $items['#id_role']->value_set($form->_instance->id_role);
       }
     # field 'password'
-      if ($entity->name == 'user' && !empty($form->_instance)) {
+      if ($entity->name == 'user') {
         $field_password_hash_current = new field_password('Current password', '', [], -50);
         $field_password_hash_current->build();
         $field_password_hash_current->name_set('password_hash_current');
@@ -130,7 +130,7 @@ namespace effcore\modules\user {
             else        $form->_instance->access = null;
           }
         # field 'avatar'
-          if ($entity->name == 'user' && !empty($form->_instance)) {
+          if ($entity->name == 'user') {
             page::get_current()->args_set('back_update_n', '/user/'.$items['#nickname']->value_get());
           }
           break;
