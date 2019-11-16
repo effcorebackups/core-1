@@ -65,6 +65,7 @@ namespace effcore\modules\poll {
             for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++)
               if ($items['#answer_text_'.$c_answer_id]->value_get())
                 $answers[$c_answer_id] = $items['#answer_text_'.$c_answer_id]->value_get();
+            $form->_instance->data = ['answers' => $answers];
           }
           break;
       }

@@ -24,10 +24,11 @@ namespace effcore\modules\poll {
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         for ($i = 0; $i < 10; $i++) {
         # field for answer text
+          $c_answer_id = $i + 1;
           $c_field_answer_text = new field_text('Text');
           $c_field_answer_text->description_state = 'hidden';
           $c_field_answer_text->build();
-          $c_field_answer_text->name_set('answer_text[]');
+          $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
           $c_field_answer_text->required_set($i == 0);
         # group field to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
@@ -46,9 +47,9 @@ namespace effcore\modules\poll {
         case 'insert':
           if ($entity->name == 'poll') {
             $answers = [];
-            foreach ($items['#answer_text'] as $c_field_answer_text)
-              if ($c_field_answer_text->value_get())
-                $answers[count($answers) + 1] = $c_field_answer_text->value_get();
+            for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++)
+              if ($items['#answer_text_'.$c_answer_id]->value_get())
+                $answers[$c_answer_id] = $items['#answer_text_'.$c_answer_id]->value_get();
             $form->_instance->data = ['answers' => $answers];
           }
           break;
