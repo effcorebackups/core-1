@@ -22,15 +22,15 @@ namespace effcore\modules\poll {
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         $answers = $form->_instance->data['answers'];
         for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++) {
-        # field for answer id
-          $c_field_answer_id = new field_number('ID');
-          $c_field_answer_id->description_state = 'hidden';
-          $c_field_answer_id->build();
-          $c_field_answer_id->name_set('answer_id_'.$c_answer_id);
-          $c_field_answer_id->required_set($c_answer_id == 1);
-          $c_field_answer_id->value_set($c_answer_id);
-          $c_field_answer_id->min_set(1 );
-          $c_field_answer_id->max_set(10);
+        # field for answer weight
+          $c_field_answer_weight = new field_number('Weight');
+          $c_field_answer_weight->description_state = 'hidden';
+          $c_field_answer_weight->build();
+          $c_field_answer_weight->name_set('answer_weight_'.$c_answer_id);
+          $c_field_answer_weight->required_set(false);
+          $c_field_answer_weight->value_set($c_answer_id);
+          $c_field_answer_weight->min_set(1 );
+          $c_field_answer_weight->max_set(10);
         # field for answer text
           $c_field_answer_text = new field_text('Text');
           $c_field_answer_text->description_state = 'hidden';
@@ -40,8 +40,8 @@ namespace effcore\modules\poll {
           $c_field_answer_text->required_set($c_answer_id == 1);
         # group fields to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
-          $c_box_answer->child_insert($c_field_answer_id,   'answer_id'  );
-          $c_box_answer->child_insert($c_field_answer_text, 'answer_text');
+          $c_box_answer->child_insert($c_field_answer_weight, 'answer_weight');
+          $c_box_answer->child_insert($c_field_answer_text,   'answer_text'  );
           $fieldset_answers->child_insert($c_box_answer, 'answer_'.$c_answer_id);
         }
       }
