@@ -7,12 +7,6 @@
 namespace effcore {
           abstract class session {
 
-  const period_expired_h = 60 * 60;
-  const period_expired_d = 60 * 60 * 24;
-  const period_expired_w = 60 * 60 * 24 * 7;
-  const period_expired_m = 60 * 60 * 24 * 30;
-  const empty_ip = '::';
-
   static protected $current;
 
   static function select_all_by_id_user($id_user) {
@@ -43,7 +37,7 @@ namespace effcore {
   static function insert($id_user, $session_params = []) {
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    $period = !$is_remember ? static::period_expired_d : static::period_expired_m;
+    $period = !$is_remember ? core::date_period_d : core::date_period_m;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
       'id'          => static::id_get(),
@@ -94,10 +88,10 @@ namespace effcore {
     $cookie_domain = storage::get('files')->select('settings/core/cookie_domain');
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    if ($hex_type == 'f' && $is_remember == false) $expired = time() + static::period_expired_d;
-    if ($hex_type == 'f' && $is_remember)          $expired = time() + static::period_expired_m;
+    if ($hex_type == 'f' && $is_remember == false) $expired = time() + core::date_period_d;
+    if ($hex_type == 'f' && $is_remember)          $expired = time() + core::date_period_m;
     if ($hex_type == 'a')                          $expired = 0;
-    if ($hex_type == 'f' && $is_fixed_ip == false) $ip = static::empty_ip;
+    if ($hex_type == 'f' && $is_fixed_ip == false) $ip = core::empty_ip;
     if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_get_addr_remote();
     if ($hex_type == 'a')                          $ip = core::server_get_addr_remote();
   # $hex_type: a - anonymous user | f - authenticated user
@@ -149,7 +143,7 @@ namespace effcore {
           if ($hex_uagent_hash_8 === static::id_get_hex_uagent_hash_8()) {
             if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(core::server_get_addr_remote())) ||
                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::server_get_addr_remote())) ||
-                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(static::empty_ip))) {
+                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::empty_ip))) {
               return true;
             }
           }

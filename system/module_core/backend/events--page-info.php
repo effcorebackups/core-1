@@ -14,7 +14,6 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module;
           use \effcore\node;
-          use \effcore\session;
           use \effcore\storage;
           use \effcore\text;
           abstract class events_page_info {
@@ -37,7 +36,7 @@ namespace effcore\modules\core {
     $is_required_updates = module::is_required_updates();
     $is_required_updates_fixlink = new markup('a', ['href' => '/manage/modules/update'], 'fix');
     $is_required_updates_sticker = new markup('x-sticker', ['data-state' => !$is_required_updates ? 'ok' : 'warning'], $is_required_updates ? 'yes' : 'no');
-    $cron_last_run_sticker       = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.session::period_expired_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
+    $cron_last_run_sticker       = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/manage/cron/'.core::key_get('cron')], '/manage/cron/'.core::key_get('cron'));
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';

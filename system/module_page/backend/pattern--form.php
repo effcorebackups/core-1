@@ -245,7 +245,7 @@ namespace effcore {
       }
     }
     entity::get('cache_validation')->instances_delete([
-      'conditions' => ['updated_!f' => 'updated', '<', 'updated_!v' => core::datetime_get('-'.session::period_expired_d.' second')]
+      'conditions' => ['updated_!f' => 'updated', '<', 'updated_!v' => core::datetime_get('-'.core::date_period_d.' second')]
     ]);
   }
 
@@ -303,7 +303,7 @@ namespace effcore {
       $hex_uagent_hash_8 = static::validation_id_extract_hex_uagent_hash_8($id);
       $hex_signature     = static::validation_id_extract_hex_signature    ($id);
       if ($created <= time()                                                   &&
-          $created >= time() - session::period_expired_h                       &&
+          $created >= time() - core::date_period_h                             &&
           $hex_ip            === static::validation_id_get_hex_ip()            &&
           $hex_uagent_hash_8 === static::validation_id_get_hex_uagent_hash_8() &&
           $hex_signature     === static::validation_id_get_hex_signature($id)) {

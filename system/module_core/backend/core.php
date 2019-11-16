@@ -7,6 +7,12 @@
 namespace effcore {
           abstract class core {
 
+  const date_period_h = 60 * 60;
+  const date_period_d = 60 * 60 * 24;
+  const date_period_w = 60 * 60 * 24 * 7;
+  const date_period_m = 60 * 60 * 24 * 30;
+  const empty_ip = '::';
+
   ####################
   ### boot modules ###
   ####################

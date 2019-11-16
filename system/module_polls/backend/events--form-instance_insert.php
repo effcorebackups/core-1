@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\poll {
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\field_text;
           use \effcore\fieldset;
@@ -17,6 +18,8 @@ namespace effcore\modules\poll {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
+        if ($items['#expired']->value_get() == null)
+            $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $fieldset_answers = new fieldset('Answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++) {
