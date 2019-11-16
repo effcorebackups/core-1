@@ -22,17 +22,17 @@ namespace effcore\modules\poll {
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $fieldset_answers = new fieldset('Answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
-        for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++) {
+        for ($i = 0; $i < 10; $i++) {
         # field for answer text
           $c_field_answer_text = new field_text('Text');
           $c_field_answer_text->description_state = 'hidden';
           $c_field_answer_text->build();
           $c_field_answer_text->name_set('answer_text[]');
-          $c_field_answer_text->required_set($c_answer_id == 1);
+          $c_field_answer_text->required_set($i == 0);
         # group field to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
           $c_box_answer->child_insert($c_field_answer_text, 'answer_text');
-          $fieldset_answers->child_insert($c_box_answer, 'answer_'.$c_answer_id);
+          $fieldset_answers->child_insert($c_box_answer, 'answer_'.$i);
         }
       }
     }
