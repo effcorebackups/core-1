@@ -77,6 +77,8 @@ entities
           - 1: Registered users
         - disabled
           - 0: 0
+        - selected
+          - 1: 1
     - is_multiple
         title: Multiple choice
         type: boolean
