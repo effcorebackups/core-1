@@ -46,9 +46,9 @@ namespace effcore\modules\poll {
           $c_field_answer_text->required_set($i == 0);
         # group fields to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
-          $c_box_answer->child_insert($c_field_answer_weight, 'answer_weight');
-          $c_box_answer->child_insert($c_field_answer_text,   'answer_text'  );
-          $fieldset_answers->child_insert($c_box_answer, 'answer_'.$i);
+          $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight');
+          $c_box_answer    ->child_insert($c_field_answer_text,   'answer_text'  );
+          $fieldset_answers->child_insert($c_box_answer,          'answer_'.   $i);
         }
       }
     }
@@ -61,6 +61,10 @@ namespace effcore\modules\poll {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'poll') {
+            $answers = [];
+            for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++)
+              if ($items['#answer_text_'.$c_answer_id]->value_get())
+                $answers[$c_answer_id] = $items['#answer_text_'.$c_answer_id]->value_get();
           }
           break;
       }

@@ -31,8 +31,8 @@ namespace effcore\modules\poll {
           $c_field_answer_text->required_set($i == 0);
         # group field to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
-          $c_box_answer->child_insert($c_field_answer_text, 'answer_text');
-          $fieldset_answers->child_insert($c_box_answer, 'answer_'.$i);
+          $c_box_answer    ->child_insert($c_field_answer_text, 'answer_text');
+          $fieldset_answers->child_insert($c_box_answer,        'answer_'.$i );
         }
       }
     }
