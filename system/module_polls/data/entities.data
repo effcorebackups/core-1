@@ -115,6 +115,14 @@ entities
         title: User ID
         type: integer
         not_null: true
+    constraints
+    - foreign_id_poll
+        type: foreign
+        fields
+        - =: id_poll
+        references: polls
+        references_fields
+        - =: id
     indexes
     - index_id_user
         type: index
