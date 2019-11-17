@@ -24,15 +24,6 @@ namespace effcore\modules\poll {
         $answers = array_chunk($form->_instance->data['answers'], 1, true);
         $used_ids = core::array_kmap(range(1, 10));
         for ($i = 0; $i < 10; $i++) {
-        # field for answer weight
-          $c_field_answer_weight = new field_number('Weight');
-          $c_field_answer_weight->description_state = 'hidden';
-          $c_field_answer_weight->build();
-          $c_field_answer_weight->name_set('answer_weight_'.$i);
-          $c_field_answer_weight->required_set(false);
-          $c_field_answer_weight->value_set($i * 10);
-          $c_field_answer_weight->min_set(-1000);
-          $c_field_answer_weight->max_set(+1000);
         # field for answer text
           $c_answer_id   = isset($answers[$i]) ? key    ($answers[$i]) : '';
           $c_answer_text = isset($answers[$i]) ? current($answers[$i]) : '';
@@ -44,6 +35,15 @@ namespace effcore\modules\poll {
           $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
           $c_field_answer_text->value_set($c_answer_text);
           $c_field_answer_text->required_set($i == 0);
+        # field for answer weight
+          $c_field_answer_weight = new field_number('Weight');
+          $c_field_answer_weight->description_state = 'hidden';
+          $c_field_answer_weight->build();
+          $c_field_answer_weight->name_set('answer_weight_'.$c_answer_id);
+          $c_field_answer_weight->required_set(false);
+          $c_field_answer_weight->value_set(90 - ($i * 10));
+          $c_field_answer_weight->min_set(-1000);
+          $c_field_answer_weight->max_set(+1000);
         # group fields to box
           $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
           $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight');
@@ -61,10 +61,17 @@ namespace effcore\modules\poll {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'poll') {
-            $answers = [];
+            $answers_unsorted = [];
+            $answers          = [];
             for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++)
               if ($items['#answer_text_'.$c_answer_id]->value_get())
-                $answers[$c_answer_id] = $items['#answer_text_'.$c_answer_id]->value_get();
+                $answers_unsorted[] = (object)[
+                  'id'     => $c_answer_id,
+                  'weight' => $items['#answer_weight_'.$c_answer_id]->value_get(),
+                  'text'   => $items['#answer_text_'.  $c_answer_id]->value_get()];
+            core::array_sort_by_weight($answers_unsorted);
+            foreach ($answers_unsorted as $c_answer)
+              $answers[$c_answer->id] = $c_answer->text;
             $form->_instance->data = ['answers' => $answers];
           }
           break;
