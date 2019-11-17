@@ -80,14 +80,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # trees
       # ─────────────────────────────────────────────────────────────────────
-      - tree_demo_via_decorator|page_part
+      - block_demo_tree_via_decorator|page_part
           display
             check: page_args
             where: type
             match: %^embedded/trees(/.*|)$%
           type: link
           source: blocks/demo/demo_tree_via_decorator
-      - tree_demo_sql|page_part
+      - block_demo_tree_sql|page_part
           display
             check: page_args
             where: type
@@ -96,7 +96,7 @@ pages
           source: \effcore\modules\menu\events_page::block_tree_sql
           args
           - id: demo_sql
-      - tree_demo_nosql|page_part
+      - block_demo_tree_nosql|page_part
           display
             check: page_args
             where: type
