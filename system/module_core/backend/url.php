@@ -161,9 +161,9 @@ namespace effcore {
     }
   }
 
-  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;}
-  function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args); $args[$name] = $value; $this->query = http_build_query($args);}
-  function query_arg_delete($name)         {$args = []; parse_str($this->query, $args); unset($args[$name]);   $this->query = http_build_query($args);}
+  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                         }
+  function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args);}
+  function query_arg_delete($name)         {$args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args);}
 
   function path_arg_select($name) {
     $args = explode('/', $this->path);
@@ -212,12 +212,13 @@ namespace effcore {
   }
 
   static function back_url_get() {
-    $url = new url(urldecode(static::get_current()->query_arg_select('back')));
+    $url = new url(static::get_current()->query_arg_select('back'));
     return core::validate_url($url->full_get()) ?: '';
   }
 
-  static function back_part_make() {
-    return 'back='.urlencode(static::get_current()->tiny_get());
+  static function back_part_make($full = false) {
+    if ($full) return 'back='.urlencode(static::get_current()->full_get());
+    else       return 'back='.urlencode(static::get_current()->tiny_get());
   }
 
   static function is_local($url) {
