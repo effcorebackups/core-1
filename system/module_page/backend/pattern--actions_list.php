@@ -12,7 +12,6 @@ namespace effcore {
   public $title_tag_name = 'x-actions-title';
   public $template = 'actions_list';
   public $actions = [];
-  public $active = [];
 
   function __construct($title = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $attributes, [], $weight);
@@ -30,7 +29,7 @@ namespace effcore {
       foreach ($this->actions as $c_name => $c_title) {
         $c_href = $c_name[0] == '/' ? $c_name : page::get_current()->args_get('base').'/'.($c_name);
         $list->child_insert(new markup('a', ['data-id' => core::sanitize_id($c_title), 'title' => new text($c_title), 'href' => $c_href],
-          new markup('em', [], token::replace(translation::get($c_title)))
+          new markup('em', [], $c_title)
         ));}
       $this->is_builded = true;
     }
@@ -47,9 +46,9 @@ namespace effcore {
   }
 
   function render_self() {
-    return (new markup($this->title_tag_name, [], [
+    return $this->title ? (new markup($this->title_tag_name, [], [
       new text($this->title)
-    ]))->render();
+    ]))->render() : '';
   }
 
 }}
