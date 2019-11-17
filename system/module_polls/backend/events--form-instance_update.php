@@ -21,7 +21,7 @@ namespace effcore\modules\poll {
       if ($entity->name == 'poll') {
         $fieldset_answers = new fieldset('Answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
-        $answers = array_chunk($form->_instance->data['answers'], 1, true);
+        $answers = array_chunk($form->_instance->data['answers'] ?? [], 1, true);
         $used_ids = core::array_kmap(range(1, 10));
         for ($i = 0; $i < 10; $i++) {
         # field for answer text

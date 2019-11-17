@@ -24,6 +24,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_instance_select|page_part
-          type: link
-          source: forms/storage/instance_select
+      - block_instance_select|page_part
+          type: code
+          source: \effcore\modules\storage\events_page_instance_select::on_show_instance

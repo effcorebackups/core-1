@@ -1,9 +1,0 @@
-forms
-- instance_select|form
-    attributes
-    - id: instance_select
-    - enctype: multipart/form-data
-    - method: post
-    - novalidate: true
-    children
-    - data|node
