@@ -9,10 +9,10 @@ pages
     - top
       - menu_languages|page_part
           type: code
-          source: \effcore\modules\locales\events_page::on_show_block_menu_languages
+          source: \effcore\modules\locales\events_page::block_menu_languages
       - block_system_info|page_part
           type: code
-          source: \effcore\modules\core\events_page_info::on_show_block_system_info
+          source: \effcore\modules\core\events_page_info::block_system_info
     - title
       - title|page_part_preset_link
           id: title

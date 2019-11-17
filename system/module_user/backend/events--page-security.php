@@ -9,7 +9,7 @@ namespace effcore\modules\user {
           use \effcore\text;
           abstract class events_page_security {
 
-  static function on_show_block_security($page) {
+  static function block_security($page) {
     return new block('', ['data-id' => 'security'], [
       new text('UNDER CONSTRUCTION')
     ]);

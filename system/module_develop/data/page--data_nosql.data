@@ -42,46 +42,46 @@ pages
             where: type
             match: %^trees$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tree
+          source: \effcore\modules\develop\events_page_data_nosql::block_tree
       - block_selections|page_part
           display
             check: page_args
             where: type
             match: %^selections$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_selections
+          source: \effcore\modules\develop\events_page_data_nosql::block_selections
       - block_events|page_part
           display
             check: page_args
             where: type
             match: %^events$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_events
+          source: \effcore\modules\develop\events_page_data_nosql::block_events
       - block_file_types|page_part
           display
             check: page_args
             where: type
             match: %^file_types$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_file_types
+          source: \effcore\modules\develop\events_page_data_nosql::block_file_types
       - block_templates|page_part
           display
             check: page_args
             where: type
             match: %^templates$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_templates
+          source: \effcore\modules\develop\events_page_data_nosql::block_templates
       - block_tokens|page_part
           display
             check: page_args
             where: type
             match: %^tokens$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_tokens
+          source: \effcore\modules\develop\events_page_data_nosql::block_tokens
       - block_translations|page_part
           display
             check: page_args
             where: type
             match: %^translations$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::on_show_block_translations
+          source: \effcore\modules\develop\events_page_data_nosql::block_translations

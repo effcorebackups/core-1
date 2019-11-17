@@ -59,7 +59,7 @@ pages
             where: type
             match: %^embedded/markup_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_markup_dynamic
+          source: \effcore\modules\demo\events_page_demo::block_demo_markup_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # decorators
       # ─────────────────────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ pages
             where: type
             match: %^embedded/decorators_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_decorators_dynamic
+          source: \effcore\modules\demo\events_page_demo::block_demo_decorators_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # trees
       # ─────────────────────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ pages
             where: type
             match: %^embedded/trees(/.*|)$%
           type: code
-          source: \effcore\modules\menu\events_page::on_show_block_tree_sql
+          source: \effcore\modules\menu\events_page::block_tree_sql
           args
           - id: demo_sql
       - tree_demo_nosql|page_part
@@ -144,14 +144,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
-      - demo_messages|page_part
+      - block_demo_messages|page_part
           display
             check: page_args
             where: type
             match: %^embedded/messages$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_demo_messages
-      - demo_messages_description|page_part
+          source: \effcore\modules\demo\events_page_demo::block_demo_messages
+      - block_demo_messages_description|page_part
           display
             check: page_args
             where: type
@@ -167,18 +167,18 @@ pages
             where: type
             match: %^embedded/canvas$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_canvas
+          source: \effcore\modules\demo\events_page_demo::block_demo_canvas
       - block_demo_diagrams|page_part
           display
             check: page_args
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_diagrams
+          source: \effcore\modules\demo\events_page_demo::block_demo_diagrams
       - block_demo_colors|page_part
           display
             check: page_args
             where: type
             match: %^embedded/colors$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::on_show_block_demo_colors
+          source: \effcore\modules\demo\events_page_demo::block_demo_colors

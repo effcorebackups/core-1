@@ -9,6 +9,6 @@ pages
       - =: registered
     parts
     - content
-      - block_cron|page_part
+      - cron|page_part
           type: code
-          source: \effcore\modules\core\events_page_cron::on_show_block_cron
+          source: \effcore\modules\core\events_page_cron::cron

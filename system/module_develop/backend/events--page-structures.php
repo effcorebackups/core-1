@@ -26,7 +26,7 @@ namespace effcore\modules\develop {
   ### structures: list ###
   ########################
 
-  static function on_show_block_structures_list($page) {
+  static function block_structures_list($page) {
     $targets = new markup('x-targets');
     $list = new markup('x-structures-list', ['data-type' => core::sanitize_id($page->args_get('type'))]);
     $groups_by_name = [];
@@ -72,7 +72,7 @@ namespace effcore\modules\develop {
   ### structures: diagram ###
   ###########################
 
-  static function on_show_block_structures_diagram($page) {
+  static function block_structures_diagram($page) {
     $map = core::structures_select();
     $diagram = new markup('x-diagram-uml');
 
@@ -178,7 +178,7 @@ namespace effcore\modules\develop {
   ### export UML diagram ###
   ##########################
 
-  static function on_export($page) {
+  static function export($page) {
   # build class diagram
     $map = core::structures_select();
     $result = [];

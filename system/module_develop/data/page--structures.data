@@ -40,18 +40,18 @@ pages
             where: view
             match: %^list$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::on_show_block_structures_list
+          source: \effcore\modules\develop\events_page_structures::block_structures_list
       - block_structures_diagram|page_part
           display
             check: page_args
             where: view
             match: %^diagram$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::on_show_block_structures_diagram
-      - block_structures_export|page_part
+          source: \effcore\modules\develop\events_page_structures::block_structures_diagram
+      - export|page_part
           display
             check: page_args
             where: view
             match: %^export$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::on_export
+          source: \effcore\modules\develop\events_page_structures::export

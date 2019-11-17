@@ -16,7 +16,7 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           abstract class events_page_php_dependencies {
 
-  static function on_show_block_php_dependencies_list($page) {
+  static function block_php_dependencies_list($page) {
     $modules_path = module::get_all('path');
     arsort($modules_path);
     $statistic_by_mod = [];

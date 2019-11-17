@@ -23,10 +23,10 @@ pages
     - content
       - block_system_info|page_part
           type: code
-          source: \effcore\modules\core\events_page_info::on_show_block_system_info
+          source: \effcore\modules\core\events_page_info::block_system_info
       - block_service_info|page_part
           type: code
-          source: \effcore\modules\core\events_page_info::on_show_block_service_info
+          source: \effcore\modules\core\events_page_info::block_service_info
       - block_environment_info|page_part
           type: code
-          source: \effcore\modules\core\events_page_info::on_show_block_environment_info
+          source: \effcore\modules\core\events_page_info::block_environment_info

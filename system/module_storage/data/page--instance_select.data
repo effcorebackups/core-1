@@ -26,4 +26,4 @@ pages
     - content
       - block_instance_select|page_part
           type: code
-          source: \effcore\modules\storage\events_page_instance_select::on_show_instance
+          source: \effcore\modules\storage\events_page_instance_select::block_instance_select

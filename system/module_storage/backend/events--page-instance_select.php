@@ -31,7 +31,7 @@ namespace effcore\modules\storage {
     }     else core::send_header_and_exit('page_not_found');
   }
 
-  static function on_show_instance($page, $args) {
+  static function block_instance_select($page, $args) {
                    $page->args_set('action_name', 'select');
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');

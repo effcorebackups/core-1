@@ -23,4 +23,4 @@ pages
     - content
       - block_php_dependencies_list|page_part
           type: code
-          source: \effcore\modules\develop\events_page_php_dependencies::on_show_block_php_dependencies_list
+          source: \effcore\modules\develop\events_page_php_dependencies::block_php_dependencies_list

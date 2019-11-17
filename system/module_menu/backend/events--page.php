@@ -13,21 +13,6 @@ namespace effcore\modules\menu {
           use \effcore\url;
           abstract class events_page {
 
-  static function on_show_block_tree_sql($page, $args) {
-    if (!empty($args['id'])) {
-      return tree::select($args['id']);
-    }
-  }
-
-  static function on_page_parts_dynamic_build($event, $id = null) {
-    if ($id === null || strpos($id, 'tree_sql_') === 0) {
-      $tree_id = substr($id, strlen('tree_sql_'));
-      foreach ($tree_id ? [tree::select($tree_id)] : tree::select_all('sql') as $c_tree) {
-        page_part_preset::insert('tree_sql_'.$c_tree->id, translation::get('Menu').' (SQL)', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::on_show_block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');
-      }
-    }
-  }
-
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $instance_id   = page::get_current()->args_get('instance_id'  );
@@ -49,6 +34,21 @@ namespace effcore\modules\menu {
           );
         }
       }
+    }
+  }
+
+  static function on_page_parts_dynamic_build($event, $id = null) {
+    if ($id === null || strpos($id, 'tree_sql_') === 0) {
+      $tree_id = substr($id, strlen('tree_sql_'));
+      foreach ($tree_id ? [tree::select($tree_id)] : tree::select_all('sql') as $c_tree) {
+        page_part_preset::insert('tree_sql_'.$c_tree->id, translation::get('Menu').' (SQL)', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');
+      }
+    }
+  }
+
+  static function block_tree_sql($page, $args) {
+    if (!empty($args['id'])) {
+      return tree::select($args['id']);
     }
   }
 

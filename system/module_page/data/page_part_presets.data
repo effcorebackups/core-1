@@ -10,7 +10,7 @@ page_part_presets
     managing_group: Other
     managing_title: Page actions
     type: code
-    source: \effcore\modules\page\events_page::on_show_page_actions
+    source: \effcore\modules\page\events_page::block_page_actions
 # ─────────────────────────────────────────────────────────────────────
 - selections_logotype_main|page_part_preset
     id: selections_logotype_main
