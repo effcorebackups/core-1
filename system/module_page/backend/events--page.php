@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           use \effcore\user;
           abstract class events_page {
 
-  static function on_show_title($page) {
+  static function block_title($page) {
     return new markup('h1', ['id' => 'title'],
       new text($page->title, [], true, true)
     );
