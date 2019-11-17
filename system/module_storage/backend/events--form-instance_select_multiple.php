@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     if ($entity) {
       $selection = new selection;
-      $selection->id = 'instances_manage-'.$entity->name;
+      $selection->id = 'instance_select_multiple-'.$entity->name;
       $selection->pager_is_enabled = true;
       foreach ($entity->managing_selection_params as $c_key => $c_value)
         $selection->                                {$c_key} = $c_value;

@@ -45,7 +45,7 @@ namespace effcore\modules\storage {
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
           $selection = new selection;
-          $selection->id = 'instance_manage-'.$entity->name;
+          $selection->id = 'instance_select-'.$entity->name;
           foreach ($entity->managing_selection_params as $c_key => $c_value)
             $selection                                ->{$c_key} = $c_value;
             $selection->decorator_params['view_type'] = $entity->decorator_view_type_single;
