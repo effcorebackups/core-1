@@ -45,16 +45,6 @@ namespace effcore\modules\menu {
       switch ($form->clicked_button->value_get()) {
         case 'delete':
           if ($entity->name == 'tree_item' && !empty($form->_instance)) {
-            if (!empty($form->_related)) {
-              $in_values = [];
-              foreach ($form->_related as $c_id) $in_values['in_value_'.$c_id.'_!v'] = $c_id;
-              $result = entity::get('tree_item')->instances_delete(['conditions' => [
-                'id_!f'    => 'id',
-                'in_begin' => 'in (',
-                'in_!,'    => $in_values,
-                'in_end'   => ')']]);
-              if ($result) message::insert(new text('Related items of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)])         );
-              else         message::insert(new text('Related items of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => implode(', ', $form->_related)]), 'error');}
             $id_tree = $form->_instance->id_tree;
             page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
           }

@@ -175,6 +175,13 @@ entities
         references: trees
         references_fields
         - =: id
+    - foreign_id_parent
+        type: foreign
+        fields
+        - =: id_parent
+        references: tree_items
+        references_fields
+        - =: id
     indexes
     - index_id_parent
         type: index
