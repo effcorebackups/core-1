@@ -26,7 +26,7 @@ namespace effcore\modules\storage {
       $groups = entity::groups_managing_get();
       $entity = entity::get($entity_name);
       $breadcrumbs->link_insert('entity_group', $groups[$managing_group_id],                                                              '/manage/data/'.$managing_group_id                    );
-      $breadcrumbs->link_insert('entity',       $entity->title,              $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$managing_group_id.'/'.$entity->name)));
+      $breadcrumbs->link_insert('entity',       $entity->title_plural,       $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: '/manage/data/'.$managing_group_id.'/'.$entity->name)));
     }
   }
 
