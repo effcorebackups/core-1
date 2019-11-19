@@ -4,7 +4,7 @@
   ### Copyright © 2017—2020 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\poll {
+namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\field_text;

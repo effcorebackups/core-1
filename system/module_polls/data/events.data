@@ -19,17 +19,23 @@ events
   - instance_insert_poll|event
       for: instance_insert
       weight: -50
-      handler: \effcore\modules\poll\events_form_instance_insert::on_init
+      handler: \effcore\modules\polls\events_form_instance_insert::on_init
   - instance_update_poll|event
       for: instance_update
       weight: -50
-      handler: \effcore\modules\poll\events_form_instance_update::on_init
+      handler: \effcore\modules\polls\events_form_instance_update::on_init
+  - poll|event
+      for: poll
+      handler: \effcore\modules\polls\events_form_poll::on_init
   on_form_submit
   - instance_insert_poll|event
       for: instance_insert
       weight: +50
-      handler: \effcore\modules\poll\events_form_instance_insert::on_submit
+      handler: \effcore\modules\polls\events_form_instance_insert::on_submit
   - instance_update_poll|event
       for: instance_update
       weight: +50
-      handler: \effcore\modules\poll\events_form_instance_update::on_submit
+      handler: \effcore\modules\polls\events_form_instance_update::on_submit
+  - poll|event
+      for: poll
+      handler: \effcore\modules\polls\events_form_poll::on_submit
