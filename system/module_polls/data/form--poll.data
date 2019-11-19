@@ -1,0 +1,12 @@
+forms
+- poll|form
+    attributes
+    - id: poll
+    - method: post
+    - novalidate: true
+    children
+    - fields|node
+    - button_vote|button
+        title: vote
+        attributes
+        - value: vote

@@ -1,0 +1,9 @@
+page_part_presets
+- form_poll|page_part_preset
+    id: form_poll
+    managing_group: Form
+    managing_title: Poll
+    in_areas
+    - =: content
+    type: link
+    source: forms/polls/poll

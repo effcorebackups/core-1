@@ -542,6 +542,7 @@ translations
     - version: версия
     - View more: Смотреть больше
     - Visibility: Видимость
+    - vote: голосовать
     - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер
