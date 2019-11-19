@@ -5,7 +5,12 @@ forms
     - method: post
     - novalidate: true
     children
-    - fields|node
+    - fields|fieldset
+        title: Question
+        children
+        - answers|group_radiobuttons
+            element_attributes
+            - name: answers
     - button_vote|button
         title: vote
         attributes
