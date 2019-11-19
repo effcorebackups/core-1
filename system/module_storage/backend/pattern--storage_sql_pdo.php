@@ -396,9 +396,8 @@ namespace effcore {
       $result = [];
       foreach ($this->query($query) ?: [] as $c_instance) {
         foreach ($c_instance->values as $c_name => $c_value) {
-          if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
-               $c_instance->{$c_name} =  ($entity->fields[$c_name]->filter_select)($c_value);
-          else $c_instance->{$c_name} =                                            $c_value;
+          if ($c_value !== null && isset($entity->fields[$c_name]->filter_select))
+              $c_instance->{$c_name} =  ($entity->fields[$c_name]->filter_select)($c_value);
         }
         $c_instance->entity_set_name($entity->name);
         if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
@@ -416,7 +415,7 @@ namespace effcore {
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
-      if (      $params['limit'     ] ) $query += ['limit_begin' => 'LIMIT', 'limit' => (int)$params['limit']];
+      if (      $params['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$params['limit']];
       return $this->query($query);
     }
   }
