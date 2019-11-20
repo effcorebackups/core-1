@@ -9,6 +9,7 @@ namespace effcore\modules\polls {
           use \effcore\entity;
           use \effcore\group_radiobuttons;
           use \effcore\instance;
+          use \effcore\markup;
           use \effcore\message;
           use \effcore\storage;
           use \effcore\user;
@@ -16,10 +17,11 @@ namespace effcore\modules\polls {
 
   static function on_init($event, $form, $items) {
     $poll = new instance('poll', ['id' => 1]);
+    $entity_poll_vote = entity::get('poll_vote');
+    $storage = storage::get($entity_poll_vote->storage_name);
     if ($poll->select()) {
       $form->_id_poll = $poll              ->id;
       $form->_id_user = user::get_current()->id;
-      $storage = storage::get(entity::get('poll_vote')->storage_name);
       $result_answer = $storage->query([
         'action'          => 'SELECT',
         'fields_!,'       => ['all_!f' => '*'],
@@ -41,6 +43,14 @@ namespace effcore\modules\polls {
           );
         }
       } else {
+        $total = $entity_poll_vote->instances_select_count(['conditions' => [
+          'id_poll_!f' => 'id_poll',
+          'operator'   => '=',
+          'id_poll_!v' => $form->_id_poll
+        ]]);
+        $items['fields']->child_insert(new markup('x-total', [], [
+          new markup('x-title', [], 'Total'),
+          new markup('x-value', [], $total)]), 'total');
         $items['~vote']->disabled_set();
       }
     }
