@@ -30,9 +30,7 @@ namespace effcore\modules\polls {
       case 'vote':
         if (!$items['*answers']->value_get()) {
           message::insert('No one item was selected!', 'warning');
-          foreach ($items['#answers'] as $c_item) {
-            $c_item->error_set();
-          }
+          $items['*answers']->error_set();
         }
         break;
     }

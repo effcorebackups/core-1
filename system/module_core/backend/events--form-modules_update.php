@@ -19,6 +19,7 @@ namespace effcore\modules\core {
   static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
     $info->children_delete();
+    $has_updates = false;
     $modules = module::get_all();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
@@ -33,20 +34,22 @@ namespace effcore\modules\core {
         $info->child_insert($c_fieldset, $c_module->id);
         core::array_sort_by_property($c_updates, 'number');
         foreach ($c_updates as $c_update) {
-          if ($c_update->number <= $c_update_last_number) {
+          if ($c_update->number > $c_update_last_number == true) {$has_updates = true; $c_fieldset->state = 'opened';}
+          if ($c_update->number > $c_update_last_number != true)
             $c_checkboxes->disabled[$c_update->number] =
                                     $c_update->number;
-          } else $c_fieldset->state = 'opened';
           $c_checkboxes->field_insert(
             $c_update->number.': '.translation::get($c_update->title),
-            $c_update->description ?? null,
-            ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
+            $c_update->description ?? null, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number]
           );
         }
       }
     }
     if ($info->children_select_count() == 0) {
       $form->child_update('info', new markup('x-no-result', [], 'no updates'));
+      $items['~apply']->disabled_set();
+    }
+    if ($has_updates == false) {
       $items['~apply']->disabled_set();
     }
   }
