@@ -7,6 +7,7 @@
 namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\group_radiobuttons;
           use \effcore\instance;
           use \effcore\message;
           use \effcore\storage;
@@ -28,18 +29,20 @@ namespace effcore\modules\polls {
         'condition_begin' => 'WHERE',
         'condition'       => [
         'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $id_poll, 'conjunction' => 'AND',
-        'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $id_user],
-      ]);
-      $items['*answers']->children_delete();
+        'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $id_user]]);
+      $items['fields']->children_delete();
       $items['fields']->title = $poll->question;
       if (!isset($result_answer[0]->id_answer) && $poll->expired > core::datetime_get()) {
+        $radiobuttons = new group_radiobuttons();
+        $radiobuttons->build();
+        $items['fields']->child_insert($radiobuttons, 'answers');
         foreach ($poll->data['answers'] as $c_id => $c_text) {
-          $items['*answers']->field_insert(
-            $c_text, null, ['value' => $c_id], $c_id
+          $radiobuttons->field_insert(
+            $c_text, null, ['name' => 'answers', 'value' => $c_id], $c_id
           );
         }
       } else {
-        
+        $items['~vote']->disabled_set();
       }
     }
   }
@@ -50,7 +53,6 @@ namespace effcore\modules\polls {
         if (!$items['*answers']->value_get()) {
           message::insert('No one item was selected!', 'warning');
           $items['*answers']->error_set();
-          $form->error_set();
         }
         break;
     }
