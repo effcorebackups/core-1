@@ -15,11 +15,10 @@ namespace effcore\modules\polls {
           abstract class events_form_poll {
 
   static function on_init($event, $form, $items) {
-    $form->_id_poll = 1;
-    $poll = new instance('poll', ['id' => $form->_id_poll]);
+    $poll = new instance('poll', ['id' => 1]);
     if ($poll->select()) {
-      $id_poll = $poll              ->id;
-      $id_user = user::get_current()->id;
+      $form->_id_poll = $poll              ->id;
+      $form->_id_user = user::get_current()->id;
       $storage = storage::get(entity::get('poll_vote')->storage_name);
       $result_answer = $storage->query([
         'action'          => 'SELECT',
@@ -28,8 +27,8 @@ namespace effcore\modules\polls {
         'target_!t'       => '~poll_vote',
         'condition_begin' => 'WHERE',
         'condition'       => [
-        'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $id_poll, 'conjunction' => 'AND',
-        'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $id_user]]);
+        'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'AND',
+        'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $form->_id_user]]);
       $items['fields']->children_delete();
       $items['fields']->title = $poll->question;
       if (!isset($result_answer[0]->id_answer) && $poll->expired > core::datetime_get()) {
@@ -63,8 +62,8 @@ namespace effcore\modules\polls {
       case 'vote':
         $result_vote = (new instance('poll_vote', [
           'id_poll'   => $form->_id_poll,
-          'id_answer' => $items['*answers']->value_get(),
-          'id_user'   => user::get_current()->id
+          'id_user'   => $form->_id_user,
+          'id_answer' => $items['*answers']->value_get()
         ]))->insert();
         if ($result_vote) message::insert('Your answer was accepted.'    );
         else              message::insert('Your answer was not accepted!');
