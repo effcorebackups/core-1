@@ -123,6 +123,13 @@ entities
         references: polls
         references_fields
         - =: id
+    - foreign_id_user
+        type: foreign
+        fields
+        - =: id_user
+        references: users
+        references_fields
+        - =: id
     indexes
     - index_id_user
         type: index

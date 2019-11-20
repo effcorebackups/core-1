@@ -348,3 +348,9 @@
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
   x-module-info x-param x-label {opacity: .5}
   x-module-info x-param x-label::after {content: ': '}
+
+  /* polls */
+
+  form#poll x-diagram {margin-top: 1em}
+  form#poll x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
+  form#poll x-total x-title::after {content: ': '}

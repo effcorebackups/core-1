@@ -30,6 +30,7 @@ namespace effcore\modules\polls {
   ];
 
   static function on_init($event, $form, $items) {
+    $items['~vote']->disabled_set();
     $poll = new instance('poll', ['id' => 1]);
     $entity_poll_vote = entity::get('poll_vote');
     $storage = storage::get($entity_poll_vote->storage_name);
@@ -51,6 +52,7 @@ namespace effcore\modules\polls {
     # voting form
     # ─────────────────────────────────────────────────────────────────────
       if (!isset($answer_row[0]->id_answer) && $poll->expired > core::datetime_get()) {
+        $items['~vote']->disabled_set(false);
         $radiobuttons = new group_radiobuttons();
         $radiobuttons->build();
         $items['fields']->child_insert($radiobuttons, 'answers');
@@ -95,13 +97,13 @@ namespace effcore\modules\polls {
         $diagram = new diagram('', $poll->diagram_type);
         $diagram_colors = self::diagram_colors;
         foreach ($poll->data['answers'] as $c_id => $c_text)
-          $diagram->slice_insert($c_text, $total_by_answer[$c_id] / $total * 100, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
+          $diagram->slice_insert($c_text, $total ? ($total_by_answer[$c_id] ?? 0) / $total * 100 : 0, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
       # make report
         $items['fields']->child_insert($diagram, 'diagram');
         $items['fields']->child_insert(new markup('x-total', [], [
           new markup('x-title', [], 'Total'),
-          new markup('x-value', [], $total)]), 'total');
-        $items['~vote']->disabled_set();
+          new markup('x-value', [], $total)]), 'total'
+        );
       }
     }
   }
