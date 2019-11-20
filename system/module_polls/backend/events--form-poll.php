@@ -36,7 +36,7 @@ namespace effcore\modules\polls {
     if ($poll->select()) {
       $form->_id_poll = $poll              ->id;
       $form->_id_user = user::get_current()->id;
-      $result_answer = $storage->query([
+      $answer_row = $storage->query([
         'action'          => 'SELECT',
         'fields_!,'       => ['all_!f' => '*'],
         'target_begin'    => 'FROM',
@@ -47,7 +47,10 @@ namespace effcore\modules\polls {
         'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $form->_id_user]]);
       $items['fields']->children_delete();
       $items['fields']->title = $poll->question;
-      if (!isset($result_answer[0]->id_answer) && $poll->expired > core::datetime_get()) {
+    # ─────────────────────────────────────────────────────────────────────
+    # voting form
+    # ─────────────────────────────────────────────────────────────────────
+      if (!isset($answer_row[0]->id_answer) && $poll->expired > core::datetime_get()) {
         $radiobuttons = new group_radiobuttons();
         $radiobuttons->build();
         $items['fields']->child_insert($radiobuttons, 'answers');
@@ -56,13 +59,16 @@ namespace effcore\modules\polls {
             $c_text, null, ['name' => 'answers', 'value' => $c_id], $c_id
           );
         }
+    # ─────────────────────────────────────────────────────────────────────
+    # voting report
+    # ─────────────────────────────────────────────────────────────────────
       } else {
       # make statistics
         $total = $entity_poll_vote->instances_select_count(['conditions' => [
           'id_poll_!f'      => 'id_poll',
           'operator'        => '=',
           'id_poll_!v'      => $form->_id_poll]]);
-        $result_total_by_answer = $storage->query([
+        $total_by_answer_rows = $storage->query([
           'action'          => 'SELECT',
           'fields_!,'       => [
           'id_answer_!f'    => 'id_answer',
@@ -83,13 +89,13 @@ namespace effcore\modules\polls {
           'group_fields_!,' => [
           'id_answer_!f'    => 'id_answer']]);
         $total_by_answer = [];
-        foreach ($result_total_by_answer as $c_total)
-          $total_by_answer[$c_total->id_answer] = $c_total->total;
+        foreach ($total_by_answer_rows as $c_row)
+          $total_by_answer[$c_row->id_answer] = $c_row->total;
       # build diagram
         $diagram = new diagram('', $poll->diagram_type);
         $diagram_colors = self::diagram_colors;
         foreach ($poll->data['answers'] as $c_id => $c_text)
-          $diagram->slice_insert($c_text, 20, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
+          $diagram->slice_insert($c_text, $total_by_answer[$c_id] / $total * 100, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
       # make report
         $items['fields']->child_insert($diagram, 'diagram');
         $items['fields']->child_insert(new markup('x-total', [], [
@@ -114,13 +120,13 @@ namespace effcore\modules\polls {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'vote':
-        $result_vote = (new instance('poll_vote', [
+        $result = (new instance('poll_vote', [
           'id_poll'   => $form->_id_poll,
           'id_user'   => $form->_id_user,
           'id_answer' => $items['*answers']->value_get()
         ]))->insert();
-        if ($result_vote) message::insert('Your answer was accepted.'    );
-        else              message::insert('Your answer was not accepted!');
+        if ($result) message::insert('Your answer was accepted.'    );
+        else         message::insert('Your answer was not accepted!');
         static::on_init($event, $form, $items);
         break;
     }
