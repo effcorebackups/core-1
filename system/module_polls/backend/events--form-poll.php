@@ -6,6 +6,7 @@
 
 namespace effcore\modules\polls {
           use \effcore\core;
+          use \effcore\diagram;
           use \effcore\entity;
           use \effcore\group_radiobuttons;
           use \effcore\instance;
@@ -14,6 +15,19 @@ namespace effcore\modules\polls {
           use \effcore\storage;
           use \effcore\user;
           abstract class events_form_poll {
+
+  const diagram_colors = [
+    '#216ce4',
+    '#48be38',
+    '#fc5740',
+    '#fd9a1e',
+    'lightseagreen',
+    'springgreen',
+    'yellowgreen',
+    'gold',
+    'crimson',
+    'lightcoral'
+  ];
 
   static function on_init($event, $form, $items) {
     $poll = new instance('poll', ['id' => 1]);
@@ -43,11 +57,41 @@ namespace effcore\modules\polls {
           );
         }
       } else {
+      # make statistics
         $total = $entity_poll_vote->instances_select_count(['conditions' => [
-          'id_poll_!f' => 'id_poll',
-          'operator'   => '=',
-          'id_poll_!v' => $form->_id_poll
-        ]]);
+          'id_poll_!f'      => 'id_poll',
+          'operator'        => '=',
+          'id_poll_!v'      => $form->_id_poll]]);
+        $result_total_by_answer = $storage->query([
+          'action'          => 'SELECT',
+          'fields_!,'       => [
+          'id_answer_!f'    => 'id_answer',
+          'count'           => [
+          'function_begin'  => 'count(',
+          'function_field'  => '*',
+          'function_end'    => ')',
+          'alias_begin'     => 'as',
+          'alias'           => 'total']],
+          'target_begin'    => 'FROM',
+          'target_!t'       => '~poll_vote',
+          'condition_begin' => 'WHERE',
+          'condition'       => [
+          'id_poll_!f'      => 'id_poll',
+          'operator'        => '=',
+          'id_poll_!v'      =>  $form->_id_poll],
+          'group_begin'     => 'GROUP BY',
+          'group_fields_!,' => [
+          'id_answer_!f'    => 'id_answer']]);
+        $total_by_answer = [];
+        foreach ($result_total_by_answer as $c_total)
+          $total_by_answer[$c_total->id_answer] = $c_total->total;
+      # build diagram
+        $diagram = new diagram('', $poll->diagram_type);
+        $diagram_colors = self::diagram_colors;
+        foreach ($poll->data['answers'] as $c_id => $c_text)
+          $diagram->slice_insert($c_text, 20, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
+      # make report
+        $items['fields']->child_insert($diagram, 'diagram');
         $items['fields']->child_insert(new markup('x-total', [], [
           new markup('x-title', [], 'Total'),
           new markup('x-value', [], $total)]), 'total');
