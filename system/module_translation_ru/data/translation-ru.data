@@ -561,6 +561,8 @@ translations
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
+    - Your answer was accepted.: Ваш ответ был принят.
+    - Your answer was not accepted!: Ваш ответ не был принят!
     - your EMail is — %%_email: Ваш адрес электронной почты — %%_email
     - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
