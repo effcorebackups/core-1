@@ -37,7 +37,7 @@ namespace effcore\modules\polls {
     if ($poll->select()) {
       $form->_id_poll = $poll              ->id;
       $form->_id_user = user::get_current()->id;
-      $answer_row = $storage->query([
+      $answer_rows = $storage->query([
         'action'          => 'SELECT',
         'fields_!,'       => ['all_!f' => '*'],
         'target_begin'    => 'FROM',
@@ -51,7 +51,7 @@ namespace effcore\modules\polls {
     # ─────────────────────────────────────────────────────────────────────
     # voting form
     # ─────────────────────────────────────────────────────────────────────
-      if (!isset($answer_row[0]->id_answer) && $poll->expired > core::datetime_get()) {
+      if (!isset($answer_rows[0]->id_answer) && $poll->expired > core::datetime_get()) {
         $items['~vote']->disabled_set(false);
         $radiobuttons = new group_radiobuttons();
         $radiobuttons->build();

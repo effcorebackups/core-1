@@ -23,8 +23,8 @@
   x-block[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
   x-block[data-id='logs'] x-param {display: block; font-size: .9em; color: %%_color_text}
-  x-block[data-id='logs'] x-param x-label {width: 200px; display: inline-block}
-  x-block[data-id='logs'] x-param x-label::after {content: ': '}
+  x-block[data-id='logs'] x-param x-title {width: 200px; display: inline-block}
+  x-block[data-id='logs'] x-param x-title::after {content: ': '}
   x-block[data-id='logs'] x-param x-value {font-family: monospace}
 
   /* php dependencies */

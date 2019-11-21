@@ -26,7 +26,7 @@ namespace effcore {
         case 'linear':
           foreach ($this->slices as $c_slice) {
             $x_slice = new markup('x-slice', ['data-id' => core::sanitize_id($c_slice->title)]);
-            $x_slice->child_insert(new markup('x-param', [], $c_slice->title));
+            $x_slice->child_insert(new markup('x-title', [], $c_slice->title));
             $x_slice->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
@@ -55,7 +55,7 @@ namespace effcore {
             $c_offset -= $c_slice->persent_value;
             $x_legend = new markup('x-legend');
             $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
-            $x_legend->child_insert(new markup('x-param', [], $c_slice->title));
+            $x_legend->child_insert(new markup('x-title', [], $c_slice->title));
             $x_legend->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :

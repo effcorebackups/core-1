@@ -322,19 +322,19 @@
   x-diagram-title {display: block; margin-bottom: 20px; font-size: 1.3em; text-align: center}
 
   x-diagram[data-type='linear'] x-slice {display: block; text-align: center}
-  x-diagram[data-type='linear'] x-param {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}
+  x-diagram[data-type='linear'] x-title {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}
   x-diagram[data-type='linear'] x-value {display: inline-block; width: 55%; padding-left: 7px; text-align: left}
   x-diagram[data-type='linear'] x-scale {display: block; height: 5px; background: %%_color_main}
-  x-diagram[data-type='linear'] x-param::after {content: ':'}
+  x-diagram[data-type='linear'] x-title::after {content: ':'}
 
   x-diagram[data-type='radial'] {text-align: center}
   x-diagram[data-type='radial'] svg {display: inline-block; vertical-align: middle}
   x-diagram[data-type='radial'] x-legends {display: inline-block; margin-left: 10px; vertical-align: middle; text-align: left}
   x-diagram[data-type='radial'] x-legend {display: block}
   x-diagram[data-type='radial'] x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
-  x-diagram[data-type='radial'] x-param {display: inline-block; margin-right: 5px}
+  x-diagram[data-type='radial'] x-title {display: inline-block; margin-right: 5px}
   x-diagram[data-type='radial'] x-value {display: inline-block}
-  x-diagram[data-type='radial'] x-param::after {content: ' – '}
+  x-diagram[data-type='radial'] x-title::after {content: ' – '}
 
   /* x-module-info */
 
@@ -346,8 +346,8 @@
   x-module-info x-param[data-type='icon'] {float: left; margin: 3px 1em 3px 0}
   x-module-info x-param[data-type='icon'] x-value img {display: block}
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
-  x-module-info x-param x-label {opacity: .5}
-  x-module-info x-param x-label::after {content: ': '}
+  x-module-info x-param x-title {opacity: .5}
+  x-module-info x-param x-title::after {content: ': '}
 
   /* polls */
 
