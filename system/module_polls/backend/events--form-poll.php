@@ -113,6 +113,10 @@ namespace effcore\modules\polls {
           new markup('x-value', [], $total)]), 'total'
         );
       }
+    } else {
+      $form->child_update('fields',
+        new markup('x-no-result', [], 'no items')
+      );
     }
   }
 

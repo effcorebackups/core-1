@@ -31,7 +31,8 @@ namespace effcore {
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
                                            locale::format_persent($c_slice->persent_value, 1),
-              new markup('x-scale', ['style' => ['width: '.(int)$c_slice->persent_value.'%']]) ]));
+              new markup('x-scale',      [                                                       ],
+              new markup('x-scale-fill', ['style' => ['width: '.(int)$c_slice->persent_value.'%']])) ]));
             $this->child_insert($c_param);
           }
           break;

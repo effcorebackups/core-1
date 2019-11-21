@@ -114,7 +114,12 @@ entities
     - id_user
         title: User ID
         type: integer
-        not_null: true
+    - id_session
+        title: Session ID
+        type: varchar
+        size: 255
+        collate: nocase
+        check: (id <> '')
     constraints
     - foreign_id_poll
         type: foreign
