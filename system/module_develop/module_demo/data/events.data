@@ -19,6 +19,7 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_module::on_start
+# ─────────────────────────────────────────────────────────────────────
   on_form_init
   - demo|event
       for: demo
@@ -43,21 +44,15 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_file::on_process_demotype
-  on_page_build_before
+# ─────────────────────────────────────────────────────────────────────
+  on_breadcrumbs_build_before
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_page_build_before
-  - demo|event
-      for: demo
-      handler: \effcore\modules\demo\events_page_demo::on_build_before
-  on_page_build_after
+      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build_before
+  on_breadcrumbs_build_after
   - example|event
       for: example
-      handler: \effcore\modules\demo\events_examples::on_page_build_after
-  on_page_render_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_page_render_before
+      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build_after
   on_decorator_build_before
   - example|event
       for: example
@@ -66,6 +61,57 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_decorator_build_after
+  on_email_send_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_email_send_before
+  on_instance_delete_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_delete_before
+  on_instance_insert_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_insert_before
+  on_instance_select_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_select_before
+  on_instance_update_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_update_before
+  on_instance_delete_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_delete_after
+  on_instance_insert_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_insert_after
+  on_instance_select_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_select_after
+  on_instance_update_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_instance_update_after
+  on_page_build_before
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_page_demo::on_build_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_page_build_before
+  on_page_build_after
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_page_build_after
+  on_page_render_before
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_page_render_before
   on_selection_build_before
   - example|event
       for: example
@@ -83,56 +129,16 @@ events
       for: example
       handler: \effcore\modules\demo\events_examples::on_tab_build_after
   on_tree_build_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_tree_build_before
   - demo_nosql|event
       for: demo_nosql
       handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_nosql
   - demo_sql|event
       for: demo_sql
       handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_sql
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_tree_build_before
   on_tree_build_after
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_tree_build_after
-  on_email_send_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_email_send_before
-  on_instance_select_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_select_before
-  on_instance_select_after
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_select_after
-  on_instance_insert_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_insert_before
-  on_instance_insert_after
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_insert_after
-  on_instance_update_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_update_before
-  on_instance_update_after
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_update_after
-  on_instance_delete_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_delete_before
-  on_instance_delete_after
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_instance_delete_after
-  on_breadcrumbs_build_before
-  - example|event
-      for: example
-      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build_before
