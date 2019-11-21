@@ -3,6 +3,7 @@ events
   - storage|event
       for: storage
       handler: \effcore\modules\storage\events_module::on_enable
+# ─────────────────────────────────────────────────────────────────────
   on_form_init
   - instance_select_multiple|event
       for: instance_select_multiple
@@ -44,22 +45,27 @@ events
       for: instance_update
       weight: +50
       handler: \effcore\modules\storage\events_form_instance_update_selection::on_submit
+# ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - data|event
       for: data
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event
       for: system
       weight: -50
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_instance_delete_before
   - all|event
       handler: \effcore\modules\storage\events_storage::on_instance_delete_before
+# ─────────────────────────────────────────────────────────────────────
   on_page_parts_dynamic_build
   - all|event
       handler: \effcore\modules\storage\events_page::on_page_parts_dynamic_build

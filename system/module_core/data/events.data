@@ -7,10 +7,12 @@ events
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_enable
+# ─────────────────────────────────────────────────────────────────────
   on_cron_run
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_cron_run
+# ─────────────────────────────────────────────────────────────────────
   on_form_init
   - install|event
       for: install
@@ -50,6 +52,7 @@ events
   - cache_update|event
       for: cache_update
       handler: \effcore\modules\core\events_form_cache_update::on_submit
+# ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - install|event
       for: install
@@ -57,6 +60,7 @@ events
   - modules|event
       for: modules
       handler: \effcore\modules\core\events_page_modules::on_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event
       for: system

@@ -7,6 +7,7 @@ events
   - test|event
       for: test
       handler: \effcore\modules\test\events_module::on_disable
+# ─────────────────────────────────────────────────────────────────────
   on_form_init
   - test|event
       for: test
@@ -15,6 +16,7 @@ events
   - test|event
       for: test
       handler: \effcore\modules\test\events_form_test::on_submit
+# ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - tests|event
       for: tests

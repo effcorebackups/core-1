@@ -13,8 +13,8 @@ namespace effcore\modules\demo {
   static function on_decorator_build_after   ($event, $decorator) {}
   static function on_email_send_before       ($event, &$to, &$subject, &$body, &$from, &$encoding, &$form, &$items) {}
   static function on_form_init               ($event, $form, $items) {}
-  static function on_form_submit             ($event, $form, $items) {}
   static function on_form_validate           ($event, $form, $items) {}
+  static function on_form_submit             ($event, $form, $items) {}
   static function on_instance_delete_before  ($event, $instance) {}
   static function on_instance_insert_before  ($event, $instance) {}
   static function on_instance_select_before  ($event, $instance) {}
