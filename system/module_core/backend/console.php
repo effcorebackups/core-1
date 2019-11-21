@@ -8,21 +8,6 @@ namespace effcore {
           abstract class console {
 
   const directory = dir_dynamic.'logs/';
-  const diagram_colors = [
-    'palegoldenrod',
-    'mediumaquamarine',
-    'palegreen',
-    'darkcyan',
-    'lightseagreen',
-    'springgreen',
-    'yellowgreen',
-    'gold',
-    'crimson',
-    'lightcoral',
-    'thistle',
-    'moccasin',
-    'paleturquoise'
-  ];
 
   static protected $data = [];
 
@@ -106,7 +91,7 @@ namespace effcore {
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time);}}
     $diagram = new diagram('', 'radial');
-    $colors = self::diagram_colors;
+    $colors = core::diagram_colors;
     foreach ($statistics as  $c_key => $c_value)
       $diagram->slice_insert($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::get('sec.'), array_shift($colors), ['data-id' => $c_key]);
     return new block('Total load', ['data-id' => 'diagram_load'], [

@@ -12,6 +12,18 @@ namespace effcore {
   const date_period_w = 60 * 60 * 24 * 7;
   const date_period_m = 60 * 60 * 24 * 30;
   const empty_ip = '::';
+  const diagram_colors = [
+    'chocolate',
+    'darkorange',
+    'limegreen',
+    'aquamarine',
+    'dodgerblue',
+    'tomato',
+    'yellowgreen',
+    'gold',
+    'lightcoral',
+    'crimson'
+  ];
 
   ####################
   ### boot modules ###

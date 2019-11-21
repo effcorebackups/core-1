@@ -16,19 +16,6 @@ namespace effcore\modules\polls {
           use \effcore\user;
           abstract class events_form_poll {
 
-  const diagram_colors = [
-    '#216ce4',
-    '#48be38',
-    '#fc5740',
-    '#fd9a1e',
-    'lightseagreen',
-    'springgreen',
-    'yellowgreen',
-    'gold',
-    'crimson',
-    'lightcoral'
-  ];
-
   static function on_init($event, $form, $items) {
     $items['~vote']->disabled_set();
     $poll = new instance('poll', ['id' => 1]);
@@ -99,7 +86,7 @@ namespace effcore\modules\polls {
           $total_by_answer[$c_row->id_answer] = $c_row->total;
       # build diagram
         $diagram = new diagram('', $poll->diagram_type);
-        $diagram_colors = self::diagram_colors;
+        $diagram_colors = core::diagram_colors;
         foreach ($poll->data['answers'] as $c_id => $c_text)
           $diagram->slice_insert($c_text,
             $total ? ($total_by_answer[$c_id] ?? 0) / $total * 100 : 0,
