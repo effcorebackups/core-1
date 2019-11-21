@@ -20,26 +20,6 @@ events
       for: demo
       handler: \effcore\modules\demo\events_module::on_start
 # ─────────────────────────────────────────────────────────────────────
-  on_form_init
-  - demo|event
-      for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_init
-  on_form_validate
-  - demo|event
-      for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_validate
-  - instance_insert_demo|event
-      for: instance_insert
-      weight: -50
-      handler: \effcore\modules\demo\events_form_instance_insert::on_validate
-  - instance_update_demo|event
-      for: instance_update
-      weight: -50
-      handler: \effcore\modules\demo\events_form_instance_update::on_validate
-  on_form_submit
-  - demo|event
-      for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_submit
   on_file_process_demotype
   - demo|event
       for: demo
@@ -65,6 +45,35 @@ events
   - example|event
       for: example
       handler: \effcore\modules\demo\events_examples::on_email_send_before
+  on_form_init
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_form_demo::on_init
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_form_init
+  on_form_submit
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_form_demo::on_submit
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_form_submit
+  on_form_validate
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_form_demo::on_validate
+  - instance_insert_demo|event
+      for: instance_insert
+      weight: -50
+      handler: \effcore\modules\demo\events_form_instance_insert::on_validate
+  - instance_update_demo|event
+      for: instance_update
+      weight: -50
+      handler: \effcore\modules\demo\events_form_instance_update::on_validate
+  - example|event
+      for: example
+      handler: \effcore\modules\demo\events_examples::on_form_validate
   on_instance_delete_before
   - example|event
       for: example
