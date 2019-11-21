@@ -25,7 +25,7 @@ namespace effcore {
 
         case 'linear':
           foreach ($this->slices as $c_slice) {
-            $c_param = new markup('x-param', ['data-id' => $c_slice->id]);
+            $c_param = new markup('x-param', $c_slice->attributes);
             $c_param->child_insert(new markup('x-title', [], $c_slice->title));
             $c_param->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
@@ -52,7 +52,7 @@ namespace effcore {
               'stroke-width: 30%; '.
               'fill: none']));
             $c_offset -= $c_slice->persent_value;
-            $c_param = new markup('x-param', ['data-id' => $c_slice->id]);
+            $c_param = new markup('x-param', $c_slice->attributes);
             $c_param->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
             $c_param->child_insert(new markup('x-title', [], $c_slice->title));
             $c_param->child_insert(new markup('x-value', [], [
@@ -68,13 +68,13 @@ namespace effcore {
     }
   }
 
-  function slice_insert($title, $persent_value, $complex_value = null, $color = null, $id = null) {
+  function slice_insert($title, $persent_value, $complex_value = null, $color = null, $attributes = []) {
     $this->slices[] = (object)[
       'title'         => $title,
       'persent_value' => $persent_value,
       'complex_value' => $complex_value,
       'color'         => $color,
-      'id'            => $id
+      'attributes'    => $attributes
     ];
   }
 

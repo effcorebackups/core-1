@@ -37,7 +37,7 @@ namespace effcore\modules\polls {
     if ($poll->select()) {
       $form->_id_poll = $poll              ->id;
       $form->_id_user = user::get_current()->id;
-      $answer_rows = $storage->query([
+      $answers_rows = $storage->query([
         'action'          => 'SELECT',
         'fields_!,'       => ['all_!f' => '*'],
         'target_begin'    => 'FROM',
@@ -46,12 +46,16 @@ namespace effcore\modules\polls {
         'condition'       => [
         'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'AND',
         'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $form->_id_user]]);
+      $answers = [];
+      foreach ($answers_rows as $c_row)
+        $answers[$c_row->id_answer] =
+                 $c_row->id_answer;
       $items['fields']->children_delete();
       $items['fields']->title = $poll->question;
     # ─────────────────────────────────────────────────────────────────────
     # voting form
     # ─────────────────────────────────────────────────────────────────────
-      if (!isset($answer_rows[0]->id_answer) && $poll->expired > core::datetime_get()) {
+      if ($answers == [] && $poll->expired > core::datetime_get()) {
         $items['~vote']->disabled_set(false);
         $radiobuttons = new group_radiobuttons();
         $radiobuttons->build();
@@ -100,7 +104,7 @@ namespace effcore\modules\polls {
           $diagram->slice_insert($c_text,
             $total ? ($total_by_answer[$c_id] ?? 0) / $total * 100 : 0,
                       $total_by_answer[$c_id] ?? 0,
-            array_shift($diagram_colors), $c_id
+            array_shift($diagram_colors), ['data-id' => $c_id, 'aria-selected' => isset($answers[$c_id]) ? 'true' : false]
           );
       # make report
         $items['fields']->child_insert($diagram, 'diagram');

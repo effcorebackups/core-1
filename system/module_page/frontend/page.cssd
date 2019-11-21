@@ -322,19 +322,21 @@
   x-diagram-title {display: block; margin-bottom: 20px; font-size: 1.3em; text-align: center}
 
   x-diagram[data-type='linear'] x-param {display: block; text-align: center}
-  x-diagram[data-type='linear'] x-title {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}
-  x-diagram[data-type='linear'] x-value {display: inline-block; width: 55%; padding-left: 7px; text-align: left}
-  x-diagram[data-type='linear'] x-scale {display: block; height: 5px; background: %%_color_main}
-  x-diagram[data-type='linear'] x-title::after {content: ':'}
+  x-diagram[data-type='linear'] x-param                       x-title {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}
+  x-diagram[data-type='linear'] x-param                       x-title::after {content: ':'}
+  x-diagram[data-type='linear'] x-param                       x-value {display: inline-block; width: 55%; padding-left: 7px; text-align: left}
+  x-diagram[data-type='linear'] x-param                       x-scale {display: block; height: 5px; background: %%_color_main}
+  x-diagram[data-type='linear'] x-param[aria-selected='true'] x-scale {background: %%_color_warning}
 
   x-diagram[data-type='radial'] {text-align: center}
   x-diagram[data-type='radial'] svg {display: inline-block; vertical-align: middle}
   x-diagram[data-type='radial'] x-params {display: inline-block; margin-left: 10px; vertical-align: middle; text-align: left}
-  x-diagram[data-type='radial'] x-param {display: block}
-  x-diagram[data-type='radial'] x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
-  x-diagram[data-type='radial'] x-title {display: inline-block; margin-right: 5px}
-  x-diagram[data-type='radial'] x-value {display: inline-block}
-  x-diagram[data-type='radial'] x-title::after {content: ' – '}
+  x-diagram[data-type='radial'] x-param {display: block; margin: 2px 0; padding: 2px 7px; border: 1px dotted transparent; border-radius: 5px}
+  x-diagram[data-type='radial'] x-param[aria-selected='true'] {border-color: %%_color_warning}
+  x-diagram[data-type='radial'] x-param x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
+  x-diagram[data-type='radial'] x-param x-title {display: inline-block; margin-right: 5px}
+  x-diagram[data-type='radial'] x-param x-title::after {content: ' – '}
+  x-diagram[data-type='radial'] x-param x-value {display: inline-block}
 
   /* x-module-info */
 
