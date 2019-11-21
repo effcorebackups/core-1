@@ -43,3 +43,6 @@ events
   - poll|event
       for: poll
       handler: \effcore\modules\polls\events_form_poll::on_submit
+  on_page_parts_dynamic_build
+  - all|event
+      handler: \effcore\modules\polls\events_page::on_page_parts_dynamic_build
