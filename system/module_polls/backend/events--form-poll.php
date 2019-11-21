@@ -97,7 +97,11 @@ namespace effcore\modules\polls {
         $diagram = new diagram('', $poll->diagram_type);
         $diagram_colors = self::diagram_colors;
         foreach ($poll->data['answers'] as $c_id => $c_text)
-          $diagram->slice_insert($c_text, $total ? ($total_by_answer[$c_id] ?? 0) / $total * 100 : 0, $total_by_answer[$c_id] ?? 0, array_shift($diagram_colors));
+          $diagram->slice_insert($c_text,
+            $total ? ($total_by_answer[$c_id] ?? 0) / $total * 100 : 0,
+                      $total_by_answer[$c_id] ?? 0,
+            array_shift($diagram_colors), $c_id
+          );
       # make report
         $items['fields']->child_insert($diagram, 'diagram');
         $items['fields']->child_insert(new markup('x-total', [], [

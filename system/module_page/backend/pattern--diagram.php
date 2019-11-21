@@ -25,43 +25,41 @@ namespace effcore {
 
         case 'linear':
           foreach ($this->slices as $c_slice) {
-            $x_slice = new markup('x-slice', ['data-id' => core::sanitize_id($c_slice->title)]);
-            $x_slice->child_insert(new markup('x-title', [], $c_slice->title));
-            $x_slice->child_insert(new markup('x-value', [], [
+            $c_param = new markup('x-param', ['data-id' => $c_slice->id]);
+            $c_param->child_insert(new markup('x-title', [], $c_slice->title));
+            $c_param->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
                                            locale::format_persent($c_slice->persent_value, 1),
-              new markup('x-scale', ['style' => ['width: '.(int)$c_slice->persent_value.'%']])
-            ]));
-            $this->child_insert($x_slice);
+              new markup('x-scale', ['style' => ['width: '.(int)$c_slice->persent_value.'%']]) ]));
+            $this->child_insert($c_param);
           }
           break;
 
         case 'radial':
           $coords = ['r' => '25%', 'cx' => '50%', 'cy' => '50%'];
           $diagram = new markup_xml('svg', ['viewBox' => '0 0 64 64', 'width' => '100', 'height' => '100']);
-          $legends = new markup('x-legends');
+          $params = new markup('x-params');
           $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' => 'stroke: lightgray; stroke-width: 30%; fill: none']));
           $this->child_insert($diagram, 'diagram');
-          $this->child_insert($legends, 'legends');
+          $this->child_insert($params, 'params');
           $c_offset = 0;
           foreach ($this->slices as $c_slice) {
             $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
-              'stroke: '.$c_slice->color.'; '.
+              'stroke: '.                               $c_slice->color.                '; '.
               'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
               'stroke-dashoffset: '.core::format_number($c_offset,               2).    '; '.
               'stroke-width: 30%; '.
               'fill: none']));
             $c_offset -= $c_slice->persent_value;
-            $x_legend = new markup('x-legend');
-            $x_legend->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
-            $x_legend->child_insert(new markup('x-title', [], $c_slice->title));
-            $x_legend->child_insert(new markup('x-value', [], [
+            $c_param = new markup('x-param', ['data-id' => $c_slice->id]);
+            $c_param->child_insert(new markup('x-color', ['style' => 'background: '.$c_slice->color]));
+            $c_param->child_insert(new markup('x-title', [], $c_slice->title));
+            $c_param->child_insert(new markup('x-value', [], [
               $c_slice->complex_value ?
               $c_slice->complex_value.' ('.locale::format_persent($c_slice->persent_value, 1).')' :
-                                           locale::format_persent($c_slice->persent_value, 1)
-            ]));
-            $legends->child_insert($x_legend);
+                                           locale::format_persent($c_slice->persent_value, 1) ]));
+            $params->child_insert($c_param);
           }
           break;
       }
@@ -70,12 +68,13 @@ namespace effcore {
     }
   }
 
-  function slice_insert($title, $persent_value, $complex_value = null, $color = null) {
+  function slice_insert($title, $persent_value, $complex_value = null, $color = null, $id = null) {
     $this->slices[] = (object)[
       'title'         => $title,
       'persent_value' => $persent_value,
       'complex_value' => $complex_value,
-      'color'         => $color
+      'color'         => $color,
+      'id'            => $id
     ];
   }
 
