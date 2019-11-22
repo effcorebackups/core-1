@@ -8,6 +8,17 @@ events
       for: core
       handler: \effcore\modules\core\events_module::on_enable
 # ─────────────────────────────────────────────────────────────────────
+  on_breadcrumbs_build_before
+  - system|event
+      for: system
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+  - user_registered|event
+      for: user_registered
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+  - user_anonymous|event
+      for: user_anonymous
+      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_cron_run
   - core|event
       for: core
@@ -60,14 +71,3 @@ events
   - modules|event
       for: modules
       handler: \effcore\modules\core\events_page_modules::on_build_before
-# ─────────────────────────────────────────────────────────────────────
-  on_breadcrumbs_build_before
-  - system|event
-      for: system
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
-  - user_registered|event
-      for: user_registered
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
-  - user_anonymous|event
-      for: user_anonymous
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
