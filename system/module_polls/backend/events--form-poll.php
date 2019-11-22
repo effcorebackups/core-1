@@ -18,7 +18,7 @@ namespace effcore\modules\polls {
 
   static function on_init($event, $form, $items) {
     $items['~vote']->disabled_set();
-    $poll = new instance('poll', ['id' => 1]);
+    $poll = new instance('poll', ['id' => $form->_id_poll]);
     $entity_poll_vote = entity::get('poll_vote');
     $storage = storage::get($entity_poll_vote->storage_name);
     if ($poll->select()) {

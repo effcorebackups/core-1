@@ -7,3 +7,5 @@ page_part_presets
     - =: content
     type: link
     source: forms/polls/poll
+    properties
+    - _id_poll: 1
