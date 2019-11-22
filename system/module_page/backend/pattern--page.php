@@ -44,7 +44,8 @@ namespace effcore {
               if ($c_part_markup) {
                 $c_area_markup = $this->child_select($c_id_area);
                 $c_area_markup->child_insert($c_part_markup, $c_row_id);
-                if ($c_part->type == 'link') {
+                if ($c_part->type == 'link' ||
+                    $c_part->type == 'copy') {
                   $this->used_dpaths[] = $c_part->source;
                 }
               }
