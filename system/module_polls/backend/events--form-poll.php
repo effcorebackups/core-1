@@ -31,7 +31,7 @@ namespace effcore\modules\polls {
         'target_!t'       => '~poll_vote',
         'condition_begin' => 'WHERE',
         'condition'       => [
-        'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'AND',
+        'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
         'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $form->_id_user]]);
       $answers = [];
       foreach ($answers_rows as $c_row)

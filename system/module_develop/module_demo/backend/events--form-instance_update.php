@@ -23,9 +23,9 @@ namespace effcore\modules\demo {
             $id_data_old = $items['#id_data']->value_get_initial();
             if ($id_data_new != $id_data_old) {
               $result = $entity->instances_select(['conditions' => [
-                'id_data_!f' => 'id_data', 'operator' => '=',
-                'id_data_!v' => $id_data_new],
-                'limit'      => 1]);
+                'id_data_!f' => 'id_data',
+                'operator'   => '=',
+                'id_data_!v' => $id_data_new], 'limit' => 1]);
               if ($result) {
                 $items['#id_data']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used combination of values!',

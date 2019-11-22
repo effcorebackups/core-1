@@ -60,9 +60,11 @@ namespace effcore {
   }
 
   static function cleaning() {
-    entity::get('session')->instances_delete([
-      'conditions' => ['expired_!f' => 'expired', '<', 'expired_!v' => core::datetime_get()]
-    ]);
+    entity::get('session')->instances_delete(['conditions' => [
+      'expired_!f' => 'expired',
+      'operator'   => '<',
+      'expired_!v' => core::datetime_get()
+    ]]);
   }
 
   ####################################

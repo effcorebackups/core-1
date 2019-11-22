@@ -244,9 +244,11 @@ namespace effcore {
         }
       }
     }
-    entity::get('cache_validation')->instances_delete([
-      'conditions' => ['updated_!f' => 'updated', '<', 'updated_!v' => core::datetime_get('-'.core::date_period_d.' second')]
-    ]);
+    entity::get('cache_validation')->instances_delete(['conditions' => [
+      'updated_!f' => 'updated',
+      'operator'   => '<',
+      'updated_!v' => core::datetime_get('-'.core::date_period_d.' second')
+    ]]);
   }
 
   ###########################

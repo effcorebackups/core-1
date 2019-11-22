@@ -44,9 +44,11 @@ namespace effcore {
 
   static function id_roles_get($id_user) {
     $id_roles = [];
-    $roles = entity::get('relation_role_ws_user')->instances_select([
-      'conditions' => ['id_user_!f' => 'id_user', 'operator' => '=', 'id_user_!v' => $id_user]
-    ]);
+    $roles = entity::get('relation_role_ws_user')->instances_select(['conditions' => [
+      'id_user_!f' => 'id_user',
+      'operator'   => '=',
+      'id_user_!v' => $id_user
+    ]]);
     foreach ($roles as $c_role)
       $id_roles[$c_role->id_role] =
                 $c_role->id_role;

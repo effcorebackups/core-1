@@ -7,6 +7,7 @@
 namespace effcore\modules\demo {
           use const \effcore\br;
           use const \effcore\nl;
+          use \effcore\access;
           use \effcore\console;
           use \effcore\core;
           use \effcore\event;
@@ -16,8 +17,7 @@ namespace effcore\modules\demo {
           abstract class events_file {
 
   static function process_demotype($file_info) {
-    $user = user::get_current();
-    if (isset($user->roles['registered'])) {
+    if (access::check((object)['roles' => ['registered' => 'registered']])) {
       $data = '';
       event::start('on_file_process_demotype', null, [$file_info, &$data]);
       header('Content-Length: '.strlen($data));

@@ -152,9 +152,11 @@ namespace effcore {
   }
 
   static function captcha_old_cleaning() {
-    entity::get('captcha')->instances_delete([
-      'conditions' => ['created_!f' => 'created', '<', 'created_!v' => core::datetime_get('-1 hour')]
-    ]);
+    entity::get('captcha')->instances_delete(['conditions' => [
+      'created_!f' => 'created',
+      'operator'   => '<',
+      'created_!v' => core::datetime_get('-1 hour')
+    ]]);
   }
 
   static function validate_value($field, $form, $element, &$new_value) {

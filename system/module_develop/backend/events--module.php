@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\develop {
+          use \effcore\access;
           use \effcore\frontend;
           use \effcore\module;
           use \effcore\user;
@@ -21,9 +22,8 @@ namespace effcore\modules\develop {
   }
 
   static function on_start($event) {
-    $user = user::get_current();
     $settings = module::settings_get('page');
-    if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+    if (($settings->console_visibility == 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']])) ||
         ($settings->console_visibility == 'show_for_everyone')) {
       frontend::insert('console', null, 'styles', [
         'file'       => '/system/module_develop/frontend/develop.cssd',

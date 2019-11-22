@@ -7,9 +7,9 @@
 namespace effcore {
           abstract class access {
 
-  static function check($access) {
+  static function check($access, $user = null) {
     if ($access === null) return true;
-    foreach (user::get_current()->roles as $c_role) {
+    foreach ($user ? $user->roles : user::get_current()->roles as $c_role) {
       if (isset($access->roles[$c_role])) {
         return true;
       }

@@ -26,7 +26,10 @@ namespace effcore\modules\menu {
       if ($entity->name == 'tree_item' && $category_id && !empty($form->_selection)) {
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
-        $form->_selection->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $category_id];
+        $form->_selection->query_params['conditions'] = [
+          'id_tree_!f' => 'id_tree',
+          'operator'   => '=',
+          'id_tree_!v' => $category_id];
       # $c_row 'actions'
         $form->_selection->field_insert_code('actions', '', function ($c_row, $c_instance) {
           $c_actions_list = new actions_list();
@@ -64,7 +67,10 @@ namespace effcore\modules\menu {
           if ($entity->name == 'tree_item' && $category_id) {
             $event->is_last = true;
             $has_selection = false;
-            $tree_items = entity::get('tree_item')->instances_select(['conditions' => ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $category_id]], 'id');
+            $tree_items = entity::get('tree_item')->instances_select(['conditions' => [
+              'id_tree_!f' => 'id_tree',
+              'operator'   => '=',
+              'id_tree_!v' => $category_id]], 'id');
             foreach ($tree_items as $c_item) {
               $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
               $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: 0;

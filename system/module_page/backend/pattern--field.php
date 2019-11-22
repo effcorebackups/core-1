@@ -270,8 +270,9 @@ namespace effcore {
     if ($this->entity_name &&
         $this->entity_field_name) {
       $result = entity::get($this->entity_name)->instances_select(['conditions' => [
-        'field_!f' => $this->entity_field_name, 'operator' => '=',
-        'field_!v' => $value],                  'limit'    =>  1]);
+        'field_!f' => $this->entity_field_name,
+        'operator' => '=',
+        'field_!v' => $value], 'limit' => 1]);
       return reset($result);
     }
   }

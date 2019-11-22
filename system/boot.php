@@ -242,9 +242,8 @@ namespace effcore {
   }
   if (module::is_enabled('develop')) {
     timer::tap('total');
-    $user = user::get_current();
     $settings = module::settings_get('page');
-    if (($settings->console_visibility == 'show_for_admin' && isset($user->roles['admins'])) ||
+    if (($settings->console_visibility == 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]) ) ||
         ($settings->console_visibility == 'show_for_everyone')) {
       $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
     }

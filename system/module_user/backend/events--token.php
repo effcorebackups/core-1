@@ -5,14 +5,14 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use \effcore\access;
           use \effcore\page;
           use \effcore\user;
           abstract class events_token {
 
   static function on_replace($name, $args = []) {
     user::init(false);
-    $user = user::get_current();
-    if (isset($user->roles['registered'])) {
+    if (access::check((object)['roles' => ['registered' => 'registered']])) {
       switch ($name) {
         case 'user_id'   : return     user::get_current()->id;
         case 'nickname'  : return     user::get_current()->nickname;
