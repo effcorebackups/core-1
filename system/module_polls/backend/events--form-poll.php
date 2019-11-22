@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\polls {
+          use \effcore\access;
           use \effcore\core;
           use \effcore\diagram;
           use \effcore\entity;
@@ -18,11 +19,10 @@ namespace effcore\modules\polls {
 
   static function on_init($event, $form, $items) {
     $items['~vote']->disabled_set();
-    $poll = new instance('poll', ['id' => $form->_id_poll]);
     $entity_poll_vote = entity::get('poll_vote');
     $storage = storage::get($entity_poll_vote->storage_name);
+    $poll = new instance('poll', ['id' => $form->_id_poll]);
     if ($poll->select()) {
-      $form->_id_poll = $poll              ->id;
       $form->_id_user = user::get_current()->id;
       $answers_rows = $storage->query([
         'action'          => 'SELECT',
@@ -42,7 +42,9 @@ namespace effcore\modules\polls {
     # ─────────────────────────────────────────────────────────────────────
     # voting form
     # ─────────────────────────────────────────────────────────────────────
-      if ($answers == [] && $poll->expired > core::datetime_get()) {
+      if ($poll->expired > core::datetime_get() && $answers == [] &&
+         ($poll->user_type == 0 ||
+          $poll->user_type == 1 && access::check((object)['roles' => ['registered' => 'registered']]))) {
         $items['~vote']->disabled_set(false);
         $radiobuttons = new group_radiobuttons();
         $radiobuttons->build();
