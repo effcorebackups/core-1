@@ -18,8 +18,9 @@ namespace effcore\modules\polls {
       }
     }
     if ($id !== null && strpos($id, 'poll_form_') === 0) {
-      $id_poll = substr($id, strlen('poll_form_'));
-      $c_poll = (new instance('poll', ['id' => $id_poll]))->select();
+      $c_poll = (new instance('poll', [
+        'id' => substr($id, strlen('poll_form_'))
+      ]))->select();
       if ($c_poll) {
         page_part_preset::insert('poll_form_'.$c_poll->id, translation::get('Poll').' (SQL)', $c_poll->question, ['content' => 'content'], null, 'copy', 'forms/polls/poll', ['_id_poll' => $c_poll->id], [], 0, 'polls');
       }

@@ -20,7 +20,7 @@ namespace effcore {
       $button_delete->build();
       $button_delete->value_set('button_delete_'.$this->id_preset.'_in_'.$this->id_area);
       $this->child_insert($button_delete, 'button_delete');
-      $this->child_insert(new markup('x-title', [], $preset->managing_title ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'), 'title');
+      $this->child_insert(new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'), 'title');
       $this->child_insert(new markup('x-id',    [], new text_simple($this->id_preset)     ), 'id'   );
       $this->is_builded = true;
     }
