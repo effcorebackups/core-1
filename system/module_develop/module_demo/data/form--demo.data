@@ -193,7 +193,8 @@ forms
       # field_datetime_local
         - datetime_local|field_datetime_local
             title: Local Date/Time
-            is_return_utc: true
+            is_get_utc: true
+            is_set_utc: true
             description|text_multiline
               text
               - 0: If the initial value is not specified, the current value will be used.

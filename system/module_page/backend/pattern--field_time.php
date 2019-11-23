@@ -28,9 +28,8 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $value = parent::value_get();
-      if ($value != null) {$this->value_set(                  $value                 ); return;}
-      if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::time_get())); return;}
-      $this->is_builded = true;
+      if ($value != null) {$this->value_set(                  $value                 ); $this->is_builded = true; return;}
+      if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::time_get())); $this->is_builded = true; return;}
     }
   }
 
