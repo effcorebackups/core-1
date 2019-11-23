@@ -11,3 +11,7 @@ forms
         title: vote
         attributes
         - value: vote
+    - button_cancel|button
+        title: cancel
+        attributes
+        - value: cancel

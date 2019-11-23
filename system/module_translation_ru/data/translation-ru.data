@@ -46,6 +46,7 @@ translations
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
     - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Невозможно включить модуль "%%_module_id_1", когда Вы пытаетесь отключить зависимый модуль "%%_module_id_2"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
+    - cancel: отменить
     - Canvas: Холст
     - Charset: Кодировка
     - Check directory permissions.: Проверьте разрешения каталога.
@@ -543,6 +544,7 @@ translations
     - View more: Смотреть больше
     - Visibility: Видимость
     - vote: голосовать
+    - Voting can be canceled: Голосование может быть отменено
     - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер

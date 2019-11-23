@@ -44,7 +44,7 @@ entities
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
-        managing_form_class: \effcore\field_datetime
+        managing_form_class: \effcore\field_datetime_local
         managing_form_element_attributes
         - value:  
     - diagram_type
@@ -84,14 +84,19 @@ entities
         type: boolean
         not_null: true
         default: 0
-        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_switcher
         managing_form_element_attributes
         - disabled: true
-        managing_selection_params
-        - is_apply_translation: true
+    - is_cancelable
+        title: Voting can be canceled
+        type: boolean
+        not_null: true
+        default: 0
+        managing_is_on_insert: true
+        managing_is_on_update: true
+        managing_form_class: \effcore\field_switcher
     constraints
     - primary_id
         type: primary

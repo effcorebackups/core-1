@@ -18,7 +18,8 @@ namespace effcore\modules\polls {
           abstract class events_form_poll {
 
   static function on_init($event, $form, $items) {
-    $items['~vote']->disabled_set();
+    $items['~vote'  ]->disabled_set();
+    $items['~cancel']->disabled_set();
     $entity_poll_vote = entity::get('poll_vote');
     $storage = storage::get($entity_poll_vote->storage_name);
     $poll = new instance('poll', ['id' => $form->_id_poll]);
@@ -101,6 +102,12 @@ namespace effcore\modules\polls {
           new markup('x-title', [], 'Total'),
           new markup('x-value', [], $total)]), 'total'
         );
+      # cancellation
+        if ($poll->expired > core::datetime_get() &&
+            $poll->is_cancelable == 1             &&
+            $poll->user_type     == 1             && access::check((object)['roles' => ['registered' => 'registered']])) {
+          $items['~cancel']->disabled_set(false);
+        }
       }
     } else {
       $form->child_update('fields',
@@ -131,6 +138,8 @@ namespace effcore\modules\polls {
         if ($result) message::insert('Your answer was accepted.'    );
         else         message::insert('Your answer was not accepted!');
         static::on_init($event, $form, $items);
+        break;
+      case 'cancel':
         break;
     }
   }
