@@ -31,12 +31,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_page_parts_dynamic_build($event, $id = null) {
-    if ($id === null || strpos($id, 'selection_sql_') === 0) {
-      $selection_id = substr($id, strlen('selection_sql_'));
-      foreach ($selection_id ? [selection::get($selection_id)] : selection::get_all('sql') as $c_selection) {
-        page_part_preset::insert('selection_sql_'.$c_selection->id, translation::get('Selection').' (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [], ['id' => $c_selection->id], 0, 'storage');
-      }
-    }
+    if ($id === null                                       ) {foreach (selection::get_all('sql') as $c_selection)                                                                           page_part_preset::insert('selection_sql_'.$c_selection->id, translation::get('Selection').' (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [], ['id' => $c_selection->id], 0, 'storage');}
+    if ($id !== null && strpos($id, 'selection_sql_') === 0) {                                      $c_selection = selection::get(substr($id, strlen('selection_sql_'))); if ($c_selection) page_part_preset::insert('selection_sql_'.$c_selection->id, translation::get('Selection').' (SQL)', $c_selection->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [], ['id' => $c_selection->id], 0, 'storage');}
   }
 
   static function block_selection_sql($page, $args) {
