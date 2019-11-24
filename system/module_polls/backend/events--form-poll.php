@@ -25,15 +25,9 @@ namespace effcore\modules\polls {
     $poll = new instance('poll', ['id' => $form->_id_poll]);
     if ($poll->select()) {
       $form->_id_user = user::get_current()->id;
-      $answers_rows = $storage->query([
-        'action'          => 'SELECT',
-        'fields_!,'       => ['all_!f' => '*'],
-        'target_begin'    => 'FROM',
-        'target_!t'       => '~poll_vote',
-        'condition_begin' => 'WHERE',
-        'condition'       => [
-        'id_poll_!f'      => 'id_poll', 'operator_1' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
-        'id_user_!f'      => 'id_user', 'operator_2' => '=', 'id_user_!v' => $form->_id_user]]);
+      $answers_rows = $entity_poll_vote->instances_select(['conditions' => [
+        'id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
+        'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $form->_id_user]]);
       $answers = [];
       foreach ($answers_rows as $c_row)
         $answers[$c_row->id_answer] =
