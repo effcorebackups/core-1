@@ -12,6 +12,7 @@ namespace effcore {
   public $tag_name = 'form';
   public $attributes = ['accept-charset' => 'UTF-8'];
   public $clicked_button;
+  public $number;
   public $validation_id;
   public $validation_cache;
   public $validation_cache_hash;
@@ -28,7 +29,8 @@ namespace effcore {
     if (!$this->is_builded) {
 
     # variables for validation
-      $this->validation_id = static::validation_id_get($id, $this->source_get());
+      $this->number        = static::$form_number++;
+      $this->validation_id = static::validation_id_get($this);
 
     # hidden fields
       $this->child_insert(new field_hidden('form_id',       $id                      ), 'hidden_id_form'      );
@@ -256,6 +258,7 @@ namespace effcore {
   ###########################
 
   static public $errors = [];
+  static public $form_number = 0;
 
   static function not_external_properties_get() {
     return [];
@@ -278,10 +281,11 @@ namespace effcore {
     return $validation_id;
   }
 
-  static function validation_id_get($form_id, $source = '_POST') {
+  static function validation_id_get($form) {
+    $source = $form->source_get();
     global ${$source};
-    if (static::validation_id_check(${$source}['validation_id-'.$form_id] ?? ''))
-         return                     ${$source}['validation_id-'.$form_id];
+    if (static::validation_id_check(${$source}['validation_id-'.$form->id_get()] ?? ''))
+         return                     ${$source}['validation_id-'.$form->id_get()];
     else return static::validation_id_generate();
   }
 
