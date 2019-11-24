@@ -76,43 +76,46 @@ namespace effcore {
       );
 
     # if user click the button (p.s. dynamic buttons may inserted before)
-      $this->clicked_button = $this->clicked_button_get();
-      if ($this->is_submitted() && $this->clicked_button) {
+      $validation_id_raw = static::validation_id_get_raw ($this);
+      if (static::validation_id_check($validation_id_raw, $this)) {
+        $this->clicked_button = $this->clicked_button_get();
+        if ($this->is_submitted() && $this->clicked_button) {
 
-      # call validate methods (parent must be at the end)
-        if (empty($this->clicked_button->novalidate)) {
-          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate'))         {$c_result = $c_child::validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning', 0);}
-          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate_phase_2')) {$c_result = $c_child::validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning', 0);}
-          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate_phase_3')) {$c_result = $c_child::validate_phase_3($c_child, $this, $c_npath); console::log_insert('form', 'validation_3', $c_npath, $c_result ? 'ok' : 'warning', 0);}
-          event::start('on_form_validate', $id, [&$this, &$this->items]);
-        }
+        # call validate methods (parent must be at the end)
+          if (empty($this->clicked_button->novalidate)) {
+            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate'))         {$c_result = $c_child::validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning', 0);}
+            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate_phase_2')) {$c_result = $c_child::validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning', 0);}
+            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'validate_phase_3')) {$c_result = $c_child::validate_phase_3($c_child, $this, $c_npath); console::log_insert('form', 'validation_3', $c_npath, $c_result ? 'ok' : 'warning', 0);}
+            event::start('on_form_validate', $id, [&$this, &$this->items]);
+          }
 
-      # send test headers "X-Form-Submit-Errors-Count: N"
-        if (module::is_enabled('test')) {
-          header('X-Form-Submit-Errors-Count: '.count(static::$errors));
-        }
+        # send test headers "X-Form-Submit-Errors-Count: N"
+          if (module::is_enabled('test')) {
+            header('X-Form-Submit-Errors-Count: '.count(static::$errors));
+          }
 
-      # show errors
-        if ($this->has_error() == true) {
-          $this->attribute_insert('aria-invalid', 'true');
-          foreach (static::$errors as $c_error) {
-            switch (gettype($c_error->message)) {
-              case 'string': message::insert(new text($c_error->message, $c_error->args), 'error'); break;
-              case 'object': message::insert(         $c_error->message,                  'error'); break;
+        # show errors
+          if ($this->has_error() == true) {
+            $this->attribute_insert('aria-invalid', 'true');
+            foreach (static::$errors as $c_error) {
+              switch (gettype($c_error->message)) {
+                case 'string': message::insert(new text($c_error->message, $c_error->args), 'error'); break;
+                case 'object': message::insert(         $c_error->message,                  'error'); break;
+              }
             }
           }
+
+        # call submit handler (if no errors)
+          if ($this->has_error() == false) {
+            event::start('on_form_submit', $id, [&$this, &$this->items]);
+          }
+
+        # update or delete validation cache
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() == false                                                                                ) $this->validation_cache_storage_delete();
+
         }
-
-      # call submit handler (if no errors)
-        if ($this->has_error() == false) {
-          event::start('on_form_submit', $id, [&$this, &$this->items]);
-        }
-
-      # update or delete validation cache
-        if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-        if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-        if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() == false                                                                                ) $this->validation_cache_storage_delete();
-
       }
 
       $this->is_builded = true;
@@ -281,14 +284,18 @@ namespace effcore {
                      $hex_random;        # strlen == 8
     $validation_id.= core::signature_get($validation_id, 'form_validation', 8);
     return $validation_id;
-  }
+  } 
 
   static function validation_id_get($form) {
+    if (static::validation_id_check(static::validation_id_get_raw ($form), $form))
+         return                     static::validation_id_get_raw ($form);
+    else return                     static::validation_id_generate($form);
+  }
+
+  static function validation_id_get_raw($form) {
     $source = $form->source_get();
     global ${$source};
-    if (static::validation_id_check(${$source}['validation_id-'.$form->id_get()] ?? '', $form))
-         return                     ${$source}['validation_id-'.$form->id_get()];
-    else return static::validation_id_generate($form);
+    return ${$source}['validation_id-'.$form->id_get()] ?? '';
   }
 
   static function validation_id_get_hex_number($number) {return str_pad(dechex($number), 2, '0', STR_PAD_LEFT);}
