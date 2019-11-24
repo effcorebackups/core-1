@@ -61,7 +61,7 @@ namespace effcore\modules\user {
             $id_role       = $items['#id_role'      ]->value_get();
             $id_permission = $items['#id_permission']->value_get();
             $result = $entity->instances_select(['conditions' => [
-              'id_role_!f'       => 'id_role',       'id_role_operator'       => '=', 'id_role_!v'       => $id_role,        'conjunction' => 'and',
+              'id_role_!f'       => 'id_role',             'id_role_operator' => '=', 'id_role_!v'       => $id_role,        'conjunction' => 'and',
               'id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission], 'limit'       => 1]);
             if ($result) {
               $items['#id_role'      ]->error_set();

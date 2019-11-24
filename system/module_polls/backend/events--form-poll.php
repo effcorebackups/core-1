@@ -135,11 +135,17 @@ namespace effcore\modules\polls {
           'id_user'   => $form->_id_user,
           'id_answer' => $items['*answers']->value_get()
         ]))->insert();
-        if ($result) message::insert('Your answer was accepted.'    );
-        else         message::insert('Your answer was not accepted!');
+        if ($result) message::insert('Your answer was accepted.'             );
+        else         message::insert('Your answer was not accepted!', 'error');
         static::on_init($event, $form, $items);
         break;
       case 'cancel':
+        $result = entity::get('poll_vote')->instances_delete(['conditions' => [
+          'id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
+          'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $form->_id_user]]);
+        if ($result) message::insert('Your answer was canceled.'             );
+        else         message::insert('Your answer was not canceled!', 'error');
+        static::on_init($event, $form, $items);
         break;
     }
   }

@@ -83,7 +83,7 @@ namespace effcore\modules\user {
             $id_permission_old = $items['#id_permission']->value_get_initial();
             if ($id_permission_new != $id_permission_old) {
               $result = $entity->instances_select(['conditions' => [
-                'id_role_!f'       => 'id_role',       'id_role_operator'       => '=', 'id_role_!v'       => $id_role, 'conjunction' => 'and',
+                'id_role_!f'       => 'id_role',             'id_role_operator' => '=', 'id_role_!v'       => $id_role, 'conjunction' => 'and',
                 'id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission_new],
                 'limit'            => 1]);
               if ($result) {
