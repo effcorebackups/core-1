@@ -87,8 +87,6 @@ entities
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_switcher
-        managing_form_element_attributes
-        - disabled: true
     - is_cancelable
         title: Voting can be canceled
         type: boolean

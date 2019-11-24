@@ -9,6 +9,7 @@ namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\diagram;
           use \effcore\entity;
+          use \effcore\group_checkboxes;
           use \effcore\group_radiobuttons;
           use \effcore\instance;
           use \effcore\markup;
@@ -24,6 +25,7 @@ namespace effcore\modules\polls {
     $storage = storage::get($entity_poll_vote->storage_name);
     $poll = new instance('poll', ['id' => $form->_id_poll]);
     if ($poll->select()) {
+      $form->_poll = $poll;
       $form->_id_user = user::get_current()->id;
       $answers_rows = $entity_poll_vote->instances_select(['conditions' => [
         'id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
@@ -41,12 +43,12 @@ namespace effcore\modules\polls {
          ($poll->user_type == 0 ||
           $poll->user_type == 1 && access::check((object)['roles' => ['registered' => 'registered']]))) {
         $items['~vote']->disabled_set(false);
-        $radiobuttons = new group_radiobuttons();
-        $radiobuttons->build();
-        $items['fields']->child_insert($radiobuttons, 'answers');
+        $selector = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
+        $selector->build();
+        $items['fields']->child_insert($selector, 'answers');
         foreach ($poll->data['answers'] as $c_id => $c_text) {
-          $radiobuttons->field_insert(
-            $c_text, null, ['name' => 'answers', 'value' => $c_id], $c_id
+          $selector->field_insert(
+            $c_text, null, ['name' => 'answers[]', 'value' => $c_id], $c_id
           );
         }
     # ─────────────────────────────────────────────────────────────────────
@@ -124,11 +126,12 @@ namespace effcore\modules\polls {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'vote':
-        $result = (new instance('poll_vote', [
-          'id_poll'   => $form->_id_poll,
-          'id_user'   => $form->_id_user,
-          'id_answer' => $items['*answers']->value_get()
-        ]))->insert();
+        foreach ($form->_poll->is_multiple ? $items['*answers']->values_get() : [$items['*answers']->value_get()] as $c_id_answer)
+          $result = (new instance('poll_vote', [
+            'id_poll'   => $form->_id_poll,
+            'id_user'   => $form->_id_user,
+            'id_answer' => $c_id_answer
+          ]))->insert();
         if ($result) message::insert('Your answer was accepted.'             );
         else         message::insert('Your answer was not accepted!', 'error');
         static::on_init($event, $form, $items);
