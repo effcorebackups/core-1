@@ -378,16 +378,17 @@ namespace effcore {
   }
 
   function instances_select($entity, $params = [], $idkey = null) {
-    $params += ['join_fields' => [], 'join' => [], 'conditions' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
+    $params += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
-        'fields_!,'    => ['all_!f' => '~'.$entity->name.'.*'] + $params['join_fields'],
+        'fields_!,'    => (count($params['fields']) ? $params['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $params['join_fields'],
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
       foreach ($params['join'] as $c_join_id => $c_join_part)
                 $query['join']   [$c_join_id] = $c_join_part;
       if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['conditions']];
+      if (count($params['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $params['group'     ]];
       if (count($params['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $params['order'     ]];
       if (      $params['limit'     ] ) {
         $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];

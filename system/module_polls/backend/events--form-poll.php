@@ -57,29 +57,13 @@ namespace effcore\modules\polls {
       } else {
       # make statistics
         $total = $entity_poll_vote->instances_select_count(['conditions' => [
-          'id_poll_!f'      => 'id_poll',
-          'operator'        => '=',
-          'id_poll_!v'      => $form->_id_poll]]);
-        $total_by_answer_rows = $storage->query([
-          'action'          => 'SELECT',
-          'fields_!,'       => [
-          'id_answer_!f'    => 'id_answer',
-          'count'           => [
-          'function_begin'  => 'count(',
-          'function_field'  => '*',
-          'function_end'    => ')',
-          'alias_begin'     => 'as',
-          'alias'           => 'total']],
-          'target_begin'    => 'FROM',
-          'target_!t'       => '~poll_vote',
-          'condition_begin' => 'WHERE',
-          'condition'       => [
-          'id_poll_!f'      => 'id_poll',
-          'operator'        => '=',
-          'id_poll_!v'      =>  $form->_id_poll],
-          'group_begin'     => 'GROUP BY',
-          'group_fields_!,' => [
-          'id_answer_!f'    => 'id_answer']]);
+          'id_poll_!f' => 'id_poll',
+          'operator'   => '=',
+          'id_poll_!v' => $form->_id_poll]]);
+        $total_by_answer_rows = $entity_poll_vote->instances_select([
+          'fields'     => ['id_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
+          'conditions' => ['id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll],
+          'group'      => ['id_!f' => 'id_answer']]);
         $total_by_answer = [];
         foreach ($total_by_answer_rows as $c_row)
           $total_by_answer[$c_row->id_answer] = $c_row->total;
