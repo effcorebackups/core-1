@@ -425,14 +425,13 @@ namespace effcore {
     $params += ['join' => [], 'conditions' => [], 'limit' => 0, 'offset' => 0];
     if ($this->init()) {
       $query = [
-        'action' => 'SELECT',
-        'fields_!,' => [
-          'count' => [
-            'function_begin' => 'count(',
-            'function_field' => '*',
-            'function_end'   => ')',
-            'alias_begin'    => 'as',
-            'alias'          => 'count']],
+        'action'       => 'SELECT',
+        'fields_!,'    => ['count' => [
+          'function_begin' => 'count(',
+          'function_field' => '*',
+          'function_end'   => ')',
+          'alias_begin'    => 'as',
+          'alias'          => 'count']],
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
       foreach ($params['join'] as $c_join_id => $c_join_part)
