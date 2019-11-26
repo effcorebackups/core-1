@@ -41,7 +41,6 @@ entities
         type: integer
         not_null: true
         default: 0
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true

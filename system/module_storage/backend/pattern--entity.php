@@ -49,6 +49,7 @@ namespace effcore {
       $this->fields['created']->title = 'Created';
       $this->fields['created']->type = 'datetime';
       $this->fields['created']->not_null = true;
+      $this->fields['created']->managing_on_select_is_enabled = true;
       $this->indexes['index_created'] = new \stdClass;
       $this->indexes['index_created']->type = 'index';
       $this->indexes['index_created']->fields = ['created' => 'created'];
@@ -59,6 +60,7 @@ namespace effcore {
       $this->fields['updated']->title = 'Updated';
       $this->fields['updated']->type = 'datetime';
       $this->fields['updated']->not_null = true;
+      $this->fields['updated']->managing_on_select_is_enabled = true;
       $this->indexes['index_updated'] = new \stdClass;
       $this->indexes['index_updated']->type = 'index';
       $this->indexes['index_updated']->fields = ['updated' => 'updated'];
