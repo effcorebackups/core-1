@@ -21,6 +21,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -36,6 +37,7 @@ entities
         size: 255
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -47,9 +49,12 @@ entities
         type: boolean
         not_null: true
         default: 1
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_logic
+        managing_selection_params
+        - is_apply_translation: true
     constraints
     - primary_id
         type: primary
@@ -94,6 +99,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -108,6 +114,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -127,6 +134,7 @@ entities
         check: (id_parent <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -147,6 +155,7 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -156,6 +165,7 @@ entities
         type: varchar
         size: 2048
         collate: nocase
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true

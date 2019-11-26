@@ -16,6 +16,7 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -29,6 +30,7 @@ entities
         size: 2048
         not_null: true
         check: (question <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -41,6 +43,7 @@ entities
         title: Expiration date
         type: datetime
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -54,6 +57,7 @@ entities
         size: 32
         not_null: true
         check: (diagram_type <> '')
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_select
@@ -62,11 +66,14 @@ entities
           - not_selected: - select -
           - linear: Linear diagram
           - radial: Radial diagram
+        managing_selection_params
+        - is_apply_translation: true
     - user_type
         title: User type
         type: integer
         not_null: true
         default: 1
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_select
@@ -84,17 +91,23 @@ entities
         type: boolean
         not_null: true
         default: 0
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_switcher
+        managing_selection_params
+        - is_apply_translation: true
     - is_cancelable
         title: Voting can be canceled
         type: boolean
         not_null: true
         default: 0
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_switcher
+        managing_selection_params
+        - is_apply_translation: true
     constraints
     - primary_id
         type: primary

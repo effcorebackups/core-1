@@ -51,6 +51,7 @@ namespace effcore {
       $this->fields['weight']->type = 'integer';
       $this->fields['weight']->not_null = true;
       $this->fields['weight']->default = 0;
+      $this->fields['weight']->managing_is_on_select_multiple = true;
       $this->fields['weight']->managing_is_on_select = true;
       $this->fields['weight']->managing_is_on_insert = true;
       $this->fields['weight']->managing_is_on_update = true;

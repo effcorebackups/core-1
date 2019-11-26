@@ -18,6 +18,7 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -29,6 +30,7 @@ entities
         type: varchar
         size: 255
         collate: nocase
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -43,6 +45,7 @@ entities
         type: integer
         not_null: true
         default: 0
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_number
@@ -54,6 +57,7 @@ entities
         type: real
         not_null: true
         default: 0
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_number
@@ -71,9 +75,12 @@ entities
         collate: nocase
         not_null: true
         default: default text
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
+        managing_selection_params
+        - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -82,6 +89,7 @@ entities
         type: time
         not_null: true
         default: 00:00:00
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_time
@@ -93,6 +101,7 @@ entities
         type: date
         not_null: true
         default: 2030-01-01
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_date
@@ -104,6 +113,7 @@ entities
         type: datetime
         not_null: true
         default: 2030-01-01 00:00:00
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_datetime_local
@@ -115,9 +125,12 @@ entities
         type: boolean
         not_null: true
         default: 0
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_logic
+        managing_selection_params
+        - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
@@ -151,6 +164,7 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -162,6 +176,7 @@ entities
         type: varchar
         size: 255
         collate: nocase
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -197,6 +212,7 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -209,6 +225,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -219,6 +236,7 @@ entities
         size: 255
         collate: binary
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -242,6 +260,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -256,6 +275,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -266,6 +286,7 @@ entities
         title: Field foreign
         type: integer
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -316,6 +337,7 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -329,6 +351,7 @@ entities
         collate: nocase
         not_null: true
         check: (nickname <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -339,6 +362,7 @@ entities
         title: Is even
         type: boolean
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -350,6 +374,7 @@ entities
         type: datetime
         not_null: true
         default: 2030-01-01 00:00:00
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -380,6 +405,7 @@ entities
         title: Data ID
         type: integer
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -395,6 +421,7 @@ entities
         collate: nocase
         not_null: true
         check: (email <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -430,6 +457,7 @@ entities
         title: ID
         type: autoincrement
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -442,6 +470,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -454,6 +483,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true

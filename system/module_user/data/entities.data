@@ -18,6 +18,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -33,6 +34,7 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -68,6 +70,7 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -85,6 +88,7 @@ entities
         collate: nocase
         not_null: true
         check: (id_permission <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -130,6 +134,7 @@ entities
         type: integer
         not_null: true
         check: (id_user <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -147,6 +152,7 @@ entities
         collate: nocase
         not_null: true
         check: (id_role <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -197,6 +203,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -212,6 +219,7 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -295,6 +303,7 @@ entities
         type: autoincrement
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -308,6 +317,7 @@ entities
         collate: nocase
         not_null: true
         check: (nickname <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -321,6 +331,7 @@ entities
         collate: nocase
         not_null: true
         check: (email <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -332,6 +343,7 @@ entities
         type: varchar
         size: 1024
         collate: nocase
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_file
@@ -352,6 +364,7 @@ entities
         size: 64
         collate: nocase
         default: UTC
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_timezone

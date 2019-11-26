@@ -42,6 +42,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -57,6 +58,7 @@ entities
         collate: nocase
         not_null: true
         default: simple
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_layout
@@ -69,6 +71,7 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -83,6 +86,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -107,6 +111,7 @@ entities
         collate: nocase
         not_null: true
         default: en
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_language
@@ -117,6 +122,7 @@ entities
         collate: nocase
         not_null: true
         default: ltr
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text_direction
@@ -134,6 +140,7 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_text
@@ -177,6 +184,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -192,6 +200,7 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -218,6 +227,7 @@ entities
         type: varchar
         size: 1024
         collate: nocase
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_file
@@ -258,6 +268,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -273,6 +284,7 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -331,6 +343,7 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -346,6 +359,7 @@ entities
         size: 1024
         not_null: true
         check: (description <> '')
+        managing_is_on_select_multiple: true
         managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
@@ -360,6 +374,7 @@ entities
         type: blob
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
+        managing_is_on_select: true
         managing_is_on_insert: true
         managing_is_on_update: true
         managing_form_class: \effcore\field_textarea
