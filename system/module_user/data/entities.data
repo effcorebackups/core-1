@@ -25,7 +25,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - title
         title: Title
@@ -77,7 +77,7 @@ entities
         managing_form_class: \effcore\field_relation
         managing_form_element_attributes_on_update
         - disabled: true
-        managing_properties
+        managing_field_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -93,7 +93,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
-        managing_properties
+        managing_field_properties
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -141,7 +141,7 @@ entities
         managing_form_class: \effcore\field_relation
         managing_form_element_attributes_on_update
         - disabled: true
-        managing_properties
+        managing_field_properties
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
@@ -157,7 +157,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
-        managing_properties
+        managing_field_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -209,7 +209,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - title
         title: Title
@@ -338,7 +338,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_nickname
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - email
         title: EMail
@@ -352,7 +352,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_email
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - avatar_path
         title: Avatar
@@ -365,7 +365,7 @@ entities
         managing_form_class: \effcore\field_file
         managing_form_element_attributes_on_insert
         - disabled: true
-        managing_properties
+        managing_field_properties
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatars-%%_user_id
@@ -402,7 +402,7 @@ entities
         - required: true
         managing_value_manual_set: true
         managing_value_manual_get_if_empty: true
-        managing_properties_on_update
+        managing_field_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
     constraints
     - primary_id

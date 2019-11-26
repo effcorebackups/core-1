@@ -61,7 +61,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_select
-        managing_properties
+        managing_field_properties
         - values
           - not_selected: - select -
           - linear: Linear diagram
@@ -77,7 +77,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_select
-        managing_properties
+        managing_field_properties
         - values
           - not_selected: - select -
           - 0: All users

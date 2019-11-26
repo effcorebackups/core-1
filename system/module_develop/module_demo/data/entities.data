@@ -283,7 +283,7 @@ entities
         managing_form_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - f_unique
         title: Field unique
@@ -296,7 +296,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_text
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - f_foreign
         title: Field foreign
@@ -307,7 +307,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
-        managing_properties
+        managing_field_properties
         - related_entity_name: demo_autoincrement
         - related_entity_field_id_name: id
         - related_entity_field_title_name: description
@@ -372,7 +372,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_nickname
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - is_even
         title: Is even
@@ -426,7 +426,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
-        managing_properties
+        managing_field_properties
         - related_entity_name: demo_data
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
@@ -442,7 +442,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_email
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     constraints
     - foreign_id_data
@@ -491,7 +491,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_text
-        managing_properties
+        managing_field_properties
         - is_validate_uniqueness: true
     - f_index
         title: Field index
