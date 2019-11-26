@@ -396,14 +396,14 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_password
+        managing_field_value_manual_set: true
+        managing_field_value_manual_get_if_empty: true
         managing_field_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_field_element_attributes_on_update
         - required: false
         managing_field_element_attributes_on_insert
         - required: true
-        managing_value_manual_set: true
-        managing_value_manual_get_if_empty: true
     constraints
     - primary_id
         type: primary

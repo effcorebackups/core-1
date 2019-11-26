@@ -52,8 +52,8 @@ namespace effcore\modules\storage {
               $c_form_field->entity_field_name = $c_name;
               $c_form_field->build();
               $c_form_field->value_set_initial($form->_instance->{$c_name}, true);
-              if (empty($c_field->managing_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
-              if (empty($c_field->managing_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});
+              if (empty($c_field->managing_field_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
+              if (empty($c_field->managing_field_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});
               $items['fields']->child_insert($c_form_field, $c_name);
               if ($c_form_field->disabled_get() == false) {
                 $has_enabled_fields = true;
@@ -111,8 +111,8 @@ namespace effcore\modules\storage {
           # transfer new values to instance
             foreach ($entity->fields as $c_name => $c_field) {
               if (isset($c_field->managing_field_class) && isset($items['#'.$c_name])) {
-                if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-                if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
+                if (!empty($c_field->managing_field_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+                if (!empty($c_field->managing_field_value_manual_get         )                                          ) continue;
                 if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
                 if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
               }
