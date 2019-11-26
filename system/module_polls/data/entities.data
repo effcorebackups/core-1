@@ -21,7 +21,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_number
-        managing_form_element_attributes
+        managing_field_element_attributes
         - disabled: true
     - question
         title: Question
@@ -35,7 +35,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - maxlength: 2048
         managing_selection_params
         - is_apply_translation: true
@@ -48,7 +48,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_datetime_local
-        managing_form_element_attributes
+        managing_field_element_attributes
         - value:  
     - diagram_type
         title: Diagramm type

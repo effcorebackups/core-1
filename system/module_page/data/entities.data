@@ -47,7 +47,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -62,7 +62,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_layout
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -76,7 +76,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - maxlength: 1024
         managing_selection_params
         - is_apply_translation: true
@@ -131,7 +131,7 @@ entities
           - rtl: rtl
         - selected
           - ltr: ltr
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
     - charset
         title: Charset
@@ -144,7 +144,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - disabled: true
         - maxlength: 32
         - value: utf-8
@@ -189,7 +189,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -205,7 +205,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - required: false
         - maxlength: 1024
         managing_selection_params
@@ -220,7 +220,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_url
-        managing_form_element_attributes
+        managing_field_element_attributes
         - required: false
     - path
         title: File
@@ -231,7 +231,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_file
-        managing_form_element_attributes_on_insert
+        managing_field_element_attributes_on_insert
         - disabled: true
         managing_field_properties
         - max_file_size: 10K
@@ -273,7 +273,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -289,7 +289,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - required: false
         - maxlength: 1024
         managing_selection_params
@@ -348,7 +348,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -364,7 +364,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
-        managing_form_element_attributes
+        managing_field_element_attributes
         - required: false
         - maxlength: 1024
         managing_selection_params
@@ -378,7 +378,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_textarea
-        managing_form_element_attributes
+        managing_field_element_attributes
         - required: false
         - minlength: false
         - maxlength: false

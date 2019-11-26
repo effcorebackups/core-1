@@ -23,7 +23,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -75,7 +75,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_relation
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - related_entity_name: role
@@ -139,7 +139,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_relation
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - related_entity_name: user
@@ -207,7 +207,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
@@ -235,7 +235,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_number
-        managing_form_element_attributes
+        managing_field_element_attributes
         - min: -1000
         - max: +1000
     constraints
@@ -324,7 +324,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_number
-        managing_form_element_attributes
+        managing_field_element_attributes
         - disabled: true
     - nickname
         title: Nickname
@@ -363,7 +363,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_file
-        managing_form_element_attributes_on_insert
+        managing_field_element_attributes_on_insert
         - disabled: true
         managing_field_properties
         - max_file_size: 10K
@@ -384,7 +384,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_timezone
-        managing_form_element_attributes
+        managing_field_element_attributes
         - data-source: uagent-timezone
         managing_selection_params
         - is_apply_translation: true
@@ -396,9 +396,9 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_password
-        managing_form_element_attributes_on_update
+        managing_field_element_attributes_on_update
         - required: false
-        managing_form_element_attributes_on_insert
+        managing_field_element_attributes_on_insert
         - required: true
         managing_value_manual_set: true
         managing_value_manual_get_if_empty: true
