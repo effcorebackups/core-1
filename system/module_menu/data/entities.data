@@ -74,7 +74,6 @@ entities
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
-    ws_weight: true
     ws_created: true
     ws_updated: true
     ws_module_id: true
@@ -173,6 +172,19 @@ entities
         managing_form_element_attributes
         - required: false
         - maxlength: 2048
+    - weight
+        title: Weight
+        type: integer
+        not_null: true
+        default: 0
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_form_class: \effcore\field_number
+        managing_form_element_attributes
+        - min: -1000
+        - max: +1000
     constraints
     - primary_id
         type: primary
@@ -205,3 +217,7 @@ entities
         type: index
         fields
         - =: title
+    - index_weight
+        type: index
+        fields
+        - =: weight

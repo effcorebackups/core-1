@@ -15,7 +15,6 @@ namespace effcore {
   public $indexes               = [];
   public $has_parallel_checking = false;
   public $ws_is_embed           = false;
-  public $ws_weight             = false;
   public $ws_created            = false;
   public $ws_updated            = false;
   public $ws_module_id          = false;
@@ -43,24 +42,6 @@ namespace effcore {
       $this->fields['is_embed']->managing_properties['weight'] = 95;
       $this->fields['is_embed']->managing_form_element_attributes['disabled'] = true;
       $this->fields['is_embed']->managing_selection_params['is_apply_translation'] = true;
-    }
-  # insert field 'weight' and index for it
-    if ($this->ws_weight) {
-      $this->fields['weight'] = new \stdClass;
-      $this->fields['weight']->title = 'Weight';
-      $this->fields['weight']->type = 'integer';
-      $this->fields['weight']->not_null = true;
-      $this->fields['weight']->default = 0;
-      $this->fields['weight']->managing_on_select_multiple_is_enabled = true;
-      $this->fields['weight']->managing_on_select_is_enabled = true;
-      $this->fields['weight']->managing_on_insert_is_enabled = true;
-      $this->fields['weight']->managing_on_update_is_enabled = true;
-      $this->fields['weight']->managing_form_class = '\\effcore\\field_number';
-      $this->fields['weight']->managing_form_element_attributes['min'] = -1000;
-      $this->fields['weight']->managing_form_element_attributes['max'] = +1000;
-      $this->indexes['index_weight'] = new \stdClass;
-      $this->indexes['index_weight']->type = 'index';
-      $this->indexes['index_weight']->fields = ['weight' => 'weight'];
     }
   # insert field 'created' and index for it
     if ($this->ws_created) {
