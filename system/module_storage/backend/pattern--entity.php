@@ -38,7 +38,7 @@ namespace effcore {
       $this->fields['is_embed']->type = 'boolean';
       $this->fields['is_embed']->not_null = true;
       $this->fields['is_embed']->default = 0;
-      $this->fields['is_embed']->managing_is_on_select = true;
+      $this->fields['is_embed']->managing_on_select_is_enabled = true;
       $this->fields['is_embed']->managing_form_class = '\\effcore\\field_switcher';
       $this->fields['is_embed']->managing_properties['weight'] = 95;
       $this->fields['is_embed']->managing_form_element_attributes['disabled'] = true;
@@ -51,10 +51,10 @@ namespace effcore {
       $this->fields['weight']->type = 'integer';
       $this->fields['weight']->not_null = true;
       $this->fields['weight']->default = 0;
-      $this->fields['weight']->managing_is_on_select_multiple = true;
-      $this->fields['weight']->managing_is_on_select = true;
-      $this->fields['weight']->managing_is_on_insert = true;
-      $this->fields['weight']->managing_is_on_update = true;
+      $this->fields['weight']->managing_on_select_multiple_is_enabled = true;
+      $this->fields['weight']->managing_on_select_is_enabled = true;
+      $this->fields['weight']->managing_on_insert_is_enabled = true;
+      $this->fields['weight']->managing_on_update_is_enabled = true;
       $this->fields['weight']->managing_form_class = '\\effcore\\field_number';
       $this->fields['weight']->managing_form_element_attributes['min'] = -1000;
       $this->fields['weight']->managing_form_element_attributes['max'] = +1000;

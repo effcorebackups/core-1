@@ -52,7 +52,7 @@ namespace effcore\modules\storage {
             $selection->query_params[   'conditions'] = $entity->storage_get()->attributes_prepare($conditions);
           $has_visible_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->managing_is_on_select)) {
+            if (!empty($c_field->managing_on_select_is_enabled)) {
               $has_visible_fields = true;
               $selection->field_insert_entity(null,
                 $entity->name, $c_name, $c_field->managing_selection_params ?? []

@@ -21,10 +21,10 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
@@ -37,10 +37,10 @@ entities
         size: 255
         not_null: true
         check: (title <> '')
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
@@ -49,9 +49,9 @@ entities
         type: boolean
         not_null: true
         default: 1
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_logic
         managing_selection_params
         - is_apply_translation: true
@@ -99,10 +99,10 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_id_text
         managing_properties
         - is_validate_uniqueness: true
@@ -114,10 +114,10 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: tree
@@ -134,10 +134,10 @@ entities
         check: (id_parent <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_relation
         managing_properties
         - related_entity_name: tree_item
@@ -155,20 +155,20 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_text
     - url
         title: URL
         type: varchar
         size: 2048
         collate: nocase
-        managing_is_on_select_multiple: true
-        managing_is_on_select: true
-        managing_is_on_insert: true
-        managing_is_on_update: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
         managing_form_class: \effcore\field_url
         managing_form_element_attributes
         - required: false

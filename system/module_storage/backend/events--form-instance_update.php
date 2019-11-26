@@ -39,7 +39,7 @@ namespace effcore\modules\storage {
         # make fields for managing
           $has_enabled_fields = false;
           foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->managing_is_on_update) && isset($c_field->managing_form_class)) {
+            if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_form_class)) {
               $c_form_field = new $c_field->managing_form_class;
               $c_form_field->title = $c_field->title;
               $c_form_field->element_attributes['name'] = $c_name;
