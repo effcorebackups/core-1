@@ -25,7 +25,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -41,7 +41,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
     - title_is_visible
@@ -52,7 +52,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_logic
+        managing_field_class: \effcore\field_logic
         managing_selection_params
         - is_apply_translation: true
     constraints
@@ -102,7 +102,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -117,7 +117,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_relation
+        managing_field_class: \effcore\field_relation
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -137,7 +137,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_relation
+        managing_field_class: \effcore\field_relation
         managing_form_element_attributes
         - required: false
         managing_form_element_attributes_on_insert
@@ -158,7 +158,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
     - url
         title: URL
         type: varchar
@@ -168,7 +168,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_url
+        managing_field_class: \effcore\field_url
         managing_form_element_attributes
         - required: false
         - maxlength: 2048
@@ -181,7 +181,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_number
+        managing_field_class: \effcore\field_number
         managing_form_element_attributes
         - min: -1000
         - max: +1000

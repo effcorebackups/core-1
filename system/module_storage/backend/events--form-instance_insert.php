@@ -25,8 +25,8 @@ namespace effcore\modules\storage {
       if ($entity->managing_is_enabled) {
         $has_enabled_fields = false;
         foreach ($entity->fields as $c_name => $c_field) {
-          if (!empty($c_field->managing_on_insert_is_enabled) && isset($c_field->managing_form_class)) {
-            $c_form_field = new $c_field->managing_form_class;
+          if (!empty($c_field->managing_on_insert_is_enabled) && isset($c_field->managing_field_class)) {
+            $c_form_field = new $c_field->managing_field_class;
             $c_form_field->title = $c_field->title;
             $c_form_field->element_attributes['name'] = $c_name;
             $c_form_field->element_attributes = ($c_field->managing_form_element_attributes           ?? []) + $c_form_field->element_attributes;
@@ -63,7 +63,7 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
           foreach ($entity->fields as $c_name => $c_field) {
-            if (isset($c_field->managing_form_class) && isset($items['#'.$c_name])) {
+            if (isset($c_field->managing_field_class) && isset($items['#'.$c_name])) {
               if (!empty($c_field->managing_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
               if (!empty($c_field->managing_value_manual_get         )                                          ) continue;
               if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;

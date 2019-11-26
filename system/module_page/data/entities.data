@@ -46,7 +46,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -61,7 +61,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_layout
+        managing_field_class: \effcore\field_layout
         managing_form_element_attributes_on_update
         - disabled: true
     - title
@@ -75,7 +75,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_form_element_attributes
         - maxlength: 1024
         managing_selection_params
@@ -90,7 +90,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_url_page
+        managing_field_class: \effcore\field_url_page
         managing_field_properties
         - is_validate_uniqueness: true
     - is_https
@@ -101,7 +101,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_switcher
+        managing_field_class: \effcore\field_switcher
         managing_selection_params
         - is_apply_translation: true
     - lang_code
@@ -114,7 +114,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_language
+        managing_field_class: \effcore\field_language
     - text_direction
         title: Text direction
         type: varchar
@@ -125,7 +125,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text_direction
+        managing_field_class: \effcore\field_text_direction
         managing_field_properties
         - disabled
           - rtl: rtl
@@ -143,7 +143,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_form_element_attributes
         - disabled: true
         - maxlength: 32
@@ -188,7 +188,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -204,7 +204,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
@@ -219,7 +219,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_url
+        managing_field_class: \effcore\field_url
         managing_form_element_attributes
         - required: false
     - path
@@ -230,7 +230,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_file
+        managing_field_class: \effcore\field_file
         managing_form_element_attributes_on_insert
         - disabled: true
         managing_field_properties
@@ -272,7 +272,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -288,7 +288,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
@@ -347,7 +347,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_id_text
+        managing_field_class: \effcore\field_id_text
         managing_form_element_attributes_on_update
         - disabled: true
         managing_field_properties
@@ -363,7 +363,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_text
+        managing_field_class: \effcore\field_text
         managing_form_element_attributes
         - required: false
         - maxlength: 1024
@@ -377,7 +377,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_form_class: \effcore\field_textarea
+        managing_field_class: \effcore\field_textarea
         managing_form_element_attributes
         - required: false
         - minlength: false
