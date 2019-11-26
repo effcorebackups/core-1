@@ -47,10 +47,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - id_layout
         title: Layout
         type: varchar
@@ -189,10 +189,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -231,8 +231,6 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_file
-        managing_field_element_attributes_on_insert
-        - disabled: true
         managing_field_properties
         - max_file_size: 10K
         - upload_dir: logotypes/
@@ -243,6 +241,8 @@ entities
           - =: jpg
           - =: png
           - =: svg
+        managing_field_element_attributes_on_insert
+        - disabled: true
     constraints
     - primary_id
         type: primary
@@ -273,10 +273,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -348,10 +348,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - description
         title: Description
         type: varchar

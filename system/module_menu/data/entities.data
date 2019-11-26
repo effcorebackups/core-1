@@ -26,10 +26,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -103,10 +103,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - id_tree
         title: Tree ID
         type: varchar
@@ -118,12 +118,12 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_relation
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+        managing_field_element_attributes_on_update
+        - disabled: true
     - id_parent
         title: Parent ID
         type: varchar
@@ -138,15 +138,15 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_relation
-        managing_field_element_attributes
-        - required: false
-        managing_field_element_attributes_on_insert
-        - disabled: true
         managing_field_properties
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
+        managing_field_element_attributes
+        - required: false
+        managing_field_element_attributes_on_insert
+        - disabled: true
     - title
         title: Title
         type: varchar

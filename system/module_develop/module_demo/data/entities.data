@@ -281,10 +281,10 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
-        - disabled: true
         managing_field_properties
         - is_validate_uniqueness: true
+        managing_field_element_attributes_on_update
+        - disabled: true
     - f_unique
         title: Field unique
         type: varchar
