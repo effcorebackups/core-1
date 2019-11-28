@@ -11,6 +11,14 @@
 
   /* polyfills */
 
-  if (window.NodeList && !NodeList.prototype.forEach) {
+  if (NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+
+  if (Element && !Element.prototype.prepend) {
+    Element.prototype.prepend = function(newElement){
+      if (newElement instanceof Node)
+           this.insertBefore(                               newElement,   this.firstChild);
+      else this.insertBefore(document.createTextNode(String(newElement)), this.firstChild);
+    }
   }

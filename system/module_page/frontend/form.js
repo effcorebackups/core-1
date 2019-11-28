@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  var ranges = document.querySelectorAll('input[type=range]');
+/* range */
+
+  var ranges = document.querySelectorAll('input[type="range"]');
   if (ranges instanceof NodeList) {
     ranges.forEach(function(c_range){
       var x_value = c_range.parentNode.querySelector('x-value');
@@ -12,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
-  var timezones = document.querySelectorAll('select[data-source=uagent-timezone]');
+/* timezone */
+
+  var timezones = document.querySelectorAll('select[data-source="uagent-timezone"]');
   if (timezones instanceof NodeList) {
     timezones.forEach(function(c_timezone){
       if (c_timezone.value == '') {
@@ -22,10 +26,12 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
-  var palettes = document.querySelectorAll('x-group[data-type=palette]');
+/* palette */
+
+  var palettes = document.querySelectorAll('x-group[data-type="palette"]');
   if (palettes instanceof NodeList) {
     palettes.forEach(function(c_palette){
-      var opener = c_palette.querySelector('input[data-opener-type=palette]'),
+      var opener = c_palette.querySelector('input[data-opener-type="palette"]'),
           inputs = c_palette.querySelectorAll('x-field input');
       if (opener && inputs instanceof NodeList) {
         inputs.forEach(function(c_input){
@@ -38,11 +44,13 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+/* table-adaptive */
+
   var selections = document.querySelectorAll('x-selection');
   if (selections instanceof NodeList) {
     selections.forEach(function(c_selection){
-      var x_head_cell = c_selection.querySelector('x-decorator[data-view-type=table-adaptive]        x-head x-cell[data-cellid=checkbox]'),
-          checkboxes  = x_head_cell ? x_head_cell.parentNode.parentNode.parentNode.querySelectorAll('x-body x-cell[data-cellid=checkbox] input[type=checkbox]') : null;
+      var x_head_cell = c_selection.querySelector('x-decorator[data-view-type="table-adaptive"]      x-head x-cell[data-cellid="checkbox"]'),
+          checkboxes  = x_head_cell ? x_head_cell.parentNode.parentNode.parentNode.querySelectorAll('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]') : null;
       if (x_head_cell && checkboxes instanceof NodeList) {
         var check_all = document.createElement('input');
             check_all.type = 'checkbox';
@@ -54,6 +62,25 @@ document.addEventListener('DOMContentLoaded', function(){
           });
         })
       }
+    });
+  }
+
+/* draggable */
+
+  var has_draggable_list = document.querySelectorAll('[data-has-draggable="true"]');
+  if (has_draggable_list instanceof NodeList) {
+    has_draggable_list.forEach(function(c_has_draggable){
+
+      var draggable_list = c_has_draggable.querySelectorAll('[data-draggable="true"]');
+      if (draggable_list instanceof NodeList) {
+        draggable_list.forEach(function(c_draggable){
+          var c_draggable_icon = document.createElement('x-draggable-icon');
+          c_draggable_icon.setAttribute('draggable', 'true');
+          c_draggable.prepend(c_draggable_icon);
+
+        });
+      }
+
     });
   }
 
