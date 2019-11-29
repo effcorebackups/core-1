@@ -12,15 +12,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* timezone */
 
-  var timezones = document.querySelectorAll('select[data-source="uagent-timezone"]');
-  if (timezones instanceof NodeList) {
-    timezones.forEach(function(c_timezone){
-      if (c_timezone.value == '') {
-        var uagent_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        if (uagent_timezone) c_timezone.value = uagent_timezone;
-      }
-    });
-  }
+  document.effSelectAll('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
+    if (c_timezone.value == '' && window.Intl)
+        c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  });
 
 /* palette */
 
