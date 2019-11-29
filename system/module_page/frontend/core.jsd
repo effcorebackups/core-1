@@ -9,16 +9,36 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
-  /* polyfills */
+  /* polyfills and extensions */
 
-  if (NodeList && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = Array.prototype.forEach;
-  }
-
-  if (Element && !Element.prototype.prepend) {
-    Element.prototype.prepend = function(newElement){
+  if (!Element.prototype.prepend) {
+       Element.prototype.prepend = function(newElement){
       if (newElement instanceof Node)
            this.insertBefore(                               newElement,   this.firstChild);
       else this.insertBefore(document.createTextNode(String(newElement)), this.firstChild);
     }
+  }
+
+  if (!NodeList.prototype.forEach) {
+       NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+
+  NodeList.prototype.forOne =
+     Array.prototype.forOne = function(handler){
+    if (this[0]) handler(this[0]);
+  }
+
+  Document.prototype.effSelect =
+      Node.prototype.effSelect = function(query){
+    var result = this.querySelector(query);
+    if (result instanceof Node)
+         return [result];
+    else return [      ];
+  }
+
+  Document.prototype.effSelectAll =
+      Node.prototype.effSelectAll = function(query){
+    var result = this.querySelectorAll(query);
+    return result instanceof NodeList ?
+           result : [];
   }

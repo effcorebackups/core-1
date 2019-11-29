@@ -2,17 +2,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* range */
 
-  var ranges = document.querySelectorAll('input[type="range"]');
-  if (ranges instanceof NodeList) {
-    ranges.forEach(function(c_range){
-      var x_value = c_range.parentNode.querySelector('x-value');
-      if (x_value) {
-        c_range.addEventListener('mousemove', function(){
-          x_value.innerText = c_range.title = c_range.value;
-        });
-      }
+  document.effSelectAll('input[type="range"]').forEach(function(c_range){
+    c_range.parentNode.effSelect('x-value').forOne(function(x_value){
+      c_range.addEventListener('mousemove', function(){
+        x_value.innerText = c_range.title = c_range.value;
+      });
     });
-  }
+  });
 
 /* timezone */
 
