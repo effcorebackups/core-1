@@ -32,24 +32,23 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* table-adaptive */
 
-  var selections = document.querySelectorAll('x-selection');
-  if (selections instanceof NodeList) {
-    selections.forEach(function(c_selection){
-      var x_head_cell = c_selection.querySelector('x-decorator[data-view-type="table-adaptive"]      x-head x-cell[data-cellid="checkbox"]'),
-          checkboxes  = x_head_cell ? x_head_cell.parentNode.parentNode.parentNode.querySelectorAll('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]') : null;
-      if (x_head_cell && checkboxes instanceof NodeList) {
-        var check_all = document.createElement('input');
-            check_all.type = 'checkbox';
-            check_all.title = effcore.tokens['text_select_all_rows'];
-        x_head_cell.appendChild(check_all);
-        check_all.addEventListener('change', function(){
-          checkboxes.forEach(function(c_checkbox){
-            c_checkbox.checked = check_all.checked;
+  document._select_all('x-selection').forEach(function(c_selection){
+    c_selection._select('x-decorator[data-view-type="table-adaptive"]').forFirstItem(function(decorator){
+      var head_cell       = decorator._select    ('x-head x-cell[data-cellid="checkbox"]'                       ),
+          body_checkboxes = decorator._select_all('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
+      if (head_cell.length == 1 && body_checkboxes.length) {
+        var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.title = effcore.tokens['text_select_all_rows'];
+        head_cell[0].appendChild(checkbox);
+        checkbox.addEventListener('change', function(){
+          body_checkboxes.forEach(function(c_checkbox){
+            c_checkbox.checked = checkbox.checked;
           });
-        })
+        });
       }
     });
-  }
+  });
 
 /* draggable */
 
