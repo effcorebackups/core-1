@@ -19,21 +19,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* palette */
 
-  var palettes = document.querySelectorAll('x-group[data-type="palette"]');
-  if (palettes instanceof NodeList) {
-    palettes.forEach(function(c_palette){
-      var opener = c_palette.querySelector('input[data-opener-type="palette"]'),
-          inputs = c_palette.querySelectorAll('x-field input');
-      if (opener && inputs instanceof NodeList) {
-        inputs.forEach(function(c_input){
-          c_input.addEventListener('click', function(){
-            opener.style.backgroundColor = c_input.style.backgroundColor;
-            opener.value                 = c_input.value;
-          });
+  document.effSelectAll('x-group[data-type="palette"]').forEach(function(c_palette){
+    var opener = c_palette.querySelector('input[data-opener-type="palette"]');
+    if (opener) {
+      c_palette.effSelectAll('x-field input').forEach(function(c_input){
+        c_input.addEventListener('click', function(){
+          opener.style.backgroundColor = c_input.style.backgroundColor;
+          opener.value                 = c_input.value;
         });
-      }
-    });
-  }
+      });
+    }
+  });
 
 /* table-adaptive */
 
