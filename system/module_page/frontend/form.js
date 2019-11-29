@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* range */
 
-  document.effSelectAll('input[type="range"]').forEach(function(c_range){
-    c_range.parentNode.effSelect('x-value').forOne(function(x_value){
+  document._select_all('input[type="range"]').forEach(function(c_range){
+    c_range.parentNode._select('x-value').forFirstItem(function(x_value){
       c_range.addEventListener('mousemove', function(){
         x_value.innerText = c_range.title = c_range.value;
       });
@@ -12,23 +12,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* timezone */
 
-  document.effSelectAll('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
+  document._select_all('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
     if (c_timezone.value == '' && window.Intl)
         c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
   });
 
 /* palette */
 
-  document.effSelectAll('x-group[data-type="palette"]').forEach(function(c_palette){
-    var opener = c_palette.querySelector('input[data-opener-type="palette"]');
-    if (opener) {
-      c_palette.effSelectAll('x-field input').forEach(function(c_input){
+  document._select_all('x-group[data-type="palette"]').forEach(function(c_palette){
+    c_palette._select('input[data-opener-type="palette"]').forFirstItem(function(opener){
+      c_palette._select_all('x-field input').forEach(function(c_input){
         c_input.addEventListener('click', function(){
           opener.style.backgroundColor = c_input.style.backgroundColor;
           opener.value                 = c_input.value;
         });
       });
-    }
+    });
   });
 
 /* table-adaptive */

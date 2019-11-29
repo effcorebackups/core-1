@@ -23,21 +23,21 @@
        NodeList.prototype.forEach = Array.prototype.forEach;
   }
 
-  NodeList.prototype.forOne =
-     Array.prototype.forOne = function(handler){
+  NodeList.prototype.forFirstItem =
+     Array.prototype.forFirstItem = function(handler){
     if (this[0]) handler(this[0]);
   }
 
-  Document.prototype.effSelect =
-      Node.prototype.effSelect = function(query){
+  Document.prototype._select =
+      Node.prototype._select = function(query){
     var result = this.querySelector(query);
     if (result instanceof Node)
          return [result];
     else return [      ];
   }
 
-  Document.prototype.effSelectAll =
-      Node.prototype.effSelectAll = function(query){
+  Document.prototype._select_all =
+      Node.prototype._select_all = function(query){
     var result = this.querySelectorAll(query);
     return result instanceof NodeList ?
            result : [];
