@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-/* table-adaptive */
+/* table-adaptive + check all */
 
   document._select_all('x-selection').forEach(function(c_selection){
     c_selection._select('x-decorator[data-view-type="table-adaptive"]').forFirstItem(function(decorator){
@@ -52,21 +52,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* draggable */
 
-  var has_draggable_list = document.querySelectorAll('[data-has-draggable="true"]');
-  if (has_draggable_list instanceof NodeList) {
-    has_draggable_list.forEach(function(c_has_draggable){
-
-      var draggable_list = c_has_draggable.querySelectorAll('[data-draggable="true"]');
-      if (draggable_list instanceof NodeList) {
-        draggable_list.forEach(function(c_draggable){
-          var c_draggable_icon = document.createElement('x-draggable-icon');
-          c_draggable_icon.setAttribute('draggable', 'true');
-          c_draggable.prepend(c_draggable_icon);
-
-        });
-      }
-
+  document._select_all('[data-has-draggable="true"]').forEach(function(c_has_draggable){
+    c_has_draggable._select_all('[data-draggable="true"]').forEach(function(c_draggable){
+      var draggable_icon = document.createElement('x-draggable-icon');
+          draggable_icon.setAttribute('draggable', 'true');
+          draggable_icon.addEventListener('dragstart', function(event){ c_draggable.   setAttribute('data-draggable-active', 'true'); });
+          draggable_icon.addEventListener('dragend',   function(event){ c_draggable.removeAttribute('data-draggable-active'        ); });
+      c_draggable.prepend(draggable_icon);
     });
-  }
+  });
 
 });
