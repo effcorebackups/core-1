@@ -56,13 +56,13 @@ document.addEventListener('DOMContentLoaded', function(){
     c_has_rearrangeable._select_all('[data-rearrangeable="true"]').forEach(function(c_rearrangeable){
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
-          draggable_icon.addEventListener('dragstart', function(event){ c_rearrangeable.   setAttribute('data-draggable-active', 'true'); });
-          draggable_icon.addEventListener('dragend',   function(event){ c_rearrangeable.removeAttribute('data-draggable-active'        ); });
+          draggable_icon.addEventListener('dragstart', function(event){ c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', 'true'); c_rearrangeable.   setAttribute('data-draggable-is-active', 'true'); });
+          draggable_icon.addEventListener('dragend',   function(event){ c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-draggable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
       var handler_on_dragover  = function(event){ event.preventDefault();                                },
           handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-active', 'true'); },
           handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-active'        ); };
-          handler_on_drop      = function(event){ alert(this);                                           };
+          handler_on_drop      = function(event){ this.removeAttribute('data-droppable-active'        ); };
       var droppable_area_0 = document.createElement('x-droppable-area'),
           droppable_area_N = document.createElement('x-droppable-area');
           droppable_area_0.setAttribute('data-position', 'before');
