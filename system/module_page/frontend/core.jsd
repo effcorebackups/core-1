@@ -19,6 +19,14 @@
     }
   }
 
+  if (!Element.prototype.append) {
+       Element.prototype.append = function(newElement){
+      if (newElement instanceof Node)
+           this.appendChild(                               newElement  );
+      else this.appendChild(document.createTextNode(String(newElement)));
+    }
+  }
+
   if (!NodeList.prototype.forEach) {
        NodeList.prototype.forEach = Array.prototype.forEach;
   }

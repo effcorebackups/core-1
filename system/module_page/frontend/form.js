@@ -50,15 +50,25 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-/* draggable */
+/* rearrangeable */
 
-  document._select_all('[data-has-draggable="true"]').forEach(function(c_has_draggable){
-    c_has_draggable._select_all('[data-draggable="true"]').forEach(function(c_draggable){
+  document._select_all('[data-has-rearrangeable="true"]').forEach(function(c_has_rearrangeable){
+    c_has_rearrangeable._select_all('[data-rearrangeable="true"]').forEach(function(c_rearrangeable){
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
-          draggable_icon.addEventListener('dragstart', function(event){ c_draggable.   setAttribute('data-draggable-active', 'true'); });
-          draggable_icon.addEventListener('dragend',   function(event){ c_draggable.removeAttribute('data-draggable-active'        ); });
-      c_draggable.prepend(draggable_icon);
+          draggable_icon.addEventListener('dragstart', function(event){ c_rearrangeable.   setAttribute('data-draggable-active', 'true'); });
+          draggable_icon.addEventListener('dragend',   function(event){ c_rearrangeable.removeAttribute('data-draggable-active'        ); });
+      c_rearrangeable.prepend(draggable_icon);
+      var droppable_area_0 = document.createElement('x-droppable-area'),
+          droppable_area_N = document.createElement('x-droppable-area');
+          droppable_area_0.setAttribute('data-position', 'before');
+          droppable_area_N.setAttribute('data-position', 'after' );
+      c_rearrangeable.prepend(droppable_area_0);
+      c_rearrangeable.append (droppable_area_N);
+
+      droppable_area_0.addEventListener('dragover',  function(event){ event.preventDefault();                                });
+      droppable_area_0.addEventListener('dragenter', function(event){ this.   setAttribute('data-droppable-active', 'true'); });
+      droppable_area_0.addEventListener('dragleave', function(event){ this.removeAttribute('data-droppable-active'        ); });
     });
   });
 

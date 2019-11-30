@@ -19,7 +19,7 @@ namespace effcore\modules\polls {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
-        $fieldset_answers = new fieldset('Answers');
+        $fieldset_answers = new fieldset('Answers', null, ['data-has-rearrangeable' => 'true']);
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         $answers = array_chunk($form->_instance->data['answers'] ?? [], 1, true);
         $used_ids = core::array_kmap(range(1, 10));
@@ -45,7 +45,7 @@ namespace effcore\modules\polls {
           $c_field_answer_weight->min_set(-1000);
           $c_field_answer_weight->max_set(+1000);
         # group fields to box
-          $c_box_answer = new markup('x-box', ['data-field-order-type' => 'inline']);
+          $c_box_answer = new markup('x-widget', ['data-rearrangeable' => 'true', 'data-field-order-type' => 'inline']);
           $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight');
           $c_box_answer    ->child_insert($c_field_answer_text,   'answer_text'  );
           $fieldset_answers->child_insert($c_box_answer,          'answer_'.   $i);

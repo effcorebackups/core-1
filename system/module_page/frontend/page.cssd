@@ -271,11 +271,27 @@
 
   x-selection {display: block}
 
-  /* x-box */
+  /* x-widget */
 
-  x-box {display: block; border-bottom: 1px dashed %%_color_main}
-  x-box:last-child {border-bottom: 0}
-  x-box[data-field-order-type='inline'] x-field {display: inline-block; margin-right: 10px}
+  x-widget {display: block; border-bottom: 1px dashed %%_color_main}
+  x-widget:last-child {border-bottom: 0}
+  x-widget[data-field-order-type='inline'] x-field {display: inline-block; margin-right: 10px}
+
+  /* rearrangeable */
+
+  [data-rearrangeable='true'] x-draggable-icon {
+    float: left;
+    position: relative;
+    z-index: 100;
+    width: 30px;
+    height: 116px;
+    margin-right: 10px;
+    cursor: move;
+    background: %%_color_main}
+  [data-rearrangeable='true']                               x-droppable-area[data-position='before'] {display: block; width: 50px; height: 10px; background: red}
+  [data-rearrangeable='true']                               x-droppable-area[data-position='after']  {display: block; width: 50px; height: 10px; background: blue}
+  [data-rearrangeable='true']                               x-droppable-area[data-droppable-active='true'] {background: %%_color_ok}
+  [data-rearrangeable='true'][data-draggable-active='true'] x-droppable-area {width: 0 !important}
 
   /* x-no-result */
 
