@@ -271,28 +271,6 @@
 
   x-selection {display: block}
 
-  /* x-widget */
-
-  x-widget {display: block; border-bottom: 1px dashed %%_color_main}
-  x-widget:last-child {border-bottom: 0}
-  x-widget[data-field-order-type='inline'] x-field {display: inline-block; margin-right: 10px}
-
-  /* rearrangeable */
-
-  [data-rearrangeable='true'] x-draggable-icon {
-    float: left;
-    position: relative;
-    z-index: 100;
-    width: 30px;
-    height: 116px;
-    margin-right: 10px;
-    cursor: move;
-    background: %%_color_main}
-  [data-rearrangeable='true']                               x-droppable-area[data-position='before'] {display: block; width: 50px; height: 10px; background: red}
-  [data-rearrangeable='true']                               x-droppable-area[data-position='after']  {display: block; width: 50px; height: 10px; background: blue}
-  [data-rearrangeable='true']                               x-droppable-area[data-droppable-active='true'] {background: %%_color_ok}
-  [data-rearrangeable='true'][data-draggable-active='true'] x-droppable-area {width: 0 !important}
-
   /* x-no-result */
 
   x-no-result {
@@ -367,9 +345,3 @@
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
   x-module-info x-param x-title {opacity: .5}
   x-module-info x-param x-title::after {content: ': '}
-
-  /* polls */
-
-  form#poll x-diagram {margin-top: 1em}
-  form#poll x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
-  form#poll x-total x-title::after {content: ': '}

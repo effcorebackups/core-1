@@ -185,6 +185,29 @@
   button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
   button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
 
+  /* x-widget */
+
+  x-widget {display: block; border-bottom: 1px dashed %%_color_main}
+  x-widget:last-child {border-bottom: 0}
+  x-widget[data-field-order-type='inline'] x-field {display: inline-block; margin-right: 10px; vertical-align: middle}
+
+  /* rearrangeable */
+
+  [data-rearrangeable='true'] x-draggable-icon {
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    width: 30px;
+    height: 70px;
+    margin-right: 10px;
+    vertical-align: middle;
+    cursor: move;
+    background: %%_color_main}
+  [data-rearrangeable='true']                               x-droppable-area[data-position='before'] {display: block; width: 50px; height: 10px; background: red}
+  [data-rearrangeable='true']                               x-droppable-area[data-position='after']  {display: block; width: 50px; height: 10px; background: blue}
+  [data-rearrangeable='true']                               x-droppable-area[data-droppable-active='true'] {background: %%_color_ok}
+  [data-rearrangeable='true'][data-draggable-active='true'] x-droppable-area {width: 0 !important}
+
   /* checkbox color */
 
   x-field[data-type='checkbox-color'] input {
@@ -273,6 +296,12 @@
   x-selection_field-insert x-field {display: inline-block; margin: 8px 0}
   x-selection_field-insert x-field label {margin-bottom: 5px}
   x-selection_field-insert x-field select {min-width: 130px; max-width: 250px; margin: 0}
+
+  /* polls */
+
+  form#poll x-diagram {margin-top: 1em}
+  form#poll x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
+  form#poll x-total x-title::after {content: ': '}
 
   /* degrade for IE (not beautiful) */
 
