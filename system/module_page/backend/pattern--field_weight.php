@@ -13,13 +13,14 @@ namespace effcore {
   public $title = 'Weight';
   public $attributes = ['data-type' => 'weight'];
   public $element_attributes = [
-    'type'     => 'number',
-    'name'     => 'weight',
-    'required' => true,
-    'min'      => self::input_min_weight,
-    'max'      => self::input_max_weight,
-    'step'     => 1,
-    'value'    => 0
+    'type'      => 'number',
+    'data-type' => 'weight',
+    'name'      => 'weight',
+    'required'  => true,
+    'min'       => self::input_min_weight,
+    'max'       => self::input_max_weight,
+    'step'      => 1,
+    'value'     => 0
   ];
 
 }}

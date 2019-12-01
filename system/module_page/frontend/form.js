@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function(){
 /* rearrangeable */
 
   document._select_all('[data-has-rearrangeable="true"]').forEach(function(c_has_rearrangeable){
+    c_has_rearrangeable.setAttribute('data-has-rearrangeable-is-processed', 'true');
     c_has_rearrangeable._select_all('[data-rearrangeable="true"]').forEach(function(c_rearrangeable){
 
       var draggable_icon = document.createElement('x-draggable-icon');
@@ -68,9 +69,13 @@ document.addEventListener('DOMContentLoaded', function(){
             this.removeAttribute('data-droppable-is-active');
             var position = this.getAttribute('data-position'),
                 drop     = this.parentNode
-                drag     = window._dataTransferNode.parentNode;
+                drag     = window._dataTransferNode.parentNode,
+                c_weight = 0;
             if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
             if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+            c_has_rearrangeable._select_all('input[data-type="weight"]').forEach(function(c_input){
+              c_input.value = c_weight--;
+            });
           };
 
       var droppable_area_0 = document.createElement('x-droppable-area'),

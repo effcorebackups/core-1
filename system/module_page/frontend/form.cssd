@@ -219,8 +219,12 @@
   [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'][data-rearrangeable-is-active='true'] + [data-rearrangeable='true'] x-droppable-area[data-position='before'] {visibility: hidden}
 
   fieldset[data-has-rearrangeable='true'] x-fieldset-content {
-    padding-top:    20px;
+    padding-top   : 20px;
     padding-bottom: 20px}
+
+  [data-has-rearrangeable-is-processed='true'] x-field[data-type='weight'],
+  [data-has-rearrangeable-is-processed='true']   input[data-type='weight'] {
+    display: none}
 
   /* checkbox color */
 
