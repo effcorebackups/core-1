@@ -7,8 +7,8 @@
 namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\field_number;
           use \effcore\field_text;
+          use \effcore\field_weight;
           use \effcore\fieldset;
           use \effcore\markup;
           use \effcore\page;
@@ -36,14 +36,12 @@ namespace effcore\modules\polls {
           $c_field_answer_text->value_set($c_answer_text);
           $c_field_answer_text->required_set($i == 0);
         # field for answer weight
-          $c_field_answer_weight = new field_number('Weight');
+          $c_field_answer_weight = new field_weight();
           $c_field_answer_weight->description_state = 'hidden';
           $c_field_answer_weight->build();
           $c_field_answer_weight->name_set('answer_weight_'.$c_answer_id);
           $c_field_answer_weight->required_set(false);
           $c_field_answer_weight->value_set(90 - ($i * 10));
-          $c_field_answer_weight->min_set(-1000);
-          $c_field_answer_weight->max_set(+1000);
         # group fields to box
           $c_box_answer = new markup('x-widget', ['data-rearrangeable' => 'true', 'data-field-order-type' => 'inline']);
           $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight');
