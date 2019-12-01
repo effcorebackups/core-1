@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
-          draggable_icon.addEventListener('dragstart', function(event){ window._dataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', 'true'); c_rearrangeable.   setAttribute('data-draggable-is-active', 'true'); });
-          draggable_icon.addEventListener('dragend',   function(event){ window._dataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-draggable-is-active'        ); });
+          draggable_icon.addEventListener('dragstart', function(event){ window._dataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', 'true'); c_rearrangeable.   setAttribute('data-rearrangeable-is-active', 'true'); });
+          draggable_icon.addEventListener('dragend',   function(event){ window._dataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
 
-      var handler_on_dragover  = function(event){ event.preventDefault();                                },
-          handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-active', 'true'); },
-          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-active'        ); },
+      var handler_on_dragover  = function(event){ event.preventDefault();                                   },
+          handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); },
+          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); },
           handler_on_drop      = function(event){
-            this.removeAttribute('data-droppable-active');
+            this.removeAttribute('data-droppable-is-active');
             var position = this.getAttribute('data-position'),
                 drop     = this.parentNode
                 drag     = window._dataTransferNode.parentNode;

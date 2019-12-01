@@ -203,13 +203,21 @@
     vertical-align: middle;
     cursor: move;
     background: %%_color_main}
-  [data-rearrangeable='true']                                  x-droppable-area[data-position='before'] {position: relative; height: 11px; margin-top:    -11px; top:  5px; background: %%_color_warning}
-  [data-rearrangeable='true']                                  x-droppable-area[data-position='after' ] {position: relative; height: 11px; margin-bottom: -11px; top: -5px; background: %%_color_warning}
-  [data-rearrangeable='true']                                  x-droppable-area[data-droppable-active='true'] {background: %%_color_ok}
-  [data-rearrangeable='true'] + [data-rearrangeable='true']    x-droppable-area[data-position='before'] {display: none}
-  [data-rearrangeable='true']                                  x-droppable-area {display: none}
-  [data-rearrangeable='true'][data-draggable-is-active='true'] x-droppable-area {display: none}
-  [data-has-rearrangeable-is-active='true']                    x-droppable-area {display: block}
+  [data-rearrangeable='true'] x-droppable-area {
+    display: block;
+    position: relative;
+    height: 11px;
+    margin-bottom: -11px}
+  [data-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -6px}
+  [data-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top: -5px}
+  [data-rearrangeable='true'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
+
+                                            [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: hidden}
+  [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: visible}
+  [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true']:not(:last-child)                                                   x-droppable-area[data-position='after']  {visibility: hidden}
+  [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'     ]:last-child                                                    x-droppable-area[data-position='after']  {visibility: visible}
+  [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'][data-rearrangeable-is-active='true']                               x-droppable-area                         {visibility: hidden !important}
+  [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'][data-rearrangeable-is-active='true'] + [data-rearrangeable='true'] x-droppable-area[data-position='before'] {visibility: hidden !important}
 
   fieldset[data-has-rearrangeable='true'] x-fieldset-content {
     padding-top:    20px;
