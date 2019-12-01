@@ -54,15 +54,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document._select_all('[data-has-rearrangeable="true"]').forEach(function(c_has_rearrangeable){
     c_has_rearrangeable._select_all('[data-rearrangeable="true"]').forEach(function(c_rearrangeable){
+
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
-          draggable_icon.addEventListener('dragstart', function(event){ c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', 'true'); c_rearrangeable.   setAttribute('data-draggable-is-active', 'true'); });
-          draggable_icon.addEventListener('dragend',   function(event){ c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-draggable-is-active'        ); });
+          draggable_icon.addEventListener('dragstart', function(event){ window._dataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', 'true'); c_rearrangeable.   setAttribute('data-draggable-is-active', 'true'); });
+          draggable_icon.addEventListener('dragend',   function(event){ window._dataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-draggable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
+
       var handler_on_dragover  = function(event){ event.preventDefault();                                },
           handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-active', 'true'); },
-          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-active'        ); };
-          handler_on_drop      = function(event){ this.removeAttribute('data-droppable-active'        ); };
+          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-active'        ); },
+          handler_on_drop      = function(event){
+            this.removeAttribute('data-droppable-active');
+            var position = this.getAttribute('data-position'),
+                drop     = this.parentNode
+                drag     = window._dataTransferNode.parentNode;
+            if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
+            if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+          };
+
       var droppable_area_0 = document.createElement('x-droppable-area'),
           droppable_area_N = document.createElement('x-droppable-area');
           droppable_area_0.setAttribute('data-position', 'before');
@@ -77,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function(){
           droppable_area_N.addEventListener('drop',      handler_on_drop     );
       c_rearrangeable.prepend(droppable_area_0);
       c_rearrangeable.append (droppable_area_N);
+
     });
   });
 
