@@ -42,7 +42,7 @@ namespace effcore\modules\storage {
         $field_limit->build();
         $field_limit->name_set('limit');
         $field_limit->value_set(1);
-        $field_limit->min_set(1);
+        $field_limit->min_set(1    );
         $field_limit->max_set(10000);
       # fill the form
         $fieldset_query_params       ->child_insert($fieldset_conditions,       'conditions'      );
