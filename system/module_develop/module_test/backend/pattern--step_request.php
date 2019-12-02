@@ -21,7 +21,7 @@ namespace effcore {
       $reports[] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
   # make request
     $response = static::request(
-      $this->prepared_get_url(),
+      $this->prepared_get_url    (),
       $this->prepared_get_headers(),
       $prepared_post,
       $this->proxy);

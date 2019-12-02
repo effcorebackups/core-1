@@ -33,8 +33,8 @@ namespace effcore {
       $this->validation_id =   static::validation_id_get($this);
 
     # hidden fields
-      $this->child_insert(new field_hidden('form_id',       $id                      ), 'hidden_id_form'      );
-      $this->child_insert(new field_hidden('validation_id-'.$id, $this->validation_id), 'hidden_id_validation');
+      $this->child_insert(new field_hidden('form_id',       $id                 ), 'hidden_id_form'      );
+      $this->child_insert(new field_hidden('validation_id', $this->validation_id), 'hidden_id_validation');
 
     # send test headers "X-Form-Validation-Id--form_id: validation_id"
       if (module::is_enabled('test')) {
@@ -295,7 +295,7 @@ namespace effcore {
   static function validation_id_get_raw($form) {
     $source = $form->source_get();
     global ${$source};
-    return ${$source}['validation_id-'.$form->id_get()] ?? '';
+    return ${$source}['validation_id'] ?? '';
   }
 
   static function validation_id_get_hex_number($number) {return str_pad(dechex($number), 2, '0', STR_PAD_LEFT);}
