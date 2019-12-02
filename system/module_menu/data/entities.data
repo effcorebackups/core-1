@@ -82,7 +82,7 @@ entities
     decorator_view_type_multiple: tree
     managing_selection_params
     - decorator_params
-      - tree_managing_mode: simple-draggable
+      - tree_visualization_mode: simple-draggable
       - tree_mapping
         - id: tree_item.id
         - id_parent: tree_item.id_parent

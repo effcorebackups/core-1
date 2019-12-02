@@ -62,10 +62,10 @@ namespace effcore {
   }
 
   function render() {
-    $managing_mode = tree::select($this->id_tree)->managing_mode;
+    $visualization_mode = tree::select($this->id_tree)->visualization_mode;
     if (access::check($this->access)) {
-      $rendered_self     = $managing_mode ? $this->render_self_managed() : $this->render_self();
-      $rendered_children = $managing_mode == 'simple-draggable' || $this->children_select_count() ? (template::make_new($this->template_children, [
+      $rendered_self     = $visualization_mode ? $this->render_self_managed() : $this->render_self();
+      $rendered_children = $visualization_mode == 'simple-draggable' || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select(true))]
       ))->render() : '';
       return (template::make_new($this->template, [

@@ -14,7 +14,7 @@ namespace effcore {
   public $title_is_visible = 1;
   public $access;
   public $origin = 'nosql'; # nosql | sql | dynamic
-  public $managing_mode; # null | simple | simple-draggable
+  public $visualization_mode; # null | simple | simple-draggable
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
@@ -26,8 +26,8 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       event::start('on_tree_build_before', $this->id, [&$this]);
-      $this->attribute_insert('data-id',            $this->id           );
-      $this->attribute_insert('data-managing-mode', $this->managing_mode);
+      $this->attribute_insert('data-id',                 $this->id                );
+      $this->attribute_insert('data-visualization-mode', $this->visualization_mode);
       foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
         if ($c_item->id_tree   == $this->id &&
             $c_item->id_parent == null) {
