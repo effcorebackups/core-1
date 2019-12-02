@@ -223,8 +223,8 @@
     padding-top   : 20px;
     padding-bottom: 20px}
 
-  [data-has-rearrangeable-is-processed='true'] x-field[data-type='weight'],
-  [data-has-rearrangeable-is-processed='true']   input[data-type='weight'] {
+  [data-has-rearrangeable='true'][data-js-is-processed='true'] x-field[data-type='weight'],
+  [data-has-rearrangeable='true'][data-js-is-processed='true']   input[data-type='weight'] {
     display: none}
 
   /* checkbox color */
