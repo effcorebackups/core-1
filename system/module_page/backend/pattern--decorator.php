@@ -13,7 +13,7 @@ namespace effcore {
   public $template = 'markup_html';
   public $template_row = null;
   public $template_row_mapping = [];
-  public $tree_visualization_mode; # null | simple | simple-draggable
+  public $tree_visualization_mode; # null | simple | simple-rearrangeable
   public $tree_mapping = [];
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
