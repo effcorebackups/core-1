@@ -14,7 +14,7 @@ namespace effcore {
   public $title_is_visible = 1;
   public $access;
   public $origin = 'nosql'; # nosql | sql | dynamic
-  public $visualization_mode; # null | simple | simple-rearrangeable
+  public $visualization_mode; # null | decorated | decorated-rearrangeable
 
   function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
