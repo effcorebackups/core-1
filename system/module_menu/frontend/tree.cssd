@@ -61,43 +61,16 @@
     nav[data-area-id='menu'] x-tree ul ul {position: relative}
   }
 
-
-
   /* menu manager */
 
   x-tree[data-managing-mode] ul,
   x-tree[data-managing-mode] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-managing-mode] li {padding-left: 40px}
 
-  x-tree[data-managing-mode] x-icon {
-    float: left;
-    position: relative;
-    z-index: 100;
-    width: 30px;
-    height: 44px;
-    margin-right: 9px;
-    background: %%_color_main url('/system/module_page/frontend/images/icons-document.svgd') no-repeat 50% 0}
-  x-tree[data-managing-mode] x-item {display: block; min-height: 44px}
+  x-tree[data-managing-mode] x-item {display: block; padding-left: 5px; min-height: 44px; border-left: 5px solid %%_color_main}
   x-tree[data-managing-mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managing-mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   x-tree[data-managing-mode] x-item-url em {padding: 0 2px; font-style: normal}
 
-  x-tree[data-managing-mode='simple'] li            {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-managing-mode='simple'] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') no-repeat 0 -63px}
-  x-tree[data-managing-mode='simple'] x-item {padding-top: 5px}
-  x-tree[data-managing-mode='simple'] x-icon {margin-top:  5px}
-
-  x-tree[data-managing-mode$='draggable'] li                 {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-managing-mode$='draggable']      li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -16px, url('images/tree-vline.svgd') no-repeat 0 -62px}
-  x-tree[data-managing-mode$='draggable'] li + li            {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-managing-mode$='draggable'] li + li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -21px, url('images/tree-vline.svgd') no-repeat 0 -67px}
-  x-tree[data-managing-mode$='draggable'] x-icon {cursor: move}
-
-  x-tree[data-managing-mode$='draggable']                          x-drop_area                      {display: block; margin-left: -9px}
-  x-tree[data-managing-mode$='draggable'][data-drag-active='true'] x-drop_area                      {background: %%_color_warning}
-  x-tree[data-managing-mode$='draggable'][data-drag-active='true'] x-drop_area[data-drop-in='true'] {background: %%_color_ok}
-  x-tree[data-managing-mode$='draggable'][data-drag-active='true'] x-drop_area[data-type='in'    ]  {height: 44px; width: 39px; position: absolute; z-index: 200; opacity: .5}
-  x-tree[data-managing-mode$='draggable']                          x-drop_area[data-type='before']  {height:  5px; margin-bottom: 1px}
-  x-tree[data-managing-mode$='draggable']                          x-drop_area[data-type='after' ]  {height:  5px; margin-top:    1px}
-  x-tree[data-managing-mode$='draggable'] li + li >                x-drop_area[data-type='before']  {height:  1px; margin-bottom: 0; width: 0}
-  x-tree[data-managing-mode$='draggable'] [data-drag-out='true']   x-drop_area {width: 0 !important}
+  x-tree[data-managing-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -20px, url('images/tree-vline.svgd') repeat-y         }
+  x-tree[data-managing-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -20px, url('images/tree-vline.svgd') no-repeat 0 -66px}

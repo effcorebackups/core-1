@@ -68,10 +68,6 @@ namespace effcore {
       $rendered_children = $managing_mode == 'simple-draggable' || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select(true))]
       ))->render() : '';
-      if ($managing_mode == 'simple-draggable') {
-        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'in'    ], ''))->render().$rendered_self;
-        $rendered_self     =                    (new markup('x-drop_area',  ['data-type' => 'before'], ''))->render().$rendered_self;
-        $rendered_children = $rendered_children.(new markup('x-drop_area',  ['data-type' => 'after' ], ''))->render();}
       return (template::make_new($this->template, [
         'attributes' => $this->render_attributes(),
         'self'       => $rendered_self,
@@ -92,8 +88,7 @@ namespace effcore {
   }
 
   function render_self_managed() {
-    return (new markup('x-icon', [], ''))->render().
-           (new markup('x-item', $this->attributes_select('element_attributes'), [
+    return (new markup('x-item', $this->attributes_select('element_attributes'), [
       new markup('x-item-title', [], $this->title),
       new markup('x-item-extra', [], $this->extra),
       new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
