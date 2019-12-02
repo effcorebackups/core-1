@@ -202,6 +202,7 @@
     margin-right: 10px;
     vertical-align: middle;
     cursor: move;
+    border-radius: 5px;
     background: %%_color_main url('images/icons-drag_and_drop.svgd') 50% 50%}
   [data-rearrangeable='true'] x-droppable-area {
     display: block;

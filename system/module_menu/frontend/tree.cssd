@@ -76,7 +76,7 @@
     width: 30px;
     height: 44px;
     margin-right: 9px;
-    background: url('/system/module_page/frontend/images/icons-document.svgd') no-repeat 50% 0}
+    background: %%_color_main url('/system/module_page/frontend/images/icons-document.svgd') no-repeat 50% 0}
   x-tree[data-managing-mode] x-item {display: block; min-height: 44px}
   x-tree[data-managing-mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
   x-tree[data-managing-mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
