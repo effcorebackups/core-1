@@ -36,16 +36,16 @@
     if (this[0]) handler(this[0]);
   }
 
-  Document.prototype._select =
-      Node.prototype._select = function(query){
+  Document.prototype.querySelectorEff =
+      Node.prototype.querySelectorEff = function(query){
     var result = this.querySelector(query);
     if (result instanceof Node)
          return [result];
     else return [      ];
   }
 
-  Document.prototype._select_all =
-      Node.prototype._select_all = function(query){
+  Document.prototype.querySelectorAllEff =
+      Node.prototype.querySelectorAllEff = function(query){
     var result = this.querySelectorAll(query);
     return result instanceof NodeList ?
            result : [];
