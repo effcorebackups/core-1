@@ -76,7 +76,13 @@
   x-tree[data-visualization-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') repeat-y         }
   x-tree[data-visualization-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -17px, url('images/tree-vline.svgd') no-repeat 0 -63px}
 
-  x-tree[data-visualization-mode] x-draggable-icon {
+  /* rearrangeable */
+
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true'] x-item {
+    border-left: 0;
+    padding-left: 0}
+
+  x-tree[data-visualization-mode$='rearrangeable'] x-draggable-icon {
     float: left;
     position: relative;
     z-index: 100;
@@ -86,6 +92,14 @@
     cursor: move;
     border-radius: 5px;
     background: %%_color_main url('/system/module_page/frontend/images/icons-drag_and_drop.svgd') 50% 50%}
-  x-tree[data-visualization-mode][data-js-is-processed='true'] x-item {
-    border-left: 0;
-    padding-left: 0}
+
+  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area {
+    display: block;
+    position: relative;
+    height: 8px;
+    margin-bottom: -8px;
+    top: -4px}
+  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='before']          {background: %%_color_warning}
+  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]          {background: %%_color_warning}
+  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
+

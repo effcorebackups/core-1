@@ -193,7 +193,7 @@
 
   /* rearrangeable */
 
-  [data-rearrangeable='true'] x-draggable-icon {
+  [data-has-rearrangeable='true'] x-draggable-icon {
     display: inline-block;
     position: relative;
     z-index: 100;
@@ -204,14 +204,15 @@
     cursor: move;
     border-radius: 5px;
     background: %%_color_main url('images/icons-drag_and_drop.svgd') 50% 50%}
-  [data-rearrangeable='true'] x-droppable-area {
+
+  [data-has-rearrangeable='true'] x-droppable-area {
     display: block;
     position: relative;
     height: 11px;
     margin-bottom: -11px}
-  [data-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -6px}
-  [data-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top: -5px}
-  [data-rearrangeable='true'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -6px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top: -5px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
                                             [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: visible}
@@ -219,10 +220,9 @@
   [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'][data-rearrangeable-is-active='true']                               x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active='true'] [data-rearrangeable='true'][data-rearrangeable-is-active='true'] + [data-rearrangeable='true'] x-droppable-area[data-position='before'] {visibility: hidden}
 
-  fieldset[data-has-rearrangeable='true'] x-fieldset-content {
+  [data-has-rearrangeable='true'] > x-fieldset-content {
     padding-top   : 20px;
     padding-bottom: 20px}
-
   [data-has-rearrangeable='true'][data-js-is-processed='true'] x-field[data-type='weight'],
   [data-has-rearrangeable='true'][data-js-is-processed='true']   input[data-type='weight'] {
     display: none}
