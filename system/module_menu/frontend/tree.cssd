@@ -78,10 +78,6 @@
 
   /* rearrangeable */
 
-  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true'] x-item {
-    border-left: 0;
-    padding-left: 0}
-
   x-tree[data-visualization-mode$='rearrangeable'] x-draggable-icon {
     float: left;
     position: relative;
@@ -100,9 +96,13 @@
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]          {background: %%_color_error}
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
-  x-tree[data-visualization-mode$='rearrangeable']                                          li                                                                                      {padding-top: 0; padding-bottom: 0}
-  x-tree[data-visualization-mode$='rearrangeable']                                          li:not(:last-child)                          > x-droppable-area[data-position='after']  {display: none}
-  x-tree[data-visualization-mode$='rearrangeable']                                          li                                             x-droppable-area                         {visibility: hidden}
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li                                                                                      {padding-top: 0; padding-bottom: 0}
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li:not(:last-child)                          > x-droppable-area[data-position='after']  {display: none}
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li                                             x-droppable-area                         {visibility: hidden}
   x-tree[data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active='true'] li                                             x-droppable-area                         {visibility: visible}
   x-tree[data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active='true'] li[data-rearrangeable-is-active='true']        x-droppable-area                         {visibility: hidden}
   x-tree[data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active='true'] li[data-rearrangeable-is-active='true'] + li > x-droppable-area[data-position='before'] {visibility: hidden}
+
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true'] x-item {
+    border-left: 0;
+    padding-left: 0}
