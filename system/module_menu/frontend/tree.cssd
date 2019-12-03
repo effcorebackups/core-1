@@ -61,16 +61,17 @@
     nav[data-area-id='menu'] x-tree ul ul {position: relative}
   }
 
-  /* menu manager */
+  /* menu visualization for management */
 
   x-tree[data-visualization-mode] ul,
   x-tree[data-visualization-mode] li {margin: 0; padding: 0; list-style: none}
   x-tree[data-visualization-mode] li {padding-left: 40px}
 
   x-tree[data-visualization-mode] x-item {display: block; padding-left: 5px; min-height: 44px; border-left: 5px solid %%_color_main}
-  x-tree[data-visualization-mode] x-item-title {margin-right: 1em; font-size: 1.2em; color: %%_color_text}
-  x-tree[data-visualization-mode] x-item-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
-  x-tree[data-visualization-mode] x-item-url em {padding: 0 2px; font-style: normal}
+  x-tree[data-visualization-mode] x-item x-title {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color_text}
+  x-tree[data-visualization-mode] x-item x-extra {display: inline-block}
+  x-tree[data-visualization-mode] x-item x-url {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
+  x-tree[data-visualization-mode] x-item x-url em {padding: 0 2px; font-style: normal}
 
   x-tree[data-visualization-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -20px, url('images/tree-vline.svgd') repeat-y         }
   x-tree[data-visualization-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -20px, url('images/tree-vline.svgd') no-repeat 0 -66px}

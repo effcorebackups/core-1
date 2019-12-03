@@ -89,9 +89,9 @@ namespace effcore {
 
   function render_self_managed() {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
-      new markup('x-item-title', [], $this->title),
-      new markup('x-item-extra', [], $this->extra),
-      new markup('x-item-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
+      new markup('x-title', [], $this->title),
+      new markup('x-extra', [], $this->extra),
+      new markup('x-url',   [], $this->url ? str_replace('/', (new markup('em', [], '/'))->render(), $this->url) : 'no url')
     ]))->render();
   }
 
