@@ -65,7 +65,7 @@
 
   x-tree[data-visualization-mode] ul,
   x-tree[data-visualization-mode] li {margin: 0; padding: 0; list-style: none}
-  x-tree[data-visualization-mode] li {padding: 4px 0 4px 40px}
+  x-tree[data-visualization-mode] li {padding: 6px 0 6px 40px}
 
   x-tree[data-visualization-mode] x-item {display: block; padding: 1px 0 1px 5px; min-height: 44px; border-left: 5px solid %%_color_main}
   x-tree[data-visualization-mode] x-item x-title  {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color_text}
@@ -96,7 +96,8 @@
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]          {background: %%_color_error}
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
-  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li                                                                                      {padding-top: 0; padding-bottom: 0}
+  x-tree[data-visualization-mode$='rearrangeable']                                          li:not(:last-child)                                                                     {padding-bottom: 0}
+  x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li                                                                                      {padding-bottom: 0; padding-top: 0}
   x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li:not(:last-child)                          > x-droppable-area[data-position='after']  {display: none}
   x-tree[data-visualization-mode$='rearrangeable'][data-js-is-processed='true']             li                                             x-droppable-area                         {visibility: hidden}
   x-tree[data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active='true'] li                                             x-droppable-area                         {visibility: visible}
