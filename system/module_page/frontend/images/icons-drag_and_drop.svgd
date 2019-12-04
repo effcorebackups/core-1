@@ -23,8 +23,9 @@
 
   <g id="icon_drag_and_drop">
     <rect id="icon_d_d-bg" x="0" y="0" width="30" height="70" style="fill: %%_color_main; stroke: none"/>
-    <path id="icon_d_d-arrow-to_top" style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: white" d="M 9 26 L 15 20 L 21 26"/>
-    <path id="icon_d_d-arrow-to_btm" style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: white" d="M 9 44 L 15 50 L 21 44"/>
+    <path id="icon_d_d-arrow-to_top" style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: white" d="M 9 28 L 15 22 L 21 28"/>
+    <path id="icon_d_d-arrow-to_btm" style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: white" d="M 9 42 L 15 48 L 21 42"/>
+    <line id="icon_d_d-delimiter" x1="8" y1="35" x2="22" y2="35" style="stroke: white; stroke-linecap: round; opacity: .5"/>
   </g>
 
 </svg>

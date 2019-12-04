@@ -86,6 +86,7 @@
     height: 44px;
     margin-right: 10px;
     cursor: move;
+    border-radius: 5px;
     background: %%_color_main url('/system/module_page/frontend/images/icons-drag_and_drop.svgd') 50% 50%}
 
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area {
