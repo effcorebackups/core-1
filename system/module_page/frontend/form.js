@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.querySelectorAllEff('x-selection').forEach(function(c_selection){
     c_selection.querySelectorEff('x-decorator[data-view-type="table-adaptive"]').forFirstItem(function(decorator){
-      var head_cell       = decorator.querySelectorEff   ('x-head x-cell[data-cellid="checkbox"]'                       ),
-          body_checkboxes = decorator.querySelectorAllEff('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
+      var head_cell       = decorator.querySelectorEff   ('x-head x-cell[data-cellid="checkbox"]'                       );
+      var body_checkboxes = decorator.querySelectorAllEff('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
       if (head_cell.length == 1 && body_checkboxes.length) {
         var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
@@ -62,24 +62,23 @@ document.addEventListener('DOMContentLoaded', function(){
           draggable_icon.addEventListener('dragend',   function(event){ window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
 
-      var handler_on_dragover  = function(event){ event.preventDefault();                                   },
-          handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); },
-          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); },
-          handler_on_drop      = function(event){
-            this.removeAttribute('data-droppable-is-active');
-            var position = this.getAttribute('data-position'),
-                drop     = this.parentNode,
-                drag     = window._effDataTransferNode.parentNode,
-                c_weight = 0;
-            if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
-            if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
-            c_has_rearrangeable.querySelectorAllEff('input[data-type="weight"]').forEach(function(c_input){
-              c_input.value = c_weight--;
-            });
-          };
+      var handler_on_dragover  = function(event){ event.preventDefault();                                   };
+      var handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); };
+      var handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); };
+      var handler_on_drop      = function(event){ this.removeAttribute('data-droppable-is-active'        );
+          var position = this.getAttribute('data-position');
+          var drop     = this.parentNode;
+          var drag     = window._effDataTransferNode.parentNode;
+          var c_weight = 0;
+          if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
+          if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+          c_has_rearrangeable.querySelectorAllEff('input[data-type="weight"]').forEach(function(c_input){
+            c_input.value = c_weight--;
+          });
+      };
 
-      var droppable_area_0 = document.createElement('x-droppable-area'),
-          droppable_area_N = document.createElement('x-droppable-area');
+      var droppable_area_0 = document.createElement('x-droppable-area');
+      var droppable_area_N = document.createElement('x-droppable-area');
           droppable_area_0.setAttribute('data-position', 'before');
           droppable_area_N.setAttribute('data-position', 'after' );
       [droppable_area_0, droppable_area_N].forEach(function(droppable_area){

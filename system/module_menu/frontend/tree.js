@@ -12,26 +12,25 @@ document.addEventListener('DOMContentLoaded', function(){
           draggable_icon.addEventListener('dragend',   function(event){ window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.parentNode.removeAttribute('data-rearrangeable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
 
-      var handler_on_dragover  = function(event){ event.preventDefault();                                   },
-          handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); },
-          handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); },
-          handler_on_drop      = function(event){
-            this.removeAttribute('data-droppable-is-active');
-            var position = this.getAttribute('data-position'),
-                drop     = this.parentNode,
-                drag     = window._effDataTransferNode.parentNode.parentNode,
-                c_weight = 0;
-            if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
-            if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
-            if (position == 'in'    ) drop.querySelector('ul').append(drag);
-            drag.parentNode.parentNode.querySelectorAll('[data-id="' + drag.parentNode.parentNode.getAttribute('data-id') + '"] > ul > li > x-item input[data-type="weight"]').forEach(function(c_input){
-              c_input.value = c_weight--;
-            });
-          };
+      var handler_on_dragover  = function(event){ event.preventDefault();                                   };
+      var handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); };
+      var handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); };
+      var handler_on_drop      = function(event){ this.removeAttribute('data-droppable-is-active'        );
+          var position = this.getAttribute('data-position');
+          var drop     = this.parentNode;
+          var drag     = window._effDataTransferNode.parentNode.parentNode;
+          var c_weight = 0;
+          if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
+          if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+          if (position == 'in'    ) drop.querySelector('ul').append(drag);
+          drag.parentNode.parentNode.querySelectorAll('[data-id="' + drag.parentNode.parentNode.getAttribute('data-id') + '"] > ul > li > x-item input[data-type="weight"]').forEach(function(c_input){
+            c_input.value = c_weight--;
+          });
+      };
 
-      var droppable_area_0 = document.createElement('x-droppable-area'),
-          droppable_area_M = document.createElement('x-droppable-area'),
-          droppable_area_N = document.createElement('x-droppable-area');
+      var droppable_area_0 = document.createElement('x-droppable-area');
+      var droppable_area_M = document.createElement('x-droppable-area');
+      var droppable_area_N = document.createElement('x-droppable-area');
           droppable_area_0.setAttribute('data-position', 'before');
           droppable_area_M.setAttribute('data-position', 'in'    );
           droppable_area_N.setAttribute('data-position', 'after' );
