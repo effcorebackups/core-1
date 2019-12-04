@@ -91,7 +91,7 @@
 
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='before']          {background: %%_color_warning; display: block; position: relative; height: 6px}
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='in'    ]          {background: %%_color_warning; display: block; position: absolute; height: 46px; width: 38px; z-index: 200; opacity: .5}
-  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]          {background: %%_color_error;   display: block; position: relative; height: 6px}
+  x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; display: block; position: relative; height: 6px}
   x-tree[data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
   x-tree[data-visualization-mode$='rearrangeable']                                          li:not(:last-child)                                                                     {padding-bottom: 0}
