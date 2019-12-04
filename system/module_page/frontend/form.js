@@ -82,14 +82,11 @@ document.addEventListener('DOMContentLoaded', function(){
           droppable_area_N = document.createElement('x-droppable-area');
           droppable_area_0.setAttribute('data-position', 'before');
           droppable_area_N.setAttribute('data-position', 'after' );
-          droppable_area_0.addEventListener('dragover',  handler_on_dragover );
-          droppable_area_0.addEventListener('dragenter', handler_on_dragenter);
-          droppable_area_0.addEventListener('dragleave', handler_on_dragleave);
-          droppable_area_0.addEventListener('drop',      handler_on_drop     );
-          droppable_area_N.addEventListener('dragover',  handler_on_dragover );
-          droppable_area_N.addEventListener('dragenter', handler_on_dragenter);
-          droppable_area_N.addEventListener('dragleave', handler_on_dragleave);
-          droppable_area_N.addEventListener('drop',      handler_on_drop     );
+      [droppable_area_0, droppable_area_N].forEach(function(droppable_area){
+          droppable_area.addEventListener('dragover',  handler_on_dragover );
+          droppable_area.addEventListener('dragenter', handler_on_dragenter);
+          droppable_area.addEventListener('dragleave', handler_on_dragleave);
+          droppable_area.addEventListener('drop',      handler_on_drop  );});
       c_rearrangeable.prepend(droppable_area_0);
       c_rearrangeable.append (droppable_area_N);
 
