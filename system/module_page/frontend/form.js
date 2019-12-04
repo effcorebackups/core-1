@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.title = effcore.tokens['text_select_all_rows'];
-        head_cell[0].appendChild(checkbox);
+        head_cell[0].append(checkbox);
         checkbox.addEventListener('change', function(){
           body_checkboxes.forEach(function(c_checkbox){
             c_checkbox.checked = checkbox.checked;

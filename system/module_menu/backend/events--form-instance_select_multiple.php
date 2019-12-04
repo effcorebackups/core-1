@@ -40,8 +40,8 @@ namespace effcore\modules\menu {
         });
       # $c_row 'extra'
         $form->_selection->field_insert_code('extra', '', function ($c_row, $c_instance) {
-          $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-parent' => 'true']);
-          $c_hidden_weight = new field_hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-weight' => 'true']);
+          $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-type' => 'parent']);
+          $c_hidden_weight = new field_hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-type' => 'weight']);
           return new node([], [
             'actions'       => $c_row['actions']['value'],
             'hidden_parent' => $c_hidden_parent,
