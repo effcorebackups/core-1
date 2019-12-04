@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 drag     = window._effDataTransferNode.parentNode.parentNode;
             if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
             if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+            if (position == 'in'    ) drop.querySelector('ul').append(drag);
           };
 
       var droppable_area_0 = document.createElement('x-droppable-area'),
