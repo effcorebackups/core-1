@@ -12,18 +12,22 @@
   /* polyfills and extensions */
 
   if (!Element.prototype.prepend) {
-       Element.prototype.prepend = function(newElement){
-      if (newElement instanceof Node)
-           this.insertBefore(                               newElement,   this.firstChild);
-      else this.insertBefore(document.createTextNode(String(newElement)), this.firstChild);
+       Element.prototype.prepend = function(){
+      for (var i = arguments.length - 1; i >= 0; i--) {
+        if (arguments[i] instanceof Node)
+             this.insertBefore(                               arguments[i],   this.firstChild);
+        else this.insertBefore(document.createTextNode(String(arguments[i])), this.firstChild);
+      }
     }
   }
 
   if (!Element.prototype.append) {
-       Element.prototype.append = function(newElement){
-      if (newElement instanceof Node)
-           this.appendChild(                               newElement  );
-      else this.appendChild(document.createTextNode(String(newElement)));
+       Element.prototype.append = function(){
+      for (var i = 0; i < arguments.length; i++) {
+          if (arguments[i] instanceof Node)
+             this.appendChild(                               arguments[i]  );
+        else this.appendChild(document.createTextNode(String(arguments[i])));
+      }
     }
   }
 

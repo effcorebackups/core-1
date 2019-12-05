@@ -40,8 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
           droppable_area.addEventListener('dragenter', handler_on_dragenter);
           droppable_area.addEventListener('dragleave', handler_on_dragleave);
           droppable_area.addEventListener('drop',      handler_on_drop  );});
-      c_rearrangeable.parentNode.prepend(droppable_area_M);
-      c_rearrangeable.parentNode.prepend(droppable_area_0);
+      c_rearrangeable.parentNode.prepend(droppable_area_0, droppable_area_M);
       c_rearrangeable.parentNode.append (droppable_area_N);
 
     });
