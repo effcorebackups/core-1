@@ -63,7 +63,7 @@ namespace effcore\modules\storage {
         if ($form->clicked_button->value_get() == 'update')
           $form->_instance->fields = $form->validation_cache_get('fields') ?: null;
         else {
-        # manual submit for groups (widgets)
+        # manual submit for widgets
           foreach ($items as $c_npath => $c_item)
             if (is_object($c_item) && method_exists($c_item, 'submit'))
               $c_item::submit($c_item, $form, $c_npath);

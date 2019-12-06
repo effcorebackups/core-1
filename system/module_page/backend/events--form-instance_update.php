@@ -9,7 +9,7 @@ namespace effcore\modules\page {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\group_page_part_insert;
-          use \effcore\group_page_part_manage;
+          use \effcore\widget_page_part_manage;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\page_part_preset_link;
@@ -39,7 +39,7 @@ namespace effcore\modules\page {
           # insert groups 'Field manage'
             foreach ($parts[$c_area->id] ?? [] as $c_part) {
               if ($c_part instanceof page_part_preset_link) {
-                $c_part_manage = new group_page_part_manage;
+                $c_part_manage = new widget_page_part_manage;
                 $c_part_manage->id_area   = $c_area->id;
                 $c_part_manage->id_preset = $c_part->id;
                 $c_part_manage->build();
@@ -66,7 +66,7 @@ namespace effcore\modules\page {
         if ($form->clicked_button->value_get() == 'update')
           $form->_instance->parts = $form->validation_cache_get('parts') ?: null;
         else {
-        # manual submit for groups (widgets)
+        # manual submit for widgets
           foreach ($items as $c_npath => $c_item)
             if (is_object($c_item) && method_exists($c_item, 'submit'))
               $c_item::submit($c_item, $form, $c_npath);

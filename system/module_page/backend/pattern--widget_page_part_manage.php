@@ -5,16 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class group_page_part_manage extends fieldset {
+          class widget_page_part_manage extends container {
 
-  public $tag_name = 'x-part-manage';
-  public $content_tag_name = null;
+  public $tag_name = 'x-widget';
+  public $attributes = ['data-type' => 'page_part-manage'];
   public $id_area;
   public $id_preset;
 
   function build() {
     if (!$this->is_builded) {
-      parent::build();
       $preset = page_part_preset::select($this->id_preset);
       $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
       $button_delete->build();
