@@ -17,12 +17,11 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
     # the "parent::build()" is not required here
-      $c_new_group_name = null;
-      $c_old_group_name = null;
+      $previous_group_name = '';
       foreach (color::get_all() as $c_color) {
-            $c_new_group_name  = $c_color->group ?? null;
-        if ($c_new_group_name != $c_old_group_name) $this->child_insert(hr);
-            $c_old_group_name  = $c_new_group_name;
+        if ($previous_group_name != '' &&
+            $previous_group_name != $c_color->group) $this->child_insert(hr);
+            $previous_group_name  = $c_color->group;
         $this->field_insert(null, null, [
           'value' => $c_color->id,
           'title' => translation::get('color id = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
