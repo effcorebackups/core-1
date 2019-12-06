@@ -7,10 +7,7 @@
   input[type='checkbox'] ~ label[for],
   input[type='radio'   ] ~ label[for] {
     cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none}
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
   /* fieldset */
 
@@ -51,9 +48,14 @@
   x-field label {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
+  /* x-group */
+
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
-  x-group > x-title {display: block; margin-bottom: 20px; font-size: 1.2em}
+  x-group > x-title {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.2em}
 
   /* mark 'required' */
 
@@ -72,9 +74,7 @@
   input,
   textarea,
   select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
     margin: 5px 0;
     padding: 10px;
     border: 3px solid %%_color_main;
@@ -236,7 +236,18 @@
 
   /* palette */
 
-  x-group[data-type='palette'] label {margin: 0; display: inline-block; vertical-align: middle; font-size: 1.2em}
+  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
+  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
+  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
+
+  x-group[data-type='palette'] label {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 1.2em;
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+
   x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
@@ -245,18 +256,12 @@
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
 
-  x-group[data-type='palette'] hr:first-child {display: none}
   x-group[data-type='palette'] hr {
     width: 50%;
     margin: 2px 0;
     border: 0;
     opacity: .3;
     border-top: 1px dashed %%_color_main}
-
-  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
-  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
-  x-group[data-type='palette'] input[data-opener-type='palette'] + label {cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
   /* form 'install' */
 
