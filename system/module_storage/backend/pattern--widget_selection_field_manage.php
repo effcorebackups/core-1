@@ -12,6 +12,12 @@ namespace effcore {
   public $entity_name;
   public $entity_field_name;
 
+  function __construct($entity_name, $entity_field_name, $attributes = [], $weight = 0) {
+    $this->entity_name       = $entity_name;
+    $this->entity_field_name = $entity_field_name;
+    parent::__construct(null, null, null, $attributes, [], $weight);
+  }
+
  function build() {
     if (!$this->is_builded) {
       $entity = entity::get($this->entity_name);

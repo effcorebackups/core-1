@@ -9,8 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\page;
-          use \effcore\widget_selection_field_insert;
-          use \effcore\widget_selection_field_manage;
+          use \effcore\widget_selection_fields;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -26,17 +25,10 @@ namespace effcore\modules\storage {
       # init pool of fields
         if ($form->validation_cache_get('fields') === null)
             $form->validation_cache_set('fields', $form->_instance->fields ?: []);
-      # insert groups 'Field manage'
-        foreach ($form->validation_cache_get('fields') as $c_id => $c_info) {
-          $c_field_manage = new widget_selection_field_manage;
-          $c_field_manage->entity_name       = $c_info->entity_name;
-          $c_field_manage->entity_field_name = $c_info->entity_field_name;
-          $c_field_manage->build();
-          $fieldset_fields->child_insert($c_field_manage, $c_id);}
-      # insert group 'Field insert'
-        $field_insert = new widget_selection_field_insert;
-        $field_insert->build();
-        $fieldset_fields->child_insert($field_insert, 'field_insert');
+      # insert widget 'Fields'
+        $widget_fields = new widget_selection_fields($form->validation_cache_get('fields'));
+        $widget_fields->build();
+        $fieldset_fields->child_insert($widget_fields, 'fields');
       # insert field 'Limit'
         $field_limit = new field_number('Limit');
         $field_limit->build();
