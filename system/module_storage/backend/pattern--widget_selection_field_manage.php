@@ -5,16 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class group_selection_field_manage extends fieldset {
+          class widget_selection_field_manage extends container {
 
-  public $tag_name = 'x-part-manage';
-  public $content_tag_name = null;
+  public $tag_name = 'x-widget';
+  public $attributes = ['data-type' => 'selection_field-manage'];
   public $entity_name;
   public $entity_field_name;
 
  function build() {
     if (!$this->is_builded) {
-      parent::build();
       $entity = entity::get($this->entity_name);
       $entity_field = $entity ? $entity->field_get($this->entity_field_name) : null;
       $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
