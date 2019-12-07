@@ -39,9 +39,9 @@ namespace effcore\modules\page {
             foreach ($parts[$c_area->id] ?? [] as $c_part)
               if ($c_part instanceof page_part_preset_link)
                 $c_area_presets[$c_part->id] = $c_part->id;
-            $c_area_manage = new widget_area_manage($c_area->id, $c_area_presets);
-            $c_area_manage->build();
-            $c_area->child_insert($c_area_manage, 'area_manage');
+            $c_widget_area_manage = new widget_area_manage($c_area->id, $c_area_presets);
+            $c_widget_area_manage->build();
+            $c_area->child_insert($c_widget_area_manage, 'area_manage');
           }
         }
         $form->child_select('fields')->child_insert(
