@@ -12,6 +12,12 @@ namespace effcore {
   public $id_area;
   public $id_preset;
 
+  function __construct($id_area, $id_preset, $attributes = [], $weight = 0) {
+    $this->id_area   = $id_area;
+    $this->id_preset = $id_preset;
+    parent::__construct(null, null, null, $attributes, [], $weight);
+  }
+
   function build() {
     if (!$this->is_builded) {
       $preset = page_part_preset::select($this->id_preset);

@@ -11,6 +11,11 @@ namespace effcore {
   public $attributes = ['data-type' => 'page_part-insert'];
   public $id_area;
 
+  function __construct($id_area, $attributes = [], $weight = 0) {
+    $this->id_area = $id_area;
+    parent::__construct(null, null, null, $attributes, [], $weight);
+  }
+
   function build() {
     if (!$this->is_builded) {
       $presets = page_part_preset::select_all($this->id_area);
