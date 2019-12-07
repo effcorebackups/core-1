@@ -8,9 +8,9 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
-          use \effcore\group_selection_field_insert;
-          use \effcore\widget_selection_field_manage;
           use \effcore\page;
+          use \effcore\widget_selection_field_insert;
+          use \effcore\widget_selection_field_manage;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -34,7 +34,7 @@ namespace effcore\modules\storage {
           $c_field_manage->build();
           $fieldset_fields->child_insert($c_field_manage, $c_id);}
       # insert group 'Field insert'
-        $field_insert = new group_selection_field_insert;
+        $field_insert = new widget_selection_field_insert;
         $field_insert->build();
         $fieldset_fields->child_insert($field_insert, 'field_insert');
       # insert field 'Limit'

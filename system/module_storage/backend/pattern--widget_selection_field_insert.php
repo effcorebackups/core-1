@@ -5,14 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          class group_selection_field_insert extends fieldset {
+          class widget_selection_field_insert extends container {
 
-  public $tag_name = 'x-selection_field-insert';
-  public $content_tag_name = null;
+  public $tag_name = 'x-widget';
+  public $attributes = ['data-type' => 'selection_field-insert'];
 
   function build() {
     if (!$this->is_builded) {
-      parent::build();
       $entities = entity::get_all();
       core::array_sort_by_text_property($entities);
       $options = ['not_selected' => '- no -'];
