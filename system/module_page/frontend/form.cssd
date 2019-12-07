@@ -274,6 +274,13 @@
   x-widget[data-type='page_part-manage'] x-id {display: block; opacity: .5}
   x-widget[data-type='page_part-manage'] button {float: right; position: relative; z-index: 10}
 
+  /* widget 'page_part-insert' */
+
+  x-widget[data-type='page_part-insert'] {display: block; margin-top: 10px}
+  x-widget[data-type='page_part-insert'] x-field {display: inline-block; margin: 0}
+  x-widget[data-type='page_part-insert'] x-field label {margin-bottom: 5px}
+  x-widget[data-type='page_part-insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
+
   /* widget 'selection_field-manage' */
 
   x-widget[data-type='selection_field-manage'] {padding: 10px 0}
@@ -307,11 +314,6 @@
     color: %%_color_text;
     background: %%_color_main{20,20,20}}
   x-layout-manager [data-area-type='column'] > x-area-id {background: %%_color_warning}
-
-  x-page_part-insert {display: block; margin-top: 10px}
-  x-page_part-insert x-field {display: inline-block; margin: 0}
-  x-page_part-insert x-field label {margin-bottom: 5px}
-  x-page_part-insert x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
   form#instance_update x-layout-manager [data-area-id] {border-color: %%_color_warning}
   form#instance_update x-layout-manager x-area-id  {background-color: %%_color_warning}

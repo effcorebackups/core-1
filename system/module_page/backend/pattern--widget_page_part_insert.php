@@ -5,15 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class group_page_part_insert extends fieldset {
+          class widget_page_part_insert extends container {
 
-  public $tag_name = 'x-page_part-insert';
-  public $content_tag_name = null;
+  public $tag_name = 'x-widget';
+  public $attributes = ['data-type' => 'page_part-insert'];
   public $id_area;
 
   function build() {
     if (!$this->is_builded) {
-      parent::build();
       $presets = page_part_preset::select_all($this->id_area);
       core::array_sort_by_text_property($presets, 'managing_group');
       $options = ['not_selected' => '- no -'];
