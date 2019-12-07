@@ -43,7 +43,7 @@ namespace effcore\modules\polls {
           $c_field_answer_weight->required_set(false);
           $c_field_answer_weight->value_set(90 - ($i * 10));
         # group fields to box
-          $c_box_answer = new markup('x-widget', ['data-rearrangeable' => 'true', 'data-field-order-type' => 'inline']);
+          $c_box_answer = new markup('x-widget', ['data-type' => 'poll_answer-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline' => 'true']);
           $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight');
           $c_box_answer    ->child_insert($c_field_answer_text,   'answer_text'  );
           $fieldset_answers->child_insert($c_box_answer,          'answer_'.   $i);

@@ -12,8 +12,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\page_part_preset_link;
           use \effcore\page;
-          use \effcore\widget_page_part_insert;
-          use \effcore\widget_page_part_manage;
+          use \effcore\widget_area_manage;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -36,19 +35,13 @@ namespace effcore\modules\page {
             $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
-          # insert groups 'Field manage'
-            foreach ($parts[$c_area->id] ?? [] as $c_part) {
-              if ($c_part instanceof page_part_preset_link) {
-                $c_part_manage = new widget_page_part_manage;
-                $c_part_manage->id_area   = $c_area->id;
-                $c_part_manage->id_preset = $c_part->id;
-                $c_part_manage->build();
-                $c_area->child_insert($c_part_manage, 'part_manage_'.$c_part->id);}}
-          # insert group 'Part insert'
-            $c_part_insert = new widget_page_part_insert;
-            $c_part_insert->id_area = $c_area->id;
-            $c_part_insert->build();
-            $c_area->child_insert($c_part_insert, 'part_insert');
+            $c_area_presets = [];
+            foreach ($parts[$c_area->id] ?? [] as $c_part)
+              if ($c_part instanceof page_part_preset_link)
+                $c_area_presets[$c_part->id] = $c_part->id;
+            $c_area_manage = new widget_area_manage($c_area->id, $c_area_presets);
+            $c_area_manage->build();
+            $c_area->child_insert($c_area_manage, 'area_manage');
           }
         }
         $form->child_select('fields')->child_insert(
