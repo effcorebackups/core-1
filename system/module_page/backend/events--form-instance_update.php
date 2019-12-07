@@ -66,10 +66,6 @@ namespace effcore\modules\page {
         if ($form->clicked_button->value_get() == 'update')
           $form->_instance->parts = $form->validation_cache_get('parts') ?: null;
         else {
-        # manual submit for widgets
-          foreach ($items as $c_npath => $c_item)
-            if (is_object($c_item) && method_exists($c_item, 'submit'))
-              $c_item::submit($c_item, $form, $c_npath);
           static::on_init(null, $form, $items);
         }
       }
