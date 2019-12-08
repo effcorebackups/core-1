@@ -8,7 +8,7 @@ namespace effcore {
           class widget_selection_field_manage extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true'];
+  public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
   public $entity_name;
   public $entity_field_name;
 
@@ -22,14 +22,23 @@ namespace effcore {
     if (!$this->is_builded) {
       $entity = entity::get($this->entity_name);
       $entity_field = $entity ? $entity->field_get($this->entity_field_name) : null;
+      $field_weight = new field_weight();
+      $field_weight->description_state = 'hidden';
+      $field_weight->build();
+      $field_weight->name_set('weight_'.$this->entity_name.'_'.$this->entity_field_name);
+      $field_weight->required_set(false);
+      $field_weight->value_set(0);
       $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
       $button_delete->build();
       $button_delete->value_set('button_field_delete_'.$this->entity_name.'_'.$this->entity_field_name);
+      $this->child_insert($field_weight,  'field_weight' );
       $this->child_insert($button_delete, 'button_delete');
-      $this->child_insert(new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'), 'title');
-      $this->child_insert(new markup('x-id',    [], [
-        new text_simple($this->entity_name), '.',
-        new text_simple($this->entity_field_name)]), 'id');
+      $this->child_insert(new markup('x-info', [], [
+        'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'),
+        'id'    => new markup('x-id',    [], [
+                   new text_simple($this->entity_name), '.',
+                   new text_simple($this->entity_field_name)])
+      ]), 'info');
       $this->is_builded = true;
     }
   }

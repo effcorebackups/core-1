@@ -257,10 +257,15 @@
 
   x-widgets-group {display: block}
   x-widget {display: block}
+
   x-widget[data-fields-is-inline='true'] x-field {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle}
+
+  x-widget[data-fields-is-inline-full='true'] x-field       {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-fields-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-fields-is-inline-full='true'] x-field input {margin: 0}
 
   /* widget 'area_part-manage' */
 
@@ -279,8 +284,9 @@
   /* widget 'selection_field-manage' */
 
   x-widget[data-type='selection_field-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='selection_field-manage'] x-title {display: block}
-  x-widget[data-type='selection_field-manage'] x-id {display: block; opacity: .5}
+  x-widget[data-type='selection_field-manage'] x-info {display: inline-block; vertical-align: middle}
+  x-widget[data-type='selection_field-manage'] x-info x-title {display: block; font-size: 1.1em}
+  x-widget[data-type='selection_field-manage'] x-info x-id {display: block; opacity: .5}
   x-widget[data-type='selection_field-manage'] button {float: right; position: relative; z-index: 10}
 
   /* widget 'selection_field-insert' */
