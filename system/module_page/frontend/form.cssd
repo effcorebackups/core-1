@@ -234,10 +234,10 @@
   [data-has-rearrangeable='true'] x-droppable-area {
     display: block;
     position: relative;
-    height: 9px;
-    margin-bottom: -9px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -15px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top:   6px}
+    height: 7px;
+    margin-bottom: -7px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -14px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top:   7px}
   [data-has-rearrangeable='true'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
                                             [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: hidden}
@@ -301,8 +301,8 @@
   x-widget[data-type='poll_answer-manage'] {display: block; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type='poll_answer-manage']:last-child {border-bottom: 0}
   x-widget[data-type='poll_answer-manage'] x-draggable-icon {margin-top: 47px}
-  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='before'] {top: -5px}
-  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='after' ] {top: -4px}
+  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='before'] {top: -4px}
+  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='after' ] {top: -3px}
 
   /* layout manager */
 
