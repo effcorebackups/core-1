@@ -5,10 +5,10 @@
   ##################################################################
 
 namespace effcore {
-          class widget_page_part_insert extends container {
+          class widget_area_part_insert extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'page_part-insert'];
+  public $attributes = ['data-type' => 'area_part-insert'];
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {

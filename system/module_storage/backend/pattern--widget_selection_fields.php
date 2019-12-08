@@ -25,8 +25,8 @@ namespace effcore {
         $widgets_group->child_insert($c_widget_manage, $c_id);}
       $widget_insert = new widget_selection_field_insert;
       $widget_insert->build();
-      $this->child_insert($widgets_group, 'manage');
-      $this->child_insert($widget_insert, 'insert');
+      $this->child_insert($widgets_group, 'widgets_group');
+      $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
     }
   }

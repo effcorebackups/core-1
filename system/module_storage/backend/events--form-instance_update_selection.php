@@ -28,7 +28,7 @@ namespace effcore\modules\storage {
       # insert widget 'Fields'
         $widget_fields = new widget_selection_fields($form->validation_cache_get('fields'));
         $widget_fields->build();
-        $fieldset_fields->child_insert($widget_fields, 'fields');
+        $fieldset_fields->child_insert($widget_fields, 'widget_fields');
       # insert field 'Limit'
         $field_limit = new field_number('Limit');
         $field_limit->build();

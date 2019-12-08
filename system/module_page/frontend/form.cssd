@@ -262,19 +262,19 @@
     margin-right: 10px;
     vertical-align: middle}
 
-  /* widget 'page_part-manage' */
+  /* widget 'area_part-manage' */
 
-  x-widget[data-type='page_part-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='page_part-manage'] x-title {display: block}
-  x-widget[data-type='page_part-manage'] x-id {display: block; opacity: .5}
-  x-widget[data-type='page_part-manage'] button {float: right; position: relative; z-index: 10}
+  x-widget[data-type='area_part-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type='area_part-manage'] x-title {display: block}
+  x-widget[data-type='area_part-manage'] x-id {display: block; opacity: .5}
+  x-widget[data-type='area_part-manage'] button {float: right; position: relative; z-index: 10}
 
-  /* widget 'page_part-insert' */
+  /* widget 'area_part-insert' */
 
-  x-widget[data-type='page_part-insert'] {display: block; margin-top: 10px}
-  x-widget[data-type='page_part-insert'] x-field {display: inline-block; margin: 0}
-  x-widget[data-type='page_part-insert'] x-field label {margin-bottom: 5px}
-  x-widget[data-type='page_part-insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
+  x-widget[data-type='area_part-insert'] {display: block; margin-top: 10px}
+  x-widget[data-type='area_part-insert'] x-field {display: inline-block; margin: 0}
+  x-widget[data-type='area_part-insert'] x-field label {margin-bottom: 5px}
+  x-widget[data-type='area_part-insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
   /* widget 'selection_field-manage' */
 

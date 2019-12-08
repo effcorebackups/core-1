@@ -12,7 +12,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\page_part_preset_link;
           use \effcore\page;
-          use \effcore\widget_area_manage;
+          use \effcore\widget_area_parts;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -35,13 +35,13 @@ namespace effcore\modules\page {
             $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
-            $c_area_presets = [];
+            $c_area_parts = [];
             foreach ($parts[$c_area->id] ?? [] as $c_part)
               if ($c_part instanceof page_part_preset_link)
-                $c_area_presets[$c_part->id] = $c_part->id;
-            $c_widget_area_manage = new widget_area_manage($c_area->id, $c_area_presets);
-            $c_widget_area_manage->build();
-            $c_area->child_insert($c_widget_area_manage, 'area_manage');
+                $c_area_parts[$c_part->id] = $c_part->id;
+            $c_widget_area_parts = new widget_area_parts($c_area->id, $c_area_parts);
+            $c_widget_area_parts->build();
+            $c_area->child_insert($c_widget_area_parts, 'widget_area_parts');
           }
         }
         $form->child_select('fields')->child_insert(

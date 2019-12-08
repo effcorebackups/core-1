@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_manage extends container {
+          class widget_area_parts extends container {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'area-manage'];
@@ -21,12 +21,12 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       foreach ($this->presets as $c_id_preset) {
-        $c_widget_manage = new widget_page_part_manage($this->id_area, $c_id_preset);
+        $c_widget_manage = new widget_area_part_manage($this->id_area, $c_id_preset);
         $c_widget_manage->build();
-        $this->child_insert($c_widget_manage, 'part_manage_'.$c_id_preset);}
-      $widget_insert = new widget_page_part_insert($this->id_area);
+        $this->child_insert($c_widget_manage, $c_id_preset);}
+      $widget_insert = new widget_area_part_insert($this->id_area);
       $widget_insert->build();
-      $this->child_insert($widget_insert, 'part_insert');
+      $this->child_insert($widget_insert, 'widget_area_part_insert');
       $this->is_builded = true;
     }
   }
