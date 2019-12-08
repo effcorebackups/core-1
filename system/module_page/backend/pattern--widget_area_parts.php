@@ -20,13 +20,15 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
+      $widgets_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
       foreach ($this->presets as $c_id_preset) {
         $c_widget_manage = new widget_area_part_manage($this->id_area, $c_id_preset);
         $c_widget_manage->build();
-        $this->child_insert($c_widget_manage, $c_id_preset);}
+        $widgets_group->child_insert($c_widget_manage, $c_id_preset);}
       $widget_insert = new widget_area_part_insert($this->id_area);
       $widget_insert->build();
-      $this->child_insert($widget_insert, 'widget_area_part_insert');
+      $this->child_insert($widgets_group, 'widgets_group');
+      $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
     }
   }

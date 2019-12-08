@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_part_manage extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'area_part-manage'];
+  public $attributes = ['data-type' => 'area_part-manage', 'data-rearrangeable' => 'true'];
   public $id_area;
   public $id_preset;
 
