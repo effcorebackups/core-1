@@ -18,7 +18,7 @@
 
   fieldset > label {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   fieldset > x-fieldset-content {margin-top: 30px}
-  fieldset > x-description {margin-top: 20px}
+  fieldset > x-description      {margin-top: 20px}
 
   fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
@@ -32,23 +32,19 @@
     border-top: 5px solid %%_color_main}
 
   x-fieldset-content,
-  x-fieldset-content
-  x-fieldset-content
-  x-fieldset-content {background: %%_color_fieldset}
-  x-fieldset-content
-  x-fieldset-content,
-  x-fieldset-content
-  x-fieldset-content
-  x-fieldset-content
-  x-fieldset-content {background: %%_color_fieldset_nested}
+  x-fieldset-content x-fieldset-content x-fieldset-content {
+    background: %%_color_fieldset}
+  x-fieldset-content x-fieldset-content,
+  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {
+    background: %%_color_fieldset_nested}
 
-  /* form fields */
+  /* field */
 
   x-field {display: block; margin: 20px 0}
   x-field label {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
-  /* x-group */
+  /* group */
 
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
@@ -126,7 +122,7 @@
   x-group[data-type='checkboxes'  ] x-field label,
   x-group[data-type='radiobuttons'] x-field label {display: inline; font-size: 1em}
 
-  /* x-description + data-opener-type='description' */
+  /* description + data-opener-type='description' */
 
   x-description {
     display: block;
@@ -140,17 +136,6 @@
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
   x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
-
-  /* disabled elements */
-
-  x-field[aria-disabled='true'] * {cursor: default !important}
-  x-field[aria-disabled='true'] label,
-  x-field[aria-disabled='true'] x-description {opacity: .3}
-
-     input:disabled,
-  textarea:disabled,
-    select:disabled,
-    button:disabled {cursor: default; opacity: .3}
 
   /* buttons */
 
@@ -184,6 +169,53 @@
   button[data-style^='narrow-update'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
   button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
   button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
+
+  /* disabled elements */
+
+  x-field[aria-disabled='true'] * {cursor: default !important}
+  x-field[aria-disabled='true'] label,
+  x-field[aria-disabled='true'] x-description {opacity: .3}
+
+     input:disabled,
+  textarea:disabled,
+    select:disabled,
+    button:disabled {cursor: default; opacity: .3}
+
+  /* checkbox color */
+
+  x-field[data-type='checkbox-color'] input {
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    border-width: 1px}
+
+  /* group 'palette' */
+
+  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
+  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
+  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
+
+  x-group[data-type='palette'] label {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 1.2em;
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+
+  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
+  x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
+  x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
+  x-group[data-type='palette'] x-field input:checked                {border-color: black}
+  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('images/icons-form.svgd') -20px 0 !important}
+  x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
+  x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
+
+  x-group[data-type='palette'] hr {
+    width: 50%;
+    margin: 2px 0;
+    border: 0;
+    opacity: .3;
+    border-top: 1px dashed %%_color_main}
 
   /* rearrangeable */
 
@@ -221,43 +253,7 @@
   [data-has-rearrangeable='true'][data-js-is-processed='true']   input[data-type='weight'] {
     display: none}
 
-  /* checkbox color */
-
-  x-field[data-type='checkbox-color'] input {
-    margin: 0 10px 0 0;
-    border-radius: 5px;
-    border-width: 1px}
-
-  /* palette */
-
-  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
-  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
-
-  x-group[data-type='palette'] label {
-    margin: 0;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    font-size: 1.2em;
-    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-
-  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
-  x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
-  x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
-  x-group[data-type='palette'] x-field input:checked                {border-color: black}
-  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('images/icons-form.svgd') -20px 0 !important}
-  x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
-  x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
-
-  x-group[data-type='palette'] hr {
-    width: 50%;
-    margin: 2px 0;
-    border: 0;
-    opacity: .3;
-    border-top: 1px dashed %%_color_main}
-
-  /* x-widget */
+  /* widget */
 
   x-widget {display: block}
   x-widget[data-fields-is-inline='true'] x-field {
@@ -298,7 +294,7 @@
   x-widget[data-type='poll_answer-manage'] {display: block; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type='poll_answer-manage']:last-child {border-bottom: 0}
 
-  /* manage layout */
+  /* layout manager */
 
   x-layout-manager {display: block; margin: 50px 0}
   x-layout-manager [data-area-id]            {margin: 30px 0; padding: 10px; border: 3px solid %%_color_main; min-height: 20px}
