@@ -220,11 +220,11 @@
   /* rearrangeable */
 
   [data-has-rearrangeable='true'] x-draggable-icon {
-    display: inline-block;
+    float: left;
     position: relative;
     z-index: 100;
     width: 30px;
-    height: 70px;
+    height: 44px;
     margin-right: 10px;
     vertical-align: middle;
     cursor: move;
@@ -234,10 +234,10 @@
   [data-has-rearrangeable='true'] x-droppable-area {
     display: block;
     position: relative;
-    height: 11px;
-    margin-bottom: -11px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -6px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top: -5px}
+    height: 9px;
+    margin-bottom: -9px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']          {background: %%_color_warning; top: -15px}
+  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]          {background: %%_color_warning; top:   6px}
   [data-has-rearrangeable='true'] x-droppable-area[data-droppable-is-active='true'] {background: %%_color_ok}
 
                                             [data-rearrangeable='true']                                                                    x-droppable-area                         {visibility: hidden}
@@ -255,6 +255,7 @@
 
   /* widget */
 
+  x-widgets-group {display: block}
   x-widget {display: block}
   x-widget[data-fields-is-inline='true'] x-field {
     display: inline-block;
@@ -293,6 +294,9 @@
 
   x-widget[data-type='poll_answer-manage'] {display: block; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type='poll_answer-manage']:last-child {border-bottom: 0}
+  x-widget[data-type='poll_answer-manage'] x-draggable-icon {margin-top: 47px}
+  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='before'] {top: -5px}
+  x-widget[data-type='poll_answer-manage'] x-droppable-area[data-position='after' ] {top: -4px}
 
   /* layout manager */
 

@@ -8,7 +8,7 @@ namespace effcore {
           class widget_selection_field_manage extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'selection_field-manage'];
+  public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true'];
   public $entity_name;
   public $entity_field_name;
 
