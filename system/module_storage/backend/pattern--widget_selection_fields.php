@@ -27,11 +27,28 @@ namespace effcore {
         $widgets_group->child_insert($c_widget_manage, $c_id);
         $c_weight -= 5;}
       $widget_insert = new widget_selection_field_insert;
+      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
       $widget_insert->build();
       $this->child_insert($widgets_group, 'widgets_group');
       $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
     }
+  }
+
+  function on_click_insert($group, $form, $npath, $value) {
+    $fields = $form->validation_cache_get('fields');
+    $entity_info = explode('.', $value);
+    $fields[$value] = (object)[
+      'type'              => 'field',
+      'entity_name'       => $entity_info[0],
+      'entity_field_name' => $entity_info[1]];
+    $form->validation_cache_is_persistent = true;
+    $form->validation_cache_set('fields', $fields);
+    $entity = entity::get(             $entity_info[0]);
+    $entity_field = $entity->field_get($entity_info[1]);
+    message::insert(new text('Field "%%_title" (%%_id) was inserted.', ['title' => translation::get($entity->title).': '.translation::get($entity_field->title), 'id' => $entity_info[0].'.'.$entity_info[1]]));
+    message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+    return true;
   }
 
   function on_click_delete($group, $form, $npath) {

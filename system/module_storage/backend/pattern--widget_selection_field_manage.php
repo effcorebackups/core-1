@@ -52,7 +52,7 @@ namespace effcore {
     $button_delete = $group->child_select('button_delete');
     if ($button_delete->is_clicked()) {
       if ($group->on_click_delete_handler) {
-        call_user_func($group->on_click_delete_handler, $group, $form, $npath);
+        return call_user_func($group->on_click_delete_handler, $group, $form, $npath);
       }
     }
   }

@@ -9,6 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'selection_field-insert'];
+  public $on_click_insert_handler;
 
   function build() {
     if (!$this->is_builded) {
@@ -63,19 +64,9 @@ namespace effcore {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && $select->value_get()) {
-      $fields = $form->validation_cache_get('fields');
-      $entity_info = explode('.', $select->value_get());
-      $fields[$select->value_get()] = (object)[
-        'type'              => 'field',
-        'entity_name'       => $entity_info[0],
-        'entity_field_name' => $entity_info[1]];
-      $form->validation_cache_is_persistent = true;
-      $form->validation_cache_set('fields', $fields);
-      $entity = entity::get(             $entity_info[0]);
-      $entity_field = $entity->field_get($entity_info[1]);
-      message::insert(new text('Field "%%_title" (%%_id) was inserted.', ['title' => translation::get($entity->title).': '.translation::get($entity_field->title), 'id' => $entity_info[0].'.'.$entity_info[1]]));
-      message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
-      return true;
+      if ($group->on_click_insert_handler) {
+        return call_user_func($group->on_click_insert_handler, $group, $form, $npath, $select->value_get());
+      }      
     }
   }
 
