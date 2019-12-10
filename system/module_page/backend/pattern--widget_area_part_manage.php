@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_part_manage extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'area_part-manage', 'data-rearrangeable' => 'true'];
+  public $attributes = ['data-type' => 'area_part-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
   public $id_area;
   public $id_preset;
 
@@ -21,12 +21,21 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       $preset = page_part_preset::select($this->id_preset);
+      $field_weight = new field_weight();
+      $field_weight->description_state = 'hidden';
+      $field_weight->build();
+      $field_weight->name_set('weight_'.$this->id_preset.'_'.$this->id_area);
+      $field_weight->required_set(false);
+      $field_weight->value_set(0);
       $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
       $button_delete->build();
-      $button_delete->value_set('button_delete_'.$this->id_preset.'_in_'.$this->id_area);
+      $button_delete->value_set('button_delete_'.$this->id_preset.'_'.$this->id_area);
+      $this->child_insert($field_weight,  'field_weight' );
       $this->child_insert($button_delete, 'button_delete');
-      $this->child_insert(new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'), 'title');
-      $this->child_insert(new markup('x-id',    [], new text_simple($this->id_preset)     ), 'id'   );
+      $this->child_insert(new markup('x-info', [], [
+        'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
+        'id'    => new markup('x-id',    [], new text_simple($this->id_preset))
+      ]), 'info');
       $this->is_builded = true;
     }
   }

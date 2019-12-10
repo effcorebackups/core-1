@@ -270,8 +270,9 @@
   /* widget 'area_part-manage' */
 
   x-widget[data-type='area_part-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='area_part-manage'] x-title {display: block}
-  x-widget[data-type='area_part-manage'] x-id {display: block; opacity: .5}
+  x-widget[data-type='area_part-manage'] x-info {display: inline-block; vertical-align: middle}
+  x-widget[data-type='area_part-manage'] x-info x-title {display: block; font-size: 1.1em}
+  x-widget[data-type='area_part-manage'] x-info x-id {display: block; opacity: .5}
   x-widget[data-type='area_part-manage'] button {float: right; position: relative; z-index: 10}
 
   /* widget 'area_part-insert' */
