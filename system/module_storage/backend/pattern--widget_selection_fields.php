@@ -23,6 +23,7 @@ namespace effcore {
       foreach ($this->fields as $c_id => $c_info) {
         $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_weight);
         $c_widget_manage->build();
+        $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
         $widgets_group->child_insert($c_widget_manage, $c_id);
         $c_weight -= 5;}
       $widget_insert = new widget_selection_field_insert;
@@ -30,6 +31,24 @@ namespace effcore {
       $this->child_insert($widgets_group, 'widgets_group');
       $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
+    }
+  }
+
+  function on_click_delete($group, $form, $npath) {
+    $fields = $form->validation_cache_get('fields');
+    foreach ($fields as $c_row_id => $c_field) {
+      if ($c_field->type              == 'field'             &&
+          $c_field->entity_name       == $group->entity_name &&
+          $c_field->entity_field_name == $group->entity_field_name) {
+        unset($fields[$c_row_id]);
+        $form->validation_cache_is_persistent = true;
+        $form->validation_cache_set('fields', $fields);
+        $entity = entity::get($group->entity_name);
+        $entity_field = $entity ? $entity->field_get($group->entity_field_name) : null;
+        message::insert(new text('Field "%%_title" (%%_id) was deleted.', ['title' => isset($entity_field->title) ? translation::get($entity->title).': '.translation::get($entity_field->title) : 'LOST PART', 'id' => $group->entity_name.'.'.$group->entity_field_name]));
+        message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+        return true;
+      }
     }
   }
 

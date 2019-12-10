@@ -11,6 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
   public $entity_name;
   public $entity_field_name;
+  public $on_click_delete_handler;
 
   function __construct($entity_name, $entity_field_name, $attributes = [], $weight = 0) {
     $this->entity_name       = $entity_name;
@@ -36,7 +37,7 @@ namespace effcore {
       $this->child_insert(new markup('x-info', [], [
         'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'),
         'id'    => new markup('x-id',    [], [
-                   new text_simple($this->entity_name), '.',
+                   new text_simple($this->entity_name      ), '.',
                    new text_simple($this->entity_field_name)])
       ]), 'info');
       $this->is_builded = true;
@@ -50,19 +51,8 @@ namespace effcore {
   static function submit(&$group, $form, $npath) {
     $button_delete = $group->child_select('button_delete');
     if ($button_delete->is_clicked()) {
-      $fields = $form->validation_cache_get('fields');
-      foreach ($fields as $c_row_id => $c_field) {
-        if ($c_field->entity_name       == $group->entity_name &&
-            $c_field->entity_field_name == $group->entity_field_name) {
-          unset($fields[$c_row_id]);
-          $form->validation_cache_is_persistent = true;
-          $form->validation_cache_set('fields', $fields);
-          $entity = entity::get($group->entity_name);
-          $entity_field = $entity ? $entity->field_get($group->entity_field_name) : null;
-          message::insert(new text('Field "%%_title" (%%_id) was deleted.', ['title' => isset($entity_field->title) ? translation::get($entity->title).': '.translation::get($entity_field->title) : 'LOST PART', 'id' => $group->entity_name.'.'.$group->entity_field_name]));
-          message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
-          return true;
-        }
+      if ($group->on_click_delete_handler) {
+        call_user_func($group->on_click_delete_handler, $group, $form, $npath);
       }
     }
   }
