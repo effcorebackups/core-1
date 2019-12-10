@@ -18,11 +18,13 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
+      $c_weight = 0;
       $widgets_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
       foreach ($this->fields as $c_id => $c_info) {
-        $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name);
+        $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_weight);
         $c_widget_manage->build();
-        $widgets_group->child_insert($c_widget_manage, $c_id);}
+        $widgets_group->child_insert($c_widget_manage, $c_id);
+        $c_weight -= 5;}
       $widget_insert = new widget_selection_field_insert;
       $widget_insert->build();
       $this->child_insert($widgets_group, 'widgets_group');
