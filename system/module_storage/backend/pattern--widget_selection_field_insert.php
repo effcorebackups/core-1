@@ -66,7 +66,7 @@ namespace effcore {
     if ($button->is_clicked() && $select->value_get()) {
       if ($group->on_click_insert_handler) {
         return call_user_func($group->on_click_insert_handler, $group, $form, $npath, $select->value_get());
-      }      
+      }
     }
   }
 

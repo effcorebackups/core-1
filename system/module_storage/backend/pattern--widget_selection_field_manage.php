@@ -38,8 +38,7 @@ namespace effcore {
         'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'),
         'id'    => new markup('x-id',    [], [
                    new text_simple($this->entity_name      ), '.',
-                   new text_simple($this->entity_field_name)])
-      ]), 'info');
+                   new text_simple($this->entity_field_name)]) ]), 'info');
       $this->is_builded = true;
     }
   }

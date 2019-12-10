@@ -34,8 +34,7 @@ namespace effcore {
       $this->child_insert($button_delete, 'button_delete');
       $this->child_insert(new markup('x-info', [], [
         'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
-        'id'    => new markup('x-id',    [], new text_simple($this->id_preset))
-      ]), 'info');
+        'id'    => new markup('x-id',    [], new text_simple($this->id_preset)) ]), 'info');
       $this->is_builded = true;
     }
   }
