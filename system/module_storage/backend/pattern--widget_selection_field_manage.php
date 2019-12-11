@@ -9,9 +9,9 @@ namespace effcore {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
+  public $on_click_delete_handler;
   public $entity_name;
   public $entity_field_name;
-  public $on_click_delete_handler;
 
   function __construct($entity_name, $entity_field_name, $attributes = [], $weight = 0) {
     $this->entity_name       = $entity_name;

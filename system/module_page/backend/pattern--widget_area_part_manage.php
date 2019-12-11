@@ -9,6 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'area_part-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
+  public $on_click_delete_handler;
   public $id_area;
   public $id_preset;
 
@@ -46,15 +47,9 @@ namespace effcore {
   static function submit(&$group, $form, $npath) {
     $button_delete = $group->child_select('button_delete');
     if ($button_delete->is_clicked()) {
-      $parts = $form->validation_cache_get('parts');
-      unset($parts[$group->id_area][$group->id_preset]);
-      if   ($parts[$group->id_area] == [])
-      unset($parts[$group->id_area]);
-      $form->validation_cache_is_persistent = true;
-      $form->validation_cache_set('parts', $parts);
-      message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $group->id_preset, 'id_area' => $group->id_area]));
-      message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
-      return true;
+      if ($group->on_click_delete_handler) {
+        return call_user_func($group->on_click_delete_handler, $group, $form, $npath);
+      }
     }
   }
 

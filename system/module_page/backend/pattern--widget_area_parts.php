@@ -25,6 +25,7 @@ namespace effcore {
       foreach ($this->presets as $c_id_preset) {
         $c_widget_manage = new widget_area_part_manage($this->id_area, $c_id_preset, [], $c_weight);
         $c_widget_manage->build();
+        $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
         $widgets_group->child_insert($c_widget_manage, $c_id_preset);
         $c_weight -= 5;}
       $widget_insert = new widget_area_part_insert($this->id_area);
@@ -43,6 +44,18 @@ namespace effcore {
     $form->validation_cache_is_persistent = true;
     $form->validation_cache_set('parts', $parts);
     message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $preset->id, 'id_area' => $group->id_area]));
+    message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+    return true;
+  }
+
+  function on_click_delete($group, $form, $npath) {
+    $parts = $form->validation_cache_get('parts');
+    unset($parts[$group->id_area][$group->id_preset]);
+    if   ($parts[$group->id_area] == [])
+    unset($parts[$group->id_area]);
+    $form->validation_cache_is_persistent = true;
+    $form->validation_cache_set('parts', $parts);
+    message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $group->id_preset, 'id_area' => $group->id_area]));
     message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
     return true;
   }
