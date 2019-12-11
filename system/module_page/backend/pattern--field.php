@@ -388,8 +388,7 @@ namespace effcore {
                 ++static::$numbers[$name];
   }
 
-  static function validate($field, $form, $npath) {
-  }
+  static function on_validate($field, $form, $npath) {}
 
   # ──────────────────────────────────────────────────────────────────────────────
   # functionality for $_POST and $_GET data

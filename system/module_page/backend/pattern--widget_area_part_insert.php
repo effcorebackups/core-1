@@ -52,7 +52,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($group, $form, $npath) {
+  static function on_validate($group, $form, $npath) {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && !$select->value_get()) {

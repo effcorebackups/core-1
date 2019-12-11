@@ -54,10 +54,10 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function validate($field, $form, $npath) {
+  static function on_validate($field, $form, $npath) {
     $is_set_utc_old = $field->is_set_utc;
     $field->is_set_utc = false;
-    $result = parent::validate($field, $form, $npath);
+    $result = parent::on_validate($field, $form, $npath);
     $field->is_set_utc = $is_set_utc_old;
     return $result;
   }
