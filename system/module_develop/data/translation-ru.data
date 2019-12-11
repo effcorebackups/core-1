@@ -143,6 +143,7 @@ translations
     - Sequence hash: Хэш последовательности
     - show for admin: показывать администратору
     - show for everyone: показывать всем
+    - submission: передача
     - Switcher 1: Выключатель 1
     - Switcher 2 (checked): Выключатель 2 (отмечен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)

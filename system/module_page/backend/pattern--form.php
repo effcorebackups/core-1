@@ -107,7 +107,7 @@ namespace effcore {
 
         # call submit handler (if no errors)
           if ($this->has_error() == false) {
-            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'submit')) {$c_child::submit($c_child, $this, $c_npath);}
+            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath, '-');}
             event::start('on_form_submit', $id, [&$this, &$this->items]);
           }
 

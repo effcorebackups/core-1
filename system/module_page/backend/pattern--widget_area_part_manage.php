@@ -44,7 +44,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function submit(&$group, $form, $npath) {
+  static function on_submit(&$group, $form, $npath) {
     $button_delete = $group->child_select('button_delete');
     if ($button_delete->is_clicked()) {
       if ($group->on_click_delete_handler) {
