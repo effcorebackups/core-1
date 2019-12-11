@@ -263,7 +263,7 @@
     margin-right: 10px;
     vertical-align: middle}
 
-  x-widget[data-fields-is-inline-full='true'] x-field       {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-fields-is-inline-full='true'] x-field       {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
   x-widget[data-fields-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
   x-widget[data-fields-is-inline-full='true'] x-field input {margin: 0}
 
