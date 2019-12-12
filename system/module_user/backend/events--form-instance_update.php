@@ -128,7 +128,7 @@ namespace effcore\modules\user {
             if ($roles) $form->_instance->access = (object)['roles' => $roles];
             else        $form->_instance->access = null;
           }
-        # field 'avatar'
+        # back_update
           if ($entity->name == 'user') {
             page::get_current()->args_set('back_update_n', '/user/'.$items['#nickname']->value_get());
           }

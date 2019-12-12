@@ -33,7 +33,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       foreach ($this->values as $value => $title)
-        $this->field_insert($title, null, ['value' => $value]);
+        $this->field_insert($title, null, ['value' => $value], $value);
       $this->is_builded = true;
     }
   }
