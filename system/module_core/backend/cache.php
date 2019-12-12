@@ -32,7 +32,7 @@ namespace effcore {
 
   static function update($name, $data, $sub_dirs = '', $info = null) {
     if (parent::update($name, $data, $sub_dirs, $info)) {
-      console::log_insert('storage', 'cache', 'cache for '.$name.' was rebuilded', 'ok', 0);
+      console::log_insert('storage', 'cache', 'cache for '.$name.' was rebuild', 'ok');
     }
   }
 
