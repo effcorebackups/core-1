@@ -45,7 +45,7 @@ namespace effcore\modules\page {
           }
         }
         $form->child_select('fields')->child_insert(
-          new markup('x-layout-manager', [], $layout), 'layout_manager'
+          new markup('x-layout-manager', [], ['layout' => $layout]), 'layout_manager'
         );
       }
     }

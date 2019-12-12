@@ -75,7 +75,7 @@ namespace effcore {
             }
           # make result
             $result->child_insert(
-              new table($this->attributes_select('result_attributes'), $tbody, $thead)
+              new table($this->attributes_select('result_attributes'), $tbody, $thead), 'table'
             );
             break;
 
@@ -123,7 +123,7 @@ namespace effcore {
             }
           # make result
             $result->child_insert(
-              new markup('x-table', $this->attributes_select('result_attributes'), [$xhead, $xbody])
+              new markup('x-table', $this->attributes_select('result_attributes'), [$xhead, $xbody]), 'x_table'
             );
             break;
 
