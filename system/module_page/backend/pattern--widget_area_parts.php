@@ -21,17 +21,17 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       $c_weight = 0;
-      $widgets_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
+      $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
       foreach ($this->presets as $c_id_preset) {
         $c_widget_manage = new widget_area_part_manage($this->id_area, $c_id_preset, [], $c_weight);
         $c_widget_manage->build();
         $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
-        $widgets_group->child_insert($c_widget_manage, $c_id_preset);
+        $widgets_manage_group->child_insert($c_widget_manage, $c_id_preset);
         $c_weight -= 5;}
       $widget_insert = new widget_area_part_insert($this->id_area);
       $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
       $widget_insert->build();
-      $this->child_insert($widgets_group, 'widgets_group');
+      $this->child_insert($widgets_manage_group, 'widgets_manage_group');
       $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
     }
@@ -58,6 +58,13 @@ namespace effcore {
     message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $group->id_preset, 'id_area' => $group->id_area]));
     message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
     return true;
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function on_submit(&$group, $form, $npath) {
   }
 
 }}
