@@ -22,11 +22,11 @@ namespace effcore\modules\storage {
         $fieldset_decorator_params = new fieldset('Decorator parameters');
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
-      # init pool of fields
+      # insert widget 'Fields'
         if ($form->validation_cache_get('fields') === null)
             $form->validation_cache_set('fields', $form->_instance->fields ?: []);
-      # insert widget 'Fields'
-        $widget_fields = new widget_selection_fields($form->validation_cache_get('fields'));
+        $widget_fields = new widget_selection_fields();
+        $widget_fields->form_current_set($form);
         $widget_fields->build();
         $fieldset_fields->child_insert($widget_fields, 'widget_fields');
       # insert field 'Limit'
@@ -52,10 +52,8 @@ namespace effcore\modules\storage {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'selection' && !empty($form->_instance)) {
-        if ($form->clicked_button->value_get() == 'update')
+        if ($form->clicked_button->value_get() == 'update') {
           $form->_instance->fields = $form->validation_cache_get('fields') ?: null;
-        else {
-          static::on_init(null, $form, $items);
         }
       }
     }
