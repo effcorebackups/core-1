@@ -18,11 +18,11 @@ namespace effcore {
     if (!$this->is_builded) {
       $c_weight_default = 0;
       $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
-      foreach ($this->cform->validation_cache_get('fields') as $c_id => $c_info) {
+      foreach ($this->cform->validation_cache_get('fields') as $c_row_id => $c_info) {
         $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_weight_default);
         $c_widget_manage->build();
         $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
-        $widgets_manage_group->child_insert($c_widget_manage, $c_id);
+        $widgets_manage_group->child_insert($c_widget_manage, $c_row_id);
         $c_weight_default -= 5;}
       $widget_insert = new widget_selection_field_insert;
       $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
@@ -30,6 +30,33 @@ namespace effcore {
       $this->child_insert($widgets_manage_group, 'widgets_manage_group');
       $this->child_insert($widget_insert, 'widget_insert');
       $this->is_builded = true;
+    }
+  }
+
+  function items_get() {
+    $result = $this->cform->validation_cache_get('fields') ?: null;
+    if ($result == null) return;
+    if ($result != null) {
+      $buffer = [];
+      $sorted = [];
+      foreach ($result as $c_row_id => $c_object) {
+        $c_field_name_suffix = $c_object->entity_name.'_'.$c_object->entity_field_name;
+        $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));
+        $buffer[] = (object)[
+          'row_id' => $c_row_id,
+          'weight' => $c_weight,
+          'object' => $c_object];}
+      core::array_sort_by_weight($buffer);
+      foreach ($buffer as $c_sorted)
+        $sorted[$c_sorted->row_id] =
+                $c_sorted->object;
+      return $sorted;
+    }
+  }
+
+  function items_set($items) {
+    if ($this->cform->validation_cache_get('fields') === null) {
+        $this->cform->validation_cache_set('fields', $items);
     }
   }
 
