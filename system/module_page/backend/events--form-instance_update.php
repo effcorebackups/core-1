@@ -24,22 +24,17 @@ namespace effcore\modules\page {
         if (!empty($form->_instance->is_embed)) {
           $items['#url']->disabled_set(true);
         }
-      # init pool of parts
-        if      ($form->validation_cache_get('parts') === null)
-                 $form->validation_cache_set('parts', $form->_instance->parts ?: []);
-        $parts = $form->validation_cache_get('parts');
       # build layout
+        if ($form->validation_cache_get('parts') === null)
+            $form->validation_cache_set('parts', $form->_instance->parts ?: []);
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         foreach ($layout->children_select_recursive() as $c_area) {
           if ($c_area instanceof area && $c_area->id) {
             $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
-            $c_area_parts = [];
-            foreach ($parts[$c_area->id] ?? [] as $c_part)
-              if ($c_part instanceof page_part_preset_link)
-                $c_area_parts[$c_part->id] = $c_part->id;
-            $c_widget_area_parts = new widget_area_parts($c_area->id, $c_area_parts);
+            $c_widget_area_parts = new widget_area_parts($c_area->id);
+            $c_widget_area_parts->form_current_set($form);
             $c_widget_area_parts->build();
             $c_area->child_insert($c_widget_area_parts, 'widget_area_parts');
           }
@@ -56,10 +51,8 @@ namespace effcore\modules\page {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'page' && !empty($form->_instance)) {
-        if ($form->clicked_button->value_get() == 'update')
+        if ($form->clicked_button->value_get() == 'update') {
           $form->_instance->parts = $form->validation_cache_get('parts') ?: null;
-        else {
-          static::on_init(null, $form, $items);
         }
       }
     }
