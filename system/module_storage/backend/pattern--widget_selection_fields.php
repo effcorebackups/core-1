@@ -73,11 +73,4 @@ namespace effcore {
     }
   }
 
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static function on_submit(&$group, $form, $npath) {
-  }
-
 }}
