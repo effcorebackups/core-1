@@ -18,15 +18,15 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $c_weight = 0;
+      $c_weight_default = 0;
       $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
       foreach ($this->cform->validation_cache_get('parts')[$this->id_area] ?? [] as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
-          $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_weight);
+          $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_weight_default);
           $c_widget_manage->build();
           $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
           $widgets_manage_group->child_insert($c_widget_manage, $c_preset->id);
-          $c_weight -= 5;
+          $c_weight_default -= 5;
         }
       }
       $widget_insert = new widget_area_part_insert($this->id_area);
