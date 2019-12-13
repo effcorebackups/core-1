@@ -34,7 +34,7 @@ namespace effcore {
       $field_weight->value_set($this->weight);
       $button_delete = new button('', ['data-style' => 'narrow-delete', 'title' => new text('Delete')]);
       $button_delete->build();
-      $button_delete->value_set('button_field_delete_'.$this->entity_name.'_'.$this->entity_field_name);
+      $button_delete->value_set('button_field_delete_'.$field_name_suffix);
       $this->child_insert($field_weight,  'field_weight' );
       $this->child_insert($button_delete, 'button_delete');
       $this->child_insert(new markup('x-info', [], [
