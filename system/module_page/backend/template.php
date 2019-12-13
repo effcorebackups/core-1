@@ -14,8 +14,9 @@ namespace effcore {
 
   function __construct($name, $args = []) {
     $this->name = $name;
-    foreach ($args as $c_key => $c_value)
+    foreach ($args as $c_key => $c_value) {
        $this->arg_set($c_key,   $c_value);
+    }
   }
 
   function arg_set($name, $value) {

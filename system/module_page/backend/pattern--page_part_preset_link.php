@@ -11,7 +11,7 @@ namespace effcore {
   public $weight = 0;
 
   function __construct($id = null, $weight = 0) {
-    if ($id)     $this->id     = $id;
+    if ($id    ) $this->id     = $id;
     if ($weight) $this->weight = $weight;
   }
 

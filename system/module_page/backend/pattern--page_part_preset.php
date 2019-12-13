@@ -14,15 +14,15 @@ namespace effcore {
   public $origin = 'nosql'; # nosql | dynamic
 
   function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0) {
-    if ($id)             $this->id             = $id;
+    if ($id            ) $this->id             = $id;
     if ($managing_group) $this->managing_group = $managing_group;
     if ($managing_title) $this->managing_title = $managing_title;
-    if ($in_areas)       $this->in_areas       = $in_areas;
-    if ($display)        $this->display        = $display;
-    if ($type)           $this->type           = $type;
-    if ($source)         $this->source         = $source;
-    if ($properties)     $this->properties     = $properties;
-    if ($args)           $this->args           = $args;
+    if ($in_areas      ) $this->in_areas       = $in_areas;
+    if ($display       ) $this->display        = $display;
+    if ($type          ) $this->type           = $type;
+    if ($source        ) $this->source         = $source;
+    if ($properties    ) $this->properties     = $properties;
+    if ($args          ) $this->args           = $args;
     parent::__construct($weight);
   }
 
