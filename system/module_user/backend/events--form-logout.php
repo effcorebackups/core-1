@@ -33,7 +33,7 @@ namespace effcore\modules\user {
       $decorator->data[$c_session->id] = [
         'checkbox'  => ['value' => $c_checkbox,                                          'title' => ''               ],
         'is_active' => ['value' => $c_session->id == $session_active->id ? 'Yes' : 'No', 'title' => 'Is active'      ],
-        'info'      => ['value' => $c_session->data->user_agent ?? '',                   'title' => 'User agent'     ],
+        'info'      => ['value' => $c_session->data->user_agent ?? null,                 'title' => 'User agent'     ],
         'expired'   => ['value' => locale::format_datetime($c_session->expired),         'title' => 'Expiration date']
       ];}
     $decorator->build();

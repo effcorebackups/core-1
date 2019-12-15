@@ -129,10 +129,10 @@ namespace effcore\modules\develop {
     ksort($file_types);
     foreach ($file_types as $c_type) {
       $decorator->data[] = [
-        'type'      => ['value' => new text_simple(      $c_type->type                                         ), 'title' => 'Type'     ],
-        'kind'      => ['value' => new text_simple(      $c_type->kind ?? ''                                   ), 'title' => 'Kind'     ],
-        'module_id' => ['value' => new text_simple(      $c_type->module_id                                    ), 'title' => 'Module ID'],
-        'headers'   => ['value' => new text_simple(isset($c_type->headers) ? implode(br, $c_type->headers) : ''), 'title' => 'Headers'  ]
+        'type'      => ['value' => new text_simple(      $c_type->type                                           ), 'title' => 'Type'     ],
+        'kind'      => ['value' => new text_simple(      $c_type->kind ?? null                                   ), 'title' => 'Kind'     ],
+        'module_id' => ['value' => new text_simple(      $c_type->module_id                                      ), 'title' => 'Module ID'],
+        'headers'   => ['value' => new text_simple(isset($c_type->headers) ? implode(br, $c_type->headers) : null), 'title' => 'Headers'  ]
       ];
     }
     return new block('', ['data-id' => 'file_types_nosql'], [

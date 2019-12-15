@@ -113,7 +113,7 @@ namespace effcore {
   function fields_get_title() {
     $result = [];
     foreach ($this->fields as $name => $info)
-      $result[$name] = $info->title ?? '';
+      $result[$name] = $info->title ?? null;
     return $result;
   }
 
