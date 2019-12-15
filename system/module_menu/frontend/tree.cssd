@@ -14,10 +14,10 @@
   nav[data-area-id='menu'] x-tree ul ul    {position: absolute}
   nav[data-area-id='menu'] x-tree ul ul ul {position: relative}
 
-  nav[data-area-id='menu'] x-tree li       {padding: 0; margin: 0; list-style: none; cursor: default}
-  nav[data-area-id='menu'] x-tree ul       {padding: 0; margin: 0}
+  nav[data-area-id='menu'] x-tree ul       {padding: 0; margin: 0; list-style: none}
   nav[data-area-id='menu'] x-tree ul ul    {padding: 20px}
   nav[data-area-id='menu'] x-tree ul ul ul {padding: 0 0 0 21px}
+  nav[data-area-id='menu'] x-tree li       {padding: 0; margin: 0; cursor: default}
 
   nav[data-area-id='menu'] x-tree li     a {padding: 21px; display: block}
   nav[data-area-id='menu'] x-tree li li  a {padding: 0}
@@ -63,9 +63,8 @@
 
   /* menu visualization for management */
 
-  x-tree[data-visualization-mode] ul,
-  x-tree[data-visualization-mode] li {margin: 0; padding: 0; list-style: none}
-  x-tree[data-visualization-mode] li {padding: 6px 0 6px 40px}
+  x-tree[data-visualization-mode] ul {margin: 0; padding: 0; list-style: none}
+  x-tree[data-visualization-mode] li {margin: 0; padding: 6px 0 6px 40px}
 
   x-tree[data-visualization-mode] x-item {display: block; padding: 1px 0 1px 5px; min-height: 44px; border-left: 5px solid %%_color_main}
   x-tree[data-visualization-mode] x-item x-title  {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color_text}
