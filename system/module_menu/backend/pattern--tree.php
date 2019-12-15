@@ -10,13 +10,13 @@ namespace effcore {
   public $template = 'tree';
   public $attributes = ['role' => 'tree'];
   public $id;
-  public $title = '';
+  public $title;
   public $title_is_visible = 1;
   public $access;
   public $origin = 'nosql'; # nosql | sql | dynamic
   public $visualization_mode; # null | decorated | decorated-rearrangeable
 
-  function __construct($title = '', $id = null, $access = null, $attributes = [], $weight = 0) {
+  function __construct($title = null, $id = null, $access = null, $attributes = [], $weight = 0) {
     if ($title ) $this->title  = $title;
     if ($id    ) $this->id     = $id;
     if ($access) $this->access = $access;
@@ -48,7 +48,6 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-//var_dump($this->title_is_visible);
       if ($this->title_is_visible == 0) return (new markup('h2', ['aria-hidden' => 'true'], $this->title))->render();
       if ($this->title_is_visible != 0) return (new markup('h2', [                       ], $this->title))->render();
     }
@@ -117,7 +116,7 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title = '', $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
+  static function insert($title = null, $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
     static::init    (   );
     static::init_sql($id);
     $new_tree = new static($title, $id, $access, $attributes, $weight);

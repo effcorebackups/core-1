@@ -20,7 +20,7 @@ namespace effcore {
   public $pager_id = 0;
   public $origin = 'nosql'; # nosql | sql
 
-  function __construct($title = '', $weight = 0) {
+  function __construct($title = null, $weight = 0) {
     if ($title) $this->title = $title;
     parent::__construct(null, [], [], $weight);
   }

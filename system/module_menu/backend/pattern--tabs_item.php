@@ -13,7 +13,7 @@ namespace effcore {
   public $id;
   public $id_parent;
   public $id_tab;
-  public $title = '';
+  public $title;
   public $action_name;
   public $action_name_default;
   public $is_hidden = false;
@@ -21,7 +21,7 @@ namespace effcore {
   public $cache_href;
   public $cache_href_default;
 
-  function __construct($title = '', $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0) {
+  function __construct($title = null, $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0) {
     if ($id                 ) $this->id                  = $id;
     if ($id_parent          ) $this->id_parent           = $id_parent;
     if ($id_tab             ) $this->id_tab              = $id_tab;

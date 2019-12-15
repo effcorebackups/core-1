@@ -13,7 +13,7 @@ namespace effcore {
   public $id;
   public $id_parent;
   public $id_tree;
-  public $title = '';
+  public $title;
   public $url;
   public $url_hidden;
   public $extra;
@@ -22,7 +22,7 @@ namespace effcore {
   public $cache_href;
   public $cache_href_hidden;
 
-  function __construct($title = '', $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
+  function __construct($title = null, $id = null, $id_parent = null, $id_tree = null, $url = null, $access = null, $attributes = [], $element_attributes = [], $weight = 0) {
     if ($title             ) $this->title              = $title;
     if ($id                ) $this->id                 = $id;
     if ($id_parent         ) $this->id_parent          = $id_parent;
