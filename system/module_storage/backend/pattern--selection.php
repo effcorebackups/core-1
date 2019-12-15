@@ -151,7 +151,7 @@ namespace effcore {
                 $c_form_field->name_set('is_checked[]');
                 $c_form_field->value_set(implode('+', $c_instance->values_id_get()));
                 $c_row[$c_row_id] = [
-                  'title' => $c_field->title ?? '',
+                  'title' => $c_field->title,
                   'value' => $c_form_field
                 ];
                 break;
@@ -216,7 +216,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_checkbox($row_id = null, $title = '', $params = []) {
+  function field_insert_checkbox($row_id = null, $title = null, $params = []) {
     $row_id = $row_id ?: 'checkbox';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type = 'checkbox';
@@ -226,7 +226,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_markup($row_id = null, $title = '', $markup, $params = []) {
+  function field_insert_markup($row_id = null, $title = null, $markup, $params = []) {
     $row_id = $row_id ?: 'markup';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type = 'markup';
@@ -237,7 +237,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_code($row_id = null, $title = '', $code, $params = []) {
+  function field_insert_code($row_id = null, $title = null, $code, $params = []) {
     $row_id = $row_id ?: 'code';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type = 'code';

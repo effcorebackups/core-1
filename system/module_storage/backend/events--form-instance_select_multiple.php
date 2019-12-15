@@ -42,9 +42,9 @@ namespace effcore\modules\storage {
           new markup('x-no-result', [], 'no visible fields'), 'no_result'
         );
       } else {
-        $selection->field_insert_checkbox(null, '', ['weight' => 80]);
+        $selection->field_insert_checkbox(null, null, ['weight' => 80]);
       # $c_row 'actions'
-        $form->_selection->field_insert_code('actions', '', function ($c_row, $c_instance) {
+        $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) {
           $c_actions_list = new actions_list();
           if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
           if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');

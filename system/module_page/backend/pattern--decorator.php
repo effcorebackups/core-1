@@ -224,7 +224,7 @@ namespace effcore {
               $c_access    =                        array_key_exists('access',    $c_row) ? $c_row['access'   ]['value'] : ( array_key_exists('access',    $this->tree_mapping) ? $c_row[$this->tree_mapping['access'   ]]['value'] : null);
               $c_extra     =                        array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : ( array_key_exists('extra',     $this->tree_mapping) ? $c_row[$this->tree_mapping['extra'    ]]['value'] : null);
               $c_id_tree = 'decorator-'.$c_id_tree;
-              $c_tree = tree::insert($this->title ?? '', $c_id_tree);
+              $c_tree = tree::insert($this->title, $c_id_tree);
               $c_tree->visualization_mode = $this->tree_visualization_mode;
               if ($trees->child_select(         $c_id_tree) == null)
                   $trees->child_insert($c_tree, $c_id_tree);
