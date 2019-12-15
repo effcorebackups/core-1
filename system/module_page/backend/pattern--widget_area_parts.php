@@ -20,7 +20,7 @@ namespace effcore {
     if (!$this->is_builded) {
       $c_weight_default = 0;
       $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
-      foreach ($this->cform->validation_cache_get('parts')[$this->id_area] ?? [] as $c_preset) {
+      foreach ($this->cform->validation_cache_get('parts_'.$this->id_area) ?? [] as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
           $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_weight_default);
           $c_widget_manage->build();
@@ -38,12 +38,23 @@ namespace effcore {
     }
   }
 
+  function items_get() {
+    $result = $this->cform->validation_cache_get('parts_'.$this->id_area) ?: null;
+    return $result;
+  }
+
+  function items_set($items) {
+    if ($this->cform->validation_cache_get('parts_'.$this->id_area) === null) {
+        $this->cform->validation_cache_set('parts_'.$this->id_area, $items);
+    }
+  }
+
   function on_click_insert($group, $form, $npath, $value) {
     $preset = page_part_preset::select($value);
-    $parts = $form->validation_cache_get('parts');
-    $parts[$group->id_area][$preset->id] = new page_part_preset_link($preset->id);
+    $parts = $form->validation_cache_get('parts_'.$this->id_area);
+    $parts[$preset->id] = new page_part_preset_link($preset->id);
     $form->validation_cache_is_persistent = true;
-    $form->validation_cache_set('parts', $parts);
+    $form->validation_cache_set('parts_'.$this->id_area, $parts);
     $this->is_builded = false;
     $this->build();
   # report
@@ -53,12 +64,10 @@ namespace effcore {
   }
 
   function on_click_delete($group, $form, $npath) {
-    $parts = $form->validation_cache_get('parts');
-    unset($parts[$group->id_area][$group->id_preset]);
-    if   ($parts[$group->id_area] == [])
-    unset($parts[$group->id_area]);
+    $parts = $form->validation_cache_get('parts_'.$this->id_area);
+    unset($parts[$group->id_preset]);
     $form->validation_cache_is_persistent = true;
-    $form->validation_cache_set('parts', $parts);
+    $form->validation_cache_set('parts_'.$this->id_area, $parts);
     $this->is_builded = false;
     $this->build();
   # report
