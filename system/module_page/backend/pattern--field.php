@@ -293,10 +293,11 @@ namespace effcore {
   function error_set($message = null, $args = []) {
     if ($this->disabled_get() == false &&
         $this->readonly_get() == false) {
-      form::$errors[] = (object)[
-        'message' => $message,
-        'args'    => $args,
-        'pointer' => &$this];
+      $new_error = new \stdClass;
+      $new_error->message = $message;
+      $new_error->args    = $args;
+      $new_error->pointer = &$this;
+      form::$errors[] = $new_error;
       if (!$this->has_error) {
            $this->has_error = true;
         $element = $this->child_select('element');

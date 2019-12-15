@@ -78,10 +78,10 @@ namespace effcore {
     $boot_status = core::boot_select();
     foreach ($dependencies_php as $c_id => $c_version_min) $dependencies_php[$c_id] = (int)(extension_loaded  ($c_id)  && version_compare((new \ReflectionExtension($c_id))->getVersion(), $c_version_min, '>='));
     foreach ($dependencies_sys as $c_id => $c_version_min) $dependencies_sys[$c_id] = (int)(isset($boot_status[$c_id]) &&                               static::get($c_id)->version   >=   $c_version_min       );
-    return (object)[
-      'php' => $dependencies_php,
-      'sys' => $dependencies_sys
-    ];
+    $result = new \stdClass;
+    $result->php = $dependencies_php;
+    $result->sys = $dependencies_sys;
+    return $result;
   }
 
   function depended_status_get() {

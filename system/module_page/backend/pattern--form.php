@@ -177,11 +177,11 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function error_set($message = null, $args = []) {
-    static::$errors[] = (object)[
-      'message' => $message,
-      'args'    => $args,
-      'pointer' => &$this
-    ];
+    $new_error = new \stdClass;
+    $new_error->message = $message;
+    $new_error->args    = $args;
+    $new_error->pointer = &$this;
+    static::$errors[] = $new_error;
   }
 
   function has_error() {

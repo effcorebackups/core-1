@@ -50,9 +50,9 @@ namespace effcore\modules\core {
         $c_dependencies_php_items = new node;
         $c_dependencies_sys_items = new node;
         $c_depended_sys_items     = new node;
-        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [],                        $c_module->dependencies->php   [$c_id] )] ), strtolower($c_id));
-        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? ''   : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [], locale::format_version($c_module->dependencies->system[$c_id]))] ), strtolower($c_id));
-        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok' : ''       ], [new markup('x-title', [], new text_simple(strtoupper($c_id)))]                                                                                              ), strtolower($c_id));
+        foreach ($c_dependencies->php as $c_id => $c_state) $c_dependencies_php_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? false : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [],                        $c_module->dependencies->php   [$c_id] )] ), strtolower($c_id));
+        foreach ($c_dependencies->sys as $c_id => $c_state) $c_dependencies_sys_items->child_insert(new markup('x-sticker', ['data-state' => $c_state ? false : 'warning'], [new markup('x-title', [], new text_simple(strtoupper($c_id))), new markup('x-version', [], locale::format_version($c_module->dependencies->system[$c_id]))] ), strtolower($c_id));
+        foreach ($c_depended          as $c_id => $c_state) $c_depended_sys_items    ->child_insert(new markup('x-sticker', ['data-state' => $c_state ? 'ok'  : false    ], [new markup('x-title', [], new text_simple(strtoupper($c_id)))]                                                                                              ), strtolower($c_id));
         $c_info = new markup('x-module-info', ['data-id' => $c_module->id]);
         $c_switcher = new field_switcher();
         $c_switcher->attribute_insert('title', new text('press to enable or disable the module "%%_title"', ['title' => $c_module->title]), 'element_attributes');

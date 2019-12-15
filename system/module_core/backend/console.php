@@ -16,13 +16,13 @@ namespace effcore {
   }
 
   static function &log_insert($object, $action, $description = '', $value = '', $time = 0, $args = []) {
-    $new_log = (object)[
-      'object'      => $object,
-      'action'      => $action,
-      'description' => $description,
-      'value'       => $value,
-      'time'        => $time,
-      'args'        => $args];
+    $new_log = new \stdClass;
+    $new_log->object      = $object;
+    $new_log->action      = $action;
+    $new_log->description = $description;
+    $new_log->value       = $value;
+    $new_log->time        = $time;
+    $new_log->args        = $args;
     static::$data[] = $new_log;
     return $new_log;
   }

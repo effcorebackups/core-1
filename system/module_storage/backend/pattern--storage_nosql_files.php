@@ -163,11 +163,11 @@ namespace effcore {
     }
     arsort($bundles_path);
     arsort($modules_path);
-    return (object)[
-      'bundles_path' => $bundles_path,
-      'modules_path' => $modules_path,
-      'parsed'       => $parsed
-    ];
+    $result = new \stdClass;
+    $result->bundles_path = $bundles_path;
+    $result->modules_path = $modules_path;
+    $result->parsed       = $parsed;
+    return $result;
   }
 
   static function data_find_and_parse($with_paths = []) {

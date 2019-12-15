@@ -37,12 +37,10 @@ namespace effcore {
   }
 
   function link_insert($rowid, $title, $url, $weight = null) {
-    $this->links[$rowid] = (object)[
-      'title'  => $title,
-      'url'    => $url,
-      'weight' => $weight === null ? - count($this->links) :
-                  $weight
-    ];
+    $this->links[$rowid] = new \stdClass;
+    $this->links[$rowid]->title = $title;
+    $this->links[$rowid]->url = $url;
+    $this->links[$rowid]->weight = $weight === null ? 1 - count($this->links) : $weight;
   }
 
   function link_update($rowid, $title = null, $url = null, $weight = null) {

@@ -42,10 +42,11 @@ namespace effcore {
       foreach ($result as $c_row_id => $c_object) {
         $c_field_name_suffix = $c_object->entity_name.'_'.$c_object->entity_field_name;
         $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));
-        $buffer[] = (object)[
-          'row_id' => $c_row_id,
-          'weight' => $c_weight,
-          'object' => $c_object];}
+        $c_new_buffer_value = new \stdClass;
+        $c_new_buffer_value->row_id = $c_row_id;
+        $c_new_buffer_value->weight = $c_weight;
+        $c_new_buffer_value->object = $c_object;
+        $buffer[] = $c_new_buffer_value;}
       core::array_sort_by_weight($buffer);
       foreach ($buffer as $c_sorted)
         $sorted[$c_sorted->row_id] =
@@ -63,10 +64,10 @@ namespace effcore {
   function on_click_insert($group, $form, $npath, $value) {
     $fields = $form->validation_cache_get('fields');
     $entity_info = explode('.', $value);
-    $fields[$value] = (object)[
-      'type'              => 'field',
-      'entity_name'       => $entity_info[0],
-      'entity_field_name' => $entity_info[1]];
+    $fields[$value] = new \stdClass;
+    $fields[$value]->type = 'field';
+    $fields[$value]->entity_name       = $entity_info[0];
+    $fields[$value]->entity_field_name = $entity_info[1];
     $form->validation_cache_is_persistent = true;
     $form->validation_cache_set('fields', $fields);
     $this->is_builded = false;

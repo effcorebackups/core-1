@@ -70,13 +70,13 @@ namespace effcore {
   }
 
   function slice_insert($title, $persent_value, $complex_value = null, $color = null, $attributes = []) {
-    $this->slices[] = (object)[
-      'title'         => $title,
-      'persent_value' => $persent_value,
-      'complex_value' => $complex_value,
-      'color'         => $color,
-      'attributes'    => $attributes
-    ];
+    $new_slice = new \stdClass;
+    $new_slice->title         = $title;
+    $new_slice->persent_value = $persent_value;
+    $new_slice->complex_value = $complex_value;
+    $new_slice->color         = $color;
+    $new_slice->attributes    = $attributes;
+    $this->slices[] = $new_slice;
   }
 
   function render() {
