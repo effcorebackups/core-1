@@ -10,7 +10,7 @@ namespace effcore\modules\user {
           abstract class events_page_security {
 
   static function block_security($page) {
-    return new block('', ['data-id' => 'security'], [
+    return new block(null, ['data-id' => 'security'], [
       new text('UNDER CONSTRUCTION')
     ]);
   }

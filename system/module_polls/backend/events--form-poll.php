@@ -68,7 +68,7 @@ namespace effcore\modules\polls {
         foreach ($total_by_answer_rows as $c_row)
           $total_by_answer[$c_row->id_answer] = $c_row->total;
       # build diagram
-        $diagram = new diagram('', $poll->diagram_type);
+        $diagram = new diagram(null, $poll->diagram_type);
         $diagram_colors = core::diagram_colors;
         foreach ($poll->data['answers'] as $c_id => $c_text)
           $diagram->slice_insert($c_text,

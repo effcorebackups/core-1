@@ -24,7 +24,7 @@ namespace effcore\modules\core {
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('files')->select('bundle/system/build'))]);
-    return new block('', ['data-id' => 'info_system'], [
+    return new block(null, ['data-id' => 'info_system'], [
       $logo,
       $copyright,
       $build

@@ -39,7 +39,7 @@ namespace effcore\modules\user {
       }
     # field 'password'
       if ($entity->name == 'user') {
-        $field_password_hash_current = new field_password('Current password', '', [], -50);
+        $field_password_hash_current = new field_password('Current password', null, [], -50);
         $field_password_hash_current->build();
         $field_password_hash_current->name_set('password_hash_current');
         $form->child_select('fields')->child_insert(

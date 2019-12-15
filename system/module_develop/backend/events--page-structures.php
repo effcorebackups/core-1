@@ -63,7 +63,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new block('', ['data-id' => 'structures_list'], [
+    return new block(null, ['data-id' => 'structures_list'], [
       $targets, $list
     ]);
   }

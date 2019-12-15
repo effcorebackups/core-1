@@ -15,7 +15,7 @@ namespace effcore {
     return static::$data;
   }
 
-  static function &log_insert($object, $action, $description = '', $value = '', $time = 0, $args = []) {
+  static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
     $new_log = new \stdClass;
     $new_log->object      = $object;
     $new_log->action      = $action;
@@ -90,7 +90,7 @@ namespace effcore {
                    $statistics[$c_log->object] = 0;
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time);}}
-    $diagram = new diagram('', 'radial');
+    $diagram = new diagram(null, 'radial');
     $colors = core::diagram_colors;
     foreach ($statistics as  $c_key => $c_value)
       $diagram->slice_insert($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::get('sec.'), array_shift($colors), ['data-id' => $c_key]);
