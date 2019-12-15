@@ -42,11 +42,11 @@ namespace effcore {
       foreach ($result as $c_row_id => $c_object) {
         $c_field_name_suffix = $c_object->entity_name.'_'.$c_object->entity_field_name;
         $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));
-        $c_new_buffer_value = new \stdClass;
-        $c_new_buffer_value->row_id = $c_row_id;
-        $c_new_buffer_value->weight = $c_weight;
-        $c_new_buffer_value->object = $c_object;
-        $buffer[] = $c_new_buffer_value;}
+        $c_buffer_new_item = new \stdClass;
+        $c_buffer_new_item->row_id = $c_row_id;
+        $c_buffer_new_item->weight = $c_weight;
+        $c_buffer_new_item->object = $c_object;
+        $buffer[] = $c_buffer_new_item;}
       core::array_sort_by_weight($buffer);
       foreach ($buffer as $c_sorted)
         $sorted[$c_sorted->row_id] =

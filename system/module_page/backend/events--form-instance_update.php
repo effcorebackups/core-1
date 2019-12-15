@@ -59,7 +59,9 @@ namespace effcore\modules\page {
               $all_parts[$c_id_area] = $c_parts;
             }
           }
-          $form->_instance->parts = count($all_parts) ? $all_parts : null;
+          if (count($all_parts))
+               $form->_instance->parts = $all_parts;
+          else $form->_instance->parts = null;
         }
       }
     }
