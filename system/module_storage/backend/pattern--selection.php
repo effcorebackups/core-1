@@ -151,25 +151,25 @@ namespace effcore {
                 $c_form_field->name_set('is_checked[]');
                 $c_form_field->value_set(implode('+', $c_instance->values_id_get()));
                 $c_row[$c_row_id] = [
-                  'title' => $c_field->title,
+                  'title' => $c_field->title ?? null,
                   'value' => $c_form_field
                 ];
                 break;
               case 'markup':
                 $c_row[$c_row_id] = [
-                  'title' => $c_field->title,
+                  'title' => $c_field->title ?? null,
                   'value' => $c_field->markup
                 ];
                 break;
               case 'code':
                 $c_row[$c_row_id] = [
-                  'title' =>  $c_field->title,
+                  'title' =>  $c_field->title ?? null,
                   'value' => ($c_field->code)($c_row, $c_instance)
                 ];
                 break;
               case 'handler':
                 $c_row[$c_row_id] = [
-                  'title' => $c_field->title,
+                  'title' => $c_field->title ?? null,
                   'value' => call_user_func($c_field->handler, $c_row, $c_instance)
                 ];
                 break;
