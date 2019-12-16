@@ -184,6 +184,13 @@ entities
         references: polls
         references_fields
         - =: id
+    - foreign_id_answer
+        type: foreign
+        fields
+        - =: id_answer
+        references: poll_answers
+        references_fields
+        - =: id
     - foreign_id_user
         type: foreign
         fields
