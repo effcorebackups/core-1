@@ -9,6 +9,7 @@ namespace effcore\modules\polls {
           use \effcore\entity;
           use \effcore\field_text;
           use \effcore\fieldset;
+          use \effcore\instance;
           use \effcore\markup;
           use \effcore\page;
           abstract class events_form_instance_insert {
@@ -24,11 +25,10 @@ namespace effcore\modules\polls {
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         for ($i = 0; $i < 10; $i++) {
         # field for answer text
-          $c_answer_id = $i + 1;
           $c_field_answer_text = new field_text('Text');
           $c_field_answer_text->description_state = 'hidden';
           $c_field_answer_text->build();
-          $c_field_answer_text->name_set('answer_text_'.$c_answer_id);
+          $c_field_answer_text->name_set('answer_text_'.$i);
           $c_field_answer_text->required_set($i == 0);
         # group field to box
           $c_box_answer = new markup('x-widget', ['data-fields-is-inline' => 'true']);
@@ -45,12 +45,16 @@ namespace effcore\modules\polls {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
-          if ($entity->name == 'poll') {
-            $answers = [];
-            for ($c_answer_id = 1; $c_answer_id <= 10; $c_answer_id++)
-              if ($items['#answer_text_'.$c_answer_id]->value_get())
-                $answers[$c_answer_id] = $items['#answer_text_'.$c_answer_id]->value_get();
-            $form->_instance->data = ['answers' => $answers];
+          if ($entity->name == 'poll' && !empty($form->_instance)) {
+            for ($i = 0; $i < 10; $i++) {
+              $c_answer_text = $items['#answer_text_'.$i]->value_get();
+              if ($c_answer_text) {
+                (new instance('poll_answer', [
+                  'id_poll' => $form->_instance->id,
+                  'answer'  => $c_answer_text
+                ]))->insert();
+              }
+            }
           }
           break;
       }
