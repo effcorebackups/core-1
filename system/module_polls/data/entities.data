@@ -113,6 +113,46 @@ entities
         type: primary
         fields
         - =: id
+- poll_answer|entity
+    name: poll_answer
+    title: Poll answer
+    title_plural: Poll answers
+    catalog_name: poll_answers
+    ws_data: true
+    fields
+    - id
+        title: ID
+        type: autoincrement
+        not_null: true
+        check: (id <> '')
+    - id_poll
+        title: Poll ID
+        type: integer
+        not_null: true
+    - answer
+        title: Answer
+        type: varchar
+        collate: nocase
+        size: 2048
+        not_null: true
+        check: (question <> '')
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    - foreign_id_poll
+        type: foreign
+        fields
+        - =: id_poll
+        references: polls
+        references_fields
+        - =: id
+    indexes
+    - index_id_poll
+        type: index
+        fields
+        - =: id_poll
 - poll_vote|entity
     name: poll_vote
     title: Poll vote
