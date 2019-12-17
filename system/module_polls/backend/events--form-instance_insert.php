@@ -42,7 +42,9 @@ namespace effcore\modules\polls {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
+    $back_insert_0 = page::get_current()->args_get('back_insert_0');
+    $back_insert_n = page::get_current()->args_get('back_insert_n');
+    $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
