@@ -135,7 +135,7 @@ entities
         collate: nocase
         size: 2048
         not_null: true
-        check: (question <> '')
+        check: (answer <> '')
     constraints
     - primary_id
         type: primary
@@ -175,7 +175,7 @@ entities
         type: varchar
         size: 255
         collate: nocase
-        check: (id <> '')
+        check: (id_session <> '')
     constraints
     - foreign_id_poll
         type: foreign
