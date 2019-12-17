@@ -20,7 +20,7 @@ namespace effcore\modules\polls {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
-        page::get_current()->args_set('back_insert_redirect_is_canceled', true);
+        page::get_current()->args_set('back_insert_is_canceled', true);
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $fieldset_answers = new fieldset('Answers');
