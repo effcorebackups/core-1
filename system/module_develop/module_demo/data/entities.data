@@ -207,7 +207,7 @@ entities
         - =: id
     indexes
     # ─────────────────────────────────────────────────────────────────────
-    # note: helper for select and delete instance with unknown primary id (on install)
+    # note: helper for select and delete instance with unknown Primary ID (on install)
     # ─────────────────────────────────────────────────────────────────────
     - index_description
         type: unique index

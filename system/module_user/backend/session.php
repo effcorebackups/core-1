@@ -54,7 +54,7 @@ namespace effcore {
       'id'      => $id_session ?: static::id_get(),
       'id_user' => $id_user
     ]))->delete();
-  # regenerate id_session if session is current
+  # regenerate Session ID if session is current
     if ($id_session == null) static::id_regenerate('a');
     return $result;
   }
@@ -72,7 +72,7 @@ namespace effcore {
   ####################################
 
   # ┌─────────────┬───────────┬───────────┬────────┬───────────────────┬───────┐
-  # │ session id  │ anonymous │ remember? │ on ip? │ secure │ on https │ used? │
+  # │ Session ID  │ anonymous │ remember? │ on ip? │ secure │ on https │ used? │
   # ╞═════════════╪═══════════╪═══════════╪════════╪═══════════════════╪═══════╡
   # │ a--00--00-- │ yes       │ no        │ no     │ n/a    | n/a      │ no    │
   # │ a--00--ip-- │ yes       │ no        │ yes    │ +      | ++       │ yes   │

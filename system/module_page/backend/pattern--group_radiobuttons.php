@@ -38,10 +38,11 @@ namespace effcore {
     }
   }
 
-  function field_insert($title = null, $description = null, $attributes = [], $new_id = null) {
+  function field_insert($title = null, $description = null, $attributes = [], $new_id = null, $weight = 0) {
     $field                 = new $this->field_class;
     $field->title          = $title;
     $field->description    = $description;
+    $field->weight         = $weight;
     $field->tag_name       = $this->field_tag_name;
     $field->title_tag_name = $this->field_title_tag_name;
     $field->title_position = $this->field_title_position;

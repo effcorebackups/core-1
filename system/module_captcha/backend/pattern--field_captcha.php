@@ -7,7 +7,7 @@
 namespace effcore {
           class field_captcha extends field_text {
 
-  # about CAPTCHA id:
+  # about CAPTCHA ID:
   # ═════════════════════════════════════════════════════════════════════════
   # duplicates of captcha by IP - it's prevention from DDOS attacks -
   # user can overflow the storage if captcha_id will be a complex value
