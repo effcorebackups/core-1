@@ -50,12 +50,14 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
+            $c_weight = 0;
             for ($i = 0; $i < 10; $i++) {
               $c_answer_text = $items['#answer_text_'.$i]->value_get();
               if ($c_answer_text) {
                 (new instance('poll_answer', [
                   'id_poll' => $form->_instance->id,
-                  'answer'  => $c_answer_text
+                  'answer'  => $c_answer_text,
+                  'weight'  => -($c_weight++ * 5)
                 ]))->insert();
               }
             }

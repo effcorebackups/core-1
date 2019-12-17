@@ -136,6 +136,11 @@ entities
         size: 2048
         not_null: true
         check: (answer <> '')
+    - weight
+        title: Weight
+        type: integer
+        not_null: true
+        default: 0
     constraints
     - primary_id
         type: primary

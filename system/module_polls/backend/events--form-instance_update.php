@@ -19,7 +19,6 @@ namespace effcore\modules\polls {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
-        $c_weight = 0;
         $fieldset_answers = new fieldset('Answers', null, ['data-has-rearrangeable' => 'true']);
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         $answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
@@ -39,8 +38,7 @@ namespace effcore\modules\polls {
           $c_field_answer_weight->build();
           $c_field_answer_weight->name_set('answer_weight_'.$c_answer->id);
           $c_field_answer_weight->required_set(false);
-          $c_field_answer_weight->value_set( -($c_weight * 5) );
-          $c_weight++;
+          $c_field_answer_weight->value_set($c_answer->weight);
         # group fields to box
           $c_box_answer = new markup('x-widget', ['data-type' => 'poll_answer-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline' => 'true']);
           $c_box_answer    ->child_insert($c_field_answer_weight, 'answer_weight'        );
