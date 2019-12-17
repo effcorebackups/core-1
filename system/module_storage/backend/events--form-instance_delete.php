@@ -38,8 +38,6 @@ namespace effcore\modules\storage {
   static function on_submit($event, $form, $items) {
     $back_delete_0 = page::get_current()->args_get('back_delete_0');
     $back_delete_n = page::get_current()->args_get('back_delete_n');
-    $back_return_0 = page::get_current()->args_get('back_return_0');
-    $back_return_n = page::get_current()->args_get('back_return_n');
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $instance_id   = page::get_current()->args_get('instance_id'  );
     $entity = entity::get($entity_name);

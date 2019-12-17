@@ -100,8 +100,6 @@ namespace effcore\modules\storage {
   static function on_submit($event, $form, $items) {
     $back_update_0 = page::get_current()->args_get('back_update_0');
     $back_update_n = page::get_current()->args_get('back_update_n');
-    $back_return_0 = page::get_current()->args_get('back_return_0');
-    $back_return_n = page::get_current()->args_get('back_return_n');
     $entity_name   = page::get_current()->args_get('entity_name'  );
     $entity = entity::get($entity_name);
     if ($entity) {
