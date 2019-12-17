@@ -12,6 +12,7 @@ namespace effcore\modules\polls {
           use \effcore\instance;
           use \effcore\markup;
           use \effcore\page;
+          use \effcore\url;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -19,6 +20,7 @@ namespace effcore\modules\polls {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
+        page::get_current()->args_set('back_insert_redirect_is_canceled', true);
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $fieldset_answers = new fieldset('Answers');
@@ -55,6 +57,8 @@ namespace effcore\modules\polls {
                 ]))->insert();
               }
             }
+            url::go($back_insert_0 ?: (url::back_url_get() ?: (
+                    $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
           }
           break;
       }
