@@ -48,8 +48,10 @@ namespace effcore\modules\storage {
                      $form->_instance->delete())
                message::insert(new text('Item of type "%%_name" with id = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
           else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
-          url::go($back_delete_0 ?: (url::back_url_get() ?: (
-                  $back_delete_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+          if (empty(page::get_current()->args_get('back_delete_is_canceled'))) {
+            url::go($back_delete_0 ?: (url::back_url_get() ?: (
+                    $back_delete_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+          }
           break;
       }
     }
