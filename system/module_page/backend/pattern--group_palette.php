@@ -24,7 +24,7 @@ namespace effcore {
             $previous_group_name  = $c_color->group;
         $this->field_insert(null, null, [
           'value' => $c_color->id,
-          'title' => translation::get('color id = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
+          'title' => translation::get('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
           'style' => ['background: '.$c_color->value]
         ], $c_color->id);}
       $this->is_builded = true;

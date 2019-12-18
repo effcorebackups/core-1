@@ -43,7 +43,7 @@ translations
     - Button\: text: Кнопка: тэкст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
-    - Can not enable module "%%_module_id_1" when you try to disable dependent module "%%_module_id_2"!: Немагчыма ўключыць модуль "%%_module_id_1", калі Вы спрабуеце адключыць залежны модуль "%%_module_id_2"!
+    - Can not enable module "%%_module_id" when you try to disable dependent module "%%_dependent_module_id"!: Немагчыма ўключыць модуль "%%_module_id", калі Вы спрабуеце адключыць залежны модуль "%%_dependent_module_id"!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
     - cancel: адмяніць
     - Canvas: Палатно
@@ -56,7 +56,7 @@ translations
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"
-    - color id = "%%_id" and value = "%%_value": id колеру = "%%_id" і значэнне = "%%_value"
+    - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
     - Color: Колер
     - Colors was applied.: Колеры былі ўжыты.
     - Colors: Колеры
@@ -87,7 +87,7 @@ translations
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
     - delete file "%%_name": выдаліць файл "%%_name"
-    - Delete item of type "%%_name" with id = "%%_id"?: Выдаліць элемент тыпу "%%_name" з id = "%%_id"?
+    - Delete item of type "%%_name" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_name" з ID = "%%_id"?
     - Delete modules data: Выдаліць даныя модуляў
     - Delete: Выдаліць
     - delete: выдаліць
@@ -101,7 +101,7 @@ translations
     - Diagramm type: Тып дыяграмы
     - Diagrams: Дыяграмы
     - Digit: Лічба
-    - Distributed queries are not supported! Selection id = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
+    - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - do not show: не паказваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text

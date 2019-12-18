@@ -104,7 +104,7 @@ namespace effcore {
         return new node();
       } elseif (count($used_storages) >= 2) {
         message::insert(new text(
-          'Distributed queries are not supported! Selection id = "%%_id".', ['id' => $this->id]), 'warning'
+          'Distributed queries are not supported! Selection ID = "%%_id".', ['id' => $this->id]), 'warning'
         );
         return new node();
       }
