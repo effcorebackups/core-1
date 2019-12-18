@@ -50,8 +50,8 @@ namespace effcore\modules\user {
           if ($items['#is_checked:'.$c_session->id]->checked_get()) {
             $has_selection = true;
             if (session::delete(user::get_current()->id, $session_active->id == $c_session->id ? null /* for regenerate */ : $c_session->id))
-                 $messages['ok'     ][] = new text('Session with id = "%%_id" was deleted.',     ['id' => $c_session->id]);
-            else $messages['warning'][] = new text('Session with id = "%%_id" was not deleted!', ['id' => $c_session->id]);
+                 $messages['ok'     ][] = new text('Session with ID = "%%_id" was deleted.',     ['id' => $c_session->id]);
+            else $messages['warning'][] = new text('Session with ID = "%%_id" was not deleted!', ['id' => $c_session->id]);
           }
         }
         if ($has_selection) {

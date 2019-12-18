@@ -117,8 +117,8 @@ namespace effcore\modules\storage {
             }
           # update values
             if ($form->_instance->update())
-                 message::insert(new text('Item of type "%%_name" with id = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-            else message::insert(new text('Item of type "%%_name" with id = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
+                 message::insert(new text('Item of type "%%_name" with ID = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+            else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
           if (empty(page::get_current()->args_get('back_update_is_canceled'))) {
             url::go($back_update_0 ?: (url::back_url_get() ?: (
                     $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));

@@ -170,7 +170,7 @@ translations
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
-    - Field value should match the regular expression\: %%_expression.: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression.
+    - Field value should match the regular expression\: %%_expression: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression
     - Field: Поле
     - Field\: text: Поле: тэкст
     - Fields: Палі
@@ -233,12 +233,12 @@ translations
     - Is active: Актыўная
     - Is embed: Убудаваны
     - is embed: убудаваны
-    - Item of type "%%_name" with id = "%%_id" was deleted.: Элемент тыпу "%%_name" з id = "%%_id" быў выдалены.
-    - Item of type "%%_name" with id = "%%_id" was inserted.: Элемент тыпу "%%_name" з id = "%%_id" быў дададзены.
-    - Item of type "%%_name" with id = "%%_id" was not deleted!: Элемент тыпу "%%_name" з id = "%%_id" ня быў выдалены!
-    - Item of type "%%_name" with id = "%%_id" was not inserted!: Элемент тыпу "%%_name" з id = "%%_id" ня быў дададзены!
-    - Item of type "%%_name" with id = "%%_id" was not updated!: Элемент тыпу "%%_name" з id = "%%_id" ня быў абноўлены!
-    - Item of type "%%_name" with id = "%%_id" was updated.: Элемент тыпу "%%_name" з id = "%%_id" быў абноўлены.
+    - Item of type "%%_name" with ID = "%%_id" was deleted.: Элемент тыпу "%%_name" з ID = "%%_id" быў выдалены.
+    - Item of type "%%_name" with ID = "%%_id" was inserted.: Элемент тыпу "%%_name" з ID = "%%_id" быў дададзены.
+    - Item of type "%%_name" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў выдалены!
+    - Item of type "%%_name" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў дададзены!
+    - Item of type "%%_name" with ID = "%%_id" was not updated!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў абноўлены!
+    - Item of type "%%_name" with ID = "%%_id" was updated.: Элемент тыпу "%%_name" з ID = "%%_id" быў абноўлены.
     - Key "%%_name" does not exist!: Ключ "%%_name" не існуе!
     - KiB: КіБ
     - Language: Мова
@@ -322,7 +322,7 @@ translations
     - nickname: мянушка
     - Nickname: Мянушка
     - No additional parameters.: Няма дадатковых параметраў.
-    - No fields for select from storage! Selection id = "%%_id".: Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id".
+    - No fields for select from storage! Selection ID = "%%_id".: Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id".
     - no fields: няма палёў
     - no items: няма элементаў
     - no modules: няма модуляў
@@ -391,8 +391,8 @@ translations
     - Registered: Зарэгістраваны
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
-    - Related items of type "%%_name" with id = "%%_id" was deleted.: Звязаныя элементы тыпу "%%_name" з id = "%%_id" былі выдалены.
-    - Related items of type "%%_name" with id = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_name" з id = "%%_id" не былі выдалены.
+    - Related items of type "%%_name" with ID = "%%_id" was deleted.: Звязаныя элементы тыпу "%%_name" з ID = "%%_id" былі выдалены.
+    - Related items of type "%%_name" with ID = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_name" з ID = "%%_id" не былі выдалены.
     - Relation: Сувязь
     - Relation\: Role + Permission: Сувязь: Роля + Дазваленне
     - Relation\: Role + User: Сувязь: Роля + Карыстальнік
@@ -428,8 +428,8 @@ translations
     - Server time zone: Гадзінны пояс сервера
     - Server: Сервер
     - Service: Абслугоўванне
-    - Session with id = "%%_id" was deleted.: Сесія з id = "%%_id" была выдалена.
-    - Session with id = "%%_id" was not deleted!: Сесія з id = "%%_id" не была выдалена!
+    - Session with ID = "%%_id" was deleted.: Сесія з ID = "%%_id" была выдалена.
+    - Session with ID = "%%_id" was not deleted!: Сесія з ID = "%%_id" не была выдалена!
     - Session: Сесія
     - Sessions: Сесіі
     - Settings: Налады

@@ -367,7 +367,7 @@ namespace effcore {
     ]))->render();
   }
 
-  function render_description_pattern  ($element) {return new markup('p', ['data-id' => 'pattern'  ], new text('Field value should match the regular expression: %%_expression.', ['expression'    => $element->attribute_select('pattern')]));          }
+  function render_description_pattern  ($element) {return new markup('p', ['data-id' => 'pattern'  ], new text('Field value should match the regular expression: %%_expression', ['expression'     => $element->attribute_select('pattern')]));          }
   function render_description_min      ($element) {return new markup('p', ['data-id' => 'min'      ], new text('Minimum field value: %%_value', ['value'                                           => $element->attribute_select('min')]));              }
   function render_description_max      ($element) {return new markup('p', ['data-id' => 'max'      ], new text('Maximum field value: %%_value', ['value'                                           => $element->attribute_select('max')]));              }
   function render_description_cur      ($element) {return new markup('p', ['data-id' => 'cur'      ], new text('Current field value: %%_value', ['value' => (new markup('x-value', [],                $element->attribute_select('value')))->render()]));}
