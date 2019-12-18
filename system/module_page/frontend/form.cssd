@@ -267,20 +267,18 @@
   x-widget[data-fields-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
   x-widget[data-fields-is-inline-full='true'] x-field input {margin: 0}
 
-  /* widget 'area_part-manage' */
+  /* widget 'area' */
 
-  x-widget[data-type='area_part-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='area_part-manage'] x-info {display: inline-block; vertical-align: middle}
-  x-widget[data-type='area_part-manage'] x-info x-title {display: block; font-size: 1.1em}
-  x-widget[data-type='area_part-manage'] x-info x-id {display: block; opacity: .5}
-  x-widget[data-type='area_part-manage'] button {float: right; position: relative; z-index: 10}
+  x-widget[data-type='area'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type='area'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
+  x-widget[data-type='area'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
+  x-widget[data-type='area'] x-widgets-group[data-type='manage'] x-widget x-info x-id {display: block; opacity: .5}
+  x-widget[data-type='area'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
 
-  /* widget 'area_part-insert' */
-
-  x-widget[data-type='area_part-insert'] {display: block; margin-top: 10px}
-  x-widget[data-type='area_part-insert'] x-field {display: inline-block; margin: 0}
-  x-widget[data-type='area_part-insert'] x-field label {margin-bottom: 5px}
-  x-widget[data-type='area_part-insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
+  x-widget[data-type='area'] x-widget[data-type='insert'] {display: block; margin-top: 10px}
+  x-widget[data-type='area'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0}
+  x-widget[data-type='area'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
+  x-widget[data-type='area'] x-widget[data-type='insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
   /* widget 'selection_field-manage' */
 

@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_parts extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'area-manage'];
+  public $attributes = ['data-type' => 'area'];
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {
@@ -19,16 +19,14 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       $c_weight_default = 0;
-      $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
+      $widgets_manage_group = new markup('x-widgets-group', ['data-type' => 'manage', 'data-has-rearrangeable' => 'true']);
       foreach ($this->cform->validation_cache_get('parts_'.$this->id_area) ?? [] as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
           $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_weight_default);
           $c_widget_manage->build();
           $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
           $widgets_manage_group->child_insert($c_widget_manage, $c_preset->id);
-          $c_weight_default -= 5;
-        }
-      }
+          $c_weight_default -= 5;}}
       $widget_insert = new widget_area_part_insert($this->id_area);
       $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
       $widget_insert->build();

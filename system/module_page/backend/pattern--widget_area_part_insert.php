@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_part_insert extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'area_part-insert'];
+  public $attributes = ['data-type' => 'insert'];
   public $on_click_insert_handler;
   public $id_area;
 
