@@ -75,8 +75,12 @@ namespace effcore {
     $this->is_builded = false;
     $this->build();
   # report
-    message::insert(new text('Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".', ['id_page_part' => $preset->id, 'id_area' => $group->id_area]));
-    message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+    message::insert(new text_multiline([
+      'Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".',
+      'Click the button "%%_name" to save your changes!'], [
+      'id_page_part' => $preset->id,
+      'id_area'      => $group->id_area,
+      'name'         => translation::get('update')]));
     return true;
   }
 
@@ -88,8 +92,12 @@ namespace effcore {
     $this->is_builded = false;
     $this->build();
   # report
-    message::insert(new text('Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".', ['id_page_part' => $group->id_preset, 'id_area' => $group->id_area]));
-    message::insert(new text('Click the button "%%_name" to save your changes!', ['name' => translation::get('update')]), 'warning');
+    message::insert(new text_multiline([
+      'Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".',
+      'Click the button "%%_name" to save your changes!'], [
+      'id_page_part' => $group->id_preset,
+      'id_area'      => $group->id_area,
+      'name'         => translation::get('update')]));
     return true;
   }
 

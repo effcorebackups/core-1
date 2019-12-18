@@ -313,7 +313,7 @@ translations
     - Module ID: ID модуля
     - Module: Модуль
     - Modules: Модулі
-    - More info in %%_info.: Больш інфармацыі ў %%_info.
+    - More info in "%%_info".: Больш інфармацыі ў "%%_info".
     - Multiple choice: Множны выбар
     - name: імя
     - Name: Імя
@@ -353,8 +353,8 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID бацькі
-    - Part of the page with id = "%%_id_page_part" was deleted from the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была выдалена з вобласці з id = "%%_id_area".
-    - Part of the page with id = "%%_id_page_part" was inserted to the area with id = "%%_id_area".: Частка старонкі з id = "%%_id_page_part" была ўстаўлена ў вобласць з id = "%%_id_area".
+    - Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".: Частка старонкі з ID = "%%_id_page_part" была выдалена з вобласці з ID = "%%_id_area".
+    - Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".: Частка старонкі з ID = "%%_id_page_part" была ўстаўлена ў вобласць з ID = "%%_id_area".
     - Password recovery on %%_domain: Аднаўленне пароля на %%_domain
     - Password: Пароль
     - Path: Шлях

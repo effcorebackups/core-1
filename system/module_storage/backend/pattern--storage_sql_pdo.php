@@ -186,11 +186,11 @@ namespace effcore {
           'SQL state: %%_state',
           'Driver error code: %%_code',
           'Driver error text: %%_text',
-          'More info in %%_info.'], [
+          'More info in "%%_info".'], [
           'state' => $c_error[0],
           'code'  => $c_error[1],
           'text'  => $c_error[2],
-          'info'  => '"dynamic/logs/"']), 'error');
+          'info'  => 'dynamic/logs/']), 'error');
         $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
         $query_beautiful_args = '\''.implode('\', \'', $this->args_previous).'\'';
         console::log_insert('storage', 'query',  count($this->args_previous) ?
