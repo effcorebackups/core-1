@@ -161,7 +161,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле может содержать минимум %%_number символ%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
-    - Field can contain only the next characters\: %%_characters.: Поле может содержать только следующие символы: %%_characters.
+    - Field can contain only the next characters\: %%_characters: Поле может содержать только следующие символы: %%_characters
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression %%_expression.: Значение поля не соответствует регулярному выражению %%_expression.
@@ -176,9 +176,9 @@ translations
     - Fields: Поля
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
-    - File can only be of the next types\: %%_types.: Файл может быть только следующих типов: %%_types.
+    - File can only be of the next types\: %%_types: Файл может быть только следующих типов: %%_types
     - file is empty: файл пуст
-    - File name can contain only the next characters\: %%_characters.: Имя файла может содержать только следующие символы: %%_characters.
+    - File name can contain only the next characters\: %%_characters: Имя файла может содержать только следующие символы: %%_characters
     - File name: Имя файла
     - File not found: Файл не найден
     - file of this type is protected: файл этого типа защищён
@@ -281,7 +281,7 @@ translations
     - Match: Соответствие
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value: Максимальное значение поля: %%_value
-    - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
+    - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
     - Menu system: Меню системное

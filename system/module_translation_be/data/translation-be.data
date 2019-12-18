@@ -161,7 +161,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
-    - Field can contain only the next characters\: %%_characters.: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters.
+    - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
     - Field value does not match the regular expression %%_expression.: Значэнне поля не адпавядае рэгулярнаму выразу %%_expression.
@@ -176,9 +176,9 @@ translations
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
-    - File can only be of the next types\: %%_types.: Файл можа быць толькі наступных тыпаў: %%_types.
+    - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
     - file is empty: файл пусты
-    - File name can contain only the next characters\: %%_characters.: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters.
+    - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
     - File name: Імя файла
     - File not found: Файл не знойдзены
     - file of this type is protected: файл гэтага тыпу абаронены
@@ -281,7 +281,7 @@ translations
     - Match: Адпаведнасць
     - Maximum allowed only %%_number file%%_plural{number,s}.: Дазваляецца максімальна толькі %%_number файл%%_plural{number,au-a}.
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
-    - Maximum file size\: %%_value.: Максімальны памер файла: %%_value.
+    - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
     - Menu system: Меню сістэмнае

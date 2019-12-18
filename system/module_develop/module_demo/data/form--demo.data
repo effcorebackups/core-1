@@ -108,7 +108,7 @@ forms
             title: Nickname
             description|text_multiline
               text
-              - 0: Field can contain only the next characters: %%_characters.
+              - 0: Field can contain only the next characters: %%_characters
               - 1: Field "%%_title".
               args
               - characters: "a-z", "A-Z", "0-9", "_", "-"

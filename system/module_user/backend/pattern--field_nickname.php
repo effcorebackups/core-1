@@ -22,7 +22,7 @@ namespace effcore {
 
   function render_description() {
     if (!$this->description)
-         $this->description = new text('Field can contain only the next characters: %%_characters.', ['characters' => self::allowed_characters_title]);
+         $this->description = new text('Field can contain only the next characters: %%_characters', ['characters' => self::allowed_characters_title]);
     return parent::render_description();
   }
 

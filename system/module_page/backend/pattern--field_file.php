@@ -111,12 +111,12 @@ namespace effcore {
     }
   }
 
-  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text('Maximum file size: %%_value.',                                       ['value'      => locale::format_bytes($this->file_size_max_get())]));}
+  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text('Maximum file size: %%_value',                                        ['value'      => locale::format_bytes($this->file_size_max_get())]));}
   function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));   }
   function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));   }
   function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field must contain %%_number file%%_plural{number,s}.',              ['number'     =>               $this->min_files_number        ]));   }
-  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types.',                      ['types'      => implode(', ', $this->allowed_types          )]));   }
-  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters.',     ['characters' =>               $this->allowed_characters_title]));   }
+  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));   }
+  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));   }
 
   ############
   ### pool ###
