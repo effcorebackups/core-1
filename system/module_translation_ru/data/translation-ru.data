@@ -43,7 +43,7 @@ translations
     - Button\: text: Кнопка: текст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Can not enable module "%%_module_id" when you try to disable dependent module "%%_dependent_module_id"!: Невозможно включить модуль "%%_module_id", когда Вы пытаетесь отключить зависимый модуль "%%_dependent_module_id"!
+    - Can not enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
     - cancel: отменить
     - Canvas: Холст
@@ -106,7 +106,7 @@ translations
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
-    - duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле "%%_module_id"
+    - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: был найден дубликат типа "%%_type" с ID = "%%_id"
     - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - edit: редактировать

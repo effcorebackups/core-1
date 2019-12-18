@@ -43,7 +43,7 @@ translations
     - Button\: text: Кнопка: тэкст
     - cache: кэш
     - Can not copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
-    - Can not enable module "%%_module_id" when you try to disable dependent module "%%_dependent_module_id"!: Немагчыма ўключыць модуль "%%_module_id", калі Вы спрабуеце адключыць залежны модуль "%%_dependent_module_id"!
+    - Can not enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Немагчыма ўключыць модуль "%%_title" (%%_id), калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
     - cancel: адмяніць
     - Canvas: Палатно
@@ -106,7 +106,7 @@ translations
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
-    - duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі "%%_module_id"
+    - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
     - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - edit: рэдагаваць
