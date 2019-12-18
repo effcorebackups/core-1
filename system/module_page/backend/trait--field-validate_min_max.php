@@ -12,7 +12,7 @@ namespace effcore {
     if (strlen($new_value) && $min && $new_value < $min) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
-        'Field value is less than %%_value.'], ['title' => translation::get($field->title), 'value' => $min]
+        'Field value is less than %%_number.'], ['title' => translation::get($field->title), 'number' => $min]
       ));
     } else {
       return true;
@@ -24,7 +24,7 @@ namespace effcore {
     if (strlen($new_value) && $max && $new_value > $max) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
-        'Field value is more than %%_value.'], ['title' => translation::get($field->title), 'value' => $max]
+        'Field value is more than %%_number.'], ['title' => translation::get($field->title), 'number' => $max]
       ));
     } else {
       return true;

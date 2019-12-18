@@ -165,8 +165,8 @@ translations
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значение поля не соответствует регулярному выражению "%%_expression".
-    - Field value is less than %%_value.: Значение поля меньше чем %%_value.
-    - Field value is more than %%_value.: Значение поля больше чем %%_value.
+    - Field value is less than %%_number.: Значение поля меньше чем %%_number.
+    - Field value is more than %%_number.: Значение поля больше чем %%_number.
     - Field value is not a valid number.: Значение поля не является допустимым числом.
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".

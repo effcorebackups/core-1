@@ -165,8 +165,8 @@ translations
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значэнне поля не адпавядае рэгулярнаму выразу "%%_expression".
-    - Field value is less than %%_value.: Значэнне поля менш чым %%_value.
-    - Field value is more than %%_value.: Значэнне поля больш чым %%_value.
+    - Field value is less than %%_number.: Значэнне поля менш чым %%_number.
+    - Field value is more than %%_number.: Значэнне поля больш чым %%_number.
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
