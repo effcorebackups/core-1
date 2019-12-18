@@ -21,7 +21,7 @@ translations
     - autoload: аўтазагрузка
     - beginning: пачатак
     - Call "%%_title": Выклік "%%_title"
-    - catalog %%_catalog_name in storage %%_storage_name will be initialized: каталаг %%_catalog_name у сховішчы %%_storage_name будзе ініцыялізаваны
+    - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: вочка №%%_number
     - Checkbox 1: Сцяжок 1
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
@@ -143,6 +143,7 @@ translations
     - Sequence hash: Хэш паслядоўнасці
     - show for admin: паказваць адміністратару
     - show for everyone: паказваць усім
+    - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
     - submission: перадача
     - Switcher 1: Выключальнік 1
     - Switcher 2 (checked): Выключальнік 2 (адзначаны)

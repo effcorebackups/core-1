@@ -439,7 +439,6 @@ translations
     - state: состояние
     - State: Состояние
     - Storage "%%_name" is not available!: Хранилище "%%_name" недоступно!
-    - storage %%_name was initialized: хранилище %%_name было инициализировано
     - Storage is not available with these credentials!: Хранилище недоступно с этими учётными данными!
     - storage: хранилище
     - Storage: Хранилище

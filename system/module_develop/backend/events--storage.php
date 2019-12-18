@@ -17,7 +17,7 @@ namespace effcore\modules\develop {
 
   static function on_init_after($event, $storage) {
     timer::tap('storage init');
-    console::log_insert('storage', 'init.', 'storage %%_name was initialized', 'ok',
+    console::log_insert('storage', 'init.', 'storage "%%_name" was initialized', 'ok',
       timer::period_get('storage init', -1, -2), ['name' => $storage->name]
     );
   }

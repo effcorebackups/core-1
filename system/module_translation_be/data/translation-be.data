@@ -439,7 +439,6 @@ translations
     - state: стан
     - State: Стан
     - Storage "%%_name" is not available!: Сховішча "%%_name" недаступна!
-    - storage %%_name was initialized: сховішча %%_name было ініцыялізавана
     - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі данымі!
     - storage: сховішча
     - Storage: Сховішча
