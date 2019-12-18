@@ -71,7 +71,7 @@ translations
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - Cron last run: Последний запуск Cron
-    - Current field value\: %%_value.: Текущее значение поля: %%_value.
+    - Current field value\: %%_value: Текущее значение поля: %%_value
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
     - Current: Текущие
@@ -280,7 +280,7 @@ translations
     - Managers: Управляющие
     - Match: Соответствие
     - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
-    - Maximum field value\: %%_value.: Максимальное значение поля: %%_value.
+    - Maximum field value\: %%_value: Максимальное значение поля: %%_value
     - Maximum file size\: %%_value.: Максимальный размер файла: %%_value.
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
@@ -292,7 +292,7 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - MiB: МиБ
-    - Minimum field value\: %%_value.: Минимальное значение поля: %%_value.
+    - Minimum field value\: %%_value: Минимальное значение поля: %%_value
     - missing a temporary directory: отсутствует временный каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.

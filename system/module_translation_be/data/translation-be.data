@@ -71,7 +71,7 @@ translations
     - Credentials for storage "%%_name" was not set!: Уліковыя даныя для сховішча "%%_name" не былі зададзены!
     - Credentials: Уліковыя даныя
     - Cron last run: Апошні запуск Cron
-    - Current field value\: %%_value.: Бягучае значэнне поля: %%_value.
+    - Current field value\: %%_value: Бягучае значэнне поля: %%_value
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
     - Current: Бягучыя
@@ -280,7 +280,7 @@ translations
     - Managers: Кіраўнікі
     - Match: Адпаведнасць
     - Maximum allowed only %%_number file%%_plural{number,s}.: Дазваляецца максімальна толькі %%_number файл%%_plural{number,au-a}.
-    - Maximum field value\: %%_value.: Максімальнае значэнне поля: %%_value.
+    - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
     - Maximum file size\: %%_value.: Максімальны памер файла: %%_value.
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
@@ -292,7 +292,7 @@ translations
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
     - Messages: Паведамленні
     - MiB: МіБ
-    - Minimum field value\: %%_value.: Мінімальнае значэнне поля: %%_value.
+    - Minimum field value\: %%_value: Мінімальнае значэнне поля: %%_value
     - missing a temporary directory: адсутнічае часовы каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
