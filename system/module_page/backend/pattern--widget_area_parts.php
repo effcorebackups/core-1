@@ -18,20 +18,31 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $c_weight_default = 0;
-      $widgets_manage_group = new markup('x-widgets-group', ['data-type' => 'manage', 'data-has-rearrangeable' => 'true']);
+      $widgets_group_manage = new markup('x-widgets-group', [
+        'data-type'              => 'manage',
+        'data-has-rearrangeable' => 'true']);
+    # widgets for manage each item
+      $c_widget_manage_weight = 0;
       foreach ($this->cform->validation_cache_get('parts_'.$this->id_area) ?? [] as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
-          $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_weight_default);
+          $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
           $c_widget_manage->build();
-          $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
-          $widgets_manage_group->child_insert($c_widget_manage, $c_preset->id);
-          $c_weight_default -= 5;}}
+          $c_widget_manage_weight -= 5;
+          $widgets_group_manage->child_insert($c_widget_manage, $c_preset->id);
+          $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {
+            $this->on_click_delete($group, $form, $npath);
+          };
+        }
+      }
+    # widget for insert new item
       $widget_insert = new widget_area_part_insert($this->id_area);
-      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
       $widget_insert->build();
-      $this->child_insert($widgets_manage_group, 'widgets_manage_group');
-      $this->child_insert($widget_insert, 'widget_insert');
+      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {
+        $this->on_click_insert($group, $form, $npath, $value);
+      };
+    # insert all widgets
+      $this->child_insert($widgets_group_manage, 'manage');
+      $this->child_insert($widget_insert, 'insert');
       $this->is_builded = true;
     }
   }
@@ -72,7 +83,6 @@ namespace effcore {
     $form->validation_cache_set('parts_'.$this->id_area, $parts);
     $this->is_builded = false;
     $this->build();
-  # report
     message::insert(new text_multiline([
       'Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".',
       'Click the button "%%_name" to save your changes!'], [
@@ -89,7 +99,6 @@ namespace effcore {
     $form->validation_cache_set('parts_'.$this->id_area, $parts);
     $this->is_builded = false;
     $this->build();
-  # report
     message::insert(new text_multiline([
       'Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".',
       'Click the button "%%_name" to save your changes!'], [
