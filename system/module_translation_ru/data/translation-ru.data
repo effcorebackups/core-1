@@ -222,8 +222,8 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна, потому что учётные данные хранилища уже были заданы.
     - Installation: Установка
     - installation: установка
-    - Instance with row_id = "%%_row_id" was inserted.: Экземпляр с row_id = "%%_row_id" был добавлен.
-    - Instance with row_id = "%%_row_id" was not inserted!: Экземпляр с row_id = "%%_row_id" не был добавлен!
+    - Instance with Row ID = "%%_row_id" was inserted.: Экземпляр с Row ID = "%%_row_id" был добавлен.
+    - Instance with Row ID = "%%_row_id" was not inserted!: Экземпляр с Row ID = "%%_row_id" не был добавлен!
     - interface: интерфейс
     - Interface: Интерфейс
     - Interfaces: Интерфейсы

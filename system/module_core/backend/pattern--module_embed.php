@@ -61,8 +61,8 @@ namespace effcore {
   # insert instances
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(0);
-      if ($c_instance->insert()) message::insert(new text('Instance with row_id = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
-      else                       message::insert(new text('Instance with row_id = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
+      if ($c_instance->insert()) message::insert(new text('Instance with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
+      else                       message::insert(new text('Instance with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(1);
     }
   # insert to boot

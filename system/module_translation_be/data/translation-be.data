@@ -222,8 +222,8 @@ translations
     - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
-    - Instance with row_id = "%%_row_id" was inserted.: Асобнік з row_id = "%%_row_id" быў дададзены.
-    - Instance with row_id = "%%_row_id" was not inserted!: Асобнік з row_id = "%%_row_id" не быў дададзены!
+    - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў дададзены.
+    - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў дададзены!
     - interface: інтэрфейс
     - Interface: Інтэрфейс
     - Interfaces: Інтэрфейсы
