@@ -17,7 +17,7 @@ forms
         - format_date|field_text
             title: Date format
             description|text
-              text: Examples: %%_examples.
+              text: Examples: %%_examples
               args
               - examples: "Y-m-d" | "d.m.Y"
             element_attributes
@@ -35,7 +35,7 @@ forms
         - format_datetime|field_text
             title: Date/time format
             description|text
-              text: Examples: %%_examples.
+              text: Examples: %%_examples
               args
               - examples: "Y-m-d H:i:s" | "d.m.Y H:i:s"
             element_attributes
@@ -46,7 +46,7 @@ forms
         - decimal_point|field_text
             title: Decimal point
             description|text
-              text: Examples: %%_examples.
+              text: Examples: %%_examples
               args
               - examples: "." | ","
             element_attributes
@@ -58,7 +58,7 @@ forms
         - thousands_separator|field_text
             title: Thousands separator
             description|text
-              text: Examples: %%_examples.
+              text: Examples: %%_examples
               args
               - examples: "" | " "
             element_attributes

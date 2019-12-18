@@ -106,8 +106,8 @@ translations
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
-    - duplicate of %%_type with id = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с id = "%%_id" в модуле "%%_module_id"
-    - duplicate of %%_type with id = "%%_id" was found: был найден дубликат типа %%_type с id = "%%_id"
+    - duplicate of %%_type with ID = "%%_id" was found in module "%%_module_id": был найден дубликат типа %%_type с ID = "%%_id" в модуле "%%_module_id"
+    - duplicate of %%_type with ID = "%%_id" was found: был найден дубликат типа %%_type с ID = "%%_id"
     - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - edit: редактировать
     - Edit: Редактировать
@@ -129,7 +129,7 @@ translations
     - Example: Пример
     - Examples: Примеры
     - examples: примеры
-    - Examples\: %%_examples.: Примеры: %%_examples.
+    - Examples\: %%_examples: Примеры: %%_examples
     - Execution: Выполнение
     - expand: развернуть
     - Expiration date: Дата окончания
