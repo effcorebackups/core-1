@@ -8,7 +8,7 @@ namespace effcore {
           class widget_selection_field_manage extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'selection_field-manage', 'data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
+  public $attributes = ['data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
   public $on_click_delete_handler;
   public $entity_name;
   public $entity_field_name;

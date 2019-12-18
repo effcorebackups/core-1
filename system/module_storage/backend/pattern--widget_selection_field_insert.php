@@ -8,7 +8,7 @@ namespace effcore {
           class widget_selection_field_insert extends container {
 
   public $tag_name = 'x-widget';
-  public $attributes = ['data-type' => 'selection_field-insert'];
+  public $attributes = ['data-type' => 'insert'];
   public $on_click_insert_handler;
 
   function build() {

@@ -17,7 +17,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       $c_weight_default = 0;
-      $widgets_manage_group = new markup('x-widgets-group', ['data-has-rearrangeable' => 'true']);
+      $widgets_manage_group = new markup('x-widgets-group', ['data-type' => 'manage', 'data-has-rearrangeable' => 'true']);
       foreach ($this->cform->validation_cache_get('fields') as $c_row_id => $c_info) {
         $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_weight_default);
         $c_widget_manage->build();

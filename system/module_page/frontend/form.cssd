@@ -280,22 +280,20 @@
   x-widget[data-type='area'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
   x-widget[data-type='area'] x-widget[data-type='insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
-  /* widget 'selection_field-manage' */
+  /* widget 'selection_fields' */
 
-  x-widget[data-type='selection_field-manage'] {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='selection_field-manage'] x-info {display: inline-block; vertical-align: middle}
-  x-widget[data-type='selection_field-manage'] x-info x-title {display: block; font-size: 1.1em}
-  x-widget[data-type='selection_field-manage'] x-info x-id {display: block; opacity: .5}
-  x-widget[data-type='selection_field-manage'] button {float: right; position: relative; z-index: 10}
+  x-widget[data-type='selection_fields'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type='selection_fields'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
+  x-widget[data-type='selection_fields'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
+  x-widget[data-type='selection_fields'] x-widgets-group[data-type='manage'] x-widget x-info x-id {display: block; opacity: .5}
+  x-widget[data-type='selection_fields'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
 
-  /* widget 'selection_field-insert' */
+  x-widget[data-type='selection_fields'] x-widget[data-type='insert'] {display: block}
+  x-widget[data-type='selection_fields'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 8px 0}
+  x-widget[data-type='selection_fields'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
+  x-widget[data-type='selection_fields'] x-widget[data-type='insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
-  x-widget[data-type='selection_field-insert'] {display: block}
-  x-widget[data-type='selection_field-insert'] x-field {display: inline-block; margin: 8px 0}
-  x-widget[data-type='selection_field-insert'] x-field label {margin-bottom: 5px}
-  x-widget[data-type='selection_field-insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
-
-  /* widget 'poll_answer-manage' */
+  /* widget 'poll_fields' */
 
   x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget {display: block; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget:last-child {border-bottom: 0}
