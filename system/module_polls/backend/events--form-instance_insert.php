@@ -7,12 +7,11 @@
 namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\field_text;
           use \effcore\fieldset;
           use \effcore\instance;
-          use \effcore\markup;
           use \effcore\page;
           use \effcore\url;
+          use \effcore\widget_poll_fields;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -23,20 +22,11 @@ namespace effcore\modules\polls {
         page::get_current()->args_set('back_insert_is_canceled', true);
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
+        $widget_answers = new widget_poll_fields;
+        $widget_answers->build();
         $fieldset_answers = new fieldset('Answers');
+        $fieldset_answers->child_insert($widget_answers, 'widget_answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
-        for ($i = 0; $i < 10; $i++) {
-        # field for answer text
-          $c_field_answer_text = new field_text('Text');
-          $c_field_answer_text->description_state = 'hidden';
-          $c_field_answer_text->build();
-          $c_field_answer_text->name_set('answer_text_'.$i);
-          $c_field_answer_text->required_set($i == 0);
-        # group field to box
-          $c_box_answer = new markup('x-widget', ['data-fields-is-inline' => 'true']);
-          $c_box_answer    ->child_insert($c_field_answer_text, 'answer_text');
-          $fieldset_answers->child_insert($c_box_answer,        'answer_'.$i );
-        }
       }
     }
   }
