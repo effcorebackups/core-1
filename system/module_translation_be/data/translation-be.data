@@ -106,8 +106,8 @@ translations
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
-    - duplicate of %%_type with ID = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу %%_type з ID = "%%_id" у модулі "%%_module_id"
-    - duplicate of %%_type with ID = "%%_id" was found: быў знойдзены дублікат тыпу %%_type з ID = "%%_id"
+    - duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі "%%_module_id"
+    - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
     - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - edit: рэдагаваць
     - Edit: Рэдагаваць
@@ -164,7 +164,7 @@ translations
     - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
-    - Field value does not match the regular expression %%_expression.: Значэнне поля не адпавядае рэгулярнаму выразу %%_expression.
+    - Field value does not match the regular expression "%%_expression".: Значэнне поля не адпавядае рэгулярнаму выразу "%%_expression".
     - Field value is less than %%_value.: Значэнне поля менш чым %%_value.
     - Field value is more than %%_value.: Значэнне поля больш чым %%_value.
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
@@ -228,7 +228,7 @@ translations
     - Interface: Інтэрфейс
     - Interfaces: Інтэрфейсы
     - interfaces: інтэрфейсы
-    - Internet Explorer below version %%_version no longer supported!: Internet Explorer ніжэй версіі %%_version больш не падтрымліваецца!
+    - Internet Explorer below version %%_number no longer supported!: Internet Explorer ніжэй версіі %%_number больш не падтрымліваецца!
     - invalid session was deleted!: Несапраўдны сеанс быў выдалены!
     - Is active: Актыўная
     - Is embed: Убудаваны
@@ -471,14 +471,14 @@ translations
     - The changes was deleted.: Змены былі выдалены.
     - The changes was saved.: Змены былі захаваны.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" - гэта значэнне чырвонай кампаненты, "cd" - зялёнай і "ef" - сіняй.
-    - The current version is %%_version_cur.: Бягучая версія %%_version_cur.
+    - The current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - the file was only partially uploaded: файл быў загружаны толькі часткова
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The PHP extension "%%_name" is not available!: PHP-пашырэнне "%%_name" недаступна!
     - The PHP extension "%%_name" is too old!: PHP-пашырэнне "%%_name" надта старое!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
-    - The required version is %%_version_req.: Патрабаваная версія %%_version_req.
+    - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
     - This combination of values is already in use!: Такая камбінацыя значэнняў ўжо выкарыстоўваецца!

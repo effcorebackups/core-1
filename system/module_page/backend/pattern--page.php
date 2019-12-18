@@ -78,7 +78,7 @@ namespace effcore {
     if ($user_agent->name == 'msie' &&
         $user_agent->name_version < 9) {
       message::insert(new text(
-        'Internet Explorer below version %%_version no longer supported!', ['version' => 9]), 'warning'
+        'Internet Explorer below version %%_number no longer supported!', ['number' => 9]), 'warning'
       );
     }
 

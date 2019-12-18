@@ -82,7 +82,7 @@ namespace effcore {
               !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
-        'Field value does not match the regular expression %%_expression.'], ['title' => translation::get($field->title), 'expression' => $pattern]
+        'Field value does not match the regular expression "%%_expression".'], ['title' => translation::get($field->title), 'expression' => $pattern]
       ));
     } else {
       return true;

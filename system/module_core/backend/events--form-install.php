@@ -36,11 +36,11 @@ namespace effcore\modules\core {
           if (!version_compare($c_version_cur, $c_version_min, '>=')) {
             message::insert(new text_multiline([
               'The PHP extension "%%_name" is too old!',
-              'The current version is %%_version_cur.',
-              'The required version is %%_version_req.'], [
-              'name'        => $c_name,
-              'version_cur' => $c_version_cur,
-              'version_req' => $c_version_min]), 'error');
+              'The current version number is %%_number_current.',
+              'The required version number is %%_number_required.'], [
+              'name'            => $c_name,
+              'number_current'  => $c_version_cur,
+              'number_required' => $c_version_min]), 'error');
             $items['~install']->disabled_set();
           }
         }
