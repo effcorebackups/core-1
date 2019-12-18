@@ -16,19 +16,29 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $c_weight_default = 0;
-      $widgets_manage_group = new markup('x-widgets-group', ['data-type' => 'manage', 'data-has-rearrangeable' => 'true']);
+      $widgets_group_manage = new markup('x-widgets-group', [
+        'data-type'              => 'manage',
+        'data-has-rearrangeable' => 'true']);
+    # widgets for manage each item
+      $c_widget_manage_weight = 0;
       foreach ($this->cform->validation_cache_get('fields') as $c_row_id => $c_info) {
-        $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_weight_default);
+        $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_widget_manage_weight);
         $c_widget_manage->build();
-        $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {$this->on_click_delete($group, $form, $npath);};
-        $widgets_manage_group->child_insert($c_widget_manage, $c_row_id);
-        $c_weight_default -= 5;}
+        $c_widget_manage_weight -= 5;
+        $widgets_group_manage->child_insert($c_widget_manage, $c_row_id);
+        $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {
+          $this->on_click_delete($group, $form, $npath);
+        };
+      }
+    # widget for insert new item
       $widget_insert = new widget_selection_field_insert;
-      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {$this->on_click_insert($group, $form, $npath, $value);};
       $widget_insert->build();
-      $this->child_insert($widgets_manage_group, 'widgets_manage_group');
-      $this->child_insert($widget_insert, 'widget_insert');
+      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {
+        $this->on_click_insert($group, $form, $npath, $value);
+      };
+    # insert all widgets
+      $this->child_insert($widgets_group_manage, 'manage');
+      $this->child_insert($widget_insert, 'insert');
       $this->is_builded = true;
     }
   }
