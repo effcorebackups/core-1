@@ -33,7 +33,7 @@ namespace effcore\modules\page {
             $c_area->build();
             $c_widget_area_parts = new widget_area_parts($c_area->id);
             $c_widget_area_parts->form_current_set($form);
-            $c_widget_area_parts->items_set($form->_instance->parts[$c_area->id] ?? []);
+            $c_widget_area_parts->items_set_once($form->_instance->parts[$c_area->id] ?? []);
             $c_widget_area_parts->build();
             $c_area->child_insert($c_widget_area_parts, 'widget_area_parts');
             $form->_widgets_area[$c_area->id] = $c_widget_area_parts;

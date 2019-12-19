@@ -66,8 +66,16 @@ namespace effcore {
   }
 
   function items_set($items) {
+    $this->cform->validation_cache_set('fields', $items);
+    if ($this->is_builded) {
+        $this->is_builded = false;
+        $this->build();
+    }
+  }
+
+  function items_set_once($items) {
     if ($this->cform->validation_cache_get('fields') === null) {
-        $this->cform->validation_cache_set('fields', $items);
+      $this->items_set($items);
     }
   }
 
