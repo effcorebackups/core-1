@@ -43,7 +43,7 @@ namespace effcore {
     }
   }
 
-  function items_get() {
+  function items_get_sorted() {
     $result = $this->cform->validation_cache_get('fields') ?: null;
     if ($result == null) return;
     if ($result != null) {
@@ -65,6 +65,10 @@ namespace effcore {
     }
   }
 
+  function items_get() {
+    return $this->cform->validation_cache_get('fields') ?: [];
+  }
+
   function items_set($items) {
     $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set('fields', $items);
@@ -81,7 +85,7 @@ namespace effcore {
   }
 
   function on_click_insert($group, $form, $npath, $value) {
-    $fields = $form->validation_cache_get('fields');
+    $fields = $this->items_get();
     $entity_info = explode('.', $value);
     $fields[$value] = new \stdClass;
     $fields[$value]->type = 'field';
@@ -101,7 +105,7 @@ namespace effcore {
   }
 
   function on_click_delete($group, $form, $npath) {
-    $fields = $form->validation_cache_get('fields');
+    $fields = $this->items_get();
     foreach ($fields as $c_row_id => $c_field) {
       if ($c_field->type              == 'field'             &&
           $c_field->entity_name       == $group->entity_name &&

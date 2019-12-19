@@ -54,7 +54,7 @@ namespace effcore\modules\page {
         if ($form->clicked_button->value_get() == 'update') {
           $all_parts = [];
           foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-            $c_parts = $c_widget->items_get();
+            $c_parts = $c_widget->items_get_sorted();
             if ($c_parts) {
               $all_parts[$c_id_area] = $c_parts;
             }

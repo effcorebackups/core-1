@@ -47,7 +47,7 @@ namespace effcore {
     }
   }
 
-  function items_get() {
+  function items_get_sorted() {
     $result = $this->cform->validation_cache_get('parts_'.$this->id_area) ?: null;
     if ($result == null) return;
     if ($result != null) {
@@ -69,6 +69,10 @@ namespace effcore {
     }
   }
 
+  function items_get() {
+    return $this->cform->validation_cache_get('parts_'.$this->id_area) ?: [];
+  }
+
   function items_set($items) {
     $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set('parts_'.$this->id_area, $items);
@@ -86,7 +90,7 @@ namespace effcore {
 
   function on_click_insert($group, $form, $npath, $value) {
     $preset = page_part_preset::select($value);
-    $parts = $form->validation_cache_get('parts_'.$this->id_area);
+    $parts = $this->items_get();
     $parts[$preset->id] = new page_part_preset_link($preset->id);
     $this->items_set($parts);
     message::insert(new text_multiline([
@@ -99,7 +103,7 @@ namespace effcore {
   }
 
   function on_click_delete($group, $form, $npath) {
-    $parts = $form->validation_cache_get('parts_'.$this->id_area);
+    $parts = $this->items_get();
     unset($parts[$group->id_preset]);
     $this->items_set($parts);
     message::insert(new text_multiline([

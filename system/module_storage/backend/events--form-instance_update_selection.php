@@ -53,7 +53,7 @@ namespace effcore\modules\storage {
       if ($entity->name == 'selection' && !empty($form->_instance)) {
         if ($form->clicked_button->value_get() == 'update') {
           $widget_fields = $form->child_select('fields')->child_select('fields')->child_select('widget_fields');
-          $form->_instance->fields = $widget_fields->items_get();
+          $form->_instance->fields = $widget_fields->items_get_sorted();
         }
       }
     }
