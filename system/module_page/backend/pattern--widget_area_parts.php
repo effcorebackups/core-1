@@ -23,7 +23,7 @@ namespace effcore {
         'data-has-rearrangeable' => 'true']);
     # widgets for manage each item
       $c_widget_manage_weight = 0;
-      foreach ($this->cform->validation_cache_get('parts_'.$this->id_area) ?? [] as $c_preset) {
+      foreach ($this->items_get() as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
           $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
           $c_widget_manage->build();

@@ -21,7 +21,7 @@ namespace effcore {
         'data-has-rearrangeable' => 'true']);
     # widgets for manage each item
       $c_widget_manage_weight = 0;
-      foreach ($this->cform->validation_cache_get('fields') as $c_row_id => $c_info) {
+      foreach ($this->items_get() as $c_row_id => $c_info) {
         $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_widget_manage_weight);
         $c_widget_manage->build();
         $c_widget_manage_weight -= 5;
