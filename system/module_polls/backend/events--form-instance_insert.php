@@ -41,7 +41,7 @@ namespace effcore\modules\polls {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
             $c_weight = 0;
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 2; $i++) {
               $c_answer_text = $items['#answer_text_'.$i]->value_get();
               if ($c_answer_text) {
                 (new instance('poll_answer', [
