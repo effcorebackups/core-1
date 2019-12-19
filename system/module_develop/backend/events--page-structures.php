@@ -82,8 +82,8 @@ namespace effcore\modules\develop {
         $c_file          = new file($c_item_info->file);
         $c_reflection    = new \ReflectionClass($c_item_full_name);
         $x_class_wrapper = new markup('x-class-wrapper');
-        $x_class         = new markup('x-class', ['title' => $c_item_info->file]);
-        $x_name          = new markup('x-name', ['title' => new text('name')], new text_simple($c_item_info->name));
+        $x_class         = new markup('x-class',     ['title' => $c_item_info->file  ]);
+        $x_name          = new markup('x-name',      ['title' => new text('name'     )], new text_simple($c_item_info->name));
         $x_namespace     = new markup('x-namespace', ['title' => new text('namespace')], $c_item_info->namespace ? '(from '.$c_item_info->namespace.')' : '');
         $x_name_wrapper  = new markup('x-name-wrapper', [], [$x_name, $x_namespace]);
         $x_attributes    = new markup('x-attributes');

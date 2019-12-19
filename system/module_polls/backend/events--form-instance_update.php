@@ -39,7 +39,7 @@ namespace effcore\modules\polls {
           $c_field_weight->name_set('answer_weight_'.$c_answer->id);
           $c_field_weight->required_set(false);
           $c_field_weight->value_set($c_answer->weight);
-        # group fields to widget 'manage'
+        # group the fields in widget 'manage'
           $c_widget_manage = new markup('x-widget', ['data-rearrangeable' => 'true', 'data-fields-is-inline' => 'true'], [], $c_answer->weight);
           $c_widget_manage ->child_insert($c_field_weight,  'weight'               );
           $c_widget_manage ->child_insert($c_field_text,    'text'                 );
