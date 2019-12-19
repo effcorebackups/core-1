@@ -44,8 +44,8 @@ namespace effcore {
   }
 
   function items_get_sorted() {
-    $buffer = [];
     $result = [];
+    $buffer = [];
     foreach ($this->items_get() as $c_row_id => $c_object) {
       $c_field_name_suffix = $c_object->entity_name.'_'.$c_object->entity_field_name;
       $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));

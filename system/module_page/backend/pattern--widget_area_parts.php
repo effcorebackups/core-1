@@ -48,25 +48,21 @@ namespace effcore {
   }
 
   function items_get_sorted() {
-    $result = $this->cform->validation_cache_get('parts_'.$this->id_area) ?: null;
-    if ($result == null) return;
-    if ($result != null) {
-      $buffer = [];
-      $sorted = [];
-      foreach ($result as $c_row_id => $c_object) {
-        $c_field_name_suffix = $c_object->id.'_'.$this->id_area;
-        $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));
-        $c_buffer_new_item = new \stdClass;
-        $c_buffer_new_item->row_id = $c_row_id;
-        $c_buffer_new_item->weight = $c_weight;
-        $c_buffer_new_item->object = $c_object;
-        $buffer[] = $c_buffer_new_item;}
-      core::array_sort_by_weight($buffer);
-      foreach ($buffer as $c_sorted)
-        $sorted[$c_sorted->row_id] =
-                $c_sorted->object;
-      return $sorted;
-    }
+    $result = [];
+    $buffer = [];
+    foreach ($this->items_get() as $c_row_id => $c_object) {
+      $c_field_name_suffix = $c_object->id.'_'.$this->id_area;
+      $c_weight = (int)(field::request_value_get('weight_'.$c_field_name_suffix));
+      $c_buffer_new_item = new \stdClass;
+      $c_buffer_new_item->row_id = $c_row_id;
+      $c_buffer_new_item->weight = $c_weight;
+      $c_buffer_new_item->object = $c_object;
+      $buffer[] = $c_buffer_new_item;}
+    core::array_sort_by_weight($buffer);
+    foreach ($buffer as $c_sorted)
+      $result[$c_sorted->row_id] =
+              $c_sorted->object;
+    return $result;
   }
 
   function items_get() {
