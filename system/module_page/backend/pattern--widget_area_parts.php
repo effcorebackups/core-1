@@ -70,6 +70,7 @@ namespace effcore {
   }
 
   function items_set($items) {
+    $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set('parts_'.$this->id_area, $items);
     if ($this->is_builded) {
         $this->is_builded = false;
@@ -87,10 +88,7 @@ namespace effcore {
     $preset = page_part_preset::select($value);
     $parts = $form->validation_cache_get('parts_'.$this->id_area);
     $parts[$preset->id] = new page_part_preset_link($preset->id);
-    $form->validation_cache_is_persistent = true;
-    $form->validation_cache_set('parts_'.$this->id_area, $parts);
-    $this->is_builded = false;
-    $this->build();
+    $this->items_set($parts);
     message::insert(new text_multiline([
       'Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".',
       'Click the button "%%_name" to save your changes!'], [
@@ -103,10 +101,7 @@ namespace effcore {
   function on_click_delete($group, $form, $npath) {
     $parts = $form->validation_cache_get('parts_'.$this->id_area);
     unset($parts[$group->id_preset]);
-    $form->validation_cache_is_persistent = true;
-    $form->validation_cache_set('parts_'.$this->id_area, $parts);
-    $this->is_builded = false;
-    $this->build();
+    $this->items_set($parts);
     message::insert(new text_multiline([
       'Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".',
       'Click the button "%%_name" to save your changes!'], [

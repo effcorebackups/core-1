@@ -66,6 +66,7 @@ namespace effcore {
   }
 
   function items_set($items) {
+    $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set('fields', $items);
     if ($this->is_builded) {
         $this->is_builded = false;
@@ -86,10 +87,7 @@ namespace effcore {
     $fields[$value]->type = 'field';
     $fields[$value]->entity_name       = $entity_info[0];
     $fields[$value]->entity_field_name = $entity_info[1];
-    $form->validation_cache_is_persistent = true;
-    $form->validation_cache_set('fields', $fields);
-    $this->is_builded = false;
-    $this->build();
+    $this->items_set($fields);
   # report
     $entity = entity::get(             $entity_info[0]);
     $entity_field = $entity->field_get($entity_info[1]);
@@ -109,10 +107,7 @@ namespace effcore {
           $c_field->entity_name       == $group->entity_name &&
           $c_field->entity_field_name == $group->entity_field_name) {
         unset($fields[$c_row_id]);
-        $form->validation_cache_is_persistent = true;
-        $form->validation_cache_set('fields', $fields);
-        $this->is_builded = false;
-        $this->build();
+        $this->items_set($fields);
       # report
         $entity = entity::get($group->entity_name);
         $entity_field = $entity ? $entity->field_get($group->entity_field_name) : null;
