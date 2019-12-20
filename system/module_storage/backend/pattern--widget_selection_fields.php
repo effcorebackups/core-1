@@ -26,15 +26,15 @@ namespace effcore {
         $c_widget_manage->build();
         $c_widget_manage_weight -= 5;
         $widgets_group_manage->child_insert($c_widget_manage, $c_row_id);
-        $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {
-          $this->on_click_delete($group, $form, $npath);
+        $c_widget_manage->on_button_click_delete_handler = function ($group, $form, $npath) {
+          $this->on_button_click_delete($group, $form, $npath);
         };
       }
     # widget for insert new item
       $widget_insert = new widget_selection_field_insert;
       $widget_insert->build();
-      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {
-        $this->on_click_insert($group, $form, $npath, $value);
+      $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
+        $this->on_button_click_insert($group, $form, $npath, $value);
       };
     # insert all widgets
       $this->child_insert($widgets_group_manage, 'manage');
@@ -80,7 +80,7 @@ namespace effcore {
     }
   }
 
-  function on_click_insert($group, $form, $npath, $value) {
+  function on_button_click_insert($group, $form, $npath, $value) {
     $fields = $this->items_get();
     $entity_info = explode('.', $value);
     $fields[$value] = new \stdClass;
@@ -100,7 +100,7 @@ namespace effcore {
     return true;
   }
 
-  function on_click_delete($group, $form, $npath) {
+  function on_button_click_delete($group, $form, $npath) {
     $fields = $this->items_get();
     foreach ($fields as $c_row_id => $c_field) {
       if ($c_field->type              == 'field'             &&

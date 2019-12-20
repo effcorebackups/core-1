@@ -29,16 +29,16 @@ namespace effcore {
           $c_widget_manage->build();
           $c_widget_manage_weight -= 5;
           $widgets_group_manage->child_insert($c_widget_manage, $c_preset->id);
-          $c_widget_manage->on_click_delete_handler = function ($group, $form, $npath) {
-            $this->on_click_delete($group, $form, $npath);
+          $c_widget_manage->on_button_click_delete_handler = function ($group, $form, $npath) {
+            $this->on_button_click_delete($group, $form, $npath);
           };
         }
       }
     # widget for insert new item
       $widget_insert = new widget_area_part_insert($this->id_area);
       $widget_insert->build();
-      $widget_insert->on_click_insert_handler = function ($group, $form, $npath, $value) {
-        $this->on_click_insert($group, $form, $npath, $value);
+      $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
+        $this->on_button_click_insert($group, $form, $npath, $value);
       };
     # insert all widgets
       $this->child_insert($widgets_group_manage, 'manage');
@@ -84,7 +84,7 @@ namespace effcore {
     }
   }
 
-  function on_click_insert($group, $form, $npath, $value) {
+  function on_button_click_insert($group, $form, $npath, $value) {
     $preset = page_part_preset::select($value);
     $parts = $this->items_get();
     $parts[$preset->id] = new page_part_preset_link($preset->id);
@@ -98,7 +98,7 @@ namespace effcore {
     return true;
   }
 
-  function on_click_delete($group, $form, $npath) {
+  function on_button_click_delete($group, $form, $npath) {
     $parts = $this->items_get();
     unset($parts[$group->id_preset]);
     $this->items_set($parts);

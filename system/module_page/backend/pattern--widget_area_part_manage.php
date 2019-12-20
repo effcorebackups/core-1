@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];
-  public $on_click_delete_handler;
+  public $on_button_click_delete_handler;
   public $id_area;
   public $id_preset;
 
@@ -50,8 +50,8 @@ namespace effcore {
   static function on_submit(&$group, $form, $npath) {
     $button_delete = $group->child_select('button_delete');
     if ($button_delete->is_clicked()) {
-      if ($group->on_click_delete_handler) {
-        return call_user_func($group->on_click_delete_handler, $group, $form, $npath);
+      if ($group->on_button_click_delete_handler) {
+        return call_user_func($group->on_button_click_delete_handler, $group, $form, $npath);
       }
     }
   }

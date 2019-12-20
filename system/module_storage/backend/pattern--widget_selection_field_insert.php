@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'insert'];
-  public $on_click_insert_handler;
+  public $on_button_click_insert_handler;
 
   function build() {
     if (!$this->is_builded) {
@@ -64,8 +64,8 @@ namespace effcore {
     $select = $group->child_select('select');
     $button = $group->child_select('button');
     if ($button->is_clicked() && $select->value_get()) {
-      if ($group->on_click_insert_handler) {
-        return call_user_func($group->on_click_insert_handler, $group, $form, $npath, $select->value_get());
+      if ($group->on_button_click_insert_handler) {
+        return call_user_func($group->on_button_click_insert_handler, $group, $form, $npath, $select->value_get());
       }
     }
   }
