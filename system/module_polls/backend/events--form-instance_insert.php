@@ -22,15 +22,14 @@ namespace effcore\modules\polls {
         page::get_current()->args_set('back_insert_is_canceled', true);
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
-        $widget_answers = new widget_poll_fields;
-        $widget_answers->unique_prefix = 'answer_';
+        $widget_answers = new widget_poll_fields('answer_');
         $widget_answers->form_current_set($form);
         $widget_answers->items_set_once([
           (object)['id' => 0, 'weight' =>  0, 'text' => 'Answer 1'],
           (object)['id' => 0, 'weight' => -5, 'text' => 'Answer 2']]);
         $widget_answers->build();
         $fieldset_answers = new fieldset('Answers');
-        $fieldset_answers->child_insert($widget_answers, 'widget_answers');
+        $fieldset_answers->child_insert($widget_answers, 'answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
         $form->_widget_answers = $widget_answers;
       }
