@@ -51,9 +51,8 @@ namespace effcore\modules\polls {
         case 'update':
           if ($entity->name == 'poll') {
             $used_ids = [];
-          # insert new answer
             foreach ($form->_widget_answers->items_get() as $c_item) {
-              if ($c_item->id != 0) $used_ids[$c_item->id] = $c_item->id;
+            # insert new answer
               if ($c_item->id == 0) {
                 (new instance('poll_answer', [
                   'id_poll' => $form->_instance->id,
@@ -61,8 +60,16 @@ namespace effcore\modules\polls {
                   'weight'  => $c_item->weight
                 ]))->insert();
               }
+            # update current answer
+              if ($c_item->id != 0) {
+                $form->_answers_rows[$c_item->id]->answer = $c_item->text;
+                $form->_answers_rows[$c_item->id]->weight = $c_item->weight;
+                $form->_answers_rows[$c_item->id]->update();
+                $used_ids[$c_item->id] =
+                          $c_item->id;
+              }
             }
-          # delete old answer
+          # delete old answers
             foreach ($form->_answers_rows as $c_row) {
               if (!isset($used_ids[$c_row->id])) {
                 $c_row->delete();
