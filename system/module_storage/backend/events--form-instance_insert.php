@@ -70,9 +70,13 @@ namespace effcore\modules\storage {
               if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
             }
           }
-            if ($form->_instance->insert())
-                 message::insert(new text('Item of type "%%_name" with ID = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-            else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
+        # insert action
+          $form->_result_insert = $form->_instance->insert();
+        # show messages
+          if ($form->_result_insert)
+               message::insert(new text('Item of type "%%_name" with ID = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+          else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
+        # going back
           if (empty(page::get_current()->args_get('back_insert_is_canceled'))) {
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
                     $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));

@@ -115,10 +115,20 @@ namespace effcore\modules\storage {
                 if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
               }
             }
-          # update values
-            if ($form->_instance->update())
+          # update action
+            $form->_result_update = $form->_instance->update();
+          # show messages
+            if ($form->_result_update)
                  message::insert(new text('Item of type "%%_name" with ID = "%%_id" was updated.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-            else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');}
+            else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not updated!', ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
+          # update 'updated' value
+            if ($form->_result_update && $entity->has_parallel_checking && $entity->ws_updated) {
+              $form->child_select('hidden_updated')->value_set(
+                $form->_instance->updated
+              );
+            }
+          }
+        # going back
           if (empty(page::get_current()->args_get('back_update_is_canceled'))) {
             url::go($back_update_0 ?: (url::back_url_get() ?: (
                     $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
