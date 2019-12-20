@@ -32,6 +32,7 @@ namespace effcore\modules\polls {
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'widget_answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
+        $form->_widget_answers = $widget_answers;
       }
     }
   }
@@ -45,16 +46,12 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
-            $c_weight = 0;
-            for ($i = 0; $i < 2; $i++) {
-              $c_answer_text = $items['#answer_text_'.$i]->value_get();
-              if ($c_answer_text) {
-                (new instance('poll_answer', [
-                  'id_poll' => $form->_instance->id,
-                  'answer'  => $c_answer_text,
-                  'weight'  => -($c_weight++ * 5)
-                ]))->insert();
-              }
+            foreach ($form->_widget_answers->items_get() as $c_item) {
+              (new instance('poll_answer', [
+                'id_poll' => $form->_instance->id,
+                'answer'  => $c_item->text,
+                'weight'  => $c_item->weight
+              ]))->insert();
             }
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
                     $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
