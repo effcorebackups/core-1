@@ -7,7 +7,9 @@
 namespace effcore\modules\polls {
           use \effcore\entity;
           use \effcore\fieldset;
+          use \effcore\instance;
           use \effcore\page;
+          use \effcore\url;
           use \effcore\widget_poll_fields;
           abstract class events_form_instance_update {
 
@@ -20,7 +22,7 @@ namespace effcore\modules\polls {
         $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
           'id_poll_!f'       => 'id_poll',
           'id_poll_operator' => '=',
-          'id_poll_!v'       => $form->_instance->id]]);
+          'id_poll_!v'       => $form->_instance->id]], 'id');
         $widget_items = [];
         foreach ($form->_answers_rows as $c_row) {
           $widget_items[] = (object)[
@@ -48,11 +50,29 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'poll') {
-            //foreach ($form->_answers_rows as $c_answer) {
-            //  $c_answer->answer = $items['#answer_text_'.  $c_answer->id]->value_get();
-            //  $c_answer->weight = $items['#answer_weight_'.$c_answer->id]->value_get();
-            //  $c_answer->update();
-            //}
+            $used_ids = [];
+          # insert new answer
+            foreach ($form->_widget_answers->items_get() as $c_item) {
+              if ($c_item->id != 0) $used_ids[$c_item->id] = $c_item->id;
+              if ($c_item->id == 0) {
+                (new instance('poll_answer', [
+                  'id_poll' => $form->_instance->id,
+                  'answer'  => $c_item->text,
+                  'weight'  => $c_item->weight
+                ]))->insert();
+              }
+            }
+          # delete old answer
+            foreach ($form->_answers_rows as $c_row) {
+              if (!isset($used_ids[$c_row->id])) {
+                $c_row->delete();
+              }
+            }
+          # reset unactual recordset
+            $form->_answers_rows = null;
+          # going back
+            url::go($back_update_0 ?: (url::back_url_get() ?: (
+                    $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
           }
           break;
       }

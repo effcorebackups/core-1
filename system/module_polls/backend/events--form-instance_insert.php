@@ -52,6 +52,7 @@ namespace effcore\modules\polls {
                 'weight'  => $c_item->weight
               ]))->insert();
             }
+          # going back
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
                     $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
           }
