@@ -25,10 +25,9 @@ namespace effcore\modules\polls {
         $widget_answers = new widget_poll_fields;
         $widget_answers->unique_prefix = 'answer_';
         $widget_answers->form_current_set($form);
-        $widget_answers->items_set_once([(object)[
-          'id'     => 0,
-          'weight' => 0,
-          'text'   => 'Answer 1']]);
+        $widget_answers->items_set_once([
+          (object)['id' => 0, 'weight' =>  0, 'text' => 'Answer 1'],
+          (object)['id' => 0, 'weight' => -5, 'text' => 'Answer 2']]);
         $widget_answers->build();
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'widget_answers');
