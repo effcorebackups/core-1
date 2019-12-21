@@ -41,7 +41,7 @@ namespace effcore\modules\develop {
             $c_extension = $functions_by_ext[$c_match[0]];
             $c_function = $c_match[0];
             $c_position = $c_match[1];
-            $statistic_by_fnc[$c_function][] = $c_position; 
+            $statistic_by_fnc[$c_function][] = $c_position;
             $statistic_by_mod[$c_module_id][$c_extension][] = $c_position;
             $statistic_by_ext[$c_extension][$c_function][] = (object)[
               'file'     => $c_path_relative,

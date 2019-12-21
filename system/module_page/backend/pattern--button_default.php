@@ -10,7 +10,7 @@ namespace effcore {
   public $title = '';
   public $attributes = [
     'tabindex' => -1,
-    'role'     => 'button-default', 
+    'role'     => 'button-default',
     'type'     => 'submit',
     'name'     => 'button'];
 

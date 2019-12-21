@@ -105,7 +105,7 @@ translations
     - Notice message #%%_number.: Уведомление №%%_number.
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
-    - Option 2 (disabled): Опция 2 (отключена) 
+    - Option 2 (disabled): Опция 2 (отключена)
     - Option 3: Опция 3
     - Option 4: Опция 4
     - Option 5 (inserted + disabled from code): Опция 5 (вставлена + отключена из кода)

@@ -4,8 +4,7 @@
   ### Copyright © 2017—2020 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-                                                                            
-  # html5 elements and attributes support:                                  
+  # html5 elements and attributes support:
   # ┌──────────────────────╥───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
   # │      ╲     attribute ║ d │ r │ r │ m │ m │ m │ m │ s │ m │ c │ p │ v │
   # │       ╲              ║ i │ e │ e │ i │ a │ i │ a │ t │ u │ h │ a │ a │
@@ -422,7 +421,7 @@ namespace effcore {
   static function request_value_get($name, $number = 0, $source = '_POST') {
     global ${$source};
     return !isset(${$source}[$name]) ? '' :
-       (is_string(${$source}[$name]) ? ${$source}[$name] : 
+       (is_string(${$source}[$name]) ? ${$source}[$name] :
         (is_array(${$source}[$name]) &&
             isset(${$source}[$name][$number]) ?
                   ${$source}[$name][$number] : ''));

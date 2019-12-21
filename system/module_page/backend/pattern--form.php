@@ -285,7 +285,7 @@ namespace effcore {
                      $hex_random;        # strlen == 8
     $validation_id.= core::signature_get($validation_id, 'form_validation', 8);
     return $validation_id;
-  } 
+  }
 
   static function validation_id_get($form) {
     if (static::validation_id_check(static::validation_id_get_raw ($form), $form))

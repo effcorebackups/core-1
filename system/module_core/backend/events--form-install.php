@@ -161,7 +161,7 @@ namespace effcore\modules\core {
           $modules            = module::get_all();
           core::array_sort_by_property($modules, 'deploy_weight');
           foreach ($modules as $c_module) {
-            if (isset($enabled_by_default[$c_module->id]) || 
+            if (isset($enabled_by_default[$c_module->id]) ||
                 isset($embed             [$c_module->id])) {
               event::start('on_module_install', $c_module->id);
               event::start('on_module_enable',  $c_module->id);
