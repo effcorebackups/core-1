@@ -20,8 +20,8 @@ namespace effcore {
   public $cform;
 
   function __construct($tag_name = null, $title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
-    if ($title      ) $this->title       = $title;
-    if ($description) $this->description = $description;
+    if ($title !== null) $this->title       = $title;
+    if ($description   ) $this->description = $description;
     parent::__construct($tag_name, $attributes, $children, $weight);
   }
 
