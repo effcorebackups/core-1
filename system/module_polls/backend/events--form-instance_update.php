@@ -33,8 +33,8 @@ namespace effcore\modules\polls {
         }
         $widget_answers = new widget_poll_fields('answer_');
         $widget_answers->form_current_set($form);
-        $widget_answers->items_set_once($widget_items);
         $widget_answers->build();
+        $widget_answers->items_set_once($widget_items);
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
