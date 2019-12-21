@@ -7,6 +7,7 @@
 namespace effcore {
           class field_checkbox_color extends field_checkbox {
 
+  public $title = 'Color';
   public $attributes = ['data-type' => 'checkbox-color'];
 
   function color_set($color_id) {

@@ -7,7 +7,7 @@
 namespace effcore {
           class field_switcher extends field_checkbox {
 
-  public $title = '';
+  public $title = null;
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'switcher'];
   public $element_attributes = [

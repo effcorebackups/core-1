@@ -7,7 +7,7 @@
 namespace effcore {
           class field_checkbox extends field_radiobutton {
 
-  public $title = '';
+  public $title = null;
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'checkbox'];
   public $element_attributes = [

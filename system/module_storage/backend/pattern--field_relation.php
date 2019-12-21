@@ -7,6 +7,7 @@
 namespace effcore {
           class field_relation extends field_select {
 
+  public $title = 'Relation';
   public $attributes = ['data-type' => 'relation'];
   public $element_attributes = [
     'name'     => 'relation',
