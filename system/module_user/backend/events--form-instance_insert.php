@@ -18,7 +18,7 @@ namespace effcore\modules\user {
     if ($entity) {
     # group 'access'
       if (!empty($entity->ws_access)) {
-        $group_access = new group_access();
+        $group_access = new group_access;
         $group_access->build();
         $form->child_select('fields')->child_insert(
           $group_access, 'group_access'

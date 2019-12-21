@@ -97,7 +97,7 @@ namespace effcore\modules\develop {
 
   static function block_events($page) {
     $targets = new markup('x-targets');
-    $report = new node();
+    $report = new node;
     $events = event::get_all();
     ksort($events);
     foreach ($events as $c_event_type => $c_events) {

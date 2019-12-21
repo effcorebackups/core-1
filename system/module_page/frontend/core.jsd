@@ -1,5 +1,5 @@
 
-  var effcore = new EffCore();
+  var effcore = new EffCore;
 
   function EffCore() {
     this.tokens = [];

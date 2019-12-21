@@ -28,7 +28,7 @@ namespace effcore\modules\core {
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'closed';
-        $c_checkboxes = new group_checkboxes();
+        $c_checkboxes = new group_checkboxes;
         $c_checkboxes->build();
         $c_fieldset->child_insert($c_checkboxes, 'checkboxes');
         $info->child_insert($c_fieldset, $c_module->id);

@@ -28,7 +28,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
 
-      $result = new node();
+      $result = new node;
       $this->attribute_insert('data-view-type', $this->view_type   );
       $this->attribute_insert('data-id',        $this->id          );
       event::start('on_decorator_build_before', $this->id, [&$this]);
@@ -40,9 +40,9 @@ namespace effcore {
         # table
         # ─────────────────────────────────────────────────────────────────────
           case 'table':
-            $thead     = new table_head    ();
-            $thead_row = new table_head_row();
-            $tbody     = new table_body    ();
+            $thead     = new table_head;
+            $thead_row = new table_head_row;
+            $tbody     = new table_body;
             $thead->child_insert($thead_row, 'head_row_main');
           # make thead
             foreach (reset($this->data) as $c_name => $c_info) {

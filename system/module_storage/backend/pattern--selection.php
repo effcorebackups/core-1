@@ -101,12 +101,12 @@ namespace effcore {
         message::insert(new text(
           'No fields for select from storage! Selection ID = "%%_id".', ['id' => $this->id]), 'error'
         );
-        return new node();
+        return new node;
       } elseif (count($used_storages) >= 2) {
         message::insert(new text(
           'Distributed queries are not supported! Selection ID = "%%_id".', ['id' => $this->id]), 'warning'
         );
-        return new node();
+        return new node;
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -146,7 +146,7 @@ namespace effcore {
                 ];
                 break;
               case 'checkbox':
-                $c_form_field = new field_checkbox();
+                $c_form_field = new field_checkbox;
                 $c_form_field->build();
                 $c_form_field->name_set('is_checked[]');
                 $c_form_field->value_set(implode('+', $c_instance->values_id_get()));

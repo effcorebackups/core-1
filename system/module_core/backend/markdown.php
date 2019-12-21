@@ -92,7 +92,7 @@ namespace effcore {
   }
 
   static function markdown_to_markup($markdown) {
-    $pool = new node();
+    $pool = new node;
     $strings = explode(nl, $markdown);
     foreach ($strings as $c_number => $c_string) {
       $c_string = str_replace(tb, '    ', $c_string);
@@ -181,9 +181,9 @@ namespace effcore {
         # insert new list item (li)
           unset($last_item->_wrapper_name);
           $new_li = new markup('li');
-          $new_li->child_insert(new node(), 'wrapper_data0');
-          $new_li->child_insert(new node(), 'wrapper_container');
-          $new_li->child_insert(new node(), 'wrapper_data1');
+          $new_li->child_insert(new node, 'wrapper_data0');
+          $new_li->child_insert(new node, 'wrapper_container');
+          $new_li->child_insert(new node, 'wrapper_data1');
           $last_item->_p_list[$l_level]->child_insert($new_li);
           static::_list_data_insert($last_item, $c_matches['return'], $c_indent);
           continue;

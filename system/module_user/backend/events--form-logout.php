@@ -25,7 +25,7 @@ namespace effcore\modules\user {
     $form->child_select('info')->child_insert(new markup('h2', [], 'Sessions'), 'title');
     $form->child_select('info')->child_insert($decorator, 'decorator');
     foreach ($sessions as $c_session) {
-      $c_checkbox = new field_checkbox();
+      $c_checkbox = new field_checkbox;
       $c_checkbox->build();
       $c_checkbox->name_set('is_checked[]');
       $c_checkbox->value_set($c_session->id);

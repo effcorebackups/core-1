@@ -56,9 +56,9 @@ namespace effcore {
 
   static function markup_get($used_dpaths) {
     $result          = new \stdClass;
-    $result->icons   = new node();
-    $result->styles  = new node();
-    $result->scripts = new node();
+    $result->icons   = new node;
+    $result->styles  = new node;
+    $result->scripts = new node;
     foreach (static::select_all() as $c_row_id => $c_items) {
       if (                            $c_items->display == null ||
           static::is_visible_by_url  ($c_items->display)        ||

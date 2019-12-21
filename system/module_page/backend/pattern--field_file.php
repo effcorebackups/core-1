@@ -280,7 +280,7 @@ namespace effcore {
 
   protected function pool_manager_rebuild() {
     $this->child_delete('manager');
-    $pool_manager = new group_checkboxes();
+    $pool_manager = new group_checkboxes;
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
   # insert 'delete' checkboxes for the old and the new items

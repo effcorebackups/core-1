@@ -34,8 +34,8 @@ namespace effcore {
       if (is_array($this->parts)) {
         foreach ($this->parts as $c_id_area => $c_parts) {
           core::array_sort_by_weight($c_parts);
-          if (!$this->child_select(            $c_id_area))
-               $this->child_insert(new node(), $c_id_area);
+          if (!$this->child_select(          $c_id_area))
+               $this->child_insert(new node, $c_id_area);
           foreach ($c_parts as $c_row_id => $c_part) {
             if ($c_part instanceof page_part_preset_link)
                 $c_part = $c_part->page_part_make();

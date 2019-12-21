@@ -26,7 +26,7 @@ namespace effcore {
       $entity_field = $entity ? $entity->field_get($this->entity_field_name) : null;
       $this->weight = (int)(field::request_value_get('weight_'.$field_name_suffix) !== '' ?
                             field::request_value_get('weight_'.$field_name_suffix) : $this->weight);
-      $field_weight = new field_weight();
+      $field_weight = new field_weight;
       $field_weight->description_state = 'hidden';
       $field_weight->build();
       $field_weight->name_set('weight_'.$field_name_suffix);

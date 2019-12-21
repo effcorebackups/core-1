@@ -23,7 +23,7 @@ namespace effcore\modules\storage {
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
       # insert widget 'Fields'
-        $widget_fields = new widget_selection_fields();
+        $widget_fields = new widget_selection_fields;
         $widget_fields->form_current_set($form);
         $widget_fields->items_set_once($form->_instance->fields);
         $widget_fields->build();
