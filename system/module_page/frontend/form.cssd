@@ -295,11 +295,8 @@
 
   /* widget 'poll_fields' */
 
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget {display: block; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget:last-child {border-bottom: 0}
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget x-draggable-icon {margin-top: 47px}
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget x-droppable-area[data-position='before'] {top: -4px}
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget x-droppable-area[data-position='after' ] {top: -3px}
+  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
 
   /* layout manager */
 
