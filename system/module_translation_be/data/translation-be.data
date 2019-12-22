@@ -88,7 +88,7 @@ translations
     - Decoration: Афармленне
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
-    - delete file "%%_name": выдаліць файл "%%_name"
+    - delete file "%%_file": выдаліць файл "%%_file"
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
     - Delete modules data: Выдаліць даныя модуляў
     - Delete: Выдаліць
@@ -196,7 +196,7 @@ translations
     - Front: Галоўная
     - Function: Функцыя
     - GiB: ГіБ
-    - go to %%_title language: перайсці на %%_title мову
+    - go to %%_language language: перайсці на %%_language мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
     - go to page #%%_number: перайсці на старонку №%%_number
     - go to page %%_link: перайсці на старонку %%_link
@@ -247,7 +247,7 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" ня быў даданы!
     - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" ня быў абноўлены!
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент тыпу "%%_type" з ID = "%%_id" быў абноўлены.
-    - Key "%%_name" does not exist!: Ключ "%%_name" не існуе!
+    - Key "%%_key" does not exist!: Ключ "%%_key" не існуе!
     - KiB: КіБ
     - Language: Мова
     - launch: запуск

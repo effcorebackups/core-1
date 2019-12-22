@@ -24,8 +24,8 @@ namespace effcore\modules\locales {
         $c_language->title_en.' ('.$c_language->title_native.')';
       $c_href = $page->args_get('base').'/'.$c_language->code;
       if (url::is_active($c_href))
-           $c_link = new markup('a', ['href' => $c_href, 'title' => translation::get('go to %%_title language', ['title' => $c_language->title_en], 'en'), 'aria-selected' => 'true'], new text_simple($c_title));
-      else $c_link = new markup('a', ['href' => $c_href, 'title' => translation::get('go to %%_title language', ['title' => $c_language->title_en], 'en')                           ], new text_simple($c_title));
+           $c_link = new markup('a', ['href' => $c_href, 'title' => translation::get('go to %%_language language', ['language' => $c_language->title_en], 'en'), 'aria-selected' => 'true'], new text_simple($c_title));
+      else $c_link = new markup('a', ['href' => $c_href, 'title' => translation::get('go to %%_language language', ['language' => $c_language->title_en], 'en')                           ], new text_simple($c_title));
       $menu->child_insert(new markup('x-language', ['data-code' => $c_language->code], $c_link), $c_language->code);
     }
     return $menu;
