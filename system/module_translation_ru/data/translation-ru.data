@@ -55,6 +55,7 @@ translations
     - Checkbox: Флажок
     - Checkboxes: Флажки
     - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
+    - Click the button "%%_title" to save your changes!: Нажмите кнопку "%%_title", чтобы сохранить Ваши изменения!
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
