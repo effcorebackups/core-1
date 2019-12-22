@@ -28,7 +28,7 @@ namespace effcore\modules\storage {
         $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
         if ($form->_instance->select()) {
           if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
-          $question = new markup('p', [], new text('Delete item of type "%%_name" with ID = "%%_id"?', ['name' => translation::get($entity->title), 'id' => $instance_id]));
+          $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => translation::get($entity->title), 'id' => $instance_id]));
           $items['info']->child_insert($question, 'question');
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
@@ -49,8 +49,8 @@ namespace effcore\modules\storage {
             $form->_result_delete = $form->_instance->delete();
           # show messages
             if ($form->_result_delete)
-                   message::insert(new text('Item of type "%%_name" with ID = "%%_id" was deleted.',     ['name' => translation::get($entity->title), 'id' => $instance_id])         );
-              else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not deleted!', ['name' => translation::get($entity->title), 'id' => $instance_id]), 'error');
+                   message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::get($entity->title), 'id' => $instance_id])         );
+              else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::get($entity->title), 'id' => $instance_id]), 'error');
           }
         # going back
           if (empty(page::get_current()->args_get('back_delete_is_canceled'))) {

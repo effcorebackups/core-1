@@ -74,8 +74,8 @@ namespace effcore\modules\storage {
           $form->_result_insert = $form->_instance->insert();
         # show messages
           if ($form->_result_insert)
-               message::insert(new text('Item of type "%%_name" with ID = "%%_id" was inserted.',     ['name' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-          else message::insert(new text('Item of type "%%_name" with ID = "%%_id" was not inserted!', ['name' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
+               message::insert(new text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+          else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
         # going back
           if (empty(page::get_current()->args_get('back_insert_is_canceled'))) {
             url::go($back_insert_0 ?: (url::back_url_get() ?: (

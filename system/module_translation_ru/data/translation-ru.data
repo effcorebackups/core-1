@@ -89,7 +89,7 @@ translations
     - Decorator parameters: Параметры оформления
     - Definition list: Список определений
     - delete file "%%_name": удалить файл "%%_name"
-    - Delete item of type "%%_name" with ID = "%%_id"?: Удалить элемент типа "%%_name" с ID = "%%_id"?
+    - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - Delete modules data: Удалить данные модулей
     - Delete: Удалить
     - delete: удалить
@@ -235,18 +235,18 @@ translations
     - Is active: Активная
     - Is embed: Встроенный
     - is embed: встроенный
-    - Item of type "%%_name" was deleted.: Элемент типа "%%_name" был удалён.
-    - Item of type "%%_name" was inserted.: Элемент типа "%%_name" был добавлен.
-    - Item of type "%%_name" was not deleted!: Элемент типа "%%_name" не был удалён!
-    - Item of type "%%_name" was not inserted!: Элемент типа "%%_name" не был добавлен!
-    - Item of type "%%_name" was not updated!: Элемент типа "%%_name" не был обновлён!
-    - Item of type "%%_name" was updated.: Элемент типа "%%_name" был обновлён.
-    - Item of type "%%_name" with ID = "%%_id" was deleted.: Элемент типа "%%_name" с ID = "%%_id" был удалён.
-    - Item of type "%%_name" with ID = "%%_id" was inserted.: Элемент типа "%%_name" с ID = "%%_id" был добавлен.
-    - Item of type "%%_name" with ID = "%%_id" was not deleted!: Элемент типа "%%_name" с ID = "%%_id" не был удалён!
-    - Item of type "%%_name" with ID = "%%_id" was not inserted!: Элемент типа "%%_name" с ID = "%%_id" не был добавлен!
-    - Item of type "%%_name" with ID = "%%_id" was not updated!: Элемент типа "%%_name" с ID = "%%_id" не был обновлён!
-    - Item of type "%%_name" with ID = "%%_id" was updated.: Элемент типа "%%_name" с ID = "%%_id" был обновлён.
+    - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
+    - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
+    - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!
+    - Item of type "%%_type" was not inserted!: Элемент типа "%%_type" не был добавлен!
+    - Item of type "%%_type" was not updated!: Элемент типа "%%_type" не был обновлён!
+    - Item of type "%%_type" was updated.: Элемент типа "%%_type" был обновлён.
+    - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент типа "%%_type" с ID = "%%_id" был удалён.
+    - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент типа "%%_type" с ID = "%%_id" был добавлен.
+    - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент типа "%%_type" с ID = "%%_id" не был удалён!
+    - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент типа "%%_type" с ID = "%%_id" не был добавлен!
+    - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент типа "%%_type" с ID = "%%_id" не был обновлён!
+    - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент типа "%%_type" с ID = "%%_id" был обновлён.
     - Key "%%_name" does not exist!: Ключ "%%_name" не существует!
     - KiB: КиБ
     - Language: Язык
