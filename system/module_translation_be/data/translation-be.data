@@ -55,7 +55,6 @@ translations
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
-    - Click the button "%%_title" to save your changes!: Націсніце кнопку "%%_title", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
@@ -104,6 +103,7 @@ translations
     - Diagrams: Дыяграмы
     - Digit: Лічба
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
+    - Do not forget to save the changes with "%%_button" button!: Не забудзьце захаваць змены кнопкай "%%_button"!
     - do not show: не паказваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
