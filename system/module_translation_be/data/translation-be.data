@@ -23,6 +23,7 @@ translations
     - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
     - Anonymous user menu: Меню ананімнага карыстальніка
     - Anonymous: Ананім
+    - Answer: Адказ
     - Answers: Адказы
     - apply: прымяніць
     - Avatar: Аватар
@@ -233,6 +234,12 @@ translations
     - Is active: Актыўная
     - Is embed: Убудаваны
     - is embed: убудаваны
+    - Item of type "%%_name" was deleted.: Элемент тыпу "%%_name" быў выдалены.
+    - Item of type "%%_name" was inserted.: Элемент тыпу "%%_name" быў дададзены.
+    - Item of type "%%_name" was not deleted!: Элемент тыпу "%%_name" ня быў выдалены!
+    - Item of type "%%_name" was not inserted!: Элемент тыпу "%%_name" ня быў дададзены!
+    - Item of type "%%_name" was not updated!: Элемент тыпу "%%_name" ня быў абноўлены!
+    - Item of type "%%_name" was updated.: Элемент тыпу "%%_name" быў абноўлены.
     - Item of type "%%_name" with ID = "%%_id" was deleted.: Элемент тыпу "%%_name" з ID = "%%_id" быў выдалены.
     - Item of type "%%_name" with ID = "%%_id" was inserted.: Элемент тыпу "%%_name" з ID = "%%_id" быў дададзены.
     - Item of type "%%_name" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў выдалены!
