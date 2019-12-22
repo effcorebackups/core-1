@@ -155,7 +155,7 @@ namespace effcore {
       $c_data = static::text_to_data($c_file->load(), $c_file);
       $c_path_relative = $c_file->path_get_relative();
       $c_dirs_relative = $c_file->dirs_get_relative();
-      $parsed[$c_path_relative] = new \stdClass();
+      $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
       if ($c_file->name == 'bundle') $c_data->bundle->path = $bundles_path[$c_data->bundle->id] = $c_dirs_relative;
@@ -202,7 +202,7 @@ namespace effcore {
       if ($c_file->name == 'module') continue;
       $c_data = static::text_to_data($c_file->load(), $c_file);
       $c_path_relative = $c_file->path_get_relative();
-      $parsed[$c_path_relative] = new \stdClass();
+      $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
     }
