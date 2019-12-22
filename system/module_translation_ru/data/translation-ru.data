@@ -399,8 +399,8 @@ translations
     - Registered: Зарегистрированный
     - registration: регистрация
     - Registration: Регистрация
-    - Related items of type "%%_name" with ID = "%%_id" was deleted.: Связанные элементы типа "%%_name" с ID = "%%_id" были удалены.
-    - Related items of type "%%_name" with ID = "%%_id" was not deleted!: Связанные элементы типа "%%_name" с ID = "%%_id" не были удалены.
+    - Related items of type "%%_type" with ID = "%%_id" was deleted.: Связанные элементы типа "%%_type" с ID = "%%_id" были удалены.
+    - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Связанные элементы типа "%%_type" с ID = "%%_id" не были удалены.
     - Relation: Связь
     - Relation\: Role + Permission: Связь: Роль + Разрешение
     - Relation\: Role + User: Связь: Роль + Пользователь
@@ -483,8 +483,8 @@ translations
     - the file was only partially uploaded: файл был загружен только частично
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
-    - The PHP extension "%%_name" is not available!: PHP-расширение "%%_name" недоступно!
-    - The PHP extension "%%_name" is too old!: PHP-расширение "%%_name" слишком старое!
+    - The PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
+    - The PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
     - the size of uploaded file more than %%_size: размер загружаемого файла больше чем %%_size
@@ -564,7 +564,7 @@ translations
     - yes: да
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
-    - You can enable or disable the language "%%_name" on page "%%_page".: Вы можете включить или отключить язык "%%_name" на странице "%%_page".
+    - You can enable or disable the language "%%_language" on page "%%_page".: Вы можете включить или отключить язык "%%_language" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.

@@ -29,16 +29,16 @@ namespace effcore\modules\core {
         $dependencies += $c_module->dependencies->php ?? [];
       foreach ($dependencies as $c_name => $c_version_min) {
         if (!extension_loaded($c_name)) {
-          message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => $c_name]), 'error');
+          message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => $c_name]), 'error');
           $items['~install']->disabled_set();
         } else {
           $c_version_cur = (new \ReflectionExtension($c_name))->getVersion();
           if (!version_compare($c_version_cur, $c_version_min, '>=')) {
             message::insert(new text_multiline([
-              'The PHP extension "%%_name" is too old!',
+              'The PHP extension "%%_extension" is too old!',
               'The current version number is %%_number_current.',
               'The required version number is %%_number_required.'], [
-              'name'            => $c_name,
+              'extension'       => $c_name,
               'number_current'  => $c_version_cur,
               'number_required' => $c_version_min]), 'error');
             $items['~install']->disabled_set();
@@ -48,8 +48,8 @@ namespace effcore\modules\core {
     # check opcache
       if (!extension_loaded('Zend OPCache')) {
         message::insert(new text_multiline([
-          'The PHP extension "%%_name" is not available!',
-          'With it, you can speed up the system from 2-3x and more.'], ['name' => 'Zend OPCache']
+          'The PHP extension "%%_extension" is not available!',
+          'With it, you can speed up the system from 2-3x and more.'], ['extension' => 'Zend OPCache']
         ), 'warning');
       }
     # check php dependencies for storage
@@ -57,11 +57,11 @@ namespace effcore\modules\core {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();
         $items['~install'      ]->disabled_set();
-        message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'error');
-        message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'error');
+        message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'error');
+        message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'error');
       } else {
-        if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_mysql' ]), 'warning');}
-        if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('The PHP extension "%%_name" is not available!', ['name' => 'pdo_sqlite']), 'warning');}
+        if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'warning');}
+        if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'warning');}
       }
     } else {
       $form->children_delete();
