@@ -223,8 +223,8 @@ translations
     - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
     - Installation: Інсталяванне
     - installation: інсталяванне
-    - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў дададзены.
-    - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў дададзены!
+    - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
+    - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў даданы!
     - interface: інтэрфейс
     - Interface: Інтэрфейс
     - Interfaces: Інтэрфейсы
@@ -235,15 +235,15 @@ translations
     - Is embed: Убудаваны
     - is embed: убудаваны
     - Item of type "%%_name" was deleted.: Элемент тыпу "%%_name" быў выдалены.
-    - Item of type "%%_name" was inserted.: Элемент тыпу "%%_name" быў дададзены.
+    - Item of type "%%_name" was inserted.: Элемент тыпу "%%_name" быў даданы.
     - Item of type "%%_name" was not deleted!: Элемент тыпу "%%_name" ня быў выдалены!
-    - Item of type "%%_name" was not inserted!: Элемент тыпу "%%_name" ня быў дададзены!
+    - Item of type "%%_name" was not inserted!: Элемент тыпу "%%_name" ня быў даданы!
     - Item of type "%%_name" was not updated!: Элемент тыпу "%%_name" ня быў абноўлены!
     - Item of type "%%_name" was updated.: Элемент тыпу "%%_name" быў абноўлены.
     - Item of type "%%_name" with ID = "%%_id" was deleted.: Элемент тыпу "%%_name" з ID = "%%_id" быў выдалены.
-    - Item of type "%%_name" with ID = "%%_id" was inserted.: Элемент тыпу "%%_name" з ID = "%%_id" быў дададзены.
+    - Item of type "%%_name" with ID = "%%_id" was inserted.: Элемент тыпу "%%_name" з ID = "%%_id" быў даданы.
     - Item of type "%%_name" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў выдалены!
-    - Item of type "%%_name" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў дададзены!
+    - Item of type "%%_name" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў даданы!
     - Item of type "%%_name" with ID = "%%_id" was not updated!: Элемент тыпу "%%_name" з ID = "%%_id" ня быў абноўлены!
     - Item of type "%%_name" with ID = "%%_id" was updated.: Элемент тыпу "%%_name" з ID = "%%_id" быў абноўлены.
     - Key "%%_name" does not exist!: Ключ "%%_name" не існуе!
