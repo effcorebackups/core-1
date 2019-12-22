@@ -117,10 +117,10 @@ translations
     - Empty module: Пустой модуль
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - English: Английский
-    - Entity "%%_name" was installed.: Сущность "%%_name" была установлена.
-    - Entity "%%_name" was not installed!: Сущность "%%_name" не была установлена!
-    - Entity "%%_name" was not uninstalled!: Сущность "%%_name" не была удалена!
-    - Entity "%%_name" was uninstalled.: Сущность "%%_name" была удалена.
+    - Entity "%%_entity" was installed.: Сущность "%%_entity" была установлена.
+    - Entity "%%_entity" was not installed!: Сущность "%%_entity" не была установлена!
+    - Entity "%%_entity" was not uninstalled!: Сущность "%%_entity" не была удалена!
+    - Entity "%%_entity" was uninstalled.: Сущность "%%_entity" была удалена.
     - Error: Ошибка
     - event: событие
     - Event: Событие

@@ -55,8 +55,8 @@ namespace effcore {
   # insert entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())
-           message::insert(new text('Entity "%%_name" was installed.',     ['name' => $c_entity->name])         );
-      else message::insert(new text('Entity "%%_name" was not installed!', ['name' => $c_entity->name]), 'error');
+           message::insert(new text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
+      else message::insert(new text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
     }
   # insert instances
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {

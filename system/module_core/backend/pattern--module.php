@@ -26,8 +26,8 @@ namespace effcore {
   # delete entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->uninstall())
-           message::insert(new text('Entity "%%_name" was uninstalled.',     ['name' => $c_entity->name])         );
-      else message::insert(new text('Entity "%%_name" was not uninstalled!', ['name' => $c_entity->name]), 'error');
+           message::insert(new text('Entity "%%_entity" was uninstalled.',     ['entity' => $c_entity->name])         );
+      else message::insert(new text('Entity "%%_entity" was not uninstalled!', ['entity' => $c_entity->name]), 'error');
     }
   # delete changes
     storage::get('files')->changes_delete_all($this->id);
