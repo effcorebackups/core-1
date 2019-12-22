@@ -10,8 +10,6 @@ namespace effcore {
   const input_min_datetime = '0000-01-01 12:00:00';
   const input_max_datetime = '9999-12-31 09:00:00';
 
-  public $is_get_utc = true;
-  public $is_set_utc = true;
   public $title = 'Local Date/Time';
   public $attributes = ['data-type' => 'datetime-local'];
   public $element_attributes = [
@@ -19,8 +17,9 @@ namespace effcore {
     'name'     => 'datetime_local',
     'required' => true,
     'min'      => self::input_min_datetime,
-    'max'      => self::input_max_datetime
-  ];
+    'max'      => self::input_max_datetime];
+  public $is_get_utc = true;
+  public $is_set_utc = true;
 
   function build() {
     if (!$this->is_builded) {
