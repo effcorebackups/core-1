@@ -76,8 +76,7 @@ namespace effcore {
       );
 
     # if user click the button (p.s. dynamic buttons may inserted before)
-      $validation_id_raw = static::validation_id_get_raw ($this);
-      if (static::validation_id_check($validation_id_raw, $this)) {
+      if (static::validation_id_check(static::validation_id_get_raw($this), $this)) {
         $this->clicked_button = $this->clicked_button_get();
         if ($this->is_submitted() && $this->clicked_button) {
 
