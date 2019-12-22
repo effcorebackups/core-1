@@ -75,8 +75,10 @@ namespace effcore\modules\polls {
                 $c_row->delete();
               }
             }
-          # reset unactual recordset
+          # reset unactual data (for load new IDs too)
             $form->_answers_rows = null;
+            $form->_widget_answers->items_reset();
+            static::on_init($event, $form, $items);
           # going back
             url::go($back_update_0 ?: (url::back_url_get() ?: (
                     $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
