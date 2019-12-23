@@ -128,6 +128,8 @@ It's recommended to use the next software:
 - Charles (mac|win|linux) for debug HTTP|S traffic and validate the markup;
 - Proxie (mac) for debug HTTP|S traffic;
 - Rested (mac) for debug HTTP traffic;
+- WebToLayers (mac) for take screenshots of web pages;
+- MetaImage (mac) for working with images metadata;
 - StarUML (mac|win|linux) for working with UML diagrams;
 - BoxySVG (mac|win) for working with SVG vector graphics;
 - Monodraw (mac) for working with pseudo-graphics;
@@ -191,4 +193,5 @@ Trademarks
 - UNIX® is a registered trademark of The Open Group.
 - VisualGrep is registered trademarks or trademarks of Davide Ficano.
 - VMware Fusion® Pro is registered trademarks or trademarks of VMware.
+- WebToLayers, MetaImage is registered trademarks or trademarks of NeededApps.
 
