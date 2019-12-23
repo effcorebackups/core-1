@@ -293,11 +293,6 @@
   x-widget[data-type='selection_fields'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
   x-widget[data-type='selection_fields'] x-widget[data-type='insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
 
-  /* widget 'poll_fields' */
-
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
-  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
-
   /* layout manager */
 
   x-layout-manager {display: block; margin: 50px 0}
@@ -337,7 +332,11 @@
                                                form#cache_update {text-align: right}
   html[data-css-path='manage-modules-install'] form#cache_update {margin: -70px 0}
 
-  /* form 'polls' */
+  /* Polls */
+
+  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
+  x-widget[data-type='poll_fields'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
 
   form#poll x-diagram {margin-top: 1em}
   form#poll x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
