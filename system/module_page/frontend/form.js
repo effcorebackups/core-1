@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function(){
           if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
           if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
           c_has_rearrangeable.querySelectorAllEff('input[data-type="weight"]').forEach(function(c_input){
-            c_input.value = c_weight--;
+            c_input.value = c_weight;
+            c_weight -= 5;
           });
       };
 
