@@ -14,14 +14,14 @@ namespace effcore\modules\storage {
           abstract class events_page {
 
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
-    $managing_group_id = page::get_current()->args_get('managing_group_id');
-    $entity_name       = page::get_current()->args_get('entity_name'      );
-    $back_return_0     = page::get_current()->args_get('back_return_0'    );
-    $back_return_n     = page::get_current()->args_get('back_return_n'    );
     if (page::get_current()->id == 'instance_select' ||
         page::get_current()->id == 'instance_insert' ||
         page::get_current()->id == 'instance_update' ||
         page::get_current()->id == 'instance_delete') {
+      $managing_group_id = page::get_current()->args_get('managing_group_id');
+      $entity_name       = page::get_current()->args_get('entity_name'      );
+      $back_return_0     = page::get_current()->args_get('back_return_0'    );
+      $back_return_n     = page::get_current()->args_get('back_return_n'    );
       $breadcrumbs->is_remove_last_link = false;
       $groups = entity::groups_managing_get();
       $entity = entity::get($entity_name);

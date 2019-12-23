@@ -53,9 +53,7 @@ namespace effcore\modules\polls {
   }
 
   static function on_submit($event, $form, $items) {
-    $back_insert_0 = page::get_current()->args_get('back_insert_0');
-    $back_insert_n = page::get_current()->args_get('back_insert_n');
-    $entity_name   = page::get_current()->args_get('entity_name'  );
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
@@ -72,6 +70,8 @@ namespace effcore\modules\polls {
             $form->_widget_answers->items_reset();
             static::on_init($event, $form, $items);
           # going back
+            $back_insert_0 = page::get_current()->args_get('back_insert_0');
+            $back_insert_n = page::get_current()->args_get('back_insert_n');
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
                     $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
           }
