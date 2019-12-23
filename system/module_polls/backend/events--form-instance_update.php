@@ -43,6 +43,22 @@ namespace effcore\modules\polls {
     }
   }
 
+  static function on_validate($event, $form, $items) {
+    $entity_name = page::get_current()->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'poll') {
+            if (count($form->_widget_answers->items_get()) < 2) {
+              $form->error_set('The poll must contain a minimum %%_number responses!', ['number' => 2]);
+            }
+          }
+          break;
+      }
+    }
+  }
+
   static function on_submit($event, $form, $items) {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);

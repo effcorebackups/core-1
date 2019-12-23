@@ -485,6 +485,7 @@ translations
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
     - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
+    - The poll must contain a minimum %%_number responses!: Апытанне павінна утрымліваць мінімум %%_number адказу!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
