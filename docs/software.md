@@ -172,16 +172,17 @@ Trademarks
 - ColorSnapper is registered trademarks or trademarks of Koole Sache.
 - Find Any Files is registered trademarks or trademarks of Thomas Tempelmann.
 - Firefox® is registered trademarks of Mozilla Foundation.
-- FreeBSD is a registered trademark of The FreeBSD Foundation.
+- FreeBSD® is a registered trademark of The FreeBSD Foundation.
 - Google™, Google Chrome™ are registered trademarks of Google Inc.
 - iOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used by Apple under license.
 - Kaleidoscope is registered trademarks or trademarks of Black Pixel LLC.
 - Microsoft, Windows®, Internet Explorer®, Edge®, Internet Information Services (IIS) are registered trademarks or trademarks of Microsoft Corporation in the U.S. and/or other countries.
 - Monodraw is registered trademarks or trademarks of Helftone Ltd.
-- MySQL is registered trademarks or trademarks of Oracle Corporation and/or its affiliates.
+- MySQL™ is registered trademarks or trademarks of Oracle Corporation and/or its affiliates.
 - Neor Profile SQL is registered trademarks or trademarks of Neor LLC.
-- NGINX is registered trademarks of Nginx Software Inc.
-- Opera® is registered trademarks or trademarks of Opera Software AS in Norway, the European Union and other countries.
+- NGINX® is registered trademarks of Nginx Software Inc.
+- Opera® is registered trademarks or trademarks of Opera Software AS.
+- PHP is registered trademarks or trademarks of PHP Group.
 - Proxie is registered trademarks or trademarks of Proxie Team.
 - RegExRX is registered trademarks or trademarks of MacTechnologies Consulting.
 - Rested is registered trademarks or trademarks of Hello, Resolven Apps.
@@ -192,6 +193,6 @@ Trademarks
 - Tower is registered trademarks or trademarks of fournova Software GmbH.
 - UNIX® is a registered trademark of The Open Group.
 - VisualGrep is registered trademarks or trademarks of Davide Ficano.
-- VMware Fusion® Pro is registered trademarks or trademarks of VMware.
+- VMware Fusion® Pro is registered trademarks or trademarks of VMware, Inc.
 - WebToLayers, MetaImage is registered trademarks or trademarks of NeededApps.
 
