@@ -327,8 +327,8 @@ translations
     - Name: Імя
     - New password must be different from the current password!: Новы пароль павінен адрознівацца ад бягучага!
     - New password: Новы пароль
-    - nickname: мянушка
-    - Nickname: Мянушка
+    - nickname: псеўданім
+    - Nickname: Псеўданім
     - No additional parameters.: Няма дадатковых параметраў.
     - No fields for select from storage! Selection ID = "%%_id".: Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id".
     - no fields: няма палёў
@@ -537,7 +537,7 @@ translations
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
-    - User with this nickname was already registered!: Карыстальнік з такой мянушкай ўжо быў зарэгістраваны!
+    - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ўжо быў зарэгістраваны!
     - User: Карыстальнік
     - Users: Карыстальнікі
     - UTC date/time: UTC дата/час
