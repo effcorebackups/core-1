@@ -26,6 +26,7 @@ namespace effcore\modules\user {
             return;
           }
         }
+        break;
     }
   }
 

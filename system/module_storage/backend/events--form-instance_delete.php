@@ -50,6 +50,8 @@ namespace effcore\modules\storage {
                    message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::get($entity->title), 'id' => $instance_id])         );
               else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::get($entity->title), 'id' => $instance_id]), 'error');
           }
+        # ↓↓↓ no break ↓↓↓
+        case 'cancel':
         # going back
           if (empty(page::get_current()->args_get('back_delete_is_canceled'))) {
             $back_delete_0 = page::get_current()->args_get('back_delete_0');
