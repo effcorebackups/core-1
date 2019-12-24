@@ -56,9 +56,9 @@ namespace effcore\modules\polls {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      switch ($form->clicked_button->value_get()) {
-        case 'insert':
-          if ($entity->name == 'poll' && !empty($form->_instance)) {
+      if ($entity->name == 'poll' && !empty($form->_instance)) {
+        switch ($form->clicked_button->value_get()) {
+          case 'insert':
             foreach ($form->_widget_answers->items_get() as $c_item) {
               (new instance('poll_answer', [
                 'id_poll' => $form->_instance->id,
@@ -69,13 +69,15 @@ namespace effcore\modules\polls {
           # reset unactual data
             $form->_widget_answers->items_reset();
             static::on_init($event, $form, $items);
+          # ↓↓↓ no break ↓↓↓
+          case 'cancel':
           # going back
             $back_insert_0 = page::get_current()->args_get('back_insert_0');
             $back_insert_n = page::get_current()->args_get('back_insert_n');
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
                     $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
-          }
-          break;
+            break;
+        }
       }
     }
   }

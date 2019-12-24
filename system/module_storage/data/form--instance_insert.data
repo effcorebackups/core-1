@@ -14,3 +14,8 @@ forms
         title: insert
         attributes
         - value: insert
+    - button_cancel|button
+        title: cancel
+        novalidate: true
+        attributes
+        - value: cancel
