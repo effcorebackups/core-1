@@ -50,19 +50,21 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'page' && !empty($form->_instance)) {
-        if ($form->clicked_button->value_get() == 'update') {
-          $all_parts = [];
-          foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-            $c_parts = $c_widget->items_get_sorted();
-            if ($c_parts) {
-              $all_parts[$c_id_area] = $c_parts;
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'page' && !empty($form->_instance)) {
+            $all_parts = [];
+            foreach ($form->_widgets_area as $c_id_area => $c_widget) {
+              $c_parts = $c_widget->items_get_sorted();
+              if ($c_parts) {
+                $all_parts[$c_id_area] = $c_parts;
+              }
             }
+            if (count($all_parts))
+                 $form->_instance->parts = $all_parts;
+            else $form->_instance->parts = null;
           }
-          if (count($all_parts))
-               $form->_instance->parts = $all_parts;
-          else $form->_instance->parts = null;
-        }
+          break;
       }
     }
   }

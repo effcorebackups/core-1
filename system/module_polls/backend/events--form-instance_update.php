@@ -63,9 +63,9 @@ namespace effcore\modules\polls {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      switch ($form->clicked_button->value_get()) {
-        case 'update':
-          if ($entity->name == 'poll') {
+      if ($entity->name == 'poll') {
+        switch ($form->clicked_button->value_get()) {
+          case 'update':
             $used_ids = [];
             foreach ($form->_widget_answers->items_get() as $c_item) {
             # insert new answer
@@ -95,11 +95,13 @@ namespace effcore\modules\polls {
             $form->_answers_rows = null;
             $form->_widget_answers->items_reset();
             static::on_init($event, $form, $items);
+          # ↓↓↓ no break ↓↓↓
+          case 'cancel':
           # going back
             url::go($back_update_0 ?: (url::back_url_get() ?: (
                     $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
-          }
-          break;
+            break;
+        }
       }
     }
   }

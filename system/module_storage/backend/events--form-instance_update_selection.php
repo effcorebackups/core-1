@@ -50,11 +50,13 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-      if ($entity->name == 'selection' && !empty($form->_instance)) {
-        if ($form->clicked_button->value_get() == 'update') {
-          $widget_fields = $form->child_select('fields')->child_select('fields')->child_select('widget_fields');
-          $form->_instance->fields = $widget_fields->items_get_sorted() ?: null;
-        }
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'selection' && !empty($form->_instance)) {
+            $widget_fields = $form->child_select('fields')->child_select('fields')->child_select('widget_fields');
+            $form->_instance->fields = $widget_fields->items_get_sorted() ?: null;
+          }
+          break;
       }
     }
   }
