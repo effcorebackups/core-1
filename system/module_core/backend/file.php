@@ -124,10 +124,10 @@ namespace effcore {
   # │ dir\           ║ should be converted to dir/                         │
   # │ \dir\          ║ should be converted to /dir/                        │
   # │ \\dir\         ║ should be ignored                                   │
-  # │ ~/dir/         ║ should be ignored or use function "realpath" before │
-  # │ ./dir/         ║ should be ignored or use function "realpath" before │
-  # │ ../dir/        ║ should be ignored or use function "realpath" before │
-  # │ /dir1/../dir3/ ║ should be ignored or use function "realpath" before │
+  # │ ~/dir/         ║ should be ignored or use function 'realpath' before │
+  # │ ./dir/         ║ should be ignored or use function 'realpath' before │
+  # │ ../dir/        ║ should be ignored or use function 'realpath' before │
+  # │ /dir1/../dir3/ ║ should be ignored or use function 'realpath' before │
   # │ dir            ║ interpreted as file with name 'dir'                 │
   # │ dir1/dir2      ║ interpreted as file with name 'dir2'                │
   # └────────────────╨─────────────────────────────────────────────────────┘
@@ -137,9 +137,9 @@ namespace effcore {
   # 1. only files with extension are available in the URL!
   # 2. if the first character in the path is '/' - it's a full path, оtherwise - relative path
   # 3. if the last  character in the path is '/' - it's a directory, оtherwise - file
-  # 4. path components like  '~/' should be ignored or use function "realpath" to resolve the path
-  # 5. path components like  './' should be ignored or use function "realpath" to resolve the path
-  # 6. path components like '../' should be ignored or use function "realpath" to resolve the path
+  # 4. path components like  '~/' should be ignored or use function 'realpath' to resolve the path
+  # 5. path components like  './' should be ignored or use function 'realpath' to resolve the path
+  # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_mode     = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;

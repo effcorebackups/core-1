@@ -16,7 +16,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-    # the method "parent::build" is not required here
+    # the method 'parent::build' is not required here
       $previous_group_name = '';
       foreach (color::get_all() as $c_color) {
         if ($previous_group_name != '' &&

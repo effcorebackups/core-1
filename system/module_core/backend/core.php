@@ -515,8 +515,8 @@ namespace effcore {
   # │   core::datetime_to_T_datetime('2030-02-01 01:02:03') │ Y-m-dTH:i:s │ 2030-02-01T01:02:03 │
   # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
   #
-  # note: each function "locale::*_format" uses local date/time format settings
-  # which were setted on the page "/manage/locales"
+  # note: each function 'locale::*_format' uses local date/time format settings
+  # which were setted on the page '/manage/locales'
 
   static function timezone_get_client() {return user::get_current()->timezone ?? 'UTC';}
   static function timezone_get_offset_sec($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}

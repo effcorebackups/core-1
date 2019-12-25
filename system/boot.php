@@ -60,7 +60,7 @@ namespace effcore {
     $file_types = file::types_get();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for system file ('.type') - show "forbidden" even if it does not exist!
+    # case for system file ('.type') - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
     if ($file_info->type !== '' &&
@@ -72,7 +72,7 @@ namespace effcore {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for protected file - show "forbidden" even if it does not exist!
+    # case for protected file - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
     if (isset($file_types[$file_info->type]->kind) &&

@@ -36,7 +36,7 @@ namespace effcore {
       $this->child_insert(new field_hidden('form_id',       $id                 ), 'hidden_id_form'      );
       $this->child_insert(new field_hidden('validation_id', $this->validation_id), 'hidden_id_validation');
 
-    # send test headers "X-Form-Validation-Id--form_id: validation_id"
+    # send test headers 'X-Form-Validation-Id--form_id: validation_id'
       if (module::is_enabled('test')) {
         header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
       }
@@ -88,7 +88,7 @@ namespace effcore {
             event::start('on_form_validate', $id, [&$this, &$this->items]);
           }
 
-        # send test headers "X-Form-Submit-Errors-Count: N"
+        # send test headers 'X-Form-Submit-Errors-Count: N'
           if (module::is_enabled('test')) {
             header('X-Form-Submit-Errors-Count: '.count(static::$errors));
           }
