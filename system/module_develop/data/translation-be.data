@@ -20,7 +20,7 @@ translations
     - Autoincrement: Аўтаінкрымент
     - autoload: аўтазагрузка
     - beginning: пачатак
-    - Call "%%_title": Выклік "%%_title"
+    - Call "%%_call": Выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: вочка №%%_number
     - Checkbox 1: Сцяжок 1

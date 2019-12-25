@@ -37,13 +37,13 @@ namespace effcore\modules\demo {
 
   static function on_validate($event, $form, $items) {
     message::insert(
-      new text('Call "%%_title"', ['title' => '\\'.__METHOD__])
+      new text('Call "%%_call"', ['call' => '\\'.__METHOD__])
     );
   }
 
   static function on_submit($event, $form, $items) {
     message::insert(
-      new text('Call "%%_title"', ['title' => '\\'.__METHOD__])
+      new text('Call "%%_call"', ['call' => '\\'.__METHOD__])
     );
     switch ($form->clicked_button->value_get()) {
       case 'send':
