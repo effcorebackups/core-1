@@ -75,10 +75,10 @@ namespace effcore {
         }
       );
 
-    # if user click the button (p.s. dynamic buttons may inserted before)
-      if (static::validation_id_check(static::validation_id_get_raw($this), $this)) {
+    # if user submit this form (p.s. dynamic buttons must inserted before)
+      if ($this->is_submitted()) {
         $this->clicked_button = $this->clicked_button_get();
-        if ($this->is_submitted() && $this->clicked_button) {
+        if ($this->clicked_button) {
 
         # call validate methods (parent must be at the end)
           if (empty($this->clicked_button->novalidate)) {
@@ -126,6 +126,17 @@ namespace effcore {
   # shared functionality
   # ─────────────────────────────────────────────────────────────────────
 
+  function is_submitted() {
+  # check if 'form_id' is match
+    if ($this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ==
+        $this->child_select('hidden_id_form')->value_get()) {
+    # check if form 'number' + 'created' + 'ip' + 'uagent' + 'random' is match
+      if (static::validation_id_check(static::validation_id_get_raw($this), $this)) {
+        return true;
+      }
+    }
+  }
+
   function id_get() {
     return $this->attribute_select('id');
   }
@@ -159,11 +170,6 @@ namespace effcore {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
       if (count($c_group) >= 2) $this->items[$c_name] =       $c_group;
     }
-  }
-
-  function is_submitted() {
-    return $this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ==
-           $this->child_select('hidden_id_form')->value_get();
   }
 
   function render() {
