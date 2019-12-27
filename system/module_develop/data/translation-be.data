@@ -173,4 +173,5 @@ translations
     - value 3.1: значэнне 3.1
     - value 3.2: значэнне 3.2
     - value 3.3: значэнне 3.3
+    - value_set: знач_уст
     - Warning message #%%_number.: Папераджальнае паведамленне №%%_number.

@@ -80,7 +80,15 @@ namespace effcore {
         $this->clicked_button = $this->clicked_button_get();
         if ($this->clicked_button) {
 
-        # call validate methods (parent must be at the end)
+        # call on_request_value_set method
+          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+            if (is_object($c_child) && method_exists($c_child, 'on_request_value_set')) {
+              $c_result = $c_child::on_request_value_set($c_child, $this, $c_npath);
+              console::log_insert('form', 'value_set', $c_npath);
+            }
+          }
+
+        # call on_validate methods (parent must be at the end)
           if (empty($this->clicked_button->novalidate)) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = $c_child::on_validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = $c_child::on_validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
@@ -104,7 +112,7 @@ namespace effcore {
             }
           }
 
-        # call submit handler (if no errors)
+        # call on_submit methods (if no errors)
           if ($this->has_error() == false) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath);}
             event::start('on_form_submit', $id, [&$this, &$this->items]);

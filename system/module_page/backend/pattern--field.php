@@ -388,10 +388,11 @@ namespace effcore {
                 ++static::$numbers[$name];
   }
 
-  static function on_validate        ($field, $form, $npath) {} /*
-  static function on_validate_phase_2($field, $form, $npath) {}
-  static function on_validate_phase_3($field, $form, $npath) {}
-  static function on_submit          ($field, $form, $npath) {} */
+  static function on_validate         ($field, $form, $npath) {} /*
+  static function on_validate_phase_2 ($field, $form, $npath) {}
+  static function on_validate_phase_3 ($field, $form, $npath) {}
+  static function on_request_value_set($field, $form, $npath) {}
+  static function on_submit           ($field, $form, $npath) {} */
 
   # ──────────────────────────────────────────────────────────────────────────────
   # functionality for $_POST and $_GET data

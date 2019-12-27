@@ -173,4 +173,5 @@ translations
     - value 3.1: значение 3.1
     - value 3.2: значение 3.2
     - value 3.3: значение 3.3
+    - value_set: знач_уст
     - Warning message #%%_number.: Предупреждающее сообщение №%%_number.
