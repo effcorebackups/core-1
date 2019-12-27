@@ -69,14 +69,16 @@ namespace effcore {
       if ($field->readonly_get()) return true;
       $new_value = static::request_value_get($name, static::current_number_get($name), $form->source_get());
       $old_value = $field->value_get_initial();
-      return static::validate_required  ($field, $form, $element, $new_value) &&
-             static::validate_minlength ($field, $form, $element, $new_value) &&
-             static::validate_maxlength ($field, $form, $element, $new_value) &&
-             static::validate_value     ($field, $form, $element, $new_value) &&
-             static::validate_min       ($field, $form, $element, $new_value) &&
-             static::validate_max       ($field, $form, $element, $new_value) &&
-             static::validate_pattern   ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
-             static::validate_uniqueness($field, $new_value,      $old_value) : true);
+      $result = static::validate_required  ($field, $form, $element, $new_value) &&
+                static::validate_minlength ($field, $form, $element, $new_value) &&
+                static::validate_maxlength ($field, $form, $element, $new_value) &&
+                static::validate_value     ($field, $form, $element, $new_value) &&
+                static::validate_min       ($field, $form, $element, $new_value) &&
+                static::validate_max       ($field, $form, $element, $new_value) &&
+                static::validate_pattern   ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
+                static::validate_uniqueness($field, $new_value,      $old_value) : true);
+      $field->value_set($new_value);
+      return $result;
     }
   }
 
