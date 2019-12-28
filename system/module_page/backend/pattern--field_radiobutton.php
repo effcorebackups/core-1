@@ -27,6 +27,16 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
+  static function on_request_value_set($field, $form, $npath) {
+    $name = $field->name_get();
+    $type = $field->type_get();
+    if ($name && $type) {
+      if ($field->disabled_get()) return true;
+      $new_values = static::request_values_get($name, $form->source_get());
+      $field->checked_set(core::in_array_string_compare($field->value_get(), $new_values));
+    }
+  }
+
   static function on_validate($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
