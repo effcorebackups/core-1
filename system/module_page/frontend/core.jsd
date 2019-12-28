@@ -35,21 +35,21 @@
        NodeList.prototype.forEach = Array.prototype.forEach;
   }
 
-  NodeList.prototype.forFirstItem =
-     Array.prototype.forFirstItem = function(handler){
+  NodeList.prototype.effForFirst =
+     Array.prototype.effForFirst = function(handler){
     if (this[0]) handler(this[0]);
   }
 
-  Document.prototype.querySelectorEff =
-      Node.prototype.querySelectorEff = function(query){
+  Document.prototype.effQuerySelector =
+      Node.prototype.effQuerySelector = function(query){
     var result = this.querySelector(query);
     if (result instanceof Node)
          return [result];
     else return [      ];
   }
 
-  Document.prototype.querySelectorAllEff =
-      Node.prototype.querySelectorAllEff = function(query){
+  Document.prototype.effQuerySelectorAll =
+      Node.prototype.effQuerySelectorAll = function(query){
     var result = this.querySelectorAll(query);
     return result instanceof NodeList ?
            result : [];
