@@ -35,7 +35,6 @@ namespace effcore {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
       $new_value = static::request_value_get($name, static::current_number_get($name), $form->source_get());
-      $new_value = str_replace(',', '.', $new_value);
       $field->value_set($new_value);
     }
   }
