@@ -17,13 +17,13 @@ namespace effcore {
   public $break_on_validate = false;
 
   function __construct($title = null, $attributes = [], $weight = 0) {
-    if ($title !== null) $this->title = $title;
+    $this->title = $title;
     parent::__construct(null, $attributes, [], $weight);
   }
 
   function build() {
     if (!$this->is_builded) {
-      $label = new text($this->title);
+      $label = new text((string)$this->title);
       $this->child_insert($label, 'label');
       $this->is_builded = true;
     }

@@ -7,7 +7,7 @@ forms
     - novalidate: true
     children
     - button_insert|button
-        title: 
+        title: null
         break_on_request_value_set: true
         break_on_validate: true
         attributes

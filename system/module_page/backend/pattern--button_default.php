@@ -7,7 +7,7 @@
 namespace effcore {
           class button_default extends button {
 
-  public $title = '';
+  public $title = null;
   public $attributes = [
     'tabindex' => -1,
     'role'     => 'button-default',

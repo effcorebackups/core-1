@@ -6,7 +6,7 @@ forms
     - novalidate: true
     children
     - button_update|button
-        title: 
+        title: null
         attributes
         - data-style: narrow-update
         - title|text

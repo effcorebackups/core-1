@@ -5,9 +5,6 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_default|button_default
-        attributes
-        - value: logout
     - info|node
     - button_logout|button
         title: logout
