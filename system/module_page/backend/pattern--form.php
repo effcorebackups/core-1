@@ -81,15 +81,17 @@ namespace effcore {
         if ($this->clicked_button) {
 
         # call on_request_value_set method
-          foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
-            if (is_object($c_child) && method_exists($c_child, 'on_request_value_set')) {
-              $c_result = $c_child::on_request_value_set($c_child, $this, $c_npath);
-              console::log_insert('form', 'value_set', $c_npath);
+          if (empty($this->clicked_button->break_on_request_value_set)) {
+            foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+              if (is_object($c_child) && method_exists($c_child, 'on_request_value_set')) {
+                $c_result = $c_child::on_request_value_set($c_child, $this, $c_npath);
+                console::log_insert('form', 'value_set', $c_npath);
+              }
             }
           }
 
         # call on_validate methods (parent must be at the end)
-          if (empty($this->clicked_button->novalidate)) {
+          if (empty($this->clicked_button->break_on_validate)) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = $c_child::on_validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = $c_child::on_validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_3')) {$c_result = $c_child::on_validate_phase_3($c_child, $this, $c_npath); console::log_insert('form', 'validation_3', $c_npath, $c_result ? 'ok' : 'warning');}

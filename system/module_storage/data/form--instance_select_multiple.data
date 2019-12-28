@@ -8,7 +8,7 @@ forms
     children
     - button_insert|button
         title: 
-        novalidate: true
+        break_on_validate: true
         attributes
         - title|text
             text: Insert a new item of type "%%_entity_title_context" on new page.

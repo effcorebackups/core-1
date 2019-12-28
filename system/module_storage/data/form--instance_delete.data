@@ -15,6 +15,6 @@ forms
         - value: delete
     - button_cancel|button
         title: cancel
-        novalidate: true
+        break_on_validate: true
         attributes
         - value: cancel

@@ -13,7 +13,8 @@ namespace effcore {
     'name' => 'button'];
 # ─────────────────────────────────────────────────────────────────────
   public $title = 'button';
-  public $novalidate = false;
+  public $break_on_request_value_set = false;
+  public $break_on_validate = false;
 
   function __construct($title = null, $attributes = [], $weight = 0) {
     if ($title !== null) $this->title = $title;
