@@ -479,6 +479,7 @@ forms
         - value: send
     - button_reset|button
         title: reset
+        break_on_request_value_set: true
         break_on_validate: true
         attributes
         - value: reset

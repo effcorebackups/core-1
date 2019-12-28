@@ -8,6 +8,7 @@ forms
     children
     - button_insert|button
         title: 
+        break_on_request_value_set: true
         break_on_validate: true
         attributes
         - title|text
