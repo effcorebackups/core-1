@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_selection_field_insert extends container {
+          class widget_selection_field_insert_old extends container {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'insert'];

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_selection_fields extends container {
+          class widget_selection_fields_old extends container {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'selection_fields'];
@@ -22,7 +22,7 @@ namespace effcore {
     # widgets for manage each item
       $c_widget_manage_weight = 0;
       foreach ($this->items_get() as $c_row_id => $c_info) {
-        $c_widget_manage = new widget_selection_field_manage($c_info->entity_name, $c_info->entity_field_name, [], $c_widget_manage_weight);
+        $c_widget_manage = new widget_selection_field_manage_old($c_info->entity_name, $c_info->entity_field_name, [], $c_widget_manage_weight);
         $c_widget_manage->build();
         $c_widget_manage_weight -= 5;
         $widgets_group_manage->child_insert($c_widget_manage, $c_row_id);
@@ -31,7 +31,7 @@ namespace effcore {
         };
       }
     # widget for insert new item
-      $widget_insert = new widget_selection_field_insert;
+      $widget_insert = new widget_selection_field_insert_old;
       $widget_insert->build();
       $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
         $this->on_button_click_insert($group, $form, $npath, $value);

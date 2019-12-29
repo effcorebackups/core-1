@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_selection_field_manage extends container {
+          class widget_selection_field_manage_old extends container {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-rearrangeable' => 'true', 'data-fields-is-inline-full' => 'true'];

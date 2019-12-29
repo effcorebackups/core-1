@@ -9,7 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\page;
-          use \effcore\widget_selection_fields;
+          use \effcore\widget_selection_fields_old;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -23,11 +23,11 @@ namespace effcore\modules\storage {
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
       # insert widget 'Fields'
-        $widget_fields = new widget_selection_fields;
-        $widget_fields->form_current_set($form);
-        $widget_fields->items_set_once($form->_instance->fields);
-        $widget_fields->build();
-        $fieldset_fields->child_insert($widget_fields, 'widget_fields');
+        $widget_fields_old = new widget_selection_fields_old;
+        $widget_fields_old->form_current_set($form);
+        $widget_fields_old->items_set_once($form->_instance->fields);
+        $widget_fields_old->build();
+        $fieldset_fields->child_insert($widget_fields_old, 'widget_fields_old');
       # insert field 'Limit'
         $field_limit = new field_number('Limit');
         $field_limit->build();
@@ -53,8 +53,8 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'selection' && !empty($form->_instance)) {
-            $widget_fields = $form->child_select('fields')->child_select('fields')->child_select('widget_fields');
-            $form->_instance->fields = $widget_fields->items_get_sorted() ?: null;
+            $widget_fields_old = $form->child_select('fields')->child_select('fields')->child_select('widget_fields_old');
+            $form->_instance->fields = $widget_fields_old->items_get_sorted() ?: null;
           }
           break;
       }
