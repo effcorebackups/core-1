@@ -54,7 +54,7 @@ namespace effcore {
   }
 
   function widget_manage_get($item, $c_row_id, $prefix) {
-    $widget_manage = new markup('x-widget', [
+    $widget = new markup('x-widget', [
       'data-rearrangeable'         => 'true',
       'data-fields-is-inline-full' => 'true'], [], $item->weight);
   # field for weight
@@ -70,7 +70,7 @@ namespace effcore {
     $field_text->build();
     $field_text->name_set($prefix.'text'.$c_row_id);
     $field_text->value_set($item->text);
-  # button for delete item
+  # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
@@ -78,21 +78,26 @@ namespace effcore {
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
     $this->_buttons['delete'.$c_row_id] = $button_delete;
-  # group the fields in widget 'manage'
-    $widget_manage->child_insert($field_weight,  'weight'       );
-    $widget_manage->child_insert($field_text,    'text'         );
-    $widget_manage->child_insert($button_delete, 'button_delete');
-    return $widget_manage;
+  # group the previous elements in widget 'manage'
+    $widget->child_insert($field_weight,  'weight'       );
+    $widget->child_insert($field_text,    'text'         );
+    $widget->child_insert($button_delete, 'button_delete');
+    return $widget;
   }
 
   function widget_insert_get() {
-    $button_insert = new button('insert', ['title' => new text('insert')]);
-    $button_insert->break_on_validate = true;
-    $button_insert->build();
-    $button_insert->value_set($this->unique_prefix.'insert');
-    $button_insert->_type = 'insert';
-    $this->_buttons['insert'] = $button_insert;
-    return $button_insert;
+    $widget = new markup('x-widget', [
+      'data-type' => 'insert']);
+  # button for insertion of the new item
+    $button = new button('insert', ['title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->build();
+    $button->value_set($this->unique_prefix.'insert');
+    $button->_type = 'insert';
+    $this->_buttons['insert'] = $button;
+  # group the previous elements in widget 'insert'
+    $widget->child_insert($button, 'button');
+    return $widget;
   }
 
   # ─────────────────────────────────────────────────────────────────────
