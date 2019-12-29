@@ -21,6 +21,7 @@ namespace effcore {
     $field_weight->name_set($prefix.'weight'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
+    $this->_fields['weight'.$c_row_id] = $field_weight;
   # data markup
     $entity = entity::get($entity_name);
     $entity_field = $entity ? $entity->field_get($entity_field_name) : null;
@@ -70,6 +71,7 @@ namespace effcore {
     $select->build();
     $select->name_set($this->unique_prefix.'insert');
     $select->required_set(false);
+    $this->_fields['insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -81,6 +83,26 @@ namespace effcore {
     $widget->child_insert($select, 'select');
     $widget->child_insert($button, 'button');
     return $widget;
+  }
+
+  function on_button_click_insert($form, $npath, $button) {
+    $min_weight = 0;
+    $items = $this->items_get();
+    foreach ($items as $c_row_id => $c_item)
+      $min_weight = min($min_weight, $c_item->weight);
+    $new_item = new \stdClass;
+    $new_item->type              = 'field';
+    $new_item->entity_name       = 'demo_data';
+    $new_item->entity_field_name = 'id';
+    $new_item->weight = $min_weight - 5;
+    $items[] = $new_item;
+    $this->items_set($items);
+    message::insert(new text_multiline([
+      'Item of type "%%_type" was inserted.',
+      'Do not forget to save the changes with "%%_button" button!'], [
+      'type'   => translation::get($this->item_title),
+      'button' => translation::get('update')]));
+    return true;
   }
 
 }}

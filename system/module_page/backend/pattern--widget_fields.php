@@ -11,6 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'fields'];
   public $unique_prefix = '';
   public $item_title = 'Item';
+  public $_fields  = [];
   public $_buttons = [];
 
   function __construct($unique_prefix = null, $attributes = [], $weight = 0) {
@@ -64,12 +65,14 @@ namespace effcore {
     $field_weight->name_set($prefix.'weight'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
+    $this->_fields['weight'.$c_row_id] = $field_weight;
   # field for text
     $field_text = new field_text;
     $field_text->description_state = 'hidden';
     $field_text->build();
     $field_text->name_set($prefix.'text'.$c_row_id);
     $field_text->value_set($item->text);
+    $this->_fields['text'.$c_row_id] = $field_text;
   # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
