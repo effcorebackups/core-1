@@ -11,6 +11,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'fields'];
   public $unique_prefix = '';
   public $item_title = 'Item';
+  public $_buttons = [];
 
   function __construct($unique_prefix = null, $attributes = [], $weight = 0) {
     if ($unique_prefix) $this->unique_prefix = $unique_prefix;
@@ -73,9 +74,10 @@ namespace effcore {
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
-    $button_delete->value_set($prefix.'button_delete'.$c_row_id);
+    $button_delete->value_set($prefix.'delete'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
+    $this->_buttons['delete'.$c_row_id] = $button_delete;
   # group the fields in widget 'manage'
     $widget_manage->child_insert($field_weight,  'weight'       );
     $widget_manage->child_insert($field_text,    'text'         );
@@ -87,7 +89,9 @@ namespace effcore {
     $button_insert = new button('insert', ['title' => new text('insert')]);
     $button_insert->break_on_validate = true;
     $button_insert->build();
-    $button_insert->value_set($this->unique_prefix.'button_insert');
+    $button_insert->value_set($this->unique_prefix.'insert');
+    $button_insert->_type = 'insert';
+    $this->_buttons['insert'] = $button_insert;
     return $button_insert;
   }
 
@@ -124,7 +128,7 @@ namespace effcore {
     $this->items_set($items);
   }
 
-  function on_button_click_insert($form, $npath) {
+  function on_button_click_insert($form, $npath, $button) {
     $min_weight = 0;
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item)
@@ -164,18 +168,11 @@ namespace effcore {
   }
 
   static function on_submit(&$group, $form, $npath) {
-    $button_insert = $group->child_select('insert');
-    if ($button_insert->is_clicked()) {
-      return $group->on_button_click_insert($form, $npath);
-    } else {
-      foreach ($group->children_select_recursive() as $c_child) {
-        if ($form->clicked_button === $c_child         &&
-                               !empty($c_child->_type) &&
-                                     ($c_child->_type) == 'delete') {
-          return $group->on_button_click_delete(
-            $form, $npath, $c_child
-          );
-        }
+    foreach ($group->_buttons as $c_button) {
+      if ($c_button->is_clicked()) {
+        if (isset($c_button->_type) && $c_button->_type == 'insert') return $group->on_button_click_insert($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type == 'delete') return $group->on_button_click_delete($form, $npath, $c_button);
+        return;
       }
     }
   }

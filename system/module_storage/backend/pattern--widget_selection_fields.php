@@ -36,6 +36,7 @@ namespace effcore {
     $button_delete->value_set($prefix.'delete'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
+    $this->_buttons['delete'.$c_row_id] = $button_delete;
   # group the fields in widget 'manage'
     $widget_manage->child_insert($field_weight,  'weight'       );
     $widget_manage->child_insert($data_markup,   'data'         );
@@ -70,6 +71,8 @@ namespace effcore {
     $button_insert->break_on_validate = true;
     $button_insert->build();
     $button_insert->value_set($this->unique_prefix.'insert');
+    $button_insert->_type = 'insert';
+    $this->_buttons['insert'] = $button_insert;
     return new node([], [$select, $button_insert]);
   }
 
