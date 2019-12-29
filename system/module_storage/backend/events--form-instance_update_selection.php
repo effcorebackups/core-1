@@ -9,6 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\page;
+          use \effcore\widget_selection_fields;
           use \effcore\widget_selection_fields_old;
           abstract class events_form_instance_update_selection {
 
@@ -23,6 +24,11 @@ namespace effcore\modules\storage {
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
       # insert widget 'Fields'
+        $widget_fields = new widget_selection_fields('field_');
+        $widget_fields->form_current_set($form);
+        $widget_fields->build();
+        $widget_fields->items_set_once($form->_instance->fields);
+        $fieldset_fields->child_insert($widget_fields, 'widget_fields');
         $widget_fields_old = new widget_selection_fields_old;
         $widget_fields_old->form_current_set($form);
         $widget_fields_old->items_set_once($form->_instance->fields);
