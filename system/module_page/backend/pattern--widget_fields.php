@@ -19,15 +19,8 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $widgets_group_manage = new markup('x-widgets-group', [
-        'data-type'              => 'manage',
-        'data-has-rearrangeable' => 'true']);
-      $button_insert = new button('insert', ['title' => new text('insert')]);
-      $button_insert->break_on_validate = true;
-      $button_insert->build();
-      $button_insert->value_set($this->unique_prefix.'button_insert');
-      $this->child_insert($widgets_group_manage, 'manage');
-      $this->child_insert($button_insert,        'insert');
+      $this->child_insert($this->widget_manage_group_get(), 'manage');
+      $this->child_insert($this->widget_insert_get      (), 'insert');
       $this->widgets_group_manage_build();
       $this->is_builded = true;
     }
@@ -50,7 +43,19 @@ namespace effcore {
     }
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  function widget_manage_group_get() {
+    return new markup('x-widgets-group', [
+      'data-type'              => 'manage',
+      'data-has-rearrangeable' => 'true'
+    ]);
+  }
+
   function widget_manage_get($item, $c_row_id, $prefix) {
+    $widget_manage = new markup('x-widget', [
+      'data-rearrangeable'         => 'true',
+      'data-fields-is-inline-full' => 'true'], [], $item->weight);
   # field for weight
     $field_weight = new field_weight;
     $field_weight->description_state = 'hidden';
@@ -72,14 +77,21 @@ namespace effcore {
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
   # group the fields in widget 'manage'
-    $widget_manage = new markup('x-widget', [
-      'data-rearrangeable'         => 'true',
-      'data-fields-is-inline-full' => 'true'], [], $item->weight);
     $widget_manage->child_insert($field_weight,  'weight'       );
     $widget_manage->child_insert($field_text,    'text'         );
     $widget_manage->child_insert($button_delete, 'button_delete');
     return $widget_manage;
   }
+
+  function widget_insert_get() {
+    $button_insert = new button('insert', ['title' => new text('insert')]);
+    $button_insert->break_on_validate = true;
+    $button_insert->build();
+    $button_insert->value_set($this->unique_prefix.'button_insert');
+    return $button_insert;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function items_get() {
     return $this->cform->validation_cache_get($this->unique_prefix.'items') ?: [];
@@ -101,6 +113,8 @@ namespace effcore {
     $this->cform->validation_cache_is_persistent = false;
     $this->cform->validation_cache_set($this->unique_prefix.'items', null);
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
