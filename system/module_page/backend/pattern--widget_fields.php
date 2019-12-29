@@ -93,7 +93,7 @@ namespace effcore {
 
   function items_set_once($items) {
     if ($this->cform->validation_cache_get($this->unique_prefix.'items') === null) {
-      $this->items_set($items);
+      $this->items_set($items ?: []);
     }
   }
 
