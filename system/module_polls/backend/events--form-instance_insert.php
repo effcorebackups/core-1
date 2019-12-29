@@ -26,8 +26,8 @@ namespace effcore\modules\polls {
         $widget_answers->form_current_set($form);
         $widget_answers->build();
         $widget_answers->items_set_once([
-          (object)['id' => 0, 'weight' =>  0, 'text' => 'Answer 1'],
-          (object)['id' => 0, 'weight' => -5, 'text' => 'Answer 2']]);
+          (object)['weight' =>  0, 'id' => 0, 'text' => 'Answer 1'],
+          (object)['weight' => -5, 'id' => 0, 'text' => 'Answer 2']]);
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');

@@ -91,10 +91,10 @@ namespace effcore {
     foreach ($items as $c_row_id => $c_item)
       $min_weight = min($min_weight, $c_item->weight);
     $new_item = new \stdClass;
+    $new_item->weight = count($items) ? $min_weight - 5 : 0;
     $new_item->type              = 'field';
     $new_item->entity_name       = 'demo_data';
     $new_item->entity_field_name = 'id';
-    $new_item->weight = $min_weight - 5;
     $items[] = $new_item;
     $this->items_set($items);
     message::insert(new text_multiline([
