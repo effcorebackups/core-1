@@ -59,7 +59,7 @@ namespace effcore {
             if (!isset($options[$c_entity->name])) {
                        $options[$c_entity->name] = new \stdClass;
                        $options[$c_entity->name]->title = $c_entity->title;}
-            $options[$c_entity->name]->values[$c_entity->name.'.'.$c_field_name] = new text_multiline([
+            $options[$c_entity->name]->values['field|'.$c_entity->name.'|'.$c_field_name] = new text_multiline([
               'title' => $c_field_info->title, 'id' => '('.$c_entity->name.'.'.$c_field_name.')'], [], ' '
             );
           }
@@ -86,23 +86,28 @@ namespace effcore {
   }
 
   function on_button_click_insert($form, $npath, $button) {
-    $min_weight = 0;
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item)
-      $min_weight = min($min_weight, $c_item->weight);
-    $new_item = new \stdClass;
-    $new_item->weight = count($items) ? $min_weight - 5 : 0;
-    $new_item->type              = 'field';
-    $new_item->entity_name       = 'demo_data';
-    $new_item->entity_field_name = 'id';
-    $items[] = $new_item;
-    $this->items_set($items);
-    message::insert(new text_multiline([
-      'Item of type "%%_type" was inserted.',
-      'Do not forget to save the changes with "%%_button" button!'], [
-      'type'   => translation::get($this->item_title),
-      'button' => translation::get('update')]));
-    return true;
+    $new_value = $this->_fields['insert']->value_get();
+    if ($new_value) {
+      $params = explode('|', $new_value);
+      $min_weight = 0;
+      $items = $this->items_get();
+      foreach ($items as $c_row_id => $c_item)
+        $min_weight = min($min_weight, $c_item->weight);
+      $new_item = new \stdClass;
+      $new_item->weight = count($items) ? $min_weight - 5 : 0;
+      $new_item->type              = $params[0];
+      $new_item->entity_name       = $params[1];
+      $new_item->entity_field_name = $params[2];
+      $items[] = $new_item;
+      $this->items_set($items);
+      $this->_fields['insert']->value_set('');
+      message::insert(new text_multiline([
+        'Item of type "%%_type" was inserted.',
+        'Do not forget to save the changes with "%%_button" button!'], [
+        'type'   => translation::get($this->item_title),
+        'button' => translation::get('update')]));
+      return true;
+    }
   }
 
 }}
