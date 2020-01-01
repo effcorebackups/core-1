@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -28,11 +29,21 @@
       <path id="spark_line-2" style="fill: %%_color_text" d="m 152.1264,14.944843 -0.8414,4.732157 1.30781,-3.74056 c -0.359,0.393 -0.21241,-0.827597 -0.46641,-0.991597 z"/>
       <path id="spark_line-3" style="fill: %%_color_text" d="M 153.658 25.44 C 154.111 25.299 153.392 24.195 153.846 24.38 L 151.586 21.536 Z"/>
       <path id="spark_line-4" style="fill: %%_color_text" d="m 149.987,25.895 0.739,-4.146 -1.131,2.539 c 0.349,-0.407 0.043,1.734 0.392,1.607 z"/>
-      <path id="spark-1"      style="fill: %%_color_text" d="M 146.825 12.052 L 146.393 12.822 L 145.633 12.371 L 145.737 13.249 L 144.858 13.33 L 145.458 13.978 L 144.794 14.56 L 145.659 14.734 L 145.465 15.593 L 146.266 15.226 L 146.616 16.037 L 147.047 15.265 L 147.807 15.716 L 147.704 14.839 L 148.583 14.759 L 147.983 14.111 L 148.647 13.529 L 147.782 13.355 L 147.975 12.494 L 147.174 12.863 Z"/>
-      <path id="spark-2"      style="fill: %%_color_text" d="M 150.497 9.768 L 150.153 10.157 L 149.773 9.804 L 149.723 10.322 L 149.209 10.259 L 149.473 10.706 L 149.019 10.958 L 149.495 11.165 L 149.278 11.635 L 149.783 11.523 L 149.884 12.032 L 150.227 11.642 L 150.608 11.995 L 150.657 11.478 L 151.172 11.541 L 150.908 11.094 L 151.361 10.842 L 150.885 10.635 L 151.103 10.164 L 150.597 10.277 Z"/>
-      <path id="spark-3"      style="fill: %%_color_text" d="m 153.28152,12.214164 -0.34193,0.388937 -0.38197,-0.351958 -0.0476,0.518132 -0.51517,-0.06059 0.26522,0.445276 -0.45231,0.254237 0.47556,0.2047 -0.21571,0.470592 0.50569,-0.113383 0.1014,0.508725 0.34293,-0.390938 0.38196,0.351956 0.0466,-0.516129 0.51517,0.0606 -0.26522,-0.445277 0.45231,-0.254237 -0.47557,-0.205701 0.21571,-0.471591 -0.50468,0.11538 z"/>
-      <path id="spark-4"      style="fill: %%_color_text" d="M 154.929 25.424 L 154.676 25.874 L 154.232 25.61 L 154.292 26.125 L 153.778 26.172 L 154.129 26.551 L 153.74 26.892 L 154.247 26.993 L 154.134 27.496 L 154.602 27.281 L 154.807 27.756 L 155.059 27.304 L 155.504 27.568 L 155.443 27.055 L 155.958 27.008 L 155.607 26.629 L 155.996 26.288 L 155.489 26.186 L 155.602 25.682 L 155.134 25.898 Z"/>
-      <path id="spark-5"      style="fill: %%_color_text" d="m 149.44159,26.544993 -0.3421,0.389796 -0.38182,-0.353115 -0.0478,0.518112 -0.51514,-0.0608 0.26603,0.445383 -0.45341,0.254054 0.47648,0.204894 -0.21691,0.470504 0.50574,-0.113174 0.10218,0.508763 0.3421,-0.390794 0.38182,0.352113 0.0478,-0.516112 0.51514,0.06081 -0.26604,-0.445384 0.45342,-0.254053 -0.47648,-0.205894 0.2169,-0.471505 -0.50573,0.115174 z"/>
+      <circle id="spark-1" r="1.5" cx="0" cy="0" style="fill: %%_color_text"/>
+      <circle id="spark-2" r="1"   cx="0" cy="0" style="fill: %%_color_text"/>
+      <circle id="spark-3" r="1"   cx="0" cy="0" style="fill: %%_color_text"/>
+      <circle id="spark-4" r="1"   cx="0" cy="0" style="fill: %%_color_text"/>
+      <circle id="spark-5" r="1"   cx="0" cy="0" style="fill: %%_color_text"/>
+      <animateMotion xlink:href="#spark-1" begin=".5s" dur=".2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-1"/></animateMotion>
+      <animateMotion xlink:href="#spark-2" begin=".2s" dur=".5s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-2"/></animateMotion>
+      <animateMotion xlink:href="#spark-3" begin=".4s" dur=".2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-3"/></animateMotion>
+      <animateMotion xlink:href="#spark-4" begin=".1s" dur=".2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-4"/></animateMotion>
+      <animateMotion xlink:href="#spark-5" begin=".3s" dur=".3s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-5"/></animateMotion>
+      <path id="spark-motion_path-1" style="fill: none; stroke: none" d="m 148.86597,17.345379 -2.19141,-3.374474"/>
+      <path id="spark-motion_path-2" style="fill: none; stroke: none" d="M 151.01793,20.659106 150.1665,10.927239"/>
+      <path id="spark-motion_path-3" style="fill: none; stroke: none" d="m 152.31126,15.835241 0.67221,-2.508706"/>
+      <path id="spark-motion_path-4" style="fill: none; stroke: none" d="m 153.589,24.618218 1.31819,2.029836"/>
+      <path id="spark-motion_path-5" style="fill: none; stroke: none" d="m 149.84081,25.055092 -0.7213,2.691913"/>
     </g>
   </g>
 
