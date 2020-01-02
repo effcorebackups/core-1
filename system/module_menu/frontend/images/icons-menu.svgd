@@ -33,10 +33,10 @@
 
   <g id="icon_home">
     <g mask="url(#pipe_smoke-mask)">
-      <path id="pipe_smoke-motion_path" style="fill: none; stroke-width: 0" d="M 39.5 21.5 L 39.5 19 C 39.5 16 37 16 37 13 C 37 10 42 10 42 7 C 42 4 37 4 37 1 C 37 -2 42 -2 42 -5"/>
-      <circle id="pipe_smoke-1" r="2" style="fill: white; fill-opacity: .5; stroke: none"/>
-      <circle id="pipe_smoke-2" r="2" style="fill: white; fill-opacity: .4; stroke: none"/>
-      <circle id="pipe_smoke-3" r="2" style="fill: white; fill-opacity: .3; stroke: none"/>
+      <path id="pipe_smoke-motion_path" style="fill: none; stroke-width: 0" d="m 0,0 v -2.5 c 0,-3 -2.5,-3 -2.5,-6 0,-3 5,-3 5,-6 0,-3 -5,-3 -5,-6 0,-3 5,-3 5,-6"/>
+      <circle id="pipe_smoke-1" cx="39.5" cy="17.5" r="2" style="fill: white; fill-opacity: .5; stroke: none"/>
+      <circle id="pipe_smoke-2" cx="39.5" cy="17.5" r="2" style="fill: white; fill-opacity: .4; stroke: none"/>
+      <circle id="pipe_smoke-3" cx="39.5" cy="17.5" r="2" style="fill: white; fill-opacity: .3; stroke: none"/>
     </g>
     <path id="pipe" style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 38 20 L 38 23.6 L 41 25.4 L 41 20 L 38 20 Z"/>
     <path id="roof" style="fill: white; fill-opacity: .3; stroke: white; stroke-width: 1px" d="M 17 29 L 32 20 L 47 29 Z"/>
