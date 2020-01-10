@@ -27,12 +27,12 @@
 
   <g id="icon_file">
     <rect id="ico_fle-list" x="0" y="35" width="20" height="19" style="fill: #ededed; stroke: none"/>
-    <path id="ico_fle-str_1" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,40 H 16"/>
-    <path id="ico_fle-str_2" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,42 H 16"/>
-    <path id="ico_fle-str_3" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,44 H 16"/>
-    <path id="ico_fle-str_4" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,46 H 16"/>
-    <path id="ico_fle-str_5" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,48 H 16"/>
-    <path id="ico_fle-str_6" style="fill: none; stroke: #747474; stroke-width: 1px" d="M 4,50 H 10"/>
+    <line id="ico_fle-str_1" x1="4" y1="40" x2="16" y2="40" style="stroke: gray"/>
+    <line id="ico_fle-str_2" x1="4" y1="42" x2="16" y2="42" style="stroke: gray"/>
+    <line id="ico_fle-str_3" x1="4" y1="44" x2="16" y2="44" style="stroke: gray"/>
+    <line id="ico_fle-str_4" x1="4" y1="46" x2="16" y2="46" style="stroke: gray"/>
+    <line id="ico_fle-str_5" x1="4" y1="48" x2="16" y2="48" style="stroke: gray"/>
+    <line id="ico_fle-str_6" x1="4" y1="50" x2="10" y2="50" style="stroke: gray"/>
   </g>
 
 </svg>
