@@ -49,15 +49,15 @@
   </g>
 
   <g id="icon_manage">
-    <path id="ico_man-tline_1" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 20 84 L 20 93.75 L 20 108"/>
-    <path id="ico_man-tline_2" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 32 84 L 32 108"/>
-    <path id="ico_man-tline_3" style="fill: none; stroke: white; stroke-width: 1px; stroke-linecap: round" d="M 44 84 L 44 108"/>
-    <path id="ico_man-tline_1-motion_path" style="fill: none; stroke-width: 0" d="M 0,0 V 15.5 0"/>
-    <path id="ico_man-tline_2-motion_path" style="fill: none; stroke-width: 0" d="m 0,-0.25 v 8 -15.5 7.5"/>
-    <path id="ico_man-tline_3-motion_path" style="fill: none; stroke-width: 0" d="M 0,0 V -15.5 0"/>
+    <line id="ico_man-tline_1" x1="20" y1="84" x2="20" y2="108" style="stroke: white; stroke-linecap: round"/>
+    <line id="ico_man-tline_2" x1="32" y1="84" x2="32" y2="108" style="stroke: white; stroke-linecap: round"/>
+    <line id="ico_man-tline_3" x1="44" y1="84" x2="44" y2="108" style="stroke: white; stroke-linecap: round"/>
     <circle cx="20" cy="88"  id="ico_man-thand_1" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1"/>
     <circle cx="32" cy="96"  id="ico_man-thand_2" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1"/>
     <circle cx="44" cy="104" id="ico_man-thand_3" r="2.5" style="fill: white; fill-opacity: .5; stroke: white; stroke-opacity: 1"/>
+    <path id="ico_man-tline_1-motion_path" style="fill: none; stroke-width: 0" d="M 0,0 V 15.5 0"/>
+    <path id="ico_man-tline_2-motion_path" style="fill: none; stroke-width: 0" d="m 0,-0.25 v 8 -15.5 7.5"/>
+    <path id="ico_man-tline_3-motion_path" style="fill: none; stroke-width: 0" d="M 0,0 V -15.5 0"/>
     <animateMotion xlink:href="#ico_man-thand_1" dur="8s" repeatCount="indefinite"><mpath xlink:href="#ico_man-tline_1-motion_path"/></animateMotion>
     <animateMotion xlink:href="#ico_man-thand_2" dur="8s" repeatCount="indefinite"><mpath xlink:href="#ico_man-tline_2-motion_path"/></animateMotion>
     <animateMotion xlink:href="#ico_man-thand_3" dur="8s" repeatCount="indefinite"><mpath xlink:href="#ico_man-tline_3-motion_path"/></animateMotion>
