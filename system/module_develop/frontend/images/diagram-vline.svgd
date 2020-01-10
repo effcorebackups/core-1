@@ -20,6 +20,6 @@
     </rdf:RDF>
   </metadata>
 
-  <path id="vline" d="M 15,0 V 90" style="stroke: %%_color_relation; stroke-width: 1px"/>
+  <line id="vline" x1="15" y1="0" x2="15" y2="90" style="stroke: %%_color_relation"/>
 
 </svg>
