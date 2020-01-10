@@ -26,22 +26,22 @@
   </g>
 
   <g id="icon_insert">
-    <path id="ico_ins-line-1" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 10 25 L 10 35"/>
-    <path id="ico_ins-line-2" style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round" d="M 5 30 L 15 30"/>
+    <line id="ico_ins-line-1" x1="5"  y1="30" x2="15" y2="30" style="stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round"/>
+    <line id="ico_ins-line-2" x1="10" y1="25" x2="10" y2="35" style="stroke: %%_color_main; stroke-width: 2px; stroke-linecap: round"/>
   </g>
 
   <g id="icon_update">
     <g id="icon_upd-pencil" transform="matrix(0.866026, 0.5, -0.5, 0.866026, 26.08975, 1.631742)">
-      <path style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round" d="M 10 55 L 12 52 L 8 52 Z"></path>
-      <path style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round" d="M 12 52 L 12 44 L 8 44 L 8 52 Z"></path>
-      <path style="fill: none; stroke: %%_color_main; stroke-width: 2px; stroke-linecap: butt" d="M 10 44 L 10 52"></path>
+      <path style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round" d="M 10 55 L 12 52 L 8 52 Z"/>
+      <rect x="8" y="44" width="4" height="8" rx="0.02" ry="0.02" style="stroke: %%_color_main; fill: none"/>
+      <line x1="10" y1="52" x2="10" y2="44" style="stroke: %%_color_main; stroke-width: 2px"/>
     </g>
-    <path id="icon_upd-paper" style="fill: none; stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round" d="M 5 55 L 15 55"/>
+    <line id="icon_upd-paper" x1="5" y1="55" x2="15" y2="55" style="stroke: %%_color_main; stroke-width: 1px; stroke-linecap: round"/>
   </g>
 
   <g id="icon_delete">
-    <path id="ico_del-line-1" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5 75 L 15 65"/>
-    <path id="ico_del-line-2" style="fill: none; stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round" d="M 5 65 L 15 75"/>
+    <line id="ico_del-line-1" x1="5" y1="65" x2="15" y2="75" style="stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round"/>
+    <line id="ico_del-line-2" x1="5" y1="75" x2="15" y2="65" style="stroke: %%_color_warning; stroke-width: 2px; stroke-linecap: round"/>
   </g>
 
 </svg>
