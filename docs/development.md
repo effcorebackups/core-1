@@ -63,7 +63,7 @@ About forms
 
 1. It's not recommended to use DISABLED|READONLY text fields with shared
    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
-   state from field and change the field VALUE and submit the form - after
+   state from field and change the field VALUE and submit the form — after
    this action the new VALUE will be set to the next field with
    shared NAME.
 

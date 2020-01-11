@@ -34,7 +34,7 @@ it's can see that the developers of such projects are people with the
 different skill levels and which located in different parts of the planet.
 Incoordination in their actions and different views on solutions
 in the project is only part of the problem.
-Second significant flaw - this is an extensive way to develop code in such
+Second significant flaw — this is an extensive way to develop code in such
 projects as opposed to intensive, i.e. instead of creating own code,
 they usually take another library which it's written not clear by whom
 and it's not clear by where and try to combine it with a group of the
@@ -70,12 +70,12 @@ File organization
 
 In each module everything necessary for frontend development
 is stored in the "module_*/frontend" directory,
-and for backend development - in the "module_*/backend" directory.
+and for backend development — in the "module_*/backend" directory.
 All NoSQL data is located in a directory "module_*/data".
 
 In fact, the operation of the files does not depend on their location
 and if necessary they will still be found and processed, and their
-location in certain directories - it's only an organizational measure
+location in certain directories — it's only an organizational measure
 designed to facilitate the work with the system.
 
 
@@ -128,9 +128,9 @@ As solutions to increase the level of security were used:
 - the ability to get a page assembly hash in the system console;
 - CAPTCHA base module.
 
-Determinism in the system work - another important factor.
+Determinism in the system work — another important factor.
 With the same input parameters, the same result should be reproduced
-regardless of platform and as result - complete rejection of
+regardless of platform and as result — complete rejection of
 functions which work depends on the environment (for example "setlocale"
 and others).
 
@@ -149,7 +149,7 @@ in text format in a file of type "*.data", like YAML, but has a more
 stringent rules such as "each string can contain the only one
 phrase in the form "key: value".
 
-It's comfortable for controlling changes in the code - any change
+It's comfortable for controlling changes in the code — any change
 of one key or value will be highlighted in "git diff" with just one line.
 Also, this format significantly speeds up parsing the files.
 
@@ -170,7 +170,7 @@ can have any nesting levels and contain inside any other objects or
 arrays.
 
 After parsing "*.data" files, the result is converted to PHP code (single
-tree of objects - instances of class-patterns), after which it's
+tree of objects — instances of class-patterns), after which it's
 saved to files "dynamic/cache/cache-*.php" separately for each kind of
 entity, as shown in the example below:
 - dynamic/cache/data--blocks.php
@@ -343,7 +343,7 @@ The project does not implement and considers the CSS and JS streaming
 compression technology obsolete due to the following reasons:
 - 1 to 10 KiB text files are compressed, that with modern data
   transfer rate is not significant, at the same time, compression
-  takes web server resources, and for unpacking - the client (which
+  takes web server resources, and for unpacking — the client (which
   ultimately affects the battery charge of mobile clients).
 - for CSS, a file size above 10 KiB is considered to be the result
   of improper cascading of styles and/or usage of disastrous
@@ -392,7 +392,7 @@ administrator can change the design of all available elements (for example,
 activate the light design theme). There is also a list of the layouts which
 available in the system.
 
-The system operates with only one type of file collection - these are modules.
+The system operates with only one type of file collection — these are modules.
 There are no a themes which familiar to many people.
 
 However, nothing prevents to create a theme in the form of a module,
@@ -434,7 +434,7 @@ The "Changes" mechanism modifies the global NoSQL tree, which, after clearing
 the cache, will be converted by the system into PHP code.
 
 After creating own module with the necessary settings the deployment process
-will look extremely simple - just install the system and enable own module.
+will look extremely simple — just install the system and enable own module.
 
 
 Localization
@@ -446,7 +446,7 @@ It's assumed that for each language version of the site/portal,
 the administrator organizes his own subdomain.
 In many cases, different language versions of a site/portal differ
 not only in content, but also in a structure. For example, the main menu in one
-language version may have one set of menu items, and on another - completely different,
+language version may have one set of menu items, and on another — completely different,
 in this case, the names of the menu items and their addresses and count will differ.
 That is why it was decided not to complicate the system and not to introduce
 in many aspects useless functionality.
