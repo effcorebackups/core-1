@@ -237,15 +237,15 @@ translations
     - is embed: убудаваны
     - Item of type "%%_type" was deleted.: Элемент тыпу "%%_type" быў выдалены.
     - Item of type "%%_type" was inserted.: Элемент тыпу "%%_type" быў даданы.
-    - Item of type "%%_type" was not deleted!: Элемент тыпу "%%_type" ня быў выдалены!
-    - Item of type "%%_type" was not inserted!: Элемент тыпу "%%_type" ня быў даданы!
-    - Item of type "%%_type" was not updated!: Элемент тыпу "%%_type" ня быў абноўлены!
+    - Item of type "%%_type" was not deleted!: Элемент тыпу "%%_type" не быў выдалены!
+    - Item of type "%%_type" was not inserted!: Элемент тыпу "%%_type" не быў даданы!
+    - Item of type "%%_type" was not updated!: Элемент тыпу "%%_type" не быў абноўлены!
     - Item of type "%%_type" was updated.: Элемент тыпу "%%_type" быў абноўлены.
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
-    - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_type" з ID = "%%_id" ня быў выдалены!
-    - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" ня быў даданы!
-    - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" ня быў абноўлены!
+    - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены!
+    - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў даданы!
+    - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" не быў абноўлены!
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент тыпу "%%_type" з ID = "%%_id" быў абноўлены.
     - Key "%%_key" does not exist!: Ключ "%%_key" не існуе!
     - KiB: КіБ
@@ -536,7 +536,7 @@ translations
     - User type: Тып карыстальніка
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
-    - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
+    - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты не быў зарэгістраваны!
     - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ужо быў зарэгістраваны!
     - User: Карыстальнік
     - Users: Карыстальнікі
