@@ -22,7 +22,7 @@ translations
     - beginning: пачатак
     - Call "%%_call": Выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
-    - cell #%%_number: вочка №%%_number
+    - cell #%%_number: ячэйка №%%_number
     - Checkbox 1: Сцяжок 1
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
@@ -75,7 +75,7 @@ translations
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
-    - head cell #%%_number: загалоўная вочка №%%_number
+    - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
     - Indexes: Індэксы
     - init.: ініцыял.

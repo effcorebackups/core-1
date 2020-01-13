@@ -117,8 +117,8 @@ translations
     - Empty module: Пусты модуль
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - English: Англійская
-    - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была заінсталявана.
-    - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была заінсталявана!
+    - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была інсталявана.
+    - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была інсталявана!
     - Entity "%%_entity" was not uninstalled!: Сутнасць "%%_entity" не была выдалена!
     - Entity "%%_entity" was uninstalled.: Сутнасць "%%_entity" была выдалена.
     - Error: Памылка
@@ -457,8 +457,8 @@ translations
     - Switchers: Выключальнікі
     - system logotype: лагатып сістэмы
     - System menu: Меню сістэмнае
-    - System was installed.: Сістэма была заінсталявана.
-    - System was not installed!: Сістэма не была заінсталявана.
+    - System was installed.: Сістэма была інсталявана.
+    - System was not installed!: Сістэма не была інсталявана.
     - System: Сістэма
     - Table prefix: Прэфікс табліц
     - Table: Табліца
@@ -486,7 +486,7 @@ translations
     - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
     - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
     - The poll must contain a minimum %%_number responses!: Апытанне павінна утрымліваць мінімум %%_number адказу!
-    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдаляны модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
+    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
@@ -530,7 +530,7 @@ translations
     - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
-    - User agent: Карыстальніцкі агент
+    - User agent: Агент карыстальніка
     - User name: Імя карыстальніка
     - User roles: Ролі карыстальніка
     - User type: Тып карыстальніка
@@ -545,7 +545,7 @@ translations
     - Val.: Знач.
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
     - Value: Значэнне
-    - Values: Значэння
+    - Values: Значэнні
     - Version: Версія
     - version: версія
     - View more: Глядзець больш
