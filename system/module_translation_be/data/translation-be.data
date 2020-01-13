@@ -5,7 +5,7 @@ translations
     - - no -: - няма -
     - - select -: - абраць -
     - %%_entity_title_context\: delete: %%_entity_title_context: выдаліць
-    - %%_entity_title_context\: insert: %%_entity_title_context: ўставіць
+    - %%_entity_title_context\: insert: %%_entity_title_context: уставіць
     - %%_entity_title_context\: update: %%_entity_title_context: абнавіць
     - A new password was sent to the selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - a php extension stopped the file upload: php-пашырэнне спыніла загрузку файла
@@ -56,7 +56,7 @@ translations
     - Checkboxes: Сцяжкі
     - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
-    - click to open the tab "%%_title": націсніце, каб адкрыць ўкладку "%%_title"
+    - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
     - Color: Колер
     - Colors was applied.: Колеры былі ўжыты.
@@ -537,7 +537,7 @@ translations
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты ня быў зарэгістраваны!
-    - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ўжо быў зарэгістраваны!
+    - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ужо быў зарэгістраваны!
     - User: Карыстальнік
     - Users: Карыстальнікі
     - UTC date/time: UTC дата/час
