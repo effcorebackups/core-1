@@ -272,7 +272,7 @@ namespace effcore {
         $is_postinit        = $reflection->implementsInterface('\\effcore\\has_postinit'       );
         if ($is_postconstructor)
              $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$class_name).'\');'.nl;
-        else $result = $prefix.' = new \\'.$class_name.'();'.nl;
+        else $result = $prefix.' = new \\'.$class_name.';'.nl;
         foreach ($data as $c_key => $c_value) {
           if (array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
           $result.= static::data_to_code($c_value, $prefix.'->'.$c_key, $defaults[$c_key] ?? null);
