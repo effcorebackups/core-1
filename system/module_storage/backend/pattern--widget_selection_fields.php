@@ -10,7 +10,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'selection_fields'];
   public $item_title = 'Field';
 
-  function widget_manage_get($item, $c_row_id, $prefix, $entity_name = 'demo_data', $entity_field_name = 'id') {
+  function widget_manage_get($item, $c_row_id, $prefix) {
     $widget = new markup('x-widget', [
       'data-rearrangeable'         => 'true',
       'data-fields-is-inline-full' => 'true'], [], $item->weight);
@@ -23,13 +23,13 @@ namespace effcore {
     $field_weight->value_set($item->weight);
     $this->_fields['weight'.$c_row_id] = $field_weight;
   # data markup
-    $entity = entity::get($entity_name);
-    $entity_field = $entity ? $entity->field_get($entity_field_name) : null;
+    $entity = entity::get($item->entity_name);
+    $entity_field = $entity ? $entity->field_get($item->entity_field_name) : null;
     $data_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'),
         'id'    => new markup('x-id',    [], [
-                   new text_simple($entity_name      ), '.',
-                   new text_simple($entity_field_name)]) ]);
+                   new text_simple($item->entity_name      ), '.',
+                   new text_simple($item->entity_field_name)]) ]);
   # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
@@ -84,6 +84,8 @@ namespace effcore {
     $widget->child_insert($button, 'button');
     return $widget;
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
     $new_value = $this->_fields['insert']->value_get();
