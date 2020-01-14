@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_parts extends container {
+          class widget_area_parts_old extends container {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'area'];
@@ -25,7 +25,7 @@ namespace effcore {
       $c_widget_manage_weight = 0;
       foreach ($this->items_get() as $c_preset) {
         if ($c_preset instanceof page_part_preset_link) {
-          $c_widget_manage = new widget_area_part_manage($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
+          $c_widget_manage = new widget_area_part_manage_old($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
           $c_widget_manage->build();
           $c_widget_manage_weight -= 5;
           $widgets_group_manage->child_insert($c_widget_manage, $c_preset->id);
@@ -35,7 +35,7 @@ namespace effcore {
         }
       }
     # widget for insert new item
-      $widget_insert = new widget_area_part_insert($this->id_area);
+      $widget_insert = new widget_area_part_insert_old($this->id_area);
       $widget_insert->build();
       $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
         $this->on_button_click_insert($group, $form, $npath, $value);
