@@ -53,16 +53,16 @@ namespace effcore\modules\page {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'page' && !empty($form->_instance)) {
-            //$all_parts = [];
-            //foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-            //  $c_parts = $c_widget->items_get_sorted();
-            //  if ($c_parts) {
-            //    $all_parts[$c_id_area] = $c_parts;
-            //  }
-            //}
-            //if (count($all_parts))
-            //     $form->_instance->parts = $all_parts;
-            //else $form->_instance->parts = null;
+            $all_parts = [];
+            foreach ($form->_widgets_area as $c_id_area => $c_widget) {
+              $c_parts = $c_widget->items_get();
+              if ($c_parts) {
+                $all_parts[$c_id_area] = $c_parts;
+              }
+            }
+            if (count($all_parts))
+                 $form->_instance->parts = $all_parts;
+            else $form->_instance->parts = null;
           }
           break;
       }
