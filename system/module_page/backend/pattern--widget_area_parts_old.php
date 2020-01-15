@@ -17,34 +17,34 @@ namespace effcore {
   }
 
   function build() {
-    if (!$this->is_builded) {
-      $widgets_group_manage = new markup('x-widgets-group', [
-        'data-type'              => 'manage',
-        'data-has-rearrangeable' => 'true']);
-    # widgets for manage each item
-      $c_widget_manage_weight = 0;
-      foreach ($this->items_get() as $c_preset) {
-        if ($c_preset instanceof page_part_preset_link) {
-          $c_widget_manage = new widget_area_part_manage_old($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
-          $c_widget_manage->build();
-          $c_widget_manage_weight -= 5;
-          $widgets_group_manage->child_insert($c_widget_manage, $c_preset->id);
-          $c_widget_manage->on_button_click_delete_handler = function ($group, $form, $npath) {
-            $this->on_button_click_delete($group, $form, $npath);
-          };
-        }
-      }
-    # widget for insert new item
-      $widget_insert = new widget_area_part_insert_old($this->id_area);
-      $widget_insert->build();
-      $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
-        $this->on_button_click_insert($group, $form, $npath, $value);
-      };
-    # insert all widgets
-      $this->child_insert($widgets_group_manage, 'manage');
-      $this->child_insert($widget_insert, 'insert');
-      $this->is_builded = true;
-    }
+//    if (!$this->is_builded) {
+//      $widgets_group_manage = new markup('x-widgets-group', [
+//        'data-type'              => 'manage',
+//        'data-has-rearrangeable' => 'true']);
+//    # widgets for manage each item
+//      $c_widget_manage_weight = 0;
+//      foreach ($this->items_get() as $c_preset) {
+//        if ($c_preset instanceof page_part_preset_link) {
+//          $c_widget_manage = new widget_area_part_manage_old($this->id_area, $c_preset->id, [], $c_widget_manage_weight);
+//          $c_widget_manage->build();
+//          $c_widget_manage_weight -= 5;
+//          $widgets_group_manage->child_insert($c_widget_manage, $c_preset->id);
+//          $c_widget_manage->on_button_click_delete_handler = function ($group, $form, $npath) {
+//            $this->on_button_click_delete($group, $form, $npath);
+//          };
+//        }
+//      }
+//    # widget for insert new item
+//      $widget_insert = new widget_area_part_insert_old($this->id_area);
+//      $widget_insert->build();
+//      $widget_insert->on_button_click_insert_handler = function ($group, $form, $npath, $value) {
+//        $this->on_button_click_insert($group, $form, $npath, $value);
+//      };
+//    # insert all widgets
+//      $this->child_insert($widgets_group_manage, 'manage');
+//      $this->child_insert($widget_insert, 'insert');
+//      $this->is_builded = true;
+//    }
   }
 
   function items_get_sorted() {
@@ -66,22 +66,22 @@ namespace effcore {
   }
 
   function items_get() {
-    return $this->cform->validation_cache_get('parts_'.$this->id_area) ?: [];
+//    return $this->cform->validation_cache_get('parts_'.$this->id_area) ?: [];
   }
 
   function items_set($items) {
-    $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set('parts_'.$this->id_area, $items);
-    if ($this->is_builded) {
-        $this->is_builded = false;
-        $this->build();
-    }
+//    $this->cform->validation_cache_is_persistent = true;
+//    $this->cform->validation_cache_set('parts_'.$this->id_area, $items);
+//    if ($this->is_builded) {
+//        $this->is_builded = false;
+//        $this->build();
+//    }
   }
 
   function items_set_once($items) {
-    if ($this->cform->validation_cache_get('parts_'.$this->id_area) === null) {
-      $this->items_set($items ?: []);
-    }
+//    if ($this->cform->validation_cache_get('parts_'.$this->id_area) === null) {
+//      $this->items_set($items ?: []);
+//    }
   }
 
   function on_button_click_insert($group, $form, $npath, $value) {

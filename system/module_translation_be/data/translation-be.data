@@ -54,7 +54,6 @@ translations
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
-    - Click the button "%%_name" to save your changes!: Націсніце кнопку "%%_name", каб захаваць Вашыя змяненні!
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
@@ -361,8 +360,6 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID бацькі
-    - Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".: Частка старонкі з ID = "%%_id_page_part" была выдалена з вобласці з ID = "%%_id_area".
-    - Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".: Частка старонкі з ID = "%%_id_page_part" была ўстаўлена ў вобласць з ID = "%%_id_area".
     - Password recovery on %%_domain: Аднаўленне пароля на %%_domain
     - Password: Пароль
     - Path: Шлях

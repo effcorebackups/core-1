@@ -54,7 +54,6 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флажок
     - Checkboxes: Флажки
-    - Click the button "%%_name" to save your changes!: Нажмите кнопку "%%_name", чтобы сохранить Ваши изменения!
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
@@ -361,8 +360,6 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID родителя
-    - Part of the page with ID = "%%_id_page_part" was deleted from the area with ID = "%%_id_area".: Часть страницы с ID = "%%_id_page_part" была удалена из области с ID = "%%_id_area".
-    - Part of the page with ID = "%%_id_page_part" was inserted to the area with ID = "%%_id_area".: Часть страницы с ID = "%%_id_page_part" была вставлена в область с ID = "%%_id_area".
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
     - Path: Путь
