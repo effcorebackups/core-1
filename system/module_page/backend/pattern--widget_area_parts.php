@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_parts extends widget_fields {
 
   public $attributes = ['data-type' => 'area_parts'];
-  public $item_title = 'Part';
+  public $item_title = 'Page part';
   public $id_area;
 
   function __construct($unique_prefix, $id_area, $attributes = [], $weight = 0) {
@@ -68,7 +68,7 @@ namespace effcore {
         core::array_sort_text($c_group->values);
       }
     }
-    $select = new field_select('Insert field');
+    $select = new field_select('Insert part');
     $select->values = $options;
     $select->build();
     $select->name_set($this->unique_prefix.'insert');
