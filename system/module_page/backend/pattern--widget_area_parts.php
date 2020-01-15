@@ -89,13 +89,6 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_cache_update($form, $npath) {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      $c_item->weight = (int)$this->_fields['weight'.$c_row_id]->value_get();}
-    $this->items_set($items);
-  }
-
   function on_button_click_insert($form, $npath, $button) {
     $new_value = $this->_fields['insert']->value_get();
     if ($new_value) {
