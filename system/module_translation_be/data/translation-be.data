@@ -49,7 +49,7 @@ translations
     - Canvas: Палатно
     - Charset: Кадзіроўка
     - Check directory permissions.: Праверце дазвалення каталога.
-    - Check field again before submit.: Праверце поле зноў перад адпраўкай.
+    - Check field again before submit.: Зноў праверце поле перад адпраўкай.
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
@@ -304,8 +304,8 @@ translations
     - missing a temporary directory: адсутнічае часовы каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
-    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў заінсталяваны.
-    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў заінсталяваны!
+    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
+    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
     - Module as an example of an empty module.: Модуль як прыклад пустога модуля.
     - Module data "%%_title" (%%_id) was removed.: Даныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for decoration example.: Модуль для прыкладу афармлення.
@@ -405,11 +405,11 @@ translations
     - Relations: Сувязі
     - Relations\: Role + Permission: Сувязі: Роля + Дазваленне
     - Relations\: Role + User: Сувязі: Роля + Карыстальнік
-    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і унясіце змены зноў, каб прадухіліць нязладжанасць дзеянняў.
+    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
     - Report: Справаздача
     - reset: скід
-    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце уліковыя даныя сховішча ў "%%_file" альбо заінсталюйце гэтую сістэму зноў на старонцы: %%_link
+    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце уліковыя даныя сховішча ў "%%_file" альбо зноў заінсталюйце гэтую сістэму на старонцы: %%_link
     - right to left: справа налева
     - role: роля
     - Role: Роля
