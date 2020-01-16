@@ -21,7 +21,6 @@ translations
     - All colors: Усе колеры
     - All users: Усе карыстальнікі
     - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
-    - Anonymous user menu: Меню ананімнага карыстальніка
     - Anonymous: Ананім
     - Answer: Адказ
     - Answers: Адказы
@@ -291,7 +290,9 @@ translations
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
     - Menu Main: Меню Галоўнае
+    - Menu Registered user: Меню Карыстальнік зарэгістраваны
     - Menu system: Меню сістэмнае
+    - Menu User anonymous: Меню Карыстальнік ананімны
     - Menu: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
@@ -392,7 +393,6 @@ translations
     - Recovery: Аднаўленне
     - Register user: Зарэгістраваць карыстальніка
     - register: зарэгістраваць
-    - Registered user menu: Меню зарэгістраванага карыстальніка
     - Registered users: Зарэгістраваныя карыстальнікі
     - Registered: Зарэгістраваны
     - registration: рэгістрацыя
