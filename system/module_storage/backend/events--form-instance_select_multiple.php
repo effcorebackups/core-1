@@ -21,6 +21,7 @@ namespace effcore\modules\storage {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
+      $form->attribute_insert('data-entity', $entity_name);
       $selection = new selection;
       $selection->id = 'instance_select_multiple-'.$entity->name;
       $selection->pager_is_enabled = true;
