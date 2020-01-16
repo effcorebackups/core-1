@@ -160,5 +160,5 @@ instances
     entity_name: tree
     values
     - id: main
-    - title: Menu Main
+    - title: Main menu
     - is_embed: 1

@@ -22,6 +22,8 @@ translations
     - All users: Усе карыстальнікі
     - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
     - Anonymous: Ананім
+    - Anonymous user: Ананімны карыстальнік
+    - Anonymous users: Ананімныя карыстальнікі
     - Answer: Адказ
     - Answers: Адказы
     - apply: прымяніць
@@ -289,10 +291,8 @@ translations
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
-    - Menu Main: Меню Галоўнае
-    - Menu Registered user: Меню Карыстальнік зарэгістраваны
-    - Menu System: Меню Сістэмнае
-    - Menu User anonymous: Меню Карыстальнік ананімны
+    - Main menu: Галоўнае меню
+    - System menu: Сістэмнае меню
     - Menu: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
@@ -393,6 +393,7 @@ translations
     - Recovery: Аднаўленне
     - Register user: Зарэгістраваць карыстальніка
     - register: зарэгістраваць
+    - Registered user: Зарэгістраваны карыстальнік
     - Registered users: Зарэгістраваныя карыстальнікі
     - Registered: Зарэгістраваны
     - registration: рэгістрацыя

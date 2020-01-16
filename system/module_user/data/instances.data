@@ -108,7 +108,7 @@ instances
     entity_name: tree
     values
     - id: user_registered
-    - title: Menu Registered user
+    - title: Registered user
     - title_is_visible: 0
     - is_embed: 1
     - access
@@ -118,7 +118,7 @@ instances
     entity_name: tree
     values
     - id: user_anonymous
-    - title: Menu User anonymous
+    - title: Anonymous user
     - title_is_visible: 0
     - is_embed: 1
     - access
