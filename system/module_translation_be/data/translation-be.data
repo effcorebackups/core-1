@@ -17,7 +17,7 @@ translations
     - actions: дзеянні
     - Actions: Дзеянні
     - Administrators: Адміністратары
-    - All caches was reset.: Усе кэшы былі скінуты.
+    - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
     - All users: Усе карыстальнікі
     - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
@@ -47,7 +47,7 @@ translations
     - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
     - cancel: адмяніць
     - Canvas: Палатно
-    - Charset: Кадоўка
+    - Charset: Кадзіроўка
     - Check directory permissions.: Праверце дазвалення каталога.
     - Check field again before submit.: Праверце поле зноў перад адпраўкай.
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
@@ -317,7 +317,7 @@ translations
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with polls.: Модуль для працы з апытаннямі.
-    - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазволамі.
+    - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазваленнямі.
     - Module ID: ID модуля
     - Module: Модуль
     - Modules: Модулі
