@@ -273,6 +273,7 @@ translations
     - Logic: Логика
     - login: вход
     - Login: Вход
+    - Logotype Main: Логотип Главный
     - Logotype: Логотип
     - Logotypes: Логотипы
     - logout: выход
@@ -280,9 +281,7 @@ translations
     - LOST PART: ПОТЕРЯННАЯ ЧАСТЬ
     - Main color: Основной цвет
     - Main colors: Основные цвета
-    - Main logotype: Логотип основной
-    - Main menu: Основное меню
-    - Main system module.: Основной модуль системы.
+    - Main system module.: Главный модуль системы.
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
@@ -291,6 +290,7 @@ translations
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
+    - Menu Main: Меню Главное
     - Menu system: Меню системное
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная

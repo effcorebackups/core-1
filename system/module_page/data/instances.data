@@ -6,7 +6,7 @@ instances
     entity_name: logotype
     values
     - id: main
-    - title: Main logotype
+    - title: Logotype Main
     - url: /
     - path: null
     - is_embed: 1
@@ -160,5 +160,5 @@ instances
     entity_name: tree
     values
     - id: main
-    - title: Main menu
+    - title: Menu Main
     - is_embed: 1
