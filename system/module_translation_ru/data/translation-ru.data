@@ -291,7 +291,7 @@ translations
     - Menu active: Меню активное
     - Menu Main: Меню Главное
     - Menu Registered user: Меню Пользователь зарегистрированный
-    - Menu system: Меню системное
+    - Menu System: Меню Системное
     - Menu User anonymous: Меню Пользователь анонимный
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
@@ -454,7 +454,6 @@ translations
     - Switcher: Выключатель
     - Switchers: Выключатели
     - system logotype: логотип системы
-    - System menu: Меню системное
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система

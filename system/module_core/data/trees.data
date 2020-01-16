@@ -1,7 +1,7 @@
 trees
 - system|tree
     id: system
-    title: Menu system
+    title: Menu System
     title_is_visible: 0
     access
       roles
