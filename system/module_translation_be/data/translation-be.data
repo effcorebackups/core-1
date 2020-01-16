@@ -29,9 +29,6 @@ translations
     - apply: прымяніць
     - Avatar: Аватар
     - Belarusian: Беларускі
-    - Breadcrumbs System: Хлебныя крошкі Сістэмныя
-    - Breadcrumbs User anonymous: Хлебныя крошкі Карыстальнік ананімны
-    - Breadcrumbs User registered: Хлебныя крошкі Карыстальнік зарэгістраваны
     - Build number: Нумар зборкі
     - bundle build number: нумар зборкі пакету
     - bundle description: апісанне пакету
@@ -291,6 +288,7 @@ translations
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Memory for PHP (bytes): Памяць для PHP (байты)
+    - Menu / breadcrumbs: Меню / хлебныя крошкі
     - Menu active: Меню актыўнае
     - Menu: Меню
     - Menu\: link active: Меню: спасылка актыўная
@@ -453,6 +451,7 @@ translations
     - success: поспех
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
+    - System breadcrumbs: Сістэмныя хлебныя крошкі
     - system logotype: лагатып сістэмы
     - System menu: Сістэмнае меню
     - System was installed.: Сістэма была інсталявана.

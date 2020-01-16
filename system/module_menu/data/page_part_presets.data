@@ -9,19 +9,19 @@ page_part_presets
     source: trees/core/system
 - breadcrumbs_system|page_part_preset
     id: breadcrumbs_system
-    managing_group: Menu
-    managing_title: Breadcrumbs System
+    managing_group: Menu / breadcrumbs
+    managing_title: System breadcrumbs
     type: link
     source: breadcrumbs/core/system
 - breadcrumbs_user_registered|page_part_preset
     id: breadcrumbs_user_registered
-    managing_group: Menu
-    managing_title: Breadcrumbs User registered
+    managing_group: Menu / breadcrumbs
+    managing_title: Registered user
     type: link
     source: breadcrumbs/core/user_registered
 - breadcrumbs_user_anonymous|page_part_preset
     id: breadcrumbs_user_anonymous
-    managing_group: Menu
-    managing_title: Breadcrumbs User anonymous
+    managing_group: Menu / breadcrumbs
+    managing_title: Anonymous user
     type: link
     source: breadcrumbs/core/user_anonymous
