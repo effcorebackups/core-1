@@ -219,7 +219,7 @@ translations
     - insertion: устаўка
     - Install: Інсталяваць
     - install: Інсталяваць
-    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі зададзены.
+    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі ўсталяваны.
     - Installation: Інсталяванне
     - installation: інсталяванне
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
@@ -253,7 +253,7 @@ translations
     - Layout "Simple": Макет "Просты"
     - Layout: Макет
     - Layouts: Макеты
-    - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць яго значэнне.
+    - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
     - left to right: злева направа
     - License agreement: Ліцэнзійнае пагадненне
     - light preset: светлая перадусталёўка
@@ -405,7 +405,7 @@ translations
     - Relations: Сувязі
     - Relations\: Role + Permission: Сувязі: Роля + Дазваленне
     - Relations\: Role + User: Сувязі: Роля + Карыстальнік
-    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў ўнясіце змены, каб прадухіліць нязладжанасць дзеянняў.
+    - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
     - Report: Справаздача
     - reset: скід
@@ -449,7 +449,7 @@ translations
     - storage: сховішча
     - Storage: Сховішча
     - Structures: Структуры
-    - Subscription to updates: Падпіска на абнаўлення
+    - Subscription to updates: Падпіска на абнаўленні
     - success: поспех
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
@@ -487,9 +487,9 @@ translations
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
-    - This combination of values is already in use!: Такая камбінацыя значэнняў ўжо выкарыстоўваецца!
+    - This combination of values is already in use!: Такая камбінацыя значэнняў ужо выкарыстоўваецца!
     - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
-    - Thousands separator: Падзельнік тысяч
+    - Thousands separator: Раздзяляльнік тысяч
     - TiB: ТіБ
     - Time format: Фармат часу
     - Time zone: Гадзінны пояс
@@ -557,14 +557,14 @@ translations
     - Welcome to our site!: Сардэчна запрашаем на наш сайт!
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!
-    - With it, you can speed up the system from 2-3x and more.: З яго дапамогай Вы можаце паскорыць сістэму ў 2-3 і больш разоў.
+    - With it, you can speed up the system from 2-3x and more.: З ягонай дапамогай Вы можаце паскорыць сістэму ў 2-3 і больш разоў.
     - Yes: Так
     - yes: так
     - You are trying to upload too few files!: Вы спрабуеце загрузіць замала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
     - You can enable or disable the language "%%_language" on page "%%_page".: Вы можаце ўключыць альбо адключыць мову "%%_language" на старонцы "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number,au-a}.
-    - You have not made any changes before!: Вы не выраблялі ніякіх змяненняў раней!
+    - You have not made any changes before!: Вы не рабілі ніякіх змяненняў раней!
     - You must upload at least %%_number file%%_plural{number,s}.: Неабходна загрузіць як мінімум %%_number файл%%_plural{number,au-a}.
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы атрымалі гэтае паведамленне, таму што хтосьці спрабаваў аднавіць пароль ад Вашага акаўнту на %%_domain.
     - Your answer was accepted.: Ваш адказ быў прыняты.
