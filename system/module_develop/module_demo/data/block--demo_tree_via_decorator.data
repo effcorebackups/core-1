@@ -8,7 +8,7 @@ blocks
   # ─────────────────────────────────────────────────────────────────────
     - tree|decorator
         view_type: tree
-        title: Menu Demo via decorator
+        title: Demo via decorator
         id: demo_tree
         data
         - rowid-1

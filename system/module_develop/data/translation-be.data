@@ -38,6 +38,9 @@ translations
     - Data ID: ID даных
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
+    - Demo NoSQL: Дэманстрацыйнае NoSQL
+    - Demo SQL: Дэманстрацыйнае SQL
+    - Demo via decorator: Дэманстрацыйнае праз дэкаратар
     - DL table: DL табліца
     - Embedded elements: Убудаваныя элементы
     - end: канец
@@ -93,9 +96,6 @@ translations
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
-    - Menu Demo NoSQL: Меню Дэманстрацыйнае NoSQL
-    - Menu Demo SQL: Меню Дэманстрацыйнае SQL
-    - Menu Demo via decorator: Меню Дэманстрацыйнае праз дэкаратар
     - method private: метад прыватны
     - method protected: метад абаронены
     - method public: метад публічны

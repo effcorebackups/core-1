@@ -21,9 +21,9 @@ translations
     - All colors: Усе колеры
     - All users: Усе карыстальнікі
     - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
-    - Anonymous: Ананім
     - Anonymous user: Ананімны карыстальнік
     - Anonymous users: Ананімныя карыстальнікі
+    - Anonymous: Ананім
     - Answer: Адказ
     - Answers: Адказы
     - apply: прымяніць
@@ -282,6 +282,7 @@ translations
     - LOST PART: СТРАЧАНАЯ ЧАСТКА
     - Main color: Асноўны колер
     - Main colors: Асноўныя колеры
+    - Main menu: Галоўнае меню
     - Main system module.: Галоўны модуль сістэмы.
     - Management: Кіраванне
     - Managers: Кіраўнікі
@@ -291,8 +292,6 @@ translations
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае
-    - Main menu: Галоўнае меню
-    - System menu: Сістэмнае меню
     - Menu: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
@@ -455,6 +454,7 @@ translations
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
     - system logotype: лагатып сістэмы
+    - System menu: Сістэмнае меню
     - System was installed.: Сістэма была інсталявана.
     - System was not installed!: Сістэма не была інсталявана.
     - System: Сістэма

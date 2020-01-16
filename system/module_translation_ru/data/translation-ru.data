@@ -21,9 +21,9 @@ translations
     - All colors: Все цвета
     - All users: Все пользователи
     - An error occurred during installation!: При установке произошла ошибка!
-    - Anonymous: Аноним
     - Anonymous user: Анонимный пользователь
     - Anonymous users: Анонимные пользователи
+    - Anonymous: Аноним
     - Answer: Ответ
     - Answers: Ответы
     - apply: применить
@@ -282,6 +282,7 @@ translations
     - LOST PART: ПОТЕРЯННАЯ ЧАСТЬ
     - Main color: Основной цвет
     - Main colors: Основные цвета
+    - Main menu: Главное меню
     - Main system module.: Главный модуль системы.
     - Management: Управление
     - Managers: Управляющие
@@ -291,8 +292,6 @@ translations
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
-    - Main menu: Главное меню
-    - System menu: Системное меню
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
     - Menu\: link: Меню: ссылка
@@ -455,6 +454,7 @@ translations
     - Switcher: Выключатель
     - Switchers: Выключатели
     - system logotype: логотип системы
+    - System menu: Системное меню
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система

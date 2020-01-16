@@ -87,7 +87,7 @@ instances
     entity_name: tree
     values
     - id: demo_sql
-    - title: Menu Demo SQL
+    - title: Demo SQL
     - module_id: demo
 # ─────────────────────────────────────────────────────────────────────
 # tree items
