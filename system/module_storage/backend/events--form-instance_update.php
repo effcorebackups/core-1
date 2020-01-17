@@ -24,7 +24,8 @@ namespace effcore\modules\storage {
     $instance_id = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
     if ($entity) {
-      $form->attribute_insert('data-entity', $entity_name);
+      $form->attribute_insert('data-entity_name', $entity_name);
+      $form->attribute_insert('data-instance_id', $instance_id);
       $id_keys   = $entity->id_get_real();
       $id_values = explode('+', $instance_id);
       if (count($id_keys) ==
