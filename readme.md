@@ -394,9 +394,21 @@ available in the system.
 
 The system operates with only one type of file collection — these are modules.
 There are no a themes which familiar to many people.
+To create a profile of decoration, see the "Deployment" section.
 
-However, nothing prevents to create a theme in the form of a module,
-which may contain, for example, the following functionality:
+
+Deployment
+---------------------------------------------------------------------
+
+Making changes in system files is a bad idea, because all of them
+will be lost after updating the system.
+
+A good solution is to create a new module in the "modules" directory
+with a profile of your own settings. An example of such a module can be borrowed
+from the "Profiles" section. (just copy one of the profiles and place it
+in the "modules" directory, then make your changes and reset the cache).
+
+In this module you can set your own:
 - colors;
 - color presets;
 - static cascading style files "*.css";
@@ -408,26 +420,7 @@ which may contain, for example, the following functionality:
 - images;
 - favicons.
 
-Do not be afraid of the process of creating a new module.
-Using the "Decoration" module as template from the "Examples" group,
-it's possible to create own design settings. It's enough to copy this module
-into the "modules" directory, replace examples of settings in "*.data"
-files to own and flush the cache.
-After these actions the new elements will be available
-from the administrative interface.
-
-
-Deployment
----------------------------------------------------------------------
-
-Making changes in system files is a bad idea, because all of them
-will be lost after updating the system.
-
-A good solution is to create own module in the "modules" directory.
-In the bundle "Examples" there is a module "Empty module", which can be used
-as a basis for creating such a module.
-
-In the own module, it will be possible to apply the "Changes" mechanism.
+Also in the own module, it will be possible to apply the "Changes" mechanism.
 This mechanism give ability to make changes in the system.
 Its example is shown in the file "demo--data--changes.data" of the module "Demo".
 The "Changes" mechanism modifies the global NoSQL tree, which, after clearing
