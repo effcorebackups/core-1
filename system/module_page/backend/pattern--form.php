@@ -98,29 +98,23 @@ namespace effcore {
             event::start('on_form_validate', $id, [&$this, &$this->items]);
           }
 
-        # send test headers 'X-Form-Submit-Errors-Count: N'
+        # send test headers 'X-Form-Submit-Errors-Count: N' (before a possible redirect)
           if (module::is_enabled('test')) {
             header('X-Form-Submit-Errors-Count: '.count(static::$errors));
           }
 
-        # show errors
-          if ($this->has_error() == true) {
-            $this->attribute_insert('aria-invalid', 'true');
-            foreach (static::$errors as $c_error) {
-              switch (gettype($c_error->message)) {
-                case 'string': message::insert(new text($c_error->message, $c_error->args), 'error'); break;
-                case 'object': message::insert(         $c_error->message,                  'error'); break;
-              }
-            }
-          }
+        # show errors before submit (before a possible redirect after submit)
+          $this->errors_show();
 
         # call on_submit methods (if no errors)
           if ($this->has_error() == false) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath);}
             event::start('on_form_submit', $id, [&$this, &$this->items]);
+          # show errors after submit for buttons with 'break_on_validate' (will not be shown if a redirect has occurred)
+            $this->errors_show();
           }
 
-        # update or delete validation cache
+        # update or delete validation cache (will not be deleted if redirection has occurred)
           if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
           if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
           if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() == false                                                                                ) $this->validation_cache_storage_delete();
@@ -191,6 +185,10 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
+  function has_error() {
+    return (bool)count(static::$errors);
+  }
+
   function error_set($message = null, $args = []) {
     $new_error = new \stdClass;
     $new_error->message = $message;
@@ -199,8 +197,16 @@ namespace effcore {
     static::$errors[] = $new_error;
   }
 
-  function has_error() {
-    return (bool)count(static::$errors);
+  function errors_show() {
+    if ($this->has_error()) {
+      $this->attribute_insert('aria-invalid', 'true');
+      foreach (static::$errors as $c_error) {
+        switch (gettype($c_error->message)) {
+          case 'string': message::insert(new text($c_error->message, $c_error->args), 'error'); break;
+          case 'object': message::insert(         $c_error->message,                  'error'); break;
+        }
+      }
+    }
   }
 
   # ──────────────────────────────────────────────────────────────────────────────

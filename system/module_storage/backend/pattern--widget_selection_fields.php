@@ -89,6 +89,10 @@ namespace effcore {
         'type'   => translation::get($this->item_title),
         'button' => translation::get('update')]));
       return true;
+    } else {
+      $this->_fields['insert']->error_set(
+        'Field "%%_title" must be selected!', ['title' => translation::get($this->_fields['insert']->title)]
+      );
     }
   }
 
