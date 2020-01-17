@@ -17,7 +17,6 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────────
 
   public $title = 'CAPTCHA';
-  public $description = 'Write the characters from the picture.';
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes = [
     'type'         => 'text',
@@ -26,9 +25,10 @@ namespace effcore {
     'autocomplete' => 'off',
     'required'     => true];
 # ─────────────────────────────────────────────────────────────────────
-  public $length   = 6;
-  public $attempts = 3;
-  public $noise    = 1;
+  public $length       = 6;
+  public $attempts_max = 3;
+  public $attempts_cur = null;
+  public $noise        = 1;
 
   function build() {
     if (!$this->is_builded) {
@@ -40,13 +40,13 @@ namespace effcore {
     # build canvas on form
       $captcha = $this->captcha_select();
       if (!$captcha) {
-        $captcha = $this->captcha_generate();
-        $captcha->insert();
+           $captcha = $this->captcha_generate();
+           $captcha->insert();
       }
       $this->child_insert_first($captcha->canvas, 'canvas');
-      $this->is_builded = true;
       if (!frontend::select('captcha_form'))
            frontend::insert('captcha_form', null, 'styles', ['file' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
+      $this->is_builded = true;
     }
   }
 
@@ -78,7 +78,7 @@ namespace effcore {
     $captcha = new instance('captcha', [
       'ip_hex'      => core::ip_to_hex(core::server_get_addr_remote()),
       'characters'  => $characters,
-      'attempts'    => $this->attempts,
+      'attempts'    => $this->attempts_max,
       'canvas'      => $canvas,
       'canvas_data' => $canvas->clmask_to_hexstr()
     ]);
@@ -91,17 +91,28 @@ namespace effcore {
     ]))->select();
     if ($captcha) {
       if ($captcha->attempts > 0) {
-        $captcha->attempts--;
-        $captcha->update();
+          $captcha->attempts--;
+          $captcha->update();
+          $this->attempts_cur = $captcha->attempts;
       } else {
-        $captcha = $this->captcha_generate();
-        $captcha->update();
-        $this->child_update('canvas', $captcha->canvas);
+          $captcha = $this->captcha_generate();
+          $captcha->update();
+          $this->child_update('canvas', $captcha->canvas);
+          $this->attempts_cur = $this->attempts_max;
       }
       if ($captcha->characters === $characters) {
         return true;
       }
     }
+  }
+
+  function render_description() {
+    if (!$this->description)
+         $this->description = new text_multiline([
+      'Write the characters from the picture.',
+      'Number of attempts: %%_attempts'], [
+      'attempts' => $this->attempts_cur === null ? 'n/a' : $this->attempts_cur]);
+    return parent::render_description();
   }
 
   ###########################
