@@ -1,5 +1,5 @@
 frontend
-- example_decoration_page_all|frontend
+- profile_classic_page_all|frontend
     display
       check: url
       where: path
@@ -67,7 +67,7 @@ frontend
         file: frontend/decoration-page.jsd
         attributes
         - defer: true
-- example_decoration_form_all|frontend
+- profile_classic_form_all|frontend
     display
       check: block
       where: dpath

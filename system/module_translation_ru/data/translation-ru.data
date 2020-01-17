@@ -34,7 +34,7 @@ translations
     - bundle description: описание пакета
     - bundle id: id пакета
     - bundle title: заголовок пакета
-    - Bundle with examples.: Пакет с примерами.
+    - Bundle with profiles.: Пакет с профилями.
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
     - Button: Кнопка
@@ -52,6 +52,7 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флажок
     - Checkboxes: Флажки
+    - Classic: Классика
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
@@ -126,7 +127,6 @@ translations
     - Example of empty module.: Пример пустого модуля.
     - example: пример
     - Example: Пример
-    - Examples: Примеры
     - examples: примеры
     - Examples\: %%_examples: Примеры: %%_examples
     - Execution: Выполнение
@@ -305,10 +305,10 @@ translations
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не был установлен!
     - Module as an example of an empty module.: Модуль как пример пустого модуля.
     - Module data "%%_title" (%%_id) was removed.: Данные модуля "%%_title" (%%_id) были удалены.
-    - Module for decoration example.: Модуль для примера оформления.
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
+    - Module for profile example.: Модуль для примера профиля.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
     - Module for testing.: Модуль для тестирования.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
@@ -376,6 +376,7 @@ translations
     - press to show hidden description: нажмите, чтобы показать скрытое описание
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
+    - Profiles: Профили
     - Provisioning key: Ключ обеспечения
     - Query error!: Ошибка запроса!
     - Query parameters: Параметры запроса

@@ -1,7 +1,7 @@
 layouts
-- example|layout
-    id: example
-    title: Layout "Example"
+- profile_classic|layout
+    id: profile_classic
+    title: Layout "Profile Classic"
     children
     - menu|area
         id: menu
