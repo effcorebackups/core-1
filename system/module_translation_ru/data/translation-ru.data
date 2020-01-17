@@ -284,7 +284,7 @@ translations
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
-    - Maximum allowed only %%_number file%%_plural{number,s}.: Допускается максимально только %%_number файл%%_plural{number,ov-a}.
+    - Maximum allowed only %%_number file%%_plural{number,s}.: Максимально допускается только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value: Максимальное значение поля: %%_value
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Memory for PHP (bytes): Память для PHP (байты)

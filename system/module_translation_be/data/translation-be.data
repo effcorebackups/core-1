@@ -284,7 +284,7 @@ translations
     - Management: Кіраванне
     - Managers: Кіраўнікі
     - Match: Адпаведнасць
-    - Maximum allowed only %%_number file%%_plural{number,s}.: Дазваляецца максімальна толькі %%_number файл%%_plural{number,au-a}.
+    - Maximum allowed only %%_number file%%_plural{number,s}.: Максімальна дазваляецца толькі %%_number файл%%_plural{number,au-a}.
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Memory for PHP (bytes): Памяць для PHP (байты)
@@ -314,7 +314,7 @@ translations
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with polls.: Модуль для працы з апытаннямі.
-    - Module for working with user accounts and permissions.: Модуль для працы з карыстацкімі акаўнтамі і дазваленнямі.
+    - Module for working with user accounts and permissions.: Модуль для працы з акаўнтамі і дазваленнямі карыстальнікаў.
     - Module ID: ID модуля
     - Module: Модуль
     - Modules: Модулі
@@ -322,7 +322,7 @@ translations
     - Multiple choice: Множны выбар
     - name: імя
     - Name: Імя
-    - New password must be different from the current password!: Новы пароль павінен адрознівацца ад бягучага!
+    - New password must be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
     - New password: Новы пароль
     - nickname: псеўданім
     - Nickname: Псеўданім
@@ -347,7 +347,7 @@ translations
     - Only unique value is allowed.: Дазваляецца толькі унікальнае значэнне.
     - Operating System: Аперацыйная сістэма
     - Order: Заказ
-    - Ordered list: Спарадкаваны спіс
+    - Ordered list: Упарадкаваны спіс
     - Other: Іншыя
     - Owner: Уладальнік
     - Page actions: Дзеянні старонкі
@@ -406,7 +406,7 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
     - Report: Справаздача
-    - reset: скід
+    - reset: скінуць
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя даныя сховішча ў "%%_file" альбо зноў інсталюйце гэтую сістэму на старонцы: %%_link
     - right to left: справа налева
     - role: роля
@@ -515,7 +515,7 @@ translations
     - Types: Типы
     - uninstall: выдаліць
     - Uninstall: Выдаліць
-    - Unordered list: Неўпарадкаваных спіс
+    - Unordered list: Неўпарадкаваны спіс
     - Update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
     - Update modules data: Абнавіць даныя модуляў
