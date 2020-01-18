@@ -3,9 +3,8 @@ layouts
     id: profile_classic
     title: Layout "Profile Classic"
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area
@@ -16,3 +15,5 @@ layouts
         id: tabs
     - content|area
         id: content
+    - footer|area
+        id: footer

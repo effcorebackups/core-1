@@ -23,7 +23,7 @@ instances
     - is_embed: 1
     - access: null
     - parts
-      - menu
+      - system
         - page_actions|page_part_preset_link
             id: page_actions
         - tree_sql_user_registered|page_part_preset_link
@@ -50,7 +50,7 @@ instances
         roles
         - =: anonymous
     - parts
-      - menu
+      - system
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
         - tree_system|page_part_preset_link
@@ -76,7 +76,7 @@ instances
         roles
         - =: anonymous
     - parts
-      - menu
+      - system
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
         - tree_system|page_part_preset_link
@@ -102,7 +102,7 @@ instances
         roles
         - =: anonymous
     - parts
-      - menu
+      - system
         - tree_sql_user_anonymous|page_part_preset_link
             id: tree_sql_user_anonymous
         - tree_system|page_part_preset_link
@@ -128,7 +128,7 @@ instances
         roles
         - =: registered
     - parts
-      - menu
+      - system
         - page_actions|page_part_preset_link
             id: page_actions
         - tree_sql_user_registered|page_part_preset_link

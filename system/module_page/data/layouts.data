@@ -3,9 +3,8 @@ layouts
     id: simple
     title: Layout "Simple"
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area
@@ -16,13 +15,14 @@ layouts
         id: tabs
     - content|area
         id: content
+    - footer|area
+        id: footer
 - classic|layout
     id: classic
     title: Layout "Classic"
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - content|area
@@ -85,9 +85,8 @@ layouts
     id: grid_2x5
     title: Grid 2x5
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area
@@ -152,9 +151,8 @@ layouts
     id: grid_3x5
     title: Grid 3x5
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area
@@ -234,9 +232,8 @@ layouts
     id: grid_4x5
     title: Grid 4x5
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area
@@ -331,9 +328,8 @@ layouts
     id: grid_5x5
     title: Grid 5x5
     children
-    - menu|area
-        id: menu
-        tag_name: nav
+    - system|area
+        id: system
     - top|area
         id: top
     - title|area

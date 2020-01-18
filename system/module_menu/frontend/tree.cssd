@@ -5,46 +5,46 @@
 
   /* menu 'System': sizes and orientation */
 
-  nav[data-area-id='menu'] x-tree          {float: left; z-index: 300}
-  nav[data-area-id='menu'] x-tree li       {float: left}
-  nav[data-area-id='menu'] x-tree li li    {float: none}
-  nav[data-area-id='menu'] x-tree ul       {float: left}
-  nav[data-area-id='menu'] x-tree ul ul    {float: none}
+  [data-area-id='system'] x-tree          {float: left; z-index: 300}
+  [data-area-id='system'] x-tree li       {float: left}
+  [data-area-id='system'] x-tree li li    {float: none}
+  [data-area-id='system'] x-tree ul       {float: left}
+  [data-area-id='system'] x-tree ul ul    {float: none}
 
-  nav[data-area-id='menu'] x-tree ul ul    {position: absolute}
-  nav[data-area-id='menu'] x-tree ul ul ul {position: relative}
+  [data-area-id='system'] x-tree ul ul    {position: absolute}
+  [data-area-id='system'] x-tree ul ul ul {position: relative}
 
-  nav[data-area-id='menu'] x-tree ul       {padding: 0; margin: 0; list-style: none}
-  nav[data-area-id='menu'] x-tree ul ul    {padding: 20px}
-  nav[data-area-id='menu'] x-tree ul ul ul {padding: 0 0 0 21px}
-  nav[data-area-id='menu'] x-tree li       {padding: 0; margin: 0; cursor: default}
+  [data-area-id='system'] x-tree ul       {padding: 0; margin: 0; list-style: none}
+  [data-area-id='system'] x-tree ul ul    {padding: 20px}
+  [data-area-id='system'] x-tree ul ul ul {padding: 0 0 0 21px}
+  [data-area-id='system'] x-tree li       {padding: 0; margin: 0; cursor: default}
 
-  nav[data-area-id='menu'] x-tree li     a {padding: 21px; display: block}
-  nav[data-area-id='menu'] x-tree li li  a {padding: 0}
+  [data-area-id='system'] x-tree li     a {padding: 21px; display: block}
+  [data-area-id='system'] x-tree li li  a {padding: 0}
 
   /* menu 'System': dynamics */
 
-  nav[data-area-id='menu'] x-tree > ul > li       > ul {display: none}
-  nav[data-area-id='menu'] x-tree > ul > li:hover > ul {display: block}
+  [data-area-id='system'] x-tree > ul > li       > ul {display: none}
+  [data-area-id='system'] x-tree > ul > li:hover > ul {display: block}
 
   /* menu 'System': colors */
 
-  nav[data-area-id='menu'] x-tree ul       {background-color: %%_color_menu}
-  nav[data-area-id='menu'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
-  nav[data-area-id='menu'] x-tree ul ul ul {background-color: transparent}
+  [data-area-id='system'] x-tree ul       {background-color: %%_color_menu}
+  [data-area-id='system'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
+  [data-area-id='system'] x-tree ul ul ul {background-color: transparent}
 
-  nav[data-area-id='menu'] x-tree              a[aria-selected      ='true'],
-  nav[data-area-id='menu'] x-tree              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  nav[data-area-id='menu'] x-tree              a:not([href])                 {color: %%_color_menu_text !important}
-  nav[data-area-id='menu'] x-tree              a                             {color: %%_color_menu_link}
-  nav[data-area-id='menu'] x-tree        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  nav[data-area-id='menu'] x-tree        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  nav[data-area-id='menu'] x-tree > ul > li:hover                            {                                  background-color: %%_color_menu_active}
+  [data-area-id='system'] x-tree              a[aria-selected      ='true'],
+  [data-area-id='system'] x-tree              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  [data-area-id='system'] x-tree              a:not([href])                 {color: %%_color_menu_text !important}
+  [data-area-id='system'] x-tree              a                             {color: %%_color_menu_link}
+  [data-area-id='system'] x-tree        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  [data-area-id='system'] x-tree        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  [data-area-id='system'] x-tree > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
-  nav[data-area-id='menu'] x-tree li    a[aria-selected      ='true'],
-  nav[data-area-id='menu'] x-tree li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
-  nav[data-area-id='menu'] x-tree li li a[aria-selected      ='true'],
-  nav[data-area-id='menu'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  [data-area-id='system'] x-tree li    a[aria-selected      ='true'],
+  [data-area-id='system'] x-tree li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
+  [data-area-id='system'] x-tree li li a[aria-selected      ='true'],
+  [data-area-id='system'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu 'System': icons */
 
@@ -55,10 +55,10 @@
   /* menu 'System': adaptivity */
 
   @media screen and (max-width: 600px) {
-    nav[data-area-id='menu'] x-tree       {float: none}
-    nav[data-area-id='menu'] x-tree ul    {float: none}
-    nav[data-area-id='menu'] x-tree li    {float: none; display: block}
-    nav[data-area-id='menu'] x-tree ul ul {position: relative}
+    [data-area-id='system'] x-tree       {float: none}
+    [data-area-id='system'] x-tree ul    {float: none}
+    [data-area-id='system'] x-tree li    {float: none; display: block}
+    [data-area-id='system'] x-tree ul ul {position: relative}
   }
 
   /* menu visualization for management */

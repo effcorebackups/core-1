@@ -19,7 +19,7 @@ pages
       roles
       - =: admins
     parts
-    - menu
+    - system
       - tree_sql_user_registered|page_part_preset_link
           id: tree_sql_user_registered
       - tree_system|page_part_preset_link
