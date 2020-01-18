@@ -5,8 +5,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - title|area
         id: title
     - messages|area
@@ -23,8 +23,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - content|area
         type: table
         children
@@ -87,8 +87,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - title|area
         id: title
     - messages|area
@@ -153,8 +153,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - title|area
         id: title
     - messages|area
@@ -234,8 +234,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - title|area
         id: title
     - messages|area
@@ -330,8 +330,8 @@ layouts
     children
     - system|area
         id: system
-    - top|area
-        id: top
+    - header|area
+        id: header
     - title|area
         id: title
     - messages|area

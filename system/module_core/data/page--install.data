@@ -6,7 +6,7 @@ pages
     url: %^(?<base>/install)(/
 >>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
     parts
-    - top
+    - header
       - menu_languages|page_part
           type: code
           source: \effcore\modules\locales\events_page::block_menu_languages
