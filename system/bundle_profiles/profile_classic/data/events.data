@@ -1,4 +1,12 @@
 events
+  on_module_install
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_install
+  on_module_uninstall
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_uninstall
   on_module_enable
   - profile_classic|event
       for: profile_classic
