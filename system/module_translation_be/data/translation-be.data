@@ -124,10 +124,6 @@ translations
     - Event: Падзея
     - Events: Падзеі
     - events: падзеі
-    - Example of empty module.: Прыклад пустога модуля.
-    - Example: Прыклад
-    - example: прыклад
-    - examples: прыклады
     - Examples\: %%_examples: Прыклады: %%_examples
     - Execution: Выкананне
     - expand: разгарнуць
@@ -303,7 +299,6 @@ translations
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
-    - Module as an example of an empty module.: Модуль як прыклад пустога модуля.
     - Module data "%%_title" (%%_id) was removed.: Даныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
