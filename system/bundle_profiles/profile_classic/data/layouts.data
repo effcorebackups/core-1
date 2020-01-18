@@ -1,19 +1,34 @@
 layouts
-- profile_classic|layout
-    id: profile_classic
-    title: Layout "Profile Classic"
+- classic_classic|layout
+    id: classic_classic
+    title: Layout "Classic" (profile "Classic")
     children
     - system|area
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
-    - messages|area
-        id: messages
-    - tabs|area
-        id: tabs
     - content|area
-        id: content
+        type: table
+        attributes
+        - data-area-group-id: content
+        children
+        - left|area
+            type: column
+            attributes
+            - data-area-group-id: left
+            children
+            - title|area
+                id: title
+            - messages|area
+                id: messages
+            - tabs|area
+                id: tabs
+            - content|area
+                id: content
+        - right|area
+            id: right
+            type: column
+            attributes
+            - style: width: 200px
     - footer|area
         id: footer

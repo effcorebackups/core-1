@@ -2,5 +2,4 @@ translations
 - ru|translation
     code: ru
     data
-    - Layout "Profile Classic": Макет "Профиль Классика"
-    - profile classic: профиль классика
+    - Layout "Classic" (profile "Classic"): Макет "Классика" (профиль "Классика")

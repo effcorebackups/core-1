@@ -32,9 +32,12 @@ layouts
             id: left
             type: column
             attributes
+            - data-area-group-id: left
             - style: width: 200px
-        - center_wrapper|area
+        - center|area
             type: column
+            attributes
+            - data-area-group-id: center
             children
             - title|area
                 id: title
@@ -46,6 +49,8 @@ layouts
                 id: content
             - grid_2x2|area
                 type: table
+                attributes
+                - data-area-group-id: grid_2x2
                 children
                 - col_1_1|area
                     id: grid_2x2_col_1_1
@@ -55,6 +60,8 @@ layouts
                     type: column
             - grid_4x4|area
                 type: table
+                attributes
+                - data-area-group-id: grid_4x4
                 children
                 - row_1|area
                     type: row
@@ -78,6 +85,7 @@ layouts
             id: right
             type: column
             attributes
+            - data-area-group-id: right
             - style: width: 200px
     - footer|area
         id: footer
@@ -99,6 +107,8 @@ layouts
         id: content
     - grid_2x5|area
         type: table
+        attributes
+        - data-area-group-id: grid_2x5
         children
         - row_1|area
             type: row
@@ -165,6 +175,8 @@ layouts
         id: content
     - grid_3x5|area
         type: table
+        attributes
+        - data-area-group-id: grid_3x5
         children
         - row_1|area
             type: row
@@ -246,6 +258,8 @@ layouts
         id: content
     - grid_4x5|area
         type: table
+        attributes
+        - data-area-group-id: grid_4x5
         children
         - row_1|area
             type: row
@@ -342,6 +356,8 @@ layouts
         id: content
     - grid_5x5|area
         type: table
+        attributes
+        - data-area-group-id: grid_5x5
         children
         - row_1|area
             type: row
