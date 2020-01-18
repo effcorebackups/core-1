@@ -1,4 +1,16 @@
 layouts
+- installation|layout
+    id: installation
+    title: Installation
+    children
+    - header|area
+        id: header
+    - title|area
+        id: title
+    - messages|area
+        id: messages
+    - content|area
+        id: content
 - simple|layout
     id: simple
     title: Layout "Simple"
@@ -7,10 +19,10 @@ layouts
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
     - messages|area
         id: messages
+    - title|area
+        id: title
     - tabs|area
         id: tabs
     - content|area
@@ -39,10 +51,10 @@ layouts
             attributes
             - data-area-group-id: center
             children
-            - title|area
-                id: title
             - messages|area
                 id: messages
+            - title|area
+                id: title
             - tabs|area
                 id: tabs
             - content|area
@@ -97,10 +109,10 @@ layouts
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
     - messages|area
         id: messages
+    - title|area
+        id: title
     - tabs|area
         id: tabs
     - content|area
@@ -165,10 +177,10 @@ layouts
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
     - messages|area
         id: messages
+    - title|area
+        id: title
     - tabs|area
         id: tabs
     - content|area
@@ -248,10 +260,10 @@ layouts
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
     - messages|area
         id: messages
+    - title|area
+        id: title
     - tabs|area
         id: tabs
     - content|area
@@ -346,10 +358,10 @@ layouts
         id: system
     - header|area
         id: header
-    - title|area
-        id: title
     - messages|area
         id: messages
+    - title|area
+        id: title
     - tabs|area
         id: tabs
     - content|area

@@ -3,6 +3,7 @@ pages
     id: install
     title: Installation
     is_https: true
+    id_layout: installation
     url: %^(?<base>/install)(/
 >>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
     parts

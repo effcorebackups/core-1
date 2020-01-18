@@ -17,10 +17,10 @@ layouts
             attributes
             - data-area-group-id: left
             children
-            - title|area
-                id: title
             - messages|area
                 id: messages
+            - title|area
+                id: title
             - tabs|area
                 id: tabs
             - content|area
