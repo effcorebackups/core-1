@@ -20,6 +20,12 @@
   [data-area-type='row'   ] {display: table-row}
   [data-area-type='column'] {display: table-cell}
 
+  @media screen and (max-width: 600px) {
+    [data-area-type='table' ] {display: block}
+    [data-area-type='row'   ] {display: block}
+    [data-area-type='column'] {display: block; width: auto !important}
+  }
+
   /* headers */
 
   h1 {margin: 4em 0 3em 0; font-size: 2em;   line-height: 1.5em; font-weight: normal}
