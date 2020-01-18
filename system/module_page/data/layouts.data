@@ -17,9 +17,9 @@ layouts
         id: content
     - footer|area
         id: footer
-- classic|layout
-    id: classic
-    title: Layout "Classic"
+- universal|layout
+    id: universal
+    title: Layout "Universal"
     children
     - system|area
         id: system
