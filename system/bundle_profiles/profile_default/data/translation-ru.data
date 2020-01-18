@@ -1,0 +1,6 @@
+translations
+- ru|translation
+    code: ru
+    data
+    - Default profile: Профиль по умолчанию
+    - Module for default profile.: Модуль для профиля по умолчанию.

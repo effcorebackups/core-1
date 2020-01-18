@@ -2,10 +2,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # logotypes
 # ─────────────────────────────────────────────────────────────────────
-- logotype_main|instance
+- logotype_default_main|instance
     entity_name: logotype
     values
-    - id: main
+    - id: default_main
     - title: Logotype Main
     - url: /
     - path: null
@@ -13,10 +13,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_front|instance
+- page_default_front|instance
     entity_name: page
     values
-    - id: front
+    - id: default_front
     - title: Front
     - url: /
     - is_https: 0
@@ -36,12 +36,12 @@ instances
         - title|page_part_preset_link
             id: title
       - content
-        - selection_text_welcome|page_part_preset_link
-            id: selection_text_welcome
-- page_login|instance
+        - selection_text_default_welcome|page_part_preset_link
+            id: selection_text_default_welcome
+- page_default_login|instance
     entity_name: page
     values
-    - id: login
+    - id: default_login
     - title: Login
     - url: /login
     - is_https: 1
@@ -64,10 +64,10 @@ instances
       - content
         - form_login|page_part_preset_link
             id: form_login
-- page_recovery|instance
+- page_default_recovery|instance
     entity_name: page
     values
-    - id: recovery
+    - id: default_recovery
     - title: Recovery
     - url: /recovery
     - is_https: 1
@@ -90,10 +90,10 @@ instances
       - content
         - form_recovery|page_part_preset_link
             id: form_recovery
-- page_registration|instance
+- page_default_registration|instance
     entity_name: page
     values
-    - id: registration
+    - id: default_registration
     - title: Registration
     - url: /registration
     - is_https: 1
@@ -116,10 +116,10 @@ instances
       - content
         - form_registration|page_part_preset_link
             id: form_registration
-- page_logout|instance
+- page_default_logout|instance
     entity_name: page
     values
-    - id: logout
+    - id: default_logout
     - title: Logout
     - url: /logout
     - is_https: 1
@@ -147,18 +147,18 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_welcome|instance
+- text_default_welcome|instance
     entity_name: text
     values
-    - id: welcome
+    - id: default_welcome
     - description: Welcome message
     - text: Welcome to our site!
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
-- tree_main|instance
+- tree_default_main|instance
     entity_name: tree
     values
-    - id: main
+    - id: default_main
     - title: Main menu
     - is_embed: 1

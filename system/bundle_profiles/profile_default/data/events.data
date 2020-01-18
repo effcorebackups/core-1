@@ -1,0 +1,17 @@
+events
+  on_module_install
+  - profile_default|event
+      for: profile_default
+      handler: \effcore\modules\profile_default\events_module::on_install
+  on_module_uninstall
+  - profile_default|event
+      for: profile_default
+      handler: \effcore\modules\profile_default\events_module::on_uninstall
+  on_module_enable
+  - profile_default|event
+      for: profile_default
+      handler: \effcore\modules\profile_default\events_module::on_enable
+  on_module_disable
+  - profile_default|event
+      for: profile_default
+      handler: \effcore\modules\profile_default\events_module::on_disable
