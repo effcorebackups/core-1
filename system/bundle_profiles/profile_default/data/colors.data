@@ -2,16 +2,6 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # default colors
 # ─────────────────────────────────────────────────────────────────────
-- default_light|color
-    id: default_light
-    value: #81a5eb
-    value_hex: #81a5eb
-    group: default
-- default_main|color
-    id: default_main
-    value: #216ce4
-    value_hex: #216ce4
-    group: default
 - default_dark_5|color
     id: default_dark_5
     value: #4c5266
@@ -36,6 +26,36 @@ colors
     id: default_dark_1
     value: #2a304a
     value_hex: #2a304a
+    group: default
+- default_main|color
+    id: default_main
+    value: #216ce4
+    value_hex: #216ce4
+    group: default
+- default_light_1|color
+    id: default_light_1
+    value: #3074e5
+    value_hex: #3074e5
+    group: default
+- default_light_2|color
+    id: default_light_2
+    value: #4681e6
+    value_hex: #4681e6
+    group: default
+- default_light_3|color
+    id: default_light_3
+    value: #5d8fe8
+    value_hex: #5d8fe8
+    group: default
+- default_light_4|color
+    id: default_light_4
+    value: #729bea
+    value_hex: #729bea
+    group: default
+- default_light_5|color
+    id: default_light_5
+    value: #81a5eb
+    value_hex: #81a5eb
     group: default
 - default_state_ok|color
     id: default_state_ok
