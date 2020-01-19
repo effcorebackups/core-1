@@ -3,4 +3,11 @@ translations
     code: ru
     data
     - Default profile: Профиль по умолчанию
+    - Grid 2x5 (profile "Default"): Сетка 2x5 (профиль "По умолчанию")
+    - Grid 3x5 (profile "Default"): Сетка 3x5 (профиль "По умолчанию")
+    - Grid 4x5 (profile "Default"): Сетка 4x5 (профиль "По умолчанию")
+    - Grid 5x5 (profile "Default"): Сетка 5x5 (профиль "По умолчанию")
+    - Installation (profile "Default"): Установка (профиль "По умолчанию")
     - Module for default profile.: Модуль для профиля по умолчанию.
+    - Simple layout (profile "Default"): Простой макет (профиль "По умолчанию")
+    - Universal layout (profile "Default"): Универсальный макет (профиль "По умолчанию")
