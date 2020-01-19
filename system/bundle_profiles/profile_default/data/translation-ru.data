@@ -2,6 +2,7 @@ translations
 - ru|translation
     code: ru
     data
+    - Dark preset (profile "Default"): Тёмная предустановка (профиль "По умолчанию")
     - Grid 2x5 (profile "Default"): Сетка 2x5 (профиль "По умолчанию")
     - Grid 3x5 (profile "Default"): Сетка 3x5 (профиль "По умолчанию")
     - Grid 4x5 (profile "Default"): Сетка 4x5 (профиль "По умолчанию")

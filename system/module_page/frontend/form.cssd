@@ -184,10 +184,8 @@
 
   /* checkbox color */
 
-  x-field[data-type='checkbox-color'] input {
-    margin: 0 10px 0 0;
-    border-radius: 5px;
-    border-width: 1px}
+  x-field[data-type='checkbox-color'] input {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
+  x-field[data-type='checkbox-color'] input[data-value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
 
   /* group 'palette' */
 
@@ -310,8 +308,7 @@
     font-size: .85em;
     line-height: .9em;
     color: %%_color_text;
-    background: %%_color_main{20,20,20}}
-  x-layout-manager [data-area-type='column'] > x-area-id {background: %%_color_warning}
+    background: %%_color_warning}
 
   form#instance_update x-layout-manager [data-area-id] {padding: 15px; border-color: %%_color_warning}
   form#instance_update x-layout-manager x-area-id {margin: -14px -14px 9px -14px; background-color: %%_color_warning}
