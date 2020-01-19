@@ -52,7 +52,6 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флажок
     - Checkboxes: Флажки
-    - Classic: Классика
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
@@ -297,7 +296,6 @@ translations
     - Module for demonstrating capabilities.: Модуль для демонстрации возможностей.
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
-    - Module for profile example.: Модуль для примера профиля.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
     - Module for testing.: Модуль для тестирования.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.

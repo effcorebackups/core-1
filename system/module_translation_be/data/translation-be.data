@@ -52,7 +52,6 @@ translations
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
-    - Classic: Класіка
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
@@ -297,7 +296,6 @@ translations
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
     - Module for localization.: Модуль для лакалізацыі.
-    - Module for profile example.: Модуль для прыкладу профілю.
     - Module for storages support.: Модуль для падтрымкі сховішчаў даных.
     - Module for testing.: Модуль для тэставання.
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
