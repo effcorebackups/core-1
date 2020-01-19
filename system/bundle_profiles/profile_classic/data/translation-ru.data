@@ -2,6 +2,6 @@ translations
 - ru|translation
     code: ru
     data
-    - Classic \| profile "Classic": Классика | профиль "Классика"
     - Module for profile example "Classic".: Модуль для примера профиля "Классика".
+    - Original \| profile "Classic": Оригинал | профиль "Классика"
     - Profile "Classic": Профиль "Классика"

@@ -1,7 +1,7 @@
 colors_presets
-- classic_classic
-    id: classic_classic
-    title: Classic | profile "Classic"
+- classic_original
+    id: classic_original
+    title: Original | profile "Classic"
     colors
       color_page_id: white
       color_text_id: black
