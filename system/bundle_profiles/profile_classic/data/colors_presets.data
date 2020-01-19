@@ -5,28 +5,28 @@ colors_presets
     colors
       color_page_id: white
       color_text_id: black
-      color_main_id: system
-      color_link_id: system
-      color_link_active_id: black
-      color_table_row_odd_id: white
-      color_table_row_even_id: whitesmoke
+      color_main_id: black
+      color_link_id: royalblue
+      color_link_active_id: coral
+      color_table_row_odd_id: whitesmoke
+      color_table_row_even_id: gainsboro
       color_relation_id: black
-      color_menu_id: system
-      color_menu_active_id: system_dark_1
+      color_menu_id: black
+      color_menu_active_id: dimgray
       color_menu_text_id: white
       color_menu_link_id: white
-      color_menu_link_active_id: system_light
-      color_tabs_id: system
-      color_tabs_link_id: system
+      color_menu_link_active_id: coral
+      color_tabs_id: black
+      color_tabs_link_id: royalblue
       color_tabs_link_active_id: white
-      color_tabs_link_active_no_bg_id: black
-      color_ok_id: state_ok
-      color_warning_id: state_warning
-      color_error_id: state_error
+      color_tabs_link_active_no_bg_id: coral
+      color_ok_id: limegreen
+      color_warning_id: orange
+      color_error_id: orangered
       color_fieldset_id: whitesmoke
       color_fieldset_nested_id: white
       color_field_id: white
       color_field_text_id: black
-      color_button_id: system
-      color_button_active_id: system_dark_1
+      color_button_id: black
+      color_button_active_id: dimgray
       color_button_text_id: white
