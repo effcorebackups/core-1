@@ -1,7 +1,7 @@
 layouts
 - classic_classic|layout
     id: classic_classic
-    title: Layout "Classic" (profile "Classic")
+    title: Classic (profile "Classic")
     children
     - system|area
         id: system

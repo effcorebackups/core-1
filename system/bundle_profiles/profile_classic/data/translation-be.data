@@ -2,4 +2,4 @@ translations
 - be|translation
     code: be
     data
-    - Layout "Classic" (profile "Classic"): Макет "Класіка" (профіль "Класіка")
+    - Classic (profile "Classic"): Класіка (профіль "Класіка")
