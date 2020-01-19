@@ -710,25 +710,80 @@ colors
     value: black
     value_hex: #000000
     group: gray
+- gray_1|color
+    id: gray_1
+    value: #101010
+    value_hex: #101010
+    group: gray
+- gray_2|color
+    id: gray_2
+    value: #202020
+    value_hex: #202020
+    group: gray
+- gray_3|color
+    id: gray_3
+    value: #303030
+    value_hex: #303030
+    group: gray
+- gray_4|color
+    id: gray_4
+    value: #404040
+    value_hex: #404040
+    group: gray
+- gray_5|color
+    id: gray_5
+    value: #505050
+    value_hex: #505050
+    group: gray
+- gray_6|color
+    id: gray_6
+    value: #606060
+    value_hex: #606060
+    group: gray
 - dimgray|color
     id: dimgray
     value: dimgray
     value_hex: #696969
+    group: gray
+- gray_7|color
+    id: gray_7
+    value: #707070
+    value_hex: #707070
     group: gray
 - gray|color
     id: gray
     value: gray
     value_hex: #808080
     group: gray
+- gray_9|color
+    id: gray_9
+    value: #909090
+    value_hex: #909090
+    group: gray
+- gray_a|color
+    id: gray_a
+    value: #a0a0a0
+    value_hex: #a0a0a0
+    group: gray
 - darkgray|color
     id: darkgray
     value: darkgray
     value_hex: #a9a9a9
     group: gray
+- gray_b|color
+    id: gray_b
+    value: #b0b0b0
+    value_hex: #b0b0b0
+    group: gray
 - silver|color
     id: silver
     value: silver
     value_hex: #c0c0c0
+    group: gray
+- gray_d|color
+    id: gray_d
+    value: #d0d0d0
+    value_hex: #d0d0d0
     group: gray
 - lightgray|color
     id: lightgray
@@ -739,6 +794,16 @@ colors
     id: gainsboro
     value: gainsboro
     value_hex: #dcdcdc
+    group: gray
+- gray_e|color
+    id: gray_e
+    value: #e0e0e0
+    value_hex: #e0e0e0
+    group: gray
+- gray_f|color
+    id: gray_f
+    value: #f0f0f0
+    value_hex: #f0f0f0
     group: gray
 - whitesmoke|color
     id: whitesmoke
