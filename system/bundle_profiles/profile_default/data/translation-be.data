@@ -2,12 +2,12 @@ translations
 - be|translation
     code: be
     data
-    - Default profile: Профіль па змаўчанні
     - Grid 2x5 (profile "Default"): Сетка 2x5 (профіль "Па змаўчанні")
     - Grid 3x5 (profile "Default"): Сетка 3x5 (профіль "Па змаўчанні")
     - Grid 4x5 (profile "Default"): Сетка 4x5 (профіль "Па змаўчанні")
     - Grid 5x5 (profile "Default"): Сетка 5x5 (профіль "Па змаўчанні")
     - Installation (profile "Default"): Інсталяванне (профіль "Па змаўчанні")
-    - Module for default profile.: Модуль для профілю па змаўчанні.
+    - Module for profile "Default".: Модуль для профілю "Па змаўчанні".
+    - Profile "Default": Профіль "Па змаўчанні"
     - Simple layout (profile "Default"): Просты макет (профіль "Па змаўчанні")
     - Universal layout (profile "Default"): Універсальны макет (профіль "Па змаўчанні")
