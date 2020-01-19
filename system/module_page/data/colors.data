@@ -815,3 +815,76 @@ colors
     value: white
     value_hex: #ffffff
     group: gray
+# ─────────────────────────────────────────────────────────────────────
+# default colors
+# ─────────────────────────────────────────────────────────────────────
+- default_dark_5|color
+    id: default_dark_5
+    value: #4c5266
+    value_hex: #4c5266
+    group: default
+- default_dark_4|color
+    id: default_dark_4
+    value: #444a5f
+    value_hex: #444a5f
+    group: default
+- default_dark_3|color
+    id: default_dark_3
+    value: #3b4157
+    value_hex: #3b4157
+    group: default
+- default_dark_2|color
+    id: default_dark_2
+    value: #313852
+    value_hex: #313852
+    group: default
+- default_dark_1|color
+    id: default_dark_1
+    value: #2a304a
+    value_hex: #2a304a
+    group: default
+- default_main|color
+    id: default_main
+    value: #216ce4
+    value_hex: #216ce4
+    group: default
+- default_light_1|color
+    id: default_light_1
+    value: #3074e5
+    value_hex: #3074e5
+    group: default
+- default_light_2|color
+    id: default_light_2
+    value: #4681e6
+    value_hex: #4681e6
+    group: default
+- default_light_3|color
+    id: default_light_3
+    value: #5d8fe8
+    value_hex: #5d8fe8
+    group: default
+- default_light_4|color
+    id: default_light_4
+    value: #729bea
+    value_hex: #729bea
+    group: default
+- default_light_5|color
+    id: default_light_5
+    value: #81a5eb
+    value_hex: #81a5eb
+    group: default
+- default_state_ok|color
+    id: default_state_ok
+    value: #48be38
+    value_hex: #48be38
+    group: default
+- default_state_warning|color
+    id: default_state_warning
+    value: #fd9a1e
+    value_hex: #fd9a1e
+    group: default
+- default_state_error|color
+    id: default_state_error
+    value: #fc5740
+    value_hex: #fc5740
+    group: default
