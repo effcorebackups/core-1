@@ -244,6 +244,7 @@ translations
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
     - left to right: злева направа
     - License agreement: Ліцэнзійнае пагадненне
+    - Light preset: Светлая перадусталёўка
     - Limit: Ліміт
     - Linear diagram: Лінейная дыяграма
     - Link active: Спасылка актыўная
@@ -425,6 +426,7 @@ translations
     - Sessions: Сесіі
     - Settings: Налады
     - Shared parameters: Агульныя параметры
+    - Simple layout: Просты макет
     - SQL state\: %%_state: SQL стан: %%_state
     - SQL storage: SQL сховішча
     - state: стан
@@ -457,6 +459,7 @@ translations
     - Test: Тэст
     - Tests: Тэсты
     - Text area: Тэкставая вобласць
+    - Text Copyright: Тэкст аўтарскіх правоў
     - Text direction: Напрамак тэксту
     - Text: Тэкст
     - Texts: Тэкст

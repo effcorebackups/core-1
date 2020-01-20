@@ -1,11 +1,22 @@
 instances
 # ─────────────────────────────────────────────────────────────────────
+# logotypes
+# ─────────────────────────────────────────────────────────────────────
+- logotype_classic_main|instance
+    entity_name: logotype
+    values
+    - id: classic_main
+    - title: Logotype Main
+    - url: /
+    - path: null
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_default_front|instance
+- page_classic_front|instance
     entity_name: page
     values
-    - id: default_front
+    - id: classic_front
     - title: Front
     - url: /
     - is_https: 0
@@ -24,10 +35,13 @@ instances
       - title
         - title|page_part_preset_link
             id: title
-- page_default_login|instance
+      - content
+        - selection_text_classic_copyright|page_part_preset_link
+            id: selection_text_classic_copyright
+- page_classic_login|instance
     entity_name: page
     values
-    - id: default_login
+    - id: classic_login
     - title: Login
     - url: /login
     - is_https: 1
@@ -50,10 +64,10 @@ instances
       - content
         - form_login|page_part_preset_link
             id: form_login
-- page_default_recovery|instance
+- page_classic_recovery|instance
     entity_name: page
     values
-    - id: default_recovery
+    - id: classic_recovery
     - title: Recovery
     - url: /recovery
     - is_https: 1
@@ -76,10 +90,10 @@ instances
       - content
         - form_recovery|page_part_preset_link
             id: form_recovery
-- page_default_registration|instance
+- page_classic_registration|instance
     entity_name: page
     values
-    - id: default_registration
+    - id: classic_registration
     - title: Registration
     - url: /registration
     - is_https: 1
@@ -102,10 +116,10 @@ instances
       - content
         - form_registration|page_part_preset_link
             id: form_registration
-- page_default_logout|instance
+- page_classic_logout|instance
     entity_name: page
     values
-    - id: default_logout
+    - id: classic_logout
     - title: Logout
     - url: /logout
     - is_https: 1
@@ -131,11 +145,20 @@ instances
         - form_logout|page_part_preset_link
             id: form_logout
 # ─────────────────────────────────────────────────────────────────────
+# texts
+# ─────────────────────────────────────────────────────────────────────
+- text_classic_copyright|instance
+    entity_name: text
+    values
+    - id: classic_copyright
+    - description: Text Copyright
+    - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
+# ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
-- tree_default_main|instance
+- tree_classic_main|instance
     entity_name: tree
     values
-    - id: default_main
+    - id: classic_main
     - title: Main menu
     - is_embed: 1

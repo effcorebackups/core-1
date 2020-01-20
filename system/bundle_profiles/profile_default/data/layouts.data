@@ -1,34 +1,4 @@
 layouts
-- installation|layout
-    id: installation
-    title: Installation | profile "Default"
-    children
-    - header|area
-        id: header
-    - title|area
-        id: title
-    - messages|area
-        id: messages
-    - content|area
-        id: content
-- simple|layout
-    id: simple
-    title: Simple layout | profile "Default"
-    children
-    - system|area
-        id: system
-    - header|area
-        id: header
-    - messages|area
-        id: messages
-    - title|area
-        id: title
-    - tabs|area
-        id: tabs
-    - content|area
-        id: content
-    - footer|area
-        id: footer
 - universal|layout
     id: universal
     title: Universal layout | profile "Default"
