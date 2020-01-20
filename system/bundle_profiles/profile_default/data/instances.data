@@ -130,12 +130,3 @@ instances
       - content
         - form_logout|page_part_preset_link
             id: form_logout
-# ─────────────────────────────────────────────────────────────────────
-# trees
-# ─────────────────────────────────────────────────────────────────────
-- tree_default_main|instance
-    entity_name: tree
-    values
-    - id: default_main
-    - title: Main menu
-    - is_embed: 1
