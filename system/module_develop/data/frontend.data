@@ -1,5 +1,5 @@
 frontend
-- develop_page_all|frontend
+- page_all_develop|frontend
     display
       check: url
       where: path
@@ -10,7 +10,7 @@ frontend
         attributes
         - rel: stylesheet
         - media: all
-- develop_page_structures|frontend
+- page_structures_develop|frontend
     display
       check: url
       where: path
