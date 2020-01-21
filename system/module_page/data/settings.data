@@ -1,16 +1,16 @@
 settings
   console_visibility: not_show
   show_warning_if_not_https: false
-  color_page_id: default_dark_1
+  color_page_id: embed_dark_1
   color_text_id: white
   color_main_id: royalblue
   color_link_id: white
   color_link_active_id: gold
-  color_table_row_odd_id: default_dark_2
-  color_table_row_even_id: default_dark_3
+  color_table_row_odd_id: embed_dark_2
+  color_table_row_even_id: embed_dark_3
   color_relation_id: white
-  color_menu_id: default_dark_2
-  color_menu_active_id: default_dark_3
+  color_menu_id: embed_dark_2
+  color_menu_active_id: embed_dark_3
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: gold
@@ -18,13 +18,13 @@ settings
   color_tabs_link_id: white
   color_tabs_link_active_id: white
   color_tabs_link_active_no_bg_id: gold
-  color_ok_id: default_state_ok
-  color_warning_id: default_state_warning
-  color_error_id: default_state_error
-  color_fieldset_id: default_dark_2
-  color_fieldset_nested_id: default_dark_1
-  color_field_id: default_dark_1
+  color_ok_id: embed_state_ok
+  color_warning_id: embed_state_warning
+  color_error_id: embed_state_error
+  color_fieldset_id: embed_dark_2
+  color_fieldset_nested_id: embed_dark_1
+  color_field_id: embed_dark_1
   color_field_text_id: white
-  color_button_id: default_main
+  color_button_id: embed_main
   color_button_active_id: dodgerblue
   color_button_text_id: white
