@@ -816,7 +816,7 @@ colors
     value_hex: #ffffff
     group: gray
 # ─────────────────────────────────────────────────────────────────────
-# default colors
+# embed custom colors
 # ─────────────────────────────────────────────────────────────────────
 - embed_dark_5|color
     id: embed_dark_5

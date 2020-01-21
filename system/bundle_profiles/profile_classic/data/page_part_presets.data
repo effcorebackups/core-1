@@ -1,13 +1,13 @@
 page_part_presets
-- selection_logotype_classic_main|page_part_preset
-    id: selection_logotype_classic_main
+- selection_logotype_main_classic|page_part_preset
+    id: selection_logotype_main_classic
     managing_group: Selection
     managing_title: Logotype Main
     type: link
-    source: selections/profile_classic/logotype_classic_main
-- selection_text_classic_copyright|page_part_preset
-    id: selection_text_classic_copyright
+    source: selections/profile_classic/logotype_main_classic
+- selection_text_copyright_classic|page_part_preset
+    id: selection_text_copyright_classic
     managing_group: Selection
     managing_title: Text Copyright
     type: link
-    source: selections/profile_classic/text_classic_copyright
+    source: selections/profile_classic/text_copyright_classic

@@ -1,6 +1,6 @@
 layouts
-- classic_original|layout
-    id: classic_original
+- original_classic|layout
+    id: original_classic
     title: Original | profile "Classic"
     children
     - system|area

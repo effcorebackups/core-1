@@ -1,6 +1,6 @@
 selections
-- logotype_classic_main|selection
-    id: logotype_classic_main
+- logotype_main_classic|selection
+    id: logotype_main_classic
     title: Logotype Main
     template: children
     decorator_params
@@ -15,7 +15,7 @@ selections
     - conditions
       - id_!f: ~logotype.id
       - operator: =
-      - id_!v: classic_main
+      - id_!v: main_classic
     - limit: 1
     fields
     - logotype.title
@@ -31,8 +31,8 @@ selections
         type: field
         entity_name: logotype
         entity_field_name: path
-- text_classic_copyright|selection
-    id: text_classic_copyright
+- text_copyright_classic|selection
+    id: text_copyright_classic
     title: Text Copyright
     template: children
     decorator_params
@@ -45,7 +45,7 @@ selections
     - conditions
       - id_!f: ~text.id
       - operator: =
-      - id_!v: classic_copyright
+      - id_!v: copyright_classic
     - limit: 1
     fields
     - text.text

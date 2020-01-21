@@ -2,10 +2,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # logotypes
 # ─────────────────────────────────────────────────────────────────────
-- logotype_classic_main|instance
+- logotype_main_classic|instance
     entity_name: logotype
     values
-    - id: classic_main
+    - id: main_classic
     - title: Logotype Main
     - url: /
     - path: null
@@ -13,10 +13,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_classic_front|instance
+- page_front_classic|instance
     entity_name: page
     values
-    - id: classic_front
+    - id: front_classic
     - title: Front
     - url: /
     - is_https: 0
@@ -33,18 +33,18 @@ instances
         - tree_system|page_part_preset_link
             id: tree_system
       - header
-        - selection_logotype_classic_main|page_part_preset_link
-            id: selection_logotype_classic_main
+        - selection_logotype_main_classic|page_part_preset_link
+            id: selection_logotype_main_classic
       - title
         - title|page_part_preset_link
             id: title
       - footer
-        - selection_text_classic_copyright|page_part_preset_link
-            id: selection_text_classic_copyright
-- page_classic_login|instance
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
+- page_login_classic|instance
     entity_name: page
     values
-    - id: classic_login
+    - id: login_classic
     - title: Login
     - url: /login
     - is_https: 1
@@ -68,12 +68,12 @@ instances
         - form_login|page_part_preset_link
             id: form_login
       - footer
-        - selection_text_classic_copyright|page_part_preset_link
-            id: selection_text_classic_copyright
-- page_classic_recovery|instance
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
+- page_recovery_classic|instance
     entity_name: page
     values
-    - id: classic_recovery
+    - id: recovery_classic
     - title: Recovery
     - url: /recovery
     - is_https: 1
@@ -97,12 +97,12 @@ instances
         - form_recovery|page_part_preset_link
             id: form_recovery
       - footer
-        - selection_text_classic_copyright|page_part_preset_link
-            id: selection_text_classic_copyright
-- page_classic_registration|instance
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
+- page_registration_classic|instance
     entity_name: page
     values
-    - id: classic_registration
+    - id: registration_classic
     - title: Registration
     - url: /registration
     - is_https: 1
@@ -126,12 +126,12 @@ instances
         - form_registration|page_part_preset_link
             id: form_registration
       - footer
-        - selection_text_classic_copyright|page_part_preset_link
-            id: selection_text_classic_copyright
-- page_classic_logout|instance
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
+- page_logout_classic|instance
     entity_name: page
     values
-    - id: classic_logout
+    - id: logout_classic
     - title: Logout
     - url: /logout
     - is_https: 1
@@ -157,14 +157,14 @@ instances
         - form_logout|page_part_preset_link
             id: form_logout
       - footer
-        - selection_text_classic_copyright|page_part_preset_link
-            id: selection_text_classic_copyright
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_classic_copyright|instance
+- text_copyright_classic|instance
     entity_name: text
     values
-    - id: classic_copyright
+    - id: copyright_classic
     - description: Text Copyright
     - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.

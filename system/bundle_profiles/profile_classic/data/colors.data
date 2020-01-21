@@ -2,8 +2,8 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # original colors
 # ─────────────────────────────────────────────────────────────────────
-- classic_page_main|color
-    id: classic_page_main
+- page_main_classic|color
+    id: page_main_classic
     value: limegreen
     value_hex: limegreen
     group: classic
