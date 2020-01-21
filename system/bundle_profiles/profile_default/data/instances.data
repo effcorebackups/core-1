@@ -2,10 +2,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_default_front|instance
+- page_front_default|instance
     entity_name: page
     values
-    - id: default_front
+    - id: front_default
     - title: Front
     - url: /
     - is_https: 0
@@ -24,10 +24,10 @@ instances
       - title
         - title|page_part_preset_link
             id: title
-- page_default_login|instance
+- page_login_default|instance
     entity_name: page
     values
-    - id: default_login
+    - id: login_default
     - title: Login
     - url: /login
     - is_https: 1
@@ -50,10 +50,10 @@ instances
       - content
         - form_login|page_part_preset_link
             id: form_login
-- page_default_recovery|instance
+- page_recovery_default|instance
     entity_name: page
     values
-    - id: default_recovery
+    - id: recovery_default
     - title: Recovery
     - url: /recovery
     - is_https: 1
@@ -76,10 +76,10 @@ instances
       - content
         - form_recovery|page_part_preset_link
             id: form_recovery
-- page_default_registration|instance
+- page_registration_default|instance
     entity_name: page
     values
-    - id: default_registration
+    - id: registration_default
     - title: Registration
     - url: /registration
     - is_https: 1
@@ -102,10 +102,10 @@ instances
       - content
         - form_registration|page_part_preset_link
             id: form_registration
-- page_default_logout|instance
+- page_logout_default|instance
     entity_name: page
     values
-    - id: default_logout
+    - id: logout_default
     - title: Logout
     - url: /logout
     - is_https: 1
