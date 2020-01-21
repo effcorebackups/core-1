@@ -32,6 +32,9 @@ instances
             id: tree_sql_user_anonymous
         - tree_system|page_part_preset_link
             id: tree_system
+      - header
+        - selection_logotype_classic_main|page_part_preset_link
+            id: selection_logotype_classic_main
       - title
         - title|page_part_preset_link
             id: title
