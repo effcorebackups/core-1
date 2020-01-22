@@ -13,10 +13,10 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_front_classic|instance
+- page_front|instance
     entity_name: page
     values
-    - id: front_classic
+    - id: front
     - title: Front
     - url: /
     - is_https: 0
@@ -43,10 +43,10 @@ instances
       - footer
         - selection_text_copyright_classic|page_part_preset_link
             id: selection_text_copyright_classic
-- page_login_classic|instance
+- page_login|instance
     entity_name: page
     values
-    - id: login_classic
+    - id: login
     - title: Login
     - url: /login
     - is_https: 1
@@ -76,10 +76,10 @@ instances
       - footer
         - selection_text_copyright_classic|page_part_preset_link
             id: selection_text_copyright_classic
-- page_recovery_classic|instance
+- page_recovery|instance
     entity_name: page
     values
-    - id: recovery_classic
+    - id: recovery
     - title: Recovery
     - url: /recovery
     - is_https: 1
@@ -109,10 +109,10 @@ instances
       - footer
         - selection_text_copyright_classic|page_part_preset_link
             id: selection_text_copyright_classic
-- page_registration_classic|instance
+- page_registration|instance
     entity_name: page
     values
-    - id: registration_classic
+    - id: registration
     - title: Registration
     - url: /registration
     - is_https: 1
@@ -142,10 +142,10 @@ instances
       - footer
         - selection_text_copyright_classic|page_part_preset_link
             id: selection_text_copyright_classic
-- page_logout_classic|instance
+- page_logout|instance
     entity_name: page
     values
-    - id: logout_classic
+    - id: logout
     - title: Logout
     - url: /logout
     - is_https: 1
