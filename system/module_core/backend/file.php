@@ -264,12 +264,13 @@ namespace effcore {
     return  @file_put_contents($this->path_get(), $data, FILE_APPEND);
   }
 
-  function copy($new_dirs, $new_name = null) {
+  function copy($new_dirs, $new_name = null, $this_reset = false) {
     $path_old = $this->path_get();
     $path_new = $new_dirs.($new_name ?: $this->file_get());
     static::mkdir_if_not_exist($new_dirs);
     if (@copy($path_old, $path_new)) {
-      $this->__construct($path_new);
+      if ($this_reset)
+          $this->__construct($path_new);
       return true;
     }
   }

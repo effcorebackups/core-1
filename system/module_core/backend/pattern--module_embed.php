@@ -52,6 +52,14 @@ namespace effcore {
   }
 
   function install() {
+  # deployment process: copy files
+    foreach (storage::get('files')->select('deployment/'.$this->id.'/copy') ?? [] as $c_info) {
+      $c_src_file = new file($this->path.$c_info->from);
+      $c_dst_file = new file(            $c_info->to  );
+      if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
+           message::insert(new text('File was copied from "%%_from" to "%%_to".',     ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
+      else message::insert(new text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
+    }
   # insert entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())

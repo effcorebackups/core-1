@@ -170,6 +170,8 @@ translations
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
+    - File "%%_path" was deleted.: Файл "%%_path" быў выдалены.
+    - File "%%_path" was not deleted!: Файл "%%_path" не быў выдалены!
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
     - file is empty: файл пусты
     - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
@@ -178,6 +180,8 @@ translations
     - file of this type is protected: файл гэтага тыпу абаронены
     - file path: шлях да файла
     - File types: Тыпы файлаў
+    - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
+    - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
     - File: Файл
     - file: файл
     - fix: выправіць
