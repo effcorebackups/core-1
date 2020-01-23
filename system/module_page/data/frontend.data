@@ -11,7 +11,7 @@ frontend
         - rel: stylesheet
         - media: all
     scripts
-    - page_variables
+    - page_script_core
         path: frontend/core.jsd
         weight: +50
         attributes
