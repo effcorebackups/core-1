@@ -6,7 +6,7 @@ frontend
       match: %^/develop/.*$%
     styles
     - develop_style
-        file: frontend/develop.cssd
+        path: frontend/develop.cssd
         attributes
         - rel: stylesheet
         - media: all
@@ -17,7 +17,7 @@ frontend
       match: %^/develop/structures/.*$%
     styles
     - form_style
-        file: /system/module_page/frontend/form.cssd
+        path: /system/module_page/frontend/form.cssd
         attributes
         - rel: stylesheet
         - media: all

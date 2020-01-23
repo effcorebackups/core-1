@@ -6,18 +6,18 @@ frontend
       match: %^.*$%
     styles
     - page_style
-        file: frontend/page.cssd
+        path: frontend/page.cssd
         attributes
         - rel: stylesheet
         - media: all
     scripts
     - page_variables
-        file: frontend/core.jsd
+        path: frontend/core.jsd
         weight: +50
         attributes
         - defer: true
     - page_script
-        file: frontend/page.js
+        path: frontend/page.js
         weight: +30
         attributes
         - defer: true
@@ -28,13 +28,13 @@ frontend
       match: %^forms/.*$%
     styles
     - form_style
-        file: frontend/form.cssd
+        path: frontend/form.cssd
         attributes
         - rel: stylesheet
         - media: all
     scripts
     - form_script
-        file: frontend/form.js
+        path: frontend/form.js
         weight: +10
         attributes
         - defer: true

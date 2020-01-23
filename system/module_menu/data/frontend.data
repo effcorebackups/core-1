@@ -6,13 +6,13 @@ frontend
       match: %^trees/.*$%
     styles
     - tree_style
-        file: frontend/tree.cssd
+        path: frontend/tree.cssd
         attributes
         - rel: stylesheet
         - media: all
     scripts
     - tree_script
-        file: frontend/tree.js
+        path: frontend/tree.js
         attributes
         - defer: true
 - tabs_all|frontend
@@ -22,7 +22,7 @@ frontend
       match: %^tabs/.*$%
     styles
     - tabs_style
-        file: frontend/tabs.cssd
+        path: frontend/tabs.cssd
         attributes
         - rel: stylesheet
         - media: all
