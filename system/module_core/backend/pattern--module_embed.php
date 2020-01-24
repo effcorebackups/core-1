@@ -53,20 +53,23 @@ namespace effcore {
 
   function install() {
   # deployment process: copy files
-    foreach (storage::get('files')->select('deployment/'.$this->id.'/copy') ?? [] as $c_info) {
-      $c_src_file = new file($this->path.$c_info->from);
-      $c_dst_file = new file(            $c_info->to  );
-      if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
-           message::insert(new text('File was copied from "%%_from" to "%%_to".',     ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
-      else message::insert(new text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
+    $deployment = storage::get('files')->select('deployment');
+    if ( isset($deployment[$this->id]['copy']) ) {
+      foreach ($deployment[$this->id]['copy'] as $c_info) {
+        $c_src_file = new file($this->path.$c_info->from);
+        $c_dst_file = new file(            $c_info->to  );
+        if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
+             message::insert(new text('File was copied from "%%_from" to "%%_to".',     ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
+        else message::insert(new text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
+      }
     }
-  # insert entities
+  # deployment process: insert entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())
            message::insert(new text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
       else message::insert(new text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
     }
-  # insert instances
+  # deployment process: insert instances
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(0);
       if ($c_instance->insert()) message::insert(new text('Instance with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
