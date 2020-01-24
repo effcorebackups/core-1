@@ -24,19 +24,30 @@ namespace effcore\modules\polls {
     if ($poll->select()) {
       $form->_poll = $poll;
       $form->_id_user = user::get_current()->id;
-    # get votes by Poll ID and User ID
-      $vote_rows = entity::get('poll_vote')->instances_select(['conditions' => [
-        'id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
-        'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $form->_id_user]]);
-      $votes = [];
-      foreach ($vote_rows as $c_row)
-        $votes[$c_row->id_answer] =
-               $c_row->id_answer;
+      $form->_id_answers = [];
     # get answers by Poll ID
-      $answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
+      $answers_row = entity::get('poll_answer')->instances_select(['conditions' => [
         'id_poll_!f'       => 'id_poll',
         'id_poll_operator' => '=',
         'id_poll_!v'       => $form->_id_poll]]);
+      foreach ($answers_row as $c_row)
+        $form->_id_answers[$c_row->id] =
+                           $c_row->id;
+    # get votes by Answer ID and User ID
+      $votes_row = entity::get('poll_vote')->instances_select(['conditions' => [
+        'id_user_!f'         => 'id_user',
+        'id_user_operator'   => '=',
+        'id_user_!v'         => $form->_id_user,
+        'conjunction'        => 'and',
+        'id_answer_!f'       => 'id_answer',
+        'id_answer_in_begin' => 'in (',
+        'id_answer_in_!,'    => $form->_id_answers,
+        'id_answer_in_end'   => ')']]);
+      $votes = [];
+      foreach ($votes_row as $c_row)
+        $votes[$c_row->id_answer] =
+               $c_row->id_answer;
+    # init form elements
       $items['fields']->children_delete();
       $items['fields']->title = $poll->question;
     # ─────────────────────────────────────────────────────────────────────
@@ -48,7 +59,7 @@ namespace effcore\modules\polls {
         $selector = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
         $selector->build();
         $items['fields']->child_insert($selector, 'answers');
-        foreach ($answers_rows as $c_answer) {
+        foreach ($answers_row as $c_answer) {
           $selector->field_insert(
             $c_answer->answer, null, ['name' => 'answers[]', 'value' => $c_answer->id], $c_answer->id, $c_answer->weight
           );
@@ -59,13 +70,14 @@ namespace effcore\modules\polls {
       } else {
       # make statistics
         $total = entity::get('poll_vote')->instances_select_count(['conditions' => [
-          'id_poll_!f' => 'id_poll',
-          'operator'   => '=',
-          'id_poll_!v' => $form->_id_poll]]);
+          'id_answer_!f'       => 'id_answer',
+          'id_answer_in_begin' => 'in (',
+          'id_answer_in_!,'    => $form->_id_answers,
+          'id_answer_in_end'   => ')']]);
         $total_by_answers_rows = entity::get('poll_vote')->instances_select([
-          'fields'     => ['id_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
-          'conditions' => ['id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll],
-          'group'      => ['id_!f' => 'id_answer']]);
+          'fields'     => ['id_answer_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
+          'conditions' => ['id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!,' => $form->_id_answers, 'id_answer_in_end' => ')'],
+          'group'      => ['id_answer_!f' => 'id_answer']]);
         $total_by_answers = [];
         foreach ($total_by_answers_rows as $c_row)
           $total_by_answers[$c_row->id_answer] =
@@ -73,7 +85,7 @@ namespace effcore\modules\polls {
       # build diagram
         $diagram = new diagram(null, $poll->diagram_type);
         $diagram_colors = core::diagram_colors;
-        foreach ($answers_rows as $c_answer) {
+        foreach ($answers_row as $c_answer) {
           $diagram->slice_insert($c_answer->answer,
             $total ? ($total_by_answers[$c_answer->id] ?? 0) / $total * 100 : 0,
                       $total_by_answers[$c_answer->id] ?? 0,
@@ -116,7 +128,6 @@ namespace effcore\modules\polls {
       case 'vote':
         foreach ($form->_poll->is_multiple ? $items['*answers']->values_get() : [$items['*answers']->value_get()] as $c_id_answer)
           $result = (new instance('poll_vote', [
-            'id_poll'   => $form->_id_poll,
             'id_user'   => $form->_id_user,
             'id_answer' => $c_id_answer
           ]))->insert();
@@ -125,9 +136,16 @@ namespace effcore\modules\polls {
         static::on_init($event, $form, $items);
         break;
       case 'cancel':
+      # delete votes by Answer ID and User ID
         $result = entity::get('poll_vote')->instances_delete(['conditions' => [
-          'id_poll_!f' => 'id_poll', 'id_poll_operator' => '=', 'id_poll_!v' => $form->_id_poll, 'conjunction' => 'and',
-          'id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $form->_id_user]]);
+          'id_user_!f'         => 'id_user',
+          'id_user_operator'   => '=',
+          'id_user_!v'         => $form->_id_user,
+          'conjunction'        => 'and',
+          'id_answer_!f'       => 'id_answer',
+          'id_answer_in_begin' => 'in (',
+          'id_answer_in_!,'    => $form->_id_answers,
+          'id_answer_in_end'   => ')']]);
         if ($result) message::insert('Your answer was canceled.'             );
         else         message::insert('Your answer was not canceled!', 'error');
         static::on_init($event, $form, $items);

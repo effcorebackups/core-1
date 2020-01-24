@@ -164,10 +164,6 @@ entities
     title_plural: Poll votes
     catalog_name: poll_votes
     fields
-    - id_poll
-        title: Poll ID
-        type: integer
-        not_null: true
     - id_answer
         title: Answer ID
         type: integer
@@ -182,13 +178,6 @@ entities
         collate: nocase
         check: (id_session <> '')
     constraints
-    - foreign_id_poll
-        type: foreign
-        fields
-        - =: id_poll
-        references: polls
-        references_fields
-        - =: id
     - foreign_id_answer
         type: foreign
         fields
@@ -208,12 +197,3 @@ entities
         type: index
         fields
         - =: id_user
-    - index_id_poll
-        type: index
-        fields
-        - =: id_poll
-    - index_id_poll_id_answer
-        type: index
-        fields
-        - =: id_poll
-        - =: id_answer
