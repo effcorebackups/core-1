@@ -19,9 +19,9 @@ namespace effcore {
                                          '(?<prefix>\\%\\%_)'.
                                          '(?<name>[a-z0-9_]+)'.
                                          '(?<args>\\{[a-z0-9_,]+\\}|)%S', function ($c_match) {
-        return isset($c_match['prefix']) &&
-               isset($c_match['name']) &&
-               isset($this->args[$c_match['name']]) &&
+        return isset(            $c_match['prefix']) &&
+               isset(            $c_match['name'])   &&
+               isset($this->args[$c_match['name']])  &&
                      $this->args[$c_match['name']] !== '' ? $c_match['spacer'].
                      $this->args[$c_match['name']] : '';
       },     $rendered);
