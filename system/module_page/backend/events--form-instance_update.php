@@ -31,7 +31,7 @@ namespace effcore\modules\page {
             $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
-            $c_widget_area_parts = new widget_area_parts('parts_'.$c_area->id.'_', $c_area->id);
+            $c_widget_area_parts = new widget_area_parts('parts__'.$c_area->id, $c_area->id);
             $c_widget_area_parts->form_current_set($form);
             $c_widget_area_parts->build();
             $c_widget_area_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);

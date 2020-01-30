@@ -31,7 +31,7 @@ namespace effcore\modules\polls {
             'text'   => $c_row->answer
           ];
         }
-        $widget_answers = new widget_poll_fields('answer_');
+        $widget_answers = new widget_poll_fields('answer');
         $widget_answers->form_current_set($form);
         $widget_answers->build();
         $widget_answers->items_set_once($widget_items);

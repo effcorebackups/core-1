@@ -9,15 +9,15 @@ namespace effcore {
 
   public $attributes = ['data-type' => 'text_fields'];
 
-  function widget_manage_get($item, $c_row_id, $prefix) {
-    $widget = parent::widget_manage_get($item, $c_row_id, $prefix);
+  function widget_manage_get($item, $c_row_id) {
+    $widget = parent::widget_manage_get($item, $c_row_id);
   # field for text
     $field_text = new field_text;
     $field_text->description_state = 'hidden';
     $field_text->build();
-    $field_text->name_set($prefix.'text'.$c_row_id);
+    $field_text->name_set($this->unique_prefix.'__text__'.$c_row_id);
     $field_text->value_set($item->text);
-    $this->_fields['text'.$c_row_id] = $field_text;
+    $this->_fields['text__'.$c_row_id] = $field_text;
   # group the previous elements in widget 'manage'
     $widget->child_insert($field_text, 'text');
     return $widget;
@@ -28,8 +28,8 @@ namespace effcore {
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      $c_item->weight = (int)$this->_fields['weight'.$c_row_id]->value_get();
-      $c_item->text   =      $this->_fields['text'.  $c_row_id]->value_get();}
+      $c_item->weight = (int)$this->_fields['weight__'.$c_row_id]->value_get();
+      $c_item->text   =      $this->_fields['text__'.  $c_row_id]->value_get();}
     $this->items_set($items);
   }
 

@@ -10,8 +10,8 @@ namespace effcore {
   public $attributes = ['data-type' => 'info_fields-selection'];
   public $item_title = 'Field';
 
-  function widget_manage_get($item, $c_row_id, $prefix) {
-    $widget = parent::widget_manage_get($item, $c_row_id, $prefix);
+  function widget_manage_get($item, $c_row_id) {
+    $widget = parent::widget_manage_get($item, $c_row_id);
   # data markup
     $entity = entity::get($item->entity_name);
     $entity_field = $entity ? $entity->field_get($item->entity_field_name) : null;
@@ -49,14 +49,14 @@ namespace effcore {
     $select = new field_select('Insert field');
     $select->values = $options;
     $select->build();
-    $select->name_set($this->unique_prefix.'insert');
+    $select->name_set($this->unique_prefix.'__insert');
     $select->required_set(false);
     $this->_fields['insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->unique_prefix.'insert');
+    $button->value_set($this->unique_prefix.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
   # group the previous elements in widget 'insert'
