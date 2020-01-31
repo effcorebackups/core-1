@@ -34,6 +34,7 @@ selections
 - text_about_classic|selection
     id: text_about_classic
     title: Text About
+    template: content
     decorator_params
     - view_type: ul
     query_params
@@ -71,6 +72,7 @@ selections
 - text_front_classic|selection
     id: text_front_classic
     title: Text Front
+    template: content
     decorator_params
     - view_type: ul
     query_params
