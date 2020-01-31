@@ -31,6 +31,22 @@ selections
         type: field
         entity_name: logotype
         entity_field_name: path
+- text_about_classic|selection
+    id: text_about_classic
+    title: Text About
+    decorator_params
+    - view_type: ul
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - operator: =
+      - id_!v: about_classic
+    - limit: 1
+    fields
+    - text.text
+        type: field
+        entity_name: text
+        entity_field_name: text
 - text_copyright_classic|selection
     id: text_copyright_classic
     title: Text Copyright
@@ -46,6 +62,22 @@ selections
       - id_!f: ~text.id
       - operator: =
       - id_!v: copyright_classic
+    - limit: 1
+    fields
+    - text.text
+        type: field
+        entity_name: text
+        entity_field_name: text
+- text_front_classic|selection
+    id: text_front_classic
+    title: Text Front
+    decorator_params
+    - view_type: ul
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - operator: =
+      - id_!v: front_classic
     - limit: 1
     fields
     - text.text

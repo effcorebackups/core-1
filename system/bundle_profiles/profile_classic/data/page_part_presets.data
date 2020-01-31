@@ -5,9 +5,21 @@ page_part_presets
     managing_title: Logotype Main
     type: link
     source: selections/profile_classic/logotype_main_classic
+- selection_text_about_classic|page_part_preset
+    id: selection_text_about_classic
+    managing_group: Selection
+    managing_title: Text About
+    type: link
+    source: selections/profile_classic/text_about_classic
 - selection_text_copyright_classic|page_part_preset
     id: selection_text_copyright_classic
     managing_group: Selection
     managing_title: Text Copyright
     type: link
     source: selections/profile_classic/text_copyright_classic
+- selection_text_front_classic|page_part_preset
+    id: selection_text_front_classic
+    managing_group: Selection
+    managing_title: Text Front
+    type: link
+    source: selections/profile_classic/text_front_classic
