@@ -10,6 +10,7 @@ instances
     - url: /
     - path: dynamic/files/logotypes/logotype-main_classic.svg
     - is_embed: 1
+    - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
@@ -22,6 +23,7 @@ instances
     - is_https: 0
     - is_embed: 1
     - access: null
+    - module_id: profile_classic
     - parts
       - system
         - page_actions|page_part_preset_link
@@ -51,6 +53,7 @@ instances
     - url: /login
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_classic
     - access
         roles
         - =: anonymous
@@ -84,6 +87,7 @@ instances
     - url: /recovery
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_classic
     - access
         roles
         - =: anonymous
@@ -117,6 +121,7 @@ instances
     - url: /registration
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_classic
     - access
         roles
         - =: anonymous
@@ -150,6 +155,7 @@ instances
     - url: /logout
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_classic
     - access
         roles
         - =: registered
@@ -186,3 +192,16 @@ instances
     - id: copyright_classic
     - description: Text Copyright
     - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
+    - module_id: profile_classic
+# ─────────────────────────────────────────────────────────────────────
+# tree items
+# ─────────────────────────────────────────────────────────────────────
+- about_classic|instance
+    entity_name: tree_item
+    values
+    - id: about_classic
+    - id_parent: null
+    - id_tree: main
+    - title: About
+    - url: /about
+    - module_id: profile_classic
