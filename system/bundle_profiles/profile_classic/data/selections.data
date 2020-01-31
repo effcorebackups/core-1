@@ -36,7 +36,11 @@ selections
     title: Text About
     template: content
     decorator_params
-    - view_type: ul
+    - view_type: template
+    - template: content
+    - template_row: text
+    - template_row_mapping
+      - text: text.text
     query_params
     - conditions
       - id_!f: ~text.id
@@ -74,7 +78,11 @@ selections
     title: Text Front
     template: content
     decorator_params
-    - view_type: ul
+    - view_type: template
+    - template: content
+    - template_row: text
+    - template_row_mapping
+      - text: text.text
     query_params
     - conditions
       - id_!f: ~text.id
