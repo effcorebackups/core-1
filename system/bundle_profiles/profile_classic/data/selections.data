@@ -2,10 +2,10 @@ selections
 - logotype_main_classic|selection
     id: logotype_main_classic
     title: Logotype Main
-    template: children
+    template: content
     decorator_params
     - view_type: template
-    - template: children
+    - template: content
     - template_row: logotype
     - template_row_mapping
       - title: logotype.title
@@ -50,10 +50,10 @@ selections
 - text_copyright_classic|selection
     id: text_copyright_classic
     title: Text Copyright
-    template: children
+    template: content
     decorator_params
     - view_type: template
-    - template: children
+    - template: content
     - template_row: text
     - template_row_mapping
       - text: text.text

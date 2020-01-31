@@ -6,8 +6,8 @@ templates
     name: text
     type: text
     data: %%_text
-- children
-    name: children
+- content
+    name: content
     type: text
     data: %%_children
 - markup_html
