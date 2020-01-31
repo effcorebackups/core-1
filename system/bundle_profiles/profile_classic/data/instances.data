@@ -14,6 +14,37 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
+- page_about|instance
+    entity_name: page
+    values
+    - id: about
+    - title: About
+    - url: /about
+    - is_https: 0
+    - is_embed: 0
+    - access: null
+    - module_id: profile_classic
+    - parts
+      - system
+        - page_actions|page_part_preset_link
+            id: page_actions
+        - tree_sql_user_registered|page_part_preset_link
+            id: tree_sql_user_registered
+        - tree_sql_user_anonymous|page_part_preset_link
+            id: tree_sql_user_anonymous
+        - tree_system|page_part_preset_link
+            id: tree_system
+      - header
+        - selection_logotype_main_classic|page_part_preset_link
+            id: selection_logotype_main_classic
+        - tree_sql_main|page_part_preset_link
+            id: tree_sql_main
+      - title
+        - title|page_part_preset_link
+            id: title
+      - footer
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
 - page_front|instance
     entity_name: page
     values

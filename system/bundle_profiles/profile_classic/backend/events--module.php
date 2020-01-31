@@ -15,6 +15,7 @@ namespace effcore\modules\profile_classic {
 
   static function on_install($event) {
     $page_ids = [];
+    if (page::get('about'       )) $page_ids[] = 'about';
     if (page::get('front'       )) $page_ids[] = 'front';
     if (page::get('login'       )) $page_ids[] = 'login';
     if (page::get('logout'      )) $page_ids[] = 'logout';
