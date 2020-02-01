@@ -8,7 +8,7 @@ namespace effcore {
           class widget_area_parts extends widget_fields {
 
   public $attributes = ['data-type' => 'info_fields-area_parts'];
-  public $item_title = 'Page part';
+  public $item_title = 'Part';
   public $id_area;
 
   function __construct($unique_prefix, $id_area, $attributes = [], $weight = 0) {

@@ -343,13 +343,13 @@ translations
     - Owner: Владелец
     - Page actions: Действия страницы
     - Page not found: Страница не найдена
-    - Page part: Часть страницы
     - Page title: Заголовок страницы
     - Page: Страница
     - Pages: Страницы
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID родителя
+    - Part: Часть
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
     - Path: Путь
