@@ -17,6 +17,7 @@ layouts
         - left|area
             id: left
             type: column
+            tag_name: aside
             attributes
             - data-area-group-id: left
             - style: width: 200px
@@ -70,6 +71,7 @@ layouts
         - right|area
             id: right
             type: column
+            tag_name: aside
             attributes
             - data-area-group-id: right
             - style: width: 200px

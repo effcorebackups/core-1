@@ -32,6 +32,7 @@ layouts
         - right|area
             id: right
             type: column
+            tag_name: aside
             attributes
             - style: width: 200px
     - footer|area
