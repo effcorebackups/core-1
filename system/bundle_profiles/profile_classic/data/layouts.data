@@ -9,7 +9,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation
         tag_name: nav
     - content|area
         type: table

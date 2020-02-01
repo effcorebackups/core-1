@@ -298,9 +298,9 @@
   x-layout-manager [data-area-type='table' ] {margin: 30px 0; padding:  2px; border: 3px solid %%_color_main}
   x-layout-manager [data-area-type='row'   ] {margin:      0; padding:    0; border: none}
   x-layout-manager [data-area-type='column'] {margin:      0; padding: 10px; border: 3px solid %%_color_main}
-  x-layout-manager [data-area-type='column'] > :first-child:not(x-area-id) {margin-top:    0}
-  x-layout-manager [data-area-type='column'] >  :last-child:not(x-area-id) {margin-bottom: 0}
-  x-layout-manager x-area-id {
+  x-layout-manager [data-area-type='column'] > :first-child:not(x-area-info) {margin-top:    0}
+  x-layout-manager [data-area-type='column'] >  :last-child:not(x-area-info) {margin-bottom: 0}
+  x-layout-manager x-area-info {
     display: block;
     margin: -9px -9px 0 -9px;
     padding: 8px;
@@ -309,9 +309,12 @@
     line-height: .9em;
     color: %%_color_text;
     background: %%_color_main}
+  x-layout-manager x-area-info x-area-id {margin-right: 10px}
+  x-layout-manager x-area-info x-area-tag-name::before {content: '<'}
+  x-layout-manager x-area-info x-area-tag-name::after  {content: '>'}
 
   form#instance_update x-layout-manager [data-area-id] {padding: 15px}
-  form#instance_update x-layout-manager x-area-id {margin: -14px -14px 9px -14px}
+  form#instance_update x-layout-manager x-area-info {margin: -14px -14px 9px -14px}
 
   /* form 'install' */
 

@@ -9,7 +9,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation 
         tag_name: nav
     - content|area
         type: table
@@ -86,7 +86,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation
         tag_name: nav
     - messages|area
         id: messages
@@ -159,7 +159,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation
         tag_name: nav
     - messages|area
         id: messages
@@ -247,7 +247,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation
         tag_name: nav
     - messages|area
         id: messages
@@ -350,7 +350,7 @@ layouts
         id: header
         tag_name: header
     - nav|area
-        id: nav
+        id: navigation
         tag_name: nav
     - messages|area
         id: messages

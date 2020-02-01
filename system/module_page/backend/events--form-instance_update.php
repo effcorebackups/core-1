@@ -26,16 +26,16 @@ namespace effcore\modules\page {
       # build layout
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         foreach ($layout->children_select_recursive() as $c_area) {
-          if ($c_area instanceof area && $c_area->id) {
-            $c_area->managing_is_enabled = true;
-            $c_area->tag_name = 'div';
-            $c_area->build();
-            $c_widget_parts = new widget_parts('parts__'.$c_area->id, $c_area->id);
-            $c_widget_parts->form_current_set($form);
-            $c_widget_parts->build();
-            $c_widget_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);
-            $c_area->child_insert($c_widget_parts, 'widget_parts');
-            $form->_widgets_area[$c_area->id] = $c_widget_parts;
+          if ($c_area instanceof area &&
+              $c_area->id) {
+              $c_area->managing_enable();
+              $c_area->build();
+              $c_widget_parts = new widget_parts('parts__'.$c_area->id, $c_area->id);
+              $c_widget_parts->form_current_set($form);
+              $c_widget_parts->build();
+              $c_widget_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);
+              $c_area->child_insert($c_widget_parts, 'widget_parts');
+              $form->_widgets_area[$c_area->id] = $c_widget_parts;
           }
         }
         $form->child_select('fields')->child_insert(
