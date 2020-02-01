@@ -58,10 +58,10 @@ namespace effcore\modules\core {
   # find all active tabs items
   # ─────────────────────────────────────────────────────────────────────
     $active_tab = null;
-    $page_parts = page::get_current()->parts;
-    if (is_array($page_parts)) {
-      foreach ($page_parts as $c_parts) {
-        foreach ( $c_parts as $c_part ) {
+    $parts = page::get_current()->parts;
+    if (is_array($parts)) {
+      foreach ($parts as $c_id_area => $c_parts_by_area) {
+        foreach ($c_parts_by_area as $c_part) {
           if ($c_part instanceof page_part &&
               $c_part->type == 'link'      && strpos(
               $c_part->source, 'tabs/') === 0) {
