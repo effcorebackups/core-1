@@ -13,8 +13,11 @@ translations
     - Here you can place the most important information about your project,
 >>>>> including special offers.: Здесь Вы можете разместить самую важную
 >>>>> информацию о своём проекте, в том числе специальные предложения.
+    - About Us: О нас
+    - Contact Us: Связь
     - Module for profile example "Classic".: Модуль для примера профиля "Классика".
     - Original \| profile "Classic": Оригинал | профиль "Классика"
     - Profile "Classic": Профиль "Классика"
-    - About Us: О нас
-    - Contact: Контакт
+    - Text of the page About Us: Текст страницы О нас
+    - Text of the page Contact Us: Текст страницы Связь
+    - Text of the page Front: Текст страницы Главная
