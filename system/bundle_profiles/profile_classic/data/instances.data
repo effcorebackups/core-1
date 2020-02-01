@@ -48,6 +48,40 @@ instances
       - footer
         - selection_text_copyright_classic|page_part_preset_link
             id: selection_text_copyright_classic
+- page_contact|instance
+    entity_name: page
+    values
+    - id: contact
+    - title: Contact
+    - url: /contact
+    - is_https: 0
+    - is_embed: 0
+    - access: null
+    - module_id: profile_classic
+    - parts
+      - system
+        - page_actions|page_part_preset_link
+            id: page_actions
+        - tree_sql_user_registered|page_part_preset_link
+            id: tree_sql_user_registered
+        - tree_sql_user_anonymous|page_part_preset_link
+            id: tree_sql_user_anonymous
+        - tree_system|page_part_preset_link
+            id: tree_system
+      - header
+        - selection_logotype_main_classic|page_part_preset_link
+            id: selection_logotype_main_classic
+        - tree_sql_main|page_part_preset_link
+            id: tree_sql_main
+      - title
+        - title|page_part_preset_link
+            id: title
+      - content
+        - selection_text_contact_classic|page_part_preset_link
+            id: selection_text_contact_classic
+      - footer
+        - selection_text_copyright_classic|page_part_preset_link
+            id: selection_text_copyright_classic
 - page_front|instance
     entity_name: page
     values
@@ -235,22 +269,21 @@ instances
     values
     - id: about_classic
     - description: Text of the page "About".
-    - text: The content of the page "About". The content of the page "About".
->>>>>>>>>>>>The content of the page "About". The content of the page "About".
->>>>>>>>>>>>The content of the page "About". The content of the page "About".
->>>>>>>>>>>>The content of the page "About". The content of the page "About".
->>>>>>>>>>>>The content of the page "About". The content of the page "About".
+    - text: This is the About Us page.
+    - module_id: profile_classic
+- text_contact_classic|instance
+    entity_name: text
+    values
+    - id: text_contact
+    - description: Text of the page "Contact".
+    - text: This is the Contact page.
     - module_id: profile_classic
 - text_front_classic|instance
     entity_name: text
     values
     - id: front_classic
     - description: Text of the page "Front".
-    - text: The content of the page "Front". The content of the page "Front".
->>>>>>>>>>>>The content of the page "Front". The content of the page "Front".
->>>>>>>>>>>>The content of the page "Front". The content of the page "Front".
->>>>>>>>>>>>The content of the page "Front". The content of the page "Front".
->>>>>>>>>>>>The content of the page "Front". The content of the page "Front".
+    - text: This is the Front page.
     - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
 # tree items
@@ -263,4 +296,13 @@ instances
     - id_tree: main
     - title: About
     - url: /about
+    - module_id: profile_classic
+- contact_classic|instance
+    entity_name: tree_item
+    values
+    - id: contact_classic
+    - id_parent: null
+    - id_tree: main
+    - title: Contact
+    - url: /contact
     - module_id: profile_classic

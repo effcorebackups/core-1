@@ -23,7 +23,7 @@ namespace effcore {
     $preset = page_part_preset::select($item->id);
     $data_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
-        'id'    => new markup('x-id',    [], new text_simple($preset->id)) ]);
+        'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
   # group the previous elements in widget 'manage'
     $widget->child_insert($data_markup, 'data');
     return $widget;
