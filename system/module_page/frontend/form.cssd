@@ -303,13 +303,13 @@
   x-layout-manager x-area-info {
     display: block;
     margin: -9px -9px 0 -9px;
-    padding: 8px;
-    text-transform: uppercase;
-    font-size: .85em;
-    line-height: .9em;
+    padding: 5px 9px;
+    line-height: 1.2em;
     color: %%_color_text;
     background: %%_color_main}
-  x-layout-manager x-area-info x-area-id {margin-right: 10px}
+  x-layout-manager x-area-info * {vertical-align: middle}
+  x-layout-manager x-area-info x-area-id {margin-right: 1em; font-size: .85em; text-transform: uppercase}
+  x-layout-manager x-area-info x-area-tag-name {font-family: monospace; font-size: .8em; opacity: .5}
   x-layout-manager x-area-info x-area-tag-name::before {content: '<'}
   x-layout-manager x-area-info x-area-tag-name::after  {content: '>'}
 
