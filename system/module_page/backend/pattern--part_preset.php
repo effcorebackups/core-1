@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page_part_preset extends page_part {
+          class part_preset extends page_part {
 
   public $id;
   public $managing_group = 'Text';
@@ -56,7 +56,7 @@ namespace effcore {
          static::$is_init_nosql = true;
       foreach (storage::get('files')->select('part_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_preset) {
-          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('page_part_preset', $c_preset->id, $c_module_id);
+          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('part_preset', $c_preset->id, $c_module_id);
           static::$cache[$c_preset->id] = $c_preset;
           static::$cache[$c_preset->id]->module_id = $c_module_id;
           static::$cache[$c_preset->id]->origin = 'nosql';

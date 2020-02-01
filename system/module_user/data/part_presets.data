@@ -1,5 +1,5 @@
 part_presets
-- form_login|page_part_preset
+- form_login|part_preset
     id: form_login
     managing_group: Form
     managing_title: Login
@@ -7,7 +7,7 @@ part_presets
     - =: content
     type: link
     source: forms/user/login
-- form_registration|page_part_preset
+- form_registration|part_preset
     id: form_registration
     managing_group: Form
     managing_title: Registration
@@ -15,7 +15,7 @@ part_presets
     - =: content
     type: link
     source: forms/user/registration
-- form_recovery|page_part_preset
+- form_recovery|part_preset
     id: form_recovery
     managing_group: Form
     managing_title: Recovery
@@ -23,7 +23,7 @@ part_presets
     - =: content
     type: link
     source: forms/user/recovery
-- form_logout|page_part_preset
+- form_logout|part_preset
     id: form_logout
     managing_group: Form
     managing_title: Logout
@@ -32,7 +32,7 @@ part_presets
     type: link
     source: forms/user/logout
 # ─────────────────────────────────────────────────────────────────────
-- selection_user|page_part_preset
+- selection_user|part_preset
     id: selection_user
     managing_group: Selection
     managing_title: User

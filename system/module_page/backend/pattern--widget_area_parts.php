@@ -20,7 +20,7 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # data markup
-    $preset = page_part_preset::select($item->id);
+    $preset = part_preset::select($item->id);
     $data_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
@@ -33,7 +33,7 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # field for selection of the type of new item
-    $presets = page_part_preset::select_all($this->id_area);
+    $presets = part_preset::select_all($this->id_area);
     core::array_sort_by_text_property($presets, 'managing_group');
     $options = ['not_selected' => '- no -'];
     foreach ($presets as $c_preset) {
