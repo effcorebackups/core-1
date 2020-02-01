@@ -61,9 +61,9 @@ events
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
 # ─────────────────────────────────────────────────────────────────────
-  on_page_parts_dynamic_build
+  on_page_part_presets_dynamic_build
   - all|event
-      handler: \effcore\modules\storage\events_page::on_page_parts_dynamic_build
+      handler: \effcore\modules\storage\events_page::on_page_part_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - data|event

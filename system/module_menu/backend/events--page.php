@@ -37,7 +37,7 @@ namespace effcore\modules\menu {
     }
   }
 
-  static function on_page_parts_dynamic_build($event, $id = null) {
+  static function on_page_part_presets_dynamic_build($event, $id = null) {
     if ($id === null                                  ) {foreach (tree::select_all('sql') as $c_tree)                                                               page_part_preset::insert('tree_sql_'.$c_tree->id, 'Menu', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');}
     if ($id !== null && strpos($id, 'tree_sql_') === 0) {                                    $c_tree = tree::select(substr($id, strlen('tree_sql_'))); if ($c_tree) page_part_preset::insert('tree_sql_'.$c_tree->id, 'Menu', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');}
   }
