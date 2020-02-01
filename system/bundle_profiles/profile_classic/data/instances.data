@@ -268,7 +268,7 @@ instances
     entity_name: text
     values
     - id: about_classic
-    - description: Text of the page About Us
+    - description: Text About Us
     - text: Here you can describe your story in detail,
 >>>>>>>>>>> tell about your achievements.
     - module_id: profile_classic
@@ -276,7 +276,7 @@ instances
     entity_name: text
     values
     - id: contact_classic
-    - description: Text of the page Contact Us
+    - description: Text Contact Us
     - text: Here you can place: names of contact persons, addresses of branches,
 >>>>>>>>>>> e-mail addresses, phone numbers, links to social networks, location map,
 >>>>>>>>>>> feedback form.
@@ -285,7 +285,7 @@ instances
     entity_name: text
     values
     - id: front_classic
-    - description: Text of the page Front
+    - description: Text Front
     - text: Here you can place the most important information about your project,
 >>>>>>>>>>> including special offers.
     - module_id: profile_classic

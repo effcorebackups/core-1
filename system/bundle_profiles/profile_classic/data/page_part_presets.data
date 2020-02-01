@@ -8,13 +8,13 @@ page_part_presets
 - selection_text_about_classic|page_part_preset
     id: selection_text_about_classic
     managing_group: Selection
-    managing_title: Text About
+    managing_title: Text About Us
     type: link
     source: selections/profile_classic/text_about_classic
 - selection_text_contact_classic|page_part_preset
     id: selection_text_contact_classic
     managing_group: Selection
-    managing_title: Text Contact
+    managing_title: Text Contact Us
     type: link
     source: selections/profile_classic/text_contact_classic
 - selection_text_copyright_classic|page_part_preset

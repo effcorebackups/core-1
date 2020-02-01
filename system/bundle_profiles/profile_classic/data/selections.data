@@ -33,7 +33,7 @@ selections
         entity_field_name: path
 - text_about_classic|selection
     id: text_about_classic
-    title: Text About
+    title: Text About Us
     template: content
     decorator_params
     - view_type: template
@@ -54,7 +54,7 @@ selections
         entity_field_name: text
 - text_contact_classic|selection
     id: text_contact_classic
-    title: Text Contact
+    title: Text Contact Us
     template: content
     decorator_params
     - view_type: template
