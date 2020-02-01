@@ -59,9 +59,9 @@ events
       for: instance_insert
       handler: \effcore\modules\menu\events_page_instance_insert::on_build_before
 # ─────────────────────────────────────────────────────────────────────
-  on_page_part_presets_dynamic_build
+  on_part_presets_dynamic_build
   - all|event
-      handler: \effcore\modules\menu\events_page::on_page_part_presets_dynamic_build
+      handler: \effcore\modules\menu\events_page::on_part_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - data|event

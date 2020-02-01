@@ -54,7 +54,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select('page_part_presets') as $c_module_id => $c_presets) {
+      foreach (storage::get('files')->select('part_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_preset) {
           if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('page_part_preset', $c_preset->id, $c_module_id);
           static::$cache[$c_preset->id] = $c_preset;
@@ -66,8 +66,8 @@ namespace effcore {
   }
 
   static function init_dynamic($id = null) {
-    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_page_part_presets_dynamic_build'             );}
-    if ($id !== null                             ) {                                 event::start('on_page_part_presets_dynamic_build', null, [$id]);}
+    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_part_presets_dynamic_build'             );}
+    if ($id !== null                             ) {                                 event::start('on_part_presets_dynamic_build', null, [$id]);}
   }
 
   static function select_all($id_area = null, $origin = null) {

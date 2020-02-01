@@ -128,9 +128,9 @@ events
       for: example
       handler: \effcore\modules\demo\events_examples::on_page_render_before
 # ─────────────────────────────────────────────────────────────────────
-  on_page_part_presets_dynamic_build
+  on_part_presets_dynamic_build
   - example|event
-      handler: \effcore\modules\demo\events_examples::on_page_part_presets_dynamic_build
+      handler: \effcore\modules\demo\events_examples::on_part_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_selection_build_before
   - example|event
