@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_parts extends widget_fields {
+          class widget_parts extends widget_fields {
 
-  public $attributes = ['data-type' => 'info_fields-area_parts'];
+  public $attributes = ['data-type' => 'info_fields-parts'];
   public $item_title = 'Part';
   public $id_area;
 

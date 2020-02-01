@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\page;
-          use \effcore\widget_area_parts;
+          use \effcore\widget_parts;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -30,12 +30,12 @@ namespace effcore\modules\page {
             $c_area->managing_is_enabled = true;
             $c_area->tag_name = 'div';
             $c_area->build();
-            $c_widget_area_parts = new widget_area_parts('parts__'.$c_area->id, $c_area->id);
-            $c_widget_area_parts->form_current_set($form);
-            $c_widget_area_parts->build();
-            $c_widget_area_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);
-            $c_area->child_insert($c_widget_area_parts, 'widget_area_parts');
-            $form->_widgets_area[$c_area->id] = $c_widget_area_parts;
+            $c_widget_parts = new widget_parts('parts__'.$c_area->id, $c_area->id);
+            $c_widget_parts->form_current_set($form);
+            $c_widget_parts->build();
+            $c_widget_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);
+            $c_area->child_insert($c_widget_parts, 'widget_parts');
+            $form->_widgets_area[$c_area->id] = $c_widget_parts;
           }
         }
         $form->child_select('fields')->child_insert(
