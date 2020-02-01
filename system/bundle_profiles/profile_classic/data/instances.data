@@ -18,7 +18,7 @@ instances
     entity_name: page
     values
     - id: about
-    - title: About
+    - title: About Us
     - url: /about
     - is_https: 0
     - is_embed: 0
@@ -269,21 +269,25 @@ instances
     values
     - id: about_classic
     - description: Text of the page "About".
-    - text: This is the About Us page.
+    - text: Here you can describe your story in detail,
+>>>>>>>>>>> tell about your achievements.
     - module_id: profile_classic
 - text_contact_classic|instance
     entity_name: text
     values
     - id: contact_classic
     - description: Text of the page "Contact".
-    - text: This is the Contact page.
+    - text: Here you can place: names of contact persons, addresses of branches,
+>>>>>>>>>>> e-mail addresses, phone numbers, links to social networks, location map,
+>>>>>>>>>>> feedback form.
     - module_id: profile_classic
 - text_front_classic|instance
     entity_name: text
     values
     - id: front_classic
     - description: Text of the page "Front".
-    - text: This is the Front page.
+    - text: Here you can place the most important information about your project,
+>>>>>>>>>>> including special offers.
     - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
 # tree items
@@ -294,7 +298,7 @@ instances
     - id: about_classic
     - id_parent: null
     - id_tree: main
-    - title: About
+    - title: About Us
     - url: /about
     - module_id: profile_classic
 - contact_classic|instance

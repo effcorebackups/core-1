@@ -2,6 +2,19 @@ translations
 - ru|translation
     code: ru
     data
+    - Here you can place\: names of contact persons, addresses of branches,
+>>>>> e-mail addresses, phone numbers, links to social networks, location map,
+>>>>> feedback form.: Здесь Вы можете разместить: имена контактных лиц, адреса филиалов,
+>>>>> адреса элктронной почты, номера телефонов, ссылки на социальные сети,
+>>>>> схему проезда, форму обратной связи.
+    - Here you can describe your story in detail,
+>>>>> tell about your achievements.: Здесь Вы можете подробно описать
+>>>>> свою историю, рассказать о своих достижениях.
+    - Here you can place the most important information about your project,
+>>>>> including special offers.: Здесь Вы можете разместить самую важную
+>>>>> информацию о своём проекте, в том числе специальные предложения.
     - Module for profile example "Classic".: Модуль для примера профиля "Классика".
     - Original \| profile "Classic": Оригинал | профиль "Классика"
     - Profile "Classic": Профиль "Классика"
+    - About Us: О нас
+    - Contact: Контакт
