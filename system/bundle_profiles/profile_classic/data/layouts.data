@@ -7,6 +7,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - content|area
         type: table
         attributes
@@ -32,3 +36,4 @@ layouts
             - style: width: 200px
     - footer|area
         id: footer
+        tag_name: footer
