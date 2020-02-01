@@ -26,33 +26,33 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_colors|page_part
+      - form_colors|part
           display
             check: page_args
             where: type
             match: %^colors/current$%
           type: link
           source: forms/page/colors
-      - form_colors_preset|page_part
+      - form_colors_preset|part
           display
             check: page_args
             where: type
             match: %^colors/presets$%
           type: link
           source: forms/page/colors_preset
-      - form_layout|page_part
+      - form_layout|part
           display
             check: page_args
             where: type
             match: %^layouts$%
           type: link
           source: forms/page/layout
-      - form_decoration_settings|page_part
+      - form_decoration_settings|part
           display
             check: page_args
             where: type

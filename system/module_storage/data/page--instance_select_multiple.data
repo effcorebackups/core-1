@@ -23,11 +23,11 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/storage/data
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_instance_select_multiple|page_part
+      - form_instance_select_multiple|part
           type: link
           source: forms/storage/instance_select_multiple

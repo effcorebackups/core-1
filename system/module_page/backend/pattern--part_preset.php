@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class part_preset extends page_part {
+          class part_preset extends part {
 
   public $id;
   public $managing_group = 'Text';
@@ -26,14 +26,14 @@ namespace effcore {
     parent::__construct($weight);
   }
 
-  function page_part_make() {
+  function part_make() {
     $preset = static::select($this->id);
     if ($preset) {
-      $page_part = new page_part;
-      foreach ($page_part as $c_key => $c_value)
-        $page_part->{$c_key} =
-           $preset->{$c_key};
-      return $page_part;
+      $part = new part;
+      foreach ($part as $c_key => $c_value)
+        $part  ->{$c_key} =
+        $preset->{$c_key};
+      return $part;
     }
   }
 

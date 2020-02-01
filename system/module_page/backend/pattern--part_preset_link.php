@@ -19,10 +19,10 @@ namespace effcore {
     return part_preset::select($this->id);
   }
 
-  function page_part_make() {
+  function part_make() {
     $preset = $this->part_preset_get();
     if (isset($preset)) {
-      return $preset->page_part_make();
+      return $preset->part_make();
     }
   }
 

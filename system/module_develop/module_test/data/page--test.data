@@ -21,11 +21,11 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/test/tests
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_test|page_part
+      - form_test|part
           type: link
           source: forms/test/test

@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page_part extends node {
+          class part extends node {
 
   public $display;
   public $type; # code | link | text | …

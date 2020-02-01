@@ -31,12 +31,12 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_demo|page_part
+      - form_demo|part
           display
             check: page_args
             where: type
@@ -46,14 +46,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # markup
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_markup_static|page_part
+      - block_demo_markup_static|part
           display
             check: page_args
             where: type
             match: %^embedded/markup_static$%
           type: link
           source: blocks/demo/demo_markup_static
-      - block_demo_markup_dynamic|page_part
+      - block_demo_markup_dynamic|part
           display
             check: page_args
             where: type
@@ -63,14 +63,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # decorators
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_decorators_static|page_part
+      - block_demo_decorators_static|part
           display
             check: page_args
             where: type
             match: %^embedded/decorators_static$%
           type: link
           source: blocks/demo/demo_decorators_static
-      - block_demo_decorators_dynamic|page_part
+      - block_demo_decorators_dynamic|part
           display
             check: page_args
             where: type
@@ -80,14 +80,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # trees
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_tree_via_decorator|page_part
+      - block_demo_tree_via_decorator|part
           display
             check: page_args
             where: type
             match: %^embedded/trees(/.*|)$%
           type: link
           source: blocks/demo/demo_tree_via_decorator
-      - block_demo_tree_sql|page_part
+      - block_demo_tree_sql|part
           display
             check: page_args
             where: type
@@ -96,7 +96,7 @@ pages
           source: \effcore\modules\menu\events_page::block_tree_sql
           args
           - id: demo_sql
-      - block_demo_tree_nosql|page_part
+      - block_demo_tree_nosql|part
           display
             check: page_args
             where: type
@@ -106,7 +106,7 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # selections
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_selection_demo_data_join_1|page_part
+      - block_demo_selection_demo_data_join_1|part
           display
             check: page_args
             where: type
@@ -115,7 +115,7 @@ pages
           source: selections/demo/demo_data_join
           properties
           - title: Selection of "demo_data" entities + join (ID: 100+)
-      - block_demo_selection_demo_data_join_2|page_part
+      - block_demo_selection_demo_data_join_2|part
           display
             check: page_args
             where: type
@@ -134,7 +134,7 @@ pages
               - title_!f: ~demo_data.id
               - type: ASC
             - limit: 5
-      - block_demo_selection_demo_types|page_part
+      - block_demo_selection_demo_types|part
           display
             check: page_args
             where: type
@@ -144,14 +144,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_messages|page_part
+      - block_demo_messages|part
           display
             check: page_args
             where: type
             match: %^embedded/messages$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_demo_messages
-      - block_demo_messages_description|page_part
+      - block_demo_messages_description|part
           display
             check: page_args
             where: type
@@ -161,21 +161,21 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # other
       # ─────────────────────────────────────────────────────────────────────
-      - block_demo_canvas|page_part
+      - block_demo_canvas|part
           display
             check: page_args
             where: type
             match: %^embedded/canvas$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_demo_canvas
-      - block_demo_diagrams|page_part
+      - block_demo_diagrams|part
           display
             check: page_args
             where: type
             match: %^embedded/diagrams$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_demo_diagrams
-      - block_demo_colors|page_part
+      - block_demo_colors|part
           display
             check: page_args
             where: type

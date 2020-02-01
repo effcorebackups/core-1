@@ -26,29 +26,29 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/develop/structures
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|page_part
+      - form_cache_update|part
           type: link
           source: forms/core/cache_update
-      - block_structures_list|page_part
+      - block_structures_list|part
           display
             check: page_args
             where: view
             match: %^list$%
           type: code
           source: \effcore\modules\develop\events_page_structures::block_structures_list
-      - block_structures_diagram|page_part
+      - block_structures_diagram|part
           display
             check: page_args
             where: view
             match: %^diagram$%
           type: code
           source: \effcore\modules\develop\events_page_structures::block_structures_diagram
-      - export|page_part
+      - export|part
           display
             check: page_args
             where: view

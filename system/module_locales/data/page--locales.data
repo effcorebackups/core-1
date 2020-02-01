@@ -21,6 +21,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_locales|page_part
+      - form_locales|part
           type: link
           source: forms/locales/locales

@@ -21,6 +21,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_console|page_part
+      - form_console|part
           type: link
           source: forms/develop/console

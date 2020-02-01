@@ -23,33 +23,33 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/core/modules
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|page_part
+      - form_cache_update|part
           display
             check: page_args
             where: action
             match: %^install$%
           type: link
           source: forms/core/cache_update
-      - form_modules_install|page_part
+      - form_modules_install|part
           display
             check: page_args
             where: action
             match: %^install$%
           type: link
           source: forms/core/modules_install
-      - form_modules_uninstall|page_part
+      - form_modules_uninstall|part
           display
             check: page_args
             where: action
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - form_modules_update|page_part
+      - form_modules_update|part
           display
             check: page_args
             where: action

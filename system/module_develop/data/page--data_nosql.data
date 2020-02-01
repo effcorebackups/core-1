@@ -28,57 +28,57 @@ pages
       - title|part_preset_link
           id: title
     - tabs
-      - tabs|page_part
+      - tabs|part
           type: link
           source: tabs/develop/data_nosql
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|page_part
+      - form_cache_update|part
           type: link
           source: forms/core/cache_update
-      - block_trees|page_part
+      - block_trees|part
           display
             check: page_args
             where: type
             match: %^trees$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_tree
-      - block_selections|page_part
+      - block_selections|part
           display
             check: page_args
             where: type
             match: %^selections$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_selections
-      - block_events|page_part
+      - block_events|part
           display
             check: page_args
             where: type
             match: %^events$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_events
-      - block_file_types|page_part
+      - block_file_types|part
           display
             check: page_args
             where: type
             match: %^file_types$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_file_types
-      - block_templates|page_part
+      - block_templates|part
           display
             check: page_args
             where: type
             match: %^templates$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_templates
-      - block_tokens|page_part
+      - block_tokens|part
           display
             check: page_args
             where: type
             match: %^tokens$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_tokens
-      - block_translations|page_part
+      - block_translations|part
           display
             check: page_args
             where: type

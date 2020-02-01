@@ -8,10 +8,10 @@ pages
 >>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
     parts
     - header
-      - menu_languages|page_part
+      - menu_languages|part
           type: code
           source: \effcore\modules\locales\events_page::block_menu_languages
-      - block_system_info|page_part
+      - block_system_info|part
           type: code
           source: \effcore\modules\core\events_page_info::block_system_info
     - title
@@ -19,6 +19,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_install|page_part
+      - form_install|part
           type: link
           source: forms/core/install

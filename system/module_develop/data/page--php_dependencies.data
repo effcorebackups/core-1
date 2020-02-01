@@ -21,6 +21,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_php_dependencies_list|page_part
+      - block_php_dependencies_list|part
           type: code
           source: \effcore\modules\develop\events_page_php_dependencies::block_php_dependencies_list

@@ -25,6 +25,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_instance_update|page_part
+      - form_instance_update|part
           type: link
           source: forms/storage/instance_update
