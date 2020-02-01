@@ -76,7 +76,7 @@ namespace effcore {
       $items = $this->items_get();
       foreach ($items as $c_row_id => $c_item)
         $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new page_part_preset_link($new_value);
+      $new_item = new part_preset_link($new_value);
       $new_item->weight = count($items) ? $min_weight - 5 : 0;
       $items[] = $new_item;
       $this->items_set($items);

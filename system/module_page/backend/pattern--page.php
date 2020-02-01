@@ -37,7 +37,7 @@ namespace effcore {
           if (!$this->child_select(          $c_id_area))
                $this->child_insert(new node, $c_id_area);
           foreach ($c_parts as $c_row_id => $c_part) {
-            if ($c_part instanceof page_part_preset_link)
+            if ($c_part instanceof part_preset_link)
                 $c_part = $c_part->page_part_make();
             if ($c_part) {
               $c_part_markup = $c_part->markup_get($this);

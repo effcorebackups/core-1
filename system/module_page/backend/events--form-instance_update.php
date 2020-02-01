@@ -10,7 +10,6 @@ namespace effcore\modules\page {
           use \effcore\entity;
           use \effcore\layout;
           use \effcore\markup;
-          use \effcore\page_part_preset_link;
           use \effcore\page;
           use \effcore\widget_area_parts;
           abstract class events_form_instance_update {

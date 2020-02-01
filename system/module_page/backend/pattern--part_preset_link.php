@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class page_part_preset_link {
+          class part_preset_link {
 
   public $id;
   public $weight = 0;
