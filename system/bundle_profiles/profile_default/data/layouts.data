@@ -7,6 +7,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - content|area
         type: table
         children
@@ -71,6 +75,7 @@ layouts
             - style: width: 200px
     - footer|area
         id: footer
+        tag_name: footer
 - grid_2x5|layout
     id: grid_2x5
     title: Grid 2x5 | profile "Default"
@@ -79,6 +84,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - messages|area
         id: messages
     - title|area
@@ -139,6 +148,7 @@ layouts
                 type: column
     - footer|area
         id: footer
+        tag_name: footer
 - grid_3x5|layout
     id: grid_3x5
     title: Grid 3x5 | profile "Default"
@@ -147,6 +157,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - messages|area
         id: messages
     - title|area
@@ -222,6 +236,7 @@ layouts
                 type: column
     - footer|area
         id: footer
+        tag_name: footer
 - grid_4x5|layout
     id: grid_4x5
     title: Grid 4x5 | profile "Default"
@@ -230,6 +245,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - messages|area
         id: messages
     - title|area
@@ -320,6 +339,7 @@ layouts
                 type: column
     - footer|area
         id: footer
+        tag_name: footer
 - grid_5x5|layout
     id: grid_5x5
     title: Grid 5x5 | profile "Default"
@@ -328,6 +348,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - messages|area
         id: messages
     - title|area
@@ -433,3 +457,4 @@ layouts
                 type: column
     - footer|area
         id: footer
+        tag_name: footer

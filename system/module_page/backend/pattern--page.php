@@ -106,29 +106,36 @@ namespace effcore {
 
     $p_areas = [];
     $layout = core::deep_clone(layout::select($this->id_layout));
-    foreach ($layout->children_select_recursive() as $c_area) {
-      if ($c_area instanceof area && isset($c_area->id)) {
-        $p_areas[$c_area->id] = $c_area;
-        $c_area_markup = $this->child_select($c_area->id);
-        if ($c_area_markup && $c_area_markup->children_select_count()) {
-          $c_area->children_update(
-            $c_area_markup->children_select()
-          );
+    if ($layout) {
+      foreach ($layout->children_select_recursive() as $c_area) {
+        if ($c_area instanceof area && isset($c_area->id)) {
+          $p_areas[$c_area->id] = $c_area;
+          $c_area_markup = $this->child_select($c_area->id);
+          if ($c_area_markup &&
+              $c_area_markup->children_select_count()) {
+            $c_area->children_update(
+              $c_area_markup->children_select()
+            );
+          }
         }
       }
+
+      /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple( (new node([], $p_areas['content']->children_select(true)))->render() )] );
+      foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple( (new node([], $c_area            ->children_select(true)))->render() )] );
+      /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple( (new node([], message::markup_get()                     ))->render() )] );
+      $template->target_get('body')->attribute_insert('data-layout-id', $layout->id);
+      $template->target_get('body')->child_insert($layout, 'layout');
+
+      $frontend = frontend::markup_get($this->used_dpaths);
+      $template->arg_set('charset',      $this    ->charset);
+      $template->arg_set('head_icons',   $frontend->icons  );
+      $template->arg_set('head_styles',  $frontend->styles );
+      $template->arg_set('head_scripts', $frontend->scripts);
+    } else {
+      $template->target_get('body')->child_insert(
+        new text('LOST LAYOUT [id = '.$this->id_layout.']'), 'layout'
+      );
     }
-
-    /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple( (new node([], $p_areas['content']->children_select(true)))->render() )] );
-    foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple( (new node([], $c_area            ->children_select(true)))->render() )] );
-    /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple( (new node([], message::markup_get()                     ))->render() )] );
-    $template->target_get('body')->attribute_insert('data-layout-id', $layout->id);
-    $template->target_get('body')->child_insert($layout, 'layout');
-
-    $frontend = frontend::markup_get($this->used_dpaths);
-    $template->arg_set('charset',      $this    ->charset);
-    $template->arg_set('head_icons',   $frontend->icons  );
-    $template->arg_set('head_styles',  $frontend->styles );
-    $template->arg_set('head_scripts', $frontend->scripts);
 
     return $template->render();
   }

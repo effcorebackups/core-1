@@ -5,6 +5,7 @@ layouts
     children
     - header|area
         id: header
+        tag_name: header
     - title|area
         id: title
     - messages|area
@@ -19,6 +20,10 @@ layouts
         id: system
     - header|area
         id: header
+        tag_name: header
+    - nav|area
+        id: nav
+        tag_name: nav
     - messages|area
         id: messages
     - title|area
@@ -29,3 +34,4 @@ layouts
         id: content
     - footer|area
         id: footer
+        tag_name: footer
