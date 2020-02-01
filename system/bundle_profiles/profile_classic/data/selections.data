@@ -52,6 +52,27 @@ selections
         type: field
         entity_name: text
         entity_field_name: text
+- text_contact_classic|selection
+    id: text_contact_classic
+    title: Text Contact
+    template: content
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: text
+    - template_row_mapping
+      - text: text.text
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - operator: =
+      - id_!v: contact_classic
+    - limit: 1
+    fields
+    - text.text
+        type: field
+        entity_name: text
+        entity_field_name: text
 - text_copyright_classic|selection
     id: text_copyright_classic
     title: Text Copyright

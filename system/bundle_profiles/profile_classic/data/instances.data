@@ -274,7 +274,7 @@ instances
 - text_contact_classic|instance
     entity_name: text
     values
-    - id: text_contact
+    - id: contact_classic
     - description: Text of the page "Contact".
     - text: This is the Contact page.
     - module_id: profile_classic
