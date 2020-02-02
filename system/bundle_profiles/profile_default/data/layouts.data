@@ -11,8 +11,7 @@ layouts
     - nav|area
         id: navigation 
         tag_name: nav
-    - content|area
-        type: table
+    - content|layout_table
         children
         - left|area
             id: left
@@ -34,8 +33,7 @@ layouts
                 id: tabs
             - content|area
                 id: content
-            - grid_2x2|area
-                type: table
+            - grid_2x2|layout_table
                 attributes
                 - data-area-group-id: grid_2x2
                 children
@@ -45,8 +43,7 @@ layouts
                 - col_1_2|area
                     id: grid_2x2_col_1_2
                     type: column
-            - grid_4x4|area
-                type: table
+            - grid_4x4|layout_table
                 attributes
                 - data-area-group-id: grid_4x4
                 children
@@ -98,8 +95,7 @@ layouts
         id: tabs
     - content|area
         id: content
-    - grid_2x5|area
-        type: table
+    - grid_2x5|layout_table
         attributes
         - data-area-group-id: grid_2x5
         children
@@ -171,8 +167,7 @@ layouts
         id: tabs
     - content|area
         id: content
-    - grid_3x5|area
-        type: table
+    - grid_3x5|layout_table
         attributes
         - data-area-group-id: grid_3x5
         children
@@ -259,8 +254,7 @@ layouts
         id: tabs
     - content|area
         id: content
-    - grid_4x5|area
-        type: table
+    - grid_4x5|layout_table
         attributes
         - data-area-group-id: grid_4x5
         children
@@ -362,8 +356,7 @@ layouts
         id: tabs
     - content|area
         id: content
-    - grid_5x5|area
-        type: table
+    - grid_5x5|layout_table
         attributes
         - data-area-group-id: grid_5x5
         children

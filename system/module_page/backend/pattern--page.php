@@ -133,7 +133,7 @@ namespace effcore {
       $template->arg_set('head_scripts', $frontend->scripts);
     } else {
       $template->target_get('body')->child_insert(
-        new text('LOST LAYOUT [id = '.$this->id_layout.']'), 'layout'
+        new text('LOST LAYOUT: %%_id', ['id' => $this->id_layout]), 'layout'
       );
     }
 

@@ -11,8 +11,7 @@ layouts
     - nav|area
         id: navigation
         tag_name: nav
-    - content|area
-        type: table
+    - content|layout_table
         attributes
         - data-area-group-id: content
         children

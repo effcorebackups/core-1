@@ -9,7 +9,7 @@ namespace effcore {
 
   public $id;
   public $title;
-  public $type; # null | table | row | column
+  public $type; # null | row | column
   public $managing_is_enabled = false;
   public $tag_name_real;
 

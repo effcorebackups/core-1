@@ -285,13 +285,19 @@
   x-widget[data-type^='info_fields'] x-widget[data-type='insert'] {display: block}
   x-widget[data-type^='info_fields'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0}
   x-widget[data-type^='info_fields'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
-  x-widget[data-type^='info_fields'] x-widget[data-type='insert'] x-field select {min-width: 130px; max-width: 250px; margin: 0}
+  x-widget[data-type^='info_fields'] x-widget[data-type='insert'] x-field select {max-width: 130px; margin: 0 10px 0 0}
+  x-widget[data-type^='info_fields'] x-widget[data-type='insert'] button {margin: 15px 8px 0 0; vertical-align: bottom}
 
   /* widget 'info_fields' for selection */
 
   x-widget[data-type='info_fields-selection'] x-widget[data-type='insert'] x-field {margin: 8px 0}
 
   /* layout manager */
+
+  x-layout-message {
+    display: block;
+    margin: 20px 0;
+    text-align: center}
 
   x-layout-manager {display: block; margin: 50px 0}
   x-layout-manager [data-area-id]            {margin: 30px 0; padding: 10px; border: 3px solid %%_color_main; min-height: 20px}
