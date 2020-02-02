@@ -5,7 +5,41 @@
   ##################################################################
 
 namespace effcore {
-          abstract class message {
+          class message extends markup {
+
+  public $tag_name = 'x-messages';
+
+  function build() {
+    if (!$this->is_builded) {
+      $non_duplicates = [];
+      foreach (static::select_all() as $c_type => $c_messages) {
+        if (!$this->child_select($c_type))
+             $this->child_insert(new markup('ul', ['data-type' => $c_type]), $c_type);
+        if (!isset($non_duplicates[$c_type]))
+                   $non_duplicates[$c_type] = [];
+        $c_grpoup = $this->child_select($c_type);
+        foreach ($c_messages as $c_message) {
+          if (!in_array($c_message->render(), $non_duplicates[$c_type])) {
+            $non_duplicates[$c_type][] = $c_message->render();
+            if ($c_type == 'error' || $c_type == 'warning')
+                 $c_grpoup->child_insert(new markup('li', [], new markup('p', ['role' => 'alert'], $c_message)));
+            else $c_grpoup->child_insert(new markup('li', [], new markup('p', [                 ], $c_message)));
+          }
+        }
+      }
+      $this->is_builded = true;
+    }
+  }
+
+  function render() {
+    $this->build();
+    return $this->children_select_count() ?
+           parent::render() : '';
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
 
   static protected $cache;
 
@@ -76,28 +110,6 @@ namespace effcore {
       'data'       => is_string($message) ?
                        new text($message) : $message
     ]))->insert();
-  }
-
-  static function markup_get() {
-    $messages = new markup('x-messages');
-    $non_duplicates = [];
-    foreach (static::select_all() as $c_type => $c_messages) {
-      if (!$messages->child_select($c_type))
-           $messages->child_insert(new markup('ul', ['data-type' => $c_type]), $c_type);
-      if (!isset($non_duplicates[$c_type]))
-                 $non_duplicates[$c_type] = [];
-      $c_grpoup = $messages->child_select($c_type);
-      foreach ($c_messages as $c_message) {
-        if (!in_array($c_message->render(), $non_duplicates[$c_type])) {
-          $non_duplicates[$c_type][] = $c_message->render();
-          if ($c_type == 'error' || $c_type == 'warning')
-               $c_grpoup->child_insert(new markup('li', [], new markup('p', ['role' => 'alert'], $c_message)));
-          else $c_grpoup->child_insert(new markup('li', [], new markup('p', [                 ], $c_message)));
-        }
-      }
-    }
-    return $messages->children_select_count() ?
-           $messages : new node;
   }
 
 }}

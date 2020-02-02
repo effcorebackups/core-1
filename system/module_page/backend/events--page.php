@@ -14,7 +14,7 @@ namespace effcore\modules\page {
           abstract class events_page {
 
   static function block_messages($page) {
-    return message::markup_get();
+    return new message;
   }
 
   static function block_title($page) {
