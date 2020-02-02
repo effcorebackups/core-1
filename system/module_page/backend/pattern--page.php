@@ -102,7 +102,6 @@ namespace effcore {
 
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
-    $frontend = frontend::markup_get($this->used_dpaths);
     $template = template::make_new('page');
 
     $html = $template->target_get('html');
@@ -122,6 +121,7 @@ namespace effcore {
       );
     }
 
+    $frontend = frontend::markup_get($this->used_dpaths);
     $template->target_get('body')->attribute_insert('data-layout-id', $this->id_layout);
     $template->target_get('body')->child_insert($this->_markup, 'markup');
     $template->arg_set('charset',      $this    ->charset);
