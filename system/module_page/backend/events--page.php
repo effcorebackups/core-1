@@ -7,10 +7,15 @@
 namespace effcore\modules\page {
           use \effcore\access;
           use \effcore\markup;
+          use \effcore\message;
           use \effcore\text;
           use \effcore\url;
           use \effcore\user;
           abstract class events_page {
+
+  static function block_messages($page) {
+    return message::markup_get();
+  }
 
   static function block_title($page) {
     return new markup('h1', ['id' => 'title'],

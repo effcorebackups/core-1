@@ -39,6 +39,9 @@ instances
             id: selection_logotype_main_classic
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -73,6 +76,9 @@ instances
             id: selection_logotype_main_classic
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -107,6 +113,9 @@ instances
             id: selection_logotype_main_classic
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -141,6 +150,9 @@ instances
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -177,6 +189,9 @@ instances
             id: tree_sql_main
         - breadcrumbs_user_registered|part_preset_link
             id: breadcrumbs_user_registered
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -211,6 +226,9 @@ instances
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -245,6 +263,9 @@ instances
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title

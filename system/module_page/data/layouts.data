@@ -10,8 +10,10 @@ layouts
         id: title
     - messages|area
         id: messages
+        render_weight: -50
     - content|area
         id: content
+        render_weight: +50
 - simple|layout
     id: simple
     title: Simple layout
@@ -26,12 +28,14 @@ layouts
         tag_name: nav
     - messages|area
         id: messages
+        render_weight: -50
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
+        render_weight: +50
     - footer|area
         id: footer
         tag_name: footer

@@ -19,6 +19,9 @@ pages
     - header
       - breadcrumbs_system|part_preset_link
           id: breadcrumbs_system
+    - messages
+      - messages|part_preset_link
+          id: messages
     - title
       - title|part_preset_link
           id: title

@@ -27,12 +27,14 @@ layouts
             children
             - messages|area
                 id: messages
+                render_weight: -50
             - title|area
                 id: title
             - tabs|area
                 id: tabs
             - content|area
                 id: content
+                render_weight: +50
             - grid_2x2|layout_table
                 attributes
                 - data-area-group-id: grid_2x2
@@ -89,12 +91,14 @@ layouts
         tag_name: nav
     - messages|area
         id: messages
+        render_weight: -50
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
+        render_weight: +50
     - grid_2x5|layout_table
         attributes
         - data-area-group-id: grid_2x5
@@ -161,12 +165,14 @@ layouts
         tag_name: nav
     - messages|area
         id: messages
+        render_weight: -50
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
+        render_weight: +50
     - grid_3x5|layout_table
         attributes
         - data-area-group-id: grid_3x5
@@ -248,12 +254,14 @@ layouts
         tag_name: nav
     - messages|area
         id: messages
+        render_weight: -50
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
+        render_weight: +50
     - grid_4x5|layout_table
         attributes
         - data-area-group-id: grid_4x5
@@ -350,12 +358,14 @@ layouts
         tag_name: nav
     - messages|area
         id: messages
+        render_weight: -50
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
+        render_weight: +50
     - grid_5x5|layout_table
         attributes
         - data-area-group-id: grid_5x5

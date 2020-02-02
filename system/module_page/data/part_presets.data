@@ -1,4 +1,10 @@
 part_presets
+- messages|part_preset
+    id: messages
+    managing_group: Other
+    managing_title: Messages
+    type: code
+    source: \effcore\modules\page\events_page::block_messages
 - title|part_preset
     id: title
     managing_group: Other

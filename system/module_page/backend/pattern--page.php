@@ -19,7 +19,9 @@ namespace effcore {
   public $is_embed = 1;
   public $access;
   public $parts;
-  protected $args = [];
+  public $_markup;
+  public $_areas_pointers;
+  protected $args        = [];
   protected $used_dpaths = [];
 
   function args_set($key, $value) {$this->args[$key] = $value;}
@@ -31,27 +33,35 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       event::start('on_page_build_before', $this->id, [&$this]);
-      if (is_array($this->parts)) {
-        foreach ($this->parts as $c_id_area => $c_parts) {
-          core::array_sort_by_weight($c_parts);
-          if (!$this->child_select(          $c_id_area))
-               $this->child_insert(new node, $c_id_area);
-          foreach ($c_parts as $c_row_id => $c_part) {
-            if ($c_part instanceof part_preset_link)
-                $c_part = $c_part->part_make();
-            if ($c_part) {
-              $c_part_markup = $c_part->markup_get($this);
-              if ($c_part_markup) {
-                $c_area_markup = $this->child_select($c_id_area);
-                $c_area_markup->child_insert($c_part_markup, $c_row_id);
-                if ($c_part->type == 'link' ||
-                    $c_part->type == 'copy') {
-                  $this->used_dpaths[] = $c_part->source;
+      $this->_markup = core::deep_clone(layout::select($this->id_layout));
+      if ($this->_markup) {
+        foreach ($this->_markup->children_select_recursive() as $c_area) {
+          if ($c_area instanceof area && isset($c_area->id)) {
+            if (isset($this->parts[$c_area->id])) {
+              $this->_areas_pointers[$c_area->id] = $c_area;
+              $c_area_parts = $this->parts[$c_area->id];
+              core::array_sort_by_weight($c_area_parts);
+              foreach ($c_area_parts as $c_row_id => $c_part) {
+                if ($c_area_parts[$c_row_id] instanceof part_preset_link)
+                    $c_area_parts[$c_row_id] = $c_part->part_make();
+                if ($c_area_parts[$c_row_id]) {
+                  $c_part_markup = $c_area_parts[$c_row_id]->markup_get($this);
+                  if ($c_part_markup) {
+                    $c_area->child_insert($c_part_markup, $c_row_id);
+                    if ($c_area_parts[$c_row_id]->type == 'link' ||
+                        $c_area_parts[$c_row_id]->type == 'copy') {
+                      $this->used_dpaths[] = $c_area_parts[$c_row_id]->source;
+                    }
+                  }
                 }
               }
             }
           }
         }
+      } else {
+        $this->_markup = new text(
+          'LOST LAYOUT: %%_id', ['id' => $this->id_layout]
+        );
       }
       event::start('on_page_build_after', $this->id, [&$this]);
       $this->is_builded = true;
@@ -92,6 +102,7 @@ namespace effcore {
 
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
+    $frontend = frontend::markup_get($this->used_dpaths);
     $template = template::make_new('page');
 
     $html = $template->target_get('html');
@@ -104,38 +115,19 @@ namespace effcore {
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
 
-    $p_areas = [];
-    $layout = core::deep_clone(layout::select($this->id_layout));
-    if ($layout) {
-      foreach ($layout->children_select_recursive() as $c_area) {
-        if ($c_area instanceof area && isset($c_area->id)) {
-          $p_areas[$c_area->id] = $c_area;
-          $c_area_markup = $this->child_select($c_area->id);
-          if ($c_area_markup &&
-              $c_area_markup->children_select_count()) {
-            $c_area->children_update(
-              $c_area_markup->children_select()
-            );
-          }
-        }
-      }
-
-      /* render the content area at the beginning → */                                      $p_areas['content' ]->children_update( [new text_simple( (new node([], $p_areas['content']->children_select(true)))->render() )] );
-      foreach ($p_areas as $c_id => $c_area) if ($c_id != 'messages' && $c_id != 'content') $c_area             ->children_update( [new text_simple( (new node([], $c_area            ->children_select(true)))->render() )] );
-      /* render the messages area at the end → */                                           $p_areas['messages']->children_update( [new text_simple( (new node([], message::markup_get()                     ))->render() )] );
-      $template->target_get('body')->attribute_insert('data-layout-id', $layout->id);
-      $template->target_get('body')->child_insert($layout, 'layout');
-
-      $frontend = frontend::markup_get($this->used_dpaths);
-      $template->arg_set('charset',      $this    ->charset);
-      $template->arg_set('head_icons',   $frontend->icons  );
-      $template->arg_set('head_styles',  $frontend->styles );
-      $template->arg_set('head_scripts', $frontend->scripts);
-    } else {
-      $template->target_get('body')->child_insert(
-        new text('LOST LAYOUT: %%_id', ['id' => $this->id_layout]), 'layout'
+    core::array_sort_by_property($this->_areas_pointers, 'render_weight');
+    foreach ($this->_areas_pointers as $c_area_id => $c_area) {
+      $this->_areas_pointers[$c_area_id]->children_update(
+        [new text_simple( (new node([], $c_area->children_select(true)))->render() )]
       );
     }
+
+    $template->target_get('body')->attribute_insert('data-layout-id', $this->id_layout);
+    $template->target_get('body')->child_insert($this->_markup, 'markup');
+    $template->arg_set('charset',      $this    ->charset);
+    $template->arg_set('head_icons',   $frontend->icons  );
+    $template->arg_set('head_styles',  $frontend->styles );
+    $template->arg_set('head_scripts', $frontend->scripts);
 
     return $template->render();
   }

@@ -21,6 +21,9 @@ instances
             id: tree_sql_user_anonymous
         - tree_system|part_preset_link
             id: tree_system
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -44,6 +47,9 @@ instances
       - header
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -72,6 +78,9 @@ instances
       - header
         - breadcrumbs_user_registered|part_preset_link
             id: breadcrumbs_user_registered
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -98,6 +107,9 @@ instances
       - header
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title
@@ -124,6 +136,9 @@ instances
       - header
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
+      - messages
+        - messages|part_preset_link
+            id: messages
       - title
         - title|part_preset_link
             id: title

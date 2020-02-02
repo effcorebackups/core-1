@@ -14,6 +14,9 @@ pages
       - block_system_info|part
           type: code
           source: \effcore\modules\core\events_page_info::block_system_info
+    - messages
+      - messages|part_preset_link
+          id: messages
     - title
       - title|part_preset_link
           id: title

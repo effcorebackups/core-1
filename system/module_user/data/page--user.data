@@ -17,6 +17,9 @@ pages
     - header
       - breadcrumbs_user_registered|part_preset_link
           id: breadcrumbs_user_registered
+    - messages
+      - messages|part_preset_link
+          id: messages
     - title
       - title|part_preset_link
           id: title
