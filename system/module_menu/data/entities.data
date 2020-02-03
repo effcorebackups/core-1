@@ -53,6 +53,9 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_logic
+        managing_field_properties_on_insert
+        - selected
+          - =: 1
         managing_selection_params
         - is_apply_translation: true
     constraints

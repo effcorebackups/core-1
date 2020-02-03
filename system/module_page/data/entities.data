@@ -62,6 +62,9 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_layout
+        managing_field_properties_on_insert
+        - selected
+          - =: simple
         managing_field_element_attributes_on_update
         - disabled: true
     - title
