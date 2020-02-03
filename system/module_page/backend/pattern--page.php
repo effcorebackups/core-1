@@ -20,9 +20,9 @@ namespace effcore {
   public $access;
   public $parts;
   public $_markup;
-  public $_areas_pointers;
-  protected $args        = [];
-  protected $used_dpaths = [];
+  public $_areas_pointers = [];
+  protected $args         = [];
+  protected $used_dpaths  = [];
 
   function args_set($key, $value) {$this->args[$key] = $value;}
   function args_get($id = null) {
@@ -114,11 +114,13 @@ namespace effcore {
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
 
-    core::array_sort_by_property($this->_areas_pointers, 'render_weight');
-    foreach ($this->_areas_pointers as $c_area_id => $c_area) {
-      $this->_areas_pointers[$c_area_id]->children_update(
-        [new text_simple( (new node([], $c_area->children_select(true)))->render() )]
-      );
+    if ($this->_areas_pointers) {
+      core::array_sort_by_property($this->_areas_pointers, 'render_weight');
+      foreach ($this->_areas_pointers as $c_area_id => $c_area) {
+        $this->_areas_pointers[$c_area_id]->children_update(
+          [new text_simple( (new node([], $c_area->children_select(true)))->render() )]
+        );
+      }
     }
 
     $frontend = frontend::markup_get($this->used_dpaths);
