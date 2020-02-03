@@ -7,12 +7,13 @@
 namespace effcore {
           class area extends markup {
 
+  public $tag_name = 'x-area';
+  public $tag_name_real;
   public $id;
   public $title;
   public $type; # null | table | row | column
   public $render_weight = 0;
   public $managing_is_enabled = false;
-  public $tag_name_real;
 
   function build() {
     if (!$this->is_builded) {
