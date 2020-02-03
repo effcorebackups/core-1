@@ -37,6 +37,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
       - messages
@@ -74,6 +75,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
       - messages
@@ -111,6 +113,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
       - messages
@@ -146,6 +149,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
@@ -185,6 +189,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
         - breadcrumbs_user_registered|part_preset_link
@@ -222,6 +227,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
@@ -259,6 +265,7 @@ instances
       - header
         - selection_logotype_main_classic|part_preset_link
             id: selection_logotype_main_classic
+      - navigation
         - tree_sql_main|part_preset_link
             id: tree_sql_main
         - breadcrumbs_user_anonymous|part_preset_link
