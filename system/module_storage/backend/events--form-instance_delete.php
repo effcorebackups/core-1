@@ -17,24 +17,28 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_delete {
 
   static function on_init($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $instance_id = page::get_current()->args_get('instance_id');
+    $managing_group_id = page::get_current()->args_get('managing_group_id');
+    $entity_name       = page::get_current()->args_get('entity_name');
+    $instance_id       = page::get_current()->args_get('instance_id');
     $entity = entity::get($entity_name);
+    $groups = entity::groups_managing_get();
     if ($entity) {
-      $form->attribute_insert('data-entity_name', $entity_name);
-      $form->attribute_insert('data-instance_id', $instance_id);
-      $id_keys   = $entity->id_get_real();
-      $id_values = explode('+', $instance_id);
-      if (count($id_keys  ) ==
-          count($id_values)) {
-        $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
-        if ($form->_instance->select()) {
-          if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
-          $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => translation::get($entity->title), 'id' => $instance_id]));
-          $items['info']->child_insert($question, 'question');
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
+      if (isset($groups[$managing_group_id])) {
+        $form->attribute_insert('data-entity_name', $entity_name);
+        $form->attribute_insert('data-instance_id', $instance_id);
+        $id_keys   = $entity->id_get_real();
+        $id_values = explode('+', $instance_id);
+        if (count($id_keys  ) ==
+            count($id_values)) {
+          $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
+          if ($form->_instance->select()) {
+            if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
+            $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => translation::get($entity->title), 'id' => $instance_id]));
+            $items['info']->child_insert($question, 'question');
+          } else core::send_header_and_exit('page_not_found');
+        }   else core::send_header_and_exit('page_not_found');
+      }     else core::send_header_and_exit('page_not_found');
+    }       else core::send_header_and_exit('page_not_found');
   }
 
   static function on_submit($event, $form, $items) {
