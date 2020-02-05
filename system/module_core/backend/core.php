@@ -934,18 +934,26 @@ namespace effcore {
       case 'page_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'Page not found';   break;
       case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'File not found';   break;
     }
-    if (!$message && core::server_get_request_uri() != '/')
-         $message = 'go to <a href="/">front page</a>';
-    $settings = module::settings_get('page');
-    $colors = color::get_all();
-    $color_page        = isset($colors[$settings->color_page_id       ]) ? $colors[$settings->color_page_id       ]->value : '';
-    $color_text        = isset($colors[$settings->color_text_id       ]) ? $colors[$settings->color_text_id       ]->value : '';
-    $color_link        = isset($colors[$settings->color_link_id       ]) ? $colors[$settings->color_link_id       ]->value : '';
-    $color_link_active = isset($colors[$settings->color_link_active_id]) ? $colors[$settings->color_link_active_id]->value : '';
-    $console           = module::is_enabled('develop') && $settings->console_visibility == 'show_for_everyone' ? (new markup('pre', [], console::text_get()))->render() : '';
-    if ($type == 'access_forbidden') print (template::make_new('page_access_forbidden', ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
-    if ($type == 'page_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
-    if ($type == 'file_not_found'  ) print (template::make_new('page_not_found',        ['attributes' => static::data_to_attr(['lang' => language::code_get_current()]), 'message' => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(), 'title' => is_object($title) && method_exists($title, 'render') ? $title->render() : (new text($title))->render(), 'color_page' => $color_page, 'color_text' => $color_text, 'color_link' => $color_link, 'color_link_active' => $color_link_active, 'console' => $console ]))->render();
+    if ($type == 'access_forbidden') $template = 'page_access_forbidden';
+    if ($type == 'page_not_found'  ) $template = 'page_not_found';
+    if ($type == 'file_not_found'  ) $template = 'page_not_found';
+    if (template::get($template)) {
+      if (!$message && core::server_get_request_uri() != '/')
+           $message = 'go to <a href="/">front page</a>';
+      $colors   = color::get_all();
+      $settings = module::settings_get('page');
+      $console  = module::is_enabled('develop') && $settings->console_visibility == 'show_for_everyone' ? (new markup('pre', [], console::text_get()))->render() : '';
+      print (template::make_new($template, ['attributes' => static::data_to_attr([
+        'lang'              => language::code_get_current()]),
+        'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(),
+        'title'             => is_object($title  ) && method_exists($title,   'render') ? $title  ->render() : (new text($title  ))->render(),
+        'color_page'        => isset($colors[$settings->color_page_id       ]) ? $colors[$settings->color_page_id       ]->value : '',
+        'color_text'        => isset($colors[$settings->color_text_id       ]) ? $colors[$settings->color_text_id       ]->value : '',
+        'color_link'        => isset($colors[$settings->color_link_id       ]) ? $colors[$settings->color_link_id       ]->value : '',
+        'color_link_active' => isset($colors[$settings->color_link_active_id]) ? $colors[$settings->color_link_active_id]->value : '',
+        'console'           => $console
+      ]))->render();
+    }
     exit();
   }
 

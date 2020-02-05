@@ -45,14 +45,6 @@ templates
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────
-- page_access_forbidden
-    name: page_access_forbidden
-    type: file
-    path: frontend/template--page--access_forbidden.tpl
-- page_not_found
-    name: page_not_found
-    type: file
-    path: frontend/template--page--not_found.tpl
 - canvas_svg
     name: canvas_svg
     type: file
