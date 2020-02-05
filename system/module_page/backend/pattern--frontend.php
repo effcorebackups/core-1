@@ -66,26 +66,32 @@ namespace effcore {
 
       # collect favicons
         foreach ($c_items->favicons as $c_item) {
-          $c_url = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_attributes = $c_item->attributes ?? [];
+          $c_weight     = $c_item->weight     ?? 0;
           $result->icons->child_insert(new markup_simple('link', [
             'href' => $c_url->tiny_get()
-          ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
+          ] + $c_attributes, $c_weight));
         }
 
       # collect styles
         foreach ($c_items->styles as $c_item) {
-          $c_url = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_attributes = $c_item->attributes ?? [];
+          $c_weight     = $c_item->weight     ?? 0;
           $result->styles->child_insert(new markup_simple('link', [
             'href' => $c_url->tiny_get()
-          ] + ($c_item->attributes ?? []), $c_item->weight ?? 0));
+          ] + $c_attributes, $c_weight));
         }
 
       # collect scripts
         foreach ($c_items->scripts as $c_item) {
-          $c_url = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_attributes = $c_item->attributes ?? [];
+          $c_weight     = $c_item->weight     ?? 0;
           $result->scripts->child_insert(new markup('script', [
             'src' => $c_url->tiny_get()
-          ] + ($c_item->attributes ?? []), [], $c_item->weight ?? 0));
+          ] + $c_attributes, [], $c_weight));
         }
 
       }
