@@ -24,6 +24,10 @@ namespace effcore\modules\user {
           }
       }
     }
+    switch ($name) {
+      case 'id_page_context':
+        return page::get_current()->id;
+    }
     return '';
   }
 

@@ -21,6 +21,10 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
+- id_page_context
+    match: %%_id_page_context
+    type: code
+    handler: \effcore\modules\user\events_token::on_replace
 - nickname_page_context
     match: %%_nickname_page_context
     type: code
