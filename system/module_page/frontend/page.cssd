@@ -12,6 +12,11 @@
     color: %%_color_text;
     background: %%_color_page}
 
+  x-some-tag {
+    min-width: %%_page_width_min_context;
+    max-width: %%_page_width_max_context;
+  }
+
   /* page areas */
 
   [data-area-id] {display: block; vertical-align: top}

@@ -8,6 +8,7 @@ namespace effcore\modules\page {
           use \effcore\color;
           use \effcore\module;
           use \effcore\page;
+          use \effcore\url;
           abstract class events_token {
 
   static function on_replace($name, $args = []) {
@@ -15,6 +16,13 @@ namespace effcore\modules\page {
     switch ($name) {
       case 'page_width_min': return $settings->page_width_min;
       case 'page_width_max': return $settings->page_width_max;
+      case 'page_width_min_context':
+      case 'page_width_max_context':
+        $id_page = url::get_current()->query_arg_select('id_page');
+        $page = page::get($id_page);
+        if ($page && $name == 'page_width_min_context') return $page->width_min;
+        if ($page && $name == 'page_width_max_context') return $page->width_max;
+        break;
     }
   # colors
     $colors = color::get_all();

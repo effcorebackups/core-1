@@ -7,6 +7,14 @@ tokens
     match: %%_page_width_max
     type: code
     handler: \effcore\modules\page\events_token::on_replace
+- page_width_min_context
+    match: %%_page_width_min_context
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
+- page_width_max_context
+    match: %%_page_width_max_context
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────
 # colors
 # ─────────────────────────────────────────────────────────────────────

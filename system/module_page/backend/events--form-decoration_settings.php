@@ -17,6 +17,7 @@ namespace effcore\modules\page {
   }
 
   static function on_validate($event, $form, $items) {
+    # todo: make functionality
   }
 
   static function on_submit($event, $form, $items) {
