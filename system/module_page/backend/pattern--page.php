@@ -92,22 +92,19 @@ namespace effcore {
       );
     }
 
-  # page color is dark or light
-    $is_dark = false;
+  # page palette is dark or light
     $colors = color::get_all();
     $color_page = $colors[$settings->color_page_id] ?? null;
-    if ($color_page) {
-      $is_dark = $color_page->is_dark();
-    }
+    $is_dark_palette = $color_page ? $color_page->is_dark() : false;
 
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
     $template = template::make_new('page');
 
     $html = $template->target_get('html');
-    if (true             ) $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current()                           );
-    if (true             ) $html->attribute_insert('dir',  $this->text_direction                                                      );
-    if (true             ) $html->attribute_insert('data-page-color-is-dark',             $is_dark ? 'true' : 'false'                 );
+    if (true             ) $html->attribute_insert('lang',                      $this->lang_code ?: language::code_get_current()      );
+    if (true             ) $html->attribute_insert('dir',                       $this->text_direction                                 );
+    if (true             ) $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'                   );
     if (true             ) $html->attribute_insert('data-css-path', core::sanitize_id(   trim(url::get_current()->path_get(), '/')   ));
     if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
