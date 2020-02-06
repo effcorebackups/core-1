@@ -15,7 +15,6 @@ forms
             - name: width_min
             - min: 0
             - max: 10000
-            - value: 200
         - width_max|field_number
             title: Maximum width
             description: Value in pixels.
@@ -23,7 +22,6 @@ forms
             - name: width_max
             - min: 0
             - max: 10000
-            - value: 950
     - button_save|button
         title: save
         attributes
