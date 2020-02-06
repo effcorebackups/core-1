@@ -280,6 +280,7 @@ translations
     - Maximum allowed only %%_number file%%_plural{number,s}.: Максімальна дазваляецца толькі %%_number файл%%_plural{number,au-a}.
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
+    - Maximum width: Максімальная шырыня
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu / breadcrumbs: Меню / хлебныя крошкі
     - Menu active: Меню актыўнае
@@ -291,6 +292,7 @@ translations
     - Messages: Паведамленні
     - MiB: МіБ
     - Minimum field value\: %%_value: Мінімальнае значэнне поля: %%_value
+    - Minimum width: Мінімальная шырыня
     - missing a temporary directory: адсутнічае часовы каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
@@ -536,6 +538,7 @@ translations
     - UTC date/time: UTC дата/час
     - val.: знач.
     - Val.: Знач.
+    - Value in pixels.: Велічыня ў пікселях.
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
     - Value: Значэнне
     - Values: Значэнні
