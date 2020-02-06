@@ -1,4 +1,12 @@
 tokens
+- page_width_min
+    match: %%_page_width_min
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
+- page_width_max
+    match: %%_page_width_max
+    type: code
+    handler: \effcore\modules\page\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────
 # colors
 # ─────────────────────────────────────────────────────────────────────

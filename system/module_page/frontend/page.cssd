@@ -1,7 +1,8 @@
 
   body {
     display: block;
-    max-width: 950px;
+    min-width: %%_page_width_min{-}px;
+    max-width: %%_page_width_max{-}px;
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;

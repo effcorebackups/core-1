@@ -12,6 +12,10 @@ namespace effcore\modules\page {
 
   static function on_replace($name, $args = []) {
     $settings = module::settings_get('page');
+    switch ($name) {
+      case 'page_width_min': return $settings->page_width_min;
+      case 'page_width_max': return $settings->page_width_max;
+    }
   # colors
     $colors = color::get_all();
     $color_result = null;

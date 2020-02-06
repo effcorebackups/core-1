@@ -5,7 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\message;
           use \effcore\module;
+          use \effcore\storage;
           abstract class events_form_decoration_settings {
 
   static function on_init($event, $form, $items) {
@@ -18,6 +20,9 @@ namespace effcore\modules\page {
   }
 
   static function on_submit($event, $form, $items) {
+    storage::get('files')->changes_insert('page', 'update', 'settings/page/page_width_min', $items['#width_min']->value_get(), false);
+    storage::get('files')->changes_insert('page', 'update', 'settings/page/page_width_max', $items['#width_max']->value_get()       );
+    message::insert('The changes was saved.');
   }
 
 }}
