@@ -17,13 +17,26 @@ namespace effcore\modules\page {
   }
 
   static function on_validate($event, $form, $items) {
-    # todo: make functionality
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        if ($items['#width_min']->value_get() >
+            $items['#width_max']->value_get()) {
+            $items['#width_min']->error_set();
+            $items['#width_max']->error_set();
+            $form->error_set('The minimum value is greater than the maximum value!');
+        }
+        break;
+    }
   }
 
   static function on_submit($event, $form, $items) {
-    storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width', $items['#width_min']->value_get(), false);
-    storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width', $items['#width_max']->value_get()       );
-    message::insert('The changes was saved.');
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width', $items['#width_min']->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width', $items['#width_max']->value_get()       );
+        message::insert('The changes was saved.');
+        break;
+    }
   }
 
 }}

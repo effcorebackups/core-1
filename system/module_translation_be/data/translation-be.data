@@ -476,6 +476,7 @@ translations
     - the file was only partially uploaded: файл быў загружаны толькі часткова
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
+    - The minimum value is greater than the maximum value!: Мінімальнае значэнне больш максімальнага значэння!
     - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
     - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
     - The poll must contain a minimum %%_number responses!: Апытанне павінна утрымліваць мінімум %%_number адказу!
