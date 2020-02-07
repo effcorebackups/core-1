@@ -131,8 +131,8 @@ namespace effcore {
 
   function id_set($id = null) {
     $element = $this->child_select('element');
-    if ($id) $element->attribute_insert('id', $id);
-    else     $element->attribute_delete('id');
+    if ($id !== null) $element->attribute_insert('id', $id);
+    else              $element->attribute_delete('id');
   }
 
   function min_get() {
@@ -142,8 +142,8 @@ namespace effcore {
 
   function min_set($min = null) {
     $element = $this->child_select('element');
-    if ($min) $element->attribute_insert('min', $min);
-    else      $element->attribute_delete('min');
+    if ($min !== null) $element->attribute_insert('min', $min);
+    else               $element->attribute_delete('min');
   }
 
   function max_get() {
@@ -153,8 +153,8 @@ namespace effcore {
 
   function max_set($max = null) {
     $element = $this->child_select('element');
-    if ($max) $element->attribute_insert('max', $max);
-    else      $element->attribute_delete('max');
+    if ($max !== null) $element->attribute_insert('max', $max);
+    else               $element->attribute_delete('max');
   }
 
   function minlength_get() {
@@ -164,8 +164,8 @@ namespace effcore {
 
   function minlength_set($minlength = null) {
     $element = $this->child_select('element');
-    if ($minlength) $element->attribute_insert('minlength', $minlength);
-    else            $element->attribute_delete('minlength');
+    if ($minlength !== null) $element->attribute_insert('minlength', $minlength);
+    else                     $element->attribute_delete('minlength');
   }
 
   function maxlength_get() {
@@ -175,8 +175,8 @@ namespace effcore {
 
   function maxlength_set($maxlength = null) {
     $element = $this->child_select('element');
-    if ($maxlength) $element->attribute_insert('maxlength', $maxlength);
-    else            $element->attribute_delete('maxlength');
+    if ($maxlength !== null) $element->attribute_insert('maxlength', $maxlength);
+    else                     $element->attribute_delete('maxlength');
   }
 
   function multiple_get() {
@@ -208,8 +208,8 @@ namespace effcore {
 
   function pattern_set($pattern = null) {
     $element = $this->child_select('element');
-    if ($pattern) $element->attribute_insert('pattern', $pattern);
-    else          $element->attribute_delete('pattern');
+    if ($pattern !== null) $element->attribute_insert('pattern', $pattern);
+    else                   $element->attribute_delete('pattern');
   }
 
   function readonly_get() {
@@ -241,8 +241,8 @@ namespace effcore {
 
   function step_set($step = null) {
     $element = $this->child_select('element');
-    if ($step) $element->attribute_insert('step', $step);
-    else       $element->attribute_delete('step');
+    if ($step !== null) $element->attribute_insert('step', $step);
+    else                $element->attribute_delete('step');
   }
 
   function type_get($full = true) {
