@@ -7,12 +7,12 @@ tokens
     match: %%_page_width_max
     type: code
     handler: \effcore\modules\page\events_token::on_replace
-- page_width_min_context
-    match: %%_page_width_min_context
+- css_page_min_width_context
+    match: %%_css_page_min_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_replace
-- page_width_max_context
-    match: %%_page_width_max_context
+- css_page_max_width_context
+    match: %%_css_page_max_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_replace
 # ─────────────────────────────────────────────────────────────────────

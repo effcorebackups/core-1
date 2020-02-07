@@ -3,6 +3,8 @@
     display: block;
     min-width: %%_page_width_min{-}px;
     max-width: %%_page_width_max{-}px;
+    %%_css_page_min_width_context;
+    %%_css_page_max_width_context;
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;
@@ -11,11 +13,6 @@
     line-height: 1.5em;
     color: %%_color_text;
     background: %%_color_page}
-
-  x-some-tag {
-    min-width: %%_page_width_min_context;
-    max-width: %%_page_width_max_context;
-  }
 
   /* page areas */
 
