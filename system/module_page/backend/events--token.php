@@ -14,8 +14,8 @@ namespace effcore\modules\page {
   static function on_replace($name, $args = []) {
     $settings = module::settings_get('page');
     switch ($name) {
-      case 'page_width_min': return $settings->page_width_min;
-      case 'page_width_max': return $settings->page_width_max;
+      case     'page_min_width': return $settings->page_min_width;
+      case     'page_max_width': return $settings->page_max_width;
       case 'css_page_min_width_context':
       case 'css_page_max_width_context':
         $id_page = url::get_current()->query_arg_select('id_page');

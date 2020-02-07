@@ -1,10 +1,10 @@
 tokens
-- page_width_min
-    match: %%_page_width_min
+- page_min_width
+    match: %%_page_min_width
     type: code
     handler: \effcore\modules\page\events_token::on_replace
-- page_width_max
-    match: %%_page_width_max
+- page_max_width
+    match: %%_page_max_width
     type: code
     handler: \effcore\modules\page\events_token::on_replace
 - css_page_min_width_context
