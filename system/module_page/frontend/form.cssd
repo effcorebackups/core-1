@@ -296,8 +296,10 @@
 
   x-layout-message {
     display: block;
-    margin: 20px 0;
-    text-align: center}
+    margin: 50px 0;
+    padding: 20px;
+    text-align: center;
+    border: 1px dotted %%_color_main}
 
   x-layout-manager {display: block; margin: 50px 0}
   x-layout-manager [data-area-id]            {margin: 30px 0; padding: 10px; border: 3px solid %%_color_main; min-height: 20px}

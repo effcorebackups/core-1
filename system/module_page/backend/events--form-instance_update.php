@@ -41,14 +41,13 @@ namespace effcore\modules\page {
             }
           }
           $form->child_select('fields')->child_insert(
-            new markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout]), 'layout_manager'
+            new markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout], -20), 'layout_manager'
           );
         } else {
-          $items['~update']->disabled_set();
           $form->child_select('fields')->child_insert(
             new markup('x-layout-message', [], ['message' => new text(
               'LOST LAYOUT: %%_id', ['id' => $form->_instance->id_layout])
-            ]), 'layout_message'
+            ], -20), 'layout_message'
           );
         }
       }
@@ -62,16 +61,17 @@ namespace effcore\modules\page {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'page' && !empty($form->_instance)) {
-            $all_parts = [];
-            foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-              $c_parts = $c_widget->items_get();
-              if ($c_parts) {
-                $all_parts[$c_id_area] = $c_parts;
+            if (layout::select($form->_instance->id_layout)) {
+              $all_parts = [];
+              foreach ($form->_widgets_area as $c_id_area => $c_widget) {
+                $c_parts = $c_widget->items_get();
+                if ($c_parts)
+                  $all_parts[$c_id_area] = $c_parts;
               }
+              if (count($all_parts))
+                   $form->_instance->parts = $all_parts;
+              else $form->_instance->parts = null;
             }
-            if (count($all_parts))
-                 $form->_instance->parts = $all_parts;
-            else $form->_instance->parts = null;
           }
           break;
       }
