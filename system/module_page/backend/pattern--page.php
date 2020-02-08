@@ -15,8 +15,7 @@ namespace effcore {
   public $charset = 'utf-8';
   public $lang_code = 'en';
   public $text_direction = 'ltr';
-  public $width_min = null;
-  public $width_max = null;
+  public $data = null;
   public $origin = 'nosql'; # nosql | sql
   public $is_embed = 1;
   public $access;
@@ -62,7 +61,7 @@ namespace effcore {
         }
       } else {
         $this->_markup = new text(
-          'LOST LAYOUT: %%_id', ['id' => $this->id_layout]
+          'LOST LAYOUT: %%_id', ['id' => $this->id_layout ?: 'n/a']
         );
       }
       event::start('on_page_build_after', $this->id, [&$this]);

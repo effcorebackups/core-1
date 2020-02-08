@@ -8,6 +8,7 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\field_number;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\page;
@@ -24,7 +25,22 @@ namespace effcore\modules\page {
         if (!empty($form->_instance->is_embed)) {
           $items['#url']->disabled_set(true);
         }
-      # build layout
+      # field 'min width' + field 'max width'
+        $width_min = new field_number('Minimum width', 'Value in pixels.');
+        $width_max = new field_number('Maximum width', 'Value in pixels.');
+        $width_min->build();
+        $width_max->build();
+        $width_min->name_set('width_min');
+        $width_max->name_set('width_max');
+        $width_min->value_set($form->_instance->data['width_min'] ?? 0);
+        $width_max->value_set($form->_instance->data['width_max'] ?? 0);
+        $width_min->min_set(0    );
+        $width_max->min_set(0    );
+        $width_min->max_set(10000);
+        $width_max->max_set(10000);
+        $form->child_select('fields')->child_insert($width_min, 'width_min');
+        $form->child_select('fields')->child_insert($width_max, 'width_max');
+      # build layout and its parts
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         if ($layout) {
           foreach ($layout->children_select_recursive() as $c_area) {
@@ -46,7 +62,7 @@ namespace effcore\modules\page {
         } else {
           $form->child_select('fields')->child_insert(
             new markup('x-layout-message', [], ['message' => new text(
-              'LOST LAYOUT: %%_id', ['id' => $form->_instance->id_layout])
+              'LOST LAYOUT: %%_id', ['id' => $form->_instance->id_layout ?: 'n/a'])
             ], -20), 'layout_message'
           );
         }
@@ -61,6 +77,12 @@ namespace effcore\modules\page {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'page' && !empty($form->_instance)) {
+          # field 'min width' + field 'max width'
+            $data = $form->_instance->data;
+            $data['width_min'] = $items['#width_min']->value_get();
+            $data['width_max'] = $items['#width_max']->value_get();
+            $form->_instance->data = $data;
+          # save layout parts
             if (layout::select($form->_instance->id_layout)) {
               $all_parts = [];
               foreach ($form->_widgets_area as $c_id_area => $c_widget) {

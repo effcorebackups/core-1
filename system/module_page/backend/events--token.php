@@ -20,8 +20,8 @@ namespace effcore\modules\page {
       case 'css_page_max_width_context':
         $id_page = url::get_current()->query_arg_select('id_page');
         $page = page::get($id_page);
-        if ($name == 'css_page_min_width_context' && $page && $page->width_min) return 'min-width: '.$page->width_min.'px';
-        if ($name == 'css_page_max_width_context' && $page && $page->width_max) return 'max-width: '.$page->width_max.'px';
+        if ($name == 'css_page_min_width_context' && !empty($page->data['width_min'])) return 'min-width: '.$page->data['width_min'].'px';
+        if ($name == 'css_page_max_width_context' && !empty($page->data['width_max'])) return 'max-width: '.$page->data['width_max'].'px';
         break;
     }
   # colors
