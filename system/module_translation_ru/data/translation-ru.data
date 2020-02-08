@@ -245,6 +245,7 @@ translations
     - launch: запуск
     - Layout: Макет
     - Layouts: Макеты
+    - Leave 0 if you want to use global page size settings.: Оставьте 0, если Вы хотите использовать глобальные настройки размера страницы.
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым, если Вы не желаете изменять его значение.
     - left to right: слева направо
     - License agreement: Лицензионное соглашение
