@@ -22,6 +22,11 @@ forms
             - name: width_max
             - min: 0
             - max: 10000
+        - meta_viewport|field_text
+            title: META viewport
+            element_attributes
+            - name: meta_viewport
+            - maxlength: 2000
     - button_save|button
         title: save
         attributes

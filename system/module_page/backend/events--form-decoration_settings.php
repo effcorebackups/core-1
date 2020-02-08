@@ -12,8 +12,9 @@ namespace effcore\modules\page {
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('page');
-    $items['#width_min']->value_set($settings->page_min_width);
-    $items['#width_max']->value_set($settings->page_max_width);
+    $items['#width_min'    ]->value_set($settings->page_min_width    );
+    $items['#width_max'    ]->value_set($settings->page_max_width    );
+    $items['#meta_viewport']->value_set($settings->page_meta_viewport);
   }
 
   static function on_validate($event, $form, $items) {
@@ -32,8 +33,9 @@ namespace effcore\modules\page {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width', $items['#width_min']->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width', $items['#width_max']->value_get()       );
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width',     $items['#width_min'    ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width',     $items['#width_max'    ]->value_get(), false);
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_meta_viewport', $items['#meta_viewport']->value_get()       );
         message::insert('The changes was saved.');
         break;
     }

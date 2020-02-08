@@ -59,6 +59,7 @@ templates
     - html: html
     - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
     - head: html/children/head
+    - head_meta: html/children/head/children/meta
     - head_title: html/children/head/children/title
     - head_title_text: html/children/head/children/title/children/content/text
     - head_icons: html/children/head/children/icons

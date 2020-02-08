@@ -130,6 +130,10 @@ namespace effcore {
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
 
+    $template->target_get('head_meta')->child_insert(
+      new markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
+    );
+
     return $template->render();
   }
 
