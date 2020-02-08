@@ -3,40 +3,70 @@ layouts
     id: original_classic
     title: Original | profile "Classic"
     children
-    - system|area
-        id: system
-    - header|area
-        id: header
-        tag_name: header
-    - nav|area
-        id: navigation
-        tag_name: nav
-    - content|area
-        type: table
+    - page_section_head|markup
+        tag_name: x-page-section
         attributes
-        - data-area-group-id: content
+        - data-page-section-id: head
         children
-        - left|area
-            type: column
+        - page_section_wrapper|markup
+            tag_name: x-page-section-wrapper
             attributes
-            - data-area-group-id: left
+            - data-page-section-wrapper: true
             children
-            - messages|area
-                id: messages
-                render_weight: -50
-            - title|area
-                id: title
-            - tabs|area
-                id: tabs
-            - content|area
-                id: content
-                render_weight: +50
-        - right|area
-            id: right
-            type: column
-            tag_name: aside
+            - system|area
+                id: system
+            - header|area
+                id: header
+                tag_name: header
+            - nav|area
+                id: navigation
+                tag_name: nav
+    - page_section_body|markup
+        tag_name: x-page-section
+        attributes
+        - data-page-section-id: body
+        children
+        - page_section_wrapper|markup
+            tag_name: x-page-section-wrapper
             attributes
-            - style: width: 200px
-    - footer|area
-        id: footer
-        tag_name: footer
+            - data-page-section-wrapper: true
+            children
+            - content|area
+                type: table
+                attributes
+                - data-area-group-id: content
+                children
+                - left|area
+                    type: column
+                    attributes
+                    - data-area-group-id: left
+                    children
+                    - messages|area
+                        id: messages
+                        render_weight: -50
+                    - title|area
+                        id: title
+                    - tabs|area
+                        id: tabs
+                    - content|area
+                        id: content
+                        render_weight: +50
+                - right|area
+                    id: right
+                    type: column
+                    tag_name: aside
+                    attributes
+                    - style: width: 200px
+    - page_section_foot|markup
+        tag_name: x-page-section
+        attributes
+        - data-page-section-id: foot
+        children
+        - page_section_wrapper|markup
+            tag_name: x-page-section-wrapper
+            attributes
+            - data-page-section-wrapper: true
+            children
+            - footer|area
+                id: footer
+                tag_name: footer
