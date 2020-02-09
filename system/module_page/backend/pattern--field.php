@@ -339,13 +339,13 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if ($element->attribute_select('pattern') !== null)                                                                                             $result[] = $this->render_description_pattern  ($element);
-      if ($element->attribute_select('min')     !== null)                                                                                             $result[] = $this->render_description_min      ($element);
-      if ($element->attribute_select('max')     !== null)                                                                                             $result[] = $this->render_description_max      ($element);
-      if ($element->attribute_select('value')   !== null && $element->attribute_select('type') == 'range')                                            $result[] = $this->render_description_cur      ($element);
-      if (is_numeric($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
-      if (is_numeric($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
-      if (is_numeric($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
+      if ($element->attribute_select('pattern')  !== null)                                                                                        $result[] = $this->render_description_pattern  ($element);
+      if ($element->attribute_select('min')      !== null)                                                                                        $result[] = $this->render_description_min      ($element);
+      if ($element->attribute_select('max')      !== null)                                                                                        $result[] = $this->render_description_max      ($element);
+      if ($element->attribute_select('value')    !== null && $element->attribute_select('type') == 'range')                                       $result[] = $this->render_description_cur      ($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
+      if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
     }
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
