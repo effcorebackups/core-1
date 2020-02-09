@@ -1,5 +1,5 @@
 
-  body {
+  body[data-layout-id='original_classic'] {
     max-width: none;
     margin: 0;
     padding: 0}

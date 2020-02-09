@@ -3,12 +3,12 @@ layouts
     id: original_classic
     title: Original | profile "Classic"
     children
-    - page_section_head|markup
+    - page_section_head|area
         tag_name: x-page-section
         attributes
         - data-page-section-id: head
         children
-        - page_section_wrapper|markup
+        - page_section_wrapper|area
             tag_name: x-page-section-wrapper
             attributes
             - data-page-section-wrapper: true
@@ -21,12 +21,12 @@ layouts
             - nav|area
                 id: navigation
                 tag_name: nav
-    - page_section_body|markup
+    - page_section_body|area
         tag_name: x-page-section
         attributes
         - data-page-section-id: body
         children
-        - page_section_wrapper|markup
+        - page_section_wrapper|area
             tag_name: x-page-section-wrapper
             attributes
             - data-page-section-wrapper: true
@@ -57,12 +57,12 @@ layouts
                     tag_name: aside
                     attributes
                     - style: width: 200px
-    - page_section_foot|markup
+    - page_section_foot|area
         tag_name: x-page-section
         attributes
         - data-page-section-id: foot
         children
-        - page_section_wrapper|markup
+        - page_section_wrapper|area
             tag_name: x-page-section-wrapper
             attributes
             - data-page-section-wrapper: true
