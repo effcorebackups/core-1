@@ -22,7 +22,7 @@ namespace effcore\modules\page {
     $entity = entity::get($entity_name);
     if ($entity) {
       if ($entity->name == 'page' && !empty($form->_instance)) {
-      # disable url field for embedded instance
+      # disable field 'url' for embedded instance
         if (!empty($form->_instance->is_embed)) {
           $items['#url']->disabled_set(true);
         }
@@ -41,7 +41,7 @@ namespace effcore\modules\page {
         $width_max->max_set(10000);
         $form->child_select('fields')->child_insert($width_min, 'width_min');
         $form->child_select('fields')->child_insert($width_max, 'width_max');
-      # build layout and its parts
+      # layout and its parts
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         if ($layout) {
           foreach ($layout->children_select_recursive() as $c_area) {

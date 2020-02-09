@@ -7,8 +7,10 @@
 namespace effcore\modules\page {
           use \effcore\entity;
           use \effcore\language;
+          use \effcore\markup;
           use \effcore\page;
           use \effcore\text_multiline;
+          use \effcore\text;
           use \effcore\translation;
           abstract class events_form_instance_insert {
 
@@ -16,10 +18,16 @@ namespace effcore\modules\page {
     $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
-    # field 'lang_code'
       if ($entity->name == 'page') {
+      # field 'lang_code'
         $items['#lang_code']->value_set(
           language::code_get_current()
+        );
+      # layout and its parts
+        $form->child_select('fields')->child_insert(
+          new markup('x-layout-message', [], ['message' => new text(
+            'Layout editing will be available after saving the page.')
+          ], -20), 'layout_message'
         );
       }
     }
