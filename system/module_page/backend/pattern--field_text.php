@@ -89,8 +89,8 @@ namespace effcore {
 
   static function validate_pattern($field, $form, $element, &$new_value) {
     $pattern = $field->pattern_get();
-    if (strlen($new_value) && $pattern &&
-              !preg_match('%'.$pattern.'%', $new_value)) {
+    if (strlen($new_value) && strlen($pattern) &&
+                     !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
         'Field value does not match the regular expression "%%_expression".'], ['title' => translation::get($field->title), 'expression' => $pattern]
