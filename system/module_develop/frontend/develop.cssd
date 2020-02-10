@@ -11,7 +11,10 @@
     display: block;
     margin: 300px auto 0 auto;
     min-width: %%_page_min_width{-}px;
-    max-width: %%_page_max_width{-}px}
+    max-width: %%_page_max_width{-}px;
+    font-family: 'Arial';
+    font-size: 15px;
+    line-height: 1.5em}
 
   /* logs */
 
@@ -34,7 +37,7 @@
   x-block[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
   x-block[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
-  x-block[data-id='logs'] x-param {display: block; font-size: .9em; color: %%_color_text}
+  x-block[data-id='logs'] x-param {display: block; font-size: .9em}
   x-block[data-id='logs'] x-param x-title {width: 200px; display: inline-block}
   x-block[data-id='logs'] x-param x-title::after {content: ': '}
   x-block[data-id='logs'] x-param x-value {font-family: monospace}

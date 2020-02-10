@@ -14,6 +14,11 @@
 
   /* page areas */
 
+  [data-area-id='system'] {
+    font-family: 'Arial';
+    font-size: 15px;
+    line-height: 1.5em}
+
   [data-area-id] {display: block; vertical-align: top}
   [data-area-id]:empty {display: none}
   [data-area-id]::after {content: ''; clear: both; display: block}
