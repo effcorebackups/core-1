@@ -4,7 +4,7 @@ part_presets
     managing_group: Menu
     managing_title: System menu
     in_areas
-    - =: menu
+    - =: system
     type: link
     source: trees/core/system
 - breadcrumbs_system|part_preset
