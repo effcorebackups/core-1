@@ -1,13 +1,11 @@
 
   body {
     display: block;
-    min-width: %%_page_min_width{-}px;
-    max-width: %%_page_max_width{-}px;
-           %%_css_page_min_width_context /* induvidual page size */ ;
-           %%_css_page_max_width_context /* induvidual page size */ ;
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;
+    min-width: %%_page_min_width{-}px; %%_css_page_min_width_context;
+    max-width: %%_page_max_width{-}px; %%_css_page_max_width_context;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
@@ -31,7 +29,7 @@
 
   /* headers */
 
-  h1 {margin: 4em 0 3em 0; font-size: 2em;   line-height: 1.5em; font-weight: normal}
+  h1 {margin: 0   0 3em 0; font-size: 2em;   line-height: 1.5em; font-weight: normal}
   h2 {margin: 3em 0 2em 0; font-size: 1.5em; line-height: 1.5em; font-weight: normal}
   h3 {margin: 2em 0 1em 0; font-size: 1em}
 

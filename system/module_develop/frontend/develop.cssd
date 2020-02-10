@@ -7,7 +7,11 @@
 
   /* console */
 
-  x-console {display: block; margin: 300px auto 0 auto}
+  x-console {
+    display: block;
+    margin: 300px auto 0 auto;
+    min-width: %%_page_min_width{-}px;
+    max-width: %%_page_max_width{-}px}
 
   /* logs */
 

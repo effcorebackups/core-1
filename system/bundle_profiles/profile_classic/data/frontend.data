@@ -6,7 +6,7 @@ frontend
       match: %^.*$%
     styles
     - page_style
-        path: frontend/page.cssd
+        path: frontend/page.cssd?id_page=%%_id_page_context
         attributes
         - rel: stylesheet
         - media: all

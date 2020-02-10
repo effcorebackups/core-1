@@ -22,6 +22,7 @@ instances
     - url: /about
     - is_https: 0
     - is_embed: 0
+    - id_layout: original_classic
     - access: null
     - module_id: profile_classic
     - parts
@@ -60,6 +61,7 @@ instances
     - url: /contact
     - is_https: 0
     - is_embed: 0
+    - id_layout: original_classic
     - access: null
     - module_id: profile_classic
     - parts
@@ -98,6 +100,7 @@ instances
     - url: /
     - is_https: 0
     - is_embed: 1
+    - id_layout: original_classic
     - access: null
     - module_id: profile_classic
     - parts
@@ -136,6 +139,7 @@ instances
     - url: /login
     - is_https: 1
     - is_embed: 1
+    - id_layout: original_classic
     - module_id: profile_classic
     - access
         roles
@@ -174,6 +178,7 @@ instances
     - url: /logout
     - is_https: 1
     - is_embed: 1
+    - id_layout: original_classic
     - module_id: profile_classic
     - access
         roles
@@ -214,6 +219,7 @@ instances
     - url: /recovery
     - is_https: 1
     - is_embed: 1
+    - id_layout: original_classic
     - module_id: profile_classic
     - access
         roles
@@ -252,6 +258,7 @@ instances
     - url: /registration
     - is_https: 1
     - is_embed: 1
+    - id_layout: original_classic
     - module_id: profile_classic
     - access
         roles
