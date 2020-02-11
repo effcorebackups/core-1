@@ -34,11 +34,11 @@ namespace effcore {
   function init() {
     if ($this->cur === null) {
       $this->cur = url::get_current()->query_arg_select($this->name_get());
-      if ($this->cur === null)                            {$this->cur = $this->min;                                                   }
-      if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->error_code |= self::ERR_CODE_INVALID_VALUE;}
-      if ($this->max < $this->min                       ) {$this->max = $this->min; $this->error_code |= self::ERR_CODE_MIN_GT_MAX;   }
-      if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->error_code |= self::ERR_CODE_CUR_LT_MIN;   }
-      if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->error_code |= self::ERR_CODE_CUR_GT_MAX;   }
+      if ($this->cur === null)                            {$this->cur = $this->min;                                                     }
+      if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_INVALID_VALUE;}
+      if ($this->max < $this->min                       ) {$this->max = $this->min; $this->error_code |= static::ERR_CODE_MIN_GT_MAX;   }
+      if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_LT_MIN;   }
+      if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->error_code |= static::ERR_CODE_CUR_GT_MAX;   }
     }
   }
 
