@@ -11,6 +11,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\message;
           use \effcore\part_preset;
+          use \effcore\selection;
           use \effcore\text;
           use \effcore\url;
           abstract class events_page {
@@ -42,21 +43,32 @@ namespace effcore\modules\page {
 
   static function block_text_sql($page, $args) {
     if (!empty($args['id'])) {
-      $text = (new instance('text', [
+      $instance = (new instance('text', [
         'id' => $args['id']
       ]))->select();
-      return $text ?
-             $text->text : null;
+      if ($instance) {
+        return $instance->text;
+      }
     }
   }
 
   static function block_logotype_sql($page, $args) {
     if (!empty($args['id'])) {
-      $logotype = (new instance('logotype', [
-        'id' => $args['id']
-      ]))->select();
-      return $logotype ?
-             $logotype->path : null;
+      $entity = entity::get('logotype');
+      $selection = new selection;
+      $selection->id = 'logotype_'.$args['id'];
+      $selection->template = 'content';
+      $selection->decorator_params = $entity->decorator_params;
+      $selection->query_params['conditions'] = ['id_!f' => '~logotype.id', 'operator' => '=', 'id_!v' => $args['id']];
+      foreach ($entity->fields as $c_name => $c_field) {
+        if (!empty($c_field->managing_on_select_is_enabled)) {
+          $selection->field_insert_entity(null,
+            $entity->name, $c_name, $c_field->managing_selection_params ?? []
+          );
+        }
+      }
+      $selection->build();
+      return $selection;
     }
   }
 

@@ -179,6 +179,14 @@ entities
     ws_updated: true
     ws_module_id: true
     ws_data: true
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: logotype
+    - template_row_mapping
+      - title: logotype.title
+      - url: logotype.url
+      - src: logotype.path
     fields
     - id
         title: ID

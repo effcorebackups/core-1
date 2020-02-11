@@ -16,7 +16,6 @@ selections
       - id_!f: ~logotype.id
       - operator: =
       - id_!v: main_classic
-    - limit: 1
     fields
     - logotype.title
         type: field
@@ -46,7 +45,6 @@ selections
       - id_!f: ~text.id
       - operator: =
       - id_!v: about_classic
-    - limit: 1
     fields
     - text.text
         type: field
@@ -67,7 +65,6 @@ selections
       - id_!f: ~text.id
       - operator: =
       - id_!v: contact_classic
-    - limit: 1
     fields
     - text.text
         type: field
@@ -88,7 +85,6 @@ selections
       - id_!f: ~text.id
       - operator: =
       - id_!v: copyright_classic
-    - limit: 1
     fields
     - text.text
         type: field
@@ -109,7 +105,6 @@ selections
       - id_!f: ~text.id
       - operator: =
       - id_!v: front_classic
-    - limit: 1
     fields
     - text.text
         type: field
