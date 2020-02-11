@@ -9,6 +9,8 @@ namespace effcore {
 
   public $id;
   public $template = 'tabs';
+  public $template_top_items = 'tabs_top_items';
+  public $template_sub_items = 'tabs_sub_items';
   public $attributes = ['role' => 'tablist'];
 
   function __construct($id = null, $attributes = [], $weight = 0) {
@@ -47,7 +49,7 @@ namespace effcore {
       $c_clone->children = [];
       $rendered.= $c_clone->render();
     }
-    return $rendered ? (template::make_new('tabs_top_items', [
+    return $rendered ? (template::make_new($this->template_top_items, [
       'children' => $rendered
     ]))->render() : '';
   }
@@ -63,7 +65,7 @@ namespace effcore {
         break;
       }
     }
-    return $rendered ? (template::make_new('tabs_sub_items', [
+    return $rendered ? (template::make_new($this->template_sub_items, [
       'children' => $rendered
     ]))->render() : '';
   }

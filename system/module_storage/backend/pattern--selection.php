@@ -9,6 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-selection';
   public $template = 'container';
+# ─────────────────────────────────────────────────────────────────────
   public $title_tag_name = 'h2';
   public $id;
   public $title;

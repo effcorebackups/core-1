@@ -7,6 +7,8 @@
 namespace effcore {
           class page extends node implements has_external_cache {
 
+  public $template = 'page';
+# ─────────────────────────────────────────────────────────────────────
   public $id;
   public $id_layout = 'simple';
   public $title;
@@ -100,7 +102,7 @@ namespace effcore {
 
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
-    $template = template::make_new('page');
+    $template = template::make_new($this->template);
 
     $html = $template->target_get('html');
     if (true             ) $html->attribute_insert('lang',                      $this->lang_code ?: language::code_get_current()      );

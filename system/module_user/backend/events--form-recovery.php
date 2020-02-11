@@ -15,6 +15,9 @@ namespace effcore\modules\user {
           use \effcore\url;
           abstract class events_form_recovery {
 
+  const template_mail_recovery_subject = 'mail_recovery_subject';
+  const template_mail_recovery_body    = 'mail_recovery_body';
+
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
@@ -44,10 +47,10 @@ namespace effcore\modules\user {
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$current_url->domain;
             $mail_to = $user->nickname.' <'.$user->email.'>';
-            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new('mail_recovery_subject', [
+            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new(static::template_mail_recovery_subject, [
               'domain' => $current_url->domain
             ]))->render()).'?=';
-            $mail_body = template::make_new('mail_recovery_body', [
+            $mail_body = template::make_new(static::template_mail_recovery_body, [
               'domain'       => $current_url->domain,
               'new_password' => $new_password
             ])->render();
