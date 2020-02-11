@@ -1,35 +1,4 @@
 selections
-- logotype_main_classic|selection
-    id: logotype_main_classic
-    title: Logotype Main
-    template: content
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: logotype
-    - template_row_mapping
-      - title: logotype.title
-      - url: logotype.url
-      - src: logotype.path
-    query_params
-    - conditions
-      - id_!f: ~logotype.id
-      - operator: =
-      - id_!v: main_classic
-    fields
-    - logotype.title
-        type: field
-        entity_name: logotype
-        entity_field_name: title
-        is_apply_translation: true
-    - logotype.url
-        type: field
-        entity_name: logotype
-        entity_field_name: url
-    - logotype.path
-        type: field
-        entity_name: logotype
-        entity_field_name: path
 - text_about_classic|selection
     id: text_about_classic
     title: Text About Us

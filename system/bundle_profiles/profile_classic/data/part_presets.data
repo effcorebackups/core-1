@@ -1,10 +1,4 @@
 part_presets
-- selection_logotype_main_classic|part_preset
-    id: selection_logotype_main_classic
-    managing_group: Selections
-    managing_title: Logotype Main
-    type: link
-    source: selections/profile_classic/logotype_main_classic
 - selection_text_about_classic|part_preset
     id: selection_text_about_classic
     managing_group: Selections
