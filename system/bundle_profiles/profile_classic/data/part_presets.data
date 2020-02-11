@@ -1,31 +1,31 @@
 part_presets
 - selection_logotype_main_classic|part_preset
     id: selection_logotype_main_classic
-    managing_group: Selection
+    managing_group: Selections
     managing_title: Logotype Main
     type: link
     source: selections/profile_classic/logotype_main_classic
 - selection_text_about_classic|part_preset
     id: selection_text_about_classic
-    managing_group: Selection
+    managing_group: Selections
     managing_title: Text About Us
     type: link
     source: selections/profile_classic/text_about_classic
 - selection_text_contact_classic|part_preset
     id: selection_text_contact_classic
-    managing_group: Selection
+    managing_group: Selections
     managing_title: Text Contact Us
     type: link
     source: selections/profile_classic/text_contact_classic
 - selection_text_copyright_classic|part_preset
     id: selection_text_copyright_classic
-    managing_group: Selection
+    managing_group: Selections
     managing_title: Text Copyright
     type: link
     source: selections/profile_classic/text_copyright_classic
 - selection_text_front_classic|part_preset
     id: selection_text_front_classic
-    managing_group: Selection
+    managing_group: Selections
     managing_title: Text Front
     type: link
     source: selections/profile_classic/text_front_classic

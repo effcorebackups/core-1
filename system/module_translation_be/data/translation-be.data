@@ -188,6 +188,8 @@ translations
     - Form elements: Элементы формы
     - Form: Форма
     - form: форма
+    - Forms: Формы
+    - forms: формы
     - Fraction part is too long.: Дробавая частка надта доўгая.
     - Front: Галоўная
     - Function: Функцыя
@@ -288,6 +290,7 @@ translations
     - Menu / breadcrumbs: Меню / хлебныя крошкі
     - Menu active: Меню актыўнае
     - Menu: Меню
+    - Menus: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
     - Menu\: text: Меню: тэкст

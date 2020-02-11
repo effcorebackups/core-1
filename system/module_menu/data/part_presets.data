@@ -1,7 +1,7 @@
 part_presets
 - tree_system|part_preset
     id: tree_system
-    managing_group: Menu
+    managing_group: Menus
     managing_title: System menu
     in_areas
     - =: system
