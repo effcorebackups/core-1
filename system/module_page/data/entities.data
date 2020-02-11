@@ -346,6 +346,12 @@ entities
     ws_updated: true
     ws_module_id: true
     ws_data: true
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: text
+    - template_row_mapping
+      - text: text.text
     fields
     - id
         title: ID

@@ -48,11 +48,11 @@ instances
         - title|part_preset_link
             id: title
       - content
-        - selection_text_about_classic|part_preset_link
-            id: selection_text_about_classic
+        - text_sql_about_classic|part_preset_link
+            id: text_sql_about_classic
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_contact|instance
     entity_name: page
     values
@@ -87,11 +87,11 @@ instances
         - title|part_preset_link
             id: title
       - content
-        - selection_text_contact_classic|part_preset_link
-            id: selection_text_contact_classic
+        - text_sql_contact_classic|part_preset_link
+            id: text_sql_contact_classic
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_front|instance
     entity_name: page
     values
@@ -126,11 +126,11 @@ instances
         - title|part_preset_link
             id: title
       - content
-        - selection_text_front_classic|part_preset_link
-            id: selection_text_front_classic
+        - text_sql_front_classic|part_preset_link
+            id: text_sql_front_classic
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_login|instance
     entity_name: page
     values
@@ -168,8 +168,8 @@ instances
         - form_login|part_preset_link
             id: form_login
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_logout|instance
     entity_name: page
     values
@@ -209,8 +209,8 @@ instances
         - form_logout|part_preset_link
             id: form_logout
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_recovery|instance
     entity_name: page
     values
@@ -248,8 +248,8 @@ instances
         - form_recovery|part_preset_link
             id: form_recovery
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 - page_registration|instance
     entity_name: page
     values
@@ -287,8 +287,8 @@ instances
         - form_registration|part_preset_link
             id: form_registration
       - footer
-        - selection_text_copyright_classic|part_preset_link
-            id: selection_text_copyright_classic
+        - text_sql_copyright_classic|part_preset_link
+            id: text_sql_copyright_classic
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────

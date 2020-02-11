@@ -43,12 +43,21 @@ namespace effcore\modules\page {
 
   static function block_text_sql($page, $args) {
     if (!empty($args['id'])) {
-      $instance = (new instance('text', [
-        'id' => $args['id']
-      ]))->select();
-      if ($instance) {
-        return $instance->text;
+      $entity = entity::get('text');
+      $selection = new selection;
+      $selection->id = 'text_'.$args['id'];
+      $selection->template = 'content';
+      $selection->decorator_params = $entity->decorator_params;
+      $selection->query_params['conditions'] = ['id_!f' => '~text.id', 'operator' => '=', 'id_!v' => $args['id']];
+      foreach ($entity->fields as $c_name => $c_field) {
+        if (!empty($c_field->managing_on_select_is_enabled)) {
+          $selection->field_insert_entity(null,
+            $entity->name, $c_name, $c_field->managing_selection_params ?? []
+          );
+        }
       }
+      $selection->build();
+      return $selection;
     }
   }
 
