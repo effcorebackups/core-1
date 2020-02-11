@@ -36,6 +36,8 @@ namespace effcore\modules\page {
   static function on_part_presets_dynamic_build($event, $id = null) {
     if ($id === null                                  ) {foreach (entity::get('text')->instances_select() as $c_text)                                                                                             part_preset::insert('text_sql_'.$c_text->id, 'Text', $c_text->description ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_text_sql', [], ['id' => $c_text->id], 0, 'page');}
     if ($id !== null && strpos($id, 'text_sql_') === 0) {                                                    $c_text = (new instance('text', ['id' => substr($id, strlen('text_sql_'))]))->select(); if ($c_text) part_preset::insert('text_sql_'.$c_text->id, 'Text', $c_text->description ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_text_sql', [], ['id' => $c_text->id], 0, 'page');}
+    if ($id === null                                      ) {foreach (entity::get('logotype')->instances_select() as $c_logotype)                                                                                                         part_preset::insert('logotype_sql_'.$c_logotype->id, 'Logotypes', $c_logotype->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_logotype_sql', [], ['id' => $c_logotype->id], 0, 'page');}
+    if ($id !== null && strpos($id, 'logotype_sql_') === 0) {                                                        $c_logotype = (new instance('logotype', ['id' => substr($id, strlen('logotype_sql_'))]))->select(); if ($c_logotype) part_preset::insert('logotype_sql_'.$c_logotype->id, 'Logotypes', $c_logotype->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_logotype_sql', [], ['id' => $c_logotype->id], 0, 'page');}
   }
 
   static function block_text_sql($page, $args) {
@@ -45,6 +47,16 @@ namespace effcore\modules\page {
       ]))->select();
       return $text ?
              $text->text : null;
+    }
+  }
+
+  static function block_logotype_sql($page, $args) {
+    if (!empty($args['id'])) {
+      $logotype = (new instance('logotype', [
+        'id' => $args['id']
+      ]))->select();
+      return $logotype ?
+             $logotype->path : null;
     }
   }
 
