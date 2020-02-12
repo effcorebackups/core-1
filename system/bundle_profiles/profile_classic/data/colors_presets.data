@@ -3,30 +3,30 @@ colors_presets
     id: original_classic
     title: Original | profile "Classic"
     colors
-      color_page_id: white
-      color_text_id: black
-      color_main_id: black
-      color_link_id: royalblue
-      color_link_active_id: coral
-      color_table_row_odd_id: whitesmoke
-      color_table_row_even_id: gainsboro
-      color_relation_id: black
-      color_menu_id: black
-      color_menu_active_id: dimgray
+      color_page_id: classic_11
+      color_text_id: white
+      color_main_id: royalblue
+      color_link_id: white
+      color_link_active_id: gold
+      color_table_row_odd_id: embed_dark_2
+      color_table_row_even_id: embed_dark_3
+      color_relation_id: white
+      color_menu_id: embed_dark_2
+      color_menu_active_id: embed_dark_3
       color_menu_text_id: white
       color_menu_link_id: white
-      color_menu_link_active_id: coral
-      color_tabs_id: black
-      color_tabs_link_id: royalblue
+      color_menu_link_active_id: gold
+      color_tabs_id: royalblue
+      color_tabs_link_id: white
       color_tabs_link_active_id: white
-      color_tabs_link_active_no_bg_id: coral
-      color_ok_id: limegreen
-      color_warning_id: orange
-      color_error_id: orangered
-      color_fieldset_id: whitesmoke
-      color_fieldset_nested_id: white
-      color_field_id: white
-      color_field_text_id: black
-      color_button_id: black
-      color_button_active_id: dimgray
+      color_tabs_link_active_no_bg_id: gold
+      color_ok_id: embed_state_ok
+      color_warning_id: embed_state_warning
+      color_error_id: embed_state_error
+      color_fieldset_id: embed_dark_2
+      color_fieldset_nested_id: embed_dark_1
+      color_field_id: embed_dark_1
+      color_field_text_id: white
+      color_button_id: embed_main
+      color_button_active_id: dodgerblue
       color_button_text_id: white
