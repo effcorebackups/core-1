@@ -2,8 +2,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # original colors
 # ─────────────────────────────────────────────────────────────────────
-- page_main_classic|color
-    id: page_main_classic
-    value: limegreen
-    value_hex: limegreen
+- classic_01|color
+    id: classic_01
+    value: #007125
+    value_hex: #007125
+    group: classic
+- classic_02|color
+    id: classic_02
+    value: #01762a
+    value_hex: #01762a
+    group: classic
+- classic_03|color
+    id: classic_03
+    value: #077b2f
+    value_hex: #077b2f
+    group: classic
+- classic_04|color
+    id: classic_04
+    value: #0c8033
+    value_hex: #0c8033
+    group: classic
+- classic_05|color
+    id: classic_05
+    value: #138538
+    value_hex: #138538
+    group: classic
+- classic_06|color
+    id: classic_06
+    value: #198a3e
+    value_hex: #198a3e
+    group: classic
+- classic_07|color
+    id: classic_07
+    value: #1e8f43
+    value_hex: #1e8f43
+    group: classic
+- classic_08|color
+    id: classic_08
+    value: #249448
+    value_hex: #249448
+    group: classic
+- classic_09|color
+    id: classic_09
+    value: #28994b
+    value_hex: #28994b
+    group: classic
+- classic_10|color
+    id: classic_10
+    value: #2e9e50
+    value_hex: #2e9e50
+    group: classic
+- classic_11|color
+    id: classic_11
+    value: #33a356
+    value_hex: #33a356
+    group: classic
+- classic_12|color
+    id: classic_12
+    value: #38a85b
+    value_hex: #38a85b
+    group: classic
+- classic_14|color
+    id: classic_14
+    value: #3ead60
+    value_hex: #3ead60
+    group: classic
+- classic_15|color
+    id: classic_15
+    value: #43b265
+    value_hex: #43b265
+    group: classic
+- classic_16|color
+    id: classic_16
+    value: #48b76a
+    value_hex: #48b76a
+    group: classic
+- classic_17|color
+    id: classic_17
+    value: #4dbc6f
+    value_hex: #4dbc6f
+    group: classic
+- classic_18|color
+    id: classic_18
+    value: #52c174
+    value_hex: #52c174
+    group: classic
+- classic_19|color
+    id: classic_19
+    value: #57c679
+    value_hex: #57c679
+    group: classic
+- classic_20|color
+    id: classic_20
+    value: #5ccb7e
+    value_hex: #5ccb7e
+    group: classic
+- classic_21|color
+    id: classic_21
+    value: #62d083
+    value_hex: #62d083
+    group: classic
+- classic_22|color
+    id: classic_22
+    value: #67d588
+    value_hex: #67d588
     group: classic
