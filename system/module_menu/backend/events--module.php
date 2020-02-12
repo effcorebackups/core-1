@@ -6,8 +6,6 @@
 
 namespace effcore\modules\menu {
           use \effcore\module;
-          use \effcore\tabs;
-          use \effcore\tree;
           abstract class events_module {
 
   static function on_install($event) {

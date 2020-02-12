@@ -7,7 +7,7 @@
 namespace effcore\modules\menu {
           use \effcore\core;
           use \effcore\page;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\tree;
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
@@ -20,7 +20,7 @@ namespace effcore\modules\menu {
       core::array_sort_by_text_property($trees);
       if (empty($trees[$category_id])) url::go(page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
       foreach ($trees as $c_tree) {
-        tabs_item::insert($c_tree->title,
+        tab_item::insert($c_tree->title,
           'data_menu_tree_item_'.$c_tree->id,
           'data_menu_tree_item',
           'data', 'menu/tree_item///'.$c_tree->id

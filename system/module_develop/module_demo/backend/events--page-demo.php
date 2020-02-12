@@ -15,7 +15,7 @@ namespace effcore\modules\demo {
           use \effcore\table_body_row_cell;
           use \effcore\table_body_row;
           use \effcore\table;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\translation;
@@ -26,7 +26,7 @@ namespace effcore\modules\demo {
   static function on_build_before($event, $page) {
     $type = $page->args_get('type');
     if ($type == null) {
-      $items = tabs_item::select_all(null, 'demo_embedded');
+      $items = tab_item::select_all(null, 'demo_embedded');
       url::go($page->args_get('base').'/'.reset($items)->action_name);
     }
   }

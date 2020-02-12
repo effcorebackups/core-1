@@ -8,7 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\page;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
@@ -56,11 +56,11 @@ namespace effcore\modules\storage {
     }
   # make tabs
     foreach ($groups as $c_group_id => $c_group_title) {
-      tabs_item::insert($c_group_title,
+      tab_item::insert($c_group_title,
         'data_'.$c_group_id, null,
         'data', $c_group_id);
       foreach ($entities_by_groups[$c_group_id] as $c_entity_name => $c_entity_title) {
-        tabs_item::insert($c_entity_title,
+        tab_item::insert($c_entity_title,
           'data_'.$c_group_id.'_'.$c_entity_name,
           'data_'.$c_group_id,
           'data', $c_group_id.'/'.$c_entity_name

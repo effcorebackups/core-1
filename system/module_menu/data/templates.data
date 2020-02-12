@@ -15,19 +15,19 @@ templates
     name: tabs
     type: text
     data: <x-tabs %%_attributes>%%_top_items%%_sub_items</x-tabs>
-- tabs_top_items
-    name: tabs_top_items
+- tab_top_items
+    name: tab_top_items
     type: text
     data: <x-top-items><ul>%%_children</ul></x-top-items>
-- tabs_sub_items
-    name: tabs_sub_items
+- tab_sub_items
+    name: tab_sub_items
     type: text
     data: <x-sub-items><ul>%%_children</ul></x-sub-items>
-- tabs_item
-    name: tabs_item
+- tab_item
+    name: tab_item
     type: text
     data: <li %%_attributes>%%_self%%_children</li>
-- tabs_item_children
-    name: tabs_item_children
+- tab_item_children
+    name: tab_item_children
     type: text
     data: <ul>%%_children</ul>

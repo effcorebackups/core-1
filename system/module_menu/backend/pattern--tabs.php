@@ -9,8 +9,8 @@ namespace effcore {
 
   public $id;
   public $template = 'tabs';
-  public $template_top_items = 'tabs_top_items';
-  public $template_sub_items = 'tabs_sub_items';
+  public $template_top_items = 'tab_top_items';
+  public $template_sub_items = 'tab_sub_items';
   public $attributes = ['role' => 'tablist'];
 
   function __construct($id = null, $attributes = [], $weight = 0) {
@@ -22,7 +22,7 @@ namespace effcore {
     if (!$this->is_builded) {
       event::start('on_tab_build_before', $this->id, [&$this]);
       $this->attribute_insert('data-id', $this->id);
-      foreach (tabs_item::select_all() as $c_item) {
+      foreach (tab_item::select_all() as $c_item) {
         if ($c_item->id_tab    == $this->id &&
             $c_item->id_parent == null) {
           $this->child_insert($c_item, $c_item->id);

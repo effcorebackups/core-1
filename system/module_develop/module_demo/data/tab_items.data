@@ -1,70 +1,70 @@
-tabs_items
-- demo_embedded|tabs_item
+tab_items
+- demo_embedded|tab_item
     id: demo_embedded
     id_parent: null
     id_tab: demo
     title: Embedded elements
-- demo_form_elements|tabs_item
+- demo_form_elements|tab_item
     id: demo_form_elements
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/form_elements
     title: Form elements
-- demo_markup_static|tabs_item
+- demo_markup_static|tab_item
     id: demo_markup_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_static
     title: Markup static
-- demo_markup_dynamic|tabs_item
+- demo_markup_dynamic|tab_item
     id: demo_markup_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_dynamic
     title: Markup dynamic
-- demo_decorators_static|tabs_item
+- demo_decorators_static|tab_item
     id: demo_decorators_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_static
     title: Decorators static
-- demo_decorators_dynamic|tabs_item
+- demo_decorators_dynamic|tab_item
     id: demo_decorators_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_dynamic
     title: Decorators dynamic
-- demo_trees|tabs_item
+- demo_trees|tab_item
     id: demo_trees
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/trees
     title: Trees
-- demo_selections|tabs_item
+- demo_selections|tab_item
     id: demo_selections
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/selections
     title: Selections
-- demo_messages|tabs_item
+- demo_messages|tab_item
     id: demo_messages
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/messages
     title: Messages
-- demo_canvas|tabs_item
+- demo_canvas|tab_item
     id: demo_canvas
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/canvas
     title: Canvas
-- demo_diagrams|tabs_item
+- demo_diagrams|tab_item
     id: demo_diagrams
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/diagrams
     title: Diagrams
-- demo_colors|tabs_item
+- demo_colors|tab_item
     id: demo_colors
     id_parent: demo_embedded
     id_tab: demo

@@ -7,7 +7,7 @@
 namespace effcore\modules\test {
           use \effcore\core;
           use \effcore\page;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\test;
           use \effcore\url;
           abstract class events_page_test {
@@ -18,7 +18,7 @@ namespace effcore\modules\test {
     core::array_sort_by_text_property($tests);
     if (empty($tests[$id])) url::go(page::get_current()->args_get('base').'/'.reset($tests)->id);
     foreach ($tests as $c_test) {
-      tabs_item::insert($c_test->title,
+      tab_item::insert($c_test->title,
         'test_execution_'.$c_test->id,
         'test_execution', 'tests', $c_test->id
       );

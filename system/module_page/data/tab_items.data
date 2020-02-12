@@ -1,30 +1,30 @@
-tabs_items
-- decoration_colors|tabs_item
+tab_items
+- decoration_colors|tab_item
     id: decoration_colors
     id_parent: null
     id_tab: decoration
     action_name: colors
     action_name_default: colors/current
     title: Colors
-- decoration_colors_current|tabs_item
+- decoration_colors_current|tab_item
     id: decoration_colors_current
     id_parent: decoration_colors
     id_tab: decoration
     action_name: colors/current
     title: Current
-- decoration_colors_presets|tabs_item
+- decoration_colors_presets|tab_item
     id: decoration_colors_presets
     id_parent: decoration_colors
     id_tab: decoration
     action_name: colors/presets
     title: Presets
-- decoration_layouts|tabs_item
+- decoration_layouts|tab_item
     id: decoration_layouts
     id_parent: null
     id_tab: decoration
     action_name: layouts
     title: Layouts
-- decoration_settings|tabs_item
+- decoration_settings|tab_item
     id: decoration_settings
     id_parent: null
     id_tab: decoration

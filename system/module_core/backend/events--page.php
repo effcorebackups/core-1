@@ -9,7 +9,7 @@ namespace effcore\modules\core {
           use \effcore\part;
           use \effcore\page;
           use \effcore\storage;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\text;
           use \effcore\tree_item;
           abstract class events_page {
@@ -73,7 +73,7 @@ namespace effcore\modules\core {
     $branches = [];
     if ($active_tab) {
       $active_tab->build();
-      foreach (tabs_item::select_all($active_tab->id) as $c_item) {
+      foreach (tab_item::select_all($active_tab->id) as $c_item) {
         if ($c_item->is_active      () ||
             $c_item->is_active_trail()) {
           $branches[][$c_item->id] = $c_item;
@@ -87,7 +87,7 @@ namespace effcore\modules\core {
         if ($counter++ >= 15) break;
         $c_parent_id = end($c_branch)->id_parent;
         if ($c_parent_id) {
-            $c_parent = tabs_item::select($c_parent_id);
+            $c_parent = tab_item::select($c_parent_id);
             $branches[$c_id][$c_parent->id] = $c_parent;}
         else break;
       }

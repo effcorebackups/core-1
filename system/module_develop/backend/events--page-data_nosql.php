@@ -16,7 +16,7 @@ namespace effcore\modules\develop {
           use \effcore\node;
           use \effcore\page;
           use \effcore\selection;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\template;
           use \effcore\text_simple;
           use \effcore\text;
@@ -36,7 +36,7 @@ namespace effcore\modules\develop {
       core::array_sort_by_text_property($trees);
       if (empty($trees[$id])) url::go(page::get_current()->args_get('base').'/trees/'.reset($trees)->id);
       foreach ($trees as $c_tree) {
-        tabs_item::insert($c_tree->title,
+        tab_item::insert($c_tree->title,
            'nosql_trees_'.$c_tree->id,
            'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id
         );
@@ -49,7 +49,7 @@ namespace effcore\modules\develop {
       if (count($languages) == 0 && $id != null           ) url::go(page::get_current()->args_get('base').'/translations/'                        );
       if (count($languages) != 0 && empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/'.reset($languages)->code);
       foreach ($languages as $c_language) {
-        tabs_item::insert(      $c_language->title_en,
+        tab_item::insert(      $c_language->title_en,
           'nosql_translations_'.$c_language->code,
           'nosql_translations', 'data_nosql', 'translations/'.$c_language->code
         );

@@ -5,10 +5,10 @@
   ##################################################################
 
 namespace effcore {
-          class tabs_item extends node {
+          class tab_item extends node {
 
-  public $template = 'tabs_item';
-  public $template_children = 'tabs_item_children';
+  public $template = 'tab_item';
+  public $template_children = 'tab_item_children';
   public $element_attributes = ['role' => 'tab'];
   public $id;
   public $id_parent;
@@ -88,9 +88,9 @@ namespace effcore {
 
   static function init() {
     if (static::$cache == null) {
-      foreach (storage::get('files')->select('tabs_items') as $c_module_id => $c_tabs_items) {
-        foreach ($c_tabs_items as $c_row_id => $c_item) {
-          if (isset(static::$cache[$c_item->id])) console::log_insert_about_duplicate('tabs_item', $c_item->id, $c_module_id);
+      foreach (storage::get('files')->select('tab_items') as $c_module_id => $c_tab_items) {
+        foreach ($c_tab_items as $c_row_id => $c_item) {
+          if (isset(static::$cache[$c_item->id])) console::log_insert_about_duplicate('tab_item', $c_item->id, $c_module_id);
           static::$cache[$c_item->id] = $c_item;
           static::$cache[$c_item->id]->module_id = $c_module_id;
         }

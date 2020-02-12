@@ -9,7 +9,7 @@ namespace effcore\modules\page {
           use \effcore\core;
           use \effcore\layout;
           use \effcore\page;
-          use \effcore\tabs_item;
+          use \effcore\tab_item;
           use \effcore\url;
           abstract class events_page_decoration {
 
@@ -23,7 +23,7 @@ namespace effcore\modules\page {
       core::array_sort_by_text_property($presets);
       if (empty($presets[$id])) url::go(page::get_current()->args_get('base').'/colors/presets/'.reset($presets)->id);
       foreach ($presets as $c_preset) {
-        tabs_item::insert(                                             $c_preset->title,
+        tab_item::insert(                                             $c_preset->title,
           'decoration_colors_presets_'.                                $c_preset->id,
           'decoration_colors_presets', 'decoration', 'colors/presets/'.$c_preset->id
         );
@@ -35,7 +35,7 @@ namespace effcore\modules\page {
       core::array_sort_by_text_property($layouts);
       if (empty($layouts[$id])) url::go(page::get_current()->args_get('base').'/layouts/'.reset($layouts)->id);
       foreach ($layouts as $c_layout) {
-        tabs_item::insert(                               $c_layout->title,
+        tab_item::insert(                               $c_layout->title,
           'decoration_layouts_'.                         $c_layout->id,
           'decoration_layouts', 'decoration', 'layouts/'.$c_layout->id
         );

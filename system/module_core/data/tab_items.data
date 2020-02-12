@@ -1,18 +1,18 @@
-tabs_items
-- modules_install|tabs_item
+tab_items
+- modules_install|tab_item
     id: modules_install
     id_parent: null
     id_tab: modules
     action_name: install
     title: Install
     weight: +50
-- modules_uninstall|tabs_item
+- modules_uninstall|tab_item
     id: modules_uninstall
     id_parent: null
     id_tab: modules
     action_name: uninstall
     title: Uninstall
-- modules_update|tabs_item
+- modules_update|tab_item
     id: modules_update
     id_parent: null
     id_tab: modules
