@@ -324,7 +324,7 @@ namespace effcore\modules\demo {
 
   static function block_demo_colors($page) {
     $colors = [];
-    for ($i = 0; $i < 9; $i++)
+    for ($i = 0; $i < 21; $i++)
       $colors[] = new markup('x-color');
     return new block('Gradient of main color', ['data-id' => 'demo_markup_colors'], $colors);
   }

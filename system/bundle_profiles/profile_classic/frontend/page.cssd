@@ -22,7 +22,7 @@
     min-width: %%_page_min_width{-}px; %%_css_page_min_width_context;
     max-width: %%_page_max_width{-}px; %%_css_page_max_width_context}
   body[data-layout-id='original_classic'] [data-page-section-id='head'] {padding-top:  0  ; padding-bottom: 10px; color: black; background: white}
-  body[data-layout-id='original_classic'] [data-page-section-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: #3763a4}
+  body[data-layout-id='original_classic'] [data-page-section-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color_page}
   body[data-layout-id='original_classic'] [data-page-section-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: white}
 
   /* console */
