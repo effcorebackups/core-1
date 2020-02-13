@@ -88,3 +88,6 @@ events
   - user_anonymous|event
       for: user_anonymous
       handler: \effcore\modules\user\events_page::on_tree_build_before
+  on_tree_build_after
+  - all|event
+      handler: \effcore\modules\user\events_page::on_tree_build_after

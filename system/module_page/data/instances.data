@@ -7,4 +7,5 @@ instances
     values
     - id: main
     - title: Main menu
+    - title_is_visible: 0
     - is_embed: 1

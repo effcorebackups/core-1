@@ -10,11 +10,6 @@ frontend
         attributes
         - rel: stylesheet
         - media: all
-    scripts
-    - tree_script
-        path: frontend/tree.js
-        attributes
-        - defer: true
 - tabs_all|frontend
     display
       check: block
