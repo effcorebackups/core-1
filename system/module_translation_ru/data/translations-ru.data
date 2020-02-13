@@ -29,6 +29,7 @@ translations
     - apply: применить
     - Avatar: Аватар
     - Belarusian: Белорусский
+    - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle description: описание пакета
@@ -287,13 +288,12 @@ translations
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Maximum width: Максимальная ширина
     - Memory for PHP (bytes): Память для PHP (байты)
-    - Menu / breadcrumbs: Меню / хлебные крошки
     - Menu active: Меню активное
     - Menu: Меню
-    - Menus: Меню
     - Menu\: link active: Меню: ссылка активная
     - Menu\: link: Меню: ссылка
     - Menu\: text: Меню: текст
+    - Menus: Меню
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Messages: Сообщения
     - MiB: МиБ

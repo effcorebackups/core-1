@@ -29,6 +29,7 @@ translations
     - apply: прымяніць
     - Avatar: Аватар
     - Belarusian: Беларускі
+    - Breadcrumbs: Хлебныя крошкі
     - Build number: Нумар зборкі
     - bundle build number: нумар зборкі пакету
     - bundle description: апісанне пакету
@@ -287,13 +288,12 @@ translations
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Maximum width: Максімальная шырыня
     - Memory for PHP (bytes): Памяць для PHP (байты)
-    - Menu / breadcrumbs: Меню / хлебныя крошкі
     - Menu active: Меню актыўнае
     - Menu: Меню
-    - Menus: Меню
     - Menu\: link active: Меню: спасылка актыўная
     - Menu\: link: Меню: спасылка
     - Menu\: text: Меню: тэкст
+    - Menus: Меню
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
     - Messages: Паведамленні
     - MiB: МіБ
