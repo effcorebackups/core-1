@@ -1,18 +1,10 @@
 
-  /* sizes and orientation */
+  /* menu 'User': sizes and orientation */
 
   [data-area-id='system'] x-tree[data-id^='user'] {float: right}
 
-  /* icons */
+  /* menu 'User': icons */
 
   [data-area-id='system'] x-tree[data-id^='user'] li[data-id='anonymous' ]                         > a {padding-left: 77px; background-image: url('images/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}
   [data-area-id='system'] x-tree[data-id^='user'] li[data-id='registered']                         > a {padding-left: 77px; background-image: url('images/avatar-registered.svgd'); background-repeat: no-repeat; background-position: 8px 50%}
   [data-area-id='system'] x-tree[data-id^='user'] li[data-id='registered'][data-has-avatar='true'] > a {padding-left: 77px; background-image: url('%%_avatar_url'                ); background-repeat: no-repeat; background-position: 8px 50%; background-size: 48px 48px}
-
-  /* adaptivity */
-
-  @media screen and (max-width: 600px) {
-    [data-area-id='system'] x-tree[data-id^='user']    {float: none}
-    [data-area-id='system'] x-tree[data-id^='user'] ul {float: none}
-    [data-area-id='system'] x-tree[data-id^='user'] li {float: none; display: block}
-  }

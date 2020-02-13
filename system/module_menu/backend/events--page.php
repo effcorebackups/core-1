@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\menu {
-          use \effcore\part_preset;
+          use \effcore\frontend;
           use \effcore\page;
-          use \effcore\translation;
+          use \effcore\part_preset;
           use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
@@ -45,6 +45,15 @@ namespace effcore\modules\menu {
   static function block_tree_sql($page, $args) {
     if (!empty($args['id'])) {
       return tree::select($args['id']);
+    }
+  }
+
+  static function on_tree_build_after($event, $tree) {
+    if (!frontend::select('tree_menu'         )                         ) frontend::insert('tree_menu',   null, 'styles', ['path' => 'frontend/tree.cssd',        'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'tree_style', 'menu');
+    if (!frontend::select('tree_system'       ) && $tree->id == 'system') frontend::insert('tree_system', null, 'styles', ['path' => 'frontend/tree-system.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'tree_style', 'menu');
+    if (!frontend::select('tree_rearrangeable') && $tree->visualization_mode == 'decorated-rearrangeable') {
+      frontend::insert('tree_rearrangeable', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js',   'attributes' => ['defer' => true]],                         'tree_script_rearrangeable', 'menu');
+      frontend::insert('tree_rearrangeable', null, 'styles',  ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'tree_style_rearrangeable',  'menu');
     }
   }
 

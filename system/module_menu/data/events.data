@@ -68,3 +68,7 @@ events
       for: data
       weight: -50
       handler: \effcore\modules\menu\events_page_instance_select_multiple::on_tab_build_before
+# ─────────────────────────────────────────────────────────────────────
+  on_tree_build_after
+  - all|event
+      handler: \effcore\modules\menu\events_page::on_tree_build_after

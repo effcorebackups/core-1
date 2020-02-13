@@ -1,58 +1,6 @@
 
-  /* orientation and sizes */
-
-  [data-area-id='system'] x-tree          {float: left; z-index: 300}
-  [data-area-id='system'] x-tree li       {float: left}
-  [data-area-id='system'] x-tree li li    {float: none}
-  [data-area-id='system'] x-tree ul       {float: left}
-  [data-area-id='system'] x-tree ul ul    {float: none}
-
-  [data-area-id='system'] x-tree ul ul    {position: absolute}
-  [data-area-id='system'] x-tree ul ul ul {position: relative}
-
-  [data-area-id='system'] x-tree ul       {padding: 0; margin: 0; list-style: none}
-  [data-area-id='system'] x-tree ul ul    {padding: 20px}
-  [data-area-id='system'] x-tree ul ul ul {padding: 0 0 0 21px}
-  [data-area-id='system'] x-tree li       {padding: 0; margin: 0; cursor: default}
-
-  [data-area-id='system'] x-tree li     a {padding: 21px; display: block}
-  [data-area-id='system'] x-tree li li  a {padding: 0}
-
-  /* dynamics */
-
-  [data-area-id='system'] x-tree > ul > li       > ul {display: none}
-  [data-area-id='system'] x-tree > ul > li:hover > ul {display: block}
-
-  /* colors */
-
-  [data-area-id='system'] x-tree ul       {background-color: %%_color_menu}
-  [data-area-id='system'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
-  [data-area-id='system'] x-tree ul ul ul {background-color: transparent}
-
-  [data-area-id='system'] x-tree              a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  [data-area-id='system'] x-tree              a:not([href])                 {color: %%_color_menu_text !important}
-  [data-area-id='system'] x-tree              a                             {color: %%_color_menu_link}
-  [data-area-id='system'] x-tree        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  [data-area-id='system'] x-tree        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  [data-area-id='system'] x-tree > ul > li:hover                            {                                  background-color: %%_color_menu_active}
-
-  [data-area-id='system'] x-tree li    a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
-  [data-area-id='system'] x-tree li li a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
-
-  /* icons */
+  /* menu 'System': icons */
 
   x-tree[data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
   x-tree[data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
   x-tree[data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('images/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
-
-  /* adaptivity */
-
-  @media screen and (max-width: 600px) {
-    [data-area-id='system'] x-tree       {float: none}
-    [data-area-id='system'] x-tree ul    {float: none}
-    [data-area-id='system'] x-tree li    {float: none; display: block}
-    [data-area-id='system'] x-tree ul ul {position: relative}
-  }
