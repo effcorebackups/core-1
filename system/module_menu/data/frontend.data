@@ -1,15 +1,4 @@
 frontend
-- tree_all|frontend
-    display
-      check: block
-      where: dpath
-      match: %^trees/.*$%
-    styles
-    - tree_style
-        path: frontend/tree.cssd
-        attributes
-        - rel: stylesheet
-        - media: all
 - tabs_all|frontend
     display
       check: block
