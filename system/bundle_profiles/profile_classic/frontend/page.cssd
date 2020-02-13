@@ -17,7 +17,7 @@
   /* page areas */
 
   body[data-layout-id='original_classic'] [data-page-section-id] {display: block; padding: 0 20px; box-sizing: border-box}
-  body[data-layout-id='original_classic'] [data-page-section-id='head'] {padding-top:  0  ; padding-bottom: 10px; color: black; background: white}
+  body[data-layout-id='original_classic'] [data-page-section-id='head'] {padding-top:  0  ; padding-bottom:  0  ; color: black; background: white}
   body[data-layout-id='original_classic'] [data-page-section-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color_page}
   body[data-layout-id='original_classic'] [data-page-section-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: white}
 
@@ -36,7 +36,7 @@
 
   /* logotype */
 
-  a[data-id='logotype']     {display: block}
+  a[data-id='logotype']     {display: block; margin: 20px 0}
   a[data-id='logotype'] img {display: block}
   a[data-id='logotype'] img[src=''] {
     padding: 10px;
@@ -45,9 +45,13 @@
 
   /* tree */
 
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] {background: %%_color_page}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] {margin: 20px 0; background: %%_color_page; border-radius: 30px}
   body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul {margin: 0; padding: 0; list-style: none}
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {margin: 0; padding: 0}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {margin: 0; padding: 0; display: inline-block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li a {
+    display: inline-block;
+    padding: 15px 20px;
+    border-right: 1px dotted white}
 
   /* console */
 
