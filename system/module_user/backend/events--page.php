@@ -15,7 +15,8 @@ namespace effcore\modules\user {
 
   static function on_tree_build_after($event, $tree) {
     if ($tree->visualization_mode == 'decorated-rearrangeable') {
-      frontend::insert('tree_rearrangeable', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js', 'attributes' => ['defer' => true]], 'tree_script_rearrangeable', 'menu');
+      frontend::insert('tree_rearrangeable', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js',   'attributes' => ['defer' => true]],                         'tree_script_rearrangeable', 'menu');
+      frontend::insert('tree_rearrangeable', null, 'styles',  ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'tree_style_rearrangeable',  'menu');
     }
   }
 
