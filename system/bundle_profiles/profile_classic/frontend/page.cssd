@@ -1,5 +1,7 @@
 
-  @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap&subset=cyrillic');
+  @import url(
+    'https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap&subset=cyrillic'
+  );
 
   body[data-layout-id='original_classic'] {
     margin: 0;
@@ -15,15 +17,37 @@
   /* page areas */
 
   body[data-layout-id='original_classic'] [data-page-section-id] {display: block; padding: 0 20px; box-sizing: border-box}
-  body[data-layout-id='original_classic'] [data-page-section-id] [data-page-section-wrapper] {
+  body[data-layout-id='original_classic'] [data-page-section-id='head'] {padding-top:  0  ; padding-bottom: 10px; color: black; background: white}
+  body[data-layout-id='original_classic'] [data-page-section-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color_page}
+  body[data-layout-id='original_classic'] [data-page-section-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: white}
+
+  body[data-layout-id='original_classic'] [data-page-section-wrapper]::after {content: ''; clear: both; display: block}
+  body[data-layout-id='original_classic'] [data-page-section-wrapper] {
     display: block;
     margin: 0 auto;
     box-sizing: border-box;
     min-width: %%_page_min_width{-}px; %%_css_page_min_width_context;
     max-width: %%_page_max_width{-}px; %%_css_page_max_width_context}
-  body[data-layout-id='original_classic'] [data-page-section-id='head'] {padding-top:  0  ; padding-bottom: 10px; color: black; background: white}
-  body[data-layout-id='original_classic'] [data-page-section-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color_page}
-  body[data-layout-id='original_classic'] [data-page-section-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: white}
+
+  body[data-layout-id='original_classic'] [data-area-id='header'] {float: left}
+  body[data-layout-id='original_classic'] [data-area-id='header']::after {content: none}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] {float: right}
+  body[data-layout-id='original_classic'] [data-area-id='navigation']::after {content: none}
+
+  /* logotype */
+
+  a[data-id='logotype']     {display: block}
+  a[data-id='logotype'] img {display: block}
+  a[data-id='logotype'] img[src=''] {
+    padding: 10px;
+    border: 1px dotted %%_color_main;
+    font-size: 1.5em}
+
+  /* tree */
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] {background: %%_color_page}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul {margin: 0; padding: 0; list-style: none}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {margin: 0; padding: 0}
 
   /* console */
 
