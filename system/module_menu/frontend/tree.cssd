@@ -1,70 +1,70 @@
 
-  x-tree {display: block; position: relative}
-  x-tree a[aria-selected      ='true'],
-  x-tree a[data-selected-trail='true'] {color: %%_color_link_active}
+  [role='tree'] {display: block; position: relative}
+  [role='tree'] a[aria-selected      ='true'],
+  [role='tree'] a[data-selected-trail='true'] {color: %%_color_link_active}
 
   /* menu in system area: orientation and sizes */
 
-  [data-area-id='system'] x-tree          {float: left; z-index: 300}
-  [data-area-id='system'] x-tree li       {float: left}
-  [data-area-id='system'] x-tree li li    {float: none}
-  [data-area-id='system'] x-tree ul       {float: left}
-  [data-area-id='system'] x-tree ul ul    {float: none}
+  [data-area-id='system'] [role='tree']          {float: left; z-index: 300}
+  [data-area-id='system'] [role='tree'] li       {float: left}
+  [data-area-id='system'] [role='tree'] li li    {float: none}
+  [data-area-id='system'] [role='tree'] ul       {float: left}
+  [data-area-id='system'] [role='tree'] ul ul    {float: none}
 
-  [data-area-id='system'] x-tree ul ul    {position: absolute}
-  [data-area-id='system'] x-tree ul ul ul {position: relative}
+  [data-area-id='system'] [role='tree'] ul ul    {position: absolute}
+  [data-area-id='system'] [role='tree'] ul ul ul {position: relative}
 
-  [data-area-id='system'] x-tree ul       {padding: 0; margin: 0; list-style: none}
-  [data-area-id='system'] x-tree ul ul    {padding: 20px}
-  [data-area-id='system'] x-tree ul ul ul {padding: 0 0 0 21px}
-  [data-area-id='system'] x-tree li       {padding: 0; margin: 0; cursor: default}
+  [data-area-id='system'] [role='tree'] ul       {padding: 0; margin: 0; list-style: none}
+  [data-area-id='system'] [role='tree'] ul ul    {padding: 20px}
+  [data-area-id='system'] [role='tree'] ul ul ul {padding: 0 0 0 21px}
+  [data-area-id='system'] [role='tree'] li       {padding: 0; margin: 0; cursor: default}
 
-  [data-area-id='system'] x-tree li     a {padding: 21px; display: block}
-  [data-area-id='system'] x-tree li li  a {padding: 0}
+  [data-area-id='system'] [role='tree'] li     a {padding: 21px; display: block}
+  [data-area-id='system'] [role='tree'] li li  a {padding: 0}
 
   /* menu in system area: dynamics */
 
-  [data-area-id='system'] x-tree > ul > li       > ul {display: none}
-  [data-area-id='system'] x-tree > ul > li:hover > ul {display: block}
+  [data-area-id='system'] [role='tree'] > ul > li       > ul {display: none}
+  [data-area-id='system'] [role='tree'] > ul > li:hover > ul {display: block}
 
   /* menu in system area: colors */
 
-  [data-area-id='system'] x-tree ul       {background-color: %%_color_menu}
-  [data-area-id='system'] x-tree ul ul    {background-color: %%_color_menu_active{10,10,10}}
-  [data-area-id='system'] x-tree ul ul ul {background-color: transparent}
+  [data-area-id='system'] [role='tree'] ul       {background-color: %%_color_menu}
+  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
+  [data-area-id='system'] [role='tree'] ul ul ul {background-color: transparent}
 
-  [data-area-id='system'] x-tree              a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  [data-area-id='system'] x-tree              a:not([href])                 {color: %%_color_menu_text !important}
-  [data-area-id='system'] x-tree              a                             {color: %%_color_menu_link}
-  [data-area-id='system'] x-tree        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  [data-area-id='system'] x-tree        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  [data-area-id='system'] x-tree > ul > li:hover                            {                                  background-color: %%_color_menu_active}
+  [data-area-id='system'] [role='tree']              a[aria-selected      ='true'],
+  [data-area-id='system'] [role='tree']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  [data-area-id='system'] [role='tree']              a:not([href])                 {color: %%_color_menu_text !important}
+  [data-area-id='system'] [role='tree']              a                             {color: %%_color_menu_link}
+  [data-area-id='system'] [role='tree']        li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  [data-area-id='system'] [role='tree']        li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  [data-area-id='system'] [role='tree'] > ul > li:hover                            {                                  background-color: %%_color_menu_active}
 
-  [data-area-id='system'] x-tree li    a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
-  [data-area-id='system'] x-tree li li a[aria-selected      ='true'],
-  [data-area-id='system'] x-tree li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  [data-area-id='system'] [role='tree'] li    a[aria-selected      ='true'],
+  [data-area-id='system'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
+  [data-area-id='system'] [role='tree'] li li a[aria-selected      ='true'],
+  [data-area-id='system'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
   /* menu in system area: adaptivity */
 
   @media screen and (max-width: 600px) {
-    [data-area-id='system'] x-tree       {float: none !important}
-    [data-area-id='system'] x-tree ul    {float: none}
-    [data-area-id='system'] x-tree li    {float: none; display: block}
-    [data-area-id='system'] x-tree ul ul {position: relative}
+    [data-area-id='system'] [role='tree']       {float: none !important}
+    [data-area-id='system'] [role='tree'] ul    {float: none}
+    [data-area-id='system'] [role='tree'] li    {float: none; display: block}
+    [data-area-id='system'] [role='tree'] ul ul {position: relative}
   }
 
   /* menu visualization for management */
 
-  x-tree[data-visualization-mode] ul {margin: 0; padding: 0; list-style: none}
-  x-tree[data-visualization-mode] li {margin: 0; padding: 6px 0 6px 40px}
+  [role='tree'][data-visualization-mode] ul {margin: 0; padding: 0; list-style: none}
+  [role='tree'][data-visualization-mode] li {margin: 0; padding: 6px 0 6px 40px}
 
-  x-tree[data-visualization-mode] x-item {display: block; padding: 1px 0 1px 5px; min-height: 44px; border-left: 5px solid %%_color_main}
-  x-tree[data-visualization-mode] x-item x-title  {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color_text}
-  x-tree[data-visualization-mode] x-item x-extra  {display: inline-block}
-  x-tree[data-visualization-mode] x-item x-url    {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
-  x-tree[data-visualization-mode] x-item x-url em {padding: 0 2px; font-style: normal}
+  [role='tree'][data-visualization-mode] x-item {display: block; padding: 1px 0 1px 5px; min-height: 44px; border-left: 5px solid %%_color_main}
+  [role='tree'][data-visualization-mode] x-item x-title  {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color_text}
+  [role='tree'][data-visualization-mode] x-item x-extra  {display: inline-block}
+  [role='tree'][data-visualization-mode] x-item x-url    {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
+  [role='tree'][data-visualization-mode] x-item x-url em {padding: 0 2px; font-style: normal}
 
-  x-tree[data-visualization-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') repeat-y         }
-  x-tree[data-visualization-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') no-repeat 0 -61px}
+  [role='tree'][data-visualization-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') repeat-y         }
+  [role='tree'][data-visualization-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') no-repeat 0 -61px}
