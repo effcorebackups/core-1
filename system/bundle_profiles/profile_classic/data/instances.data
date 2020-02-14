@@ -23,7 +23,6 @@ instances
     - is_https: 0
     - is_embed: 0
     - id_layout: original_classic
-    - access: null
     - module_id: profile_classic
     - parts
       - system
@@ -62,7 +61,6 @@ instances
     - is_https: 0
     - is_embed: 0
     - id_layout: original_classic
-    - access: null
     - module_id: profile_classic
     - parts
       - system
@@ -101,7 +99,6 @@ instances
     - is_https: 0
     - is_embed: 1
     - id_layout: original_classic
-    - access: null
     - module_id: profile_classic
     - parts
       - system

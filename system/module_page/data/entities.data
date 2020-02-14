@@ -243,7 +243,7 @@ entities
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_file
         managing_field_properties
-        - max_file_size: 10K
+        - max_file_size: 50K
         - upload_dir: logotypes/
         - fixed_name: logotype-%%_instance_id_context
         - allowed_types

@@ -4,9 +4,9 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
-   width="200"
-   height="100"
-   viewBox="0 0 200 100"
+   width="220"
+   height="80"
+   viewBox="0 0 220 80"
    style="shape-rendering: auto">
 
   <metadata>
@@ -21,8 +21,8 @@
   </metadata>
 
   <g id="logo">
-    <rect x="0.5" y="0.5" width="199" height="99" style="fill-opacity: .1; stroke: black"/>
-    <text x="42.2" y="64" style="font-family: sans-serif; font-size: 40px; fill: black; fill-opacity: .3; stroke: none">LOGO</text>
+    <rect x="0.5" y="0.5" width="219" height="79" style="fill-opacity: .1; stroke: black"/>
+    <text x="52" y="55" style="font-family: sans-serif; font-size: 40px; fill: black; fill-opacity: .3; stroke: none">LOGO</text>
   </g>
 
 </svg>
