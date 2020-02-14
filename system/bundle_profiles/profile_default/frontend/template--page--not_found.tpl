@@ -31,7 +31,7 @@
         </linearGradient>
       </defs>
       <g id="icon_magnifier">
-        <path id="ico_mag-hand" style="fill: url('#hand_gradient')" d="m 74.330078,64.428815 c -2.663817,3.875268 -6.025122,7.236574 -9.90039,9.90039 l 14.623046,14.621094 c 2.733517,2.732934 7.164921,2.732934 9.898438,0 2.732934,-2.733517 2.732934,-7.164921 0,-9.898438 L 74.330078,64.428815 Z"/>
+        <line id="ico_mag-hand" x1="65" y1="65" x2="84" y2="84" style="stroke: url('#hand_gradient'); stroke-width: 14px; stroke-linecap: round"/>
         <ellipse id="ico_mag-lens" cx="43" cy="43" rx="31" ry="31" style="fill: #c7d4e2; fill-opacity: .2; stroke: #c7d4e2; stroke-width: 14px"/>
       </g>
     </svg>

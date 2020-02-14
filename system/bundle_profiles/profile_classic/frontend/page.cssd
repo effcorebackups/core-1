@@ -45,7 +45,7 @@
 
   /* tree */
 
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] {margin: 20px 0; background: %%_color_page; border-radius: 30px}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] {margin: 20px 0; background: %%_color_page; border-radius: 30px}
   body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul {margin: 0; padding: 0; list-style: none}
   body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {margin: 0; padding: 0; display: inline-block}
   body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li a {
