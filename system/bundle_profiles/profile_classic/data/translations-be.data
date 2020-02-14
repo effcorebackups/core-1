@@ -2,6 +2,22 @@ translations
 - be|translation
     code: be
     data
+    - Here you can place\: names of contact persons, addresses of branches,
+>>>>> e-mail addresses, phone numbers, links to social networks, location map,
+>>>>> feedback form.: Тут Вы можаце размясціць: імёны кантактных асоб, адрасы філіялаў,
+>>>>> адрасы электроннай пошты, нумары тэлефонаў, спасылкі на сацыяльныя сеткі,
+>>>>> схему праезду, форму зваротнай сувязі.
+    - Here you can describe your story in detail,
+>>>>> tell about your achievements.: Тут Вы можаце падрабязна апісаць
+>>>>> сваю гісторыю, распавесьці пра свае дасягненні.
+    - Here you can place the most important information about your project,
+>>>>> including special offers.: Тут Вы можаце размясціць самую важную
+>>>>> інфармацыю аб сваім праекце, у тым ліку спецыяльныя прапановы.
+    - About Us: Аб нас
+    - Contact Us: Сувязь
     - Module for profile example "Classic".: Модуль для прыкладу профілю "Класіка".
     - Original \| profile "Classic": Арыгінал | профіль "Класіка"
     - Profile "Classic": Профіль "Класіка"
+    - Text About Us: Тэкст Аб нас
+    - Text Contact Us: Тэкст Сувязь
+    - Text Front: Тэкст Галоўнай
