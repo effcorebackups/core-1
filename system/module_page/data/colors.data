@@ -117,38 +117,71 @@ colors
     value_hex: #ffffff
     group: mono
 # ─────────────────────────────────────────────────────────────────────
-# orange group
+# tan group
 # ─────────────────────────────────────────────────────────────────────
-- darksalmon|color
-    id: darksalmon
-    value: darksalmon
-    value_hex: #e9967a
-    group: orange
-- lightsalmon|color
-    id: lightsalmon
-    value: lightsalmon
-    value_hex: #ffa07a
-    group: orange
-- peachpuff|color
-    id: peachpuff
-    value: peachpuff
-    value_hex: #ffdab9
-    group: orange
-- bisque|color
-    id: bisque
-    value: bisque
-    value_hex: #ffe4c4
-    group: orange
-- linen|color
-    id: linen
-    value: linen
-    value_hex: #faf0e6
-    group: orange
-- seashell|color
-    id: seashell
-    value: seashell
-    value_hex: #fff5ee
-    group: orange
+- tan|color
+    id: tan
+    value: tan
+    value_hex: #d2b48c
+    group: tan
+- burlywood|color
+    id: burlywood
+    value: burlywood
+    value_hex: #deb887
+    group: tan
+- wheat|color
+    id: wheat
+    value: wheat
+    value_hex: #f5deb3
+    group: tan
+- navajowhite|color
+    id: navajowhite
+    value: navajowhite
+    value_hex: #ffdead
+    group: tan
+- moccasin|color
+    id: moccasin
+    value: moccasin
+    value_hex: #ffe4b5
+    group: tan
+- blanchedalmond|color
+    id: blanchedalmond
+    value: blanchedalmond
+    value_hex: #ffebcd
+    group: tan
+# ─────────────────────────────────────────────────────────────────────
+# rod group
+# ─────────────────────────────────────────────────────────────────────
+- darkgoldenrod|color
+    id: darkgoldenrod
+    value: darkgoldenrod
+    value_hex: #b8860b
+    group: rod
+- goldenrod|color
+    id: goldenrod
+    value: goldenrod
+    value_hex: #daa520
+    group: rod
+- khaki|color
+    id: khaki
+    value: khaki
+    value_hex: #f0e68c
+    group: rod
+- palegoldenrod|color
+    id: palegoldenrod
+    value: palegoldenrod
+    value_hex: #eee8aa
+    group: rod
+- lightgoldenrodyellow|color
+    id: lightgoldenrodyellow
+    value: lightgoldenrodyellow
+    value_hex: #fafad2
+    group: rod
+- lemonchiffon|color
+    id: lemonchiffon
+    value: lemonchiffon
+    value_hex: #fffacd
+    group: rod
 # ─────────────────────────────────────────────────────────────────────
 # brown group
 # ─────────────────────────────────────────────────────────────────────
@@ -177,59 +210,37 @@ colors
     value: sandybrown
     value_hex: #f4a460
     group: brown
-- tan|color
-    id: tan
-    value: tan
-    value_hex: #d2b48c
-    group: brown
-- burlywood|color
-    id: burlywood
-    value: burlywood
-    value_hex: #deb887
-    group: brown
-- wheat|color
-    id: wheat
-    value: wheat
-    value_hex: #f5deb3
-    group: brown
-- navajowhite|color
-    id: navajowhite
-    value: navajowhite
-    value_hex: #ffdead
-    group: brown
-- moccasin|color
-    id: moccasin
-    value: moccasin
-    value_hex: #ffe4b5
-    group: brown
-- blanchedalmond|color
-    id: blanchedalmond
-    value: blanchedalmond
-    value_hex: #ffebcd
-    group: brown
-- antiquewhite|color
-    id: antiquewhite
-    value: antiquewhite
-    value_hex: #faebd7
-    group: brown
-- papayawhip|color
-    id: papayawhip
-    value: papayawhip
-    value_hex: #ffefd5
-    group: brown
-- oldlace|color
-    id: oldlace
-    value: oldlace
-    value_hex: #fdf5e6
-    group: brown
 # ─────────────────────────────────────────────────────────────────────
-# yellow group
+# coral group
 # ─────────────────────────────────────────────────────────────────────
 - coral|color
     id: coral
     value: coral
     value_hex: #ff7f50
-    group: yellow
+    group: coral
+- lightsalmon|color
+    id: lightsalmon
+    value: lightsalmon
+    value_hex: #ffa07a
+    group: coral
+- darksalmon|color
+    id: darksalmon
+    value: darksalmon
+    value_hex: #e9967a
+    group: coral
+- peachpuff|color
+    id: peachpuff
+    value: peachpuff
+    value_hex: #ffdab9
+    group: coral
+- bisque|color
+    id: bisque
+    value: bisque
+    value_hex: #ffe4c4
+    group: coral
+# ─────────────────────────────────────────────────────────────────────
+# yellow group
+# ─────────────────────────────────────────────────────────────────────
 - darkorange|color
     id: darkorange
     value: darkorange
@@ -250,51 +261,6 @@ colors
     value: yellow
     value_hex: #ffff00
     group: yellow
-- darkgoldenrod|color
-    id: darkgoldenrod
-    value: darkgoldenrod
-    value_hex: #b8860b
-    group: yellow
-- goldenrod|color
-    id: goldenrod
-    value: goldenrod
-    value_hex: #daa520
-    group: yellow
-- khaki|color
-    id: khaki
-    value: khaki
-    value_hex: #f0e68c
-    group: yellow
-- palegoldenrod|color
-    id: palegoldenrod
-    value: palegoldenrod
-    value_hex: #eee8aa
-    group: yellow
-- lightgoldenrodyellow|color
-    id: lightgoldenrodyellow
-    value: lightgoldenrodyellow
-    value_hex: #fafad2
-    group: yellow
-- lemonchiffon|color
-    id: lemonchiffon
-    value: lemonchiffon
-    value_hex: #fffacd
-    group: yellow
-- cornsilk|color
-    id: cornsilk
-    value: cornsilk
-    value_hex: #fff8dc
-    group: yellow
-- lightyellow|color
-    id: lightyellow
-    value: lightyellow
-    value_hex: #ffffe0
-    group: yellow
-- ivory|color
-    id: ivory
-    value: ivory
-    value_hex: #fffff0
-    group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # olive group
 # ─────────────────────────────────────────────────────────────────────
@@ -312,6 +278,11 @@ colors
     id: yellowgreen
     value: yellowgreen
     value_hex: #9acd32
+    group: olive
+- greenyellow|color
+    id: greenyellow
+    value: greenyellow
+    value_hex: #adff2f
     group: olive
 - olive|color
     id: olive
@@ -366,11 +337,6 @@ colors
     value: aquamarine
     value_hex: #7fffd4
     group: green
-- darkseagreen|color
-    id: darkseagreen
-    value: darkseagreen
-    value_hex: #8fbc8f
-    group: green
 - lightgreen|color
     id: lightgreen
     value: lightgreen
@@ -386,16 +352,6 @@ colors
     value: lawngreen
     value_hex: #7cfc00
     group: green
-- chartreuse|color
-    id: chartreuse
-    value: chartreuse
-    value_hex: #7fff00
-    group: green
-- greenyellow|color
-    id: greenyellow
-    value: greenyellow
-    value_hex: #adff2f
-    group: green
 - lime|color
     id: lime
     value: lime
@@ -406,43 +362,28 @@ colors
     value: limegreen
     value_hex: #32cd32
     group: green
-- springgreen|color
-    id: springgreen
-    value: springgreen
-    value_hex: #00ff7f
-    group: green
 - mediumspringgreen|color
     id: mediumspringgreen
     value: mediumspringgreen
     value_hex: #00fa9a
     group: green
+- darkseagreen|color
+    id: darkseagreen
+    value: darkseagreen
+    value_hex: #8fbc8f
+    group: green
 # ─────────────────────────────────────────────────────────────────────
 # marine group
 # ─────────────────────────────────────────────────────────────────────
-- teal|color
-    id: teal
-    value: teal
-    value_hex: #008080
-    group: marine
 - darkcyan|color
     id: darkcyan
     value: darkcyan
     value_hex: #008b8b
     group: marine
-- cadetblue|color
-    id: cadetblue
-    value: cadetblue
-    value_hex: #5f9ea0
-    group: marine
 - lightseagreen|color
     id: lightseagreen
     value: lightseagreen
     value_hex: #20b2aa
-    group: marine
-- darkturquoise|color
-    id: darkturquoise
-    value: darkturquoise
-    value_hex: #00ced1
     group: marine
 - mediumturquoise|color
     id: mediumturquoise
@@ -454,25 +395,30 @@ colors
     value: turquoise
     value_hex: #40e0d0
     group: marine
+- darkturquoise|color
+    id: darkturquoise
+    value: darkturquoise
+    value_hex: #00ced1
+    group: marine
 - cyan|color
     id: cyan
     value: cyan
     value_hex: #00ffff
-    group: marine
-- powderblue|color
-    id: powderblue
-    value: powderblue
-    value_hex: #b0e0e6
     group: marine
 - paleturquoise|color
     id: paleturquoise
     value: paleturquoise
     value_hex: #afeeee
     group: marine
-- lightcyan|color
-    id: lightcyan
-    value: lightcyan
-    value_hex: #e0ffff
+- powderblue|color
+    id: powderblue
+    value: powderblue
+    value_hex: #b0e0e6
+    group: marine
+- cadetblue|color
+    id: cadetblue
+    value: cadetblue
+    value_hex: #5f9ea0
     group: marine
 # ─────────────────────────────────────────────────────────────────────
 # blue group
@@ -517,11 +463,6 @@ colors
     value: dodgerblue
     value_hex: #1e90ff
     group: blue
-- steelblue|color
-    id: steelblue
-    value: steelblue
-    value_hex: #4682b4
-    group: blue
 - deepskyblue|color
     id: deepskyblue
     value: deepskyblue
@@ -542,6 +483,11 @@ colors
     value: lightblue
     value_hex: #add8e6
     group: blue
+- steelblue|color
+    id: steelblue
+    value: steelblue
+    value_hex: #4682b4
+    group: blue
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
@@ -560,40 +506,35 @@ colors
     value: mediumslateblue
     value_hex: #7b68ee
     group: violet
-- indigo|color
-    id: indigo
-    value: indigo
-    value_hex: #4b0082
-    group: violet
-- rebeccapurple|color
-    id: rebeccapurple
-    value: rebeccapurple
-    value_hex: #663399
+- mediumpurple|color
+    id: mediumpurple
+    value: mediumpurple
+    value_hex: #9370db
     group: violet
 - blueviolet|color
     id: blueviolet
     value: blueviolet
     value_hex: #8a2be2
     group: violet
-- mediumpurple|color
-    id: mediumpurple
-    value: mediumpurple
-    value_hex: #9370db
+- darkorchid|color
+    id: darkorchid
+    value: darkorchid
+    value_hex: #9932cc
     group: violet
 - darkviolet|color
     id: darkviolet
     value: darkviolet
     value_hex: #9400d3
     group: violet
-- darkorchid|color
-    id: darkorchid
-    value: darkorchid
-    value_hex: #9932cc
+- rebeccapurple|color
+    id: rebeccapurple
+    value: rebeccapurple
+    value_hex: #663399
     group: violet
-- magenta|color
-    id: magenta
-    value: magenta
-    value_hex: #ff00ff
+- indigo|color
+    id: indigo
+    value: indigo
+    value_hex: #4b0082
     group: violet
 - mediumorchid|color
     id: mediumorchid
@@ -620,10 +561,10 @@ colors
     value: thistle
     value_hex: #d8bfd8
     group: violet
-- lavender|color
-    id: lavender
-    value: lavender
-    value_hex: #e6e6fa
+- magenta|color
+    id: magenta
+    value: magenta
+    value_hex: #ff00ff
     group: violet
 # ─────────────────────────────────────────────────────────────────────
 # pink group
@@ -658,21 +599,6 @@ colors
     value: palevioletred
     value_hex: #db7093
     group: pink
-- lightpink|color
-    id: lightpink
-    value: lightpink
-    value_hex: #ffb6c1
-    group: pink
-- pink|color
-    id: pink
-    value: pink
-    value_hex: #ffc0cb
-    group: pink
-- lavenderblush|color
-    id: lavenderblush
-    value: lavenderblush
-    value_hex: #fff0f5
-    group: pink
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
@@ -706,10 +632,15 @@ colors
     value: lightcoral
     value_hex: #f08080
     group: red
-- mistyrose|color
-    id: mistyrose
-    value: mistyrose
-    value_hex: #ffe4e1
+- lightpink|color
+    id: lightpink
+    value: lightpink
+    value_hex: #ffb6c1
+    group: red
+- pink|color
+    id: pink
+    value: pink
+    value_hex: #ffc0cb
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # bordo group
