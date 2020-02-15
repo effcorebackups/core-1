@@ -60,11 +60,12 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function markup_get() {
-    return new markup('x-console', [], [
-      static::markup_get_block_information (),
-      static::markup_get_block_diagram_load(),
-      static::markup_get_block_logs        ()
-    ]);
+    return new markup('x-page-section', ['data-page-section-id' => 'console'],
+      new markup('x-console', [], [
+        static::markup_get_block_information (),
+        static::markup_get_block_diagram_load(),
+        static::markup_get_block_logs        ()
+    ]));
   }
 
   static function markup_get_block_information() {
