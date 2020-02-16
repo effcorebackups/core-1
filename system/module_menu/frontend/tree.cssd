@@ -29,8 +29,8 @@
   /* menu in area 'system': colors */
 
   [data-area-id='system'] [role='tree'] ul       {background-color: %%_color_menu}
-  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
-  [data-area-id='system'] [role='tree'] ul ul ul {background-color: transparent}
+  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  [data-area-id='system'] [role='tree'] ul ul ul {background-color: transparent;                    box-shadow: none}
 
   [data-area-id='system'] [role='tree']              a[aria-selected      ='true'],
   [data-area-id='system'] [role='tree']              a[data-selected-trail='true'] {color: %%_color_menu_link_active}
