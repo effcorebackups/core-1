@@ -3,16 +3,20 @@
   [role='tree'] a[aria-selected      ='true'],
   [role='tree'] a[data-selected-trail='true'] {color: %%_color_link_active}
 
-  /* menu in system area: orientation and sizes */
+  /* menu in area 'system': orientation and dynamics */
 
-  [data-area-id='system'] [role='tree']          {float: left; z-index: 300}
-  [data-area-id='system'] [role='tree'] li       {float: left}
-  [data-area-id='system'] [role='tree'] li li    {float: none}
-  [data-area-id='system'] [role='tree'] ul       {float: left}
-  [data-area-id='system'] [role='tree'] ul ul    {float: none}
+  [data-area-id='system'] [role='tree']       {float: left; z-index: 300}
+  [data-area-id='system'] [role='tree'] ul    {float: left}
+  [data-area-id='system'] [role='tree'] li    {float: left}
+  [data-area-id='system'] [role='tree'] ul ul {float: none}
+  [data-area-id='system'] [role='tree'] li li {float: none}
+  [data-area-id='system'] [role='tree'] ul       ul {display: none}
+  [data-area-id='system'] [role='tree'] li:hover ul {display: block}
 
   [data-area-id='system'] [role='tree'] ul ul    {position: absolute}
   [data-area-id='system'] [role='tree'] ul ul ul {position: relative}
+
+  /* menu in area 'system': sizes */
 
   [data-area-id='system'] [role='tree'] ul       {padding: 0; margin: 0; list-style: none}
   [data-area-id='system'] [role='tree'] ul ul    {padding: 20px}
@@ -22,12 +26,7 @@
   [data-area-id='system'] [role='tree'] li     a {padding: 21px; display: block}
   [data-area-id='system'] [role='tree'] li li  a {padding: 0}
 
-  /* menu in system area: dynamics */
-
-  [data-area-id='system'] [role='tree'] > ul > li       > ul {display: none}
-  [data-area-id='system'] [role='tree'] > ul > li:hover > ul {display: block}
-
-  /* menu in system area: colors */
+  /* menu in area 'system': colors */
 
   [data-area-id='system'] [role='tree'] ul       {background-color: %%_color_menu}
   [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}}
@@ -46,11 +45,11 @@
   [data-area-id='system'] [role='tree'] li li a[aria-selected      ='true'],
   [data-area-id='system'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
 
-  /* menu in system area: adaptivity */
+  /* menu in area 'system': adaptivity */
 
   @media screen and (max-width: 600px) {
     [data-area-id='system'] [role='tree']       {float: none !important}
-    [data-area-id='system'] [role='tree'] ul    {float: none}
+    [data-area-id='system'] [role='tree'] ul    {float: none; display: block}
     [data-area-id='system'] [role='tree'] li    {float: none; display: block}
     [data-area-id='system'] [role='tree'] ul ul {position: relative}
   }
