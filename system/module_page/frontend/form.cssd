@@ -305,8 +305,7 @@
   x-layout-manager [data-area-id]            {min-height: 20px}
   x-layout-manager [data-area-type='table' ] {}
   x-layout-manager [data-area-type='row'   ] {}
-  x-layout-manager [data-area-type='column'] {border-right: 1px dotted %%_color_main}
-  x-layout-manager [data-area-type='column']:last-child {border-right: none}
+  x-layout-manager [data-area-type='column']:not(:last-child) {border-right: 1px dotted %%_color_main}
 
   x-layout-manager x-area-info {
     display: block;
