@@ -43,12 +43,56 @@
     border: 1px dotted %%_color_main;
     font-size: 1.5em}
 
-  /* tree */
+  /* menu in area 'navigation': orientation and dynamics */
 
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] {margin: 20px 0; background: %%_color_page; border-radius: 30px}
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul {margin: 0; padding: 0; list-style: none}
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {margin: 0; padding: 0; display: inline-block}
-  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li a {
-    display: inline-block;
-    padding: 15px 20px;
-    border-right: 1px dotted white}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul    {display: inline-block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li    {display: inline-block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li li {display: block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul {display: block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul       ul {display: none}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li:hover ul {display: block}
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul    {position: absolute}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul ul {position: relative}
+
+  /* menu in area 'system': sizes */
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']          {margin: 20px 0}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul       {padding: 0; margin: 0; list-style: none; border-radius: 30px; overflow: hidden}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul    {padding: 20px;        margin-top: -10px; border-radius: 10px; overflow: hidden}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul ul {padding: 0 0 0 21px;  margin-top:   0  }
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li       {padding: 0; margin: 0; cursor: default}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li     a {padding: 21px; display: block}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li li  a {padding: 0}
+
+  /* menu in area 'navigation': colors */
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul       {background-color: %%_color_menu}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul ul {background-color: transparent;                    box-shadow: none}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul    li:not(:last-child) > a {border-right: 1px dotted white}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul li:not(:last-child) > a {border-right: none}
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']             a[aria-selected      ='true'],
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']             a[data-selected-trail='true'] {color: %%_color_menu_link_active}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']             a:not([href])                 {color: %%_color_menu_text !important}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']             a                             {color: %%_color_menu_link}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']       li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree']       li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul    li:hover                            {                                  background-color: %%_color_menu_active}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul li:hover                            {                                  background-color: transparent}
+
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li    a[aria-selected      ='true'],
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li li a[aria-selected      ='true'],
+  body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+
+  /* menu in area 'navigation': adaptivity */
+
+  @media screen and (max-width: 600px) {
+    body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul {display: block}
+    body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] li {display: block}
+    body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul {position: relative}
+    body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul    li:not(:last-child) > a {border-bottom: 1px dotted white; border-right: none}
+    body[data-layout-id='original_classic'] [data-area-id='navigation'] [role='tree'] ul ul li:not(:last-child) > a {border-bottom: none}
+  }
