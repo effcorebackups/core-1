@@ -9,7 +9,7 @@ namespace effcore {
 
   use field_validate_min_max;
 
-  const input_min_date = '0000-01-01';
+  const input_min_date = '0001-01-01';
   const input_max_date = '9999-12-31';
 
   public $title = 'Date';

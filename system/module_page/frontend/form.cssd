@@ -157,7 +157,7 @@
   button:enabled[value='delete']       {background-color: %%_color_warning}
   button:enabled[value='delete']:hover {background-color: %%_color_button_active}
 
-  button[role='button-default'] {
+  button[data-type='default'] {
     position: absolute;
     top : -10000px;
     left: -10000px}

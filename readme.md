@@ -265,7 +265,7 @@ least compatible of ANSI standards.
 
 It was decided not to use field of type timestamp.
 Instead, it's recommended to use field of type datetime.
-This field has a wide range of acceptable values (from "0000-01-01"
+This field has a wide range of acceptable values (from "0001-01-01"
 to "9999-12-31"), and also does not depend on the time zone.
 When adding data to the server, dates should be converted to time zone UTC±0:00.
 Instead of the original timestamp type, it's recommended

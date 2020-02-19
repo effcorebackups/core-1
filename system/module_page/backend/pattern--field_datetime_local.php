@@ -7,7 +7,7 @@
 namespace effcore {
           class field_datetime_local extends field_datetime {
 
-  const input_min_datetime = '0000-01-01 12:00:00';
+  const input_min_datetime = '0001-01-01 12:00:00';
   const input_max_datetime = '9999-12-31 09:00:00';
 
   public $title = 'Local Date/Time';
