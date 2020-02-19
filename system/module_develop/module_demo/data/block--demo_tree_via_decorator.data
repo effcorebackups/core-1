@@ -1,7 +1,9 @@
 blocks
 - demo_tree_via_decorator|block
+    title: Trees
     attributes
     - data-id: demo_tree_via_decorator
+    - data-title-is-hidden: true
     children
   # ─────────────────────────────────────────────────────────────────────
   # tree

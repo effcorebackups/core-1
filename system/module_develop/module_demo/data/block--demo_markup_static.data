@@ -3,6 +3,7 @@ blocks
     title: Markup static
     attributes
     - data-id: demo_markup_static
+    - data-title-is-hidden: true
     children
   # ─────────────────────────────────────────────────────────────────────
   # headers

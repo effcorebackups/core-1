@@ -90,7 +90,7 @@ namespace effcore\modules\develop {
         'title' => ['value' => new text       ($c_selection->title), 'title' => 'Title']
       ];
     }
-    return new block(null, ['data-id' => 'selections_nosql'], [
+    return new block('Selections', ['data-id' => 'selections_nosql', 'data-title-is-hidden' => true], [
       $decorator
     ]);
   }
@@ -116,7 +116,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block(null, ['data-id' => 'events_nosql'], [
+    return new block('Events', ['data-id' => 'events_nosql', 'data-title-is-hidden' => true], [
       $targets,
       $report
     ]);
@@ -135,7 +135,7 @@ namespace effcore\modules\develop {
         'headers'   => ['value' => new text_simple(isset($c_type->headers) ? implode(br, $c_type->headers) : null), 'title' => 'Headers'  ]
       ];
     }
-    return new block(null, ['data-id' => 'file_types_nosql'], [
+    return new block('File types', ['data-id' => 'file_types_nosql', 'data-title-is-hidden' => true], [
       $decorator
     ]);
   }
@@ -152,7 +152,7 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_template->module_id), 'title' => 'Module ID'],
       ];
     }
-    return new block(null, ['data-id' => 'templates_nosql'], [
+    return new block('Templates', ['data-id' => 'templates_nosql', 'data-title-is-hidden' => true], [
       $decorator
     ]);
   }
@@ -170,7 +170,7 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_token->module_id), 'title' => 'Module ID']
       ];
     }
-    return new block(null, ['data-id' => 'tokens_nosql'], [
+    return new block('Tokens', ['data-id' => 'tokens_nosql', 'data-title-is-hidden' => true], [
       $decorator
     ]);
   }
@@ -190,7 +190,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block(null, ['data-id' => 'translations_nosql'], [
+    return new block('Translations', ['data-id' => 'translations_nosql', 'data-title-is-hidden' => true], [
       $decorator
     ]);
   }
