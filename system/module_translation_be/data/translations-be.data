@@ -492,7 +492,6 @@ translations
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
     - This combination of values is already in use!: Такая камбінацыя значэнняў ужо выкарыстоўваецца!
     - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
-    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма інсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
     - Thousands separator: Раздзяляльнік тысяч
     - TiB: ТіБ
     - Time format: Фармат часу
@@ -517,6 +516,7 @@ translations
     - Type: Тып
     - type: тып
     - Types: Типы
+    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма інсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
     - Uninstall the existing profile first.: Спачатку выдаліце існуючы профіль.
     - uninstall: выдаліць
     - Uninstall: Выдаліць
