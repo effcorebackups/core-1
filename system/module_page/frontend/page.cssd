@@ -205,7 +205,8 @@
     font-size: 1.5em;
     line-height: 1.5em}
   section [data-section-content] {display: block}
-  section[data-title-styled='false'] [data-section-title] {border: none}
+  section[data-title-is-styled='false'] [data-section-title] {border:  none}
+  section[data-title-is-hidden]         [data-section-title] {display: none}
 
   /* block system info */
 

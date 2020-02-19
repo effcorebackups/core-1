@@ -77,7 +77,7 @@ namespace effcore {
       'memory'   => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
       'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
       'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]]];
-    return new block('Current page information', ['data-id' => 'info', 'data-title-styled' => 'false'], [
+    return new block('Current page information', ['data-id' => 'info', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
   }
@@ -127,7 +127,7 @@ namespace effcore {
         'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
         'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
-    return new block('Execution plan', ['data-id' => 'logs', 'data-title-styled' => 'false'], [$decorator, new markup('x-total', [], [
+    return new block('Execution plan', ['data-id' => 'logs', 'data-title-is-styled' => 'false'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-param', ['data-id' => 'dhash'], [new markup('x-title', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])]),

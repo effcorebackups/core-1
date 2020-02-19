@@ -24,7 +24,7 @@ namespace effcore\modules\core {
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('files')->select('bundle/system/build'))]);
-    return new block(null, ['data-id' => 'info_system'], [
+    return new block('System information', ['data-id' => 'info_system', 'data-title-is-hidden' => true], [
       $logo,
       $copyright,
       $build
@@ -46,7 +46,7 @@ namespace effcore\modules\core {
       'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_updates ? [$is_required_updates_sticker, new text(' → '), $is_required_updates_fixlink] : [$is_required_updates_sticker])],
       'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ],
       'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ]]];
-    return new block('Service', ['data-id' => 'info_service', 'data-title-styled' => 'false'], [
+    return new block('Service', ['data-id' => 'info_service', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
   }
@@ -66,7 +66,7 @@ namespace effcore\modules\core {
       'hostname'         => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
       'timezone'         => ['title' => 'Time zone',              'value' => date_default_timezone_get()                              ],
       'datetime'         => ['title' => 'UTC date/time',          'value' => core::datetime_get()                                     ]]];
-    return new block('Server', ['data-id' => 'info_server', 'data-title-styled' => 'false'], [
+    return new block('Server', ['data-id' => 'info_server', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
   }
