@@ -10,7 +10,7 @@ instances
     - url: /
     - is_https: 0
     - is_embed: 1
-    - access: null
+    - module_id: profile_default
     - parts
       - system
         - page_actions|part_preset_link
@@ -27,6 +27,9 @@ instances
       - title
         - title|part_preset_link
             id: title
+      - content
+        - text_sql_front_default|part_preset_link
+            id: text_sql_front_default
 - page_login|instance
     entity_name: page
     values
@@ -35,6 +38,7 @@ instances
     - url: /login
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -64,6 +68,7 @@ instances
     - url: /logout
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_default
     - access
         roles
         - =: registered
@@ -95,6 +100,7 @@ instances
     - url: /recovery
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -124,6 +130,7 @@ instances
     - url: /registration
     - is_https: 1
     - is_embed: 1
+    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -145,3 +152,13 @@ instances
       - content
         - form_registration|part_preset_link
             id: form_registration
+# ─────────────────────────────────────────────────────────────────────
+# texts
+# ─────────────────────────────────────────────────────────────────────
+- text_front_default|instance
+    entity_name: text
+    values
+    - id: front_default
+    - description: Text Front
+    - text: Welcome to our site!
+    - module_id: profile_default

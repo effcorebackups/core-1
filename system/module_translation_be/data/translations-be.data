@@ -492,7 +492,7 @@ translations
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
     - This combination of values is already in use!: Такая камбінацыя значэнняў ужо выкарыстоўваецца!
     - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
-    - This profile cannot be installed because the system already has Pages with the following IDs\: %%_ids: Немагчыма інсталяваць дадзены профіль таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
+    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма інсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
     - Thousands separator: Раздзяляльнік тысяч
     - TiB: ТіБ
     - Time format: Фармат часу
@@ -559,7 +559,6 @@ translations
     - warning: папярэджанне
     - Web server: Вэб-сервер
     - Weight: Вага
-    - Welcome message: Прывітальнае паведамленне
     - Welcome to our site!: Сардэчна запрашаем на наш сайт!
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!

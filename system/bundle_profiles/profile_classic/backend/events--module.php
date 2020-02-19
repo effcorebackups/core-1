@@ -14,6 +14,7 @@ namespace effcore\modules\profile_classic {
   static $conflict_has_been = false;
 
   static function on_install($event) {
+    $module = module::get('profile_classic');
     $page_ids = [];
     if (page::get('about'       )) $page_ids[] = 'about';
     if (page::get('contact'     )) $page_ids[] = 'contact';
@@ -23,13 +24,12 @@ namespace effcore\modules\profile_classic {
     if (page::get('recovery'    )) $page_ids[] = 'recovery';
     if (page::get('registration')) $page_ids[] = 'registration';
     if (!count($page_ids)) {
-      $module = module::get('profile_classic');
       $module->install();
     } else {
       static::$conflict_has_been = true;
       message::insert(new text_multiline([
-        'This profile cannot be installed because the system already has Pages with the following IDs: %%_ids',
-        'Uninstall the existing profile first.'], ['ids' => implode(', ', $page_ids)]), 'warning'
+        'Unable to install the profile "%%_profile" because the system already has Pages with the following IDs: %%_ids',
+        'Uninstall the existing profile first.'], ['profile' => $module->title, 'ids' => implode(', ', $page_ids)]), 'warning'
       );
     }
   }
