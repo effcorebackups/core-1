@@ -196,26 +196,26 @@
 
   /* block */
 
-  x-block {display: block; margin: 70px 0}
-  x-block-title {
+  section {display: block; margin: 70px 0}
+  section [data-section-title] {
     display: block;
     margin-bottom: 20px;
     padding-bottom: 30px;
     border-bottom: 5px solid %%_color_main;
     font-size: 1.5em;
     line-height: 1.5em}
-  x-block-content {display: block}
-  x-block[data-title-styled='false'] x-block-title {border: none}
+  section [data-section-content] {display: block}
+  section[data-title-styled='false'] [data-section-title] {border: none}
 
   /* block system info */
 
-  x-block[data-id='info_system'] {margin: 150px 0 50px 0; text-align: center}
-  x-block[data-id='info_system'] x-logo      {display: block; margin-bottom: 20px}
-  x-block[data-id='info_system'] x-logo img  {width: 100%; max-width: 300px}
-  x-block[data-id='info_system'] x-copyright {display: block; font-size: .8em}
-  x-block[data-id='info_system'] x-build     {display: block}
-  x-block[data-id='info_system'] x-build x-title::after {content: ': '}
-  x-block[data-id='info_system'] x-build x-value {font-weight: bold}
+  section[data-id='info_system'] {margin: 150px 0 50px 0; text-align: center}
+  section[data-id='info_system'] x-logo      {display: block; margin-bottom: 20px}
+  section[data-id='info_system'] x-logo img  {width: 100%; max-width: 300px}
+  section[data-id='info_system'] x-copyright {display: block; font-size: .8em}
+  section[data-id='info_system'] x-build     {display: block}
+  section[data-id='info_system'] x-build x-title::after {content: ': '}
+  section[data-id='info_system'] x-build x-value {font-weight: bold}
 
   /* x-sticker */
 

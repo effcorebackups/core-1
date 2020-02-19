@@ -7,12 +7,12 @@
 namespace effcore {
           class block extends markup {
 
-  public $tag_name = 'x-block';
+  public $tag_name = 'section';
   public $template = 'block';
 # ─────────────────────────────────────────────────────────────────────
   public $title;
-  public $title_tag_name = 'x-block-title';
-  public $content_tag_name = 'x-block-content';
+  public $title_tag_name = 'h2';
+  public $content_tag_name = 'x-section-content';
 
   function __construct($title = null, $attributes = [], $children = [], $weight = 0) {
     if ($title) $this->title = $title;
@@ -24,7 +24,7 @@ namespace effcore {
       'tag_name'   => $this->tag_name,
       'attributes' => $this->render_attributes(),
       'self'       => $this->render_self(),
-      'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, [],
+      'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, ['data-section-content' => true],
                       $this->render_children($this->children_select(true)) ))->render() :
                       $this->render_children($this->children_select(true))
     ]))->render();
@@ -32,7 +32,7 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      return (new markup($this->title_tag_name, [], [
+      return (new markup($this->title_tag_name, ['data-section-title' => true], [
         $this->title
       ]))->render();
     }

@@ -21,29 +21,29 @@
 
   /* logs */
 
-  x-block[data-id='logs'] tbody    td {vertical-align: top; color: black}
-  x-block[data-id='logs'] tbody tr td                      {background-color: transparent}
-  x-block[data-id='logs'] tbody tr                         {background-color: white}
-  x-block[data-id='logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
-  x-block[data-id='logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
-  x-block[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
-  x-block[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  x-block[data-id='logs'] tbody tr[data-object='form'    ] {background-color: salmon}
-  x-block[data-id='logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
-  x-block[data-id='logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
+  section[data-id='logs'] tbody    td {vertical-align: top; color: black}
+  section[data-id='logs'] tbody tr td                      {background-color: transparent}
+  section[data-id='logs'] tbody tr                         {background-color: white}
+  section[data-id='logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+  section[data-id='logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+  section[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+  section[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
+  section[data-id='logs'] tbody tr[data-object='form'    ] {background-color: salmon}
+  section[data-id='logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
+  section[data-id='logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
 
-  x-block[data-id='logs'] tbody tr[data-object='event'][data-action='begin'] {}
-  x-block[data-id='logs'] tbody tr[data-object='event'][data-action='end'  ] {}
+  section[data-id='logs'] tbody tr[data-object='event'][data-action='begin'] {}
+  section[data-id='logs'] tbody tr[data-object='event'][data-action='end'  ] {}
 
-  x-block[data-id='logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
-  x-block[data-id='logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
-  x-block[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
-  x-block[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
+  section[data-id='logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
+  section[data-id='logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
+  section[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
+  section[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
-  x-block[data-id='logs'] x-param {display: block; font-size: .9em}
-  x-block[data-id='logs'] x-param x-title {width: 200px; display: inline-block}
-  x-block[data-id='logs'] x-param x-title::after {content: ': '}
-  x-block[data-id='logs'] x-param x-value {font-family: monospace}
+  section[data-id='logs'] x-param {display: block; font-size: .9em}
+  section[data-id='logs'] x-param x-title {width: 200px; display: inline-block}
+  section[data-id='logs'] x-param x-title::after {content: ': '}
+  section[data-id='logs'] x-param x-value {font-family: monospace}
 
   /* php dependencies */
 
@@ -99,63 +99,63 @@
 
   /* structures_diagram */
 
-  x-block[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
-  x-block[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
+  section[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
+  section[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
   /* demo_canvas */
 
-  x-block[data-id='demo_canvas'] x-block-content {text-align: center}
-  x-block[data-id='demo_canvas'] x-block-content svg {
+  section[data-id='demo_canvas'] [data-section-content] {text-align: center}
+  section[data-id='demo_canvas'] [data-section-content] svg {
     width: 100%;
     max-width: 525px;
     height: auto}
 
   /* demo_markup_colors */
 
-  x-block[data-id='demo_markup_colors'] x-colors-group {display: block; margin: 5px 0}
-  x-block[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px}
-  x-block[data-id='demo_markup_colors'] x-color:nth-child(11) {background: %%_color_main; border: 1px solid red; margin: -1px; position: relative; opacity: 1}
+  section[data-id='demo_markup_colors'] x-colors-group {display: block; margin: 5px 0}
+  section[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px}
+  section[data-id='demo_markup_colors'] x-color:nth-child(11) {background: %%_color_main; border: 1px solid red; margin: -1px; position: relative; opacity: 1}
 
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 1) {background: %%_color_main{-50,-50,-50}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 2) {background: %%_color_main{-45,-45,-45}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 3) {background: %%_color_main{-40,-40,-40}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 4) {background: %%_color_main{-35,-35,-35}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 5) {background: %%_color_main{-30,-30,-30}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 6) {background: %%_color_main{-25,-25,-25}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 7) {background: %%_color_main{-20,-20,-20}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 8) {background: %%_color_main{-15,-15,-15}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 9) {background: %%_color_main{-10,-10,-10}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(10) {background: %%_color_main{-05,-05,-05}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(12) {background: %%_color_main{05,05,05}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(13) {background: %%_color_main{10,10,10}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(14) {background: %%_color_main{15,15,15}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(15) {background: %%_color_main{20,20,20}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(16) {background: %%_color_main{25,25,25}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(17) {background: %%_color_main{30,30,30}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(18) {background: %%_color_main{35,35,35}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(19) {background: %%_color_main{40,40,40}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(20) {background: %%_color_main{45,45,45}}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(21) {background: %%_color_main{50,50,50}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 1) {background: %%_color_main{-50,-50,-50}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 2) {background: %%_color_main{-45,-45,-45}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 3) {background: %%_color_main{-40,-40,-40}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 4) {background: %%_color_main{-35,-35,-35}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 5) {background: %%_color_main{-30,-30,-30}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 6) {background: %%_color_main{-25,-25,-25}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 7) {background: %%_color_main{-20,-20,-20}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 8) {background: %%_color_main{-15,-15,-15}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 9) {background: %%_color_main{-10,-10,-10}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(10) {background: %%_color_main{-05,-05,-05}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(12) {background: %%_color_main{05,05,05}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(13) {background: %%_color_main{10,10,10}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(14) {background: %%_color_main{15,15,15}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(15) {background: %%_color_main{20,20,20}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(16) {background: %%_color_main{25,25,25}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(17) {background: %%_color_main{30,30,30}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(18) {background: %%_color_main{35,35,35}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(19) {background: %%_color_main{40,40,40}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(20) {background: %%_color_main{45,45,45}}
+  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(21) {background: %%_color_main{50,50,50}}
 
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color {background: %%_color_main}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
-  x-block[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color {background: %%_color_main}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
+  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}
