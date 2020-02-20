@@ -36,22 +36,22 @@
 
   /* logotype */
 
-  a[data-id='logotype']     {display: block; margin: 20px 0}
-  a[data-id='logotype'] img {display: block}
-  a[data-id='logotype'] img[src=''] {
+  body[data-layout-id='original_classic'] a[data-id='logotype']     {display: block; margin: 20px 0}
+  body[data-layout-id='original_classic'] a[data-id='logotype'] img {display: block}
+  body[data-layout-id='original_classic'] a[data-id='logotype'] img[src=''] {
     padding: 10px;
     border: 1px dotted %%_color_main;
     font-size: 1.5em}
 
   /* breadcrumbs */
 
-  [aria-label='breadcrumb'] {margin: 10px 0 50px 0}
+  body[data-layout-id='original_classic'] [aria-label='breadcrumb'] {margin: 10px 0 50px 0}
 
   /* headers */
 
-  h1 {margin: 1em 0 2em 0}
-  h2 {margin: 3em 0 2em 0}
-  h3 {margin: 2em 0 1em 0}
+  body[data-layout-id='original_classic'] h1 {margin: 1em 0 2em 0}
+  body[data-layout-id='original_classic'] h2 {margin: 3em 0 2em 0}
+  body[data-layout-id='original_classic'] h3 {margin: 2em 0 1em 0}
 
   /* menu in area 'menu': orientation and dynamics */
 
