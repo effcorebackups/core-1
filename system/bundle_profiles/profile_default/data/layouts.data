@@ -25,6 +25,8 @@ layouts
             attributes
             - data-area-group-id: center
             children
+            - breadcrumbs|area
+                id: breadcrumbs
             - messages|area
                 id: messages
                 render_weight: -50
@@ -90,6 +92,8 @@ layouts
         tag_name: header
     - menu|area
         id: menu
+    - breadcrumbs|area
+        id: breadcrumbs
     - messages|area
         id: messages
         render_weight: -50
@@ -164,6 +168,8 @@ layouts
         tag_name: header
     - menu|area
         id: menu
+    - breadcrumbs|area
+        id: breadcrumbs
     - messages|area
         id: messages
         render_weight: -50
@@ -253,6 +259,8 @@ layouts
         tag_name: header
     - menu|area
         id: menu
+    - breadcrumbs|area
+        id: breadcrumbs
     - messages|area
         id: messages
         render_weight: -50
@@ -357,6 +365,8 @@ layouts
         tag_name: header
     - menu|area
         id: menu
+    - breadcrumbs|area
+        id: breadcrumbs
     - messages|area
         id: messages
         render_weight: -50

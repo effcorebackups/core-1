@@ -43,6 +43,10 @@
     border: 1px dotted %%_color_main;
     font-size: 1.5em}
 
+  /* breadcrumbs */
+
+  [aria-label='breadcrumb'] {margin: 10px 0 50px 0}
+
   /* headers */
 
   h1 {margin: 1em 0 2em 0}

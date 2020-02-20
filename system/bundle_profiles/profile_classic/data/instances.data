@@ -153,6 +153,7 @@ instances
       - menu
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - breadcrumbs
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
       - messages
@@ -194,6 +195,7 @@ instances
       - menu
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - breadcrumbs
         - breadcrumbs_user_registered|part_preset_link
             id: breadcrumbs_user_registered
       - messages
@@ -233,6 +235,7 @@ instances
       - menu
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - breadcrumbs
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
       - messages
@@ -272,6 +275,7 @@ instances
       - menu
         - tree_sql_main|part_preset_link
             id: tree_sql_main
+      - breadcrumbs
         - breadcrumbs_user_anonymous|part_preset_link
             id: breadcrumbs_user_anonymous
       - messages
