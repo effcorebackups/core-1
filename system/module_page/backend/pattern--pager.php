@@ -14,7 +14,7 @@ namespace effcore {
   const ERR_CODE_CUR_GT_MAX    = 0x8;
 
   public $tag_name = 'nav';
-  public $attributes = ['data-type' => 'pager'];
+  public $attributes = ['aria-label' => 'pager'];
   public $error_code = self::ERR_CODE_OK;
 
   public $min = 1;
