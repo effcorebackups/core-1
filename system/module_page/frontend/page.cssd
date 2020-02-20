@@ -160,22 +160,22 @@
 
   /* breadcrumbs */
 
-  x-breadcrumbs {display: block; margin: 100px 0}
-  x-breadcrumbs a {
+  [aria-label='breadcrumb'] {display: block; margin: 100px 0}
+  [aria-label='breadcrumb'] a {
     display: inline-block;
     margin: 2px 5px 2px 0;
     padding: 5px 10px;
     border: 1px solid %%_color_main;
     border-radius: 10px}
-  x-breadcrumbs a:not([href]) {opacity: .5}
-  x-breadcrumbs a[aria-selected='true'      ] {color: %%_color_link}
-  x-breadcrumbs a[data-selected-trail='true'] {color: %%_color_link}
+  [aria-label='breadcrumb'] a:not([href]) {opacity: .5}
+  [aria-label='breadcrumb'] a[data-selected-trail='true'] {color: %%_color_link}
+  [aria-label='breadcrumb'] a[aria-current='true'       ] {color: %%_color_link}
 
   /* messages */
 
   x-messages {display: block; margin: 100px auto}
   x-messages p {margin: 0; padding: 0}
-  x-messages ul {margin: 10px 0; padding: 15px 20px; background-color: gray; color: white; box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2)}
+  x-messages ul {margin: 10px 0; padding: 15px 20px; background-color: gray; color: white; box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1)}
   x-messages ul[data-type='notice' ] {background-color: %%_color_main}
   x-messages ul[data-type='ok'     ] {background-color: %%_color_ok}
   x-messages ul[data-type='warning'] {background-color: %%_color_warning}
