@@ -49,10 +49,8 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # headers
   # ─────────────────────────────────────────────────────────────────────
-    $header_h1 = new markup('h1', [], [new text('Header %%_size', ['size' => 'H1'])]);
     $header_h2 = new markup('h2', [], [new text('Header %%_size', ['size' => 'H2'])]);
     $header_h3 = new markup('h3', [], [new text('Header %%_size', ['size' => 'H3'])]);
-    $header_h1_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;',                                                                  ]);
     $header_h2_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;',                                                                  ]);
     $header_h3_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
   # ─────────────────────────────────────────────────────────────────────
@@ -114,8 +112,6 @@ namespace effcore\modules\demo {
   # result block
   # ─────────────────────────────────────────────────────────────────────
     return new block('Markup dynamic', ['data-id' => 'demo_markup_dynamic'], [
-      $header_h1,
-      $header_h1_paragraph,
       $header_h2,
       $header_h2_paragraph,
       $header_h3,
