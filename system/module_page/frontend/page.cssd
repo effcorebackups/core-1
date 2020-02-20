@@ -34,7 +34,7 @@
 
   /* headers */
 
-  h1 {margin: 0   0 3em 0; font-size: 2em;   line-height: 1.5em; font-weight: normal}
+  h1 {margin: 4em 0 3em 0; font-size: 2em;   line-height: 1.5em; font-weight: normal}
   h2 {margin: 3em 0 2em 0; font-size: 1.5em; line-height: 1.5em; font-weight: normal}
   h3 {margin: 2em 0 1em 0; font-size: 1em}
 

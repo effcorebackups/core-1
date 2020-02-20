@@ -18,9 +18,8 @@ layouts
             - header|area
                 id: header
                 tag_name: header
-            - nav|area
-                id: navigation
-                tag_name: nav
+            - menu|area
+                id: menu
     - page_section_body|area
         tag_name: x-page-section
         attributes

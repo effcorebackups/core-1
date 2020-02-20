@@ -23,9 +23,8 @@ layouts
     - header|area
         id: header
         tag_name: header
-    - nav|area
-        id: navigation
-        tag_name: nav
+    - menu|area
+        id: menu
     - messages|area
         id: messages
         render_weight: -50
