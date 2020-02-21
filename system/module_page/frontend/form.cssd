@@ -290,7 +290,7 @@
 
   /* widget 'info_fields' for selection */
 
-  x-widget[data-type='info_fields-selection'] x-widget[data-type='insert'] x-field {margin: 8px 0}
+  x-widget[data-type='info_fields-selection'] {margin: 6px 0}
 
   /* layout manager */
 
