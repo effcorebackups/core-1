@@ -160,29 +160,29 @@
 
   /* breadcrumbs */
 
-  [aria-label='breadcrumb'] {display: block; margin: 100px 0}
-  [aria-label='breadcrumb'] a {
+  nav[aria-label='breadcrumb'] {display: block; margin: 100px 0}
+  nav[aria-label='breadcrumb'] a {
     display: inline-block;
     margin: 2px 5px 2px 0;
     padding: 5px 10px;
     border: 1px solid %%_color_main;
     border-radius: 10px}
-  [aria-label='breadcrumb'] a:not([href]) {opacity: .5}
-  [aria-label='breadcrumb'] a[data-selected-trail='true'] {color: %%_color_link}
-  [aria-label='breadcrumb'] a[aria-current='true'       ] {color: %%_color_link}
+  nav[aria-label='breadcrumb'] a:not([href]) {opacity: .5}
+  nav[aria-label='breadcrumb'] a[data-selected-trail='true'] {color: %%_color_link}
+  nav[aria-label='breadcrumb'] a[aria-current='true'       ] {color: %%_color_link}
 
   /* pager */
 
-  [aria-label='pager'] {
+  nav[aria-label='pager'] {
     display: block;
     margin: 30px 0;
     text-align: center}
-  [aria-label='pager'] a {
+  nav[aria-label='pager'] a {
     display: inline-block;
     min-width: 20px;
     margin: 3px 5px;
     font-size: 1.2em}
-  [aria-label='pager'] a[aria-current='true'] {
+  nav[aria-label='pager'] a[aria-current='true'] {
     color: %%_color_link_active}
 
   /* messages */

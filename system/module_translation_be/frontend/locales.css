@@ -1,4 +1,4 @@
 
-  x-language[data-code='be'] {
+  nav[aria-label='languages'] li[data-code='be'] {
     padding-left: 40px;
     background: url('images/flag-by-mini.svg') no-repeat 0 2px}

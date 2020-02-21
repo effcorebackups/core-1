@@ -45,7 +45,7 @@
 
   /* breadcrumbs */
 
-  body[data-layout-id='original_classic'] [aria-label='breadcrumb'] {margin: 10px 0 50px 0}
+  body[data-layout-id='original_classic'] nav[aria-label='breadcrumb'] {margin: 10px 0 50px 0}
 
   /* headers */
 
