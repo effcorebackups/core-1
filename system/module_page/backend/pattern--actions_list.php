@@ -29,7 +29,7 @@ namespace effcore {
       foreach ($this->actions as $c_name => $c_title) {
         $c_href = $c_name[0] == '/' ? $c_name : page::get_current()->args_get('base').'/'.($c_name);
         $list->child_insert(new markup('a', ['data-id' => core::sanitize_id($c_title), 'title' => new text($c_title), 'href' => $c_href],
-          new markup('em', [], $c_title)
+          new markup('x-actions-title', [], $c_title)
         ));}
       $this->is_builded = true;
     }

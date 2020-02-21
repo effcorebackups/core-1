@@ -253,7 +253,7 @@
 
   /* control elements */
 
-  x-actions a em {display: none}
+  x-actions a x-actions-title {display: none}
   x-actions a[data-id='select'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0  -1px}
   x-actions a[data-id='update'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -41px}
   x-actions a[data-id='delete'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -61px}
