@@ -109,5 +109,6 @@
 
   /* social networks */
 
-  x-decorator[data-id='social_networks_classic'] a[data-id='logotype']     {display: inline-block; margin: 0 10px 0 0}
-  x-decorator[data-id='social_networks_classic'] a[data-id='logotype'] img {display: inline-block; width: 40px}
+  x-decorator[data-id='social_networks_classic'] {line-height: 0; float: right}
+  x-decorator[data-id='social_networks_classic'] a[data-id='logotype']     {display: inline-block; margin: 0 0 0 10px}
+  x-decorator[data-id='social_networks_classic'] a[data-id='logotype'] img {display: inline-block; width: 30px; height: 30px}
