@@ -310,6 +310,8 @@ instances
         - text_sql_front_classic|part_preset_link
             id: text_sql_front_classic
       - footer
+        - selection_social_networks_classic|part_preset_link
+            id: selection_social_networks_classic
         - text_sql_copyright_classic|part_preset_link
             id: text_sql_copyright_classic
 - page_login|instance
