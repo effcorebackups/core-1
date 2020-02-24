@@ -252,6 +252,7 @@ entities
           - =: jpg
           - =: png
           - =: svg
+          - =: svgd
         managing_field_element_attributes_on_insert
         - disabled: true
     constraints

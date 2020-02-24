@@ -11,6 +11,182 @@ instances
     - path: dynamic/files/logotypes/logotype-main-classic.svg
     - is_embed: 1
     - module_id: profile_classic
+- logotype_behance_classic|instance
+    entity_name: logotype
+    values
+    - id: behance_classic
+    - title: Behance
+    - url: https://behance.net
+    - path: dynamic/files/logotypes/logotype-behance-classic.svgd
+    - module_id: profile_classic
+- logotype_blogger_classic|instance
+    entity_name: logotype
+    values
+    - id: blogger_classic
+    - title: Blogger
+    - url: https://blogger.com
+    - path: dynamic/files/logotypes/logotype-blogger-classic.svgd
+    - module_id: profile_classic
+- logotype_facebook_classic|instance
+    entity_name: logotype
+    values
+    - id: facebook_classic
+    - title: Facebook
+    - url: https://facebook.com
+    - path: dynamic/files/logotypes/logotype-facebook-classic.svgd
+    - module_id: profile_classic
+- logotype_flickr_classic|instance
+    entity_name: logotype
+    values
+    - id: flickr_classic
+    - title: Flickr
+    - url: https://flickr.com
+    - path: dynamic/files/logotypes/logotype-flickr-classic.svgd
+    - module_id: profile_classic
+- logotype_github_classic|instance
+    entity_name: logotype
+    values
+    - id: github_classic
+    - title: Github
+    - url: https://github.com
+    - path: dynamic/files/logotypes/logotype-github-classic.svgd
+    - module_id: profile_classic
+- logotype_instagram_classic|instance
+    entity_name: logotype
+    values
+    - id: instagram_classic
+    - title: Instagram
+    - url: https://instagram.com
+    - path: dynamic/files/logotypes/logotype-instagram-classic.svgd
+    - module_id: profile_classic
+- logotype_linkedin_classic|instance
+    entity_name: logotype
+    values
+    - id: linkedin_classic
+    - title: Linkedin
+    - url: https://linkedin.com
+    - path: dynamic/files/logotypes/logotype-linkedin-classic.svgd
+    - module_id: profile_classic
+- logotype_livejournal_classic|instance
+    entity_name: logotype
+    values
+    - id: livejournal_classic
+    - title: Livejournal
+    - url: https://livejournal.com
+    - path: dynamic/files/logotypes/logotype-livejournal-classic.svgd
+    - module_id: profile_classic
+- logotype_ok_classic|instance
+    entity_name: logotype
+    values
+    - id: ok_classic
+    - title: OK
+    - url: https://ok.ru
+    - path: dynamic/files/logotypes/logotype-ok-classic.svgd
+    - module_id: profile_classic
+- logotype_pinterest_classic|instance
+    entity_name: logotype
+    values
+    - id: pinterest_classic
+    - title: Pinterest
+    - url: https://pinterest.com
+    - path: dynamic/files/logotypes/logotype-pinterest-classic.svgd
+    - module_id: profile_classic
+- logotype_reddit_classic|instance
+    entity_name: logotype
+    values
+    - id: reddit_classic
+    - title: Reddit
+    - url: https://reddit.com
+    - path: dynamic/files/logotypes/logotype-reddit-classic.svgd
+    - module_id: profile_classic
+- logotype_skype_classic|instance
+    entity_name: logotype
+    values
+    - id: skype_classic
+    - title: Skype
+    - url: https://skype.com
+    - path: dynamic/files/logotypes/logotype-skype-classic.svgd
+    - module_id: profile_classic
+- logotype_soundcloud_classic|instance
+    entity_name: logotype
+    values
+    - id: soundcloud_classic
+    - title: Soundcloud
+    - url: https://soundcloud.com
+    - path: dynamic/files/logotypes/logotype-soundcloud-classic.svgd
+    - module_id: profile_classic
+- logotype_telegram_classic|instance
+    entity_name: logotype
+    values
+    - id: telegram_classic
+    - title: Telegram
+    - url: https://telegram.org
+    - path: dynamic/files/logotypes/logotype-telegram-classic.svgd
+    - module_id: profile_classic
+- logotype_tumblr_classic|instance
+    entity_name: logotype
+    values
+    - id: tumblr_classic
+    - title: Tumblr
+    - url: https://tumblr.com
+    - path: dynamic/files/logotypes/logotype-tumblr-classic.svgd
+    - module_id: profile_classic
+- logotype_twitter_classic|instance
+    entity_name: logotype
+    values
+    - id: twitter_classic
+    - title: Twitter
+    - url: https://twitter.com
+    - path: dynamic/files/logotypes/logotype-twitter-classic.svgd
+    - module_id: profile_classic
+- logotype_viber_classic|instance
+    entity_name: logotype
+    values
+    - id: viber_classic
+    - title: Viber
+    - url: https://viber.com
+    - path: dynamic/files/logotypes/logotype-viber-classic.svgd
+    - module_id: profile_classic
+- logotype_vimeo_classic|instance
+    entity_name: logotype
+    values
+    - id: vimeo_classic
+    - title: Vimeo
+    - url: https://vimeo.com
+    - path: dynamic/files/logotypes/logotype-vimeo-classic.svgd
+    - module_id: profile_classic
+- logotype_vk_classic|instance
+    entity_name: logotype
+    values
+    - id: vk_classic
+    - title: VK
+    - url: https://vk.com
+    - path: dynamic/files/logotypes/logotype-vk-classic.svgd
+    - module_id: profile_classic
+- logotype_whatsapp_classic|instance
+    entity_name: logotype
+    values
+    - id: whatsapp_classic
+    - title: Whatsapp
+    - url: https://whatsapp.com
+    - path: dynamic/files/logotypes/logotype-whatsapp-classic.svgd
+    - module_id: profile_classic
+- logotype_yahoo_classic|instance
+    entity_name: logotype
+    values
+    - id: yahoo_classic
+    - title: Yahoo
+    - url: https://yahoo.com
+    - path: dynamic/files/logotypes/logotype-yahoo-classic.svgd
+    - module_id: profile_classic
+- logotype_youtube_classic|instance
+    entity_name: logotype
+    values
+    - id: youtube_classic
+    - title: Youtube
+    - url: https://youtube.com
+    - path: dynamic/files/logotypes/logotype-youtube-classic.svgd
+    - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
