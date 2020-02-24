@@ -8,7 +8,7 @@ instances
     - id: main_classic
     - title: Logotype Main
     - url: /
-    - path: dynamic/files/logotypes/logotype-main_classic.svg
+    - path: dynamic/files/logotypes/logotype-main-classic.svg
     - is_embed: 1
     - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
