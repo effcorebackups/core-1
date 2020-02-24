@@ -106,3 +106,8 @@
     body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:not(:last-child) > a {border-bottom: 1px dotted white; border-right: none}
     body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:not(:last-child) > a {border-bottom: none}
   }
+
+  /* social networks */
+
+  x-decorator[data-id='social_networks_classic'] a[data-id='logotype']     {display: inline-block; margin: 0 10px 0 0}
+  x-decorator[data-id='social_networks_classic'] a[data-id='logotype'] img {display: inline-block; width: 40px}

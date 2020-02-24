@@ -1,0 +1,7 @@
+part_presets
+- selection_social_networks_classic|part_preset
+    id: selection_social_networks_classic
+    managing_group: Selections
+    managing_title: Social networks
+    type: link
+    source: selections/profile_classic/social_networks_classic
