@@ -19,6 +19,14 @@ instances
     - url: https://behance.net
     - path: dynamic/files/logotypes/logotype-behance-classic.svgd
     - module_id: profile_classic
+- logotype_bitbucket_classic|instance
+    entity_name: logotype
+    values
+    - id: bitbucket_classic
+    - title: Bitbucket
+    - url: https://bitbucket.org
+    - path: dynamic/files/logotypes/logotype-bitbucket-classic.svgd
+    - module_id: profile_classic
 - logotype_blogger_classic|instance
     entity_name: logotype
     values
