@@ -7,9 +7,11 @@ selections
     - view_type: template
     - template_row: logotype
     - template_row_mapping
+      - id: logotype.id
       - title: logotype.title
-      - url: logotype.url
+      - alt: logotype.alt
       - src: logotype.path
+      - url: logotype.url
     query_params
     - conditions
       - id_!f: ~logotype.id
@@ -20,16 +22,25 @@ selections
         - 2_!v: instagram_classic
       - id_in_end: )
     fields
+    - logotype.id
+        type: field
+        entity_name: logotype
+        entity_field_name: id
     - logotype.title
         type: field
         entity_name: logotype
         entity_field_name: title
         is_apply_translation: true
-    - logotype.url
+    - logotype.alt
         type: field
         entity_name: logotype
-        entity_field_name: url
+        entity_field_name: alt
+        is_apply_translation: true
     - logotype.path
         type: field
         entity_name: logotype
         entity_field_name: path
+    - logotype.url
+        type: field
+        entity_name: logotype
+        entity_field_name: url

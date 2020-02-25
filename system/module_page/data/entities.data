@@ -184,9 +184,11 @@ entities
     - template: content
     - template_row: logotype
     - template_row_mapping
+      - id: logotype.id
       - title: logotype.title
-      - url: logotype.url
+      - alt: logotype.alt
       - src: logotype.path
+      - url: logotype.url
     fields
     - id
         title: ID
@@ -217,22 +219,25 @@ entities
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
         managing_field_element_attributes
-        - required: false
         - maxlength: 1024
         managing_selection_params
         - is_apply_translation: true
-    - url
-        title: URL
+    - alt
+        title: Alternative text
         type: varchar
-        size: 255
         collate: nocase
+        size: 64
         not_null: true
+        check: (alt <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_url
+        managing_field_class: \effcore\field_text
         managing_field_element_attributes
-        - required: false
+        - maxlength: 64
+        managing_selection_params
+        - is_apply_translation: true
     - path
         title: File
         type: varchar
@@ -255,6 +260,18 @@ entities
           - =: svgd
         managing_field_element_attributes_on_insert
         - disabled: true
+    - url
+        title: URL
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_field_class: \effcore\field_url
+        managing_field_element_attributes
+        - required: false
     constraints
     - primary_id
         type: primary
