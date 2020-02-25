@@ -903,6 +903,10 @@ namespace effcore {
     return $value ?: null;
   }
 
+  static function return_htmlentities_encoded($value) {
+    return htmlentities($value, ENT_COMPAT|ENT_HTML5, 'UTF-8');
+  }
+
   static function deep_clone($data, $class_remaping = []) {
     $string = serialize($data);
     foreach ($class_remaping as $c_old_name => $c_new_name) {
