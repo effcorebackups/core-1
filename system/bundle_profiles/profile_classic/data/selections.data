@@ -12,6 +12,7 @@ selections
       - alt: logotype.alt
       - src: logotype.path
       - url: logotype.url
+      - target: logotype.target
     query_params
     - conditions
       - id_!f: ~logotype.id
@@ -44,3 +45,7 @@ selections
         type: field
         entity_name: logotype
         entity_field_name: url
+    - logotype.target
+        type: field
+        entity_name: logotype
+        entity_field_name: target

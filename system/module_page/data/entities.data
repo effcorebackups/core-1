@@ -272,6 +272,18 @@ entities
         managing_field_class: \effcore\field_url
         managing_field_element_attributes
         - required: false
+    - target
+        title: Target
+        type: varchar
+        collate: nocase
+        size: 64
+        default: _self
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_field_class: \effcore\field_text
+        managing_field_element_attributes
+        - maxlength: 64
     constraints
     - primary_id
         type: primary

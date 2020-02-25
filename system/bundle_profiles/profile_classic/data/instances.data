@@ -20,6 +20,7 @@ instances
     - alt: Behance
     - path: dynamic/files/logotypes/logotype-behance-classic.svgd
     - url: https://behance.net
+    - target: _blank
     - module_id: profile_classic
 - logotype_bitbucket_classic|instance
     entity_name: logotype
@@ -29,6 +30,7 @@ instances
     - alt: Bitbucket
     - path: dynamic/files/logotypes/logotype-bitbucket-classic.svgd
     - url: https://bitbucket.org
+    - target: _blank
     - module_id: profile_classic
 - logotype_blogger_classic|instance
     entity_name: logotype
@@ -38,6 +40,7 @@ instances
     - alt: Blogger
     - path: dynamic/files/logotypes/logotype-blogger-classic.svgd
     - url: https://blogger.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_facebook_classic|instance
     entity_name: logotype
@@ -47,6 +50,7 @@ instances
     - alt: Facebook
     - path: dynamic/files/logotypes/logotype-facebook-classic.svgd
     - url: https://facebook.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_flickr_classic|instance
     entity_name: logotype
@@ -56,6 +60,7 @@ instances
     - alt: Flickr
     - path: dynamic/files/logotypes/logotype-flickr-classic.svgd
     - url: https://flickr.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_github_classic|instance
     entity_name: logotype
@@ -65,6 +70,7 @@ instances
     - alt: Github
     - path: dynamic/files/logotypes/logotype-github-classic.svgd
     - url: https://github.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_instagram_classic|instance
     entity_name: logotype
@@ -74,6 +80,7 @@ instances
     - alt: Instagram
     - path: dynamic/files/logotypes/logotype-instagram-classic.svgd
     - url: https://instagram.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_linkedin_classic|instance
     entity_name: logotype
@@ -83,6 +90,7 @@ instances
     - alt: Linkedin
     - path: dynamic/files/logotypes/logotype-linkedin-classic.svgd
     - url: https://linkedin.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_livejournal_classic|instance
     entity_name: logotype
@@ -92,6 +100,7 @@ instances
     - alt: Livejournal
     - path: dynamic/files/logotypes/logotype-livejournal-classic.svgd
     - url: https://livejournal.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_ok_classic|instance
     entity_name: logotype
@@ -101,6 +110,7 @@ instances
     - alt: OK
     - path: dynamic/files/logotypes/logotype-ok-classic.svgd
     - url: https://ok.ru
+    - target: _blank
     - module_id: profile_classic
 - logotype_pinterest_classic|instance
     entity_name: logotype
@@ -110,6 +120,7 @@ instances
     - alt: Pinterest
     - path: dynamic/files/logotypes/logotype-pinterest-classic.svgd
     - url: https://pinterest.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_reddit_classic|instance
     entity_name: logotype
@@ -119,6 +130,7 @@ instances
     - alt: Reddit
     - path: dynamic/files/logotypes/logotype-reddit-classic.svgd
     - url: https://reddit.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_skype_classic|instance
     entity_name: logotype
@@ -128,6 +140,7 @@ instances
     - alt: Skype
     - path: dynamic/files/logotypes/logotype-skype-classic.svgd
     - url: https://skype.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_soundcloud_classic|instance
     entity_name: logotype
@@ -137,6 +150,7 @@ instances
     - alt: Soundcloud
     - path: dynamic/files/logotypes/logotype-soundcloud-classic.svgd
     - url: https://soundcloud.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_telegram_classic|instance
     entity_name: logotype
@@ -146,6 +160,7 @@ instances
     - alt: Telegram
     - path: dynamic/files/logotypes/logotype-telegram-classic.svgd
     - url: https://telegram.org
+    - target: _blank
     - module_id: profile_classic
 - logotype_tumblr_classic|instance
     entity_name: logotype
@@ -155,6 +170,7 @@ instances
     - alt: Tumblr
     - path: dynamic/files/logotypes/logotype-tumblr-classic.svgd
     - url: https://tumblr.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_twitter_classic|instance
     entity_name: logotype
@@ -164,6 +180,7 @@ instances
     - alt: Twitter
     - path: dynamic/files/logotypes/logotype-twitter-classic.svgd
     - url: https://twitter.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_viber_classic|instance
     entity_name: logotype
@@ -173,6 +190,7 @@ instances
     - alt: Viber
     - path: dynamic/files/logotypes/logotype-viber-classic.svgd
     - url: https://viber.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_vimeo_classic|instance
     entity_name: logotype
@@ -182,6 +200,7 @@ instances
     - alt: Vimeo
     - path: dynamic/files/logotypes/logotype-vimeo-classic.svgd
     - url: https://vimeo.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_vk_classic|instance
     entity_name: logotype
@@ -191,6 +210,7 @@ instances
     - alt: VK
     - path: dynamic/files/logotypes/logotype-vk-classic.svgd
     - url: https://vk.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_whatsapp_classic|instance
     entity_name: logotype
@@ -200,6 +220,7 @@ instances
     - alt: Whatsapp
     - path: dynamic/files/logotypes/logotype-whatsapp-classic.svgd
     - url: https://whatsapp.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_yahoo_classic|instance
     entity_name: logotype
@@ -209,6 +230,7 @@ instances
     - alt: Yahoo
     - path: dynamic/files/logotypes/logotype-yahoo-classic.svgd
     - url: https://yahoo.com
+    - target: _blank
     - module_id: profile_classic
 - logotype_youtube_classic|instance
     entity_name: logotype
@@ -218,6 +240,7 @@ instances
     - alt: Youtube
     - path: dynamic/files/logotypes/logotype-youtube-classic.svgd
     - url: https://youtube.com
+    - target: _blank
     - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
 # pages
