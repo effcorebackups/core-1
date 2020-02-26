@@ -147,7 +147,7 @@ namespace effcore {
   static function text_get_block_information() {
     $information = [];
     $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
-    $information['Memory for php (bytes)'] = locale::format_number(memory_get_usage(true));
+    $information['Memory for PHP (bytes)'] = locale::format_number(memory_get_usage(true));
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_key => $c_value) {
       $result.= '  '.str_pad($c_key, 38, ' ', STR_PAD_LEFT).' : ';

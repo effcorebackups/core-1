@@ -45,7 +45,7 @@
   section[data-id='logs'] x-param x-title::after {content: ': '}
   section[data-id='logs'] x-param x-value {font-family: monospace}
 
-  /* php dependencies */
+  /* PHP dependencies */
 
   x-decorator[data-id='extensions_dependency'] td {font-size: .9em}
 

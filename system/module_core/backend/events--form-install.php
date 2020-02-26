@@ -22,7 +22,7 @@ namespace effcore\modules\core {
   static function on_init($event, $form, $items) {
     if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
-    # check for php dependencies
+    # check for PHP dependencies
       $embed = module::get_embed();
       $dependencies = [];
       foreach ($embed as $c_module)
@@ -52,7 +52,7 @@ namespace effcore\modules\core {
           'With it, you can speed up the system from 2-3x and more.'], ['extension' => 'Zend OPCache']
         ), 'warning');
       }
-    # check php dependencies for storage
+    # check PHP dependencies for storage
       if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
         $items['#driver:mysql' ]->disabled_set();
         $items['#driver:sqlite']->disabled_set();

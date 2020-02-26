@@ -19,10 +19,10 @@ forms
             element_attributes
             - name: driver
             - value: mysql
-      # mysql parameters
+      # MySQL parameters
         - mysql|fieldset
             children
-          # host name
+          # field 'Hostname'
             - host|field_text
                 title: Hostname
                 description: Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [::1]".
@@ -32,7 +32,7 @@ forms
                 - minlength: 1
                 - maxlength: 253
                 - pattern: ^[a-zA-Z0-9_\-\:\.\[\]/]+$
-          # port
+          # field 'Port'
             - port|field_number
                 title: Port
                 element_attributes
@@ -40,7 +40,7 @@ forms
                 - value: 3306
                 - min: 1024
                 - max: 49150
-          # login
+          # field 'User name' (login)
             - storage_login|field_text
                 title: User name
                 element_attributes
@@ -49,13 +49,13 @@ forms
                 - minlength: 1
                 - maxlength: 64
                 - pattern: ^[a-zA-Z0-9_\-]+$
-          # password
+          # field 'Password'
             - password|field_password
                 element_attributes
                 - name: storage_password
                 - minlength: false
                 - required: false
-          # database name
+          # field 'Database name'
             - database_name|field_text
                 title: Database name
                 element_attributes
@@ -72,10 +72,10 @@ forms
             element_attributes
             - name: driver
             - value: sqlite
-      # sqlite parameters
+      # SQLite parameters
         - sqlite|fieldset
             children
-          # storage file name
+          # field 'File name'
             - file_name|field_text
                 title: File name
                 element_attributes
@@ -89,7 +89,7 @@ forms
         - params|fieldset
             title: Shared parameters
             children
-          # table prefix
+          # field 'Table prefix'
             - table_prefix|field_text
                 title: Table prefix
                 element_attributes
@@ -97,20 +97,36 @@ forms
                 - maxlength: 10
                 - pattern: ^[a-zA-Z0-9_\-]+$
                 - required: false
+    # user parameters
     - user|fieldset
         title: User
         state: closed
         children
-      # email
+      # field 'EMail'
         - email|field_email
             element_attributes
             - value: admin@example.com
-      # password
+      # field 'Password'
         - password|field_password
-      # timezone
+      # field 'Time zone'
         - timezone|field_timezone
             element_attributes
             - data-source: uagent-timezone
+    # profile parameters
+    - profile|fieldset
+        title: Profile
+        state: closed
+        children
+      # field 'Profile'
+        - profile|field_select
+            title: Profile
+            element_attributes
+            - name: profile
+            values
+            - not_selected: - select -
+            - default: Profile "Default"
+            selected
+            - =: default
     - button_install|button
         title: install
         attributes

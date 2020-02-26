@@ -9,7 +9,7 @@ forms
     - form_elements|fieldset
         title: Form elements
         children
-      # field_file
+      # field 'File'
         - file|field_file
             title: File
             max_file_size: 10K
@@ -32,7 +32,7 @@ forms
             element_attributes
             - name: file[]
             - multiple: true
-      # field_text
+      # field 'Text'
         - text|field_text
             title: Text
             description_state: opened
@@ -47,7 +47,7 @@ forms
             - value: text in input
             - minlength: 5
             - pattern: ^[a-zA-Z0-9 ]+$
-      # field_password
+      # field 'Password'
         - password|field_password
             title: Password
             description_position: top
@@ -60,7 +60,7 @@ forms
             element_attributes
             - name: password
             - value: text in password
-      # field_search
+      # field 'Search'
         - search|field_search
             title: Search
             description|text
@@ -70,7 +70,7 @@ forms
             element_attributes
             - name: search
             - value: text in search
-      # field_url
+      # field 'URL'
         - url|field_url
             title: URL
             description|text
@@ -80,7 +80,7 @@ forms
             element_attributes
             - name: url
             - value: http://example.com
-      # field_tel
+      # field 'Telephone number'
         - tel|field_tel
             title: Telephone number
             description|text_multiline
@@ -92,7 +92,7 @@ forms
             element_attributes
             - name: tel
             - value: &plus;000112334455
-      # field_email
+      # field 'EMail'
         - email|field_email
             title: EMail
             description|text
@@ -103,7 +103,7 @@ forms
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: true
-      # field_nickname
+      # field 'Nickname'
         - nickname|field_nickname
             title: Nickname
             description|text_multiline
@@ -116,7 +116,7 @@ forms
             element_attributes
             - name: nickname
             - value: user
-      # field_number
+      # field 'Digit' (number)
         - number|field_number
             title: Digit
             description|text
@@ -128,7 +128,7 @@ forms
             - min: -1000
             - max: +1000
             - step: 0.2
-      # field_range
+      # field 'Range'
         - range|field_range
             title: Range
             description|text
@@ -140,7 +140,7 @@ forms
             - min: -1
             - max: +1
             - step: 0.2
-      # field_color
+      # field 'Color'
         - color|field_color
             title: Color
             description|text_multiline
@@ -166,7 +166,7 @@ forms
             element_attributes
             - name: date
             - value: 2030-02-01
-      # field_time
+      # field 'Time'
         - time|field_time
             title: Time
             description|text_multiline
@@ -178,7 +178,7 @@ forms
             element_attributes
             - name: time
             - value: 01:23:45
-      # field_datetime
+      # field 'Date/Time'
         - datetime|field_datetime
             title: Date/Time
             description|text_multiline
@@ -190,7 +190,7 @@ forms
             element_attributes
             - name: datetime
             - value: 2030-02-01 01:23:45
-      # field_datetime_local
+      # field 'Local Date/Time'
         - datetime_local|field_datetime_local
             title: Local Date/Time
             is_get_utc: true
@@ -204,7 +204,7 @@ forms
             element_attributes
             - name: datetime_local
             - value: 2030-02-01 01:23:45
-      # field_timezone
+      # field 'Time zone'
         - timezone|field_timezone
             title: Time zone
             description|text
@@ -262,7 +262,7 @@ forms
             - =: option_1
             disabled
             - =: option_2
-      # field_logic
+      # field 'Logic'
         - logic|field_logic
             title: Logic
             description|text
@@ -273,7 +273,7 @@ forms
             - name: logic
             selected
             - 1: 1
-      # field_relation
+      # field 'Relation'
         - relation|field_relation
             title: Relation
             description|text
@@ -295,7 +295,7 @@ forms
             - name: relation
             selected
             - demo_sql_item_1: demo_sql_item_1
-      # field_relation (mode: tree)
+      # field 'Relation' (mode: tree)
         - relation_tree|field_relation
             title: Relation (tree view)
             description|text
@@ -315,7 +315,7 @@ forms
             - name: relation_tree
             selected
             - demo_sql_item_1: demo_sql_item_1
-      # field_language
+      # field 'Language'
         - language|field_language
             title: Language
             description|text
@@ -326,7 +326,7 @@ forms
             - name: lang_code
             selected
             - en: en
-      # field_text_direction
+      # field 'Text direction'
         - text_direction|field_text_direction
             title: Text direction
             description|text
@@ -356,7 +356,7 @@ forms
             title: Checkboxes
             state: opened
             children
-          # field_checkbox
+          # field 'Checkbox'
             - checkbox|field_checkbox
                 title: Checkbox
                 description|text
@@ -367,7 +367,7 @@ forms
                 - name: checkbox
                 - value: checkbox
                 - checked: true
-          # group_checkboxes
+          # group 'Checkboxes'
             - checkboxes|group_checkboxes
                 title: Checkboxes
                 description|text
@@ -387,7 +387,7 @@ forms
                 checked
                 - =: checkbox_2
                 - =: checkbox_4
-          # field_switcher
+          # field 'Switcher'
             - switcher|field_switcher
                 title: Switcher
                 description|text
@@ -397,7 +397,7 @@ forms
                 element_attributes
                 - name: switcher
                 - checked: true
-          # group_switchers
+          # group 'Switchers'
             - switchers|group_switchers
                 title: Switchers
                 description|text
@@ -417,7 +417,7 @@ forms
                 checked
                 - =: switcher_2
                 - =: switcher_4
-          # group_access
+          # group 'Access'
             - access|group_access
                 title: Access
                 description|text_multiline
@@ -433,7 +433,7 @@ forms
             title: Radiobuttons
             state: opened
             children
-          # field_radiobutton
+          # field 'Radiobutton'
             - radiobutton|field_radiobutton
                 title: Radiobutton
                 description|text
@@ -443,7 +443,7 @@ forms
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
-          # group_radiobuttons
+          # group 'Radiobuttons'
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
                 description|text
@@ -460,7 +460,7 @@ forms
                 - =: radiobutton_3
                 checked
                 - =: radiobutton_2
-          # group_palette
+          # group 'Color' (palette)
             - palette|group_palette
                 title: Color
                 description|text

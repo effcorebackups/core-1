@@ -8,7 +8,7 @@ translations
     - %%_entity_title_context\: insert: %%_entity_title_context: вставить
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
-    - a php extension stopped the file upload: php-расширение остановило загрузку файла
+    - a PHP extension stopped the file upload: PHP-расширение остановило загрузку файла
     - Access forbidden: Доступ запрещён
     - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access: Доступ
@@ -93,7 +93,7 @@ translations
     - delete: удалить
     - Demo: Демо
     - depend from modules: зависит от модулей
-    - depend from php extensions: зависит от php-расширений
+    - depend from PHP extensions: зависит от PHP-расширений
     - Description: Описание
     - description: описание
     - Develop: Разработка
@@ -376,6 +376,7 @@ translations
     - press to show hidden description: нажмите, чтобы показать скрытое описание
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
+    - Profile: Профиль
     - Profiles: Профили
     - Provisioning key: Ключ обеспечения
     - Query error!: Ошибка запроса!
