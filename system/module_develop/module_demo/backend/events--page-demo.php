@@ -51,8 +51,8 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
     $header_h2 = new markup('h2', [], [new text('Header %%_size', ['size' => 'H2'])]);
     $header_h3 = new markup('h3', [], [new text('Header %%_size', ['size' => 'H3'])]);
-    $header_h2_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;',                                                                  ]);
-    $header_h3_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&#10;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
+    $header_h2_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&NewLine;',                                                                  ]);
+    $header_h3_paragraph = new markup('p', [], ['content' => rtrim(str_repeat('Paragraph content. ', 16)).'&NewLine;', 'link_view_more' => new markup('a', ['href' => '/'], 'View more')]);
   # ─────────────────────────────────────────────────────────────────────
   # unordered list
   # ─────────────────────────────────────────────────────────────────────

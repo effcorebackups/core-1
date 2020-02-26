@@ -22,7 +22,7 @@ blocks
             text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
->>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&NewLine;
     - header_h3|markup
         tag_name: h3
         children
@@ -37,7 +37,7 @@ blocks
             text: Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
->>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;
+>>>>>>>>>>>>>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&NewLine;
         - link_view_more|markup
             tag_name: a
             attributes

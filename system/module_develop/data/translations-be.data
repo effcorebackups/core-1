@@ -5,11 +5,11 @@ translations
     - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
 >>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
->>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&#10;: 
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&NewLine;: 
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
->>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&#10;
+>>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&NewLine;
     - (default type): (тып па змаўчанню)
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
