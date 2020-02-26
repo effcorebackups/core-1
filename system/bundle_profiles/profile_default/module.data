@@ -1,8 +1,7 @@
-module|module
+module|module_as_profile
   id: profile_default
   id_bundle: profiles
   title: Profile "Default"
-  group: Profiles
   description: Module for profile "Default".
   copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
   enabled: yes
