@@ -157,7 +157,9 @@ namespace effcore {
     $result = [];
     foreach (static::get_all() as $c_module) {
       if ($c_module->enabled == 'yes') {
-        $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+        $result[$c_module->id] = $property ?
+                     $c_module->{$property} :
+                     $c_module;
       }
     }
     return $result;
@@ -174,6 +176,18 @@ namespace effcore {
     foreach ($installed as $c_id => $c_path) {
       if ($ws_enabled  == true && isset($enabled[$c_id]) == true) $result[$c_id] = $c_path;
       if ($ws_disabled == true && isset($enabled[$c_id]) != true) $result[$c_id] = $c_path;
+    }
+    return $result;
+  }
+
+  static function get_profiles($property = null) {
+    $result = [];
+    foreach (static::get_all() as $c_module) {
+      if ($c_module instanceof module_as_profile) {
+        $result[$c_module->id] = $property ?
+                     $c_module->{$property} :
+                     $c_module;
+      }
     }
     return $result;
   }

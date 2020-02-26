@@ -45,7 +45,7 @@ namespace effcore\modules\core {
           }
         }
       }
-    # check opcache
+    # check OPCache
       if (!extension_loaded('Zend OPCache')) {
         message::insert(new text_multiline([
           'The PHP extension "%%_extension" is not available!',
@@ -63,6 +63,13 @@ namespace effcore\modules\core {
         if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'warning');}
         if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('The PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'warning');}
       }
+    # collect profile information
+      $profile_options = module::get_profiles('title');
+      core::array_sort_text($profile_options);
+      $items['#profile']->values += $profile_options;
+      $items['#profile']->selected = ['profile_default' => 'profile_default'];
+      $items['#profile']->is_builded = false;
+      $items['#profile']->build();
     } else {
       $form->children_delete();
       core::send_header_and_exit('access_forbidden', null, new text_multiline([

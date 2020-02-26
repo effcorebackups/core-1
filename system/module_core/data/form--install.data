@@ -124,9 +124,6 @@ forms
             - name: profile
             values
             - not_selected: - select -
-            - default: Profile "Default"
-            selected
-            - =: default
     - button_install|button
         title: install
         attributes
