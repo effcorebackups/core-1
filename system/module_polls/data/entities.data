@@ -30,8 +30,8 @@ entities
         size: 2048
         not_null: true
         check: (question <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -137,8 +137,8 @@ entities
         size: 2048
         not_null: true
         check: (answer <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
     - weight
         title: Weight
         type: integer

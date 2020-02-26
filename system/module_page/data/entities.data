@@ -74,8 +74,8 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -145,8 +145,8 @@ entities
         collate: nocase
         not_null: true
         default: utf-8
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -217,8 +217,8 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -235,8 +235,8 @@ entities
         size: 64
         not_null: true
         check: (alt <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -286,8 +286,8 @@ entities
         collate: nocase
         size: 64
         default: _self
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -335,8 +335,8 @@ entities
         size: 1024
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -418,8 +418,8 @@ entities
         size: 1024
         not_null: true
         check: (description <> '')
-        filter_insert: \effcore\core::return_htmlentities_encoded
-        filter_update: \effcore\core::return_htmlentities_encoded
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true

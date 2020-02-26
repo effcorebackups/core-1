@@ -904,8 +904,8 @@ namespace effcore {
     return $value ?: null;
   }
 
-  static function return_htmlentities_encoded($value) {
-    return htmlentities($value, ENT_COMPAT|ENT_HTML5, 'UTF-8');
+  static function return_htmlspecialchars_encoded($value) {
+    return htmlspecialchars($value, ENT_COMPAT|ENT_HTML5, 'UTF-8');
   }
 
   static function deep_clone($data, $class_remaping = []) {
