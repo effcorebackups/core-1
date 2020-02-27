@@ -8,5 +8,6 @@ namespace effcore {
           class module_as_profile extends module {
 
   public $group = 'Profiles';
+  public $deploy_weight = -50;
 
 }}
