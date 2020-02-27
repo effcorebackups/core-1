@@ -293,6 +293,7 @@ entities
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
         managing_field_element_attributes
+        - required: false
         - maxlength: 64
     constraints
     - primary_id

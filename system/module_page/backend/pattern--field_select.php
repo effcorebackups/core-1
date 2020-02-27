@@ -22,6 +22,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $this->child_select('element')->children_delete();
       foreach ($this->values as $c_id => $c_data) {
         if (is_object($c_data) &&
                !empty($c_data->title) &&
