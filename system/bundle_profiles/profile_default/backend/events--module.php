@@ -16,9 +16,9 @@ namespace effcore\modules\profile_default {
 
   static function on_install($event) {
     $module = module::get('profile_default');
-    if (page::get_current()->args_get('base') == '/install' && field::request_value_get('profile') != $module->id) {static::$conflict_has_been = true; return;}
-    if (page::get_current()->args_get('base') == '/install' && field::request_value_get('profile') == $module->id) {$module->install();}
-    if (page::get_current()->args_get('base') != '/install') {
+    if (page::get_current()->id == 'install' && field::request_value_get('profile') != $module->id) {static::$conflict_has_been = true; return;}
+    if (page::get_current()->id == 'install' && field::request_value_get('profile') == $module->id) {$module->install();}
+    if (page::get_current()->id != 'install') {
       $page_ids = [];
       if (page::get('front'       )) $page_ids[] = 'front';
       if (page::get('login'       )) $page_ids[] = 'login';
