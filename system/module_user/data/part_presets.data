@@ -1,4 +1,12 @@
 part_presets
+- form_feedback|part_preset
+    id: form_feedback
+    managing_group: Forms
+    managing_title: Feedback
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/feedback
 - form_login|part_preset
     id: form_login
     managing_group: Forms
@@ -7,22 +15,6 @@ part_presets
     - =: content
     type: link
     source: forms/user/login
-- form_registration|part_preset
-    id: form_registration
-    managing_group: Forms
-    managing_title: Registration
-    in_areas
-    - =: content
-    type: link
-    source: forms/user/registration
-- form_recovery|part_preset
-    id: form_recovery
-    managing_group: Forms
-    managing_title: Recovery
-    in_areas
-    - =: content
-    type: link
-    source: forms/user/recovery
 - form_logout|part_preset
     id: form_logout
     managing_group: Forms
@@ -31,6 +23,22 @@ part_presets
     - =: content
     type: link
     source: forms/user/logout
+- form_recovery|part_preset
+    id: form_recovery
+    managing_group: Forms
+    managing_title: Recovery
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/recovery
+- form_registration|part_preset
+    id: form_registration
+    managing_group: Forms
+    managing_title: Registration
+    in_areas
+    - =: content
+    type: link
+    source: forms/user/registration
 # ─────────────────────────────────────────────────────────────────────
 - selection_user|part_preset
     id: selection_user

@@ -1,0 +1,17 @@
+forms
+- feedback|form
+    attributes
+    - id: feedback
+    - method: post
+    - novalidate: true
+    children
+    - fields|fieldset
+        title: Fields
+        children
+        - email|field_email
+        - captcha|pluggable_class
+            name: field_captcha
+    - button_send|button
+        title: send
+        attributes
+        - value: send
