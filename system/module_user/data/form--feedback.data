@@ -9,6 +9,11 @@ forms
         title: Feedback
         children
         - email|field_email
+        - message|field_textarea
+            title: Message
+            element_attributes
+            - name: message
+            - maxlength: 2048
         - captcha|pluggable_class
             name: field_captcha
     - button_send|button

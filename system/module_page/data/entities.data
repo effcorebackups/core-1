@@ -70,8 +70,8 @@ entities
     - title
         title: Title
         type: varchar
-        collate: nocase
         size: 1024
+        collate: nocase
         not_null: true
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
@@ -213,8 +213,8 @@ entities
     - title
         title: Title
         type: varchar
-        collate: nocase
         size: 1024
+        collate: nocase
         not_null: true
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
@@ -231,8 +231,8 @@ entities
     - alt
         title: Alternative text
         type: varchar
-        collate: nocase
         size: 64
+        collate: nocase
         not_null: true
         check: (alt <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
@@ -283,8 +283,8 @@ entities
     - target
         title: Target
         type: varchar
-        collate: nocase
         size: 64
+        collate: nocase
         default: _self
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
@@ -332,8 +332,8 @@ entities
     - title
         title: Title
         type: varchar
-        collate: nocase
         size: 1024
+        collate: nocase
         not_null: true
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
@@ -415,8 +415,8 @@ entities
     - description
         title: Description
         type: varchar
-        collate: nocase
         size: 1024
+        collate: nocase
         not_null: true
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded

@@ -33,8 +33,8 @@ entities
     - title
         title: Title
         type: varchar
-        collate: nocase
         size: 255
+        collate: nocase
         not_null: true
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded

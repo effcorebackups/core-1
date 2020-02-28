@@ -26,8 +26,8 @@ entities
     - question
         title: Question
         type: varchar
-        collate: nocase
         size: 2048
+        collate: nocase
         not_null: true
         check: (question <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
@@ -54,8 +54,8 @@ entities
     - diagram_type
         title: Diagramm type
         type: varchar
-        collate: nocase
         size: 32
+        collate: nocase
         not_null: true
         check: (diagram_type <> '')
         managing_on_select_is_enabled: true
@@ -133,8 +133,8 @@ entities
     - answer
         title: Answer
         type: varchar
-        collate: nocase
         size: 2048
+        collate: nocase
         not_null: true
         check: (answer <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded

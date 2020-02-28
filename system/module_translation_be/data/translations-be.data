@@ -298,6 +298,7 @@ translations
     - Menu\: text: Меню: тэкст
     - Menus: Меню
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
+    - Message: Паведамленне
     - Messages: Паведамленні
     - MiB: МіБ
     - Minimum field value\: %%_value: Мінімальнае значэнне поля: %%_value
