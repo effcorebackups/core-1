@@ -16,7 +16,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        check: (id <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -188,7 +187,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        check: (id <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -201,6 +199,8 @@ entities
         type: varchar
         size: 255
         collate: nocase
+        not_null: true
+        check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -252,6 +252,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (f_nocase <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -265,6 +266,7 @@ entities
         size: 255
         collate: binary
         not_null: true
+        check: (f_binary <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -291,6 +293,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (f_primary <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -306,6 +309,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (f_unique <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
