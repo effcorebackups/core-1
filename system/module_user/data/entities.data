@@ -12,7 +12,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        check: (id <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -129,7 +128,6 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        check: (id_role <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -147,7 +145,6 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        check: (id_permission <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -193,7 +190,6 @@ entities
         title: User
         type: integer
         not_null: true
-        check: (id_user <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -211,7 +207,6 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        check: (id_role <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
@@ -377,7 +372,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        check: (id <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
