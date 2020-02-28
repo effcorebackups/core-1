@@ -505,6 +505,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (f_index_unique <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -520,6 +521,7 @@ entities
         size: 255
         collate: nocase
         not_null: true
+        check: (f_index <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
