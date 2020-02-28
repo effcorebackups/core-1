@@ -40,7 +40,7 @@ namespace effcore\modules\storage {
       }
       if (!$has_visible_fields) {
         $form->child_select('data')->child_insert(
-          new markup('x-no-result', [], 'no visible fields'), 'no_result'
+          new markup('x-no-result', [], 'no fields'), 'no_result'
         );
       } else {
         $selection->field_insert_checkbox(null, null, ['weight' => 80]);

@@ -1,4 +1,11 @@
 entities
+- feedback|entity
+    name: feedback
+    title: Feedback
+    title_plural: Feedbacks
+    catalog_name: feedbacks
+    managing_is_enabled: true
+    ws_created: true
 - permission|entity
     name: permission
     title: Permission

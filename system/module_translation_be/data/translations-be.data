@@ -131,7 +131,8 @@ translations
     - Expiration date: Дата заканчэння
     - failed to write file to disk: не ўдалося запісаць файл на дыск
     - failure: няўдача
-    - Feedback: Зваротная сувязь
+    - Feedback: Водгук
+    - Feedbacks: Водгукі
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было выдалена.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было ўстаўлена.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" пасля спробы запампаваць файл вярнула памылку: %%_error!
@@ -336,7 +337,6 @@ translations
     - NO TITLE: НЯМА ЗАГАЛОЎКУ
     - no updates: няма абнаўленняў
     - no url: няма url
-    - no visible fields: няма бачных палёў
     - No: Не
     - no: не
     - not applicable: не ўжываецца

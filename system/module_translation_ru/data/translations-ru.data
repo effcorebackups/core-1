@@ -131,7 +131,8 @@ translations
     - Expiration date: Дата окончания
     - failed to write file to disk: не удалось записать файл на диск
     - failure: неудача
-    - Feedback: Обратная связь
+    - Feedback: Отзыв
+    - Feedbacks: Отзывы
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было вставлено.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
@@ -336,7 +337,6 @@ translations
     - NO TITLE: НЕТ ЗАГОЛОВКА
     - no updates: нет обновлений
     - no url: нет url
-    - no visible fields: нет видимых полей
     - No: Нет
     - no: нет
     - not applicable: не применимо

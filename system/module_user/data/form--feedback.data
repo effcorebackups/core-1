@@ -6,7 +6,7 @@ forms
     - novalidate: true
     children
     - fields|fieldset
-        title: Fields
+        title: Feedback
         children
         - email|field_email
         - captcha|pluggable_class
