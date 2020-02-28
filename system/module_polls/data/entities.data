@@ -172,11 +172,13 @@ entities
     - id_user
         title: User ID
         type: integer
+        default: null
     - id_session
         title: Session ID
         type: varchar
         size: 255
         collate: nocase
+        default: null
         check: (id_session <> '')
     constraints
     - foreign_id_answer

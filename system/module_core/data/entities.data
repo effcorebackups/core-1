@@ -23,6 +23,7 @@ entities
     - expired
         title: Expiration date
         type: datetime
+        default: null
     indexes
     - index_id_session
         type: index
