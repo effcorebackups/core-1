@@ -6,6 +6,7 @@ entities
     catalog_name: feedbacks
     managing_is_enabled: true
     ws_created: true
+    ws_data: true
     fields
     - id
         title: ID
@@ -46,6 +47,16 @@ entities
         managing_field_class: \effcore\field_textarea
         managing_field_element_attributes
         - maxlength: 2048
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_email
+        type: index
+        fields
+        - =: email
 - permission|entity
     name: permission
     title: Permission
