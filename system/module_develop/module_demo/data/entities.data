@@ -29,6 +29,8 @@ entities
         type: varchar
         size: 255
         collate: nocase
+        not_null: true
+        check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -85,6 +87,7 @@ entities
         collate: nocase
         not_null: true
         default: default text
+        check: (f_varchar <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_is_enabled: true
@@ -101,8 +104,8 @@ entities
     - f_time
         title: Field time
         type: time
-        not_null: true
-        default: 00:00:00
+        default: null
+        check: (f_time <> '')
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -113,6 +116,8 @@ entities
     - f_date
         title: Field date
         type: date
+        default: null
+        check: (f_date <> '')
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -123,6 +128,8 @@ entities
     - f_datetime
         title: Field datetime
         type: datetime
+        default: null
+        check: (f_datetime <> '')
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true

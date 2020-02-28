@@ -19,6 +19,7 @@ entities
         size: 32
         collate: nocase
         not_null: true
+        check: (characters <> '')
     - attempts
         title: Attempts
         type: integer
@@ -27,6 +28,7 @@ entities
         title: Canvas data
         type: blob
         not_null: true
+        check: (canvas_data <> '')
     constraints
     - primary_ip_hex
         type: primary
