@@ -48,7 +48,7 @@ namespace effcore {
       $this->fields['created'] = new \stdClass;
       $this->fields['created']->title = 'Created';
       $this->fields['created']->type = 'datetime';
-      $this->fields['updated']->default = null;
+      $this->fields['created']->default = null;
       $this->fields['created']->managing_on_select_is_enabled = true;
       $this->indexes['index_created'] = new \stdClass;
       $this->indexes['index_created']->type = 'index';
