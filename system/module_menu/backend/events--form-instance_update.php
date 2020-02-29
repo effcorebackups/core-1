@@ -11,8 +11,7 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
     # field 'parent'
       if ($entity->name == 'tree_item' && !empty($form->_instance)) {
@@ -34,8 +33,7 @@ namespace effcore\modules\menu {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':

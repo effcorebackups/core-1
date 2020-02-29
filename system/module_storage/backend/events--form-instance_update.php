@@ -21,13 +21,13 @@ namespace effcore\modules\storage {
 
   static function on_init($event, $form, $items) {
     if (!isset($form->managing_group_id)) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
-    $entity_name = page::get_current()->args_get('entity_name');
+    if (!isset($form->entity_name      )) $form->entity_name       = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     $groups = entity::groups_managing_get();
     if ($entity) {
       if (isset($groups[$form->managing_group_id])) {
-        $form->attribute_insert('data-entity_name', $entity_name);
+        $form->attribute_insert('data-entity_name', $form->entity_name);
         $form->attribute_insert('data-instance_id', $instance_id);
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $instance_id);
@@ -78,8 +78,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_validate($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
@@ -104,8 +103,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
