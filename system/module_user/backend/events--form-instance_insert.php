@@ -7,7 +7,6 @@
 namespace effcore\modules\user {
           use \effcore\entity;
           use \effcore\group_access;
-          use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_form_instance_insert {

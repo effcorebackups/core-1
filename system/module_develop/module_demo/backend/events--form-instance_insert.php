@@ -6,7 +6,6 @@
 
 namespace effcore\modules\demo {
           use \effcore\entity;
-          use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_form_instance_insert {

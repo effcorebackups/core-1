@@ -11,7 +11,6 @@ namespace effcore\modules\page {
           use \effcore\field_number;
           use \effcore\layout;
           use \effcore\markup;
-          use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\widget_parts;

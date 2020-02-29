@@ -8,7 +8,6 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
-          use \effcore\page;
           use \effcore\widget_selection_fields;
           abstract class events_form_instance_update_selection {
 
