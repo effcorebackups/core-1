@@ -18,19 +18,19 @@ namespace effcore\modules\storage {
 
   static function on_init($event, $form, $items) {
     if (!isset($form->managing_group_id)) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
-    $entity_name = page::get_current()->args_get('entity_name');
+    if (!isset($form->entity_name      )) $form->entity_name       = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     $groups = entity::groups_managing_get();
     if ($entity) {
       if (isset($groups[$form->managing_group_id])) {
-        $form->attribute_insert('data-entity_name', $entity_name);
+        $form->attribute_insert('data-entity_name', $form->entity_name);
         $form->attribute_insert('data-instance_id', $instance_id);
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $instance_id);
         if (count($id_keys  ) ==
             count($id_values)) {
-          $form->_instance = new instance($entity_name, array_combine($id_keys, $id_values));
+          $form->_instance = new instance($form->entity_name, array_combine($id_keys, $id_values));
           if ($form->_instance->select()) {
             if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
             $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => translation::get($entity->title), 'id' => $instance_id]));
@@ -42,9 +42,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
     $instance_id = page::get_current()->args_get('instance_id');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'delete':
