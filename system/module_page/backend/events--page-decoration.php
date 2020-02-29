@@ -15,7 +15,7 @@ namespace effcore\modules\page {
 
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
-    $id   = page::get_current()->args_get('id'  );
+    $id   = page::get_current()->args_get('id');
     if ($type == null || $type == 'colors') url::go(page::get_current()->args_get('base').'/colors/current');
   # colors presets
     if ($type == 'colors/presets') {

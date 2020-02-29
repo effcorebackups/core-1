@@ -18,9 +18,7 @@ namespace effcore\modules\user {
     if ($user) {
       if ($user->id == user::get_current()->id ||                       # owner
           access::check((object)['roles' => ['admins' => 'admins']])) { # admin
-        $page->args_set('managing_group_id', 'user');
-        $page->args_set('entity_name',       'user');
-        $page->args_set('instance_id',    $user->id);
+        $page->args_set('instance_id',  $user->id);
       } else core::send_header_and_exit('access_forbidden');
     }   else core::send_header_and_exit('page_not_found'  );
   }
