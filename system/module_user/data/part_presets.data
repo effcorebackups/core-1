@@ -5,8 +5,11 @@ part_presets
     managing_title: Feedback
     in_areas
     - =: content
-    type: link
-    source: forms/user/feedback
+    type: copy
+    source: forms/storage/instance_insert
+    properties
+    - managing_group_id: other
+    - entity_name: feedback
 - form_login|part_preset
     id: form_login
     managing_group: Forms
