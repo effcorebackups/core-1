@@ -19,6 +19,7 @@ namespace effcore\modules\storage {
   static function on_init($event, $form, $items) {
                    page::get_current()->args_set('action_name', 'select_multiple');
     $entity_name = page::get_current()->args_get('entity_name');
+    if (!isset($form->managing_group_id)) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     $entity = entity::get($entity_name);
     if ($entity) {
       $form->attribute_insert('data-entity_name', $entity_name);
@@ -92,8 +93,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_submit($event, $form, $items) {
-    $managing_group_id = page::get_current()->args_get('managing_group_id');
-    $entity_name       = page::get_current()->args_get('entity_name'      );
+    $entity_name = page::get_current()->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
@@ -110,7 +110,7 @@ namespace effcore\modules\storage {
           static::on_init(null, $form, $items);
           break;
         case 'insert':
-          url::go('/manage/data/'.$managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
+          url::go('/manage/data/'.$form->managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
           break;
       }
     }
