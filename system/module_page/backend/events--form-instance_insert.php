@@ -15,8 +15,7 @@ namespace effcore\modules\page {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       if ($entity->name == 'page') {
       # field 'lang_code'
@@ -34,8 +33,7 @@ namespace effcore\modules\page {
   }
 
   static function on_validate($event, $form, $items) {
-    $entity_name = page::get_current()->args_get('entity_name');
-    $entity = entity::get($entity_name);
+    $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
