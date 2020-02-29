@@ -14,13 +14,14 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
-    $category_id = page::get_current()->args_get('category_id');
+    if (!isset($form->category_id)) $form->category_id = page::get_current()->args_get('category_id');
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # field 'id_tree'
       if ($entity->name == 'tree_item') {
         $items['#id_tree']->value_set(
-          tree::select($category_id) ? $category_id : null
+          tree::select($form->category_id) ?
+                       $form->category_id : null
         );
       }
     }

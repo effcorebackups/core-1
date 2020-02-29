@@ -18,17 +18,17 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_select_multiple {
 
   static function on_init($event, $form, $items) {
-    $category_id = page::get_current()->args_get('category_id');
+    if (!isset($form->category_id)) $form->category_id = page::get_current()->args_get('category_id');
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # drag-and-drop functionality
-      if ($entity->name == 'tree_item' && $category_id && !empty($form->_selection)) {
+      if ($entity->name == 'tree_item' && $form->category_id && !empty($form->_selection)) {
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
         $form->_selection->query_params['conditions'] = [
           'id_tree_!f' => 'id_tree',
           'operator'   => '=',
-          'id_tree_!v' => $category_id];
+          'id_tree_!v' => $form->category_id];
       # $c_row 'actions'
         $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) {
           $c_actions_list = new actions_list;
@@ -56,18 +56,17 @@ namespace effcore\modules\menu {
   }
 
   static function on_submit($event, $form, $items) {
-    $category_id = page::get_current()->args_get('category_id');
     $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'apply':
-          if ($entity->name == 'tree_item' && $category_id) {
+          if ($entity->name == 'tree_item' && $form->category_id) {
             $event->is_last = true;
             $has_selection = false;
             $tree_items = entity::get('tree_item')->instances_select(['conditions' => [
               'id_tree_!f' => 'id_tree',
               'operator'   => '=',
-              'id_tree_!v' => $category_id]], 'id');
+              'id_tree_!v' => $form->category_id]], 'id');
             foreach ($tree_items as $c_item) {
               $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
               $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: '0';
@@ -92,8 +91,8 @@ namespace effcore\modules\menu {
           }
           break;
         case 'insert':
-          if ($entity->name == 'tree_item' && $category_id) {
-            url::go('/manage/data/'.$form->managing_group_id.'/'.$entity->name.'//insert/'.$category_id.'?'.url::back_part_make());
+          if ($entity->name == 'tree_item' && $form->category_id) {
+            url::go('/manage/data/'.$form->managing_group_id.'/'.$entity->name.'//insert/'.$form->category_id.'?'.url::back_part_make());
           }
           break;
       }
