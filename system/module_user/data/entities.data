@@ -51,6 +51,7 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -113,12 +114,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -185,12 +188,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -266,12 +271,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id_role_id_user
         type: primary
@@ -361,12 +368,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -548,12 +557,14 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
+        managing_field_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
