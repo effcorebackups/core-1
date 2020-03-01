@@ -23,7 +23,7 @@ namespace effcore\modules\storage {
     $entity = entity::get($form->entity_name);
     $groups = entity::groups_managing_get();
     if ($entity) {
-      if (isset($groups[$form->managing_group_id])) {
+      if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
         $form->attribute_insert('data-entity_name', $form->entity_name);
         $form->attribute_insert('data-instance_id', $form->instance_id);
         $id_keys   = $entity->id_get_real();

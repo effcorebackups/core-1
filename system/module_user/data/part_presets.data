@@ -8,7 +8,6 @@ part_presets
     type: copy
     source: forms/storage/instance_insert
     properties
-    - managing_group_id: other
     - entity_name: feedback
 - form_login|part_preset
     id: form_login

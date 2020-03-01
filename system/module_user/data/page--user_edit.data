@@ -29,5 +29,4 @@ pages
           type: link
           source: forms/storage/instance_update
           properties
-          - managing_group_id: user
           - entity_name: user
