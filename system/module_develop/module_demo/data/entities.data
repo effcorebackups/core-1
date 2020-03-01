@@ -7,7 +7,6 @@ entities
     managing_is_enabled: true
     managing_group: Demo
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_access: true
     ws_data: true
@@ -48,6 +47,12 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_weight
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
@@ -175,6 +180,10 @@ entities
         type: index
         fields
         - =: weight
+    - index_created
+        type: index
+        fields
+        - =: created
 - demo_autoincrement|entity
     name: demo_autoincrement
     title: Autoincrement

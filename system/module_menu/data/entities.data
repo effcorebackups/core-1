@@ -8,7 +8,6 @@ entities
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_access: true
@@ -60,6 +59,12 @@ entities
           - =: 1
         managing_selection_params
         - is_apply_translation: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -70,6 +75,10 @@ entities
         type: index
         fields
         - =: title
+    - index_created
+        type: index
+        fields
+        - =: created
 - tree_item|entity
     name: tree_item
     title: Tree item
@@ -79,7 +88,6 @@ entities
     managing_group: Menu
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_access: true
@@ -189,6 +197,12 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_weight
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -225,3 +239,7 @@ entities
         type: index
         fields
         - =: weight
+    - index_created
+        type: index
+        fields
+        - =: created

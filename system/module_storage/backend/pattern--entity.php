@@ -15,7 +15,6 @@ namespace effcore {
   public $indexes               = [];
   public $has_parallel_checking = false;
   public $ws_is_embed           = false;
-  public $ws_created            = false;
   public $ws_updated            = false;
   public $ws_module_id          = false;
   public $ws_access             = false;
@@ -42,17 +41,6 @@ namespace effcore {
       $this->fields['is_embed']->managing_field_properties['weight'] = 95;
       $this->fields['is_embed']->managing_field_element_attributes['disabled'] = true;
       $this->fields['is_embed']->managing_selection_params['is_apply_translation'] = true;
-    }
-  # insert field 'created' and index for it
-    if ($this->ws_created) {
-      $this->fields['created'] = new \stdClass;
-      $this->fields['created']->title = 'Created';
-      $this->fields['created']->type = 'datetime';
-      $this->fields['created']->default = null;
-      $this->fields['created']->managing_on_select_is_enabled = true;
-      $this->indexes['index_created'] = new \stdClass;
-      $this->indexes['index_created']->type = 'index';
-      $this->indexes['index_created']->fields = ['created' => 'created'];
     }
   # insert field 'updated' and index for it
     if ($this->ws_updated) {

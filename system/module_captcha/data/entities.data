@@ -4,7 +4,6 @@ entities
     title: CAPTCHA
     title_plural: CAPTCHAs
     catalog_name: captcha
-    ws_created: true
     fields
     - ip_hex
         title: IP address
@@ -29,8 +28,18 @@ entities
         type: blob
         not_null: true
         check: (canvas_data <> '')
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
     constraints
     - primary_ip_hex
         type: primary
         fields
         - =: ip_hex
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created

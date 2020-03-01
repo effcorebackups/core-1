@@ -4,7 +4,6 @@ entities
     title: Cache for validation process
     title_plural: Caches for validation process
     catalog_name: cache_validation
-    ws_created: true
     ws_updated: true
     ws_data: true
     fields
@@ -15,11 +14,21 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - page|entity
     name: page
     title: Page
@@ -29,7 +38,6 @@ entities
     managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_access: true
@@ -166,6 +174,12 @@ entities
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -175,6 +189,11 @@ entities
         type: unique
         fields
         - =: url
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - logotype|entity
     name: logotype
     title: Logotype
@@ -184,7 +203,6 @@ entities
     managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -301,11 +319,22 @@ entities
         managing_field_element_attributes
         - required: false
         - maxlength: 64
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - selection|entity
     name: selection
     title: Selection
@@ -314,7 +343,6 @@ entities
     managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -350,7 +378,6 @@ entities
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
         managing_field_element_attributes
-        - required: false
         - maxlength: 1024
         managing_selection_params
         - is_apply_translation: true
@@ -378,11 +405,22 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_field_value_manual_get: true
         managing_field_value_manual_set: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - text|entity
     name: text
     title: Text
@@ -391,7 +429,6 @@ entities
     managing_is_enabled: true
     managing_group: Content
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -433,7 +470,6 @@ entities
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_text
         managing_field_element_attributes
-        - required: false
         - maxlength: 1024
         managing_selection_params
         - is_apply_translation: true
@@ -450,8 +486,19 @@ entities
         - required: false
         - minlength: false
         - maxlength: false
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
