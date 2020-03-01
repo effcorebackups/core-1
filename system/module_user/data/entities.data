@@ -73,7 +73,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_updated: true
     ws_module_id: true
     fields
     - id
@@ -114,6 +113,12 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -128,6 +133,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - relation_role_ws_permission|entity
     name: relation_role_ws_permission
     title: Relation: Role + Permission
@@ -136,7 +145,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_updated: true
     ws_module_id: true
     fields
     - id_role
@@ -177,6 +185,12 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -202,6 +216,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - relation_role_ws_user|entity
     name: relation_role_ws_user
     title: Relation: Role + User
@@ -210,7 +228,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_updated: true
     ws_module_id: true
     fields
     - id_user
@@ -249,6 +266,12 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id_role_id_user
         type: primary
@@ -274,6 +297,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - role|entity
     name: role
     title: Role
@@ -283,7 +310,6 @@ entities
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true
-    ws_updated: true
     ws_module_id: true
     ws_data: true
     fields
@@ -335,6 +361,12 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -353,6 +385,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - session|entity
     name: session
     title: Session
@@ -411,7 +447,6 @@ entities
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true
-    ws_updated: true
     ws_module_id: true
     ws_data: true
     fields
@@ -513,6 +548,12 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -531,3 +572,7 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated

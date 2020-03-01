@@ -4,7 +4,6 @@ entities
     title: Cache for validation process
     title_plural: Caches for validation process
     catalog_name: cache_validation
-    ws_updated: true
     ws_data: true
     fields
     - id
@@ -19,6 +18,11 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
     constraints
     - primary_id
         type: primary
@@ -29,6 +33,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - page|entity
     name: page
     title: Page
