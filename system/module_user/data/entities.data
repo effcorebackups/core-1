@@ -73,7 +73,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     fields
@@ -109,6 +108,12 @@ entities
         managing_field_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -119,6 +124,10 @@ entities
         type: index
         fields
         - =: title
+    - index_created
+        type: index
+        fields
+        - =: created
 - relation_role_ws_permission|entity
     name: relation_role_ws_permission
     title: Relation: Role + Permission
@@ -127,7 +136,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     fields
@@ -163,6 +171,12 @@ entities
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -183,6 +197,11 @@ entities
         references: permissions
         references_fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - relation_role_ws_user|entity
     name: relation_role_ws_user
     title: Relation: Role + User
@@ -191,7 +210,6 @@ entities
     managing_is_enabled: true
     managing_group: User
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     fields
@@ -225,6 +243,12 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id_role_id_user
         type: primary
@@ -245,6 +269,11 @@ entities
         references: users
         references_fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - role|entity
     name: role
     title: Role
@@ -254,7 +283,6 @@ entities
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -301,6 +329,12 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_field_class: \effcore\field_weight
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -315,6 +349,10 @@ entities
         type: index
         fields
         - =: weight
+    - index_created
+        type: index
+        fields
+        - =: created
 - session|entity
     name: session
     title: Session
@@ -373,7 +411,6 @@ entities
     managing_group: User
     has_parallel_checking: true
     ws_is_embed: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -469,6 +506,13 @@ entities
         - required: false
         managing_field_element_attributes_on_insert
         - required: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
@@ -482,3 +526,8 @@ entities
         type: unique
         fields
         - =: email
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
