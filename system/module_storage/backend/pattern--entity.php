@@ -15,7 +15,6 @@ namespace effcore {
   public $indexes               = [];
   public $has_parallel_checking = false;
   public $ws_is_embed           = false;
-  public $ws_updated            = false;
   public $ws_module_id          = false;
   public $ws_access             = false;
   public $ws_data               = false;
@@ -42,17 +41,6 @@ namespace effcore {
       $this->fields['is_embed']->managing_field_element_attributes['disabled'] = true;
       $this->fields['is_embed']->managing_selection_params['is_apply_translation'] = true;
     }
-  # insert field 'updated' and index for it
-    if ($this->ws_updated) {
-      $this->fields['updated'] = new \stdClass;
-      $this->fields['updated']->title = 'Updated';
-      $this->fields['updated']->type = 'datetime';
-      $this->fields['updated']->default = null;
-      $this->fields['updated']->managing_on_select_is_enabled = true;
-      $this->indexes['index_updated'] = new \stdClass;
-      $this->indexes['index_updated']->type = 'index';
-      $this->indexes['index_updated']->fields = ['updated' => 'updated'];
-    }
   # insert field 'module_id' and index for it
     if ($this->ws_module_id) {
       $this->fields['module_id'] = new \stdClass;
@@ -65,15 +53,6 @@ namespace effcore {
       $this->indexes['index_module_id']->type = 'index';
       $this->indexes['index_module_id']->fields = ['module_id' => 'module_id'];
     }
-  # insert field 'access'
-    if ($this->ws_access) {
-      $this->fields['access'] = new \stdClass;
-      $this->fields['access']->title = 'Access';
-      $this->fields['access']->type = 'blob';
-      $this->fields['access']->filter_select = 'unserialize';
-      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
-      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
-    }
   # insert field 'data'
     if ($this->ws_data) {
       $this->fields['data'] = new \stdClass;
@@ -82,6 +61,15 @@ namespace effcore {
       $this->fields['data']->filter_select = 'unserialize';
       $this->fields['data']->filter_insert = '\\effcore\\core::data_serialize';
       $this->fields['data']->filter_update = '\\effcore\\core::data_serialize';
+    }
+  # insert field 'access'
+    if ($this->ws_access) {
+      $this->fields['access'] = new \stdClass;
+      $this->fields['access']->title = 'Access';
+      $this->fields['access']->type = 'blob';
+      $this->fields['access']->filter_select = 'unserialize';
+      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
+      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
     }
   }
 
