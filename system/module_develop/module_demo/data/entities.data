@@ -7,7 +7,6 @@ entities
     managing_is_enabled: true
     managing_group: Demo
     ws_is_embed: true
-    ws_updated: true
     ws_access: true
     ws_data: true
     fields
@@ -52,6 +51,12 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+        managing_on_select_is_enabled: true
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
         managing_on_select_is_enabled: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
@@ -184,6 +189,10 @@ entities
         type: index
         fields
         - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - demo_autoincrement|entity
     name: demo_autoincrement
     title: Autoincrement
