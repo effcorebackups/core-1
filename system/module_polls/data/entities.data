@@ -6,7 +6,6 @@ entities
     catalog_name: polls
     managing_is_enabled: true
     has_parallel_checking: true
-    ws_created: true
     ws_updated: true
     ws_module_id: true
     ws_data: true
@@ -108,11 +107,23 @@ entities
         managing_field_class: \effcore\field_switcher
         managing_selection_params
         - is_apply_translation: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
 - poll_answer|entity
     name: poll_answer
     title: Poll answer
