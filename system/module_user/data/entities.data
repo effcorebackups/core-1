@@ -14,8 +14,8 @@ entities
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_number
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_id_number
+        managing_control_element_attributes
         - disabled: true
     - email
         title: EMail
@@ -28,7 +28,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_email
+        managing_control_class: \effcore\field_email
     - message
         title: Message
         type: varchar
@@ -41,8 +41,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_textarea
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_textarea
+        managing_control_element_attributes
         - maxlength: 2048
     - created
         title: Created
@@ -51,7 +51,7 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -87,10 +87,10 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_text
-        managing_field_element_attributes_on_update
+        managing_control_class: \effcore\field_id_text
+        managing_control_element_attributes_on_update
         - disabled: true
-        managing_field_properties
+        managing_control_properties
         - is_validate_uniqueness: true
     - title
         title: Title
@@ -105,7 +105,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_text
+        managing_control_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
     - created
@@ -114,14 +114,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -160,12 +160,12 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - id_permission
         title: Permission
@@ -177,8 +177,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -188,14 +188,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -243,12 +243,12 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - id_role
         title: Role
@@ -260,8 +260,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -271,14 +271,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id_role_id_user
         type: primary
@@ -331,10 +331,10 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_text
-        managing_field_properties
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
         - is_validate_uniqueness: true
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -349,7 +349,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_text
+        managing_control_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
     - weight
@@ -361,21 +361,21 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_weight
+        managing_control_class: \effcore\field_weight
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -467,8 +467,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_number
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_id_number
+        managing_control_element_attributes
         - disabled: true
     - nickname
         title: Nickname
@@ -481,8 +481,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_nickname
-        managing_field_properties
+        managing_control_class: \effcore\field_nickname
+        managing_control_properties
         - is_validate_uniqueness: true
     - email
         title: EMail
@@ -495,8 +495,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_email
-        managing_field_properties
+        managing_control_class: \effcore\field_email
+        managing_control_properties
         - is_validate_uniqueness: true
     - avatar_path
         title: Avatar
@@ -507,8 +507,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_file
-        managing_field_properties
+        managing_control_class: \effcore\field_file
+        managing_control_properties
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatars-%%_user_id
@@ -517,7 +517,7 @@ entities
           - =: jpeg
           - =: jpg
           - =: png
-        managing_field_element_attributes_on_insert
+        managing_control_element_attributes_on_insert
         - disabled: true
     - timezone
         title: Time zone
@@ -528,8 +528,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_timezone
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_timezone
+        managing_control_element_attributes
         - data-source: uagent-timezone
         managing_selection_params
         - is_apply_translation: true
@@ -541,14 +541,14 @@ entities
         default: null
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_password
-        managing_field_value_manual_set: true
-        managing_field_value_manual_get_if_empty: true
-        managing_field_properties_on_update
+        managing_control_class: \effcore\field_password
+        managing_control_value_manual_set: true
+        managing_control_value_manual_get_if_empty: true
+        managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - required: false
-        managing_field_element_attributes_on_insert
+        managing_control_element_attributes_on_insert
         - required: true
     - created
         title: Created
@@ -557,14 +557,14 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary

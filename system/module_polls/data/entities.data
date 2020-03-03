@@ -17,8 +17,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_number
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_id_number
+        managing_control_element_attributes
         - disabled: true
     - question
         title: Question
@@ -33,8 +33,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_text
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
         - maxlength: 2048
         managing_selection_params
         - is_apply_translation: true
@@ -45,8 +45,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_datetime_local
+        managing_control_element_attributes
         - value:  
     - diagram_type
         title: Diagramm type
@@ -58,8 +58,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_select
-        managing_field_properties
+        managing_control_class: \effcore\field_select
+        managing_control_properties
         - values
           - not_selected: - select -
           - linear: Linear diagram
@@ -74,8 +74,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_select
-        managing_field_properties
+        managing_control_class: \effcore\field_select
+        managing_control_properties
         - values
           - not_selected: - select -
           - 0: All users
@@ -92,7 +92,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_switcher
+        managing_control_class: \effcore\field_switcher
         managing_selection_params
         - is_apply_translation: true
     - is_cancelable
@@ -103,7 +103,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_switcher
+        managing_control_class: \effcore\field_switcher
         managing_selection_params
         - is_apply_translation: true
     - created
@@ -113,14 +113,14 @@ entities
         check: (created <> '')
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary

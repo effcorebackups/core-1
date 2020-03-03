@@ -36,9 +36,9 @@ namespace effcore {
       $this->fields['is_embed']->not_null = true;
       $this->fields['is_embed']->default = 0;
       $this->fields['is_embed']->managing_on_select_is_enabled = true;
-      $this->fields['is_embed']->managing_field_class = '\\effcore\\field_switcher';
-      $this->fields['is_embed']->managing_field_properties['weight'] = 95;
-      $this->fields['is_embed']->managing_field_element_attributes['disabled'] = true;
+      $this->fields['is_embed']->managing_control_class = '\\effcore\\field_switcher';
+      $this->fields['is_embed']->managing_control_properties['weight'] = 95;
+      $this->fields['is_embed']->managing_control_element_attributes['disabled'] = true;
       $this->fields['is_embed']->managing_selection_params['is_apply_translation'] = true;
     }
   # insert field 'module_id' and index for it

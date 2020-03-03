@@ -23,10 +23,10 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_text
-        managing_field_properties
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
         - is_validate_uniqueness: true
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - title
         title: Title
@@ -41,7 +41,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_text
+        managing_control_class: \effcore\field_text
         managing_selection_params
         - is_apply_translation: true
     - title_is_visible
@@ -52,8 +52,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_logic
-        managing_field_properties_on_insert
+        managing_control_class: \effcore\field_logic
+        managing_control_properties_on_insert
         - selected
           - =: 1
         managing_selection_params
@@ -64,14 +64,14 @@ entities
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary
@@ -125,10 +125,10 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_id_text
-        managing_field_properties
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
         - is_validate_uniqueness: true
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - id_tree
         title: Tree ID
@@ -140,12 +140,12 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        managing_field_element_attributes_on_update
+        managing_control_element_attributes_on_update
         - disabled: true
     - id_parent
         title: Parent ID
@@ -159,15 +159,15 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_relation
-        managing_field_properties
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
-        managing_field_element_attributes
+        managing_control_element_attributes
         - required: false
-        managing_field_element_attributes_on_insert
+        managing_control_element_attributes_on_insert
         - disabled: true
     - title
         title: Title
@@ -182,7 +182,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_text
+        managing_control_class: \effcore\field_text
     - url
         title: URL
         type: varchar
@@ -193,8 +193,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_url
-        managing_field_element_attributes
+        managing_control_class: \effcore\field_url
+        managing_control_element_attributes
         - required: false
         - maxlength: 2048
     - weight
@@ -206,21 +206,21 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_field_class: \effcore\field_weight
+        managing_control_class: \effcore\field_weight
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_on_select_is_enabled: true
-        managing_field_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\field_datetime_local
     constraints
     - primary_id
         type: primary

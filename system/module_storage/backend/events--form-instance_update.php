@@ -41,31 +41,31 @@ namespace effcore\modules\storage {
               $hidden_old_updated->value_set(core::sanitize_datetime($hidden_old_updated->value_request_get()) ?: $form->_instance->updated);
               $form->child_insert($hidden_old_updated, 'hidden_old_updated');
             }
-          # make fields for managing
-            $has_enabled_fields = false;
+          # make controls for managing
+            $has_controls = false;
             foreach ($entity->fields as $c_name => $c_field) {
-              if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_field_class)) {
-                $c_form_field = new $c_field->managing_field_class;
-                $c_form_field->title = $c_field->title;
-                $c_form_field->element_attributes['name'] = $c_name;
-                $c_form_field->element_attributes = ($c_field->managing_field_element_attributes           ?? []) + $c_form_field->element_attributes;
-                $c_form_field->element_attributes = ($c_field->managing_field_element_attributes_on_update ?? []) + $c_form_field->element_attributes;
-                foreach ($c_field->managing_field_properties           ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
-                foreach ($c_field->managing_field_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_form_field->{$c_prop_name} = $c_prop_value;
-                $c_form_field->form_current_set($form);
-                $c_form_field->entity_name = $entity->name;
-                $c_form_field->entity_field_name = $c_name;
-                $c_form_field->build();
-                $c_form_field->value_set_initial($form->_instance->{$c_name}, true);
-                if (empty($c_field->managing_field_value_manual_set) && $c_form_field instanceof field_checkbox == true) $c_form_field->checked_set($form->_instance->{$c_name});
-                if (empty($c_field->managing_field_value_manual_set) && $c_form_field instanceof field_checkbox != true) $c_form_field->value_set  ($form->_instance->{$c_name});
-                $items['fields']->child_insert($c_form_field, $c_name);
-                if ($c_form_field->disabled_get() == false) {
-                  $has_enabled_fields = true;
+              if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_control_class)) {
+                $c_control = new $c_field->managing_control_class;
+                $c_control->title = $c_field->title;
+                $c_control->element_attributes['name'] = $c_name;
+                $c_control->element_attributes = ($c_field->managing_control_element_attributes           ?? []) + $c_control->element_attributes;
+                $c_control->element_attributes = ($c_field->managing_control_element_attributes_on_update ?? []) + $c_control->element_attributes;
+                foreach ($c_field->managing_control_properties           ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                foreach ($c_field->managing_control_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                $c_control->form_current_set($form);
+                $c_control->entity_name = $entity->name;
+                $c_control->entity_field_name = $c_name;
+                $c_control->build();
+                $c_control->value_set_initial($form->_instance->{$c_name}, true);
+                if (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox == true) $c_control->checked_set($form->_instance->{$c_name});
+                if (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox != true) $c_control->value_set  ($form->_instance->{$c_name});
+                $items['fields']->child_insert($c_control, $c_name);
+                if ($c_control->disabled_get() == false) {
+                  $has_controls = true;
                 }
               }
             }
-            if ($items['fields']->children_select_count() == 0 || $has_enabled_fields == false) $items['~update']->disabled_set();
+            if ($items['fields']->children_select_count() == 0 || $has_controls == false) $items['~update']->disabled_set();
             if ($items['fields']->children_select_count() == 0) {
               $form->child_update(
                 'fields', new markup('x-no-result', [], 'no fields')
@@ -110,9 +110,9 @@ namespace effcore\modules\storage {
           if (!empty($form->_instance)) {
           # transfer new values to instance
             foreach ($entity->fields as $c_name => $c_field) {
-              if (isset($c_field->managing_field_class) && isset($items['#'.$c_name])) {
-                if (!empty($c_field->managing_field_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-                if (!empty($c_field->managing_field_value_manual_get         )                                          ) continue;
+              if (isset($c_field->managing_control_class) && isset($items['#'.$c_name])) {
+                if (!empty($c_field->managing_control_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
+                if (!empty($c_field->managing_control_value_manual_get         )                                          ) continue;
                 if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
                 if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
               }
