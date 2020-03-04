@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_fields extends container {
+          class widget_fields extends control {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'fields'];

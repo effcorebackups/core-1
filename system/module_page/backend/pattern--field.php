@@ -49,7 +49,7 @@
   # └──────────────────────╨────────────────────────────────────────────────┘
 
 namespace effcore {
-          class field extends container {
+          class field extends control {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';
