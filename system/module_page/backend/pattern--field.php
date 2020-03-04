@@ -62,7 +62,6 @@ namespace effcore {
   public $has_error = false;
   public $entity_name;
   public $entity_field_name;
-  protected $initial_value;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, [], $weight);
@@ -274,15 +273,6 @@ namespace effcore {
         'field_!v' => $value], 'limit' => 1]);
       return reset($result);
     }
-  }
-
-  function value_get_initial() {
-    return $this->initial_value;
-  }
-
-  function value_set_initial($value, $reset = false) {
-    if ($this->initial_value === null || $reset == true)
-        $this->initial_value = $value;
   }
 
   # ─────────────────────────────────────────────────────────────────────
