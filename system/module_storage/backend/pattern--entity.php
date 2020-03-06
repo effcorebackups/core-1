@@ -48,6 +48,7 @@ namespace effcore {
       $this->fields['module_id']->size = 64;
       $this->fields['module_id']->collate = 'nocase';
       $this->fields['module_id']->default = null;
+      $this->fields['module_id']->check = '(module_id <> \'\')';
       $this->indexes['index_module_id'] = new \stdClass;
       $this->indexes['index_module_id']->type = 'index';
       $this->indexes['index_module_id']->fields = ['module_id' => 'module_id'];
