@@ -6,7 +6,6 @@
 
 namespace effcore\modules\user {
           use \effcore\entity;
-          use \effcore\group_access;
           use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_form_instance_insert {
@@ -14,14 +13,6 @@ namespace effcore\modules\user {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-    # group 'access'
-      if (!empty($entity->ws_access)) {
-        $group_access = new group_access;
-        $group_access->build();
-        $form->child_select('fields')->child_insert(
-          $group_access, 'group_access'
-        );
-      }
     # field 'role'
       if ($entity->name == 'relation_role_ws_user') {
         $items['#id_role']->is_builded = false;
@@ -67,22 +58,6 @@ namespace effcore\modules\user {
                 'This combination of values is already in use!'], ['title' => translation::get($items['#id_permission']->title)]
               ));
             }
-          }
-          break;
-      }
-    }
-  }
-
-  static function on_submit($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-      switch ($form->clicked_button->value_get()) {
-        case 'insert':
-        # group 'access'
-          if (!empty($entity->ws_access) && !empty($form->_instance)) {
-            $roles = $items['fields/group_access']->roles_get();
-            if ($roles) $form->_instance->access = (object)['roles' => $roles];
-            else        $form->_instance->access = null;
           }
           break;
       }

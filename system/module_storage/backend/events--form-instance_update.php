@@ -110,11 +110,13 @@ namespace effcore\modules\storage {
           if (!empty($form->_instance)) {
           # transfer new values to instance
             foreach ($entity->fields as $c_name => $c_field) {
-              if (isset($c_field->managing_control_class) && isset($items['#'.$c_name])) {
-                if (!empty($c_field->managing_control_value_manual_get_if_empty) && $items['#'.$c_name]->value_get() == '') continue;
-                if (!empty($c_field->managing_control_value_manual_get         )                                          ) continue;
-                if ($items['#'.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items['#'.$c_name]->checked_get() ? 1 : 0;
-                if ($items['#'.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items['#'.$c_name]->value_get  ();
+              if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_control_class)) {
+                $c_reflection = new \ReflectionClass($c_field->managing_control_class);
+                $c_prefix = $c_reflection->implementsInterface('\\effcore\\complex_control') ? '*' : '#';
+                if (!empty($c_field->managing_control_value_manual_get_if_empty) && $items[$c_prefix.$c_name]->value_get() == '') continue;
+                if (!empty($c_field->managing_control_value_manual_get         )                                                ) continue;
+                if ($items[$c_prefix.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items[$c_prefix.$c_name]->checked_get() ? 1 : 0;
+                if ($items[$c_prefix.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items[$c_prefix.$c_name]->value_get  ();
               }
             }
           # update action

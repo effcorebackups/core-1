@@ -5,34 +5,48 @@
   ##################################################################
 
 namespace effcore {
-          class group_access extends group_switchers {
+          class group_access extends control implements complex_control {
 
+  public $tag_name = 'x-group';
   public $title = 'Access';
   public $description = 'Access settings are not applicable if no one role is active!';
+  public $name_complex = 'access';
   public $attributes = [
-    'data-type' => 'switchers',
-    'role'      => 'group'];
-  public $element_attributes = [
-    'data-type' => 'switcher',
-    'name'      => 'roles[]'
+    'data-type' => 'access',
+    'role'      => 'group'
   ];
 
   function build() {
     if (!$this->is_builded) {
+      $group_roles = new group_switchers;
+      $group_roles->build();
       foreach (access::roles_get() as $value => $title)
-        $this->field_insert($title, null, ['value' => $value], $value);
+        $group_roles->field_insert($title, null, ['name' => 'roles[]', 'value' => $value], $value);
+      $this->child_insert($group_roles, 'group_roles');
       $this->is_builded = true;
     }
   }
 
-  function roles_get() {
-    return core::array_kmap(
-      $this->values_get()
+  function value_get() {
+    $roles = $this->child_select('group_roles')->values_get();
+    return $roles ? (object)[
+      'roles' => core::array_kmap($roles)
+    ] : null;
+  }
+
+  function value_set($value) {
+    $this->value_set_initial($value);
+    $this->child_select('group_roles')->values_set(
+      core::array_kmap($value->roles ?? [])
     );
   }
 
-  function roles_set($roles) {
-    $this->checked = core::array_kmap($roles);
+  function name_get_complex() {
+    return $this->name_complex;
+  }
+
+  function disabled_get() {
+    return false;
   }
 
 }}

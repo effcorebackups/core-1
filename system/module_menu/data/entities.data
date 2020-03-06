@@ -9,7 +9,6 @@ entities
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
-    ws_access: true
     ws_data: true
     fields
     - id
@@ -72,6 +71,15 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+    - access
+        title: Access
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\group_access
     constraints
     - primary_id
         type: primary
@@ -100,7 +108,6 @@ entities
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
-    ws_access: true
     ws_data: true
     decorator_view_type_multiple: tree
     managing_selection_params
@@ -221,6 +228,15 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+    - access
+        title: Access
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\group_access
     constraints
     - primary_id
         type: primary

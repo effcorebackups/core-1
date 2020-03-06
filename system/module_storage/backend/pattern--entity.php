@@ -16,7 +16,6 @@ namespace effcore {
   public $has_parallel_checking = false;
   public $ws_is_embed           = false;
   public $ws_module_id          = false;
-  public $ws_access             = false;
   public $ws_data               = false;
 
   public $title;
@@ -61,15 +60,6 @@ namespace effcore {
       $this->fields['data']->filter_select = 'unserialize';
       $this->fields['data']->filter_insert = '\\effcore\\core::data_serialize';
       $this->fields['data']->filter_update = '\\effcore\\core::data_serialize';
-    }
-  # insert field 'access'
-    if ($this->ws_access) {
-      $this->fields['access'] = new \stdClass;
-      $this->fields['access']->title = 'Access';
-      $this->fields['access']->type = 'blob';
-      $this->fields['access']->filter_select = 'unserialize';
-      $this->fields['access']->filter_insert = '\\effcore\\core::data_serialize';
-      $this->fields['access']->filter_update = '\\effcore\\core::data_serialize';
     }
   }
 
