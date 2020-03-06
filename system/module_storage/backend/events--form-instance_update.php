@@ -87,7 +87,7 @@ namespace effcore\modules\storage {
             if ($entity->has_parallel_checking && $entity->field_get('updated')) {
               $hidden_old_updated = $form->child_select('hidden_old_updated');
               $hidden_old_updated->value_get();
-              $fresh_instance = clone $form->_instance;
+              $fresh_instance = core::deep_clone($form->_instance);
               $fresh_instance->select();
               if ($fresh_instance->updated != $hidden_old_updated->value_get()) {
                 $form->error_set(new text_multiline([

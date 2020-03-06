@@ -163,12 +163,12 @@ namespace effcore {
     $this->items = [];
     $groups      = [];
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
-      if ($c_child instanceof container)                                $this->items[$c_npath                                                  ] = $c_child;
-      if ($c_child instanceof button)                                   $this->items['~'.$c_child->value_get     ()                            ] = $c_child;
-      if ($c_child instanceof field_hidden)                             $this->items['!'.$c_child->name_get      ()                            ] = $c_child;
-      if ($c_child instanceof field)                                    $groups     ['#'.$c_child->name_get      ()                          ][] = $c_child;
-      if ($c_child instanceof field_radiobutton)                        $groups     ['#'.$c_child->name_get      ().':'.$c_child->value_get()][] = $c_child;
-      if ($c_child instanceof group_mono && $c_child->name_get_first()) $groups     ['*'.$c_child->name_get_first()                          ][] = $c_child;
+      if ($c_child instanceof container)                                       $this->items[$c_npath                                                  ] = $c_child;
+      if ($c_child instanceof button)                                          $this->items['~'.$c_child->value_get     ()                            ] = $c_child;
+      if ($c_child instanceof field_hidden)                                    $this->items['!'.$c_child->name_get      ()                            ] = $c_child;
+      if ($c_child instanceof field)                                           $groups     ['#'.$c_child->name_get      ()                          ][] = $c_child;
+      if ($c_child instanceof field_radiobutton)                               $groups     ['#'.$c_child->name_get      ().':'.$c_child->value_get()][] = $c_child;
+      if ($c_child instanceof complex_control && $c_child->name_get_complex()) $groups     ['*'.$c_child->name_get_complex()                          ][] = $c_child;
     }
     foreach ($groups as $c_name => $c_group) {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);

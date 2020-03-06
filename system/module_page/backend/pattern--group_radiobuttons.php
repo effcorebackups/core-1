@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_radiobuttons extends control implements group_mono {
+          class group_radiobuttons extends control implements complex_control {
 
   public $tag_name = 'x-group';
   public $attributes = [
@@ -57,7 +57,7 @@ namespace effcore {
     return $this->child_insert($field, $new_id);
   }
 
-  function name_get_first($trim = true) {
+  function name_get_complex($trim = true) {
   # try to find the name in 'element_attributes'
         $element_attributes_name = $this->attributes_select('element_attributes')['name'] ?? '';
         $element_attributes_name = $trim ? rtrim($element_attributes_name, '[]') : $element_attributes_name;
