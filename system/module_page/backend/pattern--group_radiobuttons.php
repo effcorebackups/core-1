@@ -71,6 +71,9 @@ namespace effcore {
     }
   }
 
+  function value_get_complex()       {}
+  function value_set_complex($value) {}
+
   function value_get() {
     foreach ($this->children_select() as $c_child) {
       if ($c_child instanceof $this->field_class &&

@@ -6,5 +6,7 @@
 
 namespace effcore { # indicates that the control is the complex element
           interface complex_control {
-  function name_get_complex();
+  function  name_get_complex();
+  function value_get_complex();
+  function value_set_complex($value);
 }}

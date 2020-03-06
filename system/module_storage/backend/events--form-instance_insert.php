@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\complex_control;
           use \effcore\core;
           use \effcore\entity;
           use \effcore\field_checkbox;
@@ -66,12 +67,15 @@ namespace effcore\modules\storage {
         case 'insert':
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing_on_insert_is_enabled) && isset($c_field->managing_control_class)) {
+              $c_value = null;
               $c_reflection = new \ReflectionClass($c_field->managing_control_class);
               $c_prefix = $c_reflection->implementsInterface('\\effcore\\complex_control') ? '*' : '#';
-              if (!empty($c_field->managing_control_value_manual_get_if_empty) && $items[$c_prefix.$c_name]->value_get() == '') continue;
-              if (!empty($c_field->managing_control_value_manual_get         )                                                ) continue;
-              if ($items[$c_prefix.$c_name] instanceof field_checkbox == true) $form->_instance->{$c_name} = $items[$c_prefix.$c_name]->checked_get() ? 1 : 0;
-              if ($items[$c_prefix.$c_name] instanceof field_checkbox != true) $form->_instance->{$c_name} = $items[$c_prefix.$c_name]->value_get  ();
+              if      ($items[$c_prefix.$c_name] instanceof complex_control       ) $c_value = $items[$c_prefix.$c_name]->value_get_complex();
+              else if ($items[$c_prefix.$c_name] instanceof field_checkbox != true) $c_value = $items[$c_prefix.$c_name]->value_get        ();
+              else if ($items[$c_prefix.$c_name] instanceof field_checkbox == true) $c_value = $items[$c_prefix.$c_name]->checked_get      () ? 1 : 0;
+              if (!empty($c_field->managing_control_value_manual_get_if_empty) && $c_value == '') continue;
+              if (!empty($c_field->managing_control_value_manual_get         )                  ) continue;
+              $form->_instance->{$c_name} = $c_value;
             }
           }
         # insert action
