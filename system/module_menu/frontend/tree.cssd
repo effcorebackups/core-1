@@ -1,5 +1,7 @@
 
   [role='tree'] {display: block; position: relative}
+  [role='tree'] [data-tree-title] {}
+
   [role='tree'] a[aria-selected      ='true'],
   [role='tree'] a[data-selected-trail='true'] {color: %%_color_link_active}
 

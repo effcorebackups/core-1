@@ -8,6 +8,7 @@ part_presets
     type: copy
     source: forms/storage/instance_insert
     properties
+    - title: Feedback form
     - entity_name: feedback
 - form_login|part_preset
     id: form_login

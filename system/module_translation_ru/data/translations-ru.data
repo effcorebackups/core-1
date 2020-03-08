@@ -131,6 +131,7 @@ translations
     - Expiration date: Дата окончания
     - failed to write file to disk: не удалось записать файл на диск
     - failure: неудача
+    - Feedback form: Форма обратной связи
     - Feedback: Отзыв
     - Feedbacks: Отзывы
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.

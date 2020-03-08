@@ -47,10 +47,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title) {
-      if ($this->title_is_visible == 0) return (new markup('h2', ['aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title_is_visible != 0) return (new markup('h2', [                       ], $this->title))->render();
-    }
+    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', ['data-tree-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', ['data-tree-title' => true,                        ], $this->title))->render();
   }
 
   ###########################

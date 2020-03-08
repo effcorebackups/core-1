@@ -10,7 +10,10 @@ namespace effcore {
           class form extends markup implements has_external_cache {
 
   public $tag_name = 'form';
+  public $template = 'form';
   public $attributes = ['accept-charset' => 'UTF-8'];
+  public $title;
+  public $title_is_visible = 1;
   public $clicked_button;
   public $number;
   public $validation_id;
@@ -125,6 +128,16 @@ namespace effcore {
     }
   }
 
+  function render() {
+    $this->build();
+    return parent::render();
+  }
+
+  function render_self() {
+    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', ['data-form-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', ['data-form-title' => true,                        ], $this->title))->render();
+  }
+
   # ─────────────────────────────────────────────────────────────────────
   # shared functionality
   # ─────────────────────────────────────────────────────────────────────
@@ -173,11 +186,6 @@ namespace effcore {
       if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
       if (count($c_group) >= 2) $this->items[$c_name] =       $c_group;
     }
-  }
-
-  function render() {
-    $this->build();
-    return parent::render();
   }
 
   # ─────────────────────────────────────────────────────────────────────
