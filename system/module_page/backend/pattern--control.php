@@ -11,10 +11,6 @@ namespace effcore {
   public $cform;
   protected $initial_value;
 
-  function form_current_set($form) {
-    $this->cform = $form;
-  }
-
   function value_get()       {} # abstract method
   function value_set($value) {  # abstract method
     $this->value_set_initial($value);

@@ -62,9 +62,8 @@ namespace effcore {
 
     # relate each item with it's form
       foreach ($this->children_select_recursive() as $c_child) {
-        if (is_object($c_child) && method_exists($c_child, 'form_current_set')) {
-          $c_child->form_current_set($this);
-        }
+        if ($c_child instanceof control)
+            $c_child->cform = $this;
       }
 
     # call init handlers

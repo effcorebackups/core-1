@@ -49,7 +49,7 @@ namespace effcore\modules\page {
                 if ($c_area->id) {
                   $c_widget_parts = new widget_parts($c_area->id);
                   $c_widget_parts->name_prefix = 'parts__'.$c_area->id;
-                  $c_widget_parts->form_current_set($form);
+                  $c_widget_parts->cform = $form;
                   $c_widget_parts->build();
                   $c_widget_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);
                   $c_area->child_insert($c_widget_parts, 'widget_parts');
