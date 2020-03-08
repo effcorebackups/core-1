@@ -53,6 +53,7 @@ namespace effcore {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';
+  public $name_prefix = null; # unused inherited property
 # ─────────────────────────────────────────────────────────────────────
   public $element_class = '\\effcore\\markup_simple';
   public $element_tag_name = 'input';
