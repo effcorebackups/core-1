@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\entity;
+          use \effcore\pluggable_class;
           use \effcore\text_multiline;
           use \effcore\translation;
           abstract class events_form_instance_insert {
@@ -20,6 +21,16 @@ namespace effcore\modules\user {
         $items['#id_role']->disabled['registered'] = 'registered';
         $items['#id_role']->disabled['owner'     ] = 'owner';
         $items['#id_role']->build();
+      }
+    # field 'CAPTCHA'
+      if ($entity->name == 'feedback') {
+        $class_captcha = new pluggable_class('field_captcha');
+        if ($class_captcha->is_exists_class()) {
+          $field_captcha = $class_captcha->object_get();
+          $field_captcha->cform = $form;
+          $field_captcha->build();
+          $items['fields']->child_insert($field_captcha, 'captcha');
+        }
       }
     }
   }

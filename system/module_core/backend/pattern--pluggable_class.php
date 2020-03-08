@@ -12,6 +12,10 @@ namespace effcore {
   public $properties = [];
   public $weight = 0;
 
+  function __construct($name = null) {
+    if ($name) $this->name = $name;
+  }
+
   function name_get() {
            return $this->name[0] == '\\' ?
                   $this->name :
