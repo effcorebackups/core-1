@@ -7,6 +7,7 @@
 namespace effcore {
           class control extends container {
 
+  public $name_prefix = '';
   public $cform;
   protected $initial_value;
 

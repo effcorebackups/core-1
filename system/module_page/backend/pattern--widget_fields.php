@@ -10,12 +10,11 @@ namespace effcore {
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'fields'];
   public $item_title = 'Item';
-  public $unique_prefix = '';
   public $_fields  = [];
   public $_buttons = [];
 
-  function __construct($unique_prefix = null, $attributes = [], $weight = 0) {
-    if ($unique_prefix) $this->unique_prefix = $unique_prefix;
+  function __construct($name_prefix = null, $attributes = [], $weight = 0) {
+    if ($name_prefix) $this->name_prefix = $name_prefix;
     parent::__construct(null, null, null, $attributes, [], $weight);
   }
 
@@ -62,7 +61,7 @@ namespace effcore {
     $field_weight = new field_weight;
     $field_weight->description_state = 'hidden';
     $field_weight->build();
-    $field_weight->name_set($this->unique_prefix.'__weight__'.$c_row_id);
+    $field_weight->name_set($this->name_prefix.'__weight__'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
     $this->_fields['weight__'.$c_row_id] = $field_weight;
@@ -70,7 +69,7 @@ namespace effcore {
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
-    $button_delete->value_set($this->unique_prefix.'__delete__'.$c_row_id);
+    $button_delete->value_set($this->name_prefix.'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
     $this->_buttons['delete__'.$c_row_id] = $button_delete;
@@ -87,7 +86,7 @@ namespace effcore {
     $button = new button('insert', ['title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->unique_prefix.'__insert');
+    $button->value_set($this->name_prefix.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
   # group the previous elements in widget 'insert'
@@ -98,24 +97,24 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_get() {
-    return $this->cform->validation_cache_get($this->unique_prefix.'items') ?: [];
+    return $this->cform->validation_cache_get($this->name_prefix.'items') ?: [];
   }
 
   function items_set($items) {
     $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set($this->unique_prefix.'items', $items);
+    $this->cform->validation_cache_set($this->name_prefix.'items', $items);
     $this->widgets_group_manage_build();
   }
 
   function items_set_once($items) {
-    if ($this->cform->validation_cache_get($this->unique_prefix.'items') === null) {
+    if ($this->cform->validation_cache_get($this->name_prefix.'items') === null) {
       $this->items_set($items ?: []);
     }
   }
 
   function items_reset() {
     $this->cform->validation_cache_is_persistent = false;
-    $this->cform->validation_cache_set($this->unique_prefix.'items', null);
+    $this->cform->validation_cache_set($this->name_prefix.'items', null);
   }
 
   # ─────────────────────────────────────────────────────────────────────
