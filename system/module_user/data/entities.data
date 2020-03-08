@@ -17,6 +17,23 @@ entities
         managing_control_class: \effcore\field_id_number
         managing_control_element_attributes
         - disabled: true
+    - name
+        title: Name
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        check: (name <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - minlength: 4
+        - maxlength: 64
     - email
         title: EMail
         type: varchar
@@ -43,6 +60,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_textarea
         managing_control_element_attributes
+        - minlength: 50
         - maxlength: 2048
     - created
         title: Created
