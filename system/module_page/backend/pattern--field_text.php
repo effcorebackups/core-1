@@ -14,8 +14,6 @@ namespace effcore {
     'name'      => 'text',
     'required'  => true,
     'maxlength' => 255];
-# ─────────────────────────────────────────────────────────────────────
-  public $is_validate_uniqueness = false;
 
   ###########################
   ### static declarations ###

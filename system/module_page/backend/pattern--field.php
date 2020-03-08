@@ -61,8 +61,6 @@ namespace effcore {
   public $description_state = 'closed'; # opened | closed[checked] | hidden
   public $set_auto_id = true;
   public $has_error = false;
-  public $entity_name;
-  public $entity_field_name;
 
   function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, [], $weight);
@@ -263,17 +261,6 @@ namespace effcore {
     $this->value_set_initial($value);
     $element = $this->child_select('element');
     return $element->attribute_insert('value', $value);
-  }
-
-  function value_is_unique_in_storage_sql($value) { # return: null | false | instance
-    if ($this->entity_name &&
-        $this->entity_field_name) {
-      $result = entity::get($this->entity_name)->instances_select(['conditions' => [
-        'field_!f' => $this->entity_field_name,
-        'operator' => '=',
-        'field_!v' => $value], 'limit' => 1]);
-      return reset($result);
-    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
