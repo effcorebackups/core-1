@@ -13,8 +13,7 @@ namespace effcore {
   public $_fields  = [];
   public $_buttons = [];
 
-  function __construct($name_prefix = null, $attributes = [], $weight = 0) {
-    if ($name_prefix) $this->name_prefix = $name_prefix;
+  function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, null, null, $attributes, [], $weight);
   }
 

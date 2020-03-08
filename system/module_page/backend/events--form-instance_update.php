@@ -47,7 +47,8 @@ namespace effcore\modules\page {
                 $c_area->managing_enable();
                 $c_area->build();
                 if ($c_area->id) {
-                  $c_widget_parts = new widget_parts('parts__'.$c_area->id, $c_area->id);
+                  $c_widget_parts = new widget_parts($c_area->id);
+                  $c_widget_parts->name_prefix = 'parts__'.$c_area->id;
                   $c_widget_parts->form_current_set($form);
                   $c_widget_parts->build();
                   $c_widget_parts->items_set_once($form->_instance->parts[$c_area->id] ?? null);

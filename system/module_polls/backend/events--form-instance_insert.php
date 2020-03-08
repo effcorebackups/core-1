@@ -21,7 +21,8 @@ namespace effcore\modules\polls {
         page::get_current()->args_set('back_insert_is_canceled', true);
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
-        $widget_answers = new widget_poll_fields('answer');
+        $widget_answers = new widget_poll_fields;
+        $widget_answers->name_prefix = 'answer';
         $widget_answers->form_current_set($form);
         $widget_answers->build();
         $widget_answers->items_set_once([

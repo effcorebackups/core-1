@@ -11,10 +11,9 @@ namespace effcore {
   public $item_title = 'Part';
   public $id_area;
 
-  function __construct($name_prefix, $id_area, $attributes = [], $weight = 0) {
-    $this->name_prefix = $name_prefix;
-    $this->id_area     = $id_area;
-    parent::__construct($name_prefix, $attributes, $weight);
+  function __construct($id_area, $attributes = [], $weight = 0) {
+    $this->id_area = $id_area;
+    parent::__construct($attributes, $weight);
   }
 
   function widget_manage_get($item, $c_row_id) {
