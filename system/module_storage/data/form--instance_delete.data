@@ -1,5 +1,10 @@
 forms
 - instance_delete|form
+    managing_group_id: null
+    entity_name: null
+    instance_id: null
+    _instance: null
+    _result_delete: null
     attributes
     - id: instance_delete
     - method: post
