@@ -2,6 +2,7 @@ forms
 - instance_insert|form
     managing_group_id: null
     entity_name: null
+    category_id: null
     _instance: null
     _result_insert: null
     attributes

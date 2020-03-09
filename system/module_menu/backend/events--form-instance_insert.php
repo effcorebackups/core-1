@@ -14,7 +14,7 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
-    if (!isset($form->category_id)) $form->category_id = page::get_current()->args_get('category_id');
+    if (!$form->category_id) $form->category_id = page::get_current()->args_get('category_id');
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # field 'id_tree'
