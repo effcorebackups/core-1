@@ -6,6 +6,7 @@
 
 namespace effcore\modules\user {
           use \effcore\entity;
+          use \effcore\page;
           use \effcore\pluggable_class;
           use \effcore\text_multiline;
           use \effcore\translation;
@@ -22,8 +23,9 @@ namespace effcore\modules\user {
         $items['#id_role']->disabled['owner'     ] = 'owner';
         $items['#id_role']->build();
       }
-    # field 'CAPTCHA'
-      if ($entity->name == 'feedback') {
+    # feedback
+      if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
+      # field 'CAPTCHA'
         $class_captcha = new pluggable_class('field_captcha');
         if ($class_captcha->is_exists_class()) {
           $field_captcha = $class_captcha->object_get();
@@ -31,6 +33,11 @@ namespace effcore\modules\user {
           $field_captcha->build();
           $items['fields']->child_insert($field_captcha, 'captcha');
         }
+      # button 'cancel'
+        $form->child_delete('button_cancel');
+        $items['~insert']->is_builded = false;
+        $items['~insert']->title = 'send';
+        $items['~insert']->build();
       }
     }
   }
