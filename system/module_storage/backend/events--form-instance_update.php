@@ -21,9 +21,9 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
-    if (!isset($form->managing_group_id)) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
-    if (!isset($form->entity_name      )) $form->entity_name       = page::get_current()->args_get('entity_name');
-    if (!isset($form->instance_id      )) $form->instance_id       = page::get_current()->args_get('instance_id');
+    if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
+    if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
+    if (!$form->instance_id      ) $form->instance_id       = page::get_current()->args_get('instance_id');
     $entity = entity::get($form->entity_name);
     $groups = entity::groups_managing_get();
     if ($entity) {
