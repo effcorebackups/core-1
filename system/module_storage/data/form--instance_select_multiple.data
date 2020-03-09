@@ -1,5 +1,9 @@
 forms
 - instance_select_multiple|form
+    managing_group_id: null
+    entity_name: null
+    _selection: null
+    _selected_instances: null
     attributes
     - id: instance_select_multiple
     - enctype: multipart/form-data

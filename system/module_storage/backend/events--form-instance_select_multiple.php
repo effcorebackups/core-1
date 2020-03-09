@@ -18,8 +18,8 @@ namespace effcore\modules\storage {
 
   static function on_init($event, $form, $items) {
     page::get_current()->args_set('action_name', 'select_multiple');
-    if (!isset($form->managing_group_id)) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
-    if (!isset($form->entity_name      )) $form->entity_name       = page::get_current()->args_get('entity_name');
+    if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
+    if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
     if ($entity) {
       $form->attribute_insert('data-entity_name', $form->entity_name);
