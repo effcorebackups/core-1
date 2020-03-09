@@ -1,5 +1,9 @@
 forms
 - instance_insert|form
+    managing_group_id: null
+    entity_name: null
+    _instance: null
+    _result_insert: null
     attributes
     - id: instance_insert
     - enctype: multipart/form-data
