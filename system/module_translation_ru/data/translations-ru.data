@@ -132,6 +132,7 @@ translations
     - failed to write file to disk: не удалось записать файл на диск
     - failure: неудача
     - Feedback form: Форма обратной связи
+    - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
     - Feedback: Отзыв
     - Feedbacks: Отзывы
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.

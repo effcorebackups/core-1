@@ -6,9 +6,11 @@
 
 namespace effcore\modules\user {
           use \effcore\entity;
+          use \effcore\message;
           use \effcore\page;
           use \effcore\pluggable_class;
           use \effcore\text_multiline;
+          use \effcore\text;
           use \effcore\translation;
           abstract class events_form_instance_insert {
 
@@ -38,6 +40,8 @@ namespace effcore\modules\user {
         $items['~insert']->is_builded = false;
         $items['~insert']->title = 'send';
         $items['~insert']->build();
+      # disable default message
+        $form->is_show_result_message = false;
       }
     }
   }
@@ -76,6 +80,20 @@ namespace effcore\modules\user {
                 'This combination of values is already in use!'], ['title' => translation::get($items['#id_permission']->title)]
               ));
             }
+          }
+          break;
+      }
+    }
+  }
+
+  static function on_submit($event, $form, $items) {
+    $entity = entity::get($form->entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'insert':
+        # feedback
+          if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
+            message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
           }
           break;
       }
