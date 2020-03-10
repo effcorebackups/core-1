@@ -62,7 +62,7 @@ namespace effcore\modules\menu {
         case 'apply':
           if ($entity->name == 'tree_item' && $form->category_id) {
             $event->is_last = true;
-            $has_selection = false;
+            $has_changes = false;
             $tree_items = entity::get('tree_item')->instances_select(['conditions' => [
               'id_tree_!f' => 'id_tree',
               'operator'   => '=',
@@ -76,13 +76,13 @@ namespace effcore\modules\menu {
                     $c_item->weight    != $c_new_weight) {
                     $c_item->id_parent  = $c_new_parent;
                     $c_item->weight     = $c_new_weight;
-                    $has_selection      = true;
+                    $has_changes      = true;
                   if ($c_item->update()) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::get($entity->title), 'id' => $c_item->id])           );
                   else                   message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
                 }
               }
             }
-            if (!$has_selection) {
+            if (!$has_changes) {
               message::insert(
                 'You have not made any changes before!', 'warning'
               );
