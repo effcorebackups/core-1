@@ -236,6 +236,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - is_validate_uniqueness: true
         managing_selection_params
         - is_apply_translation: true
     constraints
