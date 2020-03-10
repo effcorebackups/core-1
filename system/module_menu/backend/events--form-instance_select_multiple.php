@@ -76,13 +76,14 @@ namespace effcore\modules\menu {
                     $c_item->weight    != $c_new_weight) {
                     $c_item->id_parent  = $c_new_parent;
                     $c_item->weight     = $c_new_weight;
-                    $has_changes      = true;
-                  if ($c_item->update()) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::get($entity->title), 'id' => $c_item->id])           );
-                  else                   message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
+                  $has_changes = true;
+                  $c_result = $c_item->update();
+                  if ($form->is_show_result_message && $c_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::get($entity->title), 'id' => $c_item->id])           );
+                  if ($form->is_show_result_message && $c_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
                 }
               }
             }
-            if (!$has_changes) {
+            if ($form->is_show_result_message && !$has_changes) {
               message::insert(
                 'You have not made any changes before!', 'warning'
               );
