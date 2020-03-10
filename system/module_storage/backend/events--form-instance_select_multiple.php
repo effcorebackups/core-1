@@ -99,9 +99,11 @@ namespace effcore\modules\storage {
           if (!empty($form->_selected_instances)) {
             foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
               if ($items['#actions']->value_get() == 'delete') {
-                if (empty($c_instance->is_embed) && $c_instance->delete())
-                     message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::get($entity->title), 'id' => $c_instance_id])         );
-                else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::get($entity->title), 'id' => $c_instance_id]), 'error');
+                if (empty($c_instance->is_embed)) {
+                  $c_result = $c_instance->delete();
+                  if ($form->is_show_result_message && $c_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::get($entity->title), 'id' => $c_instance_id])         );
+                  if ($form->is_show_result_message && $c_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::get($entity->title), 'id' => $c_instance_id]), 'error');
+                }
               }
             }
           }
