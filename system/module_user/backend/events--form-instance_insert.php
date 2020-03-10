@@ -42,6 +42,7 @@ namespace effcore\modules\user {
         $items['~insert']->build();
       # disable default message
         $form->is_show_result_message = false;
+        $form->is_redirect_enabled    = false;
       }
     }
   }

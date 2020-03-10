@@ -18,7 +18,7 @@ namespace effcore\modules\polls {
     $entity = entity::get($form->entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
-        page::get_current()->args_set('back_insert_is_canceled', true);
+        $form->is_redirect_enabled = false;
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_poll_fields;

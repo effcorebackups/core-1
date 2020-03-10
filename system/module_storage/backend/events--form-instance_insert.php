@@ -30,7 +30,8 @@ namespace effcore\modules\storage {
         if ($entity->managing_is_enabled) {
           $has_controls = false;
           foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->managing_on_insert_is_enabled) && isset($c_field->managing_control_class)) {
+            if (!empty($c_field->managing_on_insert_is_enabled) &&
+                 isset($c_field->managing_control_class)) {
               $c_control = new $c_field->managing_control_class;
               $c_control->title = $c_field->title;
               $c_control->element_attributes['name'] = $c_name;
@@ -66,7 +67,8 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
           foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->managing_on_insert_is_enabled) && isset($c_field->managing_control_class)) {
+            if (!empty($c_field->managing_on_insert_is_enabled) &&
+                 isset($c_field->managing_control_class)) {
               $c_value = null;
               $c_reflection = new \ReflectionClass($c_field->managing_control_class);
               $c_prefix = $c_reflection->implementsInterface('\\effcore\\complex_control') ? '*' : '#';
@@ -86,7 +88,7 @@ namespace effcore\modules\storage {
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
         # going back
-          if (empty(page::get_current()->args_get('back_insert_is_canceled'))) {
+          if ($form->is_redirect_enabled) {
             $back_insert_0 = page::get_current()->args_get('back_insert_0');
             $back_insert_n = page::get_current()->args_get('back_insert_n');
             url::go($back_insert_0 ?: (url::back_url_get() ?: (

@@ -45,7 +45,8 @@ namespace effcore\modules\storage {
           # make controls for managing
             $has_controls = false;
             foreach ($entity->fields as $c_name => $c_field) {
-              if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_control_class)) {
+              if (!empty($c_field->managing_on_update_is_enabled) &&
+                   isset($c_field->managing_control_class)) {
                 $c_control = new $c_field->managing_control_class;
                 $c_control->title = $c_field->title;
                 $c_control->element_attributes['name'] = $c_name;
@@ -112,7 +113,8 @@ namespace effcore\modules\storage {
           if (!empty($form->_instance)) {
           # transfer new values to instance
             foreach ($entity->fields as $c_name => $c_field) {
-              if (!empty($c_field->managing_on_update_is_enabled) && isset($c_field->managing_control_class)) {
+              if (!empty($c_field->managing_on_update_is_enabled) &&
+                   isset($c_field->managing_control_class)) {
                 $c_value = null;
                 $c_reflection = new \ReflectionClass($c_field->managing_control_class);
                 $c_prefix = $c_reflection->implementsInterface('\\effcore\\complex_control') ? '*' : '#';
