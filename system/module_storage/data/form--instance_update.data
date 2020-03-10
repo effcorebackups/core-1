@@ -3,6 +3,7 @@ forms
     managing_group_id: null
     entity_name: null
     instance_id: null
+    is_show_result_message: true
     _instance: null
     _result: null
     attributes
