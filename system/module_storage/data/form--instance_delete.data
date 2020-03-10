@@ -5,7 +5,7 @@ forms
     instance_id: null
     _instance: null
     _related: null
-    _result_delete: null
+    _result: null
     attributes
     - id: instance_delete
     - method: post

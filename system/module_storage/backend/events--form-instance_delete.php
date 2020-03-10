@@ -48,9 +48,9 @@ namespace effcore\modules\storage {
         case 'delete':
           if (!empty($form->_instance)) {
           # delete action
-            $form->_result_delete = $form->_instance->delete();
+            $form->_result = $form->_instance->delete();
           # show messages
-            if ($form->_result_delete)
+            if ($form->_result)
                    message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::get($entity->title), 'id' => $form->instance_id])         );
               else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::get($entity->title), 'id' => $form->instance_id]), 'error');
           }

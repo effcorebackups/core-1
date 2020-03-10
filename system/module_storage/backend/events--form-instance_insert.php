@@ -79,9 +79,9 @@ namespace effcore\modules\storage {
             }
           }
         # insert action
-          $form->_result_insert = $form->_instance->insert();
+          $form->_result = $form->_instance->insert();
         # show messages
-          if ($form->_result_insert)
+          if ($form->_result)
                message::insert(new text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
           else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => translation::get($entity->title), 'id' => 'n/a'                                           ]), 'warning');
         # ↓↓↓ no break ↓↓↓

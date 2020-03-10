@@ -125,13 +125,13 @@ namespace effcore\modules\storage {
               }
             }
           # update action
-            $form->_result_update = $form->_instance->update();
+            $form->_result = $form->_instance->update();
           # show messages
-            if ($form->_result_update)
+            if ($form->_result)
                  message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
             else message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::get($entity->title), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
           # update 'updated' value
-            if ($form->_result_update && $entity->has_parallel_checking && $entity->field_get('updated')) {
+            if ($form->_result && $entity->has_parallel_checking && $entity->field_get('updated')) {
               $form->child_select('hidden_old_updated')->value_set(
                 $form->_instance->updated
               );

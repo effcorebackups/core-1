@@ -4,7 +4,7 @@ forms
     entity_name: null
     category_id: null
     _instance: null
-    _result_insert: null
+    _result: null
     attributes
     - id: instance_insert
     - enctype: multipart/form-data
