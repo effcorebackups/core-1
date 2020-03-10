@@ -139,7 +139,7 @@ namespace effcore\modules\storage {
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
         # going back
-          if (empty(page::get_current()->args_get('back_update_is_canceled'))) {
+          if ($form->is_redirect_enabled) {
             $back_update_0 = page::get_current()->args_get('back_update_0');
             $back_update_n = page::get_current()->args_get('back_update_n');
             url::go($back_update_0 ?: (url::back_url_get() ?: (

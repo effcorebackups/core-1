@@ -4,6 +4,7 @@ forms
     entity_name: null
     instance_id: null
     is_show_result_message: true
+    is_redirect_enabled: true
     _instance: null
     _result: null
     attributes

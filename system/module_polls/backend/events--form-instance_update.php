@@ -17,7 +17,7 @@ namespace effcore\modules\polls {
     $entity = entity::get($form->entity_name);
     if ($entity) {
       if ($entity->name == 'poll') {
-        page::get_current()->args_set('back_update_is_canceled', true);
+        $form->is_redirect_enabled = false;
         $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
           'id_poll_!f'       => 'id_poll',
           'id_poll_operator' => '=',
