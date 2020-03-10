@@ -378,7 +378,7 @@ namespace effcore {
   }
 
   function instances_select($entity, $params = [], $idkey = null) {
-    $params += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => 0, 'offset' => 0];
+    $params += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
@@ -409,7 +409,7 @@ namespace effcore {
   }
 
   function instances_delete($entity, $params = []) {
-    $params += ['conditions' => [], 'limit' => 0];
+    $params += ['conditions' => [], 'limit' => null];
     if ($this->init()) {
       $query = [
         'action'       => 'DELETE',
@@ -422,7 +422,7 @@ namespace effcore {
   }
 
   function instances_select_count($entity, $params = []) {
-    $params += ['join' => [], 'conditions' => [], 'limit' => 0, 'offset' => 0];
+    $params += ['join' => [], 'conditions' => [], 'limit' => null, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
