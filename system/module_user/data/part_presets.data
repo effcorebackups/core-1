@@ -2,13 +2,14 @@ part_presets
 - form_feedback|part_preset
     id: form_feedback
     managing_group: Forms
-    managing_title: Feedback
+    managing_title: Feedback form
     in_areas
     - =: content
     type: copy
     source: forms/storage/instance_insert
     properties
     - title: Feedback form
+    - title_is_visible: true
     - entity_name: feedback
 - form_login|part_preset
     id: form_login
@@ -29,7 +30,7 @@ part_presets
 - form_recovery|part_preset
     id: form_recovery
     managing_group: Forms
-    managing_title: Recovery
+    managing_title: Access recovery
     in_areas
     - =: content
     type: link
@@ -37,7 +38,7 @@ part_presets
 - form_registration|part_preset
     id: form_registration
     managing_group: Forms
-    managing_title: Registration
+    managing_title: New User Registration
     in_areas
     - =: content
     type: link
