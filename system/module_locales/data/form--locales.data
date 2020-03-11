@@ -1,12 +1,13 @@
 forms
 - locales|form
+    title: Locale settings
+    title_is_visible: false
     attributes
     - id: locales
     - method: post
     - novalidate: true
     children
     - settings|fieldset
-        title: Settings
         children
         - language|field_language
         - timezone_server|field_timezone
