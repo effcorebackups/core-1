@@ -61,6 +61,7 @@ translations
     - Colors was applied.: Колеры былі ўжыты.
     - Colors: Колеры
     - Conditions: Умовы
+    - Console settings: Налады кансолі
     - Content: Змесціва
     - Cookies are disabled. You can not log in!: Cookies адключаны. Вы не можаце ўвайсці ў сістэму!
     - Copyright © 2017—2020 Maxim Rysevets. All rights reserved.: Copyright © 2017—2020 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
@@ -255,6 +256,7 @@ translations
     - Layout: Макет
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.
+    - Leave a vote: Пакінуць свой голас
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
     - left to right: злева направа
     - License agreement: Ліцэнзійнае пагадненне
@@ -521,6 +523,7 @@ translations
     - Tree: Дрэва
     - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
+    - Turn on/off modules: Уключыць/выключыць модулі
     - Type: Тып
     - type: тып
     - Types: Типы

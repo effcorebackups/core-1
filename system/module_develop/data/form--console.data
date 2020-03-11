@@ -1,12 +1,12 @@
 forms
 - console|form
+    title: Console settings
     attributes
     - id: console
     - method: post
     - novalidate: true
     children
     - settings|fieldset
-        title: Settings
         children
         - visibility|field_select
             title: Visibility

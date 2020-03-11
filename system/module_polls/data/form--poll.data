@@ -1,5 +1,7 @@
 forms
 - poll|form
+    title: Leave a vote
+    title_is_visible: false
     attributes
     - id: poll
     - method: post

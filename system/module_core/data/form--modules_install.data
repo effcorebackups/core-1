@@ -1,5 +1,7 @@
 forms
 - modules_install|form
+    title: Turn on/off modules
+    title_is_visible: false
     attributes
     - id: modules_install
     - method: post
