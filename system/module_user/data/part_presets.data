@@ -25,7 +25,7 @@ part_presets
     managing_title: Logout
     in_areas
     - =: content
-    type: link
+    type: copy
     source: forms/user/logout
 - form_recovery|part_preset
     id: form_recovery

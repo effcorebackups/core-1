@@ -15,13 +15,12 @@ namespace effcore {
     if ($weight) $this->weight = $weight;
   }
 
-  function part_preset_get() {
-    return part_preset::select($this->id);
-  }
-
   function part_make() {
-    $preset = $this->part_preset_get();
-    if (isset($preset)) {
+    $preset = part_preset::select($this->id);
+    if ($preset) {
+      foreach ($this as $c_key => $c_value)
+        $preset->{$c_key} =
+        $this  ->{$c_key};
       return $preset->part_make();
     }
   }

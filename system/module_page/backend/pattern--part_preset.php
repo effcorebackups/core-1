@@ -27,14 +27,11 @@ namespace effcore {
   }
 
   function part_make() {
-    $preset = static::select($this->id);
-    if ($preset) {
-      $part = new part;
-      foreach ($part as $c_key => $c_value)
-        $part  ->{$c_key} =
-        $preset->{$c_key};
-      return $part;
-    }
+    $part = new part;
+    foreach ($this as $c_key => $c_value)
+      $part->{$c_key} =
+      $this->{$c_key};
+    return $part;
   }
 
   ###########################

@@ -442,6 +442,8 @@ instances
       - content
         - form_logout|part_preset_link
             id: form_logout
+            properties
+            - title_is_visible: false
       - footer
         - text_sql_copyright_classic|part_preset_link
             id: text_sql_copyright_classic

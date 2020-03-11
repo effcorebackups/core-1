@@ -92,6 +92,8 @@ instances
       - content
         - form_logout|part_preset_link
             id: form_logout
+            properties
+            - title_is_visible: false
 - page_recovery|instance
     entity_name: page
     values
