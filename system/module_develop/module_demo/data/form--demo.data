@@ -1,5 +1,7 @@
 forms
 - demo|form
+    title: Demo form
+    title_is_visible: false
     attributes
     - id: demo
     - enctype: multipart/form-data

@@ -38,6 +38,7 @@ translations
     - Data ID: ID даных
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
+    - Demo form: Дэманстрацыйная форма
     - Demo NoSQL: Дэманстрацыйнае NoSQL
     - Demo SQL: Дэманстрацыйнае SQL
     - Demo via decorator: Дэманстрацыйнае праз дэкаратар

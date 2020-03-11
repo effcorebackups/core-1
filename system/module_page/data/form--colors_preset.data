@@ -1,5 +1,7 @@
 forms
 - colors_preset|form
+    title: Colors presets
+    title_is_visible: false
     attributes
     - id: colors_preset
     - method: post

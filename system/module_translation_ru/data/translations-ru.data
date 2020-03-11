@@ -59,6 +59,7 @@ translations
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
     - Color: Цвет
+    - Colors presets: Цветовые предустановки
     - Colors was applied.: Цвета были применены.
     - Colors: Цвета
     - Conditions: Условия
@@ -85,6 +86,7 @@ translations
     - Date/time format: Формат даты/времени
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
+    - Decoration settings: Настройки оформления
     - Decoration: Оформление
     - Decorator parameters: Параметры оформления
     - Definition list: Список определений
@@ -542,6 +544,7 @@ translations
     - Unordered list: Неупорядоченный список
     - Update #%%_number for module "%%_title" (%%_id) was applied.: Обновление №%%_number для модуля "%%_title" (%%_id) было применено.
     - Update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление №%%_number для модуля "%%_title" (%%_id) не было применено!
+    - Update Cache: Обновить кэш
     - Update instance: Обновить экземпляр
     - Update modules data: Обновить данные модулей
     - update this page: обновить эту страницу

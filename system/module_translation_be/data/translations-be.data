@@ -59,6 +59,7 @@ translations
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
     - Color: Колер
+    - Colors presets: Каляровыя перадусталёўкі
     - Colors was applied.: Колеры былі ўжыты.
     - Colors: Колеры
     - Conditions: Умовы
@@ -85,6 +86,7 @@ translations
     - Date/time format: Фармат даты/часу
     - Date/Time: Дата/Час
     - Decimal point: Дзесятковая кропка
+    - Decoration settings: Налады афармлення
     - Decoration: Афармленне
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
@@ -542,6 +544,7 @@ translations
     - Unordered list: Неўпарадкаваны спіс
     - Update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
+    - Update Cache: Абнавіць кэш
     - Update instance: Абнавіць асобнік
     - Update modules data: Абнавіць даныя модуляў
     - update this page: абнавіць гэтую старонку

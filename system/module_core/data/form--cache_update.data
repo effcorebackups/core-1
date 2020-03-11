@@ -1,5 +1,7 @@
 forms
 - cache_update|form
+    title: Update Cache
+    title_is_visible: false
     attributes
     - id: cache_update
     - method: post
