@@ -1,5 +1,7 @@
 forms
 - logout|form
+    title: Logout
+    title_is_visible: false
     attributes
     - id: logout
     - method: post

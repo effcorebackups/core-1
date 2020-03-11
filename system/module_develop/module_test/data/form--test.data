@@ -1,5 +1,7 @@
 forms
 - test|form
+    title: Running the test
+    title_is_visible: false
     attributes
     - id: test
     - method: post

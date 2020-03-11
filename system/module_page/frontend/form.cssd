@@ -4,7 +4,7 @@
   form {margin: 70px 0}
   form [aria-invalid='true'] {border-color: %%_color_error !important}
 
-  form [data-form-title] {margin: 1em 0 .5em 0}
+  form [data-form-title] {}
   form [data-form-title] + fieldset {margin-top: 1em}
 
   /* fieldset */
