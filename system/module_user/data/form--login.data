@@ -1,12 +1,13 @@
 forms
 - login|form
+    title: Login
+    title_is_visible: false
     attributes
     - id: login
     - method: post
     - novalidate: true
     children
     - credentials|fieldset
-        title: Credentials
         children
         - email|field_email
         - password|field_password

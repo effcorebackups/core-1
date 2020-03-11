@@ -449,7 +449,7 @@ instances
     entity_name: page
     values
     - id: recovery
-    - title: Recovery
+    - title: Access recovery
     - url: /recovery
     - is_https: 1
     - is_embed: 1

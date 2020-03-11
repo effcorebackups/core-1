@@ -10,6 +10,7 @@ translations
     - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a PHP extension stopped the file upload: PHP-расширение остановило загрузку файла
     - Access forbidden: Доступ запрещён
+    - Access recovery: Восстановление доступа
     - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access: Доступ
     - action: действие
