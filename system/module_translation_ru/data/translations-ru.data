@@ -331,6 +331,7 @@ translations
     - Name: Имя
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
+    - New User Registration: Регистрация нового пользователя
     - nickname: псевдоним
     - Nickname: Псевдоним
     - No additional parameters.: Нет дополнительных параметров.
@@ -462,6 +463,7 @@ translations
     - Switcher: Выключатель
     - Switchers: Выключатели
     - System breadcrumbs: Системные хлебные крошки
+    - System Installation Parameters: Параметры установки системы
     - system logotype: логотип системы
     - System menu: Системное меню
     - System was installed.: Система была установлена.

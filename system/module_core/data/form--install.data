@@ -1,5 +1,7 @@
 forms
 - install|form
+    title: System Installation Parameters
+    title_is_visible: false
     attributes
     - id: install
     - method: post

@@ -489,7 +489,7 @@ instances
     entity_name: page
     values
     - id: registration
-    - title: Registration
+    - title: New User Registration
     - url: /registration
     - is_https: 1
     - is_embed: 1
