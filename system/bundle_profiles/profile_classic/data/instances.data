@@ -318,6 +318,8 @@ instances
       - content
         - text_sql_contact_classic|part_preset_link
             id: text_sql_contact_classic
+        - form_feedback|part_preset_link
+            id: form_feedback
       - footer
         - text_sql_copyright_classic|part_preset_link
             id: text_sql_copyright_classic
@@ -547,8 +549,7 @@ instances
     - id: contact_classic
     - description: Text Contact Us
     - text: Here you can place: names of contact persons, addresses of branches,
->>>>>>>>>>> e-mail addresses, phone numbers, links to social networks, location map,
->>>>>>>>>>> feedback form.
+>>>>>>>>>>> e-mail addresses, phone numbers, links to social networks, location map.
     - module_id: profile_classic
 - text_front_classic|instance
     entity_name: text
