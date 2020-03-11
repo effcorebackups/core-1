@@ -1,5 +1,7 @@
 forms
 - instance_delete|form
+    title: Delete instance
+    title_is_visible: false
     managing_group_id: null
     entity_name: null
     instance_id: null

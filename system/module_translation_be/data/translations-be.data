@@ -89,6 +89,7 @@ translations
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
     - delete file "%%_file": выдаліць файл "%%_file"
+    - Delete instance: Выдаліць асобнік
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
     - Delete modules data: Выдаліць даныя модуляў
     - Delete: Выдаліць
@@ -217,6 +218,7 @@ translations
     - Information: Інфармацыя
     - Insert a new item of type "%%_entity_title_context" on new page.: Уставіць новы элемент тыпу "%%_entity_title_context" на новай старонцы.
     - Insert field: Уставіць поле
+    - Insert instance: Уставіць асобнік
     - Insert part: Уставіць частку
     - insert: уставіць
     - Insert: Уставіць
@@ -228,6 +230,7 @@ translations
     - installation: інсталяванне
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
     - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў даданы!
+    - Instances: Асобнікі
     - interface: інтэрфейс
     - Interface: Інтэрфейс
     - Interfaces: Інтэрфейсы
@@ -539,6 +542,7 @@ translations
     - Unordered list: Неўпарадкаваны спіс
     - Update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
+    - Update instance: Абнавіць асобнік
     - Update modules data: Абнавіць даныя модуляў
     - update this page: абнавіць гэтую старонку
     - Update: Абнавіць

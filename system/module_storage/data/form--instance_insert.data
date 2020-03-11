@@ -1,5 +1,7 @@
 forms
 - instance_insert|form
+    title: Insert instance
+    title_is_visible: false
     managing_group_id: null
     entity_name: null
     category_id: null
