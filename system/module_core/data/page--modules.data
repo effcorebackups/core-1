@@ -38,6 +38,8 @@ pages
             match: %^install$%
           type: link
           source: forms/core/cache_update
+          properties
+          - title_is_visible: false
       - form_modules_install|part
           display
             check: page_args
@@ -45,6 +47,8 @@ pages
             match: %^install$%
           type: link
           source: forms/core/modules_install
+          properties
+          - title_is_visible: false
       - form_modules_uninstall|part
           display
             check: page_args

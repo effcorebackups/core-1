@@ -25,3 +25,5 @@ pages
       - form_install|part
           type: link
           source: forms/core/install
+          properties
+          - title_is_visible: false

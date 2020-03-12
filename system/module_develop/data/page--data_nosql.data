@@ -39,6 +39,8 @@ pages
       - form_cache_update|part
           type: link
           source: forms/core/cache_update
+          properties
+          - title_is_visible: false
       - block_trees|part
           display
             check: page_args
