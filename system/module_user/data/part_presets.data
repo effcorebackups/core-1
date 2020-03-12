@@ -38,10 +38,10 @@ part_presets
 - form_registration|part_preset
     id: form_registration
     managing_group: Forms
-    managing_title: New User Registration
+    managing_title: Registration
     in_areas
     - =: content
-    type: link
+    type: copy
     source: forms/user/registration
 # ─────────────────────────────────────────────────────────────────────
 - selection_user|part_preset

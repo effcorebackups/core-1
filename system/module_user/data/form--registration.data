@@ -1,7 +1,6 @@
 forms
 - registration|form
     title: New User Registration
-    title_is_visible: false
     attributes
     - id: registration
     - method: post

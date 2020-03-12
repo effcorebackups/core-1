@@ -158,6 +158,8 @@ instances
       - content
         - form_registration|part_preset_link
             id: form_registration
+            properties
+            - title_is_visible: false
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
