@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_access extends control implements complex_control {
+          class widget_access extends control implements complex_control {
 
   public $tag_name = 'x-group';
   public $title = 'Access';

@@ -419,14 +419,14 @@ forms
                 - =: switcher_2
                 - =: switcher_4
           # group 'Access'
-            - access|group_access
+            - access|widget_access
                 title: Access
                 description|text_multiline
                   text
                   - 0: Access settings are not applicable if no one role is active!
-                  - 1: Group "%%_title".
+                  - 1: Widget "%%_title".
                   args
-                  - title: group_acces
+                  - title: widget_access
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────

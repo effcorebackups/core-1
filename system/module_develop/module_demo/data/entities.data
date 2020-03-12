@@ -67,7 +67,7 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\group_access
+        managing_control_class: \effcore\widget_access
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
