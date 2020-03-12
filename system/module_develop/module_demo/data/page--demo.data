@@ -46,6 +46,8 @@ pages
             match: %^embedded/form_elements$%
           type: link
           source: forms/demo/demo
+          properties
+          - title_is_visible: false
       # ─────────────────────────────────────────────────────────────────────
       # markup
       # ─────────────────────────────────────────────────────────────────────

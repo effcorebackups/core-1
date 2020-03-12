@@ -27,3 +27,5 @@ pages
       - form_locales|part
           type: link
           source: forms/locales/locales
+          properties
+          - title_is_visible: false

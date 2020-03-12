@@ -32,3 +32,5 @@ pages
       - form_test|part
           type: link
           source: forms/test/test
+          properties
+          - title_is_visible: false

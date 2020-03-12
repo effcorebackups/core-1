@@ -1,7 +1,6 @@
 forms
 - locales|form
     title: Locale settings
-    title_is_visible: false
     attributes
     - id: locales
     - method: post
