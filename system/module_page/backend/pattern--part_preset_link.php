@@ -16,7 +16,7 @@ namespace effcore {
   }
 
   function part_make() {
-    $preset = part_preset::select($this->id);
+    $preset = core::deep_clone(part_preset::select($this->id));
     if ($preset) {
       foreach ($this as $c_key => $c_value)
         $preset->{$c_key} =
