@@ -1,7 +1,6 @@
 forms
 - login|form
     title: Login
-    title_is_visible: false
     attributes
     - id: login
     - method: post

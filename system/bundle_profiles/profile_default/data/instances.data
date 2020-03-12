@@ -60,6 +60,8 @@ instances
       - content
         - form_login|part_preset_link
             id: form_login
+            properties
+            - title_is_visible: false
 - page_logout|instance
     entity_name: page
     values

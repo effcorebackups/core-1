@@ -17,7 +17,7 @@ part_presets
     managing_title: Login
     in_areas
     - =: content
-    type: link
+    type: copy
     source: forms/user/login
 - form_logout|part_preset
     id: form_logout
