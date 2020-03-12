@@ -126,6 +126,8 @@ instances
       - content
         - form_recovery|part_preset_link
             id: form_recovery
+            properties
+            - title_is_visible: false
 - page_registration|instance
     entity_name: page
     values

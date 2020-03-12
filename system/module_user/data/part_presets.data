@@ -33,7 +33,7 @@ part_presets
     managing_title: Access recovery
     in_areas
     - =: content
-    type: link
+    type: copy
     source: forms/user/recovery
 - form_registration|part_preset
     id: form_registration

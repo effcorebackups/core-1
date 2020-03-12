@@ -1,7 +1,6 @@
 forms
 - recovery|form
     title: Access recovery
-    title_is_visible: false
     attributes
     - id: recovery
     - method: post
