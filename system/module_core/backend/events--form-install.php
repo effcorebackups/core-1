@@ -9,7 +9,6 @@ namespace effcore\modules\core {
           use \effcore\cache;
           use \effcore\core;
           use \effcore\event;
-          use \effcore\markup;
           use \effcore\message;
           use \effcore\module;
           use \effcore\page;
@@ -17,6 +16,7 @@ namespace effcore\modules\core {
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\translation;
+          use \effcore\url;
           abstract class events_form_install {
 
   static function on_init($event, $form, $items) {
@@ -181,17 +181,16 @@ namespace effcore\modules\core {
           }
           if (count(storage::get('sql')->errors) == 0) {
             cache::update_global();
+            storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code);
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([
               'your EMail is — %%_email',
-              'your Password is — %%_password',
-              'go to page %%_link'], [
-              'link'     => (new markup('a', ['href' => '/login', 'target' => '_blank'], 'login'))->render(),
+              'your Password is — %%_password'], [
               'email'    => $items['#email'   ]->value_get(),
               'password' => $items['#password']->value_get(false)]), 'credentials');
-            storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code);
+            url::go('/login');
           } else {
             message::insert(new text_multiline([
               'An error occurred during installation!',
