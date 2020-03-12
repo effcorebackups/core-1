@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_license_agreement extends fieldset {
+          class widget_license_agreement extends fieldset {
 
   public $title = 'License agreement';
   public $attributes = ['data-type' => 'license_agreement'];
@@ -14,6 +14,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $this->state = 'closed';
       $language = language::get(language::code_get_current());
       $license_file = new file($language->license_path ?: dir_root.'license.md');
       $markup_license = new markup('x-document', ['data-type' => 'license'], markdown::markdown_to_markup($license_file->load()));

@@ -6,8 +6,7 @@ forms
     - method: post
     - novalidate: true
     children
-    - license_agreement|group_license_agreement
-        state: closed
+    - license_agreement|widget_license_agreement
     - storage|fieldset
         title: Storage
         state: closed
