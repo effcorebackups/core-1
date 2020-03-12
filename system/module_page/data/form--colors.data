@@ -1,7 +1,6 @@
 forms
 - colors|form
     title: Colors
-    title_is_visible: false
     attributes
     - id: colors
     - method: post

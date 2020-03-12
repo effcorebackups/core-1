@@ -1,7 +1,6 @@
 forms
 - layout|form
     title: Layout
-    title_is_visible: false
     attributes
     - id: layout
     - method: post

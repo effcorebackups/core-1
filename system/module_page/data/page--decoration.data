@@ -41,6 +41,8 @@ pages
             match: %^colors/current$%
           type: link
           source: forms/page/colors
+          properties
+          - title_is_visible: false
       - form_colors_preset|part
           display
             check: page_args
@@ -48,6 +50,8 @@ pages
             match: %^colors/presets$%
           type: link
           source: forms/page/colors_preset
+          properties
+          - title_is_visible: false
       - form_layout|part
           display
             check: page_args
@@ -55,6 +59,8 @@ pages
             match: %^layouts$%
           type: link
           source: forms/page/layout
+          properties
+          - title_is_visible: false
       - form_decoration_settings|part
           display
             check: page_args
@@ -62,3 +68,5 @@ pages
             match: %^settings$%
           type: link
           source: forms/page/decoration_settings
+          properties
+          - title_is_visible: false

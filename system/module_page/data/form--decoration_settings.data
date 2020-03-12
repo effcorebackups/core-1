@@ -1,7 +1,6 @@
 forms
 - decoration_settings|form
     title: Decoration settings
-    title_is_visible: false
     attributes
     - id: decoration_settings
     - method: post
