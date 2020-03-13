@@ -46,7 +46,7 @@ namespace effcore {
     }
     if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
     if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
-    if ($opener && $this->has_error()                                                                                ) $opener->attribute_delete('checked'      );
+    if ($opener && $this->has_error_in_container()                                                                   ) $opener->attribute_delete('checked'      );
     return $opener ?
            $opener->render() : '';
   }

@@ -62,9 +62,9 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function has_error() {
+  function has_error_in_container() {
     foreach ($this->children_select_recursive() as $c_child) {
-      if ($c_child instanceof container &&
+      if ($c_child instanceof field &&
           $c_child->has_error()) {
         return true;
       }

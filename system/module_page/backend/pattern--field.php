@@ -267,6 +267,10 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
+  function has_error() {
+    return $this->has_error;
+  }
+
   function error_set($message = null, $args = []) {
     if ($this->disabled_get() == false &&
         $this->readonly_get() == false) {
@@ -284,10 +288,6 @@ namespace effcore {
         }
       }
     }
-  }
-
-  function has_error() {
-    return $this->has_error;
   }
 
   # ─────────────────────────────────────────────────────────────────────
