@@ -117,7 +117,7 @@ namespace effcore\modules\polls {
       case 'vote':
         if (!$items['*answers']->value_get()) {
           message::insert('No one item was selected!', 'warning');
-          $items['*answers']->error_set();
+          $items['*answers']->error_set_in_container();
         }
         break;
     }

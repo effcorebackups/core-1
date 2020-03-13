@@ -63,7 +63,7 @@ namespace effcore\modules\core {
       # if no one item is selected
         if (!$modules_to_uninstall) {
           message::insert('No one item was selected!', 'warning');
-          $items['*uninstall']->error_set();
+          $items['*uninstall']->error_set_in_container();
         }
         break;
     }

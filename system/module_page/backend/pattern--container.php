@@ -71,4 +71,12 @@ namespace effcore {
     }
   }
 
+  function error_set_in_container() {
+    foreach ($this->children_select_recursive() as $c_child) {
+      if ($c_child instanceof field) {
+          $c_child->error_set();
+      }
+    }
+  }
+
 }}

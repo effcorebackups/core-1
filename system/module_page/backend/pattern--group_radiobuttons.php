@@ -95,12 +95,4 @@ namespace effcore {
     }
   }
 
-  function error_set() {
-    foreach ($this->children_select() as $c_child) {
-      if ($c_child instanceof $this->field_class) {
-        $c_child->error_set();
-      }
-    }
-  }
-
 }}
