@@ -12,8 +12,8 @@ Operating system: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
 License         : proprietary software
 Website         : http://effcore.com
 
-effcore is a next-generation CMS (Content Management System)
-and CMF (Content Management Framework) developed by between 2017 and 2020.
+effcore is a next-generation mini CMS (Content Management System)
+and mini CMF (Content Management Framework) developed by between 2017 and 2020.
 Incorporated the new features of Web 2.0/3.0.
 Uses technologies such as: HTML5, CSS3, JS ES6, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, PSR-0.
