@@ -211,6 +211,7 @@ translations
     - go to page %%_link: перейти на страницу %%_link
     - go to section "%%_title": перейти на раздзел "%%_title"
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
+    - Group "%%_title" must contain at least one selected item!: Группа "%%_title" должна содержать как минимум один выбранный элемент!
     - Group "%%_title".: Группа "%%_title".
     - Headers: Заголовки
     - Hostname: Имя узла сети

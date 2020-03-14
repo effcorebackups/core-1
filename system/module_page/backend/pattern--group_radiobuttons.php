@@ -18,6 +18,7 @@ namespace effcore {
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
   public $element_attributes = [];
+  public $required_any = false;
   public $values   = [];
   public $required = [];
   public $disabled = [];
@@ -92,6 +93,25 @@ namespace effcore {
         $c_child->checked_set(true);
         return true;
       }
+    }
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function on_validate(&$group, $form, $npath) {
+    return static::validate_required_any($group, $form, $npath);
+  }
+
+  static function validate_required_any(&$group, $form, $npath) {
+    if ($group->required_any && $group->value_get() == null) {
+      $group->error_set_in_container();
+      $form->error_set(
+        'Group "%%_title" must contain at least one selected item!', ['title' => translation::get($group->title)]
+      );
+    } else {
+      return true;
     }
   }
 
