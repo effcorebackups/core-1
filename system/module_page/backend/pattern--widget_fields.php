@@ -159,15 +159,15 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function on_request_value_set(&$group, $form, $npath) {
-    $group->on_cache_update($form, $npath);
+  static function on_request_value_set(&$widget, $form, $npath) {
+    $widget->on_cache_update($form, $npath);
   }
 
-  static function on_submit(&$group, $form, $npath) {
-    foreach ($group->_buttons as $c_button) {
+  static function on_submit(&$widget, $form, $npath) {
+    foreach ($widget->_buttons as $c_button) {
       if ($c_button->is_clicked()) {
-        if (isset($c_button->_type) && $c_button->_type == 'insert') return $group->on_button_click_insert($form, $npath, $c_button);
-        if (isset($c_button->_type) && $c_button->_type == 'delete') return $group->on_button_click_delete($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type == 'insert') return $widget->on_button_click_insert($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type == 'delete') return $widget->on_button_click_delete($form, $npath, $c_button);
         return;
       }
     }
