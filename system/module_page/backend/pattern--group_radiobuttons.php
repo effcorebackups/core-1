@@ -72,8 +72,8 @@ namespace effcore {
     }
   }
 
-  function value_get_complex()       {}
-  function value_set_complex($value) {}
+  function value_get_complex()       {return $this->value_get();      }
+  function value_set_complex($value) {       $this->value_set($value);}
 
   function value_get() {
     foreach ($this->children_select() as $c_child) {

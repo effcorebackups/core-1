@@ -12,6 +12,9 @@ namespace effcore {
     'role'      => 'group'];
   public $field_class = '\\effcore\\field_checkbox';
 
+  function value_get_complex()       {return $this->values_get();      }
+  function value_set_complex($value) {       $this->values_set($value);}
+
   function values_get() {
     $result = [];
     foreach ($this->children_select() as $c_id => $c_child) {
