@@ -13,6 +13,7 @@ namespace effcore {
   public $title;
   public $title_tag_name = 'x-title';
   public $title_position = 'top';
+  public $title_is_visible = true;
   public $content_tag_name;
   public $description;
   public $description_tag_name = 'x-description';
@@ -41,11 +42,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title) {
-      return (new markup($this->title_tag_name, ['data-mark-required' => $this->attribute_select('required') ? 'true' : null],
-        $this->title
-      ))->render();
-    }
+    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, ['data-mark-required' => $this->attribute_select('required') ? 'true' : null, 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, ['data-mark-required' => $this->attribute_select('required') ? 'true' : null                         ], $this->title))->render();
   }
 
   function render_description() {

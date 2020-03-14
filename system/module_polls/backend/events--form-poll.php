@@ -56,11 +56,14 @@ namespace effcore\modules\polls {
       if ( ($poll->expired > core::datetime_get() && $votes == [] && $poll->user_type == 0) ||
            ($poll->expired > core::datetime_get() && $votes == [] && $poll->user_type == 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
         $items['~vote']->disabled_set(false);
-        $selector = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
-        $selector->build();
-        $items['fields']->child_insert($selector, 'answers');
+        $control = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
+        $control->title = $poll->question;
+        $control->title_is_visible = false;
+        $control->required_any = true;
+        $control->build();
+        $items['fields']->child_insert($control, 'answers');
         foreach ($answers_row as $c_answer) {
-          $selector->field_insert(
+          $control->field_insert(
             $c_answer->answer, null, ['name' => 'answers[]', 'value' => $c_answer->id], $c_answer->id, $c_answer->weight
           );
         }
@@ -109,17 +112,6 @@ namespace effcore\modules\polls {
       $form->child_update('fields',
         new markup('x-no-result', [], 'no items')
       );
-    }
-  }
-
-  static function on_validate($event, $form, $items) {
-    switch ($form->clicked_button->value_get()) {
-      case 'vote':
-        if (!$items['*answers']->value_get()) {
-          message::insert('No one item was selected!', 'warning');
-          $items['*answers']->error_set_in_container();
-        }
-        break;
     }
   }
 

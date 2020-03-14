@@ -13,6 +13,7 @@ namespace effcore {
   public $template = 'form';
   public $attributes = ['accept-charset' => 'UTF-8'];
   public $title;
+  public $title_tag_name = 'h2';
   public $title_is_visible = 1;
   public $clicked_button;
   public $number;
@@ -134,8 +135,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', ['data-form-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', ['data-form-title' => true,                        ], $this->title))->render();
+    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, ['data-form-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, ['data-form-title' => true,                        ], $this->title))->render();
   }
 
   # ─────────────────────────────────────────────────────────────────────

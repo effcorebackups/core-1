@@ -37,9 +37,6 @@ events
       for: instance_update
       weight: -50
       handler: \effcore\modules\polls\events_form_instance_update::on_validate
-  - poll|event
-      for: poll
-      handler: \effcore\modules\polls\events_form_poll::on_validate
   on_form_submit
   - instance_insert_poll|event
       for: instance_insert
