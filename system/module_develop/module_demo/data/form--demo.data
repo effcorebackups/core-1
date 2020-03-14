@@ -371,6 +371,7 @@ forms
           # group 'Checkboxes'
             - checkboxes|group_checkboxes
                 title: Checkboxes
+                required_any: true
                 description|text
                   text: Group "%%_title".
                   args
@@ -401,6 +402,7 @@ forms
           # group 'Switchers'
             - switchers|group_switchers
                 title: Switchers
+                required_any: true
                 description|text
                   text: Group "%%_title".
                   args
@@ -447,6 +449,7 @@ forms
           # group 'Radiobuttons'
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
+                required_any: true
                 description|text
                   text: Group "%%_title".
                   args

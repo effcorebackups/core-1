@@ -9,6 +9,7 @@ namespace effcore {
 
   public $title_tag_name = 'label';
   public $content_tag_name = 'x-group-content';
+  public $required_any = true;
   public $attributes = [
     'data-type' => 'palette',
     'role'      => 'group'
@@ -48,7 +49,7 @@ namespace effcore {
       'id' => 'f_opener_'.$this->name_get_complex(),
       'value' => $color_value,
       'style' => ['background: '.$color_value],
-      'checked' => true
+      'checked' => $this->has_error_in_container() ? false : true
     ]))->render();
   }
 
