@@ -211,7 +211,7 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Group "%%_title" must contain at least one selected item!: Гурт "%%_title" павінен утрымліваць як мінімум адзін абраны элемент!
+    - Group "%%_title" must contain at least one selected item!: Група "%%_title" павінна утрымліваць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
