@@ -8,7 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
-          use \effcore\widget_selection_fields;
+          use \effcore\widget_fields_for_selection;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -21,7 +21,7 @@ namespace effcore\modules\storage {
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
       # insert widget 'Fields'
-        $widget_fields = new widget_selection_fields;
+        $widget_fields = new widget_fields_for_selection;
         $widget_fields->name_prefix = 'field';
         $widget_fields->cform = $form;
         $widget_fields->build();
