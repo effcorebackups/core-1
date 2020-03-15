@@ -99,16 +99,11 @@ namespace effcore {
     return $this->cform->validation_cache_get($this->name_prefix.'items') ?: [];
   }
 
-  function items_set($items) {
+  function items_set($items, $once = false) {
+    if ($once && $this->cform->validation_cache_get($this->name_prefix.'items') !== null) return;
     $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set($this->name_prefix.'items', $items);
+    $this->cform->validation_cache_set($this->name_prefix.'items', $items ?: []);
     $this->widgets_group_manage_build();
-  }
-
-  function items_set_once($items) {
-    if ($this->cform->validation_cache_get($this->name_prefix.'items') === null) {
-      $this->items_set($items ?: []);
-    }
   }
 
   function items_reset() {

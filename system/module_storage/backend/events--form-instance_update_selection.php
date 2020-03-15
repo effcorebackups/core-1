@@ -25,7 +25,7 @@ namespace effcore\modules\storage {
         $widget_fields->name_prefix = 'field';
         $widget_fields->cform = $form;
         $widget_fields->build();
-        $widget_fields->items_set_once($form->_instance->fields);
+        $widget_fields->items_set($form->_instance->fields, true);
         $fieldset_fields->child_insert($widget_fields, 'widget_fields');
         $form->_widget_fields = $widget_fields;
       # insert field 'Limit'
