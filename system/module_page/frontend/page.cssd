@@ -47,7 +47,7 @@
 
   /* universal styles */
 
-  [aria-hidden='true'] {display: none}
+  [aria-hidden='true'] {display: none !important}
 
   /* dl */
 
