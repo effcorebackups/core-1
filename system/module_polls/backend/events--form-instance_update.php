@@ -97,6 +97,8 @@ namespace effcore\modules\polls {
           # ↓↓↓ no break ↓↓↓
           case 'cancel':
           # going back
+            $back_update_0 = page::get_current()->args_get('back_update_0');
+            $back_update_n = page::get_current()->args_get('back_update_n');
             url::go($back_update_0 ?: (url::back_url_get() ?: (
                     $back_update_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
             break;
