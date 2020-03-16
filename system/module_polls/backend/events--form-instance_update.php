@@ -35,7 +35,7 @@ namespace effcore\modules\polls {
         $widget_answers->name_prefix = 'answer';
         $widget_answers->cform = $form;
         $widget_answers->build();
-        $widget_answers->items_set($widget_items, true);
+        $widget_answers->value_set_complex($widget_items, true);
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
@@ -50,7 +50,7 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'poll') {
-            if (count($form->_widget_answers->items_get()) < 2) {
+            if (count($form->_widget_answers->value_get_complex()) < 2) {
               $form->error_set('The poll must contain a minimum %%_number responses!', ['number' => 2]);
             }
           }
@@ -66,7 +66,7 @@ namespace effcore\modules\polls {
         switch ($form->clicked_button->value_get()) {
           case 'update':
             $used_ids = [];
-            foreach ($form->_widget_answers->items_get() as $c_item) {
+            foreach ($form->_widget_answers->value_get_complex() as $c_item) {
             # insert new answer
               if ($c_item->id == 0) {
                 (new instance('poll_answer', [

@@ -51,7 +51,7 @@ namespace effcore\modules\page {
                   $c_widget_parts->name_prefix = 'parts__'.$c_area->id;
                   $c_widget_parts->cform = $form;
                   $c_widget_parts->build();
-                  $c_widget_parts->items_set($form->_instance->parts[$c_area->id] ?? null, true);
+                  $c_widget_parts->value_set_complex($form->_instance->parts[$c_area->id] ?? null, true);
                   $c_area->child_insert($c_widget_parts, 'widget_parts');
                   $form->_widgets_area[$c_area->id] = $c_widget_parts;
                 }
@@ -86,7 +86,7 @@ namespace effcore\modules\page {
             if (layout::select($form->_instance->id_layout)) {
               $all_parts = [];
               foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-                $c_parts = $c_widget->items_get();
+                $c_parts = $c_widget->value_get_complex();
                 if ($c_parts)
                   $all_parts[$c_id_area] = $c_parts;
               }

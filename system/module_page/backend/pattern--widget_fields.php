@@ -95,6 +95,9 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  function value_get_complex()                      {return $this->items_get();             }
+  function value_set_complex($value, $once = false) {       $this->items_set($value, $once);}
+
   function items_get() {
     return $this->cform->validation_cache_get($this->name_prefix.'items') ?: [];
   }

@@ -25,7 +25,7 @@ namespace effcore\modules\storage {
         $widget_fields->name_prefix = 'field';
         $widget_fields->cform = $form;
         $widget_fields->build();
-        $widget_fields->items_set($form->_instance->fields, true);
+        $widget_fields->value_set_complex($form->_instance->fields, true);
         $fieldset_fields->child_insert($widget_fields, 'widget_fields');
         $form->_widget_fields = $widget_fields;
       # insert field 'Limit'
@@ -52,7 +52,7 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'selection' && !empty($form->_instance)) {
-            $form->_instance->fields = $form->_widget_fields->items_get() ?: null;
+            $form->_instance->fields = $form->_widget_fields->value_get_complex() ?: null;
           }
           break;
       }
