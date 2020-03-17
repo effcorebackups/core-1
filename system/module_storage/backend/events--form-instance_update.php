@@ -59,7 +59,7 @@ namespace effcore\modules\storage {
                 $c_control->entity_field_name = $c_name;
                 $c_control->build();
                 $c_control->value_set_initial($form->_instance->{$c_name}, true);
-                if      (empty($c_field->managing_control_value_manual_set) && $c_control instanceof complex_control       ) $c_control->value_set_complex($form->_instance->{$c_name});
+                if      (empty($c_field->managing_control_value_manual_set) && $c_control instanceof complex_control       ) $c_control->value_set_complex($form->_instance->{$c_name}, true);
                 else if (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox != true) $c_control->value_set        ($form->_instance->{$c_name});
                 else if (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox == true) $c_control->checked_set      ($form->_instance->{$c_name});
                 $items['fields']->child_insert($c_control, $c_name);

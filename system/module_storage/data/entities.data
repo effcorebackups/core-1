@@ -50,8 +50,12 @@ entities
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        managing_control_value_manual_get: true
-        managing_control_value_manual_set: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_fields_for_selection
+        managing_control_properties
+        - name_complex: fields
+        - name_prefix: field
+        - title_is_visible: false
     - query_params
         title: Query parameters
         type: blob

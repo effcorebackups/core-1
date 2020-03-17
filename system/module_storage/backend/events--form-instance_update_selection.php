@@ -20,13 +20,7 @@ namespace effcore\modules\storage {
         $fieldset_decorator_params = new fieldset('Decorator parameters');
         $fieldset_conditions       = new fieldset('Conditions');
         $fieldset_sequence         = new fieldset('Sequence');
-      # insert widget 'Fields'
-        $widget_fields = new widget_fields_for_selection;
-        $widget_fields->name_prefix = 'field';
-        $widget_fields->cform = $form;
-        $widget_fields->build();
-        $widget_fields->value_set_complex($form->_instance->fields, true);
-        $fieldset_fields->child_insert($widget_fields, 'widget_fields');
+        $fieldset_fields->child_insert($items['*fields'], 'widget_fields');
       # insert field 'Limit'
         $field_limit = new field_number('Limit');
         $field_limit->build();
@@ -51,7 +45,6 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name == 'selection' && !empty($form->_instance)) {
-            $form->_instance->fields = $items['*widget_fields']->value_get_complex() ?: null;
           }
           break;
       }
