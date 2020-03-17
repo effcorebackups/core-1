@@ -23,6 +23,7 @@ namespace effcore\modules\polls {
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_fields_text;
         $widget_answers->item_title = 'Answer';
+        $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';
         $widget_answers->cform = $form;
         $widget_answers->build();
@@ -32,7 +33,6 @@ namespace effcore\modules\polls {
         $fieldset_answers = new fieldset('Answers');
         $fieldset_answers->child_insert($widget_answers, 'answers');
         $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
-        $form->_widget_answers = $widget_answers;
       }
     }
   }
@@ -43,7 +43,7 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
-            if (count($form->_widget_answers->value_get_complex()) < 2) {
+            if (count($items['*widget_answers']->value_get_complex()) < 2) {
               $form->error_set('The poll must contain a minimum %%_number responses!', ['number' => 2]);
             }
           }
@@ -58,7 +58,7 @@ namespace effcore\modules\polls {
       if ($entity->name == 'poll' && !empty($form->_instance)) {
         switch ($form->clicked_button->value_get()) {
           case 'insert':
-            foreach ($form->_widget_answers->value_get_complex() as $c_item) {
+            foreach ($items['*widget_answers']->value_get_complex() as $c_item) {
               (new instance('poll_answer', [
                 'id_poll' => $form->_instance->id,
                 'answer'  => $c_item->text,
@@ -66,7 +66,7 @@ namespace effcore\modules\polls {
               ]))->insert();
             }
           # reset unactual data
-            $form->_widget_answers->items_reset();
+            $items['*widget_answers']->items_reset();
             static::on_init($event, $form, $items);
           # ↓↓↓ no break ↓↓↓
           case 'cancel':

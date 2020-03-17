@@ -5,10 +5,11 @@
   ##################################################################
 
 namespace effcore {
-          class widget_fields extends control {
+          class widget_fields extends control implements complex_control {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'fields'];
+  public $name_complex = 'widget_fields';
   public $item_title = 'Item';
   public $_fields  = [];
   public $_buttons = [];
@@ -25,6 +26,39 @@ namespace effcore {
       $this->is_builded = true;
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function name_get_complex() {
+    return $this->name_complex;
+  }
+
+  function value_get_complex()                      {return $this->items_get();             }
+  function value_set_complex($value, $once = false) {       $this->items_set($value, $once);}
+
+  function disabled_get() {
+    return false;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function items_get() {
+    return $this->cform->validation_cache_get($this->name_prefix.'items') ?: [];
+  }
+
+  function items_set($items, $once = false) {
+    if ($once && $this->cform->validation_cache_get($this->name_prefix.'items') !== null) return;
+    $this->cform->validation_cache_is_persistent = true;
+    $this->cform->validation_cache_set($this->name_prefix.'items', $items ?: []);
+    $this->widgets_group_manage_build();
+  }
+
+  function items_reset() {
+    $this->cform->validation_cache_is_persistent = false;
+    $this->cform->validation_cache_set($this->name_prefix.'items', null);
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function widgets_group_manage_build() {
     $widgets_group_manage = $this->child_select('manage');
@@ -91,27 +125,6 @@ namespace effcore {
   # group the previous elements in widget 'insert'
     $widget->child_insert($button, 'button');
     return $widget;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function value_get_complex()                      {return $this->items_get();             }
-  function value_set_complex($value, $once = false) {       $this->items_set($value, $once);}
-
-  function items_get() {
-    return $this->cform->validation_cache_get($this->name_prefix.'items') ?: [];
-  }
-
-  function items_set($items, $once = false) {
-    if ($once && $this->cform->validation_cache_get($this->name_prefix.'items') !== null) return;
-    $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set($this->name_prefix.'items', $items ?: []);
-    $this->widgets_group_manage_build();
-  }
-
-  function items_reset() {
-    $this->cform->validation_cache_is_persistent = false;
-    $this->cform->validation_cache_set($this->name_prefix.'items', null);
   }
 
   # ─────────────────────────────────────────────────────────────────────
