@@ -1,0 +1,98 @@
+entities
+- selection|entity
+    name: selection
+    title: Selection
+    title_plural: Selections
+    catalog_name: selections
+    managing_is_enabled: true
+    managing_group: Content
+    has_parallel_checking: true
+    ws_module_id: true
+    ws_data: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
+        - is_validate_uniqueness: true
+        managing_control_element_attributes_on_update
+        - disabled: true
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 1024
+        managing_selection_params
+        - is_apply_translation: true
+    - fields
+        title: Fields
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_control_value_manual_get: true
+        managing_control_value_manual_set: true
+    - query_params
+        title: Query parameters
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_control_value_manual_get: true
+        managing_control_value_manual_set: true
+    - decorator_params
+        title: Decorator parameters
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_control_value_manual_get: true
+        managing_control_value_manual_set: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
