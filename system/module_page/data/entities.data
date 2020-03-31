@@ -44,6 +44,7 @@ entities
     catalog_name: galleries
     managing_is_enabled: true
     managing_group: Content
+    managing_group_parent: Content
     ws_module_id: true
     ws_data: true
     fields
