@@ -55,10 +55,11 @@ namespace effcore\modules\storage {
         });
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
-        if (!count($selection->_instances)) {
-          $items['~apply'  ]->disabled_set();
-          $items['#actions']->disabled_set();
-        }
+      }
+    # disable controls if no items
+      if (!count($selection->_instances)) {
+        $items['~apply'  ]->disabled_set();
+        $items['#actions']->disabled_set();
       }
     }
   }

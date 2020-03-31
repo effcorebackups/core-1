@@ -204,6 +204,8 @@ translations
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front: Главная
     - Function: Функция
+    - Galleries: Галереи
+    - Gallery: Галерея
     - GiB: ГиБ
     - go to %%_language language: перейти на %%_language язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>

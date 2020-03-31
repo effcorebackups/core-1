@@ -20,6 +20,7 @@ namespace effcore {
   public $pager_name = 'page';
   public $pager_id = 0;
   public $origin = 'nosql'; # nosql | sql
+  public $_instances = null;
 
   function __construct($title = null, $weight = 0) {
     if ($title) $this->title = $title;
@@ -114,8 +115,7 @@ namespace effcore {
     # wrap the result in the decorator
     # ─────────────────────────────────────────────────────────────────────
       $result = null;
-      if (isset($this->_instances) &&
-          count($this->_instances)) {
+      if (count($this->_instances)) {
 
         $decorator = new decorator;
         $decorator->id = $this->id;

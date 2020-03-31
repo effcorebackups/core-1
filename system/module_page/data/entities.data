@@ -37,6 +37,12 @@ entities
         type: index
         fields
         - =: updated
+- gallery|entity
+    name: gallery
+    title: Gallery
+    title_plural: Galleries
+    catalog_name: galleries
+    managing_is_enabled: true
 - page|entity
     name: page
     title: Page
