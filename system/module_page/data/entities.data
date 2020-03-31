@@ -43,6 +43,9 @@ entities
     title_plural: Galleries
     catalog_name: galleries
     managing_is_enabled: true
+    managing_group: Content
+    ws_module_id: true
+    ws_data: true
 - page|entity
     name: page
     title: Page
