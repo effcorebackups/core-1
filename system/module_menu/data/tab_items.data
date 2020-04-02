@@ -1,0 +1,21 @@
+tab_items
+- data_menu|tab_item
+    id: data_menu
+    id_parent: null
+    id_tab: data
+    action_name: menu
+    action_name_default: menu/tree
+    title: Menu
+    weight: 40
+- data_menu_tree|tab_item
+    id: data_menu_tree
+    id_parent: data_menu
+    id_tab: data
+    action_name: menu/tree
+    title: Trees
+- data_menu_tree_item|tab_item
+    id: data_menu_tree_item
+    id_parent: data_menu
+    id_tab: data
+    action_name: menu/tree_item
+    title: Tree items

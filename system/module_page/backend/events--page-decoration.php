@@ -13,17 +13,23 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page_decoration {
 
+  static function on_build_before($event, $page) {
+    $type = $page->args_get('type');
+    $id   = $page->args_get('id');
+    if ($type == null            ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
+    if ($type == 'colors'        ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
+    if ($type == 'colors/presets') {$presets = color::preset_get_all(); core::array_sort_by_text_property($presets); if (empty($presets[$id])) url::go($page->args_get('base').'/colors/presets/'.reset($presets)->id);}
+    if ($type == 'layouts'       ) {$layouts = layout::select_all   (); core::array_sort_by_text_property($layouts); if (empty($layouts[$id])) url::go($page->args_get('base').'/layouts/'.       reset($layouts)->id);}
+  }
+
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
-    $id   = page::get_current()->args_get('id');
-    if ($type == null || $type == 'colors') url::go(page::get_current()->args_get('base').'/colors/current');
   # colors presets
     if ($type == 'colors/presets') {
       $presets = color::preset_get_all();
       core::array_sort_by_text_property($presets);
-      if (empty($presets[$id])) url::go(page::get_current()->args_get('base').'/colors/presets/'.reset($presets)->id);
       foreach ($presets as $c_preset) {
-        tab_item::insert(                                             $c_preset->title,
+        tab_item::insert(                                              $c_preset->title,
           'decoration_colors_presets_'.                                $c_preset->id,
           'decoration_colors_presets', 'decoration', 'colors/presets/'.$c_preset->id
         );
@@ -33,9 +39,8 @@ namespace effcore\modules\page {
     if ($type == 'layouts') {
       $layouts = layout::select_all();
       core::array_sort_by_text_property($layouts);
-      if (empty($layouts[$id])) url::go(page::get_current()->args_get('base').'/layouts/'.reset($layouts)->id);
       foreach ($layouts as $c_layout) {
-        tab_item::insert(                               $c_layout->title,
+        tab_item::insert(                                $c_layout->title,
           'decoration_layouts_'.                         $c_layout->id,
           'decoration_layouts', 'decoration', 'layouts/'.$c_layout->id
         );

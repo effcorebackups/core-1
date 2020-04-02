@@ -27,7 +27,7 @@ namespace effcore\modules\demo {
           'created'  => $c_created,
           'is_even'  => $c_is_even
         ]))->insert();
-        (new instance('demo_data_join', [
+        (new instance('demo_join', [
           'id_data' => $c_id,
           'email'   => $c_email
         ]))->insert();

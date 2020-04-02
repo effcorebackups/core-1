@@ -48,9 +48,9 @@ namespace effcore\modules\storage {
       # $c_row 'actions'
         $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) {
           $c_actions_list = new actions_list;
-          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
-          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
-          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
+          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
           return $c_actions_list;
         });
         $selection->build();
@@ -111,7 +111,7 @@ namespace effcore\modules\storage {
           static::on_init(null, $form, $items);
           break;
         case 'insert':
-          url::go('/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'//insert'.'?'.url::back_part_make());
+          url::go('/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
           break;
       }
     }

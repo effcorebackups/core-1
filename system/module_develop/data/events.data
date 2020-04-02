@@ -26,6 +26,9 @@ events
   - structures|event
       for: structures
       handler: \effcore\modules\develop\events_page_structures::on_build_before
+  - data_nosql|event
+      for: data_nosql
+      handler: \effcore\modules\develop\events_page_data_nosql::on_build_before
 # ─────────────────────────────────────────────────────────────────────
   on_query_before
   - pdo|event

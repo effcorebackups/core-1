@@ -6,7 +6,6 @@ pages
     url: %^(?<base>/manage/decoration)(/
 >>>>>>>>>>>(?<type>colors/current|
 >>>>>>>>>>>>>>>>>>>colors/presets|
->>>>>>>>>>>>>>>>>>>colors|
 >>>>>>>>>>>>>>>>>>>layouts|
 >>>>>>>>>>>>>>>>>>>settings)(/
 >>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%

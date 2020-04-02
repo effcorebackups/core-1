@@ -19,7 +19,7 @@ namespace effcore\modules\storage {
     $entity_name       = $page->args_get('entity_name');
     $instance_id       = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
-    $groups = entity::groups_managing_get();
+    $groups = entity::get_managing_group_ids();
     if ($entity) {
       if (isset($groups[$managing_group_id])) {
         $id_keys   = $entity->id_get_real();
@@ -68,8 +68,8 @@ namespace effcore\modules\storage {
           } else {
             $selection->field_insert_code('actions', 'Actions', function ($c_row, $c_instance) {
               $c_actions_list = new actions_list;
-              if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
-              if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->group_managing_get_id().'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+              if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
+              if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
               return $c_actions_list;
             });
             $selection->build();

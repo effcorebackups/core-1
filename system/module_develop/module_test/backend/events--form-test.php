@@ -15,8 +15,8 @@ namespace effcore\modules\test {
 
   static function on_init($event, $form, $items) {
     $id = page::get_current()->args_get('id');
-    if ($id) {
-      $test = test::get($id);
+    $test = test::get($id);
+    if ($test) {
       $items['params']->description = $test->description;
       $items['report']->child_select('document')->child_insert(
         new text('The report will be created after running the test.'));
@@ -30,6 +30,8 @@ namespace effcore\modules\test {
           new text('No additional parameters.')
         );
       }
+    } else {
+      $items['~launch']->disabled_set();
     }
   }
 
@@ -37,8 +39,8 @@ namespace effcore\modules\test {
     switch ($form->clicked_button->value_get()) {
       case 'launch':
         $id = page::get_current()->args_get('id');
-        if ($id) {
-          $test = test::get($id);
+        $test = test::get($id);
+        if ($test) {
           $test_result = $test->run();
         # show message
           if (!empty($test_result['return']))

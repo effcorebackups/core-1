@@ -5,7 +5,7 @@ entities
     title_plural: Types
     catalog_name: demo_types
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     ws_is_embed: true
     ws_data: true
     fields
@@ -209,7 +209,7 @@ entities
     title_plural: Autoincrement
     catalog_name: demo_autoincrement
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     fields
     - id
         title: ID
@@ -263,7 +263,7 @@ entities
     title_plural: Collations
     catalog_name: demo_collations
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     fields
     - id
         title: ID
@@ -315,7 +315,7 @@ entities
     title_plural: Constraints
     catalog_name: demo_constraints
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     fields
     - f_primary
         title: Field primary
@@ -398,7 +398,7 @@ entities
     title_plural: Data
     catalog_name: demo_data
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     fields
     - id
         title: ID
@@ -459,65 +459,13 @@ entities
         type: index
         fields
         - =: created
-- demo_data_join|entity
-    name: demo_data_join
-    title: Data + join
-    title_plural: Data + join
-    catalog_name: demo_data_join
-    managing_is_enabled: true
-    managing_group: Demo
-    fields
-    - id_data
-        title: Data ID
-        type: integer
-        not_null: true
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_relation
-        managing_control_properties
-        - related_entity_name: demo_data
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: nickname
-    - email
-        title: EMail
-        type: varchar
-        size: 64
-        collate: nocase
-        not_null: true
-        check: (email <> '')
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_email
-        managing_control_properties
-        - is_validate_uniqueness: true
-    constraints
-    - foreign_id_data
-        type: foreign
-        fields
-        - =: id_data
-        references: demo_data
-        references_fields
-        - =: id
-    indexes
-    - index_id_data
-        type: unique index
-        fields
-        - =: id_data
-    - index_email
-        type: unique index
-        fields
-        - =: email
 - demo_indexes|entity
     name: demo_indexes
     title: Indexes
     title_plural: Indexes
     catalog_name: demo_indexes
     managing_is_enabled: true
-    managing_group: Demo
+    managing_group_id: demo
     fields
     - id
         title: ID
@@ -580,3 +528,55 @@ entities
         type: index
         fields
         - =: f_index
+- demo_join|entity
+    name: demo_join
+    title: Join
+    title_plural: Joins
+    catalog_name: demo_join
+    managing_is_enabled: true
+    managing_group_id: demo
+    fields
+    - id_data
+        title: Data ID
+        type: integer
+        not_null: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
+        - related_entity_name: demo_data
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: nickname
+    - email
+        title: EMail
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        check: (email <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_email
+        managing_control_properties
+        - is_validate_uniqueness: true
+    constraints
+    - foreign_id_data
+        type: foreign
+        fields
+        - =: id_data
+        references: demo_data
+        references_fields
+        - =: id
+    indexes
+    - index_id_data
+        type: unique index
+        fields
+        - =: id_data
+    - index_email
+        type: unique index
+        fields
+        - =: email

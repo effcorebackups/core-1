@@ -27,17 +27,34 @@ namespace effcore\modules\develop {
           use \effcore\url;
           abstract class events_page_data_nosql {
 
-  static function on_tab_build_before($event, $tab) {
+  static function on_build_before($event, $page) {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');
-    if ($type == null) url::go(page::get_current()->args_get('base').'/trees');
+    if ($type == null) url::go($page->args_get('base').'/trees');
     if ($type == 'trees') {
       $trees = tree::select_all('nosql');
       core::array_sort_by_text_property($trees);
-      if (empty($trees[$id])) url::go(page::get_current()->args_get('base').'/trees/'.reset($trees)->id);
+      if (empty($trees[$id])) {
+        url::go($page->args_get('base').'/trees/'.reset($trees)->id);
+      }
+    }
+    if ($type == 'translations') {
+      $languages = language::get_all();
+      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+      unset($languages['en']);
+      if (count($languages) == 0 && $id != null           ) url::go($page->args_get('base').'/translations/'                        );
+      if (count($languages) != 0 && empty($languages[$id])) url::go($page->args_get('base').'/translations/'.reset($languages)->code);
+    }
+  }
+
+  static function on_tab_build_before($event, $tab) {
+    $type = page::get_current()->args_get('type');
+    if ($type == 'trees') {
+      $trees = tree::select_all('nosql');
+      core::array_sort_by_text_property($trees);
       foreach ($trees as $c_tree) {
-        tab_item::insert($c_tree->title,
-           'nosql_trees_'.$c_tree->id,
+        tab_item::insert(                        $c_tree->title,
+           'nosql_trees_'.                       $c_tree->id,
            'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id
         );
       }
@@ -46,11 +63,9 @@ namespace effcore\modules\develop {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       unset($languages['en']);
-      if (count($languages) == 0 && $id != null           ) url::go(page::get_current()->args_get('base').'/translations/'                        );
-      if (count($languages) != 0 && empty($languages[$id])) url::go(page::get_current()->args_get('base').'/translations/'.reset($languages)->code);
       foreach ($languages as $c_language) {
-        tab_item::insert(      $c_language->title_en,
-          'nosql_translations_'.$c_language->code,
+        tab_item::insert(                                     $c_language->title_en,
+          'nosql_translations_'.                              $c_language->code,
           'nosql_translations', 'data_nosql', 'translations/'.$c_language->code
         );
       }

@@ -43,8 +43,6 @@ entities
     title_plural: Galleries
     catalog_name: galleries
     managing_is_enabled: true
-    managing_group: Content
-    managing_group_parent: Content
     ws_module_id: true
     ws_data: true
     fields
@@ -69,13 +67,163 @@ entities
         type: primary
         fields
         - =: id
+- logotype|entity
+    name: logotype
+    title: Logotype
+    title_plural: Logotypes
+    catalog_name: logotypes
+    managing_is_enabled: true
+    has_parallel_checking: true
+    ws_is_embed: true
+    ws_module_id: true
+    ws_data: true
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: logotype
+    - template_row_mapping
+      - id: logotype.id
+      - title: logotype.title
+      - alt: logotype.alt
+      - src: logotype.path
+      - url: logotype.url
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
+        - is_validate_uniqueness: true
+        managing_control_element_attributes_on_update
+        - disabled: true
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 1024
+        managing_selection_params
+        - is_apply_translation: true
+    - alt
+        title: Alternative text
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        check: (alt <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 64
+        managing_selection_params
+        - is_apply_translation: true
+    - path
+        title: File
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_file
+        managing_control_properties
+        - max_file_size: 50K
+        - upload_dir: logotypes/
+        - fixed_name: logotype-%%_instance_id_context
+        - allowed_types
+          - =: gif
+          - =: jpeg
+          - =: jpg
+          - =: png
+          - =: svg
+          - =: svgd
+        managing_control_element_attributes_on_insert
+        - disabled: true
+    - url
+        title: URL
+        type: varchar
+        size: 255
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_url
+        managing_control_element_attributes
+        - required: false
+    - target
+        title: Target
+        type: varchar
+        size: 64
+        collate: nocase
+        default: _self
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - required: false
+        - maxlength: 64
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - page|entity
     name: page
     title: Page
     title_plural: Pages
     catalog_name: pages
     managing_is_enabled: true
-    managing_group: Content
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
@@ -253,165 +401,12 @@ entities
         type: index
         fields
         - =: updated
-- logotype|entity
-    name: logotype
-    title: Logotype
-    title_plural: Logotypes
-    catalog_name: logotypes
-    managing_is_enabled: true
-    managing_group: Content
-    has_parallel_checking: true
-    ws_is_embed: true
-    ws_module_id: true
-    ws_data: true
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: logotype
-    - template_row_mapping
-      - id: logotype.id
-      - title: logotype.title
-      - alt: logotype.alt
-      - src: logotype.path
-      - url: logotype.url
-    fields
-    - id
-        title: ID
-        type: varchar
-        size: 255
-        collate: nocase
-        not_null: true
-        check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_id_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        managing_control_element_attributes_on_update
-        - disabled: true
-    - title
-        title: Title
-        type: varchar
-        size: 1024
-        collate: nocase
-        not_null: true
-        check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_text
-        managing_control_element_attributes
-        - maxlength: 1024
-        managing_selection_params
-        - is_apply_translation: true
-    - alt
-        title: Alternative text
-        type: varchar
-        size: 64
-        collate: nocase
-        not_null: true
-        check: (alt <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_text
-        managing_control_element_attributes
-        - maxlength: 64
-        managing_selection_params
-        - is_apply_translation: true
-    - path
-        title: File
-        type: varchar
-        size: 1024
-        collate: nocase
-        default: null
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_file
-        managing_control_properties
-        - max_file_size: 50K
-        - upload_dir: logotypes/
-        - fixed_name: logotype-%%_instance_id_context
-        - allowed_types
-          - =: gif
-          - =: jpeg
-          - =: jpg
-          - =: png
-          - =: svg
-          - =: svgd
-        managing_control_element_attributes_on_insert
-        - disabled: true
-    - url
-        title: URL
-        type: varchar
-        size: 255
-        collate: nocase
-        default: null
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_url
-        managing_control_element_attributes
-        - required: false
-    - target
-        title: Target
-        type: varchar
-        size: 64
-        collate: nocase
-        default: _self
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_text
-        managing_control_element_attributes
-        - required: false
-        - maxlength: 64
-    - created
-        title: Created
-        type: datetime
-        default: null
-        check: (created <> '')
-        managing_on_select_is_enabled: true
-        managing_control_class: \effcore\field_datetime_local
-    - updated
-        title: Updated
-        type: datetime
-        default: null
-        check: (updated <> '')
-        managing_on_select_is_enabled: true
-        managing_control_class: \effcore\field_datetime_local
-    constraints
-    - primary_id
-        type: primary
-        fields
-        - =: id
-    indexes
-    - index_created
-        type: index
-        fields
-        - =: created
-    - index_updated
-        type: index
-        fields
-        - =: updated
 - text|entity
     name: text
     title: Text
     title_plural: Texts
     catalog_name: texts
     managing_is_enabled: true
-    managing_group: Content
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true

@@ -1,0 +1,45 @@
+tab_items
+- data_user|tab_item
+    id: data_user
+    id_parent: null
+    id_tab: data
+    action_name: user
+    action_name_default: user/user
+    title: Users
+    weight: 30
+- data_user_permission|tab_item
+    id: data_user_permission
+    id_parent: data_user_user
+    id_tab: data
+    action_name: user/permission
+    title: Permissions
+- data_user_relation_role_ws_permission|tab_item
+    id: data_user_relation_role_ws_permission
+    id_parent: data_user_user
+    id_tab: data
+    action_name: user/relation_role_ws_permission
+    title: Relations: Role ↔ Permission
+- data_user_relation_role_ws_user|tab_item
+    id: data_user_relation_role_ws_user
+    id_parent: data_user_user
+    id_tab: data
+    action_name: user/relation_role_ws_user
+    title: Relations: Role ↔ User
+- data_user_role|tab_item
+    id: data_user_role
+    id_parent: data_user_user
+    id_tab: data
+    action_name: user/role
+    title: Roles
+- data_user_user|tab_item
+    id: data_user_user
+    id_parent: data_user
+    id_tab: data
+    action_name: user/user
+    title: Users
+- data_user_feedback|tab_item
+    id: data_user_feedback
+    id_parent: data_user
+    id_tab: data
+    action_name: user/feedback
+    title: Feedbacks

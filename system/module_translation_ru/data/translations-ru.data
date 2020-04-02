@@ -417,11 +417,11 @@ translations
     - Related items of type "%%_type" with ID = "%%_id" was deleted.: Связанные элементы типа "%%_type" с ID = "%%_id" были удалены.
     - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Связанные элементы типа "%%_type" с ID = "%%_id" не были удалены.
     - Relation: Связь
-    - Relation\: Role + Permission: Связь: Роль + Разрешение
-    - Relation\: Role + User: Связь: Роль + Пользователь
+    - Relation\: Role ↔ Permission: Связь: Роль ↔ Разрешение
+    - Relation\: Role ↔ User: Связь: Роль ↔ Пользователь
     - Relations: Связи
-    - Relations\: Role + Permission: Связи: Роль + Разрешение
-    - Relations\: Role + User: Связи: Роль + Пользователь
+    - Relations\: Role ↔ Permission: Связи: Роль ↔ Разрешение
+    - Relations\: Role ↔ User: Связи: Роль ↔ Пользователь
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт

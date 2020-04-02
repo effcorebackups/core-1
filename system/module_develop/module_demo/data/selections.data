@@ -1,13 +1,13 @@
 selections
-- demo_data_join|selection
-    id: demo_data_join
+- demo_join|selection
+    id: demo_join
     title: Selection of "demo_data" entities + join
     decorator_params
     - view_type: table-adaptive
     pager_is_enabled: true
     join
-    - demo_data_join
-        entity_name: demo_data_join
+    - demo_join
+        entity_name: demo_join
         entity_field_name: id_data
         on_entity_name: demo_data
         on_entity_field_name: id
@@ -38,9 +38,9 @@ selections
         entity_name: demo_data
         entity_field_name: is_even
         is_apply_translation: true
-    - demo_data_join.email
+    - demo_join.email
         type: join_field
-        entity_name: demo_data_join
+        entity_name: demo_join
         entity_field_name: email
 - demo_types|selection
     id: demo_types

@@ -12,14 +12,21 @@ namespace effcore\modules\test {
           use \effcore\url;
           abstract class events_page_test {
 
-  static function on_tab_build_before($event, $tab) {
+  static function on_build_before($event, $page) {
     $id = page::get_current()->args_get('id');
     $tests = test::get_all(false);
     core::array_sort_by_text_property($tests);
-    if (empty($tests[$id])) url::go(page::get_current()->args_get('base').'/'.reset($tests)->id);
+    if (empty($tests[$id])) {
+      url::go(page::get_current()->args_get('base').'/'.reset($tests)->id);
+    }
+  }
+
+  static function on_tab_build_before($event, $tab) {
+    $tests = test::get_all(false);
+    core::array_sort_by_text_property($tests);
     foreach ($tests as $c_test) {
-      tab_item::insert($c_test->title,
-        'test_execution_'.$c_test->id,
+      tab_item::insert(            $c_test->title,
+        'test_execution_'.         $c_test->id,
         'test_execution', 'tests', $c_test->id
       );
     }

@@ -13,6 +13,10 @@ events
       for: system
       weight: -50
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
+  - system_apply_back_return|event
+      for: system
+      weight: -90
+      handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_after_apply_back_return
 # ─────────────────────────────────────────────────────────────────────
   on_form_init
   - instance_select_multiple|event
@@ -61,6 +65,9 @@ events
       handler: \effcore\modules\storage\events_storage::on_instance_delete_before
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
+  - instance_select_multiple|event
+      for: instance_select_multiple
+      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_build_before
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
@@ -68,8 +75,3 @@ events
   on_part_presets_dynamic_build
   - all|event
       handler: \effcore\modules\storage\events_page::on_part_presets_dynamic_build
-# ─────────────────────────────────────────────────────────────────────
-  on_tab_build_before
-  - data|event
-      for: data
-      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_tab_build_before

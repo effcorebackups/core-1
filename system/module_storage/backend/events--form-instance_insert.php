@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
-    $groups = entity::groups_managing_get();
+    $groups = entity::get_managing_group_ids();
     if ($entity) {
       if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
         $form->attribute_insert('data-entity_name', $form->entity_name);
@@ -92,7 +92,7 @@ namespace effcore\modules\storage {
             $back_insert_0 = page::get_current()->args_get('back_insert_0');
             $back_insert_n = page::get_current()->args_get('back_insert_n');
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                    $back_insert_n ?: '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name)));
+                    $back_insert_n ?: '/manage/data/'.$entity->managing_group_id.'/'.$entity->name)));
           }
           break;
       }

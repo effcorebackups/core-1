@@ -5,7 +5,6 @@ entities
     title_plural: Polls
     catalog_name: polls
     managing_is_enabled: true
-    managing_group: Content
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true

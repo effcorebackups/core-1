@@ -64,6 +64,11 @@ events
       weight: +50
       handler: \effcore\modules\page\events_form_instance_update::on_submit
 # ─────────────────────────────────────────────────────────────────────
+  on_page_build_before
+  - decoration|event
+      for: decoration
+      handler: \effcore\modules\page\events_page_decoration::on_build_before
+# ─────────────────────────────────────────────────────────────────────
   on_part_presets_dynamic_build
   - all|event
       handler: \effcore\modules\page\events_page::on_part_presets_dynamic_build

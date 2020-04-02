@@ -21,7 +21,7 @@ namespace effcore {
   public $title;
   public $title_plural;
   public $managing_is_enabled = false;
-  public $managing_group = 'Other';
+  public $managing_group_id = 'content';
   public $decorator_view_type_single = 'ul';
   public $decorator_view_type_multiple = 'table-adaptive';
   public $managing_selection_params = [];
@@ -107,10 +107,6 @@ namespace effcore {
     return [];
   }
 
-  function group_managing_get_id() {
-    return core::sanitize_id($this->managing_group);
-  }
-
   function install() {
     return $this->storage_get()->entity_install($this);
   }
@@ -140,12 +136,12 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [
-      'name'           => 'name',
-      'storage_name'   => 'storage_name',
-      'catalog_name'   => 'catalog_name',
-      'title'          => 'title',
-      'title_plural'   => 'title_plural',
-      'managing_group' => 'managing_group'
+      'name'              => 'name',
+      'storage_name'      => 'storage_name',
+      'catalog_name'      => 'catalog_name',
+      'title'             => 'title',
+      'title_plural'      => 'title_plural',
+      'managing_group_id' => 'managing_group_id'
     ];
   }
 
@@ -196,11 +192,11 @@ namespace effcore {
     return static::$cache_orig[$module] ?? [];
   }
 
-  static function groups_managing_get() {
+  static function get_managing_group_ids() {
     static::init();
     $groups = [];
     foreach (static::$cache as $c_item)
-      $groups[core::sanitize_id($c_item->managing_group)] = $c_item->managing_group;
+      $groups[$c_item->managing_group_id] = $c_item->managing_group_id;
     return $groups;
   }
 

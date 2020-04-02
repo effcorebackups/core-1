@@ -42,9 +42,10 @@ namespace effcore\modules\menu {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'delete':
+        case 'cancel':
           if ($entity->name == 'tree_item' && !empty($form->_instance)) {
             $id_tree = $form->_instance->id_tree;
-            page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->group_managing_get_id().'/'.$entity->name.'///'.$id_tree);
+            page::get_current()->args_set('back_delete_0', '/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'///'.$id_tree);
           }
           break;
       }

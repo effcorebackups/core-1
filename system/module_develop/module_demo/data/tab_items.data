@@ -1,4 +1,54 @@
 tab_items
+- data_demo|tab_item
+    id: data_demo
+    id_parent: null
+    id_tab: data
+    action_name: demo
+    action_name_default: demo/demo_types
+    title: Demo
+- data_demo_types|tab_item
+    id: data_demo_types
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_types
+    title: Types
+- data_demo_autoincrement|tab_item
+    id: data_demo_autoincrement
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_autoincrement
+    title: Autoincrement
+- data_demo_collations|tab_item
+    id: data_demo_collations
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_collations
+    title: Collations
+- data_demo_constraints|tab_item
+    id: data_demo_constraints
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_constraints
+    title: Constraints
+- data_demo_data|tab_item
+    id: data_demo_data
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_data
+    title: Data
+- data_demo_indexes|tab_item
+    id: data_demo_indexes
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_indexes
+    title: Indexes
+- data_demo_join|tab_item
+    id: data_demo_join
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_join
+    title: Joins
+# ─────────────────────────────────────────────────────────────────────
 - demo_embedded|tab_item
     id: demo_embedded
     id_parent: null
