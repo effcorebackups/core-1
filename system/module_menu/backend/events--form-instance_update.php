@@ -39,7 +39,7 @@ namespace effcore\modules\menu {
         case 'update':
         case 'cancel':
           if ($entity->name == 'tree_item' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_update_0', '/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'///'.$form->_instance->id_tree);
+            page::get_current()->args_set('back_update_0', $entity->make_url_for_select_multiple().'///'.$form->_instance->id_tree);
           }
           break;
       }
