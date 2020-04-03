@@ -60,7 +60,7 @@ namespace effcore\modules\storage {
             $back_delete_0 = page::get_current()->args_get('back_delete_0');
             $back_delete_n = page::get_current()->args_get('back_delete_n');
             url::go($back_delete_0 ?: (url::back_url_get() ?: (
-                    $back_delete_n ?: '/manage/data/'.$entity->managing_group_id.'/'.$entity->name)));
+                    $back_delete_n ?: $entity->make_url_for_select_multiple())));
           }
           break;
       }
