@@ -62,6 +62,24 @@ entities
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 1024
+        managing_selection_params
+        - is_apply_translation: true
     constraints
     - primary_id
         type: primary
