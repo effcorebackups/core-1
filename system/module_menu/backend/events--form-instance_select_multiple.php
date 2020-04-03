@@ -93,7 +93,7 @@ namespace effcore\modules\menu {
           break;
         case 'insert':
           if ($entity->name == 'tree_item' && $form->category_id) {
-            url::go('/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'//insert/'.$form->category_id.'?'.url::back_part_make());
+            url::go($entity->make_url_for_insert().'/'.$form->category_id.'?'.url::back_part_make());
           }
           break;
       }

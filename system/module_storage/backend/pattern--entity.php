@@ -127,6 +127,8 @@ namespace effcore {
     return $this->storage_get()->instances_delete($this, $params);
   }
 
+  function make_url_for_insert() {return '/manage/data/'.$this->managing_group_id.'/'.$this->name.'//insert';}
+
   ###########################
   ### static declarations ###
   ###########################

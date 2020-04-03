@@ -111,7 +111,7 @@ namespace effcore\modules\storage {
           static::on_init(null, $form, $items);
           break;
         case 'insert':
-          url::go('/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'//insert'.'?'.url::back_part_make());
+          url::go($entity->make_url_for_insert().'?'.url::back_part_make());
           break;
       }
     }
