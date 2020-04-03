@@ -70,6 +70,10 @@ namespace effcore {
     return $result;
   }
 
+  function make_url_for_select() {return '/manage/data/'.$this->entity_get()->managing_group_id.'/'.$this->entity_get()->name.'/'.join('+', $this->values_id_get());          }
+  function make_url_for_update() {return '/manage/data/'.$this->entity_get()->managing_group_id.'/'.$this->entity_get()->name.'/'.join('+', $this->values_id_get()).'/update';}
+  function make_url_for_delete() {return '/manage/data/'.$this->entity_get()->managing_group_id.'/'.$this->entity_get()->name.'/'.join('+', $this->values_id_get()).'/delete';}
+
   ###########################
   ### static declarations ###
   ###########################

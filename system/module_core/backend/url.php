@@ -216,9 +216,13 @@ namespace effcore {
     return core::validate_url($url->full_get()) ?: '';
   }
 
+  static function back_part_make_custom($url) {
+    return 'back='.urlencode($url);
+  }
+
   static function back_part_make($full = false) {
-    if ($full) return 'back='.urlencode(static::get_current()->full_get());
-    else       return 'back='.urlencode(static::get_current()->tiny_get());
+    if ($full) return static::back_part_make_custom(static::get_current()->full_get());
+    else       return static::back_part_make_custom(static::get_current()->tiny_get());
   }
 
   static function is_local($url) {

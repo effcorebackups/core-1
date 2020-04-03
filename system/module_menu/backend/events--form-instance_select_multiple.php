@@ -32,9 +32,9 @@ namespace effcore\modules\menu {
       # $c_row 'actions'
         $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) {
           $c_actions_list = new actions_list;
-          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/delete?'.url::back_part_make(), 'delete');
-          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).       '?'.url::back_part_make(), 'select');
-          if (true                                ) $c_actions_list->action_insert('/manage/data/'.$c_instance->entity_get()->managing_group_id.'/'.$c_instance->entity_get()->name.'/'.join('+', $c_instance->values_id_get()).'/update?'.url::back_part_make(), 'update');
+          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
+          if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
+          if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
           return $c_actions_list;
         });
       # $c_row 'extra'
