@@ -67,7 +67,7 @@ namespace effcore\modules\menu {
         case 'cancel':
           if ($entity->name == 'tree_item') {
             $id_tree = $items['#id_tree']->value_get();
-            page::get_current()->args_set('back_insert_0', '/manage/data/'.$entity->managing_group_id.'/'.$entity->name.'///'.$id_tree);
+            page::get_current()->args_set('back_insert_0', $entity->make_url_for_select_multiple().'///'.$id_tree);
           }
           break;
       }

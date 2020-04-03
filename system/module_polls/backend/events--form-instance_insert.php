@@ -74,7 +74,7 @@ namespace effcore\modules\polls {
             $back_insert_0 = page::get_current()->args_get('back_insert_0');
             $back_insert_n = page::get_current()->args_get('back_insert_n');
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                    $back_insert_n ?: '/manage/data/'.$entity->managing_group_id.'/'.$entity->name)));
+                    $back_insert_n ?: $entity->make_url_for_select_multiple())));
             break;
         }
       }
