@@ -28,11 +28,12 @@ namespace effcore\modules\storage {
             count($id_values)) {
           $conditions = array_combine($id_keys, $id_values);
           $instance = new instance($entity_name, $conditions);
-          if ($instance->select()) {
-          } else core::send_header_and_exit('page_not_found');
-        }   else core::send_header_and_exit('page_not_found');
-      }     else core::send_header_and_exit('page_not_found');
-    }       else core::send_header_and_exit('page_not_found');
+          if ($instance->select() == null && url::back_url_get() != '') url::go(url::back_url_get()); # after deletion
+          if ($instance->select() == null && url::back_url_get() == '')
+               core::send_header_and_exit('page_not_found');
+        } else core::send_header_and_exit('page_not_found');
+      }   else core::send_header_and_exit('page_not_found');
+    }     else core::send_header_and_exit('page_not_found');
   }
 
   static function block_instance_select($page, $args) {
