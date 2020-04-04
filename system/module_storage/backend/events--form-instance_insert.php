@@ -59,6 +59,13 @@ namespace effcore\modules\storage {
           if (empty($entity->button_insert_and_update_is_enabled)) {
             $form->child_delete('button_insert_and_update');
           }
+          if (empty($entity->message_for_additional_form_items_is_enabled)) {
+            $form->child_select('fields')->child_insert(
+              new markup('x-form-message', [], ['message' => new text(
+                'Additional form controls will become available in update mode for this type of element.')
+              ], -20), 'form_message'
+            );
+          }
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
     }     else core::send_header_and_exit('page_not_found');

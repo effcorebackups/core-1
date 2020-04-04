@@ -22,12 +22,6 @@ namespace effcore\modules\page {
         $items['#lang_code']->value_set(
           language::code_get_current()
         );
-      # layout and its parts
-        $form->child_select('fields')->child_insert(
-          new markup('x-form-message', [], ['message' => new text(
-            'Additional form controls will become available in update mode for this type of element.')
-          ], -20), 'form_message'
-        );
       }
     }
   }
