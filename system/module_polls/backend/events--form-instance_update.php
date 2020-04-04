@@ -100,7 +100,7 @@ namespace effcore\modules\polls {
             $back_update_0 = page::get_current()->args_get('back_update_0');
             $back_update_n = page::get_current()->args_get('back_update_n');
             url::go($back_update_0 ?: (url::back_url_get() ?: (
-                    $back_update_n ?: $entity->make_url_for_select_multiple())));
+                    $back_update_n ?: $entity->make_url_for_select_multiple() )));
             break;
         }
       }

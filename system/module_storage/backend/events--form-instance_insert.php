@@ -56,6 +56,9 @@ namespace effcore\modules\storage {
               'fields', new markup('x-no-result', [], 'no fields')
             );
           }
+          if (empty($entity->button_insert_and_update_is_enabled)) {
+            $form->child_delete('button_insert_and_update');
+          }
         } else core::send_header_and_exit('page_not_found');
       }   else core::send_header_and_exit('page_not_found');
     }     else core::send_header_and_exit('page_not_found');
@@ -66,6 +69,7 @@ namespace effcore\modules\storage {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing_on_insert_is_enabled) &&
                  isset($c_field->managing_control_class)) {
@@ -91,8 +95,13 @@ namespace effcore\modules\storage {
           if ($form->is_redirect_enabled) {
             $back_insert_0 = page::get_current()->args_get('back_insert_0');
             $back_insert_n = page::get_current()->args_get('back_insert_n');
+            if (!empty($entity->button_insert_and_update_is_enabled)) # when click 'insert and update'
+              if ($form->clicked_button->value_get() == 'insert_and_update')
+                if ($form->_result instanceof instance)
+                  url::go($back_insert_0 ?:
+                         ($back_insert_n ?: $form->_result->make_url_for_update().(url::back_url_get() ? '?'.url::back_part_make_custom(url::back_url_get()) : '') ));
             url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                    $back_insert_n ?: $entity->make_url_for_select_multiple())));
+                    $back_insert_n ?: $entity->make_url_for_select_multiple() )));
           }
           break;
       }

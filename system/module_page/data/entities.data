@@ -43,6 +43,7 @@ entities
     title_plural: Galleries
     catalog_name: galleries
     managing_is_enabled: true
+    button_insert_and_update_is_enabled: true
     ws_module_id: true
     ws_data: true
     fields
@@ -91,6 +92,7 @@ entities
     title_plural: Logotypes
     catalog_name: logotypes
     managing_is_enabled: true
+    button_insert_and_update_is_enabled: true
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
@@ -242,6 +244,7 @@ entities
     title_plural: Pages
     catalog_name: pages
     managing_is_enabled: true
+    button_insert_and_update_is_enabled: true
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true

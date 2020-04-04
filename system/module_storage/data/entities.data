@@ -5,6 +5,7 @@ entities
     title_plural: Selections
     catalog_name: selections
     managing_is_enabled: true
+    button_insert_and_update_is_enabled: true
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true

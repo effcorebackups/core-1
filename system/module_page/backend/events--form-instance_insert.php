@@ -37,6 +37,7 @@ namespace effcore\modules\page {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
         # field 'id'
           if ($entity->name == 'page') {
             if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
