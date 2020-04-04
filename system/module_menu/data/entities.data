@@ -152,7 +152,7 @@ entities
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        managing_control_element_attributes_on_update
+        managing_control_element_attributes
         - disabled: true
     - id_parent
         title: Parent ID

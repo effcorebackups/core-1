@@ -19,10 +19,7 @@ namespace effcore\modules\menu {
     if ($entity) {
     # field 'id_tree'
       if ($entity->name == 'tree_item') {
-        $items['#id_tree']->value_set(
-          tree::select($form->category_id) ?
-                       $form->category_id : null
-        );
+        $items['#id_tree']->value_set($form->category_id);
       }
     }
   }
