@@ -24,9 +24,9 @@ namespace effcore\modules\page {
         );
       # layout and its parts
         $form->child_select('fields')->child_insert(
-          new markup('x-layout-message', [], ['message' => new text(
-            'Layout editing will be available after saving the page.')
-          ], -20), 'layout_message'
+          new markup('x-form-message', [], ['message' => new text(
+            'Additional form controls will become available in update mode for this type of element.')
+          ], -20), 'form_message'
         );
       }
     }

@@ -7,6 +7,15 @@
   form [data-form-title] {}
   form [data-form-title] + fieldset {margin-top: 1em}
 
+  /* x-form-message */
+
+  x-form-message {
+    display: block;
+    margin: 50px 0;
+    padding: 20px;
+    text-align: center;
+    border: 1px dotted %%_color_main}
+
   /* fieldset */
 
   fieldset {margin: 50px 0; padding: 0; border: none}
@@ -296,13 +305,6 @@
   x-widget[data-type='fields-info-selection'] {margin: 6px 0}
 
   /* layout manager */
-
-  x-layout-message {
-    display: block;
-    margin: 50px 0;
-    padding: 20px;
-    text-align: center;
-    border: 1px dotted %%_color_main}
 
   x-layout-manager {display: block; margin: 50px 0; border: 1px dotted %%_color_main}
   x-layout-manager [data-area-id]            {min-height: 20px}

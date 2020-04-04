@@ -17,6 +17,7 @@ translations
     - Action: Дзеянне
     - actions: дзеянні
     - Actions: Дзеянні
+    - Additional form controls will become available in update mode for this type of element.: Дадатковыя элементы кіравання формы стануць даступныя ў рэжыме абнаўлення гэтага тыпу элемента.
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
@@ -262,7 +263,6 @@ translations
     - KiB: КіБ
     - Language: Мова
     - launch: запуск
-    - Layout editing will be available after saving the page.: Рэдагаванне макета стане даступна пасля захавання старонкі.
     - Layout: Макет
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.

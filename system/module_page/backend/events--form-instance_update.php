@@ -63,9 +63,9 @@ namespace effcore\modules\page {
           );
         } else {
           $form->child_select('fields')->child_insert(
-            new markup('x-layout-message', [], ['message' => new text(
+            new markup('x-form-message', [], ['message' => new text(
               'LOST LAYOUT: %%_id', ['id' => $form->_instance->id_layout ?: 'n/a'])
-            ], -20), 'layout_message'
+            ], -20), 'form_message'
           );
         }
       }
