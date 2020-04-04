@@ -34,7 +34,7 @@ namespace effcore\modules\menu {
         case 'insert':
         # field 'id'
           if ($entity->name == 'tree') {
-            if ($items['#id']->value_get()) {
+            if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (tree::select($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
@@ -45,7 +45,7 @@ namespace effcore\modules\menu {
           }
         # field 'id'
           if ($entity->name == 'tree_item') {
-            if ($items['#id']->value_get()) {
+            if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (tree_item::select($items['#id']->value_get(), null)) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
