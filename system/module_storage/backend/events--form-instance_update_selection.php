@@ -8,7 +8,6 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
-          use \effcore\widget_entity_fields;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
