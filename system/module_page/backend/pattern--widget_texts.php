@@ -7,7 +7,7 @@
 namespace effcore {
           class widget_texts extends widget_fields {
 
-  public $attributes = ['data-type' => 'fields-text'];
+  public $attributes = ['data-type' => 'fields'];
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
