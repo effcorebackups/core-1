@@ -7,7 +7,6 @@
 namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\fieldset;
           use \effcore\instance;
           use \effcore\page;
           use \effcore\url;
@@ -22,6 +21,7 @@ namespace effcore\modules\polls {
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_texts;
+        $widget_answers->title = 'Answers';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';
         $widget_answers->item_title = 'Answer';
@@ -30,9 +30,7 @@ namespace effcore\modules\polls {
         $widget_answers->value_set_complex([
           (object)['weight' =>  0, 'id' => 0, 'text' => 'Answer 1'],
           (object)['weight' => -5, 'id' => 0, 'text' => 'Answer 2']], true);
-        $fieldset_answers = new fieldset('Answers');
-        $fieldset_answers->child_insert($widget_answers, 'answers');
-        $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
+        $form->child_select('fields')->child_insert($widget_answers, 'answers');
       }
     }
   }

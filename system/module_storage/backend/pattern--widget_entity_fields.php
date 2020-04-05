@@ -9,6 +9,7 @@ namespace effcore {
 
   public $attributes = ['data-type' => 'fields-info-entity_fields'];
   public $name_complex = 'widget_entity_fields';
+  public $title = 'Fields';
   public $item_title = 'Field';
 
   function widget_manage_get($item, $c_row_id) {

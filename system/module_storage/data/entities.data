@@ -56,7 +56,6 @@ entities
         managing_control_properties
         - name_complex: fields
         - name_prefix: field
-        - title_is_visible: false
     - query_params
         title: Query parameters
         type: blob

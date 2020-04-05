@@ -93,7 +93,6 @@ entities
         managing_control_properties
         - name_complex: items
         - name_prefix: item
-        - title_is_visible: false
     constraints
     - primary_id
         type: primary

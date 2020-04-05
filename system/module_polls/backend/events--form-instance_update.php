@@ -6,7 +6,6 @@
 
 namespace effcore\modules\polls {
           use \effcore\entity;
-          use \effcore\fieldset;
           use \effcore\instance;
           use \effcore\page;
           use \effcore\url;
@@ -31,15 +30,14 @@ namespace effcore\modules\polls {
           ];
         }
         $widget_answers = new widget_texts;
+        $widget_answers->title = 'Answers';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';
         $widget_answers->item_title = 'Answer';
         $widget_answers->cform = $form;
         $widget_answers->build();
         $widget_answers->value_set_complex($widget_items, true);
-        $fieldset_answers = new fieldset('Answers');
-        $fieldset_answers->child_insert($widget_answers, 'answers');
-        $form->child_select('fields')->child_insert($fieldset_answers, 'answers');
+        $form->child_select('fields')->child_insert($widget_answers, 'answers');
       }
     }
   }

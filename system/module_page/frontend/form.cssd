@@ -41,11 +41,9 @@
     border-top: 5px solid %%_color_main}
 
   x-fieldset-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content {
-    background: %%_color_fieldset}
-  x-fieldset-content x-fieldset-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {
-    background: %%_color_fieldset_nested}
+  x-fieldset-content x-fieldset-content                    x-fieldset-content {background: %%_color_fieldset}
+  x-fieldset-content                                       x-fieldset-content,
+  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {background: %%_color_fieldset_nested}
 
   /* field */
 
@@ -282,12 +280,24 @@
 
   /* widget 'fields' */
 
+  x-widget[data-type^='fields'] {margin: 30px 0}
+  x-widget[data-type^='fields'] > x-title {display: block; margin-bottom: 30px; font-size: 1.5em; line-height: 1.2em}
+  x-widget[data-type^='fields'] > x-widget-content {
+    display: block;
+    padding: 10px 16px 16px 16px;
+    border-top: 5px solid %%_color_main}
+
+  x-fieldset-content                                                          x-widget-content,
+  x-fieldset-content x-fieldset-content x-fieldset-content                    x-widget-content {background: %%_color_fieldset_nested}
+  x-fieldset-content x-fieldset-content                                       x-widget-content,
+  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color_fieldset}
+
   x-widget[data-type^='fields'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type^='fields'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='fields'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
   x-widget[data-type^='fields'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
 
-  x-widget[data-type^='fields'] x-widget[data-type='insert'] {display: block; margin-bottom: 6px}
+  x-widget[data-type^='fields'] x-widget[data-type='insert'] {display: block; margin-top: 3px}
   x-widget[data-type^='fields'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0}
   x-widget[data-type^='fields'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
   x-widget[data-type^='fields'] x-widget[data-type='insert'] x-field select {max-width: 130px; margin: 0 10px 0 0}
@@ -301,7 +311,7 @@
 
   /* widget 'fields-info-area_parts' for page */
 
-  x-widget[data-type='fields-info-area_parts'] x-widget[data-type='insert'] {margin-bottom: 0}
+  x-widget[data-type='fields-info-area_parts'] {margin: 0}
 
   /* layout manager */
 
