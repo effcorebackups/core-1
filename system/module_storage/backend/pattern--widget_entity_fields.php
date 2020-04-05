@@ -7,7 +7,7 @@
 namespace effcore {
           class widget_entity_fields extends widget_fields {
 
-  public $attributes = ['data-type' => 'fields-info-selection'];
+  public $attributes = ['data-type' => 'fields-info-entity_fields'];
   public $item_title = 'Field';
 
   function widget_manage_get($item, $c_row_id) {

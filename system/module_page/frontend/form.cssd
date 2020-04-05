@@ -304,7 +304,7 @@
 
   /* widget 'fields-info' for selection */
 
-  x-widget[data-type='fields-info-selection'] {margin: 6px 0}
+  x-widget[data-type='fields-info-entity_fields'] {margin: 6px 0}
 
   /* layout manager */
 
