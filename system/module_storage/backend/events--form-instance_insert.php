@@ -59,10 +59,10 @@ namespace effcore\modules\storage {
           if (empty($entity->button_insert_and_update_is_enabled)) {
             $form->child_delete('button_insert_and_update');
           }
-          if (empty($entity->message_for_additional_form_items_is_enabled)) {
+          if (empty($entity->message_for_additional_form_items_is_enabled) == false) {
             $form->child_select('fields')->child_insert(
               new markup('x-form-message', [], ['message' => new text(
-                'Additional form controls will become available in update mode for this type of element.')
+                'Additional controls will become available after insertion (in update mode).')
               ], -20), 'form_message'
             );
           }

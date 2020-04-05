@@ -11,7 +11,7 @@ namespace effcore\modules\polls {
           use \effcore\instance;
           use \effcore\page;
           use \effcore\url;
-          use \effcore\widget_fields_text;
+          use \effcore\widget_texts;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -21,7 +21,7 @@ namespace effcore\modules\polls {
         $form->is_redirect_enabled = false;
         if ($items['#expired']->value_get() == null)
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
-        $widget_answers = new widget_fields_text;
+        $widget_answers = new widget_texts;
         $widget_answers->item_title = 'Answer';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';

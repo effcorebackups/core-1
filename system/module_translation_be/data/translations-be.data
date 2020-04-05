@@ -17,7 +17,7 @@ translations
     - Action: Дзеянне
     - actions: дзеянні
     - Actions: Дзеянні
-    - Additional form controls will become available in update mode for this type of element.: Дадатковыя элементы кіравання формы стануць даступныя ў рэжыме абнаўлення гэтага тыпу элемента.
+    - Additional controls will become available after insertion (in update mode).: Дадатковыя элементы кіравання стануць даступныя пасля ўстаўкі (у рэжыме абнаўлення).
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры

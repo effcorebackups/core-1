@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_fields_text extends widget_fields {
+          class widget_texts extends widget_fields {
 
   public $attributes = ['data-type' => 'fields-text'];
 

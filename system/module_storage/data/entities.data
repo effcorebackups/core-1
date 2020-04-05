@@ -6,7 +6,7 @@ entities
     catalog_name: selections
     managing_is_enabled: true
     button_insert_and_update_is_enabled: true
-    message_for_additional_form_items_is_enabled: false
+    message_for_additional_form_items_is_enabled: true
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true
@@ -52,7 +52,7 @@ entities
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_fields_for_selection
+        managing_control_class: \effcore\widget_entity_fields
         managing_control_properties
         - name_complex: fields
         - name_prefix: field

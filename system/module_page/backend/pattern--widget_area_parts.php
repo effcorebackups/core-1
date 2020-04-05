@@ -5,21 +5,25 @@
   ##################################################################
 
 namespace effcore {
-          class widget_fields_for_selection extends widget_fields {
+          class widget_area_parts extends widget_fields {
 
-  public $attributes = ['data-type' => 'fields-info-selection'];
-  public $item_title = 'Field';
+  public $attributes = ['data-type' => 'fields-info-parts'];
+  public $name_complex = 'widget_area_part';
+  public $item_title = 'Part';
+  public $id_area;
+
+  function __construct($id_area, $attributes = [], $weight = 0) {
+    $this->id_area = $id_area;
+    parent::__construct($attributes, $weight);
+  }
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # data markup
-    $entity = entity::get($item->entity_name);
-    $entity_field = $entity ? $entity->field_get($item->entity_field_name) : null;
+    $preset = part_preset::select($item->id);
     $data_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST PART'),
-        'id'    => new markup('x-id',    [], [
-                   new text_simple($item->entity_name      ), '.',
-                   new text_simple($item->entity_field_name)]) ]);
+        'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
+        'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
   # group the previous elements in widget 'manage'
     $widget->child_insert($data_markup, 'data');
     return $widget;
@@ -29,24 +33,22 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # field for selection of the type of new item
-    $entities = entity::get_all();
-    core::array_sort_by_text_property($entities);
+    $presets = part_preset::select_all($this->id_area);
+    core::array_sort_by_text_property($presets, 'managing_group');
     $options = ['not_selected' => '- no -'];
-    foreach ($entities as $c_entity) {
-      if (!empty($c_entity->managing_is_enabled)) {
-        foreach ($c_entity->fields as $c_field_name => $c_field_info) {
-          if (!empty($c_field_info->managing_on_select_is_enabled)) {
-            if (!isset($options[$c_entity->name])) {
-                       $options[$c_entity->name] = new \stdClass;
-                       $options[$c_entity->name]->title = $c_entity->title;}
-            $options[$c_entity->name]->values['field|'.$c_entity->name.'|'.$c_field_name] = new text_multiline([
-              'title' => $c_field_info->title, 'id' => '('.$c_entity->name.'.'.$c_field_name.')'], [], ' '
-            );
-          }
-        }
+    foreach ($presets as $c_preset) {
+      $c_group_id = core::sanitize_id($c_preset->managing_group);
+      if (!isset($options[$c_group_id])) {
+                 $options[$c_group_id] = new \stdClass;
+                 $options[$c_group_id]->title = $c_preset->managing_group;}
+      $options[$c_group_id]->values[$c_preset->id] = translation::get($c_preset->managing_title).' ('.$c_preset->id.')';
+    }
+    foreach ($options as $c_group) {
+      if ($c_group instanceof \stdClass) {
+        core::array_sort_text($c_group->values);
       }
     }
-    $select = new field_select('Insert field');
+    $select = new field_select('Insert part');
     $select->values = $options;
     $select->build();
     $select->name_set($this->name_prefix.'__insert');
@@ -70,16 +72,12 @@ namespace effcore {
   function on_button_click_insert($form, $npath, $button) {
     $new_value = $this->_fields['insert']->value_get();
     if ($new_value) {
-      $params = explode('|', $new_value);
       $min_weight = 0;
       $items = $this->items_get();
       foreach ($items as $c_row_id => $c_item)
         $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new \stdClass;
+      $new_item = new part_preset_link($new_value);
       $new_item->weight = count($items) ? $min_weight - 5 : 0;
-      $new_item->type              = $params[0];
-      $new_item->entity_name       = $params[1];
-      $new_item->entity_field_name = $params[2];
       $items[] = $new_item;
       $this->items_set($items);
       $this->_fields['insert']->value_set('');

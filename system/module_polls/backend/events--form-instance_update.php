@@ -10,7 +10,7 @@ namespace effcore\modules\polls {
           use \effcore\instance;
           use \effcore\page;
           use \effcore\url;
-          use \effcore\widget_fields_text;
+          use \effcore\widget_texts;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -30,7 +30,7 @@ namespace effcore\modules\polls {
             'text'   => $c_row->answer
           ];
         }
-        $widget_answers = new widget_fields_text;
+        $widget_answers = new widget_texts;
         $widget_answers->item_title = 'Answer';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';

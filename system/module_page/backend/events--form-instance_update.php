@@ -13,7 +13,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\widget_fields_for_area_part;
+          use \effcore\widget_area_parts;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -47,7 +47,7 @@ namespace effcore\modules\page {
                 $c_area->managing_enable();
                 $c_area->build();
                 if ($c_area->id) {
-                  $c_widget_parts = new widget_fields_for_area_part($c_area->id);
+                  $c_widget_parts = new widget_area_parts($c_area->id);
                   $c_widget_parts->name_complex = 'widget_parts_'.$c_area->id;
                   $c_widget_parts->name_prefix  = 'parts__'.      $c_area->id;
                   $c_widget_parts->cform = $form;
