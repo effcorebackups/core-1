@@ -3,8 +3,6 @@ forms
     title: Insert instance
     title_is_visible: false
     managing_group_id: null
-    button_insert_and_update_is_enabled: false
-    message_for_additional_form_items_is_enabled: false
     entity_name: null
     category_id: null
     is_show_result_message: true
