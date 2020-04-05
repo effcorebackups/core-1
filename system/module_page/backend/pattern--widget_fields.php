@@ -22,7 +22,7 @@ namespace effcore {
     if (!$this->is_builded) {
       $this->child_insert($this->widget_manage_group_get(), 'manage');
       $this->child_insert($this->widget_insert_get      (), 'insert');
-      $this->widgets_group_manage_build();
+      $this->widgets_manage_group_build();
       $this->is_builded = true;
     }
   }
@@ -50,7 +50,7 @@ namespace effcore {
     if ($once && $this->cform->validation_cache_get($this->name_prefix.'items') !== null) return;
     $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set($this->name_prefix.'items', $items ?: []);
-    $this->widgets_group_manage_build();
+    $this->widgets_manage_group_build();
   }
 
   function items_reset() {
@@ -60,19 +60,19 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function widgets_group_manage_build() {
-    $widgets_group_manage = $this->child_select('manage');
+  function widgets_manage_group_build() {
+    $widgets_manage_group = $this->child_select('manage');
     $items = $this->items_get();
   # insert new and update existing widgets
     foreach ($this->items_get() as $c_row_id => $c_item) {
-      if ($widgets_group_manage->child_select($c_row_id) != null) {$c_widget =                                               $widgets_group_manage->child_select(           $c_row_id);}
-      if ($widgets_group_manage->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $widgets_group_manage->child_insert($c_widget, $c_row_id);}
+      if ($widgets_manage_group->child_select($c_row_id) != null) {$c_widget =                                               $widgets_manage_group->child_select(           $c_row_id);}
+      if ($widgets_manage_group->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $widgets_manage_group->child_insert($c_widget, $c_row_id);}
       $c_widget->weight = $c_widget->child_select('weight')->value_get();
     }
   # delete old widgets
-    foreach ($widgets_group_manage->children_select() as $c_row_id => $c_widget) {
+    foreach ($widgets_manage_group->children_select() as $c_row_id => $c_widget) {
       if (!isset($items[$c_row_id])) {
-        $widgets_group_manage->child_delete($c_row_id);
+        $widgets_manage_group->child_delete($c_row_id);
       }
     }
   }
