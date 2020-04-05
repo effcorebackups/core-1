@@ -355,6 +355,7 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         - checkboxes_all|fieldset
             title: Checkboxes
+            title_is_visible: 1
             state: opened
             children
           # field 'Checkbox'
@@ -434,6 +435,7 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         - radiobuttons_all|fieldset
             title: Radiobuttons
+            title_is_visible: 1
             state: opened
             children
           # field 'Radiobutton'

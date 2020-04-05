@@ -33,8 +33,10 @@ namespace effcore {
   function render_self() {
     if ($this->title) {
       $opener = $this->render_opener();
-      return $opener ? $opener.(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->number], [$this->title]))->render() :
-                               (new markup($this->title_tag_name, [                                  ], [$this->title]))->render();
+      if ($this->title && $this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->number                         ], $this->title))->render();
+      if ($this->title && $this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title && $this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, [                                    'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title && $this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, [                                                           ], $this->title))->render();
     }
   }
 
