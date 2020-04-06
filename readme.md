@@ -417,8 +417,9 @@ In this module you can set your own:
 - dynamic JavaScript files "*.jsd";
 - templates;
 - layouts;
-- images;
-- favicons.
+- pictures;
+- favicons;
+and more.
 
 Also in the own module, it will be possible to apply the "Changes" mechanism.
 This mechanism give ability to make changes in the system.

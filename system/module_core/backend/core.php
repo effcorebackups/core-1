@@ -858,9 +858,9 @@ namespace effcore {
                   $matches['full_name_unknown'];
   }
 
-  #############
-  ### image ###
-  #############
+  ###############
+  ### picture ###
+  ###############
 
   static function thumbnail_create($src_path, $dst_path, $dst_w = 100, $result_format = null) {
     $type = @exif_imagetype($src_path);
