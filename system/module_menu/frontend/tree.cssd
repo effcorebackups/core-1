@@ -67,5 +67,5 @@
   [role='tree'][data-visualization-mode] x-item x-url    {display: block; line-height: 1.4em; color: %%_color_text; opacity: .5}
   [role='tree'][data-visualization-mode] x-item x-url x-dirs-delimiter {padding: 0 2px; font-style: normal}
 
-  [role='tree'][data-visualization-mode] li            {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') repeat-y         }
-  [role='tree'][data-visualization-mode] li:last-child {background: url('images/tree-hline.svgd') no-repeat 0 -15px, url('images/tree-vline.svgd') no-repeat 0 -61px}
+  [role='tree'][data-visualization-mode] li            {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') repeat-y         }
+  [role='tree'][data-visualization-mode] li:last-child {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') no-repeat 0 -61px}
