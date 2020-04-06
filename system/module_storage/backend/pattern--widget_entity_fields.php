@@ -7,10 +7,10 @@
 namespace effcore {
           class widget_entity_fields extends widget_fields {
 
-  public $attributes = ['data-type' => 'fields-info-entity_fields'];
-  public $name_complex = 'widget_entity_fields';
   public $title = 'Fields';
   public $item_title = 'Field';
+  public $attributes = ['data-type' => 'fields-info-entity_fields'];
+  public $name_complex = 'widget_entity_fields';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);

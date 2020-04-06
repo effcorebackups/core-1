@@ -7,11 +7,12 @@
 namespace effcore {
           class widget_fields extends control implements complex_control {
 
+  public $title = null;
+  public $item_title = 'Item';
   public $tag_name = 'x-widget';
   public $content_tag_name = 'x-widget-content';
   public $attributes = ['data-type' => 'fields'];
   public $name_complex = 'widget_fields';
-  public $item_title = 'Item';
   public $_fields  = [];
   public $_buttons = [];
 

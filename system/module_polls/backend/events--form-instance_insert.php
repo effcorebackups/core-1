@@ -22,9 +22,9 @@ namespace effcore\modules\polls {
             $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_texts;
         $widget_answers->title = 'Answers';
+        $widget_answers->item_title = 'Answer';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->name_prefix = 'answer';
-        $widget_answers->item_title = 'Answer';
         $widget_answers->cform = $form;
         $widget_answers->build();
         $widget_answers->value_set_complex([

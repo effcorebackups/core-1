@@ -30,6 +30,7 @@ translations
     - Answer: Ответ
     - Answers: Ответы
     - apply: применить
+    - Audio: Аудио
     - Avatar: Аватар
     - Belarusian: Белорусский
     - Breadcrumbs: Хлебные крошки
@@ -386,6 +387,8 @@ translations
     - PHP dependencies: PHP-зависимости
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP version: PHP версия
+    - Picture: Изображение
+    - Pictures: Изображения
     - Poll: Опрос
     - Polls: Опросы
     - Port: Порт
@@ -578,6 +581,8 @@ translations
     - Values: Значения
     - Version: Версия
     - version: версия
+    - Video: Видео
+    - Videos: Видео
     - View more: Смотреть больше
     - Visibility: Видимость
     - vote: голосовать

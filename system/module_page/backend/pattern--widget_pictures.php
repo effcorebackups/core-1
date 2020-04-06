@@ -5,11 +5,11 @@
   ##################################################################
 
 namespace effcore {
-          class widget_images extends widget_texts {
+          class widget_pictures extends widget_fields {
 
-  public $title = 'Images';
-  public $attributes = ['data-type' => 'fields-images'];
-  public $name_complex = 'widget_images';
-  public $item_title = 'Image';
+  public $title = 'Pictures';
+  public $item_title = 'Picture';
+  public $attributes = ['data-type' => 'fields-pictures'];
+  public $name_complex = 'widget_pictures';
 
 }}
