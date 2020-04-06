@@ -8,7 +8,6 @@ namespace effcore\modules\demo {
           use \effcore\core;
           use \effcore\data;
           use \effcore\field;
-          use \effcore\file;
           use \effcore\message;
           use \effcore\text;
           use \effcore\translation;
@@ -32,7 +31,7 @@ namespace effcore\modules\demo {
     $items['#select'         ]->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
     $items['#select_multiple']->option_insert('Option 9 (inserted from code)', 'option_9', [], 'group_2');
     $items['*palette_color']->value_set('transparent');
-    $items['#file']->values_set(data::select('files_demo'));
+    $items['#picture']->values_set(data::select('files_demo'));
   }
 
   static function on_validate($event, $form, $items) {
@@ -99,7 +98,7 @@ namespace effcore\modules\demo {
         if ($items['*radiobuttons'   ]->value_get  ()       != 'radiobutton_2'           ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*radiobuttons'   ]->title)]) ); # …\group_radiobuttons
         if ($items['*palette_color'  ]->value_get  ()       != 'transparent'             ) message::insert( new text('Group "%%_title" has a changed value.', ['title' => translation::get($items['*palette_color'  ]->title)]) ); # …\group_palette
       # save the files
-        $paths = $items['#file']->values_get();
+        $paths = $items['#picture']->values_get();
         if (count($paths)) data::update('files_demo', $paths);
         else               data::delete('files_demo');
         break;

@@ -10,9 +10,9 @@ forms
     - form_elements|fieldset
         title: Form elements
         children
-      # field 'File'
-        - file|field_file
-            title: File
+      # field 'Picture'
+        - pictures|field_picture
+            title: Pictures
             max_file_size: 10K
             min_files_number: 0
             max_files_number: 3
@@ -20,18 +20,9 @@ forms
             description|text
               text: Field "%%_title".
               args
-              - title: field_file
-            allowed_types
-            - =: gif
-            - =: jpeg
-            - =: jpg
-            - =: png
-            description|text
-              text: Field "%%_title".
-              args
-              - title: field_file
+              - title: field_picture
             element_attributes
-            - name: file[]
+            - name: picture[]
             - multiple: true
       # field 'Text'
         - text|field_text
