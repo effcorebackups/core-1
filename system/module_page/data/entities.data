@@ -181,16 +181,16 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_file
+        managing_control_class: \effcore\field_picture
         managing_control_properties
         - max_file_size: 50K
         - upload_dir: logotypes/
         - fixed_name: logotype-%%_instance_id_context
         - allowed_types
-          - =: gif
           - =: jpeg
           - =: jpg
           - =: png
+          - =: gif
           - =: svg
           - =: svgd
         managing_control_element_attributes_on_insert
