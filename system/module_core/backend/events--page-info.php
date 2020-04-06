@@ -19,7 +19,7 @@ namespace effcore\modules\core {
           abstract class events_page_info {
 
   static function block_system_info($page) {
-    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/images/logo-simplified.svgd', 'alt' => new text('system logotype'), 'width' => '300']));
+    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/pictures/logo-simplified.svgd', 'alt' => new text('system logotype'), 'width' => '300']));
     $copyright = new markup('x-copyright', [], 'Copyright © 2017—2020 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),

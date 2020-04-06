@@ -156,7 +156,7 @@
     display: block;
     padding: 10px;
     text-align: center;
-    background: %%_color_main url('images/lines.svg') -10px 0}
+    background: %%_color_main url('pictures/lines.svg') -10px 0}
 
   /* breadcrumbs */
 
@@ -201,7 +201,7 @@
   x-messages ul[data-type='credentials'] {
     list-style: none;
     padding: 30px;
-    background: %%_color_main url('images/lines.svg') -10px 0}
+    background: %%_color_main url('pictures/lines.svg') -10px 0}
   x-messages ul[data-type='credentials'] li {
     padding: 0;
     margin: 0;
@@ -254,9 +254,9 @@
   /* control elements */
 
   x-actions a x-actions-title {display: none}
-  x-actions a[data-id='select'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0  -1px}
-  x-actions a[data-id='update'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -41px}
-  x-actions a[data-id='delete'] {padding-left: 25px; background: url('images/icons-actions_list.svgd') no-repeat 0 -61px}
+  x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0  -1px}
+  x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0 -41px}
+  x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0 -61px}
 
   /* sessions_logout */
 
@@ -303,8 +303,8 @@
   /* file system icons */
 
   x-file-path {display: inline-block}
-  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('images/icons-file.svg') no-repeat; margin-right: 10px}
-  x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('images/icons-file.svg') no-repeat 0 -30px}
+  x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('pictures/icons-file.svg') no-repeat; margin-right: 10px}
+  x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('pictures/icons-file.svg') no-repeat 0 -30px}
 
   /* menu with targets */
 

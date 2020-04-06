@@ -32,8 +32,8 @@
   fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px}
   fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
 
-  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('images/icons-form.svgd')   0   -60px}
-  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('images/icons-form.svgd') -20px -60px}
+  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
+  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
 
   x-fieldset-content {
     display: block;
@@ -109,10 +109,10 @@
 
   input[type='radio'   ]                               {background: %%_color_page}
   input[type='checkbox']                               {background: %%_color_page}
-  input[type='checkbox'][data-type='switcher']         {background: %%_color_page url('images/icons-form.svgd')   0   -40px}
-  input[type='radio'   ]:checked                       {background: %%_color_page url('images/icons-form.svgd')   0   -20px}
-  input[type='checkbox']:checked                       {background: %%_color_page url('images/icons-form.svgd')   0     0  }
-  input[type='checkbox'][data-type='switcher']:checked {background: %%_color_page url('images/icons-form.svgd') -46px -40px}
+  input[type='checkbox'][data-type='switcher']         {background: %%_color_page url('pictures/icons-form.svgd')   0   -40px}
+  input[type='radio'   ]:checked                       {background: %%_color_page url('pictures/icons-form.svgd')   0   -20px}
+  input[type='checkbox']:checked                       {background: %%_color_page url('pictures/icons-form.svgd')   0     0  }
+  input[type='checkbox'][data-type='switcher']:checked {background: %%_color_page url('pictures/icons-form.svgd') -46px -40px}
 
   input[data-state-default='not_checked']:checked,
   input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color_warning}
@@ -145,7 +145,7 @@
     opacity: .3}
   x-description p {margin: 0}
   input[data-opener-type='description'] {display: none}
-  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('images/icons-form.svgd') 0 -85px}
+  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('pictures/icons-form.svgd') 0 -85px}
   input[data-opener-type='description'] + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
   x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
@@ -179,9 +179,9 @@
     padding: 0;
     width: 44px;
     background-repeat: no-repeat}
-  button[data-style^='narrow-update'] {background-image: url('images/icons-button.svgd'); background-position: 50%   0  }
-  button[data-style^='narrow-insert'] {background-image: url('images/icons-button.svgd'); background-position: 50% -44px}
-  button[data-style^='narrow-delete'] {background-image: url('images/icons-button.svgd'); background-position: 50% -88px}
+  button[data-style^='narrow-update'] {background-image: url('pictures/icons-button.svgd'); background-position: 50%   0  }
+  button[data-style^='narrow-insert'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -44px}
+  button[data-style^='narrow-delete'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -88px}
 
   /* disabled elements */
 
@@ -197,12 +197,12 @@
   /* checkbox color */
 
   x-field[data-type='checkbox-color'] input {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-field[data-type='checkbox-color'] input[data-value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
+  x-field[data-type='checkbox-color'] input[data-value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
 
   /* group 'palette' */
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('images/icons-form.svgd') -18px 2px !important}
+  x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
 
   x-group[data-type='palette'] label {
@@ -217,7 +217,7 @@
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
   x-group[data-type='palette'] x-field input:checked                {border-color: black}
-  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('images/icons-form.svgd') -20px 0 !important}
+  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('pictures/icons-form.svgd') -20px 0 !important}
   x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
   x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
 
@@ -240,7 +240,7 @@
     vertical-align: middle;
     cursor: move;
     border-radius: 5px;
-    background: %%_color_main url('images/icons-drag_and_drop.svgd') 50% 50%}
+    background: %%_color_main url('pictures/icons-drag_and_drop.svgd') 50% 50%}
 
   [data-has-rearrangeable='true'] x-droppable-area {
     display: block;
@@ -327,7 +327,7 @@
     padding: 5px 9px;
     line-height: 1.2em;
     color: %%_color_text;
-    background: %%_color_main url('images/lines.svg') -10px 0}
+    background: %%_color_main url('pictures/lines.svg') -10px 0}
   x-layout-manager x-area-info * {vertical-align: middle}
   x-layout-manager x-area-info x-area-id {margin-right: 1em; font-size: .85em; text-transform: uppercase}
   x-layout-manager x-area-info x-area-tag-name {font-family: monospace; font-size: .8em; opacity: .5}
