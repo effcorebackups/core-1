@@ -5,14 +5,14 @@
   nav[aria-label='languages'] li {
     display: inline-block;
     padding-left: 40px;
-    background: url('images/flag-neutral-mini.svg') no-repeat 0 2px}
+    background: url('pictures/flag-neutral-mini.svg') no-repeat 0 2px}
   nav[aria-label='languages'] li:not(:last-child) {
     margin-right: 10px;
     padding-right: 10px;
     border-right: 1px dotted %%_color_main}
 
   nav[aria-label='languages'] li[data-code='en'] {
-    background: url('images/flag-uk-mini.svg') no-repeat 0 2px}
+    background: url('pictures/flag-uk-mini.svg') no-repeat 0 2px}
 
   nav[aria-label='languages'] [aria-current] {
     color: %%_color_link_active}
