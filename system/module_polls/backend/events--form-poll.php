@@ -110,7 +110,7 @@ namespace effcore\modules\polls {
       }
     } else {
       $form->child_update('fields',
-        new markup('x-no-result', [], 'no items')
+        new markup('x-no-items', [], 'no items')
       );
     }
   }

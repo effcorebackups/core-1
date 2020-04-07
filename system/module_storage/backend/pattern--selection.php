@@ -191,7 +191,7 @@ namespace effcore {
 
       } else {
         $this->child_insert(
-          new markup('x-no-result', [], 'no items'), 'no_result'
+          new markup('x-no-items', [], 'no items'), 'no_result'
         );
       }
 

@@ -78,8 +78,8 @@ namespace effcore {
       }
     }
   # message 'no items'
-    if (count($group->children_select()) != 0) $group->child_delete(                                           'no_items');
-    if (count($group->children_select()) == 0) $group->child_insert(new markup('x-no-result', [], 'no items'), 'no_items');
+    if (count($group->children_select()) != 0) $group->child_delete(                                          'no_items');
+    if (count($group->children_select()) == 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
   }
 
   # ─────────────────────────────────────────────────────────────────────

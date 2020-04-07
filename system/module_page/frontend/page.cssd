@@ -277,9 +277,9 @@
 
   x-selection {display: block}
 
-  /* x-no-result */
+  /* x-no-items */
 
-  x-no-result {
+  x-no-items {
     display: block;
     margin: 50px 0;
     padding: 20px;
