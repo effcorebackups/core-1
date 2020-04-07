@@ -281,10 +281,12 @@
 
   x-no-items {
     display: block;
+    text-align: center}
+
+  x-no-items[data-style='table'] {
     margin: 50px 0;
     padding: 20px;
     border-top: 5px solid %%_color_main;
-    text-align: center;
     background: %%_color_table_row_even}
 
   /* x-document ('license agreement' and etc.) */

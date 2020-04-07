@@ -65,7 +65,7 @@ namespace effcore\modules\storage {
             }
           }
           if (!$has_visible_fields) {
-            return new markup('x-no-items', [], 'no fields');
+            return new markup('x-no-items', ['data-style' => 'table'], 'no fields');
           } else {
             $selection->field_insert_code('actions', 'Actions', function ($c_row, $c_instance) {
               $c_actions_list = new actions_list;
