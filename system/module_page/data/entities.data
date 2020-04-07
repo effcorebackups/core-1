@@ -83,7 +83,7 @@ entities
         managing_selection_params
         - is_apply_translation: true
     - items
-        title: Items
+        title: Pictures
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize

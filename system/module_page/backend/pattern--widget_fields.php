@@ -63,20 +63,23 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function widgets_manage_group_build() {
-    $widgets_manage_group = $this->child_select('manage');
+    $group = $this->child_select('manage');
     $items = $this->items_get();
   # insert new and update existing widgets
     foreach ($this->items_get() as $c_row_id => $c_item) {
-      if ($widgets_manage_group->child_select($c_row_id) != null) {$c_widget =                                               $widgets_manage_group->child_select(           $c_row_id);}
-      if ($widgets_manage_group->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $widgets_manage_group->child_insert($c_widget, $c_row_id);}
+      if ($group->child_select($c_row_id) != null) {$c_widget =                                               $group->child_select(           $c_row_id);}
+      if ($group->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
       $c_widget->weight = $c_widget->child_select('weight')->value_get();
     }
   # delete old widgets
-    foreach ($widgets_manage_group->children_select() as $c_row_id => $c_widget) {
+    foreach ($group->children_select() as $c_row_id => $c_widget) {
       if (!isset($items[$c_row_id])) {
-        $widgets_manage_group->child_delete($c_row_id);
+        $group->child_delete($c_row_id);
       }
     }
+  # message 'no items'
+    if (count($group->children_select()) != 0) $group->child_delete(                                           'no_items');
+    if (count($group->children_select()) == 0) $group->child_insert(new markup('x-no-result', [], 'no items'), 'no_items');
   }
 
   # ─────────────────────────────────────────────────────────────────────
