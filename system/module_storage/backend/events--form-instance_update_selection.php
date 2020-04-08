@@ -8,6 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
+          use \effcore\translation;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -31,6 +32,21 @@ namespace effcore\modules\storage {
         $fieldset_query_params       ->child_insert($field_limit,               'limit'           );
         $form->child_select('fields')->child_insert($fieldset_query_params,     'query_params'    );
         $form->child_select('fields')->child_insert($fieldset_decorator_params, 'decorator_params');
+      }
+    }
+  }
+
+  static function on_validate($event, $form, $items) {
+    $entity = entity::get($form->entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'update':
+          if ($entity->name == 'selection') {
+            if (count($items['*fields']->value_get_complex()) < 1) {
+              $form->error_set('Group "%%_title" must contain a minimum %%_number items!', ['title' => translation::get($items['*fields']->title), 'number' => 1]);
+            }
+          }
+          break;
       }
     }
   }

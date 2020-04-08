@@ -9,6 +9,7 @@ namespace effcore\modules\polls {
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\page;
+          use \effcore\translation;
           use \effcore\url;
           use \effcore\widget_texts;
           abstract class events_form_instance_insert {
@@ -24,7 +25,6 @@ namespace effcore\modules\polls {
         $widget_answers->title = 'Answers';
         $widget_answers->item_title = 'Answer';
         $widget_answers->name_complex = 'widget_answers';
-        $widget_answers->name_prefix = 'answer';
         $widget_answers->cform = $form;
         $widget_answers->build();
         $widget_answers->value_set_complex([
@@ -42,7 +42,7 @@ namespace effcore\modules\polls {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
             if (count($items['*widget_answers']->value_get_complex()) < 2) {
-              $form->error_set('The poll must contain a minimum %%_number responses!', ['number' => 2]);
+              $form->error_set('Group "%%_title" must contain a minimum %%_number items!', ['title' => translation::get($items['*widget_answers']->title), 'number' => 2]);
             }
           }
           break;

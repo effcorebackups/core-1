@@ -12,7 +12,6 @@ namespace effcore {
   public $content_tag_name = null;
   public $attributes = ['data-type' => 'fields-info-area_parts'];
   public $name_complex = 'widget_area_parts';
-  public $name_prefix = 'area_part';
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {
@@ -54,14 +53,14 @@ namespace effcore {
     $select = new field_select('Insert part');
     $select->values = $options;
     $select->build();
-    $select->name_set($this->name_prefix.'__insert');
+    $select->name_set($this->name_complex.'__insert');
     $select->required_set(false);
     $this->_fields['insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->name_prefix.'__insert');
+    $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
   # group the previous elements in widget 'insert'

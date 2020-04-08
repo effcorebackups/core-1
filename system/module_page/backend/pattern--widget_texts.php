@@ -9,7 +9,6 @@ namespace effcore {
 
   public $attributes = ['data-type' => 'fields'];
   public $name_complex = 'widget_texts';
-  public $name_prefix = 'text';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
@@ -17,7 +16,7 @@ namespace effcore {
     $field_text = new field_text;
     $field_text->description_state = 'hidden';
     $field_text->build();
-    $field_text->name_set($this->name_prefix.'__text__'.$c_row_id);
+    $field_text->name_set($this->name_complex.'__text__'.$c_row_id);
     $field_text->value_set($item->text);
     $this->_fields['text__'.$c_row_id] = $field_text;
   # group the previous elements in widget 'manage'

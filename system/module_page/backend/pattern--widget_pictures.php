@@ -11,7 +11,6 @@ namespace effcore {
   public $item_title = 'Picture';
   public $attributes = ['data-type' => 'fields-pictures'];
   public $name_complex = 'widget_pictures';
-  public $name_prefix = 'picture';
 
   # ─────────────────────────────────────────────────────────────────────
 
@@ -23,7 +22,7 @@ namespace effcore {
     $field_weight = new field_weight;
     $field_weight->description_state = 'hidden';
     $field_weight->build();
-    $field_weight->name_set($this->name_prefix.'__weight__'.$c_row_id);
+    $field_weight->name_set($this->name_complex.'__weight__'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
     $this->_fields['weight__'.$c_row_id] = $field_weight;
@@ -31,7 +30,7 @@ namespace effcore {
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
-    $button_delete->value_set($this->name_prefix.'__delete__'.$c_row_id);
+    $button_delete->value_set($this->name_complex.'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
     $this->_buttons['delete__'.$c_row_id] = $button_delete;

@@ -48,8 +48,7 @@ namespace effcore\modules\page {
                 $c_area->build();
                 if ($c_area->id) {
                   $c_widget_parts = new widget_area_parts($c_area->id);
-                  $c_widget_parts->name_complex = 'widget_area_parts_'.$c_area->id;
-                  $c_widget_parts->name_prefix  =        'area_part__'.$c_area->id;
+                  $c_widget_parts->name_complex = 'widget_area_parts__'.$c_area->id;
                   $c_widget_parts->cform = $form;
                   $c_widget_parts->build();
                   $c_widget_parts->value_set_complex($form->_instance->parts[$c_area->id] ?? null, true);

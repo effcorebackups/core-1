@@ -215,6 +215,7 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
+    - Group "%%_title" must contain a minimum %%_number items!: Група "%%_title" павінна утрымліваць як мінімум %%_number элемент!
     - Group "%%_title" must contain at least one selected item!: Група "%%_title" павінна утрымліваць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Headers: Загалоўкі
@@ -512,7 +513,6 @@ translations
     - The minimum value is greater than the maximum value!: Мінімальнае значэнне больш максімальнага значэння!
     - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
     - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
-    - The poll must contain a minimum %%_number responses!: Апытанне павінна утрымліваць мінімум %%_number адказу!
     - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
