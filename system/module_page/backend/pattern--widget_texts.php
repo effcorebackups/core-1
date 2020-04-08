@@ -19,7 +19,7 @@ namespace effcore {
     $field_text->name_set($this->name_complex.'__text__'.$c_row_id);
     $field_text->value_set($item->text);
     $this->_fields['text__'.$c_row_id] = $field_text;
-  # group the previous elements in widget 'manage'
+  # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_text, 'text');
     return $widget;
   }

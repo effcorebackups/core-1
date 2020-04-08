@@ -9,10 +9,21 @@ namespace effcore {
 
   public $title = 'Pictures';
   public $item_title = 'Picture';
-  public $attributes = ['data-type' => 'fields-pictures'];
+  public $attributes = ['data-type' => 'fields-info-pictures'];
   public $name_complex = 'widget_pictures';
 
   # ─────────────────────────────────────────────────────────────────────
+
+  function widget_manage_get($item, $c_row_id) {
+    $widget = parent::widget_manage_get($item, $c_row_id);
+  # info markup
+    $info_markup = new markup('x-info',  [], [
+        'title' => new markup('x-title', [], 'TITLE'),
+        'id'    => new markup('x-id',    [], new text_simple('id') ) ]);
+  # grouping of previous elements in widget 'manage'
+    $widget->child_insert($info_markup, 'info');
+    return $widget;
+  }
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -29,7 +40,7 @@ namespace effcore {
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
-  # group the previous elements in widget 'insert'
+  # grouping of previous elements in widget 'insert'
     $widget->child_insert($field_picture, 'picture');
     $widget->child_insert($button,        'button');
     return $widget;

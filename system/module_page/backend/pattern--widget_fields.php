@@ -111,7 +111,7 @@ namespace effcore {
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
     $this->_buttons['delete__'.$c_row_id] = $button_delete;
-  # group the previous elements in widget 'manage'
+  # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_weight,  'weight'       );
     $widget->child_insert($button_delete, 'button_delete');
     return $widget;
@@ -127,7 +127,7 @@ namespace effcore {
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
-  # group the previous elements in widget 'insert'
+  # grouping of previous elements in widget 'insert'
     $widget->child_insert($button, 'button');
     return $widget;
   }

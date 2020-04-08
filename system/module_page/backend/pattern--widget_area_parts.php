@@ -21,13 +21,13 @@ namespace effcore {
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
-  # data markup
+  # info markup
     $preset = part_preset::select($item->id);
-    $data_markup = new markup('x-info',  [], [
+    $info_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
-  # group the previous elements in widget 'manage'
-    $widget->child_insert($data_markup, 'data');
+  # grouping of previous elements in widget 'manage'
+    $widget->child_insert($info_markup, 'info');
     return $widget;
   }
 
@@ -63,7 +63,7 @@ namespace effcore {
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
     $this->_buttons['insert'] = $button;
-  # group the previous elements in widget 'insert'
+  # grouping of previous elements in widget 'insert'
     $widget->child_insert($select, 'select');
     $widget->child_insert($button, 'button');
     return $widget;
