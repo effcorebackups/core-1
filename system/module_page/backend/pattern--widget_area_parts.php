@@ -85,9 +85,8 @@ namespace effcore {
       $this->_fields['insert']->value_set('');
       message::insert(new text_multiline([
         'Item of type "%%_type" was inserted.',
-        'Do not forget to save the changes with "%%_button" button!'], [
-        'type'   => translation::get($this->item_title),
-        'button' => translation::get('update')]));
+        'Do not forget to save the changes!'], [
+        'type' => translation::get($this->item_title)]));
       return true;
     } else {
       $this->_fields['insert']->error_set(

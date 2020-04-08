@@ -45,19 +45,19 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_get() {
-    return $this->cform->validation_cache_get($this->name_complex.'items') ?: [];
+    return $this->cform->validation_cache_get($this->name_complex.'__items') ?: [];
   }
 
   function items_set($items, $once = false) {
-    if ($once && $this->cform->validation_cache_get($this->name_complex.'items') !== null) return;
+    if ($once && $this->cform->validation_cache_get($this->name_complex.'__items') !== null) return;
     $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set($this->name_complex.'items', $items ?: []);
+    $this->cform->validation_cache_set($this->name_complex.'__items', $items ?: []);
     $this->widgets_manage_group_build();
   }
 
   function items_reset() {
     $this->cform->validation_cache_is_persistent = false;
-    $this->cform->validation_cache_set($this->name_complex.'items', null);
+    $this->cform->validation_cache_set($this->name_complex.'__items', null);
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -153,9 +153,8 @@ namespace effcore {
     $this->items_set($items);
     message::insert(new text_multiline([
       'Item of type "%%_type" was inserted.',
-      'Do not forget to save the changes with "%%_button" button!'], [
-      'type'   => translation::get($this->item_title),
-      'button' => translation::get('update')]));
+      'Do not forget to save the changes!'], [
+      'type' => translation::get($this->item_title)]));
     return true;
   }
 
@@ -165,9 +164,8 @@ namespace effcore {
     $this->items_set($items);
     message::insert(new text_multiline([
       'Item of type "%%_type" was deleted.',
-      'Do not forget to save the changes with "%%_button" button!'], [
-      'type'   => translation::get($this->item_title),
-      'button' => translation::get('update')]));
+      'Do not forget to save the changes!'], [
+      'type' => translation::get($this->item_title)]));
     return true;
   }
 

@@ -109,7 +109,7 @@ translations
     - Diagrams: Дыяграмы
     - Digit: Лічба
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
-    - Do not forget to save the changes with "%%_button" button!: Не забудзьце захаваць змены кнопкай "%%_button"!
+    - Do not forget to save the changes!: Не забудзьце захаваць змены!
     - do not show: не паказваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
