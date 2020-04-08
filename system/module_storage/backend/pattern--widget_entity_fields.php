@@ -11,6 +11,7 @@ namespace effcore {
   public $item_title = 'Field';
   public $attributes = ['data-type' => 'fields-info-entity_fields'];
   public $name_complex = 'widget_entity_fields';
+  public $name_prefix = 'field';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);

@@ -13,6 +13,7 @@ namespace effcore {
   public $content_tag_name = 'x-widget-content';
   public $attributes = ['data-type' => 'fields'];
   public $name_complex = 'widget_fields';
+  public $name_prefix = 'field';
   public $_fields  = [];
   public $_buttons = [];
 

@@ -9,6 +9,7 @@ namespace effcore {
 
   public $attributes = ['data-type' => 'fields'];
   public $name_complex = 'widget_texts';
+  public $name_prefix = 'text';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);

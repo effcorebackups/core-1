@@ -12,6 +12,7 @@ namespace effcore {
   public $content_tag_name = null;
   public $attributes = ['data-type' => 'fields-info-area_parts'];
   public $name_complex = 'widget_area_parts';
+  public $name_prefix = 'area_part';
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {
