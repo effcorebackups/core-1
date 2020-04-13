@@ -226,7 +226,6 @@ translations
     - Information: Информация
     - Insert a new item of type "%%_entity_title_context" on new page.: Вставить новый элемент типа "%%_entity_title_context" на новой странице.
     - insert and update: вставить и обновить
-    - Insert field: Вставить поле
     - Insert instance: Вставить экземпляр
     - Insert part: Вставить часть
     - insert: вставить
@@ -342,6 +341,7 @@ translations
     - Multiple choice: Множественный выбор
     - name: имя
     - Name: Имя
+    - New field: Новое поле
     - New password must be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
     - New User Registration: Регистрация нового пользователя
