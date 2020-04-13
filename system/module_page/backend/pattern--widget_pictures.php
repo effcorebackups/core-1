@@ -28,18 +28,18 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # field for upload new picture
+  # control for upload new picture
     $field_picture = new field_picture;
     $field_picture->build();
     $field_picture->name_set($this->name_complex.'__picture');
-    $this->_fields['picture'] = $field_picture;
+    $this->controls['#picture'] = $field_picture;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
-    $this->_buttons['insert'] = $button;
+    $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
     $widget->child_insert($field_picture, 'picture');
     $widget->child_insert($button,        'button');

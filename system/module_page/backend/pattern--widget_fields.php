@@ -13,8 +13,7 @@ namespace effcore {
   public $content_tag_name = 'x-widget-content';
   public $attributes = ['data-type' => 'fields'];
   public $name_complex = 'widget_fields';
-  public $_fields  = [];
-  public $_buttons = [];
+  public $controls = [];
 
   function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, null, null, $attributes, [], $weight);
@@ -95,14 +94,14 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-rearrangeable'         => 'true',
       'data-fields-is-inline-full' => 'true'], [], $item->weight);
-  # field for weight
+  # control for weight
     $field_weight = new field_weight;
     $field_weight->description_state = 'hidden';
     $field_weight->build();
     $field_weight->name_set($this->name_complex.'__weight__'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
-    $this->_fields['weight__'.$c_row_id] = $field_weight;
+    $this->controls['#weight__'.$c_row_id] = $field_weight;
   # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
@@ -110,7 +109,7 @@ namespace effcore {
     $button_delete->value_set($this->name_complex.'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
-    $this->_buttons['delete__'.$c_row_id] = $button_delete;
+    $this->controls['~delete__'.$c_row_id] = $button_delete;
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_weight,  'weight'       );
     $widget->child_insert($button_delete, 'button_delete');
@@ -126,7 +125,7 @@ namespace effcore {
     $button->build();
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
-    $this->_buttons['insert'] = $button;
+    $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
     $widget->child_insert($button, 'button');
     return $widget;
@@ -137,7 +136,7 @@ namespace effcore {
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      $c_item->weight = (int)$this->_fields['weight__'.$c_row_id]->value_get();}
+      $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();}
     $this->items_set($items);
   }
 
@@ -178,8 +177,8 @@ namespace effcore {
   }
 
   static function on_submit(&$widget, $form, $npath) {
-    foreach ($widget->_buttons as $c_button) {
-      if ($c_button->is_clicked()) {
+    foreach ($widget->controls as $c_button) {
+      if ($c_button instanceof button && $c_button->is_clicked()) {
         if (isset($c_button->_type) && $c_button->_type == 'insert') return $widget->on_button_click_insert($form, $npath, $c_button);
         if (isset($c_button->_type) && $c_button->_type == 'delete') return $widget->on_button_click_delete($form, $npath, $c_button);
         return;

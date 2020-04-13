@@ -30,7 +30,7 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # field for selection of the type of new item
+  # control with type of new item
     $entities = entity::get_all();
     core::array_sort_by_text_property($entities);
     $options = ['not_selected' => '- no -'];
@@ -53,14 +53,14 @@ namespace effcore {
     $select->build();
     $select->name_set($this->name_complex.'__insert');
     $select->required_set(false);
-    $this->_fields['insert'] = $select;
+    $this->controls['#insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($this->name_complex.'__insert');
     $button->_type = 'insert';
-    $this->_buttons['insert'] = $button;
+    $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
     $widget->child_insert($select, 'select');
     $widget->child_insert($button, 'button');
@@ -70,7 +70,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
-    $new_value = $this->_fields['insert']->value_get();
+    $new_value = $this->controls['#insert']->value_get();
     if ($new_value) {
       $params = explode('|', $new_value);
       $min_weight = 0;
@@ -84,15 +84,15 @@ namespace effcore {
       $new_item->entity_field_name = $params[2];
       $items[] = $new_item;
       $this->items_set($items);
-      $this->_fields['insert']->value_set('');
+      $this->controls['#insert']->value_set('');
       message::insert(new text_multiline([
         'Item of type "%%_type" was inserted.',
         'Do not forget to save the changes!'], [
         'type' => translation::get($this->item_title)]));
       return true;
     } else {
-      $this->_fields['insert']->error_set(
-        'Field "%%_title" must be selected!', ['title' => translation::get($this->_fields['insert']->title)]
+      $this->controls['#insert']->error_set(
+        'Field "%%_title" must be selected!', ['title' => translation::get($this->controls['#insert']->title)]
       );
     }
   }
