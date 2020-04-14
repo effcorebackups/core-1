@@ -32,6 +32,7 @@ namespace effcore {
     $field_picture = new field_picture;
     $field_picture->build();
     $field_picture->name_set($this->name_complex.'__picture');
+    $field_picture->cform = $this->cform;
     $this->controls['#picture'] = $field_picture;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
@@ -44,6 +45,11 @@ namespace effcore {
     $widget->child_insert($field_picture, 'picture');
     $widget->child_insert($button,        'button');
     return $widget;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function on_button_click_insert($form, $npath, $button) {
   }
 
 }}

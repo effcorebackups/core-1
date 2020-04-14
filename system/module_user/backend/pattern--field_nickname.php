@@ -13,6 +13,7 @@ namespace effcore {
   public $title = 'Nickname';
   public $attributes = ['data-type' => 'nickname'];
   public $element_attributes = [
+    'type'      => 'text',
     'data-type' => 'nickname',
     'name'      => 'nickname',
     'required'  => true,
