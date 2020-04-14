@@ -260,8 +260,7 @@
   [data-has-rearrangeable='true'] > x-fieldset-content {
     padding-top   : 20px;
     padding-bottom: 20px}
-  [data-has-rearrangeable='true'][data-js-is-processed='true'] x-field[data-type='weight'],
-  [data-has-rearrangeable='true'][data-js-is-processed='true']   input[data-type='weight'] {
+  [data-has-rearrangeable='true'][data-js-is-processed='true'] x-field[data-type='weight'] {
     display: none}
 
   /* widget */

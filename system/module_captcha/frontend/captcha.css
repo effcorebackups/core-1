@@ -1,6 +1,6 @@
 
   x-field[data-type='captcha'] svg {display: block; margin: 10px 0}
-  x-field[data-type='captcha'] input[data-type='captcha'] {
+  x-field[data-type='captcha'] input[name='captcha'] {
     width: 124px;
     font-size: 2em;
     text-align: center}

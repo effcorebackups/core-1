@@ -20,7 +20,6 @@ namespace effcore {
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes = [
     'type'         => 'text',
-    'data-type'    => 'captcha',
     'name'         => 'captcha',
     'autocomplete' => 'off',
     'required'     => true];

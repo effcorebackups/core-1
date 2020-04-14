@@ -11,9 +11,9 @@ namespace effcore {
   public $title_position = 'bottom';
   public $attributes = ['data-type' => 'switcher'];
   public $element_attributes = [
+    'data-type' => 'switcher',
     'type'      => 'checkbox',
     'name'      => 'checkbox',
-    'data-type' => 'switcher',
     'value'     => 'on',
   ];
 
