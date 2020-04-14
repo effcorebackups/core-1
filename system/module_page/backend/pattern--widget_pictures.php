@@ -30,6 +30,7 @@ namespace effcore {
       'data-type' => 'insert']);
   # control for upload new picture
     $field_picture = new field_picture;
+    $field_picture->min_files_number = 1;
     $field_picture->build();
     $field_picture->name_set($this->name_complex.'__picture');
     $field_picture->cform = $this->cform;
@@ -50,6 +51,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
+    $value = field_file::on_validate_and_value_return($this->controls['#picture'], $form, $npath);
   }
 
 }}

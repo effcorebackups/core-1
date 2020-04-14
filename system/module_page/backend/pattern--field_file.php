@@ -352,6 +352,21 @@ namespace effcore {
     }
   }
 
+  static function on_validate_and_value_return($field, $form, $npath) {
+    $element = $field->child_select('element');
+    $name = $field->name_get();
+    $type = $field->type_get();
+    if ($name && $type) {
+      if ($field->disabled_get()) return [];
+      $new_values = static::request_files_get($name);
+      static::sanitize($field, $form, $element, $new_values);
+      $result = static::validate_multiple($field, $form, $element, $new_values) &&
+                static::validate_upload  ($field, $form, $element, $new_values);
+      if ($result) return $new_values;
+      else         return [];
+    }
+  }
+
   static function validate_upload($field, $form, $element, &$new_values) {
   # validate max_files_number
     if (count($field->pool_old) +
