@@ -72,13 +72,14 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
-    $new_value = $this->controls['#insert']->value_get();
-    if ($new_value) {
+    $this->controls['#insert']->required_set(true);
+    if (field_select::on_validate($this->controls['#insert'], $form, $npath)) {
+      $this->controls['#insert']->required_set(false);
       $min_weight = 0;
       $items = $this->items_get();
       foreach ($items as $c_row_id => $c_item)
         $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new part_preset_link($new_value);
+      $new_item = new part_preset_link($this->controls['#insert']->value_get());
       $new_item->weight = count($items) ? $min_weight - 5 : 0;
       $items[] = $new_item;
       $this->items_set($items);
@@ -88,10 +89,6 @@ namespace effcore {
         'Do not forget to save the changes!'], [
         'type' => translation::get($this->item_title)]));
       return true;
-    } else {
-      $this->controls['#insert']->error_set(
-        'Field "%%_title" must be selected!', ['title' => translation::get($this->controls['#insert']->title)]
-      );
     }
   }
 
