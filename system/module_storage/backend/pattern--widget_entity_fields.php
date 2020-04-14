@@ -72,6 +72,7 @@ namespace effcore {
   function on_button_click_insert($form, $npath, $button) {
     $this->controls['#insert']->required_set(true);
     if (field_select::on_validate($this->controls['#insert'], $form, $npath)) {
+      $this->controls['#insert']->required_set(false);
       $params = explode('|', $this->controls['#insert']->value_get());
       $min_weight = 0;
       $items = $this->items_get();
