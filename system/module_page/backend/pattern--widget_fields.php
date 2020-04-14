@@ -135,8 +135,8 @@ namespace effcore {
 
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();}
+    foreach ($items as $c_row_id => $c_item)
+      $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
     $this->items_set($items);
   }
 
