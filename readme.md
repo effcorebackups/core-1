@@ -447,7 +447,7 @@ in many aspects useless functionality.
 
 If any page has a language different from the whole site, then this language
 can be specified when creating/editing such a page.
-In this case, the administrator must control the language of the content
+In this case, the administrator should control the language of the content
 that appears on this page.
 
 The system uses the more perfect "Plural" system.

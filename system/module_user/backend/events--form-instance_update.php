@@ -92,7 +92,7 @@ namespace effcore\modules\user {
             if ($items['#password_hash_current']->value_get() ==
                 $items['#password_hash'        ]->value_get()) {
               $items['#password_hash']->error_set(
-                'New password must be different from the current password!'
+                'New password should be different from the current password!'
               );
               return;
             }

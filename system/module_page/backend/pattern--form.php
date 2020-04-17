@@ -78,7 +78,7 @@ namespace effcore {
         }
       );
 
-    # if user submit this form (p.s. dynamic buttons must inserted before)
+    # if user submit this form (p.s. dynamic buttons must be inserted before)
       if ($this->is_submitted()) {
         $this->clicked_button = $this->clicked_button_get();
         if ($this->clicked_button) {

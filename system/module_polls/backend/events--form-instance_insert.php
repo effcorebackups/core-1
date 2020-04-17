@@ -42,7 +42,7 @@ namespace effcore\modules\polls {
         case 'insert':
           if ($entity->name == 'poll' && !empty($form->_instance)) {
             if (count($items['*widget_answers']->value_get_complex()) < 2) {
-              $form->error_set('Group "%%_title" must contain a minimum %%_number item%%_plural{number,s}!', ['title' => translation::get($items['*widget_answers']->title), 'number' => 2]);
+              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => translation::get($items['*widget_answers']->title), 'number' => 2]);
             }
           }
           break;

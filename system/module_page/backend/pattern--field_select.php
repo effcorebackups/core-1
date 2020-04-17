@@ -154,7 +154,7 @@ namespace effcore {
   static function validate_required($field, $form, $element, &$new_values) {
     if ($field->required_get() && empty(array_filter($new_values, 'strlen'))) {
       $field->error_set(
-        'Field "%%_title" must be selected!', ['title' => translation::get($field->title)]
+        'Field "%%_title" should be selected!', ['title' => translation::get($field->title)]
       );
     } else {
       return true;

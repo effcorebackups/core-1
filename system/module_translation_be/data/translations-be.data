@@ -158,10 +158,10 @@ translations
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не падтрымлівае множны выбар!
     - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не падтрымлівае загрузку такога тыпу файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" мае змененае значэнне.
-    - Field "%%_title" must be enabled!: Поле "%%_title" павінна быць уключана!
-    - Field "%%_title" must be selected!: Поле "%%_title" павінна быць абрана!
-    - Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць максімум %%_number сімвал%%_plural{number,au-a}!
-    - Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" should be enabled!: Поле "%%_title" павінна быць уключана!
+    - Field "%%_title" should be selected!: Поле "%%_title" павінна быць абрана!
+    - Field "%%_title" should contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць максімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле павінна змяшчаць %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
@@ -169,7 +169,7 @@ translations
     - Field can contain a minimum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
-    - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
+    - Field should contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
     - Field should contain a maximum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць максімум %%_number файл%%_plural{number,au-a}.
     - Field should contain a minimum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
@@ -217,8 +217,8 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Group "%%_title" must contain a minimum %%_number item%%_plural{number,s}!: Група "%%_title" павінна утрымліваць як мінімум %%_number элемент%%_plural{number,au-a}!
-    - Group "%%_title" must contain at least one selected item!: Група "%%_title" павінна утрымліваць як мінімум адзін абраны элемент!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!: Група "%%_title" павінна утрымліваць як мінімум %%_number элемент%%_plural{number,au-a}!
+    - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна утрымліваць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
@@ -343,7 +343,7 @@ translations
     - name: імя
     - Name: Імя
     - New field: Новае поле
-    - New password must be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
+    - New password should be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
     - New password: Новы пароль
     - New User Registration: Рэгістрацыя новага карыстальніка
     - nickname: псеўданім
@@ -514,7 +514,7 @@ translations
     - The minimum value is greater than the maximum value!: Мінімальнае значэнне больш максімальнага значэння!
     - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
     - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
-    - The removing module must be disabled at first. Embed modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
+    - The removing module should be disabled at first. Embed modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
     - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)

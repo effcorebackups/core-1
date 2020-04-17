@@ -113,7 +113,7 @@ namespace effcore {
     if ($group->required_any && $group->value_get() == null) {
       $group->error_set_in_container();
       $form->error_set(
-        'Group "%%_title" must contain at least one selected item!', ['title' => translation::get($group->title)]
+        'Group "%%_title" should contain at least one selected item!', ['title' => translation::get($group->title)]
       );
     } else {
       return true;

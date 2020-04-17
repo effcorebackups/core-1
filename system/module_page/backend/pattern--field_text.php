@@ -64,7 +64,7 @@ namespace effcore {
     $minlength = $field->minlength_get();
     if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
       $field->error_set(
-        'Field "%%_title" must contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $minlength]
+        'Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::get($field->title), 'number' => $minlength]
       );
     } else {
       return true;
@@ -76,7 +76,7 @@ namespace effcore {
     if (strlen($new_value) && is_numeric($maxlength) && $maxlength < strlen($new_value)) {
       $new_value = substr($new_value, 0, $maxlength);
       $field->error_set(new text_multiline([
-        'Field "%%_title" must contain a maximum of %%_number character%%_plural{number,s}!',
+        'Field "%%_title" should contain a maximum of %%_number character%%_plural{number,s}!',
         'Value was trimmed to the required length!',
         'Check field again before submit.'], ['title' => translation::get($field->title), 'number' => $maxlength]
       ));
