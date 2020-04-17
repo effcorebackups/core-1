@@ -51,7 +51,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
-    $value = field_file::on_validate_and_value_return($this->controls['#picture'], $form, $npath);
+    $value = field_file::on_validate_and_return_value($this->controls['#picture'], $form, $npath);
   }
 
 }}

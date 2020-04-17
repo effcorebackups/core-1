@@ -352,7 +352,7 @@ namespace effcore {
     }
   }
 
-  static function on_validate_and_value_return($field, $form, $npath) {
+  static function on_validate_and_return_value($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
     $type = $field->type_get();
