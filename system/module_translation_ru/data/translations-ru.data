@@ -599,7 +599,6 @@ translations
     - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
     - Yes: Да
     - yes: да
-    - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You can enable or disable the language "%%_language" on page "%%_page".: Вы можете включить или отключить язык "%%_language" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
