@@ -326,9 +326,8 @@ namespace effcore {
       if (!strlen($c_value->name)) $c_value->name = core::random_part_get();
       if (!strlen($c_value->type)) $c_value->type = 'unknown';
       $c_value->file = $c_value->name.'.'.$c_value->type;
-    # special case for IIS and Apache
-      if ($c_value->file == 'web.config' ||
-          $c_value->file == '.htaccess') {
+    # special case for IIS, Apache, NGINX
+      if ($c_value->file == 'web.config' || $c_value->type == 'htaccess' || $c_value->type == 'nginx') {
         $c_value->name = core::random_part_get();
         $c_value->type = 'unknown';
         $c_value->file = $c_value->name.'.'.$c_value->type;
