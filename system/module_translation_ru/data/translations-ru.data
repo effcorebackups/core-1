@@ -170,6 +170,8 @@ translations
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain only the next characters\: %%_characters: Поле может содержать только следующие символы: %%_characters
     - Field must contain %%_number file%%_plural{number,s}.: Поле должно содержать %%_number файл%%_plural{number,ov-a}.
+    - Field should contain a maximum of %%_number file%%_plural{number,s}.: Поле должно содержать максимум %%_number файл%%_plural{number,ov-a}.
+    - Field should contain a minimum of %%_number file%%_plural{number,s}.: Поле должно содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значение поля не соответствует регулярному выражению "%%_expression".
     - Field value is less than %%_number.: Значение поля меньше чем %%_number.
@@ -302,7 +304,6 @@ translations
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
-    - Maximum allowed only %%_number file%%_plural{number,s}.: Максимально допускается только %%_number файл%%_plural{number,ov-a}.
     - Maximum field value\: %%_value: Максимальное значение поля: %%_value
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Maximum width: Максимальная ширина
@@ -603,7 +604,6 @@ translations
     - You can enable or disable the language "%%_language" on page "%%_page".: Вы можете включить или отключить язык "%%_language" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
-    - You must upload at least %%_number file%%_plural{number,s}.: Необходимо загрузить как минимум %%_number файл%%_plural{number,ov-a}.
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
     - Your answer was accepted.: Ваш ответ был принят.
     - Your answer was canceled.: Ваш ответ был отменён.

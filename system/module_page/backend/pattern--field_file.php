@@ -368,28 +368,8 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
-  # validate max_files_number
-    if (count($field->pool_old) +
-        count($field->pool_new) +
-        count($new_values) < $field->min_files_number) {
-      $field->error_set(new text_multiline([
-        'You are trying to upload too few files!',
-        'You must upload at least %%_number file%%_plural{number,s}.',
-        'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
-      ));
-      return;
-    }
-  # validate max_files_number
-    if (count($field->pool_old) +
-        count($field->pool_new) +
-        count($new_values) > $field->max_files_number) {
-      $field->error_set(new text_multiline([
-        'You are trying to upload too much files!',
-        'Maximum allowed only %%_number file%%_plural{number,s}.',
-        'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)]
-      ));
-      return;
-    }
+    if ($field->min_files_number > count($field->pool_old) + count($field->pool_new) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too few files!',  'Field should contain a minimum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)] )); return;}
+    if ($field->max_files_number < count($field->pool_old) + count($field->pool_new) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too much files!', 'Field should contain a maximum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)] )); return;}
   # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {

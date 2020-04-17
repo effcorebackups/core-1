@@ -170,6 +170,8 @@ translations
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field can contain only the next characters\: %%_characters: Поле можа змяшчаць толькі наступныя сімвалы: %%_characters
     - Field must contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
+    - Field should contain a maximum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць максімум %%_number файл%%_plural{number,au-a}.
+    - Field should contain a minimum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значэнне поля не адпавядае рэгулярнаму выразу "%%_expression".
     - Field value is less than %%_number.: Значэнне поля менш чым %%_number.
@@ -302,7 +304,6 @@ translations
     - Management: Кіраванне
     - Managers: Кіраўнікі
     - Match: Адпаведнасць
-    - Maximum allowed only %%_number file%%_plural{number,s}.: Максімальна дазваляецца толькі %%_number файл%%_plural{number,au-a}.
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
     - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Maximum width: Максімальная шырыня
@@ -603,7 +604,6 @@ translations
     - You can enable or disable the language "%%_language" on page "%%_page".: Вы можаце ўключыць альбо адключыць мову "%%_language" на старонцы "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number,au-a}.
     - You have not made any changes before!: Вы не рабілі ніякіх змяненняў раней!
-    - You must upload at least %%_number file%%_plural{number,s}.: Неабходна загрузіць як мінімум %%_number файл%%_plural{number,au-a}.
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы атрымалі гэтае паведамленне, таму што хтосьці спрабаваў аднавіць пароль ад Вашага акаўнту на %%_domain.
     - Your answer was accepted.: Ваш адказ быў прыняты.
     - Your answer was canceled.: Ваш адказ быў адменены.
