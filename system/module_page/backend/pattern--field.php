@@ -444,7 +444,7 @@ namespace effcore {
   # │ $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] ║ return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']] │
   # └─────────────────────────────────────────────────────────╨───────────────────────────────────────────────────────────────────────┘
 
-  static function request_files_get($name) {
+  static function request_files_get($name, $return_class = '\\effcore\\file_uploaded') {
     $result = [];
     if (isset($_FILES[$name]['name'    ]) &&
         isset($_FILES[$name]['type'    ]) &&
@@ -461,7 +461,7 @@ namespace effcore {
         foreach ($c_values as $c_number => $c_value) {
           if ($info['error'][$c_number] !== UPLOAD_ERR_NO_FILE) {
             if (!isset($result[$c_number]))
-                       $result[$c_number] = new \stdClass;
+                       $result[$c_number] = new $return_class;
             switch ($c_prop) {
               case 'name':
                 $c_file = new file($c_value);
@@ -470,8 +470,8 @@ namespace effcore {
                 $result[$c_number]->{'file'} = $c_file->file_get();
                 break;
               case 'type'    : $result[$c_number]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
-              case 'tmp_name': $result[$c_number]->{'tmp_path'} = $c_value; break;
-              default        : $result[$c_number]->{$c_prop}    = $c_value;
+              case 'tmp_name': $result[$c_number]->{'tmp_path'} =                          $c_value;                  break;
+              default        : $result[$c_number]->{$c_prop}    =                          $c_value;
             }
           }
         }

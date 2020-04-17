@@ -343,7 +343,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       $field->pool_values_init_new_from_cache();
-      $new_values = static::request_files_get($name);
+      $new_values = static::request_files_get($name, '\\stdClass');
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_multiple($field, $form, $element, $new_values) &&
                 static::validate_upload  ($field, $form, $element, $new_values);
