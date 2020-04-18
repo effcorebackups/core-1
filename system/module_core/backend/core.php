@@ -415,6 +415,11 @@ namespace effcore {
     return $result;
   }
 
+  static function array_key_last($array) { # alternative for built-in 'array_key_last' in PHP v.7.3+
+    $keys = array_keys($array);
+    return end($keys);
+  }
+
   #############################################
   ### functionality for mix of array|object ###
   #############################################
