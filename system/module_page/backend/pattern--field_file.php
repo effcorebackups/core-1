@@ -15,34 +15,37 @@ namespace effcore {
   # 4. the old files which marked as 'removed' will be removed in 'on_submit'
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
-  # on_init         ╔════════ form ════════╗       ╔═ pool_old ═╗       ╔════════ form ════════╗
-  #                 ║ ┌── upload field ──┐ ║   ┌──▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
-  #                 ║ │------------------│ ║   │   ╚════════════╝       ║ │------------------│ ║
-  #             ┌─────│   + new file 1   │ ║   │          │       ┌───────│   + new file 2   │ ║
-  #             │   ║ └──────────────────┘ ║   │          │       │     ║ └──────────────────┘ ║
-  #             │   ╚══════════════════════╝   │          └───────│──────▶ ▣ delete old file 1─────┐
-  #             │                              │                  │     ╚══════════════════════╝   │
-  #             │                              │          ┌───────┘                                │
-  # ............│..............................│..........│........................................│.........
-  # on_validate │                              │          │                                        │
-  #             ▼                              │          ▼                                        ▼
-  #      ╔═ pool_new ═╗                        │   ╔═ pool_new ═╗                         ╔═ old_to_delete ═╗
-  #      ║ new file 1 ║                        │   ║ new file 2 ║                         ║    old file 1   ║
-  #      ╚════════════╝                        │   ╚════════════╝                         ╚═════════════════╝
-  #             │                              │          │                                        │
-  #             │   ╔════════ form ════════╗   │          │             ╔════════ form ════════╗   │
-  #             │   ║ ┌── upload field ──┐ ║   │          │             ║ ┌── upload field ──┐ ║   │
-  #             │   ║ │------------------│ ║   │          │             ║ │------------------│ ║   │
-  #             │   ║ └──────────────────┘ ║   │          │             ║ └──────────────────┘ ║   │
-  #             ├────◇ □ delete new file 1 ║   │          ├──────────────◇ □ delete new file 2 ║   │
-  #             │   ╚══════════════════════╝   │          │             ╚══════════════════════╝   │
-  #             │                              │          │                                        │
-  # ............│..............................│..........│........................................│.........
-  # on_submit   │                              │          │                                        │
-  #             ▼                              │          ▼                                        ▼
-  #      ╔══ storage ══╗                       │   ╔══ storage ══╗                        ┌ ─ ─ ─ ─ ─ ─ ─ ─
-  #      ║    file 1   ║───────────────────────┘   ║    file 2   ║                          delete process │
-  #      ╚═════════════╝                           ╚═════════════╝                        └ ─ ─ ─ ─ ─ ─ ─ ─
+  # SUBMIT PROCESS #1                             . SUBMIT PROCESS #2
+  # .............................................................................................................................
+  # on_init                                       .
+  #                 ╔════════ form ════════╗      .       ╔═ pool_old ═╗       ╔════════ form ════════╗
+  #                 ║ ┌── upload field ──┐ ║      .  ┌───▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
+  #                 ║ │------------------│ ║      .  │    ╚════════════╝       ║ │------------------│ ║
+  #             ┌─────│   + new file 1   │ ║      .  │           │       ┌───────│   + new file 2   │ ║
+  #             │   ║ └──────────────────┘ ║      .  │           │       │     ║ └──────────────────┘ ║
+  #             │   ╚══════════════════════╝      .  │           └───────│──────▶ ▣ delete old file 1─────┐
+  #             │                                 .  │                   │     ╚══════════════════════╝   │
+  #             │                                 .  │           ┌───────┘                                │
+  # ............│....................................│...........│........................................│......................
+  # on_validate │                                 .  │           │                                        │
+  #             ▼                                 .  │           ▼                                        ▼
+  #      ╔═ pool_new ═╗                           .  │    ╔═ pool_new ═╗                      ╔═ pool_old_to_delete ═╗
+  #      ║ new file 1 ║                        ┌─────┘    ║ new file 2 ║                      ║       old file 1     ║
+  #      ╚════════════╝                        │  .       ╚════════════╝                      ╚══════════════════════╝
+  #             │                              │  .              │                                        │
+  #             │   ╔════════ form ════════╗   │  .              │             ╔════════ form ════════╗   │
+  #             │   ║ ┌── upload field ──┐ ║   │  .              │             ║ ┌── upload field ──┐ ║   │
+  #             │   ║ │------------------│ ║   │  .              │             ║ │------------------│ ║   │
+  #             │   ║ └──────────────────┘ ║   │  .              │             ║ └──────────────────┘ ║   │    ┌ ─ ─ ─ ─ ─ ─ ─ ─
+  #             ├────◇ □ delete new file 1 ║   │  .              └──────────────▶ ▣ delete new file 2 ────│───▶  delete process │
+  #             │   ╚══════════════════════╝   │  .                            ╚══════════════════════╝   │    └ ─ ─ ─ ─ ─ ─ ─ ─
+  #             │                              │  .                                                       │
+  # ............│..............................│..........................................................│......................
+  # on_submit   │                              │  .                                                       │
+  #             ▼                              │  .                                                       ▼
+  #      ╔══ storage ══╗                       │  .                                              ┌ ─ ─ ─ ─ ─ ─ ─ ─
+  #      ║    file 1   ║───────────────────────┘  .                                                delete process │
+  #      ╚═════════════╝                          .                                              └ ─ ─ ─ ─ ─ ─ ─ ─
 
   public $title = 'File';
   public $attributes = ['data-type' => 'file'];
@@ -78,8 +81,8 @@ namespace effcore {
 
   function values_get() {
     if ($this->pool_result == [])
-      foreach ($this->pool_files_save() as $c_info)
-        $this->pool_result[] = (new file($c_info->path))->path_get_relative();
+      foreach ($this->pool_files_save() as $c_item)
+           $this->pool_result[] = (new file($c_item->path))->path_get_relative();
     return $this->pool_result;
   }
 
@@ -122,140 +125,97 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_values_init_old_from_storage($old_values = []) {
+  function pool_values_init_old_from_storage($old_items = []) {
     $this->pool_old = [];
   # insert old items to the pool
-    foreach ($old_values as $c_id => $c_path_relative) {
-      $c_file = new file(dir_root.$c_path_relative);
-      if ($c_file->is_exist()) {
-        $c_info = new \stdClass;
-        $c_info->name = $c_file->name_get();
-        $c_info->type = $c_file->type_get();
-        $c_info->file = $c_file->file_get();
-        $c_info->mime = $c_file->mime_get();
-        $c_info->size = $c_file->size_get();
-        $c_info->old_path = $c_file->path_get();
-        $c_info->error = 0;
-        $this->pool_old[$c_id] = $c_info;
+    foreach ($old_items as $c_id => $c_path_relative) {
+      $c_item = new file_uploaded;
+      if ($c_item->init_from_old($c_path_relative)) {
+        $this->pool_old[$c_id] = $c_item;
       }
     }
-  # join deleted items from the cache with deleted items from the form
-    $deleted           = $this->pool_cache_get('old_to_delete');
-    $deleted_from_form = $this->pool_manager_get_deleted_items('old');
-    foreach ($this->pool_old as $c_id => $c_info) {
-      if (isset($deleted_from_form[$c_id])) {
-        $deleted[$c_id] = new \stdClass;
-        $deleted[$c_id]->old_path = $c_info->old_path;
-      }
+  # add the next deleted items to the cache
+    $deleted_from_cache = $this->pool_cache_get                ('old_to_delete');
+    $deleted_from_cform = $this->pool_manager_get_deleted_items('old');
+    foreach ($this->pool_old as $c_id => $c_item) {
+      if (isset($deleted_from_cform[$c_id]))
+                $deleted_from_cache[$c_id] = $c_item;
     }
-  # virtual delete the items which marked as 'deleted'
-    foreach ($this->pool_old as $c_id => $c_info) {
-      if (isset($deleted[$c_id])) {
+  # deferred deletion of items which marked as 'deleted'
+    foreach ($this->pool_old as $c_id => $c_item) {
+      if (isset($deleted_from_cache[$c_id])) {
         unset($this->pool_old[$c_id]);
       }
     }
-  # save the poll
-    $this->pool_cache_set('old_to_delete', $deleted);
-  # update pool manager
+  # save the poll and update pool manager
+    $this->pool_cache_set('old_to_delete', $deleted_from_cache);
     $this->pool_manager_rebuild();
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function pool_values_init_new_from_cache() {
     $this->pool_new = $this->pool_cache_get('new');
-  # physically delete the items which marked as 'deleted'
-    $deleted_from_form = $this->pool_manager_get_deleted_items('new');
-    foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($deleted_from_form[$c_id])) {
-        if (isset($this->pool_new[$c_id]->pre_path)) {
-          @unlink($this->pool_new[$c_id]->pre_path);
-            unset($this->pool_new[$c_id]);
-        }
-      }
-    }
-  # save the poll
-    $this->pool_cache_set('new', $this->pool_new);
-  # update pool manager
-    $this->pool_manager_rebuild();
-  }
-
-  function pool_values_init_new_from_form($new_values = []) {
-    foreach ($new_values as $c_new_value) {
-      $this->pool_new[] = $c_new_value;
-    }
-  # move temporary items from php 'tmp' directory to system 'tmp' directory
-    $this->pool_files_move_tmp_to_pre();
-  # save the poll
-    $this->pool_cache_set('new', $this->pool_new);
-  # update pool manager
-    $this->pool_manager_rebuild();
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # moving the files in different situations
-  # ─────────────────────────────────────────────────────────────────────
-
-  function pool_files_save() {
-  # delete the old deleted items
-    $deleted = $this->pool_cache_get('old_to_delete');
-    foreach ($deleted as $c_id => $c_info) {
-      if (isset($deleted[$c_id])) {
-        @unlink($deleted[$c_id]->old_path);
-      }
-    }
-  # move new items to the directory 'files'
-    $this->pool_files_move_pre_to_new();
-  # prepare return
-    $result = [];
-    $result_paths = [];
-    foreach ($this->pool_old as $c_info) {$c_info->path = $c_info->old_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_get_relative();}
-    foreach ($this->pool_new as $c_info) {$c_info->path = $c_info->new_path; $result[] = $c_info; $c_file = new file($c_info->path); $result_paths[] = $c_file->path_get_relative();}
-  # move pool_old to pool_new
-    $this->pool_new = [];
-    $this->pool_manager_set_deleted_items('old', []);
-    $this->pool_cache_set('old_to_delete',       []);
-    $this->pool_values_init_old_from_storage($result_paths);
-  # return result array
-    return $result;
-  }
-
-  protected function pool_files_move_tmp_to_pre() {
-    foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($c_info->tmp_path)) {
-        $src_file = new file($c_info->tmp_path);
-        $dst_file = new file(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_id);
-        if ($src_file->move_uploaded($dst_file->dirs_get(), $dst_file->file_get())) {
-          $c_info->pre_path = $dst_file->path_get();
-          unset($c_info->tmp_path);
-        } else {
-          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
+  # immediate deletion of items which marked as 'deleted'
+    $deleted_from_cform = $this->pool_manager_get_deleted_items('new');
+    foreach ($this->pool_new as $c_id => $c_item) {
+      if (isset($deleted_from_cform[$c_id])) {
+        $result = $c_item->delete_pre();
+        if ($result) {
           unset($this->pool_new[$c_id]);
         }
       }
     }
+  # save the poll and update pool manager
+    $this->pool_cache_set('new', $this->pool_new);
+    $this->pool_manager_rebuild();
   }
 
-  protected function pool_files_move_pre_to_new() {
-    foreach ($this->pool_new as $c_id => $c_info) {
-      if (isset($c_info->pre_path)) {
-        $src_file = new file($c_info->pre_path);
-        $dst_file = new file(dynamic::dir_files.$this->upload_dir.$c_info->file);
-        if ($this->fixed_name) $dst_file->name_set(token::replace($this->fixed_name));
-        if ($this->fixed_type) $dst_file->type_set(token::replace($this->fixed_type));
-        if ($dst_file->is_exist()) {
-          $dst_file->name_set(
-            $dst_file->name_get().'-'.core::random_part_get()
-          );
-        }
-        if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
-          $c_info->new_path = $dst_file->path_get();
-          unset($c_info->pre_path);
-        } else {
-          message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-          console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
-        }
+  # ─────────────────────────────────────────────────────────────────────
+
+  function pool_values_init_new_from_form($new_items = []) {
+    foreach ($new_items as $c_item) {
+      $this->pool_new[] = $c_item;
+      $c_item_id = core::array_key_last($this->pool_new);
+      $result = $c_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_item_id);
+      if (!$result) {
+        unset($this->pool_new[$c_item_id]);
       }
     }
+  # save the poll and update pool manager
+    $this->pool_cache_set('new', $this->pool_new);
+    $this->pool_manager_rebuild();
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function pool_files_save() {
+  # delete the old deleted items
+    $deleted_from_cache = $this->pool_cache_get('old_to_delete');
+    foreach ($deleted_from_cache as $c_id => $c_item) {
+      if (isset($deleted_from_cache[$c_id])) {
+        $c_item->delete_old();
+      }
+    }
+  # move new items to the directory 'files'
+    foreach ($this->pool_new as $c_id => $c_item) {
+      $c_item->move_pre_to_new(
+        dynamic::dir_files.$this->upload_dir.$c_item->file,
+        $this->fixed_name,
+        $this->fixed_type
+      );
+    }
+  # prepare return
+    $result_items = [];
+    $result_paths = [];
+    foreach ($this->pool_old as $c_item) {$c_item->path = $c_item->old_path; $result_items[] = $c_item; $result_paths[] = (new file($c_item->path))->path_get_relative();}
+    foreach ($this->pool_new as $c_item) {$c_item->path = $c_item->new_path; $result_items[] = $c_item; $result_paths[] = (new file($c_item->path))->path_get_relative();}
+  # move pool_new to pool_old and return result
+    $this->pool_new =                                      [];
+    $this->pool_manager_set_deleted_items('old',           []);
+    $this->pool_cache_set                ('old_to_delete', []);
+    $this->pool_values_init_old_from_storage($result_paths);
+    return                                   $result_items;
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -284,18 +244,18 @@ namespace effcore {
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
   # insert 'delete' checkboxes for the old and the new items
-    foreach ($this->pool_old as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'old');
-    foreach ($this->pool_new as $c_id => $c_info) $this->pool_manager_insert_action($c_info, $c_id, 'new');
+    foreach ($this->pool_old as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'old');
+    foreach ($this->pool_new as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'new');
   }
 
-  protected function pool_manager_insert_action($info, $id, $type) {
+  protected function pool_manager_insert_action($item, $id, $type) {
     $name = $this->name_get();
-    $element_attributes['name'    ] = 'manager_delete_'.$name.'_'.$type.'[]';
+    $element_attributes['name'    ] = $name.'_delete_'.$type.'[]';
     $element_attributes['value'   ] = $id;
     $element_attributes['disabled'] = $this->disabled_get();
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
-      new text('delete file "%%_file"', ['file' => $info->file]), null, $element_attributes
+      new text('delete file "%%_file"', ['file' => $item->file]), null, $element_attributes
     );
   }
 
@@ -303,7 +263,7 @@ namespace effcore {
     if ($this->disabled_get() == false) {
       $name = $this->name_get();
       return core::array_kmap(
-        static::request_values_get('manager_delete_'.$name.'_'.$type)
+        static::request_values_get($name.'_delete_'.$type)
       );
     }
   }
@@ -311,7 +271,7 @@ namespace effcore {
   protected function pool_manager_set_deleted_items($type, $items) {
     if ($this->disabled_get() == false) {
       $name = $this->name_get();
-      static::request_values_set('manager_delete_'.$name.'_'.$type, $items);
+      static::request_values_set($name.'_delete_'.$type, $items);
     }
   }
 
@@ -321,17 +281,11 @@ namespace effcore {
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
-      $c_value->name = core::sanitize_file_part($c_value->name, $field->allowed_characters, $field->max_length_name);
-      $c_value->type = core::sanitize_file_part($c_value->type, $field->allowed_characters, $field->max_length_type);
-      if (!strlen($c_value->name)) $c_value->name = core::random_part_get();
-      if (!strlen($c_value->type)) $c_value->type = 'unknown';
-      $c_value->file = $c_value->name.'.'.$c_value->type;
-    # special case for IIS, Apache, NGINX
-      if ($c_value->file == 'web.config' || $c_value->type == 'htaccess' || $c_value->type == 'nginx') {
-        $c_value->name = core::random_part_get();
-        $c_value->type = 'unknown';
-        $c_value->file = $c_value->name.'.'.$c_value->type;
-      }
+      $c_value->sanitize_tmp(
+        $field->allowed_characters,
+        $field->max_length_name,
+        $field->max_length_type
+      );
     }
   }
 
@@ -342,7 +296,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       $field->pool_values_init_new_from_cache();
-      $new_values = static::request_files_get($name, '\\stdClass');
+      $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_multiple($field, $form, $element, $new_values) &&
                 static::validate_upload  ($field, $form, $element, $new_values);
