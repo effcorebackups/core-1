@@ -80,9 +80,8 @@ namespace effcore {
   }
 
   function values_get() {
-    if ($this->pool_result == [])
-      foreach ($this->pool_files_save() as $c_item)
-           $this->pool_result[] = (new file($c_item->path))->path_get_relative();
+    if    ($this->pool_result == [])
+           $this->pool_values_save();
     return $this->pool_result;
   }
 
@@ -189,7 +188,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_files_save() {
+  function pool_values_save() {
   # delete the old deleted items
     $deleted_from_cache = $this->pool_cache_get('old_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
@@ -206,16 +205,15 @@ namespace effcore {
       );
     }
   # prepare return
-    $result_items = [];
     $result_paths = [];
-    foreach ($this->pool_old as $c_item) {$c_item->path = $c_item->old_path; $result_items[] = $c_item; $result_paths[] = (new file($c_item->path))->path_get_relative();}
-    foreach ($this->pool_new as $c_item) {$c_item->path = $c_item->new_path; $result_items[] = $c_item; $result_paths[] = (new file($c_item->path))->path_get_relative();}
+    foreach ($this->pool_old as $c_item) {$c_item->path = $c_item->old_path; $result_paths[] = (new file($c_item->path))->path_get_relative();}
+    foreach ($this->pool_new as $c_item) {$c_item->path = $c_item->new_path; $result_paths[] = (new file($c_item->path))->path_get_relative();}
   # move pool_new to pool_old and return result
     $this->pool_new =                                      [];
     $this->pool_manager_set_deleted_items('old',           []);
     $this->pool_cache_set                ('old_to_delete', []);
     $this->pool_values_init_old_from_storage($result_paths);
-    return                                   $result_items;
+    $this->pool_result =                     $result_paths;
   }
 
   # ─────────────────────────────────────────────────────────────────────
