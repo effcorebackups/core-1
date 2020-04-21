@@ -59,6 +59,7 @@ namespace effcore {
       if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
               $this->new_path = $dst_file->path_get();
         unset($this->pre_path);
+        return true;
       } else {
         message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]), 'error');
         console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]);

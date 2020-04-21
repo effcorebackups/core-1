@@ -64,10 +64,11 @@ namespace effcore {
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
+  public $has_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────
-  public $pool_old    = [];
-  public $pool_new    = [];
-  public $pool_result = [];
+  public $pool_old = [];
+  public $pool_new = [];
+  public $pool_result = null;
 
   function value_get() {
     $values = $this->values_get();
@@ -80,9 +81,8 @@ namespace effcore {
   }
 
   function values_get() {
-    if    ($this->pool_result == [])
-           $this->pool_values_save();
-    return $this->pool_result;
+    if    ($this->pool_result == null) $this->pool_values_save();
+    return $this->pool_result ?? [];
   }
 
   function values_set($values) {
@@ -193,16 +193,19 @@ namespace effcore {
     $deleted_from_cache = $this->pool_cache_get('old_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
       if (isset($deleted_from_cache[$c_id])) {
-        $c_item->delete_old();
+        if (!$c_item->delete_old()) {
+          return;
+        }
       }
     }
   # move new items to the directory 'files'
     foreach ($this->pool_new as $c_id => $c_item) {
-      $c_item->move_pre_to_new(
-        dynamic::dir_files.$this->upload_dir.$c_item->file,
-        $this->fixed_name,
-        $this->fixed_type
-      );
+      if (!$c_item->move_pre_to_new(dynamic::dir_files.
+             $this->upload_dir.$c_item->file,
+             $this->fixed_name,
+             $this->fixed_type)) {
+        return;
+      }
     }
   # prepare return
     $result_paths = [];
@@ -214,6 +217,7 @@ namespace effcore {
     $this->pool_cache_set                ('old_to_delete', []);
     $this->pool_values_init_old_from_storage($result_paths);
     $this->pool_result =                     $result_paths;
+    return true;
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -301,6 +305,16 @@ namespace effcore {
       if ($result) $field->pool_values_init_new_from_form($new_values);
       return $result;
     }
+  }
+
+  static function on_validate_phase_3($field, $form, $npath) { 
+    if ($field->has_phase_3 && $field->pool_result == null && !$form->has_error()) {
+      if (!$field->pool_values_save()) {
+        $field->error_set();
+        return;
+      }
+    }
+    return true;
   }
 
   static function on_validate_and_return_value($field, $form, $npath) {
