@@ -18,19 +18,21 @@ namespace effcore {
   public $error;
   public $size;
 
-  function sanitize_tmp($allowed_characters = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
-    $this->name = core::sanitize_file_part($this->name, $allowed_characters, $max_length_name);
-    $this->type = core::sanitize_file_part($this->type, $allowed_characters, $max_length_type);
-    if (!strlen($this->name)) $this->name = core::random_part_get();
-    if (!strlen($this->type)) $this->type = 'unknown';
-    $this->file = $this->name.'.'.$this->type;
-  # special case for IIS, Apache, NGINX
-    if ($this->file == 'web.config' || $this->type == 'htaccess' || $this->type == 'nginx') {
-      $this->name = core::random_part_get();
-      $this->type = 'unknown';
-      $this->file = $this->name.'.'.$this->type;
+  function init_from_old($path_relative) {
+    $file = new file(dir_root.$path_relative);
+    if ($file->is_exist()) {
+      $this->name     = $file->name_get();
+      $this->type     = $file->type_get();
+      $this->file     = $file->file_get();
+      $this->mime     = $file->mime_get();
+      $this->size     = $file->size_get();
+      $this->old_path = $file->path_get();
+      $this->error    = 0;
+      return true;
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function move_tmp_to_pre($dst_path) {
     if (isset($this->tmp_path)) {
@@ -64,6 +66,13 @@ namespace effcore {
     }
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  function delete_tmp() {
+  # PHP deletes such files immediately after processing the POST request
+    return true;
+  }
+
   function delete_pre() {
     if (isset($this->pre_path)) {
       $result = @unlink($this->pre_path);
@@ -77,7 +86,7 @@ namespace effcore {
     }
   }
 
-  function delete_old() {
+  function delete_old() { # 'new' after saving file turns into → 'old'
     if (isset($this->old_path)) {
       $result = @unlink($this->old_path);
       if ($result) {
@@ -90,17 +99,19 @@ namespace effcore {
     }
   }
 
-  function init_from_old($path_relative) {
-    $file = new file(dir_root.$path_relative);
-    if ($file->is_exist()) {
-      $this->name     = $file->name_get();
-      $this->type     = $file->type_get();
-      $this->file     = $file->file_get();
-      $this->mime     = $file->mime_get();
-      $this->size     = $file->size_get();
-      $this->old_path = $file->path_get();
-      $this->error    = 0;
-      return true;
+  # ─────────────────────────────────────────────────────────────────────
+
+  function sanitize_tmp($allowed_characters = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
+    $this->name = core::sanitize_file_part($this->name, $allowed_characters, $max_length_name);
+    $this->type = core::sanitize_file_part($this->type, $allowed_characters, $max_length_type);
+    if (!strlen($this->name)) $this->name = core::random_part_get();
+    if (!strlen($this->type)) $this->type = 'unknown';
+    $this->file = $this->name.'.'.$this->type;
+  # special case for IIS, Apache, NGINX
+    if ($this->file == 'web.config' || $this->type == 'htaccess' || $this->type == 'nginx') {
+      $this->name = core::random_part_get();
+      $this->type = 'unknown';
+      $this->file = $this->name.'.'.$this->type;
     }
   }
 
