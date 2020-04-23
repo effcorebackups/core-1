@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var c_weight = 0;
           if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
           if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
-          c_has_rearrangeable.effQuerySelectorAll('input[data-type="weight"]').forEach(function(c_input){
+          c_has_rearrangeable.effQuerySelectorAll('x-field[data-type="weight"] input').forEach(function(c_input){
             c_input.value = c_weight;
             c_weight -= 5;
           });

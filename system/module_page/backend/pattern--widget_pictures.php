@@ -30,7 +30,6 @@ namespace effcore {
       'data-type' => 'insert']);
   # control for upload new picture
     $field_picture = new field_picture;
-    $field_picture->min_files_number = 1;
     $field_picture->build();
     $field_picture->name_set($this->name_complex.'__picture');
     $field_picture->cform = $this->cform;
@@ -71,6 +70,10 @@ namespace effcore {
           'type' => translation::get($this->item_title)]));
         return true;
       }
+    } elseif (!$this->controls['#picture']->has_error()) {
+      $this->controls['#picture']->error_set(
+        'Field "%%_title" can not be blank!', ['title' => translation::get($this->controls['#picture']->title)]
+      );
     }
   }
 
