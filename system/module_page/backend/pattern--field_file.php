@@ -307,16 +307,6 @@ namespace effcore {
     }
   }
 
-  static function on_validate_phase_3($field, $form, $npath) {
-    if ($field->has_phase_3 && $field->pool_result == null && !$form->has_error()) {
-      if (!$field->pool_values_save()) {
-        $field->error_set();
-        return;
-      }
-    }
-    return true;
-  }
-
   static function on_validate_and_return_value($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
@@ -330,6 +320,16 @@ namespace effcore {
       if ($result) return $new_values;
       else         return [];
     }
+  }
+
+  static function on_validate_phase_3($field, $form, $npath) {
+    if ($field->has_phase_3 && $field->pool_result == null && !$form->has_error()) {
+      if (!$field->pool_values_save()) {
+        $field->error_set();
+        return;
+      }
+    }
+    return true;
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {

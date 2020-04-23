@@ -417,7 +417,8 @@ namespace effcore {
 
   static function array_key_last($array) { # alternative for built-in 'array_key_last' in PHP v.7.3+
     $keys = array_keys($array);
-    return end($keys);
+    return count($keys) ?
+             end($keys) : null;
   }
 
   #############################################
