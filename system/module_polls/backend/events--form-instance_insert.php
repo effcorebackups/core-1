@@ -19,8 +19,7 @@ namespace effcore\modules\polls {
     if ($entity) {
       if ($entity->name == 'poll') {
         $form->is_redirect_enabled = false;
-        if ($items['#expired']->value_get() == null)
-            $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
+        $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_texts;
         $widget_answers->title = 'Answers';
         $widget_answers->item_title = 'Answer';

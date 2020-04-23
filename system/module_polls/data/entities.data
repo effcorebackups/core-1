@@ -46,8 +46,6 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-        managing_control_element_attributes
-        - value:  
     - diagram_type
         title: Diagramm type
         type: varchar
