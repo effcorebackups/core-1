@@ -18,8 +18,8 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], 'TITLE'),
-        'id'    => new markup('x-id',    [], new text_simple('id') ) ]);
+        'title' => new markup('x-title', [],           $item->object->file),
+        'id'    => new markup('x-id',    [], (new file($item->object->pre_path))->name_get() ) ]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($info_markup, 'info');
     return $widget;
