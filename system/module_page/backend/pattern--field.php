@@ -444,7 +444,7 @@ namespace effcore {
   # │ $_FILES[field] == [name = [0 => 'file1', 1 => 'file2']] ║ return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']] │
   # └─────────────────────────────────────────────────────────╨───────────────────────────────────────────────────────────────────────┘
 
-  static function request_files_get($name, $return_class = '\\effcore\\file_uploaded') {
+  static function request_files_get($name) {
     $result = [];
     if (isset($_FILES[$name]['name'    ]) &&
         isset($_FILES[$name]['type'    ]) &&
@@ -457,23 +457,19 @@ namespace effcore {
       if (!is_array($info['size'    ])) $info['size'    ] = [$info['size'    ]];
       if (!is_array($info['tmp_name'])) $info['tmp_name'] = [$info['tmp_name']];
       if (!is_array($info['error'   ])) $info['error'   ] = [$info['error'   ]];
-      foreach ($info as $c_prop => $c_values) {
-        foreach ($c_values as $c_number => $c_value) {
-          if ($info['error'][$c_number] !== UPLOAD_ERR_NO_FILE) {
-            if (!isset($result[$c_number]))
-                       $result[$c_number] = new $return_class;
-            switch ($c_prop) {
-              case 'name':
-                $c_file = new file($c_value);
-                $result[$c_number]->{'name'} = $c_file->name_get();
-                $result[$c_number]->{'type'} = $c_file->type_get();
-                $result[$c_number]->{'file'} = $c_file->file_get();
-                break;
-              case 'type'    : $result[$c_number]->{'mime'}     = core::validate_mime_type($c_value) ? $c_value : ''; break;
-              case 'tmp_name': $result[$c_number]->{'tmp_path'} =                          $c_value;                  break;
-              default        : $result[$c_number]->{$c_prop}    =                          $c_value;
-            }
-          }
+      foreach ($info['name'] as $c_number => $c_name) {
+        $c_type     = $info['type'    ][$c_number];
+        $c_size     = $info['size'    ][$c_number];
+        $c_tmp_name = $info['tmp_name'][$c_number];
+        $c_error    = $info['error'   ][$c_number];
+        if ($c_error !== UPLOAD_ERR_NO_FILE) {
+          $c_file = new file($c_name);
+          $result[$c_number] = new file_uploaded;
+          $result[$c_number]->name = $c_file->name_get();
+          $result[$c_number]->type = $c_file->type_get();
+          $result[$c_number]->file = $c_file->file_get();
+          $result[$c_number]->mime = core::validate_mime_type($c_type) ? $c_type : '';
+          $result[$c_number]->tmp_path = $c_tmp_name;
         }
       }
     }
