@@ -83,13 +83,13 @@ entities
         managing_selection_params
         - is_apply_translation: true
     - items
-        title: Pictures
+        title: Items
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_pictures
+        managing_control_class: \effcore\widget_media
         managing_control_properties
         - name_complex: items
     constraints

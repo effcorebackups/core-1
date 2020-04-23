@@ -263,6 +263,8 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў даданы!
     - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" не быў абноўлены!
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент тыпу "%%_type" з ID = "%%_id" быў абноўлены.
+    - items: элементы
+    - Items: Элементы
     - Key "%%_key" does not exist!: Ключ "%%_key" не існуе!
     - KiB: КіБ
     - Language: Мова

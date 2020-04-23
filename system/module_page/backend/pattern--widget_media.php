@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore {
-          class widget_pictures extends widget_fields {
+          class widget_media extends widget_fields {
 
-  public $title = 'Pictures';
-  public $item_title = 'Picture';
-  public $attributes = ['data-type' => 'fields-info-pictures'];
-  public $name_complex = 'widget_pictures';
+  public $title = 'Media';
+  public $item_title = 'File';
+  public $attributes = ['data-type' => 'fields-info-media'];
+  public $name_complex = 'widget_media';
 
   # ─────────────────────────────────────────────────────────────────────
 
@@ -28,12 +28,13 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # control for upload new picture
-    $field_picture = new field_picture;
-    $field_picture->build();
-    $field_picture->name_set($this->name_complex.'__picture');
-    $field_picture->cform = $this->cform;
-    $this->controls['#picture'] = $field_picture;
+  # control for upload new file
+    $field_file = new field_picture;
+    $field_file->title = 'File';
+    $field_file->build();
+    $field_file->name_set($this->name_complex.'__file');
+    $field_file->cform = $this->cform;
+    $this->controls['#file'] = $field_file;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -42,15 +43,15 @@ namespace effcore {
     $button->_type = 'insert';
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
-    $widget->child_insert($field_picture, 'picture');
-    $widget->child_insert($button,        'button');
+    $widget->child_insert($field_file, 'file');
+    $widget->child_insert($button,     'button');
     return $widget;
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
-    $values = field_file::on_validate_and_return_value($this->controls['#picture'], $form, $npath);
+    $values = field_file::on_validate_and_return_value($this->controls['#file'], $form, $npath);
     if (count($values)) {
       $items = $this->items_get();
       $item_new_id = count($items) ? core::array_key_last($items) + 1 : 0;
@@ -70,9 +71,9 @@ namespace effcore {
           'type' => translation::get($this->item_title)]));
         return true;
       }
-    } elseif (!$this->controls['#picture']->has_error()) {
-      $this->controls['#picture']->error_set(
-        'Field "%%_title" can not be blank!', ['title' => translation::get($this->controls['#picture']->title)]
+    } elseif (!$this->controls['#file']->has_error()) {
+      $this->controls['#file']->error_set(
+        'Field "%%_title" can not be blank!', ['title' => translation::get($this->controls['#file']->title)]
       );
     }
   }
