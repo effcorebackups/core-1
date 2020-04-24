@@ -64,7 +64,7 @@ namespace effcore {
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
-  public $has_phase_3 = true;
+  public $has_validate_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────
   public $pool_old = [];
   public $pool_new = [];
@@ -77,7 +77,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->pool_values_init_old_from_storage($value ? [$value] : []);
+    $this->pool_values_init_old($value ? [$value] : []);
   }
 
   function values_get() {
@@ -86,7 +86,7 @@ namespace effcore {
   }
 
   function values_set($values) {
-    $this->pool_values_init_old_from_storage($values ?: []);
+    $this->pool_values_init_old($values ?: []);
   }
 
   function file_size_max_get() {
@@ -124,7 +124,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_values_init_old_from_storage($old_items = []) {
+  function pool_values_init_old($old_items = []) {
     $this->pool_old = [];
   # insert old items to the pool
     foreach ($old_items as $c_id => $c_path_relative) {
@@ -215,8 +215,8 @@ namespace effcore {
     $this->pool_new =                                      [];
     $this->pool_manager_set_deleted_items('old',           []);
     $this->pool_cache_set                ('old_to_delete', []);
-    $this->pool_values_init_old_from_storage($result_paths);
-    $this->pool_result =                     $result_paths;
+    $this->pool_values_init_old($result_paths);
+    $this->pool_result =        $result_paths;
     return true;
   }
 
@@ -323,7 +323,8 @@ namespace effcore {
   }
 
   static function on_validate_phase_3($field, $form, $npath) {
-    if ($field->has_phase_3 && $field->pool_result == null && !$form->has_error()) {
+  # try to copy the files and raise an error if it fails (e.g. directory permissions)
+    if ($field->has_validate_phase_3 && $field->pool_result == null && !$form->has_error()) {
       if (!$field->pool_values_save()) {
         $field->error_set();
         return;
