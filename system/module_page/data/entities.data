@@ -89,7 +89,9 @@ entities
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_media
+        managing_control_class: \effcore\widget_files
+        managing_control_properties
+        - title: Files
         managing_control_properties
         - name_complex: items
     constraints

@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore {
-          class widget_media extends widget_fields {
+          class widget_files extends widget_fields {
 
-  public $title = 'Media';
+  public $title = 'Files';
   public $item_title = 'File';
-  public $attributes = ['data-type' => 'fields-info-media'];
-  public $name_complex = 'widget_media';
+  public $attributes = ['data-type' => 'fields-info-files'];
+  public $name_complex = 'widget_files';
 
   # ─────────────────────────────────────────────────────────────────────
 

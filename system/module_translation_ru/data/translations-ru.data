@@ -200,6 +200,8 @@ translations
     - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!
     - File: Файл
     - file: файл
+    - File: Файл
+    - Files: Файлы
     - fix: исправить
     - Form elements: Элементы формы
     - Form: Форма
