@@ -11,6 +11,26 @@ namespace effcore {
   public $item_title = 'File';
   public $attributes = ['data-type' => 'fields-info-files'];
   public $name_complex = 'widget_files';
+  public $upload_dir = '';
+  public $fixed_name = 'file-%%_instance_id_context';
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function value_get_complex() {
+    $this->pool_values_save();
+    return $this->items_get();
+  }
+
+  function pool_values_save() {
+    $items = $this->items_get();
+    foreach ($items as $c_id => $c_item) {
+      if (!empty($c_item->object->pre_path)) {
+        $c_item->object->move_pre_to_new(dynamic::dir_files.
+          $this->upload_dir.$c_item->object->file,
+          $this->fixed_name.'-'.$c_id);
+      }
+    }
+  }
 
   # ─────────────────────────────────────────────────────────────────────
 
@@ -18,8 +38,8 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [],           $item->object->file),
-        'id'    => new markup('x-id',    [], (new file($item->object->pre_path))->name_get() ) ]);
+        'title' => new markup('x-title', [], (new text_multiline([$item->object->file, $item->object->get_current_state()], [], ' | ')) ),
+        'id'    => new markup('x-id',    [], (new file($item->object->get_current_path()))->name_get() )]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($info_markup, 'info');
     return $widget;

@@ -18,6 +18,22 @@ namespace effcore {
   public $error;
   public $size;
 
+  function get_current_path() {
+    if     (!empty($this->tmp_path)) return $this->tmp_path;
+    elseif (!empty($this->pre_path)) return $this->pre_path;
+    elseif (!empty($this->new_path)) return $this->new_path;
+    elseif (!empty($this->old_path)) return $this->old_path;
+  }
+
+  function get_current_state() {
+    if     (!empty($this->tmp_path)) return 'tmp';
+    elseif (!empty($this->pre_path)) return 'pre';
+    elseif (!empty($this->new_path)) return 'new';
+    elseif (!empty($this->old_path)) return 'old';
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
   function init_from_old($path_relative) {
     $file = new file(dir_root.$path_relative);
     if ($file->is_exist()) {

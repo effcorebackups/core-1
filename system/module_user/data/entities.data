@@ -529,7 +529,7 @@ entities
         managing_control_class: \effcore\field_picture
         managing_control_properties
         - upload_dir: avatars/
-        - fixed_name: avatars-%%_user_id
+        - fixed_name: avatar-%%_user_id
         managing_control_element_attributes_on_insert
         - disabled: true
     - timezone

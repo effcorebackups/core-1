@@ -92,6 +92,8 @@ entities
         managing_control_class: \effcore\widget_files
         managing_control_properties
         - title: Files
+        - upload_dir: galleries/
+        - fixed_name: gallery-%%_instance_id_context
         managing_control_properties
         - name_complex: items
     constraints
