@@ -175,7 +175,7 @@ namespace effcore\modules\develop {
   static function block_tokens($page) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'tokens_nosql';
-    $tokens = token::get_all();
+    $tokens = token::select_all();
     ksort($tokens);
     foreach ($tokens as $c_row_id => $c_token) {
       $decorator->data[] = [

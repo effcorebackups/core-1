@@ -25,12 +25,12 @@ namespace effcore {
     }
   }
 
-  static function get($row_id) {
+  static function select($row_id) {
     static::init();
     return static::$cache[$row_id] ?? null;
   }
 
-  static function get_all() {
+  static function select_all() {
     static::init();
     return static::$cache;
   }
@@ -40,7 +40,7 @@ namespace effcore {
                                    '(?:\\{(?<args>[a-z0-9_,=\'\\"\\-]+)\\}|)%S', function ($c_match) {
       $c_name =       $c_match['name'];
       $c_args = isset($c_match['args']) ? explode(',', $c_match['args']) : [];
-      $c_info = static::get($c_name);
+      $c_info = static::select($c_name);
       if ($c_info) {
         switch ($c_info->type) {
           case 'code'           : return call_user_func($c_info->handler, $c_name, $c_args);
