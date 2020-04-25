@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_parts extends widget_fields {
+          class widget_area_parts extends widget_items {
 
   public $title = null;
   public $item_title = 'Part';
   public $content_tag_name = null;
-  public $attributes = ['data-type' => 'fields-info-area_parts'];
+  public $attributes = ['data-type' => 'items-info-area_parts'];
   public $name_complex = 'widget_area_parts';
   public $id_area;
 

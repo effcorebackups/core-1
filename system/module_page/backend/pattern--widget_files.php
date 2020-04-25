@@ -5,11 +5,11 @@
   ##################################################################
 
 namespace effcore {
-          class widget_files extends widget_fields {
+          class widget_files extends widget_items {
 
   public $title = 'Files';
   public $item_title = 'File';
-  public $attributes = ['data-type' => 'fields-info-files'];
+  public $attributes = ['data-type' => 'items-info-files'];
   public $name_complex = 'widget_files';
   public $upload_dir = '';
   public $fixed_name = 'file-%%_instance_id_context';

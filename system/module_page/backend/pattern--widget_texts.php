@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore {
-          class widget_texts extends widget_fields {
+          class widget_texts extends widget_items {
 
-  public $attributes = ['data-type' => 'fields'];
+  public $attributes = ['data-type' => 'items'];
   public $name_complex = 'widget_texts';
 
   function widget_manage_get($item, $c_row_id) {
