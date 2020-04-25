@@ -78,8 +78,8 @@ namespace effcore\modules\menu {
                     $c_item->weight     = $c_new_weight;
                   $has_changes = true;
                   $c_result = $c_item->update();
-                  if ($form->is_show_result_message && $c_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::get($entity->title), 'id' => $c_item->id])           );
-                  if ($form->is_show_result_message && $c_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::get($entity->title), 'id' => $c_item->id]), 'warning');
+                  if ($form->is_show_result_message && $c_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::apply($entity->title), 'id' => $c_item->id])           );
+                  if ($form->is_show_result_message && $c_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => translation::apply($entity->title), 'id' => $c_item->id]), 'warning');
                 }
               }
             }

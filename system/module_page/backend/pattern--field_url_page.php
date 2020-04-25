@@ -32,7 +32,7 @@ namespace effcore {
          (strlen($new_value) && !core::validate_url((new url($new_value))->full_get())) ||
          (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$|^/user$|^/user/.*$|^[^/].*$%', $new_value))) {
       $field->error_set(
-        'Field "%%_title" contains an incorrect URL!', ['title' => translation::get($field->title)]
+        'Field "%%_title" contains an incorrect URL!', ['title' => translation::apply($field->title)]
       );
     } else {
       return true;

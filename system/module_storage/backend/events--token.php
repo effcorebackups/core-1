@@ -17,11 +17,11 @@ namespace effcore\modules\storage {
       case 'entity_title_context':
         $entity_name = page::get_current()->args_get('entity_name');
         $entity = entity::get($entity_name, false);
-        return $entity ? translation::get($entity->title) : '';
+        return $entity ? translation::apply($entity->title) : '';
       case 'entity_title_plural_context':
         $entity_name = page::get_current()->args_get('entity_name');
         $entity = entity::get($entity_name, false);
-        return $entity ? translation::get($entity->title_plural) : '';
+        return $entity ? translation::apply($entity->title_plural) : '';
     };
     return '';
   }

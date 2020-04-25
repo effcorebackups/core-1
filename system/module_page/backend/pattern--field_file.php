@@ -342,21 +342,21 @@ namespace effcore {
       if (count($field->allowed_types) &&
          !isset($field->allowed_types[$c_new_value->type])) {
         $field->error_set(
-          'Field "%%_title" does not support uploading this file type!', ['title' => translation::get($field->title)]
+          'Field "%%_title" does not support uploading this file type!', ['title' => translation::apply($field->title)]
         );
         return;
       }
       switch ($c_new_value->error) {
-        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;
-        case UPLOAD_ERR_FORM_SIZE : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]);       return;
-        case UPLOAD_ERR_PARTIAL   : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the file was only partially uploaded')]);                                                     return;
-        case UPLOAD_ERR_NO_TMP_DIR: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('missing a temporary directory')]);                                                            return;
-        case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('failed to write file to disk')]);                                                             return;
-        case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('a PHP extension stopped the file upload')]);                                                  return;
+        case UPLOAD_ERR_INI_SIZE  : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;
+        case UPLOAD_ERR_FORM_SIZE : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported)')]);       return;
+        case UPLOAD_ERR_PARTIAL   : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('the file was only partially uploaded')]);                                                     return;
+        case UPLOAD_ERR_NO_TMP_DIR: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('missing a temporary directory')]);                                                            return;
+        case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('failed to write file to disk')]);                                                             return;
+        case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('a PHP extension stopped the file upload')]);                                                  return;
       }
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => $c_new_value->error                                                                                         ]); return;}
-      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('file is empty')                                                                           ]); return;}
-      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::get($field->title), 'error' => translation::get('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => $c_new_value->error                                                                                         ]); return;}
+      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('file is empty')                                                                           ]); return;}
+      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;}
     }
     return true;
   }
@@ -364,7 +364,7 @@ namespace effcore {
   static function validate_multiple($field, $form, $element, &$new_values) {
     if (!$field->multiple_get() && count($new_values) > 1) {
       $field->error_set(
-        'Field "%%_title" does not support multiple select!', ['title' => translation::get($field->title)]
+        'Field "%%_title" does not support multiple select!', ['title' => translation::apply($field->title)]
       );
     } else {
       return true;

@@ -38,7 +38,7 @@ namespace effcore\modules\menu {
               if (tree::select($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
+                  'Only unique value is allowed.'], ['title' => translation::apply($items['#id']->title)]
                 ));
               }
             }
@@ -49,7 +49,7 @@ namespace effcore\modules\menu {
               if (tree_item::select($items['#id']->value_get(), null)) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
+                  'Only unique value is allowed.'], ['title' => translation::apply($items['#id']->title)]
                 ));
               }
             }

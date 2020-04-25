@@ -174,7 +174,7 @@ namespace effcore\modules\core {
               event::start('on_module_enable',  $c_module->id);
             # cancel installation and show message if module was not installed
               if (count(storage::get('sql')->errors) != 0) {
-                message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => translation::get($c_module->title), 'id' => $c_module->id]), 'error');
+                message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => translation::apply($c_module->title), 'id' => $c_module->id]), 'error');
                 break;
               }
             }

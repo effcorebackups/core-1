@@ -57,7 +57,7 @@ namespace effcore {
         switch ($c_info->type) {
           case 'code'           : return call_user_func($c_info->handler, $c_name, $c_args);
           case 'text'           : return $c_info->value;
-          case 'translated_text': return translation::get($c_info->value);
+          case 'translated_text': return translation::apply($c_info->value);
         }
       } else {
         return '';

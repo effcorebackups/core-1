@@ -195,7 +195,7 @@ namespace effcore\modules\develop {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'translations_nosql';
     $decorator->result_attributes = ['data-compact' => 'true'];
-    $translations = translation::get_all_by_code($id);
+    $translations = translation::select_all_by_code($id);
     if ($translations) {
       ksort($translations);
       foreach ($translations as $c_english => $c_translated) {

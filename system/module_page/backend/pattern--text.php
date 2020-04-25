@@ -23,7 +23,7 @@ namespace effcore {
   function args_set($args) {$this->args = $args;}
 
   function render() {
-    $result = translation::get($this->text, $this->args,
+    $result = translation::apply($this->text, $this->args,
         $this->is_apply_translation ? null : 'en');
     if ($this->is_apply_tokens)
            $result = token::apply($result);

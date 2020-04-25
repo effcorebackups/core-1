@@ -32,8 +32,8 @@ namespace effcore {
     $result = [];
     foreach ($this->text as $c_line) {
       $c_result = $c_line;
-      if ($this->is_apply_translation) $c_result = translation::get($c_result, $this->args);
-      if ($this->is_apply_tokens)      $c_result = token::apply    ($c_result);
+      if ($this->is_apply_translation) $c_result = translation::apply($c_result, $this->args);
+      if ($this->is_apply_tokens)      $c_result =       token::apply($c_result);
       $result[] = $c_result;
     }
     return implode(

@@ -90,12 +90,12 @@ namespace effcore {
         message::insert(new text_multiline([
           'Item of type "%%_type" was inserted.',
           'Do not forget to save the changes!'], [
-          'type' => translation::get($this->item_title)]));
+          'type' => translation::apply($this->item_title)]));
         return true;
       }
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
-        'Field "%%_title" can not be blank!', ['title' => translation::get($this->controls['#file']->title)]
+        'Field "%%_title" can not be blank!', ['title' => translation::apply($this->controls['#file']->title)]
       );
     }
   }

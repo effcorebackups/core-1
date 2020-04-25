@@ -349,20 +349,20 @@ namespace effcore {
 
   static function array_sort_text(&$array, $order = 'd', $translated = true) {
     uasort($array, function ($a, $b) use ($order, $translated) {
-      if ($order == 'a' && $translated == false) return                  $b  <=>                  $a;
-      if ($order == 'd' && $translated == false) return                  $a  <=>                  $b;
-      if ($order == 'a' && $translated)          return translation::get($b) <=> translation::get($a);
-      if ($order == 'd' && $translated)          return translation::get($a) <=> translation::get($b);
+      if ($order == 'a' && $translated == false) return                    $b  <=>                    $a;
+      if ($order == 'd' && $translated == false) return                    $a  <=>                    $b;
+      if ($order == 'a' && $translated)          return translation::apply($b) <=> translation::apply($a);
+      if ($order == 'd' && $translated)          return translation::apply($a) <=> translation::apply($b);
     });
     return $array;
   }
 
   static function array_sort_by_text_property(&$array, $property = 'title', $order = 'd', $translated = true) {
     uasort($array, function ($a, $b) use ($property, $order, $translated) {
-      if ($order == 'a' && $translated == false) return                  $b->{$property}  <=>                  $a->{$property};
-      if ($order == 'd' && $translated == false) return                  $a->{$property}  <=>                  $b->{$property};
-      if ($order == 'a' && $translated)          return translation::get($b->{$property}) <=> translation::get($a->{$property});
-      if ($order == 'd' && $translated)          return translation::get($a->{$property}) <=> translation::get($b->{$property});
+      if ($order == 'a' && $translated == false) return                    $b->{$property}  <=>                    $a->{$property};
+      if ($order == 'd' && $translated == false) return                    $a->{$property}  <=>                    $b->{$property};
+      if ($order == 'a' && $translated)          return translation::apply($b->{$property}) <=> translation::apply($a->{$property});
+      if ($order == 'd' && $translated)          return translation::apply($a->{$property}) <=> translation::apply($b->{$property});
     });
     return $array;
   }

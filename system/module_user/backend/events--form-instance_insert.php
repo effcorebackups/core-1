@@ -64,7 +64,7 @@ namespace effcore\modules\user {
               $items['#id_user']->error_set();
               $items['#id_role']->error_set(new text_multiline([
                 'Field "%%_title" contains incorrect value!',
-                'This combination of values is already in use!'], ['title' => translation::get($items['#id_role']->title)]
+                'This combination of values is already in use!'], ['title' => translation::apply($items['#id_role']->title)]
               ));
             }
           }
@@ -79,7 +79,7 @@ namespace effcore\modules\user {
               $items['#id_role'      ]->error_set();
               $items['#id_permission']->error_set(new text_multiline([
                 'Field "%%_title" contains incorrect value!',
-                'This combination of values is already in use!'], ['title' => translation::get($items['#id_permission']->title)]
+                'This combination of values is already in use!'], ['title' => translation::apply($items['#id_permission']->title)]
               ));
             }
           }

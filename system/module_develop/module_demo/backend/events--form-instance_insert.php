@@ -25,7 +25,7 @@ namespace effcore\modules\demo {
             if ($result) {
               $items['#id_data']->error_set(new text_multiline([
                 'Field "%%_title" contains the previously used combination of values!',
-                'Only unique value is allowed.'], ['title' => translation::get($items['#id_data']->title)]
+                'Only unique value is allowed.'], ['title' => translation::apply($items['#id_data']->title)]
               ));
             }
           }

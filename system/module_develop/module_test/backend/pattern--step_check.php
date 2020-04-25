@@ -23,7 +23,7 @@ namespace effcore {
         '&ndash; result of checking is = "%%_result"'], [
         'name'   => $this->where,
         'value'  => $this->match,
-        'result' => translation::get('success')]);
+        'result' => translation::apply('success')]);
       if (isset($this->on_success)) {
         foreach ($this->on_success as $c_step) {
           $c_step->run($test, $this->on_success, $c_step, $c_results);
@@ -38,7 +38,7 @@ namespace effcore {
         '&ndash; result of checking is = "%%_result"'], [
         'name'   => $this->where,
         'value'  => $this->match,
-        'result' => translation::get('failure')]);
+        'result' => translation::apply('failure')]);
       if (isset($this->on_failure)) {
         foreach ($this->on_failure as $c_step) {
           $c_step->run($test, $this->on_failure, $c_step, $c_results);

@@ -16,16 +16,16 @@ namespace effcore {
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
     if (isset($c_results['response'])) static::$history_responses[] = $c_results['response'];
     $prepared_post = $this->prepared_get_post();
-    $reports[] = translation::get('make request to "%%_url"', ['url' => $this->prepared_get_url()]);
+    $reports[] = translation::apply('make request to "%%_url"', ['url' => $this->prepared_get_url()]);
     foreach ($prepared_post as $c_key => $c_value)
-      $reports[] = translation::get('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
+      $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
   # make request
     $response = static::request(
       $this->prepared_get_url    (),
       $this->prepared_get_headers(),
       $prepared_post,
       $this->proxy);
-    $reports[] = translation::get('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $response['info']['http_code']]);
+    $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $response['info']['http_code']]);
     $c_results['reports'][] = $reports;
     $c_results['response'] = $response;
   }

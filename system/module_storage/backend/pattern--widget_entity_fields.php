@@ -89,7 +89,7 @@ namespace effcore {
       message::insert(new text_multiline([
         'Item of type "%%_type" was inserted.',
         'Do not forget to save the changes!'], [
-        'type' => translation::get($this->item_title)]));
+        'type' => translation::apply($this->item_title)]));
       return true;
     }
   }

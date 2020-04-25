@@ -57,7 +57,7 @@ namespace effcore\modules\user {
               if ($result) {
                 $items['#id_role']->error_set(new text_multiline([
                   'Field "%%_title" contains incorrect value!',
-                  'This combination of values is already in use!'], ['title' => translation::get($items['#id_role']->title)]
+                  'This combination of values is already in use!'], ['title' => translation::apply($items['#id_role']->title)]
                 ));
               }
             }
@@ -76,7 +76,7 @@ namespace effcore\modules\user {
                 $items['#id_role'      ]->error_set();
                 $items['#id_permission']->error_set(new text_multiline([
                   'Field "%%_title" contains incorrect value!',
-                  'This combination of values is already in use!'], ['title' => translation::get($items['#id_permission']->title)]
+                  'This combination of values is already in use!'], ['title' => translation::apply($items['#id_permission']->title)]
                 ));
               }
             }
@@ -85,7 +85,7 @@ namespace effcore\modules\user {
           if ($entity->name == 'user' && !$form->has_error() && !empty($form->_instance)) {
             if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
               $items['#password_hash_current']->error_set(
-                'Field "%%_title" contains incorrect value!', ['title' => translation::get($items['#password_hash_current']->title)]
+                'Field "%%_title" contains incorrect value!', ['title' => translation::apply($items['#password_hash_current']->title)]
               );
               return;
             }

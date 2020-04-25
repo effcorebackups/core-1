@@ -25,7 +25,7 @@ namespace effcore {
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_tel($new_value)) {
       $field->error_set(
-        'Field "%%_title" contains an incorrect telephone number!', ['title' => translation::get($field->title)]
+        'Field "%%_title" contains an incorrect telephone number!', ['title' => translation::apply($field->title)]
       );
     } else {
       return true;

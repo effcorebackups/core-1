@@ -38,7 +38,7 @@ namespace effcore\modules\page {
               if (page::get($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::get($items['#id']->title)]
+                  'Only unique value is allowed.'], ['title' => translation::apply($items['#id']->title)]
                 ));
               }
             }
@@ -49,7 +49,7 @@ namespace effcore\modules\page {
               if (page::get_by_url($items['#url']->value_get(), false)) {
                 $items['#url']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::get($items['#url']->title)]
+                  'Only unique value is allowed.'], ['title' => translation::apply($items['#url']->title)]
                 ));
               }
             }
