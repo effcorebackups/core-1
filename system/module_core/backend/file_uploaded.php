@@ -69,8 +69,8 @@ namespace effcore {
     if (isset($this->pre_path)) {
       $src_file = new file($this->pre_path);
       $dst_file = new file($dst_path);
-      if ($fixed_name          ) $dst_file->name_set(token::replace($fixed_name));
-      if ($fixed_type          ) $dst_file->type_set(token::replace($fixed_type));
+      if ($fixed_name          ) $dst_file->name_set(token::apply($fixed_name));
+      if ($fixed_type          ) $dst_file->type_set(token::apply($fixed_type));
       if ($dst_file->is_exist()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());
       if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
               $this->new_path = $dst_file->path_get();

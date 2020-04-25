@@ -113,7 +113,7 @@ namespace effcore {
       if (isset($file_types[$file_info->type]->kind) &&
                 $file_types[$file_info->type]->kind == 'dynamic') {
         $file = new file($path);
-        $data = token::replace($file->load());
+        $data = token::apply($file->load());
         $etag = core::hash_get_etag($data);
 
       # send header '304 Not Modified' if the data has no changes

@@ -44,8 +44,8 @@ namespace effcore {
     }
   }
 
-  function href_get       () {if ($this->cache_href        === null) $this->cache_href        = token::replace($this->url       ); return $this->cache_href;       }
-  function href_hidden_get() {if ($this->cache_href_hidden === null) $this->cache_href_hidden = token::replace($this->url_hidden); return $this->cache_href_hidden;}
+  function href_get       () {if ($this->cache_href        === null) $this->cache_href        = token::apply($this->url       ); return $this->cache_href;       }
+  function href_hidden_get() {if ($this->cache_href_hidden === null) $this->cache_href_hidden = token::apply($this->url_hidden); return $this->cache_href_hidden;}
 
   function is_active() {
     $href = $this->href_get();

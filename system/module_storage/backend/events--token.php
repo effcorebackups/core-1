@@ -10,7 +10,7 @@ namespace effcore\modules\storage {
           use \effcore\translation;
           abstract class events_token {
 
-  static function on_replace($name, $args = []) {
+  static function on_apply($name, $args = []) {
     switch ($name) {
       case 'instance_id_context' : return page::get_current()->args_get('instance_id');
       case 'entity_name_context' : return page::get_current()->args_get('entity_name');

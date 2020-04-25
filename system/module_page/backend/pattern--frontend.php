@@ -70,7 +70,7 @@ namespace effcore {
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->icons->child_insert(new markup_simple('link', [
-            'href' => token::replace($c_url->tiny_get())
+            'href' => token::apply($c_url->tiny_get())
           ] + $c_attributes, $c_weight));
         }
 
@@ -80,7 +80,7 @@ namespace effcore {
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->styles->child_insert(new markup_simple('link', [
-            'href' => token::replace($c_url->tiny_get())
+            'href' => token::apply($c_url->tiny_get())
           ] + $c_attributes, $c_weight));
         }
 
@@ -90,7 +90,7 @@ namespace effcore {
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->scripts->child_insert(new markup('script', [
-            'src' => token::replace($c_url->tiny_get())
+            'src' => token::apply($c_url->tiny_get())
           ] + $c_attributes, [], $c_weight));
         }
 

@@ -26,7 +26,7 @@ namespace effcore {
     $result = translation::get($this->text, $this->args,
         $this->is_apply_translation ? null : 'en');
     if ($this->is_apply_tokens)
-           $result = token::replace($result);
+           $result = token::apply($result);
     return $result;
   }
 

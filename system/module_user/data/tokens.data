@@ -5,31 +5,31 @@ tokens
 - user_id
     match: %%_user_id
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 - email
     match: %%_email
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 - nickname
     match: %%_nickname
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 - avatar_url
     match: %%_avatar_url
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
 - return_if_url_arg
     match: %%_return_if_url_arg
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 - id_page_context
     match: %%_id_page_context
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply
 - nickname_page_context
     match: %%_nickname_page_context
     type: code
-    handler: \effcore\modules\user\events_token::on_replace
+    handler: \effcore\modules\user\events_token::on_apply

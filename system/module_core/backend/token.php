@@ -35,7 +35,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function replace($string) {
+  static function apply($string) {
     return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)'.
                                    '(?:\\{(?<args>[a-z0-9_,=\'\\"\\-]+)\\}|)%S', function ($c_match) {
       $c_name =       $c_match['name'];

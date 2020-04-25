@@ -11,7 +11,7 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_token {
 
-  static function on_replace($name, $args = []) {
+  static function on_apply($name, $args = []) {
     user::init(false);
     if (access::check((object)['roles' => ['registered' => 'registered']])) {
       switch ($name) {

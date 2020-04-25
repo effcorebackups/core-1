@@ -16,16 +16,16 @@ tokens
 - instance_id_context
     match: %%_instance_id_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_replace
+    handler: \effcore\modules\storage\events_token::on_apply
 - entity_name_context
     match: %%_entity_name_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_replace
+    handler: \effcore\modules\storage\events_token::on_apply
 - entity_title_context
     match: %%_entity_title_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_replace
+    handler: \effcore\modules\storage\events_token::on_apply
 - entity_title_plural_context
     match: %%_entity_title_plural_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_replace
+    handler: \effcore\modules\storage\events_token::on_apply

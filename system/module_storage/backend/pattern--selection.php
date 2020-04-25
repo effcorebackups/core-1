@@ -175,7 +175,7 @@ namespace effcore {
                 ];
                 break;
             }
-          # translate or replace tokens in value, if required
+          # apply translate or tokens in value, if required
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
               $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);

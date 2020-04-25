@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_token {
 
-  static function on_replace($name, $args = []) {
+  static function on_apply($name, $args = []) {
     $settings = module::settings_get('page');
     switch ($name) {
       case     'page_min_width': return $settings->page_min_width;
