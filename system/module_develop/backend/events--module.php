@@ -26,7 +26,7 @@ namespace effcore\modules\develop {
     if (($settings->console_visibility == 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']])) ||
         ($settings->console_visibility == 'show_for_everyone')) {
       frontend::insert('console', null, 'styles', [
-        'path'       => '/system/module_develop/frontend/develop.cssd?id_page=%%_id_page_context',
+        'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
         'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'develop_style', 'develop'
       );
     }

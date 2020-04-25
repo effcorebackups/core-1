@@ -39,7 +39,7 @@ namespace effcore\modules\user {
                  $value_if_false;
         }
         break;
-      case 'id_page_context':
+      case 'page_id_context':
         return page::get_current()->id;
     }
     return '';

@@ -18,8 +18,8 @@ namespace effcore\modules\page {
       case     'page_max_width': return $settings->page_max_width;
       case 'css_page_min_width_context':
       case 'css_page_max_width_context':
-        $id_page = url::get_current()->query_arg_select('id_page');
-        $page = page::get($id_page);
+        $page_id = url::get_current()->query_arg_select('page_id');
+        $page = page::get($page_id);
         if ($name == 'css_page_min_width_context' && !empty($page->data['width_min'])) return 'min-width: '.$page->data['width_min'].'px /* induvidual page size */';
         if ($name == 'css_page_max_width_context' && !empty($page->data['width_max'])) return 'max-width: '.$page->data['width_max'].'px /* induvidual page size */';
         break;

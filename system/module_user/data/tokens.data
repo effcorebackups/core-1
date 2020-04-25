@@ -25,8 +25,8 @@ tokens
     match: %%_return_if_url_arg
     type: code
     handler: \effcore\modules\user\events_token::on_apply
-- id_page_context
-    match: %%_id_page_context
+- page_id_context
+    match: %%_page_id_context
     type: code
     handler: \effcore\modules\user\events_token::on_apply
 - nickname_page_context

@@ -2,7 +2,7 @@
   /* demo return_if_url_arg */
 
   x-some-tag {
-    z-index: %%_return_if_url_arg{id_page,front,1,2};
+    z-index: %%_return_if_url_arg{page_id,front,1,2};
   }
 
   /* console */

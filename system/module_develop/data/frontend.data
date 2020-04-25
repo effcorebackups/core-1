@@ -6,7 +6,7 @@ frontend
       match: %^/develop/.*$%
     styles
     - develop_style
-        path: frontend/develop.cssd?id_page=%%_id_page_context
+        path: frontend/develop.cssd?page_id=%%_page_id_context
         attributes
         - rel: stylesheet
         - media: all
