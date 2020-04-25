@@ -268,14 +268,14 @@
   x-widgets-group {display: block}
   x-widget {display: block}
 
-  x-widget[data-fields-is-inline='true'] x-field {
+  x-widget[data-controls-is-inline='true'] x-field {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle}
 
-  x-widget[data-fields-is-inline-full='true'] x-field       {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
-  x-widget[data-fields-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
-  x-widget[data-fields-is-inline-full='true'] x-field input {margin: 0}
+  x-widget[data-controls-is-inline-full='true'] x-field       {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full='true'] x-field input {margin: 0}
 
   /* widget 'items' */
 
