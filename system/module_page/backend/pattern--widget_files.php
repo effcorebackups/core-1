@@ -54,6 +54,7 @@ namespace effcore {
     $field_file->title = 'File';
     $field_file->build();
     $field_file->name_set($this->name_complex.'__file');
+    $field_file->has_validate_phase_3 = false;
     $field_file->cform = $this->cform;
     $this->controls['#file'] = $field_file;
   # button for insertion of the new item
