@@ -12,7 +12,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'items-info-files'];
   public $name_complex = 'widget_files';
   public $upload_dir = '';
-  public $fixed_name = 'file-%%_instance_id_context';
+  public $fixed_name = 'file-%%_instance_id_context-%%_item_id_context';
 
   # ─────────────────────────────────────────────────────────────────────
 
@@ -25,9 +25,10 @@ namespace effcore {
     $items = $this->items_get();
     foreach ($items as $c_id => $c_item) {
       if (!empty($c_item->object->pre_path)) {
+        token::insert('item_id_context', '%%_item_id_context', 'text', $c_id);
         $c_item->object->move_pre_to_new(dynamic::dir_files.
           $this->upload_dir.$c_item->object->file,
-          $this->fixed_name.'-'.$c_id);
+          $this->fixed_name);
       }
     }
   }

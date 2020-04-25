@@ -35,6 +35,18 @@ namespace effcore {
     return static::$cache;
   }
 
+  static function insert($row_id, $match, $type, $value = null, $handler = null, $module_id = null) {
+    static::init();
+    $new_token = new \stdClass;
+                    $new_token->match     = $match;
+                    $new_token->type      = $type;
+    if ($value    ) $new_token->value     = $value;
+    if ($handler  ) $new_token->handler   = $handler;
+    if ($module_id) $new_token->module_id = $module_id;
+           static::$cache[$row_id] = $new_token;
+    return static::$cache[$row_id];
+  }
+
   static function apply($string) {
     return preg_replace_callback('%\\%\\%_(?<name>[a-z0-9_]+)'.
                                    '(?:\\{(?<args>[a-z0-9_,=\'\\"\\-]+)\\}|)%S', function ($c_match) {
