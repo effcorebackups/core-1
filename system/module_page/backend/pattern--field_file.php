@@ -18,18 +18,18 @@ namespace effcore {
   # SUBMIT PROCESS #1                             . SUBMIT PROCESS #2
   # ............................................................................................................................
   # on_init                                       .
-  #                 ╔════════ form ════════╗      .      ╔═ pool_old ═╗       ╔════════ form ════════╗
+  #                 ╔════════ form ════════╗      .      ╔═ pool_fin ═╗       ╔════════ form ════════╗
   #                 ║ ┌── upload field ──┐ ║      .  ┌──▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
   #                 ║ │------------------│ ║      .  │   ╚════════════╝       ║ │------------------│ ║
-  #             ┌─────│   + new file 1   │ ║      .  │          │       ┌───────│   + new file 2   │ ║
-  #             │   ║ └──────────────────┘ ║      .  │          │       │     ║ └──────────────────┘ ║
-  #             │   ╚══════════════════════╝      .  │          └───────│──────▶ ▣ delete old file 1─────┐
-  #             │                                 .  │                  │     ╚══════════════════════╝   │
-  #             │                                 .  │          ┌───────┘                                │
+  #             ┌─────│   + new file 1   │ ║      .  │          │        ┌──────│   + new file 2   │ ║
+  #             │   ║ └──────────────────┘ ║      .  │          │        │    ║ └──────────────────┘ ║
+  #             │   ╚══════════════════════╝      .  │          └────────│─────▶ ▣ delete old file 1 ────┐
+  #             │                                 .  │                   │    ╚══════════════════════╝   │
+  #             │                                 .  │          ┌────────┘                               │
   # ............│....................................│..........│........................................│......................
   # on_validate │                                 .  │          │                                        │
   #             ▼                                 .  │          ▼                                        ▼
-  #      ╔═ pool_new ═╗                           .  │   ╔═ pool_new ═╗                      ╔═ pool_old_to_delete ═╗
+  #      ╔═ pool_pre ═╗                           .  │   ╔═ pool_pre ═╗                      ╔═ pool_fin_to_delete ═╗
   #      ║ new file 1 ║                        ┌─────┘   ║ new file 2 ║                      ║       old file 1     ║
   #      ╚════════════╝                        │  .      ╚════════════╝                      ╚══════════════════════╝
   #             │                              │  .             │                                        │
@@ -66,8 +66,8 @@ namespace effcore {
   public $fixed_type;
   public $has_validate_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────
-  public $pool_old = [];
-  public $pool_new = [];
+  public $pool_fin = [];
+  public $pool_pre = [];
   public $pool_result = null;
 
   function value_get() {
@@ -77,7 +77,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->pool_values_init_old($value ? [$value] : []);
+    $this->pool_values_init_fin($value ? [$value] : []);
   }
 
   function values_get() {
@@ -86,7 +86,7 @@ namespace effcore {
   }
 
   function values_set($values) {
-    $this->pool_values_init_old($values ?: []);
+    $this->pool_values_init_fin($values ?: []);
   }
 
   function file_size_max_get() {
@@ -124,83 +124,83 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_values_init_old($old_items = []) {
-    $this->pool_old = [];
-  # insert old items to the pool
-    foreach ($old_items as $c_id => $c_path_relative) {
+  function pool_values_init_fin($fin_items = []) {
+    $this->pool_fin = [];
+  # insert 'fin' items into the pool
+    foreach ($fin_items as $c_id => $c_path_relative) {
       $c_item = new file_uploaded;
-      if ($c_item->init_from_old($c_path_relative)) {
-        $this->pool_old[$c_id] = $c_item;
+      if ($c_item->init_from_fin($c_path_relative)) {
+        $this->pool_fin[$c_id] = $c_item;
       }
     }
-  # add the next deleted items to the cache
-    $deleted_from_cache = $this->pool_cache_get                ('old_to_delete');
-    $deleted_from_cform = $this->pool_manager_get_deleted_items('old');
-    foreach ($this->pool_old as $c_id => $c_item) {
+  # add the next deleted items into the cache
+    $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
+    $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
+    foreach ($this->pool_fin as $c_id => $c_item) {
       if (isset($deleted_from_cform[$c_id]))
                 $deleted_from_cache[$c_id] = $c_item;
     }
-  # deferred deletion of items which marked as 'deleted'
-    foreach ($this->pool_old as $c_id => $c_item) {
+  # deferred deletion of 'fin' items which marked as 'deleted'
+    foreach ($this->pool_fin as $c_id => $c_item) {
       if (isset($deleted_from_cache[$c_id])) {
-        unset($this->pool_old[$c_id]);
+        unset($this->pool_fin[$c_id]);
       }
     }
   # save the poll and update pool manager
-    $this->pool_cache_set('old_to_delete', $deleted_from_cache);
+    $this->pool_cache_set('fin_to_delete', $deleted_from_cache);
     $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_values_init_new_from_cache() {
-    $this->pool_new = $this->pool_cache_get('new');
-  # immediate deletion of items which marked as 'deleted'
-    $deleted_from_cform = $this->pool_manager_get_deleted_items('new');
-    foreach ($this->pool_new as $c_id => $c_item) {
+  function pool_values_init_pre_from_cache() { #1
+    $this->pool_pre = $this->pool_cache_get('pre');
+  # immediate deletion of 'pre' items which marked as 'deleted'
+    $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
+    foreach ($this->pool_pre as $c_id => $c_item) {
       if (isset($deleted_from_cform[$c_id])) {
         $result = $c_item->delete_pre();
         if ($result) {
-          unset($this->pool_new[$c_id]);
+          unset($this->pool_pre[$c_id]);
         }
       }
     }
   # save the poll and update pool manager
-    $this->pool_cache_set('new', $this->pool_new);
+    $this->pool_cache_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_values_init_new_from_form($new_items = []) {
+  function pool_values_init_new_from_form($new_items = []) { #2
     foreach ($new_items as $c_item) {
-      $this->pool_new[] = $c_item;
-      $c_item_id = core::array_key_last($this->pool_new);
+      $this->pool_pre[] = $c_item;
+      $c_item_id = core::array_key_last($this->pool_pre); # p.s. even after deleting the array element, the next key will be 'last used key +1'
       $result = $c_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_item_id);
       if (!$result) {
-        unset($this->pool_new[$c_item_id]);
+        unset($this->pool_pre[$c_item_id]);
       }
     }
   # save the poll and update pool manager
-    $this->pool_cache_set('new', $this->pool_new);
+    $this->pool_cache_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
   function pool_values_save() {
-  # delete the old deleted items
-    $deleted_from_cache = $this->pool_cache_get('old_to_delete');
+  # delete the 'fin' deleted items
+    $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
       if (isset($deleted_from_cache[$c_id])) {
-        if (!$c_item->delete_old()) {
+        if (!$c_item->delete_fin()) {
           return;
         }
       }
     }
-  # move new items to the directory 'files'
-    foreach ($this->pool_new as $c_id => $c_item) {
-      if (!$c_item->move_pre_to_new(dynamic::dir_files.
+  # move 'pre' items into the directory 'files'
+    foreach ($this->pool_pre as $c_id => $c_item) {
+      if (!$c_item->move_pre_to_fin(dynamic::dir_files.
              $this->upload_dir.$c_item->file,
              $this->fixed_name,
              $this->fixed_type)) {
@@ -209,13 +209,13 @@ namespace effcore {
     }
   # prepare return
     $result_paths = [];
-    foreach ($this->pool_old as $c_item) $result_paths[] = (new file($c_item->old_path))->path_get_relative();
-    foreach ($this->pool_new as $c_item) $result_paths[] = (new file($c_item->new_path))->path_get_relative();
-  # move pool_new to pool_old and return result
-    $this->pool_new =                                      [];
-    $this->pool_manager_set_deleted_items('old',           []);
-    $this->pool_cache_set                ('old_to_delete', []);
-    $this->pool_values_init_old($result_paths);
+    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->fin_path))->path_get_relative();
+    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->fin_path))->path_get_relative();
+  # move pool_pre to pool_fin and return result
+    $this->pool_pre =                                      [];
+    $this->pool_manager_set_deleted_items('fin',           []);
+    $this->pool_cache_set                ('fin_to_delete', []);
+    $this->pool_values_init_fin($result_paths);
     $this->pool_result =        $result_paths;
     return true;
   }
@@ -245,9 +245,9 @@ namespace effcore {
     $pool_manager = new group_checkboxes;
     $pool_manager->build();
     $this->child_insert($pool_manager, 'manager');
-  # insert 'delete' checkboxes for the old and the new items
-    foreach ($this->pool_old as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'old');
-    foreach ($this->pool_new as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'new');
+  # insert 'delete' checkboxes for the 'fin' and the 'pre' items
+    foreach ($this->pool_fin as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'fin');
+    foreach ($this->pool_pre as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'pre');
   }
 
   protected function pool_manager_insert_action($item, $id, $type) {
@@ -297,7 +297,7 @@ namespace effcore {
     $type = $field->type_get();
     if ($name && $type) {
       if ($field->disabled_get()) return true;
-      $field->pool_values_init_new_from_cache();
+      $field->pool_values_init_pre_from_cache();
       $new_values = static::request_files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_multiple($field, $form, $element, $new_values) &&
@@ -334,8 +334,8 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
-    if ($field->min_files_number > count($field->pool_old) + count($field->pool_new) + count($new_values)) {$field->error_set(new text_multiline([                                            'Field should contain a minimum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)] )); return;}
-    if ($field->max_files_number < count($field->pool_old) + count($field->pool_new) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too much files!', 'Field should contain a maximum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_old) + count($field->pool_new)] )); return;}
+    if ($field->min_files_number > count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline([                                            'Field should contain a minimum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
+    if ($field->max_files_number < count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too much files!', 'Field should contain a maximum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
   # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {
@@ -354,7 +354,7 @@ namespace effcore {
         case UPLOAD_ERR_CANT_WRITE: $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('failed to write file to disk')]);                                                             return;
         case UPLOAD_ERR_EXTENSION : $field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('a PHP extension stopped the file upload')]);                                                  return;
       }
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => $c_new_value->error                                                                                         ]); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => $c_new_value->error                                                                                           ]); return;}
       if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('file is empty')                                                                           ]); return;}
       if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => translation::apply($field->title), 'error' => translation::apply('the size of uploaded file more than %%_size', ['size' => locale::format_bytes($max_size)])]); return;}
     }
