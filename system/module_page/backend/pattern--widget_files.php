@@ -76,22 +76,24 @@ namespace effcore {
     $values = field_file::on_validate_and_return_value($this->controls['#file'], $form, $npath);
     if (count($values)) {
       $items = $this->items_get();
-      $item_new_id = count($items) ? core::array_key_last($items) + 1 : 0;
       $value = reset($values);
-      if ($value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_complex.'-'.$item_new_id)) {
-        $min_weight = 0;
-        foreach ($items as $c_row_id => $c_item)
-          $min_weight = min($min_weight, $c_item->weight);
-        $new_item = new \stdClass;
-        $new_item->weight = count($items) ? $min_weight - 5 : 0;
-        $new_item->object = $value;
-        $items[] = $new_item;
+      $min_weight = 0;
+      foreach ($items as $c_row_id => $c_item)
+        $min_weight = min($min_weight, $c_item->weight);
+      $new_item = new \stdClass;
+      $new_item->weight = count($items) ? $min_weight - 5 : 0;
+      $new_item->object = $value;
+      $items[] = $new_item;
+      $new_item_id = core::array_key_last($items);
+      if ($value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_complex.'-'.$new_item_id)) {
         $this->items_set($items);
         message::insert(new text_multiline([
           'Item of type "%%_type" was inserted.',
           'Do not forget to save the changes!'], [
           'type' => translation::apply($this->item_title)]));
         return true;
+      } else {
+        $form->error_set();
       }
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
