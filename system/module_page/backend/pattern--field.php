@@ -463,15 +463,14 @@ namespace effcore {
         $c_tmp_name = $info['tmp_name'][$c_number];
         $c_error    = $info['error'   ][$c_number];
         if ($c_error !== UPLOAD_ERR_NO_FILE) {
-          $c_file = new file($c_name);
           $result[$c_number] = new file_uploaded;
-          $result[$c_number]->name     = $c_file->name_get();
-          $result[$c_number]->type     = $c_file->type_get();
-          $result[$c_number]->file     = $c_file->file_get();
-          $result[$c_number]->size     = $c_size;
-          $result[$c_number]->tmp_path = $c_tmp_name;
-          $result[$c_number]->error    = $c_error;
-          $result[$c_number]->mime     = core::validate_mime_type($c_type) ? $c_type : '';
+          $result[$c_number]->init_from_tmp(
+            $c_name,
+            $c_type,
+            $c_size,
+            $c_tmp_name,
+            $c_error
+          );
         }
       }
     }

@@ -31,6 +31,17 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  function init_from_tmp($name, $type, $size, $path, $error) {
+    $file = new file($name);
+    $this->name     = $file->name_get();
+    $this->type     = $file->type_get();
+    $this->file     = $file->file_get();
+    $this->mime     = core::validate_mime_type($type) ? $type : '';
+    $this->size     = $size;
+    $this->tmp_path = $path;
+    $this->error    = $error;
+  }
+
   function init_from_fin($path_relative) {
     $file = new file(dir_root.$path_relative);
     if ($file->is_exist()) {
