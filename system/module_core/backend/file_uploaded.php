@@ -12,8 +12,8 @@ namespace effcore {
   public $file;
   public $mime;
   public $tmp_path; # file in PHP    'tmp'   directory
-  public $pre_path; # file in system 'tmp'   directory
-  public $fin_path; # file in system 'files' directory
+  public $pre_path; # file in system 'tmp'   directory (dynamic/tmp/*)
+  public $fin_path; # file in system 'files' directory (dynamic/files/*)
   public $error;
   public $size;
 
@@ -48,7 +48,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function move_tmp_to_pre($dst_path) {
-    if (isset($this->tmp_path)) {
+    if ($this->get_current_state() == 'tmp') {
       $src_file = new file($this->tmp_path);
       $dst_file = new file($dst_path);
       if ($src_file->move_uploaded($dst_file->dirs_get(), $dst_file->file_get())) {
@@ -63,7 +63,7 @@ namespace effcore {
   }
 
   function move_pre_to_fin($dst_path, $fixed_name = null, $fixed_type = null, $is_save_original_data = false) {
-    if (isset($this->pre_path)) {
+    if ($this->get_current_state() == 'pre') {
       $src_file = new file($this->pre_path);
       $dst_file = new file($dst_path);
       if ($fixed_name          ) $dst_file->name_set(token::apply($fixed_name));
@@ -92,7 +92,7 @@ namespace effcore {
   }
 
   function delete_pre() {
-    if (isset($this->pre_path)) {
+    if ($this->get_current_state() == 'pre') {
       $result = @unlink($this->pre_path);
       if ($result) {
         unset($this->pre_path);
@@ -105,7 +105,7 @@ namespace effcore {
   }
 
   function delete_fin() {
-    if (isset($this->fin_path)) {
+    if ($this->get_current_state() == 'fin') {
       $result = @unlink($this->fin_path);
       if ($result) {
         unset($this->fin_path);
