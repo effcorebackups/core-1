@@ -28,7 +28,7 @@ namespace effcore {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_id);
         $c_item->object->move_pre_to_fin(dynamic::dir_files.
           $this->upload_dir.$c_item->object->file,
-          $this->fixed_name);
+          $this->fixed_name, null, true);
       }
     }
   }
