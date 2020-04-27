@@ -192,10 +192,8 @@ namespace effcore {
   # delete the 'fin' deleted items
     $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
-      if (isset($deleted_from_cache[$c_id])) {
-        if (!$c_item->delete_fin()) {
-          return;
-        }
+      if (!$c_item->delete_fin()) {
+        return;
       }
     }
   # move 'pre' items into the directory 'files'
