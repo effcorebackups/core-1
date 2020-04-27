@@ -24,7 +24,7 @@ namespace effcore {
   function pool_values_save() {
     $items = $this->items_get();
     foreach ($items as $c_id => $c_item) {
-      if (!empty($c_item->object->pre_path)) {
+      if ($c_item->object->get_current_state() == 'pre') {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_id);
         $c_item->object->move_pre_to_fin(dynamic::dir_files.
           $this->upload_dir.$c_item->object->file,
@@ -100,6 +100,19 @@ namespace effcore {
         'Field "%%_title" can not be blank!', ['title' => translation::apply($this->controls['#file']->title)]
       );
     }
+  }
+
+  function on_button_click_delete($form, $npath, $button) {
+    $items = $this->items_get();
+    if ($items[$button->_id]->object->get_current_state() == 'pre') {} # @todo: make functionality
+    if ($items[$button->_id]->object->get_current_state() == 'fin') {} # @todo: make functionality
+    unset($items[$button->_id]);
+    $this->items_set($items);
+    message::insert(new text_multiline([
+      'Item of type "%%_type" was deleted.',
+      'Do not forget to save the changes!'], [
+      'type' => translation::apply($this->item_title)]));
+    return true;
   }
 
 }}

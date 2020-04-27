@@ -207,8 +207,8 @@ namespace effcore {
     }
   # prepare return
     $result_paths = [];
-    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->fin_path))->path_get_relative();
-    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->fin_path))->path_get_relative();
+    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
+    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
   # move pool_pre to pool_fin and return result
     $this->pool_pre =                                      [];
     $this->pool_manager_set_deleted_items('fin',           []);
