@@ -23,9 +23,9 @@ namespace effcore {
 
   function pool_values_save() {
     $items = $this->items_get();
-    foreach ($items as $c_id => $c_item) {
+    foreach ($items as $c_row_id => $c_item) {
       if ($c_item->object->get_current_state() == 'pre') {
-        token::insert('item_id_context', '%%_item_id_context', 'text', $c_id);
+        token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
         $c_item->object->move_pre_to_fin(dynamic::dir_files.
           $this->upload_dir.$c_item->object->file,
           $this->fixed_name, null, true);
@@ -36,14 +36,16 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function widget_manage_get($item, $c_row_id) {
-    $widget = parent::widget_manage_get($item, $c_row_id);
-  # info markup
-    $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], (new text_multiline([$item->object->file, $item->object->get_current_state()], [], ' | ')) ),
-        'id'    => new markup('x-id',    [], (new file($item->object->get_current_path()))->name_get() )]);
-  # grouping of previous elements in widget 'manage'
-    $widget->child_insert($info_markup, 'info');
-    return $widget;
+    if (empty($item->is_deleted)) {
+      $widget = parent::widget_manage_get($item, $c_row_id);
+    # info markup
+      $info_markup = new markup('x-info',  [], [
+          'title' => new markup('x-title', [], (new text_multiline([$item->object->file, $item->object->get_current_state()], [], ' | ')) ),
+          'id'    => new markup('x-id',    [], (new file($item->object->get_current_path()))->name_get() )]);
+    # grouping of previous elements in widget 'manage'
+      $widget->child_insert($info_markup, 'info');
+      return $widget;
+    }
   }
 
   function widget_insert_get() {
@@ -104,15 +106,26 @@ namespace effcore {
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
-    if ($items[$button->_id]->object->get_current_state() == 'pre') {} # @todo: make functionality
-    if ($items[$button->_id]->object->get_current_state() == 'fin') {} # @todo: make functionality
-    unset($items[$button->_id]);
-    $this->items_set($items);
-    message::insert(new text_multiline([
-      'Item of type "%%_type" was deleted.',
-      'Do not forget to save the changes!'], [
-      'type' => translation::apply($this->item_title)]));
-    return true;
+    if ($items[$button->_id]->object->get_current_state() == 'pre') {
+      if ($items[$button->_id]->object->delete_pre()) {
+        unset($items[$button->_id]);
+        $this->items_set($items);
+        message::insert(new text_multiline([
+          'Item of type "%%_type" was deleted.',
+          'Do not forget to save the changes!'], [
+          'type' => translation::apply($this->item_title)]));
+        return true;
+      }
+    }
+    if ($items[$button->_id]->object->get_current_state() == 'fin') {
+      $items[$button->_id]->is_deleted = true;
+      $this->items_set($items);
+      message::insert(new text_multiline([
+        'Item of type "%%_type" was deleted.',
+        'Do not forget to save the changes!'], [
+        'type' => translation::apply($this->item_title)]));
+      return true;
+    }
   }
 
 }}

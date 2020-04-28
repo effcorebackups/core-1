@@ -66,9 +66,8 @@ namespace effcore {
     $items = $this->items_get();
   # insert new and update existing widgets
     foreach ($this->items_get() as $c_row_id => $c_item) {
-      if ($group->child_select($c_row_id) != null) {$c_widget =                                               $group->child_select(           $c_row_id);}
-      if ($group->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
-      $c_widget->weight = $c_widget->child_select('weight')->value_get();
+      if ($group->child_select($c_row_id) == null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); if ($c_widget) {$group->child_insert($c_widget, $c_row_id); $c_widget->weight = $c_widget->child_select('weight')->value_get();}}
+      if ($group->child_select($c_row_id) != null) {$c_widget =                                                               $group->child_select(           $c_row_id); $c_widget->weight = $c_widget->child_select('weight')->value_get(); }
     }
   # delete old widgets
     foreach ($group->children_select() as $c_row_id => $c_widget) {
@@ -136,7 +135,7 @@ namespace effcore {
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item)
-      $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
+      if (isset($this->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
     $this->items_set($items);
   }
 
