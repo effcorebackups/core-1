@@ -126,14 +126,14 @@ namespace effcore {
 
   function pool_values_init_fin($fin_items = []) {
     $this->pool_fin = [];
-  # insert 'fin' items into the pool
+  # insertion of 'fin' items into the pool
     foreach ($fin_items as $c_id => $c_path_relative) {
       $c_item = new file_uploaded;
       if ($c_item->init_from_fin($c_path_relative)) {
         $this->pool_fin[$c_id] = $c_item;
       }
     }
-  # add the next deleted items into the cache
+  # adding of next deleted items into the cache
     $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
     $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
     foreach ($this->pool_fin as $c_id => $c_item) {
@@ -146,7 +146,7 @@ namespace effcore {
         unset($this->pool_fin[$c_id]);
       }
     }
-  # save the poll and update pool manager
+  # save the poll and update the pool manager
     $this->pool_cache_set('fin_to_delete', $deleted_from_cache);
     $this->pool_manager_rebuild();
   }
@@ -165,7 +165,7 @@ namespace effcore {
         }
       }
     }
-  # save the poll and update pool manager
+  # save the poll and update the pool manager
     $this->pool_cache_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
@@ -181,7 +181,7 @@ namespace effcore {
         unset($this->pool_pre[$c_item_id]);
       }
     }
-  # save the poll and update pool manager
+  # save the poll and update the pool manager
     $this->pool_cache_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
@@ -189,14 +189,14 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function pool_values_save() {
-  # delete the 'fin' deleted items
+  # deletion of 'fin' items which marked as 'deleted'
     $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
       if (!$c_item->delete_fin()) {
         return;
       }
     }
-  # move 'pre' items into the directory 'files'
+  # moving of 'pre' items into the directory 'files'
     foreach ($this->pool_pre as $c_id => $c_item) {
       if (!$c_item->move_pre_to_fin(dynamic::dir_files.
              $this->upload_dir.$c_item->file,
@@ -209,7 +209,7 @@ namespace effcore {
     $result_paths = [];
     foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
     foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
-  # move pool_pre to pool_fin and return result
+  # moving of 'pool_pre' values to the 'pool_fin' and return result
     $this->pool_pre =                                      [];
     $this->pool_manager_set_deleted_items('fin',           []);
     $this->pool_cache_set                ('fin_to_delete', []);

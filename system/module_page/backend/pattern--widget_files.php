@@ -24,13 +24,24 @@ namespace effcore {
   function pool_values_save() {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
+    # moving of 'pre' items into the directory 'files'
       if ($c_item->object->get_current_state() == 'pre') {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-        $c_item->object->move_pre_to_fin(dynamic::dir_files.
-          $this->upload_dir.$c_item->object->file,
-          $this->fixed_name, null, true);
+        $c_item->object->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->object->file, $this->fixed_name, null, true);
+      }
+    # deletion of 'fin' items which marked as 'deleted'
+      if ($c_item->object->get_current_state() == 'fin') {
+        if (!empty($c_item->is_deleted)) {
+          $c_item->object->delete_fin();
+          unset($items[$c_row_id]);
+        }
+      }
+    # cache cleaning for lost files
+      if ($c_item->object->get_current_state() == null) {
+        unset($items[$c_row_id]);
       }
     }
+    $this->items_set($items);
   }
 
   # ─────────────────────────────────────────────────────────────────────
