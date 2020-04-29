@@ -11,10 +11,14 @@ namespace effcore {
   public $item_title = 'File';
   public $attributes = ['data-type' => 'items-info-files'];
   public $name_complex = 'widget_files';
-  public $upload_dir = '';
+# ─────────────────────────────────────────────────────────────────────
+  public $max_file_size = '5K';
+  public $min_files_number = 0;
+  public $max_files_number = 1;
+  public $allowed_types = ['txt' => 'txt'];
   public $fixed_name = 'file-%%_instance_id_context-%%_item_id_context';
-
-  # ─────────────────────────────────────────────────────────────────────
+  public $fixed_type = null;
+  public $upload_dir = '';
 
   function value_get_complex() {
     $this->pool_values_save();
@@ -27,7 +31,11 @@ namespace effcore {
     # moving of 'pre' items into the directory 'files'
       if ($c_item->object->get_current_state() == 'pre') {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-        $c_item->object->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->object->file, $this->fixed_name, null, true);
+        $c_item->object->move_pre_to_fin(
+          dynamic::dir_files.$this->upload_dir.$c_item->object->file,
+          $this->fixed_name,
+          $this->fixed_type, true
+        );
       }
     # deletion of 'fin' items which marked as 'deleted'
       if ($c_item->object->get_current_state() == 'fin') {
@@ -61,12 +69,16 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # control for upload new file
-    $field_file = new field_picture;
+    $field_file = new field_file;
     $field_file->title = 'File';
+    $field_file->max_file_size        = $this->max_file_size;
+    $field_file->min_files_number     = $this->min_files_number;
+    $field_file->max_files_number     = $this->max_files_number;
+    $field_file->allowed_types        = $this->allowed_types;
+    $field_file->cform                = $this->cform;
+    $field_file->has_validate_phase_3 = false;
     $field_file->build();
     $field_file->name_set($this->name_complex.'__file');
-    $field_file->has_validate_phase_3 = false;
-    $field_file->cform = $this->cform;
     $this->controls['#file'] = $field_file;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
