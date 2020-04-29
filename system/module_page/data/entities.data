@@ -94,6 +94,12 @@ entities
         - title: Files
         - upload_dir: galleries/
         - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
+        - max_file_size: 500K
+        - allowed_types
+          - =: jpeg
+          - =: jpg
+          - =: png
+          - =: gif
         managing_control_properties
         - name_complex: items
     constraints
