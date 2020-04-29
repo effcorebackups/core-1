@@ -71,7 +71,7 @@ namespace effcore {
     }
   # delete old widgets
     foreach ($group->children_select() as $c_row_id => $c_widget) {
-      if (!isset($items[$c_row_id])) {
+      if (!isset($items[$c_row_id]) || !empty($items[$c_row_id]->is_deleted)) {
         $group->child_delete($c_row_id);
       }
     }

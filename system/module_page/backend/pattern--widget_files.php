@@ -94,6 +94,7 @@ namespace effcore {
       foreach ($items as $c_row_id => $c_item)
         $min_weight = min($min_weight, $c_item->weight);
       $new_item = new \stdClass;
+      $new_item->is_deleted = false;
       $new_item->weight = count($items) ? $min_weight - 5 : 0;
       $new_item->object = $value;
       $items[] = $new_item;
