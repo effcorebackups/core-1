@@ -13,7 +13,7 @@ forms
       # field 'Picture'
         - pictures|field_picture
             title: Pictures
-            max_file_size: 10K
+            max_file_size: 8K
             min_files_number: 0
             max_files_number: 3
             upload_dir: demo/
