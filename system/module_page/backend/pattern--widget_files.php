@@ -47,16 +47,14 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function widget_manage_get($item, $c_row_id) {
-    if (empty($item->is_deleted)) {
-      $widget = parent::widget_manage_get($item, $c_row_id);
-    # info markup
-      $info_markup = new markup('x-info',  [], [
-          'title' => new markup('x-title', [], (new text_multiline([$item->object->file, $item->object->get_current_state()], [], ' | ')) ),
-          'id'    => new markup('x-id',    [], (new file($item->object->get_current_path()))->name_get() )]);
-    # grouping of previous elements in widget 'manage'
-      $widget->child_insert($info_markup, 'info');
-      return $widget;
-    }
+    $widget = parent::widget_manage_get($item, $c_row_id);
+  # info markup
+    $info_markup = new markup('x-info',  [], [
+        'title' => new markup('x-title', [], (new text_multiline([$item->object->file, $item->object->get_current_state()], [], ' | ')) ),
+        'id'    => new markup('x-id',    [], (new file($item->object->get_current_path()))->name_get() )]);
+  # grouping of previous elements in widget 'manage'
+    $widget->child_insert($info_markup, 'info');
+    return $widget;
   }
 
   function widget_insert_get() {
