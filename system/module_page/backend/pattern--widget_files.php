@@ -76,7 +76,8 @@ namespace effcore {
     $field_file->max_files_number     = null;
     $field_file->has_validate_phase_3 = false;
     $field_file->build();
-    $field_file->name_set($this->name_complex.'__file');
+    $field_file->multiple_set();
+    $field_file->name_set($this->name_complex.'__file[]');
     $this->controls['#file'] = $field_file;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
@@ -97,26 +98,29 @@ namespace effcore {
     $values = field_file::on_validate_and_return_value($this->controls['#file'], $form, $npath);
     if (count($values)) {
       $items = $this->items_get();
-      $value = reset($values);
-      $min_weight = 0;
-      foreach ($items as $c_row_id => $c_item)
-        $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new \stdClass;
-      $new_item->is_deleted = false;
-      $new_item->weight = count($items) ? $min_weight - 5 : 0;
-      $new_item->object = $value;
-      $items[] = $new_item;
-      $new_item_id = core::array_key_last($items);
-      if ($value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_complex.'-'.$new_item_id)) {
-        $this->items_set($items);
-        message::insert(new text_multiline([
-          'Item of type "%%_type" was inserted.',
-          'Do not forget to save the changes!'], [
-          'type' => translation::apply($this->item_title)]));
-        return true;
-      } else {
-        $form->error_set();
+      foreach ($values as $c_value) {
+        $min_weight = 0;
+        foreach ($items as $c_row_id => $c_item)
+          $min_weight = min($min_weight, $c_item->weight);
+        $c_new_item = new \stdClass;
+        $c_new_item->is_deleted = false;
+        $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
+        $c_new_item->object = $c_value;
+        $items[] = $c_new_item;
+        $c_new_item_id = core::array_key_last($items);
+        if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_complex.'-'.$c_new_item_id)) {
+          $this->items_set($items);
+          message::insert(new text(
+            'Item of type "%%_type" with ID = "%%_id" was inserted.', [
+            'type' => translation::apply($this->item_title),
+            'id'   => $c_new_item_id]));
+        } else {
+          $form->error_set();
+          return;
+        }
       }
+      message::insert('Do not forget to save the changes!');
+      return true;
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
         'Field "%%_title" can not be blank!', ['title' => translation::apply($this->controls['#file']->title)]
