@@ -98,12 +98,12 @@ namespace effcore {
   }
 
   function render_description() {
-                                                            $result[] = $this->render_description_file_size_max     ();
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number   ();
-    if ($this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number   ();
-    if ($this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number   ();
-    if ($this->allowed_types                              ) $result[] = $this->render_description_allowed_types     ();
-    if ($this->allowed_characters_title                   ) $result[] = $this->render_description_allowed_characters();
+    $result[] = $this->render_description_file_size_max();
+    if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number();
+    if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number();
+    if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number();
+    if ($this->allowed_types           ) $result[] = $this->render_description_allowed_types     ();
+    if ($this->allowed_characters_title) $result[] = $this->render_description_allowed_characters();
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
       if ($this->description_state == 'hidden'                      ) return '';
@@ -332,8 +332,8 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
-    if ($field->min_files_number > count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline([                                            'Field should contain a minimum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
-    if ($field->max_files_number < count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too much files!', 'Field should contain a maximum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
+    if ($field->min_files_number !== null && $field->min_files_number > count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline([                                            'Field should contain a minimum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->min_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
+    if ($field->max_files_number !== null && $field->max_files_number < count($field->pool_fin) + count($field->pool_pre) + count($new_values)) {$field->error_set(new text_multiline(['You are trying to upload too much files!', 'Field should contain a maximum of %%_number file%%_plural{number,s}.', 'You have already uploaded %%_current_number file%%_plural{current_number,s}.'], ['number' => $field->max_files_number, 'current_number' => count($field->pool_fin) + count($field->pool_pre)] )); return;}
   # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {

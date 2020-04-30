@@ -13,8 +13,6 @@ namespace effcore {
   public $name_complex = 'widget_files';
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '5K';
-  public $min_files_number = 0;
-  public $max_files_number = 1;
   public $allowed_types = ['txt' => 'txt'];
   public $fixed_name = 'file-%%_instance_id_context-%%_item_id_context';
   public $fixed_type = null;
@@ -72,10 +70,10 @@ namespace effcore {
     $field_file = new field_file;
     $field_file->title = 'File';
     $field_file->max_file_size        = $this->max_file_size;
-    $field_file->min_files_number     = $this->min_files_number;
-    $field_file->max_files_number     = $this->max_files_number;
     $field_file->allowed_types        = $this->allowed_types;
     $field_file->cform                = $this->cform;
+    $field_file->min_files_number     = null;
+    $field_file->max_files_number     = null;
     $field_file->has_validate_phase_3 = false;
     $field_file->build();
     $field_file->name_set($this->name_complex.'__file');
