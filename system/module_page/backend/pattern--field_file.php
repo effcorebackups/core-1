@@ -64,7 +64,8 @@ namespace effcore {
   public $fixed_name;
   public $fixed_type;
   public $upload_dir = '';
-  public $has_validate_phase_3 = true;
+  public $has_on_validate         = true;
+  public $has_on_validate_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────
   public $pool_result = null;
   public $pool_fin = [];
@@ -290,22 +291,24 @@ namespace effcore {
   }
 
   static function on_validate($field, $form, $npath) {
-    $element = $field->child_select('element');
-    $name = $field->name_get();
-    $type = $field->type_get();
-    if ($name && $type) {
-      if ($field->disabled_get()) return true;
-      $field->pool_values_init_pre_from_cache();
-      $new_values = static::request_files_get($name);
-      static::sanitize($field, $form, $element, $new_values);
-      $result = static::validate_multiple($field, $form, $element, $new_values) &&
-                static::validate_upload  ($field, $form, $element, $new_values);
-      if ($result) $field->pool_values_init_new_from_form($new_values);
-      return $result;
+    if ($field->has_on_validate) {
+      $element = $field->child_select('element');
+      $name = $field->name_get();
+      $type = $field->type_get();
+      if ($name && $type) {
+        if ($field->disabled_get()) return true;
+        $field->pool_values_init_pre_from_cache();
+        $new_values = static::request_files_get($name);
+        static::sanitize($field, $form, $element, $new_values);
+        $result = static::validate_multiple($field, $form, $element, $new_values) &&
+                  static::validate_upload  ($field, $form, $element, $new_values);
+        if ($result) $field->pool_values_init_new_from_form($new_values);
+        return $result;
+      }
     }
   }
 
-  static function on_validate_and_return_value($field, $form, $npath) {
+  static function on_manual_validate_and_return_value($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
     $type = $field->type_get();
@@ -322,7 +325,7 @@ namespace effcore {
 
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
-    if ($field->has_validate_phase_3 && $field->pool_result == null && !$form->has_error()) {
+    if ($field->has_on_validate_phase_3 && $field->pool_result == null && !$form->has_error()) {
       if (!$field->pool_values_save()) {
         $field->error_set();
         return;

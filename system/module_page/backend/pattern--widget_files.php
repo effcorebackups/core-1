@@ -73,12 +73,13 @@ namespace effcore {
   # control for upload new file
     $field_file = new field_file;
     $field_file->title = 'File';
-    $field_file->max_file_size        = $this->max_file_size;
-    $field_file->allowed_types        = $this->allowed_types;
-    $field_file->cform                = $this->cform;
-    $field_file->min_files_number     = null;
-    $field_file->max_files_number     = null;
-    $field_file->has_validate_phase_3 = false;
+    $field_file->max_file_size    = $this->max_file_size;
+    $field_file->allowed_types    = $this->allowed_types;
+    $field_file->cform            = $this->cform;
+    $field_file->min_files_number = null;
+    $field_file->max_files_number = null;
+    $field_file->has_on_validate         = false;
+    $field_file->has_on_validate_phase_3 = false;
     $field_file->build();
     $field_file->multiple_set();
     $field_file->name_set($this->name_complex.'__file[]');
@@ -99,7 +100,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
-    $values = field_file::on_validate_and_return_value($this->controls['#file'], $form, $npath);
+    $values = field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);
     if (count($values)) {
       $items = $this->items_get();
       foreach ($values as $c_value) {
