@@ -348,6 +348,7 @@ translations
     - name: імя
     - Name: Імя
     - New field: Новае поле
+    - new item: новы элемент
     - New password should be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
     - New password: Новы пароль
     - New User Registration: Рэгістрацыя новага карыстальніка
