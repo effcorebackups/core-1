@@ -162,6 +162,16 @@ instances
     - url: https://telegram.org
     - target: _blank
     - module_id: profile_classic
+- logotype_tiktok_classic|instance
+    entity_name: logotype
+    values
+    - id: tiktok_classic
+    - title: Tiktok
+    - alt: Tiktok
+    - path: dynamic/files/logotypes/logotype-tiktok-classic.svgd
+    - url: https://tiktok.com
+    - target: _blank
+    - module_id: profile_classic
 - logotype_tumblr_classic|instance
     entity_name: logotype
     values
