@@ -41,6 +41,7 @@
   body[data-layout-id='original_classic'] a[data-id='logotype_classic'] img[src=''] {
     padding: 10px;
     border: 1px dotted %%_color_main;
+    color: %%_color_main;
     font-size: 1.5em}
 
   /* breadcrumbs */

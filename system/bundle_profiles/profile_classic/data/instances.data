@@ -8,7 +8,7 @@ instances
     - id: logotype_classic
     - title: logotype
     - alt: logotype
-    - path: dynamic/files/pictures/logotype-classic.svg
+    - path: dynamic/files/pictures/picture-logotype_classic.svg
     - url: /
     - is_embed: 1
     - module_id: profile_classic
@@ -18,7 +18,7 @@ instances
     - id: logotype_behance_classic
     - title: Behance
     - alt: Behance
-    - path: dynamic/files/pictures/logotype-behance-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_behance_classic.svgd
     - url: https://behance.net
     - target: _blank
     - module_id: profile_classic
@@ -28,7 +28,7 @@ instances
     - id: logotype_bitbucket_classic
     - title: Bitbucket
     - alt: Bitbucket
-    - path: dynamic/files/pictures/logotype-bitbucket-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_bitbucket_classic.svgd
     - url: https://bitbucket.org
     - target: _blank
     - module_id: profile_classic
@@ -38,7 +38,7 @@ instances
     - id: logotype_blogger_classic
     - title: Blogger
     - alt: Blogger
-    - path: dynamic/files/pictures/logotype-blogger-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_blogger_classic.svgd
     - url: https://blogger.com
     - target: _blank
     - module_id: profile_classic
@@ -48,7 +48,7 @@ instances
     - id: logotype_facebook_classic
     - title: Facebook
     - alt: Facebook
-    - path: dynamic/files/pictures/logotype-facebook-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_facebook_classic.svgd
     - url: https://facebook.com
     - target: _blank
     - module_id: profile_classic
@@ -58,7 +58,7 @@ instances
     - id: logotype_flickr_classic
     - title: Flickr
     - alt: Flickr
-    - path: dynamic/files/pictures/logotype-flickr-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_flickr_classic.svgd
     - url: https://flickr.com
     - target: _blank
     - module_id: profile_classic
@@ -68,7 +68,7 @@ instances
     - id: logotype_github_classic
     - title: Github
     - alt: Github
-    - path: dynamic/files/pictures/logotype-github-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_github_classic.svgd
     - url: https://github.com
     - target: _blank
     - module_id: profile_classic
@@ -78,7 +78,7 @@ instances
     - id: logotype_instagram_classic
     - title: Instagram
     - alt: Instagram
-    - path: dynamic/files/pictures/logotype-instagram-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_instagram_classic.svgd
     - url: https://instagram.com
     - target: _blank
     - module_id: profile_classic
@@ -88,7 +88,7 @@ instances
     - id: logotype_linkedin_classic
     - title: Linkedin
     - alt: Linkedin
-    - path: dynamic/files/pictures/logotype-linkedin-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_linkedin_classic.svgd
     - url: https://linkedin.com
     - target: _blank
     - module_id: profile_classic
@@ -98,7 +98,7 @@ instances
     - id: logotype_livejournal_classic
     - title: Livejournal
     - alt: Livejournal
-    - path: dynamic/files/pictures/logotype-livejournal-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_livejournal_classic.svgd
     - url: https://livejournal.com
     - target: _blank
     - module_id: profile_classic
@@ -108,7 +108,7 @@ instances
     - id: logotype_ok_classic
     - title: OK
     - alt: OK
-    - path: dynamic/files/pictures/logotype-ok-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_ok_classic.svgd
     - url: https://ok.ru
     - target: _blank
     - module_id: profile_classic
@@ -118,7 +118,7 @@ instances
     - id: logotype_pinterest_classic
     - title: Pinterest
     - alt: Pinterest
-    - path: dynamic/files/pictures/logotype-pinterest-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_pinterest_classic.svgd
     - url: https://pinterest.com
     - target: _blank
     - module_id: profile_classic
@@ -128,7 +128,7 @@ instances
     - id: logotype_reddit_classic
     - title: Reddit
     - alt: Reddit
-    - path: dynamic/files/pictures/logotype-reddit-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_reddit_classic.svgd
     - url: https://reddit.com
     - target: _blank
     - module_id: profile_classic
@@ -138,7 +138,7 @@ instances
     - id: logotype_skype_classic
     - title: Skype
     - alt: Skype
-    - path: dynamic/files/pictures/logotype-skype-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_skype_classic.svgd
     - url: https://skype.com
     - target: _blank
     - module_id: profile_classic
@@ -148,7 +148,7 @@ instances
     - id: logotype_soundcloud_classic
     - title: Soundcloud
     - alt: Soundcloud
-    - path: dynamic/files/pictures/logotype-soundcloud-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_soundcloud_classic.svgd
     - url: https://soundcloud.com
     - target: _blank
     - module_id: profile_classic
@@ -158,7 +158,7 @@ instances
     - id: logotype_telegram_classic
     - title: Telegram
     - alt: Telegram
-    - path: dynamic/files/pictures/logotype-telegram-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_telegram_classic.svgd
     - url: https://telegram.org
     - target: _blank
     - module_id: profile_classic
@@ -168,7 +168,7 @@ instances
     - id: logotype_tiktok_classic
     - title: Tiktok
     - alt: Tiktok
-    - path: dynamic/files/pictures/logotype-tiktok-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_tiktok_classic.svgd
     - url: https://tiktok.com
     - target: _blank
     - module_id: profile_classic
@@ -178,7 +178,7 @@ instances
     - id: logotype_tumblr_classic
     - title: Tumblr
     - alt: Tumblr
-    - path: dynamic/files/pictures/logotype-tumblr-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_tumblr_classic.svgd
     - url: https://tumblr.com
     - target: _blank
     - module_id: profile_classic
@@ -188,7 +188,7 @@ instances
     - id: logotype_twitter_classic
     - title: Twitter
     - alt: Twitter
-    - path: dynamic/files/pictures/logotype-twitter-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_twitter_classic.svgd
     - url: https://twitter.com
     - target: _blank
     - module_id: profile_classic
@@ -198,7 +198,7 @@ instances
     - id: logotype_viber_classic
     - title: Viber
     - alt: Viber
-    - path: dynamic/files/pictures/logotype-viber-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_viber_classic.svgd
     - url: https://viber.com
     - target: _blank
     - module_id: profile_classic
@@ -208,7 +208,7 @@ instances
     - id: logotype_vimeo_classic
     - title: Vimeo
     - alt: Vimeo
-    - path: dynamic/files/pictures/logotype-vimeo-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_vimeo_classic.svgd
     - url: https://vimeo.com
     - target: _blank
     - module_id: profile_classic
@@ -218,7 +218,7 @@ instances
     - id: logotype_vk_classic
     - title: VK
     - alt: VK
-    - path: dynamic/files/pictures/logotype-vk-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_vk_classic.svgd
     - url: https://vk.com
     - target: _blank
     - module_id: profile_classic
@@ -228,7 +228,7 @@ instances
     - id: logotype_whatsapp_classic
     - title: Whatsapp
     - alt: Whatsapp
-    - path: dynamic/files/pictures/logotype-whatsapp-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_whatsapp_classic.svgd
     - url: https://whatsapp.com
     - target: _blank
     - module_id: profile_classic
@@ -238,7 +238,7 @@ instances
     - id: logotype_yahoo_classic
     - title: Yahoo
     - alt: Yahoo
-    - path: dynamic/files/pictures/logotype-yahoo-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_yahoo_classic.svgd
     - url: https://yahoo.com
     - target: _blank
     - module_id: profile_classic
@@ -248,7 +248,7 @@ instances
     - id: logotype_youtube_classic
     - title: Youtube
     - alt: Youtube
-    - path: dynamic/files/pictures/logotype-youtube-classic.svgd
+    - path: dynamic/files/pictures/picture-logotype_youtube_classic.svgd
     - url: https://youtube.com
     - target: _blank
     - module_id: profile_classic
