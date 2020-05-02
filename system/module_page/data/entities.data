@@ -107,11 +107,11 @@ entities
         type: primary
         fields
         - =: id
-- logotype|entity
-    name: logotype
-    title: Logotype
-    title_plural: Logotypes
-    catalog_name: logotypes
+- picture|entity
+    name: picture
+    title: Picture
+    title_plural: Pictures
+    catalog_name: pictures
     managing_is_enabled: true
     has_button_insert_and_update: true
     has_parallel_checking: true
@@ -121,13 +121,13 @@ entities
     decorator_params
     - view_type: template
     - template: content
-    - template_row: logotype
+    - template_row: picture
     - template_row_mapping
-      - id: logotype.id
-      - title: logotype.title
-      - alt: logotype.alt
-      - src: logotype.path
-      - url: logotype.url
+      - id: picture.id
+      - title: picture.title
+      - alt: picture.alt
+      - src: picture.path
+      - url: picture.url
     fields
     - id
         title: ID
@@ -193,8 +193,8 @@ entities
         managing_control_class: \effcore\field_picture
         managing_control_properties
         - max_file_size: 500K
-        - upload_dir: logotypes/
-        - fixed_name: logotype-%%_instance_id_context
+        - upload_dir: pictures/
+        - fixed_name: picture-%%_instance_id_context
         - allowed_types
           - =: jpeg
           - =: jpg

@@ -22,10 +22,10 @@ templates
     name: form
     type: text
     data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
-- logotype
-    name: logotype
+- picture
+    name: picture
     type: text
-    data: <a data-type="logotype" data-id="%%_id" href="%%_url" title="%%_title" target="%%_target"><img src="%%_src" alt="%%_alt"/></a>
+    data: <a data-type="picture" data-id="%%_id" href="%%_url" title="%%_title" target="%%_target"><img src="%%_src" alt="%%_alt"/></a>
 - markup_html
     name: markup_html
     type: text

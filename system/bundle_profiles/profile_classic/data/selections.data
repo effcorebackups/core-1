@@ -5,47 +5,47 @@ selections
     template: content
     decorator_params
     - view_type: template
-    - template_row: logotype
+    - template_row: picture
     - template_row_mapping
-      - id: logotype.id
-      - title: logotype.title
-      - alt: logotype.alt
-      - src: logotype.path
-      - url: logotype.url
-      - target: logotype.target
+      - id: picture.id
+      - title: picture.title
+      - alt: picture.alt
+      - src: picture.path
+      - url: picture.url
+      - target: picture.target
     query_params
     - conditions
-      - id_!f: ~logotype.id
+      - id_!f: ~picture.id
       - id_in_begin: in (
       - id_in_!,
-        - 0_!v: twitter_classic
-        - 1_!v: facebook_classic
-        - 2_!v: instagram_classic
+        - 0_!v: logotype_twitter_classic
+        - 1_!v: logotype_facebook_classic
+        - 2_!v: logotype_instagram_classic
       - id_in_end: )
     fields
-    - logotype.id
+    - picture.id
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: id
-    - logotype.title
+    - picture.title
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: title
         is_apply_translation: true
-    - logotype.alt
+    - picture.alt
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: alt
         is_apply_translation: true
-    - logotype.path
+    - picture.path
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: path
-    - logotype.url
+    - picture.url
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: url
-    - logotype.target
+    - picture.target
         type: field
-        entity_name: logotype
+        entity_name: picture
         entity_field_name: target

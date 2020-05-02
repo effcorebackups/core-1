@@ -295,9 +295,10 @@ translations
     - Logic: Логика
     - login: вход
     - Login: Вход
-    - Logotype Main: Логотип Главный
     - Logotype: Логотип
+    - logotype: логотип
     - Logotypes: Логотипы
+    - logotypes: логотипы
     - logout: выход
     - Logout: Выход
     - LOST LAYOUT\: %%_id: ПОТЕРЯННЫЙ МАКЕТ: %%_id

@@ -37,8 +37,8 @@ namespace effcore\modules\page {
   static function on_part_presets_dynamic_build($event, $id = null) {
     if ($id === null                                  ) {foreach (entity::get('text')->instances_select() as $c_text)                                                                                             part_preset::insert('text_sql_'.$c_text->id, 'Texts', $c_text->description ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_text_sql', [], ['id' => $c_text->id], 0, 'page');}
     if ($id !== null && strpos($id, 'text_sql_') === 0) {                                                    $c_text = (new instance('text', ['id' => substr($id, strlen('text_sql_'))]))->select(); if ($c_text) part_preset::insert('text_sql_'.$c_text->id, 'Texts', $c_text->description ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_text_sql', [], ['id' => $c_text->id], 0, 'page');}
-    if ($id === null                                      ) {foreach (entity::get('logotype')->instances_select() as $c_logotype)                                                                                                         part_preset::insert('logotype_sql_'.$c_logotype->id, 'Logotypes', $c_logotype->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_logotype_sql', [], ['id' => $c_logotype->id], 0, 'page');}
-    if ($id !== null && strpos($id, 'logotype_sql_') === 0) {                                                        $c_logotype = (new instance('logotype', ['id' => substr($id, strlen('logotype_sql_'))]))->select(); if ($c_logotype) part_preset::insert('logotype_sql_'.$c_logotype->id, 'Logotypes', $c_logotype->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_logotype_sql', [], ['id' => $c_logotype->id], 0, 'page');}
+    if ($id === null                                     ) {foreach (entity::get('picture')->instances_select() as $c_picture)                                                                                                      part_preset::insert('picture_sql_'.$c_picture->id, 'Pictures', $c_picture->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_picture_sql', [], ['id' => $c_picture->id], 0, 'page');}
+    if ($id !== null && strpos($id, 'picture_sql_') === 0) {                                                       $c_picture = (new instance('picture', ['id' => substr($id, strlen('picture_sql_'))]))->select(); if ($c_picture) part_preset::insert('picture_sql_'.$c_picture->id, 'Pictures', $c_picture->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\page\\events_page::block_picture_sql', [], ['id' => $c_picture->id], 0, 'page');}
   }
 
   static function block_text_sql($page, $args) {
@@ -61,14 +61,14 @@ namespace effcore\modules\page {
     }
   }
 
-  static function block_logotype_sql($page, $args) {
+  static function block_picture_sql($page, $args) {
     if (!empty($args['id'])) {
-      $entity = entity::get('logotype');
+      $entity = entity::get('picture');
       $selection = new selection;
-      $selection->id = 'logotype_'.$args['id'];
+      $selection->id = 'picture_'.$args['id'];
       $selection->template = 'content';
       $selection->decorator_params = $entity->decorator_params;
-      $selection->query_params['conditions'] = ['id_!f' => '~logotype.id', 'operator' => '=', 'id_!v' => $args['id']];
+      $selection->query_params['conditions'] = ['id_!f' => '~picture.id', 'operator' => '=', 'id_!v' => $args['id']];
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->managing_on_select_is_enabled)) {
           $selection->field_insert_entity(null,
