@@ -27,6 +27,40 @@ entities
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 1024
+        managing_selection_params
+        - is_apply_translation: true
+    - path
+        title: File
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_audio
+        managing_control_properties
+        - max_file_size: 30M
+        - upload_dir: audios/
+        - fixed_name: audio-%%_instance_id_context
+        managing_control_element_attributes_on_insert
+        - disabled: true
     - created
         title: Created
         type: datetime
@@ -618,6 +652,40 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
+        - disabled: true
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_element_attributes
+        - maxlength: 1024
+        managing_selection_params
+        - is_apply_translation: true
+    - path
+        title: File
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_video
+        managing_control_properties
+        - max_file_size: 1G
+        - upload_dir: videos/
+        - fixed_name: video-%%_instance_id_context
+        managing_control_element_attributes_on_insert
         - disabled: true
     - created
         title: Created
