@@ -35,13 +35,20 @@ tab_items
     action_name: content/audio
     title: Audios
     weight: 70
+- data_content_video|tab_item
+    id: data_content_video
+    id_parent: data_content_page
+    id_tab: data
+    action_name: content/video
+    title: Videos
+    weight: 65
 - data_content_gallery|tab_item
     id: data_content_gallery
     id_parent: data_content_page
     id_tab: data
     action_name: content/gallery
     title: Galleries
-    weight: 65
+    weight: 60
 # ─────────────────────────────────────────────────────────────────────
 - decoration_colors|tab_item
     id: decoration_colors

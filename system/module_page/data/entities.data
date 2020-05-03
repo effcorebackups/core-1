@@ -591,3 +591,59 @@ entities
         type: index
         fields
         - =: updated
+- video|entity
+    name: video
+    title: Video
+    title_plural: Videos
+    catalog_name: videos
+    managing_is_enabled: true
+    has_button_insert_and_update: true
+    has_parallel_checking: true
+    ws_is_embed: true
+    ws_module_id: true
+    ws_data: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
+        - is_validate_uniqueness: true
+        managing_control_element_attributes_on_update
+        - disabled: true
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
