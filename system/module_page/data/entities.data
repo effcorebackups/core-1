@@ -682,7 +682,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_video
         managing_control_properties
-        - max_file_size: 1G
+        - max_file_size: 500M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context
         managing_control_element_attributes_on_insert

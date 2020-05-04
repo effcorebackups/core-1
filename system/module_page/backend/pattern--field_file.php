@@ -92,9 +92,8 @@ namespace effcore {
 
   function file_size_max_get() {
     $bytes_1 = core::is_abbreviated_bytes($this->max_file_size) ?
-               core::abbreviated_to_bytes($this->max_file_size) : $this->max_file_size;
-    $bytes_2 = core::is_abbreviated_bytes(ini_get('upload_max_filesize')) ?
-               core::abbreviated_to_bytes(ini_get('upload_max_filesize')) : ini_get('upload_max_filesize');
+               core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
+    $bytes_2 = core::upload_max_filesize_bytes_get();
     return min($bytes_1, $bytes_2);
   }
 
