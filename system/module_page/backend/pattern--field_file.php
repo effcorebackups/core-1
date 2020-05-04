@@ -91,10 +91,17 @@ namespace effcore {
   }
 
   function file_size_max_get() {
-    $bytes_1 = core::is_abbreviated_bytes($this->max_file_size) ?
-               core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
-    $bytes_2 = core::upload_max_filesize_bytes_get();
-    return min($bytes_1, $bytes_2);
+    $sys = core::is_abbreviated_bytes($this->max_file_size) ?
+           core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
+    $php = core::upload_max_filesize_bytes_get();
+    return min($sys, $php);
+  }
+
+  function file_size_max_is_php_restriction() {
+    $sys = core::is_abbreviated_bytes($this->max_file_size) ?
+           core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
+    $php = core::upload_max_filesize_bytes_get();
+    return $sys < $php;
   }
 
   function render_description() {
@@ -113,12 +120,12 @@ namespace effcore {
     }
   }
 
-  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text('Maximum file size: %%_value',                                        ['value'      => locale::format_bytes($this->file_size_max_get())]));}
-  function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));   }
-  function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));   }
-  function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field should contain %%_number file%%_plural{number,s}.',            ['number'     =>               $this->min_files_number        ]));   }
-  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));   }
-  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));   }
+  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text($this->file_size_max_is_php_restriction() ? 'Maximum file size: %%_value' : 'Maximum file size: %%_value (PHP restriction)', ['value' => locale::format_bytes($this->file_size_max_get())]));}
+  function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
+  function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
+  function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field should contain %%_number file%%_plural{number,s}.',            ['number'     =>               $this->min_files_number        ]));}
+  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));}
+  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));}
 
   ############
   ### pool ###

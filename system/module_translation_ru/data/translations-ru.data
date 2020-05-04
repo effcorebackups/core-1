@@ -35,6 +35,7 @@ translations
     - Audios: Аудио
     - audios: аудио
     - Avatar: Аватар
+    - B: Б
     - Belarusian: Белорусский
     - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
@@ -314,6 +315,7 @@ translations
     - Managers: Управляющие
     - Match: Соответствие
     - Maximum field value\: %%_value: Максимальное значение поля: %%_value
+    - Maximum file size\: %%_value (PHP restriction): Максимальный размер файла: %%_value (ограничение PHP)
     - Maximum file size\: %%_value: Максимальный размер файла: %%_value
     - Maximum width: Максимальная ширина
     - Memory for PHP (bytes): Память для PHP (байты)

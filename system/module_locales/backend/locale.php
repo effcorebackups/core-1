@@ -37,7 +37,8 @@ namespace effcore {
       'KiB' => ' '.translation::apply('KiB'),
       'MiB' => ' '.translation::apply('MiB'),
       'GiB' => ' '.translation::apply('GiB'),
-      'TiB' => ' '.translation::apply('TiB')];
+      'TiB' => ' '.translation::apply('TiB'),
+        'B' => ' '.translation::apply(  'B')];
     return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
   }
 
