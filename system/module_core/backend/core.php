@@ -741,6 +741,13 @@ namespace effcore {
     else return $bytes.'B';
   }
 
+  static function upload_max_filesize_php_get() {
+    $value = ini_get('upload_max_filesize');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
   ############################
   ### functionality for ip ###
   ############################
