@@ -208,6 +208,10 @@
     font-size: 1.3em;
     text-align: center}
 
+  /* media */
+
+  audio {display: block; margin: 10px 0}
+
   /* block */
 
   section {display: block; margin: 70px 0}
