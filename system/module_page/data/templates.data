@@ -29,7 +29,7 @@ templates
 - audio
     name: audio
     type: text
-    data: <audio src="%%_src" preload="metadata" controls></audio>
+    data: <audio src="%%_src" preload="metadata" controls data-player-name="default"></audio>
 - markup_html
     name: markup_html
     type: text

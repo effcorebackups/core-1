@@ -35,4 +35,12 @@
     <line style="stroke: %%_color_button_text; stroke-width: 4px; stroke-linecap: round" x1="12" y1="110" x2="32" y2="110"/>
   </g>
 
+  <g id="icon_play">
+    <path style="fill: %%_color_button_text; stroke: none" d="M 16,166 32,154 16,142 Z"/>
+  </g>
+
+  <g id="icon_pause">
+    <path style="fill: %%_color_button_text; stroke: none" d="m 24,208 h 6 v -20 h -6 z m -10,0 h 6 v -20 h -6 z"/>
+  </g>
+
 </svg>
