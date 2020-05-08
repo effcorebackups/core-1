@@ -45,7 +45,7 @@ namespace effcore\modules\core {
       'subscr_to_upd' => ['title' => 'Subscription to updates', 'value' => 'not applicable'                                                                                                                                   ],
       'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_updates ? [$is_required_updates_sticker, new text(' → '), $is_required_updates_fixlink] : [$is_required_updates_sticker])],
       'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ],
-      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ]]];
+      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ] ]];
     return new block('Service', ['data-id' => 'info_service', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
@@ -58,14 +58,16 @@ namespace effcore\modules\core {
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
-      'web_server'       => ['title' => 'Web server',             'value' => core::server_get_software()                              ],
-      'php_version'      => ['title' => 'PHP version',            'value' => phpversion().' ('.php_uname('m').')'                     ],
-      'opcache_state'    => ['title' => 'PHP OPCache is enabled', 'value' => $is_enabled_opcache_sticker                              ],
-      'storage_sql'      => ['title' => 'SQL storage',            'value' => $storage_sql->title_get().' '.$storage_sql->version_get()],
-      'operating_system' => ['title' => 'Operating System',       'value' => php_uname('s').' | '.php_uname('v')                      ],
-      'hostname'         => ['title' => 'Hostname',               'value' => php_uname('n')                                           ],
-      'timezone'         => ['title' => 'Time zone',              'value' => date_default_timezone_get()                              ],
-      'datetime'         => ['title' => 'UTC date/time',          'value' => core::datetime_get()                                     ]]];
+      'web_server'          => ['title' => 'Web server',              'value' => core::server_get_software()                                ],
+      'php_version'         => ['title' => 'PHP version',             'value' => phpversion().' ('.php_uname('m').')'                       ],
+      'opcache_state'       => ['title' => 'PHP OPCache is enabled',  'value' => $is_enabled_opcache_sticker                                ],
+      'upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => locale::format_bytes(core::upload_max_filesize_bytes_get())],
+      'post_max_size'       => ['title' => 'PHP post_max_size',       'value' => locale::format_bytes(core::post_max_size_bytes_get())      ],
+      'storage_sql'         => ['title' => 'SQL storage',             'value' => $storage_sql->title_get().' '.$storage_sql->version_get()  ],
+      'operating_system'    => ['title' => 'Operating System',        'value' => php_uname('s').' | '.php_uname('v')                        ],
+      'hostname'            => ['title' => 'Hostname',                'value' => php_uname('n')                                             ],
+      'timezone'            => ['title' => 'Time zone',               'value' => date_default_timezone_get()                                ],
+      'datetime'            => ['title' => 'UTC date/time',           'value' => core::datetime_get()                                       ] ]];
     return new block('Server', ['data-id' => 'info_server', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);

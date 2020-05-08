@@ -748,6 +748,13 @@ namespace effcore {
     else return (int)$value;
   }
 
+  static function post_max_size_bytes_get() {
+    $value = ini_get('post_max_size');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
   ############################
   ### functionality for ip ###
   ############################

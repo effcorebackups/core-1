@@ -172,7 +172,7 @@ namespace effcore\modules\demo {
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
                     'cell-1' => ['value' => 'value 3.1'],
                     'cell-2' => ['value' => 'value 3.2'],
-                    'cell-3' => ['value' => ''         ]]];
+                    'cell-3' => ['value' => ''         ]] ];
   # ─────────────────────────────────────────────────────────────────────
   # table-dl
   # ─────────────────────────────────────────────────────────────────────
@@ -214,7 +214,7 @@ namespace effcore\modules\demo {
       'rowid-3' => ['attributes' => ['data-row_attribute' => 'value-3', 'class' => ['row_class-3' => 'row_class-3']],
                     'field-1' => ['value' => 'value 3.1'],
                     'field-2' => ['value' => 'value 3.2'],
-                    'field-3' => ['value' => ''         ]]];
+                    'field-3' => ['value' => ''         ]] ];
   # ─────────────────────────────────────────────────────────────────────
   # dl (definition list)
   # ─────────────────────────────────────────────────────────────────────

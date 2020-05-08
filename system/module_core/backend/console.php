@@ -83,7 +83,7 @@ namespace effcore {
       'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
       'memory'   => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
       'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
-      'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ]]];
+      'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ] ]];
     return new block('Current page information', ['data-id' => 'info', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
