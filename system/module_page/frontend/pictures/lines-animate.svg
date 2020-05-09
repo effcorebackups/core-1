@@ -21,10 +21,12 @@
   </metadata>
 
   <g id="lines">
-    <line id="line_1" x1="55" y1="85" x2="85" y2="55" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
-    <line id="line_2" x1="15" y1="85" x2="85" y2="15" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
-    <line id="line_3" x1="-5" y1="65" x2="65" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
-    <line id="line_4" x1="-5" y1="25" x2="25" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <line id="line-1" x1="-55" y1="85" x2= "35" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <line id="line-2" x1="-15" y1="85" x2= "75" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <line id="line-3" x1= "25" y1="85" x2="115" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <line id="line-4" x1= "65" y1="85" x2="155" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <line id="line-5" x1="-95" y1="85" x2= "-5" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
+    <animateTransform attributeType="XML" attributeName="transform" type="translate" from="0 0" to="40 0" dur="1s" repeatCount="indefinite"/>
   </g>
 
 </svg>
