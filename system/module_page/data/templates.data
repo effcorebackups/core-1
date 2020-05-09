@@ -6,6 +6,10 @@ templates
     name: actions_list
     type: text
     data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
+- audio
+    name: audio
+    type: text
+    data: <audio src="%%_src" preload="metadata" controls data-player-name="default"></audio>
 - block
     name: block
     type: text
@@ -26,10 +30,6 @@ templates
     name: picture
     type: text
     data: <a data-type="picture" data-id="%%_id" href="%%_url" title="%%_title" target="%%_target"><img src="%%_src" alt="%%_alt"/></a>
-- audio
-    name: audio
-    type: text
-    data: <audio src="%%_src" preload="metadata" controls data-player-name="default"></audio>
 - markup_html
     name: markup_html
     type: text
@@ -50,6 +50,10 @@ templates
     name: text
     type: text
     data: %%_text
+- video
+    name: video
+    type: text
+    data: <video src="%%_src" preload="metadata" poster="%%_poster" controls></video>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────

@@ -642,6 +642,12 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: video
+    - template_row_mapping
+      - src: video.path
     fields
     - id
         title: ID
