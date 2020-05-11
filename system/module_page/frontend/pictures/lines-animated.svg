@@ -26,7 +26,7 @@
     <line id="line-3" x1= "25" y1="85" x2="115" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
     <line id="line-4" x1= "65" y1="85" x2="155" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
     <line id="line-5" x1="-95" y1="85" x2= "-5" y2="-5" style="stroke: white; stroke-opacity: .08; stroke-width: 14px"/>
-    <animateTransform attributeType="XML" attributeName="transform" type="translate" from="0 0" to="40 0" dur="1s" repeatCount="indefinite"/>
+    <animateTransform attributeType="XML" attributeName="transform" type="translate" from="0 0" to="-40 0" dur=".3s" repeatCount="indefinite"/>
   </g>
 
 </svg>

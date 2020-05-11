@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
       c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
     }, false);
-    c_audio.addEventListener('pause',          function(){c_player.removeAttribute('data-is-playing');      }, false);
     c_audio.addEventListener('play',           function(){c_player.   setAttribute('data-is-playing', true);}, false);
+    c_audio.addEventListener('pause',          function(){c_player.removeAttribute('data-is-playing');      }, false);
     c_audio.addEventListener('timeupdate',     function(){updateTimeInfo();}, false);
     c_audio.addEventListener('loadedmetadata', function(){updateTimeInfo();}, false);
     var updateTimeInfo = function(){
