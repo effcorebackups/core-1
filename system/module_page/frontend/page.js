@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_time         = document.createElement('x-time');
     var c_time_elpsd   = document.createElement('x-time-elapsed');
     var c_time_total   = document.createElement('x-time-total');
+    var c_timerId      = null;
     var updateTimeInfo = function(){
       if (c_audio.duration) {
         var time_cur =     Math.floor(c_audio.currentTime);
@@ -37,10 +38,17 @@ document.addEventListener('DOMContentLoaded', function(){
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
     c_button_play.value = 'play';
-    c_audio.addEventListener('play',           function(){c_player.   setAttribute('data-is-playing',  true);});
-    c_audio.addEventListener('pause',          function(){c_player.removeAttribute('data-is-playing');       });
+    c_audio.addEventListener('progress', function(){
+      clearTimeout(c_timerId);
+      c_player.setAttribute('data-is-progressing', true);
+      c_timerId = setTimeout(function(){
+        c_player.removeAttribute('data-is-progressing');
+      }, 1000);
+    });
     c_audio.addEventListener('timeupdate',     updateTimeInfo);
     c_audio.addEventListener('loadedmetadata', updateTimeInfo);
+    c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', true);});
+    c_audio.addEventListener('pause',       function(){c_player.removeAttribute('data-is-playing');      });
     c_button_play.addEventListener('click', function(){
       if (c_audio.paused) c_audio.play ();
       else                c_audio.pause();
