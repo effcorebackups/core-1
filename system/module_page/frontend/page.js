@@ -37,18 +37,18 @@ document.addEventListener('DOMContentLoaded', function(){
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
     c_button_play.value = 'play';
-    c_audio.addEventListener('play',           function(){c_player.   setAttribute('data-is-playing', true);}, false);
-    c_audio.addEventListener('pause',          function(){c_player.removeAttribute('data-is-playing');      }, false);
-    c_audio.addEventListener('timeupdate',     updateTimeInfo, false);
-    c_audio.addEventListener('loadedmetadata', updateTimeInfo, false);
+    c_audio.addEventListener('play',           function(){c_player.   setAttribute('data-is-playing',  true);});
+    c_audio.addEventListener('pause',          function(){c_player.removeAttribute('data-is-playing');       });
+    c_audio.addEventListener('timeupdate',     updateTimeInfo);
+    c_audio.addEventListener('loadedmetadata', updateTimeInfo);
     c_button_play.addEventListener('click', function(){
       if (c_audio.paused) c_audio.play ();
       else                c_audio.pause();
-    }, false);
+    });
     c_timeline.addEventListener('click', function(event){
       var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
       c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
-    }, false);
+    });
   });
 
 });
