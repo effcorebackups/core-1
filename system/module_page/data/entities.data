@@ -648,6 +648,7 @@ entities
     - template_row: video
     - template_row_mapping
       - src: video.path
+      - poster: video.poster_path
     fields
     - id
         title: ID
@@ -697,6 +698,22 @@ entities
         - max_file_size: 500M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context
+        managing_control_element_attributes_on_insert
+        - disabled: true
+    - poster_path
+        title: Poster
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_picture
+        managing_control_properties
+        - max_file_size: 500K
+        - upload_dir: videos/
+        - fixed_name: video_poster-%%_instance_id_context
         managing_control_element_attributes_on_insert
         - disabled: true
     - created
