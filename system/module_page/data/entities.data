@@ -52,7 +52,7 @@ entities
         managing_selection_params
         - is_apply_translation: true
     - path
-        title: File
+        title: Audio
         type: varchar
         size: 1024
         collate: nocase
@@ -463,7 +463,7 @@ entities
         managing_selection_params
         - is_apply_translation: true
     - path
-        title: File
+        title: Picture
         type: varchar
         size: 1024
         collate: nocase
@@ -685,7 +685,7 @@ entities
         managing_selection_params
         - is_apply_translation: true
     - path
-        title: File
+        title: Video
         type: varchar
         size: 1024
         collate: nocase

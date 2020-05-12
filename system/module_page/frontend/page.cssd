@@ -226,7 +226,12 @@
   x-audio-player[data-is-loadedmetadata='true'] x-timeline {cursor: pointer}
   x-audio-player[data-is-progressing='true'] x-timeline {background-image: url('pictures/lines-animated.svg'); background-size: 20px 20px}
 
-  video {display: block; margin: 10px 0; border: 1px solid %%_color_main}
+  video {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    background: url('pictures/lines.svg') -10px 0}
 
   /* block */
 
