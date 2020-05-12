@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_time_elpsd   = document.createElement('x-time-elapsed');
     var c_time_total   = document.createElement('x-time-total');
     var c_timerId      = null;
+    var c_is_init      = null;
     var on_updateTimeInfo = function(){
-      if (c_audio.duration) {
+      if (!isNaN(c_audio.duration)) {
         var time_cur =     Math.floor(c_audio.currentTime);
         var time_ttl =     Math.floor(c_audio.duration);
         var h_cur =        Math.floor(time_cur /    3600);
@@ -28,13 +29,15 @@ document.addEventListener('DOMContentLoaded', function(){
         c_trackpos.style.width = Math.floor(c_audio.currentTime / c_audio.duration * 100) + '%';
         c_time_elpsd.innerText = h_cur + ':' + m_cur + ':' + s_cur;
         c_time_total.innerText = h_ttl + ':' + m_ttl + ':' + s_ttl;
+        if (!c_is_init) {
+          c_is_init = true;
+          c_player.setAttribute('data-is-loadedmetadata', true);
+          c_timeline.addEventListener('click', function(event){
+            var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
+            c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
+          });
+        }
       }
-    }
-    var on_clickTimeline = function(event){
-      if (!isNaN(c_audio.duration)) {
-        var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
-        c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
-      } 
     }
     c_player.append(c_button_play, c_timeline, c_time);
     c_timeline.append(c_trackpos);
@@ -44,13 +47,8 @@ document.addEventListener('DOMContentLoaded', function(){
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
     c_button_play.value = 'play';
-    c_audio.addEventListener('progress', function(){
-      clearTimeout(c_timerId);
-      c_player.setAttribute('data-is-progressing', true);
-      c_timerId = setTimeout(function(){
-        c_player.removeAttribute('data-is-progressing');
-      }, 1000);
-    });
+    c_audio.addEventListener('loadedmetadata', on_updateTimeInfo);
+    c_audio.addEventListener('timeupdate',     on_updateTimeInfo);
     c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', true);});
     c_audio.addEventListener('pause',       function(){c_player.removeAttribute('data-is-playing');});
     c_audio.addEventListener('ended',       function(){c_player.removeAttribute('data-is-playing'); /* IE fix → */ c_audio.pause();});
@@ -58,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function(){
       if (c_audio.paused) c_audio.play ();
       else                c_audio.pause();
     });
-    c_audio.addEventListener('timeupdate', on_updateTimeInfo);
-    c_audio.addEventListener('loadedmetadata', function(){
-      c_player.setAttribute('data-is-loadedmetadata', true);
-      c_timeline.removeEventListener('click', on_clickTimeline);
-      c_timeline.   addEventListener('click', on_clickTimeline);
-      on_updateTimeInfo();
+    c_audio.addEventListener('progress', function(){
+      clearTimeout(c_timerId);
+      c_player.setAttribute('data-is-progressing', true);
+      c_timerId = setTimeout(function(){
+        c_player.removeAttribute('data-is-progressing');
+      }, 1000);
     });
   });
 
