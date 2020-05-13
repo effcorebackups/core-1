@@ -22,10 +22,9 @@ namespace effcore {
   public $title_plural;
   public $managing_is_enabled = false;
   public $managing_group_id = 'content';
-  public $decorator_view_type_single = 'ul';
-  public $decorator_view_type_multiple = 'table-adaptive';
-  public $selection_params_for_managing = [];
-  public $selection_params              = [];
+  public $selection_params_for_managing          = [];
+  public $selection_params_for_managing_multiple = [];
+  public $selection_params                       = [];
 
   function _postparse() {
   # insert field 'is_embed'

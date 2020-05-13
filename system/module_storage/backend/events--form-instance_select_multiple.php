@@ -26,9 +26,10 @@ namespace effcore\modules\storage {
       $selection = new selection;
       $selection->id = 'instance_select_multiple-'.$entity->name;
       $selection->pager_is_enabled = true;
-      foreach ($entity->selection_params_for_managing as $c_key => $c_value)
-        $selection->                                    {$c_key} = $c_value;
-        $selection->decorator_params['view_type'] = $entity->decorator_view_type_multiple;
+      foreach ($entity->selection_params_for_managing_multiple as $c_key => $c_value)
+        $selection->                                             {$c_key} = $c_value;
+      if (empty($selection->decorator_params['view_type']))
+                $selection->decorator_params['view_type'] = 'table-adaptive';
       $form->_selection = $selection;
       $has_visible_fields = false;
       foreach ($entity->fields as $c_name => $c_field) {
