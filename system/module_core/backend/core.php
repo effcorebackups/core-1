@@ -232,16 +232,16 @@ namespace effcore {
     }
   }
 
-  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $key_wrapper = '', $value_wrapper = '"') {
+  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
     $result = [];
-    foreach ((array)$data as $c_key => $c_value) {
-      if ($is_xml_style && $c_value === true) $c_value = $c_key;
+    foreach ((array)$data as $c_name => $c_value) {
+      if ($is_xml_style && $c_value === true) $c_value = $c_name;
       switch (gettype($c_value)) {
-        case 'NULL'   :                                                                                                                                                                                         break;
-        case 'boolean': if ($c_value) $result[] = $key_wrapper.$c_key.$key_wrapper;                                                                                                                             break;
-        case 'array'  :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
-        case 'object' :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
-        default       :               $result[] = $key_wrapper.$c_key.$key_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
+        case 'NULL'   :                                                                                                                                                                                            break;
+        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                             break;
+        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
+        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
+        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
       }
     }
     if ($join_part) return implode($join_part, $result);

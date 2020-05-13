@@ -27,7 +27,7 @@ namespace effcore {
   protected $args         = [];
   protected $used_dpaths  = [];
 
-  function args_set($key, $value) {$this->args[$key] = $value;}
+  function args_set($name, $value) {$this->args[$name] = $value;}
   function args_get($id = null) {
     return $id ? ($this->args[$id] ?? null) :
                   $this->args;

@@ -24,24 +24,24 @@ namespace effcore {
   ### attributes ###
   ##################
 
-  function attribute_select($key, $scope = 'attributes') {
-    return $this->{$scope}[$key] ?? null;
+  function attribute_select($name, $scope = 'attributes') {
+    return $this->{$scope}[$name] ?? null;
   }
 
   function attributes_select($scope = 'attributes') {
     return $this->{$scope};
   }
 
-  function attribute_insert($key, $data, $scope = 'attributes') {
+  function attribute_insert($name, $data, $scope = 'attributes') {
     if (is_array($data))
       foreach ($data as $c_key => $c_value)
-         $this->{$scope}[$key][$c_key] = $c_value;
-    else $this->{$scope}[$key]         = $data;
+         $this->{$scope}[$name][$c_key] = $c_value;
+    else $this->{$scope}[$name]         = $data;
     return $this;
   }
 
-  function attribute_delete($key, $scope = 'attributes') {
-    unset($this->{$scope}[$key]);
+  function attribute_delete($name, $scope = 'attributes') {
+    unset($this->{$scope}[$name]);
     return $this;
   }
 
