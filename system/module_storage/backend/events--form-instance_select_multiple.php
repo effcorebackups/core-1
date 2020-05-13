@@ -26,8 +26,8 @@ namespace effcore\modules\storage {
       $selection = new selection;
       $selection->id = 'instance_select_multiple-'.$entity->name;
       $selection->pager_is_enabled = true;
-      foreach ($entity->managing_selection_params as $c_key => $c_value)
-        $selection->                                {$c_key} = $c_value;
+      foreach ($entity->selection_params_for_managing as $c_key => $c_value)
+        $selection->                                    {$c_key} = $c_value;
         $selection->decorator_params['view_type'] = $entity->decorator_view_type_multiple;
       $form->_selection = $selection;
       $has_visible_fields = false;

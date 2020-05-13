@@ -24,7 +24,8 @@ namespace effcore {
   public $managing_group_id = 'content';
   public $decorator_view_type_single = 'ul';
   public $decorator_view_type_multiple = 'table-adaptive';
-  public $managing_selection_params = [];
+  public $selection_params_for_managing = [];
+  public $selection_params              = [];
 
   function _postparse() {
   # insert field 'is_embed'

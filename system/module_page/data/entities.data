@@ -617,6 +617,8 @@ entities
         - required: false
         - minlength: false
         - maxlength: false
+        selection_params
+        - is_apply_translation: true
     - created
         title: Created
         type: datetime

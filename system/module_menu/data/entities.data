@@ -110,7 +110,7 @@ entities
     ws_module_id: true
     ws_data: true
     decorator_view_type_multiple: tree
-    managing_selection_params
+    selection_params_for_managing
     - decorator_params
       - tree_visualization_mode: decorated-rearrangeable
       - tree_mapping
@@ -188,6 +188,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        selection_params
+        - is_apply_translation: true
     - url
         title: URL
         type: varchar
