@@ -34,7 +34,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - weight
         title: Weight
@@ -115,7 +115,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes_on_insert
         - value: default text
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
@@ -168,7 +168,7 @@ entities
         managing_control_properties_on_insert
         - selected
           - =: 0
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
@@ -238,7 +238,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - is_validate_uniqueness: true
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     constraints
     # ─────────────────────────────────────────────────────────────────────
@@ -434,7 +434,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_logic
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - created
         title: Created

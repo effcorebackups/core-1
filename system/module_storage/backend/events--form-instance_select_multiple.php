@@ -35,7 +35,7 @@ namespace effcore\modules\storage {
         if (!empty($c_field->managing_on_select_multiple_is_enabled)) {
           $has_visible_fields = true;
           $selection->field_insert_entity(null,
-            $entity->name, $c_name, $c_field->managing_selection_params ?? []
+            $entity->name, $c_name, $c_field->selection_params ?? []
           );
         }
       }

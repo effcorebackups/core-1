@@ -41,7 +41,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - title_is_visible
         title: Title is visible
@@ -55,7 +55,7 @@ entities
         managing_control_properties_on_insert
         - selected
           - =: 1
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - created
         title: Created

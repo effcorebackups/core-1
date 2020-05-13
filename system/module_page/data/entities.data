@@ -50,7 +50,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - path
         title: Audio
@@ -188,7 +188,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - items
         title: Items
@@ -277,7 +277,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - url
         title: URL
@@ -302,7 +302,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - lang_code
         title: Language
@@ -455,7 +455,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - alt
         title: Alternative text
@@ -473,7 +473,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 64
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - path
         title: Picture
@@ -602,7 +602,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - text
         title: Text
@@ -697,7 +697,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - path
         title: Video

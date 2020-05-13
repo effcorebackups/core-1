@@ -43,7 +43,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        managing_selection_params
+        selection_params
         - is_apply_translation: true
     - fields
         title: Fields
