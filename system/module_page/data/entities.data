@@ -10,12 +10,13 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: audio
-    - template_row_mapping
-      - src: audio.path
+    selection_params
+      decorator_params
+      - view_type: template
+      - template: content
+      - template_row: audio
+      - template_row_mapping
+        - src: audio.path
     fields
     - id
         title: ID
@@ -410,16 +411,17 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: picture
-    - template_row_mapping
-      - id: picture.id
-      - title: picture.title
-      - alt: picture.alt
-      - src: picture.path
-      - url: picture.url
+    selection_params
+      decorator_params
+      - view_type: template
+      - template: content
+      - template_row: picture
+      - template_row_mapping
+        - id: picture.id
+        - title: picture.title
+        - alt: picture.alt
+        - src: picture.path
+        - url: picture.url
     fields
     - id
         title: ID
@@ -560,12 +562,13 @@ entities
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: text
-    - template_row_mapping
-      - text: text.text
+    selection_params
+      decorator_params
+      - view_type: template
+      - template: content
+      - template_row: text
+      - template_row_mapping
+        - text: text.text
     fields
     - id
         title: ID
@@ -653,13 +656,14 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
-    decorator_params
-    - view_type: template
-    - template: content
-    - template_row: video
-    - template_row_mapping
-      - src: video.path
-      - poster: video.poster_path
+    selection_params
+      decorator_params
+      - view_type: template
+      - template: content
+      - template_row: video
+      - template_row_mapping
+        - src: video.path
+        - poster: video.poster_path
     fields
     - id
         title: ID
