@@ -23,6 +23,14 @@ namespace effcore\modules\page {
           language::code_get_current()
         );
       }
+      if ($entity->name == 'audio') {
+      # widget 'attributes'
+        $items['*attributes']->value_set_complex([
+          (object)['weight' =>   0, 'name' => 'controls',         'value' => ''        ],
+          (object)['weight' =>  -5, 'name' => 'preload',          'value' => 'metadata'],
+          (object)['weight' => -10, 'name' => 'data-player-name', 'value' => 'default' ]
+        ], true);
+      }
     }
   }
 
