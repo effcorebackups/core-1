@@ -36,13 +36,13 @@ entities
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
-    - title
-        title: Title
+    - description
+        title: Description
         type: varchar
         size: 1024
         collate: nocase
         not_null: true
-        check: (title <> '')
+        check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -669,8 +669,10 @@ entities
       - template: content
       - template_row: video
       - template_row_mapping
+        - id: video.id
         - src: video.path
         - poster: video.poster_path
+        - attributes: video.attributes
     fields
     - id
         title: ID
@@ -688,13 +690,13 @@ entities
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
-    - title
-        title: Title
+    - description
+        title: Description
         type: varchar
         size: 1024
         collate: nocase
         not_null: true
-        check: (title <> '')
+        check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
@@ -738,6 +740,20 @@ entities
         - fixed_name: video_poster-%%_instance_id_context
         managing_control_element_attributes_on_insert
         - disabled: true
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime

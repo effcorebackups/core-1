@@ -31,6 +31,13 @@ namespace effcore\modules\page {
           (object)['weight' => -10, 'name' => 'data-player-name', 'value' => 'default' ]
         ], true);
       }
+      if ($entity->name == 'video') {
+      # widget 'attributes'
+        $items['*attributes']->value_set_complex([
+          (object)['weight' =>   0, 'name' => 'controls', 'value' => ''        ],
+          (object)['weight' =>  -5, 'name' => 'preload',  'value' => 'metadata']
+        ], true);
+      }
     }
   }
 
