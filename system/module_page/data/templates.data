@@ -9,7 +9,7 @@ templates
 - audio
     name: audio
     type: text
-    data: <audio src="%%_src" preload="metadata" controls data-player-name="default"></audio>
+    data: <audio src="%%_src" preload="metadata" controls data-player-name="default" %%_attributes></audio>
 - block
     name: block
     type: text

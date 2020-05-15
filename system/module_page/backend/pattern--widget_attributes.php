@@ -75,7 +75,7 @@ namespace effcore {
     core::array_sort_by_weight($complex);
     $attributes = [];
     foreach ($complex as $c_complex)
-      $attributes[$c_complex->name] = $c_complex->name;
+      $attributes[$c_complex->name] = $c_complex->value;
     return core::data_to_attr($attributes);
   }
 
