@@ -16,6 +16,7 @@ entities
       - template: content
       - template_row: audio
       - template_row_mapping
+        - id: audio.id
         - src: audio.path
         - attributes: audio.attributes
     fields
