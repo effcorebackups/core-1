@@ -15,8 +15,8 @@ namespace effcore {
   ];
   public $values = [
     'not_selected' => '- no -',
-    '0'            => 'No',
-    '1'            => 'Yes'
+    '0'            => 'no',
+    '1'            => 'yes'
   ];
 
 }}

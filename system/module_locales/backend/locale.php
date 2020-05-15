@@ -42,4 +42,8 @@ namespace effcore {
     return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
   }
 
+  static function format_logic($value) {
+    return $value ? 'yes' : 'no';
+  }
+
 }}

@@ -140,7 +140,7 @@ namespace effcore {
                 if ($c_value !== null && $c_value_type == 'date'    ) $c_value = locale::format_date    ($c_value    );
                 if ($c_value !== null && $c_value_type == 'time'    ) $c_value = locale::format_time    ($c_value    );
                 if ($c_value !== null && $c_value_type == 'datetime') $c_value = locale::format_datetime($c_value    );
-                if ($c_value !== null && $c_value_type == 'boolean' ) $c_value =                         $c_value ? 'Yes' : 'No';
+                if ($c_value !== null && $c_value_type == 'boolean' ) $c_value = locale::format_logic   ($c_value    );
                 $c_row[$c_row_id] = [
                   'title'  => $c_title,
                   'value'  => $c_value,
