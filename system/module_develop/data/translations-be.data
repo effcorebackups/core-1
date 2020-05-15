@@ -37,6 +37,7 @@ translations
     - Data ID: ID даных
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
+    - default text: текст по умолчанию
     - Demo form: Дэманстрацыйная форма
     - Demo NoSQL: Дэманстрацыйнае NoSQL
     - Demo SQL: Дэманстрацыйнае SQL
@@ -136,6 +137,11 @@ translations
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - return = "%%_return": вяртанне = "%%_return"
     - Row ID: ID радка
+    - row with auto id = 1: радок з аўтаматычным ідэнтыфікатарам = 1
+    - row with auto id = 2: радок з аўтаматычным ідэнтыфікатарам = 2
+    - row with auto id = 3: радок з аўтаматычным ідэнтыфікатарам = 3
+    - row with default values: радок са значэннямі па змаўчанні
+    - row with non-default values: радок са значэннямі ня па змаўчанні
     - sec.: сек.
     - Selection list (multiple select): Спіс выбару (множны выбар)
     - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)

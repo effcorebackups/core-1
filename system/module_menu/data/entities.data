@@ -42,7 +42,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - title_is_visible
         title: Title is visible
         type: boolean
@@ -56,7 +56,7 @@ entities
         - selected
           - =: 1
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - created
         title: Created
         type: datetime
@@ -189,7 +189,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - url
         title: URL
         type: varchar

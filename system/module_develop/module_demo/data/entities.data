@@ -35,7 +35,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - weight
         title: Weight
         type: integer
@@ -116,7 +116,7 @@ entities
         managing_control_element_attributes_on_insert
         - value: default text
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -169,7 +169,7 @@ entities
         - selected
           - =: 0
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
@@ -239,7 +239,7 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
@@ -435,7 +435,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_logic
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - created
         title: Created
         type: datetime

@@ -31,12 +31,12 @@ selections
         type: field
         entity_name: picture
         entity_field_name: title
-        is_apply_translation: true
+        filter: \effcore\translation::apply
     - picture.alt
         type: field
         entity_name: picture
         entity_field_name: alt
-        is_apply_translation: true
+        filter: \effcore\translation::apply
     - picture.path
         type: field
         entity_name: picture

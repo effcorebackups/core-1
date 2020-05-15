@@ -51,7 +51,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - path
         title: Audio
         type: varchar
@@ -189,7 +189,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - items
         title: Items
         type: blob
@@ -278,7 +278,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - url
         title: URL
         type: varchar
@@ -303,7 +303,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - lang_code
         title: Language
         type: varchar
@@ -456,7 +456,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - alt
         title: Alternative text
         type: varchar
@@ -474,7 +474,7 @@ entities
         managing_control_element_attributes
         - maxlength: 64
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - path
         title: Picture
         type: varchar
@@ -603,7 +603,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - text
         title: Text
         type: blob
@@ -618,7 +618,7 @@ entities
         - minlength: false
         - maxlength: false
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - created
         title: Created
         type: datetime
@@ -700,7 +700,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - path
         title: Video
         type: varchar

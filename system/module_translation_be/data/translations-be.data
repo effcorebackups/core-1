@@ -287,6 +287,7 @@ translations
     - Light preset: Светлая перадусталёўка
     - Limit: Ліміт
     - Linear diagram: Лінейная дыяграма
+    - linear: лінейны/ая
     - Link active: Спасылка актыўная
     - Link: Спасылка
     - List: Спіс
@@ -423,6 +424,7 @@ translations
     - query: запыт
     - Question: Пытанне
     - Radial diagram: Кругавая дыяграма
+    - radial: кругавы/ая
     - Radiobutton: Перамыкач
     - Radiobuttons: Перамыкачы
     - Range: Дыяпазон
@@ -517,6 +519,7 @@ translations
     - Text area: Тэкставая вобласць
     - Text Copyright: Тэкст аўтарскіх правоў
     - Text direction: Напрамак тэксту
+    - Text Front: Тэкст Галоўнай
     - Text: Тэкст
     - Texts: Тэкст
     - The changes was deleted.: Змены былі выдалены.

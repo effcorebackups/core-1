@@ -44,7 +44,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - fields
         title: Fields
         type: blob

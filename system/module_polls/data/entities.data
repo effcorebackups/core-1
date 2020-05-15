@@ -37,7 +37,7 @@ entities
         managing_control_element_attributes
         - maxlength: 2048
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - expired
         title: Expiration date
         type: datetime
@@ -63,7 +63,7 @@ entities
           - linear: Linear diagram
           - radial: Radial diagram
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - user_type
         title: User type
         type: integer
@@ -92,7 +92,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - is_cancelable
         title: Voting can be canceled
         type: boolean
@@ -103,7 +103,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
         selection_params
-        - is_apply_translation: true
+        - filter: \effcore\translation::apply
     - created
         title: Created
         type: datetime
