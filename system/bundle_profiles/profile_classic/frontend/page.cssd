@@ -36,9 +36,9 @@
 
   /* logotype */
 
-  body[data-layout-id='original_classic'] a[data-id='logotype_classic']     {display: block; margin: 20px 0}
-  body[data-layout-id='original_classic'] a[data-id='logotype_classic'] img {display: block}
-  body[data-layout-id='original_classic'] a[data-id='logotype_classic'] img[src=''] {
+  body[data-layout-id='original_classic'] a[data-id='picture-logotype_classic']     {display: block; margin: 20px 20px 20px 0}
+  body[data-layout-id='original_classic'] a[data-id='picture-logotype_classic'] img {display: block}
+  body[data-layout-id='original_classic'] a[data-id='picture-logotype_classic'] img[src=''] {
     padding: 10px;
     border: 1px dotted %%_color_main;
     color: %%_color_main;
@@ -111,5 +111,5 @@
   /* social networks */
 
   body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] {line-height: 0; float: right}
-  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-type='picture']     {display: inline-block; margin: 0 0 0 10px}
-  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-type='picture'] img {display: inline-block; width: 30px; height: 30px}
+  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-id^='picture-']     {display: inline-block; margin: 0 0 0 10px}
+  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-id^='picture-'] img {display: inline-block; width: 30px; height: 30px}
