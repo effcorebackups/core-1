@@ -6,7 +6,7 @@ instances
     entity_name: picture
     values
     - id: logotype_classic
-    - title: logotype
+    - description: Logotype main
     - alt: logotype
     - path: dynamic/files/pictures/picture-logotype_classic.svg
     - url: /
@@ -16,7 +16,7 @@ instances
     entity_name: picture
     values
     - id: logotype_behance_classic
-    - title: Behance
+    - description: Logotype Behance
     - alt: Behance
     - path: dynamic/files/pictures/picture-logotype_behance_classic.svgd
     - url: https://behance.net
@@ -26,7 +26,7 @@ instances
     entity_name: picture
     values
     - id: logotype_bitbucket_classic
-    - title: Bitbucket
+    - description: Logotype Bitbucket
     - alt: Bitbucket
     - path: dynamic/files/pictures/picture-logotype_bitbucket_classic.svgd
     - url: https://bitbucket.org
@@ -36,7 +36,7 @@ instances
     entity_name: picture
     values
     - id: logotype_blogger_classic
-    - title: Blogger
+    - description: Logotype Blogger
     - alt: Blogger
     - path: dynamic/files/pictures/picture-logotype_blogger_classic.svgd
     - url: https://blogger.com
@@ -46,7 +46,7 @@ instances
     entity_name: picture
     values
     - id: logotype_facebook_classic
-    - title: Facebook
+    - description: Logotype Facebook
     - alt: Facebook
     - path: dynamic/files/pictures/picture-logotype_facebook_classic.svgd
     - url: https://facebook.com
@@ -56,7 +56,7 @@ instances
     entity_name: picture
     values
     - id: logotype_flickr_classic
-    - title: Flickr
+    - description: Logotype Flickr
     - alt: Flickr
     - path: dynamic/files/pictures/picture-logotype_flickr_classic.svgd
     - url: https://flickr.com
@@ -66,7 +66,7 @@ instances
     entity_name: picture
     values
     - id: logotype_github_classic
-    - title: Github
+    - description: Logotype Github
     - alt: Github
     - path: dynamic/files/pictures/picture-logotype_github_classic.svgd
     - url: https://github.com
@@ -76,7 +76,7 @@ instances
     entity_name: picture
     values
     - id: logotype_instagram_classic
-    - title: Instagram
+    - description: Logotype Instagram
     - alt: Instagram
     - path: dynamic/files/pictures/picture-logotype_instagram_classic.svgd
     - url: https://instagram.com
@@ -86,7 +86,7 @@ instances
     entity_name: picture
     values
     - id: logotype_linkedin_classic
-    - title: Linkedin
+    - description: Logotype Linkedin
     - alt: Linkedin
     - path: dynamic/files/pictures/picture-logotype_linkedin_classic.svgd
     - url: https://linkedin.com
@@ -96,7 +96,7 @@ instances
     entity_name: picture
     values
     - id: logotype_livejournal_classic
-    - title: Livejournal
+    - description: Logotype Livejournal
     - alt: Livejournal
     - path: dynamic/files/pictures/picture-logotype_livejournal_classic.svgd
     - url: https://livejournal.com
@@ -106,7 +106,7 @@ instances
     entity_name: picture
     values
     - id: logotype_ok_classic
-    - title: OK
+    - description: Logotype OK
     - alt: OK
     - path: dynamic/files/pictures/picture-logotype_ok_classic.svgd
     - url: https://ok.ru
@@ -116,7 +116,7 @@ instances
     entity_name: picture
     values
     - id: logotype_pinterest_classic
-    - title: Pinterest
+    - description: Logotype Pinterest
     - alt: Pinterest
     - path: dynamic/files/pictures/picture-logotype_pinterest_classic.svgd
     - url: https://pinterest.com
@@ -126,7 +126,7 @@ instances
     entity_name: picture
     values
     - id: logotype_reddit_classic
-    - title: Reddit
+    - description: Logotype Reddit
     - alt: Reddit
     - path: dynamic/files/pictures/picture-logotype_reddit_classic.svgd
     - url: https://reddit.com
@@ -136,7 +136,7 @@ instances
     entity_name: picture
     values
     - id: logotype_skype_classic
-    - title: Skype
+    - description: Logotype Skype
     - alt: Skype
     - path: dynamic/files/pictures/picture-logotype_skype_classic.svgd
     - url: https://skype.com
@@ -146,7 +146,7 @@ instances
     entity_name: picture
     values
     - id: logotype_soundcloud_classic
-    - title: Soundcloud
+    - description: Logotype Soundcloud
     - alt: Soundcloud
     - path: dynamic/files/pictures/picture-logotype_soundcloud_classic.svgd
     - url: https://soundcloud.com
@@ -156,7 +156,7 @@ instances
     entity_name: picture
     values
     - id: logotype_telegram_classic
-    - title: Telegram
+    - description: Logotype Telegram
     - alt: Telegram
     - path: dynamic/files/pictures/picture-logotype_telegram_classic.svgd
     - url: https://telegram.org
@@ -166,7 +166,7 @@ instances
     entity_name: picture
     values
     - id: logotype_tiktok_classic
-    - title: Tiktok
+    - description: Logotype Tiktok
     - alt: Tiktok
     - path: dynamic/files/pictures/picture-logotype_tiktok_classic.svgd
     - url: https://tiktok.com
@@ -176,7 +176,7 @@ instances
     entity_name: picture
     values
     - id: logotype_tumblr_classic
-    - title: Tumblr
+    - description: Logotype Tumblr
     - alt: Tumblr
     - path: dynamic/files/pictures/picture-logotype_tumblr_classic.svgd
     - url: https://tumblr.com
@@ -186,7 +186,7 @@ instances
     entity_name: picture
     values
     - id: logotype_twitter_classic
-    - title: Twitter
+    - description: Logotype Twitter
     - alt: Twitter
     - path: dynamic/files/pictures/picture-logotype_twitter_classic.svgd
     - url: https://twitter.com
@@ -196,7 +196,7 @@ instances
     entity_name: picture
     values
     - id: logotype_viber_classic
-    - title: Viber
+    - description: Logotype Viber
     - alt: Viber
     - path: dynamic/files/pictures/picture-logotype_viber_classic.svgd
     - url: https://viber.com
@@ -206,7 +206,7 @@ instances
     entity_name: picture
     values
     - id: logotype_vimeo_classic
-    - title: Vimeo
+    - description: Logotype Vimeo
     - alt: Vimeo
     - path: dynamic/files/pictures/picture-logotype_vimeo_classic.svgd
     - url: https://vimeo.com
@@ -216,7 +216,7 @@ instances
     entity_name: picture
     values
     - id: logotype_vk_classic
-    - title: VK
+    - description: Logotype VK
     - alt: VK
     - path: dynamic/files/pictures/picture-logotype_vk_classic.svgd
     - url: https://vk.com
@@ -226,7 +226,7 @@ instances
     entity_name: picture
     values
     - id: logotype_whatsapp_classic
-    - title: Whatsapp
+    - description: Logotype Whatsapp
     - alt: Whatsapp
     - path: dynamic/files/pictures/picture-logotype_whatsapp_classic.svgd
     - url: https://whatsapp.com
@@ -236,7 +236,7 @@ instances
     entity_name: picture
     values
     - id: logotype_yahoo_classic
-    - title: Yahoo
+    - description: Logotype Yahoo
     - alt: Yahoo
     - path: dynamic/files/pictures/picture-logotype_yahoo_classic.svgd
     - url: https://yahoo.com
@@ -246,7 +246,7 @@ instances
     entity_name: picture
     values
     - id: logotype_youtube_classic
-    - title: Youtube
+    - description: Logotype Youtube
     - alt: Youtube
     - path: dynamic/files/pictures/picture-logotype_youtube_classic.svgd
     - url: https://youtube.com

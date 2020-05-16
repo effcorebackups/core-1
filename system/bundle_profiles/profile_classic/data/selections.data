@@ -8,7 +8,6 @@ selections
     - template_row: picture
     - template_row_mapping
       - id: picture.id
-      - title: picture.title
       - alt: picture.alt
       - src: picture.path
       - url: picture.url
@@ -27,10 +26,10 @@ selections
         type: field
         entity_name: picture
         entity_field_name: id
-    - picture.title
+    - picture.description
         type: field
         entity_name: picture
-        entity_field_name: title
+        entity_field_name: description
         filter: \effcore\translation::apply
     - picture.alt
         type: field

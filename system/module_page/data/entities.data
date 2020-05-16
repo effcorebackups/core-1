@@ -423,7 +423,7 @@ entities
       - template_row: picture
       - template_row_mapping
         - id: picture.id
-        - title: picture.title
+        - description: picture.description
         - alt: picture.alt
         - src: picture.path
         - url: picture.url
@@ -444,13 +444,13 @@ entities
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
-    - title
-        title: Title
+    - description
+        title: Description
         type: varchar
         size: 1024
         collate: nocase
         not_null: true
-        check: (title <> '')
+        check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
         managing_on_select_multiple_is_enabled: true
