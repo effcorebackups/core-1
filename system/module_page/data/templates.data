@@ -29,7 +29,7 @@ templates
 - picture
     name: picture
     type: text
-    data: <a data-type="picture" data-id="%%_id" href="%%_url" target="%%_target"><img src="%%_src" alt="%%_alt"/></a>
+    data: <a data-type="picture" data-id="%%_id" href="%%_url" target="%%_target"><img src="%%_src" %%_attributes/></a>
 - markup_html
     name: markup_html
     type: text

@@ -424,7 +424,7 @@ entities
       - template_row_mapping
         - id: picture.id
         - description: picture.description
-        - alt: picture.alt
+        - attributes: picture.attributes
         - src: picture.path
         - url: picture.url
     fields
@@ -460,24 +460,6 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
-        - filter: \effcore\translation::apply
-    - alt
-        title: Alternative text
-        type: varchar
-        size: 64
-        collate: nocase
-        not_null: true
-        check: (alt <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_text
-        managing_control_element_attributes
-        - maxlength: 64
         selection_params
         - filter: \effcore\translation::apply
     - path
@@ -530,6 +512,20 @@ entities
         managing_control_element_attributes
         - required: false
         - maxlength: 64
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime
