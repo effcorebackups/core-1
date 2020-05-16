@@ -72,11 +72,13 @@ namespace effcore {
   ###########################
 
   static function complex_value_to_value($complex) {
-    core::array_sort_by_weight($complex);
-    $attributes = [];
-    foreach ($complex as $c_complex)
-      $attributes[$c_complex->name] = $c_complex->value;
-    return core::data_to_attr($attributes);
+    if ($complex) {
+      core::array_sort_by_weight($complex);
+      $attributes = [];
+      foreach ($complex as $c_complex)
+        $attributes[$c_complex->name] = $c_complex->value;
+      return core::data_to_attr($attributes);
+    }
   }
 
 }}

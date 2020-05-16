@@ -424,9 +424,10 @@ entities
       - template_row_mapping
         - id: picture.id
         - description: picture.description
-        - attributes: picture.attributes
         - src: picture.path
         - url: picture.url
+        - attributes: picture.attributes
+        - link_attributes: picture.link_attributes
     fields
     - id
         title: ID
@@ -497,21 +498,6 @@ entities
         managing_control_class: \effcore\field_url
         managing_control_element_attributes
         - required: false
-    - target
-        title: Target
-        type: varchar
-        size: 64
-        collate: nocase
-        default: _self
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_text
-        managing_control_element_attributes
-        - required: false
-        - maxlength: 64
     - attributes
         title: Attributes
         type: blob
@@ -524,6 +510,20 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
+        selection_params
+        - filter: \effcore\widget_attributes::complex_value_to_value
+    - link_attributes
+        title: Link attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: link_attributes
         selection_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created

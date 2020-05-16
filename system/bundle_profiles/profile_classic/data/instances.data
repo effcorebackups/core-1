@@ -23,13 +23,17 @@ instances
     - description: Logotype Behance
     - path: dynamic/files/pictures/picture-logotype_behance_classic.svgd
     - url: https://behance.net
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Behance
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_bitbucket_classic|instance
     entity_name: picture
     values
@@ -37,13 +41,17 @@ instances
     - description: Logotype Bitbucket
     - path: dynamic/files/pictures/picture-logotype_bitbucket_classic.svgd
     - url: https://bitbucket.org
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Bitbucket
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_blogger_classic|instance
     entity_name: picture
     values
@@ -51,13 +59,17 @@ instances
     - description: Logotype Blogger
     - path: dynamic/files/pictures/picture-logotype_blogger_classic.svgd
     - url: https://blogger.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Blogger
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_facebook_classic|instance
     entity_name: picture
     values
@@ -65,13 +77,17 @@ instances
     - description: Logotype Facebook
     - path: dynamic/files/pictures/picture-logotype_facebook_classic.svgd
     - url: https://facebook.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Facebook
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_flickr_classic|instance
     entity_name: picture
     values
@@ -79,13 +95,17 @@ instances
     - description: Logotype Flickr
     - path: dynamic/files/pictures/picture-logotype_flickr_classic.svgd
     - url: https://flickr.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Flickr
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_github_classic|instance
     entity_name: picture
     values
@@ -93,13 +113,17 @@ instances
     - description: Logotype Github
     - path: dynamic/files/pictures/picture-logotype_github_classic.svgd
     - url: https://github.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Github
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_instagram_classic|instance
     entity_name: picture
     values
@@ -107,13 +131,17 @@ instances
     - description: Logotype Instagram
     - path: dynamic/files/pictures/picture-logotype_instagram_classic.svgd
     - url: https://instagram.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Instagram
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_linkedin_classic|instance
     entity_name: picture
     values
@@ -121,13 +149,17 @@ instances
     - description: Logotype Linkedin
     - path: dynamic/files/pictures/picture-logotype_linkedin_classic.svgd
     - url: https://linkedin.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Linkedin
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_livejournal_classic|instance
     entity_name: picture
     values
@@ -135,13 +167,17 @@ instances
     - description: Logotype Livejournal
     - path: dynamic/files/pictures/picture-logotype_livejournal_classic.svgd
     - url: https://livejournal.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Livejournal
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_ok_classic|instance
     entity_name: picture
     values
@@ -149,13 +185,17 @@ instances
     - description: Logotype OK
     - path: dynamic/files/pictures/picture-logotype_ok_classic.svgd
     - url: https://ok.ru
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype OK
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_pinterest_classic|instance
     entity_name: picture
     values
@@ -163,13 +203,17 @@ instances
     - description: Logotype Pinterest
     - path: dynamic/files/pictures/picture-logotype_pinterest_classic.svgd
     - url: https://pinterest.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Pinterest
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_reddit_classic|instance
     entity_name: picture
     values
@@ -177,13 +221,17 @@ instances
     - description: Logotype Reddit
     - path: dynamic/files/pictures/picture-logotype_reddit_classic.svgd
     - url: https://reddit.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Reddit
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_skype_classic|instance
     entity_name: picture
     values
@@ -191,13 +239,17 @@ instances
     - description: Logotype Skype
     - path: dynamic/files/pictures/picture-logotype_skype_classic.svgd
     - url: https://skype.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Skype
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_soundcloud_classic|instance
     entity_name: picture
     values
@@ -205,13 +257,17 @@ instances
     - description: Logotype Soundcloud
     - path: dynamic/files/pictures/picture-logotype_soundcloud_classic.svgd
     - url: https://soundcloud.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Soundcloud
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_telegram_classic|instance
     entity_name: picture
     values
@@ -219,13 +275,17 @@ instances
     - description: Logotype Telegram
     - path: dynamic/files/pictures/picture-logotype_telegram_classic.svgd
     - url: https://telegram.org
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Telegram
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_tiktok_classic|instance
     entity_name: picture
     values
@@ -233,13 +293,17 @@ instances
     - description: Logotype Tiktok
     - path: dynamic/files/pictures/picture-logotype_tiktok_classic.svgd
     - url: https://tiktok.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Tiktok
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_tumblr_classic|instance
     entity_name: picture
     values
@@ -247,13 +311,17 @@ instances
     - description: Logotype Tumblr
     - path: dynamic/files/pictures/picture-logotype_tumblr_classic.svgd
     - url: https://tumblr.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Tumblr
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_twitter_classic|instance
     entity_name: picture
     values
@@ -261,13 +329,17 @@ instances
     - description: Logotype Twitter
     - path: dynamic/files/pictures/picture-logotype_twitter_classic.svgd
     - url: https://twitter.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Twitter
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_viber_classic|instance
     entity_name: picture
     values
@@ -275,13 +347,17 @@ instances
     - description: Logotype Viber
     - path: dynamic/files/pictures/picture-logotype_viber_classic.svgd
     - url: https://viber.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Viber
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_vimeo_classic|instance
     entity_name: picture
     values
@@ -289,13 +365,17 @@ instances
     - description: Logotype Vimeo
     - path: dynamic/files/pictures/picture-logotype_vimeo_classic.svgd
     - url: https://vimeo.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Vimeo
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_vk_classic|instance
     entity_name: picture
     values
@@ -303,13 +383,17 @@ instances
     - description: Logotype VK
     - path: dynamic/files/pictures/picture-logotype_vk_classic.svgd
     - url: https://vk.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype VK
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_whatsapp_classic|instance
     entity_name: picture
     values
@@ -317,13 +401,17 @@ instances
     - description: Logotype Whatsapp
     - path: dynamic/files/pictures/picture-logotype_whatsapp_classic.svgd
     - url: https://whatsapp.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Whatsapp
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_yahoo_classic|instance
     entity_name: picture
     values
@@ -331,13 +419,17 @@ instances
     - description: Logotype Yahoo
     - path: dynamic/files/pictures/picture-logotype_yahoo_classic.svgd
     - url: https://yahoo.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Yahoo
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_youtube_classic|instance
     entity_name: picture
     values
@@ -345,13 +437,17 @@ instances
     - description: Logotype Youtube
     - path: dynamic/files/pictures/picture-logotype_youtube_classic.svgd
     - url: https://youtube.com
-    - target: _blank
     - module_id: profile_classic
     - attributes
       - 0
           weight: 0
           name: alt
           value: Logotype Youtube
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────

@@ -8,10 +8,10 @@ selections
     - template_row: picture
     - template_row_mapping
       - id: picture.id
-      - attributes: picture.attributes
       - src: picture.path
       - url: picture.url
-      - target: picture.target
+      - attributes: picture.attributes
+      - link_attributes: picture.link_attributes
     query_params
     - conditions
       - id_!f: ~picture.id
@@ -31,11 +31,6 @@ selections
         entity_name: picture
         entity_field_name: description
         filter: \effcore\translation::apply
-    - picture.attributes
-        type: field
-        entity_name: picture
-        entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_value
     - picture.path
         type: field
         entity_name: picture
@@ -44,7 +39,13 @@ selections
         type: field
         entity_name: picture
         entity_field_name: url
-    - picture.target
+    - picture.attributes
         type: field
         entity_name: picture
-        entity_field_name: target
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_value
+    - picture.link_attributes
+        type: field
+        entity_name: picture
+        entity_field_name: link_attributes
+        filter: \effcore\widget_attributes::complex_value_to_value
