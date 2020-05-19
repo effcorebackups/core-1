@@ -51,8 +51,8 @@ namespace effcore\modules\page {
       $selection = new selection;
       $selection->id = $args['entity_name'].'_'.$args['instance_id'];
       $selection->template = 'content';
-      foreach ($entity->selection_params ?? [] as $c_key => $c_value)
-        $selection                             ->{$c_key} = $c_value;
+      foreach ($entity->selection_default_params ?? [] as $c_key => $c_value)
+        $selection                                     ->{$c_key} = $c_value;
       $selection->query_params['conditions'] = ['id_!f' => '~'.$args['entity_name'].'.id', 'operator' => '=', 'id_!v' => $args['instance_id']];
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->managing_on_select_is_enabled)) {
