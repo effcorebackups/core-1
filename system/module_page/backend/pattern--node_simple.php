@@ -32,11 +32,10 @@ namespace effcore {
     return $this->{$scope};
   }
 
-  function attribute_insert($name, $data, $scope = 'attributes') {
-    if (is_array($data))
-      foreach ($data as $c_key => $c_value)
-         $this->{$scope}[$name][$c_key] = $c_value;
-    else $this->{$scope}[$name]         = $data;
+  function attribute_insert($name, $data, $scope = 'attributes', $at_first = false) {
+    if (is_array($this->{$scope}) == false) $this->{$scope} = [];
+    if ($at_first == true) $this->{$scope} = [$name => $data] + $this->{$scope};
+    if ($at_first != true) $this->{$scope} =                    $this->{$scope} + [$name => $data];
     return $this;
   }
 
