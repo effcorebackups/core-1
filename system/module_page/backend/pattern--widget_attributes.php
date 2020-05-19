@@ -71,13 +71,21 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_value($complex) {
+  static function complex_value_to_attributes($complex) {
     if ($complex) {
       core::array_sort_by_weight($complex);
       $attributes = [];
       foreach ($complex as $c_complex)
         $attributes[$c_complex->name] = $c_complex->value;
-      return core::data_to_attr($attributes);
+      return $attributes;
+    }
+  }
+
+  static function complex_value_to_value($complex) {
+    if ($complex) {
+      return core::data_to_attr(
+        static::complex_value_to_attributes($complex)
+      );
     }
   }
 

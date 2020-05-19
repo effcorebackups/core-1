@@ -35,7 +35,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $this->attribute_insert('data-id', $this->id);
+      $this->attribute_insert('data-id', $this->id, 'attributes', true);
       foreach (static::select_all_by_id_tree($this->id_tree) as $c_item) {
         if ($c_item->id_parent == $this->id) {
           $this->child_insert($c_item, $c_item->id);
@@ -78,10 +78,10 @@ namespace effcore {
 
   function render_self() {
     $href = $this->href_get();
-    if ($href                   ) $this->attribute_insert('title', new text('click to open the menu item "%%_title"', ['title' => translation::apply($this->title)]), 'element_attributes');
-    if ($href                   ) $this->attribute_insert('href', $href,                 'element_attributes');
-    if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes');
-    if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
+    if ($href                   ) $this->attribute_insert('title', new text('click to open the menu item "%%_title"', ['title' => translation::apply($this->title)]), 'element_attributes', true);
+    if ($href                   ) $this->attribute_insert('href', $href,                 'element_attributes', true);
+    if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes', true);
+    if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes', true);
     return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
@@ -140,7 +140,9 @@ namespace effcore {
           $c_instance->id_parent,
           $c_instance->id_tree,
           $c_instance->url,
-          $c_instance->access, [], [],
+          $c_instance->access, 
+          widget_attributes::complex_value_to_attributes($c_instance->     attributes) ?? [],
+          widget_attributes::complex_value_to_attributes($c_instance->link_attributes) ?? [],
           $c_instance->weight);
         static::$cache[$c_tree_item->id] = $c_tree_item;
         static::$cache[$c_tree_item->id]->module_id = 'menu';
