@@ -24,7 +24,7 @@ namespace effcore {
   public $managing_group_id = 'content';
   public $selection_params_for_managing          = [];
   public $selection_params_for_managing_multiple = [];
-  public $selection_params                       = [];
+  public $selection_default_params               = [];
 
   function _postparse() {
   # insert field 'is_embed'
@@ -38,7 +38,7 @@ namespace effcore {
       $this->fields['is_embed']->managing_control_class = '\\effcore\\field_switcher';
       $this->fields['is_embed']->managing_control_properties['weight'] = 95;
       $this->fields['is_embed']->managing_control_element_attributes['disabled'] = true;
-      $this->fields['is_embed']->selection_params['filter'] = '\\effcore\\translation::apply';
+      $this->fields['is_embed']->selection_default_params['filter'] = '\\effcore\\translation::apply';
     }
   # insert field 'module_id' and index for it
     if ($this->ws_module_id) {

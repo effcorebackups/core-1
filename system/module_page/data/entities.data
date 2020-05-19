@@ -52,7 +52,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - path
         title: Audio
@@ -82,7 +82,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
@@ -193,7 +193,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - items
         title: Items
@@ -282,7 +282,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - url
         title: URL
@@ -307,7 +307,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - lang_code
         title: Language
@@ -461,7 +461,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - path
         title: Picture
@@ -510,7 +510,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - link_attributes
         title: Link attributes
@@ -524,7 +524,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: link_attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
@@ -603,7 +603,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - text
         title: Text
@@ -618,7 +618,7 @@ entities
         - required: false
         - minlength: false
         - maxlength: false
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - created
         title: Created
@@ -702,7 +702,7 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - path
         title: Video
@@ -748,7 +748,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created

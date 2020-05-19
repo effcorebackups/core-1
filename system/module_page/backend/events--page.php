@@ -57,7 +57,7 @@ namespace effcore\modules\page {
       foreach ($entity->fields as $c_name => $c_field) {
         if (!empty($c_field->managing_on_select_is_enabled)) {
           $selection->field_insert_entity(null,
-            $entity->name, $c_name, $c_field->selection_params ?? []
+            $entity->name, $c_name, $c_field->selection_default_params ?? []
           );
         }
       }

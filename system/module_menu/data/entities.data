@@ -41,7 +41,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - title_is_visible
         title: Title is visible
@@ -55,7 +55,7 @@ entities
         managing_control_properties_on_insert
         - selected
           - =: 1
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - created
         title: Created
@@ -188,7 +188,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        selection_params
+        selection_default_params
         - filter: \effcore\translation::apply
     - url
         title: URL
@@ -226,7 +226,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - link_attributes
         title: Link attributes
@@ -240,7 +240,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: link_attributes
-        selection_params
+        selection_default_params
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
