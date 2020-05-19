@@ -34,8 +34,8 @@ namespace effcore {
 
   function attribute_insert($name, $data, $scope = 'attributes', $at_first = false) {
     if (is_array($this->{$scope}) == false) $this->{$scope} = [];
-    if ($at_first == true) $this->{$scope} = [$name => $data] + $this->{$scope};
-    if ($at_first != true) $this->{$scope} =                    $this->{$scope} + [$name => $data];
+    if ($at_first == true) $this->{$scope}[$name] = $data;
+    if ($at_first != true) $this->{$scope}[$name] = $data;
     return $this;
   }
 
