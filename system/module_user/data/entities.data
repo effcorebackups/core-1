@@ -125,7 +125,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        selection_default_params
+        selection_params_default
         - filter: \effcore\translation::apply
     - created
         title: Created
@@ -369,7 +369,7 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
-        selection_default_params
+        selection_params_default
         - filter: \effcore\translation::apply
     - weight
         title: Weight
@@ -545,7 +545,7 @@ entities
         managing_control_class: \effcore\field_timezone
         managing_control_element_attributes
         - data-source: uagent-timezone
-        selection_default_params
+        selection_params_default
         - filter: \effcore\translation::apply
     - password_hash
         title: New password
