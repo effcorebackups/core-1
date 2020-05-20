@@ -26,8 +26,8 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       event::start('on_tree_build_before', $this->id, [&$this]);
-      $this->attribute_insert('data-id',                 $this->id                );
-      $this->attribute_insert('data-visualization-mode', $this->visualization_mode);
+      $this->attribute_insert('data-id',                 $this->id,                 'attributes', true);
+      $this->attribute_insert('data-visualization-mode', $this->visualization_mode, 'attributes', true);
       foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
         if ($c_item->id_tree   == $this->id &&
             $c_item->id_parent == null) {
@@ -87,7 +87,8 @@ namespace effcore {
         $c_tree = new static(
           $c_instance->title,
           $c_instance->id,
-          $c_instance->access, [], 0);
+          $c_instance->access,
+          widget_attributes::complex_value_to_attributes($c_instance->attributes) ?? [], 0);
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->module_id = 'menu';
         static::$cache[$c_tree->id]->origin = 'sql';
