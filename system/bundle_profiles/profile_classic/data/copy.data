@@ -1,0 +1,76 @@
+copy
+- logotype
+    from: frontend/pictures/logotype.svg
+    to: dynamic/files/pictures/picture-logotype_classic.svg
+- logotype_bitbucket
+    from: frontend/pictures/logotype-bitbucket.svgd
+    to: dynamic/files/pictures/picture-logotype_bitbucket_classic.svgd
+- logotype_behance
+    from: frontend/pictures/logotype-behance.svgd
+    to: dynamic/files/pictures/picture-logotype_behance_classic.svgd
+- logotype_blogger
+    from: frontend/pictures/logotype-blogger.svgd
+    to: dynamic/files/pictures/picture-logotype_blogger_classic.svgd
+- logotype_facebook
+    from: frontend/pictures/logotype-facebook.svgd
+    to: dynamic/files/pictures/picture-logotype_facebook_classic.svgd
+- logotype_flickr
+    from: frontend/pictures/logotype-flickr.svgd
+    to: dynamic/files/pictures/picture-logotype_flickr_classic.svgd
+- logotype_github
+    from: frontend/pictures/logotype-github.svgd
+    to: dynamic/files/pictures/picture-logotype_github_classic.svgd
+- logotype_instagram
+    from: frontend/pictures/logotype-instagram.svgd
+    to: dynamic/files/pictures/picture-logotype_instagram_classic.svgd
+- logotype_linkedin
+    from: frontend/pictures/logotype-linkedin.svgd
+    to: dynamic/files/pictures/picture-logotype_linkedin_classic.svgd
+- logotype_livejournal
+    from: frontend/pictures/logotype-livejournal.svgd
+    to: dynamic/files/pictures/picture-logotype_livejournal_classic.svgd
+- logotype_ok
+    from: frontend/pictures/logotype-ok.svgd
+    to: dynamic/files/pictures/picture-logotype_ok_classic.svgd
+- logotype_pinterest
+    from: frontend/pictures/logotype-pinterest.svgd
+    to: dynamic/files/pictures/picture-logotype_pinterest_classic.svgd
+- logotype_reddit
+    from: frontend/pictures/logotype-reddit.svgd
+    to: dynamic/files/pictures/picture-logotype_reddit_classic.svgd
+- logotype_skype
+    from: frontend/pictures/logotype-skype.svgd
+    to: dynamic/files/pictures/picture-logotype_skype_classic.svgd
+- logotype_soundcloud
+    from: frontend/pictures/logotype-soundcloud.svgd
+    to: dynamic/files/pictures/picture-logotype_soundcloud_classic.svgd
+- logotype_telegram
+    from: frontend/pictures/logotype-telegram.svgd
+    to: dynamic/files/pictures/picture-logotype_telegram_classic.svgd
+- logotype_tiktok
+    from: frontend/pictures/logotype-tiktok.svgd
+    to: dynamic/files/pictures/picture-logotype_tiktok_classic.svgd
+- logotype_tumblr
+    from: frontend/pictures/logotype-tumblr.svgd
+    to: dynamic/files/pictures/picture-logotype_tumblr_classic.svgd
+- logotype_twitter
+    from: frontend/pictures/logotype-twitter.svgd
+    to: dynamic/files/pictures/picture-logotype_twitter_classic.svgd
+- logotype_viber
+    from: frontend/pictures/logotype-viber.svgd
+    to: dynamic/files/pictures/picture-logotype_viber_classic.svgd
+- logotype_vimeo
+    from: frontend/pictures/logotype-vimeo.svgd
+    to: dynamic/files/pictures/picture-logotype_vimeo_classic.svgd
+- logotype_vk
+    from: frontend/pictures/logotype-vk.svgd
+    to: dynamic/files/pictures/picture-logotype_vk_classic.svgd
+- logotype_whatsapp
+    from: frontend/pictures/logotype-whatsapp.svgd
+    to: dynamic/files/pictures/picture-logotype_whatsapp_classic.svgd
+- logotype_yahoo
+    from: frontend/pictures/logotype-yahoo.svgd
+    to: dynamic/files/pictures/picture-logotype_yahoo_classic.svgd
+- logotype_youtube
+    from: frontend/pictures/logotype-youtube.svgd
+    to: dynamic/files/pictures/picture-logotype_youtube_classic.svgd

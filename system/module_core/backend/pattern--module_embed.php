@@ -53,9 +53,9 @@ namespace effcore {
 
   function install() {
   # deployment process: copy files
-    $deployment = storage::get('files')->select('deployment');
-    if ( isset($deployment[$this->id]['copy']) ) {
-      foreach ($deployment[$this->id]['copy'] as $c_info) {
+    $copy = storage::get('files')->select('copy');
+    if ( isset($copy[$this->id]) ) {
+      foreach ($copy[$this->id] as $c_info) {
         $c_src_file = new file($this->path.$c_info->from);
         $c_dst_file = new file(            $c_info->to  );
         if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))

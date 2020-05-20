@@ -19,9 +19,9 @@ namespace effcore {
 
   function uninstall() {
   # reverse the deployment process: delete files
-    $deployment = storage::get('files')->select('deployment');
-    if ( isset($deployment[$this->id]['copy']) ) {
-      foreach ($deployment[$this->id]['copy'] as $c_info) {
+    $copy = storage::get('files')->select('copy');
+    if ( isset($copy[$this->id]) ) {
+      foreach ($copy[$this->id] as $c_info) {
         $c_file = new file($c_info->to);
         if (@unlink($c_file->path_get()))
              message::insert(new text('File "%%_path" was deleted.',     ['path' => $c_file->path_get_relative()]));
