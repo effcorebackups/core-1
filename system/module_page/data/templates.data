@@ -22,6 +22,10 @@ templates
     name: content
     type: text
     data: %%_children
+- gallery
+    name: gallery
+    type: text
+    data: <x-gallery data-id="%%_id" %%_attributes>%%_children</x-gallery>
 - form
     name: form
     type: text
