@@ -569,7 +569,9 @@ entities
       - template: content
       - template_row: text
       - template_row_mapping
+        - id: text.id
         - text: text.text
+        - attributes: text.attributes
     fields
     - id
         title: ID
@@ -620,6 +622,20 @@ entities
         - maxlength: false
         selection_params_default
         - filter: \effcore\translation::apply
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params_default
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime

@@ -49,7 +49,7 @@ templates
 - text
     name: text
     type: text
-    data: %%_text
+    data: <x-text data-id="%%_id" %%_attributes>%%_text</x-text>
 - video
     name: video
     type: text
