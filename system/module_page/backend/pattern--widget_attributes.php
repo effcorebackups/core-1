@@ -35,15 +35,24 @@ namespace effcore {
   # control for translation status
     $field_is_apply_translation = new field_checkbox;
     $field_is_apply_translation->title = 'Tr.';
-    $field_is_apply_translation->attribute_insert('title', 'apply translation', 'element_attributes');
+    $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
     $field_is_apply_translation->build();
     $field_is_apply_translation->name_set($this->name_complex.'__is_apply_translation__'.$c_row_id);
     $field_is_apply_translation->checked_set($item->is_apply_translation);
     $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
+  # control for tokens status
+    $field_is_apply_tokens = new field_checkbox;
+    $field_is_apply_tokens->title = 'To.';
+    $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
+    $field_is_apply_tokens->build();
+    $field_is_apply_tokens->name_set($this->name_complex.'__is_apply_tokens__'.$c_row_id);
+    $field_is_apply_tokens->checked_set($item->is_apply_tokens);
+    $this->controls['#is_apply_tokens__'.$c_row_id] = $field_is_apply_tokens;
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_name, 'name');
     $widget->child_insert($field_value, 'value');
     $widget->child_insert($field_is_apply_translation, 'is_apply_translation');
+    $widget->child_insert($field_is_apply_tokens,      'is_apply_tokens');
     return $widget;
   }
 
@@ -55,7 +64,8 @@ namespace effcore {
       if (isset($this->controls['#weight__'.              $c_row_id])) $c_item->weight               = (int)$this->controls['#weight__'.               $c_row_id]->value_get();
       if (isset($this->controls['#name__'.                $c_row_id])) $c_item->name                 =      $this->controls['#name__'.                 $c_row_id]->value_get();
       if (isset($this->controls['#value__'.               $c_row_id])) $c_item->value                =      $this->controls['#value__'.                $c_row_id]->value_get();
-      if (isset($this->controls['#is_apply_translation__'.$c_row_id])) $c_item->is_apply_translation =      $this->controls['#is_apply_translation__'. $c_row_id]->checked_get();}
+      if (isset($this->controls['#is_apply_translation__'.$c_row_id])) $c_item->is_apply_translation =      $this->controls['#is_apply_translation__'. $c_row_id]->checked_get();
+      if (isset($this->controls['#is_apply_tokens__'.     $c_row_id])) $c_item->is_apply_tokens      =      $this->controls['#is_apply_tokens__'.      $c_row_id]->checked_get();}
     $this->items_set($items);
   }
 
