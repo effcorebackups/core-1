@@ -32,9 +32,18 @@ namespace effcore {
     $field_value->required_set(false);
     $field_value->maxlength_set(2048);
     $this->controls['#value__'.$c_row_id] = $field_value;
+  # control for translation status
+    $field_is_apply_translation = new field_checkbox;
+    $field_is_apply_translation->title = 'Tr.';
+    $field_is_apply_translation->attribute_insert('title', 'apply translation', 'element_attributes');
+    $field_is_apply_translation->build();
+    $field_is_apply_translation->name_set($this->name_complex.'__is_apply_translation__'.$c_row_id);
+    $field_is_apply_translation->checked_set($item->is_apply_translation);
+    $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
   # grouping of previous elements in widget 'manage'
-    $widget->child_insert($field_name,  'name');
+    $widget->child_insert($field_name, 'name');
     $widget->child_insert($field_value, 'value');
+    $widget->child_insert($field_is_apply_translation, 'is_apply_translation');
     return $widget;
   }
 
@@ -43,9 +52,10 @@ namespace effcore {
   function on_cache_update($form, $npath) {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      if (isset($this->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
-      if (isset($this->controls['#name__'.  $c_row_id])) $c_item->name   =      $this->controls['#name__'.  $c_row_id]->value_get();
-      if (isset($this->controls['#value__'. $c_row_id])) $c_item->value  =      $this->controls['#value__'. $c_row_id]->value_get();}
+      if (isset($this->controls['#weight__'.              $c_row_id])) $c_item->weight               = (int)$this->controls['#weight__'.               $c_row_id]->value_get();
+      if (isset($this->controls['#name__'.                $c_row_id])) $c_item->name                 =      $this->controls['#name__'.                 $c_row_id]->value_get();
+      if (isset($this->controls['#value__'.               $c_row_id])) $c_item->value                =      $this->controls['#value__'.                $c_row_id]->value_get();
+      if (isset($this->controls['#is_apply_translation__'.$c_row_id])) $c_item->is_apply_translation =      $this->controls['#is_apply_translation__'. $c_row_id]->checked_get();}
     $this->items_set($items);
   }
 
@@ -55,9 +65,11 @@ namespace effcore {
     foreach ($items as $c_row_id => $c_item)
       $min_weight = min($min_weight, $c_item->weight);
     $new_item = new \stdClass;
-    $new_item->weight = count($items) ? $min_weight - 5 : 0;
-    $new_item->name   = '';
-    $new_item->value  = '';
+    $new_item->weight               = count($items) ? $min_weight - 5 : 0;
+    $new_item->name                 = '';
+    $new_item->value                = '';
+    $new_item->is_apply_translation = false;
+    $new_item->is_apply_tokens      = false;
     $items[] = $new_item;
     $this->items_set($items);
     message::insert(new text_multiline([
