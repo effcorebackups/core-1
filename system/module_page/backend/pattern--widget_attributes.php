@@ -38,7 +38,7 @@ namespace effcore {
     $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
     $field_is_apply_translation->build();
     $field_is_apply_translation->name_set($this->name_complex.'__is_apply_translation__'.$c_row_id);
-    $field_is_apply_translation->checked_set($item->is_apply_translation);
+    $field_is_apply_translation->checked_set(!empty($item->is_apply_translation));
     $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
   # control for tokens status
     $field_is_apply_tokens = new field_checkbox;
@@ -46,7 +46,7 @@ namespace effcore {
     $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
     $field_is_apply_tokens->build();
     $field_is_apply_tokens->name_set($this->name_complex.'__is_apply_tokens__'.$c_row_id);
-    $field_is_apply_tokens->checked_set($item->is_apply_tokens);
+    $field_is_apply_tokens->checked_set(!empty($item->is_apply_tokens));
     $this->controls['#is_apply_tokens__'.$c_row_id] = $field_is_apply_tokens;
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_name, 'name');

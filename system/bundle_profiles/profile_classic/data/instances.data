@@ -16,6 +16,7 @@ instances
           weight: 0
           name: alt
           value: Logotype main
+          is_apply_translation: true
 - logotype_behance_classic|instance
     entity_name: picture
     values
@@ -29,6 +30,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Behance
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -47,6 +49,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Bitbucket
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -65,6 +68,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Blogger
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -83,6 +87,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Facebook
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -101,6 +106,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Flickr
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -119,6 +125,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Github
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -137,6 +144,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Instagram
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -155,6 +163,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Linkedin
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -173,6 +182,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Livejournal
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -191,6 +201,7 @@ instances
           weight: 0
           name: alt
           value: Logotype OK
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -209,6 +220,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Pinterest
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -227,6 +239,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Reddit
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -245,6 +258,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Skype
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -263,6 +277,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Soundcloud
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -281,6 +296,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Telegram
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -299,6 +315,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Tiktok
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -317,6 +334,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Tumblr
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -335,6 +353,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Twitter
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -353,6 +372,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Viber
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -371,6 +391,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Vimeo
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -389,6 +410,7 @@ instances
           weight: 0
           name: alt
           value: Logotype VK
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -407,6 +429,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Whatsapp
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -425,6 +448,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Yahoo
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
@@ -443,6 +467,7 @@ instances
           weight: 0
           name: alt
           value: Logotype Youtube
+          is_apply_translation: true
     - link_attributes
       - 0
           weight: 0
