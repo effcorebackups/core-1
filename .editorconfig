@@ -22,7 +22,7 @@ syntax = yaml
 file_type = javascript
 syntax = javascript
 
-[*.mark]
+[*.md]
 file_type = markdown
 syntax = markdown
 
