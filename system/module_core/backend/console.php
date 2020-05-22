@@ -28,8 +28,7 @@ namespace effcore {
   }
 
   static function log_insert_about_duplicate($type, $id, $module_id = null) {
-    $page = page::get_current();
-    if (!empty($page->id) && $page->id == 'install' && $module_id) {
+    if ($module_id && !storage::get('sql')->is_installed()) { # for page '/install' + redirect
       $module = module::get($module_id);
       if ($module instanceof module_as_profile) {
         return;
