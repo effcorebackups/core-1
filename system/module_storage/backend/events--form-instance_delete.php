@@ -12,7 +12,6 @@ namespace effcore\modules\storage {
           use \effcore\message;
           use \effcore\page;
           use \effcore\text;
-          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_instance_delete {
 
@@ -33,7 +32,7 @@ namespace effcore\modules\storage {
           $form->_instance = new instance($form->entity_name, array_combine($id_keys, $id_values));
           if ($form->_instance->select()) {
             if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
-            $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => translation::apply($entity->title), 'id' => $form->instance_id]));
+            $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
             $items['info']->child_insert($question, 'question');
           } else core::send_header_and_exit('page_not_found');
         }   else core::send_header_and_exit('page_not_found');
@@ -50,8 +49,8 @@ namespace effcore\modules\storage {
           # delete action
             $form->_result = $form->_instance->delete();
           # show messages
-            if ($form->is_show_result_message && $form->_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::apply($entity->title), 'id' => $form->instance_id])         );
-            if ($form->is_show_result_message && $form->_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::apply($entity->title), 'id' => $form->instance_id]), 'error');
+            if ($form->is_show_result_message && $form->_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id])         );
+            if ($form->is_show_result_message && $form->_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]), 'error');
           }
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
