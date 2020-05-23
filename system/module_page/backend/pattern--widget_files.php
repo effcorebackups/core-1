@@ -117,7 +117,7 @@ namespace effcore {
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-            'type' => translation::apply($this->item_title),
+            'type' => (new text($this->item_title))->render(),
             'id'   => $c_new_item_id]));
         } else {
           $form->error_set();
@@ -128,7 +128,7 @@ namespace effcore {
       return true;
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
-        'Field "%%_title" can not be blank!', ['title' => translation::apply($this->controls['#file']->title)]
+        'Field "%%_title" can not be blank!', ['title' => (new text($this->controls['#file']->title))->render()  ]
       );
     }
   }
@@ -142,7 +142,7 @@ namespace effcore {
         message::insert(new text_multiline([
           'Item of type "%%_type" was deleted.',
           'Do not forget to save the changes!'], [
-          'type' => translation::apply($this->item_title)]));
+          'type' => (new text($this->item_title))->render() ]));
         return true;
       }
     }
@@ -152,7 +152,7 @@ namespace effcore {
       message::insert(new text_multiline([
         'Item of type "%%_type" was deleted.',
         'Do not forget to save the changes!'], [
-        'type' => translation::apply($this->item_title)]));
+        'type' => (new text($this->item_title))->render() ]));
       return true;
     }
   }

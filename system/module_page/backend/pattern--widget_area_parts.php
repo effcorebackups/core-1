@@ -43,7 +43,7 @@ namespace effcore {
       if (!isset($options[$c_group_id])) {
                  $options[$c_group_id] = new \stdClass;
                  $options[$c_group_id]->title = $c_preset->managing_group;}
-      $options[$c_group_id]->values[$c_preset->id] = translation::apply($c_preset->managing_title).' ('.$c_preset->id.')';
+      $options[$c_group_id]->values[$c_preset->id] = (new text($c_preset->managing_title))->render().' ('.$c_preset->id.')';
     }
     foreach ($options as $c_group) {
       if ($c_group instanceof \stdClass) {
@@ -87,7 +87,7 @@ namespace effcore {
       message::insert(new text_multiline([
         'Item of type "%%_type" was inserted.',
         'Do not forget to save the changes!'], [
-        'type' => translation::apply($this->item_title)]));
+        'type' => (new text($this->item_title))->render() ]));
       return true;
     }
   }
