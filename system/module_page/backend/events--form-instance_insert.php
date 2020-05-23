@@ -11,7 +11,6 @@ namespace effcore\modules\page {
           use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -59,7 +58,7 @@ namespace effcore\modules\page {
               if (page::get($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::apply($items['#id']->title)]
+                  'Only unique value is allowed.'], ['title' => (new text($items['#id']->title))->render() ]
                 ));
               }
             }
@@ -70,7 +69,7 @@ namespace effcore\modules\page {
               if (page::get_by_url($items['#url']->value_get(), false)) {
                 $items['#url']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used value!',
-                  'Only unique value is allowed.'], ['title' => translation::apply($items['#url']->title)]
+                  'Only unique value is allowed.'], ['title' => (new text($items['#url']->title))->render() ]
                 ));
               }
             }

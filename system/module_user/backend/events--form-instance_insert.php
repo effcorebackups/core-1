@@ -12,7 +12,6 @@ namespace effcore\modules\user {
           use \effcore\pluggable_class;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -64,7 +63,7 @@ namespace effcore\modules\user {
               $items['#id_user']->error_set();
               $items['#id_role']->error_set(new text_multiline([
                 'Field "%%_title" contains incorrect value!',
-                'This combination of values is already in use!'], ['title' => translation::apply($items['#id_role']->title)]
+                'This combination of values is already in use!'], ['title' => (new text($items['#id_role']->title))->render() ]
               ));
             }
           }
@@ -79,7 +78,7 @@ namespace effcore\modules\user {
               $items['#id_role'      ]->error_set();
               $items['#id_permission']->error_set(new text_multiline([
                 'Field "%%_title" contains incorrect value!',
-                'This combination of values is already in use!'], ['title' => translation::apply($items['#id_permission']->title)]
+                'This combination of values is already in use!'], ['title' => (new text($items['#id_permission']->title))->render() ]
               ));
             }
           }
