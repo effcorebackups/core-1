@@ -7,7 +7,7 @@
 namespace effcore\modules\demo {
           use \effcore\entity;
           use \effcore\text_multiline;
-          use \effcore\translation;
+          use \effcore\text;
           abstract class events_form_instance_update {
 
   static function on_validate($event, $form, $items) {
@@ -27,7 +27,7 @@ namespace effcore\modules\demo {
               if ($result) {
                 $items['#id_data']->error_set(new text_multiline([
                   'Field "%%_title" contains the previously used combination of values!',
-                  'Only unique value is allowed.'], ['title' => translation::apply($items['#id_data']->title)]
+                  'Only unique value is allowed.'], ['title' => (new text($items['#id_data']->title))->render() ]
                 ));
               }
             }

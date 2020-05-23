@@ -8,7 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           use \effcore\field_number;
           use \effcore\fieldset;
-          use \effcore\translation;
+          use \effcore\text;
           abstract class events_form_instance_update_selection {
 
   static function on_init($event, $form, $items) {
@@ -43,7 +43,7 @@ namespace effcore\modules\storage {
         case 'update':
           if ($entity->name == 'selection') {
             if (count($items['*fields']->value_get_complex()) < 1) {
-              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => translation::apply($items['*fields']->title), 'number' => 1]);
+              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*fields']->title))->render(), 'number' => 1]);
             }
           }
           break;

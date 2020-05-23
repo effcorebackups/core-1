@@ -13,7 +13,6 @@ namespace effcore\modules\core {
           use \effcore\module;
           use \effcore\storage;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_modules_update {
 
   static function on_init($event, $form, $items) {
@@ -39,7 +38,7 @@ namespace effcore\modules\core {
             $c_checkboxes->disabled[$c_update->number] =
                                     $c_update->number;
           $c_checkboxes->field_insert(
-            $c_update->number.': '.translation::apply($c_update->title),
+            $c_update->number.': '.(new text($c_update->title))->render(),
             $c_update->description ?? null, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number], $c_module->id.'-'.$c_update->number
           );
         }
@@ -72,8 +71,8 @@ namespace effcore\modules\core {
                   $c_result = call_user_func($c_update->handler, $c_update);
                   if ($c_result) {
                     storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
-                           message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => translation::apply($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number])         );
-                  } else { message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => translation::apply($c_module->title), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
+                           message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );
+                  } else { message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
                     break;
                   }
                 }

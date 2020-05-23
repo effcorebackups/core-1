@@ -8,7 +8,7 @@ namespace effcore\modules\polls {
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\page;
-          use \effcore\translation;
+          use \effcore\text;
           use \effcore\url;
           use \effcore\widget_texts;
           abstract class events_form_instance_update {
@@ -49,7 +49,7 @@ namespace effcore\modules\polls {
         case 'update':
           if ($entity->name == 'poll') {
             if (count($items['*widget_answers']->value_get_complex()) < 2) {
-              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => translation::apply($items['*widget_answers']->title), 'number' => 2]);
+              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => 2]);
             }
           }
           break;
