@@ -103,7 +103,7 @@ namespace effcore {
     $field_weight->value_set($item->weight);
     $this->controls['#weight__'.$c_row_id] = $field_weight;
   # button for deletion of the old item
-    $button_delete = new button(null, ['data-style' => 'narrow-delete', 'title' => new text('delete')]);
+    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
     $button_delete->value_set($this->name_complex.'__delete__'.$c_row_id);
