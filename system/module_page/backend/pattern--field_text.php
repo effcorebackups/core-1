@@ -53,7 +53,7 @@ namespace effcore {
   static function validate_required($field, $form, $element, &$new_value) {
     if ($field->required_get() && strlen($new_value) == 0) {
       $field->error_set(
-        'Field "%%_title" can not be blank!', ['title' => translation::apply($field->title)]
+        'Field "%%_title" can not be blank!', ['title' => (new text($field->title))->render() ]
       );
     } else {
       return true;
@@ -64,7 +64,7 @@ namespace effcore {
     $minlength = $field->minlength_get();
     if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
       $field->error_set(
-        'Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!', ['title' => translation::apply($field->title), 'number' => $minlength]
+        'Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!', ['title' => (new text($field->title))->render(), 'number' => $minlength]
       );
     } else {
       return true;
@@ -78,7 +78,7 @@ namespace effcore {
       $field->error_set(new text_multiline([
         'Field "%%_title" should contain a maximum of %%_number character%%_plural{number,s}!',
         'Value was trimmed to the required length!',
-        'Check field again before submit.'], ['title' => translation::apply($field->title), 'number' => $maxlength]
+        'Check field again before submit.'], ['title' => (new text($field->title))->render(), 'number' => $maxlength]
       ));
     } else {
       return true;
@@ -91,7 +91,7 @@ namespace effcore {
                      !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains incorrect value!',
-        'Field value does not match the regular expression "%%_expression".'], ['title' => translation::apply($field->title), 'expression' => $pattern]
+        'Field value does not match the regular expression "%%_expression".'], ['title' => (new text($field->title))->render(), 'expression' => $pattern]
       ));
     } else {
       return true;
@@ -108,7 +108,7 @@ namespace effcore {
         (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(new text_multiline([
         'Field "%%_title" contains the previously used value!',
-        'Only unique value is allowed.'], ['title' => translation::apply($field->title)]
+        'Only unique value is allowed.'], ['title' => (new text($field->title))->render() ]
       ));
     } else {
       return true;

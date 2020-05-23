@@ -25,7 +25,7 @@ namespace effcore {
     if ( (strlen($new_value) &&  core::sanitize_url(         $new_value) != $new_value) ||
          (strlen($new_value) && !core::validate_url((new url($new_value))->full_get())) ) {
       $field->error_set(
-        'Field "%%_title" contains an incorrect URL!', ['title' => translation::apply($field->title)]
+        'Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]
       );
     } else {
       return true;

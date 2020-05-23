@@ -172,7 +172,7 @@ namespace effcore {
   static function validate_value($field, $form, $element, &$new_value) {
     if (!$field->captcha_validate($new_value)) {
       $field->error_set(
-        'Field "%%_title" contains an incorrect characters from picture!', ['title' => translation::apply($field->title)]
+        'Field "%%_title" contains an incorrect characters from picture!', ['title' => (new text($field->title))->render() ]
       );
     } else {
       return true;

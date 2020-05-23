@@ -62,7 +62,7 @@ namespace effcore {
     if (!$field->multiple_get() && count($multiple_values) > 1) {
       $new_value = array_pop($multiple_values);
       $field->error_set(
-        'Field "%%_title" does not support multiple select!', ['title' => translation::apply($field->title)]
+        'Field "%%_title" does not support multiple select!', ['title' => (new text($field->title))->render() ]
       );
     } else {
       return true;
@@ -74,7 +74,7 @@ namespace effcore {
     foreach ($multiple_values as $c_value) {
       if (core::validate_email($c_value) == false) {
         $field->error_set(
-          'Field "%%_title" contains an incorrect EMail address!', ['title' => translation::apply($field->title)]
+          'Field "%%_title" contains an incorrect EMail address!', ['title' => (new text($field->title))->render() ]
         );
         return;
       }
