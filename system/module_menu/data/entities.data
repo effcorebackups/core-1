@@ -204,30 +204,6 @@ entities
         managing_control_class: \effcore\field_text
         selection_params_default
         - filter: \effcore\translation::apply
-    - url
-        title: URL
-        type: varchar
-        size: 2048
-        collate: nocase
-        default: null
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_url
-        managing_control_element_attributes
-        - required: false
-        - maxlength: 2048
-    - weight
-        title: Weight
-        type: integer
-        not_null: true
-        default: 0
-        managing_on_select_multiple_is_enabled: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_weight
     - attributes
         title: Attributes
         type: blob
@@ -242,6 +218,20 @@ entities
         - name_complex: attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
+    - url
+        title: URL
+        type: varchar
+        size: 2048
+        collate: nocase
+        default: null
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_url
+        managing_control_element_attributes
+        - required: false
+        - maxlength: 2048
     - link_attributes
         title: Link attributes
         type: blob
@@ -256,6 +246,16 @@ entities
         - name_complex: link_attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
+    - weight
+        title: Weight
+        type: integer
+        not_null: true
+        default: 0
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_weight
     - created
         title: Created
         type: datetime

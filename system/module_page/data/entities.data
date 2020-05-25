@@ -54,6 +54,20 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params_default
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - path
         title: Audio
         type: varchar
@@ -70,20 +84,6 @@ entities
         - fixed_name: audio-%%_instance_id_context
         managing_control_element_attributes_on_insert
         - disabled: true
-    - attributes
-        title: Attributes
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_attributes
-        managing_control_properties
-        - name_complex: attributes
-        selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime
@@ -203,26 +203,6 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
-    - items
-        title: Items
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_files
-        managing_control_properties
-        - title: Files
-        - upload_dir: galleries/
-        - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
-        - max_file_size: 500K
-        - allowed_types
-          - =: jpeg
-          - =: jpg
-          - =: png
-          - =: gif
-        managing_control_properties
-        - name_complex: items
     - attributes
         title: Attributes
         type: blob
@@ -237,6 +217,23 @@ entities
         - name_complex: attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
+    - items
+        title: Items
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_gallery
+        managing_control_properties
+        - max_file_size: 500K
+        - allowed_types
+          - =: jpeg
+          - =: jpg
+          - =: png
+          - =: gif
+        managing_control_properties
+        - name_complex: items
     constraints
     - primary_id
         type: primary
@@ -485,6 +482,20 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params_default
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - path
         title: Picture
         type: varchar
@@ -508,32 +519,6 @@ entities
           - =: svgd
         managing_control_element_attributes_on_insert
         - disabled: true
-    - url
-        title: URL
-        type: varchar
-        size: 255
-        collate: nocase
-        default: null
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_url
-        managing_control_element_attributes
-        - required: false
-    - attributes
-        title: Attributes
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_attributes
-        managing_control_properties
-        - name_complex: attributes
-        selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
     - link_attributes
         title: Link attributes
         type: blob
@@ -548,6 +533,18 @@ entities
         - name_complex: link_attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
+    - url
+        title: URL
+        type: varchar
+        size: 255
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_url
+        managing_control_element_attributes
+        - required: false
     - created
         title: Created
         type: datetime
@@ -629,6 +626,20 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params_default
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - text
         title: Text
         type: blob
@@ -644,20 +655,6 @@ entities
         - maxlength: false
         selection_params_default
         - filter: \effcore\translation::apply
-    - attributes
-        title: Attributes
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_attributes
-        managing_control_properties
-        - name_complex: attributes
-        selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime
@@ -742,6 +739,20 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
+    - attributes
+        title: Attributes
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_attributes
+        managing_control_properties
+        - name_complex: attributes
+        selection_params_default
+        - filter: \effcore\widget_attributes::complex_value_to_value
     - path
         title: Video
         type: varchar
@@ -774,20 +785,6 @@ entities
         - fixed_name: video_poster-%%_instance_id_context
         managing_control_element_attributes_on_insert
         - disabled: true
-    - attributes
-        title: Attributes
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_attributes
-        managing_control_properties
-        - name_complex: attributes
-        selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
     - created
         title: Created
         type: datetime
