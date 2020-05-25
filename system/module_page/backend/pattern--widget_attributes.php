@@ -11,6 +11,7 @@ namespace effcore {
   public $item_title = 'Attribute';
   public $attributes = ['data-type' => 'items-attributes'];
   public $name_complex = 'widget_attributes';
+  public $state = 'closed';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);

@@ -7,6 +7,7 @@
 namespace effcore {
           class widget_items extends control implements complex_control {
 
+  public $title_tag_name = 'label';
   public $title = null;
   public $item_title = 'Item';
   public $tag_name         = 'x-widget';
@@ -14,6 +15,8 @@ namespace effcore {
   public $attributes = ['data-type' => 'items'];
   public $name_complex = 'widget_items';
   public $controls = [];
+  public $state = ''; # '' | opened | closed[checked]
+  public $number = 0;
 
   function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, null, null, $attributes, [], $weight);
@@ -24,6 +27,7 @@ namespace effcore {
       $this->child_insert($this->widget_manage_group_get(), 'manage');
       $this->child_insert($this->widget_insert_get      (), 'insert');
       $this->widgets_manage_group_build();
+      $this->number = static::current_number_get();
       $this->is_builded = true;
     }
   }
@@ -168,9 +172,40 @@ namespace effcore {
     return true;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  function render_self() {
+    if ($this->title) {
+      $opener = $this->render_opener();
+      if ($this->title && $this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_widget_opener_'.$this->number                         ], $this->title))->render();
+      if ($this->title && $this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_widget_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title && $this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, [                                           'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title && $this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, [                                                                  ], $this->title))->render();
+    }
+  }
+
+  function render_opener() {
+    switch ($this->state) {
+      case 'opened': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_widget_opener_'.$this->number, 'id' => 'f_widget_opener_'.$this->number                   ]); break;
+      case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_widget_opener_'.$this->number, 'id' => 'f_widget_opener_'.$this->number, 'checked' => true]); break;
+      default      : $opener = null;
+    }
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
+    if ($opener && $this->has_error_in_container()                                                                          ) $opener->attribute_delete('checked'      );
+    return $opener ?
+           $opener->render() : '';
+  }
+
   ###########################
   ### static declarations ###
   ###########################
+
+  static protected $c_number = 0;
+
+  static function current_number_get() {
+    return static::$c_number++;
+  }
 
   static function on_request_value_set(&$widget, $form, $npath) {
     $widget->on_cache_update($form, $npath);

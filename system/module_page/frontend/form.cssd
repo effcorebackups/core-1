@@ -29,11 +29,10 @@
   fieldset > x-fieldset-content {margin-top: 30px}
   fieldset > x-description      {margin-top: 20px}
 
-  fieldset input[data-opener-type='fieldset'] {margin: 0 10px 0 0; border-radius: 15px}
-  fieldset input[data-opener-type='fieldset']:checked ~ x-fieldset-content {display: none}
-
-  fieldset input[data-opener-type='fieldset']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
-  fieldset input[data-opener-type='fieldset']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
+  fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
+  fieldset input[data-opener-type='title']:checked ~ x-fieldset-content {display: none}
+  fieldset input[data-opener-type='title']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
+  fieldset input[data-opener-type='title']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
 
   x-fieldset-content {
     display: block;
@@ -268,6 +267,11 @@
 
   /* widget */
 
+  x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
+  x-widget input[data-opener-type='title']:checked ~ x-widget-content {display: none}
+  x-widget input[data-opener-type='title']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
+  x-widget input[data-opener-type='title']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
+
   x-widgets-group {display: block}
   x-widget {display: block}
 
@@ -377,4 +381,4 @@
   html[data-uagent^='msie'] input[type='checkbox'],
   html[data-uagent^='msie'] input[type='radio'] {padding: 4px}
   html[data-uagent^='msie'] input[data-opener-type='description'] {margin-left: 8px; padding: 0; width: 10px}
-  html[data-uagent^='msie'] input[data-opener-type='fieldset'] {background-image: none}
+  html[data-uagent^='msie'] input[data-opener-type='title'] {background-image: none}
