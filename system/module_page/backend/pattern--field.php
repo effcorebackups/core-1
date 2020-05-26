@@ -53,6 +53,7 @@ namespace effcore {
 
   public $tag_name = 'x-field';
   public $title_tag_name = 'label';
+  public $title_attributes = ['data-field-title' => true];
   public $name_prefix = null; # unused inherited property
 # ─────────────────────────────────────────────────────────────────────
   public $element_class = '\\effcore\\markup_simple';
@@ -306,7 +307,7 @@ namespace effcore {
   function render_self() {
     $element = $this->child_select('element');
     if ($this->title) {
-      return (new markup($this->title_tag_name, [
+      return (new markup($this->title_tag_name, $this->title_attributes + [
         'for'                => $this->id_get(),
         'data-mark-required' => $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? 'true' : null], $this->title
       ))->render();

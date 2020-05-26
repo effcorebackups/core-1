@@ -12,6 +12,7 @@ namespace effcore {
   public $id;
   public $title;
   public $title_is_visible = 1;
+  public $title_attributes = ['data-tree-title' => true];
   public $access;
   public $origin = 'nosql'; # nosql | sql | dynamic
   public $visualization_mode; # null | decorated | decorated-rearrangeable
@@ -47,8 +48,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', ['data-tree-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', ['data-tree-title' => true,                        ], $this->title))->render();
+    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', $this->title_attributes + [                       ], $this->title))->render();
   }
 
   ###########################

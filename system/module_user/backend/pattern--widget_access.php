@@ -9,6 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-group';
   public $title = 'Access';
+  public $title_attributes = ['data-group-title' => true];
   public $description = 'Access settings are not applicable if no one role is active!';
   public $name_complex = 'access';
   public $attributes = [

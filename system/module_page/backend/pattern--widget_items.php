@@ -10,6 +10,7 @@ namespace effcore {
   public $title = null;
   public $title_tag_name = 'label';
   public $title_position = 'top'; # opener not working in 'bottom' mode
+  public $title_attributes = ['data-widget-title' => true];
   public $state = 'opened'; # '' | opened | closed[checked]
   public $number = 0;
 
@@ -179,10 +180,10 @@ namespace effcore {
   function render_self() {
     if ($this->title) {
       $opener = $this->render_opener();
-      if ($this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-widget-title' => true, 'for' => 'f_widget_opener_'.$this->number                         ], $this->title))->render();
-      if ($this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-widget-title' => true, 'for' => 'f_widget_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-widget-title' => true,                                            'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-widget-title' => true,                                                                   ], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_widget_opener_'.$this->number                         ], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_widget_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, $this->title_attributes + [                                           'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, $this->title_attributes + [                                                                  ], $this->title))->render();
     }
   }
 

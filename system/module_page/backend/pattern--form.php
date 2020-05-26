@@ -15,6 +15,7 @@ namespace effcore {
   public $title;
   public $title_tag_name = 'h2';
   public $title_is_visible = 1;
+  public $title_attributes = ['data-form-title' => true];
   public $clicked_button;
   public $number;
   public $validation_id;
@@ -135,8 +136,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, ['data-form-title' => true, 'aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, ['data-form-title' => true,                        ], $this->title))->render();
+    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, $this->title_attributes + [                       ], $this->title))->render();
   }
 
   # ─────────────────────────────────────────────────────────────────────

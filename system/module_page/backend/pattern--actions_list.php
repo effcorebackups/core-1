@@ -10,6 +10,7 @@ namespace effcore {
   public $title = 'actions';
   public $tag_name = 'x-actions';
   public $title_tag_name = 'x-actions-title';
+  public $title_attributes = ['data-actions-title' => true];
   public $template = 'actions_list';
   public $actions = [];
 
@@ -46,7 +47,7 @@ namespace effcore {
   }
 
   function render_self() {
-    return $this->title ? (new markup($this->title_tag_name, [], [
+    return $this->title ? (new markup($this->title_tag_name, $this->title_attributes, [
       new text($this->title)
     ]))->render() : '';
   }

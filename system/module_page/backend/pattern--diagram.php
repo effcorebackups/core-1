@@ -9,6 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-diagram';
   public $title_tag_name = 'x-diagram-title';
+  public $title_attributes = ['data-diagram-title' => true];
   public $type = 'linear'; # linear | radial
   public $slices = [];
 

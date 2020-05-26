@@ -12,6 +12,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $title;
   public $title_tag_name = 'h2';
+  public $title_attributes = ['data-section-title' => true];
   public $content_tag_name = 'x-section-content';
 
   function __construct($title = null, $attributes = [], $children = [], $weight = 0) {
@@ -32,7 +33,7 @@ namespace effcore {
 
   function render_self() {
     if ($this->title) {
-      return (new markup($this->title_tag_name, ['data-section-title' => true], [
+      return (new markup($this->title_tag_name, $this->title_attributes, [
         $this->title
       ]))->render();
     }

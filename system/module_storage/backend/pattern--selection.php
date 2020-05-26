@@ -11,6 +11,7 @@ namespace effcore {
   public $template = 'container';
 # ─────────────────────────────────────────────────────────────────────
   public $title_tag_name = 'h2';
+  public $title_attributes = ['data-selection-title' => true];
   public $id;
   public $title;
   public $fields = [];
@@ -270,7 +271,7 @@ namespace effcore {
 
   function render_self() {
     return $this->title ? (
-      new markup($this->title_tag_name, [], $this->title
+      new markup($this->title_tag_name, $this->title_attributes, $this->title
     ))->render() : '';
   }
 
