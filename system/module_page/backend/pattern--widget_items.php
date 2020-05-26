@@ -7,16 +7,18 @@
 namespace effcore {
           class widget_items extends control implements complex_control {
 
-  public $title_tag_name = 'label';
   public $title = null;
+  public $title_tag_name = 'label';
+  public $title_position = 'top'; # opener not working in 'bottom' mode
+  public $state = 'opened'; # '' | opened | closed[checked]
+  public $number = 0;
+
   public $item_title = 'Item';
   public $tag_name         = 'x-widget';
   public $content_tag_name = 'x-widget-content';
   public $attributes = ['data-type' => 'items'];
   public $name_complex = 'widget_items';
   public $controls = [];
-  public $state = ''; # '' | opened | closed[checked]
-  public $number = 0;
 
   function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, null, null, $attributes, [], $weight);
@@ -177,10 +179,10 @@ namespace effcore {
   function render_self() {
     if ($this->title) {
       $opener = $this->render_opener();
-      if ($this->title && $this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_widget_opener_'.$this->number                         ], $this->title))->render();
-      if ($this->title && $this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_widget_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title && $this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, [                                           'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title && $this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, [                                                                  ], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-widget-title' => true, 'for' => 'f_widget_opener_'.$this->number                         ], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-widget-title' => true, 'for' => 'f_widget_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-widget-title' => true,                                            'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-widget-title' => true,                                                                   ], $this->title))->render();
     }
   }
 

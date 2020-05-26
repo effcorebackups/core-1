@@ -11,6 +11,7 @@ namespace effcore {
   public $title_tag_name = 'label';
   public $content_tag_name = 'x-fieldset-content';
 # ─────────────────────────────────────────────────────────────────────
+  public $title_position = 'top'; # opener not working in 'bottom' mode
   public $state = ''; # '' | opened | closed[checked]
   public $number = 0;
 
@@ -33,10 +34,10 @@ namespace effcore {
   function render_self() {
     if ($this->title) {
       $opener = $this->render_opener();
-      if ($this->title && $this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->number                         ], $this->title))->render();
-      if ($this->title && $this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['for' => 'f_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title && $this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, [                                    'aria-hidden' => 'true'], $this->title))->render();
-      if ($this->title && $this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, [                                                           ], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-fieldset-title' => true, 'for' => 'f_opener_'.$this->number                         ], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener != '') return $opener.(new markup($this->title_tag_name, ['data-fieldset-title' => true, 'for' => 'f_opener_'.$this->number, 'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible == 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-fieldset-title' => true,                                     'aria-hidden' => 'true'], $this->title))->render();
+      if ($this->title_is_visible != 0 && $opener == '') return         (new markup($this->title_tag_name, ['data-fieldset-title' => true,                                                            ], $this->title))->render();
     }
   }
 

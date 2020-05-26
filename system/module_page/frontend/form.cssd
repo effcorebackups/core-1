@@ -25,8 +25,8 @@
   x-field[data-before-container='true'] {margin-bottom: 0}
   x-field[data-before-container='true'] + fieldset {margin-top: 0; margin-left: 34px}
 
-  fieldset > label {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
-  fieldset > x-fieldset-content {margin-top: 30px}
+  fieldset [data-fieldset-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
+  fieldset [data-fieldset-title] + x-fieldset-content {margin-top: 30px}
   fieldset > x-description      {margin-top: 20px}
 
   fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
@@ -290,8 +290,9 @@
   /* widget 'items' */
 
   x-widget[data-type^='items'] {margin: 30px 0}
-  x-widget[data-type^='items'] > x-title {display: block; margin-bottom: 30px; font-size: 1.5em; line-height: 1.2em}
-  x-widget[data-type^='items'] > x-widget-content {
+  x-widget[data-type^='items'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
+  x-widget[data-type^='items'] [data-widget-title] + x-widget-content {margin-top: 30px}
+  x-widget[data-type^='items']                     > x-widget-content {
     display: block;
     padding: 10px 16px 16px 16px;
     border-top: 5px solid %%_color_main}
