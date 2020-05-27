@@ -47,7 +47,7 @@
   /* field */
 
   x-field {display: block; margin: 20px 0}
-  x-field label {display: block; font-size: 1.2em}
+  x-field [data-field-title] {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
   /* group */
@@ -116,23 +116,23 @@
   input[data-state-default='not_checked']:checked,
   input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color_warning}
 
-  input[type='checkbox'] ~ label[for],
-  input[type='radio'   ] ~ label[for] {
+  input[type='checkbox'] ~ label[data-field-title][for],
+  input[type='radio'   ] ~ label[data-field-title][for] {
     cursor: pointer;
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
 
   /* checkboxes and radiobuttons inside containers */
 
-  x-field[data-type^='switcher'   ] label,
-  x-field[data-type^='checkbox'   ] label,
-  x-field[data-type^='radiobutton'] label {display: inline; vertical-align: middle}
+  x-field[data-type^='switcher'   ] [data-field-title],
+  x-field[data-type^='checkbox'   ] [data-field-title],
+  x-field[data-type^='radiobutton'] [data-field-title] {display: inline; vertical-align: middle}
 
   x-group[data-type='switchers'   ] x-field,
   x-group[data-type='checkboxes'  ] x-field,
   x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
-  x-group[data-type='switchers'   ] x-field label,
-  x-group[data-type='checkboxes'  ] x-field label,
-  x-group[data-type='radiobuttons'] x-field label {display: inline; font-size: 1em}
+  x-group[data-type='switchers'   ] x-field [data-field-title],
+  x-group[data-type='checkboxes'  ] x-field [data-field-title],
+  x-group[data-type='radiobuttons'] x-field [data-field-title] {display: inline; font-size: 1em}
 
   /* description + data-opener-type='description' */
 
@@ -188,7 +188,7 @@
   /* disabled elements */
 
   x-field[aria-disabled='true'] * {cursor: default !important}
-  x-field[aria-disabled='true'] label,
+  x-field[aria-disabled='true'] [data-field-title],
   x-field[aria-disabled='true'] x-description {opacity: .3}
 
      input:disabled,
@@ -207,7 +207,7 @@
   x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
 
-  x-group[data-type='palette'] label {
+  x-group[data-type='palette'] [data-group-title] {
     margin: 0;
     display: inline-block;
     vertical-align: middle;
@@ -280,11 +280,11 @@
     margin-right: 10px;
     vertical-align: middle}
 
-  x-widget[data-controls-is-inline-full='true'] x-field       {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full='true'] x-field label {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full='true'] x-field                    {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full='true'] x-field [data-field-title] {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
   x-widget[data-controls-is-inline-full='true'] x-field input {margin: 0}
   x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] {margin-right: 10px}
-  x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] label {margin: 0}
+  x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
   x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] input {margin-right: 5px}
 
   /* widget 'items' */
@@ -314,7 +314,7 @@
 
   x-widget[data-type^='items'] x-widget[data-type='insert'] {display: block; margin-top: 3px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0 10px 0 0; vertical-align: top}
-  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field label {margin-bottom: 5px}
+  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field [data-field-title] {margin-bottom: 5px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='select'] select {max-width: 130px; vertical-align: top}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='file'] input {max-width: 300px; vertical-align: top}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='file'] x-description {max-width: 300px}
