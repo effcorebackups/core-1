@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.effQuerySelectorAll('[data-has-rearrangeable]').forEach(function(c_has_rearrangeable){
     c_has_rearrangeable.setAttribute('data-js-is-processed', '');
-    c_has_rearrangeable.effQuerySelectorAll('[data-rearrangeable="true"]').forEach(function(c_rearrangeable){
+    c_has_rearrangeable.effQuerySelectorAll('[data-rearrangeable]').forEach(function(c_rearrangeable){
 
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
