@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
         c_time_total.innerText = h_ttl + ':' + m_ttl + ':' + s_ttl;
         if (!c_is_init) {
           c_is_init = true;
-          c_player.setAttribute('data-is-loadedmetadata', true);
+          c_player.setAttribute('data-is-loadedmetadata', '');
           c_timeline.addEventListener('click', function(event){
             var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
             c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_button_play.value = 'play';
     c_audio.addEventListener('loadedmetadata', on_updateTimeInfo);
     c_audio.addEventListener('timeupdate',     on_updateTimeInfo);
-    c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', true);});
+    c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', '');});
     c_audio.addEventListener('pause',       function(){c_player.removeAttribute('data-is-playing');});
     c_audio.addEventListener('ended',       function(){c_player.removeAttribute('data-is-playing'); /* IE fix → */ c_audio.pause();});
     c_button_play.addEventListener('click', function(){
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     c_audio.addEventListener('progress', function(){
       clearTimeout(c_timerId);
-      c_player.setAttribute('data-is-progressing', true);
+      c_player.setAttribute('data-is-progressing', '');
       c_timerId = setTimeout(function(){
         c_player.removeAttribute('data-is-progressing');
       }, 1000);
