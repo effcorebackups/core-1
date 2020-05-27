@@ -309,7 +309,7 @@ namespace effcore {
     if ($this->title) {
       return (new markup($this->title_tag_name, $this->title_attributes + [
         'for'                => $this->id_get(),
-        'data-mark-required' => $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? 'true' : null], $this->title
+        'data-mark-required' => $this->attribute_select('required') || ($element instanceof node_simple && $element->attribute_select('required')) ? true : null], $this->title
       ))->render();
     }
   }

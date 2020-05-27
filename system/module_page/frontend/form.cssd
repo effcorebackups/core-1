@@ -62,7 +62,7 @@
 
   /* mark 'required' */
 
-  [data-mark-required='true']::after {
+  [data-mark-required]::after {
     content: '';
     display: inline-block;
     width: 6px;
