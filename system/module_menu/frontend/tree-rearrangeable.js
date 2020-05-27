@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function(){
           draggable_icon.addEventListener('dragend',   function(event){ window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'        ); c_rearrangeable.parentNode.removeAttribute('data-rearrangeable-is-active'        ); });
       c_rearrangeable.prepend(draggable_icon);
 
-      var handler_on_dragover  = function(event){ event.preventDefault();                                   };
-      var handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', 'true'); };
-      var handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'        ); };
-      var handler_on_drop      = function(event){ this.removeAttribute('data-droppable-is-active'        );
+      var handler_on_dragover  = function(event){ event.preventDefault();                               };
+      var handler_on_dragenter = function(event){ this.   setAttribute('data-droppable-is-active', ''); };
+      var handler_on_dragleave = function(event){ this.removeAttribute('data-droppable-is-active'    ); };
+      var handler_on_drop      = function(event){ this.removeAttribute('data-droppable-is-active'    );
           var position = this.getAttribute('data-position');
           var drop     = this.parentNode;
           var drag     = window._effDataTransferNode.parentNode.parentNode;
