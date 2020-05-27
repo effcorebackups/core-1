@@ -276,17 +276,17 @@
   x-widgets-group {display: block}
   x-widget {display: block}
 
-  x-widget[data-controls-is-inline='true'] x-field {
+  x-widget[data-controls-is-inline] x-field {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle}
 
-  x-widget[data-controls-is-inline-full='true'] x-field                    {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full='true'] x-field [data-field-title] {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full='true'] x-field input {margin: 0}
-  x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] {margin-right: 10px}
-  x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
-  x-widget[data-controls-is-inline-full='true'] x-field[data-type='checkbox'] input {margin-right: 5px}
+  x-widget[data-controls-is-inline-full] x-field                    {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full] x-field [data-field-title] {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full] x-field input {margin: 0}
+  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] {margin-right: 10px}
+  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
+  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] input {margin-right: 5px}
 
   /* widget 'items' */
 
