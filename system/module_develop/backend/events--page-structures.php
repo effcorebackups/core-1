@@ -99,7 +99,7 @@ namespace effcore\modules\develop {
       # set abstract mark
         if (!empty($c_item_info->modifier) &&
                    $c_item_info->modifier == 'abstract') {
-          $x_class->attribute_insert('data-abstract', 'true');
+          $x_class->attribute_insert('data-abstract', true);
         }
 
       # find properties
@@ -116,9 +116,9 @@ namespace effcore\modules\develop {
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_property->name.' = '.$c_defaults) :
               new text_simple($c_refl_property->name);
-            if ($c_refl_property->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('property public'   )] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
-            if ($c_refl_property->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('property protected')] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
-            if ($c_refl_property->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('property private'  )] + ($c_refl_property->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isPublic   ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('property public'   )] + ($c_refl_property->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isProtected()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('property protected')] + ($c_refl_property->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_property->name);
+            if ($c_refl_property->isPrivate  ()) $x_attributes->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('property private'  )] + ($c_refl_property->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_property->name);
           }
         }
 
@@ -137,9 +137,9 @@ namespace effcore\modules\develop {
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_method->name.' ('.$c_defaults.')') :
               new text_simple($c_refl_method->name.' ('.            ')');
-            if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('method public'   )] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
-            if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('method protected')] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
-            if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('method private'  )] + ($c_refl_method->isStatic() ? ['data-static' => 'true'] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isPublic   ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'public',    'title' => new text('method public'   )] + ($c_refl_method->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isProtected()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'protected', 'title' => new text('method protected')] + ($c_refl_method->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_method->name);
+            if ($c_refl_method->isPrivate  ()) $x_operations->child_insert(new markup('x-item', ['data-visibility' => 'private',   'title' => new text('method private'  )] + ($c_refl_method->isStatic() ? ['data-static' => true] : []), $c_name), $c_refl_method->name);
           }
         }
       }
