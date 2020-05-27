@@ -14,5 +14,5 @@
   nav[aria-label='languages'] li[data-code='en'] {
     background: url('pictures/flag-uk-mini.svg') no-repeat 0 2px}
 
-  nav[aria-label='languages'] [aria-current] {
+  nav[aria-label='languages'] [aria-current='true'] {
     color: %%_color_link_active}
