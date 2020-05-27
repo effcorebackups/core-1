@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
-          draggable_icon.addEventListener('dragstart', function(event){ window._effDataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', ''); c_rearrangeable.   setAttribute('data-rearrangeable-is-active', 'true'); });
-          draggable_icon.addEventListener('dragend',   function(event){ window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'        ); });
+          draggable_icon.addEventListener('dragstart', function(event){ window._effDataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', ''); c_rearrangeable.   setAttribute('data-rearrangeable-is-active', ''); });
+          draggable_icon.addEventListener('dragend',   function(event){ window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'    ); });
       c_rearrangeable.prepend(draggable_icon);
 
       var handler_on_dragover  = function(event){ event.preventDefault();                               };

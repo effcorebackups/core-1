@@ -15,13 +15,13 @@
   [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]   {background: %%_color_warning; display: block; position: relative; height: 6px}
   [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active] {background: %%_color_ok}
 
-  [role='tree'][data-visualization-mode$='rearrangeable']                                   li:not(:last-child)                                                                     {padding-bottom: 0}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                                                                                      {padding-bottom: 0; padding-top: 0}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li:not(:last-child)                          > x-droppable-area[data-position='after']  {display: none}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                                             x-droppable-area                         {visibility: hidden}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li                                             x-droppable-area                         {visibility: visible}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active='true']        x-droppable-area                         {visibility: hidden}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active='true'] + li > x-droppable-area[data-position='before'] {visibility: hidden}
+  [role='tree'][data-visualization-mode$='rearrangeable']                                   li:not(:last-child) {padding-bottom: 0}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                  {padding-bottom: 0; padding-top: 0}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li:not(:last-child) > x-droppable-area[data-position='after'] {display: none}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                                      x-droppable-area                         {visibility: hidden}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li                                      x-droppable-area                         {visibility: visible}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active]        x-droppable-area                         {visibility: hidden}
+  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active] + li > x-droppable-area[data-position='before'] {visibility: hidden}
 
   [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed] x-item {
     border-left: 0;
