@@ -92,8 +92,8 @@ namespace effcore {
 
   function widget_manage_group_get() {
     return new markup('x-widgets-group', [
-      'data-type'              => 'manage',
-      'data-has-rearrangeable' => 'true'
+      'data-type' => 'manage',
+      'data-has-rearrangeable' => true
     ]);
   }
 

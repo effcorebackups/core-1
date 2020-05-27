@@ -233,7 +233,7 @@
 
   /* rearrangeable */
 
-  [data-has-rearrangeable='true'] x-draggable-icon {
+  [data-has-rearrangeable] x-draggable-icon {
     float: left;
     position: relative;
     z-index: 100;
@@ -245,14 +245,14 @@
     border-radius: 5px;
     background: %%_color_main url('pictures/icons-drag_and_drop.svgd') 50% 50%}
 
-  [data-has-rearrangeable='true'] x-droppable-area {
+  [data-has-rearrangeable] x-droppable-area {
     display: block;
     position: relative;
     height: 7px;
     margin-bottom: -7px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='before']   {background: %%_color_warning; top: -14px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-position='after' ]   {background: %%_color_warning; top:   7px}
-  [data-has-rearrangeable='true'] x-droppable-area[data-droppable-is-active] {background: %%_color_ok}
+  [data-has-rearrangeable] x-droppable-area[data-position='before']   {background: %%_color_warning; top: -14px}
+  [data-has-rearrangeable] x-droppable-area[data-position='after' ]   {background: %%_color_warning; top:   7px}
+  [data-has-rearrangeable] x-droppable-area[data-droppable-is-active] {background: %%_color_ok}
 
                                      [data-rearrangeable='true']                                                             x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active] [data-rearrangeable='true']                                                             x-droppable-area                         {visibility: visible}
@@ -260,10 +260,10 @@
   [data-has-rearrangeable-is-active] [data-rearrangeable='true'][data-rearrangeable-is-active]                               x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active] [data-rearrangeable='true'][data-rearrangeable-is-active] + [data-rearrangeable='true'] x-droppable-area[data-position='before'] {visibility: hidden}
 
-  [data-has-rearrangeable='true'] > x-fieldset-content {
+  [data-has-rearrangeable] > x-fieldset-content {
     padding-top   : 20px;
     padding-bottom: 20px}
-  [data-has-rearrangeable='true'][data-js-is-processed] x-field[data-type='weight'] {
+  [data-has-rearrangeable][data-js-is-processed] x-field[data-type='weight'] {
     display: none}
 
   /* widget */
