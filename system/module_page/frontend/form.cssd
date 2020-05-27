@@ -27,7 +27,7 @@
 
   fieldset [data-fieldset-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   fieldset [data-fieldset-title] + x-fieldset-content {margin-top: 30px}
-  fieldset > x-description      {margin-top: 20px}
+  fieldset > x-description {margin-top: 20px}
 
   fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
   fieldset input[data-opener-type='title']:checked ~ x-fieldset-content {display: none}
@@ -54,7 +54,7 @@
 
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
-  x-group > x-title {
+  x-group [data-group-title] {
     display: block;
     margin-bottom: 20px;
     font-size: 1.2em}
@@ -118,8 +118,8 @@
 
   input[type='checkbox'] ~ label[data-field-title][for],
   input[type='radio'   ] ~ label[data-field-title][for] {
-    cursor: pointer;
-    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
+    cursor: pointer}
 
   /* checkboxes and radiobuttons inside containers */
 
@@ -145,7 +145,7 @@
   x-description p {margin: 0}
   input[data-opener-type='description'] {display: none}
   input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('pictures/icons-form.svgd') 0 -85px}
-  input[data-opener-type='description'] + x-description {display: block}
+  input[data-opener-type='description']         + x-description {display: block}
   input[data-opener-type='description']:checked + x-description {display: none}
   x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
 
@@ -174,7 +174,7 @@
     left: -10000px}
 
   button[data-style$='zoomed'] {
-    zoom: .5}
+    transform: scale(.5)}
 
   button[data-style^='narrow'] {
     margin: 0 0 0 8px;
@@ -208,12 +208,12 @@
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
 
   x-group[data-type='palette'] [data-group-title] {
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
     margin: 0;
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    font-size: 1.2em;
-    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+    font-size: 1.2em}
 
   x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
@@ -305,7 +305,6 @@
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget button[data-style$='zoomed'] {margin-top: 22px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-no-items {
