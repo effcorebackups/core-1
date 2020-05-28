@@ -92,7 +92,7 @@ namespace effcore\modules\polls {
           $diagram->slice_insert($c_answer->answer,
             $total ? ($total_by_answers[$c_answer->id] ?? 0) / $total * 100 : 0,
                       $total_by_answers[$c_answer->id] ?? 0,
-            array_shift($diagram_colors), ['data-id' => $c_answer->id, 'aria-selected' => isset($votes[$c_answer->id]) ? 'true' : false], $c_answer->weight
+            array_shift($diagram_colors), ['data-id' => $c_answer->id, 'aria-selected' => isset($votes[$c_answer->id]) ? 'true' : null], $c_answer->weight
           );
         }
       # make report
