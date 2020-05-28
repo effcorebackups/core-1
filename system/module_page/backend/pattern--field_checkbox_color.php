@@ -16,9 +16,9 @@ namespace effcore {
     $colors = color::get_all();
     $element = $this->child_select('element');
     if (isset($colors[$color_id])) {
-      $element->attribute_insert('style', 'background: '.$colors[$color_id]->value           );
-      $element->attribute_insert('data-value',           $colors[$color_id]->value           );}
-      $element->attribute_insert('aria-invalid',   isset($colors[$color_id]) ? false : 'true');
+      $element->attribute_insert('style', 'background: '.$colors[$color_id]->value          );
+      $element->attribute_insert('data-value',           $colors[$color_id]->value          );}
+      $element->attribute_insert('aria-invalid',   isset($colors[$color_id]) ? null : 'true');
   }
 
 }}
