@@ -187,7 +187,7 @@ entities
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
         managing_control_element_attributes
-        - required: false
+        - required: null
     - title
         title: Title
         type: varchar
@@ -230,7 +230,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_url
         managing_control_element_attributes
-        - required: false
+        - required: null
         - maxlength: 2048
     - link_attributes
         title: Link attributes

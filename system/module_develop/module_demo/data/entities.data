@@ -182,9 +182,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_textarea
         managing_control_element_attributes
-        - required: false
-        - minlength: false
-        - maxlength: false
+        - required: null
+        - minlength: null
+        - maxlength: null
     constraints
     - primary_id
         type: primary

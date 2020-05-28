@@ -262,7 +262,7 @@ namespace effcore {
     $name = $this->name_get();
     $element_attributes['name'    ] = $name.'_delete_'.$type.'[]';
     $element_attributes['value'   ] = $id;
-    $element_attributes['disabled'] = $this->disabled_get();
+    $element_attributes['disabled'] = $this->disabled_get() ?: null;
     $pool_manager = $this->child_select('manager');
     $pool_manager->field_insert(
       new text('delete file "%%_file"', ['file' => $item->file]), null, $element_attributes

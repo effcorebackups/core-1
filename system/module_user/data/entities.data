@@ -561,7 +561,7 @@ entities
         managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_control_element_attributes_on_update
-        - required: false
+        - required: null
         managing_control_element_attributes_on_insert
         - required: true
     - created

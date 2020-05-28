@@ -53,8 +53,8 @@ forms
             - password|field_password
                 element_attributes
                 - name: storage_password
-                - minlength: false
-                - required: false
+                - minlength: null
+                - required: null
           # field 'Database name'
             - database_name|field_text
                 title: Database name
@@ -96,7 +96,7 @@ forms
                 - name: table_prefix
                 - maxlength: 10
                 - pattern: ^[a-zA-Z0-9_\-]+$
-                - required: false
+                - required: null
     # user parameters
     - user|fieldset
         title: User
