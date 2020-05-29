@@ -117,8 +117,8 @@
   input[data-state-default='not_checked']:checked,
   input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color_warning}
 
-  input[type='checkbox'] ~ label[data-field-title][for],
-  input[type='radio'   ] ~ label[data-field-title][for] {
+  input[type='checkbox'] ~ label[for],
+  input[type='radio'   ] ~ label[for] {
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
     cursor: pointer}
 
