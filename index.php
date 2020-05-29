@@ -5,7 +5,7 @@
   ##################################################################
 
   if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
-    $www_root = DIRECTORY_SEPARATOR == '\\' ? str_replace('\\', '/', __DIR__) : __DIR__;
+    $www_root = DIRECTORY_SEPARATOR === '\\' ? str_replace('\\', '/', __DIR__) : __DIR__;
     define('effcore\\dir_root',    $www_root.'/');
     define('effcore\\dir_dynamic', $www_root.'/dynamic/');
     define('effcore\\dir_system',  $www_root.'/system/');
