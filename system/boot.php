@@ -49,9 +49,11 @@ namespace effcore {
   # 6. url /file.type/ ║ is wrong notation - redirect to /file.type
   # ───────────────────╨────────────────────────────────────────────────────────────────────
 
-  if (             core::server_get_request_uri()     != '/' &&
-                   core::server_get_request_uri()[-1] == '/') {
-     url::go(rtrim(core::server_get_request_uri(), '/')); # note: trimming for single redirect
+  if (core::server_get_request_uri()     !== '/' &&
+      core::server_get_request_uri()[-1] === '/') {
+    $new_url = rtrim(core::server_get_request_uri(), '/'); # note: trimming for single redirect
+    url::go($new_url === '' ? '/' :
+            $new_url);
   }
 
   $file_info = url::get_current()->file_info_get();
