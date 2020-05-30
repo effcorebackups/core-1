@@ -314,8 +314,8 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0 10px 0 0; vertical-align: top}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field [data-field-title] {margin-bottom: 5px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='select'] select {max-width: 130px; vertical-align: top}
-  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='file'] input {max-width: 300px; vertical-align: top}
-  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='file'] x-description {max-width: 300px}
+  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type^='file'] input {max-width: 300px; vertical-align: top}
+  x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type^='file'] x-description {max-width: 300px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 33px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style^='narrow'] {border-radius: 5px}
 

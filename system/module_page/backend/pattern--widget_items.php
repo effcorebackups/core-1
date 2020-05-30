@@ -118,7 +118,7 @@ namespace effcore {
     $button_delete->_id = $c_row_id;
     $this->controls['~delete__'.$c_row_id] = $button_delete;
   # grouping of previous elements in widget 'manage'
-    $widget->child_insert($field_weight,  'weight'       );
+    $widget->child_insert($field_weight, 'weight');
     $widget->child_insert($button_delete, 'button_delete');
     return $widget;
   }

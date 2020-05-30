@@ -22,4 +22,34 @@ namespace effcore {
     'gif'  => 'gif'
   ];
 
+  function widget_insert_get() {
+    $widget = new markup('x-widget', [
+      'data-type' => 'insert']);
+  # control for upload new file
+    $field_file = new field_picture;
+    $field_file->title = 'File';
+    $field_file->max_file_size    = $this->max_file_size;
+    $field_file->allowed_types    = $this->allowed_types;
+    $field_file->cform            = $this->cform;
+    $field_file->min_files_number = null;
+    $field_file->max_files_number = null;
+    $field_file->has_on_validate         = false;
+    $field_file->has_on_validate_phase_3 = false;
+    $field_file->build();
+    $field_file->multiple_set();
+    $field_file->name_set($this->name_complex.'__file[]');
+    $this->controls['#file'] = $field_file;
+  # button for insertion of the new item
+    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->build();
+    $button->value_set($this->name_complex.'__insert');
+    $button->_type = 'insert';
+    $this->controls['~insert'] = $button;
+  # grouping of previous elements in widget 'insert'
+    $widget->child_insert($field_file, 'file');
+    $widget->child_insert($button, 'button');
+    return $widget;
+  }
+
 }}

@@ -95,7 +95,7 @@ namespace effcore {
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
     $widget->child_insert($field_file, 'file');
-    $widget->child_insert($button,     'button');
+    $widget->child_insert($button, 'button');
     return $widget;
   }
 
