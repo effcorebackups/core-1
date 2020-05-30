@@ -53,17 +53,17 @@ namespace effcore {
     'type' => 'file',
     'name' => 'file'];
 # ─────────────────────────────────────────────────────────────────────
+  public $upload_dir = '';
+  public $fixed_name;
+  public $fixed_type;
   public $max_file_size = '5K';
   public $min_files_number = 0;
   public $max_files_number = 1;
   public $max_length_name = 227; # = 255 - strlen('-TimestmpRandom_v.') - max_length_type
   public $max_length_type =  10;
-  public $allowed_types = ['txt' => 'txt'];
   public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
   public $allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-", "."';
-  public $fixed_name;
-  public $fixed_type;
-  public $upload_dir = '';
+  public $allowed_types = ['txt' => 'txt'];
   public $has_on_validate         = true;
   public $has_on_validate_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────

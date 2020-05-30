@@ -12,11 +12,13 @@ namespace effcore {
   public $attributes = ['data-type' => 'items-info-files'];
   public $name_complex = 'widget_files';
 # ─────────────────────────────────────────────────────────────────────
-  public $max_file_size = '5K';
-  public $allowed_types = ['txt' => 'txt'];
+  public $upload_dir = '';
   public $fixed_name = 'file-%%_instance_id_context-%%_item_id_context';
   public $fixed_type = null;
-  public $upload_dir = '';
+  public $max_file_size = '5K';
+  public $allowed_types = [
+    'txt' => 'txt'
+  ];
 
   function value_get_complex() {
     $this->pool_values_save();

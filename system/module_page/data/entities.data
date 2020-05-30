@@ -218,20 +218,13 @@ entities
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - items
-        title: Items
+        title: Pictures
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_gallery
-        managing_control_properties
-        - max_file_size: 500K
-        - allowed_types
-          - =: jpeg
-          - =: jpg
-          - =: png
-          - =: gif
+        managing_control_class: \effcore\widget_gallery_pictures
         managing_control_properties
         - name_complex: items
     constraints
