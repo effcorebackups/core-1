@@ -62,8 +62,8 @@ namespace effcore\modules\core {
     if (is_array($parts)) {
       foreach ($parts as $c_id_area => $c_parts_by_area) {
         foreach ($c_parts_by_area as $c_part) {
-          if ($c_part instanceof part &&
-              $c_part->type == 'link'      && strpos(
+          if ($c_part instanceof part              &&
+              $c_part->type             === 'link' && strpos(
               $c_part->source, 'tabs/') === 0) {
             $active_tab = storage::get('files')->select($c_part->source, true);
           }
