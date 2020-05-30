@@ -42,7 +42,7 @@ namespace effcore {
     $file = new file(static::directory.core::date_get().'/'.
                        $log_level.'--'.core::date_get().'.log');
     foreach (static::$data as $c_log) {
-      if ($c_log->value == $log_level) {
+      if ($c_log->value === $log_level) {
         $c_info = $c_log->description;
         foreach ($c_log->args as $c_key => $c_value)
           $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
