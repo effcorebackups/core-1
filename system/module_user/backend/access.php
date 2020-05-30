@@ -9,11 +9,9 @@ namespace effcore {
 
   static function check($access, $user = null) {
     if ($access === null) return true;
-    foreach ($user ? $user->roles : user::get_current()->roles as $c_role) {
-      if (isset($access->roles[$c_role])) {
-        return true;
-      }
-    }
+    if (  $user === null) $user = user::get_current();
+    if (isset($access->roles)) foreach ($user->roles as $c_role) if (isset($access->roles[ $c_role ])) return true;
+    if (isset($access->users))                                   if (isset($access->users[$user->id])) return true;
   }
 
   static function roles_get($full = false) {
