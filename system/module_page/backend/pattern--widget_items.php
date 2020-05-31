@@ -51,19 +51,19 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_get() {
-    return $this->cform->validation_cache_get($this->name_complex.'__items') ?: [];
+    return $this->cform->validation_cache_get($this->name_get_complex().'__items') ?: [];
   }
 
   function items_set($items, $once = false) {
-    if ($once && $this->cform->validation_cache_get($this->name_complex.'__items') !== null) return;
+    if ($once && $this->cform->validation_cache_get($this->name_get_complex().'__items') !== null) return;
     $this->cform->validation_cache_is_persistent = true;
-    $this->cform->validation_cache_set($this->name_complex.'__items', $items ?: []);
+    $this->cform->validation_cache_set($this->name_get_complex().'__items', $items ?: []);
     $this->widgets_manage_group_build();
   }
 
   function items_reset() {
     $this->cform->validation_cache_is_persistent = false;
-    $this->cform->validation_cache_set($this->name_complex.'__items', null);
+    $this->cform->validation_cache_set($this->name_get_complex().'__items', null);
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ namespace effcore {
     $field_weight = new field_weight;
     $field_weight->description_state = 'hidden';
     $field_weight->build();
-    $field_weight->name_set($this->name_complex.'__weight__'.$c_row_id);
+    $field_weight->name_set($this->name_get_complex().'__weight__'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
     $this->controls['#weight__'.$c_row_id] = $field_weight;
@@ -113,7 +113,7 @@ namespace effcore {
     $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')]);
     $button_delete->break_on_validate = true;
     $button_delete->build();
-    $button_delete->value_set($this->name_complex.'__delete__'.$c_row_id);
+    $button_delete->value_set($this->name_get_complex().'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
     $this->controls['~delete__'.$c_row_id] = $button_delete;
@@ -130,7 +130,7 @@ namespace effcore {
     $button = new button('insert', ['title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->name_complex.'__insert');
+    $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'

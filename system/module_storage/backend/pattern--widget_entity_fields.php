@@ -51,14 +51,14 @@ namespace effcore {
     $select = new field_select('New field');
     $select->values = $options;
     $select->build();
-    $select->name_set($this->name_complex.'__insert');
+    $select->name_set($this->name_get_complex().'__insert');
     $select->required_set(false);
     $this->controls['#insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->name_complex.'__insert');
+    $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'

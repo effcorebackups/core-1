@@ -84,13 +84,13 @@ namespace effcore {
     $field_file->has_on_validate_phase_3 = false;
     $field_file->build();
     $field_file->multiple_set();
-    $field_file->name_set($this->name_complex.'__file[]');
+    $field_file->name_set($this->name_get_complex().'__file[]');
     $this->controls['#file'] = $field_file;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
-    $button->value_set($this->name_complex.'__insert');
+    $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
@@ -115,7 +115,7 @@ namespace effcore {
         $c_new_item->object = $c_value;
         $items[] = $c_new_item;
         $c_new_item_id = core::array_key_last($items);
-        if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_complex.'-'.$c_new_item_id)) {
+        if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_item_id)) {
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [

@@ -16,7 +16,7 @@ namespace effcore {
     $field_text = new field_text;
     $field_text->description_state = 'hidden';
     $field_text->build();
-    $field_text->name_set($this->name_complex.'__text__'.$c_row_id);
+    $field_text->name_set($this->name_get_complex().'__text__'.$c_row_id);
     $field_text->value_set($item->text);
     $this->controls['#text__'.$c_row_id] = $field_text;
   # grouping of previous elements in widget 'manage'
