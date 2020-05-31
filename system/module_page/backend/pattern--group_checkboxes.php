@@ -29,7 +29,7 @@ namespace effcore {
   function values_set($values) {
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) $c_child->checked_set(false);
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) {
-      if (in_array($c_child->value_get(), $values)) {
+      if (is_array($values) && in_array($c_child->value_get(), $values)) {
         $c_child->checked_set(true);
       }
     }

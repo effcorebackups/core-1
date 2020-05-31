@@ -97,6 +97,11 @@ namespace effcore {
     }
   }
 
+  function disabled_get() {
+    return count($this->values) +
+           count($this->disabled);
+  }
+
   function render_self() {
     if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null, 'aria-hidden' => 'true'], $this->title))->render();
     if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null                         ], $this->title))->render();
