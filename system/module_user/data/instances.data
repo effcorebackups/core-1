@@ -80,13 +80,6 @@ instances
     - title: Managers
     - is_embed: 1
     - weight: +70
-- role_owner|instance
-    entity_name: role
-    values
-    - id: owner
-    - title: Owner
-    - is_embed: 1
-    - weight: +60
 - role_registered|instance
     entity_name: role
     values

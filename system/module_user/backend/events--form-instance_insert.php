@@ -22,7 +22,6 @@ namespace effcore\modules\user {
         $items['#id_role']->is_builded = false;
         $items['#id_role']->disabled['anonymous' ] = 'anonymous';
         $items['#id_role']->disabled['registered'] = 'registered';
-        $items['#id_role']->disabled['owner'     ] = 'owner';
         $items['#id_role']->build();
       }
     # feedback
