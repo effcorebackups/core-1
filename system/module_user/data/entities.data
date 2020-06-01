@@ -16,6 +16,8 @@ entities
         managing_on_select_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
+        managing_control_properties
+        - weight: 200
         managing_control_element_attributes
         - disabled: true
     - name
@@ -32,6 +34,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         managing_control_element_attributes
         - minlength: 4
         - maxlength: 64
@@ -47,6 +51,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
+        managing_control_properties
+        - weight: 180
     - message
         title: Message
         type: varchar
@@ -60,6 +66,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_textarea
+        managing_control_properties
+        - weight: 170
         managing_control_element_attributes
         - minlength: 50
         - maxlength: 2048
@@ -107,10 +115,11 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
+        managing_control_properties
+        - weight: 200
+        - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
-        managing_control_properties
-        - is_validate_uniqueness: true
     - title
         title: Title
         type: varchar
@@ -125,6 +134,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
     - created
@@ -181,6 +192,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 200
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -198,6 +210,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 190
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -264,6 +277,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 200
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
@@ -281,6 +295,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 190
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -352,6 +367,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
+        - weight: 200
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
@@ -369,6 +385,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
     - weight
@@ -381,6 +399,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_weight
+        managing_control_properties
+        - weight: 180
     - created
         title: Created
         type: datetime
@@ -505,7 +525,6 @@ entities
         managing_control_class: \effcore\field_nickname
         managing_control_properties
         - weight: 190
-        managing_control_properties
         - is_validate_uniqueness: true
     - email
         title: EMail
@@ -521,7 +540,6 @@ entities
         managing_control_class: \effcore\field_email
         managing_control_properties
         - weight: 180
-        managing_control_properties
         - is_validate_uniqueness: true
     - avatar_path
         title: Avatar
