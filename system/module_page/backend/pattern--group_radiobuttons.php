@@ -42,7 +42,7 @@ namespace effcore {
             'description'        => null,
             'element_attributes' => ['value' => $c_value],
             'weight'             => 0];
-          $c_field                 = new $this->field_class;
+          $c_field                     = new $this->field_class;
           $c_field->tag_name           = $this->field_tag_name;
           $c_field->title_tag_name     = $this->field_title_tag_name;
           $c_field->title_position     = $this->field_title_position;
@@ -51,11 +51,11 @@ namespace effcore {
           $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
           $c_field->weight             = $c_info->weight;
           $c_field->build();
-          if (isset($this->required[$c_value])) $c_field->required_set();
-          if (isset($this->checked [$c_value])) $c_field-> checked_set();
-          if (isset($this->disabled[$c_value])) $c_field->disabled_set();
-          $this->child_insert($c_field, $c_value);
-        }
+                          $this->child_insert($c_field, $c_value);
+        } else $c_field = $this->child_select($c_value);
+        $c_field->required_set(isset($this->required[$c_value]));
+        $c_field-> checked_set(isset($this->checked [$c_value]));
+        $c_field->disabled_set(isset($this->disabled[$c_value]));
       }
       $this->is_builded = true;
     }

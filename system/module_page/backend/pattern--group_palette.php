@@ -23,13 +23,13 @@ namespace effcore {
             $previous_group_name !== $c_color->group) $this->child_insert(hr);
             $previous_group_name   = $c_color->group;
         if (!$this->child_select($c_color->id)) {
-          $c_element_attribute_title = translation::apply('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]);
+          $c_title = (new text('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]))->render();
           $c_info = (object)[
             'title'              => null,
             'description'        => null,
-            'element_attributes' => ['value' => $c_color->id, 'title' => $c_element_attribute_title, 'style' => ['background: '.$c_color->value]],
+            'element_attributes' => ['value' => $c_color->id, 'title' => $c_title, 'style' => ['background: '.$c_color->value]],
             'weight'             => 0];
-          $c_field                 = new $this->field_class;
+          $c_field                     = new $this->field_class;
           $c_field->tag_name           = $this->field_tag_name;
           $c_field->title_tag_name     = $this->field_title_tag_name;
           $c_field->title_position     = $this->field_title_position;
@@ -38,9 +38,9 @@ namespace effcore {
           $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
           $c_field->weight             = $c_info->weight;
           $c_field->build();
-          if (isset($this->required[$c_color->id])) $c_field->required_set();
-          if (isset($this->checked [$c_color->id])) $c_field-> checked_set();
-          if (isset($this->disabled[$c_color->id])) $c_field->disabled_set();
+          $c_field->required_set(isset($this->required[$c_color->id]));
+          $c_field-> checked_set(isset($this->checked [$c_color->id]));
+          $c_field->disabled_set(isset($this->disabled[$c_color->id]));
           $this->child_insert($c_field, $c_color->id);
         }
       }
