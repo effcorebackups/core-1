@@ -39,7 +39,8 @@ namespace effcore\modules\core {
                                     $c_update->number;
           $c_checkboxes->field_insert(
             $c_update->number.': '.(new text($c_update->title))->render(),
-            $c_update->description ?? null, ['name' => 'update_'.$c_module->id.'[]', 'value' => $c_update->number], $c_module->id.'-'.$c_update->number
+            $c_update->description ?? null,
+            $c_update->number, ['name' => 'update_'.$c_module->id.'[]']
           );
         }
       }

@@ -17,17 +17,33 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-    # the method 'parent::build' is not required here
       $previous_group_name = '';
       foreach (color::get_all() as $c_color) {
-        if ($previous_group_name != '' &&
-            $previous_group_name != $c_color->group) $this->child_insert(hr);
-            $previous_group_name  = $c_color->group;
-        $this->field_insert(null, null, [
-          'value' => $c_color->id,
-          'title' => translation::apply('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]),
-          'style' => ['background: '.$c_color->value]
-        ], $c_color->id);}
+        if ($previous_group_name !== '' &&
+            $previous_group_name !== $c_color->group) $this->child_insert(hr);
+            $previous_group_name   = $c_color->group;
+        if (!$this->child_select($c_color->id)) {
+          $c_element_attribute_title = translation::apply('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color->id, 'value' => $c_color->value]);
+          $c_info = (object)[
+            'title'              => null,
+            'description'        => null,
+            'element_attributes' => ['value' => $c_color->id, 'title' => $c_element_attribute_title, 'style' => ['background: '.$c_color->value]],
+            'weight'             => 0];
+          $c_field                 = new $this->field_class;
+          $c_field->tag_name           = $this->field_tag_name;
+          $c_field->title_tag_name     = $this->field_title_tag_name;
+          $c_field->title_position     = $this->field_title_position;
+          $c_field->title              = $c_info->title;
+          $c_field->description        = $c_info->description;
+          $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
+          $c_field->weight             = $c_info->weight;
+          $c_field->build();
+          if (isset($this->required[$c_color->id])) $c_field->required_set();
+          if (isset($this->checked [$c_color->id])) $c_field-> checked_set();
+          if (isset($this->disabled[$c_color->id])) $c_field->disabled_set();
+          $this->child_insert($c_field, $c_color->id);
+        }
+      }
       $this->is_builded = true;
     }
   }
@@ -41,14 +57,14 @@ namespace effcore {
     $color_id    = $this->value_get();
     $color_value = color::get($color_id ?: 'white')->value;
     return (new markup_simple('input', [
-      'type' => 'checkbox',
-      'role' => 'button',
+      'type'             => 'checkbox',
+      'role'             => 'button',
       'data-opener-type' => 'palette',
-      'title' => new text('press to show or hide available colors'),
-      'id' => 'f_opener_'.$this->name_get_complex(),
-      'value' => $color_value,
-      'style' => ['background: '.$color_value],
-      'checked' => $this->has_error_in_container() ? false : true
+      'title'            => new text('press to show or hide available colors'),
+      'id'               => 'f_opener_'.$this->name_get_complex(),
+      'value'            => $color_value,
+      'checked'          => $this->has_error_in_container() ? false : true,
+      'style'            => ['background: '.$color_value]
     ]))->render();
   }
 

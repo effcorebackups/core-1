@@ -21,8 +21,8 @@ namespace effcore {
     if (!$this->is_builded) {
       $group_roles = new group_switchers;
       $group_roles->build();
-      foreach (access::roles_get() as $name => $title)
-        $group_roles->field_insert($title, null, ['name' => $this->name_get_complex().'__roles[]', 'value' => $name], $name);
+      foreach (access::roles_get() as $value => $title)
+        $group_roles->field_insert($title, null, $value, ['name' => $this->name_get_complex().'__roles[]']);
       $this->child_insert($group_roles, 'group_roles');
       $this->is_builded = true;
     }

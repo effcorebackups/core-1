@@ -35,29 +35,42 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      foreach ($this->values as $value => $title)
-        $this->field_insert($title, null, ['value' => $value], $value);
+      foreach ($this->values as $c_value => $c_info) {
+        if (!$this->child_select($c_value)) {
+          if (is_string($c_info)) $c_info = (object)[
+            'title'              => $c_info,
+            'description'        => null,
+            'element_attributes' => ['value' => $c_value],
+            'weight'             => 0];
+          $c_field                 = new $this->field_class;
+          $c_field->tag_name           = $this->field_tag_name;
+          $c_field->title_tag_name     = $this->field_title_tag_name;
+          $c_field->title_position     = $this->field_title_position;
+          $c_field->title              = $c_info->title;
+          $c_field->description        = $c_info->description;
+          $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
+          $c_field->weight             = $c_info->weight;
+          $c_field->build();
+          if (isset($this->required[$c_value])) $c_field->required_set();
+          if (isset($this->checked [$c_value])) $c_field-> checked_set();
+          if (isset($this->disabled[$c_value])) $c_field->disabled_set();
+          $this->child_insert($c_field, $c_value);
+        }
+      }
       $this->is_builded = true;
     }
   }
 
-  function field_insert($title = null, $description = null, $attributes = [], $new_id = null, $weight = 0) {
-    $field                 = new $this->field_class;
-    $field->title          = $title;
-    $field->description    = $description;
-    $field->weight         = $weight;
-    $field->tag_name       = $this->field_tag_name;
-    $field->title_tag_name = $this->field_title_tag_name;
-    $field->title_position = $this->field_title_position;
-    $field->build();
-    $element = $field->child_select('element');
-    foreach ($attributes + $this->attributes_select('element_attributes') as $c_key => $c_value)
-      $element->attribute_insert                                            ($c_key,   $c_value);
-    $value = $element->attribute_select('value');
-    if (isset($this->required[$value])) $field->required_set();
-    if (isset($this->checked [$value])) $field-> checked_set();
-    if (isset($this->disabled[$value])) $field->disabled_set();
-    return $this->child_insert($field, $new_id);
+  function field_insert($title = null, $description = null, $value, $element_attributes = [], $weight = 0, $ws_rebuild = true) {
+    $this->values[$value] = (object)[
+      'title'              => $title,
+      'description'        => $description,
+      'element_attributes' => ['value' => $value] + $element_attributes,
+      'weight'             => $weight];
+    if ($ws_rebuild) {
+      $this->is_builded = false;
+      $this->build();
+    }
   }
 
   function name_get_complex($trim = true) {

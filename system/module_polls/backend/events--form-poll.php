@@ -64,7 +64,9 @@ namespace effcore\modules\polls {
         $items['fields']->child_insert($control, 'answers');
         foreach ($answers_row as $c_answer) {
           $control->field_insert(
-            $c_answer->answer, null, ['name' => 'answers[]', 'value' => $c_answer->id], $c_answer->id, $c_answer->weight
+            $c_answer->answer, null,
+            $c_answer->id, ['name' => 'answers[]'],
+            $c_answer->weight
           );
         }
     # ─────────────────────────────────────────────────────────────────────
