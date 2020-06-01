@@ -487,6 +487,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
+        managing_control_properties
+        - weight: 200
         managing_control_element_attributes
         - disabled: true
     - nickname
@@ -502,6 +504,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_nickname
         managing_control_properties
+        - weight: 190
+        managing_control_properties
         - is_validate_uniqueness: true
     - email
         title: EMail
@@ -516,6 +520,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
         managing_control_properties
+        - weight: 180
+        managing_control_properties
         - is_validate_uniqueness: true
     - avatar_path
         title: Avatar
@@ -528,6 +534,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_picture
         managing_control_properties
+        - weight: 170
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
@@ -543,10 +550,18 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_timezone
+        managing_control_properties
+        - weight: 160
         managing_control_element_attributes
         - data-source: uagent-timezone
         selection_params_default
         - filter: \effcore\translation::apply
+    - roles
+        title: Roles
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
     - password_hash
         title: New password
         type: varchar
@@ -558,6 +573,8 @@ entities
         managing_control_class: \effcore\field_password
         managing_control_value_manual_set: true
         managing_control_value_manual_get_if_empty: true
+        managing_control_properties
+        - weight: -100
         managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_control_element_attributes_on_update
