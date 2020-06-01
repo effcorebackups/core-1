@@ -190,6 +190,7 @@
 
   x-field[aria-disabled='true']   {opacity: .3}
   x-field[aria-disabled='true'] * {cursor: default !important}
+  button:disabled {cursor: default; opacity: .3}
 
   /* checkbox color */
 
