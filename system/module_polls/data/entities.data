@@ -18,6 +18,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
+        managing_control_properties
+        - weight: 200
         managing_control_element_attributes
         - disabled: true
     - question
@@ -34,6 +36,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         managing_control_element_attributes
         - maxlength: 2048
         selection_params_default
@@ -46,6 +50,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 180
     - diagram_type
         title: Diagramm type
         type: varchar
@@ -58,6 +64,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_select
         managing_control_properties
+        - weight: 170
         - values
           - not_selected: - select -
           - linear: Linear diagram
@@ -74,6 +81,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_select
         managing_control_properties
+        - weight: 160
         - values
           - not_selected: - select -
           - 0: All users
@@ -91,6 +99,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
+        managing_control_properties
+        - weight: 150
         selection_params_default
         - filter: \effcore\translation::apply
     - is_cancelable
@@ -102,6 +112,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
+        managing_control_properties
+        - weight: 140
         selection_params_default
         - filter: \effcore\translation::apply
     - created
