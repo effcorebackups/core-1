@@ -223,10 +223,11 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
+        - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - items
-        title: Pictures
+        title: Items
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
@@ -235,6 +236,7 @@ entities
         managing_control_class: \effcore\widget_gallery_pictures
         managing_control_properties
         - name_complex: items
+        - weight: 170
     constraints
     - primary_id
         type: primary
@@ -267,6 +269,7 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - id_layout
@@ -281,6 +284,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_layout
+        managing_control_properties
+        - weight: 190
         managing_control_properties_on_insert
         - selected
           - =: simple
@@ -300,6 +305,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 180
         managing_control_element_attributes
         - maxlength: 1024
         selection_params_default
@@ -318,6 +325,7 @@ entities
         managing_control_class: \effcore\field_url_page
         managing_control_properties
         - is_validate_uniqueness: true
+        - weight: 170
     - is_https
         title: HTTPS
         type: boolean
@@ -327,6 +335,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
+        managing_control_properties
+        - weight: 160
         selection_params_default
         - filter: \effcore\translation::apply
     - lang_code
@@ -341,6 +351,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_language
+        managing_control_properties
+        - weight: 150
     - text_direction
         title: Text direction
         type: varchar
@@ -358,6 +370,7 @@ entities
           - rtl: rtl
         - selected
           - ltr: ltr
+        - weight: 140
         managing_control_element_attributes_on_update
         - disabled: true
     - charset
@@ -374,10 +387,23 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 130
         managing_control_element_attributes
         - disabled: true
         - maxlength: 32
         - value: utf-8
+    - access
+        title: Access
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\widget_access
+        managing_control_properties
+        - weight: 120
     - parts
         title: Parts
         type: blob
@@ -398,15 +424,6 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-    - access
-        title: Access
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_access
     constraints
     - primary_id
         type: primary

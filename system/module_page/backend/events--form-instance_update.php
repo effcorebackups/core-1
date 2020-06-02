@@ -25,8 +25,8 @@ namespace effcore\modules\page {
           $items['#url']->disabled_set(true);
         }
       # field 'min width' + field 'max width'
-        $width_min = new field_number('Minimum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], -15);
-        $width_max = new field_number('Maximum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], -15);
+        $width_min = new field_number('Minimum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], 100);
+        $width_max = new field_number('Maximum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], 100);
         $width_min->build();
         $width_max->build();
         $width_min->name_set('width_min');
@@ -58,13 +58,13 @@ namespace effcore\modules\page {
             }
           }
           $form->child_select('fields')->child_insert(
-            new markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout], -20), 'layout_manager'
+            new markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout], -200), 'layout_manager'
           );
         } else {
           $form->child_select('fields')->child_insert(
             new markup('x-form-message', [], ['message' => new text(
               'LOST LAYOUT: %%_id', ['id' => $form->_instance->id_layout ?: 'n/a'])
-            ], -20), 'form_message'
+            ], -200), 'form_message'
           );
         }
       }
