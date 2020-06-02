@@ -16,7 +16,7 @@
     font-size: 1.1em;
     line-height: 1.4em;
     text-align: center;
-    border: 1px dashed %%_color_main}
+    border: 1px dotted %%_color_main}
 
   /* fieldset */
 
@@ -224,7 +224,7 @@
     margin: 2px 0;
     border: 0;
     opacity: .3;
-    border-top: 1px dashed %%_color_main}
+    border-top: 1px dotted %%_color_main}
 
   /* rearrangeable */
 
@@ -298,14 +298,14 @@
   x-fieldset-content x-fieldset-content                                       x-widget-content,
   x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color_fieldset}
 
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dashed %%_color_main}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color_main}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-no-items {
     padding: 10px 20px 20px 20px;
-    border-bottom: 1px dashed %%_color_main}
+    border-bottom: 1px dotted %%_color_main}
 
   x-widget[data-type^='items'] x-widget[data-type='insert'] {display: block; margin-top: 3px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0 10px 0 0; vertical-align: top}
