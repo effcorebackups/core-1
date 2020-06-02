@@ -33,8 +33,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - description
@@ -68,8 +68,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 180
         - name_complex: attributes
+        - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - path
@@ -83,10 +83,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_audio
         managing_control_properties
-        - weight: 170
         - max_file_size: 30M
         - upload_dir: audios/
         - fixed_name: audio-%%_instance_id_context
+        - weight: 170
         managing_control_element_attributes_on_insert
         - disabled: true
     - created
@@ -187,8 +187,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - title
@@ -494,8 +494,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 180
         - name_complex: attributes
+        - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - path
@@ -509,7 +509,6 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_picture
         managing_control_properties
-        - weight: 170
         - max_file_size: 500K
         - upload_dir: pictures/
         - fixed_name: picture-%%_instance_id_context
@@ -520,6 +519,7 @@ entities
           - =: gif
           - =: svg
           - =: svgd
+        - weight: 170
         managing_control_element_attributes_on_insert
         - disabled: true
     - link_attributes
@@ -533,8 +533,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 160
         - name_complex: link_attributes
+        - weight: 160
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - url
@@ -611,8 +611,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - description
@@ -646,8 +646,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 180
         - name_complex: attributes
+        - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - text
@@ -730,8 +730,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - description
@@ -765,8 +765,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 180
         - name_complex: attributes
+        - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - path
@@ -780,10 +780,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_video
         managing_control_properties
-        - weight: 170
         - max_file_size: 500M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context
+        - weight: 170
         managing_control_element_attributes_on_insert
         - disabled: true
     - poster_path
@@ -797,10 +797,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_picture
         managing_control_properties
-        - weight: 160
         - max_file_size: 500K
         - upload_dir: videos/
         - fixed_name: video_poster-%%_instance_id_context
+        - weight: 160
         managing_control_element_attributes_on_insert
         - disabled: true
     - created

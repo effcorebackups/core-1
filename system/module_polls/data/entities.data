@@ -64,11 +64,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_select
         managing_control_properties
-        - weight: 170
         - values
           - not_selected: - select -
           - linear: Linear diagram
           - radial: Radial diagram
+        - weight: 170
         selection_params_default
         - filter: \effcore\translation::apply
     - user_type
@@ -81,7 +81,6 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_select
         managing_control_properties
-        - weight: 160
         - values
           - not_selected: - select -
           - 0: All users
@@ -90,6 +89,7 @@ entities
           - 0: 0
         - selected
           - 1: 1
+        - weight: 160
     - is_multiple
         title: Multiple choice
         type: boolean

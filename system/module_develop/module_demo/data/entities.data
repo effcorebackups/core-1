@@ -263,8 +263,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
     constraints
@@ -363,8 +363,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - f_unique
@@ -382,8 +382,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
     - f_foreign
         title: Field foreign
         type: integer
@@ -394,10 +394,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 180
         - related_entity_name: demo_autoincrement
         - related_entity_field_id_name: id
         - related_entity_field_title_name: description
+        - weight: 180
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -462,8 +462,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_nickname
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
     - is_even
         title: Is even
         type: boolean
@@ -538,8 +538,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
     - f_index
         title: Field index
         type: varchar
@@ -594,10 +594,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 200
         - related_entity_name: demo_data
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
+        - weight: 200
     - email
         title: EMail
         type: varchar
@@ -611,8 +611,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
     constraints
     - foreign_id_data
         type: foreign

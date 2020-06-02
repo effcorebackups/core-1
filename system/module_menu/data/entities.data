@@ -24,8 +24,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - title
@@ -73,8 +73,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 170
         - name_complex: attributes
+        - weight: 170
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - created
@@ -154,8 +154,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - id_tree
@@ -170,10 +170,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 190
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+        - weight: 190
         managing_control_element_attributes
         - disabled: true
     - id_parent
@@ -190,11 +190,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 180
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
+        - weight: 180
         managing_control_element_attributes
         - required: null
     - title
@@ -226,8 +226,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 160
         - name_complex: attributes
+        - weight: 160
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - url
@@ -257,8 +257,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
-        - weight: 140
         - name_complex: link_attributes
+        - weight: 140
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - weight

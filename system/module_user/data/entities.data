@@ -116,8 +116,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - title
@@ -192,10 +192,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 200
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - id_permission
@@ -210,10 +210,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 190
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+        - weight: 190
     - created
         title: Created
         type: datetime
@@ -277,10 +277,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 200
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - id_role
@@ -295,10 +295,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
-        - weight: 190
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
+        - weight: 190
     - created
         title: Created
         type: datetime
@@ -367,8 +367,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
-        - weight: 200
         - is_validate_uniqueness: true
+        - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
     - title
@@ -524,8 +524,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_nickname
         managing_control_properties
-        - weight: 190
         - is_validate_uniqueness: true
+        - weight: 190
     - email
         title: EMail
         type: varchar
@@ -539,8 +539,8 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
         managing_control_properties
-        - weight: 180
         - is_validate_uniqueness: true
+        - weight: 180
     - avatar_path
         title: Avatar
         type: varchar
@@ -552,10 +552,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_picture
         managing_control_properties
-        - weight: 170
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
+        - weight: 170
         managing_control_element_attributes_on_insert
         - disabled: true
     - timezone
