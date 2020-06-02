@@ -12,49 +12,39 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
-- permission_user_select|instance
+- permission_text_insert|instance
     entity_name: permission
     values
-    - id: user_select
-    - title: User: select
-- permission_user_insert|instance
+    - id: text_insert
+    - title: Text: insert
+- permission_text_update|instance
     entity_name: permission
     values
-    - id: user_insert
-    - title: User: insert
-- permission_user_update|instance
+    - id: text_update
+    - title: Text: update
+- permission_text_delete|instance
     entity_name: permission
     values
-    - id: user_update
-    - title: User: update
-- permission_user_delete|instance
-    entity_name: permission
-    values
-    - id: user_delete
-    - title: User: delete
+    - id: text_delete
+    - title: Text: delete
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_admins_user_select|instance
+- relation_role_ws_permission_admins_text_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
-    - id_permission: user_select
-- relation_role_ws_permission_admins_user_update|instance
+    - id_permission: text_update
+- relation_role_ws_permission_admins_text_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
-    - id_permission: user_update
-- relation_role_ws_permission_admins_user_insert|instance
+    - id_permission: text_insert
+- relation_role_ws_permission_admins_text_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: admins
-    - id_permission: user_insert
-- relation_role_ws_permission_admins_user_delete|instance
-    entity_name: relation_role_ws_permission
-    values
-    - id_role: admins
-    - id_permission: user_delete
+    - id_permission: text_delete
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_user
 # ─────────────────────────────────────────────────────────────────────
