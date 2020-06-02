@@ -574,12 +574,6 @@ entities
         - data-source: uagent-timezone
         selection_params_default
         - filter: \effcore\translation::apply
-    - roles
-        title: Roles
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
     - password_hash
         title: New password
         type: varchar
