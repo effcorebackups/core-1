@@ -305,7 +305,8 @@
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-no-items {
     padding: 10px 20px 20px 20px;
-    border-bottom: 1px dotted %%_color_main}
+    border-bottom: 1px dotted %%_color_main;
+    opacity: .5}
 
   x-widget[data-type^='items'] x-widget[data-type='insert'] {display: block; margin-top: 3px}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field {display: inline-block; margin: 0 10px 0 0; vertical-align: top}
