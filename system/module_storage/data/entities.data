@@ -24,6 +24,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
+        - weight: 200
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
@@ -41,6 +42,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         managing_control_element_attributes
         - maxlength: 1024
         selection_params_default
@@ -56,6 +59,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
+        - weight: 180
         - name_complex: attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
@@ -68,6 +72,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_entity_fields
         managing_control_properties
+        - weight: 170
         - name_complex: fields
     - query_params
         title: Query parameters
