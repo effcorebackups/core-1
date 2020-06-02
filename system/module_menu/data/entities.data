@@ -24,6 +24,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
+        - weight: 200
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
@@ -41,6 +42,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
     - title_is_visible
@@ -52,6 +55,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_logic
+        managing_control_properties
+        - weight: 180
         managing_control_properties_on_insert
         - selected
           - =: 1
@@ -68,6 +73,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
+        - weight: 170
         - name_complex: attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
@@ -148,6 +154,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
+        - weight: 200
         - is_validate_uniqueness: true
         managing_control_element_attributes_on_update
         - disabled: true
@@ -163,6 +170,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 190
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
@@ -182,6 +190,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
+        - weight: 180
         - related_entity_name: tree_item
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
@@ -202,6 +211,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: 170
         selection_params_default
         - filter: \effcore\translation::apply
     - attributes
@@ -215,6 +226,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
+        - weight: 160
         - name_complex: attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
@@ -229,6 +241,8 @@ entities
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_url
+        managing_control_properties
+        - weight: 150
         managing_control_element_attributes
         - required: null
         - maxlength: 2048
@@ -243,6 +257,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
+        - weight: 140
         - name_complex: link_attributes
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
