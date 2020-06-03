@@ -17,16 +17,19 @@ instances
     values
     - id: text_insert
     - title: Text: insert
+    - is_embed: 1
 - permission_text_update|instance
     entity_name: permission
     values
     - id: text_update
     - title: Text: update
+    - is_embed: 1
 - permission_text_delete|instance
     entity_name: permission
     values
     - id: text_delete
     - title: Text: delete
+    - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────

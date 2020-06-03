@@ -101,6 +101,7 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
+    ws_is_embed: true
     ws_module_id: true
     fields
     - id
