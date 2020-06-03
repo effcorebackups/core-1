@@ -15,11 +15,13 @@ namespace effcore {
   ###########################
 
   static protected $cache;
+  static protected $cache_relations;
   static protected $is_init___sql = false;
 
   static function cache_cleaning() {
-    static::$cache = null;
-    static::$is_init___sql = false;
+    static::$cache           = null;
+    static::$cache_relations = null;
+    static::$is_init___sql   = false;
   }
 
   static function init_sql() {
@@ -33,12 +35,21 @@ namespace effcore {
         static::$cache[$c_permission->id]->module_id = 'user';
         static::$cache[$c_permission->id]->origin = 'sql';
       }
+      foreach (entity::get('relation_role_ws_permission')->instances_select() as $c_relation) {
+        static::$cache_relations[$c_relation->id_permission][$c_relation->id_role] =
+                                 $c_relation->id_role;
+      }
     }
   }
 
   static function get_all() {
     static::init_sql();
     return static::$cache;
+  }
+
+  static function get_roles_by_permission($permission_id) {
+    static::init_sql();
+    return static::$cache_relations[$permission_id] ?? [];
   }
 
 }}
