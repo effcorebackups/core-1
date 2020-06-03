@@ -5,11 +5,10 @@
   ##################################################################
 
 namespace effcore {
-          class role {
+          class permission {
 
   public $id;
   public $title;
-  public $weight;
 
   ###########################
   ### static declarations ###
@@ -26,14 +25,13 @@ namespace effcore {
   static function init_sql() {
     if (!static::$is_init___sql) {
          static::$is_init___sql = true;
-      $instances = entity::get('role')->instances_select(['order' => ['weight_!f' => 'weight', 'DESC', ',', 'title_!f' => 'title', 'ASC']]);
-      foreach ($instances as $c_instance) {
-        $c_role = new static;
+      foreach (entity::get('permission')->instances_select() as $c_instance) {
+        $c_permission = new static;
         foreach ($c_instance->values_get() as $c_key => $c_value)
-          $c_role->                          {$c_key} = $c_value;
-        static::$cache[$c_role->id] = $c_role;
-        static::$cache[$c_role->id]->module_id = 'user';
-        static::$cache[$c_role->id]->origin = 'sql';
+          $c_permission->                    {$c_key} = $c_value;
+        static::$cache[$c_permission->id] = $c_permission;
+        static::$cache[$c_permission->id]->module_id = 'user';
+        static::$cache[$c_permission->id]->origin = 'sql';
       }
     }
   }
