@@ -47,9 +47,9 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function get_roles_by_permission($permission_id) {
+  static function get_roles_by_permission($id_permission) {
     static::init_sql();
-    return static::$cache_relations[$permission_id] ?? [];
+    return static::$cache_relations[$id_permission] ?? [];
   }
 
 }}

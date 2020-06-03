@@ -8,6 +8,7 @@ namespace effcore\modules\user {
           use \effcore\access;
           use \effcore\core;
           use \effcore\instance;
+          use \effcore\role;
           use \effcore\text_multiline;
           use \effcore\user;
           abstract class events_page_user {
@@ -24,8 +25,14 @@ namespace effcore\modules\user {
   }
 
   static function on_show_user_roles($c_row, $c_instance) {
+    $roles_with_title = [];
+    $roles = role::get_all();
+    $roles_by_user = user::get_roles_by_user($c_instance->id);
+    foreach ($roles_by_user as $c_id_user_role)
+      $roles_with_title[$c_id_user_role] =
+                 $roles[$c_id_user_role]->title ?? $c_id_user_role;
     return new text_multiline(
-      user::id_roles_get($c_instance->id), [], ', '
+      $roles_with_title, [], ', '
     );
   }
 
