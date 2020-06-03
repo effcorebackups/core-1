@@ -14,17 +14,4 @@ namespace effcore {
     if (isset($access->users))                                   if (isset($access->users[$user->id])) return true;
   }
 
-  static function roles_get($full = false) {
-    $result = [];
-    $instances = entity::get('role')->instances_select([
-      'order' => ['weight_!f' => 'weight', 'DESC', ',', 'title_!f' => 'title', 'ASC']
-    ]);
-    foreach ($instances as $c_instance) {
-      $result[$c_instance->id] = $full ?
-              $c_instance->values :
-              $c_instance->title;
-    }
-    return $result;
-  }
-
 }}
