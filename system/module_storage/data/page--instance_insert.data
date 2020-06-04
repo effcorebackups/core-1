@@ -10,7 +10,7 @@ pages
 >>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)$%
     access
       roles
-      - =: admins
+      - =: registered
     parts
     - system
       - tree_sql_user_registered|part_preset_link

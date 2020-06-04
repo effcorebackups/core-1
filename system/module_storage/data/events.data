@@ -74,6 +74,9 @@ events
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
+  - instance_insert|event
+      for: instance_insert
+      handler: \effcore\modules\storage\events_page_instance_insert::on_build_before
 # ─────────────────────────────────────────────────────────────────────
   on_part_presets_dynamic_build
   - all|event
