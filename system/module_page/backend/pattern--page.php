@@ -233,7 +233,7 @@ namespace effcore {
                static::$current = $page;
         return static::$current->render();
       } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found'  );
+    }   else core::send_header_and_exit('page_not_found');
   }
 
   static function get_current() {

@@ -21,7 +21,7 @@ namespace effcore\modules\user {
       if ($user->id == user::get_current()->id ||                       # owner
           access::check((object)['roles' => ['admins' => 'admins']])) { # admin
       } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found'  );
+    }   else core::send_header_and_exit('page_not_found');
   }
 
   static function on_show_user_roles($c_row, $c_instance) {

@@ -20,7 +20,7 @@ namespace effcore\modules\user {
           access::check((object)['roles' => ['admins' => 'admins']])) { # admin
         $page->args_set('instance_id',  $user->id);
       } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found'  );
+    }   else core::send_header_and_exit('page_not_found');
   }
 
 }}
