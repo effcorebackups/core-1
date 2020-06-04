@@ -9,6 +9,7 @@ namespace effcore {
 
   const return_hex = 0;
   const return_rgb = 1;
+  const return_rga = 2;
 
   public $id;
   public $value;
@@ -35,21 +36,18 @@ namespace effcore {
     }
   }
 
-  function filter_shift($r_offset, $g_offset, $b_offset, $return_mode = self::return_rgb) {
+  function filter_shift($r_offset, $g_offset, $b_offset, $opacity = 1, $return_mode = self::return_rgb) {
     $rgb = $this->rgb_get();
     if ($rgb) {
       $new_r = max(min($rgb['r'] + (int)$r_offset, 255), 0);
       $new_g = max(min($rgb['g'] + (int)$g_offset, 255), 0);
       $new_b = max(min($rgb['b'] + (int)$b_offset, 255), 0);
       switch ($return_mode) {
-        case static::return_hex:
-          return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
-                     str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).
-                     str_pad(dechex($new_b), 2, '0', STR_PAD_LEFT);
-        case static::return_rgb:
-          return 'rgb('.$new_r.','.
-                        $new_g.','.
-                        $new_b.')';
+        case static::return_rgb: return  'rgb('.$new_r.','.$new_g.','.$new_b.             ')';
+        case static::return_rga: return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$opacity.')';
+        case static::return_hex: return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
+                                            str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).
+                                            str_pad(dechex($new_b), 2, '0', STR_PAD_LEFT);
       }
     }
   }

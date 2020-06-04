@@ -298,7 +298,7 @@
   x-fieldset-content x-fieldset-content                                       x-widget-content,
   x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color_fieldset}
 
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color_main}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color_main{0,0,0,.5}}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
