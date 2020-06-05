@@ -10,6 +10,21 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: tree_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: tree_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: tree_delete
     fields
     - id
         title: ID
@@ -129,6 +144,21 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: tree_item_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: tree_item_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: tree_item_delete
     selection_params_for_managing_multiple
     - decorator_params
       - view_type: tree

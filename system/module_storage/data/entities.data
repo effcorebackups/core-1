@@ -10,6 +10,21 @@ entities
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: selection_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: selection_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: selection_delete
     fields
     - id
         title: ID

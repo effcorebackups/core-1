@@ -7,6 +7,21 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: feedback_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: feedback_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: feedback_delete
     fields
     - id
         title: ID
@@ -103,6 +118,21 @@ entities
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: permission_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: permission_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: permission_delete
     fields
     - id
         title: ID
@@ -180,6 +210,21 @@ entities
     managing_group_id: user
     has_parallel_checking: true
     ws_module_id: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_permission_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_permission_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_permission_delete
     fields
     - id_role
         title: Role
@@ -267,6 +312,21 @@ entities
     managing_group_id: user
     has_parallel_checking: true
     ws_module_id: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_user_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_user_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_user_delete
     fields
     - id_user
         title: User
@@ -354,6 +414,21 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: role_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: role_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: role_delete
     fields
     - id
         title: ID
@@ -498,6 +573,21 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_insert
+      roles
+      - =: admins
+      permissions
+      - =: user_insert
+    access_update
+      roles
+      - =: admins
+      permissions
+      - =: user_update
+    access_delete
+      roles
+      - =: admins
+      permissions
+      - =: user_delete
     fields
     - id
         title: ID
