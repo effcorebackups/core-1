@@ -10,7 +10,7 @@ pages
 >>>>>>>>>>>(?<action_name>delete)$%
     access
       roles
-      - =: admins
+      - =: registered
     parts
     - system
       - tree_sql_user_registered|part_preset_link

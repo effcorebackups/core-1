@@ -77,6 +77,12 @@ events
   - instance_insert|event
       for: instance_insert
       handler: \effcore\modules\storage\events_page_instance_insert::on_build_before
+  - instance_update|event
+      for: instance_update
+      handler: \effcore\modules\storage\events_page_instance_update::on_build_before
+  - instance_delete|event
+      for: instance_delete
+      handler: \effcore\modules\storage\events_page_instance_delete::on_build_before
 # ─────────────────────────────────────────────────────────────────────
   on_part_presets_dynamic_build
   - all|event
