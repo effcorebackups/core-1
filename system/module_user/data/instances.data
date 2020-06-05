@@ -12,6 +12,196 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
+- permission_audio_insert|instance
+    entity_name: permission
+    values
+    - id: audio_insert
+    - title: Audio: insert
+    - is_embed: 1
+- permission_audio_update|instance
+    entity_name: permission
+    values
+    - id: audio_update
+    - title: Audio: update
+    - is_embed: 1
+- permission_audio_delete|instance
+    entity_name: permission
+    values
+    - id: audio_delete
+    - title: Audio: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_gallery_insert|instance
+    entity_name: permission
+    values
+    - id: gallery_insert
+    - title: Gallery: insert
+    - is_embed: 1
+- permission_gallery_update|instance
+    entity_name: permission
+    values
+    - id: gallery_update
+    - title: Gallery: update
+    - is_embed: 1
+- permission_gallery_delete|instance
+    entity_name: permission
+    values
+    - id: gallery_delete
+    - title: Gallery: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_feedback_insert|instance
+    entity_name: permission
+    values
+    - id: feedback_insert
+    - title: Feedback: insert
+    - is_embed: 1
+- permission_feedback_update|instance
+    entity_name: permission
+    values
+    - id: feedback_update
+    - title: Feedback: update
+    - is_embed: 1
+- permission_feedback_delete|instance
+    entity_name: permission
+    values
+    - id: feedback_delete
+    - title: Feedback: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_page_insert|instance
+    entity_name: permission
+    values
+    - id: page_insert
+    - title: Page: insert
+    - is_embed: 1
+- permission_page_update|instance
+    entity_name: permission
+    values
+    - id: page_update
+    - title: Page: update
+    - is_embed: 1
+- permission_page_delete|instance
+    entity_name: permission
+    values
+    - id: page_delete
+    - title: Page: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_permission_insert|instance
+    entity_name: permission
+    values
+    - id: permission_insert
+    - title: Permission: insert
+    - is_embed: 1
+- permission_permission_update|instance
+    entity_name: permission
+    values
+    - id: permission_update
+    - title: Permission: update
+    - is_embed: 1
+- permission_permission_delete|instance
+    entity_name: permission
+    values
+    - id: permission_delete
+    - title: Permission: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_picture_insert|instance
+    entity_name: permission
+    values
+    - id: picture_insert
+    - title: Picture: insert
+    - is_embed: 1
+- permission_picture_update|instance
+    entity_name: permission
+    values
+    - id: picture_update
+    - title: Picture: update
+    - is_embed: 1
+- permission_picture_delete|instance
+    entity_name: permission
+    values
+    - id: picture_delete
+    - title: Picture: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_relation_role_ws_permission_insert|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_permission_insert
+    - title: Relation: Role ↔ Permission: insert
+    - is_embed: 1
+- permission_relation_role_ws_permission_update|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_permission_update
+    - title: Relation: Role ↔ Permission: update
+    - is_embed: 1
+- permission_relation_role_ws_permission_delete|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_permission_delete
+    - title: Relation: Role ↔ Permission: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_relation_role_ws_user_insert|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_user_insert
+    - title: Relation: Role ↔ User: insert
+    - is_embed: 1
+- permission_relation_role_ws_user_update|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_user_update
+    - title: Relation: Role ↔ User: update
+    - is_embed: 1
+- permission_relation_role_ws_user_delete|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_user_delete
+    - title: Relation: Role ↔ User: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_role_insert|instance
+    entity_name: permission
+    values
+    - id: role_insert
+    - title: Role: insert
+    - is_embed: 1
+- permission_role_update|instance
+    entity_name: permission
+    values
+    - id: role_update
+    - title: Role: update
+    - is_embed: 1
+- permission_role_delete|instance
+    entity_name: permission
+    values
+    - id: role_delete
+    - title: Role: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_selection_insert|instance
+    entity_name: permission
+    values
+    - id: selection_insert
+    - title: Selection: insert
+    - is_embed: 1
+- permission_selection_update|instance
+    entity_name: permission
+    values
+    - id: selection_update
+    - title: Selection: update
+    - is_embed: 1
+- permission_selection_delete|instance
+    entity_name: permission
+    values
+    - id: selection_delete
+    - title: Selection: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
 - permission_text_insert|instance
     entity_name: permission
     values
@@ -29,6 +219,82 @@ instances
     values
     - id: text_delete
     - title: Text: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_tree_insert|instance
+    entity_name: permission
+    values
+    - id: tree_insert
+    - title: Tree: insert
+    - is_embed: 1
+- permission_tree_update|instance
+    entity_name: permission
+    values
+    - id: tree_update
+    - title: Tree: update
+    - is_embed: 1
+- permission_tree_delete|instance
+    entity_name: permission
+    values
+    - id: tree_delete
+    - title: Tree: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_tree_item_insert|instance
+    entity_name: permission
+    values
+    - id: tree_item_insert
+    - title: Tree item: insert
+    - is_embed: 1
+- permission_tree_item_update|instance
+    entity_name: permission
+    values
+    - id: tree_item_update
+    - title: Tree item: update
+    - is_embed: 1
+- permission_tree_item_delete|instance
+    entity_name: permission
+    values
+    - id: tree_item_delete
+    - title: Tree item: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_user_insert|instance
+    entity_name: permission
+    values
+    - id: user_insert
+    - title: User: insert
+    - is_embed: 1
+- permission_user_update|instance
+    entity_name: permission
+    values
+    - id: user_update
+    - title: User: update
+    - is_embed: 1
+- permission_user_delete|instance
+    entity_name: permission
+    values
+    - id: user_delete
+    - title: User: delete
+    - is_embed: 1
+# ─────────────────────────────────────────────────────────────────────
+- permission_video_insert|instance
+    entity_name: permission
+    values
+    - id: video_insert
+    - title: Video: insert
+    - is_embed: 1
+- permission_video_update|instance
+    entity_name: permission
+    values
+    - id: video_update
+    - title: Video: update
+    - is_embed: 1
+- permission_video_delete|instance
+    entity_name: permission
+    values
+    - id: video_delete
+    - title: Video: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission

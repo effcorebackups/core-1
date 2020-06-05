@@ -1,0 +1,22 @@
+instances
+# ─────────────────────────────────────────────────────────────────────
+# permissions
+# ─────────────────────────────────────────────────────────────────────
+- permission_poll_insert|instance
+    entity_name: permission
+    values
+    - id: poll_insert
+    - title: Poll: insert
+    - is_embed: 1
+- permission_poll_update|instance
+    entity_name: permission
+    values
+    - id: poll_update
+    - title: Poll: update
+    - is_embed: 1
+- permission_poll_delete|instance
+    entity_name: permission
+    values
+    - id: poll_delete
+    - title: Poll: delete
+    - is_embed: 1
