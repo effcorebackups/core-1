@@ -389,16 +389,21 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_text_update|instance
+- relation_role_ws_permission_managers_text_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: text_update
+    - id_permission: text_select
 - relation_role_ws_permission_managers_text_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: text_insert
+- relation_role_ws_permission_managers_text_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: text_update
 - relation_role_ws_permission_managers_text_delete|instance
     entity_name: relation_role_ws_permission
     values
