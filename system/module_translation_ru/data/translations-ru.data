@@ -36,6 +36,9 @@ translations
     - Attributes: Атрибуты
     - Audio: Аудио
     - audio: аудио
+    - Audio\: delete: Аудио: удалить
+    - Audio\: insert: Аудио: вставить
+    - Audio\: update: Аудио: обновить
     - Audios: Аудио
     - audios: аудио
     - Avatar: Аватар
@@ -150,6 +153,9 @@ translations
     - Feedback form: Форма обратной связи
     - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
     - Feedback: Отзыв
+    - Feedback\: delete: Отзыв: удалить
+    - Feedback\: insert: Отзыв: вставить
+    - Feedback\: update: Отзыв: обновить
     - Feedbacks: Отзывы
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было вставлено.
@@ -208,8 +214,8 @@ translations
     - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!
     - File: Файл
     - file: файл
-    - File: Файл
     - Files: Файлы
+    - files: файлы
     - fix: исправить
     - Form elements: Элементы формы
     - Form: Форма
@@ -221,6 +227,9 @@ translations
     - Function: Функция
     - Galleries: Галереи
     - Gallery: Галерея
+    - Gallery\: delete: Галерея: удалить
+    - Gallery\: insert: Галерея: вставить
+    - Gallery\: update: Галерея: обновить
     - GiB: ГиБ
     - go to %%_language language: перейти на %%_language язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
@@ -392,6 +401,9 @@ translations
     - Page not found: Страница не найдена
     - Page title: Заголовок страницы
     - Page: Страница
+    - Page\: delete: Страница: удалить
+    - Page\: insert: Страница: вставить
+    - Page\: update: Страница: обновить
     - Pages: Страницы
     - Parameter: Параметр
     - Parameters: Параметры
@@ -402,13 +414,22 @@ translations
     - Path: Путь
     - path: путь
     - Permission: Разрешение
+    - Permission\: delete: Разрешение: удалить
+    - Permission\: insert: Разрешение: вставить
+    - Permission\: update: Разрешение: обновить
     - Permissions: Разрешения
     - PHP dependencies: PHP-зависимости
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP version: PHP версия
     - Picture: Изображение
+    - Picture\: delete: Изображение: удалить
+    - Picture\: insert: Изображение: вставить
+    - Picture\: update: Изображение: обновить
     - Pictures: Изображения
     - Poll: Опрос
+    - Poll\: delete: Опрос: удалить
+    - Poll\: insert: Опрос: вставить
+    - Poll\: update: Опрос: обновить
     - Polls: Опросы
     - Port: Порт
     - Poster: Плакат
@@ -443,7 +464,13 @@ translations
     - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Связанные элементы типа "%%_type" с ID = "%%_id" не были удалены.
     - Relation: Связь
     - Relation\: Role ↔ Permission: Связь: Роль ↔ Разрешение
+    - Relation\: Role ↔ Permission\: delete: Связь: Роль ↔ Разрешение: удалить
+    - Relation\: Role ↔ Permission\: insert: Связь: Роль ↔ Разрешение: вставить
+    - Relation\: Role ↔ Permission\: update: Связь: Роль ↔ Разрешение: обновить
     - Relation\: Role ↔ User: Связь: Роль ↔ Пользователь
+    - Relation\: Role ↔ User\: delete: Связь: Роль ↔ Пользователь: удалить
+    - Relation\: Role ↔ User\: insert: Связь: Роль ↔ Пользователь: вставить
+    - Relation\: Role ↔ User\: update: Связь: Роль ↔ Пользователь: обновить
     - Relations: Связи
     - Relations\: Role ↔ Permission: Связи: Роль ↔ Разрешение
     - Relations\: Role ↔ User: Связи: Роль ↔ Пользователь
@@ -455,6 +482,9 @@ translations
     - right to left: справа налево
     - role: роль
     - Role: Роль
+    - Role\: delete: Роль: удалить
+    - Role\: insert: Роль: вставить
+    - Role\: update: Роль: обновить
     - roles: роли
     - Roles: Роли
     - Running the test: Запуск теста
@@ -470,6 +500,9 @@ translations
     - Selection list: Список выбора
     - Selection: Выборка
     - selection: выборка
+    - Selection\: delete: Выборка: удалить
+    - Selection\: insert: Выборка: вставить
+    - Selection\: update: Выборка: обновить
     - Selections: Выборки
     - selections: выборки
     - send: отправить
@@ -523,6 +556,9 @@ translations
     - Text direction: Направление текста
     - Text Front: Текст Главной
     - Text: Текст
+    - Text\: delete: Текст: удалить
+    - Text\: insert: Текст: вставить
+    - Text\: update: Текст: обновить
     - Texts: Текст
     - The changes was deleted.: Изменения были удалены.
     - The changes was saved.: Изменения были сохранены.
@@ -557,8 +593,14 @@ translations
     - Translations: Переводы
     - Tree ID: ID дерева
     - Tree item: Пункт дерева
+    - Tree item\: delete: Пункт дерева: удалить
+    - Tree item\: insert: Пункт дерева: вставить
+    - Tree item\: update: Пункт дерева: обновить
     - Tree items: Пункты дерева
     - Tree: Дерево
+    - Tree\: delete: Дерево: удалить
+    - Tree\: insert: Дерево: вставить
+    - Tree\: update: Дерево: обновить
     - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
     - Turn on/off modules: Включить/выключить модули
@@ -592,6 +634,9 @@ translations
     - User with this EMail was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
     - User with this nickname was already registered!: Пользователь с таким псевдонимом уже был зарегистрирован!
     - User: Пользователь
+    - User\: delete: Пользователь: удалить
+    - User\: insert: Пользователь: вставить
+    - User\: update: Пользователь: обновить
     - Users: Пользователи
     - UTC date/time: UTC дата/время
     - val.: знач.
@@ -603,6 +648,9 @@ translations
     - Version: Версия
     - version: версия
     - Video: Видео
+    - Video\: delete: Видео: удалить
+    - Video\: insert: Видео: вставить
+    - Video\: update: Видео: обновить
     - Videos: Видео
     - View more: Смотреть больше
     - Visibility: Видимость

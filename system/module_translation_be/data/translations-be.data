@@ -36,6 +36,9 @@ translations
     - Attributes: Атрыбуты
     - Audio: Аўдыё
     - audio: аўдыё
+    - Audio\: delete: Аўдыё: выдаліць
+    - Audio\: insert: Аўдыё: уставіць
+    - Audio\: update: Аўдыё: абнавіць
     - Audios: Аўдыё
     - audios: аўдыё
     - Avatar: Аватар
@@ -150,6 +153,9 @@ translations
     - Feedback form: Форма зваротнай сувязі
     - Feedback with ID = "%%_id" has been sent.: Водгук c ID = "%%_id" быў адпраўлены.
     - Feedback: Водгук
+    - Feedback\: delete: Водгук: выдаліць
+    - Feedback\: insert: Водгук: уставіць
+    - Feedback\: update: Водгук: абнавіць
     - Feedbacks: Водгукі
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было выдалена.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было ўстаўлена.
@@ -221,6 +227,9 @@ translations
     - Function: Функцыя
     - Galleries: Галерэі
     - Gallery: Галерэя
+    - Gallery\: delete: Галерэя: выдаліць
+    - Gallery\: insert: Галерэя: уставіць
+    - Gallery\: update: Галерэя: абнавіць
     - GiB: ГіБ
     - go to %%_language language: перайсці на %%_language мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
@@ -392,6 +401,9 @@ translations
     - Page not found: Старонка не знойдзена
     - Page title: Загаловак старонкі
     - Page: Старонка
+    - Page\: delete: Старонка: выдаліць
+    - Page\: insert: Старонка: уставіць
+    - Page\: update: Старонка: абнавіць
     - Pages: Старонкі
     - Parameter: Параметр
     - Parameters: Параметры
@@ -402,13 +414,22 @@ translations
     - Path: Шлях
     - path: шлях
     - Permission: Дазваленне
+    - Permission\: delete: Дазваленне: выдаліць
+    - Permission\: insert: Дазваленне: уставіць
+    - Permission\: update: Дазваленне: абнавіць
     - Permissions: Дазваленні
     - PHP dependencies: PHP-залежнасці
     - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP version: PHP версія
     - Picture: Малюнак
+    - Picture\: delete: Малюнак: выдаліць
+    - Picture\: insert: Малюнак: уставіць
+    - Picture\: update: Малюнак: абнавіць
     - Pictures: Малюнкі
     - Poll: Апытанне
+    - Poll\: delete: Апытанне: выдаліць
+    - Poll\: insert: Апытанне: уставіць
+    - Poll\: update: Апытанне: абнавіць
     - Polls: Апытанні
     - Port: Порт
     - Poster: Плакат
@@ -443,7 +464,13 @@ translations
     - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_type" з ID = "%%_id" не былі выдалены.
     - Relation: Сувязь
     - Relation\: Role ↔ Permission: Сувязь: Роля ↔ Дазваленне
+    - Relation\: Role ↔ Permission\: delete: Сувязь: Роля ↔ Дазваленне: выдаліць
+    - Relation\: Role ↔ Permission\: insert: Сувязь: Роля ↔ Дазваленне: уставіць
+    - Relation\: Role ↔ Permission\: update: Сувязь: Роля ↔ Дазваленне: абнавіць
     - Relation\: Role ↔ User: Сувязь: Роля ↔ Карыстальнік
+    - Relation\: Role ↔ User\: delete: Сувязь: Роля ↔ Карыстальнік: выдаліць
+    - Relation\: Role ↔ User\: insert: Сувязь: Роля ↔ Карыстальнік: уставіць
+    - Relation\: Role ↔ User\: update: Сувязь: Роля ↔ Карыстальнік: абнавіць
     - Relations: Сувязі
     - Relations\: Role ↔ Permission: Сувязі: Роля ↔ Дазваленне
     - Relations\: Role ↔ User: Сувязі: Роля ↔ Карыстальнік
@@ -455,6 +482,9 @@ translations
     - right to left: справа налева
     - role: роля
     - Role: Роля
+    - Role\: delete: Роля: выдаліць
+    - Role\: insert: Роля: уставіць
+    - Role\: update: Роля: абнавіць
     - roles: ролі
     - Roles: Ролі
     - Running the test: Запуск тэсту
@@ -470,6 +500,9 @@ translations
     - Selection list: Спіс выбару
     - Selection: Выбарка
     - selection: выбарка
+    - Selection\: delete: Выбарка: выдаліць
+    - Selection\: insert: Выбарка: уставіць
+    - Selection\: update: Выбарка: абнавіць
     - Selections: Выбаркі
     - selections: выбаркі
     - send: адправіць
@@ -523,6 +556,9 @@ translations
     - Text direction: Напрамак тэксту
     - Text Front: Тэкст Галоўнай
     - Text: Тэкст
+    - Text\: delete: Тэкст: выдаліць
+    - Text\: insert: Тэкст: уставіць
+    - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
     - The changes was deleted.: Змены былі выдалены.
     - The changes was saved.: Змены былі захаваны.
@@ -557,8 +593,14 @@ translations
     - Translations: Пераклады
     - Tree ID: ID дрэва
     - Tree item: Пункт дрэва
+    - Tree item\: delete: Пункт дрэва: выдаліць
+    - Tree item\: insert: Пункт дрэва: уставіць
+    - Tree item\: update: Пункт дрэва: абнавіць
     - Tree items: Пункты дрэва
     - Tree: Дрэва
+    - Tree\: delete: Дрэва: выдаліць
+    - Tree\: insert: Дрэва: уставіць
+    - Tree\: update: Дрэва: абнавіць
     - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
     - Turn on/off modules: Уключыць/выключыць модулі
@@ -592,6 +634,9 @@ translations
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты не быў зарэгістраваны!
     - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ужо быў зарэгістраваны!
     - User: Карыстальнік
+    - User\: delete: Карыстальнік: выдаліць
+    - User\: insert: Карыстальнік: уставіць
+    - User\: update: Карыстальнік: абнавіць
     - Users: Карыстальнікі
     - UTC date/time: UTC дата/час
     - val.: знач.
@@ -603,6 +648,9 @@ translations
     - Version: Версія
     - version: версія
     - Video: Відэа
+    - Video\: delete: Відэа: выдаліць
+    - Video\: insert: Відэа: уставіць
+    - Video\: update: Відэа: абнавіць
     - Videos: Відэа
     - View more: Глядзець больш
     - Visibility: Бачнасць
