@@ -10,7 +10,7 @@ namespace effcore\modules\storage {
           use \effcore\entity;
           abstract class events_page_instance_insert {
 
-  static function on_build_before($event, $page) {
+  static function on_check_access($event, $page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
     if ($entity) {

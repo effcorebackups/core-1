@@ -76,10 +76,12 @@ events
   on_page_build_before
   - user|event
       for: user
-      handler: \effcore\modules\user\events_page_user::on_build_before
+      weight: +500
+      handler: \effcore\modules\user\events_page_user::on_check_access
   - user_edit|event
       for: user_edit
-      handler: \effcore\modules\user\events_page_user_edit::on_build_before
+      weight: +500
+      handler: \effcore\modules\user\events_page_user_edit::on_check_access
 # ─────────────────────────────────────────────────────────────────────
   on_tree_build_after
   - all|event
