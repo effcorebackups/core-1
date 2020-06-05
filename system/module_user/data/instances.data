@@ -12,6 +12,12 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
+- permission_audio_select|instance
+    entity_name: permission
+    values
+    - id: audio_select
+    - title: Audio: select
+    - is_embed: 1
 - permission_audio_insert|instance
     entity_name: permission
     values
@@ -31,6 +37,12 @@ instances
     - title: Audio: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_gallery_select|instance
+    entity_name: permission
+    values
+    - id: gallery_select
+    - title: Gallery: select
+    - is_embed: 1
 - permission_gallery_insert|instance
     entity_name: permission
     values
@@ -50,6 +62,12 @@ instances
     - title: Gallery: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_feedback_select|instance
+    entity_name: permission
+    values
+    - id: feedback_select
+    - title: Feedback: select
+    - is_embed: 1
 - permission_feedback_insert|instance
     entity_name: permission
     values
@@ -69,6 +87,12 @@ instances
     - title: Feedback: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_page_select|instance
+    entity_name: permission
+    values
+    - id: page_select
+    - title: Page: select
+    - is_embed: 1
 - permission_page_insert|instance
     entity_name: permission
     values
@@ -88,6 +112,12 @@ instances
     - title: Page: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_permission_select|instance
+    entity_name: permission
+    values
+    - id: permission_select
+    - title: Permission: select
+    - is_embed: 1
 - permission_permission_insert|instance
     entity_name: permission
     values
@@ -107,6 +137,12 @@ instances
     - title: Permission: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_picture_select|instance
+    entity_name: permission
+    values
+    - id: picture_select
+    - title: Picture: select
+    - is_embed: 1
 - permission_picture_insert|instance
     entity_name: permission
     values
@@ -126,6 +162,12 @@ instances
     - title: Picture: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_relation_role_ws_permission_select|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_permission_select
+    - title: Relation: Role ↔ Permission: select
+    - is_embed: 1
 - permission_relation_role_ws_permission_insert|instance
     entity_name: permission
     values
@@ -145,6 +187,12 @@ instances
     - title: Relation: Role ↔ Permission: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_relation_role_ws_user_select|instance
+    entity_name: permission
+    values
+    - id: relation_role_ws_user_select
+    - title: Relation: Role ↔ User: select
+    - is_embed: 1
 - permission_relation_role_ws_user_insert|instance
     entity_name: permission
     values
@@ -164,6 +212,12 @@ instances
     - title: Relation: Role ↔ User: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_role_select|instance
+    entity_name: permission
+    values
+    - id: role_select
+    - title: Role: select
+    - is_embed: 1
 - permission_role_insert|instance
     entity_name: permission
     values
@@ -183,6 +237,12 @@ instances
     - title: Role: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_selection_select|instance
+    entity_name: permission
+    values
+    - id: selection_select
+    - title: Selection: select
+    - is_embed: 1
 - permission_selection_insert|instance
     entity_name: permission
     values
@@ -202,6 +262,12 @@ instances
     - title: Selection: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_text_select|instance
+    entity_name: permission
+    values
+    - id: text_select
+    - title: Text: select
+    - is_embed: 1
 - permission_text_insert|instance
     entity_name: permission
     values
@@ -221,6 +287,12 @@ instances
     - title: Text: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_tree_select|instance
+    entity_name: permission
+    values
+    - id: tree_select
+    - title: Tree: select
+    - is_embed: 1
 - permission_tree_insert|instance
     entity_name: permission
     values
@@ -240,6 +312,12 @@ instances
     - title: Tree: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_tree_item_select|instance
+    entity_name: permission
+    values
+    - id: tree_item_select
+    - title: Tree item: select
+    - is_embed: 1
 - permission_tree_item_insert|instance
     entity_name: permission
     values
@@ -259,6 +337,12 @@ instances
     - title: Tree item: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_user_select|instance
+    entity_name: permission
+    values
+    - id: user_select
+    - title: User: select
+    - is_embed: 1
 - permission_user_insert|instance
     entity_name: permission
     values
@@ -278,6 +362,12 @@ instances
     - title: User: delete
     - is_embed: 1
 # ─────────────────────────────────────────────────────────────────────
+- permission_video_select|instance
+    entity_name: permission
+    values
+    - id: video_select
+    - title: Video: select
+    - is_embed: 1
 - permission_video_insert|instance
     entity_name: permission
     values

@@ -38,6 +38,7 @@ translations
     - audio: аўдыё
     - Audio\: delete: Аўдыё: выдаліць
     - Audio\: insert: Аўдыё: уставіць
+    - Audio\: select: Аўдыё: абраць
     - Audio\: update: Аўдыё: абнавіць
     - Audios: Аўдыё
     - audios: аўдыё
@@ -155,6 +156,7 @@ translations
     - Feedback: Водгук
     - Feedback\: delete: Водгук: выдаліць
     - Feedback\: insert: Водгук: уставіць
+    - Feedback\: select: Водгук: абраць
     - Feedback\: update: Водгук: абнавіць
     - Feedbacks: Водгукі
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было выдалена.
@@ -229,6 +231,7 @@ translations
     - Gallery: Галерэя
     - Gallery\: delete: Галерэя: выдаліць
     - Gallery\: insert: Галерэя: уставіць
+    - Gallery\: select: Галерэя: абраць
     - Gallery\: update: Галерэя: абнавіць
     - GiB: ГіБ
     - go to %%_language language: перайсці на %%_language мову
@@ -403,6 +406,7 @@ translations
     - Page: Старонка
     - Page\: delete: Старонка: выдаліць
     - Page\: insert: Старонка: уставіць
+    - Page\: select: Старонка: абраць
     - Page\: update: Старонка: абнавіць
     - Pages: Старонкі
     - Parameter: Параметр
@@ -416,6 +420,7 @@ translations
     - Permission: Дазваленне
     - Permission\: delete: Дазваленне: выдаліць
     - Permission\: insert: Дазваленне: уставіць
+    - Permission\: select: Дазваленне: абраць
     - Permission\: update: Дазваленне: абнавіць
     - Permissions: Дазваленні
     - PHP dependencies: PHP-залежнасці
@@ -424,11 +429,13 @@ translations
     - Picture: Малюнак
     - Picture\: delete: Малюнак: выдаліць
     - Picture\: insert: Малюнак: уставіць
+    - Picture\: select: Малюнак: абраць
     - Picture\: update: Малюнак: абнавіць
     - Pictures: Малюнкі
     - Poll: Апытанне
     - Poll\: delete: Апытанне: выдаліць
     - Poll\: insert: Апытанне: уставіць
+    - Poll\: select: Апытанне: абраць
     - Poll\: update: Апытанне: абнавіць
     - Polls: Апытанні
     - Port: Порт
@@ -466,10 +473,12 @@ translations
     - Relation\: Role ↔ Permission: Сувязь: Роля ↔ Дазваленне
     - Relation\: Role ↔ Permission\: delete: Сувязь: Роля ↔ Дазваленне: выдаліць
     - Relation\: Role ↔ Permission\: insert: Сувязь: Роля ↔ Дазваленне: уставіць
+    - Relation\: Role ↔ Permission\: select: Сувязь: Роля ↔ Дазваленне: абраць
     - Relation\: Role ↔ Permission\: update: Сувязь: Роля ↔ Дазваленне: абнавіць
     - Relation\: Role ↔ User: Сувязь: Роля ↔ Карыстальнік
     - Relation\: Role ↔ User\: delete: Сувязь: Роля ↔ Карыстальнік: выдаліць
     - Relation\: Role ↔ User\: insert: Сувязь: Роля ↔ Карыстальнік: уставіць
+    - Relation\: Role ↔ User\: select: Сувязь: Роля ↔ Карыстальнік: абраць
     - Relation\: Role ↔ User\: update: Сувязь: Роля ↔ Карыстальнік: абнавіць
     - Relations: Сувязі
     - Relations\: Role ↔ Permission: Сувязі: Роля ↔ Дазваленне
@@ -484,6 +493,7 @@ translations
     - Role: Роля
     - Role\: delete: Роля: выдаліць
     - Role\: insert: Роля: уставіць
+    - Role\: select: Роля: абраць
     - Role\: update: Роля: абнавіць
     - roles: ролі
     - Roles: Ролі
@@ -502,6 +512,7 @@ translations
     - selection: выбарка
     - Selection\: delete: Выбарка: выдаліць
     - Selection\: insert: Выбарка: уставіць
+    - Selection\: select: Выбарка: абраць
     - Selection\: update: Выбарка: абнавіць
     - Selections: Выбаркі
     - selections: выбаркі
@@ -558,6 +569,7 @@ translations
     - Text: Тэкст
     - Text\: delete: Тэкст: выдаліць
     - Text\: insert: Тэкст: уставіць
+    - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
     - The changes was deleted.: Змены былі выдалены.
@@ -595,11 +607,13 @@ translations
     - Tree item: Пункт дрэва
     - Tree item\: delete: Пункт дрэва: выдаліць
     - Tree item\: insert: Пункт дрэва: уставіць
+    - Tree item\: select: Пункт дрэва: абраць
     - Tree item\: update: Пункт дрэва: абнавіць
     - Tree items: Пункты дрэва
     - Tree: Дрэва
     - Tree\: delete: Дрэва: выдаліць
     - Tree\: insert: Дрэва: уставіць
+    - Tree\: select: Дрэва: абраць
     - Tree\: update: Дрэва: абнавіць
     - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
@@ -636,6 +650,7 @@ translations
     - User: Карыстальнік
     - User\: delete: Карыстальнік: выдаліць
     - User\: insert: Карыстальнік: уставіць
+    - User\: select: Карыстальнік: абраць
     - User\: update: Карыстальнік: абнавіць
     - Users: Карыстальнікі
     - UTC date/time: UTC дата/час
@@ -650,6 +665,7 @@ translations
     - Video: Відэа
     - Video\: delete: Відэа: выдаліць
     - Video\: insert: Відэа: уставіць
+    - Video\: select: Відэа: абраць
     - Video\: update: Відэа: абнавіць
     - Videos: Відэа
     - View more: Глядзець больш

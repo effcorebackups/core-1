@@ -2,6 +2,12 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
+- permission_poll_select|instance
+    entity_name: permission
+    values
+    - id: poll_select
+    - title: Poll: select
+    - is_embed: 1
 - permission_poll_insert|instance
     entity_name: permission
     values

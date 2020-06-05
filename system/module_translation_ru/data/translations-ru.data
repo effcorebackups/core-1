@@ -38,6 +38,7 @@ translations
     - audio: аудио
     - Audio\: delete: Аудио: удалить
     - Audio\: insert: Аудио: вставить
+    - Audio\: select: Аудио: выбрать
     - Audio\: update: Аудио: обновить
     - Audios: Аудио
     - audios: аудио
@@ -155,6 +156,7 @@ translations
     - Feedback: Отзыв
     - Feedback\: delete: Отзыв: удалить
     - Feedback\: insert: Отзыв: вставить
+    - Feedback\: select: Отзыв: выбрать
     - Feedback\: update: Отзыв: обновить
     - Feedbacks: Отзывы
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
@@ -229,6 +231,7 @@ translations
     - Gallery: Галерея
     - Gallery\: delete: Галерея: удалить
     - Gallery\: insert: Галерея: вставить
+    - Gallery\: select: Галерея: выбрать
     - Gallery\: update: Галерея: обновить
     - GiB: ГиБ
     - go to %%_language language: перейти на %%_language язык
@@ -403,6 +406,7 @@ translations
     - Page: Страница
     - Page\: delete: Страница: удалить
     - Page\: insert: Страница: вставить
+    - Page\: select: Страница: выбрать
     - Page\: update: Страница: обновить
     - Pages: Страницы
     - Parameter: Параметр
@@ -416,6 +420,7 @@ translations
     - Permission: Разрешение
     - Permission\: delete: Разрешение: удалить
     - Permission\: insert: Разрешение: вставить
+    - Permission\: select: Разрешение: выбрать
     - Permission\: update: Разрешение: обновить
     - Permissions: Разрешения
     - PHP dependencies: PHP-зависимости
@@ -424,11 +429,13 @@ translations
     - Picture: Изображение
     - Picture\: delete: Изображение: удалить
     - Picture\: insert: Изображение: вставить
+    - Picture\: select: Изображение: выбрать
     - Picture\: update: Изображение: обновить
     - Pictures: Изображения
     - Poll: Опрос
     - Poll\: delete: Опрос: удалить
     - Poll\: insert: Опрос: вставить
+    - Poll\: select: Опрос: выбрать
     - Poll\: update: Опрос: обновить
     - Polls: Опросы
     - Port: Порт
@@ -466,10 +473,12 @@ translations
     - Relation\: Role ↔ Permission: Связь: Роль ↔ Разрешение
     - Relation\: Role ↔ Permission\: delete: Связь: Роль ↔ Разрешение: удалить
     - Relation\: Role ↔ Permission\: insert: Связь: Роль ↔ Разрешение: вставить
+    - Relation\: Role ↔ Permission\: select: Связь: Роль ↔ Разрешение: выбрать
     - Relation\: Role ↔ Permission\: update: Связь: Роль ↔ Разрешение: обновить
     - Relation\: Role ↔ User: Связь: Роль ↔ Пользователь
     - Relation\: Role ↔ User\: delete: Связь: Роль ↔ Пользователь: удалить
     - Relation\: Role ↔ User\: insert: Связь: Роль ↔ Пользователь: вставить
+    - Relation\: Role ↔ User\: select: Связь: Роль ↔ Пользователь: выбрать
     - Relation\: Role ↔ User\: update: Связь: Роль ↔ Пользователь: обновить
     - Relations: Связи
     - Relations\: Role ↔ Permission: Связи: Роль ↔ Разрешение
@@ -484,6 +493,7 @@ translations
     - Role: Роль
     - Role\: delete: Роль: удалить
     - Role\: insert: Роль: вставить
+    - Role\: select: Роль: выбрать
     - Role\: update: Роль: обновить
     - roles: роли
     - Roles: Роли
@@ -502,6 +512,7 @@ translations
     - selection: выборка
     - Selection\: delete: Выборка: удалить
     - Selection\: insert: Выборка: вставить
+    - Selection\: select: Выборка: выбрать
     - Selection\: update: Выборка: обновить
     - Selections: Выборки
     - selections: выборки
@@ -558,6 +569,7 @@ translations
     - Text: Текст
     - Text\: delete: Текст: удалить
     - Text\: insert: Текст: вставить
+    - Text\: select: Текст: выбрать
     - Text\: update: Текст: обновить
     - Texts: Текст
     - The changes was deleted.: Изменения были удалены.
@@ -595,11 +607,13 @@ translations
     - Tree item: Пункт дерева
     - Tree item\: delete: Пункт дерева: удалить
     - Tree item\: insert: Пункт дерева: вставить
+    - Tree item\: select: Пункт дерева: выбрать
     - Tree item\: update: Пункт дерева: обновить
     - Tree items: Пункты дерева
     - Tree: Дерево
     - Tree\: delete: Дерево: удалить
     - Tree\: insert: Дерево: вставить
+    - Tree\: select: Дерево: выбрать
     - Tree\: update: Дерево: обновить
     - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
@@ -636,6 +650,7 @@ translations
     - User: Пользователь
     - User\: delete: Пользователь: удалить
     - User\: insert: Пользователь: вставить
+    - User\: select: Пользователь: выбрать
     - User\: update: Пользователь: обновить
     - Users: Пользователи
     - UTC date/time: UTC дата/время
@@ -650,6 +665,7 @@ translations
     - Video: Видео
     - Video\: delete: Видео: удалить
     - Video\: insert: Видео: вставить
+    - Video\: select: Видео: выбрать
     - Video\: update: Видео: обновить
     - Videos: Видео
     - View more: Смотреть больше
