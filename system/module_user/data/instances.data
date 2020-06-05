@@ -389,6 +389,216 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_audio_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: audio_select
+- relation_role_ws_permission_managers_audio_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: audio_insert
+- relation_role_ws_permission_managers_audio_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: audio_update
+- relation_role_ws_permission_managers_audio_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: audio_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_gallery_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: gallery_select
+- relation_role_ws_permission_managers_gallery_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: gallery_insert
+- relation_role_ws_permission_managers_gallery_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: gallery_update
+- relation_role_ws_permission_managers_gallery_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: gallery_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_feedback_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: feedback_select
+- relation_role_ws_permission_managers_feedback_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: feedback_insert
+- relation_role_ws_permission_managers_feedback_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: feedback_update
+- relation_role_ws_permission_managers_feedback_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: feedback_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_page_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: page_select
+- relation_role_ws_permission_managers_page_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: page_insert
+- relation_role_ws_permission_managers_page_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: page_update
+- relation_role_ws_permission_managers_page_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: page_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_permission_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: permission_select
+- relation_role_ws_permission_managers_permission_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: permission_insert
+- relation_role_ws_permission_managers_permission_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: permission_update
+- relation_role_ws_permission_managers_permission_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: permission_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_picture_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: picture_select
+- relation_role_ws_permission_managers_picture_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: picture_insert
+- relation_role_ws_permission_managers_picture_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: picture_update
+- relation_role_ws_permission_managers_picture_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: picture_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_relation_role_ws_permission_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_permission_select
+- relation_role_ws_permission_managers_relation_role_ws_permission_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_permission_insert
+- relation_role_ws_permission_managers_relation_role_ws_permission_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_permission_update
+- relation_role_ws_permission_managers_relation_role_ws_permission_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_permission_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_relation_role_ws_user_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_user_select
+- relation_role_ws_permission_managers_relation_role_ws_user_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_user_insert
+- relation_role_ws_permission_managers_relation_role_ws_user_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_user_update
+- relation_role_ws_permission_managers_relation_role_ws_user_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: relation_role_ws_user_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_role_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: role_select
+- relation_role_ws_permission_managers_role_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: role_insert
+- relation_role_ws_permission_managers_role_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: role_update
+- relation_role_ws_permission_managers_role_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: role_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_selection_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: selection_select
+- relation_role_ws_permission_managers_selection_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: selection_insert
+- relation_role_ws_permission_managers_selection_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: selection_update
+- relation_role_ws_permission_managers_selection_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: selection_delete
+# ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_text_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -409,6 +619,90 @@ instances
     values
     - id_role: managers
     - id_permission: text_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_tree_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_select
+- relation_role_ws_permission_managers_tree_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_insert
+- relation_role_ws_permission_managers_tree_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_update
+- relation_role_ws_permission_managers_tree_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_tree_item_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_item_select
+- relation_role_ws_permission_managers_tree_item_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_item_insert
+- relation_role_ws_permission_managers_tree_item_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_item_update
+- relation_role_ws_permission_managers_tree_item_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: tree_item_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_user_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: user_select
+- relation_role_ws_permission_managers_user_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: user_insert
+- relation_role_ws_permission_managers_user_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: user_update
+- relation_role_ws_permission_managers_user_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: user_delete
+# ─────────────────────────────────────────────────────────────────────
+- relation_role_ws_permission_managers_video_select|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: video_select
+- relation_role_ws_permission_managers_video_insert|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: video_insert
+- relation_role_ws_permission_managers_video_update|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: video_update
+- relation_role_ws_permission_managers_video_delete|instance
+    entity_name: relation_role_ws_permission
+    values
+    - id_role: managers
+    - id_permission: video_delete
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_user
 # ─────────────────────────────────────────────────────────────────────
