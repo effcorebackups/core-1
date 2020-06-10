@@ -158,7 +158,7 @@ translations
     - Switcher 3 (disabled): Выключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
-    - The report will be created after running the test.: Отчёт будет создан после запуска теста.
+    - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
@@ -168,6 +168,12 @@ translations
     - Total load: Общая загрузка
     - Traits: Трейты
     - UML Diagram: UML-диаграмма
+    - Update Description 1.: Описание обновления 1.
+    - Update Description 2.: Описание обновления 2.
+    - Update Description 3.: Описание обновления 3.
+    - Update Title 1: Заголовок обновления 1
+    - Update Title 2: Заголовок обновления 2
+    - Update Title 3: Заголовок обновления 3
     - Usage frequency: Частота использования
     - validation_1: валидация_1
     - validation_2: валидация_2

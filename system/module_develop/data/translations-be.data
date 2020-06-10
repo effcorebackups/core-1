@@ -158,7 +158,7 @@ translations
     - Switcher 3 (disabled): Выключальнік 3 (адключаны)
     - Switcher 4 (disabled + checked): Выключальнік 4 (адключаны + адзначаны)
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
-    - The report will be created after running the test.: Справаздача будзе створана пасля запуску тэсту.
+    - The report will be created after submitting the form.: Справаздача будзе створана пасля адпраўкі формы.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
     - The test was failed!: Тэст не атрымаўся!
     - The test was successful.: Тэст выкананы паспяхова.
@@ -168,6 +168,12 @@ translations
     - Total load: Агульная загрузка
     - Traits: Трэйты
     - UML Diagram: UML-дыяграма
+    - Update Description 1.: Апісанне абнаўлення 1.
+    - Update Description 2.: Апісанне абнаўлення 2.
+    - Update Description 3.: Апісанне абнаўлення 3.
+    - Update Title 1: Загаловак абнаўлення 1
+    - Update Title 2: Загаловак абнаўлення 2
+    - Update Title 3: Загаловак абнаўлення 3
     - Usage frequency: Частата выкарыстоўвання
     - validation_1: валідацыя_1
     - validation_2: валідацыя_2

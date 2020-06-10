@@ -93,6 +93,8 @@ translations
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
     - Current: Бягучыя
+    - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне даных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
+    - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне даных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
     - Data update is required: Патрабуецца абнаўленне даных
     - Data: Даныя
     - Database name: Імя базы даных
@@ -389,7 +391,6 @@ translations
     - no url: няма url
     - No: Не
     - no: не
-    - not applicable: не ўжываецца
     - Number: Нумар
     - Object: Аб'ект
     - ok: ок
@@ -447,7 +448,6 @@ translations
     - press to show or hide nested content: націсніце, каб паказаць альбо схаваць укладзенае змесціва
     - Profile: Профіль
     - Profiles: Профілі
-    - Provisioning key: Ключ забеспячэння
     - Query error!: Памылка запыту!
     - Query parameters: Параметры запыту
     - query preparation process return the false: працэс падрыхтоўкі запыту вярнуў false
@@ -538,7 +538,6 @@ translations
     - storage: сховішча
     - Storage: Сховішча
     - Structures: Структуры
-    - Subscription to updates: Падпіска на абнаўленні
     - success: поспех
     - Switcher: Выключальнік
     - Switchers: Выключальнікі
@@ -626,11 +625,10 @@ translations
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваны спіс
-    - Update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне №%%_number для модуля "%%_title" (%%_id) было ўжыта.
-    - Update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
     - Update Cache: Абнавіць кэш
     - Update instance: Абнавіць асобнік
     - Update modules data: Абнавіць даныя модуляў
+    - Update modules files: Абнавіць файлы модуляў
     - update this page: абнавіць гэтую старонку
     - Update: Абнавіць
     - update: абнавіць

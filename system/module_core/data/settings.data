@@ -5,5 +5,5 @@ settings
   - session: abcde01234abcde01234abcde01234abcde01234
   - salt: abcde01234abcde01234abcde01234abcde01234
   cookie_domain: 
-  update_last_number: 1000
+  update_data_last_number: 1000
   cron_last_run_date: null

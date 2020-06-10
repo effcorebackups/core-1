@@ -32,20 +32,18 @@ namespace effcore\modules\core {
   }
 
   static function block_service_info($page) {
-    $settings            = module::settings_get('core');
-    $is_required_updates = module::is_required_updates();
-    $is_required_updates_fixlink = new markup('a', ['href' => '/manage/modules/update'], 'fix');
-    $is_required_updates_sticker = new markup('x-sticker', ['data-state' => !$is_required_updates ? 'ok' : 'warning'], $is_required_updates ? 'yes' : 'no');
-    $cron_last_run_sticker       = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
+    $settings           = module::settings_get('core');
+    $is_required_update = module::is_required_update_data();
+    $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
+    $is_required_update_sticker = new markup('x-sticker', ['data-state' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? 'yes' : 'no');
+    $cron_last_run_sticker      = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/manage/cron/'.core::key_get('cron')], '/manage/cron/'.core::key_get('cron'));
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
     $decorator->data = [[
-      'prov_key'      => ['title' => 'Provisioning key',        'value' => 'not applicable'                                                                                                                                   ],
-      'subscr_to_upd' => ['title' => 'Subscription to updates', 'value' => 'not applicable'                                                                                                                                   ],
-      'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_updates ? [$is_required_updates_sticker, new text(' → '), $is_required_updates_fixlink] : [$is_required_updates_sticker])],
-      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                         ],
-      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                             ] ]];
+      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                     ],
+      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                         ],
+      'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_update ? [$is_required_update_sticker, new text(' → '), $is_required_update_fixlink] : [$is_required_update_sticker])] ]];
     return new block('Service', ['data-id' => 'info_service', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);

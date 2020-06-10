@@ -19,7 +19,7 @@ namespace effcore\modules\test {
     if ($test) {
       $items['params']->description = $test->description;
       $items['report']->child_select('document')->child_insert(
-        new text('The report will be created after running the test.'));
+        new text('The report will be created after submitting the form.'));
       if ($test->params) {
         foreach ($test->params as $c_id => $c_param) {
           $items['params']->child_insert($c_param, $c_id);

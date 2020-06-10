@@ -6,7 +6,8 @@ pages
     url: %^(?<base>/manage/modules)(/
 >>>>>>>>>>>(?<action>install|
 >>>>>>>>>>>>>>>>>>>>>uninstall|
->>>>>>>>>>>>>>>>>>>>>update)|)$%
+>>>>>>>>>>>>>>>>>>>>>update/data|
+>>>>>>>>>>>>>>>>>>>>>update/files)|)$%
     access
       roles
       - =: admins
@@ -56,10 +57,17 @@ pages
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - form_modules_update|part
+      - form_modules_update_data|part
           display
             check: page_args
             where: action
-            match: %^update$%
+            match: %^update/data$%
           type: link
-          source: forms/core/modules_update
+          source: forms/core/modules_update_data
+      - form_modules_update_files|part
+          display
+            check: page_args
+            where: action
+            match: %^update/files$%
+          type: link
+          source: forms/core/modules_update_files

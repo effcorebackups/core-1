@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use \effcore\core;
+          use \effcore\event;
           use \effcore\fieldset;
           use \effcore\group_checkboxes;
           use \effcore\markup;
@@ -13,7 +14,7 @@ namespace effcore\modules\core {
           use \effcore\module;
           use \effcore\storage;
           use \effcore\text;
-          abstract class events_form_modules_update {
+          abstract class events_form_modules_update_data {
 
   static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
@@ -22,8 +23,8 @@ namespace effcore\modules\core {
     $modules = module::get_all();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
-      $c_updates            = module::updates_get           ($c_module->id);
-      $c_update_last_number = module::update_get_last_number($c_module->id);
+      $c_updates            = module::update_data_get_all        ($c_module->id);
+      $c_update_last_number = module::update_data_get_last_number($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'closed';
@@ -61,19 +62,21 @@ namespace effcore\modules\core {
         $modules = module::get_all();
         core::array_sort_by_text_property($modules);
         foreach ($modules as $c_module) {
-          $c_updates            = module::updates_get           ($c_module->id);
-          $c_update_last_number = module::update_get_last_number($c_module->id);
+          $c_updates            = module::update_data_get_all        ($c_module->id);
+          $c_update_last_number = module::update_data_get_last_number($c_module->id);
           if (count($c_updates)) {
             core::array_sort_by_property($c_updates, 'number', 'd');
             foreach ($c_updates as $c_update) {
               if ($c_update->number > $c_update_last_number) {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
                   $has_selection = true;
+                  event::start('on_module_update_data_before', null, [$c_update]);
                   $c_result = call_user_func($c_update->handler, $c_update);
+                  event::start('on_module_update_data_after', null, [$c_update]);
                   if ($c_result) {
-                    storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_last_number', $c_update->number);
-                           message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );
-                  } else { message::insert(new text('Update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
+                    storage::get('files')->changes_insert($c_module->id, 'update', 'settings/'.$c_module->id.'/update_data_last_number', $c_update->number);
+                           message::insert(new text('Data update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );
+                  } else { message::insert(new text('Data update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
                     break;
                   }
                 }

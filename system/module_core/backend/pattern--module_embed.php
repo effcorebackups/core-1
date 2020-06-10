@@ -136,32 +136,31 @@ namespace effcore {
   static function get_all($property = null) {
     static::init();
     $result = [];
-    foreach (static::$cache['modules'] as $c_module) {
-      $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
-    }
+    foreach (static::$cache['modules'] as $c_module)
+      $result[$c_module->id] = $property ?
+                   $c_module->{$property} :
+                   $c_module;
     return $result;
   }
 
   static function get_embed($property = null) {
     $result = [];
-    foreach (static::get_all() as $c_module) {
+    foreach (static::get_all() as $c_module)
       if ($c_module instanceof module_embed &&
-         !$c_module instanceof module) {
-        $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
-      }
-    }
+         !$c_module instanceof module)
+        $result[$c_module->id] = $property ?
+                     $c_module->{$property} :
+                     $c_module;
     return $result;
   }
 
   static function get_enabled_by_default($property = null) {
     $result = [];
-    foreach (static::get_all() as $c_module) {
-      if ($c_module->enabled == 'yes') {
+    foreach (static::get_all() as $c_module)
+      if ($c_module->enabled == 'yes')
         $result[$c_module->id] = $property ?
                      $c_module->{$property} :
                      $c_module;
-      }
-    }
     return $result;
   }
 
@@ -182,13 +181,11 @@ namespace effcore {
 
   static function get_profiles($property = null) {
     $result = [];
-    foreach (static::get_all() as $c_module) {
-      if ($c_module instanceof module_as_profile) {
+    foreach (static::get_all() as $c_module)
+      if ($c_module instanceof module_as_profile)
         $result[$c_module->id] = $property ?
                      $c_module->{$property} :
                      $c_module;
-      }
-    }
     return $result;
   }
 
@@ -202,24 +199,24 @@ namespace effcore {
     return isset($installed[$module_id]);
   }
 
-  static function is_required_updates() {
+  static function is_required_update_data() {
     foreach (static::get_all() as $c_module) {
-      $c_updates            = static::updates_get           ($c_module->id);
-      $c_update_last_number = static::update_get_last_number($c_module->id);
+      $c_updates            = static::update_data_get_all        ($c_module->id);
+      $c_update_last_number = static::update_data_get_last_number($c_module->id);
       foreach ($c_updates as $c_update) {
         if ($c_update->number > $c_update_last_number) return true;
       }
     }
   }
 
-  static function update_get_last_number($module_id) {
+  static function update_data_get_last_number($module_id) {
     $settings = static::settings_get($module_id);
-    return $settings->update_last_number ?? 0;
+    return $settings->update_data_last_number ?? 0;
   }
 
-  static function updates_get($module_id, $from_number = 0) {
+  static function update_data_get_all($module_id, $from_number = 0) {
     $updates = [];
-    foreach (storage::get('files')->select('module_updates', false, false) ?? [] as $c_module_id => $c_updates)
+    foreach (storage::get('files')->select('modules_update_data', false, false) ?? [] as $c_module_id => $c_updates)
       if ($c_module_id == $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
           if ($c_update->number >= $from_number)
@@ -232,9 +229,19 @@ namespace effcore {
     return $settings[$module_id] ?? [];
   }
 
+  static function bundle_get_all($property = null) {
+    static::init();
+    $result = [];
+    foreach (static::$cache['bundles'] as $c_bundle)
+      $result[$c_bundle->id] = $property ?
+                   $c_bundle->{$property} :
+                   $c_bundle;
+    return $result;
+  }
+
   static function bundle_get($id) {
     static::init();
-    return static::$cache['bundles'][$id];
+    return static::$cache['bundles'][$id] ?? null;
   }
 
   static function groups_get() {

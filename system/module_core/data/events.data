@@ -7,6 +7,10 @@ events
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_enable
+  on_module_update_files
+  - system|event
+      for: system
+      handler: \effcore\modules\core\events_module_update::on_update_files
 # ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event
@@ -34,9 +38,12 @@ events
   - modules_uninstall|event
       for: modules_uninstall
       handler: \effcore\modules\core\events_form_modules_uninstall::on_init
-  - modules_update|event
-      for: modules_update
-      handler: \effcore\modules\core\events_form_modules_update::on_init
+  - modules_update_data|event
+      for: modules_update_data
+      handler: \effcore\modules\core\events_form_modules_update_data::on_init
+  - modules_update_files|event
+      for: modules_update_files
+      handler: \effcore\modules\core\events_form_modules_update_files::on_init
   on_form_validate
   - install|event
       for: install
@@ -57,9 +64,12 @@ events
   - modules_uninstall|event
       for: modules_uninstall
       handler: \effcore\modules\core\events_form_modules_uninstall::on_submit
-  - modules_update|event
-      for: modules_update
-      handler: \effcore\modules\core\events_form_modules_update::on_submit
+  - modules_update_data|event
+      for: modules_update_data
+      handler: \effcore\modules\core\events_form_modules_update_data::on_submit
+  - modules_update_files|event
+      for: modules_update_files
+      handler: \effcore\modules\core\events_form_modules_update_files::on_submit
   - cache_update|event
       for: cache_update
       handler: \effcore\modules\core\events_form_cache_update::on_submit

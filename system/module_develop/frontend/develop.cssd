@@ -53,12 +53,6 @@
 
   x-decorator[data-id^='events_nosql_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
 
-  /* reports */
-
-  x-document[data-type='report'] {max-height: 400px}
-  x-document[data-type='report'] p:first-child {margin-top:    0}
-  x-document[data-type='report'] p:last-child  {margin-bottom: 0}
-
   /* x-structures-list */
 
   x-structures-list {display: block}
