@@ -26,7 +26,7 @@ namespace effcore\modules\core {
           'git -C '.$repo_path.' pull         2>&1'];
         foreach ($commands as $c_num => $c_command) {
           $return_var = null;
-          $result['command-'.$c_num] = $c_command;
+          $result['command-'.$c_num] = '$ '.$c_command;
           exec($c_command, $result, $return_var);
           if ($return_var !== 0) break;
         }
