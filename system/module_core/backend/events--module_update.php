@@ -20,9 +20,9 @@ namespace effcore\modules\core {
       if ($repo_path !== false) {
         $result = [];
         $commands = [
-          'git -C '.$repo_path.' clean  -f -d',
-          'git -C '.$repo_path.' reset --hard',
-          'git -C '.$repo_path.' pull'];
+          'git -C '.$repo_path.' clean  -f -d 2>&1',
+          'git -C '.$repo_path.' reset --hard 2>&1',
+          'git -C '.$repo_path.' pull         2>&1'];
         foreach ($commands as $c_num => $c_command) {
           $return_var = null;
           $result['command-'.$c_num] = $c_command;
