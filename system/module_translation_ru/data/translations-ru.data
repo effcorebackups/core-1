@@ -487,6 +487,7 @@ translations
     - remember me: запомнить меня
     - Report: Отчёт
     - reset: сброс
+    - restore repository: восстановить репозиторий
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
     - right to left: справа налево
     - role: роль

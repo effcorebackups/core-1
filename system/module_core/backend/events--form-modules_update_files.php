@@ -25,13 +25,20 @@ namespace effcore\modules\core {
       if (isset($c_bundle->repo_update)) {
         $c_button_update = new button('update', ['title' => new text('update')]);
         $c_button_update->build();
-        $c_button_update->value_set($c_bundle->id);
+        $c_button_update->value_set('update_'.$c_bundle->id);
         $c_button_update->_type = 'update';
         $c_button_update->_id = $c_bundle->id;
+        $c_button_repo_restore = new button('restore repository', ['title' => new text('restore repository')]);
+        $c_button_repo_restore->build();
+        $c_button_repo_restore->disabled_set();
+        $c_button_repo_restore->value_set('repo_restore_'.$c_bundle->id);
+        $c_button_repo_restore->_type = 'repo_restore';
+        $c_button_repo_restore->_id = $c_bundle->id;
         $c_report = new markup('x-document', ['data-type' => 'report'], new text('The report will be created after submitting the form.'));
         $c_fieldset = new fieldset($c_bundle->title);
         $c_fieldset->child_insert($c_report, 'report');
         $c_fieldset->child_insert($c_button_update, 'button_update');
+        $c_fieldset->child_insert($c_button_repo_restore, 'button_repo_restore');
         $info->child_insert($c_fieldset, $c_bundle->id);
       }
     }
@@ -54,6 +61,8 @@ namespace effcore\modules\core {
             if (is_array($c_result)) $report->child_insert(new markup('p', [], new text_multiline($c_result, [], br, false, false)));
           }
         }
+        break;
+      case 'repo_restore':
         break;
     }
   }
