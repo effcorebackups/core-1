@@ -4,6 +4,7 @@ bundle
   description: Bundle with system.
   build: 1000
   repo_update: true
+  repo_directory: ../
   repo_type: git
   repo_url: https://github.com/effectivecore/core.git
   repo_branch: main
