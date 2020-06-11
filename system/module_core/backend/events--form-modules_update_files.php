@@ -41,12 +41,12 @@ namespace effcore\modules\core {
   }
 
   static function on_submit($event, $form, $items) {
-    $report = $items['info']->child_select($bundle_id)->child_select('report');
-    $report->children_delete();
     switch ($form->clicked_button->_type) {
       case 'update':
         $bundle_id = $form->clicked_button->_id;
         $result = event::start('on_module_update_files', $bundle_id, [$bundle_id]);
+        $report = $items['info']->child_select($bundle_id)->child_select('report');
+        $report->children_delete();
         foreach ($result as $c_handler => $c_results) {
           $report->child_insert(new markup('p', [], 'Call '.$c_handler));
           foreach ($c_results as $c_result) {
