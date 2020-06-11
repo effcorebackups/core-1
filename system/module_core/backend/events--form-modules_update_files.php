@@ -30,7 +30,7 @@ namespace effcore\modules\core {
         $c_button_update->_id = $c_bundle->id;
         $c_button_repo_restore = new button('restore repository', ['title' => new text('restore repository')]);
         $c_button_repo_restore->build();
-        $c_button_repo_restore->disabled_set();
+        $c_button_repo_restore->disabled_set(empty($c_bundle->repo_can_restore));
         $c_button_repo_restore->value_set('repo_restore_'.$c_bundle->id);
         $c_button_repo_restore->_type = 'repo_restore';
         $c_button_repo_restore->_id = $c_bundle->id;
@@ -51,7 +51,7 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->_type) {
       case 'update':
         $bundle_id = $form->clicked_button->_id;
-        $result = event::start('on_module_update_files', $bundle_id, [$bundle_id]);
+        $result = event::start('on_update_files', $bundle_id, [$bundle_id]);
         $report = $items['info']->child_select($bundle_id)->child_select('report');
         $report->children_delete();
         foreach ($result as $c_handler => $c_results) {
@@ -63,6 +63,17 @@ namespace effcore\modules\core {
         }
         break;
       case 'repo_restore':
+        $bundle_id = $form->clicked_button->_id;
+        $result = event::start('on_restore_repo', $bundle_id, [$bundle_id]);
+        $report = $items['info']->child_select($bundle_id)->child_select('report');
+        $report->children_delete();
+        foreach ($result as $c_handler => $c_results) {
+          $report->child_insert(new markup('p', [], 'Call '.$c_handler));
+          foreach ($c_results as $c_result) {
+            if (is_null ($c_result)) $report->child_insert(new markup('p', [], 'null'));
+            if (is_array($c_result)) $report->child_insert(new markup('p', [], new text_multiline($c_result, [], br, false, false)));
+          }
+        }
         break;
     }
   }

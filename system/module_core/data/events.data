@@ -7,10 +7,15 @@ events
   - core|event
       for: core
       handler: \effcore\modules\core\events_module::on_enable
-  on_module_update_files
+# ─────────────────────────────────────────────────────────────────────
+  on_update_files
   - system|event
       for: system
       handler: \effcore\modules\core\events_module_update::on_update_files
+  on_restore_repo
+  - system|event
+      for: system
+      handler: \effcore\modules\core\events_module_update::on_restore_repo
 # ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event
