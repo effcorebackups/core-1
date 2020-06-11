@@ -21,6 +21,7 @@ namespace effcore\modules\core {
         $result = [];
         $commands = [
           'whoami                             2>&1',
+          'git --version                      2>&1',
           'git -C '.$repo_path.' clean  -f -d 2>&1',
           'git -C '.$repo_path.' reset --hard 2>&1',
           'git -C '.$repo_path.' pull         2>&1'];
