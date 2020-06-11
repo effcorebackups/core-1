@@ -20,6 +20,7 @@ translations
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
     - beginning: начало
+    - Call "%%_call" for #%%_number: Вызов "%%_call" для #%%_number
     - Call "%%_call": Вызов "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталог "%%_catalog_name" в хранилище "%%_storage_name" будет инициализирован
     - cell #%%_number: ячейка №%%_number
