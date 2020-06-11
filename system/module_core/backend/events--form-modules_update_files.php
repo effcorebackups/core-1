@@ -23,13 +23,15 @@ namespace effcore\modules\core {
     core::array_sort_by_text_property($bundles);
     foreach ($bundles as $c_bundle) {
       if (isset($c_bundle->repo_update)) {
-        $c_button_launch = new button('launch', ['title' => new text('launch')]);
-        $c_button_launch->build();
-        $c_button_launch->value_set($c_bundle->id);
+        $c_button_update = new button('update', ['title' => new text('update')]);
+        $c_button_update->build();
+        $c_button_update->value_set($c_bundle->id);
+        $c_button_update->_type = 'update';
+        $c_button_update->_id = $c_bundle->id;
         $c_report = new markup('x-document', ['data-type' => 'report'], new text('The report will be created after submitting the form.'));
         $c_fieldset = new fieldset($c_bundle->title);
         $c_fieldset->child_insert($c_report, 'report');
-        $c_fieldset->child_insert($c_button_launch, 'button_launch');
+        $c_fieldset->child_insert($c_button_update, 'button_update');
         $info->child_insert($c_fieldset, $c_bundle->id);
       }
     }
@@ -39,16 +41,20 @@ namespace effcore\modules\core {
   }
 
   static function on_submit($event, $form, $items) {
-    $bundle_id = $form->clicked_button->value_get();
-    $result = event::start('on_module_update_files', $bundle_id, [$bundle_id]);
     $report = $items['info']->child_select($bundle_id)->child_select('report');
     $report->children_delete();
-    foreach ($result as $c_handler => $c_results) {
-      $report->child_insert(new markup('p', [], 'Call '.$c_handler));
-      foreach ($c_results as $c_result) {
-        if (is_null ($c_result)) $report->child_insert(new markup('p', [], 'null'));
-        if (is_array($c_result)) $report->child_insert(new markup('p', [], new text_multiline($c_result, [], br, false, false)));
-      }
+    switch ($form->clicked_button->_type) {
+      case 'update':
+        $bundle_id = $form->clicked_button->_id;
+        $result = event::start('on_module_update_files', $bundle_id, [$bundle_id]);
+        foreach ($result as $c_handler => $c_results) {
+          $report->child_insert(new markup('p', [], 'Call '.$c_handler));
+          foreach ($c_results as $c_result) {
+            if (is_null ($c_result)) $report->child_insert(new markup('p', [], 'null'));
+            if (is_array($c_result)) $report->child_insert(new markup('p', [], new text_multiline($c_result, [], br, false, false)));
+          }
+        }
+        break;
     }
   }
 
