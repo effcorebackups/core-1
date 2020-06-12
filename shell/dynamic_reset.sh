@@ -8,7 +8,6 @@ while true; do
         find ../dynamic/files -not -name 'readme.md' -not -path '../dynamic/files' -delete
         find ../dynamic/logs  -not -name 'readme.md' -not -path '../dynamic/logs'  -delete
         find ../dynamic/tmp   -not -name 'readme.md' -not -path '../dynamic/tmp'   -delete
-        cp /dev/null ../dynamic/data/data.sqlite
         break;;
     n ) exit;;
     * ) echo 'Please answer "y" or "n".';;
