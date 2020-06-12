@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-cd ../
-
-git clean  -f -d
-git reset --hard
-git pull
-
-shell/cache_clear.sh
+git -C ../ clean  -f -d
+git -C ../ reset --hard
+git -C ../ pull
+./cache_clear.sh
