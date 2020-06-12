@@ -159,7 +159,6 @@ translations
     - Switcher 3 (disabled): Выключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
-    - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
