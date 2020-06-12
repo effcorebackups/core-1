@@ -22,11 +22,12 @@ namespace effcore\modules\core {
       if ($repo_path !== false) {
         $result = [];
         $commands = [
-          'whoami '                            .$stderr_to_stdout,
-          'git --version '                     .$stderr_to_stdout,
-          'git -C '.$repo_path.' clean  -f -d '.$stderr_to_stdout,
-          'git -C '.$repo_path.' reset --hard '.$stderr_to_stdout,
-          'git -C '.$repo_path.' pull '        .$stderr_to_stdout];
+          'whoami '           .$stderr_to_stdout,
+          'git --version '    .$stderr_to_stdout,
+          'cd '.$repo_path.' '.$stderr_to_stdout,
+          'git clean  -f -d ' .$stderr_to_stdout,
+          'git reset --hard ' .$stderr_to_stdout,
+          'git pull '         .$stderr_to_stdout];
         foreach ($commands as $c_num => $c_command) {
           $return_var = null;
           $result['command-'.$c_num] = '$ '.$c_command;
