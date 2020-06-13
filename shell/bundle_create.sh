@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-git -C ../ clean  -f -d
-git -C ../ reset --hard
-git -C ../ pull
-
 cd ../
+
+git clean  -f -d
+git reset --hard
+git pull
 
 build=$(grep 'build: [0-9]\{4,5\}' system/bundle.data | sed 's/  build: //g')
 bundle_name="../effcore-$build.zip"
