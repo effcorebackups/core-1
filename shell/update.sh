@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-git -C ../ clean  -f -d
-git -C ../ reset --hard
-git -C ../ pull
+cd ../
 
-./cache_clear.sh
+git clean  -f -d
+git reset --hard
+git pull
+
+find dynamic/cache -not -name 'readme.md' -not -path 'dynamic/cache' -delete
