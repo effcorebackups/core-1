@@ -878,6 +878,10 @@ namespace effcore {
                   $matches['full_name_unknown'];
   }
 
+  static function server_os_is_windows() {
+    return DIRECTORY_SEPARATOR === '\\';
+  }
+
   ########################
   ### shared functions ###
   ########################

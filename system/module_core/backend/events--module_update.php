@@ -8,6 +8,7 @@ namespace effcore\modules\core {
           use const \effcore\dir_dynamic;
           use const \effcore\dir_root;
           use \effcore\cache;
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\message;
           use \effcore\module;
@@ -49,14 +50,27 @@ namespace effcore\modules\core {
       $repo_path_tmp = dir_dynamic.'tmp/repo_'.$bundle_id;
       if ($repo_path_cur !== false) {
         $result = [];
-        $commands = [
-          'whoami '                                                                              .$stderr_to_stdout,
-          'git --version '                                                                       .$stderr_to_stdout,
-          'rm -rf '.$repo_path_tmp.                                                           ' '.$stderr_to_stdout,
-          'git clone --branch='.$bundle->repo_branch.' '.$bundle->repo_url.' '.$repo_path_tmp.' '.$stderr_to_stdout,
-          'rm -rf '.$repo_path_cur.'/.git '                                                      .$stderr_to_stdout,
-          'mv '    .$repo_path_tmp.'/.git '.$repo_path_cur.                                   ' '.$stderr_to_stdout,
-          'rm -rf '.$repo_path_tmp.                                                           ' '.$stderr_to_stdout];
+        if (core::server_os_is_windows()) {
+          $commands = [
+            'whoami '                                                                              .$stderr_to_stdout,
+            'git --version '                                                                       .$stderr_to_stdout,
+            'rmdir /s /q '.$repo_path_tmp.                                                      ' '.$stderr_to_stdout,
+            'git clone --branch='.$bundle->repo_branch.' '.$bundle->repo_url.' '.$repo_path_tmp.' '.$stderr_to_stdout,
+            'rmdir /s /q '.$repo_path_cur.'/.git '                                                 .$stderr_to_stdout,
+            'xcopy /e /i '.$repo_path_tmp.'/.git '.$repo_path_cur.                              ' '.$stderr_to_stdout,
+            'rmdir /s /q '.$repo_path_tmp.                                                      ' '.$stderr_to_stdout
+          ];
+        } else {
+          $commands = [
+            'whoami '                                                                              .$stderr_to_stdout,
+            'git --version '                                                                       .$stderr_to_stdout,
+            'rm -rf '.$repo_path_tmp.                                                           ' '.$stderr_to_stdout,
+            'git clone --branch='.$bundle->repo_branch.' '.$bundle->repo_url.' '.$repo_path_tmp.' '.$stderr_to_stdout,
+            'rm -rf '.$repo_path_cur.'/.git '                                                      .$stderr_to_stdout,
+            'mv '    .$repo_path_tmp.'/.git '.$repo_path_cur.                                   ' '.$stderr_to_stdout,
+            'rm -rf '.$repo_path_tmp.                                                           ' '.$stderr_to_stdout
+          ];
+        }
         foreach ($commands as $c_num => $c_command) {
           $return_var = null;
           $result['command-'.$c_num] = '$ '.$c_command;

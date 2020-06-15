@@ -231,8 +231,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function is_path_full() {
-    if (DIRECTORY_SEPARATOR != '\\') return isset($this->dirs[0]) && $this->dirs[0] == '/';
-    if (DIRECTORY_SEPARATOR == '\\') return isset($this->dirs[1]) && $this->dirs[1] == ':';
+    if (DIRECTORY_SEPARATOR !== '\\') return isset($this->dirs[0]) && $this->dirs[0] == '/';
+    if (DIRECTORY_SEPARATOR === '\\') return isset($this->dirs[1]) && $this->dirs[1] == ':';
   }
 
   function is_exist() {

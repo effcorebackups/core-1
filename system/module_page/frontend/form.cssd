@@ -39,6 +39,7 @@
     display: block;
     padding: 10px 16px;
     border-top: 5px solid %%_color_main}
+  x-fieldset-content::after {content: ''; clear: both; display: block}
 
   x-fieldset-content,
   x-fieldset-content x-fieldset-content                    x-fieldset-content {background: %%_color_fieldset}
@@ -361,6 +362,10 @@
 
   form#instance_select_multiple button[value='insert'] {float: right; position: relative; z-index: 10; margin-top: 27px}
   form#instance_select_multiple x-selection {margin: 100px 0}
+
+  /* form 'modules_update_files' */
+
+  form#modules_update_files button[value='repo_restore_system'] {float: right; margin-right: 0; margin-left: 20px}
 
   /* form 'cache_update' */
 
