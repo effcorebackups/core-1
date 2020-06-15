@@ -47,7 +47,7 @@ namespace effcore\modules\core {
     if ($bundle) {
       $stderr_to_stdout = '2>&1';
       $repo_path_cur = realpath(dir_root.$bundle->path.$bundle->repo_directory);
-      $repo_path_tmp = dir_dynamic.'tmp/repo_'.$bundle_id;
+      $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'repo_'.$bundle_id;
       if ($repo_path_cur !== false) {
         $result = [];
         if (core::server_os_is_windows()) {
