@@ -46,7 +46,7 @@ namespace effcore\modules\core {
     $bundle = module::bundle_get($bundle_id);
     if ($bundle) {
       $stderr_to_stdout        = '2>&1';
-      $stderr_to_stdout_to_nul = '2>&1 > nul';
+      $stderr_to_stdout_to_nul = '2>&1 > nul & exit 0';
       $repo_path_cur = realpath(dir_root.$bundle->path.$bundle->repo_directory);
       $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'repo_'.$bundle_id;
       if ($repo_path_cur !== false) {
