@@ -57,12 +57,13 @@ namespace effcore\modules\core {
     $decorator->id = 'environment_info';
     $decorator->data = [[
       'web_server'          => ['title' => 'Web server',              'value' => core::server_get_software()                                ],
-      'php_version'         => ['title' => 'PHP version',             'value' => phpversion().' ('.php_uname('m').')'                       ],
+      'php_version'         => ['title' => 'PHP version',             'value' => phpversion()                                               ],
       'opcache_state'       => ['title' => 'PHP OPCache is enabled',  'value' => $is_enabled_opcache_sticker                                ],
       'upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => locale::format_bytes(core::upload_max_filesize_bytes_get())],
       'post_max_size'       => ['title' => 'PHP post_max_size',       'value' => locale::format_bytes(core::post_max_size_bytes_get())      ],
       'storage_sql'         => ['title' => 'SQL storage',             'value' => $storage_sql->title_get().' '.$storage_sql->version_get()  ],
-      'operating_system'    => ['title' => 'Operating System',        'value' => php_uname('s').' | '.php_uname('v')                        ],
+      'operating_system'    => ['title' => 'Operating System',        'value' => php_uname('s').' | '.php_uname('r').' | '.php_uname('v')   ],
+      'architecture'        => ['title' => 'Architecture',            'value' => php_uname('m')                                             ],
       'hostname'            => ['title' => 'Hostname',                'value' => php_uname('n')                                             ],
       'timezone'            => ['title' => 'Time zone',               'value' => date_default_timezone_get()                                ],
       'datetime'            => ['title' => 'UTC date/time',           'value' => core::datetime_get()                                       ] ]];

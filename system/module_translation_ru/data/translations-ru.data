@@ -32,6 +32,7 @@ translations
     - apply tokens: применить токены
     - apply translation: применить перевод
     - apply: применить
+    - Architecture: Архитектура
     - Attribute: Атрибут
     - Attributes: Атрибуты
     - Audio: Аудио
