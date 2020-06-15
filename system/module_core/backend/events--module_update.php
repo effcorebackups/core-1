@@ -54,14 +54,14 @@ namespace effcore\modules\core {
           $commands = [
             'whoami '                                                                              .$stderr_to_stdout,
             'git --version '                                                                       .$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout,
-            'rmdir  /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout,
+            'del /f /s /q '.$repo_path_tmp.                                                     '   & exit 0',
+            'rmdir  /s /q '.$repo_path_tmp.                                                     '   & exit 0',
             'git clone --branch='.$bundle->repo_branch.' '.$bundle->repo_url.' '.$repo_path_tmp.' '.$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_cur.'\\.git '                                               .$stderr_to_stdout,
-            'rmdir  /s /q '.$repo_path_cur.'\\.git '                                               .$stderr_to_stdout,
+            'del /f /s /q '.$repo_path_cur.'\\.git '                                            '   & exit 0',
+            'rmdir  /s /q '.$repo_path_cur.'\\.git '                                            '   & exit 0',
             'xcopy  /e /i '.$repo_path_tmp.'\\.git '.$repo_path_cur.'\\.git'.                   ' '.$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout,
-            'rmdir  /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout
+            'del /f /s /q '.$repo_path_tmp.                                                     '   & exit 0',
+            'rmdir  /s /q '.$repo_path_tmp.                                                     '   & exit 0'
           ];
         } else {
           $commands = [
