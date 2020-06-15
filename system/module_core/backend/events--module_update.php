@@ -45,7 +45,8 @@ namespace effcore\modules\core {
   static function on_restore_repo($event, $bundle_id) {
     $bundle = module::bundle_get($bundle_id);
     if ($bundle) {
-      $stderr_to_stdout = '2>&1';
+      $stderr_to_stdout        = '2>&1';
+      $stderr_to_stdout_to_nul = '2>&1 > nul';
       $repo_path_cur = realpath(dir_root.$bundle->path.$bundle->repo_directory);
       $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'repo_'.$bundle_id;
       if ($repo_path_cur !== false) {
@@ -54,14 +55,14 @@ namespace effcore\modules\core {
           $commands = [
             'whoami '                                                                              .$stderr_to_stdout,
             'git --version '                                                                       .$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_tmp.                                                     '   & exit 0',
-            'rmdir  /s /q '.$repo_path_tmp.                                                     '   & exit 0',
+            'del /f /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout_to_nul,
+            'rmdir  /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout_to_nul,
             'git clone --branch='.$bundle->repo_branch.' '.$bundle->repo_url.' '.$repo_path_tmp.' '.$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_cur.'\\.git '.                                           '   & exit 0',
-            'rmdir  /s /q '.$repo_path_cur.'\\.git '.                                           '   & exit 0',
+            'del /f /s /q '.$repo_path_cur.'\\.git '.                                           ' '.$stderr_to_stdout_to_nul,
+            'rmdir  /s /q '.$repo_path_cur.'\\.git '.                                           ' '.$stderr_to_stdout_to_nul,
             'xcopy  /e /i '.$repo_path_tmp.'\\.git '.$repo_path_cur.'\\.git'.                   ' '.$stderr_to_stdout,
-            'del /f /s /q '.$repo_path_tmp.                                                     '   & exit 0',
-            'rmdir  /s /q '.$repo_path_tmp.                                                     '   & exit 0'
+            'del /f /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout_to_nul,
+            'rmdir  /s /q '.$repo_path_tmp.                                                     ' '.$stderr_to_stdout_to_nul
           ];
         } else {
           $commands = [
