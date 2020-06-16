@@ -22,7 +22,8 @@ namespace effcore\modules\core {
     $bundles = module::bundle_get_all();
     core::array_sort_by_text_property($bundles);
     foreach ($bundles as $c_bundle) {
-      if (isset($c_bundle->repo_update)) {
+      if (isset($c_bundle->repo_update_handler_in_module) && module::is_enabled(
+                $c_bundle->repo_update_handler_in_module)) {
         $c_button_update = new button('update', ['title' => new text('update')]);
         $c_button_update->build();
         $c_button_update->value_set('update_'.$c_bundle->id);
