@@ -365,7 +365,7 @@
 
   /* form 'modules_update_files' */
 
-  form#modules_update_files button[value='repo_restore_system'] {float: right; margin-right: 0; margin-left: 20px}
+  form#modules_update_files button[value^='repo_restore_'] {float: right; margin-right: 0; margin-left: 20px}
 
   /* form 'cache_update' */
 
