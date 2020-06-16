@@ -363,6 +363,8 @@ translations
     - Module for localization.: Модуль для лакалізацыі.
     - Module for storages support.: Модуль для падтрымкі сховішчаў даных.
     - Module for testing.: Модуль для тэставання.
+    - Module for translation into Belarusian language.: Модуль для перакладу на беларускую мову.
+    - Module for translation into Russian language.: Модуль для перакладу на рускую мову.
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with polls.: Модуль для працы з апытаннямі.
@@ -601,8 +603,6 @@ translations
     - Token: Токен
     - Tokens: Токены
     - Total: Усяго
-    - Translating to Belarusian language.: Пераклад на беларускую мову.
-    - Translating to Russian language.: Пераклад на рускую мову.
     - Translation: Пераклад
     - Translations: Пераклады
     - Tree ID: ID дрэва

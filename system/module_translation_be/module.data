@@ -3,7 +3,7 @@ module|module
   id_bundle: system
   title: Belarusian
   group: Translations
-  description: Translating to Belarusian language.
+  description: Module for translation into Belarusian language.
   copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-by-mini.svg
   enabled: yes
