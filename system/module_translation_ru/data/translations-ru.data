@@ -331,7 +331,6 @@ translations
     - Main color: Основной цвет
     - Main colors: Основные цвета
     - Main menu: Главное меню
-    - Main system module.: Главный модуль системы.
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
@@ -362,6 +361,7 @@ translations
     - Module for development.: Модуль для разработки.
     - Module for localization.: Модуль для локализации.
     - Module for storages support.: Модуль для поддержки хранилищ данных.
+    - Module for support the operation of the whole system.: Модуль для поддержки работы всей системы.
     - Module for testing.: Модуль для тестирования.
     - Module for translation into Belarusian language.: Модуль для перевода на белорусский язык.
     - Module for translation into Russian language.: Модуль для перевода на русский язык.
