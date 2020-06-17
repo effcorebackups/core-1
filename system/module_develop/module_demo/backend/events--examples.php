@@ -16,18 +16,18 @@ namespace effcore\modules\demo {
   static function on_form_init                 ($event, $form, $items) {}
   static function on_form_validate             ($event, $form, $items) {}
   static function on_form_submit               ($event, $form, $items) {}
-  static function on_instance_delete_before    ($event, $instance) {}
-  static function on_instance_insert_before    ($event, $instance) {}
   static function on_instance_select_before    ($event, $instance) {}
+  static function on_instance_insert_before    ($event, $instance) {}
   static function on_instance_update_before    ($event, $instance) {}
-  static function on_instance_delete_after     ($event, $instance, $result) {}
-  static function on_instance_insert_after     ($event, $instance, $result) {}
+  static function on_instance_delete_before    ($event, $instance) {}
   static function on_instance_select_after     ($event, $instance, $result) {}
+  static function on_instance_insert_after     ($event, $instance, $result) {}
   static function on_instance_update_after     ($event, $instance, $result) {}
-  static function on_module_install            ($event) {}
-  static function on_module_uninstall          ($event) {}
+  static function on_instance_delete_after     ($event, $instance, $result) {}
   static function on_module_enable             ($event) {}
   static function on_module_disable            ($event) {}
+  static function on_module_install            ($event) {}
+  static function on_module_uninstall          ($event) {}
   static function on_module_start              ($event) {}
   static function on_module_update_data_before ($event, $update) {} # see: \effcore\modules\demo\events_module_update::on_update_data_before
   static function on_module_update_data_after  ($event, $update) {} # see: \effcore\modules\demo\events_module_update::on_update_data_after
