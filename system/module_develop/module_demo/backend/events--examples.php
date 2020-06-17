@@ -9,6 +9,7 @@ namespace effcore\modules\demo {
 
   static function on_breadcrumbs_build_before  ($event, $breadcrumbs) {}
   static function on_breadcrumbs_build_after   ($event, $breadcrumbs) {}
+  static function on_cron_run                  ($event) {}
   static function on_decorator_build_before    ($event, $decorator) {}
   static function on_decorator_build_after     ($event, $decorator) {}
   static function on_email_send_before         ($event, &$to, &$subject, &$body, &$from, &$encoding, &$form, &$items) {}

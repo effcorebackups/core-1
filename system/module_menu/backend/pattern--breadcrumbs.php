@@ -22,8 +22,7 @@ namespace effcore {
         $c_link_markup = new markup('a', ['href' => $c_link->url], new text($c_link->title, [], true, true), $c_link->weight ?? 0);
         if (url::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current',        'true');
         if (url::is_active_trail($c_link->url)) $c_link_markup->attribute_insert('data-selected-trail', 'true');
-        $this->child_insert($c_link_markup);
-      }
+        $this->child_insert($c_link_markup);}
       event::start('on_breadcrumbs_build_after', $this->id, [&$this]);
       $this->is_builded = true;
     }
