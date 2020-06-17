@@ -29,15 +29,23 @@ namespace effcore\modules\demo {
   static function on_module_enable             ($event) {}
   static function on_module_disable            ($event) {}
   static function on_module_start              ($event) {}
+  static function on_module_update_data_before ($event, $update) {} # see: \effcore\modules\demo\events_module_update::on_update_data_before
+  static function on_module_update_data_after  ($event, $update) {} # see: \effcore\modules\demo\events_module_update::on_update_data_after
   static function on_page_build_before         ($event, $page) {}
   static function on_page_build_after          ($event, $page) {}
   static function on_page_render_before        ($event, $page, $template) {}
   static function on_part_presets_dynamic_build($event, $id = null) {}
+  static function on_query_before              ($event, $storage, $query) {}                   # see: \effcore\modules\develop\events_storage::on_query_before
+  static function on_query_after               ($event, $storage, $query, $result, $errors) {} # see: \effcore\modules\develop\events_storage::on_query_after
+  static function on_restore_repo              ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_restore_repo
   static function on_selection_build_before    ($event, $selection) {}
   static function on_selection_build_after     ($event, $selection) {}
+  static function on_storage_init_before       ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_before
+  static function on_storage_init_after        ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_after
   static function on_tab_build_before          ($event, $tab) {}
   static function on_tab_build_after           ($event, $tab) {}
   static function on_tree_build_before         ($event, $tree) {}
   static function on_tree_build_after          ($event, $tree) {}
+  static function on_update_files              ($event, $bundle_id) {} # see: \effcore\modules\core\events_module_update::on_update_files
 
 }}

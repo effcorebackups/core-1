@@ -140,7 +140,7 @@ namespace effcore {
           $c_instance->id_parent,
           $c_instance->id_tree,
           $c_instance->url,
-          $c_instance->access, 
+          $c_instance->access,
           widget_attributes::complex_value_to_attributes($c_instance->     attributes) ?? [],
           widget_attributes::complex_value_to_attributes($c_instance->link_attributes) ?? [],
           $c_instance->weight);

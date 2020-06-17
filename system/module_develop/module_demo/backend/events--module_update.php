@@ -30,7 +30,7 @@ namespace effcore\modules\demo {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_update_data_before($event, $update) {    
+  static function on_update_data_before($event, $update) {
     message::insert(new text('Call "%%_call" for #%%_number', ['call' => $event->handler, 'number' => $update->number]));
   }
 
