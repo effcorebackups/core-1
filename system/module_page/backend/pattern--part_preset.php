@@ -63,7 +63,7 @@ namespace effcore {
   }
 
   static function init_dynamic($id = null) {
-    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_part_presets_dynamic_build'             );}
+    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_part_presets_dynamic_build', null       );}
     if ($id !== null                             ) {                                 event::start('on_part_presets_dynamic_build', null, [$id]);}
   }
 

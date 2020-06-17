@@ -24,6 +24,11 @@ namespace effcore\modules\demo {
   static function on_instance_insert_after     ($event, $instance, $result) {}
   static function on_instance_select_after     ($event, $instance, $result) {}
   static function on_instance_update_after     ($event, $instance, $result) {}
+  static function on_module_install            ($event) {}
+  static function on_module_uninstall          ($event) {}
+  static function on_module_enable             ($event) {}
+  static function on_module_disable            ($event) {}
+  static function on_module_start              ($event) {}
   static function on_page_build_before         ($event, $page) {}
   static function on_page_build_after          ($event, $page) {}
   static function on_page_render_before        ($event, $page, $template) {}
