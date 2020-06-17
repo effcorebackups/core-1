@@ -7,6 +7,11 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: feedback_select
     access_insert
       roles
       - =: admins
@@ -118,6 +123,11 @@ entities
     has_parallel_checking: true
     ws_is_embed: true
     ws_module_id: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: permission_select
     access_insert
       roles
       - =: admins
@@ -210,6 +220,11 @@ entities
     managing_group_id: user
     has_parallel_checking: true
     ws_module_id: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_permission_select
     access_insert
       roles
       - =: admins
@@ -312,6 +327,11 @@ entities
     managing_group_id: user
     has_parallel_checking: true
     ws_module_id: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: relation_role_ws_user_select
     access_insert
       roles
       - =: admins
@@ -414,6 +434,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: role_select
     access_insert
       roles
       - =: admins
@@ -573,6 +598,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: user_select
     access_insert
       roles
       - =: admins

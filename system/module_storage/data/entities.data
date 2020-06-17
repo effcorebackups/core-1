@@ -10,6 +10,11 @@ entities
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: selection_select
     access_insert
       roles
       - =: admins

@@ -10,6 +10,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: audio_select
     access_insert
       roles
       - =: admins
@@ -180,6 +185,11 @@ entities
     has_message_for_additional_controls: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: gallery_select
     access_insert
       roles
       - =: admins
@@ -284,6 +294,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: page_select
     access_insert
       roles
       - =: admins
@@ -498,6 +513,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: picture_select
     access_insert
       roles
       - =: admins
@@ -668,6 +688,11 @@ entities
     has_parallel_checking: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: text_select
     access_insert
       roles
       - =: admins
@@ -801,6 +826,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: video_select
     access_insert
       roles
       - =: admins

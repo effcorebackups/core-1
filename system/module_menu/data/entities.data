@@ -10,6 +10,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: tree_select
     access_insert
       roles
       - =: admins
@@ -144,6 +149,11 @@ entities
     ws_is_embed: true
     ws_module_id: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+      permissions
+      - =: tree_item_select
     access_insert
       roles
       - =: admins

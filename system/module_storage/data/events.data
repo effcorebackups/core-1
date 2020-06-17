@@ -74,15 +74,19 @@ events
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
-  - instance_insert|event
+  - instance_select_check_access|event
+      for: instance_select
+      weight: +500
+      handler: \effcore\modules\storage\events_page_instance_select::on_check_access
+  - instance_insert_check_access|event
       for: instance_insert
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_insert::on_check_access
-  - instance_update|event
+  - instance_update_check_access|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_update::on_check_access
-  - instance_delete|event
+  - instance_delete_check_access|event
       for: instance_delete
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_delete::on_check_access

@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\access;
           use \effcore\actions_list;
           use \effcore\core;
           use \effcore\entity;
@@ -13,6 +14,16 @@ namespace effcore\modules\storage {
           use \effcore\selection;
           use \effcore\url;
           abstract class events_page_instance_select {
+
+  static function on_check_access($event, $page) {
+    $entity_name = $page->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if (isset($entity->access_select) && !access::check(
+                $entity->access_select))
+           core::send_header_and_exit('access_forbidden');
+    } else core::send_header_and_exit('page_not_found');
+  }
 
   static function on_build_before($event, $page) {
     $managing_group_id = $page->args_get('managing_group_id');
