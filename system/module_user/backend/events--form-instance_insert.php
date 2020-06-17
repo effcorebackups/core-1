@@ -94,8 +94,8 @@ namespace effcore\modules\user {
         # feedback
           if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
             message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
-            storage_events_form_instance_insert::on_init($event, $form, $items);
-            static                             ::on_init($event, $form, $items);
+            storage_events_form_instance_insert::on_init(null, $form, $items);
+            static                             ::on_init(null, $form, $items);
           }
           break;
       }

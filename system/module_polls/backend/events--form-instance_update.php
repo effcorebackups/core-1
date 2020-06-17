@@ -91,7 +91,7 @@ namespace effcore\modules\polls {
           # reset unactual data (for load new IDs too)
             $form->_answers_rows = null;
             $items['*widget_answers']->items_reset();
-            static::on_init($event, $form, $items);
+            static::on_init(null, $form, $items);
           # ↓↓↓ no break ↓↓↓
           case 'cancel':
           # going back

@@ -127,7 +127,7 @@ namespace effcore\modules\polls {
           ]))->insert();
         if ($result) message::insert('Your answer was accepted.'             );
         else         message::insert('Your answer was not accepted!', 'error');
-        static::on_init($event, $form, $items);
+        static::on_init(null, $form, $items);
         break;
       case 'cancel':
       # delete votes by Answer ID and User ID
@@ -142,7 +142,7 @@ namespace effcore\modules\polls {
           'id_answer_in_end'   => ')']]);
         if ($result) message::insert('Your answer was canceled.'             );
         else         message::insert('Your answer was not canceled!', 'error');
-        static::on_init($event, $form, $items);
+        static::on_init(null, $form, $items);
         break;
     }
   }
