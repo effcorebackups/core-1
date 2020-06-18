@@ -12,7 +12,7 @@ namespace effcore\modules\menu {
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
-  static function on_build_before($event, $page) {
+  static function on_redirect($event, $page) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
     if ($entity_name == 'tree_item') {
