@@ -10,7 +10,7 @@ namespace effcore\modules\menu {
           use \effcore\tree;
           abstract class events_page_instance_insert {
 
-  static function on_build_before($event, $page) {
+  static function on_check_existence($event, $page) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
     if ($entity_name == 'tree_item') {
