@@ -67,7 +67,8 @@ events
   on_page_build_before
   - decoration|event
       for: decoration
-      handler: \effcore\modules\page\events_page_decoration::on_build_before
+      weight: +600
+      handler: \effcore\modules\page\events_page_decoration::on_redirect
 # ─────────────────────────────────────────────────────────────────────
   on_part_presets_dynamic_build
   - all|event

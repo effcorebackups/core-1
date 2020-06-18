@@ -13,7 +13,7 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page_decoration {
 
-  static function on_build_before($event, $page) {
+  static function on_redirect($event, $page) {
     $type = $page->args_get('type');
     $id   = $page->args_get('id');
     if ($type == null            ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
