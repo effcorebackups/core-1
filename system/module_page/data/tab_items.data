@@ -7,6 +7,18 @@ tab_items
     action_name_default: content/page
     title: Content
     weight: 50
+    access
+      roles
+      - =: admins
+      permissions
+      - =: page_select
+      - =: text_select
+      - =: picture_select
+      - =: audio_select
+      - =: video_select
+      - =: gallery_select
+      - =: poll_select
+      - =: selection_select
 - data_content_page|tab_item
     id: data_content_page
     id_parent: data_content
@@ -14,6 +26,11 @@ tab_items
     action_name: content/page
     title: Pages
     weight: 50
+    access
+      roles
+      - =: admins
+      permissions
+      - =: page_select
 - data_content_text|tab_item
     id: data_content_text
     id_parent: data_content_page
@@ -21,6 +38,11 @@ tab_items
     action_name: content/text
     title: Texts
     weight: 80
+    access
+      roles
+      - =: admins
+      permissions
+      - =: text_select
 - data_content_picture|tab_item
     id: data_content_picture
     id_parent: data_content_page
@@ -28,6 +50,11 @@ tab_items
     action_name: content/picture
     title: Pictures
     weight: 75
+    access
+      roles
+      - =: admins
+      permissions
+      - =: picture_select
 - data_content_audio|tab_item
     id: data_content_audio
     id_parent: data_content_page
@@ -35,6 +62,11 @@ tab_items
     action_name: content/audio
     title: Audios
     weight: 70
+    access
+      roles
+      - =: admins
+      permissions
+      - =: audio_select
 - data_content_video|tab_item
     id: data_content_video
     id_parent: data_content_page
@@ -42,6 +74,11 @@ tab_items
     action_name: content/video
     title: Videos
     weight: 65
+    access
+      roles
+      - =: admins
+      permissions
+      - =: video_select
 - data_content_gallery|tab_item
     id: data_content_gallery
     id_parent: data_content_page
@@ -49,6 +86,11 @@ tab_items
     action_name: content/gallery
     title: Galleries
     weight: 60
+    access
+      roles
+      - =: admins
+      permissions
+      - =: gallery_select
 # ─────────────────────────────────────────────────────────────────────
 - decoration_colors|tab_item
     id: decoration_colors

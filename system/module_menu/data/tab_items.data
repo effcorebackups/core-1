@@ -7,15 +7,31 @@ tab_items
     action_name_default: menu/tree
     title: Menu
     weight: 40
+    access
+      roles
+      - =: admins
+      permissions
+      - =: tree_select
+      - =: tree_item_select
 - data_menu_tree|tab_item
     id: data_menu_tree
     id_parent: data_menu
     id_tab: data
     action_name: menu/tree
     title: Trees
+    access
+      roles
+      - =: admins
+      permissions
+      - =: tree_select
 - data_menu_tree_item|tab_item
     id: data_menu_tree_item
     id_parent: data_menu
     id_tab: data
     action_name: menu/tree_item
     title: Tree items
+    access
+      roles
+      - =: admins
+      permissions
+      - =: tree_item_select

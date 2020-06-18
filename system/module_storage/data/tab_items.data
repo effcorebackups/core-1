@@ -5,3 +5,8 @@ tab_items
     id_tab: data
     action_name: content/selection
     title: Selections
+    access
+      roles
+      - =: admins
+      permissions
+      - =: selection_select

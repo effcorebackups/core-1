@@ -5,3 +5,8 @@ tab_items
     id_tab: data
     action_name: content/poll
     title: Polls
+    access
+      roles
+      - =: admins
+      permissions
+      - =: poll_select
