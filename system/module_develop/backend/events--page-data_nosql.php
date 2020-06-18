@@ -27,7 +27,7 @@ namespace effcore\modules\develop {
           use \effcore\url;
           abstract class events_page_data_nosql {
 
-  static function on_build_before($event, $page) {
+  static function on_redirect($event, $page) {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');
     if ($type == null) url::go($page->args_get('base').'/trees');

@@ -12,7 +12,7 @@ namespace effcore\modules\test {
           use \effcore\url;
           abstract class events_page_test {
 
-  static function on_build_before($event, $page) {
+  static function on_redirect($event, $page) {
     $id = page::get_current()->args_get('id');
     $tests = test::get_all(false);
     core::array_sort_by_text_property($tests);

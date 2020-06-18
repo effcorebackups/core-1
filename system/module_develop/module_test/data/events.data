@@ -20,7 +20,8 @@ events
   on_page_build_before
   - tests|event
       for: tests
-      handler: \effcore\modules\test\events_page_test::on_build_before
+      weight: +600
+      handler: \effcore\modules\test\events_page_test::on_redirect
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - tests|event

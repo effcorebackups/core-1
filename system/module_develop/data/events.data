@@ -25,10 +25,12 @@ events
   on_page_build_before
   - structures|event
       for: structures
-      handler: \effcore\modules\develop\events_page_structures::on_build_before
+      weight: +600
+      handler: \effcore\modules\develop\events_page_structures::on_redirect
   - data_nosql|event
       for: data_nosql
-      handler: \effcore\modules\develop\events_page_data_nosql::on_build_before
+      weight: +600
+      handler: \effcore\modules\develop\events_page_data_nosql::on_redirect
 # ─────────────────────────────────────────────────────────────────────
   on_query_before
   - pdo|event

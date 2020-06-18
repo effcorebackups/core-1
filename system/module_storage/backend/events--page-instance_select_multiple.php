@@ -23,7 +23,7 @@ namespace effcore\modules\storage {
   #          delete: / manage / data / %%_managing_group_id / %%_entity_name / %%_instance_id / %%_action_name=delete
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_build_before($event, $page) { # weight: +600
+  static function on_redirect($event, $page) { # weight: +600
     $managing_group_id  = $page->args_get('managing_group_id');
     $entity_name        = $page->args_get('entity_name');
     $entities           = entity::get_all();
