@@ -82,7 +82,9 @@ events
   on_page_build_before
   - install|event
       for: install
-      handler: \effcore\modules\core\events_page_install::on_build_before
+      weight: +600
+      handler: \effcore\modules\core\events_page_install::on_redirect
   - modules|event
       for: modules
-      handler: \effcore\modules\core\events_page_modules::on_build_before
+      weight: +600
+      handler: \effcore\modules\core\events_page_modules::on_redirect

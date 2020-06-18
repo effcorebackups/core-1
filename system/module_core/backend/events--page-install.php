@@ -9,7 +9,7 @@ namespace effcore\modules\core {
           use \effcore\url;
           abstract class events_page_install {
 
-  static function on_build_before($event, $page) {
+  static function on_redirect($event, $page) {
     $languages = language::get_all();
     $code = $page->args_get('lang_code');
     if (empty($languages[$code])) url::go($page->args_get('base').'/en');
