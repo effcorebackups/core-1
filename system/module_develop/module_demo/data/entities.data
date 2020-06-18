@@ -8,6 +8,18 @@ entities
     managing_group_id: demo
     ws_is_embed: true
     ws_data: true
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id
         title: ID
@@ -234,6 +246,18 @@ entities
     catalog_name: demo_autoincrement
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id
         title: ID
@@ -291,6 +315,18 @@ entities
     catalog_name: demo_collations
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id
         title: ID
@@ -349,6 +385,18 @@ entities
     catalog_name: demo_constraints
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - f_primary
         title: Field primary
@@ -435,6 +483,18 @@ entities
     catalog_name: demo_data
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id
         title: ID
@@ -509,6 +569,18 @@ entities
     catalog_name: demo_indexes
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id
         title: ID
@@ -583,6 +655,18 @@ entities
     catalog_name: demo_join
     managing_is_enabled: true
     managing_group_id: demo
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
     fields
     - id_data
         title: Data ID

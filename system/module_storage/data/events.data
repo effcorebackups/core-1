@@ -70,10 +70,15 @@ events
   on_page_build_before
   - instance_select_multiple|event
       for: instance_select_multiple
+      weight: +600
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_build_before
   - instance_select|event
       for: instance_select
       handler: \effcore\modules\storage\events_page_instance_select::on_build_before
+  - instance_select_multiple_check_access|event
+      for: instance_select_multiple
+      weight: +500
+      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_check_access
   - instance_select_check_access|event
       for: instance_select
       weight: +500

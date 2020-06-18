@@ -5,6 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\access;
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
@@ -21,7 +23,7 @@ namespace effcore\modules\storage {
   #          delete: / manage / data / %%_managing_group_id / %%_entity_name / %%_instance_id / %%_action_name=delete
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_build_before($event, $page) {
+  static function on_build_before($event, $page) { # weight: +600
     $managing_group_id  = $page->args_get('managing_group_id');
     $entity_name        = $page->args_get('entity_name');
     $entities           = entity::get_all();
@@ -37,6 +39,16 @@ namespace effcore\modules\storage {
     if (empty($entities_by_groups[$managing_group_id][$entity_name])) {
       url::go($page->args_get('base').'/content/page');
     }
+  }
+
+  static function on_check_access($event, $page) { # weight: +500
+    $entity_name = $page->args_get('entity_name');
+    $entity = entity::get($entity_name);
+    if ($entity) {
+      if (isset($entity->access_select) && !access::check(
+                $entity->access_select))
+           core::send_header_and_exit('access_forbidden');
+    } else core::send_header_and_exit('page_not_found');
   }
 
 }}
