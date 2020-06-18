@@ -74,7 +74,8 @@ events
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_redirect
   - instance_select|event
       for: instance_select
-      handler: \effcore\modules\storage\events_page_instance_select::on_build_before
+      weight: +600
+      handler: \effcore\modules\storage\events_page_instance_select::on_redirect_and_check_existence
   - instance_select_multiple_check_access|event
       for: instance_select_multiple
       weight: +500
