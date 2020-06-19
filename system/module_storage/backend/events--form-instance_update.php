@@ -20,21 +20,24 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
+    $items['~update']->disabled_set();
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     if (!$form->instance_id      ) $form->instance_id       = page::get_current()->args_get('instance_id');
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
-    if ($entity) {
-      if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
+    if (isset($groups[$form->managing_group_id]) || $form->managing_group_id === null) {
+      if ($entity) {
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $form->instance_id);
         if (count($id_keys) ==
             count($id_values)) {
-          $form->_instance = new instance($entity->name, array_combine($id_keys, $id_values));
+          $conditions = array_combine($id_keys, $id_values);
+          $form->_instance = new instance($form->entity_name, $conditions);
           if ($form->_instance->select()) {
             $form->attribute_insert('data-entity_name', $form->entity_name);
             $form->attribute_insert('data-instance_id', $form->instance_id);
+            $items['~update']->disabled_set(false);
           # fixation of 'updated' value for prevent parallel update (not secure: only for organizational methods)
             if ($entity->has_parallel_checking && $entity->field_get('updated')) {
               $hidden_old_updated = new field_hidden('old_updated');
@@ -73,10 +76,10 @@ namespace effcore\modules\storage {
                 'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
               );
             }
-          } else core::send_header_and_exit('page_not_found');
-        }   else core::send_header_and_exit('page_not_found');
-      }     else core::send_header_and_exit('page_not_found');
-    }       else core::send_header_and_exit('page_not_found');
+          } else $items['fields']->child_insert(new markup('p', [], new text('unknown instance'        )), 'error_message');
+        }   else $items['fields']->child_insert(new markup('p', [], new text('unknown instance keys'   )), 'error_message');
+      }     else $items['fields']->child_insert(new markup('p', [], new text('unknown entity'          )), 'error_message');
+    }       else $items['fields']->child_insert(new markup('p', [], new text('unknown management group')), 'error_message');
   }
 
   static function on_validate($event, $form, $items) {

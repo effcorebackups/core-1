@@ -88,6 +88,10 @@ events
       for: instance_insert
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_insert::on_check_access
+  - instance_update_check_existence|event
+      for: instance_update
+      weight: +600
+      handler: \effcore\modules\storage\events_page_instance_update::on_check_existence
   - instance_update_check_access|event
       for: instance_update
       weight: +500
