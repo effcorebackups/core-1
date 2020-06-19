@@ -68,43 +68,43 @@ events
       handler: \effcore\modules\storage\events_storage::on_instance_delete_before
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
-  - instance_select_multiple|event
+  - instance_select_multiple__redirect|event
       for: instance_select_multiple
       weight: +600
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_redirect
-  - instance_select|event
+  - instance_select__redirect_and_check_existence|event
       for: instance_select
       weight: +600
       handler: \effcore\modules\storage\events_page_instance_select::on_redirect_and_check_existence
-  - instance_select_multiple_check_access|event
+  - instance_select_multiple__check_access|event
       for: instance_select_multiple
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_select_multiple::on_check_access
-  - instance_select_check_access|event
+  - instance_select__check_access|event
       for: instance_select
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_select::on_check_access
-  - instance_insert_check_existence|event
+  - instance_insert__check_existence|event
       for: instance_insert
       weight: +600
       handler: \effcore\modules\storage\events_page_instance_insert::on_check_existence
-  - instance_insert_check_access|event
+  - instance_insert__check_access|event
       for: instance_insert
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_insert::on_check_access
-  - instance_update_check_existence|event
+  - instance_update__check_existence|event
       for: instance_update
       weight: +600
       handler: \effcore\modules\storage\events_page_instance_update::on_check_existence
-  - instance_update_check_access|event
+  - instance_update__check_access|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_update::on_check_access
-  - instance_delete_check_existence|event
+  - instance_delete__check_existence|event
       for: instance_delete
       weight: +600
       handler: \effcore\modules\storage\events_page_instance_delete::on_check_existence
-  - instance_delete_check_access|event
+  - instance_delete__check_access|event
       for: instance_delete
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_delete::on_check_access
