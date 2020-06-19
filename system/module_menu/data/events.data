@@ -61,7 +61,7 @@ events
       handler: \effcore\modules\menu\events_page_instance_select_multiple::on_redirect
   - instance_insert|event
       for: instance_insert
-      weight: +600
+      weight: +550
       handler: \effcore\modules\menu\events_page_instance_insert::on_check_existence
 # ─────────────────────────────────────────────────────────────────────
   on_part_presets_dynamic_build

@@ -5,8 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use const \effcore\br;
           use \effcore\core;
           use \effcore\page;
+          use \effcore\text_multiline;
           use \effcore\tree;
           abstract class events_page_instance_insert {
 
@@ -16,7 +18,7 @@ namespace effcore\modules\menu {
     if ($entity_name == 'tree_item') {
       $trees = tree::select_all('sql');
       if (!$category_id || empty($trees[$category_id])) {
-        core::send_header_and_exit('page_not_found');
+        core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown category', 'go to <a href="/">front page</a>'], [], br.br));
       }
     }
   }
