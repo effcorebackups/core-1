@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use const \effcore\br;
           use \effcore\access;
           use \effcore\actions_list;
           use \effcore\core;
@@ -12,6 +13,7 @@ namespace effcore\modules\storage {
           use \effcore\instance;
           use \effcore\markup;
           use \effcore\selection;
+          use \effcore\text_multiline;
           use \effcore\url;
           abstract class events_page_instance_select {
 
@@ -21,8 +23,8 @@ namespace effcore\modules\storage {
     $instance_id       = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     $groups = entity::get_managing_group_ids();
-    if ($entity) {
-      if (isset($groups[$managing_group_id])) {
+    if (isset($groups[$managing_group_id])) {
+      if ($entity) {
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $instance_id);
         if (count($id_keys) ==
@@ -31,10 +33,10 @@ namespace effcore\modules\storage {
           $instance = new instance($entity_name, $conditions);
           if ($instance->select() == null && url::back_url_get() != '') url::go(url::back_url_get()); # after deletion
           if ($instance->select() == null && url::back_url_get() == '')
-               core::send_header_and_exit('page_not_found');
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
+               core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown instance',         'go to <a href="/">front page</a>'], [], br.br));
+        } else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown instance keys',    'go to <a href="/">front page</a>'], [], br.br));
+      }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown entity',           'go to <a href="/">front page</a>'], [], br.br));
+    }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown management group', 'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_check_access($event, $page) {
