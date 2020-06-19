@@ -37,10 +37,18 @@ namespace effcore\modules\storage {
 
   static function on_check_access($event, $page) {
     $entity_name = $page->args_get('entity_name');
+    $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     if (isset($entity->access_delete) && !access::check(
               $entity->access_delete)) {
       core::send_header_and_exit('access_forbidden');
+    }
+    $id_keys = $entity->id_get_real();
+    $id_values = explode('+', $instance_id);
+    $conditions = array_combine($id_keys, $id_values);
+    $instance = new instance($entity_name, $conditions);
+    if ($instance->select() && !empty($instance->is_embed)) {
+      core::send_header_and_exit('access_forbidden', null, new text_multiline(['entity is embedded', 'go to <a href="/">front page</a>'], [], br.br));
     }
   }
 

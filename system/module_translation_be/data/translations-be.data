@@ -143,6 +143,7 @@ translations
     - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была інсталявана!
     - Entity "%%_entity" was not uninstalled!: Сутнасць "%%_entity" не была выдалена!
     - Entity "%%_entity" was uninstalled.: Сутнасць "%%_entity" была выдалена.
+    - entity is embedded: сутнасць з'яўляецца убудаванай
     - Error: Памылка
     - event: падзея
     - Event: Падзея

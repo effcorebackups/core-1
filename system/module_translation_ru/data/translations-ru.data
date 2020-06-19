@@ -143,6 +143,7 @@ translations
     - Entity "%%_entity" was not installed!: Сущность "%%_entity" не была установлена!
     - Entity "%%_entity" was not uninstalled!: Сущность "%%_entity" не была удалена!
     - Entity "%%_entity" was uninstalled.: Сущность "%%_entity" была удалена.
+    - entity is embedded: сущность является встроенной
     - Error: Ошибка
     - event: событие
     - Event: Событие
