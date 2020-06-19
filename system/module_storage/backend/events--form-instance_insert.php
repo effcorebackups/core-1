@@ -24,9 +24,9 @@ namespace effcore\modules\storage {
     $groups = entity::get_managing_group_ids();
     if ($entity) {
       if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
-        $form->attribute_insert('data-entity_name', $form->entity_name);
-        $form->_instance = new instance($entity->name);
         if ($entity->managing_is_enabled) {
+          $form->attribute_insert('data-entity_name', $form->entity_name);
+          $form->_instance = new instance($entity->name);
           $has_controls = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing_on_insert_is_enabled) &&

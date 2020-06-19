@@ -27,14 +27,14 @@ namespace effcore\modules\storage {
     $groups = entity::get_managing_group_ids();
     if ($entity) {
       if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
-        $form->attribute_insert('data-entity_name', $form->entity_name);
-        $form->attribute_insert('data-instance_id', $form->instance_id);
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $form->instance_id);
         if (count($id_keys) ==
             count($id_values)) {
           $form->_instance = new instance($entity->name, array_combine($id_keys, $id_values));
           if ($form->_instance->select()) {
+            $form->attribute_insert('data-entity_name', $form->entity_name);
+            $form->attribute_insert('data-instance_id', $form->instance_id);
           # fixation of 'updated' value for prevent parallel update (not secure: only for organizational methods)
             if ($entity->has_parallel_checking && $entity->field_get('updated')) {
               $hidden_old_updated = new field_hidden('old_updated');

@@ -23,8 +23,6 @@ namespace effcore\modules\storage {
     $groups = entity::get_managing_group_ids();
     if ($entity) {
       if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
-        $form->attribute_insert('data-entity_name', $form->entity_name);
-        $form->attribute_insert('data-instance_id', $form->instance_id);
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $form->instance_id);
         if (count($id_keys  ) ==
@@ -32,6 +30,8 @@ namespace effcore\modules\storage {
           $form->_instance = new instance($form->entity_name, array_combine($id_keys, $id_values));
           if ($form->_instance->select()) {
             if (!empty($form->_instance->is_embed)) core::send_header_and_exit('access_forbidden');
+            $form->attribute_insert('data-entity_name', $form->entity_name);
+            $form->attribute_insert('data-instance_id', $form->instance_id);
             $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
             $items['info']->child_insert($question, 'question');
           } else core::send_header_and_exit('page_not_found');
