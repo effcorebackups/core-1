@@ -13,11 +13,10 @@ namespace effcore\modules\storage {
   static function on_check_access($event, $page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
-    if ($entity) {
-      if (isset($entity->access_delete) && !access::check(
-                $entity->access_delete))
-           core::send_header_and_exit('access_forbidden');
-    } else core::send_header_and_exit('page_not_found');
+    if (isset($entity->access_delete) && !access::check(
+              $entity->access_delete)) {
+      core::send_header_and_exit('access_forbidden');
+    }
   }
 
 }}
