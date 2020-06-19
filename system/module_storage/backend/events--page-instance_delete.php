@@ -19,7 +19,7 @@ namespace effcore\modules\storage {
     $instance_id       = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
     $groups = entity::get_managing_group_ids();
-    if (isset($groups[$managing_group_id]) || $managing_group_id === null) {
+    if ($managing_group_id === null || isset($groups[$managing_group_id])) {
       if ($entity) {
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $instance_id);

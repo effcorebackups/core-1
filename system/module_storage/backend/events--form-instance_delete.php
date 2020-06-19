@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
     if (!$form->instance_id      ) $form->instance_id       = page::get_current()->args_get('instance_id');
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
-    if (isset($groups[$form->managing_group_id]) || $form->managing_group_id === null) {
+    if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
       if ($entity) {
         $id_keys   = $entity->id_get_real();
         $id_values = explode('+', $form->instance_id);

@@ -17,7 +17,7 @@ namespace effcore\modules\storage {
     $entity_name       = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
     $groups = entity::get_managing_group_ids();
-    if (isset($groups[$managing_group_id]) || $managing_group_id === null) {
+    if ($managing_group_id === null || isset($groups[$managing_group_id])) {
       if ($entity) {
         if ($entity->managing_is_enabled) {
           return true;

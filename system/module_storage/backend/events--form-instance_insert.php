@@ -24,7 +24,7 @@ namespace effcore\modules\storage {
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
-    if (isset($groups[$form->managing_group_id]) || $form->managing_group_id === null) {
+    if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
       if ($entity) {
         if ($entity->managing_is_enabled) {
           $form->attribute_insert('data-entity_name', $form->entity_name);
