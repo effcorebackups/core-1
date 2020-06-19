@@ -92,6 +92,10 @@ events
       for: instance_update
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_update::on_check_access
+  - instance_delete_check_existence|event
+      for: instance_delete
+      weight: +600
+      handler: \effcore\modules\storage\events_page_instance_delete::on_check_existence
   - instance_delete_check_access|event
       for: instance_delete
       weight: +500

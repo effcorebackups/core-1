@@ -627,6 +627,10 @@ translations
     - Uninstall the existing profile first.: Сначала удалите существующий профиль.
     - uninstall: удалить
     - Uninstall: Удалить
+    - unknown entity: неизвестная сущность
+    - unknown instance keys: неизвестные ключи экземпляра
+    - unknown instance: неизвестный экземпляр
+    - unknown management group: неизвестная группа управления
     - Unordered list: Неупорядоченный список
     - Update Cache: Обновить кэш
     - Update instance: Обновить экземпляр
