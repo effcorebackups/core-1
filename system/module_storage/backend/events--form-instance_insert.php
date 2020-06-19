@@ -18,15 +18,19 @@ namespace effcore\modules\storage {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
+    $items['~insert'           ]->disabled_set();
+    $items['~insert_and_update']->disabled_set();
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
-    if ($entity) {
-      if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
+    if (isset($groups[$form->managing_group_id]) || $form->managing_group_id === null) {
+      if ($entity) {
         if ($entity->managing_is_enabled) {
           $form->attribute_insert('data-entity_name', $form->entity_name);
           $form->_instance = new instance($entity->name);
+          $items['~insert'           ]->disabled_set(false);
+          $items['~insert_and_update']->disabled_set(false);
           $has_controls = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing_on_insert_is_enabled) &&
@@ -49,7 +53,7 @@ namespace effcore\modules\storage {
               }
             }
           }
-          if ($items['fields']->children_select_count() == 0 || $has_controls == false) $items['~insert']->disabled_set();
+          if ($items['fields']->children_select_count() == 0 || $has_controls == false) {$items['~insert']->disabled_set(); $items['~insert_and_update']->disabled_set();}
           if ($items['fields']->children_select_count() == 0) {
             $form->child_update(
               'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
@@ -65,9 +69,9 @@ namespace effcore\modules\storage {
               ], -20), 'form_message'
             );
           }
-        } else core::send_header_and_exit('page_not_found');
-      }   else core::send_header_and_exit('page_not_found');
-    }     else core::send_header_and_exit('page_not_found');
+        } else $items['fields']->child_insert(new markup('p', [], new text('management for this entity is disabled')), 'error_message');
+      }   else $items['fields']->child_insert(new markup('p', [], new text('unknown entity'                        )), 'error_message');
+    }     else $items['fields']->child_insert(new markup('p', [], new text('unknown management group'              )), 'error_message');
   }
 
   static function on_submit($event, $form, $items) {
